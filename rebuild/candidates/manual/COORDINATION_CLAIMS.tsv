@@ -475,3 +475,5 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF334: T1 other tracker batch (329 free entries)	naming	claimed	callers respelled onto PDB names; locks via lock.sh NF334
 2026-11-24	A	agent NF333: T1 / T2 tracker batch, NF332 continuation (173 free entries)	naming	done	landed 31 rows + 36 table lines (batches/2026-11-24_landing_nf333); 10 entries not reached stay open
 2026-11-24	A	agent NF335: NF324 Q2, flat rows whose own test calls the flattened name (81)	naming	claimed	Q2 option 1 (tests call the PDB member qualified); NF329 route for the rows; locks via lock.sh NF335
+2026-11-24	A	agent NF334: T1 other tracker batch (329 free entries)	naming	done	landed 31 rows + 44 table lines (batches/2026-11-24_landing_nf334); 4 entries not reached
+2026-11-24	A	agent NF336: CV_HauntedHouseScript family onto the shared headers + TRetVoid::Return	naming	claimed	local-model debt named by B Gate 0 (24 rows + 0x00E95380); B open rows stay B; locks via lock.sh NF336

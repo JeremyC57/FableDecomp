@@ -7,7 +7,7 @@
 // Layout (agent329's model of the constructor: Ego_r.pdb with the retail 16-byte CVectorMap and 12-byte STLport set):
 //   CBase vptr +0, SLONGMap CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > +0x04, NamesUsed
 //   set<CCharString> +0x14 (header +0x14, node count +0x18), CheckForDuplicateSymbols +0x20.
-// Callees: CVectorMap::Clear @ 0x009E79E0 (out of line, the vector erase of the entries), the set's
+// Callees: CVectorMap::DeallocateMemory @ 0x009E79E0 (out of line, the vector erase of the entries), the set's
 //   _Rb_tree::_M_erase @ 0x004ABA70 (destroys each node's CCharString).
 // Shape: the out-of-line vector-map clear, then STLport `set::clear()` inline: the tree address is formed once
 //   (`add esi,14h`), every header store re-reads the header pointer, and the count is zeroed last.
@@ -92,7 +92,7 @@ template <class K, class V, class C> class CVectorMap { public: // retail 16 byt
     CVector<CKeyValuePair<K, V> > Data;                  // +0x00
     C                             Compare;               // +0x0c empty comparator
     bool                          Dirty;                 // +0x0d
-    void Clear();                                        // out of line
+    void DeallocateMemory();                             // out of line, 0x009E79E0 (NF334: Ego_r + FableWin PDB name, was Clear)
 };
 template <class T> class CCompareString { public: };
 
@@ -107,6 +107,6 @@ class CSymbolMap : public CBase { public:
 
 void CSymbolMap::Clear()
 {
-    SLONGMap.Clear();
+    SLONGMap.DeallocateMemory();
     NamesUsed.clear();
 }

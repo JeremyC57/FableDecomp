@@ -1,0 +1,8 @@
+##### 008597a0 renames: ?GetFirstActiveStrikeEvent@CCombatActionBase@@QAEPAUCStrikeEvent@@XZ=?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ
+ALL_EQ sections=21 tables=-
+##### 00abf840 renames: ??0CFilenames@@QAE@XZ=??0CFilenames@C3DMeshMaterial@@QAE@XZ
+ALL_EQ sections=9 tables=-
+##### 00724f50 renames: ??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z=??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z
+ALL_EQ sections=4 tables=??_7CTCPhysicsControlled@@6B@
+##### 00999110 renames: ?ExpandPath@?A0x7d949760@@YI?AVCWideString@@PAV2@0@Z=?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
+ALL_EQ sections=2 tables=-

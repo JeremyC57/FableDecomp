@@ -1,0 +1,5 @@
+## HEAD set: H_009e5250.obj 009e79e0.obj
+duplicates 0
+## new set: 009e5250.obj 009e79e0.obj
+duplicates 0
+LK_DONE

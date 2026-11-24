@@ -139,7 +139,7 @@ class CMainGameComponent : public CGameComponent { public:
     void BeginOutputSaving(const CWideString& name);   // 0x0041627F
     void UpdateForcedTickSpeed();                  // 0x00417747
     void UpdateRegular();                          // 0x004162B5
-    void RecordFrameTime(double duration);         // 0x00416202
+    protected: void UpdateAverageFrameDuration(double duration); public:         // 0x00416202
     void Shutdown();                               // 0x004175E5
     bool Run(CGameComponent** next);
 };
@@ -182,7 +182,7 @@ bool CMainGameComponent::Run(CGameComponent** next)
             }
         }
         double frameStart = CurrentFrameStartGameTime;
-        RecordFrameTime(GetCurrentGameTime() - frameStart);
+        UpdateAverageFrameDuration(GetCurrentGameTime() - frameStart);
         GFLogMemoryUse();
         CGameDefinitionManager::Get().Tick(1);
     }

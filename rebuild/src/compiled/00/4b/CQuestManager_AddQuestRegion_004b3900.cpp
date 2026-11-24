@@ -27,7 +27,7 @@ FABLE_FORCEINLINE bool SameText(const CCharStringData* a, const CCharStringData*
     return false;
 }
 
-struct CActiveQuest {
+struct CActiveQuestNode; class CQuestManager { public: struct CActiveQuest; unsigned char _pad_0x00[0x38]; CActiveQuestNode* ActiveQuests; void AddQuestRegion(const CCharString& questName, const CRegion* region); }; struct CQuestManager::CActiveQuest {   // NF334: the PDB nested CQuestManager::CActiveQuest (NF300 Q2); CQuestManager (ActiveQuests +0x38, the head node) moved up from below
     unsigned char _pad_0x00[0x30];
     CCharString   QuestName;                       // +0x30
     void AddPRegion(const CRegion* region);        // 0x004B3860
@@ -36,15 +36,15 @@ struct CActiveQuest {
 struct CActiveQuestNode {                          // list node: next, prev, CCountedPointer<CActiveQuest> {Data, Info}
     CActiveQuestNode* next;
     CActiveQuestNode* prev;
-    CActiveQuest*     quest;                       // +0x08
+    CQuestManager::CActiveQuest* quest;                       // +0x08
     void*             questInfo;                   // +0x0c
 };
 
-class CQuestManager { public:
-    unsigned char     _pad_0x00[0x38];
-    CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
-    void AddQuestRegion(const CCharString& questName, const CRegion* region);
-};
+// (class CQuestManager: declared above CActiveQuest, NF334)
+    //
+    //                // +0x38 (head node)
+    //
+//
 
 void CQuestManager::AddQuestRegion(const CCharString& questName, const CRegion* region)
 {

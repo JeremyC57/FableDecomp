@@ -41,7 +41,7 @@ class CSymbolMap { public:
         long        Val;                                        // +0x08
     };
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const;   // 0x009E5090
-    bool Lookup(const CCharString& name, long* value);      // 0x009E5170
+    bool FindSymbol(const CCharString& name, long& value) const;      // 0x009E5170
 };
 namespace NParticleEngine {
 class CParticleEmitterDatabase { public:
@@ -95,7 +95,7 @@ void CTCDParticleEmitter::OnSerialise(CPersistContext& context, bool transfer)
         context.Transfer("ParticleTypeName", typeName, EmptyCCharString());
         if (!g_bCompileFrontendDefinitions) {
             NParticleEngine::CParticleEmitterDatabase* database = &NParticleEngine::GetParticleEmitterDatabase();
-            database->SymbolMap.Lookup(typeName, &ParticleTypeID);
+            database->SymbolMap.FindSymbol(typeName, ParticleTypeID);
             if (ParticleTypeID == 0)
                 ParentThing->Kill(true);
         }

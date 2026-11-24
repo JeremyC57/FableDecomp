@@ -1,0 +1,4 @@
+##### 0069ffd0 renames: ?GetAnimationToUse@@YI?AVCCharString@@PAVCThing@@@Z=?GetAnimationToUse@CCreatureAction_SheatheItemToInventory@@CI?AVCCharString@@ABVCThing@@@Z
+ALL_EQ sections=10 tables=??_7CCreatureAction_SheatheItemToInventory@@6B@
+##### 00af5900 renames: ?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ=?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ
+ALL_EQ sections=5 tables=??_7CParticleSystem@NParticleEngine@@6B@

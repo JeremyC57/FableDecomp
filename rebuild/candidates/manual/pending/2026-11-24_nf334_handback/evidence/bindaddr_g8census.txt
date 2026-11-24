@@ -1,0 +1,21 @@
+# entry 8 target 00998c90
+009990b0 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999140 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999180 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999230 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+009992a0 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999320 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+009993b0 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999420 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999620 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999760 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999850 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999970 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+00999a30 ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z x1
+# entry 39 target 00856e50
+00858400 ?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ x1
+00858590 ?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ x1
+008587b0 ?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ x1
+# entry 221 target 00723fd0 (HEAD object; 007266c0 was then respelled)
+007266c0 ??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z x1
+# off limits, not compiled: 009994a0 00999ab0 00b3bc90 (entry 8), 00858130 (entry 39), ; not compiled: 004d297b (entry 221, left as decision D3; its table line shows the stand-in CTCActivationTrigger form)

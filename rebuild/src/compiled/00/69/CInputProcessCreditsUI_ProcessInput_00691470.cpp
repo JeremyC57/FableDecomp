@@ -51,7 +51,7 @@ public:
     unsigned char _pad0d[3];
     void*         Components[3];                   // +0x10 std::vector<NUISystem::CComponent*> (12 bytes in retail)
     bool          Quitting;                        // +0x1c
-    void Quit();                                   // 0x007E49C0
+    void Deactivate();                                 // 0x007E49C0
 };
 class CPlayer {
 public:
@@ -85,6 +85,6 @@ void CInputProcessCreditsUI::ProcessInput(const CInputEvent& event, CProcessedIn
         CTCCreditsUI* credits = (CTCCreditsUI*)hero->m_tcs.Find(0x101);
         if (credits->Active && !credits->Quitting
             && IsEventButtonPressed(event) && IsEventGameAction((EGameAction)(0x22), event))
-            credits->Quit();
+            credits->Deactivate();
     }
 }

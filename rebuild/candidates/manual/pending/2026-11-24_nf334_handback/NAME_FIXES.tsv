@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00997F80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	Ego_r + FableWin PDB names; the self row Leaf (CAFile_GetCurrentPath_00997f80.cpp); 009990b0 binds it	?GetCurrentWorkingDirectory@@YI?AVCWideString@@XZ (00999110, read from its HEAD object UND list; the table has no line for this spelling), @FableGetCurrentPath_00997F80@8 (00999230). The target is a T3 line (nf285), so NF334 did not respell either caller

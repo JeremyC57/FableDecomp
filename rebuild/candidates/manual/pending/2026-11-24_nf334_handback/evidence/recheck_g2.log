@@ -1,0 +1,116 @@
+addr       parity           behav  name
+0069a850   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+0069a850   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+0069a850   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0069a850   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0069a850   RELOCATION_MATCH PASS   SetCameraManagerDef
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf84c0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf84c0   WARN RELOC_NAME: ??2CLandscapeBackgroundPatch@@SIPAXIPAVCMovableResource@@@Z -> 00be5bb0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf84c0   WARN RELOC_NAME: ??2CLandscapeBackgroundSubNodeSplitBranch@@SIPAXIPAVCMovableResource@@@Z -> 00bf6260 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf84c0   RELOCATION_MATCH PASS   ProcessLoadTask
+004189c2   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+004189c2   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004189c2   WARN RELOC_NAME: ?Start@CNetworkClient@@QAEXXZ -> 004ae9c0 labelled '_global::Nop_ret0_004ae9c0'
+004189c2   WARN RELOC_NAME: ?BeginOutputSaving@CMainGameComponent@@QAEXABVCWideString@@@Z -> 0041627f labelled 'CMainGameComponent::BeginInputLoading'
+004189c2   WARN RELOC_NAME: ?GFFrameHook@@YIXXZ -> 0098e1b0 labelled '_global::Nop_ret0_0098e1b0'
+004189c2   WARN RELOC_NAME: ?Update@CSystemObjectF8@@QAEXXZ -> 009f8c10 labelled '_global::Nop_ret0_009f8c10'
+004189c2   WARN RELOC_NAME: ?UpdateAverageFrameDuration@CMainGameComponent@@IAEXN@Z -> 00416202 labelled 'CEngineSubPrimitiveBase::operator_new'
+004189c2   WARN RELOC_NAME: ?Tick@CSingleton44C6B0@@QAEXJ@Z -> 009ac9e0 labelled '_global::Nop_ret4_009ac9e0'
+004189c2   RELOCATION_MATCH PASS   Run
+00417001   WARN SHARED_HEADER_AVAILABLE CInterpolationInfo (engine/CInterpolationInfo.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager (engine/CBulletTimeManager.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet (engine/CGameEventPackageSet.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CFrameRateSmoother (engine/CFrameRateSmoother.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CRoughFrameCounter (engine/CRoughFrameCounter.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CMainGameComponentInit (engine/CMainGameComponentInit.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CGameComponent (engine/CGameComponent.h)
+00417001   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00417001   RELOCATION_MATCH PASS   Render
+00dc0300   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript (engine/CQ_OakValeBanditRaidScript.h)
+00dc0300   RELOCATION_MATCH PASS   PopulateLevel
+0040f7e0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+0040f7e0   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+0040f7e0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0040f7e0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+0040f7e0   RELOCATION_MATCH PASS   TransferIn
+006e0730   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006e0730   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+006e0730   WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)
+006e0730   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006e0730   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+006e0730   RELOCATION_MATCH PASS   OnSerialise
+00735540   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00735540   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00735540   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00735540   RELOCATION_MATCH PASS   CTCCombat
+00691470   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00691470   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00691470   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00691470   WARN SHARED_HEADER_AVAILABLE CInputProcessCreditsUI (engine/CInputProcessCreditsUI.h)
+00691470   RELOCATION_MATCH PASS   ProcessInput
+00690480   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690480   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CInputProcessInGameMenu (engine/CInputProcessInGameMenu.h)
+00690480   WARN RELOC_NAME: ?IsListReceivingInputA@CTCInGameMenu@@QAE_NXZ -> 0047d6f2 labelled 'CTCInGameMenu::IsSaveComponentReceivingInput'
+00690480   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690480   RELOCATION_MATCH PASS   ProcessInput
+007868a0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+007868a0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+007868a0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007868a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+007868a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007868a0   WARN SHARED_HEADER_AVAILABLE CTCSkeletalMorph (engine/CTCSkeletalMorph.h)
+007868a0   WARN STANDIN_LEAF ?vfunc_4@CTCSkeletalMorph@@QAEXXZ (catalog CTCSkeletalMorph::OnCreate; address-only name)
+007868a0   RELOCATION_MATCH PASS   OnCreate
+  WARN leaf 'operator+=' matches no symbol in 0099b940.obj; graded the largest function
+  WARN leaf 'operator+=' matches no symbol in 0099b940.obj; graded the largest function
+0099b940   RELOCATION_MATCH PASS   operator+=
+0088f930   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0088f930   RELOCATION_MATCH PASS   AutoSave
+0077f650   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0077f650   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+0077f650   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0077f650   RELOCATION_MATCH PASS   OnSerialise
+
+WINS: 14
+  0069a850 RELOCATION_MATCH CGameCameraManager::SetCameraManagerDef
+  00bf84c0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?ProcessLoadTask@CLandscapeBackgroundTreeNode@@AAE?AW4LS_LOADING_STATUS@@JN_NPAVCEngineStaticMapFileBlockManager@@@Z
+  004189c2 RELOCATION_MATCH CMainGameComponent::Run
+  00417001 RELOCATION_MATCH CMainGameComponent::?Render@CMainGameComponent@@MAEXXZ
+  00dc0300 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::PopulateLevel
+  0040f7e0 RELOCATION_MATCH CPersistTraits<float>::TransferIn
+  006e0730 RELOCATION_MATCH CTCDParticleEmitter::OnSerialise
+  00735540 RELOCATION_MATCH CTCCombat::??0CTCCombat@@QAE@AAVCThing@@@Z
+  00691470 RELOCATION_MATCH CInputProcessCreditsUI::ProcessInput
+  00690480 RELOCATION_MATCH CInputProcessInGameMenu::ProcessInput
+  007868a0 RELOCATION_MATCH CTCSkeletalMorph::vfunc_4
+  0099b940 RELOCATION_MATCH CWideString::operator+=
+  0088f930 RELOCATION_MATCH CGameScriptInterface::?AutoSave@CGameScriptInterface@@UBEXXZ
+  0077f650 RELOCATION_MATCH CTCHeroCentreDoorMarker::OnSerialise

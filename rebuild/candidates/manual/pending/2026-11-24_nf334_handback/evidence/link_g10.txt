@@ -1,0 +1,6 @@
+## HEAD set: H_006d1de0.obj 006cf920.obj
+duplicates 0
+UNRESOLVED 1 ?HaveSex@CTCWife_Confirm@@QAEXXZ
+## new set: 006d1de0.obj 006cf920.obj
+duplicates 0
+LK_DONE

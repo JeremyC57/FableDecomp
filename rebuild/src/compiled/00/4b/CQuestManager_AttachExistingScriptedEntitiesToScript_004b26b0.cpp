@@ -119,7 +119,7 @@ class CWorld { public:
 };
 class CScriptBase { public:
     bool IsEntityScriptBound(const CCharString& name) const;                              // 0x00CB7D60; NF296: PDB name, was BindsEntityScript
-    void ActivateEntity(unsigned __int64 uid, const CScriptThing& thing);         // 0x00CB8960
+    void OnScriptedEntityActivated(unsigned __int64 uid, CScriptThing& thing);         // 0x00CB8960
 };
 
 class CQuestManager : public CQuestManagerDonor {
@@ -135,7 +135,7 @@ void CQuestManager::AttachExistingScriptedEntitiesToScript(CScriptBase& script)
         CThing* thing = node->_M_data;
         if (script.IsEntityScriptBound(thing->ScriptName)) {
             CScriptThing scriptThing = thing->GetScriptThing();
-            script.ActivateEntity(thing->UID, scriptThing);
+            script.OnScriptedEntityActivated(thing->UID, scriptThing);
         }
     }
 }

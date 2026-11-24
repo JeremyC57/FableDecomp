@@ -64,7 +64,7 @@ class CThing { public:
 class CTCSkeletalMorph { public:                           // vtable 0x0126B6F4
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
-    void AddMorph(long tag, const CCharString& name, float weight);   // 0x00786670
+    void AddSkeletalMorph(long tag, const CCharString& name, float weight);   // 0x00786670
     private:
     void CalculateSkeletalMorph() const;
     public:
@@ -83,7 +83,7 @@ void CTCSkeletalMorph::vfunc_4()
             for (unsigned long i = 0; i < def->SkeletalMorphs.size(); ++i) {
                 {
                     CCharString name = GDefStringTable.GetString(def->SkeletalMorphs[i]);
-                    AddMorph(0x534b454c, name, 1.0f);
+                    AddSkeletalMorph(0x534b454c, name, 1.0f);
                 }
             }
             CalculateSkeletalMorph();

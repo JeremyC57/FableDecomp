@@ -29,7 +29,7 @@ class C3DSkeletalMorphParameter { public:
     void SetCurrentValue(float value);              // 0x00A45370
 };
 class C3DSkeletalMorph { public:
-    void ClearMorphParameters();                    // 0x00A45410
+    void Reset();                                   // 0x00A45410 (NF334: Ego_r + FableWin ?Reset@C3DSkeletalMorph@@QAEXXZ, the landed self)
     void AddMorphParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter);   // 0x00A45470
     void NotifyParamUpdate();                       // 0x00A45330 (Ego_r + FableWin; NF292, was ResetCombinedMorph)
 };
@@ -53,7 +53,7 @@ public:
 
 void CTCSkeletalMorph::CalculateSkeletalMorph() const
 {
-    PSkeletalMorph->ClearMorphParameters();
+    PSkeletalMorph->Reset();
     for (CSkeletalMorphEntry* morph = m_morphsStart; morph != m_morphsFinish; ++morph) {
         CCountedPointer<C3DSkeletalMorphTarget> target = CSkeletalMorphResourceManager::Get().GetMorphTarget(morph->Name);
         CCountedPointer<C3DSkeletalMorphParameter> parameter(new C3DSkeletalMorphParameter(target.Data));

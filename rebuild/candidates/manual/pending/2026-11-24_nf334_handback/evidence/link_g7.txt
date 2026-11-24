@@ -1,0 +1,6 @@
+## HEAD set: H_004b3900.obj 004b3860.obj
+duplicates 0
+UNRESOLVED 1 ?AddPRegion@CActiveQuest@@QAEXPBVCRegion@@@Z
+## new set: 004b3900.obj 004b3860.obj
+duplicates 0
+LK_DONE

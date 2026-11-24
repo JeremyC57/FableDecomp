@@ -1,0 +1,6 @@
+##### 004017b0 renames: ?DisplayErrorDialog@@YGHPBUSErrorDialogParams@@H@Z=_DisplayErrorDialog@8 ?InitExternalStrings@@YIXXZ=@InitExternalStrings@0
+ALL_EQ sections=9 tables=-
+##### 009a6610 renames: ?GFInitVectorMath@@YAXXZ=?GFInitVectorMath@NVectorMath@@YAXXZ ?Math_InitializeCosineLookup@@YAXXZ=?GFInitMaths@@YIXXZ
+ALL_EQ sections=9 tables=??_7CDriveManager@@6B@
+##### 00786700 renames: ?ClearMorphParameters@C3DSkeletalMorph@@QAEXXZ=?Reset@C3DSkeletalMorph@@QAEXXZ
+ALL_EQ sections=42 tables=??_7?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@6B@,??_7CSkeletalMorphResourceManager@@6B@

@@ -1,0 +1,33 @@
+symbol	status	addresses
+??0CScriptGameResourceObjectScriptedThingBase@@QAE@ABU0@@Z	TOO_MANY	653 sources
+??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z	TOO_MANY	138 sources
+?Clear@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ	TOO_MANY	781 sources
+?Save@CWorld@@QAEXH@Z	TOO_MANY	102 sources
+??0CAbilityTrackLevelDef@@QAE@ABU0@@Z	NONE	
+??0CCreatureAction_BanditKingStuck@@QAE@ABU0@@Z	NONE	
+??0CCreatureAction_CastBattleCharge@@QAE@ABU0@@Z	NONE	
+??0CCreatureAction_PickUpJug@@QAE@ABU0@@Z	NONE	
+??0CFilenames@@QAE@XZ	NONE	
+?ActivateEntity@CScriptBase@@QAEX_KABVCScriptThing@@@Z	NONE	
+?AddMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z	NONE	
+?AddPRegion@CActiveQuest@@QAEXPBVCRegion@@@Z	NONE	
+?CanRun@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ	NONE	
+?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	NONE	
+?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ	REFS	00af59a0
+?DisplayErrorDialog@@YGHPBUSErrorDialogParams@@H@Z	NONE	
+?GFInitVectorMath@@YAXXZ	NONE	
+?GetAnimationToUse@@YI?AVCCharString@@PAVCThing@@@Z	NONE	
+?GetMeshChunk@C3DMeshFile@@QAE?AV?$CCountedPointer@UC3DMeshFileMeshChunk@@@@XZ	NONE	
+?HaveSex@CTCWife_Confirm@@QAEXXZ	NONE	
+?InitExternalStrings@@YIXXZ	NONE	
+?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ	NONE	
+?IsReadyToRender@CNetworkClient@@QAE_NXZ	NONE	
+?Math_InitializeCosineLookup@@YAXXZ	NONE	
+?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ	NONE	
+?PopulateListFromData@CGameCameraManager@@QAEXXZ	REFS	0069a920
+?PopulateSwitchList@CGameCameraManager@@QAEXXZ	REFS	0069a920
+?Quit@CTCCreditsUI@@QAEXXZ	NOT_COMPILED	0042ec7c
+?RecordFrameTime@CMainGameComponent@@QAEXN@Z	NONE	
+?RemoveSubChunks@CChunkedFileChunk@@QAEXPBD@Z	NONE	
+?ResetCombatState@CTCCombat@@QAEXXZ	NONE	
+?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ	NONE	

@@ -84,7 +84,7 @@ public:
     long                        BanditsStopChasing;     // +0x70
     bool                        NoPersistence;          // +0x74
     bool PopulateLevel();
-    void CleanupBandits();                              // 0x00DC0830
+    void DepopulateLevel();                             // 0x00DC0830
 };
 } // namespace NScript
 using NScript::CQ_OakValeBanditRaidScript;
@@ -108,7 +108,7 @@ bool NScript::CQ_OakValeBanditRaidScript::PopulateLevel()
             Game->EntityAttachToVillage(bandit, village);
         }
     } else {
-        CleanupBandits();
+        DepopulateLevel();
         std::vector<CScriptThing> spawns;
         Game->GetAllThingsWithScriptName("M_BanditSpawn", spawns);
         CScriptThing village = Game->GetThingWithScriptName("OVBR_Village");

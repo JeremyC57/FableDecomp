@@ -1,0 +1,8 @@
+##### 0096f240 renames: ?CanRun@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ=?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@AAE_NXZ
+ALL_EQ sections=2 tables=-
+##### 004afa60 renames: ?ActivateEntity@CScriptBase@@QAEX_KABVCScriptThing@@@Z=?OnScriptedEntityActivated@CScriptBase@@QAEX_KAAVCScriptThing@@@Z
+ALL_EQ sections=4 tables=-
+##### 004b26b0 renames: ?ActivateEntity@CScriptBase@@QAEX_KABVCScriptThing@@@Z=?OnScriptedEntityActivated@CScriptBase@@QAEX_KAAVCScriptThing@@@Z
+ALL_EQ sections=11 tables=??_7CScriptThing@@6B@
+##### 00967180 renames: ?GetFreeJugPoint@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z=?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z
+ALL_EQ sections=9 tables=-

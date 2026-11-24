@@ -1,0 +1,2 @@
+##### 0077f650 renames: ?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z=?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
+ALL_EQ sections=8 tables=-

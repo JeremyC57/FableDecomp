@@ -100,7 +100,7 @@ class CTCCombat : public CTCBase { public:
     CVector<void*>      FlourishParticles;              // +0x88 vector<CIntelligentPointer<CThing>>
     bool                IsInMiddleOfFlourishAction;     // +0x94
     CTCCombat(CThing& thing);
-    void ResetCombatState();                            // 0x007334F0
+    private: void ClearCombatVariables(); public:                            // 0x007334F0
 };
 
 CTCCombat::CTCCombat(CThing& thing)
@@ -113,5 +113,5 @@ CTCCombat::CTCCombat(CThing& thing)
     , CurFlourishTimer(0)
 {
     IsInMiddleOfFlourishAction = false;
-    ResetCombatState();
+    ClearCombatVariables();
 }

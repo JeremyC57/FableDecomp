@@ -52,8 +52,8 @@ typedef int (__stdcall* PFNCreateConfigDetection)(ConfigDetection** info, PFNDis
 typedef int (__stdcall* PFNInitVideoCardInfo)(int adapter, char* errorText);
 typedef void (__stdcall* PFNCheckRequirements)();
 
-void __fastcall InitExternalStrings();                                          // 0x0099E260
-int __stdcall DisplayErrorDialog(const SErrorDialogParams* params, int unused);   // 0x0099DCB0
+extern "C" void __fastcall InitExternalStrings();                                          // 0x0099E260
+extern "C" int __stdcall DisplayErrorDialog(const SErrorDialogParams* params, int unused);   // 0x0099DCB0
 
 HINSTANCE__*          g_hConfigDetection;               // 0x013B7C8C
 ConfigDetection*      pConfig;                          // 0x013BD6E8 ?pConfig@@3PAVConfigDetection@@A

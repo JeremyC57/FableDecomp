@@ -72,7 +72,7 @@ struct CLandscapeBackgroundLoadTask {               // 16 bytes
     bool                                    IsPatchLoadTask;   // +0x0d
     bool                                    BlockLoading;  // +0x0e
     void* ScalarDeletingDestructor(unsigned int flags);   // 0x00BF8C10 (delete: release LoadingTree, unlock the block, pool free)
-    void StartLoading();                            // 0x00BF6410
+    void ReleaseFileBlockLoad();                      // 0x00BF6410
 };
 struct CLODLoadInfo { long FileBlockPos, FileBlockSize, OffsetIntoFileBlock; unsigned char OptimizedBandRemap; };
 class CLandscapeBackgroundTreeNode { public:
@@ -101,7 +101,7 @@ class CLandscapeBackgroundTreeNode { public:
     bool TestIfLoadTaskCanBeAborted(long lod, bool abort);
     public:
    // 0x00BF6490
-    void OnSubNodeLoaded();                         // 0x00BF6750
+    private: void InvalidateEdgeTesellation();                      // 0x00BF6750
     private:
     LS_LOADING_STATUS ProcessLoadTask(long lod, double time, bool abort, CEngineStaticMapFileBlockManager* manager);
     public:
@@ -147,7 +147,7 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessLoadTask(long lod, double
             SubNode = patch;
             if (AsyncLoadTask) AsyncLoadTask->ScalarDeletingDestructor(1);
             AsyncLoadTask = 0;
-            OnSubNodeLoaded();
+            InvalidateEdgeTesellation();
             return LS_LOADED;
         }
         else {
@@ -157,7 +157,7 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessLoadTask(long lod, double
             CMemoryDataInputStream stream(manager->GetBlockData(AsyncLoadTask->FileBlockPos) + OffsetIntoFileBlock, FileBlockSize - OffsetIntoFileBlock);
             branch->Load(stream);
             AsyncLoadTask->LoadingTree = branch;
-            AsyncLoadTask->StartLoading();
+            AsyncLoadTask->ReleaseFileBlockLoad();
         }
     }
     LS_LOADING_STATUS status = AsyncLoadTask->LoadingTree->ProcessBackgroundLoading(time, abort, manager,
@@ -168,7 +168,7 @@ LS_LOADING_STATUS CLandscapeBackgroundTreeNode::ProcessLoadTask(long lod, double
         AsyncLoadTask->LoadingTree = 0;
         if (AsyncLoadTask) AsyncLoadTask->ScalarDeletingDestructor(1);
         AsyncLoadTask = 0;
-        OnSubNodeLoaded();
+        InvalidateEdgeTesellation();
         return LS_LOADED;
     }
     if (status == LS_FAILED) {

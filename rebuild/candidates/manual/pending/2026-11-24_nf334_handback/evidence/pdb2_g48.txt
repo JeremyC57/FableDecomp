@@ -1,0 +1,11 @@
+18	0096f180	egor=True	fablewin=True	?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@AAE_NXZ
+149	00cb8960	egor=True	fablewin=True	?OnScriptedEntityActivated@CScriptBase@@QAEX_KAAVCScriptThing@@@Z
+232	007ba000	egor=True	fablewin=True	?GetPickupSlot@CTCTavernBar@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3_N@Z
+51	0069f3e0	egor=True	fablewin=True	?GetAnimationToUse@CCreatureAction_SheatheItemToInventory@@CI?AVCCharString@@ABVCThing@@@Z
+125	00af5770	egor=True	fablewin=True	?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ
+256	009e79e0	egor=True	fablewin=True	?DeallocateMemory@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ
+22	004b3860	egor=True	fablewin=True	?AddPRegion@CActiveQuest@CQuestManager@@QAEXPBVCRegion@@@Z
+8	00998c90	egor=True	fablewin=True	?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
+39	00856e50	egor=True	fablewin=True	?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ
+73	00abef60	egor=False	fablewin=True	??0CFilenames@C3DMeshMaterial@@QAE@XZ
+221	00723fd0	egor=True	fablewin=True	??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z

@@ -1,0 +1,41 @@
+action	symbol	target	witness	note
+replace	?DisplayErrorDialog@@YGHPBUSErrorDialogParams@@H@Z -> _DisplayErrorDialog@8	0099dcb0	004017b0	witness now binds the PDB extern "C" spelling; no line for it yet
+replace	?InitExternalStrings@@YIXXZ -> @InitExternalStrings@0	0099e260	004017b0	witness now binds the PDB extern "C" spelling; no line for it yet
+replace	?Math_InitializeCosineLookup@@YAXXZ -> ?GFInitMaths@@YIXXZ	00a0db60	009a6610	witness now binds the PDB spelling; no line for it yet
+replace	?GFInitVectorMath@@YAXXZ -> ?GFInitVectorMath@NVectorMath@@YAXXZ	00a5b850	009a6610	witness now binds the PDB spelling; no line for it yet
+delete	?ClearMorphParameters@C3DSkeletalMorph@@QAEXXZ	00a45410	00786700	witness now binds the PDB ?Reset@C3DSkeletalMorph@@QAEXXZ, which has its line (witness 007864c0)
+replace	?PopulateSwitchList@CGameCameraManager@@QAEXXZ -> ?InitManualCameraList@CGameCameraManager@@AAEXXZ	0069a010	0069a850	witness now binds the PDB spelling; no line for it yet
+replace	?PopulateListFromData@CGameCameraManager@@QAEXXZ -> ?InitSpecialCameraList@CGameCameraManager@@AAEXXZ	0069a1a0	0069a850	witness now binds the PDB spelling; no line for it yet
+replace	?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ -> ?ReleaseFileBlockLoad@CLandscapeBackgroundLoadTask@@QAEXXZ	00bf6410	00bf84c0	witness now binds the PDB spelling; no line for it yet
+replace	?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ -> ?InvalidateEdgeTesellation@CLandscapeBackgroundTreeNode@@AAEXXZ	00bf6750	00bf84c0	witness now binds the PDB spelling; no line for it yet
+replace	?RecordFrameTime@CMainGameComponent@@QAEXN@Z -> ?UpdateAverageFrameDuration@CMainGameComponent@@IAEXN@Z	00416202	004189c2	witness now binds the PDB spelling; no line for it yet
+replace	?IsReadyToRender@CNetworkClient@@QAE_NXZ -> ?IsFreeToRender@CNetworkClient@@QBE_NXZ	004aea70	00417001	witness now binds the PDB spelling; no line for it yet
+replace	?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ -> ?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	00dc0830	00dc0300	witness now binds the PDB spelling; no line for it yet
+delete	?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z	009e5170	0040f7e0	0040f7e0 and 0077f650 (no line) now bind the PDB FindSymbol, which has its line (009e2590); no landed row binds Lookup any more
+delete	?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z	009e5170	006e0730	006e0730 now binds the PDB FindSymbol
+replace	?ResetCombatState@CTCCombat@@QAEXXZ -> ?ClearCombatVariables@CTCCombat@@AAEXXZ	007334f0	00735540	witness now binds the PDB spelling; no line for it yet
+delete	?ResetCombatState@CTCCombat_Methods@@QAEXXZ	007334f0	00733580	stale: the 00733580 HEAD object already binds ?ClearCombatVariables@CTCCombat@@AAEXXZ (bindaddr)
+replace	?Quit@CTCCreditsUI@@QAEXXZ -> ?Deactivate@CTCCreditsUI@@QAEXXZ	007e49c0	00691470	witness now binds the PDB spelling; no line for it yet
+replace	?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ -> ?IsLoadMenuReceivingInput@CTCInGameMenu@@QBE_NXZ	0047d648	00690480	witness now binds the PDB spelling; no line for it yet
+replace	?AddMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z -> ?AddSkeletalMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z	00786670	007868a0	witness now binds the PDB spelling; no line for it yet
+delete	?MakeOwnCopyOfData@CWideString@@AAEXXZ	0099b560	0099b940	0099b940 now binds the PDB IAE spelling, which has its line (0099b8d0)
+replace	?Save@CWorld@@QAEXH@Z -> ?AutoSave@CWorld@@QAE_N_N@Z	004a0ae0	0088f930	witness now binds the PDB spelling; no line for it yet
+replace	?GetMeshChunk@C3DMeshFile@@QAE?AV?$CCountedPointer@UC3DMeshFileMeshChunk@@@@XZ -> ?GetRoot@C3DMeshFile@@QAE?AV?$CCountedPointer@VC3DMeshFileRootChunk@@@@XZ	00ad1e80	00acd5a0	stale witness: the 00acd5a0 HEAD object binds the PDB spelling (bindaddr); no line for it yet
+replace	?RemoveSubChunks@CChunkedFileChunk@@QAEXPBD@Z -> ?RemoveSubChunksOfType@CChunkedFileSuperChunk@@QAEXPBD@Z	00aa82c0	00acd5a0	stale witness: the 00acd5a0 HEAD object binds the PDB spelling
+replace	??0CCreatureAction_CastBattleCharge@@QAE@ABU0@@Z -> ??0CCreatureAction_BlockRespond@@QAE@ABV0@@Z	00855e80	00855e50	stale witness: the 00855e50 HEAD object binds the PDB spelling
+replace	??0CCreatureAction_PickUpJug@@QAE@ABU0@@Z -> ??0CCreatureAction_PlayerInteractionGreet@@QAE@ABV0@@Z	0062ef60	0062ef30	stale witness: the 0062ef30 HEAD object binds the PDB spelling
+replace	??0CCreatureAction_BanditKingStuck@@QAE@ABU0@@Z -> ??0CCreatureAction_ScorpionChargeInto@@QAE@ABV0@@Z	008c5d40	008c5d10	stale witness: the 008c5d10 HEAD object binds the PDB spelling
+replace	??0CScriptGameResourceObjectScriptedThingBase@@QAE@ABU0@@Z -> ??0CCreatureAction_SheatheItemToInventory@@QAE@ABV0@@Z	006a0c50	006a0c20	stale witness: the 006a0c20 HEAD object binds the PDB spelling (see STATUS 52 for the four V-form CScriptGameResourceObjectScriptedThingBase binders)
+replace	??0CAbilityTrackLevelDef@@QAE@ABU0@@Z -> ??0CCreatureAction_ThrowGameObject@@QAE@ABV0@@Z	0062f2c0	0062f290	stale witness: the 0062f290 HEAD object binds the PDB spelling
+replace	?CanRun@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ -> ?FoundDeadSpouse@CAIStateGroup_MinionBehaviourSad@@AAE_NXZ	0096f180	0096f240	witness now binds the PDB spelling
+replace	?ActivateEntity@CScriptBase@@QAEX_KABVCScriptThing@@@Z -> ?OnScriptedEntityActivated@CScriptBase@@QAEX_KAAVCScriptThing@@@Z	00cb8960	004afa60	witness now binds the PDB spelling
+delete	?GetFreeJugPoint@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z	007ba000	00967180	witness now binds the PDB spelling, which already has a table line for this target
+replace	?GetAnimationToUse@@YI?AVCCharString@@PAVCThing@@@Z -> ?GetAnimationToUse@CCreatureAction_SheatheItemToInventory@@CI?AVCCharString@@ABVCThing@@@Z	0069f3e0	0069ffd0	witness now binds the PDB spelling
+replace	?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ -> ?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ	00af5770	00af5900	witness now binds the PDB spelling (the 00af5870 Reset line stays: stand-in class, T3)
+replace	?Clear@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ -> ?DeallocateMemory@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ	009e79e0	009e5250	witness now binds the PDB spelling (the 009e5c90 clear line stays: stand-in class, off-limits)
+replace	?AddPRegion@CActiveQuest@@QAEXPBVCRegion@@@Z -> ?AddPRegion@CActiveQuest@CQuestManager@@QAEXPBVCRegion@@@Z	004b3860	004b3900	witness now binds the PDB spelling
+delete	?ExpandPath@?A0x116aaba5@@YI?AVCWideString@@PAV2@0@Z	00998c90	00999110	witness now binds the PDB spelling, which already has a table line for this target
+delete	?GetFirstActiveStrikeEvent@CCombatActionBase@@QAEPAUCStrikeEvent@@XZ	00856e50	008597a0	witness now binds the PDB spelling, which already has a table line for this target
+replace	??0CFilenames@@QAE@XZ -> ??0CFilenames@C3DMeshMaterial@@QAE@XZ	00abef60	00abf840	witness now binds the PDB spelling
+replace	??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z -> ??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z	00723fd0	00724f50	witness now binds the PDB spelling (the 004d297b CTCActivationTrigger line stays)
+replace	?HaveSex@CTCWife_Confirm@@QAEXXZ -> ?HaveSex@CTCWife@@QAEXXZ	006cf920	006d1de0	witness now binds the PDB spelling

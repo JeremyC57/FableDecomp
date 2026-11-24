@@ -83,14 +83,14 @@ class CParticleSystem : public CBase { public:                   // vtable 0x012
     CCharString Name;                              // +0x6C
     virtual void v00();
     void DeleteAllParticles();                     // 0x00AF56E0
-    void DestroyDecals();                          // 0x00AF5770
+    void DeleteAllDecals();                        // 0x00AF5770
     ~CParticleSystem();
 };
 
 CParticleSystem::~CParticleSystem()
 {
     DeleteAllParticles();
-    DestroyDecals();
+    DeleteAllDecals();
 }
 
 }   // namespace NParticleEngine

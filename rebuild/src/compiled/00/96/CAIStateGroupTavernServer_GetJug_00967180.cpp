@@ -116,8 +116,8 @@ class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
 struct CIntelligentPointerObject : CBaseIntelligentPointerCtor { };   // CIntelligentPointer<CThingObject>
 
 class CTCTavernBar { public:                           // interface 0xB9
-    bool GetFreeJugPoint(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex,
-                         long* jugIndex, bool reserve);              // 0x007BA000
+    bool GetPickupSlot(CThing& creature, C3DVector& pos, CRightHandedSet& rhSet, long& actionPointIndex,
+                         long& jugIndex, bool reserve);              // 0x007BA000
     CIntelligentPointerObject GetJug(long index);                    // 0x007B9F60
 };
 
@@ -148,7 +148,7 @@ bool CAIStateGroup_TavernServer::GetJug()
     if (bar->HasTC(0xB9)) {
         CTCTavernBar* tavernBar = (CTCTavernBar*)bar->FindEntry(0xB9)->second;
         CThing* creature = PBrain->PCreature;
-        if (tavernBar->GetFreeJugPoint(creature, &BarPos, &BarRHSet, &BarActionPointIndex, &JugIndex, true)) {
+        if (tavernBar->GetPickupSlot(*creature, BarPos, BarRHSet, BarActionPointIndex, JugIndex, true)) {
             PJug.SetPItem(tavernBar->GetJug(JugIndex).GetPItem());
             return true;
         }

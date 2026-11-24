@@ -1,0 +1,2 @@
+##### 004b3900 renames: ?AddPRegion@CActiveQuest@@QAEXPBVCRegion@@@Z=?AddPRegion@CActiveQuest@CQuestManager@@QAEXPBVCRegion@@@Z
+ALL_EQ sections=3 tables=-

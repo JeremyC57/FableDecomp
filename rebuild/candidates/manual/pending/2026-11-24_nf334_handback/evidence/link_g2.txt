@@ -1,0 +1,38 @@
+## HEAD set: H_0069a850.obj H_00bf84c0.obj H_004189c2.obj H_00417001.obj H_00dc0300.obj H_0040f7e0.obj H_006e0730.obj H_00735540.obj H_00691470.obj H_00690480.obj H_007868a0.obj H_0099b940.obj H_0088f930.obj 0069a010.obj 0069a1a0.obj 00bf6410.obj 00bf6750.obj 00416202.obj 004aea70.obj 009e5170.obj 007334f0.obj 007e49c0.obj 0047d648.obj 00786670.obj 0099b560.obj 004a0ae0.obj 004859ad.obj 00800b90.obj 006f9640.obj 0077f650.obj 009e2590.obj 00733580.obj 0099b8d0.obj 0099b9a0.obj 0099bc50.obj 0049f4c0.obj 0075c670.obj 0075e4c0.obj 007ad300.obj 00b0d360.obj 00b13530.obj 00b18110.obj 00b1a870.obj 00b21e90.obj 008006d0.obj
+duplicates 7
+  DUP 0075e4c0.obj ??$Transfer@VC3DVector@@@CPersistContext@@QAEXPBDAAVC3DVector@@ABV1@@Z in 004859ad.obj;
+  DUP 00b0d360.obj ??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z in 0075e4c0.obj;
+  DUP 00b0d360.obj ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z in 0075e4c0.obj;
+  DUP 00b0d360.obj ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z in 0075e4c0.obj;
+  DUP 00b1a870.obj ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z in 0075e4c0.obj;
+  DUP 00b1a870.obj ??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z in 0075e4c0.obj;
+  DUP 00b1a870.obj ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z in 0075e4c0.obj;
+UNRESOLVED 1 ?AddMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z
+UNRESOLVED 1 ?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ
+UNRESOLVED 1 ?IsReadyToRender@CNetworkClient@@QAE_NXZ
+UNRESOLVED 1 ?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z
+UNRESOLVED 2 ?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z
+UNRESOLVED 1 ?MakeOwnCopyOfData@CWideString@@AAEXXZ
+UNRESOLVED 1 ?MakeOwnCopyOfData@CWideStringLengthView@@QAEXXZ
+UNRESOLVED 1 ?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ
+UNRESOLVED 1 ?PopulateListFromData@CGameCameraManager@@QAEXXZ
+UNRESOLVED 1 ?PopulateSwitchList@CGameCameraManager@@QAEXXZ
+UNRESOLVED 1 ?Quit@CTCCreditsUI@@QAEXXZ
+UNRESOLVED 1 ?RecordFrameTime@CMainGameComponent@@QAEXN@Z
+UNRESOLVED 1 ?ResetCombatState@CTCCombat@@QAEXXZ
+UNRESOLVED 1 ?Save@CWorld@@QAEXH@Z
+UNRESOLVED 1 ?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ
+## new set: 0069a850.obj 00bf84c0.obj 004189c2.obj 00417001.obj 00dc0300.obj 0040f7e0.obj 006e0730.obj 00735540.obj 00691470.obj 00690480.obj 007868a0.obj 0099b940.obj 0088f930.obj 0069a010.obj 0069a1a0.obj 00bf6410.obj 00bf6750.obj 00416202.obj 004aea70.obj 009e5170.obj 007334f0.obj 007e49c0.obj 0047d648.obj 00786670.obj 0099b560.obj 004a0ae0.obj 004859ad.obj 00800b90.obj 006f9640.obj 0077f650.obj 009e2590.obj 00733580.obj 0099b8d0.obj 0099b9a0.obj 0099bc50.obj 0049f4c0.obj 0075c670.obj 0075e4c0.obj 007ad300.obj 00b0d360.obj 00b13530.obj 00b18110.obj 00b1a870.obj 00b21e90.obj 008006d0.obj
+duplicates 7
+  DUP 0075e4c0.obj ??$Transfer@VC3DVector@@@CPersistContext@@QAEXPBDAAVC3DVector@@ABV1@@Z in 004859ad.obj;
+  DUP 00b0d360.obj ??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z in 0075e4c0.obj;
+  DUP 00b0d360.obj ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z in 0075e4c0.obj;
+  DUP 00b0d360.obj ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z in 0075e4c0.obj;
+  DUP 00b1a870.obj ??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z in 0075e4c0.obj;
+  DUP 00b1a870.obj ??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z in 0075e4c0.obj;
+  DUP 00b1a870.obj ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z in 0075e4c0.obj;
+UNRESOLVED 1 ?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z
+UNRESOLVED 1 ?MakeOwnCopyOfData@CWideStringLengthView@@QAEXXZ
+LK_DONE

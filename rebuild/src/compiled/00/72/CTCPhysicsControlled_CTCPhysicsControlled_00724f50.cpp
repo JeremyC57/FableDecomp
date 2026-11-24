@@ -14,7 +14,7 @@ class CThing;
 struct CTCPhysicsStandard {
     virtual void v000();
     unsigned char _base[0x84];              // +0x04 CTCPhysicsBase + CTCPhysicsStandard members
-    CTCPhysicsStandard(CThing* thing);      // 0x00723FD0
+    CTCPhysicsStandard(CThing& thing);      // 0x00723FD0
 };
 
 struct CTCPhysicsControlled : CTCPhysicsStandard {
@@ -29,7 +29,7 @@ struct CTCPhysicsControlled : CTCPhysicsStandard {
 };
 
 CTCPhysicsControlled::CTCPhysicsControlled(CThing* thing)
-    : CTCPhysicsStandard(thing)
+    : CTCPhysicsStandard(*thing)
 {
     ForcedMoveToPosSet = false;
     ForcedMoveToPosUsePhysics = false;

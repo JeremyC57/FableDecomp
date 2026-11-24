@@ -33,7 +33,7 @@ extern const char g_msgUnknownSymbol_0122dfe8[];               // 0x0122DFE8
 
 
 class CSymbolMap { public:
-    bool Lookup(const CCharString& name, long* value) const;   // 0x009E5170
+    bool FindSymbol(const CCharString& name, long& value) const;   // 0x009E5170
 };
 
 class CPersistContext { public:                                       // Ego_r.pdb, 0x2C bytes
@@ -55,7 +55,7 @@ template <> void CPersistTraits<float>::TransferIn(CPersistContext& context, CSt
     if (p.PeekNextItemType() == PARSED_ITEM_SYMBOL) {
         CCharString name = p.ReadAsString();
         long value;
-        if (!context.GetSymbolMap()->Lookup(name, &value))
+        if (!context.GetSymbolMap()->FindSymbol(name, value))
             context.PersistError(parser, g_msgUnknownSymbol_0122dfe8 + name);
         *out = (float)value;
     }

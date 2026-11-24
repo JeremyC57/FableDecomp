@@ -1,0 +1,7 @@
+## HEAD set: H_0069ffd0.obj H_00af5900.obj 0069f3e0.obj 00af5770.obj 00af5870.obj 00af5890.obj
+duplicates 0
+UNRESOLVED 1 ?DestroyDecals@CParticleSystem@NParticleEngine@@QAEXXZ
+UNRESOLVED 1 ?GetAnimationToUse@@YI?AVCCharString@@PAVCThing@@@Z
+## new set: 0069ffd0.obj 00af5900.obj 0069f3e0.obj 00af5770.obj 00af5870.obj 00af5890.obj
+duplicates 0
+LK_DONE
