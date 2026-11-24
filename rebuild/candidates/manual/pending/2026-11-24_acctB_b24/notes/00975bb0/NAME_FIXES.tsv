@@ -1,0 +1,3 @@
+address	landed_spelling	correct_symbol	evidence
+0129ba3c	?g_NormaliseEpsilon@@3MB (label)	?DELTA_NOTIONAL_ZERO@@3MB	reloc_bindings.tsv binds ?DELTA_NOTIONAL_ZERO@@3MB to 0x0129BA3C; Ego_r/FableWin PDB global (repeat of the B075D0 record)
+0091f990	CIntelligentPointer<const CThing>::CIntelligentPointer (functions.tsv label; landed leaf ??0?$CIntelligentPointer@)	??$?0VCThingCreatureBase@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@AAV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z	FableWin.exe.signatures.tsv 0x02B673C0 (95b) holds the mangled template ctor; reloc_bindings.tsv line 29637 binds it to 0x0091F990; pick-any EQ
