@@ -5498,7 +5498,7 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?IsBackgroundAtFullDetailInArea@Tree@Native@@QAE_NJJJJ@Z	00bf6d50	00bf6d50
 ?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode_Retail@@QAEXXZ	00bf6ac0	00bf7370
 ?LoadHeader@CLandscapeBackgroundTreeNode@@QAEXPAVCDataInputStream@@@Z	00bf7400	00bf7b90
-??0CLandscapeBackgroundTreeNode@@QAE@JJJ@Z	00bf6e20	00bf8c80
+??0CLandscapeBackgroundTreeNode@@QAE@PAVCEngineLandscapeMap@@PAV0@J@Z	00bf6e20	00bf8c80
 ??_7CLandscapeBackgroundSubNodeSplitBranch@@6B@	012a8258	00bf8c80
 ?PeekFadeEnd@CLocalDetailObjectCollectionType@@QBEMXZ	00be2740	00bf9aa0
 ?AllocVirtual@CEngineLandscapeMemoryManager@@QAEPAXJJ@Z	00bd9af0	00bfb780
@@ -14371,7 +14371,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GFSerialiseVectorBinaryIn_CBrainBehaviou_0046712b@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z	0046712b	00467062
 ?GFSerialiseVectorBinaryOut_CActionInputC_00467090@@YIXPAVCDataOutputStream@@PAUSValue@@@Z	00467090	00467062
 ?SetString@CDefString@@QAEXABVCCharString@@@Z	009d5060	004670f5
-?TransferBinaryIn@CDefString@@QAEXAAVCMemoryDataInputStream@@@Z	0044fc00	0046b0d6
+?TransferBinaryIn@CDefString@@QAEXAAVCMemoryDataInputStream@@@Z	0044fc00	0046b545
 ?WriteElem@GFSerialiser@@QAEXPAVC2DVector@@@Z	00993f30	00468ee2
 ?resize@?$vector@VCRGBColour@@@std@@QAEXIABVCRGBColour@@@Z	00468fa5	00468f15
 ?_M_insert_overflow@?$vector@VCRGBColour@@@std@@QAEXPAVCRGBColour@@ABV3@ABU__false_type@2@I_N@Z	0046916b	00469012
@@ -16564,10 +16564,10 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$LoadVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAVCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfc880	00bfc600
 ??$LoadVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAV?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfcd60	00bfc600
 ??$LoadVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAVCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfcbc0	00bfc600
-??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z	00bfcf90	00bfc770
-??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z	00bfcf00	00bfc770
-??$SaveVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z	00bfd0b0	00bfc770
-??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAEXPAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAVCDataOutputStream@@@Z	00bfd020	00bfc770
+??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z	00bfcf90	00bfc770
+??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z	00bfcf00	00bfc770
+??$SaveVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z	00bfd0b0	00bfc770
+??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z	00bfd020	00bfc770
 ??0CDrawQuickAccessIconsPC@@QAE@PAVCPlayerGui@@@Z	00c13a00	00c13d20
 ?Set@CBaseIntelligentPointer_00c168b0@@QAEXPAVCThing@@@Z	00c16820	00c168b0
 ?Get@CBaseIntelligentPointer_00c16900@@QBEPAVCThing@@XZ	00c16800	00c16900
@@ -17229,7 +17229,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$__uninitialized_copy@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PBV1@0PAV1@ABU__false_type@0@@Z	00737750	00739550
 ??$__uninitialized_fill_n@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@IABV1@ABU__false_type@0@@Z	007377a0	00739550
 ?SetPItem@CBaseIntelligentPointer@@QAEXPBX@Z	00a01b90	00739550
-?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z	00a01b90	007fdf60
+?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z	00a01b90	008c0900
 ??1CBase@NCameraModes@@UAE@XZ	0056e0e0	0056e2d0
 @CSoundDef_dtor@4	00458476	0045845a
 ?CAttackPatternDef_dtor@@YIXPAVCLandscapeBackgroundPatch@@@Z	00458504	004584e8
@@ -27287,7 +27287,7 @@ __imp___strupr	0144002c	00c0c910
 ?SetAsGameStatePersisted@CThing@@QAEX_N@Z	004c7880	004b2490
 ?GetMinPlayerDistanceFromMap@CWorldMap_Methods@@QAEJJ@Z	004fcb30	004ff390
 ?UnloadLevel@CWorldMap_Methods@@QAEXJ@Z	004fede0	004ff390
-?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	005dc340	00752640
+?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	005dc340	007502d0
 ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z	0042b0a2	005b37f7
 ?UploadChangesToGraphics@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	00707930	005b37f7
 ?InitActiveMode@CPlayer@@AAEXW4EPlayerMode@@@Z	00633cb0	006345c0
@@ -32074,7 +32074,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?GetEvent@CTCEntityEvents@@QAE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind2@VCIsEventCreatedAfter@NEntityEvents@@VCIsHitEventHitAndKnockedDownBy@2@@@@Z	0094e480	0094d9c0
 ?GetEvent@CTCEntityEvents@@QAE_NPAPAVCEventHitBy@NEntityEvents@@ABV?$CFilter_Bind2@VCIsEventCreatedAfter@NEntityEvents@@VCIsHitEventHitByExplosion@2@@@@Z	0094e530	0094d9c0
 ?GetSubDef@CDefClassBase@@QAE_NAAUCDefPointer@@@Z	008e3300	0094fff0
-?AIAction_DoNothing@CAIStateGroup_JackDragon@@QAEJXZ	0097e200	00950c30
 ?GetPCurrentAnim@CTCAnim@@QAEPAUCAnimInstance@@XZ	0070b460	00950950
 ?FreeBarPoint@CAIStateGroup_TavernKeeper@@QAEXXZ	00968950	009689c0
 ?GetPaymentRequest@CAIStateGroup_TavernKeeper@@QAE_NXZ	009683a0	009689c0
@@ -33518,7 +33517,6 @@ __imp__recvfrom@24	01440518	008f9320
 ?SetPDef@CTCInventoryBase_Magic@@QAEXJ@Z	005bdb4d	0072dc70
 ?GetNumberOfAttackersOverMaximum@CTCStealth@@ABEJPAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00747890	00747b00
 ?_M_clear@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXXZ	004ac1d0	0077e580
-??0C3DSkeletalMorphParameter@@QAE@PAVC3DSkeletalMorphTarget@@@Z	00a455a0	00786700
 ?Reset@C3DSkeletalMorph@@QAEXXZ	00a45410	007864c0
 ?SetCurrentValue@C3DSkeletalMorphParameter@@QAEXM@Z	00a45370	007864c0
 ??_7CTCBetting@@6B@	01270624	007e57c0
@@ -34589,7 +34587,7 @@ __wcsicmp	00f3fb84	00599e3f
 ??_7CEventItemUsed@NEntityEvents@@6B@	0125c820	0069fe60
 ?OnActionUse@CTCActionUseScriptedHook@@QAEXAAVCThing@@@Z	00729b20	0069fe60
 ??_7CTCNoise@@6B@	01268a74	00749810
-??0CThingPhysical@@QAE@J@Z	005296b0	0052ac10
+??0CThingPhysical@@QAE@J@Z	005296b0	0052ac90
 ??_7CCreaturePointer@@6B@	0125aaec	00835c20
 ??_7CThingDeadCreature@@6B@	01272b04	00835c20
 ?DestroyItem@CAIStateGroupBase@@QAEXABVCCharString@@@Z	008fd1b0	00917bb0
@@ -36463,7 +36461,7 @@ _time	00bfed22	008405f0
 ?GetAllThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAUCCreatureVector@@@Z	008e3eb0	00977b10
 ?SetHelperCreature@CTCBoss@@QAEXAAVCThingAICreature@@@Z	007af310	00977b10
 ??0CTemporaryBuffer@@QAE@KPAVCHandleBasedMemoryPool@@PAVCScratchBuffer@@@Z	00a98860	00a99510
-??1CTemporaryBuffer@@QAE@XZ	00a98910	00a9b740
+??1CTemporaryBuffer@@QAE@XZ	00a98910	00bde860
 ?LoadAnimFile@C3DAnimFileLoader@@QAE?AV?$CCountedPointer@VC3DAnimFile@@@@AAVCDataInputStream@@@Z	00a99420	00a99510
 ?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z	00a0aa20	00987fe0
 ??_7CMovableResourceMemoryPool@@6B@	0129d6a0	00a62e20

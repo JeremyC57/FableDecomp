@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf377	0x005DC340	T1 binder respell	NF377: landed binders still declaring CAnimationSet::GetAnimation (no PDB entry; PDB ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z, reference return): 0x007502D0 (compiled, binds it; new table witness), 0x0041E6D3 0x007306C0 0x00730C00 (in T3 already), 0x00730DD0 (declaration scan, not compiled). Same declaration-only shape as 0x00752640
+nf377	0x00A98910	T1 binder respell	NF377: landed binders still binding the non-virtual ??1CTemporaryBuffer@@QAE@XZ (PDB UAE): 0x00BDE860 (compiled, binds it; new table witness), 0x00BE8920 through include/candidates/landscape_background_patch_compressed.h (not compiled; a header change). Same shape as 0x00A9B740 / 0x00A99510

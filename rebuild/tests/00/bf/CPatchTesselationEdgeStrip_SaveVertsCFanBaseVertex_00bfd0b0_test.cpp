@@ -1,4 +1,4 @@
-// Behaviour test for 0x00BFD0B0 CPatchTesselationEdgeStrip::SaveVerts<CFanBaseVertex>: writes the vertex count; when there are vertices, the compressed size and the compressed bytes (the buffer is freed)
+// Behaviour test for 0x00BFD0B0 CPatchTesselationEdgeStrip::SaveVerts<CWaterFanBaseVertex>: writes the vertex count; when there are vertices, the compressed size and the compressed bytes (the buffer is freed)
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -45,7 +45,7 @@ public:
 };
 class CPatchTesselationEdgeStrip {
 public:
-    struct CFanBaseVertex {
+    struct CWaterFanBaseVertex {
         unsigned char _bytes[0x38];
     };
     template <class T> void SaveVerts(CEdgeStipVertexArray<T>& verts, CDataOutputStream& stream);
@@ -67,13 +67,13 @@ int main()
 {
     CPatchTesselationEdgeStrip strip;
     CDataOutputStream stream;
-    CPatchTesselationEdgeStrip::CFanBaseVertex verts[3];
+    CPatchTesselationEdgeStrip::CWaterFanBaseVertex verts[3];
     std::memset(verts, 0, sizeof(verts));
     verts[0]._bytes[0] = 11; verts[1]._bytes[0] = 22; verts[2]._bytes[0] = 33;
-    CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CFanBaseVertex> none; none.Data = 0; none.Count = 0;
+    CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CWaterFanBaseVertex> none; none.Data = 0; none.Count = 0;
     strip.SaveVerts(none, stream);
     if (g_longs != 1 || g_written[0] != 0 || g_compressCalls != 0 || g_byteCount != -1) { std::printf("00bfd0b0_TEST FAIL\n"); return 1; }
-    CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CFanBaseVertex> three; three.Data = verts; three.Count = 3;
+    CEdgeStipVertexArray<CPatchTesselationEdgeStrip::CWaterFanBaseVertex> three; three.Data = verts; three.Count = 3;
     strip.SaveVerts(three, stream);
     if (g_longs != 3 || g_written[1] != 3 || g_written[2] != 4 || g_byteCount != 4 || g_bytes[0] != 11 || g_bytes[2] != 33 || g_bytes[3] != 0x38)
         { std::printf("00bfd0b0_TEST FAIL\n"); return 1; }

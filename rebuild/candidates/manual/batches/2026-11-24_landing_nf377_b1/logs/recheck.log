@@ -1,0 +1,60 @@
+addr       parity           behav  name
+0046b0d6   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+0046b0d6   WARN SHARED_HEADER_AVAILABLE CDefIndex (engine/CDefIndex.h)
+0046b0d6   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+0046b0d6   RELOCATION_MATCH PASS   TransferBinaryIn
+0052ac10   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0052ac10   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+0052ac10   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0052ac10   RELOCATION_MATCH PASS   Alloc
+00752640   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CAnimFilterNoGroup (engine/CAnimFilterNoGroup.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00752640   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00752640   RELOCATION_MATCH PASS   InitialiseHeadAnims
+00786700   WARN SHARED_HEADER_AVAILABLE C3DSkeletalMorph (engine/C3DSkeletalMorph.h)
+00786700   WARN SHARED_HEADER_AVAILABLE CTCSkeletalMorph (engine/CTCSkeletalMorph.h)
+00786700   RELOCATION_MATCH PASS   CalculateSkeletalMorph
+007fdf60   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007fdf60   WARN SHARED_HEADER_AVAILABLE CSummonDef (engine/CSummonDef.h)
+007fdf60   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007fdf60   RELOCATION_MATCH PASS   GetNumberCanSummon
+00950c30   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00950c30   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackDragon (engine/CAIStateGroup_JackDragon.h)
+00950c30   RELOCATION_MATCH PASS   StartFlying
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE C3DMeshFileRootChunk (engine/C3DMeshFileRootChunk.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFile (engine/CChunkedFile.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE C3DMeshFile (engine/C3DMeshFile.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE CChunkedFileLoader (engine/CChunkedFileLoader.h)
+00a9b740   WARN SHARED_HEADER_AVAILABLE C3DMeshFileLoader (engine/C3DMeshFileLoader.h)
+00a9b740   RELOCATION_MATCH PASS   LoadMeshFileCompressed
+00bf8c80   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf8c80   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf8c80   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf8c80   RELOCATION_MATCH PASS   CLandscapeBackgroundSubNodeSplitBranch
+00bfd0b0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00bfd0b0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00bfd0b0   WARN SHARED_HEADER_AVAILABLE CRangeCompressor (engine/CRangeCompressor.h)
+00bfd0b0   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfd0b0   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfd0b0   RELOCATION_MATCH PASS   SaveVerts<CFanBaseVertex>
+
+WINS: 9
+  0046b0d6 RELOCATION_MATCH CPersistTraits<std::pair<CDefIndex,CDefString> >::TransferBinaryIn
+  0052ac10 RELOCATION_MATCH CThingBuilding::?Alloc@CThingBuilding
+  00752640 RELOCATION_MATCH CTCLook::?InitialiseHeadAnims@CTCLook@@AAEXXZ
+  00786700 RELOCATION_MATCH CTCSkeletalMorph::?CalculateSkeletalMorph@CTCSkeletalMorph@@ABEXXZ
+  007fdf60 RELOCATION_MATCH CTCAISummon::?GetNumberCanSummon@CTCAISummon@@QBEJXZ
+  00950c30 RELOCATION_MATCH CAIStateGroup_JackDragon::?StartFlying@CAIStateGroup_JackDragon@@QAEXPAVCThingCreatureBase@@ABUCC3DVectorVector@@ABVC3DVector@@UCCountedActionPointer@@@Z
+  00a9b740 RELOCATION_MATCH C3DMeshFileLoader::LoadMeshFileCompressed
+  00bf8c80 RELOCATION_MATCH CLandscapeBackgroundSubNodeSplitBranch::??0CLandscapeBackgroundSubNodeSplitBranch@
+  00bfd0b0 RELOCATION_MATCH CPatchTesselationEdgeStrip::SaveVerts

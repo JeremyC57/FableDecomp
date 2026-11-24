@@ -19438,7 +19438,7 @@ address	symbol	status	leaf_given
 00bf8430	?ProcessBackgroundLoading@CLandscapeBackgroundSubNodeSplitBranch@@QAE?AW4LS_LOADING_STATUS@@N_NPAVCEngineStaticMapFileBlockManager@@00@Z	RELOCATION_MATCH	ProcessBackgroundLoading
 00bf8810	?UpdateStaticLOD@CLandscapeBackgroundTreeNode@@QAE?AW4LS_LOADING_STATUS@@N_NPAVCEngineStaticMapFileBlockManager@@@Z	DIFFER(794v912)	UpdateStaticLOD
 00bf8c60	??_GCMovableResource@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
-00bf8c80	??0CLandscapeBackgroundSubNodeSplitBranch@@QAE@JJJ@Z	RELOCATION_MATCH	??0CLandscapeBackgroundSubNodeSplitBranch@
+00bf8c80	??0CLandscapeBackgroundSubNodeSplitBranch@@QAE@PAVCEngineLandscapeMap@@PAVCLandscapeBackgroundTreeNode@@J@Z	RELOCATION_MATCH	??0CLandscapeBackgroundSubNodeSplitBranch@@QAE@PAVCEngineLandscapeMap@@PAVCLandscapeBackgroundTreeNode@@J@Z
 00bf8cc0	?CLandscapeBackgroundSubNodeSplitBranch_IsPatch@@YI_NXZ	MATCH	IsPatch
 00bf8cd0	?CLandscapeBackgroundSubNodeSplitBranch_RelocateData@@YGXHHHH@Z	MATCH	RelocateData
 00bf8d50	??0CStringOwner_00bf8d50@@QAE@XZ	RELOCATION_MATCH	CStringOwner_00bf8d50
@@ -19480,7 +19480,7 @@ address	symbol	status	leaf_given
 00bfc590	?RelocateData@CPatchTesselationEdgeStrip@@QAE_NPAX0@Z	MATCH	RelocateData
 00bfc600	?Load@CPatchTesselationEdgeStrip@@QAE_NPAVCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	RELOCATION_MATCH	Load
 00bfc860	?CPatchTesselationEdgeStrip_scalar_deleting_destructor@@YIPAXPAVCPatchTesselationEdgeStrip@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00bfd0b0	??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z	RELOCATION_MATCH	SaveVerts
+00bfd0b0	??$SaveVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z	RELOCATION_MATCH	SaveVerts
 00bfd160	??2CEngineWaterBackgroundSubPatch@@SIPAXIPAVCMovableResource@@@Z	RELOCATION_MATCH	??2CEngineWaterBackgroundSubPatch
 00bfd290	?TesselatePatch@CWaterSubPatchMethods@@QAE_NAAVCTesselationData@@@Z	RELOCATION_MATCH	TesselatePatch
 00bfd3b0	?OnPostRelocation@CEngineWaterBackgroundSubPatch_OnPostRelocation@@QAEXXZ	RELOCATION_MATCH	OnPostRelocation

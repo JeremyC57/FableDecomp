@@ -21,6 +21,7 @@
 //   CModeBase (the landed 0x0096DBC0 shape).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #define FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER
+#include "engine/fable_ai_action_enums.h"   // NF377: the PDB EAIActionReturn (AIAction_DoNothing return type)
 class CTCBase;
 class CThing;
 class CWorld;
@@ -78,6 +79,7 @@ public:
     unsigned char _pad_0x13;
 protected:
     CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+    EAIActionReturn AIAction_DoNothing();       // 0x0097E200 (NF377: Ego_r + FableWin ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ; was declared on CAIStateGroup_JackDragon)
 public:
 };
 
@@ -174,7 +176,6 @@ struct CModeDragonFlying : CTCCreatureModeManager::CModeBase {
 
 
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {
-    long AIAction_DoNothing();                  // 0x0097E200
     void StartFlying(CThingCreatureBase* target, const CC3DVectorVector& path, const C3DVector& pos,
                      CCountedActionPointer action);
 };

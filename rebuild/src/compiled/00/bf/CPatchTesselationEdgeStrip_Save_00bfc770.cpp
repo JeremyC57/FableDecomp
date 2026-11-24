@@ -32,8 +32,9 @@ class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (
     CEdgeStipVertexArray<CWaterFanBaseVertex> WaterFanBaseVerts;        // +0x20
     bool Tesselated;                                                    // +0x28
     bool Vertical;                                                      // +0x29
-    template <class T> void SaveVerts(CEdgeStipVertexArray<T>* verts, CDataOutputStream* stream);   // 0x00BFCF00..0x00BFD0B0
     void Save(CDataOutputStream* stream);
+private:   // NF377 (after NF374): Ego_r + FableWin ??$SaveVerts@U<T>@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@...@@AAVCDataOutputStream@@@Z (private, by reference)
+    template <class T> void SaveVerts(CEdgeStipVertexArray<T>& verts, CDataOutputStream& stream);   // 0x00BFCF00..0x00BFD0B0
 };
 
 void CPatchTesselationEdgeStrip::Save(CDataOutputStream* stream)
@@ -41,8 +42,8 @@ void CPatchTesselationEdgeStrip::Save(CDataOutputStream* stream)
     stream->WriteUWORD(StartPos);
     stream->WriteUWORD(Size);
     stream->WriteEBOOL(Vertical);
-    SaveVerts(&Verts, stream);
-    SaveVerts(&FanBaseVerts, stream);
-    SaveVerts(&WaterVerts, stream);
-    SaveVerts(&WaterFanBaseVerts, stream);
+    SaveVerts(Verts, *stream);
+    SaveVerts(FanBaseVerts, *stream);
+    SaveVerts(WaterVerts, *stream);
+    SaveVerts(WaterFanBaseVerts, *stream);
 }

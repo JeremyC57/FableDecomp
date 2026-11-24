@@ -1,0 +1,11 @@
+row	item	status	batch	note
+0046b0d6	1	ACCEPT	b1	TransferBinaryIn -> CDataInputStream&; old line rewitnessed to 0046b545 (HAND)
+00786700	1	ACCEPT	b1	C3DSkeletalMorphParameter ctor -> ABV; old PAV line deleted (last binder)
+00752640	1	ACCEPT	b1	GetAnimation -> PDB GetAnim (reference); old line rewitnessed to 007502d0 (HAND)
+007fdf60	1	ACCEPT	b1	SetPItem -> CBaseObject*; old line rewitnessed to 008c0900 (HAND)
+0052ac10	1	ACCEPT	b1	CThingPhysical(long) -> (unsigned long); old line rewitnessed to 0052ac90 (HAND)
+00950c30	1	ACCEPT	b1	AIAction_DoNothing -> inherited CAIStateGroupBase IAE enum; old line deleted (last binder)
+00a9b740	1	ACCEPT	b1	~CTemporaryBuffer -> virtual UAE; old line rewitnessed to 00bde860 (HAND); LANDER HOLDS: T3 line 0x00A9B740 (nf374 port about binder 0x00A25D20)
+00bf8c80	2	ACCEPT	b1	TreeNode ctor + own SplitBranch ctor -> PDB; old JJJ callee line replaced (last binder)
+00bfd0b0	3	ACCEPT	b1	self -> SaveVerts<CWaterFanBaseVertex>; LANDER HOLDS: T3 line 0x00BFD0B0 (nf374 standin_alias port, binder 0x00BFC770; this pass resolves it)
+00bfc770	3	ACCEPT	b2	four SaveVerts calls -> PDB AAE/AAV; land after b1's 00bfd0b0; .drectve rule met in derived form; four QAE lines replaced

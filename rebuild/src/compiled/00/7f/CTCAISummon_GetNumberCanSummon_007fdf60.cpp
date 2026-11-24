@@ -14,19 +14,20 @@
 //   pointer reloads it from `this` after the size loop instead of keeping it in ebp), and the own-limit term is
 //   `PSummonDef->MySummonLimit - size()` (the inline getters load the limit before the loop).
 class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                                              // +0x04
     CBaseIntelligentPointer();                                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                                 // 0x00A01C10
-    void SetPItem(CThing* item);                                // 0x00A01B90
+    void SetPItem(CBaseObject* item);                           // 0x00A01B90 (NF377: Ego_r + FableWin ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
 };
 
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
 public:
     virtual void v00();
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
 template <class T> struct SListNode {

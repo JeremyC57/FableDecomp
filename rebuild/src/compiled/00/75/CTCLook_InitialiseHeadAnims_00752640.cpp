@@ -23,7 +23,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {              // vtable 0x0122FFDC
 };
 class CAnimationSet { public:
     bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;                               // 0x005DC2E0
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
+    const CAnimationEntry& GetAnim(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340 (NF377: Ego_r + FableWin ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z)
 };
 class CAppearanceDef { public:
     unsigned char _pad00[0x34];
@@ -101,8 +101,8 @@ void CTCLook::InitialiseHeadAnims()
             PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PParentCreature->GetAnimFromName(ST_HEAD_TURN_H, 0)));
     } else {
         if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_V, CAnimFilterNoGroup()))
-            PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_V, 0, CAnimFilterNoGroup())));
+            PHeadTurnAnimV = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PAppearanceDef->Animation.GetAnim(ST_HEAD_TURN_V, 0, CAnimFilterNoGroup())));
         if (PAppearanceDef->Animation.AnimExists(ST_HEAD_TURN_H, CAnimFilterNoGroup()))
-            PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(*PAppearanceDef->Animation.GetAnimation(ST_HEAD_TURN_H, 0, CAnimFilterNoGroup())));
+            PHeadTurnAnimH = CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>(new NAnimationEntryBodge::CAnimEntryLite(PAppearanceDef->Animation.GetAnim(ST_HEAD_TURN_H, 0, CAnimFilterNoGroup())));
     }
 }

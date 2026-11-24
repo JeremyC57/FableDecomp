@@ -28,7 +28,7 @@ class CBaseObjectPointer;
 class CThingPhysical : public CThing {
 public:
     unsigned char _pad04[0x24];   // own members from +0x98
-    CThingPhysical(long type);                  // 0x005296B0
+    CThingPhysical(unsigned long type);         // 0x005296B0 (NF377: Ego_r + FableWin ??0CThingPhysical@@QAE@K@Z, the landed self)
 };
 
 class CThingGameObject : public CThingPhysical {           // vtable 0x01244F7C

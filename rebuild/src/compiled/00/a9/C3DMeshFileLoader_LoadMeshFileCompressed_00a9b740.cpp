@@ -36,8 +36,7 @@ extern CScratchBuffer g_ScratchBuffer;               // 0x013CB498
 
 struct CTemporaryBuffer {                            // 0x18 bytes (Ego_r.pdb)
     CTemporaryBuffer(unsigned long size, CHandleBasedMemoryPool* pool, CScratchBuffer* scratch);   // 0x00A98860
-    ~CTemporaryBuffer();                             // 0x00A98910
-    virtual void v00();
+    virtual ~CTemporaryBuffer();                     // 0x00A98910, slot 0 (NF377: Ego_r + FableWin ??1CTemporaryBuffer@@UAE@XZ, ??_E in the slot; was a v00 placeholder plus a non-virtual destructor)
     void*                   Data;                    // +0x04
     CHandleBasedMemoryPool* MemoryPool;              // +0x08
     long                    MemoryHandle;            // +0x0c

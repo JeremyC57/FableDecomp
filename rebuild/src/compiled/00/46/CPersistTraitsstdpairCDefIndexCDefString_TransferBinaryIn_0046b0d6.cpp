@@ -50,7 +50,7 @@ public:
 class CDefString {
 public:
     long Index;
-    void TransferBinaryIn(CMemoryDataInputStream& stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream& stream);         // 0x0044FC00 (NF377: Ego_r + FableWin ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z; the memory stream is its CDataInputStream base at +0)
 };
 
 template <class T1, class T2> struct pair {
@@ -69,5 +69,5 @@ void CPersistTraits<pair<CDefIndex, CDefString> >::TransferBinaryIn(CMemoryDataI
     CDefIndex index;
     static_cast<CMemoryDataInputStreamReader*>(stream)->Read(&index, sizeof(index));
     value->first = index;
-    value->second.TransferBinaryIn(*stream);
+    value->second.TransferBinaryIn(*(CDataInputStream*)stream);
 }

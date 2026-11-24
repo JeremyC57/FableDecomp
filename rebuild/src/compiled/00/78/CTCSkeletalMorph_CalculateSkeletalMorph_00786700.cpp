@@ -25,7 +25,7 @@
 class C3DSkeletalMorphTarget;
 class C3DSkeletalMorphParameter { public:
     unsigned char _d[0x14];
-    C3DSkeletalMorphParameter(C3DSkeletalMorphTarget* target);   // 0x00A455A0
+    C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& target);   // 0x00A455A0 (NF377: Ego_r + FableWin ??0C3DSkeletalMorphParameter@@QAE@ABVC3DSkeletalMorphTarget@@@Z)
     void SetCurrentValue(float value);              // 0x00A45370
 };
 class C3DSkeletalMorph { public:
@@ -56,7 +56,7 @@ void CTCSkeletalMorph::CalculateSkeletalMorph() const
     PSkeletalMorph->Reset();
     for (CSkeletalMorphEntry* morph = m_morphsStart; morph != m_morphsFinish; ++morph) {
         CCountedPointer<C3DSkeletalMorphTarget> target = CSkeletalMorphResourceManager::Get().GetMorphTarget(morph->Name);
-        CCountedPointer<C3DSkeletalMorphParameter> parameter(new C3DSkeletalMorphParameter(target.Data));
+        CCountedPointer<C3DSkeletalMorphParameter> parameter(new C3DSkeletalMorphParameter(*target.Data));
         PSkeletalMorph->AddMorphParameter(parameter);
         parameter->SetCurrentValue(morph->Value);
     }

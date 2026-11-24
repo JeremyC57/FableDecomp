@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+delete	??0C3DSkeletalMorphParameter@@QAE@PAVC3DSkeletalMorphTarget@@@Z	00a455a0	00786700	NF377: 00786700 now binds the PDB ABV spelling (already a line, witness 007864c0); the only other retail caller of 0x00A455A0, 007864c0, compiled and does not bind the old PAV form
+delete	?AIAction_DoNothing@CAIStateGroup_JackDragon@@QAEJXZ	0097e200	00950c30	NF377: 00950c30 now binds the PDB CAIStateGroupBase spelling (already a line, witness 00934870); no include/ file declares the old form; 00950950 00952890 00950cf0 0094feb0 0094fe30 (the other landed sources naming CAIStateGroup_JackDragon and AIAction_DoNothing) compiled, none binds it
+replace	??0CLandscapeBackgroundTreeNode@@QAE@JJJ@Z -> ??0CLandscapeBackgroundTreeNode@@QAE@PAVCEngineLandscapeMap@@PAV0@J@Z	00bf6e20	00bf8c80	NF377: 00bf8c80 now binds the PDB spelling (landed self of 0x00BF6E20); the only other retail caller, 00bdc180, compiled and binds the PAX spelling only

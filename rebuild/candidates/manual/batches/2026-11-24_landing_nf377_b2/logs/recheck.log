@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00bfc770   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00bfc770   WARN SHARED_HEADER_AVAILABLE CEdgeStipVertexArray (engine/CEdgeStipVertexArray.h)
+00bfc770   WARN SHARED_HEADER_AVAILABLE CPatchTesselationEdgeStrip (engine/CPatchTesselationEdgeStrip.h)
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z -> 00bfcf00 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CVertex>'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z -> 00bfcf90 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CFanBaseVertex>'
+00bfc770   WARN RELOC_NAME: ??$SaveVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@AAEXAAV?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@AAVCDataOutputStream@@@Z -> 00bfd020 labelled 'CPatchTesselationEdgeStrip::SaveVerts<CPatchTesselationEdgeStrip::CWaterVertex>'
+00bfc770   RELOCATION_MATCH PASS   Save
+
+WINS: 1
+  00bfc770 RELOCATION_MATCH CPatchTesselationEdgeStrip::Save
