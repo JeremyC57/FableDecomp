@@ -1,0 +1,15 @@
+address	status	batch	note
+009b7870	ACCEPT	b1	NF387 b4 pilot; R2 checks (a)(b)(c) done; binds vector op= 0x0045BC09; table delete ??4?$CArray@K@@ -> 0045bc09
+00adc0d0	ACCEPT	b1	NF387 b4 binder; PDB CVertexGroupBlock cited, members renamed to Groups / GroupToIndexMap; HAND rewitness SArray0C -> 00adc120
+00709ce0	HOLD_RULING	b2	R5: new NEQ of its CArray copy v the 00728d10-witnessed ??0?$CArray@VCEngineTextureMorph@@ -> 005bbdf1 line; link 0 -> 0 dups
+00728a40	HOLD	b2	self respell + binder graded; blockers: _Construct<CMeshMorphSetParts> extra without retail copy, same NEQ as 00709ce0
+00709c90	HOLD_RULING	held/	R6: self spelling (I,O) v T-form; probe RELOCATION_MATCH; lock released
+00b217d0	HOLD_RULING	held/	R7: 14 DEF pick-any in the new object (HEAD not compiled); probe RELOCATION_MATCH; lock released
+00762440	HOLD_RULING	held/	R7: 49 DEF pick-any in the new object (HEAD not compiled); self respell two-sourced; probe RELOCATION_MATCH; lock released
+00728d10	NOT_ATTEMPTED	-	local namespace std model re-author; budget; lock released
+00bd8b30	NOT_ATTEMPTED	-	needs fable_map.h port; budget; lock released
+00709a50	NOT_ATTEMPTED	-	self respell needs set<CCharString> + base models; budget; lock released
+00762d80	NOT_ATTEMPTED	-	unit with 00762580 (T3 nf374); budget; lock released
+00762580	NOT_ATTEMPTED	-	unit with 00762d80; lock released
+009b77b0	NOT_RETRIED	-	R2 does not cover its ~10 extras (R7)
+R3	DONE	DECIDED.tsv	10 selves decided vector (12 forwarders, rel32 exact, bytes equal pilot); 4 stay unknown

@@ -9841,7 +9841,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?__adjust_heap@@YIXPAUPairVectorLong@@JJU1@UCCompareTargetedPositionsForFirstPersonTargeting@@@Z	008082c0	00808bd0
 ?__pop_heap@@YIXPAUPairVectorLong@@00U1@UCCompareTargetedPositionsForFirstPersonTargeting@@PAJ@Z	00808bd0	00808db0
 ?__adjust_heap@@YIXPAUSKeyedRecord20@@JJU1@UCKeyPairCompareLess@@@Z	0081aa50	0081b910
-??4?$CArray@K@@QAEAAV0@ABV0@@Z	0045bc09	009b7870
 ?__adjust_heap@@YIXPAUPairCharStringSymbolInfo@@JJU1@UCCompareString@@@Z	009e6db0	009e7060
 ?__adjust_heap@@YIXPAUSKeyedHelperPoint@@JJU1@UCKeyPairCompareLess@@@Z	00a32440	00a32b50
 ?__adjust_heap@@YIXPAUPairCharStringScriptInfo@@JJU1@UCKeyPairCompareLess@@@Z	00cb68c0	00cb6b00
@@ -34262,7 +34261,7 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?ProcessPlayerControl@CCombatActionBase@@IAEXXZ	00857b70	00859d80
 ?ProcessStrikeEvents@CCombatActionBase@@IAEXXZ	008597a0	00859d80
 ?RemapBoneIndices@C3DPrimitive2@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z	00a90f00	00a8b820
-??4SArray0C_0045bc09@@QAEAAU0@ABU0@@Z	0045bc09	00adc0d0
+??4SArray0C_0045bc09@@QAEAAU0@ABU0@@Z	0045bc09	00adc120
 ??4?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z	0045e694	0045e660
 ??4CCombatAbilityData_Retail@@QAEAAU0@ABU0@@Z	00453f18	00461bb7
 ??4?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	00466152	00465eb3

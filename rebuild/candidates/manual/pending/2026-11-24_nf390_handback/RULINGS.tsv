@@ -1,0 +1,5 @@
+id	question	decision	by
+R4	R2 forwarder copy EQ at 0x009B5A60 only via pk_all --addrs	accepted for nf390_b1; blocks q5/q2 where one vector body has two forwarders	coordinator under R2 wording, confirmed by advisor (owner delegated)
+R5	binder port adds a NEQ v a CArray-at-vector line witnessed by an unported row	hold; port 00728d10 first and land the family as one unit that deletes the line; give each dtor thunk name its own address; read 0x00709A30 v 0x00709BB0 rel32	advisor decision (owner delegated)
+R6	STLport (I,O) v T-form spelling of __uninitialized_copy / fill_n at 0x00709C90 / 0x00709CE0	STLport vendor signature is the authority; T-form is a stand-in; constness per address from retail callers; mixed callers = hold; mark vendor-source-derived, no PDB	advisor decision (owner delegated)
+R7	blanket objsec exception for unreferenced NOADDR pick-any special-member chains	no; pilot 00b217d0: HEAD compile + comdat_cmp, bin each new COMDAT (nf387 conditions / decl-only opt-in / residue); bring residue back	advisor decision (owner delegated)

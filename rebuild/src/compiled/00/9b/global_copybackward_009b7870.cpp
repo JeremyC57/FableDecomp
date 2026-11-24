@@ -12,25 +12,26 @@
 //     for (_Distance __n = __last - __first; __n > 0; --__n) *--__result = *--__last; return __result;
 //   with the pair's and CDefClassInfo's implicit assignments inlined member by member (key word, Name by call, AllocFunc word,
 //   GlobalIndices by call); the trip count lives in the dead `result` argument slot.
+// Name fix (NF387, T3 nf383 0x009B7870 pilot): GlobalIndices' assignment binds STLport's
+//   ??4?$vector@KV?$allocator@K@std@@@std@@QAEAAV01@ABV01@@Z at 0x0045BC09 (14 vector-context FableWin callers, NF383 R2) through the shared
+//   CArray model; was the body-less local CArray<unsigned long>::operator=.
 class CCharString {
 public:
     void* PStringData;
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-template <class T> class CArray {                       // STLport vector<T>-shaped, 12 bytes
-public:
-    T* Start;                                           // +0x00
-    T* Finish;                                          // +0x04
-    T* EndOfStorage;                                    // +0x08
-    CArray& operator=(const CArray& other);             // 0x0045BC09
-};
+// CArray<T> is the shared engine/CArray.h model (Lionhead's CArray<T> : public STLport vector<T>, no fields of its own; the
+// assignment is the generated one). FABLE_RETAIL_STLP_VECTOR_ASSIGN declares STLport's vector::operator= out of line, as retail
+// calls it (vector<unsigned long>::operator= 0x0045BC09), so the generated CArray / CDefClassInfo assignments expand to that call.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "engine/CArray.h"
 
 class CBaseObject;
 typedef CBaseObject* (*TDefAllocFunc)();
 
 namespace CDefinitionManager {
-class CDefClassInfo { public:                                  // Ego_r.pdb, 20 bytes
+class CDefClassInfo { public:                                  // Ego_r.pdb (24 B there: its CArray is 16); retail 20 bytes
     CCharString           Name;                         // +0x00
     TDefAllocFunc         AllocFunc;                    // +0x04
     CArray<unsigned long> GlobalIndices;                // +0x08

@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	??4SArray0C_0045bc09@@QAEAAU0@ABU0@@Z	0045bc09	00adc120	NF390 b1 (NF387 b4): 00adc0d0 now binds the vector spelling; 00adc120 still binds this stand-in (VC7.1 census evidence/census_c3.tsv + xr: its relocation resolves to 0x0045BC09; the only other source naming it). Was witness 00adc0d0
