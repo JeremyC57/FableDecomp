@@ -9,7 +9,7 @@ class CInputEvent { public:
     long GetDeviceNumber() const;                   // 0x00A03B60
 };
 class CPlayer { public:
-    bool IsUsingJoystickDeviceNumber(long deviceNumber);   // 0x004874F0
+    bool IsUsingJoystickDeviceNumber(long deviceNumber) const;   // 0x004874F0
 };
 struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
     virtual void v00();

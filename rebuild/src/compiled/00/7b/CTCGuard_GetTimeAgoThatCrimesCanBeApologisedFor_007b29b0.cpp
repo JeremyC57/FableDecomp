@@ -1,3 +1,4 @@
+// Leaf: ?GetTimeAgoThatCrimesCanBeApologisedFor@CTCGuard@@ABEJXZ
 // CTCGuard::GetTimeAgoThatCrimesCanBeApologisedFor() const -- seconds since the last received apology, less a 15-second grace, clamped to [0, 10]
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -33,7 +34,9 @@ class CTCGuard { public:
     CThing* ParentThing;                                    // +0x04
     unsigned char _pad08[0x44];
     long FrameLastReceivedApology;                          // +0x4c
+    private:
     long GetTimeAgoThatCrimesCanBeApologisedFor() const;
+    public:
 };
 
 long CTCGuard::GetTimeAgoThatCrimesCanBeApologisedFor() const

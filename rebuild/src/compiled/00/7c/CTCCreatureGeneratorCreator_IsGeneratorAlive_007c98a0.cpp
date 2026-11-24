@@ -1,3 +1,4 @@
+// Leaf: ?IsGeneratorAlive@CTCCreatureGeneratorCreator@@IBE_NXZ
 // CTCCreatureGeneratorCreator::IsGeneratorAlive() -- true when the generator thing is alive and its creature-generator component (interface 0x3d) is not destroyed
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C98A0, length 114 bytes.
@@ -73,7 +74,9 @@ public:
     CIntelligentPointer<CThing> PGenerator;         // +0x11 CIntelligentPointer<CThing>
     unsigned char _pad19[0x20 - 0x19];
     unsigned long long GeneratorUID;            // +0x20
-    bool IsGeneratorAlive();
+    protected:
+    bool IsGeneratorAlive() const;
+    public:
 };
 #pragma pack(pop)
 
@@ -84,7 +87,7 @@ static FABLE_FORCEINLINE CTCCreatureGenerator* GetGenerator(CThing* thing)
     return gen;
 }
 
-bool CTCCreatureGeneratorCreator::IsGeneratorAlive()
+bool CTCCreatureGeneratorCreator::IsGeneratorAlive() const
 {
     if (PGenerator.GetPItem() && !PGenerator.GetPItem()->IsDead()) {
         if (!GetGenerator(PGenerator.GetPItem())->Destroyed)

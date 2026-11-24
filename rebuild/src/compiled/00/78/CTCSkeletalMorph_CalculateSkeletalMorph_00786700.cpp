@@ -1,5 +1,5 @@
 // CTCSkeletalMorph::CalculateSkeletalMorph() -- rebuild the skeletal morph: clear its parameters, then for every morph entry fetch the named morph target from the (lazily created) resource manager, wrap it in a new counted morph parameter, add it and set its value; finally drop the cached combined morph
-// Leaf: CalculateSkeletalMorph
+// Leaf: ?CalculateSkeletalMorph@CTCSkeletalMorph@@ABEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00786700, 368 bytes (`ret`).
 // Callees: C3DSkeletalMorph parameter clear 0x00A45410 / add 0x00A45470 / combined-morph reset 0x00A45330 (catalog labels are
 //          propagated twins; names descriptive); CCountedPointer<CSkeletalMorphResourceManager>::Reset 0x004A9A80 on the global
@@ -46,10 +46,12 @@ public:
     CSkeletalMorphEntry* m_morphsFinish;            // +0x14
     CSkeletalMorphEntry* m_morphsEnd;               // +0x18
     C3DSkeletalMorph*    PSkeletalMorph;            // +0x1c (CCountedPointer object)
-    void CalculateSkeletalMorph();
+    private:
+    void CalculateSkeletalMorph() const;
+    public:
 };
 
-void CTCSkeletalMorph::CalculateSkeletalMorph()
+void CTCSkeletalMorph::CalculateSkeletalMorph() const
 {
     PSkeletalMorph->ClearMorphParameters();
     for (CSkeletalMorphEntry* morph = m_morphsStart; morph != m_morphsFinish; ++morph) {

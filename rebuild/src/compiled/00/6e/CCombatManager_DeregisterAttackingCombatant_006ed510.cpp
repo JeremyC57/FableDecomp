@@ -246,7 +246,10 @@ public:
     virtual void v00();
     unsigned char _sequences[0x0c];                // +0x04 RegisteredCombatSequences
     std::map<unsigned __int64, CCombatantInfo> Combatants;   // +0x10
-    void IncrementDefenderAttackPattern(CCombatantInfo& info);                    // 0x006E8600
+    private:
+    void IncrementDefenderAttackPattern(CCombatantInfo& info);
+    public:
+                    // 0x006E8600
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long weapon);        // 0x006EBDD0
     private: void UpdateAttackingCombatantsList(CCombatantInfo& info, bool force); public:         // 0x006ED030
     void DeregisterAttackedCombatant(CThingCreatureBase* attacked);               // 0x006ED8C0

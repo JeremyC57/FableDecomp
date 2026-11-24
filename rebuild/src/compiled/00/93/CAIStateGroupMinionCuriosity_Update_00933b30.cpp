@@ -43,7 +43,10 @@ public:
 
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
     float CuriosityPos_X, CuriosityPos_Y, CuriosityPos_Z;   // +0x14 C3DVector
-    bool MoveToCuriosityProximity(float radius);            // 0x00933A40
+    private:
+    bool MoveToCuriosityProximity(float radius);
+    public:
+            // 0x00933A40
     virtual void Update();
 };
 

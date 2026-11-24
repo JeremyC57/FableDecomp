@@ -8,7 +8,7 @@
 // Areas carry a 16-byte header; Status 0x61 = free, 0x67 = used. The free-list push is one inline AddFreeArea (Size, Status,
 // Next, head) used by every row of the class.
 // Shape: the block ctor body stores BlockSize = size + 0x10 first and passes that member to AllocateAligned (ecx reused), OwnsData last; the counted base's count store precedes the vtable store (its inline ctor), the base vptr store is dead and dropped.
-// Leaf: CreateNewMemoryBlock
+// Leaf: ?CreateNewMemoryBlock@CSimpleMemoryPool@@AAEXK@Z
 // Shared model for the CSimpleMemoryPool rows (Ego_r.pdb layouts; the engine header's Root is opaque, so a local model is used).
 #include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);                     // 0x00BFEA1A
@@ -92,7 +92,9 @@ class CSimpleMemoryPool { public:
     void Reset();                                  // 0x00A5C790
     void FreeAll();
     void SetMemoryPool(void* data, unsigned long size);
+    private:
     void CreateNewMemoryBlock(unsigned long size);
+    public:
     void* Allocate(unsigned long size);
 };
 void CSimpleMemoryPool::CreateNewMemoryBlock(unsigned long size)

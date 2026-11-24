@@ -109,7 +109,10 @@ class CCombatManager { public:
     {
         return Combatants.find(creature.GetUID())->second;
     }
-    void IncrementDefenderAttackPattern(CCombatantInfo& info);             // 0x006E8600
+    private:
+    void IncrementDefenderAttackPattern(CCombatantInfo& info);
+    public:
+             // 0x006E8600
     bool IsCreatureOnOuterRing(const CThingCreatureBase& creature) const;   // 0x006E9700
     void SetAttackerRingAsRotating(const CThingCreatureBase& attacker, float degreesPerSecond);   // 0x006E9D90
     private: void PerformSequenceReset(CThingCreatureBase& creature);   // NF308: AAE (private), Ego_r + FableWin

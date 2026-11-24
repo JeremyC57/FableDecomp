@@ -96,7 +96,10 @@ class CTCEmoteIcon : public CTCBase { public:
     bool          Replaceable;                     // +0x25
     bool          Enabled;                         // +0x26
     CEnginePrimitiveHandle PrimitiveHandle;        // +0x28
-    void DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info);   // 0x0071AB20
+    private:
+    void DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info) const;
+    public:
+   // 0x0071AB20
     private: void DrawEmoteTypeIcon(const CEnginePrimitivePrepareInfo& info); public:   // 0x0071AD20
     void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
 };

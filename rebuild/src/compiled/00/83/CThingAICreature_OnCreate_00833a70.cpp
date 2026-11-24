@@ -88,7 +88,10 @@ class CThingCreatureBase { public:
     bool IsShowingDebugInfo : 1;                // +0x15e bit 0
     CDefinitionManager* GetDefinitionManager();  // 0x004C7990 (CThing)
     bool ValidateInitialisation();              // 0x006A4D60 (CThingPhysical)
-    void CreateDefaultWeapons();                // 0x00664680
+    protected:
+    void CreateDefaultWeapons();
+    public:
+                // 0x00664680
 protected:
     virtual bool OnCreate();                            // 0x00666310 (protected virtual: FableWin / Ego_r ?OnCreate@CThingCreatureBase@@MAE_NXZ)
 };

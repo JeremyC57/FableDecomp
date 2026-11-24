@@ -1,6 +1,6 @@
 // CInputProcessZTarget::DeactivateZTarget(CProcessedInput& processed) -- queue game event 0x3e (deactivate Z-target) and, when the live hero is in ranged third-person mode, game event 0x3a as well
 // Grade: DIFFER(149v149) -- /GS lane gap: `processed` is loaded into edi before the GetPControlledCreature call (parameter shadowing); retail loads it after the call
-// Leaf: DeactivateZTarget
+// Leaf: ?DeactivateZTarget@CInputProcessZTarget@@AAEXAAVCProcessedInput@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688BA0, length 149 bytes.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the hero test @ 0x0068EB20 (component kind 0x46 lookup),
@@ -50,7 +50,9 @@ public:
 };
 class CInputProcessZTarget : public CInputProcessGameBase {
 public:
+    private:
     void DeactivateZTarget(CProcessedInput& processed);
+    public:
 };
 
 void CInputProcessZTarget::DeactivateZTarget(CProcessedInput& processed)

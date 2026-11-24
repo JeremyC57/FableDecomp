@@ -1,3 +1,4 @@
+// Leaf: ?ProcessWindowMessages@CSystemManager@@AAEXXZ
 // CSystemManager::ProcessWindowMessages() -- under the manager's critical section, pump every pending message of the application window: offer each to the message filter first, translate and dispatch it when the filter is absent or declines
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A4F20, length 141 bytes (+3 int3 padding).
 // Callees (imports): EnterCriticalSection @ [0x0143FE0C], LeaveCriticalSection @ [0x0143FE10], PeekMessageW @ [0x01440370]
@@ -31,7 +32,9 @@ class CSystemManager { public:
     HWND__* ApplicationWinHandle;               // +0x94
     unsigned char _pad98[0x17c - 0x98];
     bool (__fastcall* MessageFilter)(MSG* msg); // +0x17c
+    private:
     void ProcessWindowMessages();
+    public:
     HWND__* GetApplicationWinHandle() const { return ApplicationWinHandle; }
 };
 

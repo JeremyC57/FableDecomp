@@ -22,7 +22,10 @@ class CTCSkeletalMorph { public:
     bool                           m_dirty;            // +0x0c
     unsigned char                  _pad0d[0xf];
     CCountedPointer_CSkeletalMorph m_pSkeletalMorph;   // +0x1c
-    void CalculateSkeletalMorph();                     // 0x00786700
+    private:
+    void CalculateSkeletalMorph() const;
+    public:
+                     // 0x00786700
     CCountedPointer_CSkeletalMorph GetPSkeletalMorph();
 };
 

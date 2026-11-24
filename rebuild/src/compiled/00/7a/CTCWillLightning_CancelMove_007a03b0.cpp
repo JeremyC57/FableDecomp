@@ -32,7 +32,10 @@ public:
     virtual ~CTCWillLightning();
     CThing* ParentThing;                                 // +0x04 (CTCBase)
 
-    void Deactivate();                                   // 0x007A0310
+    private:
+    void Deactivate();
+    public:
+                                   // 0x007A0310
     void CancelMove();
 };
 

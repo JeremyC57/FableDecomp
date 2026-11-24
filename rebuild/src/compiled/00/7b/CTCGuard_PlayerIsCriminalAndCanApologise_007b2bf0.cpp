@@ -51,7 +51,10 @@ public:
 };
 class CTCGuard : public CTCBase {
 public:
-    long GetTimeAgoThatCrimesCanBeApologisedFor() const;    // 0x007B29B0
+    private:
+    long GetTimeAgoThatCrimesCanBeApologisedFor() const;
+    public:
+    // 0x007B29B0
     bool PlayerIsCriminalAndCanApologise();
 };
 

@@ -84,7 +84,10 @@ public:
 class CTCSoundPlayer : public CTCBase {
 public:
     unsigned char _pad08[0x24 - 0x08];          // PAttachedEmitter +0x0c, VoiceName +0x14, ExtraTag +0x18, ...
-    CThingSoundEmitter* CreatePAttachedEmitter(bool flag);   // 0x0066AEF0
+    private:
+    CThingSoundEmitter* CreatePAttachedEmitter(bool flag);
+    public:
+   // 0x0066AEF0
     unsigned long InternalPlaySoundEventAtPos(CASoundBank& bank, const C3DVector& pos, const CCharString& name, bool loop, bool attached);
     unsigned long PlayUnattachedSample(long sample, const CSoundInit& init, bool loop, bool attached);
     unsigned long InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached);

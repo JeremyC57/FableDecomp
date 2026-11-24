@@ -1,3 +1,4 @@
+// Leaf: ?MoveToCuriosityProximity@CAIStateGroup_MinionCuriosity@@AAE_NM@Z
 // CAIStateGroup_MinionCuriosity::MoveToCuriosityProximity(float) -- walk towards CuriosityPos until within the
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // given radius, repeating while the move action reports "in progress" (4); true when it reports "arrived" (2).
@@ -27,7 +28,9 @@ class CThing;
 
 struct CAIStateGroup_MinionCuriosity : CAIStateGroupBase {
     C3DVector CuriosityPos;                 // +0x14
+    private:
     bool MoveToCuriosityProximity(float radius);
+    public:
 };
 
 bool CAIStateGroup_MinionCuriosity::MoveToCuriosityProximity(float radius)

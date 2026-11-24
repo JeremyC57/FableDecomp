@@ -65,7 +65,10 @@ struct CTCMeshAutomaticEntityCreator : CTCBase {
 private:   // Ego_r.pdb: CreateObject / CreateParticle are private (AAE); NF70 q10750
     void CreateObject(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);     // 0x0072DDB0
 public:    // CreateBuilding is not in the PDBs: the landed 0x0072DF50 spelling (QAE) is kept
-    void CreateBuilding(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);   // 0x0072DF50
+    private:
+    void CreateBuilding(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);
+    public:
+   // 0x0072DF50
 private:
     void CreateParticle(const CCharString& dummyName, const CCharString& objectName, CTCGraphicAppearance* appearance);   // 0x0072E130
 public:

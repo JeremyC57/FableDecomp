@@ -136,7 +136,10 @@ public:
     bool    Animating;                          // +0x0c
     long    CurrentAnimationPriority;           // +0x10
     CRetailList<CAnimInit> QueuedAnims;         // +0x14
-    void ClearQueuedAnims();                                   // 0x007F8BE0
+    private:
+    void ClearQueuedAnims();
+    public:
+                                   // 0x007F8BE0
     void PlayAnimation(long animIndex, long priority, bool looping);   // 0x007F9010
     void PlayAnimation(const CCharString& name, long priority, bool looping);
 };

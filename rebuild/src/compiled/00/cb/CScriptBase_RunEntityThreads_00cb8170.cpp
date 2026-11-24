@@ -220,7 +220,10 @@ public:
     CVectorMap<CCharString, CCountedPointer<CEntityScriptBindingBase>, CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;   // +0x18
     unsigned long     LastWorldUpdateFrame;                                                  // +0x28
     CSpawnedFuncBase* PActiveThread;                                                         // +0x2c
-    bool UpdateSpawnedFunction(CSpawnedFuncBase* func);                                      // 0x00CB7950
+    protected:
+    bool UpdateSpawnedFunction(CSpawnedFuncBase* func);
+    public:
+                                      // 0x00CB7950
     protected:
     void RunEntityThreads();
     public:

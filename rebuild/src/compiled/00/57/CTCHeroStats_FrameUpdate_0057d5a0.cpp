@@ -203,7 +203,10 @@ class CTCHeroStats : public CTCBase { public:
     const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     void UpdateAppearanceStats(bool force);          // 0x0057D23B
     void SetFatness(float fatness);                  // 0x0057B169
-    long GetFatnessReducingFrequencyInFrames() const;   // 0x0057A60A
+    private:
+    long GetFatnessReducingFrequencyInFrames() const;
+    public:
+   // 0x0057A60A
     void ProcessDrunkenness();                       // 0x0057CB7E
     void FrameUpdate();
 };

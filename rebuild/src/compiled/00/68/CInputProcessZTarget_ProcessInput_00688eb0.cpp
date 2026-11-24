@@ -101,7 +101,10 @@ public:
     void*                   PHeroCombatDef;        // +0x30
     long                    DeactivateHoldTimer;   // +0x34
     CBaseIntelligentPointer PTarget;               // +0x38
-    void DeactivateZTarget(CProcessedInput& processed);   // 0x00688BA0
+    private:
+    void DeactivateZTarget(CProcessedInput& processed);
+    public:
+   // 0x00688BA0
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

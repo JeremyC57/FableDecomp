@@ -71,7 +71,7 @@ public:
     virtual bool IsToBeSerialised();                           // slot 22 (+0x58)
     unsigned char _pad04[0x8e - 0x04];
     short         CurrentMapNumber;                            // +0x8e
-    bool IsForceNoSerialise();                                 // 0x004C7BD0
+    bool IsForceNoSerialise() const;                                 // 0x004C7BD0
 };
 
 struct SThingListNode {

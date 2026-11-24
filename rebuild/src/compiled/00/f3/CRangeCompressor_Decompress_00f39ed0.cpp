@@ -41,7 +41,10 @@ struct CRangeCompressor {
             *dest = (unsigned char)value;
     }
     static bool IsValidBitCount(__int64 bits) { return bits >= 0 && bits <= 0x7fffffff; }
-    long CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts);   // 0x00F39E50
+    private:
+    long CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts);
+    public:
+   // 0x00F39E50
     void Decompress(const unsigned char* data, long count, long stride, void* dest);
 };
 

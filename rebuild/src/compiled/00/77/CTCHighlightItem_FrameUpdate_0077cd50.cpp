@@ -100,7 +100,10 @@ struct CTCHighlightItem {
     CBaseIntelligentPointer PParticleEmitter;        // +0x20 CIntelligentPointer<CThing>
 
     CGameSubsystem* GetGameSubsystem() const;        // 0x00686D60 (CTCBase: main game component +0x1C)
-    void DoStartRunning();                           // 0x0077CBE0
+    protected:
+    void DoStartRunning();
+    public:
+                           // 0x0077CBE0
     protected: void DoMovement(); public:                               // 0x0077C960
     void OnInitialActivate();
     void DoStopRunning();

@@ -1,5 +1,5 @@
 // CTCDegradableBase::OnParentHealthChanged(bool fromHit) -- for a degradable def that is not yet fully degraded: move to the stage matching the parent's health when it is lower than the current one (new mesh, smash particles unless hit, the parent made unhittable at the last stage) and pass the stage's navigation blocking to the switchable-navigation component
-// Leaf: OnParentHealthChanged
+// Leaf: ?OnParentHealthChanged@CTCDegradableBase@@AAEX_N@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ECAC0, 287 bytes (+ int3 padding), `ret 4` (one exit is the tail `jmp` to
@@ -103,7 +103,9 @@ class CTCDegradableBase { public:
     const CDegradableInfo* GetDegradableInfoForHealthPercentage(float percentage);   // 0x008EC940
     void ChangeMesh(const CEngineGraphic& graphic);         // 0x008EC9C0
     void ShowParticleEffects(long emitter);                 // 0x008ECA50
+    private:
     void OnParentHealthChanged(bool fromHit);
+    public:
 };
 
 void CTCDegradableBase::OnParentHealthChanged(bool fromHit)

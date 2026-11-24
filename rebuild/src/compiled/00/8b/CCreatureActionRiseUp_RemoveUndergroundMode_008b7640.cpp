@@ -1,5 +1,5 @@
 // CCreatureAction_RiseUp::RemoveUndergroundMode() -- take the creature out of mode 30 through its mode-manager component (interface type 0x31) and refresh the mini-map display
-// Leaf: ?RemoveUndergroundMode@CCreatureAction_RiseUp@@QAEXXZ
+// Leaf: ?RemoveUndergroundMode@CCreatureAction_RiseUp@@IAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B7640, length 96 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x31 = bit 17 of the
@@ -31,7 +31,9 @@ class CCreatureAction_RiseUp { public:
     virtual void v00();
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;      // +0x08
+    protected:
     void RemoveUndergroundMode();
+    public:
 };
 
 void CCreatureAction_RiseUp::RemoveUndergroundMode()

@@ -31,7 +31,10 @@ class CTCDegradableBase : public CTCBase { public:
     void*         PParentThingPhysical;                     // +0x18 CThingPhysical*
     bool IsAvailableToHit() const;                          // 0x008EC7E0
     void SetAvailabilityToHitFromFrame(long frame) { LastWorldFrameHit = frame; }
-    void OnParentHealthChanged(bool fromHit);               // 0x008ECAC0
+    private:
+    void OnParentHealthChanged(bool fromHit);
+    public:
+               // 0x008ECAC0
     void OnHit(const C3DVector& position, const C3DVector& direction);
 };
 

@@ -10,7 +10,7 @@
 // out of the block in helper, dummy, volume order; the volume pointer is the end of the dummy-object array, typed
 // pointer arithmetic `(C3DDummyObject*)base + dummyObjects` (`add ebp,eax`: the byte offset as destination; a byte-offset
 // add commutes to `add eax,ebp`).
-// Leaf: AllocateBuffers@C3DMeshStats
+// Leaf: ?AllocateBuffers@C3DMeshStats@@AAE_NKKK@Z
 class CMovableResource { public: virtual void RelocateData(); };
 class CHandleBasedMemoryPool
 {
@@ -40,7 +40,9 @@ class C3DMeshStats : public CMovableResource { public:
     unsigned char _54[0x20];
     unsigned char* MeshVolumeData;                  // +0x74
     unsigned short MeshVolumeDataSize;              // +0x78
+    private:
     bool AllocateBuffers(unsigned long helperPoints, unsigned long dummyObjects, unsigned long meshVolumeBytes);
+    public:
 };
 
 bool C3DMeshStats::AllocateBuffers(unsigned long helperPoints, unsigned long dummyObjects, unsigned long meshVolumeBytes)

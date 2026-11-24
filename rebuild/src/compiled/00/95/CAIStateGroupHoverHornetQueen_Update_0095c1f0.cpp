@@ -71,7 +71,10 @@ protected:
     bool IsStillRunnable();                     // 0x0095A420 (protected: Ego_r/FableWin IAE)
 public:
     bool GoToSpawnPoint();                      // 0x0095B020
-    void PlayIdle();                            // 0x0095B680
+    protected:
+    void PlayIdle();
+    public:
+                            // 0x0095B680
     protected: void Spawn(); public:                               // 0x0095B820
     protected: void DiveBomb(); public:                            // 0x0095B9E0
     protected: void Attack(); public:                              // 0x0095BCF0

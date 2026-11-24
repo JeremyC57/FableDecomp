@@ -142,7 +142,10 @@ public:
 
 class CEnginePrimitiveManagerOcclusionBase {
 public:
-    bool IsClippedByNearPlane(const CMatrix3x4& box);                          // 0x00B900B0
+    private:
+    bool IsClippedByNearPlane(const CMatrix3x4& box) const;
+    public:
+                          // 0x00B900B0
     void DrawVisibilityTestBox(const CMatrix3x4& box, unsigned long handle);   // 0x00B906C0
     void DrawDebugVisibilityTestBox(const CMatrix3x4& box, unsigned long colour);   // 0x00B90700
     void RenderBoundingBox(CEngineInternalPrimitiveOcclusionBase* primitive);

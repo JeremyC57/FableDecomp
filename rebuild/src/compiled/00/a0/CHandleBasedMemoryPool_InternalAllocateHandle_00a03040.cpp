@@ -1,3 +1,4 @@
+// Leaf: ?InternalAllocateHandle@CHandleBasedMemoryPool@@AAEJXZ
 // CHandleBasedMemoryPool::InternalAllocateHandle() -- pop the free-handle chain (FirstUnusedHandle threads free slots of the handle array through the slots themselves; -1 ends it): the popped slot is marked -1 and its index returned; otherwise append a null slot and return the old count
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A03040, length 136 bytes.
 // Callees: the retail vector's reallocating insert @ 0x00A03900 (where, const T& value, const SScalarTag& tag, count, noTail).
@@ -33,7 +34,9 @@ class CHandleBasedMemoryPool { public:
     unsigned char       _pad[0x438];
     CHandleArray_Retail Handles;                   // +0x438
     long                FirstUnusedHandle;         // +0x444 (-1 = none)
+    private:
     long InternalAllocateHandle();
+    public:
 };
 
 long CHandleBasedMemoryPool::InternalAllocateHandle()

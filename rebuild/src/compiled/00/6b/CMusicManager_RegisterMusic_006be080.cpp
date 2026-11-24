@@ -1,7 +1,7 @@
 // CMusicManager::RegisterMusic() -- for every CMusicEntry of the sound def build "Data\\Sound\\" + the string-table file name as
 //   both the source and destination wide names, swap ".wma" for ".ogg" in each, add (ID, entry) to the registered-music vector map
 //   (push_back + Dirty), then sort the map once if it is dirty
-// Leaf: RegisterMusic
+// Leaf: ?RegisterMusic@CMusicManager@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BE080, 628 bytes (plain `ret`). Caller: CMusicManager::CMusicManager 0x006BE300 (landed).
 // Callees: CDefStringTable::GetString 0x009D49B0 on the global table 0x013CA828, CCharString::ToWideString 0x0099E480,
 //   ~CCharString 0x0099EAE0, the sound-directory helpers 0x0041A3F0 / 0x0041A3D0 (byte-identical `__fastcall` hidden-result
@@ -119,7 +119,9 @@ class CMusicManager { public:
     long CurrentState[6];                   // +0x00
     CDefPointer<const CSoundDef> PSoundDef; // +0x18
     CRegisteredMusicMap RegisteredMusic;    // +0x1c
+    protected:
     void RegisterMusic();
+    public:
 };
 
 static inline CWideString GetWideText(unsigned long id)

@@ -1,6 +1,6 @@
 // CGPUScratchBufferTextureManager::AllocResourceEntry(long page) -- take a free resource slot (or append a default
 // entry), bind it to the memory page and list it on that page; returns the resource index
-// Leaf: AllocResourceEntry
+// Leaf: ?AllocResourceEntry@CGPUScratchBufferTextureManager@@AAEJJ@Z
 // Naming wave 27 (family vl2, DECISIONS_W26 D6): the members are CArray<T> (Ego_r.pdb) over STLport std::vector<T, allocator<T> >:
 //   vector<CResourceEntry>::resize(size_type unsigned int, const T&) 0x00F385A0 and the protected vector<long>::_M_insert_overflow
 //   0x00440990 take their own rows' spellings. Was a row-local CRetailVector<T> (?resize@?$CRetailVector@.. / ?_M_insert_overflow@?$CRetailVector@J..K_N).
@@ -96,7 +96,9 @@ public:
     CArray<CResourcePage> MemoryPages;       // +0x10
     unsigned char _pad1c[0x18];
     CArray<long> FreeTextureSlots;           // +0x34
+    private:
     long AllocResourceEntry(long page);
+    public:
 };
 
 long CGPUScratchBufferTextureManager::AllocResourceEntry(long page)

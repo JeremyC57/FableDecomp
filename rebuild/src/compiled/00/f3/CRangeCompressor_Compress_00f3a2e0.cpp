@@ -49,7 +49,10 @@ struct CRangeCompressor {
             return *(const unsigned short*)source;
         return *source;
     }
-    long CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts);   // 0x00F39E50
+    private:
+    long CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts);
+    public:
+   // 0x00F39E50
     long Compress(const unsigned char* source, long count, long stride, unsigned char* dest, const CArray<CScriptEntry>& entries);
 };
 

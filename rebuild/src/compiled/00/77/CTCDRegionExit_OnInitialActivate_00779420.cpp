@@ -24,7 +24,10 @@ public:
     float   Radius;                             // +0x14
     float   MessageRadius;                      // +0x18
     unsigned __int64 EntranceConnectedToUID;    // +0x20
-    void SetUpPEntranceConnectedToFromUID();    // 0x00779340
+    private:
+    void SetUpPEntranceConnectedToFromUID();
+    public:
+    // 0x00779340
 };
 
 void CTCDRegionExit::OnInitialActivate()

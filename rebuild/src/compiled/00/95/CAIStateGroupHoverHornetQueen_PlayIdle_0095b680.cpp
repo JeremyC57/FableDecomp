@@ -1,3 +1,4 @@
+// Leaf: ?PlayIdle@CAIStateGroup_HoverHornetQueen@@IAEXXZ
 // CAIStateGroup_HoverHornetQueen::PlayIdle() -- play the SPECIAL_BOAST combat animation and wait for it, then terminate unless the group is still runnable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B680, length 102 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0,
@@ -55,7 +56,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
 protected:
     bool IsStillRunnable();                         // 0x0095A420 (protected: Ego_r/FableWin IAE)
 public:
+    protected:
     void PlayIdle();
+    public:
 };
 
 void CAIStateGroup_HoverHornetQueen::PlayIdle()

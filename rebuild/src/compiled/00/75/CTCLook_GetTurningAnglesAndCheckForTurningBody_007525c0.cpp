@@ -66,7 +66,10 @@ class CTCLook { public:
             return 1;
         return 0;
     }
-    bool GetTurningAngles(float& angleYZ, float& angleXY);   // 0x00751E80
+    private:
+    bool GetTurningAngles(float& angleYZ, float& angleXY);
+    public:
+   // 0x00751E80
 private:
     bool GetTurningAnglesAndCheckForTurningBody(float& angleYZ, float& angleXY);
 };

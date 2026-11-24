@@ -1,5 +1,5 @@
 // CScriptBase::UpdateSpawnedFunction(CSpawnedFuncBase* func) -- run one script frame of a spawned script thread: honour pause, interrupt and predicate state, and report whether the thread is still alive
-// Leaf: UpdateSpawnedFunction
+// Leaf: ?UpdateSpawnedFunction@CScriptBase@@IAE_NPAVCSpawnedFuncBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7950, length 169 bytes (`ret 4`, bool).
 // PDB: ?UpdateSpawnedFunction@CScriptBase@@IAE_NPAVCSpawnedFuncBase@@@Z.
 // Callees: CSpawnedFuncBase::TestPredicate() const @ 0x00F35A00 (true without a predicate), CSpawnedFuncBase::RemovePredicate
@@ -57,7 +57,9 @@ public:
     void*             __vftable;                   // +0x00
     unsigned char     _containers[0x28];           // +0x04 Threads, EntityScripts, EntityScriptBindings, LastWorldUpdateFrame
     CSpawnedFuncBase* PActiveThread;               // +0x2c
+    protected:
     bool UpdateSpawnedFunction(CSpawnedFuncBase* func);
+    public:
 };
 
 bool CScriptBase::UpdateSpawnedFunction(CSpawnedFuncBase* func)

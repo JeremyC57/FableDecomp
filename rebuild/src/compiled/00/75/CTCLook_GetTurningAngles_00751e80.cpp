@@ -1,5 +1,5 @@
 // CTCLook::GetTurningAngles(float& targetAngle, float& turnAngle) -- when the body may turn (state bit 1, no blocking action, not bit 3), the XY angle to look along (direction or look-at position, else the recovery angle) and its difference from the body facing
-// Leaf: ?GetTurningAngles@CTCLook@@QAE_NAAM0@Z
+// Leaf: ?GetTurningAngles@CTCLook@@AAE_NAAM0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751E80, length 304 bytes (+ int3 padding), `ret 8`, bool in al. Called by
 // GetTurningAnglesAndCheckForTurningBody 0x007525C0 (landed).
 // Callees: CThingCreatureBase::IsPerformingAnyAction() @ 0x006622A0, the current action's virtual slot 50 (+0xC8, a
@@ -90,7 +90,9 @@ class CTCLook { public:
     long  LookFlags;                            // +0x64
     C3DVector PosToLookAt;                      // +0x68
     C3DVector DirectionToLookIn;                // +0x74
+    private:
     bool GetTurningAngles(float& targetAngle, float& turnAngle);
+    public:
 };
 
 bool CTCLook::GetTurningAngles(float& targetAngle, float& turnAngle)

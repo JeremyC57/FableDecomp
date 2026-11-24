@@ -1,5 +1,5 @@
 // CCreatureAction_FinishFireballSpell::SetAnims() -- if the caster has a fireball-spell component (interface 0x9d), use its release animation name as the action's animation
-// Leaf: ?SetAnims@CCreatureAction_FinishFireballSpell@@QAEXXZ
+// Leaf: ?SetAnims@CCreatureAction_FinishFireballSpell@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BAB70, length 98 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
@@ -39,7 +39,9 @@ public:
 };
 
 class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:
+    private:
     void SetAnims();
+    public:
 };
 
 void CCreatureAction_FinishFireballSpell::SetAnims()

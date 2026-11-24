@@ -1,3 +1,4 @@
+// Leaf: ?SaveBinary@C3DMeshStats@@QAEXAAVCDataOutputStream@@@Z
 // C3DMeshStats::SaveBinary(CDataOutputStream&) const -- write the name, flags, bounds, table sizes, the raw helper/dummy/name blocks, then each mesh volume and generator
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail @ 0x00A2EAA0, 407 bytes (ret 4).
@@ -87,10 +88,10 @@ class C3DMeshStats { public:
     char* PackedNames;                                    // +0x74
     unsigned short PackedNamesSize;                       // +0x78
     bool AnimatedFlag;                                    // +0x7A
-    void SaveBinary(CDataOutputStream& out) const;
+    void SaveBinary(CDataOutputStream& out);
 };
 
-void C3DMeshStats::SaveBinary(CDataOutputStream& out) const
+void C3DMeshStats::SaveBinary(CDataOutputStream& out)
 {
     out.WriteNullTerminatedString(Name);
     out.WriteEBOOL(AnimatedFlag);

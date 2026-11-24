@@ -232,7 +232,10 @@ class CTCNymph : public CTCBase { public:
     CIntelligentPointerConstThing PTarget;                  // +0x68
     bool IsDecentAttackRange(const C3DVector& target) const;      // 0x0080F190; NF236: Ego_r / FableWin spelling QBE (const)
     void FrameUpdate();
-    void PickNewTargetPos();                                // 0x0080F270
+    protected:
+    void PickNewTargetPos();
+    public:
+                                // 0x0080F270
 };
 
 

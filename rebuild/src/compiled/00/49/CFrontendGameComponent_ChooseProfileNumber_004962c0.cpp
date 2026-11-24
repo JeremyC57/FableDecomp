@@ -61,7 +61,10 @@ public:
     long                     ProfileNamesOffset;         // +0x1e18
     unsigned char            _pad1e1c[0x1e44 - 0x1e1c];
     long                     CursorHighlight;            // +0x1e44
-    CWideString CreateNewProfile();                      // 0x004945B0
+    private:
+    CWideString CreateNewProfile();
+    public:
+                      // 0x004945B0
     void ClearString() { memset(String, 0, sizeof(String)); StringPos = 0; }
     FABLE_FORCEINLINE void SetMode(EGameMode mode)
     {

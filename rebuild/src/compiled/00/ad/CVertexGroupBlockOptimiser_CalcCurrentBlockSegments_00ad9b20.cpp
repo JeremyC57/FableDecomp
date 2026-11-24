@@ -1,5 +1,5 @@
 // CVertexGroupBlockOptimiser::CalcCurrentBlockSegments() -- reset the per-block segment indices to -1 and the segment group list, then paint one new segment from every remaining block that no segment has claimed yet
-// Leaf: CalcCurrentBlockSegments
+// Leaf: ?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ
 // NF64 (round 7, q10639): the local vector stand-in replaced by stlport/fable_containers.h std::vector<long>; resize kept out of line
 //   (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE), binding ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z at 0x004428F0 (landed self row).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD9B20, 494 bytes + int3, plain `ret`.
@@ -126,7 +126,9 @@ public:
     unsigned long CurrentBlockSegmentCount;                    // +0x3c
 
     void PaintCurrentBlockSegment(unsigned long block);        // 0x00AD9380
+    private:
     void CalcCurrentBlockSegments();
+    public:
 };
 
 void CVertexGroupBlockOptimiser::CalcCurrentBlockSegments()

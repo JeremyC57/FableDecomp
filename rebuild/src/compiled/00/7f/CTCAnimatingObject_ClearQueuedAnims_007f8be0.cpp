@@ -1,5 +1,5 @@
 // CTCAnimatingObject::ClearQueuedAnims() -- empties the queued-animation list (frees every node, then re-links the sentinel to itself)
-// Leaf: ClearQueuedAnims
+// Leaf: ?ClearQueuedAnims@CTCAnimatingObject@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F8BE0, 50 bytes.
 // Callees: free @ 0x00BFEA14 (the STLport node allocator's deallocate).
 // Label: the chunk label "CParticleSystem::ClearAllDecals" is propagated; the only caller is
@@ -52,7 +52,9 @@ class CTCAnimatingObject { public:
     bool                          Animating;                 // +0x0c
     long                          CurrentAnimationPriority;  // +0x10
     CRetailList<CAnimInit>        QueuedAnims;               // +0x14
+    private:
     void ClearQueuedAnims();
+    public:
 };
 
 void CTCAnimatingObject::ClearQueuedAnims()

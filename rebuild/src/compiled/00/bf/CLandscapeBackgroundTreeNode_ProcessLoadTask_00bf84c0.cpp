@@ -97,7 +97,10 @@ class CLandscapeBackgroundTreeNode { public:
     bool                             VisibleLastFrameHasBeenUpdated;   // +0xe5
     float PeekMinZ() const { return BoundingBox[2]; }
     float PeekMaxZ() const { return BoundingBox[5]; }
-    bool TestIfLoadTaskCanBeAborted(long lod, bool abort);   // 0x00BF6490
+    private:
+    bool TestIfLoadTaskCanBeAborted(long lod, bool abort);
+    public:
+   // 0x00BF6490
     void OnSubNodeLoaded();                         // 0x00BF6750
     private:
     LS_LOADING_STATUS ProcessLoadTask(long lod, double time, bool abort, CEngineStaticMapFileBlockManager* manager);

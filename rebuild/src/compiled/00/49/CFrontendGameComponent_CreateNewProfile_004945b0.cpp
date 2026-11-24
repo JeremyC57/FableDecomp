@@ -1,5 +1,5 @@
 // CFrontendGameComponent::CreateNewProfile() -- name a new profile "NewProfile<n>" after the existing ones, create its folder, select it and save it
-// Leaf: ?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ (Ego_r.pdb AAE, private; modelled public)
+// Leaf: ?CreateNewProfile@CFrontendGameComponent@@AAE?AVCWideString@@XZ
 // Retail: Fable.exe @ 0x004945B0, 199 bytes, `ret 4` (hidden return buffer).
 // Body: number = ProfileNames.size() + 1; a CWideString (default ctor 0x0099AED0) Format(L"%d", number) (0x0099BA70,
 // cdecl varargs member, literal 0x0122DE44) returned by value from an inline helper (copy ctor 0x0099B720, ~CWideString
@@ -52,7 +52,9 @@ class CFrontendGameComponent {
 public:
     unsigned char            _pad0000[0x1e0c];
     std::vector<CWideString> ProfileNames;               // +0x1e0c
+    private:
     CWideString CreateNewProfile();
+    public:
 };
 CWideString CFrontendGameComponent::CreateNewProfile()
 {

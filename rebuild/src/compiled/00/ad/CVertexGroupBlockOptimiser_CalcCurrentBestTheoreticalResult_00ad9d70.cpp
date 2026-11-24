@@ -183,7 +183,10 @@ public:
     unsigned long MaxGroupIndex;                               // +0x40
     unsigned long MaxN;                                        // +0x44
 
-    void CalcCurrentBlockSegments();                           // 0x00AD9B20
+    private:
+    void CalcCurrentBlockSegments();
+    public:
+                           // 0x00AD9B20
     unsigned long CalcMinimumBlocks(const CRemainderArray& sizes, unsigned long& groupCount, CBoolArray& available,
                                     unsigned long count, unsigned long start);   // 0x00AD89B0
     private:

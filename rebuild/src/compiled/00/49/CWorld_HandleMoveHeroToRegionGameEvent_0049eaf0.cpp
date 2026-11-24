@@ -30,7 +30,10 @@ class CGameEvent { public:
 };
 #include "engine/C3DVector.h"
 class CWorld { public:
-    void SetAsLoadingRegion(const C3DVector& pos, float angleXY, bool viaTeleporter, bool force, bool viaDoor);   // 0x0049E2C0
+    protected:
+    void SetAsLoadingRegion(const C3DVector& pos, float angleXY, bool viaTeleporter, bool force, bool viaDoor);
+    public:
+   // 0x0049E2C0
     void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);
 };
 void CWorld::HandleMoveHeroToRegionGameEvent(const CGameEvent& event)

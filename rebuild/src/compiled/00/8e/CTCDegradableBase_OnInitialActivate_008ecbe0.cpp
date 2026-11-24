@@ -89,7 +89,10 @@ class CTCDegradableBase { public:
     void*                       PCurrentDegradableInfo;     // +0x14
     CThingPhysical*             PParentThingPhysical;       // +0x18
     CDefPointer<CDegradableDef> GetDefinition() const { return PDefinition; }
-    void OnParentHealthChanged(bool fromHit);               // 0x008ECAC0
+    private:
+    void OnParentHealthChanged(bool fromHit);
+    public:
+               // 0x008ECAC0
     void OnInitialActivate();
 };
 

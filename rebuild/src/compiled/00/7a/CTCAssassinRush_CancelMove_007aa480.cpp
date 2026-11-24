@@ -34,7 +34,10 @@ class CTCAssassinRush : public CTCBase { public:
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x9e - 0x08];
     bool          ScheduleForCancel;                        // +0x9e
-    void CleanUpEffects();                                  // 0x007AA370
+    private:
+    void CleanUpEffects();
+    public:
+                                  // 0x007AA370
     void CancelMove();
 };
 #pragma pack(pop)

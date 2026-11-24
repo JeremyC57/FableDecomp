@@ -71,7 +71,10 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
 class CCombatManager { public:
     unsigned char _pad00[0x30];
     float AttackPatternIdleStandardInterval;    // +0x30
-    void IncrementDefenderAttackPattern(CCombatantInfo& info);   // 0x006E8600
+    private:
+    void IncrementDefenderAttackPattern(CCombatantInfo& info);
+    public:
+   // 0x006E8600
     private:
     void UpdateDefenderAttackInstruction(CCombatantInfo& info);
     public:

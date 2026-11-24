@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseSecuritySweeps@CTCVillage@@AAEXXZ
 #pragma optimize("s",on)
 // CTCVillage::InitialiseSecuritySweeps @ 0x00659085
 
@@ -15,7 +16,9 @@ class CTCVillage
     Sweeps m_sweeps;      // +0x5c
     char  pad60[0xb8-0x60];  // +0x60 .. +0xb7
     float m_field_b8;     // +0xb8
+    private:
     void InitialiseSecuritySweeps();
+    public:
 };
 
 void CTCVillage::InitialiseSecuritySweeps()

@@ -22,7 +22,10 @@ class CInputProcessZTarget { public:
     unsigned char      _pad28[0xc];
     long               m_lockTimer;                // +0x34
     bool IsButtonHeld(long a, long b);             // 0x00687D50
-    void DeactivateZTarget(CProcessedInput& processed);   // 0x00688BA0
+    private:
+    void DeactivateZTarget(CProcessedInput& processed);
+    public:
+   // 0x00688BA0
 };
 
 void CInputProcessZTarget::Update(CProcessedInput& processed)

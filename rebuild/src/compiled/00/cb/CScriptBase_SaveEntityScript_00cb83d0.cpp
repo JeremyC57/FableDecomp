@@ -1,5 +1,5 @@
 // CScriptBase::SaveEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script) -- persist an active entity script into a string and, when anything was written, record it as the entity's persisted script
-// Leaf: SaveEntityScript
+// Leaf: ?SaveEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB83D0, length 103 bytes (+9 int3 padding).
 // PDB: ?SaveEntityScript@CScriptBase@@IAEX_KAAVCActiveEntityScriptBase@@@Z.
 // Callees: CCharString::CCharString() @ 0x0099E4B0, CPersistContext::CPersistContext(CCharString&) @ 0x009BAE10,
@@ -42,7 +42,9 @@ struct CRuntimeScriptedEntityPersist {
 class CScriptBase {
 public:
     virtual ~CScriptBase();
+    protected:
     void SaveEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);
+    public:
 private:
     unsigned char _body[0x30 - 4];
     NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;   // +0x30 (retail)

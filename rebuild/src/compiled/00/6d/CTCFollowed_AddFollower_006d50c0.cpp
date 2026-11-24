@@ -66,7 +66,10 @@ class CTCFollowed { public:
     CAICreaturePointerList AIFollowers;             // +0x10
     bool IsFollower(const CThing* thing) const;     // 0x006D4D70
     bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0 (Ego_r.pdb)
-    void AddEmoteIcon(CThing& thing);               // 0x006D4FD0
+    protected:
+    void AddEmoteIcon(CThing& thing);
+    public:
+               // 0x006D4FD0
     void AddFollower(CThing& follower, bool aiFollower);
 };
 

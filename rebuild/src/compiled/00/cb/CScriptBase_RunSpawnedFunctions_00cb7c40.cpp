@@ -72,7 +72,10 @@ public:
     protected:
     void RunSpawnedFunctions();
     public:
-    bool UpdateSpawnedFunction(CSpawnedFuncBase* thread);   // 0x00CB7950
+    protected:
+    bool UpdateSpawnedFunction(CSpawnedFuncBase* thread);
+    public:
+   // 0x00CB7950
 private:
     list<CCountedPointer<CSpawnedFuncBase> > Threads;      // +0x04
 };

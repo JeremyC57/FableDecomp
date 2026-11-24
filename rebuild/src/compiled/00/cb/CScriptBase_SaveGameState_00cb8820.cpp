@@ -41,7 +41,10 @@ public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual void PersistScriptData(CPersistContext& context);   // slot 4 (+0x10)
     void SaveGameState(CCharString& out);
-    void SaveEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);   // 0x00CB83D0
+    protected:
+    void SaveEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);
+    public:
+   // 0x00CB83D0
 private:
     void*               Threads;                     // +0x04
     CEntityScriptEntry* EntityScripts_start;         // +0x08

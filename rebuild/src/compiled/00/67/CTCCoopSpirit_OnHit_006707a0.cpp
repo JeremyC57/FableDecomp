@@ -33,7 +33,10 @@ class CTCCoopSpirit { public:
     void*                 __vftable;                        // +0x00
     unsigned char         _pad04[0x24];                     // +0x04 CTCBase .. Master
     const CCoopSpiritDef* PCoopSpiritDef;                   // +0x28 CDefPointer<CCoopSpiritDef const>
-    void AddAppearanceParticle(const CCharString& particleName);   // 0x00670560
+    private:
+    void AddAppearanceParticle(const CCharString& particleName);
+    public:
+   // 0x00670560
     void OnHit();
 };
 

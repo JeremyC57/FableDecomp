@@ -1,5 +1,5 @@
 // CTCKrakenTentacle::PerformStrikeDamage() -- if the kraken is alive and has a live target: turn the tentacle's facing by the def's explosion bodge angle, spawn the KRAKEN_TENTACLE_WHACK explosion that far along it (at the target's height) and hand it to the kraken, then replace the tentacle's physical obstruction with one spanning the def's min..max obstruction radii; count the strike; always clear CanStrike and the strike timer
-// Leaf: PerformStrikeDamage
+// Leaf: ?PerformStrikeDamage@CTCKrakenTentacle@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F11D0, 575 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (CIntelligentPointer<CThing> vtable
@@ -151,7 +151,9 @@ class CTCKrakenTentacle : public CTCBaseDefs { public:
     bool CanStrike;                                         // +0x28
     long StrikeTimer;                                       // +0x2c
     void RemoveObstruction();                               // 0x007F0810
+    private:
     void PerformStrikeDamage();
+    public:
 };
 
 void CTCKrakenTentacle::PerformStrikeDamage()

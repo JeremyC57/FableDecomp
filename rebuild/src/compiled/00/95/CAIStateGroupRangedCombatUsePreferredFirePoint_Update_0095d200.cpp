@@ -116,7 +116,10 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     void Terminate();                           // 0x008FCF40
     protected: bool IsStillRunnable(); public:                     // 0x0095D0E0
-    bool AttackEnemy();                         // 0x0095D070
+    protected:
+    bool AttackEnemy();
+    public:
+                         // 0x0095D070
     virtual void Update();
 };
 

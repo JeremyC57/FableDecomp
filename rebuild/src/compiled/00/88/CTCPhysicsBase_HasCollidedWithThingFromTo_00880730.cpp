@@ -22,8 +22,11 @@ class CTCPhysicsBase { public:
     virtual void v000();
     bool IsPhysicsMeshTypeMesh() const;                 // 0x006AFD30
     bool IsPhysicsMeshTypeCylinder() const;             // 0x006B0170
+    protected:
     bool HasSphereMeshCollidedFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to,
-                                     CPhysicsCollideResponse& response) const;                    // 0x00880640
+                                     CPhysicsCollideResponse& response) const;
+    public:
+                    // 0x00880640
     bool HasSphereCylinderCollidedAt(const CTCPhysicsBase& other, const C3DVector& pos,
                                      CPhysicsCollideResponse& response) const;                    // 0x008802B0
     bool HasSphereSphereCollidedAt(const CTCPhysicsBase& other, const C3DVector& pos,

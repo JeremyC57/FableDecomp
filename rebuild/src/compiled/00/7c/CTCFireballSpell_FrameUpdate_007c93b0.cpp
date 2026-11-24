@@ -153,7 +153,10 @@ public:
     long MaxLevelAllowableByStamina;            // +0x74
     long ReleaseDelayFrameCount;                // +0x78
     bool SpellFinished;                         // +0x7c
-    void ProcessLevellingUpFX();                // 0x007C8DE0
+    private:
+    void ProcessLevellingUpFX();
+    public:
+                // 0x007C8DE0
     void FinishSpell();                         // 0x007C9180 (Ego_r.pdb / FableWin.pdb ?FinishSpell@CTCFireballSpell@@QAEXXZ; non-virtual, called only from here)
     void FrameUpdate();
 };

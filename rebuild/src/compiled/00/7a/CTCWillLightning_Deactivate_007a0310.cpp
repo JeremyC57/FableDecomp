@@ -1,3 +1,4 @@
+// Leaf: ?Deactivate@CTCWillLightning@@AAEXXZ
 // CTCWillLightning::Deactivate() -- start the deactivation phase and deactivate every beam toward the casting player
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A0310, 146 bytes (+14 int3). __fastcall, `ret`. Callers 0x007A03F3, 0x007A272C,
@@ -42,7 +43,9 @@ class CTCWillLightning { public:
     CRetailList<CCountedPointer<CLightningBeam> > m_lbBeams;     // +0x68
     long m_lsState;                              // +0x6c ELightningState
     CIntelligentPointer m_cbpPlayer;             // +0x70
+    private:
     void Deactivate();
+    public:
 };
 void CTCWillLightning::Deactivate()
 {

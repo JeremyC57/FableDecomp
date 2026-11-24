@@ -60,7 +60,10 @@ class CEngineWaterRenderer {
 public:
     unsigned char _pad[0x296];
     bool          OcclusionEnabled;                // +0x296
-    void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);   // 0x00B6E010
+    private:
+    void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);
+    public:
+   // 0x00B6E010
 private:                                       // Ego_r.pdb 0x00A1BD40 / FableWin.pdb 0x02D4E9D0: private (AAE)
     void RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time);
 };

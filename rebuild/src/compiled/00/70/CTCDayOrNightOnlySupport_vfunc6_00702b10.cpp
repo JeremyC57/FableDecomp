@@ -58,7 +58,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& sectionName);   // 0x004AF350
+    CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& sectionName) const;   // 0x004AF350
 };
 class CThing { public:
     unsigned char _pad00[0x58];

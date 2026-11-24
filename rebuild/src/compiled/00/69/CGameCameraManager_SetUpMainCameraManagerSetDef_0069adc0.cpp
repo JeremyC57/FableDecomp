@@ -23,7 +23,7 @@
 #include "engine/CCameraManagerSetDef.h"
 // CGameCameraManager::SetUpMainCameraManagerSetDef() -- use the current region's camera manager set (its def's
 // CameraManagerSetIndex), or the CAMERA_MANAGER_SET_DEFAULT set when the region names none
-// Leaf: SetUpMainCameraManagerSetDef
+// Leaf: ?SetUpMainCameraManagerSetDef@CGameCameraManager@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069ADC0, length 192 bytes, `ret`.
 // Callees: CWorld virtual slot 13 PeekWorldMap (+0x34), CWorldMap::GetCurrentRegionNumber @ 0x004FB150,
 // CWorldMap::GetRegion(long) @ 0x004FC180, CDefinitionManager::GetDef<CCameraManagerSetDef>(long, CDefPointer*)
@@ -62,7 +62,9 @@ public:
     unsigned char _pad004[0x70];
     CWorld* World;                                  // +0x74
     void SetCameraManagerSetDef(const CDefPointer<const CCameraManagerSetDef>& def);   // 0x0069AC90
+    private:
     void SetUpMainCameraManagerSetDef();
+    public:
 };
 void Store_CGameCameraManager_SetCameraManagerSetDef(CGameCameraManager* manager, const CCameraManagerSetDef* def);   // stand-in callee
 #pragma auto_inline(off)

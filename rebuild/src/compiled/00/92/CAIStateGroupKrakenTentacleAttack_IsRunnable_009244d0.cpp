@@ -53,7 +53,7 @@ class CAIStateGroupBase { public:
 };
 
 class CTCKrakenTentacle { public:                      // interface type 0xE3 component
-    bool GetShouldStrike();                     // 0x007F1410
+    bool GetShouldStrike() const;                     // 0x007F1410
 };
 
 struct CAIStateGroup_KrakenTentacleAttack : CAIStateGroupBase {

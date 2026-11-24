@@ -1,3 +1,4 @@
+// Leaf: ?IsUsingJoystickDeviceNumber@CPlayer@@QBE_NJ@Z
 // CPlayer::IsUsingJoystickDeviceNumber  retail 0x004874f0
 // __fastcall bool(CPlayer*, long)
 
@@ -12,10 +13,10 @@ class CPlayer { public:
 	CInputThing *PlayerManager;   // +0x10
 	char pad14[0x28 - 0x14];
 	long Number;           // +0x28  stored joystick device number
-	bool IsUsingJoystickDeviceNumber(long which);
+	bool IsUsingJoystickDeviceNumber(long which) const;
 };
 
-bool CPlayer::IsUsingJoystickDeviceNumber(long which)
+bool CPlayer::IsUsingJoystickDeviceNumber(long which) const
 {
 	long stored = this->Number;
 	if (((CPlayerManager*)(this->PlayerManager))->GetPlayerNumberFromJoystickDeviceNumber(which) == stored)

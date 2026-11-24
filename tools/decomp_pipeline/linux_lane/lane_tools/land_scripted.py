@@ -36,6 +36,16 @@ for l in open("rebuild/candidates/manual/COORDINATION_CLAIMS.tsv").read().splitl
     if len(f) > 4 and f[4] not in ("done", "released"):
         for a in acc:
             if a in l.lower() and a not in held: held[a] = "open claim"
+# staleness: the source a run generated its candidate from must still be the landed source (a later landing may have changed it); the run's
+# HEAD payloads are <run>/head/payload.json, or for a unit run (<work>/run) <work>/self/head and <work>/bind/head
+import glob as _g
+heads = {}
+for p in _g.glob(f"{run}/head/payload.json") + _g.glob(f"{os.path.dirname(run.rstrip('/'))}/*/head/payload.json"):
+    for x in json.load(open(p))["result"]["authored"]: heads.setdefault(x["address"], x["source_cpp"])
+for a in acc:
+    if a in held or a not in ent: continue
+    if a not in heads: held[a] = "stale check: no HEAD payload for the row"; continue
+    if open("rebuild/src/compiled/" + ent[a]["Source"], encoding="utf-8").read() != heads[a]: held[a] = "stale: the landed source changed since the run"
 # a unit run (unit_fix.py) lands whole or not at all: one held member holds its unit
 unit = {}
 if os.path.exists(f"{run}/UNITS.tsv"):

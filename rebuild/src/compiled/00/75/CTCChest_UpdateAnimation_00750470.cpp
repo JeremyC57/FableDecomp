@@ -1,5 +1,5 @@
 // CTCChest::UpdateAnimation(float time) -- advance the chest's animation (its CTCAnimationComplex's animate-thing) by the given time step
-// Leaf: ?UpdateAnimation@CTCChest@@QAEXM@Z
+// Leaf: ?UpdateAnimation@CTCChest@@AAEXM@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x00750470, 110 bytes (`ret 4`). Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x0040F020, CTCAnimationComplex::GetAnimation @ 0x0070B460 (`mov eax,[ecx+0Ch]`; manifest
@@ -34,7 +34,9 @@ class CTCAnimationComplex { public:
 class CTCChest { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
+    private:
     void UpdateAnimation(float time);
+    public:
 };
 
 void CTCChest::UpdateAnimation(float time)

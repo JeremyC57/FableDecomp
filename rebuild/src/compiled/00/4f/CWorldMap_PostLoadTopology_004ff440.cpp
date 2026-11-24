@@ -57,7 +57,10 @@ public:
     virtual void PostLoadTopology(long map);    // slot 7
     unsigned char    _pad04[0x1c];
     CArray<CMapInfo> Maps;                      // +0x20 (PDB +0x24)
-    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);    // 0x0063E2E0
+    protected:
+    void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);
+    public:
+    // 0x0063E2E0
 protected:
     void UpdateAllEdges();                      // 0x0063DFD0
 public:

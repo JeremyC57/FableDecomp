@@ -174,7 +174,10 @@ class CTCNymph : public CTCBase { public:
     unsigned char _pad5c[0x60 - 0x5c];
     long FadeCounter;                                       // +0x60
     long TotalFadeTime;                                     // +0x64
-    void PickNewTargetPos();                                // 0x0080F270
+    protected:
+    void PickNewTargetPos();
+    public:
+                                // 0x0080F270
     void StartFlyingAround(long fadeTime);
 };
 

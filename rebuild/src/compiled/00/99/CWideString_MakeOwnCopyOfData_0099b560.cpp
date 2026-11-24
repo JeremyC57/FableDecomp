@@ -1,3 +1,4 @@
+// Leaf: ?MakeOwnCopyOfData@CWideString@@IAEXXZ
 // CWideString::MakeOwnCopyOfData() -- copy-on-write for wide strings: when the shared block has more than one owner, clone its text into a fresh block, drop our reference to the old one and adopt the clone
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099B560, length 128 bytes.
 // Label correction: the manifest's "CCharString::MakeOwnCopyOfData" is the narrow twin (landed 0x0099EAF0, same
@@ -52,7 +53,9 @@ class CWideString {
 public:
     CWideStringData* PStringData;             // +0x00
     protected: void UnassignString(); public:                    // 0x0099B4D0; NF299: PDB access (Ego_r + FableWin IAE), was public
+    protected:
     void MakeOwnCopyOfData();
+    public:
 };
 
 void CWideString::MakeOwnCopyOfData()

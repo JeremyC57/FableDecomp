@@ -78,7 +78,7 @@ public:
 #include "engine/CPlayerManager.h"
     // 0x00449970
 class CQuestManager { public:
-    bool IsQuestCardActive(const CCharString& name);    // 0x004AF560
+    bool IsQuestCardActive(const CCharString& name) const;    // 0x004AF560
     bool ActivateQuestCard(CThing* card, bool b);       // 0x004B4AA0
 };
 class CDefinitionManager

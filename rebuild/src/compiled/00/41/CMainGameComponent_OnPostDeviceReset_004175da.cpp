@@ -16,7 +16,10 @@ class CDeviceResetCallback { public:
     virtual bool OnPostDeviceReset() = 0;
 };
 class CMainGameComponent : public CGameComponent, public CDeviceResetCallback { public:
-    void InitialiseFonts();                              // 0x004168DC
+    protected:
+    void InitialiseFonts();
+    public:
+                              // 0x004168DC
     virtual bool OnPreDeviceReset();
     virtual bool OnPostDeviceReset();
 };

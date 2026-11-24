@@ -34,7 +34,10 @@ struct CTCCreatureGeneratorCreator : CTCBase {
     bool                Generated;                      // +0x10
     CIntelligentPointer<CThing> PGenerator;                     // +0x11
     unsigned __int64    GeneratorUID;                   // +0x20
-    bool IsGeneratorAlive();                            // 0x007C98A0
+    protected:
+    bool IsGeneratorAlive() const;
+    public:
+                            // 0x007C98A0
     void OnInitialActivate();
 };
 

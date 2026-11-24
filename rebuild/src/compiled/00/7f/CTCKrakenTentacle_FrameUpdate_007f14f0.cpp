@@ -104,7 +104,10 @@ class CTCKrakenTentacle : public CTCBase { public:
     void RemoveObstruction();                        // 0x007F0810
     private: void TrackTarget(); public:                              // 0x007F0C70
     private: void ReturnToDesiredPos(bool immediately); public:       // 0x007F0F40
-    void PerformStrikeDamage();                      // 0x007F11D0
+    private:
+    void PerformStrikeDamage();
+    public:
+                      // 0x007F11D0
 };
 void CTCKrakenTentacle::FrameUpdate()
 {

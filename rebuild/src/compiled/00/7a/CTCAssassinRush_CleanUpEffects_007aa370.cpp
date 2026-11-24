@@ -1,5 +1,5 @@
 // CTCAssassinRush::CleanUpEffects() -- end the rush effects: drop the parent's rush creature mode (0x25), restore full alpha on the parent and on every living faded item, clear the faded-item list, and end the player's special-move mode when the parent is a living player-controlled thing
-// Leaf: ?CleanUpEffects@CTCAssassinRush
+// Leaf: ?CleanUpEffects@CTCAssassinRush@@AAEXXZ
 // Respell (agentFAM10, 2026-11-12): the callee 0x00487150 was bound as ?EndSpecialMoveMode@CPlayer@@QAEXXZ; Ego_r.pdb and FableWin.pdb name it ?SpecialAbilityUnfreezeControls@CPlayer@@QAEXXZ (declared in engine/CPlayer.h under FABLE_RETAIL_PLAYER_FREEZECONTROLS).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AA370, 268 bytes (+4 int3 padding), `ret`.
@@ -139,7 +139,9 @@ public:
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad08[0x64 - 0x08];
     CRetailVector< CIntelligentPointer<CThing> > ItemAlphaList;   // +0x64
+    private:
     void CleanUpEffects();
+    public:
 };
 
 void CTCAssassinRush::CleanUpEffects()

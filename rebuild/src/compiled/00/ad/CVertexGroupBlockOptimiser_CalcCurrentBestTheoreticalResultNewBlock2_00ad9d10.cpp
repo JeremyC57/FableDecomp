@@ -51,7 +51,10 @@ public:
     unsigned long      MaxGroupIndex;                          // +0x40
     unsigned long      MaxN;                                   // +0x44
 
-    void CalcCurrentBlockSegments();                           // 0x00AD9B20
+    private:
+    void CalcCurrentBlockSegments();
+    public:
+                           // 0x00AD9B20
     private:
     unsigned long CalcCurrentBestTheoreticalResultNewBlock2();
     public:

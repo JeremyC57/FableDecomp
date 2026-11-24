@@ -19,7 +19,10 @@ class CGPUScratchBufferTextureManager { public:
         long MultiSampleType; unsigned long UseageFlags; ESurfacePool MemoryPool;
     };
     void* Vtable; CResourceEntry* FirstResource; CResourceEntry* LastResource; CResourceEntry* EndResource;
-    long AllocResourceEntry(long); // 00f372b0
+    private:
+    long AllocResourceEntry(long);
+    public:
+ // 00f372b0
 private:
     void FreeResourceEntry(long); // 00f36f40 (private: Ego_r.pdb / FableWin.pdb AAE)
 public:

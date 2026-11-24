@@ -1,5 +1,5 @@
 // CCombatManager::SetupNextSequenceForAttacker(CCombatantInfo& info) -- reset the attacker's sequences, refuse an attacker whose primary-slot weapon does not fit (a ranged-weapon creature on the rotating ring needs a projectile weapon, a creature whose def demands it needs a melee weapon), pick the best sequence against the defender (CurrentSequence), and for a melee or break-into-melee sequence mark the attacker as the defender's last attacker and apply its combat block response (stopping if that ends its attack); any non-melee sequence then says its battle speech
-// Leaf: ?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+// Leaf: ?SetupNextSequenceForAttacker@CCombatManager@@AAEXAAUCCombatantInfo@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z; 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EB390, 622 bytes (624 with padding), `ret 4`.
 // Callees: CCombatManager::PerformSequenceReset 0x006EA2C0, the combatant map's find 0x006F0250, CCombatManager::
@@ -183,7 +183,9 @@ class CCombatManager { public:
 private:   // FableWin.pdb + Ego_r.pdb: private const ?GetBestSequenceIndexAttackerOnDefender@CCombatManager@@ABEJABUCCombatantInfo@@0@Z (NF237)
     long GetBestSequenceIndexAttackerOnDefender(const CCombatantInfo& attacker, const CCombatantInfo& defender) const;   // 0x006EAE20
 public:
+    private:
     void SetupNextSequenceForAttacker(CCombatantInfo& info);
+    public:
 };
 
 void CCombatManager::SetupNextSequenceForAttacker(CCombatantInfo& info)

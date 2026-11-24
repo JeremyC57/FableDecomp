@@ -73,7 +73,10 @@ class CTCClock : public CTCBase { public:
     unsigned char _pad08[4];
     void*         PDef;                                     // +0x0c CDefPointer<const CClockDef>
     float         LastTimeUpdated;                          // +0x10
-    float GetHandAnimationUpdateAmount();                   // 0x00732730
+    protected:
+    float GetHandAnimationUpdateAmount() const;
+    public:
+                   // 0x00732730
     void FrameUpdate();
 };
 

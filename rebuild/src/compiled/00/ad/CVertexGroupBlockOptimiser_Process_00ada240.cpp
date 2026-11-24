@@ -153,7 +153,10 @@ public:
     bool Greedy;                                               // +0x50
     unsigned long Iterations;                                  // +0x54
 
-    void CalcCurrentBlockSegments();                           // 0x00AD9B20
+    private:
+    void CalcCurrentBlockSegments();
+    public:
+                           // 0x00AD9B20
 private:
     unsigned long CountRemainingGroups() const;                // 0x00AD8ED0
 public:

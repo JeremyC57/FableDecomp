@@ -1,3 +1,4 @@
+// Leaf: ?DrawEmoteTypeText@CTCEmoteIcon@@ABEXABVCEnginePrimitivePrepareInfo@@@Z
 // CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info) -- within 24 units of the camera, draw the emote text in white half a unit above the thing's static focal point, scaled 1.4x the emote scale
 // Retry 10b (combined getter sweep, FIXES B-15): the graphic appearance and the emote font are read through inline getters (`ParentThing->GetGraphicAppearance()`, `PeekComponent()->GetEmoteFont()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071AB20, 244 bytes (+ int3 padding), `ret 4`.
@@ -93,10 +94,12 @@ class CTCEmoteIcon : public CTCBase { public:
     CWideString EmoteText;                      // +0x10
     long        EmoteIcon;                      // +0x14
     float       EmoteScale;                     // +0x18
-    void DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info);
+    private:
+    void DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info) const;
+    public:
 };
 
-void CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info)
+void CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info) const
 {
     const CWorld* camera = (&PeekWorld());
     const C3DVector& pos = ParentThing->GetPos();

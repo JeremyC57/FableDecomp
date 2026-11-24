@@ -1,3 +1,4 @@
+// Leaf: ?GetDayOrNightOnlyStringFromFullSectionName@CQuestManager@@QBE?AVCCharString@@ABV2@@Z
 // CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName) -- the part of a "<section>%<name>" quest section name after the '%', or "" when there is none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AF350, length 98 bytes (padded to 112), `ret 8` (hidden result + name).
 // Callees: CCharString::FindCharPos(char) @ 0x0099E5A0, CCharString::GetSubString(unsigned long, unsigned long) const
@@ -20,9 +21,9 @@ public:
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
 };
 class CQuestManager { public:
-    CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName);
+    CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName) const;
 };
-CCharString CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName)
+CCharString CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString& fullName) const
 {
     long pos = fullName.FindCharPos('%');
     if (pos > -1)

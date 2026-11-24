@@ -63,7 +63,10 @@ class CTCTrapBase : public CTCBase { public:
     unsigned char      _pad_0x18[0x20];
     CFadeInFadeOutBase TrapOpener;                      // +0x38
     protected: void UpdateTriggerThings(); public:                         // 0x007881AD
-    void UpdateTrigger();                               // 0x0078888A
+    protected:
+    void UpdateTrigger();
+    public:
+                               // 0x0078888A
     void FrameUpdate();
 };
 

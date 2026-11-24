@@ -1,5 +1,5 @@
 // CWorldMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI& area) -- clip the area to the world map and let every map under it initialise its passability from themes
-// Leaf: ?InitPassabilityFromThemesIfNecessary@CWorldMap@
+// Leaf: ?InitPassabilityFromThemesIfNecessary@CWorldMap@@IAEXABVC2DBoxI@@@Z
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0063E2E0, 210 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?InitPassabilityFromThemesIfNecessary@CWorldMap@@IAEXABVC2DBoxI@@@Z` (protected, non-virtual);
@@ -88,7 +88,9 @@ public:
     virtual void GetAllMapsInArea(const C2DBoxI& area, std::vector<unsigned long>& maps) const;   // slot 20 (+0x50)
 
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(long map, const C2DBoxI& area) const;   // 0x004FC4D0
+    protected:
     void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);
+    public:
 };
 
 void CWorldMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI& area)

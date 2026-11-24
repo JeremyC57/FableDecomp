@@ -6,9 +6,11 @@
 // (`bit - removed`, removed = bits squeezed out by earlier runs), then resumes after the run. VC strength-reduces
 // the two output arrays into one walking pointer plus the pointer difference homed in the dead argument slot;
 // the count lives in the `push ecx` frame word.
-// Leaf: CalcShuffleOperations
+// Leaf: ?CalcShuffleOperations@CRangeCompressor@@AAEJKPAK0@Z
 struct CRangeCompressor {
+    private:
     long CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts);
+    public:
 };
 
 long CRangeCompressor::CalcShuffleOperations(unsigned long mask, unsigned long* runMasks, unsigned long* shifts)

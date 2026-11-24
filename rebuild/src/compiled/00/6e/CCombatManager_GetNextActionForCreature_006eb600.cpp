@@ -42,7 +42,10 @@ struct CCombatantInfo { CThingCreatureBase* Parent;CAttackingCombatantInfo Attac
 class CCombatManager { public:
     void* VTable;unsigned char RegisteredCombatSequences[12];std::map<unsigned __int64, CCombatantInfo> Combatants;
     private: void PerformSequenceReset(CThingCreatureBase&); public: //0x006EA2C0 (NF308: AAE, both PDBs)
-    void SetupNextSequenceForAttacker(CCombatantInfo&); //0x006EB390
+    private:
+    void SetupNextSequenceForAttacker(CCombatantInfo&);
+    public:
+ //0x006EB390
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase& creature);
 };
 CCombatActionBase* CCombatManager::GetNextActionForCreature(CThingCreatureBase& creature){

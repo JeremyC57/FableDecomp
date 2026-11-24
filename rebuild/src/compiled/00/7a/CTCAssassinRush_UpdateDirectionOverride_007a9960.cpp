@@ -1,5 +1,5 @@
 // CTCAssassinRush::UpdateDirectionOverride() -- while the player pushes the analogue stick (input event 0x11) past 0.05, take the stick as the rush's override direction (Y flipped), normalised and rotated by the hero's relative movement angle
-// Leaf: UpdateDirectionOverride
+// Leaf: ?UpdateDirectionOverride@CTCAssassinRush@@AAEXXZ
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail 0x007A9960, 336 bytes, `ret`. Called once, from 0x007AA806 (twin of CTCBattleCharge::UpdateDirectionOverride 0x007A7000).
 // Callees: CInputEvent ctor 0x00A04410 / dtor 0x00A03B30, GFGetSystemManager 0x009A4EC0 (input manager +0x58), CThing::GetPlayer
@@ -75,7 +75,9 @@ public:
     unsigned char         _pad08[0x48 - 0x08];
     bool                  DirectionOverride;                // +0x48
     C3DVector             DirectionOverrideVector;          // +0x49
+    private:
     void UpdateDirectionOverride();
+    public:
 };
 #pragma pack(pop)
 

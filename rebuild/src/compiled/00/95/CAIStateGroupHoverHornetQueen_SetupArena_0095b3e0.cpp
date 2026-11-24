@@ -1,3 +1,4 @@
+// Leaf: ?SetupArena@CAIStateGroup_HoverHornetQueen@@IAEXXZ
 // CAIStateGroup_HoverHornetQueen::SetupArena() -- set up the circle points, make the queen not solid to everything around her (60 units), and take the arena centre from the "WaspQueenArenaCentre" track thing near her, else from her initial position
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B3E0, length 437 bytes (+ int3 padding).
@@ -82,7 +83,9 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     C3DVector StartPos;                         // +0x1c
     C3DVector ArenaCentrePos;                   // +0x28
     void SetUpCirclePoints();                   // 0x0095AB50
+    protected:
     void SetupArena();
+    public:
 };
 
 void CAIStateGroup_HoverHornetQueen::SetupArena()

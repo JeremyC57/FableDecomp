@@ -65,7 +65,10 @@ class C3DPrimitive2 { public:
     bool                           UploadedFlag;         // +0x64
     bool UploadAnimatedBuffers(unsigned long flags);
     private: bool UploadToIndexBuffer(unsigned long flags); public:              // 0x00A8F9E0
-    bool UploadToVertexBufferAnimated(unsigned long flags);     // 0x00A914B0
+    private:
+    bool UploadToVertexBufferAnimated(unsigned long flags);
+    public:
+     // 0x00A914B0
 };
 
 bool C3DPrimitive2::UploadAnimatedBuffers(unsigned long flags)

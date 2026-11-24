@@ -86,7 +86,10 @@ class CMusicManager { public:
     long                         PendingLoopCount;      // +0x38
     bool                         Paused;                // +0x3c
     CMusicManager();
-    void RegisterMusic();                               // 0x006BE080
+    protected:
+    void RegisterMusic();
+    public:
+                               // 0x006BE080
 };
 
 CMusicManager::CMusicManager()

@@ -1,5 +1,5 @@
 // CTCDRegionExit::SetUpPEntranceConnectedToFromUID() -- resolve the saved connected-entrance UID to its thing; when that thing is not alive and the game allows it, forget a UID whose map is unknown, unused or already loaded
-// Leaf: SetUpPEntranceConnectedToFromUID
+// Leaf: ?SetUpPEntranceConnectedToFromUID@CTCDRegionExit@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779340, length 224 bytes. Called only by the tail jump in
 // CTCDRegionExit::OnInitialActivate (vtable 0x0126AB54 slot 6, 0x00779420: `if (EntranceConnectedToUID) ...`).
 // Label correction: the catalog class "CTCActionUseScriptedHook" is wrong -- the UID at +0x20 and the unaligned
@@ -63,7 +63,9 @@ public:
     bool    ReversedOnMiniMap;                  // +0x28
     bool    HiddenOnMiniMap;                    // +0x29
     CIntelligentPointer<CThing> PEntranceConnectedTo;   // +0x2a
+    private:
     void SetUpPEntranceConnectedToFromUID();
+    public:
 };
 
 void CTCDRegionExit::SetUpPEntranceConnectedToFromUID()

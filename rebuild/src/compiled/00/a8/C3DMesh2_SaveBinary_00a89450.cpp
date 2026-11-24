@@ -43,7 +43,7 @@ class C3DPrimitive2 { public:
 
 class C3DMeshStats { public:
     unsigned char _body[0x7C];
-    void SaveBinary(CDataOutputStream& out) const;             // 0x00A2EAA0
+    void SaveBinary(CDataOutputStream& out);             // 0x00A2EAA0
 };
 
 class C3DMesh2 : public C3DMeshStats { public:
