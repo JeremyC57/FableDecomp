@@ -230,3 +230,36 @@
   line but still carries the T67 `// Inline-budget:` block and a `// Pick-any:` line naming only DESTROY_AUX_FASTCALL (it also uses
   UNINIT_COPY_FALSE_FASTCALL_PASS26 + the rebuild_abi.h / fable_compiler.h includes): rewrite those header lines with the next change.
   (d) The emitted ~vector<CAnimSetIt> copy (14 bytes) has no retail address checked (c9/pk.py NOADDR).
+## B24C10 (2026-11-24)
+- Lessons applied: MATCHING_PLAYBOOK "Inline decisions" (`a && b` sends 0.25 down the then-path; score rule); B24C9 KEY FINDING
+  (stock is the target, one site left); B24C9 correction (a) (forced test must force only the row).
+- (a) SETTLED: forced budget path for the CAnimSetIt overflow with FORCE_AFTER=150 (= the row's pipe index; inl/f150.txt): BOTH sites
+  (decisions 294 and 354) go down the budget path and are REJECTED (BUD r=0, lim negative = budget exhausted). Retail expands the
+  second -> compile order of this callee does NOT explain the split. No build-mode escalation for this residue.
+- c10/a1.cpp = v20u with `if (g_DrawCombinationAnims && true)` (DIAGNOSTIC ONLY, dead operand, not landable): RELOCATION_MATCH at
+  STOCK flags. So the whole residue is the static frequency of the combination block: ours 0.5, retail's must be <= ~0.36 (the
+  first-pass overflow at block*5*0.5 must be <= 0.91). c10/b1.cpp (`if (!g_DrawCombinationAnims) return state;`) DIFFER(2571v2395) 72 hunks.
+- Globals: 0x013756F7 and 0x01380BDA are each read exactly once in Fable.exe (no .data/.rdata pointer to them), initial value 1;
+  0x013756F4/F5/F6 (neighbours, also 1) are read from 0x0077BF97, 0x00839462/0x008F78xx, 0x00502513 -> a cluster of plain global
+  bools defined in one other TU (not function-local statics, not consts).
+- Local-static scope number: our object mangles ?sorted_combination_anims@?BH@ (23) = Ego_r's `23'` atexit name: a candidate form
+  must keep 23 (no extra block ahead of the static).
+- c10/a1 inline trace (inl/a1.txt): first site sc 79 (f 0.625, called), second expanded; admissible block window (0.173, 0.365]: one
+  `&&` level exactly. `true && A` (c10/esc2) also matches; nested `if (true)` blocks change the static's scope number (25 / 26 v 23).
+- Name: 0x013756F7 = NGlobalConsole::EnableCombinationAnimations (Ego_d.pdb public ?EnableCombinationAnimations@NGlobalConsole@@3_NA;
+  retail address in the NGlobalConsole bool cluster: 0x013756F4 DrawProximityFadeOutMeshes, 0x013756F5 CombatParticleEffects, both
+  landed; the only console bool about combination animations). Adopted in differ/ (v21, code unchanged: DIFFER(2507v2395) 21 hunks).
+  0x01380BDA (animation LOD) has no name anywhere (not in the console cluster; follows an RTTI name in .data): still descriptive.
+- ~vector<CAnimSetIt> pick-any copy (c9/pk.py NOADDR): 14 bytes `mov eax,[ecx]; test; je; push; call free; pop; ret` = the
+  folded POD-vector destructor present at dozens of retail addresses (0x0040E050, ...); retail's _$E2 inlines it. Not a risk.
+- Pick-any on a1: c9/pk.py all EQ; pickany_vs_retail.py 9 EQ + the known 0x00C59BA0 wrong binding (c10/pickany_a1.log).
+- differ/ header comments rewritten (Inline-split / Pick-any lines; the stale T67 block gone).
+- OUTCOME: row ESCALATED with a ready package (c10/inferred_pkg: payload.json, oracle.tsv, vland.log strict PASS). The landable
+  author form (no unevidenced operand) is still DIFFER(2507v2395).
+- LESSON (B24C10): when one plain-inline site is expanded but retail calls it and its twin in a later loop is expanded in both, grade
+  a diagnostic `&& true` on the enclosing `if` first: a one-grade test of "the block is colder in retail" before any loop-shape sweep;
+  then bound the window with an inline trace and use the local-static scope number (?BH@) to tell an operand from an extra statement.
+- (B24C10, after review) n1g / n2g (nested `if (true)`) RELOCATION_MATCH too (scope number becomes 25 / 26); aa2 (`&& true && true`)
+  DIFFER(2379v2395); `#pragma inline_depth(1|2)` around the first push loop: no effect (d1 / d2). Name 0x013756F7: ONE source (Ego_d
+  publics) + neighbours; 0x013756F6 / F0 are bound to non-console names, so the cluster argument is weak: OPEN DOUBT (comment reworded).
+  Inferred package payload renamed payload_INFERRED_NEEDS_OWNER.json. No $W/payload.json for this row.

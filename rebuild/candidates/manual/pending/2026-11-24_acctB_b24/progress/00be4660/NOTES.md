@@ -220,3 +220,20 @@ hvar.py (header-overlay variants), var.py-style text variants. No payload for th
 - Unified overlay: 00be3970/hdr (repo-current headers + ADDPOLY + FINDWATERVERT_EARLYOUT + GETEDGESTRIP + water helpers header +
   FINDVERT (FableWin while loop, FABLE_FORCEINLINE) + CEDGESTIPVERTEXARRAY_INDEX_ASSERT (Inferred)) is inert on both twins:
   pair u1 (without the arm) and u2 (with FABLE_RETAIL_CEDGESTIPVERTEXARRAY_INDEX_ASSERT) = water 16 / sea RELOCATION_MATCH.
+
+## B24C7 (2026-11-24): not reached (context spent on 0x0070D940). State unchanged from B24C6.
+## B24C8 (2026-11-24): not reached (context spent on 0x0070D940 and 0x00BE3970). State unchanged.
+
+## B24C9 (2026-11-24): not reached (context spent on 0x0070D940 and a short 0x00BE3970 pass). State unchanged.
+## B24C10 (2026-11-24) -- short pass (context spent on 0x0070D940's escalation and 0x00BE3970)
+- Baseline regrade of the S-form pair (c3/pair.sh c10base gx/b_gba1.cpp): water DIFFER(2381v2349) 16 hunks, sea RELOCATION_MATCH
+  (unchanged). Reading of c5/gba1_w.dd: the four inserted `jmp X` before loop heads are alignment consequences (ours jumps over the
+  pad where retail executes a 7-byte `lea esp,[esp]`, our code being shifted by the prologue's extra `mov ebp,edx`); the real residue
+  stays (a) the y argument piece in edx + `mov ebp,edx` (retail loads y straight into ebp, 0x00BE4689) and (b) the main-loop i start
+  (retail `xor eax,eax` .. `mov [esp+44h],eax`; ours an immediate store to [esp+40h] + entry jump) with the i / other slot pair
+  [esp+40h]/[esp+44h] swapped.
+- fwsize (c10fw, /EHsc): GetWaterVertex / GetWaterFanBaseVert / GetMainAxisVertexWorldPos / AddPoly SAME; IterateThroughAdjacentVerts
+  107i/304b v FableWin 109i/307b; FindFirstWaterAdjacentVertex 85i/240b v 89i/250b (both still open, as B24C3 recorded).
+- Callees: retail calls CArray<CTVertexWaterBackground>::push_back(const T&) 0x00BE4F90 x4 (the COMDAT right after the row, rep movsd
+  of 14 dwords), vector<unsigned short>::_M_insert_overflow 0x005135D0 x10 (our copy EQ, pickany_vs_retail), GetEdgeStrip x4.
+- No new grade beyond the baseline. Next (unchanged from B24C5): the y-piece colouring order (c2prio on S-form water v sea).

@@ -108,3 +108,13 @@ Warnings: 6 RELOC_NAME (folded bodies / placeholder labels, two-source lookups i
 `DeregisterCombatant` -> 0x006EA430 here v 0x006ED9C0 in landed 0x007355F0 -- the landed spelling of 0x006EA430 is wrong: it is
 `CCombatManager::SetAttackerAsBeenStruck` (Ego_r object order and size, FableWin agree; notes/00839940/NAME_FIXES.tsv). Pick-any: every
 leaf-called copy compared (agent's leafcopies.py): 12 EQ, 1 NEQ = the known GetDef<CMaterialDef> 0x0066C340 HEAD debt.
+
+## 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim: MATCHED, HELD for an owner decision (B24C10, re-verified 2026-11-24)
+In `held_needs_owner/` (not in rows/ or payload.json). RELOCATION_MATCH PASS at STOCK flags, strict vland, overlay additive (11 headers, -0;
+two new: CAnimateThing_GetMeshBank.h, CAnimSetItPriorityLessThan.h); every emitted COMDAT copy EQ (both pick-any tools). Warnings: label
+DELTA_NOTIONAL_ZERO; `_$E2` TU-local atexit thunk, equal to retail 0x01229630. The match needs `// Inferred:` a compile-time-true second operand
+on the combination-anims test: `if (EnableCombinationAnimations && true)`. Mechanism measured: one `&&` halves the block frequency (0.5 ->
+0.25), so the first pass's `_M_insert_overflow` site scores 79 > 74 and is called as in retail while the second pass stays expanded; the
+admissible frequency window is (0.173, 0.365]; two `&&` levels fail. A second condition that is always true in this build is plausible (a
+debug / feature flag), but `&& true` is not what anyone wrote, and the global's name `NGlobalConsole::EnableCombinationAnimations`
+(0x013756F7) rests on one source (Ego_d publics, no address). Owner decision asked.

@@ -128,3 +128,41 @@
   bodies ours treats differently (InsertGrow, _M_insert_overflow, SetTargetVertexNormal) is unanswered -- only "no same-object callee
   ahead" is shown.
 - (B24C8) j1: GetMainAxisVertexWorldPos as if/return (c8/hdr_j): DIFFER(2372v2390) 70 blocks -- worse; ternary kept.
+## B24C9 (2026-11-24) -- short pass (context spent on 0x0070D940, which reached RELOCATION_MATCH under /d2inlT67)
+- Baseline regrade (c9/g.sh = c8/g.sh writing to c9/): differ/00be3970.cpp DIFFER(2392v2390) 25 dd blocks (unchanged).
+- p2 (GetVert through a named `unsigned long vert_index = i`): identical (25). p1 (function-scope `CVertex* vert`) did not compile as
+  written (other `vert.` uses); B24C5 already tried pointer forms.
+- Lessons from 0x0070D940 worth trying here (not yet done): (1) c2prio.py --rotation / --trace on a LINE-SPLIT copy of the row (one
+  sub-expression per line; code is unchanged by line breaks) names which IL temp / candidate differs at the loop top -- use it before any
+  more spelling probes; (2) VC7.1 evaluates a member call's object expression BEFORE the arguments when the object is itself a call
+  (`GetX().F(arg)`), but the argument first when the object is a plain pointer or implicit `this`; an accessor chain written through a
+  call can therefore reorder IL (and CSE opportunities) with no other code change; (3) `mov ecx,this` before `push arg` at a join =
+  two calls tail-merged from an if/else.
+## B24C10 (2026-11-24)
+- Lessons applied: B24C9's call-object-first lesson (no call-object chain at the loop top: strip is a plain parameter pointer; the head's
+  `map->GetLandscapeMap()->GetEdgeStrip(..)` already evaluates the object first, = retail 0x00BE39BC); the sea twin's match (start through
+  a second accessor call instead of the reference); B24A's budget-path mechanism (callee compiled after the caller is expanded from its
+  unoptimised IL) as a candidate for the uncombined Data loads.
+- Baseline regrade c10/k0.cpp (= differ/) DIFFER(2392v2390) 25 dd blocks. No change: vert = strip->Verts[i] (k1, byte-identical),
+  `const CVertex& vert` (e2, 25); vert after start/end (e3, 71 -- as B24C5 b2).
+- Both head facts are "retail did NOT combine what ours combines": the loop-top Data load (fact 3) and the adjacent_index zero (fact 2:
+  retail `mov [esp+1Ch],0` + a separate `xor eax,eax` in FindVert; ours one zero register).
+- Compile-order / budget-path test (c10/runf.sh = B24A5 inlf.py on this row; FORCE regex, FORCE_AFTER=0): forcing
+  GetMainAxisVertexWorldPos down the budget path (all 5 sites expanded there, c10/fgm.txt) gives code BYTE-IDENTICAL to k0 -> the
+  inliner path / compile order of GetMainAxisVertexWorldPos does not make retail's second Data load. Forcing GetVert + both
+  CEdgeStipVertexArray::operator[] too (c10/fgv): operator[] is REJECTED on the budget path (called; 105 blocks) -> not retail either.
+  So the uncombined loop-top Data load is not an inliner-order fact; B24C5's m2 (a barrier between vert and start) stays the only
+  reproduction. Not escalated for the build mode.
+- Row state unchanged: differ/00be3970.cpp DIFFER(2392v2390) 25 dd blocks. Next idea not tried: a c2 tuple dump (c2probe/c2dbg.py hook
+  on the CSE pass) of k0 v m2 at the loop top, to see which IL node keeps the two [strip+8] loads apart in m2 and look for a source
+  construct that creates the same node without a volatile access.
+- (B24C10, KEY PROBE -- read first) Barrier class settled. c10/b1.cpp = k0 + `indices[0] = 0;` (a plain store through the
+  unsigned short* parameter) right after `vert = strip->GetVert(i)`: DIFFER(2403v2390) with only 4 dd blocks -- the WHOLE head becomes
+  retail's (prologue: no early push ebp; adjacent_index immediate store + separate FindVert zero; loop top: Data reloaded for start/end,
+  edx = -1, esi = strip, edi = i). What is left: the probe store itself (2 instructions), the SIB operand order of start's two loads
+  ([eax+esi+0Ah] v retail [esi+eax+0Ah]) and one alignment nop. c10/b2.cpp (a declared-only call there instead): 29 blocks (the call
+  clobbers registers) -- so a MEMORY STORE that c2 cannot disambiguate from strip->Verts.Data, between vert and start, is the missing
+  IL. Retail emits no such store, so it is a store c2 deletes after CSE (dead / redundant store) or one on a path we do not model.
+  Next: find the natural statement -- e.g. a store through `indices` or a vertex reference that is overwritten later on every path
+  (dead-store elimination after CSE), or a debug-only store whose target is later proven dead; grade each with c10/g.sh and look for
+  2390 bytes with the b1 head. (b1 / b2 are diagnostics only, not candidates.)
