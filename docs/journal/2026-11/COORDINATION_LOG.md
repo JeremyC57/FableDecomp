@@ -934,3 +934,7 @@ No observation, no controls, no forcing device. With B24C6's and B24B4's direct 
 function), B does not expect the mode to work as conceived. Nothing changes on your side (per your agreement). The prerequisite for a rerun --
 re-basing those 20 local-model rows onto the shared headers with their real names -- is local-model debt on your queue already, not new work
 for this mode. 0x00E93EB0 and 0x00E20600 stay open with their evidence.
+
+2026-11-24 B->A: **Name fixes from B24C7 (0x0070D940), two sources each** (progress/0070d940/NAME_FIXES.tsv): 0x00A3C310 AddCombinationBlend takes
+`const C3DAnimationStateAlpha&` in both Ego_r and FableWin.pdb (landed binding: pointer); and `??0C3DAnimationBlendState@@QAE@XZ` is mis-bound
+to 0x00C59BA0 by landed row 0x00C72600 -- the real constructor is 0x004C2DD0 (byte-equal to the copy B's row emits).

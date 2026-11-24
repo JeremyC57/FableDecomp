@@ -1,6 +1,6 @@
 // CAnimateThing::CalcInterpolatedMeshAnim(const CCompleteAnimation& anim, const CDelayedAnimation& delayed, float alpha) const -- build the blend state of a complete animation at an interpolation alpha: the main set, cross-faded from its transition sets (a chain of transition states weighted by their interpolated alphas, skipped beyond the animation LOD distance), plus every loaded combination anim of the current and the delayed animation, each list stable-sorted by priority
-// Grade: DIFFER(2689v2395) hunks=125 (128 dd blocks) on the shared headers (overlay $W/hdr) -- call set differs from retail only by inline budget: ours expands ~vector<CIVCountedPointer<C3DAnimationTransitionState> > (retail calls 0x00711760), both CAnimSetIt _M_insert_overflow sites (retail calls 0x00711080 once) and the main transition's SetStartState / SetEndState (retail calls 0x00710560 / 0x007105A0 twice each); head (LOD test, state ctor) is retail's.
-// Next: find what eats retail's inline budget before those sites (FableWin /Od sizes: C3DAnimationStateBase ctor 12i v ours 14i, CIVCountedPointer copy 22i v 18i, GetProgressFromAlpha 89i (asserts?)); see NOTES.md B24C6.
+// Grade: DIFFER(2482v2395) 127 hunks with /d2inlT67 (stock DIFFER(2610v2395) 122) -- call sequence = retail; residue: ours keeps 0 in ebp through the transition loop and `end` in memory where retail keeps `end` in ebx, and our scope-end releases keep their null stores (retail drops them)
+// Inline-budget: /d2inlT67 -- vector<CAnimSetIt>::_M_insert_overflow at the first combination pass scores 68 (cost 73 at f 1.25), retail calls it (0x0070DF89) and expands the second pass's; our copy of 0x00711080 is instruction-equal to retail's, no loop shape tried makes the site colder; every other decision unchanged (max expanded score 66). NOTES.md B24C7.
 // Leaf: ?CalcInterpolatedMeshAnim@CAnimateThing@@ABE?AVC3DAnimationBlendState@@ABVCCompleteAnimation@1@ABVCDelayedAnimation@1@M@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0070D940, 2395 bytes, thiscall `ret 10h` (hidden result + 3 arguments), frame 0x3C, no EH.
 //   Ego_r.pdb ?CalcInterpolatedMeshAnim@CAnimateThing@@ABE?AVC3DAnimationBlendState@@ABVCCompleteAnimation@1@ABVCDelayedAnimation@1@M@Z
@@ -24,8 +24,11 @@
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_FORCEINLINE
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT_ASSIGN
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_ISNULL
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_EARLY_RETURN
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_FROM_RAW
-#define FABLE_RETAIL_CIVCOUNTEDPOINTER_FORCEINLINE_RELEASE
 #define FABLE_RETAIL_C3DANIMATIONSTATE
 #define FABLE_RETAIL_C3DANIMATIONSTATEALPHA
 #define FABLE_RETAIL_C3DANIMATIONSTATEALPHA_INDEX_CTOR
@@ -56,6 +59,9 @@
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_STABLE_SORT_AUX_DECL
+#define FABLE_RETAIL_GFWORLD3DDISTANCE_SMALLER_DECL
+#define FABLE_RETAIL_CANIMSETITPRIORITYLESSTHAN
 #include "stlport/fable_containers.h"
 #include "engine/C3DAnimationTransitionState.h"
 #include "engine/C3DAnimationStateAlpha.h"
@@ -69,28 +75,14 @@
 #include "engine/C3DVector.h"
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
+#include "stlport/fable_algorithm.h"
+#include "engine/GFWorldDistance.h"
+#include "engine/CAnimSetItPriorityLessThan.h"
 
 extern float g_primitiveDrawDistanceScale;                          // 0x013B8774
 extern bool g_AnimationLOD;                                         // 0x01380BDA (name descriptive)
 extern bool g_DrawCombinationAnims;                                 // 0x013756F7 (name descriptive)
-bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& pos1, const C3DVector& pos2, float compare);   // 0x006614F0 (out of line)
-
-// Ego_r.pdb ??RCAnimSetItPriorityLessThan@@QBE_NABV?$_List_const_iterator@..@@0@Z: the stable_sort predicate (its body lives in
-// the out-of-line __stable_sort_aux 0x00711B80); Alpha is the interpolation alpha it compares the priorities at.
-class CAnimSetItPriorityLessThan { public:
-    float Alpha;
-    CAnimSetItPriorityLessThan(float alpha) : Alpha(alpha) { }
-};
 typedef std::list<CAnimSet>::const_iterator CAnimSetIt;
-namespace std {
-template <class _RandomAccessIter, class _Tp, class _Distance, class _Compare>
-void __fastcall __stable_sort_aux(_RandomAccessIter first, _RandomAccessIter last, _Tp*, _Distance*, _Compare comp);   // 0x00711B80
-template <class _RandomAccessIter, class _Compare>
-inline void stable_sort(_RandomAccessIter first, _RandomAccessIter last, _Compare comp)
-{
-    __stable_sort_aux(first, last, (CAnimSetIt*)0, (int*)0, comp);
-}
-}
 
 inline const C3DAnimationInfo& CAnimSet::PeekAnimInfo(short anim) const
 {
@@ -121,7 +113,8 @@ C3DAnimationBlendState CAnimateThing::CalcInterpolatedMeshAnim(const CCompleteAn
                 first->SetProgress(GetProgressFromAlpha(it->GetInterpolatedAlpha(alpha), total_alpha));
                 std::vector<CIVCountedPointer<C3DAnimationTransitionState> > transitions;
                 transitions.push_back(first);
-                for (++it; it != anim.TransitionAnimSets.end(); ++it) {
+                ++it;
+                while (it != anim.TransitionAnimSets.end()) {
                     CIVCountedPointer<C3DAnimationTransitionState> next(new C3DAnimationTransitionState);
                     end = it->GetMeshAnim(alpha);
                     next->SetStartState(transitions.back());
@@ -129,6 +122,7 @@ C3DAnimationBlendState CAnimateThing::CalcInterpolatedMeshAnim(const CCompleteAn
                     total_alpha += it->GetInterpolatedAlpha(alpha);
                     next->SetProgress(GetProgressFromAlpha(it->GetInterpolatedAlpha(alpha), total_alpha));
                     transitions.push_back(next);
+                    ++it;
                 }
                 transition = transitions.back();
             } else {

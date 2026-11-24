@@ -11,3 +11,21 @@ additive #ifdef sections (default branches unchanged); the B24C4 overlay is kept
 - engine/C3DAnimationBlendState.h FABLE_RETAIL_C3DANIMATIONBLENDSTATE_ADDCOMBINATIONBLEND: AddCombinationBlend(const C3DAnimationStateAlpha&)
   (Ego_r 0x00B96B60; retail 0x00A3C310).
 - engine/C3DAnimationInfo.h FABLE_RETAIL_C3DANIMATIONINFO_ISLOADED: IsLoaded() declaration (out of line 0x00A23F50).
+## B24C7 additions (2026-11-24)
+- engine/CAnimSet.h (FABLE_RETAIL_CANIMSET_MESHANIM section, own B24C6 addition): GetInterpolatedAlpha / GetInterpolatedInternalAlpha now
+  lerp through engine/GFGetInterpolatedValue.h (Ego_r / FableWin ?GFGetInterpolatedValue@@YIMMMM@Z, by-value floats). Evidence: retail
+  `fld last ; fld cur ; fsub st,st(1) ; fmul alpha ; fadd st,st(1) ; fstp st(0)` at every site (0x0070DA92, 0x0070E01B, ...) = a
+  by-value lerp (VC7.1 probe c7/gp/o1.cpp); FableWin GetInterpolatedAlpha 19i/45b = VC7.1 /Od 16i/36b of this text + FableWin's
+  3-instruction float pushes (x3). Includes engine/GFGetInterpolatedValue.h under the section.
+- engine/CIVCountedPointer.h (copy of the current repo header) + FABLE_RETAIL_CIVCOUNTEDPOINTER_CONVERT_ASSIGN (nested in CONVERT):
+  FableWin.pdb ??$?4VC3DAnimationTransitionState@@@?$CIVCountedPointer@VC3DAnimationStateBase@@@@QAEAAV0@ABV?$CIVCountedPointer@
+  VC3DAnimationTransitionState@@@@@Z (0x01EA5040, 35i/100b; this text 33i/93b); retail 0x0070DCFA..0x0070DD0D (one `inc [eax+4]` and
+  the store, no converted temporary). Forced under ASSIGN_FORCEINLINE like the same-type operator= (retail expands it; site score 144).
+- stlport/fable_algorithm.h (copy) + FABLE_RETAIL_STLP_STABLE_SORT_AUX_DECL: STLport stable_sort forwarding to the __fastcall
+  __stable_sort_aux (landed 0x00711B80; same mangled name as self_symbols.tsv) -- was row-local.
+- engine/GFWorldDistance.h (copy) + FABLE_RETAIL_GFWORLD3DDISTANCE_SMALLER_DECL: declaration of the out-of-line
+  ?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z (0x006614F0, bound) -- was row-local.
+- engine/CAnimSetItPriorityLessThan.h (NEW, no repo header) + FABLE_RETAIL_CANIMSETITPRIORITYLESSTHAN: Ego_r ??RCAnimSetItPriorityLessThan@@..
+  class; 4-byte functor carrying alpha (retail pushes `alpha` as the comparator, 0x0070DF9F / 0x0070E16A); Alpha / ctor descriptive.
+  (stable_sort is spelled over pointer iterators, `_Tp*`, not STLport's `_RandomAccessIter`: the value type is the pointee; marked
+  FABLE_FASTCALL as retail's out-of-line copy 0x00711C90. Inlined in this row, no bytes change.)
