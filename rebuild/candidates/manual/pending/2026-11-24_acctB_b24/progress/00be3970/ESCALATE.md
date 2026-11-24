@@ -7,3 +7,7 @@
   inert on both water twins (water z2 4 / gba1 16 dd blocks unchanged, sea gba1 still RELOCATION_MATCH, c3/ov_ea + c5 gbaea).
   Same kind of device as CArray.h's FABLE_RETAIL_CARRAY_INDEX_ASSERT (labelled INFERRED there).
 - The row is not matched; nothing here is ready to land.
+- (B24C6) The probe is now the real opt-in FABLE_RETAIL_CEDGESTIPVERTEXARRAY_INDEX_ASSERT in hdr/engine/CEdgeStipVertexArray.h (Inferred
+  comment with the evidence); differ/00be3970.cpp (= c6/s1.cpp) uses it, byte-identical to the probe build. Still Inferred: not for
+  this agent to land. Compile order: no effect in the three-body test (rest of the object untested): the row compiled in one TU before or after the
+  water / sea S-form bodies is byte-identical to its one-row compile (c6/ord, ../00be4660/NOTES.md B24C6).

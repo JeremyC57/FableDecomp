@@ -208,3 +208,15 @@ hvar.py (header-overlay variants), var.py-style text variants. No payload for th
   CLandscapePatchTesselator::TesselateEdge (0x00BE3970) and ~50 vector / CArray instantiations before both TesselateEdge bodies.
 - (B24C5, late) CEdgeStipVertexArray::operator[] dead-arm assert (c3/ov_ea, the device that moved 0x00BE3970 from 35 to 25 blocks)
   on the S-form pair gba1: water dd identical (16), sea RELOCATION_MATCH -- inert here, compatible as a shared opt-in for all three rows.
+## B24C6 (2026-11-24) -- compile-order test (coordinator / owner request): NO EFFECT
+- One TU holding the 0x00BE3970 body (00be3970/c6/s1.cpp, real opt-ins), the water and sea specialisations and the S-form template body
+  (c3/gx/b_gba1.cpp), compiled in three orders: landscape, water, sea (retail address order; o_lws) / landscape, sea, water (o_lsw) /
+  water, sea, landscape (o_wsl). Object symbol order confirms the bodies were emitted in the requested order (o_wsl: water, sea,
+  landscape). Files: 00be3970/c6/ord/o_*.cpp, grader 00be3970/c6/ord/ord.sh (fg per address + dd), outputs o_*_<addr>.dis/.dd.
+- Result: in all three orders, water = DIFFER(2381v2349) 16 dd blocks, sea = RELOCATION_MATCH, 0x00BE3970 = DIFFER(2392v2390) 25 blocks;
+  the water and 0x00BE3970 disassemblies are BYTE-IDENTICAL to the one-row compiles (u2_w.dis, 00be3970/c6/s1.dis). So the water
+  residue (prologue y edx; back-edge i/strip head piece) is NOT a compile-order effect of these bodies within one TU. (Not tested:
+  the rest of retail's object -- TesselateEdgeGeneric, constructors, DummyFuncInstantiateTemplates -- which a grouped build would add.)
+- Unified overlay: 00be3970/hdr (repo-current headers + ADDPOLY + FINDWATERVERT_EARLYOUT + GETEDGESTRIP + water helpers header +
+  FINDVERT (FableWin while loop, FABLE_FORCEINLINE) + CEDGESTIPVERTEXARRAY_INDEX_ASSERT (Inferred)) is inert on both twins:
+  pair u1 (without the arm) and u2 (with FABLE_RETAIL_CEDGESTIPVERTEXARRAY_INDEX_ASSERT) = water 16 / sea RELOCATION_MATCH.

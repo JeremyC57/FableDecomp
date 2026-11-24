@@ -1,1 +1,1 @@
-00be3970	CLandscapePatchTesselator::TesselateEdge	DIFFER(2392v2390) 25 dd blocks (probe overlay c5/hdr)	B24C5 ~30 grades	operator[] dead arm + FindVert while + helper texts; loop-top vert barrier open; see NOTES/ESCALATE
+00be3970	CLandscapePatchTesselator::TesselateEdge	DIFFER(2392v2390) 25 dd blocks (overlay hdr, real opt-ins)	B24C6	differ = c6/s1 (real opt-ins, FABLE_FORCEINLINE helpers, shared AddPoly); loop-top Data reload open; operator[] arm Inferred -> ESCALATE

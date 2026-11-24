@@ -70,3 +70,44 @@
   Next: find the natural statement that puts a store / barrier there (a store through a pointer the compiler cannot disambiguate from
   strip->Verts.Data, written between `vert` and `start`; or vert living in a struct / iterator object) -- read the Ego_d / FableWin
   line records on the owner's box if possible (TesselateEdge 0x02CBCC00 locals: is vert a CVertex*, CVertex&, or something else?).
+## B24C6 (2026-11-24)
+- Baseline regrade: c5/e1.cpp under c5/hdr = DIFFER(2392v2390), 25 dd blocks (unchanged). Tools: c6/g.sh (= c5/g.sh writing to c6/).
+- /Od oracle (fwsize, FW_EXTRA=/EHsc, c5/hdr): TesselateEdge ours 283i/854b v FableWin 458i/1600b (+175i, unaccounted: asserts + EH
+  frame?); AddCompositeVertex 129i v 133i; all small accessors SAME. FableWin address order after TesselateEdge 0x02CBCC00: FindVert,
+  GetVert, GetFanBaseVert, GetMainAxisVertexWorldPos, PeekVertexCount, PeekIsVertical, PeekEngineMap, AddPoly, AddFanBaseVertex,
+  AddDuplicateEdgeVertex, AddCompositeVertex (ours emits in definition order; PeekIsVertical only after AddCompositeVertex).
+- Real opt-ins built (hdr/, the B24C4 overlay kept as hdr_b24c4/): CPatchTesselationEdgeStrip.h FINDVERT (FableWin while loop,
+  FABLE_FORCEINLINE + evidence comment) on top of the twins' FINDWATERVERT_EARLYOUT header; CEdgeStipVertexArray.h
+  FABLE_RETAIL_CEDGESTIPVERTEXARRAY_INDEX_ASSERT (Inferred, evidence in the header); CLandscapeTesselatorBase.h ADDPOLY (twins');
+  CEngineLandscapeMap.h GETEDGESTRIP; CLandscapePatchTesselator.h EDGE_HELPERS; CWaterPatchTesselatorBase.h (twins'). c6/s1.cpp
+  (no local AddPoly, helpers FABLE_FORCEINLINE) = byte-identical to e1: DIFFER(2392v2390) 25 blocks. Twins on it: water 16 / sea RM.
+- Clean escape probe x1 (pointer vert declared before the loop, &vert passed to a declared-only function AFTER the loop): loop top
+  UNCHANGED (still CSEs through vert; 47 blocks from the extra call). So address-taken-ness alone does not make the reload: m2's
+  effect came from its volatile access between vert and start (a barrier), which emits a load retail does not have.
+- x2 (vert after start/end, under s1): 71 blocks, Data loaded once and vert = Data + i*20 CSE'd -- no.
+- /Od decomposition of the +175i gap (c6/od, probe DBG_ASSERT = ../00be4660/c3/dbg macro): 1 assert +60i/+236b (EH frame), each
+  further +53i/+244b; 3 x ASSERT(strip) = 449i/1575b (gap +9i/+25b, condition text). So FableWin TesselateEdge = our statements +
+  exactly 3 asserts (a 4th overshoots by ~44i); no live statement is missing. FableWin emits PeekIsVertical in the FIRST group (right
+  after PeekVertexCount): our fwsize obj does the same only when TesselateEdge references it directly (b1), so one of the 3 asserts
+  is likely `ASSERT(strip->PeekIsVertical() == vertical)` (b1: strip / that / indices = 453i/1588b, gap +5i/+12b).
+- Release dead arm of that assert (y1 top / y2 loop top before vert / y3 after vert): 27 blocks each (only an operand-order flip at
+  0x00BE3FA3/0x00BE3FAD), head unchanged.
+- Compile order (one TU with the water / sea S-form bodies, 3 orders, c6/ord): 0x00BE3970 byte-identical to its one-row compile.
+## Exact state at hand-back (B24C6)
+- Best: differ/00be3970.cpp (= c6/s1.cpp) DIFFER(2392v2390), 25 dd blocks, on REAL opt-ins (hdr/, README.md); identical bytes to e1.
+- Lesson (B24C6): a loop-top value read through a CSE'd pointer where retail reloads the base is NOT moved by: escaping the
+  pointer's address after the loop (x1), dead asserts anywhere (y*, z*: only flip unrelated operand orders), compile order with the
+  sibling bodies (c6/ord). m2's match came from its volatile access. The head residue stays open; the operator[] arm stays Inferred.
+- Next ideas not tried: the prio trace of s1 vs a probe where vert has no register (which candidate takes esi in retail's head);
+  c2 IL dump of the loop top (does retail's IL have one Data value? needs a c2 tuple-dump hook, c2probe/c2dbg.py).
+- (B24C6, corrections after review) (a) The /Od assert decomposition is NOT calibrated for this function: the same DBG_ASSERT costs
+  42i in operator[] (B24C3: 73i v plain 31i, = FableWin) but 53..60i here, so "exactly 3 asserts, no live statement missing" is only
+  "3 or 4 asserts, leftover unknown". (b) x1 put the escape after the loop, m2 read the escaped slot inside the loop, so "m2 worked
+  because of its volatile access" is one of two readings (inference). Separating probe: m2 with the volatile read moved BEFORE the
+  `vert` assignment (if the loop top stays retail's, it is the escape, not the barrier). (c) Also next: AddCompositeVertex is still
+  129i/395b v FableWin 133i/407b; moving it toward FableWin was worth 16 blocks before (51 -> 35).
+- (B24C6) Separating probe run: c6/m2b.cpp = m2 with the escape (probe_addr = &vert; volatile read) BEFORE `vert = &strip->GetVert(i)`
+  (vert still address-taken inside the loop): loop top CSEs through vert again (ours shape; 117 blocks from the junk). So m2's retail
+  loop top needs something BETWEEN vert's definition and start's Data load that VC7.1 treats as a memory barrier (here a volatile
+  access); address-taken-ness alone does not do it. Retail emits nothing there, so the natural statement (a store / call that the
+  optimiser later removes, or a dead arm that survives CSE) is still unknown.

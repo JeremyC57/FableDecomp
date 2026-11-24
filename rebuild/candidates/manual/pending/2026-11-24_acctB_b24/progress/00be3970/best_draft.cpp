@@ -1,22 +1,19 @@
 // CLandscapePatchTesselator::TesselateEdge(CPatchTesselationEdgeStrip* strip, long x, long y, bool vertical, bool flip, LANDSCAPE_EDGE_STRIP_SIDE side, unsigned short* indices) -- bridge one landscape edge strip to the adjacent patches' strips: for every span of the strip longer than one unit, fan the adjacent strips' vertices that fall inside it around the span's fan base vertex, then redirect the span's edge index
-// Grade: DIFFER(2392v2390) -- 25 dd blocks (B24C5, overlay c5/hdr): head only -- -1 constant ebp v edx (push ebp placement), FindVert zero sharing, loop-top start through vert v Verts.Data reload
-// Next: find the source form that makes VC7.1 keep `vert` as a pointer (an opaque accessor, vert used before the start/end tests, or a different GetMainAxisVertexWorldPos spelling); TE_AXIS variants (GetVert / if-return / local ref), vert after start/end and start read through vert tried, worse or equal. 19 grades.
+// Grade: DIFFER(2392v2390) -- 25 dd blocks, all in the head (0x00BE3991..0x00BE3AC5 + the ebp pop): retail reloads Verts.Data for `start` (vert spilled at once, [Data+i*20+0Ah]) where ours reads start through vert; -1 in edx (retail) v ebp (ours, prologue push ebp); adjacent_index = 0 stored before FindVert (retail) v a shared zero (ours). Body from 0x00BE3AC9 to the epilogue is retail's.
+// Next: the loop-top Data reload (see NOTES.md B24C6: not address-taken-ness (x1), not compile order (c6/ord), not the 3 FableWin asserts as dead arms (y1..y3, z1..z6)).
 // Retail-asm: GFFloatToLongNear (engine/GFFloatToLongNear.h) at 0x00BE3DD0 / 0x00BE3E1F `fld dword ptr [esp+44h] ; fistp dword ptr [esp+48h/4Ch]` (float homed, bare dword fistp, low byte stored): a row that matches grades retail_asm.
 // Retail: Fable.exe @ 0x00BE3970, 2390 bytes (true extent; 0x00BE42D0 is a separate function), thiscall `ret 1Ch`, frame 0x6C. Identity: vtable 0x012A2B3C slot 0;
 //   Ego_r.pdb 0x009C3350 / FableWin.pdb 0x02CBCC00. Helpers (FableWin.pdb, no retail copy): AddFanBaseVertex, AddDuplicateEdgeVertex, AddCompositeVertex,
 //   CLandscapeTesselatorBase::AddPoly, CPatchTesselationEdgeStrip::FindVert / GetVert / GetFanBaseVert / GetMainAxisVertexWorldPos / PeekVertexCount.
 //   Callees: CEngineLandscapeMap::GetEdgeStrip 0x00BDC980 (x2), vector<CTVertexLandscapeBackground>::_M_insert_overflow 0x00B6D0B0 (3 expanded push_backs) and
 //   push_back 0x00BE4380 (the 4th, called), CLandscapeBackgroundPatch::SetTargetVertexNormal 0x00BE66F0 (x4), vector<unsigned short>::_M_insert_overflow 0x005135D0 (x10).
-//   Grades with FABLE_HDR_OVERLAY=$A/hdr (CPatchTesselationEdgeStrip.h _FINDVERT, CLandscapePatchTesselator.h _HELPERS, CLandscapeBackgroundPatch.h
-//   _VERTEX_NORMAL, new CEngineLandscapeMap.h).
+//   Grades with FABLE_HDR_OVERLAY=$W/hdr (CPatchTesselationEdgeStrip.h FINDVERT + FINDWATERVERT_EARLYOUT, CEdgeStipVertexArray.h INDEX_ASSERT (Inferred),
+//   CLandscapeTesselatorBase.h ADDPOLY, CLandscapePatchTesselator.h EDGE_HELPERS, CEngineLandscapeMap.h GETEDGESTRIP, CWaterPatchTesselatorBase.h).
 // Leaf: ?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z
 #define FABLE_RETAIL_CARRAY_PUSHBACK
 #define FABLE_RETAIL_ASSERT_DEAD_ARM
-#define FABLE_PROBE_EDGESTIP_ASSERT
-#define FABLE_PROBE_EDGESTIP_ASSERT_NC FABLE_RETAIL_ASSERT
-#define FABLE_PROBE_EDGESTIP_ASSERT_C FABLE_RETAIL_ASSERT
-#define FABLE_PROBE_EDGESTIP_COND index < Count
-#define FABLE_PROBE_FINDVERT_INLINE FABLE_FORCEINLINE
+#define FABLE_RETAIL_CEDGESTIPVERTEXARRAY_INDEX_ASSERT
+#define FABLE_RETAIL_CLANDSCAPETESSELATORBASE_ADDPOLY
 #define FABLE_RETAIL_CEDGESTIPVERTEXARRAY_ACCESSORS
 #define FABLE_RETAIL_CPATCHTESSELATIONEDGESTRIP_ACCESSORS
 #define FABLE_RETAIL_CPATCHTESSELATIONEDGESTRIP_FINDVERT
@@ -35,14 +32,7 @@
 #include "engine/CLandscapeBackgroundPatch.h"
 #include "engine/GFFloatToLongNear.h"
 
-__forceinline void CLandscapeTesselatorBase::AddPoly(long a, long b, long c)
-{
-    BridgeIndexBuffer.push_back((unsigned short)a);
-    BridgeIndexBuffer.push_back((unsigned short)b);
-    BridgeIndexBuffer.push_back((unsigned short)c);
-}
-
-__forceinline unsigned short CLandscapePatchTesselator::AddFanBaseVertex(CPatchTesselationEdgeStrip* strip, long index)
+FABLE_FORCEINLINE unsigned short CLandscapePatchTesselator::AddFanBaseVertex(CPatchTesselationEdgeStrip* strip, long index)
 {
     long new_index = BridgeVertexBuffer.size();
     BridgeVertexBuffer.push_back();
@@ -58,7 +48,7 @@ __forceinline unsigned short CLandscapePatchTesselator::AddFanBaseVertex(CPatchT
     return (unsigned short)new_index;
 }
 
-__forceinline unsigned short CLandscapePatchTesselator::AddDuplicateEdgeVertex(CPatchTesselationEdgeStrip* strip, long index)
+FABLE_FORCEINLINE unsigned short CLandscapePatchTesselator::AddDuplicateEdgeVertex(CPatchTesselationEdgeStrip* strip, long index)
 {
     long new_index = BridgeVertexBuffer.size();
     BridgeVertexBuffer.push_back();
@@ -73,7 +63,7 @@ __forceinline unsigned short CLandscapePatchTesselator::AddDuplicateEdgeVertex(C
     return (unsigned short)new_index;
 }
 
-__forceinline unsigned short CLandscapePatchTesselator::AddCompositeVertex(CPatchTesselationEdgeStrip* strip, long index, CPatchTesselationEdgeStrip* adjacent_strip, long adjacent_index)
+FABLE_FORCEINLINE unsigned short CLandscapePatchTesselator::AddCompositeVertex(CPatchTesselationEdgeStrip* strip, long index, CPatchTesselationEdgeStrip* adjacent_strip, long adjacent_index)
 {
     CPatchTesselationEdgeStrip::CVertex& adjacent = adjacent_strip->GetVert(adjacent_index);
     CPatchTesselationEdgeStrip::CVertex& vert = strip->GetVert(index);

@@ -901,3 +901,8 @@ regardless). B will run Gate 0 on the lane and post the result here before anyth
   - Your parked overlay `pending/2026-11-13_acctB_parked/hdr/00795300` (ReleaseAndLoopUnholyPowerSpell.h) now differs from the landed
     header. Rebase it before reuse.
 - **B24D:** your six new claims (0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0) are clear of A's agents.
+
+2026-11-24 B->A: **First data point on the object-order idea (negative):** B24C6 compiled 0x00BE3970, the sea and the water TesselateEdge bodies
+in one TU in three orders: byte-identical to the one-row compiles in every order. Together with B24A4's earlier measurement this points against
+"TU order alone" as the mechanism; Gate 0 on 0x00E93EB0 (queued) is the decisive test. Name-fix candidate (one source so far): 0x00A3C310
+AddCombinationBlend takes `const C3DAnimationStateAlpha&` in Ego_r, landed binding takes a pointer (progress/0070d940/NAME_FIXES.tsv).
