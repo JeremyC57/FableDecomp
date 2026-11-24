@@ -2,7 +2,7 @@
 // and add to the inventory every missing ability item of the first list, remove the held items of the second, open the base
 // inventory with the stats-screen animation box and register the screen with the UI manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F05E5, 410 bytes, plain `ret` (frame pointer, `leave`).
-// Leaf: OpenInventory@CTCInventoryAbilities
+// Leaf: ?OpenInventory@CTCInventoryAbilities@@UAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -112,13 +112,12 @@ class CManager { public:
 namespace NInventory {
 class CTCInventoryBase {
 public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74(); virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); 
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void OpenInventory();   /* slot 30: RTTI 0x01253DBC slot 30 = 0x005BD4EA */ virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74(); virtual void v75(); virtual void v76(); virtual void v77(); virtual void v78(); 
     virtual void RemoveItems_slot79(long defIndex, bool all);   // slot 79 (+0x13C)
     CThing*       ParentThing;                              // +0x04 CTCBase
     unsigned char _pad08[0x68 - 0x08];
     CDefPointer<CInventoryDef> PDef;                        // +0x68
     FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
-    void OpenInventory();                                   // 0x005BD4EA
     void SetInventoryAnimRenderBox(const C2DBoxF& box);     // 0x005BC58F
     long GetNumberOfItemsOfTypeInInventory(long defIndex) const;  // 0x005BDF08 (Ego_r.pdb, const)
 };
@@ -127,7 +126,7 @@ public:
 class CTCInventoryAbilities : public NInventory::CTCInventoryBase {
 public:
     void AddAbilityToCorrectList(long ability, CCharStringVector* toGive, CCharStringVector* toTake);   // 0x005EEFB7
-    void OpenInventory();
+    virtual void OpenInventory();                           // slot 30: RTTI CTCInventoryAbilities 0x01256AD4 slot 30 = 0x005F05E5
 };
 
 void CTCInventoryAbilities::OpenInventory()

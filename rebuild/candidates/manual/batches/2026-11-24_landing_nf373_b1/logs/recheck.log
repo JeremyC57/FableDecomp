@@ -1,0 +1,19 @@
+addr       parity           behav  name
+006a4e90   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+006a4e90   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+006a4e90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a4e90   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+006a4e90   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+008374f0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+008374f0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008374f0   WARN SHARED_HEADER_AVAILABLE CThingTrackNode (engine/CThingTrackNode.h)
+008374f0   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+0083d070   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+0083d070   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0083d070   WARN SHARED_HEADER_AVAILABLE CThingMarker (engine/CThingMarker.h)
+0083d070   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+
+WINS: 3
+  006a4e90 RELOCATION_MATCH CThingPhysical::?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  008374f0 RELOCATION_MATCH CThingTrackNode::?DrawGetEditDrawInfo@CThingTrackNode@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  0083d070 RELOCATION_MATCH CThingMarker::?DrawGetEditDrawInfo@CThingMarker@@UBE_NMPAVCEditEngineDrawInfo@@@Z

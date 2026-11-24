@@ -1,0 +1,9 @@
+## HEAD set: 0055fb80.obj 00560d00.obj 00561450.obj 00563480.obj
+duplicates 1
+  DUP 00563480.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@ABVCCharString@@@Z in 00560d00.obj;
+## new set: 0055fb80.obj 00560d00.obj 00561450.obj 00563480.obj
+duplicates 2
+  DUP 00560d00.obj ?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ in 0055fb80.obj;
+  DUP 00563480.obj ?GetDecryptedDocument@CTCHeroOnlineScoreboard@@AAEHAAV?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@ABVCCharString@@@Z in 00560d00.obj;
+UNRESOLVED 1 ?UpdateTransaction@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ
+LK_DONE

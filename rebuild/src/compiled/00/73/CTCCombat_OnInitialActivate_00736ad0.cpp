@@ -26,7 +26,9 @@ class CTCBase { public:                             // engine/CTCBase.h layout, 
 };
 class CTCCombat : public CTCBase { public:
     void OnInitialActivate();
+    private:
     void UpdateUsableMeleeCombatAbilities();        // 0x00736590
+    public:
 };
 
 void CTCCombat::OnInitialActivate()

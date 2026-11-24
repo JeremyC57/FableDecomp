@@ -77,7 +77,9 @@ class CCreatureActionBase { public:
     unsigned char _body[0xa8 - 0x14];
     CCreatureActionBase(CThingCreatureBase* owner, float duration, float fraction, const CAnimationEntry& entry,
                         const CSoundPair& sounds, long group, long priority);   // 0x00693B30
+    protected:
     void SetAnimation(const CAnimationEntry& entry, float duration, float fraction);   // 0x00693030
+    public:
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
 

@@ -1,0 +1,10 @@
+address	verdict	old	new	reason
+00736590	ACCEPT	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+00736ad0	ACCEPT	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00736590
+006d5260	ACCEPT	?CullNullFollowers@CTCFollowed@@QAEXXZ	?CullNullFollowers@CTCFollowed@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+006d5850	ACCEPT	?CullNullFollowers@CTCFollowed@@QAEXXZ	?CullNullFollowers@CTCFollowed@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 006d5260
+006929e0	ACCEPT	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+0069fe60	ACCEPT	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 006929e0
+00692b30	ACCEPT	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 006929e0
+005bd4ea	ACCEPT	?OpenInventory@CTCInventoryBase@NInventory@@QAEXXZ	?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+005f05e5	ACCEPT	?OpenInventory@CTCInventoryBase@NInventory@@QAEXXZ	?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 005bd4ea; own symbol ?OpenInventory@CTCInventoryAbilities@@QAEXXZ -> ?OpenInventory@CTCInventoryAbilities@@UAEXXZ

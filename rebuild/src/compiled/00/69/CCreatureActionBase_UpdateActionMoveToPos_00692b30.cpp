@@ -65,11 +65,13 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     long      NextMovementPosWorldFrame;    // +0x64
     C3DVector NextMovementPos;              // +0x68
     unsigned char _pad74[0xa8 - 0x74];      // +0x74
+    protected:
     void SetMoveToPos(const C3DVector& pos)   // 0x006929E0, inlined here
     {
         NextMovementPosWorldFrame = PCreature.GetPItem()->PeekWorld().GetFrame();
         NextMovementPos = pos;
     }
+    public:
     protected:
     virtual void UpdateActionMoveToPos();
     public:

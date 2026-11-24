@@ -1,3 +1,4 @@
+// Leaf: ?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ
 // CTCCombat::UpdateUsableMeleeCombatAbilities() -- rebuild the usable-ability list: clear it, then keep every ability def that is valid for the parent thing
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00736590, 176 bytes (plain `ret`).
 // Callees: `__fastcall _Move(first, last, dest, tag, bool)` @ 0x00737CF0 and `__fastcall _Destroy(first, last, tag)` @ 0x00738C20
@@ -107,7 +108,9 @@ class CTCCombat { public:
     unsigned char _pad08[0x2c - 0x08];
     CDefPointerVector AbilityList;                      // +0x2c (PDB +0x2c)
     CDefPointerVector UsableAbilityList;                // +0x38 (PDB +0x3c)
+    private:
     void UpdateUsableMeleeCombatAbilities();
+    public:
 };
 
 void CTCCombat::UpdateUsableMeleeCombatAbilities()

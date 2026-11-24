@@ -1,6 +1,6 @@
 // CThingPhysical::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const -- the CThing editor draw info plus the physics component's interpolated position, XY angle and radius
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the physics component is read through an inline accessor; the plain member read gives the parked register difference.
-// Leaf: ?DrawGetEditDrawInfo@CThingPhysical
+// Leaf: ?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A4E90, length 115 bytes (`ret 8`, + int3 padding). CThingPhysical vtable 0x01244E84 slot 25.
 // Callees: CThing vtable slot 29 (+0x74, 0x004C77B0: a bool "has an editor draw" query), CThing::DrawGetEditDrawInfo @ 0x004C74B0 (landed),
@@ -32,15 +32,14 @@ class CTCPhysicsBase { public:
     C3DVector GetPosition(float time) const;         // 0x0049D150 (Ego_r/FableWin ?GetPosition@CTCPhysicsBase@@QBE?AVC3DVector@@M@Z)
 };
 class CThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028();
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   /* slot 25: RTTI CThing 0x01239ABC slot 25 = 0x004C74B0 */ virtual void v026(); virtual void v027(); virtual void v028();
     virtual bool HasEditDrawInfo() const;       // slot 29 (+0x74) 0x004C77B0
     unsigned char   _pad04[0x60 - 0x04];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-    bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // 0x004C74B0
 };
 class CThingPhysical : public CThing { public:
-    bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;
+    virtual bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // slot 25: RTTI CThingPhysical 0x01244E84 slot 25 = 0x006A4E90
 };
 
 bool CThingPhysical::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const

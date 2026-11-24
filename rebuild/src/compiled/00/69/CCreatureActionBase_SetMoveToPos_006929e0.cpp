@@ -1,3 +1,4 @@
+// Leaf: ?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z
 // CCreatureActionBase::SetMoveToPos(const C3DVector& pos) -- record the next movement position and
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // the world frame it belongs to
@@ -42,7 +43,9 @@ class CCreatureActionBase { public:
     unsigned char _pad10[0x54];                // +0x10..+0x64
     long      NextMovementPosWorldFrame;       // +0x64
     C3DVector NextMovementPos;                 // +0x68
+    protected:
     void SetMoveToPos(const C3DVector& pos);
+    public:
 };
 
 void CCreatureActionBase::SetMoveToPos(const C3DVector& pos)

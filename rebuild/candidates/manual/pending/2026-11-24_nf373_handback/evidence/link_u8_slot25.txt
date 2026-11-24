@@ -1,0 +1,8 @@
+## HEAD set: 006a4e90.obj 008374f0.obj 0083d070.obj 00702d10.obj 0083b3e0.obj 0083d710.obj 004c74b0.obj
+duplicates 0
+UNRESOLVED 1 ?DrawGetEditDrawInfo@CThing@@QBE_NMPAVCEditEngineDrawInfo@@@Z
+UNRESOLVED 3 ?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+## new set: 006a4e90.obj 008374f0.obj 0083d070.obj 00702d10.obj 0083b3e0.obj 0083d710.obj 004c74b0.obj
+duplicates 0
+UNRESOLVED 1 ?DrawGetEditDrawInfo@CThing@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+LK_DONE

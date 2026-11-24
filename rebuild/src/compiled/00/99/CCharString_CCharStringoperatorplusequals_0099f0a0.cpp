@@ -1,3 +1,7 @@
+// Leaf: ??YCCharString@@QAEABV0@ABV0@@Z
+// NF373 (T3 nf305 port): the former extern "C" __fastcall stub CCharString_operator_plusequals(self, edx unused, rhs) is the
+// member const CCharString& CCharString::operator+=(const CCharString&) (Ego_r.pdb / FableWin.pdb ??YCCharString@@QAEABV0@ABV0@@Z;
+// callers already bind that spelling, e.g. 0x0099F690), so it reaches the protected MakeOwnCopyOfData (IAE, 0x0099EAF0).
 #pragma pack(push, 1)
 class CCharStringData
 { public:
@@ -15,24 +19,26 @@ class CCharString
 { public:
     CCharStringData* data;
 
+protected:
     void MakeOwnCopyOfData();
-    CCharString* operator+=(CCharString* rhs);
+public:
+    const CCharString& operator+=(const CCharString& rhs);
 };
 
-extern "C" CCharString* __fastcall CCharString_operator_plusequals(CCharString* self, void*, CCharString* rhs)
+const CCharString& CCharString::operator+=(const CCharString& rhs)
 {
-    if (self->data != 0)
+    if (data != 0)
     {
-        self->MakeOwnCopyOfData();
+        MakeOwnCopyOfData();
 
-        CCharStringData* rhsData = rhs->data;
+        CCharStringData* rhsData = rhs.data;
         char* rhsText = &g_emptyCharStringBuf;
         if (rhsData != 0)
         {
             rhsText = rhsData->text;
         }
 
-        CCharStringData* selfData = self->data;
+        CCharStringData* selfData = data;
 
         int len = 0;
         if (rhsText[0] != 0)
@@ -45,18 +51,18 @@ extern "C" CCharString* __fastcall CCharString_operator_plusequals(CCharString* 
 
         selfData->AppendData(rhsText, len);
 
-        return self;
+        return *this;
     }
 
-    if (rhs != self)
+    if (&rhs != this)
     {
-        CCharStringData* rhsData = rhs->data;
+        CCharStringData* rhsData = rhs.data;
         if (rhsData != 0)
         {
-            self->data = rhsData;
+            data = rhsData;
             ++rhsData->refCount;
         }
     }
 
-    return self;
+    return *this;
 }

@@ -1,0 +1,2 @@
+sections head 4 new 4
+ALL_EQ text_sections_equal=3

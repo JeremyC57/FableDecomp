@@ -78,7 +78,9 @@ class CTCFollowed { public:
     CThing*                                       m_pThing;     // +0x04
     unsigned char                                 m_pad08[0x04];
     CRetailList< CIntelligentPointer<CThing> >    Followers;    // +0x0c
+    protected:
     void CullNullFollowers();                                   // 0x006D5260
+    public:
     void GetFollowers(CRetailVector<CThing*>* out);
 };
 

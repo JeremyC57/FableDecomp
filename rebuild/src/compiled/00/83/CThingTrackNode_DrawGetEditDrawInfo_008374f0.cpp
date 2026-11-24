@@ -1,5 +1,5 @@
 // CThingTrackNode::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const -- the physical-thing editor draw info, coloured blue (R 128, G 128, B 255, A 255), named "TrackNode" and without an effect radius
-// Leaf: ?DrawGetEditDrawInfo@CThingTrackNode
+// Leaf: ?DrawGetEditDrawInfo@CThingTrackNode@@UBE_NMPAVCEditEngineDrawInfo@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008374F0, length 128 bytes (`ret 8`). Vtable CThingTrackNode 0x01272CE4
 // slot 25 (manifest "vfunc_25").
@@ -43,11 +43,14 @@ class CEditEngineDrawInfo { public:
     float       AngleXY;                        // +0x24
 };
 class CThingPhysical { public:
-    void* __vftable;
-    bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // 0x006A4E90
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
+    virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
+    virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
+    virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
+    virtual bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // slot 25, 0x006A4E90
 };
 class CThingTrackNode : public CThingPhysical { public:
-    bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;
+    virtual bool DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const;   // slot 25
 };
 
 bool CThingTrackNode::DrawGetEditDrawInfo(float time, CEditEngineDrawInfo* info) const

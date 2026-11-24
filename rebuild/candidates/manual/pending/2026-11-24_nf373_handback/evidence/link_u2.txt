@@ -1,0 +1,8 @@
+## HEAD set: 006929e0.obj 0069fe60.obj 00692b30.obj 00849be0.obj
+duplicates 1
+  DUP 00692b30.obj ?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z in 006929e0.obj;
+UNRESOLVED 1 ?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z
+## new set: 006929e0.obj 0069fe60.obj 00692b30.obj 00849be0.obj
+duplicates 1
+  DUP 00692b30.obj ?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z in 006929e0.obj;
+LK_DONE

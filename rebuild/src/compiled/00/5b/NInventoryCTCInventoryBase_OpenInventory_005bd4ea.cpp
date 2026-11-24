@@ -1,3 +1,4 @@
+// Leaf: ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ
 // NInventory::CTCInventoryBase::OpenInventory() -- opens the inventory screen: stamps the render time, flags the first render frame, remembers the display's presentation interval once, marks the inventory open, closes the player GUI, deselects the item, selects the current category (if any) and restarts the item animation on the highlighted item, then rearms the four menu arrow highlights
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
@@ -81,7 +82,7 @@ class CTCInventoryBase { public:                        // retail 0x130 bytes
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
+    virtual void OpenInventory();   /* slot 30: RTTI 0x01253DBC slot 30 = 0x005BD4EA */ virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
     virtual void SelectItem(long item);          // slot 46 (+0xB8)
@@ -110,7 +111,6 @@ class CTCInventoryBase { public:                        // retail 0x130 bytes
 
 protected: long GetHighlightedItem() const; public:   // 0x005BCAE3 (both PDBs ?GetHighlightedItem@CTCInventoryBase@NInventory@@IBEJXZ: protected, const; NF302)
     void ResetInventoryAnim(long item);          // 0x005BCD2D
-    void OpenInventory();
 };
 #pragma pack(pop)
 void CTCInventoryBase::OpenInventory()

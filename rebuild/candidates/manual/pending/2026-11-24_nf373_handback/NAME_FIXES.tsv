@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0099f0a0	??YCCharString@@QAEABV0@ABV0@@Z	Ego_r + FableWin name sets; table witness 0x0099F690 already binds it to 0x0099F0A0	@CCharString_operator_plusequals@12 (0x0099F0A0 self: extern "C" __fastcall stub; referenced by no landed source but its own test)
+005f05e5	?OpenInventory@CTCInventoryAbilities@@UAEXXZ	Ego_r + FableWin; RTTI CTCInventoryAbilities vt 0x01256AD4 slot 30 = 0x005F05E5	?OpenInventory@CTCInventoryAbilities@@QAEXXZ (0x005F05E5 self; no table line, no other landed referencer)
+008374f0	?DrawGetEditDrawInfo@CThingTrackNode@@UBE_NMPAVCEditEngineDrawInfo@@@Z	Ego_r + FableWin; RTTI CThingTrackNode vt 0x01272CE4 slot 25 = 0x008374F0	?DrawGetEditDrawInfo@CThingTrackNode@@QBE_NMPAVCEditEngineDrawInfo@@@Z (0x008374F0 self; no table line, no other referencer)
+0083d070	?DrawGetEditDrawInfo@CThingMarker@@UBE_NMPAVCEditEngineDrawInfo@@@Z	Ego_r + FableWin; RTTI CThingMarker vt 0x01245524 slot 25 = 0x0083D070	?DrawGetEditDrawInfo@CThingMarker@@QBE_NMPAVCEditEngineDrawInfo@@@Z (0x0083D070 self; no table line, no other referencer)
+00b80ad0	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z	Ego_r + FableWin; table witness 0x00B80F90	QBE (0x00B80AD0 self, 0x00B80FE0 strong same-TU copy) -- NOT applied (owner Q2)
+0055fb80	?UpdateTransaction@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	Ego_r + FableWin; table witness 0x00563480	QAE (0x0055FB80 self; UND in 0x00561450 0x005615C0 0x00561980 0x00561DC0 0x005621B0) -- NOT applied (owner Q2)

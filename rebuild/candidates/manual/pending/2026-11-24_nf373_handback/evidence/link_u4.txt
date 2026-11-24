@@ -1,0 +1,7 @@
+## HEAD set: 00b80ad0.obj 00b80fe0.obj 00b80f90.obj
+duplicates 1
+  DUP 00b80fe0.obj ?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z in 00b80ad0.obj;
+## new set: 00b80ad0.obj 00b80fe0.obj 00b80f90.obj
+duplicates 1
+  DUP 00b80f90.obj ?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z in 00b80ad0.obj;
+LK_DONE

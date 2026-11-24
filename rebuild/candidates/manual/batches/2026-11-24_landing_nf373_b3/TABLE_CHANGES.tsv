@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z	00693030	00693b30	NF373 unit: the witness now binds the PDB spelling (its line to this target already exists), so the old-spelling line goes (IAE line, witness 00847df0)
+delete	?MakeOwnCopyOfData@CCharString@@QAEXXZ	0099eaf0	0099f0a0	NF373 unit: the witness now binds the PDB spelling (its line to this target already exists), so the old-spelling line goes (IAE line, witness 0099f2a0)

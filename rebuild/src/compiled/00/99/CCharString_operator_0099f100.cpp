@@ -28,7 +28,9 @@ class CCharStringData { public:                      // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;             // +0x00
+    protected:
     void MakeOwnCopyOfData();                 // 0x0099EAF0
+    public:
     const CCharString& operator+=(const char* text);
 };
 

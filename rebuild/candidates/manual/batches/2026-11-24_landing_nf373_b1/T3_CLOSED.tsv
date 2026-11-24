@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf290	0x006A4E90	T3 (prefix ruling, NF288 entry 49 pattern): `virtual` (UBE); the self 0x006A4E90 and the binders 0x008374F0 / 0x0083D070 declare DrawGetEditDrawInfo non-virtual in local CThing / CThingPhysical models that carry placeholder slot runs (v000..v028, slot 29 HasEditDrawInfo); the real slot is 25 (CThing	NF290 entry 6 (rejected)
+access1	0x006A4E90	self respell	access_fix measured ?DrawGetEditDrawInfo@CThingPhysical@@QBE_NMPAVCEditEngineDrawInfo@@@Z -> ?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z (access letter Q->U changes virtuality or is not a member)

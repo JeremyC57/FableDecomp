@@ -1,0 +1,15 @@
+kind	row	old	new	batch
+self	006a4e90	?DrawGetEditDrawInfo@CThingPhysical@@QBE_NMPAVCEditEngineDrawInfo@@@Z	?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z	b1 (Leaf line follows; catalog name / file unchanged)
+self	008374f0	?DrawGetEditDrawInfo@CThingTrackNode@@QBE_NMPAVCEditEngineDrawInfo@@@Z	?DrawGetEditDrawInfo@CThingTrackNode@@UBE_NMPAVCEditEngineDrawInfo@@@Z	b1 (binder's own override, NF303 Q1)
+self	0083d070	?DrawGetEditDrawInfo@CThingMarker@@QBE_NMPAVCEditEngineDrawInfo@@@Z	?DrawGetEditDrawInfo@CThingMarker@@UBE_NMPAVCEditEngineDrawInfo@@@Z	b1 (binder's own override, NF303 Q1)
+self	00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	b2
+self	006d5260	?CullNullFollowers@CTCFollowed@@QAEXXZ	?CullNullFollowers@CTCFollowed@@IAEXXZ	b2
+self	006929e0	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z	b2
+self	005bd4ea	?OpenInventory@CTCInventoryBase@NInventory@@QAEXXZ	?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ	b2
+self	005f05e5	?OpenInventory@CTCInventoryAbilities@@QAEXXZ	?OpenInventory@CTCInventoryAbilities@@UAEXXZ	b2 (binder's own override, NF303 Q1)
+self	00693030	?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z	?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z	b3 (held for ruling)
+self	0099eaf0	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	b3 (held for ruling)
+self	0099f0a0	@CCharString_operator_plusequals@12	??YCCharString@@QAEABV0@ABV0@@Z	b3 (T3 nf305 port: stub -> member; held for ruling)
+copy	00692b30	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z (pick-any, EQ)	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z (pick-any, EQ)	b2
+copy	0099ed10	?MakeOwnCopyOfData@CCharString@@QAEXXZ (pick-any, EQ)	?MakeOwnCopyOfData@CCharString@@IAEXXZ (pick-any, EQ)	b3
+copy	0099ee20	?MakeOwnCopyOfData@CCharString@@QAEXXZ (pick-any, EQ)	?MakeOwnCopyOfData@CCharString@@IAEXXZ (pick-any, EQ)	b3

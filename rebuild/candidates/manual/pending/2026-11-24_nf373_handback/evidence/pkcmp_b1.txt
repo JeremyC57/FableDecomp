@@ -1,0 +1,25 @@
+00736590	pk_all	SAME
+00736590	pvr	SAME
+ROW 00736590 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00736ad0	pk_all	SAME
+00736ad0	pvr	SAME
+ROW 00736ad0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+006d5260	pk_all	SAME
+006d5260	pvr	SAME
+ROW 006d5260 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+006d5850	pk_all	SAME
+006d5850	pvr	SAME
+ROW 006d5850 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+006929e0	pk_all	SAME
+006929e0	pvr	SAME
+ROW 006929e0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0069fe60	pk_all	SAME
+0069fe60	pvr	SAME
+ROW 0069fe60 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00692b30	pk_all	ADDED	006929e0	not-leaf-called	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z
+00692b30	pk_all	DROPPED	006929e0	not-leaf-called	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z
+00692b30	pvr	ADDED	006929e0	not-leaf-called	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z
+00692b30	pvr	DROPPED	006929e0	not-leaf-called	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z
+ROW 00692b30 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 0, 1], 'pvr': [0, 0, 0, 1]}
+GATE PASS

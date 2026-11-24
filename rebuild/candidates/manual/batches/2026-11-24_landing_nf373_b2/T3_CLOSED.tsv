@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf288	0x006D5260	the self 0x006D5260 defines QAE (no Leaf; line 85 public); 0x006D53C0 binds IAE; the other binder 0x006D5850 is NF287's entry (not compiled): moving the self to IAE would leave 0x006D5850's QAE unresolved. Proposed edit: self line 85 `protected:` together with NF287's 0x006D5850	NF288 entry 8 (skipped-held)
+nf370	0x006929E0	0x006929E0 0x0069FE60	T2 unit: self proven (run1); table witness 0x0069FE60 binds the old spelling

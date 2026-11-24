@@ -1,3 +1,4 @@
+// Leaf: ?MakeOwnCopyOfData@CCharString@@IAEXXZ
 // CCharString::MakeOwnCopyOfData() -- copy-on-write: when the shared block has more than one owner,
 // clone its text into a fresh block, drop our reference to the old one and adopt the clone.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099EAF0, length 78 bytes.
@@ -29,7 +30,9 @@ class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
     protected: void UnassignString(); public:                      // 0x0099E9B0
+    protected:
     void MakeOwnCopyOfData();
+    public:
 };
 
 void CCharString::MakeOwnCopyOfData()

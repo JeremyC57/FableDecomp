@@ -1,0 +1,11 @@
+address	verdict	old	new	reason
+00693030	ACCEPT	?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z	?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+00693b30	ACCEPT	?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z	?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00693030
+008430b0	ACCEPT	?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z	?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00693030
+0099eaf0	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+0099f0a0	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 0099eaf0; own symbol @CCharString_operator_plusequals@12 -> ??YCCharString@@QAEABV0@ABV0@@Z
+0099ed10	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 0099eaf0
+0099ee20	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 0099eaf0
+0099f100	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 0099eaf0
+0099f180	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 0099eaf0
+0099f400	ACCEPT	?MakeOwnCopyOfData@CCharString@@QAEXXZ	?MakeOwnCopyOfData@CCharString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 0099eaf0

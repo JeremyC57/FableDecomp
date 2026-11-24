@@ -59,7 +59,9 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
+    protected:
     void SetMoveToPos(const C3DVector& pos);    // 0x006929E0
+    public:
 };
 class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CBaseIntelligentPointer PUsedThing;         // +0xa8

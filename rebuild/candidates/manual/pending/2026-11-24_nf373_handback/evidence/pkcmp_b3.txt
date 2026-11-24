@@ -1,0 +1,42 @@
+00693030	pk_all	SAME
+00693030	pvr	SAME
+ROW 00693030 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00693b30	pk_all	SAME
+00693b30	pvr	SAME
+ROW 00693b30 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+008430b0	pk_all	SAME
+008430b0	pvr	SAME
+ROW 008430b0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099eaf0	pk_all	SAME
+0099eaf0	pvr	SAME
+ROW 0099eaf0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099f0a0	pk_all	SAME
+0099f0a0	pvr	SAME
+ROW 0099f0a0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099ed10	pk_all	ADDED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@IAEXXZ
+0099ed10	pk_all	DROPPED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@QAEXXZ
+0099ed10	pvr	ADDED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@IAEXXZ
+0099ed10	pvr	DROPPED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@QAEXXZ
+ROW 0099ed10 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099ee20	pk_all	ADDED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@IAEXXZ
+0099ee20	pk_all	DROPPED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@QAEXXZ
+0099ee20	pvr	ADDED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@IAEXXZ
+0099ee20	pvr	DROPPED	0099eaf0	not-leaf-called	?MakeOwnCopyOfData@CCharString@@QAEXXZ
+ROW 0099ee20 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099f100	pk_all	SAME
+0099f100	pvr	SAME
+ROW 0099f100 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099f180	pk_all	SAME
+0099f180	pvr	SAME
+ROW 0099f180 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0099f400	pk_all	SAME
+0099f400	pvr	SAME
+ROW 0099f400 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+00b80ad0	pk_all	SAME
+00b80ad0	pvr	SAME
+ROW 00b80ad0 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0055fb80	pk_all	SAME
+0055fb80	pvr	SAME
+ROW 0055fb80 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 0, 2], 'pvr': [0, 0, 0, 2]}
+GATE PASS

@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00693030   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00693030   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00693030   WARN RELOC_NAME: ?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ -> 004c7ab0 labelled 'CThing::PeekWorld'
+00693030   RELOCATION_MATCH PASS   SetAnimation
+00693b30   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00693b30   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00693b30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00693b30   RELOCATION_MATCH PASS   CCreatureActionBase
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CExpressionDef (engine/CExpressionDef.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PerformExpression (engine/CCreatureAction_PerformExpression.h)
+008430b0   WARN RELOC_NAME: ?GetRandomLoadedAnim@@YIPAVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z -> 006924b0 labelled 'CCreatureActionBase::GetRandomAnimFromName'
+008430b0   RELOCATION_MATCH PASS   CCreatureAction_PerformExpression
+0099eaf0   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099eaf0   RELOCATION_MATCH PASS   MakeOwnCopyOfData
+0099ed10   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099ed10   WARN RELOC_ALIAS: _tolower -> 00bfed10 is the import thunk 'MSVCR71.DLL::tolower'
+0099ed10   RELOCATION_MATCH PASS   GetAsLowerCase
+0099ee20   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099ee20   WARN RELOC_ALIAS: _toupper -> 00bfed16 is the import thunk 'MSVCR71.DLL::toupper'
+0099ee20   RELOCATION_MATCH PASS   GetAsUpperCase
+0099f0a0   RELOCATION_MATCH PASS   operator+=
+0099f100   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099f100   RELOCATION_MATCH PASS   operator+=
+0099f180   WARN RELOC_NAME: ??0CBasicStringChar@@QAE@PBD@Z -> 009a0590 labelled 'CCharString_InitFromCStr'
+0099f180   RELOCATION_MATCH PASS   operator+=
+0099f400   RELOCATION_MATCH PASS   Erase
+
+WINS: 10
+  00693030 RELOCATION_MATCH CCreatureActionBase::?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z
+  00693b30 RELOCATION_MATCH CCreatureActionBase::??0CCreatureActionBase@@
+  008430b0 RELOCATION_MATCH CCreatureAction_PerformExpression::??0CCreatureAction_PerformExpression@
+  0099eaf0 RELOCATION_MATCH CCharString::?MakeOwnCopyOfData@CCharString@@IAEXXZ
+  0099ed10 RELOCATION_MATCH CCharString::?GetAsLowerCase@CCharString@@QBE?AV1@XZ
+  0099ee20 RELOCATION_MATCH CCharString::GetAsUpperCase
+  0099f0a0 RELOCATION_MATCH CCharString::??YCCharString@@QAEABV0@ABV0@@Z
+  0099f100 RELOCATION_MATCH CCharString::??YCCharString
+  0099f180 RELOCATION_MATCH CCharString::??YCCharString@@QAEABV0@D@Z
+  0099f400 RELOCATION_MATCH CCharString::Erase

@@ -1,0 +1,6 @@
+## HEAD set: 005bd4ea.obj 005f05e5.obj 00574576.obj 00622a00.obj 0072db70.obj
+duplicates 0
+UNRESOLVED 3 ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ
+## new set: 005bd4ea.obj 005f05e5.obj 00574576.obj 00622a00.obj 0072db70.obj
+duplicates 0
+LK_DONE

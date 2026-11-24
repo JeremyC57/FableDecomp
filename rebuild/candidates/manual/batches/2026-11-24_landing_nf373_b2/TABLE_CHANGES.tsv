@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+delete	?CullNullFollowers@CTCFollowed@@QAEXXZ	006d5260	006d5850	NF373 unit: the witness now binds the PDB spelling (its line to this target already exists), so the old-spelling line goes (IAE line, witness 006d53c0)
+delete	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z	006929e0	0069fe60	NF373 unit: the witness now binds the PDB spelling (its line to this target already exists), so the old-spelling line goes (IAE line, witness 00849be0)
+delete	?OpenInventory@CTCInventoryBase@NInventory@@QAEXXZ	005bd4ea	005f05e5	NF373 unit: the witness now binds the PDB spelling (its line to this target already exists), so the old-spelling line goes (UAE line, witness 005b6a66)

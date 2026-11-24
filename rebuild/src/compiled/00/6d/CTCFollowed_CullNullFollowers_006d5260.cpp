@@ -1,5 +1,5 @@
 // CTCFollowed::CullNullFollowers() -- drop every follower and AI follower that is gone or dead from the two follower lists (refreshing the player GUI after each dropped follower) and re-show the emote icon of every remaining one
-// Leaf: CullNullFollowers
+// Leaf: ?CullNullFollowers@CTCFollowed@@IAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -82,7 +82,9 @@ public:
     CRetailList<CIntelligentPointer<CThing> >           Followers;     // +0x0c
     CRetailList<CIntelligentPointer<CThingAICreature> > AIFollowers;   // +0x10
     void AddEmoteIcon(CThing* follower);                // 0x006D4FD0
+    protected:
     void CullNullFollowers();
+    public:
 };
 
 void CTCFollowed::CullNullFollowers()

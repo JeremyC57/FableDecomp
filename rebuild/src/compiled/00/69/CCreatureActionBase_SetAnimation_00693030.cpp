@@ -1,3 +1,4 @@
+// Leaf: ?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z
 // CCreatureActionBase::SetAnimation(const CAnimationEntry&,float,float) -- copy animation, derive/clamp action timers and begin animation loading.
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -88,7 +89,9 @@ class CCreatureActionBase { public:
     long NextMovementPosWorldFrame;
     float NextMovementPos_X,NextMovementPos_Y,NextMovementPos_Z;
     CAnimationEntryPointer PAnimEntry;
+    protected:
     void SetAnimation(const CAnimationEntry&,float,float);
+    public:
 };
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase,PAnimEntry)==0x74);
 void CCreatureActionBase::SetAnimation(const CAnimationEntry& entry,float duration,float actionFraction)

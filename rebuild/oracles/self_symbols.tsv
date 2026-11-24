@@ -5214,7 +5214,7 @@ address	symbol	status	leaf_given
 005bcf51	?Dest_val@@YIXPAUT@@@Z	RELOCATION_MATCH	IncrementQuestPersistentRefCountForNonPersistentItems
 005bcf61	?GetNextOccupiedSlot@CCategory_Retail@@QAEJJ@Z	MATCH	GetNextOccupiedSlot
 005bd3a0	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@QBEXXZ	RELOCATION_MATCH	?PlayInventoryNoMovementSound@
-005bd4ea	?OpenInventory@CTCInventoryBase@NInventory@@QAEXXZ	RELOCATION_MATCH	OpenInventory
+005bd4ea	?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ	RELOCATION_MATCH	?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ
 005bd597	?CloseInventory@CTCInventoryBase_Retail@@QAEXXZ	RELOCATION_MATCH	CloseInventory
 005bd5db	?GetCategoryWithAssociationThing@CTCInventoryBase_Retail@@QAEPAUCCategory_Retail@@PAVCThing@@@Z	RELOCATION_MATCH	GetCategoryWithAssociationThing
 005bd630	?GetCategoryWithIdentifier@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@J@Z	MATCH	GetCategoryWithIdentifier
@@ -5596,7 +5596,7 @@ address	symbol	status	leaf_given
 005eeee6	?UpgradeAbility@CTCInventoryAbilities@@QAEXW4EHeroAbility@@@Z	RELOCATION_MATCH	UpgradeAbility
 005eef84	?ForceAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z	RELOCATION_MATCH	ForceAbilityLevelTo
 005eefb7	?AddAbilityToCorrectList@CTCInventoryAbilities_Retail@@QAEXJPAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@0@Z	RELOCATION_MATCH	AddAbilityToCorrectList
-005f05e5	?OpenInventory@CTCInventoryAbilities@@QAEXXZ	RELOCATION_MATCH	OpenInventory@CTCInventoryAbilities
+005f05e5	?OpenInventory@CTCInventoryAbilities@@UAEXXZ	RELOCATION_MATCH	?OpenInventory@CTCInventoryAbilities@@UAEXXZ
 005f3bcf	??0CTCInventoryAbilities@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCInventoryAbilities
 005f3cfe	??1CTCInventoryAbilities@@UAE@XZ	RELOCATION_MATCH	??1CTCInventoryAbilities
 005f3dc6	?Copy@CTCInventoryAbilities@@UAEXPBUCTCInventoryBase@@@Z	RELOCATION_MATCH	?Copy@CTCInventoryAbilities
@@ -7063,11 +7063,11 @@ address	symbol	status	leaf_given
 00692870	?GetAnimationIndex@CCreatureActionBase@@QAEPAXXZ	MATCH	GetAnimationIndex
 00692920	?Dest_val@@YIXPAX@Z	RELOCATION_MATCH	CRegisteredMusicEntry>_>
 00692960	?CCreatureActionBase_GetTotalTimeSeconds@@YIMPBVCCreatureActionBase@@@Z	RELOCATION_MATCH	GetTotalTimeSeconds
-006929e0	?SetMoveToPos@CCreatureActionBase@@QAEXABVC3DVector@@@Z	RELOCATION_MATCH	SetMoveToPos
+006929e0	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z	RELOCATION_MATCH	?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z
 00692c80	?InitialiseActionMovement@CCreatureActionBase@@QAEXXZ	RELOCATION_MATCH	InitialiseActionMovement
 00692db0	?EditUpdate@CCreatureActionBase@@UAEXM@Z	RELOCATION_MATCH	EditUpdate
 00692f30	?GetPrecedingAction@CCreatureActionBase@@QBEXAAPAV1@@Z	RELOCATION_MATCH	GetPrecedingAction
-00693030	?SetAnimation@CCreatureActionBase@@QAEXABVCAnimationEntry@@MM@Z	RELOCATION_MATCH	SetAnimation
+00693030	?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z	RELOCATION_MATCH	?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z
 00693140	?GetActionAnimSetList@?A0xc58d75af@@YIXAAV?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@AAVCThingCreatureBase@@J@Z	RELOCATION_MATCH	?GetActionAnimSetList@
 00693250	?GetPActionAnimSet@?A0x1087b3ed@@YIPAVCAnimSet@@AAVCThingCreatureBase@@J@Z	RELOCATION_MATCH	GetPActionAnimSet
 00693b30	??0CCreatureActionBase@@QAE@PAVCThingCreatureBase@@MMABVCAnimationEntry@@ABVCSoundPair@@JJ@Z	RELOCATION_MATCH	??0CCreatureActionBase@@
@@ -7272,7 +7272,7 @@ address	symbol	status	leaf_given
 006a4dd0	?AddChild@CSpellContainerList@@QAEXPAX@Z	RELOCATION_MATCH	AddChild
 006a4df0	?IsInRange@CThingPhysical@@QAEJABVC3DVector@@M@Z	MATCH	IsInRange
 006a4e40	?CParticleSystem_GetNormalisedTime@@YIMPBUCParticleSystem@@@Z	RELOCATION_MATCH	GetNormalisedTime
-006a4e90	?DrawGetEditDrawInfo@CThingPhysical@@QBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingPhysical
+006a4e90	?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingPhysical@@UBE_NMPAVCEditEngineDrawInfo@@@Z
 006a4f10	?GetNoNavCollisionLineLists@CThingPhysical@@QAEPAXXZ	RELOCATION_MATCH	GetNoNavCollisionLineLists
 006a4f60	?GetNavCollisionLineList@CThingPhysical@@QAEXPAUSCollisionLineList@@J@Z	RELOCATION_MATCH	GetNavCollisionLineList
 006a5250	?GetFloatThrough_006a5250@CClass_006a5250@@QAEMXZ	MATCH	GetFloatThrough_006a5250
@@ -7704,7 +7704,7 @@ address	symbol	status	leaf_given
 006d4d70	?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	RELOCATION_MATCH	IsFollower
 006d4db0	?IsAIFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	RELOCATION_MATCH	IsAIFollower
 006d5180	?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z	RELOCATION_MATCH	RemoveFollower
-006d5260	?CullNullFollowers@CTCFollowed@@QAEXXZ	RELOCATION_MATCH	CullNullFollowers
+006d5260	?CullNullFollowers@CTCFollowed@@IAEXXZ	RELOCATION_MATCH	?CullNullFollowers@CTCFollowed@@IAEXXZ
 006d56e0	?QuitAIFollower@CTCFollowed@@QAEXPAVCThingAICreature@@@Z	RELOCATION_MATCH	QuitAIFollower
 006d5850	?GetFollowers@CTCFollowed@@QAEXPAU?$CRetailVector@PAVCThing@@@@@Z	RELOCATION_MATCH	GetFollowers
 006d58c0	?GetClassTypeName@CTCFollowed_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
@@ -8754,7 +8754,7 @@ address	symbol	status	leaf_given
 00734340	?GetBlockAbilityIterator@CTCCombat@@QAE_NAAU_Rb_tree_iterator@@J@Z	MATCH	?GetBlockAbilityIterator@CTCCombat
 00734570	?SetNextComboChainPos@CTCCombat_Methods@@QAEXPBVCMeleeCombatAbilityDef@@@Z	RELOCATION_MATCH	SetNextComboChainPos
 007363a0	?OnCreate@CTCCombat@@EAEXXZ	RELOCATION_MATCH	OnCreate
-00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ	RELOCATION_MATCH	UpdateUsableMeleeCombatAbilities
+00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	RELOCATION_MATCH	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ
 007366c0	?RemoveMeleeFlourishAbility@CTCCombat@@QAEXJ@Z	RELOCATION_MATCH	RemoveMeleeFlourishAbility
 00736760	?UpdateFlourishParticles@CTCCombat@@AAEXXZ	RELOCATION_MATCH	UpdateFlourishParticles
 00736910	?GiveHeroMeleeAbility@?A0x96ca0ac0@@YIXJ_N@Z	RELOCATION_MATCH	?GiveHeroMeleeAbility@?A0x
@@ -11133,7 +11133,7 @@ address	symbol	status	leaf_given
 00836da0	?PeekTrackStartNode@CThingTrackNode@@QAEPAV1@XZ	MATCH	PeekTrackStartNode
 00836ee0	?SetTrackName@CThingTrackNode@@QAEXABVCCharString@@@Z	RELOCATION_MATCH	SetTrackName
 00837040	?DrawIsDrawable@CThingTrackNode@@QAE_NXZ	RELOCATION_MATCH	DrawIsDrawable
-008374f0	?DrawGetEditDrawInfo@CThingTrackNode@@QBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingTrackNode
+008374f0	?DrawGetEditDrawInfo@CThingTrackNode@@UBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingTrackNode@@UBE_NMPAVCEditEngineDrawInfo@@@Z
 00837c70	??0CThingTrackNode@@QAE@XZ	RELOCATION_MATCH	??0CThingTrackNode
 00837ce0	?SerialiseGameState@CThingTrackNode@@QAE_NPAVCPersistContext@@@Z	RELOCATION_MATCH	?SerialiseGameState@CThingTrackNode
 008384f0	?WorldUpdate@CThingTrackNode@@QAE_NXZ	MATCH	WorldUpdate
@@ -11175,7 +11175,7 @@ address	symbol	status	leaf_given
 0083cf70	??_GCEventBase_Derived_0083cf70@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor_CEventBase_Derived_0083cf70
 0083cfa0	?GetDef_0083cfa0@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	RELOCATION_MATCH	GetDef_0083cfa0
 0083d060	?WorldUpdate@CThingMarker@@QAEEXZ	RELOCATION_MATCH	WorldUpdate
-0083d070	?DrawGetEditDrawInfo@CThingMarker@@QBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingMarker
+0083d070	?DrawGetEditDrawInfo@CThingMarker@@UBE_NMPAVCEditEngineDrawInfo@@@Z	RELOCATION_MATCH	?DrawGetEditDrawInfo@CThingMarker@@UBE_NMPAVCEditEngineDrawInfo@@@Z
 0083d100	?DrawIsDrawable@CThingMarker@@UBE_NXZ	RELOCATION_MATCH	DrawIsDrawable
 0083d630	?GetDef_0083d630@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	RELOCATION_MATCH	GetDef<CThingMarkerDef>
 0083d6f0	?vfunc_8@CThingPhysicalSwitch@@UAE_NXZ	RELOCATION_MATCH	OnCreate
@@ -15190,7 +15190,7 @@ address	symbol	status	leaf_given
 0099e960	??9CCharString@@QBE_NPBD@Z	RELOCATION_MATCH	??9CCharString@
 0099ea60	?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z	RELOCATION_MATCH	AllocStringData
 0099eae0	??1CCharString@@QAE@XZ	RELOCATION_MATCH	??1CCharString@
-0099eaf0	?MakeOwnCopyOfData@CCharString@@QAEXXZ	RELOCATION_MATCH	MakeOwnCopyOfData
+0099eaf0	?MakeOwnCopyOfData@CCharString@@IAEXXZ	RELOCATION_MATCH	?MakeOwnCopyOfData@CCharString@@IAEXXZ
 0099ebf0	??0CCharString@@QAE@PBDJ@Z	RELOCATION_MATCH	??0CCharString@
 0099ec30	??0CCharString@@QAE@ABV0@@Z	RELOCATION_MATCH	??0CCharString@
 0099ec70	?GetSubString@CCharString@@QAEPAV1@PAV1@KK@Z	RELOCATION_MATCH	GetSubString
@@ -15198,7 +15198,7 @@ address	symbol	status	leaf_given
 0099ef40	?SetAsSubString@CCharString@@QAEXPBDJ@Z	RELOCATION_MATCH	SetAsSubString
 0099efe0	??4CCharString@@QAEABV0@PBD@Z	RELOCATION_MATCH	??4CCharString@
 0099f040	??4CCharString@@QAEABV0@D@Z	RELOCATION_MATCH	??4CCharString@
-0099f0a0	@CCharString_operator_plusequals@12	RELOCATION_MATCH	??YCCharString@
+0099f0a0	??YCCharString@@QAEABV0@ABV0@@Z	RELOCATION_MATCH	??YCCharString@@QAEABV0@ABV0@@Z
 0099f100	??YCCharString@@QAEABV0@PBD@Z	RELOCATION_MATCH	??YCCharString
 0099f400	?Erase@CCharString@@QAEXJJ@Z	RELOCATION_MATCH	Erase
 0099f450	?RemoveWhiteSpaceBegin@CCharString@@QAEXXZ	RELOCATION_MATCH	RemoveWhiteSpaceBegin

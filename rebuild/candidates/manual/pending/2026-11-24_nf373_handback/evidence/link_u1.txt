@@ -1,0 +1,12 @@
+## HEAD set: 0099eaf0.obj 0099f0a0.obj 0099ed10.obj 0099ee20.obj 0099f100.obj 0099f180.obj 0099f400.obj 0099f2a0.obj
+duplicates 3
+  DUP 0099ed10.obj ?MakeOwnCopyOfData@CCharString@@QAEXXZ in 0099eaf0.obj;
+  DUP 0099ee20.obj ?UnassignString@CCharString@@IAEXXZ in 0099ed10.obj;
+  DUP 0099ee20.obj ?MakeOwnCopyOfData@CCharString@@QAEXXZ in 0099eaf0.obj;
+UNRESOLVED 1 ?MakeOwnCopyOfData@CCharString@@IAEXXZ
+## new set: 0099eaf0.obj 0099f0a0.obj 0099ed10.obj 0099ee20.obj 0099f100.obj 0099f180.obj 0099f400.obj 0099f2a0.obj
+duplicates 3
+  DUP 0099ed10.obj ?MakeOwnCopyOfData@CCharString@@IAEXXZ in 0099eaf0.obj;
+  DUP 0099ee20.obj ?UnassignString@CCharString@@IAEXXZ in 0099ed10.obj;
+  DUP 0099ee20.obj ?MakeOwnCopyOfData@CCharString@@IAEXXZ in 0099eaf0.obj;
+LK_DONE

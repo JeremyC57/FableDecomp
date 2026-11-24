@@ -70,6 +70,7 @@ public:
         --g_CCharStringInstanceCount;
     }
     protected: void UnassignString(); public:                             // 0x0099E9B0
+    protected:
     void MakeOwnCopyOfData()
     {
         CCharStringData* data = PStringData;
@@ -80,6 +81,7 @@ public:
             PStringData = copy;
         }
     }
+    public:
     long GetLength() const { return PStringData ? (long)PStringData->Data.StringLength : 0; }
     const char& GetChar(long i) const { return PStringData->Data.PData[i]; }
     CCharString GetAsUpperCase() const;

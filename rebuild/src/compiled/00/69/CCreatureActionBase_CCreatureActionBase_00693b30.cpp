@@ -144,7 +144,9 @@ class CCreatureActionBase : public CBaseObject { public:
  CCutSceneEventMap CutSceneEvents;
  CActionVector<CIntelligentPointer_CThing> DependentThings;
  CCreatureActionBase(CThingCreatureBase*,float,float,const CAnimationEntry&,const CSoundPair&,long,long);
+ protected:
  void SetAnimation(const CAnimationEntry&,float,float); //0x00693030
+ public:
 };
 FABLE_STATIC_ASSERT(sizeof(CCreatureActionBase)==0xA8);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase,CutSceneEvents)==0x90);

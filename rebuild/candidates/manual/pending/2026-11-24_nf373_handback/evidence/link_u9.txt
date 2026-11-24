@@ -1,0 +1,8 @@
+## HEAD set: 00736590.obj 00736ad0.obj 00736640.obj 007366c0.obj
+duplicates 1
+  DUP 007366c0.obj ??$GetDef@VCMeleeCombatAbilityDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z in 00736640.obj;
+UNRESOLVED 2 ?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ
+## new set: 00736590.obj 00736ad0.obj 00736640.obj 007366c0.obj
+duplicates 1
+  DUP 007366c0.obj ??$GetDef@VCMeleeCombatAbilityDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z in 00736640.obj;
+LK_DONE

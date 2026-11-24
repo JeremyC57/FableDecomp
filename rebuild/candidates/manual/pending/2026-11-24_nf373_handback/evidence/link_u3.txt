@@ -1,0 +1,6 @@
+## HEAD set: 00693030.obj 00693b30.obj 008430b0.obj 00843310.obj 00847df0.obj
+duplicates 0
+UNRESOLVED 2 ?SetAnimation@CCreatureActionBase@@IAEXABVCAnimationEntry@@MM@Z
+## new set: 00693030.obj 00693b30.obj 008430b0.obj 00843310.obj 00847df0.obj
+duplicates 0
+LK_DONE
