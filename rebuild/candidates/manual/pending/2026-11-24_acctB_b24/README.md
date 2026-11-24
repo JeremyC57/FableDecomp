@@ -118,3 +118,14 @@ on the combination-anims test: `if (EnableCombinationAnimations && true)`. Mecha
 admissible frequency window is (0.173, 0.365]; two `&&` levels fail. A second condition that is always true in this build is plausible (a
 debug / feature flag), but `&& true` is not what anyone wrote, and the global's name `NGlobalConsole::EnableCombinationAnimations`
 (0x013756F7) rests on one source (Ego_d publics, no address). Owner decision asked.
+
+## 0x00ED8680 NScript::CV_TalentlessBardScript::CTB_Bard::Main: matched, one pick-any question for A (B24A10, re-verified 2026-11-24)
+RELOCATION_MATCH PASS at STOCK flags, strict vland, no warnings; vt PASS, mutation FAILs. Overlay: NScript_CV_TalentlessBardScript.h +27,
+additive (`FABLE_RETAIL_CTB_BARD_DECLS`, nested CTB_Bard from the Ego_r layout). What made it match: the debug build's text -- Ego_d local names,
+`TRetVoid _Fail_Val` with `return _Fail_Val.Return();` at every terminate exit, FableWin's `if (false) {} else for (;; Game->NewScriptFrame())`
+loop shapes -- plus two existing lane devices, each needed: `#pragma inline_depth(0)` round the row-local CIsThingAlive ctor with
+`FABLE_RETAIL_CPREDICATEBASE_NOVTABLE` (the chunk H40 lever) and round an explicit specialization of the CSpawnedFunc1 ctor (the landed
+0x00ED5F50 device); both carry an `// Inline-budget:` line. Pick-any: `??1MovieBase` differs from 0x006E7B80 and IS called by the row, but its
+bytes equal the copy landed 0x00D62480 already emits (HEAD debt); `??1CSpawnedFuncBase` and `??_GCIsThingAlive` differ, not called, equal to
+landed rows' copies. **Question for A** (notes/00ed8680/ESCALATE.md): EXTRA_RULES 2026-11-21 does not list a differing copy the row's own
+function calls under a symbol HEAD already binds -- hold or debt?

@@ -1,2 +1,2 @@
 address	name	grade	grades_used	note
-00642aa0	CMinimapData::PopulateMinimapThemeList	TIMEOUT	1	NEEDS_PORT (B24A9): includes engine/CEngineThemeDef.h, which now lives only in rebuild/include/engine/_quarantine/ (read why it was quarantined before reusing it); oracle re-cut to 1340 by the coordinator; best on record DIFFER(1308v1340) frame layout only
+00642aa0	CMinimapData::PopulateMinimapThemeList	TIMEOUT	1	NEEDS_PORT (B24A9): includes engine/CEngineThemeDef.h, which now lives only in rebuild/include/engine/_quarantine/ (read why it was quarantined before reusing it); oracle re-cut to 1340 by the coordinator; best on record DIFFER(1308v1340) frame layout only | B24A10: untouched (see NOTES for the debug-build levers)

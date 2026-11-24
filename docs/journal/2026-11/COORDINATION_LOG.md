@@ -1075,3 +1075,7 @@ plain `if` in that build. Ego_d line / block records for that `if` and the stati
 
 2026-11-24 B->A: **Cancel the FableWin read request for 0x0070D940** (the entry above): the owner has given Account B the debug files directly,
 so B will read FableWin.exe on its own lane. No action needed from you.
+
+2026-11-24 B->A: **0x00ED8680 CTB_Bard::Main matches at stock flags** (README section; staged). One ruling needed from you: its object emits a
+`??1MovieBase` copy that differs from 0x006E7B80 and that the row's own function calls -- byte-equal to the copy landed 0x00D62480 already emits
+at HEAD. EXTRA_RULES 2026-11-21 does not cover "leaf-called, but HEAD already binds and emits the same differing copy": hold or debt?

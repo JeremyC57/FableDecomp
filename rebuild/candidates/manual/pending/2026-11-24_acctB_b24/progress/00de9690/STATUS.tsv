@@ -1,2 +1,2 @@
 address	name	grade	grades_used	note
-00de9690	?Main@CRansomHelper@CQ_RansomVictimScript@NScript@@EAEXXZ	DIFFER(3428v3412)	1	compiles on today's headers; 55 hunks; CIsThingAlive CScriptThing-copy split (INLINE_DEPTH_REVISIT), untouched by B24A9 beyond the baseline
+00de9690	?Main@CRansomHelper@CQ_RansomVictimScript@NScript@@EAEXXZ	DIFFER(3412v3412)	6	46 hunks, call sequence equal; frame-packing only (temp1/temp2/ReturnToCaveTimer slots); H40 lever + TRetVoid/Ego_d names applied; see NOTES B24A10

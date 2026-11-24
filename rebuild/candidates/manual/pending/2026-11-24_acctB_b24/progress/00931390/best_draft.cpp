@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionReactToCriminal::Update responds to perceived crime, house locks and the creature’s options for leaving or seeking shelter.
-// Grade: DIFFER(3863v3891; oracle over-cut, real length 3863) -- 29 real hunks: doors._M_start not in esi at its zero init (PHome block-1 CSE piece keeps esi through the PeekTC; retail rematerialises lea ecx,[edi+1Ch]), hence doors frame word/bool-byte order (packer tie), dtor reload, 3 scream-site GetTC thing eax v esi, loop pads.
+// Grade: DIFFER(3863v3863) -- 29 hunks (B24A10: debug-build shapes applied, same residue): doors._M_start init piece not in a register (retail xor esi,esi), hence doors frame order / dtor reload; 3 scream-site GetTC creature eax v esi (retail mov esi,[eax+18h] / add esi,44h); loop pads. Open invention: the `home` reference (not in Ego_d; without it 49 hunks).
 // Leaf: ?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ
 // Flags: none
 // Retail: Fable.exe 0x00931390, 3863 bytes.
@@ -69,6 +69,7 @@ namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_0 = 0, DIALO
 #include "engine/CTCVolumeContainmentTracker.h"
 #include "engine/CTCCreatureNavigation.h"
 #include "engine/CTCTalk.h"
+#include "engine/CTCDoor.h"
 #include "engine/CThingFilter_IsNotBeingExclusivelyUsed.h"
 #include "engine/NCreatureAI.h"
 #include "engine/CGameDefinitionManager.h"
@@ -97,11 +98,11 @@ void CAIStateGroup_MinionReactToCriminal::Update()
             std::vector<const CThing*> doors;
             const CTCThingOwner* owner;
             if (PHome->PeekTC(TCI_THING_OWNER, &owner)) {
-                std::list<CIntelligentPointer<CThing> >::const_iterator it = owner->GetObjectList().begin();
-                while (it != owner->GetObjectList().end()) {
-                    if (IS_THING_ALIVE(*it) && (*it)->HasTC(TCI_DOOR))
-                        doors.push_back((*it).Get());
-                    ++it;
+                const std::list<CIntelligentPointer<CThing> >& objects = owner->GetObjectList();
+                if (false) {} else for (std::list<CIntelligentPointer<CThing> >::const_iterator object_it = objects.begin(); object_it != objects.end(); ++object_it) {
+                    CTCDoor* door;
+                    if (IS_THING_ALIVE(*object_it) && (*object_it)->GetTC(TCI_DOOR, &door))
+                        doors.push_back((*object_it).Get());
                 }
             }
             if (doors.size() != 0) {
@@ -128,7 +129,7 @@ void CAIStateGroup_MinionReactToCriminal::Update()
                         Terminate();
                         break;
                     }
-                    ret = AIAction_MoveToThingProximity(ACTION_REPEAT_CALLBACK, door.Get(), 1.2f, nav_route_calculated, AI_MOVEMENT_RUNNING, true, false, true, true, 0.0f);
+                    ret = AIAction_MoveToThingProximity(ACTION_REPEAT_CALLBACK, door.Get(), 1.2f, ret_bool, AI_MOVEMENT_RUNNING, true, false, true, true, 0.0f);
                 } while (ret == AI_ACTION_IN_PROGRESS && !HeroInsideHouse);
                 if (ret == AI_ACTION_TERMINATE_PROCESS) {
                     Terminate();
@@ -175,24 +176,23 @@ void CAIStateGroup_MinionReactToCriminal::Update()
         }
         if (MeInsideHouse && !HeroInsideHouse && !GuardInsideHouse && IS_THING_ALIVE(home) && PHome->IsLockable() &&
             !PHome->IsLocked()) {
-            CTCVolumeContainmentTracker* ptc_volume_containment_tracker;
+            CTCVolumeContainmentTracker* ptc_volume_containment_tracker = NULL;
             if (PHero->GetTC(TCI_VOLUME_CONTAINMENT_TRACKER, &ptc_volume_containment_tracker)) {
-                CThing* inside = ptc_volume_containment_tracker->GetPThingInside();
-                if (inside != PHome.Get() && !PHome->IsLocked()) {
+                CThing* thing_in = ptc_volume_containment_tracker->GetPThingInside();
+                if (thing_in != PHome.Get() && !PHome->IsLocked()) {
                     PHome->SetOverrideAutomaticLocking(true);
                     OverrodeLocking = true;
                     PHome->LockAllDoors(true, true);
                 }
             }
             CIntelligentPointer<CThing> pmarker(0);
-            CTCThingOwner* owner;
-            if (PHome->GetTC(TCI_THING_OWNER, &owner)) {
+            CTCThingOwner* ptc_thing_owner = NULL;
+            if (PHome->GetTC(TCI_THING_OWNER, &ptc_thing_owner)) {
                 std::vector<CThing*> available_markers;
                 long def_index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("GAZE_OUT_OF_BUILDING_MARKER");
+                const std::list<CIntelligentPointer<CThing> >& objects = ptc_thing_owner->GetObjectList();
                 CThingFilter_IsNotBeingExclusivelyUsed not_used;
-                std::list<CIntelligentPointer<CThing> >::const_iterator it = owner->GetObjectList().begin();
-                if (it != owner->GetObjectList().end())
-                for (; it != owner->GetObjectList().end(); ++it) {
+                if (false) {} else for (std::list<CIntelligentPointer<CThing> >::const_iterator it = objects.begin(); it != objects.end(); ++it) {
                     if (IS_THING_ALIVE(*it) && (*it)->GetDefGlobalIndex() == def_index &&
                         PHome->IsPointInside((*it)->GetPos()) && not_used(*(*it).Get())) {
                         available_markers.push_back((*it).Get());
