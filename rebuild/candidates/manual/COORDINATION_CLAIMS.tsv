@@ -439,3 +439,4 @@ date	account	item	kind	status	note
 2026-11-24	A	unit8	naming	done	landed 2 rows (batches/2026-11-24_landing_unit8)
 2026-11-24	A	unit9	naming	claimed	scripted unit route wave 9 (unit_fix.py): units deferred from the previous wave; landed rows and their callers only
 2026-11-24	A	unit9	naming	done	landed 2 rows (batches/2026-11-24_landing_unit9)
+2026-11-24	A	unit10	naming	claimed	scripted unit route wave 10 (unit_fix.py): units deferred from the previous wave; landed rows and their callers only
