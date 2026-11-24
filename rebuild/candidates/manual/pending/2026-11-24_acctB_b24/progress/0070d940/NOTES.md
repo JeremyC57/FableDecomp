@@ -8,3 +8,4 @@
   0x00711C50 called before the transition loop, expanded inside it); next idea there: the pre-loop first-transition setup as its own
   inline helper, and the CIVCountedPointer(T*) adopting constructor.
 - Not started beyond the baseline (context spent on 0x00402510 and the twin-row evidence).
+- (B24C5) not reached: B24C5 spent its context on rows 1 and 2 (see ../00be4660/NOTES.md, ../00be3970/NOTES.md). Port onto shared headers first.

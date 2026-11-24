@@ -29,3 +29,4 @@
 - Same block as 00d09010 (see its B24A4 section): movie-scope cold exits need ~MovieBase expanded and ~CTimer called at one return;
   S15 + inline_depth(0) separates them only where no movie is in scope (that is how 0x00D11930 matched). Waits on lane B's CTimer
   text (a ~CTimer of c1 > 19 with retail's bytes would make n0.cpp + /d2inlS15 the candidate).
+- B24A5: existence-proof search done (ESCALATE.md, shared with 0x00D09010): only precedent is the goto form (a1 here). Blocked.

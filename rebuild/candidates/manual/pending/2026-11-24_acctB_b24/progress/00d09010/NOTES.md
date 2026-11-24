@@ -131,3 +131,5 @@ Tools added: g3.sh <src> "<note>" [flags] (fg grade + full q listing q_<b>.txt +
   v1 + S15 should give retail's exits here (00d09010 hot exits f 0.0707 / 0.2459 still expand for c1 < 25.7). Blocked on that.
 - Lane B (b24b/SHARED_FORM.md, B24B3): today's CTimer text is FableWin-hash-exact (the +1 /Od instruction is VC10's split virtual
   call), ~CTimer stays c1 14: the cost reversal is NOT on the CTimer side either. Row stays blocked (Ego_d questions in ESCALATE.md).
+- B24A5: existence-proof search done (ESCALATE.md "B24A5 existence-proof search"): only landed stock-flag precedent is 0x00D0A830's
+  goto-Terminate + inline_depth(0) form (already tried here); no return-form precedent exists.

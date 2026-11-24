@@ -9,3 +9,7 @@ when the water row is solved (then regenerate test / payload / vland / pick-any 
 - (B24C3) A fifth sea-matching text has NO `continue`: first test else-first (`if (water.EdgeIndexBufferIndex == 0xffff) previous = -1;
   else {...}`, ../00be4660/c3/gx/b_gba1.cpp; fg-graded only). Across ~30 loop-tail forms every text puts both rows on the same side
   (water 4 hunks + sea 22/45, or sea MATCH + water 16+); the separating input is still unknown. Payload stays m1a, still held.
+- (B24C5) Hand read of both retail tails settles the text: sea has two `previous = -1` stores (immediate 0x00BE5917, register ebp
+  0x00BE5925); water has one (0x00BE4F5C) that the not-found arm falls into -- a VC7.1 tail merge of two identical immediate stores
+  (water never hoists -1). Our S-form water compile reproduces that merge. So the S-form (sea-matching) text is the template; the
+  water row's remaining residue is register allocation (prologue y register, i/strip carried over the back edge), not loop-tail text.

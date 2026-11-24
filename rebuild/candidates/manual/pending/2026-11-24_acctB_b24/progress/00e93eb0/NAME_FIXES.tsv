@@ -1,0 +1,2 @@
+address	landed_spelling	correct_symbol	evidence
+0x00E95380	Nop_ret0_00e95380 (manifest) / C00e95380::M (rebuild/src/compiled/00/e9/E2_E2_00e95380.cpp)	?Return@TRetVoid@@QAEXXZ	single caller in Fable.exe 0x00E9524E with ecx = &_Fail_Val (lea ecx,[esp+0C0h]) right after the final IsActiveThreadTerminating test of CV_HauntedHouseScript::Main (generator form `return _Fail_Val.Return();`); body `ret` = TRetVoid::Return {} (engine/TRetVoid.h; FableWin/Ego_r name sets hold ?Return@TRetVoid@@QAEXXZ); placed directly after Main as this TU's COMDAT
