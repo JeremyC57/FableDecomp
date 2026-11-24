@@ -452,3 +452,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	b4 landed (86 rows, 37 headers, batches/2026-11-24_landing_nf329_b4); b1, b2 follow
 2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	b1 landed (80 rows, 47 headers, batches/2026-11-24_landing_nf329_b1); b2 follows
 2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	done	landed 301 rows + 118 headers (batches/2026-11-24_landing_nf329_b1..b4); 95 thin-remainder rows queued
+2026-11-24	A	agent NF330: NF324 Q1 thin-family remainder (95 rows NF329 did not reach)	naming	claimed	NF329 route on the landed opt-in models; locks via lock.sh NF330
