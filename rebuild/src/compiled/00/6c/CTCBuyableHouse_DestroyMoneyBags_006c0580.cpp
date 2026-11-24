@@ -1,5 +1,5 @@
 // CTCBuyableHouse::DestroyMoneyBags(bool giveToHero) -- kill every live money bag (interface 0xCC) in the house, first crediting its gold to the live hero's stats when asked
-// Leaf: DestroyMoneyBags
+// Leaf: ?DestroyMoneyBags@CTCBuyableHouse@@AAEX_N@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail 0x006C0580, 336 bytes, `ret 4`.
 // Callees: CVectorMap::LowerBound 0x0040F020 (interfaces 0x21 thing list, 0xCC gold, 4 hero stats), CBaseIntelligentPointer::
@@ -71,7 +71,9 @@ protected:
 class CTCBuyableHouse : public CTCBase {
 public:
     CThing*       ParentThing;                          // +0x04
+    private:
     void DestroyMoneyBags(bool giveToHero);
+    public:
 };
 
 void CTCBuyableHouse::DestroyMoneyBags(bool giveToHero)

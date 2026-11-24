@@ -1,3 +1,4 @@
+// Leaf: ?UpdateHeadPos@CTCLook@@AAEXXZ
 // CTCLook::UpdateHeadPos() -- refresh the cached head position from the parent creature, except while the cache timer runs and the thing is more than 8 units from the camera; restart the timer when the head barely moved
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local MagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in g_HeadPosCacheFrames (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -62,7 +63,9 @@ class CTCLook : public CTCBase { public:
     unsigned char       _padAD[0xb0 - 0xad];
     long                HeadCacheTimer;         // +0xb0 (PDB +0xb4)
     bool IsInsideAnimationRange() const;// 0x00751BC0 NF35: Ego_r + FableWin ?IsInsideAnimationRange@CTCLook@@QBE_NXZ (was ShouldGetExactHeadPos)
+    private:
     void UpdateHeadPos();
+    public:
 };
 #pragma pack(pop)
 

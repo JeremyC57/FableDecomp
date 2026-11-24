@@ -1,5 +1,5 @@
 // CTCHeroAttachableAppearanceModifiers::UpdateHiddenMaterials() -- rebuild the set of hidden material names: clear it, then for every worn modifier of the three types look up its def, take its CAppearanceModifierDef sub-def and insert each of its HideMaterials names
-// Leaf: UpdateHiddenMaterials
+// Leaf: ?UpdateHiddenMaterials@CTCHeroAttachableAppearanceModifiers@@AAEXXZ
 //
 // Retail 0x00706510, 304 bytes (plain `ret`; 8-byte aligned frame `and esp,-8`). Ego_r.pdb
 // `?UpdateHiddenMaterials@CTCHeroAttachableAppearanceModifiers@@...` (catalog row).
@@ -146,7 +146,9 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     unsigned char PrimHandles[0xc];                         // +0x18
     CCharStringSet HiddenMaterialNames;                     // +0x24
     CModifierVectorVector AppearanceModifiers;              // +0x30
+    private:
     void UpdateHiddenMaterials();
+    public:
 };
 
 CSetNode* InsertNode_004ac380(CCharStringSet* set, void* key, bool* inserted);

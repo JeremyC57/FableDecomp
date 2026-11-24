@@ -26,6 +26,7 @@ T1	access	CParticleSystem	1	1	engine/CParticleSystem.h	00af5960
 T1	access	CScriptGameResourceObjectScriptedThingBase	1	1	engine/CScriptGameResourceObjectScriptedThingBase.h	007e7450
 T1	access	CTCBase	1	1	engine/CTCBase.h	00686db0
 T1	access	CTCBuyableHouse	1	1	engine/CTCBuyableHouse.h	006c0270
+T1	access	CTCDParticleEmitter	1	1	engine/CTCDParticleEmitter.h	006e0df0
 T1	access	CTCHaste	1	1	engine/CTCHaste.h	007fffb0
 T1	access	CTCInGameMenu	1	1	engine/CTCInGameMenu.h	0047d537
 T1	access	CTCInventory	1	1	engine/CTCInventory.h	00582027
@@ -52,6 +53,7 @@ T1	standin_alias	CTCInventoryBase	5	5		005bc5c6 005bdb94 005bdc08 005bf3f1 005bf
 T1	standin_alias	CTCInventoryExperience	5	3	engine/CTCInventoryExperience.h	0056ff3d 0056ffc5 005721fa 005746f7 005747a3
 T1	standin_alias	CThingCreatureBase	5	5	engine/CThingCreatureBase.h	006626a0 00663610 006647f0 00665e90 00666830
 T1	standin_alias	CThing	4	4	engine/CThing.h	004c78a0 004c7a10 004c9c40 004ca1d0
+T1	standin_alias	CWorldMap	4	4	engine/CWorldMap.h	004fb880 004fc210 004fc970 004fcb30
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
 T1	standin_alias	CCombatManager	3	2	engine/CCombatManager.h	006e9700 006ea770 006eae20
@@ -59,7 +61,6 @@ T1	standin_alias	CEngineSkyRenderer	3	2	engine/CEngineSkyRenderer.h	00b64550 00b
 T1	standin_alias	CTCHeroMorph	3	3	engine/CTCHeroMorph.h	0071c360 0071d7c0 0071de80
 T1	standin_alias	CTCHeroOpinionDeedLog	3	1	engine/CTCHeroOpinionDeedLog.h	006c5920 006c59e0 006c5f80
 T1	standin_alias	CTCInventoryAbilities	3	3	engine/CTCInventoryAbilities.h	005edd04 005ee02e 00c22040
-T1	standin_alias	CWorldMap	3	3	engine/CWorldMap.h	004fb880 004fc210 004fc970
 T1	standin_alias	(none)	2	2		0051d990 00cbe2ff
 T1	standin_alias	C3DMeshFileMaterialChunk	2	1	engine/C3DMeshFileMaterialChunk.h	00ac0e50 00ac0ee0
 T1	standin_alias	CAIStateGroupBase	2	1	engine/CAIStateGroupBase.h	0097d580 0097ec00
@@ -90,6 +91,7 @@ T1	standin_alias	CAFile	1	1	engine/CAFile.h	00997f80
 T1	standin_alias	CAIScratchpadDef	1	1	engine/CAIScratchpadDef.h	007adf00
 T1	standin_alias	CAIStateGroup_ApprenticeHero	1	1	engine/CAIStateGroup_ApprenticeHero.h	00929fc0
 T1	standin_alias	CAIStateGroup_Clean	1	1		008fdb27
+T1	standin_alias	CAIStateGroup_GoToPub	1	1	engine/CAIStateGroup_GoToPub.h	00949320
 T1	standin_alias	CAIStateGroup_MazeTutorialBattleRespondToLightning	1	1	engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h	00954c60
 T1	standin_alias	CAIStateGroup_MinionReactToCrime	1	1	engine/CAIStateGroup_MinionReactToCrime.h	00958770
 T1	standin_alias	CAIStateGroup_MinionReactToTrespassing	1	1	engine/CAIStateGroup_MinionReactToTrespassing.h	009580e0
@@ -503,6 +505,7 @@ T1	other	NCreatureAI	3	5	engine/NCreatureAI.h	00864840 008648a0 00864cb0
 T1	other	NThingShot	3	5		007bf000 007c0ad0 007c0e80
 T1	other	Process	3	1		00883530 00883640 00883750
 T1	other	CAIStateGroup_ThrowLogsOnFire	2	2	engine/CAIStateGroup_ThrowLogsOnFire.h	00917050 009170b0
+T1	other	CAIStateGroup_WorkAtSchool	2	1	engine/CAIStateGroup_WorkAtSchool.h	009425f0 00942c70
 T1	other	CAnimSet	2	1	engine/CAnimSet.h	0070c280 0070d2f0
 T1	other	CAnimateThing	2	3	engine/CAnimateThing.h	0070d580 0070e8b0
 T1	other	CAnimationData	2	3		00a24d70 00a25b20
@@ -636,7 +639,6 @@ T1	other	CAIStateGroup_SummonerCharge	1	1	engine/CAIStateGroup_SummonerCharge.h	
 T1	other	CAIStateGroup_SummonerLightningAttack	1	1	engine/CAIStateGroup_SummonerLightningAttack.h	00902eef
 T1	other	CAIStateGroup_TavernServer	1	1	engine/CAIStateGroup_TavernServer.h	00901750
 T1	other	CAIStateGroup_VillageTaskPickCrops	1	1	engine/CAIStateGroup_VillageTaskPickCrops.h	00940120
-T1	other	CAIStateGroup_WorkAtSchool	1	1	engine/CAIStateGroup_WorkAtSchool.h	009425f0
 T1	other	CAIStateGroup_WorkBase	1	1	engine/CAIStateGroup_WorkBase.h	00916790
 T1	other	CAInputProcess	1	13	engine/CAInputProcess.h	00a0d3d0
 T1	other	CActionTalkBase	1	2		00717950
@@ -4888,7 +4890,6 @@ T3	-	CThingCreatureBase	4	10	engine/CThingCreatureBase.h	00662040 00662550 00663
 T3	-	CThingManager	4	10	engine/CThingManager.h	0051df80 00520c80 005252b0 013b8a80
 T3	-	CThingMapManager	4	8	engine/CThingMapManager.h	00637980 00637da0 00637f40 006381a0
 T3	-	CWideString	4	11		0099af10 0099b070 0099b440 0099b6b0
-T3	-	CWorldMap	4	7	engine/CWorldMap.h	004fcb30 0063a6e0 01244ab4 01244aec
 T3	-	GFSerialiseMapBinaryIn	4	6		00475aa6 0067c020 0067c110 0067c200
 T3	-	GetAllThingsInRoughArea	4	8		007f4500 00809a70 0080a550 008e4100
 T3	-	NParticleEngine	4	7		013d2e14 013d2e1c 013d2e24 013d2e2c
@@ -4958,6 +4959,7 @@ T3	-	CUnprovenPointerArray	3	6		00c1e640 00c1eb30 00c34d40
 T3	-	CUnprovenStateObject_00C20720	3	6		00c207a0 00c20f20 00c20f40
 T3	-	CViewport	3	2		01249a30 01249a38 01249a5c
 T3	-	CVtable_012b4f74	3	6		00c3c3b0 00c3c4e0 00c3c6b0
+T3	-	CWorldMap	3	4	engine/CWorldMap.h	0063a6e0 01244ab4 01244aec
 T3	-	CZoomingComponent	3	2		01247d98 01247da0 01247dc4
 T3	-	FindMostRecentMessage	3	7		00746260 0090e090 0095e6d0
 T3	-	GetAllLeafThings	3	6		004ad780 00617860 006ae830
@@ -5297,7 +5299,6 @@ T3	-	CAIStateGroup_CreatureUseCoverBase	1	5	engine/CAIStateGroup_CreatureUseCove
 T3	-	CAIStateGroup_CreatureUseCoverBase_00c42d60	1	4		00c42d60
 T3	-	CAIStateGroup_Derived_00c44580	1	2		00c44580
 T3	-	CAIStateGroup_EnemyCreatureBase	1	2	engine/CAIStateGroup_EnemyCreatureBase.h	0091db50
-T3	-	CAIStateGroup_GoToPub	1	3	engine/CAIStateGroup_GoToPub.h	00949320
 T3	-	CAIStateGroup_HoverMovementBase	1	8	engine/CAIStateGroup_HoverMovementBase.h	0128a1dc
 T3	-	CAIStateGroup_MeleeCombatNearbyBase	1	2	engine/CAIStateGroup_MeleeCombatNearbyBase.h	006e8400
 T3	-	CAIStateGroup_MinionFindPersonalSpace	1	2	engine/CAIStateGroup_MinionFindPersonalSpace.h	0092e890
@@ -5305,7 +5306,6 @@ T3	-	CAIStateGroup_MinionKidCalledToMother	1	3	engine/CAIStateGroup_MinionKidCal
 T3	-	CAIStateGroup_MoveGoodsBase	1	2	engine/CAIStateGroup_MoveGoodsBase.h	00915890
 T3	-	CAIStateGroup_RecoverStealableItem	1	2	engine/CAIStateGroup_RecoverStealableItem.h	00965210
 T3	-	CAIStateGroup_TellStory	1	2		00942920
-T3	-	CAIStateGroup_WorkAtSchool	1	3	engine/CAIStateGroup_WorkAtSchool.h	00942c70
 T3	-	CAIStateGroup_WorkBase	1	2	engine/CAIStateGroup_WorkBase.h	00947840
 T3	-	CAInputProcessBase_00c16130	1	2		012b2a40
 T3	-	CAInputProcessBase_00c885c0	1	2		012beffc
@@ -6273,7 +6273,6 @@ T3	-	CTCCrateStack	1	2	engine/CTCCrateStack.h	007b6750
 T3	-	CTCCreatureExpression	1	2	engine/CTCCreatureExpression.h	00728ff0
 T3	-	CTCCreatureGenerator	1	2	engine/CTCCreatureGenerator.h	01268c24
 T3	-	CTCDExplosion	1	2	engine/CTCDExplosion.h	004e3ee1
-T3	-	CTCDParticleEmitter	1	3	engine/CTCDParticleEmitter.h	006e0df0
 T3	-	CTCDPhysicalObstruction_00c2a8c0	1	2		00c2a8c0
 T3	-	CTCDPhysicalObstruction_00c2a9b0	1	2		00c2a9b0
 T3	-	CTCDiceGame_00c2bd90	1	2		00c2bd90

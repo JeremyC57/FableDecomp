@@ -1,5 +1,5 @@
 // CAIStateGroup_GoToPub::FreeBarPoint() -- hand the bar point this creature was using back to the bar.
-// Leaf: ?FreeBarPoint@CAIStateGroup_GoToPub@@QAEXXZ
+// Leaf: ?FreeBarPoint@CAIStateGroup_GoToPub@@IAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00949320, length 93 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the bar pointer at +0x1c), CVectorMap::LowerBound @
@@ -47,7 +47,9 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CIntelligentPointer<CThing> m_pBar;             // +0x1c CIntelligentPointer<CThing> (the bar object)
     unsigned char _pad24[0x50];                 // +0x24
     long m_barPointIndex;                       // +0x74 (-1 = none)
+    protected:
     void FreeBarPoint();
+    public:
 };
 
 void CAIStateGroup_GoToPub::FreeBarPoint()

@@ -33,7 +33,10 @@ class CTCDParticleEmitter { public:
     bool ResetEmitterOrientation : 1;
     bool AttachedToCamera : 1;
     bool Moving : 1;
-    bool IsParticleCreationDisabled() const;                // 0x006E0DF0
+    protected:
+    bool IsParticleCreationDisabled() const;
+    public:
+                // 0x006E0DF0
     protected:
     void SetParticleCreationDisabled(bool disabled);
     public:

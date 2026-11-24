@@ -103,7 +103,10 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     bool IsAnotherGuardAdmonishingPlayer();
     public:
      // 0x00939D00
-    bool CheckForOtherGuardsNewWarning();       // 0x00939D70
+    private:
+    bool CheckForOtherGuardsNewWarning();
+    public:
+       // 0x00939D70
 private:
     void RemoveMessageEventsAdded();            // 0x00939DD0 ?RemoveMessageEventsAdded@...@@AAEXXZ (private; Ego_r / FableWin; the donor Update calls it)
     bool IsPlayerCarryingWeapon() const;        // 0x00939E70 ?IsPlayerCarryingWeapon@...@@ABE_NXZ (private)

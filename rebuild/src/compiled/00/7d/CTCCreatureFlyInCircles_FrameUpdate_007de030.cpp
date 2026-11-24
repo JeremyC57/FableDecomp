@@ -84,7 +84,10 @@ struct CTCCreatureFlyInCircles {
     bool ModeChangeQueued;                              // +0x39
     bool Active;                                        // +0x3a
     CWorldMap* GetWorldMap();                           // 0x00686D30 (CTCBase)
-    void ChangeMode();                                  // 0x007DDCC0
+    protected:
+    void ChangeMode();
+    public:
+                                  // 0x007DDCC0
     protected: void PlayLoopAnim(); public:                                // 0x007DDDA0
     protected:
     void CheckForHits();

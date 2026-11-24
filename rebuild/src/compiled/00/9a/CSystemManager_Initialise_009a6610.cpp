@@ -185,7 +185,10 @@ class CSystemManager : public CInitBaseClass { public:
     bool InitWindow(long width, long height);           // 0x009A64B0
     void Uninitialise();                                // 0x009A60D0
     void InitSystemColours();                           // 0x009A5490
-    void InitApplicationName();                         // 0x009A5340
+    private:
+    void InitApplicationName();
+    public:
+                         // 0x009A5340
     long Initialise(const CSystemManagerInit& init);
 };
 

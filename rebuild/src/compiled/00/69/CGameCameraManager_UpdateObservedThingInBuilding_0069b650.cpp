@@ -1,5 +1,5 @@
 // CGameCameraManager::UpdateObservedThingInBuilding() -- when the current mode is interruptable (or a mode is pending), push the building camera mode once the observed thing is alive inside a live building, or remove it once it is not
-// Leaf: ?UpdateObservedThingInBuilding@CGameCameraManager@@QAEXXZ
+// Leaf: ?UpdateObservedThingInBuilding@CGameCameraManager@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069B650, length 152 bytes (+ int3 padding).
 // Callees: IsCameraModeInterruptable(CCountedPointer<const NCameraModes::CBase>) @ 0x00697A50 (static `__stdcall`, by-value copy built in
@@ -37,7 +37,9 @@ class CGameCameraManager { public:
     static bool __stdcall IsCameraModeInterruptable(CCountedPointer<NCameraModes::CBase> mode);   // 0x00697A50
     void PushBuildingCameraMode();                          // 0x0069AD10
     void RemoveBuildingCameraMode();                        // 0x0069B610
+    private:
     void UpdateObservedThingInBuilding();
+    public:
 };
 
 void CGameCameraManager::UpdateObservedThingInBuilding()

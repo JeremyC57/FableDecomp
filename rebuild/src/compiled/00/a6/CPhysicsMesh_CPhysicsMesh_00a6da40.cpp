@@ -87,7 +87,10 @@ public:
     virtual ~CPhysicsMesh();
     void GetMeshDataFromFileData(const C3DMeshFile& file);          // 0x00A6CC10
     void GetHelperDataFromFileData(const C3DMeshFile& file);        // 0x00A6D0E0
-    void CalculateNavigationLineInfo();                             // 0x00A74360
+    private:
+    void CalculateNavigationLineInfo();
+    public:
+                             // 0x00A74360
 private:
     void CalculateBoundingInfo();                                   // 0x00A6C640 ?CalculateBoundingInfo@CPhysicsMesh@@AAEXXZ (Ego_r + FableWin, private; NF93 q11326)
 public:

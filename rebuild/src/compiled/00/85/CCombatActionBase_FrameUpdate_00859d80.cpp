@@ -68,7 +68,10 @@ class CCombatActionBase:public CCreatureActionBase { public:
     bool HasStrikeEventInterrupt,HasStrikeEventResetCombo,HasMovementEventInterrupt,StrikeEventInterruptActive,MovementEventInterruptActive,PreferredFinalPosSet,HasPerformAction,SentMissedEvent,HasResetMeleeCombatAbilityEffects;
     long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
     protected: void UpdateFacingDirection(); public: //00856B20
-    void ProcessStrikeEvents(); //008597A0
+    protected:
+    void ProcessStrikeEvents();
+    public:
+ //008597A0
     protected:
     void ProcessPlayerControl();
     public:

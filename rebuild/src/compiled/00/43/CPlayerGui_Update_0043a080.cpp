@@ -139,7 +139,10 @@ class CPlayerGui { public:
     void UpdateRenown();
     public:
                                     // 0x00439E00
-    void UpdateMorality();                                  // 0x00439F20
+    private:
+    void UpdateMorality();
+    public:
+                                  // 0x00439F20
     private: void UpdateCrime(); public:                                     // 0x004385F0
     void Update(bool paused);
 };

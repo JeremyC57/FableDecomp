@@ -93,7 +93,10 @@ class CTCLook : public CTCBase { public:
     unsigned char _pad74[0xb4 - 0x74];
     long          TimeToStopLooking;                       // +0xb4
     bool          OneFrameDelay;                           // +0xb8
-    void UpdateHeadPos();                                  // 0x00752000
+    private:
+    void UpdateHeadPos();
+    public:
+                                  // 0x00752000
     void ImplementHeadSettings();                          // 0x00753BA0
     private: bool IsAbleToTurnDaBody() const; public:                             // 0x00751DA0
     bool IsCurrentlyTurningViaAnimation() const;                 // 0x00753B40

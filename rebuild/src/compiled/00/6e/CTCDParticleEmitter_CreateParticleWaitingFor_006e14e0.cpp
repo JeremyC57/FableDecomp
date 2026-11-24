@@ -1,5 +1,5 @@
 // CTCDParticleEmitter::CreateParticleWaitingFor() -- create the particle emitter the component has been waiting for from its pending creation parameters (interpolated or plain), copy the pending update parameters / creation-disabled / always-update state onto it, adopt it and drop the parameters
-// Leaf: ?CreateParticleWaitingFor@CTCDParticleEmitter@@QAEXXZ
+// Leaf: ?CreateParticleWaitingFor@CTCDParticleEmitter@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E14E0, 309 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::GetPos @ 0x004C73D0, NParticleEngine::GetParticleEmitterManager @ 0x00AEAAF0 (__fastcall), CreateInterpolatedEmitter(long,
@@ -124,7 +124,9 @@ class CTCDParticleEmitter { public:
     void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);
     public:
    // 0x006E1080
+    private:
     void CreateParticleWaitingFor();
+    public:
 };
 
 void CTCDParticleEmitter::CreateParticleWaitingFor()

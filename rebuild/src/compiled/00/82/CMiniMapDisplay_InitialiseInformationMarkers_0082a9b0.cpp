@@ -1,5 +1,5 @@
 // CMiniMapDisplay::InitialiseInformationMarkers() -- with a region loaded and the main player's creature alive: look up the four body-guard def indices and the hero's followed component (0xbc); for every information thing in the current region that carries the information flag, add a marker: the body-guard graphic ([8].Secondary) when it is one of the hero's followers of a body-guard def, else the information graphic ([2].Secondary)
-// Leaf: ?InitialiseInformationMarkers@CMiniMapDisplay
+// Leaf: ?InitialiseInformationMarkers@CMiniMapDisplay@@IAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -127,7 +127,9 @@ class CMiniMapDisplay { public:
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)
     void AddMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
+    protected:
     void InitialiseInformationMarkers();
+    public:
 };
 
 void CMiniMapDisplay::InitialiseInformationMarkers()

@@ -34,7 +34,10 @@ class CMiniMapDisplay { public:
     void UpdateMarkersInternal();
     public:
                   // 0x0082A960
-    void InitialiseInformationMarkers();           // 0x0082A9B0
+    protected:
+    void InitialiseInformationMarkers();
+    public:
+           // 0x0082A9B0
     void InitialiseTeleportMarkers();              // 0x0082ABD0
     void InitialiseHouseMarkers();                 // 0x0082ACD0
     void InitialiseDemonDoorMarkers();             // 0x0082ADD0

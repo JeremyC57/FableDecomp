@@ -77,7 +77,10 @@ class CTCCoopSpirit { public:
     CCoopSpiritDef* PCoopSpiritDef;                 // +0x28 CDefPointer<const CCoopSpiritDef>
     CIntelligentPointer<CThing> PParticleEmitter;       // +0x2c CIntelligentPointer<CThing>
 
-    void SetAppearanceParticle(const CCharString& name);   // 0x006705F0
+    private:
+    void SetAppearanceParticle(const CCharString& name);
+    public:
+   // 0x006705F0
     void UpdateMovement();                          // 0x00670820
     private:
     void UpdateLocalJostling();

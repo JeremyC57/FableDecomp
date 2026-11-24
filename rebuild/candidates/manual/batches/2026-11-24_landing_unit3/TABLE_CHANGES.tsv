@@ -1,0 +1,27 @@
+action	symbol	target	witness	note
+replace	?InitialiseInput@CNewFrontendGameComponent@@QAEXXZ -> ?InitialiseInput@CNewFrontendGameComponent@@AAEXXZ	0042dec5	0042e98f	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateMorality@CPlayerGui@@QAEXXZ -> ?UpdateMorality@CPlayerGui@@AAEXXZ	00439f20	0043a080	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?GetMinPlayerDistanceFromMap@CWorldMap@@QAEJJ@Z -> ?GetMinPlayerDistanceFromMap@CWorldMap@@IBEJJ@Z	004fcb30	00502850	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UploadPlayerScores@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ -> ?UploadPlayerScores@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561450	00564570	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?FindTeleportsForActiveRegion@CTCInventoryMap@@QAEXXZ -> ?FindTeleportsForActiveRegion@CTCInventoryMap@@AAEXXZ	005fd1d0	00602f30	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateCrowds@CTCVillage@@QAEXXZ -> ?UpdateCrowds@CTCVillage@@AAEXXZ	006594bb	0065c781	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?SetAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z -> ?SetAppearanceParticle@CTCCoopSpirit@@AAEXABVCCharString@@@Z	006705f0	00670a10	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateObservedThingInBuilding@CGameCameraManager@@QAEXXZ -> ?UpdateObservedThingInBuilding@CGameCameraManager@@AAEXXZ	0069b650	0069b6f0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?DestroyMoneyBags@CTCBuyableHouse@@QAEX_N@Z -> ?DestroyMoneyBags@CTCBuyableHouse@@AAEX_N@Z	006c0580	006c0810	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?IsParticleCreationDisabled@CTCDParticleEmitter@@QBE_NXZ -> ?IsParticleCreationDisabled@CTCDParticleEmitter@@IBE_NXZ	006e0df0	006e0fc0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?CreateParticleWaitingFor@CTCDParticleEmitter@@QAEXXZ -> ?CreateParticleWaitingFor@CTCDParticleEmitter@@AAEXXZ	006e14e0	006e1620	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateHiddenMaterials@CTCHeroAttachableAppearanceModifiers@@QAEXXZ -> ?UpdateHiddenMaterials@CTCHeroAttachableAppearanceModifiers@@AAEXXZ	00706510	00707930	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateHeadPos@CTCLook@@QAEXXZ -> ?UpdateHeadPos@CTCLook@@AAEXXZ	00752000	00753c70	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateTriggerOnProximity@CTCTrapBase@@QAEXXZ -> ?UpdateTriggerOnProximity@CTCTrapBase@@IAEXXZ	007887be	0078888a	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdatePointerScale@CTCTavernGameSpotTheAddition@@QAEXXZ -> ?UpdatePointerScale@CTCTavernGameSpotTheAddition@@AAEXXZ	007d8c20	007d8e20	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?ChangeMode@CTCCreatureFlyInCircles@@QAEXXZ -> ?ChangeMode@CTCCreatureFlyInCircles@@IAEXXZ	007ddcc0	007de030	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?UpdateExplosiveAdditionalImpulse@CTCDExplosion@@QAEXXZ -> ?UpdateExplosiveAdditionalImpulse@CTCDExplosion@@AAEXXZ	0080c590	0080d750	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?InitialiseInformationMarkers@CMiniMapDisplay@@QAEXXZ -> ?InitialiseInformationMarkers@CMiniMapDisplay@@IAEXXZ	0082a9b0	0082b750	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?ProcessStrikeEvents@CCombatActionBase@@QAEXXZ -> ?ProcessStrikeEvents@CCombatActionBase@@IAEXXZ	008597a0	00859d80	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?ChangeMesh@CTCDegradableBase@@QAEXABVCEngineGraphic@@@Z -> ?ChangeMesh@CTCDegradableBase@@AAEXABVCEngineGraphic@@@Z	008ec9c0	008ecac0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?Wander@CAIStateGroup_MinionHasInformation@@QAE_NXZ -> ?Wander@CAIStateGroup_MinionHasInformation@@AAE_NXZ	0090f320	0090f470	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?CheckForOtherGuardsNewWarning@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAE_NXZ -> ?CheckForOtherGuardsNewWarning@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ	00939d70	0093a080	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?StandAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z -> ?StandAndTalk@CAIStateGroup_WorkAtSchool@@IAE_NM@Z	00942c70	009432c0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?FreeBarPoint@CAIStateGroup_GoToPub@@QAEXXZ -> ?FreeBarPoint@CAIStateGroup_GoToPub@@IAEXXZ	00949320	009498b0	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?InitApplicationName@CSystemManager@@QAEXXZ -> ?InitApplicationName@CSystemManager@@AAEXXZ	009a5340	009a6610	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?CalculateNavigationLineInfo@CPhysicsMesh@@QAEXXZ -> ?CalculateNavigationLineInfo@CPhysicsMesh@@AAEXXZ	00a74360	00a6da40	unit_fix: the row and its callers moved to the PDB spelling together

@@ -61,7 +61,10 @@ class CWorldMap { public:
     CMapInfoArray Maps;                                 // +0x20
     unsigned char _pad2c[0xbc - 0x2c];
     CLevelLoader* PLevelLoader;                         // +0xbc CCountedPointer<CLevelLoader>::Data
-    long GetMinPlayerDistanceFromMap(long map);         // 0x004FCB30
+    protected:
+    long GetMinPlayerDistanceFromMap(long map) const;
+    public:
+         // 0x004FCB30
     void UnloadLevel(long map);                         // 0x004FEDE0
 protected:
     void LoadLevel(long map, ELoadType loadType);       // 0x00502620

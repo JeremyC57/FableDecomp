@@ -1,5 +1,5 @@
 // CTCCoopSpirit::SetAppearanceParticle(const CCharString& particleThingName) -- kill the current appearance particle when it is still alive, create the named particle thing at the spirit's position as the new one and, when it lives, attach its emitter to the spirit (bone 0x88, scale 1.1)
-// Leaf: ?SetAppearanceParticle@CTCCoopSpirit@@QAEXABVCCharString@@@Z
+// Leaf: ?SetAppearanceParticle@CTCCoopSpirit@@AAEXABVCCharString@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006705F0, 282 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x7) / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (x2) / dtor @
@@ -51,7 +51,9 @@ class CTCCoopSpirit { public:
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     unsigned char _pad08[0x2c - 0x08];
     CIntelligentPointer<CThing> PAppearanceParticle;                      // +0x2c
+    private:
     void SetAppearanceParticle(const CCharString& particleThingName);
+    public:
 };
 
 void CTCCoopSpirit::SetAppearanceParticle(const CCharString& particleThingName)

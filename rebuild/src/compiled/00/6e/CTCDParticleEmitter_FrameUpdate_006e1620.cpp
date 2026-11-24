@@ -176,7 +176,10 @@ class CTCDParticleEmitter : public CTCBase { public:
     bool AlwaysUpdate : 1;
     bool Asleep : 1;
     CWorld* GetWorld();                                      // 0x00686A70 (CTCBase)
-    void CreateParticleWaitingFor();                         // 0x006E14E0
+    private:
+    void CreateParticleWaitingFor();
+    public:
+                         // 0x006E14E0
     bool IsParticleCreationDisabled();                       // 0x006E0DF0
     protected:
     void SetParticleCreationDisabled(bool disabled);

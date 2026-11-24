@@ -101,7 +101,10 @@ public:
     public:
                            // 0x0042DDB3
     private: void InitialiseSounds(); public:                             // 0x0042E17C
-    void InitialiseInput();                              // 0x0042DEC5
+    private:
+    void InitialiseInput();
+    public:
+                              // 0x0042DEC5
     private: void Init2(); public:
 };
 void CNewFrontendGameComponent::Init2()

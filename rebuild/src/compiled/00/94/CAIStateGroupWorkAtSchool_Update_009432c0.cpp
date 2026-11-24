@@ -116,7 +116,10 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroup_UsesSeat {
     public:
    // 0x009425F0
     bool CrouchAndTalk(float seconds);          // 0x009428A0
-    bool StandAndTalk(float seconds);           // 0x00942C70
+    protected:
+    bool StandAndTalk(float seconds);
+    public:
+           // 0x00942C70
     bool SitAndTalk(float seconds);             // 0x00942820
     protected:
     virtual void Update();

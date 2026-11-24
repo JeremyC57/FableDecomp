@@ -31,7 +31,10 @@ class CTCTrapBase : public CTCBase { public:
     unsigned char _pad_0x04[0x50];
     CTrapDef*     PTrapDef_Object;          // +0x54 CDefPointer<const CTrapDef>::Object
     bool          Active;                   // +0x58
-    void UpdateTriggerOnProximity();        // 0x007887BE
+    protected:
+    void UpdateTriggerOnProximity();
+    public:
+        // 0x007887BE
     protected:
     void UpdateTrigger();
     public:

@@ -1,3 +1,4 @@
+// Leaf: ?FindTeleportsForActiveRegion@CTCInventoryMap@@AAEXXZ
 // CTCInventoryMap::FindTeleportsForActiveRegion() -- rebuilds the teleport marker list for the active region: for every map linked to the region, every enabled teleporter (TC 0xDD) in that map contributes its position converted to the map's local coordinates
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
@@ -200,7 +201,9 @@ class CTCInventoryMap : public CTCBase { public:
     CCoordVector  ActiveRegionTeleportPositions;      // +0x1e8
     unsigned char _pad1f4[0x238 - 0x1f4];
     long          ActiveRegionIndex;                  // +0x238
+    private:
     void FindTeleportsForActiveRegion();
+    public:
 };
 void CTCInventoryMap::FindTeleportsForActiveRegion()
 {

@@ -1,3 +1,4 @@
+// Leaf: ?CheckForOtherGuardsNewWarning@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::CheckForOtherGuardsNewWarning() -- look for a newer
 // "guard warning" message (type 0x1b) that this creature could see or hear since the one already recorded; on
 // a hit adopt its message id (+0x40 -> m_lastWarningId at +0x1c) and its source (+0x3c -> m_pWarningSource +0x14).
@@ -77,7 +78,9 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     void* m_pWarningSource;                 // +0x14
     long _pad18;                            // +0x18
     long m_lastWarningId;                   // +0x1c
+    private:
     bool CheckForOtherGuardsNewWarning();
+    public:
 };
 
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::CheckForOtherGuardsNewWarning()

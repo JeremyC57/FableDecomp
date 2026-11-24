@@ -50,7 +50,10 @@ public:
     void ShowScoreboard();                           // 0x00563130
     private: ENetworkSuccess LogOnToRegistrationServer(CCharString& message); public:   // 0x00560D00
     void AbortWithMessage(const CCharString& textSymbol);              // 0x00563410
-    ENetworkSuccess UploadPlayerScores();            // 0x00561450
+    private:
+    ENetworkSuccess UploadPlayerScores();
+    public:
+            // 0x00561450
     ENetworkSuccess DownloadListOfMyClans();         // 0x005615C0
     ENetworkSuccess DownloadMyClansLogos();          // 0x00561980
     private:

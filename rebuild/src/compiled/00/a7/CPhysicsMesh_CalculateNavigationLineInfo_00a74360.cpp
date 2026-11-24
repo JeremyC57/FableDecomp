@@ -1,6 +1,6 @@
 // CPhysicsMesh::CalculateNavigationLineInfo() -- size the navigation-line table to the number of NAV_LAYER levels (at least one), flag the mesh as having navigation lines when any level exists, clear every level's line list, then rebuild the lines
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A74360, length 160 bytes.
-// Leaf: CalculateNavigationLineInfo
+// Leaf: ?CalculateNavigationLineInfo@CPhysicsMesh@@AAEXXZ
 // Callees: CPhysicsMesh::CalculateNumberOfNavigationLineLevels @ 0x00A73DB0, vector<CArray<C2DLineF>>::resize(n, x)
 // @ 0x00A75230, CArray<C2DLineF>::erase(first, last) @ 0x00A748E0 (catalogued "Vector_EraseRange"; the inline clear()),
 // the line rebuild @ 0x00A74180 (catalogued "NavMesh_ProcessLine_Indices").
@@ -39,7 +39,9 @@ class CPhysicsMesh { public:
     public:
    // 0x00A73DB0
     void ProcessNavigationLines();                 // 0x00A74180
+    private:
     void CalculateNavigationLineInfo();
+    public:
 };
 
 void CPhysicsMesh::CalculateNavigationLineInfo()

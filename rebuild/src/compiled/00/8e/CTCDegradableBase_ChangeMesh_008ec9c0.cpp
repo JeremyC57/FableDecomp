@@ -1,5 +1,5 @@
 // CTCDegradableBase::ChangeMesh(const CEngineGraphic&) -- install the stage's graphic as the parent's main appearance graphic, flag the appearance changed, and rebuild the physics mesh info from it
-// Leaf: ChangeMesh
+// Leaf: ?ChangeMesh@CTCDegradableBase@@AAEXABVCEngineGraphic@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //
 // Retail 0x008EC9C0, 135 bytes (`ret 4`). Ego_r.pdb `?ChangeMesh@CTCDegradableBase@@AAEXABVCEngineGraphic@@@Z`.
@@ -56,7 +56,9 @@ FABLE_FORCEINLINE CTCPhysicsBase* GetPhysics(CThing* thing)
 class CTCDegradableBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
+    private:
     void ChangeMesh(const CEngineGraphic& graphic);
+    public:
 };
 
 void CTCDegradableBase::ChangeMesh(const CEngineGraphic& graphic)

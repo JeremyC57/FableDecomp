@@ -55,7 +55,10 @@ class CGameCameraManager { public:
     void UpdateObservedThingInMelee();
     public:
                                   // 0x0069AC30
-    void UpdateObservedThingInBuilding();                               // 0x0069B650
+    private:
+    void UpdateObservedThingInBuilding();
+    public:
+                               // 0x0069B650
     void UpdatePrepareFlags();
 };
 

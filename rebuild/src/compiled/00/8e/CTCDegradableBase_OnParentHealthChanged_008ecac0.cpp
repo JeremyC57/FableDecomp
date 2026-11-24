@@ -104,7 +104,10 @@ class CTCDegradableBase { public:
     const CDegradableInfo* GetDegradableInfoForHealthPercentage(float percentage);
     public:
    // 0x008EC940
-    void ChangeMesh(const CEngineGraphic& graphic);         // 0x008EC9C0
+    private:
+    void ChangeMesh(const CEngineGraphic& graphic);
+    public:
+         // 0x008EC9C0
     void ShowParticleEffects(long emitter);                 // 0x008ECA50
     private:
     void OnParentHealthChanged(bool fromHit);

@@ -1,5 +1,5 @@
 // CTCTavernGameSpotTheAddition::UpdatePointerScale() -- grow the pointer while a selection is being made (clamped to 0.1 .. 1 by the def's phase speed) and shrink it back to nothing otherwise, then push the scale into the pointer's graphic appearance
-// Leaf: UpdatePointerScale
+// Leaf: ?UpdatePointerScale@CTCTavernGameSpotTheAddition@@AAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D8C20, length 384 bytes (plain `ret`, no frame pointer; Ego_r.pdb
 //   `?UpdatePointerScale@CTCTavernGameSpotTheAddition@@AAEXXZ`).
@@ -69,7 +69,9 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     float         PointerScale;                             // +0x108
     unsigned char _pad_0x10c[0x144 - 0x10c];
     long          Selected;                                 // +0x144
+    private:
     void UpdatePointerScale();
+    public:
 };
 
 void CTCTavernGameSpotTheAddition::UpdatePointerScale()

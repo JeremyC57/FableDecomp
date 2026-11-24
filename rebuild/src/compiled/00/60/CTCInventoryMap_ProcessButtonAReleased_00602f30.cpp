@@ -82,7 +82,10 @@ public:
     void FindQuestsForActiveRegion();
     public:
               // 0x005FD0F0
-    void FindTeleportsForActiveRegion();           // 0x005FD1D0
+    private:
+    void FindTeleportsForActiveRegion();
+    public:
+           // 0x005FD1D0
     private: void TeleportToActiveRegion(); public:                 // 0x005FBFA0
     void ProcessButtonAReleased();
 };

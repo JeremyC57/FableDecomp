@@ -1,5 +1,5 @@
 // CCombatActionBase::ProcessStrikeEvents() -- run the active strike event (damage, weapon aug effect), clear it when it ends, then arm the interrupt / reset-combo / movement-interrupt flags
-// Leaf: ?ProcessStrikeEvents@CCombatActionBase@@QAEXXZ
+// Leaf: ?ProcessStrikeEvents@CCombatActionBase@@IAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -124,7 +124,9 @@ class CCombatActionBase : public CCreatureActionBase { public:      // retail si
     CStrikeEvent* GetFirstActiveStrikeEvent();         // 0x00856E50
     CThing* GetWeaponUsedInStrikeAction() const;             // 0x00857070
     void PerformPossibleDamageAction(float fraction);  // 0x008591E0
+    protected:
     void ProcessStrikeEvents();
+    public:
 };
 
 void CCombatActionBase::ProcessStrikeEvents()

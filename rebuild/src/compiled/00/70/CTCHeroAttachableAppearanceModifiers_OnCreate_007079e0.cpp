@@ -121,7 +121,10 @@ class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void UpdateHiddenModifiers();
     public:
                     // 0x00706040
-    void UpdateHiddenMaterials();                    // 0x00706510
+    private:
+    void UpdateHiddenMaterials();
+    public:
+                    // 0x00706510
     void UpdateGraphics();                           // 0x007070D0
     void UploadChangesToGraphics()
     {

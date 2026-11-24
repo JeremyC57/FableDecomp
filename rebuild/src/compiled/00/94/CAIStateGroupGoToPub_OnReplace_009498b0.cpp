@@ -75,7 +75,10 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 protected:
     void FreeSeat();                            // 0x009486D0 (NF35: Ego_r + FableWin protected, IAE)
 public:
-    void FreeBarPoint();                        // 0x00949320
+    protected:
+    void FreeBarPoint();
+    public:
+                        // 0x00949320
     protected:
     virtual void OnReplace();
     public:

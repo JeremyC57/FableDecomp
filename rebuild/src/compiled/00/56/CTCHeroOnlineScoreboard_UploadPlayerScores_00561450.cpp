@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::UploadPlayerScores() -- when idle or beginning, opens the HTTP request carrying this hero's score string (busy if that is still pending); then steps the transaction and, on success, checks the decrypted reply starts with "SID:OK" (else drops the connection)
-// Leaf: UploadPlayerScores
+// Leaf: ?UploadPlayerScores@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00561450, 363 bytes (`ret`). Ego_r.pdb
 // `?UploadPlayerScores@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ`.
 // Callees: CreateStringFromMyScores @ 0x0055F480 (name from the PDB method list; the by-value CCharString getter),
@@ -83,7 +83,9 @@ class CTCHeroOnlineScoreboard { public:
     ENetworkSuccess ResetAndOpenHTTPAndPrepareRequest(const LHString& request, const CCharString& key, bool flag);   // 0x0055F710
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
+    private:
     ENetworkSuccess UploadPlayerScores();
+    public:
     FABLE_FORCEINLINE bool OpenUploadRequest(const CCharString& scores)
     {
         LHString request(scores.c_str());

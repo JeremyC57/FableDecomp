@@ -107,7 +107,10 @@ class CTCBuyableHouse {
 public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
-    void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
+    private:
+    void DestroyMoneyBags(bool giveToHero);
+    public:
+             // 0x006C0580
     private:
     void Evict();
     public:

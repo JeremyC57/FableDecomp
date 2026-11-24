@@ -106,7 +106,10 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CIntelligentPointer<CThingAICreature> PBarman;     // +0x2c
     unsigned char _pad34[0x9c - 0x34];
     long BarIndex;                                     // +0x9c
-    void FreeBarPoint();                               // 0x00949320
+    protected:
+    void FreeBarPoint();
+    public:
+                               // 0x00949320
     protected:
     bool GetPaymentRequestReplyMessage();
     public:

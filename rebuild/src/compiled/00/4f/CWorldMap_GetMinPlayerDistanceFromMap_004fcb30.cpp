@@ -1,3 +1,4 @@
+// Leaf: ?GetMinPlayerDistanceFromMap@CWorldMap@@IBEJJ@Z
 // CWorldMap::GetMinPlayerDistanceFromMap(long) -- smallest block distance from any set player position to a map's area
 // Retail 0x004FCB30, 0x7F bytes (CWorldMap.cpp TU). Walks the four CPlayerPositionInfo records (13 bytes, packed:
 // bool Set +0, C3DVector Pos +1) of PlayerPositionInfo (vector, begin at retail +0x78, PDB +0x8C); for each set one the
@@ -134,10 +135,12 @@ public:
     CPlayerPositionInfo* PlayerPositionInfo_finish; // +0x7C
     CPlayerPositionInfo* PlayerPositionInfo_eos;    // +0x80
 
-    long GetMinPlayerDistanceFromMap(long map);
+    protected:
+    long GetMinPlayerDistanceFromMap(long map) const;
+    public:
 };
 
-long CWorldMap::GetMinPlayerDistanceFromMap(long map)
+long CWorldMap::GetMinPlayerDistanceFromMap(long map) const
 {
     long best = 0x7FFFFFFF;
     for (long i = 0; i < 4; ++i)

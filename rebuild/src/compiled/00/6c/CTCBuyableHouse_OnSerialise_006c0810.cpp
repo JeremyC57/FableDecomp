@@ -52,7 +52,10 @@ public:
     long CountMoneyBags();
     public:
                         // 0x006C04D0
-    void DestroyMoneyBags(bool giveToHero);             // 0x006C0580
+    private:
+    void DestroyMoneyBags(bool giveToHero);
+    public:
+             // 0x006C0580
     void OnSerialise(CPersistContext* context, bool full);
 };
 

@@ -180,7 +180,10 @@ class CTCVillage : public CTCBase { public:
     public:
                  // 0x0065890B
     void ReleaseInvalidTasks();                 // 0x0065BE32
-    void UpdateCrowds();                        // 0x006594BB
+    private:
+    void UpdateCrowds();
+    public:
+                        // 0x006594BB
     void UpdateSecuritySweepTasks();            // 0x0065C08A
 private:
     void UpdateTorchTasks();                    // 0x00659625 Ego_r/FableWin ?UpdateTorchTasks@CTCVillage@@AAEXXZ (private; NF239 CODEXP27 L45, was QAE)

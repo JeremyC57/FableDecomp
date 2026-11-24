@@ -1,5 +1,5 @@
 // CSystemManager::InitApplicationName() -- take the executable name from the command line (first token, quotes stripped), cut it after the last '\\' and store it as the narrow ApplicationName
-// Leaf: InitApplicationName
+// Leaf: ?InitApplicationName@CSystemManager@@AAEXXZ
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A5340, 274 bytes, `ret`.
 // Callees: GetCommandLineW (kernel32 import 0x0143FD74), wcsncpy 0x00BFEB04, wcslen 0x00BFED94, wcsrchr 0x00BFEDB2,
@@ -39,7 +39,9 @@ class CSystemManager {
 public:
     unsigned char _body[0x168];
     CCharString   ApplicationName;                           // +0x168
+    private:
     void InitApplicationName();
+    public:
 };
 
 void CSystemManager::InitApplicationName()

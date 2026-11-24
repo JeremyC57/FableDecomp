@@ -1,5 +1,5 @@
 // CTCDParticleEmitter::IsParticleCreationDisabled() const -- creation is disabled while the emitter sleeps, while the attached thing is in limbo, or while the attached creature sits idle in creature mode 30
-// Leaf: ?IsParticleCreationDisabled@CTCDParticleEmitter@@QBE_NXZ
+// Leaf: ?IsParticleCreationDisabled@CTCDParticleEmitter@@IBE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0DF0, length 138 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), the const CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0
@@ -48,7 +48,9 @@ class CTCDParticleEmitter { public:
     bool AttachedToThing : 1;                   // +0x45 bit 0
     bool AlwaysUpdate : 1;
     bool Asleep : 1;                            // bit 2
+    protected:
     bool IsParticleCreationDisabled() const;
+    public:
 };
 
 bool CTCDParticleEmitter::IsParticleCreationDisabled() const

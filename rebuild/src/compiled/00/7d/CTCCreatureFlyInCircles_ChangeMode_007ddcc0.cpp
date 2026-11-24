@@ -1,3 +1,4 @@
+// Leaf: ?ChangeMode@CTCCreatureFlyInCircles@@IAEXXZ
 // CTCCreatureFlyInCircles::ChangeMode() -- start the hover<->fly transition animation for the current fly mode; when the creature takes the action, flag the transition, switch the mode and spread the speed change over the action's duration
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DDCC0, 212 bytes (plain `ret`, 0x128-byte frame: the animation name, the
 // target speed, the duration temporary and the 0x11c-byte action).
@@ -54,7 +55,9 @@ struct CTCCreatureFlyInCircles {
     long  Mode;                                         // +0x34 EFlyMode
     bool  Transitioning;                                // +0x38
     bool  ModeChangeQueued;                             // +0x39
+    protected:
     void ChangeMode();
+    public:
 };
 
 void CTCCreatureFlyInCircles::ChangeMode()

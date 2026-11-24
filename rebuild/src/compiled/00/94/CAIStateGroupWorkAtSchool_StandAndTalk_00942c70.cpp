@@ -1,5 +1,5 @@
 // CAIStateGroup_WorkAtSchool::StandAndTalk(float seconds) -- put the creature's mode manager (interface 0x31) into
-// Leaf: ?StandAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z
+// Leaf: ?StandAndTalk@CAIStateGroup_WorkAtSchool@@IAE_NM@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -63,7 +63,9 @@ struct CAIStateGroupBaseA : CAIStateGroupBase {
 };
 
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBaseA {
+    protected:
     bool StandAndTalk(float seconds);
+    public:
 };
 
 bool CAIStateGroup_WorkAtSchool::StandAndTalk(float seconds)

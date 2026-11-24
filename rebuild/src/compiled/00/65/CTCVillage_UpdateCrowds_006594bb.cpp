@@ -1,3 +1,4 @@
+// Leaf: ?UpdateCrowds@CTCVillage@@AAEXXZ
 //   (1) A same-TU auto_inline(off) noinline body for CDefClassBase::GetSubDef<T> (a stand-in: one placeholder lookup call
 //       FindSubDef, then the refcount and out store). VC7.1 then knows &soundDef does not escape, so soundDef->SoundMap is
 //       loaded once, after the first name is built, and kept in edi for both lookups.
@@ -186,7 +187,9 @@ class CTCVillage { public:
     unsigned char _pad08[0x18];
     long    LastAweCrowdEventFrame;                     // +0x20
     long    LastLynchCrowdEventFrame;                   // +0x24
+    private:
     void UpdateCrowds();
+    public:
 };
 
 void CTCVillage::UpdateCrowds()

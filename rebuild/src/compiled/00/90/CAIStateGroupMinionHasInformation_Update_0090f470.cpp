@@ -86,7 +86,10 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
     bool CreatureWantsPlayersAttention() const;
     public:
        // 0x0090F290
-    bool Wander();                              // 0x0090F320
+    private:
+    bool Wander();
+    public:
+                              // 0x0090F320
     virtual void Update();
 };
 

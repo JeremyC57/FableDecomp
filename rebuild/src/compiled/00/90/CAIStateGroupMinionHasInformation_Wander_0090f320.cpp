@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionHasInformation::Wander() -- wander; when the information component (0xAA) is in state 4, idle,
-// Leaf: ?Wander@CAIStateGroup_MinionHasInformation@@QAE_NXZ
+// Leaf: ?Wander@CAIStateGroup_MinionHasInformation@@AAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // then unless the creature is already within the component's radius (XY) of its spot, walk up to it and idle
 // again.
@@ -108,7 +108,9 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
     long LastFrameWandered;                     // +0x18
     long FrameInitialised;                      // +0x1c
     long WavesWithoutCalling;                   // +0x20
+    private:
     bool Wander();
+    public:
 };
 
 bool CAIStateGroup_MinionHasInformation::Wander()

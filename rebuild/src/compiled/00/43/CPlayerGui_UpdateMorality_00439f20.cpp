@@ -1,5 +1,5 @@
 // Naming wave 35c (queue land0411j 0x00437AE0): calls CPlayerGui::UpdateStat under its Ego_r.pdb spelling ?UpdateStat@CPlayerGui@@ABEXMMMMMAAVCStatBase@NPlayerGui@@@Z (private const, the stat by reference to NPlayerGui::CStatBase). Also calls 0x00487B70 as CPlayer::GetPPlayerCharacterThing() const (Ego_r.pdb ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ; was GetPlayerCharacter).
-// Leaf: ?UpdateMorality@CPlayerGui@@QAEXXZ
+// Leaf: ?UpdateMorality@CPlayerGui@@AAEXXZ
 // CPlayerGui::UpdateMorality() -- feed the hero's pending morality change into the morality stat bar: animate an initialised bar towards the new value (step count from how far it still has to move) or initialise it outright, then hide the bar when the change flips the sign of the bar's value, and consume the change once the bar is in mode 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00439F20, length 352 bytes, plain `ret`.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacterThing() const 0x00487B70, _ftol 0x00BFEA70, PeekGuiDef
@@ -63,7 +63,9 @@ class CPlayerGui { public:                                     // retail-offset 
     NPlayerGui::CDrawStatUpdates*   PDrawStatUpdates;   // +0x1a8
     unsigned char                   _pad1ac[0x2dc - 0x1ac];
     NPlayerGui::CStatBar*           PMorality;          // +0x2dc
+    private:
     void UpdateMorality();
+    public:
 private:
     void UpdateStat(float value, float rate, float steps, float speed, float time, NPlayerGui::CStatBase& stat) const;   // 0x00437AE0
 };
