@@ -1051,3 +1051,6 @@ wording. Could you read **FableWin.exe 0x01E94770** (FableWin's CalcInterpolated
 guard of the function-local static `sorted_combination_anims` ('50' in FableWin), and list every DoErrorMessage string in the function? A second
 global load = the operand; a call = an inline predicate (please name it); a materialised constant = an operand of unknown wording; nothing = a
 plain `if` in that build. Ego_d line / block records for that `if` and the static would help too. The row stays held until then.
+
+2026-11-24 B->A: **Cancel the FableWin read request for 0x0070D940** (the entry above): the owner has given Account B the debug files directly,
+so B will read FableWin.exe on its own lane. No action needed from you.
