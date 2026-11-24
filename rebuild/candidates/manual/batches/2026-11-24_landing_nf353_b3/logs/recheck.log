@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00e9b240   RELOCATION_MATCH PASS   DuelLost
+00e9be60   RELOCATION_MATCH PASS   Duel
+00ea2720   RELOCATION_MATCH PASS   WatchForCutscene1
+00eb9980   RELOCATION_MATCH PASS   Main
+00ed0b10   RELOCATION_MATCH PASS   DoLeavingCutscene
+00ed5830   RELOCATION_MATCH PASS   SwordPullCutscene
+00ed5f50   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00ed5f50   RELOCATION_MATCH PASS   Main
+00f0d630   RELOCATION_MATCH PASS   Main
+00f0fb70   RELOCATION_MATCH PASS   Main
+
+WINS: 9
+  00e9b240 RELOCATION_MATCH NScript::CV_HeroDuelScript::?DuelLost@CV_HeroDuelScript@NScript@@QAEXXZ
+  00e9be60 RELOCATION_MATCH NScript::CV_HeroDuelScript::?Duel@CV_HeroDuelScript@NScript@@QAEXXZ
+  00ea2720 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::?WatchForCutscene1@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
+  00eb9980 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::CLadyGrey::?Main@CLadyGrey@CV_MayorsInvitationScript@NScript@@EAEXXZ
+  00ed0b10 RELOCATION_MATCH NScript::CV_SickChildScript::CWomanToAttract::?DoLeavingCutscene@CWomanToAttract@CV_SickChildScript@NScript@@AAEXXZ
+  00ed5830 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::?SwordPullCutscene@CV_SwordInTheStoneScript@NScript@@QAEXXZ
+  00ed5f50 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::CSwordCrowd::?Main@CSwordCrowd@CV_SwordInTheStoneScript@NScript@@EAEXXZ
+  00f0d630 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::?Main@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f0fb70 RELOCATION_MATCH NScript::CQ_ArenaScript::?Main@CQ_ArenaScript@NScript@@UAEXXZ

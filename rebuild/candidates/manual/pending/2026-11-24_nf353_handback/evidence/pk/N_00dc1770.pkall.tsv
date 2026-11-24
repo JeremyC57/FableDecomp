@@ -1,0 +1,26 @@
+# leaf ?Main@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0CPredicateBase@NScript@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	??1CPredicateBase@NScript@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	31	-	n	n	??_GCPredicateBase@NScript@@UAEPAXI@Z
+EQ	EQ	00cbe09a	b	pickany	25	25	n	n	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z
+EQ	EQ	00cbe0b3	b,c	pickany	13	13	n	n	??1CWideScreenMagicPauseEntities@@QAE@XZ
+EQ	EQ	00e95380	c	pickany	1	1	n	n	?Return@TRetVoid@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	28	-	n	n	??0CIsThingConscious@NScript@@QAE@ABVCScriptThing@@@Z
+NEQ	NEQ	00ef7ab0	b	pickany	25	84	n	n	??1CIsThingConscious@NScript@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCScriptThing@@@@QBEPAVCScriptThing@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CCountedPointer@VCScriptThing@@@@QBEAAVCScriptThing@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@XZ
+NOADDR	NOADDR	-	-	pickany	1	-	n	n	??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	18	-	n	n	?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@I@Z
+EQ	EQ	00cd27b4	b	pickany	19	19	n	n	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+EQ	EQ	008aae20	b	pickany	22	22	n	n	??8CScriptThing@@QBE_NABV0@@Z
+NOADDR	NOADDR	-	-	pickany	45	-	n	n	??_GCIsThingConscious@NScript@@UAEPAXI@Z
+EQ	EQ	00cd1fb1	b	pickany	15	15	n	n	??A?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEAAVCScriptThing@@I@Z
+NOADDR	NOADDR	-	-	pickany	1	-	n	n	??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@@2@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	40	-	n	n	??_G?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	14	-	n	n	??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@std@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	21	-	n	n	??$_Destroy@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@0@@Z
+NEQ	NEQ	00cd344a	a2,b,c	pickany	70	123	n	y	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@Z
+NEQ	NEQ	00cd3699	b	pickany	51	41	n	n	?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAEXXZ
+EQ	EQ	00cdbfb0	b	pickany	66	66	n	n	??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@XZ
+EQ	EQ	00cdbfb0	a,b	pickany	66	66	y	y	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ

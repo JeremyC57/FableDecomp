@@ -1,0 +1,23 @@
+EQ  00cbe09a 25 ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z 
+EQ  00cbe0b3 13 ??1CWideScreenMagicPauseEntities@@QAE@XZ 
+EQ  00cd4450 23 ??0CTimer@@QAE@XZ 
+EQ  00cd4470 20 ??1CTimer@@QAE@XZ 
+NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ LEAF-REFERENCED
+EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+NEQ 004115a0 20 ??8?$CBasicString@D@@QBE_NPBD@Z not referenced by the leaf
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+EQ  00f14250 4 ?GetMasterData@?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAEPAVCQ_SunnyvaleMasterData@NScript@@XZ 
+EQ  00cd27b4 19 ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+EQ  008ab980 74 ??4CScriptThing@@QAEAAV0@ABV0@@Z 
+NEQ 00cd344a 70 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@Z not referenced by the leaf
+EQ  009aa830 70 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@2@@Z 
+NEQ 00cd3699 51 ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAEXXZ not referenced by the leaf
+EQ  00cdbfb0 66 ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@XZ 
+EQ  00cdbfb0 66 ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ 
+EQ  009ac310 66 ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ 

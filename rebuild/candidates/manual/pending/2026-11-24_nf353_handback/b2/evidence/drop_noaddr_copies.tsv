@@ -1,0 +1,77 @@
+??_7CScriptGameResourceObjectScriptedThingBase@@6B@	00ce7670	sel=2	size=120	outside_definers=91	identical_all=59	identical_no_holes=50	00cff9a0,00d0a830,00d0f640,00d27050,00d29880,00d34470
+??_7CScriptGameResourceObjectScriptedThingBase@@6B@	00d45060	sel=2	size=120	outside_definers=91	identical_all=59	identical_no_holes=50	00cff9a0,00d0a830,00d0f640,00d27050,00d29880,00d34470
+??_7CScriptGameResourceObjectScriptedThingBase@@6B@	00dc1770	sel=2	size=120	outside_definers=91	identical_all=59	identical_no_holes=50	00cff9a0,00d0a830,00d0f640,00d27050,00d29880,00d34470
+??_7CScriptGameResourceObjectScriptedThingBase@@6B@	00e6da80	sel=2	size=120	outside_definers=91	identical_all=59	identical_no_holes=50	00cff9a0,00d0a830,00d0f640,00d27050,00d29880,00d34470
+??_7CScriptGameResourceObjectBase@@6B@	00d45060	sel=2	size=8	outside_definers=83	identical_all=79	identical_no_holes=70	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d29880
+??_7CScriptGameResourceObjectBase@@6B@	00dc1770	sel=2	size=8	outside_definers=83	identical_all=79	identical_no_holes=70	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d29880
+??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z	00ce7670	sel=2	size=87	outside_definers=91	identical_all=64	identical_no_holes=61	00cff9a0,00d0a830,00d27050,00d34470,00d368d0,00d3b010
+??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z	00d45060	sel=2	size=30	outside_definers=91	identical_all=23	identical_no_holes=18	00ce15e0,00d0f640,00d22880,00d29880,00d37530,00d49d50
+??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z	00dc1770	sel=2	size=30	outside_definers=91	identical_all=23	identical_no_holes=18	00ce15e0,00d0f640,00d22880,00d29880,00d37530,00d49d50
+??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z	00e6da80	sel=2	size=87	outside_definers=91	identical_all=64	identical_no_holes=61	00cff9a0,00d0a830,00d27050,00d34470,00d368d0,00d3b010
+??1CScriptGameResourceObjectBase@@UAE@XZ	00d45060	sel=2	size=11	outside_definers=83	identical_all=81	identical_no_holes=73	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d29880
+??1CScriptGameResourceObjectBase@@UAE@XZ	00dc1770	sel=2	size=11	outside_definers=83	identical_all=81	identical_no_holes=73	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d29880
+??_GCScriptGameResourceObjectBase@@UAEPAXI@Z	00d45060	sel=2	size=36	outside_definers=83	identical_all=81	identical_no_holes=73	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d29880
+??_GCScriptGameResourceObjectBase@@UAEPAXI@Z	00dc1770	sel=2	size=36	outside_definers=83	identical_all=81	identical_no_holes=73	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d29880
+??1?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d45060	sel=2	size=53	outside_definers=64	identical_all=63	identical_no_holes=55	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d34470
+??1?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dc1770	sel=2	size=53	outside_definers=64	identical_all=63	identical_no_holes=55	00903ac0,00cff9a0,00d0a830,00d0f640,00d27050,00d34470
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00ce7670	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d2ed20	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d321c0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d328c0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d33280	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d33730	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d39330	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d45060	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d4a270	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d51520	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d5ae70	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d5e0c0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d647f0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d77690	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d8abf0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d8bcd0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d973d0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00d9a190	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00da91a0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00db86b0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00db97a0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dbb310	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dbcd60	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dc1770	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dc27c0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dca6d0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dcfa60	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dd9520	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00dd9a50	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00ddf090	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00de6730	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e07640	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e0a820	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e0b160	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e137b0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e13f10	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e18630	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e19d80	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e26e30	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e27e90	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e46d30	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e57e60	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e6bc50	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e6da80	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e78100	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e7c8e0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e87030	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e8dfa0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e90be0	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e9a970	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e9b240	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00e9be60	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00ea2720	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00eb9980	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00ed0b10	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00ed5830	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00ed5f50	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00f0d630	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThing	00f0fb70	sel=2	size=25	outside_definers=9	identical_all=8	identical_no_holes=0	
+??0CScriptGameResourceObjectBase@@QAE@XZ	00e6da80	sel=2	size=18	outside_definers=80	identical_all=79	identical_no_holes=72	00cff9a0,00d0a830,00d0f640,00d27050,00d29880,00d34470
+??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	00e6da80	sel=2	size=26	outside_definers=89	identical_all=85	identical_no_holes=78	009039d0,00cff9a0,00d0a830,00d0f640,00d22880,00d27050

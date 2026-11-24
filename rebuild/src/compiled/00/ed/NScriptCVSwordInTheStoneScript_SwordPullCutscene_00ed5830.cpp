@@ -20,6 +20,11 @@
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_DTOR
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST,SCRIPT_AI_PRIORITY_LOW,SCRIPT_AI_PRIORITY_MEDIUM,SCRIPT_AI_PRIORITY_HIGH,SCRIPT_AI_PRIORITY_HIGHEST };
+// Fidelity: scaffolding, not retail (NF353 family port, T3 nf340 0x00CD3D2E): FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY keeps map::operator[]
+//   declaration-only, so this TU no longer emits its map<CCharString,CScriptGameResourceObjectScriptedThingBase>::operator[] copy
+//   (NEQ to retail 0x00CD3D2E: retail's is size-compiled, 118 bytes); the leaf is unchanged and calls the external symbol, which the
+//   landed owner row 0x00CD3D2E defines under the same four-argument STLport spelling (NF350 respell).
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
 #include "stlport/fable_containers.h"
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"

@@ -1,0 +1,8 @@
+# resolve link (/FORCE, nf.py link): the section labelled 'HEAD set' is the NEGATIVE CONTROL = this batch's new objects alone; the 'new set' = the same plus the landed owner objects 0x00CD3D2E and 0x009AC700 compiled from HEAD. Watch: ^??A?$map@
+## HEAD set: N_00e9b240.obj N_00e9be60.obj N_00ea2720.obj N_00eb9980.obj N_00ed0b10.obj N_00ed5830.obj N_00ed5f50.obj N_00f0d630.obj N_00f0fb70.obj
+duplicates 0
+UNRESOLVED 3 ??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+UNRESOLVED 9 ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+## new set: N_00e9b240.obj N_00e9be60.obj N_00ea2720.obj N_00eb9980.obj N_00ed0b10.obj N_00ed5830.obj N_00ed5f50.obj N_00f0d630.obj N_00f0fb70.obj H_00cd3d2e.obj 009ac700.obj
+duplicates 0
+LK_DONE

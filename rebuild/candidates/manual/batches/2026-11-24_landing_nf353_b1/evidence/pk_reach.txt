@@ -1,0 +1,97 @@
+# pkreach.py HEAD v new (coordinator ruling 2026-11-24: an already-NEQ copy whose leaf reach flips n -> y fails the gate)
+ROW 00ce7670 reach=P flips=0
+ROW 00d2ed20 reach=P flips=0
+ROW 00d321c0 reach=P flips=0
+ROW 00d328c0 reach=P flips=0
+ROW 00d33280 reach=P flips=0
+ROW 00d33730 reach=P flips=0
+ROW 00d39330 reach=P flips=0
+ROW 00d45060 reach=P flips=0
+ROW 00d4a270 reach=P flips=0
+ROW 00d51520 reach=P flips=0
+ROW 00d5ae70 reach=P flips=0
+ROW 00d5e0c0 reach=P flips=0
+ROW 00d647f0 reach=P flips=0
+ROW 00d77690 reach=P flips=0
+ROW 00d8abf0 reach=P flips=0
+ROW 00d8bcd0 reach=P flips=0
+ROW 00d973d0 reach=P flips=0
+ROW 00d9a190 reach=P flips=0
+ROW 00da91a0 reach=P flips=0
+ROW 00db86b0 reach=P flips=0
+ROW 00db97a0 reach=P flips=0
+ROW 00dbb310 reach=P flips=0
+ROW 00dbcd60 reach=P flips=0
+ROW 00dc1770 reach=P flips=0
+ROW 00dc27c0 reach=P flips=0
+REACH PASS
+# control, sides swapped (the removed leaf-called NEQ ??A copy must read as a flip):
+00ce7670	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00ce7670 reach=F flips=1
+00d2ed20	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d2ed20	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d2ed20 reach=F flips=2
+00d321c0	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d321c0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d321c0 reach=F flips=2
+00d328c0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d328c0 reach=F flips=1
+00d33280	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d33280 reach=F flips=1
+00d33730	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d33730	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+00d33730	REACH_FLIP	009ac700	HEAD=absent	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+ROW 00d33730 reach=F flips=3
+00d39330	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d39330	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d39330 reach=F flips=2
+00d45060	REACH_FLIP	00cd27c7	HEAD=absent	??0?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@ABVCCharString@@ABVCScriptGameResourceObjectScriptedThingBase@@@Z
+00d45060	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d45060 reach=F flips=2
+00d4a270	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d4a270	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d4a270 reach=F flips=2
+00d51520	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d51520	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d51520 reach=F flips=2
+00d5ae70	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d5ae70	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+00d5ae70	REACH_FLIP	009ac700	HEAD=absent	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+ROW 00d5ae70 reach=F flips=3
+00d5e0c0	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d5e0c0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+00d5e0c0	REACH_FLIP	009ac700	HEAD=absent	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+ROW 00d5e0c0 reach=F flips=3
+00d647f0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d647f0 reach=F flips=1
+00d77690	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d77690	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d77690 reach=F flips=2
+00d8abf0	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d8abf0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d8abf0 reach=F flips=2
+00d8bcd0	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00d8bcd0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d8bcd0 reach=F flips=2
+00d973d0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d973d0 reach=F flips=1
+00d9a190	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00d9a190 reach=F flips=1
+00da91a0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00da91a0 reach=F flips=1
+00db86b0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00db86b0 reach=F flips=1
+00db97a0	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00db97a0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00db97a0 reach=F flips=2
+00dbb310	REACH_FLIP	00cd27b4	HEAD=NEQ	??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ
+00dbb310	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+00dbb310	REACH_FLIP	009ac700	HEAD=absent	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+ROW 00dbb310 reach=F flips=3
+00dbcd60	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00dbcd60 reach=F flips=1
+00dc1770	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00dc1770 reach=F flips=1
+00dc27c0	REACH_FLIP	00cd3d2e	HEAD=absent	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAA
+ROW 00dc27c0 reach=F flips=1
+REACH FAIL (25 rows)

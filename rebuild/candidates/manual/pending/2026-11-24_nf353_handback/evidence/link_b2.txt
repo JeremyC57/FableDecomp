@@ -1,0 +1,12 @@
+# resolve link (/FORCE, nf.py link): the section labelled 'HEAD set' is the NEGATIVE CONTROL = this batch's new objects alone; the 'new set' = the same plus the landed owner objects 0x00CD3D2E and 0x009AC700 compiled from HEAD. Watch: ^??A?$map@
+## HEAD set: N_00dca6d0.obj N_00dcfa60.obj N_00dd9520.obj N_00dd9a50.obj N_00ddf090.obj N_00de6730.obj N_00e07640.obj N_00e0a820.obj N_00e0b160.obj N_00e137b0.obj N_00e13f10.obj N_00e18630.obj N_00e19d80.obj N_00e26e30.obj N_00e27e90.obj N_00e46d30.obj N_00e57e60.obj N_00e6bc50.obj N_00e6da80.obj N_00e78100.obj N_00e7c8e0.obj N_00e87030.obj N_00e8dfa0.obj N_00e90be0.obj N_00e9a970.obj
+duplicates 2
+  DUP N_00e7c8e0.obj ??0CTimer@@QAE@XZ in N_00e26e30.obj;
+  DUP N_00e7c8e0.obj ??1CTimer@@QAE@XZ in N_00e26e30.obj;
+UNRESOLVED 4 ??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z
+UNRESOLVED 25 ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+## new set: N_00dca6d0.obj N_00dcfa60.obj N_00dd9520.obj N_00dd9a50.obj N_00ddf090.obj N_00de6730.obj N_00e07640.obj N_00e0a820.obj N_00e0b160.obj N_00e137b0.obj N_00e13f10.obj N_00e18630.obj N_00e19d80.obj N_00e26e30.obj N_00e27e90.obj N_00e46d30.obj N_00e57e60.obj N_00e6bc50.obj N_00e6da80.obj N_00e78100.obj N_00e7c8e0.obj N_00e87030.obj N_00e8dfa0.obj N_00e90be0.obj N_00e9a970.obj H_00cd3d2e.obj 009ac700.obj
+duplicates 2
+  DUP N_00e7c8e0.obj ??0CTimer@@QAE@XZ in N_00e26e30.obj;
+  DUP N_00e7c8e0.obj ??1CTimer@@QAE@XZ in N_00e26e30.obj;
+LK_DONE

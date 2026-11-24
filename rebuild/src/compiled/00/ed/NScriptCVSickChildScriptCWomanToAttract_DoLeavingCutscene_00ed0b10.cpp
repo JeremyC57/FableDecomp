@@ -24,6 +24,12 @@
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CDEFSTRING_OUTOFLINE_GETSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
+// Fidelity: scaffolding, not retail (NF353 family port, T3 nf340 0x00CD3D2E): FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY keeps map::operator[]
+//   declaration-only, so this TU no longer emits its map<CCharString,CScriptGameResourceObjectScriptedThingBase>::operator[] copy
+//   (NEQ to retail 0x00CD3D2E: retail's is size-compiled, 118 bytes); the leaf is unchanged and calls the external symbol, which the
+//   landed owner row 0x00CD3D2E defines under the same four-argument STLport spelling (NF350 respell).
+//   It also keeps map<CCharString,CCharString>::operator[] (its HEAD copy NEQ to retail 0x009AC700, 159 v 149; the landed owner row 0x009AC700 defines the same four-argument symbol) declaration-only.
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
 #include "fable_string.h"
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"

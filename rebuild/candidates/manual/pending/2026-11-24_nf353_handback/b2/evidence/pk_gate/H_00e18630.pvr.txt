@@ -1,0 +1,27 @@
+EQ  00cbe09a 25 ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z 
+EQ  00cbe0b3 13 ??1CWideScreenMagicPauseEntities@@QAE@XZ 
+EQ  0041c820 16 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ not referenced by the leaf
+EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+EQ  00cd27b4 19 ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ 
+EQ  00cdd4f0 53 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 
+NEQ 0042aab3 17 ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z not referenced by the leaf
+NEQ 007e70e0 53 ?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ not referenced by the leaf
+EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 
+NEQ 00cdd4c0 76 ??1CSpawnedFuncBase@@UAE@XZ not referenced by the leaf
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  008aa8e0 67 ?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z 
+NEQ 00cd3cae 31 ?insert@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@2@@Z not referenced by the leaf
+EQ  00905330 45 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@ABV0@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+EQ  008ab1e0 72 ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z 
+NEQ 00cd27c7 62 ??0?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@ABVCCharString@@ABVCScriptGameResourceObjectScriptedThingBase@@@Z not referenced by the leaf
+NEQ 00cd344a 70 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@Z not referenced by the leaf
+EQ  008ab980 74 ??4CScriptThing@@QAEAAV0@ABV0@@Z 
+EQ  008abd10 80 ??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z 
+NEQ 00cd3699 51 ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAEXXZ not referenced by the leaf
+NEQ 00cd3d2e 216 ??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z LEAF-REFERENCED
+EQ  00cdbfb0 66 ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE@XZ 
+EQ  00cdbfb0 66 ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ 
+EQ  00cdbf70 54 ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ 

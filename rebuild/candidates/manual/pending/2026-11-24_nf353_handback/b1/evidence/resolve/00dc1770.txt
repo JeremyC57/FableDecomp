@@ -1,0 +1,2 @@
+# resolve test (string equality against the landed owner object compiled from HEAD; owner graded; owner Leaf line)
+OK	ADDED_UND	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	owner=00cd3d2e	owner_grade=RELOCATION_MATCH	owner_Leaf=SAME	was_DEF_at_HEAD=y

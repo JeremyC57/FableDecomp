@@ -1,0 +1,4 @@
+NEQ 009e6530 40 ??MCCharString@@QBE_NABV0@@Z not referenced by the leaf
+NEQ 0041c820 19 ??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z not referenced by the leaf
+EQ  00cd27b4 19 ??1?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@QAE@XZ 
+NEQ 0042aab3 43 ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z LEAF-REFERENCED

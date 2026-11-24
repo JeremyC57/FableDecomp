@@ -16,6 +16,11 @@
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN
 #define FABLE_RETAIL_CV_SWORDINTHESTONESCRIPT_ENTITIES
+// Fidelity: scaffolding, not retail (NF353 family port, T3 nf340 0x00CD3D2E): FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY keeps map::operator[]
+//   declaration-only, so this TU no longer emits its map<CCharString,CScriptGameResourceObjectScriptedThingBase>::operator[] copy
+//   (NEQ to retail 0x00CD3D2E: retail's is size-compiled, 118 bytes); the leaf is unchanged and calls the external symbol, which the
+//   landed owner row 0x00CD3D2E defines under the same four-argument STLport spelling (NF350 respell).
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
 #include "engine/C3DVector.h"
 // Original data symbol and native fcomp operand0x0129BA3C; ESTABLISHED_SPELLINGS.
 extern const float DELTA_NOTIONAL_ZERO;

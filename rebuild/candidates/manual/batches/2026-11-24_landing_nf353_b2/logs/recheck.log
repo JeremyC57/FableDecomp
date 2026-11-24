@@ -1,0 +1,60 @@
+addr       parity           behav  name
+00dca6d0   RELOCATION_MATCH PASS   Main
+00dcfa60   RELOCATION_MATCH PASS   DoCutsceneIfRequired
+00dd9520   RELOCATION_MATCH PASS   SplittingUpCutscene
+00dd9a50   RELOCATION_MATCH PASS   ResetCells
+00ddf090   RELOCATION_MATCH PASS   Main
+00de6730   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00de6730   RELOCATION_MATCH PASS   PlayCutscene
+00e07640   RELOCATION_MATCH PASS   Main
+00e0a820   RELOCATION_MATCH PASS   TurnToBalv
+00e0b160   WARN SHARED_HEADER_AVAILABLE CQ_UndeadRisingScript (engine/CQ_UndeadRisingScript.h)
+00e0b160   RELOCATION_MATCH PASS   Main
+00e137b0   RELOCATION_MATCH PASS   Outro
+00e13f10   WARN SHARED_HEADER_AVAILABLE CQ_WhiteBalverineKnotholeGladeScript (engine/CQ_WhiteBalverineKnotholeGladeScript.h)
+00e13f10   RELOCATION_MATCH PASS   Main
+00e18630   WARN SHARED_HEADER_AVAILABLE CQ_WhiteBalverineWWScript (engine/CQ_WhiteBalverineWWScript.h)
+00e18630   RELOCATION_MATCH PASS   Main
+00e19d80   RELOCATION_MATCH PASS   Main
+00e26e30   RELOCATION_MATCH PASS   Main
+00e27e90   RELOCATION_MATCH PASS   Main
+00e46d30   WARN SHARED_HEADER_AVAILABLE CV_BanditCampPathScript (engine/CV_BanditCampPathScript.h)
+00e46d30   RELOCATION_MATCH PASS   Main
+00e57e60   RELOCATION_MATCH PASS   Main
+00e6bc50   RELOCATION_MATCH PASS   Main
+00e6da80   RELOCATION_MATCH PASS   TortureVictim
+00e78100   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00e78100   RELOCATION_MATCH PASS   PlayCutscene
+00e7c8e0   RELOCATION_MATCH PASS   Main
+00e87030   WARN SHARED_HEADER_AVAILABLE CIsVariableFalse (engine/CIsVariableFalse.h)
+00e87030   RELOCATION_MATCH PASS   Main
+00e8dfa0   RELOCATION_MATCH PASS   Main
+00e90be0   RELOCATION_MATCH PASS   Main
+00e9a970   RELOCATION_MATCH PASS   FirstFleeCutscene
+
+WINS: 25
+  00dca6d0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper::?Main@CSecretPassageGraveyardKeeper@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+  00dcfa60 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::?DoCutsceneIfRequired@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ
+  00dd9520 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?SplittingUpCutscene@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ
+  00dd9a50 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?ResetCells@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ
+  00ddf090 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CPrisonWarden::?Main@CPrisonWarden@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+  00de6730 RELOCATION_MATCH NScript::CQ_RansomVictimScript::?PlayCutscene@CQ_RansomVictimScript@NScript@@QAEXVCCharString@@0@Z
+  00e07640 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodTrader::?Main@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e0a820 RELOCATION_MATCH NScript::CQ_TraderEscortScript::?TurnToBalv@CQ_TraderEscortScript@NScript@@QAEXVCScriptThing@@@Z
+  00e0b160 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::?Main@CQ_UndeadRisingScript@NScript@@UAEXXZ
+  00e137b0 RELOCATION_MATCH NScript::CQ_WaspBossScript::?Outro@CQ_WaspBossScript@NScript@@QAEXXZ
+  00e13f10 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::?Main@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEXXZ
+  00e18630 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::?Main@CQ_WhiteBalverineWWScript@NScript@@UAEXXZ
+  00e19d80 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::CKG_Chief::?Main@CKG_Chief@CQ_WhiteBalverineWWScript@NScript@@EAEXXZ
+  00e26e30 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::?Main@CMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@EAEXXZ
+  00e27e90 RELOCATION_MATCH NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::?Main@CGTDI_Maze@CQS_GuardianTrophyDealerInfoScript@NScript@@EAEXXZ
+  00e46d30 RELOCATION_MATCH NScript::CV_BanditCampPathScript::?Main@CV_BanditCampPathScript@NScript@@UAEXXZ
+  00e57e60 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::?Main@CV_BeggarAndChildScript@NScript@@UAEXXZ
+  00e6bc50 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil::?Main@CCOE_AcolyteEvil@CV_ChapelOfEvilScript@NScript@@EAEXXZ
+  00e6da80 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?TortureVictim@CV_ChapelOfEvilScript@NScript@@QAEXAAVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@1@Z
+  00e78100 RELOCATION_MATCH NScript::CV_ExposeMayorScript::?PlayCutscene@CV_ExposeMayorScript@NScript@@QAEXVCCharString@@_N0@Z
+  00e7c8e0 RELOCATION_MATCH NScript::CV_FishermanScript::CFisherman::?Main@CFisherman@CV_FishermanScript@NScript@@EAEXXZ
+  00e87030 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::?Main@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e8dfa0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::?Main@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+  00e90be0 RELOCATION_MATCH NScript::CV_GuildMasterScript::CGuildMasterGameFlow::?Main@CGuildMasterGameFlow@CV_GuildMasterScript@NScript@@EAEXXZ
+  00e9a970 RELOCATION_MATCH NScript::CV_HeroDuelScript::?FirstFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ
