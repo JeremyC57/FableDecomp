@@ -1,0 +1,2 @@
+address	landed_spelling	correct_symbol	evidence
+0x006DAA90	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCHeroExperienceDef@@@@@Z (rebuild/oracles/reloc_bindings.tsv)	??$GetSubDef@VCHeroExperienceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroExperienceDef@@@@@Z	Ego_r 0x0058AB00 and FableWin 0x01EFB9F0 both list only the const template instance; the call site passes CDefPointer<const CHeroExperienceDef>*

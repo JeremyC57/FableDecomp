@@ -1,0 +1,1 @@
+- (B24B5, 0x00839940) A loop-invariant def pointer kept in a register across calls (retail `mov edi,[esp+N]` right after an out-of-line GetSubDef<T> call) needs the GetSubDef<T> template body visible: include engine/CDefClassBase_GetSubDef.h (229 -> 92 hunks, `this` moved to ebp).
