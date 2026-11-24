@@ -6,16 +6,20 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
-## Account A, 2026-11-24 (naming automation; owner: "Dont launch anything new for now")
-- **Read first:** `docs/journal/2026-11/2026-11-24_naming_automation.md` (landings, new tools, open items, in-flight work).
-- **Landed today:** unit1 (181), unit2 (93), nf322 (60, 40 header opt-ins), nf321 (9), nf323 (20), dangling1 (7), rename1 (7),
-  flatten4 (5). Tracker: agree_pdb 23,193.
-- **New scripted routes** (lane_tools): `unit_fix.py` (a row plus all its callers, in waves), `ref_scan.py` (who references a symbol),
-  `access_fix.py --rename / --pairs`. `land_scripted.py` lands units atomically and holds stale rows.
-- **Not landed yet:** NF325's hand-back (31 rows, 38 headers), waiting for the full equiv_check in `$S/nf325_eq/`.
-- **Agents running at the stop:** NF324, NF326, NF327.
-- **Not started:** unit3, and the 39-spelling ref_scan.
-- **New rules** in BRIEF_NF_BATCH.md: check every table `replace` with ref_scan, and split identity claims three ways.
+## Account A, 2026-11-24 (naming automation; agents NF321-NF327 all landed; nothing running)
+- **Read first:** `docs/journal/2026-11/2026-11-24_naming_automation.md` (landings, tools, rulings, the open and queued list).
+- **Landed today:**
+
+  | Kind | Batches |
+  |---|---|
+  | scripted | unit1 (181), unit2 (93), dangling1 (7), rename1 (7), flatten4 (5) |
+  | agents | nf322 (60), nf321 (9), nf323 (20), nf325 (31), nf327 (10), nf324 (678, 7 batches), nf326 (111, pick-any unit) |
+
+  Tracker: agree_pdb 23,920.
+- **New scripted routes** (lane_tools): `unit_fix.py`, `ref_scan.py`, `access_fix.py --rename / --pairs`. `land_scripted.py` lands units
+  atomically and holds stale rows. flatten_pilot v4 is in `agent_tools/nf324/`, to be promoted after review.
+- **No agent or route is running.** The owner said to launch nothing new. The next steps are in the journal's "Open, queued, not started"
+  list.
 
 ## Account A, 2026-11-21 (owner: B rows released; agents resumed)
 - Owner released the ten rows still `reserved (acctB ...)` (0x00502E90 0x007602F0 0x00763060 0x008E18D0 0x0093D270 0x00A4EFC0

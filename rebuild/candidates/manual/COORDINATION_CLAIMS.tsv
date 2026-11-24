@@ -400,7 +400,7 @@ date	account	item	kind	status	note
 2026-11-23	A	body/callee ports onto the real class model (81 entries from the nf317-nf320 queue lines)	naming	done	agent NF321 landed 9 rows (batches/2026-11-24_landing_nf321)
 2026-11-23	A	flat-header class-model ports of RTTI-named virtuals (144 entries)	naming	done	agent NF322 landed 60 rows + 40 header opt-ins (batches/2026-11-24_landing_nf322)
 2026-11-23	A	CCreatureAction Clone family, the 6 FableWin-only declarations and other held rows (53 entries)	naming	done	agent NF323 landed 20 rows + 14 header opt-ins (batches/2026-11-24_landing_nf323); 7 held
-2026-11-24	A	flattened virtual-member pool (1,744 entries): extend flatten_pilot.py	naming	claimed	agent NF324 (scratch w22/agentNF324)
-2026-11-24	A	NF322 held/port continuation, two class-model defects, three NF321 requeues (89 entries)	naming	handed-back	agent NF325 (scratch w22/agentNF325): 31 rows ready, landing waits on the full equiv_check
-2026-11-24	A	CScriptThing / ScriptedThing pick-any unit (63 entries)	naming	claimed	agent NF326 (scratch w22/agentNF326)
-2026-11-24	A	items unblocked by the NF321-NF325 rulings (14 entries)	naming	claimed	agent NF327 (scratch w22/agentNF327)
+2026-11-24	A	flattened virtual-member pool (1,744 entries): extend flatten_pilot.py	naming	done	agent NF324 landed 678 rows + 122 header opt-ins (batches/2026-11-24_landing_nf324_b1..b7)
+2026-11-24	A	NF322 held/port continuation, two class-model defects, three NF321 requeues (89 entries)	naming	done	agent NF325 landed 31 rows + 37 headers, 1 new (batches/2026-11-24_landing_nf325)
+2026-11-24	A	CScriptThing / ScriptedThing pick-any unit (63 entries)	naming	done	agent NF326 landed 111 rows, the CScriptThing pick-any unit (batches/2026-11-24_landing_nf326)
+2026-11-24	A	items unblocked by the NF321-NF325 rulings (14 entries)	naming	done	agent NF327 landed 10 rows + 11 headers (batches/2026-11-24_landing_nf327); 4 held

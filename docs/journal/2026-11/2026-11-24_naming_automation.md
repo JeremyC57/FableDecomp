@@ -66,16 +66,26 @@ show up in agree_pdb.
   - **Q3:** land the new MazeBase header now; SHARED_HEADER_AVAILABLE is a warning.
   - **Q4:** CCombatSequenceBase pure slots 1 / 2 / 15 go to a later unit.
 
-## In flight at the stop ("don't launch anything new")
-- **NF325 hand-back, not landed yet:** 31 rows, 37 headers, 1 new header. Staleness was clean at 01:40.
-  - NF325 ran equiv_check over the include closure (365 rows) only, because of load.
-  - The coordinator started the full run: `$S/nf325_eq/` (`equiv_full.tsv`), comparing rebuild/include with `$S/nf325_tree`.
-  - Land after it reports 0 differing: copy hdr/engine, apply_rows, recheck the rows plus includers, write the README, commit by rows.
-- **Agents still running** (started before the stop):
-  - NF324: flatten tool over 1,744 flattened virtual members;
-  - NF326: the CScriptThing / ScriptedThing pick-any unit;
-  - NF327: items unblocked by today's rulings.
-  Their folders are `$S/w22/agentNF32{4,6,7}/`; land their hand-backs as above.
-- **unit3 was stopped** before producing anything. Rerun it later with `unit_fix.py $S/unit3b` (fresh dir); 51 units were deferred to it.
-- **Load:** three agents plus the coordinator's compiles drove the load average to about 38 on 4 cores. Run one heavy coordinator job at
-  a time.
+## After the stop: the running agents finished and were landed (owner: "Let the current agents finish, then land their work")
+| Batch | What | Rows | Proof summary |
+|---|---|---:|---|
+| `2026-11-24_landing_nf325` | 25 CCombatSequence rows on generated models, primitive-base / EnemyCreatureBase defects fixed, MazeBase header | 31 | full equiv_check (57,146 rows, path-only lines only), 41 PASS with nf327 |
+| `2026-11-24_landing_nf327` | 6 Clone rows on new opt-in headers, EndCutFade (`__fltused`), ServeFood, GetPossibleCollisionSet | 10 | cloneproof, closure equiv_check, 41 PASS with nf325 |
+| `2026-11-24_landing_nf324_b1`..`_b7` | flattened virtual members back on their class (flatten_pilot v4, 122 header opt-ins) | 678 | land_scripted staleness + 678 PASS |
+| `2026-11-24_landing_nf326` | CScriptThing pick-any unit: 10 members onto their PDB symbol, 101 copy rows | 111 | selfproof 10 / copyproof 101 OK on the landing objects, 111 PASS |
+
+Tracker after these landings: **agree_pdb 23,920** (from 23,193 this morning, 22,988 on 2026-11-23). rtti_identified fell from 4,551 to
+3,829.
+
+## Open, queued, not started (the owner said to launch nothing new)
+- **unit3:** 51 units deferred from unit2. Run `unit_fix.py $S/unit3b` in a fresh directory.
+- **The 39-spelling ref_scan:** old spellings over 80 sources each, about 5,000 compiles.
+- **NF324 Q1:** a generated opt-in derived-model route for the CCombatActionBase (~156) and CCombatSequenceBase (~143) families.
+- **NF324 Q2:** 79 rows whose own tests call the flattened name, which need the tests rewritten by script.
+- **NF324 table check:** 2 callers still bind a non-virtual spelling of members nf324 moved to virtual (0x00858CC0 CreatureOnBlowBlocked,
+  0x00B47980 FrameEnd). They are queued in T3 `nf324` and need the binder route.
+- **NF326 Q4:** the ~CScriptThing / copy-constructor pick-any unit. Also the 0x00DF6010 GetDataString debt.
+- **Held units:** 0x00860290 (Clone with binders), 0x009680D0 (PickUpJug destructor shape), 0x008601B0 / 0x008601C0 (GetUpFromSitting
+  macro), 0x008BFFB0 (no HEAD payload), and rename1's three units.
+- **flatten_pilot.py v4** is in `naming_batch/agent_tools/nf324/`. Promote it over `lane_tools/flatten_pilot.py` after a review.
+- **Stale lock:** one NF314 lock (0x00DC0300) is still live. NF314 is long finished, so release it at the next landing.
