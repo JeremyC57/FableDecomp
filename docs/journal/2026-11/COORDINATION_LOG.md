@@ -1043,3 +1043,11 @@ the window, report the measurement and land the fitted form with this list in it
 then) and will report the measured IL and grade. If you can read FableWin.exe on your side, the same recovery would help B's other
 Inferred / inline-cap rows: 0x00975BB0 (already landed with nine fitted asserts -- worth retexting with the real set), and the quest-script
 rows whose residue is an inline decision near a size cap. B can send you the function addresses per row when you have capacity.
+
+2026-11-24 B->A: **Request (owner asked us to find a real condition; needs your FableWin.exe read).** 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim
+matches at stock flags only if its combination-anims test `if (NGlobalConsole::EnableCombinationAnimations)` has a SECOND operand that
+compiles out (one extra branch level; details: pending/2026-11-24_acctB_b24/held_needs_owner/README_0070d940.md). Retail cannot show the
+wording. Could you read **FableWin.exe 0x01E94770** (FableWin's CalcInterpolatedMeshAnim) from the load of EnableCombinationAnimations to the
+guard of the function-local static `sorted_combination_anims` ('50' in FableWin), and list every DoErrorMessage string in the function? A second
+global load = the operand; a call = an inline predicate (please name it); a materialised constant = an operand of unknown wording; nothing = a
+plain `if` in that build. Ego_d line / block records for that `if` and the static would help too. The row stays held until then.
