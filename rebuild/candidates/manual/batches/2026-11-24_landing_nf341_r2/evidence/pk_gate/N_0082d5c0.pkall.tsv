@@ -1,0 +1,21 @@
+# leaf ?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	?Release@CIVCountedPointeeBase@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCThingBuildingDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCMaterialDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0?$CDefPointer@$$CBVCMaterialDef@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingBuildingDef@@@@QBEPBVCThingBuildingDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCThingBuildingDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCThingBuildingDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CDefPointer@$$CBVCThingBuildingDef@@@@QBEABVCThingBuildingDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCMaterialDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBuildingDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	004ab840	a,b	pickany	108	108	y	y	??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z
+EQ	EQ	0066c340	a,b	pickany	108	108	y	y	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	60	-	n	n	?PeekDefinition@CThingBuilding@@IBEABVCThingBuildingDef@@XZ

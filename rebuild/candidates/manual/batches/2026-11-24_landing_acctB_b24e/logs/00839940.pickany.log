@@ -1,0 +1,13 @@
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  004d2c42 19 ?StatGetClassTypeName@CTCActionUseWindow@@SI?AVCCharString@@XZ 
+EQ  004c3090 143 ??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MW4EEnginePrimitiveBlendMode@@K_NW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z 
+EQ  004a93c0 34 ??8?$CBasicString@D@@QBE_NABV0@@Z 
+NEQ 004292c0 54 ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z not referenced by the leaf
+EQ  0040dce0 21 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0066c340 108 ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z 
+EQ  00485815 162 ??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  007512c0 25 ??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z 

@@ -1,0 +1,3 @@
+D3 (NF341 round-1 HEAD evidence, evidence/pk/H_*.pkall.tsv, pk_all, 149 objects: the 148 compiled GLOBAL_BODY rows + B 0x00839940)
+leaf-called (leafref or reach) NEQ GetDef<T> copies: 123 copies in 109 rows (123 copy/address lines)
+of which the global-index form GetDef<T>(long, CDefPointer<const T>*): 120 copies in 109 rows

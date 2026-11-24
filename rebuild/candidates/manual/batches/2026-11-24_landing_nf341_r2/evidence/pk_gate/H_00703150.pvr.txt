@@ -1,0 +1,1 @@
+NEQ 0066c340 116 ??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z LEAF-REFERENCED

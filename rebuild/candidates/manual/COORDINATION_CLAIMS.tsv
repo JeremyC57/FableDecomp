@@ -500,9 +500,13 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF344: /d2inl flag rows from NF340 + leaf-vs-table census	naming	done	6 flag changes landed (batches/2026-11-24_landing_nf344_b1, b3); b2 held (Codex p27 reservation); census queued
 2026-11-24	A	agent NF345: leaf-vs-table conflicts with a likely stale table line (143)	naming	claimed	locks via lock.sh NF345
 2026-11-24	A	land Account B staged row (TalentlessBard Main)	landing	done	batches/2026-11-24_landing_acctB_b24d
+2026-11-24	A	agent NF341 round 2: GetDef<CMaterialDef> copy as an opt-in (B OnHit unblock)	naming	done	batches/2026-11-24_landing_nf341_r2 (r2 landed; r2b not used)
 2026-11-24	B	0x00DAADD0	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00EF5FF0	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00EF9280	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00509A20	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00DEE2E0	author	claimed	agent B24E (next-largest parked rows)
 2026-11-24	B	0x00DF5000	author	claimed	agent B24E (next-largest parked rows)
+2026-11-24	A	agent NF346 GetDef REREAD port	naming	claimed	locks via nflocks owner NF346; excludes B claims/staged rows and Codex reservations
+2026-11-24	A	land Account B staged rows (OnHit, RansomHelper Main, Assassin1 Main)	landing	done	batches/2026-11-24_landing_acctB_b24e
+2026-11-24	A	agent NF347 INDEX_DECL_ONLY pilot and next debt groups	naming	claimed	locks via nflocks owner NF347

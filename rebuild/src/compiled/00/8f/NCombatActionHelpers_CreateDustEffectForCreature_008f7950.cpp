@@ -16,6 +16,7 @@
 //   push_back body / CTCDParticleEmitter / CParticleUpdateParameters / SVectorParam / CCRC models, the stand-in GetTCDriver body) is gone:
 //   ported onto the shared headers with the 0x008548B0 particle-parameter block; the self takes the queued q10436 PDB spelling.
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD   // NF341 r2: GetDef<CMaterialDef> copy = retail 0x0066C340 (the re-reading SetDynamicCast, as landed 0x0066B370)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_DEF_CLASS_BASE

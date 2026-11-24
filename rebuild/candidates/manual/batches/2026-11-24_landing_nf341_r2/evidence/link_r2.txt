@@ -1,0 +1,5 @@
+## HEAD set: 0066c340.obj H_008f7950_r2.obj H_00703150_r2.obj H_007f0300_r2.obj H_0082d5c0_r2.obj
+duplicates 0
+## new set: 0066c340.obj 008f7950_r2.obj 00703150_r2.obj 007f0300_r2.obj 0082d5c0_r2.obj
+duplicates 0
+LK_DONE

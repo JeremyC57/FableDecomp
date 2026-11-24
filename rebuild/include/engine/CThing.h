@@ -385,7 +385,19 @@ public:
 #else
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
 #endif
-#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) && defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT_HASTC_CLASSTYPE) && !defined(FABLE_RETAIL_CTHING_GETTC_EXPANDED)
+    // Opt-in (B24B5/B24B6, row 0x00839940 CThingGameObject::OnHit): the FABLE_RETAIL_CTHING_HASTC_CLASSTYPE body (retail's out-of-line
+    // HasTC<CTCActionUseActivateQuest> 0x006AE680: PeekTC, then the class-name equality) for the ONHIT configuration, which does not use
+    // FABLE_RETAIL_CTHING_GETTC_EXPANDED. OnHit expands HasTC<CTCActionUseWindow> at 0x00839C5B..0x00839D58 in this shape. Default unchanged.
+    template<class T> FABLE_FORCEINLINE bool HasTC() const {
+        const CTCBase* tc;
+        if(PeekTC(T::StatGetInterfaceType(),&tc)) {
+            if(tc->GetClassTypeName()==T::StatGetClassTypeName())
+                return true;
+        }
+        return false;
+    }
+#elif defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
     // Original FableWin donor024db630: presence, GetTC, exact class-name equality.
     template<class T> FABLE_FORCEINLINE bool HasTC()const {
         if(!HasTC(T::StatGetInterfaceType()))return false;

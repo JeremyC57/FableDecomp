@@ -16,6 +16,11 @@
 class CPersistContext;
 #endif
 class CHeroExperienceDef:public CSubDefClassBase {public:
+#ifdef FABLE_RETAIL_CHEROEXPERIENCEDEF_STATGETTYPENAME
+ // Opt-in (B24B5, row 0x00839940 CThingGameObject::OnHit): ?StatGetTypeName@CHeroExperienceDef@@SI?AVCCharString@@XZ, the class literal
+ // GetSubDef<CHeroExperienceDef> (Ego_r 0x0058AB00, retail 0x006DAA90) builds. No layout change.
+ static CCharString __fastcall StatGetTypeName() { return CCharString("CHeroExperienceDef", -1); }
+#endif
 #if defined(FABLE_RETAIL_CHEROEXPERIENCEDEF_TRANSFER)
  // Retail opt-in (wf16 row 0x006D8F10 CHeroExperienceDef::Transfer): the real STLport member types (Ego_r.pdb) and the slot-18 override
  // ?Transfer@CHeroExperienceDef@@UAEXAAVCPersistContext@@@Z (Ego_r.pdb / FableWin.pdb, vtable 0x0124390C slot 18).

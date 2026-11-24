@@ -1,0 +1,34 @@
+# objsec HEAD v define (tools/proof1.py, COMDATs keyed by symbol): every difference classified
+008f7950 OK (only fixed copies + NOADDR helpers)
+    symbol tables differ: [('?Assign@?$CDefPointer@$$CBVCEngineThemeDef@@@@AAEXPAVCDefPointeeBase@@@Z', ('DEF', 2)), ('?Assign@?$CDefPointer@$$CBVCMateria :: dropped DEF entries: NOADDR, NOADDR
+    section ('COMDAT', '??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z', '.text') differs :: GetDef copy now EQ (pk gate FIXED)
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCEngineThemeDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.t d :: NOADDR helper (no retail address)
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text d :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCEngineThemeDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCMaterialDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    GetDef<CMaterialDef> copy changed 116 -> 108 B :: fixed copy
+    copy v retail 0x0066C340 EQ, v owner object EQ :: fixed copy
+00703150 OK (only fixed copies + NOADDR helpers)
+    symbol tables differ: [('?Assign@?$CDefPointer@$$CBVCMaterialDef@@@@AAEXPAVCDefPointeeBase@@@Z', ('DEF', 2))] :: dropped DEF entries: NOADDR
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text d :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCMaterialDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    GetDef<CMaterialDef> copy changed 116 -> 108 B :: fixed copy
+    copy v retail 0x0066C340 EQ, v owner object EQ :: fixed copy
+007f0300 OK (only fixed copies + NOADDR helpers)
+    symbol tables differ: [('?Assign@?$CDefPointer@$$CBVCEngineThemeDef@@@@AAEXPAVCDefPointeeBase@@@Z', ('DEF', 2)), ('?Assign@?$CDefPointer@$$CBVCMateria :: dropped DEF entries: NOADDR, NOADDR
+    section ('COMDAT', '??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z', '.text') differs :: GetDef copy now EQ (pk gate FIXED)
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCEngineThemeDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.t d :: NOADDR helper (no retail address)
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text d :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCEngineThemeDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCMaterialDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    GetDef<CMaterialDef> copy changed 116 -> 108 B :: fixed copy
+    copy v retail 0x0066C340 EQ, v owner object EQ :: fixed copy
+0082d5c0 OK (only fixed copies + NOADDR helpers)
+    symbol tables differ: [('?Assign@?$CDefPointer@$$CBVCMaterialDef@@@@AAEXPAVCDefPointeeBase@@@Z', ('DEF', 2)), ('?Assign@?$CDefPointer@$$CBVCThingBuild :: dropped DEF entries: NOADDR, NOADDR
+    section ('COMDAT', '??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z', '.text') differs :: GetDef copy now EQ (pk gate FIXED)
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCMaterialDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text d :: NOADDR helper (no retail address)
+    section ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingBuildingDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', ' d :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCMaterialDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    dropped COMDAT ?Assign@?$CDefPointer@$$CBVCThingBuildingDef@@@@AAEXPAVCDefPointeeBase@@@Z :: NOADDR helper (no retail address)
+    GetDef<CMaterialDef> copy changed 116 -> 108 B :: fixed copy
+    copy v retail 0x0066C340 EQ, v owner object EQ :: fixed copy
