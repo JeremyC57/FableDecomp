@@ -1,0 +1,13 @@
+## new 00b217d0 .drectve
+/DEFAULTLIB:"libcp"
+/alternatename:??$GFInterpolateArray@K@NParticleEngine@@YI?AV?$CArray@K@@ABV1@0MABK@Z=?GFInterpolateArray@NParticleEngine@@YI?AV?$CArray@K@@ABV2@0MABK@Z
+/DEFAULTLIB:"LIBC"
+/DEFAULTLIB:"OLDNAMES"
+## HEAD 00b217d0
+/DEFAULTLIB:"LIBC"
+/DEFAULTLIB:"OLDNAMES"
+## landed 00b22310 (fresh HEAD compile, work/cen_r8)
+/DEFAULTLIB:"libcp"
+/alternatename:??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z=?GFInterpolateArray@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV2@0MABVC3DVector@@@Z
+/DEFAULTLIB:"LIBC"
+/DEFAULTLIB:"OLDNAMES"

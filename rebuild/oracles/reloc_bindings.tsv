@@ -5186,8 +5186,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CPSCSplineBase@NParticleEngine@@6B@	012a0b14	00b21530
 ?OffsetSplinePositions@CSplineRandomOffsetData@NParticleEngine@@QAEXXZ	00b206b0	00b215a0
 ?Update@CSplinePosParamData@NParticleEngine@@QAEXPAUCParticleUpdateParameters@2@PAUCCardinalSpline@2@@Z	00b20ba0	00b215a0
-??4?$CArray@K@NParticleEngine@@QAEAAU01@ABU01@@Z	0045bc09	00b217d0
-?GFInterpolateArray@NParticleEngine@@YI?AU?$CArray@K@1@ABU21@0MABK@Z	00b22f30	00b217d0
+??$GFInterpolateArray@K@NParticleEngine@@YI?AV?$CArray@K@@ABV1@0MABK@Z	00b22f30	00b217d0
 ?Destroy_00b230e0@@YIXPAX@Z	00b230e0	00b23170
 ?Destroy_00b231e0@@YIXPAX@Z	00b231e0	00b23240
 ??_7CIEngine@@6B@	012a0d24	00b23750

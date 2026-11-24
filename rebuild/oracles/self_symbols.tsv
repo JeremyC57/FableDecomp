@@ -18392,7 +18392,7 @@ address	symbol	status	leaf_given
 00b21530	??0CPSCSplineBase@NParticleEngine@@QAE@XZ	RELOCATION_MATCH	??0CPSCSplineBase
 00b215a0	?Initialise@CPSCSplineBase@NParticleEngine@@QAE_NPAXKPAUCParticleUpdateParameters@2@M@Z	RELOCATION_MATCH	Initialise
 00b21630	?WriteBinary@CPSCSplineBase@NParticleEngine@@UAEXAAVCDataOutputStream@@@Z	RELOCATION_MATCH	WriteBinary
-00b217d0	?InterpolateTo@CSplinePosParamData@NParticleEngine@@QAEXABU12@M@Z	RELOCATION_MATCH	InterpolateTo
+00b217d0	?InterpolateTo@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV123@M@Z	RELOCATION_MATCH	?InterpolateTo@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV123@M@Z
 00b21a00	??0CSplinePosParamData@@QAE@PAVCCardinalSpline@@@Z	RELOCATION_MATCH	??0CSplinePosParamData
 00b21c90	?ReadBinary@CSplinePosParamData@@QAEXAAVCDataInputStream@@@Z	RELOCATION_MATCH	ReadBinary@CSplinePosParamData
 00b21dd0	??0CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAE@PAVCCardinalSpline@@@Z	RELOCATION_MATCH	??0CSplineRandomOffsetData

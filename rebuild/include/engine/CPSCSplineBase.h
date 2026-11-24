@@ -18,6 +18,12 @@ public:
   // Both original PDBs, donor02f5e230, native00b20ba0.
   void Update(const CParticleUpdateParameters<unsigned long,unsigned long>& params,CCardinalSpline& spline);
 #endif
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_POSPARAM_INTERPOLATETO
+  // Opt-in (NF393, row 0x00B217D0): Ego_r.pdb / FableWin.pdb (0x02F5E500)
+  // ?InterpolateTo@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV123@M@Z, called once, by CPSCSplineBase::InterpolateTo
+  // (0x00B22483 inside 0x00B22310). Declaration only, no layout change.
+  void InterpolateTo(const CSplinePosParamData& other,float t);
+#endif
  private:
   void TransformPosToMaintainShape(C3DVector&,const C3DVector&,const C3DVector&,const C3DVector&,const C3DVector&);
   const CParticleSystem* PParentParticleSystem;

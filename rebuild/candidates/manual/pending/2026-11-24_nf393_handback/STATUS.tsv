@@ -1,0 +1,2 @@
+address	status	batch	note
+00b217d0	ACCEPT	b1	binder + self respell to ?InterpolateTo@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV123@M@Z on engine/CArray.h + engine/CCRC.h + engine/CPSCSplineBase.h (new opt-in FABLE_RETAIL_CPSCSPLINEBASE_POSPARAM_INTERPOLATETO); vland H/N RELOCATION_MATCH PASS; 10 new pick-any COMDATs all accepted under R10 (identical to landed 00ad9980) + R4 forwarder, ~CArray paired under R11; table delete 1 + replace 1; every gate passes. Lock released. 43 VC7.1 compiles total (35 in the finishing phase)
