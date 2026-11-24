@@ -797,3 +797,9 @@ repository for landing on the main account later." B's matched rows go to `rebui
 (README per row: grade, re-verify result, overlay headers, open review items; combined payload.json, no oracle). Ready now: 0x012133C0,
 0x00407A70, 0x00407BA0, 0x00BE4FE0. 0x00402510 GFMain matches but is under repair (landed spellings for data globals, typed members for a
 placeholder block) before it is ready. B keeps its claims on these rows until you land them; close them with `done` when you do.
+
+2026-11-24 B->A: **Possible pick-any debt in landed BanditCamp rows.** B24A2 (0x00D09010 CCampHostageGuard::Main, same TU as the landed
+CBCGameMaster / CBanditKing rows) found two COMDAT copies in its object that differ from their landed owners: `??1CIsThingAlive` v
+0x00E241B0 (the existing `FABLE_RETAIL_CISTHINGALIVE_BANDIT_OWNERS_PASS27` opt-in does not fix it under /d2inlS15) and `??1MovieBase` v
+0x006E7B80 (emitted through the vtable the force-inlined ctor stores). Worth running pending/2026-11-21_codex_pass26/tools/pickany_vs_retail.py
+over the landed BanditCamp siblings that use /d2inlS15. Notes: pending/2026-11-24_acctB_b24/progress/00d09010/.

@@ -37,3 +37,48 @@ retail: ~CScriptThing 16, ~CCountedPointer<Movie> 9, CBaseObject() 6, ~CBaseObje
   MovieBase destructor (c1 <= 9 always-inline at stock S9, i.e. sz <= ~15) with ~CTimer staying frequency-split at stock flags. Next: find the
   MovieBase / GROBase / CBaseObject destructor declaration form (implicit vs user-declared, virtual or not, which bodies visible) whose trace
   sz is <= 15 while the expansion stays `call 0x6E7AB0; store 0x0126008C; call 0x0099A430`; then stock flags, no S15.
+
+## B24A2 (2026-11-24) -- continuation
+- v5/v6/v7 (do-while(0) round the speak block / its T checks / every T check): 6152 / 6120 / 6284, ~MovieBase still called 7x. Dropped.
+- Probes (probe/*.cpp, trace via INL_F=<fn> inl/run.sh): the implicit ~MovieBase is sz 25 on first use in a TU whatever the CP<Movie>
+  dtor form (declared-only 25; visible body 66). Base forms: out-of-line base dtor call -> derived 19; inline base `{}` w/o base call 19;
+  GROBase-like base (vptr store + ~CBaseObject call, sz 11) -> 25; base defined after use / inline keyword: no change.
+  Always-inline (sc '-') at stock: c1 13 yes (sz 19), c1 14 (CTimer dtor) no; /d2inlS15 makes c1 19 always.
+  An implicit dtor first compiled under #pragma inline_depth(0) is then sz 19 always-inline elsewhere but KEEPS GROBase as a call (K3).
+- Decisive argument: retail's movie-arm terminate exits (0xD0A1B9 -> 0xD0A4C8 -> 0xD0A60F -> common exit 0xD0A693) destroy the movie
+  EXPANDED and the timers CALLED on one path. Same statement = same f, and MovieBase (c 19) always scores worse than CTimer (c 14), so
+  no frequency / flag gives that from one `return`: either ~MovieBase always-inline (needs sz <= 19) or the movie is destroyed by a
+  different statement than the timers (CBanditKing 0x00D0A830 `goto Terminate` + inline_depth(0) on `Terminate: return`).
+- pick-any on v1: ??1MovieBase NEQ (leaf-referenced), ??1CIsThingAlive NEQ v 0x00E241B0 (row-local inline dtor) -> must be fixed.
+- Compile-order probe: ~MovieBase stays sz 25 even when an earlier function calls it out of line (o.cpp). Hypothesis (A) dead.
+- v8 (S15 + every cold T after the locals -> `goto Terminate`, `Terminate:` return under inline_depth(0); keep plain returns at the
+  three hot exits, v1 lines 199/217/235): 5868v5864, callee counts == retail (~CScriptThing 16, CP<Movie> 9, CBaseObject() 6,
+  ~CBaseObject 6, ~CTimer 2) but frame layout off (gotos reweight).
+- v10 (S15; movie-scope cold T (v1 lines 202,220,307,310,324,327,344,347) -> goto Terminate; other cold T -> return wrapped in
+  #pragma inline_depth(0)): 5864v5864, 40 hunks: GoadLevel/Hostage slot swap (ours GoadLevel 0x34/Hostage 0x38; retail Hostage 0x34,
+  GoadLevel 0x40) + arm1-after-loop exit tail-merge + block order. Retail ret positions reproduced.
+- vE (= v14; same but the 8 movie-scope exits are returns under #pragma inline_depth(1): movie expanded, GROBase expanded, timers
+  called): 5864v5864, slot layout == retail, callee counts == retail except ~CBaseObject 5 v 6 (one more merge); residue = block
+  placement: the two hot expanded-timer exits (arm2 in-loop 0xD09DE6.., hit-by-hero 0xD09E50..) sit at the END in ours (merged
+  tails), retail keeps them in place after the second switch; arm1-after-loop block cross-jump direction reversed.
+- Mixed goto/depth variants vG/vI/vK/vL: 5800..6008, worse.
+- CORRECTION on vE: its movie-scope returns under inline_depth(1) EXPAND the timers (depth 1 allowed, S15 always-inline) and the
+  cross-jumper folds them into the hot tails, so the matching callee counts were a coincidence; vE is structurally wrong.
+  v10 (differ/00d09010.cpp now) is the structurally right form: movie exits -> movie expanded, then the called-timer common exit.
+- v10 residues (normalized diff, nd.sh): (1) density tie Hostage(12 B) v GoadLevel(4 B) (MATCHING_PLAYBOOK frame packer: density
+  w*1000/size, w = IL refs before cross-jumping): the 8 gotos remove 8 Hostage dtor refs and GoadLevel wins; tried GoadLevel decl
+  moves (v11/v12/vV), int (v13), constant stores (vH), function-scope Conversation (vT), Hostage first (vU 5800): none flips it.
+  (2) cross-jump survivor of the movie@0x5C group: retail keeps arm1 after-loop block (0xD09DBA; 324/327 jump back to it = the
+  playbook's "second pass, earlier survives"), ours keeps the LATE_SPEAK_SECOND copy (first-pass "last edge absorbs").
+  (3) retail's two `pause; jmp` stubs (0xD0A4C8/0xD0A4DA) sit after the case-5 loop; ours elsewhere.
+  Mixed goto/return(depth1) subsets (vG vI vK vL vO vP vQ): 5800..6024 (merges change), all worse.
+- pick-any on v10/vW: ??1CIsThingAlive NEQ v 0x00E241B0 (25-byte copy; FABLE_RETAIL_CISTHINGALIVE_BANDIT_OWNERS_PASS27 in vW does
+  not fix it under S15) and ??1MovieBase NEQ v 0x006E7B80 (emitted via ??_7/??_G because the FORCEINLINE_CTOR stores the vptr; our
+  copy calls 0x006E7AB0, retail's inlines the release). Both must be solved before any hand-back (probably lane-level: check how
+  the landed BanditCamp siblings' objects fare with the checker).
+- Best next ideas: (a) find a spelling for the 8 movie exits that keeps a Hostage reference per exit but still leaves the movie scope
+  separately (e.g. per-site `{ ... }` scope ends / break out of a do-while(0) movie block followed by the existing next statement)
+  and test the frame map with fmap.sh first (no grade needed: Hostage must precede GoadLevel); (b) for the survivor, the playbook
+  rule says the earlier copy survives only in the second pass: make arm1's after-loop exit (v1 line 202) a return-shaped edge.
+Tools added in this dir: xf.py / xg.py / xh.py / xk.py (source transforms by v1 line numbers), nd.sh (normalized diff, relocations
+masked), fas.py + fmap.sh (/FAs frame map of Main), probe/ (inline-trace probes; inl/run.sh now takes INL_D / INL_F env).

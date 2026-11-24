@@ -1,5 +1,5 @@
 // NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main() -- the bandit-camp hostage guard: scripts himself, faces the hostage and, until the hostages are rescued, chats to the hostage when the hero is near, paces between his two markers, answers the hero once (first chat, then second), and turns on the hero when struck; afterwards he paces at his first marker, taunts the hero (the sixth late line makes him attack), answers talk and turns on the hero when struck
-// Grade: DIFFER(5672v5864) -- two hot exits (movie exit, hit-by-hero while(true) exit) call ~CTimer where retail expands DeregisterTimer; plain inline ~CTimer fixes that but re-allocates the GoadLevel switch (NOTES.md)
+// Grade: DIFFER(5864v5864, 40 hunks) -- /d2inlS15 + movie-scope cold T -> goto Terminate + inline_depth(0) cold returns: Hostage/GoadLevel slot swap (ours GoadLevel 0x34, retail Hostage 0x34 / GoadLevel 0x40) + 0x64-movie exit survivor (retail keeps arm1 after-loop block 0x9DBA, ours keeps LATE_SPEAK_SECOND copy) + 2 second-loop pause stubs placement
 // Inline-budget: S15 plus forced original Movie ctor selects implicit Movie cleanup; visible called Timer destructor preserves native frame. Hot Timer cleanup copies still differ.
 // Flags: /d2inlS15
 // Leaf: ?Main@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
@@ -50,13 +50,7 @@ inline NScript::CIsThingAlive::~CIsThingAlive() { }
 bool FABLE_FASTCALL IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float);   // 0x00CBE2FF
 extern CGameScriptInterfaceBase* pDSTGame;                              // 0x0143E8F8
 inline CTimer::CTimer():TimerIndex(pDSTGame->RegisterTimer()) {}
-#ifdef _MSC_VER
-#pragma auto_inline(off)
-#endif
-CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
-#ifdef _MSC_VER
-#pragma auto_inline(on)
-#endif
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex,time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool FABLE_FASTCALL IsDistanceBetweenThingsOver(const CScriptThing&, const CScriptThing&, float);    // 0x00CBE3EA
@@ -92,15 +86,21 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
     while (!ParentClass.HostagesRescued) {
         Game.NewScriptFrame();
         if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
             return _Fail_Val.Return();
+#pragma inline_depth()
         if (Game.MsgOnHeroPickedPocket(Me)) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             DropPass = false;
         }
         if (IsDistanceBetweenThingsUnder(Me, Game.GetHero(), 7.0f) && IsDistanceBetweenThingsUnder(Me, Hostage, 12.0f) && GoadingTimer.GetTime() <= 0) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             long Conversation = Game.AddNewConversation(Me, false, false);
             Game.AddPersonToConversation(Conversation, Hostage);
             switch (GoadLevel) {
@@ -137,25 +137,37 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
         }
         if (MarkerAt == 1) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             if (IsDistanceBetweenThingsOver(Me, Game.GetThingWithScriptName("GuardFirstMarker"), 2.0f) && !seh_me.IsPerformingScriptTask()) {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 seh_me.MoveToPosition(Game.GetThingWithScriptName("GuardFirstMarker").GetPos(), 1.0f, (EScriptEntityMoveType)0, false, true);
             } else {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 if (TurnTimer.GetTime() <= 0) {
                     if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                         return _Fail_Val.Return();
+#pragma inline_depth()
                     if (!Turning) {
                         if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                             return _Fail_Val.Return();
+#pragma inline_depth()
                         Turning = true;
                         TurnTimer = 10;
                     } else {
                         if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                             return _Fail_Val.Return();
+#pragma inline_depth()
                         Turning = false;
                         MarkerAt = 2;
                     }
@@ -163,25 +175,37 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
             }
         } else {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             if (IsDistanceBetweenThingsOver(Me, Game.GetThingWithScriptName("GuardSecondMarker"), 2.0f) && !seh_me.IsPerformingScriptTask()) {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 seh_me.MoveToPosition(Game.GetThingWithScriptName("GuardSecondMarker").GetPos(), 1.0f, (EScriptEntityMoveType)0, false, true);
             } else {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 if (TurnTimer.GetTime() <= 0) {
                     if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                         return _Fail_Val.Return();
+#pragma inline_depth()
                     if (!Turning) {
                         if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                             return _Fail_Val.Return();
+#pragma inline_depth()
                         Turning = true;
                         TurnTimer = 10;
                     } else {
                         if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                             return _Fail_Val.Return();
+#pragma inline_depth()
                         Turning = false;
                         MarkerAt = 1;
                     }
@@ -190,11 +214,15 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
         }
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             seh_me.ClearCommands();
             if (!SpokenTo) {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 CScriptGameResourceObjectMovieBase speech_movie;
                 Game.StartMovieSequence("", speech_movie);
                 CWideScreenMagicPauseEntities PauseMyEntitiesPlease(Game);
@@ -206,13 +234,15 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                             return _Fail_Val.Return();
                     }
                     if (IsActiveThreadTerminating())
-                        return _Fail_Val.Return();
+                        goto Terminate;
                 }
                 Game.EntitySetFacingAngleTowardsThing(Me, Hostage, false);
                 SpokenTo = true;
             } else {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 CScriptGameResourceObjectMovieBase speech_movie;
                 Game.StartMovieSequence("", speech_movie);
                 CWideScreenMagicPauseEntities PauseMyEntitiesPlease(Game);
@@ -224,14 +254,16 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                             return _Fail_Val.Return();
                     }
                     if (IsActiveThreadTerminating())
-                        return _Fail_Val.Return();
+                        goto Terminate;
                 }
                 Game.EntitySetFacingAngleTowardsThing(Me, Hostage, false);
             }
         }
         if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO")) || ParentClass.HostageKilled) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             Game.ClearThingHasInformation(Me);
             Game.GiveThingBestEnemyTarget(Me, Game.GetHero());
             if (seh_me.IsValid())
@@ -241,24 +273,35 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                 if (IsActiveThreadTerminating())
                     return _Fail_Val.Return();
             }
-            if (IsActiveThreadTerminating()) return _Fail_Val.Return();
+            if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
+                return _Fail_Val.Return();
+#pragma inline_depth()
         }
     }
     if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
         return _Fail_Val.Return();
+#pragma inline_depth()
     SpokenTo = false;
     Game.ClearThingHasInformation(Me);
     for (; !false; Game.NewScriptFrame()) {
         if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
             return _Fail_Val.Return();
+#pragma inline_depth()
         if (IsDistanceBetweenThingsOver(Me, Game.GetThingWithScriptName("GuardFirstMarker"), 2.0f) && !seh_me.IsPerformingScriptTask()) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             seh_me.MoveToPosition(Game.GetThingWithScriptName("GuardFirstMarker").GetPos(), 1.0f, (EScriptEntityMoveType)0, false, true);
         }
         if (IsDistanceBetweenThingsUnder(Me, Game.GetHero(), 7.0f) && IsDistanceBetweenThingsUnder(Me, Game.GetThingWithScriptName("GuardFirstMarker"), 12.0f) && GoadingTimer.GetTime() <= 0) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             long Conversation = Game.AddNewConversation(Me, false, false);
             Game.AddPersonToConversation(Conversation, Game.GetHero());
             switch (GoadLevel) {
@@ -290,19 +333,28 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                 while (true) {
                     Game.NewScriptFrame();
                     if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                         return _Fail_Val.Return();
+#pragma inline_depth()
                 }
-                if (IsActiveThreadTerminating()) return _Fail_Val.Return();
+                if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
+                    return _Fail_Val.Return();
+#pragma inline_depth()
             }
             GoadingTimer = 10;
         }
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             seh_me.ClearCommands();
             if (!SpokenTo) {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 CScriptGameResourceObjectMovieBase speech_movie;
                 Game.StartMovieSequence("", speech_movie);
                 CWideScreenMagicPauseEntities PauseMyEntitiesPlease(Game);
@@ -311,15 +363,17 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                     while (seh_me.IsPerformingScriptTask()) {
                         Game.NewScriptFrame();
                         if (IsActiveThreadTerminating())
-                            return _Fail_Val.Return();
+                            goto Terminate;
                     }
                     if (IsActiveThreadTerminating())
-                        return _Fail_Val.Return();
+                        goto Terminate;
                 }
                 SpokenTo = true;
             } else {
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
                 CScriptGameResourceObjectMovieBase speech_movie;
                 Game.StartMovieSequence("", speech_movie);
                 CWideScreenMagicPauseEntities PauseMyEntitiesPlease(Game);
@@ -328,16 +382,18 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                     while (seh_me.IsPerformingScriptTask()) {
                         Game.NewScriptFrame();
                         if (IsActiveThreadTerminating())
-                            return _Fail_Val.Return();
+                            goto Terminate;
                     }
                     if (IsActiveThreadTerminating())
-                        return _Fail_Val.Return();
+                        goto Terminate;
                 }
             }
         }
         if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                 return _Fail_Val.Return();
+#pragma inline_depth()
             seh_me.ClearCommands();
             {
                 CScriptGameResourceObjectMovieBase speech_movie;
@@ -348,10 +404,10 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
                     while (seh_me.IsPerformingScriptTask()) {
                         Game.NewScriptFrame();
                         if (IsActiveThreadTerminating())
-                            return _Fail_Val.Return();
+                            goto Terminate;
                     }
                     if (IsActiveThreadTerminating())
-                        return _Fail_Val.Return();
+                        goto Terminate;
                 }
                 Game.GiveThingBestEnemyTarget(Me, Game.GetHero());
                 if (seh_me.IsValid())
@@ -360,10 +416,18 @@ void NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main()
             while (true) {
                 Game.NewScriptFrame();
                 if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
                     return _Fail_Val.Return();
+#pragma inline_depth()
             }
-            if (IsActiveThreadTerminating()) return _Fail_Val.Return();
+            if (IsActiveThreadTerminating())
+#pragma inline_depth(0)
+                return _Fail_Val.Return();
+#pragma inline_depth()
         }
     }
-    if (IsActiveThreadTerminating()) return _Fail_Val.Return();
+Terminate:
+#pragma inline_depth(0)
+    return _Fail_Val.Return();
+#pragma inline_depth()
 }

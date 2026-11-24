@@ -7,3 +7,15 @@
 03:43 00d09010 grade v3.cpp DIFFER(5928v5864) hunks=232 -- natural ~CTimer + v2 no movie/widescreen forceinline ctors / v3 plain CTimer accessors / v4 both
 03:44 00d09010 grade v4.cpp DIFFER(5768v5864) hunks=239 -- natural ~CTimer + v2 no movie/widescreen forceinline ctors / v3 plain CTimer accessors / v4 both
 probe 1 inline trace base/v1 -> natural ~CTimer expands exactly at retail's two hot exit groups
+03:49 00d09010 grade v5.cpp DIFFER(6152v5864) hunks=157 -- v1 + do-while(0) speak block (v5) / + T inside (v6) / all T do-while(0) (v7)
+03:49 00d09010 grade v6.cpp DIFFER(6120v5864) hunks=155 -- v1 + do-while(0) speak block (v5) / + T inside (v6) / all T do-while(0) (v7)
+03:50 00d09010 grade v7.cpp DIFFER(6284v5864) hunks=129 -- v1 + do-while(0) speak block (v5) / + T inside (v6) / all T do-while(0) (v7)
+probe 2 inline trace probes M/K/J series -> implicit ~MovieBase sz 25 on first use whatever the spelling; base-dtor content sets it
+04:05 00d09010 grade v8.cpp DIFFER(5868v5864) hunks=269 /d2inlS15 -- goto Terminate funnel (keep 3 hot returns) + inline_depth(0) Terminate, S15
+04:05 00d09010 grade v8.cpp DIFFER(5932v5864) hunks=273 -- same, stock
+04:07 00d09010 grade v10.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- v1 + S15 + inline_depth(0) on cold returns + goto Terminate for movie-scope cold exits
+04:08 00d09010 grade v11.cpp DIFFER(5864v5864) hunks=41 /d2inlS15 -- v10 + GoadLevel decl after Hostage / before GoadingTimer / int
+04:08 00d09010 grade v12.cpp DIFFER(5864v5864) hunks=41 /d2inlS15 -- v10 + GoadLevel decl after Hostage / before GoadingTimer / int
+04:08 00d09010 grade v13.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- v10 + GoadLevel decl after Hostage / before GoadingTimer / int
+00d09010 grade v8/v10/vE/vG/vI/vJ/vK/vL see NOTES (best v10 / vE 5864v5864 40 hunks)
+00d09010 grade vT/vU/vV/vW/vR/vS/vM: no improvement (see NOTES); best v10 5864v5864 40 hunks
