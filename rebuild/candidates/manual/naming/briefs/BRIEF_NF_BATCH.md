@@ -211,3 +211,31 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
     slot for slot. Missing overrides are added as add-only declarations first, and `??_G` / `??_E` pick-any is fine.
   - **Q2:** a move that ADDS unreferenced pick-any COMDATs fails "COMDAT sets SAME" (the mirror of NF318 Q5). Hold it.
   - **Q3:** the retail RTTI placement plus ONE PDB name set count as two sources.
+- NF321:
+  - **Q1:** a move whose only symbol change is a new UND `__fltused` is allowed, as a narrow exception shaped like the libcp one. VC7.1
+    emits that marker for any float-typed expression, so a PDB float parameter requires it. Conditions:
+    - symdiff shows the UND delta is exactly `__fltused`;
+    - an already-landed MATCH row's object carries it;
+    - the callee has its own second source (NF318 Q4).
+  - **Q2:** an out-of-line copy of an in-class header inline whose scaffolding adds a helper falls under NF320 Q2 (hold), unless
+    coff_info shows no COMDAT or symbol the HEAD object lacks. The whole-unit route (self plus every landed copy, with a census) stays open.
+  - **Q3:** a port that drops a same-TU strong stand-in definition (a faked CCharString constructor) is held in the naming lane.
+    Queue it as a re-author row, with a link check and the real constructor's owner defining the PDB symbol.
+- NF322:
+  - **Q1:** widening an existing `_PASS<n>` class-model guard with `|| defined(FABLE_RETAIL_<CLASS>)` is in effect an opt-in, because no
+    TU defines the new macro. Conditions:
+    - the region holds only the class model;
+    - every other `_PASS<n>` use under rebuild/include is checked;
+    - the model is proved by the compiler-emitted `??_7` probe against retail (declaration order alone is not proof);
+    - equiv_check plus a planted control inside the block.
+  - **Q2:** a new base header is part of a class-model port when the base is in rtti_bases.tsv, `gen_class_headers.py` produces its flat
+    header from the PDB layout, and it takes the opt-in model, probe and asserts and lands with or before its rows. A class absent from
+    the layout TSV is a separate authoring unit.
+  - **Q3:** NF318 Q1 covers libcp on header-route rows.
+- **Table replaces (coordinator, 2026-11-24):** a `replace W -> P` is only safe when no landed row still references W. The table keeps one
+  witness per line, so check with `ref_scan.py` (compile every landed row naming the identifier) before applying. Where another row still
+  references W, move it in the same landing, or use `add` plus a `rewitness` of the old line.
+- **Identity claims (coordinator, 2026-11-24):** when another address claims the PDB name:
+  - a catalog label only, proven wrong: proceed, with a NAME_FIXES line;
+  - a different symbol (an overload): not a conflict;
+  - a landed self defining the SAME symbol: hold both as one unit, because landing one would create a second strong definition.
