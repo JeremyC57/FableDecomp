@@ -1,0 +1,21 @@
+04:50 00d11930 grade v0.cpp DIFFER(1179v4072) hunks=31 -- B24A3 baseline (Codex draft)
+04:52 00d11930 grade v1.cpp SRC_FAIL -- hand868 best draft, current headers
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ob1 -- flag probe /Ob1
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ob2 -- flag probe /Ob2
+04:52 00d11930 grade v1.cpp SRC_FAIL /Os -- flag probe /Os
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ot -- flag probe /Ot
+04:52 00d11930 grade v1.cpp SRC_FAIL /O1 -- flag probe /O1
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ox -- flag probe /Ox
+04:52 00d11930 grade v1.cpp SRC_FAIL /Ob2 /Os -- flag probe /Ob2 /Os
+04:52 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 -- hand868 draft + hand868 overlay, flags 
+04:52 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Ob1 -- hand868 draft + hand868 overlay, flags /Ob1
+04:52 00d11930 grade v1.cpp DIFFER(2801v4072) hunks=213 /Os -- hand868 draft + hand868 overlay, flags /Os
+04:52 00d11930 grade v1.cpp DIFFER(4056v4072) hunks=3 /Ot -- hand868 draft + hand868 overlay, flags /Ot
+04:53 00d11930 grade v1.cpp DIFFER(2801v4072) hunks=213 /O1 -- hand868 draft + hand868 overlay, flags /O1
+04:53 00d11930 grade v1.cpp DIFFER(2801v4072) hunks=213 /Ob2 /Os -- hand868 draft + hand868 overlay, flags /Ob2 /Os
+04:53 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- hand868 draft + hand868 overlay, flags /d2inlS15
+04:53 00d11930 grade b3f1.cpp DIFFER(4056v4072) hunks=3 -- loop-shape frequency lever for cutscene movie site: b3f1
+04:53 00d11930 grade b3f2.cpp DIFFER(4056v4072) hunks=3 -- loop-shape frequency lever for cutscene movie site: b3f2
+04:53 00d11930 grade b3f3.cpp DIFFER(4056v4072) hunks=3 -- loop-shape frequency lever for cutscene movie site: b3f3
+04:55 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- S15 probe: count timer expansions
+04:56 00d11930 grade v1.cpp DIFFER(4072v4072) hunks=102 /d2inlS15 -- S15 diff view

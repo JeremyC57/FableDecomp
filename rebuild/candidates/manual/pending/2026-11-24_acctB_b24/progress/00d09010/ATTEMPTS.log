@@ -19,3 +19,23 @@ probe 2 inline trace probes M/K/J series -> implicit ~MovieBase sz 25 on first u
 04:08 00d09010 grade v13.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- v10 + GoadLevel decl after Hostage / before GoadingTimer / int
 00d09010 grade v8/v10/vE/vG/vI/vJ/vK/vL see NOTES (best v10 / vE 5864v5864 40 hunks)
 00d09010 grade vT/vU/vV/vW/vR/vS/vM: no improvement (see NOTES); best v10 5864v5864 40 hunks
+04:25 00d09010 grade v10.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- B24A3 regrade v10 baseline
+04:26 00d09010 grade v10.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- B24A3 regrade v10 with full listing
+04:30 00d09010 grade pk1.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- probe: +1 unreachable T return after early hit loop (Hostage weight)
+04:30 00d09010 grade pk2.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- probe: +2 unreachable T returns
+04:30 00d09010 grade pk4.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- probe: +4 unreachable T returns
+04:30 00d09010 grade pk8.cpp DIFFER(5864v5864) hunks=40 /d2inlS15 -- probe: +8 unreachable T returns
+04:30 00d09010 grade gr1.cpp DIFFER(5976v5864) hunks=39 /d2inlS15 -- probe: last 1 movie gotos -> plain return (slot margin)
+04:30 00d09010 grade gr2.cpp DIFFER(5976v5864) hunks=36 /d2inlS15 -- probe: last 2 movie gotos -> plain return (slot margin)
+04:30 00d09010 grade gr3.cpp DIFFER(6024v5864) hunks=41 /d2inlS15 -- probe: last 3 movie gotos -> plain return (slot margin)
+04:30 00d09010 grade gr4.cpp DIFFER(5960v5864) hunks=39 /d2inlS15 -- probe: last 4 movie gotos -> plain return (slot margin)
+04:30 00d09010 grade gr6.cpp DIFFER(5944v5864) hunks=17 /d2inlS15 -- probe: last 6 movie gotos -> plain return (slot margin)
+04:34 00d09010 grade v10.cpp DIFFER(5944v5864) hunks=244 -- v10 at stock flags (does movie expand at goto sites without S15?)
+04:38 00d09010 grade t1.cpp DIFFER(6016v5864) hunks=147 /d2inlS15 -- probe: v1 + in-class (no inline keyword) ~CTimer body, S15
+04:38 00d09010 grade t2.cpp DIFFER(6016v5864) hunks=147 /d2inlS15 -- probe: v1 + NON-inline ~CTimer definition (cost +7?) flags=/d2inlS15
+04:38 00d09010 grade t2.cpp DIFFER(5944v5864) hunks=231 -- probe: v1 + NON-inline ~CTimer definition (cost +7?) flags=
+04:39 00d09010 grade gl1.cpp DIFFER(5848v5864) hunks=41 /d2inlS15 -- probe: drop 1 GoadLevel++ (slot margin, GoadLevel side)
+04:39 00d09010 grade gl2.cpp DIFFER(5848v5864) hunks=13 /d2inlS15 -- probe: drop 2 GoadLevel++ (slot margin, GoadLevel side)
+04:39 00d09010 grade gl3.cpp DIFFER(5832v5864) hunks=15 /d2inlS15 -- probe: drop 3 GoadLevel++ (slot margin, GoadLevel side)
+04:42 00d09010 grade gL1.cpp DIFFER(5884v5864) hunks=122 /d2inlS15 -- probe: drop LAST 1 (late switch) GoadLevel++ (is weight frequency-weighted?)
+04:42 00d09010 grade gL2.cpp DIFFER(5820v5864) hunks=90 /d2inlS15 -- probe: drop LAST 2 (late switch) GoadLevel++ (is weight frequency-weighted?)

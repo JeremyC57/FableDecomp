@@ -82,3 +82,39 @@ retail: ~CScriptThing 16, ~CCountedPointer<Movie> 9, CBaseObject() 6, ~CBaseObje
   rule says the earlier copy survives only in the second pass: make arm1's after-loop exit (v1 line 202) a return-shaped edge.
 Tools added in this dir: xf.py / xg.py / xh.py / xk.py (source transforms by v1 line numbers), nd.sh (normalized diff, relocations
 masked), fas.py + fmap.sh (/FAs frame map of Main), probe/ (inline-trace probes; inl/run.sh now takes INL_D / INL_F env).
+
+## B24A3 (2026-11-24) -- continuation
+Tools added: g3.sh <src> "<note>" [flags] (fg grade + full q listing q_<b>.txt + nd.sh stats), pa.sh <addr> <src> [flags]
+(q.py compile + pickany_vs_retail.py; OVL=/nonexistent for landed rows). Note: nd.sh needs a q.py listing, not fg output.
+- Regrade v10 (S15): DIFFER(5864v5864) 40 hunks (unchanged). v10 at STOCK: 5944, ~MovieBase called 8x (goto sites too): S15 needed.
+- Slot-margin probes (b3/): pk1..pk8 = v10 + k extra UNREACHABLE `if(T) return` after a while(true): byte-identical (c1 drops
+  unreachable code; such statements do not count). gr-k = last k of the 8 movie gotos -> plain return: gr1..gr4 slots still swapped,
+  gr6 flips to retail order (Hostage 0x34 / GoadLevel 0x40; count of `[esp + 0x40], N` lines in q_*.txt = 22). So retail has ~5-6
+  more reachable Hostage-destroying exits than v10 => the movie-scope exits are most likely plain `return`s in retail.
+- Pick-any on LANDED siblings (pa.sh, landed sources, no overlay): BanditKing 0x00D0A830 and BCGameMaster 0x00D067A0 both emit
+  NEQ ??1CIsThingAlive (v 0x00E241B0) and NEQ ??1MovieBase (v 0x006E7B80), "not referenced by the leaf"; CCROWDBANDITS 0x00D0B3E0
+  NEQ ??1CIsThingAlive; CCampHostage2 0x00D08790 NEQ ??1CIsThingAlive AND a LEAF-REFERENCED NEQ ??1CTimer (10 B v 0x00CD4470).
+  => same defect family-wide; per EXTRA_RULES 2026-11-21 "not leaf-bound and bound at HEAD: debt, queued" (coordinator decides).
+- Slot margin, GoadLevel side (b3/gl*, gL*): dropping ONE `GoadLevel++` (early or late switch) keeps the swap; dropping TWO flips to
+  retail's order (gl2: 13 hunks!). Unweighted (early/late same). So retail = v10 with ~2 fewer GoadLevel IL refs or ~6 more Hostage
+  refs (density w*1000/size, 12 v 4 bytes). vH (const stores) = v10 slots, so `++` and `= c` are one ref each.
+- In-class (no `inline` keyword) and non-inline out-of-class ~CTimer bodies (b3/t1, t2; overlay b3/hdrT): identical to v1 at S15
+  (6016, every ~CTimer expanded) and at stock (5944, MovieBase called 8x). The "-7 inline-declared" term does not separate them.
+- inl trace v1 at /d2inlS15 (inl/v1s15.txt): every MovieBase AND every ~CTimer site r=1, pen=0 everywhere -> no caller-size
+  penalty under S15; at stock (inl/v1.txt) the split is pure frequency: ~CTimer c1 14 expands iff f > ~0.032 (early in-loop 0.0707,
+  early hit loop 0.2459 = retail's three hot exits exactly), MovieBase c1 19 iff f > ~0.047 (late sites f<=0.0003 -> called).
+  Retail = MovieBase expanded at EVERY site + ~CTimer frequency-split, i.e. retail's movie dtor behaves always-inline at stock
+  while ~CTimer does not; with our headers that needs sz(MovieBase) <= 19 (stock "always" iff sz <= S+10), which B24A2/Codex only
+  got with GROBase called (inline_depth captured at the class brace). Open: the header form that gives an always-inline implicit
+  ~MovieBase with GROBase still expanded; with it, plain returns everywhere at STOCK flags would likely give retail's slots too.
+- Codex pass 25 (00d01630, same family, had FableWin donor evidence: 123 decisions / 294 lifetime events matched) writes PLAIN
+  returns at every movie-scope terminate check -> supports "returns", not gotos, as the original text.
+- STRONG EVIDENCE (from 0x00D11930; exit target verified on retail bytes, whose draft is byte-identical except one movie site): at one f, retail CALLS ~CTimer (c1 14) and
+  EXPANDS ~MovieBase (c1 19) -> retail's implicit ~MovieBase is cheaper than ~CTimer (c1 <= 13 = always-inline at stock). This is
+  the family root cause (rows 00d09010, 00d01630, 00d11930). With such a header form, v1 (plain returns, plain inline ~CTimer) at
+  STOCK flags is expected to give retail's exits AND retail's slots (gr6 / vE showed returns give retail's slot order). Probe kit:
+  b3/pr/q0.cpp, `INL_D=$W/inl INL_F=ProbeMovie bash inl/run.sh b3/pr/q0.cpp <tag> $W/hdr` (~20 s): baseline sz 25 c1 19.
+- Header probes (b3/pr/h2..h6, overlay of CScriptGameResourceObjectBase.h, trace INL_F=ProbeMovie): implicit GROBase dtor -> ~MovieBase
+  sz 19 c1 13 ALWAYS at stock, but no GROBase vptr store in the expansion (retail has `mov [m],0x0126008C`); user-declared GROBase
+  dtor in-class / out-of-class inline / non-virtual spelling / __forceinline -> sz 25 c1 19. ~MovieBase sz = 14 + sz(~GROBase);
+  the vptr store costs 6 of GROBase's 11. Still open: a form with the store whose cost is <= 5, or a cheaper CP<Movie> member part.

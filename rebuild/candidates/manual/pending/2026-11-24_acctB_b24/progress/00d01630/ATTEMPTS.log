@@ -1,0 +1,4 @@
+04:45 00d01630 grade v0.cpp DIFFER(5161v5178) hunks=29 /d2inlS15 -- B24A3 baseline: Codex p25 source, header block inlined row-locally
+04:46 00d01630 grade a1.cpp DIFFER(5161v5178) hunks=221 /d2inlS15 -- v0 natural ~CTimer + S15 + depth(0) cold returns, movie-scope T: a1 (a1 goto Terminate, a2 depth0 return)
+04:46 00d01630 grade a2.cpp DIFFER(5008v5178) hunks=169 /d2inlS15 -- v0 natural ~CTimer + S15 + depth(0) cold returns, movie-scope T: a2 (a1 goto Terminate, a2 depth0 return)
+04:46 00d01630 grade a1.cpp DIFFER(5161v5178) hunks=221 /d2inlS15 -- regrade a1 for diff
