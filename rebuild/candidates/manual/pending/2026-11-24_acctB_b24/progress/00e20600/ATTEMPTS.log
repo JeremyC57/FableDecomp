@@ -1,0 +1,49 @@
+03:03 00e20600 grade v0.cpp SRC_FAIL -- baseline draft with pass25 patches
+03:05 00e20600 grade v0.cpp DIFFER(14526v14510) hunks=45 -- baseline draft with pass25 patches (TMPDIR unset)
+03:07 00e20600 grade v0.cpp DIFFER(14526v14510) hunks=45 -- baseline full hunks
+probe 1 t1 natural toy predicate And<Alive,Alive> (Thing dtor external) -> everything expands
+probe 2 t2 inline_depth around ~Alive / template ~And definitions -> template pragma ignored; DA decides base dtor
+probe 3 t3 natural with ~Thing body visible -> And calls ~Alive, And base inline (retail half); temps expand ~Thing (not retail)
+probe 4 t4 depth 1..3 on ~Alive with ~Thing body -> depth1 calls both ~Thing and ~Base; >=2 expands both
+probe 5 t5 forceinline ~Base + depth 0/1 on ~Alive -> forceinline does not override depth; base still called
+03:11 00e20600 grade v0+hdrA DIFFER(14494v14510) -- natural Escort dtors (no inline_depth wraps)
+03:11 00e20600 grade vB.cpp DIFFER(14494v14510) hunks=67 -- natural hdrA + B thing-dtor-extern / C alive force / D alive force depth2
+03:11 00e20600 grade vC.cpp DIFFER(14622v14510) hunks=96 -- natural hdrA + B thing-dtor-extern / C alive force / D alive force depth2
+03:11 00e20600 grade vD.cpp DIFFER(14622v14510) hunks=96 -- natural hdrA + B thing-dtor-extern / C alive force / D alive force depth2
+03:12 00e20600 grade v0.cpp DIFFER(14318v14510) hunks=68 /d2inlT55 -- natural hdrA + d2inlT55
+03:12 00e20600 grade v0.cpp DIFFER(14318v14510) hunks=193 /d2inlT65 -- natural hdrA + d2inlT65
+03:12 00e20600 grade vB.cpp DIFFER(14494v14510) hunks=67 /d2inlS5 -- B thing-dtor-extern + /d2inlS5
+03:12 00e20600 grade vB.cpp DIFFER(14494v14510) hunks=67 /d2inlS7 -- B thing-dtor-extern + /d2inlS7
+03:12 00e20600 grade vB.cpp DIFFER(14638v14510) hunks=137 /d2inlS12 -- B thing-dtor-extern + /d2inlS12
+03:15 00e20600 grade vV1.cpp DIFFER(14478v14510) hunks=59 -- V1 ext+alive2+and1 / V2 alive1 / V3 ext+and1
+03:15 00e20600 grade vV2.cpp DIFFER(14494v14510) hunks=184 -- V1 ext+alive2+and1 / V2 alive1 / V3 ext+and1
+03:15 00e20600 grade vV3.cpp DIFFER(14478v14510) hunks=59 -- V1 ext+alive2+and1 / V2 alive1 / V3 ext+and1
+03:15 00e20600 grade vW1.cpp DIFFER(14494v14510) hunks=184 -- W1 alive2 / W2 alive2+and1 / W3 alive1+and1 (thing visible)
+03:15 00e20600 grade vW2.cpp DIFFER(14494v14510) hunks=171 -- W1 alive2 / W2 alive2+and1 / W3 alive1+and1 (thing visible)
+03:15 00e20600 grade vW3.cpp DIFFER(14494v14510) hunks=171 -- W1 alive2 / W2 alive2+and1 / W3 alive1+and1 (thing visible)
+03:17 00e20600 grade vG0.cpp DIFFER(15337v14510) hunks=346 /Og- -- budget inliner: pragma optimize g + /Og-, natural predicate dtors -> prefix shape matches retail
+03:17 00e20600 grade vG1.cpp DIFFER(15358v14510) hunks=359 /Og- -- budget inliner /Og-: G1 no body depth pragmas / G2 + all forceinline devices plain
+03:17 00e20600 grade vG2.cpp DIFFER(15225v14510) hunks=356 /Og- -- budget inliner /Og-: G1 no body depth pragmas / G2 + all forceinline devices plain
+03:18 00e20600 grade vG2.cpp DIFFER(14361v14510) hunks=504 /Og- /d2vol2 -- G2 budget /Og- /d2vol2
+03:18 00e20600 grade vG2.cpp DIFFER(15225v14510) hunks=356 /Og- /d2vol5 -- G2 budget /Og- /d2vol5
+03:18 00e20600 grade vG2.cpp DIFFER(15225v14510) hunks=356 /Og- /d2vol8 -- G2 budget /Og- /d2vol8
+03:18 00e20600 grade vG2.cpp DIFFER(15225v14510) hunks=356 /Og- /d2vol3 -- G2 budget /Og- /d2vol3
+03:18 00e20600 grade vG2.cpp DIFFER(15225v14510) hunks=356 /Og- /d2vol4 -- G2 budget /Og- /d2vol4
+03:20 00e20600 grade vI1.cpp DIFFER(14638v14510) hunks=91 -- I1 implicit ~CIsThingAlive / I2 + ~CScriptThing external
+03:20 00e20600 grade vI2.cpp DIFFER(14462v14510) hunks=108 -- I1 implicit ~CIsThingAlive / I2 + ~CScriptThing external
+03:20 00e20600 grade vI3.cpp DIFFER(14638v14510) hunks=91 -- I3 implicit + class depth0 / I4 implicit + class depth1
+03:20 00e20600 grade vI4.cpp DIFFER(14638v14510) hunks=91 -- I3 implicit + class depth0 / I4 implicit + class depth1
+03:21 00e20600 grade vI5.cpp DIFFER(14638v14510) hunks=91 -- implicit ~CIsThingAlive + SetPredicate statement depth 1/0/2
+03:21 00e20600 grade vI6.cpp DIFFER(14414v14510) hunks=70 -- implicit ~CIsThingAlive + SetPredicate statement depth 1/0/2
+03:21 00e20600 grade vI7.cpp DIFFER(14638v14510) hunks=91 -- implicit ~CIsThingAlive + SetPredicate statement depth 1/0/2
+03:21 00e20600 grade vI1.cpp DIFFER(14638v14510) hunks=91 -- I1 regrade for hunk survey
+03:22 00e20600 grade vI8.cpp DIFFER(14478v14510) hunks=71 -- implicit ~CIsThingAlive + ~CScriptThing def depth 1/2/0
+03:22 00e20600 grade vI9.cpp DIFFER(14542v14510) hunks=46 -- implicit ~CIsThingAlive + ~CScriptThing def depth 1/2/0
+03:22 00e20600 grade vI10.cpp DIFFER(14446v14510) hunks=82 -- implicit ~CIsThingAlive + ~CScriptThing def depth 1/2/0
+03:23 00e20600 grade vI11.cpp DIFFER(14574v14510) hunks=63 -- implicit ~CIsThingAlive and implicit ~CScriptThing (FableWin has no ??1 for either)
+03:26 00e20600 grade vE2.cpp DIFFER(14494v14510) hunks=76 -- explicit natural ~CIsThingAlive + ~CScriptThing def depth 1/2
+03:26 00e20600 grade vE3.cpp DIFFER(14494v14510) hunks=184 -- explicit natural ~CIsThingAlive + ~CScriptThing def depth 1/2
+03:27 00e20600 grade vL1.cpp DIFFER(14494v14510) hunks=184 -- order test: ~CIsThingAlive defined after Main (L1); + ~CScriptThing after Main (L2)
+03:27 00e20600 grade vL2.cpp DIFFER(14494v14510) hunks=184 -- order test: ~CIsThingAlive defined after Main (L1); + ~CScriptThing after Main (L2)
+probe 6 AttackingBandit-shaped body in row TU: default v budget path filter destruction
+probe 7 LTCG /GL on natural hdrA
