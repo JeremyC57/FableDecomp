@@ -17,8 +17,8 @@ Game pointer/reference, in-row v header bodies: L/T unchanged.
 
 Not landable without evidence: any text added/removed only to move a or b ("never fit text to a record count", lk README).
 Open evidence questions that could move a/b with identical code:
- 1. the exact CTimer inline texts (FableWin: each of the four bodies is one /Od instruction longer than ours); they also
-    decide the two cold-return inline_depth(0) devices (NOTES: device trace);
+ 1. CLOSED (B24B3): the CTimer texts ARE the landed ones -- FableWin's Ghidra signature hashes of all four bodies equal our text
+    compiled with VC10's split virtual call (the +1i/+2b); see $S/w22/b24b/SHARED_FORM.md. The cold-return devices stay.
  2. the ~MovieBase / GROBase header form (B24A family root cause) -- late-site inline costs (b side);
  3. which headers the VC6 for-scope macro wrapped in the original TU (it changes c2 record ids, GOTCHAS hand3c).
 

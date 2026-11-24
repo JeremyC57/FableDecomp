@@ -134,3 +134,17 @@ the effect with leaf.sh (flip iff 2b - a > ~220) and rawcmp. Also try the same f
   d1 92, e1 87. "The for-scope macro is semantic under /Zc:forScope-" is UNTESTED (only: no macro = 11061). "44 landed rows emit the
   same ??B copy" is PRESUMED (44 rows define the opt-in; copies not inspected). 00f1eed0_best_B24B.cpp = r23 text (wrong jne at
   0x00F20EF3): SUPERSEDED by b3. b3 re-verified at the end: rawcmp 1 line (0x00F1FFB8), pick-any only ??BCDefString NEQ.
+## B24B3 (2026-11-24)
+- LESSON (lane-wide): FableWin.exe.signatures.tsv strict_signature is an EXACT text oracle. Re-implemented Ghidra's canonical form
+  (gsig/ghash.py, calibrated on FableWin bodies; probe TU builder ct3/mk.sh). All four CTimer bodies = the CURRENT landed text
+  compiled by VC10 (which splits `call [vt+X]` into `mov eax,[vt+X]; call eax`: the fwsize +1i/+2b). CRGBColour(EEE) +3b = VC10
+  movzx byte loads; text = ours. operator== = `return GetTime() == time;` (VC10 setz idiom). Local-variable ~CTimer forms (d1, d2)
+  are not FableWin's text. => The CTimer text is NOT the lever for the SIB; ESCALATE open question 1 closed. SHARED_FORM.md written.
+- Pick-any doubt settled: landed 0x00EB3D10 (defines OUTOFLINE_GETSTRING) compiled at HEAD emits the same NEQ
+  ??BCDefString 0x00415DD0 (17 b, not leaf-referenced): HEAD debt confirmed, not this row's.
+- /Zc:forScope doubt settled: b3 without the macro = 11061 under /Zc:forScope AND /Zc:forScope- (2987 raw lines): the VC6 macro
+  is codegen (its `if (0) {} else` head), not a scoping switch.
+- Family flag probe: b3 + /d2inlS15 or /d2inlS11 = 9262 but 48 raw lines; n3 (no regions) + S15/S11 = 9302 (220). Not a lever.
+- B24A4's family recipe (/d2inlS15 + scoped inline_depth(0)) needs a ~CTimer of c1 >= 20; the original text measures c1 14 (sz ~20),
+  so that branch is closed from lane B's side.
+State: unchanged best b3 (SIB only); remaining lever is the a/b symbol-count inequality with no evidenced form. Moving to row 2.

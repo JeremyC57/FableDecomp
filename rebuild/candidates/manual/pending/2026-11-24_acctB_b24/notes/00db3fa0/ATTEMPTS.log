@@ -1,0 +1,12 @@
+06:06 00db3fa0 grade base.cpp SRC_FAIL -- baseline regrade B24B3
+06:08 00db3fa0 grade p1.cpp DIFFER(4106v4042) hunks=17 -- p1: port BOOKTRADER opt-in -> current ENTITIES3
+06:09 00db3fa0 grade p2.cpp DIFFER(4003v4042) hunks=168 -- p2: ~CScriptThing declared-only (retail calls 0x004AA840)
+06:09 00db3fa0 grade p3.cpp DIFFER(4072v4042) hunks=67 -- p3: plain inline ~CIsThingConscious
+06:09 00db3fa0 grade p4_1.cpp DIFFER(4106v4042) hunks=17 -- p4: inline_depth(d) round the predicate statement (owner 2026-11-08 inline-budget device)
+06:09 00db3fa0 grade p4_0.cpp DIFFER(4042v4042) hunks=16 -- p4: inline_depth(d) round the predicate statement (owner 2026-11-08 inline-budget device)
+06:09 00db3fa0 grade p4_2.cpp DIFFER(4106v4042) hunks=17 -- p4: inline_depth(d) round the predicate statement (owner 2026-11-08 inline-budget device)
+06:10 00db3fa0 grade p5.cpp DIFFER(4058v4042) hunks=7 -- p5/p6/p7: inline_depth(0) round the CIsThingConscious body definitions (nested CScriptThing calls inherited)
+06:10 00db3fa0 grade p6.cpp DIFFER(4058v4042) hunks=7 -- p5/p6/p7: inline_depth(0) round the CIsThingConscious body definitions (nested CScriptThing calls inherited)
+06:10 00db3fa0 grade p7.cpp RELOCATION_MATCH -- p5/p6/p7: inline_depth(0) round the CIsThingConscious body definitions (nested CScriptThing calls inherited)
+06:10 00db3fa0 grade f1.cpp RELOCATION_MATCH -- f1: p7 + enum headers + FABLE_FORCEINLINE
+06:12 00db3fa0 grade p8.cpp RELOCATION_MATCH -- p8: visible generic CP<Movie> dtor (HEAD 0x00D44CB0 spelling) for the pick-any ~MovieBase copy

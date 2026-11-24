@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00db3fa0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00db3fa0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::Main
