@@ -524,3 +524,18 @@ behavior").** Object mode is allowed only behind these gates; each is a hard rul
 - **Behaviour:** a row's source is byte-identical in both modes and still compiles alone, so the portable (`FABLE_PORTABLE`) build and the
   behaviour tests are unchanged. `vt.py` compiles test fixtures standalone, so the tests do not exercise the grouped build: behaviour equality
   in object mode rests on the byte match plus the binding check, and is stated that way.
+
+## 2026-11-24 advisor decision (owner delegated): a new row whose leaf calls a NEQ copy identical to one already landed
+Amends the 2026-11-20 entry ("Copies already present at HEAD are debt, queued, not licence for more") and the 2026-11-21 entry
+("leaf-bound, newly bound and different: the row is held") for one case. A hold exists to make the author take the fix. When the only
+copy-EQ texts move the row's own leaf and the cause sits in many landed sources, the hold never ends and buys nothing: the row's copy
+is the one the linker can already pick. The row lands as debt only when ALL of these hold:
+1. **Same copy already landed.** The NEQ copy equals a landed row's HEAD copy at object level: bytes, relocation symbols and COMDAT
+   selection (compare the two objects; "same form" is not enough). This one blocks the landing.
+2. **No fix on record.** Measured probes show every copy-EQ text changes the row's leaf, and that record is committed (an agent hand-back).
+3. **Nothing else.** Every other leaf-called copy is EQ under both checkers (`pickany_vs_retail.py`, `pk_all.py`) on the lander's object.
+4. **Booked.** The row carries a `// Pick-any:` note, and the copy's T3 line lists it as an emitter.
+Where a fix exists the row still holds and takes it (0x00839940 waits for NF341's GetDef<CMaterialDef> repair). The section 6 reason
+(NAMING_AND_HEADERS: the linker can pick your copy and break the other function) does not apply: the copy is identical to one already
+in the link. First use: 0x00ED8680 CTB_Bard::Main (~CScriptGameResourceObjectMovieBase 0x006E7B80, identical to landed 0x00D62480's copy;
+NF343 group 2: both copy-EQ texts move the leaf 3636 v 3652; batches/2026-11-24_landing_acctB_b24d).

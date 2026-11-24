@@ -1,0 +1,7 @@
+# 0x00ED8680 leaf (our objects only): B = B's staged row (RELOCATION_MATCH), D = probe D (row-local decl-only ~CCountedPointer<MovieBase> removed, DIFFER 3636v3652); M (inline decl + body at row end) gives the same leaf as D.
+# Only call-target difference (rest is the -16 shift): B's leaf at +0x52F calls ~CCountedPointer<MovieBase> then ~CBaseObject (= ~MovieBase EXPANDED in the leaf, PImp release CALLED); D/M call ~MovieBase there instead.
+B: 250:0370  je       0x540 
+B: 386:052a  call     0x52f ; ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@
+B: 389:053b  call     0x540 ; ??1CBaseObject@@MAE@XZ
+D: 250:0370  je       0x52f 
+D: 386:052a  call     0x52f ; ??1CScriptGameResourceObjectMovieBase@@UAE@XZ

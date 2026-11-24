@@ -499,3 +499,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF341 round 2: GetDef<CMaterialDef> copy as an opt-in (B OnHit unblock)	naming	claimed	locks via lock.sh NF341
 2026-11-24	A	agent NF344: /d2inl flag rows from NF340 + leaf-vs-table census	naming	done	6 flag changes landed (batches/2026-11-24_landing_nf344_b1, b3); b2 held (Codex p27 reservation); census queued
 2026-11-24	A	agent NF345: leaf-vs-table conflicts with a likely stale table line (143)	naming	claimed	locks via lock.sh NF345
+2026-11-24	A	land Account B staged row (TalentlessBard Main)	landing	done	batches/2026-11-24_landing_acctB_b24d

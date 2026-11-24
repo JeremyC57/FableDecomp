@@ -1,0 +1,19 @@
+09:56:39 ZS_PASS src_00d2d930 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp /O2 /Oy /W3 /d2inlS15
+09:56:40 ZS_PASS test_00d2d930 test /home/user/FableDecomp/rebuild/tests/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930_test.cpp /Od /W3
+09:56:40 ZS_PASS src_00e8ef80 src /home/user/FableDecomp/rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+09:56:40 ZS_PASS test_00d13580 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScript_Main_00d13580_test.cpp /Od /W3
+09:56:40 ZS_PASS src_00d22f30 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30.cpp /O2 /Oy /W3 /d2inlS15
+09:56:40 ZS_PASS src_00d1a740 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740.cpp /O2 /Oy /W3 /d2inlS15
+09:56:40 ZS_PASS test_00d1b200 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200_test.cpp /Od /W3
+09:56:41 ZS_PASS src_00d19bd0 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp /O2 /Oy /W3 /d2inlS15
+--- post-lock recheck 09:57:18
+09:57:41 ZS_PASS src_00d2d930 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp /O2 /Oy /W3 /d2inlS15
+09:57:42 ZS_PASS test_00d2d930 test /home/user/FableDecomp/rebuild/tests/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930_test.cpp /Od /W3
+09:57:42 ZS_PASS test_00d1b200 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200_test.cpp /Od /W3
+09:57:43 ZS_PASS src_00d22f30 src /home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30.cpp /O2 /Oy /W3 /d2inlS15
+09:57:43 ZS_PASS test_00d13580 test /home/user/FableDecomp/rebuild/tests/00/d1/NScriptCQBountyHuntScript_Main_00d13580_test.cpp /Od /W3
+09:57:43 ZS_PASS src_00d1a740 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740.cpp /O2 /Oy /W3 /d2inlS15
+09:57:44 ZS_PASS src_00e8ef80 src /home/user/FableDecomp/rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp /O2 /Oy /W3 /d2inlT72
+09:57:44 ZS_PASS src_00d19bd0 src /home/user/FableDecomp/rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp /O2 /Oy /W3 /d2inlS15
+10:19:03 ZS_PASS b24_ed8680 src /home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-24_acctB_b24/rows/00ed8680.cpp /O2 /Oy /W3
+10:19:52 ZS_PASS h_d62480 src /home/user/FableDecomp/rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Main_00d62480.cpp /O2 /Oy /W3

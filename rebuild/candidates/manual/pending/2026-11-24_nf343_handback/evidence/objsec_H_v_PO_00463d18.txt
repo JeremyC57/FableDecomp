@@ -1,0 +1,2 @@
+00463d18 H v PO: NOT_EQ (sections 13 v 13)
+  CHANGED .text:?TransferBinaryIn@?$CPersistTraits@J@@QAEXAAVCMemoryDataInputStream@@AAJ@Z#1 flags bytes(99 v 129) relocs

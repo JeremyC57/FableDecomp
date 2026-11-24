@@ -45,6 +45,7 @@ Notes on the results:
     - A copy that was already NEQ is debt.
     - A NEQ backed only by a table address (b / c) is a warning.
   - **A new row:** any leaf-called NEQ copy holds it. This is the existing rule, and it is why B's 0x00839940 is held.
+    Exception (advisor decision, owner delegated, 2026-11-24; EXTRA_RULES 2026-11-24 pick-any entry): the row lands as debt when ALL hold: (1) the NEQ copy equals a landed row's HEAD copy at object level (bytes, relocation symbols, COMDAT selection); (2) no fix is on record (measured copy-EQ texts all move the leaf); (3) every other leaf-called copy is EQ under both checkers on A's object; (4) the row carries a `// Pick-any:` note and the copy's T3 line lists it as an emitter. Where a fix exists the row still holds and takes it (0x00839940). First use: 0x00ED8680 (batches/2026-11-24_landing_acctB_b24d).
   - **Every CompilerFlags change** (`/d2inl*`, `/Os`, `/O1`, `/GS`) goes through this gate.
 - **The debt is queued per copy, not per row.** Each line's column 2 is the copy's retail address and its reason lists the rows that emit it:
   97 copy groups from 127 copies (`DEBT_BY_COPY.tsv`). The repair unit is the header text or local model that emits the copy, not the row.

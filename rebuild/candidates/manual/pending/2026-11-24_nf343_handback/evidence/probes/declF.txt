@@ -1,0 +1,6 @@
+namespace std {
+#ifndef FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ
+template<class _Tp> inline _Tp __default_constructed(_Tp*) { return _Tp(); }   // STLport _STLP_DEFAULT_CONSTRUCTED
+#endif
+template<> inline CScriptGameResourceObjectScriptedThingBase& map<CCharString, CScriptGameResourceObjectScriptedThingBase>::operator[](const CCharString& k);
+}

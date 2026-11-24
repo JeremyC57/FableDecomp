@@ -403555,6 +403555,13 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupJackOfBladesStage1_Update_00975bb0_test.cpp'
         PassPattern = '00975bb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ed8680'
+        Module = 'NScript::CV_TalentlessBardScript::CTB_Bard'
+        Source = '00/ed/NScriptCVTalentlessBardScriptCTBBard_Main_00ed8680.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBard_Main_00ed8680_test.cpp'
+        PassPattern = '00ed8680_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

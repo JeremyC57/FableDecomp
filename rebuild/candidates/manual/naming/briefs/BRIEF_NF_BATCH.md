@@ -302,5 +302,6 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
     - **Row change:** compare HEAD with new. A leaf-called NEQ copy that is new, or that turns NEQ, holds the row. A copy that was already
       NEQ is debt; list it in NOTES.
     - **New row:** any leaf-called NEQ copy holds it.
+      Exception (advisor decision, owner delegated, 2026-11-24; EXTRA_RULES 2026-11-24 pick-any entry): the row lands as debt when ALL hold: (1) the NEQ copy equals a landed row's HEAD copy at object level (bytes, relocation symbols, COMDAT selection); (2) no fix is on record (measured copy-EQ texts all move the leaf); (3) every other leaf-called copy is EQ under both checkers on A's object; (4) the row carries a `// Pick-any:` note and the copy's T3 line lists it as an emitter. Where a fix exists the row still holds and takes it (0x00839940). First use: 0x00ED8680 (batches/2026-11-24_landing_acctB_b24d).
     - **CompilerFlags change** (`/d2inl*`, `/Os`, `/O1`, `/GS`): it must pass this gate, because the flag both breaks and repairs copies.
   - **Debt:** it is queued per copy (T3 `nf340`, column 2 = the copy's retail address). The fix is the emitting header text or local model.
