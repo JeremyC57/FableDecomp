@@ -1,0 +1,3 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+# Section 2
+0x009BEEB0	?OnPresent@CVsyncCallbackTimer@@QAEXXZ	?OnPostSwapScreens@CVsyncCallbackTimer@@QAEXXZ	0x009F73C0

@@ -6,7 +6,7 @@ The third wave of `unit_fix.py`, landed with `land_scripted.py` (unit-atomic, st
 **Run unit3** (`unit_fix.py` in a fresh directory, after the 2026-11-24 A/B sync at f2464fe5d7):
 - 117 unit rows; 82 self edits accepted; 74 within the caller cap.
 - 27 units accepted: 61 sources, 27 table lines. Skipped (`SKIPPED.tsv`): 26 deferred to the next wave (shared source), 18 with a caller
-  edit not accepted, 2 table, and 9 single cases.
+  edit not accepted, 8 over the caller cap, 2 table, and 1 other caller case.
 - Held at landing as a whole unit: 0x004166E2 with its caller 0x00417001. A lane lock from the 2026-11-20 repair pass (RP1) and an
   open 2026-11-20 A claims line (CVsyncCallbackTimer option A, status handed-back) both name the address. unit1 and unit2 held the same
   unit. It needs that claim closed first.

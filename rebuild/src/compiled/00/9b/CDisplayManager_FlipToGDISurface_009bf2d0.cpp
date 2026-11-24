@@ -32,9 +32,9 @@ struct IDirect3DDevice9 {                          // COM: IUnknown + IDirect3DD
 
 const long D3DERR_DEVICELOST = (long)0x88760868;
 
-class CVsyncCallbackTimer { public:
-    void OnPostSwapScreens();                      // 0x009F73C0
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_ONPOSTSWAPSCREENS
+#include "engine/CVsyncCallbackTimer.h"   // RP1 header re-port (was a row-local CVsyncCallbackTimer model)
+
 
 template <class T> struct scoped_ptr {
     T* ptr;

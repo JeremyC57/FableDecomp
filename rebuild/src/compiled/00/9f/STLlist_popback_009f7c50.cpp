@@ -177,27 +177,27 @@ template <class _Tp, class _Alloc> void _List_base<_Tp, _Alloc>::clear()
 
 }
 
-struct IDirect3DQuery9 {
-    virtual long __stdcall QueryInterface(const void* riid, void** object);
-    virtual unsigned long __stdcall AddRef();
-    virtual unsigned long __stdcall Release();
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_PENDINGQUERY
+#include "engine/CVsyncCallbackTimer.h"   // CVsyncCallbackTimer::CPendingQuery (Ego_r.pdb, 0x10 bytes; RP1 header re-port)
 
-class CVsyncCallbackTimer {
-public:
-    struct CPendingQuery {
-        IDirect3DQuery9* Query;
-        long             Frame;
-        double           TimeStamp;
-    };
-    void* Device;                                                       // +0x00 IDirect3DDevice9*
-    std::list<CPendingQuery, std::allocator<CPendingQuery> > FreeQueoryObjects;   // +0x04
-    std::list<CPendingQuery, std::allocator<CPendingQuery> > PendingQueories;     // +0x08
-    long PendingFrame;                                                  // +0x0c
-    long FinishedFrame;                                                 // +0x10
-    void ClearAllQueries();
-    void OnPreDeviceReset();
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 template class std::_List_base<CVsyncCallbackTimer::CPendingQuery, std::allocator<CVsyncCallbackTimer::CPendingQuery> >;
 template class std::list<CVsyncCallbackTimer::CPendingQuery, std::allocator<CVsyncCallbackTimer::CPendingQuery> >;

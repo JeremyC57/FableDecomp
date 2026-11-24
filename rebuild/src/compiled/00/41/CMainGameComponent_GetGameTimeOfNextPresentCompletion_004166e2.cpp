@@ -10,18 +10,18 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 double __fastcall GFGetTime();                     // 0x009E1BC0
-struct CVsyncCallbackTimerInfo {                   // 0x30 bytes
-    unsigned char _pad00[0x10];
-    long          VsyncCount;                      // +0x10
-    unsigned char _pad14[4];
-    double        LastVsyncTime;                   // +0x18
-    unsigned char _pad20[8];
-    long          PresentedVsyncCount;             // +0x28
-    unsigned char _pad2c[4];
-};
-class CVsyncCallbackTimer { public:
-    CVsyncCallbackTimerInfo GetInfo();             // 0x009F7050
-};
+#define FABLE_RETAIL_CVSYNCCALLBACKTIMER_GETINFO
+#include "engine/CVsyncCallbackTimer.h"            // CVsyncCallbackTimerInfo (0x30, Ego_r.pdb members), GetInfo 0x009F7050 (RP1 header re-port)
+
+
+
+
+
+
+
+
+
+
 struct CDisplayDevice {
     unsigned char        _pad00[0x1d4];
     float                m_refreshPeriod;          // +0x1d4
@@ -40,7 +40,7 @@ class CMainGameComponent { public:
 double CMainGameComponent::GetGameTimeOfNextPresentCompletion()
 {
     CVsyncCallbackTimerInfo info = ((CDisplayDevice*)GPDisplayManager)->m_pVsyncTimer->GetInfo();
-    double t = (info.VsyncCount - info.PresentedVsyncCount + 1) * ((CDisplayDevice*)GPDisplayManager)->m_refreshPeriod + info.LastVsyncTime;
+    double t = (info.CPUFrameCount - info.GPUFrameCount + 1) * ((CDisplayDevice*)GPDisplayManager)->m_refreshPeriod + info.GPUTimeStamp;
     double now = GFGetTime();
     if (t < now)
         t = now;
