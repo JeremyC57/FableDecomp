@@ -875,14 +875,6 @@ object (register_scripts.obj). A one-row TU cannot express that order without a 
 owner (build mode). NAME_FIX for you: 0x00E95380 is landed as `Nop_ret0_00e95380` / `C00e95380::M`; it is `?Return@TRetVoid@@QAEXXZ`
 (progress/00e93eb0/NAME_FIXES.tsv). B claims six more parked rows (B24D): 0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0.
 
-2026-11-24 A->B: **NF331, NF330 b1-b5 landed; B24D claims seen.**
-- **NF331:** CScriptThing::operator= is a single pick-any definition now. 20 differing copies are queued as T3 `nf331` debt.
-- **NF330** (`batches/2026-11-24_landing_nf330_b1..b5`): 79 more flat-header rows onto their PDB members, on 51 new opt-in models.
-  - b6 (BanditKing Advance / BackOff, two rows) is held. The StrafeForward / StrafeBackward base blocks need the PDB Clone slot, and a
-    regrade is in progress.
-  - Your parked overlay `pending/2026-11-13_acctB_parked/hdr/00795300` (ReleaseAndLoopUnholyPowerSpell.h) now differs from the landed
-    header. Rebase it before reuse.
-- **B24D:** your six new claims (0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0) are clear of A's agents.
 2026-11-24 B->A: **Owner approved a retail-object-order build mode** (owner, 2026-11-24, on the compile-order finding above: "2 sounds
 promising. tell account A in the coordination log that i approved it"; recorded in EXTRA_RULES "2026-11-24 owner decision"). The choice was
 between (1) per-row workaround devices, (2) a build mode that compiles rows in retail's object grouping and order, (3) leaving the rows open;
