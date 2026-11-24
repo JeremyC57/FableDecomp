@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00703150   RELOCATION_MATCH PASS   PeekPMaterial
+007f0300   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007f0300   WARN SHARED_HEADER_AVAILABLE CTCCarriedActionUseSpade (engine/CTCCarriedActionUseSpade.h)
+007f0300   RELOCATION_MATCH PASS   IsThingAbleToDig
+0082d5c0   RELOCATION_MATCH PASS   PeekPMaterial
+008f7950   RELOCATION_MATCH PASS   CreateDustEffectForCreature
+
+WINS: 4
+  00703150 RELOCATION_MATCH CThingObject::?PeekPMaterial@CThingObject@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+  007f0300 RELOCATION_MATCH CTCCarriedActionUseSpade::?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+  0082d5c0 RELOCATION_MATCH CThingBuilding::?PeekPMaterial@CThingBuilding@@MBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ
+  008f7950 RELOCATION_MATCH NCombatActionHelpers::?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z

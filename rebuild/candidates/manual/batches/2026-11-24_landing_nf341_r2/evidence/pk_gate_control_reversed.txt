@@ -1,0 +1,24 @@
+008f7950	pk_all	TURNED_NEQ	0063f3a0	leaf-called	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+008f7950	pk_all	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+008f7950	pk_all	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+008f7950	pvr	TURNED_NEQ	0063f3a0	leaf-called	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+008f7950	pvr	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+008f7950	pvr	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+00703150	pk_all	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+00703150	pk_all	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+00703150	pvr	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+00703150	pvr	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+007f0300	pk_all	TURNED_NEQ	0063f3a0	leaf-called	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+007f0300	pk_all	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+007f0300	pk_all	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+007f0300	pvr	TURNED_NEQ	0063f3a0	leaf-called	??$GetDef@VCEngineThemeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCEngineThemeDef@@@@@Z
+007f0300	pvr	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+007f0300	pvr	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+0082d5c0	pk_all	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+0082d5c0	pk_all	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+0082d5c0	pk_all	TURNED_NEQ	004ab840	leaf-called	??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z
+0082d5c0	pvr	TURNED_NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+0082d5c0	pvr	MATERIALDEF_COPY NEQ	0066c340	leaf-called	??$GetDef@VCMaterialDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCMaterialDef@@@@@Z
+0082d5c0	pvr	TURNED_NEQ	004ab840	leaf-called	??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z
+# totals [turned_NEQ, newly_NEQ, fixed, dropped, 0x0066C340 EQ copies]: {'pk_all': [7, 0, 0, 0, 0], 'pvr': [7, 0, 0, 0, 0]}
+GATE FAIL (22)

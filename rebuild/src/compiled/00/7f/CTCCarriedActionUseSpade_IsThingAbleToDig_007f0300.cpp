@@ -29,6 +29,7 @@
 // header's same-TU body (FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY, the stand-ins' role); CMaterialDef is engine/CMaterialDef.h
 // (IsDiggable +0x4d); CEngineThemeDef has no shared header (engine/_quarantine only), so it stays modelled on the shared CDefClassBase.
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD   // NF341 r2: GetDef<CMaterialDef> copy = retail 0x0066C340 (the re-reading SetDynamicCast, as landed 0x0066B370)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFINITIONMANAGER

@@ -1,0 +1,2 @@
+# relocations (non-debug) and UND entries naming the helper symbols, in every HEAD object compiled by NF341 (round 1: 148 GLOBAL_BODY rows + B; round 2: the 4 emitters)
+# objects scanned 157, references 0
