@@ -1,0 +1,36 @@
+--- a/tools/decomp_pipeline/linux_lane/lane_tools/land_scripted.py
++++ b/tools/decomp_pipeline/linux_lane/lane_tools/land_scripted.py
+@@ -15,7 +15,9 @@
+   4. a binder run (access_fix.py --binders) also applies its TABLE_CHANGES.tsv for the landed callers (apply_table.py);
+   5. write rebuild/candidates/manual/batches/<batch>/ (RESULTS.tsv, rows.txt, rows_held.txt, logs/recheck.log), append the run's REJECT
+      rows to T3_PORT_QUEUE.tsv as <queue tag>, release the locks (naming_batch/clean.py).
+-A unit_fix.py run carries UNITS.tsv (address, unit): a unit lands whole or not at all (held or failed member -> every member restored / held)."""
++A unit_fix.py run carries UNITS.tsv (address, unit[, kind]): a unit lands whole or not at all (held or failed member -> every member restored / held).
++kind `S` (option S, one retail TU serving several catalog addresses: the owner row holds every body, each other member is a thin row
++`// Leaf: <own symbol>` + `#include "../src/compiled/<owner Source>"`): every member must grade its own new symbol exactly (no binder pass)."""
+ import os, re, sys, json, shutil, subprocess, contextlib, io
+ sys.path.insert(0, "tools/decomp_pipeline"); argv = sys.argv[1:]; sys.argv = ["x"]
+ import naming_status as ns
+@@ -62,9 +64,12 @@
+     if a not in heads: held[a] = "stale check: no HEAD payload for the row"; continue
+     if open("rebuild/src/compiled/" + ent[a]["Source"], encoding="utf-8").read() != heads[a]: held[a] = "stale: the landed source changed since the run"
+ # a unit run (unit_fix.py) lands whole or not at all: one held member holds its unit
+-unit = {}
++unit = {}; s_unit = set()
+ if os.path.exists(f"{run}/UNITS.tsv"):
+     unit = {l.split("\t")[0]: l.split("\t")[1] for l in open(f"{run}/UNITS.tsv").read().splitlines()[1:] if l}
++    # option S (owner ruling 2026-11-24): an optional third column `S` marks a one-TU unit (owner row + thin rows that #include it);
++    # every member is graded on its OWN leaf, so no member is a binder: each must grade exactly its new symbol (NF376 pilot)
++    s_unit = {l.split("\t")[0] for l in open(f"{run}/UNITS.tsv").read().splitlines()[1:] if l.count("\t") >= 2 and l.split("\t")[2].strip() == "S"}
+ def hold_units(why_of):
+     for u in {unit[a] for a in why_of if a in unit}:
+         for a in acc:
+@@ -94,7 +99,7 @@
+     g = st.get(a, ("NOT_GRADED", "-")); o = f"{W}/wd/{a[:2]}/{a[2:4]}/{a}/{a}.obj"; sym = ""
+     if os.path.exists(o):
+         with contextlib.redirect_stderr(io.StringIO()): sym = V.obj_text(o, acc[a][3])[2]
+-    binder = "; target " in acc[a][4] or (a in unit and unit[a] != a)          # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
++    binder = ("; target " in acc[a][4] or (a in unit and unit[a] != a)) and a not in s_unit   # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
+     # A leaf in an anonymous namespace is written `...@?A0x` (a prefix): its 8-hex hash depends on the build path (landing nf365 g2).
+     anon = acc[a][3].endswith("?A0x") and re.sub(r"(\?A0x)[0-9a-f]{8}.*", r"\1", sym) == acc[a][3]
+     if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and (binder or sym == acc[a][3] or anon)):

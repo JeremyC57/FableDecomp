@@ -1,0 +1,4 @@
+strict full leaf -> ?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+  WARN leaf '?GetGravityVector@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@XZ' matches no symbol in 00b80f90.obj; graded the largest function
+strict raises: strict leaf '?GetGravityVector@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@XZ': matches []
+strict raises: strict leaf 'Get': matches ['?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ', '?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ', '?GetWin

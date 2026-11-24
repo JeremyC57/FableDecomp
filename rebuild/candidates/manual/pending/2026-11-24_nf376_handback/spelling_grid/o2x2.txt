@@ -1,0 +1,20 @@
+00b80ad0	MATCH	LEAF_OK	hard=-	warn=-
+   relocs 
+00b80f90	RELOCATION_MATCH	LEAF_OK	hard=-	warn=-
+   relocs ?g_pEngineSimulationManager@@3PAVCEngineSimulationManager@@A->21196392 ?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z->12061392
+00b80fe0	DIFFER(122v112)	LEAF_OK	hard=-	warn=-
+   relocs 
+# DEF/UND
+   DEF ??0C3DVector@@QAE@ABV0@@Z
+   DEF ??0C3DVector@@QAE@MMM@Z
+   DEF ??0C3DVector@@QAE@XZ
+   DEF ??DC3DVector@@QBE?BV0@M@Z
+   DEF ?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z
+   DEF ?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+   DEF ?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ
+   DEF ?GetWindVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+   DEF __real@42c80000
+   UND ?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z
+   UND ?g_pEngineSimulationManager@@3PAVCEngineSimulationManager@@A
+   UND __fltused
+

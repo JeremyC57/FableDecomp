@@ -1,0 +1,27 @@
+--- a/tools/decomp_pipeline/linux_lane/lane_tools/recheck.py
++++ b/tools/decomp_pipeline/linux_lane/lane_tools/recheck.py
+@@ -1,7 +1,7 @@
+ # Build a --recheck-landed payload + oracle for landed rows, straight from the catalog.
+ # usage: recheck.py <outdir> <addr|src-file>...   (a src path under rebuild/src/compiled is mapped to its row)
+ import re, sys, json, os
+-out = sys.argv[1]; want = sys.argv[2:]
++out = sys.argv[1]; want = [w for w in sys.argv[2:] if w != "--with-includers"]
+ ps = open("rebuild/build_candidates.ps1", encoding="utf-8-sig").read()
+ ent = {}
+ for blk in re.findall(r"\[pscustomobject\]@\{(.*?)\n    \}", ps, re.S):
+@@ -25,6 +25,15 @@
+         return "??0" + head(cls) + "@"
+     if leafname in OPS and mod != "_global": return OPS[leafname] + head(cls) + "@"
+     return leafname
++if "--with-includers" in sys.argv:   # NF376 option S: a changed owner TU re-grades every thin row (funclet / S member) that includes it
++    _THIN = re.compile(r'^\s*#include\s+"\.\./src/compiled/([^"]+)"', re.M)
++    def _owner(s):
++        try: t_ = re.sub(r"//[^\n]*", "", open("rebuild/src/compiled/" + s, encoding="utf-8", errors="replace").read())
++        except OSError: return s
++        m_ = _THIN.findall(t_)
++        return m_[0] if len(m_) == 1 and not re.sub(r'#include\s+"[^"]+"', "", t_).strip() else s
++    srcs = {ent[w.lower()]["Source"] for w in want if w.lower() in ent}
++    want += sorted(a for a, kv in ent.items() if kv.get("Source") not in srcs and _owner(kv.get("Source", "")) in srcs and a not in want)
+ auth = []; orc = ["address\tname\tlength\tbytes"]
+ for w in want:
+     a = w.lower()

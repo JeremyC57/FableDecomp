@@ -1,0 +1,7 @@
+address	field	old	new	note
+00b80ad0	self symbol	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z	PDB spelling (Ego_r + FableWin IBE); self_symbols.tsv line 00b80ad0 -> IBE
+00b80f90	self_symbols.tsv	(no line)	?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	add the measured line (RELOCATION_MATCH): pk_all resolves the copy in its TU-mates objects only through it
+00b80fe0	callee	?GetWindAt@CSimulationEnvironment@@QAE?AVC3DVector@@ABV2@@Z	?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z	PDB name of 0x00B80B70 (TABLE_CHANGES replace)
+00b80fe0	global	?g_pSimulationEnvironment@@3PAVCSimulationEnvironment@@A	?g_pEngineSimulationManager@@3PAVCEngineSimulationManager@@A	0x01436E68 has one name (TABLE_CHANGES delete)
+00b80fe0	same-TU copy	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z (strong)	(gone: one body, in the owner)	TABLE_CHANGES delete
+00b80f90	same-TU copy	?ConvertVectorToLocal@...@IBE (strong, own body)	(gone: one body, in the owner)	-

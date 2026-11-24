@@ -1,0 +1,5 @@
+address	unit	role	status	grade_head	grade_new	note
+00b80ad0	00b80ad0	owner	ACCEPT (S pilot, form T)	MATCH PASS	MATCH PASS	self QBE -> IBE (PDB); holds all three bodies
+00b80f90	00b80ad0	thin member	ACCEPT (S pilot, form T)	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	standalone body retired; includes the owner
+00b80fe0	00b80ad0	thin member	ACCEPT (S pilot, form T)	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	standalone body retired; callee GetWindAt -> GetWindVectorNoise, global g_pSimulationEnvironment -> g_pEngineSimulationManager
+0055fb80	-	gate only	HOLD (needs B-claimed 0x00560BB0 in the same unit)	RELOCATION_MATCH PASS	-	UpdateTransaction AAE copy in 0x00560D00 (/Gr) EQ at 0x0055FB80; standalone also matches under /Gr

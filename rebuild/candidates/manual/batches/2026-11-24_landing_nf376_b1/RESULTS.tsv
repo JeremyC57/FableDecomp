@@ -1,0 +1,4 @@
+address	verdict	old	new	reason
+00b80ad0	ACCEPT	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z	option S owner (NF376 pilot)
+00b80f90	ACCEPT	?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	option S member (thin)
+00b80fe0	ACCEPT	?GetWindVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	?GetWindVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	option S member (thin)

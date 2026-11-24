@@ -12,7 +12,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   swap, 10 rows). nf365 g2/g3 landed too. Open on the reopened nf358 lines: 0041e6d3 (/GS), the CreateMapMarkers port (T3 nf365
   0x005FF190), and the /O2 rows whose leaf inlines the copy (closed for row devices, FINDINGS_LOG 2026-11-24). **Owner questions
   open:** (1) closed: 0x0070D940 landed (acctB_b26) with GetMeshAnim from a CAnimSet.h `inline` opt-in (owner yes). (2) ruled (advisor decision, owner delegated): option S for rows whose blocker is a second strong definition / needed same-TU body
-  with both PDBs in one .obj; pilot NF376 running; pick-any-residue rows stay on B's build mode. Rows it gates: 0x0045C5C1 and the duplicate CThingNoiseDef / CUIMiscThingsDef Alloc definitions; 0x00749810's
+  with both PDBs in one .obj; first S unit landed (nf376_b1, form T: owner + thin #include rows); tool diffs (a)+(d), then (c), (e) before a second unit, (b) needs a
+  Windows build test (`pending/2026-11-24_nf376_handback/tool_diffs/`); pick-any-residue rows stay on B's build mode. Rows it gates: 0x0045C5C1 and the duplicate CThingNoiseDef / CUIMiscThingsDef Alloc definitions; 0x00749810's
   CTCNoiseDef copies (T3 nf359 PRIORITY) and the 0x00749A70 ??0CTCNoise duplicate (NF369: option A cannot emit its leaf); the CreateMapMarkers copies in 0x0060C900 / 0x0060EEB0; the 12 /O2 rows whose leaf inlines Reset / GetDef; NF370 / NF373's strong-copy selves 0x0094FBB0, 0x0099EA60, 0x00645292, 0x008F87A0, 0x008F8BB0, 0x00B80AD0, 0x0055FB80.
   Never close a copy line without a census.
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,

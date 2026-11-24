@@ -18714,8 +18714,9 @@ address	symbol	status	leaf_given
 00b80790	?WorldFrameUpdate@SimulationManagerNative@@UAEX_N@Z	RELOCATION_MATCH	WorldFrameUpdate
 00b80840	?PausedWorldFrameUpdate@CEngineSimulationManager@@UAEXXZ	RELOCATION_MATCH	PausedWorldFrameUpdate
 00b80900	??0CEngineSimulationBase@@QAE@XZ	RELOCATION_MATCH	??0CEngineSimulationBase@
-00b80ad0	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z	MATCH	ConvertVectorToLocal
+00b80ad0	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z	MATCH	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z
 00b80b40	?RunSimulation@CEnginePrimitiveSimulationInfo@@QAEXXZ	MATCH	RunSimulation
+00b80f90	?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	RELOCATION_MATCH	?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
 00b80fe0	?GetWindVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ	RELOCATION_MATCH	GetWindVector
 00b81050	?UpdateTransform@CEngineClothSimulationMeshBase@@IAEXXZ	RELOCATION_MATCH	UpdateTransform
 00b81180	?CalcAndSetRunState@CEngineClothSimulationStaticMesh@@MAE_NXZ	RELOCATION_MATCH	CalcAndSetRunState

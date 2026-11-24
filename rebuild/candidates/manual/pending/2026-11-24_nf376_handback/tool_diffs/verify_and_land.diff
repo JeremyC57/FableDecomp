@@ -1,0 +1,14 @@
+--- a/tools/decomp_pipeline/verify_and_land.py
++++ b/tools/decomp_pipeline/verify_and_land.py
+@@ -437,6 +437,11 @@
+     try:
+         res=extract(obj,leaf); built,sec=res[0],res[1]; roff=res[3] if len(res)>3 else 0
+     except Exception: return "OBJDUMP_ERR",None,None
++    # LANDVERIFY_STRICT_LEAF=1 (option S units, NF376): one object serves several catalog addresses, so obj_text's largest-function
++    # fallback (or a substring leaf naming a TU-mate) would grade the wrong function: the graded symbol must BE the leaf. Scoped to the
++    # grade itself; obj_text's other callers (land_scripted, pk_all, reloc_identity) keep their behaviour.
++    if os.environ.get("LANDVERIFY_STRICT_LEAF")=="1" and text_extractor is None and leaf and len(res)>2 and str(res[2])!=leaf:
++        return f"LEAF_MISMATCH({res[2][:60]})",None,None
+     rel=[r-roff for r in obj_relocs(obj,sec) if r>=roff]
+     if retail==built: return "MATCH",built,sec
+     if mask(retail,rel)==mask(built,rel): return "RELOCATION_MATCH",built,sec

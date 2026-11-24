@@ -1,0 +1,24 @@
+--- a/rebuild/build_candidates.ps1
++++ b/rebuild/build_candidates.ps1
+@@ -403693,10 +403693,20 @@
+         $testCompileLog = Join-Path $functionOutDir "$($entry.Address).test-compile.log"
+         $testExe = Join-Path $functionOutDir "$($entry.Address).test.exe"
+         $testRunLog = Join-Path $functionOutDir "$($entry.Address).test-run.log"
++        # A thin row (EH funclet, pick-any member, option S member) has no code of its own: it `#include "../src/compiled/<owner>"`.
++        # Its object is stale when the OWNER file changes, so the owner's write time counts as the row's source time (NF376).
++        $sourceWrite = (Get-Item -LiteralPath $source).LastWriteTimeUtc
++        foreach ($inc in [regex]::Matches((Get-Content -LiteralPath $source -Raw), '(?m)^\s*#include\s+"\.\./src/compiled/([^"]+)"')) {
++            $owner = Join-Path $sourceRoot ($inc.Groups[1].Value -replace '/', '\')
++            if (Test-Path -LiteralPath $owner) {
++                $ownerWrite = (Get-Item -LiteralPath $owner).LastWriteTimeUtc
++                if ($ownerWrite -gt $sourceWrite) { $sourceWrite = $ownerWrite }
++            }
++        }
+         $cacheValid = -not $Force -and
+             (Test-Path -LiteralPath $object) -and
+             (Test-Path -LiteralPath $testRunLog) -and
+-            (Get-Item -LiteralPath $object).LastWriteTimeUtc -ge (Get-Item -LiteralPath $source).LastWriteTimeUtc -and
++            (Get-Item -LiteralPath $object).LastWriteTimeUtc -ge $sourceWrite -and
+             (Get-Item -LiteralPath $object).LastWriteTimeUtc -ge $newestDependencyWrite -and
+             (Get-Item -LiteralPath $testRunLog).LastWriteTimeUtc -ge (Get-Item -LiteralPath $testSource).LastWriteTimeUtc -and
+             (Get-Item -LiteralPath $testRunLog).LastWriteTimeUtc -ge $newestDependencyWrite -and

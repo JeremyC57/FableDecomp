@@ -1,0 +1,26 @@
+# Option S unit 0x00B80AD0, thin form: the three catalog entries are UNCHANGED (same Address / Module / Source / TestSource / PassPattern, no CompilerFlags);
+# only the Source FILES change (owner text, two thin rows). Current entries, as landed:
+224818-    [pscustomobject]@{
+224819:        Address = '00b80ad0'
+224820-        Module = 'CEngineClothSimulationMeshBase'
+224821-        Source = '00/b8/CEngineClothSimulationMeshBase_ConvertVectorToLocal_00b80ad0.cpp'
+224822-        TestSource = '00/b8/CEngineClothSimulationMeshBase_ConvertVectorToLocal_00b80ad0_test.cpp'
+224823-        PassPattern = '00b80ad0_TEST PASS'
+224824-    }
+224825-    [pscustomobject]@{
+360335-    [pscustomobject]@{
+360336:        Address = '00b80f90'
+360337-        Module = 'CEngineClothSimulationMeshBase'
+360338-        Source = '00/b8/CEngineClothSimulationMeshBase_GetGravityVector_00b80f90.cpp'
+360339-        TestSource = '00/b8/CEngineClothSimulationMeshBase_GetGravityVector_00b80f90_test.cpp'
+360340-        PassPattern = '00b80f90_TEST PASS'
+360341-    }
+360342-    [pscustomobject]@{
+224825-    [pscustomobject]@{
+224826:        Address = '00b80fe0'
+224827-        Module = 'CEngineClothSimulationMeshBase'
+224828-        Source = '00/b8/CEngineClothSimulationMeshBase_GetWindVector_00b80fe0.cpp'
+224829-        TestSource = '00/b8/CEngineClothSimulationMeshBase_GetWindVector_00b80fe0_test.cpp'
+224830-        PassPattern = '00b80fe0_TEST PASS'
+224831-    }
+224832-    [pscustomobject]@{

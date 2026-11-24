@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00b80ad0   WARN SHARED_HEADER_AVAILABLE CEngineSimulationManager (engine/CEngineSimulationManager.h)
+00b80ad0   MATCH            PASS   ConvertVectorToLocal
+00b80f90   RELOCATION_MATCH PASS   GetGravityVector
+00b80fe0   RELOCATION_MATCH PASS   GetWindVector
+
+WINS: 3
+  00b80ad0 MATCH CEngineClothSimulationMeshBase::?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@IBE?AVC3DVector@@ABV2@@Z
+  00b80f90 RELOCATION_MATCH CEngineClothSimulationMeshBase::?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+  00b80fe0 RELOCATION_MATCH CEngineClothSimulationMeshBase::?GetWindVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ

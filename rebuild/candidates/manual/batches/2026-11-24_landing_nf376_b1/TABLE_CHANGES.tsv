@@ -1,0 +1,4 @@
+action	symbol	target	witness	note	batch
+delete	?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z	00b80ad0	00b80fe0	NF376 S unit 0x00B80AD0: the stand-in QBE copy in 0x00B80FE0 is gone (one body, PDB IBE; the IBE line to this target exists, witness 00b80f90)	s1
+replace	?GetWindAt@CSimulationEnvironment@@QAE?AVC3DVector@@ABV2@@Z -> ?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z	00b80b70	00b80fe0	NF376 S unit: 0x00B80FE0 calls 0x00B80B70 by its PDB name (Ego_r + FableWin; the definer 0x00B80B70 self_symbols spelling); no other landed source names GetWindAt	s1
+delete	?g_pSimulationEnvironment@@3PAVCSimulationEnvironment@@A	01436e68	00b80fe0	NF376 S unit: 0x00B80FE0 reads the global as g_pEngineSimulationManager (line to 01436e68 exists, witness 00b26360); no other landed source names g_pSimulationEnvironment	s1

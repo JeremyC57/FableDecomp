@@ -5315,9 +5315,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?g_object_01436e68@@3PAUCGlobalObject@@A	01436e68	00b806c0
 ??_7CEngineSimulationBase@@6B@	012a38fc	00b80900
 ?g_pPhysicsSettings_01436e68@@3PAUSPhysicsSettings_01436e68@@A	01436e68	00b80900
-?ConvertVectorToLocal@CEngineClothSimulationMeshBase@@QBE?AVC3DVector@@ABV2@@Z	00b80ad0	00b80fe0
-?GetWindAt@CSimulationEnvironment@@QAE?AVC3DVector@@ABV2@@Z	00b80b70	00b80fe0
-?g_pSimulationEnvironment@@3PAVCSimulationEnvironment@@A	01436e68	00b80fe0
+?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z	00b80b70	00b80fe0
 ?CalculateRunState@CEngineSimulationBase@@QAEJABVC3DVector@@M@Z	00b80940	00b81230
 ??_7CEngineSimulationManager@@6BCEngineComponent@@@	012a394c	00b81cf0
 ?DestroyRange_00b83580@@YIXPAUCSimulationPointer@@0ABUSAllocatorTag@@@Z	00b83580	00b81e20

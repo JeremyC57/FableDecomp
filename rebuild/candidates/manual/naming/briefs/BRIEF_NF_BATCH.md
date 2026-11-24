@@ -343,3 +343,6 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   state. Precondition: pragscan shows y off + s on immediately before the block. Never together with ..._RESET_SIZE_BODY (`#error`).
   Rows whose leaf inlines Reset or GetDef (the /O2 rows 005ff190 00603000 00607330 0061b610 0061e6d0 006096e0 0060c900 0060eeb0 00622a00,
   and the swap's 005ff190 00605570 00607330) are closed for row devices: noinline and inline bodies both move the leaf (FINDINGS_LOG).
+
+## Option S units (2026-11-24)
+Option S units (advisor ruling 2026-11-24, pilot nf376: 0x00B80AD0 / 0x00B80F90 / 0x00B80FE0): one retail .obj slice is ONE translation unit. The owner row's .cpp holds every body in retail address order; each absorbed address is a thin row (its own `// Leaf:`, test and catalog entry) that only `#include "../src/compiled/<owner>.cpp"`, like the EH-funclet rows. Edits go to the owner file, never the thin rows, and an owner edit must regrade every includer. Link and census sets take ONE object per TU: a thin row's object defines every body of the unit, so two of them (or a thin row plus its owner) show duplicate strong definitions that are not real.

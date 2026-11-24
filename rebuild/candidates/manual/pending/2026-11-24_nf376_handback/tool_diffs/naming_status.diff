@@ -1,0 +1,32 @@
+--- a/tools/decomp_pipeline/naming_status.py
++++ b/tools/decomp_pipeline/naming_status.py
+@@ -67,6 +67,29 @@
+     return ent
+ 
+ 
++_THIN = re.compile(r'^\s*#include\s+"\.\./src/compiled/([^"]+)"', re.M)
++def owner_source(src):
++    """The catalog Source that holds a row's code: a thin row (an EH funclet, a pick-any member, an option S member: comments, its
++    `// Leaf:` and one `#include "../src/compiled/<owner>"`) resolves to <owner>; any other row to itself. Tools that EDIT a row's text
++    (respells, retypes, access fixes) must edit owner_source(...), and a change there re-grades every row whose Source includes it."""
++    p = P("rebuild", "src", "compiled", src)
++    try: t = open(p, encoding="utf-8", errors="replace").read()
++    except OSError: return src
++    code = re.sub(r"//[^\n]*", "", t)
++    m = _THIN.findall(code)
++    return m[0] if len(m) == 1 and not re.sub(r'#include\s+"[^"]+"', "", code).strip() else src
++
++
++def includers_of(src, ent=None):
++    """Reverse of owner_source: the catalog addresses whose Source is a thin row including <src> (EH funclets, option S members).
++    A change to <src> must re-grade them too (recheck.py --with-includers)."""
++    ent = ent or landed_rows(); out = []
++    for a, kv in ent.items():
++        s = kv.get("Source", "")
++        if s != src and owner_source(s) == src: out.append(a)
++    return sorted(out)
++
++
+ def leaf_of(src):
+     p = P("rebuild", "src", "compiled", src)
+     try:
