@@ -1,0 +1,5 @@
+copy	operator=	class	copy_symbol	operator=_symbol	operator=_definition	note
+00460584	00460589	CSpecialAbilitiesDrunkennessDef	?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z	??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z	new 00460589 object	RULING (+__fltused on 00460589); both rows move: operator= respelled from ??4CBase_00431ed0_Derived_00460589 onto the PDB class
+0046f77c	0046f6af	CLensFlareElementDef	?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z	??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z	new 0046f6af object	RULING (+__fltused on 0046f6af); both rows move: operator= respelled from ??4CBase_00431ed0_Derived_0046f6af onto engine/CLensFlareElementDef.h
+004e14fd	-	CAICreatureWillPowerIndicatorDef	?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z	-	RULING (+__fltused); body form; callee ?CloneFields@CAICreatureWillPowerIndicatorDefBase (made up) -> ??4CDefClassBase
+004e0e0a	-	CInterestingToVillagersDef	?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z	-	RULING (+__fltused); body form

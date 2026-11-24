@@ -1,22 +1,16 @@
-// Leaf: ?CAbilityButtonGuiDef_Copy@@YIPAVCAbilityButtonGuiDef@@PAV1@PBVCDefClassBase@@@Z
+// Leaf: ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z
+// CAbilityButtonGuiDef::Copy(const CDefClassBase* other) -- copy every member of another CAbilityButtonGuiDef: `*this = *(const CAbilityButtonGuiDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0046F49F, 5 bytes: a thiscall tail call, `jmp` to CAbilityButtonGuiDef::operator= 0x0046F43E (emitted 0x61 bytes before it).
+// Identity: the RTTI vftable placement of 0x0046F49F (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CAbilityButtonGuiDef::operator=(const CAbilityButtonGuiDef&) 0x0046F43E, ??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb; the landed operator= row 0x0046F43E defines it, which in this unit stops defining this Copy).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CABILITYBUTTONGUIDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CAbilityButtonGuiDef.h"
 
-// 0x0046f49f  ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z
-// 5-byte tail-call thunk: jmp rel32 to the shared Copy implementation.
-// __fastcall accessor modeled as free __fastcall(thisptr, arg). The rel32
-// target is relocation-masked, so any plausible extern callee byte-matches.
-
-class CDefClassBase;
-class CAbilityButtonGuiDef;
-
-// Shared Copy implementation this thunk tail-calls into.
-extern "C" CAbilityButtonGuiDef* __fastcall
-CAbilityButtonGuiDef_Copy_impl_0046f49f(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src);
-
-CAbilityButtonGuiDef* __fastcall
-CAbilityButtonGuiDef_Copy(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src)
+void CAbilityButtonGuiDef::Copy(const CDefClassBase* other)
 {
-    // Tail call -> single `jmp rel32`.
-    return CAbilityButtonGuiDef_Copy_impl_0046f49f(thisptr, src);
+    *this = *(const CAbilityButtonGuiDef*)other;
 }
-// Stand-in (owner rule 2026-11-05): CAbilityButtonGuiDef_Copy for CAbilityButtonGuiDef::Copy; RTTI vtable slot ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z + PDB name set (egor/fablewin).

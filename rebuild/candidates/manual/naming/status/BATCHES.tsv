@@ -84,7 +84,6 @@ T1	standin_alias	CAIStateGroup_MinionReactToTrespassing	1	1	engine/CAIStateGroup
 T1	standin_alias	CAIStateGroup_OpinionReactionRoot	1	1	engine/CAIStateGroup_OpinionReactionRoot.h	009852c0
 T1	standin_alias	CAIStateGroup_VersusEnemyBase	1	1	engine/CAIStateGroup_VersusEnemyBase.h	00962af0
 T1	standin_alias	CAIStateGroup_WorkAtSchool	1	1	engine/CAIStateGroup_WorkAtSchool.h	009426d0
-T1	standin_alias	CAbilityButtonGuiDef	1	1	engine/CAbilityButtonGuiDef.h	0046f43e
 T1	standin_alias	CAbilityTrackLevelDef	1	1	engine/CAbilityTrackLevelDef.h	004787f6
 T1	standin_alias	CAnimFilterOf3Groups	1	1		00739df0
 T1	standin_alias	CAnimationSet	1	1	engine/CAnimationSet.h	005dd2e0
@@ -636,7 +635,7 @@ T1	other	CCutsceneDef	1	1	engine/CCutsceneDef.h	00f2a0d0
 T1	other	CData	1	1		00a42ea0
 T1	other	CDataBank	1	1		009c8990
 T1	other	CDataInputStream	1	3	engine/CDataInputStream.h	00995030
-T1	other	CDefClassBase	1	4	engine/CDefClassBase.h	00431f10
+T1	other	CDefClassBase	1	3	engine/CDefClassBase.h	00431f10
 T1	other	CDefStringTable	1	1	engine/CDefStringTable.h	009d49b0
 T1	other	CDegradableDef	1	1	engine/CDegradableDef.h	00454434
 T1	other	CDialogueLayerDef	1	1		004663e7
@@ -1933,7 +1932,6 @@ T3	other	CIsVeryCloseMotionlessCreature	1	1	engine/CIsVeryCloseMotionlessCreatur
 T3	other	CItem	1	1	engine/CItem.h	005bec40
 T3	other	CJoystick	1	1	engine/CJoystick.h	009e4470
 T3	other	CKeyRedefiner	1	1		00557840
-T3	other	CLensFlareElementDef	1	2	engine/CLensFlareElementDef.h	0046f6af
 T3	other	CLevelScriptBase	1	1	engine/CLevelScriptBase.h	00f14250
 T3	other	CLightningBeam	1	2		0079fe90
 T3	other	CLipSyncDataBank	1	2	engine/CLipSyncDataBank.h	00a42830
@@ -5294,7 +5292,6 @@ T3	-	CBaseClass	1	2	engine/CBaseClass.h	01231710
 T3	-	CBaseInit	1	3		0084d270
 T3	-	CBaseInputPin	1	2		00ca8b50
 T3	-	CBaseObject	1	2	engine/CBaseObject.h	0143ccf4
-T3	-	CBase_00431ed0_Derived_00460589	1	2		00460589
 T3	-	CBase_00431f10_Derived_00453815	1	2		00453815
 T3	-	CBase_00431f10_Derived_0045389e	1	2		0045389e
 T3	-	CBase_00431f10_Derived_00453be8	1	2		00453be8
@@ -7165,7 +7162,6 @@ T3	emit ?Copy@CSpecialAbilitiesPhysicalShieldDef@@UAEXPBVCDefClassBase@@@Z	(none
 T3	emit ?Copy@CSpecialAbilitiesDrainLifeDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004600c6
 T3	emit ?Copy@CSpecialAbilitiesFireballSpellDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		00460251
 T3	emit ?Copy@CSpecialAbilitiesLightningSpellDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		0046029f
-T3	emit ?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		00460584
 T3	emit ?Copy@CSpecialAbilitiesDivineWrathDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		00460652
 T3	emit ?Copy@CSpecialAbilitiesUnholyPowerDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004608c1
 T3	emit ?Copy@CSpecialAbilitiesCreatureTintDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		00460a14
@@ -7182,9 +7178,7 @@ T3	emit ?Copy@CThingBuildingDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004643ca
 T3	emit ??_ECResource@@UAEPAXI@Z	(none)	1	1		004664ff
 T3	emit ??_GCQuickAccessItemButtonGuiDef@@UAEPAXI@Z	(none)	1	1		0046ef6b
 T3	emit ??_ECAbilityButtonGuiDef@@UAEPAXI@Z	(none)	1	1		0046f483
-T3	emit ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		0046f49f
 T3	emit ??_ECLensFlareElementDef@@UAEPAXI@Z	(none)	1	1		0046f760
-T3	emit ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		0046f77c
 T3	emit ??_GCOpinionDeedReactionDef@@UAEPAXI@Z	(none)	1	1		0047200d
 T3	emit ?Copy@COpinionDeedReactionDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		00472046
 T3	emit ?Copy@CEnvironmentThemeDaySetDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		00472e7e
@@ -7412,7 +7406,6 @@ T3	emit ?Copy@CSummonableCreatureDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e0
 T3	emit ?Copy@COccupiableDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e0d33
 T3	emit ??_GCBossDef@@UAEPAXI@Z	(none)	1	1		004e0d62
 T3	emit ??_GCFishingDef@@UAEPAXI@Z	(none)	1	1		004e0dcf
-T3	emit ?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e0e0a
 T3	emit ?Copy@CGuardDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e0e23
 T3	emit ?Copy@CActivateQuestDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e0e79
 T3	emit ?Copy@CTavernTableDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e0ee3
@@ -7427,7 +7420,6 @@ T3	emit ?Copy@CHeroSpecialMovementDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e
 T3	emit ?Copy@CResurrectionItemDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e1394
 T3	emit ??_GCKrakenDef@@UAEPAXI@Z	(none)	1	1		004e13c3
 T3	emit ?Copy@CKrakenTentacleDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e148f
-T3	emit ?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e14fd
 T3	emit ?Copy@CCarriedReadableDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e157c
 T3	emit ?Copy@CFishingRodDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e159b
 T3	emit ?Copy@CNymphDef@@UAEXPBVCDefClassBase@@@Z	(none)	1	1		004e1769

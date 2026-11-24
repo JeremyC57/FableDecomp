@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0046f6af   WARN STANDIN_LEAF ??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z (catalog _unattributed::operator=; names another function)
+0046f6af   RELOCATION_MATCH PASS   operator=
+0046f77c   RELOCATION_MATCH PASS   Copy
+
+WINS: 2
+  0046f6af RELOCATION_MATCH _unattributed::??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z
+  0046f77c RELOCATION_MATCH CLensFlareElementDef::?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z

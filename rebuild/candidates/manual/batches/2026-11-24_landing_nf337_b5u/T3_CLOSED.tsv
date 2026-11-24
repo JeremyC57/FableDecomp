@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf298	0x0046f6af	entry 16 (ENTRIES line 17): free extern "C" @CLensFlareElementDef_Copy_impl@8 stand-in for the ??4 member: port	NF298 skipped-port
+nf324	0x0046F77C	port	0046f77c skipped-port ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CLensFlareElementDef_Copy

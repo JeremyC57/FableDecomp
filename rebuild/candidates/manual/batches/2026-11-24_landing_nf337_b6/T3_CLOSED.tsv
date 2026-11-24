@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf285	0x0046F43E	standin_alias port	binder source read; identity not verified: extern "C" fastcall stand-in for CAbilityButtonGuiDef::operator=: needs the class model (port)
+nf324	0x0046F49F	port	0046f49f skipped-port ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CAbilityButtonGuiDef_Copy

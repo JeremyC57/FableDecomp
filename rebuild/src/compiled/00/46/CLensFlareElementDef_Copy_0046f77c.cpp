@@ -1,20 +1,16 @@
+// Leaf: ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z
+// CLensFlareElementDef::Copy(const CDefClassBase* other) -- copy every member of another CLensFlareElementDef: `*this = *(const CLensFlareElementDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0046F77C, 5 bytes: a thiscall tail call, `jmp` to CLensFlareElementDef::operator= 0x0046F6AF (emitted 0xCD bytes before it).
+// Identity: the RTTI vftable placement of 0x0046F77C (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CLensFlareElementDef::operator=(const CLensFlareElementDef&) 0x0046F6AF, ??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb; the landed row 0x00476B17 already binds it at 0x0046F6AF; the operator= row respells onto it in this unit).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CLENSFLAREELEMENTDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CLensFlareElementDef.h"
 
-// 0x0046f77c  ?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z
-// Retail body is a single 5-byte tail-call thunk:
-//     jmp    rel32   ; (target relocation-masked in parity)
-// i.e. CLensFlareElementDef::Copy forwards to a shared Copy implementation.
-
-class CDefClassBase;
-class CLensFlareElementDef;
-
-// The real Copy implementation this thunk tail-calls into.
-// Its address is relocation-masked, so a plausible extern decl is sufficient.
-extern "C" void __fastcall CLensFlareElementDef_Copy_impl(CLensFlareElementDef* thisptr, const CDefClassBase* other);
-
-// Model the __fastcall member as a free __fastcall(objptr) function.
-// A single tail-call compiles to `jmp rel32`, byte-identical to the retail thunk.
-void __fastcall CLensFlareElementDef_Copy(CLensFlareElementDef* thisptr, const CDefClassBase* other)
+void CLensFlareElementDef::Copy(const CDefClassBase* other)
 {
-    CLensFlareElementDef_Copy_impl(thisptr, other);
+    *this = *(const CLensFlareElementDef*)other;
 }

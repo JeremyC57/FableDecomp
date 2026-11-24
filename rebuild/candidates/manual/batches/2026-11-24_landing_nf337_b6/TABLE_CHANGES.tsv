@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	@CAbilityButtonGuiDef_Copy_impl_0046f49f@8	0046f43e	0046f49f	NF337: made-up spelling; ??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z already binds 0046f43e (Copy 0046f49f now binds the PDB operator= of CAbilityButtonGuiDef (the 0046f43e row))

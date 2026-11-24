@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00460584   MATCH            PASS   Copy
+00460589   WARN STANDIN_LEAF ??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z (catalog _unattributed::operator=; names another function)
+00460589   RELOCATION_MATCH PASS   operator=
+004e0e0a   RELOCATION_MATCH PASS   Copy
+004e14fd   RELOCATION_MATCH PASS   Copy
+
+WINS: 4
+  00460584 MATCH CSpecialAbilitiesDrunkennessDef::?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z
+  00460589 RELOCATION_MATCH _unattributed::??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z
+  004e0e0a RELOCATION_MATCH CInterestingToVillagersDef::?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z
+  004e14fd RELOCATION_MATCH CAICreatureWillPowerIndicatorDef::?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z

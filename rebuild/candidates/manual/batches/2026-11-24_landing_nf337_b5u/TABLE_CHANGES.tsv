@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	@CLensFlareElementDef_Copy_impl@8	0046f6af	0046f77c	NF337: made-up spelling; ??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z already binds 0046f6af (Copy 0046f77c)

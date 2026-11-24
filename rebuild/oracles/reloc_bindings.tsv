@@ -509,10 +509,8 @@ _FreeThing@4	00451b82	00453630
 ??0CSubDefInfoVector@@QAE@ABU0@@Z	0046eecf	0046ee98
 @sub_first@12	00450a58	0046f191
 ??_7CAbilityButtonGuiDef@@6B@	0123610c	0046f1b4
-@CAbilityButtonGuiDef_Copy_impl_0046f49f@8	0046f43e	0046f49f
 ??4CLensFlareElementDefVector@@QAEAAU0@ABU0@@Z	0046f565	0046f4f0
 ?CActiveFileReader_Notify@@YIXPAUCActiveFileReader@@HPAE@Z	00450a74	0046f68c
-@CLensFlareElementDef_Copy_impl@8	0046f6af	0046f77c
 ?Erase@CRetailVector_elem24@@QAEPAUSElement24@@PAU2@0@Z	00470019	0046ffd0
 ?Insert@CRetailVector_elem24@@QAEXPAUSElement24@@KABU2@@Z	0047005b	0046ffd0
 ?Transfer_00470301@CPersistContext@@QAEXPAJ@Z	00470301	004702c8
@@ -14355,7 +14353,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??4CSpecialAbilitiesSummonSpellDef@@QAEAAV0@ABV0@@Z	00460457	00460452
 ??4CSpecialAbilitiesBurntEffectDef@@QAEAAV0@ABV0@@Z	004604cf	004604ca
 ??4CSpecialAbilitiesElectrocutedEffectDef@@QAEAAV0@ABV0@@Z	0046051d	00460518
-?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z	00460589	00460584
+??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z	00460589	00460584
 ?CSpecialAbilitiesUnholyPowerDef_Copy_impl@@YIXPAVCSpecialAbilitiesUnholyPowerDef@@PAX@Z	004608c6	004608c1
 ?CSpecialAbilitiesCreatureTintDef_CopyImpl@@YIXPAVCSpecialAbilitiesCreatureTintDef@@0@Z	00460a19	00460a14
 ?CSoundDef_Copy_impl@@YIXPAVCSoundDef@@PAX@Z	00460a61	00460a5c
@@ -14702,7 +14700,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?helper@CDisplayManager@@QAEPAVCTexture@@PAD0@Z	004dd405	004df956
 ??0CTCUserActionPointBase@@QAE@AAVCThing@@@Z	007fec60	004e0350
 ??0CTCDriverBase@@QAE@AAVCThing@@@Z	00771200	004e079c
-?CloneFields@CAICreatureWillPowerIndicatorDefBase@@QAEXPBVCDefClassBase@@@Z	00431f10	004e14fd
 ??0CTCPreCalculatedNavigationRoute@@QAE@AAVCThing@@@Z	004e0cdf	004e2b8e
 ?_M_allocate_and_copy@CExplosionRingVector@@QAEPAVCExplosionRing@@IPBV2@0@Z	004e3047	004e2f56
 ??0CTCTargetingPlayer@@QAE@AAVCThing@@@Z	004e2250	004e3783
