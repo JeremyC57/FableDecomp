@@ -1400,7 +1400,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1452	596	00b8e880	??$fill@PAUCOccluderFlareEntry@CEngineOcclusionManager@@U12@@std@@YIXPAUCOccluderFlareEntry@CEngineOcclusionManager@@0ABU12@@Z	closed	
 1453	596	00af7730	?insert@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@QAEPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@PAU32@ABU32@@Z	partial	?insert@?$vector@U?$pair@JVCComponentInstance@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEPAU?$pair@JVCComponentInstance@NParticleEngine@@@2@PAU32@ABU32@@Z
 1454	596	00af6690	??4CComponentInstance@NParticleEngine@@QAEAAV01@ABV01@@Z	partial	??4CCountedRecord_00af6690
-1455	596	00b22f30	??$GFInterpolateArray@K@NParticleEngine@@YI?AV?$CArray@K@@ABV1@0MABK@Z	open	?GFInterpolateArray@NParticleEngine@@YI?AU?$CArray@K@1@ABU21@0MABK@Z
+1455	596	00b22f30	??$GFInterpolateArray@K@NParticleEngine@@YI?AV?$CArray@K@@ABV1@0MABK@Z	closed	
 1456	596	00c756c0	?UpdateGain@CReverbDiffuser@@QAEXIPBUSDiffuserParams@@PBUCRingBuffer@@I@Z	open	?ProcessInputFilter@CFloatLongReverb@@AAEXIPBUCFloatLongReverbParams@@PAVCFloatCyclicBuffer@@I@Z
 1457	596	00c75820	?UpdateGainRamped@CReverbDiffuser@@QAEXIPAUSDiffuserParams@@PBU2@PAUCRingBuffer@@II@Z	open	?ProcessInputFilter@CFloatLongReverb@@AAEXIPAUCFloatLongReverbParams@@PBU2@PAVCFloatCyclicBuffer@@II@Z
 1458	596	00c74d30	?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z	open	?Process@CFloatFilter@@QAEXPAVCFloatFilterParams@@PBV2@PBMPAM_NII@Z
@@ -10776,3 +10776,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13633	nf380	00a629d0	?Clear@CPackedUIntArray@@QAEXXZ	closed	
 13634	nf380	00e0f1d0	?WatchForTermination@CQ_WaspBossScript@NScript@@QAEXXZ	closed	
 13635	nf380	00993e50	?WriteUBYTE@CDataOutputStream@@QAEXE@Z	partial	?WriteUChar@CDataOutputStream@@QAEXE@Z
+13649	nf392	005bc277	??_G?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@QAEPAXI@Z	partial	??_GSRecord_005bc277@@QAEPAXI@Z
+13650	nf392	005bc26f	??1?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@QAE@XZ	no_binding	
