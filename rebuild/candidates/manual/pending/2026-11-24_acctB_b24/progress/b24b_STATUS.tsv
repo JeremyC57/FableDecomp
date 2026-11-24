@@ -1,5 +1,5 @@
 address	name	grade	grades_used	note
-00f1eed0	NScript::CQ_ArenaScript::PlayWave	DIFFER(9262v9262)	~45 grades + 8 lk/fsolve probes	one SIB byte; c2 symbol-count residue (leaf s2862 needs 2048..2641); 6 devices dropped
+00f1eed0	NScript::CQ_ArenaScript::PlayWave	DIFFER(9262v9262)	~45 grades + 8 probes (B24B) + ~25 screens + 10 lk/3 inl probes (B24B2)	one SIB byte (raw-checked); best b3 (hdr2, Game pointer, in-row bodies); flip rule 2b-a>220 (L/T); d1b ~CTimer local flips SIB but 53 raw lines (diagnostic only); ESCALATE.md
 00d0c410	CBanditForger::Main	untouched	0	
 00839940	CThingGameObject::OnHit	untouched	0	
 00d0d910	CGate2Guard1::Main	untouched	0	

@@ -1,18 +1,17 @@
 // NScript::CQ_ArenaScript::PlayWave() -- spawn, track and finish one arena wave.
-// Grade: DIFFER(9262v9262) -- one SIB byte at 0x00F1FFBA: retail lea eax,[edi+eax+0x30] (SR temp i*0x38 base), ours [eax+edi+0x30]; c2 operand key s2862 (imported _this of the Creatures operator[], hash 0x65c1) > t7465 (0x14a40). Needs the leaf slot at 2048..2641 (see NOTES).
+// Grade: DIFFER(9262v9262) -- one raw byte: SIB at 0x00F1FFBA (retail lea eax,[edi+eax+0x30], ours [eax+edi+0x30]); raw compare (rawcmp.py, jump targets included) clean elsewhere
 // Leaf: ?PlayWave@CQ_ArenaScript@NScript@@QAEXXZ
 // Flags: (none)
-// Evidence: original Game reference, one countdown Conversation, return helper and pre-header for-scope workaround.
-// Inline-budget: two inline_depth(0) regions (gift cold return; CreatedObject ctor) and FORCEINLINE CTimer::operator= / CRGBColour(r,g,b) in the overlay; B24B dropped the NextCreature x2, final-wait cold-return and PauseMyEntities regions and the GetPos/GetTime force-inlines (each byte-neutral).
-// Inferred: integer-zero spelling of the observed constant-false for wrapper; native float RandAngle division and one gift retain TLC behavior.
+// Evidence: Game as the landed CQ_ArenaScript siblings spell it (FABLE_RETAIL_CLEVELSCRIPTBASE pointer; byte-neutral v the Ego_r reference); one countdown Conversation and the TRetVoid _Fail_Val returns (Ego_d locals, Codex pass 25); the VC6 for-scope idiom before the includes (FableWin `xor;je;jmp` loop heads, GOTCHAS hand3c; also wraps the STLport loops: after the includes 9374).
+// Inline-budget: three one-statement inline_depth(0) regions (gift cold return, CreatedObject ctor, controller-wait cold return: retail calls the out-of-line cleanup / ctor there), forced CTimer::operator= (as landed CQ_ArenaScript::Main) and the forced three-channel CRGBColour ctor (hdr2 opt-in).
+// Inferred: native float RandAngle division and one gift (TLC revision; FableWin has the NumPresents loop) retain TLC behaviour.
 #if defined(_MSC_VER) && _MSC_VER < 1400
 #define for                                                                                                  \
     if (0) {                                                                                                 \
     } else for
 #endif
-#define FABLE_RETAIL_CLEVELSCRIPTBASE_ORIGINAL_MEMBERS
-#define FABLE_RETAIL_CRGBCOLOUR_FORCEINLINE_CTOR3_PASS25
-#define FABLE_RETAIL_ARENA_ORIGINAL_GETTER_CHAIN_PASS25
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CRGBCOLOUR_CTOR3_FORCEINLINE
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_C3DVECTOR
@@ -56,14 +55,22 @@ enum EScriptAIPriority {
 extern CGameScriptInterfaceBase* pDSTGame;                 // 0x0143E8F8
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;     // 0x0143E90C
 long FABLE_FASTCALL GFCharStringToInt(const CCharString&); // 0x0099E7F0
-#define FABLE_RETAIL_SCRIPT_INLINE_ARENA_PASS25
-#include "engine/FableScriptInlineArenaPass25.h"
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::~CScriptThing() { }
+inline CCharString CScriptThing::GetDataString() const { if (PImp.IsNull()) return NullString; return PImp->GetDataString(); }
+inline const C3DVector& CScriptThing::GetPos() const { if (PImp.IsNull()) return NullCoord; return PImp->GetPos(); }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) {}
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+// Inline-budget: retail expands SetTimer at all three countdown assignments (plain inline: 138 hunks); landed sibling
+// CQ_ArenaScript::Main 0x00F0FB70 forces the same body.
+FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #define T IsActiveThreadTerminating()
-#define NSF Game.NewScriptFrame()
+#define NSF Game->NewScriptFrame()
 #define AR_START(THING, HANDLE)                                                                              \
     if (HANDLE.IsValid())                                                                                    \
         HANDLE.Release();                                                                                    \
-    while (!Game.StartScriptingEntity(THING, HANDLE, SCRIPT_AI_PRIORITY_HIGHEST)) {                          \
+    while (!Game->StartScriptingEntity(THING, HANDLE, SCRIPT_AI_PRIORITY_HIGHEST)) {                          \
         NSF;                                                                                                 \
         if (T)                                                                                               \
             return _Fail_Val.Return();                                                                       \
@@ -71,8 +78,8 @@ long FABLE_FASTCALL GFCharStringToInt(const CCharString&); // 0x0099E7F0
     if (T)                                                                                                   \
         return _Fail_Val.Return();
 #define AR_KEEPER(TEXT)                                                                                      \
-    Conversation = Game.AddNewConversation(Game.GetHero(), false, false);                                    \
-    Game.AddLineToConversation(Conversation, TEXT, false, Game.GetHero(), Game.GetHero());
+    Conversation = Game->AddNewConversation(Game->GetHero(), false, false);                                    \
+    Game->AddLineToConversation(Conversation, TEXT, false, Game->GetHero(), Game->GetHero());
 #define AR_COUNT(N)                                                                                          \
     DoorTimer = N;                                                                                           \
     while (DoorTimer.GetTime() > 0) {                                                                        \
@@ -86,8 +93,8 @@ long FABLE_FASTCALL GFCharStringToInt(const CCharString&); // 0x0099E7F0
 // Original for-scope workaround: donor for headers have a constant-false empty arm before the loop.
 void NScript::CQ_ArenaScript::PlayWave() {
     TRetVoid _Fail_Val;
-    CScriptThing SmallEnemySpawnPoint = Game.GetThingWithScriptName("ARENA_SpawnPoint");
-    CScriptThing BigEnemySpawnPoint = Game.GetThingWithScriptName("BigCreatureSpawnPoint");
+    CScriptThing SmallEnemySpawnPoint = Game->GetThingWithScriptName("ARENA_SpawnPoint");
+    CScriptThing BigEnemySpawnPoint = Game->GetThingWithScriptName("BigCreatureSpawnPoint");
     CTimer DoorTimer;
     PauseCrowdChecker = false;
 
@@ -126,10 +133,10 @@ void NScript::CQ_ArenaScript::PlayWave() {
     }
     std::vector<CScriptThing> AllBigSpawnMarkers;
     long MultipleBigEnemySpawnPoints =
-        Game.GetAllThingsWithScriptName("MultipleBigCreatureSpawnPoint", AllBigSpawnMarkers);
+        Game->GetAllThingsWithScriptName("MultipleBigCreatureSpawnPoint", AllBigSpawnMarkers);
     std::vector<CScriptThing> AllSpawnMarkers;
-    long NumSpawns = Game.GetAllThingsWithScriptName("ArenaSpawn", AllSpawnMarkers);
-    CScriptThing FurthestArenaSpawn = Game.GetFurthestWithScriptName(Game.GetHero(), "ArenaSpawn");
+    long NumSpawns = Game->GetAllThingsWithScriptName("ArenaSpawn", AllSpawnMarkers);
+    CScriptThing FurthestArenaSpawn = Game->GetFurthestWithScriptName(Game->GetHero(), "ArenaSpawn");
     long PositiveSpawn = GFCharStringToInt(FurthestArenaSpawn.GetDataString());
     long NegativeSpawn = PositiveSpawn - 1;
     bool NextSpawnPositive = true;
@@ -139,7 +146,7 @@ void NScript::CQ_ArenaScript::PlayWave() {
         NegativeSpawn = NumSpawns - 1;
     }
     std::vector<CScriptThing> CurrentEnemies;
-    Game.GetAllThingsWithScriptName("ArenaEnemy", CurrentEnemies);
+    Game->GetAllThingsWithScriptName("ArenaEnemy", CurrentEnemies);
     if (ArenaRound == 0 && ArenaRoundWave == 0 && CurrentEnemies.size() != 0) {
         if (T)
             return _Fail_Val.Return();
@@ -161,11 +168,11 @@ void NScript::CQ_ArenaScript::PlayWave() {
                     if (NumSpawns == 1) {
                         if (T)
                             return _Fail_Val.Return();
-                        Game.SetCreatureCreationDelayFrames(1);
+                        Game->SetCreatureCreationDelayFrames(1);
                         NextCreature =
-                            Game.CreateCreatureNearby(AR_CREATURE(i).CreatureType,
+                            Game->CreateCreatureNearby(AR_CREATURE(i).CreatureType,
                                                       BigEnemySpawnPoint.GetPos(), 1.0f, "ArenaEnemy", false);
-                        Game.ResetCreatureCreationDelayFrames();
+                        Game->ResetCreatureCreationDelayFrames();
                     } else {
                         if (T)
                             return _Fail_Val.Return();
@@ -175,16 +182,16 @@ void NScript::CQ_ArenaScript::PlayWave() {
                                 if (T)
                                     return _Fail_Val.Return();
 
-                                Game.SetCreatureCreationDelayFrames(1);
-                                NextCreature = Game.CreateCreatureNearby(AR_CREATURE(i).CreatureType,
+                                Game->SetCreatureCreationDelayFrames(1);
+                                NextCreature = Game->CreateCreatureNearby(AR_CREATURE(i).CreatureType,
                                                                          AllBigSpawnMarkers[idx].GetPos(),
                                                                          1.0f, "ArenaEnemy", false);
-                                Game.ResetCreatureCreationDelayFrames();
+                                Game->ResetCreatureCreationDelayFrames();
                             }
                         }
                     }
-                    Game.EntitySetCutsceneBehaviour(NextCreature, CUTSCENE_BEHAVIOUR_PAUSED);
-                    Game.GiveThingBestEnemyTarget(NextCreature, Game.GetHero());
+                    Game->EntitySetCutsceneBehaviour(NextCreature, CUTSCENE_BEHAVIOUR_PAUSED);
+                    Game->GiveThingBestEnemyTarget(NextCreature, Game->GetHero());
                 } else {
                     if (T)
                         return _Fail_Val.Return();
@@ -203,38 +210,38 @@ void NScript::CQ_ArenaScript::PlayWave() {
                                 if (ArenaRound == 3) {
                                     if (T)
                                         return _Fail_Val.Return();
-                                    Game.SetCreatureCreationDelayFrames(1);
-                                    NextCreature = Game.CreateCreature(AR_CREATURE(i).CreatureType,
+                                    Game->SetCreatureCreationDelayFrames(1);
+                                    NextCreature = Game->CreateCreature(AR_CREATURE(i).CreatureType,
                                                                        AllSpawnMarkers[idx].GetPos(),
                                                                        "ArenaEnemy", true);
-                                    Game.ResetCreatureCreationDelayFrames();
+                                    Game->ResetCreatureCreationDelayFrames();
                                 } else {
                                     if (T)
                                         return _Fail_Val.Return();
-                                    Game.SetCreatureCreationDelayFrames(1);
-                                    NextCreature = Game.CreateCreatureNearby(AR_CREATURE(i).CreatureType,
+                                    Game->SetCreatureCreationDelayFrames(1);
+                                    NextCreature = Game->CreateCreatureNearby(AR_CREATURE(i).CreatureType,
                                                                              AllSpawnMarkers[idx].GetPos(),
                                                                              1.0f, "ArenaEnemy", false);
-                                    Game.ResetCreatureCreationDelayFrames();
+                                    Game->ResetCreatureCreationDelayFrames();
                                 }
-                                Game.EntitySetCutsceneBehaviour(NextCreature, CUTSCENE_BEHAVIOUR_PAUSED);
-                                if (Game.GetThingWithScriptName("WhisperAlly").IsAlive()) {
+                                Game->EntitySetCutsceneBehaviour(NextCreature, CUTSCENE_BEHAVIOUR_PAUSED);
+                                if (Game->GetThingWithScriptName("WhisperAlly").IsAlive()) {
                                     if (T)
                                         return _Fail_Val.Return();
                                     if (rand() % 2 == 0) {
                                         if (T)
                                             return _Fail_Val.Return();
-                                        Game.GiveThingBestEnemyTarget(
-                                            NextCreature, Game.GetThingWithScriptName("WhisperAlly"));
+                                        Game->GiveThingBestEnemyTarget(
+                                            NextCreature, Game->GetThingWithScriptName("WhisperAlly"));
                                     } else {
                                         if (T)
                                             return _Fail_Val.Return();
-                                        Game.GiveThingBestEnemyTarget(NextCreature, Game.GetHero());
+                                        Game->GiveThingBestEnemyTarget(NextCreature, Game->GetHero());
                                     }
                                 } else {
                                     if (T)
                                         return _Fail_Val.Return();
-                                    Game.GiveThingBestEnemyTarget(NextCreature, Game.GetHero());
+                                    Game->GiveThingBestEnemyTarget(NextCreature, Game->GetHero());
                                 }
                                 ArenaSpawnNeeded[PositiveSpawn] = true;
                             }
@@ -256,38 +263,38 @@ void NScript::CQ_ArenaScript::PlayWave() {
                                 if (ArenaRound == 3) {
                                     if (T)
                                         return _Fail_Val.Return();
-                                    Game.SetCreatureCreationDelayFrames(1);
-                                    NextCreature = Game.CreateCreature(AR_CREATURE(i).CreatureType,
+                                    Game->SetCreatureCreationDelayFrames(1);
+                                    NextCreature = Game->CreateCreature(AR_CREATURE(i).CreatureType,
                                                                        AllSpawnMarkers[idx].GetPos(),
                                                                        "ArenaEnemy", true);
-                                    Game.ResetCreatureCreationDelayFrames();
+                                    Game->ResetCreatureCreationDelayFrames();
                                 } else {
                                     if (T)
                                         return _Fail_Val.Return();
-                                    Game.SetCreatureCreationDelayFrames(1);
-                                    NextCreature = Game.CreateCreatureNearby(AR_CREATURE(i).CreatureType,
+                                    Game->SetCreatureCreationDelayFrames(1);
+                                    NextCreature = Game->CreateCreatureNearby(AR_CREATURE(i).CreatureType,
                                                                              AllSpawnMarkers[idx].GetPos(),
                                                                              1.0f, "ArenaEnemy", false);
-                                    Game.ResetCreatureCreationDelayFrames();
+                                    Game->ResetCreatureCreationDelayFrames();
                                 }
-                                Game.EntitySetCutsceneBehaviour(NextCreature, CUTSCENE_BEHAVIOUR_PAUSED);
-                                if (Game.GetThingWithScriptName("WhisperAlly").IsAlive()) {
+                                Game->EntitySetCutsceneBehaviour(NextCreature, CUTSCENE_BEHAVIOUR_PAUSED);
+                                if (Game->GetThingWithScriptName("WhisperAlly").IsAlive()) {
                                     if (T)
                                         return _Fail_Val.Return();
                                     if (rand() % 2 == 0) {
                                         if (T)
                                             return _Fail_Val.Return();
-                                        Game.GiveThingBestEnemyTarget(
-                                            NextCreature, Game.GetThingWithScriptName("WhisperAlly"));
+                                        Game->GiveThingBestEnemyTarget(
+                                            NextCreature, Game->GetThingWithScriptName("WhisperAlly"));
                                     } else {
                                         if (T)
                                             return _Fail_Val.Return();
-                                        Game.GiveThingBestEnemyTarget(NextCreature, Game.GetHero());
+                                        Game->GiveThingBestEnemyTarget(NextCreature, Game->GetHero());
                                     }
                                 } else {
                                     if (T)
                                         return _Fail_Val.Return();
-                                    Game.GiveThingBestEnemyTarget(NextCreature, Game.GetHero());
+                                    Game->GiveThingBestEnemyTarget(NextCreature, Game->GetHero());
                                 }
                                 ArenaSpawnNeeded[NegativeSpawn] = true;
                             }
@@ -322,17 +329,17 @@ void NScript::CQ_ArenaScript::PlayWave() {
             if (T)
                 return _Fail_Val.Return();
             CreatureCounter[i] =
-                Game.AddQuestInfoCounterList(AR_CREATURE(i).HUDType, TotalCreatures[i], 1.0f);
+                Game->AddQuestInfoCounterList(AR_CREATURE(i).HUDType, TotalCreatures[i], 1.0f);
         }
         if (MaxCreatures[i] > 0) {
             if (T)
                 return _Fail_Val.Return();
-            Game.UpdateQuestInfoCounterList(CreatureCounter[i], TotalCreatures[i], -1);
+            Game->UpdateQuestInfoCounterList(CreatureCounter[i], TotalCreatures[i], -1);
         }
     }
     if (T)
         return _Fail_Val.Return();
-    Game.DisplayQuestInfo(true);
+    Game->DisplayQuestInfo(true);
     long AllCreatures = 0;
     for (long i = 0; i < 3; ++i) {
         if (T)
@@ -353,7 +360,7 @@ void NScript::CQ_ArenaScript::PlayWave() {
             if (MaxCreatures[i] > 0) {
                 if (T)
                     return _Fail_Val.Return();
-                Game.UpdateQuestInfoCounterList(CreatureCounter[i], TotalCreatures[i], -1);
+                Game->UpdateQuestInfoCounterList(CreatureCounter[i], TotalCreatures[i], -1);
             }
         }
         if (T)
@@ -361,12 +368,12 @@ void NScript::CQ_ArenaScript::PlayWave() {
         if (ExtraCreatures != 0) {
             if (T)
                 return _Fail_Val.Return();
-            Game.RemoveQuestInfoElement(CreatureCounter[0]);
+            Game->RemoveQuestInfoElement(CreatureCounter[0]);
             MaxCreatures[0] += ExtraCreatures;
-            CreatureCounter[0] = Game.AddQuestInfoCounterList(AR_CREATURE(0).HUDType, MaxCreatures[0], 1.0f);
+            CreatureCounter[0] = Game->AddQuestInfoCounterList(AR_CREATURE(0).HUDType, MaxCreatures[0], 1.0f);
             ExtraCreatures = 0;
         }
-        if (!Game.IsLevelLoaded("Arena")) {
+        if (!Game->IsLevelLoaded("Arena")) {
             if (T)
                 return _Fail_Val.Return();
             PlayerLeaving = true;
@@ -387,12 +394,12 @@ void NScript::CQ_ArenaScript::PlayWave() {
         if (MaxCreatures[i] > 0) {
             if (T)
                 return _Fail_Val.Return();
-            Game.RemoveQuestInfoElement(CreatureCounter[i]);
+            Game->RemoveQuestInfoElement(CreatureCounter[i]);
         }
     }
     if (T)
         return _Fail_Val.Return();
-    Game.DisplayQuestInfo(false);
+    Game->DisplayQuestInfo(false);
     ++ArenaRoundWave;
     PauseCrowdChecker = true;
     if (ArenaRoundWave == Rounds[ArenaRound].NumWaves) {
@@ -409,7 +416,7 @@ void NScript::CQ_ArenaScript::PlayWave() {
         if (NumPresents > 0) {
 
 #ifdef _MSC_VER
-// Inline-budget: two inline_depth(0) regions (gift cold return; CreatedObject ctor) and FORCEINLINE CTimer::operator= / CRGBColour(r,g,b) in the overlay; B24B dropped the NextCreature x2, final-wait cold-return and PauseMyEntities regions and the GetPos/GetTime force-inlines (each byte-neutral).
+// Inline-budget: retail shares an out-of-line cleanup at the cold exit.
 #pragma inline_depth(0)
 #endif
             if (T)
@@ -420,7 +427,7 @@ void NScript::CQ_ArenaScript::PlayWave() {
 
             unsigned long random = rand() % pGlobalScriptDef->RewardObjects.size();
 #ifdef _MSC_VER
-// Inline-budget: two inline_depth(0) regions (gift cold return; CreatedObject ctor) and FORCEINLINE CTimer::operator= / CRGBColour(r,g,b) in the overlay; B24B dropped the NextCreature x2, final-wait cold-return and PauseMyEntities regions and the GetPos/GetTime force-inlines (each byte-neutral).
+// Inline-budget: retail calls this constructor at this source site.
 #pragma inline_depth(0)
 #endif
             CScriptThing CreatedObject;
@@ -430,33 +437,40 @@ void NScript::CQ_ArenaScript::PlayWave() {
             C3DVector random_vector(14.0f, 0.0f, 5.0f);
             float RandAngle = (float)(rand() % 360) * (1.0f / 360.0f);
             random_vector.RotateXY(RandAngle);
-            C3DVector spawn_pos = Game.GetThingWithScriptName("ARENA_CentrePoint").GetPos() + random_vector;
-            CreatedObject = Game.CreateObject(pGlobalScriptDef->RewardObjects[random], spawn_pos, "");
+            C3DVector spawn_pos = Game->GetThingWithScriptName("ARENA_CentrePoint").GetPos() + random_vector;
+            CreatedObject = Game->CreateObject(pGlobalScriptDef->RewardObjects[random], spawn_pos, "");
         }
         if (T)
             return _Fail_Val.Return();
-        Game.Pause(1.0f);
-        Game.OverrideMusic(GetFanfareMusic(rand() % 10), false, false);
-        Game.Pause(5.0f);
-        Game.StopOverrideMusic(false);
+        Game->Pause(1.0f);
+        Game->OverrideMusic(GetFanfareMusic(rand() % 10), false, false);
+        Game->Pause(5.0f);
+        Game->StopOverrideMusic(false);
         GivePrizeFund();
-        while (!Game.IsHeroControlledByPlayer()) {
+        while (!Game->IsHeroControlledByPlayer()) {
             NSF;
 
+#ifdef _MSC_VER
+// Inline-budget: retail shares an out-of-line cleanup at the cold exit.
+#pragma inline_depth(0)
+#endif
             if (T)
                 return _Fail_Val.Return();
+#ifdef _MSC_VER
+#pragma inline_depth()
+#endif
         }
 
         if (T)
             return _Fail_Val.Return();
 
         CScriptGameResourceObjectMovieBase speech_movie;
-        Game.StartMovieSequence("", speech_movie);
-        CWideScreenMagicPauseEntities PauseMyEntitiesPlease(Game);
+        Game->StartMovieSequence("", speech_movie);
+        CWideScreenMagicPauseEntities PauseMyEntitiesPlease(*Game);
         CScriptGameResourceObjectScriptedThingBase seh_Hero;
         if (seh_Hero.IsValid())
             seh_Hero.Release();
-        while (!Game.StartScriptingEntity(Game.GetHero(), seh_Hero, SCRIPT_AI_PRIORITY_HIGHEST)) {
+        while (!Game->StartScriptingEntity(Game->GetHero(), seh_Hero, SCRIPT_AI_PRIORITY_HIGHEST)) {
             NSF;
 
             if (T)
@@ -467,10 +481,10 @@ void NScript::CQ_ArenaScript::PlayWave() {
         if (ArenaRound < 8) {
             if (T)
                 return _Fail_Val.Return();
-            Game.GiveHeroYesNoQuestion(GetEndRoundQuestion(), "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES",
+            Game->GiveHeroYesNoQuestion(GetEndRoundQuestion(), "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES",
                                        "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_NO", "", true);
             long answer;
-            while ((answer = Game.MsgIsQuestionAnsweredYesOrNo()) < 0) {
+            while ((answer = Game->MsgIsQuestionAnsweredYesOrNo()) < 0) {
                 NSF;
                 if (T)
                     return _Fail_Val.Return();
@@ -485,12 +499,12 @@ void NScript::CQ_ArenaScript::PlayWave() {
                 if (T)
                     return _Fail_Val.Return();
                 PlayerLeaving = true;
-                Game.GiveHeroGold(GoldTotal);
+                Game->GiveHeroGold(GoldTotal);
                 GoldTotal = 0;
-                long Conversation = Game.AddNewConversation(Game.GetHero(), false, false);
-                Game.AddLineToConversation(Conversation, "TEXT_QST_005_V2_ARENA_KEEPER_RETURN", false,
-                                           Game.GetHero(), Game.GetHero());
-                while (Game.IsConversationActive(Conversation)) {
+                long Conversation = Game->AddNewConversation(Game->GetHero(), false, false);
+                Game->AddLineToConversation(Conversation, "TEXT_QST_005_V2_ARENA_KEEPER_RETURN", false,
+                                           Game->GetHero(), Game->GetHero());
+                while (Game->IsConversationActive(Conversation)) {
                     NSF;
                     if (T)
                         return _Fail_Val.Return();
@@ -499,8 +513,8 @@ void NScript::CQ_ArenaScript::PlayWave() {
                     return _Fail_Val.Return();
             }
         }
-        Game.FadeScreenOut(0.5f, 0.5f, CRGBColour(0, 0, 0));
-        Game.Pause(0.5f);
+        Game->FadeScreenOut(0.5f, 0.5f, CRGBColour(0, 0, 0));
+        Game->Pause(0.5f);
     }
 }
 
