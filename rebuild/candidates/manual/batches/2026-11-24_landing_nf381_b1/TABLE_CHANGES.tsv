@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	??0CShoveHaPennyRegionDef@@QAE@XZ	0044c0c0	0044c301	NF381 (NF380 q1): the 78 landed binders of 0x0044C0C0 that named the base CShoveHaPennyRegionDef now bind ??0CSubDefClassBase@@QAE@XZ (line already in the table, witness 0044c57d). Census by compile of every other landed caller of 0x0044C0C0 that names the class (17 rows, evidence/census_c1*.txt): none binds the old spelling. The real ctor 0x007D10F0 has no retail caller (exe scan), so no line moves there.

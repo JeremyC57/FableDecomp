@@ -212,7 +212,6 @@ fpair_00a03bb0	00a03bb0	00445920
 ?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z	004888c0	00449cb0
 ??0CBaseIntelligentPointer@@QAE@XZ	00a01b10	0044a5a0
 ??_7CIntelligentPointer@@6B@	01231c4c	0044a5a0
-??0CShoveHaPennyRegionDef@@QAE@XZ	0044c0c0	0044c301
 ??_7CPhysicsDef@@6B@	01231e34	0044c146
 ??_7CTCNoiseDef@@6B@	01231e9c	0044c1bb
 ??0CDefBase_0044c0c0@@QAE@XZ	0044c0c0	0044c29c
@@ -20960,7 +20959,6 @@ _floor0_map_lazy_init@12	00ca36e0	00ca39c0
 ?_M_destroy_nodes@?$_Deque_base@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@IAEXPAPAW4ETutorialCategory@@0@Z	0040e130	00412210
 ?IsEntityScriptBound@CScriptBase@@QBE_NABVCCharString@@@Z	00cb7d60	004afbb0
 ?OnScriptedEntityInterrupted@CScriptBase@@QAEX_K@Z	00cb7bc0	004afbb0
-??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	0042a2ca	00558770
 ?push_back@CChildVector@NUISystem@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	00535ad0	00558770
 ?OnLeftClicked@CClickable@NUISystem@@UAEXXZ	0055af60	0055a5d0
 ?LowerBound@CProtoMap@@QAEPAUCProtoEntry@@PBW4EAnimComponent@@@Z	005dfa50	005dd090

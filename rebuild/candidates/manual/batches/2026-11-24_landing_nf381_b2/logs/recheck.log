@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00558770   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00558770   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00558770   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00558770   WARN SHARED_HEADER_AVAILABLE CText (engine/CText.h)
+00558770   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2ca labelled 'CCountedPointer<NUISystem::CText>::SetStaticCast<NUISystem::CComponent>'
+00558770   RELOCATION_MATCH PASS   Initialise
+
+WINS: 1
+  00558770 RELOCATION_MATCH NUISystem::CKeyRedefiner::Initialise

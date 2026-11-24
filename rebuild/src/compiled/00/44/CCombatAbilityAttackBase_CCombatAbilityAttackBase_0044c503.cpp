@@ -1,9 +1,9 @@
 // CCombatAbilityAttackBase::CCombatAbilityAttackBase(ECombatAbilityInterfaceType interfaceType) -- def base, this class's vtable, then the embedded melee-attack data built for the interface type
+// Name fix (NF381): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CCombatAbilityAttackBase : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; was CShoveHaPennyRegionDef, whose own ctor is 0x007D10F0 in tc_tavern_game_shove_ha_penny.obj).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044C503, length 32 bytes.
 // Leaf: ??0CCombatAbilityAttackBase
-// Callees: the def-class base constructor @ 0x0044C0C0 (catalog-wide symbol ??0CShoveHaPennyRegionDef@@QAE@XZ, the
-// name 77 landed rows bind to that address -- it is the shared CDefClassBase-level constructor; kept for
-// one-symbol-per-address), CCombatAbilityMeleeAttackData::CCombatAbilityMeleeAttackData(long) @ 0x0044C47B (landed).
+// Callees: the def-class base constructor @ 0x0044C0C0 (??0CSubDefClassBase@@QAE@XZ: Ego_r / FableWin
+// definition_manager.obj; retail has no ICF, so the address carries that one name), CCombatAbilityMeleeAttackData::CCombatAbilityMeleeAttackData(long) @ 0x0044C47B (landed).
 // Vtable 0x012324D4 = CCombatAbilityAttackBase (rtti-vtables.tsv).
 // Label correction: the manifest's "CIntelligentPointer<const CThing>::CIntelligentPointer" is propagated. The
 // callers 0x0044C535 / 0x0044C54D / 0x0044C565 are the derived attack-def constructors passing interface types
@@ -12,10 +12,10 @@
 // Shape: size-optimised module (`push dword ptr [esp+8]` pass-through): `#pragma optimize("s", on)`. Base call,
 // the argument push, the member's `lea`, the vtable store, then the member constructor.
 #pragma optimize("s", on)
-class CShoveHaPennyRegionDef { public:                // the def-class base subobject (0x28 bytes: CResource .. CDefClassBase)
+class CSubDefClassBase { public:                // the def-class base subobject (0x28 bytes: CResource .. CDefClassBase)
     virtual void v00();
     unsigned char _body[0x24];                 // +0x04 .. +0x28
-    CShoveHaPennyRegionDef();                  // 0x0044C0C0
+    CSubDefClassBase();                  // 0x0044C0C0
 };
 
 class CCombatAbilityData { public:                    // vtable 0x01232484, 0x18 bytes
@@ -34,7 +34,7 @@ class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:   // v
     CCombatAbilityMeleeAttackData(long interfaceType);        // 0x0044C47B
 };
 
-class CCombatAbilityAttackBase : public CShoveHaPennyRegionDef { public:   // vtable 0x012324D4
+class CCombatAbilityAttackBase : public CSubDefClassBase { public:   // vtable 0x012324D4
     CCombatAbilityMeleeAttackData CombatAbility;              // +0x28
     virtual void v00();
     CCombatAbilityAttackBase(long interfaceType);

@@ -4,10 +4,10 @@
 
 static int g_order[4];
 static int g_n = 0;
-class CShoveHaPennyRegionDef { public:
-    virtual ~CShoveHaPennyRegionDef() {}
+class CSubDefClassBase { public:
+    virtual ~CSubDefClassBase() {}
     unsigned char _body[0x24];
-    CShoveHaPennyRegionDef() { g_order[g_n++] = 1; }
+    CSubDefClassBase() { g_order[g_n++] = 1; }
 };
 class CCombatAbilityData { public:
     virtual ~CCombatAbilityData() {}
@@ -28,7 +28,7 @@ class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:
         InterfaceType = interfaceType; Blockable = true; Knockdown = false; Damage = 0.0f;
     }
 };
-class CCombatAbilityAttackBase : public CShoveHaPennyRegionDef { public:
+class CCombatAbilityAttackBase : public CSubDefClassBase { public:
     CCombatAbilityMeleeAttackData CombatAbility;
     CCombatAbilityAttackBase(long interfaceType);
 };

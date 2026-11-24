@@ -1,0 +1,3 @@
+# Landing nf381 b2: 0x00558770 calls SetStaticCast on CCountedPointer<CText>, not <CList>
+
+In NUISystem::CKeyRedefiner::Initialise 0x00558770 the local model's CList becomes CText (members PActionText / PKeyText, as Ego_r and the shared header name them); the call to 0x0042A2CA is `CCountedPointer<CText>::SetStaticCast<CComponent>` (FableWin's Initialise calls the CText instance; the CList instance is 0x0042A2DB). Gates: vland PASS, objsec ALL_EQ with 5 CList -> CText renames, pick-any new NEQ set a subset of HEAD's with equal reach (7 to 6), 0 link duplicates. Table: the CList line at 0x0042A2CA deleted. T3 nf311 (port of 0x00535AD0) names this row in its reason column only (not a reservation, NF316 Q3); that port starts from this text.

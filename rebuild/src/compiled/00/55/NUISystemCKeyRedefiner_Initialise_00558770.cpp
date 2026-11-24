@@ -1,14 +1,15 @@
-// NUISystem::CKeyRedefiner::Initialise() -- clickable initialisation, then (once each) create the two list components named by the def, append them to the child vector, keep them as CList pointers (+0x194/+0x198), initialise them and parent them to this redefiner
-// Grade: RELOCATION_MATCH (sec1b 2026-10-30) -- the local CListPointer model moved onto the shared engine/CCountedPointer.h (CCountedPointer<CList>): its dtor gives retail's `dec [edi]; jne` release and the register web; SetStaticCast stays out of line (0x0042A2CA) by VC7.1's own choice
+// NUISystem::CKeyRedefiner::Initialise() -- clickable initialisation, then (once each) create the two list components named by the def, append them to the child vector, keep them as the CText pointers PActionText / PKeyText (+0x194/+0x198), initialise them and parent them to this redefiner
+// Name fix (NF381): 0x0042A2CA is CCountedPointer<NUISystem::CText>::SetStaticCast<CComponent> (FableWin CKeyRedefiner::Initialise calls the CText instance; the CList instance is 0x0042A2DB; Ego_r CKeyRedefiner PActionText / PKeyText are CText*); was the CList instance.
+// Grade: RELOCATION_MATCH (sec1b 2026-10-30) -- the local counted-pointer model moved onto the shared engine/CCountedPointer.h (CCountedPointer<CText>): its dtor gives retail's `dec [edi]; jne` release and the register web; SetStaticCast stays out of line (0x0042A2CA) by VC7.1's own choice
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00558770, length 472 bytes (vtable slot 43, plain `ret`).
 // Callees: CClickable::Initialise @ 0x0055AC90, CManager::GetInstance @ 0x0041E5F2 (static `__fastcall`), CManager::
 //   CreateComponent(long) @ 0x0041D21B, CCountedPointer<CComponent>::CCountedPointer(CComponent*) @ 0x00429C15, the child vector's
-//   push_back @ 0x00535AD0, CCountedPointer<CList>::SetStaticCast<CComponent> @ 0x0042A2CA, operator delete (import thunk 0x00BFE9BC);
+//   push_back @ 0x00535AD0, CCountedPointer<CText>::SetStaticCast<CComponent> @ 0x0042A2CA, operator delete (import thunk 0x00BFE9BC);
 //   component slots 43 Initialise, 51 (descriptive SetParent), 108 GetDef (CDefPointer by hidden pointer), the def's slot 1.
 // Layout (retail = Ego_r.pdb - 0x30 like the landed CRedefinerList rows): the component's child vector of CCountedPointer<CComponent>
 //   +0xb0, the two list pointers +0x194/+0x198; the def's list-component definitions at +0x198/+0x19c.
 // Shape: the landed CRedefinerList::Initialise 0x005566A0 model (CDefPointer local with the inline ReleaseTemporary, counted-pointer
-//   temporaries with the inline release); a CCountedPointer<CList> local zero-initialised up front and released at the end; the new
+//   temporaries with the inline release); a CCountedPointer<CText> local zero-initialised up front and released at the end; the new
 //   child is addressed as `Children[Children.size() - 1]`.
 #include "engine/CCountedPointer.h"
 namespace NUISystem {
@@ -175,9 +176,9 @@ public:
  public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
 };
-class CList : public CComponent { public:
+class CText : public CComponent { public:
 };
-typedef CCountedPointer<CList> CListPointer;
+typedef CCountedPointer<CText> CTextPointer;
 struct CChildVector {                                   // STLport vector<CCountedPointer<CComponent> >
     CCountedPointer<CComponent>* _M_start;
     CCountedPointer<CComponent>* _M_finish;
@@ -193,8 +194,8 @@ class CClickable : public CComponent { public:
     void Initialise();                                  // 0x0055AC90
 };
 class CKeyRedefiner : public CClickable { public:
-    CList*        PHeaderList;                          // +0x194
-    CList*        PActionList;                          // +0x198
+    CText*        PActionText;                          // +0x194
+    CText*        PKeyText;                             // +0x198
     virtual void Initialise();
 };
 
@@ -202,22 +203,22 @@ void CKeyRedefiner::Initialise()
 {
     CClickable::Initialise();
     CDefPointer def = GetDef();
-    CListPointer list;
-    if (!PHeaderList && def->HeaderListDef) {
+    CTextPointer text;
+    if (!PActionText && def->HeaderListDef) {
         Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->HeaderListDef)));
-        list.SetStaticCast(Children[Children.size() - 1]);
-        CList* header = list.Data;
+        text.SetStaticCast(Children[Children.size() - 1]);
+        CText* header = text.Data;
         header->Initialise();
         Children[Children.size() - 1]->SetParent(this);
-        PHeaderList = header;
+        PActionText = header;
     }
-    if (!PActionList && def->ActionListDef) {
+    if (!PKeyText && def->ActionListDef) {
         Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->ActionListDef)));
-        list.SetStaticCast(Children[Children.size() - 1]);
-        CList* actions = list.Data;
+        text.SetStaticCast(Children[Children.size() - 1]);
+        CText* actions = text.Data;
         actions->Initialise();
         Children[Children.size() - 1]->SetParent(this);
-        PActionList = actions;
+        PKeyText = actions;
     }
 }
 

@@ -1,0 +1,134 @@
+queue	item	status	reason
+q1	0044c1bb	skipped	option S thin row of owner 0x0045C5F6; owner compiled (census c1): it binds ??0CSubDefClassBase@@QAE@XZ, not the old spelling, so no owner edit
+q1	0044c29c	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase_0044c0c0@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	0044c301	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c317	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c32d	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c343	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c368	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c37e	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c394	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c3d8	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c503	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c57d	skipped	already binds ??0CSubDefClassBase@@QAE@XZ (compiled, census c1); the text hit is a comment; also NF378 skipped-conflict (NF383)
+q1	0044c5bd	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c5d3	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c5e9	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c5ff	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c615	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c62b	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c641	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c657	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c66d	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c683	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044c699	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	0044f607	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	00472a8d	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004d324b	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d3291	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d330a	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d33b0	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d33c6	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d340c	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d3452	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d35cc	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d3642	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d36fe	skipped	already binds ??0CSubDefClassBase@@QAE@XZ (compiled, census c1); the text hit is a comment
+q1	004d38b7	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d3926	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d3dc9	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d405a	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004d40fe	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d4144	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d4199	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d4578	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d462a	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d46e3	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d488b	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d4b85	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d4e66	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d4fcf	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase_0044c0c0@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004d4ffd	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d50a0	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5116	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d512c	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d51ff	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d52e8	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d537c	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5392	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d583d	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5969	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d597f	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d59c8	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5b03	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5c31	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5c77	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5cbd	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5d83	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5dac	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5dd5	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5dfe	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d5f95	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d6165	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d618e	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d6239	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d6320	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d648d	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d64e6	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d65ef	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d6638	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CShoveHaPennyRegionDef_Base@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004d665e	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d669a	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d79f9	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d7a0f	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d7a25	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d7a4a	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d7a60	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004d7ad3	done	batches/b1 ACCEPT: binder respell ??0CShoveHaPennyRegionDef -> ??0CSubDefClassBase at 0x0044C0C0
+q1	004dff04	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase_0044c0c0@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004e00bc	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase_0044c0c0@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004e06c3	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase_0044c0c0@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004e1049	skipped	already binds ??0CSubDefClassBase@@QAE@XZ (compiled, census c1); the text hit is a comment
+q1	004e1105	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004e1722	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CShoveHaPennyRegionDef_Base@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004e2612	skipped	already binds ??0CSubDefClassBase@@QAE@XZ (compiled, census c1); the text hit is a comment
+q1	004e373b	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase_0044c0c0@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004e3e2a	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefBase@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004ead07	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eae1e	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eaf33	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eaf7e	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eafa3	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eafa7	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eafc9	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eafe8	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004eb9e8	skipped	does not bind the old spelling (compiled, census c1): binds the stand-in ??0CDefinitionBase@@QAE@XZ at 0x0044C0C0 -> QUEUE_PROPOSALS p1 (not this job)
+q1	004ebca9	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004ebf32	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004ec10f	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004edd13	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	004fa277	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	00676be0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007cf860	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d0070	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d0a40	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d10f0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d1420	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d14b0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d17a0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d2260	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d22f0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d2370	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d23b0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d24f0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d2670	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d26e0	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q1	007d2740	skipped	not a binder of 0x0044C0C0: its retail body has no call / reference to 0x0044C0C0 (exe scan, evidence/callers_exe.tsv), so it cannot witness the line; the text hit is the real CShoveHaPennyRegionDef family or a comment
+q3	0041a3d0<-0042ded5	skipped	Account B pending work (brief)
+q3	0042a2ca<-00558770	done	batches/b2 ACCEPT: CCountedPointer<CList> -> <CText> SetStaticCast (local CList -> CText, members PActionText / PKeyText); 5 renames by one rule; CList line at 0x0042A2CA deleted. Note: T3_PORT_QUEUE nf311 (0x00535AD0 port) names binder 0x00558770 in its reason column (not col 2/3): the T3 port rebases on this
+q3	00625350<-006314c0	skipped	target 0x00625350 is an NF382 q2 self that still defines ??4CConfigOptionsDefaultsDef; respelling the binder alone leaves ??4CUIStateDef unresolved where HEAD resolved -> unit with the NF382 self rename (QUEUE p2)
+q3	006ba420<-006bab80	skipped	binder 0x006BAB80 is an NF380 q6 identity-research address (NF382)
+q3	006ba6d0<-006bab80	skipped	binder 0x006BAB80 is an NF380 q6 identity-research address (NF382)
+q3	00af0710<-00aeef40	skipped	binder 0x00AEEF40 is a T3_PORT_QUEUE row (nf334, column 2: identity research); target self is a stand-in (NF284 AutoTinyVirtualObject, T3)
+q3	00825d40<-00826a00	skipped	NF382 self (q2; same row as 0x00826A00)
+q3	009e6530<-00a70ff0	skipped	ruling unknown (inline-operator context: ??M binder may be inlined in retail) and the target 0x009E6530 is an NF382 q2 self

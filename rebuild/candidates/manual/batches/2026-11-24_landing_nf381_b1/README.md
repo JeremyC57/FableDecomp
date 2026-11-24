@@ -1,0 +1,7 @@
+# Landing nf381 b1: 78 generated Def-ctor rows call 0x0044C0C0 by its one name, CSubDefClassBase
+
+Agent NF381 (pending/2026-11-24_nf381_handback; NF380 q1). 77 generated Def-ctor rows plus 0x0044C503 called 0x0044C0C0 as `??0CShoveHaPennyRegionDef@@QAE@XZ`; their local base class is now `CSubDefClassBase` (as in the nf380 pilot 0x0044C146), and the three tests that carry the model are respelled too.
+- Identity: `??0CSubDefClassBase@@QAE@XZ` in both PDB name sets and definition_manager.obj of Ego_r (index 9, 29 B) and FableWin; the retail RTTI direct base of every derived def is CSubDefClassBase. The real CShoveHaPennyRegionDef ctor is 0x007D10F0 (tc_tavern_game_shove_ha_penny.obj), which no retail code calls.
+- Gates: vland HEAD and new RELOCATION_MATCH PASS; objsec ALL_EQ, one rename per row; pick-any same, 0 reach flips; /FORCE link with 0x0044C0C0 and 0x007D10F0: 0 duplicates, 0 unresolved (at HEAD these calls resolved to the 0x007D10F0 body).
+- Table: `??0CShoveHaPennyRegionDef@@QAE@XZ -> 0044c0c0` deleted. Census by compile (coordinator): the other 72 landed callers of 0x0044C0C0 compiled; none binds that spelling (two bind the stand-in `??0CShoveHaPennyRegionDef_Base`, queued T3 nf381 0x0044C0C0 with the other stand-ins).
+- The shared-header route (engine/CSubDefClassBase.h) cannot be ALL_EQ: it brings the real CDefClassBase vtable chain (evidence in the hand-back; header debt p3).

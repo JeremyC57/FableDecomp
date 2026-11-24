@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z	0042a2ca	00558770	NF381 (NF380 q3): 00558770 now binds the CText instance (line already in the table, witness 0041e6d3); the only other landed caller of 0x0042A2CA, 0041e6d3, binds CText there and CList at 0x0042A2DB (compiled, evidence/census_c2_0041e6d3.txt)

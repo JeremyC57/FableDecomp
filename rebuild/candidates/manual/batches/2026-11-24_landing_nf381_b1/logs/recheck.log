@@ -1,0 +1,306 @@
+addr       parity           behav  name
+0044c301   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c301   RELOCATION_MATCH PASS   CSpecialAbilitiesDrainLifeDataDef
+0044c317   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c317   RELOCATION_MATCH PASS   CSpecialAbilitiesForcePushDataDef
+0044c32d   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c32d   WARN SHARED_HEADER_AVAILABLE CCreatureStatsDef (engine/CCreatureStatsDef.h)
+0044c32d   RELOCATION_MATCH PASS   CCreatureStatsDef
+0044c343   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c343   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+0044c343   RELOCATION_MATCH PASS   CCoopSpiritDef
+0044c368   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c368   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef (engine/CContextSensitiveItemDef.h)
+0044c368   RELOCATION_MATCH PASS   CContextSensitiveItemDef
+0044c37e   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c37e   WARN SHARED_HEADER_AVAILABLE CBonusItemDef (engine/CBonusItemDef.h)
+0044c37e   RELOCATION_MATCH PASS   CBonusItemDef
+0044c394   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c394   WARN SHARED_HEADER_AVAILABLE CHeroTitleDef (engine/CHeroTitleDef.h)
+0044c394   RELOCATION_MATCH PASS   CHeroTitleDef
+0044c3d8   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c3d8   WARN SHARED_HEADER_AVAILABLE CHairCardDef (engine/CHairCardDef.h)
+0044c3d8   RELOCATION_MATCH PASS   CHairCardDef
+0044c503   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c503   WARN SHARED_HEADER_AVAILABLE CCombatAbilityData (engine/CCombatAbilityData.h)
+0044c503   WARN SHARED_HEADER_AVAILABLE CCombatAbilityMeleeAttackData (engine/CCombatAbilityMeleeAttackData.h)
+0044c503   WARN SHARED_HEADER_AVAILABLE CCombatAbilityAttackBase (engine/CCombatAbilityAttackBase.h)
+0044c503   RELOCATION_MATCH PASS   CCombatAbilityAttackBase
+0044c5bd   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c5bd   WARN SHARED_HEADER_AVAILABLE CDragonActionSwoopDef (engine/CDragonActionSwoopDef.h)
+0044c5bd   RELOCATION_MATCH PASS   CDragonActionSwoopDef
+0044c5d3   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c5d3   RELOCATION_MATCH PASS   CDragonActionNapalmDef
+0044c5e9   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c5e9   RELOCATION_MATCH PASS   CDragonActionHoverDef
+0044c5ff   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c5ff   WARN SHARED_HEADER_AVAILABLE CAugmentationDef (engine/CAugmentationDef.h)
+0044c5ff   RELOCATION_MATCH PASS   CAugmentationDef
+0044c615   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c615   RELOCATION_MATCH PASS   CAbilityDef
+0044c62b   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c62b   WARN SHARED_HEADER_AVAILABLE CJackDragonDef (engine/CJackDragonDef.h)
+0044c62b   RELOCATION_MATCH PASS   CJackDragonDef
+0044c641   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c641   WARN SHARED_HEADER_AVAILABLE CBriarRoseDef (engine/CBriarRoseDef.h)
+0044c641   RELOCATION_MATCH PASS   CBriarRoseDef
+0044c657   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c657   WARN SHARED_HEADER_AVAILABLE CSnowTrollDef (engine/CSnowTrollDef.h)
+0044c657   RELOCATION_MATCH PASS   CSnowTrollDef
+0044c66d   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c66d   RELOCATION_MATCH PASS   CGuildMasterDef
+0044c683   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c683   WARN SHARED_HEADER_AVAILABLE CSummonerDef (engine/CSummonerDef.h)
+0044c683   RELOCATION_MATCH PASS   CSummonerDef
+0044c699   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c699   WARN SHARED_HEADER_AVAILABLE CExplosiveTrailDef (engine/CExplosiveTrailDef.h)
+0044c699   RELOCATION_MATCH PASS   CExplosiveTrailDef
+0044f607   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044f607   WARN SHARED_HEADER_AVAILABLE CThingMultiArrowShotDef (engine/CThingMultiArrowShotDef.h)
+0044f607   RELOCATION_MATCH PASS   CThingMultiArrowShotDef
+004d324b   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d324b   WARN SHARED_HEADER_AVAILABLE CBuyHouseDef (engine/CBuyHouseDef.h)
+004d324b   RELOCATION_MATCH PASS   CBuyHouseDef
+004d3291   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d3291   WARN SHARED_HEADER_AVAILABLE CWifeDef (engine/CWifeDef.h)
+004d3291   RELOCATION_MATCH PASS   CWifeDef
+004d330a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d330a   WARN SHARED_HEADER_AVAILABLE CDoorDef (engine/CDoorDef.h)
+004d330a   RELOCATION_MATCH PASS   CDoorDef
+004d33b0   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d33b0   WARN SHARED_HEADER_AVAILABLE CKickableDef (engine/CKickableDef.h)
+004d33b0   RELOCATION_MATCH PASS   CKickableDef
+004d33c6   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d33c6   WARN SHARED_HEADER_AVAILABLE CLightDef (engine/CLightDef.h)
+004d33c6   RELOCATION_MATCH PASS   CLightDef
+004d340c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d340c   WARN SHARED_HEADER_AVAILABLE CSpotLightDef (engine/CSpotLightDef.h)
+004d340c   RELOCATION_MATCH PASS   CSpotLightDef
+004d3452   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d3452   WARN SHARED_HEADER_AVAILABLE CHeroDef (engine/CHeroDef.h)
+004d3452   RELOCATION_MATCH PASS   CHeroDef
+004d35cc   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d35cc   WARN SHARED_HEADER_AVAILABLE CPerceivedThingDef (engine/CPerceivedThingDef.h)
+004d35cc   RELOCATION_MATCH PASS   CPerceivedThingDef
+004d3642   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d3642   WARN SHARED_HEADER_AVAILABLE CStealthDef (engine/CStealthDef.h)
+004d3642   RELOCATION_MATCH PASS   CStealthDef
+004d38b7   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d38b7   WARN SHARED_HEADER_AVAILABLE CExplodingObjectDef (engine/CExplodingObjectDef.h)
+004d38b7   RELOCATION_MATCH PASS   CExplodingObjectDef
+004d3926   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d3926   WARN SHARED_HEADER_AVAILABLE CLookDef (engine/CLookDef.h)
+004d3926   RELOCATION_MATCH PASS   CLookDef
+004d3dc9   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d3dc9   WARN SHARED_HEADER_AVAILABLE CEnemyDef (engine/CEnemyDef.h)
+004d3dc9   RELOCATION_MATCH PASS   CEnemyDef
+004d40fe   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d40fe   WARN SHARED_HEADER_AVAILABLE CStockItemDef (engine/CStockItemDef.h)
+004d40fe   RELOCATION_MATCH PASS   CStockItemDef
+004d4144   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4144   WARN SHARED_HEADER_AVAILABLE CTimeAppearanceFadeDef (engine/CTimeAppearanceFadeDef.h)
+004d4144   RELOCATION_MATCH PASS   CTimeAppearanceFadeDef
+004d4199   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4199   WARN SHARED_HEADER_AVAILABLE CGiftDef (engine/CGiftDef.h)
+004d4199   RELOCATION_MATCH PASS   CGiftDef
+004d4578   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4578   WARN SHARED_HEADER_AVAILABLE CHighlightItemDef (engine/CHighlightItemDef.h)
+004d4578   RELOCATION_MATCH PASS   CHighlightItemDef
+004d462a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d462a   WARN SHARED_HEADER_AVAILABLE CHeroCentreDef (engine/CHeroCentreDef.h)
+004d462a   RELOCATION_MATCH PASS   CHeroCentreDef
+004d46e3   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d46e3   RELOCATION_MATCH PASS   CBoastingPodiumDef
+004d488b   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d488b   WARN SHARED_HEADER_AVAILABLE CShipDef (engine/CShipDef.h)
+004d488b   RELOCATION_MATCH PASS   CShipDef
+004d4b85   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4b85   WARN SHARED_HEADER_AVAILABLE CExpressionSubDef (engine/CExpressionSubDef.h)
+004d4b85   RELOCATION_MATCH PASS   CExpressionSubDef
+004d4e66   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4e66   WARN SHARED_HEADER_AVAILABLE COccupiableDef (engine/COccupiableDef.h)
+004d4e66   RELOCATION_MATCH PASS   COccupiableDef
+004d4ffd   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4ffd   WARN SHARED_HEADER_AVAILABLE CGuardDef (engine/CGuardDef.h)
+004d4ffd   RELOCATION_MATCH PASS   CGuardDef
+004d50a0   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d50a0   WARN SHARED_HEADER_AVAILABLE CCrateStackDef (engine/CCrateStackDef.h)
+004d50a0   RELOCATION_MATCH PASS   CCrateStackDef
+004d5116   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5116   WARN SHARED_HEADER_AVAILABLE COverheadDisplayDef (engine/COverheadDisplayDef.h)
+004d5116   RELOCATION_MATCH PASS   COverheadDisplayDef
+004d512c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d512c   WARN SHARED_HEADER_AVAILABLE CTavernTableDef (engine/CTavernTableDef.h)
+004d512c   RELOCATION_MATCH PASS   CTavernTableDef
+004d51ff   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d51ff   WARN SHARED_HEADER_AVAILABLE CTavernDef (engine/CTavernDef.h)
+004d51ff   RELOCATION_MATCH PASS   CTavernDef
+004d52e8   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d52e8   RELOCATION_MATCH PASS   CDrunkennessDef
+004d537c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d537c   WARN SHARED_HEADER_AVAILABLE CFireballSpellLevelDef (engine/CFireballSpellLevelDef.h)
+004d537c   RELOCATION_MATCH PASS   CFireballSpellLevelDef
+004d5392   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5392   WARN SHARED_HEADER_AVAILABLE CThingDrainLifeShotDef (engine/CThingDrainLifeShotDef.h)
+004d5392   RELOCATION_MATCH PASS   CThingDrainLifeShotDef
+004d583d   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d583d   WARN SHARED_HEADER_AVAILABLE CGoldDef (engine/CGoldDef.h)
+004d583d   RELOCATION_MATCH PASS   CGoldDef
+004d5969   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5969   WARN SHARED_HEADER_AVAILABLE CCoinGameObstacleDef (engine/CCoinGameObstacleDef.h)
+004d5969   RELOCATION_MATCH PASS   CCoinGameObstacleDef
+004d597f   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d597f   WARN SHARED_HEADER_AVAILABLE CTavernGameCoinBaseDef (engine/CTavernGameCoinBaseDef.h)
+004d597f   RELOCATION_MATCH PASS   CTavernGameCoinBaseDef
+004d59c8   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d59c8   WARN SHARED_HEADER_AVAILABLE CTavernGameCoinGolfDef (engine/CTavernGameCoinGolfDef.h)
+004d59c8   RELOCATION_MATCH PASS   CTavernGameCoinGolfDef
+004d5b03   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5b03   WARN SHARED_HEADER_AVAILABLE CDecapitationDef (engine/CDecapitationDef.h)
+004d5b03   RELOCATION_MATCH PASS   CDecapitationDef
+004d5c31   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5c31   RELOCATION_MATCH PASS   CWallMountEffectsDef
+004d5c77   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5c77   WARN SHARED_HEADER_AVAILABLE CFishDef (engine/CFishDef.h)
+004d5c77   RELOCATION_MATCH PASS   CFishDef
+004d5cbd   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5cbd   RELOCATION_MATCH PASS   CTeleporterDef
+004d5d83   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5d83   WARN SHARED_HEADER_AVAILABLE CHeroSpecialMovementDef (engine/CHeroSpecialMovementDef.h)
+004d5d83   RELOCATION_MATCH PASS   CHeroSpecialMovementDef
+004d5dac   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5dac   WARN SHARED_HEADER_AVAILABLE CResurrectionItemDef (engine/CResurrectionItemDef.h)
+004d5dac   RELOCATION_MATCH PASS   CResurrectionItemDef
+004d5dd5   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5dd5   WARN SHARED_HEADER_AVAILABLE CKrakenTentacleDef (engine/CKrakenTentacleDef.h)
+004d5dd5   RELOCATION_MATCH PASS   CKrakenTentacleDef
+004d5dfe   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5dfe   WARN SHARED_HEADER_AVAILABLE CAICreatureWillPowerIndicatorDef (engine/CAICreatureWillPowerIndicatorDef.h)
+004d5dfe   RELOCATION_MATCH PASS   CAICreatureWillPowerIndicatorDef
+004d5f95   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d5f95   RELOCATION_MATCH PASS   CFishingRodDef
+004d6165   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d6165   WARN SHARED_HEADER_AVAILABLE CNymphDef (engine/CNymphDef.h)
+004d6165   RELOCATION_MATCH PASS   CNymphDef
+004d618e   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d618e   WARN SHARED_HEADER_AVAILABLE CSummonDef (engine/CSummonDef.h)
+004d618e   RELOCATION_MATCH PASS   CSummonDef
+004d6239   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d6239   WARN SHARED_HEADER_AVAILABLE CCameraCollisionDef (engine/CCameraCollisionDef.h)
+004d6239   RELOCATION_MATCH PASS   CCameraCollisionDef
+004d6320   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d6320   WARN SHARED_HEADER_AVAILABLE CTCVolumeContainmentTrackerDef (engine/CTCVolumeContainmentTrackerDef.h)
+004d6320   RELOCATION_MATCH PASS   CTCVolumeContainmentTrackerDef
+004d648d   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d648d   WARN SHARED_HEADER_AVAILABLE CWillResponseDef (engine/CWillResponseDef.h)
+004d648d   RELOCATION_MATCH PASS   CWillResponseDef
+004d64e6   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d64e6   WARN SHARED_HEADER_AVAILABLE CBettingDef (engine/CBettingDef.h)
+004d64e6   RELOCATION_MATCH PASS   CBettingDef
+004d65ef   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d65ef   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef (engine/COracleMinigameDef.h)
+004d65ef   RELOCATION_MATCH PASS   COracleMinigameDef
+004d665e   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d665e   WARN SHARED_HEADER_AVAILABLE CLightningOrbDef (engine/CLightningOrbDef.h)
+004d665e   RELOCATION_MATCH PASS   CLightningOrbDef
+004d669a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d669a   WARN SHARED_HEADER_AVAILABLE CHasNameDef (engine/CHasNameDef.h)
+004d669a   RELOCATION_MATCH PASS   CHasNameDef
+004d79f9   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d79f9   WARN SHARED_HEADER_AVAILABLE CCarryableDef (engine/CCarryableDef.h)
+004d79f9   RELOCATION_MATCH PASS   CCarryableDef
+004d7a0f   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d7a0f   WARN SHARED_HEADER_AVAILABLE CVillageMemberDef (engine/CVillageMemberDef.h)
+004d7a0f   RELOCATION_MATCH PASS   CVillageMemberDef
+004d7a25   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d7a25   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+004d7a25   WARN SHARED_HEADER_AVAILABLE CBedDef (engine/CBedDef.h)
+004d7a25   RELOCATION_MATCH PASS   CBedDef
+004d7a4a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d7a4a   RELOCATION_MATCH PASS   CSmokeGeneratorDef
+004d7a60   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d7a60   WARN SHARED_HEADER_AVAILABLE CCreatureNavigationDef (engine/CCreatureNavigationDef.h)
+004d7a60   RELOCATION_MATCH PASS   CCreatureNavigationDef
+004d7ad3   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d7ad3   WARN SHARED_HEADER_AVAILABLE CReadableDef (engine/CReadableDef.h)
+004d7ad3   RELOCATION_MATCH PASS   CReadableDef
+
+WINS: 78
+  0044c301 RELOCATION_MATCH CSpecialAbilitiesDrainLifeDataDef::??0CSpecialAbilitiesDrainLifeDataDef@
+  0044c317 RELOCATION_MATCH CSpecialAbilitiesForcePushDataDef::??0CSpecialAbilitiesForcePushDataDef@
+  0044c32d RELOCATION_MATCH CCreatureStatsDef::??0CCreatureStatsDef@
+  0044c343 RELOCATION_MATCH CCoopSpiritDef::??0CCoopSpiritDef@
+  0044c368 RELOCATION_MATCH CContextSensitiveItemDef::??0CContextSensitiveItemDef@
+  0044c37e RELOCATION_MATCH CBonusItemDef::??0CBonusItemDef@
+  0044c394 RELOCATION_MATCH CHeroTitleDef::??0CHeroTitleDef@
+  0044c3d8 RELOCATION_MATCH CHairCardDef::??0CHairCardDef@
+  0044c503 RELOCATION_MATCH CCombatAbilityAttackBase::??0CCombatAbilityAttackBase
+  0044c5bd RELOCATION_MATCH CDragonActionSwoopDef::??0CDragonActionSwoopDef@
+  0044c5d3 RELOCATION_MATCH CDragonActionNapalmDef::??0CDragonActionNapalmDef@
+  0044c5e9 RELOCATION_MATCH CDragonActionHoverDef::??0CDragonActionHoverDef@
+  0044c5ff RELOCATION_MATCH CAugmentationDef::??0CAugmentationDef@
+  0044c615 RELOCATION_MATCH CAbilityDef::??0CAbilityDef@
+  0044c62b RELOCATION_MATCH CJackDragonDef::??0CJackDragonDef@
+  0044c641 RELOCATION_MATCH CBriarRoseDef::??0CBriarRoseDef@
+  0044c657 RELOCATION_MATCH CSnowTrollDef::??0CSnowTrollDef@
+  0044c66d RELOCATION_MATCH CGuildMasterDef::??0CGuildMasterDef@
+  0044c683 RELOCATION_MATCH CSummonerDef::??0CSummonerDef@
+  0044c699 RELOCATION_MATCH CExplosiveTrailDef::??0CExplosiveTrailDef@
+  0044f607 RELOCATION_MATCH CThingMultiArrowShotDef::??0CThingMultiArrowShotDef@
+  004d324b RELOCATION_MATCH CBuyHouseDef::??0CBuyHouseDef@
+  004d3291 RELOCATION_MATCH CWifeDef::??0CWifeDef@
+  004d330a RELOCATION_MATCH CDoorDef::??0CDoorDef@
+  004d33b0 RELOCATION_MATCH CKickableDef::??0CKickableDef@
+  004d33c6 RELOCATION_MATCH CLightDef::??0CLightDef@
+  004d340c RELOCATION_MATCH CSpotLightDef::??0CSpotLightDef@
+  004d3452 RELOCATION_MATCH CHeroDef::??0CHeroDef@
+  004d35cc RELOCATION_MATCH CPerceivedThingDef::??0CPerceivedThingDef@
+  004d3642 RELOCATION_MATCH CStealthDef::??0CStealthDef@
+  004d38b7 RELOCATION_MATCH CExplodingObjectDef::??0CExplodingObjectDef@
+  004d3926 RELOCATION_MATCH CLookDef::??0CLookDef@
+  004d3dc9 RELOCATION_MATCH CEnemyDef::??0CEnemyDef@
+  004d40fe RELOCATION_MATCH CStockItemDef::??0CStockItemDef@
+  004d4144 RELOCATION_MATCH CTimeAppearanceFadeDef::??0CTimeAppearanceFadeDef@
+  004d4199 RELOCATION_MATCH CGiftDef::??0CGiftDef@
+  004d4578 RELOCATION_MATCH CHighlightItemDef::??0CHighlightItemDef@
+  004d462a RELOCATION_MATCH CHeroCentreDef::??0CHeroCentreDef@
+  004d46e3 RELOCATION_MATCH CBoastingPodiumDef::??0CBoastingPodiumDef@
+  004d488b RELOCATION_MATCH CShipDef::??0CShipDef@
+  004d4b85 RELOCATION_MATCH CExpressionSubDef::??0CExpressionSubDef@
+  004d4e66 RELOCATION_MATCH COccupiableDef::??0COccupiableDef@
+  004d4ffd RELOCATION_MATCH CGuardDef::??0CGuardDef@
+  004d50a0 RELOCATION_MATCH CCrateStackDef::??0CCrateStackDef@
+  004d5116 RELOCATION_MATCH COverheadDisplayDef::??0COverheadDisplayDef@
+  004d512c RELOCATION_MATCH CTavernTableDef::??0CTavernTableDef@
+  004d51ff RELOCATION_MATCH CTavernDef::??0CTavernDef@
+  004d52e8 RELOCATION_MATCH CDrunkennessDef::??0CDrunkennessDef@
+  004d537c RELOCATION_MATCH CFireballSpellLevelDef::??0CFireballSpellLevelDef@
+  004d5392 RELOCATION_MATCH CThingDrainLifeShotDef::??0CThingDrainLifeShotDef@
+  004d583d RELOCATION_MATCH CGoldDef::??0CGoldDef@
+  004d5969 RELOCATION_MATCH CCoinGameObstacleDef::??0CCoinGameObstacleDef@
+  004d597f RELOCATION_MATCH CTavernGameCoinBaseDef::??0CTavernGameCoinBaseDef@
+  004d59c8 RELOCATION_MATCH CTavernGameCoinGolfDef::??0CTavernGameCoinGolfDef@
+  004d5b03 RELOCATION_MATCH CDecapitationDef::??0CDecapitationDef@
+  004d5c31 RELOCATION_MATCH CWallMountEffectsDef::??0CWallMountEffectsDef@
+  004d5c77 RELOCATION_MATCH CFishDef::??0CFishDef@
+  004d5cbd RELOCATION_MATCH CTeleporterDef::??0CTeleporterDef@
+  004d5d83 RELOCATION_MATCH CHeroSpecialMovementDef::??0CHeroSpecialMovementDef@
+  004d5dac RELOCATION_MATCH CResurrectionItemDef::??0CResurrectionItemDef@
+  004d5dd5 RELOCATION_MATCH CKrakenTentacleDef::??0CKrakenTentacleDef@
+  004d5dfe RELOCATION_MATCH CAICreatureWillPowerIndicatorDef::??0CAICreatureWillPowerIndicatorDef@
+  004d5f95 RELOCATION_MATCH CFishingRodDef::??0CFishingRodDef@
+  004d6165 RELOCATION_MATCH CNymphDef::??0CNymphDef@
+  004d618e RELOCATION_MATCH CSummonDef::??0CSummonDef@
+  004d6239 RELOCATION_MATCH CCameraCollisionDef::??0CCameraCollisionDef@
+  004d6320 RELOCATION_MATCH CTCVolumeContainmentTrackerDef::??0CTCVolumeContainmentTrackerDef@
+  004d648d RELOCATION_MATCH CWillResponseDef::??0CWillResponseDef@
+  004d64e6 RELOCATION_MATCH CBettingDef::??0CBettingDef@
+  004d65ef RELOCATION_MATCH COracleMinigameDef::??0COracleMinigameDef@
+  004d665e RELOCATION_MATCH CLightningOrbDef::??0CLightningOrbDef@
+  004d669a RELOCATION_MATCH CHasNameDef::??0CHasNameDef@
+  004d79f9 RELOCATION_MATCH CCarryableDef::??0CCarryableDef@
+  004d7a0f RELOCATION_MATCH CVillageMemberDef::??0CVillageMemberDef@
+  004d7a25 RELOCATION_MATCH CBedDef::??0CBedDef@
+  004d7a4a RELOCATION_MATCH CSmokeGeneratorDef::??0CSmokeGeneratorDef@
+  004d7a60 RELOCATION_MATCH CCreatureNavigationDef::??0CCreatureNavigationDef@
+  004d7ad3 RELOCATION_MATCH CReadableDef::??0CReadableDef@
