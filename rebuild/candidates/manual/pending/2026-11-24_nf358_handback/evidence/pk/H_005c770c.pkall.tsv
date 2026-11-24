@@ -1,0 +1,22 @@
+# leaf ?ConstructWeaponDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NEQ	NEQ	0042b1a6	a,b	strong	27	162	y	y	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+NEQ	NEQ	0042af9e	a,b	strong	27	162	y	y	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z
+NEQ	NEQ	0042b312	a,b	strong	27	98	y	y	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+NOADDR	NOADDR	-	-	pickany	13	-	n	n	??0?$vector@K@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	14	-	n	n	??1?$vector@K@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	?size@?$vector@K@@QBEKXZ
+NOADDR	NOADDR	-	-	pickany	15	-	n	n	??A?$vector@K@@QAEAAKK@Z
+NOADDR	NOADDR	-	-	pickany	15	-	n	n	??A?$vector@K@@QBEABKK@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCWeaponDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	23	-	n	n	??1?$CDefPointer@$$CBVCWeaponDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Detach@?$CDefPointer@$$CBVCWeaponDef@@@@QAEPAUCDefBase@@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	23	-	n	n	??1?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@QBEPBVCObjectAugmentationsDef@@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	23	-	n	n	??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QBEPBVCUIMiscThingsDef@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	30	-	n	n	??0CPerItemData@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	14	-	n	n	??1CPerItemData@@QAE@XZ

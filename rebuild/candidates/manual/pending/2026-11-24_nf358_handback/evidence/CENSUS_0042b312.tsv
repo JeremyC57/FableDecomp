@@ -1,0 +1,44 @@
+# copy 0x0042B312 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+row	legs	compiled	grade_H	lock	copy_present	symbol	pk_all	pvr	leafref	reach	size_ours/retail	note
+0041d8e7	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	y	y	98/98	
+0042b312	src	owner	-	-	self(strong owner)	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@	-	-	-	-	-	the retail owner row itself; not an emitter
+0047a9f0	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+0058578b	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005a04f7	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005a29f4	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005a8a5d	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005a9cbe	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005aaf28	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005ad571	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005c6b26	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005c71aa	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	y	y	98/98	
+005c7452	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005c770c	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	27/98	
+005c8459	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005c90fc	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005c9a95	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005cacb9	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	101/98	
+005e4be0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	y	y	98/98	
+005e5f30	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	y	y	98/98	
+005ee3b3	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	50/98	
+005eede2	closure	yes	RELOCATION_MATCH	NF358	none	-	-	-	-	-	-	
+005eeff2	objdef	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	n	y	98/98	
+005f1b10	objdef	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	n	y	98/98	
+005f694d	closure	yes	RELOCATION_MATCH	NF358	none	-	-	-	-	-	-	
+005f6a6f	closure	yes	RELOCATION_MATCH	NF358	none	-	-	-	-	-	-	
+005f6e40	closure	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	EQ	EQ	n	y	98/98	
+005fb630	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	33/98	
+005fb7e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	51/98	
+005fc2d0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+005fc8a0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+005fcbe0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+005fddd0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+005ff190	objdef	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	n	n	116/98	
+006001e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+00600b60	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+00605570	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	n	n	116/98	
+0060c900	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+0060eeb0	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+0061b610	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+0061e6d0	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	y	y	116/98	
+00622a00	objdef	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?	NEQ	NEQ	n	y	116/98	

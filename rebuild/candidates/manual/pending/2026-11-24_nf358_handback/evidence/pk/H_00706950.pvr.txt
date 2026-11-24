@@ -1,0 +1,4 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+NEQ 0042b040 36 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z not referenced by the leaf
+NEQ 0057ff92 32 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z not referenced by the leaf
+NEQ 00708e40 133 ?_M_insert_overflow@?$CRetailVector@UCModifierEntry@@@@QAEXPAUCModifierEntry@@ABU2@ABU__true_type@@K_N@Z not referenced by the leaf

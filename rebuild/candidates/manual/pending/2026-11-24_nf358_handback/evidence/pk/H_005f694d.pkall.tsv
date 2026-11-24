@@ -1,0 +1,13 @@
+# leaf ?ResetAssignedAbilities@CTCInventoryAbilities@@QAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	static	9	-	n	n	?DecRefToZero@@YA_NAAJ@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	?size@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QBEIXZ
+NOADDR	NOADDR	-	-	pickany	21	-	n	y	??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@PAVCUIMiscThingsDef@NUISystem@@@Z
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QBEPAVCUIMiscThingsDef@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@XZ
+NOADDR	NOADDR	-	-	pickany	19	-	n	n	??$max@J@std@@YAABJABJ0@Z
+NEQ	NEQ	005ee3b3	a,b,c	strong	24	101	y	y	?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ
+NOADDR	NOADDR	-	-	pickany	15	-	n	n	??A?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEAAW4EHeroAbility@@I@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?clear@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXXZ

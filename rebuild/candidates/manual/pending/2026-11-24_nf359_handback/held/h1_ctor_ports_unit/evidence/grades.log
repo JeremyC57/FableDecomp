@@ -1,0 +1,28 @@
+pH 0045c5f6 RELOCATION_MATCH leaf=??1CThingNoiseDef@@UAE@XZ flags=
+GRADE_DONE
+pH 00455ef0 RELOCATION_MATCH leaf=CThingNoiseDef flags=
+GRADE_DONE
+pH 0044c1bb RELOCATION_MATCH leaf=CTCNoiseDef flags=
+GRADE_DONE
+pH 0045c5da RELOCATION_MATCH leaf=`scalar_deleting_destructor' flags=
+GRADE_DONE
+pH 00432c40 RELOCATION_MATCH leaf=?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ flags=
+GRADE_DONE
+pH 004317d0 RELOCATION_MATCH leaf=??1CUIMiscThingsDef@NUISystem@@UAE@XZ flags=
+GRADE_DONE
+pH 004304e0 RELOCATION_MATCH leaf=??0CUIMiscThingsDef@NUISystem@@QAE@XZ flags=
+GRADE_DONE
+pH 00749810 RELOCATION_MATCH leaf=??0CTCNoise@@QAE@AAVCThing@@@Z flags=
+GRADE_DONE
+pH 00749a70 RELOCATION_MATCH leaf=??1CTCNoise@@UAE@XZ flags=
+GRADE_DONE
+pH 00455f3c RELOCATION_MATCH leaf=TransferSubComponent flags=
+GRADE_DONE
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c5da.obj; graded the largest function
+EXP c1_allocform_455ef0 00455ef0 RELOCATION_MATCH ??0CThingNoiseDef@@QAE@XZ 
+EXP d1_allocform_44c1bb 0044c1bb RELOCATION_MATCH ??0CTCNoiseDef@@QAE@XZ 
+EXP e1_allocform_45c5da 0045c5da RELOCATION_MATCH ??_GCThingNoiseDef@@UAEPAXI@Z 
+EXP c2_ool_455ef0 00455ef0 RELOCATION_MATCH ??0CThingNoiseDef@@QAE@XZ 
+EXP d2_ool_44c1bb 0044c1bb RELOCATION_MATCH ??0CTCNoiseDef@@QAE@XZ 
+EXP c3_nf86_455ef0 00455ef0 RELOCATION_MATCH ??0CThingNoiseDef@@QAE@XZ 
+RUN1_DONE

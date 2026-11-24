@@ -1,0 +1,52 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+NEQ 0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ not referenced by the leaf
+NEQ 0041c7c0 18 ??9_List_iterator_base@std@@QBE_NABU01@@Z not referenced by the leaf
+NEQ 0041c830 18 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z not referenced by the leaf
+EQ  004291de 44 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ 
+EQ  00428b10 11 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z 
+EQ  00429160 44 ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ 
+EQ  004850f9 44 ?ReleaseData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXXZ 
+EQ  0042925c 44 ?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ 
+EQ  0048524c 38 ?ShareData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXPAVCMenuEntry@NUISystem@@PAVCCPPointerInfo@@@Z 
+EQ  00429460 38 ?ShareData@?$CCountedPointer@VCText@NUISystem@@@@QAEXPAVCText@NUISystem@@PAVCCPPointerInfo@@@Z 
+EQ  005f7b76 37 ??$__copy@PAW4EHeroAbility@@PAW41@H@std@@YIPAW4EHeroAbility@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z 
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+EQ  00429c15 62 ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z 
+EQ  00429c53 5 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ 
+EQ  00429c6f 59 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z 
+EQ  00429b72 5 ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ 
+EQ  0042a18f 39 ?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ 
+EQ  005f8b7d 49 ?clear@?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXXZ 
+EQ  005f807c 26 ?_M_create_node@?$list@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@IAEPAU?$_List_node@W4EHeroAbility@@@2@ABW4EHeroAbility@@@Z 
+EQ  0042a168 39 ?clear@?$_List_base@JV?$allocator@J@std@@@std@@QAEXXZ 
+EQ  0042a141 39 ?clear@?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXXZ 
+NEQ 0040f020 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z not referenced by the leaf
+EQ  0042a2ca 17 ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z 
+EQ  005f8828 52 ??0?$_Vector_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@IABV?$allocator@W4EHeroAbility@@@1@@Z 
+EQ  005f8890 41 ?clear@?$_Rb_tree@W4EUISpellCategory@CTCInventoryAbilities@@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@@4@U?$less@W4EUISpellCategory@CTCInventoryAbilities@@@4@V?$allocator@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@@4@@std@@QAEXXZ 
+EQ  00579353 41 ?clear@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXXZ 
+EQ  00593235 41 ?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@QAEXXZ 
+EQ  0042abca 23 ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ 
+EQ  005f8944 27 ??0?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z 
+EQ  005f900a 23 ??1?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ 
+EQ  005f88c8 37 ?insert@?$list@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE?AU?$_List_iterator@W4EHeroAbility@@U?$_Nonconst_traits@W4EHeroAbility@@@std@@@2@U32@ABW4EHeroAbility@@@Z 
+EQ  005f88ed 27 ??0?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@ABV?$allocator@W4EHeroAbility@@@1@@Z 
+EQ  005f8908 23 ??1?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@XZ 
+EQ  0042ab73 23 ??1?$_List_base@JV?$allocator@J@std@@@std@@QAE@XZ 
+EQ  0042ab1c 23 ??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAE@XZ 
+EQ  005f840c 56 ??$_M_find@W4EUISpellCategory@CTCInventoryAbilities@@@?$_Rb_tree@W4EUISpellCategory@CTCInventoryAbilities@@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@@4@U?$less@W4EUISpellCategory@CTCInventoryAbilities@@@4@V?$allocator@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EUISpellCategory@CTCInventoryAbilities@@PAVCComponent@NUISystem@@@std@@@1@ABW4EUISpellCategory@CTCInventoryAbilities@@@Z 
+NEQ 005f8ec0 50 ??0?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@I@Z not referenced by the leaf
+NEQ 00410de0 31 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z not referenced by the leaf
+EQ  005f8f6f 26 ?push_back@?$list@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXABVCWideString@@@Z 
+NEQ 004118c0 8 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+EQ  005f8f89 37 ?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@0@Z 
+NEQ 0053fd00 20 ??1CAction@NUISystem@@QAE@XZ not referenced by the leaf
+NEQ 005f9495 184 ?_M_insert_overflow@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@IAEXPAW4EHeroAbility@@ABW43@ABU__false_type@2@I_N@Z not referenced by the leaf
+NEQ 0059400c 184 ?_M_insert_overflow@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@IAEXPAU?$pair@JJ@2@ABU32@ABU__false_type@2@I_N@Z not referenced by the leaf
+EQ  005f9bcd 49 ?push_back@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXABW4EHeroAbility@@@Z 
+NEQ 005947b6 55 ?push_back@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAEXABU?$pair@JJ@2@@Z not referenced by the leaf
+NEQ 005f4c8f 1323 ?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z LEAF-REFERENCED
+EQ  00429f43 21 ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z 
+EQ  0042aa29 62 ??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z 
+NEQ 005eeff2 4284 ?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z LEAF-REFERENCED

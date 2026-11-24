@@ -1,0 +1,10 @@
+# leaf ?CreateMenuDesc@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCDataBank@NGameText@@@@QBEPAVCDataBank@NGameText@@XZ
+NEQ	NEQ	00428928	a,b	pickany	28	25	y	y	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+EQ	EQ	004291de	a,a2,b	pickany	44	44	y	y	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ	NEQ	00428b10	b	pickany	8	11	n	y	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+NEQ	NEQ	00429c15	a,b	pickany	65	62	y	y	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+EQ	EQ	00429c53	b	pickany	5	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ

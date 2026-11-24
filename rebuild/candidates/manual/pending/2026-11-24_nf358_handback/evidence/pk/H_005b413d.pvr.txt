@@ -1,0 +1,4 @@
+NEQ 005ba986 20 ?find@CSuitPartMap@@QAEPAUSSuitPartNode@@ABJ@Z not referenced by the leaf
+NEQ 005b406d 13 ?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z not referenced by the leaf
+NEQ 0042b040 50 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z not referenced by the leaf
+NEQ 0057ff92 50 ??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z not referenced by the leaf

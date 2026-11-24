@@ -1,0 +1,4 @@
+005eede2	PASS	/home/user/FableDecomp/rebuild/tests/00/5e/CTCInventoryAbilities_InitialiseAbilities_005eede2_test.cpp
+005f694d	FAIL	/home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryAbilities_ResetAssignedAbilities_005f694d_test.cpp
+005f6a6f	PASS	/home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryAbilities_ResetAssignedAbilitiesPC_005f6a6f_test.cpp
+005f6e40	PASS	/home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryAbilities_OnSerialise_005f6e40_test.cpp

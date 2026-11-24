@@ -1,0 +1,3 @@
+??0CTCNoiseDef@@QAE@XZ 0044c1bb len 29 bytes DIFF relocs DIFF (relocation targets differ; values not kept: retail-derived)
+??_GCTCNoiseDef@@UAEPAXI@Z 0044f71b len 30 bytes DIFF relocs DIFF (relocation targets differ; values not kept: retail-derived)
+??_GCDefPointeeBase@@UAEPAXI@Z 0042d9a0 len 36 bytes EQ relocs EQ

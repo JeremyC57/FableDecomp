@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	00455ef0	PROPOSED, only if a ruling lands a new text for 0x00455EF0 (any option A/O/N/S): its only witness and its only landed source is 0x00455EF0 (grep: 1 file); 0x0044C0C0 keeps ??0CSubDefClassBase@@QAE@XZ (witness 0044c57d). ??0CShoveHaPennyRegionDef@@QAE@XZ (witness 0044c146, 126 landed sources) is untouched by a 0x0044C1BB port.

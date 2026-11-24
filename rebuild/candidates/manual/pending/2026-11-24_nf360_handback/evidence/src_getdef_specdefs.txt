@@ -1,0 +1,12 @@
+src/compiled/00/5b/CTCInventoryClothing_AddClothingToThing_005b43a2.cpp
+src/compiled/00/5b/CTCInventoryClothing_CalculateArmorValues_005b4eba.cpp
+src/compiled/00/5b/CTCInventoryClothing_OnItemHighlighted_005b5be6.cpp
+src/compiled/00/5b/CTCInventoryClothing_SetUpSelectedClothes_005b4795.cpp
+src/compiled/00/65/CTCVillage_OnCreate_00659164.cpp
+src/compiled/00/71/CTCHeroMorph_AddTattoo_0071da70.cpp
+src/compiled/00/74/CTCContainerRewardHero_CreateItemPickupContainer_0074ec50.cpp
+src/compiled/00/77/CTCShop_CTCShop_007744a0.cpp
+src/compiled/00/80/CTCIdleScheduler_ChooseNewIdle_00801a50.cpp
+src/compiled/00/81/NEntityEventsCEventDied_OnAdd_008115a0.cpp
+src/compiled/00/81/NEntityEventsCEventKnockedOut_OnAdd_00811470.cpp
+src/compiled/00/8e/CTCContainer_InsertItem_008ed1f0.cpp

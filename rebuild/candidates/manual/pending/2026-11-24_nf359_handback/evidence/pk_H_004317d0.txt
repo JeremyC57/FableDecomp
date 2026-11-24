@@ -1,0 +1,72 @@
+## 004317d0 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/hobj/004317d0.obj pickany_vs_retail --leaf=??1CUIMiscThingsDef@NUISystem@@UAE@XZ (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+NEQ 0042fe07 51 ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@2@@Z LEAF-REFERENCED
+NEQ 00430046 51 ?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEXXZ not referenced by the leaf
+NEQ 0043020a 59 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@@Z LEAF-REFERENCED
+NEQ 0043027a 51 ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEXXZ not referenced by the leaf
+NEQ 004302cd 66 ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@XZ not referenced by the leaf
+EQ  00430300 33 ??1CParentDefClassBase@@UAE@XZ 
+NEQ 004304e0 1009 ??0CUIMiscThingsDef@NUISystem@@QAE@XZ not referenced by the leaf
+EQ  00432c40 27 ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ 
+## 004317d0 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/hobj/004317d0.obj pk_all --leaf=??1CUIMiscThingsDef@NUISystem@@UAE@XZ --row-length=1036 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/pk_addrs.tsv
+# leaf ??1CUIMiscThingsDef@NUISystem@@UAE@XZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0__false_type@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefPointeeBase@@UAE@XZ
+EQ        EQ                 0042d9a0 o        pickany     36 leaf=n reach=n ??_GCDefPointeeBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefClassBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0C2DVector@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?deallocate@?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAEXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@2@I@Z
+NOADDR    NOADDR                    - -        pickany     25 leaf=n reach=n ?_M_empty_initialize@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAEXXZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@2@I@Z
+NOADDR    NOADDR                    - -        pickany     25 leaf=n reach=n ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAEXXZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     18 leaf=n reach=n ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@I@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@2@IPBX@Z
+NOADDR    NOADDR                    - -        pickany      3 leaf=n reach=n ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@IPBX@Z
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@ABV01@@Z
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@ABV01@@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$_Destroy@U?$pair@$$CBKK@std@@@std@@YAXPAU?$pair@$$CBKK@0@@Z
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??1?$pair@$$CBVCCharString@@J@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$_Destroy@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$_STLP_alloc_proxy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@1@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@2@@std@@QAE@ABV?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@1@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@1@@Z
+NEQ       NEQ                0042fe07 a,b      pickany     51 leaf=y reach=y ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@2@@Z
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_G?$pair@$$CBVCCharString@@J@std@@QAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$__destroy_aux@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@0ABU__false_type@0@@Z
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAE@XZ
+NEQ       NEQ                00430046 b        pickany     51 leaf=n reach=n ?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ??0?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBKK@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany     27 leaf=n reach=n ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@$$CBVCCharString@@J@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ??$_Destroy@U?$pair@$$CBVCCharString@@J@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@J@0@@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$__destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@@std@@YAXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@00@Z
+NOADDR    NOADDR                    - -        pickany     66 leaf=n reach=n ??1?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     56 leaf=n reach=n ??0?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABU?$less@K@1@ABV?$allocator@U?$pair@$$CBKK@std@@@1@@Z
+NOADDR    NOADDR                    - -        pickany     56 leaf=n reach=n ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@ABU?$less@VCCharString@@@1@ABV?$allocator@U?$pair@$$CBVCCharString@@J@std@@@1@@Z
+NEQ       NEQ                0043020a a,b      pickany     59 leaf=y reach=y ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@@Z
+NOADDR    NOADDR                    - -        pickany      1 leaf=n reach=n ??$_Destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@0@Z
+NOADDR    NOADDR                    - -        pickany     66 leaf=n reach=n ??1?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     56 leaf=n reach=n ??0?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABU?$less@K@1@ABV?$allocator@U?$pair@$$CBKK@std@@@1@@Z
+NEQ       NEQ                0043027a b        pickany     51 leaf=n reach=n ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEXXZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@@QAE@XZ
+NEQ       NEQ                004302cd b        pickany     66 leaf=n reach=n ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     66 leaf=n reach=n ??1?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     14 leaf=n reach=n ??1?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     56 leaf=n reach=n ??0?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@ABU?$less@VCCharString@@@1@ABV?$allocator@U?$pair@$$CBVCCharString@@J@std@@@1@@Z
+EQ        EQ                 00430300 b        pickany     33 leaf=n reach=n ??1CParentDefClassBase@@UAE@XZ
+NEQ       NEQ                004304e0 a2,b     pickany   1009 leaf=n reach=n ??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCUIMiscThingsDef@NUISystem@@UAEPAXI@Z
+EQ        EQ                 00432c40 b        strong      27 leaf=n reach=n ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ
+## done

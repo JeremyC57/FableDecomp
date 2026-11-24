@@ -1,0 +1,333 @@
+# overlay=
+H 0041d8e7 RELOCATION_MATCH leaf=GetMiscThingsDef flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/41/NUISystemCManager_GetMiscThingsDef_0041d8e7.cpp
+PASS_DONE
+# overlay=
+H 0041e6d3 RELOCATION_MATCH leaf=?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z flags=/GS src=/home/user/FableDecomp/rebuild/src/compiled/00/41/NUISystemCManager_Action_0041e6d3.cpp
+PASS_DONE
+# overlay=
+H 00427216 RELOCATION_MATCH leaf=?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJA flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/42/NUISystemCManager_CreateTickSlider_00427216.cpp
+PASS_DONE
+# overlay=
+H 0047a9f0 RELOCATION_MATCH leaf=?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z flags=/Gr src=/home/user/FableDecomp/rebuild/src/compiled/00/47/CHeroLogBook_AddEntry_0047a9f0.cpp
+PASS_DONE
+# overlay=
+H 004804de RELOCATION_MATCH leaf=?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/48/CTCInGameMenu_OpenInGameMenuPC_004804de.cpp
+PASS_DONE
+# overlay=
+H 004830a1 RELOCATION_MATCH leaf=?OpenInGameMenu@CTCInGameMenu@@QAEXXZ flags=/GS src=/home/user/FableDecomp/rebuild/src/compiled/00/48/CTCInGameMenu_OpenInGameMenu_004830a1.cpp
+PASS_DONE
+# overlay=
+H 00574885 RELOCATION_MATCH leaf=?ConstructCategoryStrength@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/57/CTCInventoryExperience_ConstructCategoryStrength_00574885.cpp
+PASS_DONE
+# overlay=
+H 005759bf RELOCATION_MATCH leaf=?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/57/CTCInventoryExperience_ConstructCategoryStrengthPC_005759bf.cpp
+PASS_DONE
+# overlay=
+H 00582ace RELOCATION_MATCH leaf=?ConstructStyleEntry@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@std flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructStyleEntry_00582ace.cpp
+PASS_DONE
+# overlay=
+H 0058315b RELOCATION_MATCH leaf=?ConstructStyleEntryPC@CTCInventory@@QAEXPAVCComponent@NUISystem@@AAV?$vector@U?$pair@JJ@s flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructStyleEntryPC_0058315b.cpp
+PASS_DONE
+# overlay=
+H 00584b86 RELOCATION_MATCH leaf=?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_AssignThingPC_00584b86.cpp
+PASS_DONE
+# overlay=
+H 0058578b RELOCATION_MATCH leaf=?OpenInventory@CTCInventory@@UAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_OpenInventory_0058578b.cpp
+PASS_DONE
+# overlay=
+H 0058807d RELOCATION_MATCH leaf=?OpenPCInventoryMenu@CTCInventory@@QAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_OpenPCInventoryMenu_0058807d.cpp
+PASS_DONE
+# overlay=
+H 0058a0c7 RELOCATION_MATCH leaf=?ConstructItemEntry@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCountedP flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructItemEntry_0058a0c7.cpp
+PASS_DONE
+# overlay=
+H 0058e208 RELOCATION_MATCH leaf=?ConstructItemEntryPC@CTCInventory@@QAEXJJPAVCList@NUISystem@@PAVCComponent@3@AAV?$CCounte flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructItemEntryPC_0058e208.cpp
+PASS_DONE
+# overlay=
+H 0058f016 RELOCATION_MATCH leaf=?ConstructItemCategoryList@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vect flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/58/CTCInventory_ConstructItemCategoryList_0058f016.cpp
+PASS_DONE
+# overlay=
+H 005907ab RELOCATION_MATCH leaf=?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$ve flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventory_ConstructItemCategoryListPC_005907ab.cpp
+PASS_DONE
+# overlay=
+H 00596a68 RELOCATION_MATCH leaf=?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@AAVCWideStri flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/NUISystemCFrontEndManager_CreateFrontEndButtonComponent_00596a68.cpp
+PASS_DONE
+# overlay=
+H 0059cb90 RELOCATION_MATCH leaf=?AddWantedItemToList@CTCInventoryTrade@@QAEXJPAVCList@NUISystem@@PAVCViewport@3@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddWantedItemToList_0059cb90.cpp
+PASS_DONE
+# overlay=
+H 0059d270 RELOCATION_MATCH leaf=?AddWantedItemToListPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@JPAVCList@3@PAVCVie flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddWantedItemToListPC_0059d270.cpp
+PASS_DONE
+# overlay=
+H 0059ed42 RELOCATION_MATCH leaf=?AddSellItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddSellItemToList_0059ed42.cpp
+PASS_DONE
+# overlay=
+H 0059f51e RELOCATION_MATCH leaf=?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCVie flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddSellItemToListPC_0059f51e.cpp
+PASS_DONE
+# overlay=
+H 0059fee3 RELOCATION_MATCH leaf=?AddBuyItemToList@CTCInventoryTrade@@QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/59/CTCInventoryTrade_AddBuyItemToList_0059fee3.cpp
+PASS_DONE
+# overlay=
+H 005cacb9 RELOCATION_MATCH leaf=?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9.cpp
+PASS_DONE
+# overlay=
+H 005a04f7 RELOCATION_MATCH leaf=?ConstructNormalShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pai flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructNormalShopList_005a04f7.cpp
+PASS_DONE
+# overlay=
+H 005a29f4 RELOCATION_MATCH leaf=?ConstructSpecialShopList@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$pa flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructSpecialShopList_005a29f4.cpp
+PASS_DONE
+# overlay=
+H 005a4cdd RELOCATION_MATCH leaf=?ConstructActualSellInventoryPC@CTCInventoryTrade@@AAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructActualSellInventoryPC_005a4cdd.cpp
+PASS_DONE
+# overlay=
+H 005a5b31 RELOCATION_MATCH leaf=?ConstructActualWantedInventoryPC@CTCInventoryTrade@@AAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructActualWantedInventoryPC_005a5b31.cpp
+PASS_DONE
+# overlay=
+H 005a6ca1 RELOCATION_MATCH leaf=?AddBuyItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCView flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_AddBuyItemToListPC_005a6ca1.cpp
+PASS_DONE
+# overlay=
+H 005a8a5d RELOCATION_MATCH leaf=?ConstructSpecialShopListPC@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@ABV?$vector@U?$ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructSpecialShopListPC_005a8a5d.cpp
+PASS_DONE
+# overlay=
+H 005a8c66 RELOCATION_MATCH leaf=?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructActualSpecialInventoryPC_005a8c66.cpp
+PASS_DONE
+# overlay=
+H 005a9cbe RELOCATION_MATCH leaf=?ConstructTradeDescriptionWeapon@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructTradeDescriptionWeapon_005a9cbe.cpp
+PASS_DONE
+# overlay=
+H 005aaf28 RELOCATION_MATCH leaf=?ConstructTradeDescriptionClothing@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructTradeDescriptionClothing_005aaf28.cpp
+PASS_DONE
+# overlay=
+H 005ad571 RELOCATION_MATCH leaf=?ConstructTradeDescription@CTCInventoryTrade@@QAEPAVCComponent@NUISystem@@JK_N0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructTradeDescription_005ad571.cpp
+PASS_DONE
+# overlay=
+H 005b3aef RELOCATION_MATCH leaf=?OnInitialActivate@CTCInventoryClothing@@UAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_OnInitialActivate_005b3aef.cpp
+PASS_DONE
+# overlay=
+H 005b3c95 RELOCATION_MATCH leaf=OnItemAdded flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_OnItemAdded_005b3c95.cpp
+PASS_DONE
+# overlay=
+H 005b413d RELOCATION_MATCH leaf=SetAsWearing flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_SetAsWearing_005b413d.cpp
+PASS_DONE
+# overlay=
+H 005b6a66 RELOCATION_MATCH leaf=?ConstructClothingListPC@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_ConstructClothingListPC_005b6a66.cpp
+PASS_DONE
+# overlay=
+H 005b70b8 RELOCATION_MATCH leaf=?ConstructClothingList@CTCInventoryClothing@@AAEPAVCComponent@NUISystem@@AAV?$vector@U?$pa flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_ConstructClothingList_005b70b8.cpp
+PASS_DONE
+# overlay=
+H 005b76d1 RELOCATION_MATCH leaf=?ConstructScreen@CTCInventoryClothing@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_ConstructScreen_005b76d1.cpp
+PASS_DONE
+# overlay=
+H 005b8743 RELOCATION_MATCH leaf=?ConstructScreenPC@CTCInventoryClothing@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_ConstructScreenPC_005b8743.cpp
+PASS_DONE
+# overlay=
+H 005c574e RELOCATION_MATCH leaf=?ConstructAugEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructAugEntry_005c574e.cpp
+PASS_DONE
+# overlay=
+H 005c5f11 RELOCATION_MATCH leaf=?ConstructAugEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructAugEntryPC_005c5f11.cpp
+PASS_DONE
+# overlay=
+H 005c6b26 RELOCATION_MATCH leaf=?ConstructWeaponDescription@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructWeaponDescription_005c6b26.cpp
+PASS_DONE
+# overlay=
+H 005c71aa RELOCATION_MATCH leaf=?ConstructWeaponDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionNoDamageNorWeight_005c71aa.cpp
+PASS_DONE
+# overlay=
+H 005c7452 RELOCATION_MATCH leaf=?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionDamage_005c7452.cpp
+PASS_DONE
+# overlay=
+H 005c770c RELOCATION_MATCH leaf=ConstructWeaponDescriptionWeight flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionWeight_005c770c.cpp
+PASS_DONE
+# overlay=
+H 005c8459 RELOCATION_MATCH leaf=?ConstructScreen@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructScreen_005c8459.cpp
+PASS_DONE
+# overlay=
+H 005c90fc RELOCATION_MATCH leaf=?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionContainer_005c90fc.cpp
+PASS_DONE
+# overlay=
+H 005c9a95 RELOCATION_MATCH leaf=?ConstructScreenPC@CTCInventoryWeapons@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_ConstructScreenPC_005c9a95.cpp
+PASS_DONE
+# overlay=
+H 005cdd86 RELOCATION_MATCH leaf=CreateExperienceSliders flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryStats_CreateExperienceSliders_005cdd86.cpp
+PASS_DONE
+# overlay=
+H 005ce0e6 RELOCATION_MATCH leaf=?ConstructPersonalityList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryStats_ConstructPersonalityList_005ce0e6.cpp
+PASS_DONE
+# overlay=
+H 005d1f0c RELOCATION_MATCH leaf=?ConstructPersonalityListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_ConstructPersonalityListPC_005d1f0c.cpp
+PASS_DONE
+# overlay=
+H 005d64dd RELOCATION_MATCH leaf=?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_AddHeroAbility_005d64dd.cpp
+PASS_DONE
+# overlay=
+H 005d6748 RELOCATION_MATCH leaf=?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_ConstructExperienceList_005d6748.cpp
+PASS_DONE
+# overlay=
+H 005d7081 RELOCATION_MATCH leaf=?ConstructExperienceListPC@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5d/CTCInventoryStats_ConstructExperienceListPC_005d7081.cpp
+PASS_DONE
+# overlay=
+H 005e4430 RELOCATION_MATCH leaf=?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCQuestCompletionUI_Activate_005e4430.cpp
+PASS_DONE
+# overlay=
+H 005e4be0 RELOCATION_MATCH leaf=?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z flags=/d2inlT60 /d2inlS48 src=/home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCQuestCompletionUI_GetQuestDescription_005e4be0.cpp
+PASS_DONE
+# overlay=
+H 005e5f30 RELOCATION_MATCH leaf=?ActivateReal@CTCQuestCompletionUI@@QAEXXZ flags=/GS src=/home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCQuestCompletionUI_ActivateReal_005e5f30.cpp
+PASS_DONE
+# overlay=
+H 005ee3b3 RELOCATION_MATCH leaf=GetMiscThingsDef flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCInventoryAbilities_GetMiscThingsDef_005ee3b3.cpp
+PASS_DONE
+# overlay=
+H 005eeff2 RELOCATION_MATCH leaf=?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z flags=/Gr src=/home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCInventoryAbilities_GetMagicListUIComponent_005eeff2.cpp
+PASS_DONE
+# overlay=
+H 005f1b10 RELOCATION_MATCH leaf=?ConstructPCMagicList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryAbilities_ConstructPCMagicList_005f1b10.cpp
+PASS_DONE
+# overlay=
+H 005f519f RELOCATION_MATCH leaf=?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryAbilities_ConstructScreen_005f519f.cpp
+PASS_DONE
+# overlay=
+H 005fb630 RELOCATION_MATCH leaf=?GetRelativePosOnMap@CTCInventoryMap@@IBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVec flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_GetRelativePosOnMap_005fb630.cpp
+PASS_DONE
+# overlay=
+H 005fb7e0 RELOCATION_MATCH leaf=?ConstructRegionDescriptionMapKeys@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegio flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructRegionDescriptionMapKeys_005fb7e0.cpp
+PASS_DONE
+# overlay=
+H 005fc2d0 RELOCATION_MATCH leaf=?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructQuestReviewList_005fc2d0.cpp
+PASS_DONE
+# overlay=
+H 005fc8a0 RELOCATION_MATCH leaf=?ConstructQuestReviewListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructQuestReviewListPC_005fc8a0.cpp
+PASS_DONE
+# overlay=
+H 005fcbe0 RELOCATION_MATCH leaf=?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0.cpp
+PASS_DONE
+# overlay=
+H 005fd5e0 RELOCATION_MATCH leaf=?ConstructRegionDescriptionQuests@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructRegionDescriptionQuests_005fd5e0.cpp
+PASS_DONE
+# overlay=
+H 005fddd0 RELOCATION_MATCH leaf=?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructPastQuestsListPC_005fddd0.cpp
+PASS_DONE
+# overlay=
+H 005fe090 RELOCATION_MATCH leaf=?ConstructQuestsScreen@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_ConstructQuestsScreen_005fe090.cpp
+PASS_DONE
+# overlay=
+H 005ff190 RELOCATION_MATCH leaf=?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$a flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_CreateMapMarkers_005ff190.cpp
+PASS_DONE
+# overlay=
+H 006001e0 RELOCATION_MATCH leaf=?ConstructRegionDescriptionShops@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescriptionShops_006001e0.cpp
+PASS_DONE
+# overlay=
+H 00600b60 RELOCATION_MATCH leaf=?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescriptionBuyableBuildings_00600b60.cpp
+PASS_DONE
+# overlay=
+H 00601310 RELOCATION_MATCH leaf=?ConstructQuestsScreenPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructQuestsScreenPC_00601310.cpp
+PASS_DONE
+# overlay=
+H 00603000 RELOCATION_MATCH leaf=?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_CreateMiniMapMarkers_00603000.cpp
+PASS_DONE
+# overlay=
+H 00605570 RELOCATION_MATCH leaf=?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z flags=/d2inlT107 src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescription_00605570.cpp
+PASS_DONE
+# overlay=
+H 00607330 RELOCATION_MATCH leaf=?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructLogbookList_00607330.cpp
+PASS_DONE
+# overlay=
+H 006096e0 RELOCATION_MATCH leaf=?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructLogbookListPC_006096e0.cpp
+PASS_DONE
+# overlay=
+H 0060c900 RELOCATION_MATCH leaf=?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructMapList_0060c900.cpp
+PASS_DONE
+# overlay=
+H 0060eeb0 RELOCATION_MATCH leaf=?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0.cpp
+PASS_DONE
+# overlay=
+H 0061b610 RELOCATION_MATCH leaf=?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/61/CTCInventoryQuests_ConstructQuestList_0061b610.cpp
+PASS_DONE
+# overlay=
+H 0061e6d0 RELOCATION_MATCH leaf=?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThi flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/61/CTCInventoryQuests_ConstructQuestListPC_0061e6d0.cpp
+PASS_DONE
+# overlay=
+H 00622a00 RELOCATION_MATCH leaf=?OpenInventory@CTCInventoryQuests@@UAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/62/CTCInventoryQuests_OpenInventory_00622a00.cpp
+PASS_DONE
+# overlay=
+H 00626110 RELOCATION_MATCH leaf=?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@ flags=/d2inlT59 src=/home/user/FableDecomp/rebuild/src/compiled/00/62/CTCQuickAccessMenu_ContructItemLists_00626110.cpp
+PASS_DONE
+# overlay=
+H 00646dbd RELOCATION_MATCH leaf=DrawStatBarOnLeft flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/64/NPlayerGuiCAutoPickupBar_DrawStatBarOnLeft_00646dbd.cpp
+PASS_DONE
+# overlay=
+H 0064e978 RELOCATION_MATCH leaf=?Draw@CDrawReceivedItems@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978.cpp
+PASS_DONE
+# overlay=
+H 00652fa4 RELOCATION_MATCH leaf=?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z flags=/GS src=/home/user/FableDecomp/rebuild/src/compiled/00/65/NPlayerGuiCDrawQuickAccessIcons_Draw_00652fa4.cpp
+PASS_DONE
+# overlay=
+H 006aca30 RELOCATION_MATCH leaf=?OnCollisionWithObject@CThingPlayerCreature@@QAEXPAVCThing@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/6a/CThingPlayerCreature_OnCollisionWithObject_006aca30.cpp
+PASS_DONE
+# overlay=
+H 006d1250 RELOCATION_MATCH leaf=?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z flags=/GS src=/home/user/FableDecomp/rebuild/src/compiled/00/6d/CTCWife_CheckAppearanceChanges_006d1250.cpp
+PASS_DONE
+# overlay=
+H 00703050 RELOCATION_MATCH leaf=?ConstructFromParams@CThingObject@@IAE_NJABVC3DVector@@JKABVCCharString@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CThingObject_ConstructFromParams_00703050.cpp
+PASS_DONE
+# overlay=
+H 007030c0 RELOCATION_MATCH leaf=?SerialiseGameState@CThingObject@@MAE_NAAVCPersistContext@@@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CThingObject_SerialiseGameState_007030c0.cpp
+PASS_DONE
+# overlay=
+H 00703110 RELOCATION_MATCH leaf=?ConstructFromLevelScript@CThingObject@@MAE_NPBD@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CThingObject_ConstructFromLevelScript_00703110.cpp
+PASS_DONE
+# overlay=
+H 00706290 RELOCATION_MATCH leaf=IsNaked flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_IsNaked_00706290.cpp
+PASS_DONE
+# overlay=
+H 00706370 RELOCATION_MATCH leaf=RemoveAppearanceModifier flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_RemoveAppearanceModifier_00706370.cpp
+PASS_DONE
+# overlay=
+H 00706450 RELOCATION_MATCH leaf=IsWearingAppearanceModifierCoveringBodyArea flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_IsWearingAppearanceModifierCoveringBodyArea_00706450.cpp
+PASS_DONE
+# overlay=
+H 007066a0 RELOCATION_MATCH leaf=RemoveAppearanceModifiersCoveringBodyArea flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_RemoveAppearanceModifiersCoveringBodyArea_007066a0.cpp
+PASS_DONE
+# overlay=
+H 00706880 RELOCATION_MATCH leaf=AddAppearanceModifier flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_AddAppearanceModifier_00706880.cpp
+PASS_DONE
+# overlay=
+H 00706950 RELOCATION_MATCH leaf=AddAppearanceModifierWithReplace flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_AddAppearanceModifierWithReplace_00706950.cpp
+PASS_DONE
+# overlay=
+H 00706b50 RELOCATION_MATCH leaf=?GetAppearanceModifierListWithCoversBodyAreaFlags@CTCHeroAttachableAppearanceModifiers@@ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/70/CTCHeroAttachableAppearanceModifiers_GetAppearanceModifierListWithCoversBodyAreaFlags_00706b50.cpp
+PASS_DONE
+# overlay=
+H 00846100 DIFFER(687v686) leaf=PerformAction flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/84/CCreatureActionWearGameObject_PerformAction_00846100.cpp
+PASS_DONE
+# overlay=
+H 00846410 RELOCATION_MATCH leaf=?PerformAction@CCreatureAction_Undress@@UAEXXZ flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/84/CCreatureActionUndress_PerformAction_00846410.cpp
+PASS_DONE
+# overlay=
+H 00868e50 RELOCATION_MATCH leaf=?GetArmourWeightsFromThing@?A0x flags=/Gr src=/home/user/FableDecomp/rebuild/src/compiled/00/86/global_GetArmourWeightsFromThing_00868e50.cpp
+PASS_DONE
+# overlay=
+H 008946e0 RELOCATION_MATCH leaf=?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/89/CGameScriptInterface_CreateObjectOnEntity_008946e0.cpp
+PASS_DONE
+# overlay=
+H 00894820 RELOCATION_MATCH leaf=?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/89/CGameScriptInterface_CreateObject_00894820.cpp
+PASS_DONE
+# overlay=
+H 00894950 RELOCATION_MATCH leaf=?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@M0@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/89/CGameScriptInterface_CreateObject_00894950.cpp
+PASS_DONE
+# overlay=
+H 008da0f0 RELOCATION_MATCH leaf=Spike flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/8d/NCreatureModeCModeScorpionKingTailPlunge_Spike_008da0f0.cpp
+PASS_DONE
+# overlay=
+H 005eede2 RELOCATION_MATCH leaf=InitialiseAbilities flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5e/CTCInventoryAbilities_InitialiseAbilities_005eede2.cpp
+PASS_DONE
+# overlay=
+H 005f694d RELOCATION_MATCH leaf=ResetAssignedAbilities flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryAbilities_ResetAssignedAbilities_005f694d.cpp
+PASS_DONE
+# overlay=
+H 005f6a6f RELOCATION_MATCH leaf=ResetAssignedAbilitiesPC flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryAbilities_ResetAssignedAbilitiesPC_005f6a6f.cpp
+PASS_DONE
+# overlay=
+H 005f6e40 RELOCATION_MATCH leaf=?OnSerialise@CTCInventoryAbilities@@UAEXAAVCPersistContext@@_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryAbilities_OnSerialise_005f6e40.cpp
+PASS_DONE

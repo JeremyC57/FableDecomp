@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00428b10   MATCH            PASS   DeleteData
+
+WINS: 1
+  00428b10 MATCH _global::?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+EXIT 0

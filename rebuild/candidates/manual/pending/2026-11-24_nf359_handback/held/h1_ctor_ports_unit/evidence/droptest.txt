@@ -1,0 +1,16 @@
+## drop test: 0x0045C5DA stand-in self ?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z (dropped by any emitter form of 0x0045C5DA)
+# reloc_bindings lines naming it:
+# self_symbols lines:
+1210:0045c5da	?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+27219:0045c5da	?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	-
+# landed sources / tests / headers naming it:
+rebuild/src/compiled/00/45/CThingNoiseDef_scalardeletingdestructor_0045c5da.cpp
+rebuild/tests/00/45/CThingNoiseDef_scalardeletingdestructor_0045c5da_test.cpp
+# reloc_bindings lines witnessed by 0045c5da / 00455ef0 / 0044c1bb:
+??_7CTCNoiseDef@@6B@	01231e9c	0044c1bb
+??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	00455ef0
+??_7CThingNoiseDef@@6B@	0123388c	00455ef0
+??1CThingNoiseDef@@UAE@XZ	0045c5f6	0045c5da
+# lines naming the HEAD stand-in callees:
+215:??0CShoveHaPennyRegionDef@@QAE@XZ	0044c0c0	0044c146
+372:??0CMemberBase_0044c0c0@@QAE@XZ	0044c0c0	00455ef0

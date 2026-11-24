@@ -1,0 +1,39 @@
+# copy 0x0042B040 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+row	legs	compiled	grade_H	lock	copy_present	symbol	pk_all	pvr	leafref	reach	size_ours/retail	note
+0041e6d3	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	105/98	
+0042b040	src	owner	-	-	self(strong owner)	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$	-	-	-	-	-	the retail owner row itself; not an emitter
+00584b86	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	101/98	
+0058807d	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+005b3aef	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	101/98	
+005b3c95	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	27/98	
+005b413d	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	50/98	
+005b76d1	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	101/98	
+005b8743	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	101/98	
+005e4430	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	15/98	
+005e4be0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+005e5f30	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+005f1b10	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+00607330	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	n	n	116/98	
+006096e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+00646dbd	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	27/98	
+0064e978	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+00652fa4	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+006aca30	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+006d1250	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+00703050	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+007030c0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+00703110	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	EQ	EQ	y	y	98/98	
+00706290	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	34/98	
+00706370	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	34/98	
+00706450	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	34/98	
+007066a0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	31/98	
+00706880	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	36/98	
+00706950	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	36/98	
+00706b50	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	31/98	
+00846100	retail+src	yes	DIFFER(687v686)	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	31/98	grade: pass.py DIFFER(687v686) is a harness artefact; vland --recheck-landed HEAD = RELOCATION_MATCH PASS (evidence/vland_846100.log)
+00846410	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	31/98	
+00868e50	retail	yes	RELOCATION_MATCH	NF358	DEF-pickany	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	116/98	
+008946e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	25/98	
+00894820	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	25/98	
+00894950	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	25/98	
+008da0f0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-strong	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe	NEQ	NEQ	y	y	34/98	

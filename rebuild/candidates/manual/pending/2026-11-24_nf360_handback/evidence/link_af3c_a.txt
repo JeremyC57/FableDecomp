@@ -1,0 +1,8 @@
+## HEAD set: H_0042af3c.obj H_004ca010.obj H_00744ed0.obj
+duplicates 0
+UNRESOLVED 1 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+## new set: 0042af3c.obj H_004ca010.obj H_00744ed0.obj
+duplicates 1
+  DUP H_00744ed0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+UNRESOLVED 1 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+LK_DONE

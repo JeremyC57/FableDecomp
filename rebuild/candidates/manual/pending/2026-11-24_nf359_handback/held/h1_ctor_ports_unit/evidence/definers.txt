@@ -1,0 +1,50 @@
+######## option HEAD: 0045c5f6 00455ef0 0044c1bb 0045c5da 00749810 00749a70 00455f3c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ    definers=1 strong=1 -          distinct_bodies=1  0045c5f6 sel=1 25B EQ
+??0CThingNoiseDef@@QAE@XZ                        definers=2 strong=1 LNK2005    distinct_bodies=1  0045c5f6 sel=2 36B EQ | 00455ef0 sel=1 36B EQ
+??0CTCNoiseDef@@QAE@XZ                           definers=4 strong=1 LNK2005    distinct_bodies=2  0045c5f6 sel=2 18B EQ | 00455ef0 sel=2 18B EQ | 0044c1bb sel=1 18B EQ | 00749810 sel=2 29B NEQ
+??_7CThingNoiseDef@@6B@                          definers=2 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 100B EQ | 00455ef0 sel=2 4B NEQ
+??_7CTCNoiseDef@@6B@                             definers=4 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 100B EQ | 00455ef0 sel=2 4B NEQ | 0044c1bb sel=2 4B NEQ | 00749810 sel=2 100B EQ
+??_GCThingNoiseDef@@UAEPAXI@Z                    definers=1 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 28B EQ
+??1CThingNoiseDef@@UAE@XZ                        definers=1 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 25B EQ
+??_GCTCNoiseDef@@UAEPAXI@Z                       definers=2 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 34B EQ | 00749810 sel=2 30B NEQ
+??1CTCNoiseDef@@UAE@XZ                           definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 11B EQ | 00749a70 sel=2 11B EQ
+######## option A_allocform: 0045c5f6 c1_allocform_455ef0 d1_allocform_44c1bb e1_allocform_45c5da 00749810 00749a70 00455f3c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ    definers=4 strong=4 LNK2005    distinct_bodies=1  0045c5f6 sel=1 25B EQ | c1_allocform_455ef0 sel=1 25B EQ | d1_allocform_44c1bb sel=1 25B EQ | e1_allocform_45c5da sel=1 25B EQ
+??0CThingNoiseDef@@QAE@XZ                        definers=4 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 36B EQ | c1_allocform_455ef0 sel=2 36B EQ | d1_allocform_44c1bb sel=2 36B EQ | e1_allocform_45c5da sel=2 36B EQ
+??0CTCNoiseDef@@QAE@XZ                           definers=5 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 18B EQ | c1_allocform_455ef0 sel=2 18B EQ | d1_allocform_44c1bb sel=2 18B EQ | e1_allocform_45c5da sel=2 18B EQ | 00749810 sel=2 29B NEQ
+??_7CThingNoiseDef@@6B@                          definers=4 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ | c1_allocform_455ef0 sel=2 100B EQ | d1_allocform_44c1bb sel=2 100B EQ | e1_allocform_45c5da sel=2 100B EQ
+??_7CTCNoiseDef@@6B@                             definers=5 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ | c1_allocform_455ef0 sel=2 100B EQ | d1_allocform_44c1bb sel=2 100B EQ | e1_allocform_45c5da sel=2 100B EQ | 00749810 sel=2 100B EQ
+??_GCThingNoiseDef@@UAEPAXI@Z                    definers=4 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 28B EQ | c1_allocform_455ef0 sel=2 28B EQ | d1_allocform_44c1bb sel=2 28B EQ | e1_allocform_45c5da sel=2 28B EQ
+??1CThingNoiseDef@@UAE@XZ                        definers=4 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 25B EQ | c1_allocform_455ef0 sel=2 25B EQ | d1_allocform_44c1bb sel=2 25B EQ | e1_allocform_45c5da sel=2 25B EQ
+??_GCTCNoiseDef@@UAEPAXI@Z                       definers=5 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 34B EQ | c1_allocform_455ef0 sel=2 34B EQ | d1_allocform_44c1bb sel=2 34B EQ | e1_allocform_45c5da sel=2 34B EQ | 00749810 sel=2 30B NEQ
+??1CTCNoiseDef@@UAE@XZ                           definers=5 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 11B EQ | c1_allocform_455ef0 sel=2 11B EQ | d1_allocform_44c1bb sel=2 11B EQ | e1_allocform_45c5da sel=2 11B EQ | 00749a70 sel=2 11B EQ
+######## option O_outofline: 0045c5f6 c2_ool_455ef0 d2_ool_44c1bb 0045c5da 00749810 00749a70 00455f3c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ    definers=1 strong=1 -          distinct_bodies=1  0045c5f6 sel=1 25B EQ
+??0CThingNoiseDef@@QAE@XZ                        definers=2 strong=1 LNK2005    distinct_bodies=1  0045c5f6 sel=2 36B EQ | c2_ool_455ef0 sel=1 36B EQ
+??0CTCNoiseDef@@QAE@XZ                           definers=4 strong=1 LNK2005    distinct_bodies=2  0045c5f6 sel=2 18B EQ | c2_ool_455ef0 sel=2 18B EQ | d2_ool_44c1bb sel=1 18B EQ | 00749810 sel=2 29B NEQ
+??_7CThingNoiseDef@@6B@                          definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ | c2_ool_455ef0 sel=2 100B EQ
+??_7CTCNoiseDef@@6B@                             definers=4 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ | c2_ool_455ef0 sel=2 100B EQ | d2_ool_44c1bb sel=2 100B EQ | 00749810 sel=2 100B EQ
+??_GCThingNoiseDef@@UAEPAXI@Z                    definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 28B EQ | c2_ool_455ef0 sel=2 28B EQ
+??1CThingNoiseDef@@UAE@XZ                        definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 25B EQ | c2_ool_455ef0 sel=2 25B EQ
+??_GCTCNoiseDef@@UAEPAXI@Z                       definers=4 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 34B EQ | c2_ool_455ef0 sel=2 34B EQ | d2_ool_44c1bb sel=2 34B EQ | 00749810 sel=2 30B NEQ
+??1CTCNoiseDef@@UAE@XZ                           definers=3 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 11B EQ | c2_ool_455ef0 sel=2 11B EQ | 00749a70 sel=2 11B EQ
+######## option N_nf86_one_row: 0045c5f6 c3_nf86_455ef0 0044c1bb 0045c5da 00749810 00749a70 00455f3c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ    definers=1 strong=1 -          distinct_bodies=1  0045c5f6 sel=1 25B EQ
+??0CThingNoiseDef@@QAE@XZ                        definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 36B EQ | c3_nf86_455ef0 sel=2 36B EQ
+??0CTCNoiseDef@@QAE@XZ                           definers=4 strong=1 LNK2005    distinct_bodies=2  0045c5f6 sel=2 18B EQ | c3_nf86_455ef0 sel=2 18B EQ | 0044c1bb sel=1 18B EQ | 00749810 sel=2 29B NEQ
+??_7CThingNoiseDef@@6B@                          definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ | c3_nf86_455ef0 sel=2 100B EQ
+??_7CTCNoiseDef@@6B@                             definers=4 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 100B EQ | c3_nf86_455ef0 sel=2 100B EQ | 0044c1bb sel=2 4B NEQ | 00749810 sel=2 100B EQ
+??_GCThingNoiseDef@@UAEPAXI@Z                    definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 28B EQ | c3_nf86_455ef0 sel=2 28B EQ
+??1CThingNoiseDef@@UAE@XZ                        definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 25B EQ | c3_nf86_455ef0 sel=2 25B EQ
+??_GCTCNoiseDef@@UAEPAXI@Z                       definers=3 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 34B EQ | c3_nf86_455ef0 sel=2 34B EQ | 00749810 sel=2 30B NEQ
+??1CTCNoiseDef@@UAE@XZ                           definers=3 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 11B EQ | c3_nf86_455ef0 sel=2 11B EQ | 00749a70 sel=2 11B EQ
+######## option S_one_source: 0045c5f6 00749810 00749a70 00455f3c
+?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ    definers=1 strong=1 -          distinct_bodies=1  0045c5f6 sel=1 25B EQ
+??0CThingNoiseDef@@QAE@XZ                        definers=1 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 36B EQ
+??0CTCNoiseDef@@QAE@XZ                           definers=2 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 18B EQ | 00749810 sel=2 29B NEQ
+??_7CThingNoiseDef@@6B@                          definers=1 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ
+??_7CTCNoiseDef@@6B@                             definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 100B EQ | 00749810 sel=2 100B EQ
+??_GCThingNoiseDef@@UAEPAXI@Z                    definers=1 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 28B EQ
+??1CThingNoiseDef@@UAE@XZ                        definers=1 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 25B EQ
+??_GCTCNoiseDef@@UAEPAXI@Z                       definers=2 strong=0 -          distinct_bodies=2  0045c5f6 sel=2 34B EQ | 00749810 sel=2 30B NEQ
+??1CTCNoiseDef@@UAE@XZ                           definers=2 strong=0 -          distinct_bodies=1  0045c5f6 sel=2 11B EQ | 00749a70 sel=2 11B EQ

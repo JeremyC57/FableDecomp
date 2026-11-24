@@ -1,0 +1,19 @@
+# leaf ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDef@@QAEXXZ
+NEQ	NEQ	0042b040	a,b	strong	15	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetOwner@CTCQuestCard@@QBEPAVCThing@@XZ
+NOADDR	NOADDR	-	-	pickany	28	-	n	n	??1CBoast@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	?size@?$vector@J@@QBEKXZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@VCQuestCardDef@@@@QBEPAVCQuestCardDef@@XZ
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0?$CDefPointer@VCQuestCardDef@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@VCQuestCardDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	54	-	n	n	??4?$CDefPointer@VCQuestCardDef@@@@QAEAAV0@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@J@@QBEPBJXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CCountedPointer@VCQuestManager@@@@QBEAAVCQuestManager@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ
+EQ	EQ	004b72f0	c	pickany	49	49	n	n	??_GCBoast@@QAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	??A?$vector@J@@QBEABJK@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ

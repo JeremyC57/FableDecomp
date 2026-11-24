@@ -1,0 +1,23 @@
+## HEAD set: 0045c5f6.obj 00455ef0.obj 0044c1bb.obj 0045c5da.obj 00749810.obj
+duplicates 2
+  DUP 00455ef0.obj ??0CThingNoiseDef@@QAE@XZ in 0045c5f6.obj;
+  DUP 0044c1bb.obj ??0CTCNoiseDef@@QAE@XZ in 0045c5f6.obj;
+UNRESOLVED 2 ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 1 ?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 2 ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+UNRESOLVED 1 ?GetSizeofClass@CThingNoiseDef@@UAEKXZ
+UNRESOLVED 2 ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 1 ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 2 ?v00@CTCNoiseDef@@UAEXXZ
+UNRESOLVED 1 ?v00@CThingNoiseDef@@UAEXXZ
+## new set: 0045c5f6.obj c3_nf86_455ef0.obj 0044c1bb.obj 0045c5da.obj 00749810.obj
+duplicates 1
+  DUP 0044c1bb.obj ??0CTCNoiseDef@@QAE@XZ in 0045c5f6.obj;
+UNRESOLVED 3 ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 2 ?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 3 ?GetSizeofClass@CTCNoiseDef@@UAEKXZ
+UNRESOLVED 2 ?GetSizeofClass@CThingNoiseDef@@UAEKXZ
+UNRESOLVED 3 ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 2 ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z
+UNRESOLVED 1 ?v00@CTCNoiseDef@@UAEXXZ
+LK_DONE

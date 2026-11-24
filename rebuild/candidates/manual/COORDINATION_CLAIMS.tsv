@@ -528,6 +528,6 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF355 CThingNoiseDef destructor class port (0x0045C5F6) then 0x007FC800 EndAttackBeam respell	naming	done	batches/2026-11-24_landing_nf355_u1 (unit: 0x0045C5F6, 0x0045C5DA, 0x007FC800)
 2026-11-24	A	agent NF356 owner ports onto size-body opt-ins (0x0042AF3C, 0x0042B040, 0x0042B312, 0x005F81BE, 0x00429C6F, 0x004291DE)	naming	done	batches/2026-11-24_landing_nf356_b1 (0x004291DE); the other five held (advisor: owner port = move, COMDAT set changes)
 2026-11-24	A	agent NF357 GetSubDef<T> pick-any copies (0x005BADE1, 0x0042B1A6, 0x0065F604, 0x0042B0A2)	naming	done	batches/2026-11-24_landing_nf357_b1 (+b1m, b2a, b2b, b2r; 48 rows); 0x006096E0, 0x005E5F30, 0x00607330 wait on NF358's locks; 0x005BADE1 stays debt
-2026-11-24	A	agent NF358 retail-caller census of closed copy lines (0x00429C6F, 0x0042B312, 0x0042B040); read-only	naming	claimed	locks via nflocks owner NF358
-2026-11-24	A	agent NF359 CThingNoiseDef def TU follow-ups (0x00455EF0, 0x0044C1BB, 0x0045C5C1, 0x0045C5DA)	naming	claimed	locks via nflocks owner NF359
-2026-11-24	A	agent NF360 in-place self respells (0x0042AF3C, 0x00428B10)	naming	claimed	locks via nflocks owner NF360
+2026-11-24	A	agent NF358 retail-caller census of closed copy lines (0x00429C6F, 0x0042B312, 0x0042B040); read-only	naming	done	pending/2026-11-24_nf358_handback: census reopens 0x00429C6F, 0x0042B312, 0x0042B040 (T3 nf358)
+2026-11-24	A	agent NF359 CThingNoiseDef def TU follow-ups (0x00455EF0, 0x0044C1BB, 0x0045C5C1, 0x0045C5DA)	naming	done	pending/2026-11-24_nf359_handback: all HOLD; rulings NF359-Q1/Q2 pending (no run dir)
+2026-11-24	A	agent NF360 in-place self respells (0x0042AF3C, 0x00428B10)	naming	done	pending/2026-11-24_nf360_handback: both RULING (R1-R3: strong self adds different-body link duplicates)

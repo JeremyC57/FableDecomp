@@ -1,0 +1,3 @@
+kind	row	old	new	batch
+self	00428b10	@DeleteIfSet@4	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	b2 (self symbol only; catalog name CCountedPointer<NUISystem::CComponent>::DeleteData unchanged); rebuild/oracles/self_symbols.tsv line 270 follows at the next self_symbols.py pass
+file (decision)	00428b10	global_DeleteData_00428b10	CCountedPointerNUISystemCComponent_DeleteData_00428b10	proposed only, NOT applied: the pattern of the sibling rows 0x004291DE / 0x00429C15 / 0x00429C6F; with it the catalog Module _global -> CCountedPointer<NUISystem::CComponent>; no header or tool cites the old path; Source / TestSource / Module lines in build_candidates.ps1 move with it

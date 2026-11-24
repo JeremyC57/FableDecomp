@@ -1,0 +1,16 @@
+EQ  00643d7c 8 ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ 
+NEQ 004118c0 8 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z not referenced by the leaf
+EQ  0049cf80 43 ??0CRightHandedSet@@QAE@ABV0@@Z 
+EQ  0043dbf0 21 ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z 
+EQ  00654af5 21 ??$IS_THING_ALIVE@PAVCThingObject@@@@YI_NABQAVCThingObject@@@Z 
+EQ  0041beb0 171 ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DBoxF@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEKABVC2DVector@@5@Z 
+NEQ 004365b0 61 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z LEAF-REFERENCED
+EQ  004c2df0 35 ??1C3DAnimationBlendState@@UAE@XZ 
+EQ  004c2e90 81 ??1C3DAnimationInterpolator@@UAE@XZ 
+EQ  00550a00 20 ??1CEnginePrimitive2DAnimatingMesh@@QAE@XZ 
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 
+NEQ 00440260 41 ??$__copy@PAVCEnginePrimitiveHandle@@PAV1@H@std@@YIPAVCEnginePrimitiveHandle@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z not referenced by the leaf
+EQ  00550a70 265 ??0CEnginePrimitive2DAnimatingMesh@@QAE@_KKABVC3DAnimationBlendState@@ABVC2DBoxF@@ABVC3DBoundingSphere@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z 
+NEQ 00440d70 52 ?erase@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEPAVCEnginePrimitiveHandle@@PAV3@0@Z not referenced by the leaf
+NEQ 00443f90 40 ?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z LEAF-REFERENCED

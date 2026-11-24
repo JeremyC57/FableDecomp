@@ -1,0 +1,12 @@
+# leaf ?DrawStatBarOnLeft@CAutoPickupBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z  source_a=yes  
+NEQ	NEQ	005bade1	a,b	strong	27	162	y	y	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z
+NEQ	NEQ	0042b040	a,b	strong	27	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	?empty@CRetailList_AutoPickup@NPlayerGui@@QBE_NXZ
+NOADDR	NOADDR	-	-	pickany	8	-	n	n	?front@CRetailList_AutoPickup@NPlayerGui@@QAEAAUCAutoPickup@2@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	23	-	n	n	??1?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingObjectDef@@@@QBEPAVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCInventoryItemDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	23	-	n	n	??1?$CDefPointer@$$CBVCInventoryItemDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCInventoryItemDef@@@@QBEPAVCInventoryItemDef@@XZ

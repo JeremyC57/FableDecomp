@@ -1,0 +1,64 @@
+######## 0x0045C5F6 HEAD object -> c1_allocform_455ef0
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .rdata   ??_7CThingNoiseDef@@6B@ 
+SAME     .text    ??0CTCNoiseDef@@QAE@XZ 
+SAME     .text    ??0CThingNoiseDef@@QAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??1CThingBaseDef@@UAE@XZ 
+SAME     .text    ??1CThingNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+SAME     .text    ??_GCThingNoiseDef@@UAEPAXI@Z 
+SAME     .text    ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ 
+DEF dropped: []
+DEF added: []
+UND dropped: []
+UND added (0): []
+######## 0x0045C5F6 HEAD object -> c2_ool_455ef0
+DROPPED  .text    sel=1 size=25 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .rdata   ??_7CThingNoiseDef@@6B@ 
+SAME     .text    ??0CTCNoiseDef@@QAE@XZ 
+CHANGED  .text    ??0CThingNoiseDef@@QAE@XZ selection 2->1
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??1CThingBaseDef@@UAE@XZ 
+SAME     .text    ??1CThingNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+SAME     .text    ??_GCThingNoiseDef@@UAEPAXI@Z 
+DEF dropped: ['?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ']
+DEF added: []
+UND dropped: ['??2@YAPAXI@Z']
+UND added (0): []
+######## 0x0045C5F6 HEAD object -> c3_nf86_455ef0
+DROPPED  .text    sel=1 size=25 ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ
+ADDED    .text    sel=1 size=25 ?ReferenceThingNoiseDefCtor@?A0x81fc743f@@YAPAVCDefClassBase@@XZ
+SAME     .drectve static:- 
+SAME     .rdata   ??_7CDefPointeeBase@@6B@ 
+SAME     .rdata   ??_7CTCNoiseDef@@6B@ 
+SAME     .rdata   ??_7CThingNoiseDef@@6B@ 
+SAME     .text    ??0CTCNoiseDef@@QAE@XZ 
+SAME     .text    ??0CThingNoiseDef@@QAE@XZ 
+SAME     .text    ??1CDefClassBase@@UAE@XZ 
+SAME     .text    ??1CDefPointeeBase@@UAE@XZ 
+SAME     .text    ??1CSubDefClassBase@@UAE@XZ 
+SAME     .text    ??1CTCNoiseDef@@UAE@XZ 
+SAME     .text    ??1CThingBaseDef@@UAE@XZ 
+SAME     .text    ??1CThingNoiseDef@@UAE@XZ 
+SAME     .text    ??_GCDefPointeeBase@@UAEPAXI@Z 
+SAME     .text    ??_GCTCNoiseDef@@UAEPAXI@Z 
+SAME     .text    ??_GCThingNoiseDef@@UAEPAXI@Z 
+DEF dropped: ['?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ']
+DEF added: ['?ReferenceThingNoiseDefCtor@?A0x81fc743f@@YAPAVCDefClassBase@@XZ']
+UND dropped: []
+UND added (0): []

@@ -85,6 +85,7 @@
 #include "engine/NUISystem_CSprite.h"
 #include "engine/NUISystem_CMesh.h"
 #include "engine/CText.h"
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CAPPEARANCEDEF_SIZE_BODY   // NF357: GetSubDef<CAppearanceDef> pick-any copy = size-mode owner 0x0042B0A2 (scaffolding, not retail)
 #include "engine/CDefClassBase_GetSubDef.h"
 using namespace NUISystem;
 

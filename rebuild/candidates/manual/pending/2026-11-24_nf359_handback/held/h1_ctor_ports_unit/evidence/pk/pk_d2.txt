@@ -1,0 +1,9 @@
+## 0044c1bb /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/exp/obj/d2_ool_44c1bb.obj pickany_vs_retail --leaf=??0CTCNoiseDef@@QAE@XZ (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 0044c1bb /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/exp/obj/d2_ool_44c1bb.obj pk_all --leaf=??0CTCNoiseDef@@QAE@XZ --row-length=18 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/pk_addrs.tsv
+# leaf ??0CTCNoiseDef@@QAE@XZ  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefPointeeBase@@UAE@XZ
+EQ        EQ                 0042d9a0 o        pickany     36 leaf=n reach=n ??_GCDefPointeeBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefClassBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CSubDefClassBase@@UAE@XZ
+EQ        EQ                 0044f71b o        pickany     34 leaf=n reach=n ??_GCTCNoiseDef@@UAEPAXI@Z
+## done

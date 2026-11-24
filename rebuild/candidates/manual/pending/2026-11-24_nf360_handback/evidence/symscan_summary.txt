@@ -1,0 +1,72 @@
+# symscan360.py over every *.obj under the scratchpad (agentNF360 excluded): # objects 76571 unreadable 2. Stale objects included: a census, not HEAD.
+# counts: kind sel symbol
+      2 DEF	0	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+      1 DEF	0	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+     25 DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+      2 DEF	1	?GetDef_0042af3c@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+    915 DEF	2	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+    935 DEF	2	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+     23 UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+      7 UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+# @DeleteIfSet@4: no DEF and no UND in any scanned object (the 12 landed definers' objects are not in the corpus)
+# strong (sel 1/0) definers and UND binders:
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	v28_obj/00801a50.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf337land/incwd_b2/00/5b/005b4eba/005b4eba.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf337land/incwd_b3/00/5a/005a4cdd/005a4cdd.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf337land/incwd_b3/00/5b/005b4eba/005b4eba.obj
+DEF	0	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf337land/incwd_b3/00/77/00774d20/00774d20.t.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf337land/incwd_b3/00/4c/004ca010/004ca010.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf337land/incwd_b3/00/4c/004c7f40/004c7f40.obj
+DEF	0	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf349land/incwd_b1/00/5c/005cbc36/005cbc36.t.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf349land/incwd_b1/00/4c/004ca010/004ca010.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf349land/incwd_b1/00/4c/004c7f40/004c7f40.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	land/fam12/work/00/54/00545b10/00545b10.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf210/inc/c010/work/00/77/007744a0/007744a0.obj
+DEF	0	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	land/nf210/inc/c005/work/00/53/005331a0/005331a0.t.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	land/nf210/inc/c005/work/00/53/005331a0/005331a0.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	land/nf210/inc/c005/work/00/55/005518e0/005518e0.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	land/nf210/inc/c005/work/00/55/00551bc0/00551bc0.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf212/inc/c004/work/00/4c/004ca010/004ca010.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf212/inc/c004/work/00/4c/004c7f40/004c7f40.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf212/inc/c007/work/00/5b/005b43a2/005b43a2.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/menufix/inc/c001/work/00/5a/005a4cdd/005a4cdd.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/menufix/inc/c000/work/00/5a/005a4cdd/005a4cdd.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf213/inc/c008/work/00/5a/005a4cdd/005a4cdd.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf213/inc/c008/work/00/5b/005b43a2/005b43a2.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf213/inc/c004/work/00/4c/004ca010/004ca010.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf213/inc/c004/work/00/4c/004c7f40/004c7f40.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf211/inc/c004/work/00/4c/004ca010/004ca010.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf211/inc/c007/work/00/5b/005b43a2/005b43a2.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	land/nf211/inc/c003/work/00/4c/004c7f40/004c7f40.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	nf334land/refscan/wd/00/80/00801a50/00801a50.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	wine/q/004ca010/004ca010.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	wine/q/00801a50/00801a50.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	wine/q/005ac10e/005ac10e.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	wine/q/00545b10/00545b10.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF120/pH/wine/q/007744a0/007744a0.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF120/pS/probe/007744a0.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF120/pS/wine/q/007744a0/007744a0.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF114/pS/probe/004c7f40.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF114/pS/probe/005a4cdd.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/verNF28/q/00801a50/00801a50.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	w22/agentNF174/pS/probe/00545b10.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF174/pS/probe/005b43a2.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF129/pS/probe/004c7f40.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF129/pS/probe/005b4eba.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF129/pS/probe/005a4cdd.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF153/pS/probe/005a4cdd.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF153/pS/probe/00659164.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF122/pS/probe/00659164.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF166/pS/probe/00659164.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF196/pS/wine/q/005b4eba/005b4eba.obj
+UND	-	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z	w22/agentNF156/pS/probe/00545b10.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF156/pS/probe/005b43a2.obj
+DEF	1	?GetDef_0042af3c@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	w22/agentNF356/work/obj/H_0042af3c.obj
+DEF	1	?GetDef_0042af3c@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	w22/agentNF356/work/lv_b1_H/00/42/0042af3c/0042af3c.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF104/pS/probe/004c7f40.obj
+UND	-	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF104/pS/probe/005a4cdd.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF104/pS/probe/00659164.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF170/pS/probe/00811470.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF170/pS/probe/005b4eba.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF170/pS/probe/008115a0.obj
+DEF	1	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	w22/agentNF170/pS/probe/00659164.obj

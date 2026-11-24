@@ -1,0 +1,10 @@
+# leaf ?OnItemAdded@CTCInventoryClothing@@MAEXJ_N0@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingObjectDef@@@@QBEPBVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QBEPBVCAppearanceModifierDef@@XZ
+NEQ	NEQ	0042b040	a,b	pickany	27	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NEQ	NEQ	0057ff92	a,b	pickany	27	162	y	y	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NEQ	NEQ	0040f020	a,b	pickany	64	60	y	y	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+NEQ	ADDR_CONFLICT(NEQ)	006804c0	c	pickany	64	60	y	y	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+NOADDR	NOADDR	-	-	pickany	73	-	n	n	??$GetInterface@VCTCHero@@@CThing@@QAE_NPAPAVCTCHero@@J@Z

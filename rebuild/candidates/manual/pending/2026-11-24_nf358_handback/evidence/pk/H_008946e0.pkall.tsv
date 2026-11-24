@@ -1,0 +1,15 @@
+# leaf ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0CBaseClass@@QAE@ABV0@@Z
+NEQ	NEQ	0099a470	c	pickany	30	31	n	n	??_GCBaseClass@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	static	11	-	n	n	?DecRefToZero@@YA_NAAJ@Z
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	19	-	n	n	??1?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NEQ	NEQ	0042b040	a,b	strong	25	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetTargetAttachments@CThing@@QBEPAUCThingVirtuals@@XZ
+NOADDR	NOADDR	-	-	pickany	16	-	n	n	??0?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+EQ	EQ	00704430	b	pickany	25	25	n	n	??0?$CCountedPointer@VCScriptThing@@@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	53	-	n	n	??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ
+EQ	EQ	006e7b40	b	pickany	26	26	n	n	??0CScriptThing@@QAE@XZ
+EQ	EQ	004aa840	a,b,c	pickany	66	66	y	y	??1CScriptThing@@UAE@XZ
+EQ	EQ	004abe90	b,c	pickany	33	33	n	n	??0CScriptThing@@QAE@ABV0@@Z
+EQ	EQ	004ab170	c	pickany	87	87	n	n	??_GCScriptThing@@UAEPAXI@Z

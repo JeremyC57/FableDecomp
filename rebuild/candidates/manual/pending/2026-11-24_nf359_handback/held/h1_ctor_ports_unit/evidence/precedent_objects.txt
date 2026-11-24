@@ -1,0 +1,164 @@
+## 00432c40
+  1 .drectve sel=0 size=42   align=1  nrel=0   (static) -
+  3 .text    sel=1 size=27   align=16 nrel=2   ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ
+UND 2
+## 004317d0
+  1 .drectve sel=0 size=62   align=1  nrel=0   (static) -
+  3 .text    sel=2 size=3    align=16 nrel=0   ??0__false_type@std@@QAE@XZ
+  5 .text    sel=2 size=11   align=16 nrel=2   ??1CDefPointeeBase@@UAE@XZ
+  6 .rdata   sel=2 size=40   align=4  nrel=10  ??_7CDefPointeeBase@@6B@
+  8 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefPointeeBase@@UAEPAXI@Z
+ 10 .text    sel=2 size=11   align=16 nrel=2   ??1CDefClassBase@@UAE@XZ
+ 12 .text    sel=2 size=3    align=16 nrel=0   ??0C2DVector@@QAE@XZ
+ 14 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ
+ 16 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ
+ 18 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ
+ 20 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ
+ 22 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@XZ
+ 24 .text    sel=2 size=18   align=16 nrel=1   ?deallocate@?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAEXPAU?$pair@KVCSub
+ 26 .text    sel=2 size=25   align=16 nrel=0   ?_M_empty_initialize@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$
+ 28 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ
+ 30 .text    sel=2 size=18   align=16 nrel=1   ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEXPAU?$_Rb_tree_no
+ 32 .text    sel=2 size=25   align=16 nrel=0   ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@
+ 34 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ
+ 36 .text    sel=2 size=18   align=16 nrel=1   ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEXPAU
+ 38 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ
+ 40 .text    sel=2 size=31   align=16 nrel=1   ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@
+ 42 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ
+ 44 .text    sel=2 size=31   align=16 nrel=1   ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEPAU?$_
+ 46 .text    sel=2 size=5    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@ABV01@@Z
+ 48 .text    sel=2 size=5    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@ABV01@@Z
+ 50 .text    sel=2 size=1    align=16 nrel=0   ??$_Destroy@U?$pair@$$CBKK@std@@@std@@YAXPAU?$pair@$$CBKK@0@@Z
+ 52 .text    sel=2 size=5    align=16 nrel=1   ??1?$pair@$$CBVCCharString@@J@std@@QAE@XZ
+ 54 .text    sel=2 size=1    align=16 nrel=0   ??$_Destroy@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDefC
+ 56 .text    sel=2 size=1    align=16 nrel=0   ??1?$_STLP_alloc_proxy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@V?$allocator@U?$pair@
+ 58 .text    sel=2 size=1    align=16 nrel=0   ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_Rb_t
+ 60 .text    sel=2 size=1    align=16 nrel=0   ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$alloc
+ 62 .text    sel=2 size=11   align=16 nrel=0   ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_Rb_t
+ 64 .text    sel=2 size=11   align=16 nrel=0   ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$alloc
+ 66 .text    sel=2 size=51   align=16 nrel=2   ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?
+ 68 .text    sel=2 size=30   align=16 nrel=2   ??_G?$pair@$$CBVCCharString@@J@std@@QAEPAXI@Z
+ 70 .text    sel=2 size=1    align=16 nrel=0   ??$__destroy_aux@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInf
+ 72 .text    sel=2 size=14   align=16 nrel=1   ??1?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefIn
+ 74 .text    sel=2 size=51   align=16 nrel=1   ?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$al
+ 76 .text    sel=2 size=14   align=16 nrel=1   ??1?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+ 78 .text    sel=2 size=14   align=16 nrel=1   ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+ 80 .text    sel=2 size=27   align=16 nrel=1   ??0?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABV?$all
+ 82 .text    sel=2 size=27   align=16 nrel=1   ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+ 84 .text    sel=2 size=9    align=16 nrel=1   ??$_Destroy@U?$pair@$$CBVCCharString@@J@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@J@0@@Z
+ 86 .text    sel=2 size=1    align=16 nrel=0   ??$__destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@@std@@YAXPAU?$pair@KVCSubDefInf
+ 88 .text    sel=2 size=66   align=16 nrel=2   ??1?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$alloca
+ 90 .text    sel=2 size=56   align=16 nrel=1   ??0?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$alloca
+ 92 .text    sel=2 size=56   align=16 nrel=1   ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCChar
+ 94 .text    sel=2 size=59   align=16 nrel=3   ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$C
+ 96 .text    sel=2 size=1    align=16 nrel=0   ??$_Destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDe
+ 98 .text    sel=2 size=66   align=16 nrel=2   ??1?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+100 .text    sel=2 size=14   align=16 nrel=1   ??1?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDe
+102 .text    sel=2 size=56   align=16 nrel=1   ??0?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABU?$less@K@1@ABV?$al
+104 .text    sel=2 size=51   align=16 nrel=1   ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVC
+106 .text    sel=2 size=14   align=16 nrel=1   ??1?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@@QAE@XZ
+108 .text    sel=2 size=66   align=16 nrel=2   ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCChar
+110 .text    sel=2 size=66   align=16 nrel=2   ??1?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+112 .text    sel=2 size=14   align=16 nrel=1   ??1?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBa
+114 .text    sel=2 size=56   align=16 nrel=1   ??0?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+116 .text    sel=2 size=33   align=16 nrel=3   ??1CParentDefClassBase@@UAE@XZ
+118 .text    sel=2 size=1009 align=16 nrel=88  ??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+119 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CUIMiscThingsDef@NUISystem@@6B@
+121 .text    sel=2 size=30   align=16 nrel=2   ??_GCUIMiscThingsDef@NUISystem@@UAEPAXI@Z
+123 .text    sel=2 size=1036 align=16 nrel=91  ??1CUIMiscThingsDef@NUISystem@@UAE@XZ
+125 .text    sel=1 size=27   align=16 nrel=2   ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ
+UND 37
+## 004304e0
+  1 .drectve sel=0 size=62   align=1  nrel=0   (static) -
+  3 .text    sel=2 size=3    align=16 nrel=0   ??0__false_type@std@@QAE@XZ
+  5 .text    sel=2 size=9    align=16 nrel=0   ??0CDefString@@QAE@XZ
+  7 .text    sel=2 size=11   align=16 nrel=2   ??1CDefPointeeBase@@UAE@XZ
+  8 .rdata   sel=2 size=40   align=4  nrel=10  ??_7CDefPointeeBase@@6B@
+ 10 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefPointeeBase@@UAEPAXI@Z
+ 12 .text    sel=2 size=11   align=16 nrel=2   ??1CDefClassBase@@UAE@XZ
+ 14 .text    sel=2 size=18   align=16 nrel=2   ??0CDefPointeeBase@@QAE@XZ
+ 16 .text    sel=2 size=3    align=16 nrel=0   ??0C2DVector@@QAE@XZ
+ 18 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ
+ 20 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$pair@$$CBKK@std@@@std@@QAE@XZ
+ 22 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ
+ 24 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$pair@$$CBVCCharString@@J@std@@@std@@QAE@XZ
+ 26 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@XZ
+ 28 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@XZ
+ 30 .text    sel=2 size=18   align=16 nrel=1   ?deallocate@?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAEXPAU?$pair@KVCSub
+ 32 .text    sel=2 size=25   align=16 nrel=0   ?_M_empty_initialize@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$
+ 34 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ
+ 36 .text    sel=2 size=18   align=16 nrel=1   ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEXPAU?$_Rb_tree_no
+ 38 .text    sel=2 size=25   align=16 nrel=0   ?_M_empty_initialize@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@
+ 40 .text    sel=2 size=1    align=16 nrel=0   ??1?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ
+ 42 .text    sel=2 size=18   align=16 nrel=1   ?deallocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEXPAU
+ 44 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@XZ
+ 46 .text    sel=2 size=31   align=16 nrel=1   ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAEPAU?$_Rb_tree_node@
+ 48 .text    sel=2 size=3    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@XZ
+ 50 .text    sel=2 size=31   align=16 nrel=1   ?allocate@?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAEPAU?$_
+ 52 .text    sel=2 size=5    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@@std@@QAE@ABV01@@Z
+ 54 .text    sel=2 size=5    align=16 nrel=0   ??0?$allocator@U?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@@std@@QAE@ABV01@@Z
+ 56 .text    sel=2 size=5    align=16 nrel=0   ??0?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@QAE@ABV01@@Z
+ 58 .text    sel=2 size=1    align=16 nrel=0   ??$_Destroy@U?$pair@$$CBKK@std@@@std@@YAXPAU?$pair@$$CBKK@0@@Z
+ 60 .text    sel=2 size=5    align=16 nrel=1   ??1?$pair@$$CBVCCharString@@J@std@@QAE@XZ
+ 62 .text    sel=2 size=1    align=16 nrel=0   ??$_Destroy@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDefC
+ 64 .text    sel=2 size=29   align=16 nrel=2   ??0CDefClassBase@@AAE@XZ
+ 65 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CDefClassBase@@6B@
+ 67 .text    sel=2 size=36   align=16 nrel=3   ??_GCDefClassBase@@UAEPAXI@Z
+ 69 .text    sel=2 size=1    align=16 nrel=0   ??1?$_STLP_alloc_proxy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@V?$allocator@U?$pair@
+ 71 .text    sel=2 size=1    align=16 nrel=0   ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_Rb_t
+ 73 .text    sel=2 size=1    align=16 nrel=0   ??1?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$alloc
+ 75 .text    sel=2 size=11   align=16 nrel=0   ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBKK@std@@@std@@U12@V?$allocator@U?$_Rb_t
+ 77 .text    sel=2 size=11   align=16 nrel=0   ??0?$_STLP_alloc_proxy@PAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@std@@U12@V?$alloc
+ 79 .text    sel=2 size=11   align=16 nrel=0   ??0?$_STLP_alloc_proxy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@V?$allocator@U?$pair@
+ 81 .text    sel=2 size=51   align=16 nrel=2   ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?
+ 83 .text    sel=2 size=30   align=16 nrel=2   ??_G?$pair@$$CBVCCharString@@J@std@@QAEPAXI@Z
+ 85 .text    sel=2 size=1    align=16 nrel=0   ??$__destroy_aux@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInf
+ 87 .text    sel=2 size=14   align=16 nrel=1   ??1?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefIn
+ 89 .text    sel=2 size=51   align=16 nrel=1   ?clear@?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$al
+ 91 .text    sel=2 size=14   align=16 nrel=1   ??1?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+ 93 .text    sel=2 size=14   align=16 nrel=1   ??1?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+ 95 .text    sel=2 size=27   align=16 nrel=1   ??0?$_Rb_tree_base@U?$pair@$$CBKK@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABV?$all
+ 97 .text    sel=2 size=27   align=16 nrel=1   ??0?$_Rb_tree_base@U?$pair@$$CBVCCharString@@J@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+ 99 .text    sel=2 size=15   align=16 nrel=0   ??0?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefIn
+101 .text    sel=2 size=9    align=16 nrel=1   ??$_Destroy@U?$pair@$$CBVCCharString@@J@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@J@0@@Z
+103 .text    sel=2 size=1    align=16 nrel=0   ??$__destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@U12@@std@@YAXPAU?$pair@KVCSubDefInf
+105 .text    sel=2 size=66   align=16 nrel=2   ??1?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$alloca
+107 .text    sel=2 size=56   align=16 nrel=1   ??0?$_Rb_tree@KU?$pair@$$CBKK@std@@U?$_Select1st@U?$pair@$$CBKK@std@@@2@U?$less@K@2@V?$alloca
+109 .text    sel=2 size=56   align=16 nrel=1   ??0?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCChar
+111 .text    sel=2 size=15   align=16 nrel=0   ??0?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDe
+113 .text    sel=2 size=59   align=16 nrel=3   ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$C
+115 .text    sel=2 size=1    align=16 nrel=0   ??$_Destroy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@std@@YAXPAU?$pair@KVCSubDefInfo@CDe
+117 .text    sel=2 size=66   align=16 nrel=2   ??1?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@XZ
+119 .text    sel=2 size=14   align=16 nrel=1   ??1?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDe
+121 .text    sel=2 size=56   align=16 nrel=1   ??0?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@QAE@ABU?$less@K@1@ABV?$al
+123 .text    sel=2 size=13   align=16 nrel=0   ??0?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@@QAE@XZ
+125 .text    sel=2 size=51   align=16 nrel=1   ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVC
+127 .text    sel=2 size=14   align=16 nrel=1   ??1?$CArray@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@@QAE@XZ
+129 .text    sel=2 size=16   align=16 nrel=0   ??0?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBa
+131 .text    sel=2 size=66   align=16 nrel=2   ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCChar
+133 .text    sel=2 size=14   align=16 nrel=1   ??1?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBa
+135 .text    sel=2 size=33   align=16 nrel=3   ??1CParentDefClassBase@@UAE@XZ
+137 .text    sel=2 size=66   align=16 nrel=2   ??1?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+139 .text    sel=2 size=56   align=16 nrel=1   ??0?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@
+141 .text    sel=2 size=51   align=16 nrel=2   ??0CParentDefClassBase@@QAE@XZ
+142 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CParentDefClassBase@@6B@
+144 .text    sel=2 size=54   align=16 nrel=4   ??_GCParentDefClassBase@@UAEPAXI@Z
+146 .text    sel=2 size=1039 align=16 nrel=88  ??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+147 .rdata   sel=2 size=100  align=8  nrel=25  ??_7CUIMiscThingsDef@NUISystem@@6B@
+149 .text    sel=2 size=30   align=16 nrel=2   ??_GCUIMiscThingsDef@NUISystem@@UAEPAXI@Z
+151 .text    sel=2 size=1036 align=16 nrel=91  ??1CUIMiscThingsDef@NUISystem@@UAE@XZ
+153 .text    sel=1 size=27   align=16 nrel=2   ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ
+UND 50
+## Alloc 00432c40 v 004317d0
+bytes EQUAL 27 27
+relocs EQUAL
+## Alloc 00432c40 v 004304e0
+bytes EQUAL 27 27
+relocs EQUAL
+00432c40: ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ 00432c40 len 27 bytes EQ relocs EQ
+004317d0: ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ 00432c40 len 27 bytes EQ relocs EQ
+004317d0: ??1CUIMiscThingsDef@NUISystem@@UAE@XZ 004317d0 len 1036 bytes EQ relocs EQ
+004317d0: ??0CUIMiscThingsDef@NUISystem@@QAE@XZ 004304e0 len 1009 bytes DIFF relocs DIFF (relocation targets differ; values not kept: retail-derived)
+004304e0: ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ 00432c40 len 27 bytes EQ relocs EQ
+004304e0: ??1CUIMiscThingsDef@NUISystem@@UAE@XZ 004317d0 len 1036 bytes EQ relocs EQ
+004304e0: ??0CUIMiscThingsDef@NUISystem@@QAE@XZ 004304e0 len 1039 bytes EQ relocs EQ

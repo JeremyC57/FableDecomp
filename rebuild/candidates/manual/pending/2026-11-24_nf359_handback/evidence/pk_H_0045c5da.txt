@@ -1,0 +1,4 @@
+## 0045c5da /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/hobj/0045c5da.obj pickany_vs_retail --leaf=CThingNoiseDef_ScalarDeletingDestructor (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+## 0045c5da /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/hobj/0045c5da.obj pk_all --leaf=CThingNoiseDef_ScalarDeletingDestructor --row-length=28 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/pk_addrs.tsv
+# leaf ?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z  source_a=yes  
+## done

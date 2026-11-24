@@ -1,0 +1,4 @@
+hobj/0045c5f6 relocations naming ??0CTCNoiseDef@@QAE@XZ: 1 [('.debug$F', 13)]
+exp/obj/c2_ool_455ef0 relocations naming ??0CTCNoiseDef@@QAE@XZ: 1 [('.debug$F', 13)]
+exp/obj/d2_ool_44c1bb relocations naming ??0CTCNoiseDef@@QAE@XZ: 1 [('.debug$F', 13)]
+hobj/00749810 relocations naming ??0CTCNoiseDef@@QAE@XZ: 1 [('.debug$F', 32)]

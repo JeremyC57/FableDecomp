@@ -1,0 +1,24 @@
+== 0x00429C6F rows=68 compiled=67 holes=0 owner=1
+  leaf-reached NEQ: 29  [00427216(pickany,62/59,leaf) 00582ace(pickany,62/59,leaf) 0058315b(pickany,62/59,leaf) 0058a0c7(pickany,62/59,leaf) 0058e208(pickany,62/59,leaf) 005907ab(pickany,62/59,leaf) 0059cb90(pickany,62/59,leaf) 0059d270(pickany,62/59,leaf) 0059ed42(pickany,62/59,leaf) 0059f51e(pickany,62/59,leaf) 0059fee3(pickany,62/59,leaf) 005a29f4(pickany,62/59,leaf) 005a8c66(pickany,62/59,leaf) 005a9cbe(pickany,62/59,leaf) 005aaf28(pickany,62/59,leaf) 005ad571(pickany,62/59,leaf) 005cdd86(pickany,62/59,leaf) 005d64dd(pickany,62/59,leaf) 005d6748(pickany,62/59,leaf) 005d7081(pickany,62/59,leaf) 005fb7e0(pickany,103/59,leaf) 005fe090(pickany,103/59,leaf) 005ff190(pickany,103/59,leaf) 006001e0(pickany,103/59,leaf) 00600b60(pickany,103/59,leaf) 00603000(pickany,103/59,leaf) 006096e0(pickany,103/59,leaf) 0060c900(pickany,103/59,via) 0060eeb0(pickany,103/59,via)]
+  unreached NEQ (non-gating): 4  [00607330(103/59) 0061b610(103/59) 0061e6d0(103/59) 00622a00(103/59)]
+  EQ: 25  [0041e6d3(pickany) 004804de(pickany) 004830a1(pickany) 00574885(pickany) 005759bf(pickany) 0058578b(pickany) 005a04f7(pickany) 005a4cdd(pickany) 005a5b31(pickany) 005b6a66(pickany) 005b76d1(pickany) 005b8743(pickany) 005c574e(pickany) 005c5f11(pickany) 005c8459(pickany) 005c90fc(pickany) 005c9a95(pickany) 005cacb9(pickany) 005ce0e6(pickany) 005d1f0c(pickany) 005eeff2(pickany) 005f1b10(pickany) 005f519f(pickany) 00605570(pickany) 00626110(pickany)]
+  UND (call, no copy): 7 [0058f016 00596a68 005a6ca1 005e4be0 005e5f30 005fd5e0 00601310]  no ref: 2 [00584b86 005b70b8]  DEF but no pk line: 0 []
+  pk_all v pvr disagreements: 0 []
+  emitters not in the retail-caller leg (src only): [00607330(NEQ) 0060c900(NEQ) 0060eeb0(NEQ) 0061b610(NEQ) 0061e6d0(NEQ) 00622a00(NEQ)]
+  grades: {'RELOCATION_MATCH': 67}
+== 0x0042B040 rows=37 compiled=36 holes=0 owner=1
+  leaf-reached NEQ: 23  [0041e6d3(pickany,105/98,leaf) 00584b86(pickany,101/98,leaf) 005b3aef(pickany,101/98,leaf) 005b3c95(pickany,27/98,leaf) 005b413d(pickany,50/98,leaf) 005b76d1(pickany,101/98,leaf) 005b8743(pickany,101/98,leaf) 005e4430(strong,15/98,leaf) 00646dbd(strong,27/98,leaf) 00706290(pickany,34/98,leaf) 00706370(pickany,34/98,leaf) 00706450(pickany,34/98,leaf) 007066a0(pickany,31/98,leaf) 00706880(pickany,36/98,leaf) 00706950(pickany,36/98,leaf) 00706b50(strong,31/98,leaf) 00846100(strong,31/98,leaf) 00846410(strong,31/98,leaf) 00868e50(pickany,116/98,leaf) 008946e0(strong,25/98,leaf) 00894820(strong,25/98,leaf) 00894950(strong,25/98,leaf) 008da0f0(strong,34/98,leaf)]
+  unreached NEQ (non-gating): 1  [00607330(116/98)]
+  EQ: 12  [0058807d(pickany) 005e4be0(pickany) 005e5f30(pickany) 005f1b10(pickany) 006096e0(pickany) 0064e978(pickany) 00652fa4(pickany) 006aca30(pickany) 006d1250(pickany) 00703050(pickany) 007030c0(pickany) 00703110(pickany)]
+  UND (call, no copy): 0 []  no ref: 0 []  DEF but no pk line: 0 []
+  pk_all v pvr disagreements: 0 []
+  emitters not in the retail-caller leg (src only): [00607330(NEQ)]
+  grades: {'RELOCATION_MATCH': 35, 'DIFFER(687v686)': 1}
+== 0x0042B312 rows=42 compiled=41 holes=0 owner=1
+  leaf-reached NEQ: 29  [0047a9f0(pickany,116/98,leaf) 0058578b(pickany,101/98,leaf) 005a04f7(pickany,101/98,leaf) 005a29f4(pickany,101/98,leaf) 005a8a5d(pickany,101/98,leaf) 005a9cbe(pickany,101/98,leaf) 005aaf28(pickany,101/98,leaf) 005ad571(pickany,101/98,leaf) 005c6b26(pickany,101/98,leaf) 005c7452(pickany,101/98,leaf) 005c770c(strong,27/98,leaf) 005c8459(pickany,101/98,leaf) 005c90fc(pickany,101/98,leaf) 005c9a95(pickany,101/98,leaf) 005cacb9(pickany,101/98,leaf) 005ee3b3(strong,50/98,leaf) 005fb630(strong,33/98,leaf) 005fb7e0(strong,51/98,leaf) 005fc2d0(pickany,116/98,leaf) 005fc8a0(pickany,116/98,leaf) 005fcbe0(pickany,116/98,leaf) 005fddd0(pickany,116/98,leaf) 006001e0(pickany,116/98,leaf) 00600b60(pickany,116/98,leaf) 0060c900(pickany,116/98,leaf) 0060eeb0(pickany,116/98,leaf) 0061b610(pickany,116/98,leaf) 0061e6d0(pickany,116/98,leaf) 00622a00(pickany,116/98,via)]
+  unreached NEQ (non-gating): 2  [005ff190(116/98) 00605570(116/98)]
+  EQ: 7  [0041d8e7(strong) 005c71aa(pickany) 005e4be0(pickany) 005e5f30(pickany) 005eeff2(pickany) 005f1b10(pickany) 005f6e40(pickany)]
+  UND (call, no copy): 0 []  no ref: 3 [005eede2 005f694d 005f6a6f]  DEF but no pk line: 0 []
+  pk_all v pvr disagreements: 0 []
+  emitters not in the retail-caller leg (src only): [00605570(NEQ)]
+  grades: {'RELOCATION_MATCH': 41}

@@ -1,0 +1,25 @@
+ 0 0044f71b ??_ECTCNoiseDef@@UAEPAXI@Z | 
+ 1 0042d930 ?Delete@CIVCountedPointeeBase@@UBEXXZ | 
+ 2 009ace90 ?UnloadResource@CDefClassBase@@UAE_NXZ | 
+ 3 009fbef0 ?GetUnloadableMemory@CResource@@UBEKXZ | 
+ 4 0042d950 ?IsResourceLoaded@CResource@@UBE_NXZ | 
+ 5 0042d960 ?OnResourceLoaded@CResource@@UAEXXZ | 
+ 6 0042d970 ?CanAbortResourceLoad@CResource@@UBE_NJ@Z | 
+ 7 0042d980 ?OnResourceLoadAborted@CResource@@UAEXXZ | 
+ 8 009fbf00 ?GetDebugMemoryInUse@CResource@@UBEKXZ | 
+ 9 009fbf10 ?ResetDebugMemoryInUse@CResource@@UAEXXZ | 
+10 0042da10 ?GetInstantiationName@CDefClassBase@@UBE?AVCDefString@@XZ | 
+11 0042da20 ?SetInstantiationName@CDefClassBase@@UAEXVCDefString@@@Z | 
+12 0042da30 ?AddSubDef@CDefClassBase@@UAEXABVCCharString@@JJ@Z | 
+13 0042da40 ?RemoveSubDef@CDefClassBase@@UAEXABVCCharString@@@Z | 
+14 0042da60 ?GetPSubDefInfo@CDefClassBase@@UBEPBVCSubDefInfo@1@ABVCCharString@@@Z | 
+15 0042da50 ?GetPSubDefInfo@CDefClassBase@@UAEPAVCSubDefInfo@1@ABVCCharString@@@Z | 
+16 0042da70 ?IsParentDef@CDefClassBase@@UBE_NXZ | 
+17 0042da80 ?PostTransfer@CDefClassBase@@UAEXXZ | 
+18 00452184 ?Transfer@CTCNoiseDef@@UAEXAAVCPersistContext@@@Z | 
+19 004537e4 ?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z | 
+20 0044c1cd ?GetSizeofClass@CTCNoiseDef@@UAEKXZ | 
+21 009acab0 ?InternalSaveBinary@CDefClassBase@@UAEXAAVCDataOutputStream@@@Z | 
+22 009acb20 ?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z | ?InternalLoadBinary@CDefClassBase@@UAEXAAVCDataInputStream@@@Z
+23 0042da90 ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z | 
+24 0042daa0 ?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ | 

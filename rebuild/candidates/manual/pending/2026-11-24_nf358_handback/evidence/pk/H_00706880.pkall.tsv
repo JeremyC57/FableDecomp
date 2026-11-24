@@ -1,0 +1,10 @@
+# leaf ?AddAppearanceModifier@CTCHeroAttachableAppearanceModifiers@@QAEXJ@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	18	-	n	n	??0CModifierEntry@@QAE@J_N@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0__true_type@@QAE@XZ
+EQ	EQ	00405c10	b	pickany	5	5	n	n	??2@YAPAXIPAX@Z
+NEQ	NEQ	0042b040	a,b	pickany	36	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NEQ	NEQ	0057ff92	a,b	pickany	32	162	y	y	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+NEQ	NEQ	00708e40	a,b	pickany	133	259	y	y	?_M_insert_overflow@?$CRetailVector@UCModifierEntry@@@@QAEXPAUCModifierEntry@@ABU2@ABU__true_type@@K_N@Z
+NOADDR	NOADDR	-	-	pickany	58	-	n	n	?push_back@?$CRetailVector@UCModifierEntry@@@@QAEXABUCModifierEntry@@@Z

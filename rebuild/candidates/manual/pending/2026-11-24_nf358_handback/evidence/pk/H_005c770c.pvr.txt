@@ -1,0 +1,3 @@
+NEQ 0042b1a6 27 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z not referenced by the leaf
+NEQ 0042af9e 27 ??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z not referenced by the leaf
+NEQ 0042b312 27 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z not referenced by the leaf

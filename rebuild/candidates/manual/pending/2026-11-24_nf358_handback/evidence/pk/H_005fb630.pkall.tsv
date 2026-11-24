@@ -1,0 +1,8 @@
+# leaf ?GetRelativePosOnMap@CTCInventoryMap@@IBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVector@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	24	-	n	n	??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QBEPAVCUIMiscThingsDef@NUISystem@@XZ
+NEQ	NEQ	0042b312	a,b	strong	33	98	y	y	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0C2DCoordI@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	?size@CMapRecordVector@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??0C2DBoxI@@QAE@XZ

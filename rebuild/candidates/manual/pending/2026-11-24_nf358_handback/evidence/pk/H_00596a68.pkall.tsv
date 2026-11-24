@@ -1,0 +1,8 @@
+# leaf ?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@AAVCWideString@@MABVCCharString@@1_N@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	39	-	n	n	??8CCharString@@QBE_NPBD@Z
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+EQ	EQ	00429c53	b	pickany	5	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	5	-	n	n	??1?$CCountedPointer@VCText@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCText@NUISystem@@@@QBEPAVCText@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	33	-	n	n	??$?0VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAE@ABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z

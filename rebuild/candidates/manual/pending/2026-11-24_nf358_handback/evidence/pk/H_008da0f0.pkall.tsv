@@ -1,0 +1,18 @@
+# leaf ?Spike@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0C3DVector@@QAE@ABV0@@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NEQ	NEQ	00669d30	a,b	strong	34	100	y	y	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
+NEQ	NEQ	0042b040	a,b	strong	34	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	33	-	n	n	?HasTC@CThing@@QBE_NJ@Z
+NOADDR	NOADDR	-	-	pickany	64	-	n	n	??0SCreationRecord@@QAE@ABVCCharString@@0@Z
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??1SCreationRecord@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@VCSpecialEffectsDef@@@@QAE@XZ
+NEQ	NEQ	00669580	a,b	pickany	29	182	y	y	??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+EQ	EQ	0040f020	a,b	pickany	60	60	y	y	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+EQ	ADDR_CONFLICT(EQ)	006804c0	c	pickany	60	60	y	y	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$GetTC@VCTCTrapBase@@@CThing@@QAEPAVCTCTrapBase@@J@Z
+NOADDR	NOADDR	-	-	pickany	77	-	n	n	??$GetTCIfPresent@VCTCTrapBase@@@CThing@@QAEPAVCTCTrapBase@@J@Z

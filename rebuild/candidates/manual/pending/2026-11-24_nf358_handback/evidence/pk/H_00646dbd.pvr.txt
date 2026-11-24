@@ -1,0 +1,2 @@
+NEQ 005bade1 27 ??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z not referenced by the leaf
+NEQ 0042b040 27 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z not referenced by the leaf

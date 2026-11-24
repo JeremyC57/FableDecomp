@@ -1,0 +1,15 @@
+# leaf ?SetAsWearing@CTCInventoryClothing@@QAEXABVCCharString@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	strong	12	-	n	y	?FindDef_s7r_0@@YAPAXXZ
+NOADDR	NOADDR	-	-	strong	12	-	n	y	?FindDef_s7r_1@@YAPAXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?end@CSuitPartMap@@QAEPAUSSuitPartNode@@XZ
+NEQ	NEQ	005ba986	a,b	strong	20	56	y	y	?find@CSuitPartMap@@QAEPAUSSuitPartNode@@ABJ@Z
+NEQ	NEQ	005b406d	a,b	strong	13	121	y	y	?SetThingAsWearingSelectedClothes@CTCInventoryClothing@@AAEXAAVCThing@@@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingObjectDef@@@@QBEPBVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QBEPBVCAppearanceModifierDef@@XZ
+NEQ	NEQ	0042b040	a,b	pickany	50	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NEQ	NEQ	0057ff92	a,b	pickany	50	162	y	y	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z

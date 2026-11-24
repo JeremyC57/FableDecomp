@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00846100   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00846100   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00846100   WARN RELOC_NAME: ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+00846100   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 1
+  00846100 RELOCATION_MATCH CCreatureAction_WearGameObject::PerformAction

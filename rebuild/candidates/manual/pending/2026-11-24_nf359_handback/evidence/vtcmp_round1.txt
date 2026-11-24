@@ -1,0 +1,21 @@
+hobj/0045c5f6 ??_7CThingNoiseDef@@6B@ SLOTS 25 DIFF 1
+hobj/0045c5f6 ??_7CTCNoiseDef@@6B@ SLOTS 25 DIFF 0
+hobj/0045c5f6 ??_7CDefPointeeBase@@6B@ SLOTS 10 DIFF 0
+exp/obj/c2_ool_455ef0 ??_7CThingNoiseDef@@6B@ SLOTS 25 DIFF 1
+exp/obj/c2_ool_455ef0 ??_7CTCNoiseDef@@6B@ SLOTS 25 DIFF 0
+exp/obj/c2_ool_455ef0 ??_7CDefPointeeBase@@6B@ SLOTS 10 DIFF 0
+exp/obj/c3_nf86_455ef0 ??_7CThingNoiseDef@@6B@ SLOTS 25 DIFF 1
+exp/obj/c3_nf86_455ef0 ??_7CTCNoiseDef@@6B@ SLOTS 25 DIFF 0
+exp/obj/c3_nf86_455ef0 ??_7CDefPointeeBase@@6B@ SLOTS 10 DIFF 0
+exp/obj/d2_ool_44c1bb ??_7CThingNoiseDef@@6B@ NO ??_7CThingNoiseDef@@6B@
+exp/obj/d2_ool_44c1bb ??_7CTCNoiseDef@@6B@ SLOTS 25 DIFF 0
+exp/obj/d2_ool_44c1bb ??_7CDefPointeeBase@@6B@ SLOTS 10 DIFF 0
+hobj/00455ef0 ??_7CThingNoiseDef@@6B@ SLOTS 1 DIFF 1
+hobj/00455ef0 ??_7CTCNoiseDef@@6B@ SLOTS 1 DIFF 1
+hobj/00455ef0 ??_7CDefPointeeBase@@6B@ NO ??_7CDefPointeeBase@@6B@
+hobj/0044c1bb ??_7CThingNoiseDef@@6B@ NO ??_7CThingNoiseDef@@6B@
+hobj/0044c1bb ??_7CTCNoiseDef@@6B@ SLOTS 1 DIFF 1
+hobj/0044c1bb ??_7CDefPointeeBase@@6B@ NO ??_7CDefPointeeBase@@6B@
+hobj/00749810 ??_7CThingNoiseDef@@6B@ NO ??_7CThingNoiseDef@@6B@
+hobj/00749810 ??_7CTCNoiseDef@@6B@ SLOTS 25 DIFF 0
+hobj/00749810 ??_7CDefPointeeBase@@6B@ SLOTS 10 DIFF 0

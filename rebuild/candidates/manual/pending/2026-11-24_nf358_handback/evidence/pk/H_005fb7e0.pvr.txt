@@ -1,0 +1,5 @@
+NEQ 0042b312 51 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z LEAF-REFERENCED
+NEQ 00429c53 53 ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ not referenced by the leaf
+NEQ 004291de 53 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ not referenced by the leaf
+NEQ 00428b10 8 ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z not referenced by the leaf
+NEQ 00429c6f 103 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z LEAF-REFERENCED

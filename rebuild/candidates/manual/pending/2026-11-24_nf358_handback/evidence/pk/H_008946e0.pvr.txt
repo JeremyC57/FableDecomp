@@ -1,0 +1,5 @@
+NEQ 0042b040 25 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z LEAF-REFERENCED
+EQ  00704430 25 ??0?$CCountedPointer@VCScriptThing@@@@QAE@ABV0@@Z 
+EQ  006e7b40 26 ??0CScriptThing@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  004abe90 33 ??0CScriptThing@@QAE@ABV0@@Z 

@@ -1,0 +1,6 @@
+## HEAD set: H_0042af3c.obj H_004ca010.obj
+duplicates 0
+UNRESOLVED 1 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+## new set: 0042af3c.obj H_004ca010.obj
+duplicates 0
+LK_DONE

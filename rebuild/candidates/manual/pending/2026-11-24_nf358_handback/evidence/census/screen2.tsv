@@ -1,0 +1,4 @@
+005eede2	lock_now=free	claim=none	unmatched_B=0	codex28=0	B_staged_nonhdr=0	t3col2=0	00/5e/CTCInventoryAbilities_InitialiseAbilities_005eede2.cpp
+005f694d	lock_now=free	claim=none	unmatched_B=0	codex28=0	B_staged_nonhdr=0	t3col2=0	00/5f/CTCInventoryAbilities_ResetAssignedAbilities_005f694d.cpp
+005f6a6f	lock_now=free	claim=none	unmatched_B=0	codex28=0	B_staged_nonhdr=0	t3col2=0	00/5f/CTCInventoryAbilities_ResetAssignedAbilitiesPC_005f6a6f.cpp
+005f6e40	lock_now=free	claim=none	unmatched_B=0	codex28=0	B_staged_nonhdr=0	t3col2=0	00/5f/CTCInventoryAbilities_OnSerialise_005f6e40.cpp

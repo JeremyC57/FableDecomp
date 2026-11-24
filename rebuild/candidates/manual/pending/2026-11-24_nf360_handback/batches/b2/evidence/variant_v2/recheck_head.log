@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00428b10   WARN STANDIN_LEAF @DeleteIfSet@4 (catalog CCountedPointer<NUISystem::CComponent>::DeleteData; names another function)
+00428b10   MATCH            PASS   DeleteData
+
+WINS: 1
+  00428b10 MATCH _global::@DeleteIfSet@4
+EXIT 0

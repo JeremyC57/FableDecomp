@@ -1,0 +1,6 @@
+# leaf ?GetGold@CTCGold@@QBEJXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefClassBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingBaseDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCGoldDef@@@@QAE@XZ
+NEQ	NEQ	0042af3c	a,b	pickany	51	98	y	y	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+NEQ	NEQ	006ae320	a,b	pickany	51	182	y	y	??$GetSubDef@VCGoldDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGoldDef@@@@@Z

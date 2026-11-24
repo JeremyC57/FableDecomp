@@ -1,0 +1,11 @@
+EQ  0040f220 12 ??A?$vector@JV?$allocator@J@std@@@std@@QBEABJI@Z 
+EQ  0042b312 98 ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z 
+EQ  0042b1a6 162 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z 
+EQ  0042af9e 162 ??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z 
+EQ  00440080 14 ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ 
+EQ  00cd2d0b 14 ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ 
+NEQ 00440590 34 ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z not referenced by the leaf
+NEQ 00440990 142 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z not referenced by the leaf
+EQ  005c14a6 30 ??0CPerItemData@NInventory@@QAE@XZ 
+NEQ 00440f00 219 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z not referenced by the leaf
+NEQ 004428f0 62 ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z LEAF-REFERENCED

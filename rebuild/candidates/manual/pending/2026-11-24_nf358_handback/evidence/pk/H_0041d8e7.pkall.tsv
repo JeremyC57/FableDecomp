@@ -1,0 +1,12 @@
+# leaf ?GetMiscThingsDef@CManager@NUISystem@@UAE?AV?$CDefPointer@VCUIMiscThingsDef@NUISystem@@@@XZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddReference@CIVCountedPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?DecRef@CIVCountedPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetRefCount@CIVCountedPointeeBase@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	??0?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	23	-	n	n	??$?0$$CBVCUIMiscThingsDef@NUISystem@@@?$CDefPointer@VCUIMiscThingsDef@NUISystem@@@@QAE@ABV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?RemoveReference@CIVCountedPointeeBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@VCUIMiscThingsDef@NUISystem@@@@QAE@XZ
+EQ	EQ	0042b312	a,b	strong	98	98	y	y	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+NOADDR	NOADDR	-	-	strong	98	-	n	n	??$GetDef@VCUIIconsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIIconsDef@NUISystem@@@@@Z

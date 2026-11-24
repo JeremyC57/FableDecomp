@@ -1,0 +1,11 @@
+## HEAD set: 00432c40.obj 004317d0.obj 004304e0.obj
+duplicates 2
+  DUP 004317d0.obj ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ in 00432c40.obj;
+  DUP 004304e0.obj ?Alloc@CUIMiscThingsDef@NUISystem@@SIPAVCDefClassBase@@XZ in 00432c40.obj;
+UNRESOLVED 2 ?Copy@CUIMiscThingsDef@NUISystem@@UAEXPBVCDefClassBase@@@Z
+UNRESOLVED 2 ?GetSizeofClass@CUIMiscThingsDef@NUISystem@@UAEKXZ
+UNRESOLVED 2 ?Transfer@CUIMiscThingsDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+## new set: 00432c40.obj
+duplicates 0
+UNRESOLVED 1 ??0CUIMiscThingsDef@NUISystem@@QAE@XZ
+LK_DONE

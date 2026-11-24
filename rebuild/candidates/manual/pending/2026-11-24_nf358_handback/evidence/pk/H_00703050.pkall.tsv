@@ -1,0 +1,13 @@
+# leaf ?ConstructFromParams@CThingObject@@IAE_NJABVC3DVector@@JKABVCCharString@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	?Release@CIVCountedPointeeBase@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingObjectDef@@@@QBEPBVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CDefPointer@$$CBVCThingObjectDef@@@@QBEABVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+EQ	EQ	0042b040	a,b	pickany	98	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	?PeekDefinition@CThingObject@@IBEABVCThingObjectDef@@XZ

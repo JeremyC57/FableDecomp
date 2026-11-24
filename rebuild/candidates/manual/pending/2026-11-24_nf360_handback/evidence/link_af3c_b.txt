@@ -1,0 +1,13 @@
+## HEAD set: H_0042af3c.obj H_004ca010.obj H_00744ed0.obj H_007cbdc0.obj H_00659164.obj
+duplicates 1
+  DUP H_00659164.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in H_00744ed0.obj;
+UNRESOLVED 1 ?FindRef_CDefinitionManager_GetDef_0@@YAPAUCDefBase@@J@Z
+UNRESOLVED 3 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+## new set: 0042af3c.obj H_004ca010.obj H_00744ed0.obj H_007cbdc0.obj H_00659164.obj
+duplicates 3
+  DUP H_00744ed0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_007cbdc0.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+  DUP H_00659164.obj ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z in 0042af3c.obj;
+UNRESOLVED 1 ?FindRef_CDefinitionManager_GetDef_0@@YAPAUCDefBase@@J@Z
+UNRESOLVED 3 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+LK_DONE

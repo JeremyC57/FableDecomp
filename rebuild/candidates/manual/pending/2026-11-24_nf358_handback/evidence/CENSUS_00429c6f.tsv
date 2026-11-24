@@ -1,0 +1,70 @@
+# copy 0x00429C6F ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+row	legs	compiled	grade_H	lock	copy_present	symbol	pk_all	pvr	leafref	reach	size_ours/retail	note
+0041e6d3	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+00427216	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+00429c6f	src	owner	-	-	self(strong owner)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCCo	-	-	-	-	-	the retail owner row itself; not an emitter
+004804de	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+004830a1	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+00574885	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005759bf	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+00582ace	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0058315b	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+00584b86	src	yes	RELOCATION_MATCH	NF358	none	-	-	-	-	-	-	
+0058578b	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+0058a0c7	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0058e208	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0058f016	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+005907ab	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+00596a68	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+0059cb90	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0059d270	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0059ed42	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0059f51e	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+0059fee3	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005a04f7	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005a29f4	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005a4cdd	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005a5b31	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005a6ca1	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+005a8c66	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005a9cbe	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005aaf28	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005ad571	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005b6a66	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005b70b8	src	yes	RELOCATION_MATCH	NF358	none	-	-	-	-	-	-	
+005b76d1	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005b8743	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005c574e	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005c5f11	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005c8459	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005c90fc	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005c9a95	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005cacb9	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005cdd86	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005ce0e6	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005d1f0c	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005d64dd	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005d6748	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005d7081	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	62/59	
+005e4be0	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+005e5f30	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+005eeff2	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005f1b10	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005f519f	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+005fb7e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+005fd5e0	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+005fe090	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+005ff190	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+006001e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+00600b60	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+00601310	retail+src	yes	RELOCATION_MATCH	NF358	UND(call, no copy)	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	-	-	-	-	-	
+00603000	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+00605570	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	
+00607330	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	n	n	103/59	
+006096e0	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	y	y	103/59	
+0060c900	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	n	y	103/59	
+0060eeb0	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	n	y	103/59	
+0061b610	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	n	n	103/59	
+0061e6d0	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	n	n	103/59	
+00622a00	src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	NEQ	NEQ	n	n	103/59	
+00626110	retail+src	yes	RELOCATION_MATCH	NF358	DEF-pickany	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NU	EQ	EQ	y	y	59/59	

@@ -1,0 +1,16 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00428b10",
+    "module": "_global",
+    "name": "DeleteData",
+    "source_cpp": "// Null-guarded virtual destroy (vtable slot 0, flag arg 1).\n// Leaf: @DeleteIfSet@4\n// __fastcall pointer=ecx; the callee is the object's own slot 0.\nstruct Obj { virtual void Destroy(int flags); };\nextern \"C\" void __fastcall DeleteIfSet(Obj* p) { if (p) p->Destroy(1); }",
+    "test_cpp": "#include <stdio.h>\nint main(void){ printf(\"PASS_00428b10\\n\"); return 0; }",
+    "pass_pattern": "PASS_00428b10",
+    "flags": [],
+    "leaf": "@DeleteIfSet@4"
+   }
+  ]
+ }
+}

@@ -1,0 +1,5 @@
+## HEAD set: H_00428b10.obj H_005331a0.obj H_00626750.obj H_005820e7.obj
+duplicates 0
+## new set: 00428b10_v2.obj H_005331a0.obj H_00626750.obj H_005820e7.obj
+duplicates 0
+LK_DONE

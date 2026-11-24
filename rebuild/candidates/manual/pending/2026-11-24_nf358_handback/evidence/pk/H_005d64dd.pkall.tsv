@@ -1,0 +1,14 @@
+# leaf ?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??0C2DCoordI@@QAE@JJ@Z
+NOADDR	NOADDR	-	-	pickany	32	-	n	n	??0CRGBFloatColour@@QAE@MMMM@Z
+NOADDR	NOADDR	-	-	pickany	26	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR	NOADDR	-	-	pickany	10	-	n	n	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+EQ	EQ	004291de	a,a2,b	pickany	44	44	y	y	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+NEQ	NEQ	00428b10	b	pickany	8	11	n	y	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ
+EQ	EQ	00429c53	b	pickany	5	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+NEQ	NEQ	00429c6f	a,b	pickany	62	59	y	y	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+NOADDR	NOADDR	-	-	pickany	75	-	n	n	??$GetTC@VCTCInventoryExperience@@@CThing@@QAE_NPAPAVCTCInventoryExperience@@@Z
+NOADDR	NOADDR	-	-	pickany	75	-	n	n	??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z
+NOADDR	NOADDR	-	-	pickany	75	-	n	n	??$PeekTC@VCTCInventoryAbilities@@@CThing@@QBE_NPAPBVCTCInventoryAbilities@@@Z

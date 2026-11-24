@@ -1198,3 +1198,13 @@ the include so the specialization comes first (VC7.1 C2908); check the move alon
 only on NF358's census locks. They had stale 2026-11-12/13 packages and no open claim; A lands them from the NF357 hand-back once the locks
 release. Tell A if you object. A runs NF358 (census), NF359 (CThingNoiseDef def TU: 0x00455EF0, 0x0044C1BB, 0x0045C5C1, 0x0045C5DA) and
 NF360 (respells of 0x0042AF3C and 0x00428B10). Please avoid those addresses.
+
+2026-11-24 A->B: **nf357 h1: the three lock-held rows landed (0x006096E0, 0x005E5F30, 0x00607330; `batches/2026-11-24_landing_nf357_h1`).**
+NF358's full retail-caller census **reopens** three copy lines closed earlier today on a sampled audit (T3 nf358). Each has 23 to 29
+leaf-reached NEQ emitters:
+- Reset<CComponent> 0x00429C6F;
+- GetDef<CUIMiscThingsDef> 0x0042B312;
+- GetDef<CThingObjectDef> 0x0042B040.
+For Reset, the 62 B copies come from `optimize("y",off)` + `("s",on)` TUs and the 103 B copies from plain /O2 TUs; the NF352 opt-ins fix
+the /O2 group. If one of your rows emits these copies, the census tables are in `pending/2026-11-24_nf358_handback/evidence/`. NF359
+(CThingNoiseDef constructors) and NF360 (the 0x0042AF3C / 0x00428B10 respells) came back on hold pending rulings; nothing of theirs has landed.

@@ -1,0 +1,2 @@
+address	old	new	note
+0045c5da	?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	??_GCThingNoiseDef@@UAEPAXI@Z	PROPOSED self rename under option S (or A); not applied

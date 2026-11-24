@@ -1,0 +1,9 @@
+LEAF A ?GetDef_0042af3c@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 1, 'size': 98}
+LEAF B ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 1, 'size': 98}
+DROPPED ('COMDAT', '??4?$CDefPointer@$$CBVCDefClassBase@@@@QAEAAV0@ABV0@@Z', '.text') size=52
+ADDED   ('COMDAT', '??4?$CDefPointer@$$CBVCThingBaseDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size=52
+DRECTVE - [] + []
+SYM- DEF ??4?$CDefPointer@$$CBVCDefClassBase@@@@QAEAAV0@ABV0@@Z
+SYM+ DEF ??4?$CDefPointer@$$CBVCThingBaseDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_DIFF n=2 symdelta=2

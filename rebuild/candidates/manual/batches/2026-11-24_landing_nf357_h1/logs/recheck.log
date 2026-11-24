@@ -1,0 +1,11 @@
+addr       parity           behav  name
+005e5f30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005e5f30   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005e5f30   RELOCATION_MATCH PASS   ActivateReal
+00607330   RELOCATION_MATCH PASS   ConstructLogbookList
+006096e0   RELOCATION_MATCH PASS   ConstructLogbookListPC
+
+WINS: 3
+  005e5f30 RELOCATION_MATCH CTCQuestCompletionUI::?ActivateReal@CTCQuestCompletionUI@@QAEXXZ
+  00607330 RELOCATION_MATCH CTCInventoryMap::?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z
+  006096e0 RELOCATION_MATCH CTCInventoryMap::?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z

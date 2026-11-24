@@ -1,0 +1,1 @@
+NEQ 0042b040 15 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z LEAF-REFERENCED

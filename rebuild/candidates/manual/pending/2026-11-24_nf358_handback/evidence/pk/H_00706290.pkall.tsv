@@ -1,0 +1,15 @@
+# leaf ?IsNaked@CTCHeroAttachableAppearanceModifiers@@QBE_NXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefBase@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	?size@CGraphicsArray@CAppearanceModifierDef@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	26	-	n	n	?GetNumMorphGraphics@CAppearanceModifierDef@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@CModifierVector@@QBEPAUCModifierEntry@@XZ
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?end@CModifierVector@@QBEPAUCModifierEntry@@XZ
+NOADDR	NOADDR	-	-	pickany	15	-	n	n	??ACModifierVectorVector@@QBEABUCModifierVector@@J@Z
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCThingObjectDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingObjectDef@@@@QBEPBVCThingObjectDef@@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	17	-	n	n	??1?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QBEPBVCAppearanceModifierDef@@XZ
+NEQ	NEQ	0042b040	a,b	pickany	34	98	y	y	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+NEQ	NEQ	0057ff92	a,b	pickany	29	162	y	y	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z

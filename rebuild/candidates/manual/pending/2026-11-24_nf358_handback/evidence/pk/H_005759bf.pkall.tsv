@@ -1,0 +1,26 @@
+# leaf ?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+NOADDR	NOADDR	-	-	pickany	18	-	n	n	??0CActionParam@NUISystem@@QAE@W4EActionParamType@1@@Z
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	??1CActionParam@NUISystem@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	29	-	n	n	??_GCActionParam@NUISystem@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CActionParamSLONG@NUISystem@@QAE@J@Z
+NOADDR	NOADDR	-	-	pickany	28	-	n	n	??_GCActionParamSLONG@NUISystem@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	6	-	n	n	?Get@CMainGameComponent@@SIPAV1@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CCountedPointer@VCAction@NUISystem@@@@QBEPAVCAction@NUISystem@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?begin@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@XZ
+EQ	EQ	004291de	a,a2,b	pickany	44	44	y	y	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+EQ	EQ	00428b10	a2,b	pickany	11	11	n	y	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+EQ	EQ	00429160	a,a2,b	pickany	44	44	y	y	?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	28	-	n	n	??_GCAction@NUISystem@@QAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ
+NOADDR	NOADDR	-	-	pickany	12	-	n	n	??A?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@I@Z
+EQ	EQ	00429c15	a,b	pickany	62	62	y	y	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+EQ	EQ	00429c53	b	pickany	5	5	n	n	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+EQ	EQ	00429c6f	a,b	pickany	59	59	y	y	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+EQ	EQ	00429b72	b	pickany	5	5	n	n	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ
+EQ	EQ	00429f43	a2,b	pickany	21	21	n	y	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z
+EQ	EQ	0042aa29	a,b	pickany	62	62	y	y	??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z
+EQ	EQ	005791e5	a,b	pickany	59	59	y	y	?Reset@?$CCountedPointer@VCAction@NUISystem@@@@QAEXPAVCAction@NUISystem@@@Z

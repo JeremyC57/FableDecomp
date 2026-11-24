@@ -1,0 +1,13 @@
+address	status	where	reason
+00455ef0	held (ruling NF359-Q1)	held/h1_ctor_ports_unit	ctor port: measured A / O / N; no device-free form removes the LNK2005 without a 2nd strong Alloc; proposed S
+0044c1bb	held (ruling NF359-Q1)	held/h1_ctor_ports_unit	same unit; retail copy is an unreferenced COMDAT (inline model)
+0045c5da	held (ruling NF359-Q2)	held/h1_ctor_ports_unit	self ??_GCThingNoiseDef: every emitting text adds a strong Alloc or ??0; proposed S
+0045c5c1	proposal (no row)	-	Alloc: 0x0045C5F6 object grades it EQ (retcmp bytes + relocs; pk_all EQ b,o); precedent 0x00432C40 form = 2nd strong Alloc; proposed S (catalog entry covered by the 0x0045C5F6 object)
+0045c5f6	control only	-	HEAD compiled: all 8 retail-homed functions EQ (retcmp), both vftables 25-slot EQ; unchanged
+00432c40	control only	-	precedent: own landed Alloc row, strong; HEAD link with 004317d0 / 004304e0 = 2 LNK2005 on Alloc
+004317d0	control only	-	precedent: strong Alloc + NEQ ??0 copy + 2 leaf-reached NEQ _M_erase copies (T3_PROPOSED)
+004304e0	control only	-	precedent: strong Alloc (EQ), ??0 EQ
+00749810	control only (census)	-	emits full ??_7CTCNoiseDef (EQ) + NEQ ??0CTCNoiseDef / ??_GCTCNoiseDef copies (T3_PROPOSED)
+00749a70	control only (census)	-	emits no CTCNoiseDef vftable / ctor; one EQ 11 B ??1CTCNoiseDef
+00455f3c	control only (census)	-	emits no CTCNoiseDef / CThingNoiseDef vftable or ctor (only CPersistContext_TransferableSubComponent<CTCNoiseDef> COMDATs)
+004537e9	census hole	-	T3 nf303 column 2: not compiled; source-level: Copy via operator= on a local model, no ctor / vptr store, so no vftable expected

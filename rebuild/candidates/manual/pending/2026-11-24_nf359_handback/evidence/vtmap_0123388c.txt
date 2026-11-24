@@ -1,0 +1,25 @@
+ 0 0045c5da ??_GCThingNoiseDef@@UAEPAXI@Z | 
+ 1 0042d930 ?Delete@CIVCountedPointeeBase@@UBEXXZ | 
+ 2 009ace90 ?UnloadResource@CDefClassBase@@UAE_NXZ | 
+ 3 009fbef0 ?GetUnloadableMemory@CResource@@UBEKXZ | 
+ 4 0042d950 ?IsResourceLoaded@CResource@@UBE_NXZ | 
+ 5 0042d960 ?OnResourceLoaded@CResource@@UAEXXZ | 
+ 6 0042d970 ?CanAbortResourceLoad@CResource@@UBE_NJ@Z | 
+ 7 0042d980 ?OnResourceLoadAborted@CResource@@UAEXXZ | 
+ 8 009fbf00 ?GetDebugMemoryInUse@CResource@@UBEKXZ | 
+ 9 009fbf10 ?ResetDebugMemoryInUse@CResource@@UAEXXZ | 
+10 004303b0 ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ | 
+11 004303c0 ?SetInstantiationName@CParentDefClassBase@@UAEXVCDefString@@@Z | 
+12 009b00d0 ?AddSubDef@CParentDefClassBase@@UAEXABVCCharString@@JJ@Z | 
+13 009b0170 ?RemoveSubDef@CParentDefClassBase@@UAEXABVCCharString@@@Z | 
+14 009ad4a0 ?GetPSubDefInfo@CParentDefClassBase@@UBEPBVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z | 
+15 009ad510 ?GetPSubDefInfo@CParentDefClassBase@@UAEPAVCSubDefInfo@CDefClassBase@@ABVCCharString@@@Z | 
+16 004303d0 ?IsParentDef@CParentDefClassBase@@UBE_NXZ | 
+17 0042da80 ?PostTransfer@CDefClassBase@@UAEXXZ | 
+18 00455f1a ?Transfer@CThingNoiseDef@@UAEXAAVCPersistContext@@@Z | 
+19 00463923 ?Copy@CThingNoiseDef@@UAEXPBVCDefClassBase@@@Z | 
+20 00455f14 ?GetSizeofClass@CThingNoiseDef@@UAEKXZ | 
+21 009b0200 ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z | 
+22 009aed70 ?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z | 
+23 0042da90 ?Validate@CDefClassBase@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z | 
+24 004303e0 ?GetPSubDefInfoMap@CParentDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ | 

@@ -1,0 +1,21 @@
+## 00749810 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/hobj/00749810.obj pickany_vs_retail --leaf=??0CTCNoise@@QAE@AAVCThing@@@Z (table /home/user/FableDecomp/rebuild/oracles/reloc_bindings.tsv)
+EQ  0042d9e0 29 ??0CDefClassBase@@AAE@XZ 
+EQ  0044c0c0 29 ??0CSubDefClassBase@@QAE@XZ 
+## 00749810 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/hobj/00749810.obj pk_all --leaf=??0CTCNoise@@QAE@AAVCThing@@@Z --row-length=79 --addrs=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF359/work/pk_addrs.tsv
+# leaf ??0CTCNoise@@QAE@AAVCThing@@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefPointeeBase@@UAE@XZ
+EQ        EQ                 0042d9a0 o        pickany     36 leaf=n reach=n ??_GCDefPointeeBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CDefClassBase@@UAE@XZ
+EQ        EQ                 0042d910 c        pickany     18 leaf=n reach=n ??0CDefPointeeBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CSubDefClassBase@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ
+EQ        EQ                 0048a400 c        pickany     18 leaf=n reach=n ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_G?$CIntelligentPointer@$$CBVCThing@@@@UAEPAXI@Z
+EQ        EQ                 0042d9e0 b        pickany     29 leaf=n reach=n ??0CDefClassBase@@AAE@XZ
+NOADDR    NOADDR                    - -        pickany     36 leaf=n reach=n ??_GCDefClassBase@@UAEPAXI@Z
+EQ        EQ                 0044c0c0 b        pickany     29 leaf=n reach=n ??0CSubDefClassBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     36 leaf=n reach=n ??_GCSubDefClassBase@@UAEPAXI@Z
+NEQ       NEQ                0044c1bb c,o      pickany     29 leaf=n reach=n ??0CTCNoiseDef@@QAE@XZ
+NEQ       NEQ                0044f71b o        pickany     30 leaf=n reach=n ??_GCTCNoiseDef@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     30 leaf=n reach=n ??_GCTCNoise@@UAEPAXI@Z
+## done

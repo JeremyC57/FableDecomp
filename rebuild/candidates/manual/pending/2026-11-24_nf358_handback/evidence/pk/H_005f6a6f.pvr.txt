@@ -1,0 +1,1 @@
+NEQ 005ee3b3 21 ?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ not referenced by the leaf

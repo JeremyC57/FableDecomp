@@ -1,0 +1,5 @@
+NEQ 005f89f2 40 ??$GetDef@VCHeroAbilityDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@Z not referenced by the leaf
+NEQ 005f7b76 38 ??$__copy@PAW4EHeroAbility@@PAW41@H@std@@YIPAW4EHeroAbility@@PAW41@00ABUrandom_access_iterator_tag@0@PAH@Z not referenced by the leaf
+NEQ 005ee3b3 41 ?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ not referenced by the leaf
+EQ  005f8f89 37 ?erase@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEPAW4EHeroAbility@@PAW43@0@Z 
+NEQ 005f9df8 64 ?resize@?$vector@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAEXIABW4EHeroAbility@@@Z not referenced by the leaf
