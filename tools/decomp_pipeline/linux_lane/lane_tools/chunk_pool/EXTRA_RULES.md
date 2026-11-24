@@ -497,3 +497,30 @@ always compiles callees first, so no row spelling can express that order. Affect
 inline residues of other quest scripts and the TesselateEdge twins (0x00BE4660 / 0x00BE4FE0, one object with 0x00BE3970).
 Consequence: rows whose residue is proven to be compile order are NOT to be fixed with row devices (option 1 is not chosen); they wait for the
 build mode. Design and ownership are agreed in docs/journal/2026-11/COORDINATION_LOG.md.
+**Safeguards (owner, 2026-11-24: "ensure that this doesnt cause any issues with byte matching accuracy and code behavior matching retail code
+behavior").** Object mode is allowed only behind these gates; each is a hard rule, not a guideline.
+- **What is measured and what is not.** Measured: with a gdb hook forcing two callees down c2's budget path (plus an unexplained +250
+  caller-growth bump), 0x00E93EB0's late calls come out as retail's (that object still graded DIFFER 5333v5321). NOT shown: that putting rows in
+  one TU makes stock c2 compile them in that order -- B24A4 measured that c2 compiles callees first whatever the definition order, and a large
+  TU changed nothing. So the approval is for a mode whose working form is still unproven.
+- **Gate 0 (blocks everything else; scratch only, touches no landed row):** stock cl 13.10.3077, real landed sources, no hook, no patched
+  c2, no bump: 0x00E93EB0 must show both odd calls and the `~vector` call. Tracing to observe is allowed; anything that forces a decision is
+  an oracle, not a build. If Gate 0 fails, report that the approved option has no working form yet; never substitute a forcing device.
+- **Same comparison:** same oracle, same relocation masking, same grader core as the per-row path. Object mode changes what is compiled,
+  never how it is compared. Object-mode rows get their own grade label; the default per-row build and its grades are unchanged.
+- **Order from evidence, fixed per object:** one order per retail object, taken from evidence (retail address order / Ego_r module order),
+  checked on a small control object the lane links itself to confirm that address order reflects emission order; fixed before any grading and
+  never tuned per row.
+- **One flag set and one header configuration per object:** rows carry their own flags and `FABLE_RETAIL_*` defines, and with include guards
+  the first row's defines would silently win: any conflict is an ERROR, not a merge. Pragma and macro state (`inline_depth`, `optimize`, the
+  VC6 for-scope macro) must not leak across row boundaries. (Note: landed /d2inlS15 rows and the stock-flag 0x00D0A830 come from the same
+  retail object, so one of those flag sets is a fitted device; object mode has to settle that, not paper over it.)
+- **Mates:** only landed, verified sources; no stand-in or invented bodies. The mate set of every object-mode row is recorded; any later
+  landing into that object rechecks all of its object-mode rows.
+- **Regression control:** every landed row of the object is regraded in object mode; each one that changes is reported as a finding, never
+  patched to fit. **Negative control:** a deliberately wrong body and a permuted order must grade DIFFER.
+- **Bindings and pick-any** are checked in object mode too: with more declarations visible a relocation-masked match could hide a different
+  callee; every COMDAT copy in the object is compared with retail.
+- **Behaviour:** a row's source is byte-identical in both modes and still compiles alone, so the portable (`FABLE_PORTABLE`) build and the
+  behaviour tests are unchanged. `vt.py` compiles test fixtures standalone, so the tests do not exercise the grouped build: behaviour equality
+  in object mode rests on the byte match plus the binding check, and is stated that way.
