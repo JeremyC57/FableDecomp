@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008ab980   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  008ab980 RELOCATION_MATCH CScriptThing::??4CScriptThing@@QAEAAV0@ABV0@@Z

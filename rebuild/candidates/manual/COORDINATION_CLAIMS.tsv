@@ -455,3 +455,5 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF330: NF324 Q1 thin-family remainder (95 rows NF329 did not reach)	naming	claimed	NF329 route on the landed opt-in models; locks via lock.sh NF330
 2026-11-24	A	agent NF328: CScriptThing destructor / copy-constructor pick-any unit (NF326 Q4)	naming	done	landed 9 rows as one unit (batches/2026-11-24_landing_nf328); 21 differing copies queued as T3 nf328 debt
 2026-11-24	A	agent NF331: CScriptThing operator= pick-any unit	naming	claimed	the T3 nf328 unit line and its strong definers; locks via lock.sh NF331
+2026-11-24	A	agent NF331: CScriptThing operator= pick-any unit	naming	done	landed 1 row (batches/2026-11-24_landing_nf331); 20 differing copies queued as T3 nf331 debt
+2026-11-24	A	agent NF332: T1 / T2 tracker batch (access, standin_alias, signature; 239 free entries)	naming	claimed	entries screened against T3, locks and Codex reservations; locks via lock.sh NF332

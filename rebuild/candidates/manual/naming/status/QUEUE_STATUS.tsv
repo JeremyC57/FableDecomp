@@ -1418,7 +1418,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1471	597	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 1472	597	004aa840	??1CScriptThing@@UAE@XZ	partial	??1CScriptThing@@QAE@XZ || ??1CScriptThingCopy@@UAE@XZ || ??1CScriptThingParam@@UAE@XZ || ??1CScriptThingRuntime@@UAE@XZ || ??1ScriptMethods@@UAE@XZ || ??1ScriptThingCopy@@QAE@XZ
 1473	597	006e7b40	??0CScriptThing@@QAE@XZ	closed	
-1474	597	008ab980	??4CScriptThing@@QAEAAV0@ABV0@@Z	partial	??4CScriptThing
+1474	597	008ab980	??4CScriptThing@@QAEAAV0@ABV0@@Z	closed	
 1475	597	00ae6a20	?erase@?$vector@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEPAU?$pair@VCCharString@@K@2@PAU32@0@Z	partial	?erase@?$vector@U?$pair@VCCharString@@K@std@@@std@@QAEPAU?$pair@VCCharString@@K@2@PAU32@0@Z
 1476	597	00a744b0	??$__copy@PAVC3DTriangle2@@PAV1@H@std@@YIPAVC3DTriangle2@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	partial	?CopyTriangles@@YIPAVC3DTriangle2@@PBV1@0PAV1@ABUrandom_access_iterator_tag@@PAH@Z
 1477	597	00a62ed0	?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z	closed	

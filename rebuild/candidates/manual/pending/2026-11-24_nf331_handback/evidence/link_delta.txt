@@ -1,0 +1,8 @@
+HEAD exit 0 duplicate lines 108 | new exit 0 duplicate lines 18
+removed by symbol: {'??4CScriptThing@@QAEAAV0@ABV0@@Z': 90}
+added by symbol: {}
+object+symbol lines removed: 90 added: 0
+added lines: []
+unresolved HEAD 1761 new 1761 identical=True
+KEPT ??4CScriptThing@@QAEAAV0@ABV0@@Z H_008ab980.obj
+KEPT ??4CScriptThing@@QAEAAV0@ABV0@@Z 008ab980.obj
