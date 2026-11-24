@@ -10688,3 +10688,23 @@ line	tag	address	correct_symbol	status	other_spellings
 13528	nf326	004aa840	??1CScriptThing@@UAE@XZ	partial	??1CScriptThing@@QAE@XZ || ??1CScriptThingCopy@@UAE@XZ || ??1CScriptThingParam@@UAE@XZ || ??1CScriptThingRuntime@@UAE@XZ || ??1ScriptMethods@@UAE@XZ || ??1ScriptThingCopy@@QAE@XZ
 13529	nf326	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABV
 13530	nf326	004aa900	?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	closed	
+13531	acctB_b24 PRIORITY	00415530	?GetLanguageFolder@NLocalisation@@YI?AVCCharString@@XZ	partial	?FableGetDefaultLanguageName_00415530@@YI?AVCCharString@@XZ
+13532	acctB_b24 PRIORITY	009bc8a0	?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z	no_binding	
+13533	acctB_b24 PRIORITY	00402130	?TestDirForValidFilePermissions@@YIKABVCWideString@@@Z	open	?FableCheckMyDocumentsWritePermissions@@
+13534	acctB_b24 PRIORITY	00413c50	?InitialiseConsoleVariables@@YIXXZ	closed	
+13535	acctB_b24 PRIORITY	009d81e0	?DisableVTuneCollection@@YIXXZ	no_binding	
+13536	acctB_b24 PRIORITY	013b861b	?GLeftAlignText@@3_NA	open	?g_bLeftAlignText@@3_NA
+13537	acctB_b24 PRIORITY	0137548f	?InitialiseConsoleAtStartup@@3_NA	open	?g_bFrontEndFlag_137548F@@3_NA
+13538	acctB_b24 PRIORITY	0138e188	?CreateCompiledDefs@CDefinitionManager@@1_NA	open	?g_bSaveBinaryDefinitions@@3_NA
+13539	acctB_b24 PRIORITY	0138e189	?CreateChecksums@CDefinitionManager@@1_NA	open	?g_bCheckDefDependencies@@3_NA || ?g_bDefsCompiling@@3_NA
+13540	acctB_b24 PRIORITY	013ca7d8	?UsingCompiledDefs@CDefinitionManager@@1_NA	open	?g_bDefsLoaded@@3_NA || ?g_bLoadBinaryDefinitions@@3_NA
+13541	acctB_b24 PRIORITY	013bca00	?m_harddiskErrorCallback@CAFile@@0P6IXPBD@ZA	open	?DebugMessage@@3P6IXPBD@ZA
+13542	acctB_b24 PRIORITY	013b8615	?GRunFromDVD@@3_NA	open	?g_bRunFromDVD@@3_NA
+13543	acctB_b24 PRIORITY	013b8616	?GUseRetailBanks@@3_NA	open	?g_bRuntimeLevelFiles@@3_NA
+13544	acctB_b24 PRIORITY	013b8617	?GUseCompiledDefs@@3_NA	open	?g_bUseCompiledDefs@@3_NA
+13545	acctB_b24 PRIORITY	013b8619	?GUseCompiledSoundSymbols@@3_NA	open	?g_bUseCompiledSoundSymbols@@3_NA
+13546	acctB_b24 PRIORITY	01375459	?GAllowDataGeneration@@3_NA	closed	
+13547	acctB_b24 PRIORITY	013b864f	?GDisableCapsLock@@3_NA	open	?g_KeyRedefinerFlag@@3EA
+13548	acctB_b24 PRIORITY	013b8605	?GSkipFrontend@@3_NA	open	?g_bStartMainGame@@3_NA
+13549	acctB_b24 PRIORITY	013b8628	?GPresentImmidiate@@3_NA	open	?g_PresentationInterval@@3_NA
+13550	acctB_b24 PRIORITY	013ca79c	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	partial	?g_BankFileManager@@3UCBankFileManager@@A || ?g_BankFileManager@@3VCBankFileManager@@A || ?g_CStatic_009a7ac0_013ca79c@@3UCStatic_009a7ac0@@A || ?g_bankFileManager@@3UCBankFileManager@@A

@@ -1,0 +1,397 @@
+address	status	pdb_spelling	reason
+00406800	skipped-port	?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ	triage (base CBaseClassNonCopyable; brief item 4, the thin remainder, not reached): model: engine/CUserProfileManager.h does not declare OnPostDeviceReset and has no polymorphic class model (port)
+0044c229	skipped-port	?GetSizeofClass@CSmashableDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CSmashableDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+0044c269	skipped-port	?GetSizeofClass@CActionUseDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CActionUseDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+0044c390	skipped-port	?GetSizeofClass@CBonusItemDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CBonusItemDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+0044c5cf	skipped-port	?GetSizeofClass@CDragonActionSwoopDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CDragonActionSwoopDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+0044c695	skipped-port	?GetSizeofClass@CSummonerDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CSummonerDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004522c6	skipped-port	?Transfer@CSmashableDef@@UAEXAAVCPersistContext@@@Z	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CSmashableDef.h does not declare Transfer and has no polymorphic class model (port)
+004d3464	skipped-port	?GetSizeofClass@CHeroDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CHeroDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d4156	skipped-port	?GetSizeofClass@CTimeAppearanceFadeDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CTimeAppearanceFadeDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d463c	skipped-port	?GetSizeofClass@CHeroCentreDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CHeroCentreDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d489d	skipped-port	?GetSizeofClass@CShipDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CShipDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d500f	skipped-port	?GetSizeofClass@CGuardDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CGuardDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d5b15	skipped-port	?GetSizeofClass@CDecapitationDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CDecapitationDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d5c89	skipped-port	?GetSizeofClass@CFishDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CFishDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d61a0	skipped-port	?GetSizeofClass@CSummonDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CSummonDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d649f	skipped-port	?GetSizeofClass@CWillResponseDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CWillResponseDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d6601	skipped-port	?GetSizeofClass@COracleMinigameDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/COracleMinigameDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004d665a	skipped-port	?GetSizeofClass@CFireheartMinigameDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CFireheartMinigameDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+004ded4e	skipped-port	?Transfer@CDecapitationDef@@UAEXAAVCPersistContext@@@Z	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CDecapitationDef.h does not declare Transfer and has no polymorphic class model (port)
+0062db60	skipped-port	?IsPreventingLookTurning@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionGreet.h does not declare IsPreventingLookTurning and has no polymorphic class model (port)
+0062db70	skipped-port	?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionGreet.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+0062db80	skipped-port	?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionGreet@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionGreet.h does not declare IsToReplaceItemIfRemoved and has no polymorphic class model (port)
+0062dc50	skipped-port	?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionInsult@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionInsult.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+0062dc60	skipped-port	?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionInsult@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionInsult.h does not declare IsToReplaceItemIfRemoved and has no polymorphic class model (port)
+0062dd30	skipped-port	?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionThreaten@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionThreaten.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+0062dd40	skipped-port	?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionThreaten@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionThreaten.h does not declare IsToReplaceItemIfRemoved and has no polymorphic class model (port)
+0062de10	skipped-port	?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionBribe.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+0062de20	skipped-port	?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionBribe@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionBribe.h does not declare IsToReplaceItemIfRemoved and has no polymorphic class model (port)
+0062def0	skipped-port	?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionFlirt@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionFlirt.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+0062df00	skipped-port	?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionFlirt@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionFlirt.h does not declare IsToReplaceItemIfRemoved and has no polymorphic class model (port)
+0062dfd0	skipped-port	?PerformAction@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TavernGameMasterInteraction.h does not declare PerformAction and has no polymorphic class model (port)
+0062dfe0	skipped-port	?IsToHaveEmptyHands@CCreatureAction_TavernGameMasterInteraction@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TavernGameMasterInteraction.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+006a07f0	skipped-port	?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_NXZ	triage (base CCreatureAction_SheatheItemToInventory; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h does not declare IsToEvadeAllHits and has no polymorphic class model (port)
+006a0800	skipped-port	?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UBE_NXZ	triage (base CCreatureAction_SheatheItemToInventory; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h does not declare IsAbleToBeAttacked and has no polymorphic class model (port)
+006a0810	skipped-port	?IsToEvadeAllHits@CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UBE_NXZ	triage (base CCreatureAction_SheatheItemToInventory; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_SheatheItemToInventory_ForUnholyPower.h does not declare IsToEvadeAllHits and has no polymorphic class model (port)
+006a0820	skipped-port	?IsAbleToBeAttacked@CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UBE_NXZ	triage (base CCreatureAction_SheatheItemToInventory; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_SheatheItemToInventory_ForUnholyPower.h does not declare IsAbleToBeAttacked and has no polymorphic class model (port)
+0077d3a0	skipped-port	?Transfer@CHeroCentreDef@@UAEXAAVCPersistContext@@@Z	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CHeroCentreDef.h does not declare Transfer and has no polymorphic class model (port)
+007ac6e0	skipped-port	?GetSizeofClass@CAIScratchpadDef@@UAEKXZ	triage (base CSubDefClassBase; brief item 4, the thin remainder, not reached): model: engine/CAIScratchpadDef.h does not declare GetSizeofClass and has no polymorphic class model (port)
+007eb520	skipped-port	?IsToHaveEmptyHands@CCreatureAction_PlayerInteractionViewQuests@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionViewQuests.h does not declare IsToHaveEmptyHands and has no polymorphic class model (port)
+007eb530	skipped-port	?IsToReplaceItemIfRemoved@CCreatureAction_PlayerInteractionViewQuests@@UBE_NXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PlayerInteractionViewQuests.h does not declare IsToReplaceItemIfRemoved and has no polymorphic class model (port)
+007f0630	skipped-port	?IsPreventingQuickAccessItemUsage@CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UBE_NXZ	triage (base CCombatAction_GenericStrikeResponseKnockdownRecover; brief item 4, the thin remainder, not reached): model: engine/CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath.h does not declare IsPreventingQuickAccessItemUsage and has no polymorphic class model (port)
+00842260	skipped-port	?PerformAction@CCreatureAction_DowseFire@@UAEXXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_DowseFire.h does not declare PerformAction and has no polymorphic class model (port)
+008422f0	skipped-port	?PerformAction@CCreatureAction_ShowLove@@UAEXXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ShowLove.h does not declare PerformAction and has no polymorphic class model (port)
+0084b420	skipped-port	?PerformAction@CCreatureAction_FillBucket@@UAEXXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_FillBucket.h does not declare PerformAction and has no polymorphic class model (port)
+0084b4c0	skipped-port	?PerformAction@CCreatureAction_Hammer@@UAEXXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_Hammer.h does not declare PerformAction and has no polymorphic class model (port)
+008552d0	done	?IsOverrideableByActionOfSamePriority@CCreatureAction_StartBlocking@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00855cf0	done	?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockBase@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00855d00	done	?IsToFaceTarget@CCreatureAction_BlockBase@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00855d10	done	?GetAnimationTransitionInTime@CCreatureAction_BlockBase@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00855d40	skipped-port	?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockRespond@@UBE_NXZ	triage (base CCreatureAction_BlockBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_BlockRespond.h does not declare IsOverrideableByActionOfSamePriority and has no polymorphic class model (port)
+00855d60	done	?GetAnimationTransitionInTime@CCreatureAction_StartBlocking@@UBEJXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00855d70	done	?IsBlockable@CCreatureAction_BlockCounter@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00855d80	done	?IsKnockdownStrike@CCreatureAction_BlockCounter@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0085b880	done	?CanAnimationTransitionOut@CCreatureActionHero180RunningTurn@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0085bbe0	done	?IsClearingMovementVector@CCreatureActionHero180RunningTurn@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0085bc00	done	?IsClearingMovementVector@CCreatureActionHeroRunningStop@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0085bc10	done	?IsActionReadyForInterruption@CCreatureActionHeroRunningStop@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0085c2f0	done	?IsToFaceTarget@CCombatAction_ControlledStrafeJump@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0087e510	done	?IsToPerformActionOnStrike@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0087e520	done	?GetAnimationTransitionInTime@CCreatureAction_GeneralInterruptedAttack@@UBEJXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0087e830	skipped-port	?PerformAction@CCreatureAction_StabbedToDeath@@UAEXXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_StabbedToDeath.h does not declare PerformAction and has no polymorphic class model (port)
+0087fe50	skipped-port	?GetAnimDelayTime@CCreatureAction_StabbedToDeath@@UBEJXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_StabbedToDeath.h does not declare GetAnimDelayTime and has no polymorphic class model (port)
+00880040	done	?IsUsingActionMovement@CCombatAction_StabThing@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00880050	done	?IsToRetainSafeDistance@CCombatAction_StabThing@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00880060	done	?IsToCauseRecoil@CCombatAction_StabThing@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00880070	done	?IsAbleToBeAttacked@CCombatAction_StabThing@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b34f0	done	?GetZone@CCombatSequence_GenericRangedAttack@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3560	done	?GetZone@CCombatSequence_GenericLeader@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b35d0	done	?GetZone@CCombatSequence_BanditUnblockableAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b35e0	done	?GetCombatSequenceType@CCombatSequence_BanditUnblockableAttack@@UBE?AW4ECombatSequenceType@@XZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3650	done	?GetZone@CCombatSequence_NonInterruptableBoxStrafe@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b36c0	done	?GetZone@CCombatSequence_BanditAdvanceFar@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3730	done	?GetZone@CCombatSequence_BanditAttackFar@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3740	done	?GetCombatSequenceType@CCombatSequence_BanditAttackFar@@UBE?AW4ECombatSequenceType@@XZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b37b0	done	?GetZone@CCombatSequence_BanditAttackMiddle@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b37c0	done	?GetCombatSequenceType@CCombatSequence_BanditAttackMiddle@@UBE?AW4ECombatSequenceType@@XZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3830	done	?GetZone@CCombatSequence_BanditAttackSide@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3840	done	?GetCombatSequenceType@CCombatSequence_BanditAttackSide@@UBE?AW4ECombatSequenceType@@XZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b38b0	done	?GetZone@CCombatSequence_BanditAttackNear@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b38c0	done	?GetCombatSequenceType@CCombatSequence_BanditAttackNear@@UBE?AW4ECombatSequenceType@@XZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3930	done	?GetZone@CCombatSequence_BanditIdleNear@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b39a0	done	?GetZone@CCombatSequence_BanditIdleMiddle@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3a10	done	?GetZone@CCombatSequence_BanditBoast@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3a20	done	?GetCombatSequenceType@CCombatSequence_BanditBoast@@UBE?AW4ECombatSequenceType@@XZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3a90	done	?GetZone@CCombatSequence_BanditKingAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3aa0	done	?IsMeleeSequence@CCombatSequence_BanditKingAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3ab0	done	?IsInterruptable@CCombatSequence_BanditKingAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3b20	done	?IsAllowedOnOuterRing@CCombatSequence_BanditKingAdvance@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3b30	done	?GetZone@CCombatSequence_BanditKingAdvance@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3ba0	done	?GetZone@CCombatSequence_BanditKingBackOff@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3bb0	done	?IsInterruptable@CCombatSequence_BanditKingBackOff@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3c20	done	?GetZone@CCombatSequence_BanditKingSpinAround@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3c30	done	?IsInterruptable@CCombatSequence_BanditKingSpinAround@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3ca0	done	?GetZone@CCombatSequence_FodderMainAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3cb0	done	?IsMeleeSequence@CCombatSequence_FodderMainAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3d20	done	?GetZone@CCombatSequence_FodderUnblockableMainAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3d30	done	?IsMeleeSequence@CCombatSequence_FodderUnblockableMainAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3da0	done	?GetZone@CCombatSequence_FodderSecondaryAttack@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3db0	done	?IsMeleeSequence@CCombatSequence_FodderSecondaryAttack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3e20	done	?GetZone@CCombatSequence_FodderCombatIdle@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3e30	done	?IsMeleeSequence@CCombatSequence_FodderCombatIdle@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3e40	done	?IsInterruptableDueToZoneChange@CCombatSequence_FodderCombatIdle@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3e50	done	?IsInterruptable@CCombatSequence_FodderCombatIdle@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3ec0	done	?IsToPreferSequenceWhenValid@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3ed0	done	?GetZone@CCombatSequence_ScorpionLungeAttack@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3ee0	done	?IsMeleeSequence@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3ef0	done	?IsInterruptable@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3f00	done	?IsInterruptableDueToZoneChange@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b3f70	done	?IsToPreferSequenceWhenValid@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3f80	done	?GetZone@CCombatSequence_KingScorpionTailPlunge@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3f90	done	?IsInterruptable@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b3fa0	done	?IsInterruptableDueToZoneChange@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4010	done	?GetZone@CCombatSequence_TrollDoubleSwipe@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4020	done	?IsMeleeSequence@CCombatSequence_TrollDoubleSwipe@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4090	done	?GetZone@CCombatSequence_TrollDoubleSwipeNonMelee@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b40a0	done	?IsMeleeSequence@CCombatSequence_TrollDoubleSwipeNonMelee@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4110	done	?IsToPreferSequenceWhenValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4120	done	?GetZone@CCombatSequence_TrollOpeningGroundPound@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4130	done	?IsMeleeSequence@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b41a0	done	?GetZone@CCombatSequence_TrollProjectileAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b41b0	done	?IsMeleeSequence@CCombatSequence_TrollProjectileAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4220	done	?GetZone@CCombatSequence_TrollBurrowPursue@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4290	done	?GetZone@CCombatSequence_TrollBurrowPursueNoZone@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4300	done	?GetZone@CCombatSequence_TrollRockPursue@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4370	done	?GetZone@CCombatSequence_TrollRockPursueNoZone@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4380	done	?IsInterruptableDueToZoneChange@CCombatSequence_TrollRockPursueNoZone@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b43f0	done	?GetZone@CCombatSequence_TrollRockAdvance@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4460	done	?GetZone@CCombatSequence_TrollRockThrowRock@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4470	done	?IsMeleeSequence@CCombatSequence_TrollRockThrowRock@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4480	done	?IsInterruptable@CCombatSequence_TrollRockThrowRock@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b44f0	done	?GetZone@CCombatSequence_TrollRockIdle@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4560	done	?GetZone@CCombatSequence_TrollRockShuffleBack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b45d0	done	?GetZone@CCombatSequence_VillagerAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b45e0	done	?IsMeleeSequence@CCombatSequence_VillagerAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4650	done	?GetZone@CCombatSequence_VillagerBackOff@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b46c0	done	?GetZone@CCombatSequence_VillagerStepIn@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b46d0	done	?IsInterruptableDueToZoneChange@CCombatSequence_VillagerStepIn@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4740	done	?GetZone@CCombatSequence_VillagerAdvance@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4750	done	?IsInterruptableDueToZoneChange@CCombatSequence_VillagerAdvance@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b47c0	done	?GetZone@CCombatSequence_VillagerCombo@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b47d0	done	?IsMeleeSequence@CCombatSequence_VillagerCombo@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4840	done	?GetZone@CCombatSequence_VillagerComboUnblockable@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4850	done	?IsMeleeSequence@CCombatSequence_VillagerComboUnblockable@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b48c0	done	?GetZone@CCombatSequence_VillagerNearAttack@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b48d0	done	?IsMeleeSequence@CCombatSequence_VillagerNearAttack@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4940	done	?GetZone@CCombatSequenceWhisperLunge@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4950	done	?IsMeleeSequence@CCombatSequenceWhisperLunge@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b49c0	done	?GetZone@CCombatSequenceWhisperAdvance@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b49d0	done	?IsMeleeSequence@CCombatSequenceWhisperAdvance@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4a40	done	?GetZone@CCombatSequenceWhisperAttackCombo@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4a50	done	?IsMeleeSequence@CCombatSequenceWhisperAttackCombo@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4ac0	done	?GetZone@CCombatSequenceWhisperAttackBigCombo@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4ad0	done	?IsMeleeSequence@CCombatSequenceWhisperAttackBigCombo@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4b40	done	?GetZone@CCombatSequenceWhisperAttack360@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4b50	done	?IsMeleeSequence@CCombatSequenceWhisperAttack360@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4bc0	done	?GetZone@CCombatSequenceWhisperStrikeStrafeBack@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4bd0	done	?IsMeleeSequence@CCombatSequenceWhisperStrikeStrafeBack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4c40	done	?GetZone@CCombatSequenceWhisperTooCloseLeapBack@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4c50	done	?IsMeleeSequence@CCombatSequenceWhisperTooCloseLeapBack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4cc0	done	?GetZone@CCombatSequenceWhisperBoast@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4cd0	done	?IsBoastSequence@CCombatSequenceWhisperBoast@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4d40	done	?GetZone@CCombatSequenceWhisperSortYourselfOut@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4db0	done	?GetZone@CCombatSequenceWhisperStrafeAround@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4dc0	done	?IsInterruptableDueToZoneChange@CCombatSequenceWhisperStrafeAround@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4e30	done	?GetZone@CCombatSequenceWhisperIdles@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4e40	done	?IsInterruptableDueToZoneChange@CCombatSequenceWhisperIdles@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4eb0	done	?GetZone@CCombatSequenceJacksCombo@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4ec0	done	?IsInterruptableDueToZoneChange@CCombatSequenceJacksCombo@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4f30	done	?GetZone@CCombatSequence2StrikeCombo@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4f40	done	?IsInterruptableDueToZoneChange@CCombatSequence2StrikeCombo@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b4fb0	done	?GetZone@CCombatSequenceUnblockableFacing@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b4fc0	done	?IsInterruptableDueToZoneChange@CCombatSequenceUnblockableFacing@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5030	done	?GetZone@CCombatSequenceNonInterruptable2StrikeCombo@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5040	done	?IsInterruptableDueToZoneChange@CCombatSequenceNonInterruptable2StrikeCombo@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b50b0	done	?IsToPreferSequenceWhenValid@CCombatSequence_BattleCharge@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b50c0	done	?GetZone@CCombatSequence_BattleCharge@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b50d0	done	?IsInterruptableDueToZoneChange@CCombatSequence_BattleCharge@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5140	done	?IsToPreferSequenceWhenValid@CCombatSequence_WillLightning@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5150	done	?GetZone@CCombatSequence_WillLightning@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5160	done	?IsInterruptableDueToZoneChange@CCombatSequence_WillLightning@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5170	done	?IsInterruptable@CCombatSequence_WillLightning@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5180	done	?IsMeleeSequence@CCombatSequence_WillLightning@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b51f0	done	?IsToPreferSequenceWhenValid@CCombatSequence_WillEnflame@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5200	done	?GetZone@CCombatSequence_WillEnflame@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5210	done	?IsInterruptableDueToZoneChange@CCombatSequence_WillEnflame@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5220	done	?IsInterruptable@CCombatSequence_WillEnflame@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5230	done	?IsToEvadeAllHits@CCombatSequence_WillEnflame@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5240	done	?IsMeleeSequence@CCombatSequence_WillEnflame@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b52b0	done	?IsToPreferSequenceWhenValid@CCombatSequence_WillForcePush@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b52c0	done	?GetZone@CCombatSequence_WillForcePush@@UBEKXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b52d0	done	?IsInterruptableDueToZoneChange@CCombatSequence_WillForcePush@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b52e0	done	?IsInterruptable@CCombatSequence_WillForcePush@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b52f0	done	?IsToEvadeAllHits@CCombatSequence_WillForcePush@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5300	done	?IsMeleeSequence@CCombatSequence_WillForcePush@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b5430	done	?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShield@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5440	done	?GetZone@CCombatSequence_WillPhysicalShield@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5450	done	?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShield@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5460	done	?IsInterruptable@CCombatSequence_WillPhysicalShield@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5470	done	?IsMeleeSequence@CCombatSequence_WillPhysicalShield@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b54e0	done	?IsToPreferSequenceWhenValid@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b54f0	done	?GetZone@CCombatSequence_WillPhysicalShieldNonMelee@@UBEKXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5500	done	?IsInterruptableDueToZoneChange@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5510	done	?IsInterruptable@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b5520	done	?IsMeleeSequence@CCombatSequence_WillPhysicalShieldNonMelee@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+008b86b0	done	?IsToFaceTargetAtStart@CCreatureAction_LeapLong@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b86c0	done	?IsToEvadeAllHits@CCreatureAction_LeapLong@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b86d0	done	?IsToRetainSafeDistance@CCreatureAction_LeapLong@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b86e0	done	?IsPhysicsPushableByHero@CCreatureAction_LeapLong@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b9440	done	?PerformAction@CCreatureAction_FinishGhostSwordSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008b9450	done	?PerformAction@CCreatureAction_BuildUpWillLightningSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd910	done	?PerformAction@CCreatureAction_BuildWillForceSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd920	done	?PerformAction@CCreatureAction_FinishWillForceSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd950	done	?PerformAction@CCreatureAction_BuildUpWillEnflameSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd960	done	?PerformAction@CCreatureAction_ReleaseWillEnflameSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd970	done	?IsToCauseRecoil@CCreatureAction_ReleaseWillEnflameSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd980	done	?IsAbleToBeAttacked@CCreatureAction_ReleaseWillEnflameSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd9a0	done	?PerformAction@CCreatureAction_BuildUpPhysicalShieldSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd9e0	done	?IsToCauseRecoil@CCreatureAction_RemovePhysicalShieldSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bd9f0	done	?IsAbleToBeAttacked@CCreatureAction_RemovePhysicalShieldSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda00	done	?PerformAction@CCreatureAction_BuildWillTurncoatSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda10	done	?PerformAction@CCreatureAction_FinishWillTurncoatSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda20	done	?PerformAction@CCreatureAction_BuildDrainLifeSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda30	done	?PerformAction@CCreatureAction_FinishDrainLifeSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda40	done	?PerformAction@CCreatureAction_BuildHealLifeSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda50	done	?PerformAction@CCreatureAction_FinishHealLifeSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda60	done	?PerformAction@CCreatureAction_CastWillGhostSwordSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda70	done	?PerformAction@CCreatureAction_BuildGhostSwordSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda80	done	?PerformAction@CCreatureAction_CastWillSummonSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bda90	done	?PerformAction@CCreatureAction_BuildUpWillSummonSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdaa0	done	?PerformAction@CCreatureAction_ReleaseWillSummonSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdac0	done	?PerformAction@CCreatureAction_ReleaseWillLightningSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdad0	done	?PerformAction@CCreatureAction_CastWillFireballSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdae0	done	?PerformAction@CCreatureAction_BuildFireballSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdb40	done	?PerformAction@CCreatureAction_CastDivineWrathSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdb50	done	?IsPlayHitResponse@CCreatureAction_CastDivineWrathSpell@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdb60	done	?PerformAction@CCreatureAction_BuildUpDivineWrathSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdb70	done	?IsPlayHitResponse@CCreatureAction_BuildUpDivineWrathSpell@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdb80	done	?PerformAction@CCreatureAction_ReleaseDivineWrathSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdb90	done	?IsToEvadeAllHits@CCreatureAction_ReleaseDivineWrathSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdba0	done	?IsToCauseRecoil@CCreatureAction_ReleaseDivineWrathSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdbb0	done	?IsAbleToBeAttacked@CCreatureAction_ReleaseDivineWrathSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdbc0	done	?IsPlayHitResponse@CCreatureAction_ReleaseDivineWrathSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdbd0	skipped-port	?PerformAction@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UAEXXZ	triage (base CCreatureAction_BuildUpDivineWrathSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h does not declare PerformAction and has no polymorphic class model (port)
+008bdbe0	skipped-port	?IsToEvadeAllHits@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpDivineWrathSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h does not declare IsToEvadeAllHits and has no polymorphic class model (port)
+008bdbf0	skipped-port	?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpDivineWrathSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h does not declare IsToCauseRecoil and has no polymorphic class model (port)
+008bdc00	skipped-port	?IsAbleToBeAttacked@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpDivineWrathSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h does not declare IsAbleToBeAttacked and has no polymorphic class model (port)
+008bdc10	skipped-port	?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpDivineWrathSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h does not declare IsPlayHitResponse and has no polymorphic class model (port)
+008bdc20	done	?PerformAction@CCreatureAction_CastUnholyPowerSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc30	done	?IsPlayHitResponse@CCreatureAction_CastUnholyPowerSpell@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc40	done	?PerformAction@CCreatureAction_BuildUpUnholyPowerSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc50	done	?IsPlayHitResponse@CCreatureAction_BuildUpUnholyPowerSpell@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc60	done	?PerformAction@CCreatureAction_ReleaseUnholyPowerSpell@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc70	done	?IsToEvadeAllHits@CCreatureAction_ReleaseUnholyPowerSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc80	done	?IsToCauseRecoil@CCreatureAction_ReleaseUnholyPowerSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdc90	done	?IsAbleToBeAttacked@CCreatureAction_ReleaseUnholyPowerSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdca0	done	?IsPlayHitResponse@CCreatureAction_ReleaseUnholyPowerSpell@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008bdcb0	skipped-port	?PerformAction@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UAEXXZ	triage (base CCreatureAction_BuildUpUnholyPowerSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h does not declare PerformAction and has no polymorphic class model (port)
+008bdcc0	skipped-port	?IsToEvadeAllHits@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpUnholyPowerSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h does not declare IsToEvadeAllHits and has no polymorphic class model (port)
+008bdcd0	skipped-port	?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpUnholyPowerSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h does not declare IsToCauseRecoil and has no polymorphic class model (port)
+008bdce0	skipped-port	?IsAbleToBeAttacked@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpUnholyPowerSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h does not declare IsAbleToBeAttacked and has no polymorphic class model (port)
+008bdcf0	skipped-port	?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ	triage (base CCreatureAction_BuildUpUnholyPowerSpell; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h does not declare IsPlayHitResponse and has no polymorphic class model (port)
+008bff90	done	?IsMovementUsingPhysics@CCreatureAction_Ambush@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c3aa0	done	?IsBlockable@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c3ab0	done	?IsKnockdownStrike@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c3ac0	done	?IsToFaceMovementDirection@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c3ad0	done	?GetAnimationTransitionInTime@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBEJXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c3ae0	done	?GetAnimDelayTime@CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UBEJXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5bc0	done	?IsBlockable@CCreatureAction_ScorpionCharge@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5bd0	done	?IsToFaceMovementDirection@CCreatureAction_ScorpionCharge@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5be0	done	?IsToRetainSafeDistance@CCreatureAction_ScorpionCharge@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5bf0	done	?IsBlockable@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5c00	done	?IsStrikeAction@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5c10	done	?IsKnockdownStrike@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5c20	done	?IsToFaceMovementDirection@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c5c30	done	?IsToRetainSafeDistance@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c6050	done	?PerformAction@CCreatureAction_TrollPursue@@UAEXXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c9490	done	?IsKnockdownStrike@CCreatureAction_BanditKingAttack@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c94a0	done	?IsBlockable@CCreatureAction_BanditKingAttack@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c9560	done	?GetAnimationTransitionInTime@CCreatureAction_BanditKingStuck@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c9570	done	?IsOverrideableByActionOfSamePriority@CCreatureAction_BanditKingStuck@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008c9600	done	?GetAnimationTransitionInTime@CCreatureAction_BanditKingUnstuck@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ca920	done	?IsMoving@CCreatureAction_NymphTeleportLimboBase@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ca930	done	?IsToEvadeAllHits@CCreatureAction_NymphTeleportLimboBase@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ca940	done	?IsToFaceTarget@CCreatureAction_NymphTeleportLimboBase@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ca950	done	?GetIsToFaceTargetCone@CCreatureAction_NymphTeleportLimboBase@@UBEMXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), RELOCATION_MATCH PASS [route header]
+008cd190	done	?IsToFaceTargetAtStart@CCreatureAction_BalverineCorneredJumpIntoSky@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd1a0	done	?IsMovementUsingPhysics@CCreatureAction_BalverineCorneredJumpIntoSky@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd1b0	done	?IsToCauseRecoil@CCreatureAction_BalverineCorneredJumpIntoSky@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd1c0	done	?GetAnimationTransitionInTime@CCreatureAction_BalverineCorneredJumpIntoSky@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd1d0	done	?GetAnimDelayTime@CCreatureAction_BalverineCorneredJumpIntoSky@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd1e0	done	?GetAnimationTransitionInTime@CCreatureAction_BalverineDropInFromSky@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd1f0	done	?GetAnimDelayTime@CCreatureAction_BalverineDropInFromSky@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd200	done	?IsToFaceTargetAtStart@CCreatureAction_BalverineDropInFromSky@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cd460	done	?PerformAction@CCreatureAction_CastSkillMultiArrow@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ceb90	done	?PerformAction@CCreatureAction_CastTimeSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ceba0	done	?PerformAction@CCreatureAction_BuildUpTimeSpell@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec00	done	?PerformAction@CCreatureAction_BuildUpBattleCharge@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec10	done	?IsToFaceTargetAtStart@CCreatureAction_BuildUpBattleCharge@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec20	done	?IsToFaceTarget@CCreatureAction_BuildUpBattleCharge@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec30	done	?PerformAction@CCreatureAction_BattleChargeImpact@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec40	done	?IsBlockable@CCreatureAction_BattleChargeImpact@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec50	done	?IsAbleToBeAttacked@CCreatureAction_BattleChargeImpact@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec60	done	?IsToCauseRecoil@CCreatureAction_BattleChargeImpact@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec70	done	?PerformAction@CCreatureAction_BattleChargeMiss@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec80	done	?IsAbleToBeAttacked@CCreatureAction_BattleChargeMiss@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cec90	done	?IsToCauseRecoil@CCreatureAction_BattleChargeMiss@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008ceca0	done	?PerformAction@CCreatureAction_BattleChargeTurnLeft@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008cecb0	done	?PerformAction@CCreatureAction_BattleChargeTurnRight@@UAEXXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008e4a20	done	?IsBlockable@CCreatureAction_SnapDragonOutOf@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008e4a30	done	?IsKnockdownStrike@CCreatureAction_SnapDragonOutOf@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008e4b30	done	?IsUsingAnimationMovement@CCreatureAction_DragonStrafeOutOf@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f55e0	done	?GetAnimDelayTime@CCreatureAction_DragonFlight@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5600	done	?IsUsingAnimationMovement@CCreatureAction_DragonFlight@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5610	done	?IsMovementUsingPhysics@CCreatureAction_DragonFlight@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5620	done	?GetAnimDelayTime@CCreatureAction_DragonRetreat@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5630	done	?IsUsingAnimationMovement@CCreatureAction_DragonRetreat@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5640	done	?IsMovementUsingPhysics@CCreatureAction_DragonRetreat@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5650	done	?GetAnimDelayTime@CCreatureAction_DragonSwoop@@UBEJXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5660	done	?IsUsingAnimationMovement@CCreatureAction_DragonSwoop@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5670	done	?IsMovementUsingPhysics@CCreatureAction_DragonSwoop@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5680	done	?IsMovementUsingPhysics@CCreatureAction_DragonRearUpInto@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008f5690	done	?IsMovementUsingPhysics@CCreatureAction_DragonRearUpOutOf@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+008fd99e	skipped-port	?AllowPriorityOverlap@CAIStateGroup_KidWanderNearKids@@UAE_NXZ	triage (base CAIStateGroupBase; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_KidWanderNearKids.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+008fdb67	skipped-port	?AllowPriorityOverlap@CAIStateGroup_CleanHouse@@UAE_NXZ	triage (base CAIStateGroup_Clean; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_CleanHouse.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+008fe66e	done	?SetPlaceForSelf@CAIStateGroup_ServeFoodAtTavern@@MAE_NXZ	batches/b3: objcheck ALL_EQ, MATCH PASS [route switch]
+0090002c	skipped-port	?IsWorkCandle@CAIStateGroup_LightHomeCandle@@MAE_NXZ	triage (base CAIStateGroupBase; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_LightHomeCandle.h does not declare IsWorkCandle and has no polymorphic class model (port)
+0090005d	skipped-port	?IsWorkCandle@CAIStateGroup_LightWorkCandle@@MAE_NXZ	triage (base CAIStateGroup_LightHomeCandle; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_LightWorkCandle.h does not declare IsWorkCandle and has no polymorphic class model (port)
+009000ef	skipped-port	?AllowPriorityOverlap@CAIStateGroup_WanderAroundShops@@UAE_NXZ	triage (base CAIStateGroup_WorkBase<CAIStateGroupBase>; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_WanderAroundShops.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+00901a2a	done	?SetPlaceForSelf@CAIStateGroup_ServeFoodAtHome@@MAE_NXZ	batches/b3: objcheck ALL_EQ, MATCH PASS [route switch]
+009021da	skipped-port	?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ	triage (base CAIStateGroup_MinionSitOnSeat; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_MinionSitOutside.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+00906c00	skipped-port	?IsToFaceTarget@CCreatureAction_BanditKingAdvance@@UBE_NXZ	triage (base CCreatureAction_StrafeForward; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_BanditKingAdvance.h does not declare IsToFaceTarget and has no polymorphic class model (port)
+00906c40	skipped-port	?IsToFaceTarget@CCreatureAction_BanditKingBackOff@@UBE_NXZ	triage (base CCreatureAction_StrafeBackward; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_BanditKingBackOff.h does not declare IsToFaceTarget and has no polymorphic class model (port)
+00906fa0	done	?IsValid@CCombatSequence_ScorpionLungeAttack@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), RELOCATION_MATCH PASS [route switch]
+00906fc0	done	?OnStart@CCombatSequence_ScorpionLungeAttack@@MAEXXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), RELOCATION_MATCH PASS [route switch]
+00906fd0	done	?IsValid@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907380	done	?IsToRetainSafeDistance@CCreatureAction_FodderPrimaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907390	done	?IsToFaceTargetAtStart@CCreatureAction_FodderPrimaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907400	done	?IsToRetainSafeDistance@CCreatureAction_FodderUnblockablePrimaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907410	done	?IsToFaceTargetAtStart@CCreatureAction_FodderUnblockablePrimaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907420	done	?IsBlockable@CCreatureAction_FodderUnblockablePrimaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907430	done	?IsKnockdownStrike@CCreatureAction_FodderUnblockablePrimaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+009074a0	done	?IsToRetainSafeDistance@CCreatureAction_FodderSecondaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+009074b0	done	?IsToFaceTargetAtStart@CCreatureAction_FodderSecondaryAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00907520	done	?IsToFaceTarget@CCreatureAction_FodderIdle@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+009076a0	done	?IsValid@CCombatSequence_TrollOpeningGroundPound@@UBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), RELOCATION_MATCH PASS [route switch]
+009076b0	done	?OnStart@CCombatSequence_TrollRockAdvance@@UAEXXZ	batches/b4: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00908060	skipped-port	?IsVitalStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollAngryGroundPound.h does not declare IsVitalStrike and has no polymorphic class model (port)
+00908070	skipped-port	?IsKnockdownStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollAngryGroundPound.h does not declare IsKnockdownStrike and has no polymorphic class model (port)
+00908080	skipped-port	?IsBlockable@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollAngryGroundPound.h does not declare IsBlockable and has no polymorphic class model (port)
+00908110	skipped-port	?IsToFaceTarget@CCreatureAction_TrollProjectileAttack@@UBE_NXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollProjectileAttack.h does not declare IsToFaceTarget and has no polymorphic class model (port)
+00908120	skipped-port	?GetIsToFaceTargetCone@CCreatureAction_TrollProjectileAttack@@UBEMXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollProjectileAttack.h does not declare GetIsToFaceTargetCone and has no polymorphic class model (port)
+00908130	skipped-port	?IsInterruptableDueToZoneChange@CCreatureAction_TrollProjectileAttack@@UBE_NXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollProjectileAttack.h does not declare IsInterruptableDueToZoneChange and has no polymorphic class model (port)
+009081c0	skipped-port	?IsToEvadeAllHits@CCreatureAction_TrollTunnel@@UBE_NXZ	triage (base CCreatureAction_TrollWhackGroundBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_TrollTunnel.h does not declare IsToEvadeAllHits and has no polymorphic class model (port)
+00908230	done	?IsBlockable@CCreatureAction_TrollSwipe@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00908240	done	?IsKnockdownStrike@CCreatureAction_TrollSwipe@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00908250	done	?IsToFaceTargetAtStart@CCreatureAction_TrollSwipe@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00908260	done	?IsPartOfComboChain@CCreatureAction_TrollSwipe@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00908330	done	?IsToFaceTargetAtStart@CCreatureAction_TrollGetProjectile@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0090a6f0	done	?IsToFaceTargetAtStart@CCreatureAction_MidAttackFacing@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00911ef0	skipped-port	?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ	triage (base CAIStateGroupBase; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_ChickenBeg.h does not declare IsRunnable and has no polymorphic class model (port)
+00911f00	skipped-port	?Update@CAIStateGroup_ChickenBeg@@UAEXXZ	triage (base CAIStateGroupBase; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_ChickenBeg.h does not declare Update and has no polymorphic class model (port)
+00916600	skipped-port	?GetAnimExtraFlags@CCreatureAction_PickUpGoods@@UBEKXZ	triage (base CCreatureActionBase; brief item 4, the thin remainder, not reached): model: engine/CCreatureAction_PickUpGoods.h does not declare GetAnimExtraFlags and has no polymorphic class model (port)
+00918f10	skipped-port	?GetOwner@CAIStateGroup_GazeOutside@@MAEPAVCThingBuilding@@XZ	triage (base CAIStateGroup_Gaze; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_GazeOutside.h does not declare GetOwner and has no polymorphic class model (port)
+00918f20	skipped-port	?AllowPriorityOverlap@CAIStateGroup_GazeOutside@@MAE_NXZ	triage (base CAIStateGroup_Gaze; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_GazeOutside.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+00918f50	skipped-port	?AllowPriorityOverlap@CAIStateGroup_GazeAtHome@@MAE_NXZ	triage (base CAIStateGroup_Gaze; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_GazeAtHome.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)
+00918f60	skipped-port	?InsideAtNight@CAIStateGroup_GazeAtHome@@MAE_NXZ	triage (base CAIStateGroup_Gaze; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_GazeAtHome.h does not declare InsideAtNight and has no polymorphic class model (port)
+0091ccb0	skipped-port	?OnReplace@CAIStateGroup_MinionReactToNoise@@UAEXXZ	triage (base CAIStateGroupBase; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_MinionReactToNoise.h does not declare OnReplace and has no polymorphic class model (port)
+0091e4a0	skipped-port	?IsRunnable@CAIStateGroup_MinionLeaveRegion@@MAE_NXZ	triage (base CAIStateGroupBase; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_MinionLeaveRegion.h does not declare IsRunnable and has no polymorphic class model (port)
+00925290	done	?IsUsingAnimationMovement@CCreatureAction_TentacleRise@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00925300	done	?IsUsingAnimationMovement@CCreatureAction_TentacleStrikeInto@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+009425e0	skipped-port	?InitStateGroup@CAIStateGroup_WorkAtSchool@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	triage (base CAIStateGroup_WorkBase<CAIStateGroupBase>; brief item 4, the thin remainder, not reached): model: engine/CAIStateGroup_WorkAtSchool.h does not declare InitStateGroup and has no polymorphic class model (port)
+00953460	done	?IsMovementUsingPhysics@CCreatureAction_DragonTakeOffIntoFlying@@UBE_NXZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0095cb20	done	?IsToRetainSafeDistance@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0095cb30	done	?IsToFaceTargetAtStart@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0095cb40	done	?IsBlockable@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0095cb50	done	?IsKnockdownStrike@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00962960	done	?IsStrikeAction@CCreatureAction_IceTrollIcicleAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0096c070	done	?IsToFaceTargetAtStart@CCreatureAction_WhisperJumpIntoSky@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0097d0b0	done	?IsToFaceTarget@CCreatureAction_VillagerAttack@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0097d0c0	done	?IsToFaceTarget@CCreatureAction_VillagerAttackKnockdown@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0097d0d0	done	?IsKnockdownStrike@CCreatureAction_VillagerAttackKnockdown@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0097d0f0	done	?IsToFaceTarget@CCreatureAction_VillagerAdvance@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+0097d100	done	?IsToFaceTarget@CCreatureAction_VillagerBackOff@@UBE_NXZ	batches/b2: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route header]
+00a19cf0	skipped-port	?Reset@CSB@@UAEXXZ	triage (base ; brief item 4, the thin remainder, not reached): model: engine/CSB.h does not declare Reset and has no polymorphic class model (port)
+00a20860	skipped-port	?GetType@CSBGoal@@UAE?AW4ESB_TYPE@CSB@@XZ	triage (base CSB; brief item 4, the thin remainder, not reached): model: engine/CSBGoal.h does not declare GetType and has no polymorphic class model (port)
+00a21f90	skipped-port	?GetType@CSBCCorridor@@UAE?AW4ESB_TYPE@CSB@@XZ	triage (base CSBConstraint; brief item 4, the thin remainder, not reached): model: engine/CSBCCorridor.h does not declare GetType and has no polymorphic class model (port)
+00a5ee90	skipped-port	?GetDataFormatVersion@CStreamingFontDataBank@@MAEKXZ	triage (base CBankFileAsync; brief item 4, the thin remainder, not reached): model: engine/CStreamingFontDataBank.h does not declare GetDataFormatVersion and has no polymorphic class model (port)
+00a63340	skipped-port	?GetDataFormatVersion@CFontDataBank@@MAEKXZ	triage (base CBankFile; brief item 4, the thin remainder, not reached): model: engine/CFontDataBank.h does not declare GetDataFormatVersion and has no polymorphic class model (port)
+00a86f10	done	?HasChildren@CPhysicsFacesSegmentBranch@@MBE_NXZ	batches/b3: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS [route switch]
+00a87110	skipped-port	?HasChildren@CPhysicsFacesSegmentLeaf@@MBE_NXZ	triage (base CIPhysicsFacesSegmentBase; brief item 4, the thin remainder, not reached): model: engine/CPhysicsFacesSegmentLeaf.h does not declare HasChildren and has no polymorphic class model (port)
+00a88910	skipped-port	?GetType@CSBAgents@@UAE?AW4ESB_TYPE@CSB@@XZ	triage (base CSB; brief item 4, the thin remainder, not reached): model: engine/CSBAgents.h does not declare GetType and has no polymorphic class model (port)
+00b444d0	skipped-port	?GetRenderLayerMask@CEngineInternalPrimitiveLight@@UBEKXZ	triage (base CEngineInternalPrimitiveBase; brief item 4, the thin remainder, not reached): model: engine/CEngineInternalPrimitiveLight.h does not declare GetRenderLayerMask and has no polymorphic class model (port)
+00b444e0	skipped-port	?GetRenderLayerMask@CEngineInternalPrimitiveShadowedSpotLight@@UBEKXZ	triage (base CEngineInternalPrimitiveBase; brief item 4, the thin remainder, not reached): model: engine/CEngineInternalPrimitiveShadowedSpotLight.h does not declare GetRenderLayerMask and has no polymorphic class model (port)
+00b900a0	skipped-port	?ProcessPrimitive@CEngineSceneEnumeratorResetVisibilityRatio@@UAEXAAVCEngineInternalPrimitiveBase@@@Z	triage (base CEngineSceneEnumerator; brief item 4, the thin remainder, not reached): model: engine/CEngineSceneEnumeratorResetVisibilityRatio.h does not declare ProcessPrimitive and has no polymorphic class model (port)
+00bb1dd0	skipped-port	?IsBusy@CParticleSimulationRenderData@@UBE_NXZ	triage (base CBaseClassNonCopyable; brief item 4, the thin remainder, not reached): model: engine/CParticleSimulationRenderData.h does not declare IsBusy and has no polymorphic class model (port)
+00bcea50	skipped-port	?Update@CEngineInternalPrimitiveAnimatedMeshFromFile@@UAEXABVCEnginePrimitive@@K@Z	triage (base CEngineInternalPrimitiveAnimatedMesh; brief item 4, the thin remainder, not reached): model: engine/CEngineInternalPrimitiveAnimatedMeshFromFile.h does not declare Update and has no polymorphic class model (port)

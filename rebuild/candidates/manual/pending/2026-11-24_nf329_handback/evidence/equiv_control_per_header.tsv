@@ -1,0 +1,119 @@
+header	flagged_rows	examples
+CCombatAction_ControlledStrafeJump	0	
+CCombatAction_StabThing	1	0087ed70:src
+CCombatSequence2StrikeCombo	2	008b04c0:src 008b4f10:src
+CCombatSequenceJacksCombo	0	
+CCombatSequenceNonInterruptable2StrikeCombo	0	
+CCombatSequenceWhisperAttack360	0	
+CCombatSequenceWhisperAttackCombo	0	
+CCombatSequence_BanditAttackFar	0	
+CCombatSequence_BanditAttackMiddle	0	
+CCombatSequence_BanditAttackNear	0	
+CCombatSequence_BanditBoast	0	
+CCombatSequence_BanditIdleMiddle	0	
+CCombatSequence_BanditIdleNear	0	
+CCombatSequence_BanditKingAttack	0	
+CCombatSequence_BanditKingBackOff	0	
+CCombatSequence_BanditKingSpinAround	0	
+CCombatSequence_BanditUnblockableAttack	1	00906380:src
+CCombatSequence_FodderCombatIdle	0	
+CCombatSequence_FodderMainAttack	1	008b0020:src
+CCombatSequence_FodderUnblockableMainAttack	0	
+CCombatSequence_KingScorpionTailPlunge	0	
+CCombatSequence_NonInterruptableBoxStrafe	0	
+CCombatSequence_TrollBurrowPursueNoZone	0	
+CCombatSequence_TrollDoubleSwipe	0	
+CCombatSequence_TrollProjectileAttack	0	
+CCombatSequence_TrollRockAdvance	0	
+CCombatSequence_TrollRockIdle	0	
+CCombatSequence_TrollRockPursueNoZone	0	
+CCombatSequence_TrollRockShuffleBack	0	
+CCombatSequence_TrollRockThrowRock	0	
+CCombatSequence_VillagerAdvance	0	
+CCombatSequence_VillagerAttack	0	
+CCombatSequence_VillagerCombo	1	00908a20:src
+CCombatSequence_VillagerComboUnblockable	2	008b4820:src 00908b50:src
+CCombatSequence_VillagerNearAttack	0	
+CCombatSequence_VillagerStepIn	0	
+CCombatSequence_WillEnflame	0	
+CCombatSequence_WillForcePush	0	
+CCombatSequence_WillLightning	0	
+CCreatureActionHero180RunningTurn	0	
+CCreatureActionHeroRunningStop	0	
+CCreatureAction_Ambush	0	
+CCreatureAction_BalverineCorneredJumpIntoSky	0	
+CCreatureAction_BalverineDropInFromSky	0	
+CCreatureAction_BanditKingAttack	1	008c94b0:src
+CCreatureAction_BanditKingStuck	0	
+CCreatureAction_BanditKingUnstuck	1	008c9610:src
+CCreatureAction_BattleChargeImpact	0	
+CCreatureAction_BattleChargeMiss	0	
+CCreatureAction_BattleChargeTurnLeft	0	
+CCreatureAction_BattleChargeTurnRight	0	
+CCreatureAction_BlockBase	0	
+CCreatureAction_BlockCounter	0	
+CCreatureAction_BuildDrainLifeSpell	0	
+CCreatureAction_BuildFireballSpell	0	
+CCreatureAction_BuildGhostSwordSpell	0	
+CCreatureAction_BuildHealLifeSpell	0	
+CCreatureAction_BuildUpBattleCharge	0	
+CCreatureAction_BuildUpDivineWrathSpell	0	
+CCreatureAction_BuildUpPhysicalShieldSpell	0	
+CCreatureAction_BuildUpTimeSpell	0	
+CCreatureAction_BuildUpUnholyPowerSpell	0	
+CCreatureAction_BuildUpWillEnflameSpell	0	
+CCreatureAction_BuildUpWillLightningSpell	0	
+CCreatureAction_BuildUpWillSummonSpell	0	
+CCreatureAction_BuildWillForceSpell	0	
+CCreatureAction_BuildWillTurncoatSpell	0	
+CCreatureAction_CastDivineWrathSpell	0	
+CCreatureAction_CastSkillMultiArrow	0	
+CCreatureAction_CastTimeSpell	0	
+CCreatureAction_CastUnholyPowerSpell	0	
+CCreatureAction_CastWillFireballSpell	1	0072c930:src
+CCreatureAction_CastWillGhostSwordSpell	0	
+CCreatureAction_CastWillSummonSpell	0	
+CCreatureAction_DragonFlight	2	008f2e00:src 008f55f0:src
+CCreatureAction_DragonRearUpInto	0	
+CCreatureAction_DragonRearUpOutOf	0	
+CCreatureAction_DragonRetreat	0	
+CCreatureAction_DragonStrafeOutOf	0	
+CCreatureAction_DragonSwoop	0	
+CCreatureAction_DragonTakeOffIntoFlying	0	
+CCreatureAction_FinishDrainLifeSpell	0	
+CCreatureAction_FinishGhostSwordSpell	0	
+CCreatureAction_FinishHealLifeSpell	0	
+CCreatureAction_FinishWillForceSpell	0	
+CCreatureAction_FinishWillTurncoatSpell	0	
+CCreatureAction_FodderIdle	0	
+CCreatureAction_FodderPrimaryAttack	0	
+CCreatureAction_FodderSecondaryAttack	0	
+CCreatureAction_FodderUnblockablePrimaryAttack	0	
+CCreatureAction_GeneralInterruptedAttack	0	
+CCreatureAction_IceTrollIcicleAttack	0	
+CCreatureAction_InterruptableMidAttackAutoTurn	0	
+CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend	0	
+CCreatureAction_LeapLong	2	008b86c0:src 008b86c0:test
+CCreatureAction_MidAttackFacing	0	
+CCreatureAction_NymphTeleportLimboBase	0	
+CCreatureAction_ReleaseDivineWrathSpell	0	
+CCreatureAction_ReleaseUnholyPowerSpell	0	
+CCreatureAction_ReleaseWillEnflameSpell	0	
+CCreatureAction_ReleaseWillLightningSpell	0	
+CCreatureAction_ReleaseWillSummonSpell	0	
+CCreatureAction_RemovePhysicalShieldSpell	1	008ba7e0:src
+CCreatureAction_ScorpionCharge	2	008c4680:src 008c5490:src
+CCreatureAction_ScorpionChargeStrike	0	
+CCreatureAction_SnapDragonOutOf	0	
+CCreatureAction_StartBlocking	0	
+CCreatureAction_TentacleRise	0	
+CCreatureAction_TentacleStrikeInto	0	
+CCreatureAction_TrollGetProjectile	0	
+CCreatureAction_TrollPursue	0	
+CCreatureAction_TrollSwipe	0	
+CCreatureAction_VillagerAdvance	0	
+CCreatureAction_VillagerAttack	0	
+CCreatureAction_VillagerAttackKnockdown	3	00908a20:src 00908b50:src 0097d0e0:src
+CCreatureAction_VillagerBackOff	0	
+CCreatureAction_WaspQueenLashOutAttack	0	
+CCreatureAction_WhisperJumpIntoSky	0	
