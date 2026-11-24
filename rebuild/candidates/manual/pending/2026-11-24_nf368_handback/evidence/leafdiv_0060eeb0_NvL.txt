@@ -1,0 +1,2 @@
+size A 10236  B 10236
+first differing byte offset: none (prefix equal)

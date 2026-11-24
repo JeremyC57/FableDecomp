@@ -1,0 +1,9 @@
+15:40:06 T_0060c900 FAIL NOWCHAR errors=6 [2 VC71:functional, 2 VC71:ostream, 2 VC71:istream] /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructMapList_0060c900_test.cpp
+15:40:06 T_0060eeb0 FAIL NOWCHAR errors=6 [2 VC71:functional, 2 VC71:ostream, 2 VC71:istream] /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0_test.cpp
+15:40:55 SH_0060c900 PASS NOWCHAR errors=0 [] /home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructMapList_0060c900.cpp
+15:40:55 SH_0060eeb0 PASS NOWCHAR errors=0 [] /home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0.cpp
+15:40:55 SH_005ff190 PASS NOWCHAR errors=0 [] /home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_CreateMapMarkers_005ff190.cpp
+15:40:55 SN_0060c900 PASS NOWCHAR errors=0 [] /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF368/var/N/0060c900.cpp
+15:40:55 SN_0060eeb0 PASS NOWCHAR errors=0 [] /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF368/var/N/0060eeb0.cpp
+15:43:35 SL_0060c900 PASS NOWCHAR errors=0 [] /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF368/var/L/0060c900.cpp
+15:43:36 SL_0060eeb0 PASS NOWCHAR errors=0 [] /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF368/var/L/0060eeb0.cpp

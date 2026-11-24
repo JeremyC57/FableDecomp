@@ -1,0 +1,7 @@
+# overlay=
+H 0060eeb0 RELOCATION_MATCH leaf=?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0.cpp
+PASS_DONE
+# overlay=
+N 0060eeb0 DIFFER(10236v10254) leaf=?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF368/var/N/0060eeb0.cpp
+PASS_DONE
+CHAIN_DONE 0060eeb0

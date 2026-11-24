@@ -1,0 +1,4 @@
+# overlay=
+H 005ff190 RELOCATION_MATCH leaf=?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$a flags= src=/home/user/FableDecomp/rebuild/src/compiled/00/5f/CTCInventoryMap_CreateMapMarkers_005ff190.cpp
+PASS_DONE
+CHAIN_DONE 005ff190

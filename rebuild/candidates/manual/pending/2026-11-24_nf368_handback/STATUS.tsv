@@ -1,0 +1,3 @@
+address	status	reason
+0060c900	skipped	the port (CreateMapMarkers declaration-only, same-TU strong copy removed) moves the leaf: HEAD RELOCATION_MATCH 9635, new DIFFER(9633v9635); line-preserving control identical (DIFFER 9633v9635, leaf byte-equal to new); same external call list and order (362 = 362), same frame 0x298, frame-slot assignment changes from +0x63 (1956 of 2725 aligned instructions differ)
+0060eeb0	skipped	the port moves the leaf: HEAD RELOCATION_MATCH 10254, new DIFFER(10236v10254); line-preserving control identical; same external call list and order (381 = 381), same frame 0x2B8, slot assignment changes from +0x29 (2871 of 2913 aligned instructions differ)

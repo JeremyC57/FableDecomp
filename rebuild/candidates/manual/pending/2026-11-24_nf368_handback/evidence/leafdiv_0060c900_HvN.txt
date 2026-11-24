@@ -1,0 +1,42 @@
+size A 9635  B 9633
+first differing byte offset: 0x63
+A around it:
+      4c  mov    edx,DWORD PTR [esi]
+      4e  mov    DWORD PTR [edx+0x4],ebx
+      51  mov    eax,DWORD PTR [esi]
+      53  mov    DWORD PTR [eax+0xc],eax
+      56  mov    DWORD PTR [esi+0x4],ebx
+      59  push   0xffffffff
+      5b  push   0x0
+      60  lea    ecx,[esp+0x64]
+      64  call   0x69
+      69  mov    eax,DWORD PTR [ebp+0x130]
+      6f  lea    ecx,[ebp+0x130]
+      75  call   DWORD PTR [eax+0xc]
+      78  test   al,al
+      7a  je     0x210
+      80  push   0x14
+      82  mov    DWORD PTR [esp+0xec],ebx
+      89  call   0x8e
+      8e  mov    DWORD PTR [esp+0xec],eax
+B around it:
+      4c  mov    edx,DWORD PTR [esi]
+      4e  mov    DWORD PTR [edx+0x4],ebx
+      51  mov    eax,DWORD PTR [esi]
+      53  mov    DWORD PTR [eax+0xc],eax
+      56  mov    DWORD PTR [esi+0x4],ebx
+      59  push   0xffffffff
+      5b  push   0x0
+      60  lea    ecx,[esp+0x74]
+      64  call   0x69
+      69  mov    eax,DWORD PTR [ebp+0x130]
+      6f  lea    ecx,[ebp+0x130]
+      75  call   DWORD PTR [eax+0xc]
+      78  test   al,al
+      7a  je     0x210
+      80  push   0x14
+      82  mov    DWORD PTR [esp+0xec],ebx
+      89  call   0x8e
+      8e  mov    DWORD PTR [esp+0xec],eax
+aligned instruction pairs differing: 1956 of 2725 / 2726
+external relocation targets: A 362  B 362; first differing index: None

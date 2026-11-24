@@ -1,0 +1,56 @@
+size A 10254  B 10236
+first differing byte offset: 0x29
+A around it:
+      11  push   edi
+      12  xor    edi,edi
+      14  mov    BYTE PTR [ebp+0x248],0x0
+      1b  mov    eax,DWORD PTR [esi+0x4]
+      1e  xor    ebx,ebx
+      20  cmp    eax,edi
+      22  mov    DWORD PTR [esp+0x18],ebp
+      26  mov    DWORD PTR [esp+0xcc],edi
+      2d  mov    DWORD PTR [esp+0x24],ebx
+      31  mov    DWORD PTR [esp+0x28],edi
+      35  mov    DWORD PTR [esp+0x2c],edi
+      39  je     0x5c
+      3b  mov    eax,DWORD PTR [esi]
+      3d  mov    ecx,DWORD PTR [eax+0x4]
+      40  push   ecx
+      41  mov    ecx,esi
+      43  call   0x48
+      48  mov    eax,DWORD PTR [esi]
+      4a  mov    DWORD PTR [eax+0x8],eax
+      4d  mov    edx,DWORD PTR [esi]
+      4f  xor    ecx,ecx
+      51  mov    DWORD PTR [edx+0x4],ecx
+      54  mov    eax,DWORD PTR [esi]
+      56  mov    DWORD PTR [eax+0xc],eax
+      59  mov    DWORD PTR [esi+0x4],ecx
+B around it:
+      11  push   edi
+      12  xor    edi,edi
+      14  mov    BYTE PTR [ebp+0x248],0x0
+      1b  mov    eax,DWORD PTR [esi+0x4]
+      1e  xor    ebx,ebx
+      20  cmp    eax,edi
+      22  mov    DWORD PTR [esp+0x18],ebp
+      26  mov    DWORD PTR [esp+0xec],edi
+      2d  mov    DWORD PTR [esp+0x2c],ebx
+      31  mov    DWORD PTR [esp+0x30],edi
+      35  mov    DWORD PTR [esp+0x34],edi
+      39  je     0x5c
+      3b  mov    eax,DWORD PTR [esi]
+      3d  mov    ecx,DWORD PTR [eax+0x4]
+      40  push   ecx
+      41  mov    ecx,esi
+      43  call   0x48
+      48  mov    eax,DWORD PTR [esi]
+      4a  mov    DWORD PTR [eax+0x8],eax
+      4d  mov    edx,DWORD PTR [esi]
+      4f  xor    ecx,ecx
+      51  mov    DWORD PTR [edx+0x4],ecx
+      54  mov    eax,DWORD PTR [esi]
+      56  mov    DWORD PTR [eax+0xc],eax
+      59  mov    DWORD PTR [esi+0x4],ecx
+aligned instruction pairs differing: 2871 of 2913 / 2906
+external relocation targets: A 381  B 381; first differing index: None
