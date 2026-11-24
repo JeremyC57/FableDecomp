@@ -1,0 +1,98 @@
+addr	n_rows	sym	rows	flag_caused	kind
+00cd3d2e	11	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	00ce7670 00d13580 00d19bd0 00d1a740 00d1b200 00d22f30 00d2d930 00d45060 00d58490 00e8ef80 00ea59e0	0	pickany
+006e7b80	6	??1CScriptGameResourceObjectMovieBase@@UAE@XZ	00d58490 00de8370 00e2ff00 00e3bb70 00ed17d0 00efa4f0	2	pickany
+0040fe60	3	?TransferBinaryIn@?$CPersistTraits@J@@QAEXAAVCMemoryDataInputStream@@AAJ@Z	00463d18 00472896 004e9393	0	pickany
+00afe910	3	?resize@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEXIABV?$CArray@J@@@Z	00afcc30 00b03ca0 00b1f200	3	pickany
+00b439c0	3	?PeekLandscapeHeight@CEngineMap@@QBEMJJ@Z	00b3f5e0 00b41a80 00b52dd0	0	pickany
+00429c6f	2	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z	00605570 00626110	0	pickany
+00429c53	2	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ	00626110 00626750	0	pickany
+00429c15	2	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z	00626110 00626750	0	pickany
+005949c3	2	??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z	00626110 00626750	0	pickany
+00429f43	2	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z	00626110 00626750	0	pickany
+00433530	2	?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	0076eb00 00eda8c0	0	pickany
+005149f0	2	?_M_fill_insert@?$vector@GV?$allocator@G@std@@@std@@QAEXPAGIABG@Z	0099ba70 0099bb80	0	pickany
+0075c040	2	?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z	00a91640 00b21e90	1	pickany
+00b43720	2	?PeekThemeId@CEngineMap@@QBEJJJJ@Z	00b40260 00b40bd0	0	pickany
+00436d60	1	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_OverlappingCircle@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_OverlappingCircle@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	00435530	0	pickany
+00451b07	1	??1?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@XZ	00465c54	1	pickany
+00451add	1	??0?$_Rb_tree@W4EWeaponClass@@W41@U?$_Identity@W4EWeaponClass@@@std@@U?$less@W4EWeaponClass@@@3@V?$allocator@W4EWeaponClass@@@3@@std@@QAE@ABU?$less@W4EWeaponClass@@@1@ABV?$allocator@W4EWeaponClass@@@1@@Z	00465c54	0	pickany
+00475e92	1	?resize@?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAEXIABVC2DVector@@@Z	00475dfa	0	pickany
+00476123	1	?resize@?$vector@VCQuickAccessItemButtonGuiDef@@V?$allocator@VCQuickAccessItemButtonGuiDef@@@std@@@std@@QAEXIABVCQuickAccessItemButtonGuiDef@@@Z	00476024	0	pickany
+0047662a	1	?resize@?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@QAEXIABVCAbilityButtonGuiDef@@@Z	0047652b	0	pickany
+00476acf	1	?resize@?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@QAEXIABVCLensFlareElementDef@@@Z	004769d0	0	pickany
+00477dea	1	?resize@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAEXIABVCEngineLocalDetailObjectDef@@@Z	00477cd2	0	pickany
+00478be4	1	?resize@?$vector@VCAbilityTrackLevelDef@@V?$allocator@VCAbilityTrackLevelDef@@@std@@@std@@QAEXIABVCAbilityTrackLevelDef@@@Z	00478ae5	0	pickany
+00479595	1	?resize@?$vector@VCOpinionDeedReactionDef@@V?$allocator@VCOpinionDeedReactionDef@@@std@@@std@@QAEXIABVCOpinionDeedReactionDef@@@Z	00479466	0	pickany
+004799c6	1	?resize@?$vector@VCEngineLocalDetailLayerDef@@V?$allocator@VCEngineLocalDetailLayerDef@@@std@@@std@@QAEXIABVCEngineLocalDetailLayerDef@@@Z	004798ab	0	pickany
+00479ff3	1	?resize@?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@QAEXIABVCAppearanceModifierScalingDef@@@Z	00479ef4	0	pickany
+0047a407	1	?resize@?$vector@VCAbilityTrackDef@@V?$allocator@VCAbilityTrackDef@@@std@@@std@@QAEXIABVCAbilityTrackDef@@@Z	0047a2f5	0	pickany
+004f9d32	1	?resize@?$vector@VCCardPositionsDef@@V?$allocator@VCCardPositionsDef@@@std@@@std@@QAEXIABVCCardPositionsDef@@@Z	004f9c07	0	pickany
+004fa1a8	1	?resize@?$vector@VCCardDef@@V?$allocator@VCCardDef@@@std@@@std@@QAEXIABVCCardDef@@@Z	004fa0a9	0	pickany
+0042b312	1	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	005e4be0	0	pickany
+0042b040	1	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	005e4be0	0	pickany
+005bade1	1	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	005e4be0	0	pickany
+0042d5b1	1	??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAEAAVCUIState@NUISystem@@ABK@Z	005e4be0	0	pickany
+0065e29d	1	??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@PAVCVillageTaskHorn@@@Z	0065be6c	0	pickany
+0065edba	1	??0CVillageTaskHorn@@QAE@AAVCThing@@@Z	0065be6c	0	pickany
+007525c0	1	?GetTurningAnglesAndCheckForTurningBody@CTCLook@@AAE_NAAM0@Z	00752e00	0	pickany
+0076b760	1	?_M_insert_overflow@?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@IAEXPAUAttackParticleAndEndPoints@@ABU3@ABU__false_type@2@I_N@Z	007677e0	0	pickany
+0076c470	1	?_M_insert_overflow@?$vector@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@V?$allocator@V?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@@2@@std@@IAEXPAV?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	007677e0	0	pickany
+0076c590	1	?_M_insert_overflow@?$vector@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@V?$allocator@V?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@@2@@std@@IAEXPAV?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z	007677e0	1	pickany
+0042b1a6	1	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	0076eb00	0	pickany
+004676ef	1	?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z	0076eb00	0	pickany
+00440f00	1	?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z	0076eb00	0	pickany
+0065f604	1	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	00780d80	0	pickany
+006a7270	1	??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z	00803d60	0	pickany
+0080a550	1	??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_IsInFOV@@VCThingFilter_IsNot@@V?$unary_negate@VCThingFilter_In2DRange@@@std@@V?$unary_negate@VCThingFilter_ShotFiredByThing@?A0xfd20d696@@@4@VCThingFilter_ViableProjectileAimingTarget@?A0xfd20d696@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind5@VCThingFilter_IsInFOV@@VCThingFilter_IsNot@@V?$unary_negate@VCThingFilter_In2DRange@@@std@@V?$unary_negate@VCThingFilter_ShotFiredByThing@?A0xfd20d696@@@4@VCThingFilter_ViableProjectileAimingTarget@?A0xfd20d696@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00803d60	0	pickany
+00807f20	1	??$__find_if@PAVCTargetPoint@NPlayerTargeting@@VCTargetPointIsNotEnemyOfThing@?A0xbc626270@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@0VCTargetPointIsNotEnemyOfThing@?A0xbc626270@@ABUrandom_access_iterator_tag@0@@Z	00804020	0	pickany
+0080a850	1	??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind2@VCThingFilter_IsInFOV@@V?$unary_negate@VCThingFilter_IsTargetableBehind@?A0xbc626270@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind2@VCThingFilter_IsInFOV@@V?$unary_negate@VCThingFilter_IsTargetableBehind@?A0xbc626270@@@std@@@@@Z	00804020	0	pickany
+00807b70	1	??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@VCTargetPointIsNotEnemyOfThing@?A0xbc626270@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00VCTargetPointIsNotEnemyOfThing@?A0xbc626270@@@Z	00804020	0	pickany
+0080a910	1	??$__find_if@PAVCTargetPoint@NPlayerTargeting@@V?$CFilter_Bind2@VCThingFilter_IsInFOV@@V?$unary_negate@VCThingFilter_IsTargetableBehind@?A0xbc626270@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@0V?$CFilter_Bind2@VCThingFilter_IsInFOV@@V?$unary_negate@VCThingFilter_IsTargetableBehind@?A0xbc626270@@@std@@@@ABUrandom_access_iterator_tag@0@@Z	00804020	0	pickany
+00807a90	1	??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xbc626270@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xbc626270@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xbc626270@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xbc626270@@@std@@@@@Z	00804020	0	pickany
+00807c30	1	??$__find_if@PAVCTargetPoint@NPlayerTargeting@@V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xbc626270@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xbc626270@@@std@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@0V?$CFilter_Bind3@VCThingFilter_IsInFOV@@VCTargetPointFilter_FurtherFromPosThan@?A0xbc626270@@V?$unary_negate@VCTargetPointFilter_IsLockedTarget@?A0xbc626270@@@std@@@@ABUrandom_access_iterator_tag@0@@Z	00804020	0	pickany
+008092d0	1	?_M_insert_overflow@?$vector@VCTargetPoint@NPlayerTargeting@@V?$allocator@VCTargetPoint@NPlayerTargeting@@@std@@@std@@IAEXPAVCTargetPoint@NPlayerTargeting@@ABV34@ABU__false_type@2@I_N@Z	00804020	0	pickany
+00809a70	1	??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind5@VCThingFilter_IsNot@@VCThingFilter_IsTargetable@@VCThingFilter_IsInTargetingRangeAndFOV@?A0xbc626270@@VCThingFilter_IsInSameVolumeContextAsThing@@VCThingFilter_IsValidTargetForPlayerCreature@4@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind5@VCThingFilter_IsNot@@VCThingFilter_IsTargetable@@VCThingFilter_IsInTargetingRangeAndFOV@?A0xbc626270@@VCThingFilter_IsInSameVolumeContextAsThing@@VCThingFilter_IsValidTargetForPlayerCreature@4@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	00804020	0	pickany
+00809d60	1	??$remove_copy_if@PAVCTargetPoint@NPlayerTargeting@@PAV12@V?$CFilter_Bind2@VCThingFilter_IsInFOV@@VCTargetPointFilter_IsStealableStockItem@?A0xbc626270@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@00V?$CFilter_Bind2@VCThingFilter_IsInFOV@@VCTargetPointFilter_IsStealableStockItem@?A0xbc626270@@@@@Z	00804020	0	pickany
+00809f80	1	??$__find_if@PAVCTargetPoint@NPlayerTargeting@@V?$CFilter_Bind2@VCThingFilter_IsInFOV@@VCTargetPointFilter_IsStealableStockItem@?A0xbc626270@@@@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@0V?$CFilter_Bind2@VCThingFilter_IsInFOV@@VCTargetPointFilter_IsStealableStockItem@?A0xbc626270@@@@ABUrandom_access_iterator_tag@0@@Z	00804020	0	pickany
+00567d00	1	??$_M_range_initialize@PAD@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXPAD0ABUforward_iterator_tag@1@@Z	0083f650	1	pickany
+00569330	1	?substr@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z	0083f650	1	pickany
+0083ee10	1	?StartsWith@LHNetworkLib@@YI_NABV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z	0083f650	1	strong
+0086e7c0	1	?push_back@?$vector@VCMeshTextureSet@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMeshTextureSet@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@QAEXABVCMeshTextureSet@CMorphSet@CRandomAppearanceMorph@@@Z	0086be40	0	pickany
+00669d30	1	?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z	008ddad0	1	pickany
+004ac940	1	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThing@@@@ABV3@ABU__false_type@2@I_N@Z	008ddad0	0	pickany
+008fc430	1	??$UpdateScan@$$CBVCWorldMap@@@CPhysicsForceModelBase@NCameraModes@@IAEXAAVCPhysicsCollisionPointsObject@1@ABVCWorldMap@@ABVC3DVector@@JM@Z	008fac30	0	pickany
+0090e4a0	1	??$FindMostRecentMessage@V?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNavLineOfSightToThing@@@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind4@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsValidGossipee@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNavLineOfSightToThing@@@@@@@Z	0090d030	0	pickany
+00404440	1	?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ	009c4440	1	pickany
+00a70490	1	??$swap@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@std@@YIXAAU?$pair@VCCharString@@VC3DMeshVolume@@@0@0@Z	00a71910	1	pickany
+00a5e900	1	?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z	00a91180	0	strong
+00a93a60	1	?DeleteData@?$CCountedPointer@VC3DClothPrimitive@@@@SIXPAX@Z	00a91640	0	pickany
+00a96a90	1	?erase@?$vector@VC3DVertex2@@V?$allocator@VC3DVertex2@@@std@@@std@@QAEPAVC3DVertex2@@PAV3@0@Z	00a91640	0	pickany
+00a97040	1	?_M_fill_insert@?$vector@VC3DVertex2@@V?$allocator@VC3DVertex2@@@std@@@std@@QAEXPAVC3DVertex2@@IABV3@@Z	00a91640	0	pickany
+00a982d0	1	?DeleteData@?$CCountedPointer@VC3DGroup2@@@@SIXPAX@Z	00a91640	0	pickany
+0075b8d0	1	??4?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEAAV01@ABV01@@Z	00b21e90	0	pickany
+00b43870	1	?PeekThemeBlend@CEngineMap@@QBEEJJJ@Z	00b40bd0	0	pickany
+00b49df0	1	?_M_insert_overflow@?$vector@PAUCManagerLocalLight@CEngineLightingManager@@V?$allocator@PAUCManagerLocalLight@CEngineLightingManager@@@std@@@std@@IAEXPAPAUCManagerLocalLight@CEngineLightingManager@@ABQAU34@ABU__true_type@2@I_N@Z	00b47bc0	1	pickany
+00cdbfb0	1	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	00ce7670	1	pickany
+008abd10	1	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	00d45060	1	pickany
+004ab130	1	?IsAlive@CScriptThing@@UBE_NXZ	00e2ff00	0	pickany
+008adf10	1	??A?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAEAA_NABVCCharString@@@Z	00ee8870	0	pickany
+0040f020	1	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	00580da7	0	pickany
+00428905	1	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z	005958f5	0	pickany
+005e1420	1	?_M_insert_overflow@?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAEXPAPBVCAnimationEntry@@ABQBV3@ABU__true_type@2@I_N@Z	005dcb00	0	pickany
+0042b0a2	1	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	00667b30	0	pickany
+0071fa60	1	??$__copy@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@PAV1@H@std@@YIPAV?$CDefPointer@$$CBVCThingBaseDef@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0071de20	0	pickany
+00721f70	1	??$__copy@PBV?$CDefPointer@$$CBVCThingBaseDef@@@@V?$back_insert_iterator@V?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@H@std@@YI?AV?$back_insert_iterator@V?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@0@PBV?$CDefPointer@$$CBVCThingBaseDef@@@@0V10@ABUrandom_access_iterator_tag@0@PAH@Z	0071de20	0	pickany
+0086fc00	1	?_M_insert_overflow@?$vector@U?$pair@JVCLongMapValue8@@@std@@@std@@QAEXPAU?$pair@JVCLongMapValue8@@@2@ABU32@ABU__false_type@2@I_N@Z	0086f600	0	pickany
+00882ef0	1	??$__distance@U?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Nonconst_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@@std@@YAHABU?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Nonconst_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@0@0ABUinput_iterator_tag@0@@Z	00884710	0	pickany
+00464ace	1	?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z	009ccef0	0	pickany
+00429950	1	??M?$CBasicString@D@@QBE_NABV0@@Z	00a41b60	0	pickany
+00ad76e0	1	??$__uninitialized_fill_n@PAVCOptimisedSubMesh@QuadricOptimiserInternals@@IV12@@std@@YIPAVCOptimisedSubMesh@QuadricOptimiserInternals@@PAV12@IABV12@ABU__false_type@0@@Z	00ad83d0	0	pickany
+00ad75f0	1	??$__uninitialized_copy@PAVCOptimisedSubMesh@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedSubMesh@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z	00ad83d0	0	pickany
+00ad7dc0	1	??$__destroy_aux@PAVCOptimisedSubMesh@QuadricOptimiserInternals@@@std@@YIXPAVCOptimisedSubMesh@QuadricOptimiserInternals@@0ABU__false_type@0@@Z	00ad83d0	0	pickany
+00bf5db0	1	?_M_insert_overflow@?$CRetailVector@PAVCWaterPatchMesh@@@@QAEXPAPAVCWaterPatchMesh@@ABQAV2@ABU__true_type@@I_N@Z	00bf44a0	0	pickany
+00bf5fe0	1	?push_back@CBoxedWaterPatchVector@@QAEXABUSBoxedWaterPatch@@@Z	00bf44a0	0	strong
+00c20720	1	?CheckState@CSoundEvent@@QAEXJ@Z	00c20df0	0	strong
+00cd20ce	1	??0?$pair@$$CBHVCCharString@@@std@@QAE@ABHABVCCharString@@@Z	00cd3a16	0	pickany
+00cd36c2	1	?insert@?$map@HVCCharString@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHVCCharString@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBHVCCharString@@@std@@@2@@2@U32@ABU?$pair@$$CBHVCCharString@@@2@@Z	00cd3a16	0	pickany
+009ac700	1	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	00d58490	0	pickany
+00cdd4c0	1	??1CSpawnedFuncBase@@UAE@XZ	00e9e090	0	pickany

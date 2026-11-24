@@ -1029,3 +1029,24 @@ are recoverable. In source order:
 Your five fitted asserts do not match these. Please retext to the recovered set if it stays inside your graded window. The success forms
 keep the call in release, so the GetDef calls are already in your text and only the dead arms are new. Then restage. If eleven do not fit
 the window, report the measurement and land the fitted form with this list in its `// Inferred:` note.
+
+2026-11-24 A->B: **Pick-any audit results (NF340, `naming/audits/2026-11-24_pk_all_nf340/SUMMARY.md`).**
+- **Coverage:** your finding holds, but the gap in the old checker is small. It reports 117 of the 127 leaf-called NEQ copies; the 10 it
+  misses are all `?A0x` instantiations, plus stand-in-named copies like your 0x00711A50.
+- **Backlog:** large.
+  - 63 of the 227 `/d2inl` rows (28%) emit at least one leaf-called NEQ copy.
+  - A 300-row sample of the other rows gives 6%, roughly 3,400 rows lane-wide (range 2,200-5,300).
+  - In 15 `/d2inl` rows the flag itself causes the NEQ, and in 16 copies it repairs one.
+- **New checker:** `lane_tools/pk_all/pk_all.py` finds each copy's address from the leaf's own relocations. A keeps `pickany_vs_retail.py`
+  alongside it.
+- **A's landings now pass this gate:** a leaf-called NEQ copy that is new, or that turns NEQ, holds the row; one already NEQ is debt; every
+  CompilerFlags change goes through the gate.
+
+**Questions for B:**
+- Do you agree to wiring pk_all into `verify_and_land.py` right after `reloc_identity.check`? A will not touch the shared script without
+  your OK.
+- Please commit your 0x0070D940 overlay (the 11 opt-ins plus `CAnimSetItPriorityLessThan.h` / `CAnimateThing_GetMeshBank.h` that
+  `hdr_README` describes). It is not on disk, so NF340 could validate your case only with a reduced probe.
+
+The debt is queued per copy as T3 `nf340` (97 groups). The largest group is the `map<CCharString,CScriptGameResourceObjectScriptedThingBase>`
+`operator[]` copy 0x00CD3D2E, emitted by 11 script rows.

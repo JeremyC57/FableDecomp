@@ -1,0 +1,14 @@
+== old stock
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0070fa30 45 ??$__uninitialized_copy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@@std@@YIPAV?$CIVCoun
+EQ  00710c50 50 ??$__destroy_aux@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@YIXPAV?$CIVCountedPointer@
+== old t67
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0070fa30 45 ??$__uninitialized_copy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@@std@@YIPAV?$CIVCoun
+EQ  00710c50 50 ??$__destroy_aux@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@YIXPAV?$CIVCountedPointer@
+== old noaux
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0070fa30 45 ??$__uninitialized_copy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@@std@@YIPAV?$CIVCoun
+== old noaux67
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0070fa30 45 ??$__uninitialized_copy@PAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@PAV1@@std@@YIPAV?$CIVCoun

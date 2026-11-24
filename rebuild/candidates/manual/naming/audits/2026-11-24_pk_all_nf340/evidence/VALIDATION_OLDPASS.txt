@@ -1,0 +1,59 @@
+== row 0040cec0 flags /O2 /Oy /W3 grade RELOCATION_MATCH leaf ??0CUserProfileManager@@QAE@XZ
+  old EQ  00405c10  -> pk_all EQ src=b leaf=n ??2@YAPAXIPAX@Z
+  old EQ  004065d0  -> pk_all EQ src=b leaf=n ?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  old EQ  0040ddc0  -> pk_all EQ src=a,a2,b,c leaf=y ??$__uninitialized_copy@PAVCDisplayModeDesc@@PAV1@@std@@YIPAVCDisplayModeDesc@@P
+  old EQ  0040de00  -> pk_all EQ src=a2,b leaf=n ??$__uninitialized_fill_n@PAVCDisplayModeDesc@@IV1@@std@@YIPAVCDisplayModeDesc@@
+  old EQ  0040e130  -> pk_all EQ src=a2,b leaf=n ?_M_destroy_nodes@?$_Deque_base@W4ETutorialCategory@@V?$allocator@W4ETutorialCat
+  old EQ  0040f4a0  -> pk_all EQ src=a,b leaf=y ?_M_initialize_map@?$_Deque_base@W4ETutorialCategory@@V?$allocator@W4ETutorialCa
+  old EQ  00410890  -> pk_all EQ src=a2,b leaf=n ??$GetDef@VCConfigOptionsDefaultsDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointe
+  old EQ  00410d80  -> pk_all EQ src=a2,b leaf=n ??$__destroy_aux@U?$_Deque_iterator@W4ETutorialCategory@@U?$_Nonconst_traits@W4E
+  old EQ  004083e0  -> pk_all EQ src=a,b leaf=y ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConf
+  old EQ  004124c0  -> pk_all EQ src=a,b leaf=y ?_M_insert_overflow@?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@
+  old EQ  00412210  -> pk_all EQ src=b,c leaf=n ??1?$deque@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@QA
+  old EQ  00412130  -> pk_all EQ src=b leaf=n ??1?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@XZ
+  old lines reproduced: 12 / 12
+  extra (pk_all only): EQ_AMBIG  EQ               0040ec50 src=c leaf=n size=30 cat=30 ??_GCWideString@@QAEPAXI@Z
+  extra (pk_all only): EQ_AMBIG  EQ               0043dd40 src=c leaf=n size=30 cat=30 ??_GCWideString@@QAEPAXI@Z
+  extra (pk_all only): EQ_AMBIG  EQ               0043f960 src=c leaf=n size=30 cat=30 ??_GCWideString@@QAEPAXI@Z
+  extra (pk_all only): EQ_AMBIG  NEQ              004852d1 src=c leaf=n size=30 cat=28 ??_GCWideString@@QAEPAXI@Z
+  extra (pk_all only): EQ_AMBIG  NEQ              005d8135 src=c leaf=n size=30 cat=28 ??_GCWideString@@QAEPAXI@Z
+  extra (pk_all only): EQ_AMBIG  EQ               00a606f0 src=c leaf=n size=30 cat=30 ??_GCWideString@@QAEPAXI@Z
+== row 00411db0 flags /O2 /Oy /W3 grade RELOCATION_MATCH leaf ?_M_fill_insert@?$vector@USCameraTagEntry@@@std@@QAEXPAUSCameraTagEntry@@IABU3@@Z
+  old EQ  00405c10  -> pk_all EQ src=b leaf=n ??2@YAPAXIPAX@Z
+  old EQ  0040e9a0  -> pk_all EQ src=a,b leaf=y ??$fill@PAUSCameraTagEntry@@U1@@std@@YIXPAUSCameraTagEntry@@0ABU1@@Z
+  old EQ  0040eac0  -> pk_all EQ src=a,a2,b leaf=y ??$__uninitialized_fill_n@PAUSCameraTagEntry@@IU1@@std@@YIPAUSCameraTagEntry@@PA
+  old EQ  0040eb60  -> pk_all EQ src=a,b leaf=y ??$__copy_backward@PAUSCameraTagEntry@@PAU1@H@std@@YIPAUSCameraTagEntry@@PAU1@00
+  old EQ  0040ff80  -> pk_all EQ src=a,a2,b leaf=y ??$__uninitialized_copy@PAUSCameraTagEntry@@PAU1@@std@@YIPAUSCameraTagEntry@@PAU
+  old EQ  004117c0  -> pk_all EQ src=a,b,c leaf=y ?_M_insert_overflow@?$vector@USCameraTagEntry@@@std@@QAEXPAUSCameraTagEntry@@ABU
+  old lines reproduced: 6 / 6
+== row 0044a1a0 flags /O2 /Oy /W3 grade RELOCATION_MATCH leaf ?CreatePlayer@CPlayerManager@@AAEXJ@Z
+  old EQ  00405c10  -> pk_all EQ src=b leaf=n ??2@YAPAXIPAX@Z
+  old EQ  0044be80  -> pk_all EQ src=a,b leaf=y ?_M_insert_overflow@?$vector@PAVCPlayer@@V?$allocator@PAVCPlayer@@@std@@@std@@IA
+  old lines reproduced: 2 / 2
+== row 004c9840 flags /O2 /Oy /W3 grade RELOCATION_MATCH leaf ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z
+  old EQ  00405c10  -> pk_all EQ src=b leaf=n ??2@YAPAXIPAX@Z
+  old EQ  0041c780  -> pk_all EQ src=b leaf=n ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z
+  old EQ  004a9730  -> pk_all EQ src=b,c leaf=n ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z
+  old EQ  004a96f0  -> pk_all EQ src=b,c leaf=n ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z
+  old EQ  0040f020  -> pk_all EQ src=a,b leaf=y ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@
+  old EQ  004ccc80  -> pk_all EQ src=a,b leaf=y ?insert@?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@PAVCTCBase@@@std@@V?$al
+  old lines reproduced: 6 / 6
+  extra (pk_all only): EQ_AMBIG  EQ               006a2ba0 src=c leaf=n size=37 cat=37 ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z
+  extra (pk_all only): EQ_AMBIG  EQ               0080dec0 src=c leaf=n size=37 cat=37 ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z
+  extra (pk_all only): EQ_AMBIG  EQ               0080e1a0 src=c leaf=n size=37 cat=37 ??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z
+  extra (pk_all only): EQ        ADDR_CONFLICT(EQ) 006804c0 src=c leaf=y size=60 cat=60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@
+== row 0093ae80 flags /O2 /Oy /W3 grade RELOCATION_MATCH leaf ?IsRunnable@CAIStateGroup_BanditSitRoundCampfire@@UAE_NXZ
+  old EQ  0040f020  -> pk_all EQ src=a,b leaf=y ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@
+  old EQ  00410de0  -> pk_all EQ src=b,c leaf=n ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  old EQ  004118c0  -> pk_all EQ src=b leaf=n ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z
+  old lines reproduced: 3 / 3
+  extra (pk_all only): EQ        EQ               0088e080 src=c leaf=n size=6 cat=6 ?GetConstantFPS@CMainGameComponent@@SIJXZ
+  extra (pk_all only): EQ        ADDR_CONFLICT(EQ) 006804c0 src=c leaf=y size=60 cat=60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@
+== row 00c9c870 flags /O2 /Oy /W3 grade RELOCATION_MATCH leaf @mdct_forward@12
+  old EQ  00c9c620  -> pk_all EQ src=b leaf=n @mdct_backward@12
+  old lines reproduced: 1 / 1
+  extra (pk_all only): NEQ       NEQ              00c9c000 src=a2 leaf=n size=497 cat=475 _mdct_butterfly_32
+  extra (pk_all only): EQ        EQ               00c9c1e0 src=a2 leaf=n size=259 cat=259 _mdct_butterfly_first
+  extra (pk_all only): EQ        EQ               00c9c2f0 src=a2 leaf=n size=269 cat=269 _mdct_butterfly_generic@16
+  extra (pk_all only): EQ        EQ               00c9c400 src=a,a2 leaf=y size=185 cat=185 _mdct_butterflies@12
+  extra (pk_all only): EQ        EQ               00c9c500 src=a,a2 leaf=y size=282 cat=282 _mdct_bitreverse
