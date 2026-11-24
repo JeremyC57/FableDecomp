@@ -31,3 +31,6 @@ source by retail having no out-of-line copy (FableWin has debug copies, Ego_r's 
 template text. The sea row matches with four different loop-tail spellings, so its oracle does not fix the text; the water twin (DIFFER
 2349v2349, 4 hunks, progress/00be4660/) so far gets close only WITHOUT the `continue` the staged sea text uses. When the shared text is
 settled, regenerate the sea row's source, test, payload, vland log and pick-any check from it.
+
+## Landed by Account A (2026-11-24, batches/2026-11-24_landing_acctB_b24)
+0x012133C0 (at 8 bytes, as its sibling funclets; the `__ehhandler` thunk stays a manifest-gaps line), 0x00407A70, 0x00407BA0. Still staged: GFMain (under repair) and 0x00BE4FE0 (held for the shared template).
