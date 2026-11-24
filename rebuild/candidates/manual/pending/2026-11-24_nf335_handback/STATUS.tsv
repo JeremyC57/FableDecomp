@@ -1,0 +1,82 @@
+address	status	pdb_spelling	reason
+0042daa0	skipped-port	?GetPSubDefInfoMap@CDefClassBase@@UAEPAV?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@XZ	signature: template type (T3)
+0045c549	skipped-port	?Copy@CSoundThemeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045d2f7	skipped-port	?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z	port: a Copy thunk like the 31 (the flat self takes src in edx; the member takes it on the stack, and retail is a 5-byte jmp to the class's implicit operator=). The tool's identity hit is the operator= row's scaffolding member Copy(const CParentDefClassBase*) (QAE), a different symbol from the PDB UAE...PBVCDefClassBase member, so not a duplicate-definition unit; that scaffolding is a made-up Copy spelling to retire with the port
+0045d500	skipped-port	?Copy@CCameraManagerDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045dd00	skipped-port	?Copy@COpinionReactionMaskDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045e182	skipped-port	?Copy@COpinionDeedMaskDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045e555	skipped-port	?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z	port: a Copy thunk like the 31 (the flat self takes src in edx; the member takes it on the stack, and retail is a 5-byte jmp to the class's implicit operator=). The tool's identity hit is the operator= row's scaffolding member Copy(const CParentDefClassBase*) (QAE), a different symbol from the PDB UAE...PBVCDefClassBase member, so not a duplicate-definition unit; that scaffolding is a made-up Copy spelling to retire with the port
+0045e65b	skipped-port	?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z	params: the edx parameter edx is used
+0045f630	skipped-port	?Copy@CSpecialAbilitiesBattleChargeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045f711	skipped-port	?Copy@CSpecialAbilitiesMultiStrikeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045f7c2	skipped-port	?Copy@CSpecialAbilitiesMultiArrowDef@@UAEXPBVCDefClassBase@@@Z	params: the edx parameter edx is used
+0045f84f	skipped-port	?Copy@CSpecialAbilitiesBerserkDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045fabc	skipped-port	?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0045fd4e	skipped-port	?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z	params: the edx parameter edx is used
+004600c6	skipped-port	?Copy@CSpecialAbilitiesDrainLifeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0046012c	skipped-port	?Copy@CSpecialAbilitiesHealLifeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00460180	skipped-port	?Copy@CSpecialAbilitiesGhostSwordDef@@UAEXPBVCDefClassBase@@@Z	params: the edx parameter edx is used
+004601e5	skipped-port	?Copy@CSpecialAbilitiesTurncoatSpellDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00460452	skipped-port	?Copy@CSpecialAbilitiesSummonSpellDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004604ca	skipped-port	?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z	port: a Copy thunk like the 31 (the flat self takes src in edx; the member takes it on the stack, and retail is a 5-byte jmp to the class's implicit operator=). The tool's identity hit is the operator= row's scaffolding member Copy(const CParentDefClassBase*) (QAE), a different symbol from the PDB UAE...PBVCDefClassBase member, so not a duplicate-definition unit; that scaffolding is a made-up Copy spelling to retire with the port
+00460518	skipped-port	?Copy@CSpecialAbilitiesElectrocutedEffectDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00460584	skipped-port	?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004605e0	skipped-port	?Copy@CSpecialAbilitiesThunderLightningStormDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0046133f	skipped-port	?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00461d4b	skipped-port	?Copy@CCombatSequenceDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00461f77	skipped-port	?Copy@CHeroCombatDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0046244c	skipped-port	?Copy@CMeleeCombatAbilityDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004625f8	skipped-port	?Copy@CMeleeCombatKnockdownEffects@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004628cb	skipped-port	?Copy@CPlayerMovementDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004629f6	skipped-port	?Copy@CEngineThemeDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00462b10	skipped-port	?Copy@CBrainDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00462e28	skipped-port	?Copy@CPlayerInventoryDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00463b9d	skipped-port	?Copy@CEntitySoundDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004644fa	done	?Copy@CThingSwitchDef@@UAEXPBVCDefClassBase@@@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route local]
+00464531	skipped-port	?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00465eae	skipped-port	?Copy@CGlobalDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0046f49f	skipped-held	?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z	held (unit): 0x0046F43E's operator= row defines the PDB symbol itself (virtual CAbilityButtonGuiDef::Copy(const CDefClassBase*), its emitter of the implicit operator=): moving this self would make a second strong definition; the two land as one unit
+0046f4eb	skipped-port	?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+0046f77c	skipped-port	?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004717c2	skipped-port	?Copy@CAppearanceDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+00471a72	skipped-port	?Copy@COpinionDeedEffectsDef@@UAEXPBVCDefClassBase@@@Z	params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+004ae890	done	?DrawGetProceduralTexture@CWorld@@UBEPBVCProceduralTexture@@XZ	batches/b1: objcheck equal but .drectve +libcp (NF318 Q1), MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route switch]
+004dffa5	done	?Copy@CVillageMemberDef@@UAEXPBVCDefClassBase@@@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+004e00a3	skipped-port	?Copy@CReadableDef@@UAEXPBVCDefClassBase@@@Z	model: the local class already declares Copy
+004e01a7	skipped-port	?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z	model: the local class already declares Copy
+004e01c0	done	?Copy@CWifeDef@@UAEXPBVCDefClassBase@@@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route local]
+004e064e	skipped-port	?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z	port (read from the source, not compiled): needs a new add-only Copy declaration in engine/CEnemyDef.h's FABLE_RETAIL_CENEMYDEF model, and the row models CDefClassBase as a local stand-in deriving from CEnemyDef, a second CDefClassBase beside the header chain's; the body needs a port onto CDefClassBase.h with the opt-in
+004e0ca7	skipped-port	?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z	model: virtual target, local model has no leading vptr slot
+004e0e0a	skipped-port	?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z	model: virtual target, local model has a base clause
+004e0f02	skipped-port	?Copy@CTavernDef@@UAEXPBVCDefClassBase@@@Z	model: engine/CTavernDef.h declares Copy only under #if FABLE_RETAIL_BED_USE_PASS28 (no landed / non-_PASS switch)
+004e0fed	skipped-port	?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z	port (read from the source, not compiled): needs a new add-only Copy declaration in engine/CGoldDef.h's FABLE_RETAIL_CGOLDDEF model, and the row models CDefClassBase locally (pad 0x2c + operator=) plus a CGoldDef_Methods stand-in; the body needs a port onto CDefClassBase.h with the opt-in
+004e14fd	skipped-port	?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z	model: virtual target, local model has a base clause
+004e187e	done	?Copy@CCameraCollisionDef@@UAEXPBVCDefClassBase@@@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+004eb6c8	skipped-port	?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z	outside the NF324 Q2 ruling: its landed test never calls the row and the flat self is the bare name Copy, so the unit guard (other landed files name Copy) cannot be cleared by a test move; needs a mangled-symbol census of the ?Copy@@YI... binders
+00697700	done	?GetControlAngleXY@CGameCameraManager@@UBEMXZ	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]
+006a40b0	done	?Update@CInputProcessJumpingAndRolling@@UAEXAAVCProcessedInput@@@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route local]
+006fedb0	skipped-port	?LogReaction@CReactionFrequencyTraits_PeriodicFrequency@@UAEXABVCThingAICreature@@_N@Z	model: engine/CReactionFrequencyTraits_PeriodicFrequency.h declares LogReaction only under #if FABLE_RETAIL_REACTIONFREQUENCYTRAITS_CLASS_CHAIN_PASS24 (no landed / non-_PASS switch)
+008421c0	skipped-port	?FinishAction@CCreatureAction_GetOutOfBed@@UAEXXZ	port: the switch model (FABLE_RETAIL_CCREATUREACTION_GETOUTOFBED, polymorphic on CCreatureActionBase) needs the retail base model and has no `interrupted` / `__vftable` members the flat body reads (clang: base asserts fail, no member named interrupted); the body needs a port onto the PDB members
+00890b50	done	?SetToKeepHeroAbilitiesDuringCutscenes@CGameScriptInterface@@UBEX_N@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+00892ea0	skipped-port	?ActivateMultipleQuests@CGameScriptInterface@@UBEXABV?$CArray@VCCharString@@@@@Z	signature: template type (T3)
+00892ee0	skipped-port	?ActivateMultipleQuestsWithoutLoadingResources@CGameScriptInterface@@UBEXABV?$CArray@VCCharString@@@@@Z	signature: template type (T3)
+00892f10	done	?DeactivateQuestLater@CGameScriptInterface@@UBEXABVCCharString@@K@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+00899d50	done	?ResetPlayerCreatureCombatMultiplier@CGameScriptInterface@@UBEXXZ	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+0089a070	done	?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+0089a0e0	done	?ChangeHeroMoralityDueToPicklock@CGameScriptInterface@@UBEXXZ	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route switch]
+0089a2d0	skipped-port	?IsEntityPickLockable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z	params: used parameter pScriptThing is `CScriptThing*`, the PDB type is `const class CScriptThing&` (alias pattern)
+008b93b0	skipped-port	?FinishAction@CCreatureAction_ForcePushOutOf@@UAEXXZ	port (read from the source, not compiled): engine/CCreatureAction_ForcePushOutOf.h has only the flat generated model (needs a generated _VIRTUAL_MODEL, NF329 / NF330 route), and the flat body calls through action->__vftable, which such a model does not have: a body port together with the model
+009fd970	done	?NotifyEntryRemoved@CGraphicDataBank@@MAEXK@Z	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]
+00a62f70	skipped-port	?CanMoveResource@CMovableResourceMemoryPool@@MAE_NPAXJ@Z	params: used parameter obj is `IMovableResource *`, the PDB type is `void*` (alias pattern)
+00b83d10	done	?PeekSceneFilterFlags@CEngineSimulationManager@@UBEKXZ	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route switch]
+00b8c780	done	?PeekSceneFilterFlags@CEngineBillboardGenerator@@UBEKXZ	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route switch]
+00b8fb40	done	?PeekSceneFilterFlags@CEnginePrimitiveTypeInfo@@UBEKXZ	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route switch]
+00b9cfa0	done	?SetPosition@CEngineInternalPrimitiveStaticMesh@@UAEXABVCEnginePrimitivePosition@@@Z	batches/b1: objcheck ALL_EQ, RELOCATION_MATCH PASS; moved test, control HEAD+moved test RELOCATION_MATCH LINK_FAIL [route local]
+00b9cfc0	done	?GetObjectTransform@CEngineInternalPrimitiveStaticMesh@@UBE_NAAVCMatrix3x4@@@Z	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]
+00b9d000	done	?GetTransformFrameStart@CEngineInternalPrimitiveStaticMesh@@UBE_NAAVCMatrix3x4@@@Z	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]
+00b9d070	done	?GetObjectTransform@CEngineInternalPrimitive2DStaticMesh@@UBE_NAAVCMatrix3x4@@@Z	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]
+00b9d090	skipped-port	?SetObjectTransform@CEngineInternalPrimitive2DStaticMesh@@UAE_NABVCMatrix3x4@@@Z	port: the switch model (FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DSTATICMESH) needs its base model prerequisites (asserts fail) and has no `transform` member the flat body reads; the body needs a port onto the PDB members
+00b9d0b0	skipped-port	?GetTransformFrameStart@CEngineInternalPrimitive2DStaticMesh@@UBE_NAAVCMatrix3x4@@@Z	port: the switch model (FABLE_RETAIL_CENGINEINTERNALPRIMITIVE2DSTATICMESH) needs its base model prerequisites (asserts fail) and has no `transform` member the flat body reads; the body needs a port onto the PDB members
+00ba7fe0	done	?GetMorphInfo@CEngineInternalPrimitiveMeshBase@@UAEPAVCEngineInternalPrimitiveMorphInfo@@XZ	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]
+00bacba0	skipped-port	?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveOcclusionGroup@@UAE_NAAVC3DBoundingBox@@@Z	port: engine/CEngineInternalPrimitiveOcclusionGroup.h declares its polymorphic model on one line (NF319 Q3: adding a declaration edits that line), and the member is not declared there
+00bbdd90	done	?Update@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEXABVCEnginePrimitive@@K@Z	batches/b1: objcheck ALL_EQ, MATCH PASS; moved test, control HEAD+moved test MATCH LINK_FAIL [route local]

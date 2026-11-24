@@ -1,0 +1,64 @@
+HIT 00b9d070 rebuild/src/compiled/00/a6/CEngineInternalPrimitive2DStaticMesh_GetObjectTransform_00a60860.cpp out-of-line body
+HIT 00b9d070 rebuild/src/compiled/00/a6/CEngineInternalPrimitive2DStaticMesh_GetObjectTransform_00a606c0.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_WatchForTermination_00d66880_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_WatchForTermination_00d62140_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/d6/NScriptCQGuildTrainingWoodsWillScript_WatchForTermination_00d68600_test.cpp in-class body in a local model
+HIT 004ae890 rebuild/tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/64/NPlayerGuiCDrawGuildSeal_Draw_0064a639_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/64/NPlayerGuiCDrawGuildSeal_Draw_0064a639_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/64/NPlayerGuiCDrawExperience_Draw_00646f67_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/64/NPlayerGuiCDrawAbilityButtons_DrawAbilityButton_0064ae80_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/7b/NThingShotCTCShotDefinitionDrainLife_InitMovement_007bd845_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/7b/NThingShotCTCShotDefinitionMultiArrow_InitMovement_007bcf7f_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/eb/NScriptCVParanoidWhispersScript_CheckForNecklaceAndQuit_00ebf1e0_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/d9/NScriptCQHobbeToothContestScript_WatchForTermination_00d9b2f0_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/ed/NScriptCVSwordInTheStoneScript_Main_00ed4d20_test.cpp in-class body in a local model
+HIT 004ae890 rebuild/tests/00/93/CAIStateGroupMinionKidGroupTag_EvadeTarget_00934410_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/da/NScriptCQMinionClifftopChaseScript_WatchForTermination_00da3f40_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/da/NScriptCQMinionCampScript_DoMission_00da0230_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/ce/NScriptCGameflowScript_Main_00ce7670_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/de/NScriptCQRansomVictimScript_WatchForTermination_00de14a0_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/de/NScriptCQSecretPassageScript_WatchForTermination_00ded0c0_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/e1/NScriptCQWizardBattleScript_WatchForTermination_00e1ad60_test.cpp in-class body in a local model
+HIT 004ae890 rebuild/tests/00/79/CTCBulletTime_FrameUpdate_0079c880_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/4a/CWorld_Load_004a1840_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/4a/CWorld_vectordeletingdestructor_004ae8a0_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/e9/NScriptCVHeroDuelScript_CleanUpHeroDuel_00e98fb0_test.cpp in-class body in a local model
+HIT 004ae890 rebuild/tests/00/95/CAIStateGroupHoverHornetQueen_Attack_0095bcf0_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/95/CAIStateGroupHoverHornetQueen_DiveBomb_0095b9e0_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/68/CTCCreatureOpinionOfHero_GetGreetDialogueGroupIndex_00683c10_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/81/CTCBoastingPodium_FrameUpdate_00813d00_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/57/CTCHeroStats_KickHeroToMostRecentSafeRegion_0057df85_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/90/CAIStateGroupBanditGossip_Update_0090e5d0_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/d0/NScriptCQBanditCampScript_WatchForTermination_00d01290_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/d0/NScriptCQBanditCampBossBattleScript_WatchForTermination_00d04260_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/e8/NScriptCVGhostGrannyNecklaceScript_Main_00e8b9c0_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/d1/NScriptCQBreakSiegeScript_WatchForTermination_00d1d7d0_test.cpp in-class body in a local model
+HIT 00b8c780 rebuild/tests/00/b8/CEngineBillboardGenerator_CEngineBillboardGenerator_00b8b630_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/85/NCameraModesCMoveOnCylinder_Update_0085c470_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/94/CAIStateGroupGoToPub_GetSeat_009482a0_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/65/NPlayerGuiCDrawQuestInfoCQuestInfoElementTick_DrawAt_00650e98_test.cpp out-of-line body
+HIT 004ae890 rebuild/tests/00/65/CTCVillage_CalculateSecuritySweepTasks_00659800_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/dc/CQOrchardFarmRaidScript_WatchForExternalScriptDeactivation_00dccf30_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_WatchForTermination_00dc3bd0_test.cpp in-class body in a local model
+HIT 004ae890 rebuild/tests/00/97/CAIStateGroupJackOfBladesStage2_SetupArena_00972f30_test.cpp out-of-line body
+HIT 00697700 rebuild/tests/00/97/CAIStateGroupJackOfBladesStage2_SetupArena_00972f30_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/f0/NScriptCQCinemaTestScript_WatchForTermination_00f01a40_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/e7/NScriptCVExposeMayorScript_PhaseFive_00e7a740_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/e7/NScriptCVExposeMayorScript_EndMission_00e7b050_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/e2/CQSGuardianTrophyDealerInfoScript_WaitForPieceOver_00e27ac0_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/df/NScriptCQSecretPassageScript_EndMission_00df0a50_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/db/NScriptCQNewOakValeIntroScript_DoMission_00dbde40_test.cpp in-class body in a local model
+HIT 009fd970 rebuild/tests/00/9f/CGraphicDataBank_InitFrames_009ff440_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/9f/CGraphicDataBank_NotifyEntryAdded_009ff590_test.cpp out-of-line body
+HIT 009fd970 rebuild/tests/00/9f/CGraphicDataBank_CGraphicDataBank_009febc0_test.cpp out-of-line body
+HIT 00b8fb40 rebuild/tests/00/b9/CEngineSceneGrid_RenderCellClippedAndCheckVisibility_00b92950_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/ea/NScriptCVLostTraderScript_WatchForQuestFailureState_00ea7460_test.cpp in-class body in a local model
+HIT 00892f10 rebuild/tests/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Main_00ea8130_test.cpp in-class body in a local model
+HIT 004ae890 rebuild/tests/00/91/CAIStateGroupKidHurtSelfRunToMother_Update_00915350_test.cpp out-of-line body
+HIT 00892f10 rebuild/tests/00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Main_00cdf800_test.cpp in-class body in a local model
+HIT 009fd970 rebuild/tests/00/b4/CEnginePrimitiveRenderer2D_Render_00b4a700_test.cpp out-of-line body
+HIT 00b8fb40 rebuild/tests/00/b4/CEnginePrimitiveRenderer2D_Render_00b4a700_test.cpp out-of-line body
+census hits 63 rows 22

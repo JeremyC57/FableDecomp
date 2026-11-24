@@ -41,11 +41,18 @@ void CQuestManager::AddPendingQuestToDeactivate(
     ++g_callCount;
 }
 
-void __fastcall CGameScriptInterface_DeactivateQuestLater(
-    const void* self,
-    void*,
-    const CCharString& questName,
-    unsigned long delay);
+// NF335 (NF324 Q2): the row now defines the PDB member CGameScriptInterface::DeactivateQuestLater
+// (?DeactivateQuestLater@CGameScriptInterface@@UBEXABVCCharString@@K@Z).
+// The test calls it qualified through a pointer to this declaration-only model, cast from the test's object:
+// no body and never constructed, so the test emits no vftable and no copy of the row's symbol.
+class CGameScriptInterface { public:
+    virtual void DeactivateQuestLater(const CCharString&, unsigned long) const;
+};
+
+// NF335: the landed test used a literal address here; `this` / the player reference now point at real, zero-initialised storage
+// (the row and the stub read none of it), so no member is called and no reference is bound through an invalid pointer.
+static unsigned long g_firstSelfStorage[4];
+static unsigned long g_secondSelfStorage[4];
 
 static int RunCase(
     const void* ignoredSelf,
@@ -59,11 +66,7 @@ static int RunCase(
     g_seenDelay = 0;
     g_callCount = 0;
 
-    CGameScriptInterface_DeactivateQuestLater(
-        ignoredSelf,
-        0,
-        questName,
-        delay);
+    ((CGameScriptInterface*)(ignoredSelf))->CGameScriptInterface::DeactivateQuestLater(questName, delay);
 
     return
         g_callCount == 1 &&
@@ -80,14 +83,14 @@ int main()
     CCharString secondQuest = { "Q_Second" };
 
     if (!RunCase(
-            (const void*)0x11111111,
+            (const void*)g_firstSelfStorage,
             firstManager,
             firstQuest,
             0))
         return 1;
 
     if (!RunCase(
-            (const void*)0xeeeeeeee,
+            (const void*)g_secondSelfStorage,
             secondManager,
             secondQuest,
             0xffffffff))

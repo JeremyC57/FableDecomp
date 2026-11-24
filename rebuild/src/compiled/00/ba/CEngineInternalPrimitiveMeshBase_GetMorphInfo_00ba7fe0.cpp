@@ -1,3 +1,4 @@
+// Leaf: ?GetMorphInfo@CEngineInternalPrimitiveMeshBase@@UAEPAVCEngineInternalPrimitiveMorphInfo@@XZ
 // CEngineInternalPrimitiveMeshBase::GetMorphInfo @ 0x00BA7FE0
 // retail 0x00ba7fe0 : 33 c0 c3  ->  xor eax,eax ; ret
 //
@@ -19,10 +20,11 @@ public:
     //   virtual CEngineInternalPrimitiveMorphInfo* GetMorphInfo();
     // but to guarantee __fastcall-identical bytes without a vtable emit we
     // expose the body as a free __fastcall accessor below.
+    virtual class CEngineInternalPrimitiveMorphInfo* GetMorphInfo();
 };
 
-CEngineInternalPrimitiveMorphInfo * __fastcall
-CEngineInternalPrimitiveMeshBase_GetMorphInfo(CEngineInternalPrimitiveMeshBase * /*this_ in ecx*/)
+class CEngineInternalPrimitiveMorphInfo* CEngineInternalPrimitiveMeshBase::GetMorphInfo()
 {
     return 0;   // xor eax,eax ; ret
 }
+// Flatten route (flatten_pilot v6, NF335): CEngineInternalPrimitiveMeshBase_GetMorphInfo -> CEngineInternalPrimitiveMeshBase::GetMorphInfo, the RTTI-placed PDB member; class model: the row's local class model.

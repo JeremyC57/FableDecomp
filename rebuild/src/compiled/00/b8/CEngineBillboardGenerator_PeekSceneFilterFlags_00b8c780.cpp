@@ -1,7 +1,9 @@
-// Leaf: ?CEngineBillboardGenerator_PeekSceneFilterFlags@@YIKPAVCEngineBillboardGenerator@@@Z
-class CEngineBillboardGenerator;
+// Leaf: ?PeekSceneFilterFlags@CEngineBillboardGenerator@@UBEKXZ
 
-unsigned long __fastcall CEngineBillboardGenerator_PeekSceneFilterFlags(CEngineBillboardGenerator* generator)
+#define FABLE_RETAIL_CENGINEBILLBOARDGENERATOR
+#include "engine/CEngineBillboardGenerator.h"
+unsigned long CEngineBillboardGenerator::PeekSceneFilterFlags() const
 {
     return 1;
 }
+// Flatten route (flatten_pilot v6, NF335): CEngineBillboardGenerator_PeekSceneFilterFlags -> CEngineBillboardGenerator::PeekSceneFilterFlags, the RTTI-placed PDB member; class model: engine/CEngineBillboardGenerator.h under FABLE_RETAIL_CENGINEBILLBOARDGENERATOR.

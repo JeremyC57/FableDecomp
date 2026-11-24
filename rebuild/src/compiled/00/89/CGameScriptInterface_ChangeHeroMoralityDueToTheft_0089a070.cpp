@@ -1,3 +1,5 @@
+// Leaf: ?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
@@ -58,9 +60,9 @@ class CGameDefinitionManager : public CDefinitionManagerOverlay { public: static
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
 
-void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToTheft(
-    const CGameScriptInterface* self)
+void CGameScriptInterface::ChangeHeroMoralityDueToTheft() const
 {
+    const CGameScriptInterface* self = this;
     CThingOverlay* pThing = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer())->GetPControlledCreature();
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&
@@ -79,3 +81,4 @@ void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToTheft(
         pStats->SetMorality(pStats->m_Morality + change);
     }
 }
+// Flatten route (flatten_pilot v6, NF335): CGameScriptInterface_ChangeHeroMoralityDueToTheft -> CGameScriptInterface::ChangeHeroMoralityDueToTheft, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

@@ -1,7 +1,9 @@
-class CEnginePrimitiveTypeInfo;
+// Leaf: ?PeekSceneFilterFlags@CEnginePrimitiveTypeInfo@@UBEKXZ
 
-unsigned long __fastcall CEnginePrimitiveTypeInfo_PeekSceneFilterFlags(CEnginePrimitiveTypeInfo* info)
+#define FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO
+#include "engine/CEnginePrimitiveTypeInfo.h"
+unsigned long CEnginePrimitiveTypeInfo::PeekSceneFilterFlags() const
 {
-    (void)info;
     return 3UL;
 }
+// Flatten route (flatten_pilot v6, NF335): CEnginePrimitiveTypeInfo_PeekSceneFilterFlags -> CEnginePrimitiveTypeInfo::PeekSceneFilterFlags, the RTTI-placed PDB member; class model: engine/CEnginePrimitiveTypeInfo.h under FABLE_RETAIL_CENGINEPRIMITIVETYPEINFO.

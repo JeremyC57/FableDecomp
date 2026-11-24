@@ -1,0 +1,23 @@
+address	verdict	notes
+004644fa	MANUAL	the test defines CThingSwitchDef:: members on its data model
+004ae890	OK	literal this -> static storage
+004dffa5	OK	data model renamed CVillageMemberDefLayout
+004e01c0	OK	data model renamed CWifeDefLayout
+004e187e	OK	
+00697700	OK	data model renamed CGameCameraManagerLayout
+006a40b0	OK	data model renamed CInputProcessJumpingAndRollingLayout
+00890b50	OK	
+00892f10	OK	
+00899d50	OK	data model renamed CGameScriptInterfaceLayout
+0089a070	OK	data model renamed CGameScriptInterfaceLayout
+0089a0e0	OK	data model renamed CGameScriptInterfaceLayout
+009fd970	OK	data model renamed CGraphicDataBankLayout
+00b83d10	OK	data model renamed CEngineSimulationManagerLayout
+00b8c780	OK	literal this -> static storage
+00b8fb40	OK	literal this -> static storage
+00b9cfa0	OK	data model renamed CEngineInternalPrimitiveStaticMeshLayout
+00b9cfc0	OK	data model renamed CEngineInternalPrimitiveStaticMeshLayout
+00b9d000	OK	data model renamed CEngineInternalPrimitiveStaticMeshLayout
+00b9d070	OK	data model renamed CEngineInternalPrimitive2DStaticMeshLayout
+00ba7fe0	OK	data model renamed CEngineInternalPrimitiveMeshBaseLayout
+00bbdd90	OK	data model renamed CEngineInternalPrimitiveParticleSpriteTrailGroupLayout

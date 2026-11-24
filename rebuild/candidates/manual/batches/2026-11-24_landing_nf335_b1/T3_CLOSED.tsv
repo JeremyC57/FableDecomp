@@ -1,0 +1,23 @@
+source	address	unit	reason
+nf324	0x004644FA	port	004644fa skipped-port ?Copy@CThingSwitchDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CThingSwitchDef_Copy
+nf324	0x004AE890	port	004ae890 skipped-port ?DrawGetProceduralTexture@CWorld@@UBEPBVCProceduralTexture@@XZ triage (-): unit: the row's own test calls CWorld_DrawGetProceduralTexture
+nf324	0x004DFFA5	port	004dffa5 skipped-port ?Copy@CVillageMemberDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CVillageMemberDef_Copy
+nf324	0x004E01C0	port	004e01c0 skipped-port ?Copy@CWifeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CWifeDef_Copy
+nf324	0x004E187E	port	004e187e skipped-port ?Copy@CCameraCollisionDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CCameraCollisionDef_Copy
+nf324	0x00697700	port	00697700 skipped-port ?GetControlAngleXY@CGameCameraManager@@UBEMXZ triage (-): unit: the row's own test calls GetControlAngleXY_CGameCameraManager
+nf324	0x006A40B0	port	006a40b0 skipped-port ?Update@CInputProcessJumpingAndRolling@@UAEXAAVCProcessedInput@@@Z triage (-): unit: the row's own test calls CInputProcessJumpingAndRolling_Update
+nf324	0x00890B50	port	00890b50 skipped-port ?SetToKeepHeroAbilitiesDuringCutscenes@CGameScriptInterface@@UBEX_N@Z triage (-): unit: the row's own test calls CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes
+nf324	0x00892F10	port	00892f10 skipped-port ?DeactivateQuestLater@CGameScriptInterface@@UBEXABVCCharString@@K@Z triage (-): unit: the row's own test calls CGameScriptInterface_DeactivateQuestLater
+nf324	0x00899D50	port	00899d50 skipped-port ?ResetPlayerCreatureCombatMultiplier@CGameScriptInterface@@UBEXXZ triage (-): unit: the row's own test calls CGameScriptInterface_ResetPlayerCreatureCombatMultiplier
+nf324	0x0089A070	port	0089a070 skipped-port ?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ triage (-): unit: the row's own test calls CGameScriptInterface_ChangeHeroMoralityDueToTheft
+nf324	0x0089A0E0	port	0089a0e0 skipped-port ?ChangeHeroMoralityDueToPicklock@CGameScriptInterface@@UBEXXZ triage (-): unit: the row's own test calls CGameScriptInterface_ChangeHeroMoralityDueToPicklock
+nf324	0x009FD970	port	009fd970 skipped-port ?NotifyEntryRemoved@CGraphicDataBank@@MAEXK@Z triage (-): unit: the row's own test calls CGraphicDataBank_NotifyEntryRemoved
+nf324	0x00B83D10	port	00b83d10 skipped-port ?PeekSceneFilterFlags@CEngineSimulationManager@@UBEKXZ triage (-): unit: the row's own test calls CEngineSimulationManager_PeekSceneFilterFlags
+nf324	0x00B8C780	port	00b8c780 skipped-port ?PeekSceneFilterFlags@CEngineBillboardGenerator@@UBEKXZ triage (-): unit: the row's own test calls CEngineBillboardGenerator_PeekSceneFilterFlags
+nf324	0x00B8FB40	port	00b8fb40 skipped-port ?PeekSceneFilterFlags@CEnginePrimitiveTypeInfo@@UBEKXZ triage (-): unit: the row's own test calls CEnginePrimitiveTypeInfo_PeekSceneFilterFlags
+nf324	0x00B9CFA0	port	00b9cfa0 skipped-port ?SetPosition@CEngineInternalPrimitiveStaticMesh@@UAEXABVCEnginePrimitivePosition@@@Z triage (-): unit: the row's own test calls CEngineInternalPrimitiveStaticMesh_SetPosition
+nf324	0x00B9CFC0	port	00b9cfc0 skipped-port ?GetObjectTransform@CEngineInternalPrimitiveStaticMesh@@UBE_NAAVCMatrix3x4@@@Z triage (-): unit: the row's own test calls CEngineInternalPrimitiveStaticMesh_GetObjectTransform
+nf324	0x00B9D000	port	00b9d000 skipped-port ?GetTransformFrameStart@CEngineInternalPrimitiveStaticMesh@@UBE_NAAVCMatrix3x4@@@Z triage (-): unit: the row's own test calls CEngineInternalPrimitiveStaticMesh_GetTransformFrameStart
+nf324	0x00B9D070	port	00b9d070 skipped-port ?GetObjectTransform@CEngineInternalPrimitive2DStaticMesh@@UBE_NAAVCMatrix3x4@@@Z triage (-): unit: the row's own test calls CEngineInternalPrimitive2DStaticMesh_GetObjectTransform
+nf324	0x00BA7FE0	port	00ba7fe0 skipped-port ?GetMorphInfo@CEngineInternalPrimitiveMeshBase@@UAEPAVCEngineInternalPrimitiveMorphInfo@@XZ triage (-): unit: the row's own test calls CEngineInternalPrimitiveMeshBase_GetMorphInfo
+nf324	0x00BBDD90	port	00bbdd90 skipped-port ?Update@CEngineInternalPrimitiveParticleSpriteTrailGroup@@UAEXABVCEnginePrimitive@@K@Z triage (-): unit: the row's own test calls CEngineInternalPrimitiveParticleSpriteTrailGroup_Update

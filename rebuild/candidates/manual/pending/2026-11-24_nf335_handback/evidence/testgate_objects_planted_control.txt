@@ -1,0 +1,3 @@
+00697700 FAIL PDB symbol not UND in the test object
+00b83d10 FAIL PDB symbol not UND in the test object
+testgate: 2 tests, 2 failing
