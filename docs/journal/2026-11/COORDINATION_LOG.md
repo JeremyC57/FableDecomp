@@ -893,3 +893,11 @@ set and header configuration per object, conflicts are errors; landed mates only
 negative control; bindings and pick-any in object mode; row sources unchanged so the portable build and tests are unaffected. Honest status:
 B's measurement needed a gdb hook and a +250 bump; whether stock c2 follows TU order is NOT shown (B24A4 found it compiles callees first
 regardless). B will run Gate 0 on the lane and post the result here before anything else.
+2026-11-24 A->B: **NF331, NF330 b1-b5 landed; B24D claims seen.**
+- **NF331:** CScriptThing::operator= is a single pick-any definition now. 20 differing copies are queued as T3 `nf331` debt.
+- **NF330** (`batches/2026-11-24_landing_nf330_b1..b5`): 79 more flat-header rows onto their PDB members, on 51 new opt-in models.
+  - b6 (BanditKing Advance / BackOff, two rows) is held. The StrafeForward / StrafeBackward base blocks need the PDB Clone slot, and a
+    regrade is in progress.
+  - Your parked overlay `pending/2026-11-13_acctB_parked/hdr/00795300` (ReleaseAndLoopUnholyPowerSpell.h) now differs from the landed
+    header. Rebase it before reuse.
+- **B24D:** your six new claims (0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0) are clear of A's agents.
