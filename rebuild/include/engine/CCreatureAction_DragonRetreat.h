@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_DRAGONRETREAT_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128868C (RTTI .?AVCCreatureAction_DragonRetreat@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_DragonRetreat); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_DragonRetreat : public CCombatActionBase {
+public:
+    virtual long GetAnimDelayTime() const;                                // slot 6 0x008F5620 ?GetAnimDelayTime@CCreatureAction_DragonRetreat@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008F5790 ?Clone@CCreatureAction_DragonRetreat@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsUsingAnimationMovement() const;                        // slot 57 0x008F5630 ?IsUsingAnimationMovement@CCreatureAction_DragonRetreat@@UBE_NXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x008F5640 ?IsMovementUsingPhysics@CCreatureAction_DragonRetreat@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonRetreat) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_DragonRetreat {
 public:
@@ -27,7 +48,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonRetreat) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonRetreat, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_DragonRetreat) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_DragonRetreat, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_DRAGONRETREAT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_DRAGONRETREAT_H

@@ -9,6 +9,35 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BANDITKINGSTUCK_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01281C54 (RTTI .?AVCCreatureAction_BanditKingStuck@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BanditKingStuck); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BanditKingStuck : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C8F70 ?FinishAction@CCreatureAction_BanditKingStuck@@UAEXXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x008C9560 ?GetAnimationTransitionInTime@CCreatureAction_BanditKingStuck@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C9830 ?Clone@CCreatureAction_BanditKingStuck@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C8380 ?Initialise@CCreatureAction_BanditKingStuck@@UAEXXZ
+    virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x008C9570 ?IsOverrideableByActionOfSamePriority@CCreatureAction_BanditKingStuck@@UBE_NXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x008C80E0 ?IsToCauseRecoil@CCreatureAction_BanditKingStuck@@UBE_NXZ
+public:
+    long          TimesToLoop;                               // +0x114
+    unsigned char PStuckEffect[0x8];                         // +0x118 CIntelligentPointer<CThing>
+    unsigned char PObstruction[0x8];                         // +0x120 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingStuck) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, TimesToLoop) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, PStuckEffect) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, PObstruction) == 0x120);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BanditKingStuck {
 public:
@@ -79,10 +108,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingStuck) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, TimesToLoop) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, PStuckEffect) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingStuck, PObstruction) == 0x120);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_BanditKingStuck) == 0x128);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_BanditKingStuck, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_BanditKingStuck, TimesToLoop) == 0x114);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_BanditKingStuck, PStuckEffect) == 0x118);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_BanditKingStuck, PObstruction) == 0x120);
+#endif // FABLE_RETAIL_CCREATUREACTION_BANDITKINGSTUCK_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BANDITKINGSTUCK_H

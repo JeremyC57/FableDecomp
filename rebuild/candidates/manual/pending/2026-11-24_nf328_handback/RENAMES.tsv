@@ -1,0 +1,3 @@
+# section 1: self / binder renames
+symbol_old	symbol_new	row	note
+# none: every changed definition keeps its (PDB) name; only COMDAT selections go 1 -> 2. 0x004ABE90 Leaf prefix ??0CScriptThing -> full ??0CScriptThing@@QAE@ABV0@@Z (NF299 Q2 shape).

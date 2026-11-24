@@ -1,4 +1,9 @@
-int __fastcall CCombatSequence_WillPhysicalShield_GetZone()
+// Leaf: ?GetZone@CCombatSequence_WillPhysicalShield@@UBEKXZ
+#define FABLE_RETAIL_CCOMBATSEQUENCE_WILLPHYSICALSHIELD_VIRTUAL_MODEL
+#define FABLE_RETAIL_CCOMBATSEQUENCEBASE
+#include "engine/CCombatSequence_WillPhysicalShield.h"
+unsigned long CCombatSequence_WillPhysicalShield::GetZone() const
 {
     return 3;
 }
+// Flatten route (flatten_pilot v5, NF329): CCombatSequence_WillPhysicalShield_GetZone -> CCombatSequence_WillPhysicalShield::GetZone, the RTTI-placed PDB member; class model: engine/CCombatSequence_WillPhysicalShield.h under FABLE_RETAIL_CCOMBATSEQUENCE_WILLPHYSICALSHIELD_VIRTUAL_MODEL, FABLE_RETAIL_CCOMBATSEQUENCEBASE.

@@ -9,6 +9,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLFIREBALLSPELL_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127DF4C (RTTI .?AVCCreatureAction_CastWillFireballSpell@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_CastWillFireballSpell); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_CastWillFireballSpell : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008BDAD0 ?PerformAction@CCreatureAction_CastWillFireballSpell@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008BE9C0 ?Clone@CCreatureAction_CastWillFireballSpell@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B9460 ?Initialise@CCreatureAction_CastWillFireballSpell@@UAEXXZ
+public:
+    bool          ImmediateCast;                             // +0x114
+    bool          OneAnimCast;                               // +0x115
+    unsigned char _pad_0x116[0x2];                           // +0x116
+    long          LevelToCast;                               // +0x118
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillFireballSpell) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, ImmediateCast) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, OneAnimCast) == 0x115);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, _pad_0x116) == 0x116);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, LevelToCast) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastWillFireballSpell {
 public:
@@ -80,10 +108,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillFireballSpell) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, ImmediateCast) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, OneAnimCast) == 0x115);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillFireballSpell, LevelToCast) == 0x118);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CCreatureAction_CastWillFireballSpell) == 0x11c);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_CastWillFireballSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_CastWillFireballSpell, ImmediateCast) == 0x114);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_CastWillFireballSpell, OneAnimCast) == 0x115);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_CastWillFireballSpell, LevelToCast) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTWILLFIREBALLSPELL_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTWILLFIREBALLSPELL_H

@@ -1,4 +1,9 @@
-bool __fastcall CCombatSequenceNonInterruptable2StrikeCombo_IsInterruptableDueToZoneChange()
+// Leaf: ?IsInterruptableDueToZoneChange@CCombatSequenceNonInterruptable2StrikeCombo@@UBE_NXZ
+#define FABLE_RETAIL_CCOMBATSEQUENCENONINTERRUPTABLE2STRIKECOMBO_VIRTUAL_MODEL
+#define FABLE_RETAIL_CCOMBATSEQUENCEBASE
+#include "engine/CCombatSequenceNonInterruptable2StrikeCombo.h"
+bool CCombatSequenceNonInterruptable2StrikeCombo::IsInterruptableDueToZoneChange() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v5, NF329): CCombatSequenceNonInterruptable2StrikeCombo_IsInterruptableDueToZoneChange -> CCombatSequenceNonInterruptable2StrikeCombo::IsInterruptableDueToZoneChange, the RTTI-placed PDB member; class model: engine/CCombatSequenceNonInterruptable2StrikeCombo.h opt-in FABLE_RETAIL_CCOMBATSEQUENCENONINTERRUPTABLE2STRIKECOMBO_VIRTUAL_MODEL, FABLE_RETAIL_CCOMBATSEQUENCEBASE.

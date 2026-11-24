@@ -1,0 +1,23 @@
+H 004aa840 RELOCATION_MATCH leaf=??1CScriptThing@@UAE@XZ
+N 004aa840 RELOCATION_MATCH leaf=??1CScriptThing@@UAE@XZ
+H 004abe90 RELOCATION_MATCH leaf=??0CScriptThing
+N 004abe90 RELOCATION_MATCH leaf=??0CScriptThing@@QAE@ABV0@@Z
+H 004ab170 RELOCATION_MATCH leaf=ScalarDeletingDestructor
+N 004ab170 DIFFER(24v87) leaf=ScalarDeletingDestructor
+H 00d151d0 RELOCATION_MATCH leaf=WatchForEnableFisherCreekHutDoor
+N 00d151d0 RELOCATION_MATCH leaf=WatchForEnableFisherCreekHutDoor
+H 00dde230 RELOCATION_MATCH leaf=WardenKeyMiniGame
+N 00dde230 RELOCATION_MATCH leaf=WardenKeyMiniGame
+H 00e6b750 RELOCATION_MATCH leaf=?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+N 00e6b750 RELOCATION_MATCH leaf=?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+PG_DONE
+H 00ce0920 RELOCATION_MATCH leaf=?Main@CMK_HS2_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+N 00ce0920 RELOCATION_MATCH leaf=?Main@CMK_HS2_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+H 00ce0b00 RELOCATION_MATCH leaf=?Main@CMK_HS3_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+N 00ce0b00 RELOCATION_MATCH leaf=?Main@CMK_HS3_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+H 00ce0ce0 RELOCATION_MATCH leaf=?Main@CMK_HSE_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+N 00ce0ce0 RELOCATION_MATCH leaf=?Main@CMK_HSE_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+PG_DONE
+H 004ab170 RELOCATION_MATCH leaf=ScalarDeletingDestructor
+N 004ab170 RELOCATION_MATCH leaf=ScalarDeletingDestructor
+PG_DONE

@@ -9,6 +9,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLSUMMONSPELL_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127D704 (RTTI .?AVCCreatureAction_CastWillSummonSpell@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_CastWillSummonSpell); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_CastWillSummonSpell : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008BDA80 ?PerformAction@CCreatureAction_CastWillSummonSpell@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008BE870 ?Clone@CCreatureAction_CastWillSummonSpell@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B9B00 ?Initialise@CCreatureAction_CastWillSummonSpell@@UAEXXZ
+public:
+    long          LevelToCast;                               // +0x114
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillSummonSpell) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillSummonSpell, LevelToCast) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastWillSummonSpell {
 public:
@@ -77,8 +99,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillSummonSpell) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillSummonSpell, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillSummonSpell, LevelToCast) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_CastWillSummonSpell) == 0x118);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_CastWillSummonSpell, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_CastWillSummonSpell, LevelToCast) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTWILLSUMMONSPELL_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTWILLSUMMONSPELL_H

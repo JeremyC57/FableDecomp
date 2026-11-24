@@ -9,6 +9,27 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_BANDITUNBLOCKABLEATTACK_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012790DC (RTTI .?AVCCombatSequence_BanditUnblockableAttack@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_BanditUnblockableAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+enum ECombatSequenceType;
+#pragma pack(push, 1)
+class CCombatSequence_BanditUnblockableAttack : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00906380 ?OnCreate@CCombatSequence_BanditUnblockableAttack@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B35B0 ?GetName@CCombatSequence_BanditUnblockableAttack@@UBE?AVCCharString@@XZ
+    virtual ECombatSequenceType GetCombatSequenceType() const;            // slot 3 0x008B35E0 ?GetCombatSequenceType@CCombatSequence_BanditUnblockableAttack@@UBE?AW4ECombatSequenceType@@XZ
+    virtual bool IsValid() const;                                         // slot 12 0x00906330 ?IsValid@CCombatSequence_BanditUnblockableAttack@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B35D0 ?GetZone@CCombatSequence_BanditUnblockableAttack@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_BanditUnblockableAttack) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_BanditUnblockableAttack {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +42,8 @@ struct CCombatSequence_BanditUnblockableAttack {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_BanditUnblockableAttack) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_BanditUnblockableAttack, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_BanditUnblockableAttack) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_BanditUnblockableAttack, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_BANDITUNBLOCKABLEATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_BANDITUNBLOCKABLEATTACK_H

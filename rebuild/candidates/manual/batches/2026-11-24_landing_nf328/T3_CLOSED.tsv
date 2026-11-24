@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf326	0x004AA840	unit	004aa840 ~CScriptThing: strong at 0x004AA840, 0x00DDE230, 0x00E6B750 (LNK2005 shape) and 3 local-model destructor copies differ from retail; follow-up pick-any unit with the NF326 proof set (NF326 Q4)
+nf326	0x004ABE90	unit	004abe90 CScriptThing copy constructor strong against 25 pick-any copies; follow-up pick-any unit with the NF326 proof set (NF326 Q4)

@@ -1,4 +1,12 @@
-int __fastcall CCreatureAction_DragonSwoop_GetAnimDelayTime()
+// Leaf: ?GetAnimDelayTime@CCreatureAction_DragonSwoop@@UBEJXZ
+#define FABLE_RETAIL_CCREATUREACTION_DRAGONSWOOP_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_DragonSwoop.h"
+long CCreatureAction_DragonSwoop::GetAnimDelayTime() const
 {
     return 0;
 }
+// Flatten route (flatten_pilot v5, NF329): CCreatureAction_DragonSwoop_GetAnimDelayTime -> CCreatureAction_DragonSwoop::GetAnimDelayTime, the RTTI-placed PDB member; class model: engine/CCreatureAction_DragonSwoop.h opt-in FABLE_RETAIL_CCREATUREACTION_DRAGONSWOOP_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.

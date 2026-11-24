@@ -1,0 +1,65 @@
+addr       parity           behav  name
+004aa840   RELOCATION_MATCH PASS   ~CScriptThing
+004abe90   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+004abe90   RELOCATION_MATCH PASS   CScriptThing
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 004ab170.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 004ab170.obj; graded the largest function
+004ab170   WARN STANDIN_LEAF ??_GCScriptThing@@UAEPAXI@Z (catalog CScriptThing::ScalarDeletingDestructor; names another function)
+004ab170   RELOCATION_MATCH PASS   ScalarDeletingDestructor
+00ce0920   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0920   RELOCATION_MATCH PASS   Main
+00ce0b00   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0b00   RELOCATION_MATCH PASS   Main
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0ce0   RELOCATION_MATCH PASS   Main
+00d151d0   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)
+00d151d0   RELOCATION_MATCH PASS   WatchForEnableFisherCreekHutDoor
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_PrisonWardenGameScript (engine/CQ_PrisonWardenGameScript.h)
+00dde230   RELOCATION_MATCH PASS   WardenKeyMiniGame
+00e6b750   WARN SHARED_HEADER_AVAILABLE CV_ChapelOfEvilScript (engine/CV_ChapelOfEvilScript.h)
+00e6b750   RELOCATION_MATCH PASS   WatchForRegionEntry
+
+WINS: 9
+  004aa840 RELOCATION_MATCH CScriptThing::??1CScriptThing@@UAE@XZ
+  004abe90 RELOCATION_MATCH CScriptThing::??0CScriptThing
+  004ab170 RELOCATION_MATCH CScriptThing::ScalarDeletingDestructor
+  00ce0920 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HS2_SOUL::?Main@CMK_HS2_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00ce0b00 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HS3_SOUL::?Main@CMK_HS3_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00ce0ce0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HSE_SOUL::?Main@CMK_HSE_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00d151d0 RELOCATION_MATCH CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+  00dde230 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+  00e6b750 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+===== NEW =====
+addr       parity           behav  name
+004aa840   RELOCATION_MATCH PASS   ~CScriptThing
+004abe90   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+004abe90   RELOCATION_MATCH PASS   CScriptThing
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 004ab170.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 004ab170.obj; graded the largest function
+004ab170   WARN STANDIN_LEAF ??_GCScriptThing@@UAEPAXI@Z (catalog CScriptThing::ScalarDeletingDestructor; names another function)
+004ab170   RELOCATION_MATCH PASS   ScalarDeletingDestructor
+00ce0920   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0920   RELOCATION_MATCH PASS   Main
+00ce0b00   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0b00   RELOCATION_MATCH PASS   Main
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce0ce0   RELOCATION_MATCH PASS   Main
+00d151d0   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)
+00d151d0   RELOCATION_MATCH PASS   WatchForEnableFisherCreekHutDoor
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_PrisonWardenGameScript (engine/CQ_PrisonWardenGameScript.h)
+00dde230   RELOCATION_MATCH PASS   WardenKeyMiniGame
+00e6b750   WARN SHARED_HEADER_AVAILABLE CV_ChapelOfEvilScript (engine/CV_ChapelOfEvilScript.h)
+00e6b750   RELOCATION_MATCH PASS   WatchForRegionEntry
+
+WINS: 9
+  004aa840 RELOCATION_MATCH CScriptThing::??1CScriptThing@@UAE@XZ
+  004abe90 RELOCATION_MATCH CScriptThing::??0CScriptThing@@QAE@ABV0@@Z
+  004ab170 RELOCATION_MATCH CScriptThing::ScalarDeletingDestructor
+  00ce0920 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HS2_SOUL::?Main@CMK_HS2_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00ce0b00 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HS3_SOUL::?Main@CMK_HS3_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00ce0ce0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HSE_SOUL::?Main@CMK_HSE_SOUL@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00d151d0 RELOCATION_MATCH CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+  00dde230 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+  00e6b750 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ

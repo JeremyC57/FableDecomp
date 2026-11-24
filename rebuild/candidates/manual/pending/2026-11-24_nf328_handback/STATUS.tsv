@@ -1,0 +1,13 @@
+addr	status	note
+004aa840	skipped-held	unit self (~CScriptThing): drafted inline + one ?A0x helper, proven (pair grade RM/RM, uproof OK, vland RM both); held by D1 (19 dtor copies differ from retail) per the brief's stop rule
+004abe90	skipped-held	unit self (copy ctor): drafted inline + one helper on its existing local model, full Leaf; proven; held by D1 (2 copy-ctor copies differ) and D4 (local-model vftable / ??_G stand-ins kept)
+004ab170	skipped-held	unit copy (??_G row, strong dtor): drafted inline + one helper (D3); proven; held with the unit
+00ce0920	skipped-held	unit copy (strong dtor -> inline); proven; held with the unit
+00ce0b00	skipped-held	unit copy (strong dtor -> inline); proven; held with the unit
+00ce0ce0	skipped-held	unit copy (strong dtor -> inline); proven; held with the unit
+00d151d0	skipped-held	unit copy (strong dtor -> inline); proven; held with the unit
+00dde230	skipped-held	unit copy (strong dtor -> inline); proven; held with the unit
+00e6b750	skipped-held	unit copy (strong dtor -> inline); proven; held with the unit
+004aa840	skipped-port	PORT LINE (nf326 0x004AA840 port): port line binders bind ~CScriptThing through two-view / stand-in classes: 00d874f0 ??1CScriptThingCopy (two-view), 00f081e0 ??1CScriptThingParam (two-view), 00d169e0 ??1CScriptThingRuntime (stand-in struct), 00d408b0 / 00cdff50 ??1ScriptMethods / ??1ScriptThingCopy (stand-in structs), 00f051d0 ??1CScriptThing@@QAE@XZ (two-view, non-virtual local dtor; making it virtual adds a vftable). Class-model ports (NF308 Q2 / two-view revisit), outside the unit
+004abe90	skipped-port	PORT LINE (nf326 0x004ABE90 port): port line binders: 00eed6b0 CAliveScriptThing, 00d34d10 CElement12_004abe90, 00cdf430 ??0CScriptThing@@QAE@PAX@Z (wrong signature model), 00d874f0 CScriptThingCopy, 00cd2757 CScriptThingRetail, 00f081e0 / 00d169e0 CScriptThingStored, 00d2d7b0 CScriptThing_Calls, 00d2c530 ScriptThingCopy, 004abe60 ?HandleNull@CScriptThing (whole made-up model of MsgWhoKilledMe). Stand-in class / identity ports, outside the unit
+00df6010	not-reached	secondary scope (GetDataString debt) not started: the unit stopped on D1

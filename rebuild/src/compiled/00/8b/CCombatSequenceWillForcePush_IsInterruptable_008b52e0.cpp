@@ -1,4 +1,9 @@
-bool __fastcall CCombatSequence_WillForcePush_IsInterruptable()
+// Leaf: ?IsInterruptable@CCombatSequence_WillForcePush@@UBE_NXZ
+#define FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSH_VIRTUAL_MODEL
+#define FABLE_RETAIL_CCOMBATSEQUENCEBASE
+#include "engine/CCombatSequence_WillForcePush.h"
+bool CCombatSequence_WillForcePush::IsInterruptable() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v5, NF329): CCombatSequence_WillForcePush_IsInterruptable -> CCombatSequence_WillForcePush::IsInterruptable, the RTTI-placed PDB member; class model: engine/CCombatSequence_WillForcePush.h opt-in FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSH_VIRTUAL_MODEL, FABLE_RETAIL_CCOMBATSEQUENCEBASE.

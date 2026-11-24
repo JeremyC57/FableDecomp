@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_NYMPHTELEPORTLIMBOBASE_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01282754 (RTTI .?AVCCreatureAction_NymphTeleportLimboBase@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_NymphTeleportLimboBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+#pragma pack(push, 1)
+class CCreatureAction_NymphTeleportLimboBase : public CCombatActionBase {
+public:
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x008CA930 ?IsToEvadeAllHits@CCreatureAction_NymphTeleportLimboBase@@UBE_NXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x008CA940 ?IsToFaceTarget@CCreatureAction_NymphTeleportLimboBase@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x008CA950 ?GetIsToFaceTargetCone@CCreatureAction_NymphTeleportLimboBase@@UBEMXZ
+    virtual bool IsMoving() const;                                        // slot 81 0x008CA920 ?IsMoving@CCreatureAction_NymphTeleportLimboBase@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_NymphTeleportLimboBase) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_NymphTeleportLimboBase {
 public:
@@ -27,7 +47,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_NymphTeleportLimboBase) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_NymphTeleportLimboBase, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_NymphTeleportLimboBase) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_NymphTeleportLimboBase, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_NYMPHTELEPORTLIMBOBASE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_NYMPHTELEPORTLIMBOBASE_H

@@ -9,6 +9,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCEJACKSCOMBO_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A07C (RTTI .?AVCCombatSequenceJacksCombo@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequenceJacksCombo); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequenceJacksCombo : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x0090A1F0 ?OnCreate@CCombatSequenceJacksCombo@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B4E90 ?GetName@CCombatSequenceJacksCombo@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B4EC0 ?IsInterruptableDueToZoneChange@CCombatSequenceJacksCombo@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B4EB0 ?GetZone@CCombatSequenceJacksCombo@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequenceJacksCombo) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequenceJacksCombo {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +40,8 @@ struct CCombatSequenceJacksCombo {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceJacksCombo) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceJacksCombo, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequenceJacksCombo) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequenceJacksCombo, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCEJACKSCOMBO_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCEJACKSCOMBO_H

@@ -9,6 +9,39 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONCHARGESTRIKE_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01281184 (RTTI .?AVCCreatureAction_ScorpionChargeStrike@@ : CCombatActionBase), 83 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_ScorpionChargeStrike); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_ScorpionChargeStrike : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C3E30 ?FinishAction@CCreatureAction_ScorpionChargeStrike@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C5E10 ?Clone@CCreatureAction_ScorpionChargeStrike@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C3E20 ?Initialise@CCreatureAction_ScorpionChargeStrike@@UAEXXZ
+    virtual bool IsStrikeAction() const;                                  // slot 15 0x008C5C00 ?IsStrikeAction@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x008C5C10 ?IsKnockdownStrike@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x008C5BF0 ?IsBlockable@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ
+    virtual bool IsToFaceMovementDirection() const;                       // slot 81 0x008C5C20 ?IsToFaceMovementDirection@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ
+    virtual bool IsToRetainSafeDistance() const;                          // slot 82 0x008C5C30 ?IsToRetainSafeDistance@CCreatureAction_ScorpionChargeStrike@@UBE_NXZ
+public:
+    float         ChargeDistance;                            // +0x114
+    float         StartPos_X;                                // +0x118 C3DVector::X
+    float         StartPos_Y;                                // +0x11c C3DVector::Y
+    float         StartPos_Z;                                // +0x120 C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionChargeStrike) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, ChargeDistance) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_X) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_Y) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_Z) == 0x120);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ScorpionChargeStrike {
 public:
@@ -80,11 +113,12 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionChargeStrike) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, ChargeDistance) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_X) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_Y) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_Z) == 0x120);
+FABLE_STATIC_ASSERT_AT(83, sizeof(CCreatureAction_ScorpionChargeStrike) == 0x124);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_ScorpionChargeStrike, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_ScorpionChargeStrike, ChargeDistance) == 0x114);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_X) == 0x118);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_Y) == 0x11c);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CCreatureAction_ScorpionChargeStrike, StartPos_Z) == 0x120);
+#endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONCHARGESTRIKE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONCHARGESTRIKE_H

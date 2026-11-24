@@ -842,3 +842,15 @@ Ego_r layouts, pick-any 12/12 EQ, test regenerated and mutation-checked. Its NAM
 ~CBaseClassNonCopyable (GOTCHAS nf104). Note for your labels: Ego_d names CDefinitionManager::CreateCompiledDefs / CreateChecksums /
 UsingCompiledDefs, CAFile::m_harddiskErrorCallback and CThreadedFileManager::m_errorCallback / m_harddiskErrorCallback exist
 (ghidra_out/egod_carved_names.tsv).
+2026-11-24 A->B: **NF329 and NF328 landed.**
+- **NF329** (`batches/2026-11-24_landing_nf329_b1..b4`): 301 combat rows onto their PDB members, on 118 new add-only
+  `FABLE_RETAIL_<CLASS>_VIRTUAL_MODEL` opt-in headers, every default path unchanged. If you author in CCombatAction* / CCombatSequence*
+  classes, use those opt-ins rather than local models.
+- **NF328** (`batches/2026-11-24_landing_nf328`): no row defines ~CScriptThing or its copy constructor strongly any more; all 9 former strong
+  definers are `inline`. If you author a script row that models CScriptThing locally:
+  - define those members `inline` (or take engine/CScriptThing.h);
+  - keep their copies equal to retail (`pickany_vs_retail.py`).
+
+  108 landed objects emit a truncated `??_7CScriptThing@@6B@`, local-model debt queued on A's side.
+- **Six NF329 headers (CA classes)** also sit in old parked overlays, including `pending/2026-11-13_acctB_parked` (BuildUp / Release
+  UnholyPowerSpell). Rebase those overlays onto the landed headers before reusing them.

@@ -1,0 +1,56 @@
+// CScriptThing::`scalar deleting destructor'(unsigned int) -- release the PImp counted pointer, CBaseClass::~CBaseClass, free on bit 0
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004AB170, oracle length 87 bytes.
+// Callees: CBaseClass::~CBaseClass @ 0x0099A2E0, operator delete @ 0x00BFE9BC (both landed-trusted).
+// Vtable 0x01238C8C = CScriptThing (rtti-vtables.tsv); the manifest label "C3DMeshObject::`scalar_deleting_destructor'"
+// is propagated from the byte-identical body at 0x004C3250 (which releases a pointer at +8/+0xC) and is rejected.
+//
+// Retail bytes:  push esi ; mov esi,ecx ; mov [esi],offset CScriptThing::`vftable' ; mov eax,[esi+8] ; test eax,eax ; je N ;
+//                dec dword ptr [eax] ; mov eax,[esi+8] ; cmp dword ptr [eax],0 ; jne N ; mov ecx,[eax+8] ; call [eax+4] ;
+//                mov eax,[esi+8] ; push eax ; call operator delete ; add esp,4 ; N: mov ecx,esi ; mov dword ptr [esi+4],0 ;
+//                mov dword ptr [esi+8],0 ; call CBaseClass::~CBaseClass ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ;
+//                add esp,4 ; K: mov eax,esi ; pop esi ; ret 4
+// PDB layout (struct_layouts_egor.tsv): CScriptThing = 12 bytes, +4 CCountedPointer<CScriptThing> PImp
+// {object +4, count block +8}. The empty virtual destructor restores the vtable, runs the member's
+// inline ~CCountedPointer (decrement the shared block, destroy + delete at zero, null both fields), then
+// the base destructor; the deleting flavour frees `this` when bit 0 of the flag is set.
+#include "engine/CCountedPointer.h"
+
+
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+
+// The empty virtual destructor is defined out of line: VC7.1 then inlines it (and the member's
+// ~CCountedPointer) into the deleting destructor; an in-class `{ }` body made the deleting destructor
+// call ~CCountedPointer out of line instead (tried: DIFFER).
+inline CScriptThing::~CScriptThing()
+{
+}
+
+namespace {
+// Fidelity: scaffolding, not retail (NF328, 2026-11-24, the ~CScriptThing one-definition unit): a qualified explicit destructor call of
+// the inline destructor above, with inline expansion switched off for this one function. It makes this object compile the destructor
+// (and so the CScriptThing vftable and this row's scalar deleting destructor, which expands the destructor body as retail's 0x004AB170
+// does) while ??1CScriptThing@@UAE@XZ itself is emitted pick-any. The strong definition this row had was LNK2005 against the self
+// 0x004AA840 and every script TU's inline copy; without any reference the inline destructor, the vftable and ??_G are not emitted at
+// all. Internal to this TU; never called.
+#pragma inline_depth(0)
+void ReferenceScriptThingDestructor(CScriptThing& thing)
+{
+    thing.CScriptThing::~CScriptThing();
+}
+#pragma inline_depth()
+}
+
+// VC7.1 emits a class's vtable (and the deleting destructor it references) in every translation
+// unit that constructs the object; this helper is that construction, nothing more.
+void* MakeOne()
+{
+    return new CScriptThing;
+}

@@ -1,0 +1,9 @@
+HIT 008c5bc0 rebuild/tests/00/8c/CCreatureActionScorpionChargeInto_FinishAction_008c5490_test.cpp out-of-line body
+HIT 008c5bd0 rebuild/tests/00/8c/CCreatureActionScorpionChargeInto_FinishAction_008c5490_test.cpp out-of-line body
+HIT 008c5be0 rebuild/tests/00/8c/CCreatureActionScorpionChargeInto_FinishAction_008c5490_test.cpp out-of-line body
+HIT 008c5bc0 rebuild/tests/00/8c/CCreatureActionScorpionCharge_Initialise_008c4680_test.cpp out-of-line body
+HIT 008c5bd0 rebuild/tests/00/8c/CCreatureActionScorpionCharge_Initialise_008c4680_test.cpp out-of-line body
+HIT 008c5be0 rebuild/tests/00/8c/CCreatureActionScorpionCharge_Initialise_008c4680_test.cpp out-of-line body
+HIT 00a86f10 rebuild/tests/00/a8/CPhysicsFacesSegmentBranch_CPhysicsFacesSegmentBranch_00a85ff0_test.cpp in-class body in a local model
+HIT 00a86f10 rebuild/tests/00/a8/CPhysicsFacesSegmentBranch_scalardeletingdestructor_00a86f60_test.cpp in-class body in a local model
+census hits 8 rows 301

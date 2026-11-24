@@ -1,0 +1,4 @@
+head: objects 301 duplicates(LNK2005) 0 unresolved 6
+new: objects 301 duplicates(LNK2005) 0 unresolved 6
+unresolved sets EQUAL (4)
+LINKCHECK_DONE

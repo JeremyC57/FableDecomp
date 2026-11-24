@@ -9,6 +9,26 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCEWHISPERATTACK360_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01279E4C (RTTI .?AVCCombatSequenceWhisperAttack360@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequenceWhisperAttack360); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequenceWhisperAttack360 : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00909DA0 ?OnCreate@CCombatSequenceWhisperAttack360@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B4B20 ?GetName@CCombatSequenceWhisperAttack360@@UBE?AVCCharString@@XZ
+    virtual bool IsMeleeSequence() const;                                 // slot 7 0x008B4B50 ?IsMeleeSequence@CCombatSequenceWhisperAttack360@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x00908D90 ?IsValid@CCombatSequenceWhisperAttack360@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B4B40 ?GetZone@CCombatSequenceWhisperAttack360@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequenceWhisperAttack360) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequenceWhisperAttack360 {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -22,8 +42,9 @@ struct CCombatSequenceWhisperAttack360 {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequenceWhisperAttack360) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceWhisperAttack360, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequenceWhisperAttack360, f20) == 0x20);
+FABLE_STATIC_ASSERT_AT(25, sizeof(CCombatSequenceWhisperAttack360) == 0x28);
+FABLE_STATIC_ASSERT_AT(26, offsetof(CCombatSequenceWhisperAttack360, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(27, offsetof(CCombatSequenceWhisperAttack360, f20) == 0x20);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCEWHISPERATTACK360_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCEWHISPERATTACK360_H

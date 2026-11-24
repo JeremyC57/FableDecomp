@@ -1,0 +1,38 @@
+header	flagged_rows	examples
+CCombatSequence2StrikeCombo	2	008b04c0:src 008b4f10:src
+CCombatSequenceJacksCombo	0	
+CCombatSequenceNonInterruptable2StrikeCombo	0	
+CCombatSequenceWhisperAttack360	0	
+CCombatSequenceWhisperAttackCombo	0	
+CCombatSequence_BanditAttackFar	0	
+CCombatSequence_BanditAttackMiddle	0	
+CCombatSequence_BanditAttackNear	0	
+CCombatSequence_BanditBoast	0	
+CCombatSequence_BanditIdleMiddle	0	
+CCombatSequence_BanditIdleNear	0	
+CCombatSequence_BanditKingAttack	0	
+CCombatSequence_BanditKingBackOff	0	
+CCombatSequence_BanditKingSpinAround	0	
+CCombatSequence_BanditUnblockableAttack	1	00906380:src
+CCombatSequence_FodderCombatIdle	0	
+CCombatSequence_FodderMainAttack	1	008b0020:src
+CCombatSequence_FodderUnblockableMainAttack	0	
+CCombatSequence_KingScorpionTailPlunge	0	
+CCombatSequence_NonInterruptableBoxStrafe	0	
+CCombatSequence_TrollBurrowPursueNoZone	0	
+CCombatSequence_TrollDoubleSwipe	0	
+CCombatSequence_TrollProjectileAttack	0	
+CCombatSequence_TrollRockAdvance	0	
+CCombatSequence_TrollRockIdle	0	
+CCombatSequence_TrollRockPursueNoZone	0	
+CCombatSequence_TrollRockShuffleBack	0	
+CCombatSequence_TrollRockThrowRock	0	
+CCombatSequence_VillagerAdvance	0	
+CCombatSequence_VillagerAttack	0	
+CCombatSequence_VillagerCombo	1	00908a20:src
+CCombatSequence_VillagerComboUnblockable	2	008b4820:src 00908b50:src
+CCombatSequence_VillagerNearAttack	0	
+CCombatSequence_VillagerStepIn	0	
+CCombatSequence_WillEnflame	0	
+CCombatSequence_WillForcePush	0	
+CCombatSequence_WillLightning	0	

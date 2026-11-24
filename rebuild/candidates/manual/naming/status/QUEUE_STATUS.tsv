@@ -968,7 +968,7 @@ line	tag	address	correct_symbol	status	other_spellings
 974	570	00440990	?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z	partial	?InsertGrow@CRetailVector_006bc4a0@@QAEXPAJABJABUSScalarTag@@K_N@Z || ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEX
 975	570	00e292c0	?Main@CMeetSisterMessenger@CQS_MeetSisterScript@NScript@@EAEXXZ	closed	
 976	571	004aa840	??1CScriptThing@@UAE@XZ	partial	??1CScriptThing@@QAE@XZ || ??1CScriptThingCopy@@UAE@XZ || ??1CScriptThingParam@@UAE@XZ || ??1CScriptThingRuntime@@UAE@XZ || ??1ScriptMethods@@UAE@XZ || ??1ScriptThingCopy@@QAE@XZ
-977	571	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABV
+977	571	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 978	571	0099a2d0	??0CBaseClass@@QAE@XZ	partial	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ || N_0099a2d0
 979	571	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ || ?BaseOnDie@CTCInventoryItem@@QAEXXZ || ?OnDie@CInventoryItemBase@@QAEXXZ
 980	571	0099a380	??0CBaseObject@@IAE@XZ	partial	??0CVillageTask@@QAE@XZ
@@ -1074,7 +1074,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1080	580	008ab1e0	??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z	partial	??4CCountedPointerWords@@QAEAAU0@ABU0@@Z || ??4CHandlePImp@@QAEAAU0@ABU0@@Z
 1081	580	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	closed	
 1082	580	00f35b10	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z	partial	?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z || ?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z || ?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z || ?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z
-1083	580	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABV
+1083	580	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 1084	580	00cbe2ff	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z	partial	?IsWithinDistance@@YI_NABUScriptMethods@@ABVCScriptThing@@M@Z
 1085	580	00e24760	??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z	closed	
 1086	580	00ed7a40	?WatchForCompletedQuests@CV_TalentlessBardScript@NScript@@QAEXXZ	closed	
@@ -1415,7 +1415,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1468	597	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	partial	??4CCharString@@QAEAAV0@ABV0@@Z || ??4CCharString@std@@QAEAAU01@ABU01@@Z || ??4SymbolString@@QAEAAU0@ABU0@@Z
 1469	597	0099eae0	??1CCharString@@QAE@XZ	partial	??1CCharString2@@QAE@XZ || ??1CCharString@N006d41f0@@QAE@XZ || ??1CCharString@NErase005dcf70@@QAE@XZ || ??1CCharString@NFactory007f1b70@@QAE@XZ || ??1CCharString@NManager00820e20@@QAE@XZ || ??1CCharString@NUISystem@@QAE@XZ || ??1CCharString@X_006e11f0@@QAE@XZ || ??1CCharString@X_009eb590@@QAE@XZ || ??1CCharString@std@@QAE@XZ || ??1CDeedReactionName@@QAE@XZ || ??1CInstanceCountedBase@@UAE@XZ || ??1
 1470	597	0099ebf0	??0CCharString@@QAE@PBDJ@Z	partial	??0CCharString2@@QAE@HH@Z || ??0CCharString@@QAE@PBDH@Z || ??0CCharString@NFactory007f1b70@@QAE@PBDH@Z || ??0CCharString@X_006e11f0@@QAE@PBDH@Z || ??0CDeedReactionName@@QAE@HH@Z || ??0CRetailString@@QAE@PBDJ@Z || ??0CSectionName@@QAE@PBDH@Z || ??0InitGuard@@QAE@PAHH@Z || ??0ScopedGuard@@QAE@PBDH@Z || ?Ctor@CCharString@@QAEXPBDH@Z || ?Do@Helper@@QAEXPBDH@Z || ?Init@CCharString@@QAEXPBDH@Z || ?ctor@
-1471	597	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABV
+1471	597	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 1472	597	004aa840	??1CScriptThing@@UAE@XZ	partial	??1CScriptThing@@QAE@XZ || ??1CScriptThingCopy@@UAE@XZ || ??1CScriptThingParam@@UAE@XZ || ??1CScriptThingRuntime@@UAE@XZ || ??1ScriptMethods@@UAE@XZ || ??1ScriptThingCopy@@QAE@XZ
 1473	597	006e7b40	??0CScriptThing@@QAE@XZ	closed	
 1474	597	008ab980	??4CScriptThing@@QAEAAV0@ABV0@@Z	partial	??4CScriptThing
@@ -6805,7 +6805,7 @@ line	tag	address	correct_symbol	status	other_spellings
 8806	land1011cr	0049d810	?GetWorldSeed@CWorld@@QBEPAKXZ	partial	?GetRandom@CQuakeWorld@@QAEAAUCQuakeRandom@@XZ || GetWorldSeed
 8807	land1011cr	0049d870	?GetFrame@CWorld@@SIJXZ	closed	
 8808	land1011cr	004aa840	??1CScriptThing@@UAE@XZ	partial	??1CScriptThing@@QAE@XZ || ??1CScriptThingCopy@@UAE@XZ || ??1CScriptThingParam@@UAE@XZ || ??1CScriptThingRuntime@@UAE@XZ || ??1ScriptMethods@@UAE@XZ || ??1ScriptThingCopy@@QAE@XZ
-8809	land1011cr	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABV
+8809	land1011cr	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 8810	land1011cr	004acb50	??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z	closed	
 8811	land1011cr	004c3090	??0CEnginePrimitiveLine@@QAE@_KABVC3DVector@@1ABVCRGBColour@@MW4EEnginePrimitiveBlendMode@@K_NW4EEngineInterpolationSet@@W4EEnginePrimitiveBlendOp@@@Z	partial	??0CEnginePrimitiveLine
 8812	land1011cr	004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	partial	?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ || ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
@@ -10686,5 +10686,26 @@ line	tag	address	correct_symbol	status	other_spellings
 13526	nf326	0143e8ec	?NullString@CScriptThing@@2VCCharString@@A	closed	
 13527	nf326	0143e8e0	?NullCoord@CScriptThing@@1VC3DVector@@A	partial	?g_ZeroVector@@3VC3DVector@@A
 13528	nf326	004aa840	??1CScriptThing@@UAE@XZ	partial	??1CScriptThing@@QAE@XZ || ??1CScriptThingCopy@@UAE@XZ || ??1CScriptThingParam@@UAE@XZ || ??1CScriptThingRuntime@@UAE@XZ || ??1ScriptMethods@@UAE@XZ || ??1ScriptThingCopy@@QAE@XZ
-13529	nf326	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABV
+13529	nf326	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 13530	nf326	004aa900	?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	closed	
+13531	acctB_b24 PRIORITY	00415530	?GetLanguageFolder@NLocalisation@@YI?AVCCharString@@XZ	partial	?FableGetDefaultLanguageName_00415530@@YI?AVCCharString@@XZ
+13532	acctB_b24 PRIORITY	009bc8a0	?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z	no_binding	
+13533	acctB_b24 PRIORITY	00402130	?TestDirForValidFilePermissions@@YIKABVCWideString@@@Z	open	?FableCheckMyDocumentsWritePermissions@@
+13534	acctB_b24 PRIORITY	00413c50	?InitialiseConsoleVariables@@YIXXZ	closed	
+13535	acctB_b24 PRIORITY	009d81e0	?DisableVTuneCollection@@YIXXZ	no_binding	
+13536	acctB_b24 PRIORITY	013b861b	?GLeftAlignText@@3_NA	open	?g_bLeftAlignText@@3_NA
+13537	acctB_b24 PRIORITY	0137548f	?InitialiseConsoleAtStartup@@3_NA	open	?g_bFrontEndFlag_137548F@@3_NA
+13538	acctB_b24 PRIORITY	0138e188	?CreateCompiledDefs@CDefinitionManager@@1_NA	open	?g_bSaveBinaryDefinitions@@3_NA
+13539	acctB_b24 PRIORITY	0138e189	?CreateChecksums@CDefinitionManager@@1_NA	open	?g_bCheckDefDependencies@@3_NA || ?g_bDefsCompiling@@3_NA
+13540	acctB_b24 PRIORITY	013ca7d8	?UsingCompiledDefs@CDefinitionManager@@1_NA	open	?g_bDefsLoaded@@3_NA || ?g_bLoadBinaryDefinitions@@3_NA
+13541	acctB_b24 PRIORITY	013bca00	?m_harddiskErrorCallback@CAFile@@0P6IXPBD@ZA	open	?DebugMessage@@3P6IXPBD@ZA
+13542	acctB_b24 PRIORITY	013b8615	?GRunFromDVD@@3_NA	open	?g_bRunFromDVD@@3_NA
+13543	acctB_b24 PRIORITY	013b8616	?GUseRetailBanks@@3_NA	open	?g_bRuntimeLevelFiles@@3_NA
+13544	acctB_b24 PRIORITY	013b8617	?GUseCompiledDefs@@3_NA	open	?g_bUseCompiledDefs@@3_NA
+13545	acctB_b24 PRIORITY	013b8619	?GUseCompiledSoundSymbols@@3_NA	open	?g_bUseCompiledSoundSymbols@@3_NA
+13546	acctB_b24 PRIORITY	01375459	?GAllowDataGeneration@@3_NA	closed	
+13547	acctB_b24 PRIORITY	013b864f	?GDisableCapsLock@@3_NA	open	?g_KeyRedefinerFlag@@3EA
+13548	acctB_b24 PRIORITY	013b8605	?GSkipFrontend@@3_NA	open	?g_bStartMainGame@@3_NA
+13549	acctB_b24 PRIORITY	013b8628	?GPresentImmidiate@@3_NA	open	?g_PresentationInterval@@3_NA
+13550	acctB_b24 PRIORITY	013ca79c	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	partial	?g_BankFileManager@@3UCBankFileManager@@A || ?g_BankFileManager@@3VCBankFileManager@@A || ?g_CStatic_009a7ac0_013ca79c@@3UCStatic_009a7ac0@@A || ?g_bankFileManager@@3UCBankFileManager@@A
+13551	nf328 PRIORITY	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ || ?BaseOnDie@CTCInventoryItem@@QAEXXZ || ?OnDie@CInventoryItemBase@@QAEXXZ

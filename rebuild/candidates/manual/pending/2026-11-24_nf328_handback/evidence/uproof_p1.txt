@@ -1,0 +1,6 @@
+004aa840 OK helper=?ReferenceScriptThingDestructor@?A0xf0e82e09@@YAXAAVCScriptThing@@@Z ??1 sel 1->2; ??1 v retail BYTES_EQUAL [5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ]
+004abe90 OK helper=?ReferenceScriptThingCopy@?A0x03dc6c97@@YA?AVCScriptThing@@ABV2@@Z ??0 sel 1->2; ??0 v retail BYTES_EQUAL [8:01238c8c=??_7CScriptThing@@6B@]
+00d151d0 OK helper=- ??1 sel 1->2; ??1 v retail BYTES_EQUAL [5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ]
+00dde230 OK helper=- ??1 sel 1->2; ??1 v retail BYTES_EQUAL [5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ]
+00e6b750 OK helper=- ??1 sel 1->2; ??1 v retail BYTES_EQUAL [5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ]
+004ab170 NOT_OK helper=- symbols gone: ['??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ', '??3@YAXPAX@Z', '??1CScriptThing@@UAE@XZ', '?IsEqualTo@CScriptThing@@MBE_NABV1@@Z']; other non-debug sections differ

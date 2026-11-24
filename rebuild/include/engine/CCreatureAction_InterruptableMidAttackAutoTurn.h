@@ -9,6 +9,45 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACKAUTOTURN_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012778CC (RTTI .?AVCCreatureAction_InterruptableMidAttackAutoTurn@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_InterruptableMidAttackAutoTurn); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x0087CD50 ?PerformAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x0087C770 ?FinishAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0087E660 ?Clone@CCreatureAction_InterruptableMidAttackAutoTurn@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0087D590 ?Initialise@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x0087C880 ?IsToEvadeAllHits@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x0087C850 ?IsToCauseRecoil@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x0087C8B0 ?IsAbleToBeAttacked@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x0087CB10 ?FrameUpdate@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x0087C900 ?IsToFaceTarget@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
+    virtual bool IsToPerformActionOnStrike() const;                       // slot 76 0x0087E510 ?IsToPerformActionOnStrike@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ
+public:
+    float         RequiredFacing_X;                          // +0x114 C3DVector::X
+    float         RequiredFacing_Y;                          // +0x118 C3DVector::Y
+    float         RequiredFacing_Z;                          // +0x11c C3DVector::Z
+    unsigned char PWeapon[0x8];                              // +0x120 CIntelligentPointer<CThing_const_>
+    bool          PerformedStrikeEnd;                        // +0x128
+    unsigned char _pad_0x129[0x3];                           // +0x129
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Z) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PWeapon) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PerformedStrikeEnd) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, _pad_0x129) == 0x129);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_InterruptableMidAttackAutoTurn {
 public:
@@ -82,12 +121,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) == 0x12c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Z) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PWeapon) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PerformedStrikeEnd) == 0x128);
+FABLE_STATIC_ASSERT_AT(85, sizeof(CCreatureAction_InterruptableMidAttackAutoTurn) == 0x12c);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, RequiredFacing_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PWeapon) == 0x120);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CCreatureAction_InterruptableMidAttackAutoTurn, PerformedStrikeEnd) == 0x128);
+#endif // FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACKAUTOTURN_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_INTERRUPTABLEMIDATTACKAUTOTURN_H

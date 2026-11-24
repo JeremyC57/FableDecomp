@@ -9,6 +9,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BANDITKINGATTACK_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01281B0C (RTTI .?AVCCreatureAction_BanditKingAttack@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BanditKingAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BanditKingAttack : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C97E0 ?Clone@CCreatureAction_BanditKingAttack@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x008C9490 ?IsKnockdownStrike@CCreatureAction_BanditKingAttack@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x008C94A0 ?IsBlockable@CCreatureAction_BanditKingAttack@@UBE_NXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x008C8080 ?IsToCauseRecoil@CCreatureAction_BanditKingAttack@@UBE_NXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x008C94B0 ?IsToFaceTarget@CCreatureAction_BanditKingAttack@@UBE_NXZ
+public:
+    bool          FaceTarget;                                // +0x114
+    bool          ForceCauseRecoil;                          // +0x115
+    unsigned char _pad_0x116[0x2];                           // +0x116
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingAttack) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingAttack, FaceTarget) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingAttack, ForceCauseRecoil) == 0x115);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingAttack, _pad_0x116) == 0x116);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BanditKingAttack {
 public:
@@ -79,9 +107,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingAttack) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingAttack, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingAttack, FaceTarget) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BanditKingAttack, ForceCauseRecoil) == 0x115);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_BanditKingAttack) == 0x118);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_BanditKingAttack, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_BanditKingAttack, FaceTarget) == 0x114);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_BanditKingAttack, ForceCauseRecoil) == 0x115);
+#endif // FABLE_RETAIL_CCREATUREACTION_BANDITKINGATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BANDITKINGATTACK_H

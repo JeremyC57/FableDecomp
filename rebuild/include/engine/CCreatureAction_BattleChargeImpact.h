@@ -9,6 +9,33 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BATTLECHARGEIMPACT_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01284664 (RTTI .?AVCCreatureAction_BattleChargeImpact@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BattleChargeImpact); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BattleChargeImpact : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008CEC30 ?PerformAction@CCreatureAction_BattleChargeImpact@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008CD820 ?FinishAction@CCreatureAction_BattleChargeImpact@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008CF0C0 ?Clone@CCreatureAction_BattleChargeImpact@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x008CEC40 ?IsBlockable@CCreatureAction_BattleChargeImpact@@UBE_NXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x008CEC60 ?IsToCauseRecoil@CCreatureAction_BattleChargeImpact@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x008CEC50 ?IsAbleToBeAttacked@CCreatureAction_BattleChargeImpact@@UBE_NXZ
+public:
+    unsigned char Left[0x8];                                 // +0x114 CIntelligentPointer<CThing>
+    unsigned char Right[0x8];                                // +0x11c CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BattleChargeImpact) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BattleChargeImpact, Left) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BattleChargeImpact, Right) == 0x11c);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BattleChargeImpact {
 public:
@@ -78,9 +105,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BattleChargeImpact) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BattleChargeImpact, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BattleChargeImpact, Left) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BattleChargeImpact, Right) == 0x11c);
+FABLE_STATIC_ASSERT_AT(81, sizeof(CCreatureAction_BattleChargeImpact) == 0x124);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_BattleChargeImpact, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_BattleChargeImpact, Left) == 0x114);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_BattleChargeImpact, Right) == 0x11c);
+#endif // FABLE_RETAIL_CCREATUREACTION_BATTLECHARGEIMPACT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BATTLECHARGEIMPACT_H

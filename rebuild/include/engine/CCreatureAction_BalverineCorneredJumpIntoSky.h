@@ -11,6 +11,34 @@
 
 class C3DVector;
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BALVERINECORNEREDJUMPINTOSKY_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012837C4 (RTTI .?AVCCreatureAction_BalverineCorneredJumpIntoSky@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BalverineCorneredJumpIntoSky); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008CCD70 ?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+    virtual long GetAnimDelayTime() const;                                // slot 6 0x008CD1D0 ?GetAnimDelayTime@CCreatureAction_BalverineCorneredJumpIntoSky@@UBEJXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x008CD1C0 ?GetAnimationTransitionInTime@CCreatureAction_BalverineCorneredJumpIntoSky@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008CD330 ?Clone@CCreatureAction_BalverineCorneredJumpIntoSky@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008CC9C0 ?Initialise@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x008CD1B0 ?IsToCauseRecoil@CCreatureAction_BalverineCorneredJumpIntoSky@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008CC7A0 ?FrameUpdate@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x008CD1A0 ?IsMovementUsingPhysics@CCreatureAction_BalverineCorneredJumpIntoSky@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008CD190 ?IsToFaceTargetAtStart@CCreatureAction_BalverineCorneredJumpIntoSky@@UBE_NXZ
+public:
+    C3DVector*    EndPos;                                    // +0x114
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BalverineCorneredJumpIntoSky) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BalverineCorneredJumpIntoSky, EndPos) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BalverineCorneredJumpIntoSky {
 public:
@@ -79,8 +107,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BalverineCorneredJumpIntoSky) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BalverineCorneredJumpIntoSky, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BalverineCorneredJumpIntoSky, EndPos) == 0x114);
+FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_BalverineCorneredJumpIntoSky) == 0x118);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_BalverineCorneredJumpIntoSky, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_BalverineCorneredJumpIntoSky, EndPos) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_BALVERINECORNEREDJUMPINTOSKY_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BALVERINECORNEREDJUMPINTOSKY_H

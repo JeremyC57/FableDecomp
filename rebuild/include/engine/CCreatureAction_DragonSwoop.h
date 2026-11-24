@@ -9,6 +9,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_DRAGONSWOOP_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012887D4 (RTTI .?AVCCreatureAction_DragonSwoop@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_DragonSwoop); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_DragonSwoop : public CCombatActionBase {
+public:
+    virtual long GetAnimDelayTime() const;                                // slot 6 0x008F5650 ?GetAnimDelayTime@CCreatureAction_DragonSwoop@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008F57C0 ?Clone@CCreatureAction_DragonSwoop@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008F2F00 ?Initialise@CCreatureAction_DragonSwoop@@UAEXXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008F45F0 ?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ
+    virtual bool IsUsingAnimationMovement() const;                        // slot 57 0x008F5660 ?IsUsingAnimationMovement@CCreatureAction_DragonSwoop@@UBE_NXZ
+    virtual bool IsMovementUsingPhysics() const;                          // slot 59 0x008F5670 ?IsMovementUsingPhysics@CCreatureAction_DragonSwoop@@UBE_NXZ
+public:
+    unsigned char SwoopPoints[0x24];                         // +0x114 C3DVector[3]
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonSwoop) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonSwoop, SwoopPoints) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_DragonSwoop {
 public:
@@ -77,8 +102,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonSwoop) == 0x138);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonSwoop, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonSwoop, SwoopPoints) == 0x114);
+FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_DragonSwoop) == 0x138);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_DragonSwoop, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_DragonSwoop, SwoopPoints) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_DRAGONSWOOP_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_DRAGONSWOOP_H
