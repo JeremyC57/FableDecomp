@@ -297,6 +297,13 @@ public:
     // ResetAssignedInputs) + Ego_d.pdb user_profile_manager.obj record. Declaration only: no layout change.
     void ResetAssignedInputsWASD();                                      // 0x00408820
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SETASSIGNEDINPUT
+    // b24c opt-in (rows 0x00407A70 / 0x00407BA0): FableWin.pdb / Ego_r.pdb ?SetAssignedInputKeyboard@CUserProfileManager@@QAEXW4EGameAction@@W4EInputKey@@_N@Z
+    // and ?SetAssignedInputMouse@CUserProfileManager@@QAEXW4EGameAction@@W4EMouseButtonControl@@_N@Z (public; both PDBs list them right before
+    // RedefineControlPassive, which retail places at 0x00407CD0 straight after the pair). Declarations only: no layout change.
+    void SetAssignedInputKeyboard(EGameAction action, EInputKey key, bool passive);                  // 0x00407A70
+    void SetAssignedInputMouse(EGameAction action, EMouseButtonControl button, bool passive);        // 0x00407BA0
+#endif
 #endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
     // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row

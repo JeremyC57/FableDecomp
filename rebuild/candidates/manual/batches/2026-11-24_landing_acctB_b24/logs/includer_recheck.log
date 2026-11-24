@@ -1,0 +1,257 @@
+addr       parity           behav  name
+004065d0   RELOCATION_MATCH PASS   GetDefaultProfileName
+004065f0   RELOCATION_MATCH PASS   GetManualSaveBaseFileName
+00406610   RELOCATION_MATCH PASS   GetManualSaveFileName
+00406690   RELOCATION_MATCH PASS   GetAutoSaveFileName
+00406ae0   RELOCATION_MATCH PASS   GetManualSaveDisplayName
+00407030   MATCH            PASS   IsDebugProfile
+00407a70   RELOCATION_MATCH PASS   SetAssignedInputKeyboard
+00407ba0   RELOCATION_MATCH PASS   SetAssignedInputMouse
+00407cd0   RELOCATION_MATCH PASS   RedefineControlPassive
+00408340   RELOCATION_MATCH PASS   SetSoundAsMuted
+004083b0   RELOCATION_MATCH PASS   SetDefaultValuesAudio
+004085f0   RELOCATION_MATCH PASS   ResetAssignedInputs
+00408820   RELOCATION_MATCH PASS   ResetAssignedInputsWASD
+00408990   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+00408990   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00408990   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+00408990   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00408990   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00408990   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+00408990   WARN SHARED_HEADER_AVAILABLE CActionInputControl (engine/CActionInputControl.h)
+00408990   WARN SHARED_HEADER_AVAILABLE CDisplayModeDesc (engine/CDisplayModeDesc.h)
+00408990   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00408990   RELOCATION_MATCH PASS   ~CUserProfileManager
+004091c0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004091c0   RELOCATION_MATCH PASS   GetSortedSaveNamesAndTimes
+0040d2a0   RELOCATION_MATCH PASS   Get
+0040d830   MATCH            PASS   DeleteData
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationsDef (engine/CObjectAugmentationsDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimFilterNoGroup (engine/CAnimFilterNoGroup.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CAugmentationDef (engine/CAugmentationDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap (engine/CTCInventoryMap.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryQuests (engine/CTCInventoryQuests.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CHeroAbilityDef (engine/CHeroAbilityDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCQuickAccessMenu (engine/CTCQuickAccessMenu.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCBoastUI (engine/CTCBoastUI.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI (engine/CTCQuestCompletionUI.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCPhotojournalCapture (engine/CTCPhotojournalCapture.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0041e6d3   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+0041e6d3   WARN RELOC_NAME: ?size@?$list@JV?$allocator@J@std@@@std@@QBEIXZ -> 0042b677 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ?size@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QBEIXZ -> 0042b636 labelled 'CBasicString<char>::CalcStringLength'
+0041e6d3   WARN RELOC_NAME: ??$find@U?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@PAVCComponent@NUISystem@@@std@@YI?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U10@0ABQAVCComponent@NUISystem@@@Z -> 0042a291 labelled '_unattributed::CVector_0042a291'
+0041e6d3   WARN RELOC_NAME: ?erase@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@@Z -> 00429b52 labelled 'LinkedList_RemoveNode'
+0041e6d3   WARN RELOC_CONFLICT: ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z -> 0040b050 here, 0040d2f0 in landed 0059697a
+0041e6d3   WARN RELOC_NAME: ?PCSetToLoad@CTCInGameMenu@@QAEXJ@Z -> 0047d008 labelled '_global::SetMember_dword0x64_0047d008'
+0041e6d3   WARN RELOC_NAME: ?DropQuest@CTCInventoryMap@@QAEXJ@Z -> 005fa900 labelled '_global::SetMember_dword0x1a4_005fa900'
+0041e6d3   WARN RELOC_NAME: ?find@?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@2@ABK@Z -> 0042b6dc labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+0041e6d3   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEAAU01@XZ -> 00429cfb labelled '_global::RbTreeIterator_PreIncrement_00429cfb'
+0041e6d3   WARN RELOC_NAME: ?clear@?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAEXXZ -> 0042abe1 labelled 'CTCCarryable::OnKill'
+0041e6d3   WARN RELOC_NAME: ??1?$_Rb_tree@KU?$pair@$$CBKVCUIState@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@2@@std@@QAE@XZ -> 0042b755 labelled 'std::list<T_0042b755>::~list'
+0041e6d3   WARN RELOC_NAME: ?FlashQuickAccessDPadIcon@CPlayerGui@@QAEXJ_N@Z -> 00437a30 labelled '_global::Forward_ToggleFlash_via0x1d8_00437a30'
+0041e6d3   WARN RELOC_NAME: ?SetDefaultValuesGameplay@CUserProfileManager@@QAEXXZ -> 00408360 labelled 'CPlayerGui::ForceClose'
+0041e6d3   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041e6d3   WARN RELOC_NAME: ?ConstructStyleCardsScreen@CTCInventory@@QAEXJJJPAVCComponent@NUISystem@@@Z -> 0058a724 labelled 'CTCInventory::GetStyleCardsListUIComponent'
+0041e6d3   WARN RELOC_NAME: ?SetThingSlotToSwap@CTCInventory@@QAEXJ@Z -> 0041ca3e labelled '_global::SetMember_dword0x138_0041ca3e'
+0041e6d3   WARN RELOC_NAME: ?SetDescriptionScrollingOffset@CManager@NUISystem@@QAEXM@Z -> 0041cf33 labelled '_global::SetMember_dword0xc4_0041cf33'
+0041e6d3   WARN RELOC_NAME: ?SetDescriptionScrollingToMax@CManager@NUISystem@@QAEX_N@Z -> 0041cf1f labelled '_global::SetMember_byte0xc8_0041cf1f'
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2b9 labelled 'CCountedPointer<NUISystem::CMesh>::SetStaticCast<NUISystem::CComponent>'
+0041e6d3   WARN RELOC_NAME: ?SetWeaponMappingToMenuEntry@CTCInventoryWeapons@@QAEXPAVCComponent@NUISystem@@J@Z -> 0042d405 labelled 'CTCInventoryClothing::SetClothingMappingToMenuEntry'
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCText@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2ca labelled 'CCountedPointer<NUISystem::CText>::SetStaticCast<NUISystem::CComponent>'
+0041e6d3   WARN RELOC_CONFLICT: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db here, 0042a2ca in landed 00558770
+0041e6d3   WARN RELOC_NAME: ??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z -> 0042a2db labelled 'CCountedPointer<NUISystem::CList>::SetStaticCast<NUISystem::CComponent>'
+0041e6d3   WARN RELOC_NAME: ?GFStringsAreEqual@@YI_NPBG0@Z -> 00401490 labelled 'CEngineMap::PeekWaterHasType'
+0041e6d3   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0041e6d3   WARN RELOC_NAME: ?GetNumberOfSellItems@CTCInventoryTrade@@QBEJPAVCComponent@NUISystem@@@Z -> 0042cd3e labelled 'FID_conflict:max_size'
+0041e6d3   WARN RELOC_NAME: ?RemoveFromItemSellList@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z -> 0042d437 labelled '_global::Forward_CompareAndCountAllocations_member0x20c_0042d437'
+0041e6d3   WARN RELOC_NAME: ?GetNumberOfBuyItems@CTCInventoryTrade@@QBEJPAVCComponent@NUISystem@@@Z -> 0042cd61 labelled 'FID_conflict:max_size'
+0041e6d3   WARN RELOC_NAME: ?RemoveFromItemBuyList@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z -> 0042d44a labelled '_global::Forward_CompareAndCountAllocations_member0x200_0042d44a'
+0041e6d3   WARN RELOC_NAME: ?find@?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Const_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@ABVCCharString@@@Z -> 0042bef2 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+0041e6d3   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@K@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@K@std@@@2@@std@@QAEAAU01@XZ -> 00429cea labelled '_global::RbTreeIterator_PreIncrement_00429cea'
+0041e6d3   RELOCATION_MATCH PASS   Action
+004375e0   MATCH            PASS   GetAbilityButtonScale
+00439070   WARN RELOC_NAME: ??_9@$BA@AE -> 0043e420 labelled 'NPlayerGui::CDrawBase::vcall{0}'
+00439070   RELOCATION_MATCH PASS   DrawPreparePrimitivesForEngine
+00449980   RELOCATION_MATCH PASS   GetMainPlayerJoystickDeviceNumber
+0047e196   WARN RELOC_NAME: ?IsValid@CDateAndTime@@QBE_NXZ -> 009e9c60 labelled 'C3DMeshInfo::HasPhysicsMesh'
+0047e196   RELOCATION_MATCH PASS   SaveGame
+0047e9ae   RELOCATION_MATCH PASS   GlobalUpdate
+0047fe83   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+0047fe83   WARN RELOC_NAME: ?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z -> 00407360 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+0047fe83   RELOCATION_MATCH PASS   GetFileNameList
+004804de   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+004804de   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004804de   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004804de   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004804de   RELOCATION_MATCH PASS   OpenInGameMenuPC
+004830a1   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+004830a1   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004830a1   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+004830a1   RELOCATION_MATCH PASS   OpenInGameMenu
+00493281   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00493281   RELOCATION_MATCH PASS   ClickPast
+00495830   RELOCATION_MATCH PASS   GetSaveNames
+00496070   RELOCATION_MATCH PASS   CFrontendGameComponent
+0055d180   WARN SHARED_HEADER_AVAILABLE CXBConfig (engine/CXBConfig.h)
+0055d180   WARN SHARED_HEADER_AVAILABLE CTCPhotojournalCapture (engine/CTCPhotojournalCapture.h)
+0055d180   WARN RELOC_ALIAS: _D3DXSaveSurfaceToFileW@20 -> 00bfefb6 is the import thunk 'D3DX9_25.DLL::D3DXSaveSurfaceToFileW'
+0055d180   RELOCATION_MATCH PASS   TakeQuickScreenshot
+0056f30b   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+0056f30b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0056f30b   RELOCATION_MATCH PASS   CloseInventory
+00587847   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00587847   RELOCATION_MATCH PASS   ClosePCInventory
+00589d30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00589d30   RELOCATION_MATCH PASS   CloseInventory
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCCharString@@V1@@std@@@1@@Z -> 0059326d labelled '_global::StdList_Ctor_0059326d'
+0058af10   WARN RELOC_NAME: ??$?0PBDPBD@?$pair@VCCharString@@V1@@std@@QAE@ABU?$pair@PBDPBD@1@@Z -> 00592495 labelled 'std::pair<const CCharString, CCharString>::pair'
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@1@@Z -> 00593288 labelled '_global::StdList_Ctor_00593288'
+0058af10   WARN RELOC_NAME: ?insert@?$list@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@PAVCComponent@NUISystem@@PAV12@@2@@Z -> 00593b1a labelled 'ListNode_Create'
+0058af10   WARN RELOC_NAME: ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ -> 00406880 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@XZ -> 005932a3 labelled 'std::list<T_005932a3>::~list'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@XZ -> 00593b03 labelled 'std::list<T_00593b03>::~list'
+0058af10   RELOCATION_MATCH PASS   OpenPCOptionsMenu
+0058f9bc   WARN RELOC_NAME: ??1?$_Rb_tree@VCDateAndTime@@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@U?$_Select1st@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@3@U?$less@VCDateAndTime@@@3@V?$allocator@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@3@@std@@QAE@XZ -> 005940d5 labelled '_global::StdList_Dtor_005940d5'
+0058f9bc   RELOCATION_MATCH PASS   OpenPCPhotojournal
+00595cc1   RELOCATION_MATCH PASS   ConstructFileDescription
+00596cce   RELOCATION_MATCH PASS   RefreshAvailableProfiles
+00597df7   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00597df7   WARN RELOC_NAME: ?GetSaveSlotFileName@CUserProfileManager@@QBEABVCWideString@@J@Z -> 00407360 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+00597df7   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00597df7   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00597df7   RELOCATION_MATCH PASS   GetSavedGameNames
+00598463   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z -> 0040f0a0 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00598463   RELOCATION_MATCH PASS   RefreshAvailableSavedGamesForProfile
+00598a1c   WARN RELOC_NAME: ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ -> 00406880 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00598a1c   RELOCATION_MATCH PASS   BuildComponents
+00599e3f   WARN RELOC_ALIAS: __wcsicmp -> 00f3fb84 is the import thunk 'MSVCR71.DLL::_wcsicmp'
+00599e3f   RELOCATION_MATCH PASS   Update
+0059e2c7   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0059e2c7   RELOCATION_MATCH PASS   CloseInventoryPC
+0059f304   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0059f304   RELOCATION_MATCH PASS   CloseInventory
+005e3f00   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+005e5f30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005e5f30   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005e5f30   RELOCATION_MATCH PASS   ActivateReal
+005e78f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005e78f0   RELOCATION_MATCH PASS   GlobalUpdate
+005e9750   MATCH            PASS   IsComponentSerialisable
+005fce60   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005fce60   RELOCATION_MATCH PASS   CloseInventory
+0064bfba   WARN RELOC_NAME: ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z -> 005cbdd2 labelled 'operator!=<CThing>'
+0064bfba   WARN RELOC_CONFLICT: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bffc0 here, 004bfe20 in landed 004bff60
+0064bfba   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+0064bfba   RELOCATION_MATCH PASS   Draw
+00651b04   WARN RELOC_NAME: ?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ -> 005da7d0 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00651b04   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::CTCSpecialAbilities::GetAbilityAvailability'
+00651b04   RELOCATION_MATCH PASS   Draw
+00652fa4   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00652fa4   WARN RELOC_NAME: ?GetGuildSealAlpha@CPlayerGui@@QBEMXZ -> 00437820 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00652fa4   WARN RELOC_NAME: ?IsAbilityAvailable@CTCSpecialAbilities@@QBE_NW4EHeroAbility@@@Z -> 0072c430 labelled 'CTCSpecialAbilities::CTCSpecialAbilities::GetAbilityAvailability'
+00652fa4   WARN RELOC_NAME: ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00652fa4   RELOCATION_MATCH PASS   Draw
+006c9fd0   RELOCATION_MATCH PASS   FrameUpdate
+006ca720   MATCH            PASS   HasFrameUpdate
+006ca730   MATCH            PASS   IsComponentSerialisable
+0085c470   RELOCATION_MATCH PASS   Update
+00873bc0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00873bc0   RELOCATION_MATCH PASS   Recentre
+00874790   WARN RELOC_NAME: ?AddSubComponent@CBase@NCameraModes@@QAEXV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@_N@Z -> 0084e810 labelled 'CBase::SetPhysics'
+00874790   RELOCATION_MATCH PASS   OnInit
+0087bd70   RELOCATION_MATCH PASS   Update
+0088f890   RELOCATION_MATCH PASS   PlayAVIMovie
+01219ec0   WARN RELOC_CONFLICT: _$E2 -> 012288c0 here, 01228930 in landed 01219f00
+01219ec0   WARN RELOC_NAME: _$E2 -> 012288c0 labelled '_global::AtexitDtor_CCharString_at_013b7d54_012288c0'
+01219ec0   RELOCATION_MATCH PASS   m_strProfileName
+
+WINS: 60
+  004065d0 RELOCATION_MATCH CUserProfileManager::?GetDefaultProfileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  004065f0 RELOCATION_MATCH CUserProfileManager::?GetManualSaveBaseFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  00406610 RELOCATION_MATCH CUserProfileManager::?GetManualSaveFileName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+  00406690 RELOCATION_MATCH CUserProfileManager::?GetAutoSaveFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  00406ae0 RELOCATION_MATCH CUserProfileManager::?GetManualSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@J@Z
+  00407030 MATCH CUserProfileManager::?IsDebugProfile@CUserProfileManager@@QBE_NXZ
+  00407a70 RELOCATION_MATCH CUserProfileManager::?SetAssignedInputKeyboard@CUserProfileManager@@QAEXW4EGameAction@@W4EInputKey@@_N@Z
+  00407ba0 RELOCATION_MATCH CUserProfileManager::?SetAssignedInputMouse@CUserProfileManager@@QAEXW4EGameAction@@W4EMouseButtonControl@@_N@Z
+  00407cd0 RELOCATION_MATCH CUserProfileManager::?RedefineControlPassive@CUserProfileManager@@QAEXABVCActionInputControl@@0J@Z
+  00408340 RELOCATION_MATCH CUserProfileManager::?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z
+  004083b0 RELOCATION_MATCH CUserProfileManager::?SetDefaultValuesAudio@CUserProfileManager@@QAEXXZ
+  004085f0 RELOCATION_MATCH CUserProfileManager::?ResetAssignedInputs@CUserProfileManager@@QAEXXZ
+  00408820 RELOCATION_MATCH CUserProfileManager::?ResetAssignedInputsWASD@CUserProfileManager@@QAEXXZ
+  00408990 RELOCATION_MATCH CUserProfileManager::??1CUserProfileManager@@UAE@XZ
+  004091c0 RELOCATION_MATCH CUserProfileManager::?GetSortedSaveNamesAndTimes@CUserProfileManager@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@AAV?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@3@@Z
+  0040d2a0 RELOCATION_MATCH CUserProfileManager::?Get@CUserProfileManager@@SIAAV1@XZ
+  0040d830 MATCH CCountedPointer<CUserProfileManager>::?DeleteData@?$CCountedPointer@VCUserProfileManager@@@@SIXPAX@Z
+  0041e6d3 RELOCATION_MATCH NUISystem::CManager::?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  004375e0 MATCH CPlayerGui::?GetAbilityButtonScale@CPlayerGui@@QBEMXZ
+  00439070 RELOCATION_MATCH CPlayerGui::?DrawPreparePrimitivesForEngine@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00449980 RELOCATION_MATCH CPlayerManager::?GetMainPlayerJoystickDeviceNumber@CPlayerManager@@QBEJXZ
+  0047e196 RELOCATION_MATCH CTCInGameMenu::?SaveGame@CTCInGameMenu@@QAEXJ@Z
+  0047e9ae RELOCATION_MATCH CTCInGameMenu::?GlobalUpdate@CTCInGameMenu@@UAEX_N@Z
+  0047fe83 RELOCATION_MATCH CTCInGameMenu::?GetFileNameList@CTCInGameMenu@@AAEXXZ
+  004804de RELOCATION_MATCH CTCInGameMenu::?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z
+  004830a1 RELOCATION_MATCH CTCInGameMenu::?OpenInGameMenu@CTCInGameMenu@@QAEXXZ
+  00493281 RELOCATION_MATCH CSubtitleRenderer::?ClickPast@CSubtitleRenderer@@QAE_NXZ
+  00495830 RELOCATION_MATCH CFrontendGameComponent::?GetSaveNames@CFrontendGameComponent@@SIXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00496070 RELOCATION_MATCH CFrontendGameComponent::??0CFrontendGameComponent
+  0055d180 RELOCATION_MATCH CTCPhotojournalCapture::?TakeQuickScreenshot@CTCPhotojournalCapture@@QAEXXZ
+  0056f30b RELOCATION_MATCH CTCInventoryExperience::?CloseInventory@CTCInventoryExperience@@UAEXXZ
+  00587847 RELOCATION_MATCH CTCInventory::?ClosePCInventory@CTCInventory@@QAEX_N@Z
+  00589d30 RELOCATION_MATCH CTCInventory::?CloseInventory@CTCInventory@@UAEXXZ
+  0058af10 RELOCATION_MATCH CTCInventory::?OpenPCOptionsMenu@CTCInventory@@QAEXXZ
+  0058f9bc RELOCATION_MATCH CTCInventory::?OpenPCPhotojournal@CTCInventory@@QAEXXZ
+  00595cc1 RELOCATION_MATCH NUISystem::CFrontEndManager::?ConstructFileDescription@CFrontEndManager@NUISystem@@IAEXKPAVCComponent@2@0AAVCWideString@@@Z
+  00596cce RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableProfiles@CFrontEndManager@NUISystem@@IAEJXZ
+  00597df7 RELOCATION_MATCH NUISystem::CFrontEndManager::?GetSavedGameNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00598463 RELOCATION_MATCH NUISystem::CFrontEndManager::?RefreshAvailableSavedGamesForProfile@CFrontEndManager@NUISystem@@IAEJXZ
+  00598a1c RELOCATION_MATCH NUISystem::CFrontEndManager::?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z
+  00599e3f RELOCATION_MATCH NUISystem::CFrontEndManager::?Update@CFrontEndManager@NUISystem@@QAEXM@Z
+  0059e2c7 RELOCATION_MATCH CTCInventoryTrade::?CloseInventoryPC@CTCInventoryTrade@@UAEXXZ
+  0059f304 RELOCATION_MATCH CTCInventoryTrade::?CloseInventory@CTCInventoryTrade@@UAEXXZ
+  005e3f00 RELOCATION_MATCH CTCQuestCompletionUI::?DrawPreparePrimitivesForRendering@CTCQuestCompletionUI@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  005e5f30 RELOCATION_MATCH CTCQuestCompletionUI::?ActivateReal@CTCQuestCompletionUI@@QAEXXZ
+  005e78f0 RELOCATION_MATCH CTCQuestCompletionUI::?GlobalUpdate@CTCQuestCompletionUI@@UAEX_N@Z
+  005e9750 MATCH CTCQuestCompletionUI::?IsComponentSerialisable@CTCQuestCompletionUI@@UBE_NXZ
+  005fce60 RELOCATION_MATCH CTCInventoryMap::?CloseInventory@CTCInventoryMap@@UAEXXZ
+  0064bfba RELOCATION_MATCH NPlayerGui::CDrawHighlightingTargetingCursor::?Draw@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00651b04 RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::?Draw@CDrawAbilityButtons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00652fa4 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::?Draw@CDrawQuickAccessIcons@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  006c9fd0 RELOCATION_MATCH CTCHero::?FrameUpdate@CTCHero@@UAEXXZ
+  006ca720 MATCH CTCHero::?HasFrameUpdate@CTCHero@@UBE_NXZ
+  006ca730 MATCH CTCHero::?IsComponentSerialisable@CTCHero@@UBE_NXZ
+  0085c470 RELOCATION_MATCH NCameraModes::CMoveOnCylinder::?Update@CMoveOnCylinder@NCameraModes@@UAEXXZ
+  00873bc0 RELOCATION_MATCH NCameraModes::CPCMouseLook::?Recentre@CPCMouseLook@NCameraModes@@UAEXXZ
+  00874790 RELOCATION_MATCH NCameraModes::CPCMouseLook::?OnInit@CPCMouseLook@NCameraModes@@UAEXXZ
+  0087bd70 RELOCATION_MATCH NCameraModes::CRotateAround::?Update@CRotateAround@NCameraModes@@UAEXXZ
+  0088f890 RELOCATION_MATCH CGameScriptInterface::?PlayAVIMovie@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  01219ec0 RELOCATION_MATCH _static_init::_$E1

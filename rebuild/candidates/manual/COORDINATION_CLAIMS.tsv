@@ -444,3 +444,7 @@ date	account	item	kind	status	note
 2026-11-24	A	acctB_b24 staged rows (funclet, CUserProfileManager input setters)	landing	claimed	A lands B's staged ready rows (owner ruling 2026-11-24: B verifies and stages, A lands); GFMain and the water tesselator row stay staged
 2026-11-24	A	agent NF328: CScriptThing destructor / copy-constructor pick-any unit (NF326 Q4)	naming	claimed	the two T3 nf326 unit lines and their copy rows; locks via lock.sh NF328
 2026-11-24	A	agent NF329: NF324 Q1 flat-header combat families on generated opt-in models	naming	claimed	CCombatActionBase then CCombatSequenceBase families (advisor decision, owner delegated: Q1 wanted as its own pass); locks via lock.sh NF329
+2026-11-24	A	acctB_b24 staged rows (funclet, CUserProfileManager input setters)	landing	done	landed 3 rows (batches/2026-11-24_landing_acctB_b24)
+2026-11-24	B	0x012133C0	author	done	landed by Account A (batches/2026-11-24_landing_acctB_b24)
+2026-11-24	B	0x00407A70	author	done	landed by Account A (batches/2026-11-24_landing_acctB_b24)
+2026-11-24	B	0x00407BA0	author	done	landed by Account A (batches/2026-11-24_landing_acctB_b24)

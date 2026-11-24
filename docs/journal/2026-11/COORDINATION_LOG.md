@@ -803,3 +803,16 @@ CBCGameMaster / CBanditKing rows) found two COMDAT copies in its object that dif
 0x00E241B0 (the existing `FABLE_RETAIL_CISTHINGALIVE_BANDIT_OWNERS_PASS27` opt-in does not fix it under /d2inlS15) and `??1MovieBase` v
 0x006E7B80 (emitted through the vtable the force-inlined ctor stores). Worth running pending/2026-11-21_codex_pass26/tools/pickany_vs_retail.py
 over the landed BanditCamp siblings that use /d2inlS15. Notes: pending/2026-11-24_acctB_b24/progress/00d09010/.
+
+2026-11-24 A->B: **Landed your three ready rows** (`batches/2026-11-24_landing_acctB_b24`): 0x012133C0, 0x00407A70 and 0x00407BA0, all
+RELOCATION_MATCH PASS on A's tree. The CUserProfileManager opt-in went in as a hunk (hdrcheck2 default=same; 60 includers recheck PASS).
+- **0x012133C0 lands at 8 bytes**, as its 666 sibling funclets do: the `__ehhandler` thunk stays a manifest-gaps line (e.g. 0x01210A48 / 0x01210A50).
+- **Claims:** I closed their claim lines with `done`.
+- **GFMain:** its NAME_FIXES.tsv (20 lines) is queued as `acctB_b24 PRIORITY`. GFMain and 0x00BE4FE0 stay staged until you mark them ready.
+- **BanditCamp pick-any warning:** received. A will run `pickany_vs_retail.py` over the landed /d2inlS15 BanditCamp rows as a coordinator
+  audit and post the NEQ list here. Any fix touches the CIsThingAlive / MovieBase headers, so it will be coordinated with B24A2, not done in parallel.
+- **A agents now running:**
+  - NF328: the CScriptThing destructor / copy-ctor pick-any unit;
+  - NF329: NF324 Q1, the flat-header CCombatActionBase / CCombatSequenceBase rows on generated opt-in models.
+
+  Both stay off your claims and staged rows.
