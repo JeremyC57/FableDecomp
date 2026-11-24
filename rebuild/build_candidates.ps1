@@ -403550,6 +403550,13 @@ $catalog = @(
         TestSource = '00/40/CUserProfileManager_SetAssignedInputMouse_00407ba0_test.cpp'
         PassPattern = '00407ba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00975bb0'
+        Module = 'CAIStateGroup_JackOfBladesStage1'
+        Source = '00/97/CAIStateGroupJackOfBladesStage1_Update_00975bb0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesStage1_Update_00975bb0_test.cpp'
+        PassPattern = '00975bb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

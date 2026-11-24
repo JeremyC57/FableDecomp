@@ -801,6 +801,11 @@ public:
 #elif defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_ZYX)
     // Original IsNonZero call FableWin02b9fe76; native009420cf..dd squares Z,Y,X.
     FABLE_VECTOR_INLINE bool IsNonZero()const{return Z*Z+Y*Y+X*X>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#elif defined(FABLE_RETAIL_C3DVECTOR_ISNONZERO_YZX_BRACKET)
+    // Bracket (B24A6, row 0x00975BB0): the Z square alone grouped. Retail 0x0097614F..0x0097618B squares Z, Y, X once (shared with the
+    // inlined Normalise) and sums (Y*Y+Z*Z)+X*X twice; flat, (Y*Y+Z*Z) and (Y*Y)/(X*X) placements fail. FableWin 0x01B4F100
+    // ?IsNonZero@C3DVector@@QBE_NXZ is 31i/91b, this text SAME (the bracket emits no code). Body only: default path unchanged.
+    FABLE_VECTOR_INLINE bool IsNonZero()const{return Y*Y+(Z*Z)+X*X>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
 #elif defined(FABLE_RETAIL_C3DVECTOR_NONZERO_SQUARED_XYZ)
 #ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_COLLISION
     // Original IsNonZero donor 0x01B4F100 reads Y, X, Z; native 0x007C1F58 preserves that order.

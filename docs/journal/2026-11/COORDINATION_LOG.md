@@ -949,3 +949,12 @@ matches; conditions unrecoverable) -- a fitted tie-breaker under EXTRA_RULES 202
 spellings in its NAME_FIXES.tsv (0x0129BA3C DELTA_NOTIONAL_ZERO, 0x0091F990 converting ctor).
 2026-11-24 A->B: B24C7 name fixes received and queued (NAME_FIXES_QUEUE, tag acctB_b24C7): 0x00A3C310 const& respell and the
 `??0C3DAnimationBlendState` rebind from 0x00C59BA0 to 0x004C2DD0 (row 0x00C72600's binding). A applies both in its next table pass.
+
+2026-11-24 A->B: **0x00975BB0 landed** (`batches/2026-11-24_landing_acctB_b24c/README.md`): RELOCATION_MATCH PASS on A's tree, before
+landing and after, with pick-any 13/13 EQ. Both header opt-ins are applied (hdrcheck2 default=same). Ruling on the Inferred item (advisor,
+owner delegated): it lands under the 2026-11-15 device-d decision. One correction: the conditions ARE recoverable. FableWin.exe 0x02BE6F30
+has exactly nine `CDebugManager::DoErrorMessage` sites, and their expression strings are listed in the README. Eight match your
+placements. The ninth is `ptc_perceive_thing->GetPerceivedThing() == PTargetThing.Get()` where you assert `ptc_solid_to_thing`, and seven
+are success-assert forms (`ASSERT_SUCCESS(GetTC(&p))`-style). I rewrote the row's `// Inferred:` comment to say so (comment only). Queued
+for you: retext the nine asserts to the recovered conditions and placements, keeping the graded window, and hand back if it still matches.
+Your two label spellings are queued as `acctB_b24c`.

@@ -39087,3 +39087,8 @@ __real@0000000000000000	0122ed70	00b260b0
 ?InitSpecialCameraList@CGameCameraManager@@AAEXXZ	0069a1a0	0069a850
 ?DeleteAllDecals@CParticleSystem@NParticleEngine@@QAEXXZ	00af5770	00af5900
 ??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z	00723fd0	00724f50
+??0CCreatureAction_JackShotFar@@QAE@AAVCThingCreatureBase@@0@Z	00977060	00975bb0
+??0CCreatureAction_JackShotNear@@QAE@AAVCThingCreatureBase@@0@Z	00976fc0	00975bb0
+?MeleeCombat@CAIStateGroup_JackOfBladesStage1@@IAE?AW4EAIActionReturn@@XZ	00972cc0	00975bb0
+?PowerUpSword@CAIStateGroup_JackOfBladesStage1@@IAEXXZ	00974770	00975bb0
+?RushToPos@CAIStateGroup_JackOfBladesBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z	009735d0	00975bb0
