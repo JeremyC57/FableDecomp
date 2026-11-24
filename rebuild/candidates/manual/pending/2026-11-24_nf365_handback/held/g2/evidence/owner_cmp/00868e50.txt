@@ -1,0 +1,2 @@
+EQUAL obj/00868e50_g.obj len=108 len=108 obj/H_00817b40.obj ??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+EQUAL obj/00868e50_g.obj len=98 len=98 obj/H_0042b040.obj ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z

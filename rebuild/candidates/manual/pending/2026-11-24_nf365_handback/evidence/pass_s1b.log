@@ -1,0 +1,8 @@
+# overlay=
+# overlay=
+H 00817b40 RELOCATION_MATCH leaf=??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/00817b40.cpp
+PASS_DONE
+CHAIN_DONE 00817b40
+H 006d1250 RELOCATION_MATCH leaf=?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z flags=/GS src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/006d1250.cpp
+PASS_DONE
+CHAIN_DONE 006d1250

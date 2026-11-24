@@ -1,0 +1,9 @@
+CHANGED ('COMDAT', '??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z', '.text') size 116 -> 98 data_eq=False relocs_eq=False flags_eq=False
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size 50 -> 52 data_eq=False relocs_eq=True flags_eq=True
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+ADDED   ('COMDAT', '?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ', '.text') size=3
+DROPPED ('COMDAT', '?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ', '.text')
+SYM- DEF ?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z
+SYM- DEF ?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ
+SYM+ DEF ?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+VERDICT DIFF n=5 symdelta=3 leaf=same

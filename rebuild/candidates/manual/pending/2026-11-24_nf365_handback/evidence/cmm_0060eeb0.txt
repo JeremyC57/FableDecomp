@@ -1,0 +1,34 @@
+data_equal False relocs_equal False n 175 175
+   0xaf9 (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V -> (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V
+   0xe6f ??_C@_0BD@HLIOEIDB@UI_MISC_THINGS_DEF?$AA@ -> ??_C@_0BD@HLIOEIDB@UI_MISC_THINGS_DEF?$AA@
+   0xe7c ??0CCharString@@QAE@PBDJ@Z -> ??0CCharString@@QAE@PBDJ@Z
+   0xe88 ?Get@CGameDefinitionManager@@SIAAV1@XZ -> ?Get@CGameDefinitionManager@@SIAAV1@XZ
+   0xe8f ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z -> ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z
+   0xe9a ??1CCharString@@QAE@XZ -> ??1CCharString@@QAE@XZ
+   0xe9f ?Get@CGameDefinitionManager@@SIAAV1@XZ -> ?Get@CGameDefinitionManager@@SIAAV1@XZ
+   0xeb0 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z -> ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThing
+   0xf0c ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ -> ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ
+   0xf13 ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z -> ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z
+   0xf29 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ -> ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ
+   0xf30 ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z -> ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z
+   0xf9d ??_C@_0BG@DLLBLBDG@UI_REGION_PATH_MARKER?$AA@ -> ??_C@_0BG@DLLBLBDG@UI_REGION_PATH_MARKER?$AA@
+   0xfa6 ??0CCharString@@QAE@PBDJ@Z -> ??0CCharString@@QAE@PBDJ@Z
+   0xfb7 ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z -> ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+   0xfc6 ??2@YAPAXI@Z -> ??2@YAPAXI@Z
+   0xfde ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+   0xff4 ??1CCharString@@QAE@XZ -> ??1CCharString@@QAE@XZ
+   0x101d ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ -> ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ
+   0x102c ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ -> ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ
+   0x1046 __real@3f000000 -> __real@3f000000
+   0x1050 __real@3f000000 -> __real@3f000000
+   0x1059 ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ -> ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ
+   0x1084 ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@ -> ??A?$map@KVCUIState@NUISystem@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCUIState@NUISystem@@@std@@@
+   0x10c5 ??3@YAXPAX@Z -> ??3@YAXPAX@Z
+   0x1116 _free -> _free
+   0x1128 _free -> _free
+   0x1137 ??1?$map@JU?$pair@JJ@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAE@X -> ??1?$map@JU?$pair@JJ@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAE@X
+   0x115a ??3@YAXPAX@Z -> ??3@YAXPAX@Z
+   0x116c (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V -> (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V
+   0x1170 (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V -> (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V
+   0x1174 (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V -> (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V
+   0x1178 (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V -> (('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V

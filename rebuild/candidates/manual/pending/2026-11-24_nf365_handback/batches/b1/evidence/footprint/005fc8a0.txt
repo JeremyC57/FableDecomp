@@ -1,0 +1,17 @@
+# H=H_005fc8a0.obj G=005fc8a0_g.obj changed/added=3
+NODEF	H_006096e0.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98
+EQUAL	H_005e5f30.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98/98 sel=2
+NODEF	H_006d1250.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98
+EQUAL	H_005e4be0.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98/98 sel=2
+NODEF	H_006096e0.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52
+EQUAL	H_005e5f30.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52/52 sel=2
+NODEF	H_006d1250.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52
+EQUAL	H_005e4be0.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52/52 sel=2
+EQUAL	H_006096e0.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+EQUAL	H_005e5f30.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+EQUAL	H_006d1250.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+EQUAL	H_005e4be0.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+ALLSHARED	H_006096e0.obj	shared=26 equal=26 differ=-
+ALLSHARED	H_005e5f30.obj	shared=35 equal=35 differ=-
+ALLSHARED	H_006d1250.obj	shared=20 equal=20 differ=-
+ALLSHARED	H_005e4be0.obj	shared=15 equal=15 differ=-

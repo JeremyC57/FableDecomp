@@ -17,6 +17,13 @@
 #define FABLE_RETAIL_SCOPED_PTR
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CDEFINITIONMANAGER
+// Pick-any (NF361): CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) takes the engine/CDefinitionManager.h body
+//   (GETDEF_GLOBAL_BODY with the retail re-reading SetDynamicCast) in place of the former same-TU template, and the NF349 size-body
+//   opt-in gives the out-of-line GetDef<NUISystem::CUIMiscThingsDef> copy owner 0x0042B312's optimize("y", off) / ("s", on) body
+//   (Fidelity: scaffolding, not retail).
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CUIMISCTHINGSDEF_SIZE_BODY
 #include "engine/CHeroLogBook.h"
 #include "fable_game.h"
 #include "engine/CPlayerManager.h"
@@ -67,12 +74,7 @@ template<class K,class V,class C,class A> V& std::map<K,V,C,A>::operator[](const
 template<> __declspec(noinline) void std::__destroy_aux<CHeroLogBook::CHeroLogBookEntry*>(CHeroLogBook::CHeroLogBookEntry* first,CHeroLogBook::CHeroLogBookEntry* last,const std::__false_type&) {
     for(;first!=last;++first)std::_Destroy(&*first);
 }
-template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* result)const {
-    if(index<=0)return false;
-    CDefPointer<const CDefClassBase> definition=GetPDefFromGlobalIndex(index);
-    if(!definition.IsNull()) { result->SetDynamicCast(definition);return true; }
-    return false;
-}
+// (NF361) CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*): engine/CDefinitionManager.h GETDEF_GLOBAL_BODY (see the defines above).
 template<> std::vector<CHeroLogBook::CHeroLogBookEntry>::vector(const std::vector<CHeroLogBook::CHeroLogBookEntry>& other)
  : std::_Vector_base<CHeroLogBook::CHeroLogBookEntry,std::allocator<CHeroLogBook::CHeroLogBookEntry> >(other.size(),other.get_allocator()) {
     this->_M_finish=std::__uninitialized_copy(other.begin(),other.end(),this->_M_start,std::__false_type());

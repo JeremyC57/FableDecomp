@@ -1,0 +1,1 @@
+pairs 10 NEQ reach flips 0

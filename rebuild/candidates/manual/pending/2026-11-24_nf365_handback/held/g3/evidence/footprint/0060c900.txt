@@ -1,0 +1,21 @@
+# H=H_0060c900.obj G=0060c900_g.obj changed/added=4
+NODEF	H_006096e0.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98
+EQUAL	H_005e5f30.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98/98 sel=2
+NODEF	H_006d1250.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98
+EQUAL	H_005e4be0.obj	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	len=98/98 sel=2
+NODEF	H_006096e0.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52
+EQUAL	H_005e5f30.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52/52 sel=2
+NODEF	H_006d1250.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52
+EQUAL	H_005e4be0.obj	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	len=52/52 sel=2
+NODEF	H_006096e0.obj	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	len=4420
+NODEF	H_005e5f30.obj	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	len=4420
+NODEF	H_006d1250.obj	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	len=4420
+NODEF	H_005e4be0.obj	?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z	len=4420
+EQUAL	H_006096e0.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+EQUAL	H_005e5f30.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+EQUAL	H_006d1250.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+EQUAL	H_005e4be0.obj	?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ	len=3/3 sel=2
+ALLSHARED	H_006096e0.obj	shared=69 equal=69 differ=-
+ALLSHARED	H_005e5f30.obj	shared=47 equal=47 differ=-
+ALLSHARED	H_006d1250.obj	shared=66 equal=66 differ=-
+ALLSHARED	H_005e4be0.obj	shared=45 equal=45 differ=-

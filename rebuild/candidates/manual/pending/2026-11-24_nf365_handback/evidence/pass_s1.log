@@ -1,0 +1,22 @@
+# overlay=
+# overlay=
+# overlay=
+# overlay=
+H 00868e50 RELOCATION_MATCH leaf=?GetArmourWeightsFromThing@?A0x flags=/Gr src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/00868e50.cpp
+PASS_DONE
+# overlay=
+H 005fc2d0 RELOCATION_MATCH leaf=?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/005fc2d0.cpp
+PASS_DONE
+# overlay=
+N 00868e50_g RELOCATION_MATCH leaf=?GetArmourWeightsFromThing@?A0x flags=/Gr src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/00868e50.cpp
+PASS_DONE
+CHAIN_DONE 00868e50
+H 005e5f30 RELOCATION_MATCH leaf=?ActivateReal@CTCQuestCompletionUI@@QAEXXZ flags=/GS src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/005e5f30.cpp
+PASS_DONE
+CHAIN_DONE 005e5f30
+H 006096e0 RELOCATION_MATCH leaf=?ConstructLogbookListPC@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/006096e0.cpp
+PASS_DONE
+CHAIN_DONE 006096e0
+N 005fc2d0_g RELOCATION_MATCH leaf=?ConstructQuestReviewList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/005fc2d0.cpp
+PASS_DONE
+CHAIN_DONE 005fc2d0

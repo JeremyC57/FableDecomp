@@ -57,6 +57,13 @@
 //   CCountedPointer<NUISystem::CComponent>::Reset copy takes owner 0x00429C6F's optimize("s", on) body, and the ReleaseData copy it calls owner 0x004291DE's.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RELEASEDATA_SIZE_BODY
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY
+// Pick-any (NF361): CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) takes the engine/CDefinitionManager.h body
+//   (GETDEF_GLOBAL_BODY with the retail re-reading SetDynamicCast) in place of the former same-TU template, and the NF349 size-body
+//   opt-in gives the out-of-line GetDef<NUISystem::CUIMiscThingsDef> copy owner 0x0042B312's optimize("y", off) / ("s", on) body
+//   (Fidelity: scaffolding, not retail).
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CUIMISCTHINGSDEF_SIZE_BODY
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "fable_string.h"
@@ -86,14 +93,7 @@ bool __fastcall ConstructString(CWideString& text, long value);          // 0x00
 }
 
 #pragma auto_inline(off)
-// Same-TU body of CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) (as the landed CHeroLogBook::AddEntry 0x0047A9F0: retail
-// calls the instance through 0x0042B312; the body in the TU lets VC7.1 see the def pointer is not captured).
-template<class T> bool CDefinitionManager::GetDef(long index,CDefPointer<const T>* result)const {
-    if(index<=0)return false;
-    CDefPointer<const CDefClassBase> definition=GetPDefFromGlobalIndex(index);
-    if(!definition.IsNull()) { result->SetDynamicCast(definition);return true; }
-    return false;
-}
+// (NF361) CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*): engine/CDefinitionManager.h GETDEF_GLOBAL_BODY (see the defines above).
 // Same-TU body of map<unsigned long, CUIState>::operator[] (retail calls the instance through 0x0042D5B1; as the landed
 // CHeroLogBook::AddEntry 0x0047A9F0 body): VC7.1 then stores each `GetStates()[0]` key after its argument push.
 template<class K,class V,class C,class A> V& std::map<K,V,C,A>::operator[](const K& key) {

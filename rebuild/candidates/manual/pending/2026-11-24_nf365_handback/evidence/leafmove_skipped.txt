@@ -1,0 +1,36 @@
+== 005ff190 leaf=?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z grade H=RELOCATION_MATCH g=DIFFER(4128v4176)
+data_equal False relocs_equal False n 163 163
+36
+   0xd1d ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z -> ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThing
+CHANGED ('COMDAT', '??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z', '.text') size 116
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.te
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+CHANGED ('COMDAT', '?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@@Z', '.text') size 
+ADDED   ('COMDAT', '?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ', '.text') size=3
+DROPPED ('COMDAT', '?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ', '.text')
+VERDICT DIFF n=6 symdelta=3 leaf=DIFF
+== 00605570 leaf=?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z grade H=RELOCATION_MATCH g=DIFFER(1841v1890)
+data_equal False relocs_equal False n 81 81
+57
+   0x2bb ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z -> ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThing
+CHANGED ('COMDAT', '??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z', '.text') size 116
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.te
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+CHANGED ('COMDAT', '?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z', '.text') size 1890 -> 1841 data_eq=False relocs
+ADDED   ('COMDAT', '?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ', '.text') size=3
+DROPPED ('COMDAT', '?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ', '.text')
+VERDICT DIFF n=6 symdelta=3 leaf=DIFF
+== 00607330 leaf=?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z grade H=RELOCATION_MATCH g=DIFFER(9084v9124)
+data_equal False relocs_equal False n 375 375
+329
+   0x708 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ -> ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+   0x720 ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z -> ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+CHANGED ('COMDAT', '??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z', '.text') size 116 -> 98 data_eq=False r
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size 50
+CHANGED ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size 5
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+DROPPED ('COMDAT', '?Assign@?$CDefPointer@$$CBVCThingObjectDef@@@@AAEXPAVCDefPointeeBase@@@Z', '.text')
+CHANGED ('COMDAT', '?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z', '.text') size 9124 -> 9084 data_eq=False relocs_eq=False flags
+ADDED   ('COMDAT', '?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ', '.text') size=3
+DROPPED ('COMDAT', '?IsNull@?$CDefPointer@$$CBVCDefClassBase@@@@QBE_NXZ', '.text')
+VERDICT DIFF n=8 symdelta=4 leaf=DIFF

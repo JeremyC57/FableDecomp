@@ -1,0 +1,10 @@
+00868e50	pk_all	TURNED_NEQ	00817b40	leaf-called	??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+00868e50	pk_all	REMAIN_NEQ	00817b40	leaf-called	??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+00868e50	pk_all	TURNED_NEQ	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+00868e50	pk_all	REMAIN_NEQ	0042b040	leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+00868e50	pk_all	REMAIN_NEQ	0057ff92	leaf-called	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+00868e50	pvr	TURNED_NEQ	00817b40	not-leaf-called	??$GetDef@VCArmourDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCArmourDef@@@@@Z
+00868e50	pvr	TURNED_NEQ	0042b040	not-leaf-called	??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+ROW 00868e50 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=2 remain_subdef=1
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [2, 0, 0, 0], 'pvr': [2, 0, 0, 0]}
+GATE FAIL (2)

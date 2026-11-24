@@ -1,0 +1,56 @@
+# overlay=
+# overlay=
+# overlay=
+# overlay=
+N 0047a9f0_g RELOCATION_MATCH leaf=?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z flags=/Gr src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/0047a9f0.cpp
+PASS_DONE
+CHAIN_DONE 0047a9f0
+# overlay=
+N 006001e0_g RELOCATION_MATCH leaf=?ConstructRegionDescriptionShops@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/006001e0.cpp
+PASS_DONE
+CHAIN_DONE 006001e0
+# overlay=
+N 005ff190_g DIFFER(4128v4176) leaf=?CreateMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAV?$vector@VCRegion@@V?$a flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/005ff190.cpp
+PASS_DONE
+CHAIN_DONE 005ff190
+# overlay=
+N 005fc8a0_g RELOCATION_MATCH leaf=?ConstructQuestReviewListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/005fc8a0.cpp
+PASS_DONE
+CHAIN_DONE 005fc8a0
+N 00600b60_g RELOCATION_MATCH leaf=?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/00600b60.cpp
+PASS_DONE
+# overlay=
+CHAIN_DONE 00600b60
+# overlay=
+N 00605570_g DIFFER(1841v1890) leaf=?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z flags=/d2inlT107 src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/00605570.cpp
+PASS_DONE
+CHAIN_DONE 00605570
+N 0061b610_g RELOCATION_MATCH leaf=?ConstructQuestList@CTCInventoryQuests@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/0061b610.cpp
+PASS_DONE
+CHAIN_DONE 0061b610
+# overlay=
+# overlay=
+N 005fcbe0_g RELOCATION_MATCH leaf=?ConstructPastQuestsList@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/005fcbe0.cpp
+PASS_DONE
+CHAIN_DONE 005fcbe0
+# overlay=
+N 005fddd0_g RELOCATION_MATCH leaf=?ConstructPastQuestsListPC@CTCInventoryMap@@AAEPAVCComponent@NUISystem@@PAV23@0@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/005fddd0.cpp
+PASS_DONE
+CHAIN_DONE 005fddd0
+N 0060c900_g RELOCATION_MATCH leaf=?ConstructMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@_NPA_N@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/0060c900.cpp
+PASS_DONE
+CHAIN_DONE 0060c900
+# overlay=
+N 00607330_g DIFFER(9084v9124) leaf=?ConstructLogbookList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@PAV23@@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/00607330.cpp
+PASS_DONE
+CHAIN_DONE 00607330
+N 0061e6d0_g RELOCATION_MATCH leaf=?ConstructQuestListPC@CTCInventoryQuests@@QAEXPAVCComponent@NUISystem@@ABV?$vector@PAVCThi flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/0061e6d0.cpp
+PASS_DONE
+CHAIN_DONE 0061e6d0
+# overlay=
+N 0060eeb0_g RELOCATION_MATCH leaf=?ConstructPCMapList@CTCInventoryMap@@QAEPAVCComponent@NUISystem@@_NPA_N@Z flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/0060eeb0.cpp
+PASS_DONE
+CHAIN_DONE 0060eeb0
+N 00622a00_g RELOCATION_MATCH leaf=?OpenInventory@CTCInventoryQuests@@UAEXXZ flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/G/00622a00.cpp
+PASS_DONE
+CHAIN_DONE 00622a00

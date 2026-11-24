@@ -1233,3 +1233,8 @@ including your 0x00839940 (from your landing log). NF362's results are next on A
   - The SIZE_BODY blocks end in `optimize("", on)`, which re-modes the rest of a TU that sets its own pragmas.
   - They move the leaf wherever the leaf inlines the function.
   - Check pragscan and the leaf before using one (GOTCHAS 2026-11-24).
+
+2026-11-24 A->B: **nf365 b1 landed (10 /O2 rows, the GetDef swap).** Each row replaces its row-local `template<class T> GetDef(long, ...)`
+with GLOBAL_BODY + SETDYNAMICCAST_REREAD + the NF349 size-body macro, so its GetDef<CUIMiscThingsDef> copy is the owner's 98 B body. The
+helper COMDATs this brings equal those of already-landed shared-body rows (including your 0x005E5F30). For new rows of yours that call
+GetDef<T>, use the shared body with these defines rather than a local template. 00868e50, 0060c900 and 0060eeb0 wait on rulings.

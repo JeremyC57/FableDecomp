@@ -1,0 +1,8 @@
+# overlay=
+# overlay=
+H 0042b312 RELOCATION_MATCH leaf=??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCU flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/0042b312.cpp
+PASS_DONE
+H 0042b040 RELOCATION_MATCH leaf=??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectD flags= src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/0042b040.cpp
+PASS_DONE
+CHAIN_DONE 0042b312
+CHAIN_DONE 0042b040

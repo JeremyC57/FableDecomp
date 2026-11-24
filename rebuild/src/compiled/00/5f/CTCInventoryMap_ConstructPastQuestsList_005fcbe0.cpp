@@ -33,6 +33,13 @@
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_CTCINVENTORYBASE
 #define FABLE_RETAIL_CTCINVENTORYMAP_PASTQUESTS
+// Pick-any (NF361): CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*) takes the engine/CDefinitionManager.h body
+//   (GETDEF_GLOBAL_BODY with the retail re-reading SetDynamicCast) in place of the former same-TU template, and the NF349 size-body
+//   opt-in gives the out-of-line GetDef<NUISystem::CUIMiscThingsDef> copy owner 0x0042B312's optimize("y", off) / ("s", on) body
+//   (Fidelity: scaffolding, not retail).
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_GLOBAL_BODY
+#define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD
+#define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CUIMISCTHINGSDEF_SIZE_BODY
 #include "stlport/fable_containers.h"
 #include "engine/CTCInventoryMap.h"
 #include "engine/CTCInventoryQuests.h"
@@ -51,18 +58,7 @@ using namespace NUISystem;
 // Same-TU body of the def lookup retail's TU holds (out of line in retail: GetDef<CUIMiscThingsDef> 0x0042B312), as the landed
 // CTCInventoryTrade::ConstructSpecialShopList 0x005A29F4: VC7.1 sees it only writes through the out pointer.
 #pragma auto_inline(off)
-template <class T>
-bool CDefinitionManager::GetDef(long index, CDefPointer<const T>* out) const
-{
-    if (index > 0) {
-        CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
-        if (!def.IsNull()) {
-            out->SetDynamicCast(def);
-            return true;
-        }
-    }
-    return false;
-}
+// (NF361) CDefinitionManager::GetDef<T>(long, CDefPointer<const T>*): engine/CDefinitionManager.h GETDEF_GLOBAL_BODY (see the defines above).
 #pragma auto_inline(on)
 
 CComponent* CTCInventoryMap::ConstructPastQuestsList(CComponent* parent)

@@ -1,0 +1,51 @@
+005fc2d0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc2d0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc2d0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc2d0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005fc2d0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+0047a9f0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0047a9f0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0047a9f0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0047a9f0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 0047a9f0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+005fc8a0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc8a0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc8a0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fc8a0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005fc8a0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+005fcbe0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fcbe0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fcbe0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fcbe0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005fcbe0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+005fddd0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fddd0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fddd0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+005fddd0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 005fddd0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+006001e0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+006001e0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+006001e0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+006001e0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 006001e0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+00600b60	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00600b60	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00600b60	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00600b60	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 00600b60 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+0061b610	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0061b610	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0061b610	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0061b610	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 0061b610 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+0061e6d0	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0061e6d0	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0061e6d0	pvr	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+0061e6d0	pvr	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 0061e6d0 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+00622a00	pk_all	TURNED_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00622a00	pk_all	REMAIN_NEQ	0042b312	leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+00622a00	pvr	TURNED_NEQ	0042b312	not-leaf-called	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+ROW 00622a00 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=1 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [10, 0, 0, 0], 'pvr': [10, 0, 0, 0]}
+GATE FAIL (19)

@@ -1,0 +1,20 @@
+14:54:14 ZS_PASS ZT_006096e0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructLogbookListPC_006096e0_test.cpp /Od /W3
+14:54:15 ZS_PASS ZT_005e5f30 test /home/user/FableDecomp/rebuild/tests/00/5e/CTCQuestCompletionUI_ActivateReal_005e5f30_test.cpp /Od /W3
+14:54:16 ZS_PASS ZT_005fc2d0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructQuestReviewList_005fc2d0_test.cpp /Od /W3
+14:54:16 ZS_PASS ZT_00868e50 test /home/user/FableDecomp/rebuild/tests/00/86/global_GetArmourWeightsFromThing_00868e50_test.cpp /Od /W3
+ZS_TESTS_DONE /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/work/pre_tests_s1.tsv
+ZS_TESTS_DONE /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/work/pre_tests_s1b.tsv
+14:59:50 ZS_PASS ZT_005e4be0 test /home/user/FableDecomp/rebuild/tests/00/5e/CTCQuestCompletionUI_GetQuestDescription_005e4be0_test.cpp /Od /W3
+ZS_TESTS_DONE /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/work/pre_tests_s1c.tsv
+15:00:20 ZS_PASS ZT_0047a9f0 test /home/user/FableDecomp/rebuild/tests/00/47/CHeroLogBook_AddEntry_0047a9f0_test.cpp /Od /W3
+15:00:21 ZS_PASS ZT_005fc8a0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructQuestReviewListPC_005fc8a0_test.cpp /Od /W3
+15:00:22 ZS_PASS ZT_005fcbe0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructPastQuestsList_005fcbe0_test.cpp /Od /W3
+15:00:23 ZS_PASS ZT_005fddd0 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_ConstructPastQuestsListPC_005fddd0_test.cpp /Od /W3
+15:00:23 ZS_PASS ZT_006001e0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructRegionDescriptionShops_006001e0_test.cpp /Od /W3
+15:00:24 ZS_PASS ZT_0060c900 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructMapList_0060c900_test.cpp /Od /W3
+15:00:25 ZS_PASS ZT_0060eeb0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructPCMapList_0060eeb0_test.cpp /Od /W3
+15:00:26 ZS_PASS ZT_0061b610 test /home/user/FableDecomp/rebuild/tests/00/61/CTCInventoryQuests_ConstructQuestList_0061b610_test.cpp /Od /W3
+15:00:27 ZS_PASS ZT_0061e6d0 test /home/user/FableDecomp/rebuild/tests/00/61/CTCInventoryQuests_ConstructQuestListPC_0061e6d0_test.cpp /Od /W3
+15:00:28 ZS_PASS ZT_005ff190 test /home/user/FableDecomp/rebuild/tests/00/5f/CTCInventoryMap_CreateMapMarkers_005ff190_test.cpp /Od /W3
+15:00:29 ZS_PASS ZT_00607330 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructLogbookList_00607330_test.cpp /Od /W3
+ZS_TESTS_DONE /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/work/pre_tests_s2.tsv

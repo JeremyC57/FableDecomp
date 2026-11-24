@@ -1,0 +1,4 @@
+# overlay=
+H 005e4be0 RELOCATION_MATCH leaf=?GetQuestDescription@CTCQuestCompletionUI@@AAEXPAVCComponent@NUISystem@@@Z flags=/d2inlT60 /d2inlS48 src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF365/var/H/005e4be0.cpp
+PASS_DONE
+CHAIN_DONE 005e4be0
