@@ -455,7 +455,7 @@ address	symbol	status	leaf_given
 004345a0	??4CConfigOptionsDefaultsDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CConfigOptionsDefaultsDef
 00434740	??0C2DBoxI@@QAE@ABVC2DCoordI@@J@Z	MATCH	??0C2DBoxI@
 004347d0	?ToC2DCoordI@C2DVector@@QBE?AVC2DCoordI@@XZ	RELOCATION_MATCH	ToC2DCoordI
-004348d0	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QAEMXZ	RELOCATION_MATCH	GetFadeInOutAlpha
+004348d0	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ	RELOCATION_MATCH	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ
 00434950	?Get@T@@QAEHXZ	MATCH	sub_00434950
 004349d0	?Deactivate@T@@QAEXXZ	MATCH	EndLetterBox
 00434d60	?IsScreenFadeInactive@CDisplayEngine_Methods@@QBE_NXZ	MATCH	CanRelocateData
@@ -2137,7 +2137,7 @@ address	symbol	status	leaf_given
 004ae940	?InitialiseAsLocal@CNetworkClient@@QAE_NPAVCMainGameComponent@@@Z	RELOCATION_MATCH	InitialiseAsLocal
 004ae9a0	?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z	RELOCATION_MATCH	SendGameEvent@CNetworkClient
 004aea70	?IsFreeToRender@CNetworkClient@@QBE_NXZ	RELOCATION_MATCH	IsFreeToRender
-004aeaa0	?GetLocalGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z	RELOCATION_MATCH	GetLocalGameEventPackageSet
+004aeaa0	?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z	RELOCATION_MATCH	?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z
 004aeba0	?GetGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z	RELOCATION_MATCH	GetGameEventPackageSet
 004aedf0	??0CQuestCard@@QAE@ABVCCharString@@0_N@Z	RELOCATION_MATCH	CQuestCard
 004aee30	??0CQuestCard@@QAE@ABVCCharString@@0J@Z	RELOCATION_MATCH	CQuestCard
@@ -7278,7 +7278,7 @@ address	symbol	status	leaf_given
 006a5250	?GetFloatThrough_006a5250@CClass_006a5250@@QAEMXZ	MATCH	GetFloatThrough_006a5250
 006a5260	?SetMaxHealth@CThingPhysical@@QAEXM_N@Z	MATCH	SetMaxHealth
 006a5460	?GetFirstCollisionBetweenPoints@CThingPhysical@@QBE_NMABVC3DVector@@0AAV2@1@Z	RELOCATION_MATCH	GetFirstCollisionBetweenPoints
-006a5af0	?SerialiseGameState@CThingPhysical@@QAE_NAAVCPersistContext@@@Z	RELOCATION_MATCH	SerialiseGameState
+006a5af0	?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z	RELOCATION_MATCH	?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z
 006a62e0	?InternalModifyHealth@CThingPhysical@@AAEXM_N@Z	RELOCATION_MATCH	InternalModifyHealth
 006a68f0	?ModifyHealth@CThingPhysical@@AAEXM_N@Z	RELOCATION_MATCH	?ModifyHealth@CThingPhysical
 006a6ab0	??0?$CIntelligentPointer@VCThingPhysical@@@@QAE@PAVCThingPhysical@@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
@@ -11040,7 +11040,7 @@ address	symbol	status	leaf_given
 0082a340	?SetMarkerGraphic@CMiniMapDisplay@@QAEXPBVCThing@@J@Z	RELOCATION_MATCH	SetMarkerGraphic
 0082a390	?GetNonAutoMarkers@CMiniMapDisplay@@QAEXAAUCMarkerPtrList@@@Z	RELOCATION_MATCH	GetNonAutoMarkers
 0082a460	??0CMiniMapDisplay@@QAE@XZ	RELOCATION_MATCH	??0CMiniMapDisplay
-0082a500	?AddAutoMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z	RELOCATION_MATCH	?AddAutoMarker@CMiniMapDisplay
+0082a500	?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z	RELOCATION_MATCH	?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z
 0082b7c0	?UpdateMarkers@CMiniMapDisplay@@QAEX_N@Z	RELOCATION_MATCH	UpdateMarkers
 0082ba00	?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXPAVCRegion@@@Z	RELOCATION_MATCH	InitialiseOnRegionLoad
 0082be60	?DrawMap@CMiniMapDisplay@@QAEXAAVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@E_N@Z	RELOCATION_MATCH	DrawMap
@@ -13471,7 +13471,7 @@ address	symbol	status	leaf_given
 008f0660	?Move@CCard@@QAEXABVC3DVector@@_N@Z	MATCH	Move
 008f09c0	?SelectCard@CQuestCardScreen@@QAE_NXZ	MATCH	SelectCard
 008f1250	?OnInitialActivate@CTCTavernGameCardBase@@UAEXXZ	RELOCATION_MATCH	?OnInitialActivate@CTCTavernGameCardBase
-008f1720	?EndRound@CTCTavernGameCardBase@@QAEXXZ	RELOCATION_MATCH	?EndRound@CTCTavernGameCardBase
+008f1720	?EndRound@CTCTavernGameCardBase@@UAEXXZ	RELOCATION_MATCH	?EndRound@CTCTavernGameCardBase@@UAEXXZ
 008f1bd0	?UpdatePointerScale@CTCTavernGameCardBase@@QAEXXZ	RELOCATION_MATCH	UpdatePointerScale
 008f2580	?AddPointerParticleEffect@CTCTavernGameCardBase@@QAEXJ@Z	RELOCATION_MATCH	AddPointerParticleEffect
 008f2ac0	?CTCTavernGameCardBase_scalar_deleting_destructor@@YIPAXPAUCTCTavernGameCardBase@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -14561,7 +14561,7 @@ address	symbol	status	leaf_given
 0094c7d0	?ChooseAction@CAIStateGroup_GameMaster@@QAEXXZ	RELOCATION_MATCH	ChooseAction
 0094c7e0	?InitStateGroup@CAIStateGroup_GameMaster@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	RELOCATION_MATCH	InitStateGroup
 0094c900	?IsRunnable@CAIStateGroup_GameMaster@@QAE_NXZ	RELOCATION_MATCH	IsRunnable
-0094ce60	?OfferPlayerAGame@CAIStateGroup_GameMaster@@QAE_NXZ	RELOCATION_MATCH	OfferPlayerAGame@CAIStateGroup_GameMaster
+0094ce60	?OfferPlayerAGame@CAIStateGroup_GameMaster@@IAE_NXZ	RELOCATION_MATCH	?OfferPlayerAGame@CAIStateGroup_GameMaster@@IAE_NXZ
 0094d020	?Update@CAIStateGroup_GameMaster@@MAEXXZ	RELOCATION_MATCH	Update
 0094d480	?Cleanup@CAIStateGroupWithBuilding_0094d480@@QAEXXZ	RELOCATION_MATCH	Cleanup
 0094dc40	?ThrowRocks@CAIStateGroup_TrollBase@@IAE?AW4EAIActionReturn@@XZ	RELOCATION_MATCH	ThrowRocks
@@ -15959,7 +15959,7 @@ address	symbol	status	leaf_given
 009f6ed0	?_M_insert_overflow@CInputEventPackageVector@@QAEXPAVCInputEventPackage@@ABV2@ABU__false_type@@I_N@Z	RELOCATION_MATCH	_M_insert_overflow
 009f6fc0	?CInputManager_scalar_deleting_destructor@@YIPAXPAVCInputManager@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 009f6fe0	?PushBack_CElement48_009f69b0_009f6fe0@CRetailVector_CElement48_009f69b0@@QAEXABUCElement48_009f69b0@@@Z	RELOCATION_MATCH	PushBack_CElement48_009f69b0_009f6fe0
-009f7250	?ClearAllQueries@CVsyncCallbackTimer@@QAEXXZ	RELOCATION_MATCH	?ClearAllQueries@CVsyncCallbackTimer@@
+009f7250	?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ	RELOCATION_MATCH	?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ
 009f76b0	?Hook@T@@QAEXXZ	MATCH	$E2
 009f76c0	?GetIndexTableEntry@CNavBlockedQuadTreeNode_009f76c0@@QAEPAJXZ	MATCH	GetIndexTableEntry
 009f76e0	?Hook@T@@QAEXXZ	MATCH	$E2
@@ -16063,7 +16063,7 @@ address	symbol	status	leaf_given
 009ff580	_CGraphicDataBank_NotifyBankOpened	RELOCATION_MATCH	NotifyBankOpened
 009ff6b0	?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z	RELOCATION_MATCH	InternalGetFrameForcedLoading
 009ff8b0	?Notify@C@@QAEXPAX0@Z	RELOCATION_MATCH	NotifyBankSize
-009ff8d0	?GetFrame@CGraphicInfo@@QAE_NAAVCGraphicFrame@@KKK@Z	RELOCATION_MATCH	?GetFrame@CGraphicInfo@@
+009ff8d0	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	RELOCATION_MATCH	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z
 009ffb50	??0CManagedTextureOwner@@QAE@XZ	RELOCATION_MATCH	??0CManagedTextureOwner@
 009ffb80	?ScalarDeletingDestructor@CManagedTextureOwner@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 009fff90	?Fill_SElement44_009fff90@@YIXPAUSElement44@@0ABU1@@Z	MATCH	fill<CGraphicInfo*,CGraphicInfo>
@@ -18818,7 +18818,7 @@ address	symbol	status	leaf_given
 00b8f950	?insert@?$vector@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@V?$allocator@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@@2@@std@@QAEPAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@2@PAU32@ABU32@@Z	RELOCATION_MATCH	?insert@?$vector@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@
 00b8fad0	?RegisterPrimitiveManager@CEnginePrimitiveTypeInfo_Methods@@QAEXPAVCEnginePrimitiveManager@@@Z	RELOCATION_MATCH	RegisterPrimitiveManager
 00b8fc40	?ApplyCustomSettings@CDefaultEngineMemoryInit@@QAEXABVCEngineMemoryInit@@@Z	RELOCATION_MATCH	ApplyCustomSettings
-00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@QAEXM@Z	RELOCATION_MATCH	SetFadeDistanceWithGamePrimitiveDefaults
+00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@IAEXM@Z	RELOCATION_MATCH	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@IAEXM@Z
 00b8fd90	?M@C_00b8fd90@@QAEKHH@Z	MATCH	AddChildPrimitive
 00b8fda0	?CEngineInternalPrimitiveBase_SetChildPrimitive@@YGXHHH@Z	MATCH	SetChildPrimitive
 00b8fdb0	?CEngineInternalPrimitiveBase_SetChildPrimitive@@YGXHHHH@Z	MATCH	SetChildPrimitive
@@ -27125,7 +27125,7 @@ address	symbol	status	leaf_given
 007677e0	?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ	RELOCATION_MATCH	?AttachAugmentationParticles@CTCObjectAugmentations@@AAEXXZ
 00afcc30	?PreparePrimitives@CPSCRenderSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	RELOCATION_MATCH	?PreparePrimitives@CPSCRenderSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 00b03ca0	?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	RELOCATION_MATCH	?PreparePrimitives@CPSCRenderMesh@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
-00b2c8e0	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@QAEXXZ	RELOCATION_MATCH	CopyIntermediateBank
+00b2c8e0	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ	RELOCATION_MATCH	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ
 00b47bc0	?UpdateShadowedSpotLights@CEngineLightingManager@@AAEXXZ	RELOCATION_MATCH	?UpdateShadowedSpotLights@CEngineLightingManager@@AAEXXZ
 00e4aa00	?Main@CBanditLeader@CV_BanditTollScript@NScript@@EAEXXZ	RELOCATION_MATCH	?Main@CBanditLeader@CV_BanditTollScript@NScript@@EAEXXZ
 012133c0	?Play@CPhysicalPlayer@@QAEXPAUCSoundEventManager@@PAUSPlayDesc@@PAUCSoundEvent@@PAUSEventLevel@@MM@Z	RELOCATION_MATCH	Unwind@012133c0

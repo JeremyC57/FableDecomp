@@ -1,5 +1,5 @@
 // CGraphicInfo::GetFrame(CGraphicFrame& out, unsigned long frameIndex, unsigned long mipmapLevel, unsigned long flags) -- the frame lookup of a bank graphic: Frames[frameIndex].GetFrame(out, mipmapLevel, flags), the per-frame body (landed separately at 0x0041C260) inlined
-// Leaf: ?GetFrame@CGraphicInfo@@
+// Leaf: ?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FF8D0, length 578 bytes (`ret 10h`).
 // Callees: as 0x0041C260 (CResource::ListRemove 0x009FBFB0 / ListInsert 0x009FBF90, CFrameData::BeginLoading 0x009FDE80,
 //   CFrameData ctor 0x009FE380, CGraphicFrameData::Uninitialise 0x009FCBA0, InternalGetFrameForcedLoading 0x009FF6B0,
@@ -113,7 +113,7 @@ class CGraphicInfo { public:
     CGraphicDataBank*  Bank;                           // +0x20
     long               Index;                          // +0x24
     CGraphicInfoFrame* Frames;                         // +0x28
-    bool GetFrame(CGraphicFrame& out, unsigned long frameIndex, unsigned long mipmapLevel, unsigned long flags);
+    bool GetFrame(CGraphicFrame& out, unsigned long frameIndex, unsigned long mipmapLevel, unsigned long flags) const;
 };
 template <class T> struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
     T* P;
@@ -196,7 +196,7 @@ FABLE_FORCEINLINE bool CGraphicInfoFrame::GetFrame(CGraphicFrame& out, unsigned 
     return true;
 }
 
-bool CGraphicInfo::GetFrame(CGraphicFrame& out, unsigned long frameIndex, unsigned long mipmapLevel, unsigned long flags)
+bool CGraphicInfo::GetFrame(CGraphicFrame& out, unsigned long frameIndex, unsigned long mipmapLevel, unsigned long flags) const
 {
     return Frames[frameIndex].GetFrame(out, mipmapLevel, flags);
 }

@@ -1,0 +1,3 @@
+kind	row	old	new	batch
+catalog	0040ec50	_global::ScalarDeletingDtor_0040ec50	CWideString::`scalar deleting destructor'	t0 (catalog / file only; self symbol ??_GCWideString@@QAEPAXI@Z unchanged)
+file	0040ec50	CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50	CWideString_scalardeletingdestructor_0040ec50	t0 (git mv source + test; build_candidates Source / TestSource follow)

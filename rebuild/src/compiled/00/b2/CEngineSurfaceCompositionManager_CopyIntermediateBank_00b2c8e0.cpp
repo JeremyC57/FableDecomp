@@ -1,6 +1,6 @@
 // CEngineSurfaceCompositionManager::CopyIntermediateBank() -- close the completed bank, copy the intermediate disk-cache file over the completed one through a pool (or heap) staging buffer, reopen the completed bank read-only on the new file with the engine graphic bank's texture manager, and clear every cached surface's completed-bank index
 // (NF344, 2026-11-24) /d2inlS100 /d2inlT200 dropped: the leaf grades the same without them, and the vector<unsigned char>::resize(n) COMDAT then takes retail's 25-byte forwarding body (0x00412880 / 0x007B9E50) instead of a 94-byte expansion found nowhere in Fable.exe (NF340 /d2inl audit).
-// Leaf: CopyIntermediateBank
+// Leaf: ?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Layout: local model; retail offsets: CachedSurfaces list +0x88 (STLport list = one node pointer), CompletedBankFile +0x398, disk-cache
 //         file names +0x9b0 (intermediate) / +0x9b4 (completed); engine 0x01436E98: memory pool CCountedPointer +0x8e0, graphic bank +0x954
@@ -99,7 +99,9 @@ class CEngineSurfaceCompositionManager { public:
     unsigned char    _padbank[0x9b0 - 0x398 - sizeof(CGraphicDataBank)];
     CWideString      IntermediateDiskCacheFileName;     // +0x9b0
     CWideString      CompletedDiskCacheFileName;        // +0x9b4
+    private:
     void CopyIntermediateBank();
+    public:
 };
 
 void CEngineSurfaceCompositionManager::CopyIntermediateBank()

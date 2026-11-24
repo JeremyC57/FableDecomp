@@ -1,0 +1,18 @@
+addr       parity           behav  name
+006a5af0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+006a5af0   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+006a5af0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+006a5af0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006a5af0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006a5af0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006a5af0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+006a5af0   RELOCATION_MATCH PASS   SerialiseGameState
+008f1720   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+008f1720   WARN SHARED_HEADER_AVAILABLE CCard (engine/CCard.h)
+008f1720   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+008f1720   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBase (engine/CTCTavernGameCardBase.h)
+008f1720   RELOCATION_MATCH PASS   EndRound
+
+WINS: 2
+  006a5af0 RELOCATION_MATCH CThingPhysical::?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z
+  008f1720 RELOCATION_MATCH CTCTavernGameCardBase::?EndRound@CTCTavernGameCardBase@@UAEXXZ

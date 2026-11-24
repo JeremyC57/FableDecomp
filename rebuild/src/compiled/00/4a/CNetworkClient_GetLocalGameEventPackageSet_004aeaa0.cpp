@@ -1,3 +1,4 @@
+// Leaf: ?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z
 class CGameEvent
 { public:
     long type;
@@ -40,7 +41,9 @@ public:
     unsigned long checksum2;
     CMainGameComponent* gameComponent;
 
+    private:
     bool GetLocalGameEventPackageSet(CGameEventPackageSet* packageSet);
+    public:
 };
 
 bool CNetworkClient::GetLocalGameEventPackageSet(CGameEventPackageSet* packageSet)

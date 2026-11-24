@@ -1,5 +1,5 @@
 // CThingPhysical::SerialiseGameState(CPersistContext& context) -- outside the load modes reset max health, camera flag, creators and hit flags; then persist Health (default MaxHealth, clamped for non-creatures) and Scale (default 1)
-// Leaf: SerialiseGameState
+// Leaf: ?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5AF0, length 315 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
@@ -103,7 +103,7 @@ public:
     unsigned char               EvadeAllHits : 1;
     unsigned char               NegateAllHits : 1;
     unsigned char               AbleToBeEngagedInCombat : 1;
-    bool SerialiseGameState(CPersistContext& context);
+    virtual bool SerialiseGameState(CPersistContext& context);
 };
 
 bool CThingPhysical::SerialiseGameState(CPersistContext& context)

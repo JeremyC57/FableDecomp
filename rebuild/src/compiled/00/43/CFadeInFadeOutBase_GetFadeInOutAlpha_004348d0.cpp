@@ -1,3 +1,4 @@
+// Leaf: ?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ
 // CFadeInFadeOutBase::GetFadeInOutAlpha() -- while fading out (+0xd): 1.0 when the duration (+4) is below the epsilon, else the elapsed (+0x10) over the duration; while fading in (+0xc): likewise with +8 / +0x14; otherwise 1.0 when active (+0) and 0.0 when inactive
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004348D0, length 79 bytes.
@@ -15,10 +16,10 @@ class CFadeInFadeOutBase { public:
     unsigned char _pad0e[2];
     float m_fadeOutElapsed;                        // +0x10
     float m_fadeInElapsed;                         // +0x14
-    float GetFadeInOutAlpha();
+    float GetFadeInOutAlpha() const;
 };
 
-float CFadeInFadeOutBase::GetFadeInOutAlpha()
+float CFadeInFadeOutBase::GetFadeInOutAlpha() const
 {
     if (m_fadingOut) {
         if (m_fadeOutDuration < DELTA_NOTIONAL_ZERO)

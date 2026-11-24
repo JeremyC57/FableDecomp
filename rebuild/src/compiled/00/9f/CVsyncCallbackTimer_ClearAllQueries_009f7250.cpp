@@ -1,5 +1,5 @@
 // CVsyncCallbackTimer::ClearAllQueries() -- release every outstanding vsync query: while PendingQueories is not empty, Release() the query of its back() entry and pop_back(); then the same for FreeQueoryObjects
-// Leaf: ?ClearAllQueries@CVsyncCallbackTimer@@
+// Leaf: ?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F7250, length 224 bytes, plain `ret`.
 // PDB: ?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ (private). Callers: ~CVsyncCallbackTimer 0x009F7330 (landed under the
 //   propagated name CPairedNodeLists), OnPreDeviceReset 0x009F73A0, OnPostSwapScreens 0x009F750D.
@@ -198,7 +198,9 @@ public:
     std::list<CPendingQuery, std::allocator<CPendingQuery> > PendingQueories;     // +0x08
     long PendingFrame;                                                  // +0x0c
     long FinishedFrame;                                                 // +0x10
+    private:
     void ClearAllQueries();
+    public:
     void OnPreDeviceReset();
 };
 

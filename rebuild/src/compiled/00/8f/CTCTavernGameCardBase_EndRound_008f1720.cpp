@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::EndRound() -- base EndRound, clears the highlight off the highlighted card's graphic appearance, empties the card list and forgets the selected and highlighted cards
-// Leaf: ?EndRound@CTCTavernGameCardBase
+// Leaf: ?EndRound@CTCTavernGameCardBase@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F1720, 171 bytes (plain `ret`); CTCTavernGameCardBase vtable 0x01288294
 // slot 33. Ego_r.pdb `?EndRound@CTCTavernGameCardBase@@UAEXXZ`.
@@ -73,7 +73,7 @@ struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294
     unsigned char _pad_0x134[0x1d4];
     CCard*        SelectedCard;                 // +0x308
     CCard*        HighlightedCard;              // +0x30c
-    void EndRound();
+    virtual void EndRound();
 };
 
 void CTCTavernGameCardBase::EndRound()

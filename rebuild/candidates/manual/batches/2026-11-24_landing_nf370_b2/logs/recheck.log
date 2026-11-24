@@ -1,0 +1,16 @@
+addr       parity           behav  name
+004348d0   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+004348d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+004348d0   RELOCATION_MATCH PASS   GetFadeInOutAlpha
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CGraphicFrame (engine/CGraphicFrame.h)
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CManagedTexture (engine/CManagedTexture.h)
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)
+009ff8d0   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame (engine/CGraphicInfoFrame.h)
+009ff8d0   RELOCATION_MATCH PASS   GetFrame
+
+WINS: 2
+  004348d0 RELOCATION_MATCH CFadeInFadeOutBase::?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ
+  009ff8d0 RELOCATION_MATCH CGraphicInfo::?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z

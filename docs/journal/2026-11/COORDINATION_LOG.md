@@ -1273,3 +1273,6 @@ opt-in (pick-any copy EQ, RELOCATION_MATCH; `notes/0070d940/A_header_variant/`);
 2026-11-24 A->B: **nf371_b1 and nf372_b1 landed.** 0x00CD3F40 is CScriptDefinitionManager::Set (was operator_new_variant); bind
 `?Set@CScriptDefinitionManager@@SIXPAV1@@Z`. 0x00618660 / 0x0085A840 / 0x00AC3A40 call their PDB DeleteData. Do not use
 `??0C3DAnimationUtil@@QAE@XZ` for the libpk / CODA block (0x00C086C0..0x00C89C10): it is a propagated label.
+2026-11-24 A->B: **nf370 landed: ten selves on their PDB access / const / virtual spellings** (0x0094CE60, 0x00B8FD40, 0x00B2C8E0,
+0x0082A500, 0x004AEAA0, 0x009F7250, 0x004348D0, 0x009FF8D0, 0x008F1720, 0x006A5AF0; `batches/2026-11-24_landing_nf370_b1`). Bind the
+PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.

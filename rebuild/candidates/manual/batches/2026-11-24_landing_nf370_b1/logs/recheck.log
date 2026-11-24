@@ -1,0 +1,40 @@
+addr       parity           behav  name
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEventPackage (engine/CGameEventPackage.h)
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet (engine/CGameEventPackageSet.h)
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)
+004aeaa0   RELOCATION_MATCH PASS   GetLocalGameEventPackageSet
+0082a500   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0082a500   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082a500   WARN SHARED_HEADER_AVAILABLE CMarkerInfo (engine/CMarkerInfo.h)
+0082a500   RELOCATION_MATCH PASS   AddAutoMarker
+0094ce60   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0094ce60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0094ce60   RELOCATION_MATCH PASS   OfferPlayerAGame
+009f7250   WARN SHARED_HEADER_AVAILABLE CVsyncCallbackTimer (engine/CVsyncCallbackTimer.h)
+009f7250   WARN RELOC_NAME: ?_M_decr@_List_iterator_base@std@@QAEXXZ -> 0041c7b0 labelled 'std::_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>::operator--'
+009f7250   RELOCATION_MATCH PASS   ClearAllQueries
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CCompositeSurfaceCache (engine/CCompositeSurfaceCache.h)
+00b2c8e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager (engine/CEngineSurfaceCompositionManager.h)
+00b2c8e0   RELOCATION_MATCH PASS   CopyIntermediateBank
+00b8fd40   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b8fd40   RELOCATION_MATCH PASS   SetFadeDistanceWithGamePrimitiveDefaults
+
+WINS: 6
+  004aeaa0 RELOCATION_MATCH CNetworkClient::?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z
+  0082a500 RELOCATION_MATCH CMiniMapDisplay::?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z
+  0094ce60 RELOCATION_MATCH CAIStateGroup_GameMaster::?OfferPlayerAGame@CAIStateGroup_GameMaster@@IAE_NXZ
+  009f7250 RELOCATION_MATCH CVsyncCallbackTimer::?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ
+  00b2c8e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ
+  00b8fd40 RELOCATION_MATCH CEngineInternalPrimitiveBase::?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@IAEXM@Z

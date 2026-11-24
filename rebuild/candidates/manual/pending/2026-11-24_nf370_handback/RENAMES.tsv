@@ -1,0 +1,17 @@
+kind	row	old	new	batch
+self	0094ce60	?OfferPlayerAGame@CAIStateGroup_GameMaster@@QAE_NXZ	?OfferPlayerAGame@CAIStateGroup_GameMaster@@IAE_NXZ	b1 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@QAEXM@Z	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveBase@@IAEXM@Z	b1 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	00b2c8e0	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@QAEXXZ	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ	b1 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	0082a500	?AddAutoMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z	?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z	b1 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	004aeaa0	?GetLocalGameEventPackageSet@CNetworkClient@@QAE_NPAVCGameEventPackageSet@@@Z	?GetLocalGameEventPackageSet@CNetworkClient@@AAE_NPAVCGameEventPackageSet@@@Z	b1 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	009f7250	?ClearAllQueries@CVsyncCallbackTimer@@QAEXXZ	?ClearAllQueries@CVsyncCallbackTimer@@AAEXXZ	b1 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	004348d0	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QAEMXZ	?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ	b2 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	009ff8d0	?GetFrame@CGraphicInfo@@QAE_NAAVCGraphicFrame@@KKK@Z	?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z	b2 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	008f1720	?EndRound@CTCTavernGameCardBase@@QAEXXZ	?EndRound@CTCTavernGameCardBase@@UAEXXZ	b3 (self symbol only; Leaf line follows; catalog name / file unchanged)
+self	006a5af0	?SerialiseGameState@CThingPhysical@@QAE_NAAVCPersistContext@@@Z	?SerialiseGameState@CThingPhysical@@UAE_NAAVCPersistContext@@@Z	b3 (self symbol only; Leaf line follows; catalog name / file unchanged)
+catalog	009bde90	_global::CIVCountedPointer_Assign_009bde90	CSubTitle::~CSubTitle	t0 (catalog / file only; self symbol ??1CSubTitle@@QAE@XZ unchanged)
+catalog	009bdfa0	_global::CIVCountedPointer_Assign_009bdfa0	CSubTitle::~CSubTitle	t0 (catalog / file only; self symbol ??1CSubTitle@@QAE@XZ unchanged)
+catalog	009f98d0	_gapscan::sub_009f98d0	std::list<CProfile*>::remove	t0 (catalog / file only; self symbol ?remove@?$list@PAVCProfile@@V?$allocator@PAVCProfile@@@std@@@std@@QAEXABQAVCProfile@@@Z unchanged)
+catalog	00a70130	_global::CCountedPointer_Dtor_00a70130	std::pair<CCharString,C3DMeshVolume>::~pair	t0 (catalog / file only; self symbol ??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ unchanged)
+catalog (decision)	0040ec50	_global::ScalarDeletingDtor_0040ec50	CWideString::`scalar deleting destructor'	proposed only, NOT for landing as T0: ruling 3
+file (decision)	0040ec50	CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50	CWideString_scalardeletingdestructor_0040ec50	proposed only, NOT for landing as T0: ruling 3

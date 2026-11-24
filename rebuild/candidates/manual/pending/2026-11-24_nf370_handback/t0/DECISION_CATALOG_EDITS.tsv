@@ -1,0 +1,10 @@
+address	file	field	old	new
+0040ec50	rebuild/oracles/auto-re-candidates.tsv	name	_global::ScalarDeletingDtor_0040ec50	CWideString::`scalar deleting destructor'
+0040ec50	rebuild/manifest/functions.tsv	name	ScalarDeletingDtor_0040ec50	`scalar deleting destructor'
+0040ec50	rebuild/manifest/functions.tsv	module	_global	CWideString
+0040ec50	rebuild/manifest/functions.tsv	compiled_source	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50.cpp	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CWideString_scalardeletingdestructor_0040ec50.cpp
+0040ec50	rebuild/build_candidates.ps1	Module	_global	CWideString
+0040ec50	rebuild/build_candidates.ps1	Source	00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50.cpp	00/40/CWideString_scalardeletingdestructor_0040ec50.cpp
+0040ec50	rebuild/build_candidates.ps1	TestSource	00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50_test.cpp	00/40/CWideString_scalardeletingdestructor_0040ec50_test.cpp
+0040ec50	git mv	rebuild/src/compiled	00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50.cpp	00/40/CWideString_scalardeletingdestructor_0040ec50.cpp
+0040ec50	git mv	rebuild/tests	00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_0040ec50_test.cpp	00/40/CWideString_scalardeletingdestructor_0040ec50_test.cpp

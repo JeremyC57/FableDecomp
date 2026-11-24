@@ -35421,7 +35421,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f97c0	StdList_Clear_009f97c0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CGuiControlTreePane_SortTreeRecursively_009f97c0.cpp
 009f9800	list	std::list<T_0x60_009f9800>	unknown	undefined	0		0	yes	accepted									
 009f9870	DoublyLinkedList_InitNode_12bytes_Alt	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_DoublyLinkedListInitNode12bytesAlt_009f9870.cpp
-009f98d0	sub_009f98d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+009f98d0	remove	std::list<CProfile*>	unknown	undefined	0		0			discovered	gapscan							
 009f9930	vector	std::vector	unknown	undefined	0		0	yes	accepted									
 009f9990	CProfileTreeEntry	CProfileManager::CProfileTreeEntry	__thiscall	undefined	1	pair<unsigned_long,C3DMeshVolume> *	0	yes	accepted									
 009f99c0	~CProfileTreeEntry	CProfileManager::CProfileTreeEntry	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									

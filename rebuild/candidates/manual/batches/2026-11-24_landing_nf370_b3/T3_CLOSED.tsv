@@ -1,0 +1,2 @@
+source	address	unit	reason
+access1	0x008F1720	self respell	access_fix measured ?EndRound@CTCTavernGameCardBase@@QAEXXZ -> ?EndRound@CTCTavernGameCardBase@@UAEXXZ (access letter Q->U changes virtuality or is not a member)

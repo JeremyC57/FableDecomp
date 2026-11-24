@@ -1,5 +1,5 @@
 // CMiniMapDisplay::AddAutoMarker(const CThing& thing, long graphicIndex) -- append an automatic marker (AutoMarker = true) for the thing with the given marker graphic; a graphic index <= 0 adds nothing
-// Leaf: ?AddAutoMarker@CMiniMapDisplay
+// Leaf: ?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082A500, 98 bytes (+14 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z; called from the ten Initialise*Markers
 //   (0x0082A9A7 .. 0x0082B9F0). The catalog label "Map_InsertMarker" is descriptive (labels_ already names it).
@@ -95,7 +95,9 @@ public:
     virtual void v00();
     unsigned char _pad04[0x1c];                         // +0x04 two retail 12-byte vectors, MiniMapGraphic
     std::list<CMarkerInfo> Markers;                    // +0x20 (retail; Ego_r.pdb +0x28)
+    protected:
     void AddAutoMarker(const CThing& thing, long graphicIndex);
+    public:
 };
 
 void CMiniMapDisplay::AddAutoMarker(const CThing& thing, long graphicIndex)

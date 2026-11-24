@@ -1,0 +1,5 @@
+kind	row	old	new	batch
+catalog	009bde90	_global::CIVCountedPointer_Assign_009bde90	CSubTitle::~CSubTitle	t0 (catalog / file only; self symbol ??1CSubTitle@@QAE@XZ unchanged)
+catalog	009bdfa0	_global::CIVCountedPointer_Assign_009bdfa0	CSubTitle::~CSubTitle	t0 (catalog / file only; self symbol ??1CSubTitle@@QAE@XZ unchanged)
+catalog	009f98d0	_gapscan::sub_009f98d0	std::list<CProfile*>::remove	t0 (catalog / file only; self symbol ?remove@?$list@PAVCProfile@@V?$allocator@PAVCProfile@@@std@@@std@@QAEXABQAVCProfile@@@Z unchanged)
+catalog	00a70130	_global::CCountedPointer_Dtor_00a70130	std::pair<CCharString,C3DMeshVolume>::~pair	t0 (catalog / file only; self symbol ??1?$pair@VCCharString@@VC3DMeshVolume@@@std@@QAE@XZ unchanged)

@@ -1,0 +1,16 @@
+address	file	field	old	new
+009bde90	rebuild/oracles/auto-re-candidates.tsv	name	_global::CIVCountedPointer_Assign_009bde90	CSubTitle::~CSubTitle
+009bde90	rebuild/manifest/functions.tsv	name	CIVCountedPointer_Assign_009bde90	~CSubTitle
+009bde90	rebuild/manifest/functions.tsv	module	_global	CSubTitle
+009bde90	rebuild/build_candidates.ps1	Module	_global	CSubTitle
+009bdfa0	rebuild/oracles/auto-re-candidates.tsv	name	_global::CIVCountedPointer_Assign_009bdfa0	CSubTitle::~CSubTitle
+009bdfa0	rebuild/manifest/functions.tsv	name	CIVCountedPointer_Assign_009bdfa0	~CSubTitle
+009bdfa0	rebuild/manifest/functions.tsv	module	_global	CSubTitle
+009bdfa0	rebuild/build_candidates.ps1	Module	_global	CSubTitle
+009f98d0	rebuild/oracles/auto-re-candidates.tsv	name	_gapscan::sub_009f98d0	std::list<CProfile*>::remove
+009f98d0	rebuild/manifest/functions.tsv	name	sub_009f98d0	remove
+009f98d0	rebuild/manifest/functions.tsv	module	_gapscan	std::list<CProfile*>
+00a70130	rebuild/oracles/auto-re-candidates.tsv	name	_global::CCountedPointer_Dtor_00a70130	std::pair<CCharString,C3DMeshVolume>::~pair
+00a70130	rebuild/manifest/functions.tsv	name	CCountedPointer_Dtor_00a70130	~pair
+00a70130	rebuild/manifest/functions.tsv	module	_global	std::pair<CCharString,C3DMeshVolume>
+00a70130	rebuild/build_candidates.ps1	Module	_global	std::pair<CCharString,C3DMeshVolume>

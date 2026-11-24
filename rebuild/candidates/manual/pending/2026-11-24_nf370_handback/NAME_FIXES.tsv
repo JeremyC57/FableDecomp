@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0099ea60	?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z	Ego_r + FableWin name sets; table witness 0x0099EC70 binds it	?AllocStringData@CCharString@@QAEPAVCCharStringData@@PBDJ@Z (0x0099EA60 self; 0x0099F690 object DEF, pick-any copy of the 0x0099EA60 body, local CCharString model public)
+00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ	Ego_r + FableWin; table witness 0x00736640 binds it	?UpdateUsableMeleeCombatAbilities@CTCCombat@@QAEXXZ (0x00736590 self; 0x00736AD0 object UND, NF370 HEAD compile; no table line for it)
+00a269c0	?GetAnimationStats@C3DAnimationInfo@@QBE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ	Ego_r + FableWin; table witness 0x005DB6B0 binds it	?GetAnimationStats@C3DAnimationInfo@@QAE?AV?$CCountedPointer@$$CBVC3DAnimationStats@@@@XZ (0x00A269C0 self; 0x00A36DF0 local model declares and calls it non-const, T3-reserved, not compiled, no table line)
