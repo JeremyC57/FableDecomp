@@ -1,0 +1,44 @@
+## 004aa840
+## 004abe90
+## 004ab170
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+## 00ce0920
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+## 00ce0b00
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+## 00ce0ce0
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+## 00d151d0
+NEQ 004ab130 30 ?IsAlive@CScriptThing@@UBE_NXZ not referenced by the leaf
+NEQ 004115a0 20 ??8?$CBasicString@D@@QBE_NPBD@Z not referenced by the leaf
+EQ  006e7b40 26 ??0CScriptThing@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+## 00dde230
+EQ  004aa980 18 ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+## 00e6b750
+NEQ 004115a0 20 ??8?$CBasicString@D@@QBE_NPBD@Z not referenced by the leaf
+EQ  006e7b40 26 ??0CScriptThing@@QAE@XZ 
+NEQ 004ab130 21 ?IsAlive@CScriptThing@@UBE_NXZ not referenced by the leaf
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+## HEAD controls (same NEQs pre-existing)
+## H_00d151d0
+NEQ 004ab130 30 ?IsAlive@CScriptThing@@UBE_NXZ not referenced by the leaf
+NEQ 004115a0 20 ??8?$CBasicString@D@@QBE_NPBD@Z not referenced by the leaf
+EQ  006e7b40 26 ??0CScriptThing@@QAE@XZ 
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+## H_00e6b750
+NEQ 004115a0 20 ??8?$CBasicString@D@@QBE_NPBD@Z not referenced by the leaf
+EQ  006e7b40 26 ??0CScriptThing@@QAE@XZ 
+NEQ 004ab130 21 ?IsAlive@CScriptThing@@UBE_NXZ not referenced by the leaf
+EQ  004aa840 66 ??1CScriptThing@@UAE@XZ 

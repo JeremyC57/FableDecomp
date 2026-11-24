@@ -1,0 +1,10 @@
+pb 004ab170 RELOCATION_MATCH leaf=ScalarDeletingDestructor src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/004ab170_v1.cpp
+pb 004ab170 RELOCATION_MATCH leaf=ScalarDeletingDestructor src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/004ab170_v2.cpp
+pb 004ab170 DIFFER(24v87) leaf=ScalarDeletingDestructor src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/004ab170_v3.cpp
+GF_DONE
+q 00dc8030 RELOCATION_MATCH leaf=?Main@CSecretPassageFirstGate@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/00dc8030_s1.cpp
+q 00dc8030 RELOCATION_MATCH leaf=?Main@CSecretPassageFirstGate@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/00dc8030_s2.cpp
+q 00dc8030 RELOCATION_MATCH leaf=?Main@CSecretPassageFirstGate@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/00dc8030_s3.cpp
+GF_DONE
+m 00d1f610 RELOCATION_MATCH leaf=?Main@CBanditAttacker@CQ_BreakSiegeScript@NScript@@EAEXXZ src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF328/work/probe/00d1f610_m1.cpp
+GF_DONE

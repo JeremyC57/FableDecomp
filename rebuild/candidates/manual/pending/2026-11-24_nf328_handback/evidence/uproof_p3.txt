@@ -1,0 +1,1 @@
+004ab170 OK helper=?ReferenceScriptThingDestructor@?A0xe6b8f9ba@@YAXAAVCScriptThing@@@Z ??1 sel 1->2; ??1 v retail BYTES_EQUAL [5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ]
