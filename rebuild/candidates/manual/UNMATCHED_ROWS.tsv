@@ -28,7 +28,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00500540	CWorldMap	LoadRegion	2416	parked	DIFFER(2396v2412)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00500540.cpp	original
 00502e90	CWorldMap	PopulateRegionWithVillagers	13632	reserved (acctA AUTH1, 2026-11-21; released from Account B, owner 2026-11-21; was: reserved (acctB p25R, 2026-11-21))	acctC round six: round 6 final (2026-11-16): DIFFER(13587v13622); latest draft 00502e90.cpp + NOTES.md in the folder (grep the 	1	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE10/00502e90.cpp	original
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original
-00509a20	CWorldMap	GetMapNavigationAreaUpdateInfo	3120	parked	DIFFER(3188v3120)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00509a20.cpp	original
+00509a20	CWorldMap	GetMapNavigationAreaUpdateInfo	3120	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(3188v3120)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00509a20.cpp	original
 0051eda0	CEntityRuntimePersistence	SaveToGameStateScript	544	parked	DIFFER(485v501)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0051eda0.cpp	original
 005239cd	_global	CThingDeadCreature_SavePersistentState	371	parked	not a function start (Codex pass 22 EXTENT_WRONG; BOUNDS_FIX.tsv)	0	rebuild/candidates/manual/pending/2026-11-14_codex_pass22/return/extent_wrong/005239cd/	original
 00524290	_global	CThingManager_SaveGameState	1568	parked	DIFFER(1500v1553)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00524290.cpp	original
@@ -641,7 +641,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d9c680	NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer	Main	2048	parked		0	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00d9c680.cpp	original
 00da71e0	CQ_MinionClifftopChaseScript	GuardChatter	1552	parked	DIFFER(1507v1549)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00da71e0.cpp	original
 00da8bf0	NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv	Main	1456	parked	DIFFER(1546v1447)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00da8bf0.cpp	original
-00daadd0	NScript::CQ_NewOakValeIntroScript	Init	3312	parked	DIFFER(3406v3306)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00daadd0.cpp	original
+00daadd0	NScript::CQ_NewOakValeIntroScript	Init	3312	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(3406v3306)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00daadd0.cpp	original
 00db1f00	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman	Main	2720	parked	DIFFER(2752v2714)	9	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00db1f00.cpp	gapscan/boundary
 00db3fa0	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader	Main	4048	reserved (acctB B24B, 2026-11-24; was: parked)	DIFFER(4072v4042)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00db3fa0.cpp	gapscan/boundary
 00dc08c0	NScript::CQ_OakValeBanditRaidScript	WatchForGateTimer	3760	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(1714v1830)	5	rebuild/candidates/manual/pending/2026-11-08_linux_hand865/parked_src/00dc08c0.cpp	original
@@ -650,8 +650,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2048	parked	DIFFER(2112v2044)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ddd430.cpp	original
 00de4710	NScript::CQ_RansomVictimScript	DisappearFollowers	1440	parked	DIFFER(1024v1428)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00de4710.cpp	original
 00de9690	NScript::CQ_RansomVictimScript::CRansomHelper	Main	3424	reserved (acctB B24D, 2026-11-24; was: parked)	DIFFER(3428v3412)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00de9690.cpp	gapscan/boundary
-00dee2e0	NScript::CQ_SecretPassageScript::CMotherTorture	Main	3104	parked	DIFFER(3134v3102)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00dee2e0.cpp	gapscan/boundary
-00df5000	NScript::CQ_TentacleKrakenBossFightScript	PhaseOne	3072	parked	DIFFER(3039v3071)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00df5000.cpp	original
+00dee2e0	NScript::CQ_SecretPassageScript::CMotherTorture	Main	3104	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(3134v3102)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00dee2e0.cpp	gapscan/boundary
+00df5000	NScript::CQ_TentacleKrakenBossFightScript	PhaseOne	3072	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(3039v3071)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00df5000.cpp	original
 00dfd600	NScript::CQ_TraderConflictGoodScript	AttackPeople	2096	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(2296v2088)	2	rebuild/candidates/manual/pending/2026-11-05_linux_hand782/differ/00dfd600.test.cpp	original
 00e01900	CQ_TraderEscortScript	MakeTraderComment	2704	parked	DIFFER(2641v2697)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00e01900.cpp	original
 00e03f70	NScript::CQ_TraderEscortScript::CMagicBarrier	Main	1920	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(1986v1906)	5	rebuild/candidates/manual/pending/2026-11-08_linux_hand865/parked_src/00e03f70.cpp	original
@@ -685,8 +685,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00ee91e0	NScript::CGlobal_DebugCycleThroughSpeechScript	Main	672	parked	DIFFER(575v613)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ee91e0.cpp	original
 00eeaef0	NScript::CExpression_PickpocketScript	Main	1920	parked	DIFFER(1860v1906)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00eeaef0.cpp	original
 00ef5840	NScript::CPersonalScript_EmptyScript::CBanditWalker	Main	736	parked	DIFFER(768v727)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00ef5840.cpp	gapscan/boundary
-00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3280	parked	DIFFER(3409v3265)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef5ff0.cpp	gapscan/boundary
-00ef9280	NScript::Cjoss_test_scriptsScript	Main	3168	parked	DIFFER(1972v3158)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef9280.cpp	gapscan/boundary
+00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3280	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(3409v3265)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef5ff0.cpp	gapscan/boundary
+00ef9280	NScript::Cjoss_test_scriptsScript	Main	3168	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(1972v3158)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00ef9280.cpp	gapscan/boundary
 00f03980	NScript::CQ_AmbushTradersScript::CAT_Phase1Guard	Main	1440	parked	DIFFER(1448v1434)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/hdr/00f03980.cpp	original
 00f05a10	NScript::CQ_AmbushTradersScript	RefreshSpyAllegiences	1312	parked		0	rebuild/candidates/manual/pending/2026-11-09_linux_hand892/differ/00f05a10.cpp	original
 00f0a960	NScript::CQ_AmbushTradersScript::CAT_BanditContact	Main	2000	parked	DIFFER(2015v1985)	6	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00f0a960.cpp	gapscan/boundary
