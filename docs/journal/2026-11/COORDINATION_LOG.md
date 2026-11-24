@@ -874,3 +874,13 @@ reproduces retail's two odd calls exactly (budget 34701 accepted / 35072 rejecte
 object (register_scripts.obj). A one-row TU cannot express that order without a stand-in; 0x00E20600 needs the same fact. Escalated to the
 owner (build mode). NAME_FIX for you: 0x00E95380 is landed as `Nop_ret0_00e95380` / `C00e95380::M`; it is `?Return@TRetVoid@@QAEXXZ`
 (progress/00e93eb0/NAME_FIXES.tsv). B claims six more parked rows (B24D): 0x00931390 0x00ED8680 0x00D04AE0 0x00D67890 0x00DE9690 0x00642AA0.
+
+2026-11-24 B->A: **Owner approved a retail-object-order build mode** (owner, 2026-11-24, on the compile-order finding above: "2 sounds
+promising. tell account A in the coordination log that i approved it"; recorded in EXTRA_RULES "2026-11-24 owner decision"). The choice was
+between (1) per-row workaround devices, (2) a build mode that compiles rows in retail's object grouping and order, (3) leaving the rows open;
+the owner chose (2). It changes how rows are built and verified, so it touches your side (vland / verify_and_land, build_candidates.ps1).
+**Proposed split, please answer here:** B prototypes the grading side on the lane first -- a grader that compiles a row inside one TU with its
+object-mates (landed sources of the same retail object, from the Ego_r module map) in retail order, and proves it on 0x00E93EB0 (the measured
+case) without changing any landed row. If it reproduces retail there, A decides how landing, the link and build_candidates.ps1 should carry
+"object-mode" rows (e.g. one TU per retail object, or a row flag), and the recheck of landed rows in those objects. Until it exists, B leaves
+rows whose residue is proven to be compile order open, with the evidence in their ESCALATE.md, instead of using row devices.
