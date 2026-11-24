@@ -111,6 +111,11 @@ public:
 protected:
     virtual void LoadScriptBrushesFromFile(long, CCountedPointer<CAFile>);
     virtual long AllocateNewMap();
+#ifdef FABLE_RETAIL_CWORLDMAP_UNLOADLEVEL_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x004FF8A0 ForceUnload): Ego_r.pdb / FableWin.pdb ?UnloadLevel@CWorldMap@@IAEXJ@Z (protected,
+    // non-virtual; retail 0x004FEDE0, which the donor FableWin ForceUnload calls). Declaration only.
+    void UnloadLevel(long);                                                                              // 0x004FEDE0
+#endif
 public:
     // Ego_r.pdb / FableWin.pdb CWorldMap::ELoadType (nested; LF_ENUMERATE WAIT_FOR_LOAD = 0, DONT_WAIT_FOR_LOAD = 1, Codex pass 13
     // TPI evidence; 0x00501150 runs the level loader to completion for WAIT_FOR_LOAD), the protected

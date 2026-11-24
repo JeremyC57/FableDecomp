@@ -1,0 +1,12 @@
+21a22,28
+> #ifdef FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER_INITIALISE_DECL
+>     // Opt-in (NF321, 2026-11-23, row 0x008FD892): Ego_r.pdb / FableWin.pdb
+>     // ?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z, the override
+>     // of CAIStateGroupBase slot 1 (retail RTTI vtable 0x01289670 slot 1 = 0x008FD892). Declaration only.
+>     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority,
+>                             const CCharString& name);                    // slot 1  0x008FD892
+> #endif
+25c32
+< FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BirdGroundWander) == 0x18);
+---
+> FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_BirdGroundWander) == 0x18);

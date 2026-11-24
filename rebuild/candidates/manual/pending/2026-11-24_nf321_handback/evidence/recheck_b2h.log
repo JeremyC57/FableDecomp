@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00891320   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00891320   WARN RELOC_NAME: ?CacheMusicSet_006bde50@CMusicTarget@@QAEXW4EMusicSetType@@@Z -> 006bde50 labelled 'CMusicManager::EnableDangerMusic'
+00891320   RELOCATION_MATCH PASS   EnableDangerMusic
+00a39c70   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+00a39c70   WARN RELOC_NAME: ?Run@CBankFileAsync@@QAEXXZ -> 009cbb80 labelled '_global::GetMember_dword0x98_009cbb80'
+00a39c70   RELOCATION_MATCH PASS   GetAlignment
+
+WINS: 2
+  00891320 RELOCATION_MATCH CGameScriptInterface::?EnableDangerMusic@CGameScriptInterface_Methods@@QBEXW4EMusicSetType@@@Z
+  00a39c70 RELOCATION_MATCH CWADFile::?GetAlignment@CWADFile_Methods@@QAEXXZ

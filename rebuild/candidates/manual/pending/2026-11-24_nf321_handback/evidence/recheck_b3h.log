@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a75b50   MATCH            PASS   RemoveRegionZero
+00b5ead0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+
+WINS: 2
+  00a75b50 MATCH CNavNavigableLeafNode::RemoveRegionZero
+  00b5ead0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::GetConsoleEnableFunctionName

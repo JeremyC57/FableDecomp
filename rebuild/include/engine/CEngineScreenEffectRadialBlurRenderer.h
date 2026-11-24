@@ -110,6 +110,14 @@ public:
     virtual void OnReleaseDefaultPoolResources();                     // 0x00B5BD00
 private:
 #endif
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_GETCONSOLEENABLEFUNCTIONNAME_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00B5EAD0): Ego_r.pdb / FableWin.pdb
+    // ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ, the CEngineComponent override the retail
+    // RTTI vftable placement names at 0x00B5EAD0. Declaration only.
+public:
+    virtual CCharString GetConsoleEnableFunctionName();               // 0x00B5EAD0
+private:
+#endif
 };
 #else
 class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent {
@@ -118,6 +126,14 @@ public:
     virtual unsigned long PeekSceneFilterFlags() const;
 private:
     unsigned char _pad_0xc[0x220];              // +0xc members not modelled yet (Ego_r.pdb names; retail STLport sizes)
+#ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_GETCONSOLEENABLEFUNCTIONNAME_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00B5EAD0): Ego_r.pdb / FableWin.pdb
+    // ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ, the CEngineComponent override the retail
+    // RTTI vftable placement names at 0x00B5EAD0. Declaration only.
+public:
+    virtual CCharString GetConsoleEnableFunctionName();               // 0x00B5EAD0
+private:
+#endif
 };
 #endif
 FABLE_STATIC_ASSERT_AT(86, sizeof(CEngineScreenEffectRadialBlurRenderer) == 0x22c);

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a667c0   MATCH            PASS   EventScanStart
+
+WINS: 1
+  00a667c0 MATCH CKeyboard::?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z

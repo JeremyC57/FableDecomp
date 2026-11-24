@@ -134,6 +134,11 @@ protected:
     virtual CDateAndTime GetLastModifiedTime(const CCharString&);
     virtual CCharString GetEnumerationType(unsigned long) const;
 public:
+#ifdef FABLE_RETAIL_CBANKFILE_GETALIGNMENT_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00A39C70 CWADFile::GetAlignment): Ego_r.pdb / FableWin.pdb ?GetAlignment@CBankFile@@QBEKXZ, retail
+    // 0x009CBB80, which the donor FableWin CWADFile::GetAlignment calls on its Bank. Declaration only (needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS).
+    unsigned long GetAlignment() const;                                     // 0x009CBB80
+#endif
 #ifdef FABLE_RETAIL_CBANKFILE_GETBANKPATHNAME
     // NF177 opt-in (rows 0x009D56C0 / 0x009D5820 CBankFileAsync::OpenReadOnly / OpenFileReadOnly): Ego_r.pdb 0x00B19C30 + FableWin.pdb
     // 0x02F918E0 ?GetBankPathname@CBankFile@@QBE?AVCWideString@@XZ, out of line at 0x009CBF10 (CWideString by hidden pointer).

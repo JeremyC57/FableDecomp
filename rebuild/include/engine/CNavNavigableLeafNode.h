@@ -81,6 +81,13 @@ public:
     virtual unsigned char GetPreferabilityCost() const;               // 0x00A75A90
 public:
 #endif
+#ifdef FABLE_RETAIL_CNAVNAVIGABLELEAFNODE_REMOVEREGIONZERO_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00A75B50): Ego_r.pdb / FableWin.pdb ?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ, the override
+    // the retail RTTI vftable placement names at vtable 0x0129DDA4 slot 14 (CANavQuadTreeNode slot 14). Declaration only.
+protected:
+    virtual bool RemoveRegionZero();                                  // 0x00A75B50
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(25, sizeof(CNavNavigableLeafNode) == 0x20);
 #else // flattened Ego_r layout (the landed default, unchanged)

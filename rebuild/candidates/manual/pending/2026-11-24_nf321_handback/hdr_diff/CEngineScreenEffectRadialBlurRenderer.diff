@@ -1,0 +1,18 @@
+112a113,120
+> #ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_GETCONSOLEENABLEFUNCTIONNAME_DECL
+>     // Opt-in (NF321, 2026-11-23, row 0x00B5EAD0): Ego_r.pdb / FableWin.pdb
+>     // ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ, the CEngineComponent override the retail
+>     // RTTI vftable placement names at 0x00B5EAD0. Declaration only.
+> public:
+>     virtual CCharString GetConsoleEnableFunctionName();               // 0x00B5EAD0
+> private:
+> #endif
+120a129,136
+> #ifdef FABLE_RETAIL_CENGINESCREENEFFECTRADIALBLURRENDERER_GETCONSOLEENABLEFUNCTIONNAME_DECL
+>     // Opt-in (NF321, 2026-11-23, row 0x00B5EAD0): Ego_r.pdb / FableWin.pdb
+>     // ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ, the CEngineComponent override the retail
+>     // RTTI vftable placement names at 0x00B5EAD0. Declaration only.
+> public:
+>     virtual CCharString GetConsoleEnableFunctionName();               // 0x00B5EAD0
+> private:
+> #endif

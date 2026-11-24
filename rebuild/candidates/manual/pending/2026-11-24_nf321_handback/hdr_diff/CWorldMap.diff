@@ -1,0 +1,6 @@
+113a114,118
+> #ifdef FABLE_RETAIL_CWORLDMAP_UNLOADLEVEL_DECL
+>     // Opt-in (NF321, 2026-11-23, row 0x004FF8A0 ForceUnload): Ego_r.pdb / FableWin.pdb ?UnloadLevel@CWorldMap@@IAEXJ@Z (protected,
+>     // non-virtual; retail 0x004FEDE0, which the donor FableWin ForceUnload calls). Declaration only.
+>     void UnloadLevel(long);                                                                              // 0x004FEDE0
+> #endif

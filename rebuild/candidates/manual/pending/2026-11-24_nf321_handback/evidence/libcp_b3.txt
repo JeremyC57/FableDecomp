@@ -1,0 +1,2 @@
+00a75b50 LIBCP_OK renames=?RemoveRegionZero@CNavNavigableLeafNode_Methods@@QAE_NXZ=?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ ; .drectve = HEAD + /DEFAULTLIB:"libcp" ; sections=2
+00b5ead0 LIBCP_OK renames=?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer_Methods@@QAE?AVCCharString@@XZ=?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ ; .drectve EQUAL ; sections=3

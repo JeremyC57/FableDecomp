@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0088e520   WARN RELOC_NAME: ?EndFadeScreen@CGameScriptInterface@@IAEXXZ -> 006e7270 labelled '_global::Forward_EndScreenFadeOut_via0xc_006e7270'
+0088e520   RELOCATION_MATCH PASS   EndCutFade
+004ff8a0   RELOCATION_MATCH PASS   ForceUnload
+008fd892   RELOCATION_MATCH PASS   Initialise
+00891320   RELOCATION_MATCH PASS   EnableDangerMusic
+
+WINS: 4
+  0088e520 RELOCATION_MATCH CGameScriptInterface::?EndCutFade@CGameScriptInterface@@UAEXXZ
+  004ff8a0 RELOCATION_MATCH CWorldMap::?ForceUnload@CWorldMap@@UAEXJ@Z
+  008fd892 RELOCATION_MATCH CAIStateGroup_BirdGroundWander::?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  00891320 RELOCATION_MATCH CGameScriptInterface::?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z

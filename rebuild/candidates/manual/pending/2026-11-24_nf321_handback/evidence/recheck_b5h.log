@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b23b50   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00b23b50   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b23b50   WARN RELOC_NAME: ?AddExclusiveObserver@CEngineCamera@@QAEXPAVCCamera@@@Z -> 00b2fbf0 labelled '_global::SetMember_dword0xc_00b2fbf0'
+00b23b50   RELOCATION_MATCH PASS   SetCamera
+
+WINS: 1
+  00b23b50 RELOCATION_MATCH CEngine::SetCamera

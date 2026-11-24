@@ -233,6 +233,13 @@ public:
     // ?RefreshD3DTransforms@CEngineCamera@@QAEXXZ (landed 0x00B2FC50), called on the camera component pointer 0x01436EA0. Declaration only.
     void RefreshD3DTransforms();                                         // 0x00B2FC50
 #endif
+#ifdef FABLE_RETAIL_CENGINECAMERA_SETGAMECAMERA_PROCESS_DECL
+    // Opt-in (NF321, 2026-11-23, row 0x00B23B50 CEngine::SetCamera): Ego_r.pdb / FableWin.pdb ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z
+    // (retail 0x00B2FBF0) and ?Process@CEngineCamera@@QAEX_N@Z (landed 0x00B314E0), the two calls of the donor FableWin CEngine::SetCamera,
+    // made on the camera component pointer 0x01436EA0. Declarations only.
+    void SetGameCamera(const class CCamera* camera);                     // 0x00B2FBF0
+    void Process(bool force);                                            // 0x00B314E0
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_NOSCALEVIEWTRANSFORM
     // Chunk 764 (row 0x00B451D0 CEngineLightingManager::CalculateFogTransformMatrix): Ego_r.pdb NoScaleViewTransform (CMatrix3x4) at +0x114,
     // read in place by retail (fmul [eax+114h] .. [eax+140h] off the camera pointer 0x01436EA0). No size change.

@@ -1,0 +1,6 @@
+136a137,141
+> #ifdef FABLE_RETAIL_CBANKFILE_GETALIGNMENT_DECL
+>     // Opt-in (NF321, 2026-11-23, row 0x00A39C70 CWADFile::GetAlignment): Ego_r.pdb / FableWin.pdb ?GetAlignment@CBankFile@@QBEKXZ, retail
+>     // 0x009CBB80, which the donor FableWin CWADFile::GetAlignment calls on its Bank. Declaration only (needs FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS).
+>     unsigned long GetAlignment() const;                                     // 0x009CBB80
+> #endif
