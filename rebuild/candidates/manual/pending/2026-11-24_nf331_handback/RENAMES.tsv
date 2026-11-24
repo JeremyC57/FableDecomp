@@ -1,0 +1,5 @@
+# section 1: self / binder renames
+symbol_old	symbol_new	row	note
+# none: the definition keeps its PDB name ??4CScriptThing@@QAEAAV0@ABV0@@Z; only its COMDAT selection goes 1 -> 2. 0x008AB980 Leaf prefix ??4CScriptThing -> full ??4CScriptThing@@QAEAAV0@ABV0@@Z (NF299 Q2 shape; the recheck payload follows it).
+# section 2: caller respellings
+# none

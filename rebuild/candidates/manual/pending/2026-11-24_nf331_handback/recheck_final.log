@@ -1,0 +1,13 @@
+### HEAD (landed source), vland --recheck-landed
+addr       parity           behav  name
+008ab980   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  008ab980 RELOCATION_MATCH CScriptThing::??4CScriptThing
+
+### new (rows/008ab980.cpp), vland --recheck-landed, same LANDVERIFY_WORK path
+addr       parity           behav  name
+008ab980   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  008ab980 RELOCATION_MATCH CScriptThing::??4CScriptThing@@QAEAAV0@ABV0@@Z

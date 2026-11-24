@@ -1,0 +1,1 @@
+008ab980 OK helper=?ReferenceScriptThingAssignment@?A0xef52b485@@YAXAAVCScriptThing@@ABV2@@Z ??4 sel 1->2; ??4 v retail BYTES_EQUAL [2f:00bfe9bc=??3@YAXPAX@Z]

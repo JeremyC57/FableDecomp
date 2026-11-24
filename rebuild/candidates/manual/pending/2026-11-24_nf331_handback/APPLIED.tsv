@@ -1,0 +1,2 @@
+addr	change	status
+008ab980	operator= `inline` + ReferenceScriptThingAssignment helper (inline_depth(0)); Leaf ??4CScriptThing -> ??4CScriptThing@@QAEAAV0@ABV0@@Z; One-definition comment lines	ready to land (rows/008ab980.cpp; landed test unchanged)

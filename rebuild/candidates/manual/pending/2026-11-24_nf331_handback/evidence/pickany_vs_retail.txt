@@ -1,0 +1,6 @@
+== H_ (final pair-grade object, work/pobj/H_008ab980.obj)
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
+== new (final pair-grade object, work/pobj/008ab980.obj)
+EQ  007044d0 67 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z 
+EQ  00704580 72 ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z 
