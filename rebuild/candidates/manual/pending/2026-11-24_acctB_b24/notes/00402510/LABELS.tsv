@@ -1,0 +1,12 @@
+address	name	module
+00407a70	?SetAssignedInputKeyboard@CUserProfileManager@@QAEXW4EGameAction@@W4EInputKey@@_N@Z	CUserProfileManager
+00407ba0	?SetAssignedInputMouse@CUserProfileManager@@QAEXW4EGameAction@@W4EMouseButtonControl@@_N@Z	CUserProfileManager
+00413c50	InitialiseConsoleVariables (descriptive)	_global
+00419d90	?Initialise@NGlobalConsole@@YIXXZ	NGlobalConsole
+009bc890	?SetLeftAlignText@CXMVPlayer@@SIX_N@Z	CXMVPlayer
+009bc8a0	?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z	CXMVPlayer
+00418c3b	?GenerateMetFilesFromLugFiles@CMainGameComponent@@SIXXZ	CMainGameComponent
+009a6610	?Initialise@CSystemManager@@QAE?AW4ESystemCode@@PBVCSystemManagerInit@@@Z	CSystemManager
+00412f90	?Play@CGame@@QAEXXZ	CGame
+009d4c30	?LoadTable@CDefStringTable@@QAEX_N@Z	CDefStringTable
+009d5240	?SetEnableFailureHandling@CBankFileAsync@@SIX_N@Z	CBankFileAsync

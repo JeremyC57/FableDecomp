@@ -1,0 +1,7 @@
+03:12 00402510 grade v0.cpp TIMEOUT /Gr /GS -- baseline draft unchanged
+03:13 00402510 grade v0.cpp SRC_FAIL /Gr /GS -- draft + 8 missing hand851 headers in overlay
+03:20 00402510 grade v4.cpp DIFFER(3932v3952) hunks=7 /Gr /GS -- v4: compiles on current headers + overlay opt-ins
+03:20 00402510 grade v5.cpp DIFFER(3948v3952) hunks=5 /Gr /GS -- v5: inline GetCRC + IsOpen
+03:21 00402510 grade v6a.cpp RELOCATION_MATCH /Gr /GS -- v6: CIVCountedPointer dtor variants (direct / direct_clear / release_forceinline)
+03:23 00402510 grade v7.cpp RELOCATION_MATCH /Gr /GS -- v7: names fixed (landed spellings, descriptive names without addresses)
+03:23 00402510 grade v8.cpp RELOCATION_MATCH /Gr /GS -- v8: final header comment
