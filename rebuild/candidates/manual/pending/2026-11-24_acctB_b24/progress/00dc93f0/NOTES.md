@@ -46,3 +46,38 @@
   the declared-only one: ~MovieBase still sz 25 / c1 19 at every site, same f, same decisions -> no lever on the MovieBase cost.
   (A single MovieBase c1 cannot fit both rows anyway: here helmet needs c1 in [36,41] at f .1159 v armour .1545; 0x00D0C410 needs it
   expanded at f .0003.) State unchanged: differ/ = x4 (3 hunks, diagnostic depth(0) device; WS dtor wrongly called).
+## B24B7 (2026-11-24) -- trace-only probes, no grade change (differ/ = x4 diagnostic, 3 hunks; landable best r0 18 hunks)
+- Source-shape leads: no Lua port of OpeningGraveyardSecretPassage on the lane (work/aeon_lua_ports is Windows-only; grep of /opt and
+  /home for REMIND_HELMET finds only drafts). Landed sibling CSecretPassageWoman::Main 0x00DC5F80 (same retail object) uses plain
+  `if (IsActiveThreadTerminating()) return;` and `for (;; Game->NewScriptFrame())` -- no REMIND-chain analogue.
+- Frequency arithmetic (r0 trace): else-block entry 2.197 = after the j `for` (5x of the loop entry .879) x .5; arms x.25 (&&) x.5
+  (terminate if), x.75 per else-if. Retail needs the else-block entry in (.66, .885) (r .302..403).
+- b7/k1 (j loop as do { } while (++j<LAST)) and b7/k2 (i loop likewise): arms x0.1 / x0.067 -- the same quantum as `while` (w1/w2): a
+  do / while loop drops the code after it back to the entry frequency; `for` keeps 5x. No loop form gives x0.3..0.4.
+- A loop guard (`if (..) for`): effect UNMEASURED (the playbook gives no number) and no evidence for one; asserts (row 1's lever) cannot cool a site (the cap is
+  ruled out here: g <= 2832). Remaining options are the shared ~MovieBase cost (b24a/SHARED_FORM.md: conflicts with 0x00D0C410) or
+  the compile-context build mode. Not parked by choice: no evidenced form found after these probes.
+## B24B8 (2026-11-24) -- interrupted by coordinator (00839940 first); no grade on this row yet
+- Context from rows 1/2 (B24B8): in 0x00D0D910 and 0x00D0C410 the decision set is implicit ~MovieBase expanded at EVERY site
+  (forced-decision proof, RELOCATION_MATCH; cause not proven), yet here retail CALLS it at the helmet arm: so the MovieBase decision differs per function.
+  c2 growth counter g (0x10882B58) writers: 0x10740984 (=9000), 0x10772508 (=-1), 0x107727ca, 0x1077ca2e, 0x1077cf0f, inc at 0x1078E057;
+  penalty pen=(sz/2)*(g+a)/9000 when sz>S and g+a>9000 (0x1078D1DA). Next: brief's loop-shape forms (nested if / switch / predicate / continue).
+## B24B8 (2026-11-24) results
+- SINGLE-DECISION PROOF: c2 override of ONLY the helmet-arm ~MovieBase decision (f .1159 -> call) on r0, stock: RELOCATION_MATCH
+  (b8/helmet.obj; kit ../00d0d910/b8/inl/inl_force_f.py, FORCE_F=0.1159). Nothing else differs.
+- MovieBase decisions in r0 (f): .1562, 2.1973 (collected_all block), arms .2747 / .2060 / .1545 / .1159 (helmet), 1.4462 (else-block scope
+  end). Retail calls ONLY the coldest (helmet), so a frequency cause stays possible here (unlike 0x00D0D910, where retail expands at f .0001).
+- Retail branch shape = ours (j loop `cmp edi,4; jl`, then `cmp [esi+30h],bl; je` to the collected_all block): bytes give no shape hint.
+- Loop / branch forms traced (b8/, inl/b8_*.txt): `continue` in the j loop x1.0; `else if (!collected_all)` x0.5; separate
+  `if (!collected_all)` after the block x0.75 (the join after a block holding a terminate return is .75); `break` at the end of the
+  collected_all block x1.0, with separate if / else-if x0.5. Needed x0.302..0.403 (e.g. .75 x .5): no byte-neutral form found that
+  stacks a second .5 test. Untested: whether vc keeps the bytes (it re-tests a member after calls; likely an extra cmp).
+- Graded: vc (separate if) DIFFER(4487v4507) 21 hunks (extra re-test of collected_all); vb (else if) keeps the bytes (18 hunks, = r0).
+  Statement wrappers (do/while(0), braced if/else) on terminate checks: no f change. Best next idea: a byte-neutral way to put a second
+  .5-or-.75 test on the path to the else block (or the arms) -- or settle the family question (per-function MovieBase cost, see
+  ../00d0d910/ESCALATE.md: there retail expands MovieBase at f .0001; here it calls it at f .1159).
+- B24B8 caller-size probe (advisor): hook ../00d0d910/b8/inl/inl_goff.py adds GOFF to g at c2 0x1078D1EB (penalty input only; checked:
+  pen column goes nonzero). r0 stock, GOFF 10000: all MB expanded (helmet c1 35); 10500: MB pattern = retail (helmet called, 1111101) but
+  DIFFER(4503v4507) -- the offset also flips ~100 other decisions in Main AND in its callees' bodies (map/STB/CP helpers; the hook is
+  TU-wide, not Main-only); 11000..14000: 4376..4068 b. So a UNIFORM larger caller size does not reproduce retail; a Main-only offset
+  (hook gated to Main's compile) is the untested refinement. objs/txt in b8/goff/.

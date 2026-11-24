@@ -88,3 +88,12 @@ inline budget and symbol counters restart per function. NOT measured: the inline
 in a grouped TU (the o1/o2 definition-order probe of 0x00D0C410 cannot produce "callee compiled after caller", since c2 compiles callees
 on demand), and a TU where earlier script files leave pragmas or different inline bodies visible (register_scripts.obj is a unity TU:
 an unbalanced `#pragma inline_depth` / `auto_inline` / `optimize` or another .cpp's inline definition would reach later files).
+
+## B24B8 (2026-11-24): decision-override proof on 0x00D0D910 -- the family residue is ONLY the ~MovieBase decision
+Kit: 00d0d910/b8/inl/ (inl_force.py / inl_force_mb.py: gdb rewrites eax at c2 0x1078CFDA; OBJ_OUT keeps the obj; b8/objgrade.py
+grades it relocation-masked). On CGate2Guard1::Main: STOCK flags + plain-inline CTimer (landed text) + every implicit
+~CScriptGameResourceObjectMovieBase decision forced to expand => RELOCATION_MATCH. Equivalently S15 + cold ~CTimer forced to call.
+So retail's DECISION SET = ~CTimer by the stock frequency rule + ~MovieBase expanded at every site (no MovieBase vptr store). This
+proves the decisions, not which side's cost causes them (stock+forced-MovieBase and S15+forced-CTimer both match). Counterexample in
+the same object: 0x00DC93F0 retail CALLS ~MovieBase 0x006E7B80 at its helmet-arm exit, so 'MovieBase always inline' is not a TU-wide fact.
+c2 penalty term (0x1078D1DA): pen = (sz/2)*(g+a)/9000 only when sz > S and g+a > 9000 (g = caller growth counter 0x10882B58).

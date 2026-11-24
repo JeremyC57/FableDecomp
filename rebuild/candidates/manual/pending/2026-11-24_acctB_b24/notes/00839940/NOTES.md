@@ -156,3 +156,26 @@ byte locals 0x58..0x5b v ours 0x5c..0x5f, a float at 0x44 v 0x48. Not worked fur
   retail's own call displacements, relocations masked): 12 EQ (GetSubDef x2, GetTCDriver<CTCDExplosion> 0x007512C0, IS_THING_ALIVE,
   bitset::test, LowerBound x2, map find, iterator ++ x2, CEnginePrimitiveLine ctor, GetPHitMaterialDef) + 1 NEQ = the known HEAD-debt
   GetDef<CMaterialDef> 0x0066C340 (pk2/leafcopies.txt). STATE: ready for the lander (Inferred device, ESCALATE section 0).
+## B24B8 (2026-11-24): Account A's ELEVEN FableWin asserts (FableWin.exe OnHit 0x027EC280) replace B24B7's five fitted ones -- g11/
+- Base: payload_g.json source (g11/g_base.cpp) + overlay hdrg: RELOCATION_MATCH regraded.
+- IL window (c2 trace, inl/gh.py + summonable-site g): retail needs the summonable bitset<274>::test EXPANDED (g <= ~8990 there) and the
+  hero-experience IS_THING_ALIVE CALLED (g >= ~9001, the site is +350 IL later), i.e. the summon-site g in about [8650, 8990].
+  g counts the function's whole IL (g0 rises with asserts placed AFTER the hero site too), so every assert anywhere counts.
+- (A) All eleven in the landed success-form spelling (0x00627BE0: `FABLE_RETAIL_ASSERT(call); call;`): g11/a11.cpp summon 9254 / hero 9499
+  -> DIFFER(5214v5195) 149 hunks (frame 0xA4, summon bitset::test called). Bisect: asserts 1..6 fit (s6 8876/9226 RELOCATION_MATCH);
+  #7 (dead `phitter->GetTC(&ptc_guard)`, +142 IL from the inlined GetTC chain) alone breaks it (o7 9123); 8..11 each fit alone but
+  together break it (n7 9013). FABLE_RETAIL_ASSERT_ARM for all eleven (arm11): same DIFFER. => the eleven do NOT fit as dead arms + call.
+- (B) VERIFY-style release form: the three condition asserts (1, 2, 4) as dead arms; the eight success forms (3, 5..11) are the kept call
+  itself (a success assert that keeps its call in release evaluates its expression; no extra arm). g11/v11.cpp: summon 8675 / hero 9025
+  -> RELOCATION_MATCH (margin ~25 IL on the low side). Test g11/00839940_test.cpp vt PASS, mutation (00839940_test_mut.cpp) FAIL.
+  addmatch -> g11/payload.json + g11/oracle.tsv (overlay hdrg). Strict vland (g11/vland.log): RELOCATION_MATCH PASS; warnings = the same
+  6 RELOC_NAME + 1 RELOC_CONFLICT B24B7 explained above (none from the new text). Pick-any: pickany_vs_retail 11 EQ + NEQ 0x0066C340
+  GetDef<CMaterialDef> (leaf-referenced, HEAD debt, Account A NF341) + NEQ 0x004292C0 _Rb_global (not leaf-referenced, STLport header);
+  leafcopies.py 12 EQ + the same 0x0066C340. Inner hit-locations local renamed pTCHitLocations (FableWin assert 11 text).
+- Open for the lander: (B) is the release spelling inferred for the success forms (no FableWin evidence of the release macro); the
+  landed 0x00627BE0 spelling of the same kind does not fit here. payload.json (B24B7, fitted five) left in place; the new one is g11/.
+- B24B8 advisor follow-ups: success forms as `if (!(call)) { dead arm }` (g11/vf.cpp, row-local probe macro): slot / register / block-order shifts (IL not traced):
+  DIFFER(5198v5195) 51 hunks -> not a candidate. v11's header now says "one spelling that fits" (not proven unique), hero margin ~24 IL
+  (~one arm): regrade after NF341 / the ISDEAD opt-in merge. Assert 7's position is UNVERIFIED (here = the guard-test condition; ask Account A
+  whether FableWin tests ptc_guard's GetTC once or twice). g11/payload.json regenerated, strict vland PASS (7 explained WARN).
+- Positions of asserts 1, 2, 4 are placed from the coordinator's ORDER only (next to the value they test), unverified like 7.

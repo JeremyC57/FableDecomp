@@ -1,16 +1,21 @@
-// 0x00839940 CThingGameObject::OnHit (B24B7, overlay hdrf)
-// Grade: RELOCATION_MATCH (B24B7, 2026-11-24).
-// Inferred: five dead release ASSERTs (fable_assert.h FABLE_RETAIL_ASSERT_DEAD_ARM) on five of the pointer results this function
-//   dereferences without a null test before the hero-stat block (all but the two CMainGameComponent::Get() in the debug-line block):
-//   the hit location's armour def at the DamageMaterial and BlockMaterial reads, ptcd_explosion after GetTCDriver, and GetPBaseDef() /
-//   phitter->GetPBaseDef() before their GetSubDef calls (by-value CDefPointer temporaries in the dead arm). They emit no code; their
-//   dead arms add front-end IL, which raises OnHit's running caller size at the hero-experience IS_THING_ALIVE (c2 trace: g 8927 -> 9237,
-//   cap reached at 8992) so IS_THING_ALIVE 0x0040DCE0 and bitset<274>::test 0x00410DE0 are called there as in retail (0x0083A825..
-//   0x0083A844), while the summonable-creature bitset::test, which retail expands, stays under the cap (g 8892). Graded IL window: +54 DIFFER,
-//   +74 / +92 / +114 / +192 / +310 / +396 RELOCATION_MATCH, +414 DIFFER. FableWin.pdb's OnHit is 2761i / 12015b at /Od against 1544i / 5801b
-//   for this text with /EHsc (fwsize, +1217i, "assert?"; about 42i per debug ASSERT); FableWin is a later build (Ego_r's release OnHit is
-//   5631 b v retail 5195), so part of that is newer code and ~29 ASSERTs is an upper bound. Conditions are not recoverable (release drops
-//   them). Precedents 0x00975BB0, 0x00B10B10.
+// 0x00839940 CThingGameObject::OnHit (B24B8, overlay hdrg)
+// Grade: RELOCATION_MATCH (B24B8, 2026-11-24).
+// Recovered asserts (not fitted): FableWin.exe's debug OnHit (0x027EC280, read by Account A) carries eleven DoErrorMessage asserts, in
+//   source order: (1) pweapon==NULL || IS_THING_ALIVE(pweapon), (2) phit_location != NULL, (3) PeekDefinitionManager().GetDef(mat_def,
+//   &pmat_def), (4) IS_THING_ALIVE(pexplosion) "Can't create explosion for explosive strike", (5) pexplosion->GetTCDriver(&ptcd_explosion),
+//   (6) PeekDefinitionManager().GetDef(mat_def, &pmaterial_def), (7) phitter->GetTC(&ptc_guard), (8..10) GetDef("MATERIAL_LIGHTNING" /
+//   "MATERIAL_DIVINE_WRATH" / "MATERIAL_UNHOLY_POWER", &phitting_material), (11) GetDef(pTCHitLocations->GetPDefaultHitLocation()->
+//   GetArmourDef()->DamageMaterial, &phitting_material). The eight success forms (3, 5..11) keep their call in retail, so in the release
+//   build they are the call statement itself (VERIFY-style: the expression is evaluated, nothing else is emitted); the three condition
+//   asserts (1, 2, 4) are release dead arms (fable_assert.h FABLE_RETAIL_ASSERT_DEAD_ARM), which emit no code.
+// Inferred: the release spelling of the eight success forms. Measured (c2 trace, inl/gh.py; window: summonable bitset<274>::test site
+//   g <= ~8990 expanded as retail, hero-experience IS_THING_ALIVE g >= ~9001 called as retail): this form g 8675 / 9025 RELOCATION_MATCH;
+//   all eleven as dead arms + the kept call (the 0x00627BE0 success-form spelling) g 9254 / 9499 DIFFER(5214v5195) 149 hunks (frame 0xA4);
+//   asserts 1..6 that way g 8876 / 9226 RELOCATION_MATCH, adding 7 or 8..11 DIFFER; success forms as `if (!(call)) { dead arm }`: DIFFER(5198v5195)
+//   51 hunks (frame-slot / register / block-order shifts; IL not traced). The VERIFY-style form here is one spelling that fits (hero-site margin ~24 IL, about one arm), not
+//   proven to be the only one. Positions: the coordinator gave the ORDER only; asserts 1, 2 and 4 are placed from that order
+//   next to the value they test (unverified). Unverified: assert 7's position -- here it is the guard-test condition itself (FableWin may test the
+//   GetTC result twice; FableWin.exe is not on the lane).
 #define FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26
 #define FABLE_RETAIL_ASSERT_DEAD_ARM
 #define FABLE_RETAIL_CCREATUREDEF_STATGETTYPENAME
@@ -188,6 +193,7 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
     }
     RemoveTC(TCI_FLOURISH_TARGET);
     CThing* pweapon = hit_params.GetPWeapon();
+    FABLE_RETAIL_ASSERT(pweapon == NULL || IS_THING_ALIVE(pweapon));                    // FableWin assert 1
     CThing* phitter = hit_params.GetPThingHitting();
     NHitLocations::CHitLocation* phit_location = hit_params.GetPHitLocation();
     CTCHitLocations* ptc_hit_locations;
@@ -199,13 +205,13 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
             return;
         hit_params.SetHitLocation(*phit_location);
     }
+    FABLE_RETAIL_ASSERT(phit_location != NULL);                                         // FableWin assert 2
     hit_params.SetHitLocation(*phit_location);
     CDefPointer<const CMaterialDef> pmat_def = PeekPMaterial();
     if (GetTypeFlags() & 8) {
-        FABLE_RETAIL_ASSERT(phit_location->GetArmourDef().Get());
         long mat_def = phit_location->GetArmourDef()->DamageMaterial;
         if (mat_def > 0)
-            PeekDefinitionManager().GetDef(mat_def, &pmat_def);
+            PeekDefinitionManager().GetDef(mat_def, &pmat_def);                         // FableWin assert 3 (success form)
     }
     hit_params.SetPHitMaterialDef(pmat_def);
     CTCPerceiveThing* ptc_perceive;
@@ -234,10 +240,10 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
                 long explosion_index = ptc_weapon->GetExplosionType();
                 if (explosion_index > 0) {
                     CThing* pexplosion = CTCDExplosion::Create(explosion_index, phitter->GetPos());
+                    FABLE_RETAIL_ASSERT(IS_THING_ALIVE(pexplosion));                    // FableWin assert 4
                     if (IS_THING_ALIVE(pexplosion)) {
                         CTCDExplosion* ptcd_explosion;
-                        pexplosion->GetTCDriver(&ptcd_explosion);
-                        FABLE_RETAIL_ASSERT(ptcd_explosion);
+                        pexplosion->GetTCDriver(&ptcd_explosion);                       // FableWin assert 5 (success form)
                         ptcd_explosion->SetSpecificThingToHit(*this);
                     }
                 }
@@ -267,11 +273,10 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
         if (IsToNegateAllHits()) {
             hit_params.SetHitNegated(true);
             if (GetTypeFlags() & 8) {
-                FABLE_RETAIL_ASSERT(phit_location->GetArmourDef().Get());
                 long mat_def = phit_location->GetArmourDef()->BlockMaterial;
                 if (mat_def > 0) {
                     CDefPointer<const CMaterialDef> pmaterial_def;
-                    PeekDefinitionManager().GetDef(mat_def, &pmaterial_def);
+                    PeekDefinitionManager().GetDef(mat_def, &pmaterial_def);            // FableWin assert 6 (success form)
                     hit_params.SetPHitMaterialDef(pmaterial_def);
                 }
             }
@@ -299,7 +304,7 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
             bool allowed_to_kill = true;
             CTCGuard* ptc_guard;
             const CTCHero* ptc_hero;
-            if (GetType() == 2 && IS_THING_ALIVE(phitter) && phitter->GetTC(&ptc_guard)) {
+            if (GetType() == 2 && IS_THING_ALIVE(phitter) && phitter->GetTC(&ptc_guard)) {   // FableWin assert 7 (success form; position unverified)
                 if (ptc_guard->IsAttackingToFineRatherThanKill())
                     allowed_to_kill = false;
             } else if ((GetTypeFlags() & 8) && IS_THING_ALIVE(phitter) && phitter->PeekTC(&ptc_hero) && !ptc_hero->IsWeaponUseAllowed())
@@ -373,13 +378,11 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
     CTCHeroStats* ptc_stats;
     if (!hit_params.IsHitNegated() && !hit_params.IsBlocked() && IS_THING_ALIVE(phitter) && phitter->GetTC(&ptc_stats) && IsGivingHeroStatChangesOnBeingHit()) {
         CDefPointer<const CCreatureDef> pcreature_def;
-        FABLE_RETAIL_ASSERT(GetPBaseDef().Get());
         if (GetPBaseDef()->GetSubDef(&pcreature_def)) {
             bool unarmed = true;
             if (IS_THING_ALIVE(pweapon) && pweapon != phitter)
                 unarmed = false;
             CDefPointer<const CHeroExperienceDef> phero_exp_def;
-            FABLE_RETAIL_ASSERT(phitter->GetPBaseDef().Get());
             if (phitter->GetPBaseDef()->GetSubDef(&phero_exp_def)) {
                 for (std::map<EDamageAttribute,float>::const_iterator it = hit_params.GetDamageMap().begin(); it != hit_params.GetDamageMap().end(); ++it) {
                     const EDamageAttribute att = it->first;
@@ -436,15 +439,15 @@ void CThingGameObject::OnHit(CHitParameters& hit_params)
         if (!phitting_material.Get() && IS_THING_ALIVE(phitter) && (phitter->GetTypeFlags() & 4)) {
             phitting_material = static_cast<CThingPhysical*>(phitter)->PeekPMaterial();
             if (hit_params.IsLightningStrike())
-                PeekDefinitionManager().GetDef("MATERIAL_LIGHTNING", &phitting_material);
+                PeekDefinitionManager().GetDef("MATERIAL_LIGHTNING", &phitting_material);   // FableWin assert 8 (success form)
             else if (hit_params.IsDivineWrathStrike())
-                PeekDefinitionManager().GetDef("MATERIAL_DIVINE_WRATH", &phitting_material);
+                PeekDefinitionManager().GetDef("MATERIAL_DIVINE_WRATH", &phitting_material);   // FableWin assert 9 (success form)
             else if (hit_params.IsUnholyPowerStrike())
-                PeekDefinitionManager().GetDef("MATERIAL_UNHOLY_POWER", &phitting_material);
+                PeekDefinitionManager().GetDef("MATERIAL_UNHOLY_POWER", &phitting_material);   // FableWin assert 10 (success form)
             else {
-                CTCHitLocations* ptc_hit_locations;
-                if ((phitter->GetTypeFlags() & 8) && phitter->GetTC(&ptc_hit_locations))
-                    PeekDefinitionManager().GetDef(ptc_hit_locations->GetPDefaultHitLocation()->GetArmourDef()->DamageMaterial, &phitting_material);
+                CTCHitLocations* pTCHitLocations;
+                if ((phitter->GetTypeFlags() & 8) && phitter->GetTC(&pTCHitLocations))     // FableWin assert 11 (success form)
+                    PeekDefinitionManager().GetDef(pTCHitLocations->GetPDefaultHitLocation()->GetArmourDef()->DamageMaterial, &phitting_material);
             }
         }
         CDefPointer<const CMaterialDef> phit_material = hit_params.GetPHitMaterialDef();
