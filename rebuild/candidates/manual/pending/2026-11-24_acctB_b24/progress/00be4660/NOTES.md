@@ -65,3 +65,66 @@ the loop-entry difference -> a frame-packer question (pkq.sh).
    any FindFirst change.
 Tools in this folder: fas.py / fmap.sh (frame map from /FAs), pkq.sh + pkdec.py (c2 frame-packer probe, POST order and weights),
 hvar.py (header-overlay variants), var.py-style text variants. No payload for this row.
+## B24C3 (2026-11-24) -- tools in c3/: pair.sh (one TesselateEdge body -> water + sea sources, grades BOTH; DEFS / OV env for row
+## defines / overlay), prall.sh / prq.sh (c2prio colouring trace, ~20 s), fwv.sh + mkov.py (FableWin /Od sizes of FindFirst / Iterate
+## under an overlay with a replaced helper body), hv/ (water helper variants), ff/ (FindFirst variants), dbg/ (debug-ASSERT size probe).
+- Baseline: water z2 4 hunks, sea z2 22; water m1a 43, sea m1a RELOCATION_MATCH (pair.sh reproduces B24C2's numbers).
+- c2prio on water z2: the prologue residue is a colouring ORDER: the FindFirst y/x ARGUMENT pieces (prio 52, chosen first, "all costs 0"
+  -> edx / esi) are coloured before the inline y/x COPY pieces (prio 48; the y copy piece is allowed only ebp). Retail needs the copy
+  pieces first so the argument pieces take their register by copy preference (y -> ebp; x -> esi). 4-point gap, not a tie.
+- Loop form: the bridged-branch `continue` moves BOTH rows the same way (continue -> reload-at-head loop: water i piece goes to memory,
+  sea strip piece ecx + const -1 piece ebp = retail sea; no continue -> water i piece eax = retail water, sea strip piece ebx, -1 immediate).
+  IL blocks of sea m1a v z2 differ only in the skip blocks (one shared `previous = -1` block v two else-arm blocks). So no loop-tail
+  spelling alone separates the rows; the separating input must be instantiation-specific or shift both rows' balance.
+- No effect / worse (graded): prologue declaration orders p1..p10 (z2 water: 4..38 hunks, none better); FindFirst texts f1..f7 under
+  z2 water (f1 4, f4 6, others worse); water helper texts h1..h6 under z7 (16..65, none better); CEdgeStipVertexArray::operator[]
+  release-ASSERT dead arm (FableWin operator[] is 73i/245b = ours + one assert; dead arm inert on both rows: 4 / 22 / 43 / RELOC_MATCH);
+  not-found falling into the shared skip store with `continue` in the found arm (e/f: water 104, sea 31).
+- FableWin /Od sizes: FindFirst f1 (pos + count locals) 89i/252b, f4 (PeekSize() x3, no size local) 88i/250b v FableWin 89i/250b.
+  FableWin water AddDuplicateEdgeVertex / AddFanBaseVertex / AddCompositeVertex all = sea + 118i/422b = ours(memcpy) + 113i/408b, which
+  is two debug ASSERTs (probe: 2 asserts = +115i/+412b); TesselateEdge +131i/+516b = two asserts + ~16i.
+- (B24C3) 0x00BE3970 else-first skeleton: k1 (BOTH tests else-first: `if (water.EdgeIndexBufferIndex == 0xffff) previous = -1; else {
+  ... if (end - start <= 1 || next != +1) previous = -1; else {...} }`, NO continue anywhere): SEA RELOCATION_MATCH, water 16 hunks
+  (= z7: i / &water slots + loop entry + prologue). k2 (span test only else-first): water 4, sea 22 (= z2). So the toggle is the
+  first test's arm order / skip-block position, not `continue` itself; it still moves both rows together.
+- (B24C3) screened 42 prologue-order x FindFirst-text combos with c2 traces (c3/sw, scr.sh): the y argument piece always edx.
+- (B24C3) Loop-skeleton sweep (c3/gen.py, gx/; pair grades, sequential -- two pair.sh in parallel corrupt each other's fg runs):
+  first test S1 x span test S2 x not-found order F (18 combos): S1 decides everything; S2 and F are inert (F2 = index store first
+  costs sea 4 hunks). Every form graded so far is either W (water 4 hunks = prologue only, sea 22/45) or S (sea RELOCATION_MATCH or 4,
+  water 16/43/104): W = z2/gaa*/gab*/gac* (S1 then-first + else store), gc* / zc / h1 (S1 early `{ previous = -1; continue; }`),
+  i1 (else arm with continue), k1-new / da / db (continue at the END of the 0xffff-then arm, shared or else store);
+  S = gb* (S1 else-first `if (== 0xffff) previous = -1; else {...}`, no continue), m1a, z4 / z6 / z7 (continue INSIDE the bridged
+  span branch). No natural loop-tail form splits the rows (about 30 forms).
+- (B24C3) Mechanism readouts (c2prio raw JSON + c3/rounds.py): water prologue race = y argument piece 4*K(prologue)=52 v y copy piece
+  2*K + loop terms (-2 +4 +20) = 48; retail needs the copy first (then the argument piece takes ebp by copy preference). Water loop
+  form: under S forms the main-loop i piece (#38, spill -28/-30) is not split into the latch->head eax piece that z2 gets.
+- (B24C3) More closed leads: plain `inline` helpers + /d2inlT200 / 1000 (heuristic inliner does not expand them: 1415 / 1829 bytes);
+  two release-ASSERT dead arms per water helper (FableWin +2 asserts) on gba1 / gaa1: inert (16 / 4); sea AddFanBaseVertex local
+  orders under z2: 22 / 36 (no flip); both instantiations in one TU (water first) with gba1 / gaa1: unchanged (16 / 4, sea gba1 MATCH);
+  PeekWaterVertexCount IS in FableWin (fablewin_pdb_names: 0x02CC1BC0, 22 bytes = ours; the signatures file just lacks it).
+- (B24C3) Prologue y register, mechanism confirmed: moving `map` AND `adjacent_index` above the `length` ternary drops K(prologue) to 11
+  and the y argument piece then takes ebp by copy preference (c2 screen sw/, 8 orders) -- but those orders move the map /
+  adjacent_index work in front of the ternary (7 hunks, not retail's schedule). So retail's prologue block has ~2 fewer referenced
+  register candidates than ours with the SAME instructions; the statement giving that is not found (orders with `length` first,
+  FindFirst texts, p-variants all leave y in edx).
+## Exact state at hand-back (B24C3)
+- Water best = differ/00be4660.cpp (= z2, W-form, 4 hunks, prologue y register only). Sea matches under ANY S-form: m1a (payload),
+  s_z4 / s_z6 / s_z7, and now gba1 / k1 (first test else-first `if (water.EdgeIndexBufferIndex == 0xffff) previous = -1; else {...}`,
+  no continue anywhere: c3/gx/b_gba1.cpp). Water under every S-form: 16 hunks (gba1 / z7 / k1) or worse.
+- Open: the instantiation-specific input that puts sea on S and water on W under one text. Not the loop tail (30 forms), not the
+  water helper text (h0..h6, ha), not dead arms, not TU composition, not prologue order with length first.
+## Next ideas (B24C3)
+1. Instrument the split pass (0x1078b2aa) in c2prio for the main-loop i piece (#38): find why W-forms cut a latch->head piece and
+   S-forms do not (which block / ref rule), then look for the smallest statement-level change that makes S-form water cut it.
+2. The prologue: find which of the 13 prologue-block candidates (rounds.py on raw JSON; ids 116 const 0, 21, 31, 36, 26, 28, 40, 54,
+   32, 38, 109, 121, 154) retail lacks; candidates: the `side` argument piece, the map piece, the LandscapeMap temp (#40).
+3. If (1)/(2) fail: ESCALATE that the two retail instantiations look like different loop-tail forms (sea = S, water = W), and ask
+   whether the template text may differ by a FableWin-unsupported specialisation (FableWin says one text: equal strict signatures).
+- (B24C3, corrections) Sweep cells that errored in the parallel run, regraded sequentially: w_gaa2 4, w_gca1 4, w_gcc1 4, s_gaa2 22,
+  s_gcb2 45 -- the pattern holds. Name clash: c3/w_k1.cpp / s_k1.cpp were overwritten by the later hybrid `k1` (continue at the end of
+  the 0xffff-then arm, W-form); the prio_ / raw_ / blk_ "k1" files and NOTES "k1 (BOTH tests else-first)" are the else-first S-form
+  (c3/b_k1.cpp = gbb1).
+- (B24C3, corrections) Prologue candidate labels from the trace (ids are recycled; the raw-JSON id lookup is unreliable): 26 = the `+2`
+  temp piece (length value, edi), 32 = `+6` local (edi), 109 = `+2-3` temp (eax), 40 = `+6` two-ref local (ecx). Two readings fit the
+  4-point gap: retail's prologue block has ~2 fewer referenced candidates (K 13 -> 11), OR the copy pieces gain ~5 in the FindFirst
+  loop (bottom GetEdgeStrip block K 5 -> 7). Test both in next idea 2.
