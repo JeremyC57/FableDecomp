@@ -1,4 +1,6 @@
-// CDBMinion::OnPredicateFail() -- one of the parent script's minion counters is decremented, the minion thing record is fetched from the thing manager and its timer word (+0x14) reset
+// NScript::CQ_DragonBossFightScript::CDBSummoner::OnPredicateFail() -- the parent script's minion/summoner counter is decremented and the spawn-delay timer word read and rewritten through the script interface
+// Leaf: ?OnPredicateFail@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ
+// Name (NF385): both PDB name sets; retail vftable slot 5 of the CDBSummoner vftable, installed by the Alloc that CQ_DragonBossFightScript::Main registers under the "DBSummoner" literal, = FableWin slot 5; the twin @ 0x00D25D20 is CDBMinion::OnPredicateFail
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D25EF0, length 64 bytes.
@@ -8,7 +10,7 @@
 // 4-byte CScriptThing member at +0x94 of the parent and is read through its inline accessor -- the first read materialises
 // the member's address (`add eax,0x94 ; mov eax,[eax]`) because the accessor is applied to a reference, the second is a
 // plain `mov eax,[eax+0x94]`. The counter at +0x74 is a plain long. The sibling @ 0x00D25D20 uses the
-// next counter/thing pair (+0x70/+0x90); the two bodies are the OnPredicateFail of two CDBMinion state classes.
+// next counter/thing pair (+0x70/+0x90); the two bodies are CDBMinion::OnPredicateFail (0x00D25D20) and CDBSummoner::OnPredicateFail (0x00D25EF0).
 struct CMinionRecord {
     unsigned char _pad[0x14];
     long m_timer;                              // +0x14
@@ -114,23 +116,28 @@ class CScriptThing { public:                          // 4 bytes: the thing id/h
     const long& GetThingId() const { return m_thingId; }
 };
 
-struct CQ_DragonBossFightScript {             // the parent quest script (PDB: CDBMinion::ParentClass)
+namespace NScript {
+struct CQ_DragonBossFightScript {             // the parent quest script (PDB: CDBSummoner::ParentClass)
     unsigned char _pad[0x74];
     long          m_minionCount;               // +0x74
     unsigned char _pad2[0x94 - 0x74 - 4];
     CScriptThing  m_minion;                    // +0x94
+    class CDBSummoner;
 };
 
-struct CDBMinion {
-    unsigned char             _pad[0x14];
+class CQ_DragonBossFightScript::CDBSummoner {          // vptr +0 (retail vftable slot 5 = OnPredicateFail)
+public:
+    unsigned char             _pad04[0x10];
     CQ_DragonBossFightScript* ParentClass;     // +0x14 (PDB)
-    void OnPredicateFail();
+private:
+    virtual void OnPredicateFail();
 };
 
-void CDBMinion::OnPredicateFail()
+void CQ_DragonBossFightScript::CDBSummoner::OnPredicateFail()
 {
     --ParentClass->m_minionCount;
     const CScriptThing& minion = ParentClass->m_minion;
     CMinionRecord* record = pDSTGame->GetMinionRecord(minion.GetThingId());
     pDSTGame->ResetMinionTimer(ParentClass->m_minion.m_thingId, &record->m_timer);
+}
 }

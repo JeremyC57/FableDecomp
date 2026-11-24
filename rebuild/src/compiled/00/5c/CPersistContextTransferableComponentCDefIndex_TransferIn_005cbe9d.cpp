@@ -1,6 +1,11 @@
 #pragma optimize("s",on)
 // CPersistContext_TransferableComponent<CDefIndex>::TransferIn  @ 005cbe9d
-// __fastcall void TransferIn(CPersistContext*, CStringParser*)
+// Leaf: ?TransferIn@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+// __thiscall private virtual void TransferIn(CPersistContext&, CStringParser&)
+// Identity (NF385): retail vftable 0x01253F18 (RTTI CPersistContext_TransferableComponent<CDefIndex>) slot 1 = FableWin slot 1
+// ?TransferIn@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z; both PDB name sets
+// (definition_manager.obj; Ego_r 29 B = retail); the callee 0x00A3E0D0 is CPersistTraits<CDefIndex>::TransferIn (landed self).
+// `this` is the shared engine/CPersistContext_TransferableComponent.h model; the callee keeps its landed table spelling (NAME_FIXES 0x00A3E0D0).
 
 class CPersistContext;
 class CStringParser;
@@ -13,15 +18,12 @@ struct TransferHelper {
     void Apply(CPersistContext* ctx, CStringParser* parser, unsigned int value);
 };
 
-struct CPersistContext_TransferableComponent_float {
-    void* m_vtbl;             // +0
-    unsigned int m_value;     // +4  (raw 32-bit float bits, pushed as dword)
-    void TransferIn(CPersistContext* ctx, CStringParser* parser);
-};
+class CDefIndex;
+#include "engine/CPersistContext_TransferableComponent.h"
 
-void CPersistContext_TransferableComponent_float::TransferIn(CPersistContext* ctx, CStringParser* parser)
+template <> void CPersistContext_TransferableComponent<CDefIndex>::TransferIn(CPersistContext& ctx, CStringParser& parser)
 {
     TransferHelper tmp;
     tmp.m_dword = 0;
-    tmp.Apply(ctx, parser, this->m_value);
+    tmp.Apply(&ctx, &parser, (unsigned int)this->Object);
 }

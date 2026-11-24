@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?BaseActivate@CModeChargeForcePush@@QAEXXZ	00861d00	008d6980	NF385: 008d6980 (now NCreatureMode::CModeChargeForcePush::OnDeactivate) calls its base qualified as CModeStandBase::OnDeactivate, binding ?OnDeactivate@CModeStandBase@@UAEXXZ (existing line, 00861d00, witness 008e7850; retail CModeStandBase vftable 0x01276D8C slot 6 + both PDBs); no other landed source names CModeChargeForcePush::BaseActivate (text census) and 008d6980 was the line's only witness

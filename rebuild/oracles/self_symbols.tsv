@@ -46,7 +46,7 @@ address	symbol	status	leaf_given
 00403b10	??0CSystemManagerInit@@QAE@XZ	RELOCATION_MATCH	??0CSystemManagerInit
 00403c20	?Init@CStringParser@@QAEXABVCCharString@@P6IX0@Z0J@Z	RELOCATION_MATCH	?Init@CStringParser@@QAEXABVCCharString@@
 00403f90	?TransferOut@CPersistContext_TransferableComponent@@UAEXPAVCPersistContext@@PAVCCharString@@@Z	RELOCATION_MATCH	TransferOut
-00403fc0	?TransferIn@CPersistContext_TransferableComponent@@UAEXPAVCPersistContext@@PAVCStringParser@@@Z	RELOCATION_MATCH	TransferIn
+00403fc0	?TransferIn@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	RELOCATION_MATCH	?TransferIn@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
 00403ff0	?TransferIn@?$CPersistTraits@_N@@QAEXPAVCPersistContext@@PAVCStringParser@@PA_N@Z	RELOCATION_MATCH	?TransferIn@?$CPersistTraits@_N@@
 00404500	?CheckCRC@CPersistContext@@IAEXPBD@Z	RELOCATION_MATCH	CheckCRC
 004047d0	?CStringParser_scalar_deleting_destructor@@YIPAXPAVCStringParser@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -721,7 +721,7 @@ address	symbol	status	leaf_given
 0044ac20	@DeleteIfSet@4	MATCH	sub_0044ac20
 0044b120	??$__uninitialized_copy@PAVCCharString@@PAV1@@std@@YIPAVCCharString@@PAV1@00ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_copy
 0044b150	??$__uninitialized_fill_n@PAVCCharString@@IV1@@std@@YIPAVCCharString@@PAV1@IABV1@ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_fill_n
-0044b7e0	?TransferIn@CPersistContext_TransferableComponent@@UAEXPAVCPersistContext@@PAVCStringParser@@@Z	RELOCATION_MATCH	TransferIn
+0044b7e0	?TransferIn@?$CPersistContext_TransferableComponent@_K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	RELOCATION_MATCH	?TransferIn@?$CPersistContext_TransferableComponent@_K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
 0044b800	?TransferOut@CPersistContext_TransferableComponent@@UAEXPAVCPersistContext@@PAVCCharString@@@Z	RELOCATION_MATCH	TransferOut
 0044b880	?Hook@T@@QAEXH@Z	MATCH	sub_0044b880
 0044b890	?TransferBinaryIn@?$CPersistTraits@_K@@QBEXPAUCMemoryDataInputStreamReader@@PA_K@Z	RELOCATION_MATCH	TransferBinaryIn
@@ -3985,7 +3985,7 @@ address	symbol	status	leaf_given
 0052c7e0	?Update@CChangingStateComponent@NUISystem@@QAEXM@Z	RELOCATION_MATCH	Update
 0052c8b0	?IsStateFlag40Independent@CChangingStateComponent@@QAE_NXZ	RELOCATION_MATCH	IsStateFlag40Independent
 0052c8f0	?ChangedState@CChangingStateComponent@NUISystem@@UAE_NXZ	MATCH	ChangedState
-0052cbf0	?AllScrollingChildrenDeleting@CList@NUISystem@@QAE_NXZ	MATCH	AllScrollingChildrenDeleting
+0052cbf0	?AllChildrenChangedState@CChangingStateComponent@NUISystem@@MAE_NXZ	MATCH	?AllChildrenChangedState@CChangingStateComponent@NUISystem@@MAE_NXZ
 0052cc50	??0CChangingStateComponent@NUISystem@@QAE@J@Z	RELOCATION_MATCH	??0CChangingStateComponent@
 0052cd20	?UpdateStateChange@CChangingStateComponent@NUISystem@@UAEXXZ	RELOCATION_MATCH	UpdateStateChange
 0052ceb0	?GetState@CChangingStateComponent@NUISystem@@QAEPAVCUIState@2@K@Z	RELOCATION_MATCH	GetState
@@ -4077,7 +4077,7 @@ address	symbol	status	leaf_given
 00535fbe	?ShareData@CCPtr@@QAEXPAXPAJ@Z	RELOCATION_MATCH	ShareData
 0053605f	?ScrollUp@CList@NUISystem@@UAEX_N0@Z	MATCH	ScrollUp
 00536088	?ScrollDown@CList@NUISystem@@UAEX_N0@Z	MATCH	ScrollDown
-00536189	?AllScrollingChildrenDeleting@CList@NUISystem@@QAE_NXZ	MATCH	AllScrollingChildrenDeleting
+00536189	?AllScrollingChildrenDeleting@CList@NUISystem@@UAE_NXZ	MATCH	?AllScrollingChildrenDeleting@CList@NUISystem@@UAE_NXZ
 005362ad	?SetDefaultChild@CList@NUISystem@@UAEXPAVCComponent@2@@Z	MATCH	SetDefaultChild
 005362f2	?AreThereAnyDeletions@CList@NUISystem@@QAE_NXZ	MATCH	AreThereAnyDeletions
 0053633e	?ScrollToLastChild@CList@NUISystem@@QAEXXZ	RELOCATION_MATCH	ScrollToLastChild
@@ -4229,7 +4229,7 @@ address	symbol	status	leaf_given
 00547b90	?FreeTextures@CMovie@NUISystem@@IAEXXZ	RELOCATION_MATCH	FreeTextures
 00547bc0	?M@C00547bc0@@QAEXXZ	MATCH	RestoreEngineBuffers
 00547bd0	_CMovie_Initialise	RELOCATION_MATCH	Initialise
-00547be0	?GetSize@CMovie@@QBE?AVC2DVector@@XZ	MATCH	GetSize
+00547be0	?GetSize@CMovie@NUISystem@@UBE?AVC2DVector@@XZ	MATCH	?GetSize@CMovie@NUISystem@@UBE?AVC2DVector@@XZ
 00548520	?IsPlaying@CMovieRecoveredTail@@QBE_NXZ	MATCH	IsPlaying
 00548550	?CMovie_scalar_deleting_destructor@@YIPAXPAUCMovie@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00548590	?IsCameraXYInverted@CUserProfileManager@@QAEDXZ	MATCH	IsCameraXYInverted
@@ -4279,7 +4279,7 @@ address	symbol	status	leaf_given
 0054e4f0	?AddActionOnLeftClicked@CFrontEndScreen@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@2@@Z	RELOCATION_MATCH	AddActionOnLeftClicked
 0054e550	?Get@T@@QAEHXZ	MATCH	vfunc_142
 0054e580	?CFrontEndScreen_scalar_deleting_destructor@@YIPAXPAUCFrontEndScreen@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-0054e5a0	?GetSize@CMovie@@QBE?AVC2DVector@@XZ	MATCH	GetSize
+0054e5a0	?GetSize@CViewport@NUISystem@@UBE?AVC2DVector@@XZ	MATCH	?GetSize@CViewport@NUISystem@@UBE?AVC2DVector@@XZ
 0054e5d0	?GetDataFromDef@CViewport@NUISystem@@QAEXXZ	MATCH	GetDataFromDef
 0054e640	?Initialise@CViewportInitialiseView@NUISystem@@QAEXXZ	RELOCATION_MATCH	Initialise@CViewportInitialiseView
 0054e980	?RemoveChild@CScrollingViewport@NUISystem@@QAEXPAVCComponent@2@@Z	RELOCATION_MATCH	RemoveChild
@@ -5332,8 +5332,8 @@ address	symbol	status	leaf_given
 005cbdbd	@FableIsDead_5cbdbd@4	MATCH	@FableIsDead_5cbdbd@4
 005cbdfa	@Is_94b330@8	RELOCATION_MATCH	IsCreatureAssignedToTask
 005cbe5d	?Distance_005cbe5d@@YAJABUSIterator@@0@Z	RELOCATION_MATCH	Distance_005cbe5d
-005cbe9d	?TransferIn@CPersistContext_TransferableComponent_float@@QAEXPAVCPersistContext@@PAVCStringParser@@@Z	RELOCATION_MATCH	TransferIn
-005cbeba	?TransferIn@CPersistContext_TransferableComponent_float@@QAEXPAVCPersistContext@@PAVCStringParser@@@Z	RELOCATION_MATCH	TransferIn
+005cbe9d	?TransferIn@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z	RELOCATION_MATCH	?TransferIn@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+005cbeba	?TransferOut@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z	RELOCATION_MATCH	?TransferOut@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
 005cbf58	?SetMiniMapRegionExitTextOffsetX@CRegion@@QAEXPAVCCharString@@M@Z	RELOCATION_MATCH	SetMiniMapRegionExitTextOffsetX
 005cbfc1	?GetCellBoundingBox@@YADKK@Z	RELOCATION_MATCH	GetCellBoundingBox
 005cbfe9	?RBTree_Iterator_SetToMaxNode_005cbfe9@@YIPAPAXPAPAX@Z	RELOCATION_MATCH	RBTree_Iterator_SetToMaxNode_005cbfe9
@@ -5803,7 +5803,7 @@ address	symbol	status	leaf_given
 00617d50	?insert_unique@?$_Rb_tree@JU?$pair@$$CBJU?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@2@U32@ABU?$pair@$$CBJU?$pair@JJ@std@@@2@@Z	RELOCATION_MATCH	?insert_unique@?$_Rb_tree@
 00617fd0	?_M_fill_insert@?$vector@_KV?$allocator@_K@std@@@std@@QAEXPA_KIAB_K@Z	RELOCATION_MATCH	?_M_fill_insert@
 00618100	??$_M_insert_dispatch@U_List_const_iterator@std@@@?$list@V?$CIntelligentPointer@VCThing@@@@@std@@QAEXU_List_iterator@1@U_List_const_iterator@1@1ABU__false_type@1@@Z	RELOCATION_MATCH	??$_M_insert_dispatch@U_List_const_iterator
-00618170	?CComponent_SetParentColour@@YIXPAUCComponent@@@Z	MATCH	SetParentColour
+00618170	?clear@?$vector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$allocator@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@std@@@std@@QAEXXZ	MATCH	?clear@?$vector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$allocator@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@std@@@std@@QAEXXZ
 006181a0	?push_back@?$vector@_K@std@@QAEXAB_K@Z	RELOCATION_MATCH	?push_back@
 006182f0	?_M_insert_overflow@?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@IAEXPAVCUIMiniMapMarker@CTCInventoryMap@@ABV34@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@
 00618550	?_M_insert_overflow@?$vector@VC2DCoordI@@V?$allocator@VC2DCoordI@@@std@@@std@@IAEXPAVC2DCoordI@@ABV3@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@?$vector@VC2DCoordI@@V?$allocator@
@@ -7491,7 +7491,7 @@ address	symbol	status	leaf_given
 006bb790	?IsNotDay_006bb790@CGameTimeManager@@QAE_NXZ	RELOCATION_MATCH	IsNightSounds
 006bb990	?Update@CGameTimeManager@@QAEXM@Z	RELOCATION_MATCH	Update
 006bbe30	?SetTimeAsStopped@CGameTimeManager@@QAEX_NAAJ@Z	RELOCATION_MATCH	SetTimeAsStopped
-006bbed0	?vfunc_5@CConsoleCommand@@QAEXPAX@Z	MATCH	vfunc_5
+006bbed0	?CallCommandFunction@?$CConsoleCommand@VCGameTimeManager@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	MATCH	?CallCommandFunction@?$CConsoleCommand@VCGameTimeManager@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
 006bbee0	?ScalarDeletingDestructor@CConsoleCommand@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 006bbf20	?CRegion_GetDisplayName@@YIPAVCCharString@@PAVCRegion@@@Z	RELOCATION_MATCH	GetDisplayName
 006bbf40	?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ	MATCH	GetWorldMapOffset
@@ -9103,7 +9103,7 @@ address	symbol	status	leaf_given
 0074d0d0	?AssignTarget_0074d0d0@CClass_0074d0d0@@QAEXPAVCBaseObject@@@Z	RELOCATION_MATCH	SetGenerator
 0074d120	?at@CRetailVector_dword_0074d120@@QAEAAKK@Z	RELOCATION_MATCH	at
 0074d3e0	?erase@?$vector@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$allocator@V?$CIntelligentPointer@VCThingCreatureBase@@@@@std@@@std@@QAEPAV?$CIntelligentPointer@VCThingCreatureBase@@@@PAV3@0@Z	RELOCATION_MATCH	?erase@?$vector@
-0074d5d0	?CComponent_SetParentColour@@YIXPAUCComponent@@@Z	MATCH	SetParentColour
+0074d5d0	?clear@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QAEXXZ	MATCH	?clear@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QAEXXZ
 0074d600	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$allocator@V?$CIntelligentPointer@VCThingCreatureBase@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@VCThingCreatureBase@@@@ABV3@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@?$vector@V?$CIntelligentPointer@VCThingCreatureBase@@@@
 0074da00	?GetClassTypeName@CTCCreatureGenerator_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
 0074dac0	??0CCreatureAction_RiseUp@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	RELOCATION_MATCH	??0CCreatureAction_RiseUp@
@@ -13213,8 +13213,8 @@ address	symbol	status	leaf_given
 008d68e0	?OnActivate@CModeSummonerSummon@@QAEXXZ	RELOCATION_MATCH	OnActivate
 008d6900	?CModeChargeForcePush_OnActivate@@YIXPAUCModeChargeForcePush@@@Z	RELOCATION_MATCH	OnActivate
 008d6920	?OnActivate@CModeSummonerDie@NCreatureMode@@UAEXXZ	RELOCATION_MATCH	OnActivate
-008d6960	?OnActivate@CModeChargeForcePush@@QAEXXZ	RELOCATION_MATCH	OnActivate
-008d6980	?OnActivate@CModeChargeForcePush@@QAEXXZ	RELOCATION_MATCH	OnActivate
+008d6960	?OnActivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ	RELOCATION_MATCH	?OnActivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ
+008d6980	?OnDeactivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ	RELOCATION_MATCH	?OnDeactivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ
 008d69d0	?OnActivate@CModeDragonRearUp@@QAEXXZ	RELOCATION_MATCH	OnActivate
 008d69f0	?OnActivate@CModeDragonRearUp@@QAEXXZ	RELOCATION_MATCH	OnActivate
 008d6a10	?OnDeactivate@CModeDragonRearUp@@QAEXXZ	RELOCATION_MATCH	OnDeactivate
@@ -15871,7 +15871,7 @@ address	symbol	status	leaf_given
 009efa10	?CTCCarryable_OnKill@@YIXPAVCTCCarryable@@@Z	RELOCATION_MATCH	OnKill
 009efa50	?_M_insert_overflow@?$vector@UElement@N009efa50@@@N009efa50@@QAEXPAUElement@2@ABU32@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	_M_insert_overflow
 009efdb0	?CTCCarryable_OnKill@@YIXPAVCTCCarryable@@@Z	RELOCATION_MATCH	OnKill
-009efeb0	?vfunc_5@CConsoleCommand@@QAEXPAX@Z	MATCH	vfunc_5
+009efeb0	?CallCommandFunction@?$CConsoleCommand@VCConsole@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z	MATCH	?CallCommandFunction@?$CConsoleCommand@VCConsole@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
 009eff10	??1CRetailTree_erase009ef6e0@@QAE@XZ	RELOCATION_MATCH	??1CRetailTree_erase009ef6e0@
 009effa0	??1CRetailTree_erase009ef6e0@@QAE@XZ	RELOCATION_MATCH	??1CRetailTree_erase009ef6e0@
 009efff0	?ScalarDeletingDestructor@CConsoleCommand@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -16058,7 +16058,7 @@ address	symbol	status	leaf_given
 009fe440	?ResetTexture@CFrameData@@QAEXXZ	RELOCATION_MATCH	ResetTexture
 009fe550	?InitialiseFrame@CGraphicInfoFrame@@QAEXABUSharedFrame@@ABVCManagedTexture@@C@Z	RELOCATION_MATCH	InitialiseFrame
 009fe8e0	?UnloadFrame@CGraphicInfo@@QAEXK@Z	RELOCATION_MATCH	UnloadFrame
-009fea00	?ReleaseTexture@CFrameData@@QAEXXZ	RELOCATION_MATCH	ReleaseTexture
+009fea00	?ReleaseTexture@CFrameData@CGraphicInfoFrame@@UAEXXZ	RELOCATION_MATCH	?ReleaseTexture@CFrameData@CGraphicInfoFrame@@UAEXXZ
 009ff440	?InitFrames@CGraphicDataBank@@QAEXXZ	RELOCATION_MATCH	InitFrames
 009ff580	_CGraphicDataBank_NotifyBankOpened	RELOCATION_MATCH	NotifyBankOpened
 009ff6b0	?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z	RELOCATION_MATCH	InternalGetFrameForcedLoading
@@ -18697,9 +18697,9 @@ address	symbol	status	leaf_given
 00b7aaf0	?Copy_SElement48_00b7aaf0@@YIPAUSElement48@@PAU1@00USRandomAccessIteratorTag@@PAJ@Z	MATCH	Copy_SElement48_00b7aaf0
 00b7ac20	?Copy_SElement28_00b7ac20@@YIPAUSElement28@@PAU1@00USRandomAccessIteratorTag@@PAJ@Z	MATCH	Copy_SElement28_00b7ac20
 00b7ae00	?ScalarDeletingDestructor@CTriangleStripifier2@@QAEPAXI@Z	RELOCATION_MATCH	`scalar deleting destructor'
-00b7ec30	?GetSizeOfVertex@CWaterPatchTesselatorBase@@QAEHXZ	MATCH	GetSizeOfVertex
+00b7ec30	?GetSizeOfVertex@?$CWaterPatchTesselatorBase@VCTVertexWaterBackground@@@@EAEJXZ	MATCH	?GetSizeOfVertex@?$CWaterPatchTesselatorBase@VCTVertexWaterBackground@@@@EAEJXZ
 00b7ec90	??1CBufferPair_00b7ec90@@QAE@XZ	RELOCATION_MATCH	??1CBufferPair_00b7ec90@
-00b7ece0	?GetSizeOfVertex@CWaterPatchTesselatorBase@@QAEHXZ	MATCH	GetSizeOfVertex
+00b7ece0	?GetSizeOfVertex@?$CWaterPatchTesselatorBase@VCTVertexSeaBackground@@@@EAEJXZ	MATCH	?GetSizeOfVertex@?$CWaterPatchTesselatorBase@VCTVertexSeaBackground@@@@EAEJXZ
 00b7ed80	?GetConsoleEnableFunctionName@CEngineWaterRenderer_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetConsoleEnableFunctionName
 00b7edf0	?resize@?$vector@UCPreTransposedBoneMatrix@@V?$allocator@UCPreTransposedBoneMatrix@@@std@@@std@@QAEXIABUCPreTransposedBoneMatrix@@@Z	RELOCATION_MATCH	?resize@?$vector@UCPreTransposedBoneMatrix@@
 00b7ee60	?ScalarDeletingDestructor@CEngineWaterRenderer@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -22361,8 +22361,8 @@ address	symbol	status	leaf_given
 00d254b0	?Init@CQ_DragonBossFightScript@NScript@@UAEXXZ	RELOCATION_MATCH	Init
 00d255e0	?Main@CQ_DragonBossFightScript@NScript@@UAEXXZ	RELOCATION_MATCH	Main
 00d25c20	?SpawnEnemies@CQ_DragonBossFightScript@NScript@@QAEXXZ	RELOCATION_MATCH	SpawnEnemies
-00d25d20	?OnPredicateFail@CDBMinion@@QAEXXZ	RELOCATION_MATCH	OnPredicateFail
-00d25ef0	?OnPredicateFail@CDBMinion@@QAEXXZ	RELOCATION_MATCH	OnPredicateFail
+00d25d20	?OnPredicateFail@CDBMinion@CQ_DragonBossFightScript@NScript@@EAEXXZ	RELOCATION_MATCH	?OnPredicateFail@CDBMinion@CQ_DragonBossFightScript@NScript@@EAEXXZ
+00d25ef0	?OnPredicateFail@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ	RELOCATION_MATCH	?OnPredicateFail@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ
 00d26a50	?JackTaunts@CQ_DragonBossFightScript@NScript@@QAEXXZ	RELOCATION_MATCH	JackTaunts
 00d26cc0	?SpawnMinions@CQ_DragonBossFightScript@NScript@@QAEXXZ	RELOCATION_MATCH	SpawnMinions
 00d26e60	?SpawnSummoners@CQ_DragonBossFightScript@NScript@@QAEXXZ	RELOCATION_MATCH	SpawnSummoners
@@ -27232,3 +27232,5 @@ address	symbol	status	leaf_given
 00a4b7b0	?IsInRange@NBBBMaths@@YI_NABVC3DVector@@0M@Z	MATCH	?IsInRange@NBBBMaths@@YI_NABVC3DVector@@0M@Z
 00a13650	?reserve@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@QAEXI@Z	RELOCATION_MATCH	?reserve@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@QAEXI@Z
 006a7050	??RCThingFilter_RadiusIntersectsInfiniteLine@@QBE_NABVCThing@@@Z	RELOCATION_MATCH	??RCThingFilter_RadiusIntersectsInfiniteLine@@QBE_NABVCThing@@@Z
+007a6e20	?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z	RELOCATION_MATCH	?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z
+007a9870	?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z	RELOCATION_MATCH	?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z

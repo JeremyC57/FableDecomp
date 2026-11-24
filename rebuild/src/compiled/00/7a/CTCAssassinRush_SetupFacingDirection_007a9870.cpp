@@ -1,8 +1,11 @@
 // CTCAssassinRush::SetupFacingDirection(C3DVector& direction) -- normalise the rush direction; when it points within 60 degrees of straight up, use the thing's facing instead
-// Leaf: ?SetupFacingDirection@CTCAssassinRush@@QAEXAAVC3DVector@@@Z
+// Leaf: ?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z
+// Name (NF385): both PDB name sets; retail RTTI CTCAssassinRush vftable slot 9 (0x007AB190, FrameUpdate) calls 0x007AAC50 (RushForwards), which calls this
+//   function -- the same slot 9 FrameUpdate > RushForwards > SetupFacingDirection path as the FableWin CTCAssassinRush vftable; the
+//   byte-identical 0x007A6E20 is CTCBattleCharge::SetupFacingDirection (reached the same way from the CTCBattleCharge vftable).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A9870, length 222 bytes, `ret 4`. Called once, from
-// 0x007AAD0A; 0x007A6E20 is a byte-identical copy in another TU.
+// 0x007AAD0A; 0x007A6E20 is a byte-identical copy in another TU (CTCBattleCharge::SetupFacingDirection).
 // Callees: the physics body's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on ParentThing+0x60).
 // Globals: the 128-entry reciprocal-square-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC,
 // the double 1.0471976 (60 degrees as a float radian) 0x01261DC8 fed to the fcos intrinsic.
@@ -49,6 +52,7 @@ class CTCAssassinRush {
 public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
+private:
     void SetupFacingDirection(C3DVector& direction);
 };
 

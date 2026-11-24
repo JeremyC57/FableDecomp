@@ -1,10 +1,15 @@
-// CModeChargeForcePush::OnActivate  @ 008d6980  __fastcall void(this)
+// NCreatureMode::CModeChargeForcePush::OnDeactivate  @ 008d6980  __thiscall virtual void()
+// Leaf: ?OnDeactivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ
+// Identity (NF385): retail vftable 0x01268328 (RTTI CModeChargeForcePush@NCreatureMode) slot 6 = FableWin vftable slot 6
+// ?OnDeactivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ (slot 5 is OnActivate = 0x008D6960); Ego_r and FableWin
+// creature_modes.obj both name it (Ego_r 28 B = retail). The body undoes OnActivate: SuspendAI(false, 0).
+// The base call is CModeStandBase::OnDeactivate (0x00861D00: slot 6 of the retail CModeStandBase vftable 0x01276D8C).
 //
-// push esi; mov esi,ecx; call 0x861d00 (base OnActivate, __fastcall this)
+// push esi; mov esi,ecx; call 0x861d00 (base OnDeactivate)
 // mov ecx,[esi+4]              ; ecx = this->sub
 // cmp byte [ecx+0x10],1        ; sub->flag == 1 ?
 // pop esi; jne skip
-// push 0; push 0; call 0x833a10  ; sub->Helper(0,0)  __fastcall (ecx=sub, stack a,b)
+// push 0; push 0; call 0x833a10  ; SuspendAI(0,0)
 // skip: ret
 //
 // The pointer at +4 is loaded into ecx because it is BOTH the object whose flag
@@ -18,17 +23,21 @@ struct Sub {
     unsigned char flag;          // +0x10
 };
 
-struct CModeChargeForcePush {
-    void* vt;                    // +0x00
-    Sub*  sub;                   // +0x04
-
-    void BaseActivate();         // __fastcall base OnActivate (call 0x861d00)
-    void OnActivate();
+struct CModeStandBase {
+    virtual void OnDeactivate(); // 0x00861D00
 };
 
-void CModeChargeForcePush::OnActivate()
+namespace NCreatureMode {
+struct CModeChargeForcePush : CModeStandBase {
+    // +0x00 vfptr
+    Sub*  sub;                   // +0x04
+    virtual void OnDeactivate();
+};
+}
+
+void NCreatureMode::CModeChargeForcePush::OnDeactivate()
 {
-    BaseActivate();
+    CModeStandBase::OnDeactivate();
     Sub* s = sub;
     if (s->flag == 1)
         ((CThingAICreature*)s)->SuspendAI(0, 0);

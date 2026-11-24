@@ -1,6 +1,8 @@
 // CGraphicInfoFrame::CFrameData::ReleaseTexture() -- when no asynchronous read is pending, ask the owning graphic info to unload this frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FEA00, length 24 bytes (32 with int3 padding).
-// Leaf: ReleaseTexture
+// Leaf: ?ReleaseTexture@CFrameData@CGraphicInfoFrame@@UAEXXZ
+// Identity (NF385): retail vftable 0x0129C89C (RTTI CGraphicInfoFrame::CFrameData) slot 10 = FableWin slot 10
+// ?ReleaseTexture@CFrameData@CGraphicInfoFrame@@UAEXXZ; both PDB name sets (lib_graphic_data_bank.obj). Nested class, public virtual.
 // Callees: CGraphicInfo::UnloadFrame(unsigned long) @ 0x009FE8E0 (landed, thiscall, `ret 4`).
 // Name: vtable 0x0129C89C slot 10. FableWin.pdb lists the CFrameData virtual overrides IsResourceLoaded,
 // OnResourceLoaded, ReleaseTexture (UAEXXZ), GetUnloadableMemory, GetDebugMemoryInUse, ResetDebugMemoryInUse;
@@ -21,6 +23,7 @@ class CGraphicInfoFrame { public:
     signed char    SmallMipmapLevel;    // +0x06
     void*          Data;                // +0x08 CIVCountedPointer<CFrameData>
     CGraphicInfo*  GraphicInfo;         // +0x0c
+    struct CFrameData;
 };
 
 struct CCountedPointer_BankFileAsyncData {
@@ -28,18 +31,19 @@ struct CCountedPointer_BankFileAsyncData {
     void*               m_pCount;       // +4
 };
 
-struct CFrameData {
-    unsigned char                     _pad[0x30];
+struct CGraphicInfoFrame::CFrameData {
+    // +0x00 vfptr
+    unsigned char                     _pad04[0x2c];
     CCountedPointer_BankFileAsyncData FileData;            // +0x30
     signed char                       CurrentMipmapLevel;  // +0x38
     signed char                       LoadingMipmapLevel;  // +0x39
     signed char                       TouchedMipmapLevel;  // +0x3a
     unsigned long                     TouchedFrame;        // +0x3c
     CGraphicInfoFrame*                GraphicInfoFrame;    // +0x40
-    void ReleaseTexture();
+    virtual void ReleaseTexture();
 };
 
-void CFrameData::ReleaseTexture()
+void CGraphicInfoFrame::CFrameData::ReleaseTexture()
 {
     if (!FileData.m_pObject)
         GraphicInfoFrame->GraphicInfo->UnloadFrame(GraphicInfoFrame->FrameNum);

@@ -1,5 +1,8 @@
-// CPersistContext_TransferableComponent<unsigned __int64>::TransferIn(CPersistContext*, CStringParser*) -- reads a 64-bit integer with CStringParser::ReadAsUHUGE and stores it through the target pointer
-// Leaf: TransferIn
+// CPersistContext_TransferableComponent<unsigned __int64>::TransferIn(CPersistContext&, CStringParser&) -- reads a 64-bit integer with CStringParser::ReadAsUHUGE and stores it through the target pointer
+// Leaf: ?TransferIn@?$CPersistContext_TransferableComponent@_K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+// Identity (NF385): retail vftable 0x01231C80 (RTTI CPersistContext_TransferableComponent<unsigned __int64>) slot 1 = FableWin slot 1
+// ?TransferIn@?$CPersistContext_TransferableComponent@_K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z; both PDB name sets
+// (player_manager.obj; Ego_r 22 B = retail). `this` is the shared engine/CPersistContext_TransferableComponent.h model.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044B7E0, 22 bytes (+10 int3 padding).
 // Callee: 0x009BA5B0 CStringParser::ReadAsUHUGE (__fastcall, result in edx:eax).
 //
@@ -14,14 +17,10 @@ public:
 private:                    // 0x009BA5B0
 };
 
-struct CPersistContext_TransferableComponent {
-    virtual void TransferOut(CPersistContext* context, void* out);
-    virtual void TransferIn(CPersistContext* context, CStringParser* parser);
-    __int64* m_pValue;                     // +0x4
-};
+#include "engine/CPersistContext_TransferableComponent.h"
 
-void CPersistContext_TransferableComponent::TransferIn(CPersistContext* context, CStringParser* parser)
+template <> void CPersistContext_TransferableComponent<unsigned __int64>::TransferIn(CPersistContext& context, CStringParser& parser)
 {
-    __int64* target = m_pValue;
-    *target = ((CStringParser*)parser)->ReadAsUHUGE();
+    unsigned __int64* target = Object;
+    *target = parser.ReadAsUHUGE();
 }

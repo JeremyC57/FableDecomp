@@ -1,5 +1,9 @@
-// CPersistContext_TransferableComponent::TransferIn(CPersistContext*, CStringParser*) -- parses a bool into the target through a value-initialised CPersistTraits<bool> (0x00403FF0)
-// Leaf: TransferIn
+// CPersistContext_TransferableComponent<bool>::TransferIn(CPersistContext&, CStringParser&) -- parses a bool into the target through a value-initialised CPersistTraits<bool> (0x00403FF0)
+// Leaf: ?TransferIn@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+// Identity (NF385): retail vftable 0x0122D6C4 (RTTI CPersistContext_TransferableComponent<bool>) slot 1 = FableWin slot 1
+// ?TransferIn@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z; both PDB name sets (main.obj).
+// `this` is the shared engine/CPersistContext_TransferableComponent.h model ({vptr, T* Object +4}, private virtuals); the traits callee
+// keeps its landed pointer spelling (its PDB spelling takes references: NAME_FIXES 0x00403FF0).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00403FC0, 36 bytes (+12 int3 padding).
 // Callee: 0x00403FF0 CPersistTraits<bool>::TransferIn(CPersistContext*, CStringParser*, bool*) (__fastcall;
 // it never reads `this`).
@@ -22,15 +26,11 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext* context, CStringParser* parser, T* value);   // 0x00403FF0 for bool
 };
 
-struct CPersistContext_TransferableComponent {
-    virtual void TransferOut(CPersistContext* context, void* out);
-    virtual void TransferIn(CPersistContext* context, CStringParser* parser);
-    bool* Object;                          // +0x4
-};
+#include "engine/CPersistContext_TransferableComponent.h"
 
-void CPersistContext_TransferableComponent::TransferIn(CPersistContext* context, CStringParser* parser)
+template <> void CPersistContext_TransferableComponent<bool>::TransferIn(CPersistContext& context, CStringParser& parser)
 {
     CPersistTraits<bool> traits = CPersistTraits<bool>();
     traits.DefaultVal = bool();
-    traits.TransferIn(context, parser, Object);
+    traits.TransferIn(&context, &parser, Object);
 }

@@ -8,7 +8,7 @@ struct TransferHelper {
     void Apply(CPersistContext* ctx, CStringParser* parser, unsigned int value);
 };
 
-struct CPersistContext_TransferableComponent_float {
+struct CPersistContext_TransferableComponent_CDefIndex {
     void* m_vtbl;
     unsigned int m_value;
     void TransferIn(CPersistContext* ctx, CStringParser* parser);
@@ -28,7 +28,7 @@ void TransferHelper::Apply(CPersistContext* ctx, CStringParser* parser, unsigned
     g_seen_value  = value;
 }
 
-void CPersistContext_TransferableComponent_float::TransferIn(CPersistContext* ctx, CStringParser* parser)
+void CPersistContext_TransferableComponent_CDefIndex::TransferIn(CPersistContext* ctx, CStringParser* parser)
 {
     TransferHelper tmp;
     tmp.m_dword = 0;
@@ -37,7 +37,7 @@ void CPersistContext_TransferableComponent_float::TransferIn(CPersistContext* ct
 
 int main()
 {
-    CPersistContext_TransferableComponent_float obj;
+    CPersistContext_TransferableComponent_CDefIndex obj;
     obj.m_vtbl  = (void*)0xDEADBEEF;
     obj.m_value = 0x40490FDB; // bits of 3.14159f
 

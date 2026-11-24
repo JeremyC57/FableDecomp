@@ -1,0 +1,80 @@
+addr       parity           behav  name
+00403fc0   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+00403fc0   RELOCATION_MATCH PASS   TransferIn
+0044b7e0   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+0044b7e0   RELOCATION_MATCH PASS   TransferIn
+0052cbf0   WARN STANDIN_LEAF ?AllChildrenChangedState@CChangingStateComponent@NUISystem@@MAE_NXZ (catalog NUISystem::CList::AllScrollingChildrenDeleting; names another function)
+0052cbf0   MATCH            PASS   AllScrollingChildrenDeleting
+00536189   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+00536189   MATCH            PASS   AllScrollingChildrenDeleting
+00547be0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00547be0   WARN SHARED_HEADER_AVAILABLE CMovie (engine/CMovie.h)
+00547be0   MATCH            PASS   vfunc_23
+0054e5a0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0054e5a0   WARN STANDIN_LEAF ?GetSize@CViewport@NUISystem@@UBE?AVC2DVector@@XZ (catalog CMovie::GetSize; names another function)
+0054e5a0   MATCH            PASS   GetSize
+005cbe9d   WARN RELOC_NAME: ?Apply@TransferHelper@@QAEXPAVCPersistContext@@PAVCStringParser@@I@Z -> 00a3e0d0 labelled 'CPersistTraits<CDefIndex>::TransferIn'
+005cbe9d   RELOCATION_MATCH PASS   TransferIn
+005cbeba   WARN RELOC_NAME: ?Apply_00a3e180@TransferHelper@@QAEXPAVCPersistContext@@PAVCStringParser@@I@Z -> 00a3e180 labelled 'CPersistTraits<CDefIndex>::TransferOut'
+005cbeba   WARN STANDIN_LEAF ?TransferOut@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z (catalog CPersistContext_TransferableComponent<float>::TransferIn; names another function)
+005cbeba   RELOCATION_MATCH PASS   TransferIn
+00618170   WARN SHARED_HEADER_AVAILABLE CHeroLogBook (engine/CHeroLogBook.h)
+00618170   WARN STANDIN_LEAF ?clear@?$vector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$allocator@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@std@@@std@@QAEXXZ (catalog NUISystem::CComponent::SetParentColour; names another function)
+00618170   MATCH            PASS   SetParentColour
+006bbed0   MATCH            PASS   vfunc_5
+0074d5d0   WARN STANDIN_LEAF ?clear@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QAEXXZ (catalog NUISystem::CComponent::SetParentColour; names another function)
+0074d5d0   MATCH            PASS   SetParentColour
+007a6e20   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+007a6e20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+007a6e20   WARN SHARED_HEADER_AVAILABLE CTCBattleCharge (engine/CTCBattleCharge.h)
+007a6e20   WARN STANDIN_LEAF ?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z (catalog CTCAssassinRush::SetupFacingDirection; names another function)
+007a6e20   RELOCATION_MATCH PASS   SetupFacingDirection
+007a9870   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+007a9870   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+007a9870   RELOCATION_MATCH PASS   SetupFacingDirection
+008d6960   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008d6960   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008d6960   RELOCATION_MATCH PASS   OnActivate
+008d6980   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008d6980   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008d6980   WARN STANDIN_LEAF ?OnDeactivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ (catalog NCreatureMode::CModeChargeForcePush::OnActivate; names another function)
+008d6980   RELOCATION_MATCH PASS   OnActivate
+009efeb0   MATCH            PASS   vfunc_5
+009fea00   WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)
+009fea00   WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame (engine/CGraphicInfoFrame.h)
+009fea00   RELOCATION_MATCH PASS   ReleaseTexture
+00b7ec30   WARN SHARED_HEADER_AVAILABLE CWaterPatchTesselatorBase (engine/CWaterPatchTesselatorBase.h)
+00b7ec30   MATCH            PASS   GetSizeOfVertex
+00b7ece0   WARN SHARED_HEADER_AVAILABLE CWaterPatchTesselatorBase (engine/CWaterPatchTesselatorBase.h)
+00b7ece0   MATCH            PASS   GetSizeOfVertex
+00d25d20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase (engine/CGameScriptInterfaceBase.h)
+00d25d20   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d25d20   WARN SHARED_HEADER_AVAILABLE CQ_DragonBossFightScript (engine/CQ_DragonBossFightScript.h)
+00d25d20   RELOCATION_MATCH PASS   OnPredicateFail
+00d25ef0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase (engine/CGameScriptInterfaceBase.h)
+00d25ef0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00d25ef0   WARN SHARED_HEADER_AVAILABLE CQ_DragonBossFightScript (engine/CQ_DragonBossFightScript.h)
+00d25ef0   RELOCATION_MATCH PASS   OnPredicateFail
+
+WINS: 21
+  00403fc0 RELOCATION_MATCH CPersistContext_TransferableComponent::?TransferIn@?$CPersistContext_TransferableComponent@_N@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  0044b7e0 RELOCATION_MATCH CPersistContext_TransferableComponent<unsigned __int64>::?TransferIn@?$CPersistContext_TransferableComponent@_K@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  0052cbf0 MATCH NUISystem::CList::?AllChildrenChangedState@CChangingStateComponent@NUISystem@@MAE_NXZ
+  00536189 MATCH NUISystem::CList::?AllScrollingChildrenDeleting@CList@NUISystem@@UAE_NXZ
+  00547be0 MATCH NUISystem::CMovie::?GetSize@CMovie@NUISystem@@UBE?AVC2DVector@@XZ
+  0054e5a0 MATCH CMovie::?GetSize@CViewport@NUISystem@@UBE?AVC2DVector@@XZ
+  005cbe9d RELOCATION_MATCH CPersistContext_TransferableComponent<CDefIndex>::?TransferIn@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCStringParser@@@Z
+  005cbeba RELOCATION_MATCH CPersistContext_TransferableComponent<float>::?TransferOut@?$CPersistContext_TransferableComponent@VCDefIndex@@@@EAEXAAVCPersistContext@@AAVCCharString@@@Z
+  00618170 MATCH CComponent::?clear@?$vector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$allocator@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@std@@@std@@QAEXXZ
+  006bbed0 MATCH CConsoleCommand::?CallCommandFunction@?$CConsoleCommand@VCGameTimeManager@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  0074d5d0 MATCH CComponent::?clear@?$vector@VCDefIndex@@V?$allocator@VCDefIndex@@@std@@@std@@QAEXXZ
+  007a6e20 RELOCATION_MATCH CTCAssassinRush::?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z
+  007a9870 RELOCATION_MATCH CTCAssassinRush::?SetupFacingDirection@CTCAssassinRush@@AAEXAAVC3DVector@@@Z
+  008d6960 RELOCATION_MATCH CModeChargeForcePush::?OnActivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ
+  008d6980 RELOCATION_MATCH CModeChargeForcePush::?OnDeactivate@CModeChargeForcePush@NCreatureMode@@UAEXXZ
+  009efeb0 MATCH CConsoleCommand::?CallCommandFunction@?$CConsoleCommand@VCConsole@@@@UBEXABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  009fea00 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::?ReleaseTexture@CFrameData@CGraphicInfoFrame@@UAEXXZ
+  00b7ec30 MATCH CWaterPatchTesselatorBase<CTVertexWaterBackground>::?GetSizeOfVertex@?$CWaterPatchTesselatorBase@VCTVertexWaterBackground@@@@EAEJXZ
+  00b7ece0 MATCH CWaterPatchTesselatorBase<CTVertexSeaBackground>::?GetSizeOfVertex@?$CWaterPatchTesselatorBase@VCTVertexSeaBackground@@@@EAEJXZ
+  00d25d20 RELOCATION_MATCH CDBMinion::?OnPredicateFail@CDBMinion@CQ_DragonBossFightScript@NScript@@EAEXXZ
+  00d25ef0 RELOCATION_MATCH CDBMinion::?OnPredicateFail@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ

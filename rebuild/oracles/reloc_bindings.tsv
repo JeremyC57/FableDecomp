@@ -3721,7 +3721,6 @@ _kName	012786ac	008b34d0
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	008d6860
 ?BaseMode_OnActivate@@YIXPAX@Z	008621a0	008d68e0
 ?CMode_Base_OnActivate@@YIXPAX@Z	00861d00	008d6900
-?BaseActivate@CModeChargeForcePush@@QAEXXZ	00861d00	008d6980
 ?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z	00861d00	008d69d0
 ?BaseOnActivate@ModeBase@@QAEXXZ	008621a0	008d69f0
 ?DragonRearUpBase_861d00@@YIXPAUCModeDragonRearUp@@@Z	00861d00	008d6a10

@@ -1,4 +1,4 @@
-// Behaviour test for CTCAssassinRush::SetupFacingDirection (007a6e20): table-driven normalise, then the facing replaces a
+// Behaviour test for CTCBattleCharge::SetupFacingDirection (007a6e20): table-driven normalise, then the facing replaces a
 // direction within 60 degrees of straight up.
 #include <cstdio>
 #include <math.h>
@@ -37,7 +37,7 @@ inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.
 static int g_facingCalls = 0;
 struct CPhysicsBody { virtual C3DVector GetFacing() { ++g_facingCalls; return C3DVector(0.0f, 1.0f, 0.0f); } };
 class CThing { public: CPhysicsBody* PhysicsBody; };
-class CTCAssassinRush {
+class CTCBattleCharge {
 public:
     CThing* ParentThing;
     void SetupFacingDirection(C3DVector& direction)
@@ -54,7 +54,7 @@ int main()
     if (sizeof(unsigned int) != 4) { g_InvSqrtMantissaTable[0] = 0; }   // 64-bit hosts: the bit trick needs 4-byte words
     BuildTable();
     CPhysicsBody body; CThing thing; thing.PhysicsBody = &body;
-    CTCAssassinRush rush; rush.ParentThing = &thing;
+    CTCBattleCharge rush; rush.ParentThing = &thing;
     bool ok = true;
     C3DVector side(3.0f, 0.0f, 4.0f);                 // 37 degrees from up: replaced
     rush.SetupFacingDirection(side);

@@ -1,6 +1,10 @@
-// NUISystem::CList::AllScrollingChildrenDeleting() -- true when every scrolling child (the 8-byte {component, index} pairs of the vector at +0xb0) answers true to its virtual slot 49 (+0xc4); false at the first that does not
+// NUISystem::CChangingStateComponent::AllChildrenChangedState() (was modelled as CList::AllScrollingChildrenDeleting) -- true when every scrolling child (the 8-byte {component, index} pairs of the vector at +0xb0) answers true to its virtual slot 49 (+0xc4); false at the first that does not
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052CBF0, length 96 bytes.
-// Leaf: AllScrollingChildrenDeleting
+// Leaf: ?AllChildrenChangedState@CChangingStateComponent@NUISystem@@MAE_NXZ
+// Identity (NF385): retail slot 139 of every NUISystem component vftable that keeps the CChangingStateComponent
+// implementation (CSprite 0x0122F5D4, CList 0x012462E4, ... 42 vftables; the class's own 0x01245DE4) = FableWin slot 139
+// ?AllChildrenChangedState@CChangingStateComponent@NUISystem@@MAE_NXZ; both PDB name sets (ui_changing_state_component.obj).
+// (0x00536189 is CList::AllScrollingChildrenDeleting, CList slot 162.) The vector at +0xb0 holds the state children.
 // Shape: `this` in esi, the index in edi compared unsigned against `size()` (the pointer difference shifted by 3) each iteration, `ret`.
 struct CComponent_0052cbf0 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -24,14 +28,17 @@ struct CRetailVector_0052cbf0 {
 };
 
 namespace NUISystem {
-class CList { public:
-    unsigned char          _pad00[0xb0];
+class CChangingStateComponent {
+    // +0x00 vfptr
+    unsigned char          _pad04[0xac];
+public:
     CRetailVector_0052cbf0 m_scrollingChildren;    // +0xb0
-    bool AllScrollingChildrenDeleting();
+protected:
+    virtual bool AllChildrenChangedState();
 };
 }
 
-bool NUISystem::CList::AllScrollingChildrenDeleting()
+bool NUISystem::CChangingStateComponent::AllChildrenChangedState()
 {
     for (unsigned long i = 0; i < m_scrollingChildren.size(); ++i) {
         if (!m_scrollingChildren.m_first[i].m_pComponent->IsDeleting())

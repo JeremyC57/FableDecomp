@@ -1,6 +1,8 @@
 // NUISystem::CList::AllScrollingChildrenDeleting() -- true when every child of the pointer vector at +0x164 reports a pending deletion (the state returned by its virtual slot 63 (+0xfc) has a non-zero first word); false at the first that does not
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00536189, length 74 bytes.
-// Leaf: AllScrollingChildrenDeleting
+// Leaf: ?AllScrollingChildrenDeleting@CList@NUISystem@@UAE_NXZ
+// Identity (NF385): retail CList vftable 0x012462E4 slot 162 (and CFrontEndList 0x01249224 slot 162) = FableWin slot 162
+// ?AllScrollingChildrenDeleting@CList@NUISystem@@UAE_NXZ; both PDB name sets (ui_list.obj). Public virtual (U), as both PDBs give it.
 // Shape: the size-optimised module (shared `pop edi ; pop esi ; ret` tail), `this` in esi, the index in edi compared unsigned against `size()`, `ret`.
 #pragma optimize("s", on)
 struct SDeletionState_00536189 {
@@ -26,9 +28,10 @@ struct CRetailVector_00536189 {
 
 namespace NUISystem {
 class CList { public:
-    unsigned char        _pad00[0x164];
+    // +0x00 vfptr
+    unsigned char        _pad04[0x160];
     CRetailVector_00536189 m_children;                // +0x164
-    bool AllScrollingChildrenDeleting();
+    virtual bool AllScrollingChildrenDeleting();
 };
 }
 

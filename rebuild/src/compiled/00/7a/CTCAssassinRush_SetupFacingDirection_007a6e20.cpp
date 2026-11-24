@@ -1,8 +1,11 @@
-// CTCAssassinRush::SetupFacingDirection(C3DVector& direction) -- normalise the rush direction; when it points within 60 degrees of straight up, use the thing's facing instead
-// Leaf: ?SetupFacingDirection@CTCAssassinRush@@QAEXAAVC3DVector@@@Z
+// CTCBattleCharge::SetupFacingDirection(C3DVector& direction) -- normalise the rush direction; when it points within 60 degrees of straight up, use the thing's facing instead
+// Leaf: ?SetupFacingDirection@CTCBattleCharge@@AAEXAAVC3DVector@@@Z
+// Name (NF385): both PDB name sets; retail RTTI CTCBattleCharge vftable slot 9 (0x007A8BE0, FrameUpdate) calls 0x007A8700 (RushForwards), which calls this
+//   function -- the same slot 9 FrameUpdate > RushForwards > SetupFacingDirection path as the FableWin CTCBattleCharge vftable; the
+//   byte-identical 0x007A9870 is CTCAssassinRush::SetupFacingDirection (reached the same way from the CTCAssassinRush vftable).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A6E20, length 222 bytes (+ int3 padding), `ret 4`. Called once, from
-// 0x007A87BA; 0x007A9870 is a byte-identical copy in another TU.
+// 0x007A87BA; 0x007A9870 is a byte-identical copy in another TU (CTCAssassinRush::SetupFacingDirection).
 // Callees: the physics body's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on ParentThing+0x60).
 // Globals: the 128-entry reciprocal-square-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC,
 // the double 1.0471976 (60 degrees as a float radian) 0x01261DC8 fed to the fcos intrinsic.
@@ -45,14 +48,15 @@ struct CTCPhysicsBase {                           // the thing's physics body at
     virtual C3DVector GetFacing();              // slot 70 (+0x118)
 };
 #include "engine/CThing.h"
-class CTCAssassinRush {
+class CTCBattleCharge {
 public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
+private:
     void SetupFacingDirection(C3DVector& direction);
 };
 
-void CTCAssassinRush::SetupFacingDirection(C3DVector& direction)
+void CTCBattleCharge::SetupFacingDirection(C3DVector& direction)
 {
     direction.Normalise();
     if (Dot(direction, C3DVector(0.0f, 0.0f, 1.0f)) > cos(1.0471976115464443))

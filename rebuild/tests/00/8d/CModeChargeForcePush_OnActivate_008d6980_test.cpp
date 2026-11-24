@@ -6,15 +6,18 @@ struct Sub {
     void Helper(int a, int b);   // __fastcall member -> call 0x833a10
 };
 
+namespace NCreatureMode {
 struct CModeChargeForcePush {
     void* vt;
     Sub*  sub;
 
     void BaseActivate();
-    void OnActivate();
+    void OnDeactivate();       // 0x008D6980 (NF385: was modelled as OnActivate)
 };
+}
+using NCreatureMode::CModeChargeForcePush;
 
-void CModeChargeForcePush::OnActivate()
+void CModeChargeForcePush::OnDeactivate()
 {
     BaseActivate();
     Sub* s = sub;
@@ -36,7 +39,7 @@ int main()
     Sub s1; s1.flag = 1;
     CModeChargeForcePush o1; o1.vt = 0; o1.sub = &s1;
     g_base = g_helper = 0; g_helper_this = 0; g_helper_a = g_helper_b = -1;
-    o1.OnActivate();
+    o1.OnDeactivate();
     bool ok = (g_base == 1 && g_helper == 1 && g_helper_this == &s1 &&
                g_helper_a == 0 && g_helper_b == 0);
 
@@ -44,14 +47,14 @@ int main()
     Sub s2; s2.flag = 0;
     CModeChargeForcePush o2; o2.vt = 0; o2.sub = &s2;
     g_base = g_helper = 0;
-    o2.OnActivate();
+    o2.OnDeactivate();
     ok = ok && (g_base == 1 && g_helper == 0);
 
     // flag == 2 -> also skipped (strict ==1)
     Sub s3; s3.flag = 2;
     CModeChargeForcePush o3; o3.vt = 0; o3.sub = &s3;
     g_base = g_helper = 0;
-    o3.OnActivate();
+    o3.OnDeactivate();
     ok = ok && (g_base == 1 && g_helper == 0);
 
     if (ok) printf("FORCEPUSH_ONACTIVATE_OK\n");
