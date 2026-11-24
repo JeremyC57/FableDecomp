@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ	009ab770	009ab770	NF391: ~_Rb_tree of the map<CCharString, CCharString> tree (derivation: the other of exactly two 66-byte destructor bodies calling _M_erase 0x009AA830; 0x009AC310 is ~map); pick-any self

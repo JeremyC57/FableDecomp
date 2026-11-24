@@ -1,33 +1,28 @@
-// CRetailTree_erase009aa830::~CRetailTree_erase009aa830() -- std::map/set destructor: erase all nodes through 0x009AA830, reset the head, free it
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009AB770, oracle length 66 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je F ; mov eax,[esi] ; mov ecx,[eax+4] ; push ecx ; mov ecx,esi ; call Erase ; (re-read head) mov [eax+8],eax ; mov dword ptr [edx+4],0 ; mov [eax+0Ch],eax ; mov dword ptr [esi+4],0 ; F: mov esi,[esi] ; test esi,esi ; je R ; push esi ; call free ; add esp,4 ; R: pop esi ; ret
-// Destructor of the retail red-black tree {head, size}: when the tree holds nodes the recursive
-// erase @ 0x009AA830 (a __fastcall member taking the root, head->parent) frees them, then the
-// head's left/parent/right are reset through `head` re-read per store and size is zeroed; finally
-// the head node itself is released with free @ 0x00BFEA14 (null-checked). Only the erase callee
-// distinguishes the instantiations, so the class is named by it. One of 119 bodies.
-extern "C" void __cdecl free(void* block);
-
-struct CRetailTree_erase009aa830 {
-    struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; };
-    node* head;
-    unsigned long size;
-    void Erase(node* root);                // 0x009AA830
-    ~CRetailTree_erase009aa830();
+// std::_Rb_tree<CCharString, std::pair<const CCharString, CCharString>, ...>::~_Rb_tree() -- STLport tree destructor: clear() (the out-of-line recursive _M_erase from the root, header relinked, count zeroed), then _Rb_tree_base frees the header node
+// Leaf: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009AB770, 66 bytes, thiscall; no retail referrer (the linker kept the pick-any copy). Callees: the tree's
+//   _M_erase 0x009AA830 (landed, STLport spelling), free 0x00BFEA14.
+// Identity (NF391, the T3 nf389 derivation test applied to NF132's twin; advisor decision, owner delegated): 0x009AC310 is ~map (34 retail
+//   call sites, both PDB name sets, landed). A full-image E8/E9 scan of _M_erase 0x009AA830 finds 22 sites and exactly two standalone 66-byte
+//   destructor bodies, 0x009AB770 and 0x009AC310; both PDB name sets know this tree only under map traits ($0A@: no multimap, no set over
+//   the pair); and the TU that emits ~map also emits the 66-byte ~_Rb_tree calling _M_erase directly. So the unreferenced twin is the
+//   tree's own destructor.
+// NF391: was the generated CRetailTree_erase009aa830 destructor (one of 108 bodies named by their erase callee) over a local tree model;
+//   now the repo STLport (stlport/fable_map.h, FABLE_RETAIL_STLP_MAP) in the pick-any form.
+#include "fable_compiler.h"
+#include "rebuild_abi.h"
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_STLP_MAP
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+namespace {
+// Fidelity: scaffolding, not retail: a TU-internal holder whose out-of-line destructor destroys the map member, so VC7.1 emits the
+// implicit map / tree destructors (and _M_erase) as pick-any COMDATs, as every retail TU that destroys this map does (GOTCHAS nf86 / nf88,
+// nf387). Internal to this TU; never called.
+struct CharStringMapHolder {
+    std::map<CCharString, CCharString> Map;
+    ~CharStringMapHolder();
 };
-
-CRetailTree_erase009aa830::~CRetailTree_erase009aa830()
-{
-    if (size) {
-        Erase(head->parent);
-        head->left = head;
-        head->parent = 0;
-        head->right = head;
-        size = 0;
-    }
-    if (head)
-        free(head);
+CharStringMapHolder::~CharStringMapHolder() {}
 }

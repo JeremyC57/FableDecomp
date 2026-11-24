@@ -1,0 +1,6 @@
+addr       parity           behav  name
+009ab770   WARN STANDIN_LEAF ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ (catalog CRetailTree_erase009aa830::~CRetailTree_erase009aa830; names another function)
+009ab770   RELOCATION_MATCH PASS   ~CRetailTree_erase009aa830
+
+WINS: 1
+  009ab770 RELOCATION_MATCH CRetailTree_erase009aa830::??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ

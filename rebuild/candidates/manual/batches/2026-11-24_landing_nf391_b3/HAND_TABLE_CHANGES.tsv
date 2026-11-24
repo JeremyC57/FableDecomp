@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	?Erase@CRetailTree_erase009aa830@@QAEXPAUnode@1@@Z	009aa830	009a7b70	NF391 (T3 nf389 derivation applied to NF132 twin 0x009AB770): the old witness 0x009AB770 becomes ~_Rb_tree on the repo STLport (calls the landed STLport _M_erase); the stand-in callee name stays bound by its other landed binder 0x009A7B70 CBankFileManager::~CBankFileManager (local CRetailTree_erase009aa830 model; queued as a port, QUEUE_PROPOSALS)

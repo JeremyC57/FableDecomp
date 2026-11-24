@@ -4345,7 +4345,7 @@ __imp__GetForegroundWindow@0	01440378	009a57b0
 ?FreeTree_CTreeOwner_009aa880@CTreeOwner_009aa880@@QAEXPAUSNode@@@Z	009aa880	009aa880
 ?Erase@CRetailTree_erase009aa7c0@@QAEXPAUnode@1@@Z	009aa7c0	009ab700
 ?Cleanup@CActiveFile@@QAEXXZ	009aae50	009ab750
-?Erase@CRetailTree_erase009aa830@@QAEXPAUnode@1@@Z	009aa830	009ab770
+?Erase@CRetailTree_erase009aa830@@QAEXPAUnode@1@@Z	009aa830	009a7b70
 ?Erase@CRetailTree_erase009aa880@@QAEXPAUnode@1@@Z	009aa880	009ab7c0
 ?LowerBound@CFactionMap@@QAEPAUSEntry@1@PBK@Z	009b2290	009ad2e0
 ?LowerBound@CSubDefInfoMap@@QBEPBUCSubDefPair@@PBK@Z	009b2130	009ad4a0
@@ -39138,3 +39138,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?UpdateKeyEvents@CKeyboardDX@@IAE_NXZ	00ab6240	00ab69f0
 ?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z	007137d0	007e7760
 ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	00429d8e	0056ad40
+??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ	009ab770	009ab770
