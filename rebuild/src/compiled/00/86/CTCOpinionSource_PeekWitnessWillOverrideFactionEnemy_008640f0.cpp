@@ -19,7 +19,7 @@ class CTCOpinionSource : public CTCBase_008640f0 { public:
     bool          UseNavLineOfSight;                // +0x18
     bool          WitnessesWillNotAttack;           // +0x19
     bool          WitnessesWillOverrideFactionEnemy;   // +0x1a
-    bool AppliesToWitness(CThingAICreature* witness) const;   // 0x00771540
+    private: bool AppliesToWitness(const CThingAICreature* witness) const; public:   // 0x00771540
     long PeekWitnessWillOverrideFactionEnemy(CThingAICreature* witness) const;
 };
 

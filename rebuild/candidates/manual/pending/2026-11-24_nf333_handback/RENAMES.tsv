@@ -1,0 +1,36 @@
+address	module	name	mangled_leaf	old_catalog_name	old_leaf	evidence
+
+# Section 2
+caller	old_symbol	new_symbol	callee
+0x00436CC0	?Destroy_00436ba0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCDisplayViewManager@@@@SIXPAX@Z	0x00436BA0
+0x004AE650	?Destroy_004ae510@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCMusicManager@@@@SIXPAX@Z	0x004AE510
+0x006750D0	?Destroy_00674e80@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCExpressionSet@@@@SIXPAX@Z	0x00674E80
+0x006D6260	?Destroy_006d6210@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCBrainOutput@@@@SIXPAX@Z	0x006D6210
+0x00A4AB60	?Destroy_00a4a910@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCSpeechFrame@@@@SIXPAX@Z	0x00A4A910
+0x00A8D9F0	?Destroy_00a8d7c0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCScopedMemoryHandle@@@@SIXPAX@Z	0x00A8D7C0
+0x00AECAC0	?Destroy_00aeca50@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCParticleEmitterManager@NParticleEngine@@@@SIXPAX@Z	0x00AECA50
+0x00401F30	??0CCharString@@QAE@PAVCAFile@@J@Z	??0CCharString@@QAE@AAVCAFile@@J@Z	0x0099FA50
+0x0099A5A0	?Initialise@CDateAndTime@@QAEXPBU_FILETIME@@@Z	?Initialise@CDateAndTime@@QAEXABU_FILETIME@@@Z	0x009E9CB0
+0x00633BF0	?AddQueuedProcessedInput@CInputProcessManager@@QAEXPAVCProcessedInput@@@Z	?AddQueuedProcessedInput@CInputProcessManager@@QAEXABVCProcessedInput@@@Z	0x00A0D460
+0x00633CB0	?AddQueuedProcessedInput@CInputProcessManager@@QAEXPAVCProcessedInput@@@Z	?AddQueuedProcessedInput@CInputProcessManager@@QAEXABVCProcessedInput@@@Z	0x00A0D460
+0x0045E808	?TransferBinaryOut@COpinionPersonalityTraits@@QBEXPAVCDataOutputStream@@@Z	?TransferBinaryOut@COpinionPersonalityTraits@@QBEXAAVCDataOutputStream@@@Z	0x0045E863
+0x005252B0	?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z	?OnDeactivateEntity@CQuestManager@@QAEXAAVCThing@@_N@Z	0x004AFB00
+0x004C7CF0	?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z	?OnDeactivateEntity@CQuestManager@@QAEXAAVCThing@@_N@Z	0x004AFB00
+0x00676BE0	?TransferBinaryOut@CThingComponentSet@@QBEXPAVCDataOutputStream@@@Z	?TransferBinaryOut@CThingComponentSet@@QBEXAAVCDataOutputStream@@@Z	0x008708F0
+0x007BDB66	?SetThingAsImmune@CTCTrapBase@@QAEXPAVCThing@@@Z	?SetThingAsImmune@CTCTrapBase@@QAEXAAVCThing@@@Z	0x0078839A
+0x008C6B20	?SetThingAsImmune@CTCTrapBase@@QAEXPAVCThing@@@Z	?SetThingAsImmune@CTCTrapBase@@QAEXAAVCThing@@@Z	0x0078839A
+0x006610C7	??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NPBVCOpinionDeed@@@Z	??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NABVCOpinionDeed@@@Z	0x00681750
+0x00548790	?GetMaxRefreshRate@CUserProfileManager@@QBEJXZ	?GetMaxRefreshRate@CUserProfileManager@@QBEKXZ	0x00406890
+0x0088F910	?AutoSaveCheckPoint@CWorld@@QAEXXZ	?AutoSaveCheckPoint@CWorld@@QAE_NXZ	0x004A0BB0
+0x0049E080	?GetCurrentSoundCamera@CWorld@@QAE?AVCCamera@@PBVCInterpolationInfo@@@Z	?GetCurrentSoundCamera@CWorld@@QBE?AVCCamera@@ABVCInterpolationInfo@@@Z	0x0049DAA0
+0x008640C0	?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z	?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z	0x00771540
+0x008640F0	?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z	?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z	0x00771540
+0x00A62D80	?CountBits@CPackedUIntArray@@QBEEPBXKJK@Z	?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z	0x00A62B70
+0x0071D3B0	?CreateAlphaChannel@CTCHeroMorph@@QAE_NAAVCTexture@@0@Z	?CreateAlphaChannel@CTCHeroMorph@@ABEXAAVCTexture@@0@Z	0x0071BCD0
+0x007B2FD0	?ReportCrime@CTCGuard@@QAEXPAVCTCVillage@@JJ_N@Z	?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z	0x007B2C70
+0x0095C1F0	?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ	?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ	0x0095B020
+0x0095C1F0	?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ	0x0095C0B0
+0x0051E210	?MakeUID_0051d990@@YG_K_K0@Z	?GFCalcThingUID@@YI_K_K0@Z	0x0051D990
+0x008EDDD0	?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z	?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z	0x005EE99D
+0x004D4759	??0CTCBoastingCrowdControl@@QAE@PAVCThing@@@Z	??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z	0x007837C0
+0x004D3C31	??0CTCShapeManager@@QAE@PAVCThing@@@Z	??0CTCShapeManager@@QAE@AAVCThing@@@Z	0x00762090

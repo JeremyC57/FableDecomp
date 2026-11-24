@@ -1,0 +1,4 @@
+##### 004d4759 renames: ??0CTCBoastingCrowdControl@@QAE@PAVCThing@@@Z=??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 004d3c31 renames: ??0CTCShapeManager@@QAE@PAVCThing@@@Z=??0CTCShapeManager@@QAE@AAVCThing@@@Z
+ALL_EQ sections=2 DEF=1 tables=-

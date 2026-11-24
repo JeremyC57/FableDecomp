@@ -24,7 +24,7 @@
 #include "engine/CMapInfo.h"
 #include "engine/CWorldMap.h"
 
-unsigned __int64 __stdcall MakeUID_0051d990(unsigned __int64 region, unsigned __int64 id);   // 0x0051D990
+unsigned __int64 __fastcall GFCalcThingUID(unsigned __int64 region, unsigned __int64 id);   // 0x0051D990
 
 class CThingManager {
 public:
@@ -49,10 +49,10 @@ unsigned __int64 CThingManager::RemapUIDForSerialisation(bool saving, bool level
     if (saving) {
         if (region != (unsigned long)WorldMap->GetMapUID(level))
             return uid;
-        return MakeUID_0051d990(0xfffffe, uid & 0xFFFFFFFFFFui64);
+        return GFCalcThingUID(0xfffffe, uid & 0xFFFFFFFFFFui64);
     }
     long levelRegion = WorldMap->GetMapUID(level);
     if (region == 0xfffffe)
-        return MakeUID_0051d990((unsigned long)levelRegion, uid & 0xFFFFFFFFFFui64);
+        return GFCalcThingUID((unsigned long)levelRegion, uid & 0xFFFFFFFFFFui64);
     return uid;
 }

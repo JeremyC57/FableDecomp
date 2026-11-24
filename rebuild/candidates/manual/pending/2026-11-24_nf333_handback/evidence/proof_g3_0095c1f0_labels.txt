@@ -1,0 +1,1 @@
+0095c1f0 ALL_EQ (local labels by section+value) renames: ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ=?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ=?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ

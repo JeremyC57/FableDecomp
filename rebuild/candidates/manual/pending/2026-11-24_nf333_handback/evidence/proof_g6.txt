@@ -1,0 +1,2 @@
+##### 008eddd0 renames: ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z=?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z
+ALL_EQ sections=9 DEF=8 tables=-

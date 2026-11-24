@@ -28,6 +28,7 @@ public:
 };
 #define FABLE_RETAIL_COMBAT_INPUT_PASS26            // NF300: the shared EInputButtonEventType (held = 2) for the 0x00445E90 declaration
 #include "engine/EInputButtonEventType.h"
+#include "engine/EHeroAbility.h"   // NF333: MyAbility / IsAbilityQuickAccessEventInQueue take the PDB EHeroAbility
 class CGamePlayerInterface {
 public:
     bool IsAssignableSpecialMoveButtonInQueue(long button, EInputButtonEventType eventType, long playerNumber) const;   // 0x00445E90
@@ -86,7 +87,7 @@ public:
     unsigned char _pad[0x142];
     bool QuickAccessPending;                        // +0x142
     bool GetButtonAbilityIsSetTo(long ability, long* button);   // 0x005EDF33
-    bool IsAbilityQuickAccessEventInQueue(long ability);        // 0x005EE99D
+    bool IsAbilityQuickAccessEventInQueue(EHeroAbility ability) const;        // 0x005EE99D
     void ClearQuickAccessState();                   // 0x005EDCEF
 };
 
@@ -107,7 +108,7 @@ public:
     long ButtonHeldDownTimer;                       // +0x00
     long WillAccumulatedLevel;                      // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08
-    long MyAbility;                                 // +0x10 EHeroAbility
+    EHeroAbility MyAbility;                         // +0x10 EHeroAbility
     long CurrentState;                              // +0x14 EButtonHeldState
     float* TimingsStart;                            // +0x18 vector<float> WillPowerUpAccumulatedTimings
     float* TimingsFinish;                           // +0x1c

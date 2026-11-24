@@ -104,7 +104,7 @@ FABLE_FORCEINLINE CThing* CreateThingObject(const long& defIndex, const C3DVecto
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position);             // 0x0080C460
 CThing* __fastcall CreateObstruction(const C3DVector* a, const C3DVector* b, float radius);   // 0x007FD4B0
 class CTCTrapBase { public:                                  // interface 0x7D
-    void SetThingAsImmune(CThing* thing);             // 0x0078839A
+    void SetThingAsImmune(CThing& thing);             // 0x0078839A
     void ManualTrigger();                             // 0x00788388
 };
 struct CTCDriver41 {                                  // driver of interface 0x41
@@ -148,7 +148,7 @@ void CCreatureAction_TrollGroundPound::PerformAction()
             CThing* trap = CreateThingObject(def.Object->TrapDefIndex, position, GetCreature(), "");
             CTCTrapBase* trapBase;
             trap->GetInterface(&trapBase, 0x7d);
-            trapBase->SetThingAsImmune(GetCreature());
+            trapBase->SetThingAsImmune(*GetCreature());
             trapBase->ManualTrigger();
         }
         if (def.Object->ObjectDefIndex) {

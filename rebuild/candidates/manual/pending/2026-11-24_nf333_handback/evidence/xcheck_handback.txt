@@ -1,0 +1,108 @@
+OK   replace old line exists ?Destroy_00436ba0@@YIXPAX@Z 00436ba0 (table witness ['00436cc0'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCDisplayViewManager@@@@SIXPAX@Z 00436ba0
+OK   replace old line exists ?Destroy_004ae510@@YIXPAX@Z 004ae510 (table witness ['004ae650'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCMusicManager@@@@SIXPAX@Z 004ae510
+OK   replace old line exists ?Destroy_00674e80@@YIXPAX@Z 00674e80 (table witness ['006750d0'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCExpressionSet@@@@SIXPAX@Z 00674e80
+OK   replace old line exists ?Destroy_006d6210@@YIXPAX@Z 006d6210 (table witness ['006d6260'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCBrainOutput@@@@SIXPAX@Z 006d6210
+OK   replace old line exists ?Destroy_00a4a910@@YIXPAX@Z 00a4a910 (table witness ['00a4ab60'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCSpeechFrame@@@@SIXPAX@Z 00a4a910
+OK   replace old line exists ?Destroy_00a8d7c0@@YIXPAX@Z 00a8d7c0 (table witness ['00a8d9f0'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCScopedMemoryHandle@@@@SIXPAX@Z 00a8d7c0
+OK   replace old line exists ?Destroy_00aeca50@@YIXPAX@Z 00aeca50 (table witness ['00aecac0'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCParticleEmitterManager@NParticleEngine@@@@SIXPAX@Z 00aeca50
+OK   replace old line exists ?Destroy_00443aa0@@YIXPAX@Z 00443aa0 (table witness ['00444b40'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCDrawMeleeActionButtonEffects@NPlayerGui@@@@SIXPAX@Z 00443aa0
+OK   replace old line exists ?Destroy_004ad600@@YIXPAX@Z 004ad600 (table witness ['004adae0'])
+OK   replace new has no line ?DeleteData@?$CCountedPointer@VCOpinionReactionManager@@@@SIXPAX@Z 004ad600
+OK   replace old line exists ??0CCharString@@QAE@PAVCAFile@@J@Z 0099fa50 (table witness ['00401f30'])
+OK   replace new has no line ??0CCharString@@QAE@AAVCAFile@@J@Z 0099fa50
+OK   replace old line exists ?Initialise@CDateAndTime@@QAEXPBU_FILETIME@@@Z 009e9cb0 (table witness ['0099a5a0'])
+OK   replace new has no line ?Initialise@CDateAndTime@@QAEXABU_FILETIME@@@Z 009e9cb0
+OK   replace old line exists ?AddQueuedProcessedInput@CInputProcessManager@@QAEXPAVCProcessedInput@@@Z 00a0d460 (table witness ['00633bf0'])
+OK   replace new has no line ?AddQueuedProcessedInput@CInputProcessManager@@QAEXABVCProcessedInput@@@Z 00a0d460
+OK   replace old line exists ?TransferBinaryOut@COpinionPersonalityTraits@@QBEXPAVCDataOutputStream@@@Z 0045e863 (table witness ['0045e808'])
+OK   replace new has no line ?TransferBinaryOut@COpinionPersonalityTraits@@QBEXAAVCDataOutputStream@@@Z 0045e863
+OK   replace old line exists ?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z 004afb00 (table witness ['005252b0'])
+OK   replace new has no line ?OnDeactivateEntity@CQuestManager@@QAEXAAVCThing@@_N@Z 004afb00
+OK   replace old line exists ?TransferBinaryOut@CThingComponentSet@@QBEXPAVCDataOutputStream@@@Z 008708f0 (table witness ['00676be0'])
+OK   replace new has no line ?TransferBinaryOut@CThingComponentSet@@QBEXAAVCDataOutputStream@@@Z 008708f0
+OK   delete line exists ?SetThingAsImmune@CTCTrapBase@@QAEXPAVCThing@@@Z 0078839a
+OK   replace old line exists ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NPBVCOpinionDeed@@@Z 00681750 (table witness ['006610c7'])
+OK   replace new has no line ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NABVCOpinionDeed@@@Z 00681750
+OK   replace old line exists ?GetMaxRefreshRate@CUserProfileManager@@QBEJXZ 00406890 (table witness ['00548790'])
+OK   replace new has no line ?GetMaxRefreshRate@CUserProfileManager@@QBEKXZ 00406890
+OK   replace old line exists ?AutoSaveCheckPoint@CWorld@@QAEXXZ 004a0bb0 (table witness ['0088f910'])
+OK   replace new has no line ?AutoSaveCheckPoint@CWorld@@QAE_NXZ 004a0bb0
+OK   replace old line exists ?GetCurrentSoundCamera@CWorld@@QAE?AVCCamera@@PBVCInterpolationInfo@@@Z 0049daa0 (table witness ['0049e080'])
+OK   replace new has no line ?GetCurrentSoundCamera@CWorld@@QBE?AVCCamera@@ABVCInterpolationInfo@@@Z 0049daa0
+OK   replace old line exists ??0CClass_004d3826@@QAE@XZ 004d3826 (table witness ['004d805c'])
+OK   replace new has no line ??0CChestDef@@QAE@XZ 004d3826
+OK   replace old line exists ??0CClass_004e1341@@QAE@XZ 004e1341 (table witness ['004e3096'])
+OK   replace new has no line ??0CExplosionDef@@QAE@XZ 004e1341
+OK   replace old line exists ??0CTransferScope_004e0a05@@QAE@XZ 004e0a05 (table witness ['004e59e1'])
+OK   replace new has no line ??0CFireEffectCreationSet@@QAE@XZ 004e0a05
+OK   replace old line exists ??0CClass_004d6638@@QAE@XZ 004d6638 (table witness ['004d982f'])
+OK   replace new has no line ??0CFireheartMinigameDef@@QAE@XZ 004d6638
+OK   replace old line exists ??0CClass_004d4fcf@@QAE@XZ 004d4fcf (table witness ['004d89b4'])
+OK   replace new has no line ??0CInterestingToVillagersDef@@QAE@XZ 004d4fcf
+OK   replace old line exists ??0CClass_004e1516@@QAE@XZ 004e1516 (table witness ['004e31fa'])
+OK   replace new has no line ??0CMultiStaticMeshDef@@QAE@XZ 004e1516
+OK   replace old line exists ?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z 00771540 (table witness ['008640c0'])
+OK   replace new has no line ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z 00771540
+OK   replace old line exists ?CountBits@CPackedUIntArray@@QBEEPBXKJK@Z 00a62b70 (table witness ['00a62d80'])
+OK   replace new has no line ?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z 00a62b70
+OK   replace old line exists ?CreateAlphaChannel@CTCHeroMorph@@QAE_NAAVCTexture@@0@Z 0071bcd0 (table witness ['0071d3b0'])
+OK   replace new has no line ?CreateAlphaChannel@CTCHeroMorph@@ABEXAAVCTexture@@0@Z 0071bcd0
+OK   replace old line exists ?ReportCrime@CTCGuard@@QAEXPAVCTCVillage@@JJ_N@Z 007b2c70 (table witness ['007b2fd0'])
+OK   replace new has no line ?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z 007b2c70
+OK   replace old line exists ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ 0095b020 (table witness ['0095c1f0'])
+OK   replace new has no line ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ 0095b020
+OK   replace old line exists ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ 0095c0b0 (table witness ['0095c1f0'])
+OK   replace new has no line ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ 0095c0b0
+OK   replace old line exists ?MakeUID_0051d990@@YG_K_K0@Z 0051d990 (table witness ['0051e210'])
+OK   replace new has no line ?GFCalcThingUID@@YI_K_K0@Z 0051d990
+OK   replace old line exists ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z 005ee99d (table witness ['008eddd0'])
+OK   replace new has no line ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z 005ee99d
+OK   replace old line exists ??0CClass_007837c0@@QAE@PAUCThing@@@Z 007837c0 (table witness ['004d4759'])
+OK   replace new has no line ??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z 007837c0
+OK   replace old line exists ??0CClass_00762090@@QAE@PAUCThing@@@Z 00762090 (table witness ['004d3c31'])
+OK   replace new has no line ??0CTCShapeManager@@QAE@AAVCThing@@@Z 00762090
+OK   both PDB name sets: ??0CCharString@@QAE@AAVCAFile@@J@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CChestDef@@QAE@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ??0CExplosionDef@@QAE@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ??0CFireEffectCreationSet@@QAE@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ??0CFireheartMinigameDef@@QAE@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ??0CInterestingToVillagersDef@@QAE@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ??0CMultiStaticMeshDef@@QAE@XZ (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??0CTCShapeManager@@QAE@AAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NABVCOpinionDeed@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?AddQueuedProcessedInput@CInputProcessManager@@QAEXABVCProcessedInput@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?AutoSaveCheckPoint@CWorld@@QAE_NXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?CreateAlphaChannel@CTCHeroMorph@@ABEXAAVCTexture@@0@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCBrainOutput@@@@SIXPAX@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCDisplayViewManager@@@@SIXPAX@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCDrawMeleeActionButtonEffects@NPlayerGui@@@@SIXPAX@Z (egor=True fablewin=True)
+BAD  both PDB name sets: ?DeleteData@?$CCountedPointer@VCExpressionSet@@@@SIXPAX@Z (egor=False fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCMusicManager@@@@SIXPAX@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCOpinionReactionManager@@@@SIXPAX@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCParticleEmitterManager@NParticleEngine@@@@SIXPAX@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?DeleteData@?$CCountedPointer@VCScopedMemoryHandle@@@@SIXPAX@Z (egor=True fablewin=True)
+BAD  both PDB name sets: ?DeleteData@?$CCountedPointer@VCSpeechFrame@@@@SIXPAX@Z (egor=False fablewin=True)
+BAD  both PDB name sets: ?GFCalcThingUID@@YI_K_K0@Z (egor=False fablewin=True)
+OK   both PDB name sets: ?GetCurrentSoundCamera@CWorld@@QBE?AVCCamera@@ABVCInterpolationInfo@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?GetMaxRefreshRate@CUserProfileManager@@QBEKXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ (egor=True fablewin=True)
+OK   both PDB name sets: ?Initialise@CDateAndTime@@QAEXABU_FILETIME@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?OnDeactivateEntity@CQuestManager@@QAEXAAVCThing@@_N@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?SetThingAsImmune@CTCTrapBase@@QAEXAAVCThing@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?TransferBinaryOut@COpinionPersonalityTraits@@QBEXAAVCDataOutputStream@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?TransferBinaryOut@CThingComponentSet@@QBEXAAVCDataOutputStream@@@Z (egor=True fablewin=True)
+OK   both PDB name sets: ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ (egor=True fablewin=True)
+BAD 3 of table + names checks

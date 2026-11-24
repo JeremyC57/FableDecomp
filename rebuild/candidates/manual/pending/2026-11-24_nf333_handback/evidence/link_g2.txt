@@ -1,0 +1,23 @@
+## HEAD set: H_00401f30.obj H_0099a5a0.obj H_00633bf0.obj H_00633cb0.obj H_0045e808.obj H_005252b0.obj H_004c7cf0.obj H_0089f4a0.obj H_00676be0.obj H_007bdb66.obj H_008c6b20.obj H_006610c7.obj H_00548790.obj H_0088f910.obj H_0049e080.obj 0099fa50.obj 009e9cb0.obj 00a0d460.obj 0045e863.obj 004afb00.obj 004c8fb0.obj 008708f0.obj 0078839a.obj 00681750.obj 00406890.obj 004a0bb0.obj 0049daa0.obj
+duplicates 0
+UNRESOLVED 1 ??0CCharString@@QAE@PAVCAFile@@J@Z
+UNRESOLVED 1 ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NPBVCOpinionDeed@@@Z
+UNRESOLVED 2 ?AddQueuedProcessedInput@CInputProcessManager@@QAEXPAVCProcessedInput@@@Z
+UNRESOLVED 1 ?AutoSaveCheckPoint@CWorld@@QAEXXZ
+UNRESOLVED 1 ?CopyTCIfExists@CThing@@QAEXPBVCTCBase@@@Z
+UNRESOLVED 1 ?GetAutoSaveCheckPointFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?GetCurrentSoundCamera@CWorld@@QAE?AVCCamera@@PBVCInterpolationInfo@@@Z
+UNRESOLVED 1 ?GetMaxRefreshRate@CUserProfileManager@@QBEJXZ
+UNRESOLVED 1 ?Initialise@CDateAndTime@@QAEXPBU_FILETIME@@@Z
+UNRESOLVED 1 ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z
+UNRESOLVED 2 ?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z
+UNRESOLVED 1 ?PathExists@CAFile@@SI_NABVCWideString@@@Z
+UNRESOLVED 2 ?SetThingAsImmune@CTCTrapBase@@QAEXPAVCThing@@@Z
+UNRESOLVED 1 ?TransferBinaryOut@COpinionPersonalityTraits@@QBEXPAVCDataOutputStream@@@Z
+UNRESOLVED 1 ?TransferBinaryOut@CThingComponentSet@@QBEXPAVCDataOutputStream@@@Z
+## new set: 00401f30.obj 0099a5a0.obj 00633bf0.obj 00633cb0.obj 0045e808.obj 005252b0.obj 004c7cf0.obj 0089f4a0.obj 00676be0.obj 007bdb66.obj 008c6b20.obj 006610c7.obj 00548790.obj 0088f910.obj 0049e080.obj 0099fa50.obj 009e9cb0.obj 00a0d460.obj 0045e863.obj 004afb00.obj 004c8fb0.obj 008708f0.obj 0078839a.obj 00681750.obj 00406890.obj 004a0bb0.obj 0049daa0.obj
+duplicates 0
+UNRESOLVED 1 ?GetAutoSaveCheckPointFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+UNRESOLVED 1 ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z
+UNRESOLVED 1 ?PathExists@CAFile@@SI_NABVCWideString@@@Z
+LK_DONE

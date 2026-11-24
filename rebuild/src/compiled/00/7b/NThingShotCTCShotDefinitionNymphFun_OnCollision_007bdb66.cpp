@@ -66,7 +66,7 @@ class CThingObject : public CThing { public:
                                            const CCharString& name);   // 0x00703210
 };
 class CTCTrapBase { public:
-    void SetThingAsImmune(CThing* thing);               // 0x0078839A
+    void SetThingAsImmune(CThing& thing);               // 0x0078839A
     void ManualTrigger();                               // 0x00788388
 };
 void __fastcall MakeSummonedCreaturesImmuneToTrap(CTCTrapBase* trap);   // 0x0080F240
@@ -117,7 +117,7 @@ void NThingShot::CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const
                     CTCTrapBase* trap;
                     if (trapThing->TCBits.test(0x7d))
                         trap = (CTCTrapBase*)trapThing->GetTC(0x7d);
-                    trap->SetThingAsImmune(PShooter.GetPItem());
+                    trap->SetThingAsImmune(*PShooter.GetPItem());
                     trap->ManualTrigger();
                     MakeSummonedCreaturesImmuneToTrap(trap);
                     Spent = true;

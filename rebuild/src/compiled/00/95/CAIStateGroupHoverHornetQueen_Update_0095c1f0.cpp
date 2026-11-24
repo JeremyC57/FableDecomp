@@ -48,6 +48,7 @@ class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
+#include "engine/fable_ai_action_enums.h"   // NF333: EAIActionReturn (WaitWhileBabiesFight's PDB return)
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -70,7 +71,7 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
 protected:
     bool IsStillRunnable();                     // 0x0095A420 (protected: Ego_r/FableWin IAE)
 public:
-    bool GoToSpawnPoint();                      // 0x0095B020
+    protected: void GoToSpawnPoint(); public:   // 0x0095B020
     protected:
     void PlayIdle();
     public:
@@ -78,7 +79,7 @@ public:
     protected: void Spawn(); public:                               // 0x0095B820
     protected: void DiveBomb(); public:                            // 0x0095B9E0
     protected: void Attack(); public:                              // 0x0095BCF0
-    long WaitWhileBabiesFight();                // 0x0095C0B0
+    protected: EAIActionReturn WaitWhileBabiesFight(); public:   // 0x0095C0B0
     void Update();
 };
 

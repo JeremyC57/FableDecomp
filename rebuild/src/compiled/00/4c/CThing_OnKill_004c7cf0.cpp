@@ -38,7 +38,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    void OnDeactivateEntity(CThing* thing, bool levelUnloading);   // 0x004AFB00
+    void OnDeactivateEntity(CThing& thing, bool levelUnloading);   // 0x004AFB00
 };
 
 class CThingManager { public:
@@ -70,7 +70,7 @@ protected:
 
 void CThing::OnKill()
 {
-    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnDeactivateEntity(this, LevelIsUnloading);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnDeactivateEntity(*this, LevelIsUnloading);
     AddingTCsPermitted = false;
     for_each(m_componentsFirst, m_componentsLast, CCallOnKill());
     AddingTCsPermitted = true;

@@ -1,0 +1,2 @@
+##### 0095c1f0 renames: ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ=?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ=?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ
+NOT_EQ section .text relocs sections=22 tables=-

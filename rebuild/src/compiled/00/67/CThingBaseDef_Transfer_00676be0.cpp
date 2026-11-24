@@ -36,7 +36,7 @@ class CThingComponentSet { public:                             // CSmallVector<C
     CThingComponentSet() : Start(0), Size(0) { }
     ~CThingComponentSet() { delete[] Start; }
     void TransferBinaryIn(CMemoryDataInputStream* stream);          // 0x008707A0
-    void TransferBinaryOut(CDataOutputStream* stream) const;        // 0x008708F0
+    void TransferBinaryOut(CDataOutputStream& stream) const;        // 0x008708F0
 };
 #pragma pack(pop)
 class CDefString { public:
@@ -47,7 +47,7 @@ class CDefString { public:
 template<class T> struct CPersistTraits {              // a value with its own binary transfer
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { value.TransferBinaryIn(&stream); }
-    static void TransferBinaryOut(CDataOutputStream* stream, const T& value) { value.TransferBinaryOut(stream); }
+    static void TransferBinaryOut(CDataOutputStream* stream, const T& value) { value.TransferBinaryOut(*stream); }
 };
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}

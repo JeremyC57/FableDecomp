@@ -1,0 +1,37 @@
+action	symbol	target	witness	note
+replace	?Destroy_00436ba0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCDisplayViewManager@@@@SIXPAX@Z	00436ba0	00436cc0	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_004ae510@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCMusicManager@@@@SIXPAX@Z	004ae510	004ae650	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_00674e80@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCExpressionSet@@@@SIXPAX@Z	00674e80	006750d0	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_006d6210@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCBrainOutput@@@@SIXPAX@Z	006d6210	006d6260	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_00a4a910@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCSpeechFrame@@@@SIXPAX@Z	00a4a910	00a4ab60	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_00a8d7c0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCScopedMemoryHandle@@@@SIXPAX@Z	00a8d7c0	00a8d9f0	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_00aeca50@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCParticleEmitterManager@NParticleEngine@@@@SIXPAX@Z	00aeca50	00aecac0	witness now binds the PDB spelling; no line for it yet
+replace	?Destroy_00443aa0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCDrawMeleeActionButtonEffects@NPlayerGui@@@@SIXPAX@Z	00443aa0	00444b40	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g1.txt)
+replace	?Destroy_004ad600@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCOpinionReactionManager@@@@SIXPAX@Z	004ad600	004adae0	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g1.txt)
+replace	??0CCharString@@QAE@PAVCAFile@@J@Z -> ??0CCharString@@QAE@AAVCAFile@@J@Z	0099fa50	00401f30	witness now binds the PDB spelling; no line for it yet
+replace	?Initialise@CDateAndTime@@QAEXPBU_FILETIME@@@Z -> ?Initialise@CDateAndTime@@QAEXABU_FILETIME@@@Z	009e9cb0	0099a5a0	witness now binds the PDB spelling; no line for it yet
+replace	?AddQueuedProcessedInput@CInputProcessManager@@QAEXPAVCProcessedInput@@@Z -> ?AddQueuedProcessedInput@CInputProcessManager@@QAEXABVCProcessedInput@@@Z	00a0d460	00633bf0	witness now binds the PDB spelling; no line for it yet
+replace	?TransferBinaryOut@COpinionPersonalityTraits@@QBEXPAVCDataOutputStream@@@Z -> ?TransferBinaryOut@COpinionPersonalityTraits@@QBEXAAVCDataOutputStream@@@Z	0045e863	0045e808	witness now binds the PDB spelling; no line for it yet
+replace	?OnDeactivateEntity@CQuestManager@@QAEXPAVCThing@@_N@Z -> ?OnDeactivateEntity@CQuestManager@@QAEXAAVCThing@@_N@Z	004afb00	005252b0	witness now binds the PDB spelling; no line for it yet
+replace	?TransferBinaryOut@CThingComponentSet@@QBEXPAVCDataOutputStream@@@Z -> ?TransferBinaryOut@CThingComponentSet@@QBEXAAVCDataOutputStream@@@Z	008708f0	00676be0	witness now binds the PDB spelling; no line for it yet
+delete	?SetThingAsImmune@CTCTrapBase@@QAEXPAVCThing@@@Z	0078839a	007bdb66	witness now binds the PDB spelling, which already has a line at this target
+replace	??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NPBVCOpinionDeed@@@Z -> ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NABVCOpinionDeed@@@Z	00681750	006610c7	witness now binds the PDB spelling; no line for it yet
+replace	?GetMaxRefreshRate@CUserProfileManager@@QBEJXZ -> ?GetMaxRefreshRate@CUserProfileManager@@QBEKXZ	00406890	00548790	witness now binds the PDB spelling; no line for it yet
+replace	?AutoSaveCheckPoint@CWorld@@QAEXXZ -> ?AutoSaveCheckPoint@CWorld@@QAE_NXZ	004a0bb0	0088f910	witness now binds the PDB spelling; no line for it yet
+replace	?GetCurrentSoundCamera@CWorld@@QAE?AVCCamera@@PBVCInterpolationInfo@@@Z -> ?GetCurrentSoundCamera@CWorld@@QBE?AVCCamera@@ABVCInterpolationInfo@@@Z	0049daa0	0049e080	witness now binds the PDB spelling; no line for it yet
+replace	??0CClass_004d3826@@QAE@XZ -> ??0CChestDef@@QAE@XZ	004d3826	004d805c	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g4.txt)
+replace	??0CClass_004e1341@@QAE@XZ -> ??0CExplosionDef@@QAE@XZ	004e1341	004e3096	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g4.txt)
+replace	??0CTransferScope_004e0a05@@QAE@XZ -> ??0CFireEffectCreationSet@@QAE@XZ	004e0a05	004e59e1	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g4.txt)
+replace	??0CClass_004d6638@@QAE@XZ -> ??0CFireheartMinigameDef@@QAE@XZ	004d6638	004d982f	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g4.txt)
+replace	??0CClass_004d4fcf@@QAE@XZ -> ??0CInterestingToVillagersDef@@QAE@XZ	004d4fcf	004d89b4	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g4.txt)
+replace	??0CClass_004e1516@@QAE@XZ -> ??0CMultiStaticMeshDef@@QAE@XZ	004e1516	004e31fa	stale line: the witness HEAD object already binds the PDB spelling (evidence/stale_g4.txt)
+replace	?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z -> ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z	00771540	008640c0	witness now binds the PDB spelling; no line for it yet
+replace	?CountBits@CPackedUIntArray@@QBEEPBXKJK@Z -> ?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z	00a62b70	00a62d80	witness now binds the PDB spelling; no line for it yet
+replace	?CreateAlphaChannel@CTCHeroMorph@@QAE_NAAVCTexture@@0@Z -> ?CreateAlphaChannel@CTCHeroMorph@@ABEXAAVCTexture@@0@Z	0071bcd0	0071d3b0	witness now binds the PDB spelling; no line for it yet
+replace	?ReportCrime@CTCGuard@@QAEXPAVCTCVillage@@JJ_N@Z -> ?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z	007b2c70	007b2fd0	witness now binds the PDB spelling; no line for it yet
+replace	?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ -> ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ	0095b020	0095c1f0	witness now binds the PDB spelling; no line for it yet
+replace	?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ -> ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ	0095c0b0	0095c1f0	witness now binds the PDB spelling; no line for it yet
+replace	?MakeUID_0051d990@@YG_K_K0@Z -> ?GFCalcThingUID@@YI_K_K0@Z	0051d990	0051e210	witness now binds the PDB spelling; no line for it yet
+replace	?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z -> ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@@Z	005ee99d	008eddd0	witness now binds the PDB spelling; no line for it yet
+replace	??0CClass_007837c0@@QAE@PAUCThing@@@Z -> ??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z	007837c0	004d4759	stale CClass_ line; the witness now binds the PDB spelling (it bound the PAV form at HEAD); no line for it yet
+replace	??0CClass_00762090@@QAE@PAUCThing@@@Z -> ??0CTCShapeManager@@QAE@AAVCThing@@@Z	00762090	004d3c31	stale CClass_ line; the witness now binds the PDB spelling (it bound the PAV form at HEAD); no line for it yet

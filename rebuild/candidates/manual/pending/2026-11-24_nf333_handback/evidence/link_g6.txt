@@ -1,0 +1,6 @@
+## HEAD set: H_008eddd0.obj 005ee99d.obj
+duplicates 0
+UNRESOLVED 1 ?IsAbilityQuickAccessEventInQueue@CTCInventoryAbilities@@QAE_NJ@Z
+## new set: 008eddd0.obj 005ee99d.obj
+duplicates 0
+LK_DONE

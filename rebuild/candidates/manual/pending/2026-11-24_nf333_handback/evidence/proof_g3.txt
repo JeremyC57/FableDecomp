@@ -1,0 +1,14 @@
+##### 008640c0 renames: ?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z=?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 008640f0 renames: ?AppliesToWitness@CTCOpinionSource@@QBE_NPAVCThingAICreature@@@Z=?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 00a62d80 renames: ?CountBits@CPackedUIntArray@@QBEEPBXKJK@Z=?CountBits@CPackedUIntArray@@ABEKPBXKJK@Z
+ALL_EQ sections=2 DEF=1 tables=-
+##### 0071d3b0 renames: ?CreateAlphaChannel@CTCHeroMorph@@QAE_NAAVCTexture@@0@Z=?CreateAlphaChannel@CTCHeroMorph@@ABEXAAVCTexture@@0@Z
+ALL_EQ sections=46 DEF=45 tables=-
+##### 007b2fd0 renames: ?ReportCrime@CTCGuard@@QAEXPAVCTCVillage@@JJ_N@Z=?ReportCrime@CTCGuard@@AAEXAAVCTCVillage@@JW4EOpinionDeedType@@_N@Z
+ALL_EQ sections=16 DEF=15 tables=-
+##### 0095c1f0 renames: ?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@QAE_NXZ=?GoToSpawnPoint@CAIStateGroup_HoverHornetQueen@@IAEXXZ ?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@QAEJXZ=?WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ
+NOT_EQ section .text relocs sections=22 DEF=21 tables=-
+##### 00757f90 renames: ?AddWound@CTCWound@@QAEXJ@Z=?AddWound@CTCWound@@QAEXW4EBodyLocation@@@Z
+NOT_EQ section .drectve data/flags sections=4 DEF=3 tables=-

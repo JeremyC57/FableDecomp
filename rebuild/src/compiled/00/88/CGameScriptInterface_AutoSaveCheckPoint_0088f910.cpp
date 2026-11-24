@@ -3,7 +3,7 @@
 class CWorld
 {
 public:
-    void AutoSaveCheckPoint();
+    bool AutoSaveCheckPoint();
 };
 
 class CGameScriptInterface

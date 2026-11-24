@@ -13,10 +13,10 @@ class CThing;
 
 class CTCBoastingCrowdControl { public:
     unsigned char _body[0x20];       // sizeof(CTCBoastingCrowdControl) = 0x20
-    CTCBoastingCrowdControl(CThing* owner);                   // 0x007837C0
+    CTCBoastingCrowdControl(CThing& owner);                   // 0x007837C0
 };
 
 CTCBoastingCrowdControl* __fastcall CTCBoastingCrowdControl_Alloc(CThing* owner)
 {
-    return new CTCBoastingCrowdControl(owner);
+    return new CTCBoastingCrowdControl(*owner);
 }
