@@ -1,33 +1,34 @@
+// behaviour test for 0x004608C1: CSpecialAbilitiesUnholyPowerDef::Copy forwards to CSpecialAbilitiesUnholyPowerDef::operator= with this and the source object
+// NF386 (NF324 Q2 form, NF337 gen.py): the row now defines the PDB member CSpecialAbilitiesUnholyPowerDef::Copy (?Copy@CSpecialAbilitiesUnholyPowerDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesUnholyPowerDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-/* Standalone deterministic test: we cannot run the real engine tail-call,
- * so we mock the impl and confirm the thunk forwards this+src unchanged. */
+class CDefClassBase;
+class CSpecialAbilitiesUnholyPowerDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesUnholyPowerDef& operator=(const CSpecialAbilitiesUnholyPowerDef& other);
+};
 
-class CSpecialAbilitiesUnholyPowerDef { public: int tag; };
-
-static CSpecialAbilitiesUnholyPowerDef* g_this = 0;
-static void* g_src = 0;
-
-extern "C" void mock_impl(CSpecialAbilitiesUnholyPowerDef* t, void* s)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesUnholyPowerDef& CSpecialAbilitiesUnholyPowerDef::operator=(const CSpecialAbilitiesUnholyPowerDef& other)
 {
-    g_this = t;
-    g_src = s;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-static void thunk(CSpecialAbilitiesUnholyPowerDef* thisptr, void* src)
-{
-    mock_impl(thisptr, src); /* mirrors the tail-call forward */
-}
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    CSpecialAbilitiesUnholyPowerDef obj;
-    obj.tag = 0x4608c1;
-    int srcval = 0x1234;
-    thunk(&obj, &srcval);
-    if (g_this == &obj && g_src == &srcval)
-        printf("OK_004608c1\n");
-    else
-        printf("FAIL_004608c1\n");
-    return 0;
+    ((CSpecialAbilitiesUnholyPowerDef*)(g_dst))->CSpecialAbilitiesUnholyPowerDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_004608c1\n");
+        return 0;
+    }
+    std::printf("FAIL_004608c1 calls=%d\n", g_calls);
+    return 1;
 }

@@ -1,0 +1,6 @@
+# Landing nf386 b1: thirteen Def Copy rows move to `?Copy@C@@UAEXPBVCDefClassBase@@@Z` (NF337 form), closing 15 T3 lines
+
+Agent NF386 (pending/2026-11-24_nf386_handback). Each Copy self takes the name the retail RTTI vftable placement gives it, and its tail call goes to the PDB `??4C@@QAEAAV0@ABV0@@Z` at the landed operator= row: 00453705 0045390c 00453d41 00453f5e 00453f8e 004541da 0045fe26 00460251 004608c1 00460a14 00460a5c 004642f5 007adef0. Eleven Def headers gain an additive COPY_DECLS opt-in (declarations only; their existing layout asserts are pinned to line numbers, the usual pin step); 00460a14 keeps a local model (no header), 004642f5 uses the existing VALIDATE branch.
+- Gates: vland HEAD and new MATCH / RELOCATION_MATCH + test PASS; objsec ALL_EQ under the renames, LIBCP on the four header-route rows (NF318 Q1 / NF322 Q3 allowance); pick-any same, 0 reach flips; /FORCE link 0 duplicates; census by compile; equiv over the 152 includers of the 13 headers 0 differing (agent) plus the coordinator's whole-tree run.
+- Landed with `--release-t3 nf324,nf320,nf322,nF325`: 15 lines closed (T3_CLOSED.tsv). Unblocks 13 T1 operator= targets (each now has one spelling).
+- Coordinator decisions: R4 (LIBCP) and R7 (FableWin-only names for the UnholyPower Copy / operator= pair, second source the landed self and RTTI placement) follow existing rules.

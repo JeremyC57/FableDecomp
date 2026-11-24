@@ -10,7 +10,7 @@
 //   Signature from Ego_r.pdb `?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z`; the
 //   CCountedPointer overload follows at 0x00664670.
 // Callees: CThingCreatureBase::IsFreeToPerformAction @ 0x00662210, CCreatureActionBase::HasPrecedingAction @ 0x00692EC0,
-//   CCreatureActionBase::GetPrecedingAction(CCreatureActionBase**) @ 0x00692F30, the action's virtual slot 11 (+0x2c, its
+//   CCreatureActionBase::GetPrecedingAction(CCreatureActionBase*&) @ 0x00692F30, the action's virtual slot 11 (+0x2c, its
 //   counted clone), CCountedPointer::Reset(T*) @ 0x00668D90, the new action's take-over call @ 0x00669280 (manifest
 //   "CFrontEndScreen::AddActionOnLeftClicked" is propagated) with the old action's member at +0x74, the action's virtual
 //   slot 12 (+0x30, start) and slot 4 (+0x10, replaced), CThingCreatureBase::UpdateAction @ 0x006643C0, the action's
@@ -44,7 +44,8 @@ class CCreatureActionBase { public:
     unsigned char _pad62[0x74 - 0x62];
     CActionState  State;                                // +0x74
     bool HasPrecedingAction() const;                    // 0x00692EC0
-    void GetPrecedingAction(CCreatureActionBase** out) const;   // 0x00692F30
+    // NF386 (2026-11-24): ?GetPrecedingAction@CCreatureActionBase@@QBEXAAPAV1@@Z (Ego_r.pdb + FableWin.pdb; landed self 0x00692F30): by reference.
+    void GetPrecedingAction(CCreatureActionBase*& out) const;   // 0x00692F30
     void TakeOver(const CActionState& state);           // 0x00669280
 };
 
@@ -99,7 +100,7 @@ bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action)
         CCountedPointer<CCreatureActionBase> oldAction = PCurrentAction;
         if (action.HasPrecedingAction()) {
             CCreatureActionBase* preceding = 0;
-            action.GetPrecedingAction(&preceding);
+            action.GetPrecedingAction(preceding);
             PCurrentAction.Reset(preceding);
         } else {
             PCurrentAction.Reset(action.Clone());

@@ -28,7 +28,8 @@ class CThingAICreature : public CThing { public:
     void GetSleepTimes(long& wakeTime, long& sleepTime) const;    // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 class CTCLook { public:                                // interface 0x43
-    void TrackNearestInterestingThing(bool b);  // 0x00753840
+    // NF386 (2026-11-24): ?TrackNearestInterestingThing@CTCLook@@QAE_N_N@Z (Ego_r.pdb + FableWin.pdb; landed self 0x00753840): returns bool (unused here).
+    bool TrackNearestInterestingThing(bool b);  // 0x00753840
 };
 class CSoundPair { public:
     long m_first;

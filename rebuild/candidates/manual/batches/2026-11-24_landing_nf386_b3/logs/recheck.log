@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00659efc   WARN SHARED_HEADER_AVAILABLE CVillageTaskBase (engine/CVillageTaskBase.h)
+00659efc   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00659efc   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+00659efc   RELOCATION_MATCH PASS   RemoveThingFromTask
+
+WINS: 1
+  00659efc RELOCATION_MATCH CTCVillage::?RemoveThingFromTask@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@@Z

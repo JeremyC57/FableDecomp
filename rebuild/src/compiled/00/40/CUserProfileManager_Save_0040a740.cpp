@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040A740, length 175 bytes (176 with padding).
 // Callees: the profile path builder @ 0x004082D0, CWideString::operator!=(const wchar_t*) @ 0x0099B150,
 // CMemoryFile::CMemoryFile(const CWideString&, FileAccessType, unsigned long) @ 0x009E97B0,
-// CUserProfileManager::SaveGameState(CAFile*) @ 0x00409FD0, CMemoryFile::DumpToFile @ 0x009E9330, CMemoryFile::Close
+// CUserProfileManager::SaveGameState(CAFile&) @ 0x00409FD0 (protected), CMemoryFile::DumpToFile @ 0x009E9330, CMemoryFile::Close
 // @ 0x009E9390, ~CWideString @ 0x0099B510, free @ 0x00BFEA14 (the data buffer), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300.
 // Literal L"" @ 0x0122D70C.
 // Layout: CUserProfileManager ProfileName +0x08, UseNewProfileValues +0x0c (Ego_r.pdb); CMemoryFile (vtable 0x0122E0FC)
@@ -51,7 +51,11 @@ class CUserProfileManager { public:
     unsigned char _pad04[4];
     CWideString ProfileName;                                // +0x08
     bool        UseNewProfileValues;                        // +0x0c
-    void SaveGameState(CAFile* file);                       // 0x00409FD0
+protected:
+    // NF386 (2026-11-24): ?SaveGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z (Ego_r.pdb + FableWin.pdb; landed self 0x00409FD0):
+    // protected, the file by reference (the same pushed address).
+    void SaveGameState(CAFile& file);                       // 0x00409FD0
+public:
     void Save();
 public:
     CWideString GetProfileDir(const CWideString&, bool);   // 0x004082D0
@@ -65,7 +69,7 @@ void CUserProfileManager::Save()
     if (path != (const wchar16*)L"") {
         CMemoryFile file(path, FILE_ACCESS_WRITE, 2);
         if (file.Opened) {
-            SaveGameState(&file);
+            SaveGameState(file);
             file.DumpToFile();
             file.Close();
         }

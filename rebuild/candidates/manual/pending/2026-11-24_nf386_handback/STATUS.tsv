@@ -1,0 +1,84 @@
+binder	t3_tag	t3_addr	class	line_action	reason
+0040a740	nf297	0x0040A740	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the nf297 opt-in item (CUserProfileManager::Save public) is separate work
+0040a740	nf311	0x0040A740	B	set aside + restore unchanged	B: set aside + restore (batches/b2); binders 0x0040D400 / 0x00555CF0 of another target stay
+00412c70	nf312	0x00412C70	C	keep	C: self port: the self instantiates on stand-in CRetailVector / CMemoryDataInputStreamReader; the binder respell needs the self's Reader type first (T3 self port)
+00434b50	nf303	0x00434B50	B	set aside + restore unchanged	B: set aside + restore (batches/b2, unit with the hidden binder 0x00B314E0); the census line covers other stand-in table lines
+0043a2a0	nf289	0x0043a2a0	C	keep	C: the GFACoordToVCoord pointer form is also bound by 0x0064560D, 0x0064499C and the T3 rows 0x005BCE49 / 0x0048F230: a respell must move all of them (QUEUE_PROPOSALS q3)
+00453705	nf324	0x00453705	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+0045390c	nf324	0x0045390C	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+00453d41	nf324	0x00453D41	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+00453f5e	nf324	0x00453F5E	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+00453f8e	nf324	0x00453F8E	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+004541da	nf324	0x004541DA	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+0045473a	nf324	0x0045473A	C	keep	C: the class body exists only under a `_PASS` switch no landed row defines (NF318 Q2): the Copy route needs the switch on (or the NF322 Q1 guard widening with a ??_7 probe); QUEUE_PROPOSALS q1
+0045c549	nf324	0x0045C549	C	keep	C: the class body exists only under a `_PASS` switch no landed row defines (NF318 Q2): the Copy route needs the switch on (or the NF322 Q1 guard widening with a ??_7 probe); QUEUE_PROPOSALS q1
+0045d500	nf324	0x0045D500	C	keep	C: the class body exists only under a `_PASS` switch no landed row defines (NF318 Q2): the Copy route needs the switch on (or the NF322 Q1 guard widening with a ??_7 probe); QUEUE_PROPOSALS q1
+0045fe26	nf324	0x0045FE26	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+0045fede	nf324	0x0045FEDE	C	keep	C: the class body exists only under a `_PASS` switch no landed row defines (NF318 Q2): the Copy route needs the switch on (or the NF322 Q1 guard widening with a ??_7 probe); QUEUE_PROPOSALS q1
+004600c6	nf324	0x004600C6	C	keep	C: the class body exists only under a `_PASS` switch no landed row defines (NF318 Q2): the Copy route needs the switch on (or the NF322 Q1 guard widening with a ??_7 probe); QUEUE_PROPOSALS q1
+00460251	nf324	0x00460251	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+004608c1	nf324	0x004608C1	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+00460a14	nf324	0x00460A14	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+00460a5c	nf324	0x00460A5C	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+0046244c	nf324	0x0046244C	C	keep	C: the class body exists only under a `_PASS` switch no landed row defines (NF318 Q2): the Copy route needs the switch on (or the NF322 Q1 guard widening with a ??_7 probe); QUEUE_PROPOSALS q1
+004642f5	nf324	0x004642F5	A	close (--release-t3 nf324, batches/b1)	done: Copy moved onto the PDB member + callee onto the PDB operator= (NF337 form); b1 ACCEPT
+004b3a20	nf294	0x00413590	B	set aside + restore unchanged	B: set aside + restore (batches/b2; the line's column 2 is 0x00413590, a pointer stand-in port); 3 of 4 targets moved, 0x004BA390 stays C (its spelling needs the CQuestManager / CActiveQuest port of nf304)
+004b3a20	nf304	0x004B3A20	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the DeactivateQuest / CActiveQuest port (target 0x004BA390) is the line's own open work
+005bdd8c	nf303	0x005BDD8C	B	keep	table only (HAND_TABLE_CHANGES.tsv): the W line is a stale witness (the 005bdd8c object binds the PDB spelling); line kept
+005bddb8	nf309	0x005BDDB8	B	keep	table only (HAND_TABLE_CHANGES.tsv): stale witness, same; line kept
+0062ebc0	nf285	0x0062EBC0	C	keep	C: STL instance port (STLport vector instance on a stand-in element type)
+0062f3b0	nf285	0x0062F3B0	C	keep	C: STL instance port (two targets, STLport instances)
+00659efc	nf310	0x00659EFC	B	set aside + restore unchanged	B: set aside + restore (batches/b3, needs the .drectve /alternatename ruling, NF303 Q2); the line's other stand-in binders stay
+00663b10	nf293	0x006E9360	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the nf293 line is about 0x006E9360 / CThingCreatureBase const& (other binders)
+00663b10	nf308	0x00663B10	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the CThing -> CThingCreatureBase class port of binder 0x008F3020 stays open
+006644f0	nf310	0x006644F0	B	set aside + restore unchanged	B: set aside + restore (batches/b2); binder 0x008C2810's SetCurrentAction base-class model stays open
+006894c0	nf296	0x00a043a0	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the nf296 unit-2 CInputEvent work (0x00A043A0) is separate
+006a7580	nf312	0x006A7580	C	keep	C: garbage row: identity of the self unknown; not respellable on evidence
+006ce650	nf319	0x006CE650	C	keep	C: held under the NF322 model ruling (both lines)
+006ce650	nf323	0x006CE650	C	keep	C: held under the NF322 model ruling (both lines)
+006d8b00	nf378	0x006D8B00	C	keep	C: self port + std::list resize instance (nf378)
+0070d8c0	nf303	0x0070D8C0	C	keep	C: stand-in body types: the respell changes the stand-in class the body is written on
+0070d8e0	nf290	0x0070D8E0	C	keep	C: stand-in body types (same family)
+0070d920	nf292	0x0070D920	C	keep	C: stand-in body types (same family)
+007adef0	nf320	0x007ADEF0	A	close (--release-t3 nf320,nf322,nF325, batches/b1)	done: CAIScratchpadDef::Copy moved onto the PDB member with an operator=-only opt-in on engine/CAIScratchpadDef.h (40 asserts pinned); b1 ACCEPT; all three lines describe this same move
+007adef0	nf322	0x007ADEF0	A	close (--release-t3 nf320,nf322,nF325, batches/b1)	done: CAIScratchpadDef::Copy moved onto the PDB member with an operator=-only opt-in on engine/CAIScratchpadDef.h (40 asserts pinned); b1 ACCEPT; all three lines describe this same move
+007adef0	nF325	0x007ADEF0	A	close (--release-t3 nf320,nf322,nF325, batches/b1)	done: CAIScratchpadDef::Copy moved onto the PDB member with an operator=-only opt-in on engine/CAIScratchpadDef.h (40 asserts pinned); b1 ACCEPT; all three lines describe this same move
+0080f240	nf311	0x0080F240	C	keep	C (held/h2): the respell renames the row's emitted pick-any std::list begin / end COMDATs between non-PDB spellings (NF307 D1)
+00838a40	nf305	0x00838A40	C	keep	C: the self flips to virtual: every binder of the self must move first
+00838ba0	nf315	0x00838BA0	B	set aside + restore unchanged	B, HELD (held/h1): a new empty local CThingGameObject base where engine/CThingGameObject.h exists; ruling asked
+0083ee10	nf340	0x0083EE10	C	keep	C: char_traits class key lives in a shared header: a header port
+008545f0	nf319	0x008545F0	C	keep	C: CCreatureAction body port (three lines)
+008545f0	nf322	0x008545F0	C	keep	C: CCreatureAction body port (three lines)
+008545f0	nF325	0x008545F0	C	keep	C: CCreatureAction body port (three lines)
+008546a0	nf324	0x008546A0	C	keep	C: CCreatureAction body port
+00891490	nf324	0x00891490	C	keep	C: stand-in body types
+0089a270	nf324	0x0089A270	C	keep	C: stand-in body types
+0089a2d0	nf324	0x0089A2D0	B	set aside + restore unchanged	B: set aside + restore (batches/b2, header route: CTCDoor flat opt-in; test respelled); the self port ?IsEntityPickLockable@CGameScriptInterface stays open
+008ed590	nf312	0x008ED590	C	keep	C: HEAD grade DIFFERs: no byte-exact base to respell on
+00917130	nf290	0x00915B60	C	keep	C: STL vector instance (nf290 line on 0x00915B60)
+0091a670	nf313	0x0091A670	C	keep	C: member template port
+0097fa00	nf297	0x00842570	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the self 0x00842570 stand-in ctor port stays open
+009b02e0	nf297	0x009B02E0	B	set aside + restore unchanged	B: set aside + restore (batches/b2); decision Q2 (binder 0x00450BFF, virtual dtor) stays open
+009c0e50	nf297	0x009BF7E0	C	keep	C: the target 0x009D9A30 needs both binders; 0x009C1050's respell renames an emitted RTTI base (vftable / RTTI DEF changes)
+009c1050	nf297	0x009BF7E0	C	keep	C: renames an emitted RTTI base (vftable / RTTI DEF changes): not a binder-only respell
+009d6490	nf285	0x009D6490	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the N_009d6490::CBankFile stand-in base port stays open
+009e5c90	nf294	0x009e7c70	C	keep	C: CVectorMap / CArray template port
+009e5c90	nf303	0x009E5C90	C	keep	C: CVectorMap / CArray template port
+009e7c70	nf294	0x009e7c70	C	keep	C: CVectorMap / CArray template port
+009e97f0	nf324	0x009E97F0	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the self port ?Clone@CMemoryFile@@UBEPAVCAFile@@XZ stays open
+009f5e10	nf372	0x009F5E10	C	keep	C: a CAFile base insertion changes the vptr store (bytes)
+00aca450	nf291	0x00ad64c0	C	keep	C: stand-in namespace port
+00ae89e0	nf298	0x00ae89e0	C	keep	C: CEmitterPointer stand-in + bool return port
+00af7fb0	nf303	0x00AF7FB0	C	keep	C: the binder respell also changes the self return type: it needs a self-rename unit with a census of the self own callers (QUEUE_PROPOSALS q4), outside a binder-only pass
+00af8020	nf303	0x00AF8020	C	keep	C: as 0x00AF7FB0: a self-rename unit (QUEUE_PROPOSALS q4)
+00b2f8e0	nf303	0x00B2F8E0	C	keep	C: private needs a friend of the stand-in _Methods (NF281 D1)
+00b33010	nf297	0x00B32AD0	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the Layer long -> enum cast at the self 0x00B32AD0 stays open
+00b98d50	nf324	0x00B98D50	C	keep	C: flat stand-in self port
+00b99710	nf297	0x00B99710	B	set aside + restore unchanged	B: set aside + restore (batches/b2); the self 0x00B99710 stand-in CClipListElement nesting (QAE self) stays open
+00baa380	route4-identity	0x00BAA380	C	keep	C: identity research (route4-identity)
+00baa410	nf324	0x00BAA410	C	keep	C: flat stand-in self port
+00bd9a40	route4-identity	0x00BD9A40	C	keep	C: identity research (route4-identity)
+00bdc020	nf309	0x00BDC020	B	set aside + restore unchanged	B: set aside + restore (batches/b2, header route: CLandscapeBackgroundTreeNode flat opt-in); the census line covers other binders (0x00B684F0 ...)
+00bdc180	rename1	0x00BDC180	C	keep	C: candidate header + a failing self respell (rename1)
+00be2260	nf324	0x00BE2260	C	keep	C: constructor port
+00bf6d10	nf319	0x00BF6D10	B	set aside + restore unchanged	B: set aside + restore (batches/b2, same opt-in); the self's NF318 Q2 class switch (CLandscapeBackgroundSubNodeSplitBranch) stays held

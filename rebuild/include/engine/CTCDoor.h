@@ -110,6 +110,12 @@ protected:
     void UpdateOpenStatusTriggerTypeScript();                            // 0x007310C0
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCDOOR_FLAT_ISLOCKPICKABLE
+    // Add-only opt-in (naming agent NF386, 2026-11-24, binder 0x0089A2D0 CGameScriptInterface::IsEntityPickLockable): Ego_r.pdb /
+    // FableWin.pdb ?IsLockPickable@CTCDoor@@QBE_NXZ (retail 0x00730AE0, public const), as FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+    // declares it in the retail branch. Declaration only: no layout change.
+    bool IsLockPickable() const;                                         // 0x00730AE0
+#endif
 };
 #pragma pack(pop)
 

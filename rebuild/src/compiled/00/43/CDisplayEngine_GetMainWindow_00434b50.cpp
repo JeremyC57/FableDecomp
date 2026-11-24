@@ -5,7 +5,7 @@
 // at +0x1C (the `add ecx,0x1c`); callers CDrawMiniMap::Draw 0x00648915 (on CMainGameComponent::PDisplayEngine +0x28), 0x006574D4,
 // 0x0066FCAA; it sits in the CDisplayEngine TU (ConfirmFeedbackGameEventPackage 0x00434A60 before, StartLetterBoxMode 0x00434BA0
 // after). The catalog's "GetDefaultVal<CEngineGraphic>" is a label.
-// Callee: GFVBoxToABox(const C2DBoxF*, C2DBoxF*) @ 0x009E1E70 (__fastcall: the virtual box in ecx, the output in edx).
+// Callee: GFVBoxToABox(const C2DBoxF&, C2DBoxF&) @ 0x009E1E70 (__fastcall: the virtual box in ecx, the output in edx).
 // Shape: /O2; `C2DBoxF box; GFVBoxToABox(&MainWindow, &box); return box;` -- the local at [esp], then the return copy into the hidden
 // result through C2DBoxF's USER copy constructor (member init list): VC7.1 then moves the first float through the FPU (`fld [esp]
 // ... fstp [eax]`) and the other three through integer registers. With the implicit (bitwise) copy all four are integer moves
@@ -24,7 +24,8 @@ public:
     float BRX;                                           // +0x08
     float BRY;                                           // +0x0c
 };
-void __fastcall GFVBoxToABox(const C2DBoxF* vbox, C2DBoxF* abox);   // 0x009E1E70
+// NF386 (2026-11-24): ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z (Ego_r.pdb + FableWin.pdb; landed self 0x009E1E70): both by reference.
+void __fastcall GFVBoxToABox(const C2DBoxF& vbox, C2DBoxF& abox);   // 0x009E1E70
 
 class CDisplayEngine {
 public:
@@ -36,6 +37,6 @@ public:
 C2DBoxF CDisplayEngine::GetMainWindow() const
 {
     C2DBoxF box;
-    GFVBoxToABox(&MainWindow, &box);
+    GFVBoxToABox(MainWindow, box);
     return box;
 }

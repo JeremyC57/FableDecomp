@@ -30,5 +30,14 @@ public:
 // ?Alloc@CSpecialAbilitiesEnflameDef@@SIPAVCDefClassBase@@XZ (Ego_r.pdb + FableWin.pdb). Declaration only (elaborated `class`: needs no include); no layout change.
 public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 #endif
+#ifdef FABLE_RETAIL_CSPECIALABILITIESENFLAMEDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CSpecialAbilitiesEnflameDef::Copy 0x0045FE26, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x0045FE2B). ?Copy@CSpecialAbilitiesEnflameDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x0045FE26 (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CSpecialAbilitiesEnflameDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x0045FE2B.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CSpecialAbilitiesEnflameDef& operator=(const CSpecialAbilitiesEnflameDef&);
+#endif
 };
 #endif

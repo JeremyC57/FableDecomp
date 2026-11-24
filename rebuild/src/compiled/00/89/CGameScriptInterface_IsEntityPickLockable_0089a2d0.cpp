@@ -17,11 +17,11 @@ class CScriptThing
     CScriptThingVTable* m_pVTable;
 };
 
-class CGSIPickLockableDoor
-{
-public:
-    bool IsLockPickable();
-};
+// NF386 (2026-11-24): the 0x26 interface is the door, and the call is ?IsLockPickable@CTCDoor@@QBE_NXZ (Ego_r.pdb + FableWin.pdb; landed self
+// 0x00730AE0; was a made-up CGSIPickLockableDoor, non-const).
+// CTCDoor comes from the shared header (flat branch) with its additive NF386 opt-in declaring IsLockPickable.
+#define FABLE_RETAIL_CTCDOOR_FLAT_ISLOCKPICKABLE
+#include "engine/CTCDoor.h"
 
 class CTCBase;
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -67,7 +67,7 @@ bool __fastcall CGameScriptInterface_IsEntityPickLockable(
             if (pEntry == pEnd || (int)pEntry->first > 0x26)
                 pEntry = pEnd;
 
-            if (((CGSIPickLockableDoor*)pEntry->second)->IsLockPickable())
+            if (((CTCDoor*)pEntry->second)->IsLockPickable())
                 return true;
         }
     }

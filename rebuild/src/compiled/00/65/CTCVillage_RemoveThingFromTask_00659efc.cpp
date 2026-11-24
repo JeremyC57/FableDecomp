@@ -48,21 +48,30 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 #include "engine/CCountedPointer.h"
-template<class T> struct CTaskList {            // retail std::list<CCountedPointer<T> >, sentinel pointer only
+// NF386 (2026-11-24): the task lists are STLport std::list<CCountedPointer<T> > (Ego_r.pdb + FableWin.pdb: the private const member template
+// ??$RemoveThingFromTask@V<T>@@@CTCVillage@@ABEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@AAV?$list@V?$CCountedPointer@V<T>@@@@V?$allocator@...@std@@@std@@@Z,
+// the landed selves 0x00660AE2 .. 0x00660D49); was a made-up CTaskList<T>. Only the 4-byte sentinel pointer is modelled (no member is used here).
+namespace std {
+template <class T> class allocator;
+template <class T, class A = allocator<T> > class list {
+public:
     void* _M_node;
 };
+}
 
 class CTCVillage { public:
     void*                                 __vftable;          // +0x00
     unsigned char                         _pad_0x04[0x48];
-    CTaskList<CVillageTaskTorch>          TorchTasks;         // +0x4c
-    CTaskList<CVillageTaskHorn>           HornTasks;          // +0x50
-    CTaskList<CVillageTaskPatrol>         PatrolTasks;        // +0x54
-    CTaskList<CVillageTaskPickCrops>      CropTasks;          // +0x58
-    CTaskList<CVillageTaskSecuritySweep>  SecuritySweepTasks; // +0x5c
-    CTaskList<CVillageTaskCarryCrate>     CrateTasks;         // +0x60
+    std::list<CCountedPointer<CVillageTaskTorch> >          TorchTasks;         // +0x4c
+    std::list<CCountedPointer<CVillageTaskHorn> >           HornTasks;          // +0x50
+    std::list<CCountedPointer<CVillageTaskPatrol> >         PatrolTasks;        // +0x54
+    std::list<CCountedPointer<CVillageTaskPickCrops> >      CropTasks;          // +0x58
+    std::list<CCountedPointer<CVillageTaskSecuritySweep> >  SecuritySweepTasks; // +0x5c
+    std::list<CCountedPointer<CVillageTaskCarryCrate> >     CrateTasks;         // +0x60
+private:
     template<class T> void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing,
-                                               CTaskList<T>& tasks) const;   // 0x00660AE2 ..
+                                               std::list<CCountedPointer<T> >& tasks) const;   // 0x00660AE2 ..
+public:
     void RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing);
 };
 

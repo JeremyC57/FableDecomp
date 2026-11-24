@@ -1,0 +1,2 @@
+address	field	landed	proposed	evidence
+005bdc08 / 005bdb94	reloc_bindings witness	?SelectPreviousCategory@CTCInventoryBase_Retail@@QAEXXZ (witness 005bdd8c), ?SelectNextCategory@CTCInventoryBase_Retail@@QAEXXZ (witness 005bddb8)	delete both lines (HAND_TABLE_CHANGES.tsv)	the witnesses' HEAD objects bind only the PDB spelling ...@CTCInventoryBase@NInventory@@QAEXXZ, which the targets define (evidence/census_select.txt); no source names the _Retail spelling with these members

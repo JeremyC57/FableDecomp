@@ -127,7 +127,10 @@ public:
     unsigned long                              DependencyCheckCRC;    // +0xbc
     bool                                       UseSafeBinaryFormat;   // +0xc0
     CRetailMap<CRecompiledDefNode>             RecompiledDefs;        // +0xc4
+protected:
+    // NF386 (2026-11-24): ?ClearInstantiatedDefs@CDefinitionManager@@IAEXXZ (Ego_r.pdb + FableWin.pdb; landed self 0x009AD950): protected.
     void ClearInstantiatedDefs();                                     // 0x009AD950
+public:
     ~CDefinitionManager();
 };
 

@@ -1,0 +1,5 @@
+# Landing nf386 b2: sixteen binders call their callees by PDB spelling (rows reserved by T3 lines whose own work is not done)
+
+0040a740 00434b50+00b314e0 (one unit: the pointer form of GFVBoxToABox) 004b3a20 00663b10 006644f0 006894c0 0097fa00 009b02e0 009d6490 00b33010 00b99710 00bdc020 00bf6d10 009e97f0 0089a2d0. 00bdc020 / 00bf6d10 / 0089a2d0 move onto the shared headers through additive flat-branch opt-ins (CLandscapeBackgroundTreeNode.h, CTCDoor.h); 0089a2d0's test respelled. 004b3a20 keeps its local CDrawQuestInfo inside namespace NPlayerGui (R5: the header drags CCharString / CCountedPointer models that clash).
+- 18 T3 lines (nf285 nf293 nf294 nf296 nf297 nf303 nf304 nf308 nf309 nf310 nf311 nf319 nf324) reserve these rows for other work; they were set aside for the landing and restored byte-identical.
+- Table: 12 replace + 5 delete (TABLE_CHANGES.tsv), plus HAND_TABLE_CHANGES.tsv: two stale `_Retail` witness lines deleted (0x005BDC08 / 0x005BDB94). All 0 misses. Unblocks 17 + 2 T1 targets.

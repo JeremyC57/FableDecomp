@@ -1,19 +1,34 @@
+// behaviour test for 0x0045FE26: CSpecialAbilitiesEnflameDef::Copy forwards to CSpecialAbilitiesEnflameDef::operator= with this and the source object
+// NF386 (NF324 Q2 form, NF337 gen.py): the row now defines the PDB member CSpecialAbilitiesEnflameDef::Copy (?Copy@CSpecialAbilitiesEnflameDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesEnflameDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-class CSpecialAbilitiesEnflameDef;
+class CDefClassBase;
+class CSpecialAbilitiesEnflameDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesEnflameDef& operator=(const CSpecialAbilitiesEnflameDef& other);
+};
 
-extern "C" int printf(const char*, ...);
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesEnflameDef& CSpecialAbilitiesEnflameDef::operator=(const CSpecialAbilitiesEnflameDef& other)
+{
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
+}
 
-/* Provide the forward target so the test links; record that it ran. */
-static int g_called = 0;
-void CSpecialAbilitiesEnflameDef_Copy_impl_stub() { g_called = 1; }
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    /* The reconstructed function is a pure forwarding thunk; the parity
-     * gate checks emitted bytes, not runtime. Emit the token. */
-    g_called = 1;
-    if (g_called)
-        printf("OK_45FE26\n");
-    return 0;
+    ((CSpecialAbilitiesEnflameDef*)(g_dst))->CSpecialAbilitiesEnflameDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_45FE26\n");
+        return 0;
+    }
+    std::printf("FAIL_0045fe26 calls=%d\n", g_calls);
+    return 1;
 }

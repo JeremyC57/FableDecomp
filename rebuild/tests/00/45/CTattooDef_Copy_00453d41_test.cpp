@@ -1,33 +1,34 @@
+// behaviour test for 0x00453D41: CTattooDef::Copy forwards to CTattooDef::operator= with this and the source object
+// NF386 (NF324 Q2 form, NF337 gen.py): the row now defines the PDB member CTattooDef::Copy (?Copy@CTattooDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CTattooDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-class CTattooDef { public: int v; };
+class CDefClassBase;
+class CTattooDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CTattooDef& operator=(const CTattooDef& other);
+};
 
-static int g_called = 0;
-static CTattooDef* g_self = 0;
-static const CTattooDef* g_src = 0;
-
-void __fastcall CTattooDef_CopyImpl(CTattooDef* self, void* /*edx*/, const CTattooDef* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CTattooDef& CTattooDef::operator=(const CTattooDef& other)
 {
-    g_called++;
-    g_self = self;
-    g_src = src;
-    self->v = src->v;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CTattooDef_Copy(CTattooDef* self, void* edx, const CTattooDef* src)
-{
-    CTattooDef_CopyImpl(self, edx, src);
-}
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CTattooDef a; a.v = 0;
-    CTattooDef b; b.v = 0x1234;
-    CTattooDef_Copy(&a, 0, &b);
-    if (g_called == 1 && g_self == &a && g_src == &b && a.v == 0x1234) {
+    ((CTattooDef*)(g_dst))->CTattooDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
         std::printf("CTattooDef_00453d41_TEST PASS\n");
         return 0;
     }
-    std::printf("CTattooDef_00453d41_TEST FAIL\n");
+    std::printf("FAIL_00453d41 calls=%d\n", g_calls);
     return 1;
 }

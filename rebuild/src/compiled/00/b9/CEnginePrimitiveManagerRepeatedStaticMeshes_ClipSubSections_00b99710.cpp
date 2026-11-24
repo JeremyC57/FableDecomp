@@ -16,7 +16,9 @@ class CEngineCamera {
 public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54
-    void ClipSphere(const C3DVector& centre, float radius, unsigned long& flags);   // 0x00B30480
+    // NF386 (2026-11-24): ?ClipSphere@CEngineCamera@@QBE_NABVC3DVector@@MPAK@Z (Ego_r.pdb + FableWin.pdb; landed self 0x00B30480):
+    // const, returns bool (unused here), the flags by pointer (the same pushed address).
+    bool ClipSphere(const C3DVector& centre, float radius, unsigned long* flags) const;   // 0x00B30480
 };
 namespace NEngineInternal { extern CEngineCamera* GPCamera; }              // 0x01436EA0
 
@@ -69,7 +71,7 @@ void CEnginePrimitiveManagerRepeatedStaticMeshes::ClipSubSections(const CSubsect
                 childInside = true;
         }
         if ((flags & 0x3c) != 0x3c)
-            NEngineInternal::GPCamera->ClipSphere(centre, radius, flags);
+            NEngineInternal::GPCamera->ClipSphere(centre, radius, &flags);
         if (flags & 0x40)
             continue;
         flags = 0;

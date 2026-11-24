@@ -64,48 +64,56 @@ public:
     bool             LookForFiniteTime;                      // +0x96
     bool             AvoidRegionExits;                       // +0x97
     float            TargetingDistanceOffset;                // +0x98
+#ifdef FABLE_RETAIL_CAISCRATCHPADDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CAIScratchpadDef::Copy 0x007ADEF0, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x007ADF00). ?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x007ADEF0 (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CAIScratchpadDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x007ADF00.
+public:
+    CAIScratchpadDef& operator=(const CAIScratchpadDef&);
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIScratchpadDef) == 0x9c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, _pad_0x25) == 0x25);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ThankingPhrase) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, IgnoringPhrase) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint_X) == 0x30);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint_Y) == 0x34);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderCentrePoint_Z) == 0x38);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderMinDistance) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WanderMaxDistance) == 0x40);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, GossipCounter) == 0x44);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, MaxGossipPhrase) == 0x48);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, WarningPhrase) == 0x4c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, BeerRequestPhrase) == 0x50);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ScriptingStateGroup) == 0x54);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, MaxHeroReactionDistance) == 0x58);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ActionFrequency) == 0x5c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, ActionFrequencyVariation) == 0x60);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, Action_PStringData) == 0x64);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, FaceHeroForAction) == 0x68);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, _pad_0x69) == 0x69);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TargetName_PStringData) == 0x6c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, FollowDistance) == 0x70);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, AttackHeroOnSight) == 0x74);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, _pad_0x75) == 0x75);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TimeToSpendHarassingHero) == 0x78);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, CombatNearbyEnemyFleeingBreakOffRange) == 0x7c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, CombatNearbyBreakOffRange) == 0x80);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, StealStealableItems) == 0x84);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, RecoverStealableItems) == 0x85);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TakeStealableItemToRandomDestination) == 0x86);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, KillSelfAndStealableItemAfterReachingDestination) == 0x87);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, AllowedToFollow) == 0x88);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, _pad_0x89) == 0x89);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TableName_PStringData) == 0x8c);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, SeatName_PStringData) == 0x90);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, DisableHeadLooking) == 0x94);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, IsPushableByHero) == 0x95);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, LookForFiniteTime) == 0x96);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, AvoidRegionExits) == 0x97);
-FABLE_STATIC_ASSERT(offsetof(CAIScratchpadDef, TargetingDistanceOffset) == 0x98);
+FABLE_STATIC_ASSERT_AT(69, sizeof(CAIScratchpadDef) == 0x9c);
+FABLE_STATIC_ASSERT_AT(70, offsetof(CAIScratchpadDef, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT_AT(71, offsetof(CAIScratchpadDef, ThankingPhrase) == 0x28);
+FABLE_STATIC_ASSERT_AT(72, offsetof(CAIScratchpadDef, IgnoringPhrase) == 0x2c);
+FABLE_STATIC_ASSERT_AT(73, offsetof(CAIScratchpadDef, WanderCentrePoint_X) == 0x30);
+FABLE_STATIC_ASSERT_AT(74, offsetof(CAIScratchpadDef, WanderCentrePoint_Y) == 0x34);
+FABLE_STATIC_ASSERT_AT(75, offsetof(CAIScratchpadDef, WanderCentrePoint_Z) == 0x38);
+FABLE_STATIC_ASSERT_AT(76, offsetof(CAIScratchpadDef, WanderMinDistance) == 0x3c);
+FABLE_STATIC_ASSERT_AT(77, offsetof(CAIScratchpadDef, WanderMaxDistance) == 0x40);
+FABLE_STATIC_ASSERT_AT(78, offsetof(CAIScratchpadDef, GossipCounter) == 0x44);
+FABLE_STATIC_ASSERT_AT(79, offsetof(CAIScratchpadDef, MaxGossipPhrase) == 0x48);
+FABLE_STATIC_ASSERT_AT(80, offsetof(CAIScratchpadDef, WarningPhrase) == 0x4c);
+FABLE_STATIC_ASSERT_AT(81, offsetof(CAIScratchpadDef, BeerRequestPhrase) == 0x50);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CAIScratchpadDef, ScriptingStateGroup) == 0x54);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CAIScratchpadDef, MaxHeroReactionDistance) == 0x58);
+FABLE_STATIC_ASSERT_AT(84, offsetof(CAIScratchpadDef, ActionFrequency) == 0x5c);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CAIScratchpadDef, ActionFrequencyVariation) == 0x60);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CAIScratchpadDef, Action_PStringData) == 0x64);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CAIScratchpadDef, FaceHeroForAction) == 0x68);
+FABLE_STATIC_ASSERT_AT(88, offsetof(CAIScratchpadDef, _pad_0x69) == 0x69);
+FABLE_STATIC_ASSERT_AT(89, offsetof(CAIScratchpadDef, TargetName_PStringData) == 0x6c);
+FABLE_STATIC_ASSERT_AT(90, offsetof(CAIScratchpadDef, FollowDistance) == 0x70);
+FABLE_STATIC_ASSERT_AT(91, offsetof(CAIScratchpadDef, AttackHeroOnSight) == 0x74);
+FABLE_STATIC_ASSERT_AT(92, offsetof(CAIScratchpadDef, _pad_0x75) == 0x75);
+FABLE_STATIC_ASSERT_AT(93, offsetof(CAIScratchpadDef, TimeToSpendHarassingHero) == 0x78);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CAIScratchpadDef, CombatNearbyEnemyFleeingBreakOffRange) == 0x7c);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CAIScratchpadDef, CombatNearbyBreakOffRange) == 0x80);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CAIScratchpadDef, StealStealableItems) == 0x84);
+FABLE_STATIC_ASSERT_AT(97, offsetof(CAIScratchpadDef, RecoverStealableItems) == 0x85);
+FABLE_STATIC_ASSERT_AT(98, offsetof(CAIScratchpadDef, TakeStealableItemToRandomDestination) == 0x86);
+FABLE_STATIC_ASSERT_AT(99, offsetof(CAIScratchpadDef, KillSelfAndStealableItemAfterReachingDestination) == 0x87);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CAIScratchpadDef, AllowedToFollow) == 0x88);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CAIScratchpadDef, _pad_0x89) == 0x89);
+FABLE_STATIC_ASSERT_AT(102, offsetof(CAIScratchpadDef, TableName_PStringData) == 0x8c);
+FABLE_STATIC_ASSERT_AT(103, offsetof(CAIScratchpadDef, SeatName_PStringData) == 0x90);
+FABLE_STATIC_ASSERT_AT(104, offsetof(CAIScratchpadDef, DisableHeadLooking) == 0x94);
+FABLE_STATIC_ASSERT_AT(105, offsetof(CAIScratchpadDef, IsPushableByHero) == 0x95);
+FABLE_STATIC_ASSERT_AT(106, offsetof(CAIScratchpadDef, LookForFiniteTime) == 0x96);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CAIScratchpadDef, AvoidRegionExits) == 0x97);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CAIScratchpadDef, TargetingDistanceOffset) == 0x98);
 #else
 #pragma pack(push, 1)
 class CAIScratchpadDef {

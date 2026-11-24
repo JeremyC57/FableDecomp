@@ -4,8 +4,8 @@
 // Leaf: DeactivateQuest
 // Retail 0x004B3A20, 704 bytes, `ret 0xc` (Ego_r.pdb ?DeactivateQuest@CQuestManager@@AAEXV?$CCountedPointer@VCActiveQuest@CQuestManager@@@@K@Z).
 // Callees: CCharString copy 0x0099EC30 / dtor 0x0099EAE0, NPlayerGui::CDrawQuestInfo::RemoveElementsFromScript(long)
-// 0x00647403 (g_pPlayerGui 0x013B8790 +0x1C8), CQuestManager::ClearQuestPersistScript 0x004B39B0, the script's shutdown
-// 0x00CB7F60 (name unconfirmed), STLport __find(first, last, val, random_access_iterator_tag) 0x004B8E40 (`__fastcall`),
+// 0x00647403 (g_pPlayerGui 0x013B8790 +0x1C8), CQuestManager::ClearQuestPersistScript 0x004B39B0, CScriptBase::KillAllThreads
+// 0x00CB7F60, STLport __find(first, last, val, random_access_iterator_tag) 0x004B8E40 (`__fastcall`),
 // vector<CCharString>::erase 0x004B8770, list<CCountedPointer<CActiveQuest>>::remove 0x004BA390 (manifest label is a
 // propagated remove_if), operator delete 0x00BFE9BC, RemoveActiveQuestCardAndMakeAvailableAgain(const CCharString&,
 // bool) 0x004B0B90, IsQuestActive 0x004AF610, CWorld::GetThingManager (slot 3) / GetWorldMap (slot 12),
@@ -83,7 +83,10 @@ template <class T> class CCountedPointer { public:
     }
     ~CCountedPointer() { Release(); }
 };
-class CScriptBase { public: void Shutdown(); };            // 0x00CB7F60
+// NF386 (2026-11-24): callee spellings of the PDB (Ego_r.pdb + FableWin.pdb, each the landed self of its address): ?KillAllThreads@CScriptBase@@QAEXXZ
+// 0x00CB7F60 (was Shutdown), ?RemoveElementsFromScript@CDrawQuestInfo@NPlayerGui@@QAEXJ@Z 0x00647403 (the class is NPlayerGui's; was global),
+// ?GetHandleFromLongName@CCodeSectionManager@@QAEKVCCharString@@@Z 0x009F0500 (was GetSectionHandle).
+class CScriptBase { public: void KillAllThreads(); };      // 0x00CB7F60
 struct CActiveQuest {
     long ID;                                        // +0x00
     void* PScriptInfo;                              // +0x04
@@ -118,17 +121,17 @@ class CWorld { public:
     virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();               // slot 12 (+0x30)
 };
-struct CDrawQuestInfo { void RemoveElementsFromScript(long scriptID); };   // 0x00647403
+namespace NPlayerGui { class CDrawQuestInfo { public: void RemoveElementsFromScript(long scriptID); }; }   // 0x00647403
 class CPlayerGui { public:
     unsigned char _pad[0x1c8];
-    CDrawQuestInfo* PDrawQuestInfo;                 // +0x1c8
+    NPlayerGui::CDrawQuestInfo* PDrawQuestInfo;     // +0x1c8
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 class CCodeSectionManager { public:
     unsigned char _body[0x2c];
     CCodeSectionManager();                          // 0x009F0320
     bool IsSectionRegisteredLongName(CCharString longName);   // 0x009F0570 ?IsSectionRegisteredLongName@CCodeSectionManager@@QAE_NVCCharString@@@Z (Ego_r.pdb; NF28: was Contains)
-    unsigned long GetSectionHandle(CCharString name);   // 0x009F0500
+    unsigned long GetHandleFromLongName(CCharString longName);   // 0x009F0500
     void UnloadSection(unsigned long handle);       // 0x009F02F0
 };
 struct CCodeSectionManagerPointer {                 // static CCountedPointer<CCodeSectionManager>
@@ -196,7 +199,7 @@ void CQuestManager::DeactivateQuest(CCountedPointer<CActiveQuest> quest, unsigne
     if (activeQuest->PScript) {
         CActiveQuest* previous = PQuestCurrentlyRunning;
         PQuestCurrentlyRunning = activeQuest;
-        activeQuest->PScript->Shutdown();
+        activeQuest->PScript->KillAllThreads();
         PQuestCurrentlyRunning = previous;
     }
     CCharString sectionName = activeQuest->QuestName;
@@ -230,6 +233,6 @@ void CQuestManager::DeactivateQuest(CCountedPointer<CActiveQuest> quest, unsigne
     CCodeSectionManager* manager = GetCodeSectionManager();
     if (manager->IsSectionRegisteredLongName(questName)) {
         CCharString name = questName;
-        manager->UnloadSection(manager->GetSectionHandle(name));
+        manager->UnloadSection(manager->GetHandleFromLongName(name));
     }
 }

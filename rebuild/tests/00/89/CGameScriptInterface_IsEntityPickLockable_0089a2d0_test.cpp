@@ -19,10 +19,10 @@ class CScriptThing
     CScriptThingVTable* m_pVTable;
 };
 
-class CGSIPickLockableDoor
+class CTCDoor
 {
 public:
-    bool IsLockPickable();
+    bool IsLockPickable() const;   // NF386: the row binds ?IsLockPickable@CTCDoor@@QBE_NXZ (0x00730AE0)
 };
 
 class CTCBase;
@@ -55,7 +55,7 @@ static CKeyPair* g_lower_bound_result = 0;
 static CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* g_observed_map = 0;
 static ETCInterfaceType g_observed_key = ETC_DUMMY;
 static bool g_pickable = false;
-static CGSIPickLockableDoor* g_observed_door = 0;
+static const CTCDoor* g_observed_door = 0;
 static unsigned long g_pickable_calls = 0;
 
 static bool __fastcall IsAvailable(CScriptThing* self)
@@ -81,7 +81,7 @@ const CKeyPair* CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCIn
     return g_lower_bound_result;
 }
 
-bool CGSIPickLockableDoor::IsLockPickable()
+bool CTCDoor::IsLockPickable() const
 {
     g_observed_door = this;
     ++g_pickable_calls;
@@ -117,8 +117,8 @@ int main()
     CScriptThingVTable vtable = {};
     CScriptThing scriptThing = {};
     CThingOverlay thing = {};
-    CGSIPickLockableDoor foundDoor;
-    CGSIPickLockableDoor endDoor;
+    CTCDoor foundDoor;
+    CTCDoor endDoor;
     CKeyPair foundEntry = {};
     CKeyPair greaterEntry = {};
     CKeyPair endEntry = {};

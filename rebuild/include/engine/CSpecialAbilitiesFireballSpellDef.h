@@ -30,5 +30,13 @@ public:
     float Inclination;                                                           // +0x40
     std::vector<float,std::allocator<float> > StaminaCost;                       // +0x44
     float TargettingArcAngle;                                                    // +0x50
+#ifdef FABLE_RETAIL_CSPECIALABILITIESFIREBALLSPELLDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CSpecialAbilitiesFireballSpellDef::Copy 0x00460251, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x00460256). ?Copy@CSpecialAbilitiesFireballSpellDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x00460251 (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CSpecialAbilitiesFireballSpellDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x00460256.
+public:
+    CSpecialAbilitiesFireballSpellDef& operator=(const CSpecialAbilitiesFireballSpellDef&);
+#endif
 };
 #endif

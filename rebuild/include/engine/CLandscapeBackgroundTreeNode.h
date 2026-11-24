@@ -136,6 +136,14 @@ public:
     bool                                      VisibleLastFrameHasBeenUpdated; // +0xed
     bool                                      HasSubPatchLoadInfo; // +0xee
     unsigned char                             _pad_0xef[0x1]; // +0xef
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_TREE_NODE_FLAT_TESSELATION_RELOCATION
+    // Add-only opt-in (naming agent NF386, 2026-11-24, binders 0x00BDC020 CEngineLandscapeMap::UpdateBackgroundTesselation and
+    // 0x00BF6D10 CLandscapeBackgroundSubNodeSplitBranch::OnPostRelocation): Ego_r.pdb / FableWin.pdb
+    // ?UpdateTesselation@CLandscapeBackgroundTreeNode@@QAEXXZ (retail 0x00BF6720) and ?OnPostRelocation@CLandscapeBackgroundTreeNode@@QAEXXZ
+    // (retail 0x00BF6B70), both public non-virtual. Declarations only: no layout change.
+    void UpdateTesselation();                                            // 0x00BF6720
+    void OnPostRelocation();                                             // 0x00BF6B70
+#endif
 };
 #pragma pack(pop)
 

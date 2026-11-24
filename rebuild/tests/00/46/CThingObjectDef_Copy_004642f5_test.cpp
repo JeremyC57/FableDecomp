@@ -1,34 +1,34 @@
+// behaviour test for 0x004642F5: CThingObjectDef::Copy forwards to CThingObjectDef::operator= with this and the source object
+// NF386 (NF324 Q2 form, NF337 gen.py): the row now defines the PDB member CThingObjectDef::Copy (?Copy@CThingObjectDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CThingObjectDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-// Standalone build of the thunk-shaped function for a smoke test.
-// (Real link forwards to the engine impl; here we stub it to observe forwarding.)
-
-class CThingObjectDef { public: int tag; };
+class CDefClassBase;
+class CThingObjectDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CThingObjectDef& operator=(const CThingObjectDef& other);
+};
 
 static int g_calls = 0;
-static CThingObjectDef* g_this = 0;
-static CThingObjectDef* g_src = 0;
-
-void __fastcall CThingObjectDef_Copy_impl(CThingObjectDef* thisptr, CThingObjectDef* src)
+static const void* g_this = 0;
+static const void* g_other = 0;
+CThingObjectDef& CThingObjectDef::operator=(const CThingObjectDef& other)
 {
-    g_calls++;
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CThingObjectDef_Copy(CThingObjectDef* thisptr, CThingObjectDef* src)
-{
-    CThingObjectDef_Copy_impl(thisptr, src);
-}
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CThingObjectDef dst; dst.tag = 1;
-    CThingObjectDef src; src.tag = 2;
-    CThingObjectDef_Copy(&dst, &src);
-    if (g_calls == 1 && g_this == &dst && g_src == &src)
-        printf("OK_004642f5_THUNK\n");
-    else
-        printf("FAIL\n");
-    return 0;
+    ((CThingObjectDef*)(g_dst))->CThingObjectDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_004642f5_THUNK\n");
+        return 0;
+    }
+    std::printf("FAIL_004642f5 calls=%d\n", g_calls);
+    return 1;
 }

@@ -13,11 +13,12 @@ class CMemoryFile;
 
 class CMemoryFile { public:
     unsigned char _body[0x24];       // sizeof(CMemoryFile) = 0x24
-    CMemoryFile(CMemoryFile* owner);                   // 0x009E99C0
+    // NF386 (2026-11-24): the copy constructor ??0CMemoryFile@@QAE@ABV0@@Z (Ego_r.pdb + FableWin.pdb; landed self 0x009E99C0): the source by reference.
+    CMemoryFile(const CMemoryFile& other);             // 0x009E99C0
 };
 
 CMemoryFile* __fastcall CMemoryFile_Clone(CMemoryFile* owner)
 {
-    return new CMemoryFile(owner);
+    return new CMemoryFile(*owner);
 }
 // Stand-in (owner rule 2026-11-05): CMemoryFile_Clone for CMemoryFile::Clone; RTTI vtable slot ?Clone@CMemoryFile@@UBEPAVCAFile@@XZ + PDB name set (egor/fablewin).

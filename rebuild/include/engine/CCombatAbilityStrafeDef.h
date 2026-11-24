@@ -14,6 +14,15 @@ class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStra
 // (0x02433CA0; inline in retail: GetSubDef<CCombatAbilityStrafeDef> 0x006F0F60 pushes the class-name literal 'CCombatAbilityStrafeDef'). No layout change.
 public: static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CCombatAbilityStrafeDef",-1);}
 #endif
+#ifdef FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CCombatAbilityStrafeDef::Copy 0x00453F5E, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x00453F63). ?Copy@CCombatAbilityStrafeDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x00453F5E (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CCombatAbilityStrafeDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x00453F63.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CCombatAbilityStrafeDef& operator=(const CCombatAbilityStrafeDef&);
+#endif
 };
 #else
 class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStrafingData CombatAbility;
@@ -21,6 +30,15 @@ class CCombatAbilityStrafeDef:public CSubDefClassBase {public:CCombatAbilityStra
 // Opt-in (NF170, 2026-11-20, row 0x006EA2C0 CCombatManager::PerformSequenceReset): FableWin.pdb ?StatGetTypeName@CCombatAbilityStrafeDef@@SI?AVCCharString@@XZ
 // (0x02433CA0; inline in retail: GetSubDef<CCombatAbilityStrafeDef> 0x006F0F60 pushes the class-name literal 'CCombatAbilityStrafeDef'). No layout change.
 public: static CCharString FABLE_FASTCALL StatGetTypeName(){return CCharString("CCombatAbilityStrafeDef",-1);}
+#endif
+#ifdef FABLE_RETAIL_CCOMBATABILITYSTRAFEDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CCombatAbilityStrafeDef::Copy 0x00453F5E, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x00453F63). ?Copy@CCombatAbilityStrafeDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x00453F5E (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CCombatAbilityStrafeDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x00453F63.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CCombatAbilityStrafeDef& operator=(const CCombatAbilityStrafeDef&);
 #endif
 };
 #endif

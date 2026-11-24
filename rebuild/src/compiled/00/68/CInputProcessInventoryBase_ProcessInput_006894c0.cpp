@@ -91,7 +91,6 @@ public:
     virtual void OnPreviousTab();   // +0x100
     virtual void OnNextTab();   // +0x104
 };
-enum ECurrentMovement { MOVEMENT_NONE = 0, MOVEMENT_UP = 1, MOVEMENT_DOWN = 2 };
 class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 // NF55 (round 7) attempt: the class onto the shared retail CInputProcessGameBase (engine/CInputProcessGameBase.h ZTARGET), whose
 // IsEventGameAction(EGameAction, const CInputEvent&) const is the Ego_r spelling; slot 0 is CAInputProcess's virtual destructor.
@@ -102,6 +101,9 @@ class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameCompon
 #include "engine/CInputProcessGameBase.h"
 class CInputProcessInventoryBase : public CInputProcessGameBase {
 public:
+    // NF386 (2026-11-24): the movement enum is nested in the class (Ego_r.pdb + FableWin.pdb
+    // ?ChangeSelection@CInputProcessInventoryBase@@AAE_NW4ECurrentMovement@1@@Z, landed self 0x006893D0); ChangeSelection is private.
+    enum ECurrentMovement { MOVEMENT_NONE = 0, MOVEMENT_UP = 1, MOVEMENT_DOWN = 2 };
     virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed);   // slot 4
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -109,6 +111,7 @@ public:
     ECurrentMovement        CurrentMovement;       // +0x28
     unsigned long           FrameSinceLastMovement;   // +0x2c
     bool                    StartedRepeatingMovement; // +0x30
+private:
     bool ChangeSelection(ECurrentMovement movement);                  // 0x006893D0
 };
 

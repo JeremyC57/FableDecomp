@@ -44,6 +44,15 @@ public:
 public:
     virtual unsigned long GetSizeofClass();
 #endif
+#ifdef FABLE_RETAIL_CSNOWTROLLDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CSnowTrollDef::Copy 0x004541DA, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x004541DF). ?Copy@CSnowTrollDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x004541DA (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CSnowTrollDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x004541DF.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CSnowTrollDef& operator=(const CSnowTrollDef&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(40, sizeof(CSnowTrollDef) == 0x60);
 FABLE_STATIC_ASSERT_AT(41, offsetof(CSnowTrollDef, IcicleAttackIndex) == 0x28);

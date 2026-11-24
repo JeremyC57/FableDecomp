@@ -35,7 +35,8 @@ extern const float g_DegreesPerTurn;                    // 0x01238020 (360.0f)
 extern const float g_TurnsPerDegree;                    // 0x01238E00 (1/360)
 extern const float g_TwoPi;                             // 0x0128F608
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
-void __fastcall GFVBoxToABox(const C2DBoxF* vbox, C2DBoxF* abox);   // 0x009E1E70
+// NF386 (2026-11-24): ?GFVBoxToABox@@YIXABVC2DBoxF@@AAV1@@Z (Ego_r.pdb + FableWin.pdb; landed self 0x009E1E70): both by reference.
+void __fastcall GFVBoxToABox(const C2DBoxF& vbox, C2DBoxF& abox);   // 0x009E1E70
 class CMatrix3x4 { public: float m[12]; };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCamera { public:
@@ -87,7 +88,7 @@ void CEngineCamera::Process(bool flag)
         desc.Window.BRX = (float)ConsoleOverrideViewPortWidth;
         desc.Window.BRY = (float)ConsoleOverrideViewPortHeight;
     } else {
-        GFVBoxToABox(GameWindow, &desc.Window);
+        GFVBoxToABox(*GameWindow, desc.Window);
     }
     desc.HorizontalFOV = GameCamera->GetHorizontalFOV() * g_TwoPi * g_TurnsPerDegree * g_DegreesPerTurn;
     if (GameCamera->GetFOVFlags() & 2) {

@@ -106,7 +106,8 @@ class CEnginePrimitiveRenderer : public CEngineRendererBase, public CEngineCompo
     CArray<CEngineScene*> Scenes;                  // +0x338
     virtual void Render(const CEngineComponentRenderParams& params);
     void PreRenderLayer(long layer);               // 0x00B32AD0
-    void RenderOcclusionLayer();                   // 0x00B32610
+    // NF386 (2026-11-24): ?RenderNonsortedPrimitives@CEnginePrimitiveRenderer@@QAEXXZ (Ego_r.pdb + FableWin.pdb; landed self 0x00B32610).
+    void RenderNonsortedPrimitives();              // 0x00B32610
     void PostRenderLayer();                        // 0x00B32230
 };
 
@@ -118,7 +119,7 @@ void CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params
     PreRenderLayer(params.Layer);
     switch (params.Layer) {
     case 0x20:
-        RenderOcclusionLayer();
+        RenderNonsortedPrimitives();
         break;
     case 2:
         if (g_pOcclusionRenderer->Enabled && g_pOcclusionRenderer->Target) {

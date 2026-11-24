@@ -9,7 +9,7 @@
 //   and destroys the async members (+0x110..+0x14c) of the landed CBankFileAsync ctor 0x009D5F80.
 // Callees: CCriticalSectionLock ctor 0x00A62920 / Unlock 0x00A62960 / Lock 0x00A62980 / dtor 0x00A629A0,
 //   CBankFileAsyncData::Abort 0x009D6350, _Rb_tree_rebalance_for_erase 0x0042A34E, free 0x00BFEA14,
-//   Sleep 0x0143FE1C, CLoadingMemoryFailureHandler::RemoveBank 0x009D5A30, DeleteCriticalSection 0x0143FDE4,
+//   Sleep 0x0143FE1C, CLoadingMemoryFailureHandler::UnregisterBank 0x009D5A30, DeleteCriticalSection 0x0143FDE4,
 //   list<CCountedPointer<CBankFileAsyncData>>::clear 0x009D7DB0, set<CBankFileAsyncData*>::_M_erase 0x009D7430,
 //   operator delete 0x00BFE9BC, CBankFile::~CBankFile 0x009CE180 (manifest "NHeroInformationScreens::CBase::~CBase").
 #include "fable_compiler.h"
@@ -92,7 +92,8 @@ class CMovableResourceMemoryPool;
 class CBankFileAsync;
 class CLoadingMemoryFailureHandler {
 public:
-    void RemoveBank(CBankFileAsync* bank);         // 0x009D5A30
+    // NF386 (2026-11-24): ?UnregisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z (Ego_r.pdb + FableWin.pdb; landed self 0x009D5A30).
+    void UnregisterBank(CBankFileAsync* bank);     // 0x009D5A30
 };
 
 class CBankFileAsync : public CBankFile {          // vtable 0x0129B8D4
@@ -125,6 +126,6 @@ CBankFileAsync::~CBankFileAsync()
     }
     ((CCriticalSectionLock*)&lock)->Release();
     if (MemoryFailureHandler.Data)
-        MemoryFailureHandler.Data->RemoveBank(this);
+        MemoryFailureHandler.Data->UnregisterBank(this);
     DeleteCriticalSection(&CriticalSection);
 }

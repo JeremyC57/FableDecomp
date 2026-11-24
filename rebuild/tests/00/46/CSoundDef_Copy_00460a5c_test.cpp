@@ -1,38 +1,34 @@
-#include <stdio.h>
+// behaviour test for 0x00460A5C: CSoundDef::Copy forwards to CSoundDef::operator= with this and the source object
+// NF386 (NF324 Q2 form, NF337 gen.py): the row now defines the PDB member CSoundDef::Copy (?Copy@CSoundDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSoundDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-/* Mimic the thunk shape without linking the engine: a local tail-call thunk.
-   We only assert the reconstruction's control-flow semantics (delegates to
-   impl, returns void) deterministically. */
+class CDefClassBase;
+class CSoundDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSoundDef& operator=(const CSoundDef& other);
+};
 
-class CSoundDef { public: int tag; };
-
-static int g_called = 0;
-static CSoundDef* g_this = 0;
-static void* g_src = 0;
-
-void __fastcall CSoundDef_Copy_impl(CSoundDef* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSoundDef& CSoundDef::operator=(const CSoundDef& other)
 {
-    g_called = 1;
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CSoundDef_Copy(CSoundDef* thisptr, void* src)
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
+
+int main()
 {
-    CSoundDef_Copy_impl(thisptr, src);
-}
-
-int main(void)
-{
-    CSoundDef obj;
-    obj.tag = 0x1234;
-    int srcval = 0x55;
-
-    CSoundDef_Copy(&obj, &srcval);
-
-    if (g_called == 1 && g_this == &obj && g_src == (void*)&srcval)
-        printf("OK_460a5c\n");
-    else
-        printf("FAIL_460a5c\n");
-    return 0;
+    ((CSoundDef*)(g_dst))->CSoundDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_460a5c\n");
+        return 0;
+    }
+    std::printf("FAIL_00460a5c calls=%d\n", g_calls);
+    return 1;
 }

@@ -22,7 +22,8 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCHeroExperience { public:
-    long GetShotAccuracyPercentage();           // 0x006D6EA0
+    // NF386 (2026-11-24): ?GetShotAccuracyPercentage@CTCHeroExperience@@QBEJXZ (Ego_r.pdb + FableWin.pdb; landed self 0x006D6EA0): const.
+    long GetShotAccuracyPercentage() const;     // 0x006D6EA0
 };
 class CThing;
 class CThingCreatureBase;

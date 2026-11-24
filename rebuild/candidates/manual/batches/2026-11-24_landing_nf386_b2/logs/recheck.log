@@ -1,0 +1,109 @@
+addr       parity           behav  name
+0040a740   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+0040a740   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+0040a740   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+0040a740   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+0040a740   RELOCATION_MATCH PASS   Save
+00434b50   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00434b50   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+00434b50   RELOCATION_MATCH PASS   GetMainWindow
+004b3a20   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004b3a20   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+004b3a20   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+004b3a20   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004b3a20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004b3a20   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+004b3a20   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+004b3a20   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+004b3a20   WARN RELOC_NAME: ?FindString@@YIPAVCCharString@@PAV1@0ABV1@ABUrandom_access_iterator_tag@@@Z -> 004b8e40 labelled 'std::__find<CCharString*, CCharString>'
+004b3a20   WARN RELOC_NAME: ??0CSectionSet@@QAE@XZ -> 004ad460 labelled 'std::_Rb_tree<T_node0x14_004ad460>::_Rb_tree'
+004b3a20   WARN RELOC_NAME: ??1CSectionSet@@QAE@XZ -> 004ad4a0 labelled 'CRetailTree_erase004aba70::~CRetailTree_erase004aba70'
+004b3a20   RELOCATION_MATCH PASS   DeactivateQuest
+00663b10   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+00663b10   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+00663b10   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+00663b10   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00663b10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00663b10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00663b10   RELOCATION_MATCH PASS   GetShotAccuracyPercentage
+006644f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+006644f0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+006644f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006644f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006644f0   WARN RELOC_NAME: ?TakeOver@CCreatureActionBase@@QAEXABUCActionState@@@Z -> 00669280 labelled 'CCreatureActionBase::SetPreceedingPAnimEntry'
+006644f0   RELOCATION_MATCH PASS   SetCurrentAction
+006894c0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+006894c0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006894c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+006894c0   WARN SHARED_HEADER_AVAILABLE CInputProcessInventoryBase (engine/CInputProcessInventoryBase.h)
+006894c0   WARN RELOC_NAME: ?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+006894c0   RELOCATION_MATCH PASS   ProcessInput
+0089a2d0   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+0089a2d0   RELOCATION_MATCH PASS   IsEntityPickLockable
+0097fa00   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0097fa00   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0097fa00   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0097fa00   RELOCATION_MATCH PASS   AIAction_MinionIdle
+009b02e0   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+009b02e0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+009b02e0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009b02e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009b02e0   RELOCATION_MATCH PASS   ~CDefinitionManager
+009d6490   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock (engine/CCriticalSectionLock.h)
+009d6490   WARN SHARED_HEADER_AVAILABLE CBankFileAsyncData (engine/CBankFileAsyncData.h)
+009d6490   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+009d6490   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+009d6490   RELOCATION_MATCH PASS   ~CBankFileAsync
+009e97f0   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+009e97f0   RELOCATION_MATCH PASS   Clone
+00b314e0   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+00b314e0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b314e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00b314e0   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+00b314e0   WARN SHARED_HEADER_AVAILABLE CEngineCameraDesc (engine/CEngineCameraDesc.h)
+00b314e0   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00b314e0   RELOCATION_MATCH PASS   Process
+00b33010   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00b33010   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer (engine/CEngineSubPrimitiveRenderer.h)
+00b33010   WARN SHARED_HEADER_AVAILABLE CEngineScene (engine/CEngineScene.h)
+00b33010   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+00b33010   WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams (engine/CEngineComponentRenderParams.h)
+00b33010   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer (engine/CEnginePrimitiveRenderer.h)
+00b33010   WARN RELOC_NAME: ?g_pOcclusionRenderer@@3PAUCEngineOcclusionRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b33010   WARN RELOC_NAME: ?GetRenderInfo@CEngineOcclusionRenderer@@QAE?AUSSceneRenderInfo@@XZ -> 00b38890 labelled 'CEngineShadowRenderer::PeekSceneData'
+00b33010   WARN RELOC_NAME: ?RenderOcclusion@CEngineScene@@QAEXJAAY0BDA@$$CBE@Z -> 00b94060 labelled 'CEngineScene::RenderSceneShadowBuffer'
+00b33010   WARN RELOC_NAME: ?RenderList@CEngineSubPrimitiveRenderer@@QAEXJ_N@Z -> 00b849f0 labelled 'CEngineSubPrimitiveRenderer::RenderType'
+00b33010   WARN RELOC_NAME: ?GetListSize@CEngineSubPrimitiveRenderer@@QAEKJ@Z -> 00b842b0 labelled 'CEngineSubPrimitiveRenderer::GetCount'
+00b33010   WARN RELOC_NAME: ?ClearList@CEngineSubPrimitiveRenderer@@QAEXJ@Z -> 00b847b0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00b33010   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b33010   RELOCATION_MATCH PASS   Render
+00b99710   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00b99710   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes (engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h)
+00b99710   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00b99710   RELOCATION_MATCH PASS   ClipSubSections
+00bdc020   RELOCATION_MATCH PASS   UpdateBackgroundTesselation
+00bf6d10   RELOCATION_MATCH PASS   OnPostRelocation
+
+WINS: 16
+  0040a740 RELOCATION_MATCH CUserProfileManager::Save
+  00434b50 RELOCATION_MATCH CDisplayEngine::?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ
+  004b3a20 RELOCATION_MATCH CQuestManager::DeactivateQuest
+  00663b10 RELOCATION_MATCH CThingCreatureBase::?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ
+  006644f0 RELOCATION_MATCH CThingCreatureBase::?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z
+  006894c0 RELOCATION_MATCH CInputProcessInventoryBase::ProcessInput
+  0089a2d0 RELOCATION_MATCH CGameScriptInterface::IsEntityPickLockable
+  0097fa00 RELOCATION_MATCH CAIStateGroupBase::?AIAction_MinionIdle@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ
+  009b02e0 RELOCATION_MATCH CDefinitionManager::??1CDefinitionManager@
+  009d6490 RELOCATION_MATCH CBankFileAsync::??1CBankFileAsync@@UAE@XZ
+  009e97f0 RELOCATION_MATCH CMemoryFile::?CMemoryFile_Clone@@YIPAVCMemoryFile@@PAV1@@Z
+  00b314e0 RELOCATION_MATCH CEngineCamera::Process
+  00b33010 RELOCATION_MATCH CEnginePrimitiveRenderer::?Render@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
+  00b99710 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::?ClipSubSections@CEnginePrimitiveManagerRepeatedStaticMeshes
+  00bdc020 RELOCATION_MATCH CEngineLandscapeMap::UpdateBackgroundTesselation
+  00bf6d10 RELOCATION_MATCH CLandscapeBackgroundSubNodeSplitBranch::OnPostRelocation

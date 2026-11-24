@@ -1,0 +1,16 @@
+source	address	unit	reason
+nf320	0x007ADEF0	port	007adef0 skipped-port ?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z alias-sig; census (tools/abscensus.py -> evidence/abscensus.tsv, NF299 Q4 form): engine/CAIScratchpadDef.h is the flat GENERATED layout (void* __vfta
+nf322	0x007ADEF0	port	007adef0 skipped-port ?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z mvrow KEEP_ALIAS: the alias class declares 2 members (a stand-in callee); a CAIScratchpadDef opt-in model was generated and probed (evidence/unused_models/), bo
+nF325	0x007ADEF0	port	007adef0 skipped-port ?Copy@CAIScratchpadDef@@UAEXPBVCDefClassBase@@@Z NF325 order 9 (carry-over, untouched): a body / callee / other-class port that NF322 rulings Q1-Q3 do not cover; NF322 reason: mvrow KEEP_ALIAS: the al
+nf324	0x00453705	port	00453705 skipped-port ?Copy@CInventoryItemDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x0045390C	port	0045390c skipped-port ?Copy@CHeroMarriageDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00453D41	port	00453d41 skipped-port ?Copy@CTattooDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx is used
+nf324	0x00453F5E	port	00453f5e skipped-port ?Copy@CCombatAbilityStrafeDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter dummy is used
+nf324	0x00453F8E	port	00453f8e skipped-port ?Copy@CCombatAbilityUseProjectileWeaponDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx is used
+nf324	0x004541DA	port	004541da skipped-port ?Copy@CSnowTrollDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x0045FE26	port	0045fe26 skipped-port ?Copy@CSpecialAbilitiesEnflameDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00460251	port	00460251 skipped-port ?Copy@CSpecialAbilitiesFireballSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x004608C1	port	004608c1 skipped-port ?Copy@CSpecialAbilitiesUnholyPowerDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00460A14	port	00460a14 skipped-port ?Copy@CSpecialAbilitiesCreatureTintDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00460A5C	port	00460a5c skipped-port ?Copy@CSoundDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x004642F5	port	004642f5 skipped-port ?Copy@CThingObjectDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)

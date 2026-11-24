@@ -58,6 +58,15 @@ public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 public:
     virtual unsigned long GetSizeofClass();
 #endif
+#ifdef FABLE_RETAIL_CHEROMARRIAGEDEF_COPY_DECLS
+    // Opt-in (NF386, 2026-11-24; NF337 form): declarations only, no layout change, for CHeroMarriageDef::Copy 0x0045390C, which tail-calls the
+    // out-of-line operator= (retail `jmp` 0x00453911). ?Copy@CHeroMarriageDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable
+    // placement (ghidra_out/labels_rtti_port.tsv) names at 0x0045390C (it overrides CDefClassBase::Copy: clang override probe,
+    // made-up-name control fails); ??4CHeroMarriageDef@@QAEAAV0@ABV0@@Z (PDB name sets) is the landed operator= row at 0x00453911.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CHeroMarriageDef& operator=(const CHeroMarriageDef&);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(49, sizeof(CHeroMarriageDef)==0xc8);
 #else

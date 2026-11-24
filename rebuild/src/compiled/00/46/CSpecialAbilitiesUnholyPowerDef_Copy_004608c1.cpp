@@ -1,21 +1,16 @@
+// Leaf: ?Copy@CSpecialAbilitiesUnholyPowerDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesUnholyPowerDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesUnholyPowerDef: `*this = *(const CSpecialAbilitiesUnholyPowerDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004608C1, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesUnholyPowerDef::operator= 0x004608C6 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x004608C1 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesUnholyPowerDef::operator=(const CSpecialAbilitiesUnholyPowerDef&) 0x004608C6, ??4CSpecialAbilitiesUnholyPowerDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF386 (2026-11-24; its T3_PORT_QUEUE line: a flatten / alias skip): moved from the flattened __fastcall stand-in and its made-up callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CSpecialAbilitiesUnholyPowerDef.h"
 
-/* CSpecialAbilitiesUnholyPowerDef::Copy @ 0x004608c1
- * Retail body is a single 5-byte `jmp rel32` (relocation-masked tail-call).
- * Modeled as a this-only member (two params: this + source) that tail-calls
- * the shared Copy implementation. Written __fastcall(this, src) so the byte
- * pattern is a bare tail jump with no extra prologue/epilogue.
- */
-
-class CSpecialAbilitiesUnholyPowerDef;
-
-/* The tail-call target (address relocation-masked in parity). */
-extern void __fastcall CSpecialAbilitiesUnholyPowerDef_Copy_impl(
-    CSpecialAbilitiesUnholyPowerDef* thisptr, void* src);
-
-void __fastcall CSpecialAbilitiesUnholyPowerDef_Copy(
-    CSpecialAbilitiesUnholyPowerDef* thisptr, void* src)
+void CSpecialAbilitiesUnholyPowerDef::Copy(const CDefClassBase* other)
 {
-    /* tail call -> emits `jmp rel32` */
-    CSpecialAbilitiesUnholyPowerDef_Copy_impl(thisptr, src);
+    *this = *(const CSpecialAbilitiesUnholyPowerDef*)other;
 }

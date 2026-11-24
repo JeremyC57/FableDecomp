@@ -1,21 +1,34 @@
+// behaviour test for 0x00460251: CSpecialAbilitiesFireballSpellDef::Copy forwards to CSpecialAbilitiesFireballSpellDef::operator= with this and the source object
+// NF386 (NF324 Q2 form, NF337 gen.py): the row now defines the PDB member CSpecialAbilitiesFireballSpellDef::Copy (?Copy@CSpecialAbilitiesFireballSpellDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesFireballSpellDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-// Stand-in for the relocation-masked tail-call target so the test links.
-class CSpecialAbilitiesFireballSpellDef;
-static int g_called = 0;
-extern "C" void CSpecialAbilitiesFireballSpellDef_Copy_impl_stub() {}
+class CDefClassBase;
+class CSpecialAbilitiesFireballSpellDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesFireballSpellDef& operator=(const CSpecialAbilitiesFireballSpellDef& other);
+};
 
-// Minimal reproduction of the thunk semantics for a runtime sanity check.
-void do_copy(CSpecialAbilitiesFireballSpellDef* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesFireballSpellDef& CSpecialAbilitiesFireballSpellDef::operator=(const CSpecialAbilitiesFireballSpellDef& other)
 {
-    (void)thisptr; (void)src;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
+
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    do_copy((CSpecialAbilitiesFireballSpellDef*)0x1000, (void*)0x2000);
-    if (g_called == 1)
-        printf("OK_460251_THUNK\n");
-    return 0;
+    ((CSpecialAbilitiesFireballSpellDef*)(g_dst))->CSpecialAbilitiesFireballSpellDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_460251_THUNK\n");
+        return 0;
+    }
+    std::printf("FAIL_00460251 calls=%d\n", g_calls);
+    return 1;
 }
