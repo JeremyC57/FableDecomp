@@ -1,0 +1,147 @@
+{
+ "address": "00521ae0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "LoadFromFile",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)"
+ ],
+ "src_sha": "7175f95740a2",
+ "DEF": [
+  "??1?$CCountedPointer@VCAFile@@@@QAE@XZ",
+  "??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ",
+  "??1CCharStringSet@@QAE@XZ",
+  "??1CStringParser@@UAE@XZ",
+  "??_C@_00CNPNBAHC@?$AA@",
+  "??_C@_01ICJEACDI@?$DL?$AA@",
+  "??_C@_07NGFJPNPN@Version?$AA@",
+  "??_C@_0BO@IIJDNMIH@Thing?5Manager?3?5Load?5From?5File?$AA@",
+  "??_C@_0CC@GDMBFPJP@Thing?5Manager?3?5Load?5From?5File?5En@",
+  "??_GCCharString@@QAEPAXI@Z",
+  "?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JUCCharStringSet@@AAUCThingVector@@PAVCASuspendableProcess@@H@Z",
+  "?_M_erase@CCharStringSet@@QAEXPAUSSetNode@@@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??0CCharString@@QAE@XZ",
+  "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z",
+  "??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ",
+  "??1CBaseClass@@UAE@XZ",
+  "??1CCharString@@QAE@XZ",
+  "??3@YAXPAX@Z",
+  "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z",
+  "?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABUCCharStringSet@@PAVCASuspendableProcess@@JAAUCThingVector@@@Z",
+  "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+  "?ReadAsFloat@CStringParser@@QAEMXZ",
+  "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+  "__fltused",
+  "__ftol2",
+  "_free"
+ ],
+ "graded": "?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JUCCharStringSet@@AAUCThingVector@@PAVCASuspendableProcess@@H@Z",
+ "bind": [
+  [
+   "004046b0",
+   "??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ",
+   1
+  ],
+  [
+   "00404720",
+   "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z",
+   1
+  ],
+  [
+   "004aba70",
+   "?_M_erase@CCharStringSet@@QAEXPAUSSetNode@@@Z",
+   1
+  ],
+  [
+   "00520d00",
+   "?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABUCCharStringSet@@PAVCASuspendableProcess@@JAAUCThingVector@@@Z",
+   1
+  ],
+  [
+   "0099a2e0",
+   "??1CBaseClass@@UAE@XZ",
+   1
+  ],
+  [
+   "0099e4b0",
+   "??0CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   8
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   5
+  ],
+  [
+   "0099f2e0",
+   "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+   1
+  ],
+  [
+   "009b9e00",
+   "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+   2
+  ],
+  [
+   "009ba650",
+   "?ReadAsFloat@CStringParser@@QAEMXZ",
+   1
+  ],
+  [
+   "009e9f40",
+   "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z",
+   2
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ],
+  [
+   "00bfea70",
+   "__ftol2",
+   1
+  ],
+  [
+   "0122d70e",
+   "??_C@_00CNPNBAHC@?$AA@",
+   1
+  ],
+  [
+   "0123542c",
+   "??_C@_01ICJEACDI@?$DL?$AA@",
+   1
+  ],
+  [
+   "01245b14",
+   "??_C@_07NGFJPNPN@Version?$AA@",
+   1
+  ],
+  [
+   "01245b1c",
+   "??_C@_0CC@GDMBFPJP@Thing?5Manager?3?5Load?5From?5File?5En@",
+   1
+  ],
+  [
+   "01245b40",
+   "??_C@_0BO@IIJDNMIH@Thing?5Manager?3?5Load?5From?5File?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

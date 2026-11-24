@@ -1,0 +1,15 @@
+{
+ "address": "00901334",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_IceTrollIcicleAttack@@MBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "a182a159ab1b",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_IceTrollIcicleAttack@@MBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_IceTrollIcicleAttack@@MBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

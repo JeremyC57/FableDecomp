@@ -1,0 +1,88 @@
+{
+ "address": "00665e90",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsPickPocketable@CThingCreatureBase@@QBE_NXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)"
+ ],
+ "src_sha": "4a1679e919c5",
+ "DEF": [
+  "??$GetInterface@VCTCPerceiveThing@@@CThing@@QBE_NPAPAVCTCPerceiveThing@@J@Z",
+  "??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z",
+  "??0?$CDefPointer@$$CBVCCreatureDef@@@@QAE@XZ",
+  "?IsPickPocketable@CThingCreatureBase@@QBE_NXZ",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?ReleaseDef@CDefPointeeBase@@QAEXXZ",
+  "?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ"
+ ],
+ "UND": [
+  "?CanSeeOrSmellPerceivedThing@CTCPerceiveThing@@QBE_NXZ",
+  "?FindDef_CDefClassBase_GetSubDef_0@@YAPAXXZ",
+  "?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z",
+  "?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ",
+  "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+  "?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ",
+  "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+  "?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ",
+  "__fltused"
+ ],
+ "graded": "?IsPickPocketable@CThingCreatureBase@@QBE_NXZ",
+ "bind": [
+  [
+   "004365b0",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   1
+  ],
+  [
+   "00449960",
+   "?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ",
+   1
+  ],
+  [
+   "00485815",
+   "??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z",
+   1
+  ],
+  [
+   "00487dc0",
+   "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+   1
+  ],
+  [
+   "004c73d0",
+   "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+   2
+  ],
+  [
+   "004c79f0",
+   "?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ",
+   1
+  ],
+  [
+   "006614f0",
+   "?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z",
+   1
+  ],
+  [
+   "00661600",
+   "?CanSeeOrSmellPerceivedThing@CTCPerceiveThing@@QBE_NXZ",
+   1
+  ],
+  [
+   "007446a0",
+   "?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ",
+   1
+  ]
+ ],
+ "obj": true
+}

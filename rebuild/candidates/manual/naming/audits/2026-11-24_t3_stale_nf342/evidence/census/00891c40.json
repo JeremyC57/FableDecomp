@@ -1,0 +1,28 @@
+{
+ "address": "00891c40",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "DisplayMoneyBag",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)"
+ ],
+ "src_sha": "bb587611dbc9",
+ "DEF": [
+  "??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ",
+  "?CGameScriptInterface_DisplayMoneyBag@@YIXPAXHE@Z",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ"
+ ],
+ "UND": [
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A"
+ ],
+ "graded": "?CGameScriptInterface_DisplayMoneyBag@@YIXPAXHE@Z",
+ "bind": [
+  [
+   "013b8790",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

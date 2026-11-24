@@ -1,0 +1,23 @@
+{
+ "address": "0088faf0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ",
+ "warn": [],
+ "src_sha": "e2962e78bcf3",
+ "DEF": [
+  "?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ"
+ ],
+ "UND": [
+  "?g_CheapHeadLooking@@3EA"
+ ],
+ "graded": "?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ",
+ "bind": [
+  [
+   "013bae1b",
+   "?g_CheapHeadLooking@@3EA",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,25 @@
+{
+ "address": "004644fa",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Copy@CThingSwitchDef@@UAEXPBVCDefClassBase@@@Z",
+ "warn": [
+  "  WARN RELOC_NAME: ?base_clone@CThingSwitchDef@@QAEXPBVCDefClassBase@@@Z -> 00463950 labelled 'CThingBaseDef::operator='"
+ ],
+ "src_sha": "857331695411",
+ "DEF": [
+  "?Copy@CThingSwitchDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "?base_clone@CThingSwitchDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "graded": "?Copy@CThingSwitchDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00463950",
+   "?base_clone@CThingSwitchDef@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

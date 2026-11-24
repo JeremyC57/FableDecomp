@@ -1,0 +1,92 @@
+{
+ "address": "00f3d830",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?CalcSectionScore@CTriangleStripifier2@@AAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTriangleStripifier2 (engine/CTriangleStripifier2.h)",
+  "  WARN RELOC_NAME: ??0?$CArray@G@@QAE@ABV0@@Z -> 00a87090 labelled 'std::vector<unsigned short>::vector'"
+ ],
+ "src_sha": "1dbd55b700aa",
+ "DEF": [
+  "??0?$CArray@_N@@QAE@XZ",
+  "??1?$CArray@G@@QAE@XZ",
+  "??1?$CArray@_N@@QAE@XZ",
+  "??A?$CArray@G@@QBEAAGK@Z",
+  "??A?$CArray@J@@QBEAAJK@Z",
+  "??A?$CArray@V?$CArray@J@@@@QBEAAV?$CArray@J@@K@Z",
+  "??A?$CArray@_N@@QBEAA_NK@Z",
+  "?CalcSectionPolyMask@CTriangleStripifier2@@AAEJABV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@0AAV?$CArray@_N@@@Z",
+  "?CalcSectionScore@CTriangleStripifier2@@AAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z",
+  "?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z",
+  "?begin@?$CArray@G@@QBEPAGXZ",
+  "?begin@?$CArray@J@@QBEPAJXZ",
+  "?begin@?$CArray@V?$CArray@J@@@@QBEPAV?$CArray@J@@XZ",
+  "?begin@?$CArray@_N@@QBEPA_NXZ",
+  "?size@?$CArray@G@@QBEKXZ",
+  "?size@?$CArray@J@@QBEKXZ",
+  "__real@00000000",
+  "__real@7149f2ca"
+ ],
+ "DEF_SEL": {
+  "??1?$CArray@G@@QAE@XZ": 2,
+  "?size@?$CArray@G@@QBEKXZ": 2,
+  "??0?$CArray@_N@@QAE@XZ": 2,
+  "??1?$CArray@_N@@QAE@XZ": 2,
+  "?size@?$CArray@J@@QBEKXZ": 2,
+  "?begin@?$CArray@G@@QBEPAGXZ": 2,
+  "?begin@?$CArray@_N@@QBEPA_NXZ": 2,
+  "?begin@?$CArray@V?$CArray@J@@@@QBEPAV?$CArray@J@@XZ": 2,
+  "?begin@?$CArray@J@@QBEPAJXZ": 2,
+  "??A?$CArray@G@@QBEAAGK@Z": 2,
+  "??A?$CArray@_N@@QBEAA_NK@Z": 2,
+  "??A?$CArray@V?$CArray@J@@@@QBEAAV?$CArray@J@@K@Z": 2,
+  "??A?$CArray@J@@QBEAAJK@Z": 2,
+  "?CalcSectionPolyMask@CTriangleStripifier2@@AAEJABV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@0AAV?$CArray@_N@@@Z": 1,
+  "?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z": 1,
+  "?CalcSectionScore@CTriangleStripifier2@@AAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z": 1,
+  "__real@7149f2ca": 2,
+  "__real@00000000": 2
+ },
+ "UND": [
+  "??0?$CArray@G@@QAE@ABV0@@Z",
+  "?AllocPolyMask@@YAPAXK@Z",
+  "__fltused",
+  "_free"
+ ],
+ "graded": "?CalcSectionScore@CTriangleStripifier2@@AAEMABV?$CArray@G@@0ABV?$CArray@V?$CArray@J@@@@@Z",
+ "bind": [
+  [
+   "00a87090",
+   "??0?$CArray@G@@QAE@ABV0@@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   5
+  ],
+  [
+   "00f3b970",
+   "?StripUnusedVerts@CTriangleStripifier2@@AAEXAAV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@ABV?$CArray@_N@@@Z",
+   1
+  ],
+  [
+   "00f3cf50",
+   "?CalcSectionPolyMask@CTriangleStripifier2@@AAEJABV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@0AAV?$CArray@_N@@@Z",
+   1
+  ],
+  [
+   "0122dedc",
+   "__real@00000000",
+   1
+  ],
+  [
+   "01301cf4",
+   "__real@7149f2ca",
+   1
+  ]
+ ],
+ "obj": true
+}

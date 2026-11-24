@@ -1,0 +1,29 @@
+{
+ "address": "008b42e0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "c61bb85bce09",
+ "DEF": [
+  "??_C@_0BP@JCJFCLGH@CombatSequence_TrollRockPursue?$AA@",
+  "?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z"
+ ],
+ "graded": "?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "01278aec",
+   "??_C@_0BP@JCJFCLGH@CombatSequence_TrollRockPursue?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

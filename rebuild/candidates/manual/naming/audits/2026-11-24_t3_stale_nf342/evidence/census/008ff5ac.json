@@ -1,0 +1,15 @@
+{
+ "address": "008ff5ac",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_StealthSeekEnemy@@UBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "7ec31c370297",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_StealthSeekEnemy@@UBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_StealthSeekEnemy@@UBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

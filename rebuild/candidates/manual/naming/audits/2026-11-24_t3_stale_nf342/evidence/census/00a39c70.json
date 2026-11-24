@@ -1,0 +1,25 @@
+{
+ "address": "00a39c70",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetAlignment@CWADFile@@UBEJXZ",
+ "warn": [
+  "  WARN RELOC_NAME: ?GetAlignment@CBankFile@@QBEKXZ -> 009cbb80 labelled '_global::GetMember_dword0x98_009cbb80'"
+ ],
+ "src_sha": "3b729ac323bb",
+ "DEF": [
+  "?GetAlignment@CWADFile@@UBEJXZ"
+ ],
+ "UND": [
+  "?GetAlignment@CBankFile@@QBEKXZ"
+ ],
+ "graded": "?GetAlignment@CWADFile@@UBEJXZ",
+ "bind": [
+  [
+   "009cbb80",
+   "?GetAlignment@CBankFile@@QBEKXZ",
+   1
+  ]
+ ],
+ "obj": true
+}

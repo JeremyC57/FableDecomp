@@ -1,0 +1,15 @@
+{
+ "address": "00445710",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z",
+ "warn": [],
+ "src_sha": "2e9b5f092f37",
+ "DEF": [
+  "?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsInputTypeWithMouseButton@CInputTypeMouseMovementEvent@@UBE_NW4EMouseButtonControl@@@Z",
+ "bind": [],
+ "obj": true
+}

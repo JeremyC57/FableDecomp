@@ -1,0 +1,15 @@
+{
+ "address": "00b236d0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?ReallocateShadowBuffer@CIEngine@@UAEXXZ",
+ "warn": [],
+ "src_sha": "35b2f39a48c9",
+ "DEF": [
+  "?ReallocateShadowBuffer@CIEngine@@UAEXXZ"
+ ],
+ "UND": [],
+ "graded": "?ReallocateShadowBuffer@CIEngine@@UAEXXZ",
+ "bind": [],
+ "obj": true
+}

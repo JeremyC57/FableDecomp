@@ -1,0 +1,15 @@
+{
+ "address": "0090080b",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "527298a8e655",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_MazeTutorialBattle@@UBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

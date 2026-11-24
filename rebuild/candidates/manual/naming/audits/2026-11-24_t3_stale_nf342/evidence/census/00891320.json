@@ -1,0 +1,23 @@
+{
+ "address": "00891320",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z",
+ "warn": [],
+ "src_sha": "bc933460f42d",
+ "DEF": [
+  "?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z"
+ ],
+ "UND": [
+  "?EnableDangerMusic@CMusicManager@@QAEX_N@Z"
+ ],
+ "graded": "?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z",
+ "bind": [
+  [
+   "006bde50",
+   "?EnableDangerMusic@CMusicManager@@QAEX_N@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

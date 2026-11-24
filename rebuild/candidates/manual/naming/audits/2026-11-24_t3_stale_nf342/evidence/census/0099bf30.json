@@ -1,0 +1,88 @@
+{
+ "address": "0099bf30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??H@YI?AVCWideString@@ABV0@PBG@Z",
+ "warn": [],
+ "src_sha": "771f58a09838",
+ "DEF": [
+  "??0CBasicStringW@@QAE@PBGK@Z",
+  "??0CWideString@@QAE@ABV0@@Z",
+  "??0CWideString@@QAE@PBG@Z",
+  "??0CWideStringData@@QAE@PBGK@Z",
+  "??0forward_iterator_tag@@QAE@XZ",
+  "??1CBasicStringW@@QAE@XZ",
+  "??1CWideString@@QAE@XZ",
+  "??1CWideStringData@@QAE@XZ",
+  "??4CWideString@@QAEABV0@ABV0@@Z",
+  "??H@YI?AVCWideString@@ABV0@PBG@Z",
+  "??YCWideString@@QAEABV0@ABV0@@Z",
+  "??YCWideString@@QAEABV0@PBG@Z",
+  "??_GCWideStringData@@QAEPAXI@Z",
+  "?AllocStringData@CWideString@@QAEPAVCWideStringData@@PBGJ@Z",
+  "?GetText@CWideString@@QBEPBGXZ",
+  "?MakeOwnCopyOfData@CWideString@@IAEXXZ",
+  "?UnassignString@CWideString@@IAEXXZ",
+  "?append@CBasicStringW@@QAEAAU1@PBG@Z",
+  "?length@CBasicStringW@@SAKPBG@Z"
+ ],
+ "DEF_SEL": {
+  "??0forward_iterator_tag@@QAE@XZ": 2,
+  "?length@CBasicStringW@@SAKPBG@Z": 2,
+  "??0CBasicStringW@@QAE@PBGK@Z": 2,
+  "??1CBasicStringW@@QAE@XZ": 2,
+  "?append@CBasicStringW@@QAEAAU1@PBG@Z": 2,
+  "??0CWideStringData@@QAE@PBGK@Z": 2,
+  "?GetText@CWideString@@QBEPBGXZ": 2,
+  "??1CWideStringData@@QAE@XZ": 2,
+  "?AllocStringData@CWideString@@QAEPAVCWideStringData@@PBGJ@Z": 1,
+  "??0CWideString@@QAE@PBG@Z": 1,
+  "??_GCWideStringData@@QAEPAXI@Z": 2,
+  "?UnassignString@CWideString@@IAEXXZ": 1,
+  "?MakeOwnCopyOfData@CWideString@@IAEXXZ": 1,
+  "??YCWideString@@QAEABV0@ABV0@@Z": 1,
+  "??YCWideString@@QAEABV0@PBG@Z": 1,
+  "??1CWideString@@QAE@XZ": 2,
+  "??4CWideString@@QAEABV0@ABV0@@Z": 2,
+  "??0CWideString@@QAE@ABV0@@Z": 2,
+  "??H@YI?AVCWideString@@ABV0@PBG@Z": 1
+ },
+ "UND": [
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "?NoStrings@CWideString@@1JA",
+  "?_M_append@CBasicStringW@@QAEAAU1@PBG0ABUforward_iterator_tag@@@Z",
+  "?_M_range_initialize@CBasicStringW@@QAEXPBG0ABUforward_iterator_tag@@@Z",
+  "?g_EmptyWideString@@3PAGA",
+  "_free"
+ ],
+ "graded": "??H@YI?AVCWideString@@ABV0@PBG@Z",
+ "bind": [
+  [
+   "0099b4d0",
+   "?UnassignString@CWideString@@IAEXXZ",
+   1
+  ],
+  [
+   "0099b940",
+   "??YCWideString@@QAEABV0@PBG@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ],
+  [
+   "013bca20",
+   "?NoStrings@CWideString@@1JA",
+   5
+  ]
+ ],
+ "obj": true
+}

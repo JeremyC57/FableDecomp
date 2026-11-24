@@ -295,3 +295,12 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - **HEAD entries:** a row whose landed source carries a retail byte-dump comment needs its HEAD entry rebuilt from the repo before
     `land_scripted.py` (D-f).
   - **T3 lines:** the coordinator lands rows it sent an agent into from T3 with `land_scripted.py --release-t3 <tag>`.
+- NF340 (pick-any all-copies audit, `naming/audits/2026-11-24_pk_all_nf340/SUMMARY.md`; advisor decision, owner delegated):
+  - **Checker:** `lane_tools/pk_all/pk_all.py <obj> <row-address>` sits ALONGSIDE `pickany_vs_retail.py`. It finds each copy's retail address
+    from the leaf's own relocations, so it also sees `?A0x` and stand-in-named copies. Run both on every row you change.
+  - **Gate:**
+    - **Row change:** compare HEAD with new. A leaf-called NEQ copy that is new, or that turns NEQ, holds the row. A copy that was already
+      NEQ is debt; list it in NOTES.
+    - **New row:** any leaf-called NEQ copy holds it.
+    - **CompilerFlags change** (`/d2inl*`, `/Os`, `/O1`, `/GS`): it must pass this gate, because the flag both breaks and repairs copies.
+  - **Debt:** it is queued per copy (T3 `nf340`, column 2 = the copy's retail address). The fix is the emitting header text or local model.

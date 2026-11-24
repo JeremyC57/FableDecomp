@@ -1,0 +1,38 @@
+{
+ "address": "00855af0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CCreatureAction_BlockBase@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCreatureAction_BlockBase (engine/CCreatureAction_BlockBase.h)"
+ ],
+ "src_sha": "1dd920b0e52c",
+ "DEF": [
+  "??0C3DVector@@QAE@XZ",
+  "??0CCreatureAction_BlockBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JJ@Z",
+  "??0CSoundPair@@QAE@XZ",
+  "??_7CCreatureAction_BlockBase@@6B@"
+ ],
+ "UND": [
+  "??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z",
+  "?v00@CCreatureAction_BlockBase@@UAEXXZ",
+  "__fltused"
+ ],
+ "graded": "??0CCreatureAction_BlockBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JJ@Z",
+ "bind": [
+  [
+   "00857f30",
+   "??0CCombatActionBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z",
+   1
+  ],
+  [
+   "01275f3c",
+   "??_7CCreatureAction_BlockBase@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -10746,3 +10746,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13586	nf336	00e96660	?Main@CM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@EAEXXZ	open	?Main@CM_HeroInsideHouse@
 13587	acctB_b24C8	0070c0d0	?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ	open	?GetMeshBank@CAnimateThing@@QAEPAVCMeshDataBank@@XZ || ?GetMeshBank_2@CAnimateThing@@QAEPAVCMeshDataBank@@XZ
 13590	acctB_b24C9	00711a50	?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@...	open	?GrowInsert@?$CRetailVector@UCCountedPointer@@@@QAEXPAUCCountedPointer@@ABU2@ABUSInsertTag@@KK@Z || ?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@V?$allocator@V?$CIVCountedPointer@VC3DAnimationTransitionState@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VC3DAnimationTransitionState@@@@ABV3@ABU__false_type@2@I_N@Z
+13591	acctB_b24B7	006daa90	??$GetSubDef@VCHeroExperienceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroExperienceDef@@@@@Z	partial	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCHeroExperienceDef@@@@@Z
+13592	acctB_b24B7	006a92b0	??0CInitRumble@CJoystick@@QAE@MMMM_N@Z	no_binding	
+13593	acctB_b24B7	00814be0	?GetPDefaultHitLocation@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@XZ	open	DrawGetEnvironment
+13594	acctB_b24B7	006ea430	?SetAttackerAsBeenStruck@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	open	?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z

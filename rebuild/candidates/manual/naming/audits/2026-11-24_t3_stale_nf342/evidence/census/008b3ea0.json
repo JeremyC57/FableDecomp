@@ -1,0 +1,29 @@
+{
+ "address": "008b3ea0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetName@CCombatSequence_ScorpionLungeAttack@@UBE?AVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "99ddd13cd6f2",
+ "DEF": [
+  "?GetName@CCombatSequence_ScorpionLungeAttack@@UBE?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "?kScorpionLungeName@@3QBDB"
+ ],
+ "graded": "?GetName@CCombatSequence_ScorpionLungeAttack@@UBE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "012789a0",
+   "?kScorpionLungeName@@3QBDB",
+   1
+  ]
+ ],
+ "obj": true
+}

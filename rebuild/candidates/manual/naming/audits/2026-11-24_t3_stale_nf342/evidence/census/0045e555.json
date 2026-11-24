@@ -1,0 +1,23 @@
+{
+ "address": "0045e555",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z",
+ "warn": [],
+ "src_sha": "1fdfc7fe9b75",
+ "DEF": [
+  "?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "0045e55a",
+   "??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

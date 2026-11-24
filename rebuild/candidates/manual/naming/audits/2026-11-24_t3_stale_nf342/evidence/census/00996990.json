@@ -1,0 +1,89 @@
+{
+ "address": "00996990",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CCompressedMemoryDataInputStream",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CACompressor (engine/CACompressor.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)"
+ ],
+ "src_sha": "3c15d75578a5",
+ "DEF": [
+  "??0?$CScopedPointer@VCCompressorZlib@@@@QAE@XZ",
+  "??0CCompressedMemoryDataInputStream_Retail@@QAE@PBXJJ@Z",
+  "??0CCompressorZlib@@QAE@XZ",
+  "??0CDataInputStream@@QAE@XZ",
+  "??C?$CScopedPointer@VCCompressorZlib@@@@QBEPAVCCompressorZlib@@XZ",
+  "??_7CCompressedMemoryDataInputStream_Retail@@6B@",
+  "??_7CCompressorZlib@@6B@",
+  "??_7CDataInputStream@@6B@",
+  "??_GCCompressorZlib@@UAEPAXI@Z",
+  "?ResetStream@CDataInputStream@@QAEXXZ",
+  "?reset@?$CScopedPointer@VCCompressorZlib@@@@QAEXPAVCCompressorZlib@@@Z"
+ ],
+ "UND": [
+  "??0CACompressor@@QAE@J@Z",
+  "??0CBaseClassNonCopyable@@IAE@XZ",
+  "??1CCompressorZlib@@UAE@XZ",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "??_GCCompressorZlib@@UAEPAXI@Z",
+  "??_U@YAPAXI@Z",
+  "?GetRequiredWorkspaceSize@CCompressorZlib@@SIKXZ",
+  "?Initialise@CCompressorZlib@@AAEXXZ",
+  "?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z",
+  "?v00@CCompressedMemoryDataInputStream_Retail@@UAEXXZ",
+  "?v00@CDataInputStream@@UAEXXZ"
+ ],
+ "graded": "??0CCompressedMemoryDataInputStream_Retail@@QAE@PBXJJ@Z",
+ "bind": [
+  [
+   "0099a2f0",
+   "??0CBaseClassNonCopyable@@IAE@XZ",
+   1
+  ],
+  [
+   "00a3a7d0",
+   "?GetRequiredWorkspaceSize@CCompressorZlib@@SIKXZ",
+   1
+  ],
+  [
+   "00a3aa10",
+   "?Initialise@CCompressorZlib@@AAEXXZ",
+   1
+  ],
+  [
+   "00a3ab90",
+   "?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z",
+   1
+  ],
+  [
+   "00a3aea0",
+   "??0CACompressor@@QAE@J@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ],
+  [
+   "00bfeb22",
+   "??_U@YAPAXI@Z",
+   1
+  ],
+  [
+   "01245974",
+   "??_7CCompressorZlib@@6B@",
+   1
+  ],
+  [
+   "0129a758",
+   "??_7CCompressedMemoryDataInputStream_Retail@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

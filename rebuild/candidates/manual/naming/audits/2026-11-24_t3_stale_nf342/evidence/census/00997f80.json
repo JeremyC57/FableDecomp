@@ -1,0 +1,73 @@
+{
+ "address": "00997f80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)",
+  "  WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'",
+  "  WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'"
+ ],
+ "src_sha": "79eb1c88b8d0",
+ "DEF": [
+  "??8@YA_NABUCBasicStringW@@PBG@Z",
+  "??_C@_11LOCGONAA@?$AA?$AA@",
+  "?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ",
+  "?data@CBasicStringW@@QBEPBGXZ",
+  "?length@char_traits_w@@SAKPBG@Z",
+  "?size@CBasicStringW@@QBEKXZ"
+ ],
+ "UND": [
+  "??0CWideString@@QAE@ABV0@@Z",
+  "??1CWideString@@QAE@XZ",
+  "??4CWideString@@QAEABV0@ABV0@@Z",
+  "?CalcCurrentPath@NFile@@YI?AVCWideString@@XZ",
+  "?CurrentPath@NFile@@3VCWideString@@A",
+  "?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z",
+  "_wcscmp"
+ ],
+ "graded": "?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ",
+ "bind": [
+  [
+   "00403c60",
+   "?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z",
+   1
+  ],
+  [
+   "009974a0",
+   "?CalcCurrentPath@NFile@@YI?AVCWideString@@XZ",
+   1
+  ],
+  [
+   "0099b510",
+   "??1CWideString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099b720",
+   "??0CWideString@@QAE@ABV0@@Z",
+   2
+  ],
+  [
+   "0099b7d0",
+   "??4CWideString@@QAEABV0@ABV0@@Z",
+   1
+  ],
+  [
+   "00bfe94c",
+   "_wcscmp",
+   1
+  ],
+  [
+   "0122d70c",
+   "??_C@_11LOCGONAA@?$AA?$AA@",
+   3
+  ],
+  [
+   "013bca10",
+   "?CurrentPath@NFile@@3VCWideString@@A",
+   4
+  ]
+ ],
+ "obj": true
+}

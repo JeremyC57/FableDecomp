@@ -1,0 +1,66 @@
+{
+ "address": "00d890a0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Alloc@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z",
+ "warn": [],
+ "src_sha": "f6f06adf82fb",
+ "DEF": [
+  "??0?$CCountedPointer@VCEntityScriptBase@@@@QAE@PAVCEntityScriptBase@@@Z",
+  "??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z",
+  "??0CEntityScriptBase@@QAE@AAVCGameScriptInterfaceBase@@ABVCScriptThing@@@Z",
+  "??0CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z",
+  "??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ",
+  "??_7CEntityScriptBase@@6B@",
+  "??_7CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@6B@",
+  "??_GCEntityScriptBase@@UAEPAXI@Z",
+  "??_GCSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z",
+  "?Alloc@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z",
+  "?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z"
+ ],
+ "UND": [
+  "??0CScriptThing@@QAE@ABV0@@Z",
+  "??1CEntityScriptBase@@UAE@XZ",
+  "??1CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@UAE@XZ",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "??_GCEntityScriptBase@@UAEPAXI@Z",
+  "??_GCSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z",
+  "?GetParentScript@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@UBEPAVCScriptBase@@XZ",
+  "?Init@CEntityScriptBase@@UAEXXZ",
+  "?Main@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@EAEXXZ",
+  "?OnInterrupted@CEntityScriptBase@@UAEXXZ",
+  "?OnPersist@CEntityScriptBase@@UAEXAAVCPersistContext@@@Z",
+  "?OnPredicateFail@CEntityScriptBase@@UAEXXZ",
+  "__purecall"
+ ],
+ "graded": "?Alloc@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z",
+ "bind": [
+  [
+   "004abe90",
+   "??0CScriptThing@@QAE@ABV0@@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   2
+  ],
+  [
+   "00cdee00",
+   "?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z",
+   1
+  ],
+  [
+   "012c3224",
+   "??_7CEntityScriptBase@@6B@",
+   1
+  ],
+  [
+   "012d4f34",
+   "??_7CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

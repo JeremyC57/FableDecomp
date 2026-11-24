@@ -1,0 +1,25 @@
+{
+ "address": "0045417e",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CBriarRoseDef_CopyImpl@@YIXPAVCBriarRoseDef@@PBV1@@Z -> 00454183 labelled 'CBriarRoseDef::operator='"
+ ],
+ "src_sha": "09bad82b4540",
+ "DEF": [
+  "?CBriarRoseDef_Copy@@YIXPAVCBriarRoseDef@@PBV1@@Z"
+ ],
+ "UND": [
+  "?CBriarRoseDef_CopyImpl@@YIXPAVCBriarRoseDef@@PBV1@@Z"
+ ],
+ "graded": "?CBriarRoseDef_Copy@@YIXPAVCBriarRoseDef@@PBV1@@Z",
+ "bind": [
+  [
+   "00454183",
+   "?CBriarRoseDef_CopyImpl@@YIXPAVCBriarRoseDef@@PBV1@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

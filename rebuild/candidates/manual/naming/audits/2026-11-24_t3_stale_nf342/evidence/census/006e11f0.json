@@ -1,0 +1,202 @@
+{
+ "address": "006e11f0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Create",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCParamsPhysicsBase (engine/CTCParamsPhysicsBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CParticleUpdateParameters (engine/CParticleUpdateParameters.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)",
+  "  WARN RELOC_NAME: ?g_pThingManager@X_006e11f0@@3PAUCThingManager@1@A -> 013b8a1c labelled 'CThing::PCurrentThingManager'",
+  "  WARN STANDIN_LEAF ?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z (catalog CTCDParticleEmitter::Create; address-only name)"
+ ],
+ "src_sha": "31577ef1a528",
+ "DEF": [
+  "??0?$CParticleUpdateParameters@II@X_006e11f0@@QAE@XZ",
+  "??0?$CVectorMap@IU?$CParticleUpdateParamDesc@II@X_006e11f0@@@X_006e11f0@@QAE@XZ",
+  "??0?$CVectorMap@IUC3DVector@X_006e11f0@@@X_006e11f0@@QAE@XZ",
+  "??0C3DVector@X_006e11f0@@QAE@ABU01@@Z",
+  "??0CCPPointerInfo@X_006e11f0@@QAE@KP6IXPAX@Z0@Z",
+  "??0CCharString@X_006e11f0@@QAE@PBDH@Z",
+  "??0CParticleCreationParameters@X_006e11f0@@QAE@HHMABUCRightHandedSet@1@@Z",
+  "??0CRightHandedSet@X_006e11f0@@QAE@ABU01@@Z",
+  "??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z",
+  "??1?$CParticleUpdateParamDesc@II@X_006e11f0@@UAE@XZ",
+  "??1?$CParticleUpdateParameters@II@X_006e11f0@@UAE@XZ",
+  "??1?$CVectorMap@IU?$CParticleUpdateParamDesc@II@X_006e11f0@@@X_006e11f0@@QAE@XZ",
+  "??1?$CVectorMap@IUC3DVector@X_006e11f0@@@X_006e11f0@@QAE@XZ",
+  "??1CCharString@X_006e11f0@@QAE@XZ",
+  "??1CParticleCreationParameters@X_006e11f0@@QAE@XZ",
+  "??1CTCParamsPhysicsBase@X_006e11f0@@UAE@XZ",
+  "??1Entry@?$CVectorMap@IU?$CParticleUpdateParamDesc@II@X_006e11f0@@@X_006e11f0@@QAE@XZ",
+  "??_7?$CParticleUpdateParameters@II@X_006e11f0@@6B@",
+  "??_7CTCParamsPhysicsBase@X_006e11f0@@6B@",
+  "??_C@_0BI@JHBPKPKA@PARTICLE_EMITTER_NORMAL?$AA@",
+  "??_G?$CParticleUpdateParameters@II@X_006e11f0@@UAEPAXI@Z",
+  "??_GCParticleCreationParameters@X_006e11f0@@QAEPAXI@Z",
+  "??_GCTCParamsPhysicsBase@X_006e11f0@@UAEPAXI@Z",
+  "??_GEntry@?$CVectorMap@IU?$CParticleUpdateParamDesc@II@X_006e11f0@@@X_006e11f0@@QAEPAXI@Z",
+  "?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z",
+  "?DeleteData@?$CCountedPointer@UCParticleCreationParameters@X_006e11f0@@@X_006e11f0@@SIXPAX@Z",
+  "?DeleteRequest@X_006e11f0@@YIXPAX@Z",
+  "?Get@CMainGameComponent@@SIPAV1@XZ",
+  "?GetConstantFPS@CMainGameComponent@@SIJXZ",
+  "?PeekWorld@CMainGameComponent@@QBEABVCWorld@@XZ",
+  "?ReleaseData@?$CCountedPointer@UCParticleCreationParameters@X_006e11f0@@@X_006e11f0@@QAEXXZ",
+  "?Reset@?$CCountedPointer@UCParticleCreationParameters@X_006e11f0@@@X_006e11f0@@QAEXPAUCParticleCreationParameters@2@@Z"
+ ],
+ "UND": [
+  "??0CBaseClassNonCopyable@X_006e11f0@@QAE@XZ",
+  "??1CBaseClassNonCopyable@X_006e11f0@@UAE@XZ",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "??_G?$CParticleUpdateParameters@II@X_006e11f0@@UAEPAXI@Z",
+  "??_GCTCParamsPhysicsBase@X_006e11f0@@UAEPAXI@Z",
+  "??_U@YAPAXI@Z",
+  "??_V@YAXPAX@Z",
+  "?ConstantFPS@CMainGameComponent@@1JA",
+  "?Create@X_006e11f0@@YIPAUCThing@1@HHH_N@Z",
+  "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+  "?DefaultAxes@X_006e11f0@@3UCRightHandedSet@1@A",
+  "?DoActivationSequence@CThing@X_006e11f0@@QAE_NXZ",
+  "?Get@CGameDefinitionManager@@SIAAV1@XZ",
+  "?GetDefGlobalIndexFromName@CDefinitionManagerAdapter@X_006e11f0@@QAEHABUCCharString@2@@Z",
+  "?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ",
+  "?IsLoadingAnyMap@CWorldMap@@QBE_NXZ",
+  "?Kill@CThing@X_006e11f0@@QAEX_N@Z",
+  "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+  "?Scale@X_006e11f0@@3MB",
+  "?SetPEmitter@CTCDParticleEmitter@X_006e11f0@@QAEXPAUCParticleEmitter@@@Z",
+  "?StringInstances@X_006e11f0@@3HA",
+  "?g_pThingManager@X_006e11f0@@3PAUCThingManager@1@A",
+  "__fltused",
+  "__ftol2",
+  "_free"
+ ],
+ "graded": "?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z",
+ "bind": [
+  [
+   "0044c6b0",
+   "?Get@CGameDefinitionManager@@SIAAV1@XZ",
+   1
+  ],
+  [
+   "004c9b80",
+   "?Kill@CThing@X_006e11f0@@QAEX_N@Z",
+   1
+  ],
+  [
+   "004c9ca0",
+   "?DoActivationSequence@CThing@X_006e11f0@@QAE_NXZ",
+   1
+  ],
+  [
+   "004ca1d0",
+   "?Create@X_006e11f0@@YIPAUCThing@1@HHH_N@Z",
+   1
+  ],
+  [
+   "004fb4a0",
+   "?IsLoadingAnyMap@CWorldMap@@QBE_NXZ",
+   1
+  ],
+  [
+   "006a06e0",
+   "??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z",
+   1
+  ],
+  [
+   "006e1080",
+   "?SetPEmitter@CTCDParticleEmitter@X_006e11f0@@QAEXPAUCParticleEmitter@@@Z",
+   1
+  ],
+  [
+   "006e2640",
+   "??0CParticleCreationParameters@X_006e11f0@@QAE@HHMABUCRightHandedSet@1@@Z",
+   1
+  ],
+  [
+   "006e2710",
+   "?Reset@?$CCountedPointer@UCParticleCreationParameters@X_006e11f0@@@X_006e11f0@@QAEXPAUCParticleCreationParameters@2@@Z",
+   2
+  ],
+  [
+   "0099a300",
+   "??1CBaseClassNonCopyable@X_006e11f0@@UAE@XZ",
+   1
+  ],
+  [
+   "0099eae0",
+   "??1CCharString@X_006e11f0@@QAE@XZ",
+   1
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@X_006e11f0@@QAE@PBDH@Z",
+   1
+  ],
+  [
+   "009ad410",
+   "?GetDefGlobalIndexFromName@CDefinitionManagerAdapter@X_006e11f0@@QAEHABUCCharString@2@@Z",
+   1
+  ],
+  [
+   "00aeaaf0",
+   "?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ",
+   1
+  ],
+  [
+   "00aeb8c0",
+   "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ],
+  [
+   "00bfea70",
+   "__ftol2",
+   1
+  ],
+  [
+   "0125fedc",
+   "?Scale@X_006e11f0@@3MB",
+   1
+  ],
+  [
+   "0125ff8c",
+   "??_C@_0BI@JHBPKPKA@PARTICLE_EMITTER_NORMAL?$AA@",
+   1
+  ],
+  [
+   "01375550",
+   "?ConstantFPS@CMainGameComponent@@1JA",
+   1
+  ],
+  [
+   "01380104",
+   "?DefaultAxes@X_006e11f0@@3UCRightHandedSet@1@A",
+   6
+  ],
+  [
+   "013b86a0",
+   "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+   1
+  ],
+  [
+   "013b8a1c",
+   "?g_pThingManager@X_006e11f0@@3PAUCThingManager@1@A",
+   1
+  ]
+ ],
+ "obj": true
+}

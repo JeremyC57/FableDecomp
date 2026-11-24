@@ -1,0 +1,15 @@
+{
+ "address": "00a42790",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetDataFormatVersion",
+ "warn": [],
+ "src_sha": "33d7b3a83632",
+ "DEF": [
+  "?CLipSyncDataBank_GetDataFormatVersion@@YIHXZ"
+ ],
+ "UND": [],
+ "graded": "?CLipSyncDataBank_GetDataFormatVersion@@YIHXZ",
+ "bind": [],
+ "obj": true
+}

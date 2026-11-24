@@ -1,0 +1,15 @@
+{
+ "address": "00447a00",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z",
+ "warn": [],
+ "src_sha": "0e8b0b1ef706",
+ "DEF": [
+  "?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsInputTypeWithButton@CInputTypeKeyboardKeyEvent@@UBE_NW4EXboxControllerButton@@@Z",
+ "bind": [],
+ "obj": true
+}

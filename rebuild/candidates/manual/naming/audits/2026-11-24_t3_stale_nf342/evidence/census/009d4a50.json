@@ -1,0 +1,39 @@
+{
+ "address": "009d4a50",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)"
+ ],
+ "src_sha": "54b3d3f956ce",
+ "DEF": [
+  "?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z"
+ ],
+ "UND": [
+  "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+  "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+  "?WriteULONG@CDataOutputStream@@QAEXK@Z"
+ ],
+ "graded": "?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z",
+ "bind": [
+  [
+   "00993ea0",
+   "?WriteULONG@CDataOutputStream@@QAEXK@Z",
+   4
+  ],
+  [
+   "00994b40",
+   "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+   1
+  ],
+  [
+   "00995e70",
+   "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+   1
+  ]
+ ],
+ "obj": true
+}

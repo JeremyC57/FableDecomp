@@ -1,0 +1,23 @@
+{
+ "address": "00453842",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [],
+ "src_sha": "0e0b3cc56b8b",
+ "DEF": [
+  "?CSmashableDef_Copy@@YIXPAVCSmashableDef@@PAXPBV1@@Z"
+ ],
+ "UND": [
+  "??4CDefClassBase@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?CSmashableDef_Copy@@YIXPAVCSmashableDef@@PAXPBV1@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

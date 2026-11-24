@@ -1,0 +1,109 @@
+{
+ "address": "007310c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ",
+ "warn": [
+  "  WARN RELOC_NAME: ?SDoorOpenAnim@?A0x0f73ef2d@@3VCCharString@@B -> 013bad34 labelled 'g_DoorOpenAnimName'"
+ ],
+ "src_sha": "2bd38d76a105",
+ "DEF": [
+  "??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z",
+  "??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z",
+  "??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z",
+  "??0?$CDefPointer@$$CBVCAppearanceDef@@@@QAE@W4ENullDef@@@Z",
+  "??0CAnimFilterBase@@QAE@XZ",
+  "??0CAnimFilterNoGroup@@QAE@XZ",
+  "??1?$CDefPointer@$$CBVCAppearanceDef@@@@QAE@XZ",
+  "??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ",
+  "??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ",
+  "??1CAnimFilterBase@@UAE@XZ",
+  "??1CAnimFilterNoGroup@@UAE@XZ",
+  "??C?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ",
+  "??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ",
+  "??_7CAnimFilterBase@@6B@",
+  "??_7CAnimFilterNoGroup@@6B@",
+  "??_C@_0P@BOGKAFI@CAppearanceDef?$AA@",
+  "??_GCAnimFilterBase@@UAEPAXI@Z",
+  "??_GCAnimFilterNoGroup@@UAEPAXI@Z",
+  "?AddRef@CIVCountedPointeeBase@@QBEXXZ",
+  "?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z",
+  "?Get@?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ",
+  "?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ",
+  "?GetMeshBank@CWorld@@QAEPAVCMeshDataBank@@XZ",
+  "?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ",
+  "?Release@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXXZ",
+  "?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ",
+  "?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ",
+  "?StatGetTypeName@CAppearanceDef@@SI?AVCCharString@@XZ",
+  "?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??1CCharString@@QAE@XZ",
+  "??3@YAXPAX@Z",
+  "??RCAnimFilterNoGroup@@UBE_NABVCAnimationEntry@@@Z",
+  "??_GCAnimFilterBase@@UAEPAXI@Z",
+  "??_GCAnimFilterNoGroup@@UAEPAXI@Z",
+  "?Clone@CAnimFilterNoGroup@@UBEPAVCAnimFilterBase@@XZ",
+  "?Close@CTCDoor@@IAEXXZ",
+  "?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z",
+  "?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z",
+  "?GetWorld@CTCBase@@IBEAAVCWorld@@XZ",
+  "?Open@CTCDoor@@IAEX_N@Z",
+  "?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z",
+  "?SDoorOpenAnim@?A0x0f73ef2d@@3VCCharString@@B",
+  "__purecall"
+ ],
+ "graded": "?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ",
+ "bind": [
+  [
+   "0042b0a2",
+   "??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z",
+   1
+  ],
+  [
+   "005dc340",
+   "?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z",
+   1
+  ],
+  [
+   "00686a70",
+   "?GetWorld@CTCBase@@IBEAAVCWorld@@XZ",
+   1
+  ],
+  [
+   "00730c00",
+   "?Open@CTCDoor@@IAEX_N@Z",
+   1
+  ],
+  [
+   "00730dd0",
+   "?Close@CTCDoor@@IAEXXZ",
+   1
+  ],
+  [
+   "00a242c0",
+   "?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z",
+   1
+  ],
+  [
+   "0122ffcc",
+   "??_7CAnimFilterBase@@6B@",
+   1
+  ],
+  [
+   "0122ffdc",
+   "??_7CAnimFilterNoGroup@@6B@",
+   1
+  ],
+  [
+   "013bad34",
+   "?SDoorOpenAnim@?A0x0f73ef2d@@3VCCharString@@B",
+   1
+  ]
+ ],
+ "obj": true
+}

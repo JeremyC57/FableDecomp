@@ -1,0 +1,15 @@
+{
+ "address": "00b236b0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+ "warn": [],
+ "src_sha": "2a8e81a7be21",
+ "DEF": [
+  "?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+ "bind": [],
+ "obj": true
+}

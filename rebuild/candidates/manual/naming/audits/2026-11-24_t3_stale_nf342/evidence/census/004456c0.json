@@ -1,0 +1,15 @@
+{
+ "address": "004456c0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z",
+ "warn": [],
+ "src_sha": "6bfe7f82e21e",
+ "DEF": [
+  "?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsInputTypeWithButton@CInputTypeXboxPadRightStickEvent@@UBE_NW4EXboxControllerButton@@@Z",
+ "bind": [],
+ "obj": true
+}

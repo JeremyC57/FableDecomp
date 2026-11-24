@@ -1,0 +1,20 @@
+{
+ "address": "00995e70",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)"
+ ],
+ "src_sha": "bea622de9d7d",
+ "DEF": [
+  "?GetAsCArray@?$CArray@D@@QBEPBDXZ",
+  "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+  "?size@?$vector@DV?$allocator@D@std@@@std@@QBEIXZ"
+ ],
+ "UND": [],
+ "graded": "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+ "bind": [],
+ "obj": true
+}

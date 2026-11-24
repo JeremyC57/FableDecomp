@@ -1,0 +1,105 @@
+{
+ "address": "00996230",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?ReadZlibCompressed@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CACompressor (engine/CACompressor.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)",
+  "  WARN RELOC_NAME: ?GetWorkspaceSize@CCompressorZlib@@SAJXZ -> 00a3a7d0 labelled 'CCompressorZlib::GetRequiredWorkspaceSize'"
+ ],
+ "src_sha": "b30482fc2c7c",
+ "DEF": [
+  "??$_Destroy@PAE@std@@YAXPAE0@Z",
+  "??$__destroy@PAEE@std@@YAXPAE00@Z",
+  "??$__destroy_aux@PAE@std@@YAXPAE0ABU__true_type@0@@Z",
+  "??0CCompressorZlib@@QAE@XZ",
+  "??0__true_type@std@@QAE@XZ",
+  "??1?$CArray@E@@QAE@XZ",
+  "??1?$_STLP_alloc_proxy@PAEEV?$allocator@E@std@@@std@@QAE@XZ",
+  "??1?$_Vector_base@EV?$allocator@E@std@@@std@@QAE@XZ",
+  "??1?$allocator@E@std@@QAE@XZ",
+  "??1?$vector@EV?$allocator@E@std@@@std@@QAE@XZ",
+  "??_7CCompressorZlib@@6B@",
+  "??_GCCompressorZlib@@UAEPAXI@Z",
+  "?CallErrorCallback@CAFile@@KIXXZ",
+  "?DoErrorCallback@CAFile@@SIXXZ",
+  "?GetAsCArray@?$CArray@E@@QAEPAEXZ",
+  "?GetErrorCallback@CAFile@@KIP6IXXZXZ",
+  "?GetZeroSizeArray@?$CArray@E@@AAEPAEXZ",
+  "?IsValidPosition@CDataInputStream_Methods@@SA_N_J@Z",
+  "?Read@CDataInputStream_Methods@@QAEXPAXJ@Z",
+  "?ReadLong@CDataInputStream_Methods@@QAEJXZ",
+  "?ReadZlibCompressed@CDataInputStream_Methods@@QAEXPAXJ@Z",
+  "?deallocate@?$allocator@E@std@@QAEXPAEI@Z",
+  "?front@?$vector@EV?$allocator@E@std@@@std@@QAEAAEXZ",
+  "?size@?$vector@EV?$allocator@E@std@@@std@@QBEIXZ"
+ ],
+ "UND": [
+  "??0?$CArray@E@@QAE@I@Z",
+  "??0CACompressor@@QAE@J@Z",
+  "??1CCompressorZlib@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCCompressorZlib@@UAEPAXI@Z",
+  "?GetWorkspaceSize@CCompressorZlib@@SAJXZ",
+  "?Initialise@CCompressorZlib@@AAEXXZ",
+  "?InternalDecompress@CCompressorZlib@@QAEKPBXKPAXK@Z",
+  "?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z",
+  "?m_errorCallback@CAFile@@0P6IXXZA",
+  "_free"
+ ],
+ "graded": "?ReadZlibCompressed@CDataInputStream_Methods@@QAEXPAXJ@Z",
+ "bind": [
+  [
+   "00514e20",
+   "??0?$CArray@E@@QAE@I@Z",
+   1
+  ],
+  [
+   "00993ca0",
+   "?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z",
+   2
+  ],
+  [
+   "00a3a7d0",
+   "?GetWorkspaceSize@CCompressorZlib@@SAJXZ",
+   1
+  ],
+  [
+   "00a3aa10",
+   "?Initialise@CCompressorZlib@@AAEXXZ",
+   1
+  ],
+  [
+   "00a3ab00",
+   "?InternalDecompress@CCompressorZlib@@QAEKPBXKPAXK@Z",
+   1
+  ],
+  [
+   "00a3acc0",
+   "??1CCompressorZlib@@UAE@XZ",
+   1
+  ],
+  [
+   "00a3aea0",
+   "??0CACompressor@@QAE@J@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ],
+  [
+   "01245974",
+   "??_7CCompressorZlib@@6B@",
+   1
+  ],
+  [
+   "013bc9fc",
+   "?m_errorCallback@CAFile@@0P6IXXZA",
+   1
+  ]
+ ],
+ "obj": true
+}

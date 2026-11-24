@@ -1,0 +1,69 @@
+{
+ "address": "004c04c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z",
+ "warn": [],
+ "src_sha": "5569126087e8",
+ "DEF": [
+  "??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z",
+  "??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z",
+  "??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z",
+  "??0?$CDefPointer@$$CBVCAppearanceDef@@@@QAE@W4ENullDef@@@Z",
+  "??0?$CIVCountedPointer@VCEngineMeshEffect@@@@QAE@PAVCEngineMeshEffect@@@Z",
+  "??1?$CDefPointer@$$CBVCAppearanceDef@@@@QAE@XZ",
+  "??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ",
+  "??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ",
+  "??1?$CIVCountedPointer@VCEngineMeshEffect@@@@QAE@XZ",
+  "??C?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ",
+  "??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ",
+  "??_C@_0P@BOGKAFI@CAppearanceDef?$AA@",
+  "?AddRef@CIVCountedPointeeBase@@QBEXXZ",
+  "?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z",
+  "?Get@?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ",
+  "?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ",
+  "?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ",
+  "?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ",
+  "?Release@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXXZ",
+  "?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ",
+  "?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ",
+  "?Release@?$CIVCountedPointer@VCEngineMeshEffect@@@@QAEXXZ",
+  "?Release@CIVCountedPointeeBase@@QBEJXZ",
+  "?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z",
+  "?StatGetTypeName@CAppearanceDef@@SI?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??0CEngineMeshEffectOutlineSmooth@@QAE@MMABVCRGBColour@@EJJ@Z",
+  "??1CCharString@@QAE@XZ",
+  "??2@YAPAXI@Z",
+  "?GetPDefFromGlobalIndex@CDefinitionManager@@IAE?AV?$CDefPointer@VCDefClassBase@@@@J@Z",
+  "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z",
+  "__fltused"
+ ],
+ "graded": "?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z",
+ "bind": [
+  [
+   "0042b0a2",
+   "??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z",
+   1
+  ],
+  [
+   "004c0240",
+   "?SetPMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXV?$CIVCountedPointer@VCEngineMeshEffect@@@@_N11W4EAppearanceMeshEffectPriority@2@PAX@Z",
+   1
+  ],
+  [
+   "004c3000",
+   "??0CEngineMeshEffectOutlineSmooth@@QAE@MMABVCRGBColour@@EJJ@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

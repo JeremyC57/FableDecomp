@@ -1,0 +1,28 @@
+{
+ "address": "00581cfd",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetContextSensitiveItemGraphicIndex",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)"
+ ],
+ "src_sha": "85c7031a7016",
+ "DEF": [
+  "??ACLongVector@@QAEAAJK@Z",
+  "?GetContextSensitiveItemGraphicIndex@CTCInventory@@QAEJJ@Z",
+  "?begin@CLongVector@@QBEPAJXZ"
+ ],
+ "UND": [
+  "?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z"
+ ],
+ "graded": "?GetContextSensitiveItemGraphicIndex@CTCInventory@@QAEJJ@Z",
+ "bind": [
+  [
+   "005d96a0",
+   "?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,33 @@
+{
+ "address": "00461b98",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCombatAbilityBlockLightWeaponAttackDef (engine/CCombatAbilityBlockLightWeaponAttackDef.h)",
+  "  WARN RELOC_NAME: ?Copy@BaseDef@@QAEXPBVCDefClassBase@@@Z -> 00431f10 labelled 'CDefClassBase::operator='",
+  "  WARN RELOC_NAME: ?Copy@SubDef@@QAEXPBVCDefClassBase@@@Z -> 00461bb7 labelled 'CCombatAbilityBlockingData::operator='"
+ ],
+ "src_sha": "6387051e0288",
+ "DEF": [
+  "?Copy@CCombatAbilityBlockLightWeaponAttackDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "?Copy@BaseDef@@QAEXPBVCDefClassBase@@@Z",
+  "?Copy@SubDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "graded": "?Copy@CCombatAbilityBlockLightWeaponAttackDef@@QAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "?Copy@BaseDef@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ],
+  [
+   "00461bb7",
+   "?Copy@SubDef@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

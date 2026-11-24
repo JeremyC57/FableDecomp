@@ -1,0 +1,89 @@
+{
+ "address": "0091e4b0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Update",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionLeaveRegion (engine/CAIStateGroup_MinionLeaveRegion.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)",
+  "  WARN RELOC_NAME: ?GetAllRegionNodes@CThingSearchToolsMethods@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z -> 0091e660 labelled 'CThingSearchTools::GetAllThings'"
+ ],
+ "src_sha": "ad9865f5b4e6",
+ "DEF": [
+  "??0C3DVector@@QAE@ABV0@@Z",
+  "??0CThingFilter_IsRegionNode@@QAE@_N@Z",
+  "??0ThingVector@@QAE@XZ",
+  "?Brain@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEPAVCAIBrain@@XZ",
+  "?ExitPosition@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEAAVC3DVector@@XZ",
+  "?GetNodes@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z",
+  "?Update@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEXXZ"
+ ],
+ "UND": [
+  "?AIAction_DoNothing@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJXZ",
+  "?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z",
+  "?GFROR13@@YIJK@Z",
+  "?GetAllRegionNodes@CThingSearchToolsMethods@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z",
+  "?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ",
+  "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+  "?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ",
+  "?SetInLimbo@CThing@@QAEX_N@Z",
+  "?Terminate@CAIStateGroupBase@@QAEXXZ",
+  "__fltused",
+  "_free"
+ ],
+ "graded": "?Update@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEXXZ",
+ "bind": [
+  [
+   "00497890",
+   "?GFROR13@@YIJK@Z",
+   1
+  ],
+  [
+   "004c73d0",
+   "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+   1
+  ],
+  [
+   "004c8cf0",
+   "?SetInLimbo@CThing@@QAEX_N@Z",
+   2
+  ],
+  [
+   "008fcf40",
+   "?Terminate@CAIStateGroupBase@@QAEXXZ",
+   2
+  ],
+  [
+   "008fcfc0",
+   "?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ",
+   1
+  ],
+  [
+   "008fcfd0",
+   "?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ",
+   1
+  ],
+  [
+   "0091e660",
+   "?GetAllRegionNodes@CThingSearchToolsMethods@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z",
+   1
+  ],
+  [
+   "0097e200",
+   "?AIAction_DoNothing@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJXZ",
+   1
+  ],
+  [
+   "0097ec00",
+   "?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z",
+   1
+  ],
+  [
+   "00bfea14",
+   "_free",
+   1
+  ]
+ ],
+ "obj": true
+}

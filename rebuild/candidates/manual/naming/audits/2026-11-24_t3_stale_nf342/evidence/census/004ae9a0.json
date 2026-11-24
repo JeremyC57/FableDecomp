@@ -1,0 +1,27 @@
+{
+ "address": "004ae9a0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SendGameEvent@CNetworkClient",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CGameEventPackage (engine/CGameEventPackage.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CNetworkClient (engine/CNetworkClient.h)",
+  "  WARN STANDIN_LEAF ?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z (catalog CTCTrapBase::ManualReset; names another function)"
+ ],
+ "src_sha": "c3b1147ff1b4",
+ "DEF": [
+  "?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z"
+ ],
+ "UND": [
+  "?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z"
+ ],
+ "graded": "?SendGameEvent@CNetworkClient@@QAEXPBVCGameEvent@@@Z",
+ "bind": [
+  [
+   "009f1650",
+   "?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

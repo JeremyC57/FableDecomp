@@ -1,0 +1,23 @@
+{
+ "address": "004604ca",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z",
+ "warn": [],
+ "src_sha": "b4d5dd3f64bd",
+ "DEF": [
+  "?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4CSpecialAbilitiesBurntEffectDef@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "004604cf",
+   "??4CSpecialAbilitiesBurntEffectDef@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,83 @@
+{
+ "address": "00a9ba70",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "SaveMeshFileCompressed",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFile (engine/CChunkedFile.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DMeshFile (engine/C3DMeshFile.h)",
+  "  WARN RELOC_NAME: ??0CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ -> 00996af0 labelled 'CMemoryDataOutputStream::CMemoryDataOutputStream'",
+  "  WARN RELOC_NAME: ??1CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ -> 00996b30 labelled 'CMemoryDataOutputStream::~CMemoryDataOutputStream'"
+ ],
+ "src_sha": "46357d29808e",
+ "DEF": [
+  "??$uninitialized_fill_n@D@X_00a9ba70@@YAPADPADIABD@Z",
+  "??0?$CArray@D@X_00a9ba70@@QAE@I@Z",
+  "??1?$CArray@D@X_00a9ba70@@QAE@XZ",
+  "?GetData@?$CArray@D@X_00a9ba70@@QAEPADXZ",
+  "?GetPosition@CDataOutputStreamMethods@X_00a9ba70@@QBEKXZ",
+  "?SaveMeshFileCompressed@C3DMeshFileSaver@X_00a9ba70@@QAEKAAUC3DMeshFile@2@AAVCDataOutputStream@@@Z",
+  "?Write@CDataOutputStreamMethods@X_00a9ba70@@QAEXPBXJ@Z"
+ ],
+ "UND": [
+  "??0CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ",
+  "??1CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ",
+  "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+  "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+  "?SaveChunkedFile@CChunkedFileSaver@X_00a9ba70@@QAEKAAUCChunkedFile@2@AAVCDataOutputStream@@@Z",
+  "?WriteULONG@CDataOutputStream@@QAEXK@Z",
+  "_free",
+  "_lzo1x_999_compress",
+  "_malloc"
+ ],
+ "graded": "?SaveMeshFileCompressed@C3DMeshFileSaver@X_00a9ba70@@QAEKAAUC3DMeshFile@2@AAVCDataOutputStream@@@Z",
+ "bind": [
+  [
+   "00993ea0",
+   "?WriteULONG@CDataOutputStream@@QAEXK@Z",
+   1
+  ],
+  [
+   "00994b40",
+   "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+   1
+  ],
+  [
+   "00995e70",
+   "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+   1
+  ],
+  [
+   "00996af0",
+   "??0CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ",
+   1
+  ],
+  [
+   "00996b30",
+   "??1CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ",
+   1
+  ],
+  [
+   "00aa7c70",
+   "?SaveChunkedFile@CChunkedFileSaver@X_00a9ba70@@QAEKAAUCChunkedFile@2@AAVCDataOutputStream@@@Z",
+   1
+  ],
+  [
+   "00bfea0e",
+   "_malloc",
+   2
+  ],
+  [
+   "00bfea14",
+   "_free",
+   2
+  ],
+  [
+   "00c08130",
+   "_lzo1x_999_compress",
+   1
+  ]
+ ],
+ "obj": true
+}

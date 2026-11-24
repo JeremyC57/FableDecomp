@@ -1,0 +1,15 @@
+{
+ "address": "00900c8b",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "736d1139e4bc",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@UBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,31 @@
+{
+ "address": "00453ed2",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?Copy@CMemberDef@@QAEXPBU1@@Z -> 00453ef1 labelled 'CCombatAbilityMeleeAttackData::operator='"
+ ],
+ "src_sha": "622a4ddadc9e",
+ "DEF": [
+  "?Copy@CCombatAbilityFlourishCounterAttackDef_Methods@@QAEXPBVCCombatAbilityFlourishCounterAttackDef@@@Z"
+ ],
+ "UND": [
+  "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+  "?Copy@CMemberDef@@QAEXPBU1@@Z"
+ ],
+ "graded": "?Copy@CCombatAbilityFlourishCounterAttackDef_Methods@@QAEXPBVCCombatAbilityFlourishCounterAttackDef@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ],
+  [
+   "00453ef1",
+   "?Copy@CMemberDef@@QAEXPBU1@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

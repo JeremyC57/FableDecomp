@@ -1,0 +1,20 @@
+{
+ "address": "00cbe2ff",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z",
+ "warn": [],
+ "src_sha": "37949483eac3",
+ "DEF": [
+  "??0C3DVector@@QAE@MMM@Z",
+  "??GC3DVector@@QBE?BV0@ABV0@@Z",
+  "?GetSquaredMagnitude@C3DVector@@QBEMXZ",
+  "?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z"
+ ],
+ "UND": [
+  "__fltused"
+ ],
+ "graded": "?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z",
+ "bind": [],
+ "obj": true
+}

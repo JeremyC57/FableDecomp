@@ -1,0 +1,23 @@
+{
+ "address": "0045d2f7",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z",
+ "warn": [],
+ "src_sha": "bec1fd06109c",
+ "DEF": [
+  "?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4CFactionDef@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "0045d2fc",
+   "??4CFactionDef@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

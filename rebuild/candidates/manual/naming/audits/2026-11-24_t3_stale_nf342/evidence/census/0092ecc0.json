@@ -1,0 +1,15 @@
+{
+ "address": "0092ecc0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ",
+ "warn": [],
+ "src_sha": "220aaade7a42",
+ "DEF": [
+  "?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ"
+ ],
+ "UND": [],
+ "graded": "?OnReplace@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ",
+ "bind": [],
+ "obj": true
+}

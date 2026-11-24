@@ -1,0 +1,15 @@
+{
+ "address": "00a5f230",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ",
+ "warn": [],
+ "src_sha": "48c05824922e",
+ "DEF": [
+  "?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ"
+ ],
+ "UND": [],
+ "graded": "?CanUnload@CStreamingFontDataBankEntry@@UBE_NXZ",
+ "bind": [],
+ "obj": true
+}

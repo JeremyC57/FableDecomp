@@ -1,0 +1,23 @@
+{
+ "address": "008b4ca0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetName@CCombatSequenceWhisperBoast@@UBE?AVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "c216e3566de7",
+ "DEF": [
+  "?GetName@CCombatSequenceWhisperBoast@@UBE?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z"
+ ],
+ "graded": "?GetName@CCombatSequenceWhisperBoast@@UBE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

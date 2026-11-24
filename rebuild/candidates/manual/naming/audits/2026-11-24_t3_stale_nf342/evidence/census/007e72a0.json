@@ -1,0 +1,38 @@
+{
+ "address": "007e72a0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)"
+ ],
+ "src_sha": "5bc38af1359a",
+ "DEF": [
+  "??0?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ",
+  "??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ",
+  "??1?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAE@XZ",
+  "??_7CScriptGameResourceObjectScriptedThingBase@@6B@",
+  "??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z"
+ ],
+ "UND": [
+  "??0CBaseObject@@IAE@XZ",
+  "??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z",
+  "?Validate@CBaseObject@@UBEXXZ"
+ ],
+ "graded": "??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ",
+ "bind": [
+  [
+   "0099a380",
+   "??0CBaseObject@@IAE@XZ",
+   1
+  ],
+  [
+   "0127094c",
+   "??_7CScriptGameResourceObjectScriptedThingBase@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

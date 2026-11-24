@@ -1,0 +1,53 @@
+{
+ "address": "00b0c9c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CPSCUpdateNormal",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPSCBase (engine/CPSCBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)"
+ ],
+ "src_sha": "d808bcfa3a3a",
+ "DEF": [
+  "??0C3DVector@@QAE@MMM@Z",
+  "??0CEmitterList@NParticleEngine@@QAE@XZ",
+  "??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ",
+  "??1CPSCBase@NParticleEngine@@UAE@XZ",
+  "??_7CPSCUpdateNormal@NParticleEngine@@6B@",
+  "??_GCPSCUpdateNormal@NParticleEngine@@UAEPAXI@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@XZ",
+  "??0CPSCBase@NParticleEngine@@QAE@XZ",
+  "??1CBaseClassNonCopyable@@MAE@XZ",
+  "??3@YAXPAX@Z",
+  "??_GCPSCUpdateNormal@NParticleEngine@@UAEPAXI@Z",
+  "__fltused",
+  "_malloc"
+ ],
+ "graded": "??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ",
+ "bind": [
+  [
+   "0099e4b0",
+   "??0CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "00af2620",
+   "??0CPSCBase@NParticleEngine@@QAE@XZ",
+   1
+  ],
+  [
+   "00bfea0e",
+   "_malloc",
+   1
+  ],
+  [
+   "0129fc1c",
+   "??_7CPSCUpdateNormal@NParticleEngine@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

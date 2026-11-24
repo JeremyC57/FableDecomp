@@ -1,0 +1,23 @@
+{
+ "address": "008fd892",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z",
+ "warn": [],
+ "src_sha": "0a07c27125fe",
+ "DEF": [
+  "?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z"
+ ],
+ "UND": [
+  "?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z"
+ ],
+ "graded": "?Initialise@CAIStateGroup_BirdGroundWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z",
+ "bind": [
+  [
+   "008fcec0",
+   "?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

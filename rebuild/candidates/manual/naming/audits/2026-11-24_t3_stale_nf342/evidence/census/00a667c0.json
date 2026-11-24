@@ -1,0 +1,15 @@
+{
+ "address": "00a667c0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z",
+ "warn": [],
+ "src_sha": "bbdcc53a7f46",
+ "DEF": [
+  "?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z"
+ ],
+ "UND": [],
+ "graded": "?EventScanStart@CKeyboard@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z",
+ "bind": [],
+ "obj": true
+}

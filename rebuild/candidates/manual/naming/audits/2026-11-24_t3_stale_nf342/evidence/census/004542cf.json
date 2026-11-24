@@ -1,0 +1,25 @@
+{
+ "address": "004542cf",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CExplosiveTrailDef_CopyImpl@@YIXPAVCExplosiveTrailDef@@PBX@Z -> 004542d4 labelled 'CExplosiveTrailDef::operator='"
+ ],
+ "src_sha": "8b9b4fe7f5af",
+ "DEF": [
+  "?CExplosiveTrailDef_Copy@@YIXPAVCExplosiveTrailDef@@PBX@Z"
+ ],
+ "UND": [
+  "?CExplosiveTrailDef_CopyImpl@@YIXPAVCExplosiveTrailDef@@PBX@Z"
+ ],
+ "graded": "?CExplosiveTrailDef_Copy@@YIXPAVCExplosiveTrailDef@@PBX@Z",
+ "bind": [
+  [
+   "004542d4",
+   "?CExplosiveTrailDef_CopyImpl@@YIXPAVCExplosiveTrailDef@@PBX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

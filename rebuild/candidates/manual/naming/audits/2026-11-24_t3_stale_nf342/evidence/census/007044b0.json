@@ -1,0 +1,15 @@
+{
+ "address": "007044b0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?DeleteData@?$CCountedPointer@VCScriptThing@@@@SIXPAX@Z",
+ "warn": [],
+ "src_sha": "2aa54554bcb3",
+ "DEF": [
+  "?DeleteData@?$CCountedPointer@VCScriptThing@@@@SIXPAX@Z"
+ ],
+ "UND": [],
+ "graded": "?DeleteData@?$CCountedPointer@VCScriptThing@@@@SIXPAX@Z",
+ "bind": [],
+ "obj": true
+}

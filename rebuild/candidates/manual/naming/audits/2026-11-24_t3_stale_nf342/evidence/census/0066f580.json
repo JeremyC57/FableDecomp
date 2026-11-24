@@ -1,0 +1,15 @@
+{
+ "address": "0066f580",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z",
+ "warn": [],
+ "src_sha": "d85b24090369",
+ "DEF": [
+  "?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z"
+ ],
+ "UND": [],
+ "graded": "?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z",
+ "bind": [],
+ "obj": true
+}

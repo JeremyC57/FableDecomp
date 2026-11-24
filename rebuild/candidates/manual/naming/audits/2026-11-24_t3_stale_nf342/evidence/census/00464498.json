@@ -1,0 +1,29 @@
+{
+ "address": "00464498",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingHolySiteDef (engine/CThingHolySiteDef.h)",
+  "  WARN RELOC_NAME: ?CopyBase@CThingBaseDef@@QAEXPBVCDefClassBase@@@Z -> 00463950 labelled 'CThingBaseDef::operator='"
+ ],
+ "src_sha": "eef72bd8f2f4",
+ "DEF": [
+  "?Copy@CThingHolySiteDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "?CopyBase@CThingBaseDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "graded": "?Copy@CThingHolySiteDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00463950",
+   "?CopyBase@CThingBaseDef@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

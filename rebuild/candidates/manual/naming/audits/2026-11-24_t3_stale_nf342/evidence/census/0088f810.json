@@ -1,0 +1,35 @@
+{
+ "address": "0088f810",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "EntitySetOpinionReactionsEnabled",
+ "warn": [],
+ "src_sha": "4960a3937c8e",
+ "DEF": [
+  "?EntitySetOpinionReactionsEnabled@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@H@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z",
+  "??1CCharString@@QAE@XZ",
+  "?kName_0125fd40@@3QBDB"
+ ],
+ "graded": "?EntitySetOpinionReactionsEnabled@CGameScriptInterface_Methods@@QBEXABVCScriptThing@@H@Z",
+ "bind": [
+  [
+   "0099eae0",
+   "??1CCharString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "0125fd40",
+   "?kName_0125fd40@@3QBDB",
+   1
+  ]
+ ],
+ "obj": true
+}

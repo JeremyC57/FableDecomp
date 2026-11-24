@@ -1,0 +1,23 @@
+{
+ "address": "00902cdc",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ",
+ "warn": [],
+ "src_sha": "7bc1dc5faca1",
+ "DEF": [
+  "?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ"
+ ],
+ "UND": [
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ"
+ ],
+ "graded": "?GetBuilding@CAIStateGroup_ServeFoodAtTavern@@MAEPAVCThingBuilding@@XZ",
+ "bind": [
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   1
+  ]
+ ],
+ "obj": true
+}

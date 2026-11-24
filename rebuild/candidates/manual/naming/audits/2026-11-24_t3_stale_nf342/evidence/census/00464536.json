@@ -1,0 +1,23 @@
+{
+ "address": "00464536",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z",
+ "warn": [],
+ "src_sha": "8c8d626d189f",
+ "DEF": [
+  "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z"
+ ],
+ "UND": [
+  "??4CThingBaseDef@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z",
+ "bind": [
+  [
+   "00463950",
+   "??4CThingBaseDef@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

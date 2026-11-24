@@ -1,0 +1,27 @@
+{
+ "address": "004fb4a0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsLoadingAnyMap@CWorldMap@@QBE_NXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CLevelLoader (engine/CLevelLoader.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)"
+ ],
+ "src_sha": "dc090e79728b",
+ "DEF": [
+  "??C?$CCountedPointer@VCLevelLoader@@@@QBEPAVCLevelLoader@@XZ",
+  "?IsLoadingAnyMap@CWorldMap@@QBE_NXZ"
+ ],
+ "UND": [
+  "?IsBusy@CLevelLoader@@QBE_NXZ"
+ ],
+ "graded": "?IsLoadingAnyMap@CWorldMap@@QBE_NXZ",
+ "bind": [
+  [
+   "006c20a0",
+   "?IsBusy@CLevelLoader@@QBE_NXZ",
+   1
+  ]
+ ],
+ "obj": true
+}

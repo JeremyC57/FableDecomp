@@ -1,0 +1,15 @@
+{
+ "address": "00901382",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "0da84b13e959",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_IceTrollPoundGroundAttack@@MBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,27 @@
+{
+ "address": "006567ec",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "CLuaTable_AddChangeText_Thunk",
+ "warn": [
+  "  WARN RELOC_NAME: ?InsertBefore@ListWrapper_006567ec@@QAEXPAKUListIterator_006567ec@@K@Z -> 00656239 labelled '_global::StdList_Insert_00656239'",
+  "  WARN STANDIN_LEAF ?ListPushFrontWrapper_006567ec@ListWrapper_006567ec@@QAEXK@Z (catalog CLuaTable_AddChangeText_Thunk; address-only name)"
+ ],
+ "src_sha": "99a336cd0bb4",
+ "DEF": [
+  "??0ListIterator_006567ec@@QAE@ABU0@@Z",
+  "?ListPushFrontWrapper_006567ec@ListWrapper_006567ec@@QAEXK@Z"
+ ],
+ "UND": [
+  "?InsertBefore@ListWrapper_006567ec@@QAEXPAKUListIterator_006567ec@@K@Z"
+ ],
+ "graded": "?ListPushFrontWrapper_006567ec@ListWrapper_006567ec@@QAEXK@Z",
+ "bind": [
+  [
+   "00656239",
+   "?InsertBefore@ListWrapper_006567ec@@QAEXPAKUListIterator_006567ec@@K@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

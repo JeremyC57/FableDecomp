@@ -1,0 +1,15 @@
+{
+ "address": "00a76530",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "HasNeighbours",
+ "warn": [],
+ "src_sha": "9468316d6a9b",
+ "DEF": [
+  "?CNavSwitchableLeafNode_HasNeighbours@@YI_NPAVCNavSwitchableLeafNode@@@Z"
+ ],
+ "UND": [],
+ "graded": "?CNavSwitchableLeafNode_HasNeighbours@@YI_NPAVCNavSwitchableLeafNode@@@Z",
+ "bind": [],
+ "obj": true
+}

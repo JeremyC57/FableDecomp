@@ -1,0 +1,15 @@
+{
+ "address": "00453e80",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetSizeofClass",
+ "warn": [],
+ "src_sha": "e10d4df61d37",
+ "DEF": [
+  "?CCombatAbilityBlockUnarmedAttackDef_GetSizeofClass@@YIKPAX@Z"
+ ],
+ "UND": [],
+ "graded": "?CCombatAbilityBlockUnarmedAttackDef_GetSizeofClass@@YIKPAX@Z",
+ "bind": [],
+ "obj": true
+}

@@ -1,0 +1,96 @@
+{
+ "address": "00bdc180",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "UpdateBackgroundLOD",
+ "warn": [
+  "  WARN RELOC_NAME: ?AllocateLandscapeBackgroundTreeNode@@YIPAXKPAVCEngineLandscapeMap@@@Z -> 00bf62e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'",
+  "  WARN RELOC_NAME: ?BankFileList_RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ -> 00be04f0 labelled 'CEngineStaticMapFileBlockManager::DeleteUnusedBlocks'"
+ ],
+ "src_sha": "3c5c4018efe5",
+ "DEF": [
+  "??1CDataInputStream@@UAE@XZ",
+  "??1CMemoryDataInputStream@@UAE@XZ",
+  "??2@YAPAXIPAX@Z",
+  "?UpdateBackgroundLOD@CEngineLandscapeMap@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z"
+ ],
+ "UND": [
+  "??0CLandscapeBackgroundTreeNode@@QAE@PAVCEngineLandscapeMap@@PAXJ@Z",
+  "??0CMemoryDataInputStream@@QAE@PBXK@Z",
+  "??1CDataStream@@UAE@XZ",
+  "?AddRequest@CEngineStaticMapFileBlockManager@@QAEXJK_N@Z",
+  "?AllocateLandscapeBackgroundTreeNode@@YIPAXKPAVCEngineLandscapeMap@@@Z",
+  "?BankFileList_RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ",
+  "?BuildDefaultSection@CLandscapeBackgroundTreeNode@@QAEXKKKK@Z",
+  "?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z",
+  "?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z",
+  "?LoadHeader@CLandscapeBackgroundTreeNode@@QAEXAAVCMemoryDataInputStream@@@Z",
+  "?ReleaseFileBlockLoad@CEngineLandscapeMap@@QAEXXZ",
+  "?UpdateStaticLOD@CLandscapeBackgroundTreeNode@@QAE?AW4LS_LOADING_STATUS@@N_NPAVCEngineStaticMapFileBlockManager@@@Z",
+  "__fltused"
+ ],
+ "graded": "?UpdateBackgroundLOD@CEngineLandscapeMap@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z",
+ "bind": [
+  [
+   "00993b10",
+   "??1CDataStream@@UAE@XZ",
+   1
+  ],
+  [
+   "00994930",
+   "??0CMemoryDataInputStream@@QAE@PBXK@Z",
+   1
+  ],
+  [
+   "00bdc000",
+   "?ReleaseFileBlockLoad@CEngineLandscapeMap@@QAEXXZ",
+   1
+  ],
+  [
+   "00be0480",
+   "?IsBlockLoaded@CEngineStaticMapFileBlockManager@@QBE_NJ@Z",
+   1
+  ],
+  [
+   "00be04c0",
+   "?GetBlockData@CEngineStaticMapFileBlockManager@@QBEPBEJ@Z",
+   1
+  ],
+  [
+   "00be04f0",
+   "?BankFileList_RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ",
+   1
+  ],
+  [
+   "00be06b0",
+   "?AddRequest@CEngineStaticMapFileBlockManager@@QAEXJK_N@Z",
+   1
+  ],
+  [
+   "00bf62e0",
+   "?AllocateLandscapeBackgroundTreeNode@@YIPAXKPAVCEngineLandscapeMap@@@Z",
+   2
+  ],
+  [
+   "00bf6e20",
+   "??0CLandscapeBackgroundTreeNode@@QAE@PAVCEngineLandscapeMap@@PAXJ@Z",
+   2
+  ],
+  [
+   "00bf6f80",
+   "?BuildDefaultSection@CLandscapeBackgroundTreeNode@@QAEXKKKK@Z",
+   1
+  ],
+  [
+   "00bf7400",
+   "?LoadHeader@CLandscapeBackgroundTreeNode@@QAEXAAVCMemoryDataInputStream@@@Z",
+   1
+  ],
+  [
+   "00bf8810",
+   "?UpdateStaticLOD@CLandscapeBackgroundTreeNode@@QAE?AW4LS_LOADING_STATUS@@N_NPAVCEngineStaticMapFileBlockManager@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

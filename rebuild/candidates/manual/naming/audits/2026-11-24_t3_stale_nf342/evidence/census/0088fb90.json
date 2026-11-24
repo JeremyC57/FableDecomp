@@ -1,0 +1,23 @@
+{
+ "address": "0088fb90",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetBettingAmount@CGameScriptInterface@@UAEJXZ",
+ "warn": [],
+ "src_sha": "5605a32435f9",
+ "DEF": [
+  "?GetBettingAmount@CGameScriptInterface@@UAEJXZ"
+ ],
+ "UND": [
+  "?g_bettingAmount@@3JA"
+ ],
+ "graded": "?GetBettingAmount@CGameScriptInterface@@UAEJXZ",
+ "bind": [
+  [
+   "013bae20",
+   "?g_bettingAmount@@3JA",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,15 @@
+{
+ "address": "00994500",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z",
+ "warn": [],
+ "src_sha": "fa4a28605a65",
+ "DEF": [
+  "?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z"
+ ],
+ "UND": [],
+ "graded": "?SetPosition@CBufferedFileDataOutputStream@@UAEXK@Z",
+ "bind": [],
+ "obj": true
+}

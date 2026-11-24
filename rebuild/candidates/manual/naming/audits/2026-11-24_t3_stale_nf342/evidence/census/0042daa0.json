@@ -1,0 +1,15 @@
+{
+ "address": "0042daa0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetPSubDefInfoMap",
+ "warn": [],
+ "src_sha": "d829ab5fc395",
+ "DEF": [
+  "?CDefClassBase_GetPSubDefInfoMap@@YIPAUCVectorMap_ulong_CSubDefInfo@@PAVCDefClassBase@@@Z"
+ ],
+ "UND": [],
+ "graded": "?CDefClassBase_GetPSubDefInfoMap@@YIPAUCVectorMap_ulong_CSubDefInfo@@PAVCDefClassBase@@@Z",
+ "bind": [],
+ "obj": true
+}

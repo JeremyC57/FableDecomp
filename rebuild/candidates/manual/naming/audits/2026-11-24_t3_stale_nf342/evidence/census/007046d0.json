@@ -1,0 +1,27 @@
+{
+ "address": "007046d0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SetImplementation@CScriptThing@@QAEXV?$CCountedPointer@VCScriptThing@@@@@Z",
+ "warn": [],
+ "src_sha": "b2c7fc77f0ad",
+ "DEF": [
+  "??1?$CCountedPointer@VCScriptThing@@@@QAE@XZ",
+  "??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z",
+  "?ReleaseData@?$CCountedPointer@VCScriptThing@@@@QAEXXZ",
+  "?SetImplementation@CScriptThing@@QAEXV?$CCountedPointer@VCScriptThing@@@@@Z",
+  "?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z"
+ ],
+ "graded": "?SetImplementation@CScriptThing@@QAEXV?$CCountedPointer@VCScriptThing@@@@@Z",
+ "bind": [
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   2
+  ]
+ ],
+ "obj": true
+}

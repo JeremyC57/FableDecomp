@@ -1,0 +1,41 @@
+{
+ "address": "00d905c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CQ_HobbeCaveScript (engine/CQ_HobbeCaveScript.h)"
+ ],
+ "src_sha": "9c846145a185",
+ "DEF": [
+  "??4CTimer@@QAEAAV0@J@Z",
+  "??C?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ",
+  "?Get@?$CDefPointer@$$CBVCScriptDef@@@@QBEPBVCScriptDef@@XZ",
+  "?GetTime@CTimer@@QBEJXZ",
+  "?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z"
+ ],
+ "UND": [
+  "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+  "?pDSTGame@@3PAVCGameScriptInterfaceBase@@A",
+  "?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A"
+ ],
+ "graded": "?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z",
+ "bind": [
+  [
+   "00cb7940",
+   "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ",
+   1
+  ],
+  [
+   "0143e8f8",
+   "?pDSTGame@@3PAVCGameScriptInterfaceBase@@A",
+   2
+  ],
+  [
+   "0143e90c",
+   "?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

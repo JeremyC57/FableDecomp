@@ -1,0 +1,30 @@
+{
+ "address": "004aa8d0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "0ebd6a6f4224",
+ "DEF": [
+  "?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ",
+  "?ReferenceScriptThingGetDefName@?A0xc663d3b9@@YA?AVCCharString@@ABVCScriptThing@@@Z"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@ABV0@@Z",
+  "?NullString@CScriptThing@@2VCCharString@@A"
+ ],
+ "graded": "?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ec30",
+   "??0CCharString@@QAE@ABV0@@Z",
+   1
+  ],
+  [
+   "0143e8ec",
+   "?NullString@CScriptThing@@2VCCharString@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

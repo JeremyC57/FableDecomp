@@ -1,0 +1,15 @@
+{
+ "address": "00917300",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?InitStateGroup@CAIStateGroup_IdleAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z",
+ "warn": [],
+ "src_sha": "e133ccd447d4",
+ "DEF": [
+  "?InitStateGroup@CAIStateGroup_IdleAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z"
+ ],
+ "UND": [],
+ "graded": "?InitStateGroup@CAIStateGroup_IdleAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z",
+ "bind": [],
+ "obj": true
+}

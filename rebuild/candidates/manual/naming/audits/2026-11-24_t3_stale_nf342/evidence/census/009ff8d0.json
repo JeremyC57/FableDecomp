@@ -1,0 +1,85 @@
+{
+ "address": "009ff8d0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetFrame@CGraphicInfo@@",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicFrame (engine/CGraphicFrame.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CManagedTexture (engine/CManagedTexture.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicInfoFrame (engine/CGraphicInfoFrame.h)"
+ ],
+ "src_sha": "7583309b18fa",
+ "DEF": [
+  "??1CGraphicFrameData@@QAE@XZ",
+  "??1CTexturePointer@@QAE@XZ",
+  "??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z",
+  "??4CGraphicFrame@@QAEAAV0@ABV0@@Z",
+  "??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ",
+  "??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ",
+  "??_GCGraphicFrameData@@QAEPAXI@Z",
+  "?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ",
+  "?DecRef@CGraphicFrameData@@QAEXXZ",
+  "?GetFrame@CGraphicInfo@@QAE_NAAVCGraphicFrame@@KKK@Z",
+  "?GetFrame@CGraphicInfoFrame@@QAE_NAAVCGraphicFrame@@KK@Z",
+  "?Touch@CManagedTexture@@QAEXXZ",
+  "?Touch@CResource@@QAEXXZ"
+ ],
+ "UND": [
+  "??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z",
+  "?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z",
+  "?ListInsert@CResource@@AAEXPAV1@0@Z",
+  "?ListRemove@CResource@@AAEXXZ",
+  "?Uninitialise@CGraphicFrameData@@QAEXXZ"
+ ],
+ "graded": "?GetFrame@CGraphicInfo@@QAE_NAAVCGraphicFrame@@KKK@Z",
+ "bind": [
+  [
+   "009fbf90",
+   "?ListInsert@CResource@@AAEXPAV1@0@Z",
+   2
+  ],
+  [
+   "009fbfb0",
+   "?ListRemove@CResource@@AAEXXZ",
+   2
+  ],
+  [
+   "009fcba0",
+   "?Uninitialise@CGraphicFrameData@@QAEXXZ",
+   2
+  ],
+  [
+   "009fde80",
+   "?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z",
+   3
+  ],
+  [
+   "009fe380",
+   "??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z",
+   1
+  ],
+  [
+   "009ff6b0",
+   "?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   4
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

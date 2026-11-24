@@ -1,0 +1,43 @@
+{
+ "address": "00ac0ee0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?FindNextMap@C3DMeshFileMaterialChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@ABV2@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DMeshFileMapChunk (engine/C3DMeshFileMapChunk.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C3DMeshFileMaterialChunk (engine/C3DMeshFileMaterialChunk.h)"
+ ],
+ "src_sha": "09116126b720",
+ "DEF": [
+  "??$?0$$CBVC3DMeshFileMapChunk@@@?$CCountedPointer@$$CBVCChunkedFileChunk@@@@QAE@ABV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@@Z",
+  "??$SetStaticCast@VCChunkedFileChunk@@@?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z",
+  "??0?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAE@ABV0@@Z",
+  "??0?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@$$CBVCChunkedFileChunk@@@@QAE@XZ",
+  "??1?$CCountedPointer@VCChunkedFileChunk@@@@QAE@XZ",
+  "?FindNextMap@C3DMeshFileMaterialChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@ABV2@@Z",
+  "?ReleaseData@?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAEXXZ",
+  "?ShareData@?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@QAEXPBVC3DMeshFileMapChunk@@PAVCCPPointerInfo@@@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z"
+ ],
+ "graded": "?FindNextMap@C3DMeshFileMaterialChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@ABV2@@Z",
+ "bind": [
+  [
+   "00aa7ff0",
+   "?FindNextSubChunkOfType@CChunkedFileSuperChunk@@QBE?BV?$CCountedPointer@VCChunkedFileChunk@@@@ABV?$CCountedPointer@$$CBVCChunkedFileChunk@@@@@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   3
+  ]
+ ],
+ "obj": true
+}

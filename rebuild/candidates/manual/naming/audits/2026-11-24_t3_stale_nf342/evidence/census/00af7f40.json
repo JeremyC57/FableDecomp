@@ -1,0 +1,29 @@
+{
+ "address": "00af7f40",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Alloc",
+ "warn": [],
+ "src_sha": "798bbdbdf0db",
+ "DEF": [
+  "?CPSCOrbit_Alloc@@YAPAUCPSCOrbit@@XZ"
+ ],
+ "UND": [
+  "??0CPSCOrbit@@QAE@XZ",
+  "??2@YAPAXI@Z"
+ ],
+ "graded": "?CPSCOrbit_Alloc@@YAPAUCPSCOrbit@@XZ",
+ "bind": [
+  [
+   "00b16eb0",
+   "??0CPSCOrbit@@QAE@XZ",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

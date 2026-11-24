@@ -1,0 +1,15 @@
+{
+ "address": "00901ea9",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ",
+ "warn": [],
+ "src_sha": "c1b7a665a953",
+ "DEF": [
+  "?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ"
+ ],
+ "UND": [],
+ "graded": "?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ",
+ "bind": [],
+ "obj": true
+}

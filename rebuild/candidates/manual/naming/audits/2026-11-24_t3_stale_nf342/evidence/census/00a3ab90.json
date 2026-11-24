@@ -1,0 +1,17 @@
+{
+ "address": "00a3ab90",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "SetStreamInput",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)"
+ ],
+ "src_sha": "56fa95f6ee3e",
+ "DEF": [
+  "?SetStreamInput@CCompressorZlib@@QAEXPAXK@Z"
+ ],
+ "UND": [],
+ "graded": "?SetStreamInput@CCompressorZlib@@QAEXPAXK@Z",
+ "bind": [],
+ "obj": true
+}

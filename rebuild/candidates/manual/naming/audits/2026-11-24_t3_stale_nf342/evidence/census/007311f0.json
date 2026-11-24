@@ -1,0 +1,35 @@
+{
+ "address": "007311f0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "FrameUpdate",
+ "warn": [],
+ "src_sha": "b582101121b5",
+ "DEF": [
+  "?FrameUpdate@CTCDoor_Methods@@QAEXXZ"
+ ],
+ "UND": [
+  "?UpdateAnimation@CTCDoor_Methods@@QAEXXZ",
+  "?UpdateOpenStatusTriggerTypePerson@CTCDoor_Methods@@QAEXXZ",
+  "?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ"
+ ],
+ "graded": "?FrameUpdate@CTCDoor_Methods@@QAEXXZ",
+ "bind": [
+  [
+   "007308f0",
+   "?UpdateAnimation@CTCDoor_Methods@@QAEXXZ",
+   1
+  ],
+  [
+   "00730f90",
+   "?UpdateOpenStatusTriggerTypePerson@CTCDoor_Methods@@QAEXXZ",
+   1
+  ],
+  [
+   "007310c0",
+   "?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ",
+   1
+  ]
+ ],
+ "obj": true
+}

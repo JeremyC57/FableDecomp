@@ -1,0 +1,29 @@
+{
+ "address": "00b5ead0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ",
+ "warn": [],
+ "src_sha": "ffbdcc889830",
+ "DEF": [
+  "??_C@_0CB@JLMIHCLP@ENGINE_SCREEN_EFFECT_RADIAL_BLUR@",
+  "?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ"
+ ],
+ "UND": [
+  "??0CCharString@@QAE@PBDJ@Z"
+ ],
+ "graded": "?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ",
+ "bind": [
+  [
+   "0099ebf0",
+   "??0CCharString@@QAE@PBDJ@Z",
+   1
+  ],
+  [
+   "012a2690",
+   "??_C@_0CB@JLMIHCLP@ENGINE_SCREEN_EFFECT_RADIAL_BLUR@",
+   1
+  ]
+ ],
+ "obj": true
+}

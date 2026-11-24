@@ -1,0 +1,34 @@
+{
+ "address": "004ebbf2",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CAnimatingObjectDef (engine/CAnimatingObjectDef.h)",
+  "  WARN RELOC_NAME: ?CopyBase@CAnimatingObjectDef@@QAEXPBVCDefClassBase@@@Z -> 00431f10 labelled 'CDefClassBase::operator='",
+  "  WARN RELOC_NAME: ?Copy@SubMember@@QAEXPBU1@@Z -> 00471832 labelled '_unattributed::operator='"
+ ],
+ "src_sha": "2bf36598a01c",
+ "DEF": [
+  "?Copy@CAnimatingObjectDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "?Copy@SubMember@@QAEXPBU1@@Z",
+  "?CopyBase@CAnimatingObjectDef@@QAEXPBVCDefClassBase@@@Z"
+ ],
+ "graded": "?Copy@CAnimatingObjectDef@@QAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "?CopyBase@CAnimatingObjectDef@@QAEXPBVCDefClassBase@@@Z",
+   1
+  ],
+  [
+   "00471832",
+   "?Copy@SubMember@@QAEXPBU1@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,38 @@
+{
+ "address": "00b23b50",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SetCamera@CEngine@@UAEXPBVCCamera@@@Z",
+ "warn": [
+  "  WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'",
+  "  WARN RELOC_NAME: ?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z -> 00b2fbf0 labelled '_global::SetMember_dword0xc_00b2fbf0'"
+ ],
+ "src_sha": "6c677985bd03",
+ "DEF": [
+  "?SetCamera@CEngine@@UAEXPBVCCamera@@@Z"
+ ],
+ "UND": [
+  "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+  "?Process@CEngineCamera@@QAEX_N@Z",
+  "?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z"
+ ],
+ "graded": "?SetCamera@CEngine@@UAEXPBVCCamera@@@Z",
+ "bind": [
+  [
+   "00b2fbf0",
+   "?SetGameCamera@CEngineCamera@@QAEXPBVCCamera@@@Z",
+   1
+  ],
+  [
+   "00b314e0",
+   "?Process@CEngineCamera@@QAEX_N@Z",
+   1
+  ],
+  [
+   "01436ea0",
+   "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+   2
+  ]
+ ],
+ "obj": true
+}

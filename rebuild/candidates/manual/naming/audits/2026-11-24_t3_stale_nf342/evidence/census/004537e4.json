@@ -1,0 +1,25 @@
+{
+ "address": "004537e4",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?CTCNoiseDef_Copy_impl@@YIXPAVCTCNoiseDef@@PAXPBVCDefClassBase@@@Z -> 004537e9 labelled 'CTCNoiseDef::operator='"
+ ],
+ "src_sha": "101f15147804",
+ "DEF": [
+  "?CTCNoiseDef_Copy@@YIXPAVCTCNoiseDef@@PAXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "?CTCNoiseDef_Copy_impl@@YIXPAVCTCNoiseDef@@PAXPBVCDefClassBase@@@Z"
+ ],
+ "graded": "?CTCNoiseDef_Copy@@YIXPAVCTCNoiseDef@@PAXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "004537e9",
+   "?CTCNoiseDef_Copy_impl@@YIXPAVCTCNoiseDef@@PAXPBVCDefClassBase@@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

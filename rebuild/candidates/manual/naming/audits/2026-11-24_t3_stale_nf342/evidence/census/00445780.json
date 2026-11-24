@@ -1,0 +1,15 @@
+{
+ "address": "00445780",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z",
+ "warn": [],
+ "src_sha": "a272f5d07311",
+ "DEF": [
+  "?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsInputTypeWithButton@CInputTypeMouseWheelMovementUpEvent@@UBE_NW4EXboxControllerButton@@@Z",
+ "bind": [],
+ "obj": true
+}

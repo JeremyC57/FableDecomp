@@ -1,0 +1,110 @@
+{
+ "address": "00b4f510",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "PreLayerRender",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMatrix4x4 (engine/CMatrix4x4.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams (engine/CEngineComponentRenderParams.h)",
+  "  WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'"
+ ],
+ "src_sha": "11374a003fb1",
+ "DEF": [
+  "?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z",
+  "?Capture@CRenderStateCaptureBlock@@QAEXXZ",
+  "?GetHeight@CTexture@@QBEKK@Z",
+  "?GetWidth@CTexture@@QBEKK@Z",
+  "?PreLayerRender@CEngineShadowRenderer_Methods@@QAEXABVCEngineComponentRenderParams@@@Z",
+  "?SetAlphaRef@CRenderStateManager@@QAEXK@Z",
+  "?SetAlphaTestEnable@CRenderStateManager@@QAEX_N@Z",
+  "?SetColourWriteEnable@CRenderStateManager@@QAEX_N@Z",
+  "?SetDepthOffset@CRenderStateManager@@QAEXM@Z",
+  "?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z",
+  "?SetSlopeScaledDepthOffset@CRenderStateManager@@QAEXM@Z",
+  "?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z",
+  "__real@4f800000"
+ ],
+ "UND": [
+  "?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z",
+  "?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A",
+  "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+  "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+  "?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A",
+  "?GetDimensions@CTexture@@QBE?AVC2DExtentsI@@K@Z",
+  "?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z",
+  "?SetProjectionTransform@CShaderRenderManager@@QAEXABVCMatrix4x4@@@Z",
+  "?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z",
+  "?SetViewTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z",
+  "?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A",
+  "__fltused"
+ ],
+ "graded": "?PreLayerRender@CEngineShadowRenderer_Methods@@QAEXABVCEngineComponentRenderParams@@@Z",
+ "bind": [
+  [
+   "00988350",
+   "?SetViewTransform@CShaderRenderManager@@QAEXABVCMatrix3x4@@@Z",
+   1
+  ],
+  [
+   "00988540",
+   "?SetProjectionTransform@CShaderRenderManager@@QAEXABVCMatrix4x4@@@Z",
+   1
+  ],
+  [
+   "009be420",
+   "?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z",
+   2
+  ],
+  [
+   "009bf160",
+   "?SetRenderTarget@CDisplayManager@@QAE_NAAVCRenderTarget@@@Z",
+   1
+  ],
+  [
+   "009f9db0",
+   "?GetDimensions@CTexture@@QBE?AVC2DExtentsI@@K@Z",
+   2
+  ],
+  [
+   "00a0aa80",
+   "?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z",
+   1
+  ],
+  [
+   "0122dcb4",
+   "__real@4f800000",
+   2
+  ],
+  [
+   "013cb508",
+   "?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A",
+   1
+  ],
+  [
+   "01436e14",
+   "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+   2
+  ],
+  [
+   "01436e18",
+   "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+   6
+  ],
+  [
+   "01436e1c",
+   "?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A",
+   2
+  ],
+  [
+   "01436e60",
+   "?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A",
+   2
+  ]
+ ],
+ "obj": true
+}

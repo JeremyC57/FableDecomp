@@ -1,0 +1,15 @@
+{
+ "address": "008bff60",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "IsToFaceTarget",
+ "warn": [],
+ "src_sha": "d6b132d3ad23",
+ "DEF": [
+  "?CCreatureAction_DiagonalStrafeBR_IsToFaceTarget@@YI_NXZ"
+ ],
+ "UND": [],
+ "graded": "?CCreatureAction_DiagonalStrafeBR_IsToFaceTarget@@YI_NXZ",
+ "bind": [],
+ "obj": true
+}

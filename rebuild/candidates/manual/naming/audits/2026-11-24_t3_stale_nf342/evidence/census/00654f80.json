@@ -1,0 +1,29 @@
+{
+ "address": "00654f80",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??0CChangeText@CStatBar@NPlayerGui@@QAE@ABVC2DVector@@ABVCRGBColour@@ABVCWideString@@J_N@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)"
+ ],
+ "src_sha": "0df4a26f6006",
+ "DEF": [
+  "??0CChangeText@CStatBar@NPlayerGui@@QAE@ABVC2DVector@@ABVCRGBColour@@ABVCWideString@@J_N@Z",
+  "??0CRGBColour@@QAE@ABV0@@Z",
+  "?Set@CRGBColour@@QAEXEEEE@Z"
+ ],
+ "UND": [
+  "??0CWideString@@QAE@ABV0@@Z",
+  "__fltused"
+ ],
+ "graded": "??0CChangeText@CStatBar@NPlayerGui@@QAE@ABVC2DVector@@ABVCRGBColour@@ABVCWideString@@J_N@Z",
+ "bind": [
+  [
+   "0099b720",
+   "??0CWideString@@QAE@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

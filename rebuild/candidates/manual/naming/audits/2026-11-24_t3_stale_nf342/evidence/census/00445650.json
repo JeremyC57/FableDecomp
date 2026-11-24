@@ -1,0 +1,15 @@
+{
+ "address": "00445650",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z",
+ "warn": [],
+ "src_sha": "e449a6d1b989",
+ "DEF": [
+  "?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsInputTypeWithMouseButton@CInputTypeXboxPadButtonEvent@@UBE_NW4EMouseButtonControl@@@Z",
+ "bind": [],
+ "obj": true
+}

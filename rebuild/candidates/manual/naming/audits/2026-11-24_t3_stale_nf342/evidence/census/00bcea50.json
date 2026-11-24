@@ -1,0 +1,15 @@
+{
+ "address": "00bcea50",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Update",
+ "warn": [],
+ "src_sha": "a0f8266b3ece",
+ "DEF": [
+  "?CEngineInternalPrimitiveAnimatedMeshFromFile_Update@@YGXHH@Z"
+ ],
+ "UND": [],
+ "graded": "?CEngineInternalPrimitiveAnimatedMeshFromFile_Update@@YGXHH@Z",
+ "bind": [],
+ "obj": true
+}

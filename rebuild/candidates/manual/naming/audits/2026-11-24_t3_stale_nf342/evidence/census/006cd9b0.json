@@ -1,0 +1,24 @@
+{
+ "address": "006cd9b0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z",
+ "warn": [],
+ "src_sha": "55dc3ff14a9d",
+ "DEF": [
+  "?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z",
+  "__real@3f800000"
+ ],
+ "UND": [
+  "__fltused"
+ ],
+ "graded": "?GetTerrainDesirabilityAt@CGroundNavigatorExternalInterface@@UBEMABVC3DVector@@@Z",
+ "bind": [
+  [
+   "0122ded8",
+   "__real@3f800000",
+   1
+  ]
+ ],
+ "obj": true
+}

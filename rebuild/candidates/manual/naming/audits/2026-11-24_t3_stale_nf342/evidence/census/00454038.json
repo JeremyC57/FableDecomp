@@ -1,0 +1,25 @@
+{
+ "address": "00454038",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN RELOC_NAME: ?base_copy@@YIXPAVCDragonActionNapalmDef@@PAX@Z -> 0045403d labelled '_unattributed::operator='"
+ ],
+ "src_sha": "9afd4f733421",
+ "DEF": [
+  "?CDragonActionNapalmDef_Copy@@YIXPAVCDragonActionNapalmDef@@PAX@Z"
+ ],
+ "UND": [
+  "?base_copy@@YIXPAVCDragonActionNapalmDef@@PAX@Z"
+ ],
+ "graded": "?CDragonActionNapalmDef_Copy@@YIXPAVCDragonActionNapalmDef@@PAX@Z",
+ "bind": [
+  [
+   "0045403d",
+   "?base_copy@@YIXPAVCDragonActionNapalmDef@@PAX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

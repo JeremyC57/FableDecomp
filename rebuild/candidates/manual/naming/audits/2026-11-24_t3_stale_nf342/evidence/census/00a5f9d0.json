@@ -1,0 +1,25 @@
+{
+ "address": "00a5f9d0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "GetLastModifiedTime",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDateAndTime (engine/CDateAndTime.h)"
+ ],
+ "src_sha": "8a853171a975",
+ "DEF": [
+  "?GetLastModifiedTime@CStreamingFontDataBank_Methods@@QAE?AVCDateAndTime@@ABVCCharString@@@Z"
+ ],
+ "UND": [
+  "??0CDateAndTime@@QAE@JKKKKKK@Z"
+ ],
+ "graded": "?GetLastModifiedTime@CStreamingFontDataBank_Methods@@QAE?AVCDateAndTime@@ABVCCharString@@@Z",
+ "bind": [
+  [
+   "009e9a70",
+   "??0CDateAndTime@@QAE@JKKKKKK@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

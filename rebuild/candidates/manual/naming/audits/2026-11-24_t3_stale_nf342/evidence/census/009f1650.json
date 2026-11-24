@@ -1,0 +1,17 @@
+{
+ "address": "009f1650",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "AddEvent",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CGameEventPackage (engine/CGameEventPackage.h)"
+ ],
+ "src_sha": "c19b4dca2649",
+ "DEF": [
+  "?AddEvent@CGameEventPackage@@QAEXABVCGameEvent@@@Z"
+ ],
+ "UND": [],
+ "graded": "?AddEvent@CGameEventPackage@@QAEXABVCGameEvent@@@Z",
+ "bind": [],
+ "obj": true
+}

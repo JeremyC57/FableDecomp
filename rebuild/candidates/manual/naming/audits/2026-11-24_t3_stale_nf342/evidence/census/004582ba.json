@@ -1,0 +1,29 @@
+{
+ "address": "004582ba",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "`scalar_deleting_destructor'",
+ "warn": [],
+ "src_sha": "9d11a19d10e7",
+ "DEF": [
+  "?CSpecialAbilitiesUnholyPowerDef_scalar_deleting_destructor@@YIPAXPAVCSpecialAbilitiesUnholyPowerDef@@HI@Z"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "@CSpecialAbilitiesUnholyPowerDef_dtor@4"
+ ],
+ "graded": "?CSpecialAbilitiesUnholyPowerDef_scalar_deleting_destructor@@YIPAXPAVCSpecialAbilitiesUnholyPowerDef@@HI@Z",
+ "bind": [
+  [
+   "004582d6",
+   "@CSpecialAbilitiesUnholyPowerDef_dtor@4",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,15 @@
+{
+ "address": "004457d0",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z",
+ "warn": [],
+ "src_sha": "cc934f44595f",
+ "DEF": [
+  "?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z"
+ ],
+ "UND": [],
+ "graded": "?IsInputTypeWithMouseButton@CInputTypeMouseWheelMovementDownEvent@@UBE_NW4EMouseButtonControl@@@Z",
+ "bind": [],
+ "obj": true
+}

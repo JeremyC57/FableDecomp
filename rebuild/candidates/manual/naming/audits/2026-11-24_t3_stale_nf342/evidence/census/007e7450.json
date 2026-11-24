@@ -1,0 +1,16 @@
+{
+ "address": "007e7450",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ",
+ "warn": [],
+ "src_sha": "cc34f2c9c36d",
+ "DEF": [
+  "?Get@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QBEPAVCScriptGameResourceObjectScriptedThingBase@@XZ",
+  "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ"
+ ],
+ "UND": [],
+ "graded": "?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ",
+ "bind": [],
+ "obj": true
+}

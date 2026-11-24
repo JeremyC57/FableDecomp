@@ -1,0 +1,47 @@
+{
+ "address": "0066f8b0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)"
+ ],
+ "src_sha": "b0194f891a18",
+ "DEF": [
+  "??0C2DVector@@QAE@ABVC3DVector@@@Z",
+  "??0C2DVector@@QAE@MM@Z",
+  "?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z",
+  "__real@3f800000",
+  "__real@bf800000"
+ ],
+ "UND": [
+  "?GetMouseMovement@CInputEvent@@QBE?AVC3DVector@@XZ",
+  "?g_MouseMovementScale@@3MB",
+  "__fltused"
+ ],
+ "graded": "?GetControlDirection@CInputTypeMouseMovementEvent@@UBE?AVC2DVector@@ABVCInputEvent@@@Z",
+ "bind": [
+  [
+   "00a043d0",
+   "?GetMouseMovement@CInputEvent@@QBE?AVC3DVector@@XZ",
+   1
+  ],
+  [
+   "0122ded8",
+   "__real@3f800000",
+   2
+  ],
+  [
+   "0122dee0",
+   "__real@bf800000",
+   1
+  ],
+  [
+   "0125b24c",
+   "?g_MouseMovementScale@@3MB",
+   2
+  ]
+ ],
+ "obj": true
+}

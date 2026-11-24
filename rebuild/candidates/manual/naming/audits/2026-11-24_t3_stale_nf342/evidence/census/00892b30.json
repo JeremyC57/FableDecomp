@@ -1,0 +1,35 @@
+{
+ "address": "00892b30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?IsSafeToDisplayGameInfo@CGameScriptInterface@@UBE_NXZ",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)",
+  "  WARN RELOC_NAME: ?Query@CSub@@QAE_N_N@Z -> 00490927 labelled 'CSubtitleRenderer::IsAllowedToSetText'"
+ ],
+ "src_sha": "ae7be4ccabc6",
+ "DEF": [
+  "??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ",
+  "?IsSafeToDisplayGameInfo@CGameScriptInterface@@UBE_NXZ"
+ ],
+ "UND": [
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+  "?Query@CSub@@QAE_N_N@Z"
+ ],
+ "graded": "?IsSafeToDisplayGameInfo@CGameScriptInterface@@UBE_NXZ",
+ "bind": [
+  [
+   "00490927",
+   "?Query@CSub@@QAE_N_N@Z",
+   1
+  ],
+  [
+   "013b8790",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

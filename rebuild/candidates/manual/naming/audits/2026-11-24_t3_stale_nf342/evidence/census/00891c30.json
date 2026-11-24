@@ -1,0 +1,32 @@
+{
+ "address": "00891c30",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?RemoveAllQuestInfoElements@CGameScriptInterface@@UBEXXZ",
+ "warn": [
+  "  WARN RELOC_NAME: ?g_gameObj@@3PAUGameObj@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'",
+  "  WARN RELOC_NAME: ?QuestMgr_RemoveAll@@YIXPAUQuestMgr@@@Z -> 00647319 labelled 'NPlayerGui::CDrawQuestInfo::Clear'"
+ ],
+ "src_sha": "4ab62bfa795a",
+ "DEF": [
+  "?RemoveAllQuestInfoElements@CGameScriptInterface@@UBEXXZ"
+ ],
+ "UND": [
+  "?QuestMgr_RemoveAll@@YIXPAUQuestMgr@@@Z",
+  "?g_gameObj@@3PAUGameObj@@A"
+ ],
+ "graded": "?RemoveAllQuestInfoElements@CGameScriptInterface@@UBEXXZ",
+ "bind": [
+  [
+   "00647319",
+   "?QuestMgr_RemoveAll@@YIXPAUQuestMgr@@@Z",
+   1
+  ],
+  [
+   "013b8790",
+   "?g_gameObj@@3PAUGameObj@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

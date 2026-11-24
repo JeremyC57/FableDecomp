@@ -1,0 +1,114 @@
+{
+ "address": "006c1150",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SetRented@CTCBuyableHouse@@QAEX_N@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)"
+ ],
+ "src_sha": "2d77475f62d0",
+ "DEF": [
+  "??$GetTC@VCTCHeroStats@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCHeroStats@@@Z",
+  "??D?$CCountedPointer@VCPlayerGui@@@@QBEAAVCPlayerGui@@XZ",
+  "??D?$scoped_ptr@VCPlayerManager@@@@QBEAAVCPlayerManager@@XZ",
+  "??_C@_06CBNGNPJL@bitset?$AA@",
+  "?Get@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ",
+  "?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ",
+  "?Get@CMainGameComponent@@SIPAV1@XZ",
+  "?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ",
+  "?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z",
+  "?IsDead@CThing@@QBE_NXZ",
+  "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+  "?SetRented@CTCBuyableHouse@@QAEX_N@Z",
+  "?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z",
+  "?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z",
+  "?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z",
+  "?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z",
+  "?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z",
+  "?__stl_throw_out_of_range@std@@YAXPBD@Z",
+  "?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ",
+  "?test@?$bitset@$0BBC@@std@@QBE_NI@Z"
+ ],
+ "UND": [
+  "?CreateMainSignPost@CTCBuyableHouse@@AAEXXZ",
+  "?Evict@CTCBuyableHouse@@AAEXXZ",
+  "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+  "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+  "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+  "?Kill@CThing@@QAEX_N@Z",
+  "?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ",
+  "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+  "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+  "?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z",
+  "_abort",
+  "_puts"
+ ],
+ "graded": "?SetRented@CTCBuyableHouse@@QAEX_N@Z",
+ "bind": [
+  [
+   "0040f020",
+   "?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z",
+   1
+  ],
+  [
+   "004378c0",
+   "?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z",
+   1
+  ],
+  [
+   "00449970",
+   "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ",
+   1
+  ],
+  [
+   "00487dc0",
+   "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ",
+   1
+  ],
+  [
+   "004c9b80",
+   "?Kill@CThing@@QAEX_N@Z",
+   1
+  ],
+  [
+   "006bfb90",
+   "?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ",
+   1
+  ],
+  [
+   "006c0f00",
+   "?CreateMainSignPost@CTCBuyableHouse@@AAEXXZ",
+   1
+  ],
+  [
+   "006c0fd0",
+   "?Evict@CTCBuyableHouse@@AAEXXZ",
+   1
+  ],
+  [
+   "00a01b50",
+   "?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ",
+   3
+  ],
+  [
+   "013b86a0",
+   "?PMainGameComponent@CMainGameComponent@@1PAV1@A",
+   1
+  ],
+  [
+   "013b8790",
+   "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,27 @@
+{
+ "address": "0045e55a",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CCombatDialogueDef (engine/CCombatDialogueDef.h)"
+ ],
+ "src_sha": "fe0824de2e08",
+ "DEF": [
+  "??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z",
+  "?Copy@CCombatDialogueDef@@QAEXPBVCParentDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z",
+  "__fltused"
+ ],
+ "graded": "??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z",
+ "bind": [
+  [
+   "00431ed0",
+   "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

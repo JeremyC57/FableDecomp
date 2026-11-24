@@ -1,0 +1,61 @@
+{
+ "address": "00999230",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?PathExists@CAFile@@SI_NABVCWideString@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)"
+ ],
+ "src_sha": "6ebf1c8c3f2e",
+ "DEF": [
+  "?PathExists@CAFile@@SI_NABVCWideString@@@Z"
+ ],
+ "UND": [
+  "??0CWideString@@QAE@XZ",
+  "??1CWideString@@QAE@XZ",
+  "??4CWideString@@QAEABV0@ABV0@@Z",
+  "??BCWideString@@QBEPBGXZ",
+  "?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z",
+  "?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ",
+  "__imp__GetFileAttributesW@4"
+ ],
+ "graded": "?PathExists@CAFile@@SI_NABVCWideString@@@Z",
+ "bind": [
+  [
+   "00997f80",
+   "?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ",
+   1
+  ],
+  [
+   "00998c90",
+   "?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z",
+   1
+  ],
+  [
+   "0099aed0",
+   "??0CWideString@@QAE@XZ",
+   1
+  ],
+  [
+   "0099af00",
+   "??BCWideString@@QBEPBGXZ",
+   1
+  ],
+  [
+   "0099b510",
+   "??1CWideString@@QAE@XZ",
+   4
+  ],
+  [
+   "0099b7d0",
+   "??4CWideString@@QAEABV0@ABV0@@Z",
+   1
+  ],
+  [
+   "0143fdbc",
+   "__imp__GetFileAttributesW@4",
+   1
+  ]
+ ],
+ "obj": true
+}

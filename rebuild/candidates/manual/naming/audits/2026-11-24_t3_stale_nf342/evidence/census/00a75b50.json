@@ -1,0 +1,15 @@
+{
+ "address": "00a75b50",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ",
+ "warn": [],
+ "src_sha": "43873b831a53",
+ "DEF": [
+  "?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ"
+ ],
+ "UND": [],
+ "graded": "?RemoveRegionZero@CNavNavigableLeafNode@@MAE_NXZ",
+ "bind": [],
+ "obj": true
+}

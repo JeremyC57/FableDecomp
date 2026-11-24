@@ -1,0 +1,23 @@
+{
+ "address": "0088fbd0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ",
+ "warn": [],
+ "src_sha": "04bab365b6ff",
+ "DEF": [
+  "?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ"
+ ],
+ "UND": [
+  "?g_SpotTheAdditionBeaten@@3_NA"
+ ],
+ "graded": "?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ",
+ "bind": [
+  [
+   "013bae25",
+   "?g_SpotTheAdditionBeaten@@3_NA",
+   1
+  ]
+ ],
+ "obj": true
+}

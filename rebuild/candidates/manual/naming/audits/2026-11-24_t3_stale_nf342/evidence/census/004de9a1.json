@@ -1,0 +1,37 @@
+{
+ "address": "004de9a1",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)"
+ ],
+ "src_sha": "754767755d97",
+ "DEF": [
+  "??_C@_08KGEIBGG@Priority?$AA@",
+  "?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z"
+ ],
+ "UND": [
+  "??$Transfer@J@CPersistContext@@QAEXAAJ@Z",
+  "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z"
+ ],
+ "graded": "?Transfer@CCrateStackDef@@UAEXAAVCPersistContext@@@Z",
+ "bind": [
+  [
+   "00410be0",
+   "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+   1
+  ],
+  [
+   "00431102",
+   "??$Transfer@J@CPersistContext@@QAEXAAJ@Z",
+   1
+  ],
+  [
+   "01241928",
+   "??_C@_08KGEIBGG@Priority?$AA@",
+   1
+  ]
+ ],
+ "obj": true
+}

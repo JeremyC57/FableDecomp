@@ -1,0 +1,25 @@
+{
+ "address": "004e0f1b",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Copy",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)"
+ ],
+ "src_sha": "73f4de5642fe",
+ "DEF": [
+  "?CDrunkennessDef_Copy@@YIXPAVCDrunkennessDef@@HPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4CDefClassBase@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?CDrunkennessDef_Copy@@YIXPAVCDrunkennessDef@@HPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

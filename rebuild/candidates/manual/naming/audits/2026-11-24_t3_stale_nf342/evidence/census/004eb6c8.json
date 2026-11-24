@@ -1,0 +1,29 @@
+{
+ "address": "004eb6c8",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z",
+ "warn": [],
+ "src_sha": "6d2fc173013f",
+ "DEF": [
+  "?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z"
+ ],
+ "UND": [
+  "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z",
+  "??4CDefClassBase@@QAEAAV0@ABV0@@Z"
+ ],
+ "graded": "?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z",
+ "bind": [
+  [
+   "00431f10",
+   "??4CDefClassBase@@QAEAAV0@ABV0@@Z",
+   1
+  ],
+  [
+   "004eb6e7",
+   "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z",
+   1
+  ]
+ ],
+ "obj": true
+}

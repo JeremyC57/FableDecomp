@@ -1,0 +1,160 @@
+{
+ "address": "00bcb800",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "RenderSubPrimitive",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock (engine/CRenderStateCaptureBlock.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CTexture (engine/CTexture.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicFrame (engine/CGraphicFrame.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CGraphicInfo (engine/CGraphicInfo.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveSpriteTrail (engine/CEngineInternalPrimitiveSpriteTrail.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveBase (engine/CEngineSubPrimitiveBase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerSpriteTrails (engine/CEnginePrimitiveManagerSpriteTrails.h)",
+  "  WARN RELOC_NAME: ?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A -> 01436e98 labelled 'g_pResourceManager'"
+ ],
+ "src_sha": "2141f0e97b46",
+ "DEF": [
+  "??0CGraphicFrame@@QAE@XZ",
+  "??0CRenderStateCaptureBlock@@QAE@XZ",
+  "??0CScopedShadersEnable@@QAE@_N0@Z",
+  "??1CCountedPointer_CTexture@@QAE@XZ",
+  "??1CGraphicFrame@@QAE@XZ",
+  "??1CGraphicFrameData@@QAE@XZ",
+  "??1CRenderStateCaptureBlock@@QAE@XZ",
+  "??1CScopedShadersEnable@@QAE@XZ",
+  "??A?$CRetailVector@VCGraphicInfo@@@@QAEAAVCGraphicInfo@@K@Z",
+  "??_GCGraphicFrameData@@QAEPAXI@Z",
+  "?Get@CGraphicBank@@QAEPAVCGraphicInfo@@K@Z",
+  "?Get@CShaderRenderManager@@SIAAV1@XZ",
+  "?GetFrame@CGraphicBank@@QAE_NPAVCGraphicFrame@@KK@Z",
+  "?OpenCaptureBlock@CRenderManagerCoreView@@QAEXXZ",
+  "?RenderSubPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEXAAVCEngineSubPrimitiveBase@@J@Z",
+  "?SetPixelShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z",
+  "?SetTexture@CRenderManagerCoreView@@QAEXKPAUIDirect3DBaseTexture9@@@Z",
+  "?SetVertexShadersEnable@CShaderRenderManager@@QAEX_NPA_N@Z",
+  "?begin@?$CRetailVector@VCGraphicInfo@@@@QAEPAVCGraphicInfo@@XZ",
+  "?end@?$CRetailVector@VCGraphicInfo@@@@QAEPAVCGraphicInfo@@XZ",
+  "?size@?$CRetailVector@VCGraphicInfo@@@@QAEKXZ"
+ ],
+ "UND": [
+  "??3@YAXPAX@Z",
+  "?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z",
+  "?DisablePixelShaders@CShaderRenderManager@@QAEXXZ",
+  "?DisableVertexShaders@CShaderRenderManager@@QAEXXZ",
+  "?EnablePixelShaders@CShaderRenderManager@@QAEXXZ",
+  "?EnableVertexShaders@CShaderRenderManager@@QAEXXZ",
+  "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+  "?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z",
+  "?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z",
+  "?ResetWorldTransform@CShaderRenderManager@@QAEXXZ",
+  "?RestoreCaptureBlock@CRenderManagerCoreView@@QAEXXZ",
+  "?SingletonInstance@CShaderRenderManager@@0V1@A",
+  "?Uninitialise@CGraphicFrameData@@QAEXXZ",
+  "?g_pEngineStateBlock_01436e90@@3PAUCEngineStateBlockManager@@A",
+  "?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A",
+  "?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A",
+  "?g_pRenderStateManager@@3PAUCRenderManagerCoreView@@A",
+  "?g_renderStateDefault_01396dd0@@3KA",
+  "?g_renderStateDefault_01396fb8@@3KA"
+ ],
+ "graded": "?RenderSubPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEXAAVCEngineSubPrimitiveBase@@J@Z",
+ "bind": [
+  [
+   "00987fe0",
+   "?EnableVertexShaders@CShaderRenderManager@@QAEXXZ",
+   2
+  ],
+  [
+   "00988020",
+   "?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z",
+   1
+  ],
+  [
+   "009880e0",
+   "?DisableVertexShaders@CShaderRenderManager@@QAEXXZ",
+   1
+  ],
+  [
+   "00988110",
+   "?EnablePixelShaders@CShaderRenderManager@@QAEXXZ",
+   1
+  ],
+  [
+   "00988190",
+   "?DisablePixelShaders@CShaderRenderManager@@QAEXXZ",
+   2
+  ],
+  [
+   "00988290",
+   "?ResetWorldTransform@CShaderRenderManager@@QAEXXZ",
+   1
+  ],
+  [
+   "009fcba0",
+   "?Uninitialise@CGraphicFrameData@@QAEXXZ",
+   1
+  ],
+  [
+   "009ff8d0",
+   "?GetFrame@CGraphicInfo@@QBE_NAAVCGraphicFrame@@KKK@Z",
+   1
+  ],
+  [
+   "00a05840",
+   "?RestoreCaptureBlock@CRenderManagerCoreView@@QAEXXZ",
+   1
+  ],
+  [
+   "00bca950",
+   "?RenderSpriteTrail@CEnginePrimitiveManagerSpriteTrails@@QAEXABVCEngineInternalPrimitiveSpriteTrail@@_N@Z",
+   1
+  ],
+  [
+   "00bfe9bc",
+   "??3@YAXPAX@Z",
+   2
+  ],
+  [
+   "01396dd0",
+   "?g_renderStateDefault_01396dd0@@3KA",
+   2
+  ],
+  [
+   "01396fb8",
+   "?g_renderStateDefault_01396fb8@@3KA",
+   1
+  ],
+  [
+   "013bc470",
+   "?SingletonInstance@CShaderRenderManager@@0V1@A",
+   8
+  ],
+  [
+   "013cb508",
+   "?g_pRenderStateManager@@3PAUCRenderManagerCoreView@@A",
+   2
+  ],
+  [
+   "01436e14",
+   "?GPShaderRenderManager@NEngineInternal@@3PAVCShaderRenderManager@@A",
+   2
+  ],
+  [
+   "01436e18",
+   "?g_pRenderManagerCore@@3PAUCRenderManagerCoreView@@A",
+   7
+  ],
+  [
+   "01436e90",
+   "?g_pEngineStateBlock_01436e90@@3PAUCEngineStateBlockManager@@A",
+   1
+  ],
+  [
+   "01436e98",
+   "?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

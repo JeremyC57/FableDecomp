@@ -1,0 +1,53 @@
+{
+ "address": "00aeb8c0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CParticleEmitterDatabase (engine/CParticleEmitterDatabase.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CParticleEmitterManager (engine/CParticleEmitterManager.h)"
+ ],
+ "src_sha": "ad75cf253e77",
+ "DEF": [
+  "??CCEmitterDatabasePointer@@QBEPAUCParticleEmitterDatabase@@XZ",
+  "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+  "__real@00000000"
+ ],
+ "UND": [
+  "?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z",
+  "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@JMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+  "?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@J_N@Z",
+  "?g_ParticleEmitterDatabase@@3UCEmitterDatabasePointer@@A",
+  "__fltused"
+ ],
+ "graded": "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JJMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+ "bind": [
+  [
+   "00ae89e0",
+   "?GetEmitterTemplate@CParticleEmitterDatabase@@QAEPAVCParticleEmitter@NParticleEngine@@J_N@Z",
+   1
+  ],
+  [
+   "00aeb6d0",
+   "?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z",
+   1
+  ],
+  [
+   "00aeb850",
+   "?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@JMABVC3DVector@@ABVCRightHandedSet@@_N@Z",
+   1
+  ],
+  [
+   "0129f198",
+   "__real@00000000",
+   1
+  ],
+  [
+   "013d2e14",
+   "?g_ParticleEmitterDatabase@@3UCEmitterDatabasePointer@@A",
+   1
+  ]
+ ],
+ "obj": true
+}

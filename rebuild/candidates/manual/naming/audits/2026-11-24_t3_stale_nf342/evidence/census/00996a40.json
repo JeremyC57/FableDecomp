@@ -1,0 +1,79 @@
+{
+ "address": "00996a40",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "OpenMemorySource",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CACompressor (engine/CACompressor.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CCompressorZlib (engine/CCompressorZlib.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)",
+  "  WARN RELOC_NAME: ?GetWorkspaceSize@CCompressorZlib@@SAJXZ -> 00a3a7d0 labelled 'CCompressorZlib::GetRequiredWorkspaceSize'"
+ ],
+ "src_sha": "9a5935eaaf38",
+ "DEF": [
+  "??0CCompressorZlib@@QAE@XZ",
+  "??C?$CScopedPointer@VCCompressorZlib@@@@QBEPAVCCompressorZlib@@XZ",
+  "??_7CCompressorZlib@@6B@",
+  "??_GCCompressorZlib@@UAEPAXI@Z",
+  "?OpenMemorySource@CCompressedMemoryDataInputStream_Retail@@QAEXPBXJJ@Z",
+  "?ResetStream@CDataInputStream@@QAEXXZ",
+  "?reset@?$CScopedPointer@VCCompressorZlib@@@@QAEXPAVCCompressorZlib@@@Z"
+ ],
+ "UND": [
+  "??0CACompressor@@QAE@J@Z",
+  "??1CCompressorZlib@@UAE@XZ",
+  "??2@YAPAXI@Z",
+  "??3@YAXPAX@Z",
+  "??_GCCompressorZlib@@UAEPAXI@Z",
+  "??_U@YAPAXI@Z",
+  "??_V@YAXPAX@Z",
+  "?GetWorkspaceSize@CCompressorZlib@@SAJXZ",
+  "?Initialise@CCompressorZlib@@AAEXXZ",
+  "?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z"
+ ],
+ "graded": "?OpenMemorySource@CCompressedMemoryDataInputStream_Retail@@QAEXPBXJJ@Z",
+ "bind": [
+  [
+   "00a3a7d0",
+   "?GetWorkspaceSize@CCompressorZlib@@SAJXZ",
+   1
+  ],
+  [
+   "00a3aa10",
+   "?Initialise@CCompressorZlib@@AAEXXZ",
+   1
+  ],
+  [
+   "00a3ab90",
+   "?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z",
+   1
+  ],
+  [
+   "00a3aea0",
+   "??0CACompressor@@QAE@J@Z",
+   1
+  ],
+  [
+   "00bfea1a",
+   "??2@YAPAXI@Z",
+   1
+  ],
+  [
+   "00bfeb1c",
+   "??_V@YAXPAX@Z",
+   1
+  ],
+  [
+   "00bfeb22",
+   "??_U@YAPAXI@Z",
+   1
+  ],
+  [
+   "01245974",
+   "??_7CCompressorZlib@@6B@",
+   1
+  ]
+ ],
+ "obj": true
+}

@@ -1,0 +1,122 @@
+{
+ "address": "00b662f0",
+ "grade": "RELOCATION_MATCH",
+ "behaviour": "PASS",
+ "leaf": "Render",
+ "warn": [
+  "  WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)",
+  "  WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineCameraDesc (engine/CEngineCameraDesc.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)",
+  "  WARN SHARED_HEADER_AVAILABLE CEngineComponentRenderParams (engine/CEngineComponentRenderParams.h)",
+  "  WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'"
+ ],
+ "src_sha": "688930112087",
+ "DEF": [
+  "??0C3DVector@@QAE@ABV0@@Z",
+  "??0C3DVector@@QAE@MMM@Z",
+  "??0CRenderStateScopedCaptureBlock@@QAE@XZ",
+  "??1CRenderStateScopedCaptureBlock@@QAE@XZ",
+  "??DC3DVector@@QBE?BV0@M@Z",
+  "??HC3DVector@@QBE?BV0@ABV0@@Z",
+  "?AddStateToUpdateList@CRenderStateManager@@AAEXAAUCStateInfo@1@@Z",
+  "?Render@CEngineSkyRenderer_Methods@@QAEXABVCEngineComponentRenderParams@@@Z",
+  "?SetDitherEnable@CRenderStateManager@@QAEX_N@Z",
+  "?SetFogEnable@CRenderStateManager@@QAEX_N@Z",
+  "?SetRenderState@CRenderStateManager@@AAEXKAAUCStateInfo@1@@Z",
+  "?SetZBufferEnable@CRenderStateManager@@QAEX_N@Z",
+  "?StartCaptureBlock@CRenderStateManager@@QAEXPAX@Z",
+  "__real@3dcac083",
+  "__real@3e19999a"
+ ],
+ "UND": [
+  "??0CEngineCameraDesc@@QAE@ABU0@@Z",
+  "?AddFlareTest@CEngineOcclusionManager@@QAEXKABVC3DVector@@MJ@Z",
+  "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+  "?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A",
+  "?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A",
+  "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+  "?RenderSky@CEngineSkyRenderer_Methods@@QAEXMPBVC3DVector@@_N@Z",
+  "?RenderSunFlare@CEngineSkyRenderer_Methods@@QAEXXZ",
+  "?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ",
+  "?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z",
+  "?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A",
+  "?g_skyZBufferStart_0139a704@@3MA",
+  "__fltused"
+ ],
+ "graded": "?Render@CEngineSkyRenderer_Methods@@QAEXABVCEngineComponentRenderParams@@@Z",
+ "bind": [
+  [
+   "00a05840",
+   "?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ",
+   1
+  ],
+  [
+   "00b30b50",
+   "?SetCameraState@CEngineCamera@@QAEXABUCEngineCameraDesc@@_N1@Z",
+   2
+  ],
+  [
+   "00b4af50",
+   "??0CEngineCameraDesc@@QAE@ABU0@@Z",
+   2
+  ],
+  [
+   "00b64550",
+   "?RenderSunFlare@CEngineSkyRenderer_Methods@@QAEXXZ",
+   1
+  ],
+  [
+   "00b66190",
+   "?RenderSky@CEngineSkyRenderer_Methods@@QAEXMPBVC3DVector@@_N@Z",
+   1
+  ],
+  [
+   "00b8d040",
+   "?AddFlareTest@CEngineOcclusionManager@@QAEXKABVC3DVector@@MJ@Z",
+   1
+  ],
+  [
+   "012786a8",
+   "__real@3e19999a",
+   1
+  ],
+  [
+   "012a2ad8",
+   "__real@3dcac083",
+   1
+  ],
+  [
+   "0139a704",
+   "?g_skyZBufferStart_0139a704@@3MA",
+   1
+  ],
+  [
+   "013cb508",
+   "?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A",
+   2
+  ],
+  [
+   "01436e18",
+   "?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A",
+   3
+  ],
+  [
+   "01436e5c",
+   "?GPOcclusionManager@NEngineInternal@@3PAVCEngineOcclusionManager@@A",
+   1
+  ],
+  [
+   "01436e9c",
+   "?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A",
+   1
+  ],
+  [
+   "01436ea0",
+   "?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A",
+   5
+  ]
+ ],
+ "obj": true
+}

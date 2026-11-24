@@ -1,0 +1,16 @@
+{
+ "address": "004aa930",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z",
+ "warn": [],
+ "src_sha": "22b5ac9f0df3",
+ "DEF": [
+  "?ReferenceScriptThingSetDataString@?A0x5ebdff4c@@YAXAAVCScriptThing@@ABVCCharString@@@Z",
+  "?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z"
+ ],
+ "UND": [],
+ "graded": "?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z",
+ "bind": [],
+ "obj": true
+}

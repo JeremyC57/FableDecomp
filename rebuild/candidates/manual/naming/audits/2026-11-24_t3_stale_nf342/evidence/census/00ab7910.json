@@ -1,0 +1,15 @@
+{
+ "address": "00ab7910",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z",
+ "warn": [],
+ "src_sha": "c02ce8856cfe",
+ "DEF": [
+  "?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z"
+ ],
+ "UND": [],
+ "graded": "?GetRumbleWithID@CJoystickDX@@UAEPAVCActiveRumble@CJoystick@@J@Z",
+ "bind": [],
+ "obj": true
+}

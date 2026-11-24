@@ -1,0 +1,15 @@
+{
+ "address": "00903043",
+ "grade": "MATCH",
+ "behaviour": "PASS",
+ "leaf": "IsTimingCritical",
+ "warn": [],
+ "src_sha": "016a73fd3e2c",
+ "DEF": [
+  "?CAIStateGroup_JackOfBladesBase_IsTimingCritical@@YI_NXZ"
+ ],
+ "UND": [],
+ "graded": "?CAIStateGroup_JackOfBladesBase_IsTimingCritical@@YI_NXZ",
+ "bind": [],
+ "obj": true
+}
