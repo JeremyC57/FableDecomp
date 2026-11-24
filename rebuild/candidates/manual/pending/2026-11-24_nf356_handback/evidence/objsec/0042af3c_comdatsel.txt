@@ -1,0 +1,2 @@
+ch=60101020 align=1 sel=1 ?GetDef_0042af3c@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+ch=60101020 align=1 sel=2 ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@

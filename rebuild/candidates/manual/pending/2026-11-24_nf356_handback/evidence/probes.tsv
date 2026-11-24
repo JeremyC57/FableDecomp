@@ -1,0 +1,13 @@
+row	variant	text	grade (pass.py, one path)	objsec v HEAD (non-leaf)	verdict
+all six	H	landed HEAD source	RELOCATION_MATCH (0x0042AF3C: leaf has no Leaf line, graded the largest function = the stand-in)	-	baseline
+0042af3c,0042b040,0042b312,005f81be	E1	opt-in + pragmas after the include + `template bool CDefinitionManager::GetDef<T>(...) const;`	SRC_FAIL: C2945 "explicit instantiation does not refer to a template-class specialization" (cl /Zs, work/pre_zs.log)	-	VC7.1 rejects an explicit instantiation of a member template's explicit specialization
+0042af3c,0042b040,005f81be	E2	E1 with the nf135 anonymous-namespace address helper	RELOCATION_MATCH; leaf data/relocs/characteristics equal	local-model COMDATs dropped, shared-header inline COMDATs added (all NOADDR, not leaf-called) + one ?A0x helper; 005f81be: + helper, AddRef flags	CHOSEN (= final, objsec final v E2 SAME)
+0042b312	E2	same, def header engine/NUISystem_CUIMiscThingsDef.h	RELOCATION_MATCH; leaf equal	as above + .drectve /DEFAULTLIB:"libcp"	replaced by E4
+0042b312	E4	E2 with engine/CDefClassBase.h instead of the def header	RELOCATION_MATCH; leaf equal	as E2 without libcp	CHOSEN (= final)
+0042af3c,0042b040,0042b312,005f81be	E3	E2 without the TU's trailing optimize pragmas (control)	RELOCATION_MATCH; leaf equal (the leaf's mode comes from the header block)	end-of-TU template instances (SetDynamicCast, Release, ~CDefPointer) compile in speed mode (50->52, 24->27 B, align 16): the trailing pragmas keep HEAD's size mode	control only
+00429c6f	E1	RESET_SIZE_BODY + engine/NUISystem_CComponent.h + pragma after the include + explicit instantiation	RELOCATION_MATCH; leaf equal	??0CCPPointerInfo (NOADDR) size->speed bytes, align 1->16; .drectve + libcp; ReleaseData / DeleteData EQ	CHOSEN (= final)
+00429c6f	E2	E1 + RELEASEDATA_SIZE_BODY	RELOCATION_MATCH; leaf equal	same as E1 (ReleaseData copy identical)	not needed (one opt-in suffices)
+00429c6f	E3	E2 without the trailing pragma (control)	RELOCATION_MATCH; leaf equal	E1's changes + DeleteData characteristics (align)	control only
+004291de	E1	RELEASEDATA_SIZE_BODY + engine/NUISystem_CComponent.h + pragma after + explicit instantiation	RELOCATION_MATCH; leaf equal	.drectve + libcp	replaced by E2
+004291de	E2	E1 with engine/CCountedPointer.h only (no class model)	RELOCATION_MATCH; leaf equal	ALL SAME	CHOSEN (= final)
+004291de	E3	E2 without the trailing pragma (control)	RELOCATION_MATCH; leaf equal	ALL SAME (the trailing pragma changes nothing here)	control only

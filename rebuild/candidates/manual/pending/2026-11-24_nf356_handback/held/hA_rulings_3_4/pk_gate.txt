@@ -1,0 +1,11 @@
+0042af3c	pk_all	SAME
+0042af3c	pvr	SAME
+ROW 0042af3c gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0042b040	pk_all	SAME
+0042b040	pvr	SAME
+ROW 0042b040 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+0042b312	pk_all	SAME
+0042b312	pvr	SAME
+ROW 0042b312 gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 0, 0], 'pvr': [0, 0, 0, 0]}
+GATE PASS

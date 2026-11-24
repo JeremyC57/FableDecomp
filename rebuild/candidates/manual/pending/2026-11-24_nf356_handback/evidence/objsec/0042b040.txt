@@ -1,0 +1,30 @@
+LEAF A ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 1, 'size': 98}
+LEAF B ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 98}
+ADDED   ('COMDAT', '??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size=50
+CHANGED ('COMDAT', '??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ', '.text') size 21 -> 24 data_eq=False relocs_eq=True flags_eq=True
+DROPPED ('COMDAT', '??4?$CDefPointer@$$CBVCThingObjectDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z', '.text') size=52
+ADDED   ('COMDAT', '?AddRef@CIVCountedPointeeBase@@QBEXXZ', '.text') size=4
+DROPPED ('COMDAT', '?DecRef@CRefCounted@@QBEXXZ', '.text') size=3
+ADDED   ('COMDAT', '?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ', '.text') size=3
+DROPPED ('COMDAT', '?GetRefCount@CRefCounted@@QBEJXZ', '.text') size=3
+ADDED   ('COMDAT', '?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ', '.text') size=3
+ADDED   ('COMDAT', '?ReferenceGetDefCThingObjectDef@?A0x16fe1680@@YAP8CDefinitionManager@@BE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@ZXZ', '.text') size=6
+ADDED   ('COMDAT', '?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ', '.text') size=24
+ADDED   ('COMDAT', '?Release@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXXZ', '.text') size=24
+DROPPED ('COMDAT', '?Release@CDefBase@@QBEXXZ', '.text') size=11
+DROPPED ('COMDAT', '?ReleaseTemporary@CDefBase@@QBEXXZ', '.text') size=15
+DRECTVE - [] + []
+SYM- DEF ??4?$CDefPointer@$$CBVCThingObjectDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+SYM- DEF ?DecRef@CRefCounted@@QBEXXZ
+SYM- DEF ?GetRefCount@CRefCounted@@QBEJXZ
+SYM- DEF ?Release@CDefBase@@QBEXXZ
+SYM- DEF ?ReleaseTemporary@CDefBase@@QBEXXZ
+SYM+ DEF ??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+SYM+ DEF ?AddRef@CIVCountedPointeeBase@@QBEXXZ
+SYM+ DEF ?Get@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPBVCDefClassBase@@XZ
+SYM+ DEF ?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+SYM+ DEF ?ReferenceGetDefCThingObjectDef@?A0x16fe1680@@YAP8CDefinitionManager@@BE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@ZXZ
+SYM+ DEF ?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+SYM+ DEF ?Release@?$CDefPointer@$$CBVCThingObjectDef@@@@QAEXXZ
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_DIFF n=13 symdelta=12

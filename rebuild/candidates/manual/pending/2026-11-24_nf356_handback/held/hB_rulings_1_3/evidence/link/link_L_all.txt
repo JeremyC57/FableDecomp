@@ -1,0 +1,12 @@
+## HEAD set: H_0042af3c.obj H_0042b040.obj H_0042b312.obj H_005f81be.obj H_00429c6f.obj H_004291de.obj H_005e4be0.obj H_00744ed0.obj H_006ac430.obj H_00605570.obj
+duplicates 1
+  DUP H_005e4be0.obj ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z in H_0042b040.obj;
+UNRESOLVED 1 ?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z
+UNRESOLVED 1 ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+UNRESOLVED 1 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+## new set: N_0042af3c.obj N_0042b040.obj N_0042b312.obj N_005f81be.obj N_00429c6f.obj N_004291de.obj H_005e4be0.obj H_00744ed0.obj H_006ac430.obj H_00605570.obj
+duplicates 0
+UNRESOLVED 1 ?GetDefClassTypeNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z
+UNRESOLVED 1 ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z
+UNRESOLVED 1 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+LK_DONE

@@ -1,0 +1,5 @@
+00429c6f	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00429c6f	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+ROW 00429c6f gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [1, 0, 0, 0], 'pvr': [1, 0, 0, 0]}
+GATE FAIL (1)

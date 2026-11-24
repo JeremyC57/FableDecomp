@@ -1,0 +1,5 @@
+00429c6f	pk_all	SAME
+00429c6f	pvr	SAME
+ROW 00429c6f gate=P fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 0, 0], 'pvr': [0, 0, 0, 0]}
+GATE PASS

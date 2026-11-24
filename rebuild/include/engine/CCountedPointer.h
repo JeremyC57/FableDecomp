@@ -544,7 +544,7 @@ template<> inline void CCountedPointer<CMeshDataBank>::Reset(CMeshDataBank* data
 // speed-mode pick-any copy of it (103 bytes; ReleaseData 53), while retail's linker kept the copies of the 0x00429xxx size TU. The owner
 // rows set `#pragma optimize("s", on)` themselves and build at the catalog default /O2 /Oy /W3 (no CompilerFlags entry):
 //   Reset         0x00429C6F  rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp (+ FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA)
-//   ReleaseData   0x004291DE  rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_ReleaseData_004291de.cpp (+ _RELEASEDATA)
+//   ReleaseData   0x004291DE  rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_ReleaseData_004291de.cpp (+ _RELEASEDATA) -- since nf356 this owner uses the opt-in itself (its pragma now follows the include); condition (b) was proved on its pre-port text
 // VC7.1 takes a template instance's optimize mode at the end of the TU, so a pragma around the class template does nothing; an
 // explicit specialization is an ordinary definition and takes the mode at its own point. Each body is the owner's configuration of the
 // class template text above, token for token (Reset: the default body; ReleaseData: the _RELEASEDATA body, Data zeroed before Info).

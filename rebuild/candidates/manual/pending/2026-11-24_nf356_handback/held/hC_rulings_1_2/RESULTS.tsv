@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00429c6f	RULING_1_2	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z	owner port onto CCOMPONENT_RESET_SIZE_BODY (explicit instantiation, shared engine/NUISystem_CComponent.h); leaf equal; ReleaseData / DeleteData EQ unchanged; ??0CCPPointerInfo (NOADDR) speed-mode bytes, align 16; .drectve + libcp; vland RELOCATION_MATCH PASS H and N; pk SAME

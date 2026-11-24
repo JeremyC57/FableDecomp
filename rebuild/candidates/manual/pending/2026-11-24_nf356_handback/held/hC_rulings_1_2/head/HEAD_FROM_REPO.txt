@@ -1,0 +1,2 @@
+HEAD payload (head/payload.json) built from the repo sources by nf.py pay with HEADPAY=1 (NF356, 2026-11-24). Per row: repo file, sha1 now, sha1 of the payload source_cpp:
+00429c6f	rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp	44e3db4470cffe53682043082ad8bc6b9d9a7ce4	44e3db4470cffe53682043082ad8bc6b9d9a7ce4	SAME

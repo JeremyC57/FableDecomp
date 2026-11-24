@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF356/tools/leafrel.py", line 23, in <module>
+    da, ra = leaf(sys.argv[1], sys.argv[3]); db, rb = leaf(sys.argv[2], sys.argv[3])
+    ^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

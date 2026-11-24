@@ -1,0 +1,5 @@
+LEAF A ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 44}
+LEAF B ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 44}
+DRECTVE - [] + []
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_SAME symdelta=0

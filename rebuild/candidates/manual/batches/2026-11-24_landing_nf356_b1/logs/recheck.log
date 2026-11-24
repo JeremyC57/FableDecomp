@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004291de   RELOCATION_MATCH PASS   ReleaseData
+
+WINS: 1
+  004291de RELOCATION_MATCH CCountedPointer<NUISystem::CComponent>::?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ

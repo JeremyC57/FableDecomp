@@ -1,0 +1,7 @@
+# leaf ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?DecRef@CRefCounted@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?GetRefCount@CRefCounted@@QBEJXZ
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	?Release@CDefBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	15	-	n	n	?ReleaseTemporary@CDefBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	21	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	52	-	n	n	??4?$CDefPointer@$$CBVCThingObjectDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z

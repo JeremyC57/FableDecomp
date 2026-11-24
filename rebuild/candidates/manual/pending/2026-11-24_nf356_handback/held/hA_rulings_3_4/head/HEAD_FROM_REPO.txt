@@ -1,0 +1,4 @@
+HEAD payload (head/payload.json) built from the repo sources by nf.py pay with HEADPAY=1 (NF356, 2026-11-24). Per row: repo file, sha1 now, sha1 of the payload source_cpp:
+0042af3c	rebuild/src/compiled/00/42/CDefinitionManager_GetDefT_0042af3c.cpp	49d43b65a5c12fa0cb55f1976ec5bcfd3ad4ef0e	49d43b65a5c12fa0cb55f1976ec5bcfd3ad4ef0e	SAME
+0042b040	rebuild/src/compiled/00/42/CDefinitionManager_GetDefCThingObjectDef_0042b040.cpp	c23e334a074b78a541bcc40c39262a6f68fb90ae	c23e334a074b78a541bcc40c39262a6f68fb90ae	SAME
+0042b312	rebuild/src/compiled/00/42/CDefinitionManager_GetDef_0042b312.cpp	930eb88dcb14d31f6e5e6163fa9cae27c3aee959	930eb88dcb14d31f6e5e6163fa9cae27c3aee959	SAME

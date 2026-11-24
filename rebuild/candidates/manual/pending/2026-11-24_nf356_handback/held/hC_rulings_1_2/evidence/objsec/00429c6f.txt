@@ -1,0 +1,7 @@
+LEAF A ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 59}
+LEAF B ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 59}
+CHANGED ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z', '.text') size 25 -> 25 data_eq=False relocs_eq=True flags_eq=False
+CHANGED ('SEC', '.drectve', 1) size 42 -> 62 data_eq=False relocs_eq=True flags_eq=True
+DRECTVE - [] + ['/DEFAULTLIB:"libcp"']
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_DIFF n=2 symdelta=0

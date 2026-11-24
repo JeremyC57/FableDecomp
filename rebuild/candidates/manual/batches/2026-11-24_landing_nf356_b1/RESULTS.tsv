@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+004291de	ACCEPT	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	owner port onto CCOMPONENT_RELEASEDATA_SIZE_BODY (explicit instantiation of the specialization, no class model, pragma after the include); objsec ALL SAME; vland RELOCATION_MATCH PASS H and N; pk SAME / GATE PASS

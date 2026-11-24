@@ -1,0 +1,6 @@
+0042af3c C_OK spec=1/1 optimize_before_block=0 | after: #pragmaoptimize("",on) ; #pragmaoptimize("y",off) ; #pragmaoptimize("s",on)
+0042b040 C_OK spec=1/1 optimize_before_block=0 | after: #pragmaoptimize("",on) ; #pragmaoptimize("y",off) ; #pragmaoptimize("s",on)
+0042b312 C_OK spec=1/1 optimize_before_block=0 | after: #pragmaoptimize("",on) ; #pragmaoptimize("y",off) ; #pragmaoptimize("s",on)
+005f81be C_OK spec=1/1 optimize_before_block=0 | after: #pragmaoptimize("",on) ; #pragmaoptimize("y",off) ; #pragmaoptimize("s",on)
+00429c6f C_OK spec=1/1 optimize_before_block=0 | after: #pragmaoptimize("",on) ; #pragmaoptimize("s",on)
+004291de C_OK spec=1/1 optimize_before_block=0 | after: #pragmaoptimize("",on) ; #pragmaoptimize("s",on)

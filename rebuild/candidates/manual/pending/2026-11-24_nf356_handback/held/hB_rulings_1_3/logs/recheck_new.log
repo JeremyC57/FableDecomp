@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0042af3c   RELOCATION_MATCH PASS   GetDef<CThingBaseDef>
+0042b040   RELOCATION_MATCH PASS   GetDef<CThingObjectDef>
+0042b312   RELOCATION_MATCH PASS   GetDef<NUISystem::CUIMiscThingsDef>
+005f81be   RELOCATION_MATCH PASS   GetDef<CExpressionDef>
+00429c6f   RELOCATION_MATCH PASS   Reset
+004291de   RELOCATION_MATCH PASS   ReleaseData
+
+WINS: 6
+  0042af3c RELOCATION_MATCH CDefinitionManager::??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+  0042b040 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z
+  0042b312 RELOCATION_MATCH CDefinitionManager::??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z
+  005f81be RELOCATION_MATCH CDefinitionManager::??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z
+  00429c6f RELOCATION_MATCH CCountedPointer<NUISystem::CComponent>::?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+  004291de RELOCATION_MATCH CCountedPointer<NUISystem::CComponent>::?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+EXIT 0

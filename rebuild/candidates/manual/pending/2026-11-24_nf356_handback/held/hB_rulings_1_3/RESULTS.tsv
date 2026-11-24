@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+005f81be	RULING_1_3	??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z	??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z	owner port onto GETDEF_CEXPRESSIONDEF_SIZE_BODY (nf135 helper replaces the explicit instantiation, which VC7.1 rejects: C2945); leaf equal; + helper; CIVCountedPointeeBase::AddRef (NOADDR) alignment only; vland RELOCATION_MATCH PASS H and N; pk SAME

@@ -1,0 +1,8 @@
+LEAF A ??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 98}
+LEAF B ??$GetDef@VCExpressionDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@Z {'name': '.text', 'ch': '60101020', 'sel': 2, 'size': 98}
+CHANGED ('COMDAT', '?AddRef@CIVCountedPointeeBase@@QBEXXZ', '.text') size 4 -> 4 data_eq=True relocs_eq=True flags_eq=False
+ADDED   ('COMDAT', '?ReferenceGetDefCExpressionDef@?A0xa58159c6@@YAP8CDefinitionManager@@BE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@ZXZ', '.text') size=6
+DRECTVE - [] + []
+SYM+ DEF ?ReferenceGetDefCExpressionDef@?A0xa58159c6@@YAP8CDefinitionManager@@BE_NJPAV?$CDefPointer@$$CBVCExpressionDef@@@@@ZXZ
+LEAFCMP data_eq=True relocs_eq=True ch_eq=True
+VERDICT OTHER_DIFF n=2 symdelta=1

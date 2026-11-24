@@ -1,0 +1,7 @@
+## HEAD set: H_0042af3c.obj H_00744ed0.obj
+duplicates 0
+UNRESOLVED 1 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+## new set: N_0042af3c.obj H_00744ed0.obj
+duplicates 0
+UNRESOLVED 1 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+LK_DONE

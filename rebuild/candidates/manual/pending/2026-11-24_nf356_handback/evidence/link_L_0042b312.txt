@@ -1,0 +1,7 @@
+## HEAD set: H_0042b312.obj H_005e4be0.obj
+duplicates 0
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+## new set: N_0042b312.obj H_005e4be0.obj
+duplicates 0
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+LK_DONE

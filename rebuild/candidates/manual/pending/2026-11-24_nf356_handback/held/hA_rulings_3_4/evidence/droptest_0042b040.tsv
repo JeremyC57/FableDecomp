@@ -1,0 +1,6 @@
+kind	symbol	witness_is_row	table(target:witness)	self_at_target	pk_verdict	pk_status@addr(src)	size
+DEF	??4?$CDefPointer@$$CBVCThingObjectDef@@@@QAEAAV0@ABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	-	-	-	NOADDR	NOADDR@-(-)	52
+DEF	?DecRef@CRefCounted@@QBEXXZ	-	-	-	NOADDR	NOADDR@-(-)	3
+DEF	?GetRefCount@CRefCounted@@QBEJXZ	-	-	-	NOADDR	NOADDR@-(-)	3
+DEF	?Release@CDefBase@@QBEXXZ	-	-	-	NOADDR	NOADDR@-(-)	11
+DEF	?ReleaseTemporary@CDefBase@@QBEXXZ	-	-	-	NOADDR	NOADDR@-(-)	15

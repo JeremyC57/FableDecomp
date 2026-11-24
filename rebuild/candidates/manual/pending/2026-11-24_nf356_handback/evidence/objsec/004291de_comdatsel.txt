@@ -1,0 +1,2 @@
+ch=60101020 align=1 sel=2 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+ch=60101020 align=1 sel=2 ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
