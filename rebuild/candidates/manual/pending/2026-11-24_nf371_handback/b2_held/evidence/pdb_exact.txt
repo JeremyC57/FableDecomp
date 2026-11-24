@@ -1,0 +1,9 @@
+1	0	?Reset@?$CCountedPointer@$$CBVCInputTypeBase@@@@QAEXPBVCInputTypeBase@@@Z
+1	0	?Reset@?$CCountedPointer@VCMeshDataBankEntry@@@@QAEXPAVCMeshDataBankEntry@@@Z
+1	0	?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z
+1	0	?Reset@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAEXPAVCOptimisedMesh@QuadricOptimiserInternals@@@Z
+1	0	?Reset@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAEXPAVCLoadingMemoryFailureHandler@@@Z
+1	0	?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z
+1	0	?Reset@?$CCountedPointer@VCRenderTarget@@@@QAEXPAVCRenderTarget@@@Z
+1	1	?Set@CScriptDefinitionManager@@SIXPAV1@@Z
+1	0	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z

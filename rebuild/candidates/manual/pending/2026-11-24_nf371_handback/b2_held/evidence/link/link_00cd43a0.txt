@@ -1,0 +1,8 @@
+## HEAD set: H_00cd43a0.obj 00cd42e0.obj H_00cd3f40.obj H_00cb5d80.obj
+duplicates 0
+UNRESOLVED 1 ?Allocate@CFixedAllocator@@QAEPAXI@Z
+UNRESOLVED 1 ?Destroy_00cd42e0@@YIXPAX@Z
+UNRESOLVED 1 ?GFSetPDefinitionManager@@YIXPAVCDefinitionManager@@@Z
+## new set: 00cd43a0.obj 00cd42e0.obj 00cd3f40.obj 00cb5d80.obj
+duplicates 0
+LK_DONE

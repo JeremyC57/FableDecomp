@@ -1,0 +1,5 @@
+map: ?Reset@CCountedPointer_00f38920@@QAEXPAX@Z=?Reset@?$CCountedPointer@VCRenderTarget@@@@QAEXPAVCRenderTarget@@@Z ?Destroy_00f38920@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z ??0SCountBlock@@QAE@PAX@Z=??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+sections H=3 N=3
+  ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z') data differs
+  ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z') rel differs
+VERDICT NOT_EQ (2)

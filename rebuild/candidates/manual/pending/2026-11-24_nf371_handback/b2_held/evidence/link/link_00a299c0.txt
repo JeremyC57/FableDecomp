@@ -1,0 +1,9 @@
+## HEAD set: H_00a299c0.obj 00a281e0.obj 00a24520.obj
+duplicates 1
+  DUP 00a24520.obj ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z in 00a281e0.obj;
+UNRESOLVED 1 ?Destroy_00a281e0@@YIXPAX@Z
+## new set: 00a299c0.obj 00a281e0.obj 00a24520.obj
+duplicates 2
+  DUP 00a24520.obj ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z in 00a281e0.obj;
+  DUP 00a24520.obj ?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z in 00a299c0.obj;
+LK_DONE

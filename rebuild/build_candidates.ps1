@@ -32842,7 +32842,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd3f40'
-        Module = '_global'
+        Module = 'CScriptDefinitionManager'
         Source = '00/cd/global_operatornewvariant_00cd3f40.cpp'
         TestSource = '00/cd/global_operatornewvariant_00cd3f40_test.cpp'
         PassPattern = 'PASS_OPERATOR_NEW_VARIANT'

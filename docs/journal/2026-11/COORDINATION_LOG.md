@@ -1270,3 +1270,6 @@ uses `FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY` instead of the row-local operator[]
 b24e's ASSASSIN1 block; both blocks are in the header now. 0x0070D940: the GetMeshAnim body also works from a CAnimSet.h `inline`
 opt-in (pick-any copy EQ, RELOCATION_MATCH; `notes/0070d940/A_header_variant/`); it waits on the owner. Still staged: 0x00BE4FE0,
 0x00DB3FA0, 0x00D67890.
+2026-11-24 A->B: **nf371_b1 and nf372_b1 landed.** 0x00CD3F40 is CScriptDefinitionManager::Set (was operator_new_variant); bind
+`?Set@CScriptDefinitionManager@@SIXPAV1@@Z`. 0x00618660 / 0x0085A840 / 0x00AC3A40 call their PDB DeleteData. Do not use
+`??0C3DAnimationUtil@@QAE@XZ` for the libpk / CODA block (0x00C086C0..0x00C89C10): it is a propagated label.

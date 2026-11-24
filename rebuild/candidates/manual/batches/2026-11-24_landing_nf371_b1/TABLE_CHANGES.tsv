@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?Allocate@CFixedAllocator@@QAEPAXI@Z -> ?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z	00cd43a0	00cd3f40	NF371: Set 0x00CD3F40 (respelled self) now calls the PDB Reset that 0x00CD43A0 defines; CFixedAllocator / Allocate is named by no other landed source
+replace	?GFSetPDefinitionManager@@YIXPAVCDefinitionManager@@@Z -> ?Set@CScriptDefinitionManager@@SIXPAV1@@Z	00cd3f40	00cb5d80	NF371: binder CScriptInfoManager::Init 0x00CB5D80 now calls the PDB static member (local-model declaration, objsec ALL_EQ); GFSetPDefinitionManager is named by no other landed source (its standalone test keeps a stub, NF284 D2)

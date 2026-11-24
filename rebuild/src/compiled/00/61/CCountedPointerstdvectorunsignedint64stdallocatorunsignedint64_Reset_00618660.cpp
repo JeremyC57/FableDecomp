@@ -11,13 +11,19 @@
 // allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
 // instantiation is named from the manifest label when unique, else from the destroy function.
 // One of 74 bodies of this shape.
-void __fastcall Destroy_006174f0(void* object);   // 0x006174F0: the per-type deleter stored in the block
+// Naming (NF309, 2026-11-23): the count block's deleter 0x006174F0 now binds its PDB spelling ?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z (FableWin.pdb name set; retail stores
+//   0x006174F0 as the count block's DeleteFunc here; the self row's Leaf), declared by the shared engine/CCountedPointer.h under
+//   FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (only its address is stored here, T is only declared; the NF284 0x00BB64A0 form);
+//   was the free stand-in ?Destroy_006174f0@@YIXPAX@Z. Object otherwise unchanged.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+namespace std { template <class _Tp> class allocator; template <class _Tp, class _Alloc> class vector; }
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_006174f0), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(&CCountedPointer<std::vector<unsigned __int64, std::allocator<unsigned __int64> > >::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_006174f0 {

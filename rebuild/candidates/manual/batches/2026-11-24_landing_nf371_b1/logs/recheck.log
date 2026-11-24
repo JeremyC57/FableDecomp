@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00cb5d80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00cb5d80   WARN SHARED_HEADER_AVAILABLE CScriptDefinitionManager (engine/CScriptDefinitionManager.h)
+00cb5d80   WARN RELOC_NAME: ?Set@CScriptDefinitionManager@@SIXPAV1@@Z -> 00cd3f40 labelled 'CEngineSubPrimitiveBase::operator_new'
+00cb5d80   WARN RELOC_NAME: ?GFGetPDefinitionManager@@YAPAVCDefinitionManager@@XZ -> 00cd3ef0 labelled '_global::GetGlobal_0143e920_00cd3ef0'
+00cb5d80   WARN RELOC_NAME: ??$sort@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z -> 00cb7780 labelled 'std::sort<std::pair<CCharString, CScriptInfo> *, CKeyPairCompareLess<CCharString, CScriptInfo>>'
+00cb5d80   RELOCATION_MATCH PASS   Init
+00cd3f40   WARN STANDIN_LEAF ?Set@CScriptDefinitionManager@@SIXPAV1@@Z (catalog CEngineSubPrimitiveBase::operator_new; names another function)
+00cd3f40   RELOCATION_MATCH PASS   operator_new
+
+WINS: 2
+  00cb5d80 RELOCATION_MATCH CScriptInfoManager::?Init@CScriptInfoManager@@QAEXXZ
+  00cd3f40 RELOCATION_MATCH _global::?Set@CScriptDefinitionManager@@SIXPAV1@@Z

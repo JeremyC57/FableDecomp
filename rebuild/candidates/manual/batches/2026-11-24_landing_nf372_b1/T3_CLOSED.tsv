@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf309	0x0085A840	part of the NF284 D4 deferred-12 unit	NF309 measured the DeleteData respells of 0x0085A840 / 0x00AC3A40 / 0x00618660 (bytes, objects and link pass) before finding them in the deferred-12 unit: the rows and their 4 table lines are in pending/2026-11-23_nf309_handback/reverted/unit5/ for that unit to pick up
+nf285	0x004D5ECA	standin_alias port	binder source read; identity not verified: stand-in class CClass_004d5eca for CCarriedReadableDef's ctor (Alloc row): port

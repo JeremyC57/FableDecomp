@@ -1,0 +1,4 @@
+section	address	old	new	note
+2	0x00618660	?Destroy_006174f0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z	caller respelling (target 0x006174F0)
+2	0x0085A840	?Destroy_0085a5a0@@YIXPAX@Z	?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z	caller respelling (target 0x0085A5A0)
+2	0x00AC3A40	?Destroy_00ac3a10@@YIXPAX@Z	?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z	caller respelling (target 0x00AC3A10)

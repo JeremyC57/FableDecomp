@@ -1,0 +1,10 @@
+## HEAD set: H_00b3e510.obj 00b3e080.obj 00b3b240.obj
+duplicates 0
+UNRESOLVED 1 ?Destroy_00b3e080@@YIXPAX@Z
+UNRESOLVED 1 ?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z
+UNRESOLVED 1 ?Reset@CMemoryPoolPointer@@QAEXPAUCMemoryPool@@@Z
+## new set: 00b3e510.obj 00b3e080.obj 00b3b240.obj
+duplicates 0
+UNRESOLVED 1 ?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z
+UNRESOLVED 1 ?Reset@CMemoryPoolPointer@@QAEXPAUCMemoryPool@@@Z
+LK_DONE

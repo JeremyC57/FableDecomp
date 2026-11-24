@@ -1,0 +1,9 @@
+## HEAD set: H_00f39ca0.obj 00f38920.obj 00f38990.obj
+duplicates 1
+  DUP 00f38990.obj ?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z in 00f38920.obj;
+UNRESOLVED 1 ?Destroy_00f38920@@YIXPAX@Z
+## new set: 00f39ca0.obj 00f38920.obj 00f38990.obj
+duplicates 2
+  DUP 00f38990.obj ?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z in 00f38920.obj;
+  DUP 00f38990.obj ?Reset@?$CCountedPointer@VCRenderTarget@@@@QAEXPAVCRenderTarget@@@Z in 00f39ca0.obj;
+LK_DONE

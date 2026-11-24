@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+replace	?Destroy_006174f0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z	006174f0	00618660	NF372 (NF309 unit 5): the only address-taker now references the PDB DeleteData; no landed source or test names the stand-in any more
+add	?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z	0085a5a0	0085a840	NF372 (NF309 unit 5): the binder now references the PDB DeleteData; the target had no PDB table line (self Leaf only)
+replace	?Destroy_00ac3a10@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z	00ac3a10	00ac3a40	NF372 (NF309 unit 5): the only address-taker now references the PDB DeleteData; no landed source or test names the stand-in any more

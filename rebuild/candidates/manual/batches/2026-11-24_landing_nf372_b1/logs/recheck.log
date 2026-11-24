@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00618660   WARN STANDIN_LEAF ?Reset@CCountedPointer_006174f0@@QAEXPAX@Z (catalog CCountedPointer<std::vector<unsigned __int64,std::allocator<unsigned __int64>>>::Reset; address-only name)
+00618660   RELOCATION_MATCH PASS   Reset
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0085a840.obj; graded the largest function
+  WARN leaf '??0?$CCountedPointer@' matches no symbol in 0085a840.obj; graded the largest function
+0085a840   WARN STANDIN_LEAF ??0CCountedPointer_0085a5a0@@QAE@PAX@Z (catalog CCountedPointer<CCombatActionBase>::CCountedPointer; address-only name)
+0085a840   RELOCATION_MATCH PASS   CCountedPointer
+00ac3a40   RELOCATION_MATCH PASS   Reset
+
+WINS: 3
+  00618660 RELOCATION_MATCH CCountedPointer<std::vector<unsigned __int64,std::allocator<unsigned __int64>>>::Reset
+  0085a840 RELOCATION_MATCH CCountedPointer<CCombatActionBase>::??0?$CCountedPointer@
+  00ac3a40 RELOCATION_MATCH CCountedPointer_00ac3a10::Reset

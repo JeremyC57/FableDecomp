@@ -4658,7 +4658,7 @@ address	name	length	bytes
 00c5cea0	CAudioRingBuffer::Flush	12	33c089411489411889411cc3
 00c8db10	ogg_stream_packetout	12	8bc16a018bcae8b5feffffc3
 00cb5ac0	CScriptInfoManager::CheckSectionIsNotAlreadyRegistered	12	8d4c2404e81790ceffc20400
-00cd3f40	CEngineSubPrimitiveBase::operator_new	12	51b920e94301e855040000c3
+00cd3f40	CScriptDefinitionManager::Set	12	51b920e94301e855040000c3
 00f35b30	CEntityScriptBase::IsActiveThreadTerminating	12	8b01ff500c8bc8e9041ed8ff
 004167cd	CMainGameComponent::GetCurrentFrameFinishTimeApproximation	13	568bf1e844faffffdc46585ec3
 0049d8b0	CWorld::StartCountdownTimer	13	8b4424048981a0000000c20400

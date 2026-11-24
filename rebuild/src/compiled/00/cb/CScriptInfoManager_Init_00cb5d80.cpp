@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB5D80, length 182 bytes (`ret`).
 // PDB: ?Init@CScriptInfoManager@@QAEXXZ.
 // Callees: operator new @ 0x00BFEA1A (0xd0 bytes) + CScriptDefinitionManager::CScriptDefinitionManager @ 0x00CD3F00 (vtable
-// 0x012C2648), GFSetPDefinitionManager @ 0x00CD3F40 (`__fastcall`: resets the global CCountedPointer @ 0x0143E920; manifest
+// 0x012C2648), CScriptDefinitionManager::Set @ 0x00CD3F40 (static `__fastcall`: resets the static CCountedPointer PClass @ 0x0143E920; manifest
 // "operator_new" is propagated), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 // NProgressDisplay::DisplayProgress(const CCharString&, float, bool, bool) @ 0x009E9F40 (`__fastcall`, the bool in dl),
 // CScriptInfoManager::RegisterDefs @ 0x00F2A0F0, GFGetPDefinitionManager @ 0x00CD3EF0 + its virtual slot 2 (0x00CD3F50,
@@ -18,6 +18,9 @@
 //   engine/CVectorMap.h (FABLE_RETAIL_CVECTORMAP_SORT: Update = sort if Dirty, expanded) and engine/NProgressDisplay.h, so the table sort
 //   binds the STLport std::sort<pair<CCharString, CScriptInfo>*, CKeyPairCompareLess<..> > spelling its self row 0x00CB7780 defines.
 //   The definition-manager declarations are the landed row's, unchanged.
+// Naming (NF371, 2026-11-24): the install call binds FableWin.pdb + Ego_r.pdb ?Set@CScriptDefinitionManager@@SIXPAV1@@Z (12-byte self row
+//   0x00CD3F40, respelled in the same landing; was the made-up free ?GFSetPDefinitionManager@@YIXPAVCDefinitionManager@@@Z), declared as the
+//   PDB static member in the local model; the argument is the same pointer (the base is at offset 0).
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_STLP_SORT_FASTCALL
 #define FABLE_RETAIL_CVECTORMAP_SORT
@@ -36,14 +39,14 @@ public:
 class CScriptDefinitionManager : public CDefinitionManager {   // vtable 0x012C2648, 0xd0 bytes
 public:
     CScriptDefinitionManager();                        // 0x00CD3F00
+    static void __fastcall Set(CScriptDefinitionManager* manager);   // 0x00CD3F40
     unsigned char _body[0xcc];
 };
-void __fastcall GFSetPDefinitionManager(CDefinitionManager* manager);   // 0x00CD3F40
 CDefinitionManager* GFGetPDefinitionManager();                          // 0x00CD3EF0 (no arguments; landed callers declare it plain)
 
 void CScriptInfoManager::Init()
 {
-    GFSetPDefinitionManager(new CScriptDefinitionManager());
+    CScriptDefinitionManager::Set(new CScriptDefinitionManager());
     NProgressDisplay::DisplayProgress("Registering Script Defs", -1.0f, false, false);
     RegisterDefs();
     GFGetPDefinitionManager()->LoadDefinitions();

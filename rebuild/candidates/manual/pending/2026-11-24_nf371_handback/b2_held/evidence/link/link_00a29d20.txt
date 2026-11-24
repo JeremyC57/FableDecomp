@@ -1,0 +1,8 @@
+## HEAD set: H_00a29d20.obj 00a28370.obj 00a26d40.obj
+duplicates 0
+UNRESOLVED 1 ?Destroy_00a28370@@YIXPAX@Z
+UNRESOLVED 1 ?Reset@CEntryCountedPointer@@QAEXPAVCMeshDataBankEntry@@@Z
+## new set: 00a29d20.obj 00a28370.obj 00a26d40.obj
+duplicates 0
+UNRESOLVED 1 ?Reset@CEntryCountedPointer@@QAEXPAVCMeshDataBankEntry@@@Z
+LK_DONE

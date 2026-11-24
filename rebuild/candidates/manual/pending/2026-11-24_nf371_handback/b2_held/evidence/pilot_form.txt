@@ -1,0 +1,16 @@
+# Pilot 0x00A299C0, HEAD v the two header forms (pass.py one path; both RELOCATION_MATCH against retail)
+## spec (adopted, rows/00a299c0.cpp: strong template<> specialization, RESET_CAMERA_DECL + DELETEDATA_DECL_ONLY)
+map: ?Reset@CCountedPointer_00a281e0@@QAEXPAX@Z=?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z ?Destroy_00a281e0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z ??0SCountBlock@@QAE@PAX@Z=??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+sections H=3 N=3
+  ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z') data differs
+  ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z') rel differs
+VERDICT NOT_EQ (2)
+## inst (variants/00a299c0_inst.cpp: sibling explicit instantiation, DELETEDATA_DECL_ONLY)
+map: ?Reset@CCountedPointer_00a281e0@@QAEXPAX@Z=?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z ?Destroy_00a281e0@@YIXPAX@Z=?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z ??0SCountBlock@@QAE@PAX@Z=??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+sections H=3 N=4
+  ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z') data differs
+  ('COMDAT', '??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z') rel differs
+  ADDED ('COMDAT', '?ReleaseData@?$CCountedPointer@VC3DMesh2@@@@QAEXXZ')
+  ('COMDAT', '?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z') sel differs 1 v 2
+  SYM+ DEF ?ReleaseData@?$CCountedPointer@VC3DMesh2@@@@QAEXXZ
+VERDICT NOT_EQ (5)

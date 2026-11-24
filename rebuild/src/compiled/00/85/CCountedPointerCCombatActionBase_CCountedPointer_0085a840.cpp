@@ -8,13 +8,19 @@
 // then for a non-null object allocates the 12-byte block {1, destroy fn 0x0085A5A0, object}
 // (operator new @ 0x00BFEA1A, null-checked), else leaves the block pointer null. Named like the
 // Reset family (unique manifest label, else the destroy function). One of 21 bodies.
-void __fastcall Destroy_0085a5a0(void* object);   // 0x0085A5A0: the per-type deleter stored in the block
+// Naming (NF309, 2026-11-23): the count block's deleter 0x0085A5A0 now binds its PDB spelling ?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z (FableWin.pdb name set; retail stores
+//   0x0085A5A0 as the count block's DeleteFunc here; the self row's Leaf), declared by the shared engine/CCountedPointer.h under
+//   FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (only its address is stored here, T is only declared; the NF284 0x00BB64A0 form);
+//   was the free stand-in ?Destroy_0085a5a0@@YIXPAX@Z. Object otherwise unchanged.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CCombatActionBase;
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_0085a5a0), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(&CCountedPointer<CCombatActionBase>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_0085a5a0 {

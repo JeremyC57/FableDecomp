@@ -1,0 +1,13 @@
+address	status	grades	note
+00447d90	held-ruling	H1 N1	batches/b2 HOLD: all gates measured, R2 open
+00a29d20	held-ruling	H1 N1	batches/b2 HOLD: all gates measured, R2 open
+00a299c0	held-ruling	H2 N4	batches/b2 HOLD: all gates measured, R2 open and R1 open
+00aa4460	held-ruling	H1 N1	batches/b2 HOLD: all gates measured, R2 open
+00b3e510	held-ruling	H1 N1	batches/b2 HOLD: all gates measured, R2 open
+00cd43a0	held-ruling	H1 N1	batches/b2 HOLD: all gates measured, R2 open
+00f39ca0	held-ruling	H1 N2	batches/b2 HOLD: all gates measured, R2 open and R1 open
+00cd3f40	done	H1 N1	batches/b1 ACCEPT (objsec ALL_EQ)
+00cb5d80	done	H1 N1	batches/b1 ACCEPT (objsec ALL_EQ)
+00a26d40	skipped-port	-	binder of 0x00A29D20 through the stand-in class CEntryCountedPointer (HEAD compiled as a control only); QUEUE_PROPOSALS
+00b3b240	skipped-port	-	binder of 0x00B3E510 through the stand-in class CAllocatorPointer with the wrong pointee CPoolAllocator (HEAD compiled as a control only); QUEUE_PROPOSALS
+00aa4210	skipped-held	-	binder of 0x00AA4460: T3_PORT_QUEUE column 2 (nf366), reserved; not compiled

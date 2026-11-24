@@ -22269,7 +22269,7 @@ address	symbol	status	leaf_given
 00cd3ee0	?M@C00cd3ee0@@QAEXXZ	MATCH	NullFunction
 00cd3ef0	_GetGlobal	RELOCATION_MATCH	_GetGlobal
 00cd3f00	??0CScriptDefinitionManager@@QAE@XZ	RELOCATION_MATCH	??0CScriptDefinitionManager
-00cd3f40	?operator_new_variant@@YIPAXI@Z	RELOCATION_MATCH	operator_new
+00cd3f40	?Set@CScriptDefinitionManager@@SIXPAV1@@Z	RELOCATION_MATCH	?Set@CScriptDefinitionManager@@SIXPAV1@@Z
 00cd42e0	?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z	MATCH	?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z
 00cd43a0	?Reset@CCountedPointer_00cd42e0@@QAEXPAX@Z	RELOCATION_MATCH	Reset
 00cd4450	??0CTimer@@QAE@XZ	RELOCATION_MATCH	??0CTimer

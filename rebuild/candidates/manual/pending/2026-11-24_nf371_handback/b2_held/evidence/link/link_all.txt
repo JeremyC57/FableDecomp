@@ -1,0 +1,36 @@
+## HEAD set: H_00447d90.obj H_00a29d20.obj H_00a299c0.obj H_00aa4460.obj H_00b3e510.obj H_00cd43a0.obj H_00f39ca0.obj H_00cd3f40.obj H_00cb5d80.obj 00447660.obj 00a24520.obj 00a26d40.obj 00a27030.obj 00a281e0.obj 00a28370.obj 00aa4310.obj 00b3b240.obj 00b3e080.obj 00b81f30.obj 00b82100.obj 00b9a4a0.obj 00ba6240.obj 00cd42e0.obj 00f38920.obj 00f38990.obj
+duplicates 2
+  DUP 00a281e0.obj ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z in 00a24520.obj;
+  DUP 00f38990.obj ?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z in 00f38920.obj;
+UNRESOLVED 1 ?Allocate@CFixedAllocator@@QAEPAXI@Z
+UNRESOLVED 1 ?Destroy_00447660@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a281e0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00a28370@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00aa4310@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00b3e080@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00cd42e0@@YIXPAX@Z
+UNRESOLVED 1 ?Destroy_00f38920@@YIXPAX@Z
+UNRESOLVED 1 ?GFSetPDefinitionManager@@YIXPAVCDefinitionManager@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VC3DAnimationManager@@@@QAEXPAVC3DAnimationManager@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VC3DMeshStripifier@@@@QAEXPAVC3DMeshStripifier@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VC3DQuadricBasedMeshOptimiser@@@@QAEXPAVC3DQuadricBasedMeshOptimiser@@@Z
+UNRESOLVED 2 ?Reset@?$CCountedPointer@VCParticleSimulation@@@@QAEXPAVCParticleSimulation@@@Z
+UNRESOLVED 1 ?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z
+UNRESOLVED 1 ?Reset@CEntryCountedPointer@@QAEXPAVCMeshDataBankEntry@@@Z
+UNRESOLVED 1 ?Reset@CMemoryPoolPointer@@QAEXPAUCMemoryPool@@@Z
+UNRESOLVED 1 ?ResetWorldTransform@CShaderRenderManager@@QAEXXZ
+## new set: 00447d90.obj 00a29d20.obj 00a299c0.obj 00aa4460.obj 00b3e510.obj 00cd43a0.obj 00f39ca0.obj 00cd3f40.obj 00cb5d80.obj 00447660.obj 00a24520.obj 00a26d40.obj 00a27030.obj 00a281e0.obj 00a28370.obj 00aa4310.obj 00b3b240.obj 00b3e080.obj 00b81f30.obj 00b82100.obj 00b9a4a0.obj 00ba6240.obj 00cd42e0.obj 00f38920.obj 00f38990.obj
+duplicates 4
+  DUP 00a24520.obj ?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z in 00a299c0.obj;
+  DUP 00a281e0.obj ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z in 00a24520.obj;
+  DUP 00f38990.obj ?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z in 00f38920.obj;
+  DUP 00f38990.obj ?Reset@?$CCountedPointer@VCRenderTarget@@@@QAEXPAVCRenderTarget@@@Z in 00f39ca0.obj;
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VC3DAnimationManager@@@@QAEXPAVC3DAnimationManager@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VC3DMeshStripifier@@@@QAEXPAVC3DMeshStripifier@@@Z
+UNRESOLVED 1 ?Reset@?$CCountedPointer@VC3DQuadricBasedMeshOptimiser@@@@QAEXPAVC3DQuadricBasedMeshOptimiser@@@Z
+UNRESOLVED 2 ?Reset@?$CCountedPointer@VCParticleSimulation@@@@QAEXPAVCParticleSimulation@@@Z
+UNRESOLVED 1 ?Reset@CAllocatorPointer@@QAEXPAUCPoolAllocator@@@Z
+UNRESOLVED 1 ?Reset@CEntryCountedPointer@@QAEXPAVCMeshDataBankEntry@@@Z
+UNRESOLVED 1 ?Reset@CMemoryPoolPointer@@QAEXPAUCMemoryPool@@@Z
+UNRESOLVED 1 ?ResetWorldTransform@CShaderRenderManager@@QAEXXZ
+LK_DONE

@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+rewitness	?Destroy_0085a5a0@@YIXPAX@Z	0085a5a0	00905fd0	NF372: 0x0085A840 moved to DeleteData; the other address-taker 0x00905FD0 (T3 nf295) still binds the stand-in. land_scripted keeps only lines witnessed by a landed row: apply this line with apply_table.py by hand
+replace	??0CClass_004d5eca@@QAE@XZ -> ??0CCarriedReadableDef@@QAE@XZ	004d5eca	004d92b0	NF372 entry 48, table-only (NF309 Q4): the witness 0x004D92B0 (CCarriedReadableDef::Alloc) already constructs the real class; its HEAD object (vland RELOCATION_MATCH PASS) relocates 0x004D5ECA to the PDB ??0CCarriedReadableDef@@QAE@XZ (Ego_r + FableWin name sets; evidence/xr_004d92b0_head.txt); no landed source, test or header names CClass_004d5eca

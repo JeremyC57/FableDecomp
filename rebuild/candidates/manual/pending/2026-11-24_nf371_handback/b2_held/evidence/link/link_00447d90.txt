@@ -1,0 +1,6 @@
+## HEAD set: H_00447d90.obj 00447660.obj
+duplicates 0
+UNRESOLVED 1 ?Destroy_00447660@@YIXPAX@Z
+## new set: 00447d90.obj 00447660.obj
+duplicates 0
+LK_DONE

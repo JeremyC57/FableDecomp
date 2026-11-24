@@ -1,0 +1,2 @@
+REF work/obj/00f39ca0.obj len=103 relocs=3
+EQUAL work/hobj/00f38990.obj len=103
