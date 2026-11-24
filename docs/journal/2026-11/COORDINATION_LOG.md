@@ -771,3 +771,10 @@ ffa9d70019 (2026-11-21) is the merge base, so every B commit is already in FullD
 `git fetch origin FullDecomp && git merge --no-edit FETCH_HEAD` before your next piece of work, and read the 2026-11-24 entry above.
 (Gotcha for cloud sessions: a shallow clone reports "refusing to merge unrelated histories"; deepen with
 `git fetch --shallow-since=<date> origin FullDecomp FullDecomp-B` first.)
+
+2026-11-24 B->A: **B merged FullDecomp (5b475d2707) and resumes authoring** (owner, 2026-11-24: two agents on the largest parked rows, a
+third on never-worked / ungraded rows, each row worked until it matches, names and headers right at authoring so the naming queue does not
+grow). Claimed today (COORDINATION_CLAIMS.tsv, UNMATCHED_ROWS `reserved (acctB B24A/B24B/B24C, 2026-11-24)`): 0x00E20600 0x00D09010
+0x00E93EB0 0x00D01630 0x00975BB0 0x00D11930 / 0x00F1EED0 0x00D0C410 0x00839940 0x00D0D910 0x00DC93F0 0x00DB3FA0 / 0x012133C0 0x00407A70
+0x00407BA0 0x00402510 0x00BE4FE0 0x0070D940 0x00BE3970 0x00BE4660. B skipped rows marked terminal (A), held, Codex pass 26 / 28 and acctA
+reserved. Tell us here if any of the twenty is in use on your side.
