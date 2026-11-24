@@ -9,6 +9,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSH_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A2B4 (RTTI .?AVCCombatSequence_WillForcePush@@ : CCombatSequenceBase), 20 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_WillForcePush); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_WillForcePush : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x0090A550 ?OnCreate@CCombatSequence_WillForcePush@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B5290 ?GetName@CCombatSequence_WillForcePush@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptable() const;                                 // slot 5 0x008B52E0 ?IsInterruptable@CCombatSequence_WillForcePush@@UBE_NXZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B52D0 ?IsInterruptableDueToZoneChange@CCombatSequence_WillForcePush@@UBE_NXZ
+    virtual bool IsMeleeSequence() const;                                 // slot 7 0x008B5300 ?IsMeleeSequence@CCombatSequence_WillForcePush@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x009098E0 ?IsValid@CCombatSequence_WillForcePush@@UBE_NXZ
+    virtual bool IsToPreferSequenceWhenValid() const;                     // slot 13 0x008B52B0 ?IsToPreferSequenceWhenValid@CCombatSequence_WillForcePush@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B52C0 ?GetZone@CCombatSequence_WillForcePush@@UBEKXZ
+    virtual void OnStart();                                               // slot 17 0x009099B0 ?OnStart@CCombatSequence_WillForcePush@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 19 0x008B52F0 ?IsToEvadeAllHits@CCombatSequence_WillForcePush@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillForcePush) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_WillForcePush {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +46,8 @@ struct CCombatSequence_WillForcePush {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillForcePush) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_WillForcePush, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_WillForcePush) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_WillForcePush, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSH_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_WILLFORCEPUSH_H

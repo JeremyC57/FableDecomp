@@ -9,6 +9,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_VILLAGERCOMBO_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01279C1C (RTTI .?AVCCombatSequence_VillagerCombo@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_VillagerCombo); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_VillagerCombo : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00908A20 ?OnCreate@CCombatSequence_VillagerCombo@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B47A0 ?GetName@CCombatSequence_VillagerCombo@@UBE?AVCCharString@@XZ
+    virtual bool IsMeleeSequence() const;                                 // slot 7 0x008B47D0 ?IsMeleeSequence@CCombatSequence_VillagerCombo@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B47C0 ?GetZone@CCombatSequence_VillagerCombo@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_VillagerCombo) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_VillagerCombo {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +40,8 @@ struct CCombatSequence_VillagerCombo {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_VillagerCombo) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_VillagerCombo, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_VillagerCombo) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_VillagerCombo, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_VILLAGERCOMBO_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_VILLAGERCOMBO_H

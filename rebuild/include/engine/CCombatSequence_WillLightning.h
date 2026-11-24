@@ -9,6 +9,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_WILLLIGHTNING_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A20C (RTTI .?AVCCombatSequence_WillLightning@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_WillLightning); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_WillLightning : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00909140 ?OnCreate@CCombatSequence_WillLightning@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B5120 ?GetName@CCombatSequence_WillLightning@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptable() const;                                 // slot 5 0x008B5170 ?IsInterruptable@CCombatSequence_WillLightning@@UBE_NXZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B5160 ?IsInterruptableDueToZoneChange@CCombatSequence_WillLightning@@UBE_NXZ
+    virtual bool IsMeleeSequence() const;                                 // slot 7 0x008B5180 ?IsMeleeSequence@CCombatSequence_WillLightning@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x00909640 ?IsValid@CCombatSequence_WillLightning@@UBE_NXZ
+    virtual bool IsToPreferSequenceWhenValid() const;                     // slot 13 0x008B5140 ?IsToPreferSequenceWhenValid@CCombatSequence_WillLightning@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B5150 ?GetZone@CCombatSequence_WillLightning@@UBEKXZ
+    virtual void OnStart();                                               // slot 17 0x00909690 ?OnStart@CCombatSequence_WillLightning@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillLightning) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_WillLightning {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +45,8 @@ struct CCombatSequence_WillLightning {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_WillLightning) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_WillLightning, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_WillLightning) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_WillLightning, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_WILLLIGHTNING_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_WILLLIGHTNING_H

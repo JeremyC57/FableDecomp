@@ -9,6 +9,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATSEQUENCE_KINGSCORPIONTAILPLUNGE_VIRTUAL_MODEL
+// Opt-in (NF329, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012796CC (RTTI .?AVCCombatSequence_KingScorpionTailPlunge@@ : CCombatSequenceBase), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatSequence_KingScorpionTailPlunge); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF329 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CCOMBATSEQUENCEBASE.
+#include "engine/CCombatSequenceBase.h"
+class CCharString;
+#pragma pack(push, 1)
+class CCombatSequence_KingScorpionTailPlunge : public CCombatSequenceBase {
+public:
+    virtual void OnCreate();                                              // slot 1 0x00906FE0 ?OnCreate@CCombatSequence_KingScorpionTailPlunge@@UAEXXZ
+    virtual CCharString GetName() const;                                  // slot 2 0x008B3F50 ?GetName@CCombatSequence_KingScorpionTailPlunge@@UBE?AVCCharString@@XZ
+    virtual bool IsInterruptable() const;                                 // slot 5 0x008B3F90 ?IsInterruptable@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 6 0x008B3FA0 ?IsInterruptableDueToZoneChange@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ
+    virtual bool IsValid() const;                                         // slot 12 0x00906FD0 ?IsValid@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ
+    virtual bool IsToPreferSequenceWhenValid() const;                     // slot 13 0x008B3F70 ?IsToPreferSequenceWhenValid@CCombatSequence_KingScorpionTailPlunge@@UBE_NXZ
+    virtual unsigned long GetZone() const;                                // slot 15 0x008B3F80 ?GetZone@CCombatSequence_KingScorpionTailPlunge@@UBEKXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatSequence_KingScorpionTailPlunge) == 0x28);
+#else
 #pragma pack(push, 1)
 struct CCombatSequence_KingScorpionTailPlunge {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -21,7 +43,8 @@ struct CCombatSequence_KingScorpionTailPlunge {
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatSequence_KingScorpionTailPlunge) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CCombatSequence_KingScorpionTailPlunge, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(24, sizeof(CCombatSequence_KingScorpionTailPlunge) == 0x28);
+FABLE_STATIC_ASSERT_AT(25, offsetof(CCombatSequence_KingScorpionTailPlunge, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCOMBATSEQUENCE_KINGSCORPIONTAILPLUNGE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCOMBATSEQUENCE_KINGSCORPIONTAILPLUNGE_H
