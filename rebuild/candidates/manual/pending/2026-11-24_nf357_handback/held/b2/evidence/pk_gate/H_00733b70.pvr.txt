@@ -1,0 +1,6 @@
+EQ  0041c930 45 ??0CSoundInit@@QAE@XZ 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0065f604 182 ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z LEAF-REFERENCED
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

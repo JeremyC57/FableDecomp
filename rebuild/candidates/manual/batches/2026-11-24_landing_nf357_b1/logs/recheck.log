@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0076eb00   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+0076eb00   RELOCATION_MATCH PASS   InitialiseTrails
+00780d80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00780d80   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 2
+  0076eb00 RELOCATION_MATCH CTCWeaponTrail::?InitialiseTrails@CTCWeaponTrail@@AAEXXZ
+  00780d80 RELOCATION_MATCH CTCFlammable::?FrameUpdate@CTCFlammable@@UAEXXZ

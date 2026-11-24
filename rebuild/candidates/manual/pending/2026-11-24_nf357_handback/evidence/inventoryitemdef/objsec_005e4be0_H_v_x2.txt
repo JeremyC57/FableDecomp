@@ -1,0 +1,7 @@
+CHANGED ('COMDAT', '??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z', '.text') size 171 -> 162 data_eq=False relocs_eq=False flags_eq=False
+ADDED   ('COMDAT', '??_C@_0BC@BGOMMHE@CInventoryItemDef?$AA@', '.rdata') size=18
+ADDED   ('COMDAT', '?StatGetTypeName@CInventoryItemDef@@SI?AVCCharString@@XZ', '.text') size=19
+SYM- UND ?StatGetTypeName@CInventoryItemDef@@SI?AVCCharString@@XZ
+SYM+ DEF ??_C@_0BC@BGOMMHE@CInventoryItemDef?$AA@
+SYM+ DEF ?StatGetTypeName@CInventoryItemDef@@SI?AVCCharString@@XZ
+VERDICT DIFF n=3 symdelta=3 leaf=same

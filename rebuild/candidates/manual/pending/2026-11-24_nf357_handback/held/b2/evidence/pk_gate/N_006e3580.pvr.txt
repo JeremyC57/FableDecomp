@@ -1,0 +1,10 @@
+NEQ 0041c930 45 ??0CSoundInit@@QAE@XZ not referenced by the leaf
+EQ  006e28a0 33 ?IsTalking@CTCTalk@@QBE_NXZ 
+EQ  00411570 40 ?Compare@?$CBasicString@D@@KIJPBD0@Z 
+EQ  004a93c0 34 ??8?$CBasicString@D@@QBE_NABV0@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0065f604 162 ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z 
+EQ  004b8ff0 427 ??$__find@PBVCCharString@@V1@@std@@YIPBVCCharString@@PBV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  006e2cf0 64 ?SetAsUsingNarrator@CTCTalk@@QAEXABVCCharString@@@Z 

@@ -1,0 +1,11 @@
+item	status	detail
+0x0042B0A2	done (b1m) + held/b2, b2r (rulings Q1, Q5); local-body emitters remain	GetSubDef<CAppearanceDef>: recount 34 leaf-called NEQ emitters; 00667b30 fixed in batches/b1m (include move, Q2); 33 more fixed in held/b2 (006668a0 include move, Q2); new add-only size-body opt-in (both headers); 6 emitters already EQ
+0x0042B1A6	done (b1) + held/b2, b2r (rulings Q1, Q5); local-body emitters remain	GetSubDef<CWeaponDef>: recount 13 NEQ emitters; 0076eb00 fixed in batches/b1; 12 more in held/b2 (00735fd0 include move, Q2); 7 already EQ
+0x0065F604	done (b1) + held/b2, b2r (rulings Q1, Q5); local-body emitters remain	GetSubDef<CEntitySoundDef>: recount 4 NEQ emitters; 00780d80 fixed in batches/b1 with the EXISTING opt-in; 3 more in held/b2 (GSB rows: new CDefClassBase_GetSubDef.h block under the existing macro name, Q3); 2 already EQ
+0x005BADE1	skipped (second device; Q4)	GetSubDef<CInventoryItemDef>: 4 NEQ emitters (005e4be0, 006aca30, 005bdf08, 005bdfb1); size body alone 171 -> 152 B still NEQ (X1); residue = declaration-only CInventoryItemDef::StatGetTypeName (X2 scratch inline + size body = EQ 162, adds a COMDAT)
+00780d80	ACCEPT batches/b1	one define (existing opt-in)
+0076eb00	ACCEPT batches/b1	one define (new CDefClassBase_GetSubDef.h opt-in)
+00667b30	ACCEPT batches/b1m	one define + one include line moved (ruling Q2)
+005e4be0	skipped	brief row; NF356 lock released mid-session; measured against repo HEAD (X1 / X2); no fix without a second device
+recount part 2	measured, not changed	56 more landed rows call the owners in retail: 9 declaration-only; 47 local same-TU bodies compiled: 24 leaf-called NEQ PDB-named copies (CAppearanceDef 4, CWeaponDef 10, CEntitySoundDef 5, CInventoryItemDef 6), 16 EQ, 11 stand-in names only (evidence/census/local_body_rows.tsv); ports, outside the size-body device
+held/b2r	held (Q5)	12 emitters on the stay-off screen (10 T3 column-2, 2 old Account B staged packages); texts and proofs ready

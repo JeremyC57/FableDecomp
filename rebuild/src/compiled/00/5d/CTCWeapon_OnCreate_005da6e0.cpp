@@ -23,6 +23,7 @@
 #define FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD   // NF349: GetDef<T> copies = retail (the re-reading SetDynamicCast, owner 0x0066C340; as 0x0066B370)
 #define FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_CTHINGBASEDEF_SIZE_BODY   // NF349: GetDef<CThingBaseDef> pick-any copy = size-mode owner 0x0042AF3C (scaffolding, not retail)
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CWEAPONDEF_SIZE_BODY   // NF357: GetSubDef<CWeaponDef> pick-any copy = size-mode owner 0x0042B1A6 (scaffolding, not retail)
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CRESOURCE

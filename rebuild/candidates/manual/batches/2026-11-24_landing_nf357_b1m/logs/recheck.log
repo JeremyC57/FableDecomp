@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00667b30   RELOCATION_MATCH PASS   GetRandomCombatAnimationFromName
+
+WINS: 1
+  00667b30 RELOCATION_MATCH CThingCreatureBase::?GetRandomCombatAnimationFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@@Z

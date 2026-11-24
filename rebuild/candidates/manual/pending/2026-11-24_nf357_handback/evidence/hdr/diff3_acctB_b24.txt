@@ -1,0 +1,1 @@
+diff3 -m new HEAD acctB_b24(00402510) : exit 0, 0 conflict markers

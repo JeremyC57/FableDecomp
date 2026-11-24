@@ -1,0 +1,65 @@
+addr	kind	symbol	verdict	pk_kind	size	leaf_called(leafref/reach)	pvr
+0041e6d3	PDB	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	NEQ	strong	159	y/y	pvr=NEQ
+0041e6d3	OTHER	??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+0041e6d3	OTHER	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z
+0041e6d3	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	159	y/y	pvr=NEQ
+004bfc50	PDB	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	NEQ	strong	182	y/y	pvr=NEQ
+004bfd10	OTHER	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z
+005ad571	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+005ad571	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005bd82e	PDB	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NEQ	pickany	27	y/y	pvr=NEQ
+005c3180	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	pickany	29	y/y	pvr=NEQ
+005c36c2	OTHER	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+005c36c2	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c552c	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c66b2	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c770c	OTHER	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z
+005c770c	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	27	y/y	pvr=NEQ
+005c8176	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005cb2b0	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005cbc36	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	pickany	162	y/y	pvr=NEQ
+005d94b0	PDB	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NEQ	pickany	16	y/y	pvr=NEQ
+005d97f0	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	pickany	27	y/y	pvr=NEQ
+00646dbd	PDB	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NEQ	strong	27	y/y	pvr=NEQ
+006594bb	PDB	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@VCEntitySoundDef@@@@@Z	NEQ	pickany	32	y/y	pvr=NEQ
+0066b040	OTHER	?GetSubDef@CThingDef@@QBE_NPAV?$CDefPointer@UCSoundPlayerDef@@@@@Z
+00698a30	PDB	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	NEQ	strong	182	y/y	pvr=NEQ
+006ea5f0	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	25	y/y	pvr=NEQ
+0071ce80	PDB	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NEQ	strong	25	y/y	pvr=NEQ
+007306c0	OTHER	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z
+00730a00	PDB	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	NEQ	pickany	51	y/y	pvr=NEQ
+00730c00	OTHER	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z
+00730dd0	OTHER	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAnimatingObjectDef@@@@@Z
+007502d0	OTHER	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z
+00772250	PDB	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NEQ	strong	25	y/y	pvr=NEQ
+00772250	OTHER	??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z
+00772250	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+0077a180	PDB	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	NEQ	pickany	182	y/y	pvr=NEQ
+0077c160	PDB	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	NEQ	pickany	51	y/y	pvr=NEQ
+00861e60	PDB	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	NEQ	strong	149	y/y	pvr=NEQ
+008643a0	PDB	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z	NEQ	strong	156	y/y	pvr=NEQ
+008c0900	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	29	y/y	pvr=NEQ
+008c89d0	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	29	y/y	pvr=NEQ
+008f3020	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	29	y/y	pvr=NEQ
+008f3100	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	NEQ	strong	29	y/y	pvr=NEQ
+005a9cbe	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+005a9cbe	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005aaf28	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+005aaf28	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005b37f7	OTHER	?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z
+005b3e4e	PDB	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005b4eba	OTHER	??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+005b4eba	OTHER	??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z
+005b4eba	PDB	??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z	NEQ	strong	162	y/y	pvr=NEQ
+005b4eba	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+005c47d5	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c6b26	OTHER	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z
+005c6b26	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+005c6b26	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c7452	OTHER	??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z
+005c7452	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c8459	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c90fc	OTHER	??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+005c90fc	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005c9a95	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ
+005cacb9	PDB	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z	EQ	pickany	162	y/y	pvr=EQ

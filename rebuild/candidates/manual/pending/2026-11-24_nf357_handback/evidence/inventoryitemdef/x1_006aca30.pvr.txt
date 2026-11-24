@@ -1,0 +1,9 @@
+EQ  004d57fa 19 ?StatGetClassTypeName@CTCActionUseActivateQuest@@SI?AVCCharString@@XZ 
+EQ  004a93c0 34 ??8?$CBasicString@D@@QBE_NABV0@@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 006ae320 171 ??$GetSubDef@VCGoldDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGoldDef@@@@@Z LEAF-REFERENCED
+EQ  0042b040 98 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z 
+NEQ 005bade1 152 ??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z LEAF-REFERENCED
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

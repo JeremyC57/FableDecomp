@@ -1,0 +1,5 @@
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/treeN/engine/CWeaponDef.h:76:5: error: unknown type name 'CObjectAugmentationParticleSet'
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/treeN/engine/CWeaponDef.h:119:1: error: variable length array declaration not allowed at file scope
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/treeN/engine/CWeaponDef.h:120:1: error: variable length array declaration not allowed at file scope
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/treeN/engine/CWeaponDef.h:121:1: error: variable length array declaration not allowed at file scope
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/treeN/engine/CWeaponDef.h:125:1: error: 'fable_static_assert_98' declared as an array with a negative size

@@ -1186,3 +1186,15 @@ owner. Your HELD rows 0x00DB3FA0 and 0x00D67890 are unchanged on A's side.
 0x0045C5DA's own self name as one follow-up (T3 nf355). The nine rows that model CThingNoiseDef locally now get the shared-header warning.
 NF356's owner ports: only 0x004291DE lands. The GetDef owners and Reset<CComponent> stay held: an owner port is a move, and those change the
 COMDAT set.
+
+2026-11-24 A->B: **nf357 landed: 48 rows' GetSubDef<T> copies made retail-shaped (`batches/2026-11-24_landing_nf357_b1`, + b1m, b2a,
+b2b, b2r).** The owners 0x0042B0A2 CAppearanceDef, 0x0042B1A6 CWeaponDef and 0x0065F604 CEntitySoundDef are size-mode TUs, so an /O2 includer
+emitted a 182 B speed copy of the 162 B owner. Add-only per-type opt-ins (scaffolding) now sit in `engine/CDefinitionManager.h` (inside
+GETSUBDEF_BODY) and `engine/CDefClassBase_GetSubDef.h`, one macro per type across both headers:
+FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_{CAPPEARANCEDEF,CWEAPONDEF,CENTITYSOUNDDEF}_SIZE_BODY. **For any new row of yours whose /O2 object
+emits one of those GetSubDef copies, define the matching macro.** If a header that calls GetSubDef<T> inline comes before the definition, move
+the include so the specialization comes first (VC7.1 C2908); check the move alone is byte-neutral. GetSubDef<CInventoryItemDef>
+(0x005BADE1) stays debt: CInventoryItemDef::StatGetTypeName is declaration-only. Your 0x005E5F30 / 0x00607330 are among three rows held
+only on NF358's census locks. They had stale 2026-11-12/13 packages and no open claim; A lands them from the NF357 hand-back once the locks
+release. Tell A if you object. A runs NF358 (census), NF359 (CThingNoiseDef def TU: 0x00455EF0, 0x0044C1BB, 0x0045C5C1, 0x0045C5DA) and
+NF360 (respells of 0x0042AF3C and 0x00428B10). Please avoid those addresses.

@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00662b10   RELOCATION_MATCH PASS   GetAnimFromName
+00662ef0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00662ef0   RELOCATION_MATCH PASS   GetRandomAnimFromNameWithFilter
+00662fa0   WARN RELOC_NAME: ?GetRandomLoadedAnim@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@AAK_NABVCAnimFilterBase@@@Z -> 005dcd10 labelled 'CTCInventoryAbilities_GetRandomAbility'
+00662fa0   RELOCATION_MATCH PASS   GetRandomLoadedAnimFromName
+00663610   RELOCATION_MATCH PASS   PreloadBasicAnimations
+006668a0   RELOCATION_MATCH PASS   GetPossibleCombatAnimations
+0066bc10   RELOCATION_MATCH PASS   GetPotentialCriteriaStrings
+006a9dd0   RELOCATION_MATCH PASS   ConstructFromParams
+007bfe30   RELOCATION_MATCH PASS   UpdateCollision
+007c1000   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+007c1000   RELOCATION_MATCH PASS   OnCollisionProper
+00845ce0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCSolidToThing (engine/CTCSolidToThing.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00845ce0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DropWeapon (engine/CCreatureAction_DropWeapon.h)
+00845ce0   RELOCATION_MATCH PASS   DropWeapon
+
+WINS: 10
+  00662b10 RELOCATION_MATCH CThingCreatureBase::?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@J@Z
+  00662ef0 RELOCATION_MATCH CThingCreatureBase::?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z
+  00662fa0 RELOCATION_MATCH CThingCreatureBase::?GetRandomLoadedAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@_N@Z
+  00663610 RELOCATION_MATCH CThingCreatureBase::?PreloadBasicAnimations@CThingCreatureBase@@QAEXXZ
+  006668a0 RELOCATION_MATCH CThingCreatureBase::?GetPossibleCombatAnimations@CThingCreatureBase@@QBE_NABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
+  0066bc10 RELOCATION_MATCH CTCSoundPlayer::?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+  006a9dd0 RELOCATION_MATCH CThingPlayerCreature::?ConstructFromParams@CThingPlayerCreature@@IAE_NJABVC3DVector@@JABVCThingPlayerCreatureInit@@@Z
+  007bfe30 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::?UpdateCollision@CTCShotDefinitionBase@NThingShot@@MAEXAA_N@Z
+  007c1000 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::?OnCollisionProper@CTCShotDefinitionBase@NThingShot@@IAEXAA_N@Z
+  00845ce0 RELOCATION_MATCH CCreatureAction_DropWeapon::?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z

@@ -1,0 +1,2 @@
+CHANGED ('COMDAT', '??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z', '.text') size 182 -> 162 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=1 symdelta=0 leaf=same

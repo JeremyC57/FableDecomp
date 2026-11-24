@@ -59,3 +59,5 @@ Notes on the results:
   - 0x00643D8C `?AddHitByMelee@CPlayerGui` -> 0x00437990.
   A no-compile census of landed Leaf lines against table targets, finding the rest of this kind, is queued.
 - **Old-checker defects:** its LEAF-REFERENCED tag is wrong on 10 NEQ lines (9 missed, 1 false), and it crashes on 0x012248B0.
+
+**Caveat (coordinator, 2026-11-24):** the non-/d2inl rows are a 300-row SAMPLE, so DEBT_BY_COPY.tsv's per-copy emitter list is a floor, not a count (NF357 found 34 NEQ emitters of GetSubDef<CAppearanceDef> 0x0042B0A2 where this file lists 1). Never close a copy's T3 line on this file alone: confirm it with a retail-caller census (NF354 / NF358 method) first. The three lines closed on it on 2026-11-24 (0x00429C6F, 0x0042B312, 0x0042B040) are being re-checked by NF358.

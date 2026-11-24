@@ -1,0 +1,6 @@
+EQ  00c25970 33 ?GetMagnitude@C3DVector@@QBEMXZ 
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+EQ  004a9760 26 ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z 
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  0078b230 108 ??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z 
+EQ  0042b1a6 162 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z 

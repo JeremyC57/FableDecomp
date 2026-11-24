@@ -30,6 +30,7 @@
 #include "engine/CThing.h"
 #include "engine/CThingBaseDef.h"
 #include "engine/CEntitySoundDef.h"
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CENTITYSOUNDDEF_SIZE_BODY   // NF357: GetSubDef<CEntitySoundDef> pick-any copy = size-mode owner 0x0065F604 (scaffolding, not retail)
 #include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/CTCSoundPlayer.h"
 

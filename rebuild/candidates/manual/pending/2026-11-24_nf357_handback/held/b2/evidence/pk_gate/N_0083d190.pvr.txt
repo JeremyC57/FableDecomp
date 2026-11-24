@@ -1,0 +1,2 @@
+EQ  0083d630 108 ??$GetDef@VCThingMarkerDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingMarkerDef@@@@@Z 
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 

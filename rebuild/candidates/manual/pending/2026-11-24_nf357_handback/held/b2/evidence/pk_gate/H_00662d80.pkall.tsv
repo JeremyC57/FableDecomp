@@ -1,0 +1,27 @@
+# leaf ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	19	-	n	n	?StatGetTypeName@CAppearanceDef@@SI?AVCCharString@@XZ
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0CAnimFilterBase@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	??1CAnimFilterBase@@UAE@XZ
+EQ_AMBIG	NEQ	00429a45	c	pickany	31	29	n	n	??_GCAnimFilterBase@@UAEPAXI@Z
+EQ_AMBIG	EQ	00834cd0	c	pickany	31	31	n	n	??_GCAnimFilterBase@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	9	-	n	n	??0CAnimFilterNoGroup@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	7	-	n	n	??1CAnimFilterNoGroup@@UAE@XZ
+NOADDR	NOADDR	-	-	pickany	31	-	n	n	??_GCAnimFilterNoGroup@@UAEPAXI@Z
+NOADDR	NOADDR	-	-	pickany	11	-	n	n	??0?$CDefPointer@$$CBVCAppearanceDef@@@@QAE@W4ENullDef@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	48	-	n	n	?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCAppearanceDef@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??C?$CDefPointer@$$CBVCAppearanceDef@@@@QBEPBVCAppearanceDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	50	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NEQ	NEQ	0042b0a2	a,b	pickany	182	162	y	y	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z

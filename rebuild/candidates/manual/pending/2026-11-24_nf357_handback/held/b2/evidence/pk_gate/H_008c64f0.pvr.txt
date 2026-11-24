@@ -1,0 +1,9 @@
+EQ  004cdae0 47 ?GFRandom@@YIKKPAK@Z 
+EQ  004a9760 26 ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z 
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED
+EQ  0078b230 108 ??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z 
+EQ  008c78f0 182 ??$GetSubDef@VCTrollBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrollBattleDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

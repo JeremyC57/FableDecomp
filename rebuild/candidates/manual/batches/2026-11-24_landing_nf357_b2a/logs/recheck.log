@@ -1,0 +1,58 @@
+addr       parity           behav  name
+004c04c0   RELOCATION_MATCH PASS   SetAsHighlighted
+005da6e0   RELOCATION_MATCH PASS   OnCreate
+00662a00   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00662a00   RELOCATION_MATCH PASS   GetAnimFromName
+00662c10   RELOCATION_MATCH PASS   GetAnimsWithNameStartingWith
+00662c70   RELOCATION_MATCH PASS   HasAnim
+00662cc0   RELOCATION_MATCH PASS   AnimExists
+00662d80   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00662d80   RELOCATION_MATCH PASS   GetRandomAnimFromName
+00663140   RELOCATION_MATCH PASS   PreloadAnims
+006631c0   RELOCATION_MATCH PASS   PreloadAnimation
+00663260   RELOCATION_MATCH PASS   GetCombatAnimationSet
+006632a0   RELOCATION_MATCH PASS   IsCombatAnimationValid
+00670d50   RELOCATION_MATCH PASS   Validate
+00680050   RELOCATION_MATCH PASS   Validate
+006e3580   RELOCATION_MATCH PASS   PlaySpeech
+0070b4d0   RELOCATION_MATCH PASS   OnCreate
+007310c0   WARN RELOC_NAME: ?SDoorOpenAnim@?A0xff0ef351@@3VCCharString@@B -> 013bad34 labelled 'g_DoorOpenAnimName'
+007310c0   RELOCATION_MATCH PASS   UpdateOpenStatusTriggerTypeScript
+00732850   WARN RELOC_NAME: ?SClockTurnAnim@?A0xc23d3bd0@@3VCCharString@@A -> 013bad3c labelled 'g_ClockHandTurnName'
+00732850   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00732850   RELOCATION_MATCH PASS   OnInitialActivate
+00733b70   WARN STANDIN_LEAF ?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ (catalog _global::CTCCreature_PlayDeathFlourish; names another function)
+00733b70   RELOCATION_MATCH PASS   CTCCreature_PlayDeathFlourish
+00735fd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00735fd0   RELOCATION_MATCH PASS   AttemptToStartParticle
+00753040   RELOCATION_MATCH PASS   OnCreate
+0076efa0   RELOCATION_MATCH PASS   UpdateWeaponTrails
+0077d230   RELOCATION_MATCH PASS   Open
+007f8f30   RELOCATION_MATCH PASS   PlayDefaultAnimation
+00830f20   RELOCATION_MATCH PASS   AnimExists
+
+WINS: 24
+  004c04c0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z
+  005da6e0 RELOCATION_MATCH CTCWeapon::?OnCreate@CTCWeapon@@EAEXXZ
+  00662a00 RELOCATION_MATCH CThingCreatureBase::?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+  00662c10 RELOCATION_MATCH CThingCreatureBase::?GetAnimsWithNameStartingWith@CThingCreatureBase@@QBEXABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
+  00662c70 RELOCATION_MATCH CThingCreatureBase::?HasAnim@CThingCreatureBase@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z
+  00662cc0 RELOCATION_MATCH CThingCreatureBase::?AnimExists@CThingCreatureBase@@UBE_NABVCCharString@@_N@Z
+  00662d80 RELOCATION_MATCH CThingCreatureBase::?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
+  00663140 RELOCATION_MATCH CThingCreatureBase::?PreloadAnims@CThingCreatureBase@@QAEXXZ
+  006631c0 RELOCATION_MATCH CThingCreatureBase::?PreloadAnimation@CThingCreatureBase@@QAEXABVCCharString@@@Z
+  00663260 RELOCATION_MATCH CThingCreatureBase::?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ
+  006632a0 RELOCATION_MATCH CThingCreatureBase::?IsCombatAnimationValid@CThingCreatureBase@@QBE_NABVCCharString@@@Z
+  00670d50 RELOCATION_MATCH CThingCreatureDef::?Validate@CThingCreatureDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  00680050 RELOCATION_MATCH CThingObjectDef::?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  006e3580 RELOCATION_MATCH CTCTalk::?PlaySpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@AAVCASoundBank@@J_NABVCCharString@@W4EDialogueLayer@NSpeechGainManager@@11@Z
+  0070b4d0 RELOCATION_MATCH CTCAnimationComplex::?OnCreate@CTCAnimationComplex@@UAEXXZ
+  007310c0 RELOCATION_MATCH CTCDoor::?UpdateOpenStatusTriggerTypeScript@CTCDoor@@IAEXXZ
+  00732850 RELOCATION_MATCH CTCClock::?OnInitialActivate@CTCClock@@UAEXXZ
+  00733b70 RELOCATION_MATCH CTCCombat::?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ
+  00735fd0 RELOCATION_MATCH CTCCombat::?AttemptToStartParticle@CTCCombat@@AAEXPAVCThing@@@Z
+  00753040 RELOCATION_MATCH CTCLook::?OnCreate@CTCLook@@UAEXXZ
+  0076efa0 RELOCATION_MATCH CTCWeaponTrail::?UpdateWeaponTrails@CTCWeaponTrail@@QAEXXZ
+  0077d230 RELOCATION_MATCH CTCCreatureHive::?Open@CTCCreatureHive@@QAEXXZ
+  007f8f30 RELOCATION_MATCH CTCAnimatingObject::?PlayDefaultAnimation@CTCAnimatingObject@@QAEXXZ
+  00830f20 RELOCATION_MATCH CThingAICreature::?AnimExists@CThingAICreature@@MBE_NABVCCharString@@_N@Z

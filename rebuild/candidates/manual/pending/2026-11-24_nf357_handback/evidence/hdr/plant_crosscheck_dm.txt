@@ -1,0 +1,3 @@
+expected(grep ^\s*#define\s+FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY\b) 141 plant 141
+plant-minus-grep []
+grep-minus-plant []

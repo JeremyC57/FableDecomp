@@ -85,6 +85,7 @@
 #include "engine/CWeaponDef.h"
 #include "engine/CThingShotDef.h"
 #include "engine/CTrollBattleDef.h"
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CWEAPONDEF_SIZE_BODY   // NF357: GetSubDef<CWeaponDef> pick-any copy = size-mode owner 0x0042B1A6 (scaffolding, not retail)
 #include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CWorld.h"

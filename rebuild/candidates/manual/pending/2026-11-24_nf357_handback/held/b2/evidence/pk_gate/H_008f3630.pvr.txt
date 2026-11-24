@@ -1,0 +1,10 @@
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+EQ  004a9760 26 ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z 
+EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+EQ  00403a10 15 ?GetAsCharArray@CCharString@@QBEPBDXZ 
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  0078b230 108 ??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z 
+NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED
+EQ  00669580 182 ??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z 
+EQ  00669d30 100 ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z 

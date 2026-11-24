@@ -1,0 +1,1 @@
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 

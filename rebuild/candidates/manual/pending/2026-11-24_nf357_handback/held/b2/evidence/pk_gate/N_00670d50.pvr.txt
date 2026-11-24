@@ -1,0 +1,5 @@
+EQ  004c24c0 53 ??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ 
+EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+EQ  00403a10 15 ?GetAsCharArray@CCharString@@QBEPBDXZ 
+EQ  00404310 46 ?GetCRC@CCharString@@QBEKXZ 
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 

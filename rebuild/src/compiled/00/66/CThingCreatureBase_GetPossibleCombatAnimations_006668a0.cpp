@@ -40,6 +40,7 @@
 #define FABLE_RETAIL_CMODEBASE_DEFAULTANIMFILTER
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CAPPEARANCEDEF_SIZE_BODY   // NF357: GetSubDef<CAppearanceDef> pick-any copy = size-mode owner 0x0042B0A2 (scaffolding, not retail)
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_STLP_VECTOR_C
 #include "fable_string.h"
@@ -50,8 +51,8 @@
 #include "engine/CAppearanceDef.h"
 #include "engine/CAnimFilterNoGroup.h"
 #include "engine/CTCCreatureModeManager.h"
-#include "engine/CThingCreatureBase.h"
 #include "engine/CDefinitionManager.h"
+#include "engine/CThingCreatureBase.h"
 
 bool CThingCreatureBase::GetPossibleCombatAnimations(const CCharString& name, std::vector<const CAnimationEntry*>& anim_list) const
 {

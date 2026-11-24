@@ -1,0 +1,2 @@
+addr	type	owner	new_obj	cmpcomdat_v_owner_obj	comdat_flags_new
+00667b30	CAppearanceDef	0042b0a2	00667b30.obj	EQUAL	ch=60101020 align=1 sel=2

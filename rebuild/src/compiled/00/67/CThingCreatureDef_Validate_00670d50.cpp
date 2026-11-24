@@ -49,6 +49,7 @@
 #include "engine/C3DMeshStats.h"
 #include "engine/CAppearanceDef.h"
 #include "engine/CAnimFilterNoGroup.h"
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CAPPEARANCEDEF_SIZE_BODY   // NF357: GetSubDef<CAppearanceDef> pick-any copy = size-mode owner 0x0042B0A2 (scaffolding, not retail)
 #include "engine/CDefClassBase_GetSubDef.h"
 extern const CCharString PRIMARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;     // 0x013BAC30
 extern const CCharString SECONDARY_HOLDABLE_WEAPON_DUMMY_OBJECT_NAME;   // 0x013BAC34

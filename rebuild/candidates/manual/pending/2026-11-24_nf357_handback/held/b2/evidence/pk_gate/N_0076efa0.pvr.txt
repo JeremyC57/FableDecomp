@@ -1,0 +1,14 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  0076de20 53 ??0CWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@QAE@ABVC3DVector@@0M@Z 
+EQ  00436380 21 ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z 
+NEQ 004da1a4 47 ?clear@?$_List_base@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXXZ LEAF-REFERENCED
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0042b1a6 162 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  0076fc60 91 ?insert@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@U32@ABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  0076fe10 25 ?push_back@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z 

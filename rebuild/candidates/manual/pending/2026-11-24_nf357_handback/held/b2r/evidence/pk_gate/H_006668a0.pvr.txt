@@ -1,0 +1,9 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0042b0a2 182 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z LEAF-REFERENCED
+EQ  00663260 49 ?GetCombatAnimationSet@CThingCreatureBase@@QBEABVCAnimationSet@@XZ 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  00669bb0 243 ??4?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAEAAV01@ABV01@@Z 
+EQ  005e1420 216 ?_M_insert_overflow@?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@IAEXPAPBVCAnimationEntry@@ABQBV3@ABU__true_type@2@I_N@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  005e1eb0 50 ?push_back@?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAEXABQBVCAnimationEntry@@@Z 

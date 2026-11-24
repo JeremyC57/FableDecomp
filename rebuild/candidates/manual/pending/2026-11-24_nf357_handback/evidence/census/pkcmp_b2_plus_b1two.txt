@@ -1,0 +1,159 @@
+004c04c0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+004c04c0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 004c04c0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+005da6e0	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+005da6e0	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 005da6e0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+005e5f30	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+005e5f30	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 005e5f30 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00607330	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00607330	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00607330 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+006096e0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+006096e0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 006096e0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662a00	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662a00	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662a00 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662b10	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662b10	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662b10 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662c10	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662c10	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662c10 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662c70	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662c70	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662c70 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662cc0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662cc0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662cc0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662d80	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662d80	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662d80 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662ef0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662ef0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662ef0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00662fa0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00662fa0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00662fa0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00663140	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00663140	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00663140 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+006631c0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+006631c0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 006631c0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00663260	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00663260	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00663260 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+006632a0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+006632a0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 006632a0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00663610	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00663610	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00663610 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+0066bc10	pk_all	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+0066bc10	pvr	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+ROW 0066bc10 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00670d50	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00670d50	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00670d50 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00680050	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00680050	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00680050 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+006a9dd0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+006a9dd0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 006a9dd0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+006e3580	pk_all	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+006e3580	pvr	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+ROW 006e3580 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+0070b4d0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+0070b4d0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 0070b4d0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+007310c0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+007310c0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 007310c0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00732850	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00732850	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00732850 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00733b70	pk_all	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+00733b70	pvr	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+ROW 00733b70 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00753040	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00753040	pk_all	REMAIN_NEQ	007550f0	leaf-called	??$GetSubDef@VCLookDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLookDef@@@@@Z
+00753040	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00753040	pvr	REMAIN_NEQ	007550f0	leaf-called	??$GetSubDef@VCLookDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLookDef@@@@@Z
+ROW 00753040 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=1
+0076eb00	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+0076eb00	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 0076eb00 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+0076efa0	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+0076efa0	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 0076efa0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+0077d230	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+0077d230	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 0077d230 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00780d80	pk_all	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+00780d80	pvr	FIXED	0065f604	leaf-called	??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+ROW 00780d80 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+007bfe30	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+007bfe30	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 007bfe30 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+007c1000	pk_all	REMAIN_NEQ	007be7ea	leaf-called	??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowShotDef@@@@@Z
+007c1000	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+007c1000	pvr	REMAIN_NEQ	007be7ea	leaf-called	??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowShotDef@@@@@Z
+007c1000	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 007c1000 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=1
+007f8f30	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+007f8f30	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 007f8f30 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00830f20	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00830f20	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00830f20 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00835bd0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00835bd0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00835bd0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00835e30	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+00835e30	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 00835e30 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+0083b520	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+0083b520	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 0083b520 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+0083d190	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+0083d190	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 0083d190 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00845ce0	pk_all	REMAIN_NEQ	005cc10e	leaf-called	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+00845ce0	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+00845ce0	pvr	REMAIN_NEQ	005cc10e	leaf-called	??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+00845ce0	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 00845ce0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=1
+0087f3a0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+0087f3a0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 0087f3a0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+008c64f0	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+008c64f0	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 008c64f0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+008c6860	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+008c6860	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 008c6860 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+008d5300	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+008d5300	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 008d5300 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+008f3310	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+008f3310	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 008f3310 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+008f3630	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+008f3630	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 008f3630 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00735fd0	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+00735fd0	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 00735fd0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+006668a0	pk_all	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+006668a0	pvr	FIXED	0042b0a2	leaf-called	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+ROW 006668a0 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=0
+00839100	pk_all	REMAIN_NEQ	0042b248	leaf-called	??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+00839100	pk_all	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+00839100	pvr	FIXED	0042b1a6	leaf-called	??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+ROW 00839100 gate=P fixed_getdef=0 fixed_subdef=1 remain_getdef=0 remain_subdef=1
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 0, 50, 0], 'pvr': [0, 0, 50, 0]}
+GATE PASS

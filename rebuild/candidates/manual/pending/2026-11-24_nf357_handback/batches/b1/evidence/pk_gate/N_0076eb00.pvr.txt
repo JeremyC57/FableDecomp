@@ -1,0 +1,31 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0041c780 11 ??0_List_iterator_base@std@@QAE@PAU_List_node_base@1@@Z 
+EQ  0041c7a0 7 ?_M_incr@_List_iterator_base@std@@QAEXXZ 
+EQ  0041c7c0 22 ??9_List_iterator_base@std@@QBE_NABU01@@Z 
+EQ  0076dd40 32 ??0?$pair@VCCharString@@V1@@std@@QAE@ABVCCharString@@0@Z 
+EQ  00403a00 11 ?GetLength@CCharString@@QBEJXZ 
+EQ  00403a10 15 ?GetAsCharArray@CCharString@@QBEPBDXZ 
+NEQ 004da1a4 47 ?clear@?$_List_base@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXXZ not referenced by the leaf
+EQ  0042b1a6 162 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z 
+EQ  00462f42 14 ?_M_clear@?$vector@_NV?$allocator@_N@std@@@std@@IAEXXZ 
+EQ  00440080 14 ?_M_clear@?$vector@JV?$allocator@J@std@@@std@@IAEXXZ 
+EQ  00414de0 15 ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@ABV?$allocator@VCCharString@@@1@@Z 
+NEQ 004db5bb 5 ??1?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@XZ not referenced by the leaf
+NEQ 004676bb 58 ?erase@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NPA_N0@Z not referenced by the leaf
+EQ  00440590 58 ?erase@?$vector@JV?$allocator@J@std@@@std@@QAEPAJPAJ0@Z 
+NEQ 00467831 201 ?_M_insert_overflow@?$vector@_NV?$allocator@_N@std@@@std@@IAEXPA_NAB_NABU__true_type@2@I_N@Z not referenced by the leaf
+EQ  00440990 216 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z 
+EQ  0076fc60 91 ?insert@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@U32@ABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z 
+NEQ 004676ef 267 ?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z LEAF-REFERENCED
+NEQ 00440f00 287 ?_M_fill_insert@?$vector@JV?$allocator@J@std@@@std@@QAEXPAJIABJ@Z LEAF-REFERENCED
+EQ  0076fd40 102 ??$_M_insert_dispatch@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAEXU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Nonconst_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@U?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@U?$_Const_traits@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@1@1ABU__false_type@1@@Z 
+NEQ 00467686 85 ?resize@?$vector@_NV?$allocator@_N@std@@@std@@QAEXIAB_N@Z not referenced by the leaf
+EQ  004428f0 87 ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z 
+EQ  00414ea0 49 ??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ 
+NEQ 00433530 248 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z LEAF-REFERENCED
+EQ  0044bff0 59 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z 
+NEQ 007704a0 237 ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@V1@@2@ABU32@ABU__false_type@2@I_N@Z not referenced by the leaf
+EQ  00770050 63 ??0?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@QAE@ABV01@@Z 
+EQ  007706a0 78 ?push_back@?$vector@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAEXABU?$pair@VCCharString@@V1@@2@@Z 
+NEQ 00770810 226 ?_M_insert_overflow@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@IAEXPAV?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@2@ABV32@ABU__false_type@2@I_N@Z not referenced by the leaf
+EQ  00770d60 112 ?resize@?$vector@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@V?$allocator@V?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@V?$allocator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@@std@@@2@@std@@QAEXI@Z 

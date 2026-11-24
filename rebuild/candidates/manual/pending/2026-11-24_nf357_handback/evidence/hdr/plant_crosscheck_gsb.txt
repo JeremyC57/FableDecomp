@@ -1,0 +1,4 @@
+expected(grep #include\s+"engine/CDefClassBase_GetSubDef\.h") 191 plant 195
+plant-minus-grep [('00766660', 'src'), ('007677e0', 'src'), ('0076c3d0', 'src'), ('0076c3e0', 'src')]
+grep-minus-plant []
+the 4 plant-only rows (00766660 007677e0 0076c3d0 0076c3e0) include engine/CTCObjectAugmentations.h, which itself includes engine/CDefClassBase_GetSubDef.h (line 78): true includers the direct-include grep misses; plant flags exactly the true includer set

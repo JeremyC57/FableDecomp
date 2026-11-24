@@ -43,6 +43,7 @@
 #include "engine/CWorld.h"
 #include "engine/CDefPointer.h"
 #include "engine/CEntitySoundDef.h"
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CENTITYSOUNDDEF_SIZE_BODY   // NF357: GetSubDef<CEntitySoundDef> pick-any copy = size-mode owner 0x0065F604 (scaffolding, not retail)
 #include "engine/CDefClassBase_GetSubDef.h"
 #include "engine/CGameDefinitionManager.h"
 #include "engine/CGlobalDef.h"

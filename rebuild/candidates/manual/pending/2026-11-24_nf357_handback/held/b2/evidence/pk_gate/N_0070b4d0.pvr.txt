@@ -1,0 +1,2 @@
+NEQ 005b33f4 59 ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z not referenced by the leaf
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 

@@ -39,6 +39,7 @@
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_VECTOR
 #define FABLE_RETAIL_STLP_FIND_RANDOM_DISPATCH
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CWEAPONDEF_SIZE_BODY   // NF357: GetSubDef<CWeaponDef> pick-any copy = size-mode owner 0x0042B1A6 (scaffolding, not retail)
 #include "engine/CThing.h"
 #include "engine/CTCWeaponTrail.h"
 #include "engine/CWeaponDef.h"

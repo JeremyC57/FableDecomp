@@ -1,0 +1,2 @@
+CHANGED ('COMDAT', '??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z', '.text') size 182 -> 162 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=1 symdelta=0 leaf=same

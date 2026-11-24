@@ -1,0 +1,14 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  00c25970 33 ?GetMagnitude@C3DVector@@QBEMXZ 
+EQ  0040dce0 21 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z 
+NEQ 00434740 45 ??0C2DBoxI@@QAE@ABVC2DCoordI@@J@Z not referenced by the leaf
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  007c2980 249 ??$__find@PAV?$CIntelligentPointer@$$CBVCThing@@@@V?$CIntelligentPointer@VCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@0ABV?$CIntelligentPointer@VCThing@@@@ABUrandom_access_iterator_tag@0@@Z 
+NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  00436ac0 216 ?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  004dcfbb 14 ??1?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ 
+EQ  00436c80 50 ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z 

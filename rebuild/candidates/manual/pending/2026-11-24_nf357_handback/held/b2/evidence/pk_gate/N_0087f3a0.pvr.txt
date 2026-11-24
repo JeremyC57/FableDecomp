@@ -1,0 +1,10 @@
+NEQ 00c25970 33 ?GetMagnitude@C3DVector@@QBEMXZ not referenced by the leaf
+EQ  00415d70 25 ?GetString@CDefString@@QBE?AVCCharString@@XZ 
+EQ  00415dd0 25 ??BCDefString@@QBE?AVCCharString@@XZ 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  004cc340 36 ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z 
+EQ  006ae260 182 ??$GetSubDef@VCKickableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCKickableDef@@@@@Z 
+EQ  0078b230 108 ??$GetDef@VCThingShotDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingShotDef@@@@@Z 
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 

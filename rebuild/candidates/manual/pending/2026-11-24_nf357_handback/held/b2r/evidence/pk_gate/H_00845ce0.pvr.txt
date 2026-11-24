@@ -1,0 +1,5 @@
+EQ  00487050 46 ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 005cc10e 182 ??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z LEAF-REFERENCED
+NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED

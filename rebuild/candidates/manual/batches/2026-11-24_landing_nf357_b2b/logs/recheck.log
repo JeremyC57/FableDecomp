@@ -1,0 +1,29 @@
+addr       parity           behav  name
+00835bd0   WARN RELOC_NAME: ??$for_each@PBU?$pair@KVCAnimationEntry@@@std@@VCDeadCreatureAnimPreloader@@@std@@YI?AVCDeadCreatureAnimPreloader@@PBU?$pair@KVCAnimationEntry@@@0@0V1@@Z -> 008365f0 labelled 'std::for_each<std::pair<unsigned long, CAnimationEntry> const *, CDeadCreatureAnimPreloader>'
+00835bd0   RELOCATION_MATCH PASS   PreloadDeadAnimation
+00835e30   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00835e30   RELOCATION_MATCH PASS   SetupDeadAnimation
+00839100   WARN RELOC_NAME: ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@std@@QAEAAU01@XZ -> 0083aea0 labelled 'CRetailTreeIterator::Decrement'
+00839100   RELOCATION_MATCH PASS   GetWeaponTrailGraphicIndex
+0083b520   RELOCATION_MATCH PASS   GetCurrentGraphic
+0083d190   RELOCATION_MATCH PASS   GetCurrentGraphic
+0087f3a0   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+0087f3a0   RELOCATION_MATCH PASS   PerformAction
+008c64f0   RELOCATION_MATCH PASS   Initialise
+008c6860   RELOCATION_MATCH PASS   PerformAction
+008d5300   RELOCATION_MATCH PASS   PerformAction
+008f3310   RELOCATION_MATCH PASS   PerformAction
+008f3630   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 11
+  00835bd0 RELOCATION_MATCH CThingDeadCreature::?PreloadDeadAnimation@CThingDeadCreature@@IAEXXZ
+  00835e30 RELOCATION_MATCH CThingDeadCreature::?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ
+  00839100 RELOCATION_MATCH CThingGameObject::?GetWeaponTrailGraphicIndex@CThingGameObject@@QBEJXZ
+  0083b520 RELOCATION_MATCH CThingVillage::?GetCurrentGraphic@CThingVillage@@IBEPBVCEngineGraphic@@XZ
+  0083d190 RELOCATION_MATCH CThingMarker::?GetCurrentGraphic@CThingMarker@@IBE?AVCEngineGraphic@@XZ
+  0087f3a0 RELOCATION_MATCH CCombatAction_KickThingOnGround::?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ
+  008c64f0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+  008c6860 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?PerformAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+  008d5300 RELOCATION_MATCH CCreatureAction_ReloadMissileWeapon::?PerformAction@CCreatureAction_ReloadMissileWeapon@@UAEXXZ
+  008f3310 RELOCATION_MATCH CCreatureAction_DragonFireBlastBase::?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ
+  008f3630 RELOCATION_MATCH CCreatureAction_DragonRearUpFull::?PerformAction@CCreatureAction_DragonRearUpFull@@UAEXXZ

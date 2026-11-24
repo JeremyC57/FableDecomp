@@ -1,0 +1,19 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0066f9b0 38 ?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z 
+EQ  00487050 46 ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z 
+EQ  004a93c0 34 ??8?$CBasicString@D@@QBE_NABV0@@Z 
+EQ  004a9760 26 ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z 
+EQ  0040dce0 21 ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z 
+EQ  00654d58 37 ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z 
+EQ  004a96f0 32 ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 
+EQ  0040f020 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+EQ  004cc340 36 ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z 
+NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED
+NEQ 007be7ea 182 ??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowShotDef@@@@@Z LEAF-REFERENCED
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  007512c0 25 ??$GetTCDriver@VCTCDExplosion@@@CThing@@QAE_NPAPAVCTCDExplosion@@@Z 
+EQ  006ae5c0 27 ??$GetTCDriver@VCTCDExperienceOrb@@@CThing@@QAE_NPAPAVCTCDExperienceOrb@@@Z 
+EQ  004acb50 27 ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z 
+NEQ 00739550 266 ?_M_insert_overflow@?$vector@V?$CIntelligentPointer@$$CBVCThing@@@@V?$allocator@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@IAEXPAV?$CIntelligentPointer@$$CBVCThing@@@@ABV3@ABU__false_type@2@I_N@Z not referenced by the leaf
+EQ  007398b0 82 ?push_back@?$vector@V?$CIntelligentPointer@$$CBVCThing@@@@V?$allocator@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@$$CBVCThing@@@@@Z 

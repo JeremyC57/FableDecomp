@@ -24,6 +24,7 @@
 #define FABLE_RETAIL_CANIMATIONSET_ANIMEXISTS
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CAPPEARANCEDEF_SIZE_BODY   // NF357: GetSubDef<CAppearanceDef> pick-any copy = size-mode owner 0x0042B0A2 (scaffolding, not retail)
 #define FABLE_RETAIL_CRESOURCELIST
 #include "fable_string.h"
 #include "engine/CThing.h"

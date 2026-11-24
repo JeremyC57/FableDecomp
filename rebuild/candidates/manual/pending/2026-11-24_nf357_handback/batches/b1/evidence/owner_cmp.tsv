@@ -1,0 +1,3 @@
+addr	type	owner	new_obj	cmpcomdat_v_owner_obj	comdat_flags_new
+00780d80	CEntitySoundDef	0065f604	00780d80.obj	EQUAL	ch=60101020 align=1 sel=2
+0076eb00	CWeaponDef	0042b1a6	0076eb00.obj	EQUAL	ch=60101020 align=1 sel=2

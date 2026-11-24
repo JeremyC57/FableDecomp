@@ -38,6 +38,7 @@
 #define FABLE_RETAIL_CMODEBASE_VIRTUALS
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CAPPEARANCEDEF_SIZE_BODY   // NF357: GetSubDef<CAppearanceDef> pick-any copy = size-mode owner 0x0042B0A2 (scaffolding, not retail)
 #define FABLE_RETAIL_CRESOURCELIST
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
@@ -45,8 +46,8 @@
 #include "engine/CThingBaseDef.h"
 #include "engine/CAnimationEntry.h"
 #include "engine/CAppearanceDef.h"
-#include "engine/CThingCreatureBase.h"
 #include "engine/CDefinitionManager.h"
+#include "engine/CThingCreatureBase.h"
 
 const CAnimationEntry& CThingCreatureBase::GetRandomCombatAnimationFromName(const CCharString& name) const
 {

@@ -431,6 +431,65 @@ bool CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>* out
 #pragma optimize("", on)
 #endif
 #endif
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CAPPEARANCEDEF_SIZE_BODY
+// Nested opt-in (NF357 2026-11-24; T3 nf340 0x0042B0A2): the CAppearanceDef twin of the CEntitySoundDef / CCreatureDef blocks above, same device and
+// same conditions. Fidelity: scaffolding, not retail: it is for link determinism and makes no claim about retail's text. A /O2 TU that
+// keeps the GetSubDef body visible emits its own pick-any copy of
+// ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z (182 B), while retail's linker kept the copy of the
+// owner row 0x0042B0A2 (162 B), which was built in a frame-pointer size TU and sets these same two pragmas itself
+// (rebuild/src/compiled/00/42/CDefClassBase_GetSubDefCAppearanceDef_0042b0a2.cpp: optimize("y", off) / optimize("s", on); no CompilerFlags
+// entry, so /O2 /Oy /W3). The body is the template body above with T = CAppearanceDef, token for token. The pair ends with optimize("", on),
+// which restores the command-line default (VC7.1 has no push / pop for optimize), so this is valid only in a TU with no optimize pragma
+// above this include. Like any explicit specialization it must precede the TU's first use of GetSubDef<CAppearanceDef> (VC7.1 C2908): include
+// this header before a header whose inline code calls it (engine/CThingCreatureBase.h GetCombatAnimationSet for CAppearanceDef).
+#include "engine/CAppearanceDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CAppearanceDef>(CDefPointer<const CAppearanceDef>* out)const
+{
+ const CSubDefInfo* info=GetPSubDefInfo(CAppearanceDef::StatGetTypeName());
+ if(info){
+  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+  out->SetDynamicCast(def);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CWEAPONDEF_SIZE_BODY
+// Nested opt-in (NF357 2026-11-24; T3 nf340 0x0042B1A6): the CWeaponDef twin of the block above, same device, same conditions and same
+// ordering rule. Fidelity: scaffolding, not retail. Owner row 0x0042B1A6 (162 B; rebuild/src/compiled/00/42/CDefClassBase_GetSubDefCWeaponDef_0042b1a6.cpp:
+// optimize("y", off) / optimize("s", on); no CompilerFlags entry). The body is the template body above with T = CWeaponDef, token for token.
+#include "engine/CWeaponDef.h"
+#if defined(_MSC_VER)
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+bool CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>* out)const
+{
+ const CSubDefInfo* info=GetPSubDefInfo(CWeaponDef::StatGetTypeName());
+ if(info){
+  CDefPointer<const CDefClassBase> def=PDefManager->GetPDefFromGlobalIndex(info->DefIndex);
+  out->SetDynamicCast(def);
+  return true;
+ }
+ return false;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
 #endif
 #ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_INDEX_BODY
 // Nested opt-in (chunk 1012, row 0x006B1A20 CAtmosProcess::UpdateDayNightAtmosSounds): the same-TU body of the by-class-index

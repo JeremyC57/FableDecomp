@@ -28,6 +28,7 @@
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CRESOURCE
 #define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY
+#define FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_CWEAPONDEF_SIZE_BODY   // NF357: GetSubDef<CWeaponDef> pick-any copy = size-mode owner 0x0042B1A6 (scaffolding, not retail)
 #define FABLE_RETAIL_STLP_VECTOR_RESIZE_ONE_DECL
 #define FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING
 #define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
@@ -38,9 +39,9 @@
 #include "fable_string.h"
 #include "engine/CThing.h"
 #include "engine/CDefClassBase.h"
+#include "engine/CObjectAugmentationParticleSet.h"
 #include "engine/CDefinitionManager.h"
 #include "engine/CRightHandedSet.h"
-#include "engine/CObjectAugmentationParticleSet.h"
 #include "engine/CWeaponDef.h"
 #include "engine/CThingBaseDef.h"
 #include "engine/CMainGameComponent.h"

@@ -1,0 +1,44 @@
+12:58:04 ZS_PASS T_0076eb00 test /home/user/FableDecomp/rebuild/tests/00/76/CTCWeaponTrail_InitialiseTrails_0076eb00_test.cpp /Od /W3
+13:00:46 ZS_FAIL rc=2 ZS_00667b30_P1 src /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/var/00667b30_P1.cpp /O2 /Oy /W3
+   p\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF357\work\treeN\engine\CDefinitionManager.h(461) : error C2908: explicit specialization; 'bool CDefClassBase::GetSubDef<CAppearanceDef>(CDefPointer<T> *) const' has already been instantiated
+   Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF357\work\treeN\engine\CDefinitionManager.h(448) : error C2910: 'CDefClassBase::GetSubDef' : cannot be explicitly specialized
+13:05:26 ZS_PASS ZT_005c71aa test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionNoDamageNorWeight_005c71aa_test.cpp /Od /W3
+13:05:26 ZS_PASS ZT_005cda50 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryStats_GlobalUpdate_005cda50_test.cpp /Od /W3
+13:05:27 ZS_PASS ZT_005e4be0 test /home/user/FableDecomp/rebuild/tests/00/5e/CTCQuestCompletionUI_GetQuestDescription_005e4be0_test.cpp /Od /W3
+13:05:28 ZS_PASS ZT_005e5f30 test /home/user/FableDecomp/rebuild/tests/00/5e/CTCQuestCompletionUI_ActivateReal_005e5f30_test.cpp /Od /W3
+13:05:29 ZS_PASS ZT_00607330 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructLogbookList_00607330_test.cpp /Od /W3
+13:05:30 ZS_PASS ZT_006096e0 test /home/user/FableDecomp/rebuild/tests/00/60/CTCInventoryMap_ConstructLogbookListPC_006096e0_test.cpp /Od /W3
+13:05:33 ZS_PASS ZT_0064e978 test /home/user/FableDecomp/rebuild/tests/00/64/NPlayerGuiCDrawReceivedItems_Draw_0064e978_test.cpp /Od /W3
+13:05:33 ZS_PASS ZT_0066b370 test /home/user/FableDecomp/rebuild/tests/00/66/CTCSoundPlayer_PlayAllSoundEvents_0066b370_test.cpp /Od /W3
+13:05:34 ZS_PASS ZT_0066bc10 test /home/user/FableDecomp/rebuild/tests/00/66/CTCSoundPlayer_GetPotentialCriteriaStrings_0066bc10_test.cpp /Od /W3
+13:05:35 ZS_PASS ZT_00680050 test /home/user/FableDecomp/rebuild/tests/00/68/CThingObjectDef_Validate_00680050_test.cpp /Od /W3
+13:05:36 ZS_PASS ZT_006a9dd0 test /home/user/FableDecomp/rebuild/tests/00/6a/CThingPlayerCreature_ConstructFromParams_006a9dd0_test.cpp /Od /W3
+13:05:37 ZS_PASS ZT_006e3580 test /home/user/FableDecomp/rebuild/tests/00/6e/CTCTalk_PlaySpeech_006e3580_test.cpp /Od /W3
+13:05:38 ZS_PASS ZT_0076eb00 test /home/user/FableDecomp/rebuild/tests/00/76/CTCWeaponTrail_InitialiseTrails_0076eb00_test.cpp /Od /W3
+13:05:39 ZS_PASS ZT_0076efa0 test /home/user/FableDecomp/rebuild/tests/00/76/CTCWeaponTrail_UpdateWeaponTrails_0076efa0_test.cpp /Od /W3
+13:05:39 ZS_PASS ZT_00779ef0 test /home/user/FableDecomp/rebuild/tests/00/77/CTCDExperienceOrb_OnInitialActivate_00779ef0_test.cpp /Od /W3
+13:05:40 ZS_PASS ZT_0077bec0 test /home/user/FableDecomp/rebuild/tests/00/77/NGraphicAppearanceCTCGraphicAppearanceStaticMeshFadeOutOnProximity_OnAppearanceDraw_0077bec0_test.cpp /Od /W3
+13:05:41 ZS_PASS ZT_007c1000 test /home/user/FableDecomp/rebuild/tests/00/7c/NThingShotCTCShotDefinitionBase_OnCollisionProper_007c1000_test.cpp /Od /W3
+13:05:41 ZS_PASS ZT_007f8f30 test /home/user/FableDecomp/rebuild/tests/00/7f/CTCAnimatingObject_PlayDefaultAnimation_007f8f30_test.cpp /Od /W3
+13:05:43 ZS_PASS ZS_00839100 src /home/user/FableDecomp/rebuild/src/compiled/00/83/CThingGameObject_GetWeaponTrailGraphicIndex_00839100.cpp /O2 /Oy /W3
+13:05:45 ZS_PASS ZS_0083afe0 src /home/user/FableDecomp/rebuild/src/compiled/00/83/stdreverseiterator_operator_0083afe0.cpp /O2 /Oy /W3
+13:05:47 ZS_PASS ZS_0083b170 src /home/user/FableDecomp/rebuild/src/compiled/00/83/stdRbtree_find_0083b170.cpp /O2 /Oy /W3
+CENSUS_ZS_DONE
+13:12:24 ZS_PASS ZS_00839100_B1 src /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF357/work/var/00839100_B1.cpp /O2 /Oy /W3
+13:26:26 ZS_PASS ZT_005a9cbe test /home/user/FableDecomp/rebuild/tests/00/5a/CTCInventoryTrade_ConstructTradeDescriptionWeapon_005a9cbe_test.cpp /Od /W3
+13:26:27 ZS_PASS ZT_005aaf28 test /home/user/FableDecomp/rebuild/tests/00/5a/CTCInventoryTrade_ConstructTradeDescriptionClothing_005aaf28_test.cpp /Od /W3
+13:26:28 ZS_PASS ZT_005b37f7 test /home/user/FableDecomp/rebuild/tests/00/5b/CTCInventoryClothing_InitialiseMannequin_005b37f7_test.cpp /Od /W3
+13:26:28 ZS_PASS ZT_005b3e4e test /home/user/FableDecomp/rebuild/tests/00/5b/CTCInventoryClothing_GlobalUpdate_005b3e4e_test.cpp /Od /W3
+13:26:29 ZS_PASS ZT_005b4eba test /home/user/FableDecomp/rebuild/tests/00/5b/CTCInventoryClothing_CalculateArmorValues_005b4eba_test.cpp /Od /W3
+13:26:30 ZS_PASS ZT_005c47d5 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_FinalConstructWeaponItemEntriesPC_005c47d5_test.cpp /Od /W3
+13:26:31 ZS_PASS ZT_005c6b26 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_ConstructWeaponDescription_005c6b26_test.cpp /Od /W3
+13:26:32 ZS_PASS ZT_005c7452 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionDamage_005c7452_test.cpp /Od /W3
+13:26:34 ZS_PASS ZT_005c8459 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_ConstructScreen_005c8459_test.cpp /Od /W3
+13:26:35 ZS_PASS ZT_005c90fc test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_ConstructWeaponDescriptionContainer_005c90fc_test.cpp /Od /W3
+13:26:36 ZS_PASS ZT_005c9a95 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_ConstructScreenPC_005c9a95_test.cpp /Od /W3
+13:26:37 ZS_PASS ZT_005cacb9 test /home/user/FableDecomp/rebuild/tests/00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9_test.cpp /Od /W3
+ZS_TESTS_DONE census_pre_loc.tsv
+13:27:11 ZS_PASS ZS_005b4eba src /home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_CalculateArmorValues_005b4eba.cpp /O2 /Oy /W3
+13:27:13 ZS_PASS ZS_005cacb9 src /home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9.cpp /O2 /Oy /W3
+13:27:15 ZS_PASS ZS_005b4eba src /home/user/FableDecomp/rebuild/src/compiled/00/5b/CTCInventoryClothing_CalculateArmorValues_005b4eba.cpp /O2 /Oy /W3
+13:27:17 ZS_PASS ZS_005cacb9 src /home/user/FableDecomp/rebuild/src/compiled/00/5c/CTCInventoryWeapons_RefreshWeaponDescriptions_005cacb9.cpp /O2 /Oy /W3

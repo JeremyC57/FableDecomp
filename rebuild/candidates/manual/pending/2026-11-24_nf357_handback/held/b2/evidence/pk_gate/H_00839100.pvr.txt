@@ -1,0 +1,11 @@
+EQ  0041c830 22 ??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z 
+NEQ 004294e2 64 ?_M_decrement@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z not referenced by the leaf
+EQ  0083aea0 79 ??F?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@std@@QAEAAU01@XZ 
+EQ  004365b0 60 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z 
+NEQ 0042b248 171 ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z not referenced by the leaf
+NEQ 0042b1a6 182 ??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z LEAF-REFERENCED
+EQ  00766050 110 ?HasCombinationOfAugmentations@CTCObjectAugmentations@@QBE_NW4EObjectAugmentationType@@@Z 
+EQ  00410de0 63 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z 
+EQ  0083b170 71 ??$find@W4EObjectAugmentationType@@@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@U?$_Const_traits@U?$pair@$$CBW4EObjectAugmentationType@@UCWeaponTrailGraphicSet@@@std@@@2@@1@ABW4EObjectAugmentationType@@@Z 
+EQ  004118c0 58 ?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z 
+EQ  0076b0e0 57 ??1?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@QAE@XZ 

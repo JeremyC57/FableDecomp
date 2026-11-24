@@ -1,0 +1,21 @@
+# leaf ?OnCreate@CTCLook@@UAEXXZ  source_a=yes  
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?AddRef@CIVCountedPointeeBase@@QBEXXZ
+NOADDR	NOADDR	-	-	pickany	19	-	n	n	?StatGetTypeName@CAppearanceDef@@SI?AVCCharString@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?Get@?$CDefPointer@$$CBVCThingBaseDef@@@@QBEPBVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@VCDefClassBase@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@$$CBVCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	?InternalGetObject@?$CDefPointer@VCDefClassBase@@@@QBEPAVCDefPointeeBase@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCLookDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	?Release@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXXZ
+NOADDR	NOADDR	-	-	pickany	3	-	n	n	??D?$CDefPointer@$$CBVCThingBaseDef@@@@QBEABVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@$$CBVCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	27	-	n	n	??1?$CDefPointer@VCDefClassBase@@@@QAE@XZ
+NOADDR	NOADDR	-	-	pickany	20	-	n	n	??$?0VCDefClassBase@@@?$CDefPointer@$$CBVCDefClassBase@@@@QAE@ABV?$CDefPointer@VCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	48	-	n	n	?Assign@?$CDefPointer@$$CBVCLookDef@@@@AAEXPAVCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	48	-	n	n	?Assign@?$CDefPointer@$$CBVCAppearanceDef@@@@AAEXPAVCDefPointeeBase@@@Z
+NOADDR	NOADDR	-	-	pickany	4	-	n	n	?PeekBaseDef@CThing@@QBEABVCThingBaseDef@@XZ
+NOADDR	NOADDR	-	-	pickany	50	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCLookDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NOADDR	NOADDR	-	-	pickany	50	-	n	n	??$SetDynamicCast@$$CBVCDefClassBase@@@?$CDefPointer@$$CBVCAppearanceDef@@@@QAEXABV?$CDefPointer@$$CBVCDefClassBase@@@@@Z
+NEQ	NEQ	007550f0	a,b	pickany	171	182	y	y	??$GetSubDef@VCLookDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLookDef@@@@@Z
+NEQ	NEQ	0042b0a2	a,b	pickany	182	162	y	y	??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z

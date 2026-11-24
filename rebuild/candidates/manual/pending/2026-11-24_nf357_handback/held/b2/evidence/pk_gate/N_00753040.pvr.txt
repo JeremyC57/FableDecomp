@@ -1,0 +1,2 @@
+EQ  0042b0a2 162 ??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z 
+NEQ 007550f0 171 ??$GetSubDef@VCLookDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLookDef@@@@@Z LEAF-REFERENCED

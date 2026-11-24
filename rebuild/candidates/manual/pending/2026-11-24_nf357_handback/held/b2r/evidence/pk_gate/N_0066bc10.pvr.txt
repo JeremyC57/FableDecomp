@@ -1,0 +1,4 @@
+EQ  00405c10 5 ??2@YAPAXIPAX@Z 
+EQ  0065f604 162 ??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z 
+NEQ 00433530 280 ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z LEAF-REFERENCED
+EQ  0044bff0 59 ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z 

@@ -1,0 +1,55 @@
+004c04c0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+005bdf08	CInventoryItemDef	152	 GSB NOINL	opt=2	reread=1	-
+005bdfb1	CInventoryItemDef	152	 GSB NOINL	opt=3	reread=1	-
+005da6e0	CWeaponDef	182	BODY	opt=0	reread=1	-
+005e4be0	CInventoryItemDef	171	BODY	opt=0	reread=1	/O2 /Oy /W3 /d2inlT60 /d2inlS48
+005e5f30	CAppearanceDef	182	BODY	opt=0	reread=1	/O2 /Oy /W3 /GS
+00607330	CAppearanceDef	182	 GSB NOINL	opt=0	reread=0	-
+006096e0	CAppearanceDef	182	BODY	opt=0	reread=1	-
+00662a00	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662b10	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662c10	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662c70	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662cc0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662d80	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662ef0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00662fa0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00663140	CAppearanceDef	182	BODY	opt=0	reread=0	-
+006631c0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00663260	CAppearanceDef	182	BODY	opt=0	reread=0	-
+006632a0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00663610	CAppearanceDef	182	BODY	opt=0	reread=0	-
+006668a0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00667b30	CAppearanceDef	182	BODY	opt=0	reread=0	-
+0066bc10	CEntitySoundDef	182	 GSB NOINL	opt=0	reread=0	-
+00670d50	CAppearanceDef	182	 GSB	opt=0	reread=0	-
+00680050	CAppearanceDef	182	 GSB	opt=0	reread=0	-
+006a9dd0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+006aca30	CInventoryItemDef	171	BODY	opt=0	reread=1	-
+006e3580	CEntitySoundDef	182	 GSB NOINL	opt=4	reread=0	-
+0070b4d0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+007310c0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00732850	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00733b70	CEntitySoundDef	182	 GSB NOINL	opt=0	reread=0	-
+00735fd0	CWeaponDef	182	BODY	opt=0	reread=0	-
+00753040	CAppearanceDef	182	BODY	opt=0	reread=0	-
+0076eb00	CWeaponDef	182	 GSB	opt=0	reread=0	/O2 /Oy /W3 /d2inlT65
+0076efa0	CWeaponDef	182	 GSB	opt=0	reread=0	-
+0077d230	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00780d80	CEntitySoundDef	182	BODY	opt=0	reread=0	/O2 /Oy /W3 /d2inlT59
+007bfe30	CWeaponDef	182	 GSB	opt=0	reread=0	-
+007c1000	CWeaponDef	182	 GSB	opt=0	reread=0	-
+007f8f30	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00830f20	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00835bd0	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00835e30	CAppearanceDef	182	BODY	opt=0	reread=0	-
+00839100	CWeaponDef	182	 GSB NOINL	opt=0	reread=0	-
+0083b520	CAppearanceDef	182	BODY	opt=0	reread=1	-
+0083d190	CAppearanceDef	182	BODY	opt=0	reread=1	-
+00845ce0	CWeaponDef	182	 GSB NOINL	opt=0	reread=0	-
+0087f3a0	CAppearanceDef	182	BODY	opt=0	reread=1	-
+008c64f0	CWeaponDef	182	 GSB NOINL	opt=0	reread=1	-
+008c6860	CWeaponDef	182	 GSB NOINL	opt=0	reread=1	-
+008d5300	CWeaponDef	182	 GSB NOINL	opt=0	reread=0	-
+008f3310	CWeaponDef	182	 GSB	opt=0	reread=1	-
+008f3630	CWeaponDef	182	 GSB NOINL	opt=0	reread=1	-

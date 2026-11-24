@@ -1,0 +1,2 @@
+CHANGED ('COMDAT', '??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z', '.text') size 171 -> 152 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=1 symdelta=0 leaf=absent
