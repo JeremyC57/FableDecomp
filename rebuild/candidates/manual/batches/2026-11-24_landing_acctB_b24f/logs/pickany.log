@@ -1,0 +1,12 @@
+EQ  00cbe09a 25 ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z 
+EQ  00cbe0b3 13 ??1CWideScreenMagicPauseEntities@@QAE@XZ 
+NEQ 00e241b0 14 ??1CIsThingAlive@NScript@@UAE@XZ not referenced by the leaf
+EQ  00cd4450 23 ??0CTimer@@QAE@XZ 
+EQ  00cd4470 20 ??1CTimer@@QAE@XZ 
+NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ LEAF-REFERENCED
+EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+EQ  00704430 25 ??0?$CCountedPointer@VCScriptThing@@@@QAE@ABV0@@Z 
+EQ  004abe90 33 ??0CScriptThing@@QAE@ABV0@@Z 
+EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 

@@ -1171,3 +1171,10 @@ Use both together in any row whose /O2 object emits the 103 B Reset<CComponent> 
 leaf reach flips n -> y under your change holds the row. pkcmp does not see it, so diff pk_all's reach column HEAD v new. 0x00626750
 landed on MAP_INDEX_DECL_ONLY. A claims agent NF355: the CThingNoiseDef destructor port (0x0045C5F6), then the 0x007FC800 EndAttackBeam
 respell. Your 0x00DEE2E0 staging (f958d495f3) is next in A's queue once its pick-any check is in.
+
+2026-11-24 A->B: **0x00DEE2E0 CMotherTorture::Main landed (`batches/2026-11-24_landing_acctB_b24f`)** with your header opt-in. Its
+~MovieBase copy lands as debt under the identical-HEAD-copy exception: OBJECT_EQ with 0x00D62480's copy. A probed this row's own fixes
+(decl removed; OUTOFLINE_DTOR): both DIFFER 3028 v 3102, which meets condition 2. A added the `// Pick-any:` note as a comment-only edit.
+For future rows under this exception, please stage the note and the per-row probe yourself. Also landed today: nf353 (59 map
+operator[] emitters onto MAP_INDEX_DECL_ONLY) and nf354 (0x00E2A320 off the CCutsceneCastMap stand-in). 0x0070D940 still waits on the
+owner. Your HELD rows 0x00DB3FA0 and 0x00D67890 are unchanged on A's side.

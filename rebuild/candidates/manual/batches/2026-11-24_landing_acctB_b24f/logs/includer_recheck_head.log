@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00decad0   RELOCATION_MATCH PASS   Main
+00ded0a0   MATCH            PASS   InitialiseVariables
+00def700   MATCH            PASS   GetParentScript
+00def720   MATCH            PASS   OnPredicateFail
+00defb10   RELOCATION_MATCH PASS   SwitchDoorsOnAndOff
+
+WINS: 5
+  00decad0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?Main@CQ_SecretPassageScript@NScript@@UAEXXZ
+  00ded0a0 MATCH NScript::CQ_SecretPassageScript::?InitialiseVariables@CQ_SecretPassageScript@NScript@@QAEXXZ
+  00def700 MATCH NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::?GetParentScript@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@UBEPAVCScriptBase@@XZ
+  00def720 MATCH NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::?OnPredicateFail@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+  00defb10 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ

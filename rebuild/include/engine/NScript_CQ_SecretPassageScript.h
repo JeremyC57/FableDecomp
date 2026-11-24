@@ -83,4 +83,28 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_SecretPassageScript::CSP_UndeadTrigger)==0x34);
 #endif
+#ifdef FABLE_RETAIL_CQ_SECRETPASSAGESCRIPT_CMOTHERTORTURE
+// Row opt-in (0x00DEE2E0 CMotherTorture::Main): the mother-torture entity script. Ego_r.pdb layout (struct_layouts_egor.tsv
+//   CMotherTorture, 28 bytes): ParentClass CQ_SecretPassageScript* +0x14, PMasterData +0x18. Entity vtable 0x012DDE6C (stored by Alloc
+//   0x00DEE1A0): 0 scalar deleting dtor 0x00DEE2C0, 1 Main 0x00DEE2E0, 2 Init 0x00DEE250, 3 GetParentScript 0x00DEE240,
+//   5 OnPredicateFail 0x00DEE2B0. Names: FableWin.pdb ?<Name>@CMotherTorture@CQ_SecretPassageScript@NScript@@ (GetParentScript UBE public;
+//   Main / Init / OnPredicateFail EAE private; ??0 QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z). Declarations only.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_SecretPassageScript::CMotherTorture : public CEntityScriptBase {
+public:
+ static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_SecretPassageScript&, CScriptDataBase*, const CScriptThing&);
+ CMotherTorture(CQ_SecretPassageScript& parent, CScriptDataBase* data, const CScriptThing& me);
+ virtual CScriptBase* GetParentScript() const;                         // 0x00DEE240
+private:
+ virtual void Main();                                                  // 0x00DEE2E0
+ virtual void Init();                                                  // 0x00DEE250
+ virtual void OnPredicateFail();                                       // 0x00DEE2B0
+protected:
+ CQ_SecretPassageScript* ParentClass;                                  // +0x14
+ CQ_SunnyvaleMasterData* PMasterData;                                  // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_SecretPassageScript::CMotherTorture)==0x1c);
+#endif
 #endif

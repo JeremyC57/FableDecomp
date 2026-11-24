@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00dee2e0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00dee2e0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CMotherTorture::?Main@CMotherTorture@CQ_SecretPassageScript@NScript@@EAEXXZ

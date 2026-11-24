@@ -403584,6 +403584,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
         PassPattern = '00d04ae0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dee2e0'
+        Module = 'NScript::CQ_SecretPassageScript::CMotherTorture'
+        Source = '00/de/NScriptCQSecretPassageScriptCMotherTorture_Main_00dee2e0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScriptCMotherTorture_Main_00dee2e0_test.cpp'
+        PassPattern = '00dee2e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
