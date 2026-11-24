@@ -26,3 +26,8 @@ Coordinator re-verify: RELOCATION_MATCH PASS, stock flags, no warnings; pick-any
 What made it match: FableWin-exact FindWaterVert text, one shared `previous = -1` skip with `continue` per bridged span, and the reload of
 `strip->GetWaterVertex(i)` for `start` (notes/00be4fe0/NOTES.md). Review item: `FABLE_FORCEINLINE` on the two sea helpers, justified in the
 source by retail having no out-of-line copy (FableWin has debug copies, Ego_r's tesselator module has no proc record; plain `inline` calls them).
+
+**HOLD 0x00BE4FE0 until its water twin 0x00BE4660 matches** (B24C2 ESCALATE.md, notes/00be4fe0/): both are instantiations of ONE shared
+template text. The sea row matches with four different loop-tail spellings, so its oracle does not fix the text; the water twin (DIFFER
+2349v2349, 4 hunks, progress/00be4660/) so far gets close only WITHOUT the `continue` the staged sea text uses. When the shared text is
+settled, regenerate the sea row's source, test, payload, vland log and pick-any check from it.

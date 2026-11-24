@@ -1,0 +1,58 @@
+03:48 00be4660 grade r2a.cpp DIFFER(2381v2349) hunks=43 -- row-1 matched template text + water helpers
+03:48 00be4660 grade r2a.cpp DIFFER(2381v2349) hunks=43 -- full diff r2a
+03:49 00be4660 grade r2b.cpp DIFFER(2381v2349) hunks=43 -- water: loop-scope found/fan; previous declared first; i before loop
+03:49 00be4660 grade r2c.cpp DIFFER(2381v2349) hunks=43 -- water: loop-scope found/fan; previous declared first; i before loop
+03:49 00be4660 grade r2d.cpp DIFFER(2381v2349) hunks=43 -- water: loop-scope found/fan; previous declared first; i before loop
+03:50 00be4660 grade old0.cpp DIFFER(2380v2349) hunks=144 -- old draft / old draft + FableWin FindWaterVert / start via water ref
+03:50 00be4660 grade old_f.cpp DIFFER(2412v2349) hunks=114 -- old draft / old draft + FableWin FindWaterVert / start via water ref
+03:50 00be4660 grade r2e.cpp DIFFER(2349v2349) hunks=47 -- old draft / old draft + FableWin FindWaterVert / start via water ref
+03:50 00be4660 grade r2e.cpp DIFFER(2349v2349) hunks=47 -- full diff r2e
+03:51 00be4660 grade r2f.cpp DIFFER(2381v2349) hunks=43 -- water: AddFanBaseVertex with named CVertex& vert
+03:51 00be4660 grade r2g.cpp DIFFER(2397v2349) hunks=51 -- water: start/adjacency read via water ref vs GetWaterVertex(i) combos (named vert)
+03:51 00be4660 grade r2h.cpp DIFFER(2397v2349) hunks=51 -- water: start/adjacency read via water ref vs GetWaterVertex(i) combos (named vert)
+03:51 00be4660 grade r2i.cpp DIFFER(2349v2349) hunks=47 -- water: start/adjacency read via water ref vs GetWaterVertex(i) combos (named vert)
+03:52 00be4660 grade r2f.cpp DIFFER(2381v2349) hunks=43 -- water FindFirst variant pos
+03:52 00be4660 grade r2f.cpp DIFFER(2381v2349) hunks=43 -- water FindFirst variant poscnt
+03:52 00be4660 grade r2f.cpp DIFFER(2381v2349) hunks=43 -- water FindFirst variant whilecond
+03:53 00be4660 grade r2j.cpp DIFFER(2381v2349) hunks=43 -- one TU with both instantiations (water first / sea first)
+03:53 00be4660 grade r2k.cpp DIFFER(2381v2349) hunks=43 -- one TU with both instantiations (water first / sea first)
+03:57 00be4660 grade r2l.cpp DIFFER(2577v2349) hunks=151 -- water: shore copy as a 12-step for loop
+03:58 00be4660 grade probe_noassert.cpp DIFFER(2381v2349) hunks=43 -- PROBE: static-assert typedefs removed (diagnostic only)
+03:59 00be4660 grade r2f.cpp DIFFER(2383v2349) hunks=64 -- water Iterate variant it2
+03:59 00be4660 grade r2f.cpp DIFFER(2381v2349) hunks=43 -- water Iterate variant it8
+04:00 00be4660 grade p1.cpp DIFFER(2398v2349) hunks=155 -- PROBE symbol-count perturbations in water helpers
+04:00 00be4660 grade p2.cpp DIFFER(2381v2349) hunks=53 -- PROBE symbol-count perturbations in water helpers
+04:00 00be4660 grade p3.cpp DIFFER(2381v2349) hunks=43 -- PROBE symbol-count perturbations in water helpers
+04:00 00be4660 grade r2f.cpp DIFFER(2387v2349) hunks=138 -- water FindWaterVert variant fB
+04:00 00be4660 grade r2f.cpp DIFFER(2387v2349) hunks=138 -- water FindWaterVert variant fD
+04:00 00be4660 grade r2f.cpp DIFFER(2387v2349) hunks=137 -- water FindWaterVert variant fBg
+04:00 00be4660 grade r2f.cpp DIFFER(2371v2349) hunks=137 -- water FindWaterVert variant fCn
+04:01 00be4660 grade t1.cpp DIFFER(2381v2349) hunks=43 -- water: named next water vertex (after start / before start / with water-ref start)
+04:01 00be4660 grade t2.cpp DIFFER(2349v2349) hunks=47 -- water: named next water vertex (after start / before start / with water-ref start)
+04:01 00be4660 grade t3.cpp DIFFER(2381v2349) hunks=45 -- water: named next water vertex (after start / before start / with water-ref start)
+04:01 00be4660 grade pr1.cpp DIFFER(2381v2349) hunks=43 -- PROBE: a large preceding function in the TU (does c2 symbol history move the slots?)
+04:01 00be4660 grade pr2.cpp DIFFER(2381v2349) hunks=43 -- PROBE: a large preceding function in the TU (does c2 symbol history move the slots?)
+04:02 00be4660 grade kd2.cpp DIFFER(2381v2349) hunks=43 -- PROBE: +2/+4/+6 pool symbols in water AddDuplicateEdgeVertex
+04:02 00be4660 grade kd4.cpp DIFFER(2381v2349) hunks=43 -- PROBE: +2/+4/+6 pool symbols in water AddDuplicateEdgeVertex
+04:02 00be4660 grade kd6.cpp DIFFER(2381v2349) hunks=43 -- PROBE: +2/+4/+6 pool symbols in water AddDuplicateEdgeVertex
+04:02 00be4660 grade r2m.cpp DIFFER(2381v2349) hunks=43 -- water: not-found index store before previous = -1
+04:04 00be4660 grade r2n.cpp DIFFER(2605v2349) hunks=177 -- water: 12 explicit shore assignments
+04:04 00be4660 grade as1.cpp DIFFER(2381v2349) hunks=43 -- PROBE: release ASSERT dead arm in water helpers (start / before memcpy / before return)
+04:04 00be4660 grade as2.cpp DIFFER(2381v2349) hunks=43 -- PROBE: release ASSERT dead arm in water helpers (start / before memcpy / before return)
+04:04 00be4660 grade as3.cpp DIFFER(2381v2349) hunks=43 -- PROBE: release ASSERT dead arm in water helpers (start / before memcpy / before return)
+04:06 00be4660 grade r2i.cpp DIFFER(2349v2349) hunks=47 -- full diff r2i
+04:07 00be4660 grade z1.cpp DIFFER(2349v2349) hunks=17 -- packer-model guided: else-chain skip stores (previous +1 IL ref) with start via water ref / via GetWaterVertex(i)
+04:07 00be4660 grade z2.cpp DIFFER(2349v2349) hunks=4 -- packer-model guided: else-chain skip stores (previous +1 IL ref) with start via water ref / via GetWaterVertex(i)
+04:08 00be4660 grade z4.cpp DIFFER(2381v2349) hunks=16 -- else-chain skip stores + continue after the bridged span
+04:08 00be4660 grade z4.cpp DIFFER(2381v2349) hunks=16 -- z4 diff
+04:08 00be4660 grade z5.cpp DIFFER(2349v2349) hunks=17 -- z4 + start via water ref
+04:09 00be4660 grade z6.cpp DIFFER(2412v2349) hunks=104 -- else-chain + continue only in found / only in not-found
+04:09 00be4660 grade z7.cpp DIFFER(2381v2349) hunks=16 -- else-chain + continue only in found / only in not-found
+04:09 00be4660 grade za1.cpp DIFFER(2381v2349) hunks=16 -- z4 + release ASSERT dead arms in water helpers (3 positions)
+04:09 00be4660 grade za2.cpp DIFFER(2381v2349) hunks=16 -- z4 + release ASSERT dead arms in water helpers (3 positions)
+04:09 00be4660 grade za3.cpp DIFFER(2381v2349) hunks=16 -- z4 + release ASSERT dead arms in water helpers (3 positions)
+04:14 00be4660 grade z9.cpp DIFFER(2349v2349) hunks=4 -- water: z2 text with loop-scope found/fan
+04:15 00be4660 grade zc.cpp DIFFER(2349v2349) hunks=4 -- early-continue skip chain (3 previous=-1 stores, continue only in skip arms)
+04:30 00be4660 probe static-assert typedefs removed -> no change (not GOTCHAS 382)
+04:30 00be4660 probe large preceding function in TU -> no change (slot order is per function)
+04:40 00be4660 probe pk.py frame packer r2f/r2i/z2/z4/z7/z8/zw1 -> slot weights; sim.py reproduces our order; retail needs previous +1 and i/&water creation swap
