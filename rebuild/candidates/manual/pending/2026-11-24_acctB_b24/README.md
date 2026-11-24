@@ -56,3 +56,15 @@ and a `sizeof == 0x1c` assert). Test fixed for VC7.1 (no zero-init of a non-POD 
   prefers a header decl-only opt-in.
 - Pick-any: six NEQ copies, none leaf-referenced, all already in Account A's /d2inlS15 audit (`??1MovieBase`, `??4STB`, `??1pair`,
   `??1CIsThingAlive`, `_M_erase`, `clear`): family debt.
+
+## 0x00DB3FA0 NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::Main: matched, HELD (B24B3, re-verified 2026-11-24)
+RELOCATION_MATCH PASS, strict vland, no warnings; vt PASS. What made it match: the draft's renamed header opt-in (`..._ENTITIES3`) and
+`#pragma inline_depth(0)` around the forced `~CIsThingConscious` definition (retail: outer vtable store expanded, nested ~CScriptThing
+0x004AA840 called); the leaf-referenced ~MovieBase copy was fixed by using the visible header template (HEAD row 0x00D44CB0's spelling).
+HELD: the depth-0 pragma makes the object emit a `??1CIsThingConscious` copy that differs from its own landed row 0x00EF7AB0 (without the
+pragma the copy matches). Under EXTRA_RULES 2026-11-20 that holds the row until the lander rules on it or a form without that copy is found.
+
+## Lane B findings (progress/b24b_SHARED_FORM.md)
+Today's CTimer header text is the original: all four bodies hash-equal FableWin's Ghidra instruction signatures once VC10's split virtual call
+is allowed for (tool: notes in progress/00f1eed0/). ~CTimer costs c1 14 everywhere. The ??BCDefString 0x00415DD0 pick-any NEQ is HEAD debt
+(landed 0x00EB3D10 emits it too). Oracle extents of 0x00D0D910 (4752) and 0x00DC93F0 (4507) were wrong in B's cut and are re-cut.

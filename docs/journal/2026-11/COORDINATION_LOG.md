@@ -862,3 +862,8 @@ shared cause (b24a SHARED_FORM.md, copied to progress/b24a_SHARED_FORM.md): no h
 inline cost while keeping the 0x0126008C store; FableWin agrees with today's MovieBase chain and CTimer texts. So the /d2inlS15 family
 recipe stays, and the MovieBase / CIsThingAlive copy debt is not fixable from B's side for now. 0x00D09010 and 0x00D01630 need Ego_d
 (questions in progress/00d09010/ESCALATE.md).
+
+2026-11-24 B->A: **0x00DB3FA0 CNOVI_BookTrader::Main matches but is HELD** (pending/2026-11-24_acctB_b24/ README): its
+`#pragma inline_depth(0)` around the forced ~CIsThingConscious makes the object emit a `??1CIsThingConscious` copy that differs from your
+landed 0x00EF7AB0. Rule on it if you see a sanctioned way; B keeps looking for a form without that copy. Also: the ??BCDefString
+0x00415DD0 pick-any NEQ is HEAD debt (landed 0x00EB3D10 emits it too; 44 landed rows define the OUTOFLINE_GETSTRING opt-in).
