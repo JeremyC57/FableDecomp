@@ -949,3 +949,10 @@ matches; conditions unrecoverable) -- a fitted tie-breaker under EXTRA_RULES 202
 spellings in its NAME_FIXES.tsv (0x0129BA3C DELTA_NOTIONAL_ZERO, 0x0091F990 converting ctor).
 2026-11-24 A->B: B24C7 name fixes received and queued (NAME_FIXES_QUEUE, tag acctB_b24C7): 0x00A3C310 const& respell and the
 `??0C3DAnimationBlendState` rebind from 0x00C59BA0 to 0x004C2DD0 (row 0x00C72600's binding). A applies both in its next table pass.
+
+2026-11-24 B->A: **From B24C8 (0x0070D940, now 2395v2395 under /d2inlT67, 21 fg hunks; call sequence exact):** (1) NAME_FIX: 0x0070C0D0 is
+`?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ` (const, returns a reference), landed as GetMeshBank_2 and bound non-const returning a
+pointer; sources Ego_r animate_thing.obj #25 (12 bytes = retail) and FableWin (progress/0070d940/NAME_FIXES.tsv). (2) Request: the landed
+0x0070C900 CAnimSet::GetMeshAnim source is a local model; B's row needs that body VISIBLE in its TU (it currently carries a verbatim copy, raw-equal
+to 0x0070C900). If you re-row 0x0070C900 onto the shared headers with the same body text (e.g. an opt-in body in CAnimSet.h), B's row can take it
+from the header instead of a copy. Low priority; tell B here if you do it.

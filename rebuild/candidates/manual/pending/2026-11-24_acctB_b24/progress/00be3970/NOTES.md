@@ -111,3 +111,20 @@
   loop top needs something BETWEEN vert's definition and start's Data load that VC7.1 treats as a memory barrier (here a volatile
   access); address-taken-ness alone does not do it. Retail emits nothing there, so the natural statement (a store / call that the
   optimiser later removes, or a dead arm that survives CSE) is still unknown.
+
+## B24C7 (2026-11-24): not reached (context spent on 0x0070D940). State unchanged from B24C6.
+## B24C8 (2026-11-24)
+- Baseline regrade (c8/g.sh = c6/g.sh writing to c8/): differ/00be3970.cpp DIFFER(2392v2390) 25 dd blocks (unchanged).
+- Coordinator lead "callee body visible" checked: retail's object has BuildBridgeVertexAndIndexBuffers 0x00BE3660, TesselateEdgeGeneric
+  0x00BE37E0 and TesselatePatch 0x00BE3910 ahead of the row (manifest), but TesselateEdge calls none of them. Its out-of-line callees are
+  in other objects (GetEdgeStrip 0x00BDC980, InsertGrow/_M_insert_overflow 0x005135D0, _M_insert_overflow 0x00B6D0B0) or after the row
+  (push_back 0x00BE4380, SetTargetVertexNormal 0x00BE66F0). No landed callee body can be made visible ahead of it: the lever that moved
+  0x0070D940 does not apply here (consistent with the brief's Gate-0 note and c6/ord).
+- Reading of the head residue (unchanged): retail's loop top loads strip->Verts.Data twice (0x00BE3A61 for vert, 0x00BE3A75 for start /
+  end, i*20 shared) -- redundant-load elimination did not merge them; ours merges (start through vert, end through Data #1). B24C5's m2
+  probe shows any barrier between the two loads gives retail's loop top. (A join / block-local-CSE reading is refuted by retail itself:
+  [esi+29h] and the second [esi+8] are loaded once and reused for `end` after the ?: join at 0x00BE3A8A, so the barrier sits only
+  between GetVert and the first GetMainAxisVertexWorldPos.) Open: B24C6's c2 tuple-dump idea; whether retail's TU saw template / inline
+  bodies ours treats differently (InsertGrow, _M_insert_overflow, SetTargetVertexNormal) is unanswered -- only "no same-object callee
+  ahead" is shown.
+- (B24C8) j1: GetMainAxisVertexWorldPos as if/return (c8/hdr_j): DIFFER(2372v2390) 70 blocks -- worse; ternary kept.

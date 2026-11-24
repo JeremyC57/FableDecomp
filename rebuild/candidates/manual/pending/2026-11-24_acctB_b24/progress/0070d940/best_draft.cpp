@@ -1,7 +1,13 @@
 // CAnimateThing::CalcInterpolatedMeshAnim(const CCompleteAnimation& anim, const CDelayedAnimation& delayed, float alpha) const -- build the blend state of a complete animation at an interpolation alpha: the main set, cross-faded from its transition sets (a chain of transition states weighted by their interpolated alphas, skipped beyond the animation LOD distance), plus every loaded combination anim of the current and the delayed animation, each list stable-sorted by priority
-// Grade: DIFFER(2482v2395) 127 hunks with /d2inlT67 (stock DIFFER(2610v2395) 122) -- call sequence = retail; residue: ours keeps 0 in ebp through the transition loop and `end` in memory where retail keeps `end` in ebx, and our scope-end releases keep their null stores (retail drops them)
-// Inline-budget: /d2inlT67 -- vector<CAnimSetIt>::_M_insert_overflow at the first combination pass scores 68 (cost 73 at f 1.25), retail calls it (0x0070DF89) and expands the second pass's; our copy of 0x00711080 is instruction-equal to retail's, no loop shape tried makes the site colder; every other decision unchanged (max expanded score 66). NOTES.md B24C7.
+// Grade: DIFFER(2507v2395) stock 38 hunks / DIFFER(2395v2395) /d2inlT67 21 hunks -- residue: Release null-store hunks (0x0070DBC0..), reserve this/push order, loop-top scratch regs, StateAlpha store order, tail vtable reg; stock: first-pass overflow site
+// Next idea: see NOTES.md B24C8 (landed callee bodies visible: GetInterpolatedTime 0x0070C800; the Release null-store hunks)
 // Leaf: ?CalcInterpolatedMeshAnim@CAnimateThing@@ABE?AVC3DAnimationBlendState@@ABVCCompleteAnimation@1@ABVCDelayedAnimation@1@M@Z
+// Flags: /d2inlT67
+// Inline-budget: /d2inlT67 -- the first combination pass's vector<CAnimSetIt>::_M_insert_overflow (retail calls 0x00711080 at 0x0070DF89)
+//   scores 68 (cost 73 = c1 52 + ext 21 at f 1.25; c2 trace inl/v14.txt), the second pass's 49 (expanded = retail); 67 is the smallest
+//   threshold that calls the first and keeps every retail-expanded site (max 66). Also FABLE_RETAIL_CIVCOUNTEDPOINTER_ASSIGN_FORCEINLINE
+//   (existing repo opt-in) with the converting operator= forced under it (CONVERT_ASSIGN): retail expands `transition =
+//   transitions.back()` at a site scoring 144; every unforced spelling grades worse (NOTES.md B24C8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0070D940, 2395 bytes, thiscall `ret 10h` (hidden result + 3 arguments), frame 0x3C, no EH.
 //   Ego_r.pdb ?CalcInterpolatedMeshAnim@CAnimateThing@@ABE?AVC3DAnimationBlendState@@ABVCCompleteAnimation@1@ABVCDelayedAnimation@1@M@Z
 //   (private const; Ego_r neighbours CalcMeshAnims / GetProgressFromAlpha); the function-static sorted_combination_anims 0x013BAC20
@@ -11,7 +17,7 @@
 //   CAnimSet::GetMeshAnim 0x0070C900 (x6), C3DAnimationTransitionState::SetStartState 0x00710560 / SetEndState 0x007105A0 (x2 each),
 //   GetProgressFromAlpha 0x0070BE40, C3DAnimationBlendState::SetBaseAnimation 0x00A3C2D0 (x2) / AddCombinationBlend 0x00A3C310 (x2),
 //   vector<..TransitionState..>::push_back 0x00711C50 / overflow 0x00711A50 / ~vector 0x00711760, vector<CAnimSetIt>::reserve
-//   0x00710B00 / _M_insert_overflow 0x00711080, STLport __stable_sort_aux 0x00711B80 (__fastcall, comparator carrying alpha),
+//   0x00710B00 / _M_insert_overflow 0x00711080, STLport __stable_sort_aux 0x00711B80 (__fastcall, empty comparator),
 //   CMeshDataBank::PeekAnimation 0x00A242C0 (x4), C3DAnimationInfo::IsLoaded 0x00A23F50 / TouchAnimation 0x00A26A50 (x2 each),
 //   CAnimSet::GetInterpolatedTime 0x0070C800 (x2), malloc / free / atexit.
 // Globals: g_primitiveDrawDistanceScale 0x013B8774, the bools 0x01380BDA (animation LOD) and 0x013756F7 (combination anims; both
@@ -30,6 +36,8 @@
 #define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_COUNT
 #define FABLE_RETAIL_CIVCOUNTEDPOINTER_FROM_RAW
 #define FABLE_RETAIL_C3DANIMATIONSTATE
+#define FABLE_RETAIL_C3DANIMATIONSTATE_ORIGINAL_CTORS_PASS23
+#define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_CTOR
 #define FABLE_RETAIL_C3DANIMATIONSTATEALPHA
 #define FABLE_RETAIL_C3DANIMATIONSTATEALPHA_INDEX_CTOR
 #define FABLE_RETAIL_C3DANIMATIONTRANSITIONSTATE
@@ -46,10 +54,10 @@
 #define FABLE_RETAIL_CBANKFILE_ENTRYQUERY
 #define FABLE_RETAIL_C3DANIMATIONINFO
 #define FABLE_RETAIL_C3DANIMATIONINFO_ISLOADED
-#define FABLE_RETAIL_CANIMSET_UPDATEDISTANCE
 #define FABLE_RETAIL_CANIMSET_MESHANIM
 #define FABLE_RETAIL_CANIMATETHING_CALCCACHEDANIMS
 #define FABLE_RETAIL_CANIMATETHING_PROGRESSFROMALPHA
+#define FABLE_RETAIL_CANIMATETHING_PEEKANIMINFO
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_GETWORLD
@@ -78,15 +86,22 @@
 #include "stlport/fable_algorithm.h"
 #include "engine/GFWorldDistance.h"
 #include "engine/CAnimSetItPriorityLessThan.h"
+#include "engine/CAnimateThing_PeekAnimInfo.h"
 
 extern float g_primitiveDrawDistanceScale;                          // 0x013B8774
 extern bool g_AnimationLOD;                                         // 0x01380BDA (name descriptive)
 extern bool g_DrawCombinationAnims;                                 // 0x013756F7 (name descriptive)
 typedef std::list<CAnimSet>::const_iterator CAnimSetIt;
 
-inline const C3DAnimationInfo& CAnimSet::PeekAnimInfo(short anim) const
+// TU: CAnimSet::GetMeshAnim 0x0070C900 lies ahead of this row in retail's object; its landed body
+//   (rebuild/src/compiled/00/70/CAnimSet_GetMeshAnim_0070c900.cpp) is copied verbatim so c2 compiles it first.
+CIVCountedPointer<C3DAnimationStateBase> CAnimSet::GetMeshAnim(float fraction) const
 {
-    return *CMainGameComponent::Get()->GetWorld().GetMeshBank()->PeekAnimation(anim);
+    CIVCountedPointer<C3DAnimationState> start(new C3DAnimationState(Anims[0],GetInterpolatedTime(fraction,0)));
+    if(Anims.size()==1) return start;
+    CIVCountedPointer<C3DAnimationState> end(new C3DAnimationState(Anims[1],GetInterpolatedTime(fraction,1)));
+    CIVCountedPointer<C3DAnimationTransitionState> transition(new C3DAnimationTransitionState(start,end,GetInterpolatedInternalAlpha(fraction,1)));
+    return transition;
 }
 
 C3DAnimationBlendState CAnimateThing::CalcInterpolatedMeshAnim(const CCompleteAnimation& anim, const CDelayedAnimation& delayed, float alpha) const
@@ -143,21 +158,23 @@ C3DAnimationBlendState CAnimateThing::CalcInterpolatedMeshAnim(const CCompleteAn
         sorted_combination_anims.reserve(anim.CombinationAnims.size() > delayed.CombinationAnims.size() ? anim.CombinationAnims.size() : delayed.CombinationAnims.size());
         for (CAnimSetIt it = anim.CombinationAnims.begin(); it != anim.CombinationAnims.end(); ++it)
             sorted_combination_anims.push_back(it);
-        std::stable_sort(sorted_combination_anims.begin(), sorted_combination_anims.end(), CAnimSetItPriorityLessThan(alpha));
+        std::stable_sort(sorted_combination_anims.begin(), sorted_combination_anims.end(), CAnimSetItPriorityLessThan());
         for (const CAnimSetIt* set = sorted_combination_anims.begin(); set != sorted_combination_anims.end(); ++set) {
-            if ((*set)->PeekAnimInfo((*set)->Anims[0]).IsLoaded()) {
-                (*set)->PeekAnimInfo((*set)->Anims[0]).TouchAnimation();
-                state.AddCombinationBlend((*set)->GetFirstMeshAnim(alpha));
+            const CAnimSet& combination = **set;
+            if (PeekAnimInfo(combination.Anims[0]).IsLoaded()) {
+                PeekAnimInfo(combination.Anims[0]).TouchAnimation();
+                state.AddCombinationBlend(combination.GetFirstMeshAnim(alpha));
             }
         }
         sorted_combination_anims.clear();
         for (CAnimSetIt it2 = delayed.CombinationAnims.begin(); it2 != delayed.CombinationAnims.end(); ++it2)
             sorted_combination_anims.push_back(it2);
-        std::stable_sort(sorted_combination_anims.begin(), sorted_combination_anims.end(), CAnimSetItPriorityLessThan(alpha));
+        std::stable_sort(sorted_combination_anims.begin(), sorted_combination_anims.end(), CAnimSetItPriorityLessThan());
         for (const CAnimSetIt* set2 = sorted_combination_anims.begin(); set2 != sorted_combination_anims.end(); ++set2) {
-            if ((*set2)->PeekAnimInfo((*set2)->Anims[0]).IsLoaded()) {
-                (*set2)->PeekAnimInfo((*set2)->Anims[0]).TouchAnimation();
-                state.AddCombinationBlend((*set2)->GetFirstMeshAnim(alpha));
+            const CAnimSet& combination = **set2;
+            if (PeekAnimInfo(combination.Anims[0]).IsLoaded()) {
+                PeekAnimInfo(combination.Anims[0]).TouchAnimation();
+                state.AddCombinationBlend(combination.GetFirstMeshAnim(alpha));
             }
         }
     }

@@ -21,3 +21,15 @@
   the callee is only declared, and drops it when the callee's body is in the TU. Retail's GetMeshAnim 0x0070C900 lies ahead of the row
   (the landed row is a separate object here), so retail's c2 knew it, and `start` / `end` were not treated as aliased. This is the
   residue the owner's retail-grouping build mode should remove (with 0x0070C900 compiled first in the same object).
+## B24C8 update (2026-11-24)
+- The TU-composition fact is resolved WITHOUT the build mode: the row now carries the landed 0x0070C900 body verbatim (sanctioned form
+  for a landed callee; COORDINATOR_PROMPT "Landing a finished workflow"), and its emitted copy equals retail 0x0070C900. Better for
+  landing: re-row 0x0070C900 onto the shared headers (same body text) and #include it here the nf251 way.
+## B24C8 (2026-11-24): what remains
+- Under /d2inlT67 (allowed, Inline-budget line in the draft) v16 is 2395 v 2395 with 35 raw-differing instructions, all scratch-register
+  choice or store order in the combination section and the tail (NOTES.md B24C8). Only GetMeshAnim's landed body is in v16; the landed
+  GetInterpolatedTime (diagnostic with a GetNonLoopingDuration stand-in), the reserve body opt-ins and the landed __stable_sort_aux text
+  were each made visible in diagnostics and changed none of those instructions.
+- PDB-only forms in v16 (no byte change in this row, kept for fidelity): the C3DAnimationStateAlpha ctor through SetAlphaWeight (FableWin
+  sizes), the PASS23 C3DAnimationStateBase ctors (FableWin SAME), the empty CAnimSetItPriorityLessThan with its binary_function base
+  (the empty class itself DOES change bytes: the comparator push).

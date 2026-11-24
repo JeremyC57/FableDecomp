@@ -106,3 +106,53 @@
   same-TU body for CAnimSet::GetMeshAnim (diagnostic c7/bis/d1.cpp; stand-ins are banned) the zero register goes and the row shrinks
   to 794 instructions (retail 785); see ESCALATE.md. Write it up for the retail-grouping build mode, then work what is left in
   c7/q_d1.dis v retail (scheduling around the pre-loop alphas, c7/q_d1.sdd).
+## B24C8 (2026-11-24)
+- Lessons applied: B24C7's TU-composition lead; GOTCHAS "porting onto shared headers"; brief lane gotcha "a visible callee body changes
+  register allocation far from the call"; reading retail by hand (movsx-from-memory -> a long parameter).
+- v11 = v10 + the landed CAnimSet::GetMeshAnim 0x0070C900 body copied VERBATIM ahead of the row (retail order: same object, ahead).
+  stock DIFFER(2530v2395) 62 hunks; /d2inlT67 DIFFER(2418v2395) 59 hunks; structural 738/785, everything up to the static vector now
+  matches structurally (end in ebx, no zero register, no null stores). The emitted ?GetMeshAnim copy (shared-header texts) is
+  instruction-equal to retail 0x0070C900 (c8/gma_ret2.dis v c8/gma_ours.dis, 174/174 normalised): the header texts are right.
+  For Account A: the landed 0x0070C900 is a local-model source; a shared-header re-row with the same body text would let this row
+  #include it the nf251 way (one text). Until then the row carries the verbatim copy.
+- v12 = v11 + `const CAnimSet& combination = **set;` in both combination loops (retail `add esi,8` once, members read off esi):
+  /d2inlT67 2417v2395 26 hunks.
+- v14 = v12 + CAnimateThing::PeekAnimInfo(long) / GetMeshBank() const (Ego_r + FableWin; new overlay opt-in
+  FABLE_RETAIL_CANIMATETHING_PEEKANIMINFO + engine/CAnimateThing_PeekAnimInfo.h): the unqualified PeekAnimInfo in a CAnimateThing member
+  is the long overload -> `movsx eax,word ptr [eax]` straight from memory as retail 0x0070DFDC / 0x0070E002 (CAnimSet::PeekAnimInfo(short)
+  gave `mov ax,[..]` ... `movsx eax,ax`; probe c8/pr/s1.cpp). The row-local CAnimSet::PeekAnimInfo body and CANIMSET_UPDATEDISTANCE dropped.
+  stock DIFFER(2523v2395) 40 hunks; /d2inlT67 DIFFER(2396v2395) 27 hunks, 784 v 785 instructions, call sequence = retail.
+- NAME_FIXES: 0x0070C0D0 = ?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ (landed as GetMeshBank_2, bound non-const).
+- First-pass overflow site unchanged with the body visible (v14 trace inl/v14.txt: c1 52, ext 21, f 1.25, sc 68; second pass f 31.25 sc 49).
+- v15 = v14 + CAnimSetItPriorityLessThan as the PDB has it: EMPTY (Ego_r struct_layouts size 1, no members; base binary_function<It,It,bool>;
+  FableWin ??R..QBE_NABV..0@Z; the landed __stable_sort_aux 0x00711B80 model is empty too). B24C7's 4-byte Alpha member was wrong: retail
+  pushes the uninitialised empty temporary, whose slot is shared with alpha's ([esp+5Ch]); retail's out-of-line stable_sort 0x00711C90 is
+  `mov eax,[esp+4]; push eax; push 0; push 0; call 0x711B80; ret 4`. Now pushes exactly as retail. 785 v 785 instructions under T67.
+- C3DAnimationStateAlpha(index,time,weight) now `: C3DAnimationState(index,time) { SetAlphaWeight(weight); }` + SetAlphaWeight inline
+  (FableWin ctor 31i/104b; this text /Od /EHsc 29i/98b, the +2i/+6b = FableWin's 3-instruction float pushes x2; init-list form 19i/50b).
+  No byte change in the row.
+- v16 = v15 + FABLE_RETAIL_C3DANIMATIONSTATE_ORIGINAL_CTORS_PASS23 + FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_CTOR (existing repo opt-ins; FableWin
+  C3DAnimationStateBase ctor 12i/31b and dtor 11i/28b now SAME): stock DIFFER(2507v2395) 38 hunks, /d2inlT67 DIFFER(2395v2395) 21 hunks.
+  The emitted GetMeshAnim copy stays instruction-equal to 0x0070C900 (c8/gmacheck.sh).
+- Tried, byte-identical (do not repeat): reserve-arg spellings (named count, swapped compare, <=), PeekAnimInfo arg spellings
+  (*begin(), (long) cast), GetMeshBank / PeekAnimInfo bodies with named locals (m1-m3, n1-n2), direct chain in PeekAnimInfo,
+  GetFirstMeshAnim forms (g1-g4; g4 = named time local is worse), static vector through a reference. Dropping the forced op= devices:
+  all worse (no ASSIGN_FORCEINLINE 780i/718 structural; unforced converting op= 791i/703; no CONVERT_ASSIGN 799i).
+- Loop-top scratch registers (0x0070DFD3 / 0x0070E193: retail `mov eax,[esi+0Ch]; mov ecx,[PMGC]; movsx eax,word ptr [eax]`): bisect on a
+  reduced row (c8/t_b5..t_b13): the bare combination loop gives retail's form; adding the clear/reserve/push block (b7) or only the
+  stable_sort (b8, b10) flips it to ours; a register-only fastcall call in the sort's place (b11) or a no-arg call (b13) keeps retail's.
+  In the full row, replacing the first sort alone does not flip it (t_d1).
+- Raw check (c8/raw.py, raw bytes incl. branch displacements, relocation addends filtered): v16 /d2inlT67 differs from retail in 35
+  instructions, all register / order: reserve `mov ecx,offset` v `push edx` (0x0070DF38), both loop tops (0x0070DFD3.., 0x0070E193..), the
+  StateAlpha temporary stores in both loops (the two loops' orders are swapped v retail), the second loop's alpha push reg (0x0070E1E2),
+  the tail Delete vtable reg (0x0070E279). fg's first three hunks (0x0070DBC0/DBEB/DC21) are raw-equal (why fg flags them is unexplained). The emitted GetMeshAnim
+  copy is raw-equal to 0x0070C900 (stock and T67); pick-any on v16: only the known wrong binding 0x00C59BA0 (NAME_FIXES).
+- Callee-visibility tests for those residues (all no change): landed GetInterpolatedTime 0x0070C800 body (t_gt, GetNonLoopingDuration
+  stand-in), reserve body via FABLE_RETAIL_STLP_VECTOR_RESERVE(_ALLOCATE_AND_COPY) (t_rv, t_rv2), STLport in-class overflow scope
+  (t_ov; also no change at the overflow site). An EMPTY stand-in __stable_sort_aux body (t_ss, diagnostic) moves things; the landed
+  0x00711B80 text itself made visible (t_sa: _Temporary_buffer + __stable_sort_aux, callees declared) changes NOTHING (785 v 785,
+  738 equal, loop top unchanged). (STLport template bodies were in retail's TU regardless of COMDAT placement.)
+- /d2inlT67 kept (Inline-budget line in the draft); 67 = smallest threshold (max expanded score 66, first-pass overflow 68).
+- Best: differ/ = c8/v16.cpp. Next ideas: (1) the remaining scratch-register / store-order hunks are allocator tie-breaks; look for an
+  IL difference in the combination section (CIVCountedPointer texts: Release 17i/45b v FableWin 17i/50b, default ctor 10i v 12i, op=
+  31i v 35i, converting ctor 18i v 22i -- fwsize on c8/v16.cpp), one grade each; (2) C3DAnimationBlendState dtor / copy texts at the tail.

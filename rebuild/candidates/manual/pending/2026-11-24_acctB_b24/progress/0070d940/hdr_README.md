@@ -29,3 +29,19 @@ additive #ifdef sections (default branches unchanged); the B24C4 overlay is kept
   class; 4-byte functor carrying alpha (retail pushes `alpha` as the comparator, 0x0070DF9F / 0x0070E16A); Alpha / ctor descriptive.
   (stable_sort is spelled over pointer iterators, `_Tp*`, not STLport's `_RandomAccessIter`: the value type is the pointee; marked
   FABLE_FASTCALL as retail's out-of-line copy 0x00711C90. Inlined in this row, no bytes change.)
+## B24C8 additions (2026-11-24)
+- engine/CAnimateThing.h + FABLE_RETAIL_CANIMATETHING_PEEKANIMINFO: forward declarations of CMeshDataBank / C3DAnimationInfo (top) and
+  public `const CMeshDataBank& GetMeshBank()const;` / `const C3DAnimationInfo& PeekAnimInfo(long anim)const;` (access restored to private
+  after). Ego_r.pdb release animate_thing.obj #25 (12 bytes) / #27 (16 bytes), FableWin.pdb 0x01E92060 / 0x01E97850:
+  ?GetMeshBank@CAnimateThing@@QBEABVCMeshDataBank@@XZ, ?PeekAnimInfo@CAnimateThing@@QBEABVC3DAnimationInfo@@J@Z. GetMeshBank's retail
+  out-of-line copy is 0x0070C0D0 (landed as GetMeshBank_2: NAME_FIXES.tsv).
+- engine/CAnimateThing_PeekAnimInfo.h (NEW): the two inline bodies (needs the PEEKANIMINFO, CWORLD_MESH_BANK, CMAINGAMECOMPONENT_GETWORLD,
+  CMESHDATABANK_PEEKANIMATION opt-ins; #error otherwise). GetMeshBank = `return *CMainGameComponent::Get()->GetWorld().GetMeshBank();`
+  (the 12-byte retail body), PeekAnimInfo = `return *GetMeshBank().PeekAnimation(anim);` (FableWin 13i/32b = /Od of this text).
+- engine/CAnimSetItPriorityLessThan.h REWRITTEN (B24C8): the class is EMPTY (Ego_r struct_layouts size 1, no members) and derives from
+  std::binary_function<list<CAnimSet>::const_iterator, list<CAnimSet>::const_iterator, bool> (Ego_r lists that struct); operator() declared
+  (FableWin 0x01EAB0B0 ??RCAnimSetItPriorityLessThan@@QBE_NABV..0@Z; body compares the private CAnimSet::Priority, expanded in the landed
+  0x00711B80 chain). The B24C7 text (a float Alpha member, descriptive ctor) is superseded: it is kept as ../c8/CAnimSetItPriorityLessThan.h.b24c7.
+- engine/C3DAnimationStateAlpha.h (FABLE_RETAIL_C3DANIMATIONSTATEALPHA_INDEX_CTOR, own B24C6 section): the constructor body calls the new
+  inline SetAlphaWeight (FableWin.pdb ?SetAlphaWeight@C3DAnimationStateAlpha@@QAEXM@Z 0x01E99AA0); FableWin ctor 31i/104b v this text 29i/98b
+  (+2 three-instruction float pushes in FableWin), the init-list form 19i/50b.
