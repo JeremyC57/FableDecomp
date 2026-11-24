@@ -31,9 +31,13 @@ for a in acc:
     o = f"{S}/w22/nflocks/{a}/owner"
     if a in t3: held[a] = "T3_PORT_QUEUE"
     elif os.path.exists(o) and open(o).read().strip() != "released": held[a] = "lock " + open(o).read().strip()
+# COORDINATION.md section 2: the newest line for an item wins, so a claim closed by a later `done` / `released` line no longer holds.
+newest = {}
 for l in open("rebuild/candidates/manual/COORDINATION_CLAIMS.tsv").read().splitlines():
     f = l.split("\t")
-    if len(f) > 4 and f[4] not in ("done", "released"):
+    if len(f) > 4: newest[(f[1], f[2])] = l
+for l in newest.values():
+    if l.split("\t")[4] not in ("done", "released"):
         for a in acc:
             if a in l.lower() and a not in held: held[a] = "open claim"
 # staleness: the source a run generated its candidate from must still be the landed source (a later landing may have changed it); the run's
