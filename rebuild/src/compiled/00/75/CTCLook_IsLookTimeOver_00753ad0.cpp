@@ -1,5 +1,5 @@
 // CTCLook::IsLookTimeOver() -- false while the owner's interface-0xAA component exists and has its "keep looking" byte (+0x7A) clear; otherwise whether the frame counter has reached LookTimer
-// Leaf: ?IsLookTimeOver@CTCLook@@QAE_NXZ
+// Leaf: ?IsLookTimeOver@CTCLook@@ABE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753AD0, length 101 bytes.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface, type 0xAA = bit 10 of the dword at
@@ -32,10 +32,12 @@ class CTCLook : public CTCBase {
 public:
     unsigned char _pad08[0x3c - 0x08];
     long LookTimer;                             // +0x3c
-    bool IsLookTimeOver();
+    private:
+    bool IsLookTimeOver() const;
+    public:
 };
 
-bool CTCLook::IsLookTimeOver()
+bool CTCLook::IsLookTimeOver() const
 {
     const CTCLookTimeOwner* owner;
     if (ParentThing->PeekTC(TCI_AI_SCRATCHPAD, &owner) && !owner->KeepLooking)

@@ -116,7 +116,10 @@ private:
     void FrameUpdateHeadLookAtPos(const C3DVector& pos, bool turnBody);   // 0x007530D0
     void SetHeadTurnState(long state);                     // 0x007517B0 (private: Ego_r.pdb / FableWin.pdb ?SetHeadTurnState@CTCLook@@AAEXJ@Z)
 public:
-    bool IsLookTimeOver();                                 // 0x00753AD0
+    private:
+    bool IsLookTimeOver() const;
+    public:
+                                 // 0x00753AD0
     virtual void FrameUpdate();                            // vtable 0x01269744 slot 9 (Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCLook@@UAEXXZ)
 };
 

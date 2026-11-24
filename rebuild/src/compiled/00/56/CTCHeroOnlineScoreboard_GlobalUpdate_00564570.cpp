@@ -58,7 +58,10 @@ public:
     ENetworkSuccess DownloadListOfMyClans();
     public:
          // 0x005615C0
-    ENetworkSuccess DownloadMyClansLogos();          // 0x00561980
+    private:
+    ENetworkSuccess DownloadMyClansLogos();
+    public:
+          // 0x00561980
     private:
     void ChooseAClan();
     public:

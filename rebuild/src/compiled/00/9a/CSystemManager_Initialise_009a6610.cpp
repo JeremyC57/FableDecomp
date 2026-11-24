@@ -182,7 +182,10 @@ class CSystemManager : public CInitBaseClass { public:
     void InitGUIDFromName(const char* name);
     public:
             // 0x009A52F0
-    bool InitWindow(long width, long height);           // 0x009A64B0
+    private:
+    bool InitWindow(long width, long height);
+    public:
+           // 0x009A64B0
     void Uninitialise();                                // 0x009A60D0
     private:
     void InitSystemColours();

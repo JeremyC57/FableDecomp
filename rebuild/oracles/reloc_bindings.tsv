@@ -3075,7 +3075,7 @@ __CxxThrowException@8	00bfeb84	0081e960
 ?InitialiseAttractionMarkers@CMiniMapDisplay@@QAEXXZ	0082b520	0082b750
 ?InitialiseDemonDoorMarkers@CMiniMapDisplay@@QAEXXZ	0082add0	0082b750
 ?InitialiseEnemyMarkers@CMiniMapDisplay@@QAEXXZ	0082b630	0082b750
-?InitialiseHouseMarkers@CMiniMapDisplay@@QAEXXZ	0082acd0	0082b750
+?InitialiseHouseMarkers@CMiniMapDisplay@@IAEXXZ	0082acd0	0082b750
 ?InitialiseInformationMarkers@CMiniMapDisplay@@IAEXXZ	0082a9b0	0082b750
 ?InitialiseRegionExitMarkers@CMiniMapDisplay@@QAEXXZ	0082afa0	0082b750
 ?InitialiseTeleportMarkers@CMiniMapDisplay@@IAEXXZ	0082abd0	0082b750
@@ -28151,7 +28151,7 @@ _CommonStaticMapHeaderEntryName	01436ecc	012246c0
 ?DownloadListOfMyClans@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005615c0	00564570
 ?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	005621b0	00564570
 ?DownloadMemberListForSelectedClan@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	00561dc0	00564570
-?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	00561980	00564570
+?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561980	00564570
 ?DownloadScoreboardForSelectedClan@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00563480	00564570
 ?LogOnToRegistrationServer@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@AAVCCharString@@@Z	00560d00	00564570
 ?UploadPlayerScores@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	00561450	00564570
@@ -28428,7 +28428,7 @@ _NAV_QUAD_TREE_FILE_VERSION	0129dcc8	00a78b20
 ?InitApplicationName@CSystemManager@@AAEXXZ	009a5340	009a6610
 ?InitGUIDFromName@CSystemManager@@AAEXPBD@Z	009a52f0	009a6610
 ?InitSystemColours@CSystemManager@@AAEXXZ	009a5490	009a6610
-?InitWindow@CSystemManager@@QAE_NJJ@Z	009a64b0	009a6610
+?InitWindow@CSystemManager@@AAE_NJJ@Z	009a64b0	009a6610
 ?Initialise@CDriveManager@@QAEJPAVCSystemManager@@@Z	009e4ad0	009a6610
 ?Initialise@CInitBaseClass@@IAE_NXZ	0099a350	009a6610
 ?Initialise@CScratchBuffer@@QAE_NJ@Z	009f4910	009a6610
@@ -37495,7 +37495,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?FrameUpdateOverriddenByParent@CTCLook@@AAEXXZ	00753080	00753c70
 ?ImplementHeadSettings@CTCLook@@QAEXXZ	00753ba0	00753c70
 ?IsAbleToTurnDaBody@CTCLook@@ABE_NXZ	00751da0	00753c70
-?IsLookTimeOver@CTCLook@@QAE_NXZ	00753ad0	00753c70
+?IsLookTimeOver@CTCLook@@ABE_NXZ	00753ad0	00753c70
 ?IsLookTurningOverridenByParent@CThing@@QAE_NXZ	0085f200	00753c70
 ?SetBodyMoving@CTCLook@@AAEXXZ	00752e00	00753c70
 ?SetBodyMovingViaAnimation@CTCLook@@AAEXXZ	00753930	00753c70
@@ -38203,7 +38203,7 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?UpdateCrowds@CTCVillage@@AAEXXZ	006594bb	0065c781
 ?UpdateCurfew@CTCVillage@@QAEXXZ	0065ad37	0065c781
 ?UpdateHornTasks@CTCVillage@@AAEXXZ	0065be6c	0065c781
-?UpdateSecuritySweepTasks@CTCVillage@@QAEXXZ	0065c08a	0065c781
+?UpdateSecuritySweepTasks@CTCVillage@@AAEXXZ	0065c08a	0065c781
 ?g_RepopulateVillages@@3_NA	013b86e9	0065c781
 ?UpdateCollision@CTCShotDefinitionBase@@QAEXPA_N@Z	007bfe30	007bdac7
 ?IsStillRunnable@CAIStateGroup_StealthSeekEnemy@@QAE_NPAVCTCPerceiveThing@@@Z	0093c4e0	0093c6d0
