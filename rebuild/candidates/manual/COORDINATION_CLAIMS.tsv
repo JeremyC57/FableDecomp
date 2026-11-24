@@ -424,3 +424,4 @@ date	account	item	kind	status	note
 2026-11-24	B	0x0070D940	author	claimed	agent B24C (owner 2026-11-24: B continues authoring; largest parked rows first, a third agent on unworked rows; no parking)
 2026-11-24	B	0x00BE3970	author	claimed	agent B24C (owner 2026-11-24: B continues authoring; largest parked rows first, a third agent on unworked rows; no parking)
 2026-11-24	B	0x00BE4660	author	claimed	agent B24C (owner 2026-11-24: B continues authoring; largest parked rows first, a third agent on unworked rows; no parking)
+2026-11-24	A	unit3	naming	claimed	scripted unit route (unit_fix.py) over the 51 units deferred from unit2; touches landed rows and their callers only, skips any row reserved by B / a live lock
