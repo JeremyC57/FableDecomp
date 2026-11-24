@@ -486,3 +486,14 @@ regrade the draft on today's headers, finish every block, prove the mangled Leaf
 its scope, callee signatures and the wrappers the source called, branch order as written, the NScript generator form, callee-body visibility
 toggles, cleanup / termination targets, expression shape last, a behaviour test with distinct arguments. Park only after at least five genuinely
 different logged source shapes that do not shrink the residue. Item 19 (donor debug-build code) is not available on the lane yet.
+
+## 2026-11-24 owner decision: a build mode that compiles rows in retail's object grouping and order
+Owner (2026-11-24), on Account B's finding that some residues come from compile order inside one retail object: "2 sounds promising" --
+option 2 of three (1: accept a per-row workaround device; 2: add a build mode that compiles rows in retail's object grouping and order;
+3: leave the rows open). Evidence (B24A5, 0x00E93EB0 CV_HauntedHouseScript::Main): a gdb hook on c2 shows retail compiled Main BEFORE
+`TRetVoid::Return` and `vector<CScriptThing>::operator[]` and every other callee before Main, which reproduces retail's two odd calls exactly
+(budget 34701 accepted / 35072 rejected at the 35000 limit); Ego_r puts every quest script in one object, register_scripts.obj. A one-row TU
+always compiles callees first, so no row spelling can express that order. Affected so far: 0x00E93EB0, 0x00E20600; likely the late-function
+inline residues of other quest scripts and the TesselateEdge twins (0x00BE4660 / 0x00BE4FE0, one object with 0x00BE3970).
+Consequence: rows whose residue is proven to be compile order are NOT to be fixed with row devices (option 1 is not chosen); they wait for the
+build mode. Design and ownership are agreed in docs/journal/2026-11/COORDINATION_LOG.md.
