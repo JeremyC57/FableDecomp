@@ -166,3 +166,30 @@ Retail CALLS ~CTimer at the f .1339 / .1004 cold returns, which needs c1 >= ~38.
 retail v ours ~9900 (pen 11). Same direction as the SIB's need for extra symbols before the HUD statement. HYPOTHESIS (not a finding): retail's PlayWave carried more
 front-end IL than ours. A decision-override compile (kit ../00d0d910/b8/inl/inl_force*.py, OBJ_OUT) can test "n3 without the regions +
 those two ~CTimer decisions forced to call" -> if raw = b3, the regions are exactly that decision set. Not run.
+## B24B9 (2026-11-24) -- FableWin read (debug build): the gift loop has a DEAD statement after `break`
+- FableWin PlayWave 0x0364F420 (../00dc93f0/b9/fw_0364f420.txt): no asserts. /Od call sequence aligned with ours (b9/ours_seq.txt v
+  b9/fw_seq.txt): equal except STL allocator temporaries / rand import (VC10 library), and ONE extra call: the gift loop is
+  `if (0) {} else for (long i = 0; i < NumPresents; ++i) { CHECK; ...; CreatedObject = Game->CreateObject(...); break;
+  Game->EntitySetCutsceneBehaviour(CreatedObject, (ECutsceneBehaviour)2); }` -- 0x03652E18 `jmp` out (break, after ~CreatedObject),
+  0x03652E1A..E3F unreachable (push 2; push &CreatedObject [ebp-0x148]; call [vtbl+0x800] = slot 512 EntitySetCutsceneBehaviour;
+  jmp to the increment). FableWin.pdb locals: the gift loop's counter `i` (long), CreatedObject / random / RandAngle / random_vector /
+  spawn_pos in its body block (= ours).
+- b9/p1.cpp (differ + that loop: prolog, break, dead statement with CUTSCENE_BEHAVIOUR_NOT_PAUSED), p2 (no dead stmt), p3 (no prolog):
+  all DIFFER(9262v9262), raw 1 line (the SIB) = b3. The dead statement does not flip the SIB at stock.
+- b9 leaf probe (leaf.sh, OV=hdr2): p1 L 2863 / T 7465 (b3 2862 / 7465): 2b-a = -1, no flip -- the dead statement adds one local symbol only. Row unchanged (b3 = differ).
+- CORRECTION (B24B9): this row already defines the VC6 macro (`#define for if (0) {} else for`, line 9), so p1/p2 carried a DOUBLE
+  prolog (b9/cjalign.py found two `xor/je/jmp` heads at 0x36BB/0x36C4 of the /Od obj). p3 (plain `for` under the macro + break + dead
+  statement) is the FableWin form: its /Od calls + conditional jumps align 1:1 with FableWin except VC10's materialised `!(a && b)` at
+  0x0364F536 (compiler idiom) and the dead EntitySetCutsceneBehaviour call, which VC7.1 drops already at /Od (no IL: the statement after
+  `break` cannot be the lever). p3 grades raw 1 line (the SIB) = b3. Tool: ../00dc93f0/b9/cjalign.py <obj> <leaf> <FableWin listing>.
+- p3 leaf (OV=hdr2): L 2863 / T 7465 (b3 2862 / 7465): 2b-a = -1, no flip. With PlayWave's CFG equal to FableWin (calls + jcc), the SIB is not a text residue of this function either (escalation stands).
+- OPEN DOUBT for the lander (B24B9): differ/ line 7 says "one gift (TLC revision; FableWin has the NumPresents loop)" -- but FableWin's
+  loop ends in an unconditional `break` (one gift too), and p3 (that loop under the row's for macro + break) gives retail's bytes (raw 1
+  line = b3). So the "TLC revision" inference is not needed; p3 is FableWin-structured (later VC10 build: inferred). differ/ left as b3.
+- B24B9 DEVICE REDUCTION: with the FableWin gift loop (p3 form) ALL THREE inline_depth(0) regions are unnecessary: s0/s1/s2 (one removed
+  each) and sall (all removed) raw 1 line; w1 = sall without the dead statement: raw 1 line = new differ/ (pragma-free; previous b3 kept as
+  differ/00f1eed0_pre_b9_b3.cpp). b3 with the regions removed but the old `if (NumPresents > 0)` = 9302 b / 187 raw lines, so the loop is
+  what carries those decisions. Still needed: forced CTimer::operator= (u1 plain inline: 225 raw lines) and the CRGBColour ctor3
+  FORCEINLINE opt-in (u2 without: 33). w1 leaf: L 2863 / T 7465 (s3898 second local), 2b-a = -1: SIB unchanged.
+- Lesson: an `if (n > 0)` stand-in for a loop that ends in `break` changes c2 frequencies enough to need inline_depth devices; FableWin's
+  loop removes them.

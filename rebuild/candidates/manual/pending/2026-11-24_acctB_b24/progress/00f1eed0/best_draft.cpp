@@ -1,10 +1,10 @@
 // NScript::CQ_ArenaScript::PlayWave() -- spawn, track and finish one arena wave.
-// Grade: DIFFER(9262v9262) -- one raw byte: SIB at 0x00F1FFBA (retail lea eax,[edi+eax+0x30], ours [eax+edi+0x30]); raw compare (rawcmp.py, jump targets included) clean elsewhere
+// Grade: DIFFER(9262v9262) -- one raw byte: SIB at 0x00F1FFBA (retail lea eax,[edi+eax+0x30], ours [eax+edi+0x30]); raw compare clean elsewhere. B24B9: pragma-free (FableWin gift loop replaces the three inline_depth(0) regions)
 // Leaf: ?PlayWave@CQ_ArenaScript@NScript@@QAEXXZ
 // Flags: (none)
 // Evidence: Game as the landed CQ_ArenaScript siblings spell it (FABLE_RETAIL_CLEVELSCRIPTBASE pointer; byte-neutral v the Ego_r reference); one countdown Conversation and the TRetVoid _Fail_Val returns (Ego_d locals, Codex pass 25); the VC6 for-scope idiom before the includes (FableWin `xor;je;jmp` loop heads, GOTCHAS hand3c; also wraps the STLport loops: after the includes 9374).
-// Inline-budget: three one-statement inline_depth(0) regions (gift cold return, CreatedObject ctor, controller-wait cold return: retail calls the out-of-line cleanup / ctor there), forced CTimer::operator= (as landed CQ_ArenaScript::Main) and the forced three-channel CRGBColour ctor (hdr2 opt-in).
-// Inferred: native float RandAngle division and one gift (TLC revision; FableWin has the NumPresents loop) retain TLC behaviour.
+// Inline-budget: forced CTimer::operator= (as landed CQ_ArenaScript::Main) and the forced three-channel CRGBColour ctor (hdr2 opt-in); no inline_depth regions (B24B9: the FableWin gift loop `for (i < NumPresents) { ...; break; }` gives retail's cold-exit / CreatedObject-ctor decisions by itself).
+// Inferred: native float RandAngle division; gift loop = FableWin 0x03652B43 (for-scope loop over NumPresents ending in `break`, one gift; FableWin's dead statement after the break, Game->EntitySetCutsceneBehaviour(CreatedObject, 2), is left out: VC7.1 emits no code or IL for it).
 #if defined(_MSC_VER) && _MSC_VER < 1400
 #define for                                                                                                  \
     if (0) {                                                                                                 \
@@ -413,32 +413,19 @@ void NScript::CQ_ArenaScript::PlayWave() {
                 return _Fail_Val.Return();
             NumPresents = 5;
         }
-        if (NumPresents > 0) {
+        for (long i = 0; i < NumPresents; ++i) {
 
-#ifdef _MSC_VER
-// Inline-budget: retail shares an out-of-line cleanup at the cold exit.
-#pragma inline_depth(0)
-#endif
             if (T)
                 return _Fail_Val.Return();
-#ifdef _MSC_VER
-#pragma inline_depth()
-#endif
 
             unsigned long random = rand() % pGlobalScriptDef->RewardObjects.size();
-#ifdef _MSC_VER
-// Inline-budget: retail calls this constructor at this source site.
-#pragma inline_depth(0)
-#endif
             CScriptThing CreatedObject;
-#ifdef _MSC_VER
-#pragma inline_depth()
-#endif
             C3DVector random_vector(14.0f, 0.0f, 5.0f);
             float RandAngle = (float)(rand() % 360) * (1.0f / 360.0f);
             random_vector.RotateXY(RandAngle);
             C3DVector spawn_pos = Game->GetThingWithScriptName("ARENA_CentrePoint").GetPos() + random_vector;
             CreatedObject = Game->CreateObject(pGlobalScriptDef->RewardObjects[random], spawn_pos, "");
+            break;
         }
         if (T)
             return _Fail_Val.Return();
@@ -450,15 +437,8 @@ void NScript::CQ_ArenaScript::PlayWave() {
         while (!Game->IsHeroControlledByPlayer()) {
             NSF;
 
-#ifdef _MSC_VER
-// Inline-budget: retail shares an out-of-line cleanup at the cold exit.
-#pragma inline_depth(0)
-#endif
             if (T)
                 return _Fail_Val.Return();
-#ifdef _MSC_VER
-#pragma inline_depth()
-#endif
         }
 
         if (T)

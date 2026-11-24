@@ -1,5 +1,5 @@
 // NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::Main() -- handle artifact collection and skeleton reminders
-// Grade: DIFFER(4509v4507) -- Inline-budget device (diagnostic-grade): inline_depth(0) round the HELMET arm's terminate return makes ~MovieBase called (= retail 0x6E7B80) and fixes the slot order too, but also calls ~CWideScreenMagicPauseEntities there (retail expands PauseAll(false)): 3 hunks (WS call + its spill + eax/edx at 0x00DCA4F4).
+// Grade: DIFFER(4269v4507) -- FableWin text (for-scope prolog on both loops, cut_scene, count): ~MovieBase map = retail; ONLY residue: 3 implicit STB operator= sites (collected_all x2, else x1) at f .7910 sc 74 called (retail expands); forcing those 3 = RELOCATION_MATCH (B24B9)
 // Leaf: ?Main@CSecretPassageSkeleton@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
 // Retail: 0x00DC93F0, 4507 bytes, thiscall.
 // Identity: both original PDB name sets; native entity vtable012DA494 slot1.
@@ -9,7 +9,6 @@
 #define FABLE_RETAIL_CISTHINGALIVE_ORIGINAL_ACCESS
 #define FABLE_RETAIL_CENTITYSCRIPTBASE_ORIGINAL_MEMBERS
 #define FABLE_RETAIL_CPREDICATEBASE_ORIGINAL_MEMBERS
-#define FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY
 #define FABLE_RETAIL_CCHARSTRING_CONCAT_STRING
@@ -85,24 +84,26 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::Ma
             if (IsActiveThreadTerminating()) return _Fail_Val.Return();
         }
         if (IsActiveThreadTerminating()) return _Fail_Val.Return();
-        for (int i=0; i<LAST; ++i) {
-            if (Game.IsObjectInThingsPossession(ParentClass.hero_object[i],Game.GetHero())) {
+        bool cut_scene=false;
+        if (false) {} else for (int count=0; count<LAST; ++count) {
+            if (Game.IsObjectInThingsPossession(ParentClass.hero_object[count],Game.GetHero())) {
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();
-                returned[i]=true;
-                CScriptThing new_item=Game.CreateObjectOnEntity(skeleton_object[i],Me,"");
+                returned[count]=true;
+                CScriptThing new_item=Game.CreateObjectOnEntity(skeleton_object[count],Me,"");
                 Game.SetThingPersistent(new_item,true);
                 Game.EntitySetAlpha(new_item,0.0f,true);
-                Game.TakeObjectFromHero(ParentClass.hero_object[i]);
+                Game.TakeObjectFromHero(ParentClass.hero_object[count]);
                 ParentClass.AddSpawnedFunction(new CSpawnedFunc1<CQ_OpeningGraveyardSecretPassageScript,CScriptThing>(CCharString("ParentClass.")+CCharString("FadeObjectUp"),0,&ParentClass,&CQ_OpeningGraveyardSecretPassageScript::FadeObjectUp,new_item),CCharString(""));
                 if (!first_time) {
                     if (IsActiveThreadTerminating()) return _Fail_Val.Return();
+                    cut_scene=true;
                 }
             }
         }
         collected_all=true;
-        for (int j=0; j<LAST; ++j) {
-            ParentClass.SkeletonStuff[j]=!returned[j];
-            if (!returned[j]) {
+        if (false) {} else for (int count=0; count<LAST; ++count) {
+            ParentClass.SkeletonStuff[count]=!returned[count];
+            if (!returned[count]) {
                 if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                 collected_all=false;
             }
@@ -156,10 +157,7 @@ void NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::Ma
                 RunCutsceneMacro("CS_OPENGRAVE_SKELETON_REMIND_ARMOUR",mymap,0,0,false,true);
             }
             else if (!Game.IsObjectInThingsPossession(ParentClass.hero_object[HELMET],Game.GetHero()) && !returned[HELMET]) {
-                if (IsActiveThreadTerminating())
-#pragma inline_depth(0)
-                    return _Fail_Val.Return();
-#pragma inline_depth()
+                if (IsActiveThreadTerminating()) return _Fail_Val.Return();
                 RunCutsceneMacro("CS_OPENGRAVE_SKELETON_REMIND_HELMET",mymap,0,0,false,true);
             }
             Game.FixMovieSequenceCamera(false);

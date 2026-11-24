@@ -34,3 +34,15 @@ MovieBase-v-~CTimer conflict. Not worked further by B24B6 (context).
   S15 + 31 cold ~CTimer decisions forced = RELOCATION_MATCH. Counterexample in the same object: 0x00DC93F0 retail calls ~MovieBase.
   No independent residue exists. differ/ = pragma-free stock form (4544v4752, 117 hunks); r0 kept as b8/differ_prev_r0_autoinline.cpp.
 - Tried, no effect: forceinline GROBase dtor (g1), non-inline ~CTimer under S15 (n1). Row waits for the MovieBase-text answer.
+## B24B9 (2026-11-24) -- FableWin read (debug build), no decision moves
+- FableWin Main 0x036979E0 (listing ../00dc93f0/b9/fw_036979e0.txt): no asserts. Main loop opens with the VC6 for-scope prolog
+  (0x03697BB3 `xor ecx,ecx; je; jmp 0x03699C8E`) and has NO condition test: FableWin text = `if (false) {} else for (;; Game.NewScriptFrame())`.
+  b9/m1.cpp (that spelling) = same bytes as differ/ (117 hunks, stock); b9/m0.cpp (`for (;;NSF)` without the prolog) = 4720 b, frequencies x2.
+  So m1 is the evidenced loop spelling (keep it); the `!false` condition of differ/ is not in FableWin.
+- /Od call sequence (fwsize obj, b9/_fwsize; ../00dc93f0/b9/objcalls.py) v FableWin: identical direct-call counts (38 Return / 38 terminate
+  checks / 21 ~MovieBase / 36 ~CTimer ...): no missing statement, no assert, no local-static. FableWin text does not explain the 21
+  ~MovieBase decisions: they sit at f .0001..0166 (sc 5575+), so no frequency or 1-point cost change can expand them in regime 0
+  (g <= 3000, pen 0). FableWin destructor texts = ours (../SHARED_FORM.md B24B9). Row state unchanged (decision-set proof B24B8).
+- B24B9 calls + conditional-jump alignment (../00dc93f0/b9/cjalign.py, /Od obj of b9/m1.cpp v FableWin): 473 = 473 events, 97 = 97 jcc, no difference: Main's CFG is FableWin's.
+- B24B9 swap check: differ/00d0d910_pre_b9.cpp v b9/m1.cpp (= new differ/) compiled at stock: leaf bytes RAW-EQUAL (4544, b9/old.obj v
+  b9/new.obj). The loop spelling is inferred from FableWin (later VC10 build): structure evidence, not proof of retail text.
