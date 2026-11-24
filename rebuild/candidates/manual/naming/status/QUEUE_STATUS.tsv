@@ -1079,7 +1079,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1085	580	00e24760	??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z	closed	
 1086	580	00ed7a40	?WatchForCompletedQuests@CV_TalentlessBardScript@NScript@@QAEXXZ	closed	
 1087	580	009d2a40	??0?$vector@EV?$allocator@E@std@@@std@@QAE@IABEABV?$allocator@E@1@@Z	partial	??0?$vector@E || ??0CByteArray@@QAE@KABEABUCRetailAllocator@@@Z || ??0CByteArray@@QAE@KABEABUSAllocator@@@Z
-1088	580	00f3a2e0	?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	partial	Compress
+1088	580	00f3a2e0	?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	closed	
 1089	580	00f36ba0	??0CNoise@NFractal@@QAE@XZ	closed	
 1090	580	00f35e00	?InitPerlinNoise@CNoise@NFractal@@AAEXXZ	closed	
 1091	580	00f3a710	?TestRedundantBitStrip@CRangeCompressor@@AAEXABV?$CArray@K@@AAV2@AAUCScriptEntry@1@J@Z	closed	
@@ -3365,7 +3365,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3853	c705	00a242c0	?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z	closed	
 3854	c705	00861d00	?OnDeactivate@CModeStandBase@@UAEXXZ	partial	?BaseActivate@CModeChargeForcePush@@QAEXXZ || ?CMode_Base_OnActivate@@YIXPAX@Z || ?DragonRearUpBase_861d00@@YIXPAUCModeDragonRearUp@@@Z || ?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z || ?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ || ?StandDeactivate@ModeScreamer@@QAEXXZ
 3855	c705	00833a10	?SuspendAI@CThingAICreature@@QAEX_NPAX@Z	closed	
-3856	c705	008dba90	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	partial	KillBeamEffect
+3856	c705	008dba90	?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	closed	
 3857	c705	00aac2e0	?Shutdown@CSoundEmitterLH@@UAEXXZ	open	?StopAllSamples@CSoundEmitterLH@@UAEXXZ
 3858	c707	009fcb60	?InitialiseAsSurfaceSection@CGraphicFrame@@QAE_NABV?$CCountedPointer@VCTexture@@@@MMJJ_N1@Z	closed	
 3859	c707	008d68a0	?OnActivate@CModeDrained@NCreatureMode@@UAEXXZ	closed	
@@ -10644,7 +10644,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13484	nf323	00857d10	?GetWeaponTrailUsedInStrikeAction@CCombatActionBase@@MBEPAVCTCWeaponTrail@@AAJ@Z	open	GetWeaponTrailUsedInStrikeAction
 13485	nf323	008546a0	?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ	open	?CCreatureAction_SpiritReturnToHero_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z
 13486	nf323	00856240	?InitialiseActionMovement@CCombatActionBase@@MAEXXZ	no_binding	
-13487	nf323	00856170	?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	open	?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ
+13487	nf323	00856170	?IsActionReadyForInterruption@CCombatActionBase@@UBE_NXZ	closed	
 13488	nf323	00856190	?IsActionReadyForInterruptionByMovement@CCombatActionBase@@UBE_NABVC3DVector@@@Z	no_binding	
 13489	nf323	008562d0	?IsBlockCounter@CCombatActionBase@@MBE_NXZ	no_binding	
 13490	nf323	008e6e20	?IsBlockable@CCreatureAction_CastStrengthMultiStrikeProper@@UBE_NXZ	no_binding	
@@ -10677,7 +10677,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13517	nf323	01276c2c	??_7CCreatureAction_GetUpFromSitting@@6B@	partial	??_7CCreatureAction_StandUp@@6B@
 13518	nF325	00a0d4f0	?AddInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z	closed	
 13519	nF325	0091d820	?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	partial	?Initialise@CAIStateGroup_EnemyCreatureBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z || ?base_init@@YIXPAUC@@@Z
-13520	nF325	0091dd30	?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ	open	?IsRunnable@CAIStateGroup_EnemyCreatureBase@@QAE_NXZ
+13520	nF325	0091dd30	?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ	closed	
 13521	nF325	00b8fda0	?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABVCEnginePrimitive@@K@Z	no_binding	
 13522	nF325	00b8fdb0	?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z	no_binding	
 13523	nF327	0084c9a0	??0CCreatureAction_PickUpThingAtTable@@QAE@ABV0@@Z	closed	
@@ -10709,3 +10709,20 @@ line	tag	address	correct_symbol	status	other_spellings
 13549	acctB_b24 PRIORITY	013b8628	?GPresentImmidiate@@3_NA	open	?g_PresentationInterval@@3_NA
 13550	acctB_b24 PRIORITY	013ca79c	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	partial	?g_BankFileManager@@3UCBankFileManager@@A || ?g_BankFileManager@@3VCBankFileManager@@A || ?g_CStatic_009a7ac0_013ca79c@@3UCStatic_009a7ac0@@A || ?g_bankFileManager@@3UCBankFileManager@@A
 13551	nf328 PRIORITY	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ || ?BaseOnDie@CTCInventoryItem@@QAEXXZ || ?OnDie@CInventoryItemBase@@QAEXXZ
+13552	nf332	004d2c12	?Alloc@CTCActionUseBuyOrSteal@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13553	nf332	004dc004	?Alloc@CTCActionUseReadable@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13554	nf332	004d92e8	?Alloc@CTCAmbientBird@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13555	nf332	004d44b8	?Alloc@CTCAnimationComplex@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13556	nf332	004d5600	?Alloc@CTCDrainLife@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13557	nf332	004d3887	?Alloc@CTCExplodingObject@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13558	nf332	004d624f	?Alloc@CTCFadeOutAndIn@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13559	nf332	004d5723	?Alloc@CTCFireballSpell@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13560	nf332	004d5c47	?Alloc@CTCFish@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13561	nf332	004d4d1b	?Alloc@CTCForcePushPower@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13562	nf332	004d4b12	?Alloc@CTCForcePushed@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13563	nf332	004d5660	?Alloc@CTCGhostSword@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13564	nf332	004d5630	?Alloc@CTCHealLife@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13565	nf332	004dc5c7	?Alloc@CTCInventoryItem@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13566	nf332	004d2a44	?Alloc@CTCRandomAppearanceMorph@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13567	nf332	004d4bde	?Alloc@CTCSummonSpell@@SIPAVCTCBase@@AAVCThing@@@Z	closed	
+13568	acctB_b24 PRIORITY	00e95380	?Return@TRetVoid@@QAEXXZ	open	?M@C00e95380@@QAEXXZ
