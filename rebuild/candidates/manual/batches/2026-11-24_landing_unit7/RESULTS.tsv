@@ -1,0 +1,5 @@
+address	verdict	old	new	reason
+005621b0	ACCEPT	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00564570	ACCEPT	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 005621b0
+0082ae80	ACCEPT	?InitialiseTraderMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseTraderMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0082b750	ACCEPT	?InitialiseTraderMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseTraderMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082ae80

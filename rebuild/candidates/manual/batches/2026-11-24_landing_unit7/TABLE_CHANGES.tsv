@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ -> ?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	005621b0	00564570	unit_fix: the row and its callers moved to the PDB spelling together
+replace	?InitialiseTraderMarkers@CMiniMapDisplay@@QAEXXZ -> ?InitialiseTraderMarkers@CMiniMapDisplay@@IAEXXZ	0082ae80	0082b750	unit_fix: the row and its callers moved to the PDB spelling together
