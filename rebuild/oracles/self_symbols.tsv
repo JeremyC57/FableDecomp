@@ -2218,7 +2218,7 @@ address	symbol	status	leaf_given
 004b85d0	?TransferBinaryIn_004b85d0@@YGXPAVCMemoryDataInputStream@@PAJ@Z	RELOCATION_MATCH	TransferBinaryIn_004b85d0
 004b86b0	??1?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$pair@VCCharString
 004b8770	?erase@?$vector@VCCharString@@@std@@QAEPAVCCharString@@PAV3@@Z	RELOCATION_MATCH	erase
-004b87d0	?SortTreeRecursively@@YIHPAUTree@@@Z	MATCH	SortTreeRecursively
+004b87d0	?size@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QBEIXZ	MATCH	?size@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QBEIXZ
 004b87f0	?erase@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QAE?AU?$_List_iterator@VCBoast@CQuestManager@@U?$_Nonconst_traits@VCBoast@CQuestManager@@@std@@@2@U32@@Z	RELOCATION_MATCH	?erase@?$list@VCBoast@CQuestManager@@
 004b88c0	??0list_T_0x8_004b88c0@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0list_T_0x8_004b88c0@std@@
 004b88e0	??0list_T_0x8_004b88e0@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0list_T_0x8_004b88e0@std@@
@@ -7636,7 +7636,7 @@ address	symbol	status	leaf_given
 006cbe30	?AssignTarget_006cbe30@CClass_006cbe30@@QAEXPAVCBaseObject@@@Z	RELOCATION_MATCH	SetThingToIgnore
 006cc6b0	?OnCreate@CTCCreatureNavigation@@UAEXXZ	RELOCATION_MATCH	OnCreate
 006ccf70	??8CNavigationInput@@QBE_NABV0@@Z	RELOCATION_MATCH	??8CNavigationInput
-006cd240	?SortTreeRecursively@@YIHPAUTree@@@Z	MATCH	SortTreeRecursively
+006cd240	?size@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QBEIXZ	MATCH	?size@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QBEIXZ
 006cd3b0	??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z	RELOCATION_MATCH	??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z
 006cd540	?GetClassTypeName@CTCCreatureNavigation_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
 006cd7b0	?GetPNavigatorObstacles@CGroundNavigatorExternalInterface@@QAEPAXXZ	RELOCATION_MATCH	GetPNavigatorObstacles
@@ -22462,7 +22462,7 @@ address	symbol	status	leaf_given
 00da0c40	?RunSpawnPointControl@CQ_MinionCampScript@NScript@@QAEXXZ	RELOCATION_MATCH	RunSpawnPointControl
 00da0d90	?FindFurthestSpawnPoint@CQ_MinionCampScript@NScript@@QAE_NABV?$list@VCScriptThing@@@std@@AAPBVCScriptThing@@AAM@Z	RELOCATION_MATCH	?FindFurthestSpawnPoint@
 00da0e40	?GetRandomSpawnPoint@CQ_MinionCampScript@NScript@@QAEXAAUCRetailList_CScriptThing@@AAVCScriptThing@@@Z	RELOCATION_MATCH	GetRandomSpawnPoint
-00da0ed0	?SortTreeRecursively@@YIHPAUTree@@@Z	MATCH	SortTreeRecursively
+00da0ed0	?size@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ	MATCH	?size@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ
 00da2490	?PauseChantTimer@CQ_MinionCampScript@NScript@@QAEXXZ	RELOCATION_MATCH	PauseChantTimer
 00da2860	?CheckBriarHit@CQ_MinionCampScript@NScript@@QAEXVCScriptThing@@@Z	RELOCATION_MATCH	CheckBriarHit
 00da29b0	?Fire_CDispatcher_00da29b0@CDispatcher_00da29b0@@QAEXXZ	RELOCATION_MATCH	Fire_CDispatcher_00da29b0

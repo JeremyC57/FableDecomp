@@ -1,0 +1,12 @@
+addr       parity           behav  name
+004b87d0   WARN STANDIN_LEAF ?size@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QBEIXZ (catalog CGuiControlTreePane::SortTreeRecursively; names another function)
+004b87d0   MATCH            PASS   SortTreeRecursively
+006cd240   WARN STANDIN_LEAF ?size@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QBEIXZ (catalog CGuiControlTreePane::SortTreeRecursively; names another function)
+006cd240   MATCH            PASS   SortTreeRecursively
+00da0ed0   WARN STANDIN_LEAF ?size@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ (catalog CGuiControlTreePane::SortTreeRecursively; names another function)
+00da0ed0   MATCH            PASS   SortTreeRecursively
+
+WINS: 3
+  004b87d0 MATCH CGuiControlTreePane::?size@?$list@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QBEIXZ
+  006cd240 MATCH CGuiControlTreePane::?size@?$list@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QBEIXZ
+  00da0ed0 MATCH CGuiControlTreePane::?size@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ
