@@ -55,7 +55,7 @@ public:
 class CEngineStaticMapFileBlockManager {
 public:
     void ReleaseRequest(long request);             // 0x00BE0400
-    void RemoveFinished();                         // 0x00BE04F0 (manifest "BankFileList_RemoveFinished")
+    void DeleteUnusedBlocks();                         // 0x00BE04F0 (manifest "BankFileList_RemoveFinished")
 };
 
 struct CMapFileHeader {                            // 20 bytes
@@ -100,6 +100,6 @@ void CEngineLandscapeMap::OnMapVisibilityChanged(bool visible)
             PatchTree = 0;
         }
         if (FileBlockManager)
-            FileBlockManager->RemoveFinished();
+            FileBlockManager->DeleteUnusedBlocks();
     }
 }

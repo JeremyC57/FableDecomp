@@ -1,0 +1,10 @@
+address	verdict	old	new	reason
+00b84190	SKIP	??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	??0CEngineClothSimulationAnimatedMesh@@QAE@PBVC3DMeshInfo@@KPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	names differ beyond the access / cv letters
+006bfb90	ACCEPT	?GetIsAvailableForResidency@CThingBuilding@@QBE_NXZ	?GetIsAvailableForResidency@CThingBuilding@@QAE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082e0e0
+0079eaa0	ACCEPT	?StopSound@CTCPhysicalShieldSpell@@QAEXK@Z	?StopSound@CTCPhysicalShieldSpell@@IAEXK@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0079ddb0
+00f349f0	ACCEPT	?TransferVectorOfSubComponentsLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009bc120
+00f351f0	ACCEPT	?TransferVectorOfSubComponentsLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009bc120
+0099b860	ACCEPT	?UnassignString@CWideString@@QAEXXZ	?UnassignString@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b4d0
+0099b770	ACCEPT	?UnassignString@CWideString@@QAEXXZ	?UnassignString@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b4d0
+0099bff0	ACCEPT	?UnassignString@CWideString@@QAEXXZ	?UnassignString@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b4d0
+0099bf30	ACCEPT	?UnassignString@CWideString@@QAEXXZ	?UnassignString@CWideString@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0099b4d0

@@ -1,0 +1,8 @@
+action	symbol	target	witness	note
+replace	?Get2DDistance@@YIMABVC2DVector@@0@Z -> ?GFGet2DBoxDistance@@YIMABVC2DVector@@0@Z	009e1ad0	00713ee0	access_fix --binders: the caller now references the PDB spelling
+replace	?GetDistanceTo@C2DBoxI@@QBEJABVC2DCoordI@@@Z -> ?GetDistance@C2DBoxI@@QBEJABVC2DCoordI@@@Z	00a3a180	004fcb30	access_fix --binders: the caller now references the PDB spelling
+replace	?GetFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ -> ?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	00a99110	00a99610	access_fix --binders: the caller now references the PDB spelling
+replace	?ClearParameters@C3DSkeletalMorph@@QAEXXZ -> ?Reset@C3DSkeletalMorph@@QAEXXZ	00a45410	007864c0	access_fix --binders: the caller now references the PDB spelling
+replace	?WriteUShort@CDataOutputStream@@QAEXG@Z -> ?WriteUWORD@CDataOutputStream@@QAEXG@Z	00993e80	00bfc770	access_fix --binders: the caller now references the PDB spelling
+replace	?RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ -> ?DeleteUnusedBlocks@CEngineStaticMapFileBlockManager@@QAEXXZ	00be04f0	00bdc3c0	access_fix --binders: the caller now references the PDB spelling
+replace	?EndDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z -> ?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	006c5920	007baf00	access_fix --binders: the caller now references the PDB spelling

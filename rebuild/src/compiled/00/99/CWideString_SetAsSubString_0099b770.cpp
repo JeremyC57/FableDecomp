@@ -30,6 +30,7 @@ class CWideString
 {
 public:
     CWideStringData* PStringData;                       // +0x00
+    protected:
     void UnassignString()                               // out-of-line copy 0x0099B4D0
     {
         CWideStringData* data = PStringData;
@@ -39,6 +40,7 @@ public:
             PStringData = 0;
         }
     }
+    public:
     CWideStringData* AllocStringData(const wchar16* text, long length);   // 0x0099B3C0
     void SetAsSubString(const wchar16* text, long length);
 };

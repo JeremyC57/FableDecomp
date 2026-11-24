@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00b236b0   MATCH            PASS   GetScratchBufferTextureManager
+00b236c0   MATCH            PASS   DeallocateShadowBuffer
+00b236d0   MATCH            PASS   ReallocateShadowBuffer
+00b236f0   MATCH            PASS   Is3DSceneRenderingEnabled
+00b23710   MATCH            PASS   Is2DSceneRenderingEnabled
+
+WINS: 5
+  00b236b0 MATCH CIEngine::?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ
+  00b236c0 MATCH CIEngine::?DeallocateShadowBuffer@CIEngine@@UAE_NXZ
+  00b236d0 MATCH CIEngine::?ReallocateShadowBuffer@CIEngine@@UAEXXZ
+  00b236f0 MATCH CIEngine::?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ
+  00b23710 MATCH CIEngine::?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ

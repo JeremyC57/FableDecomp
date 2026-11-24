@@ -28,7 +28,7 @@ class CTCBase;
 #include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 FABLE_FORCEINLINE C3DVector Offset(const C3DVector& pos, const C3DVector& delta) { return C3DVector(delta.X + pos.X, delta.Y + pos.Y, delta.Z + pos.Z); }
-float __fastcall Get2DDistance(const C2DVector& a, const C2DVector& b);   // 0x009E1AD0
+float __fastcall GFGet2DBoxDistance(const C2DVector& a, const C2DVector& b);   // 0x009E1AD0
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -196,7 +196,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
         const C3DVector& mp = PTCScript->ParentThing->PPhysics->Position;
         myPos.X = mp.X;
         myPos.Y = mp.Y;
-        distance = Get2DDistance(myPos, targetPos);
+        distance = GFGet2DBoxDistance(myPos, targetPos);
     }
     float targetSpeed = PTargetThing.GetThing()->GetCurrentSpeed();
     if (targetSpeed == 0.0f) {

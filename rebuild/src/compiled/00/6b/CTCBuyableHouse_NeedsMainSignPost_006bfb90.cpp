@@ -82,7 +82,7 @@ public:
 };
 class CThingBuilding : public CThing {
 public:
-    bool GetIsAvailableForResidency() const;    // 0x0082E0E0
+    bool GetIsAvailableForResidency();    // 0x0082E0E0
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

@@ -26,6 +26,7 @@ public:
 protected:
     CWideStringData* AllocStringData(const unsigned short* text, long length);   // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
 public:
+    protected:
     void UnassignString()                     // 0x0099B4D0, inlined
     {
         CWideStringData* data = PStringData;
@@ -41,6 +42,7 @@ public:
             PStringData = 0;
         }
     }
+    public:
     const CWideString& operator=(unsigned short character);
 };
 

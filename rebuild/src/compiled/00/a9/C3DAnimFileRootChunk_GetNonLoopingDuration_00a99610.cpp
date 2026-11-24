@@ -1,7 +1,7 @@
 // C3DAnimFileRootChunk::GetNonLoopingDuration() const -- (frame count - 1) / samples per second of the first object's first sequence
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A99610, length 192 bytes.
 // Ego_r.pdb: ?GetNonLoopingDuration@C3DAnimFileRootChunk@@QBEMXZ.
-// Callees: C3DAnimFileRootChunk::GetFirstObject @ 0x00A99110 (modelled above; FindFirstSubChunkOfType("AOBJ"), by value; catalog
+// Callees: C3DAnimFileRootChunk::FindFirstObject @ 0x00A99110 (modelled above; FindFirstSubChunkOfType("AOBJ"), by value; catalog
 // "C3DMeshFileSubMeshChunk::FindFirstBone" is propagated), C3DAnimFileObjectChunk::GetFirstSequence @ 0x00AB03D0
 // (FindFirstSubChunkOfType("ASEQ"), by value; same propagated label), operator delete @ 0x00BFE9BC.
 // Shape: two by-value counted-pointer locals; the frame count is the unsigned CArray<CMatrix3x4> size (/48, the
@@ -61,15 +61,15 @@ class CChunkedFileSuperChunk { public:
 };
 
 class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:
-    CCountedPointer<const C3DAnimFileObjectChunk> GetFirstObject() const;       // 0x00A99110
+    CCountedPointer<const C3DAnimFileObjectChunk> FindFirstObject() const;       // 0x00A99110
     float GetNonLoopingDuration() const;
 };
 
-// GetFirstObject shares the TU (0x00A99110, defined above as in retail): VC7.1 then knows the object
+// FindFirstObject shares the TU (0x00A99110, defined above as in retail): VC7.1 then knows the object
 // pointer's address does not escape (register-form release, its zero stores dropped), while the
 // sequence pointer filled by the other TU's GetFirstSequence keeps the re-read release and zero stores.
 #pragma auto_inline(off)
-CCountedPointer<const C3DAnimFileObjectChunk> C3DAnimFileRootChunk::GetFirstObject() const
+CCountedPointer<const C3DAnimFileObjectChunk> C3DAnimFileRootChunk::FindFirstObject() const
 {
     CCountedPointer<const C3DAnimFileObjectChunk> object(FindFirstSubChunkOfType("AOBJ"), CCountedPointer<const C3DAnimFileObjectChunk>::CastTag());
     return object;
@@ -78,7 +78,7 @@ CCountedPointer<const C3DAnimFileObjectChunk> C3DAnimFileRootChunk::GetFirstObje
 
 float C3DAnimFileRootChunk::GetNonLoopingDuration() const
 {
-    CCountedPointer<const C3DAnimFileObjectChunk> object = GetFirstObject();
+    CCountedPointer<const C3DAnimFileObjectChunk> object = FindFirstObject();
     CCountedPointer<const C3DAnimFileSequenceChunk> sequence = object->FindFirstSequence();
     float duration = ((float)sequence->Matrices.size() - 1.0f) / sequence->SamplesPerSecond;
     return duration;

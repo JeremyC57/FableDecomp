@@ -7223,7 +7223,7 @@ _helper_9f9020	009f9020	009a73b0
 ??_7CChunkedFileRawDataChunk@@6B@	0129e4b8	00aa8d80
 ??_7CParticleSimulation@@6B@	0129f0c4	00ae6070
 ?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXJ@Z	00be0400	00bdc3c0
-?RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ	00be04f0	00bdc3c0
+?DeleteUnusedBlocks@CEngineStaticMapFileBlockManager@@QAEXXZ	00be04f0	00bdc3c0
 ?Cleanup@Obj@@QAEXXZ	00c1e850	00c0eb20
 ??1CNavButton_00c0ece0@@QAE@XZ	00c10320	00c0ece0
 ??1CNode_00c0ece0@@QAE@XZ	00c19250	00c0ece0
@@ -8182,7 +8182,7 @@ _wcsncmp	00bfeb0a	004071c0
 ?g_AppearanceCategoryPriority@@3QBJB	0125ed00	006ced50
 ?Activate@CLightningBeam@@QAEXXZ	007a1380	007a16f0
 ?SetAsPickUpNewLockTarget@CTCTargetingPlayer@@QAEXXZ	008023a0	007a16f0
-?EndDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z	006c5920	007baf00
+?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	006c5920	007baf00
 ?PeekThingSearchTools@CThingCreatureBase@@QBEABVCThingSearchTools@@XZ	004c7a60	00834760
 ?UpdateMovement@CThingAICreature@@QAEXM@Z	008326a0	00834760
 ?g_CombatStressTestEnabled@@3_NA	013b86d5	00834760
@@ -14752,7 +14752,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z	005223f0	004fbf60
 ?ClipTo@C2DBoxI@@QAEXABV1@@Z	0049c810	004fc4d0
 ?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXABVCRegion@@@Z	0082ba00	004fc8a0
-?GetDistanceTo@C2DBoxI@@QBEJABVC2DCoordI@@@Z	00a3a180	004fcb30
+?GetDistance@C2DBoxI@@QBEJABVC2DCoordI@@@Z	00a3a180	004fcb30
 ?IsPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z	0081f3d0	004fcbd0
 ?IsCameraPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z	0081f460	004fcce0
 ?ApplyScriptedMapBrush@CMap@@QAEXABVCCharString@@J@Z	00820b80	004fe510
@@ -17289,7 +17289,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?BaseActivate@CModeHitByEpicSpell@@QAEXXZ	008621a0	008d6a80
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	0094f090
 ??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z	004a96f0	0095e790
-?WriteUShort@CDataOutputStream@@QAEXG@Z	00993e80	00bfc770
+?WriteUWORD@CDataOutputStream@@QAEXG@Z	00993e80	00bfc770
 ?Clone@CDiskFileWin32@@UBEPAVCAFile@@XZ	0099ae00	00a5b260
 ?AllocateAligned@CMemoryAllocator@@SIPAXKJ@Z	009f2be0	00a5c670
 ?TransferB_00455712@CPersistContext@@QAEXPAX@Z	00455712	004556ce
@@ -32079,7 +32079,7 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?IsAffectedByBulletTime@CThing@@QBE_NXZ	004c9920	006e0be0
 ?RemoveDependentThing@CTCDependentThings@@QAEXPAVCThing@@@Z	0071a940	006e0be0
 ?Init@CombatDialogueManager@@QAEXXZ	008af2b0	006e8300
-?Get2DDistance@@YIMABVC2DVector@@0@Z	009e1ad0	00713ee0
+?GFGet2DBoxDistance@@YIMABVC2DVector@@0@Z	009e1ad0	00713ee0
 ?GetCurrentSpeed@CThing@@QBEMXZ	00661cd0	00713ee0
 ?GetSneakSpeedTowards@CThing@@QAEMABVC3DVector@@@Z	00664cb0	00713ee0
 ?SetNavigationTarget@CTCCreatureNavigation@@QAEXABVCNavigationInput@@@Z	006cb960	00713ee0
@@ -33573,7 +33573,7 @@ __imp__recvfrom@24	01440518	008f9320
 ?GetNumberOfAttackersOverMaximum@CTCStealth@@ABEJPAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00747890	00747b00
 ?_M_clear@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@IAEXXZ	004ac1d0	0077e580
 ??0C3DSkeletalMorphParameter@@QAE@PAVC3DSkeletalMorphTarget@@@Z	00a455a0	007864c0
-?ClearParameters@C3DSkeletalMorph@@QAEXXZ	00a45410	007864c0
+?Reset@C3DSkeletalMorph@@QAEXXZ	00a45410	007864c0
 ?SetCurrentValue@C3DSkeletalMorphParameter@@QAEXM@Z	00a45370	007864c0
 ??_7CTCBetting@@6B@	01270624	007e57c0
 ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z	007f0300	007f03d0
@@ -37341,7 +37341,7 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?GetMesh@C3DMeshInfo@@QBE_NAAUCMeshPointer@@KK@Z	00a25e70	00b82100
 ?SetupSimulation@CParticleProgram@@QBE_NAAVCParticleSimulation@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@AAVCMovableResourceMemoryPool@@ABVCParticleContext@@@Z	00ae29d0	00b82100
 ?SimulationStep@CParticleProgram@@QBEXAAVCParticleSimulation@@ABVCParticleContext@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@PBVC3DVector@@ABVC3DMesh2@@@Z	00ae2d20	00b82100
-?GetFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	00a99110	00a99610
+?FindFirstObject@C3DAnimFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileObjectChunk@@@@XZ	00a99110	00a99610
 ?SetMarriageState@CTCHeroStats@@QAEXPAVCThing@@J@Z	0057bc6e	006d0180
 ?IsTurncoatable@CTCTurncoat@@QAE_NXZ	007c7870	0072b160
 ?SetPTarget@CTCTurncoatSpell@@QAEXPAVCThingCreatureBase@@@Z	007c6940	0072b160

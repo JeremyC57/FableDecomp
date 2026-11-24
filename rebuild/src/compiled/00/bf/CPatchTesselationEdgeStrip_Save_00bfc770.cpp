@@ -1,13 +1,13 @@
 // CPatchTesselationEdgeStrip::Save(CDataOutputStream* stream) -- write StartPos and Size (words) and the Vertical flag, then save the four vertex arrays through the SaveVerts<T> member template
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFC770, length 102 bytes.
-// Callees: CDataOutputStream::WriteUShort @ 0x00993E80 (x2), WriteBool @ 0x00993E30; SaveVerts<CVertex> @ 0x00BFCF00,
+// Callees: CDataOutputStream::WriteUWORD @ 0x00993E80 (x2), WriteBool @ 0x00993E30; SaveVerts<CVertex> @ 0x00BFCF00,
 // SaveVerts<CFanBaseVertex> @ 0x00BFCF90, SaveVerts<CWaterVertex> @ 0x00BFD020, SaveVerts<CWaterFanBaseVertex> @ 0x00BFD0B0
 // (the catalog gives all four the CFanBaseVertex name; they are the four instantiations in member order).
 // Layout: Ego_r.pdb CPatchTesselationEdgeStrip (0x2c bytes, vtable 0x012A8318; same model as the landed Reset 0x00BFC3B0).
 // Shape: the stream kept in edi; the words are zero-extended with `xor eax,eax ; mov ax,[esi+4]`, the bool with
 // `xor edx,edx ; mov dl,[esi+29h]`; each SaveVerts is a __fastcall member on the strip taking (array*, stream); `ret 4`.
 class CDataOutputStream { public:
-    void WriteUShort(unsigned short value);        // 0x00993E80
+    void WriteUWORD(unsigned short value);        // 0x00993E80
 public:
     void WriteEBOOL(bool);   // 0x00993E30
 };
@@ -38,8 +38,8 @@ class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (
 
 void CPatchTesselationEdgeStrip::Save(CDataOutputStream* stream)
 {
-    stream->WriteUShort(StartPos);
-    stream->WriteUShort(Size);
+    stream->WriteUWORD(StartPos);
+    stream->WriteUWORD(Size);
     stream->WriteEBOOL(Vertical);
     SaveVerts(&Verts, stream);
     SaveVerts(&FanBaseVerts, stream);

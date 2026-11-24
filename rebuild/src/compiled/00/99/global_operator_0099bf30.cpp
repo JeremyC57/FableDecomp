@@ -86,7 +86,10 @@ public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     const CWideString& operator+=(const wchar16* text);         // 0x0099B940
     const wchar16* GetText() const { return PStringData == 0 ? g_EmptyWideString : PStringData->Data._M_start; }
-    void UnassignString();                              // 0x0099B4D0
+    protected:
+    void UnassignString();
+    public:
+                              // 0x0099B4D0
     protected:
     void MakeOwnCopyOfData();
     public:
