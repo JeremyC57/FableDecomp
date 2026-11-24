@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0082b520   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0082b520   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082b520   WARN RELOC_NAME: ?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z -> 0082a500 labelled 'CMiniMapDisplay::AddAutoMarker'
+0082b520   RELOCATION_MATCH PASS   InitialiseAttractionMarkers
+0082b750   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay (engine/CMiniMapDisplay.h)
+0082b750   RELOCATION_MATCH PASS   UpdateMarkersNow
+
+WINS: 2
+  0082b520 RELOCATION_MATCH CMiniMapDisplay::?InitialiseAttractionMarkers@CMiniMapDisplay@@IAEXXZ
+  0082b750 RELOCATION_MATCH CMiniMapDisplay::UpdateMarkersNow

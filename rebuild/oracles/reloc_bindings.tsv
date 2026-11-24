@@ -3072,7 +3072,7 @@ __CxxThrowException@8	00bfeb84	0081e960
 ??0CEnginePrimitiveHandleVector@@QAE@K@Z	00485d30	0082a460
 ??0CRegionMinimap@@QAE@XZ	0066ccc0	0082a460
 ??_7CMiniMapDisplay@@6B@	01231768	0082a460
-?InitialiseAttractionMarkers@CMiniMapDisplay@@QAEXXZ	0082b520	0082b750
+?InitialiseAttractionMarkers@CMiniMapDisplay@@IAEXXZ	0082b520	0082b750
 ?InitialiseDemonDoorMarkers@CMiniMapDisplay@@IAEXXZ	0082add0	0082b750
 ?InitialiseEnemyMarkers@CMiniMapDisplay@@QAEXXZ	0082b630	0082b750
 ?InitialiseHouseMarkers@CMiniMapDisplay@@IAEXXZ	0082acd0	0082b750

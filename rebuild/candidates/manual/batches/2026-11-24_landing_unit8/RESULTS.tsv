@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+0082b520	ACCEPT	?InitialiseAttractionMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseAttractionMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0082b750	ACCEPT	?InitialiseAttractionMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseAttractionMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082b520
