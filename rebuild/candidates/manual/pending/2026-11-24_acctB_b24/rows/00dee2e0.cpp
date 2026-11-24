@@ -44,13 +44,7 @@
 #include "engine/EHeroAbility.h"
 #include "engine/EMusicSetType.h"
 template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();   // 0x006E7AB0
-#ifdef _MSC_VER
-#pragma inline_depth(0)
-#endif
 inline NScript::CIsThingAlive::~CIsThingAlive() {}
-#ifdef _MSC_VER
-#pragma inline_depth()
-#endif
 #ifdef _MSC_VER
 #pragma inline_depth(0)
 #endif

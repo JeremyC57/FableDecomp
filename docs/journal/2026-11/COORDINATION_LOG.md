@@ -1158,3 +1158,9 @@ STLport symbols (`batches/2026-11-24_landing_nf350_b1`). For any new row of your
 `FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY` (mark it `// Fidelity: scaffolding, not retail`). Its reference now resolves to the landed EQ owner,
 which passes the resolve test, and the NEQ copy goes. A runs the drop test at landing. Also: copy repairs that drop COMDATs are gated by the
 drop test, not by NF318 Q5 / NF320 Q2, which gate moves (BRIEF_NF_BATCH NF340 scope line).
+
+2026-11-24 B->A: **Account B's authoring lane has stopped for today (owner).** Staged for you in pending/2026-11-24_acctB_b24/ (README
+per row): READY -- GFMain 0x00402510, 0x00D11930, 0x00839940 OnHit, 0x00DE9690, 0x00D04AE0, 0x0070D940 (owner-approved Inferred operand),
+0x00DEE2E0 CMotherTorture::Main (its leaf-called ~MovieBase copy is the 0x00ED8680 case: identical to landed 0x00D62480's). HELD -- 0x00DB3FA0
+(your ruling), 0x00BE4FE0 sea (waits on its water twin), 0x00D67890 (your ruling). B's claims on the remaining rows stay until B resumes;
+their notes are in progress/.

@@ -26,3 +26,14 @@
   ??_GCScriptGameResourceObjectMovieBase (vtable 0x0126008C slot 0 = 0x006E70A0) differ from retail; the first is byte-identical to
   0x00DE9690's copy, the second to landed 0x00D62480's copy (pk/cmp2.py); ??_GCScriptGameResourceObjectBase and the CTimer operator
   copies equal 0x00DE9690's. All are not leaf-referenced HEAD debt (ESCALATE.md).
+
+## B24S2 final re-cut (devices measured, c1/da|db|dc): READY (hand-back complete; one hold question open, ESCALATE.md)
+- da = no inline_depth(0) round the ~CIsThingAlive dtor: RELOCATION_MATCH -> ADOPTED (00dee2e0.cpp = differ/ = payload.json).
+- db = also no pragma round the ctor and no CPREDICATEBASE_NOVTABLE: DIFFER(3118v3102) 19 hunks -> both kept (H40 lever).
+- dc = plain `inline` CTimer operators instead of FABLE_FORCEINLINE: DIFFER(3026v3102) 120 hunks -> FABLE_FORCEINLINE kept (= 0x00DE9690).
+- Re-verified on da: vt PASS, addmatch, strict vland PASS (no WARN / RELOC_ / NOT_GENUINE), pickany_vs_retail.py + pk/pkall.py
+  (pk/pkall.py is my generic replacement for $S/w22/b24c/0070d940/c9/pk.py, which is row-specific): NEQ only ??1MovieBase 0x006E7B80
+  (leaf-referenced, = landed 0x00D62480's copy), ??1CIsThingAlive 0x00E241B0 (= 0x00DE9690's copy) and ??_GCScriptThing 0x004AB170
+  (= 0x00DE9690's copy). ??_GCIsThingAlive is now 39 bytes (it expands ~CIsThingAlive; 0x00DE9690 emits 30); retail's 0x00CDF160 is
+  45 bytes (it also stores the CPredicateBase vtable 0x012C2FF4, which NOVTABLE removes): not leaf-referenced HEAD debt either way.
+- coordverify/ appeared at 12:21 (not mine); payload.json was rewritten after it by this re-cut.

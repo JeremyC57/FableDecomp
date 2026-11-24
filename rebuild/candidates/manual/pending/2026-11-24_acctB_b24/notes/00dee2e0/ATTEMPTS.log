@@ -3,3 +3,6 @@
 11:55 00dee2e0 grade v1.cpp RELOCATION_MATCH -- port (fix includes)
 11:57 00dee2e0 grade 00dee2e0.cpp RELOCATION_MATCH -- final source regrade
 11:59 00dee2e0 grade v2.cpp RELOCATION_MATCH -- MsgIsUsedBy imp-local form (pick-any copy = retail 0x004AAB10?)
+12:26 00dee2e0 grade da.cpp RELOCATION_MATCH -- device measure: a no dtor pragma, b no pragmas+no NOVTABLE, c plain inline CTimer ops
+12:26 00dee2e0 grade db.cpp DIFFER(3118v3102) hunks=19 -- device measure db
+12:26 00dee2e0 grade dc.cpp DIFFER(3026v3102) hunks=120 -- device measure dc

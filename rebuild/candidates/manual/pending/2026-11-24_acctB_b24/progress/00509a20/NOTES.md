@@ -35,3 +35,17 @@
   HasNavigationInformation 1, IsInQuestOrNullQuest 4 => the list is NOT the extra word. Corrected reading: ours zeroes the list slot AND a
   second word ([esp+28h] before the push) that retail never initialises there -- a zero-initialised local hoisted to the prologue
   (candidates: action_point_index / index_into_trans_points / a loop counter); find it in b11's listing (last_objd.txt) next.
+## B24S2 (2026-11-24): 1 grade (baseline b12 = DIFFER(3272v3120) 152 hunks, unchanged; s2/g0.txt)
+- FableWin.pdb local records (llvm-pdbutil -modi=486 on $S/w22/b24b/00dc93f0/b9/FableWin.4k.pdb, world_map.obj; dump in s2/mod486.txt):
+  function scope search_tools, pthing_list, map, local_box (map + local_box are FUNCTION-scope locals, not declared at their use);
+  loop block i_list -> {p_thing, action_point_names, no_of_nav_layers, base_nav_layer, action_point_index};
+  switchable block {nav_layer -> {line_list, switchable_blockage}}; else block {nav_layer}; names {name_it -> name -> pos, rhset, index_to_use};
+  physics block {last_trans_point_name, object, index_into_trans_points, length_of_trans_point_name, helper_points -> tp_it ->
+  trans_point_name -> helper_pos -> {layer1, layer2, parser}}; final loops one block {areay, mapy} -> {areax, mapx}.
+  Names equal the draft's. Not yet tried: `const CMap& map` / `C2DBoxI local_box` hoisted to function scope above the loop as FableWin
+  scopes them (they are constructed late, so the declaration point matters only if the source declared them uninitialised early).
+- HYPOTHESIS (only the retail half read from the listing; disagrees with B24S1's corrected reading above): retail zeroes ONE word (base+0x10) then stores the list node (base+0x14 and a spill at base+0x40); ours zeroes two words
+  ([esp+24h], [esp+28h]) and stores the node into the second: the extra one is the `_M_node(alloc, 0)` zero store of _List_base not
+  being killed in ours. Opt-ins to try: FABLE_RETAIL_STLP_LIST_BASE_CONVERT_ALLOCATOR (one more inline layer), the list ctor forms.
+- Moved on to row 4 (B24S2's context budget); this row's best is still differ/ (b12).
+- B24S2 grade 2: + FABLE_RETAIL_STLP_LIST_BASE_CONVERT_ALLOCATOR = unchanged (3272v3120, 152 hunks; s2/c1.cpp).
