@@ -523,3 +523,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF352 size-mode CComponent counted-pointer copies	naming	claimed	locks via nflocks owner NF352
 2026-11-24	A	agent NF350 map owner respell and decl-only run dir	naming	done	batches/2026-11-24_landing_nf350_b1, b2; b3 lands via NF352
 2026-11-24	A	agent NF351 follow-ups queued by NF348	naming	done	batches/2026-11-24_landing_nf351_b1, b2
+2026-11-24	A	agent NF353 map operator[] family port	naming	claimed	locks via nflocks owner NF353; excludes B claims and NF352 rows
