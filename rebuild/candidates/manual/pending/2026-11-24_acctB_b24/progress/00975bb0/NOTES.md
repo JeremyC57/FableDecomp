@@ -26,3 +26,32 @@ row-specific IsNonZero text under FABLE_RETAIL_JACK_STAGE1_UPDATE (line ~813) an
   Remaining: square order z,y,x (retail) v z,x,y (ours) feeding both sums, the factor fstp-reload, the combat-loop store slots.
 - Constraint for the next idea: BOTH Normalise sites (vector_to_target 0x009761EA and dir_to_target 0x00976491..) show retail's
   fstp+reload against our fst: the fix must be one Normalise text that fixes both sites; a variant fixing one site only is a caller fit.
+
+# B24A6 (2026-11-24) -- read this first
+Lessons that apply (top): (1) c2 orders commutative x87 operands by symbol number (pending/2026-11-20_c2_symbol_order); the IL kit is set
+up IN THIS ROW DIR: `./il.sh <variant.cpp>` (dump2 + symlog under c2dbg, ~80 s) then `./ilsum.sh <variant>` / tmp/lpool_<v>.txt /
+tmp/pp_<v>.txt (FN filter patched into tools/il/pp2.py, lpool.py). (2) Inline-callee locals are numbered in FIRST-USE order and take
+freed numbers (freed k5 params such as `_this`) LIFO first. (3) A TU-context probe (40-local dummy function before Update) changed
+nothing: the numbering is per function -> the residue is ROW TEXT, not compile order (no ESCALATE).
+- Oracle re-cut: baseline regrade DIFFER(4612v4624) 14 hunks.
+- fwsize (FW_EXTRA=/EHsc, fwsize_base.txt): IsNonZero JACK refs text 39i v FableWin 31i (one expression) -> the JACK text is unevidenced.
+  Normalise: no header text gives FableWin 48i/133b (LOCALS/LOCALS_YZX 47i/130b, GFSqr forms 43i/118b; float helpers in FableWin run
+  +1i/+3b vs plain /Od generally -- e.g. landed AccurateNormalise text 48i/136b v FableWin 50i/137b -- so FableWin float sizes are weak).
+- SITE 1 SOLVED (0x00976137..0x0097626D): the factor `fst` v retail `fstp`+reload was f = one_on_magnitude #1419 > X field #1416 / y
+  #1414 (E*v loads the higher symbol first). The JACK IsNonZero refs (x,y,z k4 locals) ate the free number #1412; with a local-free
+  IsNonZero, f (allocated first in the GFSqr Normalise) takes #1412 -> X, Y load first, fstp+reload as retail. Then the products must be
+  CSE'd but the sums not: flat IsNonZero CSEs the whole sum; the bracket `Y*Y+(Z*Z)+X*X` (new opt-in ISNONZERO_YZX_BRACKET, hdr/README)
+  gives retail's z,y,x products, both (YY+ZZ)+XX sums and pops. Normalise must be the plain SQUARE_HELPER text
+  (GFSqr(X)+GFSqr(Y)+GFSqr(Z), NOT GROUPED_SUM): best.cpp = differ/ = DIFFER(4624v4624) 9 hunks, all at site 2 + noise.
+- SITE 2 OPEN (0x00976483..0x009764E1, GetMagnitude of line_to_target + Normalise of dir_to_target): retail products X->[78], Z->[20],
+  Y->[48], both sums XX+YY+ZZ; ours (MAGNITUDE_SQRTF GFRoot) X->[20], Z->[48], Y kept (fst [78]), sums YY+ZZ+XX. Tried on best:
+  GetMagnitude 26i texts XY_THEN_Z (8 hunks, right size, sums YY+XX+ZZ / ZZ+YY+XX), SQUARED_LOCAL, NAMED_SQUARED (9), X_THEN_YZ (187),
+  named-squared + brackets B1..B6 and term orders B7..B9 (flat orders identical: sorted). IL (m2): product temps XX #922 (key e680),
+  YY #926 (e780), ZZ #779 (free-list) -> sum IL (YY+XX)+ZZ. Next idea: measure best with ./il.sh, then shift the product-temp / field
+  numbers with an EVIDENCED helper text before 0x00976466 (fwsize DIFFs: GetTC<T> 13i v FableWin 27i/74b = GETTC_ORIGINAL_CHAIN /
+  PEEKTC_ORIGINAL_CHAIN texts; IsStillRunnable 28i v 27i; CIntelligentPointer(T*) 25i v 23i; Release / GetSubDef +1i; vector
+  operators -/+/* 28i v 34i = *_NAMED_RESULT opt-ins (SUB alone / ADD+SCALE alone neutral on the old base; all three moved the frame
+  +4 with the JACK IsNonZero, but with the bracket IsNonZero c2 = i4+all-named kept the frame)), as 0x00B075D0 was closed.
+- Devices still in the source: GET_ROUNDED_ANGLE FABLE_FORCEINLINE via FABLE_RETAIL_JACK_STAGE1_UPDATE (GetAngleXY + GFSqr formal `n`),
+  must be evidenced or go (generic FABLE_RETAIL_GFANGLES_GET_ROUNDED_ANGLE_FORCEINLINE exists for wfA2 row 0x0068CB90).
+- B24A6 last grades: + named-result vector operators on best: all three 13 / SUB alone 13 (break site 1) / SCALE alone 9 (neutral). Session ended here for Gate 0 (coordinator order).

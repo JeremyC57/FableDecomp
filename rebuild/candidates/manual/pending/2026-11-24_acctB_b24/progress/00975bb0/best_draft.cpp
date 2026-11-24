@@ -1,16 +1,16 @@
 // CAIStateGroup_JackOfBladesStage1::Update() -- update the first Jack of Blades combat stage
-// Grade: DIFFER(4612v4707) -- 15 hunks (oracle 4707 overruns the real 4624-byte extent): x87 only -- IsNonZero/Normalise square order (retail z,y,x; ours z,x,y), Normalise factor fstp+reload v fst (4 b), combat-loop Normalise store slots; B24A5: + existing opt-in FABLE_RETAIL_C3DVECTOR_NORMALISE_GROUPED_SUM (17 -> 15 hunks)
+// Grade: DIFFER(4624v4624) -- 9 hunks (fg; 3 are relocation-masked noise at 0x00975C45/0x00976421/table loads, 1 the switch table): site 1 (0x00976137..0x0097626D, IsNonZero+Normalise+GetAngleXY) MATCHES; left: site 2 (combat loop 0x00976483..0x009764E1) product store slots and sum order -- retail XX->[78] ZZ->[20] YY->[48], both sums XX+YY+ZZ; ours keeps YY in st(0) (fst [78]) and sums YY+ZZ+XX, plus the resulting 3-byte loop-alignment pad. Devices still to clear: GET_ROUNDED_ANGLE FABLE_FORCEINLINE (JACK_STAGE1_UPDATE header text).
 // Inline-budget: GET_ROUNDED_ANGLE uses FABLE_FORCEINLINE only here. Plain cost75 exceeds threshold74; T76 also expands the shield pointer ctor; scoped depth255 leaves the cost rejection unchanged.
 // Leaf: ?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ
 // Retail: 0x00975BB0, 4624 bytes, thiscall.
 // Identity: both original PDBs; native vtable0128D6B4 slot12; donor02BE6F30.
 // Extent: 4606 code bytes, two alignment bytes, sixteen switch-table bytes.
+#define FABLE_RETAIL_C3DVECTOR_ISNONZERO_YZX_BRACKET
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CCOMBATABILITYDATA
 #define FABLE_RETAIL_CDEFPOINTER_RELEASE_SELFDELETING_POINTEE
 #define FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
 #define FABLE_RETAIL_JACK_STAGE1_UPDATE
-#define FABLE_RETAIL_C3DVECTOR_NORMALISE_GROUPED_SUM
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS

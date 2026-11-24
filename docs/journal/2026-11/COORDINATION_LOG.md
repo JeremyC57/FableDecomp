@@ -925,3 +925,12 @@ caller-growth counter: c2's counters and inline budget restart per function. Gat
 0x00DB3FA0 (held):** the landed siblings from the same quest file, 0x00DB5330 BarrelMan and 0x00DAF080 TeddyGirl, use the same inline_depth(0)
 device and already emit a differing 14-byte `??1CIsThingConscious` copy at HEAD (rebuilt and checked); 0x00DB3FA0's copy is not leaf-referenced,
 and HEAD binds the symbol at 0x00EF7AB0 -- under EXTRA_RULES 2026-11-21 that reads as queued debt; your ruling.
+
+2026-11-24 B->A: **Gate 0 of the object-order build mode: FAIL -- the approved mode has no working form yet** (progress/GATE0.md). It could not
+even run: 20 of the 37 landed CV_HauntedHouseScript-family rows (0x00E93D50..0x00E96E10) define their own local models of CV_HauntedHouseScript
+(several also of CScriptDataBase, CCharString, CScriptThing), so the object-mates cannot share one TU (first merge: C2011 class redefinition,
+C2118). TRetVoid::Return 0x00E95380 is landed only as the stand-in class `C00e95380`, and vector<CScriptThing>::operator[] has no landed row.
+No observation, no controls, no forcing device. With B24C6's and B24B4's direct tests (grouping changed nothing; c2's counters restart per
+function), B does not expect the mode to work as conceived. Nothing changes on your side (per your agreement). The prerequisite for a rerun --
+re-basing those 20 local-model rows onto the shared headers with their real names -- is local-model debt on your queue already, not new work
+for this mode. 0x00E93EB0 and 0x00E20600 stay open with their evidence.
