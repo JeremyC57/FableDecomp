@@ -588,3 +588,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF391 the 0x0051B720 map unit (T3 nf389) + NF385 30 no-second-source rows traced through vftable call paths + the NF385 abs-hit recheck	naming	done	landed nf391_b2 (1), b3 (1), b4 (2), b1 (3-row unit); follow-ups T3 nf391 / nf389 narrowed
 2026-11-24	A	agent NF394 T3 nf391 q10 (three made-up SortTreeRecursively list::size stand-ins) and q9 (GetNumberOfNavigationLineLevels unit)	naming	claimed	locks via nflocks owner NF394
 2026-11-24	A	agent NF393 ruling R7 pilot: binder 00b217d0 on the shared CArray header, HEAD v new COMDAT bins (nf387 conditions / decl-only opt-in / R8 / residue)	naming	done	pilot measured; R10 (= R1 tier 1) and R11 ruled; batch being built (re-claimed by lock only)
+2026-11-24	A	agent NF395 re-bin under rulings R1/R10 of the held NF392 rows (CMeshMorphSetParts uninitialized helpers) and the NF390 binders 009b77b0 / 00762440 (T3 nf393)	naming	claimed	locks via nflocks owner NF395
