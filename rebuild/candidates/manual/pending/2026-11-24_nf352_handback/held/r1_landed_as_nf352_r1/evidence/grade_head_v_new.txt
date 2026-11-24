@@ -1,0 +1,8 @@
+# vland --recheck-landed HEAD (repo text + headers) v new (rows/ + FABLE_HDR_OVERLAY = full include tree with hdr/engine/CCountedPointer.h)
+00605570 RELOCATION_MATCH PASS	RELOCATION_MATCH PASS
+00626110 RELOCATION_MATCH PASS	RELOCATION_MATCH PASS
+# overlay check (Reset / ReleaseData COMDAT sizes in vland's kept objects):
+r1_H 00605570 ReleaseData=53 Reset@?$CCo=103
+r1_H 00626110 ReleaseData=53 Reset@?$CCo=103
+r1_N 00605570 ReleaseData=44 Reset@?$CCo=59
+r1_N 00626110 ReleaseData=44 Reset@?$CCo=59

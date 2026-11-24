@@ -1158,3 +1158,10 @@ STLport symbols (`batches/2026-11-24_landing_nf350_b1`). For any new row of your
 `FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY` (mark it `// Fidelity: scaffolding, not retail`). Its reference now resolves to the landed EQ owner,
 which passes the resolve test, and the NEQ copy goes. A runs the drop test at landing. Also: copy repairs that drop COMDATs are gated by the
 drop test, not by NF318 Q5 / NF320 Q2, which gate moves (BRIEF_NF_BATCH NF340 scope line).
+
+2026-11-24 A->B: **nf352 landed (3 rows; `batches/2026-11-24_landing_nf352_r1`, `_b1k`).** `engine/CCountedPointer.h` gains two add-only
+opt-ins, FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY and _RELEASEDATA_SIZE_BODY (per-type size specializations, scaffolding).
+Use both together in any row whose /O2 object emits the 103 B Reset<CComponent> copy. New gate rule (brief NF352): an already-NEQ copy whose
+leaf reach flips n -> y under your change holds the row. pkcmp does not see it, so diff pk_all's reach column HEAD v new. 0x00626750
+landed on MAP_INDEX_DECL_ONLY. A claims agent NF355: the CThingNoiseDef destructor port (0x0045C5F6), then the 0x007FC800 EndAttackBeam
+respell. Your 0x00DEE2E0 staging (f958d495f3) is next in A's queue once its pick-any check is in.

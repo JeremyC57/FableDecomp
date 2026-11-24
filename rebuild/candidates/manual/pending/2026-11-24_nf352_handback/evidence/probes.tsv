@@ -1,0 +1,14 @@
+row	probe	description	grade(scratch)	ctor 0x00429C15	dtor 0x00429C53	Reset 0x00429C6F	ReleaseData 0x004291DE	DeleteData<CComponent> 0x00428B10	DeleteData<CAction> 0x00429F43
+00626110	Adel	Prr + scratch NUISystem_CAction.h DeleteData<CAction> size specialization (noinline)	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	EQ 59/59 leaf=y	EQ 44/44 leaf=n	EQ 11/11 leaf=y	NEQ 12/21 leaf=y
+00605570	H	repo HEAD text + HEAD header	RELOCATION_MATCH	absent	NEQ 53/5 leaf=n	NEQ 103/59 leaf=y	NEQ 53/44 leaf=n	EQ 11/11 leaf=n	absent
+00626110	H	repo HEAD text + HEAD header	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	NEQ 103/59 leaf=y	NEQ 53/44 leaf=n	EQ 11/11 leaf=y	NEQ 70/21 leaf=y
+00626750	H	repo HEAD text + HEAD header	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	absent	absent	EQ 11/11 leaf=y	NEQ 70/21 leaf=y
+00605570	N	final row text + final header	RELOCATION_MATCH	absent	NEQ 53/5 leaf=n	EQ 59/59 leaf=y	NEQ 53/44 leaf=n	EQ 11/11 leaf=n	absent
+00626110	N	final row text + final header	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	EQ 59/59 leaf=y	NEQ 53/44 leaf=n	EQ 11/11 leaf=y	NEQ 70/21 leaf=y
+00626750	N	final row text + final header	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	absent	absent	EQ 11/11 leaf=y	NEQ 70/21 leaf=y
+00605570	P1	4-opt-in header (noinline): 00605570 RESET / 00626110 CTOR+DTOR+RESET / 00626750 CTOR+DTOR	RELOCATION_MATCH	absent	NEQ 53/5 leaf=n	EQ 59/59 leaf=y	NEQ 53/44 leaf=n	EQ 11/11 leaf=n	absent
+00605570	P2	P1 + RELEASEDATA (noinline)	RELOCATION_MATCH	absent	NEQ 53/5 leaf=n	EQ 59/59 leaf=y	EQ 44/44 leaf=n	EQ 11/11 leaf=n	absent
+00605570	P3	00605570 RELEASEDATA+DTOR+RESET (noinline)	DIFFER(1818v1890)	absent	EQ 5/5 leaf=y	EQ 59/59 leaf=y	EQ 44/44 leaf=n	EQ 11/11 leaf=n	absent
+00626110	Pr	RESET (noinline)	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	EQ 59/59 leaf=y	NEQ 53/44 leaf=n	EQ 11/11 leaf=y	NEQ 70/21 leaf=y
+00626110	Prr	RELEASEDATA+RESET (noinline)	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	EQ 59/59 leaf=y	EQ 44/44 leaf=n	EQ 11/11 leaf=y	NEQ 70/21 leaf=y
+00626750	Q0	NF350 b3 text (MAP_INDEX_DECL_ONLY) + HEAD header	RELOCATION_MATCH	NEQ 78/62 leaf=y	NEQ 53/5 leaf=y	absent	absent	EQ 11/11 leaf=y	NEQ 70/21 leaf=y

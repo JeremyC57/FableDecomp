@@ -1,0 +1,2 @@
+CHANGED ('COMDAT', '?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z', '.text') size 70 -> 12 data_eq=False relocs_eq=False flags_eq=False
+VERDICT DIFF n=1 symdelta=0 leaf=absent

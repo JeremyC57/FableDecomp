@@ -536,4 +536,67 @@ template<> inline void CCountedPointer<CMeshDataBank>::Reset(CMeshDataBank* data
 #endif
 #pragma optimize("", on)
 #endif
+#if defined(FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY) || defined(FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RELEASEDATA_SIZE_BODY)
+// NF352 opt-ins (2026-11-24; T3 nf340 0x00429C6F; rows 0x00605570 CTCInventoryMap::ConstructRegionDescription, 0x00626110
+// CTCQuickAccessMenu::ContructItemLists), the size-pragma scaffolding of EXTRA_RULES 2026-11-20 / 2026-11-21 condition 2 in the per-type
+// form of NF349 (engine/CDefinitionManager.h GETDEF_<T>_SIZE_BODY). Fidelity: scaffolding, not retail: it is for link determinism and
+// makes no claim about retail's text. Those /O2 TUs call CCountedPointer<NUISystem::CComponent>::Reset out of line and emit their own
+// speed-mode pick-any copy of it (103 bytes; ReleaseData 53), while retail's linker kept the copies of the 0x00429xxx size TU. The owner
+// rows set `#pragma optimize("s", on)` themselves and build at the catalog default /O2 /Oy /W3 (no CompilerFlags entry):
+//   Reset         0x00429C6F  rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_Reset_00429c6f.cpp (+ FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA)
+//   ReleaseData   0x004291DE  rebuild/src/compiled/00/42/CCountedPointerNUISystemCComponent_ReleaseData_004291de.cpp (+ _RELEASEDATA)
+// VC7.1 takes a template instance's optimize mode at the end of the TU, so a pragma around the class template does nothing; an
+// explicit specialization is an ordinary definition and takes the mode at its own point. Each body is the owner's configuration of the
+// class template text above, token for token (Reset: the default body; ReleaseData: the _RELEASEDATA body, Data zeroed before Info).
+// The (T*) constructor 0x00429C15 and destructor 0x00429C53 were measured in this form and are NOT here: noinline or inline, either
+// moves the 0x00626110 / 0x00626750 leaf (NF352 hand-back). Each pair ends with optimize("", on), which restores the command-line
+// settings (VC7.1 has no push / pop for optimize), so a row that uses these opt-ins must not carry a row-head optimize pragma before its
+// include of this header (nf189). Define the macros before the first include of this header (no use of a specialised member may
+// precede it). Not with FABLE_RETAIL_CCOUNTEDPOINTER_ORIGINAL_COMPLETE_MEMBERS_PASS22.
+namespace NUISystem { class CComponent; }
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RELEASEDATA_SIZE_BODY
+// ?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ = 0x004291DE (44 bytes). Before Reset, which calls it.
+#if defined(_MSC_VER)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+void CCountedPointer<NUISystem::CComponent>::ReleaseData()
+{
+    if (Info) {
+        --Info->RefCount;
+        if (Info->RefCount == 0) {
+            Info->DeleteFunc(Info->Data);
+            delete Info;
+        }
+    }
+    Data = 0;
+    Info = 0;
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY
+// ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z = 0x00429C6F (59 bytes, calls ReleaseData 0x004291DE,
+// stores DeleteData 0x00428B10).
+#if defined(_MSC_VER)
+#pragma optimize("s", on)
+template<> __declspec(noinline) inline
+#else
+template<> inline
+#endif
+void CCountedPointer<NUISystem::CComponent>::Reset(NUISystem::CComponent* data)
+{
+    ReleaseData();
+    Data = data;
+    if (data)
+        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
+}
+#if defined(_MSC_VER)
+#pragma optimize("", on)
+#endif
+#endif
 #endif // FABLE_ENGINE_CCOUNTEDPOINTER_H

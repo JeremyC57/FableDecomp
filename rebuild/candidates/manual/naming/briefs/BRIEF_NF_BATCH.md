@@ -313,3 +313,13 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - **D2:** "both PDB name sets agree" (add-only opt-ins) is met when one PDB names the member and the other is SILENT (no rival
     unplaced member fits the body), with the retail placement as the second source (line 52; NF320 Q3): 0x00E1AD30 InitialiseVariables
     (FableWin + retail Main's first call + object order; Ego_r carries no Main / DoMission / EndMission either).
+- NF352 (advisor decision, owner delegated, 2026-11-24; batches nf352_r1 / b1k):
+  - **Reach flips:** an already-NEQ copy whose leaf reach flips n -> y under the change counts as a newly leaf-reached NEQ copy and holds
+    the row. pkcmp does not test this; compare pk_all's reach column HEAD v new (agent_tools/nf352/reachflip_coordinator.py). A flip
+    onto an EQ copy is fine. A retro scan of NF341 / NF346 / NF349's gate pairs found none.
+  - **Q1b:** a size-body opt-in may cover a further copy outside the brief's addresses when it meets the same conditions (owner sets
+    `optimize("s", on)`, no CompilerFlags entry, pragscan clean) and the retail caller-callee shape needs it (Reset 59 B calls ReleaseData 44 B).
+  - **Q2:** condition (a) "one COMDAT changes" is per opt-in; with two opt-ins, exactly their two COMDATs may change if a run with one
+    opt-in alone isolates the first.
+  - **Q3:** no second-header opt-in whose device does not reach retail (DeleteData<CAction> 12 B v 21): that is the forbidden second device.
+    Queue it diagnosis-only.

@@ -520,8 +520,9 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF348 owner ports queued by NF345	naming	done	batches/2026-11-24_landing_nf348_b1; pending/2026-11-24_nf348_handback
 2026-11-24	A	agent NF351 follow-ups queued by NF348	naming	claimed	locks via nflocks owner NF351
 2026-11-24	A	agent NF349 size-mode GetDef copies in the rows NF346 skipped	naming	done	batches/2026-11-24_landing_nf349_b1..x1 (40 rows); pending/2026-11-24_nf349_handback
-2026-11-24	A	agent NF352 size-mode CComponent counted-pointer copies	naming	claimed	locks via nflocks owner NF352
+2026-11-24	A	agent NF352 size-mode CComponent counted-pointer copies	naming	done	batches/2026-11-24_landing_nf352_r1, b1k (0x00626750 = NF350 b3)
 2026-11-24	A	agent NF350 map owner respell and decl-only run dir	naming	done	batches/2026-11-24_landing_nf350_b1, b2; b3 lands via NF352
 2026-11-24	A	agent NF351 follow-ups queued by NF348	naming	done	batches/2026-11-24_landing_nf351_b1, b2
 2026-11-24	A	agent NF353 map operator[] family port	naming	claimed	locks via nflocks owner NF353; excludes B claims and NF352 rows
 2026-11-24	A	agent NF354 CCutsceneCastMap stand-in binders of the map owner	naming	claimed	locks via nflocks owner NF354
+2026-11-24	A	agent NF355 CThingNoiseDef destructor class port (0x0045C5F6) then 0x007FC800 EndAttackBeam respell	naming	claimed	locks via nflocks owner NF355

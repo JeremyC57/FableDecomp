@@ -1,0 +1,10 @@
+closure rows 13751; src/test files scanned 27502
+reachscan REACH files 12597 rows 12211
+plant DIFF files 12535 rows 12211
+plant - reach 0 []
+reach - plant 62 [('0041db84', 'test'), ('0047a9f0', 'test'), ('004b0b90', 'test'), ('004c7e90', 'test'), ('0052cf40', 'test'), ('00531560', 'test'), ('0053dcd0', 'test'), ('0053dd50', 'test'), ('0055b040', 'test'), ('005f519f', 'test')]
+equiv_new (final header) differing files: 0
+VERDICT MISMATCH
+# the 62 reach-not-plant files: re-checked with cpp -M (dependency list)
+includes engine/CCountedPointer.h: 0 [] ; does not include it (a pasted local CCPPointerInfo model in the test text): 62
+FINAL PLANT_EQUALS_TRUE_INCLUDERS

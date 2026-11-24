@@ -67,6 +67,10 @@
 #define FABLE_RETAIL_CTCINVENTORYMAP_REGIONINFO_CTOR
 #define FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
 #define FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION_ALL
+// Pick-any (NF352): engine/CCountedPointer.h size-body opt-ins (Fidelity: scaffolding, not retail): the out-of-line
+//   CCountedPointer<NUISystem::CComponent>::Reset copy takes owner 0x00429C6F's optimize("s", on) body, and the ReleaseData copy it calls owner 0x004291DE's.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RELEASEDATA_SIZE_BODY
+#define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "stlport/fable_algorithm.h"

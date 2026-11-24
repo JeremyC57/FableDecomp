@@ -1,0 +1,7 @@
+00626750	pk_all	ADDED	0041c820	not-leaf-called	??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+00626750	pk_all	NEWLY_NEQ	005949c3	leaf-called	??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z
+00626750	pvr	ADDED	0041c820	not-leaf-called	??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z
+00626750	pvr	NEWLY_NEQ	005949c3	leaf-called	??A?$map@JPAVCComponent@NUISystem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@4@@std@@QAEAAPAVCComponent@NUISystem@@ABJ@Z
+ROW 00626750 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [0, 1, 0, 0], 'pvr': [0, 1, 0, 0]}
+GATE FAIL (2)

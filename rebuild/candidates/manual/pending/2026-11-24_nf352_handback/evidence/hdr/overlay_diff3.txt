@@ -1,0 +1,71 @@
+# staged CCountedPointer.h overlays outside this folder: diff3 -m (NF352 / repo HEAD / overlay); only overlays that differ from HEAD are tried
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand887/hdr/engine/CCountedPointer.h lines_v_head=393 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_codex_2largerows/rows/0041e6d3/hdr/engine/CCountedPointer.h lines_v_head=389 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand886_wip/hdr/engine/CCountedPointer.h lines_v_head=380 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-22_nf234_handback/hdr/engine/CCountedPointer.h lines_v_head=36 diff3_exit=0
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00cf9610/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ef71e0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00821010/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e92a50/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e8a2b0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ee42a0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae8d50/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/0051fd80/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/006932b0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ef80a0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00b2d9f0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e377d0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e0a820/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00402510/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00520d00/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00a9bbe0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae0070/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e5ebd0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e63890/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ef7be0/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00d27460/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00defb10/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/0058e99f/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e39b40/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00522a20/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae0710/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/0041d21b/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae2e20/hdr/engine/CCountedPointer.h lines_v_head=402 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand888/hdr/engine/CCountedPointer.h lines_v_head=393 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-13_acctB_parked/hdr/00601310/engine/CCountedPointer.h lines_v_head=323 diff3_exit=1
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand889/hdr/engine/CCountedPointer.h lines_v_head=393 diff3_exit=1
+/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF194/hdr/engine/CCountedPointer.h lines_v_head=182 diff3_exit=1
+# overlays carrying a FABLE_RETAIL_ macro that repo HEAD's header lacks (i.e. not yet landed):
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand887/hdr/engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_DTOR
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00cf9610/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ef71e0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00821010/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e92a50/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e8a2b0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ee42a0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae8d50/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/0051fd80/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/006932b0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ef80a0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00b2d9f0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e377d0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e0a820/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00402510/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00520d00/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00a9bbe0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae0070/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e5ebd0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e63890/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ef7be0/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00d27460/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00defb10/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/0058e99f/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00e39b40/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00522a20/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae0710/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/0041d21b/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/00ae2e20/hdr/engine/CCountedPointer.h FABLE_RETAIL_QUICK_ACCESS
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand888/hdr/engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_DTOR
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-13_acctB_parked/hdr/00601310/engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_CTOR_INFO0
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-13_acctB_parked/hdr/00601310/engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_CTOR_TERNARY
+/home/user/FableDecomp/rebuild/candidates/manual/pending/2026-11-08_linux_hand889/hdr/engine/CCountedPointer.h FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_DTOR

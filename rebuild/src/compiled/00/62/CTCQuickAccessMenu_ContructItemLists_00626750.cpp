@@ -51,6 +51,11 @@
 #define FABLE_RETAIL_CACTIONPARAMSLONG
 #define FABLE_RETAIL_CACTION_INLINE_CTOR
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
+// Fidelity: scaffolding, not retail (NF347 measurement, NF350 run dir; T3 nf340 0x005949C3): FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY keeps
+//   map::operator[] declaration-only, so this TU no longer emits its map<long,NUISystem::CComponent*>::operator[] copy (NEQ to retail
+//   0x005949C3: retail's is size-compiled, 69 bytes, this /O2 copy 115); the leaf is unchanged and calls the external symbol, which the
+//   landed owner row 0x005949C3 defines under the same four-argument STLport spelling.
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
 #include "stlport/fable_containers.h"
 #include "stlport/fable_map.h"
 #include "engine/ETCInterfaceType.h"

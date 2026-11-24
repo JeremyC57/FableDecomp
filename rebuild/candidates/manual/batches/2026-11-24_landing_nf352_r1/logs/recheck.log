@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00605570   RELOCATION_MATCH PASS   ConstructRegionDescription
+00626110   RELOCATION_MATCH PASS   ContructItemLists
+
+WINS: 2
+  00605570 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescription@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@_N@Z
+  00626110 RELOCATION_MATCH CTCQuickAccessMenu::?ContructItemLists@CTCQuickAccessMenu@@AAEXAAV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z

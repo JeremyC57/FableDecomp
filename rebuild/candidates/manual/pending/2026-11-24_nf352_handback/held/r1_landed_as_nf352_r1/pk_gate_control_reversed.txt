@@ -1,0 +1,15 @@
+00605570	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00605570	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+00605570	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00605570	pvr	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 00605570 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [2, 0, 0, 0], 'pvr': [2, 0, 0, 0]}
+GATE FAIL (3)
+
+00626110	pk_all	TURNED_NEQ	004291de	leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00626110	pk_all	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+00626110	pvr	TURNED_NEQ	004291de	not-leaf-called	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+00626110	pvr	TURNED_NEQ	00429c6f	leaf-called	?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+ROW 00626110 gate=F fixed_getdef=0 fixed_subdef=0 remain_getdef=0 remain_subdef=0
+# totals [turned_NEQ, newly_NEQ, fixed, dropped]: {'pk_all': [2, 0, 0, 0], 'pvr': [2, 0, 0, 0]}
+GATE FAIL (3)
