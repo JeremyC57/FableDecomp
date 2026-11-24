@@ -32,3 +32,18 @@ State: escalated (ESCALATE.md). Next idea: the ~MovieBase decision (cause open, 
 - Structural argument (for ESCALATE): in c2's regime-0 rule, expansion is monotone in c1 at equal f; c1(~MovieBase) 19 > c1(~CTimer) 14
   at every site (pen 0), so "MovieBase expanded + ~CTimer called at the same return" is impossible for any S/T and any frequency
   unless the two dtors see different costs or frequencies at that return. Retail does it at ~36 returns here.
+## B24B6 (2026-11-24): visible-body lever checked on the shared MovieBase cost (probe in ../00dc93f0/v1.cpp): a VISIBLE noinline
+CP<Movie> dtor specialization leaves implicit ~MovieBase at sz 25 / c1 19 (same as declared-only), so it cannot change this row's
+MovieBase-v-~CTimer conflict. Not worked further by B24B6 (context).
+## B24B8 (2026-11-24): PROVEN conflict-only; pick-any checked
+- c2 decision override (kit ../00d0d910/b8/inl, inl_force_mb.py): a1.cpp at STOCK flags + all 38 ~MovieBase decisions forced to
+  expand = RELOCATION_MATCH (b8/forcemb.obj). So c1's 2 hunks (missing hot ~CTimer block D0D3A1..D0D3EE AND the 2-byte jmp at D0D4AB)
+  are both that one decision class; no independent residue. Same family answer as 0x00D0D910 (ESCALATE.md there, SHARED_FORM.md).
+- Pick-any on c1.obj (/d2inlS15): pickany_vs_retail.py: 9 EQ; NEQ ??1CScriptGameResourceObjectMovieBase (0x006E7B80: retail's copy,
+  from game_script_interface's TU, inlines the CP<Movie> release; ours calls the declared-only ??1CCountedPointer<MovieBase>) and
+  NEQ ??1CIsThingAlive (0x00E241B0: retail inlines ~CScriptThing; ours calls it) -- neither referenced by the leaf. Every-copy check
+  (../00d0d910/b8/pkx.py, ??_G by vtable slot 0): ??_GCScriptGameResourceObjectMovieBase 0x006E7BD0 NEQ (same CP cause),
+  ??_GCIsThingAlive 0x00CDF120 NEQ (same ~CScriptThing cause), ??_GGROBase 0x006E70A0 EQ, ??_GSTB 0x007E7520 EQ.
+  All four NEQ come from the shared declared-only CP<Movie> dtor (53 landed rows) and `~CIsThingAlive() {}` with declared
+  ~CScriptThing (78 landed rows emit the same copy, owner row 0x00E241B0 landed): HEAD debt under EXTRA_RULES 2026-11-21, not new.
+  The declared-only CP<Movie> is REQUIRED for the leaf (a visible CP dtor makes ~MovieBase sz 66 and expands the CP at hot sites; B24A4).

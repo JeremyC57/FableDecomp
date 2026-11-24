@@ -80,3 +80,52 @@ pkshow.py), c2prio runs in v/prio_h3*.txt.
   GetTC `this` is a register variable); ours `mov eax,[eax+18h]` ... `lea esi,[eax+44h]`. Next: an inline layer whose `this` param is
   the creature (e.g. a CThing member called on GetCreature()'s reference through one more inline function) -- only with real header text.
 - State: best unchanged = differ/00931390.cpp. Moved to the next B24D row on the coordinator's queue with this row still open.
+
+## B24A10 (2026-11-24), 9 grades, no move (best still differ/00931390.cpp, 29 hunks). Work files in a10/.
+- c2prio --trace of the baseline (a10/prio_base_trace.txt), candidates RE-IDENTIFIED: at the scream sites the creature (GetTC `this`)
+  is the `local` with 3 refs (#77 site 1, #94 site 2; cower site #162 with 4 refs = retail eax). It has NO copy relation
+  (costs {ebx:33400} only) and is coloured AFTER `map` (prio 104 v 120; map is call-crossing `...sibp`, takes esi with an ecx -1
+  relation) -> eax by table order. The `{eax:-1, esi:-1}` candidate wfE9-6 chased (#90 / #107) is the `?:` result of GetTC (copy of
+  `it` eax / end esi), not the creature. So retail's `mov esi,[eax+18h] ... add esi,44h` needs a creature->map relation (two-address
+  add) that ours lacks; no source spelling tried creates it.
+- Landed-bytes scan (a10/scan.py over retail .text: `mov esi,[r+18h]` ... `add esi,44h` ... call LowerBound): 12 sites; the matched
+  ones with a fresh creature load are old local-model rows (0x00948060, 0x009207A0, 0x00984D90 ...). 0x00984D90's note: one inline
+  GetCreature() layer gives esi/add, `PBrain->Creature` written out gives eax/lea. Here 1 layer (PBrain->GetCreature(), v2) and 2
+  layers (draft) give the same eax/lea -> the lever there is not the lever here.
+- No lever (29 hunks, same residue): PBrain->GetCreature() at the scream sites (v2); ptc_talk at function scope (v3); Creature
+  pointer member, no FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE (p1); default GetTC branch (HasTC + Components.Find) with typed
+  GetTC(&p) (v1b; the GetTC(id,p) form does not exist there -> v1 SRC_FAIL); gather loop as guarded do-while (d1).
+- Ego_d evidence: Codex's NAMING_EVIDENCE name order (ret, doors, owner, nav_route_calculated, door, ret_bool, ptc_talk, esp_ret,
+  home_pos, ptc_nav, ptc_physics, pmarker, ptc_volume_containment_tracker, available_markers, not_used, def_index, it, ...) suggests
+  declaration order with dedupe: pmarker declared BEFORE the tracker test in block 3, not_used before def_index, and NO `it` in
+  block 1. Unverified: Ego_d.pdb is not on this machine. ASK: the raw egod_locals.py dump (with S_BLOCK32 nesting) for this row.
+- Hand-back blockers even on MATCH: `home` and `inside` are not in the Ego_d list (inventions), the marker-loop guard is FITTED
+  (wfE9-5), `bool ret_bool;` is unused in the block-1 and cower do-bodies. A match on this base goes to ESCALATE.md.
+- pass24 GRADE_HISTORY has `do_while_door_loop` and `crimefit_08_guard_then_do_for_doors` at 28 hunks (one fewer); their sources
+  are not saved. Moved on to row 2 (coordinator order) with this row still open.
+
+## B24A10 part 2 (debug build on the lane, 2026-11-24), 8 more grades: still 29 hunks, but the source is now evidenced
+Sources: Ego_d.pdb locals (egod_locals.py on $S/dl/debug_owner/Ego_d.pdb, types via `llvm-pdbutil dump -types -type-index=`),
+FableWin /Od copy 0x02B5A820 (fwdis.py). differ/00931390.cpp = a10/r8.cpp. Applied, each byte-neutral (29 hunks, same residue):
+- Block 1 gather: `const std::list<CIntelligentPointer<CThing> >& objects = owner->GetObjectList();` then
+  `if (false) {} else for (std::list<...>::const_iterator object_it = objects.begin(); object_it != objects.end(); ++object_it)` (FableWin
+  `xor edx,edx ; je body ; jmp after` = the TLC `#define for if (0) {} else for` idiom, GOTCHAS 442) with a body-scope `CTCDoor* door;`
+  (Ego_d type 0x4B2FA = CTCDoor*) and `GetTC(TCI_DOOR, &door)` as the door test (retail keeps only the bit test: the rest is dead).
+  A plain `for` (no idiom) is the 3948 / 172-hunk family (post-loop frequency leak): the idiom is what keeps retail's frequencies.
+- Block 3: `CTCVolumeContainmentTracker* ptc_volume_containment_tracker = NULL;` (FableWin stores 0 first), `CThing* thing_in` (real
+  name; was the invented `inside`), `CIntelligentPointer<CThing> pmarker(0);` AFTER the tracker test (FableWin order),
+  `CTCThingOwner* ptc_thing_owner = NULL;` (was `owner`), available_markers, def_index, objects ref, not_used, then the marker loop as
+  `if (false) {} else for (... it = objects.begin(); ...)` -- the FITTED `if (it != end())` guard of wfE9-5 is GONE (same bytes).
+- MoveToThingProximity gets the do-body `ret_bool` (FableWin `lea eax,[ebp-46h]`); `nav_route_calculated` is declared and unused,
+  as in FableWin. (Before, the draft passed nav and left ret_bool unused.)
+- Still invented: `CIntelligentPointer<CThingBuilding>& home = PHome;` (Ego_d has no such local; r9 without it: 49 hunks). FableWin
+  calls the template ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@ (0x01D7C940), so PHome reaches IS_THING_ALIVE by
+  reference -- the next idea is why retail CSEs &PHome without a named reference (the IS_THING_ALIVE template's inline expansion /
+  FABLE_RETAIL_IS_THING_ALIVE text v the original; compare FableWin 0x01D7C940's body with engine/ThingAlive.h).
+- Ego_d block tree for the record: {ret; {doors, owner; {objects; {object_it; {door}}}; {nav_route_calculated, door; {ret_bool;
+  {ptc_talk; {esp_ret}}}}}; {home_pos, ptc_nav, ptc_physics; {ret_bool; {ptc_talk; {esp_ret}}}}; {pmarker, ptc_thing_owner,
+  ptc_volume_containment_tracker; {thing_in}; {objects, available_markers, not_used, def_index; {it}}; {ret_bool};
+  {FrameToStopLooking}}; {ptc_nav, flee_pos; {ret_bool; {ptc_talk; {esp_ret}}}; {ptc_talk; ...}}}.
+- Probe (a10/ovA): IS_THING_ALIVE written `return thing!=0 && !thing->IsDead();` (FableWin 0x01D7C940 is the /Od `&&` shape: operator!=
+  with edx=0, GetPItem + IsDead, materialised al) -- r8 29 / r9 49, unchanged. CAUTION: fg.py may force overlay $W/hdr; not verified
+  that FABLE_HDR_OVERLAY=$W/a10/ovA took effect.

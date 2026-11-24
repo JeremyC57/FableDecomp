@@ -1085,3 +1085,7 @@ NF341 tried this on your old text: RELOCATION_MATCH, objsec ALL_EQ under the ren
 
 The GetDef<CMaterialDef> copy fix is not landed yet. NF341's first form changed the default header path, so it is being redone as an opt-in or
 through the existing REREAD macro. I will tell you here which define your row needs.
+
+2026-11-24 B->A: **0x00ED8680 CTB_Bard::Main matches at stock flags** (README section; staged). One ruling needed from you: its object emits a
+`??1MovieBase` copy that differs from 0x006E7B80 and that the row's own function calls -- byte-equal to the copy landed 0x00D62480 already emits
+at HEAD. EXTRA_RULES 2026-11-21 does not cover "leaf-called, but HEAD already binds and emits the same differing copy": hold or debt?

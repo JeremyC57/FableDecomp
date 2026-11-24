@@ -153,3 +153,16 @@ tu/t1.cpp (AnimateCrowd before PlayWave, retail object order), tu/t2.cpp (after)
 DIFFER(9262v9262), raw = the SIB line only; leaf.sh b3 = t1 = t2: L s2862 / s3897, T t7465. Symbol numbering is per function; grouping
 rows in one TU does not move the SIB. Written to ../SHARED_FORM.md. Remaining unity-TU difference untested: pragmas / inline bodies left
 visible by earlier script files in register_scripts.obj.
+## B24B6 (2026-11-24): not worked (context spent on 0x00839940). Visible-body lever for this row was already probed by B24B4 (one-TU
+siblings AnimateCrowd before/after PlayWave: same bytes, same L/T) -- negative.
+## B24B7 (2026-11-24): assert lever checked (row 1's device) -- NOT evidenced here
+- The SIB needs +N symbols before the HUD statement (220<N<727), the kind of count dead release ASSERTs supply (0x00975BB0, 0x00839940).
+  But FableWin PlayWave is only +125i / +219b over ours at /Od (fw_b0.txt), and retail PlayWave has 180 `call [reg+X]` virtual calls,
+  each +1i in FableWin's VC10-style /Od (B24B3 lesson): 180 > 125, so the delta is over-explained (by ~55i) without asserts (fw_b0.txt
+  measures b0, not b3). No ASSERT evidence -> no ASSERT device for this row.
+## B24B8 (2026-11-24): not worked (context spent on rows 1-3 and the coordinator's 0x00839940 task). One observation for the next agent:
+c2's penalty term is pen = (sz/2)*(g+a)/9000 when sz > S and g+a > 9000 (c2 0x1078D1DA..0x10742BA5; g = function running IL 0x10882B58).
+Retail CALLS ~CTimer at the f .1339 / .1004 cold returns, which needs c1 >= ~38.5 there, i.e. pen >= ~24 -> g ~ 20000+ at those sites in
+retail v ours ~9900 (pen 11). Same direction as the SIB's need for extra symbols before the HUD statement. HYPOTHESIS (not a finding): retail's PlayWave carried more
+front-end IL than ours. A decision-override compile (kit ../00d0d910/b8/inl/inl_force*.py, OBJ_OUT) can test "n3 without the regions +
+those two ~CTimer decisions forced to call" -> if raw = b3, the regions are exactly that decision set. Not run.

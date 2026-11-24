@@ -11,3 +11,8 @@
   comment with the evidence); differ/00be3970.cpp (= c6/s1.cpp) uses it, byte-identical to the probe build. Still Inferred: not for
   this agent to land. Compile order: no effect in the three-body test (rest of the object untested): the row compiled in one TU before or after the
   water / sea S-form bodies is byte-identical to its one-row compile (c6/ord, ../00be4660/NOTES.md B24C6).
+- (B24C11) Debug-build lookup DONE (owner's FableWin.exe): between `GetVert(i)` (0x02CBCE13) and the first GetMainAxisVertexWorldPos
+  (0x02CBCE34) FableWin has only an unused `GetVert(i + 1)` reference -- no store, no call. Retail's loop-top shape (Data reloaded for
+  start, [Data+t] operand order) is reproduced only by diagnostics that cannot land: a zero-byte `_ReadWriteBarrier()` (u3 / rf0, 4
+  blocks: the start SIB pair is still t-first) or `__assume` / a volatile read (exact loop top, but the function-wide mode breaks
+  FindVert and the push_back expansions). Nothing landable; the row stays DIFFER(2392v2390).

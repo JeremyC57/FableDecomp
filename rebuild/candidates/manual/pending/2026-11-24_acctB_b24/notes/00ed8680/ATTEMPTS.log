@@ -1,0 +1,48 @@
+09:14 00ed8680 grade 00ed8680.cpp TIMEOUT -- B24A9 baseline
+09:16 00ed8680 grade p1.cpp DIFFER(3793v3652) hunks=54 -- B24A9 port onto NScript_CV_TalentlessBardScript.h + CTB_BARD_DECLS overlay, explicit region CCharString("")
+09:39 00ed8680 grade base.cpp DIFFER(3793v3652) hunks=54  B24A10 baseline
+09:40 00ed8680 grade base.cpp DIFFER(3737v3652) hunks=53 /d2inlT60 -- A10 probe /d2inlT60
+09:40 00ed8680 grade base.cpp DIFFER(3793v3652) hunks=54 /d2inlT66 -- A10 probe /d2inlT66
+09:40 00ed8680 grade base.cpp DIFFER(3793v3652) hunks=54 /d2inlT70 -- A10 probe /d2inlT70
+09:40 00ed8680 grade t60.cpp DIFFER(3737v3652) hunks=53 /d2inlT60 A10 T60 listing
+09:41 00ed8680 grade base.cpp DIFFER(3793v3652) hunks=54  A10 base relist
+09:42 00ed8680 grade i1.cpp DIFFER(3793v3652) hunks=57  A10 inline_depth(0) round CIsThingAlive ctor (H40 lever)
+09:42 00ed8680 grade i2.cpp DIFFER(3777v3652) hunks=52  A10 i1 + CPREDICATEBASE_NOVTABLE
+09:42 00ed8680 grade i3.cpp DIFFER(3777v3652) hunks=52  A10 i2 + CSpawnedFunc1 ctor inline_depth(0) overlay
+09:42 00ed8680 grade i4.cpp DIFFER(3729v3652) hunks=38  A10 i2 + explicit CSpawnedFunc1 ctor specialization under inline_depth(0) (SwordCrowd 0x00ED5F50 device)
+09:43 00ed8680 grade i4.cpp DIFFER(3729v3652) hunks=38  A10 i4 relist
+09:44 00ed8680 grade i5.cpp DIFFER(3694v3652) hunks=19  A10 i4 + in-body inline_depth(0) round talk-block movie decl
+09:44 00ed8680 grade i5.cpp DIFFER(3694v3652) hunks=19  A10 i5 relist
+09:45 00ed8680 grade L1.cpp DIFFER(3729v3652) hunks=23 -- A10 loop head for(;;){TB_T} / do-while(0) TB_T (lever 4) / L2+movie pragma
+09:45 00ed8680 grade L2.cpp DIFFER(3729v3652) hunks=23 -- A10 loop head for(;;){TB_T} / do-while(0) TB_T (lever 4) / L2+movie pragma
+09:45 00ed8680 grade L3.cpp DIFFER(3694v3652) hunks=1 -- A10 loop head for(;;){TB_T} / do-while(0) TB_T (lever 4) / L2+movie pragma
+09:45 00ed8680 grade L3.cpp DIFFER(3694v3652) hunks=1  A10 L3 relist
+09:46 00ed8680 grade L7.cpp DIFFER(3896v3652) hunks=111 -- A10 TB_T as do-while(0) everywhere (lever 2): i4 base / i5 base / i5 + for(;;) head
+09:46 00ed8680 grade L8.cpp DIFFER(3862v3652) hunks=102 -- A10 TB_T as do-while(0) everywhere (lever 2): i4 base / i5 base / i5 + for(;;) head
+09:46 00ed8680 grade L9.cpp DIFFER(4010v3652) hunks=93 -- A10 TB_T as do-while(0) everywhere (lever 2): i4 base / i5 base / i5 + for(;;) head
+09:46 00ed8680 grade C1.cpp DIFFER(3737v3652) hunks=8 -- A10 L3 + hit cond nested if / bool local
+09:46 00ed8680 grade C2.cpp DIFFER(3737v3652) hunks=8 -- A10 L3 + hit cond nested if / bool local
+09:47 00ed8680 grade P1.cpp DIFFER(3694v3652) hunks=1 -- A10 prologue TB_T wrapped do-while(0): on L3 / on i5
+09:47 00ed8680 grade P2.cpp DIFFER(3694v3652) hunks=19 -- A10 prologue TB_T wrapped do-while(0): on L3 / on i5
+09:48 00ed8680 grade W1.cpp DIFFER(3729v3652) hunks=23 -- A10 loop as for(;;){if(T)break;} no pragma / with movie pragma / L3 without movie pragma
+09:48 00ed8680 grade W2.cpp DIFFER(3694v3652) hunks=1 -- A10 loop as for(;;){if(T)break;} no pragma / with movie pragma / L3 without movie pragma
+09:48 00ed8680 grade W3.cpp DIFFER(3729v3652) hunks=23 -- A10 loop as for(;;){if(T)break;} no pragma / with movie pragma / L3 without movie pragma
+09:48 00ed8680 grade i4.cpp DIFFER(3674v3652) hunks=19 /d2inlT50 -- A10 i4 + /d2inlT50
+09:48 00ed8680 grade i4.cpp DIFFER(3654v3652) hunks=20 /d2inlT51 -- A10 i4 + /d2inlT51
+09:48 00ed8680 grade i4.cpp DIFFER(3674v3652) hunks=19 /d2inlT49 -- A10 i4 + /d2inlT49
+09:48 00ed8680 grade t51.cpp DIFFER(3654v3652) hunks=20 /d2inlT51 A10 i4 T51 relist
+09:49 00ed8680 grade L3.cpp DIFFER(3740v3652) hunks=9 /d2inlT50 -- A10 L3 + /d2inlT50
+09:49 00ed8680 grade L3.cpp RELOCATION_MATCH /d2inlT51 -- A10 L3 + /d2inlT51
+09:49 00ed8680 grade L3.cpp RELOCATION_MATCH /d2inlT60 -- A10 L3 + /d2inlT60
+09:49 00ed8680 grade L3.cpp DIFFER(3694v3652) hunks=1 /d2inlT66 -- A10 L3 + /d2inlT66
+09:49 00ed8680 grade W3.cpp DIFFER(3740v3652) hunks=9 /d2inlT50 -- A10 W3 + /d2inlT50
+09:49 00ed8680 grade W3.cpp RELOCATION_MATCH /d2inlT51 -- A10 W3 + /d2inlT51
+09:49 00ed8680 grade W3.cpp DIFFER(3687v3652) hunks=22 /d2inlT60 -- A10 W3 + /d2inlT60
+09:49 00ed8680 grade W3.cpp DIFFER(3729v3652) hunks=23 /d2inlT66 -- A10 W3 + /d2inlT66
+09:50 00ed8680 grade c1.cpp RELOCATION_MATCH /d2inlT51 -- A10 clean: macros expanded, enums/externs/operator+ from headers
+09:52 00ed8680 grade c2.cpp DIFFER(3636v3652) hunks=15 /d2inlT51 -- A10 c1 + MOVIEBASE_OUTOFLINE_DTOR (pick-any)
+10:03 00ed8680 grade d1.cpp RELOCATION_MATCH -- A10 debug-build shapes: Ego_d names, TRetVoid, for-scope idiom for(;;NSF) main loop + int verse, stock flags
+10:03 00ed8680 grade d1.cpp DIFFER(3542v3652) hunks=46 /d2inlT51 -- A10 d1 + T51
+10:03 00ed8680 grade d2.cpp DIFFER(3684v3652) hunks=20 -- A10 d1 minus CSpawnedFunc1 spec / minus CIsThingAlive pragma
+10:03 00ed8680 grade d3.cpp DIFFER(3668v3652) hunks=4 -- A10 d1 minus CSpawnedFunc1 spec / minus CIsThingAlive pragma
+10:03 00ed8680 grade d1.cpp RELOCATION_MATCH -- A10 d1 final header lines

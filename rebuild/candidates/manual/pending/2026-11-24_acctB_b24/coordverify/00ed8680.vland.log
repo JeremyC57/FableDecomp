@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00ed8680   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ed8680 RELOCATION_MATCH NScript::CV_TalentlessBardScript::CTB_Bard::Main

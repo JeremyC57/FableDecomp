@@ -1,5 +1,8 @@
+address	name	grade	grades_used	note
+00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks	~45 grades + packer probes	z2 text: prologue y-copy register left; template-text conflict with the sea row (see its NOTES)
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks	~50	z2 text; template-text conflict with sea twin; see NOTES
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks	~45 + B24C3 ~110 grades/probes	z2 (W-form); sea needs S-form; see NOTES B24C3
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2349v2349) 4 hunks (z2, hand-merged W text)	B24C5 ~20 grades	S-form is the template (tail merge proven); S-form water 16 dd blocks; see NOTES B24C5
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	S-form 16 dd blocks (z2 W-form 4 hunks, hand-merged)	B24C6	compile-order test (3 orders, one TU with 0x00BE3970 + sea): byte-identical -- no effect in the three-body test, rest of the object untested; unified overlay ../00be3970/hdr inert; B24C9: not reached, unchanged
 00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	S-form 16 hunks (z2 W-form 4 hunks)	B24C10	baseline regrade only; residue = prologue y piece edx v ebp + main-loop i start/slots (NOTES B24C10)
+00be4660	CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge	DIFFER(2381v2349) 16 hunks (S-form and FableWin full form identical)	B24C11	FableWin full form keeps sea RM (c11/bd_full.cpp + c11/ov_c); residue y piece edx v ebp + i slot; see NOTES B24C11

@@ -93,7 +93,7 @@ first combination pass's `_M_insert_overflow` site scores 68 v the default 74) a
 landed 0x01219F00` (a compiler-generated static initializer symbol) plus RELOC_NAME 0x0129BA3C (label spelling). Staged only so the work is
 durable; the agent is still on it. Do not land until this section says READY.
 
-## 0x00839940 CThingGameObject::OnHit: NOT READY -- being re-texted (Account A, 2026-11-24: FableWin.exe 0x027EC280 has ELEVEN recoverable asserts; B is replacing the five fitted ones with them; A's NF341 fixes the GetDef<CMaterialDef> copy that holds the row). Earlier status: (B24B5..B24B7, re-verified 2026-11-24)
+## 0x00839940 CThingGameObject::OnHit: RE-TEXTED with FableWin's eleven asserts (B24B8, re-verified 2026-11-24): RELOCATION_MATCH PASS on overlay hdr/00839940, vt PASS, mutation FAIL. Asserts 1, 2, 4 are dead arms; the eight success-form asserts (3, 5-11) are the kept calls themselves (VERIFY-style release spelling, each marked `// FableWin assert N`); the `if (!(call)) { dead arm }` spelling gives DIFFER(5198v5195). Measured margin at the hero site about 24 IL: regrade after NF341 and the ISDEAD merge. Assert 7's position is unverified. Still HELD for A's NF341 (GetDef<CMaterialDef> copy). Previously: NOT READY -- being re-texted (Account A, 2026-11-24: FableWin.exe 0x027EC280 has ELEVEN recoverable asserts; B is replacing the five fitted ones with them; A's NF341 fixes the GetDef<CMaterialDef> copy that holds the row). Earlier status: (B24B5..B24B7, re-verified 2026-11-24)
 RELOCATION_MATCH PASS, stock flags, strict vland on overlay `hdr/00839940/` (= the agent's `hdrf`, re-based by the coordinator onto today's
 CThing.h: it now uses the LANDED `FABLE_RETAIL_CTHING_ISDEAD_DIRECT` instead of the agent's identical `ISDEAD_BITFIELD`, and the one edited line
 is the existing `#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT` turned into `#if <ONHIT && ONHIT_HASTC_CLASSTYPE> ... #elif <ONHIT>`: default
@@ -118,3 +118,20 @@ on the combination-anims test: `if (EnableCombinationAnimations && true)`. Mecha
 admissible frequency window is (0.173, 0.365]; two `&&` levels fail. A second condition that is always true in this build is plausible (a
 debug / feature flag), but `&& true` is not what anyone wrote, and the global's name `NGlobalConsole::EnableCombinationAnimations`
 (0x013756F7) rests on one source (Ego_d publics, no address). Owner decision asked.
+
+## 0x00ED8680 NScript::CV_TalentlessBardScript::CTB_Bard::Main: matched, one pick-any question for A (B24A10, re-verified 2026-11-24)
+RELOCATION_MATCH PASS at STOCK flags, strict vland, no warnings; vt PASS, mutation FAILs. Overlay: NScript_CV_TalentlessBardScript.h +27,
+additive (`FABLE_RETAIL_CTB_BARD_DECLS`, nested CTB_Bard from the Ego_r layout). What made it match: the debug build's text -- Ego_d local names,
+`TRetVoid _Fail_Val` with `return _Fail_Val.Return();` at every terminate exit, FableWin's `if (false) {} else for (;; Game->NewScriptFrame())`
+loop shapes -- plus two existing lane devices, each needed: `#pragma inline_depth(0)` round the row-local CIsThingAlive ctor with
+`FABLE_RETAIL_CPREDICATEBASE_NOVTABLE` (the chunk H40 lever) and round an explicit specialization of the CSpawnedFunc1 ctor (the landed
+0x00ED5F50 device); both carry an `// Inline-budget:` line. Pick-any: `??1MovieBase` differs from 0x006E7B80 and IS called by the row, but its
+bytes equal the copy landed 0x00D62480 already emits (HEAD debt); `??1CSpawnedFuncBase` and `??_GCIsThingAlive` differ, not called, equal to
+landed rows' copies. **Question for A** (notes/00ed8680/ESCALATE.md): EXTRA_RULES 2026-11-21 does not list a differing copy the row's own
+function calls under a symbol HEAD already binds -- hold or debt?
+
+**Update on the twins (B24C11, debug build read):** FableWin's TesselateEdge (0x02CC14F0 water) gives the template's real text (an
+`adj_strip = 0` init, a `next_water` reference, asserts in the loop and helpers, `AddCompositeVertex(strip, i, adj_strip, adj_index, vertical)`,
+FableWin's FindFirstWaterAdjacentVertex / IterateThroughAdjacentVerts). With ALL of it (agent's c11/bd_full.cpp) the SEA twin still
+matches (fg and masked compare) and no longer needs the "start via GetWaterVertex(i)" device, so the staged sea text above will be superseded
+by that evidenced form once the water twin matches too (water: same 16-hunk register residue).

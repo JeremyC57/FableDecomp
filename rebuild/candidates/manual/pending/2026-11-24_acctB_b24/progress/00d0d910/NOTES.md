@@ -11,3 +11,26 @@
   (shared by the first `if(T) return` of BOTH Gate2Open branches, 0x00D0DA57 / 0x00D0E61C). Every other exit, in-movie ones included,
   joins 0x00D0EB73 (called ~CTimer 0x00CD4470 + ~STB). ~MovieBase expanded at every in-movie exit. Draft uses `#pragma auto_inline(off)` round
   ~CTimer (diagnostic, not landable). Same MovieBase-always / ~CTimer-split conflict as 0x00D0C410 (B24A recipe fails: in-movie cold exits).
+## B24B6 (2026-11-24): visible-body lever checked on the shared MovieBase cost (probe in ../00dc93f0/v1.cpp): a VISIBLE noinline
+CP<Movie> dtor specialization leaves implicit ~MovieBase at sz 25 / c1 19 (same as declared-only), so it cannot change this row's
+MovieBase-v-~CTimer conflict. Not worked further by B24B6 (context).
+## B24B7 (2026-11-24): full hunk map (fg_b7.log, --lines 400), r0 /d2inlS15 unchanged DIFFER(4672v4752) 36 hunks
+- Hunk 1 (0x00D0DA0F..DA39): retail keeps TimerIndex (call [eax+0x15C] result) in edi because its EXPANDED ~CTimer at the pre-loop
+  exit 0x00D0E8A1 uses it (`push edi; call [eax+0x160]`); ours calls ~CTimer there, so edi becomes the const 0 (`xor edi,edi`,
+  `mov [esp+54h],edi`). Hunks at 0x00D0E89D..0x00D0EB63: the two missing hot ~CTimer blocks plus eax/edx flips after them.
+  Every hunk traces to the MovieBase-always / ~CTimer-split conflict; no independent residue found to work.
+- B24B7 a1 test (advisor): b7/a1.cpp = r0 without the auto_inline(off) round ~CTimer, STOCK flags (0x00D0C410's a1 form):
+  DIFFER(4544v4752) 117 hunks (b7/a1.log). Hunk 1 PERSISTS (`mov edi,0` at 0x00D0DA41 v retail `mov edi,eax` TimerIndex) and new slot
+  shifts appear early (0x00D0D927.., MovieBase/STB locals). So the claim "every hunk is the CTimer conflict" is NOT proven: under a1 the
+  edi role still differs; whether a1 expands ~CTimer at retail's two hot blocks was not read (count `call [reg+0x160]` in the q listing
+  next: retail has exactly 2). Open for the next agent.
+## B24B8 (2026-11-24): PROVEN conflict-only (ESCALATE.md). Lessons that apply (top of the row's learning):
+- (lane) a c2 decision-override compile (gdb at 0x1078CFDA, `set $eax`) is a cheap exact what-if: it tells whether a residue is ONLY
+  inline decisions. Kit: b8/inl/inl_force*.py + OBJ_OUT, b8/objgrade.py.
+- ~CTimer c1 14 / implicit ~MovieBase c1 19 (sz 25), pen 0 (g <= 2675 < 9000) in this row: no S/T flag splits them.
+- Counts: retail ~CTimer expanded 2 (`call [reg+0x160]`) + called 1 (0x00CD4470 at the common tail 0x00D0EB73); MovieBase expanded 9.
+  ours r0 (S15+auto_inline(off)) 0+1 / 9; a1 (stock) 1+1 / called 13; f1 (stock + MOVIEBASE_FORCEINLINE) 2+1 / 9 (+vptr stores).
+- RESULT (decision set proven, which side's cost causes it is NOT): stock flags + all 21 ~MovieBase decisions forced = RELOCATION_MATCH;
+  S15 + 31 cold ~CTimer decisions forced = RELOCATION_MATCH. Counterexample in the same object: 0x00DC93F0 retail calls ~MovieBase.
+  No independent residue exists. differ/ = pragma-free stock form (4544v4752, 117 hunks); r0 kept as b8/differ_prev_r0_autoinline.cpp.
+- Tried, no effect: forceinline GROBase dtor (g1), non-inline ~CTimer under S15 (n1). Row waits for the MovieBase-text answer.

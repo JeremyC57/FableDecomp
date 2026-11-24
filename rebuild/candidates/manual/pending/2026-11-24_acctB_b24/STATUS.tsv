@@ -8,3 +8,4 @@ address	grade	bytes	test	module	name	flags	notes
 00db3fa0	RELOCATION_MATCH	4042	PASS (VC7.1, lander check)	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader	Main		purity clean; 0 stale overlay header(s)
 00975bb0	RELOCATION_MATCH	4624	PASS (VC7.1, lander check)	CAIStateGroup_JackOfBladesStage1	Update		purity clean; 0 stale overlay header(s)
 00839940	RELOCATION_MATCH	5195	PASS (VC7.1, lander check)	CThingGameObject	OnHit		overlay hdrf; Inferred asserts
+00ed8680	RELOCATION_MATCH	3652	PASS (VC7.1, lander check)	NScript::CV_TalentlessBardScript::CTB_Bard	Main		purity clean; 0 stale overlay header(s)

@@ -166,3 +166,78 @@
   Next: find the natural statement -- e.g. a store through `indices` or a vertex reference that is overwritten later on every path
   (dead-store elimination after CSE), or a debug-only store whose target is later proven dead; grade each with c10/g.sh and look for
   2390 bytes with the b1 head. (b1 / b2 are diagnostics only, not candidates.)
+## B24C11 (2026-11-24)
+- Tools: c11/g.sh (= c10/g.sh, writing to c11/, grader output to c11/<n>.g -- no pipe into head). Baseline k0 = 25 blocks.
+- Lessons applied: B24C10 b1 (indirect store = barrier); B24C9 call-object-first (n/a at the loop top).
+- The "natural dead store" lead is CLOSED by probes (all diagnostics, c11/):
+  * local / aliased-local / reference-out / self-assign stores are NOT barriers: e1/e2 (dead local CVertex copy), e3 (*&local), a1
+    (local whose address escapes to a call after the loop, stored between vert and start), r1/r2 (inline ref/pointer out-param into a
+    dead local), d2/d3/d4 (vert.F = vert.F, vert = vert), q2 (indices[k] = indices[k]): all byte-identical to k0 (25).
+  * a branch (join) between vert and start is not a barrier either (j1: start still read through vert) -> CSE is global, not EBB.
+  * any store to NON-local memory is the barrier: b1 (indices[0]=0), s1 (vert.U = 0), s2 (strip->Tesselated = true): 4 blocks each,
+    the same head; q1 (store to parameter x) 126 (not a barrier, colouring junk).
+  * c2 DOES delete an indirect store, but only when the next thing overwrites the same address (q3: indices[0]=0; indices[0]=1 -> one
+    store emitted, barrier kept, 4 blocks). Across the [strip+29h]/[strip+8] loads it does not (q4: both kept, 32). Retail has no
+    pointer store before those loads and the short-span path writes nothing through a pointer, so no overwriter can exist -> retail's
+    construct is not a deleted dead store.
+  * Every store barrier gives start's load as [eax+esi+0Ah] (t + Data2) where retail has [esi+eax+0Ah] (Data2 + t): treat that SIB
+    order as the fingerprint of the real construct (retail builds start's address differently), not as a leftover.
+- Caveat: FableWin's Engine_landscape_tesselator.obj has std::move / std::forward / _Cons_val / _Debug_pointer (VC10-era STL), so
+  FableWin was NOT built with VC7.1: the "FableWin-exact /Od size" claims in the headers are approximate; do not chase sizes.
+- (B24C11) Fingerprint scan of every old listing (c11/fp.py: Data reloaded after vert? start load operand order) + new probes:
+  * Data-first SIB ([Data2+t], retail's) comes ONLY from volatile reads (c5/m2, c11/v1 `*(volatile unsigned short*)indices;`,
+    c11/v2 volatile global read) and `__assume` (u1 `__assume(strip != 0)` / u2 between vert and start: the loop top
+    0x00BE3A61..0x00BE3A9E is retail's EXACTLY, incl. the late t spill `mov [esp+28h],eax`). Store (b1/s1/s2/q3), call (c10/b2) and
+    `_ReadWriteBarrier()` (u3: 2390 bytes, 4 blocks = SIB pair + t spill placed before the barrier) give t-first.
+  * __assume is out (owner rule; and it is not local: u1/u2 also change FindVert before the loop and the push_back expansions in the body,
+    33 blocks; u6 at the function top = no effect at all; u8 after `end` = other code; u4 `__assume(index < Count)` in operator[] = 138).
+    GOTCHAS 359/392: __assume stops VC7.1 forwarding inlined reference args / return values -> reading: retail's start computes its own
+    i*20 (inlinee index not forwarded), merged with vert's late; so the missing ingredient is "no forwarding of start's inlined index"
+    + a memory barrier, or one construct doing both.
+  * No effect / not barriers: scoped object with an inline dtor (o1), address-taken loop index + barrier (h1, 137); spelling sweep on
+    the rwb / indices scaffolds (c11/sw: start via (unsigned long)i, `next` reference, end before start, vert via Data+i / (&GetVert(0))[i],
+    start via PeekIsVertical()?GetVert(i).WorldY:..): SIB never flips.
+  * More no-flip probes: accessor-body overlays c11/ov_{oa,ob,oc} (operator[] via named T& r / *(Data+index) / T* p) and ov_ga
+    (GetMainAxisVertexWorldPos via named CVertex& v: 62), ov_gb (via GetVert(index)), each with and without the q3 store scaffold:
+    same t-first order; c8/hdr_j if/return accessor with scaffolds (q_j 52, u_j 77): t-first. u7 (__assume after the loop) = 140,
+    i.e. __assume changes the loop top from elsewhere: it is a mode, not a statement.
+  * Volatile reads (v1/v2) bring the SAME body diffs as __assume (0x00BE39F2 FindVert, 0x00BE3AD3.., push_back at 0x00BE3B24):
+    retail's start order and retail's body have never co-occurred in a probe.
+- (B24C11) DEBUG BUILD READ (owner's FableWin.exe, /opt/fable_lane/dl/debug_owner; c11/fw/res.py resolves ILT thunks to PDB names,
+  c11/fw/str.py reads assert strings; listing c11/fw/te.r, lane only). FableWin TesselateEdge 0x02CBCC00, statement by statement:
+  * head = ours; inside `if (adj_strip)`: ASSERT "adj_strip->PeekIsVertical()==is_left_right_edge" then FindVert.
+  * loop top: `vert = strip->GetVert(i)` [ebp-40h], `GetVert(i + 1)` stored to [ebp-3Ch] and NEVER read (an unused `next`
+    reference), start, end -- nothing else (no store, no call) between vert and start.
+  * `if (end-start<=1) previous=-1; else { found=false; fan=-1; if (adj_strip) { while (Main(adj_idx) < end) { ASSERT
+    "adj_strip_index<adj_strip->PeekVertexCount()"; ... } if (found) { ASSERT "last_new_edge_vertex>=0"; ... } else {...} } }`:
+    the found / not-found tail is INSIDE `if (adj_strip)` (retail 0x00BE3AC9 `je 0x00BE42A0` agrees).
+  * operator[] (0x02CBDD10) assert text is "index>=0 && index<Count" (not `index < Count`).
+  * Names from the assert strings: adj_strip, adj_strip_index, is_left_right_edge, last_new_edge_vertex (locals; PDB local records
+    not read yet: llvm-pdbutil fails on FableWin.pdb "Too many directory blocks").
+  * c11/f0 (FableWin structure, no asserts) = 25 (byte-identical to k0); f2 (+ unused next) 27; f3 (+3 dead-arm asserts) 27; f1 (both) 30.
+    None reloads Data. __noop (z1/z2) inert. So the debug build shows NO statement that would be retail's barrier: the loop-top
+    residue is not a missing statement visible at /Od. Remaining readings: a TLC-era source difference the later debug build lost,
+    or a compiler-side cause.
+- (B24C11) FableWin helpers checked: AddCompositeVertex 0x02CBD7C0 = ours statement for statement (refs adjacent, vert, next; then
+  size / push_back / v; the U/V interpolation identical); no asserts in the landscape helpers. FableWin and Ego_d sizes are equal
+  (1600 etc.), and FableWin carries VC10-era STL: treat it as a later build of the TLC tree (path e:\fabletlc\...\fable1_5mainpc).
+- (B24C11) The loop-top residue is an operand-order family: with any zero-byte barrier (c11/rf0..rf3 = FableWin forms +
+  _ReadWriteBarrier) everything is retail's except the start SIB pair 0x00BE3A7E/85 (+ t spill 0x00BE3A78), and the evidenced unused
+  `next` / asserts additionally flip 0x00BE3FA3/AD ([eax+edx] v retail [edx+eax]); B24C6's dead asserts flipped the same pair. So the
+  base/index order follows IL temp numbering; retail's numbering differs from every text tried. Volatile / __assume (Data-first at the
+  loop top) put VC7.1 into a mode that also changes FindVert and the push_back expansions (gma/gmb: FableWin form + __assume = 35).
+- (B24C11) Flags tried on f0: /Ow 141, /Oa 134, /Op 109, /Og- 23 blocks-equivalent hunks (not retail).
+## Exact state at hand-back (B24C11)
+- differ/00be3970.cpp = c11/f0.cpp: FableWin structure (found / not-found tail inside `if (adjacent_strip)`), byte-identical to k0:
+  DIFFER(2392v2390), 25 dd blocks, overlay hdr/. The FableWin-evidenced additions (unused `next`, 3 asserts as dead arms; operator[]
+  text "index>=0 && index<Count") are NOT in it because they cost 2-5 blocks (c11/f1/f2/f3, if0..if3) -- they belong in the final text
+  once the residue is understood.
+- Diagnostics (never candidates): c11/u3.cpp / rf0.cpp (_ReadWriteBarrier after vert: 2390 bytes, 4 blocks), c11/u1.cpp (__assume:
+  exact loop top), c11/q3.cpp (overwritten store: 4 blocks).
+- Next ideas: (1) c2 temp numbering at the start / 0x00BE3FA3 sites (c2prio.py --trace on f2 v rf2) to see which IL temp order makes
+  Data the base; (2) local names from FableWin.pdb / Ego_d.pdb S_REGREL32 records (llvm-pdbutil fails on FableWin.pdb; Ego_d.pdb
+  modules dump works: c11/fw/mods_d.txt) -- use the real local names (adj_strip, adj_strip_index, is_left_right_edge,
+  last_new_edge_vertex from the assert strings) when the row is handed back.
+- (B24C11, correction) "the base/index order follows IL temp numbering" above is a READING, not measured (no c2 trace was run); the
+  measured facts are only which texts flip which operand pairs. Constant guard `if (0) return;` before the loop (FableWin's
+  `xor ; je ; jmp end`): inert (c11/gd0, 25). Declaring start/end before vert or at function scope on the rwb scaffold (dc1/dc2): no flip.

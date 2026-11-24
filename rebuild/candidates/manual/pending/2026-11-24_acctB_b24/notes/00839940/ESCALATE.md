@@ -66,3 +66,9 @@ OnHit body bytes (only its size, 2761i/12015b, a later build, is on disk) or Ego
   (g < 8985 there) -- half a fix, so not used.
 - /d2inlT<N>: test's c1 is 58 at every GetTC site (f 1.0 inside the forced chain), so a threshold that calls it at the hero site calls
   it at all 30 other sites. The 9000 cap is a c2 constant (`cmp ecx,2328h` at 0x1078D1ED, MATCHING_PLAYBOOK): no flag moves it.
+
+## B24B8 update (2026-11-24): section 0's fitted five replaced by FableWin's eleven (g11/)
+The asserts are now RECOVERED (FableWin.exe 0x027EC280, Account A), not fitted. Only their release spelling is inferred: the eleven as
+`FABLE_RETAIL_ASSERT(x)` dead arms (+ the kept call for success forms) overshoot the IL window (DIFFER); with the eight success forms as the
+kept call alone (VERIFY-style) and the three condition asserts as dead arms the row is RELOCATION_MATCH (g11/payload.json). Lander decides
+which release macro to accept; numbers in NOTES.md (B24B8).
