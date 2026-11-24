@@ -92,3 +92,19 @@ Coordinator re-verify of the agent's intermediate payload: RELOCATION_MATCH PASS
 first combination pass's `_M_insert_overflow` site scores 68 v the default 74) and with `RELOC_CONFLICT _$E2 -> 0x01229630 here, 0x01228930 in
 landed 0x01219F00` (a compiler-generated static initializer symbol) plus RELOC_NAME 0x0129BA3C (label spelling). Staged only so the work is
 durable; the agent is still on it. Do not land until this section says READY.
+
+## 0x00839940 CThingGameObject::OnHit: READY, with an Inferred item for the lander (B24B5..B24B7, re-verified 2026-11-24)
+RELOCATION_MATCH PASS, stock flags, strict vland on overlay `hdr/00839940/` (= the agent's `hdrf`, re-based by the coordinator onto today's
+CThing.h: it now uses the LANDED `FABLE_RETAIL_CTHING_ISDEAD_DIRECT` instead of the agent's identical `ISDEAD_BITFIELD`, and the one edited line
+is the existing `#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT` turned into `#if <ONHIT && ONHIT_HASTC_CLASSTYPE> ... #elif <ONHIT>`: default
+and existing ONHIT branches unchanged; CCreatureDef.h / CHeroExperienceDef.h additive StatGetTypeName opt-ins). vt PASS, mutation FAILs.
+What made it match: the GetSubDef<T> body visible (engine/CDefClassBase_GetSubDef.h), one flat weapon guard instead of a nested block (frame
+packer trace), FableWin-text helpers, and **`// Inferred:` five dead release ASSERTs** on the pointer results OnHit dereferences unchecked
+(two GetArmourDef reads, ptcd_explosion, two GetPBaseDef calls): they push c2's running IL at the hero-experience site from 8927 to 9237
+(cap 8992), so IS_THING_ALIVE / bitset::test are called there as in retail. Graded window +74..+396 matches; FableWin's /Od OnHit is +1217 i
+(upper bound ~29 asserts after VC10's per-virtual-call extra). The two GetPBaseDef asserts build a class temporary inside the dead branch; the
+3-assert alternative without temporaries (agent's asrt/f4.cpp) also matches with a 9-unit margin. Same rule as 0x00975BB0 (landed by A).
+Warnings: 6 RELOC_NAME (folded bodies / placeholder labels, two-source lookups in notes/00839940/NOTES.md) and 1 RELOC_CONFLICT:
+`DeregisterCombatant` -> 0x006EA430 here v 0x006ED9C0 in landed 0x007355F0 -- the landed spelling of 0x006EA430 is wrong: it is
+`CCombatManager::SetAttackerAsBeenStruck` (Ego_r object order and size, FableWin agree; notes/00839940/NAME_FIXES.tsv). Pick-any: every
+leaf-called copy compared (agent's leafcopies.py): 12 EQ, 1 NEQ = the known GetDef<CMaterialDef> 0x0066C340 HEAD debt.

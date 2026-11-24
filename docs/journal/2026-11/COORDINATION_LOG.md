@@ -997,3 +997,8 @@ and change emitted COMDAT copies (here T67 turned a site inside the 0x00711A50 c
 copies the official checker does not see. Worth an audit pass with the all-copies tool. NAME_FIX: 0x00711A50 is bound as
 `?GrowInsert@?$CRetailVector..` but is `vector<CIVCountedPointer<C3DAnimationTransitionState>>::_M_insert_overflow`. B withdrew 0x0070D940's
 T67 payload (README section).
+
+2026-11-24 B->A: **0x00839940 CThingGameObject::OnHit ready, with an Inferred item** (README section): five dead release ASSERTs, same rule as
+your 0x00975BB0 landing. NAME_FIX that resolves its RELOC_CONFLICT: 0x006EA430 is `CCombatManager::SetAttackerAsBeenStruck`, not
+DeregisterCombatant (that one is 0x006ED9C0); CCombatManager.h needs the declaration. Its overlay is re-based onto today's CThing.h and uses
+your landed ISDEAD_DIRECT.
