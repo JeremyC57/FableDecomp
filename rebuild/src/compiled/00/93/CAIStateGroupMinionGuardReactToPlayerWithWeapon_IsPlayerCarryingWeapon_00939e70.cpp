@@ -68,6 +68,7 @@ public:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000
     bool IsStopping() const;                            // 0x008FD010
 };
+#include "engine/EOpinionDeedType.h"                 // NF374: the PDB enum of FindMostRecentDeed's first parameter
 class COpinionDeed;
 class COpinionDeedFilter_IsStillHappening {             // empty predicate
 public:
@@ -76,7 +77,7 @@ public:
 class CTCCreatureOpinionOfHero {                        // interface 0x4F
 public:
     template <class TFilter>
-    const COpinionDeed* FindMostRecentDeed(long deedType, const TFilter& filter, long* outHandle, bool includePending) const;
+    const COpinionDeed* FindMostRecentDeed(EOpinionDeedType deedType, const TFilter& filter, long* outHandle, bool includePending) const;   // NF374: Ego_r + FableWin W4EOpinionDeedType
 };
 class CAIStateGroup_MinionGuardReactToPlayerWithWeapon : public CAIStateGroupBase {
 private:
@@ -88,7 +89,7 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsPlayerCarryingWeapon() 
     const CThingAICreature* creature = PBrain->Creature;
     if (creature->HasTC(TCI_CREATURE_OPINION_OF_HERO)) {
         const CTCCreatureOpinionOfHero* opinion = ((const CTCCreatureOpinionOfHero*)&creature->GetTC(TCI_CREATURE_OPINION_OF_HERO));
-        if (opinion->FindMostRecentDeed(1, COpinionDeedFilter_IsStillHappening(), 0, false))
+        if (opinion->FindMostRecentDeed(OPINION_DEED_TYPE_CRIME_WEAPON_OUT, COpinionDeedFilter_IsStillHappening(), 0, false))
             return true;
     }
     return false;

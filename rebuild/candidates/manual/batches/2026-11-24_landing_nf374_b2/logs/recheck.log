@@ -1,0 +1,17 @@
+addr       parity           behav  name
+006c7960   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006c7960   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+006c7960   WARN SHARED_HEADER_AVAILABLE COpinionDeed (engine/COpinionDeed.h)
+006c7960   RELOCATION_MATCH PASS   TransferOut
+00939e70   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+00939e70   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00939e70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00939e70   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00939e70   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00939e70   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00939e70   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero (engine/CTCCreatureOpinionOfHero.h)
+00939e70   RELOCATION_MATCH PASS   IsPlayerCarryingWeapon
+
+WINS: 2
+  006c7960 RELOCATION_MATCH CPersistTraits<COpinionDeed*>::?TransferOut@?$CPersistTraits@PAVCOpinionDeed@@
+  00939e70 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToPlayerWithWeapon::?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ

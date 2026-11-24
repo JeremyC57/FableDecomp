@@ -81,7 +81,7 @@ template <> struct CPersistTraits<C3DVector> {
 };
 template <> struct CPersistTraits<CIntelligentPointer<CThing> > {
     CIntelligentPointer<CThing> DefaultVal;
-    void TransferOut(CPersistContext* context, CCharString* out, const CIntelligentPointer<CThing>* value);   // 0x006C7B00
+    void TransferOut(CPersistContext& context, CCharString& out, CIntelligentPointer<CThing>& value);   // 0x006C7B00 (NF374: Ego_r + FableWin, by reference)
 };
 template <> struct CPersistTraits<COpinionDeed*> {
     void TransferOut(CPersistContext* context, CCharString* out, COpinionDeed* const* value);
@@ -106,7 +106,7 @@ void CPersistTraits<COpinionDeed*>::TransferOut(CPersistContext* context, CCharS
     bool searching = false;
     boolTraits.TransferOut(context, out, &searching);
     *out += ",";
-    pointerTraits.TransferOut(context, out, (const CIntelligentPointer<CThing>*)&(*value)->PTarget);
+    pointerTraits.TransferOut(*context, *out, *(CIntelligentPointer<CThing>*)&(*value)->PTarget);
     *out += ",";
     boolTraits.TransferOut(context, out, &(*value)->IsCrimeReportedToVillage);
     *out += ",";

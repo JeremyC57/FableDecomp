@@ -15207,7 +15207,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?RemoveHousePosition@CTCHeroStats@@QAEXABVCRegion@@ABVC3DVector@@@Z	0057adf7	006c17b0
 ?push_back@?$CRetailVector@V?$CIntelligentPointer@VCThing@@@@@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z	004ad520	006c3c30
 ?TransferOut@?$CPersistTraits@PAVCOpinionDeed@@@@QBEXAAVCPersistContext@@AAVCCharString@@PBQAVCOpinionDeed@@@Z	006c7960	006c78f0
-?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBV?$CIntelligentPointer@VCThing@@@@@Z	006c7b00	006c7960
+?TransferOut@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAV?$CIntelligentPointer@VCThing@@@@@Z	006c7b00	006c7960
 ?TransferOut@?$CPersistTraits@VC3DVector@@@@QAEXPAVCPersistContext@@PAVCCharString@@PBVC3DVector@@@Z	009e7f90	006c7960
 ?TransferBinaryOut@?$CPersistTraits@PAVCOpinionDeed@@@@QBEXAAUCDataOutputStreamWriter@@PBQAVCOpinionDeed@@@Z	006c5310	006c7ba0
 ?TransferBinaryIn@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCMemoryDataInputStream@@AAV?$CIntelligentPointer@VCThing@@@@@Z	006c8780	006c88d0
@@ -19315,7 +19315,7 @@ __setdefaultprecision	0040135c	00401067
 ?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ	00938280	0090f7d0
 ?AIAction_RandomFlyToPos@CAIStateGroup_FlyingThingBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z	009130d0	00914600
 ?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z	00912700	00914600
-??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@JABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z	0093a3c0	00939e70
+??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z	0093a3c0	00939e70
 ?GetBuyersOrder@CAIStateGroup_SellToBuyer@@AAEPBVCMessageEvent@@XZ	0094bfc0	0094c010
 ?IsRunnable@CAIStateGroup_MinionReactToCrime@@UAE_NXZ	00958cb0	00958f00
 ?MakeOwnCopyOfData@CCharString@@IAEXXZ	0099eaf0	0099f2a0
