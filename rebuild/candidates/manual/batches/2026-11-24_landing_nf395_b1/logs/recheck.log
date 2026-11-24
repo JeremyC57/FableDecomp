@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00728a40   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00728a40   WARN SHARED_HEADER_AVAILABLE CTCAppearanceMorphBase (engine/CTCAppearanceMorphBase.h)
+00728a40   RELOCATION_MATCH PASS   UninitFillN_SPairLongCSecond_005bbdf1_00728a40
+00728b10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00728b10   WARN SHARED_HEADER_AVAILABLE CTCAppearanceMorphBase (engine/CTCAppearanceMorphBase.h)
+00728b10   RELOCATION_MATCH PASS   UninitCopy_SPairLongCSecond_005bbdf1_00728b10
+00728b50   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00728b50   WARN SHARED_HEADER_AVAILABLE CTCAppearanceMorphBase (engine/CTCAppearanceMorphBase.h)
+00728b50   RELOCATION_MATCH PASS   UninitFillN_SPairLongCSecond_005bbdf1_00728b50
+
+WINS: 3
+  00728a40 RELOCATION_MATCH _global::??$__uninitialized_fill_n@
+  00728b10 RELOCATION_MATCH _global::??$__uninitialized_copy@
+  00728b50 RELOCATION_MATCH _global::??$uninitialized_fill_n@

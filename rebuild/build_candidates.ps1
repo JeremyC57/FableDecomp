@@ -165210,6 +165210,7 @@ $catalog = @(
         Source = '00/72/global_UninitFillNSPairLongCSecond005bbdf100728a40_00728a40.cpp'
         TestSource = '00/72/global_UninitFillNSPairLongCSecond005bbdf100728a40_00728a40_test.cpp'
         PassPattern = '00728a40_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '00728b50'
@@ -165217,6 +165218,7 @@ $catalog = @(
         Source = '00/72/global_UninitFillNSPairLongCSecond005bbdf100728b50_00728b50.cpp'
         TestSource = '00/72/global_UninitFillNSPairLongCSecond005bbdf100728b50_00728b50_test.cpp'
         PassPattern = '00728b50_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '0074f530'
@@ -173887,6 +173889,7 @@ $catalog = @(
         Source = '00/72/global_UninitCopySPairLongCSecond005bbdf100728b10_00728b10.cpp'
         TestSource = '00/72/global_UninitCopySPairLongCSecond005bbdf100728b10_00728b10_test.cpp'
         PassPattern = '00728b10_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '0074f4f0'

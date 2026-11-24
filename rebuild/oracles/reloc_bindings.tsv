@@ -2523,7 +2523,6 @@ __CIfmod	00bfeb28	006f99b0
 ??_7CTCPhysicsNavigator@@6B@	01266314	007266c0
 ?CTCPhysicsNavigator_Notify@@YIHPAXHPBUVec3@@@Z	006b0c10	00726750
 ?UpdateMorphSet@CTCRandomAppearanceMorph@@AAEXXZ	007280c0	00728400
-??0CSecond_005bbdf1@@QAE@ABU0@@Z	005bbdf1	00728a40
 ??_7CTCCreatureExpression@@6B@	012665cc	00729360
 ?push_front@CExpressionStateList@@QAEXABUCExpressionState@@@Z	00729960	007293a0
 ??_7CTCActionUseScriptedHook@@6B@	0126664c	00729a90
@@ -9914,7 +9913,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ??$__adjust_heap@PAUTHitLocationIntersectionElement@N008182e0@@HU12@UTHitLocationIntersectionElementPred@2@@N008182e0@@YIXPAUTHitLocationIntersectionElement@0@HHU10@UTHitLocationIntersectionElementPred@0@@Z	008175d0	008182e0
 ??1CSoundBankRecord@N00992940@@QAE@XZ	00992510	00992940
 ??4CSoundBankRecord@N00992940@@QAEAAU01@ABU01@@Z	00992630	00992940
-??4?$CArray@K@N009b77b0@@QAEAAU01@ABU01@@Z	0045bc09	009b77b0
 ??$_Push_heap@PAMHMU?$less@M@std@@@std@@YIXPAMHHMU?$less@M@0@@Z	00a586d0	00a5a7d0
 ??4?$CRetailVector@UCCompositeBlendDesc@N00bee420@@@N00bee420@@QAEAAU01@ABU01@@Z	006cade0	00bee420
 ??0CEntryVector@@QAE@ABU0@@Z	00673e10	00674ce0

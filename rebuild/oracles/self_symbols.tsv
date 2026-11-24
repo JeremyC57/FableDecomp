@@ -8632,9 +8632,9 @@ address	symbol	status	leaf_given
 00728590	?ScalarDeletingDestructor@CTCRandomAppearanceMorph@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00728650	??_GCBufferOwner_00728650@@QAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor_CBufferOwner_00728650
 00728980	?Destroy_CRetailVector_00728980@CRetailVector_00728980@@QAEXXZ	RELOCATION_MATCH	Destroy_CRetailVector_00728980
-00728a40	?UninitFillN_SPairLongCSecond_005bbdf1_00728a40@@YIPAUSPairLongCSecond_005bbdf1@@PAU1@KABU1@UCRetailAllocator@@@Z	RELOCATION_MATCH	UninitFillN_SPairLongCSecond_005bbdf1_00728a40
-00728b10	?UninitCopy_SPairLongCSecond_005bbdf1_00728b10@@YIPAUSPairLongCSecond_005bbdf1@@PAU1@00UCRetailAllocator@@@Z	RELOCATION_MATCH	UninitCopy_SPairLongCSecond_005bbdf1_00728b10
-00728b50	?UninitFillN_SPairLongCSecond_005bbdf1_00728b50@@YIPAUSPairLongCSecond_005bbdf1@@PAU1@KABU1@@Z	RELOCATION_MATCH	UninitFillN_SPairLongCSecond_005bbdf1_00728b50
+00728a40	??$__uninitialized_fill_n@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@IV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@IABV123@ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_fill_n@
+00728b10	??$__uninitialized_copy@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@00ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_copy@
+00728b50	??$uninitialized_fill_n@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@IV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@IABV123@@Z	RELOCATION_MATCH	??$uninitialized_fill_n@
 00728d10	?_M_insert_overflow@?$vector@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@V?$allocator@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@@std@@@std@@IAEXPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@ABV345@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@
 00728df0	?_M_fill_insert@?$vector@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@V?$allocator@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@@std@@@std@@QAEXPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@IABV345@@Z	RELOCATION_MATCH	?_M_fill_insert@?$vector@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@
 00728f80	?resize@CKeyedVectorVector_00728f80@@QAEXI@Z	RELOCATION_MATCH	resize

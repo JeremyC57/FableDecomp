@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	??4?$CArray@K@N009b77b0@@QAEAAU01@ABU01@@Z	0045bc09	009b77b0	NF395 b2 (NF387 binder, T3 nf383 0x009B7870 / nf393; rulings R1 / R10 / R11): 009b77b0 now binds ??4?$vector@KV?$allocator@K@std@@@std@@QAEAAV01@ABV01@@Z at 0x0045BC09 (already bound, witness 009b7650) through engine/CArray.h + FABLE_RETAIL_STLP_VECTOR_ASSIGN; the namespace N009b77b0 exists only in this row (no header, no includer), so nothing else can reference the stand-in spelling (VC7.1 census evidence/census_b2d.tsv incl. the self witness 009b8220)

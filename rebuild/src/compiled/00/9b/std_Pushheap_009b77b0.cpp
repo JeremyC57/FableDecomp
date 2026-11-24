@@ -20,20 +20,20 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
     ~CCharString();                                       // 0x0099EAE0
 };
+// Binder (NF387 / NF395, T3 nf383 0x009B7870 and nf393 0x00728B10; rulings R1 / R10 / R11): GlobalIndices is the shared engine/CArray.h
+//   CArray<unsigned long> (CArray<T> : STLport vector<T>); its generated assignment calls
+//   ??4?$vector@KV?$allocator@K@std@@@std@@QAEAAV01@ABV01@@Z 0x0045BC09 (declared out of line, FABLE_RETAIL_STLP_VECTOR_ASSIGN) and its
+//   destructor is the inline STLport ~vector (`if (_M_start) free(_M_start)`); was a local CArray in this namespace whose operator= the
+//   table bound at 0x0045BC09 under the stand-in spelling ??4?$CArray@K@N009b77b0@@.
+#define FABLE_RETAIL_STLP_VECTOR_ASSIGN
+#include "engine/CArray.h"
 namespace N009b77b0 {
-template<class T> struct CArray {                         // retail STLport vector, 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CArray& operator=(const CArray& other);               // 0x0045BC09
-    ~CArray() { if (_M_start) free(_M_start); }
-};
 struct CDefClassBase;
 namespace CDefinitionManager {
 struct CDefClassInfo {
     CCharString Name;                                     // +0x0
     CDefClassBase* (__cdecl* AllocFunc)();                // +0x4
-    CArray<unsigned long> GlobalIndices;                  // +0x8
+    ::CArray<unsigned long> GlobalIndices;                // +0x8
 };
 }
 template<class K, class V> struct pair { K first; V second; };
