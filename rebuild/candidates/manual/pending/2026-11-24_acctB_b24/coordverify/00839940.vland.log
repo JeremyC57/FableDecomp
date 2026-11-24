@@ -3,7 +3,6 @@ addr       parity           behav  name
 00839940   WARN RELOC_NAME: ?IsBlocking@CTCCombat@@QBE_NXZ -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
 00839940   WARN RELOC_NAME: ?IsToPlayGetHitResponse@CHitLocation@NHitLocations@@QBE_NXZ -> 00815270 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
 00839940   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
-00839940   WARN RELOC_CONFLICT: ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z -> 006ea430 here, 006ed9c0 in landed 007355f0
 00839940   WARN RELOC_NAME: ??0CInitRumble@CJoystick@@QAE@MMMM_N@Z -> 006a92b0 labelled 'CRecord_006a92b0::CRecord_006a92b0'
 00839940   WARN RELOC_NAME: ?GetPHitMaterialDef@CHitParameters@@QBE?AV?$CDefPointer@$$CBVCMaterialDef@@@@XZ -> 0083af60 labelled 'CThing::GetPBaseDef'
 00839940   RELOCATION_MATCH PASS   OnHit

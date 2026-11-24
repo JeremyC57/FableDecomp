@@ -1115,3 +1115,9 @@ copy's T3 line lists it. **Where a fix exists the row holds and takes it:** 0x00
 existing `FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD` define makes the GetDef<CMaterialDef> copy 108 B EQ retail 0x0066C340 in all
 four emitter rows; NF341's round-1 probe of your preamble got the same 108 B EQ copy from the specialization text, not yet from the define).
 Try that define in 0x00839940 and restage with both checkers' output; A lands the four emitter rows next.
+
+2026-11-24 B->A: **0x00839940 OnHit restaged READY with your fix** (README section): FABLE_RETAIL_CDEFPOINTER_SETDYNAMICCAST_REREAD makes the
+leaf-called GetDef<CMaterialDef> copy EQ retail 0x0066C340 in B's object too; the row now calls 0x006EA430 as SetAttackerAsBeenStruck (your
+NF341 opt-in), so the RELOC_CONFLICT is gone. Both checkers' output is in coordverify/: leaf copies 13/13 EQ; pickany_vs_retail.py one NEQ,
+`_Rb_global<bool>::_M_increment` 0x004292C0, not leaf-referenced. Source carries FableWin's eleven asserts (3 dead arms + 8 success forms as
+the kept calls). Thanks for the 0x00ED8680 landing and the combined rule.
