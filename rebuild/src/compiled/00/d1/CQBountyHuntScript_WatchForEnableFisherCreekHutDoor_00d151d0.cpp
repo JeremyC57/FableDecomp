@@ -54,7 +54,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
- CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {} // NF328: inline, one definition (pick-any like every other includer; the self 0x004AA840 is pick-any too)
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

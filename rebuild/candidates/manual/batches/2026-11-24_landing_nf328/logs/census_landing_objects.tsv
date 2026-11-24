@@ -1,0 +1,10 @@
+obj	dtor	dtor_retail	dtor_relocs	copy	copy_retail	copy_relocs	vftable_slots
+004aa840.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+004abe90.obj	UND			DEF/sel=2	BYTES_EQUAL	8:01238c8c=??_7CScriptThing@@6B@	1
+004ab170.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+00ce0920.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+00ce0b00.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+00ce0ce0.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+00d151d0.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+00dde230.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79
+00e6b750.obj	DEF/sel=2	BYTES_EQUAL	5:01238c8c=??_7CScriptThing@@6B@ 25:00bfe9bc=??3@YAXPAX@Z 3e:0099a2e0=??1CBaseClass@@UAE@XZ	-			79

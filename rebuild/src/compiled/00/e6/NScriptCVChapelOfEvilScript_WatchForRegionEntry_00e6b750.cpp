@@ -55,7 +55,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
- CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {} // NF328: inline, one definition (pick-any like every other includer; the self 0x004AA840 is pick-any too)
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
 // NF326 one-definition respell: the body in the shape of the self row 0x004AAD60 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
 inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }

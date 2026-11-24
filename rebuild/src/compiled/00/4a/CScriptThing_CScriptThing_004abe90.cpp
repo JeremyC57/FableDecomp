@@ -10,8 +10,10 @@
 // after the CScriptThing one. The engine header flattens the vptr into a plain `__vftable` word and
 // cannot express a constructor, so the class is modelled locally with the header's member names
 // (same model as the landed deleting destructor 0x004AB170).
-// Leaf `??0CScriptThing`: the TU also emits the vtable's scalar deleting destructor.
-// Leaf: ??0CScriptThing
+// The Leaf names the full copy-constructor symbol (the TU also emits the vtable's scalar deleting destructor).
+// One definition (NF328, 2026-11-24, the NF326 Q4 follow-up unit): 25 landed script rows emit this copy constructor pick-any; a strong
+//   definition here is LNK2005 against them, so this row defines it `inline` and emits it pick-any through the helper below.
+// Leaf: ??0CScriptThing@@QAE@ABV0@@Z
 
 class CCPPointerInfo { public:
     long m_references;                       // +0 reference count (bumped with `inc dword ptr [ecx]`)
@@ -40,7 +42,20 @@ class CScriptThing : public CBase { public:
     virtual ~CScriptThing();
 };
 
-CScriptThing::CScriptThing(const CScriptThing& other)
+inline CScriptThing::CScriptThing(const CScriptThing& other)
     : PImp(other.PImp)
 {
+}
+
+namespace {
+// Inline-budget: scaffolding, not retail: returning a copy by value calls the inline copy constructor above, and with inline expansion
+// switched off for this one function this object emits ??0CScriptThing@@QAE@ABV0@@Z out of line as a pick-any COMDAT (retail's
+// 0x004ABE90) like the script TUs that expand or emit it (the nf86 / nf88 / NF326 pattern; the address of a constructor cannot be
+// taken). Internal to this TU; never called.
+#pragma inline_depth(0)
+CScriptThing ReferenceScriptThingCopy(const CScriptThing& thing)
+{
+    return thing;
+}
+#pragma inline_depth()
 }

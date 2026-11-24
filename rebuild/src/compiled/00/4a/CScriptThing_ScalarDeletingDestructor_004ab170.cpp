@@ -29,8 +29,23 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 // The empty virtual destructor is defined out of line: VC7.1 then inlines it (and the member's
 // ~CCountedPointer) into the deleting destructor; an in-class `{ }` body made the deleting destructor
 // call ~CCountedPointer out of line instead (tried: DIFFER).
-CScriptThing::~CScriptThing()
+inline CScriptThing::~CScriptThing()
 {
+}
+
+namespace {
+// Inline-budget: scaffolding, not retail (NF328, 2026-11-24, the ~CScriptThing one-definition unit): a qualified explicit destructor call of
+// the inline destructor above, with inline expansion switched off for this one function. It makes this object compile the destructor
+// (and so the CScriptThing vftable and this row's scalar deleting destructor, which expands the destructor body as retail's 0x004AB170
+// does) while ??1CScriptThing@@UAE@XZ itself is emitted pick-any. The strong definition this row had was LNK2005 against the self
+// 0x004AA840 and every script TU's inline copy; without any reference the inline destructor, the vftable and ??_G are not emitted at
+// all. Internal to this TU; never called.
+#pragma inline_depth(0)
+void ReferenceScriptThingDestructor(CScriptThing& thing)
+{
+    thing.CScriptThing::~CScriptThing();
+}
+#pragma inline_depth()
 }
 
 // VC7.1 emits a class's vtable (and the deleting destructor it references) in every translation

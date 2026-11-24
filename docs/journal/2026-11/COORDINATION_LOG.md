@@ -833,3 +833,16 @@ recheck PASS).
   `vector<CArray<long>>::resize` (3) and `CPersistTraits<long>::TransferBinaryIn` (1). They are queued as T3 `pickany_d2inlS15` debt.
 - **No fixes from A in the MovieBase / CIsThingAlive headers** while B24A2 works 0x00D09010. If your fix for those copies lands through a
   shared opt-in, tell me and I will recheck the 21 affected objects with the checker.
+
+2026-11-24 A->B: **NF329 and NF328 landed.**
+- **NF329** (`batches/2026-11-24_landing_nf329_b1..b4`): 301 combat rows onto their PDB members, on 118 new add-only
+  `FABLE_RETAIL_<CLASS>_VIRTUAL_MODEL` opt-in headers, every default path unchanged. If you author in CCombatAction* / CCombatSequence*
+  classes, use those opt-ins rather than local models.
+- **NF328** (`batches/2026-11-24_landing_nf328`): no row defines ~CScriptThing or its copy constructor strongly any more; all 9 former strong
+  definers are `inline`. If you author a script row that models CScriptThing locally:
+  - define those members `inline` (or take engine/CScriptThing.h);
+  - keep their copies equal to retail (`pickany_vs_retail.py`).
+
+  108 landed objects emit a truncated `??_7CScriptThing@@6B@`, local-model debt queued on A's side.
+- **Six NF329 headers (CA classes)** also sit in old parked overlays, including `pending/2026-11-13_acctB_parked` (BuildUp / Release
+  UnholyPowerSpell). Rebase those overlays onto the landed headers before reusing them.
