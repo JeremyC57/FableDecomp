@@ -1,0 +1,589 @@
+## link2 unit_new_force: 004aa840.obj 004aa8d0.obj 004aa900.obj 004aa930.obj 004aa980.obj 004aaa40.obj 004aad20.obj 004aad40.obj 004aad60.obj 004aafe0.obj 004ab150.obj 004abe90.obj 0089aa70.obj 0089ef90.obj 008a8af0.obj 00cbfb7d.obj 00cfe030.obj 00d13580.obj 00d16570.obj 00d17470.obj 00d17f20.obj 00d18df0.obj 00d19bd0.obj 00d1a740.obj 00d1b200.obj 00d1fd30.obj 00d2d930.obj 00d368d0.obj 00d38000.obj 00d387a0.obj 00d40cf0.obj 00d41d00.obj 00d43db0.obj 00d45060.obj 00d4a270.obj 00d524a0.obj 00d52e90.obj 00d6a560.obj 00d6d670.obj 00d706e0.obj 00d73970.obj 00d75060.obj 00d77690.obj 00d7fe90.obj 00d8abf0.obj 00d8bcd0.obj 00d97170.obj 00d973d0.obj 00da8970.obj 00db2b10.obj 00db5330.obj 00dc4d70.obj 00dc5f80.obj 00dc7490.obj 00dca6d0.obj 00dce230.obj 00dd35d0.obj 00dd6a60.obj 00dd9520.obj 00ddae40.obj 00ddb720.obj 00ddc980.obj 00dde230.obj 00ddf090.obj 00de3f90.obj 00df6010.obj 00e03f70.obj 00e055b0.obj 00e07640.obj 00e0a820.obj 00e0d210.obj 00e0de90.obj 00e0e040.obj 00e0f8a0.obj 00e12580.obj 00e1e960.obj 00e1f0c0.obj 00e1fcf0.obj 00e1fef0.obj 00e2b090.obj 00e2c100.obj 00e2f170.obj 00e2ff00.obj 00e331f0.obj 00e338e0.obj 00e33ea0.obj 00e36390.obj 00e36d50.obj 00e37e40.obj 00e44ea0.obj 00e479b0.obj 00e49020.obj 00e4b5b0.obj 00e4e0e0.obj 00e50fd0.obj 00e53d90.obj 00e5ebd0.obj 00e63890.obj 00e64210.obj 00e6a0b0.obj 00e6ad20.obj 00e6af20.obj 00e6b750.obj 00e7c010.obj 00e7c8e0.obj 00e84b80.obj 00e87030.obj 00e8b020.obj 00e9aeb0.obj 00e9cb20.obj 00e9dc80.obj 00ea1720.obj 00ea59e0.obj 00ec5140.obj 00ec68a0.obj 00ed17d0.obj 00ed3b30.obj 00ed5f50.obj 00ed7320.obj 00ed94d0.obj 00ed9790.obj 00edbd80.obj 00edc980.obj 00edcb80.obj 00edd170.obj 00ee0c50.obj 00ee1500.obj 00ee2a80.obj 00ee57b0.obj 00ee6850.obj 00ee95c0.obj 00ef2290.obj 00ef4b40.obj 00f04000.obj 00f04cc0.obj 00f061e0.obj 00f063b0.obj 00f09260.obj 00f09950.obj 00f0b130.obj 00f0c140.obj 00f0caa0.obj 00f0d630.obj 00f0fb70.obj
+exit 0
+raw: 0089aa70.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored | 0089aa70.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 0089ef90.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored | 0089ef90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 008a8af0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 008a8af0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored | 00cfe030.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d13580.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d16570.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d17470.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d40cf0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d43db0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d45060.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d4a270.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored | 00d4a270.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d52e90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored | 00d6d670.obj : w
+duplicate lines 105
+  0089aa70.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  0089aa70.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  0089ef90.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  0089ef90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  008a8af0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  008a8af0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00cfe030.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d13580.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d16570.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d17470.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d40cf0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d43db0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d45060.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d4a270.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00d4a270.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d52e90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d6d670.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d706e0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d75060.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d77690.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00d77690.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d7fe90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d8bcd0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00d8bcd0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d97170.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00d973d0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00da8970.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00db5330.obj : warning LNK4006: "public: __thiscall CTimer::CTimer(void)" (??0CTimer@@QAE@XZ) already defined in 00cfe030.obj; second definition ignored
+  00db5330.obj : warning LNK4006: "public: __thiscall CTimer::~CTimer(void)" (??1CTimer@@QAE@XZ) already defined in 00cfe030.obj; second definition ignored
+  00db5330.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00db5330.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00dc4d70.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00dc4d70.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00dc5f80.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00dc5f80.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00dce230.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00dd6a60.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ddae40.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ddb720.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00dde230.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00de3f90.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00de3f90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00df6010.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00df6010.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e03f70.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e0a820.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e0de90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e0e040.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e0e040.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e0f8a0.obj : warning LNK4006: "public: __thiscall CTimer::CTimer(void)" (??0CTimer@@QAE@XZ) already defined in 00cfe030.obj; second definition ignored
+  00e0f8a0.obj : warning LNK4006: "public: __thiscall CTimer::~CTimer(void)" (??1CTimer@@QAE@XZ) already defined in 00cfe030.obj; second definition ignored
+  00e12580.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e1fcf0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e1fef0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e2b090.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e2f170.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e2ff00.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e2ff00.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e331f0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e338e0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e33ea0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e36390.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e36d50.obj : warning LNK4006: "protected: static long __fastcall CBasicString<char>::Compare(char const *,char const *)" (?Compare@?$CBasicString@D@@KIJPBD0@Z) already defined in 00cbfb7d.obj; second definition ignored
+  00e36d50.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e49020.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e4e0e0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e50fd0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e53d90.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e5ebd0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e63890.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e63890.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00e64210.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e6a0b0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e6ad20.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e6af20.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e6b750.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e7c010.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e7c8e0.obj : warning LNK4006: "public: __thiscall CTimer::CTimer(void)" (??0CTimer@@QAE@XZ) already defined in 00cfe030.obj; second definition ignored
+  00e7c8e0.obj : warning LNK4006: "public: __thiscall CTimer::~CTimer(void)" (??1CTimer@@QAE@XZ) already defined in 00cfe030.obj; second definition ignored
+  00e7c8e0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e9aeb0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e9cb20.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00e9dc80.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ea1720.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ec5140.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ed17d0.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00ed3b30.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ed5f50.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ed7320.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ed94d0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ed9790.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00edbd80.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00edc980.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00edcb80.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00edd170.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ee1500.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ee57b0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00ee6850.obj : warning LNK4006: "public: __thiscall CScriptThing::CScriptThing(class CScriptThing const &)" (??0CScriptThing@@QAE@ABV0@@Z) already defined in 004abe90.obj; second definition ignored
+  00ee6850.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00f061e0.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00f09260.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00f09950.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00f0b130.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00f0c140.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+  00f0fb70.obj : warning LNK4006: "public: virtual __thiscall CScriptThing::~CScriptThing(void)" (??1CScriptThing@@UAE@XZ) already defined in 004aa840.obj; second definition ignored
+unresolved symbols 467
+UNRESOLVED 4 ??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@ABVCIsVariableFalse@1@@Z
+UNRESOLVED 1 ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ
+UNRESOLVED 24 ??0CBaseClass@@QAE@XZ
+UNRESOLVED 25 ??0CBaseObject@@IAE@ABV0@@Z
+UNRESOLVED 68 ??0CBaseObject@@IAE@XZ
+UNRESOLVED 43 ??0CCharString@@QAE@ABV0@@Z
+UNRESOLVED 120 ??0CCharString@@QAE@PBDJ@Z
+UNRESOLVED 22 ??0CCharString@@QAE@XZ
+UNRESOLVED 27 ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z
+UNRESOLVED 2 ??0CWideString@@QAE@PBG@Z
+UNRESOLVED 1 ??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@ABU012@@Z
+UNRESOLVED 6 ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ
+UNRESOLVED 1 ??1CBase@@UAE@XZ
+UNRESOLVED 84 ??1CBaseClass@@UAE@XZ
+UNRESOLVED 68 ??1CBaseObject@@MAE@XZ
+UNRESOLVED 128 ??1CCharString@@QAE@XZ
+UNRESOLVED 1 ??1CMovieImpPointer@@QAE@XZ
+UNRESOLVED 27 ??1CSuspendableProcessMicrothread@@MAE@XZ
+UNRESOLVED 2 ??1CWideString@@QAE@XZ
+UNRESOLVED 3 ??1TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ
+UNRESOLVED 28 ??2@YAPAXI@Z
+UNRESOLVED 132 ??3@YAXPAX@Z
+UNRESOLVED 2 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 21 ??4CBaseObject@@IAEAAV0@ABV0@@Z
+UNRESOLVED 18 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 16 ??4CCharString@@QAEABV0@PBD@Z
+UNRESOLVED 1 ??4TeleportData@CQ_BountyHuntScript@NScript@@QAEAAU012@ABU012@@Z
+UNRESOLVED 1 ??9CCharString@@QBE_NABV0@@Z
+UNRESOLVED 9 ??9CCharString@@QBE_NPBD@Z
+UNRESOLVED 1 ??9CWideString@@QBE_NPBG@Z
+UNRESOLVED 7 ??BCCharString@@QBEPBDXZ
+UNRESOLVED 23 ??H@YI?AVCCharString@@ABV0@0@Z
+UNRESOLVED 7 ??H@YI?AVCCharString@@ABV0@PBD@Z
+UNRESOLVED 13 ??H@YI?AVCCharString@@PBDABV0@@Z
+UNRESOLVED 25 ??MCCharString@@QBE_NABV0@@Z
+UNRESOLVED 4 ??R?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@UBE_NXZ
+UNRESOLVED 39 ??RCIsThingAlive@NScript@@UBE_NXZ
+UNRESOLVED 8 ??RCIsThingConscious@NScript@@UBE_NXZ
+UNRESOLVED 4 ??RCIsVariableFalse@NScript@@UBE_NXZ
+UNRESOLVED 2 ??YCCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ??YCCharString@@QAEABV0@D@Z
+UNRESOLVED 1 ??YCCharString@@QAEABV0@PBD@Z
+UNRESOLVED 1 ?AccurateNormalise@C3DVector@@QAEAAV1@XZ
+UNRESOLVED 2 ?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z
+UNRESOLVED 1 ?AddBanditHealthBar@CQ_AmbushTradersScript@NScript@@QAEJABVCScriptThing@@@Z
+UNRESOLVED 7 ?AddEntityScriptBinding@CScriptBase@@QAEXPAVCEntityScriptBindingBase@@@Z
+UNRESOLVED 2 ?AddGoodDeed@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?AddLogbookTutorialEntry@@YIXABVCCharString@@@Z
+UNRESOLVED 1 ?AddLogbookTutorialEntryPC@@YIXABVCCharString@@@Z
+UNRESOLVED 27 ?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Ambusher@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Buddy@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CAS_Trickster@CV_AmbushScamScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CArenaCellDoorGuard2@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CArenaCellDoorGuard@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CArenaCellExitGuard@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CArenaEnemy@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CArenaSpawn@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_GangDeputy2@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_GangLeader@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_Hostage1@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBH_Hostage2@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBanditLeader@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CBlockingBandit@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CCagedBalverine@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CCellWhisper@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CCham@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CFlick@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CGuildSealWarning@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CIsAGuard@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CM_BanditLeader@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CM_TauntingBandit@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CM_TollBandit@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CNeedle@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceStartingGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CPrisonRacer@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CReluctantTrader@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CRoth@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CSUMMONED_CREATURE@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CSafeTrader@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CShadow@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CStatueMasterCellarDoors@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CStatueMasterChest@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CStatueMasterStatue@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_BanditFighter@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_BanditFollower@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTC_Villager@CQ_TraderConflictEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTauntingBandit@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CTollBandit@CV_BanditTollScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?Alloc@CWhisperAlly@CQ_ArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?AnimateCrowd@CQ_ArenaScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?Append@CCharString@@QAEXDK@Z
+UNRESOLVED 2 ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+UNRESOLVED 1 ?AskBanditHireQuestion@CQ_AmbushTradersScript@NScript@@QAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+UNRESOLVED 66 ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z
+UNRESOLVED 1 ?AssignMoralityEtcForEvilEnding@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?BanditHireSetup@CQ_AmbushTradersScript@NScript@@QAEJABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+UNRESOLVED 2 ?BeenAttacked@CV_FisticuffsClubScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?CalculateScoreForHit@CV_ArcheryCompetitionScript@NScript@@QAEXJM@Z
+UNRESOLVED 1 ?CheckForBanditTollPaid@CV_BanditTollScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?CheckForLeaderDead@CV_BanditTollScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?CleanupAfterFight@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ
+UNRESOLVED 66 ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+UNRESOLVED 66 ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+UNRESOLVED 67 ?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+UNRESOLVED 4 ?Clone@?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@UBEPAVCPredicateBase@2@XZ
+UNRESOLVED 39 ?Clone@CIsThingAlive@NScript@@UBEPAVCPredicateBase@2@XZ
+UNRESOLVED 8 ?Clone@CIsThingConscious@NScript@@UBEPAVCPredicateBase@2@XZ
+UNRESOLVED 4 ?Clone@CIsVariableFalse@NScript@@UBEPAVCPredicateBase@2@XZ
+UNRESOLVED 66 ?Converse@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1@PBD@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_ArenaScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_BountyHuntScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_PrisonRaceScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_TraderConflictEvilScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_AmbushScamScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_BanditTollScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_StatueMasterScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+UNRESOLVED 1 ?CrowdChecker@CQ_ArenaScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?CutsceneCameraPreloader@@YI_NAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_NPAJ@Z
+UNRESOLVED 5 ?DELTA_NOTIONAL_ZERO@@3MB
+UNRESOLVED 1 ?DecNumberOfSuns@CQ_FireHeartScript@NScript@@QAEXXZ
+UNRESOLVED 87 ?DecrementScriptCounter@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?DoCountDown@CV_ArcheryCompetitionScript@NScript@@QAEXJ@Z
+UNRESOLVED 1 ?DoTimesUp@CV_ArcheryCompetitionScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+UNRESOLVED 66 ?DropGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+UNRESOLVED 1 ?EndMission@CQ_WaspBossScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?EscortTrader@CQR_EscortTraderScript@NScript@@QAEXXZ
+UNRESOLVED 34 ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z
+UNRESOLVED 1 ?FightWarmupRounds@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ
+UNRESOLVED 1 ?FindCharPos@CCharString@@QBEJD@Z
+UNRESOLVED 1 ?FindThings_GetAllThingsInMap@@YAPAPAVCThing@@PBVCThingFilter_InMap@@PAPAV1@@Z
+UNRESOLVED 66 ?FireProjectileWeaponAtTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 1 ?FisticuffsChallenge@CV_FisticuffsClubScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z
+UNRESOLVED 66 ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z
+UNRESOLVED 66 ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z
+UNRESOLVED 2 ?GDefStringTable@@3VCDefStringTable@@A
+UNRESOLVED 14 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA
+UNRESOLVED 1 ?GFCharStringToFloat@@YIMABVCCharString@@@Z
+UNRESOLVED 3 ?GFCharStringToInt@@YIJABVCCharString@@@Z
+UNRESOLVED 1 ?GFGetPDefinitionManager@@YAPAVCDefinitionManager@@XZ
+UNRESOLVED 1 ?GFGetTime@@YINXZ
+UNRESOLVED 9 ?GFIntToCharString@@YI?AVCCharString@@J@Z
+UNRESOLVED 1 ?GFStringToFloat@@YIMPBD@Z
+UNRESOLVED 1 ?GFStringToInt@@YIJPBD@Z
+UNRESOLVED 87 ?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ
+UNRESOLVED 1 ?GetBestThingFromMarkerList@@YI?AVCScriptThing@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@ABV1@1_N@Z
+UNRESOLVED 87 ?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ
+UNRESOLVED 87 ?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ
+UNRESOLVED 87 ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ
+UNRESOLVED 2 ?GetCutsceneName@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z
+UNRESOLVED 1 ?GetDistanceBetweenThingAndPosition@@YIMABVCScriptThing@@ABVC3DVector@@@Z
+UNRESOLVED 7 ?GetDistanceBetweenThings@@YIMABVCScriptThing@@0@Z
+UNRESOLVED 1 ?GetFanfareMusic@CQ_ArenaScript@NScript@@QAE?AW4EMusicSetType@@H@Z
+UNRESOLVED 87 ?GetFocalPos@CScriptThing@@UBE?AVC3DVector@@XZ
+UNRESOLVED 87 ?GetHomeMapName@CScriptThing@@UBE?AVCCharString@@XZ
+UNRESOLVED 88 ?GetHomePos@CScriptThing@@UBE?AVC3DVector@@XZ
+UNRESOLVED 1 ?GetJackSpeech@CQ_HeroSoulsArenaScript@NScript@@QAE?AVCCharString@@J@Z
+UNRESOLVED 1 ?GetMapNumberFromScriptName@CWorldMap@@QBEJABVCCharString@@@Z
+UNRESOLVED 88 ?GetName@CScriptThing@@UBEABVCCharString@@XZ
+UNRESOLVED 1 ?GetNearestCrateToMe@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE?AVCScriptThing@@XZ
+UNRESOLVED 1 ?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z
+UNRESOLVED 88 ?GetPThing@CScriptThing@@UBEPAVCThing@@XZ
+UNRESOLVED 87 ?GetPThingUniqueID@CScriptThing@@UBE_KXZ
+UNRESOLVED 2 ?GetQuestText@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z
+UNRESOLVED 1 ?GetRandomSpeech@CAC_Owner@CV_ArcheryCompetitionScript@NScript@@AAE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetRandomSpeech@CAS_Trickster@CV_AmbushScamScript@NScript@@AAE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetRandomSpeech@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@AAE?AVCCharString@@XZ
+UNRESOLVED 1 ?GetRegionIdForRegion@CV_AssassinAttacksScript@NScript@@QAE?AW4AA_LocationIdentifier@12@VCCharString@@@Z
+UNRESOLVED 87 ?GetScriptCounter@CScriptThing@@UAEJXZ
+UNRESOLVED 66 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+UNRESOLVED 1 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ
+UNRESOLVED 2 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
+UNRESOLVED 1 ?GetSubString@CCharString@@QBE?AV1@KK@Z
+UNRESOLVED 1 ?GetSymbolSLONG@CSymbolMap@@QBEJABVCCharString@@@Z
+UNRESOLVED 2 ?GetTrickster@CV_AmbushScamScript@NScript@@QAE?AVCScriptThing@@XZ
+UNRESOLVED 1 ?GoOnPatrol@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXXZ
+UNRESOLVED 1 ?GossipSetup@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@000@Z
+UNRESOLVED 1 ?GuildmasterHelp@CQ_WaspBossScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?IdleChatter@CFisherman@CV_FishermanScript@NScript@@AAEXXZ
+UNRESOLVED 1 ?IncNumberOfSuns@CQ_FireHeartScript@NScript@@QAEXXZ
+UNRESOLVED 87 ?IncrementScriptCounter@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?InitialiseVariables@CQ_ArenaScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?InitializeMusicTypes@@YIXXZ
+UNRESOLVED 1 ?Intro@CQ_AmbushTradersScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?IntroPart2Checker@CQ_AmbushTradersScript@NScript@@QAEXXZ
+UNRESOLVED 71 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+UNRESOLVED 53 ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ
+UNRESOLVED 87 ?IsAwareOfHero@CScriptThing@@UBE_NXZ
+UNRESOLVED 15 ?IsDistanceBetweenThingsOver@@YI_NABVCScriptThing@@0M@Z
+UNRESOLVED 55 ?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z
+UNRESOLVED 18 ?IsDistanceFromThingToPositionOver@@YI_NABVCScriptThing@@ABVC3DVector@@M@Z
+UNRESOLVED 87 ?IsEqualTo@CScriptThing@@MBE_NABV1@@Z
+UNRESOLVED 66 ?IsFollowActionRunning@CScriptGameResourceObjectScriptedThingBase@@UBE_NABVCScriptThing@@@Z
+UNRESOLVED 66 ?IsFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+UNRESOLVED 1 ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ
+UNRESOLVED 1 ?IsHeroWearingAnyBeard@CV_BeardyBaldyScript@NScript@@QAE_NXZ
+UNRESOLVED 1 ?IsHeroWearingAnyOddHairdo@CV_BeardyBaldyScript@NScript@@QAE_NXZ
+UNRESOLVED 1 ?IsHeroWearingAnyTash@CV_BeardyBaldyScript@NScript@@QAE_NXZ
+UNRESOLVED 1 ?IsNightTime@CTH_Trigger_Bowerstone@CV_TravellingHeroesScript@NScript@@AAE_NXZ
+UNRESOLVED 87 ?IsOpenDoor@CScriptThing@@UBE_NXZ
+UNRESOLVED 1 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+UNRESOLVED 67 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+UNRESOLVED 1 ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
+UNRESOLVED 87 ?IsSneaking@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?IsSummonedCreature@CScriptThing@@UBE_NXZ
+UNRESOLVED 1 ?IsThingCarryingCrate@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE_NABVCScriptThing@@@Z
+UNRESOLVED 4 ?IsTrue@CIsThingAlive@NScript@@UAE_NXZ
+UNRESOLVED 87 ?IsUnconscious@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?IsUsable@CScriptThing@@UBE_NXZ
+UNRESOLVED 67 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+UNRESOLVED 1 ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
+UNRESOLVED 1 ?KillSpawnedFunction@CScriptBase@@QAEXABVCCharString@@K@Z
+UNRESOLVED 1 ?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z
+UNRESOLVED 1 ?MakeRacerComment@CQ_PrisonRaceScript@NScript@@QAE_NABVCScriptThing@@ABVCCharString@@@Z
+UNRESOLVED 1 ?MakeTeamMemberComment@CQ_OrchardFarmRaidScript@NScript@@QAE_NABVCCharString@@AAVCScriptThing@@W4ERaidComment@12@@Z
+UNRESOLVED 2 ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ETraderComment@12@@Z
+UNRESOLVED 66 ?MoveToAndPickUpGenericBox@CScriptGameResourceObjectScriptedThingBase@@UAEXAAVCScriptThing@@W4EScriptEntityMoveType@@_N@Z
+UNRESOLVED 68 ?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z
+UNRESOLVED 66 ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z
+UNRESOLVED 87 ?MsgAttackedWithBareHandsWithoutHittingAnything@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgAttackedWithMeleeWeaponWithoutHittingAnything@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgGetThingsKilled@CScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+UNRESOLVED 87 ?MsgHitEnemyWithBareHands@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgHitEnemyWithMeleeWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgHitEnemyWithRangedWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgHitFriendWithBareHands@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgHitFriendWithMeleeWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgHitFriendWithRangedWeapon@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgHowLongWasExpressionPerformed@CScriptThing@@UBEJXZ
+UNRESOLVED 87 ?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 87 ?MsgIsHitByWithDecapitate@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 87 ?MsgIsHitByWithFlourish@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 87 ?MsgIsHitByWithWeapon@CScriptThing@@UBE_NABVCCharString@@0@Z
+UNRESOLVED 87 ?MsgIsKicked@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgIsKnockedOutBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 87 ?MsgIsPresentedWithItem@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 87 ?MsgIsTalkedToBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 87 ?MsgIsTriggeredBy@CScriptThing@@UBE_NABVCCharString@@@Z
+UNRESOLVED 88 ?MsgOnCutSceneAnimEvent@CScriptThing@@UBE_NAAVCCharString@@@Z
+UNRESOLVED 87 ?MsgOnMoralityChanged@CScriptThing@@UBE_NAAJ@Z
+UNRESOLVED 87 ?MsgOpenedChest@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgPerformedAnyAggressiveSpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgPerformedAnyNonAggressiveSpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgPerformedAnySpecialAbility@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgPerformedFlourish@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgPerformedSpecialAbility@CScriptThing@@UBE_NW4EHeroAbility@@@Z
+UNRESOLVED 87 ?MsgPerformedSuccessfulFlourish@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgReceivedInventoryItem@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgReceivedMoney@CScriptThing@@UBE_NAAJ@Z
+UNRESOLVED 87 ?MsgTalkedToAnyone@CScriptThing@@UBE_NXZ
+UNRESOLVED 87 ?MsgWhoExpressedToMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 87 ?MsgWhoHitMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 87 ?MsgWhoKilledMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 87 ?MsgWhoKnockedMeOut@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 87 ?MsgWhoTalkedToMe@CScriptThing@@UBE?AV1@XZ
+UNRESOLVED 1 ?NPCAttitudeStrings@@3PAVCCharString@@A
+UNRESOLVED 2 ?NPCAttitudes@@3PAJA
+UNRESOLVED 1 ?NullChar@CCharString@@1DB
+UNRESOLVED 87 ?NullCoord@CScriptThing@@1VC3DVector@@A
+UNRESOLVED 10 ?NullString@CScriptThing@@2VCCharString@@A
+UNRESOLVED 27 ?OnInterrupted@CSpawnedFuncBase@@UAEXXZ
+UNRESOLVED 27 ?OnPredicateFail@CSpawnedFuncBase@@UAEXXZ
+UNRESOLVED 1 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A
+UNRESOLVED 66 ?PerformExpression@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@ABVCCharString@@@Z
+UNRESOLVED 1 ?PhaseOne@CQ_AmbushTradersScript@NScript@@QAEXXZ
+UNRESOLVED 66 ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z
+UNRESOLVED 66 ?PlayCombatAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N11111@Z
+UNRESOLVED 1 ?PlayCutscene@CQ_HeroSoulsArenaScript@NScript@@QAEXVCCharString@@@Z
+UNRESOLVED 1 ?PlayCutscene@CQ_TraderConflictEvilScript@NScript@@QAEXVCCharString@@@Z
+UNRESOLVED 1 ?PlayCutscene@CV_BordelloScript@NScript@@QAEXVCCharString@@_N@Z
+UNRESOLVED 1 ?PlayCutsceneSound@@YIXAAV?$map@HVCCharString@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHVCCharString@@@std@@@3@@std@@H@Z
+UNRESOLVED 66 ?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z
+UNRESOLVED 1 ?PlayWave@CQ_ArenaScript@NScript@@QAEXXZ
+UNRESOLVED 7 ?PostAddScriptedEntities@CScriptBase@@QAEXXZ
+UNRESOLVED 1 ?ProcessInitialSpyExtraction@CQ_AmbushTradersScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+UNRESOLVED 1 ?RefreshSpyAllegiences@CQ_AmbushTradersScript@NScript@@QAEXXZ
+UNRESOLVED 68 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+UNRESOLVED 1 ?RemoveCursedTablets@COracleTablet@CQ_AwakeningTheOracleScript@NScript@@AAEXXZ
+UNRESOLVED 1 ?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ
+UNRESOLVED 1 ?ResetCrowdSwordTimer@CV_SwordInTheStoneScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?ResetRandomSpeechTime@CV_BeardyBaldyScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?ResetToll@CV_BanditTollScript@NScript@@QAEXXZ
+UNRESOLVED 2 ?ResetTraderRandomSpeechTime@CQR_EscortTraderScript@NScript@@QAEXXZ
+UNRESOLVED 27 ?Restart@CSuspendableProcessMicrothread@@UAEXXZ
+UNRESOLVED 1 ?Rotate@C3DVector@@QAEXABV1@M@Z
+UNRESOLVED 27 ?RunSuspendableProcess@CSuspendableProcessMicrothread@@UAEXXZ
+UNRESOLVED 87 ?SetActivationTriggerStatus@CScriptThing@@UAEX_N@Z
+UNRESOLVED 1 ?SetAllowedHits@CV_FisticuffsClubScript@NScript@@QAEXH@Z
+UNRESOLVED 1 ?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z
+UNRESOLVED 87 ?SetAsUsable@CScriptThing@@UAEX_N@Z
+UNRESOLVED 1 ?SetBrainState@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@AAEXJ@Z
+UNRESOLVED 43 ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+UNRESOLVED 9 ?SetPredicate@CScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+UNRESOLVED 1 ?SetState@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAEXJ@Z
+UNRESOLVED 1 ?SetWanderPointAndDistance@CV_BeardyBaldyScript@NScript@@QAEXABVCScriptThing@@ABVC3DVector@@@Z
+UNRESOLVED 1 ?Should_I_Flee@CTollBandit@CV_BanditTollScript@NScript@@AAEXAAVCScriptGameResourceObjectScriptedThingBase@@@Z
+UNRESOLVED 1 ?SpawnEnemies@CQ_HangingTreeGoodScript@NScript@@QAEXABVC3DVector@@VCCharString@@J@Z
+UNRESOLVED 66 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z
+UNRESOLVED 66 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+UNRESOLVED 1 ?Sprintf@CCharString@@QAAXPBDZZ
+UNRESOLVED 66 ?StopFollowingThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 66 ?SummonerLightningOrbAttackTarget@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@@Z
+UNRESOLVED 27 ?SuspendSuspendableProcess@CSuspendableProcessMicrothread@@UAE_NXZ
+UNRESOLVED 1 ?SwitchBanditAllegience@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@AAEXXZ
+UNRESOLVED 1 ?TeleportAcolytes@CV_ChapelOfEvilScript@NScript@@QAEXABVCScriptThing@@@Z
+UNRESOLVED 1 ?TricksterApproach@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?Truncate@CCharString@@QAEXK@Z
+UNRESOLVED 66 ?UnsheatheWeapons@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+UNRESOLVED 1 ?UpdateHighScore@CV_ArcheryCompetitionScript@NScript@@QAEXJ@Z
+UNRESOLVED 1 ?UpdateLiveEnemies@CQ_TraderConflictEvilScript@NScript@@QAEXXZ
+UNRESOLVED 87 ?UpdateThingAttachment@CScriptThing@@UAEXXZ
+UNRESOLVED 69 ?Validate@CBaseObject@@UBEXXZ
+UNRESOLVED 66 ?Validate@CScriptGameResourceObjectScriptedThingBase@@MBEXXZ
+UNRESOLVED 66 ?Wait@CScriptGameResourceObjectScriptedThingBase@@UAEXM@Z
+UNRESOLVED 66 ?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXABV1@@Z
+UNRESOLVED 66 ?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+UNRESOLVED 1 ?WaspIntro@CQ_WaspBossScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForAllAmbushersDead@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForAllGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForBanditsDeath@CQ_AmbushTradersScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForBoasts@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForDeputy1GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForDeputy2GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForEnableFisherCreekHutDoor@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForExpressions@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForFailure@CQR_EscortTraderScript@NScript@@QAEXXZ
+UNRESOLVED 2 ?WatchForHeroAttack@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForHeroProximity@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForHeroWinOrLose@CQ_PrisonRaceScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForLeaderChargeGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForLeaderGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForNoFollowers@CV_TourGuideScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForQuestFailure@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForQuestFinished@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForQuestSuccess@CQ_BountyHuntScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForRegionLeaving@CQ_AmbushTradersScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForRegionTransition@CV_AmbushScamScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForSpyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForSpySpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForTermination@CQ_ArenaScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?WatchForTricksterComplete@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchForTricksterKilledAfterBeingSpared@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z
+UNRESOLVED 1 ?WatchTimeLimit@CQ_TraderConflictEvilScript@NScript@@QAEXXZ
+UNRESOLVED 1 ?_M_fill_insert@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXPAVCCharString@@IABV3@@Z
+UNRESOLVED 1 ?_M_fill_insert@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@IABV3@@Z
+UNRESOLVED 1 ?_M_insert@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@AAE?AU?$_Rb_tree_iterator@VCCharString@@U?$_Nonconst_traits@VCCharString@@@std@@@2@PAU_Rb_tree_node_base@2@0ABVCCharString@@0@Z
+UNRESOLVED 1 ?find@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QBE?AU?$_Rb_tree_iterator@VCCharString@@U?$_Const_traits@VCCharString@@@std@@@2@ABVCCharString@@@Z
+UNRESOLVED 1 ?g_CutsceneMusicOverridden@@3_NA
+UNRESOLVED 1 ?g_CutsceneSoundFrame@@3JA
+UNRESOLVED 1 ?g_EmptyCharString@@3VCCharString@@A
+UNRESOLVED 1 ?g_ScriptFormattedText@@3VCWideString@@A
+UNRESOLVED 1 ?g_ZeroVector@@3VC3DVector@@B
+UNRESOLVED 1 ?g_bSkipCutsceneWithActionButton@@3_NA
+UNRESOLVED 1 ?g_pMusicTypeSymbolMap@@3PAVCSymbolMap@@A
+UNRESOLVED 1 ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A
+UNRESOLVED 1 ?insert_unique@?$_Rb_tree@HU?$pair@$$CBHVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBHVCCharString@@@std@@@2@U?$less@H@2@V?$allocator@U?$pair@$$CBHVCCharString@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBHVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBHVCCharString@@@std@@@2@@2@U32@ABU?$pair@$$CBHVCCharString@@@2@@Z
+UNRESOLVED 1 ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@J@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@J@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@J@2@@Z
+UNRESOLVED 1 ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V1@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@V1@@2@@Z
+UNRESOLVED 25 ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@2@@Z
+UNRESOLVED 1 ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@_N@2@@Z
+UNRESOLVED 43 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A
+UNRESOLVED 1 ?pGlobalScriptDef@@3PAVCScriptDef@@A
+UNRESOLVED 42 ?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A
+UNRESOLVED 2 ?push_back@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_AmbushTradersScript@NScript@@@Z
+UNRESOLVED 5 ?push_back@?$vector@UTeleportData@CQ_BountyHuntScript@NScript@@V?$allocator@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_BountyHuntScript@NScript@@@Z
+UNRESOLVED 1 ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXAAV12@@Z
+UNRESOLVED 1 ?t001@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t002@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t004@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t005@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t007@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t008@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t009@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t010@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t011@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t012@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t013@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t014@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t015@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t016@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t017@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t018@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t019@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t020@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t021@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t022@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t023@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t024@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t025@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t026@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t027@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t028@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t029@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t030@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t031@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t032@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t033@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t034@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t035@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t036@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t037@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t038@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t039@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t040@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t041@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t042@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t043@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t044@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t045@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t046@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t047@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t048@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t049@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t050@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t051@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t052@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t053@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t054@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t055@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t056@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t057@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t058@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t059@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t060@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t061@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t062@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t063@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t064@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t065@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t066@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t067@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t068@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t069@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t071@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t072@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t073@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?t074@CScriptThing@@UAEXXZ
+UNRESOLVED 1 ?v00@CPredicateBase@NScript@@UAEXXZ
+UNRESOLVED 1 __CIacos
+UNRESOLVED 1 __CIfmod
+UNRESOLVED 1 __chkstk
+UNRESOLVED 109 __fltused
+UNRESOLVED 7 __ftol2
+UNRESOLVED 36 __purecall
+UNRESOLVED 1 __stricmp
+UNRESOLVED 1 _abort
+UNRESOLVED 48 _free
+UNRESOLVED 20 _malloc
+UNRESOLVED 1 _memmove
+UNRESOLVED 1 _puts
+UNRESOLVED 26 _rand
+UNRESOLVED 1 _strncmp
+KEPT ?GetDefName@CScriptThing@@UBE?AVCCharString@@XZ 004aa8d0.obj
+KEPT ?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ 004aa900.obj
+KEPT ?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z 004aa930.obj
+KEPT ?GetPos@CScriptThing@@UBEABVC3DVector@@XZ 004aa980.obj
+KEPT ?GetAngleXY@CScriptThing@@UBEMXZ 004aaa40.obj
+KEPT ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z 004aad20.obj
+KEPT ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z 004aad40.obj
+KEPT ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z 004aad60.obj
+KEPT ?IsBeingCarriedBy@CScriptThing@@UBE_NABVCCharString@@@Z 004aafe0.obj
+KEPT ?IsNull@CScriptThing@@UBE_NXZ 004ab150.obj
+KEPT ??1CScriptThing@@UAE@XZ 004aa840.obj
+KEPT ??0CScriptThing@@QAE@ABV0@@Z 004abe90.obj

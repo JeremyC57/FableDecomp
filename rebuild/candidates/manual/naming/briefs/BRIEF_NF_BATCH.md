@@ -239,3 +239,37 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
   - a catalog label only, proven wrong: proceed, with a NAME_FIXES line;
   - a different symbol (an overload): not a conflict;
   - a landed self defining the SAME symbol: hold both as one unit, because landing one would create a second strong definition.
+- NF323 (full text in `batches/2026-11-24_landing_nf323/README.md`):
+  - **Q1:** a brand-new class header takes the opt-in form. gen_class_headers.py's flat output is the default branch, and the polymorphic
+    model goes under `FABLE_RETAIL_<CLASS>_VIRTUAL_MODEL`. Never an unguarded polymorphic default.
+  - **Q2:** an out-of-line base copy-constructor call needs two sources, `??0<Base>@@QAE@ABV0@@Z` in the PDB sets plus a landed row or
+    a donor call; then an add-only declaration.
+  - **Q3:** NF309 Q2 covers PDB access on a virtual. The binders define the same opt-in and land as one unit.
+  - **Q6:** a Clone TU's UND set may grow by exactly what its emitted `??_7` / `??_G` reference (under NF320 Q1).
+- NF324 (`batches/2026-11-24_landing_nf324_b1/README.md`):
+  - **Q3:** same-width integer, `char` -> `bool` and pointer -> reference retypes onto the PDB parameter types are accepted when proven
+    byte-equal.
+  - **Q7:** RTTI-evidenced declarations that no landed row defines may stay in an opt-in block; they emit nothing.
+- NF325:
+  - **Q1:** `friend` under an add-only opt-in is allowed (NF309 Q2).
+  - **Q2:** base slots may be declared `= 0` from retail `_purecall` plus the derived classes' override spellings, under the opt-in, with
+    the vftable probe.
+  - **Q3:** a new shared header lands even though local models of the class elsewhere then get SHARED_HEADER_AVAILABLE warnings.
+- NF327:
+  - **Q1:** a TU that adds `??1` destructors, or an out-of-line base destructor call that retail inlines, is held (NF320 Q2).
+  - **Q2:** a unit whose binders are not ALL_EQ under the one rename (their own emitted vftable moves) is held whole.
+  - **Q3:** keeping HEAD's existing helper class unchanged is not new scaffolding.
+- NF326:
+  - **Q1:** the pick-any whole-unit form is allowed, for this unit only:
+    - each self defines its member `inline` on the shared header and emits it pick-any through ONE per-TU (`?A0x`) helper in the landed
+      nf86 / nf88 form;
+    - every landed copy is respelled to the same COMDAT bytes;
+    - the unit lands whole or not at all, and the helpers are recorded as scaffolding debt.
+    Later units of this kind (~CScriptThing / copy constructor, NF321 Q2) come back with the same proof set: the selfproof, the copyproof,
+    the object COMDAT census, and a full link of the census objects.
+  - **Q2:** a copy that still differs from retail (0x00DF6010's GetDataString) does not hold the self; queue it as debt.
+  - **Q3:** mixed accessor / local spelling in copies is fine when the bytes are equal. The accessor form's two extra COMDATs per object
+    are forbidden (NF320 Q2).
+- **Equiv-check scope (coordinator, 2026-11-24):** an equiv_check over the reverse include closure of the changed headers is accepted,
+  provided the closure follows quoted includes and folded `../src/compiled` TUs and the planted control is cross-checked. NF325's full
+  57,146-row run found nothing beyond its closure run except path-only `__FILE__` lines.

@@ -38,7 +38,8 @@ class CScriptThing : public CBaseClass { public:
  virtual CCharString const& GetName()const; // slot1 004AA8B0
  virtual CCharString GetDefName()const; // slot2 004AA8D0
  virtual CCharString GetDataString()const; // slot3 004AA900
- virtual void SetDataString(CCharString const& s){if(PImp_Data)PImp_Data->SetDataString(s);} // slot4 004AA930
+ // NF326 one-definition respell: the body in the shape of the self row 0x004AA930 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+ virtual void SetDataString(CCharString const& s){ CScriptThing* imp = PImp_Data; if (imp) imp->SetDataString(s); } // slot4 004AA930
  virtual C3DVector GetFocalPos()const; // slot5 004AA940
  virtual C3DVector const& GetPos()const; // slot6 004AA980
 virtual C3DVector GetHomePos() const; //slot7 0x004AA9A0

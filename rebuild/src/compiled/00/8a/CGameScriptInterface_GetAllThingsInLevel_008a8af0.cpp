@@ -71,7 +71,8 @@ class CCharString { public:
     void* PStringData;
 };
 // CScriptThing::IsNull (slot 77, 0x004AB150): retail expands it on the local (devirtualised): null PImp, or the imp's IsNull.
-inline bool CScriptThing::IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AB150 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::IsNull() const { const CScriptThing* imp = PImp.Data; return imp == 0 || imp->IsNull(); }
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                             // +0x91 bit 0 (Ego_r +0xA1)

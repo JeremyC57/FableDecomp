@@ -37,7 +37,8 @@ class CScriptThing;
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitBy(attacker); return false; }
-inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); return false; }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAD60 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 

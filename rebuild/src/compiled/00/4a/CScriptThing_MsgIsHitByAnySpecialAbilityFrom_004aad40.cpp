@@ -1,59 +1,33 @@
-// Leaf: ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing_Methods@@QAE_NH@Z
-#include "rebuild_abi.h"
+// CScriptThing::MsgIsHitByAnySpecialAbilityFrom -- forwards to the implementation object (PImp.Data) through its vtable; the null-handle arm returns the default
+// Leaf: ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z
+// One definition (NF326, 2026-11-24, the CScriptThing pick-any unit): retail expands this member inline in the script TUs (the
+//   landed in-TU copies 0x00D45060 / 0x00E7C010 define it inline; the ones that compile CScriptThing's vftable emit it pick-any)
+//   and 0x004AAD40 is the vftable's out-of-line copy. So this row defines the same inline member on the real class and emits it as a
+//   pick-any COMDAT, not a strong definition (a strong one is LNK2005 against every emitted copy: NF318 evidence/link_cs.txt, NF326 evidence/).
+//   Was the stand-in ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing_Methods@@... on the flattened header (a local vtable view of the pointee).
+// Preamble: the landed precedent CThingSwitch_vectordeletingdestructor_00ea86c0.cpp (CCountedPointer before the NScript class model).
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_NSCRIPT
+#include "fable_string.h"
+#include "engine/C3DVector.h"
 #include "engine/CScriptThing.h"
-// CScriptThing::MsgIsHitByAnySpecialAbility @ 0x004aad40
-// mov ecx,[ecx+4]; test; jne L; xor al,al; ret 4; L: mov eax,[ecx]; jmp [eax+0xa8]
-// Proxy: forward to the wrapped implementation object at this->f4; false when absent.
-struct CScriptThingInner {
-  virtual bool m0(int name);
-  virtual bool m1(int name);
-  virtual bool m2(int name);
-  virtual bool m3(int name);
-  virtual bool m4(int name);
-  virtual bool m5(int name);
-  virtual bool m6(int name);
-  virtual bool m7(int name);
-  virtual bool m8(int name);
-  virtual bool m9(int name);
-  virtual bool m10(int name);
-  virtual bool m11(int name);
-  virtual bool m12(int name);
-  virtual bool m13(int name);
-  virtual bool m14(int name);
-  virtual bool m15(int name);
-  virtual bool m16(int name);
-  virtual bool m17(int name);
-  virtual bool m18(int name);
-  virtual bool m19(int name);
-  virtual bool m20(int name);
-  virtual bool m21(int name);
-  virtual bool m22(int name);
-  virtual bool m23(int name);
-  virtual bool m24(int name);
-  virtual bool m25(int name);
-  virtual bool m26(int name);
-  virtual bool m27(int name);
-  virtual bool m28(int name);
-  virtual bool m29(int name);
-  virtual bool m30(int name);
-  virtual bool m31(int name);
-  virtual bool m32(int name);
-  virtual bool m33(int name);
-  virtual bool m34(int name);
-  virtual bool m35(int name);
-  virtual bool m36(int name);
-  virtual bool m37(int name);
-  virtual bool m38(int name);
-  virtual bool m39(int name);
-  virtual bool m40(int name);
-  virtual bool m41(int name);
-  virtual bool m42(int name);
-};
-struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnySpecialAbilityFrom(int name); };
-bool CScriptThing_Methods::MsgIsHitByAnySpecialAbilityFrom(int name)
+
+inline bool CScriptThing::MsgIsHitByAnySpecialAbilityFrom(const CCharString& attacker) const
 {
-    CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
-    if (!p) return false;
-    return p->m42(name);
+    const CScriptThing* imp = PImp.Data;
+    if (!imp) return false;
+    return imp->MsgIsHitByAnySpecialAbilityFrom(attacker);
 }
-// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z); evidence: RTTI vtable slot + PDB name set.
+
+namespace {
+// Fidelity: scaffolding, not retail: a non-virtual (qualified) call of the inline MsgIsHitByAnySpecialAbilityFrom above with inline expansion switched off for
+// this one function, so this object emits the body out of line as a pick-any COMDAT (retail's 0x004AAD40, the vftable's copy; the
+// nf86 / nf88 / NF92 pattern, as 0x00540CF0). The address of a virtual member is a vcall thunk and would not reference the body.
+// Internal to this TU; never called.
+#pragma inline_depth(0)
+bool ReferenceScriptThingMsgIsHitByAnySpecialAbilityFrom(const CScriptThing& thing, const CCharString& attacker)
+{
+    return thing.CScriptThing::MsgIsHitByAnySpecialAbilityFrom(attacker);
+}
+#pragma inline_depth()
+}

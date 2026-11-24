@@ -73,7 +73,8 @@ public:
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
-    FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    FABLE_FORCEINLINE virtual const C3DVector& GetPos() const { CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }   // slot 6 (+0x18)
     VPAD8(p2x0) VPAD4(p2x1) VPAD2(p2x2)   // slots 7..20
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
     VPAD16(p3x0) VPAD2(p3x1) VPAD1(p3x2)   // slots 22..40

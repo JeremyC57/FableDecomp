@@ -1,0 +1,1 @@
+004aaa40 OK HEAD=?GetAngleXY@CScriptThing_Methods@@QBEMXZ(sel 1) NEW=?GetAngleXY@CScriptThing@@UBEMXZ(sel 2) helper=?ReferenceScriptThingGetAngleXY@?A0xd9ad9538@@YAMABVCScriptThing@@@Z retail=BYTES_EQUAL 

@@ -57,7 +57,8 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOWEST = 0, SCRIPT_AI_PRIORITY_LOW =
                          SCRIPT_AI_PRIORITY_HIGH = 3, SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 template <> void CCountedPointer<CScriptThing>::ShareData(CScriptThing* data, CCPPointerInfo* info);   // 0x007044D0
 inline CScriptThing::~CScriptThing() { }
-inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8
 inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }

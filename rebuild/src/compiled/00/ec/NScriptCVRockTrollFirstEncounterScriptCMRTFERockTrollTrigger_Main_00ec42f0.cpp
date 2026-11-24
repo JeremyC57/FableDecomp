@@ -28,12 +28,9 @@ protected:
 public:
     virtual void v00() const; virtual void v01() const; virtual void v02() const; virtual void v03() const;
     virtual void v04() const; virtual void v05() const;
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
     virtual FABLE_FORCEINLINE const C3DVector& GetPos() const   // slot 6 (+0x18), 0x004AA980
-    {
-        if (!PImp_Data)
-            return NullCoord;
-        return PImp_Data->GetPos();
-    }
+    { CScriptThing* imp = PImp_Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
     CScriptThing(const CScriptThing& other);       // 0x004ABE90

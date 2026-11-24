@@ -43,9 +43,11 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 extern CDefPointer<const CScriptDef> pGlobalScriptDef;     // 0x0143E90C
 void FABLE_FASTCALL RunCutsceneMacro(const CCharString&, std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>&, std::map<CCharString,bool>*, std::map<CCharString,CCharString>*, bool, bool);   // 0x00CBFB7D
 // Retail expands these at this row's sites (CScriptThing 0x004AA980 / 0x004AAA40 / 0x004AB130): defined inline after the headers.
-inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 // GetAngleXY returns the forwarded call parenthesised: the PAREN tuple puts the angle argument's fstp after the GetPos null re-test (0x00DD9637).
-inline float CScriptThing::GetAngleXY() const { if (!PImp.Data) return 0.0f; return (PImp.Data->GetAngleXY()); }
+// NF326 one-definition respell: the self row 0x004AAA40 body with the float result parenthesised as the landed copies spell it (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline float CScriptThing::GetAngleXY() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return 0.0f; return (imp->GetAngleXY()); }
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 
 void NScript::CQ_PrisonEscapeRescueMotherScript::SplittingUpCutscene()

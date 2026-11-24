@@ -36,11 +36,13 @@
 #include "engine/TRetVoid.h"
 
 inline CScriptThing::~CScriptThing() { }
-inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 // Bracket: the forwarded call is parenthesised (the landed 0x00DD9520 text, chunk Q13): the PAREN tuple puts the teleport angle's
 //   `fstp [esp+18h]` after the GetPos null re-test (`mov ecx,[esp+20h] ; cmp ecx,ebp ; fstp`, 0x00DDB144..0x00DDB14A), as retail;
 //   unbracketed (if/return, IsNull()/operator->, conditional-expression bodies) the fstp follows the call at once (1180v1180, one pair).
-inline float CScriptThing::GetAngleXY() const { if (!PImp.Data) return 0.0f; return (PImp.Data->GetAngleXY()); }
+// NF326 one-definition respell: the self row 0x004AAA40 body with the float result parenthesised as the landed copies spell it (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline float CScriptThing::GetAngleXY() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return 0.0f; return (imp->GetAngleXY()); }
 
 void NScript::CQ_PrisonRaceScript::Main()
 {

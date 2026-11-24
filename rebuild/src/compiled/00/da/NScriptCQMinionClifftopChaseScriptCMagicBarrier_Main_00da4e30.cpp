@@ -54,7 +54,8 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
     FABLE_FORCEINLINE ~CScriptThing() { }                    // out of line 0x004AA840
     FABLE_FORCEINLINE CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
-    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }   // slot 6
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual const C3DVector& GetPos() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return g_ZeroPos; return imp->GetPos(); }   // slot 6
     virtual void v07() const; virtual void v08() const; virtual void v09() const;
     virtual float GetHeading() const { return PImp.Data == 0 ? -1.0f : PImp.Data->GetHeading(); }         // slot 10
     VPAD64(t11_0)                                                                                        // slots 11..74

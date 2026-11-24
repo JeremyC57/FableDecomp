@@ -27,7 +27,8 @@ inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(
 FABLE_FORCEINLINE CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
-inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AAD60 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { const CScriptThing* imp = PImp.Data; if (!imp) return false; return imp->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 using NScript::CIsThingAlive;
 
 void NScript::CV_TempleOfLightScript::WatchForAcolyteDeath(CScriptThing acolyte)

@@ -56,7 +56,8 @@ float __fastcall GetDistanceBetweenThingAndPosition(const CScriptThing& thing, c
 static const float TWO_PI = 6.2831855f;
 static const float INV_TWO_PI = 0.15915494f;
 inline CScriptThing::~CScriptThing() { }
-FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 template <> std::vector<CScriptThing, std::allocator<CScriptThing> >::~vector();   // 0x008AC970
 
 namespace NScript {

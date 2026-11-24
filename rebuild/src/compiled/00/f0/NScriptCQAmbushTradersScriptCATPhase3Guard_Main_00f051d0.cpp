@@ -48,7 +48,8 @@ public:
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing();                                   // 0x004AA840
     virtual void t1(); virtual void t2(); virtual void t3(); virtual void t4(); virtual void t5();
-    virtual FABLE_FORCEINLINE const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
+    // NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+    virtual FABLE_FORCEINLINE const C3DVector& GetPos() const { CScriptThingImp* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPosition(); }   // slot 6
     virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14();
     virtual void t15(); virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20(); virtual void t21(); virtual void t22();
     virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27(); virtual void t28(); virtual void t29(); virtual void t30();

@@ -36,7 +36,8 @@ void operator delete(void* p);                          // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
+// NF326 one-definition respell: the body in the shape of the self row 0x004AA980 (retail's out-of-line copy), so this TU's pick-any COMDAT equals it.
+FABLE_FORCEINLINE const C3DVector& CScriptThing::GetPos() const { const CScriptThing* imp = PImp.Data; if (imp == 0) return NullCoord; return imp->GetPos(); }
 // NScript predicates: the shared models (agentNF24, land1011de): CIsThingAlive (vtable 0x012C32F0, ~ 0x00E241B0; its CScriptThing ctor
 // is inline in retail), CIsVariableFalse (vtable 0x012EA43C, the const bool& at +4) and their And (vtable 0x012EA430, ctor 0x00E7E020,
 // destroyed inline: opt-in FABLE_RETAIL_CPREDICATE_AND_INLINE_DTOR) over CPredicateBase (vtable 0x012C2FF4).
