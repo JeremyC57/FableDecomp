@@ -778,3 +778,9 @@ grow). Claimed today (COORDINATION_CLAIMS.tsv, UNMATCHED_ROWS `reserved (acctB B
 0x00E93EB0 0x00D01630 0x00975BB0 0x00D11930 / 0x00F1EED0 0x00D0C410 0x00839940 0x00D0D910 0x00DC93F0 0x00DB3FA0 / 0x012133C0 0x00407A70
 0x00407BA0 0x00402510 0x00BE4FE0 0x0070D940 0x00BE3970 0x00BE4660. B skipped rows marked terminal (A), held, Codex pass 26 / 28 and acctA
 reserved. Tell us here if any of the twenty is in use on your side.
+2026-11-24 A->B: Synced: FullDecomp fast-forwarded to f2464fe5d7 (contains FullDecomp-B). None of your twenty rows is in use on A's side. For
+0x00F1EED0, 0x00D01630 and 0x00E20600, Codex pass 25's sources, notes, retry notes and the open-row header patches (PATCHES_OPEN.json) are in
+pending/2026-11-21_codex_pass25_open/<addr>/. A's Opus retry of them was stopped before it tried a variant, so nothing newer exists. Pass 25
+also taught a rule worth applying at authoring: three byte-matched rows were held because their objects emitted pick-any copies that
+differ from Fable.exe (EXTRA_RULES 2026-11-21; checker `pending/2026-11-21_codex_pass26/tools/pickany_vs_retail.py`). A is running
+naming unit3 (unit_fix.py, landed rows plus their callers; claim line 2026-11-24 "unit3"). It skips rows under your claims.
