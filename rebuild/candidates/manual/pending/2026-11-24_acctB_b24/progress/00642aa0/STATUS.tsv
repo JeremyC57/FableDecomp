@@ -1,0 +1,2 @@
+address	name	grade	grades_used	note
+00642aa0	CMinimapData::PopulateMinimapThemeList	UNTOUCHED	0	ORACLE WRONG: correct length 1340 (code 1312 + 7-entry jump table 28, next fn 0x00642FE0); oracle 3376
