@@ -1,5 +1,5 @@
+// Leaf: ?GetIsToFaceTargetCone@CCreatureAction_TrollProjectileAttack@@UBEMXZ
 // CCreatureAction_TrollProjectileAttack::GetIsToFaceTargetCone @ 0x00908120
-// Retail: d9 05 d8 de 22 01 c3
 //   fld DWORD PTR ds:0x122ded8
 //   ret
 //
@@ -13,10 +13,17 @@
 // not resolve to that exact address; declaring it extern lets the linker
 // place it while the compiler still emits the fld/ret shape.
 
+#define FABLE_RETAIL_CCREATUREACTION_TROLLPROJECTILEATTACK_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS
+#include "engine/CCreatureAction_TrollProjectileAttack.h"
 extern float g_FloatOne;
 
-float __fastcall CCreatureAction_TrollProjectileAttack__GetIsToFaceTargetCone(void *action)
+float CCreatureAction_TrollProjectileAttack::GetIsToFaceTargetCone() const
 {
-    (void)action;
     return g_FloatOne;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_TrollProjectileAttack__GetIsToFaceTargetCone -> CCreatureAction_TrollProjectileAttack::GetIsToFaceTargetCone, the RTTI-placed PDB member; class model: engine/CCreatureAction_TrollProjectileAttack.h opt-in FABLE_RETAIL_CCREATUREACTION_TROLLPROJECTILEATTACK_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS.

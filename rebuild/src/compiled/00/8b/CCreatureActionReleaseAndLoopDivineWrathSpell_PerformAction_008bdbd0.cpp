@@ -1,1 +1,11 @@
-void __fastcall CCreatureAction_ReleaseAndLoopDivineWrathSpell_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPDIVINEWRATHSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_BUILDUPDIVINEWRATHSPELL_VIRTUAL_MODEL
+#include "engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h"
+void CCreatureAction_ReleaseAndLoopDivineWrathSpell::PerformAction()
+{}
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_ReleaseAndLoopDivineWrathSpell_PerformAction -> CCreatureAction_ReleaseAndLoopDivineWrathSpell::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPDIVINEWRATHSPELL_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_BUILDUPDIVINEWRATHSPELL_VIRTUAL_MODEL.

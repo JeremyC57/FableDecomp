@@ -9,6 +9,30 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLTUNNEL_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128E504 (RTTI .?AVCCreatureAction_TrollTunnel@@ : CCreatureAction_TrollWhackGroundBase), 83 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_TrollTunnel); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_TrollWhackGroundBase.h"
+class CCharString;
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_TrollTunnel : public CCreatureAction_TrollWhackGroundBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C63C0 ?PerformAction@CCreatureAction_TrollTunnel@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00908600 ?Clone@CCreatureAction_TrollTunnel@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x009081C0 ?IsToEvadeAllHits@CCreatureAction_TrollTunnel@@UBE_NXZ
+protected:
+    virtual bool GetEffectName(CCharString&) const;                       // slot 82 0x009081D0 ?GetEffectName@CCreatureAction_TrollTunnel@@MBE_NAAVCCharString@@@Z
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollTunnel) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TrollTunnel {
 public:
@@ -27,7 +51,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollTunnel) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollTunnel, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_TrollTunnel) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_TrollTunnel, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_TROLLTUNNEL_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLTUNNEL_H

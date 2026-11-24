@@ -1,4 +1,13 @@
-bool __fastcall CCreatureAction_ReleaseAndLoopUnholyPowerSpell_IsPlayHitResponse()
+// Leaf: ?IsPlayHitResponse@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPUNHOLYPOWERSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_BUILDUPUNHOLYPOWERSPELL_VIRTUAL_MODEL
+#include "engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h"
+bool CCreatureAction_ReleaseAndLoopUnholyPowerSpell::IsPlayHitResponse() const
 {
     return false;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_ReleaseAndLoopUnholyPowerSpell_IsPlayHitResponse -> CCreatureAction_ReleaseAndLoopUnholyPowerSpell::IsPlayHitResponse, the RTTI-placed PDB member; class model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPUNHOLYPOWERSPELL_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_BUILDUPUNHOLYPOWERSPELL_VIRTUAL_MODEL.

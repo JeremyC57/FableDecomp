@@ -1,4 +1,13 @@
-bool __fastcall CCreatureAction_TrollAngryGroundPound_IsKnockdownStrike()
+// Leaf: ?IsKnockdownStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_TROLLANGRYGROUNDPOUND_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS
+#include "engine/CCreatureAction_TrollAngryGroundPound.h"
+bool CCreatureAction_TrollAngryGroundPound::IsKnockdownStrike() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_TrollAngryGroundPound_IsKnockdownStrike -> CCreatureAction_TrollAngryGroundPound::IsKnockdownStrike, the RTTI-placed PDB member; class model: engine/CCreatureAction_TrollAngryGroundPound.h opt-in FABLE_RETAIL_CCREATUREACTION_TROLLANGRYGROUNDPOUND_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS.

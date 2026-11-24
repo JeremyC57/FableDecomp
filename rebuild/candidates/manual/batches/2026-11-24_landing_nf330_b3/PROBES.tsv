@@ -1,0 +1,7 @@
+class	vftable	verdict	slots	notes
+CCreatureAction_BlockRespond	01276084	OK	retail=81 emitted=81 same=81 slot0_alias=0	
+CCreatureAction_ReleaseAndLoopDivineWrathSpell	0127EB7C	OK	retail=81 emitted=81 same=81 slot0_alias=0	
+CCreatureAction_ReleaseAndLoopUnholyPowerSpell	0127F0EC	OK	retail=81 emitted=81 same=81 slot0_alias=0	
+CCreatureAction_TrollAngryGroundPound	0128E23C	OK	retail=83 emitted=83 same=83 slot0_alias=0	
+CCreatureAction_TrollProjectileAttack	0128E3AC	OK	retail=84 emitted=84 same=83 slot0_alias=1	
+CCreatureAction_TrollTunnel	0128E504	OK	retail=83 emitted=83 same=82 slot0_alias=1	

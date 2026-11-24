@@ -1,4 +1,13 @@
-bool __fastcall CCreatureAction_BlockRespond_IsOverrideableByActionOfSamePriority()
+// Leaf: ?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockRespond@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_BLOCKRESPOND_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_BLOCKBASE_VIRTUAL_MODEL
+#include "engine/CCreatureAction_BlockRespond.h"
+bool CCreatureAction_BlockRespond::IsOverrideableByActionOfSamePriority() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_BlockRespond_IsOverrideableByActionOfSamePriority -> CCreatureAction_BlockRespond::IsOverrideableByActionOfSamePriority, the RTTI-placed PDB member; class model: engine/CCreatureAction_BlockRespond.h opt-in FABLE_RETAIL_CCREATUREACTION_BLOCKRESPOND_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_BLOCKBASE_VIRTUAL_MODEL.

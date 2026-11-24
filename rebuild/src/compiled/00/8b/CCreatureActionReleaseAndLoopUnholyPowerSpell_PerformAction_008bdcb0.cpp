@@ -1,1 +1,11 @@
-void __fastcall CCreatureAction_ReleaseAndLoopUnholyPowerSpell_PerformAction() {}
+// Leaf: ?PerformAction@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UAEXXZ
+#define FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPUNHOLYPOWERSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_BUILDUPUNHOLYPOWERSPELL_VIRTUAL_MODEL
+#include "engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h"
+void CCreatureAction_ReleaseAndLoopUnholyPowerSpell::PerformAction()
+{}
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_ReleaseAndLoopUnholyPowerSpell_PerformAction -> CCreatureAction_ReleaseAndLoopUnholyPowerSpell::PerformAction, the RTTI-placed PDB member; class model: engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPUNHOLYPOWERSPELL_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_BUILDUPUNHOLYPOWERSPELL_VIRTUAL_MODEL.

@@ -9,6 +9,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLANGRYGROUNDPOUND_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128E23C (RTTI .?AVCCreatureAction_TrollAngryGroundPound@@ : CCreatureAction_TrollWhackGroundBase), 83 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_TrollAngryGroundPound); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_TrollWhackGroundBase.h"
+class CCharString;
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_TrollAngryGroundPound : public CCreatureAction_TrollWhackGroundBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C63A0 ?PerformAction@CCreatureAction_TrollAngryGroundPound@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008C5FF0 ?FinishAction@CCreatureAction_TrollAngryGroundPound@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00908750 ?Clone@CCreatureAction_TrollAngryGroundPound@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C6130 ?Initialise@CCreatureAction_TrollAngryGroundPound@@UAEXXZ
+    virtual bool IsVitalStrike() const;                                   // slot 18 0x00908060 ?IsVitalStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x00908070 ?IsKnockdownStrike@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x00908080 ?IsBlockable@CCreatureAction_TrollAngryGroundPound@@UBE_NXZ
+protected:
+    virtual bool GetEffectName(CCharString&) const;                       // slot 82 0x00908090 ?GetEffectName@CCreatureAction_TrollAngryGroundPound@@MBE_NAAVCCharString@@@Z
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollAngryGroundPound) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TrollAngryGroundPound {
 public:
@@ -29,8 +57,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollAngryGroundPound) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollAngryGroundPound, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollAngryGroundPound, sub) == 0x8);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CCreatureAction_TrollAngryGroundPound) == 0x114);
+FABLE_STATIC_ASSERT_AT(33, offsetof(CCreatureAction_TrollAngryGroundPound, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(34, offsetof(CCreatureAction_TrollAngryGroundPound, sub) == 0x8);
+#endif // FABLE_RETAIL_CCREATUREACTION_TROLLANGRYGROUNDPOUND_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLANGRYGROUNDPOUND_H

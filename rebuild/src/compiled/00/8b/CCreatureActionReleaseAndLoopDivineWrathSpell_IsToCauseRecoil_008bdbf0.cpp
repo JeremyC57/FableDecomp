@@ -1,4 +1,13 @@
-bool __fastcall CCreatureAction_ReleaseAndLoopDivineWrathSpell_IsToCauseRecoil()
+// Leaf: ?IsToCauseRecoil@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBE_NXZ
+#define FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPDIVINEWRATHSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#define FABLE_RETAIL_CCREATUREACTION_BUILDUPDIVINEWRATHSPELL_VIRTUAL_MODEL
+#include "engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h"
+bool CCreatureAction_ReleaseAndLoopDivineWrathSpell::IsToCauseRecoil() const
 {
     return true;
 }
+// Flatten route (flatten_pilot v5, NF330): CCreatureAction_ReleaseAndLoopDivineWrathSpell_IsToCauseRecoil -> CCreatureAction_ReleaseAndLoopDivineWrathSpell::IsToCauseRecoil, the RTTI-placed PDB member; class model: engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h opt-in FABLE_RETAIL_CCREATUREACTION_RELEASEANDLOOPDIVINEWRATHSPELL_VIRTUAL_MODEL, FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_BUILDUPDIVINEWRATHSPELL_VIRTUAL_MODEL.

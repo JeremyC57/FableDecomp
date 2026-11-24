@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00908120   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+
+WINS: 1
+  00908120 RELOCATION_MATCH CCreatureAction_TrollProjectileAttack::?GetIsToFaceTargetCone@CCreatureAction_TrollProjectileAttack@@UBEMXZ

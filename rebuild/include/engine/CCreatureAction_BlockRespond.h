@@ -9,6 +9,40 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BLOCKRESPOND_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01276084 (RTTI .?AVCCreatureAction_BlockRespond@@ : CCreatureAction_BlockBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BlockRespond); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_BLOCKBASE_VIRTUAL_MODEL.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCreatureAction_BlockBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00855E50 ?Clone@CCreatureAction_BlockRespond@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x00855500 ?Initialise@CCreatureAction_BlockRespond@@UAEXXZ
+    virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x00855D40 ?IsOverrideableByActionOfSamePriority@CCreatureAction_BlockRespond@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008553C0 ?FrameUpdate@CCreatureAction_BlockRespond@@UAEXXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x00855D50 ?IsToFaceTargetAtStart@CCreatureAction_BlockRespond@@UBE_NXZ
+public:
+    bool          UseHitPos;                                 // +0x124
+    float         HitPos_X;                                  // +0x125 C3DVector::X
+    float         HitPos_Y;                                  // +0x129 C3DVector::Y
+    float         HitPos_Z;                                  // +0x12d C3DVector::Z
+    bool          FaceTargetAtStart;                         // +0x131
+    unsigned char _pad_0x132[0x2];                           // +0x132
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockRespond) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, UseHitPos) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_X) == 0x125);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_Y) == 0x129);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_Z) == 0x12d);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, FaceTargetAtStart) == 0x131);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, _pad_0x132) == 0x132);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BlockRespond {
 public:
@@ -35,12 +69,13 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BlockRespond) == 0x134);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, UseHitPos) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_X) == 0x125);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_Y) == 0x129);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, HitPos_Z) == 0x12d);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BlockRespond, FaceTargetAtStart) == 0x131);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CCreatureAction_BlockRespond) == 0x134);
+FABLE_STATIC_ASSERT_AT(39, offsetof(CCreatureAction_BlockRespond, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CCreatureAction_BlockRespond, UseHitPos) == 0x124);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CCreatureAction_BlockRespond, HitPos_X) == 0x125);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CCreatureAction_BlockRespond, HitPos_Y) == 0x129);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CCreatureAction_BlockRespond, HitPos_Z) == 0x12d);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CCreatureAction_BlockRespond, FaceTargetAtStart) == 0x131);
+#endif // FABLE_RETAIL_CCREATUREACTION_BLOCKRESPOND_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BLOCKRESPOND_H

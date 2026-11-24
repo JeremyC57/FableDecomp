@@ -11,6 +11,40 @@
 
 class CCharStringData;
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLPROJECTILEATTACK_VIRTUAL_MODEL
+// Opt-in (NF330, 2026-11-24; generator NF322 genmodel.py, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128E3AC (RTTI .?AVCCreatureAction_TrollProjectileAttack@@ : CCreatureAction_TrollWhackGroundBase), 84 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_TrollProjectileAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF330 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_TROLLWHACKGROUNDBASE_CLASS.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+#include "engine/CCreatureAction_TrollWhackGroundBase.h"
+class CCharString;
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_TrollProjectileAttack : public CCreatureAction_TrollWhackGroundBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C6430 ?PerformAction@CCreatureAction_TrollProjectileAttack@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x009085B0 ?Clone@CCreatureAction_TrollProjectileAttack@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x00908110 ?IsToFaceTarget@CCreatureAction_TrollProjectileAttack@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x00908120 ?GetIsToFaceTargetCone@CCreatureAction_TrollProjectileAttack@@UBEMXZ
+protected:
+    virtual void InitAnimation();                                         // slot 81 0x008C6000 ?InitAnimation@CCreatureAction_TrollProjectileAttack@@MAEXXZ
+    virtual bool GetEffectName(CCharString&) const;                       // slot 82 0x00908140 ?GetEffectName@CCreatureAction_TrollProjectileAttack@@MBE_NAAVCCharString@@@Z
+public:
+    virtual bool IsInterruptableDueToZoneChange() const;                  // slot 83 0x00908130 ?IsInterruptableDueToZoneChange@CCreatureAction_TrollProjectileAttack@@UBE_NXZ
+public:
+    bool             OverriddenAnim;                         // +0x114
+    unsigned char    _pad_0x115[0x3];                        // +0x115
+    CCharStringData* AnimName_PStringData;                   // +0x118 CCharString::PStringData
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollProjectileAttack) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollProjectileAttack, OverriddenAnim) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollProjectileAttack, _pad_0x115) == 0x115);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollProjectileAttack, AnimName_PStringData) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TrollProjectileAttack {
 public:
@@ -81,9 +115,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollProjectileAttack) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollProjectileAttack, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollProjectileAttack, OverriddenAnim) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollProjectileAttack, AnimName_PStringData) == 0x118);
+FABLE_STATIC_ASSERT_AT(84, sizeof(CCreatureAction_TrollProjectileAttack) == 0x11c);
+FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_TrollProjectileAttack, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_TrollProjectileAttack, OverriddenAnim) == 0x114);
+FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_TrollProjectileAttack, AnimName_PStringData) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_TROLLPROJECTILEATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLPROJECTILEATTACK_H
