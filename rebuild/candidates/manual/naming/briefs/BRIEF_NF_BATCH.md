@@ -273,3 +273,25 @@ per changed row), tools/ (every helper you wrote), and the decisions you need. K
 - **Equiv-check scope (coordinator, 2026-11-24):** an equiv_check over the reverse include closure of the changed headers is accepted,
   provided the closure follows quoted includes and folded `../src/compiled` TUs and the planted control is cross-checked. NF325's full
   57,146-row run found nothing beyond its closure run except path-only `__FILE__` lines.
+- **Paths are per session.** The S path at the top names one session's scratchpad. Each agent's BRIEF.md prefix gives the current S and the
+  donor-build path. Wine tools need `unset TMPDIR TMP`: a TMPDIR inside the scratchpad makes cl segfault.
+- NF326 Q4 / NF328 (`batches/2026-11-24_landing_nf328/README.md`) and NF331 (`_nf331/`): CScriptThing member units.
+  - **Form:** every strong definer of a member that retail expands inline becomes `inline` (pick-any). If nothing else emits the member
+    out of line, the self gets ONE `?A0x` helper: a qualified explicit destructor call, a by-value copy return, or an assignment.
+  - **Helper device:** `#pragma inline_depth(0)` over that one helper function, restored right after it, below the row's own code, with
+    an `// Inline-budget: scaffolding, not retail` line. Ruled per unit; it is debt.
+  - **Differing copies:** pre-existing copies that differ from retail are queued debt (T3 one line per copy), not a hold, provided the
+    change adds or alters none (NF326 Q2 / NF328 D1).
+  - **Census holes:** Codex-reserved rows may be compiled read-only for a census.
+- NF329 / NF330 (`batches/2026-11-24_landing_nf329_b3/README.md`, `_nf330_b*`): flat-header ports onto generated
+  `FABLE_RETAIL_<CLASS>_VIRTUAL_MODEL` opt-in derived models.
+  - **New slot:** a member on a NEW slot is proven when the retail vftable slot holds the row's own address (D-a).
+  - **Packing:** the generator's `#pragma pack(push, 1)` with explicit pads and every offset asserted is the convention, not authored
+    packing (D-g).
+  - **Base selection:** `// Needs` lines may select a landed base switch (D-d).
+  - **Base-model `_RTTI_DECLS` blocks:** allowed (NF324 b5 / b6 form) only when the BASE class's own emitted `??_7` matches retail slot for
+    slot with the block on. A derived-class probe is not enough (NF330 D1 / b6).
+  - **Non-public destructor:** declared where the retail slot's `??_G` tail and both PDB sets give it (NF330 D3).
+  - **HEAD entries:** a row whose landed source carries a retail byte-dump comment needs its HEAD entry rebuilt from the repo before
+    `land_scripted.py` (D-f).
+  - **T3 lines:** the coordinator lands rows it sent an agent into from T3 with `land_scripted.py --release-t3 <tag>`.
