@@ -15,7 +15,14 @@ Steps, in order (nothing is committed; the coordinator writes the README / HANDO
   4. a binder run (access_fix.py --binders) also applies its TABLE_CHANGES.tsv for the landed callers (apply_table.py);
   5. write rebuild/candidates/manual/batches/<batch>/ (RESULTS.tsv, rows.txt, rows_held.txt, logs/recheck.log), append the run's REJECT
      rows to T3_PORT_QUEUE.tsv as <queue tag>, release the locks (naming_batch/clean.py).
-A unit_fix.py run carries UNITS.tsv (address, unit): a unit lands whole or not at all (held or failed member -> every member restored / held)."""
+A unit_fix.py run carries UNITS.tsv (address, unit[, ...]): a unit lands whole or not at all (held or failed member -> every member restored / held).
+A column headed `kind` (by name; a third column headed `note` stays free text) marks option S members with `S` (owner ruling 2026-11-24; NF376
+pilot, NF379): one retail TU serves several catalog addresses, the owner row holds every body and each other member is a thin row (`// Leaf:
+<own symbol>` + `#include "../src/compiled/<owner Source>"`). An S member is never a binder: it must grade its own new symbol exactly, and its
+vland grade runs with LANDVERIFY_STRICT_LEAF=1 (a separate call; every other row grades exactly as before).
+Includers: every landed row outside the run that compiles a landed row's file (`#include "../src/compiled/..."`: EH funclets, S thin rows,
+fold rows; naming_status.includers_of) re-grades too; a failure (not MATCH / RELOCATION_MATCH + PASS, or an `Option S` includer whose graded
+symbol is not its own Leaf) holds and restores the row it includes (and that row's unit). Grades: <batch>/logs/recheck.log (all calls)."""
 import os, re, sys, json, shutil, subprocess, contextlib, io
 sys.path.insert(0, "tools/decomp_pipeline"); argv = sys.argv[1:]; sys.argv = ["x"]
 import naming_status as ns
@@ -62,9 +69,14 @@ for a in acc:
     if a not in heads: held[a] = "stale check: no HEAD payload for the row"; continue
     if open("rebuild/src/compiled/" + ent[a]["Source"], encoding="utf-8").read() != heads[a]: held[a] = "stale: the landed source changed since the run"
 # a unit run (unit_fix.py) lands whole or not at all: one held member holds its unit
-unit = {}
+unit = {}; s_unit = set()
 if os.path.exists(f"{run}/UNITS.tsv"):
-    unit = {l.split("\t")[0]: l.split("\t")[1] for l in open(f"{run}/UNITS.tsv").read().splitlines()[1:] if l}
+    ul = open(f"{run}/UNITS.tsv").read().splitlines()
+    unit = {l.split("\t")[0]: l.split("\t")[1] for l in ul[1:] if l}
+    hdr = ul[0].split("\t") if ul else []
+    if "kind" in hdr:          # option S: the kind column is found by its header name, never by position (older third columns are `note`)
+        k = hdr.index("kind")
+        s_unit = {f[0] for f in (l.split("\t") for l in ul[1:] if l) if len(f) > k and f[k].strip() == "S"}
 def hold_units(why_of):
     for u in {unit[a] for a in why_of if a in unit}:
         for a in acc:
@@ -80,25 +92,61 @@ for a in land:
         for m in re.finditer(r"\bunsigned\s+char\s+(\w+)\s*\[", orig[a]):
             new = re.sub(r"(?<!unsigned )\bchar(\s+" + m.group(1) + r"\s*\[)", r"unsigned char\1", new)
     open(dst, "w", encoding="utf-8").write(new)
-W = f"{S}/land_{batch}"; os.makedirs(f"{W}/p", exist_ok=True)
-subprocess.run(["python3", f"{LT}/recheck.py", f"{W}/p"] + land, capture_output=True, text=True)
-with open(f"{W}/recheck.log", "w") as lf:
-    subprocess.run(["timeout", "900", "python3", "-u", f"{LT}/vland.py", f"{W}/p/payload.json", f"{W}/p/oracle.tsv", "--recheck-landed"],
-                   stdout=lf, stderr=subprocess.STDOUT, env=dict(os.environ, LANDVERIFY_WORK=f"{W}/wd"))
+W = f"{S}/land_{batch}"
+# includers outside the run: rows that compile a landed row's file (thin / fold); an edit to that file re-grades them
+inc_of = {}
+for a in land:
+    for i in ns.includers_of(ent[a]["Source"], ent):
+        if i not in land: inc_of.setdefault(i, set()).add(a)
+def vgrade(tag, rows, strict):
+    """recheck.py + vland --recheck-landed for one group of rows (its own payload, log and work dir); returns {addr: work dir}"""
+    if not rows: return {}
+    os.makedirs(f"{W}/p{tag}", exist_ok=True)
+    subprocess.run(["python3", f"{LT}/recheck.py", f"{W}/p{tag}"] + rows, capture_output=True, text=True)
+    e = dict(os.environ, LANDVERIFY_WORK=f"{W}/wd{tag}")
+    if strict: e["LANDVERIFY_STRICT_LEAF"] = "1"
+    else: e.pop("LANDVERIFY_STRICT_LEAF", None)
+    with open(f"{W}/recheck{tag}.log", "w") as lf:
+        subprocess.run(["timeout", "900", "python3", "-u", f"{LT}/vland.py", f"{W}/p{tag}/payload.json", f"{W}/p{tag}/oracle.tsv", "--recheck-landed"],
+                       stdout=lf, stderr=subprocess.STDOUT, env=e)
+    return {a: f"{W}/wd{tag}" for a in rows}
+wdir = {}
+wdir.update(vgrade("", [a for a in land if a not in s_unit], False))       # every non-S row: exactly the call it always had
+wdir.update(vgrade("_s", [a for a in land if a in s_unit], True))           # option S members: strict leaf
+wdir.update(vgrade("_inc", sorted(inc_of), False))                          # includers of the landed files
 st = {}
-for l in open(f"{W}/recheck.log", errors="replace"):
-    m = re.match(r"([0-9a-f]{8})\s+(\S+)\s+(\S+)\s", l)
-    if m and m.group(2) != "WARN": st.setdefault(m.group(1), (m.group(2), m.group(3)))
+for tag in ("", "_s", "_inc"):
+    if not os.path.exists(f"{W}/recheck{tag}.log"): continue
+    for l in open(f"{W}/recheck{tag}.log", errors="replace"):
+        m = re.match(r"([0-9a-f]{8})\s+(\S+)\s+(\S+)\s", l)
+        if m and m.group(2) != "WARN": st.setdefault(m.group(1), (m.group(2), m.group(3)))
 bad = []
 for a in land:
-    g = st.get(a, ("NOT_GRADED", "-")); o = f"{W}/wd/{a[:2]}/{a[2:4]}/{a}/{a}.obj"; sym = ""
+    g = st.get(a, ("NOT_GRADED", "-")); o = f"{wdir[a]}/{a[:2]}/{a[2:4]}/{a}/{a}.obj"; sym = ""
     if os.path.exists(o):
         with contextlib.redirect_stderr(io.StringIO()): sym = V.obj_text(o, acc[a][3])[2]
-    binder = "; target " in acc[a][4] or (a in unit and unit[a] != a)          # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade
+    # access_fix --binders: a caller keeps its own symbol; its proof is objsec + grade. An option S member is never a binder (NF376 / NF379).
+    binder = ("; target " in acc[a][4] or (a in unit and unit[a] != a)) and a not in s_unit
     # A leaf in an anonymous namespace is written `...@?A0x` (a prefix): its 8-hex hash depends on the build path (landing nf365 g2).
     anon = acc[a][3].endswith("?A0x") and re.sub(r"(\?A0x)[0-9a-f]{8}.*", r"\1", sym) == acc[a][3]
     if not (g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS" and (binder or sym == acc[a][3] or anon)):
         bad.append(a); held[a] = f"landing recheck {g} symbol {sym}"
+        open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
+inc_res = []
+for i, owners in sorted(inc_of.items()):
+    g = st.get(i, ("NOT_GRADED", "-")); it = open("rebuild/src/compiled/" + ent[i]["Source"], encoding="utf-8", errors="replace").read()
+    lf_ = re.search(r"^//\s*Leaf:\s*(\S+)", it, re.M); sym = ""
+    ok = g[0].startswith(("MATCH", "RELOCATION_MATCH")) and g[1] == "PASS"
+    if ok and "Option S" in it and lf_:          # an S thin includer must grade its own Leaf (no strict call for includers: funclet / fold leaves)
+        o = f"{wdir[i]}/{i[:2]}/{i[2:4]}/{i}/{i}.obj"
+        if os.path.exists(o):
+            with contextlib.redirect_stderr(io.StringIO()): sym = V.obj_text(o, lf_.group(1))[2]
+        ok = sym == lf_.group(1)
+    inc_res.append(f"{i}\t{','.join(sorted(owners))}\t{g[0]}\t{g[1]}\t{'OK' if ok else 'FAIL'}\t{sym}")
+    if ok: continue
+    for a in sorted(owners):
+        if a in bad: continue
+        bad.append(a); held[a] = f"includer {i} regrade {g} symbol {sym}"
         open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
 for u in {unit[a] for a in bad if a in unit}:
     for a in land:
@@ -107,7 +155,13 @@ for u in {unit[a] for a in bad if a in unit}:
             open("rebuild/src/compiled/" + ent[a]["Source"], "w", encoding="utf-8").write(orig[a])
 land = [a for a in land if a not in bad]
 B = f"rebuild/candidates/manual/batches/{batch}"; os.makedirs(f"{B}/logs", exist_ok=True)
-shutil.copyfile(f"{run}/RESULTS.tsv", f"{B}/RESULTS.tsv"); shutil.copyfile(f"{W}/recheck.log", f"{B}/logs/recheck.log")
+shutil.copyfile(f"{run}/RESULTS.tsv", f"{B}/RESULTS.tsv")
+with open(f"{B}/logs/recheck.log", "w") as lo:
+    for tag in ("", "_s", "_inc"):
+        if os.path.exists(f"{W}/recheck{tag}.log"):
+            if tag: lo.write(f"# ---- {'option S members (LANDVERIFY_STRICT_LEAF=1)' if tag == '_s' else 'includers of the landed files'}\n")
+            lo.write(open(f"{W}/recheck{tag}.log", errors="replace").read())
+if inc_res: open(f"{B}/logs/includers.tsv", "w").write("includer\tincludes_row\tgrade\ttest\tverdict\tsymbol\n" + "".join(l + "\n" for l in inc_res))
 open(f"{B}/rows.txt", "w").write("".join(a + "\n" for a in land))
 open(f"{B}/rows_held.txt", "w").write("".join(f"{a}\t{why}\n" for a, why in sorted(held.items())))
 # a binder run's table changes, for the landed callers only (naming_batch/apply_table.py; nothing is written if any line misses)
@@ -130,4 +184,5 @@ if rej:
 for a in acc:
     if os.path.exists(f"{S}/w22/nflocks/{a}/owner") and open(f"{S}/w22/nflocks/{a}/owner").read().strip() == "COORD":
         subprocess.run(["python3", f"{LT}/naming_batch/clean.py", f"{S}/w22/nflocks", f"{S}/w22/nflocks/{a}"], capture_output=True)
-print(json.dumps(dict(accepted=len(acc), landed=len(land), held=len(held), recheck_failed=len(bad), rejects_queued=len(rej))))
+print(json.dumps(dict(accepted=len(acc), landed=len(land), held=len(held), recheck_failed=len(bad), rejects_queued=len(rej))
+                 | (dict(s_members=len(s_unit), includers=len(inc_of)) if s_unit or inc_of else {})))

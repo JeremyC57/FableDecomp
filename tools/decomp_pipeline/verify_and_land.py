@@ -437,6 +437,14 @@ def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, t
     try:
         res=extract(obj,leaf); built,sec=res[0],res[1]; roff=res[3] if len(res)>3 else 0
     except Exception: return "OBJDUMP_ERR",None,None
+    # LANDVERIFY_STRICT_LEAF=1 (option S units; NF376 pilot, NF379): one object serves several catalog addresses, so obj_text's
+    # largest-function fallback, or a leaf that is a substring of a TU-mate's symbol, would grade the wrong function. The graded symbol
+    # must BE the leaf (an anonymous-namespace leaf `...@?A0x` is a prefix: its hash depends on the build path). Scoped to the grade:
+    # obj_text's other callers (land_scripted, pk_all, reloc_identity) keep their behaviour; funclet slices (text_extractor) are exempt.
+    if os.environ.get("LANDVERIFY_STRICT_LEAF")=="1" and text_extractor is None and leaf:
+        gsym=str(res[2]) if len(res)>2 else ""
+        if gsym!=leaf and not (leaf.endswith("?A0x") and gsym.startswith(leaf)):
+            return f"LEAF_MISMATCH({gsym[:60]})",None,None
     rel=[r-roff for r in obj_relocs(obj,sec) if r>=roff]
     if retail==built: return "MATCH",built,sec
     if mask(retail,rel)==mask(built,rel): return "RELOCATION_MATCH",built,sec
@@ -568,7 +576,8 @@ def main():
         ext=funclet_extractor(int(c["funclet_offset"]), len(retail), retail) if c.get("funclet_offset") is not None else None
         # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
         src=src0; winflags=pre; st,_,_=parity_of(src, addr, leaf, retail, work, e, extra=pre, text_extractor=ext)
-        if not st.startswith(("MATCH","RELOCATION")):
+        # a strict-leaf miss (LANDVERIFY_STRICT_LEAF=1) is the source's naming, not its flags: no pragma / flag sweep
+        if not st.startswith(("MATCH","RELOCATION","LEAF_MISMATCH")):
             done=False
             # a retail body that opens with the EH prologue (push -1 ; push handler) can only match
             # under /EHsc: try that flag set first instead of last (saves ~20 compiles per row).

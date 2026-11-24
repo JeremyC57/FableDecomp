@@ -1,7 +1,9 @@
 # Build a --recheck-landed payload + oracle for landed rows, straight from the catalog.
-# usage: recheck.py <outdir> <addr|src-file>...   (a src path under rebuild/src/compiled is mapped to its row)
+# usage: recheck.py <outdir> [--with-includers] <addr|src-file>...   (a src path under rebuild/src/compiled is mapped to its row)
+# --with-includers: also every landed row that compiles a named row's file through `#include "../src/compiled/..."` (EH funclets,
+#   option S thin rows, fold rows; naming_status.includers_of, transitive). An edit to an owner re-grades them (option S, NF379).
 import re, sys, json, os
-out = sys.argv[1]; want = sys.argv[2:]
+out = sys.argv[1]; want = [w for w in sys.argv[2:] if w != "--with-includers"]
 ps = open("rebuild/build_candidates.ps1", encoding="utf-8-sig").read()
 ent = {}
 for blk in re.findall(r"\[pscustomobject\]@\{(.*?)\n    \}", ps, re.S):
@@ -25,11 +27,23 @@ def mangled_leaf(leafname, mod):
         return "??0" + head(cls) + "@"
     if leafname in OPS and mod != "_global": return OPS[leafname] + head(cls) + "@"
     return leafname
-auth = []; orc = ["address\tname\tlength\tbytes"]
-for w in want:
+def addr_of(w):
     a = w.lower()
     if a not in ent:
         rel = os.path.relpath(w, "rebuild/src/compiled").replace(os.sep, "/"); a = bysrc.get(rel, "")
+    return a
+if "--with-includers" in sys.argv[2:]:
+    sys.path.insert(0, "tools/decomp_pipeline")
+    import naming_status as ns
+    have = {addr_of(w) for w in want}; incs = set()
+    lr = ns.landed_rows()
+    for a in sorted(have):
+        if a in ent: incs.update(ns.includers_of(ent[a]["Source"], lr))
+    added = sorted(incs - have); want += added
+    print("includers:", " ".join(added) or "-")
+auth = []; orc = ["address\tname\tlength\tbytes"]
+for w in want:
+    a = addr_of(w)
     if a not in ent or a not in cat: print("skip", w); continue
     kv = ent[a]; src = open("rebuild/src/compiled/" + kv["Source"], encoding="utf-8").read()
     tst = open("rebuild/tests/" + kv["TestSource"], encoding="utf-8").read() if kv.get("TestSource") else ""

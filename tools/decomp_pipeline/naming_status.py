@@ -67,6 +67,57 @@ def landed_rows():
     return ent
 
 
+# Rows that compile another row's file (option S, owner ruling 2026-11-24; NF376 pilot, NF379 tools). A THIN row is comments, its own
+# `// Leaf:` and one `#include "../src/compiled/<owner Source>"` (EH funclets, the nf251 0x00B2AB10 fold, option S members); a FOLD row
+# includes another row's file and adds code of its own (0x00BEB490). Both re-grade when the included file changes; only a thin row
+# hands its edits to the owner.
+_COMPILED_INC = re.compile(r'^[ \t]*#[ \t]*include[ \t]+"\.\./src/compiled/([^"]+)"', re.M)
+
+
+def _row_text(src):
+    try:
+        with open(P("rebuild", "src", "compiled", src), encoding="utf-8", errors="replace") as f: return f.read()
+    except OSError:
+        return None
+
+
+def owner_source(src):
+    """The catalog Source that holds a row's code: a thin row resolves to the file it includes, any other row to itself. Tools that
+    EDIT a row's text (respells, retypes, access / unit fixes, NAME_FIXES) must edit owner_source(src); then every row in
+    includers_of(owner) re-grades (recheck.py --with-includers; land_scripted.py does it at landing)."""
+    t = _row_text(src)
+    if t is None: return src
+    code = re.sub(r"//[^\n]*", "", t)
+    m = _COMPILED_INC.findall(code)
+    return m[0] if len(m) == 1 and not re.sub(r'#[ \t]*include[ \t]+"[^"]+"', "", code).strip() else src
+
+
+_INCLUDERS = {}
+def includers_map(ent=None):
+    """{included Source: [addresses of the landed rows that include it, directly]}, one pass over the landed sources (cached per catalog)."""
+    ent = ent or landed_rows(); key = id(ent)
+    if key not in _INCLUDERS:
+        m = {}
+        for a, kv in ent.items():
+            t = _row_text(kv.get("Source", ""))
+            if not t or "../src/compiled/" not in t: continue
+            for inc in set(_COMPILED_INC.findall(re.sub(r"//[^\n]*", "", t))):
+                if inc != kv["Source"]: m.setdefault(inc, []).append(a)
+        _INCLUDERS.clear(); _INCLUDERS[key] = (ent, m)      # keep `ent` alive so its id is not reused
+    return _INCLUDERS[key][1]
+
+
+def includers_of(src, ent=None):
+    """The landed addresses whose Source compiles <src> through `#include "../src/compiled/<src>"`, thin or fold, transitively, sorted.
+    A change to <src> must re-grade every one of them."""
+    ent = ent or landed_rows(); m = includers_map(ent); out = set(); todo = [src]
+    while todo:
+        for a in m.get(todo.pop(), []):
+            if a not in out:
+                out.add(a); todo.append(ent[a]["Source"])
+    return sorted(out)
+
+
 def leaf_of(src):
     p = P("rebuild", "src", "compiled", src)
     try:
