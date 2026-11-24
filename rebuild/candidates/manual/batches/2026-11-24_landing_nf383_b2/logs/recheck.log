@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00458833   WARN SHARED_HEADER_AVAILABLE CPhysicalPrimitiveInit (engine/CPhysicalPrimitiveInit.h)
+00458833   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00458833   RELOCATION_MATCH PASS   Transfer<CPhysicalPrimitiveInit>
+0064f93f   RELOCATION_MATCH PASS   AddTimer
+0064fa0f   RELOCATION_MATCH PASS   AddCounter
+0064fa77   RELOCATION_MATCH PASS   AddCounterList
+0064fadf   RELOCATION_MATCH PASS   AddTick
+
+WINS: 5
+  00458833 RELOCATION_MATCH CPersistContext::??$Transfer@VCPhysicalPrimitiveInit@@@CPersistContext@@QAEXAAVCPhysicalPrimitiveInit@@@Z
+  0064f93f RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::AddTimer
+  0064fa0f RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?AddCounter@CDrawQuestInfo@NPlayerGui@@QAEJABVCCharString@@JM@Z
+  0064fa77 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?AddCounterList@CDrawQuestInfo@NPlayerGui@@QAEJABVCCharString@@JM@Z
+  0064fadf RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?AddTick@CDrawQuestInfo@NPlayerGui@@QAEJABVCCharString@@_NM@Z

@@ -27,6 +27,11 @@ class CMemoryDataInputStream;
 namespace NHitLocations { class CPhysicalPrimitiveBase; }
 struct SCountBlock;
 
+// Name fix (NF383, 2026-11-24): the release this row calls at 0x0044F3B2 is ReleaseData, not the destructor: retail has no ICF and the
+//   44-byte body is jumped to by the 5-byte destructor COMDAT 0x00450195 / 0x00450BDE (`jmp 0x0044F3B2`), the CComponent / CAction / CList pattern of
+//   engine/CCountedPointer.h (~CCountedPointer() { ReleaseData(); }; FableWin: ~CCountedPointer 17 bytes calls ReleaseData). The opt-in
+//   below makes the destructor that inline wrapper, so the call binds ?ReleaseData@ for CCountedPointer<NHitLocations::CPhysicalPrimitiveBase>.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
 
 class CPhysicalPrimitiveInit {

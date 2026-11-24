@@ -1,0 +1,5 @@
+# Landing nf383 b2: five binders call ReleaseData, not the destructor thunk's name
+
+Agent NF383 (pending/2026-11-24_nf383_handback). Binders 0064f93f 0064fa0f 0064fa77 0064fadf (NPlayerGui::CDrawQuestInfo Add*) and 00458833 (CPersistContext::Transfer<CPhysicalPrimitiveInit>) called the retail ReleaseData bodies 0x00654B4F / 94 / D9, 0x00654C1E and 0x0044F3B2 by the CCountedPointer destructor's name. Under the no-ICF ruling these addresses are ReleaseData (FableWin ShareData callers, object order); the destructors are the separate 5-byte `jmp ReleaseData` thunks.
+- Ruling NF383-R1 (advisor decision, owner delegated; GOTCHAS landing nf383): objsec NOT_EQ accepted under three conditions, checked by the coordinator by COMDAT symbol: only the destructor COMDAT (44 B body -> 5 B jump) and the new ReleaseData COMDAT differ in bytes; the leaf and the other destructors are byte-equal with the renamed call target; the new destructor copy is EQ at the retail thunk and ReleaseData EQ at its own address; the table binds ReleaseData to the body (5 replace lines, 0 misses).
+- vland HEAD and new RELOCATION_MATCH PASS, test PASS; /FORCE link 0 duplicates.

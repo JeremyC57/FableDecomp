@@ -1,0 +1,9 @@
+address	symbol	status	leaf_given	old_symbol
+00429d8e	??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	RELOCATION_MATCH	??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ	_Forward
+009e42c0	?ClearAllMaintainedEvents@CJoystick@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CJoystick@@QAEXXZ	?Clear@CMemoryDataOutputStream@@QAEXXZ
+00a66c00	?ClearAllMaintainedEvents@CMouse@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CMouse@@QAEXXZ	?Clear@CMemoryDataOutputStream@@QAEXXZ
+00a66860	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	?Clear@CMemoryDataOutputStream@@QAEXXZ
+006f0810	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z	RELOCATION_MATCH	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z	??0?$vector@VC3DVector@@@std@@QAE@ABU01@@Z
+0050e500	??$fill@PAGG@std@@YIXPAG0ABG@Z	MATCH	??$fill@PAGG@std@@YIXPAG0ABG@Z	??$fill@PAFF@std@@YIXPAF0ABF@Z
+00a326d0	??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ	??1?$pair@JVC3DMeshVolume@@@std@@QAE@XZ
+00a335e0	??$fill@PAU?$pair@KVC3DMeshVolume@@@std@@U12@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0ABU10@@Z	RELOCATION_MATCH	??$fill@PAU?$pair@KVC3DMeshVolume@@@std@@U12@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0ABU10@@Z	??$fill@PAU?$pair@JVC3DMeshVolume@@@std@@U12@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0ABU10@@Z

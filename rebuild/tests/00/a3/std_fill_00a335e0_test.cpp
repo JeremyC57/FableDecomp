@@ -1,4 +1,4 @@
-// behaviour test for 0x00a335e0 (std::fill over pair<long, C3DMeshVolume>)
+// behaviour test for 0x00a335e0 (std::fill over pair<unsigned long, C3DMeshVolume>)
 #include <stdio.h>
 #ifndef _MSC_VER
 #define __fastcall
@@ -61,7 +61,7 @@ void __fastcall fill(ForwardIter first, ForwardIter last, const T& val)
     for (; first != last; ++first)
         *first = val;
 }
-typedef pair<long, C3DMeshVolume> CMeshVolumeEntry;
+typedef pair<unsigned long, C3DMeshVolume> CMeshVolumeEntry;
 template void __fastcall fill(CMeshVolumeEntry*, CMeshVolumeEntry*, const CMeshVolumeEntry&);
 }
 

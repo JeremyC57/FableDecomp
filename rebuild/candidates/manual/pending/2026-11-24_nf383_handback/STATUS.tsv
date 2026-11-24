@@ -1,0 +1,55 @@
+address	status	reason
+0044c57d	ruling:not-researched(stay-off)	-; action: none
+004cb6e0	ruling:owner-proven/other-unknown	?GetMapwhoPosition@CTCPhysicsBase@@QBE?AVC3DVector@@XZ = 0x006AFCB0; action: queue port of 006afcb0 onto engine/CTCPhysicsBase.h (declares it, line 274); 004cb6e0 keep stand-in, needs new descriptive name
+00640460	ruling:owner-proven/other-unknown	?InterruptAllNavigators@CNavigatorManager@@AAEXXZ = 0x00A14F40; action: none
+00a3a380	ruling:owner-proven	??0?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@QAE@PBVCFileInfo@CFileInstaller@@@Z = 0x009C6A70; action: none (BSim donor rejected)
+00ab9f70	ruling:owner-proven	?AddExclusiveObserver@CObservable@NUISystem@@UAEXPAVCObserver@2@@Z = 0x0055C930; action: none (BSim donor rejected)
+00b6d600	ruling:owner-proven	?CloseStaticMap@CLocalDetailCacheMap@@QAEXXZ = 0x00BDDD50; action: none (BSim donor rejected); 00bddd50 self spells a free-function stand-in -> NAME_FIXES
+00b9d650	ruling:owner-proven	?SetGuildMasterMessages@CGameScriptInterface@@UBEX_N@Z = 0x0088E200; action: none here (placeholder-family naming paused)
+00be4400	ruling:owner-proven	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z = 0x005EEDCF; action: queue: port 005eedcf onto engine/CTCInventoryAbilities.h; respell selves 00c22040 / 00c222b0 to their binder stand-ins
+00c28080	ruling:owner-proven	?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ = 0x00A01F80; action: none (stay off CHandleBasedMemoryPool.h: NF378 00a02680)
+00c283c0	ruling:owner-proven	?Lock@CHandleBasedMemoryPool@@QAEXJ@Z = 0x00A026F0; action: none (00a026f0 self free-function stand-in -> NAME_FIXES)
+00c283e0	ruling:owner-proven	?Unlock@CHandleBasedMemoryPool@@QAEXJ@Z = 0x00A02710; action: none (00a02710 self free-function stand-in -> NAME_FIXES)
+00c338f0	ruling:owner-proven	?IsContainingPoint@CContainmentVolume@@QBE_NABVC3DVector@@@Z = 0x00A75430; action: none (BSim donor rejected)
+00c39f10	ruling:owner-proven	??0CVsyncCallbackTimerInfo@@QAE@XZ = 0x009F7020; action: none
+00c3c590	ruling:owner-proven	??0C3DAnimationBlendState@@QAE@XZ = 0x004C2DD0; action: queue n8 (T3 nf348x row: research only, so no batch change): delete the 00c59ba0 line (witness 00c72600 only binds ??0CCodaVoice)
+00c44250	ruling:owner-proven	??0CDisplayEngineInit@@QAE@XZ = 0x00419270; action: none; 00419270 self free-function stand-in -> NAME_FIXES
+00c54bd0	ruling:owner-proven	?Clear@CMemoryDataOutputStream@@QAEXXZ = 0x00996B60; action: b1 (3 selves + binder 009f5540 + 3 table replaces)
+00c6bff0	ruling:owner-proven	??0CBaseIntelligentPointer@@QAE@XZ = 0x00A01B10; action: queue: respell self 00c35170 to its binder stand-in ??0CMember_00c35170@@QAE@XZ
+00cd45e0	ruling:owner-proven	??0CPersistContextReadSection@@QAE@XZ = 0x00485CD2; action: none (BSim donor rejected)
+00429288	ruling:proven	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ = 0x00429288; ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ = 0x00429D8E; action: b1 ACCEPT (00429d8e self respell + table delete/add)
+0043e1c0	ruling:unknown(lean dtor)	??1?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ (lean); action: none
+0044f3b2	ruling:proven	?ReleaseData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAEXXZ = 0x0044F3B2; action: b2 HOLD (binder 00458833 respell; needs ruling R1)
+00654b4f	ruling:proven	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ = 0x00654B4F; action: b2 HOLD (binder 0064f93f respell; needs ruling R1)
+00654b94	ruling:proven	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ = 0x00654B94; action: b2 HOLD (binder 0064fa0f respell; needs ruling R1)
+00654bd9	ruling:proven	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ = 0x00654BD9; action: b2 HOLD (binder 0064fa77 respell; needs ruling R1)
+00654c1e	ruling:proven	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ = 0x00654C1E; action: b2 HOLD (binder 0064fadf respell; needs ruling R1)
+0045bc09	ruling:proven	??4?$vector@KV?$allocator@K@std@@@std@@QAEAAV01@ABV01@@Z = 0x0045BC09; action: queue: CArray-model binders -> vector spelling
+0050e500	ACCEPT(b3)+ruling:proven	??$fill@PAGG@std@@YIXPAG0ABG@Z = 0x0050E500; action: b3 ACCEPT
+00515ad0	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+005295b0	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00a3cdd0	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00a46790	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00a5e0a0	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00a5e2e0	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00a87090	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00ae5d80	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+00f3b640	ruling:unknown(lean vector)	vector<T> member (landed self spelling; favoured); action: none; binders keep their spelling until proven
+005bbdf1	ruling:proven	??0?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@ABV01@@Z = 0x005BBDF1; action: queue: CArray-model binders -> vector spelling
+006b6840	ruling:unknown(lean vector)	vector<CEnvironmentThemePriorityStackEntry> copy ctor (favoured); action: none
+006f0810	ACCEPT(b1)+ruling:proven	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z = 0x006F0810; action: b1 ACCEPT (self respell); queue CArray-model binders
+006f15e0	ruling:unknown	swap<CProng> or iter_swap<CProng*>; action: none
+009f6a70	ruling:unknown(lean vector)	~vector<CInputEvent> (favoured); action: none
+00a326d0	ACCEPT(b3)+ruling:proven	??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ = 0x00A326D0; action: b3 ACCEPT
+00a335e0	ACCEPT(b3)+ruling:proven	??$fill@PAU?$pair@KVC3DMeshVolume@@@std@@U12@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0ABU10@@Z = 0x00A335E0; action: b3 ACCEPT
+00a49c60	ruling:unknown(lean vector)	vector<CLipSyncPhoneme> copy ctor (favoured); action: none
+00429d8e	ACCEPT(b1)	respell row; all gates pass (see batches/b1/RESULTS.tsv)
+009e42c0	ACCEPT(b1)	respell row; all gates pass (see batches/b1/RESULTS.tsv)
+00a66c00	ACCEPT(b1)	respell row; all gates pass (see batches/b1/RESULTS.tsv)
+00a66860	ACCEPT(b1)	respell row; all gates pass (see batches/b1/RESULTS.tsv)
+009f5540	ACCEPT(b1)	respell row; all gates pass (see batches/b1/RESULTS.tsv)
+0064f93f	HOLD(b2)	binder respell ~CCountedPointer -> ReleaseData; objsec NOT_EQ by design (pick-any dtor COMDAT re-bodied to the 5-byte thunk, measured EQ to retail); all other gates pass with TABLE_CHANGES; needs ruling R1
+0064fa0f	HOLD(b2)	binder respell ~CCountedPointer -> ReleaseData; objsec NOT_EQ by design (pick-any dtor COMDAT re-bodied to the 5-byte thunk, measured EQ to retail); all other gates pass with TABLE_CHANGES; needs ruling R1
+0064fa77	HOLD(b2)	binder respell ~CCountedPointer -> ReleaseData; objsec NOT_EQ by design (pick-any dtor COMDAT re-bodied to the 5-byte thunk, measured EQ to retail); all other gates pass with TABLE_CHANGES; needs ruling R1
+0064fadf	HOLD(b2)	binder respell ~CCountedPointer -> ReleaseData; objsec NOT_EQ by design (pick-any dtor COMDAT re-bodied to the 5-byte thunk, measured EQ to retail); all other gates pass with TABLE_CHANGES; needs ruling R1
+00458833	HOLD(b2)	binder respell ~CCountedPointer -> ReleaseData; objsec NOT_EQ by design (pick-any dtor COMDAT re-bodied to the 5-byte thunk, measured EQ to retail); all other gates pass with TABLE_CHANGES; needs ruling R1

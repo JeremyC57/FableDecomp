@@ -15,6 +15,11 @@
 #pragma optimize("s", on)
 class CCharString;
 void* __cdecl operator new(unsigned int size);            // 0x00BFEA1A
+// Name fix (NF383, 2026-11-24): the release this row calls at 0x00654C1E is ReleaseData, not the destructor: retail has no ICF and the
+//   44-byte body is jumped to by the 5-byte destructor COMDAT 0x0065537B (`jmp 0x00654C1E`), the CComponent / CAction / CList pattern of
+//   engine/CCountedPointer.h (~CCountedPointer() { ReleaseData(); }; FableWin: ~CCountedPointer 17 bytes calls ReleaseData). The opt-in
+//   below makes the destructor that inline wrapper, so the call binds ?ReleaseData@ for CCountedPointer<CQuestInfoElementTick>.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
 namespace NPlayerGui {
 class CDrawQuestInfo {

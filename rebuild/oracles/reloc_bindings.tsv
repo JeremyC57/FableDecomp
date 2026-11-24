@@ -14288,7 +14288,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Transfer@CThingBaseDef@@UAEXAAVCPersistContext@@@Z	00676be0	00454b8e
 ??0?$list@VCOpinionTransientOffset@@@@QAE@ABU?$allocator@VCOpinionTransientOffset@@@@@Z	00450d90	00456d69
 ??$Transfer@VCPhysicalPrimitiveInit@@@CPersistContext@@QAEXAAVCPhysicalPrimitiveInit@@@Z	00458833	004585fe
-??1?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAE@XZ	0044f3b2	00458833
+?ReleaseData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAEXXZ	0044f3b2	00458833
 ?TransferBinaryIn@?$CPersistTraits@VCPhysicalPrimitiveInit@@@@QAEXPAVCMemoryDataInputStream@@PAVCPhysicalPrimitiveInit@@@Z	0067f870	00458833
 ?TransferBinaryOut@?$CPersistTraits@VCPhysicalPrimitiveInit@@@@QAEXPAVCDataOutputStream@@PBVCPhysicalPrimitiveInit@@@Z	0067f7d0	00458833
 ??$Transfer@VCFloatRange@@@CPersistContext@@QAEXAAVCFloatRange@@@Z	00458f2b	00458d6f
@@ -18673,16 +18673,16 @@ _s_NoGroupAnimFilter_01382438	01382438	01229a10
 ??$?0VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@@Z	00654bc0	0064fa0f
 ??0?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAE@PAVCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@Z	006570fa	0064fa0f
 ??0CQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@QAE@JJM@Z	00656bd8	0064fa0f
-??1?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	00654b94	0064fa0f
+?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	00654b94	0064fa0f
 ?AddElement@CDrawQuestInfo@NPlayerGui@@AAEXV?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@@Z	0064a3ed	0064fa0f
 ??$?0VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@@Z	00654c05	0064fa77
 ??0?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAE@PAVCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@Z	00657138	0064fa77
 ??0CQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@QAE@JJM@Z	00656c0a	0064fa77
-??1?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	00654bd9	0064fa77
+?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	00654bd9	0064fa77
 ??$?0VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@@Z	00654c4a	0064fadf
 ??0?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAE@PAVCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@Z	00657176	0064fadf
 ??0CQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@QAE@J_NM@Z	00656c3c	0064fadf
-??1?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	00654c1e	0064fadf
+?ReleaseData@?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	00654c1e	0064fadf
 ?_M_initialize_map@?$_Deque_base@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXI@Z	00655516	00655c55
 ?insert@?$list@JV?$allocator@J@std@@@std@@QAE?AU?$_List_iterator@JU?$_Nonconst_traits@J@std@@@2@U32@ABJ@Z	0042ab33	00655ece
 ?_M_reallocate_map@?$deque@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXI_N@Z	00656082	0065676f
@@ -20710,7 +20710,7 @@ _timeSetEvent@20	00cb0c10	00ca6f90
 ??$?0VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@@Z	00654b7b	0064f93f
 ??0?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAE@PAVCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@Z	006570bc	0064f93f
 ??0CQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@QAE@ABVCTimer@@JM@Z	0064a4e9	0064f93f
-??1?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ	00654b4f	0064f93f
+?ReleaseData@?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	00654b4f	0064f93f
 ?GetScriptSpriteBySymbol@CDrawQuestInfo@NPlayerGui@@QBEJABVCCharString@@@Z	0064a37b	0064f93f
 ?SwapToHero@CTCCoopSpirit@@AAEXXZ	0066ff20	00670710
 ?FinaliseString@CIME@NUISystem@@QAEX_N@Z	00404b50	00851860

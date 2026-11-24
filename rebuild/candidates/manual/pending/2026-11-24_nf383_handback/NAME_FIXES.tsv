@@ -1,0 +1,30 @@
+address	correct_symbol	evidence	wrong_spellings
+00996b60	?Clear@CMemoryDataOutputStream@@QAEXXZ	5 FableWin callers; table 00ae3360	self spellings at 009e42c0/00a66c00/00a66860 (fixed in b1)
+009e42c0	?ClearAllMaintainedEvents@CJoystick@@QAEXXZ	FableWin CInputManager::ClearEvents; Ego_r lib_joystick.obj	?Clear@CMemoryDataOutputStream@@QAEXXZ (self), ?Clear@CJoystick@@QAEXXZ (009f5540) - fixed in b1
+00a66c00	?ClearAllMaintainedEvents@CMouse@@QAEXXZ	same; Ego_r lib_mouse.obj	?Clear@CMemoryDataOutputStream@@QAEXXZ, ?Clear@CMouse@@QAEXXZ - fixed in b1
+00a66860	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	same; Ego_r lib_keyboard.obj	?Clear@CMemoryDataOutputStream@@QAEXXZ, ?Clear@CKeyboard@@QAEXXZ - fixed in b1
+006afcb0	?GetMapwhoPosition@CTCPhysicsBase@@QBE?AVC3DVector@@XZ	4 FableWin callers; tc_physics_base order	?GetMapwhoPosition@CTCPhysicsBase_Methods@@QAE?AVC3DVector@@XZ (selves 006afcb0 and 004cb6e0)
+005eedcf	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z	FableWin LearnExpression; Ego_r 19 bytes; 006ac430	?AddLearnedExpression@FableAddLearned_005eedcf@@QAEXJ@Z (self); also the PDB spelling wrongly carried by selves 00c22040 / 00c222b0
+00c22040	?Add@CRegistry_00c27a60@@QAEXPAUCInventoryItem_00c27a60@@@Z (descriptive stand-in, as its binder spells it)	binder 00c27a60; libpk region	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z (self)
+00c222b0	?AddGroup@CSteeringGroupList@@QAEXPAUCSteeringGroup@@@Z (descriptive stand-in, as its binder spells it)	binder 00c29ee0; libpk region	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z (self)
+00a01b10	??0CBaseIntelligentPointer@@QAE@XZ	RTTI vftable 0x0129C95C; Ego_r lib_intelligent_pointer; 0044a5a0	binders 008a99f0 ??0BaseIntelligentPointer, 00933c10 ??0CBaseIntelligentPointerCtor, 007004b0 ??0CBaseIntelligentPointerReal, 009547d0/00954b50 Maze*PointerBase, namespaced copies (006a3130 etc.)
+00c35170	??0CMember_00c35170@@QAE@XZ (descriptive stand-in, as its binder spells it)	non-RTTI vftable 0x012B504C; binder 00c1f640	??0CBaseIntelligentPointer@@QAE@XZ (self)
+004c2dd0	??0C3DAnimationBlendState@@QAE@XZ	FableWin CDrawReceivedItems::Draw	stale table line ??0C3DAnimationBlendState 00c59ba0 (queue n8, T3 nf348x)
+00bddd50	?CloseStaticMap@CLocalDetailCacheMap@@QAEXXZ	FableWin CEngineMap::CloseStaticMap; 00b3ef40	?CloseStaticMap@@YIXPAVCLocalDetailCacheMap@@@Z (self free-function stand-in)
+00419270	??0CDisplayEngineInit@@QAE@XZ	Ego_r 35 = 35; 00417418	?CDisplayEngineInit@@YIPAXPAUDisplayEngineState@@@Z (self)
+00a026f0	?Lock@CHandleBasedMemoryPool@@QAEXJ@Z	00a89250	?CHandleBasedMemoryPool_Lock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z (self)
+00a02710	?Unlock@CHandleBasedMemoryPool@@QAEXJ@Z	00a892a0	?CHandleBasedMemoryPool_Unlock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z (self)
+00a01f80	?UpdateLargestFreeArea@CHandleBasedMemoryPool@@AAEXXZ	00a02df0	?UpdateLargestFreeArea@CHandleBasedMemoryPool_Methods@@QAEXXZ (self)
+00a75430	?IsContainingPoint@CContainmentVolume@@QBE_NABVC3DVector@@@Z	00a5ac60; Ego_r 41	?IsContainingPoint@CContainmentVolume_Methods@@QBE_NABVC3DVector@@@Z (self); ?_target_a75430@@YIXPAX@Z (00a2e710)
+00429288	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ	FableWin ShareData<CList>	??1<CList> (table line, deleted in b1)
+0044f3b2	?ReleaseData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAEXXZ	44-byte release + 5-byte jmp thunk; b2 measurement	??1?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAE@XZ (binder 00458833; b2 HOLD)
+00654b4f	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	44-byte release + 5-byte jmp thunk; b2 measurement	??1?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ (binder 0064f93f; b2 HOLD)
+00654b94	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	44-byte release + 5-byte jmp thunk; b2 measurement	??1?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ (binder 0064fa0f; b2 HOLD)
+00654bd9	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	44-byte release + 5-byte jmp thunk; b2 measurement	??1?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ (binder 0064fa77; b2 HOLD)
+00654c1e	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	44-byte release + 5-byte jmp thunk; b2 measurement	??1?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ (binder 0064fadf; b2 HOLD)
+0045bc09	??4?$vector@KV?$allocator@K@std@@@std@@QAEAAV01@ABV01@@Z	14 exclusive vector-context FableWin callers	??4?$CArray@K@@QAEAAV0@ABV0@@Z and namespaced CArray copies (N009b77b0, NParticleEngine), ??4CAssignedMember, ??4SArray0C_0045bc09 (binders; see QUEUE_PROPOSALS)
+005bbdf1	??0?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@ABV01@@Z	2 exclusive vector-context FableWin callers	??0?$CArray@VCEngineTextureMorph@@@@QAE@ABV0@@Z (binders)
+006f0810	??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV01@@Z	15 exclusive vector-context FableWin callers	??0?$vector@VC3DVector@@@std@@QAE@ABU01@@Z (self, fixed b1); ??0?$CArray@VC3DVector@@@@QAE@ABV0@@Z (binders)
+0050e500	??$fill@PAGG@std@@YIXPAG0ABG@Z	caller 005149f0 vector<unsigned short>	??$fill@PAFF@std@@YIXPAF0ABF@Z (self, fixed b3)
+00a326d0	??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ	caller 00a35010 _M_fill_insert K	??1?$pair@JVC3DMeshVolume@@@std@@QAE@XZ (self, fixed b3)
+00a335e0	??$fill@PAU?$pair@KVC3DMeshVolume@@@std@@U12@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0ABU10@@Z	caller 00a35010	J spelling (self, fixed b3)

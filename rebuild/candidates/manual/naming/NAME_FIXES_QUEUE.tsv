@@ -13642,3 +13642,6 @@ nf378	0x0079C6D0	00/79/CTCBulletTime_GetBulletTimeElapsedTicks_0079c6d0.cpp	cata
 nf378	0x009F3390	CSurface::GetPitch	catalog-name (self landed in landing nf378; NF378 RENAMES.tsv)	CSurface_Methods::GetPitch
 nf378	0x00B5BD30	CEngineScreenEffectRadialBlurRenderer::FinishWithDynamicTextures	catalog-name (self landed in landing nf378; NF378 RENAMES.tsv)	CEngineScreenEffectRadialBlurRenderer::ReleaseTextures_00b5bd30
 nf378	0x00B5BD30	00/b5/CEngineScreenEffectRadialBlurRenderer_FinishWithDynamicTextures_00b5bd30.cpp	catalog-file (self landed in landing nf378; NF378 RENAMES.tsv)	00/b5/CEngineScreenEffectRadialBlurRenderer_ReleaseTextures00b5bd30_00b5bd30.cpp
+nf383	0x00A326D0	std::pair<unsigned long,C3DMeshVolume>::~pair	catalog label (NF383 n9; self landed nf383_b3)	std::pair<long,C3DMeshVolume>::~pair
+nf383	0x00A335E0	std::fill<std::pair<unsigned long,C3DMeshVolume>*,...>	catalog label (NF383 n9; self landed nf383_b3)	fill<pair<long,...>>
+nf383	0x0050E500	std::fill<unsigned short*,unsigned short>	catalog label (NF383 n9; self landed nf383_b3)	fill<short*,short>

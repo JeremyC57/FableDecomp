@@ -1,9 +1,14 @@
-// std::pair<long,C3DMeshVolume>::~pair() -- destroy an indexed mesh volume entry: release the volume's counted convex volume, then destroy its name
-// Leaf: ??1?$pair@JVC3DMeshVolume@@@std@@QAE@XZ
+// std::pair<unsigned long,C3DMeshVolume>::~pair() -- destroy an indexed mesh volume entry: release the volume's counted convex volume, then destroy its name
+// Leaf: ??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ
+// Name fix (NF383, 2026-11-24): was pair<long,C3DMeshVolume> (J). Retail has no ICF; the only caller 0x00A35010 is
+//   vector<pair<unsigned long,C3DMeshVolume> >::_M_fill_insert (landed leaf, K), reached from resize 0x00A35430 <- resize 0x00A35580 <-
+//   C3DMeshStats::LoadBinary 0x00A2F2D0, whose FableWin body calls vector<pair<unsigned long,C3DMeshVolume> >::resize; FableWin
+//   lib_3d_mesh_stats.obj defines ??1?$pair@KVC3DMeshVolume@@@std@@QAE@XZ (the long instance belongs to the physics-mesh code). Table binder 00a35010
+//   already binds the K spelling here.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A326D0, length 61 bytes, `jmp` tail. Callers: 0x00A350BA / 0x00A35114 in the
 // vector insert helper 0x00A35010, both on a 0x10-byte stack temporary (`lea ecx,[esp+0x10]`, `add esp,0x10`) -- the
-// element of a vector<pair<long,C3DMeshVolume>> (the neighbouring 0x00A70320 is its _Pop_heap). The manifest label
+// element of a vector<pair<unsigned long,C3DMeshVolume>> (the neighbouring 0x00A70320 is its _Pop_heap). The manifest label
 // (_Dest_val<allocator<pair<CCharString const,CCountedPointer<C3DSkeletalMorphTarget>>>>) is propagated and wrong.
 // Layout: Ego_r.pdb C3DMeshVolume (0xc) = CCharString Name +0, CCountedPointer<CContainmentVolume> ConvexVolume +4; the pair
 // is 0x10 (long key +0, volume +4).
@@ -34,7 +39,7 @@ template<class T1, class T2> struct pair {
 };
 }
 
-typedef std::pair<long, C3DMeshVolume> TIndexedMeshVolume;
+typedef std::pair<unsigned long, C3DMeshVolume> TIndexedMeshVolume;
 
 void DestroyIndexedMeshVolume(TIndexedMeshVolume* entry)     // emits the implicit destructor; not part of the retail body
 {

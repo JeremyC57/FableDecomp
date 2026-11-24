@@ -1,4 +1,4 @@
-// Behaviour test for std::pair<long,C3DMeshVolume>::~pair: convex volume released, then the volume name (0x00A326D0).
+// Behaviour test for std::pair<unsigned long,C3DMeshVolume>::~pair: convex volume released, then the volume name (0x00A326D0).
 #include <cstdio>
 static int g_log[32]; static int g_n = 0;
 class CCharString { public: int id; ~CCharString() { g_log[g_n++] = id; } };
@@ -16,10 +16,10 @@ template<class A, class B> struct TPair { A first; B second; };
 int main()
 {
     CCPPointerInfo* shared = NewInfo(2);
-    { TPair<long, C3DMeshVolume> e; e.first = 5; e.second.Name.id = 2; e.second.ConvexVolume.Data = 0; e.second.ConvexVolume.Info = shared; }
+    { TPair<unsigned long, C3DMeshVolume> e; e.first = 5; e.second.Name.id = 2; e.second.ConvexVolume.Data = 0; e.second.ConvexVolume.Info = shared; }
     bool ok1 = g_n == 1 && g_log[0] == 2 && shared->RefCount == 1 && g_dataDeleted == 0;
     g_n = 0;
-    { TPair<long, C3DMeshVolume> e; e.first = 5; e.second.Name.id = 3; e.second.ConvexVolume.Data = 0; e.second.ConvexVolume.Info = shared; }
+    { TPair<unsigned long, C3DMeshVolume> e; e.first = 5; e.second.Name.id = 3; e.second.ConvexVolume.Data = 0; e.second.ConvexVolume.Info = shared; }
     bool ok2 = g_n == 2 && g_log[0] == 50 && g_log[1] == 3 && g_dataDeleted == 1;
     if (!(ok1 && ok2)) { std::printf("00a326d0_TEST FAIL\n"); return 1; }
     std::printf("00a326d0_TEST PASS\n");
