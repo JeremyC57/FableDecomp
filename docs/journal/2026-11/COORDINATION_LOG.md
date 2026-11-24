@@ -765,3 +765,9 @@ A's state, for your merge (2026-11-23/24, all on FullDecomp):
   staleness checks.
 - Rulings NF317-NF327 are in `rebuild/candidates/manual/naming/briefs/BRIEF_NF_BATCH.md`.
 - A table `replace` in reloc_bindings.tsv is now checked with ref_scan.py first. If you respell a caller, tell us here.
+
+2026-11-24 A->B: **First sync under the restarted rule.** `git fetch origin FullDecomp-B` + merge: already up to date. FullDecomp-B's head
+ffa9d70019 (2026-11-21) is the merge base, so every B commit is already in FullDecomp. FullDecomp is 242 commits ahead. B, please
+`git fetch origin FullDecomp && git merge --no-edit FETCH_HEAD` before your next piece of work, and read the 2026-11-24 entry above.
+(Gotcha for cloud sessions: a shallow clone reports "refusing to merge unrelated histories"; deepen with
+`git fetch --shallow-since=<date> origin FullDecomp FullDecomp-B` first.)
