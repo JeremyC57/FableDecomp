@@ -170,3 +170,41 @@ hvar.py (header-overlay variants), var.py-style text variants. No payload for th
 - (B24C4) Strongest one-text evidence without the PDBs: ghidra_out/naming_stragglers/FableWin.exe.signatures.tsv gives both FableWin
   instantiations (0x02CC14F0 water, 0x02CC3440 sea) 1307 bytes, 387 instructions and EQUAL strict (075ae730d3131c87) and loose
   (00df6ec15f10d4b5) signatures.
+## B24C5 (2026-11-24) -- hand read of the tails: the S-form IS the template text; water's single store is a COMPILER merge
+- Retail sea tail (s.dis): not-found arm 0x00BE5904..0x00BE5923 = `mov [esp+14h],-1` (immediate, scheduled BEFORE the index store)
+  + index store + `jmp`; the skip target 0x00BE5925 = `mov [esp+14h],ebp` (ebp = hoisted -1). TWO previous = -1 stores (they differ
+  as instructions: immediate v register, so they cannot be cross-jumped).
+- Retail water tail (w.dis): not-found arm 0x00BE4F45/0x00BE4F49 = index store then FALLS INTO the shared `mov [esp+28h],-1` at
+  0x00BE4F5C, which is also the skip target of the span tests (jle/jne 0x00BE4F5C). ONE store; water never hoists -1 into a register
+  (fan = -1 at 0x00BE4843 is an immediate too), so both stores are the same instruction and VC7.1 tail-merges them.
+- Our S-form water compile (c3/w_gba1.cpp: source has `previous = -1;` BEFORE the index store) emits exactly retail's merged tail
+  (c5/w_gba1.dis 0x905..0x924). So z2 (W-form) is a hand-merged text; the S-form (which matches sea) is the template candidate.
+- Remaining water residue under S (c5/dd.py b24c4/w.dis c5/w_gba1.dis -> c5/d_gba1.txt, 2381 v 2349): (a) prologue y argument in
+  edx (= z2's only residue); (b) back edge: retail carries i in eax and strip in ecx into the loop head (preheader `xor eax,eax;
+  mov [esp+44h],eax`), ours reloads both at the head; i/&water slot swap and alignment pads follow. No type-dependent expansion differs.
+- (B24C5) Tools: c5/pair5.sh <name> <body> (pair grade + both objects disassembled + c5/dd.py instruction diffs <name>_w.dd /
+  <name>_s.dd; SEDW / SEDS sed the prefixes, OV overlay); c5/pre_w.cpp / pre_s.cpp = the current prefixes (z2 1..67, fanvert 1..65).
+- (B24C5) Every S-form gives the SAME water residue (gba1 / gbb1 / gbc1: 16 dd blocks = prologue y edx + the back-edge facts);
+  W v S differ in source ONLY in the first test's arm order (`!= 0xffff) {body} else previous = -1` v `== 0xffff) previous = -1;
+  else {body}`), i.e. IL block order / static branch weights, not statements.
+- (B24C5) Graded, no effect or worse: push_back(const T&) body visible (explicit specialisation decl dropped): w 148 / s 173 hunks,
+  frame 0x44 (temporaries merged) -- retail's decl-only form stands; probe noinline+visible pair: 1968 / 1862 bytes (wrong);
+  S-form + `long i;` before the loop (v1: 16 / MATCH), previous declared first (v2: 17 / 18), `long i = 0;` + `for (;` (v3: 17 / 3).
+- (B24C5) Back-edge reading: retail water latch `mov eax,[i]; mov ecx,[strip]; mov edx,[ecx+1Ch]; inc; dec; cmp; mov [i],eax; jl head`
+  and the preheader `xor eax,eax; mov [i],eax` feed ONE head piece (eax = i, ecx = strip). Ours (S): latch strip in edx, count in ecx,
+  preheader `mov [i],0`, head reloads both. Sea retail: back-edge block reloads ecx = strip and ebp = -1, head reloads i from memory.
+  So water retail gives the head piece of i a register that sea retail spends on the hoisted -1.
+- (B24C5) c2prio traces of S-form water / sea (c3/prio_w_gba1.txt, prio_s_gba1.txt): the clearest type-dependent difference is the
+  water helpers' `v` candidates at the top of the colouring order (prio 1152 / 1080 / 1008, 9 refs each; sea v 480 / 448 / 416, 4 refs).
+- (B24C5) Water helpers with no named `v` (BridgeVertexBuffer[new_index].X = ... each use, c5/pre_w_hb.cpp): S 130 / W 124 hunks
+  (worse; the named `CTVertexWaterBackground& v` stands, as in retail's schedule: v computed right after push_back).
+## Exact state at hand-back (B24C5)
+- Water best unchanged: differ/00be4660.cpp (z2 W-form, 4 hunks). But z2 is now known to be a hand-merged text: the template is an
+  S-form (sea RELOCATION_MATCH; S-form water = 16 hunks: prologue y register + back-edge head piece of i/strip, tail = retail's).
+  When the water row is solved it must be under an S-form, and the sea payload regenerated with that same text.
+- Next: (1) find why our water allocator gives the head piece of i no register under the S block order (c2prio: identify the main-loop
+  i / strip pieces in c3/prio_w_gba1.txt v prio_s_gba1.txt, which candidate takes the register retail gives i); (2) the prologue y
+  register (B24C3 idea 2); (3) the c2 symbol-order kit (pending/2026-11-20_c2_symbol_order) for TU-level id effects: retail compiles
+  CLandscapePatchTesselator::TesselateEdge (0x00BE3970) and ~50 vector / CArray instantiations before both TesselateEdge bodies.
+- (B24C5, late) CEdgeStipVertexArray::operator[] dead-arm assert (c3/ov_ea, the device that moved 0x00BE3970 from 35 to 25 blocks)
+  on the S-form pair gba1: water dd identical (16), sea RELOCATION_MATCH -- inert here, compatible as a shared opt-in for all three rows.
