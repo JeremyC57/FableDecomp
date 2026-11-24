@@ -1,9 +1,10 @@
 // CHeroMorphDef::CHeroMorphDef() -- the def base (0x0044C0C0), this class's vtable (0x01242BCC), then the four 16-byte morph records at +0x28, +0x38, +0x48, +0x58 cleared (three words and the flag byte at +0xd of each)
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CHeroMorphDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefBase_0044c0c0.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E373B, length 68 bytes.
 // Shape: one `xor eax,eax` feeding every store after the vtable, `mov eax,esi`.
-struct CDefBase_0044c0c0 {                        // the def base (its constructor @ 0x0044C0C0 is labelled "CShoveHaPennyRegionDef", propagated)
+class CSubDefClassBase { public:                        // the def base (its constructor @ 0x0044C0C0 is labelled "CShoveHaPennyRegionDef", propagated)
     virtual void v00();
-    CDefBase_0044c0c0();
+    CSubDefClassBase();
 };
 struct SMorphRecord_004e373b {                     // 16 bytes
     long          m_a;                             // +0x00
@@ -14,7 +15,7 @@ struct SMorphRecord_004e373b {                     // 16 bytes
     unsigned char _pade[2];
     SMorphRecord_004e373b() : m_a(0), m_b(0), m_c(0), m_flag(false) { }
 };
-class CHeroMorphDef : public CDefBase_0044c0c0 { public:         // vtable 0x01242BCC
+class CHeroMorphDef : public CSubDefClassBase { public:         // vtable 0x01242BCC
     unsigned char          _pad04[0x24];
     SMorphRecord_004e373b  m_morph28;              // +0x28
     SMorphRecord_004e373b  m_morph38;              // +0x38
@@ -25,6 +26,6 @@ class CHeroMorphDef : public CDefBase_0044c0c0 { public:         // vtable 0x012
 };
 
 CHeroMorphDef::CHeroMorphDef()
-    : CDefBase_0044c0c0()
+    : CSubDefClassBase()
 {
 }

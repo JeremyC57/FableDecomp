@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	??0?$CRetailVector@VC3DVector@@@@QAE@ABU0@@Z	006f0810	009533e0	NF387 b3 (006f3000): 006f3000 now binds the vector spelling; 009533e0 / 00953bc0 still bind this stand-in (clang census); 009533e0 seen by VC7.1 compile (census c3 + xr -> 0x006F0810). Was witness 006f3000

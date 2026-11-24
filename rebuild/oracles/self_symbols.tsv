@@ -5883,7 +5883,7 @@ address	symbol	status	leaf_given
 006250b0	??0CUIStateDef@@QAE@ABU0@@Z	RELOCATION_MATCH	??0CUIStateDef
 00625150	?GetSizeofClass@CUIStateDef@@QAEHXZ	MATCH	GetSizeofClass
 006251c0	??$__partial_sort@PAVCTestQuest@@V1@VCTestQuestNameCompare@@@std@@YIXPAVCTestQuest@@000VCTestQuestNameCompare@@@Z	RELOCATION_MATCH	??$__partial_sort@
-00625350	??4CConfigOptionsDefaultsDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CConfigOptionsDefaultsDef
+00625350	??4CUIStateDef@NUISystem@@QAEAAV01@ABV01@@Z	RELOCATION_MATCH	??4CUIStateDef@NUISystem@@QAEAAV01@ABV01@@Z
 006255b0	??4CCategory@NInventory@@QAEAAV01@ABV01@@Z	RELOCATION_MATCH	??4CCategory
 006256e0	??$Transfer@W4EStateChangeType@NUISystem@@@CPersistContext@@QAEXAAW4EStateChangeType@NUISystem@@@Z	RELOCATION_MATCH	??$Transfer@
 00625820	?Copy_CElement44_006255b0_00625820@@YIPAUCElement44_006255b0@@PAU1@00USRandomAccessIteratorTag@@PAJ@Z	RELOCATION_MATCH	Copy_CElement44_006255b0_00625820
@@ -5991,7 +5991,7 @@ address	symbol	status	leaf_given
 006312e0	??4?$_Rb_tree@KU?$pair@$$CBKVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBKVCCharString@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCCharString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	RELOCATION_MATCH	??4?$_Rb_tree@KU?$pair@$$CBKVCCharString@@
 006313a0	??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEAAV0@ABV0@@Z
 006314b0	?GetSizeofClass@CUIDef@@QAEHXZ	MATCH	GetSizeofClass
-006314c0	?Copy_CConfigOptionsDefaultsDef_006314c0@@YIPAVCConfigOptionsDefaultsDef@@PBV1@0PAV1@ABUrandom_access_iterator_tag@@PAH@Z	RELOCATION_MATCH	Copy_CConfigOptionsDefaultsDef_006314c0
+006314c0	??$__copy@PBVCUIStateDef@NUISystem@@PAV12@H@std@@YIPAVCUIStateDef@NUISystem@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z	RELOCATION_MATCH	??$__copy@PBVCUIStateDef@NUISystem@@PAV12@H@std@@YIPAVCUIStateDef@NUISystem@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
 00631510	?ScalarDeletingDestructor@CUIDef@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00631560	?UninitCopy_CElement124_006250b0_00631560@@YIPAUCElement124_006250b0@@PAU1@00UCRetailAllocator@@@Z	RELOCATION_MATCH	UninitCopy_CElement124_006250b0_00631560
 00632260	??$Transfer@W4EType@NUISystem@@@CPersistContext@@QAEXAAW4EType@NUISystem@@@Z	RELOCATION_MATCH	??$Transfer@
@@ -6788,7 +6788,7 @@ address	symbol	status	leaf_given
 0067c330	?CReactionMatch_Sphere_scalar_deleting_destructor@@YIPAXPAUCReactionMatch_Sphere@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0067c350	?dtor@CSystemRegistry@@QAEXXZ	RELOCATION_MATCH	??1CSystemRegistry@
 0067c3b0	?COpinionReactionManagerDef_GetSizeofClass@@YIHXZ	MATCH	GetSizeofClass
-0067c490	??4CCardDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CCardDef@
+0067c490	??4CBlurredAttitudesDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CBlurredAttitudesDef@@QAEAAV0@ABV0@@Z
 0067c570	?ScalarDeletingDestructor@COpinionReactionManagerDef@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0067c6d0	??0CBlurredAttitudesDef@@QAE@ABV0@@Z	RELOCATION_MATCH	??0CBlurredAttitudesDef
 0067c720	??$fill@PAVCBlurredAttitudesDef@@V1@@std@@YIXPAVCBlurredAttitudesDef@@0ABV1@@Z	RELOCATION_MATCH	fill
@@ -8738,7 +8738,7 @@ address	symbol	status	leaf_given
 007327b0	?Copy@CTCClock@@QAEXPBV1@@Z	MATCH	Copy
 00732ba0	?GetClassTypeName@CTCClock_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
 00732c90	?CTCClock_scalar_deleting_destructor@@YIPAXPAVCTCClock@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00733020	??RCThingFilter_HasBuildingAsHome@@QBE_NABVCThingAICreature@@@Z	RELOCATION_MATCH	??RCThingFilter_HasBuildingAsHome
+00733020	??RCIsHitEventHitBy@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z	RELOCATION_MATCH	??RCIsHitEventHitBy@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z
 007331a0	?CTCCombat_IsAbleToBeKnockedDown@@YIDPAD@Z	RELOCATION_MATCH	IsAbleToBeKnockedDown
 007332a0	?SetPossibleQueuedAction@CTCCombat_Methods@@QAE_NPAUCCreatureAction@@@Z	RELOCATION_MATCH	SetPossibleQueuedAction
 007332d0	?fn_007332d0@@YIXPAUOH@@HH@Z	RELOCATION_MATCH	OnHit

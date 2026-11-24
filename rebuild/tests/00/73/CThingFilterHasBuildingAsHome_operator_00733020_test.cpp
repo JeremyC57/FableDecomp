@@ -1,33 +1,36 @@
-// Behaviour test for 00733020: body copied from src/00733020.cpp (CThingFilter_HasBuildingAsHome::operator()), GetHomeBuilding stubbed.
+// Behaviour test for 00733020: NEntityEvents::CIsHitEventHitBy::operator() (NF382 name fix, was CThingFilter_HasBuildingAsHome::operator()),
+// GetPHitBy stubbed.
 #include <cstdio>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-class CThingBuilding { public: int id; };
-static CThingBuilding* g_home; static int g_calls;
-class CThingAICreature { public:
-    CThingBuilding* GetHomeBuilding() const { ++g_calls; return g_home; }
+class CThing { public: int id; };
+static CThing* g_hitBy; static int g_calls;
+namespace NEntityEvents {
+class CEventHitBase { public:
+    CThing* GetPHitBy() const { ++g_calls; return g_hitBy; }
 };
-class CThingFilter_HasBuildingAsHome { public:
-    const CThingBuilding* m_building;
-    bool operator()(const CThingAICreature& creature) const;
+class CIsHitEventHitBy { public:
+    CThing* HitBy;
+    bool operator()(const CEventHitBase* event) const;
 };
-bool CThingFilter_HasBuildingAsHome::operator()(const CThingAICreature& creature) const
+bool CIsHitEventHitBy::operator()(const CEventHitBase* event) const
 {
-    const CThingBuilding* home = creature.GetHomeBuilding();
-    return home == m_building;
+    const CThing* hitBy = event->GetPHitBy();
+    return hitBy == HitBy;
+}
 }
 int main()
 {
-    CThingBuilding a, b; CThingAICreature creature;
-    CThingFilter_HasBuildingAsHome f; f.m_building = &a;
-    // 1. same building: true
-    g_home = &a; g_calls = 0; CHECK(f(creature) == true); CHECK(g_calls == 1);
-    // 2. other building: false
-    g_home = &b; CHECK(f(creature) == false);
-    // 3. homeless creature: false
-    g_home = 0; CHECK(f(creature) == false);
-    // 4. filter with no building matches the homeless creature
-    f.m_building = 0; CHECK(f(creature) == true);
+    CThing a, b; NEntityEvents::CEventHitBase event;
+    NEntityEvents::CIsHitEventHitBy f; f.HitBy = &a;
+    // 1. hit by the filter's thing: true
+    g_hitBy = &a; g_calls = 0; CHECK(f(&event) == true); CHECK(g_calls == 1);
+    // 2. hit by another thing: false
+    g_hitBy = &b; CHECK(f(&event) == false);
+    // 3. no hitter: false
+    g_hitBy = 0; CHECK(f(&event) == false);
+    // 4. a functor with no thing matches the hitter-less event
+    f.HitBy = 0; CHECK(f(&event) == true);
     CHECK(g_calls == 4);
     if (fails == 0) printf("00733020_TEST PASS\n");
     else printf("00733020_TEST FAIL (%d)\n", fails);

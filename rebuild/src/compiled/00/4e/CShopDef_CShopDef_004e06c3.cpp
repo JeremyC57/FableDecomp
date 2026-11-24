@@ -1,4 +1,5 @@
 // CShopDef::CShopDef() -- default constructor of the shop definition: the definition base (0x0044C0C0), the CShopDef vtable, an empty shopkeeper mesh-type string, the two empty stock vectors and the two attitude price-multiplier maps (the scalar tuning fields are left for the loader)
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CShopDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefBase_0044c0c0.
 // Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base (m_pEnd an _STLP_alloc_proxy with its own ctor); three plain pointers schedule the map's `lea` too early.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E06C3, length 62 bytes.
 // Leaf: ??0CShopDef
@@ -13,10 +14,10 @@
 // plain init-list members (the `lea` moves above all six stores).
 // The manifest label "CSystemManager::CSystemManager" is propagated; the vtable says CShopDef.
 // The definition base: polymorphic, 0x28 bytes, its constructor out of line.
-class CDefBase_0044c0c0 {
+class CSubDefClassBase {
 public:
-    CDefBase_0044c0c0();                           // 0x0044C0C0
-    virtual ~CDefBase_0044c0c0();
+    CSubDefClassBase();                           // 0x0044C0C0
+    virtual ~CSubDefClassBase();
     unsigned char _body[0x28 - 4];
 };
 class CCharString {
@@ -41,7 +42,7 @@ public:
     unsigned char _tree[12];
     CAttitudeMultiplierMap();                      // 0x004DF92A
 };
-class CShopDef : public CDefBase_0044c0c0 {
+class CShopDef : public CSubDefClassBase {
 public:
     unsigned long          Name;
     unsigned long          InitialHawkingPhrase;

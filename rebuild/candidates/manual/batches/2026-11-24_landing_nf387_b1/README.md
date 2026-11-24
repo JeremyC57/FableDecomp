@@ -1,0 +1,3 @@
+# Landing nf387 b1: the 13 stand-in binders of 0x0044C0C0 call `??0CSubDefClassBase@@QAE@XZ` (closes T3 nf381 0x0044C0C0)
+
+Agent NF387 (pending/2026-11-24_nf387_handback). Same local model as landing nf381_b1; test-local CDefBase mocks respelled. 00472b63 uses a base-typed local plus a reinterpret view (a derived class emitted an extra constructor COMDAT). Table: five made-up spellings deleted (census by compile: none of the other 30 compiled callers binds them) and `??0CBase_0044c0c0` rewitnessed to 004e284b (HAND_TABLE_CHANGES.tsv), the last binder of it (noted on T3 nf372 0x004E0A05). The rows carry `; target 0044c0c0` (callers keep their own symbol); the coordinator checked every graded symbol against its Leaf: 43 / 43 equal (b1, b3, b5).

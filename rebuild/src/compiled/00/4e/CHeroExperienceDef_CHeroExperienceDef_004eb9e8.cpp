@@ -1,4 +1,5 @@
 // CHeroExperienceDef::CHeroExperienceDef() -- the definition base, then three empty long vectors, the seven std::map members (out-of-line constructors) and an empty AttackHistoryCombos vector
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CHeroExperienceDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefinitionBase.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004EB9E8, length 128 bytes.
 // Label: the manifest's "C3DMeshMaterial::C3DMeshMaterial" is propagated; the vtable stored here, 0x0124390C,
 // is CHeroExperienceDef (rtti-vtables.tsv), and the members match the PDB CHeroExperienceDef laid out with
@@ -14,9 +15,9 @@
 // map is scheduled before the last vector store (the wave-25 "24i" fix). The last vector goes through `lea eax`.
 #pragma optimize("s", on)
 
-struct CDefinitionBase {                               // 0x28 bytes, polymorphic
+class CSubDefClassBase { public:                               // 0x28 bytes, polymorphic
     virtual void v00();
-    CDefinitionBase();                                 // 0x0044C0C0
+    CSubDefClassBase();                                 // 0x0044C0C0
     unsigned char _body[0x24];
 };
 
@@ -43,7 +44,7 @@ struct CMapLongDefString           { CMapLongDefString();           void* _a; vo
 struct CMapLongComboMultiplierData { CMapLongComboMultiplierData(); void* _a; void* _head; long _size; };   // 0x004EB953
 struct CMapStatIncreasePerHitType  { CMapStatIncreasePerHitType();  void* _a; void* _head; long _size; };   // 0x004EB971
 
-class CHeroExperienceDef : public CDefinitionBase { public:
+class CHeroExperienceDef : public CSubDefClassBase { public:
     CRetailVector<long>                 ExperienceLevelThresholds;     // +0x28
     CRetailVector<long>                 HeroLevelTitles;               // +0x34
     CRetailVector<long>                 FallbackMultipliers;           // +0x40

@@ -1,0 +1,13 @@
+id	kind	addresses	proposal
+q1	ruling R1	b2: 00625350+006314c0 0067c490 00733020	accept the nf86/nf88 `// Fidelity: scaffolding, not retail` member-address helper (6-byte NoDuplicates ?A0x section) as an objsec exception for pick-any re-rows; then b2 ACCEPT, T3 nf382 0x0067C490 and T3 nf345 0x004345A0 close
+q2	ruling R2	b4: 009b7870 00adc0d0 (+ the rest of T3 nf383 0x009B7870)	accept a pick-any COMDAT that byte-equals a retail function (??4?$CArray@K@@ = 0x009B5A60, unreferenced, kept once by the retail linker; landed 009b76f0 already emits it) as an objsec exception for CArray ports; then script the remaining binders (blockers in NOTES.md J3)
+q3	ruling R3	005295b0 00a46790 00a5e2e0 00f3b640 00a3cdd0 00a5e0a0 00a87090 00ae5d80 006b6840 00a49c60	decide these 10 of T3 nf383 0x0043E1C0 as vector bodies (each has the unreferenced 19-byte CArray forwarder in front, as the three controls); no respell (already vector-spelled); 0043e1c0 006f15e0 009f6a70 00515ad0 stay unknown
+q4	self respell	006f3000	??0CRecord_006f3000 -> ??0CCombatDebugInfo@@QAE@ABV0@@Z with PDB member names (after b3 lands)
+q5	binder port	00adc120	SArray0C_0045bc09 stand-in -> engine/CArray.h CVertexGroupBlock model, with b4 / R2 (last binder of the SArray0C line)
+q6	binder port	009533e0 00953bc0	CRetailVector<C3DVector> copy ctor stand-in -> stlport vector (as 006f3000; the line's last binders)
+q7	CArray-spelled binders	00a455a0 00ab3b40 00a5d8b0 00ae81f0 00f3b970	binders that call the forwarder-backed vector bodies through CArray spellings; port after R2 / R3; also stand-ins ??4CBoneMorphArray (w 00a454f0), ??4CElement12_00f3b640 (w 00f3b8a0), ??1CInputEventPackage (w 009f5d70)
+q8	pick-any definers	7 rows defining ??4?$CArray@K@@ (CDefinitionManager rows 009b4a90..009b9170, incl. 009b76f0)	they read NOADDR once the b4 delete lands; no action needed, recorded for the census
+q9	made-up class	007abb30 007d7a00	define an inline ??0CDefinitionBase of a CResource-based local model (not 0x0044C0C0); respell the model when next touched
+q10	made-up callees	00472b63	self is catalog WaypointData::~WaypointData; callees named ?Apply@WaypointData (0x00472B9D, manifest label CArray<pair<long,long>>::push_back) and ?Destroy@WaypointTemp (0x009FC550, label CResource::~CResource) are made-up; identity research before a respell
+q11	T3 nf374 unit	00762580 + 00762d80	one unit: 0x00762580 stand-in + 00762d80's CreateShape / AddNewShape manglings (PDB ?AddNewShape@CTCShapeManager@@QAEXV?$CCountedPointer@VCShape@NShape@@@@@Z) onto engine/CCountedPointer.h + stlport vector
+q12	header opt-in	engine/CArray.h	add a declaration-only ~CArray opt-in (00728d10 calls ~CArray 0x005BC0D3 out of line; 00b217d0's dtor forwarder 0x00B217B0) before porting those binders

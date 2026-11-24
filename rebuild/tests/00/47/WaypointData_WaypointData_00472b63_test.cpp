@@ -6,10 +6,15 @@ extern void* const WaypointDestroyVtbl_01230ba0[4];
 void* const WaypointApplyVtbl_0123543c[4]   = { 0, 0, 0, 0 };
 void* const WaypointDestroyVtbl_01230ba0[4] = { 0, 0, 0, 0 };
 
+class CSubDefClassBase { public:
+    void* head;
+    char  pad[0x40 - 4];
+    CSubDefClassBase();
+};
+
 struct WaypointTemp {
     void* head;
     char  pad[0x40 - 4];
-    void Construct();
     void Destroy();
 };
 
@@ -22,7 +27,7 @@ static int g_order = 0;
 static int g_construct_seq = 0;
 static int g_apply_seq = 0;
 static int g_destroy_seq = 0;
-static WaypointTemp* g_construct_temp = 0;
+static void* g_construct_temp = 0;
 static WaypointTemp* g_apply_temp = 0;
 static WaypointTemp* g_destroy_temp = 0;
 static void* g_apply_self = 0;
@@ -30,7 +35,7 @@ static void* g_apply_arg = 0;
 static void* g_apply_head = 0;
 static void* g_destroy_head = 0;
 
-void WaypointTemp::Construct()
+CSubDefClassBase::CSubDefClassBase()
 {
     g_construct_temp = this;
     g_construct_seq = ++g_order;
@@ -54,9 +59,9 @@ void WaypointData::Apply(void* arg, WaypointTemp* temp)
 
 void WaypointData::Dtor(void* arg)
 {
-    WaypointTemp temp;
+    CSubDefClassBase def;
+    WaypointTemp& temp = reinterpret_cast<WaypointTemp&>(def);
 
-    temp.Construct();
     temp.head = (void*)WaypointApplyVtbl_0123543c;
     this->Apply(arg, &temp);
     temp.head = (void*)WaypointDestroyVtbl_01230ba0;
@@ -76,7 +81,7 @@ int main()
     ok &= (g_destroy_seq == 3);
     ok &= (g_apply_self == (void*)&self);
     ok &= (g_apply_arg == (void*)&arg);
-    ok &= (g_construct_temp == g_apply_temp);
+    ok &= (g_construct_temp == (void*)g_apply_temp);
     ok &= (g_apply_temp == g_destroy_temp);
     ok &= (g_apply_head == (void*)WaypointApplyVtbl_0123543c);
     ok &= (g_destroy_head == (void*)WaypointDestroyVtbl_01230ba0);

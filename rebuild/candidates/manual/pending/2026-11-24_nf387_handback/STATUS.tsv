@@ -1,0 +1,74 @@
+job	item	status	batch	note
+j1	0044c29c	done	b1	ACCEPT
+j1	004d4fcf	done	b1	ACCEPT
+j1	004dff04	done	b1	ACCEPT
+j1	004e00bc	done	b1	ACCEPT
+j1	004e06c3	done	b1	ACCEPT
+j1	004e373b	done	b1	ACCEPT
+j1	004d405a	done	b1	ACCEPT
+j1	004e3e2a	done	b1	ACCEPT
+j1	004d6638	done	b1	ACCEPT
+j1	004e1722	done	b1	ACCEPT
+j1	004eb9e8	done	b1	ACCEPT
+j1	0044f969	done	b1	ACCEPT
+j1	00472b63	done	b1	ACCEPT
+j1-family	0044fec7	done	b5	ACCEPT
+j1-family	00454629	done	b5	ACCEPT
+j1-family	004546af	done	b5	ACCEPT
+j1-family	00453867	done	b5	ACCEPT
+j1-family	004538cb	done	b5	ACCEPT
+j1-family	0045264e	done	b5	ACCEPT
+j1-family	00454673	done	b5	ACCEPT
+j1-family	004de7dc	done	b5	ACCEPT
+j1-family	004deba3	done	b5	ACCEPT
+j1-family	004d7b5b	done	b5	ACCEPT
+j1-family	004d8482	done	b5	ACCEPT
+j1-family	004d3826	done	b5	ACCEPT
+j1-family	004d9465	done	b5	ACCEPT
+j1-family	004ded22	done	b5	ACCEPT
+j1-family	004d88fc	done	b5	ACCEPT
+j1-family	004de8f5	done	b5	ACCEPT
+j1-family	004def86	done	b5	ACCEPT
+j1-family	004ddb2c	done	b5	ACCEPT
+j1-family	004da7ad	done	b5	ACCEPT
+j1-family	004ea1f0	done	b5	ACCEPT
+j1-family	004e2895	done	b5	ACCEPT
+j1-family	004e3e4c	done	b5	ACCEPT
+j1-family	004e0900	done	b5	ACCEPT
+j1-family	004e1341	done	b5	ACCEPT
+j1-family	004e247a	done	b5	ACCEPT
+j1-family	004e1748	done	b5	ACCEPT
+j1-family	004e0b9c	done	b5	ACCEPT
+j1-family	004e380e	done	b5	ACCEPT
+j1-family	004e1516	done	b5	ACCEPT
+j2	00625350	held	b2	HOLD_RULING R1
+j2	006314c0	held	b2	HOLD_RULING R1
+j2	0067c490	held	b2	HOLD_RULING R1
+j2	00733020	held	b2	HOLD_RULING R1
+j3	006f3000	done	b3	ACCEPT
+j3	009b7870	held	b4	HOLD_RULING R2 (pilot)
+j3	00adc0d0	held	b4	HOLD_RULING R2
+j3	009b77b0	held	-	not handed back (10 extra pick-any COMDATs); lock released
+j3	00728d10	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00bd8b30	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00b217d0	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00709c90	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00709ce0	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00728a40	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00709a50	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00762440	not_started	-	blocker in NOTES.md J3; waits for R2
+j3	00762d80	not_started	-	blocker in NOTES.md J3; waits for R2
+j3-u	005295b0	ruling	-	R3: vector (forwarder evidence)
+j3-u	00a46790	ruling	-	R3: vector (forwarder evidence)
+j3-u	00a5e2e0	ruling	-	R3: vector (forwarder evidence)
+j3-u	00f3b640	ruling	-	R3: vector (forwarder evidence)
+j3-u	00a3cdd0	ruling	-	R3: vector (forwarder evidence)
+j3-u	00a5e0a0	ruling	-	R3: vector (forwarder evidence)
+j3-u	00a87090	ruling	-	R3: vector (forwarder evidence)
+j3-u	00ae5d80	ruling	-	R3: vector (forwarder evidence)
+j3-u	006b6840	ruling	-	R3: vector (forwarder evidence)
+j3-u	00a49c60	ruling	-	R3: vector (forwarder evidence)
+j3-u	0043e1c0	unknown	-	no discriminating evidence
+j3-u	006f15e0	unknown	-	no discriminating evidence
+j3-u	009f6a70	unknown	-	no discriminating evidence
+j3-u	00515ad0	unknown	-	no discriminating evidence

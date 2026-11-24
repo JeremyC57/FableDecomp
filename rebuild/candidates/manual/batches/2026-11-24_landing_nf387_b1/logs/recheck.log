@@ -1,0 +1,67 @@
+addr       parity           behav  name
+0044c29c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c29c   WARN SHARED_HEADER_AVAILABLE CHeroMarriageDef (engine/CHeroMarriageDef.h)
+0044c29c   RELOCATION_MATCH PASS   CHeroMarriageDef
+0044f969   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044f969   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef (engine/CContextSensitiveItemDef.h)
+0044f969   RELOCATION_MATCH PASS   Alloc
+00472b63   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+  WARN leaf '??1WaypointData@' matches no symbol in 00472b63.obj; graded the largest function
+  WARN leaf '??1WaypointData@' matches no symbol in 00472b63.obj; graded the largest function
+00472b63   WARN RELOC_NAME: ?Apply@WaypointData@@QAEXPAXPAUWaypointTemp@@@Z -> 00472b9d labelled 'CArray<std::pair<long,long>_>::push_back'
+00472b63   WARN RELOC_NAME: ?Destroy@WaypointTemp@@QAEXXZ -> 009fc550 labelled 'CResource::~CResource'
+00472b63   WARN STANDIN_LEAF ?Dtor@WaypointData@@QAEXPAX@Z (catalog NScript::CV_TourGuideScript::WaypointData::~WaypointData; names another function)
+00472b63   RELOCATION_MATCH PASS   ~WaypointData
+004d405a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d405a   WARN SHARED_HEADER_AVAILABLE CShopItem (engine/CShopItem.h)
+004d405a   WARN SHARED_HEADER_AVAILABLE CShopItemDef (engine/CShopItemDef.h)
+004d405a   RELOCATION_MATCH PASS   CShopItemDef
+004d4fcf   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d4fcf   WARN SHARED_HEADER_AVAILABLE CInterestingToVillagersDef (engine/CInterestingToVillagersDef.h)
+004d4fcf   RELOCATION_MATCH PASS   CInterestingToVillagersDef
+004d6638   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d6638   WARN SHARED_HEADER_AVAILABLE CFireheartMinigameDef (engine/CFireheartMinigameDef.h)
+004d6638   RELOCATION_MATCH PASS   CFireheartMinigameDef
+004dff04   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+004dff04   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004dff04   WARN SHARED_HEADER_AVAILABLE CVillageDef (engine/CVillageDef.h)
+004dff04   RELOCATION_MATCH PASS   CVillageDef
+004e00bc   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e00bc   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+004e00bc   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+004e00bc   WARN RELOC_NAME: ??0CPrerequisiteMap@@QAE@XZ -> 004df7d3 labelled 'std::map<T_004df7d3>::map'
+004e00bc   RELOCATION_MATCH PASS   CQuestCardDef
+004e06c3   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e06c3   WARN SHARED_HEADER_AVAILABLE CShopDef (engine/CShopDef.h)
+004e06c3   WARN RELOC_NAME: ??0CAttitudeMultiplierMap@@QAE@XZ -> 004df92a labelled 'std::map<T_004df92a>::map'
+004e06c3   RELOCATION_MATCH PASS   CShopDef
+004e1722   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e1722   WARN RELOC_NAME: ??0CDefMember_004dfac5@@QAE@XZ -> 004dfac5 labelled 'std::map<T_004dfac5>::map'
+004e1722   WARN RELOC_NAME: ??0CDefMember_004dfae3@@QAE@XZ -> 004dfae3 labelled 'std::map<T_004dfae3>::map'
+004e1722   RELOCATION_MATCH PASS   CRumbleDef
+004e373b   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e373b   RELOCATION_MATCH PASS   CHeroMorphDef
+004e3e2a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e3e2a   WARN RELOC_NAME: ??0CTrapTrigger@@QAE@XZ -> 00430345 labelled 'std::map<T_00430345>::map'
+004e3e2a   RELOCATION_MATCH PASS   CTrapDef
+004eb9e8   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004eb9e8   WARN SHARED_HEADER_AVAILABLE CHeroExperienceDef (engine/CHeroExperienceDef.h)
+004eb9e8   WARN RELOC_NAME: ??0CMapLongDefString@@QAE@XZ -> 004df84e labelled 'CDisplayManager::CopyBackBufferToTexture'
+004eb9e8   WARN RELOC_NAME: ??0CMapLongComboMultiplierData@@QAE@XZ -> 004eb953 labelled 'std::map<T_004eb953>::map'
+004eb9e8   WARN RELOC_NAME: ??0CMapStatIncreasePerHitType@@QAE@XZ -> 004eb971 labelled 'std::map<T_004eb971>::map'
+004eb9e8   RELOCATION_MATCH PASS   CHeroExperienceDef
+
+WINS: 13
+  0044c29c RELOCATION_MATCH CHeroMarriageDef::??0CHeroMarriageDef@
+  0044f969 RELOCATION_MATCH CContextSensitiveItemDef::Alloc
+  00472b63 RELOCATION_MATCH WaypointData::??1WaypointData@
+  004d405a RELOCATION_MATCH CShopItemDef::??0CShopItemDef@
+  004d4fcf RELOCATION_MATCH CInterestingToVillagersDef::??0CInterestingToVillagersDef@
+  004d6638 RELOCATION_MATCH CFireheartMinigameDef::??0CFireheartMinigameDef@
+  004dff04 RELOCATION_MATCH CVillageDef::??0CVillageDef
+  004e00bc RELOCATION_MATCH CQuestCardDef::??0CQuestCardDef
+  004e06c3 RELOCATION_MATCH CShopDef::??0CShopDef
+  004e1722 RELOCATION_MATCH CRumbleDef::??0CRumbleDef@
+  004e373b RELOCATION_MATCH CHeroMorphDef::??0CHeroMorphDef@
+  004e3e2a RELOCATION_MATCH CTrapDef::??0CTrapDef@
+  004eb9e8 RELOCATION_MATCH CHeroExperienceDef::??0CHeroExperienceDef

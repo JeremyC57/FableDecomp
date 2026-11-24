@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	??0CBase_0044c0c0@@QAE@XZ	0044c0c0	004e284b	NF387 b1: the witness 0044f969 now binds ??0CSubDefClassBase; 30 other landed binders still bind this made-up spelling at HEAD (clang census evidence/clcensus_j1.txt); 004e284b (T3 nf372 re-model row, not changed here) is seen binding it by VC7.1 compile (census c5, evidence/xr_census_witnesses.txt: its leaf relocation resolves to 0x0044C0C0), so the line stays valid whether or not batch b1x (the other 29) lands. Was witness 0044f969

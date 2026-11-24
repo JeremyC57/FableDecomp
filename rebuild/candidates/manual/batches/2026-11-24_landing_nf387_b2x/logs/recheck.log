@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0067c490   WARN STANDIN_LEAF ??4CBlurredAttitudesDef@@QAEAAV0@ABV0@@Z (catalog CCardDef::operator=; names another function)
+0067c490   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  0067c490 RELOCATION_MATCH CCardDef::??4CBlurredAttitudesDef@@QAEAAV0@ABV0@@Z

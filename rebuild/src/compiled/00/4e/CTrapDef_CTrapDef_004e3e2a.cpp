@@ -1,4 +1,5 @@
 // CTrapDef::CTrapDef() -- base definition constructor, own vtable, the member at +0x28 built out of line, the index at +0x40 set to -1
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CTrapDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefBase.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3E2A, length 30 bytes.
 // Callees: the definition base constructor @ 0x0044C0C0 (the common def base behind the
 // propagated "CShoveHaPennyRegionDef" label), the member constructor @ 0x00430345 (a frame-pointer
@@ -9,10 +10,10 @@
 // size-optimised def module (#pragma optimize("s", on)).
 #pragma optimize("s", on)
 
-struct CDefBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];              // +0x04..+0x28
-    CDefBase();                             // 0x0044C0C0
+    CSubDefClassBase();                             // 0x0044C0C0
 };
 
 struct CTrapTrigger {                       // +0x28..+0x40, built out of line
@@ -20,7 +21,7 @@ struct CTrapTrigger {                       // +0x28..+0x40, built out of line
     CTrapTrigger();                         // 0x00430345
 };
 
-class CTrapDef : public CDefBase { public:                // vtable 0x01243054
+class CTrapDef : public CSubDefClassBase { public:                // vtable 0x01243054
     CTrapTrigger m_trigger;                 // +0x28
     long         m_trapIndex;               // +0x40
     virtual void v00();
@@ -28,7 +29,7 @@ class CTrapDef : public CDefBase { public:                // vtable 0x01243054
 };
 
 CTrapDef::CTrapDef()
-    : CDefBase()
+    : CSubDefClassBase()
     , m_trigger()
 {
     m_trapIndex = -1;

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00625350   WARN STANDIN_LEAF ??4CUIStateDef@NUISystem@@QAEAAV01@ABV01@@Z (catalog CConfigOptionsDefaultsDef::operator=; names another function)
+00625350   RELOCATION_MATCH PASS   operator=
+006314c0   RELOCATION_MATCH PASS   Copy_CConfigOptionsDefaultsDef_006314c0
+00733020   WARN STANDIN_LEAF ??RCIsHitEventHitBy@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z (catalog CThingFilter_HasBuildingAsHome::operator; names another function)
+00733020   RELOCATION_MATCH PASS   operator
+
+WINS: 3
+  00625350 RELOCATION_MATCH CConfigOptionsDefaultsDef::??4CUIStateDef@NUISystem@@QAEAAV01@ABV01@@Z
+  006314c0 RELOCATION_MATCH _global::??$__copy@PBVCUIStateDef@NUISystem@@PAV12@H@std@@YIPAVCUIStateDef@NUISystem@@PBV12@0PAV12@ABUrandom_access_iterator_tag@0@PAH@Z
+  00733020 RELOCATION_MATCH CThingFilter_HasBuildingAsHome::??RCIsHitEventHitBy@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z

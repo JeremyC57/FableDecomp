@@ -1,7 +1,7 @@
 // Behaviour test for 0x004EB9E8 CHeroExperienceDef::CHeroExperienceDef
 #include <cstdio>
 static int g_baseCtor = 0, g_mapCtor = 0;
-struct CDefinitionBase { CDefinitionBase() { ++g_baseCtor; } virtual ~CDefinitionBase() {} };
+class CSubDefClassBase { public: CSubDefClassBase() { ++g_baseCtor; } virtual ~CSubDefClassBase() {} };
 struct SAllocator { SAllocator() {} };
 template<class T> struct SAllocProxy : SAllocator { T* m_data; SAllocProxy(const SAllocator& a, T* d) : SAllocator(a), m_data(d) {} };
 template<class T> struct CVectorBase {
@@ -11,7 +11,7 @@ template<class T> struct CVectorBase {
 template<class T> struct CRetailVector : CVectorBase<T> { CRetailVector() : CVectorBase<T>(SAllocator()) {} };
 class CMap { public: int built; CMap() : built(1) { ++g_mapCtor; } };
 class CAttackHistoryCombo { public: long a; };
-class CHeroExperienceDef : public CDefinitionBase { public:
+class CHeroExperienceDef : public CSubDefClassBase { public:
     CRetailVector<long> ExperienceLevelThresholds, HeroLevelTitles, FallbackMultipliers;
     CMap SoundIntensityThresholds, ComboMultiplierMap;
     float f1, f2;

@@ -1,4 +1,5 @@
 // CVillageDef::CVillageDef() -- default def constructor: the parent def base, own vtable, eight empty vectors (tasks and the seven activity start-time lists), PatrolTrackName = -1 and the four sound-name strings
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CVillageDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefBase_0044c0c0.
 // Leaf: ??0CVillageDef
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DFF04, length 155 bytes.
 // Callees: the def base constructor @ 0x0044C0C0 (manifest "CShoveHaPennyRegionDef", shared by 265 def ctors),
@@ -26,12 +27,12 @@ template <class T> struct CRetailVector {          // STLport vector (12 bytes)
     T* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CDefBase_0044c0c0 {                         // the parent def base (0x28 bytes)
+class CSubDefClassBase { public:                         // the parent def base (0x28 bytes)
     virtual void v00();
     unsigned char _body[0x24];
-    CDefBase_0044c0c0();                           // 0x0044C0C0
+    CSubDefClassBase();                           // 0x0044C0C0
 };
-class CVillageDef : public CDefBase_0044c0c0 { public:           // vtable 0x01241DDC
+class CVillageDef : public CSubDefClassBase { public:           // vtable 0x01241DDC
     CRetailVector<long> Tasks;                     // +0x28 vector<EVillageTaskType>
     CDefString          PatrolTrackName;           // +0x34
     long                DefaultStanceToHero;       // +0x38

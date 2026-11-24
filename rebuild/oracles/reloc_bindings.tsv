@@ -214,7 +214,6 @@ fpair_00a03bb0	00a03bb0	00445920
 ??_7CIntelligentPointer@@6B@	01231c4c	0044a5a0
 ??_7CPhysicsDef@@6B@	01231e34	0044c146
 ??_7CTCNoiseDef@@6B@	01231e9c	0044c1bb
-??0CDefBase_0044c0c0@@QAE@XZ	0044c0c0	0044c29c
 ??_7CHeroMarriageDef@@6B@	01232074	0044c29c
 ??_7CSpecialAbilitiesDrainLifeDataDef@@6B@	012320dc	0044c301
 ??_7CSpecialAbilitiesForcePushDataDef@@6B@	01232144	0044c317
@@ -247,7 +246,7 @@ fpair_00a03bb0	00a03bb0	00445920
 ?Allocate@CAllocator@@QAEPAXI@Z	00450142	0044c71f
 ?g_allocator@@3UCAllocator@@A	013b879c	0044c71f
 ??_7CThingMultiArrowShotDef@@6B@	01232bbc	0044f607
-??0CBase_0044c0c0@@QAE@XZ	0044c0c0	0044f969
+??0CBase_0044c0c0@@QAE@XZ	0044c0c0	004e284b
 ?LTextTreeWalkThrough_BuildTreeArray@@YIXPAULTextTreeWalkThrough@@UNodeArg@@@Z	004506ed	004506ed
 ?Handle@CTree@@QAEXH@Z	0045071a	0045071a
 ?BuildTreeArray@CTree@@QAEXPAUNode@@@Z	00450828	00450828
@@ -527,7 +526,6 @@ _FreeThing@4	00451b82	00453630
 ??0CParentDefClassBase@@QAE@ABV0@@Z	0046ee98	00471f60
 ??_7COpinionDeedReactionDef@@6B@	012361dc	00471f60
 ?Apply@WaypointData@@QAEXPAXPAUWaypointTemp@@@Z	00472b9d	00472b63
-?Construct@WaypointTemp@@QAEXXZ	0044c0c0	00472b63
 ?Destroy@WaypointTemp@@QAEXXZ	009fc550	00472b63
 ?WaypointApplyVtbl_0123543c@@3QBQAXB	0123543c	00472b63
 ?WaypointDestroyVtbl_01230ba0@@3QBQAXB	01230ba0	00472b63
@@ -806,7 +804,6 @@ _FreeThing@4	00451b82	00453630
 ??0CTCThingUIDDummyForSerialisation@@QAE@AAVCThing@@@Z	00771140	004d3ec9
 ??_7CTCDNone@@6B@	0123b504	004d3f10
 ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z	00684420	004d3f9d
-??0CDefBase@@QAE@XZ	0044c0c0	004d405a
 ??0CShopItem@@QAE@XZ	004d4033	004d405a
 ??_7CShopItemDef@@6B@	0123b644	004d405a
 ??_7CTCBlacksmiths@@6B@	0123b6c4	004d40bf
@@ -885,7 +882,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CWillResponseDef@@6B@	0123e324	004d648d
 ??_7CBettingDef@@6B@	0123e3b4	004d64e6
 ??_7COracleMinigameDef@@6B@	0123e504	004d65ef
-??0CShoveHaPennyRegionDef_Base@@QAE@XZ	0044c0c0	004d6638
 ??_7CFireheartMinigameDef@@6B@	0123e584	004d6638
 ??_7CLightningOrbDef@@6B@	0123e5ec	004d665e
 ??_7CHasNameDef@@6B@	0123e67c	004d669a
@@ -1167,7 +1163,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CAnimatingObjectDef@@6B@	0124376c	004ea1f0
 ??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z	004eb6e7	004eb6c8
 ??_7CMultiStaticMeshEntryDef@@6B@	012438a4	004eb864
-??0CDefinitionBase@@QAE@XZ	0044c0c0	004eb9e8
 ??0CMapLongComboMultiplierData@@QAE@XZ	004eb953	004eb9e8
 ??0CMapLongDefString@@QAE@XZ	004df84e	004eb9e8
 ??0CMapStatIncreasePerHitType@@QAE@XZ	004eb971	004eb9e8
@@ -14943,7 +14938,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0?$_Vector_base@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAE@IABV?$allocator@PBVCAnimationEntry@@@1@@Z	0062f5d0	0062f590
 ??$insert@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Const_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@@?$list@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@V?$allocator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@QAEXU?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@1@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Const_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@1@1@Z	0062f650	0062f610
 ??$_Construct@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@V1@@std@@YIXPAV?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@ABV1@@Z	0062f6d0	0062f690
-??4CConfigOptionsDefaultsDef@@QAEAAV0@ABV0@@Z	00625350	006314c0
 ?AddQueuedProcessedInput@CInputProcessManager@@QAEXABVCProcessedInput@@@Z	00a0d460	00633bf0
 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	00633f10
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00633f10
@@ -15237,7 +15231,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThingCreatureBase@@JPA_N1@Z	008b7cf0	006ebdd0
 ?SetPOccupyingAttacker@CProng@@QAEXPAVCThingCreatureBase@@@Z	006f17a0	006ebee0
 ??0CCombatRing@@QAE@JABVCCombatTypeDef@@@Z	006ec380	006ec7d0
-??0?$CRetailVector@VC3DVector@@@@QAE@ABU0@@Z	006f0810	006f3000
+??0?$CRetailVector@VC3DVector@@@@QAE@ABU0@@Z	006f0810	009533e0
 ??0CDefendingCombatantInfo@@QAE@ABV0@@Z	006f46d0	006f4990
 ??0CCombatAction_GenericStrikeResponseBase@@QAE@ABV0@@Z	006f83c0	006f8390
 ?GetTimingEventNames@C3DAnimationStats@@QBEXAAU?$vector@VCCharString@@@@@Z	00a4ef90	006f9820
@@ -15341,7 +15335,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SetupFromData@CTCDummyVillager@@QAEXKPAVCThingBuilding@@0_N@Z	0072f170	0072f2f0
 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z	007325d0	00731e20
 ?_M_find@CSoundMap@@QBEPAU_Node@1@ABVCCharString@@@Z	0042b467	007329e0
-?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ	00810fc0	00733020
 ?GetSub@@YIPAVCThingCreatureBase@@PAVCTCCombat@@@Z	00666d10	007331a0
 ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	00662a00	00663510
 ?GetPossibleCombatAnimations@CThingCreatureBase@@QBE_NABVCCharString@@AAU?$CRetailVector@PBVCAnimationEntry@@@@@Z	006668a0	00733690

@@ -1,4 +1,5 @@
 // Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base (plain _M_start/_M_finish, _M_end_of_storage an _STLP_alloc_proxy with its own ctor); three plain pointers schedule the member-ctor `lea` one store too early.
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CQuestCardDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefBase_0044c0c0.
 // CQuestCardDef::CQuestCardDef() -- base def constructor 0x0044C0C0, this class's vtable, the two region-name def strings -1, the RewardObjects vector empty, the Prerequisites map constructed (0x004DF7D3)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E00BC, length 45 bytes.
 // Leaf: ??0CQuestCardDef
@@ -12,10 +13,10 @@
 // Shape: vtable store, the two CDefString inline constructors as `or dword ptr [..],-1` (size-optimised
 // module, `#pragma optimize("s", on)`), the vector's three zero stores, the map's out-of-line constructor.
 #pragma optimize("s", on)
-struct CDefBase_0044c0c0 {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x24];                  // +0x04..+0x27
-    CDefBase_0044c0c0();                        // 0x0044C0C0
+    CSubDefClassBase();                        // 0x0044C0C0
 };
 
 template <class T>
@@ -41,7 +42,7 @@ struct CPrerequisiteMap {                       // map<EQuestCardPrerequisite, l
     CPrerequisiteMap();                         // 0x004DF7D3
 };
 
-class CQuestCardDef : public CDefBase_0044c0c0 { public:
+class CQuestCardDef : public CSubDefClassBase { public:
     long                QuestName;                          // +0x28
     long                QuestSummary;                       // +0x2c
     long                QuestObjective;                     // +0x30
@@ -62,6 +63,6 @@ class CQuestCardDef : public CDefBase_0044c0c0 { public:
 };
 
 CQuestCardDef::CQuestCardDef()
-    : CDefBase_0044c0c0()
+    : CSubDefClassBase()
 {
 }

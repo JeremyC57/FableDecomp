@@ -1,0 +1,5 @@
+# Landing nf387 b2 / b2x: three selves in pick-any form (NF382 b3), closing T3 nf382 0x0067C490 and nf345 0x004345A0
+
+0x00625350 `??4CUIStateDef@NUISystem@@QAEAAV01@ABV01@@Z` with binder 0x006314C0 (std::__copy<const CUIStateDef*,CUIStateDef*,int>), 0x0067C490 `??4CBlurredAttitudesDef@@QAEAAV0@ABV0@@Z` (b2x; held once by the coordinator's own open claim), 0x00733020 `??RCIsHitEventHitBy@NEntityEvents@@QBE_NPBVCEventHitBase@1@@Z` (with the GetHomeBuilding table delete). Each self is defined in the class body and an anonymous-namespace helper marked `Fidelity: scaffolding, not retail` takes its address, so the leaf is a pick-any COMDAT as in retail's TUs.
+- Ruling NF387-R1 (advisor decision, owner delegated): accepted as the nf86 / nf88 form. Coordinator check by COMDAT symbol: every section equal except the renamed leaf (same size) and the one 6 B per-TU helper; /FORCE duplicates 3 to 0; graded symbols equal the new leaves.
+- T3 nf382 0x0067C490 closed by --release-t3; nf345 0x004345A0 (the 004345a0 / 00625350 clash) closed by hand (T3_CLOSED.tsv). The other TUs' NEQ inline copies are queued as T3 nf387 0x00625340.

@@ -1,0 +1,121 @@
+addr       parity           behav  name
+0044fec7   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044fec7   RELOCATION_MATCH PASS   Alloc
+0045264e   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0045264e   RELOCATION_MATCH PASS   CHitLocationsDef
+00453867   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+00453867   WARN SHARED_HEADER_AVAILABLE CDegradableDef (engine/CDegradableDef.h)
+00453867   RELOCATION_MATCH PASS   CDegradableDef
+004538cb   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004538cb   WARN SHARED_HEADER_AVAILABLE CTargetingDef (engine/CTargetingDef.h)
+004538cb   WARN RELOC_NAME: ??0CMember_00453429@@QAE@XZ -> 00453429 labelled 'std::map<T_00453429>::map'
+004538cb   RELOCATION_MATCH PASS   CTargetingDef
+00454629   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+00454629   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef (engine/CSpecialEffectsDef.h)
+00454629   WARN RELOC_NAME: ??0CMember_004533c5@@QAE@XZ -> 004533c5 labelled 'std::map<T_004533c5>::map'
+00454629   RELOCATION_MATCH PASS   CSpecialEffectsDef
+00454673   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+00454673   RELOCATION_MATCH PASS   CTextureReplacementDef
+004546af   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004546af   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+004546af   RELOCATION_MATCH PASS   CAppearanceModifierDef
+004d3826   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d3826   WARN SHARED_HEADER_AVAILABLE CChestDef (engine/CChestDef.h)
+004d3826   RELOCATION_MATCH PASS   CChestDef
+004d7b5b   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d7b5b   WARN SHARED_HEADER_AVAILABLE CBuyHouseDef (engine/CBuyHouseDef.h)
+  WARN leaf 'Alloc' matches no symbol in 004d7b5b.obj; graded the largest function
+  WARN leaf 'Alloc' matches no symbol in 004d7b5b.obj; graded the largest function
+004d7b5b   WARN STANDIN_LEAF ?Create_CBuyHouseDef@@YAPAVCBuyHouseDef@@XZ (catalog CBuyHouseDef::Alloc; names another function)
+004d7b5b   RELOCATION_MATCH PASS   Alloc
+004d8482   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d8482   WARN SHARED_HEADER_AVAILABLE CStockItemDef (engine/CStockItemDef.h)
+004d8482   RELOCATION_MATCH PASS   Alloc
+004d88fc   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d88fc   WARN SHARED_HEADER_AVAILABLE COccupiableDef (engine/COccupiableDef.h)
+004d88fc   RELOCATION_MATCH PASS   Alloc
+004d9465   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004d9465   WARN SHARED_HEADER_AVAILABLE CCameraCollisionDef (engine/CCameraCollisionDef.h)
+004d9465   RELOCATION_MATCH PASS   Alloc
+004da7ad   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004da7ad   WARN SHARED_HEADER_AVAILABLE CVillageMemberDef (engine/CVillageMemberDef.h)
+  WARN leaf 'Alloc' matches no symbol in 004da7ad.obj; graded the largest function
+  WARN leaf 'Alloc' matches no symbol in 004da7ad.obj; graded the largest function
+004da7ad   WARN STANDIN_LEAF ?Create_CVillageMemberDef@@YAPAVCVillageMemberDef@@XZ (catalog CVillageMemberDef::Alloc; names another function)
+004da7ad   RELOCATION_MATCH PASS   Alloc
+004ddb2c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004ddb2c   WARN SHARED_HEADER_AVAILABLE CBuyableHouseDef (engine/CBuyableHouseDef.h)
+004ddb2c   RELOCATION_MATCH PASS   CBuyableHouseDef
+004de7dc   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004de7dc   RELOCATION_MATCH PASS   CCreatureModeDef
+004de8f5   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004de8f5   WARN SHARED_HEADER_AVAILABLE CFishingDef (engine/CFishingDef.h)
+004de8f5   RELOCATION_MATCH PASS   CFishingDef
+004deba3   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004deba3   WARN SHARED_HEADER_AVAILABLE CTurncoatDef (engine/CTurncoatDef.h)
+004deba3   RELOCATION_MATCH PASS   CTurncoatDef
+004ded22   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004ded22   WARN SHARED_HEADER_AVAILABLE CTavernGameSpotTheAdditionDef (engine/CTavernGameSpotTheAdditionDef.h)
+004ded22   RELOCATION_MATCH PASS   CTavernGameSpotTheAdditionDef
+004def86   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004def86   WARN SHARED_HEADER_AVAILABLE CKrakenDef (engine/CKrakenDef.h)
+004def86   RELOCATION_MATCH PASS   CKrakenDef
+004e0900   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e0900   WARN SHARED_HEADER_AVAILABLE CHeroSuitDef (engine/CHeroSuitDef.h)
+004e0900   WARN RELOC_NAME: ??0CMember_004df7ff@@QAE@XZ -> 004df7ff labelled 'std::map<T_004df7ff>::map'
+004e0900   RELOCATION_MATCH PASS   CHeroSuitDef
+004e0b9c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e0b9c   RELOCATION_MATCH PASS   CParticleAttacherDef
+004e1341   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e1341   WARN SHARED_HEADER_AVAILABLE CExplosionDef (engine/CExplosionDef.h)
+004e1341   RELOCATION_MATCH PASS   CExplosionDef
+004e1516   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e1516   RELOCATION_MATCH PASS   CMultiStaticMeshDef
+004e1748   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e1748   RELOCATION_MATCH PASS   CSoundAtmospheresDef
+004e247a   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e247a   WARN SHARED_HEADER_AVAILABLE CContainerRewardHeroDef (engine/CContainerRewardHeroDef.h)
+004e247a   RELOCATION_MATCH PASS   CContainerRewardHeroDef
+004e2895   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e2895   RELOCATION_MATCH PASS   CSkeletalMorphDef
+004e380e   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e380e   WARN RELOC_NAME: ??0CMember_00430345@@QAE@XZ -> 00430345 labelled 'std::map<T_00430345>::map'
+004e380e   RELOCATION_MATCH PASS   CClockDef
+004e3e4c   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004e3e4c   WARN SHARED_HEADER_AVAILABLE CReplaceableMeshDef (engine/CReplaceableMeshDef.h)
+004e3e4c   RELOCATION_MATCH PASS   CReplaceableMeshDef
+004ea1f0   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+004ea1f0   WARN SHARED_HEADER_AVAILABLE CAnimatingObjectDef (engine/CAnimatingObjectDef.h)
+004ea1f0   WARN RELOC_NAME: ??0CMember_005dd2e0@@QAE@XZ -> 005dd2e0 labelled 'CAnimationSet::CAnimationSet'
+004ea1f0   RELOCATION_MATCH PASS   CAnimatingObjectDef
+
+WINS: 29
+  0044fec7 RELOCATION_MATCH CDragonActionHoverDef::Alloc
+  0045264e RELOCATION_MATCH CHitLocationsDef::??0CHitLocationsDef@
+  00453867 RELOCATION_MATCH CDegradableDef::??0CDegradableDef@
+  004538cb RELOCATION_MATCH CTargetingDef::??0CTargetingDef@
+  00454629 RELOCATION_MATCH CSpecialEffectsDef::??0CSpecialEffectsDef@
+  00454673 RELOCATION_MATCH CTextureReplacementDef::??0CTextureReplacementDef@
+  004546af RELOCATION_MATCH CAppearanceModifierDef::??0CAppearanceModifierDef@
+  004d3826 RELOCATION_MATCH CChestDef::??0CChestDef@
+  004d7b5b RELOCATION_MATCH CBuyHouseDef::Alloc
+  004d8482 RELOCATION_MATCH CStockItemDef::Alloc
+  004d88fc RELOCATION_MATCH COccupiableDef::Alloc
+  004d9465 RELOCATION_MATCH CCameraCollisionDef::Alloc
+  004da7ad RELOCATION_MATCH CVillageMemberDef::Alloc
+  004ddb2c RELOCATION_MATCH CBuyableHouseDef::??0CBuyableHouseDef@
+  004de7dc RELOCATION_MATCH CCreatureModeDef::??0CCreatureModeDef@
+  004de8f5 RELOCATION_MATCH CFishingDef::??0CFishingDef@
+  004deba3 RELOCATION_MATCH CTurncoatDef::??0CTurncoatDef@
+  004ded22 RELOCATION_MATCH CTavernGameSpotTheAdditionDef::??0CTavernGameSpotTheAdditionDef@
+  004def86 RELOCATION_MATCH CKrakenDef::??0CKrakenDef@
+  004e0900 RELOCATION_MATCH CHeroSuitDef::??0CHeroSuitDef@
+  004e0b9c RELOCATION_MATCH CParticleAttacherDef::??0CParticleAttacherDef@
+  004e1341 RELOCATION_MATCH CExplosionDef::??0CExplosionDef@
+  004e1516 RELOCATION_MATCH CMultiStaticMeshDef::??0CMultiStaticMeshDef@
+  004e1748 RELOCATION_MATCH CSoundAtmospheresDef::??0CSoundAtmospheresDef@
+  004e247a RELOCATION_MATCH CContainerRewardHeroDef::??0CContainerRewardHeroDef@
+  004e2895 RELOCATION_MATCH CSkeletalMorphDef::??0CSkeletalMorphDef@
+  004e380e RELOCATION_MATCH CClockDef::??0CClockDef@
+  004e3e4c RELOCATION_MATCH CReplaceableMeshDef::??0CReplaceableMeshDef@
+  004ea1f0 RELOCATION_MATCH CAnimatingObjectDef::??0CAnimatingObjectDef@

@@ -1,16 +1,17 @@
 // CHeroMarriageDef::CHeroMarriageDef() -- the def base (0x0044C0C0), this class's vtable (0x01232074), then the five CCharString members at +0x7c, +0xa4, +0xa8, +0xb8, +0xc4 constructed in place (0x0099E4B0)
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CHeroMarriageDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CDefBase_0044c0c0.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044C29C, length 70 bytes.
 // Shape: `this` in esi, the vtable store between the base call and the first string, `mov eax,esi`.
-struct CDefBase_0044c0c0 {                        // the def base (its constructor @ 0x0044C0C0 is labelled "CShoveHaPennyRegionDef", propagated)
+class CSubDefClassBase { public:                        // the def base (its constructor @ 0x0044C0C0 is labelled "CShoveHaPennyRegionDef", propagated)
     virtual void v00();
-    CDefBase_0044c0c0();
+    CSubDefClassBase();
 };
 class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };
 
-class CHeroMarriageDef : public CDefBase_0044c0c0 { public:      // vtable 0x01232074
+class CHeroMarriageDef : public CSubDefClassBase { public:      // vtable 0x01232074
     unsigned char _pad04[0x78];
     CCharString   m_string7c;                      // +0x7c
     unsigned char _pad80[0x24];
@@ -25,6 +26,6 @@ class CHeroMarriageDef : public CDefBase_0044c0c0 { public:      // vtable 0x012
 };
 
 CHeroMarriageDef::CHeroMarriageDef()
-    : CDefBase_0044c0c0()
+    : CSubDefClassBase()
 {
 }

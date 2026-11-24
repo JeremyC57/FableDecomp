@@ -1,4 +1,4 @@
-// Behaviour test for 00625350 CConfigOptionsDefaultsDef::operator=: the base part, every scalar, the
+// Behaviour test for 00625350 NUISystem::CUIStateDef::operator= (NF382 name fix, was CConfigOptionsDefaultsDef::operator=): the base part, every scalar, the
 // 16-byte record, the member with its own assignment and the flag are copied; *this is returned.
 #include <cstdio>
 

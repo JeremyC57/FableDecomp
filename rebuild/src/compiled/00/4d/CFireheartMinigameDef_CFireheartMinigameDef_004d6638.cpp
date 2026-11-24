@@ -1,4 +1,5 @@
 // CFireheartMinigameDef::CFireheartMinigameDef() -- the CShoveHaPennyRegionDef-style base constructor, this class's vtable, then the two CCharString members at +0x28 and +0x2c default-constructed
+// Name fix (NF387, T3 nf381 0x0044C0C0): the base at 0x0044C0C0 is CSubDefClassBase (retail RTTI CFireheartMinigameDef : CSubDefClassBase; ??0CSubDefClassBase@@QAE@XZ in the Ego_r and FableWin definition_manager.obj; class key V in both name sets); was the made-up CShoveHaPennyRegionDef_Base.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D6638, length 34 bytes.
 // Callees: the def base constructor @ 0x0044C0C0 (labelled CShoveHaPennyRegionDef::CShoveHaPennyRegionDef, propagated), CCharString::CCharString @ 0x0099E4B0 twice (+0x28, +0x2c). Vtable 0x0123E584 = CFireheartMinigameDef (rtti-vtables.tsv). Shape: the size-optimised module, the first member address formed before the vtable store; `this` is returned.
 #pragma optimize("s", on)
@@ -6,13 +7,13 @@ class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };
-struct CShoveHaPennyRegionDef_Base {               // the def base whose constructor is 0x0044C0C0 (the manifest label names a sibling class)
+class CSubDefClassBase { public:               // the def base whose constructor is 0x0044C0C0 (the manifest label names a sibling class)
     virtual void v00();
     unsigned char _pad[0x24];                      // +0x04 .. +0x28
-    CShoveHaPennyRegionDef_Base();                 // 0x0044C0C0
+    CSubDefClassBase();                 // 0x0044C0C0
 };
 
-class CFireheartMinigameDef : public CShoveHaPennyRegionDef_Base { public:
+class CFireheartMinigameDef : public CSubDefClassBase { public:
     CCharString            m_name;                        // +0x28
     CCharString            m_text;                        // +0x2c
     virtual void v00();
@@ -20,6 +21,6 @@ class CFireheartMinigameDef : public CShoveHaPennyRegionDef_Base { public:
 };
 
 CFireheartMinigameDef::CFireheartMinigameDef()
-    : CShoveHaPennyRegionDef_Base()
+    : CSubDefClassBase()
 {
 }

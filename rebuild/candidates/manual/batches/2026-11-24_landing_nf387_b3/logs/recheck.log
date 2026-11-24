@@ -1,0 +1,8 @@
+addr       parity           behav  name
+  WARN leaf '??0CCombatDebugInfo@' matches no symbol in 006f3000.obj; graded the largest function
+  WARN leaf '??0CCombatDebugInfo@' matches no symbol in 006f3000.obj; graded the largest function
+006f3000   WARN STANDIN_LEAF ??0CRecord_006f3000@@QAE@ABU0@@Z (catalog CCombatDebugInfo::CCombatDebugInfo; address-only name)
+006f3000   RELOCATION_MATCH PASS   CCombatDebugInfo
+
+WINS: 1
+  006f3000 RELOCATION_MATCH CRecord_006f3000::??0CCombatDebugInfo@

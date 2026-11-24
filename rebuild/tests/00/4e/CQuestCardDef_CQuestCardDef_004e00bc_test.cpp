@@ -5,7 +5,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_mapCtor = 0;
-struct CDefBase_0044c0c0 { virtual void v00() {} unsigned char _base[0x24]; CDefBase_0044c0c0() { ++g_baseCtor; } };
+class CSubDefClassBase { public: virtual void v00() {} unsigned char _base[0x24]; CSubDefClassBase() { ++g_baseCtor; } };
 template <class T>
 struct CAllocProxy {                            // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
     T* p;
@@ -20,7 +20,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
 };
 class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
 struct CPrerequisiteMap { long m_words[4]; CPrerequisiteMap() { ++g_mapCtor; m_words[0] = 5; } };
-class CQuestCardDef : public CDefBase_0044c0c0 { public:
+class CQuestCardDef : public CSubDefClassBase { public:
     long QuestName; long QuestSummary; long QuestObjective; long SuccessSummary; CDefString RegionName; CDefString TeleporterRegionName;
     long InventoryCategory; long RenownReward; long GoldReward; CRetailVector<long> RewardObjects; bool IsCore; bool IsVignette; bool IsExclusive;
     bool MakeVignetteRouteAppearOnMinimap; CPrerequisiteMap Prerequisites;
@@ -28,7 +28,7 @@ class CQuestCardDef : public CDefBase_0044c0c0 { public:
     CQuestCardDef();
 };
 CQuestCardDef::CQuestCardDef()
-    : CDefBase_0044c0c0()
+    : CSubDefClassBase()
 {
 }
 int main()
