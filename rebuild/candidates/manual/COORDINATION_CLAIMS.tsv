@@ -520,3 +520,4 @@ date	account	item	kind	status	note
 2026-11-24	A	agent NF348 owner ports queued by NF345	naming	done	batches/2026-11-24_landing_nf348_b1; pending/2026-11-24_nf348_handback
 2026-11-24	A	agent NF351 follow-ups queued by NF348	naming	claimed	locks via nflocks owner NF351
 2026-11-24	A	agent NF349 size-mode GetDef copies in the rows NF346 skipped	naming	done	batches/2026-11-24_landing_nf349_b1..x1 (40 rows); pending/2026-11-24_nf349_handback
+2026-11-24	A	agent NF352 size-mode CComponent counted-pointer copies	naming	claimed	locks via nflocks owner NF352
