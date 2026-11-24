@@ -184,7 +184,10 @@ class CTCVillage : public CTCBase { public:
     void UpdateCrowds();
     public:
                         // 0x006594BB
-    void UpdateSecuritySweepTasks();            // 0x0065C08A
+    private:
+    void UpdateSecuritySweepTasks();
+    public:
+            // 0x0065C08A
 private:
     void UpdateTorchTasks();                    // 0x00659625 Ego_r/FableWin ?UpdateTorchTasks@CTCVillage@@AAEXXZ (private; NF239 CODEXP27 L45, was QAE)
     void UpdateHornTasks();                     // 0x0065BE6C Ego_r/FableWin ?UpdateHornTasks@CTCVillage@@AAEXXZ (private)

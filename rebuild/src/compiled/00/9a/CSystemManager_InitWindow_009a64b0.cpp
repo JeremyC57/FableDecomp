@@ -1,5 +1,5 @@
 // CSystemManager::InitWindow(long width, long height) -- register the application window class and create, show and update a centred fixed-size captioned window
-// Leaf: InitWindow
+// Leaf: ?InitWindow@CSystemManager@@AAE_NJJ@Z
 // Retail 0x009A64B0, 352 bytes, `ret 8`.
 // Callees (USER32/GDI32 imports): LoadCursorW 0x01440398, GetStockObject 0x0143FC78, LoadIconW 0x01440394 (resource 101,
 // twice), RegisterClassExW 0x01440390, GetSystemMetrics 0x0144038C (SM_CXSCREEN, SM_CYSCREEN, SM_CXBORDER, SM_CYBORDER,
@@ -58,7 +58,9 @@ class CSystemManager { public:
     WNDCLASSEXW   WinClass;                                // +0xa4
     unsigned char _padd4[0xe8 - 0xd4];
     bool          WindowValid;                             // +0xe8
+    private:
     bool InitWindow(long width, long height);
+    public:
 };
 
 bool CSystemManager::InitWindow(long width, long height)

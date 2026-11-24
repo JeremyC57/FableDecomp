@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseHouseMarkers@CMiniMapDisplay@@IAEXXZ
 // CMiniMapDisplay::InitialiseHouseMarkers() -- add a minimap marker for every owned or for-sale house in the current region
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -100,7 +101,9 @@ class CMiniMapDisplay { public:
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)
     void AddMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
+    protected:
     void InitialiseHouseMarkers();
+    public:
 };
 
 void CMiniMapDisplay::InitialiseHouseMarkers()

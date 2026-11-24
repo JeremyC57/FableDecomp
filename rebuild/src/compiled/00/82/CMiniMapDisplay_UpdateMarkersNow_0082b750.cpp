@@ -42,8 +42,14 @@ class CMiniMapDisplay { public:
     void InitialiseTeleportMarkers();
     public:
               // 0x0082ABD0
-    void InitialiseHouseMarkers();                 // 0x0082ACD0
-    void InitialiseDemonDoorMarkers();             // 0x0082ADD0
+    protected:
+    void InitialiseHouseMarkers();
+    public:
+                 // 0x0082ACD0
+    protected:
+    void InitialiseDemonDoorMarkers();
+    public:
+             // 0x0082ADD0
     void InitialiseTraderMarkers();                // 0x0082AE80
     void InitialiseRegionExitMarkers();            // 0x0082AFA0
     void InitialiseAttractionMarkers();            // 0x0082B520

@@ -1,0 +1,11 @@
+address	verdict	old	new	reason
+00561980	ACCEPT	?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00564570	ACCEPT	?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@QAE?AW4ENetworkSuccess@1@XZ	?DownloadMyClansLogos@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00561980
+0065c08a	ACCEPT	?UpdateSecuritySweepTasks@CTCVillage@@QAEXXZ	?UpdateSecuritySweepTasks@CTCVillage@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0065c781	ACCEPT	?UpdateSecuritySweepTasks@CTCVillage@@QAEXXZ	?UpdateSecuritySweepTasks@CTCVillage@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0065c08a
+00753ad0	ACCEPT	?IsLookTimeOver@CTCLook@@QAE_NXZ	?IsLookTimeOver@CTCLook@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+00753c70	ACCEPT	?IsLookTimeOver@CTCLook@@QAE_NXZ	?IsLookTimeOver@CTCLook@@ABE_NXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 00753ad0
+0082acd0	ACCEPT	?InitialiseHouseMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseHouseMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS
+0082b750	ACCEPT	?InitialiseHouseMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseHouseMarkers@CMiniMapDisplay@@IAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS; target 0082acd0
+009a64b0	ACCEPT	?InitWindow@CSystemManager@@QAE_NJJ@Z	?InitWindow@CSystemManager@@AAE_NJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS
+009a6610	ACCEPT	?InitWindow@CSystemManager@@QAE_NJJ@Z	?InitWindow@CSystemManager@@AAE_NJJ@Z	objsec ALL_EQ, RELOCATION_MATCH PASS; target 009a64b0

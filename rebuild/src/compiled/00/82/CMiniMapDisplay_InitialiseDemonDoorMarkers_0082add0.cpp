@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseDemonDoorMarkers@CMiniMapDisplay@@IAEXXZ
 // (the short widened inside the accessor puts the movsx in eax and the marker-graphic load in ecx/edx, as retail)
 // Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -76,7 +77,9 @@ class CRegion;
 class CMiniMapDisplay : public CMiniMapDisplayDonor {
  public:
     void AddAutoMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
+    protected:
     void InitialiseDemonDoorMarkers();
+    public:
 };
 
 void CMiniMapDisplay::InitialiseDemonDoorMarkers()

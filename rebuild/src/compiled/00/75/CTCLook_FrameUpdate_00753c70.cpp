@@ -97,7 +97,10 @@ class CTCLook : public CTCBase { public:
     void UpdateHeadPos();
     public:
                                   // 0x00752000
-    void ImplementHeadSettings();                          // 0x00753BA0
+    private:
+    void ImplementHeadSettings();
+    public:
+                          // 0x00753BA0
     private: bool IsAbleToTurnDaBody() const; public:                             // 0x00751DA0
     bool IsCurrentlyTurningViaAnimation() const;                 // 0x00753B40
     private:
@@ -116,7 +119,10 @@ private:
     void FrameUpdateHeadLookAtPos(const C3DVector& pos, bool turnBody);   // 0x007530D0
     void SetHeadTurnState(long state);                     // 0x007517B0 (private: Ego_r.pdb / FableWin.pdb ?SetHeadTurnState@CTCLook@@AAEXJ@Z)
 public:
-    bool IsLookTimeOver();                                 // 0x00753AD0
+    private:
+    bool IsLookTimeOver() const;
+    public:
+                                 // 0x00753AD0
     virtual void FrameUpdate();                            // vtable 0x01269744 slot 9 (Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCLook@@UAEXXZ)
 };
 
