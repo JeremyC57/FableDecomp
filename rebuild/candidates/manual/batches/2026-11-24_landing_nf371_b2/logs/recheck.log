@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00447d90   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@$$CBVCInputTypeBase@@@@SIXPAX@Z -> 00447660 labelled 'sub_00447660'
+00447d90   RELOCATION_MATCH PASS   Reset
+00a299c0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z -> 00a281e0 labelled 'sub_00a281e0'
+00a299c0   RELOCATION_MATCH PASS   Reset
+00a29d20   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBankEntry@@@@SIXPAX@Z -> 00a28370 labelled 'sub_00a28370'
+00a29d20   RELOCATION_MATCH PASS   Reset
+00aa4460   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z -> 00aa4310 labelled 'sub_00aa4310'
+00aa4460   RELOCATION_MATCH PASS   Reset
+00b3e510   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z -> 00b3e080 labelled 'sub_00b3e080'
+00b3e510   RELOCATION_MATCH PASS   Reset
+00cd43a0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z -> 00cd42e0 labelled 'sub_00cd42e0'
+00cd43a0   RELOCATION_MATCH PASS   Reset
+00f39ca0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z -> 00f38920 labelled 'sub_00f38920'
+00f39ca0   RELOCATION_MATCH PASS   Reset
+
+WINS: 7
+  00447d90 RELOCATION_MATCH CCountedPointer_00447660::?Reset@?$CCountedPointer@$$CBVCInputTypeBase@@@@QAEXPBVCInputTypeBase@@@Z
+  00a299c0 RELOCATION_MATCH CCountedPointer<C3DMesh2>::?Reset@?$CCountedPointer@VC3DMesh2@@@@QAEXPAVC3DMesh2@@@Z
+  00a29d20 RELOCATION_MATCH CCountedPointer_00a28370::?Reset@?$CCountedPointer@VCMeshDataBankEntry@@@@QAEXPAVCMeshDataBankEntry@@@Z
+  00aa4460 RELOCATION_MATCH CCountedPointer_00aa4310::?Reset@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAEXPAVCOptimisedMesh@QuadricOptimiserInternals@@@Z
+  00b3e510 RELOCATION_MATCH CCountedPointer_00b3e080::?Reset@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAEXPAVCLoadingMemoryFailureHandler@@@Z
+  00cd43a0 RELOCATION_MATCH CCountedPointer_00cd42e0::?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z
+  00f39ca0 RELOCATION_MATCH CCountedPointer<CRenderTarget>::?Reset@?$CCountedPointer@VCRenderTarget@@@@QAEXPAVCRenderTarget@@@Z

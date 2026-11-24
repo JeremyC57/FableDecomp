@@ -95294,7 +95294,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00447660'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<const CInputTypeBase>'
         Source = '00/44/gapscan_sub00447660_00447660.cpp'
         TestSource = '00/44/gapscan_sub00447660_00447660_test.cpp'
         PassPattern = 'PASS_00447660'
@@ -105381,7 +105381,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a281e0'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<C3DMesh2>'
         Source = '00/a2/gapscan_sub00a281e0_00a281e0.cpp'
         TestSource = '00/a2/gapscan_sub00a281e0_00a281e0_test.cpp'
         PassPattern = 'PASS_00a281e0'
@@ -105395,7 +105395,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a28370'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<CMeshDataBankEntry>'
         Source = '00/a2/gapscan_sub00a28370_00a28370.cpp'
         TestSource = '00/a2/gapscan_sub00a28370_00a28370_test.cpp'
         PassPattern = 'PASS_00a28370'
@@ -105472,7 +105472,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aa4310'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<QuadricOptimiserInternals::COptimisedMesh>'
         Source = '00/aa/gapscan_sub00aa4310_00aa4310.cpp'
         TestSource = '00/aa/gapscan_sub00aa4310_00aa4310_test.cpp'
         PassPattern = 'PASS_00aa4310'
@@ -106039,7 +106039,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b3e080'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<CLoadingMemoryFailureHandler>'
         Source = '00/b3/gapscan_sub00b3e080_00b3e080.cpp'
         TestSource = '00/b3/gapscan_sub00b3e080_00b3e080_test.cpp'
         PassPattern = 'PASS_00b3e080'
@@ -107544,7 +107544,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd42e0'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<CScriptDefinitionManager>'
         Source = '00/cd/gapscan_sub00cd42e0_00cd42e0.cpp'
         TestSource = '00/cd/gapscan_sub00cd42e0_00cd42e0_test.cpp'
         PassPattern = 'PASS_00cd42e0'
@@ -115384,7 +115384,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f38920'
-        Module = '_gapscan'
+        Module = 'CCountedPointer<CRenderTarget>'
         Source = '00/f3/gapscan_sub00f38920_00f38920.cpp'
         TestSource = '00/f3/gapscan_sub00f38920_00f38920_test.cpp'
         PassPattern = 'PASS_00f38920'
@@ -149204,7 +149204,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00447d90'
-        Module = 'CCountedPointer_00447660'
+        Module = 'CCountedPointer<const CInputTypeBase>'
         Source = '00/44/CCountedPointer00447660_Reset_00447d90.cpp'
         TestSource = '00/44/CCountedPointer00447660_Reset_00447d90_test.cpp'
         PassPattern = '00447d90_TEST PASS'
@@ -149715,7 +149715,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b3e510'
-        Module = 'CCountedPointer_00b3e080'
+        Module = 'CCountedPointer<CLoadingMemoryFailureHandler>'
         Source = '00/b3/CCountedPointer00b3e080_Reset_00b3e510.cpp'
         TestSource = '00/b3/CCountedPointer00b3e080_Reset_00b3e510_test.cpp'
         PassPattern = '00b3e510_TEST PASS'
@@ -150086,7 +150086,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a29d20'
-        Module = 'CCountedPointer_00a28370'
+        Module = 'CCountedPointer<CMeshDataBankEntry>'
         Source = '00/a2/CCountedPointer00a28370_Reset_00a29d20.cpp'
         TestSource = '00/a2/CCountedPointer00a28370_Reset_00a29d20_test.cpp'
         PassPattern = '00a29d20_TEST PASS'
@@ -150156,7 +150156,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aa4460'
-        Module = 'CCountedPointer_00aa4310'
+        Module = 'CCountedPointer<QuadricOptimiserInternals::COptimisedMesh>'
         Source = '00/aa/CCountedPointer00aa4310_Reset_00aa4460.cpp'
         TestSource = '00/aa/CCountedPointer00aa4310_Reset_00aa4460_test.cpp'
         PassPattern = '00aa4460_TEST PASS'
@@ -150282,7 +150282,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd43a0'
-        Module = 'CCountedPointer_00cd42e0'
+        Module = 'CCountedPointer<CScriptDefinitionManager>'
         Source = '00/cd/CCountedPointer00cd42e0_Reset_00cd43a0.cpp'
         TestSource = '00/cd/CCountedPointer00cd42e0_Reset_00cd43a0_test.cpp'
         PassPattern = '00cd43a0_TEST PASS'

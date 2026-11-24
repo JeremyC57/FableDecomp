@@ -1,42 +1,35 @@
-// CCountedPointer_00cd42e0::Reset(T*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD43A0, oracle length 103 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je A ; dec dword ptr [eax] ; mov eax,[esi+4] ; cmp dword ptr [eax],0 ; jne A ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+4] ; push eax ; call operator delete ; add esp,4 ; A: mov eax,[esp+8] ; test eax,eax ; mov dword ptr [esi+4],0 ; mov [esi],eax ; je Z ; push 0Ch ; call operator new ; add esp,4 ; test eax,eax ; je N ; mov ecx,[esi] ; mov dword ptr [eax],1 ; mov dword ptr [eax+4],offset Destroy ; mov [eax+8],ecx ; mov [esi+4],eax ; pop esi ; ret 4 ; N: xor eax,eax ; mov [esi+4],eax ; Z: pop esi ; ret 4
-// Intrusive-count smart pointer {object, count block}: the 12-byte count block holds the
-// reference count, the per-type destroy function (0x00CD42E0, called with the object in ecx)
-// and the object. Reset() decrements the old block (re-reading it after the decrement: the count
-// is touched through a reference), destroys + frees it on zero, then adopts the new object by
-// allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
-// instantiation is named from the manifest label when unique, else from the destroy function.
-// One of 74 bodies of this shape.
-void __fastcall Destroy_00cd42e0(void* object);   // 0x00CD42E0: the per-type deleter stored in the block
+// CCountedPointer::Reset(T* data) -- (CCountedPointer<CScriptDefinitionManager>) drop the current share (destroying the pointee on the last reference), then adopt data with a fresh count block
+// Leaf: ?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00CD43A0, 103 bytes, thiscall, `ret 4`. Stores DeleteData 0x00CD42E0.
+// Names (NF371, 2026-11-24; was the stand-in CCountedPointer_00cd42e0::Reset with a local count-block model, self
+//   ?Reset@CCountedPointer_00cd42e0@@QAEXPAX@Z, and the deleter bound as ?Destroy_00cd42e0@@YIXPAX@Z): FableWin.pdb
+//   ?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z; the body stores
+//   CCountedPointer<CScriptDefinitionManager>::DeleteData 0x00CD42E0 (?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z, landed
+//   nf366) as the count block's DeleteFunc, and the Reset is called only by CScriptDefinitionManager::Set 0x00CD3F40 on the static PClass 0x0143E920
+//   (Set is 12 B in retail and in Ego_r.pdb).
+// Form: a strong explicit specialization of engine/CCountedPointer.h's member with the landed body (ReleaseData written out: its trailing Data store
+//   is dead; Data = data; for a non-null data the count block re-reads Data through `this`; a failed new leaves Info 0).
+//   FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL (landed opt-in: Reset declaration only) keeps the in-class body out, so the specialization is
+//   emitted, as a plain function (COMDAT selection 1) like the landed stand-in; the sibling explicit-instantiation form adds a pick-any ReleaseData
+//   COMDAT (measured, NOTES). FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (NF222) leaves the stored deleter an external reference to its owner
+//   row.
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+class CScriptDefinitionManager;
 
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00cd42e0), m_pObject(object) { }
-};
-
-struct CCountedPointer_00cd42e0 {
-    void* m_pObject;                       // +0
-    SCountBlock* m_pCount;                 // +4
-    void Reset(void* object);
-};
-
-void CCountedPointer_00cd42e0::Reset(void* object)
+template <>
+void CCountedPointer<CScriptDefinitionManager>::Reset(CScriptDefinitionManager* data)
 {
-    if (m_pCount) {
-        --m_pCount->m_references;
-        if (m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            delete m_pCount;
+    if (Info) {
+        --Info->RefCount;
+        if (Info->RefCount == 0) {
+            Info->DeleteFunc(Info->Data);
+            delete Info;
         }
     }
-    m_pCount = 0;
-    m_pObject = object;
-    if (object)
-        m_pCount = new SCountBlock(m_pObject);   // re-read through `this` (retail loads [esi] for the block), not the argument
+    Info = 0;
+    Data = data;
+    if (data)
+        Info = new CCPPointerInfo(1, DeleteData, (void*)Data);   // re-read through `this` (retail loads [esi] for the block), not the argument
 }

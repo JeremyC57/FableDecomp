@@ -200,7 +200,7 @@ fpair_00a03bb0	00a03bb0	00445920
 ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	00449700	00446220
 ?SetPlayer@CProcessedInput@@QAEXK@Z	00a0d3a0	00446220
 ?g_OnEngineSurveyLMBHeld_vtbl@@3HA	012318c8	00447a40
-?Destroy_00447660@@YIXPAX@Z	00447660	00447d90
+?DeleteData@?$CCountedPointer@$$CBVCInputTypeBase@@@@SIXPAX@Z	00447660	00447d90
 ?InsertionSort_00449220@@YIXPAUSElement12@@0USCompare@@@Z	00449220	004493b0
 ?UnguardedInsertionSortAux_00448910@@YIXPAUSElement12@@00USCompare@@@Z	00448910	004493b0
 ?FinalInsertionSort_004493b0@@YIXPAUSElement12@@0USCompare@@@Z	004493b0	004495d0
@@ -4704,8 +4704,8 @@ _iswdigit	00bfede2	00a0ce90
 ?Sizeof@CAnimationData@@QAEKXZ	00a25b20	00a265b0
 ??_7CAnimationData@C3DAnimationInfo@@6B@	0129ce50	00a26860
 ?Erase@CAnimationMap@@QAEXPAUSRbTreeNode@@@Z	00a2b9d0	00a26860
-?Destroy_00a281e0@@YIXPAX@Z	00a281e0	00a299c0
-?Destroy_00a28370@@YIXPAX@Z	00a28370	00a29d20
+?DeleteData@?$CCountedPointer@VC3DMesh2@@@@SIXPAX@Z	00a281e0	00a299c0
+?DeleteData@?$CCountedPointer@VCMeshDataBankEntry@@@@SIXPAX@Z	00a28370	00a29d20
 ??_7C3DAnimationInfo@@6B@	0129cd64	00a2a4f0
 ??_7CMeshData@CPhysicsMeshInfo@@6B@	0129cd78	00a2aa80
 ??4CElement40_00a2b4e0@@QAEAAU0@ABU0@@Z	00a2b4e0	00a2bc70
@@ -5001,7 +5001,7 @@ _D3DXLoadVolumeFromVolume@32	00bfefec	00a67670
 @FableMemberDtor_00a9c9a0@4	0099eae0	00a9c9a0
 ??_7C3DQuadricBasedMeshOptimiser@@6B@	0129e13c	00aa41c0
 ?BeginOptimisation@C3DOptimisedMeshBase@@QAEXABUCQuadricOptimisationParams@@@Z	00acd500	00aa4210
-?Destroy_00aa4310@@YIXPAX@Z	00aa4310	00aa4460
+?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z	00aa4310	00aa4460
 ?WriteULONG@CDataOutputStream@@QAEXK@Z	00993ea0	00aa4500
 ??_7C3DMeshFileXTextureIndexChunkRetail@@6B@	0129e1f8	00aa4b00
 ??_7C3DMeshFileXMappingInfoChunkRetail@@6B@	0129e238	00aa4c30
@@ -5264,7 +5264,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Defragment@CHandleBasedMemoryPool@@QAEXXZ	00a02730	00b3b1a0
 ?g_pEngine_01436ea8@@3PAUCEngineGlobal_01436ea8@@A	01436ea8	00b3b1a0
 ?Flush@CDeviceOwner_009f8200@@QAEXXZ	009f8200	00b3b7c0
-?Destroy_00b3e080@@YIXPAX@Z	00b3e080	00b3e510
+?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z	00b3e080	00b3e510
 ?DeleteData@?$CCountedPointer@VCMeshBankStateBlock@@@@SIXPAX@Z	00b3e1a0	00b3e580
 ??1CLayoutBase@@QAE@XZ	0098d710	00b3eb90
 ??0CBankFile_Retail@@QAE@XZ	009d5f80	00b3ecc0
@@ -6862,7 +6862,7 @@ __imp__CoTaskMemFree@4	01440630	00cb1cc0
 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	00cd3da4
 ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00cd3da4
 ?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z	00cd43a0	00cd3f40
-?Destroy_00cd42e0@@YIXPAX@Z	00cd42e0	00cd43a0
+?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z	00cd42e0	00cd43a0
 @FableBaseDtor_00cd44e0@4	0099eae0	00cd44e0
 @FableMemberDtor_00cd44e0@4	0099eae0	00cd44e0
 @FableBaseDtor_00cd45c0@4	0099eae0	00cd45c0
@@ -7082,7 +7082,7 @@ _rand	00bfeb16	00d2c530
 ?DetachTarget@CRenderTarget@@QAEXXZ	00a10e10	00f38930
 ?EndRender@CDisplayManager@@QAEXXZ	009bef50	00f38930
 ?SetRenderTargetAsBackScreen@CDisplayManager@@QAE_NXZ	009bf220	00f38930
-?Destroy_00f38920@@YIXPAX@Z	00f38920	00f39ca0
+?DeleteData@?$CCountedPointer@VCRenderTarget@@@@SIXPAX@Z	00f38920	00f39ca0
 ?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z	00f3ae50	00f3afc0
 ??4CElement12_00f3b640@@QAEAAU0@ABU0@@Z	00f3b640	00f3b8a0
 ??0CElement12_00a87090@@QAE@ABU0@@Z	00a87090	00f3faa0

@@ -1276,3 +1276,4 @@ opt-in (pick-any copy EQ, RELOCATION_MATCH; `notes/0070d940/A_header_variant/`);
 2026-11-24 A->B: **nf370 landed: ten selves on their PDB access / const / virtual spellings** (0x0094CE60, 0x00B8FD40, 0x00B2C8E0,
 0x0082A500, 0x004AEAA0, 0x009F7250, 0x004348D0, 0x009FF8D0, 0x008F1720, 0x006A5AF0; `batches/2026-11-24_landing_nf370_b1`). Bind the
 PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
+2026-11-24 A->B: **nf371_b2 landed:** seven Reset rows are CCountedPointer<T>::Reset on their FableWin names; their DeleteData owners are named in the catalog. Bind the PDB spellings.
