@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf324	0x00906C00	port	00906c00 skipped-port ?IsToFaceTarget@CCreatureAction_BanditKingAdvance@@UBE_NXZ triage (header): model: engine/CCreatureAction_BanditKingAdvance.h does not declare IsToFaceTarget and has no polymorphic class model (port)
+nf324	0x00906C40	port	00906c40 skipped-port ?IsToFaceTarget@CCreatureAction_BanditKingBackOff@@UBE_NXZ triage (header): model: engine/CCreatureAction_BanditKingBackOff.h does not declare IsToFaceTarget and has no polymorphic class model (port)
