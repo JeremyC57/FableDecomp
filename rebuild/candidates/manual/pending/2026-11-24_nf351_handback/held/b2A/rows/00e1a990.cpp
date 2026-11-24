@@ -1,0 +1,113 @@
+// CQ_WizardBattleScript::Main() -- the Hook Coast wizard (Maze) battle main: initialise, bind the screamer / Maze / EndGameBarrier entity scripts, cache music sets 0x33 and 0x34 and spawn WatchForTermination and DoMission
+// Leaf: ?Main@CQ_WizardBattleScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00E1A990, 0x397 bytes, plain `ret`.
+// Label: manifest "CV_MurderTwistScript::Main" is propagated; the class is CQ_WizardBattleScript (vtable 0x012E0F54,
+//   object size 0x80 = Ego_r 148 - 0x14, allocated at 0x00E1D9F0; HKC_* / Screamer / Maze binding names match its
+//   Maze / NumberOfScreamersAlive members in Ego_r.pdb).
+// Callees: InitialiseVariables 0x00E1AD30 (NF345: FableWin.pdb CQ_WizardBattleScript::InitialiseVariables, called first by the
+//   debug Main and placed after Main as retail; the body zeroes the script variables +0x48..+0x54; Init is 0x00E1A870), operator new 0x00BFEA1A, CCharString
+//   0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, AddEntityScriptBinding 0x00CB8230 (binding vtable 0x012E0FCC),
+//   CScriptBase::PostAddScriptedEntities 0x00CB8930, CSpawnedFuncBase 0x00CDD450 (spawn vtable 0x012E0F68),
+//   AddSpawnedFunction 0x00CB7E50; threads WatchForTermination 0x00E1AD60, DoMission 0x00E1C0F0;
+//   CGameScriptInterface slots 64 PostAddScriptedEntities, 698 CacheMusicSet.
+// NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
+//   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
+//   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// NF351 (2026-11-24, T3 nf348 self port): the local CCharString / CScriptBase / CQ_WizardBattleScript models are replaced by the shared
+//   fable_string.h, engine/CScriptBase.h (via CLevelScriptBase.h) and engine/CQ_WizardBattleScript.h with the add-only opt-in
+//   FABLE_RETAIL_CQ_WIZARDBATTLESCRIPT_MAIN, so Main is the PDB's public virtual override (UAE, CScriptBase slot 2) and the grader reads it
+//   by its Leaf. The made-up inline member CScriptBase::SpawnFunction (and its COMDAT) is gone; the order FableWin's Main shows (new,
+//   CCharString(name), CSpawnedFunc ctor, CCharString(""), AddSpawnedFunction, then both temporaries destroyed) comes from the
+//   file-static spawn helper below.
+//   The entity-script binding templates stay local models (unchanged). The six nested classes are declared in the header and
+//   completed below with their static Alloc only.
+#include "fable_compiler.h"
+#define FABLE_RETAIL_CCHARSTRING
+#include "fable_string.h"
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
+#include "engine/CSpawnedFuncBase.h"
+#include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
+
+class CScriptThing;
+class CScriptDataBase;
+class CEntityScriptBase;
+class CActiveEntityScriptBase;
+#include "engine/CCountedPointer.h"
+
+class __declspec(novtable) CEntityScriptBindingBase { public:
+    virtual const CCharString& GetEntityScriptName() const = 0;
+};
+template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
+    typedef CCountedPointer<CEntityScriptBase> (__fastcall *TAllocFunc)(T& parent, CScriptDataBase* data, const CScriptThing& thing);
+    CCharString     EntityScriptName;                   // +0x04
+    T*              PParentScript;                      // +0x08
+    void (T::*Func)();                                  // +0x0c
+    TAllocFunc      ClassAllocFunc;                     // +0x10
+    bool            ClassAllocValid;                    // +0x14
+    unsigned long   Flags;                              // +0x18
+    CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
+        : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) {}
+    virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
+};
+
+class CGameScriptInterface;
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+#define FABLE_RETAIL_CQ_WIZARDBATTLESCRIPT_INITIALISEVARIABLES
+#define FABLE_RETAIL_CQ_WIZARDBATTLESCRIPT_MAIN
+#include "engine/CScriptThing.h"
+#include "engine/CLevelScriptBase.h"
+#include "engine/CQ_WizardBattleScript.h"
+namespace NScript {
+class CQ_WizardBattleScript::CHKC_VillagerScreamer { public:
+    static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WizardBattleScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1B100
+};
+class CQ_WizardBattleScript::CHKC_ScreamerPoint { public:
+    static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WizardBattleScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1B660
+};
+class CQ_WizardBattleScript::CChasingScreamer { public:
+    static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WizardBattleScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1AE50
+};
+class CQ_WizardBattleScript::CInitialScreamerPoint { public:
+    static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WizardBattleScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1BB80
+};
+class CQ_WizardBattleScript::CHKC_Maze { public:
+    static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WizardBattleScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1B950
+};
+class CQ_WizardBattleScript::CEndGameBarrier { public:
+    static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CQ_WizardBattleScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00E1BA60
+};
+} // namespace NScript
+using NScript::CQ_WizardBattleScript;
+// Source-level spawn helper (no retail symbol: internal linkage, expanded at both calls, so the object defines nothing for it). It
+//   builds the region name after the new-expression, as retail does; a direct AddSpawnedFunction(new ..., "") call (or a default
+//   argument) builds it first (VC7.1 evaluates the arguments right to left; NF351 measured both, 927 v 919 bytes).
+static FABLE_FORCEINLINE void SpawnFunction(CScriptBase* script, CSpawnedFuncBase* func, const char* regionName = "")
+{
+    script->AddSpawnedFunction(func, CCharString(regionName));
+}
+
+void NScript::CQ_WizardBattleScript::Main()
+{
+    InitialiseVariables();
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("HKC_VillagerScreamer", this, &CHKC_VillagerScreamer::Alloc, 1));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("HKC_ScreamerPoint", this, &CHKC_ScreamerPoint::Alloc, 1));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("ChasingScreamer", this, &CChasingScreamer::Alloc, 1));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("InitialScreamerPoint", this, &CInitialScreamerPoint::Alloc, 1));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("HKC_Maze", this, &CHKC_Maze::Alloc, 1));
+    AddEntityScriptBinding(new CEntityScriptBinding<CQ_WizardBattleScript>("EndGameBarrier", this, &CEndGameBarrier::Alloc, 1));
+    PostAddScriptedEntities();
+    Game->PostAddScriptedEntities();
+    Game->CacheMusicSet((EMusicSetType)0x33);
+    Game->CacheMusicSet((EMusicSetType)0x34);
+    SpawnFunction(this, new CSpawnedFunc<CQ_WizardBattleScript>("WatchForTermination", 0, this, &NScript::CQ_WizardBattleScript::WatchForTermination));
+    SpawnFunction(this, new CSpawnedFunc<CQ_WizardBattleScript>("DoMission", 0, this, &NScript::CQ_WizardBattleScript::DoMission));
+}

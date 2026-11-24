@@ -2,7 +2,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-// Behaviour test: CPlayerGui::AddHitByMelee -- the def's smack effect is started (not auto-started) at the hit position,
+// Behaviour test: NPlayerGui::CDrawCombatMultiplier::AddHitByMelee (NF348: was spelled CPlayerGui::AddHitByMelee) -- the def's smack effect is started (not auto-started) at the hit position,
 // oriented up (0,0,1) / forward (0,1,0); attacker and victim are unused.
 class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 class CRightHandedSet { public:
@@ -30,7 +30,8 @@ static CParticleEmitterManager g_mgr;
 CParticleEmitterManager* CParticleEmitterManager::Get() { return &g_mgr; }
 }
 class CThing { int Unused; };
-class CPlayerGui {
+namespace NPlayerGui {
+class CDrawCombatMultiplier {
 public:
     void AddHitByMelee(CThing& attacker, CThing& victim, const C3DVector& pos)
     {
@@ -39,10 +40,11 @@ public:
             CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f)));
     }
 };
+}
 int main()
 {
     NParticleEngine::g_mgr.Created = 0; NParticleEngine::g_mgr.Start = true;
-    CPlayerGui gui; CThing a, v;
+    NPlayerGui::CDrawCombatMultiplier gui; CThing a, v;
     C3DVector pos(1.0f, 2.0f, 3.0f);
     gui.AddHitByMelee(a, v, pos);
     NParticleEngine::CParticleEmitterManager& m = NParticleEngine::g_mgr;

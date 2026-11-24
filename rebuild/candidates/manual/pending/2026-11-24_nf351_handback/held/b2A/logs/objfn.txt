@@ -1,0 +1,6 @@
+ONLY_HEAD strong 919 ?Main@CQ_WizardBattleScript@NScript@@QAEXXZ
+ONLY_NEW  strong 919 ?Main@CQ_WizardBattleScript@NScript@@UAEXXZ
+ONLY_NEW  static 38 ?SpawnFunction@@YAXPAVCScriptBase@@PAVCSpawnedFuncBase@@PBD@Z
+ONLY_HEAD pickany 45 ?SpawnFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@PBD@Z
+FNDIFF same=8 differ=0 only_head=2 only_new=2
+NONCODE_SECTIONS_DIFFER none

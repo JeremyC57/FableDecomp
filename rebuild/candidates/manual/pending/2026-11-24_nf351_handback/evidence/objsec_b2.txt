@@ -1,0 +1,1 @@
+ALL_EQ sections=22 DEF=21 UND=25 renames={'?Main@CQ_WizardBattleScript@NScript@@QAEXXZ': '?Main@CQ_WizardBattleScript@NScript@@UAEXXZ'}

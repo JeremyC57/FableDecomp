@@ -1,0 +1,13 @@
+## NF318 Q1 conditions, 0x00437990 (NF351)
+scope: a move of the row onto its class's shared header (engine/CPlayerGui.h) under an existing class-model switch FABLE_RETAIL_CPLAYERGUI_MEMBERS (NF318 Q1 widened the libcp exception to every such move)
+NF318 Q2 (switch defined by a landed row): defined by 24 landed rows: 004375e0 00437640 00437650 004376b0 00437870 004378c0 004378f0 00437900 00437980 004379d0 004379e0 00437cd0 00439070 00439bb0 0043a570 0043b570 00644263 00645099 0064619f 00646580 00651b04 00652fa4 006ddd30 006dfa50 (incl. the NF39 siblings 0x004378F0 / 0x00437980)
+cond 1 every other section ALL_EQ: .text bytes + relocations equal under the renames (objsec.txt: the only NOT_EQ item is '.drectve data/flags'); section count 2 v 2; objfn: FNDIFF same=0 differ=0 only_head=1 only_new=1 = the self rename only; no COMDAT added or dropped
+cond 2 .drectve tokens = HEAD's + libcp:
+H_00437990.obj ['/DEFAULTLIB:"LIBC"', '/DEFAULTLIB:"OLDNAMES"']
+00437990.obj ['/DEFAULTLIB:"libcp"', '/DEFAULTLIB:"LIBC"', '/DEFAULTLIB:"OLDNAMES"']
+cond 3 UND sets equal: HEAD UND {?Run_00643d8c@Sub@@QAEXXZ}, new UND {?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z}: equal UNDER THE UNIT'S CALLEE RENAME only (the brief orders that respell). Callee second source (NF318 Q4): Ego_r.pdb + FableWin.pdb both name ?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z; Ego_r CPlayerGui::AddHitByMelee jumps to it; the owner 0x00643D8C is respelled in the same unit
+cond 4 grade: vland --recheck-landed RELOCATION_MATCH PASS (HEAD and new; vland_head.log / vland_new.log)
+libcp origin: the shared CPlayerGui.h MEMBERS branch includes stlport/fable_containers.h (the header the shared-header rule requires); HEAD's stand-in included nothing
+accessor COMDAT (NF348 D1): new object defines NO ??C?$CCountedPointer@... (syms below); the body reads PDrawCombatMultiplier.Data
+DEF ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+UND ?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z

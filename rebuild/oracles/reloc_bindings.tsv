@@ -39119,3 +39119,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?hit_pos@?A0x09bbfb3c@@3VCEnginePrimitiveHandle@@A	013baf44	00839940
 ?SetCameraYZInverted@CUserProfileManager@@QAEX_N0@Z	0040b050	0041e6d3
 ?RemoveMap@CEngineManager@@QAEXJ@Z	006403d0	004ff8b0
+?AddHitByMelee@CDrawCombatMultiplier@NPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z	00643d8c	00437990

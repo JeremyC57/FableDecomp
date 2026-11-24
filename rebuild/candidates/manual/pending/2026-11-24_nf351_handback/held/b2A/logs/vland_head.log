@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00e1a990   WARN SHARED_HEADER_AVAILABLE CEntityScriptBinding (engine/CEntityScriptBinding.h)
+00e1a990   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00e1a990   WARN SHARED_HEADER_AVAILABLE CQ_WizardBattleScript (engine/CQ_WizardBattleScript.h)
+  WARN leaf '?Main@CQ_WizardBattleScript@NScript@@UAEXXZ' matches no symbol in 00e1a990.obj; graded the largest function
+  WARN leaf '?Main@CQ_WizardBattleScript@NScript@@UAEXXZ' matches no symbol in 00e1a990.obj; graded the largest function
+00e1a990   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e1a990 RELOCATION_MATCH NScript::CQ_WizardBattleScript::?Main@CQ_WizardBattleScript@NScript@@UAEXXZ

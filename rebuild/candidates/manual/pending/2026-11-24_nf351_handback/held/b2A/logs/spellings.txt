@@ -1,0 +1,5 @@
+## spellings measured on the shared-header route (named leaf ?Main@CQ_WizardBattleScript@NScript@@UAEXXZ)
+v1 AddSpawnedFunction(new CSpawnedFunc<...>(...), "")                         -> DIFFER 927 v 919 (VC7.1 builds the "" CCharString before the new-expression; dis diff in work)
+v2 default argument on CScriptBase::AddSpawnedFunction (experimental header line, not handed back) -> DIFFER 927 v 919 (same order)
+v3 file-static FABLE_FORCEINLINE SpawnFunction(CScriptBase*, CSpawnedFuncBase*, const char* = "") -> RELOCATION_MATCH (handed back); emits an unreferenced static section ?SpawnFunction@@YAX... (38 bytes)
+v4 file-static inline helper, no default argument -> RELOCATION_MATCH; also emits the static section (42 bytes): VC7.1 emits any referenced inline/static helper even when every call is expanded (as it emitted HEAD's pick-any member helper)

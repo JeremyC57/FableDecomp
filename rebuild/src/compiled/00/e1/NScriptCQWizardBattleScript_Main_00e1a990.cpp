@@ -15,6 +15,10 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
+// NF351 (2026-11-24, T3 nf348 self port, in place): Main is the PDB's public virtual override ?Main@CQ_WizardBattleScript@NScript@@UAEXXZ
+//   (Ego_r.pdb + FableWin.pdb; retail vtable 0x012E0F54 slot 2 = 0x00E1A990). The local CScriptBase model declares the five PDB
+//   virtuals in retail slot order (declarations only; the pad shrinks by the vptr, Game stays at +0x40), so `void Main();` below
+//   overrides slot 2 (NF299 Q3 / NF303 Q1). The TU emits no CScriptBase / CQ_WizardBattleScript vftable or RTTI; same bytes.
 #include "fable_compiler.h"
 class CCharString { public:
     void* PStringData;
@@ -57,8 +61,18 @@ class CGameScriptInterface;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+class CPersistContext;
 class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
+    // NF351 option B (in place, NF299 Q3 / NF303 Q1): the PDB virtuals in retail slot order (vtable 0x012C1648), declarations only,
+    //   so the override below is the PDB's public virtual Main (UAE); the pad shrinks by the vptr, every offset is kept.
+    virtual ~CScriptBase();                                                           // slot 0
+protected:
+    virtual void RegisterMain();                                                      // slot 1
+    virtual void Main();                                                              // slot 2
+    virtual void Init();                                                              // slot 3
+public:
+    virtual void OnPersist(CPersistContext&);                                         // slot 4
+    unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
     void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230

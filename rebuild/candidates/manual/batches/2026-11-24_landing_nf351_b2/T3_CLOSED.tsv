@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf348	0x00E1A990	self port	landed Main defines ?Main@CQ_WizardBattleScript@NScript@@QAEXXZ (QAE) while its Leaf and both PDBs say UAE (virtual); the grader falls back to the largest function, so its grade is not on its named leaf
