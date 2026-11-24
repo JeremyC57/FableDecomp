@@ -1,0 +1,6 @@
+## HEAD set: H_00e2a320.obj OWNER_00cd3d2e.obj
+duplicates 0
+UNRESOLVED 1 ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+## new set: N_00e2a320.obj OWNER_00cd3d2e.obj
+duplicates 0
+LK_DONE

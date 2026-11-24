@@ -1,0 +1,12 @@
+## HEAD set: H_00e2a900.obj OWNER_00cd3d2e.obj
+duplicates 0
+UNRESOLVED 1 ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+UNRESOLVED 1 ?RunScriptedCutscene@@YI_NABVCCharString@@AAUCCutsceneCastMap@@PAXAAUCCutsceneArgMap@@2_N@Z
+UNRESOLVED 1 ?clear@CCutsceneArgMap@@QAEXXZ
+UNRESOLVED 1 ?clear@CCutsceneCastMap@@QAEXXZ
+## new set: N_00e2a900.obj OWNER_00cd3d2e.obj
+duplicates 0
+UNRESOLVED 1 ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z
+UNRESOLVED 1 ?clear@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEXXZ
+UNRESOLVED 1 ?clear@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEXXZ
+LK_DONE

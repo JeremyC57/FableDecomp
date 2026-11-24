@@ -1,0 +1,29 @@
+# H 00f01480 src=/home/user/FableDecomp/rebuild/src/compiled/00/f0/NScriptCCSPlayCutsceneScript_Main_00f01480.cpp grade=RELOCATION_MATCH leaf=Main flags= overlay=-
+# pk_all leaf ?Main@CCS_PlayCutsceneScript@NScript@@UAEXXZ source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??1CScriptGameResourceObjectBase@@UAE@XZ
+PK  EQ  EQ  006e70a0  c  pickany  36  leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0CMovieImpPointer@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  54  leaf=n reach=n ??0CCutsceneCastMap@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  66  leaf=n reach=n ??1CCutsceneCastMap@@QAE@XZ
+PK  NEQ  NEQ  006e7b80  b  pickany  25  leaf=n reach=n ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+PK  EQ  EQ  006e7a60  b  pickany  18  leaf=n reach=n ??0CScriptGameResourceObjectBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  19  leaf=n reach=n ??4CScriptGameResourceObjectBase@@QAEAAV0@ABV0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0?$CCountedPointer@UCScriptThingImp@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ??1?$CCountedPointer@UCScriptThingImp@@@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ?ReleaseData@?$CCountedPointer@UCScriptThingImp@@@@QAEXXZ
+PK  EQ  EQ  007e72a0  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+PK  EQ  EQ  007e74d0  b  pickany  66  leaf=n reach=n ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+PK  EQ  EQ  006e7b60  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  46  leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  87  leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  67  leaf=n reach=n ?ShareData@?$CCountedPointer@UCScriptThingImp@@@@QAEXPAUCScriptThingImp@@PAVCCPPointerInfo@@@Z
+PK  EQ  EQ  00704580  b  pickany  72  leaf=n reach=n ??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z
+PK  EQ  EQ  008abd10  b  pickany  80  leaf=n reach=n ??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z
+# old checker (pickany_vs_retail.py)
+OLD NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ not referenced by the leaf
+OLD EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+OLD EQ  007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ 
+OLD EQ  007e74d0 66 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ 
+OLD EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 
+OLD EQ  00704580 72 ??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z 
+OLD EQ  008abd10 80 ??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z 

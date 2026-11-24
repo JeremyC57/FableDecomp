@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+rewitness	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	00cd3d2e	00d246c0	NF354: 0x00E2A900 / 0x00E2A320 now bind the 4-argument STLport ??A (line 17904); 0x00D246C0 still binds this stand-in (its HEAD object UND; skipped)
+delete	?RunScriptedCutscene@@YI_NABVCCharString@@AAUCCutsceneCastMap@@PAXAAUCCutsceneArgMap@@2_N@Z	00cbfb7d	00e2a900	NF354: the descriptive RunScriptedCutscene; 0x00E2A900 was its only binder (source grep + HEAD object census) and now binds the PDB RunCutsceneMacro (line 17905)
+delete	?clear@CCutsceneCastMap@@QAEXXZ	00cd3699	00e2a900	NF354: 0x00E2A900 was its only binder (HEAD object census of the 15 CCutsceneCastMap rows; no other landed source names the struct) and now binds the STLport map clear (line already witnessed by 0x00CFF9A0)
+rewitness	?clear@CCutsceneArgMap@@QAEXXZ	009aace0	00d823a0	NF354: 0x00E2A900 now binds the STLport map<CCharString,CCharString>::clear (line witnessed by 0x00D7C470); 0x00D823A0 still binds this stand-in (HEAD object UND; also 0x00E3E720 / 0x00EE2DB0)

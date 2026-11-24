@@ -1,0 +1,141 @@
+address	retail_calls	model	binds	evidence	source
+00cbfb7d	32	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4 DEF:??A?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@I@Z	NF350 HEAD object (work/hobj, idxscan.py)	00/cb/global_RunCutsceneMacro_00cbfb7d.cpp
+00ce15e0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/ce/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_Main_00ce15e0.cpp
+00ce7670	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ce/NScriptCGameflowScript_Main_00ce7670.cpp
+00cff9a0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/cf/NScriptCQAwakeningTheOracleScript_PlayCutscene_00cff9a0.cpp
+00d13580	7	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d1/NScriptCQBountyHuntScript_Main_00d13580.cpp
+00d19bd0	5	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp
+00d1a740	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; Account B claim (not compiled)	00/d1/NScriptCQBountyHuntScriptCBHHostage2_Main_00d1a740.cpp
+00d1b200	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Main_00d1b200.cpp
+00d22880	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d2/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_Main_00d22880.cpp
+00d22f30	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d2/NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30.cpp
+00d246c0	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Main_00d246c0.cpp
+00d27050	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d2/NScriptCQDragonBossFightScript_PlayCutscene_00d27050.cpp
+00d29880	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Main_00d29880.cpp
+00d29db0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d2/NScriptCQEndGameScriptCMKGHCHERO3_Main_00d29db0.cpp
+00d2a180	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d2/NScriptCQEndGameScriptCMazeJournal_Main_00d2a180.cpp
+00d2d930	11	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Main_00d2d930.cpp
+00d2ed20	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Main_00d2ed20.cpp
+00d321c0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d3/NScriptCQEndGameBossBattleScript_JackOfBladesBossFightCutscene_00d321c0.cpp
+00d328c0	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d3/NScriptCQEndGameBossBattleScriptCEndGameSister_Main_00d328c0.cpp
+00d33280	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d3/NScriptCQEndGameBossBattleScriptCSwordVoid_Main_00d33280.cpp
+00d33730	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d3/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Main_00d33730.cpp
+00d39330	10	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4 DEF:??A?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@I@Z	NF350 HEAD object (work/hobj, idxscan.py)	00/d3/NScriptCQFireHeartScript_PlayCutscene_00d39330.cpp
+00d44cb0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d4/NScriptCQGuildTrainingScript_RunArrivalCutscene_00d44cb0.cpp
+00d45060	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d4/NScriptCQGuildTrainingScript_CheckFriendlyAttacks_00d45060.cpp
+00d496f0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d4/NScriptCQGuildTrainingScript_RunSaveXPCutscene_00d496f0.cpp
+00d49a20	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d4/CQGuildTrainingScript_RunSaveXPCutscene2_00d49a20.cpp
+00d49d50	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d4/CQGuildTrainingScript_RunCeremonyCutscene_00d49d50.cpp
+00d4a270	7	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_Main_00d4a270.cpp
+00d50c60	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp
+00d51520	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d5/NScriptCQGuildTrainingPreMeleeScript_Main_00d51520.cpp
+00d52e90	10	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Main_00d52e90.cpp
+00d55e90	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp
+00d58490	14	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_Main_00d58490.cpp
+00d5ae70	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Main_00d5ae70.cpp
+00d5e0c0	16	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Main_00d5e0c0.cpp
+00d647f0	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Main_00d647f0.cpp
+00d6d670	10	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d6/NScriptCQHangingTreeEvilScript_Conclusion_00d6d670.cpp
+00d77690	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d7/NScriptCQHangingTreeGoodScript_DoCutscene_00d77690.cpp
+00d7aa30	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d7/NScriptCQHeroSoulsScript_PlayCutscene_00d7aa30.cpp
+00d7c470	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d7/NScriptCQHeroSoulsThunderScript_PlayCutscene_00d7c470.cpp
+00d7fc70	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d7/NScriptCQHeroSoulsArenaScript_PlayCutscene_00d7fc70.cpp
+00d823a0	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/d8/NScriptCQHeroSoulsBriarScript_PlayCutscene_00d823a0.cpp
+00d848d0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d8/NScriptCQHeroSoulsMotherScript_PlayCutscene_00d848d0.cpp
+00d872d0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d8/NScriptCQHeroSoulsGuildmasterScript_PlayCutscene_00d872d0.cpp
+00d89ad0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d8/NScriptCQHeroSoulsNostroScript_PlayCutscene_00d89ad0.cpp
+00d8abf0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Main_00d8abf0.cpp
+00d8bcd0	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Main_00d8bcd0.cpp
+00d973d0	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Main_00d973d0.cpp
+00d9a190	12	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/d9/NScriptCQHobbeToothContestScript_Main_00d9a190.cpp
+00da0230	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/da/NScriptCQMinionCampScript_DoMission_00da0230.cpp
+00da2ca0	2	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/da/NScriptCQMinionCampScriptCBriarRose_PlayCutscene_00da2ca0.cpp
+00da91a0	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Main_00da91a0.cpp
+00da9c70	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Main_00da9c70.cpp
+00daa260	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Main_00daa260.cpp
+00daa700	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_Main_00daa700.cpp
+00db86b0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/db/NScriptCQNewOakValeIntroScriptCNOVILiveFather_Main_00db86b0.cpp
+00db97a0	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/db/NScriptCQNewOakValeIntroScriptCNOVITheresa_Main_00db97a0.cpp
+00dbb310	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/db/NScriptCQNewOakValeIntroScriptCNOVIBully_Main_00dbb310.cpp
+00dbcd60	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/db/NScriptCQNewOakValeIntroScriptCNOVIVictim_Main_00dbcd60.cpp
+00dbeb20	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/db/NScriptCQNewOakValeIntroScript_PostAttackStuff_00dbeb20.cpp
+00dbf2d0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/db/NScriptCQOakValeBanditRaidScript_Main_00dbf2d0.cpp
+00dc1770	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dc/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Main_00dc1770.cpp
+00dc21f0	1	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/dc/NScriptCQOakValeBanditRaidScriptCMRestartMarker_Main_00dc21f0.cpp
+00dc27c0	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dc/NScriptCQOpeningGraveyardSecretPassageScript_Main_00dc27c0.cpp
+00dc8c80	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CheckDoor_00dc8c80.cpp
+00dca6d0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Main_00dca6d0.cpp
+00dcfa60	5	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dc/NScriptCQOrchardFarmRaidScript_DoCutsceneIfRequired_00dcfa60.cpp
+00dd1af0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/dd/NScriptCQOrchardFarmRaidScript_DoMultiplierCutscene_00dd1af0.cpp
+00dd9520	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dd/NScriptCQPrisonEscapeRescueMotherScript_SplittingUpCutscene_00dd9520.cpp
+00dd9a50	5	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dd/NScriptCQPrisonEscapeRescueMotherScript_ResetCells_00dd9a50.cpp
+00ddd030	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_Main_00ddd030.cpp
+00ddf090	8	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Main_00ddf090.cpp
+00de6730	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/de/NScriptCQRansomVictimScript_PlayCutscene_00de6730.cpp
+00df0750	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/df/NScriptCQSecretPassageScript_MotherTortureThread_00df0750.cpp
+00df0b70	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/df/CQSecretPassageScript_PrisonEscape_00df0b70.cpp
+00df3e50	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/df/NScriptCQSummoningTheShipScript_PlayCutscene_00df3e50.cpp
+00df4be0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_Main_00df4be0.cpp
+00df9e00	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/df/NScriptCQTraderConflictEvilScript_PlayCutscene_00df9e00.cpp
+00dfded0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/df/NScriptCQTraderConflictGoodScript_PlayCutscene_00dfded0.cpp
+00e07640	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Main_00e07640.cpp
+00e0a820	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e0/NScriptCQTraderEscortScript_TurnToBalv_00e0a820.cpp
+00e0ad40	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/e0/NScriptCQTraderEscortScriptCRockTrollTrigger_Main_00e0ad40.cpp
+00e0b160	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e0/NScriptCQUndeadRisingScript_Main_00e0b160.cpp
+00e12330	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330.cpp
+00e12f20	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e1/NScriptCQWaspBossScript_WaspIntro_00e12f20.cpp
+00e137b0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e1/NScriptCQWaspBossScript_Outro_00e137b0.cpp
+00e13f10	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10.cpp
+00e18630	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e1/NScriptCQWhiteBalverineWWScript_Main_00e18630.cpp
+00e19d80	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Main_00e19d80.cpp
+00e1cd40	1	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e1/NScriptCQWizardBattleScript_CutsceneScreamers_00e1cd40.cpp
+00e1cfd0	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/e1/NScriptCQWizardBattleScript_PhaseOne_00e1cfd0.cpp
+00e1d7b0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e1/NScriptCQWizardBattleScript_CutsceneMazeDeath_00e1d7b0.cpp
+00e25f70	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; Account B claim (not compiled)	00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Main_00e25f70.cpp
+00e26e30	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Main_00e26e30.cpp
+00e27e90	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_Main_00e27e90.cpp
+00e292c0	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_Main_00e292c0.cpp
+00e295e0	2	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0.cpp
+00e2a320	1	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e2/NScriptCQSScytheInfoScriptCScytheNearOracle_Main_00e2a320.cpp
+00e2a900	1	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e2/CQSScytheInfoScript_PlayCutscene_00e2a900.cpp
+00e3e720	5	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e3/NScriptCVBordelloScript_PlayCutscene_00e3e720.cpp
+00e46d30	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e4/NScriptCVBanditCampPathScript_Main_00e46d30.cpp
+00e55ce0	8	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e5/NScriptCVBookCollectingScriptCBSTeacher_AskForBook_00e55ce0.cpp
+00e57e60	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e5/NScriptCVBeggarAndChildScript_Main_00e57e60.cpp
+00e68b20	3	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e6/NScriptCVChickenKickingScript_PlayCutscene_00e68b20.cpp
+00e6bc50	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Main_00e6bc50.cpp
+00e6da80	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e6/NScriptCVChapelOfEvilScript_TortureVictim_00e6da80.cpp
+00e78100	5	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e7/NScriptCVExposeMayorScript_PlayCutscene_00e78100.cpp
+00e7c8e0	9	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e7/NScriptCVFishermanScriptCFisherman_Main_00e7c8e0.cpp
+00e80d60	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/e8/global_CTCCarryableInitialize_00e80d60.cpp
+00e87030	11	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e8/NScriptCVFisticuffsClubScriptCTyler_Main_00e87030.cpp
+00e8a2b0	1	stlport/fable_map.h (no FABLE_RETAIL_STLP_MAP: declaration-only operator[])	REAL4 by text (shared-header std::map, four template parameters)	text only; 0x00E8A2B0 locked by NF353 (not compiled)	00/e8/NScriptCVFisticuffsClubScriptCTyler_FightWarmupRounds_00e8a2b0.cpp
+00e8b020	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020.cpp
+00e8dfa0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Main_00e8dfa0.cpp
+00e8ef80	6	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp
+00e90be0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Main_00e90be0.cpp
+00e96660	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/e9/CMHeroInsideHouse_Main_00e96660.cpp
+00e9a270	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/e9/CVHeroDuelScript_WatchForHeroEnteringCave_00e9a270.cpp
+00e9a970	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e9/NScriptCVHeroDuelScript_FirstFleeCutscene_00e9a970.cpp
+00e9aeb0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/e9/NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp
+00e9b240	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e9/NScriptCVHeroDuelScript_DuelLost_00e9b240.cpp
+00e9bbc0	1	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e9/NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0.cpp
+00e9be60	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/e9/NScriptCVHeroDuelScript_Duel_00e9be60.cpp
+00e9e420	4	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; Account B claim (not compiled)	00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Main_00e9e420.cpp
+00ea2720	3	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ea/NScriptCVKnotholeGladeGatesScript_WatchForCutscene1_00ea2720.cpp
+00ea59e0	5	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ea/NScriptCVLostTraderScriptCLostTraderBrother_Main_00ea59e0.cpp
+00ea8130	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Main_00ea8130.cpp
+00eb9980	16	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Main_00eb9980.cpp
+00ec4a00	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; Account B claim (not compiled)	00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Main_00ec4a00.cpp
+00ece460	3	local std::map model	UND:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ec/NScriptCVSickChildScript_PlayCutscene_00ece460.cpp
+00ed0b10	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ed/NScriptCVSickChildScriptCWomanToAttract_DoLeavingCutscene_00ed0b10.cpp
+00ed5830	1	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ed/NScriptCVSwordInTheStoneScript_SwordPullCutscene_00ed5830.cpp
+00ed5f50	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Main_00ed5f50.cpp
+00ee2db0	4	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/ee/NScriptCVTravellingHeroesScript_PlayCutscene_00ee2db0.cpp
+00ee76f0	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Main_00ee76f0.cpp
+00ee7a20	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	REAL4 by text (shared-header std::map, four template parameters)	text only; covered by the header text closure	00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Main_00ee7a20.cpp
+00f01480	2	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/f0/NScriptCCSPlayCutsceneScript_Main_00f01480.cpp
+00f02210	1	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/f0/NScriptCQCinemaTestScript_ArenaIntroduction_00f02210.cpp
+00f0bb10	5	row-local stand-in struct CCutsceneCastMap	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	HEAD object compiled by NF354 (nf.py xr: leaf relocation -> 0x00CD3D2E)	00/f0/NScriptCQAmbushTradersScript_Intro_00f0bb10.cpp
+00f0d630	2	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630.cpp
+00f0fb70	15	stlport/fable_map.h (FABLE_RETAIL_STLP_MAP)	DEF:REAL4	NF350 HEAD object (work/hobj, idxscan.py)	00/f0/NScriptCQArenaScript_Main_00f0fb70.cpp

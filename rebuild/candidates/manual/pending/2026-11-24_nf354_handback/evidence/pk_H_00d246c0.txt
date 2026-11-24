@@ -1,0 +1,20 @@
+# H 00d246c0 src=/home/user/FableDecomp/rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Main_00d246c0.cpp grade=RELOCATION_MATCH leaf=?Main@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ flags= overlay=-
+# pk_all leaf ?Main@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ?ReleaseInline@CCountedPointerWords@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??1CScriptGameResourceObjectBaseDtor@@UAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  36  leaf=n reach=n ??_GCScriptGameResourceObjectBaseDtor@@UAEPAXI@Z
+PK  NEQ  NEQ  007e72a0  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+PK  NEQ  NEQ  008abd10  b  pickany  33  leaf=n reach=n ??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z
+PK  NOADDR  NOADDR  -  -  pickany  66  leaf=n reach=n ?DestroyInline@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+PK  NEQ  NEQ  006e7b60  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??_GCMovieImpPointer@@QAEPAXI@Z
+PK  NEQ  NEQ  00e241b0  b  pickany  14  leaf=n reach=n ??1CIsThingAlive@NScript@@UAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  39  leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ??0CPredicateBase@NScript@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ?DestroyInline@CScriptGameResourceObjectMovieBase@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z
+# old checker (pickany_vs_retail.py)
+OLD NEQ 007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ not referenced by the leaf
+OLD NEQ 008abd10 33 ??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z not referenced by the leaf
+OLD NEQ 006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ not referenced by the leaf
+OLD NEQ 00e241b0 14 ??1CIsThingAlive@NScript@@UAE@XZ not referenced by the leaf

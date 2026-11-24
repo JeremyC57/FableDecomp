@@ -1,0 +1,14 @@
+# H 00e292c0 src=/home/user/FableDecomp/rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_Main_00e292c0.cpp grade=RELOCATION_MATCH leaf=?Main@CMeetSisterMessenger@CQS_MeetSisterScript@NScript@@EAEXXZ flags= overlay=-
+# pk_all leaf ?Main@CMeetSisterMessenger@CQS_MeetSisterScript@NScript@@EAEXXZ source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??1CScriptGameResourceObjectBaseDtor@@UAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  36  leaf=n reach=n ??_GCScriptGameResourceObjectBaseDtor@@UAEPAXI@Z
+PK  NEQ  NEQ  007e72a0  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+PK  NEQ  NEQ  006e7b60  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??_GCMovieImpPointer@@QAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  54  leaf=n reach=n ??0CCutsceneCastMap@@QAE@XZ
+PK  EQ  EQ  00cdbfb0  a  pickany  66  leaf=y reach=y ??1CCutsceneCastMap@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  25  leaf=n reach=n ?DestroyInline@CScriptGameResourceObjectMovieBase@@QAEXXZ
+# old checker (pickany_vs_retail.py)
+OLD NEQ 007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ not referenced by the leaf
+OLD NEQ 006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ not referenced by the leaf

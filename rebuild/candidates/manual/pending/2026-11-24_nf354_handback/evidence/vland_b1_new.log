@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00e2a320   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e2a320   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00e2a320   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00e2a320   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00e2a320   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e2a320   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e2a320   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e2a320   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e2a320   RELOCATION_MATCH PASS   Main
+00e2a900   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectBase (engine/CScriptGameResourceObjectBase.h)
+00e2a900   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e2a900   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e2a900   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e2a900   RELOCATION_MATCH PASS   PlayCutscene
+
+WINS: 2
+  00e2a320 RELOCATION_MATCH NScript::CQS_ScytheInfoScript::CScytheNearOracle::?Main@CScytheNearOracle@CQS_ScytheInfoScript@NScript@@EAEXXZ
+  00e2a900 RELOCATION_MATCH CQS_ScytheInfoScript::?PlayCutscene@CQS_ScytheInfoScript@

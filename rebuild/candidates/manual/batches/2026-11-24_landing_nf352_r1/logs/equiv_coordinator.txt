@@ -2,4 +2,4 @@
 rows checked 57154 -> differing lines in $S/eq352/new.tsv
 00626110	src	DIFF		rebuild/src/compiled/00/62/CTCQuickAccessMenu_ContructItemLists_00626110.cpp
 00605570	src	DIFF		rebuild/src/compiled/00/60/CTCInventoryMap_ConstructRegionDescription_00605570.cpp
-# both DIFF lines are the two NF352 rows, whose sources now define the opt-in macros (expected). Planted control: the agent's (evidence/hdr/equiv_plant*, 12,211 rows); the coordinator's planted run is pending and is recorded later.
+# both DIFF lines are the two NF352 rows, whose sources now define the opt-in macros (expected). Coordinator planted control (one typedef appended after the opt-in blocks): 12,536 differing lines in 12,212 rows (agent: 12,211 rows; the catalog grew by one includer since), so the closure is seen.

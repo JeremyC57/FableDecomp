@@ -1,0 +1,86 @@
+00d246c0	XR	x2	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d246c0	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d246c0	UND	?Construct@CCutsceneCastMap@@QAEXXZ
+00d246c0	UND	?Destroy@CCutsceneCastMap@@QAEXXZ
+00d246c0	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00d823a0	XR	x2	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d823a0	DEF	??0CCutsceneCastMap@@QAE@XZ
+00d823a0	DEF	??1CCutsceneCastMap@@QAE@XZ
+00d823a0	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d823a0	UND	?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z
+00d823a0	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00d823a0	UND	?clear@CCutsceneArgMap@@QAEXXZ
+00dc21f0	XR	x1	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00dc21f0	UND	??0CCutsceneCastMap@@QAE@XZ
+00dc21f0	UND	??1CCutsceneCastMap@@QAE@XZ
+00dc21f0	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00dc21f0	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00ddd030	XR	x2	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00ddd030	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00ddd030	UND	?Construct@CCutsceneCastMap@@QAEXXZ
+00ddd030	UND	?Destroy@CCutsceneCastMap@@QAEXXZ
+00ddd030	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00e12f20	XR	x2	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e12f20	DEF	??0CCutsceneCastMap@@QAE@XZ
+00e12f20	DEF	??1CCutsceneCastMap@@QAE@XZ
+00e12f20	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e12f20	UND	?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z
+00e12f20	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00e1cd40	XR	x1	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e1cd40	DEF	??0CCutsceneCastMap@@QAE@XZ
+00e1cd40	DEF	??1CCutsceneCastMap@@QAE@XZ
+00e1cd40	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e1cd40	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00e1cd40	UND	?_M_erase@CCutsceneCastMap@@QAEXPAU_Rb_tree_node_base@@@Z
+00e292c0	XR	x2	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e292c0	DEF	??0CCutsceneCastMap@@QAE@XZ
+00e292c0	DEF	??1CCutsceneCastMap@@QAE@XZ
+00e292c0	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e292c0	UND	?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z
+00e292c0	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00e2a320	XR	x1	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e2a320	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e2a900	XR	x1	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e2a900	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e2a900	UND	?RunScriptedCutscene@@YI_NABVCCharString@@AAUCCutsceneCastMap@@PAXAAUCCutsceneArgMap@@2_N@Z
+00e2a900	UND	?clear@CCutsceneArgMap@@QAEXXZ
+00e2a900	UND	?clear@CCutsceneCastMap@@QAEXXZ
+00e3e720	XR	x5	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e3e720	DEF	??0CCutsceneCastMap@@QAE@XZ
+00e3e720	DEF	??1CCutsceneCastMap@@QAE@XZ
+00e3e720	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00e3e720	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00e3e720	UND	?_M_erase@CCutsceneCastMap@@QAEXPAU_Rb_tree_node_base@@@Z
+00e3e720	UND	?clear@CCutsceneArgMap@@QAEXXZ
+00e80d60	XR	x2	??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z
+00e80d60	DEF	??0CCutsceneCastMap@Row00e80d60@@QAE@XZ
+00e80d60	DEF	??1CCutsceneCastMap@Row00e80d60@@QAE@XZ
+00e80d60	UND	??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z
+00e80d60	UND	?RunCutsceneMacro@Row00e80d60@@YIXABVCCharString@@PAUCCutsceneCastMap@1@HPAUCCutsceneArgMap@1@HH@Z
+00e80d60	UND	?_M_erase@CCutsceneCastMap@Row00e80d60@@QAEXPAU_Rb_tree_node@2@@Z
+00e80d60	UND	?clear@CCutsceneArgMap@Row00e80d60@@QAEXXZ
+00ee2db0	XR	x4	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00ee2db0	DEF	??0CCutsceneCastMap@@QAE@XZ
+00ee2db0	DEF	??1CCutsceneCastMap@@QAE@XZ
+00ee2db0	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00ee2db0	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00ee2db0	UND	?_M_erase@CCutsceneCastMap@@QAEXPAU_Rb_tree_node_base@@@Z
+00ee2db0	UND	?clear@CCutsceneArgMap@@QAEXXZ
+00f01480	XR	x2	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00f01480	DEF	??0CCutsceneCastMap@@QAE@XZ
+00f01480	DEF	??1CCutsceneCastMap@@QAE@XZ
+00f01480	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00f01480	UND	?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z
+00f01480	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00f02210	XR	x1	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00f02210	DEF	??0CCutsceneCastMap@@QAE@XZ
+00f02210	DEF	??1CCutsceneCastMap@@QAE@XZ
+00f02210	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00f02210	UND	?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z
+00f02210	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00f0bb10	XR	x5	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00f0bb10	DEF	??0CCutsceneCastMap@@QAE@XZ
+00f0bb10	DEF	??1CCutsceneCastMap@@QAE@XZ
+00f0bb10	UND	??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00f0bb10	UND	?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z
+00f0bb10	UND	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z

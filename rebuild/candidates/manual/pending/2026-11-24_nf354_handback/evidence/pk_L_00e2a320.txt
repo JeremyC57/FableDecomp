@@ -1,0 +1,25 @@
+# L 00e2a320 src=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF354/alt/rows/00e2a320.cpp grade=RELOCATION_MATCH leaf=?Main@CScytheNearOracle@CQS_ScytheInfoScript@NScript@@EAEXXZ flags= overlay=-
+# pk_all leaf ?Main@CScytheNearOracle@CQS_ScytheInfoScript@NScript@@EAEXXZ source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  9  leaf=n reach=n ??0CPredicateBase@NScript@@QAE@XZ
+PK  EQ  EQ  006e7a60  b  pickany  18  leaf=n reach=n ??0CScriptGameResourceObjectBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??1CScriptGameResourceObjectBase@@UAE@XZ
+PK  EQ  EQ  006e70a0  c  pickany  36  leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  16  leaf=n reach=n ??0CResourcePImp@@QAE@XZ
+PK  NEQ  NEQ  007e72a0  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+PK  EQ  EQ  006e7b60  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+PK  NEQ  NEQ  006e7b80  a,b  pickany  25  leaf=y reach=y ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+PK  EQ  EQ  00cd4450  b,c  pickany  23  leaf=n reach=n ??0CTimer@@QAE@XZ
+PK  EQ  EQ  00cd4470  a,b  pickany  20  leaf=y reach=y ??1CTimer@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  31  leaf=n reach=n ??4CTimer@@QAEAAV0@J@Z
+PK  NOADDR  NOADDR  -  -  pickany  20  leaf=n reach=n ?GetTime@CTimer@@QBEJXZ
+PK  NOADDR  NOADDR  -  -  pickany  28  leaf=n reach=n ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z
+PK  NOADDR  NOADDR  -  -  pickany  30  leaf=n reach=n ??_GCIsThingAlive@NScript@@UAEPAXI@Z
+PK  NOADDR  NOADDR  -  -  pickany  46  leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+# old checker (pickany_vs_retail.py)
+OLD EQ  006e7a60 18 ??0CScriptGameResourceObjectBase@@QAE@XZ 
+OLD NEQ 007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ not referenced by the leaf
+OLD EQ  006e7b60 26 ??0CScriptGameResourceObjectMovieBase@@QAE@XZ 
+OLD NEQ 006e7b80 25 ??1CScriptGameResourceObjectMovieBase@@UAE@XZ LEAF-REFERENCED
+OLD EQ  00cd4450 23 ??0CTimer@@QAE@XZ 
+OLD EQ  00cd4470 20 ??1CTimer@@QAE@XZ 

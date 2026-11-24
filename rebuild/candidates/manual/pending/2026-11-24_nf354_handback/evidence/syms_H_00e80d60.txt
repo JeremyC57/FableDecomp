@@ -1,0 +1,16 @@
+DEF ??0CCutsceneCastMap@Row00e80d60@@QAE@XZ
+DEF ??1CCutsceneCastMap@Row00e80d60@@QAE@XZ
+DEF ??_C@_04FOCIOHFI@FISH?$AA@
+DEF ??_C@_04OFENBKHB@HERO?$AA@
+DEF ?Assign@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+DEF ?Run@Script@Row00e80d60@@QAEXVCCharString@@@Z
+UND ??0CCharString@@QAE@PBDH@Z
+UND ??1CCharString@@QAE@XZ
+UND ??3@YAXPAX@Z
+UND ??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z
+UND ?CopyBase@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+UND ?RunCutsceneMacro@Row00e80d60@@YIXABVCCharString@@PAUCCutsceneCastMap@1@HPAUCCutsceneArgMap@1@HH@Z
+UND ?_M_erase@CCutsceneCastMap@Row00e80d60@@QAEXPAU_Rb_tree_node@2@@Z
+UND ?clear@CCutsceneArgMap@Row00e80d60@@QAEXXZ
+UND _free
+UND _malloc

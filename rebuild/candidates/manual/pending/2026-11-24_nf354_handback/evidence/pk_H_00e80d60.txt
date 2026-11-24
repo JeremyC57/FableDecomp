@@ -1,0 +1,6 @@
+# H 00e80d60 src=/home/user/FableDecomp/rebuild/src/compiled/00/e8/global_CTCCarryableInitialize_00e80d60.cpp grade=RELOCATION_MATCH leaf=Run flags=/O2 /Oy /W3 overlay=-
+# pk_all leaf ?Run@Script@Row00e80d60@@QAEXVCCharString@@@Z source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  78  leaf=n reach=n ?Assign@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+PK  NOADDR  NOADDR  -  -  pickany  54  leaf=n reach=n ??0CCutsceneCastMap@Row00e80d60@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  66  leaf=n reach=n ??1CCutsceneCastMap@Row00e80d60@@QAE@XZ
+# old checker (pickany_vs_retail.py)

@@ -106,17 +106,21 @@ FABLE_FORCEINLINE CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 FABLE_FORCEINLINE CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 FABLE_FORCEINLINE long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CCutsceneCastMap {
-    unsigned char _rep[12];
-    CScriptGameResourceObjectScriptedThingBase& operator[](const CCharString& key);   // 0x00CD3D2E
-};
+// The cast map is the retail STLport 4.6 map<CCharString, CScriptGameResourceObjectScriptedThingBase> (Ego_r.pdb cs_chars; 12 bytes)
+//   from the shared header; its operator[] is the out-of-line COMDAT 0x00CD3D2E, declared only here (NF354: was the stand-in
+//   struct CCutsceneCastMap, same bytes).
+// Fidelity: scaffolding, not retail: FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY declares operator[] without its body so the TU emits no
+//   copy of it; the reference resolves to the landed owner 0x00CD3D2E (NF354; brief NF352 coordinator ruling: every MAP_INDEX_DECL_ONLY use is marked).
+#define FABLE_RETAIL_STLP_MAP
+#define FABLE_RETAIL_STLP_MAP_INDEX_DECL_ONLY
+#include "stlport/fable_map.h"
 namespace NScript {
 class CQS_ScytheInfoScript {
 public:
     unsigned char _pad00[0x48];
     bool OracleAwakened;                                // +0x48
     unsigned char _pad49[0x58 - 0x49];
-    CCutsceneCastMap Cast;                              // +0x58
+    std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> Cast;   // +0x58
     void PlayCutscene(CCharString name, bool a);        // 0x00E2A900
 public:
     class CScytheNearOracle;         // the entity class below (naming wave 35)

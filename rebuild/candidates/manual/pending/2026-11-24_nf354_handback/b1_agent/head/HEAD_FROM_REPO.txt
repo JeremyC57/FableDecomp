@@ -1,0 +1,4 @@
+head/payload.json was built by tools/decomp_pipeline/linux_lane/lane_tools/recheck.py from the repo tree (rebuild/src/compiled + the
+catalog CompilerFlags) on 2026-11-24 by agent NF354, unchanged (D-f): neither row carries a retail byte-dump comment. Its source_cpp /
+test_cpp equal orig/rows/<addr>.cpp and orig/tests/<addr>_test.cpp (checked). The new and alt payloads are this file with source_cpp
+replaced by rows/<addr>.cpp / alt/rows/<addr>.cpp. The oracle file recheck.py wrote stays in work/ (retail bytes).

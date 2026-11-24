@@ -1,0 +1,18 @@
+# leaf ?PlayCutscene@CQS_ScytheInfoScript@@QAEXVCCharString@@_N@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany     11 leaf=n reach=n ??1CScriptGameResourceObjectBase@@UAE@XZ
+EQ        EQ                 006e70a0 c        pickany     36 leaf=n reach=n ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0CMovieImpPointer@@QAE@XZ
+NEQ       NEQ                006e7b80 b        pickany     25 leaf=n reach=n ??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+EQ        EQ                 006e7a60 b        pickany     18 leaf=n reach=n ??0CScriptGameResourceObjectBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     19 leaf=n reach=n ??4CScriptGameResourceObjectBase@@QAEAAV0@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany     16 leaf=n reach=n ??0?$CCountedPointer@UCScriptThingImp@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ??1?$CCountedPointer@UCScriptThingImp@@@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     53 leaf=n reach=n ?ReleaseData@?$CCountedPointer@UCScriptThingImp@@@@QAEXXZ
+EQ        EQ                 007e72a0 b        pickany     26 leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+EQ        EQ                 007e74d0 b        pickany     66 leaf=n reach=n ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+EQ        EQ                 006e7b60 b        pickany     26 leaf=n reach=n ??0CScriptGameResourceObjectMovieBase@@QAE@XZ
+NOADDR    NOADDR                    - -        pickany     46 leaf=n reach=n ??_GCScriptGameResourceObjectMovieBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     87 leaf=n reach=n ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z
+NOADDR    NOADDR                    - -        pickany     67 leaf=n reach=n ?ShareData@?$CCountedPointer@UCScriptThingImp@@@@QAEXPAUCScriptThingImp@@PAVCCPPointerInfo@@@Z
+EQ        EQ                 00704580 b        pickany     72 leaf=n reach=n ??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z
+EQ        EQ                 008abd10 b        pickany     80 leaf=n reach=n ??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z

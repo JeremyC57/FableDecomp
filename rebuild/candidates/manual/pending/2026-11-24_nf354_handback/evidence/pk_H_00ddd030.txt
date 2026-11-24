@@ -1,0 +1,10 @@
+# H 00ddd030 src=/home/user/FableDecomp/rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_Main_00ddd030.cpp grade=RELOCATION_MATCH leaf=?Main@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@EAEXXZ flags= overlay=-
+# pk_all leaf ?Main@CPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@EAEXXZ source_a=True 
+PK  NOADDR  NOADDR  -  -  pickany  53  leaf=n reach=n ?ReleaseInline@CCountedPointerWords@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  11  leaf=n reach=n ??1CScriptGameResourceObjectBaseDtor@@UAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  36  leaf=n reach=n ??_GCScriptGameResourceObjectBaseDtor@@UAEPAXI@Z
+PK  NEQ  NEQ  007e72a0  b  pickany  26  leaf=n reach=n ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+PK  NOADDR  NOADDR  -  -  pickany  66  leaf=n reach=n ?DestroyInline@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+PK  NOADDR  NOADDR  -  -  pickany  3  leaf=n reach=n ?Object@CScriptedThingStorage@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@XZ
+# old checker (pickany_vs_retail.py)
+OLD NEQ 007e72a0 26 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ not referenced by the leaf
