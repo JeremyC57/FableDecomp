@@ -80,6 +80,10 @@ public:
 // layout change. Needs an EScriptAIPriority declaration first (engine/CThingAICreature.h FABLE_RETAIL_CTHINGAICREATURE_SCRIPTPRIORITY).
     EScriptAIPriority GetCurrentStateGroupScriptPriority() const;        // 0x0088B760
 #endif
+#ifdef FABLE_RETAIL_CAIBRAIN_SETALLSTATEGROUPSENABLED
+    // NF378 add-only opt-in (row 0x0088B8C0): Ego_r.pdb / FableWin.pdb ?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z (public).
+    void SetAllStateGroupsEnabled(bool enabled);                         // 0x0088B8C0
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_CREATURE_REFERENCE
 private:
     // Both original PDBs: reference, private, +18; native 0090bbf7.

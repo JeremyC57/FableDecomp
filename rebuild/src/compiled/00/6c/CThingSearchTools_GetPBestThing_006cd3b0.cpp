@@ -1,5 +1,5 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >, TCompare = CThingCompare_Nearest, TThing = CThingGameObject] -- the nearest scan-visible game object (mask 7) for which the bound member is true and that is NOT in 2D range
-// Leaf: GetPBestThing
+// Leaf: ??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CD3B0, 147 bytes (`ret 0Ch`).
 // Callees: PeekAllThings 0x0049C770, the bound member through its pointer, CThingFilter_In2DRange 0x006A76B0 (negated), CThingCompare_Nearest::operator()<CThingGameObject> 0x006CCE00.
@@ -8,6 +8,11 @@
 // called out of line with the thing by reference; the CFilter_BindN / CFilter_Not hold their filters by reference.
 // Shape: the template body of the landed siblings (0x00936950 GetPBestLeafThing, GetPBestThing re-reading `*it`).
 #include "fable_compiler.h"
+// Name (NF378): Ego_r.pdb / FableWin.pdb ??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z (const member template of the real class; was the
+// stand-in CThingSearchToolsMethods, QAE); BSim 1.0 and Ego_r tc_creature_navigation.obj; its retail caller 0x006CBE30 is CTCCreatureNavigation::SetThingToIgnore.
+// Declared by the engine/CThingSearchTools.h flattened-branch opt-in below; PeekAllThings stays on the
+// stand-in (its HEAD binding, unchanged).
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_DECL
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -84,17 +89,16 @@ class CThingCompare_Nearest { public:                       // out-of-line membe
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekAllThings();                      // 0x0049C770: the thing manager's all-things list
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
-    template <class TFilter, class TCompare, class TThing> bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out);
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
 };
 
 
 // Best (by the comparator) scan-visible TThing of the whole thing list that passes the filter.
 template <class TFilter, class TCompare, class TThing>
-bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
+bool CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) const
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingSearchToolsMethods*>(static_cast<const CThingSearchToolsMethods*>(this))->PeekAllThings();
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,
@@ -110,4 +114,4 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
     return best != 0;
 }
 
-template bool CThingSearchToolsMethods::GetPBestThing<CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >, CThingCompare_Nearest, CThingGameObject >(const CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >&, const CThingCompare_Nearest&, CThingGameObject**);
+template bool CThingSearchTools::GetPBestThing<CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >, CThingCompare_Nearest, CThingGameObject >(const CFilter_Bind2<std::const_mem_fun_ref_t<bool, CThingGameObject>, CFilter_Not<CThingFilter_In2DRange> >&, const CThingCompare_Nearest&, CThingGameObject**) const;

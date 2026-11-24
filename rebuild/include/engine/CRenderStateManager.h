@@ -974,6 +974,12 @@ struct IDirect3DDevice9;
 #pragma pack(push, 1)
 class CRenderStateManager {
 public:
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_FORCERESEND
+    // NF378 add-only opt-in (flattened layout; row 0x00A044E0 and its binder 0x00A07900): Ego_r.pdb / FableWin.pdb
+    // ?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ (public, out of line; the declaration the retail class carries).
+    // Declaration only: no layout change.
+    void ForceResendRenderStatesToHardware();                            // 0x00A044E0
+#endif
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DDevice9* PD3DDevice;                            // +0x04
     unsigned char     StateStack[0x2000];                    // +0x08 CStateStackElement[1024]

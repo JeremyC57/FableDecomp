@@ -1,0 +1,67 @@
+addr       parity           behav  name
+0041d122   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+0041d122   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0041d122   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d122   RELOCATION_MATCH PASS   OnOpenMenus
+0041d165   WARN SHARED_HEADER_AVAILABLE CIEngine (engine/CIEngine.h)
+0041d165   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0041d165   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0041d165   RELOCATION_MATCH PASS   OnCloseMenus
+00445ae0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00445ae0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00445ae0   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+00445ae0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00445ae0   WARN SHARED_HEADER_AVAILABLE CSavedInputEvent (engine/CSavedInputEvent.h)
+00445ae0   WARN SHARED_HEADER_AVAILABLE CMouse (engine/CMouse.h)
+00445ae0   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+00445ae0   RELOCATION_MATCH PASS   SaveInitialInfo
+00445b40   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00445b40   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+00445b40   WARN SHARED_HEADER_AVAILABLE CMouse (engine/CMouse.h)
+00445b40   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+00445b40   RELOCATION_MATCH PASS   LoadInitialInfo
+004874a0   MATCH            PASS   IsTargetLocked
+00692400   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00692400   RELOCATION_MATCH PASS   InitialiseActionTime
+0079c5f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0079c5f0   RELOCATION_MATCH PASS   GetBulletTimeTicksFromAbilityLevel
+0079c6d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0079c6d0   RELOCATION_MATCH PASS   GetBulletTimeElapsedTicks
+0088b8c0   MATCH            PASS   SetAllStateGroupsEnabled
+009ea5a0   RELOCATION_MATCH PASS   ResetCommandLineBuffers
+009ea660   RELOCATION_MATCH PASS   RevertToUserEntry
+009ea980   RELOCATION_MATCH PASS   PrevInHistory
+009ea9e0   RELOCATION_MATCH PASS   NextInHistory
+009eab80   RELOCATION_MATCH PASS   SetHistoryMode
+009f9d60   MATCH            PASS   GetRefCount
+00a02680   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+00a02680   RELOCATION_MATCH PASS   ResizePool
+00a0b1e0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00a0b1e0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a0b1e0   MATCH            PASS   SetWorldTransform
+00a0b280   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00a0b280   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a0b280   RELOCATION_MATCH PASS   SetTextureTransform
+00a0b3e0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00a0b3e0   MATCH            PASS   SetPerspectiveTransform
+
+WINS: 19
+  0041d122 RELOCATION_MATCH NUISystem::CManager::?OnOpenMenus@CManager@NUISystem@@SIXXZ
+  0041d165 RELOCATION_MATCH NUISystem::CManager::?OnCloseMenus@CManager@NUISystem@@SIXXZ
+  00445ae0 RELOCATION_MATCH CGamePlayerInterface::?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ
+  00445b40 RELOCATION_MATCH CGamePlayerInterface::?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ
+  004874a0 MATCH CPlayer::?IsTargetLocked@CPlayer@@QBE_NXZ
+  00692400 RELOCATION_MATCH CCreatureActionBase::?InitialiseActionTime@CCreatureActionBase@@AAEXXZ
+  0079c5f0 RELOCATION_MATCH CTCBulletTime_Methods::?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime@@ABEJXZ
+  0079c6d0 RELOCATION_MATCH CTCBulletTime_Methods::?GetBulletTimeElapsedTicks@CTCBulletTime@@ABEJXZ
+  0088b8c0 MATCH CAIBrain::?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z
+  009ea5a0 RELOCATION_MATCH CConsole::?ResetCommandLineBuffers@CConsole@@AAEXXZ
+  009ea660 RELOCATION_MATCH CConsole::?RevertToUserEntry@CConsole@@AAEXXZ
+  009ea980 RELOCATION_MATCH CConsole::?PrevInHistory@CConsole@@AAEXXZ
+  009ea9e0 RELOCATION_MATCH CConsole::?NextInHistory@CConsole@@AAEXXZ
+  009eab80 RELOCATION_MATCH CConsole::?SetHistoryMode@CConsole@@AAEXXZ
+  009f9d60 MATCH CTexture::?GetRefCount@CTexture@@QAEJXZ
+  00a02680 RELOCATION_MATCH CHandleBasedMemoryPool::?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z
+  00a0b1e0 MATCH CRenderManagerCore::?SetWorldTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
+  00a0b280 RELOCATION_MATCH CRenderManagerCore::?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
+  00a0b3e0 MATCH CRenderManagerCore::?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z

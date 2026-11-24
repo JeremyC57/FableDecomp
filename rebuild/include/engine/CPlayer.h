@@ -140,6 +140,10 @@ public:
     // (called by the donor at 0x01B52809), inline in retail (`add ecx,40h` on GetMainPlayer's result, 0x0049EDA9). Body only: no layout change.
     CCamera& GetCurrentFreeCamera() { return CurrentFreeCamera; }
 #endif
+#ifdef FABLE_RETAIL_CPLAYER_ISTARGETLOCKED
+    // NF378 add-only opt-in (row 0x004874A0): Ego_r.pdb / FableWin.pdb ?IsTargetLocked@CPlayer@@QBE_NXZ (public, out of line).
+    bool IsTargetLocked() const;                                  // 0x004874A0
+#endif
 #ifdef FABLE_RETAIL_CPLAYER_RESPAWNDELAY
     // Opt-in (chunk 2056 scout, row 0x0048E78E CSubtitleRenderer::DrawButtonGraphics): FableWin.pdb ?GetPlayerRespawnDelay@CPlayer@@QBEJXZ
     // (0x01A671D5, 15 bytes / 8 instructions at /Od = a plain member read), inline in retail (0x0048EE9C..0x0048EEA1: GetMainPlayer

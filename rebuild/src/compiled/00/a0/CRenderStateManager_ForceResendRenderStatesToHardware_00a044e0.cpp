@@ -6,6 +6,10 @@
 // Callees: IDirect3DDevice9 SetRenderState (slot 57, +0xE4), SetTextureStageState (slot 67, +0x10C),
 // SetSamplerState (slot 69, +0x114). Shape: the switch on StateType is a `dec edx` chain; the loop bound is
 // re-read every pass (the virtual calls may alias it).
+// Leaf: ?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ; BSim 1.0 and Ego_r
+// lib_render_state_manager.obj order (was the stand-in CRenderStateManager_Methods; binder 0x00A07900 moves with it).
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_FORCERESEND
 #include "engine/CRenderStateManager.h"
 
 struct IDirect3DBaseTexture9;
@@ -60,11 +64,7 @@ struct CStateInfo {
     unsigned char TextureStage;    // +0x12
 };
 
-struct CRenderStateManager_Methods : CRenderStateManager {
-    void ForceResendRenderStatesToHardware();
-};
-
-void CRenderStateManager_Methods::ForceResendRenderStatesToHardware()
+void CRenderStateManager::ForceResendRenderStatesToHardware()
 {
     for (long i = 0; i < AllStatesListSize; ++i)
     {

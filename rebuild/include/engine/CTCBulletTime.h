@@ -146,6 +146,15 @@ struct CEnginePrimitive2DSprite;
 #pragma pack(push, 1)
 class CTCBulletTime {
 public:
+#ifdef FABLE_RETAIL_CTCBULLETTIME_TICKS
+    // NF378 add-only opt-in (rows 0x0079C5F0 / 0x0079C6D0): Ego_r.pdb / FableWin.pdb
+    // ?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime@@ABEJXZ and ?GetBulletTimeElapsedTicks@CTCBulletTime@@ABEJXZ (private const,
+    // out of line). Declarations only: no layout change.
+private:
+    long GetBulletTimeTicksFromAbilityLevel() const;           // 0x0079C5F0
+    long GetBulletTimeElapsedTicks() const;                    // 0x0079C6D0
+public:
+#endif
     void*                     __vftable;                     // +0x00 vptr, or first dword of a flattened base subobject
     long                      f4;                            // +0x04 retail-only long (previous header)
     unsigned char             _pad_0x08[0x4];                // +0x08

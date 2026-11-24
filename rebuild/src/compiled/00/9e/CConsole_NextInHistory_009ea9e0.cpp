@@ -13,6 +13,10 @@
 // The history list is newest-first, so "next" steps backward (prev links) and stops at begin(),
 // which the retail list iterator re-reads from the head node on every pass; the found flag rides in
 // al and the peeled first test jumps straight to the revert.
+// Leaf: ?NextInHistory@CConsole@@AAEXXZ
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?NextInHistory@CConsole@@AAEXXZ (private); BSim and Ego_r lib_console2.obj membership, the five console rows in
+// object order 13 / 21 / 36 / 37 / 40 = retail 0x009EA5A0 / 0x009EA660 / 0x009EA980 / 0x009EA9E0 / 0x009EAB80 (was the stand-in
+// CConsole_Retail; no engine/CConsole.h, so the local model takes the real class name).
 class CCharString { public:
     void* PStringData;
     const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
@@ -51,7 +55,7 @@ template<class T> struct CRetailList {                          // retail std::l
     iterator end() { return iterator(head); }
 };
 
-struct CConsole_Retail {                                        // retail offsets (Ego_r.pdb minus the container shrink, see the header comment)
+class CConsole { public:                                        // retail offsets (Ego_r.pdb minus the container shrink, see the header comment)
     virtual void v00();
     unsigned char       _maps[0x18];                            // +0x04 KeyBindingMap, +0x10 StringBindingMap (12 bytes each)
     CConsoleCommandLine FrontCommandLine;                       // +0x1c
@@ -67,11 +71,12 @@ struct CConsole_Retail {                                        // retail offset
     bool                MovingIntoHistory;                      // +0x64
     bool                GuessMode;                              // +0x65
 
+private:
     void RevertToUserEntry();                                   // 0x009EA660
     void NextInHistory();
 };
 
-void CConsole_Retail::NextInHistory()
+void CConsole::NextInHistory()
 {
     bool found = false;
     while (HistoryPos != CommandLineHistory.begin() && !found) {

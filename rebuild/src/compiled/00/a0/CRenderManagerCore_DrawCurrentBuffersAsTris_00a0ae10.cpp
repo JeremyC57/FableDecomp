@@ -1,11 +1,13 @@
+// Leaf: ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z
 // CRenderManagerCore::DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount) -- realise the pending render states, then draw the bound vertex buffer as a triangle list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0AE10, length 39 bytes (+9 int3 padding).
-// Retail bytes:  push esi ; mov esi,ecx ; call RealiseRenderState ; mov ecx,[esp+0Ch] ; mov edx,[esp+8] ;
-//                mov esi,[esi+3CF0h] ; mov eax,[esi] ; push ecx ; push edx ; push 4 ; push esi ; call [eax+144h] ; pop esi ; ret 8
 // Callees: CRenderStateManager::RealiseRenderState @ 0x00A058C0 (the render-state base sits at +0 of the core, so
 // `this` goes through unchanged); IDirect3DDevice9::DrawPrimitive (COM slot 81, +0x144) on PD3DDevice (+0x3CF0).
 // Shape: the device pointer is re-read from `this` after the call (esi is reused for it), the two stack arguments are
-// forwarded in order behind the D3DPT_TRIANGLELIST (4) immediate; the HRESULT is returned untouched in eax.
+// forwarded in order behind the D3DPT_TRIANGLELIST (4) immediate; DrawPrimitive's HRESULT is left in eax, nothing reads it.
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z (void: retail sets no return value
+// after the call, so the PDB signature emits the same bytes); BSim 1.0 and Ego_r lib_render_manager_core.obj order (was the
+// stand-in CRenderManagerCore_Methods returning long).
 #define CRenderManagerCore CRenderManagerCoreLayout
 #include "engine/CRenderManagerCore.h"
 #undef CRenderManagerCore
@@ -17,6 +19,8 @@ public:
 };
 class CRenderManagerCore : public CRenderStateManager, public CRenderManagerCoreLayout
 {
+public:
+    void DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);   // 0x00A0AE10
 };
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally:
@@ -53,12 +57,9 @@ struct IDirect3DDevice9 {
                                                   const void* vertices, unsigned long stride);   // slot 84 (+0x150)
 };
 
-struct CRenderManagerCore_Methods : CRenderManagerCore {
-    long DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);
-};
 
-long CRenderManagerCore_Methods::DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount)
+void CRenderManagerCore::DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount)
 {
     RealiseRenderState();
-    return PD3DDevice->DrawPrimitive(4 /* D3DPT_TRIANGLELIST */, startVertex, triangleCount);
+    PD3DDevice->DrawPrimitive(4 /* D3DPT_TRIANGLELIST */, startVertex, triangleCount);
 }

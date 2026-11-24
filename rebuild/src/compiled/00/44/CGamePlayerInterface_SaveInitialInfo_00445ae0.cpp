@@ -1,5 +1,5 @@
 // CGamePlayerInterface::SaveInitialInfo() -- write one saved input event (frame, input event, current mouse position, camera) to the packet file
-// Leaf: ?SaveInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ
+// Leaf: ?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00445AE0, 85 bytes, plain `ret`; no direct callers in the xref index; Ego_r.pdb
 // ?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ.
@@ -13,6 +13,10 @@
 // +0x40 (56 bytes: HeightLocked +0x24, ViewVecZLocked +0x25)}; CInputManager PMouse at retail +0x24 (Ego_r.pdb +0x2c: the
 // two vectors ahead are 12-byte STLport vectors). The mouse's slot-1 name is not confirmed.
 // Shape: /O2 (16-aligned entry); the mouse bound to a local (otherwise the vptr / argument registers swap).
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ (private); BSim 1.0 and Ego_r
+// game_player_interface.obj membership (was a member of the stand-in CGamePlayerInterface_Methods, which now only carries the
+// GetPacketFile helper its HEAD object already emitted). Declared by the header opt-in below.
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_INITIALINFO
 #include "engine/CGamePlayerInterface.h"
 class CWideString;
 class CASuspendableProcess;
@@ -65,13 +69,12 @@ public:
 extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 struct CGamePlayerInterface_Methods : CGamePlayerInterface {
     CAFile& GetPacketFile() { return *reinterpret_cast<CAFile*>(PacketFile); }
-    void SaveInitialInfo();
 };
-void CGamePlayerInterface_Methods::SaveInitialInfo()
+void CGamePlayerInterface::SaveInitialInfo()
 {
     CSavedInputEvent saved;
     CMouse* mouse = GPInputManager->PMouse;
     if (mouse)
         mouse->GetMousePosition(saved.MousePos);
-    GetPacketFile().Write(&saved, sizeof(saved), 0);
+    static_cast<CGamePlayerInterface_Methods*>(this)->GetPacketFile().Write(&saved, sizeof(saved), 0);
 }

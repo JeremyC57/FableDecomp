@@ -1,0 +1,3 @@
+# Landing nf378 b1h: ForceResendRenderStatesToHardware 0x00A044E0 and its binder 0x00A07900
+
+The unit held in b1 because T3 lines nf289 0x00a04630 / 0x00a059e0 name binder 0x00A07900 in their reason text (its SetupRenderStates / SetDefaultRenderStates stand-ins, unrelated to this call). Those two lines were set aside for the landing and put back unchanged. 0x00A044E0's self and 0x00A07900's call move to `?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ` (both PDB name sets; Ego_r lib_render_state_manager.obj #3, order ok); header opt-in FABLE_RETAIL_CRENDERSTATEMANAGER_FORCERESEND (landed with b1). Table: 1 replace, 0 misses.

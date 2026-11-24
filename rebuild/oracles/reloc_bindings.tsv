@@ -4541,7 +4541,7 @@ __imp__SystemTimeToFileTime@8	0143fd4c	009e9d40
 ?g_FableProgressDisplayReference_013CAA3C@@3PAUFableReferenceCount@@A	013caa3c	009e9fd0
 ??_7CGenericVar@@6B@	0129c3e4	009ea230
 ??_7CConsoleCommandLine@@6B@	0129c400	009ea2b0
-?RevertToUserEntry@CConsole_Retail@@QAEXXZ	009ea660	009ea9e0
+?RevertToUserEntry@CConsole@@AAEXXZ	009ea660	009ea9e0
 ?Erase@CRetailTree_erase009eecc0@@QAEXPAUnode@1@@Z	009eecc0	009ef430
 ?Erase@CRetailTree_erase009ef6e0@@QAEXPAUnode@1@@Z	009ef6e0	009eff10
 ?$S1@?4??GetSectionDesc@CCodeSectionManager@@QAEABUCSectionDesc@@K@Z@4IA	013caa64	009f0240
@@ -7841,7 +7841,7 @@ _wcsrchr	00bfedb2	009a5340
 ?IsRunnable@CAIStateGroup_DeedReactionRoot@@UAE_NXZ	009609b0	00960f00
 ?FinalInsertionSort_009d3ed0@@YIXPAJ0UCFreeBlockCompare@@@Z	009d3ed0	009d0630
 ?IntrosortLoop_009d48c0@@YIXPAJ00JUCFreeBlockCompare@@@Z	009d48c0	009d0630
-?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	00a044e0	00a07900
+?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	00a044e0	00a07900
 ?SetDefaultRenderStates@CRenderStateManager_Methods@@QAEXXZ	00a059e0	00a07900
 ?SetupRenderStates@CRenderStateManager_Methods@@QAEXXZ	00a04630	00a07900
 ?g_pRenderStateManager@@3PAUCRenderStateManager_Methods@@A	013cb508	00a07900
@@ -8293,7 +8293,7 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?MenuPoolSize@CManager@NUISystem@@2KA	013758cc	0041d122
 ?OpenMenuCount@CManager@NUISystem@@2JA	013b8714	0041d122
 ?PoolSizeBeforeMenus@CManager@NUISystem@@2KA	013b8718	0041d122
-?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	00a02680	0041d122
+?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	00a02680	0041d122
 ?IsKeyboardEventInQueue@CInputManager@@QBE_NW4EInputEventType@@W4EInputKey@@AAVCInputEvent@@@Z	009f50a0	0041e16e
 ?RemoveEventFromQueue@CInputManager@@QAEXABVCInputEvent@@@Z	009f4f70	0041e16e
 ?ShowErrorMessage@CManager@NUISystem@@QAEXJ@Z	0041db84	0041e61b

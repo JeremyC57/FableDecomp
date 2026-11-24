@@ -3,6 +3,11 @@
 // PDB: ?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z.
 // Shape: the inlined private SetD3DMatrix(D3DMATRIX&, 16 floats) copies the sixteen stack arguments as dword pairs
 // into a stack D3DMATRIX, then IDirect3DDevice9::SetTransform (slot 44, +0xB0) with D3DTS_PROJECTION (3) on PD3DDevice.
+// Leaf: ?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z; BSim and Ego_r lib_render_manager_core.obj order (was a member of the
+// stand-in CRenderManagerCore_Methods, which now only carries the SetD3DMatrix helper its HEAD object already emitted). Declared by
+// the engine/CRenderManagerCore.h opt-in below.
+#define FABLE_RETAIL_CRENDERMANAGERCORE_TRANSFORMS
 #include "engine/CRenderManagerCore.h"
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally
@@ -64,18 +69,14 @@ struct CRenderManagerCore_Methods : CRenderManagerCore {
         m._31 = m31; m._32 = m32; m._33 = m33; m._34 = m34;
         m._41 = m41; m._42 = m42; m._43 = m43; m._44 = m44;
     }
-    void SetPerspectiveTransform(float m11, float m12, float m13, float m14,
-                                 float m21, float m22, float m23, float m24,
-                                 float m31, float m32, float m33, float m34,
-                                 float m41, float m42, float m43, float m44);
 };
 
-void CRenderManagerCore_Methods::SetPerspectiveTransform(float m11, float m12, float m13, float m14,
+void CRenderManagerCore::SetPerspectiveTransform(float m11, float m12, float m13, float m14,
                                                          float m21, float m22, float m23, float m24,
                                                          float m31, float m32, float m33, float m34,
                                                          float m41, float m42, float m43, float m44)
 {
     _D3DMATRIX d3dMatrix;
-    SetD3DMatrix(d3dMatrix, m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+    static_cast<CRenderManagerCore_Methods*>(this)->SetD3DMatrix(d3dMatrix, m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
     PD3DDevice->SetTransform(3 /* D3DTS_PROJECTION */, &d3dMatrix);
 }

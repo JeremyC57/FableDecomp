@@ -215,6 +215,11 @@ struct IDirect3DSurface9;
 #pragma pack(push, 1)
 class CSurface {
 public:
+#ifdef FABLE_RETAIL_CSURFACE_GETPITCH
+    // NF378 add-only opt-in (flattened layout; row 0x009F3390): Ego_r.pdb / FableWin.pdb ?GetPitch@CSurface@@QBEKXZ (public const, out of
+    // line). Declaration only: no layout change.
+    unsigned long GetPitch() const;                          // 0x009F3390
+#endif
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08

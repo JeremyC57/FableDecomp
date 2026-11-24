@@ -1,13 +1,16 @@
 // CAIBrain::SetAllStateGroupsEnabled(bool)
+// Leaf: ?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088B8C0, oracle length 36 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
-// Retail bytes:  mov eax,[ecx+28h] ; cmp eax,[ecx+2Ch] ; je R ; mov dl,[esp+4] ; push esi ; L: mov esi,[eax+4] ; mov [esi+12h],dl ; mov esi,[ecx+2Ch] ; add eax,8 ; cmp eax,esi ; jne L ; pop esi ; R: ret 4
 // engine/CAIBrain.h (PDB): +0x28 CVectorMap<long, CAIStateGroupBase*> StateGroupList. The vector
 // map's first two dwords are begin/end of its {key, value} pairs (8 bytes each). Every state
 // group's Enabled byte (+0x12 in CAIStateGroupBase) is set to the argument; the end pointer is
 // re-read each iteration exactly as the retail loop does.
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z; BSim 1.0 and Ego_r ai_brain.obj order (was the
+// stand-in CAIBrain_Methods). Declared by the engine/CAIBrain.h opt-in below.
+#define FABLE_RETAIL_CAIBRAIN_SETALLSTATEGROUPSENABLED
 #include "engine/CAIBrain.h"
 
 struct CAIStateGroupBaseCalls {
@@ -25,11 +28,7 @@ struct CStateGroupVectorMap {
     CStateGroupEntry* End;            // +0x04
 };
 
-struct CAIBrain_Methods : CAIBrain {
-    void SetAllStateGroupsEnabled(bool enabled);
-};
-
-void CAIBrain_Methods::SetAllStateGroupsEnabled(bool enabled)
+void CAIBrain::SetAllStateGroupsEnabled(bool enabled)
 {
     CStateGroupVectorMap* groups = reinterpret_cast<CStateGroupVectorMap*>(&this->StateGroupList[0]);
     for (CStateGroupEntry* it = groups->Begin; it != groups->End; ++it)

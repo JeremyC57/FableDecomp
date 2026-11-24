@@ -407,6 +407,13 @@ public:
     // the catalog's global "StatRegisterClass" label lacks the class). Declaration only: no layout change.
     static void __fastcall StatRegisterClass();                      // 0x006F5C10
 #endif
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE_INITIALISEACTIONTIME
+    // NF378 add-only opt-in (row 0x00692400): Ego_r.pdb / FableWin.pdb ?InitialiseActionTime@CCreatureActionBase@@AAEXXZ (private, out of
+    // line). Declaration only: no layout change.
+private:
+    void InitialiseActionTime();                                     // 0x00692400
+public:
+#endif
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>

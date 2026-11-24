@@ -1,0 +1,42 @@
+addr       parity           behav  name
+006cd3b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006cd3b0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+006cd3b0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange (engine/CThingFilter_In2DRange.h)
+006cd3b0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+006cd3b0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+006cd3b0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+006cd3b0   WARN RELOC_NAME: ??$?RVCThingGameObject@@@CThingCompare_Nearest@@QBEPAVCThingGameObject@@PAV1@0@Z -> 006cce00 labelled 'CThingCompare_Nearest::operator()<CThingGameObject>'
+006cd3b0   RELOCATION_MATCH PASS   GetPBestThing
+00914b20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00914b20   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00914b20   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00914b20   WARN RELOC_NAME: ??$?RVCThingAICreature@@@CThingCompare_Nearest@@QBEPAVCThingAICreature@@PAV1@0@Z -> 0065da97 labelled 'CThingCompare_Nearest::operator'
+00914b20   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >, CThingCompare_Nearest, CThingAICreature>
+0093f8a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093f8a0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+0093f8a0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange (engine/CThingFilter_In2DRange.h)
+0093f8a0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+0093f8a0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+0093f8a0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+0093f8a0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+0093f8a0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0093f8a0   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing>
+009f3390   WARN SHARED_HEADER_AVAILABLE CPixelFormat (engine/CPixelFormat.h)
+009f3390   RELOCATION_MATCH PASS   GetPitch
+00a0ae10   WARN SHARED_HEADER_AVAILABLE CRenderStateManager (engine/CRenderStateManager.h)
+00a0ae10   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+00a0ae10   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00a0ae10   RELOCATION_MATCH PASS   DrawCurrentBuffersAsTris
+
+WINS: 5
+  006cd3b0 RELOCATION_MATCH CThingSearchTools::??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z
+  00914b20 RELOCATION_MATCH CThingSearchTools::??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z
+  0093f8a0 RELOCATION_MATCH CThingSearchTools::??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+  009f3390 RELOCATION_MATCH CSurface::?GetPitch@CSurface@@QBEKXZ
+  00a0ae10 RELOCATION_MATCH CRenderManagerCore::?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z

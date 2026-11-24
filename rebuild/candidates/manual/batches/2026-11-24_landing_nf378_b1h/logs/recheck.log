@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a044e0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9 (engine/IDirect3DDevice9.h)
+00a044e0   MATCH            PASS   ForceResendRenderStatesToHardware
+00a07900   RELOCATION_MATCH PASS   Init
+
+WINS: 2
+  00a044e0 MATCH CRenderStateManager::?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ
+  00a07900 RELOCATION_MATCH CRenderStateManager::Init

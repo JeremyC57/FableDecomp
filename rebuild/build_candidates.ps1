@@ -333688,7 +333688,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079c5f0'
-        Module = 'CTCBulletTime_Methods'
+        Module = 'CTCBulletTime'
         Source = '00/79/CTCBulletTimeMethods_GetBulletTimeTicksFromAbilityLevel_0079c5f0.cpp'
         TestSource = '00/79/CTCBulletTimeMethods_GetBulletTimeTicksFromAbilityLevel_0079c5f0_test.cpp'
         PassPattern = '0079c5f0_TEST PASS'
@@ -333702,7 +333702,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079c6d0'
-        Module = 'CTCBulletTime_Methods'
+        Module = 'CTCBulletTime'
         Source = '00/79/CTCBulletTimeMethods_GetBulletTimeElapsedTicks_0079c6d0.cpp'
         TestSource = '00/79/CTCBulletTimeMethods_GetBulletTimeElapsedTicks_0079c6d0_test.cpp'
         PassPattern = '0079c6d0_TEST PASS'

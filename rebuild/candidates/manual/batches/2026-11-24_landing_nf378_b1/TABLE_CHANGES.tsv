@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z -> ?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	00a02680	0041d122	NF378: 00a02680 self respelled to the PDB name; binders 0041d122 / 0041d165 now reference it (same unit)
+replace	?RevertToUserEntry@CConsole_Retail@@QAEXXZ -> ?RevertToUserEntry@CConsole@@AAEXXZ	009ea660	009ea9e0	NF378: 009ea660 self respelled to the PDB name (private, AAE); selfbinder 009ea9e0 moves with it (same unit)

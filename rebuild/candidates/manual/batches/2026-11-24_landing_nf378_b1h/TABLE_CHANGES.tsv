@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ -> ?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	00a044e0	00a07900	NF378: 00a044e0 self respelled to the PDB name; binder 00a07900 moves with it (same unit)

@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+00a044e0	ACCEPT	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	objsec ALL_EQ, MATCH PASS (head MATCH)
+00a07900	ACCEPT	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00a044e0

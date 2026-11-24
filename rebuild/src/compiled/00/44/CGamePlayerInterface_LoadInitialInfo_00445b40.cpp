@@ -1,5 +1,5 @@
 // CGamePlayerInterface::LoadInitialInfo() -- read the first saved input event from the packet file and restore its mouse position
-// Leaf: ?LoadInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ
+// Leaf: ?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ
 // Retail: Fable.exe @ 0x00445B40, 55 bytes, plain `ret`, no direct reference; Ego_r.pdb
 // ?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ. PacketFile (+0x704, CDiskFileWin32) is read through its CAFile
 // interface -- virtual slot 3, Read(void* buffer, long size, CASuspendableProcess* process) -- into LoadedInputEvent
@@ -12,6 +12,10 @@
 // CInputManager: retail PMouse +0x24 (Ego_r.pdb +0x2c, two 16-byte vectors before it); no engine/ header.
 // Shape: /O2; PMouse read through an inline const getter (`mov edx,[ecx]` for the vtable) -- reading the member twice
 // directly picks eax.
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ (private); BSim 1.0 and Ego_r
+// game_player_interface.obj membership (was a member of the stand-in CGamePlayerInterface_Methods, which now only carries the
+// GetPacketFile / GetLoadedMousePos helpers its HEAD object already emitted). Declared by the header opt-in below.
+#define FABLE_RETAIL_CGAMEPLAYERINTERFACE_INITIALINFO
 #include "engine/CGamePlayerInterface.h"
 class CASuspendableProcess;
 class C2DVector { public: float X; float Y; };
@@ -39,11 +43,10 @@ extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputMa
 struct CGamePlayerInterface_Methods : CGamePlayerInterface {
     CAFile& GetPacketFile() { return *reinterpret_cast<CAFile*>(PacketFile); }
     const C2DVector* GetLoadedMousePos() const { return reinterpret_cast<const C2DVector*>(LoadedInputEvent + 0x38); }
-    void LoadInitialInfo();
 };
-void CGamePlayerInterface_Methods::LoadInitialInfo()
+void CGamePlayerInterface::LoadInitialInfo()
 {
-    GetPacketFile().Read(LoadedInputEvent, sizeof(LoadedInputEvent), 0);
+    static_cast<CGamePlayerInterface_Methods*>(this)->GetPacketFile().Read(LoadedInputEvent, sizeof(LoadedInputEvent), 0);
     if (GPInputManager->GetMouse())
-        GPInputManager->GetMouse()->SetPos(GetLoadedMousePos());
+        GPInputManager->GetMouse()->SetPos(static_cast<CGamePlayerInterface_Methods*>(this)->GetLoadedMousePos());
 }

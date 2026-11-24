@@ -1,11 +1,16 @@
 // CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing>(const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >&, const CThingCompare_Nearest&, CThing**) -- nearest scan-visible thing passing both bound filters (byte twin of 0x004A9DA0)
-// Leaf: GetPBestThing
+// Leaf: ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
 // Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093F8A0, length 144 bytes (`ret 0Ch`).
 // Callees: PeekAllThings() 0x0049C770, CThingFilter_HasTC::operator() 0x006A80A0, CThingFilter_In2DRange::operator() 0x006A76B0, CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
+// Name (NF378): Ego_r.pdb / FableWin.pdb ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z (const member template of the real class; was the
+// stand-in CThingSearchToolsMethods, QAE); BSim 1.0 and Ego_r ai_state_group_vt_patrol.obj; its retail caller 0x0093EDF0 is CAIStateGroup_VillageTaskPatrol::IsRunnable of the same object.
+// Declared by the engine/CThingSearchTools.h flattened-branch opt-in below; PeekAllThings stays on the
+// stand-in (its HEAD binding, unchanged).
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_DECL
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -86,7 +91,6 @@ struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out);
     template <class TFilter, class TThing> bool GetPFirstLeafThing(const TFilter& filter, TThing** out);
-    template <class TFilter, class TCompare, class TThing> bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out);
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
 };
 
@@ -126,10 +130,10 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
 
 // Best (by the comparator) scan-visible TThing of the whole thing list that passes the filter.
 template <class TFilter, class TCompare, class TThing>
-bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
+bool CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) const
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingSearchToolsMethods*>(static_cast<const CThingSearchToolsMethods*>(this))->PeekAllThings();
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,
@@ -161,4 +165,4 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     return best != 0;
 }
 
-template bool CThingSearchToolsMethods::GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing >(const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >&, const CThingCompare_Nearest&, CThing**);
+template bool CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing >(const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >&, const CThingCompare_Nearest&, CThing**) const;

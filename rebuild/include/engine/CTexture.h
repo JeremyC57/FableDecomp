@@ -160,6 +160,11 @@ struct IDirect3DTexture9;
 #pragma pack(push, 1)
 class CTexture {
 public:
+#ifdef FABLE_RETAIL_CTEXTURE_GETREFCOUNT
+    // NF378 add-only opt-in (flattened layout; row 0x009F9D60): Ego_r.pdb / FableWin.pdb ?GetRefCount@CTexture@@QAEJXZ (public, out of
+    // line). Declaration only: no layout change.
+    long GetRefCount();                                      // 0x009F9D60
+#endif
     IDirect3DTexture9* PD3DTexture;                          // +0x00
     unsigned char      ByteLength[0x3];                      // +0x04 bitfield group: ulong:28
     unsigned char      AllocationSource[0x1];                // +0x07 bitfield group: ulong:4

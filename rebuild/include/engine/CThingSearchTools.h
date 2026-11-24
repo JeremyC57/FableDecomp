@@ -720,6 +720,12 @@ public:
     // ?NoThingsScanned@CThingSearchTools@@2KA (0x013B89AC), ?SearchID@CThingSearchTools@@2KA (0x013B89B0), as the retail branch declares them.
     static unsigned long NoLookups,NoThingsScanned,SearchID;
 #endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_DECL
+    // NF378 add-only opt-in (flattened layout; rows 0x006CD3B0 / 0x00914B20 / 0x0093F8A0): the const member template Ego_r.pdb / FableWin.pdb
+    // ??$GetPBestThing@...@CThingSearchTools@@QBE_N...@Z, the declaration the retail branch carries under BESTTHING_DECL_PASS26.
+    // Declaration only: no layout change.
+    template<class Filter,class Compare,class T> bool GetPBestThing(const Filter&,const Compare&,T**)const;
+#endif
 };
 #pragma pack(pop)
 

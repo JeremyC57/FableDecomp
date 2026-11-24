@@ -1,3 +1,4 @@
+// Leaf: ?InitialiseActionTime@CCreatureActionBase@@AAEXXZ
 // CCreatureActionBase::InitialiseActionTime() -- when the action reports a positive duration, seed
 // Naming wave 18: the global stand-in g_FramesPerSecond_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -9,6 +10,9 @@
 // StartFrame +0x48. The frame-rate global is read into a local BEFORE the second virtual call
 // (it is spilled to the frame slot and `fild`ed later), the duration is stored to both members
 // with `fst` and then multiplied by the converted rate for the truncating conversion.
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?InitialiseActionTime@CCreatureActionBase@@AAEXXZ (private); BSim 0.98 and Ego_r
+// creature_action_base.obj order (was the stand-in CCreatureActionBase_Methods). Declared by the header opt-in below.
+#define FABLE_RETAIL_CCREATUREACTIONBASE_INITIALISEACTIONTIME
 #include "engine/CCreatureActionBase.h"
 
 class CMainGameComponent {
@@ -38,11 +42,7 @@ struct CCreatureActionBaseVirtuals {
     virtual float GetActionTimeSeconds();      // slot 64 (+0x100)
 };
 
-struct CCreatureActionBase_Methods : CCreatureActionBase {
-    void InitialiseActionTime();
-};
-
-void CCreatureActionBase_Methods::InitialiseActionTime()
+void CCreatureActionBase::InitialiseActionTime()
 {
     CCreatureActionBaseVirtuals* self = reinterpret_cast<CCreatureActionBaseVirtuals*>(this);
     if (self->GetActionTimeSeconds() > 0.0f) {

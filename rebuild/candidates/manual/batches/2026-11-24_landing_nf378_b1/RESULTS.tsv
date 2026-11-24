@@ -1,0 +1,22 @@
+address	verdict	old	new	reason
+0088b8c0	ACCEPT	?SetAllStateGroupsEnabled@CAIBrain_Methods@@QAEX_N@Z	?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z	objsec ALL_EQ, MATCH PASS (head MATCH)
+004874a0	ACCEPT	?IsTargetLocked@CPlayer_Methods@@QBE_NXZ	?IsTargetLocked@CPlayer@@QBE_NXZ	objsec ALL_EQ, MATCH PASS (head MATCH)
+00445ae0	ACCEPT	?SaveInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ	?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+00445b40	ACCEPT	?LoadInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ	?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+00692400	ACCEPT	?InitialiseActionTime@CCreatureActionBase_Methods@@QAEXXZ	?InitialiseActionTime@CCreatureActionBase@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+0079c5f0	ACCEPT	?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime_Methods@@QBEJXZ	?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+0079c6d0	ACCEPT	?GetBulletTimeElapsedTicks@CTCBulletTime_Methods@@QBEJXZ	?GetBulletTimeElapsedTicks@CTCBulletTime@@ABEJXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+009f9d60	ACCEPT	?GetRefCount@CTexture_Methods@@QAEJXZ	?GetRefCount@CTexture@@QAEJXZ	objsec ALL_EQ, MATCH PASS (head MATCH)
+00a0b1e0	ACCEPT	?SetWorldTransform@CRenderManagerCore_Methods@@QAEXKABVCMatrix3x4@@@Z	?SetWorldTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z	objsec ALL_EQ, MATCH PASS (head MATCH)
+00a0b280	ACCEPT	?SetTextureTransform@CRenderManagerCore_Methods@@QAEXKABVCMatrix3x4@@@Z	?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+00a0b3e0	ACCEPT	?SetPerspectiveTransform@CRenderManagerCore_Methods@@QAEXMMMMMMMMMMMMMMMM@Z	?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z	objsec ALL_EQ, MATCH PASS (head MATCH)
+00a02680	ACCEPT	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+00a044e0	ACCEPT	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	objsec ALL_EQ, MATCH PASS (head MATCH)
+009ea5a0	ACCEPT	?ResetCommandLineBuffers@CConsole_Retail@@QAEXXZ	?ResetCommandLineBuffers@CConsole@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+009ea660	ACCEPT	?RevertToUserEntry@CConsole_Retail@@QAEXXZ	?RevertToUserEntry@CConsole@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+009ea980	ACCEPT	?PrevInHistory@CConsole_Retail@@QAEXXZ	?PrevInHistory@CConsole@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+009eab80	ACCEPT	?SetHistoryMode@CConsole_Retail@@QAEXXZ	?SetHistoryMode@CConsole@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)
+009ea9e0	ACCEPT	?RevertToUserEntry@CConsole_Retail@@QAEXXZ	?RevertToUserEntry@CConsole@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 009ea660; own symbol ?NextInHistory@CConsole_Retail@@QAEXXZ -> ?NextInHistory@CConsole@@AAEXXZ
+0041d122	ACCEPT	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00a02680
+0041d165	ACCEPT	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00a02680
+00a07900	ACCEPT	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH); target 00a044e0

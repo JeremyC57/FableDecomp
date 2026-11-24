@@ -540,6 +540,9 @@ class CDisplayManager;
 class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_TRANSFORMS
+class CMatrix3x4;                                    // NF378 opt-in below
+#endif
 
 #pragma pack(push, 1)
 struct CRenderManagerCore {
@@ -547,6 +550,16 @@ struct CRenderManagerCore {
     // NF37 opt-in (row 0x00F37170, flattened layout): the same declaration the retail class carries under this macro, Ego_r.pdb /
     // FableWin.pdb ?WaitWhileGPUIsBusy@CRenderManagerCore@@QAEXXZ (retail 0x00A0AF80, the empty `ret`). Declaration only.
     void WaitWhileGPUIsBusy();                                           // 0x00A0AF80
+#endif
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_TRANSFORMS
+    // NF378 add-only opt-in (flattened layout; rows 0x00A0B1E0 / 0x00A0B280 / 0x00A0B3E0): Ego_r.pdb / FableWin.pdb
+    // ?SetWorldTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z, ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z and
+    // ?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z (public, out of line; the same declarations the retail class
+    // carries). Declarations only: no layout change.
+    void SetWorldTransform(unsigned long index, const CMatrix3x4& matrix);    // 0x00A0B1E0
+    void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);  // 0x00A0B280
+    void SetPerspectiveTransform(float, float, float, float, float, float, float, float,
+                                 float, float, float, float, float, float, float, float);   // 0x00A0B3E0
 #endif
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04

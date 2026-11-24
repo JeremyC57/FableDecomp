@@ -169,6 +169,11 @@ struct _RTL_CRITICAL_SECTION_DEBUG;
 #pragma pack(push, 1)
 class CHandleBasedMemoryPool {
 public:
+#ifdef FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_RESIZEPOOL
+    // NF378 add-only opt-in (binders 0x0041D122 / 0x0041D165 of row 0x00A02680): Ego_r.pdb / FableWin.pdb
+    // ?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z (public, out of line). Declaration only: no layout change.
+    bool ResizePool(unsigned long newPoolSize, float timeBudget);   // 0x00A02680
+#endif
     void*                        __vftable;                  // +0x00 vptr, or first dword of a flattened base subobject
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08

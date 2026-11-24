@@ -12,11 +12,11 @@
 // engine/CIEngine.h models the vptr as a plain void* and the slot-0x120 call needs a polymorphic declaration.
 // Opt: size TU (unaligned entry, `push ecx / fld1 / fstp [esp]` for the float argument).
 #pragma optimize("s", on)
+// NF378: CHandleBasedMemoryPool::ResizePool (0x00A02680) bound by its PDB spelling ?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z
+// (was the stand-in CHandleBasedMemoryPool_Methods), declared by the header opt-in.
+#define FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL_RESIZEPOOL
 #include "engine/CDisplayEngine.h"
 #include "engine/CHandleBasedMemoryPool.h"
-struct CHandleBasedMemoryPool_Methods : CHandleBasedMemoryPool {
-    bool ResizePool(unsigned long new_size, float time);  // 0x00A02680
-};
 class CIEngine { public:
     virtual void _slot00(); virtual void _slot01(); virtual void _slot02(); virtual void _slot03();
     virtual void _slot04(); virtual void _slot05(); virtual void _slot06(); virtual void _slot07();
@@ -36,7 +36,7 @@ class CIEngine { public:
     virtual void _slot60(); virtual void _slot61(); virtual void _slot62(); virtual void _slot63();
     virtual void _slot64(); virtual void _slot65(); virtual void _slot66(); virtual void _slot67();
     virtual void _slot68(); virtual void _slot69(); virtual void _slot70(); virtual void _slot71();
-    virtual CHandleBasedMemoryPool_Methods* GetResourceMemoryPool();   // +0x120
+    virtual CHandleBasedMemoryPool* GetResourceMemoryPool();   // +0x120
 };
 class CMainGameComponent {
 protected:
@@ -57,7 +57,7 @@ public:
 void __fastcall CManager::OnCloseMenus()
 {
     if (--OpenMenuCount == 0) {
-        CHandleBasedMemoryPool_Methods* pool = CMainGameComponent::Get()->PDisplayEngine->Engine3D->GetResourceMemoryPool();
+        CHandleBasedMemoryPool* pool = CMainGameComponent::Get()->PDisplayEngine->Engine3D->GetResourceMemoryPool();
         if (pool)
             pool->ResizePool(PoolSizeBeforeMenus, 1.0f);
     }

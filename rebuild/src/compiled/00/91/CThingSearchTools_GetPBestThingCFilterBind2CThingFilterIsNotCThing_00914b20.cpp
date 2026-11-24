@@ -1,5 +1,5 @@
 // CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >, CThingCompare_Nearest, CThingAICreature>(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >&, const CThingCompare_Nearest&, CThingAICreature**) -- nearest scan-visible AI creature that is not the excluded thing and is a child
-// Leaf: GetPBestThing
+// Leaf: ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00914B20, length 160 bytes (`ret 0Ch`).
 // Callees: PeekAllThings() 0x0049C770, CThingFilter_IsNot::operator() 0x006A76A0, CThingCompare_Nearest::operator()<CThingAICreature> 0x0065DA97.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
@@ -10,6 +10,11 @@
 //   FableWin.pdb 0x01D9A450 ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ; engine/CThingCreatureBase.h CREATURETYPE), was a made-up long GetCreatureCategory:
 //   the in-place declaration respell of the landed sibling 0x00914AA0 (NF93), with engine/ECreatureType.h.
 #include "engine/ECreatureType.h"
+// Name (NF378): Ego_r.pdb / FableWin.pdb ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z (const member template of the real class; was the
+// stand-in CThingSearchToolsMethods, QAE); BSim 1.0 and Ego_r ai_state_group_kid_wander_near_kids.obj; its retail caller 0x00914C60 is the CAIStateGroup_KidWanderNearKids IsRunnable row.
+// Declared by the engine/CThingSearchTools.h flattened-branch opt-in below; PeekAllThings stays on the
+// stand-in (its HEAD binding, unchanged).
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_BESTTHING_DECL
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -99,7 +104,6 @@ struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out);
     template <class TFilter, class TThing> bool GetPFirstLeafThing(const TFilter& filter, TThing** out);
-    template <class TFilter, class TCompare, class TThing> bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out);
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
 };
 
@@ -139,10 +143,10 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
 
 // Best (by the comparator) scan-visible TThing of the whole thing list that passes the filter.
 template <class TFilter, class TCompare, class TThing>
-bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
+bool CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) const
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingSearchToolsMethods*>(static_cast<const CThingSearchToolsMethods*>(this))->PeekAllThings();
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,
@@ -174,4 +178,4 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     return best != 0;
 }
 
-template bool CThingSearchToolsMethods::GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >, CThingCompare_Nearest, CThingAICreature >(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >&, const CThingCompare_Nearest&, CThingAICreature**);
+template bool CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >, CThingCompare_Nearest, CThingAICreature >(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >&, const CThingCompare_Nearest&, CThingAICreature**) const;

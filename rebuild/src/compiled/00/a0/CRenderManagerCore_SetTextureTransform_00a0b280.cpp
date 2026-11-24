@@ -4,6 +4,11 @@
 // Shape: the inlined private SetD3DMatrix(D3DMATRIX&, 16 floats) builds the 4x4 on the stack (the 12 matrix floats copied
 // as dwords, the 0,0,0,1 column stored after the pushes), then IDirect3DDevice9::SetTransform (slot 44, +0xB0) on
 // PD3DDevice (+0x3CF0).
+// Leaf: ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z; BSim and Ego_r lib_render_manager_core.obj order (was a member of the
+// stand-in CRenderManagerCore_Methods, which now only carries the SetD3DMatrix helper its HEAD object already emitted). Declared by
+// the engine/CRenderManagerCore.h opt-in below.
+#define FABLE_RETAIL_CRENDERMANAGERCORE_TRANSFORMS
 #include "engine/CRenderManagerCore.h"
 
 // d3d9.h is not on the verifier include path, so the IDirect3DDevice9 vtable is declared locally
@@ -75,13 +80,12 @@ struct CRenderManagerCore_Methods : CRenderManagerCore {
         m._31 = m31; m._32 = m32; m._33 = m33; m._34 = m34;
         m._41 = m41; m._42 = m42; m._43 = m43; m._44 = m44;
     }
-    void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);
 };
 
-void CRenderManagerCore_Methods::SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix)
+void CRenderManagerCore::SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix)
 {
     _D3DMATRIX d3dMatrix;
-    SetD3DMatrix(d3dMatrix, matrix._11, matrix._12, matrix._13, 0.0f,
+    static_cast<CRenderManagerCore_Methods*>(this)->SetD3DMatrix(d3dMatrix, matrix._11, matrix._12, matrix._13, 0.0f,
                             matrix._21, matrix._22, matrix._23, 0.0f,
                             matrix._31, matrix._32, matrix._33, 0.0f,
                             matrix._41, matrix._42, matrix._43, 1.0f);

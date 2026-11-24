@@ -144,6 +144,14 @@ public:
     bool IsRequireAttackButtonHeldForFlourish() const;
 #endif
 public:
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE_INITIALINFO
+    // NF378 add-only opt-in (rows 0x00445AE0 / 0x00445B40): Ego_r.pdb / FableWin.pdb ?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ and
+    // ?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ (private, out of line). Declarations only.
+private:
+    void LoadInitialInfo();                                      // 0x00445B40
+    void SaveInitialInfo();                                      // 0x00445AE0
+public:
+#endif
 #ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_WEAPONABILITIES_PASS27
     bool IsButtonForGameEvent(EXboxControllerButton, EGameAction) const;  // 0x00446B40
     bool IsMouseButtonForGameEvent(EMouseButtonControl, EGameAction) const; // 0x00446B90

@@ -1,0 +1,8 @@
+# Landing nf378 b1: 17 stand-in selves get their PDB names (19 rows; the ForceResend unit landed as b1h)
+
+Agent NF378 (pending/2026-11-24_nf378_handback): rows whose own name was a `*_Methods` / `*_Retail` stand-in move onto the exact PDB spelling, each with two sources (BSim >= 0.95 with a unique donor, plus both PDB name sets and Ego_r / FableWin object membership and order; NOTES.md). Binders 0041d122 / 0041d165 move with ResizePool 0x00A02680 (UNITS.tsv); 009ea9e0 is a self and a binder of RevertToUserEntry.
+- Nine additive header opt-ins (HEADERS.tsv): CAIBrain, CPlayer, CGamePlayerInterface, CCreatureActionBase, CTCBulletTime, CTexture, CRenderManagerCore, CHandleBasedMemoryPool, CRenderStateManager. Proof: pin_asserts pinned 0 (declarations only); equiv_check over the whole tree, 57,158 rows, 0 differing.
+- Gates: vland HEAD and new RELOCATION_MATCH PASS, objsec ALL_EQ, pick-any GATE PASS, 0 reach flips, 0 link duplicates; table: 2 replace lines here (ResizePool, RevertToUserEntry), 0 misses.
+- 0x00A044E0 / 0x00A07900 were held by T3 lines nf289 0x00a04630 / 0x00a059e0, which mention 0x00A07900 only in their reason text: landed as b1h around those lines (set aside and restored in place).
+- Rulings (advisor decision, owner delegated): R1 accepted (methods on the real class, HEAD helper COMDATs stay on the stand-in struct; port line T3 nf378 0x00445AE0); R3 accepted (local class models kept; ports queued); R4 the NF218 claim is closed (line 217 `done`).
+- Catalog: CTCBulletTime_Methods -> CTCBulletTime Module for 0x0079C5F0 / 0x0079C6D0; name labels and file renames queued (NAME_FIXES_QUEUE nf378).

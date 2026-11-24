@@ -1,5 +1,5 @@
 // CSurface::GetPitch() -- bytes per row of the surface: the pixel format's bits per pixel (GetPixelFormat, inlined) times the width (an inline GetWidth: its own GetDesc), divided by 8
-// Leaf: ?GetPitch@CSurface_Methods@@QBEKXZ
+// Leaf: ?GetPitch@CSurface@@QBEKXZ
 // Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
 //   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F3390, length 72 bytes.
@@ -11,6 +11,10 @@
 // `imul eax,[esp+40h]` after the call instead (70 v 72): the value must come out of an inline getter.
 // Model: engine/CSurface.h (+4 PD3DSurface) with a methods struct.
 enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
+// Name (NF378): Ego_r.pdb / FableWin.pdb ?GetPitch@CSurface@@QBEKXZ; BSim 1.0 and Ego_r lib_surface.obj order (was a member of the
+// stand-in CSurface_Methods, which now only carries the GetPixelFormat / GetWidth helpers its HEAD object already emitted).
+// Declared by the engine/CSurface.h opt-in below.
+#define FABLE_RETAIL_CSURFACE_GETPITCH
 #include "engine/CSurface.h"
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
@@ -61,7 +65,6 @@ struct CSurface_Methods : CSurface {
         PD3DSurface->GetDesc(&desc);
         return desc.Width;
     }
-    unsigned long GetPitch() const;
 };
 
 CPixelFormat CSurface_Methods::GetPixelFormat() const
@@ -71,7 +74,8 @@ CPixelFormat CSurface_Methods::GetPixelFormat() const
     return CPixelFormat(desc.Format);
 }
 
-unsigned long CSurface_Methods::GetPitch() const
+unsigned long CSurface::GetPitch() const
 {
-    return GetPixelFormat().GetColourDepth() * GetWidth() / 8;
+    const CSurface_Methods* self = static_cast<const CSurface_Methods*>(this);
+    return self->GetPixelFormat().GetColourDepth() * self->GetWidth() / 8;
 }

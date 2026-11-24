@@ -6,6 +6,10 @@
 // Callees: SetupRenderStates @ 0x00A04630, SetDefaultRenderStates @ 0x00A059E0, ForceResendRenderStatesToHardware
 // @ 0x00A044E0 (all members, called out of line). Shape: one zero register (edx) for the sizes, the per-state
 // StateType reset (`mov [edi+11h],dl`) and the AllStatesListSize clear; the loop bound is re-read every pass.
+// NF378: ForceResendRenderStatesToHardware (0x00A044E0) bound by its PDB spelling
+// ?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ (was the stand-in CRenderStateManager_Methods member), declared by the
+// header opt-in.
+#define FABLE_RETAIL_CRENDERSTATEMANAGER_FORCERESEND
 #include "engine/CRenderStateManager.h"
 
 struct CStateInfo {
@@ -25,7 +29,6 @@ struct CRenderStateManager_Methods : CRenderStateManager {
     void Init(IDirect3DDevice9* device);
     void SetupRenderStates();                    // 0x00A04630
     void SetDefaultRenderStates();               // 0x00A059E0
-    void ForceResendRenderStatesToHardware();    // 0x00A044E0
 };
 
 #pragma auto_inline(off)
