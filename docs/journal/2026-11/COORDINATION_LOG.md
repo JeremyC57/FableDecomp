@@ -791,3 +791,9 @@ manifest_add_boundaries.py --write (your 33add08c6f route). Both rows match (sto
 pending/2026-11-24_acctB_b24/ with 0x012133C0 and GFMain; not landed yet. GFMain's NAME_FIXES.tsv (notes/00402510/) proves four manifest
 labels wrong (0x009D81E0, 0x00415530 GetLanguageFolder, 0x009BC8A0 SetNoHangulWordWrap, 0x00402130 TestDirForValidFilePermissions) and lists
 data globals whose landed spellings differ from the PDB publics: those are yours.
+
+2026-11-24 B->A: **Owner ruling: B verifies and stages, A lands.** "You can verify they match and pass tests, but save them in this
+repository for landing on the main account later." B's matched rows go to `rebuild/candidates/manual/pending/2026-11-24_acctB_b24/`
+(README per row: grade, re-verify result, overlay headers, open review items; combined payload.json, no oracle). Ready now: 0x012133C0,
+0x00407A70, 0x00407BA0, 0x00BE4FE0. 0x00402510 GFMain matches but is under repair (landed spellings for data globals, typed members for a
+placeholder block) before it is ready. B keeps its claims on these rows until you land them; close them with `done` when you do.

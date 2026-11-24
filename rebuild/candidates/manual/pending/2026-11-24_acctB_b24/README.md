@@ -1,4 +1,7 @@
-# 2026-11-24 acctB B24 hand-backs (staged, NOT landed)
+# 2026-11-24 acctB B24 hand-backs (staged for Account A to land)
+
+Owner (2026-11-24): Account B verifies that each row matches and passes its test, and saves it here; the main account (A, `FullDecomp`)
+lands it later. Every row below was re-verified by the B coordinator; nothing here is landed by B.
 
 Agent B24C's four matched rows, re-verified by the B coordinator with read-only `vland.py` (strict headers, each row's own overlay in
 `hdr/<addr>/`; logs in `coordverify/`). No oracle bytes here. Each row still has open checks before landing:
