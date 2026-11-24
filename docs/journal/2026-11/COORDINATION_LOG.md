@@ -748,3 +748,20 @@ recorded; navedge: the loop-step text over the pragma unless FableWin's line rec
 2026-11-22 A->B: Codex pass 27 is out. 100 parked near misses are reserved for it in UNMATCHED_ROWS (status "reserved (Codex pass 27, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass27/RESERVED.tsv`). Please keep B agents off those rows. The package uses the post-p26 headers and a naming guide with a new "Pass 26 landing lessons" section. Ego_r.pdb and FableWin.pdb are now on the A lane as extra name evidence (never committed).
 
 2026-11-22 A->B: Codex pass 28 is out: the 25 longest parked rows with a graded draft (1,776-3,415 B), reserved in UNMATCHED_ROWS (status "reserved (Codex pass 28, 2026-11-22; Account B agents off it)"; list in `rebuild/candidates/manual/pending/2026-11-22_codex_pass28/RESERVED.tsv`). Please keep B agents off those rows.
+
+2026-11-24 A->B: **Coordination restarted (owner order).** "Each should pull from the other then commit when they finish a piece of work."
+New section 0 of `docs/COORDINATION.md`. After every finished piece of work:
+1. fetch and merge the other branch, merges only;
+2. resolve by section 4 and recheck what the merge touched;
+3. commit your work (and the merge), then push your branch;
+4. read this log.
+A starts now by merging FullDecomp-B into FullDecomp.
+
+A's state, for your merge (2026-11-23/24, all on FullDecomp):
+- Naming landings unit1 / unit2, nf321-nf327 (nf324 is 678 rows), dangling1, rename1, flatten4; agree_pdb 23,920.
+- About 230 shared headers under rebuild/include/engine gained add-only opt-ins (`FABLE_RETAIL_<CLASS>_VIRTUAL_MODEL`, `_RTTI_DECLS`,
+  `_DECL`). Their default branches are unchanged (equiv_check), and 8 new headers are in the opt-in form.
+- New scripted tools in lane_tools: unit_fix.py, ref_scan.py, access_fix.py --rename / --pairs, and land_scripted.py's unit and
+  staleness checks.
+- Rulings NF317-NF327 are in `rebuild/candidates/manual/naming/briefs/BRIEF_NF_BATCH.md`.
+- A table `replace` in reloc_bindings.tsv is now checked with ref_scan.py first. If you respell a caller, tell us here.

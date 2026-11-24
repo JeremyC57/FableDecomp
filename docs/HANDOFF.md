@@ -7,6 +7,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-24 (naming automation; agents NF321-NF327 all landed; nothing running)
+- **Coordination restarted (owner, 2026-11-24):** after every finished piece of work, fetch and merge the other branch (A `FullDecomp` <->
+  B `FullDecomp-B`), resolve, then commit and push. See `docs/COORDINATION.md` section 0 and COORDINATION_LOG.md.
 - **Read first:** `docs/journal/2026-11/2026-11-24_naming_automation.md` (landings, tools, rulings, the open and queued list).
 - **Landed today:**
 
