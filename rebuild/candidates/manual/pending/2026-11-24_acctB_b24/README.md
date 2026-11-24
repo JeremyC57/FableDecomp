@@ -163,3 +163,9 @@ Owner: "yes use it and mark inferred". Moved from held_needs_owner/ into rows/ a
 any binary on hand -- notes/0070d940_condition_evidence.md). Re-verified earlier: RELOCATION_MATCH PASS at stock flags, overlay hdr/0070d940/
 additive, every emitted copy EQ; warnings: DELTA_NOTIONAL_ZERO label, `_$E2` TU-local atexit thunk equal to retail 0x01229630. Link note for A:
 the row carries a verbatim copy of landed CAnimSet::GetMeshAnim 0x0070C900's body (your queued re-row onto the headers removes it).
+
+## 0x00DEE2E0 NScript::CQ_SecretPassageScript::CMotherTorture::Main: MATCHED, not yet marked ready (B24S2 still checking pick-any)
+Coordinator re-verify of the agent's payload: RELOCATION_MATCH PASS at STOCK flags, strict vland, no warnings. Overlay
+NScript_CQ_SecretPassageScript.h +24, additive. Uses today's recipe (CIsThingAlive ctor / dtor under inline_depth(0) with
+CPREDICATEBASE_NOVTABLE, the H40 form of 0x00DE9690 / 0x00ED8680; WideScreen FORCEINLINE ctor opt-in). Ready once the agent's pick-any
+result is in.
