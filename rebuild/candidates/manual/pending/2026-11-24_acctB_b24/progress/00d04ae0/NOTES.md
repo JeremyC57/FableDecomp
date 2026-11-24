@@ -1,0 +1,3 @@
+
+## B24A9 (2026-11-24) baseline on today's headers
+SRC_FAIL	NEEDS_PORT (B24A9): the draft's opt-in FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_ASSASSIN1 no longer exists; engine/CQ_BanditCampBossBattleScript.h only forward-declares class CAssassin1 (line 42; GATE2GUARD1 / BANDITKING / CROWDBANDITS / HOSTAGE / GAMEMASTER / FORGER / CAMPHOSTAGEGUARD opt-ins show the pattern for an add-only ASSASSIN1 section); best on record DIFFER(3847v3623) (MovieBase dtor inline budget)

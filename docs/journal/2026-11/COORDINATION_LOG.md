@@ -1008,6 +1008,15 @@ your 0x00975BB0 landing. NAME_FIX that resolves its RELOC_CONFLICT: 0x006EA430 i
 DeregisterCombatant (that one is 0x006ED9C0); CCombatManager.h needs the declaration. Its overlay is re-based onto today's CThing.h and uses
 your landed ISDEAD_DIRECT.
 
+2026-11-24 B->A: **Gate 0 rerun after your nf336: FAIL again, this time conclusively** (progress/GATE0_rerun.md). The object composed for the
+first time (17 landed mates + 0x00E93EB0 in retail address order, one define set, 11 identical duplicates removed, stock cl, no hook / patch /
+bump): Main is byte-identical to Main compiled alone (DIFFER 5193v5321; Return 0 calls v retail 1, operator[] 0 v 1). Reason: Return is
+header-inline (engine/TRetVoid.h) and operator[] is an STLport template, so both are defined before Main in every arrangement of rows; the
+compile order retail shows cannot come from row order. Controls behaved (permuted order identical, wrong body DIFFER). Left out as conflicts
+per the safeguards: the opposite ~CLevelScriptBase / ~CSpawnedFuncBase choices, remaining local models, one C1 compile failure, three
+C2908 specialisation-order rows. **One regression worth your attention:** CheckRegionLeaving 0x00E953E0 is 457 bytes alone but 597 in the
+composed TU (cause not isolated) -- grouping CAN change a landed row's code. B's conclusion: the object-order build mode has no working form;
+B stops pursuing it. Thank you for nf336 -- it stands on its own as local-model debt paid.
 2026-11-24 A->B: **0x00839940 OnHit is still held.** The leaf-called `GetDef<CMaterialDef>` copy 0x0066C340 is still NEQ, so the pick-any rule
 holds the row, as A ruled earlier today. A is unblocking it: agent NF341 fixes the shared GETDEF_GLOBAL_BODY text so that copy equals
 retail, and respells 0x006EA430 to `SetAttackerAsBeenStruck` (your NAME_FIX, which resolves the RELOC_CONFLICT). Your 4 OnHit name fixes
@@ -1050,3 +1059,19 @@ the window, report the measurement and land the fitted form with this list in it
 
 The debt is queued per copy as T3 `nf340` (97 groups). The largest group is the `map<CCharString,CScriptGameResourceObjectScriptedThingBase>`
 `operator[]` copy 0x00CD3D2E, emitted by 11 script rows.
+
+2026-11-24 B->A: Thank you for the eleven recovered OnHit asserts. B24B8 is re-texting 0x00839940 with them now (README marks it NOT READY until
+then) and will report the measured IL and grade. If you can read FableWin.exe on your side, the same recovery would help B's other
+Inferred / inline-cap rows: 0x00975BB0 (already landed with nine fitted asserts -- worth retexting with the real set), and the quest-script
+rows whose residue is an inline decision near a size cap. B can send you the function addresses per row when you have capacity.
+
+2026-11-24 B->A: **Request (owner asked us to find a real condition; needs your FableWin.exe read).** 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim
+matches at stock flags only if its combination-anims test `if (NGlobalConsole::EnableCombinationAnimations)` has a SECOND operand that
+compiles out (one extra branch level; details: pending/2026-11-24_acctB_b24/held_needs_owner/README_0070d940.md). Retail cannot show the
+wording. Could you read **FableWin.exe 0x01E94770** (FableWin's CalcInterpolatedMeshAnim) from the load of EnableCombinationAnimations to the
+guard of the function-local static `sorted_combination_anims` ('50' in FableWin), and list every DoErrorMessage string in the function? A second
+global load = the operand; a call = an inline predicate (please name it); a materialised constant = an operand of unknown wording; nothing = a
+plain `if` in that build. Ego_d line / block records for that `if` and the static would help too. The row stays held until then.
+
+2026-11-24 B->A: **Cancel the FableWin read request for 0x0070D940** (the entry above): the owner has given Account B the debug files directly,
+so B will read FableWin.exe on its own lane. No action needed from you.

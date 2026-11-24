@@ -93,7 +93,7 @@ first combination pass's `_M_insert_overflow` site scores 68 v the default 74) a
 landed 0x01219F00` (a compiler-generated static initializer symbol) plus RELOC_NAME 0x0129BA3C (label spelling). Staged only so the work is
 durable; the agent is still on it. Do not land until this section says READY.
 
-## 0x00839940 CThingGameObject::OnHit: READY, with an Inferred item for the lander (B24B5..B24B7, re-verified 2026-11-24)
+## 0x00839940 CThingGameObject::OnHit: NOT READY -- being re-texted (Account A, 2026-11-24: FableWin.exe 0x027EC280 has ELEVEN recoverable asserts; B is replacing the five fitted ones with them; A's NF341 fixes the GetDef<CMaterialDef> copy that holds the row). Earlier status: (B24B5..B24B7, re-verified 2026-11-24)
 RELOCATION_MATCH PASS, stock flags, strict vland on overlay `hdr/00839940/` (= the agent's `hdrf`, re-based by the coordinator onto today's
 CThing.h: it now uses the LANDED `FABLE_RETAIL_CTHING_ISDEAD_DIRECT` instead of the agent's identical `ISDEAD_BITFIELD`, and the one edited line
 is the existing `#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT` turned into `#if <ONHIT && ONHIT_HASTC_CLASSTYPE> ... #elif <ONHIT>`: default
@@ -108,3 +108,13 @@ Warnings: 6 RELOC_NAME (folded bodies / placeholder labels, two-source lookups i
 `DeregisterCombatant` -> 0x006EA430 here v 0x006ED9C0 in landed 0x007355F0 -- the landed spelling of 0x006EA430 is wrong: it is
 `CCombatManager::SetAttackerAsBeenStruck` (Ego_r object order and size, FableWin agree; notes/00839940/NAME_FIXES.tsv). Pick-any: every
 leaf-called copy compared (agent's leafcopies.py): 12 EQ, 1 NEQ = the known GetDef<CMaterialDef> 0x0066C340 HEAD debt.
+
+## 0x0070D940 CAnimateThing::CalcInterpolatedMeshAnim: MATCHED, HELD for an owner decision (B24C10, re-verified 2026-11-24)
+In `held_needs_owner/` (not in rows/ or payload.json). RELOCATION_MATCH PASS at STOCK flags, strict vland, overlay additive (11 headers, -0;
+two new: CAnimateThing_GetMeshBank.h, CAnimSetItPriorityLessThan.h); every emitted COMDAT copy EQ (both pick-any tools). Warnings: label
+DELTA_NOTIONAL_ZERO; `_$E2` TU-local atexit thunk, equal to retail 0x01229630. The match needs `// Inferred:` a compile-time-true second operand
+on the combination-anims test: `if (EnableCombinationAnimations && true)`. Mechanism measured: one `&&` halves the block frequency (0.5 ->
+0.25), so the first pass's `_M_insert_overflow` site scores 79 > 74 and is called as in retail while the second pass stays expanded; the
+admissible frequency window is (0.173, 0.365]; two `&&` levels fail. A second condition that is always true in this build is plausible (a
+debug / feature flag), but `&& true` is not what anyone wrote, and the global's name `NGlobalConsole::EnableCombinationAnimations`
+(0x013756F7) rests on one source (Ego_d publics, no address). Owner decision asked.

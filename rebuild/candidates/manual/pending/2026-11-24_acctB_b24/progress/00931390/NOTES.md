@@ -8,7 +8,7 @@
   visible body is best; OVERFLOW_OUTOFLINE same, DECL_ONLY far worse).
 - B24A7: GetTC/PeekTC ORIGINAL_CHAIN texts -- measured here: byte-identical to GETTC_EXPANDED (not the talk-site lever).
 
-## ORACLE LENGTH IS WRONG (tell coordinator)
+## (RESOLVED 2026-11-24: coordinator re-cut the oracle to 3863; fg now grades DIFFER(3863v3863) 29 hunks) ORACLE LENGTH WAS WRONG
 The registered oracle is 3891 bytes; the real function is 3863 bytes (0xF17: `ret` at 0x009322A6). The extra 28 bytes are 9 int3 pad
 plus an unreferenced 19-byte COMDAT at 0x009322B0 (fastcall `CIntelligentPointer != T*` shape). fg/q can never print MATCH; a match =
 only the trailing delete hunk left + raw compare of the first 3863 bytes. Correct length: 3863.
@@ -62,3 +62,21 @@ Best next ideas, in order:
 Tools in tools/: g.py (grade + save listing), slots.py (esp-slot map), fas.py (/FAs symbol map), pk/ (frame packer trace,
 pkshow.py), c2prio runs in v/prio_h3*.txt.
 - s1: FABLE_RETAIL_STLP_VECTOR_PUSHBACK_FINISH_LOCAL_PASS24 push_back text: byte-identical (no lever).
+
+## B24A9 (2026-11-24), 10 grades
+- Baseline after the re-cut: differ/ (= v/h3.cpp) DIFFER(3863v3863) 29 hunks; MATCH is now printable.
+- Listing reading (retail v ours, v/last_h3.cpp.txt): &doors goes ONLY to _M_insert_overflow in both (retail `lea ecx,[esp+48h]` with 5
+  pushes = esp+34h at 0x009314C9; ours esp+4Ch -> 38h). From the doors init through the gather-loop exit (read by eye) no other reference takes &doors; push-shifted references after the
+  loop (sort, `door` ctor, movement loop) were NOT searched. Both listings keep _M_finish in ebp ACROSS the loop's
+  GetPItem calls without reload (only the overflow call forces `mov ebp,[esp+38h]`), i.e. c2 already treats GetPItem as not modifying
+  doors in ours too. So (INFERENCE, resting on finish staying in ebp across GetPItem in both listings) it is not alias/exposure but the register choice for start's INIT piece (retail start is a candidate def
+  `xor esi,esi`; ours stores the shared ebp zero). Trace v/prio_h3.txt (the trace labels them only `local`; mapping INFERRED from their source-line sets = decl/push_back/size/sort/dtor lines): start = candidate #32 (lines 96..142, prio -238, split: eax
+  #186, esi #21, eax #155, 1 piece memory); finish = #174 (prio 98, ebp); end_of_storage = #175 (prio -38, memory).
+- No lever (all 29 hunks or worse): owner declared before doors (o1); owner = NULL (o3); owner hoisted to function scope (o4);
+  `bool has_owner = PeekTC(..)` (q5). `!doors.empty()` 3847 / 30 hunks (o2: retail tests size, `sub; test edx,0FFFFFFFCh`).
+  doors declared in the do body before the block-1 if: 3843 / 199 hunks (q1; retail destroys doors at 0x00931705, inside block 1).
+  push_back(*it) implicit conversion: SRC_FAIL (q6).
+- Talk sites (idea 2), read only: retail `mov esi,[eax+18h]` ... `add esi,44h` (thing and the TC map coalesced in esi: the inlined
+  GetTC `this` is a register variable); ours `mov eax,[eax+18h]` ... `lea esi,[eax+44h]`. Next: an inline layer whose `this` param is
+  the creature (e.g. a CThing member called on GetCreature()'s reference through one more inline function) -- only with real header text.
+- State: best unchanged = differ/00931390.cpp. Moved to the next B24D row on the coordinator's queue with this row still open.
