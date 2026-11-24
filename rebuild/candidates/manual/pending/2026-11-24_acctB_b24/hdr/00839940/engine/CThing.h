@@ -1,0 +1,880 @@
+// Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
+#ifndef FABLE_ENGINE_CTHING_H
+#define FABLE_ENGINE_CTHING_H
+#include "fable_compiler.h"
+// Original CThing hierarchy and members from Ego_r TPI 0xbbaf; native
+// AutoPlace/OnHit confirm PhysicsTC+60, PBaseDef+70, Dead+91; ABI size98.
+#ifndef FABLE_RETAIL_CCLASS
+#define FABLE_RETAIL_CCLASS
+#endif
+#ifndef FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#endif
+#include "engine/CClass.h"
+#include "fable_string.h"
+#include "engine/CDefPointer.h"
+#include "engine/CVectorMap.h"
+#include "engine/ETCInterfaceType.h"
+class C3DVector; class CTCPhysicsBase; class CTCBase; class CTCDriverBase;
+class CThingBaseDef; class CWorld; class CPlayerManager;class CTCParamsBase;
+#ifdef FABLE_RETAIL_CTHING_LEVELSCRIPT
+class CWorldMap;                                                 // chunk 771: GetWorldMap return type
+#endif
+#ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
+class CThingManager; class CThingSearchTools;                   // chunk 765: the manager accessors' types
+#endif
+#ifdef FABLE_RETAIL_CTHING_SETCURRENTTHINGMANAGER
+class CThingManager;                                            // chunk 1022: SetCurrentThingManager's parameter type
+#endif
+#ifdef FABLE_RETAIL_CTHING
+class CMainGameComponent; class CPlayer;                        // chunk 732: PeekComponent / GetPlayer return types
+#endif
+#ifdef FABLE_RETAIL_CTHING_MOREACCESS
+class CGameDefinitionManager; class CASoundBank; class CWorldMap;   // plan phase 7: FABLE_RETAIL_CTHING_MOREACCESS return types
+#endif
+#ifdef FABLE_RETAIL_CTHING_PEEKGLOBALDEFINITION
+class CGlobalDef;                                                // chunk 2039: PeekGlobalDefinition's return type
+#endif
+#ifdef FABLE_RETAIL_CTHING_LOADSINGLE
+class CPersistContext; class CMemoryDataInputStream;            // chunk 846: the serialise virtuals' parameter types
+#endif
+#ifdef FABLE_RETAIL_CTHING_STATEACCESS
+class CScriptThing; class CDefString;                           // plan phase 6: GetScriptThing / GetDefName return types
+#endif
+#ifdef FABLE_RETAIL_CTHING_CUTSCENEPAUSE
+#include "engine/ECutsceneBehaviour.h"                          // agentNF10: SetCutscenePauseBehaviour's parameter type
+#endif
+namespace NGraphicAppearance { class CTCGraphicAppearance; }
+// FableWin GetTC<T> debug instantiations name this checked-cast template;
+// the release path is the identity-adjusted static cast observed in native lookups.
+#include "engine/GFDebugPDynamicCast.h"
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) || defined(FABLE_RETAIL_CTCHEALLIFE_START_ORIGINAL)
+// Original donor024CFED8 instantiates this checked cast; debug checks vanish in retail.
+template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
+#endif
+#if defined(FABLE_RETAIL_GFDEBUGDYNAMICCAST) && !defined(FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST) && !defined(FABLE_RETAIL_CTCHEALLIFE_START_ORIGINAL)
+// e05 opt-in (egod lane, row 0x00798940): the same checked cast for any row. FableWin.pdb
+// ??$GFDebugDynamicCast@VCThingCreatureBase@@VCThingPhysical@@@@YIPAVCThingPhysical@@PAVCThingCreatureBase@@PAV0@@Z; Ego_d
+// tc_force_pushed.obj instantiates GFDebugDynamicCast<CThingCreatureBase,CThingPhysical>. Identical body.
+template<class From,class To> inline To* FABLE_FASTCALL GFDebugDynamicCast(From* value,To*) { return static_cast<To*>(value); }
+#endif
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+class CPersistContext;class CMemoryDataInputStream;class CInterpolationInfo;class CThingInfo;class CEditEngineDrawInfo;class CThingDrawInformation;class CThingPhysicalDebugInfo;class CEnginePrimitivePrepareInfo;enum ECollideType;
+#endif
+class CThing : public CClass {
+#ifdef FABLE_ONHIT_TEST_ACCESS
+    friend class COnHitFixture;
+#endif
+
+#ifdef FABLE_AUTOPLACE_TEST_ACCESS
+    friend class CAutoPlaceFixture;
+#endif
+protected:
+    unsigned __int64 UniqueID;
+    std::bitset<274> UsingComponents;
+    CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Components;
+    std::list<CTCBase*> UpdateComponentsList;
+    CCharString SerialisationSectionName;
+    CTCDriverBase* PTCDriver;
+    CTCPhysicsBase* PhysicsTC;
+    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;
+    long WorldFrameCreatedAt;
+    unsigned long ThingTypeFlags;
+    CDefPointer<const CThingBaseDef> PBaseDef;
+    CCharString ScriptName;
+    CCharString ScriptData;
+public:
+    CThing* RenderListPrev;
+    CThing* RenderListNext;
+    CThing* UpdateListPrev;
+    CThing* UpdateListNext;
+protected:
+    unsigned short DefGlobalIndex;
+    short CurrentMapNumber;
+    signed char PlayerNumber;
+
+protected:
+    unsigned char Dead : 1;
+    unsigned char CreatedByOwnerThingCreation : 1;
+    unsigned char IncludeInThingScans : 1;
+    unsigned char Activated : 1;
+    unsigned char GloballyLoaded : 1;
+    unsigned char InLimbo : 1;
+    unsigned char KillLocked : 1;
+    unsigned char CreatedBySerialisation : 1;
+    unsigned char DeletedOnOwnerLevelOutOfScope : 1;
+    unsigned char Drawable : 1;
+    unsigned char Dying : 1;
+    unsigned char ForceFrameUpdate : 1;
+    unsigned char LevelPersistent : 1;
+    unsigned char GameStatePersisted : 1;
+    unsigned char PersistOnUnloadWhenInLimbo : 1;
+    unsigned char PausedDuringCutscenes : 1;
+    unsigned char NotPausedDuringCutscenes : 1;
+    unsigned char DeathPersistent : 1;
+    unsigned char KillOnLevelUnload : 1;
+    unsigned char ActivatedScript : 1;
+    unsigned char LevelIsUnloading : 1;
+    unsigned char IsAffectedByBulletTimeOverride : 1;
+    unsigned char AddingTCsPermitted : 1;
+
+private:
+    unsigned char InitialisationStage : 3;
+public:
+#ifdef FABLE_RETAIL_CTHING_ENTITYINITLEVEL
+    // p25Q opt-in (rows 0x0051E2F0 CThingManager::ActivateThings / 0x00521CF0): Ego_d.pdb nested enum CThing::EEntityInitLevel (TPI 0xB79E:
+    // ENTITY_INIT_NONE 0, ENTITY_INIT_ON_CREATE 1, ENTITY_INIT_INITIAL_ACTIVATE 2, ENTITY_INIT_DONE 3; the InitialisationStage bitfield
+    // type) and the private const accessor ?GetEntityInitLevel@CThing@@ABE?AW4EEntityInitLevel@1@XZ (FableWin.pdb 0x01CF5C90; Ego_d line 192,
+    // 26 B), inline in retail (0x0051E332 `test byte ptr [ecx+94h],7`). ActivateThings calls it from CThingManager (Ego_d lines 2059 /
+    // 2075 / 2093: one 8-B call each), so CThingManager is a friend of CThing. No layout change.
+    enum EEntityInitLevel { ENTITY_INIT_NONE = 0, ENTITY_INIT_ON_CREATE = 1, ENTITY_INIT_INITIAL_ACTIVATE = 2, ENTITY_INIT_DONE = 3 };
+    friend class CThingManager;
+private:
+    EEntityInitLevel GetEntityInitLevel() const { return (EEntityInitLevel)InitialisationStage; }
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_TCDRIVER
+    // Retail opt-in (chunk 864, row 0x0050A650 via the CThingSearchTools TCD rough-area body; kept outside the FABLE_RETAIL_CTHING
+    // method block so the body opt-in does not need it): FableWin.pdb
+    // ?HasTCDriver@CThing@@QBE_NXZ (0x01CCC3F0), ?GetTCDriver@CThing@@QAEAAVCTCDriverBase@@XZ (0x01CCC420) and
+    // ?GetTCDriver@CThing@@QBEABVCTCDriverBase@@XZ (0x01CF9F90): the PTCDriver (+0x5C) null test and the driver reference,
+    // inline in retail (0x00518A54 `mov ecx,[edi+5Ch] ; test ecx,ecx` then the slot-28 virtual on it). No layout change.
+    bool HasTCDriver() const { return PTCDriver!=0; }
+    CTCDriverBase& GetTCDriver() { return *PTCDriver; }
+    const CTCDriverBase& GetTCDriver() const { return *PTCDriver; }
+#endif
+#ifdef FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+public:class CSerialiseInfo;
+public:
+ virtual bool SerialiseGameState(CPersistContext & p0);
+ virtual bool ConstructFromLevelScript(const char * p0);
+ virtual bool ConstructAlreadyExistingThingFromLevelScript(const char * p0);
+ virtual bool ConstructFromGameStateScript(const char * p0);
+ virtual void CopyGameState(const CThing & p0);
+ virtual bool OnCreate();
+ virtual void InitialActivate();
+ virtual void OnInitialActivate();
+protected:
+ virtual void OnDie();
+ virtual void OnKill();
+ virtual bool PreOnKill();
+ virtual void OnSetInLimbo(bool p0);
+ virtual void CreateFromDef(const CThingBaseDef & p0);
+public:
+ virtual void ConstructFromBinarySave(CMemoryDataInputStream & p0, const CThing::CSerialiseInfo & p1);
+ virtual bool IsToBePlacedInMap() const;
+ virtual bool ValidateThing(CCharString & p0) const;
+ virtual bool WorldUpdate();
+ virtual void WorldUpdateBulletTime();
+ virtual bool RenderUpdate(const CInterpolationInfo * p0);
+ virtual bool IsEntitySerialisable() const;
+ virtual unsigned long GetChecksum() const;
+ virtual void GetInfo(CThingInfo * p0) const;
+ virtual bool DrawGetEditDrawInfo(float p0, CEditEngineDrawInfo * p1) const;
+ virtual void DrawUpdate(const CInterpolationInfo * p0);
+ virtual bool DrawIsDrawable() const;
+ virtual void SetAsDrawable(bool p0);
+ virtual bool DrawIsEditDrawable() const;
+ virtual bool DrawIsInDrawList() const;
+ virtual unsigned long DrawGetPhysicsMesh() const;
+ virtual bool DrawIsShowingFacingDirection() const;
+ virtual bool DrawIsDisplayingInformation() const;
+ virtual bool DrawGetThingDisplayInformation(CThingDrawInformation * p0) const;
+ virtual bool DrawGetPhysicsDebugInfo(CThingPhysicalDebugInfo & p0) const;
+ virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo & p0);
+ virtual void SetThingStandingOn(CThing * p0);
+ virtual const CThing * GetThingStandingOn() const;
+ virtual CThing * GetThingStandingOn();
+ virtual long GetFloorMaterial() const;
+ virtual void OnCollision(ECollideType p0, const C3DVector & p1, const C3DVector & p2, CThing * p3);
+ virtual void OnNonKillingLevelUnload();
+ virtual void OnLevelUnload();
+ virtual bool IsFrameUpdated() const;
+ virtual void SetPositionUsingBrain();
+#elif defined(FABLE_RETAIL_CTHING_LOADSINGLE)
+    // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): the CThing virtuals of vtable 0x01239ABC slots 3..16 in
+    // retail slot order (catalog / rtti-vtables: 3 SerialiseGameState 0x004CD1A0, 4 ConstructFromLevelScript 0x004CAA00, 8 OnCreate
+    // 0x004C9560, 9 InitialActivate 0x004C9690, 10 OnInitialActivate 0x004C97B0, 11 OnDie 0x004C7D50, 12 OnKill 0x004C7CF0,
+    // 15 CreateFromDef 0x004CA930, 16 ConstructFromBinarySave 0x004CA390), spelled as the Ego_r.pdb name set (U = public virtual,
+    // M = protected virtual); LoadSingleThing calls slots 4 (+0x10), 8 (+0x20), 9 (+0x24), 10 (+0x28) and 16 (+0x40). The nested
+    // CSerialiseInfo (Ego_r.pdb, 16 bytes: UID +0, DefinitionType +8, Player +0xC; landed 0x004C81F0 reads those offsets), the two
+    // static __fastcall SerialiseThingInfo overloads (0x004C81F0 / 0x004C88E0, landed under these spellings) and the inline
+    // FableWin.pdb accessors ?IsToKillOnLevelUnload@CThing@@QBE_NXZ (`test byte ptr [ebp+93h],4`, bit 18 of the +0x91 run) and
+    // ?SetSerialisationSectionName@CThing@@QAEXABVCCharString@@@Z (`lea ecx,[ebp+58h] ; call CCharString::operator=`).
+    // Not to be combined with FABLE_RETAIL_CTHING_LEVELSCRIPT (which declares slot 4 alone). No layout change: CThing has its vptr.
+    class CSerialiseInfo {
+    public:
+        unsigned __int64 UID;                                    // +0x00
+        CCharString DefinitionType;                              // +0x08
+        signed char Player;                                      // +0x0c
+    };
+    virtual bool SerialiseGameState(CPersistContext&);           // slot 3
+    virtual bool ConstructFromLevelScript(const char*);          // slot 4  0x004CAA00
+    virtual bool ConstructAlreadyExistingThingFromLevelScript(const char*);   // slot 5
+    virtual bool ConstructFromGameStateScript(const char*);      // slot 6
+    virtual void CopyGameState(const CThing&);                   // slot 7
+    virtual bool OnCreate();                                     // slot 8  0x004C9560
+    virtual void InitialActivate();                              // slot 9  0x004C9690
+    virtual void OnInitialActivate();                            // slot 10 0x004C97B0
+protected:
+    virtual void OnDie();                                        // slot 11 0x004C7D50
+    virtual void OnKill();                                       // slot 12 0x004C7CF0
+    virtual bool PreOnKill();                                    // slot 13
+    virtual void OnSetInLimbo(bool);                             // slot 14
+    virtual void CreateFromDef(const CThingBaseDef&);            // slot 15 0x004CA930
+public:
+    virtual void ConstructFromBinarySave(CMemoryDataInputStream&,const CSerialiseInfo&);   // slot 16 0x004CA390
+#ifdef FABLE_RETAIL_CTHING_ISPLACED
+    // Retail opt-in (Codex pass17): original public const virtual slot17, native004c7b80.
+    virtual bool IsToBePlacedInMap() const;
+#endif
+#ifdef FABLE_RETAIL_CTHING_DRAWABLE
+    // Nested opt-in (w22 agent1016, row 0x005EABC0 CTCTavernGame::PositionMesh calls slots 27 (+0x6C) and 28 (+0x70)); needs
+    // FABLE_RETAIL_CTHING_ISPLACED (slot 17). The CThing virtuals of vtable 0x01239ABC slots 18..28 in retail slot order, spelled as the
+    // Ego_r.pdb / FableWin.pdb name set: 18 ValidateThing, 19 WorldUpdate, 20 WorldUpdateBulletTime, 21 RenderUpdate (Ego_r 0x004C90A0),
+    // 22 IsEntitySerialisable, 23 GetChecksum, 24 GetInfo (Ego_r 0x004C9750), 25 DrawGetEditDrawInfo (Ego_r 0x004C90B0), 26 DrawUpdate (FableWin.pdb ?DrawUpdate@CThing@@UAEXPBVCInterpolationInfo@@@Z; vtable 0x01239ABC slot 26 = 0x004CD1D0
+    // `ret 4`, the one-argument void virtual with an empty body),
+    // 27 DrawIsDrawable (retail 0x004C7790, Ego_r 0x004C9350), 28 SetAsDrawable (retail 0x004C8E50, Ego_r 0x004CAD50). Declarations only.
+    virtual bool ValidateThing(CCharString&) const;                     // slot 18
+    virtual bool WorldUpdate();                                          // slot 19
+    virtual void WorldUpdateBulletTime();                                // slot 20
+    virtual bool RenderUpdate(const class CInterpolationInfo*);          // slot 21
+    virtual bool IsEntitySerialisable() const;                           // slot 22
+    virtual unsigned long GetChecksum() const;                           // slot 23
+    virtual void GetInfo(class CThingInfo*) const;                       // slot 24
+    virtual bool DrawGetEditDrawInfo(float, class CEditEngineDrawInfo*) const;   // slot 25
+    virtual void DrawUpdate(const class CInterpolationInfo*);            // slot 26
+    virtual bool DrawIsDrawable() const;                                 // slot 27 0x004C7790
+    virtual void SetAsDrawable(bool);                                    // slot 28 0x004C8E50
+#endif
+#ifdef FABLE_RETAIL_CTHING_SAVE
+    // Retail opt-in (chunk Q2, row 0x004C9120): Ego_r.pdb 0x004CAF70 ?Save@CThing@@UAEXAAVCCharString@@@Z (the CClass slot 2 override:
+    // vtable cells 0x01239AC4 / 0x01272C2C / 0x01272EEC hold 0x004C9120) and ?SaveSerialiseCreatableTCs@CThing@@IBEXAAVCCharString@@@Z
+    // (the landed 0x004C72D0). Declarations only: an override adds no slot, no layout change.
+    virtual void Save(CCharString&);                             // 0x004C9120
+protected:
+    void SaveSerialiseCreatableTCs(CCharString&) const;          // 0x004C72D0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_SAVEBINARY
+    // Retail opt-in (chunk Q2, row 0x004C84B0): Ego_r.pdb 0x004C9E60 / FableWin.pdb 0x01CF18B0 ?SaveBinary@CThing@@QAEXAAVCDataOutputStream@@@Z
+    // (retail 0x004C84B0, `ret 4`; called by CThingManager's binary saver at 0x005222B5 with a CMemoryDataOutputStream). Declaration only.
+    void SaveBinary(class CDataOutputStream&);                   // 0x004C84B0
+#endif
+    static void __fastcall SerialiseThingInfo(CPersistContext&,CSerialiseInfo&);           // 0x004C81F0
+    static void __fastcall SerialiseThingInfo(bool,CCharString&,CSerialiseInfo&);         // 0x004C88E0
+    bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }
+    void SetSerialisationSectionName(const CCharString& name) { SerialisationSectionName=name; }
+#ifdef FABLE_RETAIL_CTHING_CONSTRUCTFROMBINARYSAVE
+    // Nested opt-in (chunk 2008, row 0x004CA390 ConstructFromBinarySave): Ego_r.pdb 0x004C9B80 ?InitFromThingInfo@CThing@@AAE_NABVCSerialiseInfo@1@@Z
+    // (private; FableWin.pdb 0x01CEFCE0), out of line in retail at 0x004C7F40 (the landed row; ConstructFromBinarySave passes its
+    // CSerialiseInfo argument, 0x004CA449..0x004CA456). Declaration only: no layout change.
+private:
+    bool InitFromThingInfo(const CSerialiseInfo&);               // 0x004C7F40
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_CONSTRUCTFROMLEVELSCRIPT
+    // Nested opt-in (chunk 2016, row 0x004CAA00 ConstructFromLevelScript): Ego_r.pdb 0x004CC640 / FableWin.pdb 0x01CF0320
+    // ?CreateSerialiseCreatableTCs@CThing@@IAEXABVCCharString@@@Z (protected; the load twin of SaveSerialiseCreatableTCs), out of line in
+    // retail at 0x004CA230 (the landed row, spelled there as the descriptive public CreateTCsFromString; the level-script loader calls it
+    // with its script string, 0x004CAE5B..0x004CAE62). Declaration only: no layout change.
+protected:
+    void CreateSerialiseCreatableTCs(const CCharString&);        // 0x004CA230
+public:
+#endif
+#endif
+    void Kill(bool); // Ego_r original public member; native004c9b80.
+#ifdef FABLE_RETAIL_CTHING_LEVELPERSISTENCE
+    // Retail opt-in (chunk Q17, row 0x0095B820 CAIStateGroup_HoverHornetQueen::Spawn): FableWin.pdb ?SetAsLevelPersistent@CThing@@QAEX_N@Z
+    // (0x01CEFC40; no Ego_r.pdb or Fable.exe copy: inline, the bit-4 store into +0x92 at 0x0095B986) and, unless the LOADSINGLE branch
+    // above already declares it, ?IsToKillOnLevelUnload@CThing@@QBE_NXZ (`test byte ptr [ecx+93h],4`, 0x0095B90A). No layout change.
+    void SetAsLevelPersistent(bool persistent) { LevelPersistent=persistent; }
+#if !(defined(FABLE_RETAIL_CTHING_LOADSINGLE) && !defined(FABLE_RETAIL_CTHING_ORIGINAL_VTABLE))
+    bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }
+#endif
+#endif
+    CTCBase* AddTC(const CCharString&,bool,const CTCParamsBase*);
+#ifdef FABLE_RETAIL_CTHING_INITTC
+    // NF90 opt-in (round 7, q11188 binder row 0x004C9D60 AddTC): Ego_r.pdb (0x004C94D0) + FableWin.pdb (0x01CF5BD0) ?InitTC@CThing@@AAEXPAVCTCBase@@@Z
+    // (private, out of line at 0x004C73E0). Declaration only: no layout change.
+private:
+    void InitTC(CTCBase* tc);                                            // 0x004C73E0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_TCSTOBEREMOVED
+    // NF90 opt-in (round 7, q11188 binder row 0x004C9D60 AddTC): the private static
+    // ?TCsToBeRemoved@CThing@@0V?$list@U?$pair@V?$CIntelligentPointer@VCThing@@@@PAVCTCBase@@@std@@..@std@@A (Ego_d.pdb PUB32; Ego_r / FableWin
+    // name its dynamic initializer and atexit destructor; retail 0x013B8A24, initializer 0x0121A440). Needs engine/CIntelligentPointer.h and
+    // the STLport list. Declaration only: no layout change.
+private:
+    static std::list<std::pair<CIntelligentPointer<CThing>, CTCBase*> > TCsToBeRemoved;   // 0x013B8A24
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_DTOR
+    // NF92 opt-in (round 7, q11218 binder row 0x004C8310): Ego_r.pdb ??1CThing@@MAE@XZ (protected virtual destructor, retail 0x004C8310; it
+    // overrides CBaseObject's slot 0). Declaration only: no layout change.
+protected:
+    virtual ~CThing();
+public:
+#endif
+    CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }
+    const CThingBaseDef& PeekBaseDef() const;                    // inline in retail: body `return *PBaseDef;` defined after CThingBaseDef is complete
+#ifdef FABLE_RETAIL_CTHING_HASBASEDEF
+    // Retail opt-in (chunk 1021, row 0x0066BC10 CTCSoundPlayer::GetPotentialCriteriaStrings): FableWin.pdb ?HasBaseDef@CThing@@QBE_NXZ
+    // (0x01ADDD40; no Ego_r.pdb or Fable.exe copy: inline, the caller null-tests the PBaseDef word +0x70 in place, `mov ecx,[eax+70h] ;
+    // test ecx,ecx`, 0x0066BC14). No layout change.
+    bool HasBaseDef() const { return !PBaseDef.IsNull(); }
+#endif
+    unsigned long GetDefGlobalIndex()const{return DefGlobalIndex;}
+#ifdef FABLE_RETAIL_CTHING_CUTSCENEPAUSE
+    // Retail opt-in (agentNF10, row 0x00730630 CTCDoor::CTCDoor): Ego_r.pdb / FableWin.pdb ?SetCutscenePauseBehaviour@CThing@@QAEXW4ECutsceneBehaviour@@@Z,
+    // out of line in retail at 0x004C78A0 (the door ctor pushes 2 = CUTSCENE_BEHAVIOUR_NOT_PAUSED with ecx = ParentThing, 0x00730692).
+    // Declaration only: no layout change.
+    void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);         // 0x004C78A0
+#endif
+#ifdef FABLE_RETAIL_HEARING
+    long GetWorldFrameCreatedAt()const{return WorldFrameCreatedAt;}
+#endif
+    unsigned __int64 GetUniqueID() const { return UniqueID; }
+    long GetCurrentMapNumber() const { return CurrentMapNumber; }
+#ifdef FABLE_RETAIL_CTHINGMAPMANAGER_PLACE_PASS27
+    bool IsLocal() const;
+#endif
+    bool IsLevelLess() const;
+#ifdef FABLE_RETAIL_CTHING_ISDEAD_DIRECT
+    // Opt-in (B24A7, row 0x00975BB0): FableWin.pdb ?IsDead@CThing@@QBE_NXZ is 10i/22b at /Od, which `return Dead;` gives exactly (fwsize
+    // SAME); `return Dead!=0;` is 14i/32b. Same value (the one-bit field converted to bool). Body only: default path unchanged.
+    bool IsDead() const { return Dead; }
+#else
+    bool IsDead() const { return Dead!=0; }
+#endif
+#ifdef FABLE_RETAIL_CTHING_SCANINCLUSION_OUTOFLINE
+    // Plan phase 6 (2026-11-05): the same member called out of line, as retail does in the TUs of the 4 landed binders of 0x0048BC40
+    // (catalog CThing::IsIncludedInThingScans; Ego_r.pdb / FableWin.pdb ?IsIncludedInThingScans@CThing@@QBE_NXZ). Everywhere else
+    // retail expands the body below.
+    bool IsIncludedInThingScans() const;                         // 0x0048BC40
+#elif defined(FABLE_RETAIL_CTHING_SCANINCLUSION_ISALIVE)
+    // wfA1 (row 0x006D0830 CTCWife::GlobalUpdate, through its same-TU GetAllLeafThings<CThingVillage> COMDAT 0x006D4600): the alive test
+    // as IsAlive()'s `!Dead` (`mov cl,al ; not cl ; test cl,1`, out-of-line copy 0x0048BC4E, expanded at 0x006D4637). No layout change.
+    bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && IsAlive() && !InLimbo; }
+#else
+    bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && !Dead && !InLimbo; }
+#endif
+    bool IsAlive() const { return !Dead; }
+#ifdef FABLE_RETAIL_CTHING_CREATEDBYOWNER
+    // Retail opt-in (chunk 1003, row 0x005B3AEF CTCInventoryClothing::OnInitialActivate): FableWin.pdb
+    // ?SetAsCreatedByOwnerThingCreation@CThing@@QAEX_N@Z (no out-of-line copy in Ego_r.pdb or Fable.exe: the row sets bit 1 of the
+    // +0x91 run in place, `or al,2 ; mov [ecx],al` at 0x005B3C33). Body unproven beyond that store. No layout change.
+    void SetAsCreatedByOwnerThingCreation(bool created) { CreatedByOwnerThingCreation = created; }
+#endif
+#if defined(FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE) || defined(FABLE_RETAIL_CTHING_HASTC_MATERIALISED)   // FABLE_RETAIL_CTHING_HASTC_MATERIALISED (wf17, row 0x007E2A60 CTCFineDialogue::GlobalUpdate): same body, own opt-in; retail `and cl,1 ; mov [esp+13h],cl` at 0x007E2AC1 / 0x007E2B9E / 0x007E2C27. No layout change.
+    // Native0076efeb and0076f1d6 materialise the component-presence boolean.
+    bool HasTC(ETCInterfaceType type) const { const bool& found=UsingComponents.test(type); return found; }
+#else
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) || defined(FABLE_RETAIL_CTHING_HASTC_FORCEINLINE)
+    // FABLE_RETAIL_CTHING_HASTC_FORCEINLINE (chunk Q23, row 0x006C1250 CTCBuyableHouse::FrameUpdate): the same __forceinline HasTC
+    // under its own opt-in name. Retail tests the UsingComponents word in place in that large function (`test dword ptr [eax+28h],
+    // 80000h` TCI_SHOP, `mov ecx,[eax+34h] ; test ch,8` TCI_TAVERN, `test byte ptr [eax+24h],8` TCI_VILLAGE_MEMBER at 0x006C130C ..
+    // 0x006C1409); plain inline leaves the test() result materialised in a stack byte (`shr ; and cl,1 ; mov [esp+0Bh],cl`) once the
+    // function's inline budget is spent. Like GetTC<T> / PeekTC<T> (owner decision 2026-11-01): no out-of-line copy in Ego_r.pdb or
+    // Fable.exe. No layout change.
+    FABLE_FORCEINLINE
+#endif
+#ifdef FABLE_RETAIL_CTHING_HASTC_SPEED_OWNER_PASS27
+    bool HasTC(ETCInterfaceType type) const;
+#else
+    bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
+#endif
+#if defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT) && defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT_HASTC_CLASSTYPE) && !defined(FABLE_RETAIL_CTHING_GETTC_EXPANDED)
+    // Opt-in (B24B5/B24B6, row 0x00839940 CThingGameObject::OnHit): the FABLE_RETAIL_CTHING_HASTC_CLASSTYPE body (retail's out-of-line
+    // HasTC<CTCActionUseActivateQuest> 0x006AE680: PeekTC, then the class-name equality) for the ONHIT configuration, which does not use
+    // FABLE_RETAIL_CTHING_GETTC_EXPANDED. OnHit expands HasTC<CTCActionUseWindow> at 0x00839C5B..0x00839D58 in this shape. Default unchanged.
+    template<class T> FABLE_FORCEINLINE bool HasTC() const {
+        const CTCBase* tc;
+        if(PeekTC(T::StatGetInterfaceType(),&tc)) {
+            if(tc->GetClassTypeName()==T::StatGetClassTypeName())
+                return true;
+        }
+        return false;
+    }
+#elif defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+    // Original FableWin donor024db630: presence, GetTC, exact class-name equality.
+    template<class T> FABLE_FORCEINLINE bool HasTC()const {
+        if(!HasTC(T::StatGetInterfaceType()))return false;
+        return GetTC(T::StatGetInterfaceType()).GetClassTypeName()==T::StatGetClassTypeName();
+    }
+#endif
+#endif
+    // GetTC<T> / PeekTC<T>: __forceinline (owner decision 2026-11-01, EXTRA_RULES): Ego_r.pdb (the release build) has no
+    // ??$GetTC@ / ??$PeekTC@ instantiation (FableWin.pdb, debug: 267 / 159), Fable.exe has no out-of-line copy, and plain
+    // `inline` leaves calls under VC7.1's budget (0x00667450 ReactToGenericStrike: GetTC<CTCDExplosion> and
+    // PeekTC<const CTCCreatureModeManager> called out of line, 1625 v 1755 bytes).
+    // GetTC<T> body (Codex pass 11 consolidation 2): HasTC then Components.Find, like PeekTC. 0x00667D30 OnHit tests the
+    // UsingComponents bit in place (`mov eax,[edi+20h]; test ah,ah; jns`); a `const bool&` local stores it first.
+#ifdef FABLE_RETAIL_CTHING_GETTC_EXPANDED
+    // Plan phase 6 (2026-11-05, the CThing header wave): the same member templates with their bodies written out as the migrated
+    // rows' local models had them and as retail expands them (0x0069F4F0, 0x00782390, 0x00634890 ...): the UsingComponents test,
+    // CVectorMap::LowerBound (out of line in retail: 0x0040F020 non-const, 0x004365B0 const), the end-or-greater test, the store
+    // through the out pointer. The default branch's HasTC + Components.Find gives the same bytes only where VC7.1 expands Find in
+    // place; this branch does not depend on that. GetTC(id, ptc) is FableWin.pdb ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z
+    // (also under FABLE_RETAIL_CTHING_ADDANDCOPYTC below, which yields to this branch). The cast is written in the C style so that a
+    // TU whose T is a flat stand-in model (not derived from a complete CTCBase) compiles; for a complete T derived from CTCBase it is
+    // exactly the static_cast of GFDebugPDynamicCast (single inheritance, no adjustment).
+    // Shape (the 1,502 local models of this body the plan migrated, e.g. 0x00435000 / 0x0056FF3D / 0x004BFB40, and retail's bytes
+    // there): the key is copied into a local inside the test (the `mov [ebp-4],<id>` store sits after the presence test, not
+    // before it); the map is reached through a pointer local (`add esi,44h ; mov ecx,esi ... mov esi,[esi+4]`: the end read
+    // through the same register -- written straight on Components VC7.1 hoists the key store above the test and reads end() as
+    // `[esi+48h]`); the end-or-greater choice is the conditional expression, not an `if` re-assignment (0x004BFB40 loads the
+    // component straight into ecx for the next call, `mov ecx,[eax+4]`; the if form goes through eax, 276 v 272 bytes). Gate
+    // results over the first 140 migrated rows: the if form 106 passing, this form 115, a superset.
+    template<class T> FABLE_FORCEINLINE bool GetTC(ETCInterfaceType id,T** ptc) {
+        if(HasTC(id)) {
+            ETCInterfaceType type=id;
+            CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >* map=&Components;
+            CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::iterator it=map->LowerBound(type);
+            *ptc=(T*)((it==map->end()||type<it->first)?map->end():it)->second;
+            return true;
+        }
+        return false;
+    }
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id,T** ptc) const {
+#ifdef FABLE_RETAIL_CTHING_COMPONENT_QUERY_PASS27
+        // Inline-budget: retain the direct const bitset test in the exclusive-use predicate at 006A8AF0.
+        if(UsingComponents.test(id)) {
+#else
+        if(HasTC(id)) {
+#endif
+            ETCInterfaceType type=id;
+            const CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >* map=&Components;
+            CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::const_iterator it=map->LowerBound(type);
+            *ptc=(const T*)((it==map->end()||type<it->first)?map->end():it)->second;
+            return true;
+        }
+        return false;
+    }
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** result) { return GetTC(T::StatGetInterfaceType(),result); }
+    template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const { return PeekTC(T::StatGetInterfaceType(),result); }
+#ifdef FABLE_RETAIL_CTHING_GETTCOFLEAFTYPE
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ??$GetTCOfLeafType@VCTCTargetingPlayer@@@CThing@@QAE_NPAPAVCTCTargetingPlayer@@@Z
+    // (also ..@VCTCTargetingAI@@@, ..@VCTCActionUseScriptedHook@@@ ...): the component of T's interface type if its class is exactly T.
+    // Retail expands it at 0x004A3E01..0x004A3EA2 / 0x004A51C0: presence test, LowerBound with the key in the frame, T::StatGetClassTypeName()
+    // built first, the GetClassTypeName virtual (+0x58), the inline CCharString operator== into one byte, both temporaries destroyed, then
+    // the store through the out pointer. Same body as the landed filter 0x00518DC0 (HasTC, the lookup, the compare). No layout change.
+    template<class T> FABLE_FORCEINLINE bool GetTCOfLeafType(T** ptc) {
+        CTCBase* tc;
+        if(GetTC(T::StatGetInterfaceType(),&tc)) {
+            if(tc->GetClassTypeName()==T::StatGetClassTypeName()) {
+                *ptc=(T*)tc;
+                return true;
+            }
+        }
+        return false;
+    }
+#endif
+#ifdef FABLE_RETAIL_CTHING_HASTC_CLASSTYPE
+    // Nested opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb / FableWin.pdb
+    // ??$HasTC@VCTCActionUseActivateQuest@@@CThing@@QBE_NXZ (also ..@VCTCActionUseWindow@@@ / ..@VCTCRandomAppearanceMorph@@@ in FableWin):
+    // whether the thing has T's interface AND that component's class is T (several classes share one interface type). Retail keeps an
+    // unreferenced out-of-line copy of the CTCActionUseActivateQuest instance at 0x006AE680 (178 bytes, in the TU's run of unreferenced
+    // COMDATs next to the PeekTC<const CTCGold / CTCStockItem / CTCContainer> copies 0x006AE5E0 / 0x006AE630 / 0x006AE740) and expands
+    // it in the row (0x006ACAB1..0x006ACB4E). FABLE_FORCEINLINE like GetTC / PeekTC (owner decision 2026-11-01): c2's inline trace gives
+    // the plain-inline body cost c1 = 175 at the row's site (f 0.19, score 283), and 175 * 6/7 = 150 > 74 at any frequency. Shape from that copy: the expanded
+    // PeekTC (const LowerBound 0x004365B0), T::StatGetClassTypeName() built first, the GetClassTypeName virtual (CTCBase slot 22,
+    // +0x58), the inline CCharString::operator== into one byte, both temporaries destroyed unconditionally, then the test (the nested
+    // if: an `&&` with the comparison would add conditional-destruction flags).
+    template<class T> FABLE_FORCEINLINE bool HasTC() const {
+        const CTCBase* tc;
+        if(PeekTC(T::StatGetInterfaceType(),&tc)) {
+            if(tc->GetClassTypeName()==T::StatGetClassTypeName())
+                return true;
+        }
+        return false;
+    }
+#endif
+#else
+#ifdef FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
+    // Inline-budget: retain the existing GetTC owner force-inline rule; restore donor locals only, no additional forced helper.
+    // Original FableWin GetTC<CTCCreatureNavigation>: ptc, CTCBase& base.
+    // Existing GetTC inline-owner policy is retained; no added force-inline rung.
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** ptc) {
+        if(HasTC(T::StatGetInterfaceType())) {
+            CTCBase& base=GetTC(T::StatGetInterfaceType());
+            *ptc=GFDebugPDynamicCast(&base,(T*)0);
+            return true;
+        }
+        return false;
+    }
+#else
+    template<class T> FABLE_FORCEINLINE bool GetTC(T** result) {
+        if(HasTC(T::StatGetInterfaceType())) {
+#ifdef FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN
+            // Retail opt-in (Codex pass18): original01d7d070 calls GetTC(id) before its checked cast.
+            CTCBase& tc_base=GetTC(T::StatGetInterfaceType());
+            *result=GFDebugPDynamicCast(&tc_base,(T*)0);
+#else
+            *result=GFDebugPDynamicCast(Components.Find(T::StatGetInterfaceType())->second,(T*)0);
+#endif
+            return true;
+        }
+        return false;
+    }
+#endif // FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
+    template<class T> FABLE_FORCEINLINE bool PeekTC(T** result) const {
+        if(HasTC(T::StatGetInterfaceType())) {
+#ifdef FABLE_RETAIL_CTHING_PEEKTC_ORIGINAL_CHAIN
+            // Retail opt-in (agent4007, row 0x0061B610 CTCInventoryQuests::ConstructQuestList): the const twin of the
+            // FABLE_RETAIL_CTHING_GETTC_ORIGINAL_CHAIN body above -- the const GetTC(id) reference, then the checked cast. Evidence:
+            // FableWin.pdb ??$PeekTC@$$CBVCTCQuestCard@@@CThing@@QBE_NPAPBVCTCQuestCard@@@Z is 27 instructions / 74 bytes, which this
+            // text gives at /Od exactly (the Components.Find spelling is 29i / 80b).
+            const CTCBase& tc_base=GetTC(T::StatGetInterfaceType());
+            *result=GFDebugPDynamicCast(&tc_base,(T*)0);
+#else
+            *result=GFDebugPDynamicCast(static_cast<const CTCBase*>(Components.Find(T::StatGetInterfaceType())->second),(T*)0);
+#endif
+            return true;
+        }
+        return false;
+    }
+    template<class T> FABLE_FORCEINLINE bool PeekTC(ETCInterfaceType id,T** ptc) const {
+        if(HasTC(id)) {
+            const CTCBase& base=GetTC(id);
+            *ptc=GFDebugPDynamicCast(&base,(T*)0);
+            return true;
+        }
+        return false;
+    }
+#endif
+#ifdef FABLE_RETAIL_CTHING
+    // Retail (chunk 732, row 0x006AA2E0): GetTC(ETCInterfaceType) is __forceinline like GetTC<T> / PeekTC<T> (owner decision
+    // 2026-11-01: no Ego_r.pdb copy, no out-of-line copy in Fable.exe; FableWin.pdb ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
+    // is the debug copy). Plain inline is called out of line in the large CThingPlayerCreature draw pass (814 v 1080 bytes).
+#ifdef FABLE_RETAIL_CTHING_GETTC_DONOR_NAMES_PASS23
+    // Both original mutable GetTC overload records name its argument id.
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType id) { return *Components.Find(id)->second; }
+#else
+    FABLE_FORCEINLINE CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
+#endif
+    FABLE_FORCEINLINE const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+#else
+    CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
+    const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+#endif
+    CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
+    static void CheckRetailLayout() {
+        FABLE_STATIC_ASSERT_AT(453, offsetof(CThing,UniqueID)==0x18);
+        FABLE_STATIC_ASSERT_AT(454, offsetof(CThing,UsingComponents)==0x20);
+        FABLE_STATIC_ASSERT_AT(455, offsetof(CThing,Components)==0x44);
+        FABLE_STATIC_ASSERT_AT(456, offsetof(CThing,PhysicsTC)==0x60);
+        FABLE_STATIC_ASSERT_AT(457, offsetof(CThing,PBaseDef)==0x70);
+    }
+    const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
+    const C3DVector& GetPos() const;
+#ifdef FABLE_RETAIL_CTHING_PASS22_GRAPHICBANK
+    // Retail opt-in (Codex pass22): both PDBs PeekGraphicBank, native0x004C7D90.
+    const class CGraphicDataBank* PeekGraphicBank() const;
+#endif
+    C3DVector GetPhysPos() const;
+#ifdef FABLE_RETAIL_CTHING
+    // Retail opt-in (2026-11-03, row 0x005EB9E0): the public non-virtual SetAsRenderedThisFrame 0x004C7590 (Ego_r.pdb / FableWin.pdb
+    // ?SetAsRenderedThisFrame@CThing@@QAEXK@Z, the only spelling bound to 0x004C7590; `push 4; call` with ecx = the TC's ParentThing
+    // at 0x005EBF44). A declaration only: no layout change.
+    void SetAsRenderedThisFrame(unsigned long);                  // 0x004C7590
+    void SetAsActivated(bool);                                   // Ego_r.pdb ?SetAsActivated@CThing@@QAEX_N@Z (row 0x00821010)
+    // Header wave 2026-11-03 (row 0x00522A20 InitThingTypes registers it): Ego_r.pdb ?Alloc@CThing@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
+    // Retail opt-in (2026-11-03, chunk 718 row 0x008A93A0): FableWin.pdb ?GetTypeFlags@CThing@@QBEKXZ (inline in retail:
+    // EntityWillTeleportToArea tests the +0x6C flags in place). A declaration with its body only: no layout change.
+    unsigned long GetTypeFlags() const { return ThingTypeFlags; }
+#ifdef FABLE_RETAIL_CTHING_STATTYPEFLAGS
+    // Nested opt-in (chunk 768, row 0x00969E70 via the CThingSearchTools rough-area body): FableWin.pdb ?StatGetTypeFlags@CThing@@SIKXZ
+    // (static fastcall; inline in retail, where the IsThingOfType<CThing> test folds: CThing's mask is 0).
+    static unsigned long __fastcall StatGetTypeFlags() { return 0; }
+#endif
+    // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): Ego_r.pdb / FableWin.pdb
+    // ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ (and the QBE const twin), inline in
+    // retail (`mov ecx,[esi+64h]` straight off the thing before SetScale). Declarations with bodies only: no layout change.
+    NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
+    const NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() const { return PTCGraphicAppearance; }
+    // ?GetPlayerNumber@CThing@@QBEKXZ (Ego_r.pdb / FableWin.pdb), inline in retail (`movsx eax,byte ptr [ecx+90h]`, 0x005C37CC).
+    unsigned long GetPlayerNumber() const { return PlayerNumber; }
+    void SetInLimbo(bool);                                       // 0x004C8CF0 ?SetInLimbo@CThing@@QAEX_N@Z (Ego_r.pdb / FableWin.pdb)
+#ifdef FABLE_RETAIL_CTHING_SENDMESSAGEW
+    // Retail opt-in (w22 wf16 row 0x007E8590 CTCOwnedEntity::SetPOwner): Ego_r.pdb / FableWin.pdb ?SendMessageW@CThing@@QAEXABVCMessageBase@NTCMessages@@@Z
+    // (the `W` is the windows.h SendMessage macro baked into the name). Declaration only.
+    void SendMessageW(const NTCMessages::CMessageBase&);         // 0x004C7820
+#endif
+#ifdef FABLE_RETAIL_CTHING_GETSCRIPTDATA
+    // Retail opt-in (w22 wf16 row 0x007E8590): FableWin.pdb ?GetScriptData@CThing@@QBEABVCCharString@@XZ (0x017FB4DF / 0x01F944B0), inline in
+    // retail (0x007E8786 `add eax,78h ; mov eax,[eax]`: ScriptData +0x78, after ScriptName +0x74).
+    const CCharString& GetScriptData() const { return ScriptData; }
+#endif
+    // Retail (2026-11-03, chunk 720 row 0x0065B854 CTCVillage::AddThingToVillage; was FABLE_RETAIL_CTHING_VILLAGE, folded into this class branch at landing): ?HasScriptThing@CThing@@QBE_NXZ (Ego_r.pdb
+    // 0x004C9A30; out of line in retail at 0x004C7E70, `mov ecx,esi; call`) and FableWin.pdb's inline
+    // ?SetPersistOnUnloadWhenInLimbo@CThing@@QAEX_N@Z (0x0215EDB0, emitted in the CTCVillage TU right after AddThingToVillage;
+    // retail `or byte ptr [esi+92h],40h` = bit 14 of the +0x91 bitfield run). Declarations with bodies only: no layout change.
+    bool HasScriptThing() const;                                 // 0x004C7E70
+#ifdef FABLE_RETAIL_CTHING_SCRIPTSUPERVISION
+    // Nested opt-in (chunk 755, row 0x00938280 CAIStateGroup_UsesSeat::AllocChairSittingMode): Ego_r.pdb 0x004C9A40
+    // ?IsUnderScriptSupervision@CThing@@QBE_NXZ, out of line in retail at 0x004C7E90 (after HasScriptThing 0x004C7E70).
+    bool IsUnderScriptSupervision() const;                       // 0x004C7E90
+#endif
+    // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?PeekComponent@CThing@@QBEABVCMainGameComponent@@XZ, out of line in
+    // retail at 0x004C7A70 (the only PDB spelling; the landed CMainGameComponentFontView / AUCMainGameComponent forms are invented).
+    const CMainGameComponent& PeekComponent() const;             // 0x004C7A70
+    // Chunk 732 (row 0x006AABE0): Ego_r.pdb ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ, out of line in retail (0x004C7A30).
+    CPlayer& GetPlayer();                                        // 0x004C7A30
+#ifdef FABLE_RETAIL_CTHING_STATEACCESS
+    // Nested opt-in (plan phase 6, 2026-11-05, the CThing header wave): the public members the migrated rows called out of line.
+    // Evidence per line: Ego_r.pdb + FableWin.pdb spelling, the catalog row at the retail address, and the rows' local
+    // declarations citing that address (26 / 39 / 24 / 6 / 3 / 22 / 2 / 3 / 15 / 15 / 58 rows). Declarations only: no layout change.
+    void AddToRenderList();                                      // 0x004C7AC0 ?AddToRenderList@CThing@@QAEXXZ
+    CScriptThing GetScriptThing() const;                         // 0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ
+    void SetAsGameStatePersisted(bool);                          // 0x004C7880 ?SetAsGameStatePersisted@CThing@@QAEX_N@Z
+#ifdef FABLE_RETAIL_CTHING_SETTHINGSCANINCLUSION   // nested in FABLE_RETAIL_CTHING_STATEACCESS
+    // NF198 opt-in (2026-11-20, q11973; row 0x004C9C10): Ego_r.pdb 0x004CB6B0 + FableWin.pdb 0x01CF8070 ?SetThingScanInclusion@CThing@@QAEX_N@Z,
+    // out of line in retail at 0x004C9C10 (catalog CThing::SetThingScanInclusion): IncludeInThingScans (bit 2 of +0x91) = the argument,
+    // then UpdateThingScanInclusion 0x004C8C00. Declaration only; no layout change.
+    void SetThingScanInclusion(bool);                            // 0x004C9C10
+#endif
+    bool IsGameStatePersisted() const;                           // 0x004C8280 ?IsGameStatePersisted@CThing@@QBE_NXZ
+    bool IsLevelPersistent() const;                              // 0x004C82A0 ?IsLevelPersistent@CThing@@QBE_NXZ
+    CDefString GetDefName() const;                               // 0x004C7CC0 ?GetDefName@CThing@@QBE?AVCDefString@@XZ
+    void SetPlayerNumber(long);                                  // 0x004C7440 ?SetPlayerNumber@CThing@@QAEXJ@Z
+    void SetCurrentMapNumber(long);                              // 0x004C7580 ?SetCurrentMapNumber@CThing@@QAEXJ@Z
+    void SetForceFrameUpdate(bool);                              // 0x004C7C60 ?SetForceFrameUpdate@CThing@@QAEX_N@Z
+    bool DoActivationSequence();                                 // 0x004C9CA0 ?DoActivationSequence@CThing@@QAE_NXZ
+    void RemoveTC(ETCInterfaceType);                             // 0x004C9840 ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z
+    // 0x004C9920 is not a catalog row; both PDBs spell it ?IsAffectedByBulletTime@CThing@@QBE_NXZ and 15 landed rows call it there
+    // (8 of them with a non-const QAE stand-in spelling, respelled by the wave).
+    bool IsAffectedByBulletTime() const;                         // 0x004C9920
+#ifdef FABLE_RETAIL_CTHING_BULLETTIMEOVERRIDE
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): FableWin.pdb ?SetIsAffectedByBulletTimeOverride@CThing@@QAEX_N@Z,
+    // inline in retail (`mov bl,[eax+93h] ; and bl,0DFh ; mov [eax+93h],bl` = bit 21 of the +0x91 run). Body only: no layout change.
+    void SetIsAffectedByBulletTimeOverride(bool value) { IsAffectedByBulletTimeOverride = value; }
+    // and FableWin.pdb ?SetScriptName@CThing@@QAEXABVCCharString@@@Z, inline in retail (`lea ecx,[eax+74h] ; call CCharString::operator=`).
+    void SetScriptName(const CCharString& name) { ScriptName = name; }
+#endif
+#ifdef FABLE_RETAIL_CTHING_GETSCRIPTNAME
+    // Retail opt-in (chunk 1025, row 0x007C0AD0 NThingShot::CreateShot): Ego_r.pdb / FableWin.pdb ?GetScriptName@CThing@@QBEABVCCharString@@XZ,
+    // inline in retail (`lea edx,[esi+74h]` as operator+'s left operand, 0x007C0D7B).
+    const CCharString& GetScriptName() const { return ScriptName; }
+#endif
+    // FableWin.pdb-only inline flag accessors (?IsInLimbo@CThing@@QBE_NXZ, ?IsActivated@, ?IsDying@, ?IsKillLocked@,
+    // ?IsGloballyLoaded@, ?IsDeathPersistent@; inline in retail, which tests the +0x91..+0x93 bits in place in every caller --
+    // the same evidence as GetTypeFlags above).
+    bool IsInLimbo() const { return InLimbo != 0; }
+    bool IsActivated() const { return Activated != 0; }
+    bool IsDying() const { return Dying != 0; }
+    bool IsKillLocked() const { return KillLocked != 0; }
+    bool IsGloballyLoaded() const { return GloballyLoaded != 0; }
+    bool IsDeathPersistent() const { return DeathPersistent != 0; }
+#ifdef FABLE_RETAIL_CTHING_SETASDEATHPERSISTENT   // nested in FABLE_RETAIL_CTHING_STATEACCESS
+    // Retail opt-in (Q18, row 0x009644F0 CAIStateGroup_StealStealableItem::OnReplace): FableWin.pdb ?SetAsDeathPersistent@CThing@@QAEXXZ,
+    //   inline in retail (0x00964751 `or byte ptr [edi+93h],2` = DeathPersistent, bit 17 of the +0x91 run). Body only: no layout change.
+    void SetAsDeathPersistent() { DeathPersistent = true; }
+#endif
+protected:
+    void UpdateThingScanInclusion();                             // 0x004C8C00 ?UpdateThingScanInclusion@CThing@@IAEXXZ (3 rows)
+    const CPlayerManager& PeekPlayerManager() const;             // 0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (3 rows)
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_MOREACCESS
+    // Nested opt-in (plan phase 7, 2026-11-06): more public / protected non-virtual members the CThing rows call out of line. Each
+    // is in both PDB name sets (Ego_r.pdb + FableWin.pdb, the spelling below) and is the catalog row at the retail address; the
+    // rows' local CThing models declared them at those addresses. Declarations only: no layout change.
+    void SetAsFrameUpdated();                                    // 0x004C7C40 ?SetAsFrameUpdated@CThing@@QAEXXZ
+    static CThing* __fastcall Create(long,long,long,bool);       // 0x004CA1D0 ?Create@CThing@@SIPAV1@JJJ_N@Z
+    const CGameDefinitionManager& PeekDefinitionManager() const; // 0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+    CASoundBank& GetSampleBank() const;                          // 0x004C7A80 ?GetSampleBank@CThing@@QBEAAVCASoundBank@@XZ
+    long GetJoystickDeviceNumber() const;                        // 0x004C7CA0 ?GetJoystickDeviceNumber@CThing@@QBEJXZ
+    bool IsRenderedThisFrame() const;                            // 0x004C78F0 ?IsRenderedThisFrame@CThing@@QBE_NXZ
+    bool IsForceNoSerialise() const;                             // 0x004C7BD0 ?IsForceNoSerialise@CThing@@QBE_NXZ
+    bool IsFreeForDeletion() const;                              // 0x004C7500 ?IsFreeForDeletion@CThing@@QBE_NXZ
+    const CCharString& GetTypeName() const;                      // 0x004C7E10 ?GetTypeName@CThing@@QBEABVCCharString@@XZ
+#ifdef FABLE_RETAIL_CTHING_GETSERIALISATIONSECTIONNAME
+    // Opt-in (row 0x00523CF0, for the same-TU CThingManager savers): FableWin.pdb ?GetSerialisationSectionName@CThing@@QBEABVCCharString@@XZ
+    // (0x017BE742), inline in retail (the member +0x58 read in place). Member function only: no layout change.
+    const CCharString& GetSerialisationSectionName() const { return SerialisationSectionName; }
+#endif
+    void CreateUID();                                            // 0x004C7FF0 ?CreateUID@CThing@@QAEXXZ
+    bool IsUnderScriptControl() const;                           // 0x004C8C90 ?IsUnderScriptControl@CThing@@QBE_NXZ
+    void SetToKillOnLevelUnload(bool);                           // 0x004C9C40 ?SetToKillOnLevelUnload@CThing@@QAEX_N@Z
+    void FrameUpdate();                                          // 0x004C9D20 ?FrameUpdate@CThing@@QAEXXZ
+protected:
+    const CWorldMap& PeekWorldMap() const;                       // 0x004C79E0 ?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_PEEKGLOBALDEFINITION
+    // Retail opt-in (chunk 2039, row 0x006ACA30 CThingPlayerCreature::OnCollisionWithObject): Ego_r.pdb
+    // ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ (protected const), out of line in retail at 0x004C79A0 (`mov eax,[013B8A1Ch]
+    // ; mov ecx,[eax+20h] ; mov eax,[ecx+0D0h] ; ret`: the current thing manager's definition manager (as PeekDefinitionManager
+    // 0x004C7990 reads it), then its global def +0xD0, the word CGameDefinitionManager::PeekGlobalDef reads). Declaration only.
+protected:
+    const CGlobalDef& PeekGlobalDefinition() const;              // 0x004C79A0
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_OPERATORNEW
+    // Nested opt-in (plan phase 7, 2026-11-06): CThing::operator new(size_t, bool) 0x004C7380, Ego_r.pdb / FableWin.pdb
+    // ??2CThing@@KIPAXI_N@Z (protected static __fastcall: ecx = size, dl = the flag the thing manager is asked about; the catalog's
+    // CThing::operator new). Every derived class's Alloc / Create calls it as `new (flag) CThingX` (13 landed rows modelled it
+    // locally). A declaration only: no layout change. It hides the global operator new for CThing and its derived classes, as
+    // in retail, so only the TUs that allocate things opt in.
+protected:
+    static void* __fastcall operator new(unsigned int size, bool flag);  // 0x004C7380
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_PEEKPLAYER
+    // Chunk 756 (row 0x008031E0): Ego_r.pdb / FableWin.pdb ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ, out of line in retail (0x004C7A10).
+    const CPlayer& PeekPlayer() const;                           // 0x004C7A10
+#endif
+    void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
+    // Chunk 751 (row 0x0082A3E0 CMiniMapDisplay::CMarkerInfo::IsReversedOnMap): FableWin.pdb
+    // ??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z (inline in retail: the interface bit test, then
+    // PTCDriver +0x5C read straight off the thing). __forceinline like GetTC<T> / PeekTC<T> (owner decision 2026-11-01). The driver
+    // class must be complete (derived from CTCDriverBase) where it is instantiated.
+#ifdef FABLE_RETAIL_CTHING_PEEKTCDRIVER_PLAIN_INLINE
+    // Nested opt-in (hand3c2, row 0x0064DD9A NPlayerGui::CDrawMiniMap::UpdateRegionExitNames, a size-optimised TU): the same body as
+    // plain `inline`, as Ego_r.pdb has it out of line (??$PeekTCDriver@$$CBVCTCDRegionExit@@@CThing@@QBE_NPAPBVCTCDRegionExit@@@Z):
+    // retail calls the COMDAT there (0x0064DE2C `call 0x00617D30`: `test byte [ecx+2Ch],10h`, PTCDriver +0x5C stored through the
+    // out pointer). Body unchanged.
+    template<class T> inline bool PeekTCDriver(T** result) const {
+#else
+    template<class T> FABLE_FORCEINLINE bool PeekTCDriver(T** result) const {
+#endif
+        if(HasTC(T::StatGetInterfaceType())) {
+            *result=static_cast<T*>(PTCDriver);
+            return true;
+        }
+        return false;
+    }
+#ifdef FABLE_RETAIL_CTHING_CONSTRUCTFROMPARAMS
+    // NF62 opt-in (2026-11-17, rows 0x004CA010 / 0x006A5950): Ego_r.pdb ?ConstructFromParams@CThing@@IAE_NJJJ_N@Z (protected), out of line at
+    // 0x004CA010 (the self row; CThingPhysical::ConstructFromParams 0x006A5950 calls it qualified). Parameters: the def index, the player,
+    // the map number and the add-to-map flag (the body's uses). Declaration only.
+protected:
+    bool ConstructFromParams(long defIndex, long player, long mapNumber, bool addToMap);   // 0x004CA010
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_MANAGERACCESS
+    // Nested opt-in (chunk 765, rows 0x004C7A50 / 0x004C7A60 / 0x004C7BC0): the current thing manager, a private static at 0x013B8A1C
+    // (the established spelling ?PCurrentThingManager@CThing@@0PAVCThingManager@@A of 65 landed rows), and its Ego_r.pdb / FableWin.pdb
+    // public static __fastcall accessors ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ /
+    // ?PeekPCurrentThingManager@CThing@@SIPBVCThingManager@@XZ (inline in retail: every caller loads [0x013B8A1C] in place); the
+    // protected out-of-line forwarders ?GetThingSearchTools@CThing@@IAEAAVCThingSearchTools@@XZ (0x004C7A50),
+    // ?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ (0x004C7A60) and ?CheckUID@CThing@@IBEXXZ (0x004C7BC0): retail keeps
+    // Ego_r's donor order PeekPlayer / GetPlayer / GetThingSearchTools / PeekThingSearchTools / PeekComponent (0x004C7A10..0x004C7A70)
+    // and IsToBePlacedInMap / CheckUID / IsForceNoSerialise (0x004C7B80..0x004C7BD0). No layout change.
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }
+    static const CThingManager* __fastcall PeekPCurrentThingManager() { return PCurrentThingManager; }
+protected:
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+    // Both original PDBs protected member; donor01ceeb10 forwards this exact static accessor.
+    CThingManager& GetThingManager(){return *GetPCurrentThingManager();}
+#endif
+#if defined(FABLE_RETAIL_CTHING_GETTHINGMANAGER) && !defined(FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT)
+    // Retail opt-in (p25N, row 0x00833C00): the same protected inline accessor as the ONHIT branch above (Ego_r.pdb / FableWin.pdb
+    // ?GetThingManager@CThing@@IAEAAVCThingManager@@XZ), alone.
+    CThingManager& GetThingManager(){return *GetPCurrentThingManager();}
+#endif
+    CThingSearchTools& GetThingSearchTools();                    // 0x004C7A50
+    const CThingSearchTools& PeekThingSearchTools() const;       // 0x004C7A60
+    void CheckUID() const;                                       // 0x004C7BC0
+private:
+    static CThingManager* PCurrentThingManager;                  // 0x013B8A1C
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_ADDANDCOPYTC
+    // Chunk 756 (row 0x004C9F60): Ego_r.pdb ?AddAndCopyTC@CThing@@QAEXABVCTCBase@@_N@Z (out of line) and the FableWin.pdb member template
+    // ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z (the non-const twin of PeekTC(id, ptc); __forceinline like it).
+    void AddAndCopyTC(const CTCBase& other,bool flag);
+#ifndef FABLE_RETAIL_CTHING_GETTC_EXPANDED
+    template<class T> FABLE_FORCEINLINE bool GetTC(ETCInterfaceType id,T** ptc) {
+        if(HasTC(id)) {
+            CTCBase& base=GetTC(id);
+            *ptc=GFDebugPDynamicCast(&base,(T*)0);
+            return true;
+        }
+        return false;
+    }
+#endif
+#endif
+#ifdef FABLE_RETAIL_CTHING_GETTCDRIVER
+    // Chunk 756 (row 0x007BE05C): FableWin.pdb / Ego_r.pdb ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z,
+    // out of line in retail (0x004ACB50: mov eax,[ecx+28h] ; test ah,8 = HasTC(TCI_PARTICLE_EMITTER 75), then PTCDriver +0x5C
+    // stored through the out pointer). Plain inline: the size-optimised caller calls it. The driver class must be complete.
+    template<class T> bool GetTCDriver(T** result) {
+        if(HasTC(T::StatGetInterfaceType())) {
+            *result=static_cast<T*>(PTCDriver);
+            return true;
+        }
+        return false;
+    }
+#endif
+#ifdef FABLE_RETAIL_CTHING_LEVELSCRIPT
+    // Nested opt-in (chunk 771, row 0x006A5D90 CThingPhysical::ConstructFromLevelScript): Ego_r.pdb
+    // ?ConstructFromLevelScript@CThing@@UAE_NPBD@Z (public virtual; 0x004CAA00, called by name from the CThingPhysical override,
+    // engine_api.tsv `CThing *,char *`) and ?GetWorldMap@CThing@@IAEAAVCWorldMap@@XZ (protected; out of line at 0x004C79D0, the
+    // catalog's CThing::GetWorldMap). Declarations only: CThing already has its vptr (CClass), so no layout change.
+public:
+    virtual bool ConstructFromLevelScript(const char* script);   // 0x004CAA00
+protected:
+    CWorldMap& GetWorldMap();                                    // 0x004C79D0
+public:
+#endif
+#endif
+protected:
+#ifdef FABLE_RETAIL_CTHING_PEEKWORLD_FRIEND_CREATUREACTIONBASE
+    // Name-fix pass NF30 (row 0x00692950 CCreatureActionBase::PeekWorld, Ego_r.pdb ?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ):
+    // the out-of-line accessor forwards to the protected CThing::PeekWorld 0x004C7AB0, as the landed twin GetWorld 0x00692940 does
+    // through its friend. Access only: no layout change.
+    friend class CCreatureActionBase;
+#endif
+    CWorld& GetWorld();
+    const CWorld& PeekWorld() const;
+    unsigned long* GetPWorldSeed() const;
+    CPlayerManager& GetPlayerManager();
+#ifdef FABLE_RETAIL_CTHING_SETCURRENTTHINGMANAGER
+public:
+    // Retail opt-in (chunk 1022, row 0x00417747 CMainGameComponent::UpdateForcedTickSpeed): Ego_r.pdb (0x004C90F0)
+    // ?SetCurrentThingManager@CThing@@SIXAAVCThingManager@@@Z (public static __fastcall), out of line in retail at 0x004C74F0
+    // (`mov [013B8A1Ch],ecx ; ret`, landed). Declaration only: no layout change.
+    static void __fastcall SetCurrentThingManager(CThingManager& thing_manager);   // 0x004C74F0
+#endif
+#ifdef FABLE_RETAIL_CTHING_REGIONLOAD_TCS
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): Ego_r.pdb ?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z (0x004C9840, `push 0F9h ;
+    // call`, 0x004A3B33) and the member template ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z (COMDAT 0x004ACB50,
+    // called out of line at 0x004A3C1D). Declarations only: no layout change.
+#ifndef FABLE_RETAIL_CTHING_STATEACCESS
+    void RemoveTC(ETCInterfaceType);                                     // 0x004C9840 (also declared under FABLE_RETAIL_CTHING_STATEACCESS)
+#endif
+    template<class T> bool GetTCDriver(T** ptcd);                       // COMDAT (0x004ACB50 for CTCDParticleEmitter)
+#endif // FABLE_RETAIL_CTHING_REGIONLOAD_TCS
+#ifdef FABLE_RETAIL_CTHING_STATGETTYPE
+public:
+    // Opt-in (wfE11, row 0x004A3740 CWorld::UpdateRegionLoad): ?StatGetType@CThing@@SIJXZ, inline (the type-list key 15 pushed in place by
+    // GetPFirstLeafThing<..,CThing> 0x004A9EF4; CThingManager::InitThingTypes registers type 15 "THING" with CThing::Alloc). Body only.
+    static long FABLE_FASTCALL StatGetType() { return 15; }
+#endif // FABLE_RETAIL_CTHING_STATGETTYPE
+};
+FABLE_STATIC_ASSERT_AT(703, sizeof(CThing)==0x98);
+
+#ifdef FABLE_RETAIL_CTHING_GETTCDRIVER_PHYSOBSTRUCTION_SIZE_OWNER
+// Fidelity: scaffolding, not retail (B24A7, row 0x00975BB0; size-pragma rule 2026-11-20, pattern of
+// FABLE_RETAIL_CDEFCLASSBASE_CREATURE_OWNER_SIZE_PASS26): the genuine GETTCDRIVER body specialised in the scope of its landed owner
+// 0x007890EA (rebuild/src/compiled/00/78/CThing_GetTCDriverCTCDPhysicalObstruction_007890ea.cpp sets optimize("s", on)), so the pick-any
+// COMDAT equals it; the presence test is written as the owner row has it (UsingComponents.test, out of line there). Ends with optimize("", on) (VC7.1 has no push / pop): no row-head optimize pragma before this include.
+#include "engine/CTCDPhysicalObstruction.h"
+#pragma optimize("s",on)
+template<> inline __declspec(noinline)
+bool CThing::GetTCDriver<CTCDPhysicalObstruction>(CTCDPhysicalObstruction** result) {
+    if(UsingComponents.test(CTCDPhysicalObstruction::StatGetInterfaceType())) {
+        *result=static_cast<CTCDPhysicalObstruction*>(PTCDriver);
+        return true;
+    }
+    return false;
+}
+#pragma optimize("",on)
+#endif
+#endif

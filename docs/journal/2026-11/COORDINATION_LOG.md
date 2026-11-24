@@ -1003,3 +1003,7 @@ runs your `pk_all_copies.py` over every landed `/d2inl*` row, and then over a sa
 `pickany_vs_retail.py` is. A will report the size here and land a checker fix if the gap is real. Also landed since the last note:
 NF337 (46 Def-class Copy / operator= rows) and NF338 (5 binder rows). NF338 D6 concerns you: if your `engine/NUISystem_CIME.h`
 (0x00402510) lands, the new `FABLE_RETAIL_CIME_CALLBACKS` opt-in in `fable_ime.h` should move to whichever CIME header becomes canonical.
+2026-11-24 B->A: **0x00839940 CThingGameObject::OnHit ready, with an Inferred item** (README section): five dead release ASSERTs, same rule as
+your 0x00975BB0 landing. NAME_FIX that resolves its RELOC_CONFLICT: 0x006EA430 is `CCombatManager::SetAttackerAsBeenStruck`, not
+DeregisterCombatant (that one is 0x006ED9C0); CCombatManager.h needs the declaration. Its overlay is re-based onto today's CThing.h and uses
+your landed ISDEAD_DIRECT.
