@@ -1,16 +1,16 @@
+// Leaf: ?Copy@CEntitySoundDef@@UAEXPBVCDefClassBase@@@Z
+// CEntitySoundDef::Copy(const CDefClassBase* other) -- copy every member of another CEntitySoundDef: `*this = *(const CEntitySoundDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00463B9D, 5 bytes: a thiscall tail call, `jmp` to CEntitySoundDef::operator= 0x00463BA2 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x00463B9D (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CEntitySoundDef::operator=(const CEntitySoundDef&) 0x00463BA2, ??4CEntitySoundDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENTITYSOUNDDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CEntitySoundDef.h"
 
-// 0x00463b9d CEntitySoundDef::Copy -- a 5-byte jmp rel32 thunk (tail-call).
-// The whole retail body is a single `jmp rel32` to the real Copy implementation;
-// rel32 is relocation-masked in parity, so any extern target yields identical bytes.
-
-class CEntitySoundDef;
-
-// Real implementation the thunk tail-jumps to (relocation-masked target).
-extern void __fastcall CEntitySoundDef_Copy_impl(CEntitySoundDef* thisptr, CEntitySoundDef* src);
-
-// The thunk: models `jmp rel32` via a tail-call with matching signature.
-void __fastcall CEntitySoundDef_Copy(CEntitySoundDef* thisptr, CEntitySoundDef* src)
+void CEntitySoundDef::Copy(const CDefClassBase* other)
 {
-    CEntitySoundDef_Copy_impl(thisptr, src);
+    *this = *(const CEntitySoundDef*)other;
 }

@@ -1,29 +1,34 @@
+// behaviour test for 0x00462E28: CPlayerInventoryDef::Copy forwards to CPlayerInventoryDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CPlayerInventoryDef::Copy (?Copy@CPlayerInventoryDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CPlayerInventoryDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-class CPlayerInventoryDef;
+class CDefClassBase;
+class CPlayerInventoryDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CPlayerInventoryDef& operator=(const CPlayerInventoryDef& other);
+};
 
-/* Provide the tail-call target so the test links standalone. */
-static int g_called = 0;
-extern "C" void CPlayerInventoryDef_Copy_impl_stub() {}
-
-/* Mirror the function under test locally for a deterministic call check. */
-extern void __fastcall CPlayerInventoryDef_Copy(CPlayerInventoryDef* thisptr, void* src);
-
-/* Define the impl the thunk jumps to. */
-void __fastcall CPlayerInventoryDef_Copy_impl(CPlayerInventoryDef* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CPlayerInventoryDef& CPlayerInventoryDef::operator=(const CPlayerInventoryDef& other)
 {
-    (void)thisptr; (void)src;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
+
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CPlayerInventoryDef* obj = (CPlayerInventoryDef*)0;
-    int srcbuf = 0x1234;
-    CPlayerInventoryDef_Copy(obj, &srcbuf);
-    if (g_called == 1)
-        printf("OK_462e28\n");
-    else
-        printf("FAIL_462e28\n");
-    return 0;
+    ((CPlayerInventoryDef*)(g_dst))->CPlayerInventoryDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_462e28\n");
+        return 0;
+    }
+    std::printf("FAIL_00462e28 calls=%d\n", g_calls);
+    return 1;
 }

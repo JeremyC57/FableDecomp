@@ -1,0 +1,61 @@
+## HEAD set: 0045d2f7.obj 0045d2fc.obj 0045dd00.obj 0045dd05.obj 0045e182.obj 0045e187.obj 0045e555.obj 0045e55a.obj 0045f630.obj 0045f635.obj 0045f7c2.obj 0045f7c7.obj 00460180.obj 00460185.obj 00460452.obj 00460457.obj 004604ca.obj 004604cf.obj 00460518.obj 0046051d.obj 004605e0.obj 004605e5.obj 00461d4b.obj 00461d50.obj 00461f77.obj 00461f7c.obj 004625f8.obj 004625fd.obj 004629f6.obj 004629fb.obj 00462e28.obj 00462e2d.obj 00465eae.obj 00465eb3.obj 00471a72.obj 00471a77.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionDeedType@@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@U?$less@W4EOpinionDeedType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 5 ??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 4 ??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4CActionRegisteredTypeVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4CBoolVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 2 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ??4CDialogueLayerVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 2 ??4CLongVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 18 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CStringVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4OpinionOffsetList@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4ReactionVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4WarningVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ?CCombatDialogueDef_Copy_impl@@YIXPAVCCombatDialogueDef@@PAX@Z
+UNRESOLVED 1 ?CCombatSequenceDef_Copy_impl@@YIXPAVCCombatSequenceDef@@PAX@Z
+UNRESOLVED 1 ?CEngineThemeDef_Copy_impl@@YIXPAVCEngineThemeDef@@0@Z
+UNRESOLVED 1 ?CFactionDef_Copy_impl@@YIXPAVCFactionDef@@PAX@Z
+UNRESOLVED 1 ?CGlobalDef_Copy_impl@@YIXPAVCGlobalDef@@0@Z
+UNRESOLVED 1 ?CMeleeCombatKnockdownEffects_Copy_impl@@YIXPAVCMeleeCombatKnockdownEffects@@PAX@Z
+UNRESOLVED 1 ?COpinionDeedEffectsDef_Copy_impl@@YIXPAVCOpinionDeedEffectsDef@@PAX@Z
+UNRESOLVED 1 ?COpinionDeedMaskDef_Copy_impl@@YIXPAVCOpinionDeedMaskDef@@PAX@Z
+UNRESOLVED 1 ?COpinionReactionMaskDef_Copy_impl@@YIXPAVCOpinionReactionMaskDef@@PAX@Z
+UNRESOLVED 1 ?CPlayerInventoryDef_Copy_impl@@YIXPAVCPlayerInventoryDef@@PAX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesBattleChargeDef_Copy_impl@@YIXPAVCSpecialAbilitiesBattleChargeDef@@PAX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesBurntEffectDef_Copy_impl@@YIXPAVCSpecialAbilitiesBurntEffectDef@@PAX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesElectrocutedEffectDef_Copy_impl@@YIXPAVCSpecialAbilitiesElectrocutedEffectDef@@PAX@Z
+UNRESOLVED 1 ?CSpecialAbilitiesGhostSwordDef_Copy_impl@@YIXPAVCSpecialAbilitiesGhostSwordDef@@PAX1@Z
+UNRESOLVED 1 ?CSpecialAbilitiesMultiArrowDef_Copy_impl@@YIXPAVCSpecialAbilitiesMultiArrowDef@@PAXPAVCDefClassBase@@@Z
+UNRESOLVED 1 ?CSpecialAbilitiesSummonSpellDef_Copy_impl@@YIXPAVCSpecialAbilitiesSummonSpellDef@@PAX@Z
+UNRESOLVED 1 @CHeroCombatDef_Copy_impl@8
+UNRESOLVED 1 @CSpecialAbilitiesThunderLightningStormDef_Copy_impl@8
+UNRESOLVED 14 __fltused
+## new set: 0045d2f7.obj 0045d2fc.obj 0045dd00.obj 0045dd05.obj 0045e182.obj 0045e187.obj 0045e555.obj 0045e55a.obj 0045f630.obj 0045f635.obj 0045f7c2.obj 0045f7c7.obj 00460180.obj 00460185.obj 00460452.obj 00460457.obj 004604ca.obj 004604cf.obj 00460518.obj 0046051d.obj 004605e0.obj 004605e5.obj 00461d4b.obj 00461d50.obj 00461f77.obj 00461f7c.obj 004625f8.obj 004625fd.obj 004629f6.obj 004629fb.obj 00462e28.obj 00462e2d.obj 00465eae.obj 00465eb3.obj 00471a72.obj 00471a77.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionDeedType@@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@U?$less@W4EOpinionDeedType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionDeedType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 5 ??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 4 ??4?$vector@MV?$allocator@M@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4CActionRegisteredTypeVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4CBoolVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 2 ??4CCharString@@QAEABV0@ABV0@@Z
+UNRESOLVED 1 ??4CDialogueLayerVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 2 ??4CLongVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 18 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CStringVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4OpinionOffsetList@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4ReactionVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4WarningVector@@QAEAAU0@ABU0@@Z
+UNRESOLVED 14 __fltused
+LK_DONE

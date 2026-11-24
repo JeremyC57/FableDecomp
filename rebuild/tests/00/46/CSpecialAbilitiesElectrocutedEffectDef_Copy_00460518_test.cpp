@@ -1,29 +1,34 @@
+// behaviour test for 0x00460518: CSpecialAbilitiesElectrocutedEffectDef::Copy forwards to CSpecialAbilitiesElectrocutedEffectDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSpecialAbilitiesElectrocutedEffectDef::Copy (?Copy@CSpecialAbilitiesElectrocutedEffectDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesElectrocutedEffectDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-// Mock the impl so the thunk has something to call.
-class CSpecialAbilitiesElectrocutedEffectDef;
-static int g_called = 0;
-extern "C" {}
+class CDefClassBase;
+class CSpecialAbilitiesElectrocutedEffectDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesElectrocutedEffectDef& operator=(const CSpecialAbilitiesElectrocutedEffectDef& other);
+};
 
-void __fastcall CSpecialAbilitiesElectrocutedEffectDef_Copy_impl(
-    CSpecialAbilitiesElectrocutedEffectDef* thisptr, void* other)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesElectrocutedEffectDef& CSpecialAbilitiesElectrocutedEffectDef::operator=(const CSpecialAbilitiesElectrocutedEffectDef& other)
 {
-    (void)thisptr; (void)other;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CSpecialAbilitiesElectrocutedEffectDef_Copy(
-    CSpecialAbilitiesElectrocutedEffectDef* thisptr, void* other);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CSpecialAbilitiesElectrocutedEffectDef* self =
-        (CSpecialAbilitiesElectrocutedEffectDef*)0;
-    int other = 42;
-    CSpecialAbilitiesElectrocutedEffectDef_Copy(self, &other);
-    if (g_called == 1)
-        printf("PASS_460518\n");
-    else
-        printf("FAIL_460518\n");
-    return 0;
+    ((CSpecialAbilitiesElectrocutedEffectDef*)(g_dst))->CSpecialAbilitiesElectrocutedEffectDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("PASS_460518\n");
+        return 0;
+    }
+    std::printf("FAIL_00460518 calls=%d\n", g_calls);
+    return 1;
 }

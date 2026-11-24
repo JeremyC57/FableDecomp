@@ -13,6 +13,14 @@ public:
 public:
     virtual void Transfer(CPersistContext&);
 #endif
+#ifdef FABLE_RETAIL_CENEMYDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declaration only, no layout change, for CEnemyDef::Copy 0x004E064E (retail: `call 0x00431F10`
+    // CDefClassBase::operator=, then the member copy). ?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z (Ego_r.pdb + FableWin.pdb) is the member the
+    // retail RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) names at 0x004E064E (slot 19; it overrides CDefClassBase::Copy:
+    // clang override probe, made-up-name control fails).
+public:
+    virtual void Copy(const CDefClassBase*);
+#endif
 };
 FABLE_STATIC_ASSERT_AT(11, sizeof(CEnemyDef)==0x2c);
 #else

@@ -1,0 +1,6 @@
+address	run	objcheck	rename_map
+004e01a7	g7	ALL_EQ	{"?CBuyHouseDef_Copy@@YIXPAVCBuyHouseDef@@HPBVCDefClassBase@@@Z": "?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z"}
+004e064e	g7	ALL_EQ	{"?CEnemyDef_Copy@@YIXPAVCEnemyDef@@HPBVCDefClassBase@@@Z": "?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z"}
+004e0ca7	g7	ALL_EQ	{"?CExpressionSubDef_Copy@@YIXPAVCExpressionSubDef@@HPBVCDefClassBase@@@Z": "?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z"}
+004e0fed	g7	ALL_EQ	{"?CGoldDef_Copy@@YIXPAVCGoldDef@@HPBVCDefClassBase@@@Z": "?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z"}
+004eb6c8	g9	LIBCP	{"?Copy@@YIXPAVCMultiStaticMeshDef@@PAXPBVCDefClassBase@@@Z": "?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z", "?Copy@SubContainer@@QAEXPBU1@@Z": "??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z"}

@@ -1,0 +1,3 @@
+address	run	objcheck	rename_map
+0046f49f	g10	ALL_EQ	{"?CAbilityButtonGuiDef_Copy@@YIPAVCAbilityButtonGuiDef@@PAV1@PBVCDefClassBase@@@Z": "?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z", "@CAbilityButtonGuiDef_Copy_impl_0046f49f@8": "??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z"}
+0046f43e	g10	DEF differ: + -?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z	{}

@@ -1,20 +1,18 @@
+// Leaf: ?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesBulletTimeDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesBulletTimeDef: `*this = *(const CSpecialAbilitiesBulletTimeDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0045FABC, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesBulletTimeDef::operator= 0x0045FAC1 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0045FABC (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesBulletTimeDef::operator=(const CSpecialAbilitiesBulletTimeDef&) 0x0045FAC1, ??4CSpecialAbilitiesBulletTimeDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CSPECIALABILITIESBULLETTIMEDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CSpecialAbilitiesBulletTimeDef.h"
 
-// 0x0045fabc  ?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z
-// 5-byte thunk: a single `jmp rel32` tail-call into the real Copy implementation.
-// Modeled as a free __fastcall(this-only + one arg) that tail-calls an extern impl;
-// VC7.1 compiles the tail-call to `e9 <rel32>` (rel32 relocation-masked in parity).
-
-class CSpecialAbilitiesBulletTimeDef;
-class CDefClassBase;
-
-// The real implementation this thunk jumps to (address relocation-masked).
-extern "C" void __fastcall CSpecialAbilitiesBulletTimeDef_Copy_impl(
-    CSpecialAbilitiesBulletTimeDef* thisptr, const CDefClassBase* src);
-
-void __fastcall CSpecialAbilitiesBulletTimeDef_Copy(
-    CSpecialAbilitiesBulletTimeDef* thisptr, const CDefClassBase* src)
+void CSpecialAbilitiesBulletTimeDef::Copy(const CDefClassBase* other)
 {
-    // tail-call -> jmp rel32
-    CSpecialAbilitiesBulletTimeDef_Copy_impl(thisptr, src);
+    *this = *(const CSpecialAbilitiesBulletTimeDef*)other;
 }

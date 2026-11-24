@@ -1,0 +1,9 @@
+## HEAD set: 004e01a7.obj 004e064e.obj 004e0ca7.obj 004e0fed.obj 004eb6c8.obj
+duplicates 0
+UNRESOLVED 5 ??4CDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ?Copy@SubContainer@@QAEXPBU1@@Z
+## new set: 004e01a7.obj 004e064e.obj 004e0ca7.obj 004e0fed.obj 004eb6c8.obj
+duplicates 0
+UNRESOLVED 1 ??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 5 ??4CDefClassBase@@QAEAAV0@ABV0@@Z
+LK_DONE

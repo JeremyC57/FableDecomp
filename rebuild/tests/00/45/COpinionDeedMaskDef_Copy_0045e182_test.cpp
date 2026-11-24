@@ -1,22 +1,34 @@
-#include <stdio.h>
-#include "rebuild_abi.h"
+// behaviour test for 0x0045E182: COpinionDeedMaskDef::Copy forwards to COpinionDeedMaskDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member COpinionDeedMaskDef::Copy (?Copy@COpinionDeedMaskDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4COpinionDeedMaskDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-class COpinionDeedMaskDef;
+class CDefClassBase;
+class COpinionDeedMaskDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    COpinionDeedMaskDef& operator=(const COpinionDeedMaskDef& other);
+};
 
-extern void __fastcall COpinionDeedMaskDef_Copy(COpinionDeedMaskDef* thisptr, void* other);
-
-// Provide the extern target so the test links; the thunk just tail-calls it.
-static int g_called = 0;
-void __fastcall COpinionDeedMaskDef_Copy_impl(COpinionDeedMaskDef* thisptr, void* other)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+COpinionDeedMaskDef& COpinionDeedMaskDef::operator=(const COpinionDeedMaskDef& other)
 {
-    (void)thisptr; (void)other;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
+
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    COpinionDeedMaskDef_Copy((COpinionDeedMaskDef*)0x1000, (void*)0x2000);
-    if (g_called == 1)
-        printf("OK_45e182_THUNK\n");
-    return 0;
+    ((COpinionDeedMaskDef*)(g_dst))->COpinionDeedMaskDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_45e182_THUNK\n");
+        return 0;
+    }
+    std::printf("FAIL_0045e182 calls=%d\n", g_calls);
+    return 1;
 }

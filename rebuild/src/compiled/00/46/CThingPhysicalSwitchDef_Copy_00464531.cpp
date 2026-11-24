@@ -1,26 +1,16 @@
+// Leaf: ?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z
+// CThingPhysicalSwitchDef::Copy(const CDefClassBase* other) -- copy every member of another CThingPhysicalSwitchDef: `*this = *(const CThingPhysicalSwitchDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00464531, 5 bytes: a thiscall tail call, `jmp` to CThingPhysicalSwitchDef::operator= 0x00464536 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x00464531 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CThingPhysicalSwitchDef::operator=(const CThingPhysicalSwitchDef&) 0x00464536, ??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb; the operator= row respells onto it from ??4CThingBaseDef, the 0x00463950 symbol, in this unit).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHINGPHYSICALSWITCHDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CThingPhysicalSwitchDef.h"
 
-/* 0x00464531 CThingPhysicalSwitchDef::Copy (5-byte jmp thunk)
- *
- * Retail bytes: e9 00 00 00 00  ==  jmp rel32
- * This is a tail-call thunk: the function body is a single jmp to the
- * real implementation. The rel32 target is relocation-masked in parity,
- * so any plausible extern callee produces byte-identical output.
- *
- * Modeled as a this-only member accessor -> free __fastcall(objptr, src).
- * The tail call compiles to `jmp rel32` (e9 xx xx xx xx) under VC7.1
- * when the callee has the identical signature (perfect argument
- * forwarding lets the compiler emit a jmp instead of call+ret).
- */
-
-class CThingPhysicalSwitchDef;
-
-/* real Copy implementation (relocation-masked target of the jmp) */
-extern void __fastcall CThingPhysicalSwitchDef_Copy_impl(
-    CThingPhysicalSwitchDef* thisptr, void* src);
-
-void __fastcall CThingPhysicalSwitchDef_Copy(
-    CThingPhysicalSwitchDef* thisptr, void* src)
+void CThingPhysicalSwitchDef::Copy(const CDefClassBase* other)
 {
-    CThingPhysicalSwitchDef_Copy_impl(thisptr, src);
+    *this = *(const CThingPhysicalSwitchDef*)other;
 }

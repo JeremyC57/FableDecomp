@@ -1,28 +1,34 @@
-#include "rebuild_abi.h"
-#include <stdio.h>
+// behaviour test for 0x0045F84F: CSpecialAbilitiesBerserkDef::Copy forwards to CSpecialAbilitiesBerserkDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSpecialAbilitiesBerserkDef::Copy (?Copy@CSpecialAbilitiesBerserkDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesBerserkDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-class CSpecialAbilitiesBerserkDef;
+class CDefClassBase;
+class CSpecialAbilitiesBerserkDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesBerserkDef& operator=(const CSpecialAbilitiesBerserkDef& other);
+};
 
-extern void __fastcall CSpecialAbilitiesBerserkDef_Copy_impl(
-    CSpecialAbilitiesBerserkDef* thisptr, void* src);
-extern void __fastcall CSpecialAbilitiesBerserkDef_Copy(
-    CSpecialAbilitiesBerserkDef* thisptr, void* src);
-
-// Provide a definition for the tail-call target so the test links and runs.
-static int g_called = 0;
-void __fastcall CSpecialAbilitiesBerserkDef_Copy_impl(
-    CSpecialAbilitiesBerserkDef* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesBerserkDef& CSpecialAbilitiesBerserkDef::operator=(const CSpecialAbilitiesBerserkDef& other)
 {
-    (void)thisptr; (void)src;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
+
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CSpecialAbilitiesBerserkDef_Copy((CSpecialAbilitiesBerserkDef*)0x1000, (void*)0x2000);
-    if (g_called == 1)
-        printf("OK_0045f84f\n");
-    else
-        printf("FAIL_0045f84f\n");
-    return 0;
+    ((CSpecialAbilitiesBerserkDef*)(g_dst))->CSpecialAbilitiesBerserkDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_0045f84f\n");
+        return 0;
+    }
+    std::printf("FAIL_0045f84f calls=%d\n", g_calls);
+    return 1;
 }

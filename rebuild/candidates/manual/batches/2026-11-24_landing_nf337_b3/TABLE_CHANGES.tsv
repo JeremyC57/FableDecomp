@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+replace	?CThingPhysicalSwitchDef_Copy_impl@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z -> ??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z	00464536	00464531	NF337: Copy 00464531 now binds the PDB operator= of CThingPhysicalSwitchDef (the 00464536 row, respelled in this unit)
+delete	??4CThingBaseDefBase@@QAEAAU0@ABU0@@Z	00463950	00464536	NF337: made-up spelling; ??4CThingBaseDef@@QAEAAV0@ABV0@@Z already binds 00463950 (operator= 00464536 now calls the base CThingBaseDef::operator= by its PDB name)
+replace	?COpinionPersonalityDef_Copy_impl@@YIXPAVCOpinionPersonalityDef@@PAX0@Z -> ??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z	0045e660	0045e65b	NF337: Copy 0045e65b now binds the PDB operator= (const& return) of COpinionPersonalityDef (the 0045e660 row, respelled in this unit)

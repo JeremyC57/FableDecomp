@@ -1,39 +1,36 @@
-#include <stdio.h>
+// behaviour test for 0x004E01A7: CBuyHouseDef::Copy calls CDefClassBase::operator= with this and the source object, then copies Main (+0x25)
+// NF337 (NF324 Q2 form): the row now defines the PDB member CBuyHouseDef::Copy (?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee CDefClassBase::operator= (??4CDefClassBase@@QAEAAV0@ABV0@@Z) is stubbed as a member here.
+#include <cstdio>
 
-class CDefClassBase { public: char pad[0x40]; 
-public:
+class CDefClassBase { public:
     CDefClassBase& operator=(const CDefClassBase& other);
 };
-
-static int g_basecalled = 0;
-
-struct CBuyHouseBase {
-    void BaseCopy(CDefClassBase const* src);
+class CBuyHouseDef { public:
+    virtual void Copy(const CDefClassBase* other);
 };
-CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
+
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other)
 {
-    CDefClassBase const* src = (CDefClassBase const*)&other_; (void)src; g_basecalled = 1; (void)src;
+    ++g_calls; g_this = this; g_other = &other;
     return *this;
 }
 
-class CBuyHouseDef { public:
-    char pad[0x25];
-    unsigned char Main;
-};
+static unsigned long g_dst[12];
+static unsigned long g_src[12];
 
-void __fastcall CBuyHouseDef_Copy(CBuyHouseDef* self, int, CDefClassBase const* src);
-
-int main() {
-    CBuyHouseDef dst; CBuyHouseDef srcObj;
-    for (int i=0;i<(int)sizeof(dst);++i) ((char*)&dst)[i]=0;
-    for (int i=0;i<(int)sizeof(srcObj);++i) ((char*)&srcObj)[i]=0;
-    srcObj.Main = 0xAB;
-    dst.Main = 0x00;
-    CBuyHouseDef_Copy(&dst, 0, (CDefClassBase const*)&srcObj);
-    if (g_basecalled && dst.Main == 0xAB) {
-        printf("004e01a7_TEST PASS\n");
-    } else {
-        printf("FAIL base=%d f=%02x\n", g_basecalled, dst.Main);
+int main()
+{
+    *(unsigned char*)((char*)g_src + 0x25) = 0x5A;
+    ((CBuyHouseDef*)(g_dst))->CBuyHouseDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src && *(unsigned char*)((char*)g_dst + 0x25) == 0x5A) {
+        std::printf("004e01a7_TEST PASS\n");
+        return 0;
     }
-    return 0;
+    std::printf("FAIL_004e01a7 calls=%d\n", g_calls);
+    return 1;
 }

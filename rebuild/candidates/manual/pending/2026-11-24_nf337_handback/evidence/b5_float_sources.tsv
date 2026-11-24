@@ -1,0 +1,9 @@
+class	member	source1	source2
+CSpecialAbilitiesDrunkennessDef	USpeed	Ego_r.pdb TPI: class 0x1C23D field list 0x1C23C, LF_MEMBER USpeed Type 0x0040 (float), offset 72	FableWin.pdb TPI: class 0x1CE69 field list 0x1CE68, LF_MEMBER USpeed Type 0x0040 (float), offset 76
+CSpecialAbilitiesDrunkennessDef	VSpeed	Ego_r.pdb TPI: class 0x1C23D field list 0x1C23C, LF_MEMBER VSpeed Type 0x0040 (float), offset 76	FableWin.pdb TPI: class 0x1CE69 field list 0x1CE68, LF_MEMBER VSpeed Type 0x0040 (float), offset 80
+CSpecialAbilitiesDrunkennessDef	RotSpeed	Ego_r.pdb TPI: class 0x1C23D field list 0x1C23C, LF_MEMBER RotSpeed Type 0x0040 (float), offset 80	FableWin.pdb TPI: class 0x1CE69 field list 0x1CE68, LF_MEMBER RotSpeed Type 0x0040 (float), offset 84
+CLensFlareElementDef	Radius	Ego_r.pdb TPI: class 0x16DC1 field list 0x16DC0, LF_MEMBER Radius Type 0x0040 (float), offset 64	FableWin.pdb TPI: class 0x1765F field list 0x1765E, LF_MEMBER Radius Type 0x0040 (float), offset 68
+CLensFlareElementDef	Position	Ego_r.pdb TPI: class 0x16DC1 field list 0x16DC0, LF_MEMBER Position Type 0x0040 (float), offset 72	FableWin.pdb TPI: class 0x1765F field list 0x1765E, LF_MEMBER Position Type 0x0040 (float), offset 76
+CAICreatureWillPowerIndicatorDef	RechargeTime	Ego_r.pdb TPI: class 0x3173C field list 0x3173B, LF_MEMBER RechargeTime Type 0x0040 (float), offset 40	FableWin.pdb TPI: class 0x343D9 field list 0x343D8, LF_MEMBER RechargeTime Type 0x0040 (float), offset 40
+CInterestingToVillagersDef	Interest	Ego_r.pdb TPI: class 0x2FB66 field list 0x2FB65, LF_MEMBER Interest Type 0x0040 (float), offset 40	FableWin.pdb TPI: class 0x32743 field list 0x32742, LF_MEMBER Interest Type 0x0040 (float), offset 40
+# read from the llvm-pdbutil TPI dumps of Ego_r.pdb / FableWin.pdb (tools/pdbfields.py; extracts in evidence/b5/tpi_fieldlists_*.txt). Retail offsets = Ego_r - 4 for the CParentDefClassBase classes (0x39-byte retail base); the two CSubDefClassBase classes are +0x28 in all three.

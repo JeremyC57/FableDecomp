@@ -1,25 +1,34 @@
-#include "rebuild_abi.h"
-#include <stdio.h>
+// behaviour test for 0x0046F4EB: CSkyDef::Copy forwards to CSkyDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSkyDef::Copy (?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSkyDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-class CSkyDef { public: int tag; };
+class CDefClassBase;
+class CSkyDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSkyDef& operator=(const CSkyDef& other);
+};
 
-// Mock the relocation-masked real target for a self-contained run.
-static int g_copied = 0;
-void __fastcall CSkyDef_Copy_impl(CSkyDef* thisptr, const CSkyDef* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSkyDef& CSkyDef::operator=(const CSkyDef& other)
 {
-    if (thisptr && src) { thisptr->tag = src->tag; g_copied = 1; }
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CSkyDef_Copy(CSkyDef* thisptr, const CSkyDef* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    CSkyDef dst; dst.tag = 0;
-    CSkyDef src; src.tag = 0x1234;
-    CSkyDef_Copy(&dst, &src);
-    if (g_copied && dst.tag == 0x1234)
-        printf("PASS_0046f4eb\n");
-    else
-        printf("FAIL_0046f4eb\n");
-    return 0;
+    ((CSkyDef*)(g_dst))->CSkyDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("PASS_0046f4eb\n");
+        return 0;
+    }
+    std::printf("FAIL_0046f4eb calls=%d\n", g_calls);
+    return 1;
 }

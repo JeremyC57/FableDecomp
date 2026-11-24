@@ -1,0 +1,54 @@
+addr       parity           behav  name
+004de33e   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004de33e   RELOCATION_MATCH PASS   Transfer
+004de881   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004de881   RELOCATION_MATCH PASS   Transfer
+004debc4   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+004debc4   RELOCATION_MATCH PASS   Transfer
+004e064e   RELOCATION_MATCH PASS   Copy
+004e0ca7   RELOCATION_MATCH PASS   Copy
+004e0fed   RELOCATION_MATCH PASS   Copy
+005eeff2   WARN RELOC_NAME: ??0?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@ABV?$allocator@W4EHeroAbility@@@1@@Z -> 005f88ed labelled 'std_CircularList_Construct'
+005eeff2   WARN RELOC_NAME: ??1?$_List_base@W4EHeroAbility@@V?$allocator@W4EHeroAbility@@@std@@@std@@QAE@XZ -> 005f8908 labelled '_global::StdList_Dtor_005f8908'
+005eeff2   RELOCATION_MATCH PASS   GetMagicListUIComponent
+005f3f7b   RELOCATION_MATCH PASS   ConstructExpressionCategoryList
+005f45b5   RELOCATION_MATCH PASS   ConstructPCExpressionCategoryList
+005f4c8f   RELOCATION_MATCH PASS   GetExpressionsListUIComponent
+005f519f   WARN RELOC_NAME: ??0?$_List_base@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAE@ABV?$allocator@VCWideString@@@1@@Z -> 005f8944 labelled 'StdList_Construct_005f8944'
+005f519f   RELOCATION_MATCH PASS   ConstructScreen
+00627be0   RELOCATION_MATCH PASS   GetExpressionsListUI
+00628000   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJPAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJPAVCComponent@NUISystem@@@std@@@2@@Z -> 00592bce labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00628000   RELOCATION_MATCH PASS   Activate
+006aca30   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+006aca30   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+006aca30   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+006aca30   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+006aca30   RELOCATION_MATCH PASS   OnCollisionWithObject
+0074e860   WARN SHARED_HEADER_AVAILABLE CContainerRewardHeroDef (engine/CContainerRewardHeroDef.h)
+0074e860   WARN SHARED_HEADER_AVAILABLE CObjectFamilyDef (engine/CObjectFamilyDef.h)
+0074e860   WARN RELOC_NAME: ?erase@?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAEPAU?$pair@JVCCharString@@@2@PAU32@0@Z -> 0074fb20 labelled 'std::std::vector_CopyAssignSegment'
+0074e860   RELOCATION_MATCH PASS   GetRewardItems
+0074ec50   RELOCATION_MATCH PASS   CreateItemPickupContainer
+0076c8a0   RELOCATION_MATCH PASS   CTCEnemy
+0076c9a0   WARN SHARED_HEADER_AVAILABLE CFaction (engine/CFaction.h)
+0076c9a0   RELOCATION_MATCH PASS   OnSerialise
+
+WINS: 18
+  004de33e RELOCATION_MATCH CEnemyDef::?Transfer@CEnemyDef@@UAEXAAVCPersistContext@@@Z
+  004de881 RELOCATION_MATCH CExpressionSubDef::?Transfer@CExpressionSubDef@@UAEXAAVCPersistContext@@@Z
+  004debc4 RELOCATION_MATCH CGoldDef::?Transfer@CGoldDef@@UAEXAAVCPersistContext@@@Z
+  004e064e RELOCATION_MATCH CEnemyDef::?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z
+  004e0ca7 RELOCATION_MATCH CExpressionSubDef::?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z
+  004e0fed RELOCATION_MATCH CGoldDef::?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z
+  005eeff2 RELOCATION_MATCH CTCInventoryAbilities::?GetMagicListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+  005f3f7b RELOCATION_MATCH CTCInventoryAbilities::?ConstructExpressionCategoryList@CTCInventoryAbilities@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z
+  005f45b5 RELOCATION_MATCH CTCInventoryAbilities::?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z
+  005f4c8f RELOCATION_MATCH CTCInventoryAbilities::?GetExpressionsListUIComponent@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+  005f519f RELOCATION_MATCH CTCInventoryAbilities::?ConstructScreen@CTCInventoryAbilities@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+  00627be0 RELOCATION_MATCH CTCQuickAccessMenu::?GetExpressionsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+  00628000 RELOCATION_MATCH CTCQuickAccessMenu::?Activate@CTCQuickAccessMenu@@QAEXXZ
+  006aca30 RELOCATION_MATCH CThingPlayerCreature::?OnCollisionWithObject@CThingPlayerCreature@@QAEXPAVCThing@@@Z
+  0074e860 RELOCATION_MATCH CTCContainerRewardHero::?GetRewardItems@CTCContainerRewardHero@@IAEXAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@AAJ@Z
+  0074ec50 RELOCATION_MATCH CTCContainerRewardHero::?CreateItemPickupContainer@CTCContainerRewardHero@@IAEXXZ
+  0076c8a0 RELOCATION_MATCH CTCEnemy::??0CTCEnemy@@QAE@AAVCThing@@@Z
+  0076c9a0 RELOCATION_MATCH CTCEnemy::?OnSerialise@CTCEnemy@@MAEXAAVCPersistContext@@_N@Z

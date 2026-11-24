@@ -1,0 +1,17 @@
+## HEAD set: 00464531.obj 00464536.obj 0045e65b.obj 0045e660.obj 00463950.obj
+duplicates 1
+  DUP 00463950.obj ??4CThingBaseDef@@QAEAAV0@ABV0@@Z in 00464536.obj;
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ??4CThingBaseDefBase@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ?COpinionPersonalityDef_Copy_impl@@YIXPAVCOpinionPersonalityDef@@PAX0@Z
+UNRESOLVED 1 ?CThingPhysicalSwitchDef_Copy_impl@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z
+UNRESOLVED 1 ?Copy@CSmallVectorComponentEntries@@QAEXABU1@@Z
+UNRESOLVED 2 __fltused
+## new set: 00464531.obj 00464536.obj 0045e65b.obj 0045e660.obj 00463950.obj
+duplicates 0
+UNRESOLVED 1 ??4?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@_N@std@@@3@@std@@QAEAAV01@ABV01@@Z
+UNRESOLVED 1 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ?Copy@CSmallVectorComponentEntries@@QAEXABU1@@Z
+UNRESOLVED 2 __fltused
+LK_DONE

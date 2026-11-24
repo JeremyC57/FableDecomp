@@ -1,18 +1,16 @@
+// Leaf: ?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesForcePushDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesForcePushDef: `*this = *(const CSpecialAbilitiesForcePushDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0045FD4E, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesForcePushDef::operator= 0x0045FD53 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0045FD4E (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesForcePushDef::operator=(const CSpecialAbilitiesForcePushDef&) 0x0045FD53, ??4CSpecialAbilitiesForcePushDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_CSPECIALABILITIESFORCEPUSHDEF
+#define FABLE_RETAIL_CSPECIALABILITIESFORCEPUSHDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CSpecialAbilitiesForcePushDef.h"
 
-// 0x0045fd4e CSpecialAbilitiesForcePushDef::Copy (5-byte tail-call thunk: jmp rel32)
-// __fastcall void Copy(this, src) -> tail-jumps to the real copy implementation.
-// Modeled as __fastcall(objptr) free functions (byte-identical to __fastcall).
-
-class CSpecialAbilitiesForcePushDef;
-
-// The real target of the tail call (relocation-masked; extern decl suffices).
-extern void __fastcall CSpecialAbilitiesForcePushDef_Copy_impl(
-    CSpecialAbilitiesForcePushDef* thisptr, void* /*edx*/, const void* src);
-
-void __fastcall CSpecialAbilitiesForcePushDef_Copy(
-    CSpecialAbilitiesForcePushDef* thisptr, void* edx, const void* src)
+void CSpecialAbilitiesForcePushDef::Copy(const CDefClassBase* other)
 {
-    // Single tail-call -> compiler emits `jmp rel32` (e9 xx xx xx xx).
-    CSpecialAbilitiesForcePushDef_Copy_impl(thisptr, edx, src);
+    *this = *(const CSpecialAbilitiesForcePushDef*)other;
 }

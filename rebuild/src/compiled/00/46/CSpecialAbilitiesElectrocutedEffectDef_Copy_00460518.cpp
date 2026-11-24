@@ -1,18 +1,20 @@
+// Leaf: ?Copy@CSpecialAbilitiesElectrocutedEffectDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesElectrocutedEffectDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesElectrocutedEffectDef: `*this = *(const CSpecialAbilitiesElectrocutedEffectDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00460518, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesElectrocutedEffectDef::operator= 0x0046051D (emitted right after it).
+// Identity: the RTTI vftable placement of 0x00460518 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesElectrocutedEffectDef::operator=(const CSpecialAbilitiesElectrocutedEffectDef&) 0x0046051D, ??4CSpecialAbilitiesElectrocutedEffectDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
 #include "rebuild_abi.h"
 
-// 0x00460518 CSpecialAbilitiesElectrocutedEffectDef::Copy
-// Retail is a 5-byte tail-call thunk: `jmp rel32` (relocation-masked target).
-// Model the this-only member as a free __fastcall and tail-call the real impl,
-// which VC7.1 compiles to a single `jmp rel32`.
+class CDefClassBase;
+class CSpecialAbilitiesElectrocutedEffectDef {                                // declarations only (no engine/CSpecialAbilitiesElectrocutedEffectDef.h)
+public:
+    virtual void Copy(const CDefClassBase* other);              // vftable slot 19, 0x00460518
+    CSpecialAbilitiesElectrocutedEffectDef& operator=(const CSpecialAbilitiesElectrocutedEffectDef& other);   // out of line: 0x0046051D
+};
 
-class CSpecialAbilitiesElectrocutedEffectDef;
-
-// The real copy implementation this thunk forwards to (address relocation-masked).
-extern void __fastcall CSpecialAbilitiesElectrocutedEffectDef_Copy_impl(
-    CSpecialAbilitiesElectrocutedEffectDef* thisptr, void* other);
-
-void __fastcall CSpecialAbilitiesElectrocutedEffectDef_Copy(
-    CSpecialAbilitiesElectrocutedEffectDef* thisptr, void* other)
+void CSpecialAbilitiesElectrocutedEffectDef::Copy(const CDefClassBase* other)
 {
-    CSpecialAbilitiesElectrocutedEffectDef_Copy_impl(thisptr, other);
+    *this = *(const CSpecialAbilitiesElectrocutedEffectDef*)other;
 }

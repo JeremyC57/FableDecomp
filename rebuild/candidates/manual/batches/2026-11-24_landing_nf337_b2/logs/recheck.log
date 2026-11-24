@@ -1,0 +1,25 @@
+addr       parity           behav  name
+0045f711   MATCH            PASS   Copy
+0045f84f   MATCH            PASS   Copy
+0045fabc   MATCH            PASS   Copy
+0045fd4e   MATCH            PASS   Copy
+0046012c   MATCH            PASS   Copy
+004601e5   MATCH            PASS   Copy
+0046133f   MATCH            PASS   Copy
+004628cb   MATCH            PASS   Copy
+00463b9d   MATCH            PASS   Copy
+0046f4eb   MATCH            PASS   Copy
+004717c2   MATCH            PASS   Copy
+
+WINS: 11
+  0045f711 MATCH CSpecialAbilitiesMultiStrikeDef::?Copy@CSpecialAbilitiesMultiStrikeDef@@UAEXPBVCDefClassBase@@@Z
+  0045f84f MATCH CSpecialAbilitiesBerserkDef::?Copy@CSpecialAbilitiesBerserkDef@@UAEXPBVCDefClassBase@@@Z
+  0045fabc MATCH CSpecialAbilitiesBulletTimeDef::?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z
+  0045fd4e MATCH CSpecialAbilitiesForcePushDef::?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z
+  0046012c MATCH CSpecialAbilitiesHealLifeDef::?Copy@CSpecialAbilitiesHealLifeDef@@UAEXPBVCDefClassBase@@@Z
+  004601e5 MATCH CSpecialAbilitiesTurncoatSpellDef::?Copy@CSpecialAbilitiesTurncoatSpellDef@@UAEXPBVCDefClassBase@@@Z
+  0046133f MATCH CArmourDef::?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z
+  004628cb MATCH CPlayerMovementDef::?Copy@CPlayerMovementDef@@UAEXPBVCDefClassBase@@@Z
+  00463b9d MATCH CEntitySoundDef::?Copy@CEntitySoundDef@@UAEXPBVCDefClassBase@@@Z
+  0046f4eb MATCH CSkyDef::?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z
+  004717c2 MATCH CAppearanceDef::?Copy@CAppearanceDef@@UAEXPBVCDefClassBase@@@Z

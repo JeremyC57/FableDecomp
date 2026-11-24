@@ -1,27 +1,34 @@
+// behaviour test for 0x0046133F: CArmourDef::Copy forwards to CArmourDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CArmourDef::Copy (?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CArmourDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-class CArmourDef;
+class CDefClassBase;
+class CArmourDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CArmourDef& operator=(const CArmourDef& other);
+};
 
-/* provide the impl the thunk jumps to so the test links & runs */
-extern "C" void mark_called();
-int g_called = 0;
-
-void __fastcall CArmourDef_Copy_impl_0046133f(CArmourDef* thisptr, CArmourDef* other)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CArmourDef& CArmourDef::operator=(const CArmourDef& other)
 {
-    (void)thisptr; (void)other;
-    g_called = 1;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-extern void __fastcall CArmourDef_Copy(CArmourDef* thisptr, CArmourDef* other);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CArmourDef* a = (CArmourDef*)0x1000;
-    CArmourDef* b = (CArmourDef*)0x2000;
-    CArmourDef_Copy(a, b);
-    if (g_called == 1)
-        printf("PASS_0046133f_OK\n");
-    else
-        printf("FAIL_0046133f\n");
-    return 0;
+    ((CArmourDef*)(g_dst))->CArmourDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("PASS_0046133f_OK\n");
+        return 0;
+    }
+    std::printf("FAIL_0046133f calls=%d\n", g_calls);
+    return 1;
 }

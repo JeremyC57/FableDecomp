@@ -1,20 +1,16 @@
+// Leaf: ?Copy@CAppearanceDef@@UAEXPBVCDefClassBase@@@Z
+// CAppearanceDef::Copy(const CDefClassBase* other) -- copy every member of another CAppearanceDef: `*this = *(const CAppearanceDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004717C2, 5 bytes: a thiscall tail call, `jmp` to CAppearanceDef::operator= 0x004717C7 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x004717C2 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CAppearanceDef::operator=(const CAppearanceDef&) 0x004717C7, ??4CAppearanceDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CAPPEARANCEDEF_COPY_DECLS
 #include "rebuild_abi.h"
+#include "engine/CAppearanceDef.h"
 
-/* 0x004717c2 CAppearanceDef::Copy
- * Retail body is a single `jmp rel32` (e9 00000000) tail-call thunk:
- * the whole function forwards to the real Copy implementation.
- * Modeled as a free __fastcall(thisptr, src) that tail-calls the
- * relocation-masked extern target. The rel32 operand is masked in
- * parity, so any plausible callee address byte-matches.
- */
-
-class CAppearanceDef;
-
-/* real implementation the thunk forwards to (relocation-masked target) */
-extern void __fastcall CAppearanceDef_Copy_impl(CAppearanceDef* thisptr, CAppearanceDef* src);
-
-void __fastcall CAppearanceDef_Copy(CAppearanceDef* thisptr, CAppearanceDef* src)
+void CAppearanceDef::Copy(const CDefClassBase* other)
 {
-    /* tail-call -> compiles to a single `jmp rel32` */
-    CAppearanceDef_Copy_impl(thisptr, src);
+    *this = *(const CAppearanceDef*)other;
 }

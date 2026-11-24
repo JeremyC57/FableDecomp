@@ -1,39 +1,34 @@
-#include "rebuild_abi.h"
+// behaviour test for 0x00464531: CThingPhysicalSwitchDef::Copy forwards to CThingPhysicalSwitchDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CThingPhysicalSwitchDef::Copy (?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
 #include <cstdio>
 
-/* Self-contained parity test for the 0x00464531 jmp thunk.
- * We can't exercise the masked callee, so we validate that the thunk
- * forwards to a stub with the same signature (tail-call semantics). */
+class CDefClassBase;
+class CThingPhysicalSwitchDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CThingPhysicalSwitchDef& operator=(const CThingPhysicalSwitchDef& other);
+};
 
-class CThingPhysicalSwitchDef { public: int tag; };
-
-static int g_called = 0;
-static CThingPhysicalSwitchDef* g_this = 0;
-static void* g_src = 0;
-
-extern void __fastcall CThingPhysicalSwitchDef_Copy_impl(
-    CThingPhysicalSwitchDef* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CThingPhysicalSwitchDef& CThingPhysicalSwitchDef::operator=(const CThingPhysicalSwitchDef& other)
 {
-    g_called = 1;
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-void __fastcall CThingPhysicalSwitchDef_Copy(
-    CThingPhysicalSwitchDef* thisptr, void* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    CThingPhysicalSwitchDef obj;
-    obj.tag = 0x77;
-    int srcbuf = 42;
-
-    CThingPhysicalSwitchDef_Copy(&obj, &srcbuf);
-
-    if (g_called == 1 && g_this == &obj && g_src == &srcbuf) {
-        printf("OK_464531\n");
-    } else {
-        printf("FAIL_464531\n");
+    ((CThingPhysicalSwitchDef*)(g_dst))->CThingPhysicalSwitchDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_464531\n");
+        return 0;
     }
-    return 0;
+    std::printf("FAIL_00464531 calls=%d\n", g_calls);
+    return 1;
 }

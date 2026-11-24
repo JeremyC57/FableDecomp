@@ -1,35 +1,51 @@
+// behaviour test for 0x004EB6C8: CMultiStaticMeshDef::Copy calls CDefClassBase::operator= with this and the source object, then
+// vector<CMultiStaticMeshEntryDef>::operator= on Meshes (+0x28) of both
+// NF337 (NF324 Q2 form): the row now defines the PDB member CMultiStaticMeshDef::Copy (?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). Both callees (??4CDefClassBase@@QAEAAV0@ABV0@@Z and the vector's operator=) are stubbed as members here.
 #include <cstdio>
 
-struct SubC { int tag; int copied_from; };
-struct Base { char pad[0x28]; SubC sub; };
-struct Def  { char pad[0x28]; SubC sub; };
-
-static int g_base_calls = 0;
-
-void baseCopy(Base* self, const Base* other) {
-    g_base_calls++;
-    (void)self; (void)other;
+class CDefClassBase { public:
+    CDefClassBase& operator=(const CDefClassBase& other);
+};
+class CMultiStaticMeshEntryDef;
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public:
+    vector& operator=(const vector& __x);
+};
 }
-void subCopy(SubC* self, const SubC* other) {
-    self->copied_from = other->tag;
+class CMultiStaticMeshDef { public:
+    virtual void Copy(const CDefClassBase* other);
+};
+
+static int g_calls = 0, g_vcalls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+static const void* g_vthis = 0;
+static const void* g_vother = 0;
+CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other)
+{
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
+}
+template <> std::vector<CMultiStaticMeshEntryDef>& std::vector<CMultiStaticMeshEntryDef>::operator=(const std::vector<CMultiStaticMeshEntryDef>& x)
+{
+    ++g_vcalls; g_vthis = this; g_vother = &x;
+    return *this;
 }
 
-void modelCopy(Def* self, const Base* other) {
-    baseCopy((Base*)self, other);
-    subCopy(&self->sub, (const SubC*)((const char*)other + 0x28));
-}
+static unsigned long g_dst[13];
+static unsigned long g_src[13];
 
-int main() {
-    Base src; for (int i=0;i<(int)sizeof(src);++i) ((char*)&src)[i]=0;
-    src.sub.tag = 12345;
-    Def dst; for (int i=0;i<(int)sizeof(dst);++i) ((char*)&dst)[i]=0;
-
-    modelCopy(&dst, &src);
-
-    if (g_base_calls == 1 && dst.sub.copied_from == 12345) {
-        printf("COPY_OK\n");
-    } else {
-        printf("COPY_FAIL %d %d\n", g_base_calls, dst.sub.copied_from);
+int main()
+{
+    ((CMultiStaticMeshDef*)(g_dst))->CMultiStaticMeshDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src &&
+        g_vcalls == 1 && g_vthis == (const void*)((char*)g_dst + 0x28) && g_vother == (const void*)((char*)g_src + 0x28)) {
+        std::printf("COPY_OK\n");
+        return 0;
     }
-    return 0;
+    std::printf("FAIL_004eb6c8 calls=%d vcalls=%d\n", g_calls, g_vcalls);
+    return 1;
 }

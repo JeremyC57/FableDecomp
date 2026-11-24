@@ -1,0 +1,19 @@
+source	address	unit	reason
+nf324	0x0045D2F7	port	0045d2f7 skipped-port ?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CFactionDef_Copy
+nf324	0x0045DD00	port	0045dd00 skipped-port ?Copy@COpinionReactionMaskDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionReactionMaskDef_Copy
+nf324	0x0045E182	port	0045e182 skipped-port ?Copy@COpinionDeedMaskDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionDeedMaskDef_Copy
+nf324	0x0045E555	port	0045e555 skipped-port ?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CCombatDialogueDef_Copy
+nf324	0x0045F630	port	0045f630 skipped-port ?Copy@CSpecialAbilitiesBattleChargeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBattleChargeDef_Copy
+nf324	0x0045F7C2	port	0045f7c2 skipped-port ?Copy@CSpecialAbilitiesMultiArrowDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesMultiArrowDef_Copy
+nf324	0x00460180	port	00460180 skipped-port ?Copy@CSpecialAbilitiesGhostSwordDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesGhostSwordDef_Copy
+nf324	0x00460452	port	00460452 skipped-port ?Copy@CSpecialAbilitiesSummonSpellDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesSummonSpellDef_Copy
+nf324	0x004604CA	port	004604ca skipped-port ?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesBurntEffectDef_Copy
+nf324	0x00460518	port	00460518 skipped-port ?Copy@CSpecialAbilitiesElectrocutedEffectDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesElectrocutedEffectDef_Copy
+nf324	0x004605E0	port	004605e0 skipped-port ?Copy@CSpecialAbilitiesThunderLightningStormDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CSpecialAbilitiesThunderLightningStormDef_Copy
+nf324	0x00461D4B	port	00461d4b skipped-port ?Copy@CCombatSequenceDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CCombatSequenceDef_Copy
+nf324	0x00461F77	port	00461f77 skipped-port ?Copy@CHeroCombatDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CHeroCombatDef_Copy
+nf324	0x004625F8	port	004625f8 skipped-port ?Copy@CMeleeCombatKnockdownEffects@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CMeleeCombatKnockdownEffects_Copy
+nf324	0x004629F6	port	004629f6 skipped-port ?Copy@CEngineThemeDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CEngineThemeDef_Copy
+nf324	0x00462E28	port	00462e28 skipped-port ?Copy@CPlayerInventoryDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CPlayerInventoryDef_Copy
+nf324	0x00465EAE	port	00465eae skipped-port ?Copy@CGlobalDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CGlobalDef_Copy
+nf324	0x00471A72	port	00471a72 skipped-port ?Copy@COpinionDeedEffectsDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls COpinionDeedEffectsDef_Copy

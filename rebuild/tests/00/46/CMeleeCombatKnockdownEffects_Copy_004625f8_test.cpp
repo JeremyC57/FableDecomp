@@ -1,33 +1,34 @@
-#include "rebuild_abi.h"
-#include <stdio.h>
+// behaviour test for 0x004625F8: CMeleeCombatKnockdownEffects::Copy forwards to CMeleeCombatKnockdownEffects::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CMeleeCombatKnockdownEffects::Copy (?Copy@CMeleeCombatKnockdownEffects@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CMeleeCombatKnockdownEffects@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-/* Mock the target so the tail-call links; verify the thunk forwards args. */
-class CMeleeCombatKnockdownEffects { public: int tag; };
+class CDefClassBase;
+class CMeleeCombatKnockdownEffects { public:
+    virtual void Copy(const CDefClassBase* other);
+    CMeleeCombatKnockdownEffects& operator=(const CMeleeCombatKnockdownEffects& other);
+};
 
-static CMeleeCombatKnockdownEffects* g_this = 0;
-static void* g_src = 0;
-
-extern void __fastcall CMeleeCombatKnockdownEffects_Copy_impl(
-    CMeleeCombatKnockdownEffects* thisptr, void* src);
-
-void __fastcall CMeleeCombatKnockdownEffects_Copy_impl(
-    CMeleeCombatKnockdownEffects* thisptr, void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CMeleeCombatKnockdownEffects& CMeleeCombatKnockdownEffects::operator=(const CMeleeCombatKnockdownEffects& other)
 {
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-extern void __fastcall CMeleeCombatKnockdownEffects_Copy(
-    CMeleeCombatKnockdownEffects* thisptr, void* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
 int main()
 {
-    CMeleeCombatKnockdownEffects obj; obj.tag = 0x11;
-    int srcbuf = 0x22;
-    CMeleeCombatKnockdownEffects_Copy(&obj, &srcbuf);
-    if (g_this == &obj && g_src == &srcbuf)
-        printf("PASS_004625f8\n");
-    else
-        printf("FAIL_004625f8\n");
-    return 0;
+    ((CMeleeCombatKnockdownEffects*)(g_dst))->CMeleeCombatKnockdownEffects::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("PASS_004625f8\n");
+        return 0;
+    }
+    std::printf("FAIL_004625f8 calls=%d\n", g_calls);
+    return 1;
 }

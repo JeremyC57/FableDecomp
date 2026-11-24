@@ -1,0 +1,13 @@
+## HEAD set: 00460584.obj 00460589.obj 0046f77c.obj 0046f6af.obj 004e14fd.obj 004e0e0a.obj
+duplicates 0
+UNRESOLVED 2 ??4CBase_00431ed0@@QAEAAU0@ABU0@@Z
+UNRESOLVED 1 ??4CDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 1 ?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z
+UNRESOLVED 1 ?CloneFields@CAICreatureWillPowerIndicatorDefBase@@QAEXPBVCDefClassBase@@@Z
+UNRESOLVED 1 @CLensFlareElementDef_Copy_impl@8
+## new set: 00460584.obj 00460589.obj 0046f77c.obj 0046f6af.obj 004e14fd.obj 004e0e0a.obj
+duplicates 0
+UNRESOLVED 2 ??4CDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 2 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z
+UNRESOLVED 4 __fltused
+LK_DONE

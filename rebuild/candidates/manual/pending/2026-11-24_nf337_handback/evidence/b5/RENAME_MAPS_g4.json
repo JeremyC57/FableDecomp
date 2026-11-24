@@ -1,0 +1,33 @@
+{
+ "00460584": {
+  "?CSpecialAbilitiesDrunkennessDef_Copy@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z": "?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z",
+  "?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z": "??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z"
+ },
+ "00460589": {
+  "??4CBase_00431ed0_Derived_00460589@@QAEAAU0@ABU0@@Z": "??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z",
+  "??4CBase_00431ed0@@QAEAAU0@ABU0@@Z": "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z"
+ },
+ "0046f77c": {
+  "?CLensFlareElementDef_Copy@@YIXPAVCLensFlareElementDef@@PBVCDefClassBase@@@Z": "?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z",
+  "@CLensFlareElementDef_Copy_impl@8": "??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z"
+ },
+ "0046f6af": {
+  "??4CBase_00431ed0_Derived_0046f6af@@QAEAAU0@ABU0@@Z": "??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z",
+  "??4CBase_00431ed0@@QAEAAU0@ABU0@@Z": "??4CParentDefClassBase@@QAEAAV0@ABV0@@Z"
+ },
+ "0045e65b": {
+  "?COpinionPersonalityDef_Copy@@YIXPAVCOpinionPersonalityDef@@PAX0@Z": "?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z",
+  "?COpinionPersonalityDef_Copy_impl@@YIXPAVCOpinionPersonalityDef@@PAX0@Z": "??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z"
+ },
+ "0045e660": {
+  "??4COpinionPersonalityDef@@QAEAAV0@ABV0@@Z": "??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z"
+ },
+ "00464531": {
+  "?CThingPhysicalSwitchDef_Copy@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z": "?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z",
+  "?CThingPhysicalSwitchDef_Copy_impl@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z": "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z"
+ },
+ "00464536": {
+  "??4CThingBaseDef@@QAEAAV0@ABV0@@Z": "??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z",
+  "??4CThingBaseDefBase@@QAEAAU0@ABU0@@Z": "??4CThingBaseDef@@QAEAAV0@ABV0@@Z"
+ }
+}

@@ -42,6 +42,15 @@ public: static class CDefClassBase* FABLE_FASTCALL Alloc();
 public:
     virtual unsigned long GetSizeofClass();
 #endif
+#ifdef FABLE_RETAIL_CSKYDEF_COPY_DECLS
+    // Opt-in (NF337, 2026-11-24): declarations only, no layout change, for CSkyDef::Copy 0x0046F4EB, which tail-calls the out-of-line
+    // operator= (retail `jmp` 0x0046F4F0). ?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z is the member the retail RTTI vftable placement
+    // (ghidra_out/labels_rtti_port.tsv) names at 0x0046F4EB (slot 19; it overrides CDefClassBase::Copy: clang override probe, made-up-name
+    // control fails); ??4CSkyDef@@QAEAAV0@ABV0@@Z (Ego_r.pdb + FableWin.pdb) is the operator= at 0x0046F4F0.
+public:
+    virtual void Copy(const CDefClassBase*);
+    CSkyDef& operator=(const CSkyDef&);
+#endif
 };
 #endif
 #endif

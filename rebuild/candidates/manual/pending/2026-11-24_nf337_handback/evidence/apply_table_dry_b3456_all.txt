@@ -1,0 +1,15 @@
+== b3
+{'replace': 2, 'delete': 1} misses 0
+multi-target before 1 after 1 new []
+== b4
+{'replace': 1} misses 0
+multi-target before 1 after 1 new []
+== b5
+{'replace': 1, 'delete': 2} misses 0
+multi-target before 1 after 1 new []
+== b6
+{'delete': 1} misses 0
+multi-target before 1 after 1 new []
+== ALL
+{'replace': 33, 'delete': 4} misses 0
+multi-target before 1 after 1 new []

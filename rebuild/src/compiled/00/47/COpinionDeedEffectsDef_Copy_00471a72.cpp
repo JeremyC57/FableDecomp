@@ -1,21 +1,15 @@
+// Leaf: ?Copy@COpinionDeedEffectsDef@@UAEXPBVCDefClassBase@@@Z
+// COpinionDeedEffectsDef::Copy(const CDefClassBase* other) -- copy every member of another COpinionDeedEffectsDef: `*this = *(const COpinionDeedEffectsDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00471A72, 5 bytes: a thiscall tail call, `jmp` to COpinionDeedEffectsDef::operator= 0x00471A77 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x00471A72 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: COpinionDeedEffectsDef::operator=(const COpinionDeedEffectsDef&) 0x00471A77, ??4COpinionDeedEffectsDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "rebuild_abi.h"
+#include "engine/COpinionDeedEffectsDef.h"
 
-/* COpinionDeedEffectsDef::Copy @ 0x00471a72
-   Retail body is a single `jmp rel32` (5 bytes: e9 00 00 00 00) — a tail-call
-   thunk that forwards this + one argument to another routine. The rel32 target
-   is relocation-masked, so any plausible extern callee byte-matches.
-
-   Modeled as a free __fastcall(objptr, arg) per the ABI rules for this-only
-   members; the tail call reuses the incoming ecx/edx unchanged, which the
-   compiler emits as a plain jmp. */
-
-class COpinionDeedEffectsDef;
-
-/* Forwarding target (relocation-masked). Same calling convention/signature so
-   the incoming this + arg pass straight through as a tail jmp. */
-extern void __fastcall COpinionDeedEffectsDef_Copy_impl(COpinionDeedEffectsDef* thisptr, void* src);
-
-void __fastcall COpinionDeedEffectsDef_Copy(COpinionDeedEffectsDef* thisptr, void* src)
+void COpinionDeedEffectsDef::Copy(const CDefClassBase* other)
 {
-    COpinionDeedEffectsDef_Copy_impl(thisptr, src);
+    *this = *(const COpinionDeedEffectsDef*)other;
 }

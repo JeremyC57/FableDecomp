@@ -1,32 +1,34 @@
-#include "rebuild_abi.h"
-#include <stdio.h>
+// behaviour test for 0x0045FD4E: CSpecialAbilitiesForcePushDef::Copy forwards to CSpecialAbilitiesForcePushDef::operator= with this and the source object
+// NF337 (NF324 Q2 form): the row now defines the PDB member CSpecialAbilitiesForcePushDef::Copy (?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration model, cast from static storage: the model is never
+// constructed (no vftable, no RTTI). The callee operator= (??4CSpecialAbilitiesForcePushDef@@QAEAAV0@ABV0@@Z, out of line in the row) is stubbed as a member here.
+#include <cstdio>
 
-class CSpecialAbilitiesForcePushDef;
+class CDefClassBase;
+class CSpecialAbilitiesForcePushDef { public:
+    virtual void Copy(const CDefClassBase* other);
+    CSpecialAbilitiesForcePushDef& operator=(const CSpecialAbilitiesForcePushDef& other);
+};
 
-// Provide the impl so the test links; record that the tail-call reached it.
-static int g_called = 0;
-static CSpecialAbilitiesForcePushDef* g_this = 0;
-static const void* g_src = 0;
-
-void __fastcall CSpecialAbilitiesForcePushDef_Copy_impl(
-    CSpecialAbilitiesForcePushDef* thisptr, void* /*edx*/, const void* src)
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+CSpecialAbilitiesForcePushDef& CSpecialAbilitiesForcePushDef::operator=(const CSpecialAbilitiesForcePushDef& other)
 {
-    g_called = 1;
-    g_this = thisptr;
-    g_src = src;
+    ++g_calls; g_this = this; g_other = &other;
+    return *this;
 }
 
-extern void __fastcall CSpecialAbilitiesForcePushDef_Copy(
-    CSpecialAbilitiesForcePushDef* thisptr, void* edx, const void* src);
+static unsigned long g_dst[4];
+static unsigned long g_src[4];
 
-int main(void)
+int main()
 {
-    CSpecialAbilitiesForcePushDef* self = (CSpecialAbilitiesForcePushDef*)0x1234;
-    const void* src = (const void*)0x5678;
-    CSpecialAbilitiesForcePushDef_Copy(self, 0, src);
-    if (g_called && g_this == self && g_src == src)
-        printf("OK_45FD4E\n");
-    else
-        printf("FAIL_45FD4E\n");
-    return 0;
+    ((CSpecialAbilitiesForcePushDef*)(g_dst))->CSpecialAbilitiesForcePushDef::Copy((const CDefClassBase*)(g_src));
+    if (g_calls == 1 && g_this == (const void*)g_dst && g_other == (const void*)g_src) {
+        std::printf("OK_45FD4E\n");
+        return 0;
+    }
+    std::printf("FAIL_0045fd4e calls=%d\n", g_calls);
+    return 1;
 }

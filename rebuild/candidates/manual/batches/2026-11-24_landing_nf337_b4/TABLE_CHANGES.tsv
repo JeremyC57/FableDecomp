@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?Copy@SubContainer@@QAEXPBU1@@Z -> ??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z	004eb6e7	004eb6c8	NF337: Copy 004eb6c8 now calls vector<CMultiStaticMeshEntryDef>::operator= by the 004eb6e7 row's own symbol

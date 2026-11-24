@@ -1,17 +1,15 @@
+// Leaf: ?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z
+// CCombatDialogueDef::Copy(const CDefClassBase* other) -- copy every member of another CCombatDialogueDef: `*this = *(const CCombatDialogueDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0045E555, 5 bytes: a thiscall tail call, `jmp` to CCombatDialogueDef::operator= 0x0045E55A (emitted right after it).
+// Identity: the RTTI vftable placement of 0x0045E555 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CCombatDialogueDef::operator=(const CCombatDialogueDef&) 0x0045E55A, ??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "rebuild_abi.h"
+#include "engine/CCombatDialogueDef.h"
 
-// 0x0045e555 CCombatDialogueDef::Copy — 5-byte tail-call thunk (jmp rel32).
-// The rel32 target is relocation-masked; a tail call to any matching-signature
-// extern reproduces the single `jmp` instruction byte-for-byte.
-
-class CCombatDialogueDef;
-
-// The real copy implementation this thunk tail-jumps to.
-extern void __fastcall CCombatDialogueDef_Copy_impl(CCombatDialogueDef* thisptr, void* src);
-
-// Model the __fastcall member accessor as a free __fastcall(thisptr, ...).
-void __fastcall CCombatDialogueDef_Copy(CCombatDialogueDef* thisptr, void* src)
+void CCombatDialogueDef::Copy(const CDefClassBase* other)
 {
-    // Tail call -> compiles to a single `jmp rel32`.
-    CCombatDialogueDef_Copy_impl(thisptr, src);
+    *this = *(const CCombatDialogueDef*)other;
 }

@@ -1,19 +1,20 @@
+// Leaf: ?Copy@CEngineThemeDef@@UAEXPBVCDefClassBase@@@Z
+// CEngineThemeDef::Copy(const CDefClassBase* other) -- copy every member of another CEngineThemeDef: `*this = *(const CEngineThemeDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004629F6, 5 bytes: a thiscall tail call, `jmp` to CEngineThemeDef::operator= 0x004629FB (emitted right after it).
+// Identity: the RTTI vftable placement of 0x004629F6 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CEngineThemeDef::operator=(const CEngineThemeDef&) 0x004629FB, ??4CEngineThemeDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
 #include "rebuild_abi.h"
 
-// CEngineThemeDef::Copy — retail 0x004629f6
-// Retail body is a single `jmp rel32` incremental-linking thunk:
-//   0: e9 00 00 00 00   jmp <target>
-// The rel32 is relocation-masked, so a tail-call to any extern with the
-// same signature reproduces the exact 5-byte `jmp rel32` encoding.
-// __fastcall(this, src) is modeled as __fastcall(objptr, src) per ABI rules.
+class CDefClassBase;
+class CEngineThemeDef {                                // declarations only (no engine/CEngineThemeDef.h)
+public:
+    virtual void Copy(const CDefClassBase* other);              // vftable slot 19, 0x004629F6
+    CEngineThemeDef& operator=(const CEngineThemeDef& other);   // out of line: 0x004629FB
+};
 
-class CEngineThemeDef;
-
-// Real implementation the thunk tail-jumps to (address relocation-masked).
-extern void __fastcall CEngineThemeDef_Copy_impl(CEngineThemeDef* thisptr, CEngineThemeDef* src);
-
-void __fastcall CEngineThemeDef_Copy(CEngineThemeDef* thisptr, CEngineThemeDef* src)
+void CEngineThemeDef::Copy(const CDefClassBase* other)
 {
-    // Tail call -> emits `jmp rel32` (5 bytes), matching retail `e9 00000000`.
-    CEngineThemeDef_Copy_impl(thisptr, src);
+    *this = *(const CEngineThemeDef*)other;
 }

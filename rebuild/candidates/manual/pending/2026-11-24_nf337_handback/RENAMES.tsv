@@ -1,0 +1,86 @@
+batch	address	kind	old	new	sources
+b1	0045d2f7	self	?CFactionDef_Copy@@YIXPAVCFactionDef@@PAX@Z	?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	0045d2f7	callee	?CFactionDef_Copy_impl@@YIXPAVCFactionDef@@PAX@Z	??4CFactionDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045d2fc defines it
+b1	0045dd00	self	?COpinionReactionMaskDef_Copy@@YIXPAVCOpinionReactionMaskDef@@PAX@Z	?Copy@COpinionReactionMaskDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	0045dd00	callee	?COpinionReactionMaskDef_Copy_impl@@YIXPAVCOpinionReactionMaskDef@@PAX@Z	??4COpinionReactionMaskDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045dd05 defines it
+b1	0045e182	self	?COpinionDeedMaskDef_Copy@@YIXPAVCOpinionDeedMaskDef@@PAX@Z	?Copy@COpinionDeedMaskDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	0045e182	callee	?COpinionDeedMaskDef_Copy_impl@@YIXPAVCOpinionDeedMaskDef@@PAX@Z	??4COpinionDeedMaskDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045e187 defines it
+b1	0045e555	self	?CCombatDialogueDef_Copy@@YIXPAVCCombatDialogueDef@@PAX@Z	?Copy@CCombatDialogueDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	0045e555	callee	?CCombatDialogueDef_Copy_impl@@YIXPAVCCombatDialogueDef@@PAX@Z	??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045e55a defines it
+b1	0045f630	self	?CSpecialAbilitiesBattleChargeDef_Copy@@YIXPAVCSpecialAbilitiesBattleChargeDef@@PAX@Z	?Copy@CSpecialAbilitiesBattleChargeDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	0045f630	callee	?CSpecialAbilitiesBattleChargeDef_Copy_impl@@YIXPAVCSpecialAbilitiesBattleChargeDef@@PAX@Z	??4CSpecialAbilitiesBattleChargeDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045f635 defines it
+b1	0045f7c2	self	?CSpecialAbilitiesMultiArrowDef_Copy@@YIXPAVCSpecialAbilitiesMultiArrowDef@@PAXPAVCDefClassBase@@@Z	?Copy@CSpecialAbilitiesMultiArrowDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	0045f7c2	callee	?CSpecialAbilitiesMultiArrowDef_Copy_impl@@YIXPAVCSpecialAbilitiesMultiArrowDef@@PAXPAVCDefClassBase@@@Z	??4CSpecialAbilitiesMultiArrowDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045f7c7 defines it
+b1	00460180	self	?CSpecialAbilitiesGhostSwordDef_Copy@@YIXPAVCSpecialAbilitiesGhostSwordDef@@PAX1@Z	?Copy@CSpecialAbilitiesGhostSwordDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00460180	callee	?CSpecialAbilitiesGhostSwordDef_Copy_impl@@YIXPAVCSpecialAbilitiesGhostSwordDef@@PAX1@Z	??4CSpecialAbilitiesGhostSwordDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00460185 defines it
+b1	00460452	self	?CSpecialAbilitiesSummonSpellDef_Copy@@YIXPAVCSpecialAbilitiesSummonSpellDef@@PAX@Z	?Copy@CSpecialAbilitiesSummonSpellDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00460452	callee	?CSpecialAbilitiesSummonSpellDef_Copy_impl@@YIXPAVCSpecialAbilitiesSummonSpellDef@@PAX@Z	??4CSpecialAbilitiesSummonSpellDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00460457 defines it
+b1	004604ca	self	?CSpecialAbilitiesBurntEffectDef_Copy@@YIXPAVCSpecialAbilitiesBurntEffectDef@@PAX@Z	?Copy@CSpecialAbilitiesBurntEffectDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	004604ca	callee	?CSpecialAbilitiesBurntEffectDef_Copy_impl@@YIXPAVCSpecialAbilitiesBurntEffectDef@@PAX@Z	??4CSpecialAbilitiesBurntEffectDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004604cf defines it
+b1	00460518	self	?CSpecialAbilitiesElectrocutedEffectDef_Copy@@YIXPAVCSpecialAbilitiesElectrocutedEffectDef@@PAX@Z	?Copy@CSpecialAbilitiesElectrocutedEffectDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00460518	callee	?CSpecialAbilitiesElectrocutedEffectDef_Copy_impl@@YIXPAVCSpecialAbilitiesElectrocutedEffectDef@@PAX@Z	??4CSpecialAbilitiesElectrocutedEffectDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0046051d defines it
+b1	004605e0	self	?CSpecialAbilitiesThunderLightningStormDef_Copy@@YIXPAVCSpecialAbilitiesThunderLightningStormDef@@PAX@Z	?Copy@CSpecialAbilitiesThunderLightningStormDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	004605e0	callee	@CSpecialAbilitiesThunderLightningStormDef_Copy_impl@8	??4CSpecialAbilitiesThunderLightningStormDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004605e5 defines it
+b1	00461d4b	self	?CCombatSequenceDef_Copy@@YIXPAVCCombatSequenceDef@@PAX@Z	?Copy@CCombatSequenceDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00461d4b	callee	?CCombatSequenceDef_Copy_impl@@YIXPAVCCombatSequenceDef@@PAX@Z	??4CCombatSequenceDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00461d50 defines it
+b1	00461f77	self	?CHeroCombatDef_Copy@@YIXPAVCHeroCombatDef@@0@Z	?Copy@CHeroCombatDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00461f77	callee	@CHeroCombatDef_Copy_impl@8	??4CHeroCombatDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00461f7c defines it
+b1	004625f8	self	?CMeleeCombatKnockdownEffects_Copy@@YIXPAVCMeleeCombatKnockdownEffects@@PAX@Z	?Copy@CMeleeCombatKnockdownEffects@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	004625f8	callee	?CMeleeCombatKnockdownEffects_Copy_impl@@YIXPAVCMeleeCombatKnockdownEffects@@PAX@Z	??4CMeleeCombatKnockdownEffects@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004625fd defines it
+b1	004629f6	self	?CEngineThemeDef_Copy@@YIXPAVCEngineThemeDef@@0@Z	?Copy@CEngineThemeDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	004629f6	callee	?CEngineThemeDef_Copy_impl@@YIXPAVCEngineThemeDef@@0@Z	??4CEngineThemeDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004629fb defines it
+b1	00462e28	self	?CPlayerInventoryDef_Copy@@YIXPAVCPlayerInventoryDef@@PAX@Z	?Copy@CPlayerInventoryDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00462e28	callee	?CPlayerInventoryDef_Copy_impl@@YIXPAVCPlayerInventoryDef@@PAX@Z	??4CPlayerInventoryDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00462e2d defines it
+b1	00465eae	self	?CGlobalDef_Copy@@YIXPAVCGlobalDef@@0@Z	?Copy@CGlobalDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00465eae	callee	?CGlobalDef_Copy_impl@@YIXPAVCGlobalDef@@0@Z	??4CGlobalDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00465eb3 defines it
+b1	00471a72	self	?COpinionDeedEffectsDef_Copy@@YIXPAVCOpinionDeedEffectsDef@@PAX@Z	?Copy@COpinionDeedEffectsDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b1	00471a72	callee	?COpinionDeedEffectsDef_Copy_impl@@YIXPAVCOpinionDeedEffectsDef@@PAX@Z	??4COpinionDeedEffectsDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00471a77 defines it
+b2	0045f711	self	?CSpecialAbilitiesMultiStrikeDef_Copy@@YIXPAVCSpecialAbilitiesMultiStrikeDef@@PBVCDefClassBase@@@Z	?Copy@CSpecialAbilitiesMultiStrikeDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0045f711	callee	?CSpecialAbilitiesMultiStrikeDef_Copy_impl@@YIXPAVCSpecialAbilitiesMultiStrikeDef@@PBVCDefClassBase@@@Z	??4CSpecialAbilitiesMultiStrikeDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045f716 defines it
+b2	0045f84f	self	?CSpecialAbilitiesBerserkDef_Copy@@YIXPAVCSpecialAbilitiesBerserkDef@@PAX@Z	?Copy@CSpecialAbilitiesBerserkDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0045f84f	callee	?CSpecialAbilitiesBerserkDef_Copy_impl@@YIXPAVCSpecialAbilitiesBerserkDef@@PAX@Z	??4CSpecialAbilitiesBerserkDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045f854 defines it
+b2	0045fabc	self	?CSpecialAbilitiesBulletTimeDef_Copy@@YIXPAVCSpecialAbilitiesBulletTimeDef@@PBVCDefClassBase@@@Z	?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0045fabc	callee	@CSpecialAbilitiesBulletTimeDef_Copy_impl@8	??4CSpecialAbilitiesBulletTimeDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045fac1 defines it
+b2	0045fd4e	self	?CSpecialAbilitiesForcePushDef_Copy@@YIXPAVCSpecialAbilitiesForcePushDef@@PAXPBX@Z	?Copy@CSpecialAbilitiesForcePushDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0045fd4e	callee	?CSpecialAbilitiesForcePushDef_Copy_impl@@YIXPAVCSpecialAbilitiesForcePushDef@@PAXPBX@Z	??4CSpecialAbilitiesForcePushDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0045fd53 defines it
+b2	004601e5	self	?CSpecialAbilitiesTurncoatSpellDef_Copy@@YIXPAVCSpecialAbilitiesTurncoatSpellDef@@PAX@Z	?Copy@CSpecialAbilitiesTurncoatSpellDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	004601e5	callee	?CSpecialAbilitiesTurncoatSpellDef_Copy_impl@@YIXPAVCSpecialAbilitiesTurncoatSpellDef@@PAX@Z	??4CSpecialAbilitiesTurncoatSpellDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004601ea defines it
+b2	0046012c	self	?CSpecialAbilitiesHealLifeDef_Copy@@YIXPAVCSpecialAbilitiesHealLifeDef@@PAX@Z	?Copy@CSpecialAbilitiesHealLifeDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0046012c	callee	?CSpecialAbilitiesHealLifeDef_Copy_impl@@YIXPAVCSpecialAbilitiesHealLifeDef@@PAX@Z	??4CSpecialAbilitiesHealLifeDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00460131 defines it
+b2	0046133f	self	?CArmourDef_Copy@@YIXPAVCArmourDef@@0@Z	?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0046133f	callee	?CArmourDef_Copy_impl_0046133f@@YIXPAVCArmourDef@@0@Z	??4CArmourDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00461344 defines it
+b2	004628cb	self	?CPlayerMovementDef_Copy@@YIXPAVCPlayerMovementDef@@0@Z	?Copy@CPlayerMovementDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	004628cb	callee	?CPlayerMovementDef_Copy_impl@@YIXPAVCPlayerMovementDef@@0@Z	??4CPlayerMovementDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004628d0 defines it
+b2	00463b9d	self	?CEntitySoundDef_Copy@@YIXPAVCEntitySoundDef@@0@Z	?Copy@CEntitySoundDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	00463b9d	callee	?CEntitySoundDef_Copy_impl@@YIXPAVCEntitySoundDef@@0@Z	??4CEntitySoundDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 00463ba2 defines it
+b2	0046f4eb	self	?CSkyDef_Copy@@YIXPAVCSkyDef@@PBV1@@Z	?Copy@CSkyDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	0046f4eb	callee	?CSkyDef_Copy_impl@@YIXPAVCSkyDef@@PBV1@@Z	??4CSkyDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 0046f4f0 defines it
+b2	004717c2	self	?CAppearanceDef_Copy@@YIXPAVCAppearanceDef@@0@Z	?Copy@CAppearanceDef@@UAEXPBVCDefClassBase@@@Z	RTTI vftable placement slot 19 (labels_rtti_port.tsv) + Ego_r.pdb + FableWin.pdb
+b2	004717c2	callee	?CAppearanceDef_Copy_impl@@YIXPAVCAppearanceDef@@0@Z	??4CAppearanceDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb + the operator= row 004717c7 defines it
+held/b5	00460584	self	?CSpecialAbilitiesDrunkennessDef_Copy@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z	?Copy@CSpecialAbilitiesDrunkennessDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+held/b5	00460584	callee	?CSpecialAbilitiesDrunkennessDef_CopyImpl@@YIXPAVCSpecialAbilitiesDrunkennessDef@@PAX@Z	??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b5	00460589	self	??4CBase_00431ed0_Derived_00460589@@QAEAAU0@ABU0@@Z	??4CSpecialAbilitiesDrunkennessDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b5	00460589	callee	??4CBase_00431ed0@@QAEAAU0@ABU0@@Z	??4CParentDefClassBase@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b5	0046f77c	self	?CLensFlareElementDef_Copy@@YIXPAVCLensFlareElementDef@@PBVCDefClassBase@@@Z	?Copy@CLensFlareElementDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+held/b5	0046f77c	callee	@CLensFlareElementDef_Copy_impl@8	??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b5	0046f6af	self	??4CBase_00431ed0_Derived_0046f6af@@QAEAAU0@ABU0@@Z	??4CLensFlareElementDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b5	0046f6af	callee	??4CBase_00431ed0@@QAEAAU0@ABU0@@Z	??4CParentDefClassBase@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+b3	0045e65b	self	?COpinionPersonalityDef_Copy@@YIXPAVCOpinionPersonalityDef@@PAX0@Z	?Copy@COpinionPersonalityDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b3	0045e65b	callee	?COpinionPersonalityDef_Copy_impl@@YIXPAVCOpinionPersonalityDef@@PAX0@Z	??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+b3	0045e660	self	??4COpinionPersonalityDef@@QAEAAV0@ABV0@@Z	??4COpinionPersonalityDef@@QAEABV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+b3	00464531	self	?CThingPhysicalSwitchDef_Copy@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z	?Copy@CThingPhysicalSwitchDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b3	00464531	callee	?CThingPhysicalSwitchDef_Copy_impl@@YIXPAVCThingPhysicalSwitchDef@@PAX@Z	??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+b3	00464536	self	??4CThingBaseDef@@QAEAAV0@ABV0@@Z	??4CThingPhysicalSwitchDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+b3	00464536	callee	??4CThingBaseDefBase@@QAEAAU0@ABU0@@Z	??4CThingBaseDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+b4	004e01a7	self	?CBuyHouseDef_Copy@@YIXPAVCBuyHouseDef@@HPBVCDefClassBase@@@Z	?Copy@CBuyHouseDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+held/b5	004e14fd	self	?CAICreatureWillPowerIndicatorDef_Copy@@YIXPAVCAICreatureWillPowerIndicatorDef@@HPBVCDefClassBase@@@Z	?Copy@CAICreatureWillPowerIndicatorDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+held/b5	004e14fd	callee	?CloneFields@CAICreatureWillPowerIndicatorDefBase@@QAEXPBVCDefClassBase@@@Z	??4CDefClassBase@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b5	004e0e0a	self	?CInterestingToVillagersDef__Copy@@YIXPAVCInterestingToVillagersDef@@PAXPBVCDefClassBase@@@Z	?Copy@CInterestingToVillagersDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b4	004e064e	self	?CEnemyDef_Copy@@YIXPAVCEnemyDef@@HPBVCDefClassBase@@@Z	?Copy@CEnemyDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b4	004e0ca7	self	?CExpressionSubDef_Copy@@YIXPAVCExpressionSubDef@@HPBVCDefClassBase@@@Z	?Copy@CExpressionSubDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b4	004e0fed	self	?CGoldDef_Copy@@YIXPAVCGoldDef@@HPBVCDefClassBase@@@Z	?Copy@CGoldDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b4	004eb6c8	self	?Copy@@YIXPAVCMultiStaticMeshDef@@PAXPBVCDefClassBase@@@Z	?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+b4	004eb6c8	callee	?Copy@SubContainer@@QAEXPBU1@@Z	??4?$vector@VCMultiStaticMeshEntryDef@@V?$allocator@VCMultiStaticMeshEntryDef@@@std@@@std@@QAEAAV01@ABV01@@Z	Ego_r.pdb + FableWin.pdb
+held/b6	0046f49f	self	?CAbilityButtonGuiDef_Copy@@YIPAVCAbilityButtonGuiDef@@PAV1@PBVCDefClassBase@@@Z	?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z	Ego_r.pdb + FableWin.pdb; RTTI vftable slot 19
+held/b6	0046f49f	callee	@CAbilityButtonGuiDef_Copy_impl_0046f49f@8	??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z	Ego_r.pdb + FableWin.pdb
+held/b6	0046f43e	self (forcing device)	?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z	(no longer defined here; the 0x0046F49F row defines it) + anonymous-namespace scaffolding helper ?ReferenceAssign@?A0x...@@ (Fidelity: scaffolding, not retail)	D-2 retry; operator= ??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z unchanged, implicit, pick-any

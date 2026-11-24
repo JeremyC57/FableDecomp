@@ -1,19 +1,17 @@
+// Leaf: ?Copy@CSpecialAbilitiesThunderLightningStormDef@@UAEXPBVCDefClassBase@@@Z
+// CSpecialAbilitiesThunderLightningStormDef::Copy(const CDefClassBase* other) -- copy every member of another CSpecialAbilitiesThunderLightningStormDef: `*this = *(const CSpecialAbilitiesThunderLightningStormDef*)other;`
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004605E0, 5 bytes: a thiscall tail call, `jmp` to CSpecialAbilitiesThunderLightningStormDef::operator= 0x004605E5 (emitted right after it).
+// Identity: the RTTI vftable placement of 0x004605E0 (ghidra_out/labels_rtti_port.tsv, slot 19 Copy) + Ego_r.pdb / FableWin.pdb name sets.
+// Callee: CSpecialAbilitiesThunderLightningStormDef::operator=(const CSpecialAbilitiesThunderLightningStormDef&) 0x004605E5, ??4CSpecialAbilitiesThunderLightningStormDef@@QAEAAV0@ABV0@@Z (PDB name set + the landed operator= row's own definition at the jmp target).
+// NF337 (2026-11-24): moved from the flattened __fastcall stand-in and its made-up `_Copy_impl` callee onto the PDB member; operator= is
+//   declared out of line here, so the body is the one-instruction tail call retail has.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CDEFSTRINGTABLE
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "rebuild_abi.h"
+#include "engine/CSpecialAbilitiesThunderLightningStormDef.h"
 
-// 0x004605e0 CSpecialAbilitiesThunderLightningStormDef::Copy
-// Retail is a 5-byte incremental-link thunk: a single `jmp rel32` tail-call
-// into the real Copy implementation (relocation-masked in parity).
-// Modeled as a __fastcall accessor-style free function tail-calling the target.
-
-class CSpecialAbilitiesThunderLightningStormDef;
-
-// The real implementation the thunk jumps to (address relocation-masked).
-extern "C" void __fastcall CSpecialAbilitiesThunderLightningStormDef_Copy_impl(
-    CSpecialAbilitiesThunderLightningStormDef* thisptr, void* src);
-
-void __fastcall CSpecialAbilitiesThunderLightningStormDef_Copy(
-    CSpecialAbilitiesThunderLightningStormDef* thisptr, void* src)
+void CSpecialAbilitiesThunderLightningStormDef::Copy(const CDefClassBase* other)
 {
-    // Tail call -> compiles to a single `jmp rel32`.
-    CSpecialAbilitiesThunderLightningStormDef_Copy_impl(thisptr, src);
+    *this = *(const CSpecialAbilitiesThunderLightningStormDef*)other;
 }
