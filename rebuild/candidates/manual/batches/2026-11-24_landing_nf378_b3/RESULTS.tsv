@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00b5bd30	ACCEPT	?ReleaseTextures_00b5bd30@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ	?FinishWithDynamicTextures@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	objsec ALL_EQ, RELOCATION_MATCH PASS (head RELOCATION_MATCH)

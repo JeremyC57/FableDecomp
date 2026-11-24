@@ -1,0 +1,4 @@
+address	verdict	old	new	reason
+0094fbb0	ACCEPT	?IsTargetOnATower@CAIStateGroup_JackDragon@@QAE_NXZ	?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ	option S owner (ai_state_group_dragon.obj slice; self QAE -> PDB AAE; catalog flags /d2inlT59)
+0094fdf0	ACCEPT	?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ	?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ	option S member (thin; catalog flags /d2inlT59)
+00951fb0	ACCEPT	?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ	?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ	option S member (thin; its text moved to the owner)

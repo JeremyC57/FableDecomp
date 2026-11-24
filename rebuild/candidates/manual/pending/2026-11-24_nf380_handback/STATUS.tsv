@@ -1,0 +1,90 @@
+address	verdict	status	batch	rows_changed	note
+0041a3d0	respell	queued	-	-	binder 0042ded5 respell
+00429288	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+0042a2ca	respell	queued	-	-	binder 00558770 respell
+00436c80	respell	accept	b1	00918640	binder respell; every gate passes (batches/b1/RESULTS.tsv)
+004382c0	respell	queued	-	-	self rename ForceClearGui: Account B pending headers (acctB_c2009/c2017/c2039/c2041/r2041/parked CPlayerGui.h) already model 0x004382C0 as ForceClearGui; left to that work
+0043e1c0	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+00448380	unknown(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+0044c0c0	respell	accept	b1	0044c146	binder respell; every gate passes (batches/b1/RESULTS.tsv); still open: the ~78 generated Def ctors binding the old spelling (QUEUE_PROPOSALS q1)
+0044f3b2	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+0045bc09	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+0046fece	respell	queued	-	-	self rename: queue
+004d15a0	respell	queued	-	-	self rename: queue (NF301: retail is STLport, which has no _Sort_heap)
+004d1600	respell	queued	-	-	self rename: queue (NF301: retail is STLport, which has no _Sort_heap)
+004ea2ae	respell	queued	-	-	self rename: queue
+0050e500	unknown	unknown	-	-	none: needs object measurement
+00513700	unknown(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+00515ad0	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+005295b0	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+0052c730	respell	accept	b1	00549230	binder respell; every gate passes (batches/b1/RESULTS.tsv)
+0052c7e0	respell(held)	held-ruling	-	-	ruling needed: 0x0052C7E0 is on BRIEF_NF_BATCH's held list (NF281 D4, held until 0x005367F3 is fixed) - this IS the 0x005367F3 fix
+0052cca0	respell	accept	b1	00548350	binder respell; every gate passes (batches/b1/RESULTS.tsv)
+00533cc0	respell	queued	-	-	self rename AddChildDynamically (vftable 0x0124608C slots 59/60/61 = AddChild 0x00533B50 / 0x00533CC0 / AddChildFront 0x00533BA0; Ego_r ui_component.obj order AddChild < AddChildDynamically < AddChildFront); not changed: 0x00533B50 (AddChild) is T3 nf294, whose binders this rename moves
+005bbdf1	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+005c04bf	respell(wrapper)	queued	-	-	self rename queue; dtor binder = inline-wrapper context
+00625350	respell	queued	-	-	binder 006314c0 respell; self rename queue
+006313a0	respell	queued	-	-	self rename (template): queue
+00654b4f	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+00654b94	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+00654bd9	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+00654c1e	unknown(wrapper)	unknown	-	-	none until the binder objects are measured (does the binder define the dtor as a pick-any COMDAT equal to retail?)
+00675230	unknown(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+006755a0	unknown(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+0067c490	respell	queued	-	-	self rename (other class): queue
+006a7050	respell	queued	-	-	self rename: queue
+006b6840	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+006ba420	respell	queued	-	-	binder 006bab80 respell (+ its own catalog name is suspect)
+006ba6d0	respell	queued	-	-	binder 006bab80 respell (same row as 0x006BA420)
+006f0810	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+006f15e0	unknown(wrapper)	unknown	-	-	none
+0071b2d0	respell	queued	-	-	self rename (same class): queue
+007691a0	respell	queued	-	-	self rename (template args): queue
+0076d7b0	respell(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+007898a3	respell	queued	-	-	self rename: queue
+00810fc0	respell(binder identity)	queued	-	-	queue identity research on 0x00733020 (its own catalog name may be propagated); no change
+0081b300	respell	queued	-	-	self rename: queue
+0081b510	respell	queued	-	-	self rename: queue
+00825d40	respell	queued	-	-	fix with 0x00826A00's self rename (same row): queue
+00826a00	respell	queued	-	-	self rename (template args): queue
+0082cac0	respell(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+008899c0	unknown(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+00889f00	unknown(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+008bbb10	respell	accept	b1	006f5530	binder respell; every gate passes (batches/b1/RESULTS.tsv)
+009009ea	respell	accept	b1	00902873	binder respell; every gate passes (batches/b1/RESULTS.tsv)
+0091f990	respell	queued	-	-	self rename (template member): queue
+00993b10	respell(wrapper)	queued	-	-	wrapper binder (derived dtor inlined): queue
+00993e50	respell	accept	b1	009acab0 009b0200 00af4240	binder respell; every gate passes (batches/b1/RESULTS.tsv); self stand-in stays (owner row, NAME_FIXES)
+0099a300	respell(wrapper)	queued	-	-	wrapper binders = inlined trivial derived dtors: model change, queue
+009d5060	respell(wrapper)	queued	-	-	wrapper binder (ctor { SetString(s); } inlined): queue
+009e6530	respell	queued	-	-	self rename: queue; ??M binders are inline-operator context (unknown whether retail inlined it)
+009f6a70	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+009fc150	respell(wrapper)	queued	-	-	wrapper binder: queue
+00a01c10	respell(wrapper)	queued	-	-	wrapper binder (template derived dtor inlined): queue
+00a13650	respell	queued	-	-	self rename (template args): queue
+00a219e0	respell	queued	-	-	self rename (template args): queue
+00a23ce0	respell	accept	b1	008e9110 008e9080	binder respell; every gate passes (batches/b1/RESULTS.tsv); self stand-in stays (owner row, NAME_FIXES)
+00a326d0	unknown	unknown	-	-	none: needs object measurement
+00a335e0	unknown	unknown	-	-	none: needs object measurement
+00a3cdd0	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00a46790	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00a49c60	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00a4b7b0	respell	queued	-	-	self rename (free fn -> NBBBMaths ns): queue
+00a52080	respell	queued	-	-	self rename (template args): queue
+00a55500	respell	queued	-	-	self rename (template args): queue
+00a5a7d0	respell	queued	-	-	self rename: queue (NF301: retail is STLport, which has no _Sort_heap)
+00a5e0a0	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00a5e2e0	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00a62960	respell(T3)	skipped-T3	-	-	T3_PORT_QUEUE row: researched read-only; ruling in RULINGS.tsv
+00a629d0	respell	accept	b2	00a629d0	self rename; table already binds the right name (see batches/b2/RESULTS.tsv)
+00a87090	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00a96350	respell	queued	-	-	self rename (template args): queue
+00aaaf50	respell	queued	-	-	self rename (template args): queue
+00ab3b10	respell	accept	b1	00a986b0 00a98740	binder respell; every gate passes (batches/b1/RESULTS.tsv)
+00ae5d80	unknown(wrapper)	unknown	-	-	none until binder objects are measured
+00af0710	respell	queued	-	-	binder 00aeef40 respell; self stand-in = NF284 AutoTinyVirtualObject port (T3)
+00bfea30	alias	folded	-	-	FOLDED.tsv
+00cbd510	respell(wrapper)	queued	-	-	self stand-in = T3; wrapper binder (template derived dtor inlined; template argument also doubtful for HeroSoulsArena): queue
+00e0f1d0	respell	accept	b2	00e0f1d0	self rename; table already binds the right name (see batches/b2/RESULTS.tsv)
+00e75ef0	respell	queued	-	-	self rename: queue
+00f3b640	unknown(wrapper)	unknown	-	-	none until binder objects are measured

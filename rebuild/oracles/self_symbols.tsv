@@ -16983,7 +16983,7 @@ address	symbol	status	leaf_given
 00a62960	??1CCriticalSectionLock@@QAE@XZ	RELOCATION_MATCH	Release
 00a62980	?Lock@CCriticalSectionLock_Methods@@QAEXXZ	MATCH	Lock
 00a629a0	??1CCriticalSectionLock@@QAE@XZ	RELOCATION_MATCH	??1CCriticalSectionLock@
-00a629d0	??1CPackedUIntArray@@QAE@XZ	RELOCATION_MATCH	??1CPackedUIntArray@
+00a629d0	?Clear@CPackedUIntArray@@QAEXXZ	RELOCATION_MATCH	?Clear@CPackedUIntArray@@QAEXXZ
 00a629f0	??ACPackedUIntArray@@QBEKK@Z	RELOCATION_MATCH	??ACPackedUIntArray
 00a62a60	?Sizeof@CPackedUIntArray@@QBEKXZ	MATCH	Sizeof
 00a62ac0	??1CPackedUIntArray@@QAE@XZ	RELOCATION_MATCH	??1CPackedUIntArray@
@@ -27219,3 +27219,7 @@ address	symbol	status	leaf_given
 0045c5f6	??1CThingNoiseDef@@UAE@XZ	RELOCATION_MATCH	??1CThingNoiseDef@@UAE@XZ
 0045c5da	??_GCThingNoiseDef@@UAEPAXI@Z	RELOCATION_MATCH	??_GCThingNoiseDef@@UAEPAXI@Z
 007fc800	?EndAttackBeam@CTCKraken@@QAEXXZ	RELOCATION_MATCH	?EndAttackBeam@CTCKraken@@QAEXXZ
+0094fbb0	?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ	RELOCATION_MATCH	?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ
+0094fdf0	?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ	RELOCATION_MATCH	?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ
+00951fb0	?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ	RELOCATION_MATCH	?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ
+00e0f1d0	?WatchForTermination@CQ_WaspBossScript@NScript@@QAEXXZ	RELOCATION_MATCH	?WatchForTermination@CQ_WaspBossScript@NScript@@QAEXXZ

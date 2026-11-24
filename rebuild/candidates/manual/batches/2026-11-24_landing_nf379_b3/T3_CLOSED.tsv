@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf355	0x0045C5C1	port (same-TU unit)	Alloc 0x0045C5C1 (no catalog row) and 0x0045C5DA's own self name (??_GCThingNoiseDef@@UAEPAXI@Z, today the stand-in ?CThingNoiseDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z) come from the def TU of row 0x0045C5F6, which already defines ?Alloc@CThingNoiseDef@@SIPAVCDefClassBase@@XZ strongly (EQ to retail, resolves InitAndCompile 0x0044C72B). One follow-up: a 0x0045C5C1 row must not define Alloc a second time (precedent form: 0x004317D0 CUIMiscThingsDef). Account B: do not author 0x0045C5C1 separately.

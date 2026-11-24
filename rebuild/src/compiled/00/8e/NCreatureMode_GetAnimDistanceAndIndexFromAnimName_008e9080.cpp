@@ -1,5 +1,6 @@
 // NCreatureMode::GetAnimDistanceAndIndexFromAnimName(const CThingCreatureBase&, const CCharString&, long&, float&) -- bank index of the named animation and its per-frame movement distance
 // Leaf: ?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z
+// Name fix (NF380): 0x00A23CE0 reads +0x14 = C3DAnimationInfo::NonLoopingDuration (Ego_r layout: Duration +0x10); FableWin and Ego_r GetAnimDistanceAndIndexFromAnimName call GetNonLoopingDuration (was GetDuration).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -9,7 +10,7 @@
 //   `?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z`.
 //   Callers: CModeStrafe::OnActivate 0x008E9A30 (twice) and one more NCreatureMode site (0x008E9BE3).
 // Callees: CThingCreatureBase::GetAnimFromName(const CCharString&, long) const @ 0x00662A00, CMeshDataBank::PeekAnimation
-//   @ 0x00A242C0, C3DAnimationInfo::GetDuration @ 0x00A23CE0, CThingCreatureBase::GetAnimMovementDistance @ 0x006627A0.
+//   @ 0x00A242C0, C3DAnimationInfo::GetNonLoopingDuration @ 0x00A23CE0, CThingCreatureBase::GetAnimMovementDistance @ 0x006627A0.
 // Globals: CMainGameComponent::Get() 0x013B86A0 (world +0x24, main mesh bank +0x3c), CMainGameComponent::GetConstantFPS() 0x01375550 (long).
 // Shape: the model of the landed sibling CModeStrafe::GetMovementSpeed 0x008E9110: the bank is a named local fetched
 //   first, the index is stored through the out reference and passed straight on (eax), then re-read for the distance
@@ -21,7 +22,7 @@ public:
 
 class C3DAnimationInfo {
 public:
-    float GetDuration() const;                  // 0x00A23CE0
+    float GetNonLoopingDuration() const;                  // 0x00A23CE0
 };
 
 class CMeshDataBank {
@@ -70,7 +71,7 @@ bool __fastcall GetAnimDistanceAndIndexFromAnimName(const CThingCreatureBase& cr
 {
     CMeshDataBank* bank = CThingCreatureBase::PeekWorld().PMainMeshBank;
     index = creature.GetAnimFromName(animName, 0).BankIndex;
-    float duration = bank->PeekAnimation(index)->GetDuration();
+    float duration = bank->PeekAnimation(index)->GetNonLoopingDuration();
     float speed = creature.GetAnimMovementDistance(index) / duration;
     distance = speed / (float)CMainGameComponent::GetConstantFPS();
     return true;

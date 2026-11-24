@@ -13,6 +13,7 @@
 //   (0x0091880F) across GetPWorldSeed + GFROR13; a single-exit spelling makes _M_start one whole-function web (+5 bytes).
 // Model: shared engine/CAIStateGroup_Gaze.h via FABLE_RETAIL_CAISTATEGROUP_GAZE (CAIStateGroupBase base, Ego_r members, PDB decls).
 // Leaf: ?FindFreeParticularGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@J_N@Z
+// Name fix (NF380): the local vector is vector<CThing*> (FableWin FindFreeParticularGazePos calls vector<CThing*>::push_back; 0x00436C80 is that instance, vector<CThingGameObject*>::push_back is 0x0078915C); the result is cast at the return (+0).
 #include <stdlib.h>
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
@@ -65,7 +66,7 @@ class CAIBrainModel;
 
 CThingGameObject* CAIStateGroup_Gaze::FindFreeParticularGazePos(long gazeType, bool inside)
 {
-    std::vector<CThingGameObject*> found;
+    std::vector<CThing*> found;
     CThingBuilding* building = GetOwner();
     if (building) {
         CTCThingOwner* owner;
@@ -75,7 +76,7 @@ CThingGameObject* CAIStateGroup_Gaze::FindFreeParticularGazePos(long gazeType, b
                 if (it->Get() != 0 && !it->Get()->IsDead() && it->Get()->GetDefGlobalIndex() == (unsigned long)gazeType
                     && CThingFilter_IsNotBeingExclusivelyUsed()(*it->Get())
                     && (!inside || building->IsPointInside(it->Get()->GetPos())))
-                    found.push_back((CThingGameObject*)it->Get());
+                    found.push_back(it->Get());
             }
         } else
             return 0;
@@ -93,6 +94,6 @@ CThingGameObject* CAIStateGroup_Gaze::FindFreeParticularGazePos(long gazeType, b
         }
     }
     if (found.size() > 0)
-        return found[GFRandom(found.size(), GetPWorldSeed())];
+        return (CThingGameObject*)found[GFRandom(found.size(), GetPWorldSeed())];
     return 0;
 }

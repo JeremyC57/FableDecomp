@@ -1,0 +1,2 @@
+address	names	kind	evidence
+00bfea30	__chkstk __alloca_probe	alias (one CRT asm routine, two public labels)	chkstk.obj (VS2003 CRT); no ICF anywhere in retail: evidence/noicf.tsv

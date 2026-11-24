@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	??0CShoveHaPennyRegionDef@@QAE@XZ	0044c0c0	0044c301	NF380: 0044c146 moved to the PDB base; 0044c301 HEAD object binds the old spelling (UND, xr -> 0x0044C0C0; evidence/census_c3_0044c301.txt). ~77 more generated Def-ctor rows name it (QUEUE_PROPOSALS q1)

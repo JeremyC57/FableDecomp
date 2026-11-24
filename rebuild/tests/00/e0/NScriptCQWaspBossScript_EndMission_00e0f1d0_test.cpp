@@ -70,10 +70,10 @@ struct GameCalls {
 struct CQ_WaspBossScript {
     GameCalls* Game; bool QuestCompleted; bool QuestFailed;
     bool IsActiveThreadTerminating() { if (g_frame == 3) QuestCompleted = true; return g_frame >= g_termAt; }
-    void EndMission();
+    void WatchForTermination();
 };
 
-void CQ_WaspBossScript::EndMission()
+void CQ_WaspBossScript::WatchForTermination()
 {
     while (!QuestFailed && !QuestCompleted) {
         Game->NewScriptFrame();
@@ -105,11 +105,11 @@ int main()
 {
     CScriptDef def; def.WB_ExperienceReward = 250; g_pScriptDef = &def;
     GameCalls g; CQ_WaspBossScript s; s.Game = &g; s.QuestCompleted = false; s.QuestFailed = false;
-    s.EndMission();
+    s.WatchForTermination();
     CHECK(g_xp == 250 && FindLog("DONE Q_Picnic") >= 0 && FindLog("FADE") >= 0 && FindLog("STOPMUSIC") >= 0);
     CHECK(FindLog("GM TEXT_QST_078_GM_MSG_FIRST") > FindLog("FADE") && FindLog("DEACT Q_Picnic") == g_log_n - 1 && g_frame == 8);
     g_frame = 10; g_log_n = 0; g_xp = 0; s.QuestCompleted = false; s.QuestFailed = true;
-    s.EndMission();
+    s.WatchForTermination();
     CHECK(g_xp == 0 && FindLog("FAIL Q_Picnic") == 0 && FindLog("STOPMUSIC") == 1 && FindLog("DEACT Q_Picnic") == 2 && g_log_n == 3);
     if (g_fail) { std::printf("00e0f1d0_TEST FAIL\n"); return 1; }
     std::printf("00e0f1d0_TEST PASS\n");

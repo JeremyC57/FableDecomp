@@ -1,5 +1,7 @@
-// CQ_WaspBossScript::EndMission() -- (retail label CV_ChapelOfEvilScript::EndMission is propagated; the def field WB_ExperienceReward PDB +0xF08 and the "PicnicArea" level name pin the Wasp Boss quest) end-of-quest thread: wait for success or failure, then fail the quest, or pay the experience, complete it, wait for the hero to leave the picnic area and play the guild master's message; finally deactivate the quest
-// Leaf: ?EndMission@CQ_WaspBossScript@NScript@@QAEXXZ
+// CQ_WaspBossScript::WatchForTermination() -- (retail label CV_ChapelOfEvilScript::EndMission is propagated; the def field WB_ExperienceReward PDB +0xF08 and the "PicnicArea" level name pin the Wasp Boss quest) end-of-quest thread: wait for success or failure, then fail the quest, or pay the experience, complete it, wait for the hero to leave the picnic area and play the guild master's message; finally deactivate the quest
+// Leaf: ?WatchForTermination@CQ_WaspBossScript@NScript@@QAEXXZ
+// Name fix (NF380): was EndMission. CQ_WaspBossScript::Main 0x00E0EA40 (FableWin + Ego_r callers) runs WatchForTermination at this
+//   address (table witness 0x00E0EA40); EndMission is its own body at 0x00E13310 (witness 0x00E12580).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0F1D0, length 548 bytes; referenced only from a script vtable/table at 0x00E0F07C.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0; CWideString(const unsigned short*) 0x0099B6B0 / ~CWideString 0x0099B510; GameCalls slots 7 NewScriptFrame, 11
@@ -133,12 +135,12 @@ public:
     void*      Owner;                                    // +0x44
     bool       QuestCompleted;                           // +0x48
     bool       QuestFailed;                              // +0x49
-    void EndMission();
+    void WatchForTermination();
 };
 } // namespace NScript
 using NScript::CQ_WaspBossScript;
 
-void NScript::CQ_WaspBossScript::EndMission()
+void NScript::CQ_WaspBossScript::WatchForTermination()
 {
     while (!QuestFailed && !QuestCompleted) {
         Game->NewScriptFrame();

@@ -1,0 +1,67 @@
+addr       parity           behav  name
+0044c146   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+0044c146   WARN SHARED_HEADER_AVAILABLE CPhysicsDef (engine/CPhysicsDef.h)
+0044c146   RELOCATION_MATCH PASS   CPhysicsDef
+00548350   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00548350   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00548350   WARN SHARED_HEADER_AVAILABLE CMovie (engine/CMovie.h)
+00548350   RELOCATION_MATCH PASS   CMovie
+00549230   RELOCATION_MATCH PASS   Initialise
+006f5530   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScreamerDrainAttack (engine/CCreatureAction_ScreamerDrainAttack.h)
+006f5530   RELOCATION_MATCH PASS   CCreatureAction_ScreamerDrainAttack
+008e9080   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+008e9080   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+008e9080   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008e9080   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e9080   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008e9080   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e9080   WARN RELOC_NAME: ?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+008e9080   RELOCATION_MATCH PASS   GetAnimDistanceAndIndexFromAnimName
+008e9110   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e9110   WARN RELOC_NAME: ?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+008e9110   RELOCATION_MATCH PASS   GetMovementSpeed
+00902873   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionBehaviourCrowdBase (engine/CAIStateGroup_MinionBehaviourCrowdBase.h)
+00902873   RELOCATION_MATCH PASS   CAIStateGroup_MinionBehaviourPodiumEmoteNeutral
+00918640   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNotBeingExclusivelyUsed (engine/CThingFilter_IsNotBeingExclusivelyUsed.h)
+00918640   RELOCATION_MATCH PASS   FindFreeParticularGazePos
+009acab0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+009acab0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+009acab0   WARN RELOC_NAME: ?WriteUBYTE@CDataOutputStream@@QAEXE@Z -> 00993e50 labelled 'WriteCBYTE'
+009acab0   RELOCATION_MATCH PASS   InternalSaveBinary
+009b0200   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+009b0200   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+009b0200   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase (engine/CParentDefClassBase.h)
+009b0200   WARN RELOC_NAME: ?WriteUBYTE@CDataOutputStream@@QAEXE@Z -> 00993e50 labelled 'WriteCBYTE'
+009b0200   WARN RELOC_NAME: ?SortSubDefInfos_009b84c0@@YIXPAUCSubDefInfoPair@@0UCSubDefKeyCompare@@@Z -> 009b84c0 labelled '_global::Sort_SElement12_009b84c0'
+009b0200   RELOCATION_MATCH PASS   InternalSaveBinary
+00a986b0   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a986b0   RELOCATION_MATCH PASS   CVertexShaderInputAnimated
+00a98740   WARN SHARED_HEADER_AVAILABLE CVertexShaderInput (engine/CVertexShaderInput.h)
+00a98740   RELOCATION_MATCH PASS   CVertexShaderInputStatic
+00af4240   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00af4240   WARN SHARED_HEADER_AVAILABLE CParticleUpdateParameters (engine/CParticleUpdateParameters.h)
+00af4240   WARN SHARED_HEADER_AVAILABLE CPSCBase (engine/CPSCBase.h)
+00af4240   WARN SHARED_HEADER_AVAILABLE CComponentInstance (engine/CComponentInstance.h)
+00af4240   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+00af4240   WARN RELOC_NAME: ?WriteUBYTE@CDataOutputStream@@QAEXE@Z -> 00993e50 labelled 'WriteCBYTE'
+00af4240   RELOCATION_MATCH PASS   WriteBinary
+
+WINS: 13
+  0044c146 RELOCATION_MATCH CPhysicsDef::??0CPhysicsDef@
+  00548350 RELOCATION_MATCH NUISystem::CMovie::??0CMovie@NUISystem@@QAE@ABV01@@Z
+  00549230 RELOCATION_MATCH NUISystem::CTextSlider::?Initialise@CTextSlider@NUISystem@@UAEXXZ
+  006f5530 RELOCATION_MATCH CCreatureAction_ScreamerDrainAttack::??0CCreatureAction_ScreamerDrainAttack@
+  008e9080 RELOCATION_MATCH NCreatureMode::?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z
+  008e9110 RELOCATION_MATCH NCreatureMode::CModeStrafe::?GetMovementSpeed@CModeStrafe
+  00902873 RELOCATION_MATCH CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::??0CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@
+  00918640 RELOCATION_MATCH CAIStateGroup_Gaze::?FindFreeParticularGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@J_N@Z
+  009acab0 RELOCATION_MATCH CDefClassBase::InternalSaveBinary
+  009b0200 RELOCATION_MATCH CParentDefClassBase::?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+  00a986b0 RELOCATION_MATCH N3DPrimitive::CVertexShaderInputAnimated::??0CVertexShaderInputAnimated@
+  00a98740 RELOCATION_MATCH N3DPrimitive::CVertexShaderInputStatic::??0CVertexShaderInputStatic@
+  00af4240 RELOCATION_MATCH CParticleSystem::WriteBinary

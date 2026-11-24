@@ -1,0 +1,115 @@
+address	status	reason
+0042cda6	skipped-identity-unproven	BSim donor CPersistTraits<C2DVector>::TransferIn unrelated to the forwarder body; no Ego_r neighbour in lib_definition_types.obj
+004349f0	skipped-identity-unproven	tiny float getter; donor CMap::DrawGetSeaLevel virtual but address in no RTTI vftable; no map.obj neighbour
+00445ae0	done	batches/b1: self respelled to ?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ
+00445b40	done	batches/b1: self respelled to ?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ
+0044c57d	skipped-conflict	BSim donor symbol already carried at another address (self@0044c59d): one address, one name; not an ICF fold (two retail addresses)
+004874a0	done	batches/b1: self respelled to ?IsTargetLocked@CPlayer@@QBE_NXZ
+0049ed30	skipped-port	PDB ?ConsoleSetFreeCameraPos@CWorld@@KIXAAV1@ABV?$vector@VCGenericVar@@...@std@@@Z: protected static + std::vector<CGenericVar> parameter; the stand-in takes CGenericVarVector (NF305 Q1: type change = port)
+004aa750	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+004cb6e0	skipped-conflict	BSim donor symbol already carried at another address (tab@006afcb0): one address, one name; not an ICF fold (two retail addresses)
+004cbbb0	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+004cc3c0	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+004fcbb0	skipped-port	raw tiny row (?M@S@@) with no class model; PDB ?ActivateTopology@CWorldMap@@QAEXJ@Z needs a CWorldMap.h port of the row
+0052ec20	skipped-port	standalone CComponent_Retail model; PDB ?ChangeZoomDelta@CComponent@NUISystem@@UAEXABVC2DVector@@M_N@Z (virtual, namespaced, M_N params): needs a NUISystem_CComponent.h port
+0052f3e0	skipped-port	standalone CComponent_Retail model; PDB ?GetRenderLayer@CComponent@NUISystem@@UBEJXZ (virtual const, namespaced): header port
+00530460	skipped-port	standalone CComponent_Retail model; PDB ?FindFirstChildOfType@CComponent@NUISystem@@UAEPAV12@W4EType@2@@Z (virtual, enum param): header port
+005309b0	skipped-port	standalone CComponent_Retail model; PDB ?ExecuteActions@CComponent@NUISystem@@UAEXPAV?$list@...@Z (virtual, std::list param): header port
+0055aef0	skipped-identity-unproven	BSim donor is the sibling OnHovered (already bound at 0x0055AEB0); OnUnhovered needs its own two sources
+0055af30	skipped-port	derived from CHoverable_Retail stand-in; PDB ?OnDeactivate@CClickable@NUISystem@@MAEXXZ (protected virtual, namespaced): header port
+00578797	skipped-identity-unproven	retail RTTI places 0x00578797 in CTCInventoryExperience slot 1, donor is CEngineLocalDetailLayerDef::Transfer: contradiction
+0057a939	skipped-port	local CTCHeroStats_Retail model (derived from CTCBase) while engine/CTCHeroStats.h exists; PDB ?GetStartingMaxStamina@CTCHeroStats@@QBEJXZ: port onto the shared header
+005bc70a	skipped-port	stand-in derives from global CItem; PDB class is NInventory::CItem (?UpdateNonQuestPersistentRefCount@CItem@NInventory@@QAEX_N@Z): needs the namespaced class (header port)
+005bc729	skipped-port	PDB ?IsQuestPersistent@CItem@NInventory@@QBE_NXZ (BSim 1.0; tc_inventory_base.obj, 1 same-object neighbour + the retail caller 0x005BF97D inside the tc_inventory_base.obj span): needs the namespaced NInventory::CItem (port), like 005bc70a
+005bca05	skipped-port	standalone CTCInventoryBase_Retail model; PDB ?SetQuestPersistentFlagForItems@CTCInventoryBase@NInventory@@IAEX_N@Z (protected, namespaced): header port
+005bd5db	skipped-port	standalone CTCInventoryBase_Retail model; PDB ?GetCategoryWithAssociationThing@CTCInventoryBase@NInventory@@QAEPAVCCategory@2@PAVCThing@@@Z: return type CCategory_Retail -> NInventory::CCategory (port)
+005bdb68	skipped-port	standalone CTCInventoryBase_Retail model; PDB ?GetCategoryNameWithIndex@CTCInventoryBase@NInventory@@QBEXJAAVCWideString@@@Z (const): header port
+005bdc77	skipped-port	local CTCInventoryBase_Retail model (derived from CTCBase); PDB ?GetInventoryGuildValidity@CTCInventoryBase@NInventory@@UAE_NXZ (virtual): header port
+005ee0e7	skipped-port	standalone CTCInventoryAbilities_Retail model while engine/CTCInventoryAbilities.h exists; PDB ?SetAllAbilitiesAsAvailable@CTCInventoryAbilities@@QAEX_N@Z: port onto the header
+005f3eca	skipped-port	standalone CTCInventoryAbilities_Retail model; PDB ?ForceAllAbilitiesToLevel@CTCInventoryAbilities@@QAEXJ@Z: port onto the header
+005f3f14	skipped-port	standalone CTCInventoryAbilities_Retail model; PDB ?ForceAllAbilitiesToNextLevel@CTCInventoryAbilities@@QAEXXZ: port onto the header
+00616c30	skipped-identity-unproven	donor CComponent::SetParentColour unrelated to the vector clear body; no ui_component.obj neighbour
+00637ae0	skipped-port	standalone CThingMapManager_Retail model; PDB ?GetMapsMemoryFootprint@CThingMapManager@NThingMap@@QBEJXZ (namespaced, const): header port
+00638310	skipped-port	derived stand-in; PDB ?AddGameMap@CThingMapManager@NThingMap@@QAEXJ@Z, but its AddThingMap callee uses a made-up parameter type (NF305 Q1: moving a callee onto another wrong form is a port)
+00640460	skipped-conflict	BSim donor symbol already carried at another address (self@00a14f40): one address, one name; not an ICF fold (two retail addresses)
+00643de5	skipped-port	PDB ?ClearPrimitivesIfNecessary@CDrawMiniMap@NPlayerGui@@UAEXXZ is virtual: respelling a vftable slot changes the class model (port)
+00643fe4	skipped-port	raw tiny row (?fn_00643fe4@@YIXPAUDF@@HHD@Z, fastcall free function); PDB ?ToggleFlash@CDrawQuickAccessIcons@NPlayerGui@@QAEXW4EXboxControllerButton@@_N@Z needs a class + enum port
+00692400	done	batches/b1: self respelled to ?InitialiseActionTime@CCreatureActionBase@@AAEXXZ
+006951a0	skipped-identity-unproven	pair copy-ctor (small STL helper, matches many); no definition_manager.obj neighbour
+006b0190	skipped-port	PDB ?IsPhysicsMeshTypeSphere@CTCPhysicsBase@@QBE_NXZ returns bool const; the stand-in returns long (signature change = port)
+006cd3b0	done	batches/b2: self respelled to ??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z
+006ceef0	skipped-port	standalone CTCWife_Retail model while engine/CTCWife.h exists; PDB ?WantsNiceGift@CTCWife@@QAE_NXZ: port onto the header
+006d8b00	skipped-port	standalone CTCHeroExperience_Retail model; PDB ?OnInitialActivate@CTCHeroExperience@@UAEXXZ (virtual): header port
+00712bb0	skipped-port	PDB ?Update@CActionDoCreatureAction@NTCScriptedControl@@UAEXXZ is virtual (namespaced): port
+0071f4e0	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+00733360	skipped-port	standalone CCombatAbility_Retail model; PDB ?Update@CCombatAbility@@QAEXABVCCombatAbilityData@@@Z: parameter CCombatAbilityData_Calls -> CCombatAbilityData (port onto CCombatAbility.h)
+00748a00	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+00769270	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+0079c5f0	done	batches/b1: self respelled to ?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime@@ABEJXZ
+0079c6d0	done	batches/b1: self respelled to ?GetBulletTimeElapsedTicks@CTCBulletTime@@ABEJXZ
+007aca30	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+007acac0	skipped-identity-unproven	destructor body (matches many); donor ~CHeroMorphDef has no tc_register.obj neighbour; not in a vftable
+007b2720	skipped-identity-unproven	destructor body (matches many); donor ~CAIStateGroup_SummonerCharge has no ai_brain_tables.obj neighbour
+007f5050	skipped-identity-unproven	one same-object Ego_r neighbour only (tc_stock_item.obj); vftable pointer 0x01240c34 not tied to RTTI here. Name if proven: ?OnInitialActivate@CTCStockItem@@UAEXXZ (virtual: port)
+007f5070	skipped-identity-unproven	one same-object Ego_r neighbour only (tc_stock_item.obj); vftable pointer 0x01240c40 not tied to RTTI here. Name if proven: ?FrameUpdate@CTCStockItem@@UAEXXZ (virtual: port)
+007f7040	skipped-port	PDB template argument carries the anonymous-namespace hash ?A0xca0d66cb (CThingFilter_IsValidAttackTargetForCreature), which our build path cannot reproduce (TU-hash) -- needs a ruling
+00880800	skipped-identity-unproven	one same-object Ego_r neighbour only (tc_physics_collision.obj, order 1 ok / 1 bad); 8 vftable pointers not tied to RTTI here. Name if proven: ?HasCollidedWithThingAt@CTCPhysicsBase@@UBE_NABV1@ABVC3DVector@@AAVCPhysicsCollideResponse@@@Z (virtual + type change: port)
+0088b8c0	done	batches/b1: self respelled to ?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z
+008e2e00	skipped-port	PDB ??0CIcicleData@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@QAE@XZ (BSim 0.9999; creature_modes.obj, 2 same-object neighbours, order 2 ok / 0 bad): a nested type of a namespaced class; the row is the made-up SIcicleRecord_008e2e00 standalone model: port
+008eba50	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+008f5c20	skipped-identity-unproven	BSim 1.0 donor ?ModifyHeroStats@CKilledThing@NHeroStatModifierEvent@@UBEXAAVCTCHeroStats@@@Z but no landed same-object neighbour in hero_stat_modifier_events.obj; the one vftable pointer (0x0127233c) not tied to RTTI here; also a virtual + type change (port) if proven
+00914b20	done	batches/b2: self respelled to ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z
+0093f8a0	done	batches/b2: self respelled to ??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+0093f930	skipped-identity-unproven	BSim donor is a different instantiation (CThingFilter_HasDefGlobalIndex) than the row (CThingFilter_In2DRange)
+0094f9e0	skipped-port	multi-inheritance local model of CAIStateGroup_JackDragon; PDB ?ResetTimers@CAIStateGroup_JackDragon@@AAEXXZ (private) needs a header port
+00957b80	skipped-identity-unproven	donor IsRunnable is virtual (UAE) but the address is in no RTTI vftable; no ai_state_group_handy_man.obj neighbour
+009942d0	skipped-port	standalone CDataOutputStream_Methods model while engine/CDataOutputStream.h exists; PDB ?AlignData@CDataOutputStream@@QAEXJ@Z: port onto the header
+00995dc0	skipped-port	local CCompressedMemoryDataInputStream_Retail model (derived from CDataStream); PDB ??0CCompressedMemoryDataInputStream@@QAE@XZ: ctor port onto the shared header
+00995df0	skipped-port	local CCompressedMemoryDataInputStream_Retail model (derived from CDataStream); PDB ??1CCompressedMemoryDataInputStream@@UAE@XZ (virtual dtor): port
+009cb710	skipped-identity-unproven	retail RTTI places it in NGameText::CDataBank slot 18, donor is CStreamingFontDataBank::GetLastModifiedTime; no neighbour
+009cbd90	skipped-port	standalone CBankFile_Retail model; PDB ?WriteBankWarning@CBankFile@@IAEXABVCCharString@@@Z (protected): port onto CBankFile.h
+009cc4c0	skipped-port	standalone CBankFile_Retail model; PDB ?GetUnusedSpace@CBankFile@@QBEKXZ (const): port onto CBankFile.h
+009ea5a0	done	batches/b1: self respelled to ?ResetCommandLineBuffers@CConsole@@AAEXXZ
+009ea660	done	batches/b1: self respelled to ?RevertToUserEntry@CConsole@@AAEXXZ
+009ea980	done	batches/b1: self respelled to ?PrevInHistory@CConsole@@AAEXXZ
+009ea9e0	done	batches/b1: self respelled to ?RevertToUserEntry@CConsole@@AAEXXZ
+009eab80	done	batches/b1: self respelled to ?SetHistoryMode@CConsole@@AAEXXZ
+009eb2c0	skipped-port	PDB ?SetHelpBarString@CConsole@@AAEXXZ, but its FindInput callee has no PDB spelling in the stand-in form (CConsole_Retail FindInput binder 009eb220) -- port with the callee
+009f3390	done	batches/b2: self respelled to ?GetPitch@CSurface@@QBEKXZ
+009f9d60	done	batches/b1: self respelled to ?GetRefCount@CTexture@@QAEJXZ
+00a02680	done	batches/b1: self respelled to ?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z
+00a044e0	done	batches/b1: self respelled to ?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ
+00a0ab50	skipped-port	PDB ?DrawCurrentBuffersAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KKKKK@Z: first parameter CTexture*const* -> const CTexture** (type change = port)
+00a0ae10	done	batches/b2: self respelled to ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z
+00a0b1e0	done	batches/b1: self respelled to ?SetWorldTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
+00a0b280	done	batches/b1: self respelled to ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
+00a0b3e0	done	batches/b1: self respelled to ?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z
+00a23f30	skipped-port	PDB ?IsLoading@C3DAnimationInfo@@QBE_NXZ; C3DAnimationInfo.h is in Account B's live b24 package -- stay off
+00a3a380	skipped-conflict	BSim donor symbol already carried at another address (tab@009c6a70): one address, one name; not an ICF fold (two retail addresses)
+00a3a950	skipped-port	standalone CCompressorZlib_Retail model; PDB ?Decompress@CCompressorZlib@@QAEXPBEJJPAX@Z: different name + parameter list (port)
+00a60950	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+00aa5bd0	skipped-identity-unproven	donor CTCCameraPointScripted::EditSetThingForEditorSetThing unrelated to the two-vector clear; no neighbour
+00ab9f70	skipped-conflict	BSim donor symbol already carried at another address (tab@0055c930): one address, one name; not an ICF fold (two retail addresses)
+00ac5740	skipped-identity-unproven	no lib_3d_primitive_2.obj neighbour; one source only
+00b2b120	skipped-port	standalone CCompositeSurfaceCache_Retail model; PDB ?ReleaseTexture@CCompositeSurfaceCache@@UAEXXZ (virtual): port
+00b32100	skipped-port	PDB ?ResetWorldTransform@CEnginePrimitiveRenderer@@AAEXXZ (private); the binder 00b32230's derived stand-in self calls it and a derived member cannot reach a private PDB member: unit needs a port (prepared texts in held/)
+00b5bd30	done	batches/b3: self respelled to ?FinishWithDynamicTextures@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ
+00b6d600	skipped-conflict	BSim donor symbol already carried at another address (tab@00bddd50): one address, one name; not an ICF fold (two retail addresses)
+00b9d650	skipped-conflict	BSim donor symbol already carried at another address (self@0088e200): one address, one name; not an ICF fold (two retail addresses)
+00be4400	skipped-conflict	BSim donor symbol already carried at another address (self@00c22040,self@00c222b0,tab@005eedcf): one address, one name; not an ICF fold (two retail addresses)
+00be5ca0	skipped-port	PDB ?InvalidateEdge@CLandscapeBackgroundPatch@@QAEXW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z: parameter long -> enum LANDSCAPE_EDGE_STRIP_SIDE (declared only in CWaterPatchTesselatorBase.h) plus landed binder 00be63f0: type change = port
+00bf7100	skipped-port	Native::Tree model; PDB ?RenderOcclusionBox@CLandscapeBackgroundTreeNode@@QAEXAAJ@Z needs the class model ported (CLandscapeBackgroundTreeNode.h)
+00c21f20	skipped-identity-unproven	donor NScript ??R CIsThingAlive unrelated to the pool Allocate; no neighbour
+00c28080	skipped-conflict	BSim donor symbol already carried at another address (tab@00a01f80): one address, one name; not an ICF fold (two retail addresses)
+00c28200	skipped-identity-unproven	donor $E1 (static initializer) is not a member; no neighbour
+00c283c0	skipped-conflict	BSim donor symbol already carried at another address (tab@00a026f0): one address, one name; not an ICF fold (two retail addresses)
+00c283e0	skipped-conflict	BSim donor symbol already carried at another address (tab@00a02710): one address, one name; not an ICF fold (two retail addresses)
+00c29250	skipped-identity-unproven	BSim donor is a VC10 Dinkumware helper (_Cons_val/_Dest_val/$$Q rvalue/_Copy_backward); retail is STLport 4.6, so the Ego_r name is not the retail spelling (NF301)
+00c338f0	skipped-conflict	BSim donor symbol already carried at another address (tab@00a75430): one address, one name; not an ICF fold (two retail addresses)
+00c39f10	skipped-conflict	BSim donor symbol already carried at another address (self@009f7020,tab@009f7020): one address, one name; not an ICF fold (two retail addresses)
+00c3c590	skipped-conflict	BSim donor symbol already carried at another address (self@004c2dd0,tab@00c59ba0): one address, one name; not an ICF fold (two retail addresses)
+00c44250	skipped-conflict	BSim donor symbol already carried at another address (tab@00419270): one address, one name; not an ICF fold (two retail addresses)
+00c54bd0	skipped-conflict	BSim donor symbol already carried at another address (self@009e42c0,self@00a66c00,self@00a66860,tab@00996b60): one address, one name; not an ICF fold (two retail addresses)
+00c6bff0	skipped-conflict	BSim donor symbol already carried at another address (self@00c35170,tab@00a01b10): one address, one name; not an ICF fold (two retail addresses)
+00cd45e0	skipped-conflict	BSim donor symbol already carried at another address (tab@00485cd2): one address, one name; not an ICF fold (two retail addresses)
+00e83990	skipped-identity-unproven	BSim 0.9999 onto ?OnPredicateFail@CFisticuffsMember@CV_FisticuffsClubScript@NScript@@EAEXXZ, but the Ego_r object is the giant register_scripts.obj (order 4 ok / 2 bad), so membership is no real second source; also a private virtual of a nested class (port)

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeStrafe::GetMovementSpeed(const C3DVector&, const C3DVector&, EMovementType) const -- the per-frame speed of the strafe animation chosen for this direction: its movement distance over its duration, divided by the frame rate
 // Leaf: ?GetMovementSpeed@CModeStrafe
+// Name fix (NF380): 0x00A23CE0 reads +0x14 = C3DAnimationInfo::NonLoopingDuration (Ego_r layout: Duration +0x10); Ego_r GetMovementSpeed calls GetNonLoopingDuration (was GetDuration).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -8,7 +9,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9110, 123 bytes (+ int3 padding), `ret 0Ch`; CModeStrafe vtable slot 7.
 // Callees: GetStrafeAnimationName @ 0x008E8E50 (a same-file free __fastcall returning CCharString by value: the return slot
 //   in ecx, the first vector in edx, `ret 8`; label "GetStrafeAnimationName" in ghidra_out), CThingCreatureBase::GetAnimFromName
-//   @ 0x00662A00, CMeshDataBank::PeekAnimation @ 0x00A242C0, C3DAnimationInfo::GetDuration @ 0x00A23CE0 (manifest
+//   @ 0x00662A00, CMeshDataBank::PeekAnimation @ 0x00A242C0, C3DAnimationInfo::GetNonLoopingDuration @ 0x00A23CE0 (manifest
 //   "DrawGetSeaLevel" is propagated), CThingCreatureBase::GetAnimMovementDistance @ 0x006627A0, ~CCharString @ 0x0099EAE0.
 // Name: FableWin.pdb `?GetMovementSpeed@CModeStrafe@NCreatureMode@@UBEMABVC3DVector@@0W4EMovementType@@@Z` (slot 7).
 // Globals: CMainGameComponent::Get() 0x013B86A0 (world +0x24, the world's main mesh bank +0x3c: CThing::PeekWorld inlined),
@@ -26,7 +27,7 @@ enum EMovementType { MOVEMENT_TYPE_0 };
 CCharString __fastcall GetStrafeAnimationName(const C3DVector& a, const C3DVector& b, EMovementType type);   // 0x008E8E50
 
 class C3DAnimationInfo { public:
-    float GetDuration() const;             // 0x00A23CE0
+    float GetNonLoopingDuration() const;             // 0x00A23CE0
 };
 class CMeshDataBank { public:
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0
@@ -78,7 +79,7 @@ float NCreatureMode::CModeStrafe::GetMovementSpeed(const C3DVector& a, const C3D
     CMeshDataBank* bank = CThingCreatureBase::PeekWorld().PMainMeshBank;
     CThingCreatureBase* creature = ParentThing;
     long animIndex = creature->GetAnimFromName(name, 0)->BankIndex;
-    float duration = bank->PeekAnimation(animIndex)->GetDuration();
+    float duration = bank->PeekAnimation(animIndex)->GetNonLoopingDuration();
     float speed = creature->GetAnimMovementDistance(animIndex) / duration;
     return speed / (float)CMainGameComponent::GetConstantFPS();
 }

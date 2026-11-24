@@ -1,0 +1,6 @@
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+0044c1bb   RELOCATION_MATCH PASS   CTCNoiseDef
+
+WINS: 1
+  0044c1bb RELOCATION_MATCH CTCNoiseDef::??0CTCNoiseDef@@QAE@XZ

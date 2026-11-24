@@ -1,8 +1,9 @@
 // NUISystem::CTextSlider::Initialise() -- the draggable-base initialisation; hand the right and left arrows to the parent (add as child, re-parent, initialise); put the selected child into state 3; append a ULONG action parameter holding the selection to every action; reset the input timer
 // Leaf: ?Initialise@CTextSlider@NUISystem@@UAEXXZ
+// Name fix (NF380): the base at 0x0052C730 is NUISystem::CChangingStateComponent (retail RTTI base list (ghidra_out/rtti_bases.tsv) and the FableWin (debug) caller agree; was CDraggableInto, which retail RTTI puts under CHoverable).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00549230, length 528 bytes, `ret`.
-// Callees: CDraggableInto::Initialise @ 0x0052C730 (manifest "CChangingStateComponent::Initialise" is propagated),
+// Callees: CChangingStateComponent::Initialise @ 0x0052C730 (manifest "CChangingStateComponent::Initialise" is propagated),
 //          CCountedPointer<CComponent>::CCountedPointer(CComponent*) @ 0x00429C15, operator delete @ 0x00BFE9BC,
 //          operator new @ 0x00BFEA1A, malloc @ 0x00BFEA0E (the STLport list node); component virtual slots 43
 //          Initialise (+0xAC), 48 (+0xC0, descriptive SetState), 51 SetParent (+0xCC), 52 GetParent (+0xD0), 59 AddChild (+0xEC).
@@ -155,7 +156,7 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-class CDraggableInto : public CComponent, public CDrawableInterface, public CDraggableInterface { public:
+class CChangingStateComponent : public CComponent, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x30 - 0x1c];
     float m_time;                                       // +0x30
     unsigned char _pad34[0xb0 - 0x34];
@@ -163,7 +164,7 @@ class CDraggableInto : public CComponent, public CDrawableInterface, public CDra
     unsigned char _padbc[0x15c - 0xbc];
     void Initialise();                                  // 0x0052C730
 };
-class CTextSlider : public CDraggableInto { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60
+class CTextSlider : public CChangingStateComponent { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60
     unsigned long SelectedChild;                 // +0x15c
     unsigned long PreviouslySelectedChild;       // +0x160
     unsigned long StartSelectedChild;            // +0x164
@@ -184,7 +185,7 @@ class CTextSlider : public CDraggableInto { public:            // vtables 0x0124
 
 void CTextSlider::Initialise()
 {
-    CDraggableInto::Initialise();
+    CChangingStateComponent::Initialise();
     if (PRightArrow) {
         CCountedPointer<CComponent> child(PRightArrow);
         GetParent()->AddChild(child);

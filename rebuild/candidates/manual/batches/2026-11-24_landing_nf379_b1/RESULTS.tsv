@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+00455ef0	ACCEPT	??0CThingNoiseDef@@QAE@XZ	??0CThingNoiseDef@@QAE@XZ	option S member (thin) of the CThingNoiseDef def TU, owner 0x0045C5F6 (unchanged); was NF363 option A, a strong Alloc copy
+0045c5da	ACCEPT	??_GCThingNoiseDef@@UAEPAXI@Z	??_GCThingNoiseDef@@UAEPAXI@Z	option S member (thin) of the CThingNoiseDef def TU, owner 0x0045C5F6 (unchanged); was NF363 option A, a strong Alloc copy

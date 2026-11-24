@@ -1,0 +1,40 @@
+kind	row	old	new	batch
+self	0088b8c0	?SetAllStateGroupsEnabled@CAIBrain_Methods@@QAEX_N@Z	?SetAllStateGroupsEnabled@CAIBrain@@QAEX_N@Z	b1 (Leaf line follows)
+self	004874a0	?IsTargetLocked@CPlayer_Methods@@QBE_NXZ	?IsTargetLocked@CPlayer@@QBE_NXZ	b1 (Leaf line follows)
+self	00445ae0	?SaveInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ	?SaveInitialInfo@CGamePlayerInterface@@AAEXXZ	b1 (Leaf line follows)
+self	00445b40	?LoadInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ	?LoadInitialInfo@CGamePlayerInterface@@AAEXXZ	b1 (Leaf line follows)
+self	00692400	?InitialiseActionTime@CCreatureActionBase_Methods@@QAEXXZ	?InitialiseActionTime@CCreatureActionBase@@AAEXXZ	b1 (Leaf line follows)
+self	0079c5f0	?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime_Methods@@QBEJXZ	?GetBulletTimeTicksFromAbilityLevel@CTCBulletTime@@ABEJXZ	b1 (Leaf line follows)
+self	0079c6d0	?GetBulletTimeElapsedTicks@CTCBulletTime_Methods@@QBEJXZ	?GetBulletTimeElapsedTicks@CTCBulletTime@@ABEJXZ	b1 (Leaf line follows)
+self	009f9d60	?GetRefCount@CTexture_Methods@@QAEJXZ	?GetRefCount@CTexture@@QAEJXZ	b1 (Leaf line follows)
+self	00a0b1e0	?SetWorldTransform@CRenderManagerCore_Methods@@QAEXKABVCMatrix3x4@@@Z	?SetWorldTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z	b1 (Leaf line follows)
+self	00a0b280	?SetTextureTransform@CRenderManagerCore_Methods@@QAEXKABVCMatrix3x4@@@Z	?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z	b1 (Leaf line follows)
+self	00a0b3e0	?SetPerspectiveTransform@CRenderManagerCore_Methods@@QAEXMMMMMMMMMMMMMMMM@Z	?SetPerspectiveTransform@CRenderManagerCore@@QAEXMMMMMMMMMMMMMMMM@Z	b1 (Leaf line follows)
+self	00a02680	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	b1 (Leaf line follows)
+self	00a044e0	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	b1 (Leaf line follows)
+self	009ea5a0	?ResetCommandLineBuffers@CConsole_Retail@@QAEXXZ	?ResetCommandLineBuffers@CConsole@@AAEXXZ	b1 (Leaf line follows)
+self	009ea660	?RevertToUserEntry@CConsole_Retail@@QAEXXZ	?RevertToUserEntry@CConsole@@AAEXXZ	b1 (Leaf line follows)
+self	009ea980	?PrevInHistory@CConsole_Retail@@QAEXXZ	?PrevInHistory@CConsole@@AAEXXZ	b1 (Leaf line follows)
+self	009eab80	?SetHistoryMode@CConsole_Retail@@QAEXXZ	?SetHistoryMode@CConsole@@AAEXXZ	b1 (Leaf line follows)
+self	009ea9e0	?NextInHistory@CConsole_Retail@@QAEXXZ	?NextInHistory@CConsole@@AAEXXZ	b1 (selfbinder; Leaf line follows)
+binder	009ea9e0	?RevertToUserEntry@CConsole_Retail@@QAEXXZ	?RevertToUserEntry@CConsole@@AAEXXZ	b1 (reference to the unit owner, TABLE_CHANGES line)
+binder	0041d122	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	b1 (reference only; own symbol unchanged; TABLE_CHANGES line)
+binder	0041d165	?ResizePool@CHandleBasedMemoryPool_Methods@@QAE_NKM@Z	?ResizePool@CHandleBasedMemoryPool@@QAE_NKM@Z	b1 (reference only; own symbol unchanged; TABLE_CHANGES line)
+binder	00a07900	?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	?ForceResendRenderStatesToHardware@CRenderStateManager@@QAEXXZ	b1 (reference only; own symbol unchanged; TABLE_CHANGES line)
+self	00a0ae10	?DrawCurrentBuffersAsTris@CRenderManagerCore_Methods@@QAEJKK@Z	?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z	b2 (Leaf line follows)
+self	009f3390	?GetPitch@CSurface_Methods@@QBEKXZ	?GetPitch@CSurface@@QBEKXZ	b2 (Leaf line follows)
+self	0093f8a0	??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchToolsMethods@@QAE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	b2 (Leaf line follows)
+self	00914b20	??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchToolsMethods@@QAE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z	??$GetPBestThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingCompare_Nearest@@VCThingAICreature@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z	b2 (Leaf line follows)
+self	006cd3b0	??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchToolsMethods@@QAE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z	??$GetPBestThing@V?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@VCThingCompare_Nearest@@VCThingGameObject@@@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@V?$const_mem_fun_ref_t@_NVCThingGameObject@@@std@@V?$CFilter_Not@VCThingFilter_In2DRange@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingGameObject@@@Z	b2 (Leaf line follows)
+self	00b5bd30	?ReleaseTextures_00b5bd30@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ	?FinishWithDynamicTextures@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	b3 (Leaf line follows)
+catalog-name	00445ae0	CGamePlayerInterface_Methods::SaveInitialInfo	CGamePlayerInterface::SaveInitialInfo	b1
+catalog-name	00445b40	CGamePlayerInterface_Methods::LoadInitialInfo	CGamePlayerInterface::LoadInitialInfo	b1
+catalog-name	0079c5f0	CTCBulletTime_Methods::GetBulletTimeTicksFromAbilityLevel	CTCBulletTime::GetBulletTimeTicksFromAbilityLevel	b1
+catalog-module	0079c5f0	CTCBulletTime_Methods	CTCBulletTime	b1
+catalog-file	0079c5f0	00/79/CTCBulletTimeMethods_GetBulletTimeTicksFromAbilityLevel_0079c5f0.cpp	00/79/CTCBulletTime_GetBulletTimeTicksFromAbilityLevel_0079c5f0.cpp	b1 (test file follows the same stem; coordinator renames)
+catalog-name	0079c6d0	CTCBulletTime_Methods::GetBulletTimeElapsedTicks	CTCBulletTime::GetBulletTimeElapsedTicks	b1
+catalog-module	0079c6d0	CTCBulletTime_Methods	CTCBulletTime	b1
+catalog-file	0079c6d0	00/79/CTCBulletTimeMethods_GetBulletTimeElapsedTicks_0079c6d0.cpp	00/79/CTCBulletTime_GetBulletTimeElapsedTicks_0079c6d0.cpp	b1 (test file follows the same stem; coordinator renames)
+catalog-name	009f3390	CSurface_Methods::GetPitch	CSurface::GetPitch	b2
+catalog-name	00b5bd30	CEngineScreenEffectRadialBlurRenderer::ReleaseTextures_00b5bd30	CEngineScreenEffectRadialBlurRenderer::FinishWithDynamicTextures	b3
+catalog-file	00b5bd30	00/b5/CEngineScreenEffectRadialBlurRenderer_ReleaseTextures00b5bd30_00b5bd30.cpp	00/b5/CEngineScreenEffectRadialBlurRenderer_FinishWithDynamicTextures_00b5bd30.cpp	b3 (test file follows the same stem; coordinator renames)

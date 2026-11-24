@@ -212,7 +212,7 @@ fpair_00a03bb0	00a03bb0	00445920
 ?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z	004888c0	00449cb0
 ??0CBaseIntelligentPointer@@QAE@XZ	00a01b10	0044a5a0
 ??_7CIntelligentPointer@@6B@	01231c4c	0044a5a0
-??0CShoveHaPennyRegionDef@@QAE@XZ	0044c0c0	0044c146
+??0CShoveHaPennyRegionDef@@QAE@XZ	0044c0c0	0044c301
 ??_7CPhysicsDef@@6B@	01231e34	0044c146
 ??_7CTCNoiseDef@@6B@	01231e9c	0044c1bb
 ??0CDefBase_0044c0c0@@QAE@XZ	0044c0c0	0044c29c
@@ -2388,7 +2388,6 @@ _HEALTH_UNSET	0122dedc	006a98f0
 ??0CCountedPointerSequenceVector@@QAE@ABU0@@Z	006f19f0	006f4990
 ?Erase@CRetailTree_erase006f4c20@@QAEXPAUnode@1@@Z	006f4c20	006f4df0
 ?Insert@CRetailTree_006f5400@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	006f5320	006f5400
-??0C3DMeshFileXAnimatedPrimitiveChunk@@QAE@XZ	008bbb10	006f5530
 ??_7CCreatureAction_ScreamerDrainAttack@@6B@	01261f7c	006f5530
 N_008bfce0	008bfce0	006f5610
 ??_7CCreatureAction_ScreamerAdvance@@6B@	01262354	006f5610
@@ -4017,7 +4016,7 @@ N_008fdb27	008fdb27	008fdb55
 ??_7CAIStateGroup_RockTroll@@6B@	0128d0a0	009025ee
 ??_7CAIStateGroup_MazeTeleport@@6B@	0128d0dc	009026b5
 ??_7CAIStateGroup_MinionBehaviourSad@@6B@	0128d11c	00902825
-??0CAIStateGroup_CarryCrateAndFollow@@QAE@XZ	009009ea	00902873
+??0CAIStateGroup_MinionBehaviourCrowdBase@@QAE@XZ	009009ea	00902873
 ??_7CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@6B@	0128d16c	00902873
 ??_7CAIStateGroup_HoverWanderAroundThing@@6B@	0128d1bc	00902907
 ??_7CAIStateGroup_VersusRockTroll@@6B@	0128d21c	00902b74
@@ -4359,7 +4358,6 @@ __imp__GetForegroundWindow@0	01440378	009a57b0
 ?Cleanup@CActiveFile@@QAEXXZ	009aae50	009ab750
 ?Erase@CRetailTree_erase009aa830@@QAEXPAUnode@1@@Z	009aa830	009ab770
 ?Erase@CRetailTree_erase009aa880@@QAEXPAUnode@1@@Z	009aa880	009ab7c0
-?WriteCBYTE@CDataOutputStream@@QAEXD@Z	00993e50	009acab0
 ?LowerBound@CFactionMap@@QAEPAUSEntry@1@PBK@Z	009b2290	009ad2e0
 ?LowerBound@CSubDefInfoMap@@QBEPBUCSubDefPair@@PBK@Z	009b2130	009ad4a0
 ?LowerBound@CSubDefInfoMap@@QAEPAUCSubDefPair@@PBK@Z	009b20d0	009ad510
@@ -4984,7 +4982,6 @@ _D3DXLoadVolumeFromVolume@32	00bfefec	00a67670
 ?helper@@YIPAHPAUVec@@HPAHPAUPair@@@Z	00a985a0	00a98620
 ??_7CVertexShaderInputAnimated@@6B@	0129dfb0	00a98680
 ?Initialise@CVertexShaderInputAnimated@@QAEXK_N@Z	00a90630	00a98680
-??0CAIStateGroup_HoverHornetQueen@@QAE@XZ	00ab3b10	00a986b0
 ??_7CVertexShaderInputStatic@@6B@	0129dfb8	00a98710
 ?Initialise@CVertexShaderInputStatic@@QAEXK_N@Z	00a90560	00a98710
 ??_7C3DAnimFile@@6B@	0129e034	00a98e60
@@ -8984,7 +8981,6 @@ __imp__GetSysColor@4	01440374	009a5490
 ??4CVillageTaskTypeVector@@QAEAAU0@ABU0@@Z	004e201f	004e1e06
 ??4CPrizeScoreDefVector@@QAEAAU0@ABU0@@Z	004eaad0	004ea6dd
 ??_7CActionParamULONG@NUISystem@@6B@	0122f844	00549230
-?Initialise@CDraggableInto@NUISystem@@UAEXXZ	0052c730	00549230
 ??4CNavigatorTypeVector@@QAEAAU0@ABU0@@Z	006714b0	00671160
 ?AllocCopy@CAnimationVector@@QAEPAUSPair@@KPAU2@0@Z	0047197a	00471865
 ?CopyRange@@YIPAUSPair@@PAU1@00ABUSTag@@@Z	004719ce	00471865
@@ -9607,7 +9603,6 @@ __imp__accept@12	01440524	008f8ea0
 ?UpdateBeam@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	008db810	008e0780
 ?FindHitEvent@CModeBriarRoseConcentrate@NCreatureMode@@QAE_NXZ	008e79a0	008e8760
 ?GetAnimMovementDistance@CThingCreatureBase@@QBEMJ@Z	006627a0	008e9110
-?GetDuration@C3DAnimationInfo@@QBEMXZ	00a23ce0	008e9110
 ?CatchMessage@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCMessageOnSetThingOwner@NTCMessages@@@Z	004bfd10	004c01e0
 ??_7CPhysicalPrimitiveMesh@NHitLocations@@6B@	0125b9b0	0067f790
 ??_7CPhysicalPrimitiveSphere@NHitLocations@@6B@	0125b9fc	0067fdb0
@@ -14760,7 +14755,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??H@YI?AVCWideString@@ABV0@G@Z	0099c120	0053fe50
 ?Get@CIME@NUISystem@@SIAAV12@XZ	00404a80	005401b0
 ?insert@CActionList@@QAE?AUCActionListIterator@@U2@ABV?$CCountedPointer@VCAction@NUISystem@@@@@Z	005355c0	00540d70
-??0CDraggableInto@NUISystem@@QAE@ABV01@@Z	0052cca0	00548350
 ?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z	009e2c80	0054f4b0
 ?ClearDuplicateDefinitions@CKeyRedefiner@@QAEXABVCActionInputControl@@@Z	005580b0	00556980
 ?g_pSelectedKeyRedefiner@NUISystem@@3PAVCKeyRedefiner@1@A	013b8ac8	00557af0
@@ -28886,7 +28880,6 @@ _D3DXLoadSurfaceFromMemory@40	00bfefc8	009f4390
 ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	0042ad34	009ccef0
 ?_M_upper_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z	009d2b50	009ccef0
 ??RCThingFilter_IsNotBeingExclusivelyUsed@@QBE_NABVCThing@@@Z	006a8af0	00918640
-?push_back@?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@QAEXABQAVCThingGameObject@@@Z	00436c80	00918640
 ??$find@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@QBE?AU?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Const_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@1@ABQAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@Z	008839e0	00881a40
 ??$find@PAVCThing@@@?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$_Select1st@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@2@@1@ABQAVCThing@@@Z	00883860	00881a40
 ??A?$map@PAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$less@PAVCThing@@@std@@V?$allocator@U?$pair@QAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@7@@std@@QAEAAVCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@ABQAVCThing@@@Z	00884c70	00881a40

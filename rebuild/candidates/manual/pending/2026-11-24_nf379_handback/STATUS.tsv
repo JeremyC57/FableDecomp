@@ -1,0 +1,17 @@
+address	status	batch	note
+00455ef0	ACCEPT	b1	option S thin member, owner 0x0045C5F6 (unchanged); strict RELOCATION_MATCH PASS; pk 0 NEQ; Alloc dup removed
+0045c5da	ACCEPT	b1	option S thin member, owner 0x0045C5F6 (unchanged); strict RELOCATION_MATCH PASS; pk 0 NEQ
+0045c5f6	OWNER (not in run)	b1	text unchanged; comment proposal in batches/b1/owner_comment_proposal (T3 nf334 stays open)
+0044c1bb	HOLD	held/b1_0044c1bb	NF379-Q1: condition (2) FableWin-only; all other gates pass
+0094fbb0	ACCEPT	b2	option S owner; self QAE -> AAE (PDB); CATALOG_EDITS /d2inlT59; closes T3 nf309
+0094fdf0	ACCEPT	b2	option S thin member; CATALOG_EDITS /d2inlT59
+00951fb0	ACCEPT	b2	option S thin member (text moved to the owner)
+00749810	SKIP	-	not S: condition (3) fails (0x00749A70 in-TU ??0CTCNoise NEQ 59 v 79); owner text emits no ??1CTCNoise (NF369)
+00749a70	SKIP	-	as 0x00749810
+0099ea60	SKIP	-	not S now: 0x0099F9B0 in-TU AllocStringData(PBDJ) NEQ 78 v 124; self needs a port (no Leaf, local model)
+0099f9b0	SKIP	-	as 0x0099EA60 (also holds an EQ strong ??0CCharString PBDJ copy of 0x0099EBF0)
+0099f690	SKIP	-	pick-any binder residue, not S
+008f87a0	SKIP	-	not S now: 0x008F99A0 in-TU CreateSocket NEQ 111 v 138; T3 nf308 family reservation
+008f8bb0	SKIP	-	not S now: in-TU ConvertSockaddr2LAddress NEQ 70 v 71; T3 nf308
+008f99a0	SKIP	-	gate only (its in-TU copies NEQ)
+00645292	OFF	-	Account B partner row (not touched)

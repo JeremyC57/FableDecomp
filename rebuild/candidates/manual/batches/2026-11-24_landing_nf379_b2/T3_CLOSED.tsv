@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf309	0x0094FBB0	port	binder 0x00951fb0: unit 1 (order: 35,38,40,47-50,67 first as warm-up). Self 0x0094FBB0 defines QAE; the only binder 0x00951FB0 binds the PDB AAE and DEFINES a strong same-TU copy of IsTargetOnATower (non-COMDAT .text, bytes + relocs SAME as the self's). The self access fix was RELOCATION_MATCH / objsec ALL_EQ, but the link gained a duplicate strong AAE definition (evidence/link_u1_0094fbb0.txt): NF281 D2 / NF283 D3 (a self move duplicating another row's strong same-TU copy is T3). Reverted.

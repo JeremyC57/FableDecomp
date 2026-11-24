@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00a629d0   WARN SHARED_HEADER_AVAILABLE CPackedUIntArray (engine/CPackedUIntArray.h)
+00a629d0   WARN STANDIN_LEAF ?Clear@CPackedUIntArray@@QAEXXZ (catalog CPackedUIntArray::~CPackedUIntArray; names another function)
+00a629d0   RELOCATION_MATCH PASS   ~CPackedUIntArray
+00e0f1d0   WARN STANDIN_LEAF ?WatchForTermination@CQ_WaspBossScript@NScript@@QAEXXZ (catalog NScript::CQ_WaspBossScript::EndMission; names another function)
+00e0f1d0   RELOCATION_MATCH PASS   EndMission
+
+WINS: 2
+  00a629d0 RELOCATION_MATCH CPackedUIntArray::?Clear@CPackedUIntArray@@QAEXXZ
+  00e0f1d0 RELOCATION_MATCH NScript::CQ_WaspBossScript::?WatchForTermination@CQ_WaspBossScript@NScript@@QAEXXZ

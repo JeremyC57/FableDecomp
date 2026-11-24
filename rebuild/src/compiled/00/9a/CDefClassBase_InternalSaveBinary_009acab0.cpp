@@ -1,10 +1,11 @@
 // CDefClassBase::InternalSaveBinary(CDataOutputStream&) -- write the three flag bits (Setup, Template, DefaultValsApplied) as bytes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009ACAB0, length 74 bytes.
-// Callees: CDataOutputStream::WriteCBYTE(char) @ 0x00993E50 (three times). Virtual (vtable 0x01230BCC).
+// Name fix (NF380): 0x00993E50 is CDataOutputStream::WriteUBYTE (retail has the UBYTE / SBYTE / CBYTE writers at 0x00993E50 / 60 / 70 in Ego_r and FableWin object order; the FableWin caller calls WriteUBYTE). Was WriteCBYTE(char).
+// Callees: CDataOutputStream::WriteUBYTE(unsigned char) @ 0x00993E50 (three times). Virtual (vtable 0x01230BCC).
 // Shape: each 1-bit member is widened with `xor eax,eax ; mov al,[esi+24h]`, shifted to bit 0 and masked with
 // `and eax,0FFFFFF01h` (the char conversion of a bitfield), then pushed; the stream stays in edi.
 class CDataOutputStream { public:
-    void WriteCBYTE(char value);                   // 0x00993E50
+    void WriteUBYTE(unsigned char value);                   // 0x00993E50
 };
 
 class CDefClassBase { public:
@@ -18,7 +19,7 @@ class CDefClassBase { public:
 
 void CDefClassBase::InternalSaveBinary(CDataOutputStream& stream)
 {
-    stream.WriteCBYTE(Setup);
-    stream.WriteCBYTE(Template);
-    stream.WriteCBYTE(DefaultValsApplied);
+    stream.WriteUBYTE(Setup);
+    stream.WriteUBYTE(Template);
+    stream.WriteUBYTE(DefaultValsApplied);
 }

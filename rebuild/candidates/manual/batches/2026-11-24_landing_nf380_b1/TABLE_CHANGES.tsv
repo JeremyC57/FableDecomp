@@ -1,0 +1,9 @@
+action	symbol	target	witness	note
+replace	??0CAIStateGroup_CarryCrateAndFollow@@QAE@XZ -> ??0CAIStateGroup_MinionBehaviourCrowdBase@@QAE@XZ	009009ea	00902873	NF380: 00902873 now binds the PDB base ctor (landed self of 0x009009EA, no table line yet); it is the only landed caller of 0x009009EA
+delete	??0C3DMeshFileXAnimatedPrimitiveChunk@@QAE@XZ	008bbb10	006f5530	NF380: 006f5530 now binds the PDB line (witness 006f5c10); 006f5c10 is the only other landed caller and does not name the old class
+delete	??0CAIStateGroup_HoverHornetQueen@@QAE@XZ	00ab3b10	00a986b0	NF380: 00a986b0 and 00a98740 (the only landed sources naming the class) now bind the PDB line (witness 00a5d870)
+delete	??0CDraggableInto@NUISystem@@QAE@ABV01@@Z	0052cca0	00548350	NF380: 00548350 now binds the PDB line (witness 0041b870); no other landed caller of 0x0052CCA0 names CDraggableInto
+delete	?Initialise@CDraggableInto@NUISystem@@UAEXXZ	0052c730	00549230	NF380: 00549230 now binds the PDB line (witness 00543d30); no other landed caller of 0x0052C730 names CDraggableInto
+delete	?GetDuration@C3DAnimationInfo@@QBEMXZ	00a23ce0	008e9110	NF380: 008e9110 and 008e9080 (the only landed callers naming GetDuration) now bind the PDB line (witness 0070c800)
+delete	?WriteCBYTE@CDataOutputStream@@QAEXD@Z	00993e50	009acab0	NF380: 009acab0 009b0200 00af4240 (the only landed callers naming WriteCBYTE) now bind the PDB line (witness 00aaf650)
+delete	?push_back@?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@QAEXABQAVCThingGameObject@@@Z	00436c80	00918640	NF380: 00918640 now binds the PDB line (witness 005c552c); no other landed caller of 0x00436C80 names CThingGameObject

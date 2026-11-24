@@ -1,0 +1,9 @@
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+00455ef0   RELOCATION_MATCH PASS   CThingNoiseDef
+0045c5da   WARN STANDIN_LEAF ??_GCThingNoiseDef@@UAEPAXI@Z (catalog CThingNoiseDef::`scalar_deleting_destructor'; names another function)
+0045c5da   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 2
+  00455ef0 RELOCATION_MATCH CThingNoiseDef::??0CThingNoiseDef@@QAE@XZ
+  0045c5da RELOCATION_MATCH CThingNoiseDef::??_GCThingNoiseDef@@UAEPAXI@Z

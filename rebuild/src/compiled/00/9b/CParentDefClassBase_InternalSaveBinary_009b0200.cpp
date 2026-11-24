@@ -1,8 +1,9 @@
 // CParentDefClassBase::InternalSaveBinary(CDataOutputStream&) -- write the CDefClassBase flag bits, re-sort the sub-def info map if it is dirty, then write its count and every (index, sub-def info) entry
 // Leaf: ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z
+// Name fix (NF380): 0x00993E50 is CDataOutputStream::WriteUBYTE (retail has the UBYTE / SBYTE / CBYTE writers at 0x00993E50 / 60 / 70 in Ego_r and FableWin object order; the FableWin caller calls WriteUBYTE). Was WriteCBYTE(char).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B0200, length 224 bytes. Virtual: slot 21 of
 // CParentDefClassBase's vtable 0x01230CBC.
-// Callees: CDataOutputStream::WriteCBYTE(char) @ 0x00993E50 (x3, the inlined CDefClassBase part -- its
+// Callees: CDataOutputStream::WriteUBYTE(unsigned char) @ 0x00993E50 (x3, the inlined CDefClassBase part -- its
 //          out-of-line twin is 0x009ACAB0), WriteUShort @ 0x00993E80 (entry count), WriteULong @ 0x00993EA0
 //          (key), WriteLong @ 0x00993EB0 (x2, the two CSubDefInfo fields); the SGI sort of 12-byte
 //          elements @ 0x009B84C0 (__fastcall first/last, comparator by value; the landed body is
@@ -14,7 +15,7 @@
 // signed 12-byte element difference; the loop re-reads the vector start for the key and again for the
 // value, whose two longs are written through a reference.
 class CDataOutputStream { public:
-    void WriteCBYTE(char value);                   // 0x00993E50
+    void WriteUBYTE(unsigned char value);                   // 0x00993E50
     void WriteUWORD(unsigned short value);        // 0x00993E80
 public:
     void WriteSLONG(long);   // 0x00993EB0
@@ -66,9 +67,9 @@ class CDefClassBase { public:
     unsigned char       DefaultValsApplied : 1;    // +0x24 bit 2
     virtual void InternalSaveBinary(CDataOutputStream& stream)
     {
-        stream.WriteCBYTE(Setup);
-        stream.WriteCBYTE(Template);
-        stream.WriteCBYTE(DefaultValsApplied);
+        stream.WriteUBYTE(Setup);
+        stream.WriteUBYTE(Template);
+        stream.WriteUBYTE(DefaultValsApplied);
     }
 };
 

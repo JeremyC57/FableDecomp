@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00b5bd30   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectRadialBlurRenderer (engine/CEngineScreenEffectRadialBlurRenderer.h)
+00b5bd30   RELOCATION_MATCH PASS   ReleaseTextures_00b5bd30
+
+WINS: 1
+  00b5bd30 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?FinishWithDynamicTextures@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ

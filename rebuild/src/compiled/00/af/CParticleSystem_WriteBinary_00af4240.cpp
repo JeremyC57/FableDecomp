@@ -3,8 +3,9 @@
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // NParticleEngine::CParticleSystem::WriteBinary(CDataOutputStream&) -- save the system's name, its Enabled and ScaleParticles flags, its scale, then the component count and, per component, its name, instance name, enabled flag and body followed by a '{' marker byte
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF4240, length 224 bytes (`ret 4`; manifest label correct).
+// Name fix (NF380): 0x00993E50 is CDataOutputStream::WriteUBYTE (retail has the UBYTE / SBYTE / CBYTE writers at 0x00993E50 / 60 / 70 in Ego_r and FableWin object order; the FableWin caller calls WriteUBYTE). Was WriteCBYTE(char).
 // Callees: CDataOutputStream::WriteNullTerminatedString @ 0x00995AE0 (x2), WriteBool @ 0x00993E30 (x3), Write3DVector
-//          @ 0x00993FD0, WriteULong @ 0x00993EA0 (x2), WriteCBYTE @ 0x00993E50 ('{' = 0x7b); ~CCharString @ 0x0099EAE0;
+//          @ 0x00993FD0, WriteULong @ 0x00993EA0 (x2), WriteUBYTE @ 0x00993E50 ('{' = 0x7b); ~CCharString @ 0x0099EAE0;
 //          the component's virtual slots 3 (+0x0c, its type name by value) and 16 (+0x40, WriteBinary).
 // Layout: the retail CParticleSystem of the landed PreparePrimitives 0x00AF40B0 (16-byte component map at +0x0c of
 // 24-byte pair<EPSCType, CComponentInstance>, flag byte +0x50: Enabled bit 1, ScaleParticles bit 7), plus Scale
@@ -22,7 +23,7 @@ public:
 
 class CDataOutputStream {
 public:
-    void WriteCBYTE(char value);                   // 0x00993E50
+    void WriteUBYTE(unsigned char value);                   // 0x00993E50
     void Write3DVector(const C3DVector& value);    // 0x00993FD0
     void WriteNullTerminatedString(const CCharString& s);   // 0x00995AE0
 public:
@@ -103,6 +104,6 @@ void CParticleSystem::WriteBinary(CDataOutputStream& stream)
         stream.WriteULONG(instance.InstanceName);
         stream.WriteEBOOL(instance.Enabled);
         component->WriteBinary(stream);
-        stream.WriteCBYTE('{');
+        stream.WriteUBYTE('{');
     }
 }

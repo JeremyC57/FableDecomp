@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$Configuration = 'Release',
     [switch]$Force,
 
@@ -188611,6 +188611,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0094fbb0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
         Module = 'CAIStateGroup_JackDragon'
         Source = '00/94/CAIStateGroupJackDragon_IsTargetOnATower_0094fbb0.cpp'
         TestSource = '00/94/CAIStateGroupJackDragon_IsTargetOnATower_0094fbb0_test.cpp'
@@ -188618,6 +188619,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0094fdf0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT59'
         Module = 'CAIStateGroup_JackDragon'
         Source = '00/94/CAIStateGroupJackDragon_IsStillRunnable_0094fdf0.cpp'
         TestSource = '00/94/CAIStateGroupJackDragon_IsStillRunnable_0094fdf0_test.cpp'

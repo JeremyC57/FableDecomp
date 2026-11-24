@@ -1,0 +1,10 @@
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+0094fbb0   RELOCATION_MATCH PASS   IsTargetOnATower
+0094fdf0   RELOCATION_MATCH PASS   IsStillRunnable
+00951fb0   RELOCATION_MATCH PASS   UpdateHover
+
+WINS: 3
+  0094fbb0 RELOCATION_MATCH CAIStateGroup_JackDragon::?IsTargetOnATower@CAIStateGroup_JackDragon@@AAE_NXZ
+  0094fdf0 RELOCATION_MATCH CAIStateGroup_JackDragon::?IsStillRunnable@CAIStateGroup_JackDragon@@AAE_NXZ
+  00951fb0 RELOCATION_MATCH CAIStateGroup_JackDragon::?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ

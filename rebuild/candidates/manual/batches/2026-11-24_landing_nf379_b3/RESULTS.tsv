@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+0044c1bb	ACCEPT	??0CTCNoiseDef@@QAE@XZ	??0CTCNoiseDef@@QAE@XZ	NF379-Q1 ruled yes (advisor decision, owner delegated: retail neighbours 0x0044C0C0 0x0044C108 0x0044C1DC 0x0044C3AA are Ego_r definition_manager.obj): option S member (thin) of the CThingNoiseDef def TU; condition (2) attested by FableWin.pdb only (definition_manager.obj #386; Ego_r.pdb has no out-of-line copy anywhere). Flip to ACCEPT and add the UNITS line only on the ruling
