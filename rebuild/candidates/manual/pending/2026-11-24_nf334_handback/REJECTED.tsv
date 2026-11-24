@@ -1,0 +1,4 @@
+address	idx	change	reason
+0x00B21630	174	?WriteBinary@CSplineRandomOffsetData@NParticleEngine@@QAEXAAVCDataOutputStream@@@Z -> ?WriteBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QBEXAAVCDataOutputStream@@@Z	objsec NOT_EQ: CCountedPointer<CSplineRandomOffsetData>::operator-> COMDAT renamed with the re-scoped type (COMDAT set changes); NF300 Q2 port (T3)
+0x00485B44	274	member-template Transfer<C3DVector> declaration	objsec NOT_EQ only in .drectve: VC7.1 adds /alternatename for the ??$Transfer template spelling (NF303 Q2: T3); reverted
+0x00800D30	276	member-template Transfer<C2DVector> declaration	as 274 (.drectve /alternatename; NF303 Q2); reverted

@@ -7,7 +7,7 @@
 //   CCombatActionBase::FrameUpdate @ 0x00859D80.
 // Callees: CCreatureActionBase::PeekWorld @ 0x00692950 (result unused; manifest "_Dest_val<...>" label is
 //   propagated), virtual IsStrikeEventActive (slot 14, +0x38) and GetAnimDelayTime (slot 6, +0x18),
-//   CCombatActionBase::PerformPossibleDamageAction(float) @ 0x008591E0, GetFirstActiveStrikeEvent @ 0x00856E50,
+//   CCombatActionBase::PerformPossibleDamageAction(float) @ 0x008591E0, GetPActiveStrikeEvent @ 0x00856E50,
 //   GetWeaponUsedInStrikeAction @ 0x00857070, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10,
 //   CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0 and operator= @ 0x004A9760, IS_THING_ALIVE @ 0x004CC340 (`__fastcall`,
 //   pointer in ecx), CInterfaceMap::LowerBound @ 0x0040F020 (the inlined GetInterface), CTCObjectAugmentations::FireCombatAugEffect
@@ -59,13 +59,13 @@ template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer {
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340 = IS_THING_ALIVE<CIntelligentPointer<CThing> > (Ego_r/FableWin ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z)
 
-struct CStrikeEvent {
-    bool  Legacy;                                      // +0x00
-    bool  PrimaryLegacy;                               // +0x01
-    bool  Weapon;                                      // +0x02
-    void* HelperPointName;                             // +0x04
-    long  StrikeEventIndex;                            // +0x08
-};
+// (CStrikeEvent: the PDB nested CCombatActionBase::CStrikeEvent, defined right after CCombatActionBase; NF334)
+    // bool  Legacy;                                      // +0x00
+    // bool  PrimaryLegacy;                               // +0x01
+    // bool  Weapon;                                      // +0x02
+    // void* HelperPointName;                             // +0x04
+    // long  StrikeEventIndex;                            // +0x08
+//
 struct CStrikeEventList {                              // std::list<CCountedPointer<CStrikeEvent> >
     struct SNode { SNode* next; SNode* prev; };
     SNode* head;
@@ -121,13 +121,13 @@ class CCombatActionBase : public CCreatureActionBase { public:      // retail si
     long             ActiveStrikeEventIndex;           // +0xfc
     CIntelligentPointer<CThing> LastWeaponUsedInStrike;        // +0x100
     unsigned char    _pad108[0x114 - 0x108];
-    CStrikeEvent* GetFirstActiveStrikeEvent();         // 0x00856E50
+    class CStrikeEvent; protected: CStrikeEvent* GetPActiveStrikeEvent(); public:   // 0x00856E50 (Ego_r + FableWin; NF334, was GetFirstActiveStrikeEvent)
     CThing* GetWeaponUsedInStrikeAction() const;             // 0x00857070
     void PerformPossibleDamageAction(float fraction);  // 0x008591E0
     protected:
     void ProcessStrikeEvents();
     public:
-};
+}; class CCombatActionBase::CStrikeEvent { public: bool Legacy; bool PrimaryLegacy; bool Weapon; void* HelperPointName; long StrikeEventIndex; };   // +0x00 / +0x01 / +0x02 / +0x04 / +0x08
 
 void CCombatActionBase::ProcessStrikeEvents()
 {
@@ -135,7 +135,7 @@ void CCombatActionBase::ProcessStrikeEvents()
     PeekWorld();                         // result unused
     if (StrikeEvents.HasEvents() && IsStrikeEventActive()) {
         PerformPossibleDamageAction(0.25f);
-        CStrikeEvent* strikeEvent = GetFirstActiveStrikeEvent();
+        CStrikeEvent* strikeEvent = GetPActiveStrikeEvent();
         if (strikeEvent) {
             if (strikeEvent->StrikeEventIndex != ActiveStrikeEventIndex) {
                 ActiveStrikeEventIndex = strikeEvent->StrikeEventIndex;

@@ -1,0 +1,30 @@
+##### 0069a850 renames: ?PopulateListFromData@CGameCameraManager@@QAEXXZ=?InitSpecialCameraList@CGameCameraManager@@AAEXXZ ?PopulateSwitchList@CGameCameraManager@@QAEXXZ=?InitManualCameraList@CGameCameraManager@@AAEXXZ
+ALL_EQ sections=4 tables=-
+##### 00bf84c0 renames: ?OnSubNodeLoaded@CLandscapeBackgroundTreeNode@@QAEXXZ=?InvalidateEdgeTesellation@CLandscapeBackgroundTreeNode@@AAEXXZ ?StartLoading@CLandscapeBackgroundLoadTask@@QAEXXZ=?ReleaseFileBlockLoad@CLandscapeBackgroundLoadTask@@QAEXXZ
+ALL_EQ sections=6 tables=-
+##### 004189c2 renames: ?RecordFrameTime@CMainGameComponent@@QAEXN@Z=?UpdateAverageFrameDuration@CMainGameComponent@@IAEXN@Z
+ALL_EQ sections=9 tables=-
+##### 00417001 renames: ?IsReadyToRender@CNetworkClient@@QAE_NXZ=?IsFreeToRender@CNetworkClient@@QBE_NXZ
+ALL_EQ sections=8 tables=-
+##### 00dc0300 renames: ?CleanupBandits@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ=?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+ALL_EQ sections=18 tables=??_7CScriptThing@@6B@
+##### 0040f7e0 renames: ?Lookup@CSymbolMap@@QBE_NABVCCharString@@PAJ@Z=?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
+ALL_EQ sections=3 tables=-
+##### 006e0730 renames: ?Lookup@CSymbolMap@@QAE_NABVCCharString@@PAJ@Z=?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
+ALL_EQ sections=6 tables=-
+##### 00735540 renames: ?ResetCombatState@CTCCombat@@QAEXXZ=?ClearCombatVariables@CTCCombat@@AAEXXZ
+ALL_EQ sections=15 tables=??_7CTCCombat@@6B@
+##### 00691470 renames: ?Quit@CTCCreditsUI@@QAEXXZ=?Deactivate@CTCCreditsUI@@QAEXXZ
+ALL_EQ sections=4 tables=-
+##### 00690480 renames: ?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ=?IsLoadMenuReceivingInput@CTCInGameMenu@@QBE_NXZ
+ALL_EQ sections=9 tables=-
+##### 007868a0 renames: ?AddMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z=?AddSkeletalMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z
+ALL_EQ sections=6 tables=-
+##### 0099b940 renames: ?MakeOwnCopyOfData@CWideString@@AAEXXZ=?MakeOwnCopyOfData@CWideString@@IAEXXZ
+ALL_EQ sections=2 tables=-
+##### 0088f930 renames: ?Save@CWorld@@QAEXH@Z=?AutoSave@CWorld@@QAE_N_N@Z
+ALL_EQ sections=2 tables=-
+##### 00485b44 renames: ?Transfer@CPersistContext@@QAEXPBDAAVC3DVector@@ABV2@@Z=??$Transfer@VC3DVector@@@CPersistContext@@QAEXPBDAAVC3DVector@@ABV1@@Z
+NOT_EQ .drectve differs sections=3 tables=-
+##### 00800d30 renames: ?Transfer@CPersistContext@@QAEXPBDAAVC2DVector@@ABV2@@Z=??$Transfer@VC2DVector@@@CPersistContext@@QAEXPBDAAVC2DVector@@ABV1@@Z
+NOT_EQ .drectve differs sections=3 tables=-

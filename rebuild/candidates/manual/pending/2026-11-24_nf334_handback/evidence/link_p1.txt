@@ -1,0 +1,10 @@
+## HEAD set: H_004017b0.obj H_009a6610.obj H_00786700.obj 0099dcb0.obj 0099e260.obj 00a0db60.obj 00a5b850.obj 00a45410.obj
+duplicates 0
+UNRESOLVED 1 ?ClearMorphParameters@C3DSkeletalMorph@@QAEXXZ
+UNRESOLVED 1 ?DisplayErrorDialog@@YGHPBUSErrorDialogParams@@H@Z
+UNRESOLVED 1 ?GFInitVectorMath@@YAXXZ
+UNRESOLVED 1 ?InitExternalStrings@@YIXXZ
+UNRESOLVED 1 ?Math_InitializeCosineLookup@@YAXXZ
+## new set: 004017b0.obj 009a6610.obj 00786700.obj 0099dcb0.obj 0099e260.obj 00a0db60.obj 00a5b850.obj 00a45410.obj
+duplicates 0
+LK_DONE

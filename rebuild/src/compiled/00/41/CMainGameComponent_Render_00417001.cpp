@@ -79,7 +79,7 @@ class CDisplayEngine { public:
     void Render(const CInterpolationInfo* info, bool worldUpdateTurn, bool b);   // 0x00435F70 (NF166 q10180: Ego_r.pdb / FableWin.pdb public Render; was DoRender)
 };
 class CGameEventPackageSet { public: long _body[0x13a14 / 4]; CGameEventPackageSet(); };   // 0x009F1A80
-struct CNetworkClient { long _body[0x2680 / 4]; CNetworkClient(); bool IsReadyToRender(); };   // 0x00419323 / 0x004AEA70
+struct CNetworkClient { long _body[0x2680 / 4]; CNetworkClient(); bool IsFreeToRender() const; };   // 0x00419323 / 0x004AEA70
 class CDiskFileWin32 { public: long _body[0x1c / 4]; CDiskFileWin32(); };                  // 0x00415C30
 struct CEventPackageFileHeader { long Version; };
 struct CFrameRateSmoother { long _body[0x30 / 4]; CFrameRateSmoother(); };          // 0x00419747
@@ -206,9 +206,9 @@ void CMainGameComponent::Render()
             }
             LastInterpolationInfo = info;
             PWorld->RenderUpdate(&info);
-            if (!Client.IsReadyToRender())
+            if (!Client.IsFreeToRender())
                 ++DebugNoFramesUnableToRender;
-            if (g_b13B8688 || Client.IsReadyToRender()) {
+            if (g_b13B8688 || Client.IsFreeToRender()) {
                 double start = GetCurrentGameTime();
                 LastRenderFrameStartTime = GetCurrentGameTime();
                 PDisplayEngine->Render(&info, WorldUpdateTurn, true);

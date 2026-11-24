@@ -96,8 +96,8 @@ class CGameCameraManager { public:
     unsigned char _pad_0x12e[2];                    // +0x12e
     CDefPointer PCameraManagerSet;                  // +0x130 CDefPointer<const CCameraManagerSetDef>
     CDefPointer PDef;                               // +0x134 CDefPointer<const CCameraManagerDef>
-    void PopulateSwitchList();                      // 0x0069A010
-    void PopulateListFromData();                    // 0x0069A1A0
+    private: void InitManualCameraList(); public:               // 0x0069A010
+    private: void InitSpecialCameraList(); public:               // 0x0069A1A0
     void PushCurrentManualMode();                   // 0x006988B0
     void SetCameraManagerDef(const CDefPointer& def);
 };
@@ -105,7 +105,7 @@ class CGameCameraManager { public:
 void CGameCameraManager::SetCameraManagerDef(const CDefPointer& def)
 {
     PDef = def;
-    PopulateSwitchList();
-    PopulateListFromData();
+    InitManualCameraList();
+    InitSpecialCameraList();
     PushCurrentManualMode();
 }

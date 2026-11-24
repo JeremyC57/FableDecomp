@@ -8,7 +8,7 @@
 //   input 0x00A60050, sound 0x00A3EF00, font 0x009E2E30, graphic bank 0x009F8690, mesh bank 0x00A0A110, profile 0x009F9160), the
 //   counted-pointer Reset COMDATs 0x009A6FD0/7180/73D0/72D0/7340/71F0/7260/7510, CDisplayManager::Init 0x009C0E50 /
 //   AddDeviceResetCallback 0x009C0190, CDriveManager::Initialise 0x009E4AD0 (global 0x013CAA28, vtable 0x0129AFF4), default error
-//   func 0x009A5260, Math_InitializeCosineLookup 0x00A0DB60, GFInitVectorMath 0x00A5B850, InitSystemColours 0x009A5490,
+//   func 0x009A5260, GFInitMaths 0x00A0DB60, NVectorMath::GFInitVectorMath 0x00A5B850, InitSystemColours 0x009A5490,
 //   InitApplicationName 0x009A5340, init count 0x013CA608.
 // Layout: retail CSystemManager = Ego_r.pdb + 8 from WindowInitialised on (one extra counted pointer at +0x84, as the landed
 //   Uninitialise 0x009A60D0 / InitSystemColours 0x009A5490 of this chunk), plus IMEMessageFunc/MessageFilter at +0x178/+0x17c;
@@ -128,8 +128,8 @@ extern "C" __declspec(dllimport) void* __stdcall GetCurrentProcess();           
 extern CScratchBuffer g_ScratchBuffer;             // 0x013CB498
 extern unsigned char g_SystemInitialiseCount;      // 0x013CA608
 bool __cdecl DefaultErrorFunc(long code);          // 0x009A5260
-void __cdecl Math_InitializeCosineLookup();        // 0x00A0DB60
-void __cdecl GFInitVectorMath();                   // 0x00A5B850
+void __fastcall GFInitMaths();                     // 0x00A0DB60 (NF334: Ego_r + FableWin ?GFInitMaths@@YIXXZ)
+namespace NVectorMath { void __cdecl GFInitVectorMath(); }   // 0x00A5B850 (NF334: Ego_r + FableWin)
 
 class CSystemManager : public CInitBaseClass { public:
     bool WindowsQuit;                                   // +0x08
@@ -274,8 +274,8 @@ long CSystemManager::Initialise(const CSystemManagerInit& init)
             PDisplayManager.Data->AddDeviceResetCallback(PMeshBankManager.Data ? &PMeshBankManager.Data->ResetCallback : 0);
     }
     ProfileManager.Reset(new CProfileManager);
-    Math_InitializeCosineLookup();
-    GFInitVectorMath();
+    GFInitMaths();
+    NVectorMath::GFInitVectorMath();
     InitSystemColours();
     ++g_SystemInitialiseCount;
     InitApplicationName();

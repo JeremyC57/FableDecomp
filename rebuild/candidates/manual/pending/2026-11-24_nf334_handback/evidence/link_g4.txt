@@ -1,0 +1,9 @@
+## HEAD set: H_0096f240.obj H_004afa60.obj H_004b26b0.obj H_00967180.obj 0096f180.obj 007ba000.obj 009492a0.obj
+duplicates 0
+UNRESOLVED 2 ?ActivateEntity@CScriptBase@@QAEX_KABVCScriptThing@@@Z
+UNRESOLVED 1 ?CanRun@CAIStateGroup_MinionBehaviourSad@@QAE_NXZ
+UNRESOLVED 1 ?GetFreeJugPoint@CTCTavernBar@@QAE_NPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@PAJ3_N@Z
+## new set: 0096f240.obj 004afa60.obj 004b26b0.obj 00967180.obj 0096f180.obj 007ba000.obj 009492a0.obj
+duplicates 0
+UNRESOLVED 2 ?OnScriptedEntityActivated@CScriptBase@@QAEX_KAAVCScriptThing@@@Z
+LK_DONE

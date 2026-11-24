@@ -29,7 +29,7 @@ namespace
 // pointer, one stack-pushed argument = a scratch CWideString buffer
 // (materialised in place as ExpandPath's own temporary argument) used as
 // working storage during expansion.
-CWideString __fastcall ExpandPath(CWideString* in, CWideString* scratch);
+// (NF334: ExpandPath is the PDB public static CAFile::ExpandPath(const CWideString&, const CWideString&) @ 0x00998C90, declared in the class below)
 }
 
 // static CWideString __fastcall CAFile::ConvertPathToFullPath(const CWideString& path)
@@ -43,10 +43,10 @@ CWideString __fastcall ExpandPath(CWideString* in, CWideString* scratch);
 class CAFile
 {
 public:
-    static CWideString __fastcall ConvertPathToFullPath(const CWideString& path);
+    static CWideString __fastcall ExpandPath(const CWideString& path, const CWideString& base); static CWideString __fastcall ConvertPathToFullPath(const CWideString& path);
 };
 
 CWideString __fastcall CAFile::ConvertPathToFullPath(const CWideString& path)
 {
-    return ExpandPath(const_cast<CWideString*>(&path), &GetCurrentWorkingDirectory());
+    return ExpandPath(path, GetCurrentWorkingDirectory());
 }

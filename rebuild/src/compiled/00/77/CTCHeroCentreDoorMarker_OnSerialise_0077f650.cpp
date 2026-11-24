@@ -37,7 +37,7 @@ class CPersistContext { public:
 };
 
 class CSymbolMap { public:
-    bool Lookup(const CCharString& name, long* value) const;   // 0x009E5170
+    bool FindSymbol(const CCharString& name, long& value) const;   // 0x009E5170
 };
 CSymbolMap* __fastcall GetDoorTypeSymbolMap();              // 0x0077F510
 
@@ -69,7 +69,7 @@ void CTCHeroCentreDoorMarker::OnSerialise(CPersistContext& context, bool transfe
         if (doorTypeName != "") {
             long value;
             CSymbolMap* doorTypes = GetDoorTypeSymbolMap();
-            doorTypes->Lookup(doorTypeName, &value);
+            doorTypes->FindSymbol(doorTypeName, value);
             DoorType = (EHeroCentreDoorType)value;
         }
     }

@@ -38,9 +38,9 @@ struct CCountedFilenames {
     CCharString GetReflection() const { return Reflection; }
     CCharString GetIllumination() const { return Illumination; }
 };
-struct CFilenames : CCountedFilenames {
-    CFilenames();                                       // 0x00ABEF60
-};
+// (CFilenames: the PDB nested C3DMeshMaterial::CFilenames, defined right after C3DMeshMaterial; NF334)
+    // CFilenames();                                       // 0x00ABEF60
+//
 
 class C3DMeshFileEngineMaterialChunk { public:
     unsigned char _base[0x2c];                          // retail C3DMeshFileChunk (PDB 0x34)
@@ -90,8 +90,8 @@ class C3DMeshMaterial : public CBaseClass { public:
     bool BooleanAlpha;                                  // +0x2a
     bool DegenerateTriangles;                           // +0x2b
     CIVCountedPointer<CCountedFilenames> Filenames;     // +0x2c
-    void InitialiseFromFileData(const C3DMeshFileEngineMaterialChunk& chunk, CBankFile* bank);
-};
+    struct CFilenames; void InitialiseFromFileData(const C3DMeshFileEngineMaterialChunk& chunk, CBankFile* bank);
+}; struct C3DMeshMaterial::CFilenames : CCountedFilenames { CFilenames(); };   // ctor 0x00ABEF60 (FableWin ??0CFilenames@C3DMeshMaterial@@QAE@XZ ; Ego_r ??_ECFilenames@C3DMeshMaterial@@UAEPAXI@Z names the nested type)
 
 void C3DMeshMaterial::InitialiseFromFileData(const C3DMeshFileEngineMaterialChunk& chunk, CBankFile* bank)
 {

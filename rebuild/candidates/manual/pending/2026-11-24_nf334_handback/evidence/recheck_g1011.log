@@ -1,0 +1,11 @@
+addr       parity           behav  name
+006d1de0   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+006d1de0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006d1de0   RELOCATION_MATCH PASS   ReceivedConfirmation
+007266c0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard (engine/CTCPhysicsStandard.h)
+007266c0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsNavigator (engine/CTCPhysicsNavigator.h)
+007266c0   RELOCATION_MATCH PASS   CTCPhysicsNavigator
+
+WINS: 2
+  006d1de0 RELOCATION_MATCH CTCWife::ReceivedConfirmation
+  007266c0 RELOCATION_MATCH CTCPhysicsNavigator::??0CTCPhysicsNavigator

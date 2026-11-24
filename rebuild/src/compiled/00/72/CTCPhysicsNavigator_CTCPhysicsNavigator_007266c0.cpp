@@ -18,7 +18,7 @@ class CThing;
 struct CTCPhysicsStandard {
     virtual void v000();
     unsigned char _base[0x84];              // +0x04 CTCPhysicsBase + CTCPhysicsStandard members
-    CTCPhysicsStandard(CThing* thing);      // 0x00723FD0
+    CTCPhysicsStandard(CThing& thing);      // 0x00723FD0
 };
 
 struct CTCPhysicsNavigator : CTCPhysicsStandard {
@@ -34,7 +34,7 @@ struct CTCPhysicsNavigator : CTCPhysicsStandard {
 #pragma pack(pop)
 
 CTCPhysicsNavigator::CTCPhysicsNavigator(CThing* thing)
-    : CTCPhysicsStandard(thing), Navigating(false), AdditionalImpulse(0.0f, 0.0f, 0.0f)
+    : CTCPhysicsStandard(*thing), Navigating(false), AdditionalImpulse(0.0f, 0.0f, 0.0f)
 {
     ForcedMoveToPosSet = false;
     ForcedMoveToPosUsePhysics = false;

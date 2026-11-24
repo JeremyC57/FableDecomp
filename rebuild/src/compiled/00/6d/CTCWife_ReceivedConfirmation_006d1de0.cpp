@@ -13,7 +13,7 @@ class CTCWife : public CTCWifeLayout
 {
 public:
     bool IsOfferingSex() const;   // 0x006CEEA0
-    bool IsWillingToMarry() const;   // 0x006CFEC0
+    bool IsWillingToMarry() const;   void HaveSex();   // 0x006CFEC0; HaveSex 0x006CF920 (Ego_r + FableWin ?HaveSex@CTCWife@@QAEXXZ; NF334: moved here from CTCWife_Confirm)
 };
 
 class CWorld {
@@ -24,7 +24,7 @@ public:
 struct CTCWife_Confirm : CTCWife {
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
     void Marry(bool fromScript);                            // 0x006D18A0
-    void HaveSex();                                         // 0x006CF920
+    // void HaveSex();                                         // 0x006CF920
     void ReceivedConfirmation(bool confirmed);
 };
 

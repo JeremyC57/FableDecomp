@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00abf840   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00abf840   WARN SHARED_HEADER_AVAILABLE C3DMeshFileEngineMaterialChunk (engine/C3DMeshFileEngineMaterialChunk.h)
+00abf840   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00abf840   WARN SHARED_HEADER_AVAILABLE C3DMeshMaterial (engine/C3DMeshMaterial.h)
+00abf840   RELOCATION_MATCH PASS   InitialiseFromFileData
+
+WINS: 1
+  00abf840 RELOCATION_MATCH C3DMeshMaterial::InitialiseFromFileData

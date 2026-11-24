@@ -92,7 +92,7 @@ private:
     // args) -- modeled as a real member so the retail call site's
     // `this` staying live in ecx across the call falls out of ordinary
     // codegen instead of an extra explicit argument push.
-    void MakeOwnCopyOfData();
+    protected: void MakeOwnCopyOfData(); private:
 
     CWideStringData* AllocStringData(const wchar_t* text, long length);
 

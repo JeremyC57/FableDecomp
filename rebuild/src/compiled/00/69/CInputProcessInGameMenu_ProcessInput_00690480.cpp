@@ -72,7 +72,7 @@ class CTCInGameMenu { public:
     bool IsAnySliderReceivingInput() const;              // 0x0047D483
     bool IsQuitMenuReceivingInput() const;               // 0x0047D537
     bool IsListReceivingInputA();                  // 0x0047D6F2 (descriptive)
-    bool IsListReceivingInputB();                  // 0x0047D648 (descriptive)
+    bool IsLoadMenuReceivingInput() const;         // 0x0047D648 (NF334: Ego_r + FableWin)
     void CloseInGameMenuViaGameEvent();            // 0x0047D21C
 };
 // Layout: engine/CInputProcessInGameMenu.h is a flattened view (PInGameMenu +0x28); the game-base methods need the
@@ -122,13 +122,13 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
         } else if (IsEventGameAction(GAME_ACTION_INVENTORY_LEFT, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(0x14);
-            else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
+            else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsLoadMenuReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(GAME_ACTION_INVENTORY_RIGHT, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(0x15);
-            else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
+            else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsLoadMenuReceivingInput())
                 NUISystem::CManager::GetInstance()->SendEvent(4);
             processed.SetAsPerformedEvent();
         } else if (IsEventGameAction(GAME_ACTION_INVENTORY_A, event)) {

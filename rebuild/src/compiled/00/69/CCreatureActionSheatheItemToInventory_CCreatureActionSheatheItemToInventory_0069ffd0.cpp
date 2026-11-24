@@ -19,7 +19,7 @@
 #include "engine/CThing.h"
 class CThingCreatureBase : public CThing { public: };
 
-CCharString __fastcall GetAnimationToUse(CThing* owner);   // 0x0069F3E0
+// GetAnimationToUse 0x0069F3E0: a private static __fastcall member (NF334: Ego_r + FableWin ?GetAnimationToUse@CCreatureAction_SheatheItemToInventory@@CI?AVCCharString@@ABVCThing@@@Z), declared in the class below
 
 class CSoundPair { public:
     long FirstSound;
@@ -89,14 +89,14 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // vtable 0x0125C83C
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { private: static CCharString __fastcall GetAnimationToUse(const CThing& owner); public:   // vtable 0x0125C83C
     CCountedPointer<CCreatureActionBase> PFollowUpAction;              // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* followUp, long c);
 };
 
 CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* followUp, long c)
-    : CCreatureActionBase(owner, -1.0f, 0.55f, CAnimationEntry(GetAnimationFromName(owner, GetAnimationToUse(owner)), 4), CSoundPair(), c, 150)
+    : CCreatureActionBase(owner, -1.0f, 0.55f, CAnimationEntry(GetAnimationFromName(owner, GetAnimationToUse(*owner)), 4), CSoundPair(), c, 150)
     , PFollowUpAction(followUp)
 {
 }

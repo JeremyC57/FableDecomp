@@ -1,0 +1,18 @@
+addr       parity           behav  name
+004017b0   RELOCATION_MATCH PASS   GFConfigDetection
+009a6610   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CFontManager (engine/CFontManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDriveManager (engine/CDriveManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009a6610   RELOCATION_MATCH PASS   Initialise
+00786700   WARN SHARED_HEADER_AVAILABLE C3DSkeletalMorph (engine/C3DSkeletalMorph.h)
+00786700   WARN SHARED_HEADER_AVAILABLE CTCSkeletalMorph (engine/CTCSkeletalMorph.h)
+00786700   RELOCATION_MATCH PASS   CalculateSkeletalMorph
+
+WINS: 3
+  004017b0 RELOCATION_MATCH _global::?GFConfigDetection@@YI_NXZ
+  009a6610 RELOCATION_MATCH CSystemManager::Initialise
+  00786700 RELOCATION_MATCH CTCSkeletalMorph::?CalculateSkeletalMorph@CTCSkeletalMorph@@ABEXXZ

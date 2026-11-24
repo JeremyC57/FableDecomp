@@ -1,0 +1,15 @@
+## HEAD set: H_00999110.obj H_008597a0.obj H_00abf840.obj H_00724f50.obj 00998c90.obj 00856e50.obj 00abef60.obj 00723fd0.obj
+duplicates 0
+UNRESOLVED 1 ??$for_each@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@VCGetActiveStrikeEventThatIsFirstToFinish@?A0xc243a658@@@std@@YI?AVCGetActiveStrikeEventThatIsFirstToFinish@?A0xc243a658@@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@0@0V12@@Z
+UNRESOLVED 1 ??0CFilenames@@QAE@XZ
+UNRESOLVED 1 ??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ?ExpandPath@?A0x7d949760@@YI?AVCWideString@@PAV2@0@Z
+UNRESOLVED 1 ?GetFirstActiveStrikeEvent@CCombatActionBase@@QAEPAUCStrikeEvent@@XZ
+UNRESOLVED 1 ?v00@CFilenames@C3DMeshMaterial@@UAEXXZ
+UNRESOLVED 1 ?v00@CTCPhysicsStandard@@UAEXXZ
+## new set: 00999110.obj 008597a0.obj 00abf840.obj 00724f50.obj 00998c90.obj 00856e50.obj 00abef60.obj 00723fd0.obj
+duplicates 0
+UNRESOLVED 1 ??$for_each@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@VCGetActiveStrikeEventThatIsFirstToFinish@?A0xc243a658@@@std@@YI?AVCGetActiveStrikeEventThatIsFirstToFinish@?A0xc243a658@@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@0@0V12@@Z
+UNRESOLVED 1 ?v00@CFilenames@C3DMeshMaterial@@UAEXXZ
+UNRESOLVED 1 ?v00@CTCPhysicsStandard@@UAEXXZ
+LK_DONE

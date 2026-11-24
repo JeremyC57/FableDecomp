@@ -1,0 +1,2 @@
+##### 007266c0 renames: ??0CTCPhysicsStandard@@QAE@PAVCThing@@@Z=??0CTCPhysicsStandard@@QAE@AAVCThing@@@Z
+ALL_EQ sections=5 tables=??_7CTCPhysicsNavigator@@6B@

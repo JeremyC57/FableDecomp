@@ -38,7 +38,7 @@ class CThing { public:
 };
 class CScriptBase { public:
     bool IsEntityScriptBound(const CCharString& name) const;                              // 0x00CB7D60; NF296: PDB name, was BindsEntityScript
-    void ActivateEntity(unsigned __int64 uid, const CScriptThing& thing);         // 0x00CB8960
+    void OnScriptedEntityActivated(unsigned __int64 uid, CScriptThing& thing);         // 0x00CB8960
 };
 struct CActiveQuest {                              // CQuestManager::CActiveQuest, retail layout
     long         ID;                               // +0x00
@@ -64,7 +64,7 @@ void CQuestManager::OnActivateEntity(CThing* thing)
             CActiveQuest* quest = node->m_pData;
             if (quest->PScript_Data && quest->PScript_Data->IsEntityScriptBound(thing->ScriptName)) {
                 CScriptThing scriptThing = thing->GetScriptThing();
-                quest->PScript_Data->ActivateEntity(thing->UID, scriptThing);
+                quest->PScript_Data->OnScriptedEntityActivated(thing->UID, scriptThing);
             }
         }
     }
