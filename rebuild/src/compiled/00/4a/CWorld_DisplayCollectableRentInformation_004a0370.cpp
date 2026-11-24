@@ -95,7 +95,7 @@ class CTCBuyableHouse { public:
     unsigned char _pad00[0x12];
     bool          Rented;                              // +0x12
     long GetCurrentCollectableRentValue() const;             // 0x006C0160
-    long GetMaxCollectableRentValue();                 // 0x006C0270
+    long GetMaxCollectableRentValue() const;                 // 0x006C0270
 };
 class CTCRegionDisplay { public:
     unsigned char _pad00[0x10];

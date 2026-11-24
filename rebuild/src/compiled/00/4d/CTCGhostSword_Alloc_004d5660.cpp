@@ -13,10 +13,10 @@ class CThing;
 
 class CTCGhostSword { public:
     unsigned char _body[0x4c];       // sizeof(CTCGhostSword) = 0x4c
-    CTCGhostSword(CThing* owner);                   // 0x007C5560
+    CTCGhostSword(CThing& owner);                   // 0x007C5560
 };
 
 CTCGhostSword* __fastcall CTCGhostSword_Alloc(CThing* owner)
 {
-    return new CTCGhostSword(owner);
+    return new CTCGhostSword(*owner);
 }

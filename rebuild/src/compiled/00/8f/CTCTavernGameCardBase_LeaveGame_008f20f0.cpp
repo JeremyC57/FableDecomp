@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::LeaveGame() -- tavern-game LeaveGame, then kill every live pointer particle effect and empty the effect list, empty the card list, kill and free every card left in the pack, forget the selected/highlighted cards and hand the camera back
-// Leaf: ?LeaveGame@CTCTavernGameCardBase
+// Leaf: ?LeaveGame@CTCTavernGameCardBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F20F0, 387 bytes (plain `ret`); CTCTavernGameCardBase vtable 0x01288294
 // slot 30 (the LeaveGame slot; CardSorting 0x007D4DE0 and CardPairs 0x007D5F60, landed, call this body first).
 // Callees: CTCTavernGame::LeaveGame() 0x005EC650 (non-virtual base call); CBaseIntelligentPointer::GetPItem 0x00A01B50,
@@ -119,7 +119,7 @@ protected:
 
 class CTCTavernGame : public CTCBase { public:
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
-    void LeaveGame();                           // 0x005EC650
+    virtual void LeaveGame();                   // 0x005EC650 (slot 30, virtual in both PDBs; called qualified)
     void KillThing(CThing* thing);              // 0x005E9A60
 };
 struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294

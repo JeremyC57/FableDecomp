@@ -13,10 +13,10 @@ class CThing;
 
 struct CTCActionUseBuyOrSteal {
     unsigned char _body[0x20];       // sizeof(CTCActionUseBuyOrSteal) = 0x20
-    CTCActionUseBuyOrSteal(CThing* owner);                   // 0x0072A630
+    CTCActionUseBuyOrSteal(CThing& owner);                   // 0x0072A630
 };
 
 CTCActionUseBuyOrSteal* __fastcall CTCActionUseBuyOrSteal_Alloc(CThing* owner)
 {
-    return new CTCActionUseBuyOrSteal(owner);
+    return new CTCActionUseBuyOrSteal(*owner);
 }

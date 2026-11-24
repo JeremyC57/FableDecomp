@@ -28,7 +28,7 @@ class CParticleSystem { public:
     CParticleEmitter* PEmitter;                                        // +0x04
     unsigned char     _state08[0x64];                                  // +0x08
     CCharString       Name;                                            // +0x6c
-    CParticleSystem* DatabaseClone();                                  // 0x00AF5960
+    CParticleSystem* DatabaseClone() const;                                  // 0x00AF5960
     void DatabaseCopy(const CParticleSystem& source);                  // 0x00AF4EE0
 };
 }

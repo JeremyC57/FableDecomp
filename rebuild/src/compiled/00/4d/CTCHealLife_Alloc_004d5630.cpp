@@ -13,10 +13,10 @@ class CThing;
 
 class CTCHealLife { public:
     unsigned char _body[0x48];       // sizeof(CTCHealLife) = 0x48
-    CTCHealLife(CThing* owner);                   // 0x007C4BD0
+    CTCHealLife(CThing& owner);                   // 0x007C4BD0
 };
 
 CTCHealLife* __fastcall CTCHealLife_Alloc(CThing* owner)
 {
-    return new CTCHealLife(owner);
+    return new CTCHealLife(*owner);
 }

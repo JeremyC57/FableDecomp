@@ -1,5 +1,5 @@
 // NPlayerGui::CStatBar::DrawChangeText(const C2DVector&, const CWideString&, const CRGBColour&) -- draws a stat change text in the bar's font with the colour's alpha scaled by the game UI's global alpha
-// Leaf: DrawChangeText
+// Leaf: ?DrawChangeText@CStatBar@NPlayerGui@@IAEXABVC2DVector@@ABVCWideString@@ABVCRGBColour@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00645F2E, 95 bytes. Callees: __ftol2 @ 0x00BFEA70 (the scaled alpha),
 // CGameUI::Draw2DText @ 0x00438010 (forwards to CDraw2DText::AddText @ 0x0064B6DA through the +0x238 member:
 // pos, text, font, colour, scale, layer, flag). Global: the game UI singleton pointer @ 0x013B8790 (its float at
@@ -35,7 +35,7 @@ namespace NPlayerGui {
 class CStatBar { public:
     unsigned char _pad00[0x60];
     CFontBank*    m_pFont;                         // +0x60
-    void DrawChangeText(const C2DVector& pos, const CWideString& text, const CRGBColour& colour);
+    protected: void DrawChangeText(const C2DVector& pos, const CWideString& text, const CRGBColour& colour);
 };
 
 void CStatBar::DrawChangeText(const C2DVector& pos, const CWideString& text, const CRGBColour& colour)

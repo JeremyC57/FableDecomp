@@ -35,7 +35,7 @@ public:
     void* _vfptrEntry;                            // +0x04 CComponentListEntry
     bool m_b08;                                   // +0x08
     bool m_b09;                                   // +0x09
-    double GetGameTimeOfNextPresentCompletion() const;   // 0x004166E2
+    protected: double GetGameTimeOfNextPresentCompletion() const; public:   // 0x004166E2 (Ego_r + FableWin: protected)
     bool IsTimeForServerUpdate(long frame) const;
 protected:
     double ConvertGTToWF(double gameTime) const { return gameTime / (1.0f / CMainGameComponent::GetConstantFPS()); }

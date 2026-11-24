@@ -1,0 +1,16 @@
+## HEAD set: H_00959f30.obj H_00865cf0.obj H_00865dd0.obj H_008d51d0.obj H_008dcb00.obj H_008d9060.obj H_007268d0.obj H_00837830.obj 0091dd30.obj 00856170.obj 006924c0.obj 008dc590.obj 008d8f30.obj 00724010.obj 004c97b0.obj
+duplicates 0
+UNRESOLVED 1 ?BaseOnCreate@CTCPhysicsStandard@@QAEXXZ
+UNRESOLVED 1 ?GetAnimationTransitionOutTime@CCreatureActionBase@@QBEJXZ
+UNRESOLVED 2 ?IsActionReadyForInterruption@CCombatActionBase@@QBE_NXZ
+UNRESOLVED 1 ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@QAE_NXZ
+UNRESOLVED 1 ?OnCreate@CTCPhysicsStandard@@QAEXXZ
+UNRESOLVED 1 ?OnDeactivate@CModeDragonFlying@NCreatureMode@@QAEXXZ
+UNRESOLVED 1 ?OnDeactivate@CModeOutOfActionBase@NCreatureMode@@QAEXXZ
+UNRESOLVED 1 ?OnDeactivate@CModeStandBase@@UAEXXZ
+UNRESOLVED 1 ?OnInitialActivate@CThing@@QAEXXZ
+## new set: 00959f30.obj 00865cf0.obj 00865dd0.obj 008d51d0.obj 008dcb00.obj 008d9060.obj 007268d0.obj 00837830.obj 0091dd30.obj 00856170.obj 006924c0.obj 008dc590.obj 008d8f30.obj 00724010.obj 004c97b0.obj
+duplicates 0
+UNRESOLVED 1 ?BaseOnCreate@CTCPhysicsStandard@@QAEXXZ
+UNRESOLVED 1 ?OnDeactivate@CModeStandBase@@UAEXXZ
+LK_DONE

@@ -1,0 +1,31 @@
+## HEAD set: H_004d2c12.obj H_004dc004.obj H_004d92e8.obj H_004d44b8.obj H_004d5600.obj H_004d3887.obj H_004d624f.obj H_004d5723.obj H_004d5c47.obj H_004d4d1b.obj H_004d4b12.obj H_004d5660.obj H_004d5630.obj H_004dc5c7.obj H_004d2a44.obj H_004d4bde.obj H_008915e0.obj H_007a7370.obj 0072a630.obj 004da9d7.obj 004d5efb.obj 0070b3f0.obj 007c30e0.obj 00750be0.obj 006c3c30.obj 007c87f0.obj 007dfb20.obj 007a54a0.obj 00798570.obj 007c5560.obj 007c4bd0.obj 004daea9.obj 00728000.obj 0079a6e0.obj 004af8f0.obj 007a7000.obj
+duplicates 0
+UNRESOLVED 1 ??0CAnimateThing@@QAE@AAVCThing@@@Z
+UNRESOLVED 1 ??0CTCActionUseBuyOrSteal@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCActionUseReadable@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCAmbientBird@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCAnimationComplex@@QAE@PAVCThing@@@Z
+UNRESOLVED 5 ??0CTCBase@@QAE@AAVCThing@@@Z
+UNRESOLVED 10 ??0CTCBase@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCDrainLife@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCExplodingObject@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCFadeOutAndIn@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCFireballSpell@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCFish@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCForcePushPower@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCForcePushed@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCGhostSword@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCHealLife@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCInventoryItem@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCRandomAppearanceMorph@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CTCSummonSpell@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z
+UNRESOLVED 1 ?Reset_007a7000@CTCBattleCharge@@QAEXXZ
+UNRESOLVED 1 ?SetBoastAsCompleted_004af8f0@CQuestManager@@QAEXJVCCharString@@@Z
+## new set: 004d2c12.obj 004dc004.obj 004d92e8.obj 004d44b8.obj 004d5600.obj 004d3887.obj 004d624f.obj 004d5723.obj 004d5c47.obj 004d4d1b.obj 004d4b12.obj 004d5660.obj 004d5630.obj 004dc5c7.obj 004d2a44.obj 004d4bde.obj 008915e0.obj 007a7370.obj 0072a630.obj 004da9d7.obj 004d5efb.obj 0070b3f0.obj 007c30e0.obj 00750be0.obj 006c3c30.obj 007c87f0.obj 007dfb20.obj 007a54a0.obj 00798570.obj 007c5560.obj 007c4bd0.obj 004daea9.obj 00728000.obj 0079a6e0.obj 004af8f0.obj 007a7000.obj
+duplicates 0
+UNRESOLVED 1 ??0CAnimateThing@@QAE@AAVCThing@@@Z
+UNRESOLVED 5 ??0CTCBase@@QAE@AAVCThing@@@Z
+UNRESOLVED 10 ??0CTCBase@@QAE@PAVCThing@@@Z
+UNRESOLVED 1 ??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z
+LK_DONE

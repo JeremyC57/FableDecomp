@@ -4,7 +4,7 @@
 // PDB CDynamicList layout436 has derived fields+30; native CChangingStateComponent base ends15C.
 // NativeVT1246E44 slot108 const LoadAndReturnDef=530EC0; find index535F5A fastcall ret8; vector insert485DBC ret14.
 // Actual PDB LoadAndReturnDef returns CDefPointer<const CUIDef>; release uses CIVCountedPointeeBase::Delete()const slot1=42D930.
-// Leaf: GetDataFromDef
+// Leaf: ?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ
 #include "fable_compiler.h"
 #include <stddef.h>
 #include <string.h>
@@ -62,7 +62,7 @@ class CDynamicList { public:
  typedef DefinitionResultStorage*(CDynamicList::*LoadDefinitionMethod)(DefinitionResultStorage*)const;
 
  FABLE_FORCEINLINE void AppendScrollingChild(CComponent* child){ScrollingChildren.push_back(child);}
- void GetDataFromDef();
+ protected: void GetDataFromDef();
 };
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(offsetof(CDynamicList,Children)==0xb0);

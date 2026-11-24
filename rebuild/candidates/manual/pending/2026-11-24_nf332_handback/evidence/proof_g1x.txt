@@ -1,0 +1,16 @@
+##### 00aeefe0 renames: ?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ=?DatabaseClone@CParticleSystem@NParticleEngine@@QBEPAV12@XZ
+ALL_EQ sections=8 tables=-
+##### 004a0370 renames: ?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ=?GetMaxCollectableRentValue@CTCBuyableHouse@@QBEJXZ
+ALL_EQ sections=19 tables=-
+##### 006655a0 renames: ?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ=?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ ?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QAEMXZ=?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QBEMXZ
+ALL_EQ sections=12 tables=-
+##### 00690480 renames: ?IsQuitMenuReceivingInput@CTCInGameMenu@@QAE_NXZ=?IsQuitMenuReceivingInput@CTCInGameMenu@@QBE_NXZ
+ALL_EQ sections=9 tables=-
+##### 0057d5a0 renames: ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QAEJXZ=?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QBEJXZ
+ALL_EQ sections=19 tables=-
+##### 007bdb66 renames: ?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z=?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+ALL_EQ sections=10 tables=-
+##### 008c2240 renames: ?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z=?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
+ALL_EQ sections=19 tables=-
+##### 006e1620 renames: ?IsParticleCreationDisabled@CTCDParticleEmitter@@QAE_NXZ=?IsParticleCreationDisabled@CTCDParticleEmitter@@IBE_NXZ
+ALL_EQ sections=18 tables=??_7C3DOrientationInterpolator@@6B@

@@ -1,4 +1,5 @@
 // NCameraModes::CProjectileWeapon::SetUpParams() -- reset the projectile-weapon camera's orbit from its def (initial phi offset in turns, initial height), clear the deltas and build the camera axes around the observed thing's flattened facing
+// Leaf: ?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ
 // Grade: MATCH (retry 9) -- the three ZAxis constants are stored through an inline `Set(0, 0, 1)` member: three separate
 // member assignments (any order, chained, or before/after the other axes) get scheduled into the YAxis copy by VC7.1,
 // while the inline setter's stores stay together ahead of the YAxis `lea ecx,[esi+0B5h]` as in retail
@@ -80,7 +81,7 @@ class CProjectileWeapon : public CBase { public:                      // vtable 
     float         LockDeltaHeightParam;                 // +0xe4
     float         DeltaLockDeltaPhi;                    // +0xe8
     float         DeltaLockDeltaHeightParam;            // +0xec
-    void SetUpParams();
+    private: void SetUpParams();
 };
 #pragma pack(pop)
 }

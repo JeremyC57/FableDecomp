@@ -1,5 +1,5 @@
 // NUISystem::CFrontEndManager::AddProfileNameToScreens(const CWideString& profileName) -- prefix "<profile> - " to the title bars of the new game, load game, options, game options, video, scoreboard, redefine keys and audio options screens
-// Leaf: ?AddProfileNameToScreens@
+// Leaf: ?AddProfileNameToScreens@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
 // Retail: Fable.exe @ 0x00595B24, 391 bytes, `ret 4`.
 // Body: prefix = profileName + L" - " (operator+ 0x0099BF30, __fastcall hidden result, literal 0x0122E070; built in the
 // dead profileName slot); AddPrefixToTitleBar (0x00595AD9) for screens 0 UI_TEXT_NEW_GAME, 0 UI_TEXT_LOAD_GAME,
@@ -28,7 +28,7 @@ CWideString __fastcall operator+(const CWideString& left, const unsigned short* 
 namespace NUISystem {
 class CFrontEndManager {
 public:
-    void AddProfileNameToScreens(const CWideString& profileName);
+protected:  void AddProfileNameToScreens(const CWideString& profileName);
 protected:
     void AddPrefixToTitleBar(FRONTEND_SCREEN screen, const CCharString& title_bar_name, const CWideString& prefix);   // 0x00595AD9
     friend struct CFrontEndManager_Test;                 // behaviour-test hook

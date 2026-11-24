@@ -70,7 +70,7 @@ class CTCInGameMenu { public:
     unsigned char _pad00[0xc8];
     long          CurrentSubPage;                  // +0xC8 (descriptive; -1 = none)
     bool IsAnySliderReceivingInput() const;              // 0x0047D483
-    bool IsQuitMenuReceivingInput();               // 0x0047D537
+    bool IsQuitMenuReceivingInput() const;               // 0x0047D537
     bool IsListReceivingInputA();                  // 0x0047D6F2 (descriptive)
     bool IsListReceivingInputB();                  // 0x0047D648 (descriptive)
     void CloseInGameMenuViaGameEvent();            // 0x0047D21C

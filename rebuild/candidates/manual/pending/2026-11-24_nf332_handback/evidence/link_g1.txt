@@ -1,0 +1,16 @@
+## HEAD set: H_00aeefe0.obj H_004a0370.obj H_006655a0.obj H_00690480.obj H_0057d5a0.obj H_007bdb66.obj H_008c2240.obj H_006e1620.obj 00af5960.obj 006c0270.obj 007fffb0.obj 006d6870.obj 0047d537.obj 00766330.obj 0063e480.obj 006e0df0.obj 0074a260.obj 0080f270.obj 008c9f40.obj 008ca4a0.obj 0094f090.obj 007bbe34.obj 007f26b0.obj 008101f0.obj 0085c470.obj 008dc900.obj 00973dc0.obj 006e0fc0.obj 006e1020.obj 00647ab4.obj
+duplicates 1
+  DUP 0080f270.obj ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z in 006d6870.obj;
+UNRESOLVED 1 ?DatabaseClone@CParticleSystem@NParticleEngine@@QAEPAV12@XZ
+UNRESOLVED 2 ?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ
+UNRESOLVED 2 ?GetHeightZBelowPos@CWorldMap@@QAEMABVC3DVector@@@Z
+UNRESOLVED 1 ?GetMaxCollectableRentValue@CTCBuyableHouse@@QAEJXZ
+UNRESOLVED 1 ?GetMeleeStrikeAnimationSpeedMultiplier@CTCHeroExperience@@QAEMXZ
+UNRESOLVED 1 ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QAEJXZ
+UNRESOLVED 1 ?IsParticleCreationDisabled@CTCDParticleEmitter@@QAE_NXZ
+UNRESOLVED 1 ?IsQuitMenuReceivingInput@CTCInGameMenu@@QAE_NXZ
+## new set: 00aeefe0.obj 004a0370.obj 006655a0.obj 00690480.obj 0057d5a0.obj 007bdb66.obj 008c2240.obj 006e1620.obj 00af5960.obj 006c0270.obj 007fffb0.obj 006d6870.obj 0047d537.obj 00766330.obj 0063e480.obj 006e0df0.obj 0074a260.obj 0080f270.obj 008c9f40.obj 008ca4a0.obj 0094f090.obj 007bbe34.obj 007f26b0.obj 008101f0.obj 0085c470.obj 008dc900.obj 00973dc0.obj 006e0fc0.obj 006e1020.obj 00647ab4.obj
+duplicates 1
+  DUP 0080f270.obj ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z in 006d6870.obj;
+UNRESOLVED 1 ?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ
+LK_DONE

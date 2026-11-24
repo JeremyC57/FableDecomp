@@ -1,4 +1,5 @@
 class CWideString
+// Leaf: ?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ
 { public:
     void* p;
     CWideString(const unsigned short* s);          // ctor helper 0x594a90 (this, str)        [factory ret]
@@ -38,10 +39,10 @@ static const unsigned short* const LIT_FACTORY = (const unsigned short*)0x122de9
 
 class CUserProfileManager
 { public:
-    CWideString GetAutoSaveDisplayName();          // __fastcall member, returns CWideString by value
+    CWideString GetAutoSaveDisplayName() const;    // __fastcall member, returns CWideString by value
 };
 
-CWideString CUserProfileManager::GetAutoSaveDisplayName()
+CWideString CUserProfileManager::GetAutoSaveDisplayName() const
 {
     CMainGameComponent* a = CMainGameComponent::Get();
     if (a) {

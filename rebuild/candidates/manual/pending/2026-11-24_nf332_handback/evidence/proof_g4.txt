@@ -1,0 +1,16 @@
+##### 007d7b40 renames: ?LeaveGame@CTCTavernGame@@QAEXXZ=?LeaveGame@CTCTavernGame@@UAEXXZ ?vfunc_30@CTCTavernGameSpotTheAddition@@QAEXXZ=?LeaveGame@CTCTavernGameSpotTheAddition@@UAEXXZ
+ALL_EQ sections=3 tables=-
+##### 008ef110 renames: ?LeaveGame@CTCTavernGame@@QAEXXZ=?LeaveGame@CTCTavernGame@@UAEXXZ ?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ=?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ
+ALL_EQ sections=2 tables=-
+##### 008f20f0 renames: ?LeaveGame@CTCTavernGame@@QAEXXZ=?LeaveGame@CTCTavernGame@@UAEXXZ ?LeaveGame@CTCTavernGameCardBase@@QAEXXZ=?LeaveGame@CTCTavernGameCardBase@@UAEXXZ
+ALL_EQ sections=20 tables=-
+##### 007cf460 renames: ?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ=?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ ?vfunc_30@CTCTavernGameShoveHaPenny@@QAEXXZ=?LeaveGame@CTCTavernGameShoveHaPenny@@UAEXXZ
+ALL_EQ sections=3 tables=-
+##### 007d4a90 renames: ?LeaveGame@CTCTavernGameCoinBase@@QAEXXZ=?LeaveGame@CTCTavernGameCoinBase@@UAEXXZ ?vfunc_30@CTCTavernGameCoinGolf@@QAEXXZ=?LeaveGame@CTCTavernGameCoinGolf@@UAEXXZ
+ALL_EQ sections=3 tables=-
+##### 007d4de0 renames: ?LeaveGame@CTCTavernGameCardBase@@QAEXXZ=?LeaveGame@CTCTavernGameCardBase@@UAEXXZ ?LeaveGame@CTCTavernGameCardSorting@@QAEXXZ=?LeaveGame@CTCTavernGameCardSorting@@UAEXXZ
+ALL_EQ sections=2 tables=-
+##### 007d5f60 renames: ?LeaveGame@CTCTavernGameCardBase@@QAEXXZ=?LeaveGame@CTCTavernGameCardBase@@UAEXXZ ?LeaveGame@CTCTavernGameCardPairs@@QAEXXZ=?LeaveGame@CTCTavernGameCardPairs@@UAEXXZ
+ALL_EQ sections=2 tables=-
+##### 007daaa0 renames: ?LeaveGame@CTCTavernGameCardBase@@QAEXXZ=?LeaveGame@CTCTavernGameCardBase@@UAEXXZ ?vfunc_30@CTCTavernGameCardBlackjack@@QAEXXZ=?LeaveGame@CTCTavernGameCardBlackjack@@UAEXXZ
+ALL_EQ sections=5 tables=-

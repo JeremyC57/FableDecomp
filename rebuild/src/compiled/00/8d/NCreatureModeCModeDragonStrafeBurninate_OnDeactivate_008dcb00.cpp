@@ -1,5 +1,5 @@
 // NCreatureMode::CModeDragonStrafeBurninate::OnDeactivate() -- switch the type-9 component off, end a still-active flame beam, then the flying deactivation
-// Leaf: ?OnDeactivate@CModeDragonStrafeBurninate
+// Leaf: ?OnDeactivate@CModeDragonStrafeBurninate@NCreatureMode@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DCB00, 94 bytes (+ int3 padding), `ret`; vtable 0x01268718 slot 6.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined out-parameter GetInterface, type 9 = bit 9 of the +0x20 dword),
@@ -36,7 +36,7 @@ struct __declspec(novtable) CModeDragonFlyingBase : CModeBase {
 struct CModeDragonFlying : CModeDragonFlyingBase {   // retail sizeof 0x94
     unsigned char _flying[0x94 - 0x38];
     void OnActivate();                     // 0x008DBB30
-    void OnDeactivate();                   // 0x008DC590
+    virtual void OnDeactivate();           // 0x008DC590
 };
 struct CModeDragonStrafeBurninate : CModeDragonFlying {   // vtable 0x01268718
     long          Timer;                   // +0x94

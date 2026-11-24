@@ -87,7 +87,7 @@ class CThingSearchTools { public:
     template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** out) const;   // 0x007FD110
 };
 class CWorldMap { public:
-    float GetHeightZBelowPos(const C3DVector& position);     // 0x0063E480
+    float GetHeightZBelowPos(const C3DVector& position) const;     // 0x0063E480
 };
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;                         // 0x006A1440

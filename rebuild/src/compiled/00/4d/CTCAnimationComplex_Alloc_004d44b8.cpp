@@ -13,10 +13,10 @@ class CThing;
 
 class CTCAnimationComplex { public:
     unsigned char _body[0x10];       // sizeof(CTCAnimationComplex) = 0x10
-    CTCAnimationComplex(CThing* owner);                   // 0x0070B3F0
+    CTCAnimationComplex(CThing& owner);                   // 0x0070B3F0
 };
 
 CTCAnimationComplex* __fastcall CTCAnimationComplex_Alloc(CThing* owner)
 {
-    return new CTCAnimationComplex(owner);
+    return new CTCAnimationComplex(*owner);
 }

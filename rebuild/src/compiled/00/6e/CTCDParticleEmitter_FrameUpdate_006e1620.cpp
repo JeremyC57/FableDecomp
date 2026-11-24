@@ -180,7 +180,7 @@ class CTCDParticleEmitter : public CTCBase { public:
     void CreateParticleWaitingFor();
     public:
                          // 0x006E14E0
-    bool IsParticleCreationDisabled();                       // 0x006E0DF0
+    protected: bool IsParticleCreationDisabled() const; public:                       // 0x006E0DF0
     protected:
     void SetParticleCreationDisabled(bool disabled);
     public:

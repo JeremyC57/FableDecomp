@@ -1,5 +1,6 @@
 // CTCPhysicsNavigator::OnCreate() -- CTCPhysicsStandard::OnCreate, then target = current position, no forced move, navigating, zero additional impulse
 // Retry 10: RELOCATION_MATCH -- AdditionalImpulse zeroed through an inline C3DVector::Set(x, y, z) storing Z, Y, X (keeps the `xor eax,eax` after the Navigating store).
+// Leaf: ?OnCreate@CTCPhysicsNavigator@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007268D0, length 69 bytes.
 // Callees: CTCPhysicsStandard::OnCreate() @ 0x00724010 (qualified, non-virtual call).
 // Shape: Position (+0x0c) is copied into PositionToNavigateTo (+0x89) through two `lea` bases (the implicit assignment of a POD
@@ -30,7 +31,7 @@ struct CTCPhysicsStandard : CTCPhysicsBase {   // 0x88 bytes
     CRightHandedSet OldRHSet;                  // +0x68
     long            RHSetLastFrameSet;         // +0x80
     unsigned char   m_flags84, m_flags85;      // +0x84 / +0x85 physics bitfields
-    void OnCreate();                           // 0x00724010
+    virtual void OnCreate();                   // 0x00724010
 };
 
 #pragma pack(push, 1)

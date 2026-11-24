@@ -15,7 +15,7 @@ public:
 class CQuestManager
 {
 public:
-    void SetBoastAsCompleted(
+    void SetBoastAsFailed(
         long boastId,
         CCharString boastName);
 };
@@ -34,7 +34,7 @@ void CGameScriptInterface::SetBoastAsFailed(
 {
     CQuestManager* const questManager =
         (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
-    questManager->SetBoastAsCompleted(
+    questManager->SetBoastAsFailed(
         boastId,
         boastName);
 }

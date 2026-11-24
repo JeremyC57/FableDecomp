@@ -13,10 +13,10 @@ class CThing;
 
 struct CTCAmbientBird {
     unsigned char _body[0x14];       // sizeof(CTCAmbientBird) = 0x14
-    CTCAmbientBird(CThing* owner);                   // 0x004D5EFB
+    CTCAmbientBird(CThing& owner);                   // 0x004D5EFB
 };
 
 CTCAmbientBird* __fastcall CTCAmbientBird_Alloc(CThing* owner)
 {
-    return new CTCAmbientBird(owner);
+    return new CTCAmbientBird(*owner);
 }

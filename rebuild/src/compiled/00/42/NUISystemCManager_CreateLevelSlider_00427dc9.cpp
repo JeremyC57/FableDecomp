@@ -1,5 +1,5 @@
 // NUISystem::CManager::CreateLevelSlider(const CWideString& text, const C2DCoordI& position, long level, long maxLevel, const CRGBColour& colour) -- build a "UI_LEVEL_SLIDER" component at a position: its caption, its level number and a fill sprite scaled to level/maxLevel and tinted with the colour
-// Leaf: CreateLevelSlider
+// Leaf: ?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00427DC9, length 358 bytes (unaligned: a size-optimised frame-pointer TU), `ret 14h`.
 // Ego_r.pdb: `?CreateLevelSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBColour@@@Z`.
 // Pragmas: #pragma optimize("s", on) + #pragma optimize("y", off) (ebp frame closed with `leave`, as the landed 0x00647457).
@@ -80,7 +80,7 @@ public:
 class CManager {
 public:
 NUISystem::CComponent* CreateComponent(CCharString const&a0, bool a1);   // 0x0041DB1D
-private:
+public:
     CComponent* CreateLevelSlider(const CWideString& text, const C2DCoordI& position, long level, long maxLevel, const CRGBColour& colour);
 };
 

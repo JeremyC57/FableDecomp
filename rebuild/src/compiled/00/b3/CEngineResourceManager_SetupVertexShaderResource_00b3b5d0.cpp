@@ -1,4 +1,5 @@
 // CEngineResourceManager::SetupVertexShaderResource opens a vertex bank, replaces its
+// Leaf: ?SetupVertexShaderResource@CEngineResourceManager@@AAEXW4EShaderBankNo@@ABVCCharString@@PBU_D3DVERTEXELEMENT9@@W4EVertexType@@@Z
 // counted shader resource, then binds the bank, declaration and format. Retail
 // 00B3B5D0, 242 bytes. The manager uses banks at +0x960 (stride 0x128) and counted
 // resources at +0x29c0, unlike the included donor manager/bank layouts. Retail
@@ -109,8 +110,8 @@ class CEngineResourceManager { public:
     CShaderDataBank VertexShaderBanks[27];
     unsigned char NativeBetweenBanksAndResources[0x29c0 - 0x960 - 27 * 0x128];
     CShaderResourcePointer VertexShaderResources[27];
-    void SetupVertexShaderResource(EShaderBankNo bank, const CCharString& name,
-        const _D3DVERTEXELEMENT9* declaration, EVertexType format);
+    private: void SetupVertexShaderResource(EShaderBankNo bank, const CCharString& name,
+        const _D3DVERTEXELEMENT9* declaration, EVertexType format); public:
 };
 
 void CEngineResourceManager::SetupVertexShaderResource(

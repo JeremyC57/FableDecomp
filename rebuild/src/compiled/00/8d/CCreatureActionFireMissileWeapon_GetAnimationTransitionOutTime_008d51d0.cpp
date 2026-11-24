@@ -1,4 +1,5 @@
 // CCreatureAction_FireMissileWeapon::GetAnimationTransitionOutTime() const -- 3 when the creature's virtual slot 77 says so, else the base value
+// Leaf: ?GetAnimationTransitionOutTime@CCreatureAction_FireMissileWeapon@@UBEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D51D0, length 48 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), the creature's virtual slot 77 (+0x134; the
 // AI-creature vtable names it only as vfunc_77 -- modelled descriptively as a bool predicate),
@@ -107,7 +108,7 @@ class CCreatureActionBase { public:                // engine/CCreatureActionBase
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThingCreatureBase_Calls> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
-    long GetAnimationTransitionOutTime() const;   // 0x006924C0 (base, non-virtual call here)
+    virtual long GetAnimationTransitionOutTime() const;   // 0x006924C0 (base; virtual in both PDBs, called qualified here)
 };
 
 class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:

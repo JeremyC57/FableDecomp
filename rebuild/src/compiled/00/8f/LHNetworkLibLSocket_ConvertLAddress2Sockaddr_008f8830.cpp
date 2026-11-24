@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocket::ConvertLAddress2Sockaddr(const LAddress&, sockaddr_in&) -- AF_INET sockaddr from an LAddress: resolve the IP in place, then the network-order port
-// Leaf: ?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@
+// Leaf: ?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z
 // Retail 0x008F8830, 0x3E bytes, static __fastcall (address in ecx, sockaddr in edx), plain `ret`, bool. PDB name set:
 // `?ConvertLAddress2Sockaddr@LSocket@LHNetworkLib@@CI_NABULAddress@2@AAUsockaddr_in@@@Z`; the manifest name agrees.
 // Callees: LSocket::ResolveHost(LAddress&, unsigned long&) @ 0x008F86F0 (address still in ecx, &sin_addr in edx; its bool
@@ -47,7 +47,7 @@ struct LAddress {                               // Ego_r.pdb names; retail 0x1C 
 class LSocket {
 public:
     static bool __fastcall ResolveHost(LAddress& address, unsigned long& ip);          // 0x008F86F0
-    static bool __fastcall ConvertLAddress2Sockaddr(const LAddress& address, sockaddr_in& sa);
+    private: static bool __fastcall ConvertLAddress2Sockaddr(const LAddress& address, sockaddr_in& sa);
 };
 
 bool __fastcall LSocket::ConvertLAddress2Sockaddr(const LAddress& address, sockaddr_in& sa)

@@ -1,4 +1,5 @@
 // CTCTalk::StopCurrentSpeech(CTCSoundPlayer* emitter) -- stops the playing sample, ends the frame window now and resets the speech state
+// Leaf: ?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E28D0, length 59 bytes (ret 4).
 // Callees: the emitter's stop-sample member @ 0x0066ADD0 (takes the sample id; manifest label
 // "CGameScriptThing::SetToKillOnLevelUnload" is propagated), the world frame getter @ 0x00416225 on g_pWorld @ 0x013B86A0.
@@ -30,7 +31,7 @@ class CTCTalk { public:
     bool          IsPureAISpeaker;           // +0x34
     bool          LipSynching;               // +0x35
     bool          UseLipSynching;            // +0x36
-    void StopCurrentSpeech(CTCSoundPlayer* emitter);
+    private: void StopCurrentSpeech(CTCSoundPlayer* emitter);
 };
 
 void CTCTalk::StopCurrentSpeech(CTCSoundPlayer* emitter)

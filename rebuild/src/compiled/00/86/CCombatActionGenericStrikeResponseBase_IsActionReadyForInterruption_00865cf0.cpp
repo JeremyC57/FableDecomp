@@ -1,4 +1,5 @@
 // CCombatAction_GenericStrikeResponseBase::IsActionReadyForInterruption() const -- ready when the creature is in state 2 and the response flag is set, or in state 1 within the first 6 running frames; else the base decides
+// Leaf: ?IsActionReadyForInterruption@CCombatAction_GenericStrikeResponseBase@@UBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00865CF0, length 52 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on PCreature at +8; its address is formed once
 // into edi), CCombatActionBase::IsActionReadyForInterruption @ 0x00856170 (the base virtual called
@@ -41,7 +42,7 @@ class CCombatActionBase { public:
     unsigned char _pad20[0xdc - 0x20];          // +0x20
     bool m_respondsInState2;                    // +0xdc
     unsigned char _paddd[0x114 - 0xdd];         // +0xdd
-    bool IsActionReadyForInterruption() const;  // 0x00856170 (base implementation)
+    virtual bool IsActionReadyForInterruption() const;  // 0x00856170 (base implementation; virtual in both PDBs, called qualified)
 };
 
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:

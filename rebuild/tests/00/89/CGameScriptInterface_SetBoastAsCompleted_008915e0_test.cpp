@@ -16,7 +16,7 @@ public:
 class CQuestManager
 {
 public:
-    void SetBoastAsCompleted_004af8f0(
+    void SetBoastAsCompleted(
         long boastId,
         CCharString boastName);
 };
@@ -50,7 +50,7 @@ CCharString::CCharString(const CCharString& other)
     ++g_CopyCount;
 }
 
-void CQuestManager::SetBoastAsCompleted_004af8f0(
+void CQuestManager::SetBoastAsCompleted(
     long boastId,
     CCharString boastName)
 {

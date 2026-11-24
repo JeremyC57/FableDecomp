@@ -9,7 +9,7 @@
 // Shape: the member's address is taken once (esi), the bool store is scheduled right after it; then the
 //   FadeOrKillEffect body of 0x0072ABD0 (IS_THING_ALIVE, a null-default interface 0x4b lookup into edi, the emitter
 //   call made even on null).
-// Leaf: KillBeamEffect
+// Leaf: ?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 class CTCBase;
 
@@ -46,7 +46,7 @@ struct CModeDragonFireBeam {
     CIntelligentPointer<CThing> PBeamWeaponEffect;      // +0x84
     long LastExplodeFrame;                              // +0x8c
     bool BeamActive;                                    // +0x90
-    void KillBeamEffect();
+    private: void KillBeamEffect();
 };
 
 void CModeDragonFireBeam::KillBeamEffect()

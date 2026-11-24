@@ -1,5 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::IsToReduceLODForDummiesAndHelpers() const -- reduce the LOD when the owner is beyond its scaled render-fade distance from the world's view position, or when it was not rendered last frame
-// Leaf: IsToReduceLODForDummiesAndHelpers
+// Leaf: ?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BD2E0, length 175 bytes. __fastcall, `ret`.
 //         Ego_r.pdb: `?IsToReduceLODForDummiesAndHelpers@CTCGraphicAppearance@NGraphicAppearance@@IBE_NXZ`.
@@ -67,7 +67,7 @@ public:
     void*         __vfptr;                          // +0x00
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     bool WasRenderedLastFrame() const;              // 0x004BD200
-    bool IsToReduceLODForDummiesAndHelpers() const;
+    protected: bool IsToReduceLODForDummiesAndHelpers() const;
 };
 
 bool CTCGraphicAppearance::IsToReduceLODForDummiesAndHelpers() const

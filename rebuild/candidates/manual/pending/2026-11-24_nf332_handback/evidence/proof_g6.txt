@@ -1,0 +1,2 @@
+##### 008915b0 renames: ?SetBoastAsCompleted@CQuestManager@@QAEXJVCCharString@@@Z=?SetBoastAsFailed@CQuestManager@@QAEXJVCCharString@@@Z
+ALL_EQ sections=4 tables=-
