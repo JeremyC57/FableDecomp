@@ -1,3 +1,4 @@
+// Leaf: ?SetPosition@CEngineInternalPrimitiveStaticMesh@@UAEXABVCEnginePrimitivePosition@@@Z
 // CEngineInternalPrimitiveStaticMesh::SetPosition @ 00b9cfa0
 class CEnginePrimitivePosition { public:
     char pad[0xc];
@@ -17,20 +18,20 @@ class CEngineInternalPrimitiveMeshBase { public:
 };
 
 class CEngineInternalPrimitiveStaticMesh { public:
-    char pad0[0x58];
+    char pad0[0x54];
     float field58;               // +0x58 (CEngineInternalPrimitiveMeshBase::Scale)
     char pad1[0x70 - 0x58 - 4];
     char sub;                    // +0x70 (embedded sub-object)
+    virtual void SetPosition(const class CEnginePrimitivePosition&);
 };
 
 // __fastcall method: 'this' in ecx, the CEnginePrimitivePosition reference on the
 // stack. Modeled as __fastcall(self, dummy-edx, stack-ref) so the ref stays on the
 // stack and the function ends with ret 4.
-void __fastcall CEngineInternalPrimitiveStaticMesh_SetPosition(
-        CEngineInternalPrimitiveStaticMesh* self,
-        int /*edx*/,
-        const CEnginePrimitivePosition& pos)
+void CEngineInternalPrimitiveStaticMesh::SetPosition(const class CEnginePrimitivePosition& pos)
 {
+    CEngineInternalPrimitiveStaticMesh* self = this;
     CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(
         *(CMatrix3x4*)&self->sub, *(const C3DVector*)&pos, *(const CRightHandedSet*)&pos.payload, self->field58);
 }
+// Flatten route (flatten_pilot v6, NF335): CEngineInternalPrimitiveStaticMesh_SetPosition -> CEngineInternalPrimitiveStaticMesh::SetPosition, the RTTI-placed PDB member; class model: the row's local class model.

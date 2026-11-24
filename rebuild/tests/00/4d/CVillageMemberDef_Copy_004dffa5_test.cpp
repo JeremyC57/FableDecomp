@@ -9,7 +9,7 @@ struct CVillageMemberBase {
   void Duplicate(const CDefClassBase* src);
 };
 
-class CVillageMemberDef { public:
+class CVillageMemberDefLayout { public:
   char pad[0x25];
   unsigned char f25;
 };
@@ -22,12 +22,18 @@ CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
     return *this;
 }
 
-void __fastcall CVillageMemberDef_Copy(CVillageMemberDef* self, void* edx, const CDefClassBase* src);
+// NF335 (NF324 Q2): the row now defines the PDB member CVillageMemberDef::Copy
+// (?Copy@CVillageMemberDef@@UAEXPBVCDefClassBase@@@Z).
+// The test calls it qualified through a pointer to this declaration-only model, cast from the test's object:
+// no body and never constructed, so the test emits no vftable and no copy of the row's symbol.
+class CVillageMemberDef { public:
+    virtual void Copy(const CDefClassBase*);
+};
 
 int main() {
-  CVillageMemberDef dst; dst.f25 = 0;
-  CVillageMemberDef src; src.f25 = 0xAB;
-  CVillageMemberDef_Copy(&dst, 0, reinterpret_cast<const CDefClassBase*>(&src));
+  CVillageMemberDefLayout dst; dst.f25 = 0;
+  CVillageMemberDefLayout src; src.f25 = 0xAB;
+  ((CVillageMemberDef*)(&dst))->CVillageMemberDef::Copy(reinterpret_cast<const CDefClassBase*>(&src));
   if (g_base_called == 1 && dst.f25 == 0xAB) {
     printf("004dffa5_TEST PASS\n");
   } else {

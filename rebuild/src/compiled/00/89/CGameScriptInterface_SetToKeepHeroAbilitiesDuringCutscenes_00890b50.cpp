@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes @ 0x00890b50
-// Leaf: ?CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes@@YIXPAVCGameScriptInterface@@H_N@Z
+// Leaf: ?SetToKeepHeroAbilitiesDuringCutscenes@CGameScriptInterface@@UBEX_N@Z
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CMainGameComponent { public:
     char pad[0x1c];
@@ -14,8 +15,10 @@ class CPlayer;
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
-void __fastcall CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int /*edx*/, bool keep)
+void CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes(bool keep) const
 {
+    CGameScriptInterface* self = const_cast<CGameScriptInterface*>(this);
     unsigned char* obj = (unsigned char*)((void*)&((CPlayerManager*)self->Component->PPlayerManager)->GetMainPlayer());
     obj[0x224] = (unsigned char)keep;
 }
+// Flatten route (flatten_pilot v6, NF335): CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes -> CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

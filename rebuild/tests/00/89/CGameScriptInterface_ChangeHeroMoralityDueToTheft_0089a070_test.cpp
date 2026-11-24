@@ -47,7 +47,7 @@ struct CDefinitionManagerOverlay
 };
 class CGameDefinitionManager : public CDefinitionManagerOverlay { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 
-class CGameScriptInterface
+class CGameScriptInterfaceLayout
 { public:
     unsigned char m_Pad00[0x14];
     void*         m_Field14;
@@ -67,10 +67,13 @@ static ETCInterfaceType g_observed_key = ETC_DUMMY;
 
 class CPlayer;
 class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970, called by the row
+// NF335: the landed test used a literal address here; `this` / the player reference now point at real, zero-initialised storage
+// (the row and the stub read none of it), so no member is called and no reference is bound through an invalid pointer.
+static unsigned long g_mainPlayerStorage[4];
 CPlayer& CPlayerManager::GetMainPlayer()
 {
     g_resolve_a_input = this;
-    return *(CPlayer*)0xAAAA;
+    return *(CPlayer*)g_mainPlayerStorage;
 }
 
 class CThingPlayerCreature;
@@ -102,8 +105,13 @@ void CGSITheftMoralityStats::SetMorality(long morality)
     m_Morality = morality;
 }
 
-void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToTheft(
-    const CGameScriptInterface* self);
+// NF335 (NF324 Q2): the row now defines the PDB member CGameScriptInterface::ChangeHeroMoralityDueToTheft
+// (?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ).
+// The test calls it qualified through a pointer to this declaration-only model, cast from the test's object:
+// no body and never constructed, so the test emits no vftable and no copy of the row's symbol.
+class CGameScriptInterface { public:
+    virtual void ChangeHeroMoralityDueToTheft() const;
+};
 
 static void ResetObservations()
 {
@@ -125,7 +133,7 @@ static int Fail(const char* message)
 
 int main()
 {
-    CGameScriptInterface gsi = {};
+    CGameScriptInterfaceLayout gsi = {};
     CThingOverlay hero = {};
     CGSITheftMoralityStats foundStats = {};
     CGSITheftMoralityStats endStats = {};
@@ -141,7 +149,7 @@ int main()
 
     ResetObservations();
     g_thing = 0;
-    CGameScriptInterface_ChangeHeroMoralityDueToTheft(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ChangeHeroMoralityDueToTheft();
     if (g_set_calls != 0 ||
         g_definition_calls != 0 ||
         g_resolve_a_input != (void*)0x1234)
@@ -151,14 +159,14 @@ int main()
     g_thing = &hero;
     hero.m_Flags91 = 1;
     hero.m_Flags20 = 0x10;
-    CGameScriptInterface_ChangeHeroMoralityDueToTheft(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ChangeHeroMoralityDueToTheft();
     if (g_set_calls != 0 || g_definition_calls != 0)
         return Fail("dead hero guard");
 
     ResetObservations();
     hero.m_Flags91 = 0;
     hero.m_Flags20 = 0;
-    CGameScriptInterface_ChangeHeroMoralityDueToTheft(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ChangeHeroMoralityDueToTheft();
     if (g_set_calls != 0 || g_definition_calls != 0)
         return Fail("missing HeroStats capability");
 
@@ -168,7 +176,7 @@ int main()
     foundStats.m_Morality = 30;
     g_definition.m_Change = -7;
     g_lower_bound_result = &foundEntry;
-    CGameScriptInterface_ChangeHeroMoralityDueToTheft(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ChangeHeroMoralityDueToTheft();
     if (g_set_calls != 1 ||
         g_set_stats != &foundStats ||
         g_set_value != 23 ||
@@ -183,7 +191,7 @@ int main()
     endStats.m_Morality = 10;
     g_definition.m_Change = -3;
     g_lower_bound_result = &greaterEntry;
-    CGameScriptInterface_ChangeHeroMoralityDueToTheft(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ChangeHeroMoralityDueToTheft();
     if (g_set_stats != &endStats || g_set_value != 7)
         return Fail("greater-key sentinel");
 
@@ -191,7 +199,7 @@ int main()
     endStats.m_Morality = -2;
     g_definition.m_Change = 5;
     g_lower_bound_result = &endEntry;
-    CGameScriptInterface_ChangeHeroMoralityDueToTheft(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ChangeHeroMoralityDueToTheft();
     if (g_set_stats != &endStats || g_set_value != 3)
         return Fail("direct sentinel");
 

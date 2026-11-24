@@ -1,3 +1,5 @@
+// Leaf: ?ResetPlayerCreatureCombatMultiplier@CGameScriptInterface@@UBEXXZ
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 enum ETCInterfaceType { ETC_DUMMY = 0 };
 
@@ -37,9 +39,9 @@ extern "C" void __fastcall Sub_ResetExperiencePickUpMultiplier(void* iface);
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
 
-void __fastcall CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(
-    const CGameScriptInterface* self)
+void CGameScriptInterface::ResetPlayerCreatureCombatMultiplier() const
 {
+    const CGameScriptInterface* self = this;
     CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     CThingOverlay* pThing = a->GetPControlledCreature();
     if (pThing != 0 &&
@@ -56,3 +58,4 @@ void __fastcall CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(
         Sub_ResetExperiencePickUpMultiplier(pEntry->second);
     }
 }
+// Flatten route (flatten_pilot v6, NF335): CGameScriptInterface_ResetPlayerCreatureCombatMultiplier -> CGameScriptInterface::ResetPlayerCreatureCombatMultiplier, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

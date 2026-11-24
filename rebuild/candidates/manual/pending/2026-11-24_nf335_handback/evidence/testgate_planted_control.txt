@@ -1,0 +1,4 @@
+00697700 FAIL flat name present
+009fd970 FAIL member body in the test
+00b83d10 FAIL PassPattern count
+testgate: 3 tests, 3 failing

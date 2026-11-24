@@ -25,7 +25,7 @@ struct CThingOverlay
     unsigned char m_Flags91;
 };
 
-class CGameScriptInterface
+class CGameScriptInterfaceLayout
 { public:
     unsigned char m_Pad00[0x14];
     void*         m_Field14;
@@ -41,10 +41,13 @@ static CInterfaceMap* g_observed_map = 0;
 
 class CPlayer;
 class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970, called by the row
+// NF335: the landed test used a literal address here; `this` / the player reference now point at real, zero-initialised storage
+// (the row and the stub read none of it), so no member is called and no reference is bound through an invalid pointer.
+static unsigned long g_mainPlayerStorage[4];
 CPlayer& CPlayerManager::GetMainPlayer()
 {
     g_resolveA_in = this;
-    return *(CPlayer*)0xAAAA;
+    return *(CPlayer*)g_mainPlayerStorage;
 }
 
 class CThingPlayerCreature;
@@ -69,8 +72,13 @@ CKeyPairEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& key)
     return g_lower_bound_result;
 }
 
-void __fastcall CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(
-    const CGameScriptInterface* self);
+// NF335 (NF324 Q2): the row now defines the PDB member CGameScriptInterface::ResetPlayerCreatureCombatMultiplier
+// (?ResetPlayerCreatureCombatMultiplier@CGameScriptInterface@@UBEXXZ).
+// The test calls it qualified through a pointer to this declaration-only model, cast from the test's object:
+// no body and never constructed, so the test emits no vftable and no copy of the row's symbol.
+class CGameScriptInterface { public:
+    virtual void ResetPlayerCreatureCombatMultiplier() const;
+};
 
 static void ResetObservations()
 {
@@ -90,7 +98,7 @@ static int Fail(const char* message)
 
 int main()
 {
-    CGameScriptInterface gsi = {};
+    CGameScriptInterfaceLayout gsi = {};
     CThingOverlay thing = {};
     CKeyPairEntry foundEntry = {};
     CKeyPairEntry greaterEntry = {};
@@ -101,7 +109,7 @@ int main()
 
     ResetObservations();
     g_thing = 0;
-    CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ResetPlayerCreatureCombatMultiplier();
     if (g_reset_calls != 0 || g_resolveA_in != (void*)0x1234)
         return Fail("null hero guard");
 
@@ -109,14 +117,14 @@ int main()
     g_thing = &thing;
     thing.m_Flags91 = 1;
     thing.m_Flags2C = 0x100;
-    CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ResetPlayerCreatureCombatMultiplier();
     if (g_reset_calls != 0)
         return Fail("dead hero guard");
 
     ResetObservations();
     thing.m_Flags91 = 0;
     thing.m_Flags2C = 0;
-    CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ResetPlayerCreatureCombatMultiplier();
     if (g_reset_calls != 0)
         return Fail("missing capability guard");
 
@@ -125,7 +133,7 @@ int main()
     foundEntry.first = (ETCInterfaceType)0x68;
     foundEntry.second = (CTCBase*)((void*)0x68680000);
     g_lower_bound_result = &foundEntry;
-    CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ResetPlayerCreatureCombatMultiplier();
     if (g_reset_calls != 1 ||
         g_reset_iface != (void*)0x68680000 ||
         g_observed_map != &thing.m_InterfaceMap44 ||
@@ -137,13 +145,13 @@ int main()
     greaterEntry.second = (CTCBase*)((void*)0x70);
     endEntry.second = (CTCBase*)((void*)0xEEEE);
     g_lower_bound_result = &greaterEntry;
-    CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ResetPlayerCreatureCombatMultiplier();
     if (g_reset_calls != 1 || g_reset_iface != (void*)0xEEEE)
         return Fail("greater-key sentinel");
 
     ResetObservations();
     g_lower_bound_result = &endEntry;
-    CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(&gsi);
+    ((CGameScriptInterface*)(&gsi))->CGameScriptInterface::ResetPlayerCreatureCombatMultiplier();
     if (g_reset_calls != 1 || g_reset_iface != (void*)0xEEEE)
         return Fail("direct sentinel");
 

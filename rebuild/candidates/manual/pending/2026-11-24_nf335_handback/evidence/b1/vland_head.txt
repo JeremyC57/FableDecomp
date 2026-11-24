@@ -1,0 +1,50 @@
+004644fa   WARN RELOC_NAME: ?base_clone@CThingSwitchDef@@QAEXPBVCDefClassBase@@@Z -> 00463950 labelled 'CThingBaseDef::operator='
+004644fa   RELOCATION_MATCH PASS   Copy
+004ae890   MATCH            PASS   DrawGetProceduralTexture
+004dffa5   RELOCATION_MATCH PASS   Copy
+004e01c0   WARN SHARED_HEADER_AVAILABLE CWifeDef (engine/CWifeDef.h)
+004e01c0   RELOCATION_MATCH PASS   Copy
+004e187e   RELOCATION_MATCH PASS   Copy
+00697700   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00697700   MATCH            PASS   GetControlAngleXY
+006a40b0   WARN SHARED_HEADER_AVAILABLE CInputProcessJumpingAndRolling (engine/CInputProcessJumpingAndRolling.h)
+006a40b0   WARN RELOC_NAME: _JR_Helper@8 -> 00687d50 labelled 'CInputProcessGameBase::IsGameActionEventInQueue'
+006a40b0   RELOCATION_MATCH PASS   Update
+00890b50   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00890b50   RELOCATION_MATCH PASS   SetToKeepHeroAbilitiesDuringCutscenes
+00892f10   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00892f10   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+00892f10   RELOCATION_MATCH PASS   DeactivateQuestLater
+00899d50   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00899d50   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00899d50   RELOCATION_MATCH PASS   ResetPlayerCreatureCombatMultiplier
+0089a070   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089a070   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089a070   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0089a070   RELOCATION_MATCH PASS   ChangeHeroMoralityDueToTheft
+0089a0e0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0089a0e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0089a0e0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0089a0e0   RELOCATION_MATCH PASS   ChangeHeroMoralityDueToPicklock
+009fd970   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+009fd970   MATCH            PASS   NotifyEntryRemoved
+00b83d10   MATCH            PASS   PeekSceneFilterFlags
+00b8c780   MATCH            PASS   PeekSceneFilterFlags
+00b8fb40   MATCH            PASS   PeekSceneFilterFlags
+00b9cfa0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveMeshBase (engine/CEngineInternalPrimitiveMeshBase.h)
+00b9cfa0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9cfa0   RELOCATION_MATCH PASS   SetPosition
+00b9cfc0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9cfc0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9cfc0   MATCH            PASS   GetObjectTransform
+00b9d000   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9d000   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh (engine/CEngineInternalPrimitiveStaticMesh.h)
+00b9d000   MATCH            PASS   GetTransformFrameStart
+00b9d070   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00b9d070   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh (engine/CEngineInternalPrimitive2DStaticMesh.h)
+00b9d070   MATCH            PASS   GetObjectTransform
+00ba7fe0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveMeshBase (engine/CEngineInternalPrimitiveMeshBase.h)
+00ba7fe0   MATCH            PASS   GetMorphInfo
+00bbdd90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive (engine/CEnginePrimitive.h)
+00bbdd90   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleSpriteTrailGroup (engine/CEngineInternalPrimitiveParticleSpriteTrailGroup.h)
+00bbdd90   MATCH            PASS   Update

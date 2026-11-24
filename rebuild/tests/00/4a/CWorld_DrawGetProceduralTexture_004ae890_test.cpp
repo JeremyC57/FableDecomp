@@ -3,12 +3,21 @@
 class CProceduralTexture;
 class CWorld;
 
-CProceduralTexture const * __fastcall CWorld_DrawGetProceduralTexture(CWorld *world);
+// NF335 (NF324 Q2): the row now defines the PDB member CWorld::DrawGetProceduralTexture
+// (?DrawGetProceduralTexture@CWorld@@UBEPBVCProceduralTexture@@XZ).
+// The test calls it qualified through a pointer to this declaration-only model, cast from the test's object:
+// no body and never constructed, so the test emits no vftable and no copy of the row's symbol.
+class CWorld { public:
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const;
+};
+// NF335: `this` was a literal pointer; it is now real, zero-initialised storage (the member reads none of it, so the
+// call stays the case the landed test checked, without a call through an invalid pointer).
+static unsigned long g_CWorldStorage[4];
 
 int main()
 {
-    CWorld *w = (CWorld*)0x12345678;
-    CProceduralTexture const *r = CWorld_DrawGetProceduralTexture(w);
+    CWorld *w = (CWorld*)g_CWorldStorage;
+    CProceduralTexture const *r = ((CWorld*)(w))->CWorld::DrawGetProceduralTexture();
     if (r == 0)
         std::printf("004ae890_TEST PASS\n");
     else

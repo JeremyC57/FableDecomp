@@ -21,25 +21,28 @@ void __fastcall CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(CMatrix3x4& m
     g_self = &matrix; g_rawPos = &position; g_payloadPtr = &orientation; g_field58 = scale;
 }
 
-class CEngineInternalPrimitiveStaticMesh { public:
+class CEngineInternalPrimitiveStaticMeshLayout { public:
     char pad0[0x58];
     float field58;
     char pad1[0x70 - 0x58 - 4];
     char sub;
 };
 
-void __fastcall CEngineInternalPrimitiveStaticMesh_SetPosition(
-        CEngineInternalPrimitiveStaticMesh* self,
-        int /*edx*/,
-        const CEnginePrimitivePosition& pos);
+// NF335 (NF324 Q2): the row now defines the PDB member CEngineInternalPrimitiveStaticMesh::SetPosition
+// (?SetPosition@CEngineInternalPrimitiveStaticMesh@@UAEXABVCEnginePrimitivePosition@@@Z).
+// The test calls it qualified through a pointer to this declaration-only model, cast from the test's object:
+// no body and never constructed, so the test emits no vftable and no copy of the row's symbol.
+class CEngineInternalPrimitiveStaticMesh { public:
+    virtual void SetPosition(const CEnginePrimitivePosition&);
+};
 
 int main() {
-    CEngineInternalPrimitiveStaticMesh obj;
+    CEngineInternalPrimitiveStaticMeshLayout obj;
     obj.field58 = 2.5f;
     CEnginePrimitivePosition pos;
     pos.payload = 0x99;
 
-    CEngineInternalPrimitiveStaticMesh_SetPosition(&obj, 0, pos);
+    ((CEngineInternalPrimitiveStaticMesh*)(&obj))->CEngineInternalPrimitiveStaticMesh::SetPosition(pos);
 
     bool ok = (g_self == (void*)&obj.sub)
            && (g_rawPos == &pos)
