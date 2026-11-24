@@ -9,8 +9,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 ## Account A, 2026-11-24 (naming automation; agents NF333 / NF334 running)
 - **Latest (late 2026-11-24, naming queue):** landed nf352-nf357, nf360_b2, nf361_b1, nf362_b1/b2, nf363_b1/b2 (0x0042AF3C on its PDB name;
   the CThingNoiseDef constructor unit), nf364_b1 (new CCountedPointer.h opt-in ..._RESET_SIZE_BODY_YOFF_TU, 19 rows) and nf365_b1 (the GetDef
-  swap, 10 rows). Open on the reopened nf358 lines: nf365 held/g2 00868e50 and held/g3 0060c900 / 0060eeb0 (ruled: land; next coordinator
-  step), 0041e6d3 (/GS), and the /O2 rows whose leaf inlines the copy (closed for row devices, FINDINGS_LOG 2026-11-24). **Owner questions
+  swap, 10 rows). nf365 g2/g3 landed too. Open on the reopened nf358 lines: 0041e6d3 (/GS), the CreateMapMarkers port (T3 nf365
+  0x005FF190), and the /O2 rows whose leaf inlines the copy (closed for row devices, FINDINGS_LOG 2026-11-24). **Owner questions
   open:** 0x0070D940 (B's row with a byte-identical GetMeshAnim copy) and NF359's option S (grade several catalog addresses from one object).
   Never close a copy line without a census.
 - **Later 2026-11-24 (this session):** synced with B (FullDecomp contains FullDecomp-B), then landed unit3 (59 rows,
