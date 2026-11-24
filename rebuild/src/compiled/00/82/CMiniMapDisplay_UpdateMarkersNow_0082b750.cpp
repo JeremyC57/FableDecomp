@@ -59,7 +59,10 @@ class CMiniMapDisplay { public:
     void InitialiseAttractionMarkers();
     public:
             // 0x0082B520
-    void InitialiseEnemyMarkers();                 // 0x0082B630
+    protected:
+    void InitialiseEnemyMarkers();
+    public:
+                 // 0x0082B630
     void UpdateMarkersNow();
 };
 

@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?InitialiseEnemyMarkers@CMiniMapDisplay@@QAEXXZ -> ?InitialiseEnemyMarkers@CMiniMapDisplay@@IAEXXZ	0082b630	0082b750	unit_fix: the row and its callers moved to the PDB spelling together
