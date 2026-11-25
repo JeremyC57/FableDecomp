@@ -1,0 +1,59 @@
+addr       parity           behav  name
+004d2b67   WARN SHARED_HEADER_AVAILABLE CTCRotate (engine/CTCRotate.h)
+004d2b67   RELOCATION_MATCH PASS   GetClassTypeName
+004da926   WARN SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)
+004da926   RELOCATION_MATCH PASS   GetClassTypeName
+004da99f   RELOCATION_MATCH PASS   GetClassTypeName
+004da9c7   RELOCATION_MATCH PASS   GetClassTypeName
+004da9fb   WARN SHARED_HEADER_AVAILABLE CTCActionUseReadable (engine/CTCActionUseReadable.h)
+004da9fb   RELOCATION_MATCH PASS   GetClassTypeName
+004daa6c   RELOCATION_MATCH PASS   GetClassTypeName
+004daa94   RELOCATION_MATCH PASS   GetClassTypeName
+004daabc   RELOCATION_MATCH PASS   GetClassTypeName
+004daae4   RELOCATION_MATCH PASS   GetClassTypeName
+004dab0c   RELOCATION_MATCH PASS   GetClassTypeName
+004dab34   RELOCATION_MATCH PASS   GetClassTypeName
+004dab5c   WARN SHARED_HEADER_AVAILABLE CTCActionUseWindow (engine/CTCActionUseWindow.h)
+004dab5c   RELOCATION_MATCH PASS   GetClassTypeName
+004dab84   RELOCATION_MATCH PASS   GetClassTypeName
+004dabac   RELOCATION_MATCH PASS   GetClassTypeName
+004dac07   WARN SHARED_HEADER_AVAILABLE CTCActionUseBed (engine/CTCActionUseBed.h)
+004dac07   RELOCATION_MATCH PASS   GetClassTypeName
+004dac4e   RELOCATION_MATCH PASS   GetClassTypeName
+004dac9a   RELOCATION_MATCH PASS   GetClassTypeName
+004dacc5   RELOCATION_MATCH PASS   GetClassTypeName
+004daced   RELOCATION_MATCH PASS   GetClassTypeName
+004dad15   RELOCATION_MATCH PASS   GetClassTypeName
+004dad42   RELOCATION_MATCH PASS   GetClassTypeName
+004dad6a   RELOCATION_MATCH PASS   GetClassTypeName
+004dad92   RELOCATION_MATCH PASS   GetClassTypeName
+004db3bb   RELOCATION_MATCH PASS   GetClassTypeName
+004e3457   WARN SHARED_HEADER_AVAILABLE CTCDExplosiveTrail (engine/CTCDExplosiveTrail.h)
+004e3457   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 25
+  004d2b67 RELOCATION_MATCH CTCRotate::?GetClassTypeName@CTCRotate@@UBE?AVCCharString@@XZ
+  004da926 RELOCATION_MATCH CTCTargeted::?GetClassTypeName@CTCTargeted@@UBE?AVCCharString@@XZ
+  004da99f RELOCATION_MATCH CTCActionUseTorch::?GetClassTypeName@CTCActionUseTorch@@UBE?AVCCharString@@XZ
+  004da9c7 RELOCATION_MATCH CTCActionUseSign::?GetClassTypeName@CTCActionUseSign@@UBE?AVCCharString@@XZ
+  004da9fb RELOCATION_MATCH CTCActionUseReadable::?GetClassTypeName@CTCActionUseReadable@@UBE?AVCCharString@@XZ
+  004daa6c RELOCATION_MATCH CTCActionUsePickUp::?GetClassTypeName@CTCActionUsePickUp@@UBE?AVCCharString@@XZ
+  004daa94 RELOCATION_MATCH CTCActionUsePickUpGenericBox::?GetClassTypeName@CTCActionUsePickUpGenericBox@@UBE?AVCCharString@@XZ
+  004daabc RELOCATION_MATCH CTCActionUsePutInInventory::?GetClassTypeName@CTCActionUsePutInInventory@@UBE?AVCCharString@@XZ
+  004daae4 RELOCATION_MATCH CTCActionUseMapTable::?GetClassTypeName@CTCActionUseMapTable@@UBE?AVCCharString@@XZ
+  004dab0c RELOCATION_MATCH CTCActionUseSearch::?GetClassTypeName@CTCActionUseSearch@@UBE?AVCCharString@@XZ
+  004dab34 RELOCATION_MATCH CTCActionUseBlowHorn::?GetClassTypeName@CTCActionUseBlowHorn@@UBE?AVCCharString@@XZ
+  004dab5c RELOCATION_MATCH CTCActionUseWindow::?GetClassTypeName@CTCActionUseWindow@@UBE?AVCCharString@@XZ
+  004dab84 RELOCATION_MATCH CTCActionUseAcceptBoast::?GetClassTypeName@CTCActionUseAcceptBoast@@UBE?AVCCharString@@XZ
+  004dabac RELOCATION_MATCH CTCActionUseStartExtrapolationMorph::?GetClassTypeName@CTCActionUseStartExtrapolationMorph@@UBE?AVCCharString@@XZ
+  004dac07 RELOCATION_MATCH CTCActionUseBed::?GetClassTypeName@CTCActionUseBed@@UBE?AVCCharString@@XZ
+  004dac4e RELOCATION_MATCH CTCActionUseKickChicken::?GetClassTypeName@CTCActionUseKickChicken@@UBE?AVCCharString@@XZ
+  004dac9a RELOCATION_MATCH CTCCarriedActionUseLamp::?GetClassTypeName@CTCCarriedActionUseLamp@@UBE?AVCCharString@@XZ
+  004dacc5 RELOCATION_MATCH CTCCarriedActionUseDrop::?GetClassTypeName@CTCCarriedActionUseDrop@@UBE?AVCCharString@@XZ
+  004daced RELOCATION_MATCH CTCCarriedActionUseDropGenericBox::?GetClassTypeName@CTCCarriedActionUseDropGenericBox@@UBE?AVCCharString@@XZ
+  004dad15 RELOCATION_MATCH CTCCarriedActionUseGive::?GetClassTypeName@CTCCarriedActionUseGive@@UBE?AVCCharString@@XZ
+  004dad42 RELOCATION_MATCH CTCCarriedActionUseGiveBeer::?GetClassTypeName@CTCCarriedActionUseGiveBeer@@UBE?AVCCharString@@XZ
+  004dad6a RELOCATION_MATCH CTCCarriedActionUseGoldBag::?GetClassTypeName@CTCCarriedActionUseGoldBag@@UBE?AVCCharString@@XZ
+  004dad92 RELOCATION_MATCH CTCCarriedActionUseShow::?GetClassTypeName@CTCCarriedActionUseShow@@UBE?AVCCharString@@XZ
+  004db3bb RELOCATION_MATCH CTCDRumble::?GetClassTypeName@CTCDRumble@@UBE?AVCCharString@@XZ
+  004e3457 RELOCATION_MATCH CTCDExplosiveTrail::?GetClassTypeName@CTCDExplosiveTrail@@UBE?AVCCharString@@XZ

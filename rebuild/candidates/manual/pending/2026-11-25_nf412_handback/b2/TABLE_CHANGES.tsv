@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	?StatGetClassTypeName@CTCInventoryItem@@SI?AVCCharString@@XZ	004d30db	004daed6	NF412: the respelt CTCInventoryItem::GetClassTypeName 0x004DAED6 calls 0x004D30DB (call at 0x004DAEDA), the landed self ?StatGetClassTypeName@CTCInventoryItem@@SI?AVCCharString@@XZ (its row Leaf / object symbol); no table line bound that address before.
+delete	??0CTargetingResult_Retail@@QAE@XZ	004d5853	004dec09	NF412: the stand-in ctor spelling HEAD 0x004DEC09 bound at 0x004D5853 (its only witness); 0x004D5853 is CTCTargetingSpirit::StatGetClassTypeName, already bound by the binder 004ee23f under ?StatGetClassTypeName@CTCTargetingSpirit@@SI?AVCCharString@@XZ, which the respelt 0x004DEC09 now binds (a replace would duplicate that line).

@@ -1,5 +1,29 @@
-#pragma optimize("s",on)
-// CTCHitLocations::GetClassTypeName() const -- calls CTCHitLocations::StatGetClassTypeName @ 0x004D49B7 into the hidden CCharString return slot and returns it; stand-in: a construct-and-return helper that runs a member function on the argument and
-// return the argument. __stdcall (ret 4); the callee takes this in ecx.
-struct T { void Init_004d49b7(); };
-extern "C" T* __stdcall CTCHitLocations_GetClassTypeName(T* result) { result->Init_004d49b7(); return result; }
+// CTCHitLocations::GetClassTypeName() const -- the class-type name as a CCharString: returns CTCHitLocations::StatGetClassTypeName()
+// Leaf: ?GetClassTypeName@CTCHitLocations@@UBE?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004E761D, 16 bytes: mov ecx,[esp+4]; call CTCHitLocations::StatGetClassTypeName 0x004D49B7; mov eax,[esp+4];
+//   ret 4 -- a const virtual __thiscall returning CCharString by value: `this` (ecx) is unused, the hidden result pointer is the one
+//   stack argument and goes to the static __fastcall callee in ecx.
+// Identity (NF412, 2026-11-25): Ego_r.pdb and FableWin.pdb name sets both spell ?GetClassTypeName@CTCHitLocations@@UBE?AVCCharString@@XZ; retail
+//   vftable 0x012434E4 (RTTI .?AVCTCHitLocations@@) slot 22 (0x0124353C -> 0x004E761D) is CTCBase's pure GetClassTypeName slot (engine/CTCBase.h);
+//   the body calls 0x004D49B7, the landed CTCHitLocations::StatGetClassTypeName (?StatGetClassTypeName@CTCHitLocations@@SI?AVCCharString@@XZ; literal "CTCHitLocations").
+// Respell NF412: was the extern "C" __stdcall stand-in _CTCHitLocations_GetClassTypeName@4 calling the made-up ?Init_004d49b7@T@@QAEXXZ.
+// Header: engine/CTCHitLocations.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form).
+#define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
+#include "fable_string.h"
+#define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
+#define CTCHitLocations CTCHitLocationsLayout
+#include "engine/CTCHitLocations.h"
+#undef CTCHitLocations
+
+class CTCHitLocations : public CTCHitLocationsLayout
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();   // 0x004D49B7
+    virtual CCharString GetClassTypeName() const;
+};
+
+#pragma optimize("s", on)
+CCharString CTCHitLocations::GetClassTypeName() const
+{
+    return StatGetClassTypeName();
+}

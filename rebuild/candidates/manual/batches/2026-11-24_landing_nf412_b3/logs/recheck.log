@@ -1,0 +1,49 @@
+addr       parity           behav  name
+004e07fb   RELOCATION_MATCH PASS   GetClassTypeName
+004e0b13   RELOCATION_MATCH PASS   GetClassTypeName
+004e0b3b   RELOCATION_MATCH PASS   GetClassTypeName
+004e0c94   WARN SHARED_HEADER_AVAILABLE CTCHaste (engine/CTCHaste.h)
+004e0c94   RELOCATION_MATCH PASS   GetClassTypeName
+004e0d20   WARN SHARED_HEADER_AVAILABLE CTCPreCalculatedNavigationRoute (engine/CTCPreCalculatedNavigationRoute.h)
+004e0d20   RELOCATION_MATCH PASS   GetClassTypeName
+004e156c   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+004e156c   RELOCATION_MATCH PASS   GetClassTypeName
+004e338c   WARN SHARED_HEADER_AVAILABLE CTCNymph (engine/CTCNymph.h)
+004e338c   RELOCATION_MATCH PASS   GetClassTypeName
+004e3d02   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+004e3d02   RELOCATION_MATCH PASS   GetClassTypeName
+004e48c7   RELOCATION_MATCH PASS   GetClassTypeName
+004e5c61   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroup (engine/CTCCreatureGroup.h)
+004e5c61   RELOCATION_MATCH PASS   GetClassTypeName
+004e5f41   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroupTag (engine/CTCCreatureGroupTag.h)
+004e5f41   RELOCATION_MATCH PASS   GetClassTypeName
+004e6d77   WARN SHARED_HEADER_AVAILABLE CTCLightningNode (engine/CTCLightningNode.h)
+004e6d77   RELOCATION_MATCH PASS   GetClassTypeName
+004e74c9   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+004e74c9   RELOCATION_MATCH PASS   GetClassTypeName
+004e7549   WARN SHARED_HEADER_AVAILABLE CTCBoastingPodium (engine/CTCBoastingPodium.h)
+004e7549   RELOCATION_MATCH PASS   GetClassTypeName
+004e761d   WARN SHARED_HEADER_AVAILABLE CTCHitLocations (engine/CTCHitLocations.h)
+004e761d   RELOCATION_MATCH PASS   GetClassTypeName
+004e7d6a   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+004e7d6a   RELOCATION_MATCH PASS   GetClassTypeName
+004e7fc8   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 17
+  004e07fb RELOCATION_MATCH CTCActivationReceptorChest::?GetClassTypeName@CTCActivationReceptorChest@@UBE?AVCCharString@@XZ
+  004e0b13 RELOCATION_MATCH CTCGatherPointBuilding::?GetClassTypeName@CTCGatherPointBuilding@@UBE?AVCCharString@@XZ
+  004e0b3b RELOCATION_MATCH CTCGatherPointRadialArea::?GetClassTypeName@CTCGatherPointRadialArea@@UBE?AVCCharString@@XZ
+  004e0c94 RELOCATION_MATCH CTCHaste::?GetClassTypeName@CTCHaste@@UBE?AVCCharString@@XZ
+  004e0d20 RELOCATION_MATCH CTCPreCalculatedNavigationRoute::?GetClassTypeName@CTCPreCalculatedNavigationRoute@@UBE?AVCCharString@@XZ
+  004e156c RELOCATION_MATCH CTCIdleScheduler::?GetClassTypeName@CTCIdleScheduler@@UBE?AVCCharString@@XZ
+  004e338c RELOCATION_MATCH CTCNymph::?GetClassTypeName@CTCNymph@@UBE?AVCCharString@@XZ
+  004e3d02 RELOCATION_MATCH CTCEntityEvents::?GetClassTypeName@CTCEntityEvents@@UBE?AVCCharString@@XZ
+  004e48c7 RELOCATION_MATCH CTCSearchableContainer::?GetClassTypeName@CTCSearchableContainer@@UBE?AVCCharString@@XZ
+  004e5c61 RELOCATION_MATCH CTCCreatureGroup::?GetClassTypeName@CTCCreatureGroup@@UBE?AVCCharString@@XZ
+  004e5f41 RELOCATION_MATCH CTCCreatureGroupTag::?GetClassTypeName@CTCCreatureGroupTag@@UBE?AVCCharString@@XZ
+  004e6d77 RELOCATION_MATCH CTCLightningNode::?GetClassTypeName@CTCLightningNode@@UBE?AVCCharString@@XZ
+  004e74c9 RELOCATION_MATCH CTCCarrying::?GetClassTypeName@CTCCarrying@@UBE?AVCCharString@@XZ
+  004e7549 RELOCATION_MATCH CTCBoastingPodium::?GetClassTypeName@CTCBoastingPodium@@UBE?AVCCharString@@XZ
+  004e761d RELOCATION_MATCH CTCHitLocations::?GetClassTypeName@CTCHitLocations@@UBE?AVCCharString@@XZ
+  004e7d6a RELOCATION_MATCH CTCInventoryClothing::?GetClassTypeName@CTCInventoryClothing@@UBE?AVCCharString@@XZ
+  004e7fc8 RELOCATION_MATCH CTCCreatureHitNotification::?GetClassTypeName@CTCCreatureHitNotification@@UBE?AVCCharString@@XZ

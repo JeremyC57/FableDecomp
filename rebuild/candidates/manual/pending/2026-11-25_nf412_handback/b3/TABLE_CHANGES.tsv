@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?StatGetClassTypeName@CTCInventoryClothing@@SI?AVCCharString@@XZ	004d2ea7	004e7d6a	NF412: the respelt CTCInventoryClothing::GetClassTypeName 0x004E7D6A calls 0x004D2EA7 (call at 0x004E7D6E), the landed self ?StatGetClassTypeName@CTCInventoryClothing@@SI?AVCCharString@@XZ (its row Leaf / object symbol); no table line bound that address before.

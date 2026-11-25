@@ -733,7 +733,6 @@ _FreeThing@4	00451b82	00453630
 ??0CComponentContainer@@QAE@J@Z	00727580	004d2a14
 ??0CTCCreatureExpression@@QAE@AAVCThing@@@Z	00729360	004d2aa4
 ??_7CTCRotate@@6B@	0123a024	004d2b2a
-?Init_004d2b17@T@@QAEXXZ	004d2b17	004d2b67
 ??0CEngineSubPrimitive2DClockSprite@@QAE@PAUCThing@@@Z	0072c6e0	004d2d98
 ??_7CTCUndeadSoul@@6B@	0123a364	004d2ddb
 ??0CTCWallMountEffects@@QAE@PAUCThing@@@Z	005c3947	004d2eba
@@ -994,7 +993,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CTCAnimatingObject@@6B@	012417e4	004de839
 ??_7CFishingDef@@6B@	012418c4	004de8f5
 ??_7CTurncoatDef@@6B@	0124193c	004deba3
-??0CTargetingResult_Retail@@QAE@XZ	004d5853	004dec09
 ??_7CTavernGameSpotTheAdditionDef@@6B@	01241a4c	004ded22
 ??_7CTCParticleAttachmentTracker@@6B@	01241ab4	004ded6f
 ??_7CKrakenDef@@6B@	01241b2c	004def86
@@ -39104,3 +39102,15 @@ __real@0000000000000000	0122ed70	00b260b0
 ?clear@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEXXZ	004e1bd2	004e350f
 ??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	004df54f	004df507
 ?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ	004d2a74	004dda94
+?StatGetClassTypeName@CTCUndeadSoul@@SI?AVCCharString@@XZ	004d2dc8	004d2df7
+?StatGetClassTypeName@CTCInventoryItem@@SI?AVCCharString@@XZ	004d30db	004daed6
+?StatGetClassTypeName@CTCInventoryClothing@@SI?AVCCharString@@XZ	004d2ea7	004e7d6a
+?StatGetClassTypeName@CTCTargeted@@SI?AVCCharString@@XZ	004d2a91	004da926
+?StatGetClassTypeName@CTCActionUseTorch@@SI?AVCCharString@@XZ	004d2b04	004da99f
+?StatGetClassTypeName@CTCActionUseSign@@SI?AVCCharString@@XZ	004d2b7a	004da9c7
+?StatGetClassTypeName@CTCActionUseReadable@@SI?AVCCharString@@XZ	004d2b8d	004da9fb
+?StatGetClassTypeName@CTCActionUsePickUp@@SI?AVCCharString@@XZ	004d2ba0	004daa6c
+?StatGetClassTypeName@CTCActionUsePickUpGenericBox@@SI?AVCCharString@@XZ	004d2bb3	004daa94
+?StatGetClassTypeName@CTCActionUsePutInInventory@@SI?AVCCharString@@XZ	004d2bc6	004daabc
+?StatGetClassTypeName@CTCActionUseMapTable@@SI?AVCCharString@@XZ	004d2bd9	004daae4
+?StatGetClassTypeName@CTCActionUseSearch@@SI?AVCCharString@@XZ	004d2bec	004dab0c

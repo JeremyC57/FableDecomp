@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?StatGetClassTypeName@CTCUndeadSoul@@SI?AVCCharString@@XZ	004d2dc8	004d2df7	NF412: the respelt CTCUndeadSoul::GetClassTypeName 0x004D2DF7 calls 0x004D2DC8 (call at 0x004D2DFB), the landed self ?StatGetClassTypeName@CTCUndeadSoul@@SI?AVCCharString@@XZ (its row Leaf / object symbol); no table line bound that address before.
