@@ -270,6 +270,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=P("rebuild", "candidates", "manual", "naming", "status"))
     ap.add_argument("--history", action="store_true")
+    ap.add_argument("--dump-rec", default="", help="write every measured address record as JSON (for naming/order_match.py)")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     pdb = pdb_names()
@@ -381,6 +382,9 @@ def main():
         elif r2["status"] in ("agree_unverified", "standin", "split_unknown"):
             r2.update(status="rtti_identified", tier="T3", fix="emit " + rn[:80]); status[t2] = "rtti_identified"
     cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings", "rtti"]
+    if a.dump_rec:
+        import json as _json
+        with open(a.dump_rec, "w") as _f: _json.dump(rec, _f)
     openst = ("standin", "split_fixable", "split_unknown", "split_pdb_multi", "catalog_standin", "rtti_conflict", "rtti_identified")
     with open(os.path.join(a.out, "OPEN.tsv"), "w") as o:
         o.write("\t".join(cols) + "\n")
