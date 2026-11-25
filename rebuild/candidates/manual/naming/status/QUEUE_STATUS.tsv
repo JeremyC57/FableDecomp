@@ -10357,99 +10357,99 @@ line	tag	address	correct_symbol	status	other_spellings
 13190	land1122nf282	004a98c0	?Reset@?$CCountedPointer@VCAProgressDisplay@@@@QAEXPAVCAProgressDisplay@@@Z	open	?Reset@CCountedPointer_00403600@@QAEXPAX@Z
 13191	land1122nf282	00403db0	?Reset@?$CCountedPointer@VCFileInstaller@@@@QAEXPAVCFileInstaller@@@Z	partial	?Reset@CCountedPointer_00403630@@QAEXPAX@Z
 13192	land1122nf282	00403e40	?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z	partial	?Reset@CCountedPointer_CIPhysicsFacesSegmentBase_const@@QAEXPAX@Z
-13193	land1122nf282	00413520	?Reset@?$CCountedPointer@VCConsole@@@@QAEXPAVCConsole@@@Z	partial	?Reset@CCountedPointer_004132f0@@QAEXPAX@Z || ?Reset@CCountedPointer_CConsole@@QAEXPAVCConsole@@@Z
+13193	land1122nf282	00413520	?Reset@?$CCountedPointer@VCConsole@@@@QAEXPAVCConsole@@@Z	partial	?Reset@CCountedPointer_CConsole@@QAEXPAVCConsole@@@Z
 13194	land1122nf282	0041956c	??0?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@QAE@PAVCAEnvironmentInteraction@NParticleEngine@@@Z	partial	??0CCountedPointer_00419086@@QAE@PAX@Z
 13195	land1122nf282	005669c0	?Reset@?$CCountedPointer@VCTexture@@@@QAEXPAVCTexture@@@Z	partial	?Reset@CCountedPointer_0041bd80@@QAEXPAX@Z || ?Reset@CTexturePointer@@QAEXPAVCTexture@@@Z
-13196	land1122nf282	004366b0	?Reset@?$CCountedPointer@VCEngineManager@@@@QAEXPAVCEngineManager@@@Z	partial	?Reset@CCountedPointer_004361e0@@QAEXPAX@Z
-13197	land1122nf282	004441a0	?Reset@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@QAEXPAVCDrawSpiritsHealth@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443580@@QAEXPAX@Z
-13198	land1122nf282	00444210	?Reset@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@QAEXPAVCDrawScreenFade@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_004435c0@@QAEXPAX@Z
-13199	land1122nf282	00444280	?Reset@?$CCountedPointer@VCDrawMoney@NPlayerGui@@@@QAEXPAVCDrawMoney@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443600@@QAEXPAX@Z
-13200	land1122nf282	004442f0	?Reset@?$CCountedPointer@VCDrawRenown@NPlayerGui@@@@QAEXPAVCDrawRenown@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443640@@QAEXPAX@Z
-13201	land1122nf282	00444360	?Reset@?$CCountedPointer@VCDrawMorality@NPlayerGui@@@@QAEXPAVCDrawMorality@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443680@@QAEXPAX@Z
-13202	land1122nf282	004443d0	?Reset@?$CCountedPointer@VCDrawExperience@NPlayerGui@@@@QAEXPAVCDrawExperience@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_004436c0@@QAEXPAX@Z
-13203	land1122nf282	00444440	?Reset@?$CCountedPointer@VCDrawCrime@NPlayerGui@@@@QAEXPAVCDrawCrime@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443700@@QAEXPAX@Z
-13204	land1122nf282	004444b0	?Reset@?$CCountedPointer@VCDrawReceivedItems@NPlayerGui@@@@QAEXPAVCDrawReceivedItems@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443740@@QAEXPAX@Z
-13205	land1122nf282	00444520	?Reset@?$CCountedPointer@VCDrawFishingGame@NPlayerGui@@@@QAEXPAVCDrawFishingGame@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443780@@QAEXPAX@Z
-13206	land1122nf282	004446e0	?Reset@?$CCountedPointer@VCDrawDamage@NPlayerGui@@@@QAEXPAVCDrawDamage@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443840@@QAEXPAX@Z
-13207	land1122nf282	00444830	?Reset@?$CCountedPointer@VCDrawTargetInfo@NPlayerGui@@@@QAEXPAVCDrawTargetInfo@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_004438f0@@QAEXPAX@Z
-13208	land1122nf282	004448a0	?Reset@?$CCountedPointer@VCDrawHighlightingTargetingCursor@NPlayerGui@@@@QAEXPAVCDrawHighlightingTargetingCursor@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443930@@QAEXPAX@Z
-13209	land1122nf282	00444a60	?Reset@?$CCountedPointer@VCDrawBettingHUD@NPlayerGui@@@@QAEXPAVCDrawBettingHUD@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443a20@@QAEXPAX@Z
-13210	land1122nf282	00444ad0	?Reset@?$CCountedPointer@VCDrawProjectileTargetingCentre@NPlayerGui@@@@QAEXPAVCDrawProjectileTargetingCentre@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443a60@@QAEXPAX@Z
-13211	land1122nf282	00444d00	?Reset@?$CCountedPointer@VCDrawNPCName@NPlayerGui@@@@QAEXPAVCDrawNPCName@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00443b60@@QAEXPAX@Z
-13212	land1122nf282	00445190	?Reset@?$CCountedPointer@VCStatBar@NPlayerGui@@@@QAEXPAVCStatBar@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00444d90@@QAEXPAX@Z
-13213	land1122nf282	00445200	?Reset@?$CCountedPointer@VCCrimeStatBar@NPlayerGui@@@@QAEXPAVCCrimeStatBar@NPlayerGui@@@Z	partial	?Reset@CCountedPointer_00444dd0@@QAEXPAX@Z
-13214	land1122nf282	0049bce0	?Reset@?$CCountedPointer@VCGameJoystickManager@@@@QAEXPAVCGameJoystickManager@@@Z	partial	?Reset@CCountedPointer_0049bc20@@QAEXPAX@Z
-13215	land1122nf282	004a9a10	?Reset@?$CCountedPointer@VCQuestManager@@@@QAEXPAVCQuestManager@@@Z	partial	?Reset@CCountedPointer_004a8220@@QAEXPAX@Z
-13216	land1122nf282	004a9a80	?Reset@?$CCountedPointer@VCSkeletalMorphResourceManager@@@@QAEXPAVCSkeletalMorphResourceManager@@@Z	partial	?Reset@CCountedPointer_004a8260@@QAEXPAX@Z
-13217	land1122nf282	004adf80	?Reset@?$CCountedPointer@VCMessageEventManager@@@@QAEXPAVCMessageEventManager@@@Z	partial	?Reset@CCountedPointer_004adc40@@QAEXPAX@Z
-13218	land1122nf282	0050f2b0	?Reset@?$CCountedPointer@VCWADBank@@@@QAEXPAVCWADBank@@@Z	partial	?Reset@CCountedPointer_0050bcc0@@QAEXPAX@Z
-13219	land1122nf282	0050faa0	?Reset@?$CCountedPointer@VCMap@@@@QAEXPAVCMap@@@Z	partial	?Reset@CCountedPointer_0050c210@@QAEXPAX@Z
-13220	land1122nf282	0050fb90	?Reset@?$CCountedPointer@VCLevelLoader@@@@QAEXPAVCLevelLoader@@@Z	partial	?Reset@CCountedPointer_0050c2e0@@QAEXPAX@Z
+13196	land1122nf282	004366b0	?Reset@?$CCountedPointer@VCEngineManager@@@@QAEXPAVCEngineManager@@@Z	closed	
+13197	land1122nf282	004441a0	?Reset@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@QAEXPAVCDrawSpiritsHealth@NPlayerGui@@@Z	closed	
+13198	land1122nf282	00444210	?Reset@?$CCountedPointer@VCDrawScreenFade@NPlayerGui@@@@QAEXPAVCDrawScreenFade@NPlayerGui@@@Z	closed	
+13199	land1122nf282	00444280	?Reset@?$CCountedPointer@VCDrawMoney@NPlayerGui@@@@QAEXPAVCDrawMoney@NPlayerGui@@@Z	closed	
+13200	land1122nf282	004442f0	?Reset@?$CCountedPointer@VCDrawRenown@NPlayerGui@@@@QAEXPAVCDrawRenown@NPlayerGui@@@Z	closed	
+13201	land1122nf282	00444360	?Reset@?$CCountedPointer@VCDrawMorality@NPlayerGui@@@@QAEXPAVCDrawMorality@NPlayerGui@@@Z	closed	
+13202	land1122nf282	004443d0	?Reset@?$CCountedPointer@VCDrawExperience@NPlayerGui@@@@QAEXPAVCDrawExperience@NPlayerGui@@@Z	closed	
+13203	land1122nf282	00444440	?Reset@?$CCountedPointer@VCDrawCrime@NPlayerGui@@@@QAEXPAVCDrawCrime@NPlayerGui@@@Z	closed	
+13204	land1122nf282	004444b0	?Reset@?$CCountedPointer@VCDrawReceivedItems@NPlayerGui@@@@QAEXPAVCDrawReceivedItems@NPlayerGui@@@Z	closed	
+13205	land1122nf282	00444520	?Reset@?$CCountedPointer@VCDrawFishingGame@NPlayerGui@@@@QAEXPAVCDrawFishingGame@NPlayerGui@@@Z	closed	
+13206	land1122nf282	004446e0	?Reset@?$CCountedPointer@VCDrawDamage@NPlayerGui@@@@QAEXPAVCDrawDamage@NPlayerGui@@@Z	closed	
+13207	land1122nf282	00444830	?Reset@?$CCountedPointer@VCDrawTargetInfo@NPlayerGui@@@@QAEXPAVCDrawTargetInfo@NPlayerGui@@@Z	closed	
+13208	land1122nf282	004448a0	?Reset@?$CCountedPointer@VCDrawHighlightingTargetingCursor@NPlayerGui@@@@QAEXPAVCDrawHighlightingTargetingCursor@NPlayerGui@@@Z	closed	
+13209	land1122nf282	00444a60	?Reset@?$CCountedPointer@VCDrawBettingHUD@NPlayerGui@@@@QAEXPAVCDrawBettingHUD@NPlayerGui@@@Z	closed	
+13210	land1122nf282	00444ad0	?Reset@?$CCountedPointer@VCDrawProjectileTargetingCentre@NPlayerGui@@@@QAEXPAVCDrawProjectileTargetingCentre@NPlayerGui@@@Z	closed	
+13211	land1122nf282	00444d00	?Reset@?$CCountedPointer@VCDrawNPCName@NPlayerGui@@@@QAEXPAVCDrawNPCName@NPlayerGui@@@Z	closed	
+13212	land1122nf282	00445190	?Reset@?$CCountedPointer@VCStatBar@NPlayerGui@@@@QAEXPAVCStatBar@NPlayerGui@@@Z	closed	
+13213	land1122nf282	00445200	?Reset@?$CCountedPointer@VCCrimeStatBar@NPlayerGui@@@@QAEXPAVCCrimeStatBar@NPlayerGui@@@Z	closed	
+13214	land1122nf282	0049bce0	?Reset@?$CCountedPointer@VCGameJoystickManager@@@@QAEXPAVCGameJoystickManager@@@Z	closed	
+13215	land1122nf282	004a9a10	?Reset@?$CCountedPointer@VCQuestManager@@@@QAEXPAVCQuestManager@@@Z	closed	
+13216	land1122nf282	004a9a80	?Reset@?$CCountedPointer@VCSkeletalMorphResourceManager@@@@QAEXPAVCSkeletalMorphResourceManager@@@Z	closed	
+13217	land1122nf282	004adf80	?Reset@?$CCountedPointer@VCMessageEventManager@@@@QAEXPAVCMessageEventManager@@@Z	closed	
+13218	land1122nf282	0050f2b0	?Reset@?$CCountedPointer@VCWADBank@@@@QAEXPAVCWADBank@@@Z	closed	
+13219	land1122nf282	0050faa0	?Reset@?$CCountedPointer@VCMap@@@@QAEXPAVCMap@@@Z	closed	
+13220	land1122nf282	0050fb90	?Reset@?$CCountedPointer@VCLevelLoader@@@@QAEXPAVCLevelLoader@@@Z	closed	
 13221	land1122nf282	0051cea0	?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z	partial	?Reset@CCountedPointer_0051ccd0@@QAEXPAX@Z
 13222	land1122nf282	0065e198	??0?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@PAVCVillageTaskPatrol@@@Z	partial	??0CCountedPointer_0065d258@@QAE@PAX@Z
 13223	land1122nf282	0065e2e0	??0?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAE@PAVCVillageTaskSecuritySweep@@@Z	partial	??0CCountedPointer_0065d2b1@@QAE@PAX@Z
-13224	land1122nf282	00673500	?Reset@?$CCountedPointer@VCCreatureStatsDef@@@@QAEXPAVCCreatureStatsDef@@@Z	partial	?Reset@CCountedPointer_00672aa0@@QAEXPAX@Z
+13224	land1122nf282	00673500	?Reset@?$CCountedPointer@VCCreatureStatsDef@@@@QAEXPAVCCreatureStatsDef@@@Z	closed	
 13225	land1122nf282	00675060	?Reset@?$CCountedPointer@VCWoundMorphs@@@@QAEXPAVCWoundMorphs@@@Z	partial	?Reset@CCountedPointer_00674e50@@QAEXPAX@Z
 13226	land1122nf282	0067fc10	?Reset@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAEXPAVCPhysicalPrimitiveBase@NHitLocations@@@Z	open	?Reset@?$CCountedPointer@UCPhysicalPrimitiveBase@@@@QAEXPAUCPhysicalPrimitiveBase@@@Z || ?Reset@CCountedPointer_0067f650@@QAEXPAX@Z
-13227	land1122nf282	006fd460	?Reset@?$CCountedPointer@VCManager@NAnimationEvents@@@@QAEXPAVCManager@NAnimationEvents@@@Z	partial	?Reset@CCountedPointer_006fd400@@QAEXPAX@Z
-13228	land1122nf282	00718940	?Reset@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAEXPAVCScriptConversation@NTCScriptedControl@@@Z	partial	?Reset@CCountedPointer_00718080@@QAEXPAX@Z
+13227	land1122nf282	006fd460	?Reset@?$CCountedPointer@VCManager@NAnimationEvents@@@@QAEXPAVCManager@NAnimationEvents@@@Z	closed	
+13228	land1122nf282	00718940	?Reset@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAEXPAVCScriptConversation@NTCScriptedControl@@@Z	closed	
 13229	land1122nf282	00771b60	?Reset@?$CCountedPointer@VCOpinionSet@@@@QAEXPAVCOpinionSet@@@Z	partial	?Reset@CCountedPointer_00771b30@@QAEXPAX@Z
-13230	land1122nf282	00786bf0	?Reset@?$CCountedPointer@VC3DSkeletalMorph@@@@QAEXPAVC3DSkeletalMorph@@@Z	partial	?Reset@CCountedPointer_00786a20@@QAEXPAX@Z
+13230	land1122nf282	00786bf0	?Reset@?$CCountedPointer@VC3DSkeletalMorph@@@@QAEXPAVC3DSkeletalMorph@@@Z	closed	
 13231	land1122nf282	008ab230	?Reset@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@@Z	partial	?Reset@CCountedPointer_008aa7e0@@QAEXPAX@Z
 13232	land1122nf282	008ab2b0	?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z	partial	?Reset@CCountedPointer_008aa7f0@@QAEXPAX@Z
-13233	land1122nf282	00992170	?Reset@?$CCountedPointer@VCResourceBank@@@@QAEXPAVCResourceBank@@@Z	partial	?Reset@CCountedPointer_00991e00@@QAEXPAX@Z
-13234	land1122nf282	009b1f50	?Reset@?$CCountedPointer@VCSymbolMap@@@@QAEXPAVCSymbolMap@@@Z	partial	?Reset@CCountedPointer_009b0e90@@QAEXPAX@Z
-13235	land1122nf282	009e3090	?Reset@?$CCountedPointer@VCFontDataBank@@@@QAEXPAVCFontDataBank@@@Z	partial	?Reset@CCountedPointer_009e2960@@QAEXPAX@Z
-13236	land1122nf282	009e3100	?Reset@?$CCountedPointer@VCStreamingFontDataBank@@@@QAEXPAVCStreamingFontDataBank@@@Z	partial	?Reset@CCountedPointer_009e2970@@QAEXPAX@Z
+13233	land1122nf282	00992170	?Reset@?$CCountedPointer@VCResourceBank@@@@QAEXPAVCResourceBank@@@Z	closed	
+13234	land1122nf282	009b1f50	?Reset@?$CCountedPointer@VCSymbolMap@@@@QAEXPAVCSymbolMap@@@Z	closed	
+13235	land1122nf282	009e3090	?Reset@?$CCountedPointer@VCFontDataBank@@@@QAEXPAVCFontDataBank@@@Z	closed	
+13236	land1122nf282	009e3100	?Reset@?$CCountedPointer@VCStreamingFontDataBank@@@@QAEXPAVCStreamingFontDataBank@@@Z	closed	
 13237	land1122nf282	00a31640	?Reset@?$CCountedPointer@VCContainmentVolume@@@@QAEXPAVCContainmentVolume@@@Z	partial	?Reset@CCountedPointer@@QAEXPAVCContainmentVolume@@@Z || ?Reset@CCountedPointer_00a110d0@@QAEXPAX@Z
-13238	land1122nf282	00a16640	?Reset@?$CCountedPointer@VCNavQuadTree@@@@QAEXPAVCNavQuadTree@@@Z	partial	?Reset@CCountedPointer_00a16270@@QAEXPAX@Z
-13239	land1122nf282	00a29c50	?Reset@?$CCountedPointer@VC3DAnimation2@@@@QAEXPAVC3DAnimation2@@@Z	partial	?Reset@CCountedPointer_00a282f0@@QAEXPAX@Z
+13238	land1122nf282	00a16640	?Reset@?$CCountedPointer@VCNavQuadTree@@@@QAEXPAVCNavQuadTree@@@Z	closed	
+13239	land1122nf282	00a29c50	?Reset@?$CCountedPointer@VC3DAnimation2@@@@QAEXPAVC3DAnimation2@@@Z	closed	
 13240	land1122nf282	00a44170	?Reset@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXPAVCLipSyncSampleData@@@Z	partial	?Reset@CCountedPointer_00a44130@@QAEXPAX@Z
-13241	land1122nf282	00a52be0	?Reset@?$CCountedPointer@VCSimpleMemoryPool@@@@QAEXPAVCSimpleMemoryPool@@@Z	partial	?Reset@CCountedPointer_00a51180@@QAEXPAX@Z
-13242	land1122nf282	00a6ae60	?Reset@?$CCountedPointer@VCVolumeTexture@@@@QAEXPAVCVolumeTexture@@@Z	partial	?Reset@CCountedPointer_00a6acb0@@QAEXPAX@Z
+13241	land1122nf282	00a52be0	?Reset@?$CCountedPointer@VCSimpleMemoryPool@@@@QAEXPAVCSimpleMemoryPool@@@Z	closed	
+13242	land1122nf282	00a6ae60	?Reset@?$CCountedPointer@VCVolumeTexture@@@@QAEXPAVCVolumeTexture@@@Z	closed	
 13243	land1122nf282	00a8d400	?Reset@?$CCountedPointer@VC3DBone2@@@@QAEXPAVC3DBone2@@@Z	open	?Reset@CCountedPointer_00a8cb70@@QAEXPAX@Z
 13244	land1122nf282	00a9a420	?Reset@?$CCountedPointer@VC3DAnimFileRootChunk@@@@QAEXPAVC3DAnimFileRootChunk@@@Z	partial	?Reset@CCountedPointer_00a99fe0@@QAEXPAX@Z
 13245	land1122nf282	00a9ced0	?Reset@?$CCountedPointer@VC3DMeshFileRootChunk@@@@QAEXPAVC3DMeshFileRootChunk@@@Z	partial	?Reset@CCountedPointer_00a9cb20@@QAEXPAX@Z
 13246	land1122nf282	00ac38a0	?Reset@?$CCountedPointer@VC3DMeshPartitionElement@@@@QAEXPAVC3DMeshPartitionElement@@@Z	partial	?Reset@CCountedPointer_00ac3810@@QAEXPAX@Z
-13247	land1122nf282	00ac3ff0	?Reset@?$CCountedPointer@VCParticleProgram@@@@QAEXPAVCParticleProgram@@@Z	partial	?Reset@CCountedPointer_00ac3fd0@@QAEXPAX@Z
+13247	land1122nf282	00ac3ff0	?Reset@?$CCountedPointer@VCParticleProgram@@@@QAEXPAVCParticleProgram@@@Z	closed	
 13248	land1122nf282	00ad65a0	?Reset@?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@QAEXPAVCVertexPairContraction@QuadricOptimiserInternals@@@Z	open	?Reset@CCountedPointer_00ad5ed0@@QAEXPAX@Z
-13249	land1122nf282	00ae93e0	?Reset@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAEXPAVCParticleDataBank@NParticleEngine@@@Z	partial	?Reset@CCountedPointer_00ae91c0@@QAEXPAX@Z
+13249	land1122nf282	00ae93e0	?Reset@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAEXPAVCParticleDataBank@NParticleEngine@@@Z	closed	
 13250	land1122nf282	0041bd80	?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z	partial	OnDie
 13251	land1122nf282	00a8cb70	?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z	closed	
 13252	land1122nf282	0067f650	?DeleteData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@SIXPAX@Z	partial	DeleteData
 13253	land1122nf282	00a110d0	?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z	partial	DeleteData
 13254	land1122nf282	00a99fe0	?DeleteData@?$CCountedPointer@VC3DAnimFileRootChunk@@@@SIXPAX@Z	partial	DeleteData
 13255	land1122nf282	00a9cb20	?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z	partial	DeleteData
-13258	land1122nf284	00b2e290	?Reset@?$CCountedPointer@VCCompositeSurfaceCache@@@@QAEXPAVCCompositeSurfaceCache@@@Z	partial	?Reset@CCountedPointer_00b2de20@@QAEXPAX@Z
-13259	land1122nf284	00b37470	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerStaticMeshes@@@@QAEXPAVCEnginePrimitiveManagerStaticMeshes@@@Z	partial	?Reset@CCountedPointer_00b36060@@QAEXPAX@Z
-13260	land1122nf284	00b37520	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerAnimatedMeshes@@@@QAEXPAVCEnginePrimitiveManagerAnimatedMeshes@@@Z	partial	?Reset@CCountedPointer_00b36070@@QAEXPAX@Z
-13261	land1122nf284	00b375d0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedStaticMeshes@@@@QAEXPAVCEnginePrimitiveManagerRepeatedStaticMeshes@@@Z	partial	?Reset@CCountedPointer_00b36080@@QAEXPAX@Z
-13262	land1122nf284	00b37680	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedZSprites@@@@QAEXPAVCEnginePrimitiveManagerRepeatedZSprites@@@Z	partial	?Reset@CCountedPointer_00b36090@@QAEXPAX@Z
-13263	land1122nf284	00b37730	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerSprites@@@@QAEXPAVCEnginePrimitiveManagerSprites@@@Z	partial	?Reset@CCountedPointer_00b360a0@@QAEXPAX@Z
-13264	land1122nf284	00b377e0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerFlareSprites@@@@QAEXPAVCEnginePrimitiveManagerFlareSprites@@@Z	partial	?Reset@CCountedPointer_00b360b0@@QAEXPAX@Z
-13265	land1122nf284	00b37890	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@QAEXPAVCEnginePrimitiveManagerWeaponTrails@@@Z	partial	?Reset@CCountedPointer_00b360c0@@QAEXPAX@Z
-13266	land1122nf284	00b37940	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@QAEXPAVCEnginePrimitiveManagerSpriteTrails@@@Z	partial	?Reset@CCountedPointer_00b360d0@@QAEXPAX@Z
-13267	land1122nf284	00b379f0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerLines@@@@QAEXPAVCEnginePrimitiveManagerLines@@@Z	partial	?Reset@CCountedPointer_00b360e0@@QAEXPAX@Z
-13268	land1122nf284	00b37aa0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerText@@@@QAEXPAVCEnginePrimitiveManagerText@@@Z	partial	?Reset@CCountedPointer_00b360f0@@QAEXPAX@Z
+13258	land1122nf284	00b2e290	?Reset@?$CCountedPointer@VCCompositeSurfaceCache@@@@QAEXPAVCCompositeSurfaceCache@@@Z	closed	
+13259	land1122nf284	00b37470	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerStaticMeshes@@@@QAEXPAVCEnginePrimitiveManagerStaticMeshes@@@Z	closed	
+13260	land1122nf284	00b37520	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerAnimatedMeshes@@@@QAEXPAVCEnginePrimitiveManagerAnimatedMeshes@@@Z	closed	
+13261	land1122nf284	00b375d0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedStaticMeshes@@@@QAEXPAVCEnginePrimitiveManagerRepeatedStaticMeshes@@@Z	closed	
+13262	land1122nf284	00b37680	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedZSprites@@@@QAEXPAVCEnginePrimitiveManagerRepeatedZSprites@@@Z	closed	
+13263	land1122nf284	00b37730	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerSprites@@@@QAEXPAVCEnginePrimitiveManagerSprites@@@Z	closed	
+13264	land1122nf284	00b377e0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerFlareSprites@@@@QAEXPAVCEnginePrimitiveManagerFlareSprites@@@Z	closed	
+13265	land1122nf284	00b37890	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@QAEXPAVCEnginePrimitiveManagerWeaponTrails@@@Z	closed	
+13266	land1122nf284	00b37940	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@QAEXPAVCEnginePrimitiveManagerSpriteTrails@@@Z	closed	
+13267	land1122nf284	00b379f0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerLines@@@@QAEXPAVCEnginePrimitiveManagerLines@@@Z	closed	
+13268	land1122nf284	00b37aa0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerText@@@@QAEXPAVCEnginePrimitiveManagerText@@@Z	closed	
 13269	land1122nf284	00b37b90	?Reset@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXPAVCEnginePrimitiveOcclusionGroupManager@@@Z	partial	?Reset@CCountedPointer_00b36100@@QAEXPAX@Z
-13270	land1122nf284	00b37c40	?Reset@?$CCountedPointer@VCEnginePrimitiveGroupManager@@@@QAEXPAVCEnginePrimitiveGroupManager@@@Z	partial	?Reset@CCountedPointer_00b36110@@QAEXPAX@Z
-13271	land1122nf284	00b37cf0	?Reset@?$CCountedPointer@VCEnginePrimitiveChangerManager@@@@QAEXPAVCEnginePrimitiveChangerManager@@@Z	partial	?Reset@CCountedPointer_00b36120@@QAEXPAX@Z
-13272	land1122nf284	00b37da0	?Reset@?$CCountedPointer@VCEngineClothRenderer@@@@QAEXPAVCEngineClothRenderer@@@Z	partial	?Reset@CCountedPointer_00b36130@@QAEXPAX@Z
-13273	land1122nf284	00b37e50	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleLineGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleLineGroup@@@Z	partial	?Reset@CCountedPointer_00b36140@@QAEXPAX@Z
-13274	land1122nf284	00b37f00	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleMeshGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleMeshGroup@@@Z	partial	?Reset@CCountedPointer_00b36150@@QAEXPAX@Z
-13275	land1122nf284	00b37fb0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleSpriteGroup@@@Z	partial	?Reset@CCountedPointer_00b36160@@QAEXPAX@Z
-13276	land1122nf284	00b38060	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteTrailGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleSpriteTrailGroup@@@Z	partial	?Reset@CCountedPointer_00b36170@@QAEXPAX@Z
-13277	land1122nf284	00b38110	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleGroup@@@Z	partial	?Reset@CCountedPointer_00b36180@@QAEXPAX@Z
-13278	land1122nf284	00b381c0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerDecal@@@@QAEXPAVCEnginePrimitiveManagerDecal@@@Z	partial	?Reset@CCountedPointer_00b36190@@QAEXPAX@Z
-13279	land1122nf284	00b38270	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleDecalGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleDecalGroup@@@Z	partial	?Reset@CCountedPointer_00b361a0@@QAEXPAX@Z
-13280	land1122nf284	00b38320	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@QAEXPAVCEnginePrimitiveManagerWeatherMask@@@Z	partial	?Reset@CCountedPointer_00b361b0@@QAEXPAX@Z
-13281	land1122nf284	00b4b360	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@QAEXPAVCEnginePrimitiveManager2DStaticMeshes@@@Z	partial	?Reset@CCountedPointer_00b4b020@@QAEXPAX@Z
-13282	land1122nf284	00b4b410	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DAnimatedMeshes@@@@QAEXPAVCEnginePrimitiveManager2DAnimatedMeshes@@@Z	partial	?Reset@CCountedPointer_00b4b030@@QAEXPAX@Z
-13283	land1122nf284	00b4b4c0	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DSprites@@@@QAEXPAVCEnginePrimitiveManager2DSprites@@@Z	partial	?Reset@CCountedPointer_00b4b040@@QAEXPAX@Z
-13284	land1122nf284	00b4b570	?Reset@?$CCountedPointer@VCEnginePrimitive2DViewportManager@@@@QAEXPAVCEnginePrimitive2DViewportManager@@@Z	partial	?Reset@CCountedPointer_00b4b050@@QAEXPAX@Z
-13285	land1122nf284	00b4b620	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DParticleGroup@@@@QAEXPAVCEnginePrimitiveManager2DParticleGroup@@@Z	partial	?Reset@CCountedPointer_00b4b060@@QAEXPAX@Z
+13270	land1122nf284	00b37c40	?Reset@?$CCountedPointer@VCEnginePrimitiveGroupManager@@@@QAEXPAVCEnginePrimitiveGroupManager@@@Z	closed	
+13271	land1122nf284	00b37cf0	?Reset@?$CCountedPointer@VCEnginePrimitiveChangerManager@@@@QAEXPAVCEnginePrimitiveChangerManager@@@Z	closed	
+13272	land1122nf284	00b37da0	?Reset@?$CCountedPointer@VCEngineClothRenderer@@@@QAEXPAVCEngineClothRenderer@@@Z	closed	
+13273	land1122nf284	00b37e50	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleLineGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleLineGroup@@@Z	closed	
+13274	land1122nf284	00b37f00	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleMeshGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleMeshGroup@@@Z	closed	
+13275	land1122nf284	00b37fb0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleSpriteGroup@@@Z	closed	
+13276	land1122nf284	00b38060	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteTrailGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleSpriteTrailGroup@@@Z	closed	
+13277	land1122nf284	00b38110	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleGroup@@@Z	closed	
+13278	land1122nf284	00b381c0	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerDecal@@@@QAEXPAVCEnginePrimitiveManagerDecal@@@Z	closed	
+13279	land1122nf284	00b38270	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleDecalGroup@@@@QAEXPAVCEnginePrimitiveManagerParticleDecalGroup@@@Z	closed	
+13280	land1122nf284	00b38320	?Reset@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@QAEXPAVCEnginePrimitiveManagerWeatherMask@@@Z	closed	
+13281	land1122nf284	00b4b360	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@QAEXPAVCEnginePrimitiveManager2DStaticMeshes@@@Z	closed	
+13282	land1122nf284	00b4b410	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DAnimatedMeshes@@@@QAEXPAVCEnginePrimitiveManager2DAnimatedMeshes@@@Z	closed	
+13283	land1122nf284	00b4b4c0	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DSprites@@@@QAEXPAVCEnginePrimitiveManager2DSprites@@@Z	closed	
+13284	land1122nf284	00b4b570	?Reset@?$CCountedPointer@VCEnginePrimitive2DViewportManager@@@@QAEXPAVCEnginePrimitive2DViewportManager@@@Z	closed	
+13285	land1122nf284	00b4b620	?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DParticleGroup@@@@QAEXPAVCEnginePrimitiveManager2DParticleGroup@@@Z	closed	
 13286	land1122nf284	00b95a30	?Reset@?$CCountedPointer@VCEngineSceneGrid@@@@QAEXPAVCEngineSceneGrid@@@Z	partial	?Reset@CCountedPointer_00b94f90@@QAEXPAX@Z
-13287	land1122nf284	00b95aa0	?Reset@?$CCountedPointer@VCEngineSceneMap@@@@QAEXPAVCEngineSceneMap@@@Z	partial	?Reset@CCountedPointer_00b95000@@QAEXPAX@Z
+13287	land1122nf284	00b95aa0	?Reset@?$CCountedPointer@VCEngineSceneMap@@@@QAEXPAVCEngineSceneMap@@@Z	closed	
 13288	land1122nf284	00bb64a0	?Reset@?$CCountedPointer@VCParticleSimulationRenderData@@@@QAEXPAVCParticleSimulationRenderData@@@Z	partial	?Reset@CCountedPointer_00bb6330@@QAEXPAX@Z
 13289	land1122nf284	00b94f90	?DeleteData@?$CCountedPointer@VCEngineSceneGrid@@@@SIXPAX@Z	partial	DeleteData
 13290	land1122nf283	00a26d40	?NotifyEntryAdded@CMeshDataBank@@MAEXKKABV?$CArray@D@@@Z	open	NotifyEntryAdded

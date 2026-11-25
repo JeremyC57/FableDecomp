@@ -1,0 +1,6 @@
+0051cea0 CCountedPointer<CRegionConnectionGraph>::Reset RELOCATION_MATCH
+OK   0051ccd0 +50    agree_pdb        ?DeleteData@?$CCountedPointer@VCRegionConnectionGraph@@@@SIXPAX@Z
+OK   0051cea0 self   agree_pdb        ?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z
+DEBT 00bfe9bc +1f    agree_unverified ??3@YAXPAX@Z
+DEBT 00bfea1a +3a    agree_unverified ??2@YAPAXI@Z
+NAME_GATE PASS

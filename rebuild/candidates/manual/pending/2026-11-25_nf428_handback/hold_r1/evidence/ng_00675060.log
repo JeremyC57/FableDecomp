@@ -1,0 +1,6 @@
+00675060 CCountedPointer<CWoundMorphs>::Reset RELOCATION_MATCH
+OK   00674e50 +50    agree_pdb        ?DeleteData@?$CCountedPointer@VCWoundMorphs@@@@SIXPAX@Z
+OK   00675060 self   agree_pdb        ?Reset@?$CCountedPointer@VCWoundMorphs@@@@QAEXPAVCWoundMorphs@@@Z
+DEBT 00bfe9bc +1f    agree_unverified ??3@YAXPAX@Z
+DEBT 00bfea1a +3a    agree_unverified ??2@YAPAXI@Z
+NAME_GATE PASS

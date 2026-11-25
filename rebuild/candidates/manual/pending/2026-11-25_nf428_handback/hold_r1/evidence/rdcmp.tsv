@@ -1,0 +1,18 @@
+00403db0	?Reset@?$CCountedPointer@VCFileInstaller@@@@QAEXPAVCFileInstaller@@@Z	103	00402510:EQ
+00403db0	?ReleaseData@?$CCountedPointer@VCFileInstaller@@@@QAEXXZ	53	00402510:NEQ
+00403e40	?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z	103	00402510:EQ 00416832:NEQ 0042e98f:NEQ
+00403e40	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	53	00402510:NEQ 00416832:NEQ 0042e98f:NEQ
+0051cea0	?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z	103	00506d40:EQ 0051ccd0:EQ
+0051cea0	?ReleaseData@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXXZ	53	00506d40:EQ 0051ccd0:EQ
+00675060	?Reset@?$CCountedPointer@VCWoundMorphs@@@@QAEXPAVCWoundMorphs@@@Z	103	00674e50:EQ
+00675060	?ReleaseData@?$CCountedPointer@VCWoundMorphs@@@@QAEXXZ	53	00674e50:EQ
+006750d0	?Reset@?$CCountedPointer@VCExpressionSet@@@@QAEXPAVCExpressionSet@@@Z	103	00674e80:EQ
+006750d0	?ReleaseData@?$CCountedPointer@VCExpressionSet@@@@QAEXXZ	53	00674e80:EQ
+00771b60	?Reset@?$CCountedPointer@VCOpinionSet@@@@QAEXPAVCOpinionSet@@@Z	103	00771b30:EQ 00771660:EQ
+00771b60	?ReleaseData@?$CCountedPointer@VCOpinionSet@@@@QAEXXZ	53	00771b30:EQ 00771660:EQ
+008ab230	?Reset@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@@Z	103	008ab960:EQ
+008ab230	?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ	53	007e70e0:NEQ 008ab960:EQ
+00a44170	?Reset@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXPAVCLipSyncSampleData@@@Z	103	00a44130:EQ
+00a44170	?ReleaseData@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXXZ	53	00a44130:EQ
+00b37b90	?Reset@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXPAVCEnginePrimitiveOcclusionGroupManager@@@Z	103	00b33b50:EQ
+00b37b90	?ReleaseData@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXXZ	53	00b33b50:EQ

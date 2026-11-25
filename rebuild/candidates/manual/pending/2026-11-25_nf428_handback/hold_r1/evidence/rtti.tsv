@@ -1,0 +1,12 @@
+00403db0	CFileInstaller	CFileInstaller@@	RTTI_OK	CCharString@@,CFileInstaller@@ | 
+00403e40	NGameText::CDataBank	CDataBank@NGameText@@	RTTI_OK	CBankFileAsync@@,CCharString@@,CDataBank@NGameText@@,CResourceBank@@,CWideString@@ | CBankFileAsync@@,CCharString@@,CDataBank@NGameText@@,CResourceBank@@ | CBankFileAsync@@,CDataBank@NGameText@@,CResourceBank@@
+0051cea0	CRegionConnectionGraph	CRegionConnectionGraph@@	RTTI_DERIVED	CBaseClassNonCopyable@@IAE@XZ@@,CDiskFileWin32@@,CWideString@@
+00675060	CWoundMorphs	CWoundMorphs@@	RTTI_DERIVED	CCreatureDef@@,CResource@@
+006750d0	CExpressionSet	CExpressionSet@@	RTTI_DERIVED	CCreatureDef@@,CRandomAppearanceMorph@@,CResource@@
+00771b60	COpinionSet	COpinionSet@@	NONE	
+008ab230	CScriptGameResourceObjectScriptedThingBase	CScriptGameResourceObjectScriptedThingBase@@	NONE	
+008ab2b0	CScriptGameResourceObjectMovieBase	CScriptGameResourceObjectMovieBase@@	NONE	
+00a44170	CLipSyncSampleData	CLipSyncSampleData@@	NONE	
+00ac38a0	C3DMeshPartitionElement	C3DMeshPartitionElement@@	NONE	 | 
+00b37b90	CEnginePrimitiveOcclusionGroupManager	CEnginePrimitiveOcclusionGroupManager@@	RTTI_DERIVED	CBaseClassNonCopyable@@IAE@XZ@@,CCharString@@,CEnginePrimitiveManager@@,CEnginePrimitiveManagerAnimatedMeshes@@,CEnginePrimitiveManagerAnimatedMeshesBase@@,CEnginePrimitiveManagerFlareSprites@@,CEnginePrimitiveManagerLines@@,CEnginePrimitiveManagerOcclusionBase@@,CEnginePrimitiveManagerRepeatedStati
+00bb64a0	CParticleSimulationRenderData	CParticleSimulationRenderData@@	RTTI_DERIVED	CBaseClassNonCopyable@@IAE@XZ@@,CEngineParticleSimulationRenderData@@,CVertexBufferWin32@@

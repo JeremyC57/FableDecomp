@@ -1,0 +1,33 @@
+00403db0	# leaf ?Reset@?$CCountedPointer@VCFileInstaller@@@@QAEXPAVCFileInstaller@@@Z  source_a=yes  
+00403db0	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00403db0	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCFileInstaller@@@@QAEXXZ
+00403e40	# leaf ?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z  source_a=yes  
+00403e40	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00403e40	NEQ	NEQ	00403750	b	pickany	53	53	n	n	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ
+0051cea0	# leaf ?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z  source_a=yes  
+0051cea0	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+0051cea0	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXXZ
+00675060	# leaf ?Reset@?$CCountedPointer@VCWoundMorphs@@@@QAEXPAVCWoundMorphs@@@Z  source_a=yes  
+00675060	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00675060	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCWoundMorphs@@@@QAEXXZ
+006750d0	# leaf ?Reset@?$CCountedPointer@VCExpressionSet@@@@QAEXPAVCExpressionSet@@@Z  source_a=yes  
+006750d0	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+006750d0	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCExpressionSet@@@@QAEXXZ
+00771b60	# leaf ?Reset@?$CCountedPointer@VCOpinionSet@@@@QAEXPAVCOpinionSet@@@Z  source_a=yes  
+00771b60	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00771b60	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCOpinionSet@@@@QAEXXZ
+008ab230	# leaf ?Reset@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@@Z  source_a=yes  
+008ab230	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+008ab230	NEQ	NEQ	007e70e0	b	pickany	53	53	n	n	?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ
+008ab2b0	# leaf ?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z  source_a=yes  
+008ab2b0	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00a44170	# leaf ?Reset@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXPAVCLipSyncSampleData@@@Z  source_a=yes  
+00a44170	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00a44170	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXXZ
+00ac38a0	# leaf ?Reset@?$CCountedPointer@VC3DMeshPartitionElement@@@@QAEXPAVC3DMeshPartitionElement@@@Z  source_a=yes  
+00ac38a0	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00b37b90	# leaf ?Reset@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXPAVCEnginePrimitiveOcclusionGroupManager@@@Z  source_a=yes  
+00b37b90	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z
+00b37b90	NOADDR	NOADDR	-	-	pickany	53	-	n	n	?ReleaseData@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXXZ
+00bb64a0	# leaf ?Reset@?$CCountedPointer@VCParticleSimulationRenderData@@@@QAEXPAVCParticleSimulationRenderData@@@Z  source_a=yes  
+00bb64a0	NOADDR	NOADDR	-	-	pickany	25	-	n	n	??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z

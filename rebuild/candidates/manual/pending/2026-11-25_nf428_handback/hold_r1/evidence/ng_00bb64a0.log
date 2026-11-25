@@ -1,0 +1,6 @@
+00bb64a0 CCountedPointer<CParticleSimulationRenderData>::Reset RELOCATION_MATCH
+OK   00bb6330 +50    agree_pdb        ?DeleteData@?$CCountedPointer@VCParticleSimulationRenderData@@@@SIXPAX@Z
+OK   00bb64a0 self   agree_pdb        ?Reset@?$CCountedPointer@VCParticleSimulationRenderData@@@@QAEXPAVCParticleSimulationRenderData@@@Z
+DEBT 00bfe9bc +1f    agree_unverified ??3@YAXPAX@Z
+DEBT 00bfea1a +3a    agree_unverified ??2@YAPAXI@Z
+NAME_GATE PASS

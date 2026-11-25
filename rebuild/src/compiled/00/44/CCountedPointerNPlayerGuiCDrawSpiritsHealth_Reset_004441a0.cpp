@@ -1,48 +1,16 @@
-// CCountedPointer_00443580::Reset(T*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
-// Leaf: ?Reset@CCountedPointer_00443580@@QAEXPAX@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x004441A0, oracle length 103 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je A ; dec dword ptr [eax] ; mov eax,[esi+4] ; cmp dword ptr [eax],0 ; jne A ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+4] ; push eax ; call operator delete ; add esp,4 ; A: mov eax,[esp+8] ; test eax,eax ; mov dword ptr [esi+4],0 ; mov [esi],eax ; je Z ; push 0Ch ; call operator new ; add esp,4 ; test eax,eax ; je N ; mov ecx,[esi] ; mov dword ptr [eax],1 ; mov dword ptr [eax+4],offset Destroy ; mov [eax+8],ecx ; mov [esi+4],eax ; pop esi ; ret 4 ; N: xor eax,eax ; mov [esi+4],eax ; Z: pop esi ; ret 4
-// Intrusive-count smart pointer {object, count block}: the 12-byte count block holds the
-// reference count, the per-type destroy function (0x00443580, called with the object in ecx)
-// and the object. Reset() decrements the old block (re-reading it after the decrement: the count
-// is touched through a reference), destroys + frees it on zero, then adopts the new object by
-// allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
-// instantiation is named from the manifest label when unique, else from the destroy function.
-// One of 121 bodies of this shape.
-// Naming (NF282, 2026-11-22): the count block's deleter 0x00443580 now binds its PDB spelling ?DeleteData@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@SIXPAX@Z (FableWin.pdb name set;
-//   retail stores 0x00443580 as the count block's DeleteFunc here), declared by the shared engine/CCountedPointer.h under FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY (only its
-//   address is stored here, T is only declared); was the free stand-in ?Destroy_00443580@@YIXPAX@Z. Object otherwise unchanged.
+// CCountedPointer::Reset(T* data) -- (CCountedPointer<NPlayerGui::CDrawSpiritsHealth>) drop the current share (destroying the pointee on the last reference), then adopt data with a fresh count block
+// Leaf: ?Reset@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@QAEXPAVCDrawSpiritsHealth@NPlayerGui@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004441A0, 103 bytes, thiscall, `ret 4`. Stores DeleteData 0x00443580.
+// Names (NF428, 2026-11-25; was the stand-in CCountedPointer_00443580::Reset with a local count-block model, self
+//   ?Reset@CCountedPointer_00443580@@QAEXPAX@Z): T from two sources: (1) the retail callers bind the PDB name (table, at 0043b570), a whole
+//   FableWin.pdb entry; (2) retail RTTI: a retail call site passes a freshly constructed NPlayerGui::CDrawSpiritsHealth (its vftable RTTI or ??0 call
+//   just before the call; NF428 rtti428). The deleter the body stores, 0x00443580, is bound to
+//   ?DeleteData@?$CCountedPointer@VCDrawSpiritsHealth@NPlayerGui@@@@SIXPAX@Z, a name derived from (1), consistent with it.
+// Form (NF371 R1 form b, landed 0x00A299C0): the sibling explicit instantiation of engine/CCountedPointer.h's member, because a
+//   landed binder emits a pick-any copy of this Reset (a strong definition would be an equal-body LNK2005);
+//   FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY leaves the stored deleter an external reference to its owner row.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
 #include "engine/CCountedPointer.h"
 namespace NPlayerGui { class CDrawSpiritsHealth; }
 
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(&CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::DeleteData), m_pObject(object) { }
-};
-
-struct CCountedPointer_00443580 {
-    void* m_pObject;                       // +0
-    SCountBlock* m_pCount;                 // +4
-    void Reset(void* object);
-};
-
-void CCountedPointer_00443580::Reset(void* object)
-{
-    if (m_pCount) {
-        --m_pCount->m_references;
-        if (m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            delete m_pCount;
-        }
-    }
-    m_pCount = 0;
-    m_pObject = object;
-    if (object)
-        m_pCount = new SCountBlock(m_pObject);   // re-read through `this` (retail loads [esi] for the block), not the argument
-}
+template void CCountedPointer<NPlayerGui::CDrawSpiritsHealth>::Reset(NPlayerGui::CDrawSpiritsHealth*);

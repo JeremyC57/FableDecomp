@@ -149030,9 +149030,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00413520'
-        Module = 'CCountedPointer_004132f0'
-        Source = '00/41/CCountedPointer004132f0_Reset_00413520.cpp'
-        TestSource = '00/41/CCountedPointer004132f0_Reset_00413520_test.cpp'
+        Module = 'CCountedPointer<CConsole>'
+        Source = '00/41/CCountedPointerCConsole_Reset_00413520.cpp'
+        TestSource = '00/41/CCountedPointerCConsole_Reset_00413520_test.cpp'
         PassPattern = '00413520_TEST PASS'
     }
     [pscustomobject]@{

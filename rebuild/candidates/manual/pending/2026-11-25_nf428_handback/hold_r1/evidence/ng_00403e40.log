@@ -1,0 +1,6 @@
+00403e40 CCountedPointer_CIPhysicsFacesSegmentBase_const::Reset RELOCATION_MATCH
+OK   00403650 +50    agree_pdb        ?DeleteData@?$CCountedPointer@VCDataBank@NGameText@@@@SIXPAX@Z
+OK   00403e40 self   agree_pdb        ?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z
+DEBT 00bfe9bc +1f    agree_unverified ??3@YAXPAX@Z
+DEBT 00bfea1a +3a    agree_unverified ??2@YAPAXI@Z
+NAME_GATE PASS

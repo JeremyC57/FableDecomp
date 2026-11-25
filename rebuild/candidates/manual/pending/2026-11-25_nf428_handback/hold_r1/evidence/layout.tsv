@@ -1,0 +1,12 @@
+00403db0	CFileInstaller	NO_SITE	
+00403e40	NGameText::CDataBank	LAYOUT_OK	0042e98f CNewFrontendGameComponent+0x60 ('CCountedPointer<NGameText::CDataBank>', 'm_pTextBank')
+0051cea0	CRegionConnectionGraph	NO_SITE	
+00675060	CWoundMorphs	NO_SITE	
+006750d0	CExpressionSet	LAYOUT_OK	006765a0 CCreatureDef+0x38 ('CCountedPointer<CExpressionSet>', 'PExpressions')
+00771b60	COpinionSet	LAYOUT_OTHER	00771660 CTCOpinionSource+0x78 ('bool', 'ReactToSelfPermitted')
+008ab230	CScriptGameResourceObjectScriptedThingBase	NO_SITE	
+008ab2b0	CScriptGameResourceObjectMovieBase	NO_SITE	
+00a44170	CLipSyncSampleData	NO_SITE	
+00ac38a0	C3DMeshPartitionElement	NO_SITE	00ac2970 C3DMeshFilePartitionChunk_Methods+0x10 None
+00b37b90	CEnginePrimitiveOcclusionGroupManager	NO_SITE	00b33b50 CEnginePrimitiveRenderer+0x2d8 None
+00bb64a0	CParticleSimulationRenderData	NO_SITE	

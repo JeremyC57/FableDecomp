@@ -1,0 +1,6 @@
+006750d0 CCountedPointer<CExpressionSet>::Reset RELOCATION_MATCH
+OK   00674e80 +50    agree_pdb        ?DeleteData@?$CCountedPointer@VCExpressionSet@@@@SIXPAX@Z
+OK   006750d0 self   agree_pdb        ?Reset@?$CCountedPointer@VCExpressionSet@@@@QAEXPAVCExpressionSet@@@Z
+DEBT 00bfe9bc +1f    agree_unverified ??3@YAXPAX@Z
+DEBT 00bfea1a +3a    agree_unverified ??2@YAPAXI@Z
+NAME_GATE PASS

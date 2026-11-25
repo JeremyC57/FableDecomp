@@ -1,0 +1,31 @@
+// Behaviour test for 0x00403E40: links the row object's ?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z.
+// The shared engine/CCountedPointer.h with Reset declaration-only (FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL, so the call below is an
+// external reference the row defines; the row is the explicit instantiation, the test alone opts in to the declaration) and DeleteData declaration-only (defined here for T, the row stores its address).
+// T stays incomplete: Reset only stores the pointer, the deleter receives it as void*.
+#include <cstdio>
+#define FABLE_RETAIL_CCOUNTEDPOINTER_RESET_CAMERA_DECL
+#define FABLE_RETAIL_CCOUNTEDPOINTER_DELETEDATA_DECL_ONLY
+#include "engine/CCountedPointer.h"
+namespace NGameText { class CDataBank; }
+static int g_deletes = 0;
+static const void* g_deleted = 0;
+template <> void FABLE_FASTCALL CCountedPointer<NGameText::CDataBank>::DeleteData(void* data) { ++g_deletes; g_deleted = data; }
+int main()
+{
+    static int objA, objB;                               // stand-in storage: T is only declared
+    NGameText::CDataBank* a = reinterpret_cast<NGameText::CDataBank*>(&objA);
+    NGameText::CDataBank* b = reinterpret_cast<NGameText::CDataBank*>(&objB);
+    CCountedPointer<NGameText::CDataBank> p; p.Data = 0; p.Info = 0;
+    p.Reset(a);                                         // adopt a: fresh block, count 1, deleter stored
+    if (p.Data != a || !p.Info || p.Info->RefCount != 1 || p.Info->Data != (void*)a || p.Info->DeleteFunc != &CCountedPointer<NGameText::CDataBank>::DeleteData) return 1;
+    CCPPointerInfo* first = p.Info;
+    first->RefCount = 2;                                // a second sharer: Reset only drops our reference
+    p.Reset(b);
+    if (first->RefCount != 1 || g_deletes != 0 || p.Data != b || !p.Info || p.Info == first) return 2;
+    p.Reset(0);                                         // last reference on b: deleter runs on b, pointer empties
+    if (g_deletes != 1 || g_deleted != (void*)b || p.Data != 0 || p.Info != 0) return 3;
+    delete first;
+    p.Data = 0; p.Info = 0;                             // the header has no destructor body to run here
+    std::printf("00403e40_TEST PASS\n");
+    return 0;
+}

@@ -1,0 +1,12 @@
+00403db0	Reset	CFileInstaller	?Reset@CCountedPointer_00403630@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCFileInstaller@@@@QAEXPAVCFileInstaller@@@Z	00403630	inst
+00403e40	Reset	NGameText::CDataBank	?Reset@CCountedPointer_CIPhysicsFacesSegmentBase_const@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z	00403650	inst
+0051cea0	Reset	CRegionConnectionGraph	?Reset@CCountedPointer_0051ccd0@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCRegionConnectionGraph@@@@QAEXPAVCRegionConnectionGraph@@@Z	0051ccd0	inst
+00675060	Reset	CWoundMorphs	?Reset@CCountedPointer_00674e50@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCWoundMorphs@@@@QAEXPAVCWoundMorphs@@@Z	00674e50	inst
+006750d0	Reset	CExpressionSet	?Reset@CCountedPointer_00674e80@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCExpressionSet@@@@QAEXPAVCExpressionSet@@@Z	00674e80	inst
+00771b60	Reset	COpinionSet	?Reset@CCountedPointer_00771b30@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCOpinionSet@@@@QAEXPAVCOpinionSet@@@Z	00771b30	inst
+008ab230	Reset	CScriptGameResourceObjectScriptedThingBase	?Reset@CCountedPointer_008aa7e0@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@@Z	008aa7e0	inst
+008ab2b0	Reset	CScriptGameResourceObjectMovieBase	?Reset@CCountedPointer_008aa7f0@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z	008aa7f0	spec
+00a44170	Reset	CLipSyncSampleData	?Reset@CCountedPointer_00a44130@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCLipSyncSampleData@@@@QAEXPAVCLipSyncSampleData@@@Z	00a44130	inst
+00ac38a0	Reset	C3DMeshPartitionElement	?Reset@CCountedPointer_00ac3810@@QAEXPAX@Z	?Reset@?$CCountedPointer@VC3DMeshPartitionElement@@@@QAEXPAVC3DMeshPartitionElement@@@Z	00ac3810	spec
+00b37b90	Reset	CEnginePrimitiveOcclusionGroupManager	?Reset@CCountedPointer_00b36100@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXPAVCEnginePrimitiveOcclusionGroupManager@@@Z	00b36100	inst
+00bb64a0	Reset	CParticleSimulationRenderData	?Reset@CCountedPointer_00bb6330@@QAEXPAX@Z	?Reset@?$CCountedPointer@VCParticleSimulationRenderData@@@@QAEXPAVCParticleSimulationRenderData@@@Z	00bb6330	spec

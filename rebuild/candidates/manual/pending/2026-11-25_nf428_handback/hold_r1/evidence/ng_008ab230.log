@@ -1,0 +1,6 @@
+008ab230 CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::Reset RELOCATION_MATCH
+OK   008aa7e0 +50    agree_pdb        ?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@SIXPAX@Z
+OK   008ab230 self   agree_pdb        ?Reset@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@@Z
+DEBT 00bfe9bc +1f    agree_unverified ??3@YAXPAX@Z
+DEBT 00bfea1a +3a    agree_unverified ??2@YAPAXI@Z
+NAME_GATE PASS
