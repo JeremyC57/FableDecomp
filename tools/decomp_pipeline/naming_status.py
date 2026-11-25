@@ -313,15 +313,19 @@ def main():
         pd = [s for s in names if s in pdb]
         if len(names) == 1:
             s = names[0]
-            st = "agree_pdb" if s in pdb else ("standin" if STANDIN.search(s) else ("agree_std" if is_std(s) else "agree_unverified"))
-            if st == "agree_unverified" and descr.get(t.lower().replace("0x", "").zfill(8)) == s: st = "agree_descriptive"
+            if descr.get(t.lower().replace("0x", "").zfill(8)) == s and not STANDIN.search(s):
+                st = "agree_descriptive"   # registry first: a guessed PDB name must not count as proven (R-NF440-1)
+            else:
+                st = "agree_pdb" if s in pdb else ("standin" if STANDIN.search(s) else ("agree_std" if is_std(s) else "agree_unverified"))
         else:
             st = "split_fixable" if len(pd) == 1 else ("split_pdb_multi" if len(pd) > 1 else "split_unknown")
         cn = cat.get(t, "")
         tier = ""
         if st in ("standin", "split_fixable", "split_unknown"):
             good = pd[0] if len(pd) == 1 else ""
-            if st == "split_fixable" and (not self_leaf or self_leaf == good):
+            if st == "split_fixable" and descr.get(t.lower().replace("0x", "").zfill(8)) == good:
+                tier = "T3"   # the only PDB spelling is a registry guess: not a known target for caller respells
+            elif st == "split_fixable" and (not self_leaf or self_leaf == good):
                 tier = "T1"
             elif st == "split_fixable" and self_leaf and access_only(self_leaf, good):
                 tier = "T2"

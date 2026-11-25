@@ -10,8 +10,9 @@ FAIL kinds:
   DUP_ADDRESS     the registry lists one address twice
   DUP_SYMBOL      one best-guess symbol is listed for two addresses
   SYMBOL_ELSEWHERE the symbol is bound or defined at another retail address (table or self symbols): a name clash
-  PDB_NAME_ELSEWHERE the symbol is a PDB name (so it is proven for some function; it cannot be a guess for this one)
-  ADDRESS_PROVEN  the address already carries a PDB name (in the table or as its self): a guess may never replace it
+  ADDRESS_PROVEN  the address already carries a PDB name OTHER than the listed symbol (table or self): a guess may never replace it
+  (A PDB name is allowed as a guess: the name sets carry FableWin / Ego_r addresses, so membership says nothing about where the
+  name lives in retail; R-NF440-1, 2026-11-25. Reuse is caught by SYMBOL_ELSEWHERE.)
   OTHER_SPELLING  the table or the self symbol spells this address differently: callers and self must all use the one name
   PLACEHOLDER     the symbol is a placeholder (VirtualNN_, Unproven, sub_, CVtable_, FUN_, _gapscan, stub)
   BAD_BASIS       basis is not one-source:<which> or style
@@ -34,7 +35,8 @@ def tsv(p):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    av = sys.argv[1:]
+    args = [a for i, a in enumerate(av) if not a.startswith("--") and not (i and av[i - 1] == "--extra")]
     reg = args[0] if args else P("rebuild", "oracles", "descriptive_names.tsv")
     extra = sys.argv[sys.argv.index("--extra") + 1] if "--extra" in sys.argv else ""
     lines = [("registry", f) for f in tsv(reg)] + ([("extra", f) for f in tsv(extra)] if extra else [])
@@ -58,9 +60,8 @@ def main():
         if not (basis == "style" or basis.startswith("one-source:")): fails.append(("BAD_BASIS", a, basis))
         other = sorted(x for x in sym2addr.get(s, ()) if x != a)
         if other: fails.append(("SYMBOL_ELSEWHERE", a, s + " bound at " + ",".join(other[:5])))
-        if s in pdb: fails.append(("PDB_NAME_ELSEWHERE", a, s))
         here = addr2sym.get(a, set())
-        proven = sorted(x for x in here if x in pdb)
+        proven = sorted(x for x in here if x in pdb and x != s)
         if proven: fails.append(("ADDRESS_PROVEN", a, proven[0]))
         diff = sorted(x for x in here if x != s)
         if diff and not proven: fails.append(("OTHER_SPELLING", a, " | ".join(diff[:4])))
