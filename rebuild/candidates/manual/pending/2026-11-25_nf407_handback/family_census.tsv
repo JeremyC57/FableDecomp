@@ -1,0 +1,314 @@
+address	class_in_filename	self_symbol	binder_defines_class	source_form	status
+0049d450	CTCTargetingPlayer	??0CTCTargetingPlayer@@QAE@XZ	y	other	
+004d5e31	CTCAICreatureWillPowerIndicator	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4e40	CTCAIScratchpad	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d61a4	CTCAISummon	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d674d	CTCAbsorbHits	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2c55	CTCActionUseAcceptBoast	?CTCActionUseAcceptBoast_StatGetClassTypeName@@YIPAXPAUGAN004d2c55@@@Z	y	other	
+004d57fa	CTCActionUseActivateQuest	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2c7b	CTCActionUseBed	?CTCActionUseBed_StatGetClassTypeName@@YIPAXPAUGAN004d2c7b@@@Z	y	other	
+004d2bff	CTCActionUseBlowHorn	?CTCActionUseBlowHorn_StatGetClassTypeName@@YIPAXPAUGAN004d2bff@@@Z	y	other	
+004d3238	CTCActionUseBuyHouse	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2c2f	CTCActionUseBuyOrSteal	?CTCActionUseBuyOrSteal_StatGetClassTypeName@@YIPAXPAUGAN004d2c2f@@@Z	y	other	
+004d3844	CTCActionUseChest	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2c8e	CTCActionUseKickChicken	?CTCActionUseKickChicken_StatGetClassTypeName@@YIPAXPAUGAN004d2c8e@@@Z	y	other	
+004d2bd9	CTCActionUseMapTable	?CTCActionUseMapTable_StatGetClassTypeName@@YIPAXPAUGAN004d2bd9@@@Z	y	other	
+004d2bb3	CTCActionUsePickUpGenericBox	?CTCActionUsePickUpGenericBox_StatGetClassTypeName@@YIPAXPAUGAN004d2bb3@@@Z	y	other	
+004d2ba0	CTCActionUsePickUp	?CTCActionUsePickUp_StatGetClassTypeName@@YIPAXPAUGAN004d2ba0@@@Z	y	other	
+004d2bc6	CTCActionUsePutInInventory	?CTCActionUsePutInInventory_StatGetClassTypeName@@YIPAXPAUGAN004d2bc6@@@Z	y	other	
+004d2b8d	CTCActionUseReadable	?CTCActionUseReadable_StatGetClassTypeName@@YIPAXPAUGAN004d2b8d@@@Z	y	other	
+004d2bec	CTCActionUseSearch	?CTCActionUseSearch_StatGetClassTypeName@@YIPAXPAUGAN004d2bec@@@Z	y	other	
+004d2b7a	CTCActionUseSign	?CTCActionUseSign_StatGetClassTypeName@@YIPAXPAUGAN004d2b7a@@@Z	y	other	
+004d2c68	CTCActionUseStartExtrapolationMorph	?CTCActionUseStartExtrapolationMorph_StatGetClassTypeName@@YIPAXPAUGAN004d2c68@@@Z	y	other	
+004d2d85	CTCActionUseSwitch	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2b04	CTCActionUseTorch	?CTCActionUseTorch_StatGetClassTypeName@@YIPAXPAUGAN004d2b04@@@Z	y	other	
+004d5cd3	CTCActionUseWallMount	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2c42	CTCActionUseWindow	?CTCActionUseWindow_StatGetClassTypeName@@YIPAXPAUGAN004d2c42@@@Z	y	other	
+004d4326	CTCActivationReceptorChest	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4339	CTCActivationReceptorCreatureGenerator	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4380	CTCActivationReceptorDoor	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4393	CTCActivationReceptorRelay	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d43a6	CTCActivationTrigger	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5ee8	CTCAmbientBird	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4a56	CTCAnimatingObject	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d44d5	CTCAnimationComplex	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4df4	CTCAssassinRush	??0CTCAssassinRush@@QAE@XZ	y	other	
+004d65a9	CTCAvoidRegionExit	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3db6	CTCBandit	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4dc1	CTCBattleCharge	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d35ff	CTCBed	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4a86	CTCBerserk	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6519	CTCBetting	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d40ac	CTCBlacksmiths	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5fc8	CTCBoastUI	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4746	CTCBoastingArea	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4776	CTCBoastingCrowdControl	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d46d0	CTCBoastingPodium	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4716	CTCBoastingPosition	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d48be	CTCBob	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4e99	CTCBoss	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4c75	CTCBulletTime	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d58e3	CTCBurntEffect	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3208	CTCBuyableHouse	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6226	CTCCameraCollision	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d39eb	CTCCameraPointBuilding	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3b8c	CTCCameraPointDead	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3aa2	CTCCameraPointFixedDolly	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3a60	CTCCameraPointFixedPoint	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3b2e	CTCCameraPointGeneralCase	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3c1e	CTCCameraPointScriptedSpline	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3beb	CTCCameraPointScripted	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3ae1	CTCCameraPointTrack	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d673a	CTCCarriedActionUseAbility	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5043	CTCCarriedActionUseActivateQuest	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2cc7	CTCCarriedActionUseDropGenericBox	?CTCCarriedActionUseDropGenericBox_StatGetClassTypeName@@YIPAXPAUGAN004d2cc7@@@Z	y	other	
+004d2cb4	CTCCarriedActionUseDrop	?CTCCarriedActionUseDrop_StatGetClassTypeName@@YIPAXPAUGAN004d2cb4@@@Z	y	other	
+004d4b9b	CTCCarriedActionUseExpression	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2d39	CTCCarriedActionUseFish	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5cfd	CTCCarriedActionUseFishingRod	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2d26	CTCCarriedActionUseFood	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2ced	CTCCarriedActionUseGiveBeer	?CTCCarriedActionUseGiveBeer_StatGetClassTypeName@@YIPAXPAUGAN004d2ced@@@Z	y	other	
+004d2cda	CTCCarriedActionUseGive	?CTCCarriedActionUseGive_StatGetClassTypeName@@YIPAXPAUGAN004d2cda@@@Z	y	other	
+004d2d00	CTCCarriedActionUseGoldBag	?CTCCarriedActionUseGoldBag_StatGetClassTypeName@@YIPAXPAUGAN004d2d00@@@Z	y	other	
+004d2ca1	CTCCarriedActionUseLamp	?CTCCarriedActionUseLamp_StatGetClassTypeName@@YIPAXPAUGAN004d2ca1@@@Z	y	other	
+004d2d4c	CTCCarriedActionUsePotion	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5eb7	CTCCarriedActionUseRead	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2d13	CTCCarriedActionUseShow	?CTCCarriedActionUseShow_StatGetClassTypeName@@YIPAXPAUGAN004d2d13@@@Z	y	other	
+004d5d10	CTCCarriedActionUseSpade	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2d72	CTCCarriedActionUseTrophy	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2d5f	CTCCarriedActionUseWallMount	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3cfb	CTCCarryable	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3d56	CTCCarrying	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3813	CTCChest	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d343f	CTCClock	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4edc	CTCCombatLeader	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3533	CTCCombat	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d37e3	CTCContainerRewardHero	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d55ed	CTCCoopSpirit	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d50d3	CTCCrateStack	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3576	CTCCreatedEntity	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5bbe	CTCCreatureFlyInCircles	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5b8e	CTCCreatureFlyOnSpline	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d57b4	CTCCreatureGeneratorCreator	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d37b3	CTCCreatureGenerator	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d47b9	CTCCreatureGroupBoastingCrowd	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4d5e	CTCCreatureGroupTag	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4789	CTCCreatureGroup	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5956	CTCCreatureHitNotification	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d45b4	CTCCreatureHive	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d45a1	CTCCreatureItemLevitationHero	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d458e	CTCCreatureItemLevitationNymph	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3563	CTCCreatureModeManager	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3fbd	CTCCreatureOpinionOfHero	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5943	CTCCreatureTintEffect	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d64d3	CTCCreditsUI	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3688	CTCCupboard	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d39cf	CTCDCameraPoint	?StatGetClassTypeName@CTCDCameraPoint@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d4369	CTCDExperienceOrb	?FableStatGetClassTypeName_5@@YIPAVCCharString@@PAV1@@Z	y	other	
+004d5ce6	CTCDExplosion	?StatGetClassTypeName@CTCDExplosion@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d66c3	CTCDExplosiveTrail	@StatGetClassTypeName_9@4	y	other	
+004d4232	CTCDHeroSuit	?StatGetClassTypeName@CTCDHeroSuit@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d4249	CTCDInternalMarker	?StatGetClassTypeName@CTCDInternalMarker@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d41df	CTCDNavigationSeed	??0CThingComponentDefNameTag@@QAE@XZ	y	other	
+004d3ef9	CTCDNone	??0CThingComponentDefNameTag@@QAE@XZ	y	other	
+004d3dfc	CTCDParticleEmitter	??0CThingComponentDefNameTag@@QAE@XZ	y	other	
+004d5fdb	CTCDPhysicalObstruction	?StatGetClassTypeName@CTCDPhysicalObstruction@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d429b	CTCDRegionEntrance	?StatGetClassTypeName@CTCDRegionEntrance@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d430f	CTCDRegionExit	?StatGetClassTypeName@CTCDRegionExit@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d5ff2	CTCDRumble	?StatGetClassTypeName_8@CCharString@@QAEPAV1@XZ	y	other	
+004d4944	CTCDayOrNightOnlySupport	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6353	CTCDeadShotInThingTracker	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5af0	CTCDecapitation	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3eb6	CTCDegradableBarrier	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6366	CTCDestroyThingOnActionFinish	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d63a7	CTCDestroyThingOnSpecialAbilityFinish	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6069	CTCDiceGame	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6026	CTCDiggingSpot	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3874	CTCDiscovery	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4ab9	CTCDivineWrath	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d32f7	CTCDoor	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d561d	CTCDrainLife	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d531b	CTCDrunkenness	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d327e	CTCDummyVillager	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5d70	CTCEffectOnDie	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6056	CTCElectrocuteOnTouch	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5913	CTCElectrocutedEffect	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3c7e	CTCEmoteIcon	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3d86	CTCEnemy	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d38e0	CTCEntityEvents	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3500	CTCExclusiveUse	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d38a4	CTCExplodingObject	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4b72	CTCExpression	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d626c	CTCFadeOutAndIn	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d41cc	CTCFamilyMember	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d60bf	CTCFineDialogue	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d655c	CTCFireRangedWeaponOnLeavingStateGroup	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5743	CTCFireballSpell	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6625	CTCFireheartMinigame	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5c64	CTCFish	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5f82	CTCFishingRod	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4f3e	CTCFishingSpot	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4f6e	CTCFishing	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d46bd	CTCFlammable	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d627f	CTCFlashOnHit	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d64a3	CTCFlourishTarget	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5262	CTCFollowed	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4d38	CTCForcePushPower	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4b2f	CTCForcePushed	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5add	CTCGamePlayer	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4901	CTCGatherPointBuilding	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4914	CTCGatherPointRadialArea	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3780	CTCGeneratedCreature	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5756	CTCGeneratesExperienceOnKilling	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d567d	CTCGhostSword	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d415a	CTCGift	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d582a	CTCGold	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d52d5	CTCGossip	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5030	CTCGuard	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d66b0	CTCHasName	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4aff	CTCHaste	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d564d	CTCHealLife	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4535	CTCHeroAttachableAppearanceModifiers	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d465d	CTCHeroCentreDoorMarker	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4617	CTCHeroCentre	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2f96	CTCHeroExperience	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d468d	CTCHeroGuide	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d66f7	CTCHeroOnlineScoreboard	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3f70	CTCHeroOpinionDeedLog	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4020	CTCHeroPodium	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4a30	CTCHeroRangedAttacks	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d57e7	CTCHeroReceiveItems	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3959	CTCHeroRememberCrimes	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5d40	CTCHeroSpecialMovement	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2fc9	CTCHeroStats	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3485	CTCHero	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d49b7	CTCHitLocations	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5710	CTCHitOnCollision	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5ea4	CTCIdleScheduler	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d55bd	CTCInGameMenu	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5e91	CTCInfoDisplay	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4fea	CTCInterestingToVillagers	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2ea7	CTCInventoryClothing	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d30db	CTCInventoryItem	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d339d	CTCJackPillar	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d336d	CTCJackShield	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5deb	CTCKrakenTentacle	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5dc2	CTCKraken	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6549	CTCLifeTimer	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d333d	CTCLight	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6674	CTCLightningNode	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6687	CTCLightningOrb	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d376d	CTCMapwho	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d49a4	CTCMeleeTrap	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d314e	CTCMeshAutomaticEntityCreator	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d49ca	CTCMoneyReceiver	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5883	CTCMultiArrow	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d58b3	CTCMultiStrike	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d34ed	CTCNamedUserActionPoints	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3675	CTCNoise	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d617b	CTCNymph	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3cde	CTCObjectAugmentations	?StatGetClassTypeName@CTCObjectAugmentations@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d63e8	CTCObstacle	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d532e	CTCOnHeroPush	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3ff0	CTCOpinionSource	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d65dc	CTCOracleMinigame	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5103	CTCOverheadDisplay	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3589	CTCOwnedEntity	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4a43	CTCParticleAttacher	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5b5e	CTCParticleAttachmentTracker	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d35b9	CTCPerceiveThing	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6727	CTCPhotojournalCapture	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4ca5	CTCPhysicalShieldSpell	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d39bc	CTCPhysicsRigidBody	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d608f	CTCPlot	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4d4b	CTCPreCalculatedNavigationRoute	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4974	CTCProjectileTrap	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2e61	CTCQuestCard	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d630d	CTCQuestCompletionUI	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6152	CTCQuickAccessMenu	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4b5f	CTCRegionDisplay	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d48ee	CTCRegionFollower	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5d99	CTCResurrectionItem	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4ec9	CTCRockTrollShield	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2b17	CTCRotate	?CTCRotate_StatGetClassTypeName@@YIPAXPAUGAN004d2b17@@@Z	y	other	
+004d313b	CTCScriptedControl	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d38cd	CTCSearchableContainer	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3c4e	CTCShapeManager	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4bcb	CTCShopKeeper	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4099	CTCShop	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4e53	CTCSinglePersonOccupiable	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d34da	CTCSingleUserActionPoints	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4819	CTCSkeletalMorph	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d60d2	CTCSleep	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3e86	CTCSmashableBarrier	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3e73	CTCSmashableWindow	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3e60	CTCSolidToThing	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d6122	CTCSoundAtmosphereVillage	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d33f9	CTCSpotLight	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4f81	CTCStealableItemLocation	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d362f	CTCStealth	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d40eb	CTCStockItem	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4bfb	CTCSummonSpell	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4c2b	CTCSummonableCreature	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d482c	CTCSwitchableNavigation	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2a91	CTCTargeted	?CTCTargeted_StatGetClassTypeName@@YIPAXPAUGAN004d2a91@@@Z	y	other	
+004d2a74	CTCTargetingAI	?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ	y	out-of-line	CLASH_NOW
+004d5853	CTCTargetingSpirit	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d518f	CTCTavernBar	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5aca	CTCTavernGameCardBlackjack	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5a64	CTCTavernGameCardPairs	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5a31	CTCTavernGameCardSorting	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d59fe	CTCTavernGameCoinGolf	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5b19	CTCTavernGameMaster	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d59b5	CTCTavernGameShoveHaPenny	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5a97	CTCTavernGameSpotTheAddition	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d51b5	CTCTavernJug	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d515f	CTCTavernTable	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d51a2	CTCTavernTankard	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5232	CTCTavern	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5caa	CTCTeleporter	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5f52	CTCTextureDecal	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d318d	CTCThingOwner	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3ee6	CTCThingUIDDummyForSerialisation	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5292	CTCTrespassable	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d52c2	CTCTrespasser	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d36eb	CTCTrophy	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d56b0	CTCTurncoatSpell	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d56e0	CTCTurncoat	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d2dc8	CTCUndeadSoul	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4aec	CTCUnholyPower	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d31d8	CTCVillageMember	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d31c0	CTCVillage	?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ	y	in-class	
+004d47e9	CTCVolumeContainmentTracker	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5c1e	CTCWallMountEffects	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d5bee	CTCWallMount	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d508d	CTCWaterWader	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3e30	CTCWeaponTrail	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3cae	CTCWeapon	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3498	CTCWeatherVane	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d32c7	CTCWife	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4d08	CTCWillEnflame	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4cd8	CTCWillLightning	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d647a	CTCWillResponse	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d61b7	CTCWobble	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d3989	CTCWound	(no self line)	y	out-of-line	CLASH_NOW_noself
+004d4415	NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh	(no self line)	n	out-of-line	
+004d5e61	NGraphicAppearanceCTCGraphicAppearanceMultipleStaticMeshes	(no self line)	n	out-of-line	
+004d4d8e	NGraphicAppearanceCTCGraphicAppearanceReplaceableMesh	(no self line)	n	out-of-line	
+004d44a5	NGraphicAppearanceCTCGraphicAppearanceSprite	(no self line)	n	out-of-line	
+004d4475	NGraphicAppearanceCTCGraphicAppearanceStaticMeshFadeOutOnProximity	(no self line)	n	out-of-line	
+004d4445	NGraphicAppearanceCTCGraphicAppearanceStaticMesh	(no self line)	n	out-of-line	
+004d4505	NGraphicAppearanceCTCGraphicAppearance	(no self line)	n	out-of-line	
+004d5562	NThingShotCTCShotDefinitionDragonFireball	(no self line)	n	out-of-line	
+004d554f	NThingShotCTCShotDefinitionDrainLife	(no self line)	n	out-of-line	
+004d553c	NThingShotCTCShotDefinitionFireballSpell	(no self line)	n	out-of-line	
+004d5529	NThingShotCTCShotDefinitionForcePushBall	(no self line)	n	out-of-line	
+004d53db	NThingShotCTCShotDefinitionMultiArrow	(no self line)	n	out-of-line	
+004d5401	NThingShotCTCShotDefinitionNymphFun	(no self line)	n	out-of-line	
+004d54da	NThingShotCTCShotDefinitionProjectilePredictive	(no self line)	n	out-of-line	
+004d53a8	NThingShotCTCShotDefinitionProjectile	(no self line)	n	out-of-line	
+004d5434	NThingShotCTCShotDefinitionQueenHornetShot	(no self line)	n	out-of-line	
+004d53ee	NThingShotCTCShotDefinitionSpreadShotProjectile	(no self line)	n	out-of-line	
+004d54ed	NThingShotCTCShotDefinitionTearInGround	(no self line)	n	out-of-line	
+004d549f	NThingShotCTCShotDefinitionThrowPredictive	(no self line)	n	out-of-line	
+004d5447	NThingShotCTCShotDefinitionThrow	(no self line)	n	out-of-line	

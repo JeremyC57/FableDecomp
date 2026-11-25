@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?IsTargetAlive@CTCKraken@@QBE_NXZ -> ?HeadReadyToStrike@CTCKraken@@QAE_NXZ	007fb120	00924c70	NF404: one address, one name; the PDB name of 0x007FB120 (FableWin 0x02778AA0, Ego_r 0x007F6450). Measured as del+add in work/troot_b4 (evidence/tc_b4.tsv).

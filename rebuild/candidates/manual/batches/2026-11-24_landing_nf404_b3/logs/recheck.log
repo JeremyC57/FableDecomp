@@ -1,0 +1,13 @@
+addr       parity           behav  name
+008d04b0   RELOCATION_MATCH PASS   IsAlive
+0093a890   RELOCATION_MATCH PASS   IsStillValid
+009445c0   RELOCATION_MATCH PASS   IsStillValid
+00944ce0   RELOCATION_MATCH PASS   IsStillValid
+0095ee40   RELOCATION_MATCH PASS   IsStillValid
+
+WINS: 5
+  008d04b0 RELOCATION_MATCH CGameScriptThing::?IsAlive@CGameScriptThing@@UBE_NXZ
+  0093a890 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?IsStillValid@CAIStateGroup_BanditSitRoundCampfire@@UBE_NXZ
+  009445c0 RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?IsStillValid@CAIStateGroup_WorkSawingWood@@MBE_NXZ
+  00944ce0 RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::?IsStillValid@CAIStateGroup_WorkHammerAnvil@@MBE_NXZ
+  0095ee40 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?IsStillValid@CAIStateGroup_OpinionReactionRoot@@UBE_NXZ

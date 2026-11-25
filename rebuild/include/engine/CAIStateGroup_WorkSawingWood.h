@@ -8,6 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WORKSAWINGWOOD_CLASS
+// NF404 opt-in (row 0x009445C0 ?IsStillValid@CAIStateGroup_WorkSawingWood@@MBE_NXZ): the polymorphic retail class on its RTTI base CAIStateGroupBase (+0, sizeof
+// 0x14: the flattened __vftable and _base_0x04 below; needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS for the base's virtual slots and
+// FABLE_RETAIL_CINTELLIGENTPOINTER), with the same own members at the same packed offsets (Ego_r.pdb names and types) and the slot-5 override
+// Ego_r.pdb 0x009683C0 / FableWin.pdb 0x02BAC230 ?IsStillValid@CAIStateGroup_WorkSawingWood@@MBE_NXZ (protected; retail vtable 0x0128BCBC slot 5 = 0x009445C0).
+// Declaration only (an override: no vtable change). The flattened struct below stays the default, unchanged.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingObject;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString;
+#endif
+#pragma pack(push, 1)
+class CAIStateGroup_WorkSawingWood : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual bool IsStillValid() const;                       // 5 0x009445C0
+private:
+    bool TookActionPoint;                                    // +0x14
+    CIntelligentPointer<CThingObject> PSawhorse;        // +0x15
+    C3DVector ActionPointPos;                                // +0x1d
+    unsigned char ActionPointRHSet[0x1b];                    // +0x29 CRightHandedSet
+    long ActionPointIndex;                                   // +0x44
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WorkSawingWood) == 0x48);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -38,4 +69,5 @@ FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_WorkSawingWood, ActionPointPos
 FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_WorkSawingWood, ActionPointRHSet) == 0x29);
 FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_WorkSawingWood, ActionPointIndex) == 0x44);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_WORKSAWINGWOOD_CLASS
 #endif // FABLE_ENGINE_CAISTATEGROUP_WORKSAWINGWOOD_H

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+007fb120   WARN STANDIN_LEAF ?HeadReadyToStrike@CTCKraken@@QAE_NXZ (catalog CTCKraken::IsTargetAlive; names another function)
+007fb120   RELOCATION_MATCH PASS   IsTargetAlive
+00924c70   WARN SHARED_HEADER_AVAILABLE CKrakenDef (engine/CKrakenDef.h)
+00924c70   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+00924c70   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+00924c70   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00924c70   WARN RELOC_NAME: ?HeadReadyToStrike@CTCKraken@@QAE_NXZ -> 007fb120 labelled 'CTCKraken::IsTargetAlive'
+00924c70   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  007fb120 RELOCATION_MATCH _global::?HeadReadyToStrike@CTCKraken@@QAE_NXZ
+  00924c70 RELOCATION_MATCH CAIStateGroup_KrakenAttack::?Update@CAIStateGroup_KrakenAttack@@MAEXXZ

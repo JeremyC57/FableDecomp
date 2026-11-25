@@ -9,6 +9,11 @@
 // Respell NF402: was a free-function stand-in (?StatGetClassTypeName@@YI?AVCCharString@@XZ).
 // Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (both name sets).
 // Header: engine/CTCDExplosion.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form); the static touches no member.
+// Form (NF407, 2026-11-25): the static is defined in the class body, so it is a pick-any COMDAT, and a scaffolding helper takes its
+//   address so this object emits it (the nf86 / nf88 form, landing nf387 ruling; the nf406_b2 0x004D31C0 form). The landed binder
+//   CTCBase::RegisterTCs 0x004EE23F defines the same static in the class body (TC_REGISTRATION_INTERFACE, pick-any), and retail's own
+//   definition is an in-class inline (RegisterTCs expands it at its first 41 registrations and calls the out-of-line copy after that).
+//   The previous out-of-line (NoDuplicates) definition clashed with the binder's pick-any copy at link (LNK4006, landing nf382 ruling).
 #define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
 #define FABLE_RETAIL_CCLASS
@@ -22,10 +27,14 @@
 class CTCDExplosion : public CTCDExplosionLayout
 {
 public:
-    static CCharString __fastcall StatGetClassTypeName();
+    static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCDExplosion", -1); }
 };
 
-CCharString __fastcall CTCDExplosion::StatGetClassTypeName()
+namespace {
+// Fidelity: scaffolding, not retail: takes the address of the in-class StatGetClassTypeName so this object emits it out of line as a
+// pick-any COMDAT (retail 0x004D5CE6 is that out-of-line copy). Internal to this TU; never called.
+CCharString (__fastcall* ReferenceStatGetClassTypeName())()
 {
-    return CCharString("CTCDExplosion", -1);
+    return &CTCDExplosion::StatGetClassTypeName;
+}
 }

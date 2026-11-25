@@ -2,70 +2,54 @@
 
 // Behaviour test: model the three sub-object destructors with observable
 // side effects and confirm _Dest_val runs them in the exact retail order
-// (member@0x18, member@0x14, member@0x10).
+// (~CWideString on member@0x18, ~CWideString on member@0x14, ~CCharString on member@0x10).
 
 static int g_log[8];
 static int g_n = 0;
 
-class CCharString { public:
-    char* m_buf;
-    ~CCharString();
-};
-struct CInfoHead {
-    int m_a;
-    ~CInfoHead();
-};
+class CCharString { public: void* PStringData; ~CCharString(); };
+class CWideString { public: void* PStringData; ~CWideString(); };
 
 struct SymbolPair {
     int         m_pad[4];   // +0x00..0x0F
-    CInfoHead   m_head;     // +0x10
-    CCharString m_s1;       // +0x14
-    CCharString m_s2;       // +0x18
+    CCharString ScriptName; // +0x10
+    CWideString Text;       // +0x14
+    CWideString Title;      // +0x18
 };
 
 static SymbolPair* g_pair;
 
 static int tag_of(const void* p) {
-    CCharString* ps2   = &g_pair->m_s2;
-    CCharString* ps1   = &g_pair->m_s1;
-    CInfoHead*   phead = &g_pair->m_head;
-    if (p == (const void*)ps2)   return 0x18;
-    if (p == (const void*)ps1)   return 0x14;
-    if (p == (const void*)phead) return 0x10;
+    if (p == (const void*)&g_pair->Title)      return 0x18;
+    if (p == (const void*)&g_pair->Text)       return 0x14;
+    if (p == (const void*)&g_pair->ScriptName) return 0x10;
     return -1;
 }
 
-CCharString::~CCharString() {
-    g_log[g_n++] = tag_of(this);
-}
-CInfoHead::~CInfoHead() {
-    g_log[g_n++] = tag_of(this);
-}
+CCharString::~CCharString() { g_log[g_n++] = 0x100 | tag_of(this); }
+CWideString::~CWideString() { g_log[g_n++] = 0x200 | tag_of(this); }
 
 void __fastcall Dest_val_CSymbolInfo___(SymbolPair* self, int edx);
 
 int main() {
-    SymbolPair obj;
-    SymbolPair* self = &obj;
+    static double storage[4];   // raw storage: no automatic destruction of the members
+    SymbolPair* self = (SymbolPair*)storage;
     g_pair = self;
 
     // verify reconstructed member offsets
-    char* base    = (char*)self;
-    char* pHead   = (char*)&self->m_head;
-    char* pS1     = (char*)&self->m_s1;
-    char* pS2     = (char*)&self->m_s2;
-    unsigned oHead = (unsigned)(pHead - base);
-    unsigned oS1   = (unsigned)(pS1 - base);
-    unsigned oS2   = (unsigned)(pS2 - base);
-    if (oHead != 0x10 || oS1 != 0x14 || oS2 != 0x18) {
-        printf("BAD_OFFSETS %x %x %x\n", oHead, oS1, oS2);
+    char* base = (char*)self;
+    unsigned oS = (unsigned)((char*)&self->ScriptName - base);
+    unsigned oT = (unsigned)((char*)&self->Text - base);
+    unsigned oL = (unsigned)((char*)&self->Title - base);
+    if (oS != 0x10 || oT != 0x14 || oL != 0x18) {
+        printf("BAD_OFFSETS %x %x %x\n", oS, oT, oL);
         return 1;
     }
 
     g_n = 0;
     Dest_val_CSymbolInfo___(self, 0);
 
-    if (g_n == 3 && g_log[0] == 0x18 && g_log[1] == 0x14 && g_log[2] == 0x10) {
+    if (g_n == 3 && g_log[0] == 0x218 && g_log[1] == 0x214 && g_log[2] == 0x110) {
         printf("DEST_VAL_OK\n");
         return 0;
     }

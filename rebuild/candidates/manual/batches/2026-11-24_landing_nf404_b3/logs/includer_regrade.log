@@ -1,0 +1,254 @@
+addr       parity           behav  name
+00704860   RELOCATION_MATCH PASS   CreateScriptThing
+0079c4a0   MATCH            PASS   HasFrameUpdate
+008930f0   RELOCATION_MATCH PASS   GetThingWithScriptName
+008cff10   MATCH            PASS   GetAngleXY
+008cff20   MATCH            PASS   GetPThingUniqueID
+008cffe0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+008cffe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+008cffe0   RELOCATION_MATCH PASS   InitFromThing
+008d0110   RELOCATION_MATCH PASS   IsNull
+008d04b0   RELOCATION_MATCH PASS   IsAlive
+008d04e0   WARN SHARED_HEADER_AVAILABLE CMessageEvent (engine/CMessageEvent.h)
+008d04e0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008d04e0   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+008d04e0   RELOCATION_MATCH PASS   MsgIsKilledBy
+008d0610   WARN SHARED_HEADER_AVAILABLE CMessageEvent (engine/CMessageEvent.h)
+008d0610   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008d0610   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+008d0610   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d0610   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d0610   RELOCATION_MATCH PASS   MsgWhoKilledMe
+008d0730   WARN SHARED_HEADER_AVAILABLE CTCCarryable (engine/CTCCarryable.h)
+008d0730   RELOCATION_MATCH PASS   IsBeingCarriedBy
+008d08a0   RELOCATION_MATCH PASS   IsSummonedCreature
+008d0c50   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+008d0c50   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d0c50   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d0c50   RELOCATION_MATCH PASS   MsgIsTriggeredBy
+008d0e00   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+008d0e00   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d0e00   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d0e00   RELOCATION_MATCH PASS   MsgIsUsedBy
+008d0fb0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d0fb0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d0fb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008d0fb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+008d0fb0   RELOCATION_MATCH PASS   MsgIsHitBy
+008d1130   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008d1130   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d1130   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d1130   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008d1130   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+008d1130   WARN SHARED_HEADER_AVAILABLE CFilter_Bind4 (engine/CFilter_Bind4.h)
+008d1130   WARN RELOC_NAME: ?GetDefinitionManager@CThingNative@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+008d1130   RELOCATION_MATCH PASS   MsgIsHitByWithWeapon
+008d1330   RELOCATION_MATCH PASS   MsgIsHitByWithFlourish
+008d1440   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d1440   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d1440   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008d1440   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+008d1440   WARN SHARED_HEADER_AVAILABLE CFilter_Bind4 (engine/CFilter_Bind4.h)
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in 008d1440.obj; graded the largest function
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in 008d1440.obj; graded the largest function
+008d1440   RELOCATION_MATCH PASS   MsgIsHitByWithDecapitate
+008d15b0   WARN RELOC_NAME: ?GetBuildupTime@HitEventBase@@QBEMXZ -> 00810f30 labelled '_unattributed::GetFloatThrough_0x08_0x2c_00810f30'
+008d15b0   RELOCATION_MATCH PASS   MsgIsHitByWithProjectileWeapon
+008d16d0   WARN RELOC_NAME: ?GetFlourishEvent@EntityEventsMethods@@QAE_NPAPAUEventBase@@ABUBind2@@@Z -> 008d4d90 labelled 'CTCEntityEvents::GetEvent'
+008d16d0   RELOCATION_MATCH PASS   MsgPerformedFlourish
+008d17b0   WARN RELOC_NAME: ?GetSuccessfulFlourishEvent@EntityEventsMethods@@QAE_NPAPAUEventBase@@ABUBind3@@@Z -> 008d4e30 labelled 'CTCEntityEvents::GetEvent'
+008d17b0   RELOCATION_MATCH PASS   MsgPerformedSuccessfulFlourish
+008d1890   RELOCATION_MATCH PASS   MsgWhoHitMe
+008d19a0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d19a0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d19a0   RELOCATION_MATCH PASS   MsgIsTalkedToBy
+008d1b80   RELOCATION_MATCH PASS   MsgWhoTalkedToMe
+008d1ca0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008d1ca0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008d1ca0   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase (engine/CParentDefClassBase.h)
+008d1ca0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008d1ca0   RELOCATION_MATCH PASS   MsgExpressionPerformedTo
+008d1dd0   RELOCATION_MATCH PASS   MsgWhoExpressedToMe
+008d1ef0   RELOCATION_MATCH PASS   MsgHowLongWasExpressionPerformed
+008d1fd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d1fd0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d1fd0   RELOCATION_MATCH PASS   MsgIsKnockedOutBy
+008d21b0   RELOCATION_MATCH PASS   MsgWhoKnockedMeOut
+008d22d0   RELOCATION_MATCH PASS   MsgReceivedMoney
+008d23c0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008d23c0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008d23c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d23c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d23c0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+008d23c0   RELOCATION_MATCH PASS   MsgIsPresentedWithItem
+008d2540   RELOCATION_MATCH PASS   MsgReceivedInventoryItem
+008d2610   RELOCATION_MATCH PASS   MsgPerformedSpecialAbility
+008d27e0   RELOCATION_MATCH PASS   MsgPerformedAnyAggressiveSpecialAbility
+008d28d0   RELOCATION_MATCH PASS   MsgPerformedAnyNonAggressiveSpecialAbility
+008d29c0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d29c0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d29c0   WARN RELOC_NAME: ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ -> 00810fc0 labelled 'NEntityEvents::CEventHitBase::GetPHitBy'
+008d29c0   RELOCATION_MATCH PASS   MsgIsHitBySpecialAbilityFrom
+008d2bb0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d2bb0   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d2bb0   WARN RELOC_NAME: ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ -> 00810fc0 labelled 'NEntityEvents::CEventHitBase::GetPHitBy'
+008d2bb0   RELOCATION_MATCH PASS   MsgIsHitByAnySpecialAbilityFrom
+008d2d90   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d2d90   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d2d90   WARN RELOC_NAME: ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ -> 00810fc0 labelled 'NEntityEvents::CEventHitBase::GetPHitBy'
+008d2d90   RELOCATION_MATCH PASS   MsgIsHitByAnyAggressiveSpecialAbilityFrom
+008d2f80   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d2f80   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d2f80   WARN RELOC_NAME: ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ -> 00810fc0 labelled 'NEntityEvents::CEventHitBase::GetPHitBy'
+008d2f80   RELOCATION_MATCH PASS   MsgIsHitByAnyNonAggressiveSpecialAbilityFrom
+008d3250   RELOCATION_MATCH PASS   MsgHitEnemyWithMeleeWeapon
+008d3350   RELOCATION_MATCH PASS   MsgHitFriendWithMeleeWeapon
+008d3450   RELOCATION_MATCH PASS   MsgHitEnemyWithRangedWeapon
+008d3550   RELOCATION_MATCH PASS   MsgHitFriendWithRangedWeapon
+008d3650   RELOCATION_MATCH PASS   MsgHitEnemyWithBareHands
+008d3750   RELOCATION_MATCH PASS   MsgHitFriendWithBareHands
+008d3af0   RELOCATION_MATCH PASS   MsgOnMoralityChanged
+008d3bf0   RELOCATION_MATCH PASS   MsgOnCutSceneAnimEvent
+008d3cf0   RELOCATION_MATCH PASS   MsgIsKicked
+008d3dd0   RELOCATION_MATCH PASS   MsgGetThingsKilled
+008d4740   RELOCATION_MATCH PASS   ~CGameScriptThing
+008fda8f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkSawingWood (engine/CAIStateGroup_WorkSawingWood.h)
+008fda8f   RELOCATION_MATCH PASS   GetName
+008fdaa2   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkHammerAnvil (engine/CAIStateGroup_WorkHammerAnvil.h)
+008fdaa2   RELOCATION_MATCH PASS   GetName
+008fe36e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot (engine/CAIStateGroup_OpinionReactionRoot.h)
+008fe36e   RELOCATION_MATCH PASS   GetName
+0093a890   RELOCATION_MATCH PASS   IsStillValid
+0093ab70   RELOCATION_MATCH PASS   GetPNearCampfire
+009445b0   MATCH            PASS   InitStateGroup
+009445c0   RELOCATION_MATCH PASS   IsStillValid
+009445f0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009445f0   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+009445f0   RELOCATION_MATCH PASS   OnActivate
+00944690   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00944690   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+00944690   RELOCATION_MATCH PASS   OnReplace
+00944cd0   MATCH            PASS   InitStateGroup
+00944ce0   RELOCATION_MATCH PASS   IsStillValid
+00944d10   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00944d10   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+00944d10   RELOCATION_MATCH PASS   OnActivate
+0095ee40   RELOCATION_MATCH PASS   IsStillValid
+0095ee70   RELOCATION_MATCH PASS   SayToThingReactingTo
+0095ef80   WARN RELOC_NAME: ??$?8VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z -> 005cbdfa labelled 'CVillageTaskCarryCrate::IsCreatureAssignedToTask'
+0095ef80   RELOCATION_MATCH PASS   IsRunnable
+0095fb40   RELOCATION_MATCH PASS   operator()
+00982eb0   RELOCATION_MATCH PASS   WifeFeelingUpdate
+00982f10   RELOCATION_MATCH PASS   WifeGeneralUpdate
+00982f70   RELOCATION_MATCH PASS   WifeToHerselfUpdate
+00984f60   RELOCATION_MATCH PASS   FleeUpdate
+00985430   RELOCATION_MATCH PASS   FollowFarUpdate
+00985440   RELOCATION_MATCH PASS   HeroImitationPlayUpdate
+00985f40   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00985f40   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+00985f40   RELOCATION_MATCH PASS   WifeClothingUpdate
+00986210   RELOCATION_MATCH PASS   CallingChildrenIsRunnable
+009863e0   RELOCATION_MATCH PASS   CommentAboutHeroIsRunnable
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFindPersonalSpace (engine/CAIStateGroup_MinionFindPersonalSpace.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardReactToBodyFoundMessage (engine/CAIStateGroup_MinionGuardReactToBodyFoundMessage.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditSitRoundCampfire (engine/CAIStateGroup_BanditSitRoundCampfire.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFaceHero (engine/CAIStateGroup_MinionFaceHero.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionPutOutFires (engine/CAIStateGroup_MinionPutOutFires.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCorpse (engine/CAIStateGroup_MinionReactToCorpse.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BirdStartled (engine/CAIStateGroup_BirdStartled.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskPatrol (engine/CAIStateGroup_VillageTaskPatrol.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskSecuritySweep (engine/CAIStateGroup_VillageTaskSecuritySweep.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkInWarehouse (engine/CAIStateGroup_WorkInWarehouse.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_NymphAttack (engine/CAIStateGroup_NymphAttack.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage3 (engine/CAIStateGroup_JackOfBladesStage3.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureSeekEnemyUnderground (engine/CAIStateGroup_CreatureSeekEnemyUnderground.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ScreamerPursueTarget (engine/CAIStateGroup_ScreamerPursueTarget.h)
+0121f86f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SetupWares (engine/CAIStateGroup_SetupWares.h)
+0121f86f   WARN RELOC_CONFLICT: _$E2 -> 0122a20a here, 01228930 in landed 01219f00
+0121f86f   WARN RELOC_NAME: _$E2 -> 0122a20a labelled 'CAIBrain::DestroyStateGroupInfo'
+0121f86f   RELOCATION_MATCH PASS   `dynamic initializer for 'StateGroupInfo'' (object symbol _$E1 of its TU)
+01221d20   WARN RELOC_NAME: ?CommentToSelfIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ -> 00984b40 labelled 'CCombatAction_GenericStrikeResponseBase::IsOverrideableByActionOfSamePriority'
+01221d20   WARN RELOC_CONFLICT: _$E2 -> 0122a460 here, 01228930 in landed 01219f00
+01221d20   WARN RELOC_NAME: _$E2 -> 0122a460 labelled 'CFontBankStateBlock::CreateCRC'
+01221d20   RELOCATION_MATCH PASS   `dynamic initializer for 'Behaviours'' (object symbol _$E1 of its TU)
+
+WINS: 77
+  00704860 RELOCATION_MATCH CGameScriptThingManager::?CreateScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@ABVCThing@@@Z
+  0079c4a0 MATCH CTCSummonableCreature::?HasFrameUpdate@CTCSummonableCreature@@UBE_NXZ
+  008930f0 RELOCATION_MATCH CGameScriptInterface::?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@0@Z
+  008cff10 MATCH CGameScriptThing::GetAngleXY
+  008cff20 MATCH CGameScriptThing::?GetPThingUniqueID@CGameScriptThing@@UBE_KXZ
+  008cffe0 RELOCATION_MATCH CGameScriptThing::InitFromThing
+  008d0110 RELOCATION_MATCH CGameScriptThing::?IsNull@CGameScriptThing@@UBE_NXZ
+  008d04b0 RELOCATION_MATCH CGameScriptThing::?IsAlive@CGameScriptThing@@UBE_NXZ
+  008d04e0 RELOCATION_MATCH CGameScriptThing::MsgIsKilledBy
+  008d0610 RELOCATION_MATCH CGameScriptThing::MsgWhoKilledMe
+  008d0730 RELOCATION_MATCH CGameScriptThing::IsBeingCarriedBy
+  008d08a0 RELOCATION_MATCH CGameScriptThing::?IsSummonedCreature@CGameScriptThing@@UBE_NXZ
+  008d0c50 RELOCATION_MATCH CGameScriptThing::MsgIsTriggeredBy
+  008d0e00 RELOCATION_MATCH CGameScriptThing::MsgIsUsedBy
+  008d0fb0 RELOCATION_MATCH CGameScriptThingMethods::MsgIsHitBy
+  008d1130 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithWeapon
+  008d1330 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithFlourish
+  008d1440 RELOCATION_MATCH CGameScriptThing::?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z
+  008d15b0 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithProjectileWeapon
+  008d16d0 RELOCATION_MATCH CGameScriptThing::MsgPerformedFlourish
+  008d17b0 RELOCATION_MATCH CGameScriptThing::MsgPerformedSuccessfulFlourish
+  008d1890 RELOCATION_MATCH CGameScriptThing::MsgWhoHitMe@CGameScriptThingMethods
+  008d19a0 RELOCATION_MATCH CGameScriptThing::MsgIsTalkedToBy
+  008d1b80 RELOCATION_MATCH CGameScriptThing::MsgWhoTalkedToMe
+  008d1ca0 RELOCATION_MATCH CGameScriptThing::MsgExpressionPerformedTo
+  008d1dd0 RELOCATION_MATCH CGameScriptThing::MsgWhoExpressedToMe@CGameScriptThingMethods
+  008d1ef0 RELOCATION_MATCH CGameScriptThing::MsgHowLongWasExpressionPerformed
+  008d1fd0 RELOCATION_MATCH CGameScriptThing::MsgIsKnockedOutBy
+  008d21b0 RELOCATION_MATCH CGameScriptThing::MsgWhoKnockedMeOut@CGameScriptThingMethods
+  008d22d0 RELOCATION_MATCH CGameScriptThing::MsgReceivedMoney
+  008d23c0 RELOCATION_MATCH CGameScriptThingMethods::?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z
+  008d2540 RELOCATION_MATCH CGameScriptThing::MsgReceivedInventoryItem
+  008d2610 RELOCATION_MATCH CGameScriptThing::MsgPerformedSpecialAbility
+  008d27e0 RELOCATION_MATCH CGameScriptThing::MsgPerformedAnyAggressiveSpecialAbility
+  008d28d0 RELOCATION_MATCH CGameScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility
+  008d29c0 RELOCATION_MATCH CGameScriptThing::MsgIsHitBySpecialAbilityFrom@
+  008d2bb0 RELOCATION_MATCH CGameScriptThing::MsgIsHitByAnySpecialAbilityFrom
+  008d2d90 RELOCATION_MATCH CGameScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom
+  008d2f80 RELOCATION_MATCH CGameScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom
+  008d3250 RELOCATION_MATCH CGameScriptThing::MsgHitEnemyWithMeleeWeapon
+  008d3350 RELOCATION_MATCH CGameScriptThing::MsgHitFriendWithMeleeWeapon
+  008d3450 RELOCATION_MATCH CGameScriptThing::MsgHitEnemyWithRangedWeapon
+  008d3550 RELOCATION_MATCH CGameScriptThing::MsgHitFriendWithRangedWeapon
+  008d3650 RELOCATION_MATCH CGameScriptThing::MsgHitEnemyWithBareHands
+  008d3750 RELOCATION_MATCH CGameScriptThing::MsgHitFriendWithBareHands
+  008d3af0 RELOCATION_MATCH CGameScriptThing::MsgOnMoralityChanged
+  008d3bf0 RELOCATION_MATCH CGameScriptThing::MsgOnCutSceneAnimEvent
+  008d3cf0 RELOCATION_MATCH CGameScriptThing::MsgIsKicked
+  008d3dd0 RELOCATION_MATCH CGameScriptThing::?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z
+  008d4740 RELOCATION_MATCH CGameScriptThing::??1CGameScriptThing@@UAE@XZ
+  008fda8f RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?GetName@CAIStateGroup_WorkSawingWood@@SI?AVCCharString@@XZ
+  008fdaa2 RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::?GetName@CAIStateGroup_WorkHammerAnvil@@SI?AVCCharString@@XZ
+  008fe36e RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?GetName@CAIStateGroup_OpinionReactionRoot@@SI?AVCCharString@@XZ
+  0093a890 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?IsStillValid@CAIStateGroup_BanditSitRoundCampfire@@UBE_NXZ
+  0093ab70 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?GetPNearCampfire@CAIStateGroup_BanditSitRoundCampfire@@ABEPAVCThingObject@@XZ
+  009445b0 MATCH CAIStateGroup_WorkSawingWood::?InitStateGroup@CAIStateGroup_WorkSawingWood_Methods@@QAEXHH@Z
+  009445c0 RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?IsStillValid@CAIStateGroup_WorkSawingWood@@MBE_NXZ
+  009445f0 RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?OnActivate@CAIStateGroup_WorkSawingWood_Methods@@QAEXXZ
+  00944690 RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?OnReplace@CAIStateGroup_WorkSawingWood_Methods@@QAEXXZ
+  00944cd0 MATCH CAIStateGroup_WorkHammerAnvil::?InitStateGroup@CAIStateGroup_WorkHammerAnvil_Methods@@QAEXABVCWorld@@AAVCThingAICreature@@@Z
+  00944ce0 RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::?IsStillValid@CAIStateGroup_WorkHammerAnvil@@MBE_NXZ
+  00944d10 RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::?OnActivate@CAIStateGroup_WorkHammerAnvil_Methods@@QAEXXZ
+  0095ee40 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?IsStillValid@CAIStateGroup_OpinionReactionRoot@@UBE_NXZ
+  0095ee70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?SayToThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAE?AW4EAIActionReturn@@ABVCCharString@@@Z
+  0095ef80 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ
+  0095fb40 RELOCATION_MATCH CIsOpinionSourceWithReaction::??RCIsOpinionSourceWithReaction@@QBE_NABVCThing@@@Z
+  00982eb0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeFeelingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00982f10 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeGeneralUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00982f70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeToHerselfUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00984f60 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?FleeUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  00985430 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?FollowFarUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  00985440 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?HeroImitationPlayUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  00985f40 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?WifeClothingUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NW4EOpinionAttitudeType@@@Z
+  00986210 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?CallingChildrenIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  009863e0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?CommentAboutHeroIsRunnable@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
+  0121f86f RELOCATION_MATCH CAIBrain::_$E1
+  01221d20 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::_$E1

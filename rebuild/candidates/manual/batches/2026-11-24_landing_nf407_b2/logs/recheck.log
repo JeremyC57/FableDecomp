@@ -1,0 +1,17 @@
+addr       parity           behav  name
+004d4249   WARN SHARED_HEADER_AVAILABLE CTCDInternalMarker (engine/CTCDInternalMarker.h)
+004d4249   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d429b   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d430f   WARN SHARED_HEADER_AVAILABLE CTCDRegionExit (engine/CTCDRegionExit.h)
+004d430f   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d4a86   WARN SHARED_HEADER_AVAILABLE CTCBerserk (engine/CTCBerserk.h)
+004d4a86   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5fdb   WARN SHARED_HEADER_AVAILABLE CTCDPhysicalObstruction (engine/CTCDPhysicalObstruction.h)
+004d5fdb   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 5
+  004d4249 RELOCATION_MATCH CTCDInternalMarker::StatGetClassTypeName@CTCDInternalMarker
+  004d429b RELOCATION_MATCH CTCDRegionEntrance::StatGetClassTypeName@CTCDRegionEntrance
+  004d430f RELOCATION_MATCH CTCDRegionExit::StatGetClassTypeName@CTCDRegionExit
+  004d4a86 RELOCATION_MATCH CTCBerserk::?StatGetClassTypeName@CTCBerserk@@SI?AVCCharString@@XZ
+  004d5fdb RELOCATION_MATCH CTCDPhysicalObstruction::StatGetClassTypeName@CTCDPhysicalObstruction

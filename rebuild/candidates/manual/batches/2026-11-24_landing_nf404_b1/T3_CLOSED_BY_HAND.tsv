@@ -1,0 +1,1 @@
+nf401	0x004AF220	identity	004af220 and 0056c840 carry WARN RELOC_CONFLICT: their objects bind ??1CCharString@@QAE@XZ to 0x0099B510 while landed 00433530 binds it to 0x0099EAE0. One of the two addresses is not ~CCharString: decide from retail bodies and respell the wrong side. | CLOSED by nf404_b1 (2026-11-25)

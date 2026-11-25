@@ -6,7 +6,7 @@
 // Callees: CVectorMap::LowerBound 0x0040F020 (GetTC<TCI_KRAKEN 0xE2> / <TCI_BOSS 0xAD>, expanded), CAIStateGroupBase::AIAction_DoNothing
 //   0x0097E200 / Terminate 0x008FCF40 / GetWorld 0x008FCFC0 / IsStopping 0x008FD010 / AIAction_PerformActionAndWait 0x0097DB70 /
 //   AIAction_CombatPerformActionAndWait 0x0097DA40, CTCBoss::SetNextBossPhase(long, bool) 0x007AEDA0, CTCKraken::HaveAllTentaclesBeenHit
-//   0x007FB240 / SetMode 0x007FC730 / 0x007FB120 (IS_THING_ALIVE(PTarget), descriptive IsTargetAlive), CWorld::GetFrame 0x0049D870, _ftol
+//   0x007FB240 / SetMode 0x007FC730 / HeadReadyToStrike 0x007FB120 (IS_THING_ALIVE(PTarget); NF404: Ego_r.pdb + FableWin.pdb ?HeadReadyToStrike@CTCKraken@@QAE_NXZ, was the descriptive IsTargetAlive), CWorld::GetFrame 0x0049D870, _ftol
 //   0x00BFEA70, CBaseIntelligentPointer::GetPItem 0x00A01B50, ~CCombatActionBase 0x0062E900, CCombatActionBase(CThingCreatureBase&, long,
 //   const CSoundPair&) 0x00858030 / SetCombatAnimation 0x008574D0 (the inline KrakenReturnToWater ctor, vtable 0x012906F4), CCharString
 //   0x0099EBF0 / ~ 0x0099EAE0, the brain's virtual slot 2 (CSuspendableProcessMicrothread::SuspendSuspendableProcess).
@@ -84,7 +84,7 @@ public:
     enum EKrakenMode { KRAKEN_MODE_HEAD_ATTACK = 3 };
     enum EKrakenBossPhase { KRAKEN_BOSS_PHASE_NONE = 0 };
     bool HaveAllTentaclesBeenHit() const;                // 0x007FB240
-    bool IsTargetAlive() const;                          // 0x007FB120 (descriptive: IS_THING_ALIVE(PTarget), in neither PDB name set)
+    bool HeadReadyToStrike();                            // 0x007FB120 (Ego_r.pdb / FableWin.pdb ?HeadReadyToStrike@CTCKraken@@QAE_NXZ)
     const CKrakenDef& GetKrakenDef() const { return *PKrakenDef; }
     CThing* GetPTarget() const { return PTarget.Get(); }
     bool IsTriggered() const { return Phase != KRAKEN_BOSS_PHASE_NONE; }
@@ -216,7 +216,7 @@ void CAIStateGroup_KrakenAttack::Update()
             }
             break;
         case 2:
-            if (kraken->IsTargetAlive()) {
+            if (kraken->HeadReadyToStrike()) {
                 if (!first && attacksLeft <= 0) {
                     if (AIAction_CombatPerformActionAndWait(CCreatureAction_KrakenRoarInto(GetCreature()), false) == AI_ACTION_STOPPING) {
                         Terminate();

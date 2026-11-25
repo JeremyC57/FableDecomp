@@ -1,37 +1,34 @@
-// IS_THING_ALIVE<CIntelligentPointer<T>>(holder with the pointer at +0xc) -- GetPItem @ 0x00A01B50 twice: null, then the dead bit (+0x91 & 1)
-// Leaf: ?IsThingAlive_008d04b0@@YI_NAAUCHolder@@@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D04B0, oracle length 39 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; lea esi,[ecx+0xc] ; mov ecx,esi ; call GetPItem ; test eax,eax ; je F ; mov ecx,esi ; call GetPItem ; test byte ptr [eax+91h],1 ; jne F ; mov al,1 ; pop esi ; ret ; F: xor al,al ; pop esi ; ret
-// Script-side liveness predicate over an intelligent pointer embedded at +0xc of its holder: the item is
-// fetched twice through CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (null means not alive),
-// and its dead bit (bit 0 of the byte at +0x91) decides; the nested-if form keeps both tests as
-// branches with the shared false tail at the end. Fastcall: the reference in ecx. The manifest
-// label is propagated; the thing class is opaque. One of 8 bodies of this shape.
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_flags;                 // +0x91 bit 0: dead
-    bool IsDead() const { return (m_flags & 1) != 0; }
-};
+// CGameScriptThing::IsAlive() const -- the script thing is alive while its thing exists and is not dead: IS_THING_ALIVE(PThing)
+// Leaf: ?IsAlive@CGameScriptThing@@UBE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D04B0, oracle length 39 bytes, thiscall (reached through the vtable only).
+// Retail bytes:  push esi ; lea esi,[ecx+0xc] ; mov ecx,esi ; call GetPItem ; test eax,eax ; je F ; mov ecx,esi ; call GetPItem ;
+//                test byte ptr [eax+91h],1 ; jne F ; mov al,1 ; pop esi ; ret ; F: xor al,al ; pop esi ; ret
+// Name (NF404, T3 nf401 0x008D04B0): Ego_r.pdb 0x00907510 + FableWin.pdb 0x02B00770 ?IsAlive@CGameScriptThing@@UBE_NXZ.
+//   (1) retail RTTI vtable 0x012852CC (.?AVCGameScriptThing@@) slot 75 holds 0x008D04B0; FableWin's vtable of the same class has ?IsAlive@CGameScriptThing@@UBE_NXZ in that slot
+//       (same slot count, neighbours aligned).
+//   (2) FableWin.pdb 0x02B00770 (/Od): the debug-only ProcessBreathe() call, then IS_THING_ALIVE<CIntelligentPointer<CThing>> 0x01CCA150 on this+0x0C; Ego_r.pdb 0x00907510 is this retail body instruction for instruction (`lea esi,[ecx+0Ch]`, GetPItem twice, the dead bit at Ego_r's +0xA1).
+//   The old self ?IsThingAlive_008d04b0@@YI_NAAUCHolder@@@Z (a free __fastcall over a made-up CHolder) was a stand-in.
+// Layout: the shared engine/CGameScriptThing.h class branch (PThing +0x0C) with the new declaration-only opt-in FABLE_RETAIL_CGAMESCRIPTTHING_ISALIVE; IS_THING_ALIVE from engine/ThingAlive.h (GetPItem 0x00A01B50 twice: the null test, then CThing::IsDead, bit 0 of +0x91).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE_NULL_INT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CGAMESCRIPTTHING
+#define FABLE_RETAIL_CGAMESCRIPTTHING_ISALIVE
+#include "fable_string.h"
+#include "engine/CThing.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CGameScriptThing.h"
+#include "engine/ThingAlive.h"
 
-struct CBaseIntelligentPointer {
-    CThing* GetPItem();                    // 0x00A01B50
-};
-
-inline bool IsThingAlive(CBaseIntelligentPointer& pointer)
+bool CGameScriptThing::IsAlive() const
 {
-    if (pointer.GetPItem() != 0) {
-        if (!pointer.GetPItem()->IsDead())
-            return true;
-    }
-    return false;
-}
-
-struct CHolder { unsigned char _pad[0xc]; CBaseIntelligentPointer m_pointer; };
-
-bool __fastcall IsThingAlive_008d04b0(CHolder& holder)
-{
-    return IsThingAlive(holder.m_pointer);
+    return IS_THING_ALIVE(PThing);
 }

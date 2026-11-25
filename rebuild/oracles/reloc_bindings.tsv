@@ -24331,7 +24331,7 @@ _sscanf	00bfed1c	0083efe0
 ??0CCreatureAction_KrakenRoarInto@@QAE@AAVCThingCreatureBase@@@Z	009258a0	00924c70
 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	0097da40	00924c70
 ?HaveAllTentaclesBeenHit@CTCKraken@@QBE_NXZ	007fb240	00924c70
-?IsTargetAlive@CTCKraken@@QBE_NXZ	007fb120	00924c70
+?HeadReadyToStrike@CTCKraken@@QAE_NXZ	007fb120	00924c70
 ?SetMode@CTCKraken@@AAEXW4EKrakenMode@1@@Z	007fc730	00924c70
 ?s_DebugRegistered@?1??Update@CAIStateGroup_KrakenAttack@@MAEXXZ@4_NA	013bb68e	00924c70
 ?s_DebugSkipPhase@?1??Update@CAIStateGroup_KrakenAttack@@MAEXXZ@4_NA	013bb68d	00924c70

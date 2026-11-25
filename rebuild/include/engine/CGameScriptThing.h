@@ -49,6 +49,12 @@ public:
     // (an override: no vtable change).
     virtual bool IsNull() const;                                         // 77 0x008D0110
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTTHING_ISALIVE
+    // Opt-in (NF404, row 0x008D04B0): the CScriptThing slot-75 override Ego_r.pdb 0x00907510 / FableWin.pdb 0x02B00770
+    // ?IsAlive@CGameScriptThing@@UBE_NXZ (retail vtable 0x012852CC slot 75 = 0x008D04B0: IS_THING_ALIVE(PThing), GetPItem 0x00A01B50 on
+    // this+0x0C twice). Declaration only (an override: no vtable change).
+    virtual bool IsAlive() const;                                        // 75 0x008D04B0
+#endif
 #ifdef FABLE_RETAIL_CGAMESCRIPTTHING_MSGGETTHINGSKILLED
     // NF67 opt-in (round 7, row 0x008D3DD0): the CScriptThing slot-55 override Ego_r.pdb
     // ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z (retail 0x008D3DD0; engine/CScriptThing.h slot 55).

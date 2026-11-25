@@ -8,6 +8,38 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WORKHAMMERANVIL_CLASS
+// NF404 opt-in (row 0x00944CE0 ?IsStillValid@CAIStateGroup_WorkHammerAnvil@@MBE_NXZ): the polymorphic retail class on its RTTI base CAIStateGroupBase (+0, sizeof
+// 0x14: the flattened __vftable and _base_0x04 below; needs FABLE_RETAIL_CAISTATEGROUPBASE + _MEMBERS for the base's virtual slots and
+// FABLE_RETAIL_CINTELLIGENTPOINTER), with the same own members at the same packed offsets (Ego_r.pdb names and types) and the slot-5 override
+// Ego_r.pdb 0x00968C10 / FableWin.pdb 0x02BAD3B0 ?IsStillValid@CAIStateGroup_WorkHammerAnvil@@MBE_NXZ (protected; retail vtable 0x0128BCF8 slot 5 = 0x00944CE0).
+// Declaration only (an override: no vtable change). The flattened struct below stays the default, unchanged.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThingObject;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString;
+#endif
+#pragma pack(push, 1)
+class CAIStateGroup_WorkHammerAnvil : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual bool IsStillValid() const;                       // 5 0x00944CE0
+private:
+    bool TookActionPoint;                                    // +0x14
+    CIntelligentPointer<CThingObject> PAnvil;           // +0x15
+    C3DVector ActionPointPos;                                // +0x1d
+    unsigned char ActionPointRHSet[0x1b];                    // +0x29 CRightHandedSet
+    long ActionPointIndex;                                   // +0x44
+    long NextFrameHammer;                                    // +0x48
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WorkHammerAnvil) == 0x4c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -40,4 +72,5 @@ FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_WorkHammerAnvil, ActionPointRH
 FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_WorkHammerAnvil, ActionPointIndex) == 0x44);
 FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_WorkHammerAnvil, NextFrameHammer) == 0x48);
 
+#endif // FABLE_RETAIL_CAISTATEGROUP_WORKHAMMERANVIL_CLASS
 #endif // FABLE_ENGINE_CAISTATEGROUP_WORKHAMMERANVIL_H

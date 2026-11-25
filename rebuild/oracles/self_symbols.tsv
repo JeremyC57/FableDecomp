@@ -10584,7 +10584,7 @@ address	symbol	status	leaf_given
 007fa980	?sort_heap@@YIXPAPAVCThing@@0VCThingCompare_BestForTargeting2@@@Z	RELOCATION_MATCH	sort_heap
 007faa20	??$__partial_sort@PAPAVCThing@@PAV1@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@000VCThingCompare_BestForTargeting2@@@Z	RELOCATION_MATCH	??$__partial_sort@
 007fac80	??$__introsort_loop@PAPAVCThing@@PAV1@HVCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@00HVCThingCompare_BestForTargeting2@@@Z	RELOCATION_MATCH	??$__introsort_loop@
-007fb120	?IsThingAlive_007fb120@@YI_NAAUCHolder@@@Z	RELOCATION_MATCH	IsTargetAlive
+007fb120	?HeadReadyToStrike@CTCKraken@@QAE_NXZ	RELOCATION_MATCH	?HeadReadyToStrike@CTCKraken@@QAE_NXZ
 007fb230	?Dest_val@@YIXPAX@Z	RELOCATION_MATCH	OnDie
 007fb500	?HasTargetBeenHitByKraken@CTCKraken@@QAE_NXZ	RELOCATION_MATCH	HasTargetBeenHitByKraken
 007fb870	?KillBeamEffect@CTCKraken@@AAEXXZ	RELOCATION_MATCH	KillBeamEffect
@@ -13132,7 +13132,7 @@ address	symbol	status	leaf_given
 008d0190	?FrameUpdate@CGameScriptThing@@QAEXXZ	RELOCATION_MATCH	FrameUpdate
 008d03a0	?SetToKillOnLevelUnload@CGameScriptThing@@QAEXJ@Z	RELOCATION_MATCH	SetToKillOnLevelUnload
 008d0470	?GetCurrentStateGroupType@CGameScriptThing@@QAEJXZ	RELOCATION_MATCH	GetCurrentStateGroupType
-008d04b0	?IsThingAlive_008d04b0@@YI_NAAUCHolder@@@Z	RELOCATION_MATCH	IsAlive
+008d04b0	?IsAlive@CGameScriptThing@@UBE_NXZ	RELOCATION_MATCH	?IsAlive@CGameScriptThing@@UBE_NXZ
 008d04e0	?MsgIsKilledBy@CGameScriptThingMethods@@QBE_NABVCCharString@@@Z	RELOCATION_MATCH	MsgIsKilledBy
 008d0610	?MsgWhoKilledMe@CGameScriptThingMethods@@QBE?AVCScriptThing@@XZ	RELOCATION_MATCH	MsgWhoKilledMe
 008d0730	?IsBeingCarriedBy@CGameScriptThingMethods@@QBE_NABVCCharString@@@Z	RELOCATION_MATCH	IsBeingCarriedBy
@@ -14465,7 +14465,7 @@ address	symbol	status	leaf_given
 0093a500	?Initialise@CAIStateGroup_BanditSitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 0093a540	?Idle@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	RELOCATION_MATCH	Idle
 0093a5c0	?Eat@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	RELOCATION_MATCH	Eat@CAIStateGroup_BanditSitRoundCampfire
-0093a890	?IsThingAlive_0093a890@@YI_NAAUCHolder@@@Z	RELOCATION_MATCH	IsStillValid
+0093a890	?IsStillValid@CAIStateGroup_BanditSitRoundCampfire@@UBE_NXZ	RELOCATION_MATCH	?IsStillValid@CAIStateGroup_BanditSitRoundCampfire@@UBE_NXZ
 0093a8c0	?Drink@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	RELOCATION_MATCH	Drink
 0093ae80	?IsRunnable@CAIStateGroup_BanditSitRoundCampfire@@UAE_NXZ	RELOCATION_MATCH	IsRunnable@CAIStateGroup_BanditSitRoundCampfire
 0093b640	??$GetPBestThing@VCIsNearCampfireWithSpace@@VCThingCompare_Nearest@@VCThingObject@@@CThingSearchToolsMethods@@QAE_NABVCIsNearCampfireWithSpace@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z	RELOCATION_MATCH	GetPBestThing
@@ -14521,8 +14521,8 @@ address	symbol	status	leaf_given
 00943aa0	??0?$CIntelligentPointer@VCVillageTaskBase@@@@QAE@ABV0@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
 00943ae0	?InitCreaturePosition@CAIStateGroup_WorkInWarehouse@@UAE_NXZ	RELOCATION_MATCH	InitCreaturePosition
 00944470	??0CAIFilter_ShouldStillBeWorkingInWarehouse@@QAE@UCIntelligentPointerCrate@@UCIntelligentPointerThing@@PAVCTCVillage@@@Z	RELOCATION_MATCH	??0CAIFilter_ShouldStillBeWorkingInWarehouse@
-009445c0	?IsThingAlive_009445c0@@YI_NAAUCHolder@@@Z	RELOCATION_MATCH	IsStillValid
-00944ce0	?IsThingAlive_00944ce0@@YI_NAAUCHolder@@@Z	RELOCATION_MATCH	IsStillValid
+009445c0	?IsStillValid@CAIStateGroup_WorkSawingWood@@MBE_NXZ	RELOCATION_MATCH	?IsStillValid@CAIStateGroup_WorkSawingWood@@MBE_NXZ
+00944ce0	?IsStillValid@CAIStateGroup_WorkHammerAnvil@@MBE_NXZ	RELOCATION_MATCH	?IsStillValid@CAIStateGroup_WorkHammerAnvil@@MBE_NXZ
 00945410	??0CCreatureAction_GetItemOutOfPocket@@QAE@PAVCThingCreatureBase@@J@Z	RELOCATION_MATCH	??0CCreatureAction_GetItemOutOfPocket@
 00945d20	?CCreatureAction_GetItemOutOfPocket_scalar_deleting_destructor@@YIPAXPAVCCreatureAction_GetItemOutOfPocket@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00945d40	??0?$CIntelligentPointer@$$CBVCThingBuilding@@@@QAE@PBVCThingBuilding@@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
@@ -14681,7 +14681,7 @@ address	symbol	status	leaf_given
 0095e470	?Update@CAIStateGroup_ReactToDeadLeader@@MAEXXZ	RELOCATION_MATCH	Update
 0095e6d0	??$FindMostRecentMessage@VCMessageEventFilter_IsMyDeadLeader@@@CMessageEventManager@@QAEPAVCMessageEvent@@ABVCMessageEventFilter_IsMyDeadLeader@@@Z	RELOCATION_MATCH	FindMostRecentMessage
 0095e900	?Update@CAIStateGroup_BoastingCrowdMember@@MAEXXZ	RELOCATION_MATCH	Update
-0095ee40	?IsThingAlive_0095ee40@@YI_NAAUCHolder@@@Z	RELOCATION_MATCH	IsStillValid
+0095ee40	?IsStillValid@CAIStateGroup_OpinionReactionRoot@@UBE_NXZ	RELOCATION_MATCH	?IsStillValid@CAIStateGroup_OpinionReactionRoot@@UBE_NXZ
 0095f9a0	??0CIsOpinionSourceWithReaction@@QAE@PAVCAIStateGroup_OpinionReactionRoot@@@Z	RELOCATION_MATCH	??0CIsOpinionSourceWithReaction
 0095fe60	?InitStateGroup@CAIStateGroup_DeedReactionRoot@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	RELOCATION_MATCH	InitStateGroup
 0095fed0	?IsStillValid@CAIStateGroup_DeedReactionRoot@@UBE_NXZ	RELOCATION_MATCH	IsStillValid@CAIStateGroup_DeedReactionRoot

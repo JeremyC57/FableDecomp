@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004af220   WARN STANDIN_LEAF ?_Dest_val_CSymbolInfo___@SymPair@@QAEXXZ (catalog std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>; names another function)
+004af220   RELOCATION_MATCH PASS   CSymbolInfo>_>
+0056c840   RELOCATION_MATCH PASS   CSymbolInfo>_>
+
+WINS: 2
+  004af220 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::?_Dest_val_CSymbolInfo___@SymPair@@QAEXXZ
+  0056c840 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::?Dest_val_CSymbolInfo___@@YIXPAUSymbolPair@@H@Z

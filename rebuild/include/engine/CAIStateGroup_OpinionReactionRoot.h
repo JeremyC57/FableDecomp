@@ -58,6 +58,12 @@ private:
     bool CommentAboutHeroIsRunnable();                                  // 0x009863E0
 #endif
 public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_OPINIONREACTIONROOT_ISSTILLVALID
+    // NF404 nested opt-in (row 0x0095EE40; with _WIFEUPDATE, _THINGREACTINGTO and FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS): the slot-5
+    // override Ego_r.pdb 0x009833D0 / FableWin.pdb 0x02C276B0 ?IsStillValid@CAIStateGroup_OpinionReactionRoot@@UBE_NXZ (public; retail
+    // vtable 0x0128C984 slot 5 = 0x0095EE40: IS_THING_ALIVE(ThingReactingTo +0x6B)). Declaration only (an override: no vtable change).
+    virtual bool IsStillValid() const;                                  // 5 0x0095EE40
+#endif
     CTCTalk*      PTCTalk;                                   // +0x14
 #ifdef FABLE_RETAIL_OPINIONREACTIONROOT_ISRUNNABLE_PASS27
     virtual bool IsRunnable();
