@@ -623,3 +623,4 @@ date	account	item	kind	status	note
 2026-11-25	B	0x00DEE2E0	author	released	closed by Account A on owner order (2026-11-25: "the stale claims you can close"): Account B is stopped, its branch is merged, and every row this claim names is landed
 2026-11-25	A	Codex pass 29: 200 parked rows (pending/2026-11-25_codex_pass29/RESERVED.tsv), incl. AUTH26's 8 (AUTH26 released by the owner)	authoring	claimed	reserved for Codex; Claude agents off them; locks CODEX29 in nflocks
 2026-11-25	A	agent NF428: CCountedPointer<T> family (stand-in ~CCountedPointer / ShareData copies, Reset / DeleteData caller respells)	naming	claimed	locks via nflocks owner NF428; skips CODEX29 / NF427 / B claims
+2026-11-25	A	agent NF429: CAIStateGroup_* class family (virtual overrides on VIRTUAL_MODEL opt-ins)	naming	claimed	locks via nflocks owner NF429; skips CODEX29 / NF427 / B claims
