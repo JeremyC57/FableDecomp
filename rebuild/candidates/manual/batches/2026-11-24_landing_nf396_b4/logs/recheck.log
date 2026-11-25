@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006553d0   WARN STANDIN_LEAF ?erase@?$list@VCStatUpdate@CMultiStatBar@NPlayerGui@@V?$allocator@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCStatUpdate@CMultiStatBar@NPlayerGui@@U?$_Nonconst_traits@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@2@U32@@Z (catalog std_list_node_unlink_and_free; names another function)
+006553d0   RELOCATION_MATCH PASS   std_list_node_unlink_and_free
+006553fd   WARN STANDIN_LEAF ?erase@?$list@VCAutoPickup@CAutoPickupBar@NPlayerGui@@V?$allocator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@U?$_Nonconst_traits@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@2@U32@@Z (catalog std_list_node_unlink_and_free; names another function)
+006553fd   RELOCATION_MATCH PASS   std_list_node_unlink_and_free
+
+WINS: 2
+  006553d0 RELOCATION_MATCH _global::?erase@?$list@VCStatUpdate@CMultiStatBar@NPlayerGui@@V?$allocator@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCStatUpdate@CMultiStatBar@NPlayerGui@@U?$_Nonconst_traits@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@2@U32@@Z
+  006553fd RELOCATION_MATCH _global::?erase@?$list@VCAutoPickup@CAutoPickupBar@NPlayerGui@@V?$allocator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@U?$_Nonconst_traits@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@2@U32@@Z

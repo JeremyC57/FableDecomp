@@ -1,0 +1,6 @@
+addr       parity           behav  name
+006c2c00   WARN STANDIN_LEAF ?clear@?$_List_base@V?$CCountedPointer@VCObject@CLevelLoader@@@@V?$allocator@V?$CCountedPointer@VCObject@CLevelLoader@@@@@std@@@std@@QAEXXZ (catalog CRetailList_CountedPointer::clear; names another function)
+006c2c00   RELOCATION_MATCH PASS   clear
+
+WINS: 1
+  006c2c00 RELOCATION_MATCH CRetailList_CountedPointer::?clear@?$_List_base@V?$CCountedPointer@VCObject@CLevelLoader@@@@V?$allocator@V?$CCountedPointer@VCObject@CLevelLoader@@@@@std@@@std@@QAEXXZ

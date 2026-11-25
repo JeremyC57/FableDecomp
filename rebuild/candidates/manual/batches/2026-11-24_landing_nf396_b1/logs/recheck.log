@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004df554   RELOCATION_MATCH PASS   FreeMember0_004df554
+
+WINS: 1
+  004df554 RELOCATION_MATCH _global::??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ

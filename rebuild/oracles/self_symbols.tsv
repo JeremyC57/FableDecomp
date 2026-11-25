@@ -3156,7 +3156,7 @@ address	symbol	status	leaf_given
 004df4e7	??0CObstacleNavigatorExternalInterface@@QAE@ABUCObstacleOwner@@@Z	RELOCATION_MATCH	??0CObstacleNavigatorExternalInterface@
 004df532	??_GCNavigatorExternalInterface@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
 004df54f	_Forward	MATCH	_Forward
-004df554	?OnReadFinished@@YIXPAUS@@@Z	RELOCATION_MATCH	OnReadFinished
+004df554	??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ
 004df6f4	?Transfer@CContextSensitiveItemDef@@QAEXAAVCPersistContext@@@Z	RELOCATION_MATCH	Transfer
 004df7d3	?map@map_T_004df7d3@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_004df7d3@std@@
 004df7ff	?map@map_T_004df7ff@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_004df7ff@std@@
@@ -4655,7 +4655,7 @@ address	symbol	status	leaf_given
 0057937c	?Alloc_24ByteStruct_17@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	Alloc_24ByteStruct_17
 005793a0	?Alloc_72ByteStruct@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	Alloc_72ByteStruct
 005793c4	?Alloc_72ByteStruct_2@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	Alloc_72ByteStruct_2
-005793e8	?OnKill@@YIXPAUAutoTinyOwnedList@@@Z	RELOCATION_MATCH	OnKill
+005793e8	?clear@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXXZ	RELOCATION_MATCH	?clear@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXXZ
 00579411	?Alloc_24ByteStruct_18@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	Alloc_24ByteStruct_18
 005794c3	??$_Insert@V?$CListIterator@PAVCClass@@@@@?$CList@PAVCClass@@@@QAEXV?$CListIterator@PAVCClass@@@@00Uinput_iterator_tag@std@@@Z	RELOCATION_MATCH	_Insert
 00579599	?Container_InitSmall1@ListNodeOwner_00579599@@QAEPAU1@KK@Z	RELOCATION_MATCH	Container_InitSmall1
@@ -6255,8 +6255,8 @@ address	symbol	status	leaf_given
 00655145	??0?$CIntelligentPointer@$$CBVCThingPhysical@@@@QAE@PBVCThingPhysical@@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
 00655164	?CIntelligentPointer_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00655230	?Attach@?$CIVCountedPointer@VCTriangleList@N3DPrimitive@@@@QAEXPAVCTriangleList@N3DPrimitive@@@Z	MATCH	Attach@?$CIVCountedPointer
-006553d0	?std_list_node_unlink_and_free@@YGXPAPAULinkedListNodeOverlay@@PAU1@@Z	RELOCATION_MATCH	std_list_node_unlink_and_free
-006553fd	?std_list_node_unlink_and_free@@YGXPAPAULinkedListNodeOverlay@@PAU1@@Z	RELOCATION_MATCH	std_list_node_unlink_and_free
+006553d0	?erase@?$list@VCStatUpdate@CMultiStatBar@NPlayerGui@@V?$allocator@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCStatUpdate@CMultiStatBar@NPlayerGui@@U?$_Nonconst_traits@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@2@U32@@Z	RELOCATION_MATCH	?erase@?$list@VCStatUpdate@CMultiStatBar@NPlayerGui@@V?$allocator@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCStatUpdate@CMultiStatBar@NPlayerGui@@U?$_Nonconst_traits@VCStatUpdate@CMultiStatBar@NPlayerGui@@@std@@@2@U32@@Z
+006553fd	?erase@?$list@VCAutoPickup@CAutoPickupBar@NPlayerGui@@V?$allocator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@U?$_Nonconst_traits@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@2@U32@@Z	RELOCATION_MATCH	?erase@?$list@VCAutoPickup@CAutoPickupBar@NPlayerGui@@V?$allocator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@std@@QAE?AU?$_List_iterator@VCAutoPickup@CAutoPickupBar@NPlayerGui@@U?$_Nonconst_traits@VCAutoPickup@CAutoPickupBar@NPlayerGui@@@std@@@2@U32@@Z
 00655516	?_M_initialize_map@?$_Deque_base@VC2DVector@@@std@@QAEXI@Z	RELOCATION_MATCH	_M_initialize_map
 006556a8	??$__uninitialized_copy@PAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@PAV1@@std@@YIPAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@PAV1@00ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_copy@PAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@PAV1@@std@@
 006556f2	??$uninitialized_fill_n@PAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@IV1@@std@@YIPAV?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@PAV1@IABV1@@Z	RELOCATION_MATCH	??$uninitialized_fill_n@
@@ -7551,7 +7551,7 @@ address	symbol	status	leaf_given
 006c2710	?ProcessHoverAnimQueue@CLevelLoader@@QAEXXZ	RELOCATION_MATCH	ProcessHoverAnimQueue
 006c28a0	??0list_T_0x8_006c28a0@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0list_T_0x8_006c28a0@std@@
 006c2aa0	?__uninitialized_copy@@YIPAUCLevelFiles@@PAU1@00ABU__false_type@@@Z	MATCH	__uninitialized_copy
-006c2c00	?clear@CRetailList_CountedPointer@@QAEXXZ	RELOCATION_MATCH	clear
+006c2c00	?clear@?$_List_base@V?$CCountedPointer@VCObject@CLevelLoader@@@@V?$allocator@V?$CCountedPointer@VCObject@CLevelLoader@@@@@std@@@std@@QAEXXZ	RELOCATION_MATCH	?clear@?$_List_base@V?$CCountedPointer@VCObject@CLevelLoader@@@@V?$allocator@V?$CCountedPointer@VCObject@CLevelLoader@@@@@std@@@std@@QAEXXZ
 006c2ce0	?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
 006c2d00	??0list_T_0x8_006c2d00@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0list_T_0x8_006c2d00@std@@
 006c2d20	?CActiveFile__OnReadFinished@@YIXPAUCActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
