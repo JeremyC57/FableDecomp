@@ -1,0 +1,24 @@
+addr       parity           behav  name
+007eba90   WARN STANDIN_LEAF ??_GCCreatureAction_LookThroughWindow@@UAEPAXI@Z (catalog CCreatureAction_LookThroughWindow::`scalar_deleting_destructor'; names another function)
+007eba90   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007ed040   WARN STANDIN_LEAF ??_GCCreatureAction_DropWeapon@@UAEPAXI@Z (catalog CCreatureAction_DropWeapon::`scalar_deleting_destructor'; names another function)
+007ed040   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0084aaa0   WARN STANDIN_LEAF ??_GCCreatureAction_ActivateZTarget@@UAEPAXI@Z (catalog CCreatureAction_ActivateZTarget::`scalar_deleting_destructor'; names another function)
+0084aaa0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0084ac00   WARN STANDIN_LEAF ??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z (catalog CCreatureAction_StartFillingTankard::`scalar_deleting_destructor'; names another function)
+0084ac00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0084ac20   WARN STANDIN_LEAF ??_GCCreatureAction_StopFillingTankard@@UAEPAXI@Z (catalog CCreatureAction_StopFillingTankard::`scalar_deleting_destructor'; names another function)
+0084ac20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008550e0   WARN STANDIN_LEAF ??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z (catalog CCreatureAction_SpiritReturnToHero::`scalar_deleting_destructor'; names another function)
+008550e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00933d30   WARN STANDIN_LEAF ??_GCCreatureAction_CallSpouseHome@@UAEPAXI@Z (catalog CCreatureAction_CallSpouseHome::`scalar_deleting_destructor'; names another function)
+00933d30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 7
+  007eba90 RELOCATION_MATCH CCreatureAction_LookThroughWindow::??_GCCreatureAction_LookThroughWindow@@UAEPAXI@Z
+  007ed040 RELOCATION_MATCH CCreatureAction_DropWeapon::??_GCCreatureAction_DropWeapon@@UAEPAXI@Z
+  0084aaa0 RELOCATION_MATCH CCreatureAction_ActivateZTarget::??_GCCreatureAction_ActivateZTarget@@UAEPAXI@Z
+  0084ac00 RELOCATION_MATCH CCreatureAction_StartFillingTankard::??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z
+  0084ac20 RELOCATION_MATCH CCreatureAction_StopFillingTankard::??_GCCreatureAction_StopFillingTankard@@UAEPAXI@Z
+  008550e0 RELOCATION_MATCH CCreatureAction_SpiritReturnToHero::??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z
+  00933d30 RELOCATION_MATCH CCreatureAction_CallSpouseHome::??_GCCreatureAction_CallSpouseHome@@UAEPAXI@Z

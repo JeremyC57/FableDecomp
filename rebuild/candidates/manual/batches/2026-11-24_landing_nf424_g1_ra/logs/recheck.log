@@ -1,0 +1,144 @@
+addr       parity           behav  name
+00855dd0   WARN STANDIN_LEAF ??_GCCreatureAction_StartBlocking@@UAEPAXI@Z (catalog CCreatureAction_StartBlocking::`scalar_deleting_destructor'; names another function)
+00855dd0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0085bc60   WARN STANDIN_LEAF ??_GCCreatureActionHeroRunningStop@@UAEPAXI@Z (catalog CCreatureActionHeroRunningStop::`scalar_deleting_destructor'; names another function)
+0085bc60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0087e5f0   WARN STANDIN_LEAF ??_GCCreatureAction_GeneralInterruptedAttack@@UAEPAXI@Z (catalog CCreatureAction_GeneralInterruptedAttack::`scalar_deleting_destructor'; names another function)
+0087e5f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdd20   WARN STANDIN_LEAF ??_GCCreatureAction_BuildWillForceSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildWillForceSpell::`scalar_deleting_destructor'; names another function)
+008bdd20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdd40   WARN STANDIN_LEAF ??_GCCreatureAction_FinishWillForceSpell@@UAEPAXI@Z (catalog CCreatureAction_FinishWillForceSpell::`scalar_deleting_destructor'; names another function)
+008bdd40   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdd80   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpWillEnflameSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpWillEnflameSpell::`scalar_deleting_destructor'; names another function)
+008bdd80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdda0   WARN STANDIN_LEAF ??_GCCreatureAction_ReleaseWillEnflameSpell@@UAEPAXI@Z (catalog CCreatureAction_ReleaseWillEnflameSpell::`scalar_deleting_destructor'; names another function)
+008bdda0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdde0   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpPhysicalShieldSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpPhysicalShieldSpell::`scalar_deleting_destructor'; names another function)
+008bdde0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bde20   WARN STANDIN_LEAF ??_GCCreatureAction_RemovePhysicalShieldSpell@@UAEPAXI@Z (catalog CCreatureAction_RemovePhysicalShieldSpell::`scalar_deleting_destructor'; names another function)
+008bde20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bde60   WARN STANDIN_LEAF ??_GCCreatureAction_BuildWillTurncoatSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildWillTurncoatSpell::`scalar_deleting_destructor'; names another function)
+008bde60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bde80   WARN STANDIN_LEAF ??_GCCreatureAction_FinishWillTurncoatSpell@@UAEPAXI@Z (catalog CCreatureAction_FinishWillTurncoatSpell::`scalar_deleting_destructor'; names another function)
+008bde80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdea0   WARN STANDIN_LEAF ??_GCCreatureAction_BuildDrainLifeSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildDrainLifeSpell::`scalar_deleting_destructor'; names another function)
+008bdea0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdec0   WARN STANDIN_LEAF ??_GCCreatureAction_FinishDrainLifeSpell@@UAEPAXI@Z (catalog CCreatureAction_FinishDrainLifeSpell::`scalar_deleting_destructor'; names another function)
+008bdec0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdf00   WARN STANDIN_LEAF ??_GCCreatureAction_BuildHealLifeSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildHealLifeSpell::`scalar_deleting_destructor'; names another function)
+008bdf00   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdf20   WARN STANDIN_LEAF ??_GCCreatureAction_FinishHealLifeSpell@@UAEPAXI@Z (catalog CCreatureAction_FinishHealLifeSpell::`scalar_deleting_destructor'; names another function)
+008bdf20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdf60   WARN STANDIN_LEAF ??_GCCreatureAction_BuildGhostSwordSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildGhostSwordSpell::`scalar_deleting_destructor'; names another function)
+008bdf60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008bdf80   WARN STANDIN_LEAF ??_GCCreatureAction_FinishGhostSwordSpell@@UAEPAXI@Z (catalog CCreatureAction_FinishGhostSwordSpell::`scalar_deleting_destructor'; names another function)
+008bdf80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be030   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpWillSummonSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpWillSummonSpell::`scalar_deleting_destructor'; names another function)
+008be030   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be050   WARN STANDIN_LEAF ??_GCCreatureAction_ReleaseWillSummonSpell@@UAEPAXI@Z (catalog CCreatureAction_ReleaseWillSummonSpell::`scalar_deleting_destructor'; names another function)
+008be050   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be090   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpWillLightningSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpWillLightningSpell::`scalar_deleting_destructor'; names another function)
+008be090   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be0b0   WARN STANDIN_LEAF ??_GCCreatureAction_ReleaseWillLightningSpell@@UAEPAXI@Z (catalog CCreatureAction_ReleaseWillLightningSpell::`scalar_deleting_destructor'; names another function)
+008be0b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be0f0   WARN STANDIN_LEAF ??_GCCreatureAction_BuildFireballSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildFireballSpell::`scalar_deleting_destructor'; names another function)
+008be0f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be190   WARN STANDIN_LEAF ??_GCCreatureAction_CastDivineWrathSpell@@UAEPAXI@Z (catalog CCreatureAction_CastDivineWrathSpell::`scalar_deleting_destructor'; names another function)
+008be190   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be1b0   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpDivineWrathSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpDivineWrathSpell::`scalar_deleting_destructor'; names another function)
+008be1b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be1d0   WARN STANDIN_LEAF ??_GCCreatureAction_ReleaseDivineWrathSpell@@UAEPAXI@Z (catalog CCreatureAction_ReleaseDivineWrathSpell::`scalar_deleting_destructor'; names another function)
+008be1d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be210   WARN STANDIN_LEAF ??_GCCreatureAction_CastUnholyPowerSpell@@UAEPAXI@Z (catalog CCreatureAction_CastUnholyPowerSpell::`scalar_deleting_destructor'; names another function)
+008be210   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be230   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpUnholyPowerSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpUnholyPowerSpell::`scalar_deleting_destructor'; names another function)
+008be230   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008be250   WARN STANDIN_LEAF ??_GCCreatureAction_ReleaseUnholyPowerSpell@@UAEPAXI@Z (catalog CCreatureAction_ReleaseUnholyPowerSpell::`scalar_deleting_destructor'; names another function)
+008be250   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008c3b30   WARN STANDIN_LEAF ??_GCCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UAEPAXI@Z (catalog CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend::`scalar_deleting_destructor'; names another function)
+008c3b30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008cd260   WARN STANDIN_LEAF ??_GCCreatureAction_BalverineDropInFromSky@@UAEPAXI@Z (catalog CCreatureAction_BalverineDropInFromSky::`scalar_deleting_destructor'; names another function)
+008cd260   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008cece0   WARN STANDIN_LEAF ??_GCCreatureAction_BuildUpTimeSpell@@UAEPAXI@Z (catalog CCreatureAction_BuildUpTimeSpell::`scalar_deleting_destructor'; names another function)
+008cece0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008cee10   WARN STANDIN_LEAF ??_GCCreatureAction_BattleChargeTurnLeft@@UAEPAXI@Z (catalog CCreatureAction_BattleChargeTurnLeft::`scalar_deleting_destructor'; names another function)
+008cee10   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008cee30   WARN STANDIN_LEAF ??_GCCreatureAction_BattleChargeTurnRight@@UAEPAXI@Z (catalog CCreatureAction_BattleChargeTurnRight::`scalar_deleting_destructor'; names another function)
+008cee30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008e4d80   WARN STANDIN_LEAF ??_GCCreatureAction_SnapDragonOutOf@@UAEPAXI@Z (catalog CCreatureAction_SnapDragonOutOf::`scalar_deleting_destructor'; names another function)
+008e4d80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008f56c0   WARN STANDIN_LEAF ??_GCCreatureAction_DragonRetreat@@UAEPAXI@Z (catalog CCreatureAction_DragonRetreat::`scalar_deleting_destructor'; names another function)
+008f56c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008f5720   WARN STANDIN_LEAF ??_GCCreatureAction_DragonRearUpOutOf@@UAEPAXI@Z (catalog CCreatureAction_DragonRearUpOutOf::`scalar_deleting_destructor'; names another function)
+008f5720   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00907530   WARN STANDIN_LEAF ??_GCCreatureAction_FodderPrimaryAttack@@UAEPAXI@Z (catalog CCreatureAction_FodderPrimaryAttack::`scalar_deleting_destructor'; names another function)
+00907530   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00907550   WARN STANDIN_LEAF ??_GCCreatureAction_FodderUnblockablePrimaryAttack@@UAEPAXI@Z (catalog CCreatureAction_FodderUnblockablePrimaryAttack::`scalar_deleting_destructor'; names another function)
+00907550   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00907570   WARN STANDIN_LEAF ??_GCCreatureAction_FodderSecondaryAttack@@UAEPAXI@Z (catalog CCreatureAction_FodderSecondaryAttack::`scalar_deleting_destructor'; names another function)
+00907570   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00908530   WARN STANDIN_LEAF ??_GCCreatureAction_TrollGetProjectile@@UAEPAXI@Z (catalog CCreatureAction_TrollGetProjectile::`scalar_deleting_destructor'; names another function)
+00908530   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00908550   WARN STANDIN_LEAF ??_GCCreatureAction_TrollPursue@@UAEPAXI@Z (catalog CCreatureAction_TrollPursue::`scalar_deleting_destructor'; names another function)
+00908550   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0090a7a0   WARN STANDIN_LEAF ??_GCCreatureAction_MidAttackFacing@@UAEPAXI@Z (catalog CCreatureAction_MidAttackFacing::`scalar_deleting_destructor'; names another function)
+0090a7a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00925a30   WARN STANDIN_LEAF ??_GCCreatureAction_TentacleRise@@UAEPAXI@Z (catalog CCreatureAction_TentacleRise::`scalar_deleting_destructor'; names another function)
+00925a30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0095cc60   WARN STANDIN_LEAF ??_GCCreatureAction_WaspQueenLashOutAttack@@UAEPAXI@Z (catalog CCreatureAction_WaspQueenLashOutAttack::`scalar_deleting_destructor'; names another function)
+0095cc60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009629f0   WARN STANDIN_LEAF ??_GCCreatureAction_IceTrollIcicleAttack@@UAEPAXI@Z (catalog CCreatureAction_IceTrollIcicleAttack::`scalar_deleting_destructor'; names another function)
+009629f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0096c0e0   WARN STANDIN_LEAF ??_GCCreatureAction_WhisperJumpIntoSky@@UAEPAXI@Z (catalog CCreatureAction_WhisperJumpIntoSky::`scalar_deleting_destructor'; names another function)
+0096c0e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0097d110   WARN STANDIN_LEAF ??_GCCreatureAction_VillagerAttack@@UAEPAXI@Z (catalog CCreatureAction_VillagerAttack::`scalar_deleting_destructor'; names another function)
+0097d110   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 47
+  00855dd0 RELOCATION_MATCH CCreatureAction_StartBlocking::??_GCCreatureAction_StartBlocking@@UAEPAXI@Z
+  0085bc60 RELOCATION_MATCH CCreatureActionHeroRunningStop::??_GCCreatureActionHeroRunningStop@@UAEPAXI@Z
+  0087e5f0 RELOCATION_MATCH CCreatureAction_GeneralInterruptedAttack::??_GCCreatureAction_GeneralInterruptedAttack@@UAEPAXI@Z
+  008bdd20 RELOCATION_MATCH CCreatureAction_BuildWillForceSpell::??_GCCreatureAction_BuildWillForceSpell@@UAEPAXI@Z
+  008bdd40 RELOCATION_MATCH CCreatureAction_FinishWillForceSpell::??_GCCreatureAction_FinishWillForceSpell@@UAEPAXI@Z
+  008bdd80 RELOCATION_MATCH CCreatureAction_BuildUpWillEnflameSpell::??_GCCreatureAction_BuildUpWillEnflameSpell@@UAEPAXI@Z
+  008bdda0 RELOCATION_MATCH CCreatureAction_ReleaseWillEnflameSpell::??_GCCreatureAction_ReleaseWillEnflameSpell@@UAEPAXI@Z
+  008bdde0 RELOCATION_MATCH CCreatureAction_BuildUpPhysicalShieldSpell::??_GCCreatureAction_BuildUpPhysicalShieldSpell@@UAEPAXI@Z
+  008bde20 RELOCATION_MATCH CCreatureAction_RemovePhysicalShieldSpell::??_GCCreatureAction_RemovePhysicalShieldSpell@@UAEPAXI@Z
+  008bde60 RELOCATION_MATCH CCreatureAction_BuildWillTurncoatSpell::??_GCCreatureAction_BuildWillTurncoatSpell@@UAEPAXI@Z
+  008bde80 RELOCATION_MATCH CCreatureAction_FinishWillTurncoatSpell::??_GCCreatureAction_FinishWillTurncoatSpell@@UAEPAXI@Z
+  008bdea0 RELOCATION_MATCH CCreatureAction_BuildDrainLifeSpell::??_GCCreatureAction_BuildDrainLifeSpell@@UAEPAXI@Z
+  008bdec0 RELOCATION_MATCH CCreatureAction_FinishDrainLifeSpell::??_GCCreatureAction_FinishDrainLifeSpell@@UAEPAXI@Z
+  008bdf00 RELOCATION_MATCH CCreatureAction_BuildHealLifeSpell::??_GCCreatureAction_BuildHealLifeSpell@@UAEPAXI@Z
+  008bdf20 RELOCATION_MATCH CCreatureAction_FinishHealLifeSpell::??_GCCreatureAction_FinishHealLifeSpell@@UAEPAXI@Z
+  008bdf60 RELOCATION_MATCH CCreatureAction_BuildGhostSwordSpell::??_GCCreatureAction_BuildGhostSwordSpell@@UAEPAXI@Z
+  008bdf80 RELOCATION_MATCH CCreatureAction_FinishGhostSwordSpell::??_GCCreatureAction_FinishGhostSwordSpell@@UAEPAXI@Z
+  008be030 RELOCATION_MATCH CCreatureAction_BuildUpWillSummonSpell::??_GCCreatureAction_BuildUpWillSummonSpell@@UAEPAXI@Z
+  008be050 RELOCATION_MATCH CCreatureAction_ReleaseWillSummonSpell::??_GCCreatureAction_ReleaseWillSummonSpell@@UAEPAXI@Z
+  008be090 RELOCATION_MATCH CCreatureAction_BuildUpWillLightningSpell::??_GCCreatureAction_BuildUpWillLightningSpell@@UAEPAXI@Z
+  008be0b0 RELOCATION_MATCH CCreatureAction_ReleaseWillLightningSpell::??_GCCreatureAction_ReleaseWillLightningSpell@@UAEPAXI@Z
+  008be0f0 RELOCATION_MATCH CCreatureAction_BuildFireballSpell::??_GCCreatureAction_BuildFireballSpell@@UAEPAXI@Z
+  008be190 RELOCATION_MATCH CCreatureAction_CastDivineWrathSpell::??_GCCreatureAction_CastDivineWrathSpell@@UAEPAXI@Z
+  008be1b0 RELOCATION_MATCH CCreatureAction_BuildUpDivineWrathSpell::??_GCCreatureAction_BuildUpDivineWrathSpell@@UAEPAXI@Z
+  008be1d0 RELOCATION_MATCH CCreatureAction_ReleaseDivineWrathSpell::??_GCCreatureAction_ReleaseDivineWrathSpell@@UAEPAXI@Z
+  008be210 RELOCATION_MATCH CCreatureAction_CastUnholyPowerSpell::??_GCCreatureAction_CastUnholyPowerSpell@@UAEPAXI@Z
+  008be230 RELOCATION_MATCH CCreatureAction_BuildUpUnholyPowerSpell::??_GCCreatureAction_BuildUpUnholyPowerSpell@@UAEPAXI@Z
+  008be250 RELOCATION_MATCH CCreatureAction_ReleaseUnholyPowerSpell::??_GCCreatureAction_ReleaseUnholyPowerSpell@@UAEPAXI@Z
+  008c3b30 RELOCATION_MATCH CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend::??_GCCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UAEPAXI@Z
+  008cd260 RELOCATION_MATCH CCreatureAction_BalverineDropInFromSky::??_GCCreatureAction_BalverineDropInFromSky@@UAEPAXI@Z
+  008cece0 RELOCATION_MATCH CCreatureAction_BuildUpTimeSpell::??_GCCreatureAction_BuildUpTimeSpell@@UAEPAXI@Z
+  008cee10 RELOCATION_MATCH CCreatureAction_BattleChargeTurnLeft::??_GCCreatureAction_BattleChargeTurnLeft@@UAEPAXI@Z
+  008cee30 RELOCATION_MATCH CCreatureAction_BattleChargeTurnRight::??_GCCreatureAction_BattleChargeTurnRight@@UAEPAXI@Z
+  008e4d80 RELOCATION_MATCH CCreatureAction_SnapDragonOutOf::??_GCCreatureAction_SnapDragonOutOf@@UAEPAXI@Z
+  008f56c0 RELOCATION_MATCH CCreatureAction_DragonRetreat::??_GCCreatureAction_DragonRetreat@@UAEPAXI@Z
+  008f5720 RELOCATION_MATCH CCreatureAction_DragonRearUpOutOf::??_GCCreatureAction_DragonRearUpOutOf@@UAEPAXI@Z
+  00907530 RELOCATION_MATCH CCreatureAction_FodderPrimaryAttack::??_GCCreatureAction_FodderPrimaryAttack@@UAEPAXI@Z
+  00907550 RELOCATION_MATCH CCreatureAction_FodderUnblockablePrimaryAttack::??_GCCreatureAction_FodderUnblockablePrimaryAttack@@UAEPAXI@Z
+  00907570 RELOCATION_MATCH CCreatureAction_FodderSecondaryAttack::??_GCCreatureAction_FodderSecondaryAttack@@UAEPAXI@Z
+  00908530 RELOCATION_MATCH CCreatureAction_TrollGetProjectile::??_GCCreatureAction_TrollGetProjectile@@UAEPAXI@Z
+  00908550 RELOCATION_MATCH CCreatureAction_TrollPursue::??_GCCreatureAction_TrollPursue@@UAEPAXI@Z
+  0090a7a0 RELOCATION_MATCH CCreatureAction_MidAttackFacing::??_GCCreatureAction_MidAttackFacing@@UAEPAXI@Z
+  00925a30 RELOCATION_MATCH CCreatureAction_TentacleRise::??_GCCreatureAction_TentacleRise@@UAEPAXI@Z
+  0095cc60 RELOCATION_MATCH CCreatureAction_WaspQueenLashOutAttack::??_GCCreatureAction_WaspQueenLashOutAttack@@UAEPAXI@Z
+  009629f0 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAttack::??_GCCreatureAction_IceTrollIcicleAttack@@UAEPAXI@Z
+  0096c0e0 RELOCATION_MATCH CCreatureAction_WhisperJumpIntoSky::??_GCCreatureAction_WhisperJumpIntoSky@@UAEPAXI@Z
+  0097d110 RELOCATION_MATCH CCreatureAction_VillagerAttack::??_GCCreatureAction_VillagerAttack@@UAEPAXI@Z

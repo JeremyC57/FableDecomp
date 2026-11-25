@@ -7256,7 +7256,6 @@ T3	emit ?FinishAction@CCreatureAction_GetOutOfBed@@UAEXXZ	(none)	1	1		008421c0
 T3	emit ?IsToHaveEmptyHands@CCreatureAction_PerformExpression@@UBE_NXZ	(none)	1	1		00842c20
 T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PerformExpression@@UBE_NXZ	(none)	1	1		00842c30
 T3	emit ?IsToReplaceItemIfRemoved@CCreatureAction_PerformExpressionExtended@@UBE_NXZ	(none)	1	1		00842c40
-T3	emit ??_ECCreatureAction_ActivateZTarget@@UAEPAXI@Z	(none)	1	1		0084aaa0
 T3	emit ??_GCCreatureAction_PlayAnimation@@UAEPAXI@Z	(none)	1	1		0084aac0
 T3	emit ??_ECCreatureAction_PlayConversationAnimation@@UAEPAXI@Z	(none)	1	1		0084ab20
 T3	emit ??_GCCreatureAction_DropGenericBox@@UAEPAXI@Z	(none)	1	1		0084ab40
@@ -7265,8 +7264,6 @@ T3	emit ??_ECCreatureAction_YellOverHere@@UAEPAXI@Z	(none)	1	1		0084ab80
 T3	emit ??_ECCreatureAction_AlertToPlayer@@UAEPAXI@Z	(none)	1	1		0084aba0
 T3	emit ??_ECCreatureAction_AlertAllNearbyToThing@@UAEPAXI@Z	(none)	1	1		0084abc0
 T3	emit ??_GCCreatureAction_PutDownThingAtTable@@UAEPAXI@Z	(none)	1	1		0084abe0
-T3	emit ??_GCCreatureAction_StartFillingTankard@@UAEPAXI@Z	(none)	1	1		0084ac00
-T3	emit ??_ECCreatureAction_StopFillingTankard@@UAEPAXI@Z	(none)	1	1		0084ac20
 T3	emit ??_GCCreatureAction_ShopkeeperGetOut@@UAEPAXI@Z	(none)	1	1		0084ac40
 T3	emit ??_GCCreatureAction_BlowHorn@@UAEPAXI@Z	(none)	1	1		0084b240
 T3	emit ??_ECCreatureAction_UseLamp@@UAEPAXI@Z	(none)	1	1		0084b300
@@ -7285,11 +7282,9 @@ T3	emit ?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ	(none)	1	1		00854
 T3	emit ?IsOverrideableByActionOfSamePriority@CCreatureAction_SpiritHitResponse@@UBE_NXZ	(none)	1	1		008550a0
 T3	emit ?PerformAction@CCreatureAction_SpiritHitResponse@@UAEXXZ	(none)	1	1		008550b0
 T3	emit ??_GCCreatureAction_SpiritHitResponse@@UAEPAXI@Z	(none)	1	1		008550c0
-T3	emit ??_GCCreatureAction_SpiritReturnToHero@@UAEPAXI@Z	(none)	1	1		008550e0
 T3	emit ??_ECCreatureAction_BlockBase@@UAEPAXI@Z	(none)	1	1		00855d20
 T3	emit ??_ECCreatureAction_BlockRespond@@UAEPAXI@Z	(none)	1	1		00855d90
 T3	emit ??_ECCreatureAction_BlockCounter@@UAEPAXI@Z	(none)	1	1		00855db0
-T3	emit ??_ECCreatureAction_StartBlocking@@UAEPAXI@Z	(none)	1	1		00855dd0
 T3	emit ?IsActionReadyForInterruptionByMovement@CCombatActionBase@@UBE_NABVC3DVector@@@Z	(none)	1	1		00856190
 T3	emit ?InitialiseActionMovement@CCombatActionBase@@MAEXXZ	(none)	1	1		00856240
 T3	emit ?IsVitalStrike@CCombatActionBase@@MBE_NXZ	(none)	1	1		008562e0
@@ -7300,7 +7295,6 @@ T3	emit ?IsPreventingNormalMovement@CCreatureActionHeroJump@@UBE_NXZ	(none)	1	1	
 T3	emit ?FinishAction@CCreatureActionHeroJump@@UAEXXZ	(none)	1	1		0085baf0
 T3	emit ??_GCCreatureActionHeroJump@@UAEPAXI@Z	(none)	1	1		0085bc20
 T3	emit ??_GCCreatureActionHero180RunningTurn@@UAEPAXI@Z	(none)	1	1		0085bc40
-T3	emit ??_ECCreatureActionHeroRunningStop@@UAEPAXI@Z	(none)	1	1		0085bc60
 T3	emit ?GetIsToFaceTargetCone@CCombatAction_ControlledStrafeJump@@UBEMXZ	(none)	1	1		0085c300
 T3	emit ??_GCCombatAction_ControlledStrafeJump@@UAEPAXI@Z	(none)	1	1		0085c310
 T3	emit ??_GCCreatureAction_GetOutOfBed@@UAEPAXI@Z	(none)	1	1		00860100
@@ -7322,7 +7316,6 @@ T3	emit ??_ECCombatAction_GenericStrikeResponse@@UAEPAXI@Z	(none)	1	1		00868330
 T3	emit ?FinishAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ	(none)	1	1		0087c770
 T3	emit ?FrameUpdate@CCreatureAction_InterruptableMidAttack@@UAEXXZ	(none)	1	1		0087c840
 T3	emit ??_ECCreatureAction_InterruptableMidAttackAutoTurn@@UAEPAXI@Z	(none)	1	1		0087e5c0
-T3	emit ??_ECCreatureAction_GeneralInterruptedAttack@@UAEPAXI@Z	(none)	1	1		0087e5f0
 T3	emit ?IsToPerformActionOnStrike@CCombatAction_KickThingOnGround@@UBE_NXZ	(none)	1	1		00880020
 T3	emit ?IsToHitProneThings@CCombatAction_KickThingOnGround@@UBE_NXZ	(none)	1	1		00880030
 T3	emit ??_GCCombatAction_KickThingOnGround@@UAEPAXI@Z	(none)	1	1		00880080
@@ -7438,48 +7431,23 @@ T3	emit ?FinishAction@CCreatureAction_BuildUpDivineWrathSpell@@UAEXXZ	(none)	1	1
 T3	emit ?FinishAction@CCreatureAction_BuildUpUnholyPowerSpell@@UAEXXZ	(none)	1	1		008b9490
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_FinishFireballSpell@@UBE_NXZ	(none)	1	1		008bdaf0
 T3	emit ??_ECCreatureAction_CastWillForceSpell@@UAEPAXI@Z	(none)	1	1		008bdd00
-T3	emit ??_GCCreatureAction_BuildWillForceSpell@@UAEPAXI@Z	(none)	1	1		008bdd20
-T3	emit ??_GCCreatureAction_FinishWillForceSpell@@UAEPAXI@Z	(none)	1	1		008bdd40
 T3	emit ??_GCCreatureAction_CastWillEnflameSpell@@UAEPAXI@Z	(none)	1	1		008bdd60
-T3	emit ??_GCCreatureAction_BuildUpWillEnflameSpell@@UAEPAXI@Z	(none)	1	1		008bdd80
-T3	emit ??_GCCreatureAction_ReleaseWillEnflameSpell@@UAEPAXI@Z	(none)	1	1		008bdda0
 T3	emit ??_GCCreatureAction_CastPhysicalShieldSpell@@UAEPAXI@Z	(none)	1	1		008bddc0
-T3	emit ??_GCCreatureAction_BuildUpPhysicalShieldSpell@@UAEPAXI@Z	(none)	1	1		008bdde0
 T3	emit ??_GCCreatureAction_ReleasePhysicalShieldSpell@@UAEPAXI@Z	(none)	1	1		008bde00
-T3	emit ??_GCCreatureAction_RemovePhysicalShieldSpell@@UAEPAXI@Z	(none)	1	1		008bde20
 T3	emit ??_GCCreatureAction_CastWillTurncoatSpell@@UAEPAXI@Z	(none)	1	1		008bde40
-T3	emit ??_GCCreatureAction_BuildWillTurncoatSpell@@UAEPAXI@Z	(none)	1	1		008bde60
-T3	emit ??_GCCreatureAction_FinishWillTurncoatSpell@@UAEPAXI@Z	(none)	1	1		008bde80
-T3	emit ??_GCCreatureAction_BuildDrainLifeSpell@@UAEPAXI@Z	(none)	1	1		008bdea0
-T3	emit ??_GCCreatureAction_FinishDrainLifeSpell@@UAEPAXI@Z	(none)	1	1		008bdec0
 T3	emit ??_ECCreatureAction_CastWillHealLifeSpell@@UAEPAXI@Z	(none)	1	1		008bdee0
-T3	emit ??_ECCreatureAction_BuildHealLifeSpell@@UAEPAXI@Z	(none)	1	1		008bdf00
-T3	emit ??_GCCreatureAction_FinishHealLifeSpell@@UAEPAXI@Z	(none)	1	1		008bdf20
 T3	emit ??_GCCreatureAction_CastWillGhostSwordSpell@@UAEPAXI@Z	(none)	1	1		008bdf40
-T3	emit ??_GCCreatureAction_BuildGhostSwordSpell@@UAEPAXI@Z	(none)	1	1		008bdf60
-T3	emit ??_GCCreatureAction_FinishGhostSwordSpell@@UAEPAXI@Z	(none)	1	1		008bdf80
 T3	emit ??_ECCreatureAction_CastWillHarvestSoulSpell@@UAEPAXI@Z	(none)	1	1		008bdfa0
 T3	emit ??_GCCreatureAction_CastWillRaiseDeadSpell@@UAEPAXI@Z	(none)	1	1		008bdfc0
 T3	emit ??_ECCreatureAction_CastWillReclaimUndeadFollower@@UAEPAXI@Z	(none)	1	1		008bdfe0
 T3	emit ??_ECCreatureAction_CastWillSummonSpell@@UAEPAXI@Z	(none)	1	1		008be010
-T3	emit ??_GCCreatureAction_BuildUpWillSummonSpell@@UAEPAXI@Z	(none)	1	1		008be030
-T3	emit ??_ECCreatureAction_ReleaseWillSummonSpell@@UAEPAXI@Z	(none)	1	1		008be050
 T3	emit ??_GCCreatureAction_CastWillLightningSpell@@UAEPAXI@Z	(none)	1	1		008be070
-T3	emit ??_ECCreatureAction_BuildUpWillLightningSpell@@UAEPAXI@Z	(none)	1	1		008be090
-T3	emit ??_ECCreatureAction_ReleaseWillLightningSpell@@UAEPAXI@Z	(none)	1	1		008be0b0
 T3	emit ??_GCCreatureAction_CastWillFireballSpell@@UAEPAXI@Z	(none)	1	1		008be0d0
-T3	emit ??_ECCreatureAction_BuildFireballSpell@@UAEPAXI@Z	(none)	1	1		008be0f0
 T3	emit ??_GCCreatureAction_FinishFireballSpell@@UAEPAXI@Z	(none)	1	1		008be110
 T3	emit ??_ECCreatureAction_TeleportOut@@UAEPAXI@Z	(none)	1	1		008be130
 T3	emit ??_ECCreatureAction_TeleportIn@@UAEPAXI@Z	(none)	1	1		008be150
 T3	emit ??_ECCreatureAction_BeingForcePushed@@UAEPAXI@Z	(none)	1	1		008be170
-T3	emit ??_GCCreatureAction_CastDivineWrathSpell@@UAEPAXI@Z	(none)	1	1		008be190
-T3	emit ??_ECCreatureAction_BuildUpDivineWrathSpell@@UAEPAXI@Z	(none)	1	1		008be1b0
-T3	emit ??_GCCreatureAction_ReleaseDivineWrathSpell@@UAEPAXI@Z	(none)	1	1		008be1d0
 T3	emit ??_ECCreatureAction_ReleaseAndLoopDivineWrathSpell@@UAEPAXI@Z	(none)	1	1		008be1f0
-T3	emit ??_ECCreatureAction_CastUnholyPowerSpell@@UAEPAXI@Z	(none)	1	1		008be210
-T3	emit ??_ECCreatureAction_BuildUpUnholyPowerSpell@@UAEPAXI@Z	(none)	1	1		008be230
-T3	emit ??_GCCreatureAction_ReleaseUnholyPowerSpell@@UAEPAXI@Z	(none)	1	1		008be250
 T3	emit ??_ECCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UAEPAXI@Z	(none)	1	1		008be270
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_GenericLoadProjectileWeapon@@UBE_NXZ	(none)	1	1		008bff00
 T3	emit ?IsToFaceMovementDirection@CCreatureAction_UnblockableMidAttack@@UBE_NXZ	(none)	1	1		008bff40
@@ -7511,7 +7479,6 @@ T3	emit ?IsToUseRotationInAnimation@CCombatAction_StrikeResponseJackOfBladesInto
 T3	emit ?IsToCauseRecoil@CCombatAction_StrikeResponseJackOfBladesIntoRush@@UBE_NXZ	(none)	1	1		008c3a90
 T3	emit ??_ECCreatureAction_JackGetUp@@UAEPAXI@Z	(none)	1	1		008c3af0
 T3	emit ??_GCCombatAction_StrikeResponseJackOfBladesIntoRush@@UAEPAXI@Z	(none)	1	1		008c3b10
-T3	emit ??_GCCreatureAction_JackOfBladesUnblockableMidAttackNoBlend@@UAEPAXI@Z	(none)	1	1		008c3b30
 T3	emit ??_GCCombatAction_WillForcePushInto@@UAEPAXI@Z	(none)	1	1		008c3b50
 T3	emit ??_GCCombatAction_WillHealRelease@@UAEPAXI@Z	(none)	1	1		008c3b70
 T3	emit ??_GCCreatureAction_BriarRoseShotFarOutof@@UAEPAXI@Z	(none)	1	1		008c3b90
@@ -7571,20 +7538,16 @@ T3	emit ?IsToFaceTargetAtStart@CCreatureAction_BalverineLungeAttack@@UBE_NXZ	(no
 T3	emit ?IsToRetainSafeDistance@CCreatureAction_BalverineLungeAttack@@UBE_NXZ	(none)	1	1		008cd230
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_BalverineBreakOffFromCombat@@UBE_NXZ	(none)	1	1		008cd240
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_BalverineBreakOffFromCombatLong@@UBE_NXZ	(none)	1	1		008cd250
-T3	emit ??_ECCreatureAction_BalverineDropInFromSky@@UAEPAXI@Z	(none)	1	1		008cd260
 T3	emit ??_ECCreatureAction_BalverineCorneredJumpIntoSky@@UAEPAXI@Z	(none)	1	1		008cd280
 T3	emit ??_ECCreatureAction_BalverineLungeAttack@@UAEPAXI@Z	(none)	1	1		008cd2a0
 T3	emit ??_GCCreatureAction_BalverineBreakOffFromCombat@@UAEPAXI@Z	(none)	1	1		008cd2c0
 T3	emit ??_ECCreatureAction_BalverineBreakOffFromCombatLong@@UAEPAXI@Z	(none)	1	1		008cd2e0
 T3	emit ?Initialise@CCreatureAction_ReleaseTimeSpell@@UAEXXZ	(none)	1	1		008cd450
 T3	emit ??_GCCreatureAction_CastTimeSpell@@UAEPAXI@Z	(none)	1	1		008cecc0
-T3	emit ??_GCCreatureAction_BuildUpTimeSpell@@UAEPAXI@Z	(none)	1	1		008cece0
 T3	emit ??_GCCreatureAction_ReleaseTimeSpell@@UAEPAXI@Z	(none)	1	1		008ced00
 T3	emit ??_ECCreatureAction_CastAssassinRush@@UAEPAXI@Z	(none)	1	1		008ced20
 T3	emit ??_GCCreatureAction_CastBattleCharge@@UAEPAXI@Z	(none)	1	1		008ced50
 T3	emit ??_ECCreatureAction_BuildUpBattleCharge@@UAEPAXI@Z	(none)	1	1		008ced70
-T3	emit ??_ECCreatureAction_BattleChargeTurnLeft@@UAEPAXI@Z	(none)	1	1		008cee10
-T3	emit ??_ECCreatureAction_BattleChargeTurnRight@@UAEPAXI@Z	(none)	1	1		008cee30
 T3	emit ??_ECCreatureAction_CastSkillMultiArrow@@UAEPAXI@Z	(none)	1	1		008cee50
 T3	emit ?IsMovementUsingPhysics@CCreatureAction_TentacleIdle@@UBE_NXZ	(none)	1	1		008cf970
 T3	emit ?IsMovementUsingPhysics@CCreatureAction_TentacleStrikeLoop@@UBE_NXZ	(none)	1	1		008cf9f0
@@ -7618,7 +7581,6 @@ T3	emit ??_ECCreatureAction_ForcePushOutOf@@UAEPAXI@Z	(none)	1	1		008e4d00
 T3	emit ??_ECCombatAction_Guildmaster_HealFollowersRelease@@UAEPAXI@Z	(none)	1	1		008e4d20
 T3	emit ??_ECCombatAction_Guildmaster_ShieldFollowersRelease@@UAEPAXI@Z	(none)	1	1		008e4d40
 T3	emit ??_GCCombatAction_Guildmaster_SpeedUpFollowersRelease@@UAEPAXI@Z	(none)	1	1		008e4d60
-T3	emit ??_GCCreatureAction_SnapDragonOutOf@@UAEPAXI@Z	(none)	1	1		008e4d80
 T3	emit ??_ECCreatureAction_DragonFireBeamOutOf@@UAEPAXI@Z	(none)	1	1		008e4da0
 T3	emit ??_GCCreatureAction_DragonStrafeOutOf@@UAEPAXI@Z	(none)	1	1		008e4dc0
 T3	emit ??_GCCreatureAction_SummonerDead@@UAEPAXI@Z	(none)	1	1		008e4de0
@@ -7635,10 +7597,8 @@ T3	emit ??_ECCreatureAction_UndeadReturnToEarth@@UAEPAXI@Z	(none)	1	1		008ec790
 T3	emit ??_GCCreatureAction_Die@@UAEPAXI@Z	(none)	1	1		008edb90
 T3	emit ??_ECCombatAction_FallStunned@@UAEPAXI@Z	(none)	1	1		008edbb0
 T3	emit ??_ECCreatureAction_DragonFlight@@UAEPAXI@Z	(none)	1	1		008f56a0
-T3	emit ??_ECCreatureAction_DragonRetreat@@UAEPAXI@Z	(none)	1	1		008f56c0
 T3	emit ??_ECCreatureAction_DragonSwoop@@UAEPAXI@Z	(none)	1	1		008f56e0
 T3	emit ??_GCCreatureAction_DragonRearUpInto@@UAEPAXI@Z	(none)	1	1		008f5700
-T3	emit ??_ECCreatureAction_DragonRearUpOutOf@@UAEPAXI@Z	(none)	1	1		008f5720
 T3	emit ?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	(none)	1	1		008fcfe0
 T3	emit ??_GCAIStateGroupBase@@UAEPAXI@Z	(none)	1	1		008fd29b
 T3	emit ?AllowPriorityOverlap@CAIStateGroup_CleanHouse@@UAE_NXZ	(none)	1	1		008fdb67
@@ -7891,9 +7851,6 @@ T3	emit ?GetIsToFaceTargetCone@CCreatureAction_BanditKingBackOff@@UBEMXZ	(none)	
 T3	emit ??_GCCreatureAction_BanditKingAdvance@@UAEPAXI@Z	(none)	1	1		00906f00
 T3	emit ??_GCCreatureAction_BanditKingBackOff@@UAEPAXI@Z	(none)	1	1		00906f20
 T3	emit ?OnCreate@CCombatSequence_KingScorpionTailPlunge@@UAEXXZ	(none)	1	1		00906fe0
-T3	emit ??_ECCreatureAction_FodderPrimaryAttack@@UAEPAXI@Z	(none)	1	1		00907530
-T3	emit ??_ECCreatureAction_FodderUnblockablePrimaryAttack@@UAEPAXI@Z	(none)	1	1		00907550
-T3	emit ??_ECCreatureAction_FodderSecondaryAttack@@UAEPAXI@Z	(none)	1	1		00907570
 T3	emit ??_ECCreatureAction_FodderIdle@@UAEPAXI@Z	(none)	1	1		00907590
 T3	emit ?GetEffectName@CCreatureAction_TrollAngryGroundPound@@MBE_NAAVCCharString@@@Z	(none)	1	1		00908090
 T3	emit ?GetEffectName@CCreatureAction_TrollProjectileAttack@@MBE_NAAVCCharString@@@Z	(none)	1	1		00908140
@@ -7904,13 +7861,10 @@ T3	emit ??_GCCreatureAction_TrollProjectileAttack@@UAEPAXI@Z	(none)	1	1		009084a
 T3	emit ??_GCCreatureAction_TrollTunnel@@UAEPAXI@Z	(none)	1	1		009084d0
 T3	emit ??_GCCreatureAction_TrollSwipe@@UAEPAXI@Z	(none)	1	1		009084f0
 T3	emit ??_GCCreatureAction_TrollIdle@@UAEPAXI@Z	(none)	1	1		00908510
-T3	emit ??_GCCreatureAction_TrollGetProjectile@@UAEPAXI@Z	(none)	1	1		00908530
-T3	emit ??_GCCreatureAction_TrollPursue@@UAEPAXI@Z	(none)	1	1		00908550
 T3	emit ??_ECCreatureAction_WalkOutOf@@UAEPAXI@Z	(none)	1	1		00908570
 T3	emit ??_GCCreatureAction_WalkInto@@UAEPAXI@Z	(none)	1	1		00908590
 T3	emit ?IsValid@CCombatSequenceWhisperAttackBigCombo@@UBE_NXZ	(none)	1	1		00908d80
 T3	emit ?IsValid@CCombatSequenceWhisperAttack360@@UBE_NXZ	(none)	1	1		00908d90
-T3	emit ??_GCCreatureAction_MidAttackFacing@@UAEPAXI@Z	(none)	1	1		0090a7a0
 T3	emit ??_GCCreatureAction_MidAttack360@@UAEPAXI@Z	(none)	1	1		0090a7c0
 T3	emit ?IsRunnable@CAIStateGroup_MinionHasInformation@@UAE_NXZ	(none)	1	1		0090f460
 T3	emit ?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ	(none)	1	1		009106b0
@@ -7931,12 +7885,10 @@ T3	emit ??_ECCreatureAction_RemoveFoodFromTable@@UAEPAXI@Z	(none)	1	1		00923b60
 T3	emit ??_ECCreatureAction_AddFoodToTable@@UAEPAXI@Z	(none)	1	1		00923b90
 T3	emit ?IsMovementUsingPhysics@CCreatureAction_TentacleRise@@UBE_NXZ	(none)	1	1		009252a0
 T3	emit ?IsMovementUsingPhysics@CCreatureAction_TentacleStrikeInto@@UBE_NXZ	(none)	1	1		00925310
-T3	emit ??_GCCreatureAction_TentacleRise@@UAEPAXI@Z	(none)	1	1		00925a30
 T3	emit ??_ECCreatureAction_TentacleStrikeInto@@UAEPAXI@Z	(none)	1	1		00925a50
 T3	emit ?Initialise@CAIStateGroup_MinionGuardGreetPlayer@@UAEXAAVCAIBrain@@AAVCThingAICr	(none)	1	1		00929640
 T3	emit ?Initialise@CAIStateGroup_AvoidRegionExit@@UAEXAAVCAIBrain@@AAVCThingAICreature@	(none)	1	1		0092bc50
 T3	emit ?IsStillValid@CAIStateGroup_MinionGuardReactToCriminal@@UBE_NXZ	(none)	1	1		00932980
-T3	emit ??_ECCreatureAction_CallSpouseHome@@UAEPAXI@Z	(none)	1	1		00933d30
 T3	emit ?IsRunnable@CAIStateGroup_MinionKidAnnoy@@UAE_NXZ	(none)	1	1		00933da0
 T3	emit ??_GCCreatureAction_KickCreature@@UAEPAXI@Z	(none)	1	1		00933fa0
 T3	emit ?OnReplace@CAIStateGroup_MinionKidGroupTag@@UAEXXZ	(none)	1	1		009340f0
@@ -7980,7 +7932,6 @@ T3	emit ?IsKnockdownStrike@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ	(none
 T3	emit ?IsMovementUsingPhysics@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ	(none)	1	1		0095caa0
 T3	emit ?IsMovementUsingPhysics@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ	(none)	1	1		0095cb60
 T3	emit ??_GCCreatureAction_WaspQueenPrimaryAttack@@UAEPAXI@Z	(none)	1	1		0095cc40
-T3	emit ??_ECCreatureAction_WaspQueenLashOutAttack@@UAEPAXI@Z	(none)	1	1		0095cc60
 T3	emit ??_GCCreatureAction_QueenHornetShootBabies@@UAEPAXI@Z	(none)	1	1		0095cc80
 T3	emit ?GetDebugText@CAIStateGroup_OpinionReactionRoot@@UBEPBVCCharString@@XZ	(none)	1	1		0095ede0
 T3	emit ?Initialise@CAIStateGroup_BanditKingLunge@@UAEXAAVCAIBrain@@AAVCThingAICreature@	(none)	1	1		009612e0
@@ -7989,7 +7940,6 @@ T3	emit ??_ECCreatureAction_BanditKingLunge@@UAEPAXI@Z	(none)	1	1		00961a50
 T3	emit ?Initialise@CAIStateGroup_IceTrollIcicleAssault@@MAEXAAVCAIBrain@@AAVCThingAICre	(none)	1	1		00961aa0
 T3	emit ?IsToFaceTarget@CCreatureAction_IceTrollIcicleAttack@@UBE_NXZ	(none)	1	1		00962970
 T3	emit ?IsStrikeAction@CCreatureAction_IceTrollIcicleAssaultInto@@UBE_NXZ	(none)	1	1		009629d0
-T3	emit ??_ECCreatureAction_IceTrollIcicleAttack@@UAEPAXI@Z	(none)	1	1		009629f0
 T3	emit ??_ECCreatureAction_IceTrollIcicleAssaultInto@@UAEPAXI@Z	(none)	1	1		00962a10
 T3	emit ??_ECCreatureAction_PickUpJug@@UAEPAXI@Z	(none)	1	1		00968040
 T3	emit ??_ECCreatureAction_PutDownJug@@UAEPAXI@Z	(none)	1	1		00968070
@@ -7997,7 +7947,6 @@ T3	emit ?OnActivate@CAIStateGroup_TavernKeeper@@MAEXXZ	(none)	1	1		00968190
 T3	emit ?IsToEvadeAllHits@CCreatureAction_WhisperJumpIntoSky@@UBE_NXZ	(none)	1	1		0096c080
 T3	emit ??_GCCreatureAction_WhisperSommersaultForward@@UAEPAXI@Z	(none)	1	1		0096c0a0
 T3	emit ??_GCCreatureAction_WhisperSommersaultBackward@@UAEPAXI@Z	(none)	1	1		0096c0c0
-T3	emit ??_ECCreatureAction_WhisperJumpIntoSky@@UAEPAXI@Z	(none)	1	1		0096c0e0
 T3	emit ?IsToEvadeAllHits@CCreatureAction_ThunderLightningStorm@@UBE_NXZ	(none)	1	1		0096c740
 T3	emit ??_ECCreatureAction_ThunderLightningStorm@@UAEPAXI@Z	(none)	1	1		0096c760
 T3	emit ??_GCCreatureAction_StartEatingAtTable@@UAEPAXI@Z	(none)	1	1		0096d480
@@ -8035,7 +7984,6 @@ T3	emit ??_ECCreatureAction_ScorpionUnblockableRightTurnAttack@@UAEPAXI@Z	(none)
 T3	emit ??_ECCreatureAction_ScorpionPrepareTailPlunge@@UAEPAXI@Z	(none)	1	1		0097ca00
 T3	emit ?InitStateGroup@CAIStateGroup_CreatureFindCover@@UAEXABVCWorld@@AAVCThingAICreat	(none)	1	1		0097caf0
 T3	emit ?IsRunnableLeaf@CAIStateGroup_CreatureFindCover@@UAE_NXZ	(none)	1	1		0097cb00
-T3	emit ??_GCCreatureAction_VillagerAttack@@UAEPAXI@Z	(none)	1	1		0097d110
 T3	emit ??_ECCreatureAction_VillagerAttackKnockdown@@UAEPAXI@Z	(none)	1	1		0097d130
 T3	emit ??_ECCreatureAction_VillagerAdvance@@UAEPAXI@Z	(none)	1	1		0097d150
 T3	emit ??_GCCreatureAction_VillagerBackOff@@UAEPAXI@Z	(none)	1	1		0097d170
@@ -8941,7 +8889,6 @@ T3	emit ?Clone@CCreatureAction_DragonSwoop@@UBEPAVCCreatureActionBase@@XZ	CCreat
 T3	emit ?FinishAction@CCreatureAction_DragonTakeOffIntoFlying@@UAEXXZ	CCreatureAction_DragonTakeOffIntoFlying	1	1	engine/CCreatureAction_DragonTakeOffIntoFlying.h	008f47e0
 T3	emit ?Clone@CCreatureAction_DragonTakeOffIntoFlying@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonTakeOffIntoFlying	1	1	engine/CCreatureAction_DragonTakeOffIntoFlying.h	00953b90
 T3	emit ?Clone@CCreatureAction_Drink@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_Drink	1	1		0084bf70
-T3	emit ??_ECCreatureAction_DropWeapon@@UAEPAXI@Z	CCreatureAction_DropWeapon	1	1	engine/CCreatureAction_DropWeapon.h	007ed040
 T3	emit ?Clone@CCreatureAction_DuckAndCover@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DuckAndCover	1	1	engine/CCreatureAction_DuckAndCover.h	00971840
 T3	emit ?Clone@CCreatureAction_FillBucket@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FillBucket	1	1	engine/CCreatureAction_FillBucket.h	0084c5c0
 T3	emit ?Clone@CCreatureAction_FinishDrainLifeSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FinishDrainLifeSpell	1	1	engine/CCreatureAction_FinishDrainLifeSpell.h	008be5f0
@@ -9008,7 +8955,6 @@ T3	emit ?Clone@CCreatureAction_KickCreature@@UBEPAVCCreatureActionBase@@XZ	CCrea
 T3	emit ?Clone@CCreatureAction_LeapBack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_LeapBack	1	1	engine/CCreatureAction_LeapBack.h	006f8680
 T3	emit ?Clone@CCreatureAction_LeapLong@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_LeapLong	1	1	engine/CCreatureAction_LeapLong.h	008b8900
 T3	emit ?Clone@CCreatureAction_LearnExpression@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_LearnExpression	1	1		0084bed0
-T3	emit ??_ECCreatureAction_LookThroughWindow@@UAEPAXI@Z	CCreatureAction_LookThroughWindow	1	1	engine/CCreatureAction_LookThroughWindow.h	007eba90
 T3	emit ?Clone@CCreatureAction_MagicBlast@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_MagicBlast	1	1		009826a0
 T3	emit ?Clone@CCreatureAction_MidAttack360@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_MidAttack360	1	1		0090a810
 T3	emit ?Clone@CCreatureAction_MidAttackFacing@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_MidAttackFacing	1	1	engine/CCreatureAction_MidAttackFacing.h	0090a7e0

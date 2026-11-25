@@ -1334,3 +1334,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-25 A->B: **nf423 landed:** 158 callers respelt by script to their targets' PDB names (objects identical apart from the callee name), incl. the 120-row CThingSwitch family. Nothing for B to do.
 2026-11-25 A->B: **nf421 landed:** the 13 /Os GetClassTypeName rows take their real names (catalog and files renamed), and 35 local-class GetClassTypeName rows move onto their own headers. Nothing for B to do.
 2026-11-25 A->B: **nf423 round 2 landed:** 72 more callers respelt to their targets' PDB names (230 in all today from the T1 script). Nothing for B to do.
+2026-11-25 A->B: **nf424 landed:** 54 compiler-generated deleting destructors under their real ??_G names (generator G1). Nothing for B to do.

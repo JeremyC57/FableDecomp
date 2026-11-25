@@ -1,0 +1,39 @@
+# Deleting-destructor family histogram (NF424, 2026-11-25): 1625 addresses
+
+groups: rttiG 636 (RTTI slot names ??_G), rttiE 618 (??_E), g_lbp 233 (?CLandscapeBackgroundPatch_vector_deleting_destructor, 4 more are in rttiE/split), g_tsw 138 (?CThingSwitch_CompositeScalarDeletingDestructor)
+vector form (test flags,2 / eh vector destructor iterator 0x00BFEED8): 0 of 1625 -> every retail body is the scalar ??_G (the 618 ??_E slots are the debug build's vtable alias)
+frame: 0 framed bodies; EH frame: 0
+mode (delete cleanup): g_lb/none 27, g_lb/size 4, g_lb/speed 202, g_ts/speed 138, rtti/none 12, rtti/size 458, rtti/speed 784
+delete target: ::operator delete 0x00BFE9BC in 1586; no ::operator delete call in 39 (class operator delete / S7)
+
+count | shape | model
+  321 | S1 implicit ~T, one call to a base ~ (bound ??1) | model: hdr
+  206 | S0 shared stand-in name, no retail vftable slot (non-virtual ??_G or unknown class): g_lbp C T1 DEL RET4
+  165 | S1 implicit ~T, one call to a base ~ (bound ??1) | model: VM
+  138 | S0 shared stand-in name, no retail vftable slot (non-virtual ??_G or unknown class): g_tsw C C C T1 DEL RET4
+  125 | S1 implicit ~T, one call to a base ~ (bound ??1) | model: nohdr
+  106 | S1u one call, callee unbound in the table | model: hdr
+   97 | S2 calls the class own out-of-line ~T | model: hdr
+   91 | S3 implicit ~T, two calls (member ~ + base ~) | model: hdr
+   64 | S5 user-declared ~T inlined (own vtable store first) | model: hdr
+   45 | S3 implicit ~T, two calls (member ~ + base ~) | model: nohdr
+   44 | S1x one call to another class ~ / stand-in callee | model: hdr
+   30 | S1u one call, callee unbound in the table | model: nohdr
+   28 | S5 user-declared ~T inlined (own vtable store first) | model: VM
+   27 | S0 shared stand-in name, no retail vftable slot (non-virtual ??_G or unknown class): g_lbp C T1 C RET4
+   22 | S3 implicit ~T, two calls (member ~ + base ~) | model: VM
+   20 | S1x one call to another class ~ / stand-in callee | model: nohdr
+   17 | S5 user-declared ~T inlined (own vtable store first) | model: nohdr
+   11 | S4 implicit ~T, 3+ calls | model: hdr
+   10 | S1u one call, callee unbound in the table | model: VM
+    9 | S1x one call to another class ~ / stand-in callee | model: VM
+    8 | S6 vtable store after a call (member ~ then user ~ inlined) | model: hdr
+    8 | S2 calls the class own out-of-line ~T | model: nohdr
+    6 | S7 class operator delete (no ::operator delete call) | model: hdr
+    6 | S7 class operator delete (no ::operator delete call) | model: nohdr
+    5 | S6 vtable store after a call (member ~ then user ~ inlined) | model: nohdr
+    5 | S4 implicit ~T, 3+ calls | model: nohdr
+    4 | S4 implicit ~T, 3+ calls | model: VM
+    3 | S8 indirect call (virtual member call in ~T) | model: hdr
+    3 | S2 calls the class own out-of-line ~T | model: VM
+    1 | S8 indirect call (virtual member call in ~T) | model: nohdr
