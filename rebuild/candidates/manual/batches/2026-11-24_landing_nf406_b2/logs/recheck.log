@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004d31c0   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+004d31c0   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 1
+  004d31c0 RELOCATION_MATCH CTCVillage::?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ

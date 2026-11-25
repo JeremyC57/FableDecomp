@@ -1,0 +1,13 @@
+addr       parity           behav  name
+004d8154   RELOCATION_MATCH PASS   GetClassTypeName
+004dda94   WARN SHARED_HEADER_AVAILABLE CTCTargetingAI (engine/CTCTargetingAI.h)
+004dda94   RELOCATION_MATCH PASS   GetClassTypeName
+004e07c6   RELOCATION_MATCH PASS   GetClassTypeName
+004e3148   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+004e3148   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 4
+  004d8154 RELOCATION_MATCH CTCDCameraPoint::?GetClassTypeName@CTCDCameraPoint@@UBE?AVCCharString@@XZ
+  004dda94 RELOCATION_MATCH CTCTargetingAI::?GetClassTypeName@CTCTargetingAI@@UBE?AVCCharString@@XZ
+  004e07c6 RELOCATION_MATCH CTCDHeroSuit::?GetClassTypeName@CTCDHeroSuit@@UBE?AVCCharString@@XZ
+  004e3148 RELOCATION_MATCH CTCDExplosion::?GetClassTypeName@CTCDExplosion@@UBE?AVCCharString@@XZ

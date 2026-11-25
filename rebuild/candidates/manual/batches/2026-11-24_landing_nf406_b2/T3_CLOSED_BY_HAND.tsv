@@ -1,0 +1,1 @@
+nf402	0x004D31C0	identity	self is the free stand-in 0x004D4232 used to share; retail pushes "CTCVillage" and CTCBase::RegisterTCs 0x004EE23F binds ?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ: respell in the nf402_b1 form (also drop its made-up ?ctor@CCharString call). | CLOSED by nf406 (2026-11-25)

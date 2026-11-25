@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ	004d2a74	004dda94	NF406: the respelt CTCTargetingAI::GetClassTypeName 0x004DDA94 calls 0x004D2A74 (call at 0x004DDA98, its only retail caller), the landed self ?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ (NF402 b1: FableWin tc_register.obj + retail literal 0x01239FB0 "CTCTargetingAI"); no table line bound that address before (RegisterTCs 0x004EE23F binds its four siblings, not this one).

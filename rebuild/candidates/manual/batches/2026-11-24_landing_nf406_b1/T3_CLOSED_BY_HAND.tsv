@@ -1,0 +1,1 @@
+nf402	0x004DDA94	identity	the four GetClassTypeName callers 0x004DDA94 0x004D8154 0x004E07C6 0x004E3148 are extern "C" __stdcall stand-ins: respell to ?GetClassTypeName@<Class>@@UBE?AVCCharString@@XZ (both PDB name sets) and call the respelt StatGetClassTypeName instead of ?Init_<addr>@T@@. | CLOSED by nf406 (2026-11-25)

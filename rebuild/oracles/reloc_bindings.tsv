@@ -14528,7 +14528,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CTCInventoryAbilities@@QAE@PAVCThing@@@Z	005f3bcf	004d300f
 ??0CTCInventoryExperience@@QAE@PAVCThing@@@Z	0057832d	004d3042
 ??0CTCSoundPlayer@@QAE@AAVCThing@@@Z	0066ac80	004d30ee
-?ctor@CCharString@@QAEPAV1@PBDH@Z	0099ebf0	004d31c0
 ??0CTCBuyableHouse@@QAE@AAVCThing@@@Z	006bf8a0	004d31eb
 ??0CTCActionUseBuyHouse@@QAE@PAVCThing@@@Z	0072e690	004d321b
 ??0CTCDoor@@QAE@AAVCThing@@@Z	00730630	004d32da
@@ -39139,3 +39138,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@Z	00578ff5	005793e8
 ?clear@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEXXZ	004e1bd2	004e350f
 ??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	004df54f	004df507
+?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ	004d2a74	004dda94

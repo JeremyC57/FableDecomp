@@ -2576,7 +2576,7 @@ address	symbol	status	leaf_given
 004d3075	?CTCInventoryTrade_Alloc@@YIPAVCTCInventoryTrade@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d30a8	?CTCInventoryQuests_Alloc@@YIPAVCTCInventoryQuests@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d317d	_CTCMeshAutomaticEntityCreator_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
-004d31c0	?StatGetClassTypeName@@YIPAVCCharString@@PAV1@@Z	RELOCATION_MATCH	StatGetClassTypeName
+004d31c0	?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ
 004d321b	?CTCActionUseBuyHouse_Alloc@@YIPAUCTCActionUseBuyHouse@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d324b	??0CBuyHouseDef@@QAE@XZ	RELOCATION_MATCH	??0CBuyHouseDef@
 004d3291	??0CWifeDef@@QAE@XZ	RELOCATION_MATCH	??0CWifeDef@
@@ -2805,7 +2805,7 @@ address	symbol	status	leaf_given
 004d8026	_CTCGeneratedCreature_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d8036	?CTCGeneratedCreature_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 004d805c	?CChestDef_Alloc@@YAPAVCChestDef@@XZ	RELOCATION_MATCH	Alloc
-004d8154	_CTCDCameraPoint_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
+004d8154	?GetClassTypeName@CTCDCameraPoint@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCDCameraPoint@@UBE?AVCCharString@@XZ
 004d8177	?CTCDCameraPoint_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 004d81b6	_CTCCameraPointBuilding_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d81ca	?CTCCameraPointBuilding_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -3094,7 +3094,7 @@ address	symbol	status	leaf_given
 004dd641	?clear@CRetailList_CValue_00a01c10@@QAEXXZ	RELOCATION_MATCH	clear
 004dd6d4	?Forward_CForwarder_004dd6d4@CForwarder_004dd6d4@@QAEPAXPAX0@Z	RELOCATION_MATCH	Forward_CForwarder_004dd6d4
 004dd860	?Forward_CForwarder_004dd860@CForwarder_004dd860@@QAEPAXPAX0@Z	RELOCATION_MATCH	Forward_CForwarder_004dd860
-004dda94	_CTCTargetingAI_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
+004dda94	?GetClassTypeName@CTCTargetingAI@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCTargetingAI@@UBE?AVCCharString@@XZ
 004ddb1c	_CTCThingOwner_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004ddb2c	??0CBuyableHouseDef@@QAE@XZ	RELOCATION_MATCH	??0CBuyableHouseDef@
 004ddb66	?Transfer@S@@QAEXPAVCPersistContext@@@Z	RELOCATION_MATCH	Transfer
@@ -3212,7 +3212,7 @@ address	symbol	status	leaf_given
 004e0701	?CShopDef_GetSizeofClass@@YIHXZ	MATCH	GetSizeofClass
 004e0750	??4CBase_00431f10_Derived_004e0750@@QAEAAU0@ABU0@@Z	RELOCATION_MATCH	??4_unattributed@
 004e077d	?Copy@CGiftDef@@QAEXPBVCDefClassBase@@@Z	RELOCATION_MATCH	Copy
-004e07c6	_CTCDHeroSuit_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
+004e07c6	?GetClassTypeName@CTCDHeroSuit@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCDHeroSuit@@UBE?AVCCharString@@XZ
 004e07e3	??0CTCActivationReceptorChest@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCActivationReceptorChest@
 004e07fb	_CTCActivationReceptorChest_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004e080b	?CTCActivationReceptorChest_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -3337,7 +3337,7 @@ address	symbol	status	leaf_given
 004e3096	?CExplosionDef_Alloc@@YAPAVCExplosionDef@@XZ	RELOCATION_MATCH	Alloc
 004e30ac	?CExplosionDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 004e30c8	?OnDie@@YIXPAVCTCInventoryItem@@@Z	RELOCATION_MATCH	OnDie
-004e3148	_CTCDExplosion_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
+004e3148	?GetClassTypeName@CTCDExplosion@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCDExplosion@@UBE?AVCCharString@@XZ
 004e316d	??4CKrakenDef@@QAEAAV0@ABV0@@Z	RELOCATION_MATCH	??4CKrakenDef
 004e31fa	?CMultiStaticMeshDef_Alloc@@YAPAVCMultiStaticMeshDef@@XZ	RELOCATION_MATCH	Alloc
 004e3210	?CMultiStaticMeshDef_scalar_deleting_destructor@@YIPAXPAVCMultiStaticMeshDef@@HE@Z	RELOCATION_MATCH	`scalar_deleting_destructor'

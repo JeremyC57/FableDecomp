@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?ctor@CCharString@@QAEPAV1@PBDH@Z	0099ebf0	004d31c0	NF406: made-up member spelling of the CCharString(const char*, long) constructor; only the old 0x004D31C0 text used it (source census: no other row spells a class-keyed CCharString* ctor(const char*, int); the 0x008FD4BC test still defines it but tests bind nothing). The respelt 0x004D31C0 calls the PDB constructor ??0CCharString@@QAE@PBDJ@Z (Ego_r + FableWin name sets), already bound to 0099ebf0 (witness 00636e90). Same treatment as NF402 b1 for ?Ctor@CCharString@@QAEXPBDH@Z.

@@ -1,0 +1,32 @@
+// CTCVillage::StatGetClassTypeName() -- static: the class-type name "CTCVillage" as a CCharString
+// Leaf: ?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004D31C0, 19 bytes: push esi; push -1; push 0x0123A5CC "CTCVillage"; mov esi, ecx;
+//   call CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax, esi; pop esi; ret -- a static __fastcall returning
+//   CCharString by value (the hidden result pointer arrives in ecx; plain ret).
+// Identity (NF406, 2026-11-25): FableWin.pdb name set ?StatGetClassTypeName@CTCVillage@@SI?AVCCharString@@XZ (tc_register.obj); the retail
+//   literal 0x0123A5CC = "CTCVillage" = the class name (read from the exe); binder CTCBase::RegisterTCs 0x004EE23F already binds this
+//   spelling (reloc_bindings.tsv); its only retail caller is 0x004F00E3 (RegisterTCs). CTCVillage::GetClassTypeName 0x0066122E
+//   (vftable 0x0125A9AC slot 22) expands the body instead of calling it.
+// Literal: the HEAD text cast the address (const char*)0x123a5cc, which carries no relocation and escapes the literal check; it is
+//   now the string literal itself (the same text retail holds at 0x0123A5CC).
+// Respell NF406: was a free-function stand-in (?StatGetClassTypeName@@YIPAVCCharString@@PAV1@@Z, the spelling HEAD 0x004D4232 also
+//   had) calling the made-up ?ctor@CCharString@@QAEPAV1@PBDH@Z.
+// Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (both name sets).
+// Header: engine/CTCVillage.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form, flattened default branch); the static
+//   touches no member.
+#define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
+#include "fable_string.h"
+#define CTCVillage CTCVillageLayout
+#include "engine/CTCVillage.h"
+#undef CTCVillage
+
+class CTCVillage : public CTCVillageLayout
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+CCharString __fastcall CTCVillage::StatGetClassTypeName()
+{
+    return CCharString("CTCVillage", -1);
+}
