@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	?SetAttackedByCreature@CThing@@QAEXPAV1@@Z	006624f0	00911c20	NF442: no landed row binds the stand-in at this target after the respell (libclang census of every row naming the identifier whose retail bytes reference the target; table witness was 00911c20)
+delete	?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ	00686a70	00960760	NF442: no landed row binds the stand-in at this target after the respell (libclang census of every row naming the identifier whose retail bytes reference the target; table witness was 00960760)

@@ -1,0 +1,10 @@
+action	symbol	target	witness	note
+rewitness	?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z	0041db1d	005aecc0	NF442: the witness 005e4430 moved to the PDB spelling; 2 landed row(s) still bind the stand-in (e.g. 005aecc0)
+rewitness	?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	00646a46	NF442: the witness 0064499c moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 00646a46)
+rewitness	?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ	004c7ab0	00693030	NF442: the witness 006619f0 moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 00693030)
+rewitness	?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ	004c7990	008cb780	NF442: the witness 00832e60 moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 008cb780)
+rewitness	?PeekThingSearchTools@CThingCreatureBase@@QBEABVCThingSearchTools@@XZ	004c7a60	00666d40	NF442: the witness 00834760 moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 00666d40)
+rewitness	?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ	009a4ec0	0042ec7c	NF442: the witness 0054ed90 moved to the PDB spelling; 3 landed row(s) still bind the stand-in (e.g. 0042ec7c)
+rewitness	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z	006644f0	00858cc0	NF442: the witness 008c2810 moved to the PDB spelling; 3 landed row(s) still bind the stand-in (e.g. 00858cc0)
+rewitness	?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z	00cbed00	00def3b0	NF442: the witness 00d1cac0 moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 00def3b0)
+rewitness	?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z	00cbfb7d	00d823a0	NF442: the witness 00d246c0 moved to the PDB spelling; 3 landed row(s) still bind the stand-in (e.g. 00d823a0)

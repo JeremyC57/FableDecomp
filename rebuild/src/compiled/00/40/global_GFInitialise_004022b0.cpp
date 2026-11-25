@@ -70,7 +70,6 @@ struct CXMVPlayer
 };
 
 // Accessor for the engine root object.
-extern FableEngineRoot* FABLE_FASTCALL AddChildPrimitive();
 // Reads full_build_version.txt into the global build string when present.
 extern void FABLE_CDECL GFGetBuildNumber2();
 
@@ -99,20 +98,25 @@ extern fable_i32 g_FableHalfDisplayWidth_0137544C;
 class CGame;
 extern CGame GGame;                                     // 0x013B83D0
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009A4EC0 ?GFGetSystemManager@@YIPAVCSystemManager@@XZ (was ?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ)
+class CSystemManager;
+CSystemManager* __fastcall GFGetSystemManager();
 bool FABLE_FASTCALL GFInitialise()
 {
     // Copy the manager pointers out of the engine root.
-    PSoundManager = (CASoundManager*)(AddChildPrimitive()->primitiveManager7C);
+    PSoundManager = (CASoundManager*)(reinterpret_cast<FableEngineRoot*>(GFGetSystemManager())->primitiveManager7C);
 
     GPDisplayManager =
-        AddChildPrimitive()->displayManager60;
+        reinterpret_cast<FableEngineRoot*>(GFGetSystemManager())->displayManager60;
     g_FableDisplayPrimitive_013B8384 =
         GPDisplayManager->displayPrimitive08;
     g_FableRenderState_013B8380 = &CShaderRenderManager::Get();
 
-    GPInputManager = (CInputManager*)(AddChildPrimitive()->renderDevice58);
-    PFontManager = (CFontManager*)(AddChildPrimitive()->resourceManager84);
-    PGraphicBankManager = (CGraphicBankManager*)(AddChildPrimitive()->textureManager6C);
+    GPInputManager = (CInputManager*)(reinterpret_cast<FableEngineRoot*>(GFGetSystemManager())->renderDevice58);
+    PFontManager = (CFontManager*)(reinterpret_cast<FableEngineRoot*>(GFGetSystemManager())->resourceManager84);
+    PGraphicBankManager = (CGraphicBankManager*)(reinterpret_cast<FableEngineRoot*>(GFGetSystemManager())->textureManager6C);
 
     // Texture bit depth: the requested depth if the card can do it, else the first supported of 16/24/32.
     g_FableTextureBitDepth_013B7D68 =

@@ -9,8 +9,9 @@ extern const CCharString ACTION_PAUSE_ON_THIS_FRAME = { 2 };          // a decoy
 struct Inner {
     char pad[0x64];
     Inner* sub; // +0x64
-    long Query(void* p, float f);
 };
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+namespace NGraphicAppearance { class CTCGraphicAppearance { public: long GetNoHelperPoints(CCharString const&, float) const; }; }
 class CTCTargeted { public:
     void* v;      // +0
     Inner* obj;   // +4
@@ -18,7 +19,7 @@ class CTCTargeted { public:
 long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* targeted);   // the row (linked)
 
 static long g_ret = 0; static void* g_self = 0; static void* g_p = 0; static float g_f = 0.0f; static int g_calls = 0;
-long Inner::Query(void* p, float f) { ++g_calls; g_self = this; g_p = p; g_f = f; return g_ret; }
+long NGraphicAppearance::CTCGraphicAppearance::GetNoHelperPoints(CCharString const& p, float f) const { ++g_calls; g_self = const_cast<NGraphicAppearance::CTCGraphicAppearance*>(this); g_p = const_cast<CCharString*>(&p); g_f = f; return g_ret; }
 
 int main()
 {

@@ -86,8 +86,6 @@ class CThingCreatureBase { public:
     const CThingCreatureDef* GetCreatureDef() const { return PDef; }
     unsigned char _pad0e4[0x15e - 0xe4];
     bool IsShowingDebugInfo : 1;                // +0x15e bit 0
-    CDefinitionManager* GetDefinitionManager();  // 0x004C7990 (CThing)
-    bool ValidateInitialisation();              // 0x006A4D60 (CThingPhysical)
     protected:
     void CreateDefaultWeapons();
     public:
@@ -110,16 +108,24 @@ protected:
     virtual bool OnCreate();            // protected virtual (both PDBs: MAE)
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThingCreatureBase@@QAEPAVCDefinitionManager@@XZ)
+//   0x006A4D60 ?ValidateInitialisation@CThingPhysical@@IAE_NXZ (was ?ValidateInitialisation@CThingCreatureBase@@QAE_NXZ)
+class CGameDefinitionManager;
+class CThingAICreature;
+class CThing { public: CGameDefinitionManager const& PeekDefinitionManager() const; };
+class CThingPhysical { protected: bool ValidateInitialisation(); friend class CThingAICreature; };
 bool CThingAICreature::OnCreate()
 {
     if (CThingCreatureBase::OnCreate()) {
         InitialiseFromDef();
         IsShowingDebugInfo = false;
-        if (ValidateInitialisation()) {
+        if (const_cast<CThingPhysical*>(reinterpret_cast<const CThingPhysical*>(this))->ValidateInitialisation()) {
             CreateDefaultWeapons();
             if (PDef->BrainDef > 0) {
                 CDefPointer<CAIBrainDef> brainDef;
-                GetDefinitionManager()->GetDef(GetCreatureDef()->BrainDef, &brainDef);
+                const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(GetCreatureDef()->BrainDef, &brainDef);
                 if (brainDef->GetInstantiationName() == "BRAIN_NULL")
                     AddSuspender(0);
             } else {

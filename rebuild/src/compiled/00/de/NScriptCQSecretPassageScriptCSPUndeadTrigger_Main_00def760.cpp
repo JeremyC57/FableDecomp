@@ -72,7 +72,6 @@ struct CScriptThingVector {                            // STLport vector<CScript
     CScriptThing& operator[](unsigned int n) { return _M_start[n]; }
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);                                // 0x00CBED00
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -135,6 +134,10 @@ private:
 };
 }
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00CBED00 ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z (was ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z)
+bool __fastcall AreAllThingsInVectorDead(std::vector<CScriptThing, std::allocator<CScriptThing> > const&);
 void NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Main()
 {
     if (!ParentClass->DoorsBeingDone) {
@@ -169,7 +172,7 @@ void NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    while (!AreAllThingsInVectorDead(UndeadVec)) {
+    while (!AreAllThingsInVectorDead(*reinterpret_cast<std::vector<CScriptThing, std::allocator<CScriptThing> > const*>(&(UndeadVec)))) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;

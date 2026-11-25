@@ -102,10 +102,12 @@ namespace
     GFInitialiseState* g_progressState;
 }
 
-FableEngineRoot* FABLE_FASTCALL AddChildPrimitive()
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+class CSystemManager;
+CSystemManager* __fastcall GFGetSystemManager()
 {
     ++g_rootCalls;
-    return &g_engineRoot;
+    return reinterpret_cast<CSystemManager*>(&g_engineRoot);
 }
 
 bool CDisplayManager::IsTextureBitDepthSupported(unsigned long bitDepth)

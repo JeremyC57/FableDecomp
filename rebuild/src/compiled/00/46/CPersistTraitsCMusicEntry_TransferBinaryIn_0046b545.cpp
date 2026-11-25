@@ -40,10 +40,13 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     }
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXAAVCMemoryDataInputStream@@@Z)
 class CDefString {
 public:
     long Index;
-    void TransferBinaryIn(CMemoryDataInputStream& stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);   // 0x0044FC00
 };
 
 class CMusicEntry {                                    // 16 bytes
@@ -88,7 +91,7 @@ void CPersistTraits<CMusicEntry>::TransferBinaryIn(CMemoryDataInputStream* strea
 {
     CPersistTraits<unsigned long> ulongTraits;
     ulongTraits.TransferBinaryIn(stream, &value->ID);
-    value->Filename.TransferBinaryIn(*stream);
+    value->Filename.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(&(*stream)));
     CPersistTraits<float> floatTraits;
     floatTraits.TransferBinaryIn(stream, &value->Gain);
     CPersistTraits<bool> boolTraits;

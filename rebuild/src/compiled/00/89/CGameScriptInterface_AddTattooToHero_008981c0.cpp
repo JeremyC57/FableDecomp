@@ -30,7 +30,6 @@ struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharStr
 struct CEngine_Retail {
     unsigned char         _pad00[0x28];
     CEngineHolder_Retail* Graphics;                     // +0x28
-    const CDefinitionManager_Retail& PeekDefinitionManager() const;   // 0x00415FBC
 };
 extern CEngine_Retail* g_pEngine;                       // 0x013B86A0
 struct CThingPhysics_Retail {
@@ -108,9 +107,13 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00415FBC ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ (was ?PeekDefinitionManager@CEngine_Retail@@QBEABUCDefinitionManager_Retail@@XZ)
+class CMainGameComponent { public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 void CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) const
 {
-    long index = g_pEngine->PeekDefinitionManager().GetDefGlobalIndexFromName(tattooDefName);
+    long index = (*reinterpret_cast<CDefinitionManager_Retail const*>(&reinterpret_cast<const CMainGameComponent*>(g_pEngine)->PeekDefinitionManager())).GetDefGlobalIndexFromName(tattooDefName);
     if (index <= 0)
         return;
     CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();

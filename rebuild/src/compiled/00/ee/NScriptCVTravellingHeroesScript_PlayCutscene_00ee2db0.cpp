@@ -110,7 +110,6 @@ struct CCutsceneArgMap {                                // map<CCharString, CCha
     void* _body[3];
     void clear();                                       // 0x009AACE0
 };
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -140,6 +139,10 @@ public:
 } // namespace NScript
 using NScript::CV_TravellingHeroesScript;
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00CBFB7D ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z (was ?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z)
+void __fastcall RunCutsceneMacro(CCharString const&, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase, std::less<CCharString>, std::allocator<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase> > >&, std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool> > >*, std::map<CCharString, CCharString, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString> > >*, bool, bool);
 void NScript::CV_TravellingHeroesScript::PlayCutscene(CCharString name)
 {
     CScriptGameResourceObjectScriptedThingBase hero;
@@ -157,7 +160,7 @@ void NScript::CV_TravellingHeroesScript::PlayCutscene(CCharString name)
     CGameScriptInterface* game = Game;
     game->PauseAllNonScriptedEntities(true);
     Game->FixMovieSequenceCamera(true);
-    RunCutsceneMacro(name, cast, 0, &csargs, false, true);
+    RunCutsceneMacro(name, *reinterpret_cast<std::map<CCharString, CScriptGameResourceObjectScriptedThingBase, std::less<CCharString>, std::allocator<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase> > >*>(&(cast)), reinterpret_cast<std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool> > >*>(0), reinterpret_cast<std::map<CCharString, CCharString, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString> > >*>(&csargs), false, true);
     Game->FixMovieSequenceCamera(false);
     csargs.clear();
     game->PauseAllNonScriptedEntities(false);

@@ -71,7 +71,6 @@ class CThing : public CThingPhysical { public:
     unsigned char _pad1[0xf4 - 0x54];  // CVectorMap is 0x10
     CIntelligentPointer<CThing> LastAttacker;       // +0xf4 (CThingCreatureBase)
     long FrameLastAttacked;                     // +0xfc
-    void SetAttackedByCreature(CThing* attacker);   // 0x006624F0
     unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -186,6 +185,10 @@ struct CAIStateGroup_ChickenPanic : CAIStateGroupBase {
     virtual bool IsRunnable();
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006624F0 ?SetAttackedByCreature@CThingCreatureBase@@QAEXPAV1@@Z (was ?SetAttackedByCreature@CThing@@QAEXPAV1@@Z)
+class CThingCreatureBase { public: void SetAttackedByCreature(CThingCreatureBase*); };
 bool CAIStateGroup_ChickenPanic::IsRunnable()
 {
     if (PBrain->GetPCreature()->LastAttacker.GetPItem()) {
@@ -218,7 +221,7 @@ bool CAIStateGroup_ChickenPanic::IsRunnable()
                 }
                 if (airGuitar) {
                     CThing* chicken = PBrain->PCreature;
-                    chicken->SetAttackedByCreature(hit->Attacker.GetPItem());
+                    reinterpret_cast<CThingCreatureBase*>(chicken)->SetAttackedByCreature(reinterpret_cast<CThingCreatureBase*>(hit->Attacker.GetPItem()));
                     return true;
                 }
             }

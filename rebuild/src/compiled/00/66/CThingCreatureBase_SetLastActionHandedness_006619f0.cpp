@@ -16,12 +16,16 @@ class CThingCreatureBase { public:
     unsigned char _pad000[0x138];
     long PreviousActionHandedness;      // +0x138 ECombatAnimationHandedness
     long PreviousActionHandednessWF;    // +0x13c
-    CWorld* GetWorld();                 // 0x004C7AB0 (CThing)
     void SetLastActionHandedness(long handedness);
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C7AB0 ?PeekWorld@CThing@@IBEABVCWorld@@XZ (was ?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ)
+class CThingCreatureBase;
+class CThing { protected: CWorld const& PeekWorld() const; friend class CThingCreatureBase; };
 void CThingCreatureBase::SetLastActionHandedness(long handedness)
 {
     PreviousActionHandedness = handedness;
-    PreviousActionHandednessWF = GetWorld()->GetFrame();
+    PreviousActionHandednessWF = const_cast<CWorld*>(reinterpret_cast<const CWorld*>(&reinterpret_cast<const CThing*>(this)->PeekWorld()))->GetFrame();
 }

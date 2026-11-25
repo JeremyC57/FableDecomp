@@ -46,9 +46,10 @@ private:
 
 class CStopWatch
 {
-public:
-    void* GetTicks(unsigned __int64 uid) const;
 };
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+class CThing;
+class CThingManager { public: CThing* GetPThingWithUID(unsigned __int64); };
 
 class CGSIGetThingWithUID_Dispatch
 {
@@ -73,9 +74,8 @@ public:
 
 class CGSIGetThingWithUID_Thing
 {
-public:
-    CScriptThing WrapForScript() const;
 };
+class CThing { public: CScriptThing GetScriptThing() const; };
 
 static unsigned long g_BaseConstructorCalls;
 static unsigned long g_DispatchCalls;
@@ -123,9 +123,9 @@ CStopWatch* CGSIGetThingWithUID_Dispatch::GetStopWatch()
     return reinterpret_cast<CStopWatch*>(0x12345678);
 }
 
-void* CStopWatch::GetTicks(unsigned __int64 uid) const
+CThing* CThingManager::GetPThingWithUID(unsigned __int64 uid)
 {
-    if (this != reinterpret_cast<const CStopWatch*>(0x12345678))
+    if (reinterpret_cast<const CStopWatch*>(this) != reinterpret_cast<const CStopWatch*>(0x12345678))
     {
         std::printf("lookup this mismatch\n");
         return 0;
@@ -137,10 +137,10 @@ void* CStopWatch::GetTicks(unsigned __int64 uid) const
     }
 
     ++g_LookupCalls;
-    return g_LookupResult;
+    return reinterpret_cast<CThing*>(g_LookupResult);
 }
 
-CScriptThing CGSIGetThingWithUID_Thing::WrapForScript() const
+CScriptThing CThing::GetScriptThing() const
 {
     CScriptThing result;
     ++g_WrapCalls;

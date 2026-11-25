@@ -33,12 +33,16 @@ class CThingCreatureDef { public:
 class CThingCreatureBase { public:
     unsigned char _pad000[0xe0];
     const CThingCreatureDef* PDef;          // +0xe0 CDefPointer<const CThingCreatureDef>::Object
-    CWorld* GetWorld();                     // 0x004C7AB0 (CThing)
     float GetDazedTimeSeconds();
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C7AB0 ?PeekWorld@CThing@@IBEABVCWorld@@XZ (was ?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ)
+class CThingCreatureBase;
+class CThing { protected: CWorld const& PeekWorld() const; friend class CThingCreatureBase; };
 float CThingCreatureBase::GetDazedTimeSeconds()
 {
     CFloatRange range = PDef->DazedTime;
-    return GFFloatRandom(range.Max - range.Min, GetWorld()->GetWorldSeed()) + range.Min;
+    return GFFloatRandom(range.Max - range.Min, const_cast<CWorld*>(reinterpret_cast<const CWorld*>(&reinterpret_cast<const CThing*>(this)->PeekWorld()))->GetWorldSeed()) + range.Min;
 }

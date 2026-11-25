@@ -22,8 +22,9 @@
 #include <cstdio>
 
 struct GlobalGui {
-    void Notify();
 };
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+class CPlayerGui { public: void ToggleLiveGui(); };
 
 GlobalGui* g_pGlobalGui;
 CMainGameComponent* CMainGameComponent::PMainGameComponent = 0;
@@ -51,7 +52,7 @@ CThing* CPlayer::GetPPlayerCharacterThing() const
     return reinterpret_cast<CThing*>(g_thingStore);
 }
 namespace std { template<> bool bitset<274>::test(size_t n) const { g_do_called++; g_do_arg = (int)n; g_do_this = this; return false; } }
-void GlobalGui::Notify() { g_notify++; }
+void CPlayerGui::ToggleLiveGui() { g_notify++; }
 
 void __fastcall SavedConfirmed();
 

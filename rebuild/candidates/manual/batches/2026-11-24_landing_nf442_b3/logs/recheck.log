@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00454b4c   WARN SHARED_HEADER_AVAILABLE CThingComponentSet (engine/CThingComponentSet.h)
+00454b4c   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase (engine/CParentDefClassBase.h)
+00454b4c   RELOCATION_MATCH PASS   Dtor_SharedBaseOf7_00454b4c
+
+WINS: 1
+  00454b4c RELOCATION_MATCH _global::?Dest_val@@YIXPAUPair@@@Z

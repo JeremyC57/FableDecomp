@@ -83,7 +83,6 @@ struct CTCCreatureFlyInCircles {
     bool Transitioning;                                 // +0x38
     bool ModeChangeQueued;                              // +0x39
     bool Active;                                        // +0x3a
-    CWorldMap* GetWorldMap();                           // 0x00686D30 (CTCBase)
     protected:
     void ChangeMode();
     public:
@@ -98,6 +97,11 @@ struct CTCCreatureFlyInCircles {
     void FrameUpdate();
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x00686D30 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ (was ?GetWorldMap@CTCCreatureFlyInCircles@@QAEPAVCWorldMap@@XZ)
+struct CTCCreatureFlyInCircles;
+class CTCBase { protected: CWorldMap& GetWorldMap(); friend struct CTCCreatureFlyInCircles; };
 void CTCCreatureFlyInCircles::FrameUpdate()
 {
     if (!Active)
@@ -115,7 +119,7 @@ void CTCCreatureFlyInCircles::FrameUpdate()
         UpdateFlight(pos, facing);
     if (Creature->HasTC(0x3a)) {
         CTCFlagged* flagged = (CTCFlagged*)Creature->GetTC(0x3a);
-        flagged->InMap = GetWorldMap()->IsPosInMap(pos);
+        flagged->InMap = (&reinterpret_cast<CTCBase*>(this)->GetWorldMap())->IsPosInMap(pos);
     }
     Creature->PhysicsTC->SetPosition(pos);
     CTCPhysicsBase* physics = Creature->PhysicsTC;

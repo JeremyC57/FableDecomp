@@ -43,8 +43,12 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -114,7 +118,7 @@ void CCreatureAction_TentacleStrikeLoop::FinishAction()
     CCombatActionBase::FinishAction();
     CTCKrakenTentacle* tentacle = GetTentacle();
     if (!Interrupt && CWorld::GetFrame() - StartTick <= (long)(tentacle->PTentacleDef->TentacleSmackDownTime * CMainGameComponent::GetConstantFPS()))
-        PCreature.GetPItem()->SetCurrentAction(CCreatureAction_TentacleStrikeLoop(PCreature.GetPItem(), StartTick));
+        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleStrikeLoop(PCreature.GetPItem(), StartTick))));
     else
-        PCreature.GetPItem()->SetCurrentAction(CCreatureAction_TentacleStrikeOutOf(PCreature.GetPItem()));
+        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleStrikeOutOf(PCreature.GetPItem()))));
 }

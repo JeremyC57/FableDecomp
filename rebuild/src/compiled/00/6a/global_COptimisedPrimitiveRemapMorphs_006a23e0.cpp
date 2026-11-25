@@ -4,6 +4,12 @@
 #include "fable_compiler.h"
 #include <stdlib.h>
 #include <new>
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (was ?GetWorld@CTCCarrying@NRemap006a23e0@@QAEPAUCWorld@2@XZ)
+class CWorld;
+namespace NRemap006a23e0 { struct CTCCarrying; }
+class CTCBase { protected: CWorld& GetWorld() const; friend struct ::NRemap006a23e0::CTCCarrying; };
 namespace NRemap006a23e0 {
 struct Control;struct Object {int id;Control* control;};struct Control{Object* object;int refs;};
 struct CBaseIntelligentPointer {mutable Control* control;__declspec(noinline) CBaseIntelligentPointer();__declspec(noinline) virtual ~CBaseIntelligentPointer();__declspec(noinline) Object* GetPItem()const;__declspec(noinline) void SetPItem(Object*);};
@@ -22,5 +28,5 @@ struct Record {int Key;CBaseIntelligentPointer object;};
 struct CTCCarrying {char pad[12];Record* first;Record* last;Record* end;char gap[8];int Key;__declspec(noinline) void GetAllCarriedThings(Objects&);CWorld* GetWorld();void ResetAllCarriedThingsAsBypassFilter();};
 // Layout: Gather6a2220 reads records+0xc/+0x10 stride12; CBaseIntelligentPointer receiver is record+4. Packed Entry stride9 proven6a3950.
 void CTCCarrying::GetAllCarriedThings(Objects& out){for(unsigned i=0;i<(unsigned)(last-first);++i){if(first[i].object.GetPItem()){Object* x=first[i].object.GetPItem();if(out.last==out.end){unsigned n=out.first?out.last-out.first:0;unsigned cap=n?n*2:1;Object** p=(Object**)malloc(cap*sizeof(Object*));for(unsigned k=0;k<n;++k)p[k]=out.first[k];free(out.first);out.first=p;out.last=p+n;out.end=p+cap;}*out.last++=x;}}}
-void CTCCarrying::ResetAllCarriedThingsAsBypassFilter(){vector entries;Objects objects;GetAllCarriedThings(objects);for(Object** p=objects.first;p!=objects.last;++p)entries.push_back(Entry(*p));CWorld* root=GetWorld();CEnvironmentSpellEffectInterfaceMethods* target=root->scene->target;target->SetBypassScreenFilter(entries,Key);}
+void CTCCarrying::ResetAllCarriedThingsAsBypassFilter(){vector entries;Objects objects;GetAllCarriedThings(objects);for(Object** p=objects.first;p!=objects.last;++p)entries.push_back(Entry(*p));CWorld* root=reinterpret_cast<NRemap006a23e0::CWorld*>(&reinterpret_cast<const CTCBase*>(this)->GetWorld());CEnvironmentSpellEffectInterfaceMethods* target=root->scene->target;target->SetBypassScreenFilter(entries,Key);}
 }

@@ -115,6 +115,10 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
 class CThing {
 public:
     virtual bool WorldUpdate();                         // vptr at +0; ?WorldUpdate@CThing@@UAE_NXZ (Ego_r / FableWin; was the flattened void* __vftable)
@@ -127,7 +131,6 @@ public:
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;               // 0x004C73D0
     void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
     CTCBase* AddTC(const CCharString& name, bool activate, const class CTCParamsBase* params);   // 0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z
     void Kill(bool immediately);                        // 0x004C9B80
     template <class T> bool GetTCDriver(T** out);       // 0x004ACB50 ??$GetTCDriver@VCTCDParticleEmitter@@@CThing@@QAE_NPAPAVCTCDParticleEmitter@@@Z
@@ -153,7 +156,7 @@ public:
         const CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-};
+ public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 void* Find_CThing_GetTCDriver_6260(CThing* thing);
 #pragma auto_inline(off)
 template <> __declspec(noinline) bool CThing::GetTCDriver<CTCDParticleEmitter>(CTCDParticleEmitter** out)
@@ -184,7 +187,7 @@ public:
     const CThingCreatureDef& PeekDefinitionInline() const
     {
         CDefPointer<const CThingCreatureDef> def;
-        GetDefinitionManager()->GetDef(m_defGlobalIndex, &def);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(m_defGlobalIndex, &def);
         return *def;
     }
     virtual bool WorldUpdate();                         // ?WorldUpdate@CThingDeadCreature@@UAE_NXZ (Ego_r / FableWin)

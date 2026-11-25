@@ -77,7 +77,6 @@ public:
         return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     CCamera* GetCamera() const;                                // 0x004C7AA0
-    const CThingSearchTools& PeekThingSearchTools() const;     // 0x004C7A60
     unsigned long* GetRandomSeed();                            // 0x004C7AE0
     void UpdateAction();                                       // 0x006643C0
     bool WorldUpdate();                                        // 0x006666A0
@@ -93,10 +92,15 @@ public:
 };
 #pragma pack(pop)
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C7A60 ?PeekThingSearchTools@CThing@@IBEABVCThingSearchTools@@XZ (was ?PeekThingSearchTools@CThingCreatureBase@@QBEABVCThingSearchTools@@XZ)
+class CThingAICreature;
+class CThing { protected: CThingSearchTools const& PeekThingSearchTools() const; friend class CThingAICreature; };
 bool CThingAICreature::WorldUpdate()
 {
     if (g_CombatStressTestEnabled)
-        CombatStressTestDebug(*this, PeekThingSearchTools(), GetRandomSeed());
+        CombatStressTestDebug(*this, reinterpret_cast<const CThing*>(this)->PeekThingSearchTools(), GetRandomSeed());
     CurrentlyFrameUpdating = true;
     UpdateAction();
     CThingCreatureBase::WorldUpdate();

@@ -46,7 +46,6 @@ struct CScriptThingVector {                                 // STLport vector<CS
             free(_M_start);
     }
 };
-bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);   // 0x00CBED00
 class CGameScriptInterface { public:                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
@@ -81,11 +80,15 @@ public:
 } // namespace NScript
 using NScript::CQ_BountyHuntScript;
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00CBED00 ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z (was ?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z)
+bool __fastcall AreAllThingsInVectorDead(std::vector<CScriptThing, std::allocator<CScriptThing> > const&);
 void NScript::CQ_BountyHuntScript::WatchForLeaderChargeGruntsKilled()
 {
     CScriptThingVector grunts;
     GSI->GetAllThingsWithScriptName("BH_GangGruntSpawn", grunts);
-    while (!AreAllThingsInVectorDead(grunts)) {
+    while (!AreAllThingsInVectorDead(*reinterpret_cast<std::vector<CScriptThing, std::allocator<CScriptThing> > const*>(&(grunts)))) {
         GSI->NewScriptFrame();
         do { if (IsActiveThreadTerminating()) return; } while (0);
     }

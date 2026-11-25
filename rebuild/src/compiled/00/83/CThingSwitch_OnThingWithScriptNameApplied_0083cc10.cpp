@@ -107,6 +107,10 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
 }
 #pragma auto_inline(on)
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
 class CThing { public:
     // vtable slots 0..61 (GetTriggerRadius is slot 62)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061();
@@ -116,7 +120,6 @@ class CThing { public:
     unsigned char  _pad54[0x38];
     unsigned short m_defGlobalIndex;                    // +0x8c
     unsigned short _pad8e;
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
     FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -131,7 +134,7 @@ class CThing { public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-};
+ public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 
 class CThingCreatureBase : public CThing { public:
 };
@@ -152,7 +155,7 @@ class CThingSwitch : public CThingPhysical { public:
     FABLE_FORCEINLINE CDefPointer<const CThingSwitchDef> PeekDefinition() const
     {
         CDefPointer<const CThingSwitchDef> def;
-        GetDefinitionManager()->GetDef(m_defGlobalIndex, def);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(m_defGlobalIndex, def);
         return def;
     }
     virtual void OnThingWithScriptNameApplied(const CCharString& name, const C3DVector& position, CThingCreatureBase& creature);

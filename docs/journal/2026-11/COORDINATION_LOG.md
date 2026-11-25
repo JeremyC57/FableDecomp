@@ -1388,3 +1388,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: NF445 nf444_hdr passed R-NF445-1 checks but did not land (bad HEAD payload, worked around; two option S member tests fail the landing recheck); tree reverted, NF445 resumed.
 - 2026-11-25 A: landed NF444/NF445 nf444_hdr_c (28 GameCODA rows, equiv clean outside the batch); NF446 handed back u1-u4.
 - 2026-11-25 A: landed NF446 u1-u3 (+5 proven; u3 equiv clean); u4 held on queue-line mentions (owner question).
+- 2026-11-25 A: landed NF442 (98 rows, +20 proven); NF446 resumed on the u4 re-cut; NF447 and NF448 starting.

@@ -43,8 +43,12 @@ class CThing { public:
 };
 class CThingCreatureBase;
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -118,9 +122,9 @@ void CCreatureAction_KrakenLowChargeLoop::FinishAction()
         ++LoopNum;
         if (LoopNum < kraken->Def->LowChargeLoops) {
             CThing* target = PTarget.GetPItem();
-            Creature().SetCurrentAction(CCreatureAction_KrakenLowChargeLoop(&Creature(), target, LoopNum));
+            Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenLowChargeLoop(&Creature(), target, LoopNum))));
         } else
-            Creature().SetCurrentAction(CCreatureAction_KrakenLowAttackInto(&Creature(), PTarget.GetPItem()));
+            Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenLowAttackInto(&Creature(), PTarget.GetPItem()))));
     } else
-        Creature().SetCurrentAction(CCreatureAction_KrakenLowAttackOutOf(Creature()));
+        Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenLowAttackOutOf(Creature()))));
 }

@@ -77,6 +77,9 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00416225 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ (was ?GetFrame@CMainGameComponent@@QAEJXZ)
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
@@ -86,8 +89,7 @@ private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
-    long GetFrame();                                    // 0x00416225
-};
+ public: long GetCurrentServerFrame() const; };
 extern bool g_BettingActive;                            // 0x013BAE1D
 extern bool g_BetPlaced;                                // 0x013BAE1E
 extern long g_CurrentBet;                               // 0x013BAE20
@@ -171,30 +173,30 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
     CDefPointer<CBettingDef> def;
     if (g_BettingActive && ParentThing->GetDef()->GetSubDef(&def)) {
     C2DVector stick;
-    if (input->GetControlMovementFromGameActionEvent((EGameAction)(0x72), event, stick) && FrameToStart <= CMainGameComponent::Get()->GetFrame()
+    if (input->GetControlMovementFromGameActionEvent((EGameAction)(0x72), event, stick) && FrameToStart <= reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame()
         && event.GetEventType() == 2) {
-        long held = CMainGameComponent::Get()->GetFrame() - FrameBetChangeStarted;
+        long held = reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame() - FrameBetChangeStarted;
         bool change = false;
-        if (FrameBetWasLastChanged == CMainGameComponent::Get()->GetFrame() - 1) {
+        if (FrameBetWasLastChanged == reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame() - 1) {
             held -= g_BetRepeatDelay;
             if ((held >= 0 && held % g_BetRepeatSlow == 0) || (held >= g_BetRepeatDelay && held % g_BetRepeatFast == 0))
                 change = true;
             if (held != 0 && held % g_BetMultiplierRate == 0)
                 Mult *= 2;
         } else {
-            FrameBetChangeStarted = CMainGameComponent::Get()->GetFrame();
+            FrameBetChangeStarted = reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame();
             change = true;
             Mult = 1;
         }
         if (stick.y > 0.2f) {
-            FrameBetWasLastChanged = CMainGameComponent::Get()->GetFrame();
+            FrameBetWasLastChanged = reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame();
             if ((g_CurrentBet < def->MaxBet || def->MaxBet == 0) && change && g_CurrentBet < stats->Gold) {
                 PlaySoundW("TAVERN_GAME_BET_INCREMENT");
                 g_CurrentBet += def->BetStep * Mult;
             }
             processed.SetAsPerformedEvent();
         } else if (stick.y < -0.2f) {
-            FrameBetWasLastChanged = CMainGameComponent::Get()->GetFrame();
+            FrameBetWasLastChanged = reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame();
             if (g_CurrentBet != def->MinBet && change) {
                 PlaySoundW("TAVERN_GAME_BET_DECREMENT");
                 g_CurrentBet -= def->BetStep * Mult;

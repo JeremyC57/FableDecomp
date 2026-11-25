@@ -3,8 +3,9 @@
 struct AnimPair {
     unsigned long first;
     unsigned long second[10];
-    void Dtor();
 };
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+namespace NInventory { class CCategory { public: ~CCategory(); }; }
 
 struct AllocPair {};
 
@@ -12,7 +13,7 @@ void __fastcall _Destroy_range(AnimPair* first, AnimPair* last, AllocPair* al);
 
 static int g_dtor_calls = 0;
 
-void AnimPair::Dtor() { g_dtor_calls++; }
+NInventory::CCategory::~CCategory() { g_dtor_calls++; }
 
 int main()
 {

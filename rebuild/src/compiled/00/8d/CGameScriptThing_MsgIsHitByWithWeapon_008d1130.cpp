@@ -67,7 +67,6 @@ struct CThingNative {
     ComponentMap   Components;                          // +0x44
     unsigned char  Metadata[0x45];
     unsigned char  LifeFlags;                           // +0x91 (bit 0 = dead)
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990 (reads the game's definition manager)
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -142,6 +141,11 @@ struct CGameScriptThingMethods : CGameScriptThing {
     bool MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const;
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThingNative@@QBEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
+class CThing { public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 bool CGameScriptThingMethods::MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
@@ -158,7 +162,7 @@ bool CGameScriptThingMethods::MsgIsHitByWithWeapon(const CCharString& attackerSc
                 if (HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithNoWeapon(false), current, last))
                     return true;
             } else {
-                long index = ((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->GetDefinitionManager()->GetDefGlobalIndexFromName(weaponDefName);
+                long index = const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()))->PeekDefinitionManager()))->GetDefGlobalIndexFromName(weaponDefName);
                 if (index > 0 && HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithWeapon(index), current, last))
                     return true;
             }

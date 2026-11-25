@@ -5,7 +5,11 @@
 #include "engine/CTable.h"
 #include <new>
 #include <stdlib.h>
-namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance(); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0041D21B ?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z (was ?CreateComponent@Manager@RetailUI@@QAEPAUComponent@2@K@Z)
+namespace NUISystem { class CComponent; }
+namespace NUISystem { class CManager { public: static CManager* __fastcall GetInstance();  public: NUISystem::CComponent* CreateComponent(long); }; }   // 0x0041E5F2 (Ego_r.pdb / FableWin.pdb)
 // Name fix (agentNF 2026-11-10): the count block's deleter 0x00428B10 is ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
 //   (FableWin.pdb; was ?DestroyComponent@RetailUI@@YIXPAX@Z). ROW DEBT: the row itself and its other callees are still spelled in the
 //   invented namespace RetailUI (Pointer = CCountedPointer<NUISystem::CComponent> 0x00429C15, ChildrenVector::Grow = vector::_M_insert_overflow
@@ -160,9 +164,9 @@ struct Lookup {unsigned long* First;unsigned long* Last;unsigned long* Limit;}; 
 // 005348e0 is STLport std::__find<unsigned long*, unsigned long> (random-access overload; stlport/fable_algorithm.h declaration).
 struct Table {unsigned char BeforeChildren[0xb0];ChildrenVector Children;unsigned char BeforeLookup[0x16c-0xbc];Lookup* Entries;void ConstructHorizontalLine(Pointer,Pointer,const Vec&,unsigned long,long);};
 void Table::ConstructHorizontalLine(Pointer start,Pointer element,const Vec& position,unsigned long count,long offset){
- Vec at=position;Pointer line(((Manager*)NUISystem::CManager::GetInstance())->CreateComponent(start->GetName()));{float extent=(float)count;line->GetStateMap()[0UL].Zoom.X=extent;line->Initialise();line->SetPosition(at);line->GetStateMap()[0UL].Position=at;Children.push_back(line);at.X+=start->GetSize().X;}
+ Vec at=position;Pointer line(reinterpret_cast<RetailUI::Component*>(reinterpret_cast<NUISystem::CManager*>(((Manager*)NUISystem::CManager::GetInstance()))->CreateComponent(start->GetName())));{float extent=(float)count;line->GetStateMap()[0UL].Zoom.X=extent;line->Initialise();line->SetPosition(at);line->GetStateMap()[0UL].Position=at;Children.push_back(line);at.X+=start->GetSize().X;}
  for(unsigned long i=0;i<count;++i){unsigned long key=i-offset;if(element.Object&&std::__find(Entries->First,Entries->Last,key,std::random_access_iterator_tag())!=Entries->Last){
-Component* created=((Manager*)NUISystem::CManager::GetInstance())->CreateComponent(element->GetName());
+Component* created=reinterpret_cast<RetailUI::Component*>(reinterpret_cast<NUISystem::CManager*>(((Manager*)NUISystem::CManager::GetInstance()))->CreateComponent(element->GetName()));
 #pragma inline_depth(0)
 Pointer child(created);
 #pragma inline_depth()

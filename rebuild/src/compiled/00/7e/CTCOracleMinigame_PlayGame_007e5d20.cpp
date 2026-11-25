@@ -46,11 +46,15 @@ class COracleMinigameDef { public:
     unsigned char _pad00[0x2c];
     float TimeBetweenOutputs;                           // +0x2c (descriptive)
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ (was ?GetPlayerManager@CTCOracleMinigame@@QAEPAVCPlayerManager@@XZ)
+class CTCOracleMinigame;
 class CTCBase { public:                             // the PDB base the accessor belongs to (its first virtual slot only: offset 0)
     virtual void v00();
 protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
-};
+ protected: CPlayerManager& GetPlayerManager(); friend class CTCOracleMinigame; };
 class CTCOracleMinigame : public CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
@@ -71,7 +75,6 @@ class CTCOracleMinigame : public CTCBase { public:
     void* InputsPending;                                // +0xe0 (STLport list: one sentinel pointer)
     CThing* SpeechMarker;                               // +0xe4
     const COracleMinigameDef* PDef;                     // +0xe8
-    CPlayerManager*    GetPlayerManager();              // 0x00686D40 (CTCBase)
     void PlayGame();
 };
 
@@ -104,7 +107,7 @@ void CTCOracleMinigame::PlayGame()
     SymbolsFiring[1] = 0;
     SymbolsFiring[2] = 0;
     SymbolsFiring[3] = 0;
-    CPlayer* player = &GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = &(&reinterpret_cast<CTCBase*>(this)->GetPlayerManager())->GetMainPlayer();
     if (player->GetCurrentMode() != 0x29)
         player->AddMode((EPlayerMode)0x29, false);
     CurrentText = 0;

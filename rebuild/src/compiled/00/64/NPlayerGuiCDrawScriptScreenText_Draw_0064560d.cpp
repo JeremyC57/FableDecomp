@@ -113,8 +113,6 @@ struct CGameUI {
     unsigned char _pad2bd[0x324 - 0x2bd];
     CList<SScriptTextNode>  ScriptTexts;            // +0x324
     CList<SScriptLineNode>  ScriptLines;            // +0x328
-    void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
-                    float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
 class CPlayerGuiDef { public:
     unsigned char _pad00[0x8e0];
@@ -125,7 +123,10 @@ class CPlayerGuiDef { public:
     C2DVector     ScriptTextLineStep;               // +0x8fc
     long          ScriptTextMaxLines;               // +0x904
 };
-class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };      // 0x00438570
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00438010 ?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z (was ?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z)
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef();  public: void Draw2DText(C2DVector const&, CWideString const&, CFontBank const&, CRGBColour const&, float, EEngine2DLayer, bool); };      // 0x00438570
 struct CGuiResources {
     unsigned char _pad[0x1614c];
     CFontBank*    DefaultFont;                      // +0x1614c
@@ -158,7 +159,7 @@ void CDrawScriptScreenText::Draw(CEnginePrimitivePrepareInfo* info)
         for (SScriptTextNode* node = gui->ScriptTexts.begin(); node != gui->ScriptTexts.end(); node = node->Next) {
             SScriptScreenText& text = node->Data;
             CFontBank* font = text.FontName == "" ? Resources->DefaultFont : PFontManager->GetFont(text.FontName).Data;
-            PlayerGui->Draw2DText(text.Position, text.Text, font, text.Colour, 1.0f, ENGINE_2D_LAYER_TEXT, true);
+            reinterpret_cast<CPlayerGui*>(PlayerGui)->Draw2DText(text.Position, text.Text, *(font), text.Colour, 1.0f, ENGINE_2D_LAYER_TEXT, true);
         }
     }
     CList<SScriptLineNode>& lines = PlayerGui->ScriptLines;
@@ -173,9 +174,9 @@ void CDrawScriptScreenText::Draw(CEnginePrimitivePrepareInfo* info)
         for (CListIter<SScriptLineNode> it = lines.ibegin(); it != lines.iend(); ++it) {
             SScriptLine& line = it._M_node->Data;
             if (line.IsHighlighted())
-                PlayerGui->Draw2DText(pos, line.GetText(), font, CRGBColour(0x80, 0x80, 0x80, 0xff), 1.0f, ENGINE_2D_LAYER_TEXT, true);
+                reinterpret_cast<CPlayerGui*>(PlayerGui)->Draw2DText(pos, line.GetText(), *(font), CRGBColour(0x80, 0x80, 0x80, 0xff), 1.0f, ENGINE_2D_LAYER_TEXT, true);
             else
-                PlayerGui->Draw2DText(pos, line.GetText(), font, def->ScriptTextColour, 1.0f, ENGINE_2D_LAYER_TEXT, true);
+                reinterpret_cast<CPlayerGui*>(PlayerGui)->Draw2DText(pos, line.GetText(), *(font), def->ScriptTextColour, 1.0f, ENGINE_2D_LAYER_TEXT, true);
             float n = (float)line.LineCount;
             C2DVector delta(step.X * n, step.Y * n);
             pos.X += delta.X;

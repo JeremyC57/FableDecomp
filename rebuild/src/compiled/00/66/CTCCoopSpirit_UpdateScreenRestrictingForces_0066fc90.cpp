@@ -81,7 +81,10 @@ class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };               // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetPlayer(long number); };  // 0x004498C0
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004498C0 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z (was ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z)
+class CPlayerManager { public: CPlayer& GetPlayer(long); };  // 0x004498C0
 class CTCBase
 {
 public:
@@ -135,7 +138,7 @@ void CTCCoopSpirit::UpdateScreenRestrictingForces()
     }
     if ((float)fabs(forceX) > 0.0001f || (float)fabs(forceY) > 0.0001f) {
         long player = ParentThing->PlayerNumber;
-        CThing* hero = GetPlayerManager().GetPlayer(player)->GetPControlledCreature();
+        CThing* hero = (&GetPlayerManager().GetPlayer(player))->GetPControlledCreature();
         float angle = hero->GetCurrentRelativeMovementAngleXY();
         C3DVector force(forceX, forceY, 0.0f);
         force.RotateXY(angle);

@@ -23,11 +23,14 @@ struct Fable_TrollInit_008c5fd0 : CCreatureAction_TrollWhackGroundBase {
     virtual void s4c(); virtual void s4d(); virtual void s4e(); virtual void s4f();
     virtual void s50();
     virtual void act();
-    void FABLE_FASTCALL base();
     void Initialise();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00857520 ?Initialise@CCombatActionBase@@UAEXXZ (was ?base@Fable_TrollInit_008c5fd0@@QAIXXZ)
+class CCombatActionBase { public: virtual void Initialise(); };
 void Fable_TrollInit_008c5fd0::Initialise() {
     act();
-    base();
+    reinterpret_cast<CCombatActionBase*>(this)->CCombatActionBase::Initialise();
 }

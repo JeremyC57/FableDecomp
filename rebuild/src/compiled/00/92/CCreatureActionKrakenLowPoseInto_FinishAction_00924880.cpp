@@ -17,8 +17,12 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase;
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
@@ -52,7 +56,7 @@ void CCreatureAction_KrakenLowPoseInto::FinishAction()
 {
     CCombatActionBase::FinishAction();
     if (IsTargetAlive())
-        Creature().SetCurrentAction(CCreatureAction_KrakenLowChargeLoop(Creature(), *reinterpret_cast<CThing*>(PTarget.GetPItem()), 0));
+        Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenLowChargeLoop(Creature(), *reinterpret_cast<CThing*>(PTarget.GetPItem()), 0))));
     else
-        Creature().SetCurrentAction(CCreatureAction_KrakenLowAttackOutOf(Creature()));
+        Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenLowAttackOutOf(Creature()))));
 }

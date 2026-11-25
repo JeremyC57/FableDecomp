@@ -42,11 +42,14 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXAAVCMemoryDataInputStream@@@Z)
 class CDefString {                                          // Ego_r.pdb, 4 bytes
 public:
     long TablePos;                                          // +0x00
     CDefString() : TablePos(-1) { }
-    void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x0044FC00 (CDataInputStream&)
+    void TransferBinaryIn(CDataInputStream&);  // 0x0044FC00 (CDataInputStream&)
 };
 
 namespace std {
@@ -108,7 +111,7 @@ template <> __declspec(noinline) void CPersistTraits<long>::TransferBinaryIn(CMe
 #pragma auto_inline(on)
 
 template <> struct CPersistTraits<CDefString> {
-    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString* out) const { out->TransferBinaryIn(stream); }
+    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString* out) const { out->TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(&(stream))); }
 };
 
 template <class V, class K, class C>

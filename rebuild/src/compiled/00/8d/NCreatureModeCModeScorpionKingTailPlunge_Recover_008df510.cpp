@@ -79,8 +79,12 @@ class CThing { public:
     }
 };
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
@@ -151,6 +155,6 @@ void CModeScorpionKingTailPlunge::Recover()
             CTCDParticleEmitter::Create(effectType, *(&TailPos), false);
     }
     PCreature->GetTCIfPresent<CTCBoss>(0xad)->ClearEffects();
-    PCreature->SetCurrentAction(CCreatureAction_ScorpionTailWithdraw(PCreature, PTarget.GetPItem()));
+    PCreature->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_ScorpionTailWithdraw(PCreature, PTarget.GetPItem()))));
 }
 }

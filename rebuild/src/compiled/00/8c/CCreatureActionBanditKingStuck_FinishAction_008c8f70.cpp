@@ -21,8 +21,12 @@
 
 class CCombatActionBase;
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 
 class CSoundPair { public:
@@ -104,16 +108,16 @@ void CCreatureAction_BanditKingStuck::FinishAction()
     if (IS_THING_ALIVE(PTarget)) {
         if (TimesToLoop <= 0 || FramesRunning < TotalTime) {
             CThingCreatureBase* creature = PCreature.GetPItem();
-            GetCreature()->SetCurrentAction(CCreatureAction_BanditKingUnstuck(creature, ((CThing*)PTarget.GetPItem())));
+            GetCreature()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_BanditKingUnstuck(creature, ((CThing*)PTarget.GetPItem())))));
         } else {
             CThing* obstruction = ((CThing*)PObstruction.GetPItem());
             CThing* target = ((CThing*)PTarget.GetPItem());
             CThingCreatureBase* creature = PCreature.GetPItem();
-            if (GetCreature()->SetCurrentAction(CCreatureAction_BanditKingStuck(creature, target, TimesToLoop - 1, obstruction, ((CThing*)PStuckEffect.GetPItem()))))
+            if (GetCreature()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_BanditKingStuck(creature, target, TimesToLoop - 1, obstruction, ((CThing*)PStuckEffect.GetPItem()))))))
                 return;
         }
     } else {
-        PCreature.GetPItem()->SetCurrentAction(CCreatureAction_BanditKingUnstuck(PCreature.GetPItem()));
+        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_BanditKingUnstuck(PCreature.GetPItem()))));
     }
     if (IS_THING_ALIVE(PStuckEffect))
         ((CThing*)PStuckEffect.GetPItem())->Kill(true);

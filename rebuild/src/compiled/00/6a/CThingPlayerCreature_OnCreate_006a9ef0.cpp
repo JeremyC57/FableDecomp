@@ -98,18 +98,24 @@ class CDefinitionManager { public:
 
 extern long g_HeroCreationState;                        // 0x0137F940
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThingCreatureBase@@QAEPAVCDefinitionManager@@XZ)
+//   0x006A4D60 ?ValidateInitialisation@CThingPhysical@@IAE_NXZ (was ?ValidateInitialisation@CThingCreatureBase@@QAE_NXZ)
+class CGameDefinitionManager;
+class CThingPlayerCreature;
 class CThing
 {
 protected:
     virtual ~CThing();                    // vptr at +0 (both PDBs: ??1CThing@@MAE@XZ, protected virtual)
 public:
     void SetAsGameStatePersisted(bool);   // 0x004C7880
-};
+ public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 class CThingPhysical : public CThing
 {
 public:
     const C3DVector& PeekPos() const;    // 0x006A4D00
-};
+ protected: bool ValidateInitialisation(); friend class CThingPlayerCreature; };
 class CThingGameObject : public CThingPhysical
 {
 public:
@@ -129,8 +135,6 @@ class CThingCreatureBase : public CThingGameObject { public:
     unsigned char _padf4[0x124 - 0xf4];
     long IdleCounter;                                   // +0x124
     unsigned char _pad128[0x16c - 0x128];
-    CDefinitionManager* GetDefinitionManager();         // 0x004C7990 (CThing)
-    bool ValidateInitialisation();                      // 0x006A4D60 (CThingPhysical)
     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const;   // 0x00663340 (Ego_r.pdb)
     protected:
     void CreateDefaultWeapons();
@@ -185,10 +189,10 @@ bool CThingPlayerCreature::OnCreate()
         LastThingCollision.Normal.Clear();
         LastThingCollision.Position.Clear();
         PHeroCombatDef = GetPHeroCombatDef();
-        GetDefinitionManager()->GetDef("MOVEMENT_DEFAULT", &PPlayerMovementDef);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef("MOVEMENT_DEFAULT", &PPlayerMovementDef);
         if (g_HeroCreationState == -1)
             g_HeroCreationState = 1;
-        if (ValidateInitialisation()) {
+        if (const_cast<CThingPhysical*>(reinterpret_cast<const CThingPhysical*>(this))->ValidateInitialisation()) {
             if (PDef->PrimaryMeleeWeaponDef)
                 CreateDefaultWeapons();
             return true;

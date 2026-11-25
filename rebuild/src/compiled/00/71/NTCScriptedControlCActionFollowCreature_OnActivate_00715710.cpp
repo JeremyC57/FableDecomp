@@ -57,7 +57,6 @@ class CTCPhysicsBase { public:
     virtual void SetPushableByHero(bool pushable);   // slot 84 (+0x150)
     char _pad04[0xc - 0x4];
     C3DVector Position;                              // +0x0C
-    CTCPhysicsBase* Clone();                         // 0x00686FA0
 };
 
 class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
@@ -131,6 +130,10 @@ private:
 };
 } // namespace NTCScriptedControl
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00686FA0 ?Clone@CTCBase@@QAEPAV1@XZ (was ?Clone@CTCPhysicsBase@@QAEPAV1@XZ)
+class CTCBase { public: CTCBase* Clone(); };
 void NTCScriptedControl::CActionFollowCreature::OnActivate()
 {
     Activated = true;
@@ -139,7 +142,7 @@ void NTCScriptedControl::CActionFollowCreature::OnActivate()
     PTCOldPhysics = 0;
     CTCPhysicsBase* physics = PTCScript->ParentThing->PPhysics;
     if (physics->GetName() != "CTCPhysicsNavigator") {
-        PTCOldPhysics = physics->Clone();
+        PTCOldPhysics = reinterpret_cast<CTCPhysicsBase*>(reinterpret_cast<CTCBase*>(physics)->Clone());
         C3DVector position = physics->Position;
         CBoundingBox bounds = physics->GetBounds();
         CPhysicsSnapshot snapshot(position, bounds);

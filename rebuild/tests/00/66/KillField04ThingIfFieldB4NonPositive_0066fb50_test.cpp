@@ -5,9 +5,9 @@ struct CThing_0066fb50
 {
     unsigned char prefix[0xb4];
     float field_b4;
-
-    void Kill(bool immediate);
 };
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+class CThing { public: void Kill(bool); };
 
 struct Object_0066fb50
 {
@@ -19,11 +19,11 @@ static int g_kill_calls;
 static bool g_last_immediate;
 static CThing_0066fb50* g_last_thing;
 
-void CThing_0066fb50::Kill(bool immediate)
+void CThing::Kill(bool immediate)
 {
     ++g_kill_calls;
     g_last_immediate = immediate;
-    g_last_thing = this;
+    g_last_thing = reinterpret_cast<CThing_0066fb50*>(this);
 }
 
 extern "C" void __fastcall

@@ -96,10 +96,13 @@ class CAnimationEntry { public:
     long GetTimeToBlendIn(CThing* thing);  // 0x005DC230
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662A00 ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (was ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z)
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0x10c - 0x4c];
     C3DVector     MovementVector;          // +0x10c
-    CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
+    CAnimationEntry const& GetAnimFromName(CCharString const&, long) const;   // 0x00662A00
 };
 
 class CTCStealth { public:                        // interface type 0x36
@@ -147,7 +150,7 @@ void CModeCrouch::AnimUpdate(CAnimateThing& animate)
     if (speed > 0.0001f) {
         CCharString name(upright ? "ST_SNEAK_UPRIGHT" : "ST_SNEAK");
         if (name != SneakAnimName || !animate.IsPlayingMainAnimType(0x0e)) {
-            CAnimationEntry* entry = creature->GetAnimFromName(name, 0);
+            CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName(name, 0)));
             CThing* thing = ParentThing;
             animate.SetMainAnim(CAnimInit(0x0e, 0, entry->AnimIndex, 2, true, entry->GetAnimateThingFlags(), 100),
                 entry->GetTimeToBlendIn(thing), entry->GetDelayTime());
@@ -157,7 +160,7 @@ void CModeCrouch::AnimUpdate(CAnimateThing& animate)
     else {
         CCharString name(upright ? "ST_SNEAK_UPRIGHT_POSE" : "ST_SNEAK_POSE");
         if (name != SneakAnimName || !animate.IsPlayingMainAnimType(0x0f)) {
-            CAnimationEntry* entry = creature->GetAnimFromName(name, 0);
+            CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName(name, 0)));
             CThing* thing = ParentThing;
             animate.SetMainAnim(CAnimInit(0x0f, 0, entry->AnimIndex, 1, true, entry->GetAnimateThingFlags(), 100),
                 entry->GetTimeToBlendIn(thing), entry->GetDelayTime());

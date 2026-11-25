@@ -97,8 +97,12 @@ class CThing { public:
     }
 };
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 class CTCBoss { public:                                // interface type 0xAD
     unsigned char _pad00[0x10];
@@ -147,7 +151,7 @@ void CCombatAction_StrikeResponseMazeDoForcePush::FinishAction()
         C3DVector offset(position.X - attackerPosition.X, position.Y - attackerPosition.Y, position.Z - attackerPosition.Z);
         if (boss->GetBossPhase() > 0 && offset.Get2DLength() < 4.0f) {
             if (hits > battleDef->TutorialNumGetHits || boss->GetBossPhase() == 2)
-                creature->SetCurrentAction(CCombatAction_WillForcePushInto(*creature));
+                creature->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCombatAction_WillForcePushInto(*creature))));
             else
                 boss->GenericCounter = hits;
         }

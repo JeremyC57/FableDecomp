@@ -22,7 +22,8 @@ extern "C" void* __fastcall StubGFGetSystemManager();
 extern "C" unsigned char StubStringTable[0x40];
 #pragma comment(linker, "/alternatename:@CallGetDataFromDef@4=?GetDataFromDef@CText@NUISystem@@QAEXXZ")
 #pragma comment(linker, "/alternatename:?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z=@StubGetString@16")
-#pragma comment(linker, "/alternatename:?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ=@StubGFGetSystemManager@0")
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+#pragma comment(linker, "/alternatename:?GFGetSystemManager@@YIPAVCSystemManager@@XZ=@StubGFGetSystemManager@0")
 #pragma comment(linker, "/alternatename:?GDefStringTable@@3VCDefStringTable@@A=_StubStringTable")
 
 unsigned char StubStringTable[0x40];

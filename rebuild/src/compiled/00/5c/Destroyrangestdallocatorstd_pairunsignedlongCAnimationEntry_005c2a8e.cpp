@@ -8,13 +8,16 @@
 struct AnimPair {
     unsigned long first;          // key
     unsigned long second[10];     // CAnimationEntry payload -> total 44 (0x2c)
-    void Dtor();                  // stands in for ~pair(); defined out-of-line
 };
 
 struct AllocPair {};
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005C2739 ??1CCategory@NInventory@@QAE@XZ (was ?Dtor@AnimPair@@QAEXXZ)
+namespace NInventory { class CCategory { public: ~CCategory(); }; }
 void __fastcall _Destroy_range(AnimPair* first, AnimPair* last, AllocPair* al)
 {
     for (; first != last; ++first)
-        first->Dtor();
+        reinterpret_cast<NInventory::CCategory*>(first)->NInventory::CCategory::~CCategory();
 }

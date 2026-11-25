@@ -1,0 +1,33 @@
+addr       parity           behav  name
+004022b0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004022b0   WARN SHARED_HEADER_AVAILABLE CXMVPlayer (engine/CXMVPlayer.h)
+004022b0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004022b0   WARN RELOC_NAME: ?g_FableDisplayPrimitive_013B8384@@3PAUFableDisplayPrimitive@@A -> 013b8384 labelled 'PRenderManager'
+004022b0   RELOCATION_MATCH PASS   GFInitialise
+0047db73   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0047db73   WARN RELOC_NAME: ?g_pGlobalGui@@3PAUGlobalGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+0047db73   RELOCATION_MATCH PASS   SavedConfirmed
+0066fb50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0066fb50   WARN STANDIN_LEAF @KillField04ThingIfFieldB4NonPositive_0066fb50@4 (catalog KillField04ThingIfFieldB4NonPositive; address-only name)
+0066fb50   RELOCATION_MATCH PASS   KillField04ThingIfFieldB4NonPositive
+007ea2d0   WARN SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)
+007ea2d0   WARN GENERIC_STRUCT module=CTCTargeted (use engine/CTCTargeted.h)
+007ea2d0   RELOCATION_MATCH PASS   GetNumTargetPoints
+00891d50   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00891d50   WARN SHARED_HEADER_AVAILABLE CStopWatch (engine/CStopWatch.h)
+00891d50   WARN SHARED_HEADER_AVAILABLE CThingManager (engine/CThingManager.h)
+00891d50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00891d50   RELOCATION_MATCH PASS   GetThingWithUID
+008c5fd0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008c5fd0   WARN STANDIN_LEAF ?Initialise@Fable_TrollInit_008c5fd0@@QAEXXZ (catalog CCreatureAction_TrollWhackGroundBase::Initialise; address-only name)
+008c5fd0   RELOCATION_MATCH PASS   Initialise
+00ab5390   RELOCATION_MATCH PASS   SetMouseCursor
+
+WINS: 7
+  004022b0 RELOCATION_MATCH _global::GFInitialise
+  0047db73 RELOCATION_MATCH _global::SavedConfirmed
+  0066fb50 RELOCATION_MATCH runtime::KillField04ThingIfFieldB4NonPositive
+  007ea2d0 RELOCATION_MATCH CTCTargeted::GetNumTargetPoints
+  00891d50 RELOCATION_MATCH CGameScriptInterface::GetThingWithUID
+  008c5fd0 RELOCATION_MATCH CCreatureAction_TrollWhackGroundBase::Initialise
+  00ab5390 RELOCATION_MATCH CMouseDX::SetMouseCursor

@@ -25,13 +25,16 @@ public:
 
 struct CDataOutputStreamWriter : CDataOutputStream {
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00469345 ?TransferBinaryOut@CBlendedParticleEffectSet@@QBEXAAVCDataOutputStream@@@Z (was ?TransferBinaryOut@CBlendedParticleEffectSet@@QBEXAAUCDataOutputStreamWriter@@@Z)
 class CBlendedParticleEffectSet {
 public:
     long  Particle1Index;                                   // +0x00
     float Particle1Value;                                   // +0x04
     long  Particle2Index;                                   // +0x08
     float Particle2Value;                                   // +0x0c
-    void TransferBinaryOut(CDataOutputStreamWriter& stream) const;   // 0x00469345
+    void TransferBinaryOut(CDataOutputStream&) const;   // 0x00469345
 };
 namespace std {
 template <class T1, class T2> struct pair {
@@ -76,7 +79,7 @@ template <> struct CPersistTraits<long> {
     void TransferBinaryOut(CDataOutputStreamWriter& stream, const long& value) const { stream.WriteSLONG(value); }
 };
 template <> struct CPersistTraits<CBlendedParticleEffectSet> {
-    void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBlendedParticleEffectSet& value) const { value.TransferBinaryOut(stream); }
+    void TransferBinaryOut(CDataOutputStreamWriter& stream, const CBlendedParticleEffectSet& value) const { value.TransferBinaryOut(*reinterpret_cast<CDataOutputStream*>(&(stream))); }
 };
 template <class V, class K, class C>
 void __fastcall GFSerialiseMapBinaryOut(CDataOutputStreamWriter& stream, const std::map<K, V, C>& value)

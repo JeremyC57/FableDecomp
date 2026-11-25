@@ -54,13 +54,16 @@ class CPlayerManager { public:
     const CPlayer* GetPlayer(long number) const;        // 0x00449910
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (was ?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ)
+class CThingSwitch;
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
     unsigned char  _pad54[0x3d];
     unsigned char  Dead : 1;                            // +0x91 bit 0
-    const CPlayerManager* GetPlayerManager() const;     // 0x004C79F0
     CPlayerManager* GetPlayerManager();                 // 0x004C7A00
     FABLE_FORCEINLINE bool HasTC(long type) const
     {
@@ -76,7 +79,7 @@ class CThing { public:
         CInterfaceMap::value_type* end = map->end();
         return (it == end || type < it->first ? end : it)->second;
     }
-};
+ protected: CPlayerManager const& PeekPlayerManager() const; friend class CThingSwitch; };
 
 class CThingPhysical : public CThing { public:
     const C3DVector& PeekPos() const;               // 0x006A4D00
@@ -105,7 +108,7 @@ void CThingSwitch::TriggerPlayerResetWhenLeaves()
     bool inArea = false;
     for (long i = 0; i < 4; ++i) {
         const CThing* self = this;
-        if (self->GetPlayerManager()->GetPlayer(i)->IsValid()) {
+        if ((&reinterpret_cast<const CThing*>(self)->PeekPlayerManager())->GetPlayer(i)->IsValid()) {
             CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetPControlledCreature());
             if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->PeekPos().X, hero->PeekPos().Y))) {
                 inArea = true;

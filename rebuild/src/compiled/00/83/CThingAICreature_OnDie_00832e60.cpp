@@ -57,6 +57,10 @@ class CWorld { public:
 };
 
 #define VF(n) virtual void v##n();
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
 class CThing { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09)
     VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18) VF(19)
@@ -70,7 +74,6 @@ class CThing { public:
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];                   // +0x20
     CInterfaceMap Components;                           // +0x44
-    CDefinitionManager* GetDefinitionManager();         // 0x004C7990
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     template <class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
@@ -92,7 +95,7 @@ class CThing { public:
     }
 protected:
     CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
-};
+ public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -150,7 +153,7 @@ void CThingAICreature::OnDie()
         bool found;
         {
             CCharString name("STANDARD_MESSAGE_EVENT_MURDER", -1);
-            found = GetDefinitionManager()->GetDef(name, &def);
+            found = const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(name, &def);
         }
         if (found) {
             CMessageEventManager* manager = GetWorld().MessageEventManager;

@@ -18,8 +18,12 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase;
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -58,7 +62,7 @@ void CCreatureAction_KrakenHighAttackInto::FinishAction()
 {
     CCombatActionBase::FinishAction();
     if (IsTargetAlive())
-        Creature().SetCurrentAction(CCreatureAction_KrakenHighAttackLoop(Creature(), *PTarget.Get(), 0, false));
+        Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenHighAttackLoop(Creature(), *PTarget.Get(), 0, false))));
     else
-        Creature().SetCurrentAction(CCreatureAction_KrakenHighAttackOutOf(Creature()));
+        Creature().SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_KrakenHighAttackOutOf(Creature()))));
 }

@@ -60,8 +60,11 @@ struct CAnimationEntryVector {                          // STLport vector<const 
     ~CAnimationEntryVector() { if (_M_start) free(_M_start); }
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006668A0 ?GetPossibleCombatAnimations@CThingCreatureBase@@QBE_NABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z (was ?GetPossibleCombatAnimations@CThingCreatureBase@@QAE_NABVCCharString@@AAUCAnimationEntryVector@@@Z)
 class CThingCreatureBase : public CThing { public:
-    bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& out);   // 0x006668A0
+    bool GetPossibleCombatAnimations(CCharString const&, std::vector<CAnimationEntry const*, std::allocator<CAnimationEntry const*> >&) const;   // 0x006668A0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -135,7 +138,7 @@ void CCreatureAction_BlockRespond::Initialise()
         MovementDirection.Normalise();
     }
     CAnimationEntryVector animations;
-    if (PCreature.Get()->GetPossibleCombatAnimations(animation, animations)) {
+    if (PCreature.Get()->GetPossibleCombatAnimations(animation, *reinterpret_cast<std::vector<CAnimationEntry const*, std::allocator<CAnimationEntry const*> >*>(&(animations)))) {
         SetCombatAnimations(animations);
     } else {
         {

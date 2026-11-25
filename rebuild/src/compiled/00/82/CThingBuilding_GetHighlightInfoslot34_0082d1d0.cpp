@@ -53,13 +53,17 @@ class CThingPhysical { public: float GetHealthPercentage() const; };   // 0x006A
 class CThingBuilding : public CThingPhysical { public:   // (the building is a CThingPhysical: the health fraction is its base accessor)
     unsigned char _pad00[0x90];
     signed char   PlayerNumber;                      // +0x90
-    CPlayerManager* GetPlayerManager();              // 0x004C79F0
     bool GetHighlightInfo_slot34(SThingHighlightInfo* info);
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (was ?GetPlayerManager@CThingBuilding@@QAEPAVCPlayerManager@@XZ)
+class CThingBuilding;
+class CThing { protected: CPlayerManager const& PeekPlayerManager() const; friend class CThingBuilding; };
 bool CThingBuilding::GetHighlightInfo_slot34(SThingHighlightInfo* info)
 {
     CRGBColour colour;
-    CPlayer* player = GetPlayerManager()->GetPlayer_00449910(PlayerNumber);
+    CPlayer* player = const_cast<CPlayerManager*>(reinterpret_cast<const CPlayerManager*>(&reinterpret_cast<const CThing*>(this)->PeekPlayerManager()))->GetPlayer_00449910(PlayerNumber);
     if (((CInitBaseClass*)player)->IsValid() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);
         colour = def->Colour;

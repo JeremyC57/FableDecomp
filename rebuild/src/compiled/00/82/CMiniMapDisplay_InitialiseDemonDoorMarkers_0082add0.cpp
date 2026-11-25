@@ -74,13 +74,15 @@ private: public:
     CWorld*       World;                        // +0x24
 };
 class CRegion;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0082A500 ?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z (was ?AddAutoMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z)
 class CMiniMapDisplay : public CMiniMapDisplayDonor {
  public:
-    void AddAutoMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
     protected:
     void InitialiseDemonDoorMarkers();
     public:
-};
+ protected: void AddAutoMarker(CThing const&, long); };
 
 void CMiniMapDisplay::InitialiseDemonDoorMarkers()
 {
@@ -92,6 +94,6 @@ void CMiniMapDisplay::InitialiseDemonDoorMarkers()
     for (CThingList::node* n = doors.head->next; n != doors.head; n = n->next) {
         CThing* door = n->value;
         if (map->GetLoadedRegion() == map->GetRegionNumberMapIsIn(door->GetCurrentMapNumber()) && (door->MinimapFlags & 8))
-            AddAutoMarker(door, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[10]);
+            AddAutoMarker(*(door), CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[10]);
     }
 }

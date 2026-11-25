@@ -39,15 +39,20 @@ class CWorld { public:
     virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThingBuilding@@QBEPAVCDefinitionManager@@XZ)
+//   0x004C7AB0 ?PeekWorld@CThing@@IBEABVCWorld@@XZ (was ?GetWorld@CThingBuilding@@QBEPAVCWorld@@XZ)
+class CGameDefinitionManager;
+class CThingBuilding;
+class CThing { public: CGameDefinitionManager const& PeekDefinitionManager() const; protected: CWorld const& PeekWorld() const; friend class CThingBuilding; };
 class CThingBuilding { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;                   // +0x8c
-    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
-    CWorld* GetWorld() const;                       // 0x004C7AB0
     FABLE_FORCEINLINE const CThingBuildingDef* PeekPDef() const
     {
         CDefPointer<const CThingBuildingDef> def;
-        GetDefinitionManager()->GetDef(DefGlobalIndex, &def);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(DefGlobalIndex, &def);
         return def.Get();
     }
     CDefPointer<const CCameraManagerSetDef> PeekPCameraManagerSetDefinition() const;
@@ -56,15 +61,15 @@ CDefPointer<const CCameraManagerSetDef> CThingBuilding::PeekPCameraManagerSetDef
 {
     CDefPointer<const CCameraManagerSetDef> def;
     if (PeekPDef()->CameraManagerSetIndex > 0) {
-        GetDefinitionManager()->GetDef(PeekPDef()->CameraManagerSetIndex, &def);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(PeekPDef()->CameraManagerSetIndex, &def);
         return def;
     }
-    CDefPointer<const CRegionDef> regionDef(GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetLoadedRegion()).GetPRegionDef());
+    CDefPointer<const CRegionDef> regionDef(const_cast<CWorld*>(reinterpret_cast<const CWorld*>(&reinterpret_cast<const CThing*>(this)->PeekWorld()))->GetWorldMap()->GetRegion(const_cast<CWorld*>(reinterpret_cast<const CWorld*>(&reinterpret_cast<const CThing*>(this)->PeekWorld()))->GetWorldMap()->GetLoadedRegion()).GetPRegionDef());
     const CRegionDef* rdef = regionDef.Get();
     if (rdef && rdef->CameraManagerSetBuildingIndex > 0) {
-        GetDefinitionManager()->GetDef(rdef->CameraManagerSetBuildingIndex, &def);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(rdef->CameraManagerSetBuildingIndex, &def);
         return def;
     }
-    GetDefinitionManager()->GetDef("CAMERA_MANAGER_SET_BUILDING", &def);
+    const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef("CAMERA_MANAGER_SET_BUILDING", &def);
     return def;
 }

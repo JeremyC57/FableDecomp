@@ -1,0 +1,65 @@
+addr       parity           behav  name
+008d70a0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008d70a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d70a0   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008d70a0   WARN SHARED_HEADER_AVAILABLE CAnimSet (engine/CAnimSet.h)
+008d70a0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008d70a0   RELOCATION_MATCH PASS   AnimUpdate
+008d8b00   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+008d8b00   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+008d8b00   RELOCATION_MATCH PASS   AnimUpdate
+008e9110   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008e9110   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e9110   WARN RELOC_NAME: ?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+008e9110   RELOCATION_MATCH PASS   GetMovementSpeed
+008e9190   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+008e9190   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+008e9190   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e9190   RELOCATION_MATCH PASS   SetUpCombinationAnims
+00911c20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+00911c20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00911c20   WARN RELOC_NAME: ?GetEvent_008af0a0@CTCEntityEvents@@QAE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z -> 008af0a0 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventExpressionPerformedTo, NEntityEvents::CEventFilter_None>'
+00911c20   RELOCATION_MATCH PASS   IsRunnable
+00960760   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CTCWife (engine/CTCWife.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_DeedReactionRoot (engine/CAIStateGroup_DeedReactionRoot.h)
+00960760   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00960760   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCDeedEffects@@QBE?AV?$CDefPointer@UCDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+00960760   WARN RELOC_NAME: ?IsActive@CTCTutorial@@QBE_NXZ -> 006cfe80 labelled 'CTCWife::IsAttractedToHero'
+00960760   WARN RELOC_NAME: ?ReleaseDeedSpeech@CSpeechManager@@QAEXJJ@Z -> 006feae0 labelled 'COpinionReactionManager::LogDeedReactionPlayingSpeech'
+00960760   RELOCATION_MATCH PASS   OnReplace
+
+WINS: 6
+  008d70a0 RELOCATION_MATCH CModeDragonFlyingBase::?AnimUpdate@CModeDragonFlyingBase@@QAEXAAVCAnimateThing@@@Z
+  008d8b00 RELOCATION_MATCH NCreatureMode::CModeCrouch::?AnimUpdate@CModeCrouch
+  008e9110 RELOCATION_MATCH NCreatureMode::CModeStrafe::?GetMovementSpeed@CModeStrafe
+  008e9190 RELOCATION_MATCH NCreatureMode::CModeStrafe::SetUpCombinationAnims
+  00911c20 RELOCATION_MATCH CAIStateGroup_ChickenPanic::IsRunnable
+  00960760 RELOCATION_MATCH CAIStateGroup_DeedReactionRoot::OnReplace

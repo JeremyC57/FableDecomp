@@ -92,15 +92,17 @@ private: public:
     CWorld*       PWorld;                          // +0x24 scoped_ptr<CWorld>
 };
 class CRegion;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0082A500 ?AddAutoMarker@CMiniMapDisplay@@IAEXABVCThing@@J@Z (was ?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z)
 class CMiniMapDisplay { public:
     virtual void v00();
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)
-    void AddMarker(const CThing* thing, long graphicIndex);   // 0x0082A500
     protected:
     void InitialiseAttractionMarkers();
     public:
-};
+ protected: void AddAutoMarker(CThing const&, long); };
 
 void CMiniMapDisplay::InitialiseAttractionMarkers()
 {
@@ -113,9 +115,9 @@ void CMiniMapDisplay::InitialiseAttractionMarkers()
             if (worldMap->GetLoadedRegion() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->HasTC(0xd7)) {
                 const CTCWife* wife = thing->GetTC<CTCWife>(0xd7);
                 if (wife->IsMarriedToThePlayer())
-                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[7].Primary);
+                    reinterpret_cast<CMiniMapDisplay*>(this)->AddAutoMarker(*(thing), CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[7].Primary);
                 else if (wife->IsAttractedToHero())
-                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[7].Secondary);
+                    reinterpret_cast<CMiniMapDisplay*>(this)->AddAutoMarker(*(thing), CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[7].Secondary);
             }
         }
     }

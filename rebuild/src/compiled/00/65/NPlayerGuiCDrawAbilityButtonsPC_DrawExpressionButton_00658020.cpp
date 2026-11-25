@@ -91,6 +91,11 @@ public:
 class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { LAYER_44 = 0x44, LAYER_45 = 0x45 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x00645099 ?DrawButton@CDrawAbilityButtons@NPlayerGui@@IAEXABVCEnginePrimitivePrepareInfo@@ABVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z (was ?DrawButton@CDrawAbilityButtonsPC@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@PAVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z)
+namespace NPlayerGui { struct CDrawAbilityButtonsPC; }
+namespace NPlayerGui { class CDrawAbilityButtons { protected: void DrawButton(CEnginePrimitivePrepareInfo const&, C2DVector const&, float, long, long, bool, EEngine2DLayer); friend struct ::NPlayerGui::CDrawAbilityButtonsPC; }; }
 namespace NPlayerGui {
 class CDrawBase {                           // RTTI .?AVCDrawBase@NPlayerGui@@ (layout as 0x00643D7C / 0x00657200)
 public:
@@ -104,8 +109,6 @@ struct CDrawAbilityButtonsPC : CDrawBase {
     unsigned char   _pad10[0x28 - 0x10];
     long            Columns;                // +0x28
     void GetExpressionButtonTypes(LongVector& types);   // 0x00657C80
-    void DrawButton(CEnginePrimitivePrepareInfo* info, C2DVector* pos, float scale, long button, long graphic, bool flag,
-                    EEngine2DLayer layer);  // 0x00645099
     void DrawExpressionButton(CEnginePrimitivePrepareInfo* info, LongVector* expressions, long slot, long index, long row,
                               float scale);
 };
@@ -147,7 +150,7 @@ void CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo* in
                     EEngine2DLayer layer = LAYER_44;
                     if (types[slot] == 1)
                         layer = LAYER_45;
-                    DrawButton(info, &pos, buttonScale, button, graphic, false, layer);
+                    reinterpret_cast<NPlayerGui::CDrawAbilityButtons*>(this)->DrawButton(*(info), pos, buttonScale, button, graphic, false, layer);
                 }
             }
         }

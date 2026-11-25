@@ -79,6 +79,10 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009BC120 ?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z (was ?TransferSubComponentVectorLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z)
+class CPersistContext_TransferableVectorOfSubComponentsGenericType;
 class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
@@ -88,9 +92,8 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;           // +0x24
     CDataOutputStream*      PSaveStream;           // +0x28
     protected: void CheckCRC(const char* name); public:              // 0x00404500
-    void TransferSubComponentVectorLoadText(const char* name, CPersistContext_TransferableVectorGenericType& item);   // 0x009BC120
     template <class T> void Transfer(const char* name, vector<T>& value);
-};
+ protected: void TransferVectorOfSubComponentsLoadText(char const*, CPersistContext_TransferableVectorOfSubComponentsGenericType&); };
 
 template <class T>
 void CPersistContext::Transfer(const char* name, vector<T>& value)
@@ -119,7 +122,7 @@ void CPersistContext::Transfer(const char* name, vector<T>& value)
     }
     case 0: {
         CPersistContext_TransferableVector<T> item(value);
-        TransferSubComponentVectorLoadText(name, item);
+        reinterpret_cast<CPersistContext*>(this)->TransferVectorOfSubComponentsLoadText(name, *reinterpret_cast<CPersistContext_TransferableVectorOfSubComponentsGenericType*>(&(item)));
         break;
     }
     default:

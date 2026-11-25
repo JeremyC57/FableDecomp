@@ -28,20 +28,24 @@ struct CWorldMap_Methods {
     virtual const void* PeekMap(long map) const;
     long f4; CWorld* World; void* Component; void* PThingMapManager;
     unsigned long LoadedScriptedMapBrushes[3]; CMapInfoArray Maps;
-    long GetMinPlayerDistanceFromMap(long map); // 0x004FCB30
-    void UnloadLevel(long map); // 0x004FEDE0
     void UnloadAllMapsExceptPlayerPos();
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004FCB30 ?GetMinPlayerDistanceFromMap@CWorldMap@@IBEJJ@Z (was ?GetMinPlayerDistanceFromMap@CWorldMap_Methods@@QAEJJ@Z)
+//   0x004FEDE0 ?UnloadLevel@CWorldMap@@IAEXJ@Z (was ?UnloadLevel@CWorldMap_Methods@@QAEXJ@Z)
+struct CWorldMap_Methods;
+class CWorldMap { protected: long GetMinPlayerDistanceFromMap(long) const; void UnloadLevel(long); friend struct CWorldMap_Methods; };
 void CWorldMap_Methods::UnloadAllMapsExceptPlayerPos()
 {
     for (long i = 0; i < Maps.size(); ++i) {
-        long distance = GetMinPlayerDistanceFromMap(i);
+        long distance = reinterpret_cast<const CWorldMap*>(this)->GetMinPlayerDistanceFromMap(i);
         if (IsMapLoaded(i) && distance > 1) {
             C3DVector pos;
             pos.X = 0.0f; pos.Y = 0.0f; pos.Z = 0.0f;
             CMessageEventManager* manager = World->PMessageEventManager_Data;
             manager->AddMessage(MESSAGE_EVENT_LEVEL_UNLOADED, 0x32, pos, 0, 0, 0.0f, 0.0f, i);
-            UnloadLevel(i);
+            reinterpret_cast<CWorldMap*>(this)->UnloadLevel(i);
         }
     }
 }

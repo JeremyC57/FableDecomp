@@ -29,7 +29,6 @@ private:
 class CStopWatch
 {
 public:
-    void* GetTicks(unsigned __int64 uid) const;
 };
 
 class CGSIGetThingWithUID_Dispatch
@@ -50,7 +49,6 @@ struct CGSIGetThingWithUID_InterfaceOverlay
 class CGSIGetThingWithUID_Thing
 {
 public:
-    CScriptThing WrapForScript() const;
 };
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -58,6 +56,12 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0051ED80 ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z (was ?GetTicks@CStopWatch@@QBEPAX_K@Z)
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?WrapForScript@CGSIGetThingWithUID_Thing@@QBE?AVCScriptThing@@XZ)
+class CThingManager { public: CThing* GetPThingWithUID(unsigned __int64); };
+class CThing { public: CScriptThing GetScriptThing() const; };
 CScriptThing CGameScriptInterface::GetThingWithUID(
     unsigned __int64 uid) const
 {
@@ -65,14 +69,12 @@ CScriptThing CGameScriptInterface::GetThingWithUID(
         reinterpret_cast<const CGSIGetThingWithUID_InterfaceOverlay*>(this);
 
     void* const pThing =
-        pThis->m_pDispatch
-            ->GetStopWatch()
-            ->GetTicks(uid);
+        reinterpret_cast<CThingManager*>(pThis->m_pDispatch
+            ->GetStopWatch())->GetPThingWithUID(uid);
 
     if (pThing != 0)
     {
-        return reinterpret_cast<const CGSIGetThingWithUID_Thing*>(pThing)
-            ->WrapForScript();
+        return reinterpret_cast<const CThing*>(reinterpret_cast<const CGSIGetThingWithUID_Thing*>(pThing))->GetScriptThing();
     }
 
     return CScriptThing();

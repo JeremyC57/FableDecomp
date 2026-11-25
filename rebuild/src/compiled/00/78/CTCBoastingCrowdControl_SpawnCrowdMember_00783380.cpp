@@ -148,7 +148,6 @@ class CThing { public:
     FABLE_FORCEINLINE void* GetTC(long kind) { return (void*)m_tcs.Find((ETCInterfaceType)kind)->second; }
 };
 class CThingAICreature : public CThing { public:
-    void AutoPlaceNear(const C3DVector& pos, float radius);   // 0x00665DF0
     void AutoSetupSexuality(float maleChance);          // 0x008330D0
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                                const CThingAICreatureInit& init); // 0x00833800 (Ego_r.pdb + FableWin.pdb: const&)
@@ -167,6 +166,10 @@ class CTCBoastingCrowdControl : public CTCBase { public:
 
 // same-TU stand-in for the interface-map LowerBound (0x0040F020): the returned entry is then known not to alias the key
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00665DF0 ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z (was ?AutoPlaceNear@CThingAICreature@@QAEXABVC3DVector@@M@Z)
+class CThingCreatureBase { public: bool AutoPlaceNear(C3DVector const&, float); };
 bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoint, CThing* village)
 {
     if (village->HasTC(0x22)) {
@@ -188,7 +191,7 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
             CThingAICreature* creature = CThingAICreature::Create(female ? def->FemaleDef : def->MaleDef,
                                                                   spawnPoint->GetPos(), 4, init);
             if (creature) {
-                creature->AutoPlaceNear(spawnPoint->GetPos(), (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * 5.0f);
+                reinterpret_cast<CThingCreatureBase*>(creature)->AutoPlaceNear(spawnPoint->GetPos(), (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * 5.0f);
                 CTCPlacement* placement;
                 if (creature->HasTC(2))
                     placement = (CTCPlacement*)creature->GetTC(2);

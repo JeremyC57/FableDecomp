@@ -13,8 +13,11 @@ class CAnimationEntry { public:
     long GetTimeToBlendIn(CThing* thing);      // 0x005DC230
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662A00 ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (was ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z)
 class CThingCreatureBase : public CThing { public:
-    CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
+    CAnimationEntry const& GetAnimFromName(CCharString const&, long) const;   // 0x00662A00
 };
 struct CBlendPair {                            // the two floats at CAnimInit +0x18, zeroed by their ctor
     float m_first;
@@ -65,12 +68,12 @@ void CModeDragonFlyingBase::AnimUpdate(CAnimateThing& animate)
     CThingCreatureBase* creature = ParentThing;
     if (animate.m_queueBegin == animate.m_queueEnd || (animate.CurrentAnimFlags & 2) || animate.CurrentAnimType != 9) {
         CCharString flyLoop("FLY_LOOP");
-        CAnimationEntry* entry = creature->GetAnimFromName(flyLoop, 0);
+        CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName(flyLoop, 0)));
         CThingCreatureBase* parent = ParentThing;
         animate.SetMainAnim(CAnimInit(9, 0, entry->Index, 1, false, entry->GetAnimateThingFlags(), 100), entry->GetTimeToBlendIn(parent), 0);
     }
     CCharString legPose("FLYING_LEG_POSE");
-    CAnimationEntry* pose = creature->GetAnimFromName(legPose, 0);
+    CAnimationEntry* pose = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName(legPose, 0)));
     if (pose->Index != -1 && animate.GetFirstCombinationAnimFromType(0x22) == 0) {
         animate.AddCombinationAnim(CAnimInit(0x22, 0, pose->Index, 0, true, 0, 100), 0, 0, false, false);
         CAnimSet* combination = animate.GetFirstCombinationAnimFromType(0x22);

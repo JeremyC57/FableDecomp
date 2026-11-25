@@ -23,10 +23,12 @@ template <> void CCountedPointer<CSurface>::Reset(CSurface* surface)
     Info = 0;
 }
 
-CMousePrimitiveHierarchy* ResolveMousePrimitiveHierarchy()
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+class CSystemManager;
+CSystemManager* __fastcall GFGetSystemManager()
 {
     ++g_resolveCalls;
-    return &g_hierarchy;
+    return reinterpret_cast<CSystemManager*>(&g_hierarchy);
 }
 
 static void __stdcall SetSurface(

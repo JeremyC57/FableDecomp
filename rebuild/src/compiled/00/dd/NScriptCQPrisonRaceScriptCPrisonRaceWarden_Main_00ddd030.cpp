@@ -106,7 +106,6 @@ struct CCutsceneCastMap {                              // map<CCharString, CScri
 struct CCutsceneFlagMap;                               // map<CCharString, bool>
 struct CCutsceneArgMap;                                // map<CCharString, CCharString>
 // PDB ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@...@PAV?$map@VCCharString@@_N...@PAV?$map@VCCharString@@V1@...@_N4@Z
-void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -153,6 +152,10 @@ private:
 };
 }
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00CBFB7D ?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z (was ?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z)
+void __fastcall RunCutsceneMacro(CCharString const&, std::map<CCharString, CScriptGameResourceObjectScriptedThingBase, std::less<CCharString>, std::allocator<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase> > >&, std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool> > >*, std::map<CCharString, CCharString, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString> > >*, bool, bool);
 void NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::Main()
 {
     CScriptGameResourceObjectScriptedThingBase scripted;
@@ -219,7 +222,7 @@ void NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::Main()
                 scripted.Destroy();
                 return;
             }
-            RunCutsceneMacro("CS_PRISON_RACE_END", cast, 0, 0, false, true);
+            RunCutsceneMacro("CS_PRISON_RACE_END", *reinterpret_cast<std::map<CCharString, CScriptGameResourceObjectScriptedThingBase, std::less<CCharString>, std::allocator<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase> > >*>(&(cast)), reinterpret_cast<std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool> > >*>(0), reinterpret_cast<std::map<CCharString, CCharString, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString> > >*>(0), false, true);
         } else {
             if (IsActiveThreadTerminating()) {
                 game->PauseAllNonScriptedEntities(false);
@@ -229,7 +232,7 @@ void NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::Main()
                 scripted.Destroy();
                 return;
             }
-            RunCutsceneMacro("CS_PRISON_RACE_END_REPEAT", cast, 0, 0, false, true);
+            RunCutsceneMacro("CS_PRISON_RACE_END_REPEAT", *reinterpret_cast<std::map<CCharString, CScriptGameResourceObjectScriptedThingBase, std::less<CCharString>, std::allocator<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase> > >*>(&(cast)), reinterpret_cast<std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool> > >*>(0), reinterpret_cast<std::map<CCharString, CCharString, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString> > >*>(0), false, true);
         }
         Game->FixMovieSequenceCamera(false);
         game->PauseAllNonScriptedEntities(false);

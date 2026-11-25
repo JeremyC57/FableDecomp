@@ -15,9 +15,12 @@
 
 class CAnimationEntry;
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662FA0 ?GetRandomLoadedAnimFromName@CThingCreatureBase@@QBEPBVCAnimationEntry@@ABVCCharString@@_N@Z (was ?GetRandomLoadedAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@_N@Z)
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;          // 0x006622A0
-    CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loadedOnly);   // 0x00662FA0
+    CAnimationEntry const* GetRandomLoadedAnimFromName(CCharString const&, bool) const;   // 0x00662FA0
 };
 
 struct CBlendPair {                        // the two floats at CAnimInit +0x18, zeroed by their ctor
@@ -85,7 +88,7 @@ void NCreatureMode::CModeDragonHover::AnimUpdate(CAnimateThing& animate)
     CAnimationEntry* entry;
     {
         CCharString name("ST_IDLE_SUBTLE");
-        entry = creature->GetRandomLoadedAnimFromName(name, false);
+        entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(creature->GetRandomLoadedAnimFromName(name, false)));
     }
     if (entry) {
         CThing* thing = ParentThing;

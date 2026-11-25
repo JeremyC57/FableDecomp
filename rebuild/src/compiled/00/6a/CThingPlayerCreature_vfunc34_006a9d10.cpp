@@ -59,13 +59,17 @@ class CThingPlayerCreature : public CThingPhysical {   // (the thing is a CThing
 public:
     unsigned char _pad00[0x90];
     signed char PlayerNumber;                   // +0x90
-    CPlayerManager* GetPlayerManager_004c79f0();   // 0x004C79F0
     bool vfunc_34(CThingHighlightInfo* info);
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (was ?GetPlayerManager_004c79f0@CThingPlayerCreature@@QAEPAVCPlayerManager@@XZ)
+class CThingPlayerCreature;
+class CThing { protected: CPlayerManager const& PeekPlayerManager() const; friend class CThingPlayerCreature; };
 bool CThingPlayerCreature::vfunc_34(CThingHighlightInfo* info)
 {
-    CPlayer* player = GetPlayerManager_004c79f0()->GetPlayer_00449910(PlayerNumber);
+    CPlayer* player = const_cast<CPlayerManager*>(reinterpret_cast<const CPlayerManager*>(&reinterpret_cast<const CThing*>(this)->PeekPlayerManager()))->GetPlayer_00449910(PlayerNumber);
     CRGBColour colour;
     if (((CInitBaseClass*)player)->IsValid() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);

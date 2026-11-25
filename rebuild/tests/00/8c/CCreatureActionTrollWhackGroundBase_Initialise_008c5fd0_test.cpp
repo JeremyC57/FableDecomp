@@ -85,10 +85,11 @@ struct Fable_TrollInit_008c5fd0
     virtual void s4f() {}
     virtual void s50() {}
     virtual void act() { g_act++; }
-    void FABLE_FASTCALL base();
     void Initialise();
 };
-void FABLE_FASTCALL Fable_TrollInit_008c5fd0::base() { g_base++; }
+// Naming (NF442, ruling q2): the row now calls the callee by its PDB spelling, so this double is respelt with it (callee only).
+class CCombatActionBase { public: virtual void Initialise(); };
+void CCombatActionBase::Initialise() { g_base++; }
 int main()
 {
     Fable_TrollInit_008c5fd0 o;

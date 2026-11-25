@@ -71,12 +71,15 @@ template<class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0, 
 }
 #pragma auto_inline(on)
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
 class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    CDefinitionManager* GetDefinitionManager(); // 0x004C7990
     template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType)
     {
         long type = interfaceType;
@@ -105,7 +108,7 @@ class CThing { public:
             return true;
         return false;
     }
-};
+ public: CGameDefinitionManager const& PeekDefinitionManager() const; };
 
 class CThingCreatureBase : public CThing { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -125,7 +128,7 @@ class CThingCreatureBase : public CThing { public:
     FABLE_FORCEINLINE void UseAbilityByIndex(long abilityDefIndex)
     {
         CDefPointer<const CHeroAbilityDef> out;
-        GetDefinitionManager()->GetDef(abilityDefIndex, &out);
+        const_cast<CDefinitionManager*>(reinterpret_cast<const CDefinitionManager*>(&reinterpret_cast<const CThing*>(this)->PeekDefinitionManager()))->GetDef(abilityDefIndex, &out);
         CDefHolder<const CHeroAbilityDef> def(out.Object);
         UseAbilityDef(def.Object);
     }

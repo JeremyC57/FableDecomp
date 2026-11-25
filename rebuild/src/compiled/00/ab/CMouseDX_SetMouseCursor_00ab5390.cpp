@@ -6,6 +6,11 @@
 #include <new>
 #include "candidates/mouse_dx_accessors_compiled.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009A4EC0 ?GFGetSystemManager@@YIPAVCSystemManager@@XZ (was ?ResolveMousePrimitiveHierarchy@@YAPAUCMousePrimitiveHierarchy@@XZ)
+class CSystemManager;
+CSystemManager* __fastcall GFGetSystemManager();
 void CMouseDX::SetMouseCursor(const CSurface& surface)
 {
     CSurface* copiedSurface = new CSurface(surface);
@@ -13,12 +18,12 @@ void CMouseDX::SetMouseCursor(const CSurface& surface)
 
     if (DisableCursorWarp != 0)
     {
-        CMousePrimitiveHierarchy* hierarchy = ResolveMousePrimitiveHierarchy();
+        CMousePrimitiveHierarchy* hierarchy = reinterpret_cast<CMousePrimitiveHierarchy*>(GFGetSystemManager());
         CMouseEnginePrimitive* primitive = hierarchy->Owner->Primitive;
         primitive->Dispatch->SetCursorSurface(
             primitive, 0, 0, MouseCursor->PD3DSurface);
 
-        hierarchy = ResolveMousePrimitiveHierarchy();
+        hierarchy = reinterpret_cast<CMousePrimitiveHierarchy*>(GFGetSystemManager());
         primitive = hierarchy->Owner->Primitive;
         primitive->Dispatch->SetCursorEnabled(primitive, 1);
     }

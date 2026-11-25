@@ -52,10 +52,14 @@ class CCombatActionBase { public:                             // retail sizeof 0
     unsigned char _pad04[0x114 - 0x04];
     virtual ~CCombatActionBase();                              // 0x0062E900
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
 public:
     void FinishCurrentAction();                        // 0x00662650
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     unsigned char _body[4];
@@ -84,7 +88,7 @@ void CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature)
 {
     creature.Health = creature.MaxHealth;
     creature.FinishCurrentAction();
-    creature.SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(&creature));
+    creature.SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(&creature))));
     const CResurrectionItemDef* def = PDef;
     if (def && def->OnUseParticleEffect > 0) {
         CThing* effect = CTCDParticleEmitter::Create(def->OnUseParticleEffect, *(&creature.GetPos()), false);

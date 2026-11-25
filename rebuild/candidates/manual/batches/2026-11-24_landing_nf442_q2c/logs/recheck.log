@@ -1,0 +1,6 @@
+addr       parity           behav  name
+005c2a8e   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005c2a8e   RELOCATION_MATCH PASS   ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e
+
+WINS: 1
+  005c2a8e RELOCATION_MATCH _global::?_Destroy_range@@YIXPAUAnimPair@@0PAUAllocPair@@@Z

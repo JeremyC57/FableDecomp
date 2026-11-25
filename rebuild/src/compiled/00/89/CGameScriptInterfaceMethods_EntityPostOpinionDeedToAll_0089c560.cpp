@@ -12,7 +12,11 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020 lower_bound
 struct ScriptMethods;
-class CThing { public: const C3DVector& GetPos() const; };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C9D60 ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z (was ?AddTC@CThingNative@@QAEPAVCTCBase@@ABVCCharString@@_NPAVCTCParamsBase@@@Z)
+class CTCParamsBase;
+class CThing { public: const C3DVector& GetPos() const;  public: CTCBase* AddTC(CCharString const&, bool, CTCParamsBase const*); };
 struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char Rest[0x41]; unsigned char DeletedFlags; ScriptMethods GetScriptThing(); class CTCBase* AddTC(const CCharString&,bool,class CTCParamsBase*); }; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
@@ -122,6 +126,6 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityPostOpinionDe
 void CGameScriptInterfaceMethods::EntityPostOpinionDeedToAll(const ScriptMethods& script,long deed)const{
  CThingNative* thing=script.GetPThing();if(thing){
  if(thing->UsingComponents[2]&0x20000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)81);ComponentEntry* end=map->Finish;CTCHeroOpinionDeedLog* log=static_cast<CTCHeroOpinionDeedLog*>(((void*)(it==end||it->first>81?end:it)->second));bool positive=deed>=3&&deed<=10;log->PostDeed((EOpinionDeedType)deed,thing->GetPos(),0,0,(EOpinionPostDeedType)7,positive,false,0,false,0);}
- else{OpinionSourceMethods* source;if(thing->UsingComponents[2]&0x10000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)80);ComponentEntry* end=map->Finish;source=static_cast<OpinionSourceMethods*>(((void*)(it==end||it->first>80?end:it)->second));}else{CCharString componentName("CTCOpinionSource",-1);source=static_cast<OpinionSourceMethods*>(thing->AddTC(componentName,false,0));}source->PostDeed(deed,5.0f);}
+ else{OpinionSourceMethods* source;if(thing->UsingComponents[2]&0x10000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)80);ComponentEntry* end=map->Finish;source=static_cast<OpinionSourceMethods*>(((void*)(it==end||it->first>80?end:it)->second));}else{CCharString componentName("CTCOpinionSource",-1);source=static_cast<OpinionSourceMethods*>(reinterpret_cast<CThing*>(thing)->AddTC(componentName,false,reinterpret_cast<CTCParamsBase const*>(0)));}source->PostDeed(deed,5.0f);}
  }
 }

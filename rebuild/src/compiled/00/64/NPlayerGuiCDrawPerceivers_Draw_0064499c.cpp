@@ -75,16 +75,17 @@ class CPlayerGuiDef { public:
     float         ThrobTime;                        // +0x168
     float         MaxThrobScale;                    // +0x16c
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00438010 ?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z (was ?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z)
 class CPlayerGui {
 public:
     unsigned char GetMiniMapRingAlpha() const;   // 0x00437880 (Ego_r.pdb ?GetMiniMapRingAlpha@CPlayerGui@@QBEEXZ)
 private:
 public:
     bool IsMiniMapActive() const;   // 0x00437860 (Ego_r.pdb ?IsMiniMapActive@CPlayerGui@@QBE_NXZ)
-private: public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };      // 0x00438570
+private: public: static const CPlayerGuiDef& __fastcall PeekGuiDef();  public: void Draw2DText(C2DVector const&, CWideString const&, CFontBank const&, CRGBColour const&, float, EEngine2DLayer, bool); };      // 0x00438570
 struct CGameUI {
-    void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
-                    float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
 struct CGuiResources {
     unsigned char _pad[0x1614c];
@@ -169,7 +170,7 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
         textPos.X -= GetFont()->GetStringWidth(text) * 0.5f;
         C2DVector screen;
         GFACoordToVCoord(textPos, screen);
-        PlayerGui->Draw2DText(C2DVector(screen.X, screen.Y), text, GetFont(), CRGBColour(0xff, 0xff, 0xff, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(0xff)), 1.0f,
+        reinterpret_cast<CPlayerGui*>(PlayerGui)->Draw2DText(C2DVector(screen.X, screen.Y), text, *(GetFont()), CRGBColour(0xff, 0xff, 0xff, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(0xff)), 1.0f,
                               ENGINE_2D_LAYER_TEXT, true);
     }
 }

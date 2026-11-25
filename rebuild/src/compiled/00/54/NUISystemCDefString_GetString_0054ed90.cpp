@@ -41,6 +41,11 @@ class CDefStringTable { public:                         // global scope (naming 
     CCharString GetString(long id) const;               // 0x009D49B0 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
 };
 extern CDefStringTable GDefStringTable;                 // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009A4EC0 ?GFGetSystemManager@@YIPAVCSystemManager@@XZ (was ?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ)
+class CSystemManager;
+CSystemManager* __fastcall GFGetSystemManager();
 namespace NUISystem {
 struct CDefString {
     long Index;
@@ -52,7 +57,6 @@ struct CSystemManager {
     CFontManager*    FontBank;                          // +0x84 (Ego_r.pdb PFontManager, the CCountedPointer<CFontManager>'s Data)
     CFontManager*    GetFontBank() const { return FontBank; }
 };
-CSystemManager* __fastcall GFGetSystemManager();        // 0x009A4EC0
 
 struct CRefCounted {                                    // second base of CDefBase: the count at +4 behind the vptr
     long m_count;
@@ -124,7 +128,7 @@ class CText { public:
 void CText::GetDataFromDef()
 {
     CDefPointer_CUIDef def = LoadAndReturnDef();
-    PFont = GFGetSystemManager()->GetFontBank()->GetFont(def->Font.GetString());
+    PFont = reinterpret_cast<NUISystem::CSystemManager*>(GFGetSystemManager())->GetFontBank()->GetFont(def->Font.GetString());
     Window = def->TextWindow;
     ScaleText = def->ScaleText;
     SetValue(def->TextValue, true, def->TextLineBreak);

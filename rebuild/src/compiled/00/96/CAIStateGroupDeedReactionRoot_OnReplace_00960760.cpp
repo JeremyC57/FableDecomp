@@ -66,7 +66,6 @@ struct CTCDeedReaction {                        // interface 0x4F
     unsigned char _pad10[0x340 - 0x10];
     bool Reacted;                               // +0x340
     bool SpeechReacted;                         // +0x341
-    CWorld* GetWorld();                         // 0x00686A70 (CTCBase)
 };
 struct CTCDeedEffects {                         // interface 0x51
     CDefPointer<CDeedEffectsDef> GetDeedEffectsDef(long deedType) const;   // 0x006C5630
@@ -143,6 +142,11 @@ struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase {
     void OnReplace();
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3; q1: the PDB member keeps its protected / private access and a friend line gives the caller access):
+//   0x00686A70 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (was ?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ)
+struct CAIStateGroup_DeedReactionRoot;
+class CTCBase { protected: CWorld& GetWorld() const; friend struct CAIStateGroup_DeedReactionRoot; };
 void CAIStateGroup_DeedReactionRoot::OnReplace()
 {
     if (DeliveredReaction) {
@@ -162,7 +166,7 @@ void CAIStateGroup_DeedReactionRoot::OnReplace()
                     reaction->Reacted = true;
                     reaction->SpeechReacted = true;
                 }
-                reaction->ReactionFrame = reaction->GetWorld()->GetFrame();
+                reaction->ReactionFrame = (&reinterpret_cast<const CTCBase*>(reaction)->GetWorld())->GetFrame();
                 const CThingCreatureBase* me = GetCreature();
                 if (me->HasTC(0xd7) && ((const CTCTutorial*)me->GetTC(0xd7))->IsActive()) {
                     CThing* target = ThingReactingTo.GetPItem();

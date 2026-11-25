@@ -1,0 +1,4 @@
+includer	includes_row	grade	test	verdict	symbol
+007f0640	007f04c0	RELOCATION_MATCH	PASS	OK	??_GCCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UAEPAXI@Z
+008cfac0	008cf610	RELOCATION_MATCH	PASS	OK	??_GCCreatureAction_TentacleIdle@@UAEPAXI@Z
+008cfb00	008cf7d0	RELOCATION_MATCH	PASS	OK	??_GCCreatureAction_TentacleStrikeOutOf@@UAEPAXI@Z

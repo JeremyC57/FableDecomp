@@ -58,8 +58,11 @@ class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:
     }
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
 class CThingCreatureBase { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 
 class CCreatureAction_UndeadReturnToEarth : public CCombatActionBase { public:
@@ -70,5 +73,5 @@ void CCreatureAction_UndeadReturnToEarth::FinishAction()
 {
     CCombatActionBase::FinishAction();
     if (FramesRunning >= TotalTime)
-        PCreature.GetPItem()->SetCurrentAction(CCreatureAction_UndeadIdleUnderground(PCreature.GetPItem()));
+        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_UndeadIdleUnderground(PCreature.GetPItem()))));
 }

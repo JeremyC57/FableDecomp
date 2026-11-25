@@ -49,6 +49,9 @@ template <class T> class CCountedPointer { public:
         m_pObject = 0;
     }
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662A00 ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (was ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z)
 class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
@@ -59,7 +62,7 @@ class CThingCreatureBase { public:
     virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual void v70(); virtual void v71(); virtual void v72();
     virtual bool HasAnimation(const CCharString& name, bool currentModeOnly);   // slot 73 (+0x124)
-    CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);      // 0x00662A00
+    CAnimationEntry const& GetAnimFromName(CCharString const&, long) const;      // 0x00662A00
 };
 struct CModeBase {
     virtual void v00();
@@ -81,22 +84,22 @@ void CModeStrafe::SetUpCombinationAnims()
     CThingCreatureBase* creature = ParentThing;
     PAnimProjectileAim.Clear();
     if (creature->HasAnimation("PROJECTILE_WEAPON_AIM", true)) {
-        CAnimationEntry* entry = creature->GetAnimFromName("PROJECTILE_WEAPON_AIM", 0);
+        CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName("PROJECTILE_WEAPON_AIM", 0)));
         PAnimProjectileAim.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
     PAnimProjectileBuildUp.Clear();
     if (creature->HasAnimation("PROJECTILE_WEAPON_BUILDUP", true)) {
-        CAnimationEntry* entry = creature->GetAnimFromName("PROJECTILE_WEAPON_BUILDUP", 0);
+        CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName("PROJECTILE_WEAPON_BUILDUP", 0)));
         PAnimProjectileBuildUp.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
     PAnimProjectilePullBack.Clear();
     if (creature->HasAnimation("PROJECTILE_WEAPON_PULLBACK", true)) {
-        CAnimationEntry* entry = creature->GetAnimFromName("PROJECTILE_WEAPON_PULLBACK", 0);
+        CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName("PROJECTILE_WEAPON_PULLBACK", 0)));
         PAnimProjectilePullBack.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
     PAnimStrafeUpperBody.Clear();
     if (creature->HasAnimation("STRAFE_UPPER_BODY", true)) {
-        CAnimationEntry* entry = creature->GetAnimFromName("STRAFE_UPPER_BODY", 0);
+        CAnimationEntry* entry = const_cast<CAnimationEntry*>(reinterpret_cast<const CAnimationEntry*>(&creature->GetAnimFromName("STRAFE_UPPER_BODY", 0)));
         PAnimStrafeUpperBody.Reset(new NAnimationEntryBodge::CAnimEntryLite(*entry));
     }
 }

@@ -5,7 +5,6 @@ struct Inner {
     char pad[0x64];
     Inner* sub; // +0x64
     // external __fastcall method at 0x4bde90: (this, void*, float) -> long
-    long Query(void* p, float f);
 };
 
 // Data symbol (NF415, 2026-11-25): the first argument was the bare VA 0x13bac50; it is the const CCharString
@@ -19,10 +18,14 @@ class CTCTargeted { public:
     Inner* obj;   // +4
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004BDE90 ?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z (was ?Query@Inner@@QAEJPAXM@Z)
+namespace NGraphicAppearance { class CTCGraphicAppearance { public: long GetNoHelperPoints(CCharString const&, float) const; }; }
 long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* targeted)
 {
     Inner* o = targeted->obj->sub;
     if (o)
-        return o->Query((void*)&TARGETING_CURSOR_POSITION_NAME, 1.0f);
+        return reinterpret_cast<const NGraphicAppearance::CTCGraphicAppearance*>(o)->GetNoHelperPoints(*reinterpret_cast<CCharString const*>((void*)&TARGETING_CURSOR_POSITION_NAME), 1.0f);
     return 0;
 }

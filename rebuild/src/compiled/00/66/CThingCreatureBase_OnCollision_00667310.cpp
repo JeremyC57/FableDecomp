@@ -98,8 +98,12 @@ class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { 
                                                  const C3DVector& direction);   // 0x008679C0
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThingGameObject { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
     void OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other);
 };
 
@@ -110,7 +114,7 @@ void CThingCreatureBase::OnCollision(ECollideType type, C3DVector* position, C3D
         const CThingCreatureBase* self = this;
         if (self->GetTC<CTCCreatureModeManager>(0x31)->GetCurrentMode().GetType() == 0x42
             && normal->Dot(C3DVector(0.0f, 0.0f, 1.0f)) < 0.866f)
-            SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdown(*this, other, *position, *normal));
+            SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCombatAction_GenericStrikeResponseKnockdown(*this, other, *position, *normal))));
     }
     if (!Dead && other && !other->Dead && HasTC(0xC8))
         GetTC<CTCHitOnCollision>(0xC8)->OnCollision(position, normal, other);

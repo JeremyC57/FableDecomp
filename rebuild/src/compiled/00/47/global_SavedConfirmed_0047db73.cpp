@@ -48,17 +48,20 @@
 #include "engine/ThingAlive.h"
 
 struct GlobalGui {
-    void Notify();     // __fastcall, no args (masked callee c5)
 };
 
 extern GlobalGui* g_pGlobalGui;  // ds:0x13b8790
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00438310 ?ToggleLiveGui@CPlayerGui@@QAEXXZ (was ?Notify@GlobalGui@@QAEXXZ)
+class CPlayerGui { public: void ToggleLiveGui(); };
 void __fastcall SavedConfirmed()
 {
     CThing* c = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPPlayerCharacterThing();
 
     if (IS_THING_ALIVE(static_cast<CThing*>(c))) {
         c->HasTC(TCI_IN_GAME_MENU);
-        g_pGlobalGui->Notify();
+        reinterpret_cast<CPlayerGui*>(g_pGlobalGui)->ToggleLiveGui();
     }
 }

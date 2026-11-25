@@ -341,8 +341,6 @@ _FreeThing@4	00451b82	00453630
 ??1CLandscapeBackgroundPatch@@QAE@XZ	00453e1a	004549b2
 ?CLandscapeBackgroundPatch_scalar_dtor@@YIXPAUCLandscapeBackgroundPatch@@@Z	00453e51	00454a96
 ?Copy@CMember@@QAEXPBU1@@Z	00453ef1	00454ab2
-?dtor@Inner@@QAEXXZ	00450ba0	00454b4c
-?dtor@Pair@@QAEXXZ	00430300	00454b4c
 ??0CThingBaseDef@@QAE@XZ	006772d0	00454b5f
 ??_7CThingBuildingDef@@6B@	01233144	00454b5f
 ??_7CThingSwitchDef@@6B@	012332cc	00454eff
@@ -1612,7 +1610,6 @@ _GetCellBoundingBox_callee_005ba9f9	005ba9f9	005baeac
 ?allocate@CAllocProxy20@@QAEPAUSRecord20@@KPBX@Z	005c0436	005c2013
 ??0CElement44_005c2086@@QAE@ABU0@@Z	005c2086	005c2929
 ?InsertGrow@CRetailVector_CElement20_005c08e6@@QAEXPAUCElement20_005c08e6@@ABU2@ABUSScalarTag@@K_N@Z	005c276c	005c2996
-?Dtor@AnimPair@@QAEXXZ	005c2739	005c2a8e
 ?InsertGrow@CRetailVector_CElement44_005c2086@@QAEXPAUCElement44_005c2086@@ABU2@ABUSScalarTag@@K_N@Z	005c2c65	005c2d32
 ?OpenInventory@CTCInventoryBase_Weapons@@QAEXXZ	005bd4ea	005c2f27
 ?GetAllInventoryItemsOfType@CTCInventoryBase_Retail@@QAEXJPAUCItemVector@@@Z	005bfa69	005c99be
@@ -1993,7 +1990,6 @@ _helper_65e8b8	0065e8b8	0065f8b2
 ?SetRegionMapExtents@CRegionMinimap_Methods@@QAEXH@Z	0066c630	0066cc40
 ?Uninitialise@CTexture@@QAEXXZ	009f9f70	0066ccf0
 ??_7CBase@@6B@	0123a3e0	0066e734
-?Kill@CThing_0066fb50@@QAEX_N@Z	004c9b80	0066fb50
 ??_7CTCCoopSpirit@@6B@	0125b264	00670050
 ?UpdateLocalJostling@CTCCoopSpirit@@AAEXXZ	0066fb80	00670a10
 ?UpdateMovement@CTCCoopSpirit@@QAEXXZ	00670820	00670a10
@@ -2835,7 +2831,6 @@ _MAX_APOLOGY_SECONDS	0126d7cc	007b29b0
 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z	006644f0	007e80c0
 ?Consume@Consumer@@QAEXPAH@Z	007e8200	007e8140
 ?Erase@CRetailTree_erase007e8fe0@@QAEXPAUnode@1@@Z	007e8fe0	007e99a0
-?Query@Inner@@QAEJPAXM@Z	004bde90	007ea2d0
 ?OnCreate@CTCActionUseBase@@UAEXXZ	007eac10	007eaf20
 ??_7CCreatureAction_PickupGameObject@@6B@	01270c3c	007eb260
 ??_7CCreatureAction_AddRealObjectToInventory@@6B@	01270d5c	007eb2d0
@@ -3074,7 +3069,6 @@ _SpiritHelper	00694d10	008545f0
 ?InitialiseStrikeState@CCombatActionBase@@QAEXXZ	008561c0	00857e40
 ??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@	01237f1c	0085adb0
 ?Destroy_0085b090@@YIXPAX@Z	0085b090	0085b250
-?outer@FableDestVal_0085baf0_t@@QAIXXZ	00859a20	0085baf0
 ??_7CCreatureActionHeroRunningStop@@6B@	012767ec	0085bd20
 ?FinishAction@CCombatActionBase@@UAEXXZ	00859a20	0085c120
 ??_7CCombatAction_ControlledStrafeJump@@6B@	01276974	0085c360
@@ -3282,8 +3276,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?g_gameObj@@3PAUGameObj@@A	013b8790	00891c30
 ?Show@Target@@QAEXHHH@Z	00654593	00891c60
 ?method@Inner@@QAEXHHH@Z	00644efd	00891c80
-?GetTicks@CStopWatch@@QBEPAX_K@Z	0051ed80	00891d50
-?WrapForScript@CGSIGetThingWithUID_Thing@@QBE?AVCScriptThing@@XZ	004c7e50	00891d50
 ??8CDefString@@QBE_NABVCCharString@@@Z	004b7980	00891db0
 ?GetMiniMapDisplay@CGameUI_Retail@@QAEPAUCMiniMapDisplay_Retail@@XZ	00437ce0	00891f50
 ?SetMarkerGraphic@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z	0082a340	00891fa0
@@ -3490,10 +3482,8 @@ _FableSpellWrap_880200@4	006af630	00880200
 ??0CCreatureAction_ScorpionChargeInto@@QAE@ABV0@@Z	008c5d40	008c5d10
 ??0CQuickAccessItemButtonGuiDef@@QAE@ABU0@@Z	008c5dc0	008c5d90
 ??_7CCreatureAction_WaspQueenDiveAttack@@6B@	01281304	008c5ed0
-?base@Fable_TrollInit_008c5fd0@@QAIXXZ	00857520	008c5fd0
 ?DoBase@CCreatureAction_TrollAngryGroundPound_Methods@@QAEXXZ	008c61c0	008c63a0
 ??_7CCreatureAction_TrollThrowProjectile@@6B@	01281694	008c7390
-?BaseOnAnimationLoaded@CCreatureAction_Base@@QAEXXZ	00859ef0	008c7f40
 ??_7CCreatureAction_BanditKingThrowWeapons@@6B@	0128193c	008c7fd0
 ??_7CCreatureAction_BanditKingStuckGetHit@@6B@	01281ee4	008c91b0
 ??_7CCreatureAction_BanditKingStuck@@6B@	01281c54	008c94d0
@@ -7206,7 +7196,6 @@ __imp__SleepEx@8	0143fddc	0098f1e0
 ?RandomiseMovementSpeed@CThingAICreature@@QAEXPAM@Z	00830260	00830dd0
 ?Stop@CBaseFilter@@UAGJXZ	00caab30	00ca66d0
 ?WaitForReceiveToComplete@CBaseRenderer@@QAEXXZ	00ca47d0	00ca66d0
-?GetFrame@CMainGameComponent@@QAEJXZ	00416225	007e5230
 ?Open@CManager@NHeroInformationScreens@@QAEXXZ	0066ea46	0049f3f0
 ??0CVertexStreamFormat@@QAE@XZ	00ab37f0	00a90560
 ?AddDataElement@CVertexStreamFormat@@QAEXKW4EVertexStreamDataType@@@Z	00ab3810	00a90560
@@ -7432,7 +7421,7 @@ _wcscmp	00bfe94c	004fdab0
 ??0CActionMoveTo@NTCScriptedControl@@QAE@PAUCThing_Retail@@JM_N11111@Z	009051f0	00903e20
 ??_7CThingCreatureBase@@6B@	0125ac0c	00666090
 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ	00a14480	0066fb80
-?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z	004498c0	0066fc90
+?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z	004498c0	0083c690
 ?g_CoopSpiritAttractionDelay@@3MA	0137ea20	006701a0
 ?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z	006b3950	0078f6e0
 ??_7CTCPhysicalShieldSpell@@6B@	0126c53c	0079e990
@@ -7550,7 +7539,6 @@ _wcsrchr	00bfedb2	009a5340
 ?CreateDefaultWeapons@CThingCreatureBase@@IAEXXZ	00664680	00833a70
 ?InitialiseFromDef@CThingAICreature@@IAEXXZ	008338d0	00833a70
 ?OnCreate@CThingCreatureBase@@MAE_NXZ	00666310	00833a70
-?ValidateInitialisation@CThingCreatureBase@@QAE_NXZ	006a4d60	00833a70
 ?CanBeHitByMeleeStrike@CTCMeleeHittable@@QBE_NXZ	007befa0	00857250
 ??_7?$CSpawnedFunc0@UCTestTheInventoryScript@@@@6B@	012f59ac	00eeed20
 ?TestForLampOn@CTestTheInventoryScript@@QAEXXZ	00eeec00	00eeed20
@@ -7620,7 +7608,6 @@ __CIacos	00bfeba2	0084cdf0
 ?UpperBound@CControlMap@@QBEPBUSControlEntry@@ABW4EGameAction@@@Z	00447ce0	00445cb0
 ?SortExpressionPairs@@YIXPAUSExpressionPair@@0USExpressionCompare@@@Z	0081e030	0081b300
 ?resize@CExpressionPairVector@@QAEXKABUSExpressionPair@@@Z	0081d920	0081b300
-?PeekDefinitionManager@CEngine_Retail@@QBEABUCDefinitionManager_Retail@@XZ	00415fbc	008981c0
 ?SetScriptTargetOverride@CTCTargetingAI@@QAEXPAUCThing_Retail@@@Z	008abba0	008a0260
 ?GetFollowers@CTCFollowed_Retail@@QAEXAAUCThingVector@@@Z	006d5850	008a80f0
 ?reserve@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXI@Z	008acd30	008a8570
@@ -7797,12 +7784,12 @@ _wcsncmp	00bfeb0a	004071c0
 ?SetAsDrawable@CTCEmoteIcon@@QAEX_N@Z	0071ac20	004c8e50
 ?SetAsDrawable@CTCParticleAttachmentTracker@@QAEX_N@Z	0071a8a0	004c8e50
 ?SetAsDrawable@CTCThingOwner@@QAEX_N@Z	0071b2d0	004c8e50
-?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ	009a4ec0	0054ed90
+?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ	009a4ec0	0042ec7c
 ?g_AppearanceCategoryPriority@@3QBJB	0125ed00	006ced50
 ?Activate@CLightningBeam@@QAEXXZ	007a1380	007a16f0
 ?SetAsPickUpNewLockTarget@CTCTargetingPlayer@@QAEXXZ	008023a0	007a16f0
 ?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	006c5920	007baf00
-?PeekThingSearchTools@CThingCreatureBase@@QBEABVCThingSearchTools@@XZ	004c7a60	00834760
+?PeekThingSearchTools@CThingCreatureBase@@QBEABVCThingSearchTools@@XZ	004c7a60	00666d40
 ?UpdateMovement@CThingAICreature@@IAEXM@Z	008326a0	00834760
 ?g_CombatStressTestEnabled@@3_NA	013b86d5	00834760
 ??_7CTCWillLightning@@6B@	0126c724	007a07f0
@@ -8975,7 +8962,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?SetBypassScreenFilter@CEnvironmentSpellEffectInterfaceMethods@NRemap006a23e0@@QAEXAAUvector@2@H@Z	006b83e0	006a23e0
 ?GetAllCarriedThings@CTCCarrying@NRemap006a23e0@@QAEXAAUObjects@2@@Z	006a2220	006a23e0
 ?GetPItem@CBaseIntelligentPointer@NRemap006a23e0@@QBEPAUObject@2@XZ	00a01b50	006a23e0
-?GetWorld@CTCCarrying@NRemap006a23e0@@QAEPAUCWorld@2@XZ	00686a70	006a23e0
 ?SetPItem@CBaseIntelligentPointer@NRemap006a23e0@@QAEXPAUObject@2@@Z	00a01b90	006a23e0
 ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z	006a06e0	006ac910
 ??0CThingPlayerCreature@NFactory006ac910@@QAE@XZ	0052ab20	006ac910
@@ -9613,7 +9599,6 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ??0?$CPersistTraits@VCBrainBehaviour@@@@QAE@XZ	004670f5	00467090
 ?TransferBinaryIn@?$CPersistTraits@VCBrainBehaviour@@@@QAEXPAUCMemoryDataInputStreamReader@@PAVCBrainBehaviour@@@Z	004671ca	0046712b
 ?resize@?$vector@VCBrainBehaviour@@@std@@QAEXIABVCBrainBehaviour@@@Z	0046728d	0046712b
-?TransferBinaryOut@CBlendedParticleEffectSet@@QBEXAAUCDataOutputStreamWriter@@@Z	00469345	00469309
 ??0CSoundBankEntry@@QAE@XZ	0046aade	0046aa91
 ??0CAnimationEntry@@QAE@ABV0@@Z	00471954	0047197a
 ??4CAnimationEntry@@QAEAAV0@ABV0@@Z	00471a09	004719ce
@@ -13964,7 +13949,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GFSerialiseVectorBinaryIn_CBrainBehaviou_0046712b@@YIXPAVCMemoryDataInputStream@@PAUSValue@@@Z	0046712b	00467062
 ?GFSerialiseVectorBinaryOut_CActionInputC_00467090@@YIXPAVCDataOutputStream@@PAUSValue@@@Z	00467090	00467062
 ?SetString@CDefString@@QAEXABVCCharString@@@Z	009d5060	004670f5
-?TransferBinaryIn@CDefString@@QAEXAAVCMemoryDataInputStream@@@Z	0044fc00	0046b545
 ?resize@?$vector@VCRGBColour@@@std@@QAEXIABVCRGBColour@@@Z	00468fa5	00468f15
 ?_M_insert_overflow@?$vector@VCRGBColour@@@std@@QAEXPAVCRGBColour@@ABV3@ABU__false_type@2@I_N@Z	0046916b	00469012
 ?uninitialized_fill_n@std@@YIPAVCRGBColour@@PAV2@IABV2@@Z	00469149	00469012
@@ -14632,7 +14616,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??R?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@QBE_NABVCThing@@@Z	004aa6c0	0065f6da
 ?LowerBound@?$CVectorMap@KVCSoundPair@@V?$CKeyPairCompareLess@KVCSoundPair@@@@@@QBEPBU?$pair@KVCSoundPair@@@@ABK@Z	0065e412	0065fba4
 ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard@@QBE_NABVCOpinionDeed@@@Z	00681750	006610c7
-?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ	004c7ab0	006619f0
+?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ	004c7ab0	00693030
 ?CThingCreatureBase_GetCombatBase@@YIPAXPAVCThingCreatureBase@@@Z	004c7aa0	00661ed0
 ??0CCreatureInteraction@@QAE@W4ECreatureInteractionType@@AAVCThingCreatureBase@@@Z	00863200	00662970
 ?Reset@CInteractionPointer@@QAEXPAVCCreatureInteraction@@@Z	00669440	00662970
@@ -14738,7 +14722,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CInputProcessGameBase@@QAE@ABVCInputProcessGameBaseInit@@@Z	00687a30	006a9140
 ?GetDisplayEngine@CThingPlayerCreature@@QAEPAVCDisplayEngine@@XZ	004c7ab0	006a9640
 ?InitialiseMovementSpeed@CThingCreatureBase@@QAEXPAMABVCCharString@@@Z	00663510	006a9b70
-?GetPlayerManager_004c79f0@CThingPlayerCreature@@QAEPAVCPlayerManager@@XZ	004c79f0	006a9d10
 ?GetBlockValue@CWorldMap@@QAEJABVC2DCoordI@@@Z	0063a6e0	006b1580
 ?Build@CEnvironmentThemeResourcePallette@NEnvironmentInternal@@QAEXABVCGameDefinitionManager@@ABVCEnvironmentDef@@ABUCEnvironmentLookupTexture@2@@Z	00888a60	006b3350
 ??0CEnvironmentSpellEffectInterface@@QAE@PAVCEnvironment@@@Z	008852e0	006b4900
@@ -15216,16 +15199,13 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CScriptedMapBrush@@QAE@ABV0@@Z	00827040	00820f80
 ??0CScriptedMapBrush@@QAE@ABVC2DBoxI@@@Z	0082e600	00820f80
 ?RegisterScriptedMapBrush@CWorldMap@@QAEXJPAVCScriptedMapBrush@@@Z	004ff900	00820f80
-?AddAutoMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z	0082a500	0082add0
 ?InitialiseRegionMinimapSize@CRegionMinimap@@QAEXPAVCWorldMap@@PAVCRegion@@@Z	0066cc40	0082ba00
 ?find@CCharStringLongMap@@QAEPAUSGraphicNode@@ABVCCharString@@@Z	0042b467	0082ba00
 ?PrepareForDraw@CTCGraphicAppearance@@QAEXPAVCEnginePrimitivePrepareInfo@@@Z	004be4e0	0082d080
-?GetPlayerManager@CThingBuilding@@QAEPAVCPlayerManager@@XZ	004c79f0	0082d1d0
 ?ForceReset@CAIBrain@@QAE_NPAVCBrainOutput@@@Z	0088ba40	008326a0
 ?UpdateAI@CThingAICreature@@QAE_N_NPAVCBrainOutput@@PAVC3DVector@@@Z	006d5d30	008326a0
 ?UpdateBrain@CThingAICreature@@QAE_NJPAVCBrainOutput@@@Z	006d5a90	008326a0
 ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@UCAIBrainDef@@@@@Z	0079bd80	00833a70
-?GetDefinitionManager@CThingCreatureBase@@QAEPAVCDefinitionManager@@XZ	004c7990	00833a70
 ?GetCamera@CThingCreatureBase@@QBEPAVCCamera@@XZ	004c7aa0	00834760
 ?PrepareForDraw@CTCGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	004be4e0	00835ac0
 ?ConstructFromParams@CThingSoundEmitter@@IAE_NABVC3DVector@@PBVCThing@@_N@Z	00836910	008369f0
@@ -15267,7 +15247,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ	004069e0	00851770
 ?SetUpTransitionCamera@CScriptModuleTransitionBetweenPoints@NCameraModes@@QAEXABVC3DVector@@000JM@Z	00851ed0	008524c0
 ?CCreatureActionBase_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z	00694d10	008546a0
-?GetPossibleCombatAnimations@CThingCreatureBase@@QAE_NABVCCharString@@AAUCAnimationEntryVector@@@Z	006668a0	00855500
 ??0CCreatureAction_BlockBase@@QAE@ABV0@@Z	00855ee0	00855e80
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	008569c0
 ?SetAnimation@CCombatActionBase@@QAEXPBVCAnimationEntry@@MM@Z	00693030	00856ac0
@@ -15390,7 +15369,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetNullScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@XZ	00704730	008d0610
 ?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABV?$CFilter_Bind2@UCIsEventCreatedAfter@@UCIsEventCreatedBeforeOrOn@@@@@Z	008d47a0	008d0fb0
 ?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABV?$CFilter_Bind3@UCIsEventCreatedAfter@@UCIsEventCreatedBeforeOrOn@@UCIsHitEventHitByThingWithScriptName@@@@@Z	008d4840	008d0fb0
-?GetDefinitionManager@CThingNative@@QBEPAVCDefinitionManager@@XZ	004c7990	008d1130
 ?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABV?$CFilter_Bind4@UCIsHitEventHitByThingWithScriptName@@UCEventFilter_HitEventWithNoWeapon@@UCIsEventCreatedBeforeOrOn@@UCIsEventCreatedAfter@@@@@Z	008d48f0	008d1130
 ?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABV?$CFilter_Bind4@UCIsHitEventHitByThingWithScriptName@@UCEventFilter_HitEventWithWeapon@@UCIsEventCreatedBeforeOrOn@@UCIsEventCreatedAfter@@@@@Z	008d49b0	008d1130
 ?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABV?$CFilter_Bind4@UCIsHitEventHitByThingWithScriptName@@UCEventFilter_HitWithDecapitate@@UCIsEventCreatedBeforeOrOn@@UCIsEventCreatedAfter@@@@@Z	008d4b50	008d1440
@@ -15498,7 +15476,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	008fcfa0	00910d50
 ?GetPGuardTarget@CThingGuard@@QAEPAVCThing@@XZ	0082fec0	00911630
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	00911a00
-?SetAttackedByCreature@CThing@@QAEXPAV1@@Z	006624f0	00911c20
 ??$GetPFirstThing@V?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@VCThingAICreature@@@CThingSearchTools_Methods@@QAE_NABV?$CFilter_Bind2@VCThingFilter_IsNot@@VCThingFilter_IsChild@@@@PAPAVCThingAICreature@@@Z	00914aa0	00914c60
 ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	008fcfa0	00914c60
 ?IsPreferredIdle@CTCIdleScheduler@@QAE_NPAVCAIStateGroupBase@@@Z	00801be0	00914c60
@@ -15596,7 +15573,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	008fcfa0	0095e350
 ??RCMessageEventFilter_IsMyDeadLeader@@QBE_NABVCMessageEvent@@@Z	006af3f0	0095e6d0
 ?GetDeedEffectsDef@CTCDeedEffects@@QBE?AV?$CDefPointer@UCDeedEffectsDef@@@@J@Z	006c5630	00960760
-?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ	00686a70	00960760
 ?GetPPlayerManager@CAIStateGroup_BanditKingCharge@@QAEPAVCPlayerManager@@XZ	008fcf90	009612f0
 ?GetPPlayerManager@CAIStateGroup_BanditKingThrowWeapons@@QAEPAVCPlayerManager@@XZ	008fcf90	00961550
 ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z	004a96f0	00961e80
@@ -16145,7 +16121,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z	00704580	00cf8970
 ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z	007e73d0	00d08790
 ?Add@CQ_BountyHuntScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00d167c0
-?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z	00cbfb7d	00d246c0
+?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z	00cbfb7d	00d823a0
 ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z	004abe90	00d2c530
 ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z	00cbe716	00d2c530
 ?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z	00cbe2ff	00d2c530
@@ -20361,7 +20337,6 @@ _floor0_map_lazy_init@12	00ca36e0	00ca39c0
 ??$GetSubDef@VCOverheadDisplayDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOverheadDisplayDef@@@@@Z	007b7f50	007b7b60
 ?ChangeMode@CTCCreatureFlyInCircles@@IAEXXZ	007ddcc0	007de030
 ?CheckForHits@CTCCreatureFlyInCircles@@IAEXXZ	007dd990	007de030
-?GetWorldMap@CTCCreatureFlyInCircles@@QAEPAVCWorldMap@@XZ	00686d30	007de030
 ?PlayLoopAnim@CTCCreatureFlyInCircles@@IAEXXZ	007ddda0	007de030
 ?UpdateFlight@CTCCreatureFlyInCircles@@IAEXAAVC3DVector@@0@Z	007dd270	007de030
 ?UpdateSwoop@CTCCreatureFlyInCircles@@QAEXAAVC3DVector@@0@Z	007dd540	007de030
@@ -25223,7 +25198,6 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ??0CCreatureEntry@@QAE@XZ	00f27650	00f274d0
 ??1CCreatureEntry@@QAE@XZ	00f270d0	00f274d0
 ??_7?$CPersistContext_TransferableVector@VCCreatureEntry@@@@6B@	012fb570	00f274d0
-?TransferSubComponentVectorLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z	009bc120	00f274d0
 ?resize@?$vector@VCCreatureEntry@@@@QAEXJABVCCreatureEntry@@@Z	00f27710	00f274d0
 ??_7?$CPersistContext_TransferableVector@VCWaveRecord3C@@@@6B@	012fb598	00f27ea0
 ?resize@?$vector@VCWaveRecord3C@@@@QAEXJ@Z	00f280a0	00f27ea0
@@ -25681,9 +25655,7 @@ _MusicFadeTimes	0137fae8	006bd9b0
 ?CreateShot@@YIPAVCThing@@JPAV1@00MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@PAVC3DVector@@PAVCRightHandedSet@@@Z	007c0ad0	008c6430
 ?GetPlayer@CPlayerManager@@QBEPBVCPlayer@@J@Z	00449910	0083c690
 ?GetPlayerManager@CThing@@QAEPAVCPlayerManager@@XZ	004c7a00	0083c690
-?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ	004c79f0	0083c690
 ?GetDef@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCThingSwitchDef@@@@@Z	0083cfa0	0083cc10
-?GetDefinitionManager@CThing@@QBEPAVCDefinitionManager@@XZ	004c7990	0083cc10
 ??_7CEventOpenedChest@NEntityEvents@@6B@	01274258	008448e0
 ??0CEventShownItem@NEntityEvents@@QAE@PAVCThing@@0@Z	0084aee0	00845270
 ?SetHasInformation@CThingAICreature@@QAEX_N000@Z	00830eb0	00846660
@@ -26029,7 +26001,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ?GetGroundFaceNormalAt@CWorldMap@@QBE?AVC3DVector@@ABV2@@Z	0063ab10	00880220
 ?GetWorldMap@CTCPhysicsBase@@IBEABVCWorldMap@@XZ	006af630	00880220
 ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0051e210	0088ae40
-?AddTC@CThingNative@@QAEPAVCTCBase@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	004c9d60	0089c560
 ?PostDeed@OpinionSourceMethods@@QAEXJM@Z	007712f0	0089c560
 ?CreateShot@@YIPAVCThing@@PAV1@000MMMPAU?$CAbilityPointer@VCMeleeCombatAbilityDef@@@@J@Z	007c0e80	008c89d0
 ?EnableNavigator@CTCPhysicsNavigator@@QAEX_N@Z	007bed30	008c89d0
@@ -26657,13 +26628,11 @@ __imp___strupr	0144002c	00c0c910
 ?Alloc@CPSCSpline@NParticleEngine@@SIPAVCPSCBase@2@XZ	00af8090	00af8170
 ?Alloc@CPSCUpdateNormal@NParticleEngine@@SIPAVCPSCBase@2@XZ	00af7e60	00af8170
 ?InitPerlinNoise@CNoise@NFractal@@AAEXXZ	00f35e00	00f36ba0
-?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	0064499c
+?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	00646a46
 ?GetTextFromEmbeddedTagGraphic@CSubtitleRenderer@@QBE?AVCWideString@@J@Z	0048df77	0048f230
 ?GetTextOffsetFromEmbeddedTagGraphic@CSubtitleRenderer@@QBEABVC2DVector@@J@Z	0048dc3c	0048f230
 ?push_back@CMessagePtrList@@QAEXABQAVCMessageEvent@@@Z	00493d16	00493eab
 ?SetAsGameStatePersisted@CThing@@QAEX_N@Z	004c7880	004b2490
-?GetMinPlayerDistanceFromMap@CWorldMap_Methods@@QAEJJ@Z	004fcb30	004ff390
-?UnloadLevel@CWorldMap_Methods@@QAEXJ@Z	004fede0	004ff390
 ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	005dc340	00730c00
 ?GetSubDef@CThingBaseDef@@QBE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z	0042b0a2	005b37f7
 ?UploadChangesToGraphics@CTCHeroAttachableAppearanceModifiers@@QAEXXZ	00707930	005b37f7
@@ -26836,7 +26805,6 @@ _g_LookAtTurnSpeed	0138cba8	0092ace0
 ?GetMeleeHitParameters@CThingGameObject@@QBEXPAVCHitLocation@NHitLocations@@AAVCThing@@PAV4@ABVC3DVector@@3AAVCHitParameters@@@Z	00838bc0	007cce20
 ??$GetPFirstThing@VCThingFilter_HasDefName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasDefName@@PAPAVCThing@@@Z	007e6ec0	007e5d20
 ??$GetPFirstThing@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z	0056d050	007e5d20
-?GetPlayerManager@CTCOracleMinigame@@QAEPAVCPlayerManager@@XZ	00686d40	007e5d20
 ?g_FireheartMarkerNames@@3PAY03VCCharString@@A	013baeb0	007e78e0
 ?PerformStrikeDamage@CTCKrakenTentacle@@AAEXXZ	007f11d0	007f14f0
 ?TrackTarget@CTCKrakenTentacle@@AAEXXZ	007f0c70	007f14f0
@@ -27783,7 +27751,6 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?DeleteData@?$CCountedPointer@VC3DQuadricBasedMeshOptimiser@@@@SIXPAX@Z	00a28510	00a29f50
 ?DeleteData@?$CCountedPointer@VC3DMeshStripifier@@@@SIXPAX@Z	00a28520	00a29fc0
 ?Reset@?$CCountedPointer@VCSurface@@@@QAEXPAVCSurface@@@Z	00ab5e80	00ab5390
-?ResolveMousePrimitiveHierarchy@@YAPAUCMousePrimitiveHierarchy@@XZ	009a4ec0	00ab5390
 ?DeleteData@?$CCountedPointer@VCSurface@@@@SIXPAX@Z	00ab5df0	00ab5e80
 ?CreateComponent@CPSCFactory@NParticleEngine@@QAEPAVCPSCBase@2@ABVCCharString@2@@Z	00af28c0	00af4530
 ?Get@CPSCFactory@NParticleEngine@@SAPAV12@XZ	00aeab00	00af4530
@@ -31366,7 +31333,6 @@ __imp__GetUserDefaultLCID@0	0143fe58	00a0d980
 ?IsAbleToUseAbility@CTCInventoryAbilities@@QBE_NW4EHeroAbility@@_N@Z	005ee49a	005eea9b
 ?ToggleUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z	0072ac90	005eea9b
 ?UseSpecialAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z	0072cf40	005eea9b
-?DrawButton@CDrawAbilityButtonsPC@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@PAVC2DVector@@MJJ_NW4EEngine2DLayer@@@Z	00645099	00658020
 ?GetExpressionButtonTypes@CDrawAbilityButtonsPC@NPlayerGui@@QAEXAAULongVector@@@Z	00657c80	00658020
 ?size@ButtonVector@@QBEJXZ	0043cac0	00658020
 ?GetRunningNumHits@CTCHeroExperience@@QBEJXZ	006d63a0	006d7f20
@@ -32015,7 +31981,6 @@ _lzo1x_999_compress	00c08130	00a99840
 ?GetSoundVolume@CUserProfileManager@@QBEMXZ	0047cfc2	0054bbb0
 ?GetTextureDetail@CUserProfileManager@@QBEMXZ	0054a530	0054bbb0
 ??0Pointer@RetailUI@@QAE@PAUComponent@1@@Z	00429c15	005518e0
-?CreateComponent@Manager@RetailUI@@QAEPAUComponent@2@K@Z	0041d21b	005518e0
 ?Grow@ChildrenVector@RetailUI@@QAEXPAUPointer@2@ABU32@ABUTag@2@K_N@Z	005359d0	005518e0
 ?CreateComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@@Z	00594f94	00596a68
 ?ClipBox@CEngineCamera@@QBE_NABVCMatrix3x4@@@Z	00b30610	00b242a0
@@ -32309,10 +32274,8 @@ _wcscpy	00bfed76	00999850
 ?EnterGame@CTCTavernGame@@QAEXXZ	005ec0f0	007d7fd0
 ?GetSubDef@CDefClassBaseT@@QBE_NPAV?$CDefPointer@$$CBVCKrakenTentacleDef@@@@@Z	007f16b0	007f08b0
 ?HasWaterAt@CMap@@QAE_NABVC2DCoordI@@@Z	0081fb00	0081fcc0
-?GetDefinitionManager@CThingBuilding@@QBEPAVCDefinitionManager@@XZ	004c7990	0082d3b0
-?GetWorld@CThingBuilding@@QBEPAVCWorld@@XZ	004c7ab0	0082d3b0
 ?Died@CTCWife@@QAEXXZ	006d0020	00832e60
-?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ	004c7990	00832e60
+?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ	004c7990	008cb780
 ?Murdered@CTCWife@@QAEXXZ	006d00a0	00832e60
 ??0CCreatureAction_ScorpionTailWithdraw@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008e45b0	008df510
 ??$_M_insert_overflow@U__true_type@@@?$vector@PBVCCharString@@@@QAEXPAPBVCCharString@@ABQBV1@ABU__true_type@@I_N@Z	00916d50	00917130
@@ -32376,7 +32339,6 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?ReceivePayment@CAIStateGroup_TavernKeeper@@QAE_NXZ	009692c0	00969470
 ?UpdateEmote@CAIStateGroupBehaviourBase@@IAE_NXZ	00957a20	0096f050
 ?SetUpPreCalcNav@CAIStateGroupBase@@IAE?AVC3DVector@@ABVCThing@@@Z	0097f5b0	0097f780
-?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ	009a4ec0	004022b0
 ?GFGetBuildNumber2@@YAXXZ	00401f30	004022b0
 ?GFInitialise_SetupProgressDisplay@@YIEPAUGFInitialiseState@@@Z	00413120	004022b0
 ?GPDisplayManager@@3PAVCDisplayManager@@A	013b8390	004022b0
@@ -32522,7 +32484,7 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ?GetFreeSlot@CTCObjectAugmentations@@QBEJXZ	00765d50	005c44fa
 ??$GetDef@VCThingObjectDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingObjectDef@@@@@Z	0042b040	005e4430
 ??4CBoastList@@QAEAAU0@ABU0@@Z	005e9630	005e4430
-?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z	0041db1d	005e4430
+?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@_N@Z	0041db1d	005aecc0
 ?GetSuccessSummary@CTCQuestCard@@QBE?AVCWideString@@XZ	00702630	005e4430
 ??1C3DAnimationInterpolator@@QAE@XZ	004c2e90	00bd9250
 ??1CThemeChannelVector@@QAE@XZ	007099e0	00709b10
@@ -33091,7 +33053,6 @@ __imp__recvfrom@24	01440518	008f9320
 ?Update@CTCTalk@@QAEXAAVCAnimateThing@@ABVCAnimateThingUpdate@@@Z	006e3b90	00665860
 ?g_QuickAccessChargeSlot@@3JA	0137ee78	0068e3c0
 ??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@ABV1@@Z	006babd0	006baed0
-?GetFrame@CWorld@@QAEJXZ	00416225	006e2dc0
 ?g_bDebugHelpers@@3_NA	013756e9	007254b0
 ??$GetAllThingsInRoughArea@$$CBVCThing@@V?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_HasPhysicsMesh@@VCThingFilter_RadiusIntersectsInfiniteLine@@VCThingFilter_IsNot@@@@AAV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@@Z	00746560	00745120
 ?AddPerceivingThing@CPlayerGui@@QAEXAAVCThing@@@Z	004378f0	00745120
@@ -34691,7 +34652,7 @@ _kRadiansPerHz	012bed78	00c6c000
 ??0CCreatureAction_CastAssassinRush@@QAE@AAVCThingCreatureBase@@JV?$CCountedPointer@VCCreatureActionBase@@@@@Z	008ce100	0072caa0
 ??0CCombatAction_WillForcePushInto@@QAE@AAVCThingCreatureBase@@@Z	008c38b0	008c2810
 ?GetSubDef@CDefClassBase@@QBE_NAAUCMazeBattleDefPointer@@@Z	008c3510	008c2810
-?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z	006644f0	008c2810
+?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z	006644f0	00858cc0
 ??$_M_insert_overflow@UTag@NFoot008f7bd0@@@?$vector@USVectorParam@NFoot008f7bd0@@@NFoot008f7bd0@@QAEXPAUSVectorParam@1@ABU21@ABUTag@1@HH@Z	0076ada0	008f7bd0
 ??$_M_insert_overflow@UTag@NFoot008f7bd0@@@CThingVector@NFoot008f7bd0@@QAEXPAPAUCThing@1@ABQAU21@ABUTag@1@HH@Z	00436ac0	008f7bd0
 ??0CBaseClass@NFoot008f7bd0@@QAE@XZ	0099a2d0	008f7bd0
@@ -35276,7 +35237,6 @@ _sc_fDefaultShortReverbCrossfeedGainMatrix	012bf088	00c75ce0
 ?GetTimeToBlendIn@CAnimationEntry@@QBEJPBVCThing@@@Z	005dc230	00862780
 ?IsUsingUnarmedCombatIdle@CTCCombat@@QBE_NXZ	00733100	00862780
 ?ResetTransistionAnimationModes@CAnimateThing@@QAEXW4EAnimUpdateMode@@0@Z	0070c0a0	00862780
-?GetRandomLoadedAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@_N@Z	00662fa0	008d6da0
 ?GetTimeToBlendIn@CAnimationEntry@@QAEJPAVCThing@@@Z	005dc230	008d6da0
 ?GetBlockingAnimationEntry@CTCCombat@@QBEPAVCAnimationEntry@@XZ	00733690	008d8dd0
 ?CalcSWLightingNoClip@CEngineLightingManager@@QAEXABVC3DVector@@0ABVCEngineLocalLightArray@@AAVCRGBFloatColour@@@Z	00b45cf0	00b99300
@@ -36160,7 +36120,6 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ?WEAPONS_SUBTITLE@?A0x69cbc62b@@3VCCharString@@A	013b8b70	005af64e
 ?OnVillageKilled@CTCInterface243@@QAEXXZ	007e2780	0065b0b4
 ?CreateFish@CTCFishing@@QAE_N_N@Z	007b1a30	007b1eb0
-?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z	0082a500	0082a960
 @Hero_CheckChild@4	00661f70	008902b0
 ?PlayGame@CTCOracleMinigame@@QAEXXZ	007e5d20	00895b60
 ?CancelAbilitiesForCutscene@CTCSpecialAbilities@@QAEXXZ	0072bc60	0089d690
@@ -36569,7 +36528,6 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512210	00730070
 ?SetWorkBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z	00512260	00730070
 ?CalcIsStallLike@CTCShop@@QAE_NXZ	007729a0	00775b20
-?AutoPlaceNear@CThingAICreature@@QAEXABVC3DVector@@M@Z	00665df0	00783380
 ?AutoSetupSexuality@CThingAICreature@@QAEXM@Z	008330d0	00783380
 ?BOASTING_CROWD_MEMBER_SCRIPT_NAME@?A0xf46e21ba@@3VCCharString@@A	013bade8	00783380
 ?LowerBound@CTCMap@@QAEPAUSTCEntry@@ABK@Z	0040f020	007e5230
@@ -36866,7 +36824,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?g_pGameScriptInterfaceInstance@@3PAVCGameScriptInterface@@A	0143e8f0	006e7740
 ??_7CPhysicsSnapshot@@6B@	0125c818	00714730
 ?AddTC@CThing@@QAEXABVCCharString@@_NABVCPhysicsSnapshot@@@Z	004c9d60	00714730
-?Clone@CTCPhysicsBase@@QAEPAV1@XZ	00686fa0	00715710
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCAppearanceDef@@@@@Z	0042b0a2	00779d20
 ??_7CMap@@6BCBaseClassNonCopyable@@@	01272524	00820cc0
 ??_7CMap@@6BCIDrawMap@@@	0127252c	00820cc0
@@ -37238,7 +37195,7 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ??0CActiveEntityScriptBase@ExternalRetry_00ce0ef0@@QAE@PAXIII@Z	00ce1110	00ce0ef0
 ??_7CActiveEntityScript@ExternalRetry_00ce0ef0@@6B@	012c3578	00ce0ef0
 ??1CScriptThingVector@@QAE@XZ	008ac970	00d1cac0
-?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z	00cbed00	00d1cac0
+?AreAllThingsInVectorDead@@YI_NABUCScriptThingVector@@@Z	00cbed00	00def3b0
 ??1CScriptGameResourceObjectMovieFull@@UAE@XZ	006e7b80	00d37530
 ?GetSquaredDistanceBetweenThings@@YIMABVCScriptThing@@0@Z	00cbe583	00d37530
 ?g_fSixteen@@3MB	01238164	00d37530
@@ -37569,7 +37526,6 @@ _sc_DefaultReflectionData	012bf0e0	00c77b30
 ?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z	006e97f0	006ea050
 ?GetCombatSequences@CCombatManager@@QAEXPAVCThingCreatureBase@@0PAUCSequenceVector@@@Z	006ec4f0	006eda80
 ?SetAsInDanger@CTCStealth@@QAEXPAVCThingCreatureBase@@W4EDangerStatus@@@Z	00747b80	006eda80
-?Notify@GlobalGui@@QAEXXZ	00438310	0047db73
 ?g_pGlobalGui@@3PAUGlobalGui@@A	013b8790	0047db73
 ?DeregisterAttackedCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@@Z	006ed8c0	006ed510
 ?ResetAiming@CTCWeapon@@QAEXXZ	005da4e0	006ed510
@@ -38730,3 +38686,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ	00793cb0	00868b40
 ?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	0074ac80	0089ec60
 ?Validate@CClassFactory@@QAEXXZ	00a36fe0	006e72a0
+?TransferBinaryOut@CBlendedParticleEffectSet@@QBEXAAVCDataOutputStream@@@Z	00469345	00469309
+?GetPossibleCombatAnimations@CThingCreatureBase@@QBE_NABVCCharString@@AAV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z	006668a0	00855500

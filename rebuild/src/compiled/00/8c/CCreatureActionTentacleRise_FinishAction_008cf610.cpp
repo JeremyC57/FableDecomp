@@ -34,8 +34,12 @@ class CSoundPair { public:
 };
 
 class CCombatActionBase;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006644F0 ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (was ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCombatActionBase@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+    bool SetCurrentAction(CCreatureActionBase const&);   // 0x006644F0
 };
 
 class CBaseObject;
@@ -77,5 +81,5 @@ void CCreatureAction_TentacleRise::FinishAction()
         modeManager->RemoveMode(0x54);
     GetInterface9()->m_flag10 = true;
     CCombatActionBase::FinishAction();
-    PCreature.Get()->SetCurrentAction(CCreatureAction_TentacleIdle(PCreature.Get()));
+    PCreature.Get()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleIdle(PCreature.Get()))));
 }
