@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004d4369   WARN SHARED_HEADER_AVAILABLE CTCDExperienceOrb (engine/CTCDExperienceOrb.h)
+004d4369   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5ff2   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d66c3   WARN SHARED_HEADER_AVAILABLE CTCDExplosiveTrail (engine/CTCDExplosiveTrail.h)
+004d66c3   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 3
+  004d4369 RELOCATION_MATCH CTCDExperienceOrb::?StatGetClassTypeName@CTCDExperienceOrb@@SI?AVCCharString@@XZ
+  004d5ff2 RELOCATION_MATCH CTCDRumble::?StatGetClassTypeName@CTCDRumble@@SI?AVCCharString@@XZ
+  004d66c3 RELOCATION_MATCH CTCDExplosiveTrail::?StatGetClassTypeName@CTCDExplosiveTrail@@SI?AVCCharString@@XZ

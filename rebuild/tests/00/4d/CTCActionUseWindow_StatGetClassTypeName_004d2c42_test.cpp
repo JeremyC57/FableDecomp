@@ -1,8 +1,37 @@
+// Behaviour test for 0x004D2C42 CTCActionUseWindow::StatGetClassTypeName (NF414): links the row object (the static is declared here, not defined) and
+// asserts what it hands to CCharString(const char*, long): retail's text "CTCActionUseWindow", length -1, one constructor call, constructed into the
+// caller's own hidden result slot.
 #include <cstdio>
-struct GAN004d2c42 { void* m(void* s, int n); };
-static void* gSelf; static void* gStr; static int gN;
-void* GAN004d2c42::m(void* s, int n){ gSelf=this; gStr=s; gN=n; return 0; }
-void* __fastcall CTCActionUseWindow_StatGetClassTypeName(GAN004d2c42* result){ result->m((void*)0x123a16c, -1); return result; }
-int main(){ GAN004d2c42 x; void* r=CTCActionUseWindow_StatGetClassTypeName(&x);
- if(r!=&x||gSelf!=&x||gStr!=(void*)0x123a16c||gN!=-1){ printf("004d2c42_TEST FAIL\n"); return 1; }
- printf("004d2c42_TEST PASS\n"); return 0; }
+#include <string.h>
+
+class CCharString
+{
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
+};
+
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCActionUseWindow
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+int main()
+{
+    {
+        CCharString name = CTCActionUseWindow::StatGetClassTypeName();
+        if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
+        if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
+        if (g_seenText == 0 || strcmp(g_seenText, "CTCActionUseWindow") != 0) { std::printf("BAD_TEXT\n"); return 1; }
+    }
+    std::printf("004d2c42_TEST PASS\n");
+    return 0;
+}

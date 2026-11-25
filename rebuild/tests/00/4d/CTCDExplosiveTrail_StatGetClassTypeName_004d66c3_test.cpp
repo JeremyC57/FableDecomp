@@ -1,22 +1,37 @@
-// Behaviour test for 0x004D66C3 (CTCDExplosiveTrail class-type name, stand-in self StatGetClassTypeName_9): links the row object
-// (declared here, not defined) and asserts what it hands to the CCharString constructor: the retail text "CTCDExplosiveTrail",
-// length -1, one call on the result buffer, which it returns.
+// Behaviour test for 0x004D66C3 CTCDExplosiveTrail::StatGetClassTypeName (NF414): links the row object (the static is declared here, not defined) and
+// asserts what it hands to CCharString(const char*, long): retail's text "CTCDExplosiveTrail", length -1, one constructor call, constructed into the
+// caller's own hidden result slot.
 #include <cstdio>
 #include <string.h>
-class CCharString { public: char* p; };
-static int g_called=0; static const char* g_arg=0; static int g_n=0; static void* g_self=0;
-struct Helper {
-    void Do(const char* s, int n);   // the row's callee (0x0099EBF0), defined here
+
+class CCharString
+{
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
-void Helper::Do(const char* s, int n){ g_called++; g_arg=s; g_n=n; g_self=this; }
-extern "C" CCharString* __fastcall StatGetClassTypeName_9(Helper* result);   // definition linked from the row object
-int main(){
-    Helper obj;
-    CCharString* r = StatGetClassTypeName_9(&obj);
-    if((void*)r != (void*)&obj){ printf("FAIL ret\n"); return 1; }
-    if(g_called != 1 || g_self != (void*)&obj){ printf("FAIL call\n"); return 1; }
-    if(g_arg == 0 || strcmp(g_arg, "CTCDExplosiveTrail") != 0){ printf("FAIL arg %s\n", g_arg ? g_arg : "(null)"); return 1; }
-    if(g_n != -1){ printf("FAIL n\n"); return 1; }
-    printf("OK_004d66c3\n");
+
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCDExplosiveTrail
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+int main()
+{
+    {
+        CCharString name = CTCDExplosiveTrail::StatGetClassTypeName();
+        if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
+        if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
+        if (g_seenText == 0 || strcmp(g_seenText, "CTCDExplosiveTrail") != 0) { std::printf("BAD_TEXT\n"); return 1; }
+    }
+    std::printf("OK_004d66c3\n");
     return 0;
 }

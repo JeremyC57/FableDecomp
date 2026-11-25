@@ -1,0 +1,25 @@
+address	head_grade	head_test	new_grade	new_test	mut_test	warn_head	warn_new	lit_proof	leaf_cmp	sections	sel	purity	widened	r10	leaf_def
+004d2a91	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2a91@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2b04	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2b04@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2b17	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2b17@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	SHARED_HEADER_AVAILABLE CTCRotate (engine/CTCRotate.h)	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2b7a	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2b7a@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2b8d	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2b8d@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	SHARED_HEADER_AVAILABLE CTCActionUseReadable (engine/CTCActionUseReadable.h)	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2ba0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2ba0@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2bb3	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2bb3@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2bc6	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2bc6@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2bd9	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2bd9@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2bec	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2bec@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2bff	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2bff@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2c2f	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2c2f@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2c42	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2c42@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	SHARED_HEADER_AVAILABLE CTCActionUseWindow (engine/CTCActionUseWindow.h)	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2c55	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2c55@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2c68	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2c68@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2c7b	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2c7b@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	SHARED_HEADER_AVAILABLE CTCActionUseBed (engine/CTCActionUseBed.h)	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2c8e	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2c8e@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2ca1	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2ca1@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2cb4	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2cb4@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2cc7	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2cc7@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2cda	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2cda@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2ced	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2ced@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2d00	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2d00@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok
+004d2d13	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ?m@GAN004d2d13@@QAEPAXPAXH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+3)	1->2	[]	[]	EQUAL	ok

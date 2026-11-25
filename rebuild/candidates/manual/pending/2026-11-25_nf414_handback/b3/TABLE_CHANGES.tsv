@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+delete	?Init@CCharString@@QAEXPBDH@Z	0099ebf0	004d4369	stand-in callee spelling of CCharString::CCharString(const char*, long); its only witness is this row, which now calls ??0CCharString@@QAE@PBDJ@Z (NF414)
+delete	?ctorB@CCharString@@QAEPAV1@PBDH@Z	0099ebf0	004d5ff2	stand-in callee spelling of CCharString::CCharString(const char*, long); its only witness is this row, which now calls ??0CCharString@@QAE@PBDJ@Z (NF414)
+delete	?Do@Helper@@QAEXPBDH@Z	0099ebf0	004d66c3	stand-in callee spelling of CCharString::CCharString(const char*, long); its only witness is this row, which now calls ??0CCharString@@QAE@PBDJ@Z (NF414)

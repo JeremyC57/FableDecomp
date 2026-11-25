@@ -1,20 +1,37 @@
-// Behaviour test for 0x004D5FF2 (CTCDRumble class-type name, stand-in self CCharString::StatGetClassTypeName_8): links the row
-// object (declared here, not defined) and asserts what it hands to the CCharString constructor: the retail text "CTCDRumble",
-// length -1, one call on the same object, which it returns.
+// Behaviour test for 0x004D5FF2 CTCDRumble::StatGetClassTypeName (NF414): links the row object (the static is declared here, not defined) and
+// asserts what it hands to CCharString(const char*, long): retail's text "CTCDRumble", length -1, one constructor call, constructed into the
+// caller's own hidden result slot.
 #include <cstdio>
 #include <string.h>
-static const char* seen_s = 0; static int seen_n = 0; static int calls = 0; static void* seen_this = 0;
-class CCharString { public:
-  char* p;
-  CCharString* ctorB(const char* s, int n);   // the row's callee (0x0099EBF0), defined here
-  CCharString* StatGetClassTypeName_8();      // definition linked from the row object
+
+class CCharString
+{
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
-CCharString* CCharString::ctorB(const char* s, int n){ seen_s=s; seen_n=n; calls++; seen_this=this; return this; }
-int main(){
-  CCharString c; c.p=0;
-  CCharString* r = c.StatGetClassTypeName_8();
-  if(r==&c && calls==1 && seen_this==(void*)&c && seen_s!=0 && strcmp(seen_s, "CTCDRumble")==0 && seen_n==-1)
-    printf("OK_004d5ff2\n");
-  else { printf("FAIL s=%s n=%d calls=%d ret=%p\n", seen_s ? seen_s : "(null)", seen_n, calls, (void*)r); return 1; }
-  return 0;
+
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCDRumble
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName();
+};
+
+int main()
+{
+    {
+        CCharString name = CTCDRumble::StatGetClassTypeName();
+        if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
+        if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
+        if (g_seenText == 0 || strcmp(g_seenText, "CTCDRumble") != 0) { std::printf("BAD_TEXT\n"); return 1; }
+    }
+    std::printf("OK_004d5ff2\n");
+    return 0;
 }

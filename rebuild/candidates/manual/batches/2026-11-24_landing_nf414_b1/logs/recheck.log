@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00452b4d   WARN SHARED_HEADER_AVAILABLE CScrollingComponent (engine/CScrollingComponent.h)
+00452b4d   WARN RELOC_NAME: ?SomeGlobalFunc@@YGXPBX@Z -> 00404500 labelled 'CPersistContext::CheckCRC'
+00452b4d   WARN RELOC_NAME: ?init@ScopeGuard@@QAEXH@Z -> 0044c3ee labelled 'CCombatAbilityData::CCombatAbilityData'
+00452b4d   RELOCATION_MATCH PASS   PersistTransfer_00452b4d
+
+WINS: 1
+  00452b4d RELOCATION_MATCH _global::ChangeState

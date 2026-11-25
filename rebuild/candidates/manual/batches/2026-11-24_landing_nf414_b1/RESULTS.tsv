@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00452b4d	ACCEPT	?CScrollingComponent_ChangeState@@YIXPAUCScrollingComponent@@PAXPAUIVisitor@@@Z	?CScrollingComponent_ChangeState@@YIXPAUCScrollingComponent@@PAXPAUIVisitor@@@Z	baked string address -> retail literal (""); grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; test asserts (mutant FAIL); literal_check ok, 0 LITERAL warnings; COMDAT literal-only; purity []
