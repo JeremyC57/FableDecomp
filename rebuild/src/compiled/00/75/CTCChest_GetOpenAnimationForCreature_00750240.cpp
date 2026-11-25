@@ -45,8 +45,11 @@ class CChestDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x30 - 0x08];
     CCharString OpenAnimationForCreature;              // +0x30
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0074F7D0 ??$GetSubDef@VCChestDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCChestDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCChestDef@@@@@Z)
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CChestDef>* out);       // 0x0074F7D0
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;       // 0x0074F7D0
 };
 class CThing { public:
     unsigned char  _pad00[0x70];
@@ -62,7 +65,7 @@ CCharString CTCChest::GetOpenAnimationForCreature() const
 {
     CDefClassBase* thingDef = ParentThing->PDef;
     CDefPointer<CChestDef> out;
-    bool found = thingDef->GetSubDef(&out);
+    bool found = thingDef->GetSubDef(reinterpret_cast<CDefPointer<CChestDef const>*>(&out));
     CDefHolder<CChestDef> def(out.Object);
     if (found && def->OpenAnimationForCreature != "")
         return CCharString(def->OpenAnimationForCreature);

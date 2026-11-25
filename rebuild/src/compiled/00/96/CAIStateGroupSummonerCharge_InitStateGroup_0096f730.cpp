@@ -38,8 +38,11 @@ class CDefPointer { public:
     T* operator->() const { return static_cast<T*>(Object); }
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x008CBFF0 ??$GetSubDef@VCSummonerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCSummonerDef@@@@@Z)
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<const CSummonerDef>* out);    // 0x008CBFF0 GetSubDef<CSummonerDef>
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;    // 0x008CBFF0 GetSubDef<CSummonerDef>
 };
 
 struct CThingAICreatureModel {

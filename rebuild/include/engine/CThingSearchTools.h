@@ -707,6 +707,15 @@ __declspec(noinline) bool CThingSearchTools::GetPFirstThingInRoughArea(const C2D
 class CThingManager;
 struct CThingMapManager;
 class CWorldMap;
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
+// NF448 add-only opt-in (flattened layout): the types of the protected PeekClassList declaration below; std templates with the
+// STLport 4.6 parameter lists and no defaults, as engine/fable_nscript_forward.h declares them.
+class CClass;
+namespace std {
+template <class T> class allocator;
+template <class T, class A> class list;
+}
+#endif
 
 #pragma pack(push, 1)
 class CThingSearchTools {
@@ -725,6 +734,14 @@ public:
     // ??$GetPBestThing@...@CThingSearchTools@@QBE_N...@Z, the declaration the retail branch carries under BESTTHING_DECL_PASS26.
     // Declaration only: no layout change.
     template<class Filter,class Compare,class T> bool GetPBestThing(const Filter&,const Compare&,T**)const;
+#endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
+    // NF448 add-only opt-in (flattened layout; the CThingSearchToolsMethods callers): the protected const accessor Ego_r.pdb / FableWin.pdb
+    // ?PeekClassList@CThingSearchTools@@IBEABV?$list@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@XZ (retail 0x0049C770), the declaration
+    // the retail branch carries under FABLE_RETAIL_CTHINGSEARCHTOOLS_ALLTHINGSBODY. Declaration only: no layout change.
+protected:
+    const std::list<CClass*,std::allocator<CClass*> >& PeekClassList() const;
+public:
 #endif
 };
 #pragma pack(pop)

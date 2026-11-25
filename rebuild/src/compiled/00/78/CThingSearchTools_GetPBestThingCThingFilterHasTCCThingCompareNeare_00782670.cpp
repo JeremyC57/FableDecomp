@@ -1,11 +1,16 @@
 // CThingSearchTools::GetPBestThing<CThingFilter_HasTC, CThingCompare_Nearest, CThingCreatureBase>(const CThingFilter_HasTC&, const CThingCompare_Nearest&, CThingCreatureBase**) -- nearest scan-visible creature that has the thing component
 // Leaf: GetPBestThing
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00782670, length 144 bytes (`ret 0Ch`).
-// Callees: PeekAllThings() 0x0049C770, CThingFilter_HasTC::operator() 0x006A80A0, CThingCompare_Nearest::operator()<CThingCreatureBase> 0x00782560.
+// Callees: PeekClassList() 0x0049C770, CThingFilter_HasTC::operator() 0x006A80A0, CThingCompare_Nearest::operator()<CThingCreatureBase> 0x00782560.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -72,7 +77,6 @@ class CThingCompare_Nearest { public:                       // out-of-line membe
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out);
     template <class TFilter, class TThing> bool GetPFirstLeafThing(const TFilter& filter, TThing** out);
@@ -84,7 +88,7 @@ struct CThingSearchToolsMethods : CThingSearchTools {
 template <class TFilter, class TThing>
 bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** out)
 {
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
@@ -119,7 +123,7 @@ template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,

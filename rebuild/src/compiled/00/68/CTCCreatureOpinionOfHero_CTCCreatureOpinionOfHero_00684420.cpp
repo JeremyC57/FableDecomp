@@ -105,8 +105,11 @@ template <class T> class CDefPointer { public:
 };
 class COpinionPersonalityDef;
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00685C00 ??$GetSubDef@VCOpinionOfHeroDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOpinionOfHeroDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NAAV?$CDefPointer@VCOpinionOfHeroDef@@@@@Z)
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<COpinionOfHeroDef>& out);   // 0x00685C00
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;   // 0x00685C00
 };
 struct CThingDefView {
     unsigned char  _pad[0x70];
@@ -159,7 +162,7 @@ CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero(CThing& parent)
     , PUnknownThreatOpinionSource(0)
     , FrameLastUpdatedUnknownThreat(0)
 {
-    ((CThingDefView*)ParentThing)->PDef->GetSubDef(PDef);
+    ((CThingDefView*)ParentThing)->PDef->GetSubDef(reinterpret_cast<CDefPointer<COpinionOfHeroDef const>*>(&(PDef)));
     SetPersonalityOverride(PDef->PersonalityIndex, true);
     SetOpinionReactionMask(PDef->ReactionMaskIndex);
     SetOpinionDeedMask(PDef->DeedMaskIndex);

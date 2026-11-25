@@ -17,8 +17,10 @@
 class CCharString;
 struct SymbolPair;
 
-// ecx = this. Modeled as single-arg free __fastcall (self in ecx, edx unused).
-extern "C" void __fastcall SymbolPair_Dtor(SymbolPair *self);   // 0x4c2e90
+// Naming (NF450, 2026-11-25): callee-only respell of the tail call to the PDB destructor (T1 tracker; target self row's Leaf),
+//   0x004C2E90 ??1C3DAnimationInterpolator@@UAE@XZ (was @SymbolPair_Dtor@4), a qualified call through engine/C3DAnimationInterpolator.h
+//   (ruling r2; r449d: the shared header, not a bodiless class).
+#include "engine/C3DAnimationInterpolator.h"           // ~C3DAnimationInterpolator 0x004C2E90
 
 class CCharString { public:};
 
@@ -36,5 +38,5 @@ void __fastcall _Dest_val_SymbolPair(SymbolPair *self, SymbolPair *unused)
 {
     ((CBaseClass*)(&self->strB))->CBaseClass::~CBaseClass();   // lea ecx,[esi+0x30]; call
     ((CBaseClass*)(&self->strA))->CBaseClass::~CBaseClass();   // lea ecx,[esi+0x14]; call
-    SymbolPair_Dtor(self);           // mov ecx,esi; jmp (tail call)
+    reinterpret_cast<C3DAnimationInterpolator*>(self)->C3DAnimationInterpolator::~C3DAnimationInterpolator();   // mov ecx,esi; jmp (tail call)
 }

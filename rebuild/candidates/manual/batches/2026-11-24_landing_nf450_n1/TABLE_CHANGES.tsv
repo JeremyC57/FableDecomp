@@ -1,0 +1,10 @@
+action	symbol	target	witness	note
+add	??1CDrawStatUpdates@NPlayerGui@@QAE@XZ	00441b90	00442cc0	NF450: the respelt caller binds the PDB spelling at this target; no line bound it before
+add	??1CDrawMeleeActionButtonEffects@NPlayerGui@@QAE@XZ	004420d0	00443010	NF450: the respelt caller binds the PDB spelling at this target; no line bound it before
+add	??1CDrawSpiritTargetingCursor@NPlayerGui@@QAE@XZ	00442190	00443080	NF450: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	??0CScriptModuleBase@@QAE@XZ	005ed070	00852490	NF450: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 10 candidate row(s) naming the identifier and calling the target)
+delete	?OnDie@CInventoryItemBase@@QAEXXZ	0099a2e0	00529cc0	NF450: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 5 candidate row(s) naming the identifier and calling the target)
+delete	?base_dtor@CLandscapeBackgroundPatch@@QAEXXZ	00441b90	00442cc0	NF450: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?inner_dtor@CLandscapeBackgroundPatch@@QAEXXZ	004420d0	00443010	NF450: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	@CLandscapeBackgroundPatch_scalar_dtor@4	00442190	00443080	NF450: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	@SymbolPair_Dtor@4	004c2e90	004c3360	NF450: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)

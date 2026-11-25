@@ -1,7 +1,11 @@
 // CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThingAICreature, TContainer = std::list<CIntelligentPointer<CThingAICreature> >, TFilter = CThingFilter_HasBuildingAsHomeOrWork] -- append an intelligent pointer to every scan-visible AI creature whose work or home building is the filter's building
 // Leaf: GetAllThings
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BB660, 179 bytes (`ret 8`).
-// Callees: PeekAllThings 0x0049C770, CBaseIntelligentPointer::GetPItem 0x00A01B50 (inlined filter: work building +0x170 first, then home +0x168),
+// Callees: PeekClassList() 0x0049C770, CBaseIntelligentPointer::GetPItem 0x00A01B50 (inlined filter: work building +0x170 first, then home +0x168),
 // list<CIntelligentPointer<CThingAICreature> >::push_back 0x006604EB, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
 // CThing, the thing lists, the result container and the filters are local retail-layout models.
@@ -9,6 +13,7 @@
 // A vector push takes a by-value ThingCast<T> temporary (homed in the dead argument slot and shared with the
 // __true_type tag: the same-TU noinline overflow stand-in shows VC7.1 the tag is never read); a list push
 // inserts before end() reading end()->prev once; an intelligent-pointer push builds a named temporary.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
@@ -107,7 +112,6 @@ class CThingFilter_HasBuildingAsHomeOrWork { public:
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
     template <class TThing, class TContainer, class TFilter> void GetAllThings(const TFilter& filter, TContainer& result);
 };
 
@@ -115,7 +119,7 @@ struct CThingSearchToolsMethods : CThingSearchTools {
 template <class TThing, class TContainer, class TFilter>
 void CThingSearchToolsMethods::GetAllThings(const TFilter& filter, TContainer& result)
 {
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;

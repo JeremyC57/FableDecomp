@@ -58,8 +58,11 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x007AD9C0 ??$GetSubDef@VCAIScratchpadDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAIScratchpadDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NAAV?$CDefPointer@$$CBVCAIScratchpadDef@@@@@Z)
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<const CAIScratchpadDef>& out);    // 0x007AD9C0
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;    // 0x007AD9C0
 };
 class CThing { public:
     unsigned char  _pad_0x00[0x70];
@@ -110,7 +113,7 @@ class CTCAIScratchpad { public:
 
 void CTCAIScratchpad::OnCreate()
 {
-    ParentThing->PBaseDef->GetSubDef(PDef);
+    ParentThing->PBaseDef->GetSubDef(reinterpret_cast<CDefPointer<CAIScratchpadDef const>*>(&(PDef)));
     ThankingPhrase = PDef->ThankingPhrase;
     IgnoringPhrase = PDef->IgnoringPhrase;
     WanderCentrePoint = PDef->WanderCentrePoint;

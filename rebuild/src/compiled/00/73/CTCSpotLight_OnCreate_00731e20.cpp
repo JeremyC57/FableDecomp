@@ -29,8 +29,11 @@ class CSpotLightDef { public:
 template<class T> class CDefPointer { public:
     T* Object;
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x007325D0 ??$GetSubDef@VCSpotLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z)
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<const CSpotLightDef>* out) const;   // 0x007325D0
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;   // 0x007325D0
 };
 class CThing { public:
     unsigned char _pad00[0x70];

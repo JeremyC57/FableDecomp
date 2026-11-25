@@ -10,19 +10,21 @@ class CAnimComponentFlags { public:
 };
 
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005E0380 ??$GetComponent@VCAnimComponentFlags@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFlags@@@Z (was ?GetFlagsComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentFlags@@@Z)
 class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
-    void GetFlagsComponent(CAnimComponentFlags** ppComponent) const;    // 0x005E0380 (out pointer)
     unsigned long GetAnimateThingFlags() const;
-};
+ public: template <class T1> void GetComponent(T1 const**) const; };
 
 unsigned long CAnimationEntry::GetAnimateThingFlags() const
 {
     CAnimComponentFlags* pComponent;
-    GetFlagsComponent(&pComponent);
+    reinterpret_cast<const CAnimationEntry*>(this)->GetComponent<CAnimComponentFlags>((CAnimComponentFlags const**)(&pComponent));
     long flags = pComponent->Flags;
     unsigned long result = 0;
     if (flags & 8)

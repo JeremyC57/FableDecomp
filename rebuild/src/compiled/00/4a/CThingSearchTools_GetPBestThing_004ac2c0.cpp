@@ -1,13 +1,18 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind2<std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>, CThingFilter_In2DRange>, TCompare = CThingCompare_Nearest, TThing = CThing] -- the nearest scan-visible thing that has either of two thing components and is in 2D range
 // Leaf: GetPBestThing
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AC2C0, 180 bytes (+ int3 padding to 192) (`ret 0Ch`).
-// Callees: PeekAllThings 0x0049C770, CThingFilter_HasTC 0x006A80A0 (twice: _M_fn3 then _M_fn2, right-to-left arguments), CThingFilter_In2DRange 0x006A76B0, CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
+// Callees: PeekClassList() 0x0049C770, CThingFilter_HasTC 0x006A80A0 (twice: _M_fn3 then _M_fn2, right-to-left arguments), CThingFilter_In2DRange 0x006A76B0, CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
 // CThing is a local retail-layout model; the filters and comparators are local models (Ego_r.pdb members),
 // called out of line with the thing by reference; the CFilter_BindN / CFilter_Not hold their filters by reference.
 // Shape: the template body of the landed siblings (0x00936950 GetPBestLeafThing, GetPBestThing re-reading `*it`).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -85,7 +90,6 @@ class CThingCompare_Nearest { public:                       // out-of-line membe
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: the thing manager's all-things list
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TCompare, class TThing> bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out);
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
@@ -97,7 +101,7 @@ template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,

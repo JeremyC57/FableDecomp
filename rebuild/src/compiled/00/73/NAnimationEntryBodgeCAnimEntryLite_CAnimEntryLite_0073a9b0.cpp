@@ -15,22 +15,24 @@ class CAnimComponentFlags { public:
 };
 
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005E0380 ??$GetComponent@VCAnimComponentFlags@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFlags@@@Z (was ?GetFlagsComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentFlags@@@Z)
 class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
     long GetTransitionTime() const;  // 0x005DC1D0
-    void GetFlagsComponent(CAnimComponentFlags** ppComponent) const;    // 0x005E0380 (out pointer)
     long GetAnimationFlags() const
     {
         CAnimComponentFlags* pComponent;
-        GetFlagsComponent(&pComponent);
+        reinterpret_cast<const CAnimationEntry*>(this)->GetComponent<CAnimComponentFlags>((CAnimComponentFlags const**)(&pComponent));
         return pComponent->Flags;
     }
 public:
     long GetDelayTime() const;   // 0x005DC1F0
-};
+ public: template <class T1> void GetComponent(T1 const**) const; };
 
 // NF295 (2026-11-23): the shared engine/NAnimationEntryBodge_CAnimEntryLite.h class (same members and offsets) replaces the global
 //   local struct, so the row defines the Ego_r + FableWin ??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z that its

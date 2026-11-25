@@ -1,12 +1,17 @@
 // CThingSearchTools::GetPBestThing<CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_HasScriptName >, CThingCompare_Nearest, CThing>(const CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_HasScriptName >&, const CThingCompare_Nearest&, CThing**) -- nearest scan-visible thing passing all three bound filters (byte twin of 0x004A9E50)
 // Leaf: GetPBestThing
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Naming (naming wave 24): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2; wave 24: the six rows DECISIONS_W23_RESOLVED item 5 held out, re-identified from the filter addresses they call).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009223A0, length 160 bytes (`ret 0Ch`).
-// Callees: PeekAllThings() 0x0049C770, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_HasTC; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_InRegion; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_HasScriptName::operator() (Identity, naming wave 24: was CThingFilter_IsRegionEntranceActive; FableWin.pdb instantiates this template on CThingFilter_HasScriptName and the callee label names it) 0x006A7E30 (manifest: CThingFilter_HasScriptData), CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
+// Callees: PeekClassList() 0x0049C770, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_HasTC; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_InRegion; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_HasScriptName::operator() (Identity, naming wave 24: was CThingFilter_IsRegionEntranceActive; FableWin.pdb instantiates this template on CThingFilter_HasScriptName and the callee label names it) 0x006A7E30 (manifest: CThingFilter_HasScriptData), CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
 // Label check: the callees differ from the label (IsNot, IsNot, a script-name filter); same template shape.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -83,7 +88,6 @@ class CThingCompare_Nearest { public:                       // out-of-line membe
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out);
     template <class TFilter, class TThing> bool GetPFirstLeafThing(const TFilter& filter, TThing** out);
@@ -95,7 +99,7 @@ struct CThingSearchToolsMethods : CThingSearchTools {
 template <class TFilter, class TThing>
 bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** out)
 {
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
@@ -130,7 +134,7 @@ template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,

@@ -88,8 +88,11 @@ class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00910740 ??$GetPFirstThing@VCThingFilter_HasDefGlobalIndex@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z (was ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z)
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CThingFilter_HasDefGlobalIndex& filter, CThing** ppThing) const;   // 0x00910740
+    template <class T1, class T2> bool GetPFirstThing(T1 const&, T2**) const;   // 0x00910740
 };
 
 struct CAIStateGroup_MinionListenToStory : CAIStateGroupBase {

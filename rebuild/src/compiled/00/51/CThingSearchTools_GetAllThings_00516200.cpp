@@ -3,15 +3,20 @@
 // Retail-asm: 0x00516294 `fadd [ebp-14h]` + 0x00516297 `fistp dword ptr [ebp-0Ch]` -- the engine inline-assembly GFFloatToLongCeil(landed 0x00772720 / 0x006A68F0); VC7.1 C++ (long)x calls _ftol.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Leaf: GetAllThings
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00516200, 423 bytes (+ padding to 432), `ret 8`, ebp frame; one caller 0x00509A98.
-// Callees: PeekAllThings 0x0049C770, CTCPhysicsBase::GetBoundingInfo(C3DVector&, float&) const 0x006AF640, _ftol 0x00BFEA70 (six
+// Callees: PeekClassList() 0x0049C770, CTCPhysicsBase::GetBoundingInfo(C3DVector&, float&) const 0x006AF640, _ftol 0x00BFEA70 (six
 //   conversions), CTCPhysicsBase virtual +0xa8, CThing virtual +0xdc (both arms of the navigation test), CThingFilter_
 //   IsInQuestOrNullQuest::operator() 0x006A7C60, malloc 0x00BFEA0E (list node).
 // Shape: the landed GetAllThings 0x004ACD70 (list result) with a by-reference Bind3; the OverlappingArea filter as in
 //   0x00516830 (the inline-asm ceil, the area copy grown by the radius, the centre tested inside); the navigation test
 //   calls the same thing slot on both arms of the physics-obstacle test.
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
@@ -175,7 +180,6 @@ template <class A, class B, class C> class CFilter_Bind3 { public:   // the thre
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
     template <class TThing, class TContainer, class TFilter> void GetAllThings(const TFilter& filter, TContainer& result);
 };
 
@@ -183,7 +187,7 @@ struct CThingSearchToolsMethods : CThingSearchTools {
 template <class TThing, class TContainer, class TFilter>
 void CThingSearchToolsMethods::GetAllThings(const TFilter& filter, TContainer& result)
 {
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;

@@ -1,7 +1,11 @@
 // CThingSearchTools::GetAllThings(const TFilter& filter, TContainer& result) [TThing = CThing, TContainer = std::vector<CThing*>, TFilter = CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>] -- append every scan-visible thing passing the filter to the result vector
 // Leaf: GetAllThings
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005198B0, 140 bytes (`ret 8`).
-// Callees: PeekAllThings 0x0049C770, CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator() 0x00518DC0 (landed; its
+// Callees: PeekClassList() 0x0049C770, CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>::operator() 0x00518DC0 (landed; its
 // exact leaf is bound), vector<CThing*>::_M_insert_overflow 0x00436AC0 (landed F005 row; its leaf is bound).
 // Identity (sweep3, family pass 1 "conflicting vector<CThing*> claims"): this row's claim is the right one -- the overflow
 //   callee 0x00436AC0 is vector<CThing*>'s (0x00518850's 0x0049C370 is vector<const CThing*>'s), and the Ego_r name set holds
@@ -14,6 +18,7 @@
 // A vector push takes a by-value ThingCast<T> temporary (homed in the dead argument slot and shared with the
 // __true_type tag: the same-TU noinline STLport overflow body shows VC7.1 the tag is never read); a list push
 // inserts before end() reading end()->prev once; an intelligent-pointer push builds a named temporary.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
 
@@ -166,7 +171,6 @@ public:
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
     template <class TThing, class TContainer, class TFilter> void GetAllThings(const TFilter& filter, TContainer& result);
 };
 
@@ -174,7 +178,7 @@ struct CThingSearchToolsMethods : CThingSearchTools {
 template <class TThing, class TContainer, class TFilter>
 void CThingSearchToolsMethods::GetAllThings(const TFilter& filter, TContainer& result)
 {
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;

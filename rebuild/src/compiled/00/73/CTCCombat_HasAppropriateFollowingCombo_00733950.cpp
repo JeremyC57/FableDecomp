@@ -24,18 +24,21 @@ class CAnimComponentCombatComboChain { public:
 
 enum { COMBO_ID_NONE = -999, COMBO_STAGE_NONE = -777 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00738980 ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z (was ?GetComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentCombatComboChain@@@Z)
 class CAnimationEntry { public:
     long  BankIndex;                       // +0x00
     long  AnimName;                        // +0x04 CDefString
     long  GroupName;                       // +0x08 CDefString
     void* Components;                      // +0x0C CIVCountedPointer<CAnimComponentMap>
-    void GetComponent(CAnimComponentCombatComboChain** out) const;   // 0x00738980
+    template <class T1> void GetComponent(T1 const**) const;   // 0x00738980
 };
 
 FABLE_FORCEINLINE CAnimComponentCombatComboChain* GetComboChain(const CAnimationEntry* entry)
 {
     CAnimComponentCombatComboChain* combo;
-    entry->GetComponent(&combo);
+    entry->GetComponent((CAnimComponentCombatComboChain const**)(&combo));
     return combo;
 }
 

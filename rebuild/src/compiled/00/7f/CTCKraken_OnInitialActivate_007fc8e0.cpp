@@ -36,8 +36,11 @@ template <class T> class CDefPointer { public:
 };
 
 class CKrakenDef;
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x007FCD50 ??$GetSubDef@VCKrakenDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCKrakenDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCKrakenDef@@@@@Z)
 class CDefClassBase : public CDefPointee { public:
-    bool GetSubDef(CDefPointer<CKrakenDef>* out);        // 0x007FCD50
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;        // 0x007FCD50
 };
 
 class CThing {
@@ -129,7 +132,7 @@ void CTCKraken::OnInitialActivate()
     {
         CThingCreatureBase* thing = ParentThing;
         thing->GetInterface(&PTCBoss, 0xad);
-        thing->GetDef()->GetSubDef(&PKrakenDef);
+        thing->GetDef()->GetSubDef(reinterpret_cast<CDefPointer<CKrakenDef const>*>(&PKrakenDef));
     }
     GetCentreMarker();
     ExplosionList.clear();

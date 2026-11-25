@@ -1,5 +1,8 @@
 // NCameraModes::CScriptModuleSelfTerminateBase::CScriptModuleSelfTerminateBase(long duration) -- constructor: CScriptModuleBase, WFDuration = duration, EndFrame = current frame + WFDuration
 // Leaf: ??0CScriptModuleSelfTerminateBase
+// Naming (NF450 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005ED070 ??0CScriptModuleBase@NCameraModes@@QAE@XZ (was ??0CScriptModuleBase@@QAE@XZ); the model class is wrapped in namespace NCameraModes (PDB scope) with a using-declaration; the ctor is reached by implicit base initialisation (no call-site edit); r449a
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852490, length 38 bytes.
 // Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070, GFGetCurrentFrame @ 0x0049D870
 // (`__fastcall`, no arguments; the manifest's "GFGetPreMainMemoryUsed" label is propagated).
@@ -13,11 +16,11 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                 // 0x0049D870
 
-struct CScriptModuleBase {
+namespace NCameraModes { struct CScriptModuleBase {
     virtual void v00();
     unsigned char m_state[0x4c - 4];
     CScriptModuleBase();                             // 0x005ED070
-};
+}; } using NCameraModes::CScriptModuleBase;
 
 namespace NCameraModes {
 

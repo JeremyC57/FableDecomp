@@ -18,8 +18,11 @@ template<class T> class CDefPointer { public:
     T* Object;
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x007EA960 ??$GetSubDef@VCTargetingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z)
 class CDefClassBase { public:
-    bool GetSubDef(CDefPointer<const CTargetingDef>* out);   // 0x007EA960
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;   // 0x007EA960
 };
 
 class CThing { public:

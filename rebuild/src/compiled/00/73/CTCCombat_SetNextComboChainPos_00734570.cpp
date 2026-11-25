@@ -15,7 +15,6 @@ struct CComboDef {
 };
 
 class CDefClassBase { public:
-    void GetComboDef(const CComboDef** out);                // 0x00738980
 };
 
 class CMeleeCombatAbilityDef { public:
@@ -30,11 +29,16 @@ struct CTCCombat_Methods : CTCCombat {
     void SetNextComboChainPos(const CMeleeCombatAbilityDef* ability);
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00738980 ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z (was ?GetComboDef@CDefClassBase@@QAEXPAPBUCComboDef@@@Z)
+class CAnimComponentCombatComboChain;
+class CAnimationEntry { public: template <class T1> void GetComponent(T1 const**) const; };
 void CTCCombat_Methods::SetNextComboChainPos(const CMeleeCombatAbilityDef* ability)
 {
     CDefClassBase* defClass = ability->DefClass;
     const CComboDef* combo;
-    defClass->GetComboDef(&combo);
+    reinterpret_cast<const CAnimationEntry*>(defClass)->GetComponent<CAnimComponentCombatComboChain>(reinterpret_cast<CAnimComponentCombatComboChain const**>(&combo));
     if (combo->Stage != -777) {
         if (ComboChainPos == -777)
             ComboChainPos = 1;

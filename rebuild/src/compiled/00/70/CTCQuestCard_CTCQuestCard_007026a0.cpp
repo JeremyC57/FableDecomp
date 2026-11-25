@@ -27,8 +27,11 @@ class CQuestCardDef : public CDefPointeeBase { public:
     long RenownReward;                              // +0x44
     long GoldReward;                                // +0x48
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00702930 ??$GetSubDef@VCQuestCardDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCQuestCardDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCQuestCardDef@@@@@Z)
 class CDefClassBase : public CDefPointeeBase { public:
-    bool GetSubDef(CDefPointer<CQuestCardDef>* out);   // 0x00702930
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;   // 0x00702930
 };
 struct CThingR {
     unsigned char _pad00[0x70];
@@ -63,7 +66,7 @@ CTCQuestCard::CTCQuestCard(CThing* thing)
     , Replayable(false)
     , FeatIndex(-1)
 {
-    ParentThing->PDef->GetSubDef(&PDef);
+    ParentThing->PDef->GetSubDef(reinterpret_cast<CDefPointer<CQuestCardDef const>*>(&PDef));
     GoldReward = PDef->GoldReward;
     RenownReward = PDef->RenownReward;
 }

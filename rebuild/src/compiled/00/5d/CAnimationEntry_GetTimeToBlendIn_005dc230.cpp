@@ -39,20 +39,22 @@ class CAnimComponentTransitionInTime { public:
     long TransitionInTime;                      // +0x08
 };
 
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005E0280 ??$GetComponent@VCAnimComponentTransitionInTime@@@CAnimationEntry@@QBEXPAPBVCAnimComponentTransitionInTime@@@Z (was ?GetTransitionInTimeComponent@CAnimationEntry@@QBEXPAPAVCAnimComponentTransitionInTime@@@Z)
 class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
-    void GetTransitionInTimeComponent(CAnimComponentTransitionInTime** ppComponent) const;   // 0x005E0280 (out pointer)
     long GetAnimationTransitionInTime() const      // the inline getter: its out-pointer local dies with it
     {
         CAnimComponentTransitionInTime* pComponent;
-        GetTransitionInTimeComponent(&pComponent);
+        reinterpret_cast<const CAnimationEntry*>(this)->GetComponent<CAnimComponentTransitionInTime>((CAnimComponentTransitionInTime const**)(&pComponent));
         return pComponent->TransitionInTime;
     }
     long GetTimeToBlendIn(CThing* thing) const;
-};
+ public: template <class T1> void GetComponent(T1 const**) const; };
 
 // Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):

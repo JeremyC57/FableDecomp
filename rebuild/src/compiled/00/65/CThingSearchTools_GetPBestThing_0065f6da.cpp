@@ -1,8 +1,12 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = std::binary_compose<std::logical_or<bool>, CThingFilter_HasTC, CThingFilter_HasTC>, TCompare = CThingCompare_Nearest, TThing = CThing] -- the nearest scan-visible thing that has either of two thing components
 // Leaf: GetPBestThing
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F6DA, 106 bytes (`ret 0Ch`).
-// Callees: PeekAllThings 0x0049C770, CThing::IsIncludedInThingScans 0x0048BC40, binary_compose::operator() 0x004AA6C0, CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
+// Callees: PeekClassList() 0x0049C770, CThing::IsIncludedInThingScans 0x0048BC40, binary_compose::operator() 0x004AA6C0, CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
 // Size-optimised TU with a frame pointer (odd address): `#pragma optimize("y", off)` + `#pragma optimize("s", on)`;
 // IsIncludedInThingScans and the composed filter are called, the type test and list iterator are __forceinline.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
@@ -12,6 +16,7 @@
 #include "fable_compiler.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -71,7 +76,6 @@ class CThingCompare_Nearest { public:                       // out-of-line membe
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: the thing manager's all-things list
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TCompare, class TThing> bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out);
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
@@ -83,7 +87,7 @@ template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` read once into a named local for the (called) scan test and the candidate, so the thing stays in one

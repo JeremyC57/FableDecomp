@@ -1,0 +1,318 @@
+addr       parity           behav  name
+004a9da0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004a9da0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+004a9da0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+004a9da0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+004a9da0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+004a9da0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+004a9da0   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing>
+004a9e50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004a9e50   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+004a9e50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+004a9e50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+004a9e50   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+004a9e50   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+004a9e50   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind3<CThingFilter_HasTC, CThingFilter_InRegion, CThingFilter_IsRegionEntranceActive >, CThingCompare_Nearest, CThing>
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange (engine/CThingFilter_In2DRange.h)
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+004ac2c0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+004ac2c0   RELOCATION_MATCH PASS   GetPBestThing
+004acd70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004acd70   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+004acd70   RELOCATION_MATCH PASS   GetAllThings
+004baa50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+004baa50   RELOCATION_MATCH PASS   GetAllThings
+00512ed0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00512ed0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00512ed0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00512ed0   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+00512ed0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00512ed0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00512ed0   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind2<CThingFilter_InMap, CThingFilter_IsInQuest >, const CThingObject>
+00512f60   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00512f60   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00512f60   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+00512f60   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+00512f60   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00512f60   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00512f60   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind2<CThingFilter_InMap, CThingFilter_IsInQuest >, const CThingBuilding>
+00516200   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00516200   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+00516200   WARN SHARED_HEADER_AVAILABLE C2DBoxI (engine/C2DBoxI.h)
+00516200   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00516200   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasNavigationInformation (engine/CThingFilter_HasNavigationInformation.h)
+00516200   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsInQuestOrNullQuest (engine/CThingFilter_IsInQuestOrNullQuest.h)
+00516200   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00516200   RELOCATION_MATCH PASS   GetAllThings
+00518850   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00518850   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsInQuestOrNullQuest (engine/CThingFilter_IsInQuestOrNullQuest.h)
+00518850   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00518850   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00518850   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00518850   RELOCATION_MATCH PASS   GetAllThings
+005198b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005198b0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTCOfLeafType (engine/CThingFilter_HasTCOfLeafType.h)
+005198b0   RELOCATION_MATCH PASS   GetAllThings
+0052b300   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0052b300   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+0052b300   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+0052b300   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+0052b300   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+0052b300   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+0052b300   RELOCATION_MATCH PASS   GetAllThings
+00615750   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00615750   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00615750   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+00615750   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00615750   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00615750   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >, CThing>
+00617b20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00617b20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00617b20   RELOCATION_MATCH PASS   GetAllThings
+00617bb0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00617bb0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00617bb0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00617bb0   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+00617bb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00617bb0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00617bb0   RELOCATION_MATCH PASS   GetAllThings
+00617ca0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00617ca0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00617ca0   RELOCATION_MATCH PASS   GetAllThings
+00618e60   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00618e60   RELOCATION_MATCH PASS   GetAllThings
+0062e840   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0062e840   WARN SHARED_HEADER_AVAILABLE CThingMarker (engine/CThingMarker.h)
+0062e840   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName (engine/CThingFilter_HasScriptName.h)
+0062e840   RELOCATION_MATCH PASS   GetAllThings
+0065f6da   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0065f6da   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+0065f6da   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+0065f6da   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0065f6da   RELOCATION_MATCH PASS   logical_or<bool>,class CThingFilter_HasTC,class CThingFilter_HasTC>,class CThingCompare_Nearest,class CThing>
+0066e5a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0066e5a0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0066e5a0   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+0066e5a0   RELOCATION_MATCH PASS   GetAllThings
+006d3fb0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006d3fb0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+006d3fb0   RELOCATION_MATCH PASS   GetPFirstThing<CThingFilter_HasTC,CThing>
+00777000   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00777000   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00777000   WARN SHARED_HEADER_AVAILABLE CThingFilter_In3DRange (engine/CThingFilter_In3DRange.h)
+00777000   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00777000   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00777000   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot,CThingFilter_In3DRange>,CThing>
+00782670   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00782670   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00782670   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00782670   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00782670   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00782670   WARN RELOC_NAME: ??$?RVCThingCreatureBase@@@CThingCompare_Nearest@@QBEPAVCThingCreatureBase@@PAV1@0@Z -> 00782560 labelled 'CThingCompare_Nearest::operator()<CThingCreatureBase>'
+00782670   RELOCATION_MATCH PASS   GetPBestThing<CThingFilter_HasTC, CThingCompare_Nearest, CThingCreatureBase>
+00783090   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00783090   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00783090   WARN SHARED_HEADER_AVAILABLE CThingMarker (engine/CThingMarker.h)
+00783090   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName (engine/CThingFilter_HasScriptName.h)
+00783090   RELOCATION_MATCH PASS   GetPFirstThing<CThingFilter_HasScriptName, const CThingMarker>
+00783110   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00783110   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00783110   WARN SHARED_HEADER_AVAILABLE CThingVillage (engine/CThingVillage.h)
+00783110   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+00783110   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00783110   WARN RELOC_NAME: ??$?RVCThingVillage@@@CThingCompare_Nearest@@QBEPAVCThingVillage@@PAV1@0@Z -> 0048b160 labelled 'CThingCompare_Nearest::operator()<CThingVillage>'
+00783110   RELOCATION_MATCH PASS   GetPBestThing<CThingFilter_None, CThingCompare_Nearest, CThingVillage>
+00799c40   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00799c40   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00799c40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00799c40   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00799c40   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00799c40   RELOCATION_MATCH PASS   GetPFirstThing<CThingFilter_HasTC, CThingAICreature>
+00799fb0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00799fb0   WARN SHARED_HEADER_AVAILABLE CThingMarker (engine/CThingMarker.h)
+00799fb0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00799fb0   WARN RELOC_CONFLICT: ?_M_insert_overflow@?$CResultVector@PAVCThingMarker@@@@QAEXPAPAVCThingMarker@@ABQAV2@ABU__true_type@@K_N@Z -> 00436ac0 here, 0062e190 in landed 0062e840
+00799fb0   RELOCATION_MATCH PASS   GetAllThings
+007bb660   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007bb660   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007bb660   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+007bb660   RELOCATION_MATCH PASS   GetAllThings
+007ea040   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007ea040   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007ea040   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+007ea040   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+007ea040   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+007ea040   RELOCATION_MATCH PASS   GetAllThings
+007ea0e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007ea0e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007ea0e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+007ea0e0   RELOCATION_MATCH PASS   GetAllThings
+007ee660   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007ee660   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+007ee660   WARN SHARED_HEADER_AVAILABLE CThingVillage (engine/CThingVillage.h)
+007ee660   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+007ee660   RELOCATION_MATCH PASS   GetPFirstThing<CThingFilter_HasTC,const CThingVillage>
+008093d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008093d0   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+008093d0   RELOCATION_MATCH PASS   GetAllThings
+008266e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008266e0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008266e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_BoundingBoxOverlapsMap (engine/CThingFilter_BoundingBoxOverlapsMap.h)
+008266e0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasNavigationInformation (engine/CThingFilter_HasNavigationInformation.h)
+008266e0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008266e0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+008266e0   RELOCATION_MATCH PASS   GetAllThings
+0085b0d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0085b0d0   RELOCATION_MATCH PASS   unary_negate<CThingFilter_InArea>_>_>
+008abdf0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008abdf0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+008abdf0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName (engine/CThingFilter_HasScriptName.h)
+008abdf0   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+008abdf0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+008abdf0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+008abdf0   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind2<CThingFilter_HasScriptName, CThingFilter_InMap >, CThingGameObject>
+008ac5d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ac5d0   WARN SHARED_HEADER_AVAILABLE CThingDeadCreature (engine/CThingDeadCreature.h)
+008ac5d0   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+008ac5d0   RELOCATION_MATCH PASS   GetAllThings
+008adba0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008adba0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasDefGlobalIndex (engine/CThingFilter_HasDefGlobalIndex.h)
+008adba0   RELOCATION_MATCH PASS   vector<CThing*>, CThingFilter_HasDefGlobalIndex>
+008adc30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008adc30   WARN SHARED_HEADER_AVAILABLE CThingFilter_InMap (engine/CThingFilter_InMap.h)
+008adc30   RELOCATION_MATCH PASS   unary_negate<CThingFilter_InArea>_>_>
+00914aa0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00914aa0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00914aa0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00914aa0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00914aa0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00914aa0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00914aa0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00914aa0   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsChild >, CThingAICreature>
+0091e660   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0091e660   WARN RELOC_CONFLICT: ?_M_insert_overflow@?$CResultVector@PAVCThing@@@@QAEXPAPAVCThing@@ABQAV2@ABU__true_type@@K_N@Z -> 0049c370 here, 00436ac0 in landed 008093d0
+0091e660   RELOCATION_MATCH PASS   GetAllThings
+009223a0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009223a0   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+009223a0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName (engine/CThingFilter_HasScriptName.h)
+009223a0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+009223a0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+009223a0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+009223a0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+009223a0   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind3<CThingFilter_HasTC, CThingFilter_InRegion, CThingFilter_IsRegionEntranceActive >, CThingCompare_Nearest, CThing>
+0093b640   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093b640   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+0093b640   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+0093b640   WARN SHARED_HEADER_AVAILABLE CIsNearCampfireWithSpace (engine/CIsNearCampfireWithSpace.h)
+0093b640   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+0093b640   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+0093b640   RELOCATION_MATCH PASS   GetPBestThing<CIsNearCampfireWithSpace, CThingCompare_Nearest, CThingObject>
+0093f930   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093f930   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange (engine/CThingFilter_In2DRange.h)
+0093f930   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+0093f930   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0093f930   RELOCATION_MATCH PASS   GetPBestThing<CThingFilter_In2DRange,CThingCompare_Nearest,CThing>
+00941450   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00941450   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00941450   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00941450   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00941450   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+00941450   RELOCATION_MATCH PASS   GetPBestThing<CIsHopscotchBoard, CThingCompare_Nearest, CThingObject>
+00943830   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00943830   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00943830   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00943830   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange (engine/CThingFilter_In2DRange.h)
+00943830   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00943830   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00943830   RELOCATION_MATCH PASS   GetAllThings
+009650c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_In3DRange (engine/CThingFilter_In3DRange.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind4 (engine/CFilter_Bind4.h)
+009650c0   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+009650c0   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+009650c0   RELOCATION_MATCH PASS   GetPBestThing
+00965e80   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00965e80   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+00965e80   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+00965e80   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00965e80   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00965e80   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00965e80   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+00965e80   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind3<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC>, CThingCompare_Nearest, CThingObject>
+00986d90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsAlliedWithFaction (engine/CThingFilter_IsAlliedWithFaction.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00986d90   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00986d90   WARN RELOC_NAME: ??$?R$$CBVCThingAICreature@@@CThingCompare_Nearest@@QBEPBVCThingAICreature@@PBV1@0@Z -> 00986c30 labelled 'CThingCompare_Nearest::operator()<CThingAICreature const>'
+00986d90   RELOCATION_MATCH PASS   GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsAlliedWithFaction >, CThingCompare_Nearest, const CThingAICreature>
+00986e30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsCreatureType (engine/CThingFilter_IsCreatureType.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CThingFilter_In2DRange (engine/CThingFilter_In2DRange.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00986e30   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+00986e30   RELOCATION_MATCH PASS   GetPFirstThing<CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsCreatureType, CThingFilter_In2DRange >, const CThingAICreature>
+
+WINS: 48
+  004a9da0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  004a9e50 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  004ac2c0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  004acd70 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  004baa50 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00512ed0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00512f60 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00516200 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00518850 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  005198b0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  0052b300 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00615750 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00617b20 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00617bb0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00617ca0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00618e60 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  0062e840 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  0065f6da RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  0066e5a0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  006d3fb0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00777000 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00782670 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00783090 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00783110 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00799c40 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00799fb0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  007bb660 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  007ea040 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  007ea0e0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  007ee660 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  008093d0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  008266e0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  0085b0d0 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThing@@V?$vector@PAVCThing@@
+  008abdf0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  008ac5d0 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  008adba0 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThing@@V?$vector@PAVCThing@@
+  008adc30 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThing@@V?$vector@PAVCThing@@
+  00914aa0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  0091e660 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  009223a0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  0093b640 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  0093f930 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00941450 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00943830 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  009650c0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00965e80 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00986d90 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00986e30 RELOCATION_MATCH CThingSearchTools::GetPFirstThing

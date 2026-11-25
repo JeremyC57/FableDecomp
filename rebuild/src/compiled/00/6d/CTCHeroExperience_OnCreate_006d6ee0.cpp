@@ -54,8 +54,11 @@ template <class T> class CDefPointer { public:
 };
 class CHeroExperienceDef : public CDefObject { public:};
 class CHeroCombatDef : public CDefObject { public:};
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006DAA90 ??$GetSubDef@VCHeroExperienceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroExperienceDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCHeroExperienceDef@@@@@Z)
 class CDefClassBase : public CDefObject { public:
-    bool GetSubDef(CDefPointer<CHeroExperienceDef>* out);  // 0x006DAA90
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;  // 0x006DAA90
 };
 class CThing {
 public:
@@ -80,7 +83,7 @@ public:
 
 void CTCHeroExperience::OnCreate()
 {
-    ParentThing->PDef->GetSubDef(&PDef);
+    ParentThing->PDef->GetSubDef(reinterpret_cast<CDefPointer<CHeroExperienceDef const>*>(&PDef));
     if (ParentThing->IsHeroThing)
         PHeroCombatDef = static_cast<CThingCreatureBase*>(ParentThing)->GetPHeroCombatDef();
 }

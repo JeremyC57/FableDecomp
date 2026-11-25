@@ -37,9 +37,12 @@ struct CAnimationParameters {
     unsigned char _pad00[8];
     bool m_autoTurn;                        // +0x08 flag tested before turning the target
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00738A00 ??$GetComponent@VCAnimComponentCombatMisc@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatMisc@@@Z (was ?GetParameters@CAnimationEntry@@QAEXPAPAUCAnimationParameters@@@Z)
+class CAnimComponentCombatMisc;
 class CAnimationEntry { public:
-    void GetParameters(CAnimationParameters** out);   // 0x00738A00
-};
+ public: template <class T1> void GetComponent(T1 const**) const; };
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
@@ -54,7 +57,7 @@ class CCreatureAction_InterruptableMidAttackAutoTurn : public CCreatureActionBas
     bool GetAutoTurn() const
     {
         CAnimationParameters* params;
-        PAnimEntry_Data->GetParameters(&params);
+        reinterpret_cast<const CAnimationEntry*>(PAnimEntry_Data)->GetComponent<CAnimComponentCombatMisc>((CAnimComponentCombatMisc const**)(&params));
         return params->m_autoTurn;
     }
 };

@@ -1,13 +1,18 @@
 // CThingSearchTools::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out) [TFilter = CFilter_Bind4<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC, std::unary_negate<CThingFilter_In3DRange> >, TCompare = CThingCompare_Nearest, TThing = CThingObject] -- the nearest scan-visible object (mask 0x807) with the property, a free action point and the component, outside the 3D range
 // Leaf: GetPBestThing
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009650C0, 178 bytes (+ int3 padding to 192) (`ret 0Ch`).
-// Callees: PeekAllThings 0x0049C770, CThingFilter_ObjectHasProperty 0x006A7590, CThingFilter_HasFreeActionPoint 0x006A8B40, CThingFilter_HasTC 0x006A80A0, CThingFilter_In3DRange 0x006A7780 (negated), CThingCompare_Nearest::operator()<CThingObject> 0x00916B10.
+// Callees: PeekClassList() 0x0049C770, CThingFilter_ObjectHasProperty 0x006A7590, CThingFilter_HasFreeActionPoint 0x006A8B40, CThingFilter_HasTC 0x006A80A0, CThingFilter_In3DRange 0x006A7780 (negated), CThingCompare_Nearest::operator()<CThingObject> 0x00916B10.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (`this` is only passed through to the list getter);
 // CThing is a local retail-layout model; the filters and comparators are local models (Ego_r.pdb members),
 // called out of line with the thing by reference; the CFilter_BindN / CFilter_Not hold their filters by reference.
 // Shape: the template body of the landed siblings (0x00936950 GetPBestLeafThing, GetPBestThing re-reading `*it`).
 #include "fable_compiler.h"
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -93,7 +98,6 @@ class CThingCompare_Nearest { public:                       // out-of-line membe
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: the thing manager's all-things list
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TCompare, class TThing> bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out);
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
@@ -105,7 +109,7 @@ template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,

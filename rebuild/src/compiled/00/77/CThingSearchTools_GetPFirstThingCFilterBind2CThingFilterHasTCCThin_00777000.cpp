@@ -1,12 +1,17 @@
 // CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange >, CThing>(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange >&, CThing**) -- first scan-visible thing passing both bound filters (byte twin of 0x00615750)
 // Leaf: GetPFirstThing
+// Naming (NF448, 2026-11-25): callee-only rebind of the list getter 0x0049C770 from the stand-in CThingSearchToolsMethods::PeekAllThings
+// to its PDB spelling (Ego_r.pdb / FableWin.pdb) CThingSearchTools::PeekClassList() const (protected; this row's caller derives from
+// CThingSearchTools), declared by the engine/CThingSearchTools.h add-only opt-in FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST; the row
+// keeps its CThingList view of the returned std::list<CClass*>. Leaf bytes and relocation offsets unchanged.
 // Naming (naming wave 24): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2; wave 24: the six rows DECISIONS_W23_RESOLVED item 5 held out, re-identified from the filter addresses they call).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00777000, length 128 bytes (`ret 8`).
-// Callees: PeekAllThings() 0x0049C770, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_HasTC; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_In3DRange::operator() (Identity, naming wave 24: was CThingFilter_InMap; FableWin.pdb instantiates this template on CThingFilter_In3DRange and the callee label names it) 0x006A7780 (manifest: CThingFilter_In2DRange).
+// Callees: PeekClassList() 0x0049C770, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_HasTC; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_In3DRange::operator() (Identity, naming wave 24: was CThingFilter_InMap; FableWin.pdb instantiates this template on CThingFilter_In3DRange and the callee label names it) 0x006A7780 (manifest: CThingFilter_In2DRange).
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
 // Label check: the callees are IsNot and In2DRange, not HasTC and InMap; same template shape.
+#define FABLE_RETAIL_CTHINGSEARCHTOOLS_PEEKCLASSLIST
 #include "engine/CThingSearchTools.h"
 
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
@@ -79,7 +84,6 @@ template <class A, class B, class C> class CFilter_Bind3 { public:     // Ego_r.
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
-    CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
     CThingList* PeekTypeList(long type);              // 0x0049C780: the per-type thing list
     template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out);
     template <class TFilter, class TThing> bool GetPFirstLeafThing(const TFilter& filter, TThing** out);
@@ -91,7 +95,7 @@ struct CThingSearchToolsMethods : CThingSearchTools {
 template <class TFilter, class TThing>
 bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** out)
 {
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
@@ -126,7 +130,7 @@ template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
     TThing* best = 0;
-    CThingList* things = PeekAllThings();
+    CThingList* things = const_cast<CThingList*>(reinterpret_cast<const CThingList*>(&PeekClassList()));
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         // `*it` is re-read for each use: VC7.1 drops a null test on a pointer it has seen dereferenced,

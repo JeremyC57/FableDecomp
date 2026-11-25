@@ -20,11 +20,14 @@ class CNymphDef;
 template<class T> class CDefPointer { public:
     T* Object;
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080FE60 ??$GetSubDef@VCNymphDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z (was ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCNymphDef@@@@@Z)
 class CDefClassBase { public:
     virtual void Destroy();
     virtual void Release();                     // slot 1
     long RefCount;                              // +0x04
-    bool GetSubDef(CDefPointer<const CNymphDef>* out) const;   // 0x0080FE60
+    template <class T1> bool GetSubDef(CDefPointer<T1 const>*) const;   // 0x0080FE60
 };
 #include "engine/C3DVector.h"
 struct CVector3D {                              // STLport vector<C3DVector> (12 bytes)

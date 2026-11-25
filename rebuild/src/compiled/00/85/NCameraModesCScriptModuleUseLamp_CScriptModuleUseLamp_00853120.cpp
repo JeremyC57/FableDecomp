@@ -1,5 +1,8 @@
 // NCameraModes::CScriptModuleUseLamp::CScriptModuleUseLamp(const CThing& creature, const CThing& lamp, long duration) -- constructor: the self-terminating base for `duration` frames, then PCreature and PLamp pointed at the two things
 // Leaf: ??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z
+// Naming (NF450 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005ED070 ??0CScriptModuleBase@NCameraModes@@QAE@XZ (was ??0CScriptModuleBase@@QAE@XZ); the model class is wrapped in namespace NCameraModes (PDB scope) with a using-declaration; the ctor is reached by implicit base initialisation (no call-site edit); r449a
 // Name-fix 2026-11-12: Ego_r.pdb 00828250 + FableWin.pdb 0283bd30 ??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z (both
 //   things are const references; the landed caller 0x00847DF0 binds this address under that symbol).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
@@ -32,11 +35,11 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
 
 #include "engine/C3DVector.h"
 
-struct CScriptModuleBase {
+namespace NCameraModes { struct CScriptModuleBase {
     virtual void v00();
     unsigned char m_state[0x4c - 4];
     CScriptModuleBase();                             // 0x005ED070
-};
+}; } using NCameraModes::CScriptModuleBase;
 
 namespace NCameraModes {
 

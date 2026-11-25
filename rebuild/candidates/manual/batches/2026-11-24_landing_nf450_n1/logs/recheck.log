@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00442cc0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00442cc0   RELOCATION_MATCH PASS   ScalarDeletingDtor_00442cc0
+00443010   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00443010   WARN STANDIN_LEAF ?vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z (catalog NPlayerGui::CDrawMeleeActionButtonEffects::`scalar deleting destructor'; names another function)
+00443010   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00443080   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00443080   RELOCATION_MATCH PASS   ScalarDeletingDtor_00443080
+004c3360   RELOCATION_MATCH PASS   Dtor_C3DAnimationInterpolatorBase_004c3360
+00529cc0   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+00529cc0   RELOCATION_MATCH PASS   OnDie
+00852490   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00852490   RELOCATION_MATCH PASS   CScriptModuleSelfTerminateBase
+008524c0   RELOCATION_MATCH PASS   CScriptModuleTransitionBetweenPoints
+00852510   RELOCATION_MATCH PASS   CScriptModuleTransitionBetweenPoints
+00852560   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00852560   RELOCATION_MATCH PASS   CScriptModuleFOVZoom
+00852d10   RELOCATION_MATCH PASS   CScriptModuleGoToLookAt
+00852d90   RELOCATION_MATCH PASS   CScriptModuleTransitionBetweenPoints
+008530b0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008530b0   RELOCATION_MATCH PASS   CScriptModuleOpenChest
+00853120   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00853120   RELOCATION_MATCH PASS   CScriptModuleUseLamp
+00853190   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00853190   RELOCATION_MATCH PASS   CScriptModuleOpenGate
+
+WINS: 14
+  00442cc0 RELOCATION_MATCH _global::?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+  00443010 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::?vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+  00443080 RELOCATION_MATCH _global::?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+  004c3360 RELOCATION_MATCH _global::?_Dest_val_SymbolPair@@YIXPAUSymbolPair@@0@Z
+  00529cc0 RELOCATION_MATCH CTCInventoryItem::OnDie
+  00852490 RELOCATION_MATCH NCameraModes::CScriptModuleSelfTerminateBase::??0CScriptModuleSelfTerminateBase
+  008524c0 RELOCATION_MATCH NCameraModes::CScriptModuleTransitionBetweenPoints::??0CScriptModuleTransitionBetweenPoints
+  00852510 RELOCATION_MATCH NCameraModes::CScriptModuleTransitionBetweenPoints::??0CScriptModuleTransitionBetweenPoints
+  00852560 RELOCATION_MATCH NCameraModes::CScriptModuleFOVZoom::??0CScriptModuleFOVZoom
+  00852d10 RELOCATION_MATCH NCameraModes::CScriptModuleGoToLookAt::??0CScriptModuleGoToLookAt
+  00852d90 RELOCATION_MATCH NCameraModes::CScriptModuleTransitionBetweenPoints::??0CScriptModuleTransitionBetweenPoints
+  008530b0 RELOCATION_MATCH NCameraModes::CScriptModuleOpenChest::??0CScriptModuleOpenChest
+  00853120 RELOCATION_MATCH NCameraModes::CScriptModuleUseLamp::??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z
+  00853190 RELOCATION_MATCH NCameraModes::CScriptModuleOpenGate::??0CScriptModuleOpenGate

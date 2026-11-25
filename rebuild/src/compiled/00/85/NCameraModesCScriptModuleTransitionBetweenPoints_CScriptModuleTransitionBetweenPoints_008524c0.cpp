@@ -1,5 +1,8 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints(const C3DVector& pos, const C3DVector& startLookAt, const C3DVector& endLookAt, long frames, float fov) -- constructor for a transition that stays at one position: SetUpTransitionCamera(pos, pos, ...)
 // Leaf: ??0CScriptModuleTransitionBetweenPoints
+// Naming (NF450 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005ED070 ??0CScriptModuleBase@NCameraModes@@QAE@XZ (was ??0CScriptModuleBase@@QAE@XZ); the model class is wrapped in namespace NCameraModes (PDB scope) with a using-declaration; the ctor is reached by implicit base initialisation (no call-site edit); r449a
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008524C0, length 71 bytes.
@@ -20,11 +23,11 @@ class CBaseObjectPointer;
 
 class CThing;
 
-struct CScriptModuleBase {
+namespace NCameraModes { struct CScriptModuleBase {
     virtual void v00();
     unsigned char m_state[0x4c - 4];
     CScriptModuleBase();                             // 0x005ED070
-};
+}; } using NCameraModes::CScriptModuleBase;
 
 namespace NCameraModes {
 

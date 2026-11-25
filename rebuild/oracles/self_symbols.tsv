@@ -28163,3 +28163,14 @@ address	symbol	status	leaf_given
 008b9bf0	?FinishAction@CCreatureAction_ReleaseWillSummonSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_ReleaseWillSummonSpell@@UAEXXZ
 009b08c0	?Compile@CDefinitionManager@@QAEXXZ	RELOCATION_MATCH	?Compile@CDefinitionManager@@QAEXXZ
 004d26f0	?_Destroy_range_allocator_CSpeechFrame___@@YIXPAVCSpeechFrame@@0@Z	RELOCATION_MATCH	?_Destroy_range_allocator_CSpeechFrame___@@YIXPAVCSpeechFrame@@0@Z
+00684420	??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z
+007aefd0	??0CTCBoss@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCBoss@@QAE@AAVCThing@@@Z
+007b0800	??0CTCFishing@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCFishing@@QAE@AAVCThing@@@Z
+007e7640	??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCFireheartMinigame@@QAE@AAVCThing@@@Z
+0073a9b0	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z	RELOCATION_MATCH	??0CAnimEntryLite@NAnimationEntryBodge@@QAE@ABVCAnimationEntry@@@Z
+0087cd50	?PerformAction@CCreatureAction_InterruptableMidAttackAutoTurn@@QAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_InterruptableMidAttackAutoTurn@@QAEXXZ
+00853120	??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z	RELOCATION_MATCH	??0CScriptModuleUseLamp@NCameraModes@@QAE@ABVCThing@@0J@Z
+00442cc0	?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z	RELOCATION_MATCH	?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+00443010	?vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z	RELOCATION_MATCH	?vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+00443080	?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z	RELOCATION_MATCH	?CLandscapeBackgroundPatch_vector_deleting_destructor@CLandscapeBackgroundPatch@@QAEPAXI@Z
+004c3360	?_Dest_val_SymbolPair@@YIXPAUSymbolPair@@0@Z	RELOCATION_MATCH	?_Dest_val_SymbolPair@@YIXPAUSymbolPair@@0@Z

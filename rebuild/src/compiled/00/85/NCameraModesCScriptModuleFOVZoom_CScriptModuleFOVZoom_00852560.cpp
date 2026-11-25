@@ -1,5 +1,8 @@
 // NCameraModes::CScriptModuleFOVZoom::CScriptModuleFOVZoom(const C3DVector& lookAt, const C3DVector& from, const C3DVector& to, float fovFraction, long frames, bool shortenOnOcclusion) -- constructor: store the look-at, start and options, default 0 frames to 15, compute the per-frame increment and the end frame
 // Leaf: ??0CScriptModuleFOVZoom
+// Naming (NF450 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005ED070 ??0CScriptModuleBase@NCameraModes@@QAE@XZ (was ??0CScriptModuleBase@@QAE@XZ); the model class is wrapped in namespace NCameraModes (PDB scope) with a using-declaration; the ctor is reached by implicit base initialisation (no call-site edit); r449a
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852560, length 144 bytes (130 + int3 padding).
 // Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070,
@@ -17,11 +20,11 @@ public:
 
 #include "engine/C3DVector.h"
 
-struct CScriptModuleBase {
+namespace NCameraModes { struct CScriptModuleBase {
     virtual void v00();
     unsigned char m_state[0x4c - 4];
     CScriptModuleBase();                             // 0x005ED070
-};
+}; } using NCameraModes::CScriptModuleBase;
 
 namespace NCameraModes {
 

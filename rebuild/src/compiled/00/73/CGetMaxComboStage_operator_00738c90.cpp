@@ -19,11 +19,14 @@ struct CComboDef {
     long Stage;                                   // +0x08
     long ComboType;                               // +0x0C
 };
+// Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00738980 ??$GetComponent@VCAnimComponentCombatComboChain@@@CAnimationEntry@@QBEXPAPBVCAnimComponentCombatComboChain@@@Z (was ?GetComboDef@CAnimationEntry@@QBEXPAPBUCComboDef@@@Z)
+class CAnimComponentCombatComboChain;
 class CAnimationEntry {
 public:
     long m_words[4];
-    void GetComboDef(const CComboDef** out) const;   // 0x00738980
-};
+ public: template <class T1> void GetComponent(T1 const**) const; };
 class CGetMaxComboStage {
 public:
     long MaxStage;                                // +0x00
@@ -34,7 +37,7 @@ public:
 void CGetMaxComboStage::operator()(const std::pair<unsigned long, CAnimationEntry>& entry)
 {
     const CComboDef* def;
-    entry.second.GetComboDef(&def);
+    reinterpret_cast<const CAnimationEntry*>(&(entry.second))->GetComponent<CAnimComponentCombatComboChain>(reinterpret_cast<CAnimComponentCombatComboChain const**>(&def));
     if (def->ComboType == CurrentID && def->Stage > MaxStage)
         MaxStage = def->Stage;
 }
