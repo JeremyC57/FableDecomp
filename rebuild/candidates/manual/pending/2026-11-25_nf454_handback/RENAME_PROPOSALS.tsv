@@ -1,0 +1,120 @@
+address	symbol	reason	proposed_name	place
+00415050	?ScalarDeletingDestructor@CConsoleClasslessCommand@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCConsoleClasslessCommand@@UAEPAXI@Z (QAE if not polymorphic)	game
+004317b0	?ScalarDeletingDestructor@CUIMiscThingsDef@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCUIMiscThingsDef@@UAEPAXI@Z (QAE if not polymorphic)	game
+00431dd0	?ScalarDeletingDestructor@CUIIconsDef@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCUIIconsDef@@UAEPAXI@Z (QAE if not polymorphic)	game
+004c7000	?ScalarDeletingDestructor@CMessageBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCMessageBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+004cb780	?ScalarDeletingDestructor@CMessageClearPrimitives@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCMessageClearPrimitives@@UAEPAXI@Z (QAE if not polymorphic)	game
+0051a3d0	?ScalarDeletingDestructor@CObject@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCObject@@UAEPAXI@Z (QAE if not polymorphic)	game
+0051adc0	?ScalarDeletingDestructor@CRegion@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCRegion@@UAEPAXI@Z (QAE if not polymorphic)	game
+005297d0	?ScalarDeletingDestructor@CThingPhysical@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingPhysical@@UAEPAXI@Z (QAE if not polymorphic)	game
+005298c0	?ScalarDeletingDestructor@CThingGameObject@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingGameObject@@UAEPAXI@Z (QAE if not polymorphic)	game
+005299a0	?ScalarDeletingDestructor@CThingBuilding@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingBuilding@@UAEPAXI@Z (QAE if not polymorphic)	game
+00529a40	?ScalarDeletingDestructor@CThingVillage@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingVillage@@UAEPAXI@Z (QAE if not polymorphic)	game
+00529c30	?ScalarDeletingDestructor@CThingMarker@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingMarker@@UAEPAXI@Z (QAE if not polymorphic)	game
+005455f0	?ScalarDeletingDestructor@CSpellContainerList@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCSpellContainerList@@UAEPAXI@Z (QAE if not polymorphic)	game
+0056a740	?ScalarDeletingDestructor@CTCHeroOnlineScoreboard@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCHeroOnlineScoreboard@@UAEPAXI@Z (QAE if not polymorphic)	game
+0056e1f0	?ScalarDeletingDestructor@CBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+0056e410	?ScalarDeletingDestructor@CTCBoastUI@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCBoastUI@@UAEPAXI@Z (QAE if not polymorphic)	game
+0057a28b	?ScalarDeletingDestructor@CTCInventoryExperience@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCInventoryExperience@@UAEPAXI@Z (QAE if not polymorphic)	game
+0059b641	?ScalarDeletingDestructor@CFrontEndManager@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCFrontEndManager@@UAEPAXI@Z (QAE if not polymorphic)	game
+005d9f50	?ScalarDeletingDestructor@CMessageOnPickup@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCMessageOnPickup@@UAEPAXI@Z (QAE if not polymorphic)	game
+00628610	?ScalarDeletingDestructor@CTCQuickAccessMenu@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCQuickAccessMenu@@UAEPAXI@Z (QAE if not polymorphic)	game
+00631510	?ScalarDeletingDestructor@CUIDef@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCUIDef@@UAEPAXI@Z (QAE if not polymorphic)	game
+00637830	?ScalarDeletingDestructor@CMoveOnCylinder@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCMoveOnCylinder@@UAEPAXI@Z (QAE if not polymorphic)	game
+00642670	?ScalarDeletingDestructor@CTCLight@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCLight@@UAEPAXI@Z (QAE if not polymorphic)	game
+00670c50	?ScalarDeletingDestructor@CTCCoopSpirit@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCCoopSpirit@@UAEPAXI@Z (QAE if not polymorphic)	game
+006953c0	?ScalarDeletingDestructor@CActionEventBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCActionEventBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+006954d0	?ScalarDeletingDestructor@CActionEventCameraShake@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCActionEventCameraShake@@UAEPAXI@Z (QAE if not polymorphic)	game
+00695540	?ScalarDeletingDestructor@CActionEventSound@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCActionEventSound@@UAEPAXI@Z (QAE if not polymorphic)	game
+006955b0	?ScalarDeletingDestructor@CActionEventShot@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCActionEventShot@@UAEPAXI@Z (QAE if not polymorphic)	game
+006cd7f0	?ScalarDeletingDestructor@CTCCreatureNavigation@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCCreatureNavigation@@UAEPAXI@Z (QAE if not polymorphic)	game
+006e1ad0	?ScalarDeletingDestructor@CParticleUpdateParamDesc@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCParticleUpdateParamDesc@@UAEPAXI@Z (QAE if not polymorphic)	game
+00702bf0	?ScalarDeletingDestructor@CTCDayOrNightOnlySupport@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCDayOrNightOnlySupport@@UAEPAXI@Z (QAE if not polymorphic)	game
+00709970	?ScalarDeletingDestructor@CTCHeroAttachableAppearanceModifiers@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCHeroAttachableAppearanceModifiers@@UAEPAXI@Z (QAE if not polymorphic)	game
+0070b680	?ScalarDeletingDestructor@CTCAnimationBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCAnimationBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+00723450	?ScalarDeletingDestructor@CTCPhysicsLight@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCPhysicsLight@@UAEPAXI@Z (QAE if not polymorphic)	game
+00728590	?ScalarDeletingDestructor@CTCRandomAppearanceMorph@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCRandomAppearanceMorph@@UAEPAXI@Z (QAE if not polymorphic)	game
+0072dd30	?ScalarDeletingDestructor@CTCInventoryMagic@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCInventoryMagic@@UAEPAXI@Z (QAE if not polymorphic)	game
+00731a00	?ScalarDeletingDestructor@CTCJackPillar@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCJackPillar@@UAEPAXI@Z (QAE if not polymorphic)	game
+00739d20	?ScalarDeletingDestructor@CTCCombat@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCCombat@@UAEPAXI@Z (QAE if not polymorphic)	game
+0073e5f0	?ScalarDeletingDestructor@CModeCarryingStandBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCModeCarryingStandBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+0073eb70	?ScalarDeletingDestructor@CModeNull@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCModeNull@@UAEPAXI@Z (QAE if not polymorphic)	game
+0073ebc0	?ScalarDeletingDestructor@CModeBasic@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCModeBasic@@UAEPAXI@Z (QAE if not polymorphic)	game
+00755460	?ScalarDeletingDestructor@CTCLook@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCLook@@UAEPAXI@Z (QAE if not polymorphic)	game
+0075c950	?ScalarDeletingDestructor@CTCCameraPointDefinitionBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCCameraPointDefinitionBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+00765810	?ScalarDeletingDestructor@CTCShapeManager@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCShapeManager@@UAEPAXI@Z (QAE if not polymorphic)	game
+00765b10	?ScalarDeletingDestructor@CBasicShape@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCBasicShape@@UAEPAXI@Z (QAE if not polymorphic)	game
+0076c790	?ScalarDeletingDestructor@CTCObjectAugmentations@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCObjectAugmentations@@UAEPAXI@Z (QAE if not polymorphic)	game
+0076d980	?ScalarDeletingDestructor@CTCBandit@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCBandit@@UAEPAXI@Z (QAE if not polymorphic)	game
+00771250	?ScalarDeletingDestructor@CTCDriverBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCDriverBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+00779990	?ScalarDeletingDestructor@CTCDRegionExit@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCDRegionExit@@UAEPAXI@Z (QAE if not polymorphic)	game
+0077fed0	?ScalarDeletingDestructor@CTCHeroCentreDoorMarker@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCHeroCentreDoorMarker@@UAEPAXI@Z (QAE if not polymorphic)	game
+00782700	?ScalarDeletingDestructor@CTCBoastingPosition@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCBoastingPosition@@UAEPAXI@Z (QAE if not polymorphic)	game
+00782b20	?ScalarDeletingDestructor@CTCBoastingArea@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCBoastingArea@@UAEPAXI@Z (QAE if not polymorphic)	game
+00784ce0	?ScalarDeletingDestructor@CTCCreatureGroupBoastingCrowd@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCCreatureGroupBoastingCrowd@@UAEPAXI@Z (QAE if not polymorphic)	game
+00798cc0	?ScalarDeletingDestructor@CTCForcePushed@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCForcePushed@@UAEPAXI@Z (QAE if not polymorphic)	game
+0079f510	?ScalarDeletingDestructor@CTCPhysicalShieldSpell@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCPhysicalShieldSpell@@UAEPAXI@Z (QAE if not polymorphic)	game
+007a6be0	?ScalarDeletingDestructor@CMessageOnMeshReplaced@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCMessageOnMeshReplaced@@UAEPAXI@Z (QAE if not polymorphic)	game
+007a6df0	?ScalarDeletingDestructor@CTCGraphicAppearanceReplaceableMesh@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCGraphicAppearanceReplaceableMesh@@UAEPAXI@Z (QAE if not polymorphic)	game
+007ab5e0	?ScalarDeletingDestructor@CTCAssassinRush@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCAssassinRush@@UAEPAXI@Z (QAE if not polymorphic)	game
+007bad80	?ScalarDeletingDestructor@CTCTrespassable@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCTrespassable@@UAEPAXI@Z (QAE if not polymorphic)	game
+007be696	?ScalarDeletingDestructor@CTCShotDefinitionMultiArrow@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCShotDefinitionMultiArrow@@UAEPAXI@Z (QAE if not polymorphic)	game
+007c66b0	?ScalarDeletingDestructor@CTCGhostSword@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCGhostSword@@UAEPAXI@Z (QAE if not polymorphic)	game
+007c8100	?ScalarDeletingDestructor@CTCTurncoat@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCTurncoat@@UAEPAXI@Z (QAE if not polymorphic)	game
+007c95c0	?ScalarDeletingDestructor@CTCFireballSpell@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCFireballSpell@@UAEPAXI@Z (QAE if not polymorphic)	game
+007cbea0	?ScalarDeletingDestructor@CTCGold@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCGold@@UAEPAXI@Z (QAE if not polymorphic)	game
+007ce1b0	?ScalarDeletingDestructor@CTCBurntEffect@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCBurntEffect@@UAEPAXI@Z (QAE if not polymorphic)	game
+007cf390	?ScalarDeletingDestructor@CTCCreatureTintEffect@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCCreatureTintEffect@@UAEPAXI@Z (QAE if not polymorphic)	game
+007d4d90	?ScalarDeletingDestructor@CTCTavernGameCoinGolf@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCTavernGameCoinGolf@@UAEPAXI@Z (QAE if not polymorphic)	game
+007d5f10	?ScalarDeletingDestructor@CTCTavernGameCardSorting@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCTavernGameCardSorting@@UAEPAXI@Z (QAE if not polymorphic)	game
+007e0600	?ScalarDeletingDestructor@CTCTeleporter@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCTeleporter@@UAEPAXI@Z (QAE if not polymorphic)	game
+007e5b10	?ScalarDeletingDestructor@CTCLifeTimer@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCLifeTimer@@UAEPAXI@Z (QAE if not polymorphic)	game
+007eef60	?ScalarDeletingDestructor@CTCSmashableBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCSmashableBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+007f7a50	?ScalarDeletingDestructor@CTCActivationReceptorBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCActivationReceptorBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+00811e90	?ScalarDeletingDestructor@CEventSoldItem@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCEventSoldItem@@UAEPAXI@Z (QAE if not polymorphic)	game
+008359c0	?ScalarDeletingDestructor@CThingAICreature@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingAICreature@@UAEPAXI@Z (QAE if not polymorphic)	game
+00836680	?ScalarDeletingDestructor@CThingDeadCreature@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingDeadCreature@@UAEPAXI@Z (QAE if not polymorphic)	game
+00836c10	?ScalarDeletingDestructor@CThingSoundEmitter@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingSoundEmitter@@UAEPAXI@Z (QAE if not polymorphic)	game
+00838740	?ScalarDeletingDestructor@CThingNoise@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingNoise@@UAEPAXI@Z (QAE if not polymorphic)	game
+0083b0f0	?ScalarDeletingDestructor@CEventHitBy@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCEventHitBy@@UAEPAXI@Z (QAE if not polymorphic)	game
+0085ecf0	?ScalarDeletingDestructor@CThingMap@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThingMap@@UAEPAXI@Z (QAE if not polymorphic)	game
+00873b60	?ScalarDeletingDestructor@CLookAtFront@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCLookAtFront@@UAEPAXI@Z (QAE if not polymorphic)	game
+00884be0	?ScalarDeletingDestructor@CScreenEffectPriorityStack@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCScreenEffectPriorityStack@@UAEPAXI@Z (QAE if not polymorphic)	game
+008aaf30	?ScalarDeletingDestructor@CScriptModuleDollyThing@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCScriptModuleDollyThing@@UAEPAXI@Z (QAE if not polymorphic)	game
+008e3570	?ScalarDeletingDestructor@CModeSitBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCModeSitBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+008ece80	?ScalarDeletingDestructor@CTCDegradableBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCTCDegradableBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+009704b0	?ScalarDeletingDestructor@CCreatureAction_SummonerChargeSuccess@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCCreatureAction_SummonerChargeSuccess@@UAEPAXI@Z (QAE if not polymorphic)	game
+009bdc30	?ScalarDeletingDestructor@CThreadedFileCallback@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCThreadedFileCallback@@UAEPAXI@Z (QAE if not polymorphic)	game
+00a010a0	?ScalarDeletingDestructor@CFrameData@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCFrameData@@UAEPAXI@Z (QAE if not polymorphic)	game
+00a2db10	?ScalarDeletingDestructor@CAnimationData@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCAnimationData@@UAEPAXI@Z (QAE if not polymorphic)	game
+00aab9a0	?ScalarDeletingDestructor@CASoundEmitter@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCASoundEmitter@@UAEPAXI@Z (QAE if not polymorphic)	game
+00aacf70	?ScalarDeletingDestructor@CASoundReceiver@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCASoundReceiver@@UAEPAXI@Z (QAE if not polymorphic)	game
+00aad0d0	?ScalarDeletingDestructor@CSoundReceiverLH@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCSoundReceiverLH@@UAEPAXI@Z (QAE if not polymorphic)	game
+00ad8770	?ScalarDeletingDestructor@COptimisedPrimitive@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCOptimisedPrimitive@@UAEPAXI@Z (QAE if not polymorphic)	game
+00af2360	?ScalarDeletingDestructor@CParticleUpdateParamCallback@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCParticleUpdateParamCallback@@UAEPAXI@Z (QAE if not polymorphic)	game
+00af2af0	?ScalarDeletingDestructor@CPSCBase@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCPSCBase@@UAEPAXI@Z (QAE if not polymorphic)	game
+00af7cc0	?ScalarDeletingDestructor@CParticleSystem@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCParticleSystem@@UAEPAXI@Z (QAE if not polymorphic)	game
+00b05ad0	?ScalarDeletingDestructor@CPSCRenderMesh@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCPSCRenderMesh@@UAEPAXI@Z (QAE if not polymorphic)	game
+00b0f3a0	?ScalarDeletingDestructor@CRandomAcceleration@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCRandomAcceleration@@UAEPAXI@Z (QAE if not polymorphic)	game
+00b2ee00	?ScalarDeletingDestructor@CCompositeSurfaceCache@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCCompositeSurfaceCache@@UAEPAXI@Z (QAE if not polymorphic)	game
+00b970f0	?ScalarDeletingDestructor@CEngineSceneGridCell@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCEngineSceneGridCell@@UAEPAXI@Z (QAE if not polymorphic)	game
+00bdfa10	?ScalarDeletingDestructor@CQuadTreeElement@CLocalDetailCacheMap@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCQuadTreeElement@CLocalDetailCacheMap@@UAEPAXI@Z (QAE if not polymorphic)	game
+00bf34b0	?ScalarDeletingDestructor@CEngineDynamic3DResource@@QAEPAXI@Z	stand-in method for the compiler scalar deleting destructor	??_GCEngineDynamic3DResource@@UAEPAXI@Z (QAE if not polymorphic)	game
+00c1c900	?RotateB@CMatrix3x4@@QAEXM@Z	letter-suffix disambiguator; body rotates Y/Z rows, i.e. about the X axis	?RotateX@CMatrix3x4@@QAEXM@Z	libpk
+00c1c990	?RotateA@CMatrix3x4@@QAEXM@Z	letter-suffix disambiguator; body rotates X/Z rows, i.e. about the Y axis	?RotateY@CMatrix3x4@@QAEXM@Z	libpk
+00c1ca20	?RotateC@CMatrix3x4@@QAEXM@Z	letter-suffix disambiguator; body rotates X/Y rows, i.e. about the Z axis	?RotateZ@CMatrix3x4@@QAEXM@Z	libpk
+00c3c380	?operator_new@@YGPAXI@Z	operator_new stand-in spelling; body is the libpk allocator, malloc(n) (pair of AudioFree 0xC3C370)	?AudioAlloc@@YGPAXI@Z	libpk
+00c46550	??0SRegionLookupKey00c46550@@QAE@ABVC2DVector@@@Z	address-suffixed placeholder scope SRegionLookupKey00c46550	??0SRegionLookupKey@@QAE@ABVC2DVector@@@Z	libpk
+00c46570	??0SRegionLookupEntry00c46570@@QAE@ABVC2DVector@@@Z	address-suffixed placeholder scope SRegionLookupEntry00c46570	??0SRegionLookupEntry@@QAE@ABVC2DVector@@@Z	libpk
+00c62350	?SetLungedThisFrame@@YAMXZ	NBalverineCombat::SetLungedThisFrame label on a libpk body: returns (float)rand() * g_scale_0129c81c	?RandomFloat@@YAMXZ	libpk
+00c889f0	??YCQuadric@@QAEAAU0@ABU0@@Z	Fable-game name on a libpk body (label propagated from a byte-identical Fable function; libpk is a separate library, 0xC086C0-0xC89C10) (QuadricOptimiserInternals::CQuadric); body is an SSE __m128 add, the Intel fvec.h F32vec4::operator+= that libpk uses with its ivec classes	??YF32vec4@@QAEAAV0@ABV0@@Z	libpk
+012b3230	?kTexScale_c1bb00@@3MB	address-suffixed placeholder	?kTexScale@@3MB	data
+012b4178	?g_vt_c2a620@@3HA	address-suffixed placeholder	?g_vt@@3HA	data
+0137544a	?g_bFrontEndFlag_137544A@@3_NA	address-suffixed placeholder	?g_bFrontEndFlag@@3_NA	data
+0137548f	?g_bFrontEndFlag_137548F@@3_NA	address-suffixed placeholder	?g_bFrontEndFlag@@3_NA	data
+013b8637	?g_displaySwitch_13b8637@@3EA	address-suffixed placeholder	?g_displaySwitch@@3EA	data
+013b8638	?g_displayMode_13b8638@@3JA	address-suffixed placeholder	?g_displayMode@@3JA	data
+013b863c	?g_displaySwitch_13b863c@@3EA	address-suffixed placeholder	?g_displaySwitch@@3EA	data
+013b863d	?g_displaySwitch_13b863d@@3EA	address-suffixed placeholder	?g_displaySwitch@@3EA	data
+013b863e	?g_displaySwitch_13b863e@@3EA	address-suffixed placeholder	?g_displaySwitch@@3EA	data
+013b86c6	?g_displaySwitch_13b86c6@@3EA	address-suffixed placeholder	?g_displaySwitch@@3EA	data

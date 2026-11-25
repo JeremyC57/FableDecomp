@@ -1,0 +1,223 @@
+address	symbol	basis	note
+00a3bd00	?QueryInterface@CBaseVideoRenderer@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+00c8ccf0	@ogg_page_version@4	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+00ca47d0	?WaitForReceiveToComplete@CBaseRenderer@@QAEXXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca48a0	??0CAutoLock@@QAE@PAVCCritSec@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca4910	?FindPin@CBaseRenderer@@UAGJPBGPAPAUIPin@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca4990	?EndFlush@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca49c0	?Inactive@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca49f0	?GetSampleTimes@CBaseRenderer@@UAEJPAUIMediaSample@@PA_J1@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca4a70	?CancelNotification@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca4aa0	?ScheduleSample@CBaseRenderer@@UAEHPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca4b20	?Render@CBaseRenderer@@UAEJPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca4b60	?HaveCurrentSample@CBaseRenderer@@UAEHXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca51c0	?QueryId@CRendererInputPin@@UAGJPAPAG@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca52a0	?ResetStreamingTimes@CBaseVideoRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5380	?OnStopStreaming@CBaseVideoRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5400	?RecordFrameLateness@CBaseVideoRenderer@@UAEXHH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5570	?OnDirectRender@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca55e0	?OnRenderStart@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5610	?OnRenderEnd@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5850	?ShouldDrawSampleNow@CBaseVideoRenderer@@UAEJPAUIMediaSample@@PA_J1@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5cf0	?ScheduleSample@CBaseVideoRenderer@@UAEHPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5d50	?get_FramesDroppedInRenderer@CBaseVideoRenderer@@UAGJPAH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5da0	?get_FramesDrawn@CBaseVideoRenderer@@UAGJPAH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5df0	?get_AvgFrameRate@CBaseVideoRenderer@@UAGJPAH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5e70	?get_AvgSyncOffset@CBaseVideoRenderer@@UAGJPAH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca5ee0	?isqrt@@YGHH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6020	?get_DevSyncOffset@CBaseVideoRenderer@@UAGJPAH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6050	?get_Jitter@CBaseVideoRenderer@@UAGJPAH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6110	?JoinFilterGraph@CBaseVideoRenderer@@UAGJPAUIFilterGraph@@PBG@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6580	?SourceThreadCanWait@CBaseRenderer@@UAEJH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca65b0	?WaitForRenderTime@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6670	?CompleteStateChange@CBaseRenderer@@UAEJW4_FilterState@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6b00	?EndOfStream@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6b40	?BeginFlush@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6b80	?CompleteConnect@CBaseRenderer@@UAEJPAUIPin@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6bc0	?BreakConnect@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca6f90	?SendEndOfStream@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7030	?ResetEndOfStream@CBaseRenderer@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7310	??1CBaseVideoRenderer@@UAE@XZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7500	?NonDelegatingQueryInterface@CBaseFilter@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7780	??1CUnknown@@UAE@XZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca77a0	?StreamTime@CBaseFilter@@UAEJAAVCRefTime@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7a80	?QueryInterface@CEnumPins@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7ae0	?AddRef@CEnumPins@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7b00	?Release@CEnumPins@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7b30	?Reset@CEnumPins@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7b60	?Refresh@CEnumPins@@AAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7bb0	?QueryInterface@CEnumMediaTypes@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7c10	?AddRef@CEnumMediaTypes@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7c30	?Release@CEnumMediaTypes@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7c60	?Reset@CEnumMediaTypes@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7ce0	?NonDelegatingQueryInterface@CBasePin@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7dc0	?AttemptConnection@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7e90	?TryMediaTypes@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@PAUIEnumMediaTypes@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca7fb0	?AgreeMediaType@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca80c0	?CheckConnect@CBasePin@@UAEJPAUIPin@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8340	?ConnectedTo@CBasePin@@UAGJPAPAUIPin@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8490	?QueryDirection@CBasePin@@UAGJPAW4_PinDirection@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca84b0	?QueryId@CBasePin@@UAGJPAPAG@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca84c0	?QueryAccept@CBasePin@@UAGJPBU_AMMediaType@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8560	?SetSink@CBasePin@@UAGJPAUIQualityControl@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca85a0	?NewSegment@CBasePin@@UAGJ_J0N@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8660	?BreakConnect@CBaseOutputPin@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca86b0	?InitAllocator@CBaseOutputPin@@UAEJPAPAUIMemAllocator@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca86d0	?DecideAllocator@CBaseOutputPin@@UAEJPAUIMemInputPin@@PAPAUIMemAllocator@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca87c0	?GetDeliveryBuffer@CBaseOutputPin@@UAEJPAPAUIMediaSample@@PA_J1K@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca87f0	?Deliver@CBaseOutputPin@@UAEJPAUIMediaSample@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca88f0	?DeliverNewSegment@CBaseOutputPin@@UAEJ_J0N@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca89a0	?NonDelegatingQueryInterface@CBaseInputPin@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8cf0	?ReceiveMultiple@CBaseInputPin@@UAGJPAPAUIMediaSample@@JPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8e10	?BeginFlush@CBaseInputPin@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8e40	?EndFlush@CBaseInputPin@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca8ed0	?CheckStreaming@CBaseInputPin@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9000	?QueryInterface@CMediaSample@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9060	?AddRef@CMediaSample@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9080	?Release@CMediaSample@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9130	?GetTime@CMediaSample@@UAGJPA_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca91a0	?SetTime@CMediaSample@@UAGJPA_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9210	?GetMediaTime@CMediaSample@@UAGJPA_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9250	?SetMediaTime@CMediaSample@@UAGJPA_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca92b0	?SetSyncPoint@CMediaSample@@UAGJH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9300	?SetDiscontinuity@CMediaSample@@UAGJH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9350	?SetPreroll@CMediaSample@@UAGJH@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9390	?SetActualDataLength@CMediaSample@@UAGJJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca93b0	?GetMediaType@CMediaSample@@UAGJPAPAU_AMMediaType@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca93f0	?SetMediaType@CMediaSample@@UAGJPAU_AMMediaType@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9450	?GetProperties@CMediaSample@@UAGJKPAE@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9510	?SetProperties@CMediaSample@@UAGJKPBE@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9690	??1CDynamicOutputPin@@UAE@XZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca96f0	?QueryInterface@CDynamicOutputPin@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+00ca9700	?AddRef@CDynamicOutputPin@@UAGKXZ	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+00ca9710	?Release@CDynamicOutputPin@@UAGKXZ	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+00ca97a0	?Disconnect@CDynamicOutputPin@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9860	?UnblockOutputPin@CDynamicOutputPin@@IAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9a00	?StopUsingOutputPin@CDynamicOutputPin@@UAEXXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9a40	?StreamingThreadUsingOutputPin@CDynamicOutputPin@@UAE_NXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9a90	?Active@CDynamicOutputPin@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9ae0	?Inactive@CDynamicOutputPin@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9b10	?DeliverBeginFlush@CDynamicOutputPin@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9b40	?DeliverEndFlush@CDynamicOutputPin@@UAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9c80	?CompleteConnect@CDynamicOutputPin@@UAEJPAUIPin@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9d70	?NonDelegatingQueryInterface@CBaseAllocator@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00ca9f20	?GetBuffer@CBaseAllocator@@UAGJPAPAUIMediaSample@@PA_J1K@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caa040	?GetFreeCount@CBaseAllocator@@UAGJPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caa860	?SetSyncSource@CBaseMediaFilter@@UAGJPAUIReferenceClock@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caa8d0	?GetSyncSource@CBaseMediaFilter@@UAGJPAPAUIReferenceClock@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caa9c0	?Run@CBaseMediaFilter@@UAGJ_J@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caaea0	?Register@CBaseFilter@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caaf10	?Unregister@CBaseFilter@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caafc0	?Next@CEnumPins@@UAGJKPAPAUIPin@@PAK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cab0e0	?Skip@CEnumPins@@UAGJK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cac400	?SynchronousBlockOutputPin@CDynamicOutputPin@@IAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cac920	?Block@CDynamicOutputPin@@UAGJKPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cacd00	?NonDelegatingAddRef@CUnknown@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cacd20	?NonDelegatingRelease@CUnknown@@UAGKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cacd90	?GetTypeInfo@CBaseDispatch@@QAGJABU_GUID@@IKPAPAUITypeInfo@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cace70	?GetIDsOfNames@CBaseDispatch@@QAGJABU_GUID@@PAPAGIKPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad290	?GetTypeInfoCount@CMediaPosition@@UAGJPAI@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad2b0	?GetTypeInfo@CMediaPosition@@UAGJIKPAPAUITypeInfo@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad2e0	?GetIDsOfNames@CMediaPosition@@UAGJABU_GUID@@PAPAGIKPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad380	?NonDelegatingQueryInterface@CPosPassThru@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad4c0	?GetCapabilities@CPosPassThru@@UAGJPAK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad500	?CheckCapabilities@CPosPassThru@@UAGJPAK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad540	?IsFormatSupported@CPosPassThru@@UAGJPBU_GUID@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad580	?QueryPreferredFormat@CPosPassThru@@UAGJPAU_GUID@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad5c0	?SetTimeFormat@CPosPassThru@@UAGJPBU_GUID@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad640	?IsUsingTimeFormat@CPosPassThru@@UAGJPBU_GUID@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad680	?ConvertTimeFormat@CPosPassThru@@UAGJPA_JPBU_GUID@@_J1@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad6d0	?SetPositions@CPosPassThru@@UAGJPA_JK0K@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad720	?GetPositions@CPosPassThru@@UAGJPA_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad790	?GetAvailable@CPosPassThru@@UAGJPA_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad7d0	?GetRate@CPosPassThru@@UAGJPAN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad810	?SetRate@CPosPassThru@@UAGJN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad870	?get_Duration@CPosPassThru@@UAGJPAN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad8b0	?get_CurrentPosition@CPosPassThru@@UAGJPAN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad8f0	?put_CurrentPosition@CPosPassThru@@UAGJN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad930	?get_StopTime@CPosPassThru@@UAGJPAN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad970	?put_StopTime@CPosPassThru@@UAGJN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cad9c0	?get_PrerollTime@CPosPassThru@@UAGJPAN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cada00	?put_PrerollTime@CPosPassThru@@UAGJN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cada40	?get_Rate@CPosPassThru@@UAGJPAN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cada80	?put_Rate@CPosPassThru@@UAGJN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cadae0	?CanSeekForward@CPosPassThru@@UAGJPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cadb50	?CanSeekBackward@CPosPassThru@@UAGJPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cadcc0	?RegisterMediaTime@CRendererPosPassThru@@QAEJ_J0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cae9b0	??0CDispParams@@QAE@IPAUtagVARIANT@@PAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caebb0	??1CDispParams@@QAE@XZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caec30	?NonDelegatingQueryInterface@CDeferredCommand@@UAGJABU_GUID@@PAPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caec80	?Cancel@CDeferredCommand@@UAGJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caecc0	?GetHResult@CDeferredCommand@@UAGJPAJ@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caecf0	?Postpone@CDeferredCommand@@UAGJN@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caed50	?Invoke@CDeferredCommand@@QAEJXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caf090	?GetCurrentPosition@CPosPassThru@@UAGJPA_J@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caf0e0	?GetStopPosition@CPosPassThru@@UAGJPA_J@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caf120	?GetDuration@CPosPassThru@@UAGJPA_J@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00caf160	?GetPreroll@CPosPassThru@@UAGJPA_J@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cafce0	??0CRendererPosPassThru@@QAE@PBGPAUIUnknown@@PAJPAUIPin@@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb0160	?EnlargedUnsignedDivide@@YGKT_ULARGE_INTEGER@@KPAK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb0190	??0CAMEvent@@QAE@H@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb01c0	?WaitMsg@CAMMsgEvent@@QAEHK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb09a0	?WaitDispatchingMessages@@YGKPAXKPAUHWND__@@I0@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb0d80	?InitialThreadProc@CAMThread@@SGKPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb0e90	?GetRequest@CAMThread@@QAEKXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb0fc0	?DefaultThreadProc@CMsgThread@@CGKPAX@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb1210	??1CNodeCache@CBaseList@@QAE@XZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb19c0	?ResetFormatBuffer@CMediaType@@QAEXXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb19e0	?AllocFormatBuffer@CMediaType@@QAEPAEK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb1a40	?ReallocFormatBuffer@CMediaType@@QAEPAEK@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb1ac0	?InitMediaType@CMediaType@@QAEXXZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb1d00	??0CMediaType@@QAE@XZ	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+00cb1dc0	??8CMediaType@@QBEHABV0@@Z	one-source:vendor-object	spelling equals the lib_verify section symbol (high confidence, no bad relocation)
+0122ed70	__real@0000000000000000	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012ae260	_configuration_table	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012aed48	_extra_lbits	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012aedc0	_extra_dbits	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012aee84	_bl_order	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012aee98	_static_ltree	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012af318	_static_dtree	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012af390	__dist_code	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012af590	__length_code	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012af690	_base_length	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012af708	_base_dist	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012af780	_crc_table	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012b1780	_z_errmsg	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+012bf854	_szOle32Aut	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+0139c8b0	_static_l_desc	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+0139c8c4	_static_d_desc	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+0139c8d8	_static_bl_desc	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+013abd90	_vwin	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+013b86f4	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x3dd4413a@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013b8778	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x5861593c@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013b8798	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xed1f4720@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013b89d4	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x3b0c6050@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013b8a7c	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x5c8fffb5@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013b8bc4	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xb41d3c3b@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013ba878	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xdd92888c@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013ba884	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x8d516dee@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013ba894	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x361ea95f@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bab18	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x401eb551@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bab1c	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xf34eebc5@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bab28	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xc30fb71b@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bab80	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xde18b8ce@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bad2c	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x7279e915@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bada4	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x2b7c9161@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bada8	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x3b43a52b@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013baddc	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x15fa76f0@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013badf0	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x90fad426@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bae08	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x73696fd0@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bae0c	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x63565b9a@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bae6c	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x269d2b08@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013baf58	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xf7794bc3@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bafa0	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xd1df023d@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bafa4	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xc1e03677@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bb668	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xe60242f2@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bb694	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x7edc6e07@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bb6c0	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x6ee35a4d@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bb734	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xea605068@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bb740	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x0bc56c7d@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bc3a0	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x3af106f4@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+013bc3a8	?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x42531127@@3VCCharString@@A	one-source:egor-pdb-initializer	name proven by the Ego_r PDB dynamic-initializer names; the ?A0x hash is per TU
+0143ccf0	?hlibOLEAut32@@3PAUHINSTANCE__@@A	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
+0143ccf8	?uMsgId@?1??WaitDispatchingMessages@@YGKPAXKPAUHWND__@@I0@Z@4IA	one-source:vendor-object	named by an ok/sec relocation of a lib_verify vendor section
