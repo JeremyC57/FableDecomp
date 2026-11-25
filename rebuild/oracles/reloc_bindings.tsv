@@ -38972,3 +38972,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ??1CVillageDef@@UAE@XZ	004e2170	004e2154
 ??1CWeaponDef@@UAE@XZ	004e3d4a	004e3d2e
 ?ReadFromParser@CGenericVarRef@@QAE_NAAVCStringParser@@@Z	00a63fc0	009ec430
+?_M_insert_overflow@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@IAEXPAPBU?$pair@KVCAnimationEntry@@@2@ABQBU32@ABU__true_type@2@I_N@Z	005e1500	005dcc00
+?reserve@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@QAEXI@Z	005e15e0	005dcc00

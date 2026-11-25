@@ -1,0 +1,8 @@
+005dcc00 CAnimationSet::GetRandomAnim RELOCATION_MATCH
+OK   00497890 +db    split_fixable    ?GFROR13@@YIJK@Z   [landed: ?GFROR13@@YIKK@Z]
+OK   005dc020 +31    agree_std        ?FindFirstAnimWithName@CAnimationSet@@QBEPBU?$pair@KVCAnimationEntry@@@std@@ABVCCharString@@@Z
+OK   005dcc00 self   agree_pdb        ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z
+FAIL 005e1500 +9d    split_unknown    ?_M_insert_overflow@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@IAEXPAPBU?$pair@KVCAnimationEntry@@@2@ABQBU32@ABU__true_type@2@I_N@Z   [landed: ?_M_insert_overflow@?$vector@PAVCUnprovenElement_005e1500@@V?$allocator@PAVCUnprovenElement_005e1500@@@std@@@std@@IAEX]
+FAIL 005e15e0 +25    split_fixable    ?reserve@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@QAEXI@Z   [landed: ?reserve@?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAEXI@Z]
+OK   00bfea14 +f5    agree_std        _free
+NAME_GATE FAIL (2)

@@ -27366,3 +27366,6 @@ address	symbol	status	leaf_given
 009d47a0	??_GCBankFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GCBankFile@@UAEPAXI@Z
 00a628b0	??_GCShaderBankEntry@@UAEPAXI@Z	RELOCATION_MATCH	??_GCShaderBankEntry@@UAEPAXI@Z
 00d005c0	??_GCQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z	RELOCATION_MATCH	??_GCQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+005dcc00	?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z	RELOCATION_MATCH	?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z
+005e15e0	?reserve@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@QAEXI@Z	RELOCATION_MATCH	?reserve@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@QAEXI@Z
+005e1500	?_M_insert_overflow@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@IAEXPAPBU?$pair@KVCAnimationEntry@@@2@ABQBU32@ABU__true_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@IAEXPAPBU?$pair@KVCAnimationEntry@@@2@ABQBU32@ABU__true_type@2@I_N@Z

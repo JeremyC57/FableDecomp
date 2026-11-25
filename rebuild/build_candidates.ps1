@@ -344467,9 +344467,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005e15e0'
-        Module = 'std::vector<const CAnimationEntry*>'
-        Source = '00/5e/stdvectorconstCAnimationEntry_reserve_005e15e0.cpp'
-        TestSource = '00/5e/stdvectorconstCAnimationEntry_reserve_005e15e0_test.cpp'
+        Module = 'std::vector<const std::pair<unsigned long, CAnimationEntry>*>'
+        Source = '00/5e/stdvectorconststdpairunsignedlongCAnimationEntry_reserve_005e15e0.cpp'
+        TestSource = '00/5e/stdvectorconststdpairunsignedlongCAnimationEntry_reserve_005e15e0_test.cpp'
         PassPattern = '005e15e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -403620,6 +403620,13 @@ $catalog = @(
         Source = '00/70/CAnimateThing_CalcInterpolatedMeshAnim_0070d940.cpp'
         TestSource = '00/70/CAnimateThing_CalcInterpolatedMeshAnim_0070d940_test.cpp'
         PassPattern = '0070d940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dcc00'
+        Module = 'CAnimationSet'
+        Source = '00/5d/CAnimationSet_GetRandomAnim_005dcc00.cpp'
+        TestSource = '00/5d/CAnimationSet_GetRandomAnim_005dcc00_test.cpp'
+        PassPattern = '005dcc00_TEST PASS'
     }
 )
 

@@ -1,0 +1,11 @@
+== unit | objects: 005dcc00.obj 005e15e0.obj 005e1500.obj | rc 0
+   duplicate diagnostics (LNK2005/LNK4006): 0
+   005dcc00.obj : error LNK2019: unresolved external symbol "long __fastcall GFROR13(unsigned long)" (?GFROR13@@YIJK@Z) referenced in function "unsigned long __fastcall GFRandom(unsigned long,unsigned lo
+   005dcc00.obj : error LNK2019: unresolved external symbol "public: struct std::pair<unsigned long,class CAnimationEntry> const * __thiscall CAnimationSet::FindFirstAnimWithName(class CCharString const 
+== control (row 1 object twice under two names) | objects: 005dcc00.obj dup_005dcc00.obj 005e15e0.obj 005e1500.obj | rc 0
+   duplicate diagnostics (LNK2005/LNK4006): 1
+   dup_005dcc00.obj : warning LNK4006: "public: class CAnimationEntry const & __thiscall CAnimationSet::GetRandomAnim(class CCharString const &,unsigned long &,class CAnimFilterBase const &,long)const " 
+   005dcc00.obj : error LNK2019: unresolved external symbol "long __fastcall GFROR13(unsigned long)" (?GFROR13@@YIJK@Z) referenced in function "unsigned long __fastcall GFRandom(unsigned long,unsigned lo
+   dup_005dcc00.obj : error LNK2019: unresolved external symbol "long __fastcall GFROR13(unsigned long)" (?GFROR13@@YIJK@Z) referenced in function "unsigned long __fastcall GFRandom(unsigned long,unsigne
+   005dcc00.obj : error LNK2019: unresolved external symbol "public: struct std::pair<unsigned long,class CAnimationEntry> const * __thiscall CAnimationSet::FindFirstAnimWithName(class CCharString const 
+   dup_005dcc00.obj : error LNK2019: unresolved external symbol "public: struct std::pair<unsigned long,class CAnimationEntry> const * __thiscall CAnimationSet::FindFirstAnimWithName(class CCharString co

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+005e1500   RELOCATION_MATCH PASS   _M_insert_overflow
+005e15e0   RELOCATION_MATCH PASS   reserve
+
+WINS: 2
+  005e1500 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@IAEXPAPBU?$pair@KVCAnimationEntry@@@2@ABQBU32@ABU__true_type@2@I_N@Z
+  005e15e0 RELOCATION_MATCH std::vector<const CAnimationEntry*>::?reserve@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@QAEXI@Z

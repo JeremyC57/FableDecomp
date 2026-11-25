@@ -1,0 +1,6 @@
+005e15e0 std::vector<CAnimationEntry const *, std::allocator<CAnimationEntry const *>>::reserve RELOCATION_MATCH
+OK   005e15e0 self   agree_std        ?reserve@?$vector@PBU?$pair@KVCAnimationEntry@@@std@@V?$allocator@PBU?$pair@KVCAnimationEntry@@@std@@@2@@std@@QAEXI@Z
+OK   00bfea0e +34    agree_std        _malloc
+OK   00bfea14 +72    agree_std        _free
+OK   00bfeae6 +5b    agree_std        _memmove
+NAME_GATE PASS

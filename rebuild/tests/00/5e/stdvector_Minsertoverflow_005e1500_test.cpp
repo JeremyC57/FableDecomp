@@ -1,90 +1,57 @@
-// behaviour test for 0x005E1500 std::vector<CUnprovenElement_005e1500*>::_M_insert_overflow: middle insert of n copies (head, fill, tail), append-at-end without the tail copy, growth to size + max(size, n), old block freed
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <stddef.h>
-class CUnprovenElement_005e1500;
-namespace stlp_test {
-struct __true_type { };
-template <class _Tp> inline const _Tp& (max)(const _Tp& __a, const _Tp& __b) { return __a < __b ? __b : __a; }
-static int gFrees = 0;
-inline void* __copy_trivial(const void* __first, const void* __last, void* __result)
+// Behaviour test for 0x005E1500 std::vector<const std::pair<unsigned long, CAnimationEntry>*>::_M_insert_overflow (the POD
+// __true_type overload), linked against the row object (the shared header's overflow body is declaration-only here, so every
+// growth path below calls the row). Checks retail's body: new capacity = size + max(size, fillLength); the head [start, position)
+// is copied, fillLength copies of x follow, the tail [position, finish) is copied only when !atEnd (push_back passes atEnd);
+// the vector adopts the new block (start / finish / end of storage).
+#define FABLE_RETAIL_STLP_VECTOR
+#define FABLE_RETAIL_STLP_VECTOR_C
+#define FABLE_RETAIL_STLP_VECTOR_OVERFLOW_DECL_ONLY
+#include <stdio.h>
+#include "stlport/fable_containers.h"
+class CAnimationEntry;
+typedef const std::pair<unsigned long, CAnimationEntry>* TAnimIt;
+
+static unsigned long g_pairs[20 * 5];   // twenty 0x14-byte map pairs; the vector holds their addresses (never dereferenced)
+static TAnimIt P(int i) { return (TAnimIt)&g_pairs[i * 5]; }
+static int g_fail;
+static void Check(int ok, const char* what) { if (!ok) { printf("FAIL: %s\n", what); g_fail = 1; } }
+static int Is(const std::vector<TAnimIt>& v, const int* want, int n)
 {
-    return (__last == __first) ? __result
-        : ((char*)std::memmove(__result, __first, ((const char*)__last - (const char*)__first))) + ((const char*)__last - (const char*)__first);
+    if ((int)v.size() != n) return 0;
+    for (int i = 0; i < n; ++i) if (v[i] != P(want[i])) return 0;
+    return 1;
 }
-template <class _OutputIter, class _Size, class _Tp>
-inline _OutputIter fill_n(_OutputIter __first, _Size __n, const _Tp& __value)
-{
-    for (; __n > 0; --__n, ++__first) *__first = __value;
-    return __first;
-}
-template <class _Tp> class allocator {
-public:
-    _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)std::malloc(__n * sizeof(_Tp)) : 0; }
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) { ++gFrees; std::free(__p); } }
-};
-template <class _Value, class _Alloc> class _STLP_alloc_proxy : public _Alloc { public: _Value _M_data; };
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start; _Tp* _M_finish; _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    typedef _Tp* pointer;
-    typedef unsigned int size_type;
-    size_type size() const { return size_type(this->_M_finish - this->_M_start); }
-protected:
-    void _M_clear() { this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start); }
-    void _M_set(pointer __s, pointer __f, pointer __e) { this->_M_start = __s; this->_M_finish = __f; this->_M_end_of_storage._M_data = __e; }
-    void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len, bool __atend = false)
-    {
-        const size_type __old_size = size();
-        const size_type __len = __old_size + (max)(__old_size, __fill_len);
-        pointer __new_start = this->_M_end_of_storage.allocate(__len);
-        pointer __new_finish = (pointer)__copy_trivial(this->_M_start, __position, __new_start);
-        __new_finish = fill_n(__new_finish, __fill_len, __x);
-        if (!__atend)
-            __new_finish = (pointer)__copy_trivial(__position, this->_M_finish, __new_finish);
-        _M_clear();
-        _M_set(__new_start, __new_finish, __new_start + __len);
-    }
-};
-}
-typedef CUnprovenElement_005e1500* T;
-static T mk(unsigned int v) { return (T)(size_t)v; }
-class CProbe : public stlp_test::vector<T> {
-public:
-    CProbe() { this->_M_start = 0; this->_M_finish = 0; this->_M_end_of_storage._M_data = 0; }
-    ~CProbe() { std::free(this->_M_start); }
-    void Overflow(unsigned int pos, T x, unsigned int n, bool atend)
-    {
-        _M_insert_overflow(this->_M_start + pos, x, stlp_test::__true_type(), n, atend);
-    }
-    unsigned int Cap() const { return (unsigned int)(this->_M_end_of_storage._M_data - this->_M_start); }
-};
-static int Check()
-{
-    CProbe v;
-    v.Overflow(0, mk(0x10), 1, true);                      // empty: len = 0 + max(0, 1) = 1
-    if (v.size() != 1 || v.Cap() != 1 || v._M_start[0] != mk(0x10) || stlp_test::gFrees != 0) return 1;
-    v.Overflow(1, mk(0x20), 1, true);                      // push_back growth: len = 1 + 1 = 2, old block freed
-    if (v.size() != 2 || v.Cap() != 2 || v._M_start[1] != mk(0x20) || stlp_test::gFrees != 1) return 2;
-    v.Overflow(1, mk(0x30), 3, false);                     // middle insert of 3: len = 2 + max(2, 3) = 5
-    unsigned int want[5] = { 0x10, 0x30, 0x30, 0x30, 0x20 };
-    if (v.size() != 5 || v.Cap() != 5 || stlp_test::gFrees != 2) return 3;
-    for (int i = 0; i < 5; ++i) if (v._M_start[i] != mk(want[i])) return 4;
-    v.Overflow(0, mk(0x40), 0, false);                     // zero fill: len = 5 + 5 = 10, contents kept
-    if (v.size() != 5 || v.Cap() != 10) return 5;
-    for (int i = 0; i < 5; ++i) if (v._M_start[i] != mk(want[i])) return 6;
-    v.Overflow(2, mk(0x50), 1, true);                      // atend: the tail is dropped (callers pass atend only at end())
-    if (v.size() != 3 || v._M_start[2] != mk(0x50) || v._M_start[1] != mk(0x30)) return 7;
-    return 0;
-}
+
 int main()
 {
-    int r = Check();
-    if (r != 0) { std::printf("005e1500_TEST FAIL %d\n", r); return 1; }
-    std::printf("005e1500_TEST PASS\n");
-    return 0;
+    std::vector<TAnimIt> v;
+    v.push_back(P(0));                                         // overflow(finish=0, x, 1, atEnd): 0 + max(0, 1)
+    Check(v.capacity() == 1 && v.size() == 1 && v[0] == P(0), "first push_back: capacity 1");
+    TAnimIt* block = v.begin();
+    v.push_back(P(1));                                         // 1 + max(1, 1)
+    Check(v.capacity() == 2 && v.begin() != block, "second push_back: capacity 2, new block");
+    v.push_back(P(2));                                         // 2 + max(2, 1)
+    Check(v.capacity() == 4, "third push_back: capacity 4");
+    v.push_back(P(3));                                         // fits: no overflow
+    { static const int w[4] = { 0, 1, 2, 3 }; Check(Is(v, w, 4) && v.capacity() == 4, "append-at-end keeps order"); }
+    // middle insert of one element when full: head [0,1), x, tail [1,4)
+    v.insert(v.begin() + 1, P(9));
+    { static const int w[5] = { 0, 9, 1, 2, 3 }; Check(Is(v, w, 5) && v.capacity() == 8, "middle insert: head, x, tail; capacity 8"); }
+    v.push_back(P(4)); v.push_back(P(5)); v.push_back(P(6));   // fill to 8 without overflow
+    Check(v.size() == 8 && v.capacity() == 8, "filled to capacity");
+    // fill insert of 3 copies in the middle when full: 8 + max(8, 3) = 16
+    v._M_fill_insert(v.begin() + 2, 3, P(7));
+    { static const int w[11] = { 0, 9, 7, 7, 7, 1, 2, 3, 4, 5, 6 }; Check(Is(v, w, 11) && v.capacity() == 16, "fill insert: n copies between head and tail"); }
+    // fillLength larger than size: 1 + max(1, 5) = 6, appended at the end (no tail)
+    std::vector<TAnimIt> u;
+    u.push_back(P(10));
+    u._M_fill_insert(u.end(), 5, P(11));
+    { static const int w[6] = { 10, 11, 11, 11, 11, 11 }; Check(Is(u, w, 6) && u.capacity() == 6, "fill larger than size: capacity size + n"); }
+    // insert at the front when full: empty head, x, whole tail
+    std::vector<TAnimIt> f;
+    f.push_back(P(12)); f.push_back(P(13));
+    f.insert(f.begin(), P(14));
+    { static const int w[3] = { 14, 12, 13 }; Check(Is(f, w, 3) && f.capacity() == 4, "front insert: x then the whole tail"); }
+    printf(g_fail ? "005e1500_TEST FAIL\n" : "005e1500_TEST PASS\n");
+    return g_fail;
 }
