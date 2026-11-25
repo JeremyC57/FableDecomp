@@ -1,6 +1,7 @@
 // NCreatureMode::CModeDazed::CModeDazed(CThing*) -- out-of-action mode ctor: CModeOutOfActionBase (counter 0, flag set, empty attacker pointer) then the DAZED CAnimFilterOfGroup at +0x78
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00740250, 160 bytes (padding included).
 // Leaf: CModeDazed
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeDazed@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeDazed@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Shape: base mode ctor @ 0x00861E00, then the inline CModeOutOfActionBase ctor (vtable 0x0126743C):
 // +0x68 = 0, +0x6c = true and the CIntelligentPointer<CThing> at the unaligned +0x6d (out-of-line
@@ -76,11 +77,11 @@ struct CModeOutOfActionBase : CModeBase_00861e00 {     // vtable 0x0126743C
 struct CModeDazed : CModeOutOfActionBase {
     CAnimFilterOfGroup m_animFilter;           // +0x78
     virtual void v00();
-    CModeDazed(CThing* thing);
+    CModeDazed(CThing& thing);
 };
 
-CModeDazed::CModeDazed(CThing* thing)
-    : CModeOutOfActionBase(thing)
+CModeDazed::CModeDazed(CThing& thing)
+    : CModeOutOfActionBase(&thing)
     , m_animFilter("DAZED")              // literal @ 0x01267D04 (masked)
 {
 }

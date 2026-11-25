@@ -1,6 +1,7 @@
 // NCreatureMode::CModeRockTrollVulnerable::CModeRockTrollVulnerable(CThing*) -- creature-mode ctor over CModeBase: filter at +0x20, owner at +0x2c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D7DE0.
 // Leaf: CModeRockTrollVulnerable
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeRockTrollVulnerable@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeRockTrollVulnerable@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Label correction: the catalog row says CModeCreatureIsProjectile, but the vtable store 0x01285774 is NCreatureMode::CModeRockTrollVulnerable (rtti-vtables.tsv); the base is CModeBase @ 0x0073EAC0.
 // Shared shape (same family as the landed CModeBerserk ctor @ 0x007409C0): the base constructor
 // @ 0x0073EAC0 runs with the owner, the class vtable (0x01285774) is installed, then the
@@ -64,13 +65,13 @@ struct CModeRockTrollVulnerable : CModeBase {
     CAnimFilterOfGroup m_animFilter;       // +0x20
     CThing* m_pOwner;                      // +0x2c
     virtual void v00();
-    CModeRockTrollVulnerable(CThing* thing);
+    CModeRockTrollVulnerable(CThing& thing);
 };
 
-CModeRockTrollVulnerable::CModeRockTrollVulnerable(CThing* thing)
-    : CModeBase(thing)
+CModeRockTrollVulnerable::CModeRockTrollVulnerable(CThing& thing)
+    : CModeBase(&thing)
     , m_animFilter("")           // literal @ 0x0122D70E (masked)
-    , m_pOwner(thing)
+    , m_pOwner(&thing)
 {
 }
 

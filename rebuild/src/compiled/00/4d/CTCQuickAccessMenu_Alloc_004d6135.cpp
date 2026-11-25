@@ -9,14 +9,15 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x006259E0 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Naming (NF455, r454b): the callee 0x006259E0 is ??0CTCQuickAccessMenu@@QAE@AAVCThing@@@Z (both PDB name sets; was ??0CTCQuickAccessMenu@@QAE@PAVCThing@@@Z), so it takes `*owner`: same bytes.
 class CThing;
 
 class CTCQuickAccessMenu { public:
     unsigned char _body[0x30];       // sizeof(CTCQuickAccessMenu) = 0x30
-    CTCQuickAccessMenu(CThing* owner);                   // 0x006259E0
+    CTCQuickAccessMenu(CThing& owner);                   // 0x006259E0
 };
 
 CTCQuickAccessMenu* __fastcall CTCQuickAccessMenu_Alloc(CThing* owner)
 {
-    return new CTCQuickAccessMenu(owner);
+    return new CTCQuickAccessMenu(*owner);
 }

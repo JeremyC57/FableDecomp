@@ -1,5 +1,6 @@
-// CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing* thing) -- online-scoreboard component constructor: no HTTP connection, empty picture cache / local scoreboard / activity table / clan lists / downloaded scoreboard, idle states (task state 100), no screens; sets the two static scoreboard strings, registers the component and fills the activity table
+// CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing& thing) -- online-scoreboard component constructor: no HTTP connection, empty picture cache / local scoreboard / activity table / clan lists / downloaded scoreboard, idle states (task state 100), no screens; sets the two static scoreboard strings, registers the component and fills the activity table
 // Leaf: ??0CTCHeroOnlineScoreboard
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCHeroOnlineScoreboard@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCHeroOnlineScoreboard@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -131,7 +132,7 @@ class CTCHeroOnlineScoreboard : public CTCBase { public:              // vtable 
     CComponent*      PClanMenuEntry;                    // +0x5c
     CComponent*      PConnectingMessage;                // +0x60
     CComponent*      PConnectingMessage1;               // +0x64
-    CTCHeroOnlineScoreboard(CThing* thing);
+    CTCHeroOnlineScoreboard(CThing& thing);
     virtual ~CTCHeroOnlineScoreboard();
     private:
     void InitialiseActivityInfo();
@@ -139,8 +140,8 @@ class CTCHeroOnlineScoreboard : public CTCBase { public:              // vtable 
                       // 0x00562710
 };
 
-CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing* thing)
-    : CTCBase(*thing), ScoreboardState(0), TaskState(100), PScoreboardScreen(0), PClanMenuEntry(0), PConnectingMessage(0),
+CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard(CThing& thing)
+    : CTCBase(thing), ScoreboardState(0), TaskState(100), PScoreboardScreen(0), PClanMenuEntry(0), PConnectingMessage(0),
       PConnectingMessage1(0)
 {
     ConsoleVarScoreboardServerIPAddress = "fableclangw.lionhead.com";

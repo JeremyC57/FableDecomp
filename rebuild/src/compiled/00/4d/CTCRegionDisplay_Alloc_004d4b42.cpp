@@ -9,14 +9,15 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x006398B0 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Naming (NF455, r454b): the callee 0x006398B0 is ??0CTCRegionDisplay@@QAE@AAVCThing@@@Z (both PDB name sets; was ??0CTCRegionDisplay@@QAE@PAVCThing@@@Z), so it takes `*owner`: same bytes.
 class CThing;
 
 class CTCRegionDisplay { public:
     unsigned char _body[0x28];       // sizeof(CTCRegionDisplay) = 0x28
-    CTCRegionDisplay(CThing* owner);                   // 0x006398B0
+    CTCRegionDisplay(CThing& owner);                   // 0x006398B0
 };
 
 CTCRegionDisplay* __fastcall CTCRegionDisplay_Alloc(CThing* owner)
 {
-    return new CTCRegionDisplay(owner);
+    return new CTCRegionDisplay(*owner);
 }

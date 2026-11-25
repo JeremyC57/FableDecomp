@@ -1,0 +1,39 @@
+    160 ctor	ptr/ref
+     56 ctor	UNEXPLAINED: parameter types differ
+      8 ctor	enum
+      7 ctor	UNEXPLAINED: parameter count differs
+      5 ctor	access
+      5 ctor	const
+      4 ctor	UNEXPLAINED: PDB spelling is the copy ctor
+      4 ctor	UNEXPLAINED: STL scope (std:: vs landed stand-in)
+      4 ctor	ptr/ref+access
+      4 ctor	ptr/ref+const
+      2 ctor	wchar
+      1 ctor	ptr/ref+const+enum
+      1 ctor	ptr/ref+enum
+     26 dtor	virtual
+      1 dtor	access
+     44 method	access
+      6 method	UNEXPLAINED: scope differs
+      6 method	ptr/ref
+      6 method	wchar
+      3 method	UNEXPLAINED: parameter types differ
+      2 method	UNEXPLAINED: PDB spelling is the copy ctor
+      2 method	UNEXPLAINED: STL scope (std:: vs landed stand-in)
+      2 method	cc
+      2 method	enum
+      2 method	ptr/ref+const
+      1 method	UNEXPLAINED: parameter count differs
+      1 method	access+virtual
+      1 method	classkey
+      1 method	const
+      1 method	const+access
+      1 method	wchar+enum
+     58 op	UNEXPLAINED: Transfer<T> overload (PDB takes a name `char const *`)
+      9 op	const
+      7 op	wchar
+      5 op	UNEXPLAINED: parameter types differ
+      4 op	UNEXPLAINED: scope differs
+      2 op	UNEXPLAINED: landed stand-in type/scope
+      1 op	UNEXPLAINED: STL scope (std:: vs landed stand-in)
+      1 op	ptr/ref+const

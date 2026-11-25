@@ -1,0 +1,16 @@
+00446be0 | 00449420(CGamePlayerInterface::`scalar_deleting_d;CGamePlayerInterface@01231bdc slot0;self=?ScalarDeletingDestructor@CGamePlayerInterface@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00549a00 | 0054a440(NUISystem::CTextSlider::`scalar_deleting;NUISystem::CTextSlider@01248a8c slot0;self=?ScalarDeletingDestructor@CTextSlider@@QAEPAXI@Z) | model: ??_G slot 0 of 4;??_E slot 1 of 2;??_G slot 0 of 4
+00762480 | 00765b10(NShape::CBasicShape::`scalar_deleting_de;NShape::CBasicShape@0126a31c slot0;self=?ScalarDeletingDestructor@CBasicShape@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00810fe0 | 00811e70(NEntityEvents::CEventReceivedItem::`scal;NEntityEvents::CEventReceivedItem@01272360 slot0;self=?CEventReceivedItem_scalar_deleting_destructor@@YIPAXPAUCEventReceivedItem@@HI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00811040 | 00811e90(NEntityEvents::CEventSoldItem::`scalar_d;NEntityEvents::CEventSoldItem@01272378 slot0;self=?ScalarDeletingDestructor@CEventSoldItem@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00811be0 | 00812320(NEntityEvents::CEventHitBySpecialAbility;NEntityEvents::CEventHitBySpecialAbility@012723f0 slot0;self=?CEventHitBySpecialAbility_scalar_deleting_destructor@@YIPAXPAUCEventHitBySpecialAbility@@HI@Z) 0083b0f0(NEntityEvents::CEventHitBy::`scalar_dele;NEntityEvents::CEventHitBy@01272fa8 slot0;self=?ScalarDeletingDestructor@CEventHitBy@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00884b60 | 00884bc0(NScreenEffect::CScreenEffectPriorityStac;NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry@01278060 slot0;self=?CScreenFilterEntry_scalar_deleting_destructor@@YIPAXPAUCScreenFilterEntry@@HI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00987e20 |  | model: ??_E slot 1 of 2;??_G slot 0 of 4
+009be1e0 |  | model: ??_E slot 1 of 2;??_G slot 0 of 4
+009d5ee0 |  | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00a24930 | 00a26d40(CMeshDataBank::NotifyEntryAdded;CMeshDataBank@0129ce94 slot12;self=?NotifyEntryAdded@CMeshDataBank@@UAEXKKABV?$CArray@D@@@Z) 00a2b6b0(C3DMeshInfo::`scalar_deleting_destructor;C3DMeshInfo@0129cd3c slot0;self=?C3DMeshInfo_scalar_deleting_destructor@@YIPAXPAVC3DMeshInfo@@HI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00a24f30 |  | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00a5c6e0 |  | model: ??_E slot 2 of 3;??_G slot 0 of 4
+00a65690 | 00a65c60(CMemoryAllocatorVariableSize::`scalar_de;CMemoryAllocatorVariableSize@0129db1c slot15;self=?ScalarDeletingDestructor@CMemoryAllocatorVariableSize@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00a752f0 | 00a758e0(CContainmentVolume::`scalar_deleting_des;CContainmentVolume@0129dc94 slot0;self=?ScalarDeletingDestructor@CContainmentVolume@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4
+00af5900 | 00af7cc0(NParticleEngine::CParticleSystem::`scala;NParticleEngine::CParticleSystem@0129f4e8 slot0;self=?ScalarDeletingDestructor@CParticleSystem@@QAEPAXI@Z) | model: ??_E slot 1 of 2;??_G slot 0 of 4

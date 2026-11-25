@@ -1,5 +1,6 @@
-// NCreatureMode::CModeDragonLanded::CModeDragonLanded(CThing* thing) -- CModeStandBase(thing), own vtable, the "LANDED" filter, a null target pointer, UseHeadTurning = true
+// NCreatureMode::CModeDragonLanded::CModeDragonLanded(CThing& thing) -- CModeStandBase(thing), own vtable, the "LANDED" filter, a null target pointer, UseHeadTurning = true
 // Leaf: ??0CModeDragonLanded
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeDragonLanded@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeDragonLanded@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007418D0 (`ret 4`). Vtable 0x012683A8 = NCreatureMode::CModeDragonLanded (rtti-vtables.tsv); manifest label CModeDragonHover is propagated; vtable 0x012683A8 = NCreatureMode::CModeDragonLanded.
 // Callees: CModeStandBase::CModeStandBase(CThing*) @ 0x00861E00 (manifest label "CTCCreatureNavigation" is propagated;
@@ -61,11 +62,11 @@ class CModeDragonLanded : public CModeStandBase { public:   // vtable 0x012683A8
     CIntelligentPointer<CThing> PTarget;           // +0x74
     bool                UseHeadTurning;    // +0x7c
     virtual void v00();
-    CModeDragonLanded(CThing* thing);
+    CModeDragonLanded(CThing& thing);
 };
 
-CModeDragonLanded::CModeDragonLanded(CThing* thing)
-    : CModeStandBase(thing)
+CModeDragonLanded::CModeDragonLanded(CThing& thing)
+    : CModeStandBase(&thing)
     , Filter("LANDED")
     , UseHeadTurning(true)
 {

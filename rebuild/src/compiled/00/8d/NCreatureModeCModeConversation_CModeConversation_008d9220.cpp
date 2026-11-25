@@ -1,5 +1,6 @@
 // NCreatureMode::CModeConversation::CModeConversation(CThing*) -- conversation mode with the default attitude (1); adopts the owner's CTCTalk attitude when the thing has one
-// Leaf: ??0CModeConversation@NCreatureMode@@QAE@PAVCThing@@@Z
+// Leaf: ??0CModeConversation@NCreatureMode@@QAE@AAVCThing@@@Z
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeConversation@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeConversation@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9220, 160 bytes (padding included).
 // Shape: CModeBase ctor (0x0073EAC0), vtable 0x01285990 (rtti NCreatureMode::CModeConversation),
@@ -50,11 +51,11 @@ struct CModeConversation : CModeBase {
     CAnimFilterOfGroup Filter;               // +0x24
     bool ResetIdleAnim;                      // +0x30
     virtual void v00();
-    CModeConversation(CThing* thing);
+    CModeConversation(CThing& thing);
 };
 
-CModeConversation::CModeConversation(CThing* thing)
-    : CModeBase(thing)
+CModeConversation::CModeConversation(CThing& thing)
+    : CModeBase(&thing)
     , CurrentAttitude(1)
     , InitialAttitude(1)
     , Filter(GetAnimGroupName(1))

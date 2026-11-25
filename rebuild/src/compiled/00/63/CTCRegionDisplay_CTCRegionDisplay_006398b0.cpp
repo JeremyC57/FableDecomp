@@ -1,5 +1,6 @@
-// CTCRegionDisplay::CTCRegionDisplay(CThing* thing) -- CTCBase(thing), own vtable, two empty area-name strings, counters/alpha/time zeroed, time-out and update-while-paused on, info display off, then join the global update list
+// CTCRegionDisplay::CTCRegionDisplay(CThing& thing) -- CTCBase(thing), own vtable, two empty area-name strings, counters/alpha/time zeroed, time-out and update-while-paused on, info display off, then join the global update list
 // Leaf: ??0CTCRegionDisplay
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCRegionDisplay@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCRegionDisplay@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -37,11 +38,11 @@ class CTCRegionDisplay : public CTCBase { public:                   // vtable 0x
     bool        InfoDisplay;                                // +0x25
     bool        UpdateWhilePaused;                          // +0x26
     virtual void v00();
-    CTCRegionDisplay(CThing* thing);
+    CTCRegionDisplay(CThing& thing);
 };
 
-CTCRegionDisplay::CTCRegionDisplay(CThing* thing)
-    : CTCBase(*thing)
+CTCRegionDisplay::CTCRegionDisplay(CThing& thing)
+    : CTCBase(thing)
     , FrameNameChanged(0)
     , CurrentAlpha(0)
     , LastAlpha(0)

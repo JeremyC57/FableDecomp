@@ -574,3 +574,4 @@
 - (nf446 u4, 2026-11-25) The grade does not compare the value of a referenced constant: 0x006D6570 graded RELOCATION_MATCH while its local model added 0.5 where retail's double at 0x01237F00 is 1.0. When a row references a retail constant, check the value.
 - **STANDIN regex hex false positive:** `_[0-9a-fA-F]{8}` matches class names made of hex letters (`??_7CBedDef@@6B@` = `_7CBedDef`); the tracker checks the PDB sets first, so a real name wins.
 - **apply_table.py writes FABLE_ROOT (default the repo):** an agent simulating table changes must pass `--dry` or `FABLE_ROOT=<sandbox>`; NF451 rewrote 4 repo table lines this way (restored, sha checked). Put it in every brief.
+- **Self respells need the caller census from objects:** the binding table misses landed callers (NF455: 28 of 28 sampled); never respell a self row alone because the table shows no caller.

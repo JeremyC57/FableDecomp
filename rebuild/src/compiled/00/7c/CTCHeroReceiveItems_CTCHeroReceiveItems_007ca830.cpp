@@ -1,5 +1,6 @@
-// CTCHeroReceiveItems::CTCHeroReceiveItems(CThing* thing) -- CTCBase(thing), an empty item list and picked-up vector, cleared pointers and flags, a full-size timer of 1, null primitive handles; then joins the global update list
+// CTCHeroReceiveItems::CTCHeroReceiveItems(CThing& thing) -- CTCBase(thing), an empty item list and picked-up vector, cleared pointers and flags, a full-size timer of 1, null primitive handles; then joins the global update list
 // Leaf: ??0CTCHeroReceiveItems
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCHeroReceiveItems@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCHeroReceiveItems@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -101,11 +102,11 @@ class CTCHeroReceiveItems : public CTCBase { public:
     CEnginePrimitiveHandle ItemPrimitiveHandle;         // +0x9c
     CEnginePrimitiveHandle BackgroundPrimitiveHandle;   // +0xa4
     virtual void v00();
-    CTCHeroReceiveItems(CThing* thing);
+    CTCHeroReceiveItems(CThing& thing);
 };
 
-CTCHeroReceiveItems::CTCHeroReceiveItems(CThing* thing)
-    : CTCBase(*thing), PersistCurrentItem(false), ReceivingItems(false), DisplayingItems(false), ForceClear(false),
+CTCHeroReceiveItems::CTCHeroReceiveItems(CThing& thing)
+    : CTCBase(thing), PersistCurrentItem(false), ReceivingItems(false), DisplayingItems(false), ForceClear(false),
       SendMessage(false), AmountThroughForAreaResize(0), FullSizeTimer(1)
 {
     AddToGlobalTCs();

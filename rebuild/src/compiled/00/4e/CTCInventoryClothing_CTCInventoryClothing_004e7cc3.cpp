@@ -1,5 +1,6 @@
-// CTCInventoryClothing::CTCInventoryClothing(CThing* thing) -- construct the clothing inventory: the inventory base, the listener base at +0x130, the menu-entry vector, the three maps, and the mannequin / list members
+// CTCInventoryClothing::CTCInventoryClothing(CThing& thing) -- construct the clothing inventory: the inventory base, the listener base at +0x130, the menu-entry vector, the three maps, and the mannequin / list members
 // Leaf: ??0CTCInventoryClothing
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCInventoryClothing@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCInventoryClothing@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7CC3, length 120 bytes, `ret 4`.
 // Label correction: the catalog row says "CTCHero::CTCHero", but the vtable stores are CTCInventoryClothing's (primary
 // 0x0124356C, the secondary listener side 0x01243558 at +0x130; rtti-vtables.tsv).
@@ -61,12 +62,12 @@ public:
     bool              LoadedFromSaveGame;       // +0x15d
     CComponentItemMap ClothingItemMap;          // +0x160
     CComponent*       ClothingList;             // +0x16c
-    CTCInventoryClothing(CThing* thing);
+    CTCInventoryClothing(CThing& thing);
     virtual ~CTCInventoryClothing();
     virtual void OnNotify();
 };
 
-CTCInventoryClothing::CTCInventoryClothing(CThing* thing)
-    : CTCInventoryBase(thing), PMannequin(0), UseMannequin(false), LoadedFromSaveGame(false), ClothingList(0)
+CTCInventoryClothing::CTCInventoryClothing(CThing& thing)
+    : CTCInventoryBase(&thing), PMannequin(0), UseMannequin(false), LoadedFromSaveGame(false), ClothingList(0)
 {
 }

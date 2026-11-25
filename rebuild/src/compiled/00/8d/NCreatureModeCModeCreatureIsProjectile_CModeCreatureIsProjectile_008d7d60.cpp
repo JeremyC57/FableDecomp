@@ -8,6 +8,7 @@
 // (0x0099E4B0), assigns the name (0x0099EFB0) and stores the CRC (0x004014A0, __fastcall
 // seed/data/length; the empty literal 0x0129AAF4 when the string has no block). The temporary dies
 // (0x0099EAE0) before the remaining initialisers run.
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeCreatureIsProjectile@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeCreatureIsProjectile@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThing;
 
 class CCharStringData { public:
@@ -64,13 +65,13 @@ struct CModeCreatureIsProjectile : CModeBase_00861e00 {
     unsigned long OldTargetFlags;             // +0x80 (not touched by the ctor)
     CThing* m_pThrower;                    // +0x84
     virtual void v00();
-    CModeCreatureIsProjectile(CThing* thing);
+    CModeCreatureIsProjectile(CThing& thing);
 };
 
-CModeCreatureIsProjectile::CModeCreatureIsProjectile(CThing* thing)
-    : CModeBase_00861e00(thing)
+CModeCreatureIsProjectile::CModeCreatureIsProjectile(CThing& thing)
+    : CModeBase_00861e00(&thing)
     , m_animFilter("HELP_I_AM_A_PROJECTILE")           // literal @ 0x01285758 (masked)
-    , m_pThrower(thing)
+    , m_pThrower(&thing)
 {
 }
 

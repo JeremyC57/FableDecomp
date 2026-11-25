@@ -1,0 +1,74 @@
+addr       parity           behav  name
+004d4b42   WARN SHARED_HEADER_AVAILABLE CTCRegionDisplay (engine/CTCRegionDisplay.h)
+004d4b42   RELOCATION_MATCH PASS   Alloc
+004d57c7   WARN SHARED_HEADER_AVAILABLE CTCHeroReceiveItems (engine/CTCHeroReceiveItems.h)
+004d57c7   RELOCATION_MATCH PASS   Alloc
+004d59de   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+004d59de   RELOCATION_MATCH PASS   Alloc
+004d6135   WARN SHARED_HEADER_AVAILABLE CTCQuickAccessMenu (engine/CTCQuickAccessMenu.h)
+004d6135   RELOCATION_MATCH PASS   Alloc
+004d62ed   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI (engine/CTCQuestCompletionUI.h)
+004d62ed   RELOCATION_MATCH PASS   Alloc
+004d65bc   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)
+004d65bc   RELOCATION_MATCH PASS   Alloc
+004d66da   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+004d66da   RELOCATION_MATCH PASS   Alloc
+004e7cc3   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+004e7cc3   WARN RELOC_NAME: ??0CInventoryListenerBase@@QAE@XZ -> 0066e734 labelled 'NHeroInformationScreens::CBase::CBase'
+004e7cc3   WARN RELOC_NAME: ??0CSuitPartMap@@QAE@XZ -> 004df7ff labelled 'std::map<T_004df7ff>::map'
+004e7cc3   WARN RELOC_NAME: ??0CMorphHandleMap@@QAE@XZ -> 004e76df labelled 'CDisplayManager::CopyBackBufferToTexture'
+004e7cc3   WARN RELOC_NAME: ??0CComponentItemMap@@QAE@XZ -> 004df81d labelled 'std::map<T_004df81d>::map'
+004e7cc3   RELOCATION_MATCH PASS   CTCInventoryClothing
+004e8967   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+004e8967   RELOCATION_MATCH PASS   Alloc
+00562ec0   WARN SHARED_HEADER_AVAILABLE CMap (engine/CMap.h)
+00562ec0   WARN SHARED_HEADER_AVAILABLE CList (engine/CList.h)
+00562ec0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00562ec0   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+00562ec0   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard
+005e4030   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005e4030   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005e4030   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI (engine/CTCQuestCompletionUI.h)
+005e4030   RELOCATION_MATCH PASS   CTCQuestCompletionUI
+006259e0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006259e0   WARN SHARED_HEADER_AVAILABLE CTCQuickAccessMenu (engine/CTCQuickAccessMenu.h)
+006259e0   RELOCATION_MATCH PASS   CTCQuickAccessMenu
+006398b0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+006398b0   WARN SHARED_HEADER_AVAILABLE CTCRegionDisplay (engine/CTCRegionDisplay.h)
+006398b0   RELOCATION_MATCH PASS   CTCRegionDisplay
+007ca830   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007ca830   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+007ca830   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+007ca830   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+007ca830   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+007ca830   WARN SHARED_HEADER_AVAILABLE CTCHeroReceiveItems (engine/CTCHeroReceiveItems.h)
+007ca830   RELOCATION_MATCH PASS   CTCHeroReceiveItems
+007d49e0   WARN SHARED_HEADER_AVAILABLE CPrizeScoreDef (engine/CPrizeScoreDef.h)
+007d49e0   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+007d49e0   WARN SHARED_HEADER_AVAILABLE Coin (engine/Coin.h)
+007d49e0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d49e0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+007d49e0   RELOCATION_MATCH PASS   CTCTavernGameCoinGolf
+007e5f00   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007e5f00   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+007e5f00   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e5f00   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)
+007e5f00   RELOCATION_MATCH PASS   CTCOracleMinigame
+
+WINS: 16
+  004d4b42 RELOCATION_MATCH CTCRegionDisplay::Alloc
+  004d57c7 RELOCATION_MATCH CTCHeroReceiveItems::Alloc
+  004d59de RELOCATION_MATCH CTCTavernGameCoinGolf::Alloc
+  004d6135 RELOCATION_MATCH CTCQuickAccessMenu::Alloc
+  004d62ed RELOCATION_MATCH CTCQuestCompletionUI::Alloc
+  004d65bc RELOCATION_MATCH CTCOracleMinigame::Alloc
+  004d66da RELOCATION_MATCH CTCHeroOnlineScoreboard::Alloc
+  004e7cc3 RELOCATION_MATCH CTCInventoryClothing::??0CTCInventoryClothing
+  004e8967 RELOCATION_MATCH CTCInventoryClothing::Alloc
+  00562ec0 RELOCATION_MATCH CTCHeroOnlineScoreboard::??0CTCHeroOnlineScoreboard
+  005e4030 RELOCATION_MATCH CTCQuestCompletionUI::??0CTCQuestCompletionUI
+  006259e0 RELOCATION_MATCH CTCQuickAccessMenu::??0CTCQuickAccessMenu
+  006398b0 RELOCATION_MATCH CTCRegionDisplay::??0CTCRegionDisplay
+  007ca830 RELOCATION_MATCH CTCHeroReceiveItems::??0CTCHeroReceiveItems
+  007d49e0 RELOCATION_MATCH CTCTavernGameCoinGolf::??0CTCTavernGameCoinGolf
+  007e5f00 RELOCATION_MATCH CTCOracleMinigame::??0CTCOracleMinigame

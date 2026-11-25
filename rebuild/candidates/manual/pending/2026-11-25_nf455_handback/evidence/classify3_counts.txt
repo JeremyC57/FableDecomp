@@ -1,0 +1,22 @@
+    166 ptr/ref
+     64 UNEXPLAINED: parameter types differ
+     58 UNEXPLAINED: Transfer<T> overload (PDB takes a name `char const *`)
+     50 access
+     26 virtual
+     15 wchar
+     15 const
+     10 enum
+     10 UNEXPLAINED: scope differs
+      8 UNEXPLAINED: parameter count differs
+      7 ptr/ref+const
+      7 UNEXPLAINED: STL scope (std:: vs landed stand-in)
+      6 UNEXPLAINED: PDB spelling is the copy ctor
+      4 ptr/ref+access
+      2 cc
+      2 UNEXPLAINED: landed stand-in type/scope
+      1 wchar+enum
+      1 ptr/ref+enum
+      1 ptr/ref+const+enum
+      1 const+access
+      1 classkey
+      1 access+virtual

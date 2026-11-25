@@ -38604,3 +38604,11 @@ __real@0000000000000000	0122ed70	00b260b0
 ??0CSalRenderPan@@QAE@XZ	00c6d9d0	00c55090
 ??_7CSalRenderPanSSE2@@6B@	012b8a78	00c55270
 ??_7CSalRenderPanMMX@@6B@	012b8ab4	00c55270
+??0CTCRegionDisplay@@QAE@AAVCThing@@@Z	006398b0	004d4b42
+??0CTCHeroReceiveItems@@QAE@AAVCThing@@@Z	007ca830	004d57c7
+??0CTCTavernGameCoinGolf@@QAE@AAVCThing@@@Z	007d49e0	004d59de
+??0CTCQuickAccessMenu@@QAE@AAVCThing@@@Z	006259e0	004d6135
+??0CTCQuestCompletionUI@@QAE@AAVCThing@@@Z	005e4030	004d62ed
+??0CTCOracleMinigame@@QAE@AAVCThing@@@Z	007e5f00	004d65bc
+??0CTCHeroOnlineScoreboard@@QAE@AAVCThing@@@Z	00562ec0	004d66da
+??0CTCInventoryClothing@@QAE@AAVCThing@@@Z	004e7cc3	004e8967

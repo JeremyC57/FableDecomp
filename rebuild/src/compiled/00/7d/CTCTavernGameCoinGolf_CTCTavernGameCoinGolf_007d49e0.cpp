@@ -1,5 +1,6 @@
-// CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(CThing* owner) -- constructor: tavern-game ctor, the inlined coin-base members (coin vector, held coin, arrow) zeroed, own vtable, target round = the def's last prize score
+// CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(CThing& owner) -- constructor: tavern-game ctor, the inlined coin-base members (coin vector, held coin, arrow) zeroed, own vtable, target round = the def's last prize score
 // Leaf: ??0CTCTavernGameCoinGolf
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCTavernGameCoinGolf@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCTavernGameCoinGolf@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Retail: Fable.exe @ 0x007D49E0, 122 bytes (`ret 4`). Vtable store 0x0126F49C = CTCTavernGameCoinGolf (rtti-vtables.tsv);
 //         byte-identical to the CTCTavernGameShoveHaPenny ctor 0x007D09C0 apart from the vtable.
 // Callees: CTCTavernGame::CTCTavernGame(CThing*) 0x005EC8A0; CTCTavernGame::GetDef(CDefPointer*) 0x005EA000;
@@ -74,12 +75,12 @@ struct __declspec(novtable) CTCTavernGameCoinBase : CTCTavernGame {
 };
 
 class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
-    CTCTavernGameCoinGolf(CThing* owner);
+    CTCTavernGameCoinGolf(CThing& owner);
     virtual void v00();
 };
 
-CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(CThing* owner)
-    : CTCTavernGameCoinBase(owner)
+CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(CThing& owner)
+    : CTCTavernGameCoinBase(&owner)
 {
     CDefPointer<const CTavernGameDef> def;
     GetDef(&def);

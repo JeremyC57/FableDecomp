@@ -1,0 +1,60 @@
+addr       parity           behav  name
+004db15e   WARN RELOC_NAME: ??0CTCShotDefinitionBase_Calls@NThingShot@@QAE@PAVCThing@@@Z -> 007bf460 labelled 'NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase'
+004db15e   WARN RELOC_NAME: ??0CIntelligentPointer_CThing@NThingShot@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<class CThing>::CIntelligentPointer'
+004db15e   RELOCATION_MATCH PASS   CTCShotDefinitionDrainLife
+004dcab9   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+004dcab9   RELOCATION_MATCH PASS   CTCShotDefinitionForcePushBall
+00740250   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00740250   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00740250   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+00740250   RELOCATION_MATCH PASS   CModeDazed
+007418d0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+007418d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+007418d0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+007418d0   RELOCATION_MATCH PASS   CModeDragonLanded
+007419b0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+007419b0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+007419b0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+007419b0   RELOCATION_MATCH PASS   CModeDragonGetHit
+00741a90   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00741a90   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00741a90   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00741a90   RELOCATION_MATCH PASS   CModeDragonRearUp
+00741ee0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00741ee0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00741ee0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00741ee0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00741ee0   RELOCATION_MATCH PASS   CModeBriarRoseConcentrate
+007438a0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+007438a0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+007438a0   WARN SHARED_HEADER_AVAILABLE CCardinalSpline (engine/CCardinalSpline.h)
+007438a0   RELOCATION_MATCH PASS   CModeDragonStrafe
+007bbc65   RELOCATION_MATCH PASS   CTCShotDefinitionMultiArrow
+008d7cd0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d7cd0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d7cd0   RELOCATION_MATCH PASS   CModeSleepBed
+008d7d60   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d7d60   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d7d60   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+008d7d60   RELOCATION_MATCH PASS   CModeCreatureIsProjectile
+008d7de0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d7de0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d7de0   RELOCATION_MATCH PASS   CModeRockTrollVulnerable
+008d9220   WARN SHARED_HEADER_AVAILABLE CTCTalk (engine/CTCTalk.h)
+008d9220   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d9220   RELOCATION_MATCH PASS   CModeConversation
+
+WINS: 13
+  004db15e RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::CTCShotDefinitionDrainLife
+  004dcab9 RELOCATION_MATCH NThingShot::CTCShotDefinitionForcePushBall::??0CTCShotDefinitionForcePushBall@
+  00740250 RELOCATION_MATCH NCreatureMode::CModeDazed::CModeDazed
+  007418d0 RELOCATION_MATCH NCreatureMode::CModeDragonLanded::??0CModeDragonLanded
+  007419b0 RELOCATION_MATCH NCreatureMode::CModeDragonGetHit::??0CModeDragonGetHit
+  00741a90 RELOCATION_MATCH NCreatureMode::CModeDragonRearUp::??0CModeDragonRearUp
+  00741ee0 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::??0CModeBriarRoseConcentrate
+  007438a0 RELOCATION_MATCH NCreatureMode::CModeDragonStrafe::??0CModeDragonStrafe
+  007bbc65 RELOCATION_MATCH NThingShot::CTCShotDefinitionMultiArrow::??0CTCShotDefinitionMultiArrow
+  008d7cd0 RELOCATION_MATCH NCreatureMode::CModeSleepBed::??0CModeSleepBed
+  008d7d60 RELOCATION_MATCH NCreatureMode::CModeCreatureIsProjectile::??0CModeCreatureIsProjectile@
+  008d7de0 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::CModeRockTrollVulnerable
+  008d9220 RELOCATION_MATCH NCreatureMode::CModeConversation::??0CModeConversation@NCreatureMode@@QAE@AAVCThing@@@Z

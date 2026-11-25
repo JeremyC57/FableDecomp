@@ -9,14 +9,15 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x005E4030 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Naming (NF455, r454b): the callee 0x005E4030 is ??0CTCQuestCompletionUI@@QAE@AAVCThing@@@Z (both PDB name sets; was ??0CTCQuestCompletionUI@@QAE@PAVCThing@@@Z), so it takes `*owner`: same bytes.
 class CThing;
 
 class CTCQuestCompletionUI { public:
     unsigned char _body[0xd8];       // sizeof(CTCQuestCompletionUI) = 0xd8
-    CTCQuestCompletionUI(CThing* owner);                   // 0x005E4030
+    CTCQuestCompletionUI(CThing& owner);                   // 0x005E4030
 };
 
 CTCQuestCompletionUI* __fastcall CTCQuestCompletionUI_Alloc(CThing* owner)
 {
-    return new CTCQuestCompletionUI(owner);
+    return new CTCQuestCompletionUI(*owner);
 }

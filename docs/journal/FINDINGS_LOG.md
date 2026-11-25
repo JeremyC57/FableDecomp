@@ -1651,3 +1651,14 @@ against CODAApi.lib, or stay compiled C++?
   `landed_genuine_*` and `matched_bytes_genuine`. README already reports "Compiled sources still honestly DIFFER" from the parity file.
 - Not acted on: numbers are not hand-edited. Fix belongs in landed_metrics (exclude parity DIFFER rows from the genuine figures, as
   baked_string / baked_address are) or in re-decomp of the rows; that needs an owner decision on how DIFFER rows are counted.
+
+## 2026-11-25 A: the binding table misses many callers, so "agree" statuses can hide caller splits (NF455 finding)
+- NF455 enumerated callers from retail call sites (nftools/xref.py, owner_of.py) plus each caller's compiled HEAD object (UND symbols).
+  Every one of the 28 landed callers it sampled had no line at its target in `rebuild/oracles/reloc_bindings.tsv`: 17 `CTCX_Alloc`
+  factories (8 bound the old self spelling exactly, 9 bound other stand-ins: `(void*)`, a namespace-less class, `CPlayerGuiDef*`) and
+  the 11 deleting destructors of the b1 classes (free `<Class>_dtor` stand-ins).
+- Effect: the tracker reads a target from the table plus its self row, so an address can show `agree_*` while landed callers spell it
+  another way. Rule from now on (advisor decision, owner delegated): every respell brief enumerates callers from retail call sites plus
+  objects, never the table alone, and a self respell lands only with every caller that spells the target differently (the b3 recipe).
+- At landing, b1 (6 dtors) and three b2 ctors were reverted for exactly this; 18 ctors landed (10 with no landed caller, 8 as factory
+  units, whose 8 bindings were added to the table). Owner item: a table rebuild from all landed objects would show the true split count.

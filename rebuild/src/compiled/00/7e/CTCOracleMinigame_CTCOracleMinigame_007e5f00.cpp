@@ -1,5 +1,6 @@
-// CTCOracleMinigame::CTCOracleMinigame(CThing* thing) -- CTCBase(thing), level 1, stage 0, not yet won, an empty pending-input list, then fetch the oracle minigame sub-def
+// CTCOracleMinigame::CTCOracleMinigame(CThing& thing) -- CTCBase(thing), level 1, stage 0, not yet won, an empty pending-input list, then fetch the oracle minigame sub-def
 // Leaf: ??0CTCOracleMinigame
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCOracleMinigame@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCOracleMinigame@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E5F00, length 101 bytes (`ret 4`).
 // Label correction: the manifest calls this CTCSummonableCreature::CTCSummonableCreature, but it stores vtable 0x012707B4 = CTCOracleMinigame
 // (rtti-vtables.tsv) and touches offsets up to +0xE8 (PDB CTCSummonableCreature is 28 bytes; PDB CTCOracleMinigame 244 bytes fits).
@@ -62,12 +63,12 @@ class CTCOracleMinigame : public CTCBase { public:            // vtable 0x012707
     CInputList InputsPending;                   // +0xe0
     CThing* SpeechMarker;                       // +0xe4
     CDefPointer<const COracleMinigameDef> PDef; // +0xe8
-    CTCOracleMinigame(CThing* thing);
+    CTCOracleMinigame(CThing& thing);
     virtual ~CTCOracleMinigame();
 };
 
-CTCOracleMinigame::CTCOracleMinigame(CThing* thing)
-    : CTCBase(thing)
+CTCOracleMinigame::CTCOracleMinigame(CThing& thing)
+    : CTCBase(&thing)
     , Level(1)
     , Stage(0)
     , Success(false)

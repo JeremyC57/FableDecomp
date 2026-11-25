@@ -9,14 +9,15 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x007D49E0 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Naming (NF455, r454b): the callee 0x007D49E0 is ??0CTCTavernGameCoinGolf@@QAE@AAVCThing@@@Z (both PDB name sets; was ??0CTCTavernGameCoinGolf@@QAE@PAVCThing@@@Z), so it takes `*owner`: same bytes.
 class CThing;
 
 class CTCTavernGameCoinGolf { public:
     unsigned char _body[0x180];       // sizeof(CTCTavernGameCoinGolf) = 0x180
-    CTCTavernGameCoinGolf(CThing* owner);                   // 0x007D49E0
+    CTCTavernGameCoinGolf(CThing& owner);                   // 0x007D49E0
 };
 
 CTCTavernGameCoinGolf* __fastcall CTCTavernGameCoinGolf_Alloc(CThing* owner)
 {
-    return new CTCTavernGameCoinGolf(owner);
+    return new CTCTavernGameCoinGolf(*owner);
 }

@@ -1,5 +1,6 @@
-// NCreatureMode::CModeDragonRearUp::CModeDragonRearUp(CThing* thing) -- CModeStandBase(thing), own vtable, the "REAR_UP" filter, Timer = 0
+// NCreatureMode::CModeDragonRearUp::CModeDragonRearUp(CThing& thing) -- CModeStandBase(thing), own vtable, the "REAR_UP" filter, Timer = 0
 // Leaf: ??0CModeDragonRearUp
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeDragonRearUp@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeDragonRearUp@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00741A90 (`ret 4`). Vtable 0x01268420 = NCreatureMode::CModeDragonRearUp (rtti-vtables.tsv).
 // Callees: CModeStandBase::CModeStandBase(CThing*) @ 0x00861E00 (manifest label "CTCCreatureNavigation" is propagated;
@@ -59,11 +60,11 @@ struct CModeDragonRearUp : CModeStandBase {   // vtable 0x01268420
     CAnimFilterOfGroup  Filter;            // +0x68
     long                Timer;             // +0x74
     virtual void v00();
-    CModeDragonRearUp(CThing* thing);
+    CModeDragonRearUp(CThing& thing);
 };
 
-CModeDragonRearUp::CModeDragonRearUp(CThing* thing)
-    : CModeStandBase(thing)
+CModeDragonRearUp::CModeDragonRearUp(CThing& thing)
+    : CModeStandBase(&thing)
     , Filter("REAR_UP")
     , Timer(0)
 {

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing*) -- mode ctor: "POWER_UP" group filter, Timer 0, empty target / imposter list / def / two effect pointers
 // Leaf: ??0CModeBriarRoseConcentrate
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00741EE0, 208 bytes (`ret 4`). Vtable 0x01268548 (NCreatureMode::CModeBriarRoseConcentrate).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CCharString(const char*, long) 0x0099EBF0,
@@ -97,11 +98,11 @@ class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x
     CIntelligentPointer<CThing>            PBodyEffect;  // +0x94
     CIntelligentPointer<CThing>            PSwordEffect; // +0x9c
     virtual void v00();
-    CModeBriarRoseConcentrate(CThing* thing);
+    CModeBriarRoseConcentrate(CThing& thing);
 };
 
-CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing* thing)
-    : CModeStandBase(thing)
+CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing& thing)
+    : CModeStandBase(&thing)
     , Filter("POWER_UP")                // literal @ 0x01268578 (masked)
     , Timer(0)
     , Imposter(false)

@@ -1,5 +1,6 @@
-// CTCQuestCompletionUI::CTCQuestCompletionUI(CThing* parent) -- quest-completion UI thing component ctor: flags cleared, empty component vector, the boast list and the three start-quest maps built, strings default-constructed, counters zeroed, CanTeleportToGuildMember set; registered for updates
+// CTCQuestCompletionUI::CTCQuestCompletionUI(CThing& parent) -- quest-completion UI thing component ctor: flags cleared, empty component vector, the boast list and the three start-quest maps built, strings default-constructed, counters zeroed, CanTeleportToGuildMember set; registered for updates
 // Leaf: ??0CTCQuestCompletionUI
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCQuestCompletionUI@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCQuestCompletionUI@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -132,11 +133,11 @@ class CTCQuestCompletionUI : public CTCBase { public:             // vtable 0x01
     unsigned long              RenownCountingSound;         // +0xd0
     bool                       CanTeleportToGuildMember;    // +0xd4
     virtual void v00();
-    CTCQuestCompletionUI(CThing* parent);
+    CTCQuestCompletionUI(CThing& parent);
 };
 
-CTCQuestCompletionUI::CTCQuestCompletionUI(CThing* parent)
-    : CTCBase(*parent)
+CTCQuestCompletionUI::CTCQuestCompletionUI(CThing& parent)
+    : CTCBase(parent)
     , Active(false)
     , ReallyActive(false)
     , Quitting(false)

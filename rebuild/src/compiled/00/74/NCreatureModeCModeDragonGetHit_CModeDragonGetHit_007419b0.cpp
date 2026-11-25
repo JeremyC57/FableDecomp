@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonGetHit::CModeDragonGetHit(CThing*) -- CModeStandBase(thing), own vtable, the "GET_HIT" animation-group filter, a null target pointer, Timer = 0
 // Leaf: ??0CModeDragonGetHit
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeDragonGetHit@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeDragonGetHit@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007419B0, 135 bytes (`ret 4`). Vtable 0x012683E4 = NCreatureMode::CModeDragonGetHit.
 // Callees: CModeStandBase::CModeStandBase(CThing*) @ 0x00861E00 (manifest "CTCCreatureNavigation" is propagated),
@@ -60,11 +61,11 @@ struct CModeDragonGetHit : CModeStandBase {   // vtable 0x012683E4
     CIntelligentPointer<CThing> PTarget;           // +0x74
     long                Timer;             // +0x7c
     virtual void v00();
-    CModeDragonGetHit(CThing* thing);
+    CModeDragonGetHit(CThing& thing);
 };
 
-CModeDragonGetHit::CModeDragonGetHit(CThing* thing)
-    : CModeStandBase(thing)
+CModeDragonGetHit::CModeDragonGetHit(CThing& thing)
+    : CModeStandBase(&thing)
     , Filter("GET_HIT")
     , Timer(0)
 {

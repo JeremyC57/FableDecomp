@@ -3980,7 +3980,7 @@ address	symbol	status	leaf_given
 004e794c	?OnReadFinished@@YIXPAUS@@@Z	RELOCATION_MATCH	OnReadFinished
 004e7a2d	??$TransferMap@JW4EQuestCardPrerequisite@@@CPersistContext@@QAEXAAV?$map@W4EQuestCardPrerequisite@@JU?$less@W4EQuestCardPrerequisite@@@std@@V?$allocator@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@@3@@std@@@Z	RELOCATION_MATCH	??$TransferMap@JW4EQuestCardPrerequisite@@@CPersistContext@@QAEXAAV?$map@
 004e7a62	?WriteState_004e7a62@@YIXPAVCDataOutputStream@@PAUSTree@@@Z	RELOCATION_MATCH	less<EQuestCardPrerequisite>>
-004e7cc3	??0CTCInventoryClothing@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCInventoryClothing
+004e7cc3	??0CTCInventoryClothing@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCInventoryClothing
 004e7d43	?ProcessTradeAction@CTCInventoryBase@@QAEXXZ	MATCH	ProcessTradeAction
 004e7d4d	?GetEmptyItemText@CTCInventoryBase_Retail@@QAE?AVCWideString@@J@Z	RELOCATION_MATCH	GetEmptyItemText
 004e7d6a	?GetClassTypeName@CTCInventoryClothing@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventoryClothing@@UBE?AVCCharString@@XZ
@@ -5051,7 +5051,7 @@ address	symbol	status	leaf_given
 005621b0	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ	RELOCATION_MATCH	?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
 005625f0	?OnPlayerSelectedClan@CTCHeroOnlineScoreboard@@QAEXVCWideString@@PAVCComponent@NUISystem@@@Z	RELOCATION_MATCH	OnPlayerSelectedClan
 00562710	?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@AAEXXZ	RELOCATION_MATCH	?InitialiseActivityInfo@CTCHeroOnlineScoreboard@@AAEXXZ
-00562ec0	??0CTCHeroOnlineScoreboard@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCHeroOnlineScoreboard
+00562ec0	??0CTCHeroOnlineScoreboard@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCHeroOnlineScoreboard
 00562ff0	??1CTCHeroOnlineScoreboard@@UAE@XZ	RELOCATION_MATCH	??1CTCHeroOnlineScoreboard
 00564570	?GlobalUpdate@CTCHeroOnlineScoreboard@@UAEX_N@Z	RELOCATION_MATCH	GlobalUpdate
 00564b00	??0CUnattributed_00564b00@@QAE@XZ	RELOCATION_MATCH	??0CUnattributed_00564b00
@@ -6174,7 +6174,7 @@ address	symbol	status	leaf_given
 005e3d70	?OnInitialActivate@@YIXPAVCTCVillage@@@Z	RELOCATION_MATCH	OnInitialActivate
 005e3de0	?OnCreate@CTCQuestCompletionUI@@QAEXXZ	MATCH	OnCreate
 005e3df0	?Deactivate@CTCQuestCompletionUI@@QAEXXZ	RELOCATION_MATCH	Deactivate
-005e4030	??0CTCQuestCompletionUI@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCQuestCompletionUI
+005e4030	??0CTCQuestCompletionUI@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCQuestCompletionUI
 005e4430	?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z	RELOCATION_MATCH	?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z
 005e8980	?Increment@CRetailTreeIterator@@QAEAAU1@XZ	MATCH	Increment
 005e8dd0	?Remove_005e8dd0@CRemovalTable_005e8dd0@@QAEXPAX@Z	RELOCATION_MATCH	Remove_005e8dd0
@@ -6555,7 +6555,7 @@ address	symbol	status	leaf_given
 00625820	?Copy_CElement44_006255b0_00625820@@YIPAUCElement44_006255b0@@PAU1@00USRandomAccessIteratorTag@@PAJ@Z	RELOCATION_MATCH	Copy_CElement44_006255b0_00625820
 00625910	?OnCreate@CTCQuickAccessMenu@@QAEXXZ	MATCH	OnCreate
 00625950	?DrawPreparePrimitivesForRendering@CTCQuickAccessMenu@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	RELOCATION_MATCH	DrawPreparePrimitivesForRendering
-006259e0	??0CTCQuickAccessMenu@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCQuickAccessMenu
+006259e0	??0CTCQuickAccessMenu@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCQuickAccessMenu
 00625ed0	?GlobalUpdate@CTCQuickAccessMenu@@QAEX_N@Z	RELOCATION_MATCH	GlobalUpdate
 006285f0	?GetClassTypeName@CTCQuickAccessMenu@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCQuickAccessMenu@@UBE?AVCCharString@@XZ
 00628610	?ScalarDeletingDestructor@CTCQuickAccessMenu@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -6744,7 +6744,7 @@ address	symbol	status	leaf_given
 00639250	?equal_range@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@J@std@@U12@@2@ABJ@Z	MATCH	?equal_range@
 006392b0	?_M_fill_insert@?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@QAEXPAPAVCThingMap@NThingMap@@IABQAV34@@Z	RELOCATION_MATCH	?_M_fill_insert@
 00639730	?Resize_CRetailVector_00639730@CRetailVector_00639730@@QAEXKABJ@Z	RELOCATION_MATCH	Resize_CRetailVector_00639730
-006398b0	??0CTCRegionDisplay@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCRegionDisplay
+006398b0	??0CTCRegionDisplay@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCRegionDisplay
 00639930	?FinishShowingRegionName@CTCRegionDisplay@@QAEXXZ	RELOCATION_MATCH	FinishShowingRegionName
 00639a90	?SetCurrentAreaName@CTCRegionDisplay@@QAEXABVCWideString@@M_N11@Z	RELOCATION_MATCH	SetCurrentAreaName
 00639b70	?IsDrawing@CTCRegionDisplay@@QBEJXZ	RELOCATION_MATCH	IsDrawing
@@ -9894,7 +9894,7 @@ address	symbol	status	leaf_given
 00740140	?CModeBlock_scalar_deleting_destructor@@YIPAXPAUCModeBlock@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00740160	??0CModeStunned@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	CModeStunned
 00740220	?CModeStunned_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00740250	??0CModeDazed@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	CModeDazed
+00740250	??0CModeDazed@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	CModeDazed
 00740310	?CModeDazed_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00740340	??0CModeJackOfBladesFloat@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeJackOfBladesFloat
 00740400	?CModeJackOfBladesFloat_scalar_deleting_destructor@@YIPAXPAUCModeJackOfBladesFloat@@HI@Z	RELOCATION_MATCH	`scalar deleting destructor'
@@ -9945,11 +9945,11 @@ address	symbol	status	leaf_given
 007417d0	?CModeChargeForcePush_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00741800	??0CModeGuildmasterConcentrate@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeGuildmasterConcentrate@
 007418a0	?CModeGuildmasterConcentrate_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-007418d0	??0CModeDragonLanded@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonLanded
+007418d0	??0CModeDragonLanded@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonLanded
 00741980	?CModeDragonLanded_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-007419b0	??0CModeDragonGetHit@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonGetHit
+007419b0	??0CModeDragonGetHit@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonGetHit
 00741a60	?CModeDragonGetHit_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00741a90	??0CModeDragonRearUp@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonRearUp
+00741a90	??0CModeDragonRearUp@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonRearUp
 00741b30	?CModeDragonRearUp_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00741b60	??0CModeDragonHover@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonHover
 00741c10	?CModeDragonHover_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -9957,7 +9957,7 @@ address	symbol	status	leaf_given
 00741ce0	?CModeHitByEpicSpell_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00741db0	??0CModeIntangible@NCreatureMode@@QAE@PAVCThing@@PAVCCreatureActionBase@@@Z	RELOCATION_MATCH	??0CModeIntangible
 00741eb0	?CModeIntangible_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00741ee0	??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeBriarRoseConcentrate
+00741ee0	??0CModeBriarRoseConcentrate@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeBriarRoseConcentrate
 00741fd0	?Get@T@@QAE_NXZ	MATCH	vfunc_11
 00741fe0	??0CModeStrafe@NCreatureMode@@QAE@PAVCThing@@_N@Z	RELOCATION_MATCH	??0CModeStrafe
 007420c0	?CModeStrafe_scalar_deleting_destructor@@YIPAXPAUCModeStrafe@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -9999,7 +9999,7 @@ address	symbol	status	leaf_given
 00743780	??_GCModeDragonFlyingBase@NCreatureMode@@QAEPAXI@Z	RELOCATION_MATCH	??_GCModeDragonFlyingBase@NCreatureMode@@
 007437c0	??0CModeDragonFlying@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonFlying
 00743880	?CModeDragonFlying_scalar_deleting_destructor@@YIPAXPAUCModeDragonFlying@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-007438a0	??0CModeDragonStrafe@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonStrafe
+007438a0	??0CModeDragonStrafe@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonStrafe
 00743960	?CModeDragonStrafe_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00743990	??0CModeDragonStrafeBurninate@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonStrafeBurninate
 00743a40	??_GCModeIntangiblePointer_00743a40@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -11311,7 +11311,7 @@ address	symbol	status	leaf_given
 007ca5a0	??0?$pair@V?$CIntelligentPointer@VCThingObject@@@@_N@std@@QAE@ABV?$CIntelligentPointer@VCThingObject@@@@AB_N@Z	RELOCATION_MATCH	??0?$pair
 007ca600	?Construct_PairIntelligentPointerThingObjectBool_007ca600@@YIXPAUCThingObjectBoolPair@@ABU1@@Z	RELOCATION_MATCH	Construct_PairIntelligentPointerThingObjectBool_007ca600
 007ca670	?PrepareToShowItems@CTCHeroReceiveItems@@QAEXABVC3DVector@@@Z	RELOCATION_MATCH	PrepareToShowItems
-007ca830	??0CTCHeroReceiveItems@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCHeroReceiveItems
+007ca830	??0CTCHeroReceiveItems@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCHeroReceiveItems
 007ca9e0	?GiveItems@CTCHeroReceiveItems@@QAEXABUCGiveItemVector@@AAVCThing@@_N@Z	RELOCATION_MATCH	GiveItems
 007cabd0	?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z	RELOCATION_MATCH	?AddItemToInventory@CTCHeroReceiveItems@@AAEXAAVCThing@@_N@Z
 007cbb10	??0list_T_0xc_007cbb10@std@@QAE@UCRetailAllocator@@@Z	RELOCATION_MATCH	??0list_T_0xc_007cbb10@std@@
@@ -11388,7 +11388,7 @@ address	symbol	status	leaf_given
 007d34a0	?EnterGame@CTCTavernGameCoinGolf@@UAEXXZ	RELOCATION_MATCH	?EnterGame@CTCTavernGameCoinGolf
 007d3700	?GetAdditionalInfo@CTCTavernGameCoinGolf@@QAE?AVCWideString@@XZ	RELOCATION_MATCH	GetAdditionalInfo
 007d4410	?UpdateValues@CTCTavernGameCoinGolf@@QAE_NXZ	RELOCATION_MATCH	?UpdateValues@CTCTavernGameCoinGolf
-007d49e0	??0CTCTavernGameCoinGolf@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCTavernGameCoinGolf
+007d49e0	??0CTCTavernGameCoinGolf@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCTavernGameCoinGolf
 007d4a60	?vfunc_11@CTCTavernGameCoinGolf@@QAEXPAUCRenderContext@@@Z	RELOCATION_MATCH	DrawPreparePrimitivesForRendering
 007d4a90	?LeaveGame@CTCTavernGameCoinGolf@@UAEXXZ	RELOCATION_MATCH	?LeaveGame@CTCTavernGameCoinGolf@@UAEXXZ
 007d4b30	?Release@?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@QAEXXZ	MATCH	?Release@?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@QAEXXZ
@@ -11575,7 +11575,7 @@ address	symbol	status	leaf_given
 007e5cc0	?FinalCleanup@CTCFireRangedWeaponOnLeavingStateGroup@@QAEXXZ	RELOCATION_MATCH	FinalCleanup
 007e5d00	?OutputsFiring@CTCOracleMinigame_Methods@@QAE_NXZ	MATCH	OutputsFiring
 007e5d20	?PlayGame@CTCOracleMinigame@@QAEXXZ	RELOCATION_MATCH	PlayGame
-007e5f00	??0CTCOracleMinigame@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCOracleMinigame
+007e5f00	??0CTCOracleMinigame@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCOracleMinigame
 007e60f0	?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z	RELOCATION_MATCH	PlaySoundW
 007e61b0	?FireOutput@CTCOracleMinigame@@QAEXXZ	RELOCATION_MATCH	FireOutput
 007e6ad0	?Release@?$CDefPointer@$$CBVCOracleMinigameDef@@@@QAEXXZ	MATCH	?Release@?$CDefPointer@$$CBVCOracleMinigameDef@@@@QAEXXZ
@@ -15143,9 +15143,9 @@ address	symbol	status	leaf_given
 008d79f0	?OnDeactivate@CModeSummonerLightningOrb@NCreatureMode@@UAEXXZ	RELOCATION_MATCH	OnDeactivate
 008d7bb0	?EndBeamEffect@CModeDragonStrafeBurninate@NCreatureMode@@QAEXXZ	RELOCATION_MATCH	EndBeamEffect
 008d7c20	??0CModeCarryingWeaponStand@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeCarryingWeaponStand@
-008d7cd0	??0CModeSleepBed@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeSleepBed
-008d7d60	??0CModeCreatureIsProjectile@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeCreatureIsProjectile@
-008d7de0	??0CModeRockTrollVulnerable@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	CModeRockTrollVulnerable
+008d7cd0	??0CModeSleepBed@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeSleepBed
+008d7d60	??0CModeCreatureIsProjectile@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeCreatureIsProjectile@
+008d7de0	??0CModeRockTrollVulnerable@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	CModeRockTrollVulnerable
 008d7e60	??0CModeJackOfBladesFlash@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeJackOfBladesFlash
 008d8120	??0CModeScorpionKingVulnerable@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeScorpionKingVulnerable
 008d81f0	??0CModeScorpionKingTailPlunge@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeScorpionKingTailPlunge
@@ -28194,3 +28194,4 @@ address	symbol	status	leaf_given
 00c6e020	?SetGain@CSalRenderPan@@UAEXMPBM_N@Z	RELOCATION_MATCH	?SetGain@CSalRenderPan@@UAEXMPBM_N@Z
 00c6e410	?Process@CSalRenderPanSSE2@@UAEXPBFAAY03PAH@Z	RELOCATION_MATCH	?Process@CSalRenderPanSSE2@@UAEXPBFAAY03PAH@Z
 00c6f990	?Process@CSalRenderPanMMX@@UAEXPBFAAY03PAH@Z	RELOCATION_MATCH	?Process@CSalRenderPanMMX@@UAEXPBFAAY03PAH@Z
+008d9220	??0CModeConversation@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CModeConversation@NCreatureMode@@QAE@AAVCThing@@@Z

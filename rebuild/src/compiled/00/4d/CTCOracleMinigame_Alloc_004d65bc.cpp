@@ -9,14 +9,15 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x007E5F00 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Naming (NF455, r454b): the callee 0x007E5F00 is ??0CTCOracleMinigame@@QAE@AAVCThing@@@Z (both PDB name sets; was ??0CTCOracleMinigame@@QAE@PAVCThing@@@Z), so it takes `*owner`: same bytes.
 class CThing;
 
 class CTCOracleMinigame { public:
     unsigned char _body[0xec];       // sizeof(CTCOracleMinigame) = 0xec
-    CTCOracleMinigame(CThing* owner);                   // 0x007E5F00
+    CTCOracleMinigame(CThing& owner);                   // 0x007E5F00
 };
 
 CTCOracleMinigame* __fastcall CTCOracleMinigame_Alloc(CThing* owner)
 {
-    return new CTCOracleMinigame(owner);
+    return new CTCOracleMinigame(*owner);
 }

@@ -1,5 +1,6 @@
-// CTCQuickAccessMenu::CTCQuickAccessMenu(CThing* thing) -- CTCBase(thing), own vtable, inactive, no components, not quitting, then join the global update list
+// CTCQuickAccessMenu::CTCQuickAccessMenu(CThing& thing) -- CTCBase(thing), own vtable, inactive, no components, not quitting, then join the global update list
 // Leaf: ??0CTCQuickAccessMenu
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCQuickAccessMenu@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCQuickAccessMenu@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -38,11 +39,11 @@ class CTCQuickAccessMenu : public CTCBase { public:                 // vtable 0x
     double                  LastRenderTime;                 // +0x20
     bool                    FirstRenderFrame;               // +0x28
     virtual void v00();
-    CTCQuickAccessMenu(CThing* thing);
+    CTCQuickAccessMenu(CThing& thing);
 };
 
-CTCQuickAccessMenu::CTCQuickAccessMenu(CThing* thing)
-    : CTCBase(*thing)
+CTCQuickAccessMenu::CTCQuickAccessMenu(CThing& thing)
+    : CTCBase(thing)
     , Active(false)
     , Components()
     , Quitting(false)

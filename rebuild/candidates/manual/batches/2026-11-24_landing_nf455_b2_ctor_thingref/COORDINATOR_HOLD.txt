@@ -1,0 +1,1 @@
+coordinator hold after landing (2026-11-25): 004db15e 004dcab9 007bbc65 reverted. Their landed Alloc factories (0x004DCB3C, 0x004DEB47, 0x004D53BB) call them through a namespace-less stand-in spelling, so the target would read proven while a landed caller disagrees (advisor condition for b1). They land later as units with their factories (the b3 recipe).

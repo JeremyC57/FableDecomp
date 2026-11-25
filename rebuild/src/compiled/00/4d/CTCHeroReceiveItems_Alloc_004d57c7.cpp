@@ -9,14 +9,15 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x007CA830 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+// Naming (NF455, r454b): the callee 0x007CA830 is ??0CTCHeroReceiveItems@@QAE@AAVCThing@@@Z (both PDB name sets; was ??0CTCHeroReceiveItems@@QAE@PAVCThing@@@Z), so it takes `*owner`: same bytes.
 class CThing;
 
 class CTCHeroReceiveItems { public:
     unsigned char _body[0xac];       // sizeof(CTCHeroReceiveItems) = 0xac
-    CTCHeroReceiveItems(CThing* owner);                   // 0x007CA830
+    CTCHeroReceiveItems(CThing& owner);                   // 0x007CA830
 };
 
 CTCHeroReceiveItems* __fastcall CTCHeroReceiveItems_Alloc(CThing* owner)
 {
-    return new CTCHeroReceiveItems(owner);
+    return new CTCHeroReceiveItems(*owner);
 }

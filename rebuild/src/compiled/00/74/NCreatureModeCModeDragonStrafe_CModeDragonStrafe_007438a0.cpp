@@ -1,6 +1,7 @@
 // NCreatureMode::CModeDragonStrafe::CModeDragonStrafe(CThing*) -- CModeDragonFlyingBase(thing), own vtable, the "STRAFE" filter, Timer = 0, Speed = 0
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the spline's CArray modelled with the STLport alloc-proxy end-of-storage member: the `push -1` of the filter name lands after the three zero stores as in retail
 // Leaf: ??0CModeDragonStrafe
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CModeDragonStrafe@NCreatureMode@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CModeDragonStrafe@NCreatureMode@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -92,11 +93,11 @@ struct CModeDragonStrafe : CModeDragonFlyingBase {   // vtable 0x012686C8
     bool               Burninated;                   // +0x50
     float              Speed;                        // +0x54
     virtual void v00();
-    CModeDragonStrafe(CThing* thing);
+    CModeDragonStrafe(CThing& thing);
 };
 
-CModeDragonStrafe::CModeDragonStrafe(CThing* thing)
-    : CModeDragonFlyingBase(thing)
+CModeDragonStrafe::CModeDragonStrafe(CThing& thing)
+    : CModeDragonFlyingBase(&thing)
     , Filter("STRAFE")
     , Timer(0)
     , Speed(0)
