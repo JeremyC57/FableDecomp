@@ -1390,3 +1390,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: landed NF446 u1-u3 (+5 proven; u3 equiv clean); u4 held on queue-line mentions (owner question).
 - 2026-11-25 A: landed NF442 (98 rows, +20 proven); NF446 resumed on the u4 re-cut; NF447 and NF448 starting.
 - 2026-11-25 A: landed NF446 u4a + u4b (no queue edit; 4 T3 lines closed by the lander); NF446 done.
+- 2026-11-25 A: NF449 started (T1 special-member caller respells).
