@@ -27,6 +27,9 @@ Counts:
                           third_party (vendor code: zlib, LZO, Xiph, DirectShow base classes, DXUT ImeUi) and toolchain
                           (VC7.1 CRT objects and import thunks). A toolchain_library row outside every map range is
                           counted by its proof line (toolchain, or third_party for `// Vendor-library:`).
+  baked_string            genuine-class rows whose code casts a retail address to a string pointer instead of spelling
+                          the literal (crawl/purity.py baked_string_addresses): a separate grade, excluded from every
+                          genuine figure (and from split) until fixed (owner decision 2026-11-25)
   landed_genuine_known / landed_genuine_original
   matched_bytes / matched_bytes_genuine   retail bytes covered by landed rows (catalog row lengths)
   unlanded_bytes_estimate  known functions not landed, each sized as the gap to the next known function start, capped at 64 KB (unlanded_gap_cap; unlanded_gaps_capped counts the caps)
@@ -112,6 +115,7 @@ def main() -> int:
     kinds = {}
     library_source = set()
     vendor_library, vendor_source = set(), set()
+    baked_string = set()
     missing = 0
     for a in catalog:
         rel = sources.get(a)
@@ -131,7 +135,11 @@ def main() -> int:
             vendor_library.add(a)
         if kinds[a] in ("genuine", "retail_asm") and re.search(r"^//\s*Vendor-proof:", text_a, re.M):
             vendor_source.add(a)
-    genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)}
+        if purity.is_genuine_kind(kinds[a]) and purity.baked_string_addresses(text_a):
+            baked_string.add(a)
+    # grade `baked_string` (owner 2026-11-25): rows that cast a retail address to a string pointer are counted apart
+    # from the genuine figures until the literal is spelled (crawl/purity.py baked_string_addresses).
+    genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)} - baked_string
     out = {
         "catalog_rows": len(catalog),
         "known_functions": len(known),
@@ -150,6 +158,10 @@ def main() -> int:
         "missing_source": missing,
         "matched_bytes": sum(catalog.values()),
         "matched_bytes_genuine": sum(n for a, n in catalog.items() if a in genuine),
+        "baked_string": len(baked_string),
+        "landed_baked_string_known": len(baked_string & known),
+        "landed_baked_string_original": len(baked_string & original),
+        "matched_bytes_baked_string": sum(n for a, n in catalog.items() if a in baked_string),
     }
     starts.sort()
     ts = json.loads((REBUILD / "manifest" / "text_section.json").read_text(encoding="utf-8"))

@@ -140,6 +140,36 @@ def _toolchain_library(text):
     return "{" not in code and "}" not in code
 
 
+# Baked string addresses (owner decision 2026-11-25: a separate coverage grade until fixed). A row that casts a retail
+# address to a string pointer -- `(const char*)0x0129E564`, `reinterpret_cast<const wchar_t*>(0x...)`, `(LPCSTR)0x...` --
+# instead of spelling the literal grades MATCH by construction: the address is a plain immediate with no relocation, so
+# neither the relocation-identity check nor the literal check can see it, the text is not reconstructed, and the code
+# only works linked against retail's exact data layout. Such rows stay `genuine` for every asm-related purpose
+# (`classify` is unchanged), but tools/landed_metrics.py counts them as grade `baked_string`, apart from the genuine
+# figures, until the literal is spelled. Detection reads code only: comments and string literals are stripped first.
+# Audit and fix queue: rebuild/candidates/manual/audits/2026-11-25_baked_string_addresses/.
+_BAKED_COMMENT = re.compile(r"//[^\n]*|/\*.*?\*/", re.S)
+_BAKED_LITERAL = re.compile(r'"(?:\\.|[^"\\])*"')
+_BAKED_CAST = re.compile(
+    r"(?:\(\s*(?:const\s+)?(?:char|wchar_t|unsigned\s+short|WCHAR|TCHAR|CHAR|signed\s+char|unsigned\s+char|BYTE)\s*"
+    r"(?:const\s*)?\*\s*(?:const\s*)?\)"
+    r"|\b(?:LPCSTR|LPSTR|LPCWSTR|LPWSTR|LPCTSTR|PCSTR|PCWSTR)\s*\)"
+    r"|reinterpret_cast\s*<\s*(?:const\s+)?(?:char|wchar_t|unsigned\s+short)\s*(?:const\s*)?\*\s*>)"
+    r"\s*\(?\s*(0x[0-9A-Fa-f]{6,8})")
+BAKED_STRING_RANGE = (0x00400000, 0x02000000)   # retail image (ImageBase 0x400000)
+
+
+def baked_string_addresses(text):
+    """Retail addresses a row casts to a string pointer in its code (comments and literals ignored); [] when none."""
+    code = _BAKED_LITERAL.sub('""', _BAKED_COMMENT.sub("", text))
+    out = []
+    for m in _BAKED_CAST.finditer(code):
+        va = int(m.group(1), 16)
+        if BAKED_STRING_RANGE[0] <= va < BAKED_STRING_RANGE[1]:
+            out.append(va)
+    return out
+
+
 def is_genuine_kind(kind):
     return kind in ("genuine", "retail_asm", "toolchain_library")
 
