@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004d4a86   WARN SHARED_HEADER_AVAILABLE CTCBerserk (engine/CTCBerserk.h)
+004d4a86   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 1
+  004d4a86 RELOCATION_MATCH CTCBerserk::?StatGetClassTypeName@CTCBerserk@@SI?AVCCharString@@XZ

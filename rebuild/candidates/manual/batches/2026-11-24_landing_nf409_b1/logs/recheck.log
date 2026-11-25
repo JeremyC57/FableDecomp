@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004da6a9   RELOCATION_MATCH PASS   ScalarDeletingDtor_004da6a9
+
+WINS: 1
+  004da6a9 RELOCATION_MATCH _global::??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z

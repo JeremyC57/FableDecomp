@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004d5853   WARN SHARED_HEADER_AVAILABLE CTCTargetingSpirit (engine/CTCTargetingSpirit.h)
+004d5853   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 1
+  004d5853 RELOCATION_MATCH CTCTargetingSpirit::?StatGetClassTypeName@CTCTargetingSpirit@@SI?AVCCharString@@XZ

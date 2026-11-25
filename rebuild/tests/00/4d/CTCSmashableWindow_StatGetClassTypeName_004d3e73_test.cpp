@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <string.h>
 
 class CCharString
 {
@@ -26,7 +27,7 @@ int main()
         CCharString name = CTCSmashableWindow::StatGetClassTypeName();
         if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
         if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
-        if (g_seenText != (const char*)0x0123B48C) { std::printf("BAD_TEXT\n"); return 1; }
+        if (g_seenText == 0 || strcmp(g_seenText, "CTCSmashableWindow") != 0) { std::printf("BAD_TEXT\n"); return 1; }
     }
     std::printf("GETACTIONNAME_004d3e73_OK\n");
     return 0;

@@ -1,47 +1,36 @@
+// Behaviour model of ??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z 0x004DA6A9: destroy the pair (its
+// CIntelligentPointer<CThing>, at +4), then free the storage only when bit 0 of the flags is set; returns this.
 #include <cstdio>
-
-typedef unsigned int uint;
-
-struct Sub { int x; };
-
-struct Obj {
-    int field0;
-    Sub sub;
+#include <cstdlib>
+#include <new>
+static int g_dtor_calls = 0, g_delete_calls = 0;
+static const void* g_last_dtor_self = 0;
+static const void* g_last_delete_self = 0;
+struct CBaseIntelligentPointer { void* PData; ~CBaseIntelligentPointer() { g_dtor_calls++; g_last_dtor_self = this; } };
+struct CThingIndexPair {
+    long first; CBaseIntelligentPointer second;
+    static void operator delete(void* p) { g_delete_calls++; g_last_delete_self = p; std::free(p); }
 };
-
-static int g_dtor_called = 0;
-static int g_delete_called = 0;
-static void* g_dtor_arg = 0;
-static void* g_delete_arg = 0;
-
-void __fastcall Sub_dtor(Sub* self) { g_dtor_called++; g_dtor_arg = self; }
-void __cdecl op_delete(void* p) { g_delete_called++; g_delete_arg = p; }
-
-void* __fastcall vdd(Obj* self, int /*edx*/, uint flags)
+static void* ScalarDeletingDestructor(CThingIndexPair* self, unsigned int flags)
 {
-    Sub_dtor(&self->sub);
+    self->~CThingIndexPair();
     if (flags & 1)
-        op_delete(self);
+        CThingIndexPair::operator delete(self);
     return self;
 }
-
 int main()
 {
-    Obj a;
-    // flags without bit0: destructor runs, no delete, returns self
-    g_dtor_called = g_delete_called = 0;
-    void* r0 = vdd(&a, 0, 0);
-    // flags with bit0: destructor runs, delete runs
-    void* r1 = vdd(&a, 0, 1);
-
-    bool ok = true;
-    if (r0 != &a || r1 != &a) ok = false;
-    if (g_dtor_called != 2) ok = false;          // dtor both times
-    if (g_delete_called != 1) ok = false;         // delete only when bit0
-    if (g_dtor_arg != &a.sub) ok = false;         // dtor on subobject +4
-    if (g_delete_arg != &a) ok = false;           // delete on whole obj
-
-    if (ok) printf("VDD_PARITY_OK\n");
-    else    printf("FAIL d=%d del=%d\n", g_dtor_called, g_delete_called);
+    void* mem = std::malloc(sizeof(CThingIndexPair));
+    CThingIndexPair* p = new (mem) CThingIndexPair;
+    void* r = ScalarDeletingDestructor(p, 0);
+    if (r != p || g_dtor_calls != 1 || g_delete_calls != 0) { std::printf("FAIL flag0\n"); return 1; }
+    if (g_last_dtor_self != &p->second) { std::printf("FAIL member\n"); return 1; }
+    p = new (mem) CThingIndexPair;
+    r = ScalarDeletingDestructor(p, 2);
+    if (r != p || g_dtor_calls != 2 || g_delete_calls != 0) { std::printf("FAIL flag2\n"); return 1; }
+    p = new (mem) CThingIndexPair;
+    r = ScalarDeletingDestructor(p, 1);
+    if (r != p || g_dtor_calls != 3 || g_delete_calls != 1 || g_last_delete_self != p) { std::printf("FAIL flag1\n"); return 1; }
+    std::printf("VDD_PARITY_OK\n");
     return 0;
 }

@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?Destroy_004e41a1@CInner@@QAEXH@Z -> ??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z	004e41a1	004e7772	NF409 b2: 0x004E7772 ported to the STLport _M_erase of map<EObjectAugmentationType, CObjectAugmentationParticleSet>; its value-destructor call is the pair ??_G (Ego_r.pdb spelling), the self of 0x004E41A1 in the same unit; the CInner stand-in was a second name at 0x004E41A1

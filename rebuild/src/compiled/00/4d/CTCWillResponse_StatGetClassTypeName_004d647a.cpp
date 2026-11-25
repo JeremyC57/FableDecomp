@@ -6,6 +6,8 @@
 // Identity (namepass 2026-10-26): literal 0x123e30c = "CTCWillResponse" = the class name; PDB name set ?StatGetClassTypeName@CTCWillResponse@@SI?AVCCharString@@XZ.
 // Callee: CCharString(const char*, long) 0x0099EBF0 = PDB ??0CCharString@@QAE@PBDJ@Z (was the invented
 //   FableCharStringResult_004d647a::build).
+// Literal (NF411, 2026-11-25): HEAD cast the retail address (const char*)0x0123E30C (no relocation, grade baked_string); it is now the
+//   string literal, spelled from retail's bytes at 0x0123E30C (.rdata, NUL-terminated, the class name).
 // Form (NF408, 2026-11-25; NF407's mechanical re-form): the static is defined in the class body, so it is a pick-any COMDAT, and a
 //   scaffolding helper takes its address so this object emits it (the nf86 / nf88 form, landing nf387 ruling; the nf406_b2 0x004D31C0
 //   form). The landed binder CTCBase::RegisterTCs 0x004EE23F defines the same static in the class body (TC_REGISTRATION_INTERFACE,
@@ -23,7 +25,7 @@ public:
 class CTCWillResponse
 {
 public:
-    static CCharString __fastcall StatGetClassTypeName() { return CCharString((const char*)0x0123E30C, -1); }   // "CTCWillResponse"
+    static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCWillResponse", -1); }
 };
 
 namespace {

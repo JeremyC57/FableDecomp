@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <string.h>
 
 class CCharString
 {
@@ -26,7 +27,7 @@ int main()
         CCharString name = CTCCameraPointBuilding::StatGetClassTypeName();
         if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
         if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
-        if (g_seenText != (const char*)0x0123AEC0) { std::printf("BAD_TEXT\n"); return 1; }
+        if (g_seenText == 0 || strcmp(g_seenText, "CTCCameraPointBuilding") != 0) { std::printf("BAD_TEXT\n"); return 1; }
     }
     std::printf("004d39eb_TEST PASS\n");
     return 0;

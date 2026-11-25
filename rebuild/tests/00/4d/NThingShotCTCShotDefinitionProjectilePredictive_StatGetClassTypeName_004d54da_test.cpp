@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <string.h>
 
 class CCharString
 {
@@ -28,7 +29,7 @@ int main()
         CCharString name = NThingShot::CTCShotDefinitionProjectilePredictive::StatGetClassTypeName();
         if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
         if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
-        if (g_seenText != (const char*)0x0123CF4C) { std::printf("BAD_TEXT\n"); return 1; }
+        if (g_seenText == 0 || strcmp(g_seenText, "CTCShotDefinitionProjectilePredictive") != 0) { std::printf("BAD_TEXT\n"); return 1; }
     }
     std::printf("GETACTIONNAME_004d54da_OK\n");
     return 0;

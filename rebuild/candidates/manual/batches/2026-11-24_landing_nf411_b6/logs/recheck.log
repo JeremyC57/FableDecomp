@@ -1,0 +1,57 @@
+addr       parity           behav  name
+004d630d   WARN SHARED_HEADER_AVAILABLE CTCQuestCompletionUI (engine/CTCQuestCompletionUI.h)
+004d630d   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6353   WARN SHARED_HEADER_AVAILABLE CTCDeadShotInThingTracker (engine/CTCDeadShotInThingTracker.h)
+004d6353   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6366   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d63a7   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d63e8   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d647a   WARN SHARED_HEADER_AVAILABLE CTCWillResponse (engine/CTCWillResponse.h)
+004d647a   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d64a3   WARN SHARED_HEADER_AVAILABLE CTCFlourishTarget (engine/CTCFlourishTarget.h)
+004d64a3   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d64d3   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6519   WARN SHARED_HEADER_AVAILABLE CTCBetting (engine/CTCBetting.h)
+004d6519   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6549   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d655c   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d65a9   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d65dc   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)
+004d65dc   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6625   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6674   WARN SHARED_HEADER_AVAILABLE CTCLightningNode (engine/CTCLightningNode.h)
+004d6674   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6687   WARN SHARED_HEADER_AVAILABLE CTCLightningOrb (engine/CTCLightningOrb.h)
+004d6687   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d66b0   WARN SHARED_HEADER_AVAILABLE CTCHasName (engine/CTCHasName.h)
+004d66b0   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d66f7   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+004d66f7   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d6727   WARN SHARED_HEADER_AVAILABLE CTCPhotojournalCapture (engine/CTCPhotojournalCapture.h)
+004d6727   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d673a   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d674d   WARN SHARED_HEADER_AVAILABLE CTCAbsorbHits (engine/CTCAbsorbHits.h)
+004d674d   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 21
+  004d630d RELOCATION_MATCH CTCQuestCompletionUI::?StatGetClassTypeName@CTCQuestCompletionUI@@SI?AVCCharString@@XZ
+  004d6353 RELOCATION_MATCH CTCDeadShotInThingTracker::?StatGetClassTypeName@CTCDeadShotInThingTracker@@SI?AVCCharString@@XZ
+  004d6366 RELOCATION_MATCH CTCDestroyThingOnActionFinish::?StatGetClassTypeName@CTCDestroyThingOnActionFinish@@SI?AVCCharString@@XZ
+  004d63a7 RELOCATION_MATCH CTCDestroyThingOnSpecialAbilityFinish::?StatGetClassTypeName@CTCDestroyThingOnSpecialAbilityFinish@@SI?AVCCharString@@XZ
+  004d63e8 RELOCATION_MATCH CTCObstacle::?StatGetClassTypeName@CTCObstacle@@SI?AVCCharString@@XZ
+  004d647a RELOCATION_MATCH CTCWillResponse::?StatGetClassTypeName@CTCWillResponse@@SI?AVCCharString@@XZ
+  004d64a3 RELOCATION_MATCH CTCFlourishTarget::?StatGetClassTypeName@CTCFlourishTarget@@SI?AVCCharString@@XZ
+  004d64d3 RELOCATION_MATCH CTCCreditsUI::?StatGetClassTypeName@CTCCreditsUI@@SI?AVCCharString@@XZ
+  004d6519 RELOCATION_MATCH CTCBetting::?StatGetClassTypeName@CTCBetting@@SI?AVCCharString@@XZ
+  004d6549 RELOCATION_MATCH CTCLifeTimer::?StatGetClassTypeName@CTCLifeTimer@@SI?AVCCharString@@XZ
+  004d655c RELOCATION_MATCH CTCFireRangedWeaponOnLeavingStateGroup::?StatGetClassTypeName@CTCFireRangedWeaponOnLeavingStateGroup@@SI?AVCCharString@@XZ
+  004d65a9 RELOCATION_MATCH CTCAvoidRegionExit::?StatGetClassTypeName@CTCAvoidRegionExit@@SI?AVCCharString@@XZ
+  004d65dc RELOCATION_MATCH CTCOracleMinigame::?StatGetClassTypeName@CTCOracleMinigame@@SI?AVCCharString@@XZ
+  004d6625 RELOCATION_MATCH CTCFireheartMinigame::?StatGetClassTypeName@CTCFireheartMinigame@@SI?AVCCharString@@XZ
+  004d6674 RELOCATION_MATCH CTCLightningNode::?StatGetClassTypeName@CTCLightningNode@@SI?AVCCharString@@XZ
+  004d6687 RELOCATION_MATCH CTCLightningOrb::?StatGetClassTypeName@CTCLightningOrb@@SI?AVCCharString@@XZ
+  004d66b0 RELOCATION_MATCH CTCHasName::?StatGetClassTypeName@CTCHasName@@SI?AVCCharString@@XZ
+  004d66f7 RELOCATION_MATCH CTCHeroOnlineScoreboard::?StatGetClassTypeName@CTCHeroOnlineScoreboard@@SI?AVCCharString@@XZ
+  004d6727 RELOCATION_MATCH CTCPhotojournalCapture::?StatGetClassTypeName@CTCPhotojournalCapture@@SI?AVCCharString@@XZ
+  004d673a RELOCATION_MATCH CTCCarriedActionUseAbility::?StatGetClassTypeName@CTCCarriedActionUseAbility@@SI?AVCCharString@@XZ
+  004d674d RELOCATION_MATCH CTCAbsorbHits::?StatGetClassTypeName@CTCAbsorbHits@@SI?AVCCharString@@XZ

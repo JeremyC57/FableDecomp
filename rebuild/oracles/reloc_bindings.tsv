@@ -17428,7 +17428,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AutoTinyFinishRead_004dfc27@@YIXPAX0PAD@Z	004dfc27	004e40a0
 ?AutoTinyFinishRead_004e1c5c@@YIXPAX0PAD@Z	004e1c5c	004e6dd2
 ?AutoTinyFinishRead_004e366b@@YIXPAX0PAD@Z	004e366b	004e76fd
-?Destroy_004e41a1@CInner@@QAEXH@Z	004e41a1	004e7772
+??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z	004e41a1	004e7772
 ?AutoTinyFinishRead_0053cc6a@@YIXPAX0PAD@Z	0053cc6a	0053cd46
 ?Consume_0053cc6a@@YIXPAX0PAD@Z	0053cc6a	0053cda0
 ?CActiveFile_base_00566e10@@YIXPAUCActiveFile@@@Z	00566e10	00567880

@@ -3452,7 +3452,7 @@ address	symbol	status	leaf_given
 004e769f	??1CTCLightningNode@@UAE@XZ	RELOCATION_MATCH	??1CTCLightningNode
 004e76df	?CopyBackBufferToTexture@CDisplayManager@@QAEPAVCTexture@@XZ	RELOCATION_MATCH	CopyBackBufferToTexture
 004e76fd	?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
-004e7772	?BuildTreeArray@LTextTreeWalkThrough@@QAEXPAUCTextTreeNode@@@Z	RELOCATION_MATCH	BuildTreeArray
+004e7772	?_M_erase@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@2@@Z	RELOCATION_MATCH	?_M_erase@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@@2@@Z
 004e77b6	?fn_00594de2@@YGHHH@Z	RELOCATION_MATCH	ConstructString
 004e786c	?CNavigationLayer@@YIPAUCNavigationLayer_t@@PAU1@@Z	MATCH	??0CNavigationLayer@
 004e787c	?OnReadFinished@@YIXPAUS@@@Z	RELOCATION_MATCH	OnReadFinished
@@ -27245,3 +27245,5 @@ address	symbol	status	leaf_given
 00c5ec80	??_GCSalKsPin@@UAEPAXI@Z	RELOCATION_MATCH	??_GCSalKsPin@@UAEPAXI@Z
 00c5e440	??_GCSalEvent@@UAEPAXI@Z	RELOCATION_MATCH	??_GCSalEvent@@UAEPAXI@Z
 00c5e4a0	??_GCSalThread@@UAEPAXI@Z	RELOCATION_MATCH	??_GCSalThread@@UAEPAXI@Z
+004da6a9	??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z	RELOCATION_MATCH	??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z
+004e41a1	??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z	RELOCATION_MATCH	??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z

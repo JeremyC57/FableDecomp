@@ -1,50 +1,37 @@
+// Behaviour model of ??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z 0x004E41A1: destroy
+// the pair (its CObjectAugmentationParticleSet value, after the 4-byte key), then free the storage only when bit 0 of the flags is set;
+// returns this.
 #include <cstdio>
-
-static int g_deleted = 0;
-static int g_subdtor = 0;
-static void* g_sub_self = 0;
-static void* g_del_self = 0;
-
-// mirrors Sub_dtor(self+4)
-void sub_dtor(void* subself) { g_subdtor++; g_sub_self = subself; }
-// mirrors operator delete(self)
-void op_delete(void* p) { g_deleted++; g_del_self = p; }
-
-void* vdd(void* self, unsigned int flags)
+#include <cstdlib>
+#include <new>
+static int g_dtor_calls = 0, g_delete_calls = 0;
+static const void* g_last_dtor_self = 0;
+static const void* g_last_delete_self = 0;
+struct CObjectAugmentationParticleSet { float PeriodSecs; ~CObjectAugmentationParticleSet() { g_dtor_calls++; g_last_dtor_self = this; } };
+struct CAugmentationParticlePair {
+    int first; CObjectAugmentationParticleSet second;
+    static void operator delete(void* p) { g_delete_calls++; g_last_delete_self = p; std::free(p); }
+};
+static void* ScalarDeletingDestructor(CAugmentationParticlePair* self, unsigned int flags)
 {
-    sub_dtor(static_cast<char*>(self) + 4);
+    self->~CAugmentationParticlePair();
     if (flags & 1)
-        op_delete(self);
+        CAugmentationParticlePair::operator delete(self);
     return self;
 }
-
 int main()
 {
-    char buf[64];
-    void* obj = buf;
-
-    // flags bit0 clear: dtor runs on self+4, no delete
-    g_subdtor = 0; g_deleted = 0; g_sub_self = 0; g_del_self = 0;
-    void* r = vdd(obj, 0);
-    if (r != obj || g_subdtor != 1 || g_deleted != 0) { printf("FAIL1\n"); return 1; }
-    if (g_sub_self != static_cast<char*>(obj) + 4) { printf("FAIL1b\n"); return 1; }
-
-    // flags bit0 set: dtor runs AND delete(self)
-    g_subdtor = 0; g_deleted = 0; g_sub_self = 0; g_del_self = 0;
-    r = vdd(obj, 1);
-    if (r != obj || g_subdtor != 1 || g_deleted != 1) { printf("FAIL2\n"); return 1; }
-    if (g_del_self != obj) { printf("FAIL2b\n"); return 1; }
-
-    // even flags (bit0 clear) do not delete
-    g_subdtor = 0; g_deleted = 0;
-    vdd(obj, 2);
-    if (g_deleted != 0 || g_subdtor != 1) { printf("FAIL3\n"); return 1; }
-
-    // odd flags >1 (bit0 set) delete
-    g_subdtor = 0; g_deleted = 0;
-    vdd(obj, 3);
-    if (g_deleted != 1) { printf("FAIL4\n"); return 1; }
-
-    printf("VDD_OK\n");
+    void* mem = std::malloc(sizeof(CAugmentationParticlePair));
+    CAugmentationParticlePair* p = new (mem) CAugmentationParticlePair;
+    void* r = ScalarDeletingDestructor(p, 0);
+    if (r != p || g_dtor_calls != 1 || g_delete_calls != 0) { std::printf("FAIL flag0\n"); return 1; }
+    if (g_last_dtor_self != &p->second) { std::printf("FAIL member\n"); return 1; }
+    p = new (mem) CAugmentationParticlePair;
+    r = ScalarDeletingDestructor(p, 2);
+    if (r != p || g_dtor_calls != 2 || g_delete_calls != 0) { std::printf("FAIL flag2\n"); return 1; }
+    p = new (mem) CAugmentationParticlePair;
+    r = ScalarDeletingDestructor(p, 1);
+    if (r != p || g_dtor_calls != 3 || g_delete_calls != 1 || g_last_delete_self != p) { std::printf("FAIL flag1\n"); return 1; }
+    std::printf("VDD_OK\n");
     return 0;
 }
