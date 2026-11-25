@@ -1,0 +1,34 @@
+target	status	fam	member	reason
+008fe93b	split_fixable	CAIStateGroupInfo	?1	CAIStateGroupInfo is not a state-group class (no CAIStateGroupBase in its RTTI chain)
+00c3c660	split_unknown	CAIStateGroupBase_00c3c660	?0	Unwind / stand-in class CAIStateGroupBase_00c3c660 (no RTTI class)
+00c3e640	split_unknown	CAIStateGroupBase_00c3e640	InitializeRenderer	Unwind / stand-in class CAIStateGroupBase_00c3e640 (no RTTI class)
+00c54090	split_unknown	CAIStateGroupBase_00c54090	?0	Unwind / stand-in class CAIStateGroupBase_00c54090 (no RTTI class)
+012b89c8	split_unknown	CAIStateGroupBase_00c54090	?	data address (vftable / RTTI), not a function
+0094d480	split_unknown	CAIStateGroupWithBuilding_0094d480	Cleanup	Unwind / stand-in class CAIStateGroupWithBuilding_0094d480 (no RTTI class)
+00c47f00	split_unknown	CAIStateGroup_BirdFlyToFood_00c48300	Issue	Unwind / stand-in class CAIStateGroup_BirdFlyToFood_00c48300 (no RTTI class)
+00c48300	split_unknown	CAIStateGroup_BirdFlyToFood_00c48300	Update	Unwind / stand-in class CAIStateGroup_BirdFlyToFood_00c48300 (no RTTI class)
+00c483a0	split_unknown	CAIStateGroup_BirdFlyToFood_00c483a0	Update	Unwind / stand-in class CAIStateGroup_BirdFlyToFood_00c483a0 (no RTTI class)
+00c48430	split_unknown	CAIStateGroup_BirdFlyToFood_00c48430	Update	Unwind / stand-in class CAIStateGroup_BirdFlyToFood_00c48430 (no RTTI class)
+00c484b0	split_unknown	CAIStateGroup_BirdFlyToFood_00c484b0	Update	Unwind / stand-in class CAIStateGroup_BirdFlyToFood_00c484b0 (no RTTI class)
+00c48560	split_unknown	CAIStateGroup_BirdFlyToFood_00c48560	Update	Unwind / stand-in class CAIStateGroup_BirdFlyToFood_00c48560 (no RTTI class)
+00c42d60	split_unknown	CAIStateGroup_CreatureUseCoverBase_00c42d60	?0	Unwind / stand-in class CAIStateGroup_CreatureUseCoverBase_00c42d60 (no RTTI class)
+00c44580	split_unknown	CAIStateGroup_Derived_00c44580	?0	Unwind / stand-in class CAIStateGroup_Derived_00c44580 (no RTTI class)
+0128a1dc	split_unknown	CAIStateGroup_HoverMovementBase	?	data address (vftable / RTTI), not a function
+01214ec0	standin	CAIStateGroupBase_00c3c660	?0	data address (vftable / RTTI), not a function
+012b4f84	standin	CAIStateGroupBase_00c3c660	?	data address (vftable / RTTI), not a function
+01215100	standin	CAIStateGroupBase_00c3e640	InitializeRenderer	data address (vftable / RTTI), not a function
+01216100	standin	CAIStateGroupBase_00c54090	?0	data address (vftable / RTTI), not a function
+012b958c	standin	CAIStateGroupBehaviour_00c698d0	?	data address (vftable / RTTI), not a function
+012bf07c	standin	CAIStateGroupBehaviour_00c75530	?	data address (vftable / RTTI), not a function
+00c1df70	standin	CAIStateGroup_00c1df70	InitializeAndDispatch	Unwind / stand-in class CAIStateGroup_00c1df70 (no RTTI class)
+012125b0	standin	CAIStateGroup_00c1df70	InitializeAndDispatch	data address (vftable / RTTI), not a function
+01215972	standin	CAIStateGroup_BirdFlyToFood_00c48300	Update	data address (vftable / RTTI), not a function
+01215984	standin	CAIStateGroup_BirdFlyToFood_00c483a0	Update	data address (vftable / RTTI), not a function
+01215996	standin	CAIStateGroup_BirdFlyToFood_00c48430	Update	data address (vftable / RTTI), not a function
+012159a8	standin	CAIStateGroup_BirdFlyToFood_00c484b0	Update	data address (vftable / RTTI), not a function
+012159ba	standin	CAIStateGroup_BirdFlyToFood_00c48560	Update	data address (vftable / RTTI), not a function
+012152f0	standin	CAIStateGroup_CreatureUseCoverBase_00c42d60	?0	data address (vftable / RTTI), not a function
+012b5a88	standin	CAIStateGroup_CreatureUseCoverBase_00c42d60	?	data address (vftable / RTTI), not a function
+012b7b88	standin	CAIStateGroup_Derived_00c44580	?	data address (vftable / RTTI), not a function
+00c1c110	standin	CAIStateGroup_JackOfBladesBase_00c1c110	Shutdown	Unwind / stand-in class CAIStateGroup_JackOfBladesBase_00c1c110 (no RTTI class)
+01212460	standin	CAIStateGroup_JackOfBladesBase_00c1c110	Shutdown	data address (vftable / RTTI), not a function

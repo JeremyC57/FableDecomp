@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ	00910570	009106b0	NF429: the respelt row 0x009106B0 binds ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ at 0x00910570 (its leaf relocation; was _ForwardTarget_00910570)

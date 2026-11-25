@@ -1,0 +1,8 @@
+source	address	unit	reason
+nf319	0x009007A4	held	009007a4 skipped-held ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE?AW4EAIStateGroupType@@XZ NF318 Q2: class branch only under FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+nf319	0x009007D9	held	009007d9 skipped-held ?GetStateGroupType@CAIStateGroup_MazeShieldedChase@@UBE?AW4EAIStateGroupType@@XZ NF318 Q2: class switch FABLE_RETAIL_CAISTATEGROUP_MAZESHIELDEDCHASE: no landed row defines it
+nf319	0x00902600	held	00902600 skipped-held ?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ NF318 Q2: class branch only under FABLE_RETAIL_ROCKTROLL_UPDATE_PASS27
+nf319	0x0090303F	held	0090303f skipped-held ?GetStateGroupType@CAIStateGroup_JackOfBladesBase@@UBE?AW4EAIStateGroupType@@XZ NF318 Q2: declared only under FABLE_RETAIL_JACK_SETUPARENA_PASS23
+nf324	0x00940110	port	00940110 skipped-port ?InitStateGroup@CAIStateGroup_VillageTaskPickCrops@@UAEXABVCWorld@@AAVCThingAICreature@@@Z triage (header): model: engine/CAIStateGroup_VillageTaskPickCrops.h does not declare InitStateGroup (add-only opt-in
+nf324	0x00979900	port	00979900 skipped-port ?InitStateGroup@CAIStateGroup_CreatureTakeCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z triage (header): model: engine/CAIStateGroup_CreatureTakeCover.h does not declare InitStateGroup (add-only opt-in)
+nf324	0x0097CAF0	port	0097caf0 skipped-port ?InitStateGroup@CAIStateGroup_CreatureFindCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z triage (header): model: engine/CAIStateGroup_CreatureFindCover.h does not declare InitStateGroup (add-only opt-in)

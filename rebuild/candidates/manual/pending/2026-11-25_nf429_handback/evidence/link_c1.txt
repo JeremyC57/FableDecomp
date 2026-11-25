@@ -1,0 +1,102 @@
+## HEAD set (32 objects): 008fcfe0/work 008fdc8e/work 008fe0ee/work 008fe0ef/work 008fe0f2/work 008fe0f3/work 008fe102/work 008fe802/work 008ff071/work 008ff26b/work 008ff26e/work 008ff3af/work 009007a8/work 00900f20/work 0090188b/work 009018ec/work 009021da/work 00902f9a/work 00903043/work 00903151/work 00903158/work 0090316d/work 00903170/work 009031f0/work 009031f3/work 00918ed0/work 0091ea10/work 00933da0/work 00968190/work 009718e0/work 00977760/work 0097cb00/work
+duplicates 0
+DEFINED ?CAIStateGroupBase_GetDebugText@@YIPBVCCharString@@PBVCAIStateGroupBase@@@Z in 008fcfe0.obj
+DEFINED ?CAIStateGroup_BanditPlot_PutWeaponAway@@YI_NXZ in 008fe802.obj
+DEFINED ?CAIStateGroup_CreatureAdvanceInCover_IsCombatStateGroup@@YI_NXZ in 00903151.obj
+DEFINED ?CAIStateGroup_CreatureAdvanceInCover_IsRequireDirectAwarenessOfThing@@YI_NXZ in 00903158.obj
+DEFINED ?CAIStateGroup_CreatureFindCover_IsCombatStateGroup@@YI_NXZ in 009031f0.obj
+DEFINED ?CAIStateGroup_CreatureFindCover_IsRequireDirectAwarenessOfThing@@YI_NXZ in 009031f3.obj
+DEFINED ?CAIStateGroup_CreatureFindCover_IsRunnableLeaf@@YI_NXZ in 0097cb00.obj
+DEFINED ?CAIStateGroup_CreatureTakeCover_IsCombatStateGroup@@YI_NXZ in 0090316d.obj
+DEFINED ?CAIStateGroup_CreatureTakeCover_IsRequireDirectAwarenessOfThing@@YI_NXZ in 00903170.obj
+DEFINED ?CAIStateGroup_CreatureUseCoverBase_ProcessCoverThingList@@YGXH@Z in 00902f9a.obj
+DEFINED ?CAIStateGroup_EnemyCreatureBase_CleanupLeaf@@YIXXZ in 008fe0f3.obj
+DEFINED ?CAIStateGroup_EnemyCreatureBase_Init@@YIXXZ in 008fe0ee.obj
+DEFINED ?CAIStateGroup_EnemyCreatureBase_IsRequireDirectAwarenessOfThing@@YI_NXZ in 008fe102.obj
+DEFINED ?CAIStateGroup_EnemyCreatureBase_IsRunnableLeaf@@YI_NXZ in 008fe0ef.obj
+DEFINED ?CAIStateGroup_EnemyCreatureBase_OnActivateLeaf@@YIXXZ in 008fe0f2.obj
+DEFINED ?CAIStateGroup_Gaze_InsideAtNight@@YI_NXZ in 00918ed0.obj
+DEFINED ?CAIStateGroup_Guildmaster_OnReplace@@YIXXZ in 00977760.obj
+DEFINED ?CAIStateGroup_JackOfBladesBase_IsTimingCritical@@YI_NXZ in 00903043.obj
+DEFINED ?CAIStateGroup_JackOfBladesBase_OnReplace@@YIXXZ in 009718e0.obj
+DEFINED ?CAIStateGroup_LookAtInterestingThings_AllowPriorityOverlap@@YI_NXZ in 008fdc8e.obj
+DEFINED ?CAIStateGroup_MazeDefensiveMeleeCombat_IsTimingCritical@@YI_NXZ in 009007a8.obj
+DEFINED ?CAIStateGroup_MinionKidAnnoy_IsRunnable@@YI_NXZ in 00933da0.obj
+DEFINED ?CAIStateGroup_MinionSitOnSeatBase_IsOwnerSubjectToRegulation@@YI_NXZ in 008ff26e.obj
+DEFINED ?CAIStateGroup_MinionSitOnSeatBase_IsStateGroupStillValid@@YI_NXZ in 008ff26b.obj
+DEFINED ?CAIStateGroup_MinionSitOutside_AllowPriorityOverlap@@YI_NXZ in 009021da.obj
+DEFINED ?CAIStateGroup_MinionWatchFires_AllowPriorityOverlap@@YI_NXZ in 008ff071.obj
+DEFINED ?CAIStateGroup_RangedCombatUsePreferredFirePoint_IsCombatStateGroup@@YI_NXZ in 00900f20.obj
+DEFINED ?CAIStateGroup_SitRoundCampfire_AllowPriorityOverlap@@YI_NXZ in 008ff3af.obj
+DEFINED ?CAIStateGroup_TavernKeeper_OnActivate@@YIXXZ in 00968190.obj
+DEFINED ?CAIStateGroup_TestTestTest_IsRunnable@@YI_NXZ in 0091ea10.obj
+DEFINED ?CAIStateGroup_Thunder_IsCombatStateGroup@@YI_NXZ in 009018ec.obj
+DEFINED ?CAIStateGroup_WhisperRetreat_IsCombatStateGroup@@YI_NXZ in 0090188b.obj
+## new set (32 objects): 008fcfe0/work 008fdc8e/work 008fe0ee/work 008fe0ef/work 008fe0f2/work 008fe0f3/work 008fe102/work 008fe802/work 008ff071/work 008ff26b/work 008ff26e/work 008ff3af/work 009007a8/work 00900f20/work 0090188b/work 009018ec/work 009021da/work 00902f9a/work 00903043/work 00903151/work 00903158/work 0090316d/work 00903170/work 009031f0/work 009031f3/work 00918ed0/work 0091ea10/work 00933da0/work 00968190/work 009718e0/work 00977760/work 0097cb00/work
+duplicates 0
+DEFINED ?AllowPriorityOverlap@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ in 008fdc8e.obj
+DEFINED ?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ in 009021da.obj
+DEFINED ?AllowPriorityOverlap@CAIStateGroup_MinionWatchFires@@UAE_NXZ in 008ff071.obj
+DEFINED ?AllowPriorityOverlap@CAIStateGroup_SitRoundCampfire@@UAE_NXZ in 008ff3af.obj
+DEFINED ?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ in 008fe0f3.obj
+DEFINED ?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ in 008fcfe0.obj
+DEFINED ?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ in 008fe0ee.obj
+DEFINED ?InsideAtNight@CAIStateGroup_Gaze@@MAE_NXZ in 00918ed0.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_CreatureAdvanceInCover@@UBE_NXZ in 00903151.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_CreatureFindCover@@UBE_NXZ in 009031f0.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_CreatureTakeCover@@UBE_NXZ in 0090316d.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE_NXZ in 00900f20.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_Thunder@@UBE_NXZ in 009018ec.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_WhisperRetreat@@UBE_NXZ in 0090188b.obj
+DEFINED ?IsOwnerSubjectToRegulation@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ in 008ff26e.obj
+DEFINED ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureAdvanceInCover@@MBE_NXZ in 00903158.obj
+DEFINED ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureFindCover@@UBE_NXZ in 009031f3.obj
+DEFINED ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureTakeCover@@UBE_NXZ in 00903170.obj
+DEFINED ?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ in 008fe102.obj
+DEFINED ?IsRunnable@CAIStateGroup_MinionKidAnnoy@@UAE_NXZ in 00933da0.obj
+DEFINED ?IsRunnable@CAIStateGroup_TestTestTest@@UAE_NXZ in 0091ea10.obj
+DEFINED ?IsRunnableLeaf@CAIStateGroup_CreatureFindCover@@UAE_NXZ in 0097cb00.obj
+DEFINED ?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ in 008fe0ef.obj
+DEFINED ?IsStateGroupStillValid@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ in 008ff26b.obj
+DEFINED ?IsTimingCritical@CAIStateGroup_JackOfBladesBase@@UBE_NXZ in 00903043.obj
+DEFINED ?IsTimingCritical@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE_NXZ in 009007a8.obj
+DEFINED ?OnActivate@CAIStateGroup_TavernKeeper@@MAEXXZ in 00968190.obj
+DEFINED ?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ in 008fe0f2.obj
+DEFINED ?OnReplace@CAIStateGroup_Guildmaster@@UAEXXZ in 00977760.obj
+DEFINED ?OnReplace@CAIStateGroup_JackOfBladesBase@@UAEXXZ in 009718e0.obj
+DEFINED ?ProcessCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z in 00902f9a.obj
+DEFINED ?PutWeaponAway@CAIStateGroup_BanditPlot@@MAE_NXZ in 008fe802.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CAIStateGroupBase_GetDebugText@@YIPBVCCharString@@PBVCAIStateGroupBase@@@Z
+RESOLVED_TO_GONE ?CAIStateGroup_BanditPlot_PutWeaponAway@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureAdvanceInCover_IsCombatStateGroup@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureAdvanceInCover_IsRequireDirectAwarenessOfThing@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureFindCover_IsCombatStateGroup@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureFindCover_IsRequireDirectAwarenessOfThing@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureFindCover_IsRunnableLeaf@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureTakeCover_IsCombatStateGroup@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureTakeCover_IsRequireDirectAwarenessOfThing@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureUseCoverBase_ProcessCoverThingList@@YGXH@Z
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_CleanupLeaf@@YIXXZ
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_Init@@YIXXZ
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_IsRequireDirectAwarenessOfThing@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_IsRunnableLeaf@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_OnActivateLeaf@@YIXXZ
+RESOLVED_TO_GONE ?CAIStateGroup_Gaze_InsideAtNight@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_Guildmaster_OnReplace@@YIXXZ
+RESOLVED_TO_GONE ?CAIStateGroup_JackOfBladesBase_IsTimingCritical@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_JackOfBladesBase_OnReplace@@YIXXZ
+RESOLVED_TO_GONE ?CAIStateGroup_LookAtInterestingThings_AllowPriorityOverlap@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_MazeDefensiveMeleeCombat_IsTimingCritical@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_MinionKidAnnoy_IsRunnable@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_MinionSitOnSeatBase_IsOwnerSubjectToRegulation@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_MinionSitOnSeatBase_IsStateGroupStillValid@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_MinionSitOutside_AllowPriorityOverlap@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_MinionWatchFires_AllowPriorityOverlap@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_RangedCombatUsePreferredFirePoint_IsCombatStateGroup@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_SitRoundCampfire_AllowPriorityOverlap@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_TavernKeeper_OnActivate@@YIXXZ
+RESOLVED_TO_GONE ?CAIStateGroup_TestTestTest_IsRunnable@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_Thunder_IsCombatStateGroup@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_WhisperRetreat_IsCombatStateGroup@@YI_NXZ
+LK_DONE

@@ -1,0 +1,15 @@
+vftable	0128CD50	slots	14	base_slots	14
+0	009017D6	??_ECAIStateGroup_TavernKeeper@@UAEPAXI@Z	inherit-dtor
+1	008FCEC0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	inherit
+2	00968190	?OnActivate@CAIStateGroup_TavernKeeper@@MAEXXZ	override
+3	009681A0	?InitCreaturePosition@CAIStateGroup_TavernKeeper@@MAE_NXZ	override
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	009681E0	?IsStillValid@CAIStateGroup_TavernKeeper@@MBE_NXZ	override
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	008FD279	?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ	inherit
+8	008FD27C	?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ	inherit
+9	008FD280	?Cleanup@CAIStateGroupBase@@MAEXXZ	inherit
+10	00968BC0	?OnReplace@CAIStateGroup_TavernKeeper@@MAEXXZ	override
+11	00968E00	?IsRunnable@CAIStateGroup_TavernKeeper@@MAE_NXZ	override
+12	00969470	?Update@CAIStateGroup_TavernKeeper@@MAEXXZ	override
+13	009685C0	?InitStateGroup@CAIStateGroup_TavernKeeper@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	override

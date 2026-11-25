@@ -1,0 +1,19 @@
+## HEAD set (4 objects): 008fcec0_D/w22 00900f20/work 008fe0ef/work 0092bc50/work
+duplicates 0
+UNRESOLVED 1 _ForwardTarget_008fcec0
+DEFINED ?CAIStateGroup_EnemyCreatureBase_IsRunnableLeaf@@YI_NXZ in 008fe0ef.obj
+DEFINED ?CAIStateGroup_RangedCombatUsePreferredFirePoint_IsCombatStateGroup@@YI_NXZ in 00900f20.obj
+DEFINED ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 008fcec0.obj
+DEFINED _CAIStateGroup_AvoidRegionExit_Initialise in 0092bc50.obj
+## new set (4 objects): 008fcec0_D/w22 00900f20/work 008fe0ef/work 0092bc50/work
+duplicates 0
+DEFINED ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 008fcec0.obj
+DEFINED ?Initialise@CAIStateGroup_AvoidRegionExit@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 0092bc50.obj
+DEFINED ?IsCombatStateGroup@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE_NXZ in 00900f20.obj
+DEFINED ?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ in 008fe0ef.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_IsRunnableLeaf@@YI_NXZ
+RESOLVED_TO_GONE ?CAIStateGroup_RangedCombatUsePreferredFirePoint_IsCombatStateGroup@@YI_NXZ
+RESOLVED_TO_GONE _CAIStateGroup_AvoidRegionExit_Initialise
+GONE_UNRESOLVED _ForwardTarget_008fcec0 
+LK_DONE

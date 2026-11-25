@@ -1,0 +1,36 @@
+## HEAD set (9 objects): 008fcec0_D/w22 0090f290_D/w22 00910570_D/w22 0090f460/work 009106b0/work 00929640/work 0092bc50/work 00953f60/work 00961aa0/work
+duplicates 0
+UNRESOLVED 4 _ForwardTarget_008fcec0
+UNRESOLVED 1 _ForwardTarget_0090f290
+UNRESOLVED 1 _ForwardTarget_00910570
+DEFINED ?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ in 0090f290.obj
+DEFINED ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 008fcec0.obj
+DEFINED ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ in 00910570.obj
+DEFINED _CAIStateGroup_AvoidRegionExit_Initialise in 0092bc50.obj
+DEFINED _CAIStateGroup_IceTrollIcicleAssault_Initialise in 00961aa0.obj
+DEFINED _CAIStateGroup_MazeTeleport_Initialise in 00953f60.obj
+DEFINED _CAIStateGroup_MinionGuardGreetPlayer_Initialise in 00929640.obj
+DEFINED _CAIStateGroup_MinionHasInformation_IsRunnable in 0090f460.obj
+DEFINED _CAIStateGroup_MinionListenToStory_OnReplace in 009106b0.obj
+## new set (9 objects): 008fcec0_D/w22 0090f290_D/w22 00910570_D/w22 0090f460/work 009106b0/work 00929640/work 0092bc50/work 00953f60/work 00961aa0/work
+duplicates 0
+DEFINED ?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ in 0090f290.obj
+DEFINED ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 008fcec0.obj
+DEFINED ?Initialise@CAIStateGroup_AvoidRegionExit@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 0092bc50.obj
+DEFINED ?Initialise@CAIStateGroup_IceTrollIcicleAssault@@MAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 00961aa0.obj
+DEFINED ?Initialise@CAIStateGroup_MazeTeleport@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 00953f60.obj
+DEFINED ?Initialise@CAIStateGroup_MinionGuardGreetPlayer@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z in 00929640.obj
+DEFINED ?IsRunnable@CAIStateGroup_MinionHasInformation@@UAE_NXZ in 0090f460.obj
+DEFINED ?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ in 009106b0.obj
+DEFINED ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ in 00910570.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE _CAIStateGroup_AvoidRegionExit_Initialise
+RESOLVED_TO_GONE _CAIStateGroup_IceTrollIcicleAssault_Initialise
+RESOLVED_TO_GONE _CAIStateGroup_MazeTeleport_Initialise
+RESOLVED_TO_GONE _CAIStateGroup_MinionGuardGreetPlayer_Initialise
+RESOLVED_TO_GONE _CAIStateGroup_MinionHasInformation_IsRunnable
+RESOLVED_TO_GONE _CAIStateGroup_MinionListenToStory_OnReplace
+GONE_UNRESOLVED _ForwardTarget_008fcec0 
+GONE_UNRESOLVED _ForwardTarget_0090f290 
+GONE_UNRESOLVED _ForwardTarget_00910570 
+LK_DONE

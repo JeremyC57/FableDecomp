@@ -20,6 +20,41 @@ protected:
 };
 FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MazeDefensiveMeleeCombat) == 0x24);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZEDEFENSIVEMELEECOMBAT_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C224 (RTTI .?AVCAIStateGroup_MazeDefensiveMeleeCombat@@ : CAIStateGroup_MazeBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MazeDefensiveMeleeCombat); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_MAZEBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_MazeBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MazeDefensiveMeleeCombat : public CAIStateGroup_MazeBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x00953FA0 ?Initialise@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual void OnActivate();                                            // slot 2 0x00954150 ?OnActivate@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+    virtual bool IsTimingCritical() const;                                // slot 7 0x009007A8 ?IsTimingCritical@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE_NXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x009007A4 ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void OnReplace();                                             // slot 10 0x00954A20 ?OnReplace@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00954980 ?IsRunnable@CAIStateGroup_MazeDefensiveMeleeCombat@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x00955620 ?Update@CAIStateGroup_MazeDefensiveMeleeCombat@@UAEXXZ
+public:
+    long          LastHealFrame;                             // +0x20
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeDefensiveMeleeCombat) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MazeDefensiveMeleeCombat, LastHealFrame) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -43,6 +78,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_MazeDefensiveMeleeCombat) == 0x24);
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_MazeDefensiveMeleeCombat, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MazeDefensiveMeleeCombat, LastHealFrame) == 0x20);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MAZEDEFENSIVEMELEECOMBAT_VIRTUAL_MODEL
 
 #endif
 

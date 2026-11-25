@@ -1,5 +1,15 @@
-// Float global getter: `fld dword ptr [g]; ret`. Free function, no `this`.
-// Leaf: _CAIStateGroup_EnemyCreatureBase_GetCombatMinDistance
-extern float g_value_0125aadc;
-extern "C" float CAIStateGroup_EnemyCreatureBase_GetCombatMinDistance() { return g_value_0125aadc; }
-// Stand-in (owner rule 2026-11-05): CAIStateGroup_EnemyCreatureBase_GetCombatMinDistance for CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance; RTTI vtable slot ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ + PDB name set (egor/fablewin).
+// Leaf: ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+// CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance() const -- returns 1.5f (retail loads the pooled float literal at 0x0125AADC).
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + Ego_r/FableWin name set; the landed stand-in
+//   _CAIStateGroup_EnemyCreatureBase_GetCombatMinDistance becomes the virtual member of the polymorphic class in
+//   engine/CAIStateGroup_EnemyCreatureBase.h (model FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL (generated here);
+//   defines FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUPBASE,
+//   FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS). NF429 G1 (CONST shape).
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"
+float CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance() const
+{
+    return 1.5f;
+}

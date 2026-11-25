@@ -1,0 +1,9 @@
+## HEAD set (1 objects): 008fe0ef/work
+duplicates 0
+DEFINED ?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ in 008fe0ef.obj
+## new set (2 objects): 008fe0ef/work ctlcopy/00
+duplicates 1
+  DUP 008fe0ef.obj : warning LNK4006: "protected: virtual bool __thiscall CAIStateGroup_EnemyCreatureBase::IsRunnableLeaf(void)" (?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ) already defined in 008fe0ef.obj; second definition ignored
+DEFINED ?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ in 008fe0ef.obj
+## diff HEAD -> new
+LK_DONE

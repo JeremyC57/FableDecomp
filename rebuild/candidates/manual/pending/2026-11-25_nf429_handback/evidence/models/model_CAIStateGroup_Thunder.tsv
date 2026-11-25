@@ -1,0 +1,16 @@
+vftable	0128CE2C	slots	15	base_slots	14
+0	009018F3	??_ECAIStateGroup_Thunder@@UAEPAXI@Z	inherit-dtor
+1	0096C1B0	?Initialise@CAIStateGroup_Thunder@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	override
+2	008FD26F	?OnActivate@CAIStateGroupBase@@UAEXXZ	inherit
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	008FD279	?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ	inherit
+8	009018EF	?GetStateGroupType@CAIStateGroup_Thunder@@UBE?AW4EAIStateGroupType@@XZ	override
+9	0096C1E0	?Cleanup@CAIStateGroup_Thunder@@UAEXXZ	override
+10	008FD281	?OnReplace@CAIStateGroupBase@@MAEXXZ	inherit
+11	0096C2E0	?IsRunnable@CAIStateGroup_Thunder@@MAE_NXZ	override
+12	0096C4F0	?Update@CAIStateGroup_Thunder@@UAEXXZ	override
+13	008FD285	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	inherit
+14	009018EC	?IsCombatStateGroup@CAIStateGroup_Thunder@@UBE_NXZ	new

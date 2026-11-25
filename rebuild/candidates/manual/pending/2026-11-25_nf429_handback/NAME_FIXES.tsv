@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0122dedc	__real@00000000	pooled float literal 0.0f (bits read from Fable.exe at the VA); VC7.1 RTM spells `return 0.0f;` as fld [__real@00000000] (GOTCHAS NF415 / NF418); 0x008FE0F4 (batch f1) now spells the literal	?g_CombatMinDistance@@3MA (made-up data symbol, also misleading: 0x008FE0F4 is GetCombatProximity; still named in 0x0062EAD0 0x004DF485 0x004DF492 0x004DF499 and test 0x0040E250)
+0125aadc	__real@3fc00000	pooled float literal 1.5f (bits read from Fable.exe); 0x008FE0FB (batch f1) now spells the literal	?g_value_0125aadc@@3MA (made-up data symbol; no other landed user)

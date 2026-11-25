@@ -40,6 +40,50 @@ protected:
 };
 FABLE_STATIC_ASSERT_AT(22, sizeof(CAIStateGroup_WhisperRetreat)==0x30);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128CDCC (RTTI .?AVCAIStateGroup_WhisperRetreat@@ : CAIStateGroup_EnemyCreatureBase), 22 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_WhisperRetreat); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_WhisperRetreat : public CAIStateGroup_EnemyCreatureBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0096A250 ?Initialise@CAIStateGroup_WhisperRetreat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x0090188E ?GetStateGroupType@CAIStateGroup_WhisperRetreat@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x0096A350 ?Cleanup@CAIStateGroup_WhisperRetreat@@UAEXXZ
+    virtual void Update();                                                // slot 12 0x0096B600 ?Update@CAIStateGroup_WhisperRetreat@@UAEXXZ
+protected:
+    virtual bool IsRunnableLeaf();                                        // slot 15 0x0096A7A0 ?IsRunnableLeaf@CAIStateGroup_WhisperRetreat@@MAE_NXZ
+public:
+    virtual bool IsCombatStateGroup() const;                              // slot 20 0x0090188B ?IsCombatStateGroup@CAIStateGroup_WhisperRetreat@@UBE_NXZ
+public:
+    unsigned char PArenaCentre[0x8];                         // +0x1c CIntelligentPointer<CThing>
+    bool          bIsRangeAttack;                            // +0x24
+    unsigned char _pad_0x25[0x3];                            // +0x25
+    long          NumHits;                                   // +0x28
+    long          FrameOfLastHit;                            // +0x2c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WhisperRetreat) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, PArenaCentre) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, bIsRangeAttack) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, _pad_0x25) == 0x25);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, NumHits) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_WhisperRetreat, FrameOfLastHit) == 0x2c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -69,6 +113,7 @@ FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_WhisperRetreat, PArenaCentre) 
 FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_WhisperRetreat, bIsRangeAttack) == 0x24);
 FABLE_STATIC_ASSERT_AT(45, offsetof(CAIStateGroup_WhisperRetreat, NumHits) == 0x28);
 FABLE_STATIC_ASSERT_AT(46, offsetof(CAIStateGroup_WhisperRetreat, FrameOfLastHit) == 0x2c);
+#endif // FABLE_RETAIL_CAISTATEGROUP_WHISPERRETREAT_VIRTUAL_MODEL
 
 #endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_WHISPERRETREAT_H

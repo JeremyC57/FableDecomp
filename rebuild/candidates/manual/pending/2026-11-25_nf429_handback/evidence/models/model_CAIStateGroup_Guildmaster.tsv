@@ -1,0 +1,16 @@
+vftable	0128D444	slots	15	base_slots	14
+0	00903312	??_ECAIStateGroup_Guildmaster@@UAEPAXI@Z	inherit-dtor
+1	00977730	?Initialise@CAIStateGroup_Guildmaster@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	override
+2	00977C40	?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ	override
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	008FD279	?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ	inherit
+8	0090310A	?GetStateGroupType@CAIStateGroup_Guildmaster@@UBE?AW4EAIStateGroupType@@XZ	override
+9	00977770	?Cleanup@CAIStateGroup_Guildmaster@@UAEXXZ	override
+10	00977760	?OnReplace@CAIStateGroup_Guildmaster@@UAEXXZ	override
+11	009777A0	?IsRunnable@CAIStateGroup_Guildmaster@@MAE_NXZ	override
+12	00977E00	?Update@CAIStateGroup_Guildmaster@@UAEXXZ	override
+13	008FD285	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	inherit
+14	00977A30	?OnDeactivate@CAIStateGroup_Guildmaster@@UAEXXZ	new

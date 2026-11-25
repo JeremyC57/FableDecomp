@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf324	0x008FE0F4	port	008fe0f4 skipped-port ?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CAIStateGroup_EnemyCreatureB

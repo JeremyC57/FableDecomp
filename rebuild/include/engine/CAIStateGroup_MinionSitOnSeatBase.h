@@ -33,6 +33,31 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSitOnSeatBase) == 0x3c);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128B584 (RTTI .?AVCAIStateGroup_MinionSitOnSeatBase@@ : CAIStateGroup_UsesSeat), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionSitOnSeatBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_USESSEAT_VIRTUALS_PASS27.
+#include "engine/CAIStateGroup_UsesSeat.h"
+class CThing;
+#pragma pack(push, 1)
+class CAIStateGroup_MinionSitOnSeatBase : public CAIStateGroup_UsesSeat {
+public:
+    virtual void Cleanup();                                               // slot 9 0x0090FA60 ?Cleanup@CAIStateGroup_MinionSitOnSeatBase@@UAEXXZ
+protected:
+    virtual bool IsRunnable();                                            // slot 11 0x0090F9C0 ?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x0090F740 ?Update@CAIStateGroup_MinionSitOnSeatBase@@MAEXXZ
+    virtual bool IsStateGroupStillValid() const;                          // slot 14 0x008FF26B ?IsStateGroupStillValid@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ
+    virtual bool GetPOwnerObject(CThing **) = 0;                          // slot 16 0x00BFEA08 pure (FableWin.pdb LF_ONEMETHOD pure intro virtual, its access; name and type as the retail override ?GetPOwnerObject@CAIStateGroup_MinionSitAtHome@@MAE_NPAPAVCThing@@@Z)
+    virtual bool IsOwnerSubjectToRegulation() const;                      // slot 17 0x008FF26E ?IsOwnerSubjectToRegulation@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ
+    virtual void GetSeat(CThing*);                                        // slot 18 0x009104D0 ?GetSeat@CAIStateGroup_MinionSitOnSeatBase@@MAEXPAVCThing@@@Z
+public:
+    unsigned char POwner[0x8];                               // +0x34 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSitOnSeatBase) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSitOnSeatBase, POwner) == 0x34);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_MinionSitOnSeatBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -55,6 +80,7 @@ struct CAIStateGroup_MinionSitOnSeatBase {
 FABLE_STATIC_ASSERT_AT(30, sizeof(CAIStateGroup_MinionSitOnSeatBase) == 0x3c);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_MinionSitOnSeatBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_MinionSitOnSeatBase, POwner) == 0x34);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONSITONSEATBASE_H

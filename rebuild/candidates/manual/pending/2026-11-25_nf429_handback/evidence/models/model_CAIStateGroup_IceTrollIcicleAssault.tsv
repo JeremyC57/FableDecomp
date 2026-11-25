@@ -1,0 +1,15 @@
+vftable	0128CB64	slots	14	base_slots	14
+0	009013D4	??_GCAIStateGroup_IceTrollIcicleAssault@@UAEPAXI@Z	inherit-dtor
+1	00961AA0	?Initialise@CAIStateGroup_IceTrollIcicleAssault@@MAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	override
+2	008FD26F	?OnActivate@CAIStateGroupBase@@UAEXXZ	inherit
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	008FD279	?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ	inherit
+8	009013D0	?GetStateGroupType@CAIStateGroup_IceTrollIcicleAssault@@MBE?AW4EAIStateGroupType@@XZ	override
+9	00962180	?Cleanup@CAIStateGroup_IceTrollIcicleAssault@@MAEXXZ	override
+10	008FD281	?OnReplace@CAIStateGroupBase@@MAEXXZ	inherit
+11	00961FB0	?IsRunnable@CAIStateGroup_IceTrollIcicleAssault@@MAE_NXZ	override
+12	009627C0	?Update@CAIStateGroup_IceTrollIcicleAssault@@MAEXXZ	override
+13	008FD285	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	inherit

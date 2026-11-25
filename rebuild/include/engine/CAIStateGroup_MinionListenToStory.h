@@ -8,6 +8,31 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONLISTENTOSTORY_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01289180 (RTTI .?AVCAIStateGroup_MinionListenToStory@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionListenToStory); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MinionListenToStory : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual void OnReplace();                                             // slot 10 0x009106B0 ?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00910100 ?IsRunnable@CAIStateGroup_MinionListenToStory@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x009101C0 ?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ
+    void StandUp();                                                       // ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ (non-virtual; PDB name set, called by a row)
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionListenToStory) == 0x14);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -23,5 +48,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MinionListenToStory) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MinionListenToStory, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONLISTENTOSTORY_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONLISTENTOSTORY_H

@@ -16,6 +16,31 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RockTroll)==0x34);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_ROCKTROLL_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D0A0 (RTTI .?AVCAIStateGroup_RockTroll@@ : CAIStateGroup_TrollBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_RockTroll); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_TROLLBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_TrollBase.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_RockTroll : public CAIStateGroup_TrollBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00902600 ?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ
+    virtual bool IsRunnable();                                            // slot 11 0x0094DAC0 ?IsRunnable@CAIStateGroup_RockTroll@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x0094DD90 ?Update@CAIStateGroup_RockTroll@@MAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RockTroll) == 0x34);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -31,6 +56,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_RockTroll) == 0x34);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_RockTroll, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_ROCKTROLL_VIRTUAL_MODEL
 
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_ROCKTROLL_H

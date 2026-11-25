@@ -1,0 +1,17 @@
+CAIStateGroup_AvoidRegionExit	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_BanditPlayDice	OK	retail 18 emitted 18 SAME 18 DIFF 0 NOLABEL 0 
+CAIStateGroup_EnemyCreatureBase	COMPILE_FAIL	atchpad\w22\agentNF429\work\probe\p1\CAIStateGroup_EnemyCreatureBase.cpp(5) : error C2259: 'CAIStateGroup_EnemyCreatureBase' : cannot instantiate abstract class
+CAIStateGroup_Guildmaster	OK	retail 15 emitted 15 SAME 15 DIFF 0 NOLABEL 0 
+CAIStateGroup_IceTrollIcicleAssault	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_JackOfBladesBase	COMPILE_FAIL	cratchpad\w22\agentNF429\work\probe\p1\CAIStateGroup_JackOfBladesBase.cpp(5) : error C2259: 'CAIStateGroup_JackOfBladesBase' : cannot instantiate abstract class
+CAIStateGroup_LookAtInterestingThings	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_MinionGuardGreetPlayer	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_MinionHasInformation	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_MinionKidAnnoy	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_MinionListenToStory	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_MinionWatchFires	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_RangedCombatUsePreferredFirePoint	OK	retail 15 emitted 15 SAME 15 DIFF 0 NOLABEL 0 
+CAIStateGroup_SitRoundCampfire	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_TavernKeeper	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_TestTestTest	OK	retail 14 emitted 14 SAME 14 DIFF 0 NOLABEL 0 
+CAIStateGroup_Thunder	OK	retail 15 emitted 15 SAME 15 DIFF 0 NOLABEL 0 

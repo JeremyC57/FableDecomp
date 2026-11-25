@@ -62,6 +62,41 @@ protected:
 };
 FABLE_STATIC_ASSERT_AT(42, sizeof(CAIStateGroup_EnemyCreatureBase)==0x1c);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128B8BC (RTTI .?AVCAIStateGroup_EnemyCreatureBase@@ : CAIStateGroupBase), 22 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_EnemyCreatureBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase {
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0091D820 ?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual void OnActivate();                                            // slot 2 0x0091D8C0 ?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x008FE0EA ?GetStateGroupType@CAIStateGroup_EnemyCreatureBase@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x0091D850 ?Cleanup@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x0091DD30 ?IsRunnable@CAIStateGroup_EnemyCreatureBase@@UAE_NXZ
+protected:
+    virtual void Init();                                                  // slot 14 0x008FE0EE ?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+    virtual bool IsRunnableLeaf();                                        // slot 15 0x008FE0EF ?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ
+    virtual void OnActivateLeaf();                                        // slot 16 0x008FE0F2 ?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+    virtual void CleanupLeaf();                                           // slot 17 0x008FE0F3 ?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ
+    virtual float GetCombatProximity() const;                             // slot 18 0x008FE0F4 ?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+    virtual float GetCombatMinDistance() const;                           // slot 19 0x008FE0FB ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+    virtual bool IsCombatStateGroup() const = 0;                          // slot 20 0x00BFEA08 pure (FableWin LF_ONEMETHOD; override ?IsCombatStateGroup@CAIStateGroup_CreatureAdvanceInCover@@MBE_NXZ)
+    virtual bool IsRequireDirectAwarenessOfThing() const;                 // slot 21 0x008FE102 ?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ
+public:
+    unsigned char PTargetThing[0x8];                         // +0x14 CIntelligentPointer<CThingCreatureBase>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_EnemyCreatureBase) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_EnemyCreatureBase, PTargetThing) == 0x14);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_EnemyCreatureBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -76,6 +111,7 @@ struct CAIStateGroup_EnemyCreatureBase {
 FABLE_STATIC_ASSERT_AT(55, sizeof(CAIStateGroup_EnemyCreatureBase) == 0x1c);
 FABLE_STATIC_ASSERT_AT(56, offsetof(CAIStateGroup_EnemyCreatureBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(57, offsetof(CAIStateGroup_EnemyCreatureBase, PTargetThing) == 0x14);
+#endif // FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL
 
 #endif // retail branch
 #endif // FABLE_ENGINE_CAISTATEGROUP_ENEMYCREATUREBASE_H

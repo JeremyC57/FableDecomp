@@ -39063,3 +39063,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ??4CDegradableDef@@QAEAAV0@ABV0@@Z	00454434	0045442f
 ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	006c1dd0	006c0b20
 ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z	00864620	006c0b20
+?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ	00910570	009106b0

@@ -8,6 +8,40 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012890C8 (RTTI .?AVCAIStateGroup_MinionHasInformation@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionHasInformation); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MinionHasInformation : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void OnActivate();                                            // slot 2 0x0090F260 ?OnActivate@CAIStateGroup_MinionHasInformation@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x0090F460 ?IsRunnable@CAIStateGroup_MinionHasInformation@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x0090F470 ?Update@CAIStateGroup_MinionHasInformation@@UAEXXZ
+private:
+    bool CreatureWantsPlayersAttention() const;                           // ?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ (non-virtual; PDB name set, called by a row)
+public:
+    long          LastFrameWaved;                            // +0x14
+    long          LastFrameWandered;                         // +0x18
+    long          FrameInitialised;                          // +0x1c
+    long          WavesWithoutCalling;                       // +0x20
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionHasInformation) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, LastFrameWaved) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, LastFrameWandered) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, FrameInitialised) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, WavesWithoutCalling) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -34,5 +68,6 @@ FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_MinionHasInformation, LastFram
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_MinionHasInformation, LastFrameWandered) == 0x18);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_MinionHasInformation, FrameInitialised) == 0x1c);
 FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_MinionHasInformation, WavesWithoutCalling) == 0x20);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONHASINFORMATION_H

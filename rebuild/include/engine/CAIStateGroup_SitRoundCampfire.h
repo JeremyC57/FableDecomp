@@ -35,6 +35,50 @@ private:
 };
 FABLE_STATIC_ASSERT_AT(27, sizeof(CAIStateGroup_SitRoundCampfire) == 0x28);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SITROUNDCAMPFIRE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128B714 (RTTI .?AVCAIStateGroup_SitRoundCampfire@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_SitRoundCampfire); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+class CWorld;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_SitRoundCampfire : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x00939270 ?Initialise@CAIStateGroup_SitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual bool AllowPriorityOverlap();                                  // slot 4 0x008FF3AF ?AllowPriorityOverlap@CAIStateGroup_SitRoundCampfire@@UAE_NXZ
+    virtual void OnReplace();                                             // slot 10 0x009397E0 ?OnReplace@CAIStateGroup_SitRoundCampfire@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00939670 ?IsRunnable@CAIStateGroup_SitRoundCampfire@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x009392A0 ?Update@CAIStateGroup_SitRoundCampfire@@UAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x009395A0 ?InitStateGroup@CAIStateGroup_SitRoundCampfire@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+public:
+    unsigned char PCampfire[0x8];                            // +0x14 CIntelligentPointer<CThingObject>
+    long          SeatPosIndex;                              // +0x1c
+    bool          GotSeatPos;                                // +0x20
+    bool          Sitting;                                   // +0x21
+    unsigned char _pad_0x22[0x2];                            // +0x22
+    unsigned long FrameToNextSitOnSeat;                      // +0x24
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SitRoundCampfire) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitRoundCampfire, PCampfire) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitRoundCampfire, SeatPosIndex) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitRoundCampfire, GotSeatPos) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitRoundCampfire, Sitting) == 0x21);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitRoundCampfire, _pad_0x22) == 0x22);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SitRoundCampfire, FrameToNextSitOnSeat) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -64,6 +108,7 @@ FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_SitRoundCampfire, SeatPosIndex
 FABLE_STATIC_ASSERT_AT(31, offsetof(CAIStateGroup_SitRoundCampfire, GotSeatPos) == 0x20);
 FABLE_STATIC_ASSERT_AT(32, offsetof(CAIStateGroup_SitRoundCampfire, Sitting) == 0x21);
 FABLE_STATIC_ASSERT_AT(33, offsetof(CAIStateGroup_SitRoundCampfire, FrameToNextSitOnSeat) == 0x24);
+#endif // FABLE_RETAIL_CAISTATEGROUP_SITROUNDCAMPFIRE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_SIT_ROUND_CAMPFIRE_PASS27
 

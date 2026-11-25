@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008ff26b   MATCH            PASS   IsStateGroupStillValid
+008ff26e   MATCH            PASS   IsOwnerSubjectToRegulation
+009021da   MATCH            PASS   AllowPriorityOverlap
+
+WINS: 3
+  008ff26b MATCH CAIStateGroup_MinionSitOnSeatBase::?IsStateGroupStillValid@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ
+  008ff26e MATCH CAIStateGroup_MinionSitOnSeatBase::?IsOwnerSubjectToRegulation@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ
+  009021da MATCH CAIStateGroup_MinionSitOutside::?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ

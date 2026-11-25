@@ -1,0 +1,15 @@
+vftable	0128AE20	slots	14	base_slots	14
+0	00901D37	??_GCAIStateGroup_MinionGuardGreetPlayer@@UAEPAXI@Z	inherit-dtor
+1	00929640	?Initialise@CAIStateGroup_MinionGuardGreetPlayer@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	override
+2	008FD26F	?OnActivate@CAIStateGroupBase@@UAEXXZ	inherit
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	008FD279	?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ	inherit
+8	008FD27C	?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ	inherit
+9	008FD280	?Cleanup@CAIStateGroupBase@@MAEXXZ	inherit
+10	008FD281	?OnReplace@CAIStateGroupBase@@MAEXXZ	inherit
+11	00929650	?IsRunnable@CAIStateGroup_MinionGuardGreetPlayer@@UAE_NXZ	override
+12	00929820	?Update@CAIStateGroup_MinionGuardGreetPlayer@@UAEXXZ	override
+13	008FD285	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	inherit

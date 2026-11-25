@@ -63,6 +63,40 @@ FABLE_STATIC_ASSERT_AT(47, sizeof(CAIStateGroup_TrollBase) == 0x34);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TROLLBASE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C008 (RTTI .?AVCAIStateGroup_TrollBase@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_TrollBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+class CAIStateGroup_TrollBase : public CAIStateGroupBase {
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0094D780 ?Initialise@CAIStateGroup_TrollBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual bool IsTimingCritical() const;                                // slot 7 0x00900381 ?IsTimingCritical@CAIStateGroup_TrollBase@@UBE_NXZ
+public:
+    unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThingCreatureBase>
+    long          EnemyKnockDownFrame;                       // +0x1c
+    long          ShotCounter;                               // +0x20
+    float         TROLL_MAX_THROWING_DISTANCE;               // +0x24
+    float         TROLL_MIN_THROWING_DISTANCE;               // +0x28
+    float         TROLL_STOP_POUNDING_DISTANCE;              // +0x2c
+    float         TROLL_STOP_THROWING_DISTANCE;              // +0x30
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TrollBase) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, PEnemy) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, EnemyKnockDownFrame) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, ShotCounter) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_MAX_THROWING_DISTANCE) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_MIN_THROWING_DISTANCE) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_STOP_POUNDING_DISTANCE) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TrollBase, TROLL_STOP_THROWING_DISTANCE) == 0x30);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_TrollBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -89,6 +123,7 @@ FABLE_STATIC_ASSERT_AT(79, offsetof(CAIStateGroup_TrollBase, TROLL_MAX_THROWING_
 FABLE_STATIC_ASSERT_AT(80, offsetof(CAIStateGroup_TrollBase, TROLL_MIN_THROWING_DISTANCE) == 0x28);
 FABLE_STATIC_ASSERT_AT(81, offsetof(CAIStateGroup_TrollBase, TROLL_STOP_POUNDING_DISTANCE) == 0x2c);
 FABLE_STATIC_ASSERT_AT(82, offsetof(CAIStateGroup_TrollBase, TROLL_STOP_THROWING_DISTANCE) == 0x30);
+#endif // FABLE_RETAIL_CAISTATEGROUP_TROLLBASE_VIRTUAL_MODEL
 
 #endif
 

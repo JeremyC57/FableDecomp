@@ -8,6 +8,40 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_AVOIDREGIONEXIT_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128AFC0 (RTTI .?AVCAIStateGroup_AvoidRegionExit@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_AvoidRegionExit); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_AvoidRegionExit : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0092BC50 ?Initialise@CAIStateGroup_AvoidRegionExit@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual bool IsRunnable();                                            // slot 11 0x0092BCB0 ?IsRunnable@CAIStateGroup_AvoidRegionExit@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x0092BC60 ?Update@CAIStateGroup_AvoidRegionExit@@UAEXXZ
+public:
+    float         Position_X;                                // +0x14 C3DVector::X
+    float         Position_Y;                                // +0x18 C3DVector::Y
+    float         Position_Z;                                // +0x1c C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_AvoidRegionExit) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position_X) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position_Y) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_AvoidRegionExit, Position_Z) == 0x1c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -32,5 +66,6 @@ FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_AvoidRegionExit, __vftable) ==
 FABLE_STATIC_ASSERT_AT(26, offsetof(CAIStateGroup_AvoidRegionExit, Position_X) == 0x14);
 FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_AvoidRegionExit, Position_Y) == 0x18);
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_AvoidRegionExit, Position_Z) == 0x1c);
+#endif // FABLE_RETAIL_CAISTATEGROUP_AVOIDREGIONEXIT_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_AVOIDREGIONEXIT_H

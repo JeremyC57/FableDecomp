@@ -1,0 +1,50 @@
+008fcf80	PeekPlayerManager	CAIStateGroupBase	GET_MEMBER		CBaseClass	flat	CBaseClass	n	none	1811:nf314:port (census)
+008fcf90	GetPlayerManager	CAIStateGroupBase	GET_MEMBER		CBaseClass	flat	CBaseClass	n	none	1842:nf315:port
+008fcfe0	GetDebugText	CAIStateGroupBase	RET_ZERO		CBaseClass	flat	CBaseClass	n	none	3002:nf324:port
+008fdb67	AllowPriorityOverlap	CAIStateGroup_CleanHouse	RET_TRUE		CAIStateGroup_Clean	flat	-	n	none	3003:nf324:port
+008fdc8e	AllowPriorityOverlap	CAIStateGroup_LookAtInterestingThings	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3004:nf324:held
+008fe0ee	Init	CAIStateGroup_EnemyCreatureBase	EMPTY		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3005:nf324:port
+008fe0ef	IsRunnableLeaf	CAIStateGroup_EnemyCreatureBase	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3006:nf324:port
+008fe0f2	OnActivateLeaf	CAIStateGroup_EnemyCreatureBase	EMPTY		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3007:nf324:port
+008fe0f3	CleanupLeaf	CAIStateGroup_EnemyCreatureBase	EMPTY		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3008:nf324:port
+008fe0f4	GetCombatProximity	CAIStateGroup_EnemyCreatureBase	RET_FLOAT_GLOBAL	0x0122DEDC	CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3009:nf324:port
+008fe0fb	GetCombatMinDistance	CAIStateGroup_EnemyCreatureBase	RET_FLOAT_GLOBAL	0x0125AADC	CAIStateGroupBase	flat	CAIStateGroupBase	n	none	
+008fe102	IsRequireDirectAwarenessOfThing	CAIStateGroup_EnemyCreatureBase	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3010:nf324:port
+008fe802	PutWeaponAway	CAIStateGroup_BanditPlot	RET_FALSE		CAIStateGroup_BanditPlayDice	flat	CAIStateGroup_BanditPlayDice	n	none	3011:nf324:port
+008fe87c	IsTimingCritical	CAIStateGroup_ApprenticeHero	GET_MEMBER		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	
+008ff071	AllowPriorityOverlap	CAIStateGroup_MinionWatchFires	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3012:nf324:port
+008ff26b	IsStateGroupStillValid	CAIStateGroup_MinionSitOnSeatBase	RET_TRUE		CAIStateGroup_UsesSeat	flat	CAIStateGroup_UsesSeat	n	none	3013:nf324:port
+008ff26e	IsOwnerSubjectToRegulation	CAIStateGroup_MinionSitOnSeatBase	RET_FALSE		CAIStateGroup_UsesSeat	flat	CAIStateGroup_UsesSeat	n	none	3014:nf324:held
+008ff3af	AllowPriorityOverlap	CAIStateGroup_SitRoundCampfire	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3015:nf324:held
+009000ef	AllowPriorityOverlap	CAIStateGroup_WanderAroundShops	RET_TRUE		CAIStateGroup_WorkBase<CAIStateGroupBase>	flat	-	n	none	3016:nf324:port
+00900216	IsStateGroupStillValid	CAIStateGroup_SitInPub	JMP	0x0094B730	CAIStateGroup_UsesSeat	flat	CAIStateGroup_UsesSeat	n	none	
+009007a8	IsTimingCritical	CAIStateGroup_MazeDefensiveMeleeCombat	RET_TRUE		CAIStateGroup_MazeBase	flat	CAIStateGroup_MazeBase	n	none	3017:nf324:port
+00900f20	IsCombatStateGroup	CAIStateGroup_RangedCombatUsePreferredFirePoint	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3018:nf324:port
+0090188b	IsCombatStateGroup	CAIStateGroup_WhisperRetreat	RET_FALSE		CAIStateGroup_EnemyCreatureBase	flat	CAIStateGroup_EnemyCreatureBase	n	none	3019:nf324:port
+009018ec	IsCombatStateGroup	CAIStateGroup_Thunder	RET_FALSE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3020:nf324:port
+009021da	AllowPriorityOverlap	CAIStateGroup_MinionSitOutside	RET_TRUE		CAIStateGroup_MinionSitOnSeat	flat	-	n	none	3022:nf324:port
+0090292b	IsCombatStateGroup	CAIStateGroup_HoverWanderAroundThing	RET_FALSE		CAIStateGroup_HoverMovementBase	flat	CAIStateGroup_HoverMovementBase	n	none	3024:nf324:port
+00902f9a	ProcessCoverThingList	CAIStateGroup_CreatureUseCoverBase	EMPTY_RET4		CAIStateGroup_EnemyCreatureBase	flat	CAIStateGroup_EnemyCreatureBase	n	none	3025:nf324:port
+00903043	IsTimingCritical	CAIStateGroup_JackOfBladesBase	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3026:nf324:held
+00903134	IsCombatStateGroup	CAIStateGroup_HoverHornetQueen	RET_FALSE		CAIStateGroup_HoverMovementBase	flat	CAIStateGroup_HoverMovementBase	n	none	3027:nf324:port
+0090313b	IsTimingCritical	CAIStateGroup_HoverHornetQueen	GET_MEMBER		CAIStateGroup_HoverMovementBase	flat	CAIStateGroup_HoverMovementBase	n	none	
+00903151	IsCombatStateGroup	CAIStateGroup_CreatureAdvanceInCover	RET_TRUE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3028:nf324:port
+00903158	IsRequireDirectAwarenessOfThing	CAIStateGroup_CreatureAdvanceInCover	RET_FALSE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3029:nf324:port
+0090316d	IsCombatStateGroup	CAIStateGroup_CreatureTakeCover	RET_TRUE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3030:nf324:port
+00903170	IsRequireDirectAwarenessOfThing	CAIStateGroup_CreatureTakeCover	RET_FALSE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3031:nf324:port
+009031f0	IsCombatStateGroup	CAIStateGroup_CreatureFindCover	RET_TRUE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3032:nf324:port
+009031f3	IsRequireDirectAwarenessOfThing	CAIStateGroup_CreatureFindCover	RET_FALSE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3033:nf324:port
+0090f460	IsRunnable	CAIStateGroup_MinionHasInformation	JMP	0x0090F290	CAIStateGroupBase	flat	-	n	none	
+009106b0	OnReplace	CAIStateGroup_MinionListenToStory	JMP	0x00910570	CAIStateGroupBase	flat	-	n	none	
+00918ed0	InsideAtNight	CAIStateGroup_Gaze	RET_FALSE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3038:nf324:port
+0091ea10	IsRunnable	CAIStateGroup_TestTestTest	RET_TRUE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3039:nf324:port
+00929640	Initialise	CAIStateGroup_MinionGuardGreetPlayer	JMP	0x008FCEC0	CAIStateGroupBase	flat	-	n	none	
+0092bc50	Initialise	CAIStateGroup_AvoidRegionExit	JMP	0x008FCEC0	CAIStateGroupBase	flat	-	n	none	
+00933da0	IsRunnable	CAIStateGroup_MinionKidAnnoy	RET_FALSE		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3042:nf324:rejected
+009352b0	IsRunnable	CAIStateGroup_PerformAction	JMP	0x00935160	CAIStateGroup_ScriptingBase<CAIStateGroupBase>	flat	-	n	none	
+00953f60	Initialise	CAIStateGroup_MazeTeleport	JMP	0x008FCEC0	CAIStateGroup_MazeBase	flat	CAIStateGroup_MazeBase	n	none	
+00961aa0	Initialise	CAIStateGroup_IceTrollIcicleAssault	JMP	0x008FCEC0	CAIStateGroupBase	flat	CAIStateGroupBase	n	none	
+00968190	OnActivate	CAIStateGroup_TavernKeeper	EMPTY		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3047:nf324:port
+009718e0	OnReplace	CAIStateGroup_JackOfBladesBase	EMPTY		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3048:nf324:held
+00977760	OnReplace	CAIStateGroup_Guildmaster	EMPTY		CAIStateGroupBase	flat	CAIStateGroupBase	n	none	3049:nf324:port
+0097cb00	IsRunnableLeaf	CAIStateGroup_CreatureFindCover	RET_FALSE		CAIStateGroup_CreatureUseCoverBase	flat	CAIStateGroup_CreatureUseCoverBase	n	none	3052:nf324:port

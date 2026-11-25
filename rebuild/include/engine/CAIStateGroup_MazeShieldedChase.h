@@ -26,6 +26,33 @@ protected:
 };
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeShieldedChase) == 0x20);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZESHIELDEDCHASE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C260 (RTTI .?AVCAIStateGroup_MazeShieldedChase@@ : CAIStateGroup_MazeBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MazeShieldedChase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_MAZEBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_MazeBase.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MazeShieldedChase : public CAIStateGroup_MazeBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void OnActivate();                                            // slot 2 0x009547D0 ?OnActivate@CAIStateGroup_MazeShieldedChase@@UAEXXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x009007D9 ?GetStateGroupType@CAIStateGroup_MazeShieldedChase@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x00954900 ?Cleanup@CAIStateGroup_MazeShieldedChase@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00954690 ?IsRunnable@CAIStateGroup_MazeShieldedChase@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x009552C0 ?Update@CAIStateGroup_MazeShieldedChase@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeShieldedChase) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -41,6 +68,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MazeShieldedChase) == 0x20);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MazeShieldedChase, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MAZESHIELDEDCHASE_VIRTUAL_MODEL
 
 #endif // 0x009552C0 retail opt-in
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZESHIELDEDCHASE_H

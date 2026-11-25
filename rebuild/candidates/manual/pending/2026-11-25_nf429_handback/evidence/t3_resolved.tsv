@@ -1,0 +1,41 @@
+t3_line	source	address	unit	batch	note
+2378	nf319	0x009007A4	held	c2	009007a4 skipped-held ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE?AW4EAIStateGroupType@@XZ NF318 Q2: class branch only under FABLE_RETAIL_MAZ
+2379	nf319	0x009007D9	held	c2	009007d9 skipped-held ?GetStateGroupType@CAIStateGroup_MazeShieldedChase@@UBE?AW4EAIStateGroupType@@XZ NF318 Q2: class switch FABLE_RETAIL_CAISTATEGROUP_MAZESHI
+2380	nf319	0x00902600	held	c2	00902600 skipped-held ?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ NF318 Q2: class branch only under FABLE_RETAIL_ROCKTROLL_UPDATE_P
+2381	nf319	0x0090303F	held	c2	0090303f skipped-held ?GetStateGroupType@CAIStateGroup_JackOfBladesBase@@UBE?AW4EAIStateGroupType@@XZ NF318 Q2: declared only under FABLE_RETAIL_JACK_SETUPARENA
+3002	nf324	0x008FCFE0	port	c1	008fcfe0 skipped-port ?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ triage (local): model: the local class already declares GetDebugText
+3004	nf324	0x008FDC8E	held	c1	008fdc8e skipped-held ?AllowPriorityOverlap@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ triage (switch): model: engine/CAIStateGroup_LookAtInterestingThings.
+3005	nf324	0x008FE0EE	port	c1	008fe0ee skipped-port ?Init@CAIStateGroup_EnemyCreatureBase@@MAEXXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/FableDec
+3006	nf324	0x008FE0EF	port	c1	008fe0ef skipped-port ?IsRunnableLeaf@CAIStateGroup_EnemyCreatureBase@@MAE_NXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/us
+3007	nf324	0x008FE0F2	port	c1	008fe0f2 skipped-port ?OnActivateLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/use
+3008	nf324	0x008FE0F3	port	c1	008fe0f3 skipped-port ?CleanupLeaf@CAIStateGroup_EnemyCreatureBase@@MAEXXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home/user/F
+3009	nf324	0x008FE0F4	port	f1	008fe0f4 skipped-port ?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD passes: /home
+3010	nf324	0x008FE102	port	c1	008fe102 skipped-port ?IsRequireDirectAwarenessOfThing@CAIStateGroup_EnemyCreatureBase@@MBE_NXZ work/exp_b4pre SKIP: precheck: new source fails clang where HEAD
+3011	nf324	0x008FE802	port	c1	008fe802 skipped-port ?PutWeaponAway@CAIStateGroup_BanditPlot@@MAE_NXZ triage (header): model: engine/CAIStateGroup_BanditPlot.h does not declare PutWeaponAway 
+3012	nf324	0x008FF071	port	c1	008ff071 skipped-port ?AllowPriorityOverlap@CAIStateGroup_MinionWatchFires@@UAE_NXZ triage (header): model: engine/CAIStateGroup_MinionWatchFires.h does not dec
+3013	nf324	0x008FF26B	port	c1p	008ff26b skipped-port ?IsStateGroupStillValid@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ triage (header): model: engine/CAIStateGroup_MinionSitOnSeatBase.h does
+3014	nf324	0x008FF26E	held	c1p	008ff26e skipped-held ?IsOwnerSubjectToRegulation@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ triage (switch): model: engine/CAIStateGroup_MinionSitOnSeatBase.h 
+3015	nf324	0x008FF3AF	held	c1	008ff3af skipped-held ?AllowPriorityOverlap@CAIStateGroup_SitRoundCampfire@@UAE_NXZ triage (switch): model: engine/CAIStateGroup_SitRoundCampfire.h declares All
+3017	nf324	0x009007A8	port	c1	009007a8 skipped-port ?IsTimingCritical@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE_NXZ triage (header): model: engine/CAIStateGroup_MazeDefensiveMeleeCombat.h 
+3018	nf324	0x00900F20	port	c1	00900f20 skipped-port ?IsCombatStateGroup@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE_NXZ triage (header): model: engine/CAIStateGroup_RangedCombatUseP
+3019	nf324	0x0090188B	port	c1	0090188b skipped-port ?IsCombatStateGroup@CAIStateGroup_WhisperRetreat@@UBE_NXZ triage (header): model: engine/CAIStateGroup_WhisperRetreat.h does not declare I
+3020	nf324	0x009018EC	port	c1	009018ec skipped-port ?IsCombatStateGroup@CAIStateGroup_Thunder@@UBE_NXZ triage (header): model: engine/CAIStateGroup_Thunder.h does not declare IsCombatStateGr
+3022	nf324	0x009021DA	port	c1p	009021da skipped-port ?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ triage (header): model: engine/CAIStateGroup_MinionSitOutside.h does not dec
+3025	nf324	0x00902F9A	port	c1	00902f9a skipped-port ?ProcessCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z triage (-): s
+3026	nf324	0x00903043	held	c1	00903043 skipped-held ?IsTimingCritical@CAIStateGroup_JackOfBladesBase@@UBE_NXZ triage (switch): model: engine/CAIStateGroup_JackOfBladesBase.h declares IsTimin
+3028	nf324	0x00903151	port	c1	00903151 skipped-port ?IsCombatStateGroup@CAIStateGroup_CreatureAdvanceInCover@@UBE_NXZ triage (header): model: engine/CAIStateGroup_CreatureAdvanceInCover.h do
+3029	nf324	0x00903158	port	c1	00903158 skipped-port ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureAdvanceInCover@@MBE_NXZ triage (header): model: engine/CAIStateGroup_CreatureAdvanc
+3030	nf324	0x0090316D	port	c1	0090316d skipped-port ?IsCombatStateGroup@CAIStateGroup_CreatureTakeCover@@UBE_NXZ triage (header): model: engine/CAIStateGroup_CreatureTakeCover.h does not dec
+3031	nf324	0x00903170	port	c1	00903170 skipped-port ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureTakeCover@@UBE_NXZ triage (header): model: engine/CAIStateGroup_CreatureTakeCover.h
+3032	nf324	0x009031F0	port	c1	009031f0 skipped-port ?IsCombatStateGroup@CAIStateGroup_CreatureFindCover@@UBE_NXZ triage (header): model: engine/CAIStateGroup_CreatureFindCover.h does not dec
+3033	nf324	0x009031F3	port	c1	009031f3 skipped-port ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureFindCover@@UBE_NXZ triage (header): model: engine/CAIStateGroup_CreatureFindCover.h
+3038	nf324	0x00918ED0	port	c1	00918ed0 skipped-port ?InsideAtNight@CAIStateGroup_Gaze@@MAE_NXZ triage (header): model: engine/CAIStateGroup_Gaze.h does not declare InsideAtNight (add-only op
+3039	nf324	0x0091EA10	port	c1	0091ea10 skipped-port ?IsRunnable@CAIStateGroup_TestTestTest@@UAE_NXZ triage (header): model: engine/CAIStateGroup_TestTestTest.h does not declare IsRunnable (a
+3042	nf324	0x00933DA0	rejected	c1	00933da0 rejected ?IsRunnable@CAIStateGroup_MinionKidAnnoy@@UAE_NXZ work/exp_b1 REJECT: new graded symbol ?IsRunnable@CAIStateGroup_MinionKidAnnoy@@MAE_NXZ [rou
+3044	nf324	0x00940110	port	c2	00940110 skipped-port ?InitStateGroup@CAIStateGroup_VillageTaskPickCrops@@UAEXABVCWorld@@AAVCThingAICreature@@@Z triage (header): model: engine/CAIStateGroup_Vi
+3047	nf324	0x00968190	port	c1	00968190 skipped-port ?OnActivate@CAIStateGroup_TavernKeeper@@MAEXXZ triage (header): model: engine/CAIStateGroup_TavernKeeper.h does not declare OnActivate (ad
+3048	nf324	0x009718E0	held	c1	009718e0 skipped-held ?OnReplace@CAIStateGroup_JackOfBladesBase@@UAEXXZ triage (switch): model: engine/CAIStateGroup_JackOfBladesBase.h declares OnReplace only 
+3049	nf324	0x00977760	port	c1	00977760 skipped-port ?OnReplace@CAIStateGroup_Guildmaster@@UAEXXZ triage (header): model: engine/CAIStateGroup_Guildmaster.h does not declare OnReplace (add-on
+3050	nf324	0x00979900	port	c2	00979900 skipped-port ?InitStateGroup@CAIStateGroup_CreatureTakeCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z triage (header): model: engine/CAIStateGroup_Creat
+3051	nf324	0x0097CAF0	port	c2	0097caf0 skipped-port ?InitStateGroup@CAIStateGroup_CreatureFindCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z triage (header): model: engine/CAIStateGroup_Creat
+3052	nf324	0x0097CB00	port	c1	0097cb00 skipped-port ?IsRunnableLeaf@CAIStateGroup_CreatureFindCover@@UAE_NXZ triage (header): model: engine/CAIStateGroup_CreatureFindCover.h does not declare

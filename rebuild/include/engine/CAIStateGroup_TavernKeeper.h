@@ -40,6 +40,60 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TavernKeeper)==0x68);
 
 class CMessageEvent;
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TAVERNKEEPER_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128CD50 (RTTI .?AVCAIStateGroup_TavernKeeper@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_TavernKeeper); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CThingAICreature;
+class CWorld;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_TavernKeeper : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual void OnActivate();                                            // slot 2 0x00968190 ?OnActivate@CAIStateGroup_TavernKeeper@@MAEXXZ
+    virtual bool InitCreaturePosition();                                  // slot 3 0x009681A0 ?InitCreaturePosition@CAIStateGroup_TavernKeeper@@MAE_NXZ
+    virtual bool IsStillValid() const;                                    // slot 5 0x009681E0 ?IsStillValid@CAIStateGroup_TavernKeeper@@MBE_NXZ
+    virtual void OnReplace();                                             // slot 10 0x00968BC0 ?OnReplace@CAIStateGroup_TavernKeeper@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00968E00 ?IsRunnable@CAIStateGroup_TavernKeeper@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x00969470 ?Update@CAIStateGroup_TavernKeeper@@MAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x009685C0 ?InitStateGroup@CAIStateGroup_TavernKeeper@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+public:
+    unsigned char  PJug[0x8];                                // +0x14 CIntelligentPointer<CThingObject>
+    unsigned char  PBar[0x8];                                // +0x1c CIntelligentPointer<CThingObject>
+    unsigned char  PPub[0x8];                                // +0x24 CIntelligentPointer<CThingBuilding>
+    unsigned char  PPayee[0x8];                              // +0x2c CIntelligentPointer<CThingAICreature>
+    long           JugActionPointIndex;                      // +0x34
+    float          JugPos_X;                                 // +0x38 C3DVector::X
+    float          JugPos_Y;                                 // +0x3c C3DVector::Y
+    float          JugPos_Z;                                 // +0x40 C3DVector::Z
+    unsigned char  JugRHSet[0x18];                           // +0x44 CRightHandedSet
+    long           JugSlot;                                  // +0x5c
+    float          AverageWalkSpeed;                         // +0x60
+    CMessageEvent* PaymentRequestMessage;                    // +0x64
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TavernKeeper) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PJug) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PBar) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PPub) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PPayee) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugActionPointIndex) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_X) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_Y) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugPos_Z) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugRHSet) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, JugSlot) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, AverageWalkSpeed) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_TavernKeeper, PaymentRequestMessage) == 0x64);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -82,6 +136,7 @@ FABLE_STATIC_ASSERT_AT(75, offsetof(CAIStateGroup_TavernKeeper, JugRHSet) == 0x4
 FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_TavernKeeper, JugSlot) == 0x5c);
 FABLE_STATIC_ASSERT_AT(77, offsetof(CAIStateGroup_TavernKeeper, AverageWalkSpeed) == 0x60);
 FABLE_STATIC_ASSERT_AT(78, offsetof(CAIStateGroup_TavernKeeper, PaymentRequestMessage) == 0x64);
+#endif // FABLE_RETAIL_CAISTATEGROUP_TAVERNKEEPER_VIRTUAL_MODEL
 
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_TAVERNKEEPER_H

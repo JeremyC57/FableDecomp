@@ -1,0 +1,15 @@
+vftable	0128D0A0	slots	14	base_slots	14
+0	00902604	??_ECAIStateGroup_RockTroll@@UAEPAXI@Z	inherit-dtor
+1	0094D780	?Initialise@CAIStateGroup_TrollBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	inherit
+2	008FD26F	?OnActivate@CAIStateGroupBase@@UAEXXZ	inherit
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	00900381	?IsTimingCritical@CAIStateGroup_TrollBase@@UBE_NXZ	inherit
+8	00902600	?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ	override
+9	008FD280	?Cleanup@CAIStateGroupBase@@MAEXXZ	inherit
+10	008FD281	?OnReplace@CAIStateGroupBase@@MAEXXZ	inherit
+11	0094DAC0	?IsRunnable@CAIStateGroup_RockTroll@@MAE_NXZ	override
+12	0094DD90	?Update@CAIStateGroup_RockTroll@@MAEXXZ	override
+13	008FD285	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	inherit

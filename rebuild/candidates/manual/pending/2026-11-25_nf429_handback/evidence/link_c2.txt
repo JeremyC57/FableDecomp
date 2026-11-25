@@ -1,0 +1,27 @@
+## HEAD set (7 objects): 009007a4/work 009007d9/work 00902600/work 0090303f/work 00940110/work 00979900/work 0097caf0/work
+duplicates 0
+DEFINED ?CAIStateGroup_CreatureFindCover_InitStateGroup@@YGXHH@Z in 0097caf0.obj
+DEFINED ?CAIStateGroup_CreatureTakeCover_InitStateGroup@@YGXHH@Z in 00979900.obj
+DEFINED ?CAIStateGroup_VillageTaskPickCrops_InitStateGroup@@YGXHH@Z in 00940110.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_JackOfBladesBase_Methods@@QAEHXZ in 0090303f.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat_Methods@@QAEHXZ in 009007a4.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_MazeShieldedChase_Methods@@QAEHXZ in 009007d9.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_RockTroll_Methods@@QAEHXZ in 00902600.obj
+## new set (7 objects): 009007a4/work 009007d9/work 00902600/work 0090303f/work 00940110/work 00979900/work 0097caf0/work
+duplicates 0
+DEFINED ?GetStateGroupType@CAIStateGroup_JackOfBladesBase@@UBE?AW4EAIStateGroupType@@XZ in 0090303f.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE?AW4EAIStateGroupType@@XZ in 009007a4.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_MazeShieldedChase@@UBE?AW4EAIStateGroupType@@XZ in 009007d9.obj
+DEFINED ?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ in 00902600.obj
+DEFINED ?InitStateGroup@CAIStateGroup_CreatureFindCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z in 0097caf0.obj
+DEFINED ?InitStateGroup@CAIStateGroup_CreatureTakeCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z in 00979900.obj
+DEFINED ?InitStateGroup@CAIStateGroup_VillageTaskPickCrops@@UAEXABVCWorld@@AAVCThingAICreature@@@Z in 00940110.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureFindCover_InitStateGroup@@YGXHH@Z
+RESOLVED_TO_GONE ?CAIStateGroup_CreatureTakeCover_InitStateGroup@@YGXHH@Z
+RESOLVED_TO_GONE ?CAIStateGroup_VillageTaskPickCrops_InitStateGroup@@YGXHH@Z
+RESOLVED_TO_GONE ?GetStateGroupType@CAIStateGroup_JackOfBladesBase_Methods@@QAEHXZ
+RESOLVED_TO_GONE ?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat_Methods@@QAEHXZ
+RESOLVED_TO_GONE ?GetStateGroupType@CAIStateGroup_MazeShieldedChase_Methods@@QAEHXZ
+RESOLVED_TO_GONE ?GetStateGroupType@CAIStateGroup_RockTroll_Methods@@QAEHXZ
+LK_DONE

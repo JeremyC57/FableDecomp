@@ -1,0 +1,16 @@
+vftable	0128D384	slots	15	base_slots	14
+0	00903079	??_GCAIStateGroup_JackOfBladesBase@@UAEPAXI@Z	inherit-dtor
+1	00972040	?Initialise@CAIStateGroup_JackOfBladesBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	override
+2	009720C0	?OnActivate@CAIStateGroup_JackOfBladesBase@@UAEXXZ	override
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FD273	?AllowPriorityOverlap@CAIStateGroupBase@@UAE_NXZ	inherit
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	00903043	?IsTimingCritical@CAIStateGroup_JackOfBladesBase@@UBE_NXZ	override
+8	0090303F	?GetStateGroupType@CAIStateGroup_JackOfBladesBase@@UBE?AW4EAIStateGroupType@@XZ	override
+9	00972110	?Cleanup@CAIStateGroup_JackOfBladesBase@@UAEXXZ	override
+10	009718E0	?OnReplace@CAIStateGroup_JackOfBladesBase@@UAEXXZ	override
+11	008FD282	?IsRunnable@CAIStateGroupBase@@MAE_NXZ	inherit
+12	00BFEA08	-	inherit?
+13	008FD285	?InitStateGroup@CAIStateGroupBase@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	inherit
+14	00972830	?SetupArena@CAIStateGroup_JackOfBladesBase@@MAEXXZ	new

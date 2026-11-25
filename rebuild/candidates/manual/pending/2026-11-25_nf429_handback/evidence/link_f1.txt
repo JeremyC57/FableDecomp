@@ -1,0 +1,18 @@
+## HEAD set (2 objects): 008fe0f4/work 008fe0fb/work
+duplicates 0
+UNRESOLVED 1 ?g_CombatMinDistance@@3MA
+UNRESOLVED 1 ?g_value_0125aadc@@3MA
+DEFINED ?CAIStateGroup_EnemyCreatureBase_GetCombatProximity@@YAMXZ in 008fe0f4.obj
+DEFINED _CAIStateGroup_EnemyCreatureBase_GetCombatMinDistance in 008fe0fb.obj
+## new set (2 objects): 008fe0f4/work 008fe0fb/work
+duplicates 0
+DEFINED ?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ in 008fe0fb.obj
+DEFINED ?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ in 008fe0f4.obj
+DEFINED __real@00000000 in 008fe0f4.obj
+DEFINED __real@3fc00000 in 008fe0fb.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CAIStateGroup_EnemyCreatureBase_GetCombatProximity@@YAMXZ
+RESOLVED_TO_GONE _CAIStateGroup_EnemyCreatureBase_GetCombatMinDistance
+GONE_UNRESOLVED ?g_CombatMinDistance@@3MA 
+GONE_UNRESOLVED ?g_value_0125aadc@@3MA 
+LK_DONE

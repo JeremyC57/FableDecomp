@@ -6,17 +6,20 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
-## Account A, 2026-11-25 (naming families; agent NF427; Codex pass 29 reserved)
-- **Naming:** 33,774 of 64,040 done (52.74%), from `naming/status/SUMMARY.md`. Landed today:
+## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
+- **Naming:** 34,125 of 64,041 done (53.29%), from the tracker. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
   - nf426 (110 CDefPointer Release/~ copies; **R-NF426-1**, 26 `direct` / 84 `rule` in `pending/2026-11-25_nf426_handback/DIRECT_RULE.tsv`);
-  - the AUTH26 unit (below).
+  - the AUTH26 unit (below);
+  - nf428 (71 CCountedPointer rows; **R-NF428-1**: retail-layout T is one source only), nf427 r1 + r2 (233 creature-action rows on new VIRTUAL_MODEL opt-ins, 226 test ports), nf429 (47 AI state-group rows, 32 models; `pending/2026-11-25_nf429_handback/`).
+  - **Running:** NF430 (`CVtable_<va>` placeholder classes, ~1,121 open) and NF431 (CGameScriptInterface, ~151 open). Owner allows 2 naming agents.
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.
   - **R-NF424-3** (4 QAE rows): left on the stand-in.
+  - **NF429 q1** (218 AI state-group deleting destructors): open, needs a pilot first.
   - **`_$E1`** (485 dynamic initializers): owner question still unanswered.
 - **Grades:** `baked_address` (advisor decision, owner delegated). 50 rows type in a vftable / global / IAT / code address, counted apart from genuine (48,905 genuine original). Detector: `purity.baked_data_addresses`, key `rebuild/oracles/data_vas.tsv`. Audit: `audits/2026-11-25_baked_address/`.
 - **Authoring stopped (owner, 2026-11-25):** "dont launch new author". AUTH26 matched rows 1 (0x005DCC00) and 3 (0x006C0B20), both landed; row 2 (0x00723E50) was set aside at g18. AUTH26 is released.

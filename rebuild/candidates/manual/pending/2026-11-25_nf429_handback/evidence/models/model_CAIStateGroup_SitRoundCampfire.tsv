@@ -1,0 +1,15 @@
+vftable	0128B714	slots	14	base_slots	14
+0	008FF3B2	??_GCAIStateGroup_SitRoundCampfire@@UAEPAXI@Z	inherit-dtor
+1	00939270	?Initialise@CAIStateGroup_SitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	override
+2	008FD26F	?OnActivate@CAIStateGroupBase@@UAEXXZ	inherit
+3	008FD270	?InitCreaturePosition@CAIStateGroupBase@@UAE_NXZ	inherit
+4	008FF3AF	?AllowPriorityOverlap@CAIStateGroup_SitRoundCampfire@@UAE_NXZ	override
+5	008FD276	?IsStillValid@CAIStateGroupBase@@UBE_NXZ	inherit
+6	008FCFE0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	inherit
+7	008FD279	?IsTimingCritical@CAIStateGroupBase@@UBE_NXZ	inherit
+8	008FD27C	?GetStateGroupType@CAIStateGroupBase@@UBE?AW4EAIStateGroupType@@XZ	inherit
+9	008FD280	?Cleanup@CAIStateGroupBase@@MAEXXZ	inherit
+10	009397E0	?OnReplace@CAIStateGroup_SitRoundCampfire@@UAEXXZ	override
+11	00939670	?IsRunnable@CAIStateGroup_SitRoundCampfire@@UAE_NXZ	override
+12	009392A0	?Update@CAIStateGroup_SitRoundCampfire@@UAEXXZ	override
+13	009395A0	?InitStateGroup@CAIStateGroup_SitRoundCampfire@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	override

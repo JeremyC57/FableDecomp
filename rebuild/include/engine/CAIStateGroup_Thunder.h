@@ -43,6 +43,48 @@ FABLE_STATIC_ASSERT_AT(27, sizeof(CAIStateGroup_Thunder) == 0x2c);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_THUNDER_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128CE2C (RTTI .?AVCAIStateGroup_Thunder@@ : CAIStateGroupBase), 15 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_Thunder); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_Thunder : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x0096C1B0 ?Initialise@CAIStateGroup_Thunder@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x009018EF ?GetStateGroupType@CAIStateGroup_Thunder@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x0096C1E0 ?Cleanup@CAIStateGroup_Thunder@@UAEXXZ
+protected:
+    virtual bool IsRunnable();                                            // slot 11 0x0096C2E0 ?IsRunnable@CAIStateGroup_Thunder@@MAE_NXZ
+public:
+    virtual void Update();                                                // slot 12 0x0096C4F0 ?Update@CAIStateGroup_Thunder@@UAEXXZ
+    virtual bool IsCombatStateGroup() const;                              // slot 14 0x009018EC ?IsCombatStateGroup@CAIStateGroup_Thunder@@UBE_NXZ
+public:
+    unsigned char PArenaCentre[0x8];                         // +0x14 CIntelligentPointer<CThing>
+    bool          bIsRangeAttack;                            // +0x1c
+    unsigned char PTargetThing[0xb];                         // +0x1d CIntelligentPointer<CThingCreatureBase>
+    long          HitCount;                                  // +0x28
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_Thunder) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Thunder, PArenaCentre) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Thunder, bIsRangeAttack) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Thunder, PTargetThing) == 0x1d);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Thunder, HitCount) == 0x28);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -69,6 +111,7 @@ FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_Thunder, PArenaCentre) == 0x14
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_Thunder, bIsRangeAttack) == 0x1c);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_Thunder, PTargetThing) == 0x1d);
 FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_Thunder, HitCount) == 0x28);
+#endif // FABLE_RETAIL_CAISTATEGROUP_THUNDER_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_THUNDER
 #endif // FABLE_ENGINE_CAISTATEGROUP_THUNDER_H

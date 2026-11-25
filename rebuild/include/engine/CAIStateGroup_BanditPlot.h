@@ -19,6 +19,33 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditPlot) == 0x28);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BANDITPLOT_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128ADB4 (RTTI .?AVCAIStateGroup_BanditPlot@@ : CAIStateGroup_BanditPlayDice), 18 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_BanditPlot); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_BANDITPLAYDICE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_BanditPlayDice.h"
+class CTCDiceGame;
+enum EAIActionReturn;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_BanditPlot : public CAIStateGroup_BanditPlayDice {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual CTCDiceGame* GetDiceGame();                                   // slot 14 0x009292B0 ?GetDiceGame@CAIStateGroup_BanditPlot@@MAEPAVCTCDiceGame@@XZ
+    virtual long GetMarkerType();                                         // slot 15 0x00928590 ?GetMarkerType@CAIStateGroup_BanditPlot@@MAEJXZ
+    virtual bool PutWeaponAway();                                         // slot 16 0x008FE802 ?PutWeaponAway@CAIStateGroup_BanditPlot@@MAE_NXZ
+    virtual EAIActionReturn Act();                                        // slot 17 0x009289B0 ?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditPlot) == 0x28);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -34,6 +61,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(29, sizeof(CAIStateGroup_BanditPlot) == 0x28);
 FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_BanditPlot, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_BANDITPLOT_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_BANDITPLOT
 #endif // FABLE_ENGINE_CAISTATEGROUP_BANDITPLOT_H

@@ -1,0 +1,17 @@
+addr       parity           behav  name
+009007a4   MATCH            PASS   GetStateGroupType
+009007d9   MATCH            PASS   GetStateGroupType
+00902600   MATCH            PASS   GetStateGroupType
+0090303f   MATCH            PASS   GetStateGroupType
+00940110   MATCH            PASS   InitStateGroup
+00979900   MATCH            PASS   InitStateGroup
+0097caf0   MATCH            PASS   InitStateGroup
+
+WINS: 7
+  009007a4 MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?GetStateGroupType@CAIStateGroup_MazeDefensiveMeleeCombat@@UBE?AW4EAIStateGroupType@@XZ
+  009007d9 MATCH CAIStateGroup_MazeShieldedChase::?GetStateGroupType@CAIStateGroup_MazeShieldedChase@@UBE?AW4EAIStateGroupType@@XZ
+  00902600 MATCH CAIStateGroup_RockTroll::?GetStateGroupType@CAIStateGroup_RockTroll@@MBE?AW4EAIStateGroupType@@XZ
+  0090303f MATCH CAIStateGroup_JackOfBladesBase::?GetStateGroupType@CAIStateGroup_JackOfBladesBase@@UBE?AW4EAIStateGroupType@@XZ
+  00940110 MATCH CAIStateGroup_VillageTaskPickCrops::?InitStateGroup@CAIStateGroup_VillageTaskPickCrops@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+  00979900 MATCH CAIStateGroup_CreatureTakeCover::?InitStateGroup@CAIStateGroup_CreatureTakeCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+  0097caf0 MATCH CAIStateGroup_CreatureFindCover::?InitStateGroup@CAIStateGroup_CreatureFindCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z

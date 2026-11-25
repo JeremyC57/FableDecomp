@@ -33,6 +33,39 @@ private:
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128C854 (RTTI .?AVCAIStateGroup_RangedCombatUsePreferredFirePoint@@ : CAIStateGroupBase), 15 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_RangedCombatUsePreferredFirePoint); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_RangedCombatUsePreferredFirePoint : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00900F23 ?GetStateGroupType@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void OnReplace();                                             // slot 10 0x0095D3A0 ?OnReplace@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x0095D590 ?IsRunnable@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x0095D200 ?Update@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAEXXZ
+    virtual bool IsCombatStateGroup() const;                              // slot 14 0x00900F20 ?IsCombatStateGroup@CAIStateGroup_RangedCombatUsePreferredFirePoint@@UBE_NXZ
+public:
+    unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThingCreatureBase>
+    unsigned char PFirePoint[0x8];                           // +0x1c CIntelligentPointer<CThing>
+    long          TimeOutCounter;                            // +0x24
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RangedCombatUsePreferredFirePoint) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PEnemy) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PFirePoint) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, TimeOutCounter) == 0x24);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -57,6 +90,7 @@ FABLE_STATIC_ASSERT_AT(41, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePo
 FABLE_STATIC_ASSERT_AT(42, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PEnemy) == 0x14);
 FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PFirePoint) == 0x1c);
 FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, TimeOutCounter) == 0x24);
+#endif // FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_VIRTUAL_MODEL
 
 #endif // retail model
 #endif // FABLE_ENGINE_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_H

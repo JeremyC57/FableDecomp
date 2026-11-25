@@ -1,4 +1,19 @@
-bool __fastcall CAIStateGroup_MinionSitOutside_AllowPriorityOverlap()
+// Leaf: ?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ
+// CAIStateGroup_MinionSitOutside::AllowPriorityOverlap() -- returns true.
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + FableWin name set; the landed stand-in
+//   ?CAIStateGroup_MinionSitOutside_AllowPriorityOverlap@@YI_NXZ becomes the virtual member of the polymorphic class in
+//   engine/CAIStateGroup_MinionSitOutside.h (model FABLE_RETAIL_CAISTATEGROUP_MINIONSITOUTSIDE_VIRTUAL_MODEL (generated here); defines
+//   FABLE_RETAIL_CAISTATEGROUP_MINIONSITOUTSIDE_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS,
+//   FABLE_RETAIL_CAISTATEGROUP_USESSEAT_VIRTUALS_PASS27, FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE_VIRTUAL_MODEL,
+//   FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEAT_VIRTUAL_MODEL). NF429 G1 (CONST shape).
+#define FABLE_RETAIL_CAISTATEGROUP_MINIONSITOUTSIDE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_USESSEAT_VIRTUALS_PASS27
+#define FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEAT_VIRTUAL_MODEL
+#include "engine/CAIStateGroup_MinionSitOutside.h"
+bool CAIStateGroup_MinionSitOutside::AllowPriorityOverlap()
 {
     return true;
 }

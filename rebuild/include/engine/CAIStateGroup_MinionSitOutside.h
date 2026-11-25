@@ -8,6 +8,37 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONSITOUTSIDE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D00C (RTTI .?AVCAIStateGroup_MinionSitOutside@@ : CAIStateGroup_MinionSitOnSeat), 19 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MinionSitOutside); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_USESSEAT_VIRTUALS_PASS27, FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEAT_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_MinionSitOnSeat.h"
+class CThingAICreature;
+class CWorld;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MinionSitOutside : public CAIStateGroup_MinionSitOnSeat {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual bool AllowPriorityOverlap();                                  // slot 4 0x009021DA ?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ
+protected:
+    virtual bool IsStillValid() const;                                    // slot 5 0x00939060 ?IsStillValid@CAIStateGroup_MinionSitOutside@@MBE_NXZ
+    virtual void OnReplace();                                             // slot 10 0x009390E0 ?OnReplace@CAIStateGroup_MinionSitOutside@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00938F70 ?IsRunnable@CAIStateGroup_MinionSitOutside@@MAE_NXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00938F20 ?InitStateGroup@CAIStateGroup_MinionSitOutside@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+public:
+    long          FrameToStopSitting;                        // +0x40
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionSitOutside) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionSitOutside, FrameToStopSitting) == 0x40);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -39,5 +70,6 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_MinionSitOutside) == 0x44);
 FABLE_STATIC_ASSERT_AT(34, offsetof(CAIStateGroup_MinionSitOutside, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(35, offsetof(CAIStateGroup_MinionSitOutside, FrameToStopSitting) == 0x40);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MINIONSITOUTSIDE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONSITOUTSIDE_H

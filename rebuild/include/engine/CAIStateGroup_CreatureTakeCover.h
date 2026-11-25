@@ -41,6 +41,40 @@ public:
 };
 FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_CreatureTakeCover) == 0x4c);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATURETAKECOVER_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D54C (RTTI .?AVCAIStateGroup_CreatureTakeCover@@ : CAIStateGroup_CreatureUseCoverBase), 24 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_CreatureTakeCover); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL, FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_CreatureUseCoverBase.h"
+#include "stlport/fable_containers.h"
+class CThing;
+class CThingAICreature;
+class CWorld;
+enum EAIStateGroupType;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_CreatureTakeCover : public CAIStateGroup_CreatureUseCoverBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00903173 ?GetStateGroupType@CAIStateGroup_CreatureTakeCover@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Update();                                                // slot 12 0x0097A630 ?Update@CAIStateGroup_CreatureTakeCover@@UAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00979900 ?InitStateGroup@CAIStateGroup_CreatureTakeCover@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+    virtual bool IsRunnableLeaf();                                        // slot 15 0x00979D80 ?IsRunnableLeaf@CAIStateGroup_CreatureTakeCover@@UAE_NXZ
+    virtual bool IsCombatStateGroup() const;                              // slot 20 0x0090316D ?IsCombatStateGroup@CAIStateGroup_CreatureTakeCover@@UBE_NXZ
+    virtual bool IsRequireDirectAwarenessOfThing() const;                 // slot 21 0x00903170 ?IsRequireDirectAwarenessOfThing@CAIStateGroup_CreatureTakeCover@@UBE_NXZ
+protected:
+    virtual void ProcessCoverThingList(std::vector<CThing *, std::allocator<CThing *> >&); // slot 22 0x0097AAE0 ?ProcessCoverThingList@CAIStateGroup_CreatureTakeCover@@MAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureTakeCover) == 0x4c);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -60,6 +94,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_CreatureTakeCover) == 0x4c);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_CreatureTakeCover, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_CREATURETAKECOVER_VIRTUAL_MODEL
 #endif // FABLE_RETAIL_CAISTATEGROUP_CREATURETAKECOVER_ISRUNNABLELEAF
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATURETAKECOVER_H

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0090f460   RELOCATION_MATCH PASS   IsRunnable
+009106b0   RELOCATION_MATCH PASS   OnReplace
+00929640   RELOCATION_MATCH PASS   Initialise
+0092bc50   RELOCATION_MATCH PASS   Initialise
+00953f60   RELOCATION_MATCH PASS   Initialise
+00961aa0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 6
+  0090f460 RELOCATION_MATCH CAIStateGroup_MinionHasInformation::?IsRunnable@CAIStateGroup_MinionHasInformation@@UAE_NXZ
+  009106b0 RELOCATION_MATCH CAIStateGroup_MinionListenToStory::?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ
+  00929640 RELOCATION_MATCH CAIStateGroup_MinionGuardGreetPlayer::?Initialise@CAIStateGroup_MinionGuardGreetPlayer@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  0092bc50 RELOCATION_MATCH CAIStateGroup_AvoidRegionExit::?Initialise@CAIStateGroup_AvoidRegionExit@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  00953f60 RELOCATION_MATCH CAIStateGroup_MazeTeleport::?Initialise@CAIStateGroup_MazeTeleport@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  00961aa0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAssault::?Initialise@CAIStateGroup_IceTrollIcicleAssault@@MAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z

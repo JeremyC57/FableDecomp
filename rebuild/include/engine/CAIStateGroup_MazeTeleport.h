@@ -35,6 +35,37 @@ public:
 };
 FABLE_STATIC_ASSERT_AT(27, sizeof(CAIStateGroup_MazeTeleport) == 0x20);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MAZETELEPORT_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D0DC (RTTI .?AVCAIStateGroup_MazeTeleport@@ : CAIStateGroup_MazeBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_MazeTeleport); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_MAZEBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_MazeBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_MazeTeleport : public CAIStateGroup_MazeBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x00953F60 ?Initialise@CAIStateGroup_MazeTeleport@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual void OnActivate();                                            // slot 2 0x00954410 ?OnActivate@CAIStateGroup_MazeTeleport@@UAEXXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x009026C7 ?GetStateGroupType@CAIStateGroup_MazeTeleport@@UBE?AW4EAIStateGroupType@@XZ
+    virtual bool IsRunnable();                                            // slot 11 0x009543B0 ?IsRunnable@CAIStateGroup_MazeTeleport@@UAE_NXZ
+    virtual void Update();                                                // slot 12 0x00954F40 ?Update@CAIStateGroup_MazeTeleport@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MazeTeleport) == 0x20);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -50,6 +81,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 
 FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MazeTeleport) == 0x20);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MazeTeleport, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CAISTATEGROUP_MAZETELEPORT_VIRTUAL_MODEL
 #endif // FABLE_RETAIL_CAISTATEGROUP_MAZETELEPORT
 
 #endif // FABLE_ENGINE_CAISTATEGROUP_MAZETELEPORT_H

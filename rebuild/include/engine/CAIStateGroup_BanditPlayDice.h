@@ -46,6 +46,51 @@ FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_BanditPlayDice) == 0x28);
 class CTCDiceGame;
 class CTCExclusiveUse;
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BANDITPLAYDICE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128AD54 (RTTI .?AVCAIStateGroup_BanditPlayDice@@ : CAIStateGroupBase), 18 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_BanditPlayDice); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CTCDiceGame;
+class CThingAICreature;
+class CWorld;
+enum EAIActionReturn;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_BanditPlayDice : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual void OnReplace();                                             // slot 10 0x00928E20 ?OnReplace@CAIStateGroup_BanditPlayDice@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00929020 ?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x00929340 ?Update@CAIStateGroup_BanditPlayDice@@MAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x009284B0 ?InitStateGroup@CAIStateGroup_BanditPlayDice@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+    virtual CTCDiceGame* GetDiceGame();                                   // slot 14 0x00929220 ?GetDiceGame@CAIStateGroup_BanditPlayDice@@MAEPAVCTCDiceGame@@XZ
+    virtual long GetMarkerType();                                         // slot 15 0x00928550 ?GetMarkerType@CAIStateGroup_BanditPlayDice@@MAEJXZ
+    virtual bool PutWeaponAway();                                         // slot 16 0x008FE7D5 ?PutWeaponAway@CAIStateGroup_BanditPlayDice@@MAE_NXZ
+    virtual EAIActionReturn Act();                                        // slot 17 0x009285D0 ?Act@CAIStateGroup_BanditPlayDice@@MAE?AW4EAIActionReturn@@XZ
+public:
+    CTCExclusiveUse* DiceGamePosition;                       // +0x14
+    CTCDiceGame*     DiceGame;                               // +0x18
+    long             FrameToInitiate;                        // +0x1c
+    long             FrameToJoin;                            // +0x20
+    bool             WasCarryingWeapon;                      // +0x24
+    unsigned char    _pad_0x25[0x3];                         // +0x25
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_BanditPlayDice) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, DiceGamePosition) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, DiceGame) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, FrameToInitiate) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, FrameToJoin) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, WasCarryingWeapon) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_BanditPlayDice, _pad_0x25) == 0x25);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -75,6 +120,7 @@ FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_BanditPlayDice, DiceGame) == 0
 FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_BanditPlayDice, FrameToInitiate) == 0x1c);
 FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_BanditPlayDice, FrameToJoin) == 0x20);
 FABLE_STATIC_ASSERT_AT(68, offsetof(CAIStateGroup_BanditPlayDice, WasCarryingWeapon) == 0x24);
+#endif // FABLE_RETAIL_CAISTATEGROUP_BANDITPLAYDICE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_BANDITPLAYDICE
 #endif // FABLE_ENGINE_CAISTATEGROUP_BANDITPLAYDICE_H

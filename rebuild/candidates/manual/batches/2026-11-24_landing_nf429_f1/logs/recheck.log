@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008fe0f4   RELOCATION_MATCH PASS   GetCombatProximity
+008fe0fb   RELOCATION_MATCH PASS   GetCombatMinDistance
+
+WINS: 2
+  008fe0f4 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::?GetCombatProximity@CAIStateGroup_EnemyCreatureBase@@MBEMXZ
+  008fe0fb RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::?GetCombatMinDistance@CAIStateGroup_EnemyCreatureBase@@MBEMXZ

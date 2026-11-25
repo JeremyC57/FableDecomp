@@ -58,6 +58,47 @@ protected:
 };
 FABLE_STATIC_ASSERT_AT(44, sizeof(CAIStateGroup_JackOfBladesBase)==0x4c);
 #else
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D384 (RTTI .?AVCAIStateGroup_JackOfBladesBase@@ : CAIStateGroupBase), 15 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_JackOfBladesBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+class CAIStateGroup_JackOfBladesBase : public CAIStateGroupBase {
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x00972040 ?Initialise@CAIStateGroup_JackOfBladesBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual void OnActivate();                                            // slot 2 0x009720C0 ?OnActivate@CAIStateGroup_JackOfBladesBase@@UAEXXZ
+    virtual bool IsTimingCritical() const;                                // slot 7 0x00903043 ?IsTimingCritical@CAIStateGroup_JackOfBladesBase@@UBE_NXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x0090303F ?GetStateGroupType@CAIStateGroup_JackOfBladesBase@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x00972110 ?Cleanup@CAIStateGroup_JackOfBladesBase@@UAEXXZ
+    virtual void OnReplace();                                             // slot 10 0x009718E0 ?OnReplace@CAIStateGroup_JackOfBladesBase@@UAEXXZ
+protected:
+    virtual void SetupArena();                                            // slot 14 0x00972830 ?SetupArena@CAIStateGroup_JackOfBladesBase@@MAEXXZ
+public:
+    unsigned char PSwordEmitter[0x8];                        // +0x14 CIntelligentPointer<CThing>
+    unsigned char PArenaCentre[0x8];                         // +0x1c CIntelligentPointer<CThing>
+    unsigned char PTargetThing[0x8];                         // +0x24 CIntelligentPointer<CThingCreatureBase>
+    long          EnemyKnockDownFrame;                       // +0x2c
+    long          SpeechCounter;                             // +0x30
+    unsigned char PillarMarkers[0xc];                        // +0x34 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    unsigned char Pillars[0xc];                              // +0x40 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_JackOfBladesBase) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PSwordEmitter) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PArenaCentre) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PTargetThing) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, EnemyKnockDownFrame) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, SpeechCounter) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, PillarMarkers) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_JackOfBladesBase, Pillars) == 0x40);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_JackOfBladesBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -84,6 +125,7 @@ FABLE_STATIC_ASSERT_AT(68, offsetof(CAIStateGroup_JackOfBladesBase, EnemyKnockDo
 FABLE_STATIC_ASSERT_AT(69, offsetof(CAIStateGroup_JackOfBladesBase, SpeechCounter) == 0x30);
 FABLE_STATIC_ASSERT_AT(70, offsetof(CAIStateGroup_JackOfBladesBase, PillarMarkers) == 0x34);
 FABLE_STATIC_ASSERT_AT(71, offsetof(CAIStateGroup_JackOfBladesBase, Pillars) == 0x40);
+#endif // FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_JACKOFBLADESBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKOFBLADESBASE_H

@@ -44,6 +44,54 @@ protected:
 FABLE_STATIC_ASSERT_AT(35, sizeof(CAIStateGroup_Guildmaster) == 0x3c);
 #else
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GUILDMASTER_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D444 (RTTI .?AVCAIStateGroup_Guildmaster@@ : CAIStateGroupBase), 15 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_Guildmaster); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CAIBrain;
+class CCharString;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_Guildmaster : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x00977730 ?Initialise@CAIStateGroup_Guildmaster@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+    virtual void OnActivate();                                            // slot 2 0x00977C40 ?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x0090310A ?GetStateGroupType@CAIStateGroup_Guildmaster@@UBE?AW4EAIStateGroupType@@XZ
+    virtual void Cleanup();                                               // slot 9 0x00977770 ?Cleanup@CAIStateGroup_Guildmaster@@UAEXXZ
+    virtual void OnReplace();                                             // slot 10 0x00977760 ?OnReplace@CAIStateGroup_Guildmaster@@UAEXXZ
+protected:
+    virtual bool IsRunnable();                                            // slot 11 0x009777A0 ?IsRunnable@CAIStateGroup_Guildmaster@@MAE_NXZ
+public:
+    virtual void Update();                                                // slot 12 0x00977E00 ?Update@CAIStateGroup_Guildmaster@@UAEXXZ
+    virtual void OnDeactivate();                                          // slot 14 0x00977A30 ?OnDeactivate@CAIStateGroup_Guildmaster@@UAEXXZ
+public:
+    long          AttackNum;                                 // +0x14
+    unsigned char PEnemy[0x8];                               // +0x18 CIntelligentPointer<CThingCreatureBase>
+    unsigned char PLastTeleportMarker[0x8];                  // +0x20 CIntelligentPointer<CThing>
+    unsigned char TeleportMarkers[0xc];                      // +0x28 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    long          LastWillFrame;                             // +0x34
+    long          LastTeleportFrame;                         // +0x38
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_Guildmaster) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, AttackNum) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, PEnemy) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, PLastTeleportMarker) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, TeleportMarkers) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, LastWillFrame) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_Guildmaster, LastTeleportFrame) == 0x38);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -74,6 +122,7 @@ FABLE_STATIC_ASSERT_AT(58, offsetof(CAIStateGroup_Guildmaster, PLastTeleportMark
 FABLE_STATIC_ASSERT_AT(59, offsetof(CAIStateGroup_Guildmaster, TeleportMarkers) == 0x28);
 FABLE_STATIC_ASSERT_AT(60, offsetof(CAIStateGroup_Guildmaster, LastWillFrame) == 0x34);
 FABLE_STATIC_ASSERT_AT(61, offsetof(CAIStateGroup_Guildmaster, LastTeleportFrame) == 0x38);
+#endif // FABLE_RETAIL_CAISTATEGROUP_GUILDMASTER_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_GUILDMASTER
 #endif // FABLE_ENGINE_CAISTATEGROUP_GUILDMASTER_H

@@ -1,0 +1,4 @@
+source	address	unit	reason
+nf324	0x008FF26B	port	008ff26b skipped-port ?IsStateGroupStillValid@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ triage (header): model: engine/CAIStateGroup_MinionSitOnSeatBase.h does not declare IsStateGroupStillValid (add-only opt-in)
+nf324	0x008FF26E	held	008ff26e skipped-held ?IsOwnerSubjectToRegulation@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ triage (switch): model: engine/CAIStateGroup_MinionSitOnSeatBase.h declares IsOwnerSubjectToRegulation only under #if FABLE_RETAIL_CAIST
+nf324	0x009021DA	port	009021da skipped-port ?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ triage (header): model: engine/CAIStateGroup_MinionSitOutside.h does not declare AllowPriorityOverlap and has no polymorphic class model (port)

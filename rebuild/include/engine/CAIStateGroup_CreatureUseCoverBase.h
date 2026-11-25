@@ -84,6 +84,68 @@ protected:
 };
 #else
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128D31C (RTTI .?AVCAIStateGroup_CreatureUseCoverBase@@ : CAIStateGroup_EnemyCreatureBase), 24 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_CreatureUseCoverBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS, FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL.
+#include "engine/CAIStateGroup_EnemyCreatureBase.h"
+#include "stlport/fable_containers.h"
+class CAIBrain;
+class CCharString;
+class CThing;
+class CThingAICreature;
+enum EAIStateGroupType;
+enum EScriptAIPriority;
+#pragma pack(push, 1)
+class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBase {
+protected:
+    virtual ~CAIStateGroup_CreatureUseCoverBase();                        // slot 0 0x00902F9D ??_GCAIStateGroup_CreatureUseCoverBase@@MAEPAXI@Z
+public:
+    virtual void Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&); // slot 1 0x009705D0 ?Initialise@CAIStateGroup_CreatureUseCoverBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+protected:
+    virtual void OnActivate();                                            // slot 2 0x00970610 ?OnActivate@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ
+public:
+    virtual bool IsTimingCritical() const;                                // slot 7 0x00902F92 ?IsTimingCritical@CAIStateGroup_CreatureUseCoverBase@@UBE_NXZ
+protected:
+    virtual EAIStateGroupType GetStateGroupType() const;                  // slot 8 0x00902F96 ?GetStateGroupType@CAIStateGroup_CreatureUseCoverBase@@MBE?AW4EAIStateGroupType@@XZ
+    virtual bool IsRunnable();                                            // slot 11 0x00970AB0 ?IsRunnable@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ
+    virtual void Init();                                                  // slot 14 0x00970600 ?Init@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ
+    virtual bool IsRunnableLeaf();                                        // slot 15 0x00970F30 ?IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase@@MAE_NXZ
+    virtual void CleanupLeaf();                                           // slot 17 0x00970C10 ?CleanupLeaf@CAIStateGroup_CreatureUseCoverBase@@MAEXXZ
+    virtual void ProcessCoverThingList(std::vector<CThing *, std::allocator<CThing *> >&); // slot 22 0x00902F9A ?ProcessCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+    virtual void GetCoverThingList(std::vector<CThing *, std::allocator<CThing *> >&); // slot 23 0x00970DF0 ?GetCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+public:
+    bool          HasDiveAnim;                               // +0x1c
+    bool          HasJumpOutAnims;                           // +0x1d
+    bool          TimingCritical;                            // +0x1e
+    unsigned char PCoverThing[0x8];                          // +0x1f CIntelligentPointer<CThing>
+    unsigned char _pad_0x27[0x1];                            // +0x27
+    unsigned char CoverList[0xc];                            // +0x28 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    bool          FailedToFindCover;                         // +0x34
+    unsigned char _pad_0x35[0x3];                            // +0x35
+    long          FailedTime;                                // +0x38
+    float         FailedToFindCoverAt_X;                     // +0x3c C3DVector::X
+    float         FailedToFindCoverAt_Y;                     // +0x40 C3DVector::Y
+    float         FailedToFindCoverAt_Z;                     // +0x44 C3DVector::Z
+    long          ValidPositionsFound;                       // +0x48
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureUseCoverBase) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, HasDiveAnim) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, HasJumpOutAnims) == 0x1d);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, TimingCritical) == 0x1e);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, PCoverThing) == 0x1f);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, _pad_0x27) == 0x27);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, CoverList) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCover) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, _pad_0x35) == 0x35);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedTime) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_X) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Y) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Z) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_CreatureUseCoverBase, ValidPositionsFound) == 0x48);
+#else
 #pragma pack(push, 1)
 struct CAIStateGroup_CreatureUseCoverBase {
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
@@ -122,6 +184,7 @@ FABLE_STATIC_ASSERT_AT(73, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedTo
 FABLE_STATIC_ASSERT_AT(74, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Y) == 0x40);
 FABLE_STATIC_ASSERT_AT(75, offsetof(CAIStateGroup_CreatureUseCoverBase, FailedToFindCoverAt_Z) == 0x44);
 FABLE_STATIC_ASSERT_AT(76, offsetof(CAIStateGroup_CreatureUseCoverBase, ValidPositionsFound) == 0x48);
+#endif // FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATUREUSECOVERBASE_H

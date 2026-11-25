@@ -1,11 +1,19 @@
-#include <cstdio>
-bool __fastcall CAIStateGroup_CreatureFindCover_IsRunnableLeaf()
+// Behaviour test for 0x0097CB00 CAIStateGroup_CreatureFindCover::IsRunnableLeaf (NF429 G1): links the row object and calls the member directly (qualified call, no vftable);
+// the constant must come back. The object image is static storage: the member reads nothing.
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREFINDCOVER_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUP_ENEMYCREATUREBASE_VIRTUAL_MODEL
+#define FABLE_RETAIL_CAISTATEGROUP_CREATUREUSECOVERBASE_VIRTUAL_MODEL
+#include "engine/CAIStateGroup_CreatureFindCover.h"
+#include <stdio.h>
+static unsigned char g_obj[sizeof(CAIStateGroup_CreatureFindCover)];
+int main(void)
 {
-    return false;
-}
-int main()
-{
-    if (CAIStateGroup_CreatureFindCover_IsRunnableLeaf() == false) { std::printf("AUTO_TINY_0097cb00_TEST PASS\n"); return 0; }
-    std::printf("AUTO_TINY_0097cb00_TEST FAIL\n");
+    CAIStateGroup_CreatureFindCover* p = (CAIStateGroup_CreatureFindCover*)g_obj;
+    bool r = p->CAIStateGroup_CreatureFindCover::IsRunnableLeaf();
+    int ok = (r == false);
+    if (ok) { printf("AUTO_TINY_0097cb00_TEST PASS\n"); return 0; }
+    printf("FAIL_0097cb00\n");
     return 1;
 }

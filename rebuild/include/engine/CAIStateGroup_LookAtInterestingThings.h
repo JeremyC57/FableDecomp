@@ -33,6 +33,39 @@ FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_LookAtInterestingThings)==24);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_VIRTUAL_MODEL
+// Opt-in (NF429, 2026-11-25; generator NF322 genmodel.py as run by NF329 / NF427, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01289BBC (RTTI .?AVCAIStateGroup_LookAtInterestingThings@@ : CAIStateGroupBase), 14 slots; the declared slots are this class's overrides (RTTI-port labels name CAIStateGroup_LookAtInterestingThings); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF429 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS.
+#include "engine/CAIStateGroupBase.h"
+class CThingAICreature;
+class CWorld;
+#pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+class CCharString; class CAIStateGroupBase;
+#endif
+class CAIStateGroup_LookAtInterestingThings : public CAIStateGroupBase {
+public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
+static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FASTCALL Alloc();
+#endif
+protected:
+    virtual bool InitCreaturePosition();                                  // slot 3 0x00919440 ?InitCreaturePosition@CAIStateGroup_LookAtInterestingThings@@MAE_NXZ
+public:
+    virtual bool AllowPriorityOverlap();                                  // slot 4 0x008FDC8E ?AllowPriorityOverlap@CAIStateGroup_LookAtInterestingThings@@UAE_NXZ
+protected:
+    virtual void OnReplace();                                             // slot 10 0x009191B0 ?OnReplace@CAIStateGroup_LookAtInterestingThings@@MAEXXZ
+    virtual bool IsRunnable();                                            // slot 11 0x00919510 ?IsRunnable@CAIStateGroup_LookAtInterestingThings@@MAE_NXZ
+    virtual void Update();                                                // slot 12 0x009195D0 ?Update@CAIStateGroup_LookAtInterestingThings@@MAEXXZ
+    virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x009190F0 ?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+public:
+    long          FrameToLook;                               // +0x14
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_LookAtInterestingThings) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
+#else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
 class CCharString; class CAIStateGroupBase;
@@ -53,6 +86,7 @@ static CCharString FABLE_FASTCALL GetName(); static CAIStateGroupBase* FABLE_FAS
 FABLE_STATIC_ASSERT_AT(47, sizeof(CAIStateGroup_LookAtInterestingThings) == 0x18);
 FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_LookAtInterestingThings, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(49, offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
+#endif // FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_VIRTUAL_MODEL
 
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_H
