@@ -611,6 +611,26 @@ def main():
             for h_ in relh: print(f"{addr:10} {h_}")
             if relh or (relw and os.environ.get("LANDVERIFY_STRICT_RELOCS")=="1"):
                 print(f"{addr:10} {'RELOC_IDENTITY':16} {'-':6} {name}"); continue
+        # LITERAL_DIFF (non-blocking, NF388 2026-11-24): a string literal is a relocation operand, so a row that passes the wrong
+        # text still grades RELOCATION_MATCH (0x00B1AE00 returned "Bounding Sphere" where retail pushes 0x0129F5E8 "CPSCLight").
+        # Compare each string the object defines at a relocation of the graded function with the retail bytes the paired retail
+        # instruction names (reloc_identity.literal_check). Printed on its own, never through relw: LANDVERIFY_STRICT_RELOCS
+        # must not start rejecting on it before the audit's findings are fixed.
+        if st.startswith(("MATCH","RELOCATION")) and ext is None:
+            exe_=os.environ.get("FABLE_EXE","")
+            try:
+                lits_=reloc_identity.literal_check(OBJDUMP, sobj, leaf, addr, retail, exe_, built=built_final) if exe_ and Path(exe_).exists() else "noexe"
+                if lits_=="noexe":
+                    # only worth a line when the function relocates a string the object defines
+                    if any(s_.startswith(("??_C@","$SG")) for _o,_k,s_ in (reloc_identity.function_relocs(OBJDUMP, sobj, leaf, len(retail)) or [])):
+                        print(f"{addr:10} WARN LITERAL_UNCHECKED FABLE_EXE unset (the literal check reads the retail image)")
+                else:
+                    for off_,k_,sym_,ob_,rb_,eq_,va_,wide_ in (lits_ or []):
+                        if eq_: continue
+                        rs_=reloc_identity.retail_string(exe_,va_,wide_)
+                        print(f"{addr:10} WARN LITERAL_DIFF +{off_:x} {sym_}: object {reloc_identity.literal_text(ob_,wide_)}, "
+                              f"retail 0x{va_:08X} {rs_ if rs_ is not None else 'UNMAPPED'}")
+            except Exception as ex: print(f"{addr:10} WARN LITERAL_CHECK_ERROR {type(ex).__name__}: {ex}")
         # STANDIN_LEAF (non-blocking): the graded symbol is a stand-in, not the catalog function's name (standin_leaf.py).
         if st.startswith(("MATCH","RELOCATION")) and ext is None:
             try:

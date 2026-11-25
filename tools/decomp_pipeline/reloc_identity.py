@@ -182,6 +182,17 @@ def _crt_claim(sym):
     if flat == "free" or flat.startswith("free") or flat.endswith("free"): return "free"
     return None
 
+def retail_target(a, off, kind, retail, built=None):
+    """The retail address the relocation at `off` (relative to the retail span at `a`) names, minus the object's addend
+    (the dword the compiled bytes hold there), i.e. the retail address of the relocation's symbol base."""
+    if kind in ("DISP32", "REL32"):
+        t = (a + off + 4 + struct.unpack_from("<i", retail, off)[0]) & 0xFFFFFFFF
+        if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<i", built, off)[0]) & 0xFFFFFFFF
+    else:
+        t = struct.unpack_from("<I", retail, off)[0]
+        if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<I", built, off)[0]) & 0xFFFFFFFF
+    return t
+
 def check(root, objdump, objpath, leaf, addr, retail, roff=0, built=None):
     """Return (hard_errors, warnings, pairs) for the graded function.
     pairs = [(offset, kind, symbol, retail_target_base)]. Offsets are relative to the retail span.
@@ -202,12 +213,7 @@ def check(root, objdump, objpath, leaf, addr, retail, roff=0, built=None):
             if got != want: hard.append(f"RELOC_JUMPTABLE: +{off:x} {sym} -> {want:08x} here, retail {got:08x}")
             continue
         if sym.startswith(SKIP_PREFIXES): continue
-        if kind in ("DISP32", "REL32"):
-            t = (a + off + 4 + struct.unpack_from("<i", retail, off)[0]) & 0xFFFFFFFF
-            if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<i", built, off)[0]) & 0xFFFFFFFF
-        else:
-            t = struct.unpack_from("<I", retail, off)[0]
-            if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<I", built, off)[0]) & 0xFFFFFFFF
+        t = retail_target(a, off, kind, retail, built)
         pairs.append((off, kind, sym, t)); sym2t.setdefault(sym, set()).add(t); t2sym.setdefault(t, set()).add(sym)
     warn = []
     for sym, ts in sym2t.items():
@@ -236,3 +242,141 @@ def check(root, objdump, objpath, leaf, addr, retail, roff=0, built=None):
             continue
         if label_agrees(sym, lab_cmp) is False: warn.append(f"RELOC_NAME: {sym} -> {t:08x} labelled '{lab}'")
     return (hard, warn, pairs)
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Literal content (NF388, 2026-11-24). A string literal is a relocation operand too, so a row that pushes the wrong text
+# ("Bounding Sphere" where retail pushes "CPSCLight", 0x00B1AE00) still grades RELOCATION_MATCH, and check() above skips
+# `??_C` / `$SG` symbols altogether. literal_check() pairs the graded function's relocations with the retail span exactly
+# as check() does (function_relocs + retail_target), and for each relocation to a string the object itself defines
+# (`??_C@_0` narrow / `??_C@_1` wide COMDAT literals, `$SG` literals, and any other data symbol of the object whose bytes
+# at the relocation are a string) compares the object's bytes with the retail bytes at the address the retail instruction
+# names. The compiler's own bytes and the retail image are the two sources; no label or name is trusted.
+
+_EXE_CACHE = {}
+
+def _retail_image(exe):
+    """(file bytes, [(va, rawsize, rawptr)]) of a PE image; read once per path."""
+    if exe not in _EXE_CACHE:
+        d = Path(exe).read_bytes(); pe = struct.unpack_from("<I", d, 0x3C)[0]
+        nsec = struct.unpack_from("<H", d, pe + 6)[0]; opt = struct.unpack_from("<H", d, pe + 20)[0]
+        base = struct.unpack_from("<I", d, pe + 24 + 28)[0]; sh = pe + 24 + opt; secs = []
+        for i in range(nsec):
+            vsize, va, rawsize, rawptr = struct.unpack_from("<IIII", d, sh + 40 * i + 8)
+            secs.append((base + va, rawsize, rawptr))
+        _EXE_CACHE[exe] = (d, secs)
+    return _EXE_CACHE[exe]
+
+def retail_bytes(exe, va, n):
+    """`n` file-backed bytes of the retail image at `va`, or None when the span is not inside one section's raw data
+    (a virtual tail past SizeOfRawData is zero-fill at run time, not file bytes)."""
+    d, secs = _retail_image(exe)
+    for sva, rawsize, rawptr in secs:
+        if sva <= va and va + n <= sva + rawsize: return d[rawptr + va - sva: rawptr + va - sva + n]
+    return None
+
+def coff_read(path):
+    """Minimal COFF reader: (sections, symbols). sections[i] = dict(name, data, chars, relocs={offset: symbol index});
+    symbols = {index: dict(name, value, sec (1-based section number), cls)}."""
+    d = Path(path).read_bytes()
+    nsec, _, psym, nsym = struct.unpack_from("<HIII", d, 2); opt = struct.unpack_from("<H", d, 16)[0]
+    stab = psym + 18 * nsym
+    def sname(raw):
+        if raw[:4] == b"\0\0\0\0":
+            o = stab + struct.unpack_from("<I", raw, 4)[0]; return d[o:d.index(b"\0", o)].decode("latin1")
+        return raw.rstrip(b"\0").decode("latin1")
+    secs = []
+    for i in range(nsec):
+        h = 20 + opt + 40 * i; nm = d[h:h + 8].rstrip(b"\0").decode("latin1")
+        if nm.startswith("/"): o = stab + int(nm[1:]); nm = d[o:d.index(b"\0", o)].decode("latin1")
+        size, ptr, prel = struct.unpack_from("<III", d, h + 16); nrel = struct.unpack_from("<H", d, h + 32)[0]
+        chars = struct.unpack_from("<I", d, h + 36)[0]
+        data = b"" if chars & 0x80 else d[ptr:ptr + size]
+        rel = {struct.unpack_from("<I", d, prel + 10 * k)[0]: struct.unpack_from("<I", d, prel + 10 * k + 4)[0] for k in range(nrel)}
+        secs.append({"name": nm, "data": data, "size": size, "chars": chars, "relocs": rel})
+    syms = {}; i = 0
+    while i < nsym:
+        o = psym + 18 * i; val, sec, _, cls, naux = struct.unpack_from("<IhHBB", d, o + 8)
+        syms[i] = {"name": sname(d[o:o + 8]), "value": val, "sec": sec, "cls": cls}; i += 1 + naux
+    return secs, syms
+
+def _cstring(b, wide):
+    """The string at the start of `b` with its terminator, or None when `b` does not start with one."""
+    if wide:
+        for k in range(0, len(b) - 1, 2):
+            if b[k] == 0 and b[k + 1] == 0: return b[:k + 2]
+        return None
+    k = b.find(b"\0"); return b[:k + 1] if k >= 0 else None
+
+def _looks_text(s, wide):
+    """A plausible string: printable ASCII / common whitespace, at least two characters (an empty or one-byte run in a
+    non-literal data symbol is too weak to call a string)."""
+    body = s[:-2:2] if wide else s[:-1]
+    if wide and any(s[1:-2:2]): return False
+    return len(body) >= 2 and all(32 <= c < 127 or c in (9, 10, 13) for c in body)
+
+def literal_text(b, wide):
+    return repr((b.decode("utf-16-le", "replace") if wide else b.decode("latin1")).rstrip("\0"))
+
+def literal_check(objdump, objpath, leaf, addr, retail, exe, roff=0, built=None):
+    """None when the graded function's relocations cannot be recovered (multi-block TU), else
+    [(offset, kind, symbol, object bytes, retail bytes of the same length or None, equal, retail address, wide)] for every
+    relocation of the graded function to a
+    string the object defines. kind: lit (??_C@_0), wlit (??_C@_1), sg ($SG), data (another data symbol of the object
+    whose bytes at the relocation are a string). Offsets are relative to the retail span, as check()'s pairs."""
+    a = int(addr, 16)
+    rel = function_relocs(objdump, objpath, leaf, len(retail) + roff)
+    if rel is None: return None
+    want = [(off, kind, sym) for off, kind, sym in rel if kind in ("dir32", "DIR32")]
+    if not want: return []
+    secs, syms = coff_read(objpath)
+    # The graded function's COFF section and start: the code symbol whose section relocations carry every
+    # (offset, symbol name) function_relocs reported (prefer a symbol that names the leaf). This resolves section-symbol
+    # relocations (`.rdata`, `.data`), which objdump prints by an ambiguous name, through their COFF symbol index.
+    rel_all = [(o, s) for o, _, s in rel]; home = None
+    for idx, sy in sorted(syms.items(), key=lambda kv: not (leaf and leaf in kv[1]["name"])):
+        if sy["sec"] <= 0 or not secs[sy["sec"] - 1]["chars"] & 0x20: continue
+        r = secs[sy["sec"] - 1]["relocs"]
+        if all(r.get(o + sy["value"]) is not None and syms.get(r[o + sy["value"]], {}).get("name") == s for o, s in rel_all):
+            home = sy; break
+    if home is None: return None
+    out = []
+    for off, kind, sym in want:
+        o = off - roff
+        if o < 0 or o + 4 > len(retail): continue
+        si = secs[home["sec"] - 1]["relocs"][off + home["value"]]; sy = syms[si]
+        if sy["sec"] <= 0: continue                                    # extern: the content is not in this object
+        sec = secs[sy["sec"] - 1]
+        if sec["chars"] & 0x20 or sec["chars"] & 0x80 or not sec["data"]: continue    # code / uninitialised
+        add = struct.unpack_from("<I", built, o)[0] if built is not None and len(built) >= o + 4 else 0
+        n = sy["name"]
+        if n.startswith("??_C@_0"): k, wide, start = "lit", False, sy["value"]
+        elif n.startswith("??_C@_1"): k, wide, start = "wlit", True, sy["value"]
+        elif n.startswith("$SG"):
+            start = sy["value"]; b = sec["data"][start:]
+            k, wide = "sg", len(b) >= 4 and b[0] and not b[1] and b[2] and not b[3]
+        else:
+            start = sy["value"] + add; b = sec["data"][start:]
+            wide = len(b) >= 4 and b[0] and not b[1] and b[2] and not b[3]; k = "data"
+        wide = bool(wide)
+        if k in ("lit", "wlit"):
+            nxt = min([s["value"] for s in syms.values() if s["sec"] == sy["sec"] and s["value"] > start] + [len(sec["data"])])
+            obj = sec["data"][start:nxt]
+        else:
+            obj = _cstring(sec["data"][start:], wide)
+            if obj is None or (k == "data" and not _looks_text(obj, wide)): continue
+        t = retail_target(a, o, kind, retail, built)
+        rva = (t + start - sy["value"]) & 0xFFFFFFFF
+        rb = retail_bytes(exe, rva, len(obj))
+        out.append((o, k, n, obj, rb, rb == obj, rva, wide))
+    return out
+
+def retail_string(exe, va, wide, limit=512):
+    """The retail string at `va` up to (not including) its terminator, as text; None when `va` is not file-backed."""
+    step = 2 if wide else 1; b = bytearray()
+    while len(b) < limit:
+        c = retail_bytes(exe, va + len(b), step)
+        if c is None: return None if not b else literal_text(bytes(b), wide)
+        if c == b"\0" * step: break
+        b += c
+    return literal_text(bytes(b), wide)
