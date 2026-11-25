@@ -1,17 +1,4 @@
 tier	fix	klass	n_targets	n_rows_touched	header	targets
-T0	catalog	CCharString	11	11		004133a0 004509f8 004b75e0 004b77e0 006f8fa0 0073d7a0 0077e0a0 009a9940 00a3f730 00a6e570 00cd22a4
-T0	catalog	CWideString	6	6		0040ec50 0043dd40 0043f960 004852d1 005d8135 00a606f0
-T0	catalog	pair	5	5		004da6a9 004dbe39 004e41a1 006fb460 00a70130
-T0	catalog	C3DAnimationUtil	2	2		00c3f600 00c596a0
-T0	catalog	CSubTitle	2	2		009bde90 009bdfa0
-T0	catalog	CCountedPointer	1	1	engine/CCountedPointer.h	00429d8e
-T0	catalog	CEngineScreenEffectRadialBlurRenderer	1	1	engine/CEngineScreenEffectRadialBlurRenderer.h	00b5bd30
-T0	catalog	CFireEffectCreationSet	1	1		00c5d550
-T0	catalog	CGraphicFrame	1	1	engine/CGraphicFrame.h	0041c150
-T0	catalog	CItem	1	1	engine/CItem.h	005c1390
-T0	catalog	CPhysicsMeshObject	1	1	engine/CPhysicsMeshObject.h	00a127c0
-T0	catalog	CQuestInfoElementCounterList	1	1		00656ead
-T0	catalog	vector	1	1		004df54f
 T1	access	CBankFileAsync	1	1	engine/CBankFileAsync.h	009d5200
 T1	access	CComponent	1	1		00531ec0
 T1	access	CEnginePrimitiveManager	1	1	engine/CEnginePrimitiveManager.h	00bacda0
