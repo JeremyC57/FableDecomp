@@ -1,0 +1,8 @@
+rebuild/src/compiled/00/64/NPlayerGuiCDrawFishingGame_Draw_00649e8b.cpp
+rebuild/src/compiled/00/64/NPlayerGuiCDrawScriptScreenText_Draw_0064560d.cpp
+rebuild/src/compiled/00/44/CCountedPointer_DeleteData_00443780.cpp
+rebuild/src/compiled/00/44/CCountedPointer_DeleteData_00443580.cpp
+rebuild/src/compiled/00/43/CPlayerGui_CPlayerGui_0043b570.cpp
+rebuild/src/compiled/00/43/CPlayerGui_DrawPreparePrimitivesForEngine_00439070.cpp
+rebuild/tests/00/64/NPlayerGuiCDrawFishingGame_Draw_00649e8b_test.cpp
+rebuild/tests/00/43/CPlayerGui_DrawPreparePrimitivesForEngine_00439070_test.cpp

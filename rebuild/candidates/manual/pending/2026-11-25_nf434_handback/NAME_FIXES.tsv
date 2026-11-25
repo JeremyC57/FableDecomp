@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00dc2570	??0CQ_OpeningGraveyardSecretPassageScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	FableWin.pdb publics (exact spelling); NF434 g1o 0x00DCC000 emits the header-modelled ctor copy under this name and it is byte- and relocation-EQ at retail 0x00DC2570 (retcmp, batches/g1o/evidence)	??0CQ_OpeningGraveyardSecretPassageScript@NScript@@QAE@PAXPAVCGameScriptInterface@@@Z (landed self)
