@@ -1,30 +1,33 @@
-#include "rebuild_abi.h"
-#include <cstdio>
+// Behaviour test for 0x00462B10 CBrainDef::Copy (NF425): links the row object; CBrainDef::operator= is defined here and records its `this` and
+// argument, so the test checks the copy goes from `other` into `this` exactly once (a swapped or doubled copy fails).
+#include <stdio.h>
 
-class CBrainDef;
-
-// The thunk target is not linked in the test; provide a stub so the tail-call
-// resolves. The parity gate only compares the thunk's bytes.
-extern "C" void mark_called();
-static int g_called = 0;
-void mark_called() { g_called = 1; }
-
-void __fastcall CBrainDef_Copy_impl(CBrainDef* thisptr, void* src)
+class CDefClassBase;
+class CBrainDef
 {
-    (void)thisptr; (void)src;
-    mark_called();
-}
+public:
+    virtual void Copy(const CDefClassBase* other);   // defined in the row object
+    CBrainDef& operator=(const CBrainDef& other);
+    char pad[64];
+};
 
-void __fastcall CBrainDef_Copy(CBrainDef* thisptr, void* src);
+static const void* g_this = 0;
+static const void* g_other = 0;
+static int g_calls = 0;
+CBrainDef& CBrainDef::operator=(const CBrainDef& other) { g_this = this; g_other = &other; ++g_calls; return *this; }
 
-int main()
+static long g_dst[32];
+static long g_src[32];
+
+int main(void)
 {
-    CBrainDef* self = (CBrainDef*)0;
-    int local = 7;
-    CBrainDef_Copy(self, &local);
-    if (g_called)
-        printf("OK_462b10_THUNK\n");
-    else
-        printf("FAIL_462b10\n");
+    CBrainDef* dst = (CBrainDef*)g_dst;
+    const CDefClassBase* src = (const CDefClassBase*)g_src;
+    dst->CBrainDef::Copy(src);
+    if (g_calls != 1 || g_this != (const void*)g_dst || g_other != (const void*)g_src) {
+        printf("FAIL_00462b10 calls=%d\n", g_calls);
+        return 1;
+    }
+    printf("OK_462b10_THUNK\n");
     return 0;
 }

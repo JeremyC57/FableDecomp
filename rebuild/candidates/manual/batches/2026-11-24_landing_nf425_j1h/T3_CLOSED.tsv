@@ -1,0 +1,10 @@
+source	address	unit	reason
+nf324	0x004536A9	port	004536a9 skipped-port ?Copy@CThingMultiArrowShotDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx is used
+nf324	0x00453810	port	00453810 skipped-port ?Copy@CCarrySlotDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00453899	port	00453899 skipped-port ?Copy@CActionUseDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: the edx parameter edx_unused is used
+nf324	0x00453BE3	port	00453be3 skipped-port ?Copy@CCoopSpiritDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00453C1B	port	00453c1b skipped-port ?Copy@CContextSensitiveItemDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00453CE5	port	00453ce5 skipped-port ?Copy@CHeroTitleDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00454038	port	00454038 skipped-port ?Copy@CDragonActionNapalmDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x0045417E	port	0045417e skipped-port ?Copy@CBriarRoseDef@@UAEXPBVCDefClassBase@@@Z triage (-): params: __fastcall self has 2 parameters, the member 1 (stack counts differ)
+nf324	0x00462B10	port	00462b10 skipped-port ?Copy@CBrainDef@@UAEXPBVCDefClassBase@@@Z triage (-): unit: the row's own test calls CBrainDef_Copy

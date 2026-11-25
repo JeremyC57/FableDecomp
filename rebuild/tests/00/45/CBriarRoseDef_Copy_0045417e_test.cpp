@@ -1,31 +1,33 @@
-#include <cstdio>
+// Behaviour test for 0x0045417E CBriarRoseDef::Copy (NF425): links the row object; CBriarRoseDef::operator= is defined here and records its `this` and
+// argument, so the test checks the copy goes from `other` into `this` exactly once (a swapped or doubled copy fails).
+#include <stdio.h>
 
-class CBriarRoseDef { public: int v; };
-
-static CBriarRoseDef* g_last_self = 0;
-static const CBriarRoseDef* g_last_src = 0;
-
-void __fastcall CBriarRoseDef_CopyImpl(CBriarRoseDef* self, const CBriarRoseDef* src)
+class CDefClassBase;
+class CBriarRoseDef
 {
-    g_last_self = self;
-    g_last_src = src;
-    self->v = src->v;
-}
+public:
+    virtual void Copy(const CDefClassBase* other);   // defined in the row object
+    CBriarRoseDef& operator=(const CBriarRoseDef& other);
+    char pad[64];
+};
 
-void __fastcall CBriarRoseDef_Copy(CBriarRoseDef* self, const CBriarRoseDef* src)
-{
-    CBriarRoseDef_CopyImpl(self, src);
-}
+static const void* g_this = 0;
+static const void* g_other = 0;
+static int g_calls = 0;
+CBriarRoseDef& CBriarRoseDef::operator=(const CBriarRoseDef& other) { g_this = this; g_other = &other; ++g_calls; return *this; }
 
-int main()
+static long g_dst[32];
+static long g_src[32];
+
+int main(void)
 {
-    CBriarRoseDef a; a.v = 0;
-    CBriarRoseDef b; b.v = 42;
-    CBriarRoseDef_Copy(&a, &b);
-    if (a.v == 42 && g_last_self == &a && g_last_src == &b) {
-        std::printf("CBriarRoseDef_0045417e_TEST PASS\n");
-        return 0;
+    CBriarRoseDef* dst = (CBriarRoseDef*)g_dst;
+    const CDefClassBase* src = (const CDefClassBase*)g_src;
+    dst->CBriarRoseDef::Copy(src);
+    if (g_calls != 1 || g_this != (const void*)g_dst || g_other != (const void*)g_src) {
+        printf("CBriarRoseDef_0045417e_TEST FAIL calls=%d\n", g_calls);
+        return 1;
     }
-    std::printf("FAIL\n");
-    return 1;
+    printf("CBriarRoseDef_0045417e_TEST PASS\n");
+    return 0;
 }

@@ -1,24 +1,59 @@
-// CCreatureAction_BeingForcePushed::Clone() -- new CCreatureAction_BeingForcePushed(*this) with the implicit copy constructor inlined
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008BEB40, oracle length 47 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; push 0x114 ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je N ; push edi ; mov ecx,esi ; call CCombatActionBase::CCombatActionBase(const CCombatActionBase&) ; pop edi ; mov dword ptr [esi],offset CCreatureAction_BeingForcePushed::`vftable' ; mov eax,esi ; pop esi ; ret ; N: pop edi ; xor eax,eax ; pop esi ; ret
-// Virtual clone of a class that adds no data to its base: the implicit copy constructor is
-// inlined as the base copy constructor @ 0x0062F3B0 plus this class's vtable store
-// (0x0127E604, named through rtti-vtables.tsv). sizeof = 0x114. One of 196 bodies of this shape.
-class CCombatActionBase { public:
-    virtual void v00();
-    unsigned char _body[0x114 - 4];    // sizeof(CCombatActionBase) = sizeof(CCreatureAction_BeingForcePushed) = 0x114
-    CCombatActionBase(const CCombatActionBase& other);     // 0x0062F3B0
+// CCreatureAction_BeingForcePushed::Clone() const -- `return new CCreatureAction_BeingForcePushed(*this);` with the implicit copy constructor inlined (CCombatActionBase copy constructor, vftable store)
+// Leaf: ?Clone@CCreatureAction_BeingForcePushed@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008BEB40, 47 bytes: operator new(0x114) 0x00BFEA1A, null test, CCombatActionBase(const CCombatActionBase&) 0x0062F3B0, C's vftable store;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_BeingForcePushed@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; base copy constructor ??0CCombatActionBase@@QAE@ABV0@@Z 0x0062F3B0 (Ego_r/FableWin; MELEE_COPYCTOR / COPYCTOR
+//   opt-in).
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_BeingForcePushed@@QAEPAVCCombatActionBase@@XZ (non-virtual, non-const);
+//   now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine/CCreatureAction_BeingForcePushed.h opt-in FABLE_RETAIL_CCREATUREACTION_BEINGFORCEPUSHED_COMBAT declares the
+//   polymorphic CCreatureAction_BeingForcePushed without Clone, so the real member cannot be defined on it without a header edit
+//   (header debt); a local class over its RTTI direct base CCombatActionBase (engine/CCombatActionBase.h).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+
+class CCreatureAction_BeingForcePushed : public CCombatActionBase
+{
+public:
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_BeingForcePushed@@UAEXXZ (FableWin name set)
+public:
+    virtual CCreatureActionBase* Clone() const;
 };
 
-class CCreatureAction_BeingForcePushed : public CCombatActionBase { public:
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CCombatActionBase* Clone();
-};
-
-CCombatActionBase* CCreatureAction_BeingForcePushed::Clone()
+CCreatureActionBase* CCreatureAction_BeingForcePushed::Clone() const
 {
     return new CCreatureAction_BeingForcePushed(*this);
 }

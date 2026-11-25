@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	??0CBase_0062ebc0@@QAE@ABU0@@Z	0062ebc0	0084c800	NF425: the stand-in callee spelling of 0x0062EBC0; its witness 0x0084C800 now binds ??0CCreatureActionBase@@QAE@ABV0@@Z and no other landed source names it

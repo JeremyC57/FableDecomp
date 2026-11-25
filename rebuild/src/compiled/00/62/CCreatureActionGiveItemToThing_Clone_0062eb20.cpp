@@ -1,23 +1,31 @@
-// CCreatureAction_GiveItemToThing::Clone() -- new CCreatureAction_GiveItemToThing(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0062EB20, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0xb8 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToThing(const CCreatureAction_GiveItemToThing&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_GiveItemToThing) = 0xb8, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x0062EB50; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_GiveItemToThing::Clone() const -- `return new CCreatureAction_GiveItemToThing(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_GiveItemToThing@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0062EB20, 34 bytes: operator new(0xB8) 0x00BFEA1A, null test, then the copy constructor 0x0062EB50 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_GiveItemToThing@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; callee ??0CCreatureAction_GiveItemToThing@@QAE@ABV0@@Z: Ego_r/FableWin name set; retail 0x0062EB50 stores
+//   CCreatureAction_GiveItemToThing's vftable 0x0125919C first; the landed row at 0x0062EB50 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_GiveItemToThing@@QAEPAVCCreatureActionBase@@XZ (non-virtual,
+//   non-const); now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine header engine/CCreatureAction_GiveItemToThing.h does not give the class at sizeof 0xB8 with Clone declared in the
+//   prelude tried (header debt); a local class over its RTTI direct base CCreatureActionBase engine/CCreatureActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_GiveItemToThing : public CCreatureActionBase
+{
+public:
+    CCreatureAction_GiveItemToThing(const CCreatureAction_GiveItemToThing& other);   // 0x0062EB50
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_GiveItemToThing@@UAEXXZ (both PDB name sets)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0xB8 - sizeof(CCreatureActionBase)];   // CCreatureAction_GiveItemToThing's own members (not modelled: the copy constructor is out of line); sizeof 0xB8
 };
 
-class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:
-    unsigned char _body[0xb8 - 4];    // sizeof(CCreatureAction_GiveItemToThing) = 0xb8
-    CCreatureAction_GiveItemToThing(const CCreatureAction_GiveItemToThing& other);             // 0x0062EB50
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_GiveItemToThing::Clone()
+CCreatureActionBase* CCreatureAction_GiveItemToThing::Clone() const
 {
     return new CCreatureAction_GiveItemToThing(*this);
 }

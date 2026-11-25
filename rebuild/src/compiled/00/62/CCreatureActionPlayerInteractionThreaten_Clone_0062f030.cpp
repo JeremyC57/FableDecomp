@@ -1,23 +1,31 @@
-// CCreatureAction_PlayerInteractionThreaten::Clone() -- new CCreatureAction_PlayerInteractionThreaten(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0062F030, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0xb0 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_PlayerInteractionThreaten::CCreatureAction_PlayerInteractionThreaten(const CCreatureAction_PlayerInteractionThreaten&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_PlayerInteractionThreaten) = 0xb0, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x0062F060; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_PlayerInteractionThreaten::Clone() const -- `return new CCreatureAction_PlayerInteractionThreaten(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_PlayerInteractionThreaten@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0062F030, 34 bytes: operator new(0xB0) 0x00BFEA1A, null test, then the copy constructor 0x0062F060 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_PlayerInteractionThreaten@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; callee ??0CCreatureAction_PlayerInteractionThreaten@@QAE@ABV0@@Z: FableWin name set; retail 0x0062F060 stores
+//   CCreatureAction_PlayerInteractionThreaten's vftable 0x01259534 first; the landed row at 0x0062F060 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_PlayerInteractionThreaten@@QAEPAVCCreatureActionBase@@XZ (non-virtual,
+//   non-const); now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine header engine/CCreatureAction_PlayerInteractionThreaten.h does not give the class at sizeof 0xB0 with Clone declared
+//   in the prelude tried (header debt); a local class over its RTTI direct base CCreatureActionBase engine/CCreatureActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_PlayerInteractionThreaten : public CCreatureActionBase
+{
+public:
+    CCreatureAction_PlayerInteractionThreaten(const CCreatureAction_PlayerInteractionThreaten& other);   // 0x0062F060
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_PlayerInteractionThreaten@@UAEXXZ (both PDB name sets)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0xB0 - sizeof(CCreatureActionBase)];   // CCreatureAction_PlayerInteractionThreaten's own members (not modelled: the copy constructor is out of line); sizeof 0xB0
 };
 
-class CCreatureAction_PlayerInteractionThreaten : public CCreatureActionBase { public:
-    unsigned char _body[0xb0 - 4];    // sizeof(CCreatureAction_PlayerInteractionThreaten) = 0xb0
-    CCreatureAction_PlayerInteractionThreaten(const CCreatureAction_PlayerInteractionThreaten& other);             // 0x0062F060
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_PlayerInteractionThreaten::Clone()
+CCreatureActionBase* CCreatureAction_PlayerInteractionThreaten::Clone() const
 {
     return new CCreatureAction_PlayerInteractionThreaten(*this);
 }

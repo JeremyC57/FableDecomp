@@ -1,0 +1,13 @@
+addr       parity           behav  name
+006dfc20   RELOCATION_MATCH PASS   Clone
+0084c310   RELOCATION_MATCH PASS   Clone
+0084c3b0   RELOCATION_MATCH PASS   Clone
+008bea80   RELOCATION_MATCH PASS   Clone
+009573d0   RELOCATION_MATCH PASS   Clone
+
+WINS: 5
+  006dfc20 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::?Clone@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UBEPAVCCreatureActionBase@@XZ
+  0084c310 RELOCATION_MATCH CCreatureAction_PlayAnimation::?Clone@CCreatureAction_PlayAnimation@@UBEPAVCCreatureActionBase@@XZ
+  0084c3b0 RELOCATION_MATCH CCreatureAction_PlayIntoLoopOutOfAnimation::?Clone@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBEPAVCCreatureActionBase@@XZ
+  008bea80 RELOCATION_MATCH CCreatureAction_TeleportOut::?Clone@CCreatureAction_TeleportOut@@UBEPAVCCreatureActionBase@@XZ
+  009573d0 RELOCATION_MATCH CCreatureAction_BriarRoseIntoInvulnerable::?Clone@CCreatureAction_BriarRoseIntoInvulnerable@@UBEPAVCCreatureActionBase@@XZ

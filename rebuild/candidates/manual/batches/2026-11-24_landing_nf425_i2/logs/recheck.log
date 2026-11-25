@@ -1,0 +1,12 @@
+addr       parity           behav  name
+008be520   RELOCATION_MATCH PASS   Clone
+008be620   RELOCATION_MATCH PASS   Clone
+008be760   RELOCATION_MATCH PASS   Clone
+008beb40   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BeingForcePushed (engine/CCreatureAction_BeingForcePushed.h)
+008beb40   RELOCATION_MATCH PASS   Clone
+
+WINS: 4
+  008be520 RELOCATION_MATCH CCreatureAction_CastWillTurncoatSpell::?Clone@CCreatureAction_CastWillTurncoatSpell@@UBEPAVCCreatureActionBase@@XZ
+  008be620 RELOCATION_MATCH CCreatureAction_CastWillHealLifeSpell::?Clone@CCreatureAction_CastWillHealLifeSpell@@UBEPAVCCreatureActionBase@@XZ
+  008be760 RELOCATION_MATCH CCreatureAction_CastWillHarvestSoulSpell::?Clone@CCreatureAction_CastWillHarvestSoulSpell@@UBEPAVCCreatureActionBase@@XZ
+  008beb40 RELOCATION_MATCH CCreatureAction_BeingForcePushed::?Clone@CCreatureAction_BeingForcePushed@@UBEPAVCCreatureActionBase@@XZ

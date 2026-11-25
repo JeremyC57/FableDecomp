@@ -1,0 +1,73 @@
+addr       parity           behav  name
+00431e70   RELOCATION_MATCH PASS   Copy
+00432e50   WARN SHARED_HEADER_AVAILABLE CFrontEndDef (engine/CFrontEndDef.h)
+00432e50   RELOCATION_MATCH PASS   Copy
+00434360   WARN SHARED_HEADER_AVAILABLE CEngineDef (engine/CEngineDef.h)
+00434360   RELOCATION_MATCH PASS   Copy
+00434440   WARN SHARED_HEADER_AVAILABLE CEngineVideoOptionsDef (engine/CEngineVideoOptionsDef.h)
+00434440   RELOCATION_MATCH PASS   Copy
+00434590   WARN SHARED_HEADER_AVAILABLE CConfigOptionsDefaultsDef (engine/CConfigOptionsDefaultsDef.h)
+00434590   RELOCATION_MATCH PASS   Copy
+0045a154   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+0045a154   MATCH            PASS   Copy
+0045bdb1   WARN SHARED_HEADER_AVAILABLE CMessageEventDef (engine/CMessageEventDef.h)
+0045bdb1   MATCH            PASS   Copy
+0045be26   WARN SHARED_HEADER_AVAILABLE CEnvironmentDef (engine/CEnvironmentDef.h)
+0045be26   MATCH            PASS   Copy
+0045c10d   WARN SHARED_HEADER_AVAILABLE CMaterialDef (engine/CMaterialDef.h)
+0045c10d   MATCH            PASS   Copy
+0045c2e3   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef (engine/CCombatTypeDef.h)
+0045c2e3   WARN RELOC_NAME: ??4CCombatTypeDef@@QAEAAV0@ABV0@@Z -> 0045c2e8 labelled 'CCombatTypeDef::Copy'
+0045c2e3   MATCH            PASS   Copy
+0045c60f   WARN SHARED_HEADER_AVAILABLE CCreatureGenerationFamilyDef (engine/CCreatureGenerationFamilyDef.h)
+0045c60f   MATCH            PASS   Copy
+0045cb17   WARN SHARED_HEADER_AVAILABLE CHeroAbilityDef (engine/CHeroAbilityDef.h)
+0045cb17   MATCH            PASS   Copy
+0045cbff   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+0045cbff   MATCH            PASS   Copy
+0045ce43   WARN SHARED_HEADER_AVAILABLE CRegionDef (engine/CRegionDef.h)
+0045ce43   MATCH            PASS   Copy
+0045d33f   WARN SHARED_HEADER_AVAILABLE CCameraModeDef (engine/CCameraModeDef.h)
+0045d33f   MATCH            PASS   Copy
+0045d578   WARN SHARED_HEADER_AVAILABLE CCameraManagerSetDef (engine/CCameraManagerSetDef.h)
+0045d578   MATCH            PASS   Copy
+0045d5ce   MATCH            PASS   Copy
+0045d637   MATCH            PASS   Copy
+0045d724   WARN SHARED_HEADER_AVAILABLE CTargetingDef (engine/CTargetingDef.h)
+0045d724   MATCH            PASS   Copy
+0045ee96   MATCH            PASS   Copy
+0045f585   MATCH            PASS   Copy
+0046029f   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesLightningSpellDef (engine/CSpecialAbilitiesLightningSpellDef.h)
+0046029f   MATCH            PASS   Copy
+00460652   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesDivineWrathDef (engine/CSpecialAbilitiesDivineWrathDef.h)
+00460652   MATCH            PASS   Copy
+00461ac8   MATCH            PASS   Copy
+00462678   WARN SHARED_HEADER_AVAILABLE CThingShotDef (engine/CThingShotDef.h)
+00462678   MATCH            PASS   Copy
+
+WINS: 25
+  00431e70 RELOCATION_MATCH CControlsDef::?Copy@CControlsDef@@UAEXPBVCDefClassBase@@@Z
+  00432e50 RELOCATION_MATCH CFrontEndDef::?Copy@CFrontEndDef@@UAEXPBVCDefClassBase@@@Z
+  00434360 RELOCATION_MATCH CEngineDef::?Copy@CEngineDef@@UAEXPBVCDefClassBase@@@Z
+  00434440 RELOCATION_MATCH CEngineVideoOptionsDef::?Copy@CEngineVideoOptionsDef@@UAEXPBVCDefClassBase@@@Z
+  00434590 RELOCATION_MATCH CConfigOptionsDefaultsDef::?Copy@CConfigOptionsDefaultsDef@@UAEXPBVCDefClassBase@@@Z
+  0045a154 MATCH CInventoryDef::?Copy@CInventoryDef@@UAEXPBVCDefClassBase@@@Z
+  0045bdb1 MATCH CMessageEventDef::?Copy@CMessageEventDef@@UAEXPBVCDefClassBase@@@Z
+  0045be26 MATCH CEnvironmentDef::?Copy@CEnvironmentDef@@UAEXPBVCDefClassBase@@@Z
+  0045c10d MATCH CMaterialDef::?Copy@CMaterialDef@@UAEXPBVCDefClassBase@@@Z
+  0045c2e3 MATCH CCombatTypeDef::?Copy@CCombatTypeDef@@UAEXPBVCDefClassBase@@@Z
+  0045c60f MATCH CCreatureGenerationFamilyDef::?Copy@CCreatureGenerationFamilyDef@@UAEXPBVCDefClassBase@@@Z
+  0045cb17 MATCH CHeroAbilityDef::?Copy@CHeroAbilityDef@@UAEXPBVCDefClassBase@@@Z
+  0045cbff MATCH CAppearanceModifierDef::?Copy@CAppearanceModifierDef@@UAEXPBVCDefClassBase@@@Z
+  0045ce43 MATCH CRegionDef::?Copy@CRegionDef@@UAEXPBVCDefClassBase@@@Z
+  0045d33f MATCH CCameraModeDef::?Copy@CCameraModeDef@@UAEXPBVCDefClassBase@@@Z
+  0045d578 MATCH CCameraManagerSetDef::?Copy@CCameraManagerSetDef@@UAEXPBVCDefClassBase@@@Z
+  0045d5ce MATCH CHeroPostcardGeneratorDef::?Copy@CHeroPostcardGeneratorDef@@UAEXPBVCDefClassBase@@@Z
+  0045d637 MATCH CExpressionDef::?Copy@CExpressionDef@@UAEXPBVCDefClassBase@@@Z
+  0045d724 MATCH CTargetingDef::?Copy@CTargetingDef@@UAEXPBVCDefClassBase@@@Z
+  0045ee96 MATCH COpinionSourceDef::?Copy@COpinionSourceDef@@UAEXPBVCDefClassBase@@@Z
+  0045f585 MATCH CSpecialAbilitiesAssassinRushDef::?Copy@CSpecialAbilitiesAssassinRushDef@@UAEXPBVCDefClassBase@@@Z
+  0046029f MATCH CSpecialAbilitiesLightningSpellDef::?Copy@CSpecialAbilitiesLightningSpellDef@@UAEXPBVCDefClassBase@@@Z
+  00460652 MATCH CSpecialAbilitiesDivineWrathDef::?Copy@CSpecialAbilitiesDivineWrathDef@@UAEXPBVCDefClassBase@@@Z
+  00461ac8 MATCH CHitLocationDef::?Copy@CHitLocationDef@@UAEXPBVCDefClassBase@@@Z
+  00462678 MATCH CThingShotDef::?Copy@CThingShotDef@@UAEXPBVCDefClassBase@@@Z

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008e4e30   RELOCATION_MATCH PASS   Clone
+008e4e60   RELOCATION_MATCH PASS   Clone
+
+WINS: 2
+  008e4e30 RELOCATION_MATCH CCreatureAction_TrollVulnerableInto::?Clone@CCreatureAction_TrollVulnerableInto@@UBEPAVCCreatureActionBase@@XZ
+  008e4e60 RELOCATION_MATCH CCreatureAction_TrollVulnerableOutOf::?Clone@CCreatureAction_TrollVulnerableOutOf@@UBEPAVCCreatureActionBase@@XZ

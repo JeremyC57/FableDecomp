@@ -1,26 +1,33 @@
-// CCreatureAction_PutDownThingAtTable::Clone() -- new CCreatureAction_PutDownThingAtTable(*this) with the implicit copy constructor inlined (base copy + one member at +0xa8)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0084C9F0, oracle length 59 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; push 0xac ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je N ; push edi ; mov ecx,esi ; call CBase_0062ebc0::CBase_0062ebc0(const CBase_0062ebc0&) ; mov dword ptr [esi],offset CCreatureAction_PutDownThingAtTable::`vftable' ; mov eax,[edi+0xa8] ; mov [esi+0xa8],eax ; pop edi ; mov eax,esi ; pop esi ; ret ; N: pop edi ; xor eax,eax ; pop esi ; ret
-// Virtual clone of a class that adds one dword member at +0xa8 to its base: the implicit
-// copy constructor is inlined as the base copy constructor @ 0x0062EBC0, this class's vtable
-// store (0x01273C4C, named through rtti-vtables.tsv) and the member copy. sizeof = 0xac.
-// The member's exact type is not recoverable from the body; `long` models its size. One of 35 bodies.
-struct CBase_0062ebc0 {
-    virtual void v00();
-    unsigned char _body[0xa8 - 4];     // sizeof(CBase_0062ebc0) = 0xa8
-    CBase_0062ebc0(const CBase_0062ebc0& other);     // 0x0062EBC0
+// CCreatureAction_PutDownThingAtTable::Clone() const -- `return new CCreatureAction_PutDownThingAtTable(*this);` with the implicit copy constructor inlined (CCreatureActionBase copy constructor, vftable store, own members)
+// Leaf: ?Clone@CCreatureAction_PutDownThingAtTable@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0084C9F0, 59 bytes: operator new(0xAC) 0x00BFEA1A, null test, CCreatureActionBase(const CCreatureActionBase&) 0x0062EBC0, C's vftable store, then 1 member copy;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_PutDownThingAtTable@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; base copy constructor ??0CCreatureActionBase@@QAE@ABV0@@Z 0x0062EBC0 (Ego_r/FableWin; MELEE_COPYCTOR / COPYCTOR
+//   opt-in).
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_PutDownThingAtTable@@QAEPAUCBase_0062ebc0@@XZ (non-virtual, non-const,
+//   over a made-up base model); now the real virtual member, so the RTTI-placed name is defined.
+// Header: no engine header defines CCreatureAction_PutDownThingAtTable (header debt); a local class over its RTTI direct base
+//   CCreatureActionBase (engine/CCreatureActionBase.h).
+// Members: Ego_r.pdb names at retail offsets (PDB offset - 0xC: the base shrinks from 0xB4 to 0xA8 with the retail STLport containers);
+//   each width matches retail's copy.
+#define FABLE_RETAIL_CCREATUREACTIONBASE_COPYCTOR
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_PutDownThingAtTable : public CCreatureActionBase
+{
+public:
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_PutDownThingAtTable@@UAEXXZ (Ego_r + FableWin name sets)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    long /* EMode */ Mode;                    // +0xA8 (Ego_r.pdb EMode Mode at +0xB4)
 };
 
-class CCreatureAction_PutDownThingAtTable : public CBase_0062ebc0 { public:
-    long m_extra;                          // +0xa8
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CBase_0062ebc0* Clone();
-};
-
-CBase_0062ebc0* CCreatureAction_PutDownThingAtTable::Clone()
+CCreatureActionBase* CCreatureAction_PutDownThingAtTable::Clone() const
 {
     return new CCreatureAction_PutDownThingAtTable(*this);
 }

@@ -1,0 +1,51 @@
+addr       parity           behav  name
+004e45f2   MATCH            PASS   Copy
+004e46c8   WARN SHARED_HEADER_AVAILABLE CJackOfBladesBattleDef (engine/CJackOfBladesBattleDef.h)
+004e46c8   MATCH            PASS   Copy
+004e4939   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+004e4939   MATCH            PASS   Copy
+004e4d83   WARN SHARED_HEADER_AVAILABLE CExperienceDef (engine/CExperienceDef.h)
+004e4d83   MATCH            PASS   Copy
+004e5834   WARN SHARED_HEADER_AVAILABLE CFlammableDef (engine/CFlammableDef.h)
+004e5834   MATCH            PASS   Copy
+004e5c84   MATCH            PASS   Copy
+004e6cc1   MATCH            PASS   Copy
+004e6f06   MATCH            PASS   Copy
+004e980e   MATCH            PASS   Copy
+004ea6d8   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+004ea6d8   MATCH            PASS   Copy
+004eb907   WARN SHARED_HEADER_AVAILABLE CMultiStaticMeshEntryDef (engine/CMultiStaticMeshEntryDef.h)
+004eb907   RELOCATION_MATCH PASS   Copy
+004ebc11   MATCH            PASS   Copy
+004ec16f   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationsDef (engine/CObjectAugmentationsDef.h)
+004ec16f   MATCH            PASS   Copy
+004f9145   WARN SHARED_HEADER_AVAILABLE CHeroExperienceDef (engine/CHeroExperienceDef.h)
+004f9145   MATCH            PASS   Copy
+00671150   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+00671150   RELOCATION_MATCH PASS   Copy
+00676a50   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+00676a50   RELOCATION_MATCH PASS   Copy
+00677390   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+00677390   RELOCATION_MATCH PASS   Copy
+0067ce40   WARN SHARED_HEADER_AVAILABLE COpinionReactionManagerDef (engine/COpinionReactionManagerDef.h)
+0067ce40   RELOCATION_MATCH PASS   Copy
+
+WINS: 18
+  004e45f2 MATCH CThunderBattleDef::?Copy@CThunderBattleDef@@UAEXPBVCDefClassBase@@@Z
+  004e46c8 MATCH CJackOfBladesBattleDef::?Copy@CJackOfBladesBattleDef@@UAEXPBVCDefClassBase@@@Z
+  004e4939 MATCH CWeaponDef::?Copy@CWeaponDef@@UAEXPBVCDefClassBase@@@Z
+  004e4d83 MATCH CExperienceDef::?Copy@CExperienceDef@@UAEXPBVCDefClassBase@@@Z
+  004e5834 MATCH CFlammableDef::?Copy@CFlammableDef@@UAEXPBVCDefClassBase@@@Z
+  004e5c84 MATCH CTrapDef::?Copy@CTrapDef@@UAEXPBVCDefClassBase@@@Z
+  004e6cc1 MATCH CAreaOfEffectAttackDef::?Copy@CAreaOfEffectAttackDef@@UAEXPBVCDefClassBase@@@Z
+  004e6f06 MATCH CHeroMorphDef::?Copy@CHeroMorphDef@@UAEXPBVCDefClassBase@@@Z
+  004e980e MATCH CShopDef::?Copy@CShopDef@@UAEXPBVCDefClassBase@@@Z
+  004ea6d8 MATCH CTavernGameDef::?Copy@CTavernGameDef@@UAEXPBVCDefClassBase@@@Z
+  004eb907 RELOCATION_MATCH CMultiStaticMeshEntryDef::?Copy@CMultiStaticMeshEntryDef@@UAEXPBVCDefClassBase@@@Z
+  004ebc11 MATCH CTavernGameCardBaseDef::?Copy@CTavernGameCardBaseDef@@UAEXPBVCDefClassBase@@@Z
+  004ec16f MATCH CObjectAugmentationsDef::?Copy@CObjectAugmentationsDef@@UAEXPBVCDefClassBase@@@Z
+  004f9145 MATCH CHeroExperienceDef::?Copy@CHeroExperienceDef@@UAEXPBVCDefClassBase@@@Z
+  00671150 RELOCATION_MATCH CThingCreatureDef::?Copy@CThingCreatureDef@@UAEXPBVCDefClassBase@@@Z
+  00676a50 RELOCATION_MATCH CCreatureDef::?Copy@CCreatureDef@@UAEXPBVCDefClassBase@@@Z
+  00677390 RELOCATION_MATCH CThingBaseDef::?Copy@CThingBaseDef@@UAEXPBVCDefClassBase@@@Z
+  0067ce40 RELOCATION_MATCH COpinionReactionManagerDef::?Copy@COpinionReactionManagerDef@@UAEXPBVCDefClassBase@@@Z

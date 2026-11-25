@@ -1,26 +1,57 @@
-// CCreatureAction_TentacleStrikeInto::Clone() -- new CCreatureAction_TentacleStrikeInto(*this) with the implicit copy constructor inlined (base copy + one member at +0x114)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00925C40, oracle length 59 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; push 0x118 ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je N ; push edi ; mov ecx,esi ; call CBase_0062f3b0::CBase_0062f3b0(const CBase_0062f3b0&) ; mov dword ptr [esi],offset CCreatureAction_TentacleStrikeInto::`vftable' ; mov eax,[edi+0x114] ; mov [esi+0x114],eax ; pop edi ; mov eax,esi ; pop esi ; ret ; N: pop edi ; xor eax,eax ; pop esi ; ret
-// Virtual clone of a class that adds one dword member at +0x114 to its base: the implicit
-// copy constructor is inlined as the base copy constructor @ 0x0062F3B0, this class's vtable
-// store (0x0129044C, named through rtti-vtables.tsv) and the member copy. sizeof = 0x118.
-// The member's exact type is not recoverable from the body; `long` models its size. One of 35 bodies.
-struct CBase_0062f3b0 {
-    virtual void v00();
-    unsigned char _body[0x114 - 4];     // sizeof(CBase_0062f3b0) = 0x114
-    CBase_0062f3b0(const CBase_0062f3b0& other);     // 0x0062F3B0
-};
+// CCreatureAction_TentacleStrikeInto::Clone() const -- `return new CCreatureAction_TentacleStrikeInto(*this);` with the implicit copy constructor inlined (CCombatActionBase copy constructor, vftable store, own members)
+// Leaf: ?Clone@CCreatureAction_TentacleStrikeInto@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00925C40, 59 bytes: operator new(0x118) 0x00BFEA1A, null test, CCombatActionBase(const CCombatActionBase&) 0x0062F3B0, C's vftable store, then 1 member copy;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_TentacleStrikeInto@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; base copy constructor ??0CCombatActionBase@@QAE@ABV0@@Z 0x0062F3B0 (Ego_r/FableWin; MELEE_COPYCTOR / COPYCTOR
+//   opt-in).
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_TentacleStrikeInto@@QAEPAUCBase_0062f3b0@@XZ (non-virtual, non-const,
+//   over a made-up base model); now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine/CCreatureAction_TentacleStrikeInto.h, opt-in FABLE_RETAIL_CCREATUREACTION_TENTACLESTRIKEINTO_VIRTUAL_MODEL (NF329,
+//   2026-11-24; generator NF322 genmodel.py, NF325 style: the polymorphic retail class, declarations only, retail size, slot order
+//   probed against retail; it declares this Clone); needs FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE,
+//   FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR; prelude: the CCombatActionBase MELEE block of the landed 0x008CAA70
+//   plus those opt-ins. The emitted ??_7CCreatureAction_TentacleStrikeInto@@6B@ names 46 of retail's 60 slots right.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_CCREATUREACTION_TENTACLESTRIKEINTO_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CCreatureAction_TentacleStrikeInto.h"
 
-class CCreatureAction_TentacleStrikeInto : public CBase_0062f3b0 { public:
-    long m_extra;                          // +0x114
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CBase_0062f3b0* Clone();
-};
-
-CBase_0062f3b0* CCreatureAction_TentacleStrikeInto::Clone()
+CCreatureActionBase* CCreatureAction_TentacleStrikeInto::Clone() const
 {
     return new CCreatureAction_TentacleStrikeInto(*this);
 }

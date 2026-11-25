@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00908660   RELOCATION_MATCH PASS   Clone
+009086f0   RELOCATION_MATCH PASS   Clone
+00946070   RELOCATION_MATCH PASS   Clone
+
+WINS: 3
+  00908660 RELOCATION_MATCH CCreatureAction_TrollIdle::?Clone@CCreatureAction_TrollIdle@@UBEPAVCCreatureActionBase@@XZ
+  009086f0 RELOCATION_MATCH CCreatureAction_WalkOutOf::?Clone@CCreatureAction_WalkOutOf@@UBEPAVCCreatureActionBase@@XZ
+  00946070 RELOCATION_MATCH CCreatureAction_GetItemOutOfPocket::?Clone@CCreatureAction_GetItemOutOfPocket@@UBEPAVCCreatureActionBase@@XZ

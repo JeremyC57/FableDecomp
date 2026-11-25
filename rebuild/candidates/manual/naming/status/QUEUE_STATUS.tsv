@@ -2299,7 +2299,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2671	c658	00aeca80	??1?$vector@U?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@V?$allocator@U?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@@2@@std@@QAE@XZ	partial	?CTCMapwho_Cleanup@@YIXPAVCTCMapwho@@@Z
 2672	c658	00aecbf0	?DeleteData@?$CCountedPointer@VCPSCManager@NParticleEngine@@@@SIXPAX@Z	open	?Destroy_00aecbf0@@YIXPAX@Z || OnDie
 2673	c658	00aecc30	?Reset@?$CCountedPointer@VCPSCManager@NParticleEngine@@@@QAEXPAVCPSCManager@NParticleEngine@@@Z	closed	
-2674	c658	0062ebc0	??0CCreatureActionBase@@QAE@ABV0@@Z	partial	??0CBase_0062ebc0@@QAE@ABU0@@Z || ??0CCreatureActionBase
+2674	c658	0062ebc0	??0CCreatureActionBase@@QAE@ABV0@@Z	partial	??0CCreatureActionBase
 2675	c658	0062f3b0	??0CCombatActionBase@@QAE@ABV0@@Z	partial	??0CBase_0062f3b0@@QAE@ABU0@@Z || ??0CCombatActionBase
 2676	c658	00838a00	??1CThingGameObject@@UAE@XZ	partial	??1CThingGameObject@@QAE@XZ || ?ScalarDtor@CThingBuilding@@QAEXXZ
 2677	c660	0072d3e0	??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAE@XZ	closed	

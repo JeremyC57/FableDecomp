@@ -1,0 +1,11 @@
+addr       parity           behav  name
+006f8680   RELOCATION_MATCH PASS   Clone
+008c9720   RELOCATION_MATCH PASS   Clone
+00977560   RELOCATION_MATCH PASS   Clone
+00977590   RELOCATION_MATCH PASS   Clone
+
+WINS: 4
+  006f8680 RELOCATION_MATCH CCreatureAction_LeapBack::?Clone@CCreatureAction_LeapBack@@UBEPAVCCreatureActionBase@@XZ
+  008c9720 RELOCATION_MATCH CCreatureAction_BanditKingChangeWeapons::?Clone@CCreatureAction_BanditKingChangeWeapons@@UBEPAVCCreatureActionBase@@XZ
+  00977560 RELOCATION_MATCH CCreatureAction_JackShotNear::?Clone@CCreatureAction_JackShotNear@@UBEPAVCCreatureActionBase@@XZ
+  00977590 RELOCATION_MATCH CCreatureAction_JackShotFar::?Clone@CCreatureAction_JackShotFar@@UBEPAVCCreatureActionBase@@XZ

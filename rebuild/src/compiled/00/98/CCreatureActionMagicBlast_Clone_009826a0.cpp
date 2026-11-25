@@ -1,23 +1,31 @@
-// CCreatureAction_MagicBlast::Clone() -- new CCreatureAction_MagicBlast(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009826A0, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0xb0 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_MagicBlast::CCreatureAction_MagicBlast(const CCreatureAction_MagicBlast&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_MagicBlast) = 0xb0, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x009826D0; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_MagicBlast::Clone() const -- `return new CCreatureAction_MagicBlast(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_MagicBlast@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009826A0, 34 bytes: operator new(0xB0) 0x00BFEA1A, null test, then the copy constructor 0x009826D0 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_MagicBlast@@UBEPAVCCreatureActionBase@@XZ: RTTI placement + Ego_r/FableWin;
+//   callee ??0CCreatureAction_MagicBlast@@QAE@ABV0@@Z: FableWin name set; retail 0x009826D0 stores CCreatureAction_MagicBlast's vftable
+//   0x0129935C first; the landed row at 0x009826D0 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_MagicBlast@@QAEPAVCCreatureActionBase@@XZ (non-virtual, non-const); now
+//   the real virtual member, so the RTTI-placed name is defined.
+// Header: no engine header defines CCreatureAction_MagicBlast; a local class over its RTTI direct base CCreatureActionBase
+//   engine/CCreatureActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_MagicBlast : public CCreatureActionBase
+{
+public:
+    CCreatureAction_MagicBlast(const CCreatureAction_MagicBlast& other);   // 0x009826D0
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_MagicBlast@@UAEXXZ (both PDB name sets)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0xB0 - sizeof(CCreatureActionBase)];   // CCreatureAction_MagicBlast's own members (not modelled: the copy constructor is out of line); sizeof 0xB0
 };
 
-class CCreatureAction_MagicBlast : public CCreatureActionBase { public:
-    unsigned char _body[0xb0 - 4];    // sizeof(CCreatureAction_MagicBlast) = 0xb0
-    CCreatureAction_MagicBlast(const CCreatureAction_MagicBlast& other);             // 0x009826D0
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_MagicBlast::Clone()
+CCreatureActionBase* CCreatureAction_MagicBlast::Clone() const
 {
     return new CCreatureAction_MagicBlast(*this);
 }

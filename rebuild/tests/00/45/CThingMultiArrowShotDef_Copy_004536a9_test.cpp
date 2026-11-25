@@ -1,34 +1,33 @@
-#include <cstdio>
+// Behaviour test for 0x004536A9 CThingMultiArrowShotDef::Copy (NF425): links the row object; CThingMultiArrowShotDef::operator= is defined here and records its `this` and
+// argument, so the test checks the copy goes from `other` into `this` exactly once (a swapped or doubled copy fails).
+#include <stdio.h>
 
-class CThingMultiArrowShotDef { public: int v; };
+class CDefClassBase;
+class CThingMultiArrowShotDef
+{
+public:
+    virtual void Copy(const CDefClassBase* other);   // defined in the row object
+    CThingMultiArrowShotDef& operator=(const CThingMultiArrowShotDef& other);
+    char pad[64];
+};
 
+static const void* g_this = 0;
+static const void* g_other = 0;
 static int g_calls = 0;
-static CThingMultiArrowShotDef* g_self = 0;
-static const CThingMultiArrowShotDef* g_other = 0;
+CThingMultiArrowShotDef& CThingMultiArrowShotDef::operator=(const CThingMultiArrowShotDef& other) { g_this = this; g_other = &other; ++g_calls; return *this; }
 
-void __fastcall CThingMultiArrowShotDef_CopyBase(CThingMultiArrowShotDef* self, void* edx, const CThingMultiArrowShotDef* other)
-{
-    (void)edx;
-    g_calls++;
-    g_self = self;
-    g_other = other;
-    self->v = other->v;
-}
+static long g_dst[32];
+static long g_src[32];
 
-void __fastcall CThingMultiArrowShotDef_Copy(CThingMultiArrowShotDef* self, void* edx, const CThingMultiArrowShotDef* other)
+int main(void)
 {
-    CThingMultiArrowShotDef_CopyBase(self, edx, other);
-}
-
-int main()
-{
-    CThingMultiArrowShotDef a; a.v = 0;
-    CThingMultiArrowShotDef b; b.v = 42;
-    CThingMultiArrowShotDef_Copy(&a, 0, &b);
-    if (g_calls == 1 && g_self == &a && g_other == &b && a.v == 42) {
-        std::printf("CThingMultiArrowShotDef_004536a9_TEST PASS\n");
-        return 0;
+    CThingMultiArrowShotDef* dst = (CThingMultiArrowShotDef*)g_dst;
+    const CDefClassBase* src = (const CDefClassBase*)g_src;
+    dst->CThingMultiArrowShotDef::Copy(src);
+    if (g_calls != 1 || g_this != (const void*)g_dst || g_other != (const void*)g_src) {
+        printf("CThingMultiArrowShotDef_004536a9_TEST FAIL calls=%d\n", g_calls);
+        return 1;
     }
-    std::printf("CThingMultiArrowShotDef_004536a9_TEST FAIL\n");
-    return 1;
+    printf("CThingMultiArrowShotDef_004536a9_TEST PASS\n");
+    return 0;
 }

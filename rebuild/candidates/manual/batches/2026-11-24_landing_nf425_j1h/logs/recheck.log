@@ -1,0 +1,27 @@
+addr       parity           behav  name
+004536a9   WARN SHARED_HEADER_AVAILABLE CThingMultiArrowShotDef (engine/CThingMultiArrowShotDef.h)
+004536a9   MATCH            PASS   Copy
+00453810   WARN SHARED_HEADER_AVAILABLE CCarrySlotDef (engine/CCarrySlotDef.h)
+00453810   MATCH            PASS   Copy
+00453899   WARN SHARED_HEADER_AVAILABLE CActionUseDef (engine/CActionUseDef.h)
+00453899   MATCH            PASS   Copy
+00453be3   MATCH            PASS   Copy
+00453c1b   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef (engine/CContextSensitiveItemDef.h)
+00453c1b   MATCH            PASS   Copy
+00453ce5   WARN SHARED_HEADER_AVAILABLE CHeroTitleDef (engine/CHeroTitleDef.h)
+00453ce5   MATCH            PASS   Copy
+00454038   MATCH            PASS   Copy
+0045417e   MATCH            PASS   Copy
+00462b10   WARN SHARED_HEADER_AVAILABLE CBrainDef (engine/CBrainDef.h)
+00462b10   MATCH            PASS   Copy
+
+WINS: 9
+  004536a9 MATCH CThingMultiArrowShotDef::?Copy@CThingMultiArrowShotDef@@UAEXPBVCDefClassBase@@@Z
+  00453810 MATCH CCarrySlotDef::?Copy@CCarrySlotDef@@UAEXPBVCDefClassBase@@@Z
+  00453899 MATCH CActionUseDef::?Copy@CActionUseDef@@UAEXPBVCDefClassBase@@@Z
+  00453be3 MATCH CCoopSpiritDef::?Copy@CCoopSpiritDef@@UAEXPBVCDefClassBase@@@Z
+  00453c1b MATCH CContextSensitiveItemDef::?Copy@CContextSensitiveItemDef@@UAEXPBVCDefClassBase@@@Z
+  00453ce5 MATCH CHeroTitleDef::?Copy@CHeroTitleDef@@UAEXPBVCDefClassBase@@@Z
+  00454038 MATCH CDragonActionNapalmDef::?Copy@CDragonActionNapalmDef@@UAEXPBVCDefClassBase@@@Z
+  0045417e MATCH CBriarRoseDef::?Copy@CBriarRoseDef@@UAEXPBVCDefClassBase@@@Z
+  00462b10 MATCH CBrainDef::?Copy@CBrainDef@@UAEXPBVCDefClassBase@@@Z

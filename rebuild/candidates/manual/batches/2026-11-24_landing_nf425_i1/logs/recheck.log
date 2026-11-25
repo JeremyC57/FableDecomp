@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0084c800   RELOCATION_MATCH PASS   Clone
+0084c9f0   RELOCATION_MATCH PASS   Clone
+
+WINS: 2
+  0084c800 RELOCATION_MATCH CCreatureAction_AlertAllNearbyToThing::?Clone@CCreatureAction_AlertAllNearbyToThing@@UBEPAVCCreatureActionBase@@XZ
+  0084c9f0 RELOCATION_MATCH CCreatureAction_PutDownThingAtTable::?Clone@CCreatureAction_PutDownThingAtTable@@UBEPAVCCreatureActionBase@@XZ

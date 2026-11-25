@@ -1,0 +1,109 @@
+addr       parity           behav  name
+004643ca   WARN SHARED_HEADER_AVAILABLE CThingBuildingDef (engine/CThingBuildingDef.h)
+004643ca   MATCH            PASS   Copy
+00472046   WARN SHARED_HEADER_AVAILABLE COpinionDeedReactionDef (engine/COpinionDeedReactionDef.h)
+00472046   RELOCATION_MATCH PASS   Copy
+00472e7e   WARN SHARED_HEADER_AVAILABLE CEnvironmentThemeDaySetDef (engine/CEnvironmentThemeDaySetDef.h)
+00472e7e   MATCH            PASS   Copy
+004734b2   WARN SHARED_HEADER_AVAILABLE CEnvironmentThemeDef (engine/CEnvironmentThemeDef.h)
+004734b2   RELOCATION_MATCH PASS   Copy
+0047795f   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailObjectDef (engine/CEngineLocalDetailObjectDef.h)
+0047795f   MATCH            PASS   Copy
+00477c65   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailLayerDef (engine/CEngineLocalDetailLayerDef.h)
+00477c65   RELOCATION_MATCH PASS   Copy
+0047812d   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+0047812d   MATCH            PASS   Copy
+00478a68   WARN SHARED_HEADER_AVAILABLE CAbilityTrackDef (engine/CAbilityTrackDef.h)
+00478a68   RELOCATION_MATCH PASS   Copy
+004dfeb3   WARN SHARED_HEADER_AVAILABLE CCarryableDef (engine/CCarryableDef.h)
+004dfeb3   MATCH            PASS   Copy
+004dffbe   WARN SHARED_HEADER_AVAILABLE CBedDef (engine/CBedDef.h)
+004dffbe   MATCH            PASS   Copy
+004e0015   WARN SHARED_HEADER_AVAILABLE CCreatureNavigationDef (engine/CCreatureNavigationDef.h)
+004e0015   MATCH            PASS   Copy
+004e021d   WARN SHARED_HEADER_AVAILABLE CKickableDef (engine/CKickableDef.h)
+004e021d   MATCH            PASS   Copy
+004e046f   WARN SHARED_HEADER_AVAILABLE CTrophyDef (engine/CTrophyDef.h)
+004e046f   MATCH            PASS   Copy
+004e0564   WARN SHARED_HEADER_AVAILABLE CChestDef (engine/CChestDef.h)
+004e0564   MATCH            PASS   Copy
+004e05a8   WARN SHARED_HEADER_AVAILABLE CExplodingObjectDef (engine/CExplodingObjectDef.h)
+004e05a8   MATCH            PASS   Copy
+004e0667   WARN SHARED_HEADER_AVAILABLE COpinionOfHeroDef (engine/COpinionOfHeroDef.h)
+004e0667   MATCH            PASS   Copy
+004e074b   WARN SHARED_HEADER_AVAILABLE CTimeAppearanceFadeDef (engine/CTimeAppearanceFadeDef.h)
+004e074b   MATCH            PASS   Copy
+004e0f4d   WARN SHARED_HEADER_AVAILABLE CThingDrainLifeShotDef (engine/CThingDrainLifeShotDef.h)
+004e0f4d   MATCH            PASS   Copy
+004e12b3   WARN SHARED_HEADER_AVAILABLE CFishDef (engine/CFishDef.h)
+004e12b3   MATCH            PASS   Copy
+004e1362   WARN SHARED_HEADER_AVAILABLE CHeroSpecialMovementDef (engine/CHeroSpecialMovementDef.h)
+004e1362   MATCH            PASS   Copy
+004e148f   WARN SHARED_HEADER_AVAILABLE CKrakenTentacleDef (engine/CKrakenTentacleDef.h)
+004e148f   MATCH            PASS   Copy
+004e159b   MATCH            PASS   Copy
+004e1897   WARN SHARED_HEADER_AVAILABLE CTCVolumeContainmentTrackerDef (engine/CTCVolumeContainmentTrackerDef.h)
+004e1897   MATCH            PASS   Copy
+004e1913   WARN SHARED_HEADER_AVAILABLE CBettingDef (engine/CBettingDef.h)
+004e1913   MATCH            PASS   Copy
+004e19dd   WARN SHARED_HEADER_AVAILABLE CFireheartMinigameDef (engine/CFireheartMinigameDef.h)
+004e19dd   MATCH            PASS   Copy
+004e1a21   WARN SHARED_HEADER_AVAILABLE CLightningOrbDef (engine/CLightningOrbDef.h)
+004e1a21   MATCH            PASS   Copy
+004e1e01   MATCH            PASS   Copy
+004e238c   WARN SHARED_HEADER_AVAILABLE CBuyableHouseDef (engine/CBuyableHouseDef.h)
+004e238c   MATCH            PASS   Copy
+004e2442   MATCH            PASS   Copy
+004e2c03   WARN SHARED_HEADER_AVAILABLE CBossDef (engine/CBossDef.h)
+004e2c03   MATCH            PASS   Copy
+004e2c4d   WARN SHARED_HEADER_AVAILABLE CFishingDef (engine/CFishingDef.h)
+004e2c4d   MATCH            PASS   Copy
+004e2cdf   WARN SHARED_HEADER_AVAILABLE CTurncoatDef (engine/CTurncoatDef.h)
+004e2cdf   MATCH            PASS   Copy
+004e2e08   WARN SHARED_HEADER_AVAILABLE CTavernGameSpotTheAdditionDef (engine/CTavernGameSpotTheAdditionDef.h)
+004e2e08   MATCH            PASS   Copy
+004e2eca   WARN SHARED_HEADER_AVAILABLE CExplosionDef (engine/CExplosionDef.h)
+004e2eca   MATCH            PASS   Copy
+004e3168   MATCH            PASS   Copy
+004e4294   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+004e4294   MATCH            PASS   Copy
+004e444b   MATCH            PASS   Copy
+
+WINS: 37
+  004643ca MATCH CThingBuildingDef::?Copy@CThingBuildingDef@@UAEXPBVCDefClassBase@@@Z
+  00472046 RELOCATION_MATCH COpinionDeedReactionDef::?Copy@COpinionDeedReactionDef@@UAEXPBVCDefClassBase@@@Z
+  00472e7e MATCH CEnvironmentThemeDaySetDef::?Copy@CEnvironmentThemeDaySetDef@@UAEXPBVCDefClassBase@@@Z
+  004734b2 RELOCATION_MATCH CEnvironmentThemeDef::?Copy@CEnvironmentThemeDef@@UAEXPBVCDefClassBase@@@Z
+  0047795f MATCH CEngineLocalDetailObjectDef::?Copy@CEngineLocalDetailObjectDef@@UAEXPBVCDefClassBase@@@Z
+  00477c65 RELOCATION_MATCH CEngineLocalDetailLayerDef::?Copy@CEngineLocalDetailLayerDef@@UAEXPBVCDefClassBase@@@Z
+  0047812d MATCH CHeroStatsDef::?Copy@CHeroStatsDef@@UAEXPBVCDefClassBase@@@Z
+  00478a68 RELOCATION_MATCH CAbilityTrackDef::?Copy@CAbilityTrackDef@@UAEXPBVCDefClassBase@@@Z
+  004dfeb3 MATCH CCarryableDef::?Copy@CCarryableDef@@UAEXPBVCDefClassBase@@@Z
+  004dffbe MATCH CBedDef::?Copy@CBedDef@@UAEXPBVCDefClassBase@@@Z
+  004e0015 MATCH CCreatureNavigationDef::?Copy@CCreatureNavigationDef@@UAEXPBVCDefClassBase@@@Z
+  004e021d MATCH CKickableDef::?Copy@CKickableDef@@UAEXPBVCDefClassBase@@@Z
+  004e046f MATCH CTrophyDef::?Copy@CTrophyDef@@UAEXPBVCDefClassBase@@@Z
+  004e0564 MATCH CChestDef::?Copy@CChestDef@@UAEXPBVCDefClassBase@@@Z
+  004e05a8 MATCH CExplodingObjectDef::?Copy@CExplodingObjectDef@@UAEXPBVCDefClassBase@@@Z
+  004e0667 MATCH COpinionOfHeroDef::?Copy@COpinionOfHeroDef@@UAEXPBVCDefClassBase@@@Z
+  004e074b MATCH CTimeAppearanceFadeDef::?Copy@CTimeAppearanceFadeDef@@UAEXPBVCDefClassBase@@@Z
+  004e0f4d MATCH CThingDrainLifeShotDef::?Copy@CThingDrainLifeShotDef@@UAEXPBVCDefClassBase@@@Z
+  004e12b3 MATCH CFishDef::?Copy@CFishDef@@UAEXPBVCDefClassBase@@@Z
+  004e1362 MATCH CHeroSpecialMovementDef::?Copy@CHeroSpecialMovementDef@@UAEXPBVCDefClassBase@@@Z
+  004e148f MATCH CKrakenTentacleDef::?Copy@CKrakenTentacleDef@@UAEXPBVCDefClassBase@@@Z
+  004e159b MATCH CFishingRodDef::?Copy@CFishingRodDef@@UAEXPBVCDefClassBase@@@Z
+  004e1897 MATCH CTCVolumeContainmentTrackerDef::?Copy@CTCVolumeContainmentTrackerDef@@UAEXPBVCDefClassBase@@@Z
+  004e1913 MATCH CBettingDef::?Copy@CBettingDef@@UAEXPBVCDefClassBase@@@Z
+  004e19dd MATCH CFireheartMinigameDef::?Copy@CFireheartMinigameDef@@UAEXPBVCDefClassBase@@@Z
+  004e1a21 MATCH CLightningOrbDef::?Copy@CLightningOrbDef@@UAEXPBVCDefClassBase@@@Z
+  004e1e01 MATCH CVillageDef::?Copy@CVillageDef@@UAEXPBVCDefClassBase@@@Z
+  004e238c MATCH CBuyableHouseDef::?Copy@CBuyableHouseDef@@UAEXPBVCDefClassBase@@@Z
+  004e2442 MATCH CCreatureGeneratorDef::?Copy@CCreatureGeneratorDef@@UAEXPBVCDefClassBase@@@Z
+  004e2c03 MATCH CBossDef::?Copy@CBossDef@@UAEXPBVCDefClassBase@@@Z
+  004e2c4d MATCH CFishingDef::?Copy@CFishingDef@@UAEXPBVCDefClassBase@@@Z
+  004e2cdf MATCH CTurncoatDef::?Copy@CTurncoatDef@@UAEXPBVCDefClassBase@@@Z
+  004e2e08 MATCH CTavernGameSpotTheAdditionDef::?Copy@CTavernGameSpotTheAdditionDef@@UAEXPBVCDefClassBase@@@Z
+  004e2eca MATCH CExplosionDef::?Copy@CExplosionDef@@UAEXPBVCDefClassBase@@@Z
+  004e3168 MATCH CKrakenDef::?Copy@CKrakenDef@@UAEXPBVCDefClassBase@@@Z
+  004e4294 MATCH CQuestCardDef::?Copy@CQuestCardDef@@UAEXPBVCDefClassBase@@@Z
+  004e444b MATCH CClockDef::?Copy@CClockDef@@UAEXPBVCDefClassBase@@@Z

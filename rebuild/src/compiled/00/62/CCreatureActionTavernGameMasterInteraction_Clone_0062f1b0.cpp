@@ -1,23 +1,31 @@
-// CCreatureAction_TavernGameMasterInteraction::Clone() -- new CCreatureAction_TavernGameMasterInteraction(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0062F1B0, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0xb0 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_TavernGameMasterInteraction::CCreatureAction_TavernGameMasterInteraction(const CCreatureAction_TavernGameMasterInteraction&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_TavernGameMasterInteraction) = 0xb0, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x0062F1E0; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_TavernGameMasterInteraction::Clone() const -- `return new CCreatureAction_TavernGameMasterInteraction(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_TavernGameMasterInteraction@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0062F1B0, 34 bytes: operator new(0xB0) 0x00BFEA1A, null test, then the copy constructor 0x0062F1E0 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_TavernGameMasterInteraction@@UBEPAVCCreatureActionBase@@XZ: RTTI placement
+//   + Ego_r/FableWin; callee ??0CCreatureAction_TavernGameMasterInteraction@@QAE@ABV0@@Z: FableWin name set; retail 0x0062F1E0 stores
+//   CCreatureAction_TavernGameMasterInteraction's vftable 0x012598C4 first; the landed row at 0x0062F1E0 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_TavernGameMasterInteraction@@QAEPAVCCreatureActionBase@@XZ
+//   (non-virtual, non-const); now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine header engine/CCreatureAction_TavernGameMasterInteraction.h does not give the class at sizeof 0xB0 with Clone declared
+//   in the prelude tried (header debt); a local class over its RTTI direct base CCreatureActionBase engine/CCreatureActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_TavernGameMasterInteraction : public CCreatureActionBase
+{
+public:
+    CCreatureAction_TavernGameMasterInteraction(const CCreatureAction_TavernGameMasterInteraction& other);   // 0x0062F1E0
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ (FableWin name set; the base's is pure and retail instantiates the class)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0xB0 - sizeof(CCreatureActionBase)];   // CCreatureAction_TavernGameMasterInteraction's own members (not modelled: the copy constructor is out of line); sizeof 0xB0
 };
 
-class CCreatureAction_TavernGameMasterInteraction : public CCreatureActionBase { public:
-    unsigned char _body[0xb0 - 4];    // sizeof(CCreatureAction_TavernGameMasterInteraction) = 0xb0
-    CCreatureAction_TavernGameMasterInteraction(const CCreatureAction_TavernGameMasterInteraction& other);             // 0x0062F1E0
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_TavernGameMasterInteraction::Clone()
+CCreatureActionBase* CCreatureAction_TavernGameMasterInteraction::Clone() const
 {
     return new CCreatureAction_TavernGameMasterInteraction(*this);
 }

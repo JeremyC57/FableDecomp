@@ -1,23 +1,31 @@
-// CCreatureAction_UseSwitch::Clone() -- new CCreatureAction_UseSwitch(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007EE130, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0xb0 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_UseSwitch::CCreatureAction_UseSwitch(const CCreatureAction_UseSwitch&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_UseSwitch) = 0xb0, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x007EE160; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_UseSwitch::Clone() const -- `return new CCreatureAction_UseSwitch(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_UseSwitch@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007EE130, 34 bytes: operator new(0xB0) 0x00BFEA1A, null test, then the copy constructor 0x007EE160 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_UseSwitch@@UBEPAVCCreatureActionBase@@XZ: RTTI placement + Ego_r/FableWin;
+//   callee ??0CCreatureAction_UseSwitch@@QAE@ABV0@@Z: FableWin name set; retail 0x007EE160 stores CCreatureAction_UseSwitch's vftable
+//   0x01271604 first; the landed row at 0x007EE160 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_UseSwitch@@QAEPAVCCreatureActionBase@@XZ (non-virtual, non-const); now
+//   the real virtual member, so the RTTI-placed name is defined.
+// Header: no engine header defines CCreatureAction_UseSwitch; a local class over its RTTI direct base CCreatureActionBase
+//   engine/CCreatureActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_UseSwitch : public CCreatureActionBase
+{
+public:
+    CCreatureAction_UseSwitch(const CCreatureAction_UseSwitch& other);   // 0x007EE160
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_UseSwitch@@UAEXXZ (both PDB name sets)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0xB0 - sizeof(CCreatureActionBase)];   // CCreatureAction_UseSwitch's own members (not modelled: the copy constructor is out of line); sizeof 0xB0
 };
 
-class CCreatureAction_UseSwitch : public CCreatureActionBase { public:
-    unsigned char _body[0xb0 - 4];    // sizeof(CCreatureAction_UseSwitch) = 0xb0
-    CCreatureAction_UseSwitch(const CCreatureAction_UseSwitch& other);             // 0x007EE160
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_UseSwitch::Clone()
+CCreatureActionBase* CCreatureAction_UseSwitch::Clone() const
 {
     return new CCreatureAction_UseSwitch(*this);
 }

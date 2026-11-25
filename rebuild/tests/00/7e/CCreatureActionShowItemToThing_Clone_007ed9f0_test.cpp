@@ -1,11 +1,41 @@
-#include <cstdio>
-struct Base { virtual void v00() {} }; static int g_c = 0;
-struct X : Base { unsigned char body[0xb8 - 4]; X() {} X(const X& o) { ++g_c; body[0] = o.body[0]; } Base* Clone() { return new X(*this); } };
-int main()
-{
-    X x; x.body[0] = 7; Base* c = x.Clone(); if (!c || g_c != 1 || static_cast<X*>(c)->body[0] != 7) { std::printf("007ed9f0_TEST FAIL\n"); return 1; }
-    delete c;
+// Behaviour test for 0x007ED9F0 CCreatureAction_ShowItemToThing::Clone (NF425): links the row object; operator new and the copy constructor are defined here and
+// record their arguments: one allocation of 0xB8 bytes, one copy construction into that block from `*this`, the block returned;
+// and 0 with no construction when the allocation fails.
+#include <stdio.h>
+#include <stddef.h>
 
-    std::printf("007ed9f0_TEST PASS\n");
+class CCreatureActionBase;
+class CCreatureAction_ShowItemToThing
+{
+    friend int main(void);
+public:
+    CCreatureAction_ShowItemToThing(const CCreatureAction_ShowItemToThing& other);
+public:
+    virtual CCreatureActionBase* Clone() const;   // defined in the row object
+};
+
+static unsigned int g_size = 0;
+static int g_news = 0, g_ctors = 0, g_fail = 0;
+static const void* g_this = 0;
+static const void* g_other = 0;
+static long g_block[0xB8 / 4 + 4];
+void* operator new(size_t n) { g_size = (unsigned int)n; ++g_news; return g_fail ? 0 : (void*)g_block; }
+CCreatureAction_ShowItemToThing::CCreatureAction_ShowItemToThing(const CCreatureAction_ShowItemToThing& other) { g_this = this; g_other = &other; ++g_ctors; }
+
+static long g_src[64];
+
+int main(void)
+{
+    const CCreatureAction_ShowItemToThing* src = (const CCreatureAction_ShowItemToThing*)g_src;
+    CCreatureActionBase* r = src->CCreatureAction_ShowItemToThing::Clone();
+    int ok = r == (CCreatureActionBase*)(void*)g_block && g_news == 1 && g_size == 0xB8 && g_ctors == 1 && g_this == (void*)g_block && g_other == (const void*)g_src;
+    g_fail = 1;
+    r = src->CCreatureAction_ShowItemToThing::Clone();
+    ok = ok && r == 0 && g_news == 2 && g_ctors == 1;
+    if (!ok) {
+        printf("007ed9f0_TEST FAIL news=%d ctors=%d size=%u\n", g_news, g_ctors, g_size);
+        return 1;
+    }
+    printf("007ed9f0_TEST PASS\n");
     return 0;
 }

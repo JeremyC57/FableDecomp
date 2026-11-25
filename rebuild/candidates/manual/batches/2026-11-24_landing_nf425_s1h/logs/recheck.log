@@ -1,0 +1,22 @@
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+004537e4   MATCH            PASS   Copy
+00453b48   MATCH            PASS   Copy
+00453c53   MATCH            PASS   Copy
+00453fc4   MATCH            PASS   Copy
+00454083   MATCH            PASS   Copy
+004540ec   MATCH            PASS   Copy
+00454267   MATCH            PASS   Copy
+004542cf   MATCH            PASS   Copy
+0045442f   MATCH            PASS   Copy
+
+WINS: 9
+  004537e4 MATCH CTCNoiseDef::?Copy@CTCNoiseDef@@UAEXPBVCDefClassBase@@@Z
+  00453b48 MATCH CCreatureStatsDef::?Copy@CCreatureStatsDef@@UAEXPBVCDefClassBase@@@Z
+  00453c53 MATCH CBonusItemDef::?Copy@CBonusItemDef@@UAEXPBVCDefClassBase@@@Z
+  00453fc4 MATCH CDragonActionSwoopDef::?Copy@CDragonActionSwoopDef@@UAEXPBVCDefClassBase@@@Z
+  00454083 MATCH CAugmentationDef::?Copy@CAugmentationDef@@UAEXPBVCDefClassBase@@@Z
+  004540ec MATCH CJackDragonDef::?Copy@CJackDragonDef@@UAEXPBVCDefClassBase@@@Z
+  00454267 MATCH CSummonerDef::?Copy@CSummonerDef@@UAEXPBVCDefClassBase@@@Z
+  004542cf MATCH CExplosiveTrailDef::?Copy@CExplosiveTrailDef@@UAEXPBVCDefClassBase@@@Z
+  0045442f MATCH CDegradableDef::?Copy@CDegradableDef@@UAEXPBVCDefClassBase@@@Z

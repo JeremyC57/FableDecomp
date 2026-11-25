@@ -1,0 +1,23 @@
+addr       parity           behav  name
+009086c0   RELOCATION_MATCH PASS   Clone
+0090a7e0   RELOCATION_MATCH PASS   Clone
+00925c10   RELOCATION_MATCH PASS   Clone
+00925c40   RELOCATION_MATCH PASS   Clone
+0095ccd0   RELOCATION_MATCH PASS   Clone
+00962a30   RELOCATION_MATCH PASS   Clone
+0096c180   RELOCATION_MATCH PASS   Clone
+0097d190   RELOCATION_MATCH PASS   Clone
+0097d200   RELOCATION_MATCH PASS   Clone
+0097d230   RELOCATION_MATCH PASS   Clone
+
+WINS: 10
+  009086c0 RELOCATION_MATCH CCreatureAction_TrollPursue::?Clone@CCreatureAction_TrollPursue@@UBEPAVCCreatureActionBase@@XZ
+  0090a7e0 RELOCATION_MATCH CCreatureAction_MidAttackFacing::?Clone@CCreatureAction_MidAttackFacing@@UBEPAVCCreatureActionBase@@XZ
+  00925c10 RELOCATION_MATCH CCreatureAction_TentacleRise::?Clone@CCreatureAction_TentacleRise@@UBEPAVCCreatureActionBase@@XZ
+  00925c40 RELOCATION_MATCH CCreatureAction_TentacleStrikeInto::?Clone@CCreatureAction_TentacleStrikeInto@@UBEPAVCCreatureActionBase@@XZ
+  0095ccd0 RELOCATION_MATCH CCreatureAction_WaspQueenLashOutAttack::?Clone@CCreatureAction_WaspQueenLashOutAttack@@UBEPAVCCreatureActionBase@@XZ
+  00962a30 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAttack::?Clone@CCreatureAction_IceTrollIcicleAttack@@UBEPAVCCreatureActionBase@@XZ
+  0096c180 RELOCATION_MATCH CCreatureAction_WhisperJumpIntoSky::?Clone@CCreatureAction_WhisperJumpIntoSky@@UBEPAVCCreatureActionBase@@XZ
+  0097d190 RELOCATION_MATCH CCreatureAction_VillagerAttack::?Clone@CCreatureAction_VillagerAttack@@UBEPAVCCreatureActionBase@@XZ
+  0097d200 RELOCATION_MATCH CCreatureAction_VillagerAdvance::?Clone@CCreatureAction_VillagerAdvance@@UBEPAVCCreatureActionBase@@XZ
+  0097d230 RELOCATION_MATCH CCreatureAction_VillagerBackOff::?Clone@CCreatureAction_VillagerBackOff@@UBEPAVCCreatureActionBase@@XZ

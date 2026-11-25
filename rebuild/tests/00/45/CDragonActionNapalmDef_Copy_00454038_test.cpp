@@ -1,27 +1,33 @@
-#include <cstdio>
-class CDragonActionNapalmDef { public: int v; };
-static int g_called = 0;
-static void* g_last_self = 0;
-static void* g_last_src = 0;
-void __fastcall base_copy(CDragonActionNapalmDef* self, void* src)
+// Behaviour test for 0x00454038 CDragonActionNapalmDef::Copy (NF425): links the row object; CDragonActionNapalmDef::operator= is defined here and records its `this` and
+// argument, so the test checks the copy goes from `other` into `this` exactly once (a swapped or doubled copy fails).
+#include <stdio.h>
+
+class CDefClassBase;
+class CDragonActionNapalmDef
 {
-    g_called = 1;
-    g_last_self = self;
-    g_last_src = src;
-}
-void __fastcall CDragonActionNapalmDef_Copy(CDragonActionNapalmDef* self, void* src)
+public:
+    virtual void Copy(const CDefClassBase* other);   // defined in the row object
+    CDragonActionNapalmDef& operator=(const CDragonActionNapalmDef& other);
+    char pad[64];
+};
+
+static const void* g_this = 0;
+static const void* g_other = 0;
+static int g_calls = 0;
+CDragonActionNapalmDef& CDragonActionNapalmDef::operator=(const CDragonActionNapalmDef& other) { g_this = this; g_other = &other; ++g_calls; return *this; }
+
+static long g_dst[32];
+static long g_src[32];
+
+int main(void)
 {
-    base_copy(self, src);
-}
-int main()
-{
-    CDragonActionNapalmDef obj; obj.v = 7;
-    int src = 42;
-    CDragonActionNapalmDef_Copy(&obj, &src);
-    if (g_called == 1 && g_last_self == (void*)&obj && g_last_src == (void*)&src) {
-        std::printf("CDragonActionNapalmDef_00454038_TEST PASS\n");
-        return 0;
+    CDragonActionNapalmDef* dst = (CDragonActionNapalmDef*)g_dst;
+    const CDefClassBase* src = (const CDefClassBase*)g_src;
+    dst->CDragonActionNapalmDef::Copy(src);
+    if (g_calls != 1 || g_this != (const void*)g_dst || g_other != (const void*)g_src) {
+        printf("CDragonActionNapalmDef_00454038_TEST FAIL calls=%d\n", g_calls);
+        return 1;
     }
-    std::printf("CDragonActionNapalmDef_00454038_TEST FAIL\n");
-    return 1;
+    printf("CDragonActionNapalmDef_00454038_TEST PASS\n");
+    return 0;
 }

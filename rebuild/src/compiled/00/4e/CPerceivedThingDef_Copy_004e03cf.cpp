@@ -1,5 +1,12 @@
-// Free-function forwarder VC7.1 tail-calls (`jmp rel32`): same signature, no cleanup.
-// Leaf: _CPerceivedThingDef_Copy
-extern "C" void ForwardTarget_004e03d4();
-extern "C" void CPerceivedThingDef_Copy() { ForwardTarget_004e03d4(); }
-// Stand-in (owner rule 2026-11-05): CPerceivedThingDef_Copy for CPerceivedThingDef::Copy; RTTI vtable slot ?Copy@CPerceivedThingDef@@UAEXPBVCDefClassBase@@@Z + PDB name set (egor/fablewin).
+// CPerceivedThingDef::Copy(const CDefClassBase* other) -- copy every member of another CPerceivedThingDef: `*this = *static_cast<const CPerceivedThingDef*>(other)` (tail call of the operator=)
+// Leaf: ?Copy@CPerceivedThingDef@@UAEXPBVCDefClassBase@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004E03CF, 5 bytes: a thiscall tail call, `jmp` to CPerceivedThingDef::operator= 0x004E03D4 (the next body).
+// Identity (NF425, 2026-11-25): self ?Copy@CPerceivedThingDef@@UAEXPBVCDefClassBase@@@Z: RTTI placement + Ego_r/FableWin ; target
+//   ??4CPerceivedThingDef@@QAEAAV0@ABV0@@Z: bound at 0x004E03D4 (owner Leaf); Ego_r/FableWin name set; its body opens with a call of
+//   the ancestor operator= ??4CDefClassBase (0x00431F10): a derived class's assignment.
+// Option S unit (NF425): this function's one body lives in its retail TU-mate's row 0x004E03D4
+//   (??4CPerceivedThingDef@@QAEAAV0@ABV0@@Z), which already defines it (to emit the operator= it jumps to); both PDBs put the two in
+//   one object: Ego_r tc_register.obj (Copy idx 1326, operator= idx 1194); FableWin tc_register.obj (Copy idx 637, operator= idx 640).
+//   The row includes that source (no code of its own), as the EH funclet rows include their parent; that object's Copy grades against
+//   this address. Before the unit this row carried a second definition under the stand-in _CPerceivedThingDef_Copy.
+#include "../src/compiled/00/4e/CPerceivedThingDef_operator_004e03d4.cpp"

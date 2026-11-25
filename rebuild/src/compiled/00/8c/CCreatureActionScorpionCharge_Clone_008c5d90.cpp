@@ -1,23 +1,59 @@
-// CCreatureAction_ScorpionCharge::Clone() -- new CCreatureAction_ScorpionCharge(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008C5D90, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0x124 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge(const CCreatureAction_ScorpionCharge&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_ScorpionCharge) = 0x124, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x008C5DC0; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_ScorpionCharge::Clone() const -- `return new CCreatureAction_ScorpionCharge(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_ScorpionCharge@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008C5D90, 34 bytes: operator new(0x124) 0x00BFEA1A, null test, then the copy constructor 0x008C5DC0 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_ScorpionCharge@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; callee ??0CCreatureAction_ScorpionCharge@@QAE@ABV0@@Z: FableWin name set; retail 0x008C5DC0 stores
+//   CCreatureAction_ScorpionCharge's vftable 0x01281024 first; the landed row at 0x008C5DC0 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_ScorpionCharge@@QAEPAVCCreatureActionBase@@XZ (non-virtual, non-const);
+//   now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine header engine/CCreatureAction_ScorpionCharge.h does not give the class at sizeof 0x124 with Clone declared in the
+//   prelude tried (header debt); a local class over its RTTI direct base CCombatActionBase engine/CCombatActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+
+class CCreatureAction_ScorpionCharge : public CCombatActionBase
+{
+public:
+    CCreatureAction_ScorpionCharge(const CCreatureAction_ScorpionCharge& other);   // 0x008C5DC0
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0x124 - sizeof(CCombatActionBase)];   // CCreatureAction_ScorpionCharge's own members (not modelled: the copy constructor is out of line); sizeof 0x124
 };
 
-class CCreatureAction_ScorpionCharge : public CCreatureActionBase { public:
-    unsigned char _body[0x124 - 4];    // sizeof(CCreatureAction_ScorpionCharge) = 0x124
-    CCreatureAction_ScorpionCharge(const CCreatureAction_ScorpionCharge& other);             // 0x008C5DC0
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_ScorpionCharge::Clone()
+CCreatureActionBase* CCreatureAction_ScorpionCharge::Clone() const
 {
     return new CCreatureAction_ScorpionCharge(*this);
 }

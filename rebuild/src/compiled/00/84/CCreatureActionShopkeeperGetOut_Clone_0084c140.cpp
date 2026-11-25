@@ -1,23 +1,31 @@
-// CCreatureAction_ShopkeeperGetOut::Clone() -- new CCreatureAction_ShopkeeperGetOut(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0084C140, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0xd4 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_ShopkeeperGetOut::CCreatureAction_ShopkeeperGetOut(const CCreatureAction_ShopkeeperGetOut&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_ShopkeeperGetOut) = 0xd4, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x0084C170; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_ShopkeeperGetOut::Clone() const -- `return new CCreatureAction_ShopkeeperGetOut(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_ShopkeeperGetOut@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0084C140, 34 bytes: operator new(0xD4) 0x00BFEA1A, null test, then the copy constructor 0x0084C170 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_ShopkeeperGetOut@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; callee ??0CCreatureAction_ShopkeeperGetOut@@QAE@ABV0@@Z: Ego_r/FableWin name set; retail 0x0084C170 stores
+//   CCreatureAction_ShopkeeperGetOut's vftable 0x01273FCC first; the landed row at 0x0084C170 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_ShopkeeperGetOut@@QAEPAVCCreatureActionBase@@XZ (non-virtual,
+//   non-const); now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine header engine/CCreatureAction_ShopkeeperGetOut.h does not give the class at sizeof 0xD4 with Clone declared in the
+//   prelude tried (header debt); a local class over its RTTI direct base CCreatureActionBase engine/CCreatureActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
+
+class CCreatureAction_ShopkeeperGetOut : public CCreatureActionBase
+{
+public:
+    CCreatureAction_ShopkeeperGetOut(const CCreatureAction_ShopkeeperGetOut& other);   // 0x0084C170
+    virtual void PerformAction();                                   // ?PerformAction@CCreatureAction_ShopkeeperGetOut@@UAEXXZ (both PDB name sets)
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0xD4 - sizeof(CCreatureActionBase)];   // CCreatureAction_ShopkeeperGetOut's own members (not modelled: the copy constructor is out of line); sizeof 0xD4
 };
 
-class CCreatureAction_ShopkeeperGetOut : public CCreatureActionBase { public:
-    unsigned char _body[0xd4 - 4];    // sizeof(CCreatureAction_ShopkeeperGetOut) = 0xd4
-    CCreatureAction_ShopkeeperGetOut(const CCreatureAction_ShopkeeperGetOut& other);             // 0x0084C170
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_ShopkeeperGetOut::Clone()
+CCreatureActionBase* CCreatureAction_ShopkeeperGetOut::Clone() const
 {
     return new CCreatureAction_ShopkeeperGetOut(*this);
 }

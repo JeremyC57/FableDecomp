@@ -1,32 +1,33 @@
-#include <cstdio>
+// Behaviour test for 0x00453CE5 CHeroTitleDef::Copy (NF425): links the row object; CHeroTitleDef::operator= is defined here and records its `this` and
+// argument, so the test checks the copy goes from `other` into `this` exactly once (a swapped or doubled copy fails).
+#include <stdio.h>
 
-class CHeroTitleDef { public: int x; };
-
-static int g_called = 0;
-static CHeroTitleDef* g_self = 0;
-static void* g_src = 0;
-
-void __fastcall CHeroTitleDef_Copy_impl(CHeroTitleDef* self, void* src)
+class CDefClassBase;
+class CHeroTitleDef
 {
-    g_called = 1;
-    g_self = self;
-    g_src = src;
-}
+public:
+    virtual void Copy(const CDefClassBase* other);   // defined in the row object
+    CHeroTitleDef& operator=(const CHeroTitleDef& other);
+    char pad[64];
+};
 
-void __fastcall CHeroTitleDef_Copy(CHeroTitleDef* self, void* src)
-{
-    CHeroTitleDef_Copy_impl(self, src);
-}
+static const void* g_this = 0;
+static const void* g_other = 0;
+static int g_calls = 0;
+CHeroTitleDef& CHeroTitleDef::operator=(const CHeroTitleDef& other) { g_this = this; g_other = &other; ++g_calls; return *this; }
 
-int main()
+static long g_dst[32];
+static long g_src[32];
+
+int main(void)
 {
-    CHeroTitleDef obj; obj.x = 7;
-    int marker = 42;
-    CHeroTitleDef_Copy(&obj, &marker);
-    if (g_called == 1 && g_self == &obj && g_src == (void*)&marker) {
-        std::printf("CHeroTitleDef_00453ce5_TEST PASS\n");
-        return 0;
+    CHeroTitleDef* dst = (CHeroTitleDef*)g_dst;
+    const CDefClassBase* src = (const CDefClassBase*)g_src;
+    dst->CHeroTitleDef::Copy(src);
+    if (g_calls != 1 || g_this != (const void*)g_dst || g_other != (const void*)g_src) {
+        printf("CHeroTitleDef_00453ce5_TEST FAIL calls=%d\n", g_calls);
+        return 1;
     }
-    std::printf("CHeroTitleDef_00453ce5_TEST FAIL\n");
-    return 1;
+    printf("CHeroTitleDef_00453ce5_TEST PASS\n");
+    return 0;
 }

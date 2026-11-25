@@ -1,0 +1,7 @@
+address	class	retail_vftable	head	new
+0066a780	CCombatAction_GenericResponseToDecapitation	0x0125AD94:13/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 63 agree 16 unbound 2 WRONG 4:?FinishAction@CCombatActionBase@@MAEXXZ 12:?Initialise@CCombatActionBase@@UAEXXZ
+0066a880	CCombatAction_GenericResponseToDrain	0x0125B024:48/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 63 agree 16 unbound 2 WRONG 12:?Initialise@CCombatActionBase@@UAEXXZ 47:?IsAbleToBeAttacked@CCreatureActionBase@@UBE_NXZ
+006f8680	CCreatureAction_LeapBack	0x01263024:79/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 63 agree 18 unbound 0 WRONG 
+008c9720	CCreatureAction_BanditKingChangeWeapons	0x0128180C:12/70	1 slots 0 agree 1 unbound 0 WRONG 	70 slots 61 agree 9 unbound 0 WRONG 
+00977560	CCreatureAction_JackShotNear	0x012979EC:74/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 64 agree 17 unbound 0 WRONG 
+00977590	CCreatureAction_JackShotFar	0x01297B4C:74/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 64 agree 17 unbound 0 WRONG 

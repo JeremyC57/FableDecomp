@@ -1,0 +1,11 @@
+address	class	retail_vftable	head	new
+009086c0	CCreatureAction_TrollPursue	0x0128EA4C:12/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 
+0090a7e0	CCreatureAction_MidAttackFacing	0x0128EE8C:75/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 
+00925c10	CCreatureAction_TentacleRise	0x01290304:60/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 
+00925c40	CCreatureAction_TentacleStrikeInto	0x0129044C:60/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 
+0095ccd0	CCreatureAction_WaspQueenLashOutAttack	0x0129504C:82/82	1 slots 0 agree 1 unbound 0 WRONG 	82 slots 67 agree 15 unbound 0 WRONG 
+00962a30	CCreatureAction_IceTrollIcicleAttack	0x012960C4:74/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 64 agree 17 unbound 0 WRONG 
+0096c180	CCreatureAction_WhisperJumpIntoSky	0x012969E4:75/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 64 agree 17 unbound 0 WRONG 
+0097d190	CCreatureAction_VillagerAttack	0x01298E2C:74/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 
+0097d200	CCreatureAction_VillagerAdvance	0x012990BC:74/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 
+0097d230	CCreatureAction_VillagerBackOff	0x01299204:74/81	1 slots 0 agree 1 unbound 0 WRONG 	81 slots 65 agree 16 unbound 0 WRONG 

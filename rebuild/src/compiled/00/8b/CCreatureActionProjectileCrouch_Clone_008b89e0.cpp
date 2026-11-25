@@ -1,23 +1,59 @@
-// CCreatureAction_ProjectileCrouch::Clone() -- new CCreatureAction_ProjectileCrouch(*this)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008B89E0, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push 0x124 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CCreatureAction_ProjectileCrouch::CCreatureAction_ProjectileCrouch(const CCreatureAction_ProjectileCrouch&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CCreatureAction_ProjectileCrouch) = 0x124, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x008B8A10; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-class CCreatureActionBase { public:
-    virtual void v00();
+// CCreatureAction_ProjectileCrouch::Clone() const -- `return new CCreatureAction_ProjectileCrouch(*this);` through the out-of-line copy constructor
+// Leaf: ?Clone@CCreatureAction_ProjectileCrouch@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008B89E0, 34 bytes: operator new(0x124) 0x00BFEA1A, null test, then the copy constructor 0x008B8A10 on `*this`;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_ProjectileCrouch@@UBEPAVCCreatureActionBase@@XZ: RTTI placement +
+//   Ego_r/FableWin; callee ??0CCreatureAction_ProjectileCrouch@@QAE@ABV0@@Z: FableWin name set; retail 0x008B8A10 stores
+//   CCreatureAction_ProjectileCrouch's vftable 0x0127AC94 first; the landed row at 0x008B8A10 defines it.
+// Respell (NF425): was the stand-in self ?Clone@CCreatureAction_ProjectileCrouch@@QAEPAVCCreatureActionBase@@XZ (non-virtual,
+//   non-const); now the real virtual member, so the RTTI-placed name is defined.
+// Header: engine header engine/CCreatureAction_ProjectileCrouch.h does not give the class at sizeof 0x124 with Clone declared in the
+//   prelude tried (header debt); a local class over its RTTI direct base CCombatActionBase engine/CCombatActionBase.h.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+
+class CCreatureAction_ProjectileCrouch : public CCombatActionBase
+{
+public:
+    CCreatureAction_ProjectileCrouch(const CCreatureAction_ProjectileCrouch& other);   // 0x008B8A10
+public:
+    virtual CCreatureActionBase* Clone() const;
+    unsigned char _body[0x124 - sizeof(CCombatActionBase)];   // CCreatureAction_ProjectileCrouch's own members (not modelled: the copy constructor is out of line); sizeof 0x124
 };
 
-class CCreatureAction_ProjectileCrouch : public CCreatureActionBase { public:
-    unsigned char _body[0x124 - 4];    // sizeof(CCreatureAction_ProjectileCrouch) = 0x124
-    CCreatureAction_ProjectileCrouch(const CCreatureAction_ProjectileCrouch& other);             // 0x008B8A10
-    CCreatureActionBase* Clone();
-};
-
-CCreatureActionBase* CCreatureAction_ProjectileCrouch::Clone()
+CCreatureActionBase* CCreatureAction_ProjectileCrouch::Clone() const
 {
     return new CCreatureAction_ProjectileCrouch(*this);
 }
