@@ -1378,3 +1378,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-25 A: NF442 / NF443 launched on T1 round 2 (lists A / B; batches must keep table lines self-contained, with CROSSBATCH.tsv for outside witnesses, and 4-column SELF_SYMBOLS). Running: NF440, NF441, NF442, NF443.
 - 2026-11-25 A: landed NF440 acc1/acc2 (14 registered best-guess self respells, R-NF440-1 gate fix abcd45ab83); bg 170 held on the emitter grep.
 - 2026-11-25 A: filed NF441 hand-back (research only; 7 port-only name fixes queued); NF440 resumed on the bg emitter pilot; NF444 started (GameCODA render header port).
+- 2026-11-25 A: owner: agent cap drops from 4 to 3 once the next running agent finishes (no replacement for it).
