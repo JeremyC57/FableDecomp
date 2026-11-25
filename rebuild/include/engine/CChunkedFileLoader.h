@@ -8,9 +8,15 @@ class CChunkedFileLoader {
 public:
     CChunkedFileLoader(const char*);
     virtual ~CChunkedFileLoader();
+#ifdef FABLE_RETAIL_CCHUNKEDFILELOADER_LOADCHUNKEDFILE
+    // Per-TU opt-in (NF422, the loaders 0x00A99420 / 0x00A9B640): Ego_r.pdb / FableWin.pdb
+    // ?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z (protected), retail 0x00AA79C0 (reloc_bindings).
+protected:
+    void LoadChunkedFile(class CChunkedFile&, class CDataInputStream&);   // 0x00AA79C0
+#endif
 private:
     int ReadUnknownChunkTypes;      // +0x04
     char SupportedFileType[5];      // +0x08
 };
-FABLE_STATIC_ASSERT(sizeof(CChunkedFileLoader) == 0x10);
+FABLE_STATIC_ASSERT_AT(15, sizeof(CChunkedFileLoader) == 0x10);
 #endif

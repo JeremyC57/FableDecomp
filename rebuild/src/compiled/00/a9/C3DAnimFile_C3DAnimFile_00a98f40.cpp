@@ -1,25 +1,11 @@
-// C3DAnimFile::C3DAnimFile(const CCountedPointer<C3DAnimFileRootChunk>& root) -- chunked file over a typed root chunk
 // Leaf: ??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A98F40, length 96 bytes, thiscall `ret 4`.
-// Callees: CChunkedFile::CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>&) @ 0x00AA7DB0, operator delete @ 0x00BFE9BC (the
-//   count block). Vtable 0x0129E034 (rtti-vtables.tsv; one slot, the ??_G 0x00A9A730).
-// The derived-typed counted pointer is converted to the base-typed one the CChunkedFile constructor takes: the converting constructor
-// copies object + count block into an 8-byte temporary and bumps the count, the base constructor gets its address, and the temporary is
-// released (decrement, re-read, destroy + delete on zero) before this class's vtable is stored.
-// Name: Ego_r.pdb 0x00B980A0 (lib_3d_anim_file.obj index 14) and FableWin.pdb 0x03204CD0 (lib_3d_anim_file.obj) spell the PRIVATE
-//   ??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z (engine/C3DAnimFile.h declares it private). NF419: was the
-//   public stand-in ...@@QAE@... on a row-local model; now the shared engine/C3DAnimFile.h with its implicit destructor.
-// Option S unit (owner ruling 2026-11-24; NF419): ONE translation unit, retail lib_3d_anim_file.obj, for 0x00A98F40 (this constructor,
-//   the owner) and 0x00A9A730 (the compiler-generated ??_GC3DAnimFile@@UAEPAXI@Z, emitted with the vtable this constructor stores).
-//   Ego_r.pdb lists both in that .obj (indexes 14 / 36) and so does FableWin.pdb. The thin row 0x00A9A730 includes this file.
-#define FABLE_RETAIL_CCHARSTRING
-#define FABLE_RETAIL_CCHUNKEDFILECHUNK
-#define FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK
-#define FABLE_RETAIL_C3DANIMFILE_IMPLICIT_DESTRUCTOR
-#include "engine/C3DAnimFile.h"
-#include "engine/C3DAnimFileRootChunk.h"
-
-C3DAnimFile::C3DAnimFile(const CCountedPointer<C3DAnimFileRootChunk>& root)
-    : CChunkedFile(root)
-{
-}
+// C3DAnimFile::C3DAnimFile(const CCountedPointer<C3DAnimFileRootChunk>& root) -- chunked file over a typed root chunk (private)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A98F40, length 96 bytes, thiscall `ret 4`. Vtable 0x0129E034.
+// Name: Ego_r.pdb 0x00B980A0 (index 14) and FableWin.pdb 0x03204CD0 (lib_3d_anim_file.obj) spell the PRIVATE constructor (AAE); the loader C3DAnimFileLoader is a friend (it calls it).
+// The derived-typed counted pointer is converted to the base-typed one CChunkedFile's constructor 0x00AA7DB0 takes (an 8-byte temporary,
+//   count bumped), released after the base constructor, before this class's vtable is stored.
+// NF422: was the owner of the two-member NF419 unit; now a thin row of the five-member unit owned by 0x00A98E60.
+// Option S unit (owner ruling 2026-11-24; NF419 b7, re-owned and widened by NF422): this function's one body lives in its retail TU-mate's
+//   row 0x00A98E60 (owner of the retail lib_3d_anim_file.obj unit). The owner is included below with no code of its own; that object's
+//   copy of this function grades against this address.
+#include "../src/compiled/00/a9/C3DAnimFile_C3DAnimFile_00a98e60.cpp"

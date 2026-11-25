@@ -18,6 +18,13 @@ class C3DMeshFileLoader : public CChunkedFileLoader {
 public:
     C3DMeshFileLoader();
     virtual ~C3DMeshFileLoader();
+#ifdef FABLE_RETAIL_C3DMESHFILELOADER_LOAD
+    // Per-TU opt-in (NF422, lib_3d_mesh_file.obj unit 0x00A9AD80): Ego_r.pdb (lib_3d_mesh_file.obj indexes 22 / 23) and FableWin.pdb
+    // ?LoadMeshFile@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@AAVCDataInputStream@@@Z (retail 0x00A9B640) and
+    // ?LoadMeshFileCompressed@...@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z (retail 0x00A9B740). Declarations only.
+    CCountedPointer<class C3DMeshFile> LoadMeshFile(class CDataInputStream&);                                             // 0x00A9B640
+    CCountedPointer<class C3DMeshFile> LoadMeshFileCompressed(const void*, unsigned long, class CHandleBasedMemoryPool&);  // 0x00A9B740
+#endif
 #ifdef FABLE_RETAIL_C3DMESHFILELOADER_INLINE_REGISTER
     // Nested opt-in (chunk 851, row 0x00A9BBE0, the Codex pass 12 model): inside the constructor retail expands each
     // Register*SubChunkType straight into AddChunkType 0x00A9AD00 with the parent's slot-6 GetAsSuperChunk() (0x00A9BCF2 ..);
@@ -69,5 +76,5 @@ private:
     CCountedPointer<CChunkedFileChunk> ConvexVolumeChunkType;     // +0xB0
     CCountedPointer<CChunkedFileChunk> MirroredTextureChunkType;  // +0xB8
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFileLoader) == 0xC0);
+FABLE_STATIC_ASSERT_AT(72, sizeof(C3DMeshFileLoader) == 0xC0);
 #endif

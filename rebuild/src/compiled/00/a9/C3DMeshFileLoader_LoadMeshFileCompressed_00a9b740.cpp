@@ -1,113 +1,12 @@
-// C3DMeshFileLoader::LoadMeshFileCompressed(const void* data, unsigned long size, CHandleBasedMemoryPool& pool) -- load a 3D mesh file from a (possibly LZO-compressed) memory image
-// Leaf: LoadMeshFileCompressed
-// NF131 (2026-11-20, q6182): the row-local CMemoryDataInputStream ctor declaration respelled in place to the PDB (const void*, unsigned long):
-//   ??0CMemoryDataInputStream@@QAE@PBXK@Z (Ego_r.pdb 0x00AFCA20 + FableWin.pdb 0x030849C0), the spelling the other landed callers of 0x00994930 bind.
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00A9B740, 250 bytes (manifest label "C3DMeshFileLoader::LoadMeshFileCompressed" is propagated from the byte twin 0x00A99510) (`ret 10h`: hidden result + 3 args).
-// Ego_r.pdb: ?LoadMeshFileCompressed@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z.
-// Callees: CMemoryDataInputStream(void*, long) 0x00994930 / ~CMemoryDataInputStream 0x00993B10,
-// C3DMeshFileLoader::LoadMeshFile(CDataInputStream&) 0x00A9B640, CTemporaryBuffer(size, pool, scratch) 0x00A98860 /
-// ~CTemporaryBuffer 0x00A98910, lzo1x_decompress_asm_fast 0x00C069D0 (cdecl), operator delete 0x00BFE9BC;
-// the shared scratch buffer global 0x013CB498, the 4-byte ">>>>" tag 0x0129E454.
-// Shape: a ">>>>" tag (4-byte memcmp intrinsic: `mov eax,offset ; mov edx,[eax] ; cmp`) marks an uncompressed
-// image read in place (`return LoadMeshFile(stream)` builds straight into the result). Otherwise the first dword is
-// the decompressed size: a temporary buffer (size + 3 for LZO's overrun), decompress (the in/out length local lands
-// in the dead `data` argument slot), read the stream, then `return file;` (no NRVO: merged inc/dec copy-out with
-// the count block kept in esi), the stream and the buffer destroyed after the counted pointer.
-// LoadMeshFile is the previous function of this TU (0x00A9B640): its landed body (and the C3DMeshFile ctor it
-// sits on, 0x00A9AE60) is compiled above under auto_inline(off) so VC7.1 knows the result object does not escape
-// and keeps the count block in a register for the copy-out, as retail does.
-// NF188 (2026-11-20, q4251): the row-local CDataInputStream / CMemoryDataInputStream models (a user-declared destructor that
-//   bound a CMemoryDataInputStream dtor spelling at 0x00993B10) are replaced by the shared engine/CDataInputStream.h /
-//   engine/CMemoryDataInputStream.h classes, whose compiler-generated destructor calls ~CDataStream 0x00993B10 directly
-//   (??1CDataStream@@UAE@XZ, Ego_r.pdb 0x00AFBBB0 + FableWin.pdb 0x03080440; engine/CDataInputStream.h retry11a note).
-#include <string.h>
-
-#include "engine/CCountedPointer.h"
-
-
-#define FABLE_RETAIL_CDATAINPUTSTREAM
-#define FABLE_RETAIL_CMEMORYDATAINPUTSTREAM
-#include "engine/CMemoryDataInputStream.h"
-
-class CHandleBasedMemoryPool;
-class CScratchBuffer;
-extern CScratchBuffer g_ScratchBuffer;               // 0x013CB498
-
-struct CTemporaryBuffer {                            // 0x18 bytes (Ego_r.pdb)
-    CTemporaryBuffer(unsigned long size, CHandleBasedMemoryPool* pool, CScratchBuffer* scratch);   // 0x00A98860
-    virtual ~CTemporaryBuffer();                     // 0x00A98910, slot 0 (NF377: Ego_r + FableWin ??1CTemporaryBuffer@@UAE@XZ, ??_E in the slot; was a v00 placeholder plus a non-virtual destructor)
-    void*                   Data;                    // +0x04
-    CHandleBasedMemoryPool* MemoryPool;              // +0x08
-    long                    MemoryHandle;            // +0x0c
-    CScratchBuffer*         ScratchBuffer;           // +0x10
-    long                    AllocateType;            // +0x14
-};
-
-extern "C" int lzo1x_decompress_asm_fast(const unsigned char* src, unsigned long src_len,
-                                     unsigned char* dst, unsigned long* dst_len, void* wrkmem);   // 0x00C069D0
-
-class CChunkedFileChunk { public:
-    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4();
-    virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8();
-    virtual CChunkedFileChunk* CreateNewInstance() const;   // slot 9 (+0x24)
-};
-class CChunkedFileSuperChunk : public CChunkedFileChunk { public:};
-class C3DMeshFileRootChunk : public CChunkedFileSuperChunk { public:};
-
-class CChunkedFile { public:
-    CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root);   // 0x00AA7DB0
-    virtual ~CChunkedFile();
-    unsigned char _body[0x10];                      // RootChunk, Version, FileComment (sizeof 0x14)
-};
-class C3DMeshFile : public CChunkedFile { public:
-    C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root);   // 0x00A9AE60
-};
-
-class CChunkedFileLoader { public:
-    virtual ~CChunkedFileLoader();
-    unsigned char _pad04[0x0c];
-    CChunkedFileChunk* RootChunkPrototype;          // +0x10
-    protected:
-    void LoadChunkedFile(CChunkedFile& file, CDataInputStream& in);
-    public:
-   // 0x00AA79C0
-};
-
-struct C3DMeshFileLoader : CChunkedFileLoader {
-    CCountedPointer<C3DMeshFile> LoadMeshFile(CDataInputStream& in);   // 0x00A99420
-    CCountedPointer<C3DMeshFile> LoadMeshFileCompressed(const void* data, unsigned long size, CHandleBasedMemoryPool& pool);
-};
-
-#pragma auto_inline(off)
-C3DMeshFile::C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root)
-    : CChunkedFile(root)
-{
-}
-
-CCountedPointer<C3DMeshFile> C3DMeshFileLoader::LoadMeshFile(CDataInputStream& in)
-{
-    CCountedPointer<C3DMeshFileRootChunk> root((C3DMeshFileRootChunk*)RootChunkPrototype->CreateNewInstance());
-    CCountedPointer<C3DMeshFile> file(new C3DMeshFile(root));
-    unsigned long position = in.GetPosition();
-    in.SetPosition(position);
-    LoadChunkedFile(*file, in);
-    return file;
-}
-#pragma auto_inline(on)
-
-CCountedPointer<C3DMeshFile> C3DMeshFileLoader::LoadMeshFileCompressed(const void* data, unsigned long size, CHandleBasedMemoryPool& pool)
-{
-    if (memcmp(data, ">>>>", 4) == 0) {
-        CMemoryDataInputStream stream(data, size);
-        return LoadMeshFile(stream);
-    }
-    unsigned long decompressedSize = *(const unsigned long*)data;
-    CTemporaryBuffer buffer(decompressedSize + 3, &pool, &g_ScratchBuffer);
-    unsigned char* dst = (unsigned char*)buffer.Data;
-    unsigned long outLength = decompressedSize;
-    lzo1x_decompress_asm_fast((const unsigned char*)data + 4, size - 4, dst, &outLength, 0);
-    CMemoryDataInputStream stream(dst, decompressedSize);
-    CCountedPointer<C3DMeshFile> file = LoadMeshFile(stream);
-    return file;
-}
+// Leaf: ?LoadMeshFileCompressed@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z
+// C3DMeshFileLoader::LoadMeshFileCompressed(const void* data, unsigned long size, CHandleBasedMemoryPool& pool) -- load from a (possibly LZO-compressed) memory image
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9B740, length 250 bytes (`ret 10h`: hidden result + 3 args).
+// Name: Ego_r.pdb 0x00C0C840 (index 23) and FableWin.pdb 0x033D4760 (lib_3d_mesh_file.obj).
+// Callees: CMemoryDataInputStream(const void*, unsigned long) 0x00994930 / ~CDataStream 0x00993B10 (implicit stream destructors),
+//   C3DMeshFileLoader::LoadMeshFile 0x00A9B640 (same TU), CTemporaryBuffer 0x00A98860 / ~CTemporaryBuffer 0x00A98910, lzo1x_decompress_asm_fast 0x00C069D0,
+//   operator delete 0x00BFE9BC; g_ScratchBuffer 0x013CB498; the ">>>>" tag (4-byte memcmp intrinsic).
+// NF422: was a separate TU that redefined LoadMeshFile 0x00A9B640 and the root-chunk constructor (strong duplicates of the unit's bodies).
+// Option S unit (owner ruling 2026-11-24; NF419 b7, re-owned and widened by NF422): this function's one body lives in its retail TU-mate's
+//   row 0x00A9AD80 (owner of the retail lib_3d_mesh_file.obj unit). The owner is included below with no code of its own; that object's
+//   copy of this function grades against this address.
+#include "../src/compiled/00/a9/C3DMeshFile_C3DMeshFile_00a9ad80.cpp"

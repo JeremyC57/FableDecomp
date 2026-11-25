@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a99e30   RELOCATION_MATCH PASS   GetChunkDescription
+00a9c9c0   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 2
+  00a99e30 RELOCATION_MATCH C3DAnimFileRootChunk::?GetChunkDescription@C3DAnimFileRootChunk@@UBE?BVCCharString@@XZ
+  00a9c9c0 RELOCATION_MATCH C3DMeshFileRootChunk::?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ

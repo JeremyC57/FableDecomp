@@ -16177,13 +16177,13 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ReadFromFile@CChunkedFileSuperChunk@@QAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	00aa8830	00a98af0
 ??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z	00aa7db0	00a98e60
 ?DeleteData@?$CCountedPointer@VCChunkedFileSuperChunk@@@@SIXPAX@Z	00a99fd0	00a98e60
-??0C3DAnimFile@@QAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z	00a98f40	00a99420
+??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z	00a98f40	00a99420
 ?DeleteData@?$CCountedPointer@VC3DAnimFile@@@@SIXPAX@Z	00a9a000	00a99420
 ?DeleteData@?$CCountedPointer@VC3DAnimFileRootChunk@@@@SIXPAX@Z	00a99fe0	00a99420
 ?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z	00aa79c0	00a99420
 ?GetFirstSubMesh@C3DMeshFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileSubMeshChunk@@@@XZ	00a9b030	00a9b460
 ?GetNextSubMesh@C3DMeshFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileSubMeshChunk@@@@ABV2@@Z	00a9b0c0	00a9b460
-??0C3DMeshFile@@QAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z	00a9ae60	00a9b640
+??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z	00a9ae60	00a9b640
 ?DeleteData@?$CCountedPointer@VC3DMeshFile@@@@SIXPAX@Z	00a9cb50	00a9b640
 ?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z	00a9cb20	00a9b640
 ?AddCombinationBlend@C3DAnimationBlendState@@QAEXPAVC3DAnimationStateAlpha@@@Z	00a3c310	00a9f0d0

@@ -1,42 +1,131 @@
-// Behaviour test for 0x00A9D2A0 C3DMeshFile::`scalar deleting destructor' (links the REAL row object: the Option S owner's TU, NF419).
-// ~CChunkedFile is a recording stub bound by /alternatename (as is the base constructor the owner's TU references); operator delete is
-// replaced to record its argument. Each call checks the destructor ran once on this, operator delete ran on this exactly when bit 0 of
-// the flags is set, and the returned pointer is this; the vtable slot 0 of C3DMeshFile's vftable is this function.
+// Behaviour test for 0x00A9D2A0 C3DMeshFile::`scalar deleting destructor' (links the REAL row object: the retail lib_3d_mesh_file.obj unit's TU, NF422).
+// Every external of the unit object is a recording stub bound by /alternatename (thiscall stubs are __fastcall with a dummy edx); operator
+// new / delete are replaced and recorded; the row symbol and the compiler-generated helpers are reached through /alternatename aliases.
+// Raw retail layouts: CCountedPointer Data +0 / Info +4; CCPPointerInfo RefCount +0, __fastcall DeleteFunc +4, Data +8;
+// C3DMeshFile 0x14 bytes (vptr, RootChunk +4, Version +0xC, FileComment +0x10); loader RootChunkType at +0x10.
 #include <stdio.h>
 #include <string.h>
 #define ALT(a, b) comment(linker, "/alternatename:" a "=" b)
-#pragma ALT("??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z", "@BaseCtor@12")
-#pragma ALT("??1CChunkedFile@@UAE@XZ", "@BaseDtor@8")
-#pragma ALT("@CallRow@12", "??_GC3DMeshFile@@UAEPAXI@Z")
+#pragma ALT("??0CCharString@@QAE@PBDJ@Z", "@CCharStringCtor@16")
+#pragma ALT("??1CCharString@@QAE@XZ", "@CCharStringDtor@8")
+#pragma ALT("??4CCharString@@QAEABV0@ABV0@@Z", "@CCharStringAssign@12")
+#pragma ALT("??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z", "@ChunkedFileCtor@12")
+#pragma ALT("??1CChunkedFile@@UAE@XZ", "@ChunkedFileDtor@8")
+#pragma ALT("??0CChunkedFileSuperChunk@@IAE@PBD@Z", "@SuperChunkCtor@12")
+#pragma ALT("??1CChunkedFileSuperChunk@@UAE@XZ", "@SuperChunkDtor@8")
+#pragma ALT("??0CMemoryDataInputStream@@QAE@PBXK@Z", "@MemStreamCtor@16")
+#pragma ALT("??1CDataStream@@UAE@XZ", "@DataStreamDtor@8")
+#pragma ALT("??0CTemporaryBuffer@@QAE@KPAVCHandleBasedMemoryPool@@PAVCScratchBuffer@@@Z", "@TempBufCtor@20")
+#pragma ALT("??1CTemporaryBuffer@@UAE@XZ", "@TempBufDtor@8")
+#pragma ALT("?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z", "@LoadChunked@16")
+#pragma ALT("?g_ScratchBuffer@@3VCScratchBuffer@@A", "_g_scratch")
+#pragma ALT("?CreateNewInstance@C3DMeshFileRootChunk@@UBEPAVCChunkedFileChunk@@XZ", "_UnusedSlot")
+#pragma ALT("?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ", "_UnusedSlot")
+#pragma ALT("?ReadFromFile@CChunkedFileSuperChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z", "_UnusedSlot")
+#pragma ALT("?WriteToFile@CChunkedFileSuperChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z", "_UnusedSlot")
+#pragma ALT("?GetChunkInfo@CChunkedFileChunk@@UBE?BVCCharString@@XZ", "_UnusedSlot")
+#pragma ALT("?IsSuperChunk@CChunkedFileSuperChunk@@UBEHXZ", "_UnusedSlot")
+#pragma ALT("?IsUnknownType@CChunkedFileChunk@@UBEHXZ", "_UnusedSlot")
+#pragma ALT("?GetAsSuperChunk@CChunkedFileSuperChunk@@UBEPBV1@XZ", "_UnusedSlot")
+#pragma ALT("?GetAsSuperChunk@CChunkedFileSuperChunk@@UAEPAV1@XZ", "_UnusedSlot")
+#pragma ALT("?InitNewInstance@CChunkedFileSuperChunk@@MBEPAVCChunkedFileChunk@@PAV2@@Z", "_UnusedSlot")
 #pragma ALT("_g_vtable", "??_7C3DMeshFile@@6B@")
+#pragma ALT("_g_rootVtable", "??_7C3DMeshFileRootChunk@@6B@")
+#pragma ALT("@DelSuper@4", "?DeleteData@?$CCountedPointer@VCChunkedFileSuperChunk@@@@SIXPAX@Z")
+#pragma ALT("@DelRoot@4", "?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z")
+#pragma ALT("@DelFile@4", "?DeleteData@?$CCountedPointer@VC3DMeshFile@@@@SIXPAX@Z")
+#pragma ALT("@RootDeleting@12", "??_GC3DMeshFileRootChunk@@UAEPAXI@Z")
+#pragma ALT("@CallRow@12", "??_GC3DMeshFile@@UAEPAXI@Z")
+
+struct Info { unsigned long refs; void (__fastcall* del)(void*); void* data; };
+struct CP { void* data; Info* info; };
 extern "C" {
-void* __fastcall CallRow(void* self, int, unsigned int flags);
-extern void* g_vtable[];
+extern void* g_vtable[]; extern void* g_rootVtable[]; char g_scratch[16];
+void __fastcall DelSuper(void*); void __fastcall DelRoot(void*); void __fastcall DelFile(void*);
+void* __fastcall RootDeleting(void*, int, unsigned int);
 }
 static int g_fail = 0, g_run = 0;
 static void Check(bool ok, int line) { if (!ok) { g_fail = 1; printf("check failed at line %d (run %d)\n", line, g_run); } }
 #define CHECK(c) Check((c) ? true : false, __LINE__)
-static void* g_deleted = 0; static int g_ndel = 0;
-void operator delete(void* p) { g_deleted = p; ++g_ndel; }
-static void* g_dtorThis = 0; static int g_ndtor = 0;
-extern "C" void* __fastcall BaseCtor(void* self, int, const void*) { return self; }
-extern "C" void __fastcall BaseDtor(void* self, int) { g_dtorThis = self; ++g_ndtor; }
+// event log
+static char g_log[64][24]; static void* g_logp[64]; static int g_nlog = 0;
+static void Log(const char* e, void* p) { if (g_nlog < 64) { strncpy(g_log[g_nlog], e, 23); g_log[g_nlog][23] = 0; g_logp[g_nlog] = p; } ++g_nlog; }
+static int Find(const char* e, void* p) { for (int i = 0; i < g_nlog && i < 64; ++i) if (!strcmp(g_log[i], e) && (p == (void*)-1 || g_logp[i] == p)) return i; return -1; }
+static int Count(const char* e) { int n = 0; for (int i = 0; i < g_nlog && i < 64; ++i) if (!strcmp(g_log[i], e)) ++n; return n; }
+static unsigned char g_heap[16][0x60]; static unsigned int g_newSize[16]; static int g_nnew = 0;
+void* operator new(unsigned int n) { int k = g_nnew < 16 ? g_nnew : 15; g_newSize[k] = n; ++g_nnew; memset(g_heap[k], 0xEE, sizeof g_heap[k]); Log("new", g_heap[k]); return g_heap[k]; }
+void operator delete(void* p) { Log("delete", p); }
+static void Reset() { ++g_run; g_nlog = 0; g_nnew = 0; }
+extern "C" {
+// CCharString(const char*, long) / ~CCharString / operator=
+static const char* g_strText = 0; static long g_strLen = 0; static void* g_assignSrc = 0;
+void* __fastcall CCharStringCtor(void* self, int, const char* t, long n) { g_strText = t; g_strLen = n; *(const char**)self = t; Log("strctor", self); return self; }
+void __fastcall CCharStringDtor(void* self, int) { Log("strdtor", self); }
+void* __fastcall CCharStringAssign(void* self, int, void* other) { g_assignSrc = other; *(const char**)self = *(const char**)other; Log("strassign", self); return self; }
+// CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>&) / ~CChunkedFile: keeps a reference when g_keep
+static int g_keep = 1; static CP g_baseSeen; static unsigned long g_baseSeenRefs = 0; static const CP* g_baseArg = 0;
+void* __fastcall ChunkedFileCtor(void* self, int, const CP* root)
+{
+    g_baseArg = root; g_baseSeen = *root; g_baseSeenRefs = root->info ? root->info->refs : 0xFFFFFFFF;
+    ((void**)self)[0] = (void*)0x11111111; ((CP*)((char*)self + 4))->data = 0; ((CP*)((char*)self + 4))->info = 0; ((unsigned long*)self)[3] = 7;
+    if (g_keep) { *(CP*)((char*)self + 4) = *root; if (root->info) ++root->info->refs; }
+    Log("filector", self); return self;
+}
+void __fastcall ChunkedFileDtor(void* self, int) { Log("filedtor", self); }
+static const char* g_chunkType = 0;
+void* __fastcall SuperChunkCtor(void* self, int, const char* type) { g_chunkType = type; ((void**)self)[0] = (void*)0x22222222; Log("superctor", self); return self; }
+void __fastcall SuperChunkDtor(void* self, int) { Log("superdtor", self); }
+// CMemoryDataInputStream(const void*, unsigned long) / ~CDataStream; the stream's vtable is the test's (GetPosition slot 2, SetPosition slot 1)
+static unsigned long g_pos = 0x1234; static unsigned long g_setPos = 0xFFFFFFFF;
+unsigned long __fastcall StreamGetPosition(void* self, int) { Log("getpos", self); return g_pos; }
+void __fastcall StreamSetPosition(void* self, int, unsigned long p) { g_setPos = p; Log("setpos", self); }
+void __cdecl UnusedSlot() { printf("unexpected call\n"); g_fail = 1; }
+void* g_streamVtbl[4] = { (void*)UnusedSlot, (void*)StreamSetPosition, (void*)StreamGetPosition, (void*)UnusedSlot };
+static const void* g_msData = 0; static unsigned long g_msSize = 0;
+void* __fastcall MemStreamCtor(void* self, int, const void* data, unsigned long size) { g_msData = data; g_msSize = size; ((void**)self)[0] = g_streamVtbl; Log("msctor", self); return self; }
+void __fastcall DataStreamDtor(void* self, int) { Log("msdtor", self); }
+// CTemporaryBuffer(size, pool, scratch) / ~CTemporaryBuffer
+static unsigned char g_buf[64]; static unsigned long g_tbSize = 0; static void* g_tbPool = 0; static void* g_tbScratch = 0;
+void* __fastcall TempBufCtor(void* self, int, unsigned long size, void* pool, void* scratch) { g_tbSize = size; g_tbPool = pool; g_tbScratch = scratch; ((void**)self)[1] = g_buf; Log("tbctor", self); return self; }
+void __fastcall TempBufDtor(void* self, int) { Log("tbdtor", self); }
+static const unsigned char* g_lzSrc = 0; static unsigned long g_lzLen = 0, g_lzOut = 0; static unsigned char* g_lzDst = 0; static void* g_lzWrk = (void*)1;
+int lzo1x_decompress_asm_fast(const unsigned char* src, unsigned long len, unsigned char* dst, unsigned long* dlen, void* wrk)
+{ g_lzSrc = src; g_lzLen = len; g_lzDst = dst; g_lzOut = *dlen; g_lzWrk = wrk; memcpy(dst, "unpacked", 8); Log("lzo", dst); return 0; }
+// CChunkedFileLoader::LoadChunkedFile(CChunkedFile&, CDataInputStream&)
+static void* g_lcThis = 0; static void* g_lcFile = 0; static void* g_lcIn = 0; static const void* g_lcInData = 0;
+void __fastcall LoadChunked(void* self, int, void* file, void* in) { g_lcThis = self; g_lcFile = file; g_lcIn = in; g_lcInData = g_msData; Log("loadchunked", file); }
+}
+// the root chunk prototype and the root chunks it creates (test vtables: slot 0 deleting destructor, slot 9 CreateNewInstance)
+static unsigned char g_rootObj[4][0x40]; static int g_nroot = 0; static int g_protoNull = 0;
+static void* g_fakeRootVtbl[11]; static void* g_protoVtbl[11];
+extern "C" void* __fastcall FakeRootDeleting(void* self, int, unsigned int flags) { Log(flags == 1 ? "rootdel1" : "rootdelX", self); return self; }
+extern "C" void* __fastcall ProtoCreate(void* self, int) { Log("create", self); if (g_protoNull) return 0; void* r = g_rootObj[g_nroot++ & 3]; *(void**)r = g_fakeRootVtbl; return r; }
+struct Proto { void** vptr; }; static Proto g_proto;
+static void InitFakes()
+{
+    for (int i = 0; i < 11; ++i) { g_fakeRootVtbl[i] = (void*)UnusedSlot; g_protoVtbl[i] = (void*)UnusedSlot; }
+    g_fakeRootVtbl[0] = (void*)FakeRootDeleting; g_protoVtbl[9] = (void*)ProtoCreate; g_proto.vptr = g_protoVtbl;
+    for (int k = 0; k < 4; ++k) memset(g_rootObj[k], 0, sizeof g_rootObj[k]);
+}
+static void* NewRoot(int k) { *(void**)g_rootObj[k] = g_fakeRootVtbl; return g_rootObj[k]; }
+
+extern "C" void* __fastcall CallRow(void* self, int, unsigned int flags);
 static void Run(unsigned int flags, bool expectDelete)
 {
-    ++g_run; g_deleted = 0; g_ndel = 0; g_dtorThis = 0; g_ndtor = 0;
+    Reset();
     unsigned char obj[0x14]; memset(obj, 0x5A, sizeof obj); ((void**)obj)[0] = (void*)g_vtable;
     void* r = CallRow(obj, 0, flags);
     CHECK(r == obj);
-    CHECK(g_ndtor == 1 && g_dtorThis == obj);
-    CHECK(g_ndel == (expectDelete ? 1 : 0));
-    if (expectDelete) CHECK(g_deleted == obj);
-    CHECK(((unsigned char*)obj)[4] == 0x5A);           // nothing else written
+    CHECK(Count("filedtor") == 1 && Find("filedtor", obj) == 0);
+    CHECK(Count("delete") == (expectDelete ? 1 : 0));
+    if (expectDelete) CHECK(Find("delete", obj) == 1);
+    CHECK(((void**)obj)[0] == (void*)g_vtable);                     // no vtable store
+    for (int i = 4; i < 0x14; ++i) CHECK(obj[i] == 0x5A);            // nothing else written
 }
 int main()
 {
     Run(0, false); Run(1, true); Run(2, false); Run(3, true); Run(0x80000001u, true);
-    // slot 0 holds ??_E, which VC7.1 defaults to this ??_G
-    CHECK(g_vtable[0] == (void*)CallRow);
+    CHECK(g_vtable[0] == (void*)CallRow);                            // vftable slot 0 holds ??_E, which VC7.1 defaults to this ??_G
     if (g_fail) { printf("00a9d2a0_TEST FAIL\n"); return 1; }
     printf("CLandscapeBackgroundPatch_00a9d2a0_TEST PASS\n");
     return 0;

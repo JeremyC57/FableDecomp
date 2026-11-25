@@ -1,0 +1,9 @@
+rows	check	head	new	verdict	evidence
+00a99e30,00a9c9c0	vland --recheck-landed HEAD and new at one path	RELOCATION_MATCH PASS x2	RELOCATION_MATCH PASS x2 (strict leaf too)	ok	evidence/vland_ch.log evidence/vland_cn.log evidence/vland_cs.log
+same	LITERAL_DIFF / warnings	0 / none	0 / none	ok	evidence/vland_c*.log
+same	tests real + mutation control	self-contained models	tests link the row object (CCharString ctor stub by /alternatename); PASS x2; mutant (-1 -> -2) FAIL x2	ok	evidence/mutation_controls_b2.txt
+same	objsec	-	only the leaf COMDAT renamed (stand-in _Methods QAE -> PDB UBE); bytes + relocations identical	ok	evidence/objsec_c.txt
+same	pk_all / pickany_vs_retail	no copies	no copies (leaf only)	ok	evidence/pk_c/
+census	/FORCE census link with b1	-	b1+b2: duplicates 80 -> 76 (0 new), unresolved 692 -> 689 (0 newly unresolved; resolves the slot-1 name b1's vftable needs and the mesh one already unresolved at HEAD)	ok	evidence/link_cen2*.txt
+census full	/FORCE census link of all 3,559 lib_3d_* / lib_chunked_file TU objects with b1, both orders	dup 235, unresolved 1882	dup 231 (0 new), unresolved 1879 (0 newly unresolved; ?GetChunkDescription@C3DMeshFileRootChunk resolved)	ok	evidence/link_full.txt evidence/link_fullrev.txt
+table	no reloc_bindings line targets 0x00A99E30 / 0x00A9C9C0; no row references the _Methods stand-ins	-	-	ok	-

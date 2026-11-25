@@ -1,159 +1,149 @@
+// Behaviour test for 0x00A9B640 C3DMeshFileLoader::LoadMeshFile(CDataInputStream&) (links the REAL row object: the retail lib_3d_mesh_file.obj unit's TU, NF422).
+// Every external of the unit object is a recording stub bound by /alternatename (thiscall stubs are __fastcall with a dummy edx); operator
+// new / delete are replaced and recorded; the row symbol and the compiler-generated helpers are reached through /alternatename aliases.
+// Raw retail layouts: CCountedPointer Data +0 / Info +4; CCPPointerInfo RefCount +0, __fastcall DeleteFunc +4, Data +8;
+// C3DMeshFile 0x14 bytes (vptr, RootChunk +4, Version +0xC, FileComment +0x10); loader RootChunkType at +0x10.
 #include <stdio.h>
-#include <new>
-#ifndef _MSC_VER
-#define __fastcall
-#define FABLE_ENGINE_CDATAINPUTSTREAM_H
-#define FABLE_ENGINE_CCHUNKEDFILECHUNK_H
-#define FABLE_ENGINE_CCHUNKEDFILESUPERCHUNK_H
-class CDataInputStream { public:void* vptr;unsigned char storage[0x14];};
-class CChunkedFileChunk { public:void* vptr;};
-class CChunkedFileSuperChunk { public:void* vptr;};
-#endif
-// C3DMeshFileLoader::LoadMeshFile(CDataInputStream&) -- new root chunk from the registered prototype, a new C3DMeshFile around it, load the chunks, return the file
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9B640, length 244 bytes (`ret 8`: hidden result + stream).
-// Ego_r.pdb: ?LoadMeshFile@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@AAVCDataInputStream@@@Z.
-// Callees: the root prototype's CreateNewInstance (vtable slot 9, +0x24), operator new @ 0x00BFEA1A,
-// C3DMeshFile::C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>&) @ 0x00A9AE60, the two counted pointers'
-// __fastcall DeleteData hooks @ 0x00A9CB20 (root chunk) / 0x00A9CB50 (file), CChunkedFileLoader::LoadChunkedFile
-// (CChunkedFile&, CDataInputStream&) @ 0x00AA79C0, operator delete @ 0x00BFE9BC.
-// Shape: two `CCountedPointer<T> p(raw)` locals (count block only for a non-null object), the load on the raw
-// file, then `return file;` (no NRVO: merged inc/dec copy-out) and the root pointer's register-form release.
-// Layout: the root chunk prototype pointer at +0x10 of the loader (CChunkedFileLoader base).
-// Leaf: LoadMeshFile@C3DMeshFileLoader
-#include "engine/CDataInputStream.h"
-#include "engine/CChunkedFileChunk.h"
-#include "engine/CChunkedFileSuperChunk.h"
-// Shared flattened headers describe storage; these method-only views recover virtual calls.
-// Only the vptr is accessed through these views; the chunk headers' donor container sizes are unused.
-struct CInputStreamMethods { virtual void Reserved0(); virtual void SetPosition(unsigned long); virtual unsigned long GetPosition(); unsigned char StreamStorage[sizeof(CDataInputStream)-sizeof(void*)]; };
-struct SCountBlock {
-    long m_references;                              // +0
-    void (__fastcall* m_pfnDestroy)(void*);         // +4
-    void* m_pObject;                                // +8
-    SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
-};
+#include <string.h>
+#define ALT(a, b) comment(linker, "/alternatename:" a "=" b)
+#pragma ALT("??0CCharString@@QAE@PBDJ@Z", "@CCharStringCtor@16")
+#pragma ALT("??1CCharString@@QAE@XZ", "@CCharStringDtor@8")
+#pragma ALT("??4CCharString@@QAEABV0@ABV0@@Z", "@CCharStringAssign@12")
+#pragma ALT("??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z", "@ChunkedFileCtor@12")
+#pragma ALT("??1CChunkedFile@@UAE@XZ", "@ChunkedFileDtor@8")
+#pragma ALT("??0CChunkedFileSuperChunk@@IAE@PBD@Z", "@SuperChunkCtor@12")
+#pragma ALT("??1CChunkedFileSuperChunk@@UAE@XZ", "@SuperChunkDtor@8")
+#pragma ALT("??0CMemoryDataInputStream@@QAE@PBXK@Z", "@MemStreamCtor@16")
+#pragma ALT("??1CDataStream@@UAE@XZ", "@DataStreamDtor@8")
+#pragma ALT("??0CTemporaryBuffer@@QAE@KPAVCHandleBasedMemoryPool@@PAVCScratchBuffer@@@Z", "@TempBufCtor@20")
+#pragma ALT("??1CTemporaryBuffer@@UAE@XZ", "@TempBufDtor@8")
+#pragma ALT("?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z", "@LoadChunked@16")
+#pragma ALT("?g_ScratchBuffer@@3VCScratchBuffer@@A", "_g_scratch")
+#pragma ALT("?CreateNewInstance@C3DMeshFileRootChunk@@UBEPAVCChunkedFileChunk@@XZ", "_UnusedSlot")
+#pragma ALT("?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ", "_UnusedSlot")
+#pragma ALT("?ReadFromFile@CChunkedFileSuperChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z", "_UnusedSlot")
+#pragma ALT("?WriteToFile@CChunkedFileSuperChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z", "_UnusedSlot")
+#pragma ALT("?GetChunkInfo@CChunkedFileChunk@@UBE?BVCCharString@@XZ", "_UnusedSlot")
+#pragma ALT("?IsSuperChunk@CChunkedFileSuperChunk@@UBEHXZ", "_UnusedSlot")
+#pragma ALT("?IsUnknownType@CChunkedFileChunk@@UBEHXZ", "_UnusedSlot")
+#pragma ALT("?GetAsSuperChunk@CChunkedFileSuperChunk@@UBEPBV1@XZ", "_UnusedSlot")
+#pragma ALT("?GetAsSuperChunk@CChunkedFileSuperChunk@@UAEPAV1@XZ", "_UnusedSlot")
+#pragma ALT("?InitNewInstance@CChunkedFileSuperChunk@@MBEPAVCChunkedFileChunk@@PAV2@@Z", "_UnusedSlot")
+#pragma ALT("_g_vtable", "??_7C3DMeshFile@@6B@")
+#pragma ALT("_g_rootVtable", "??_7C3DMeshFileRootChunk@@6B@")
+#pragma ALT("@DelSuper@4", "?DeleteData@?$CCountedPointer@VCChunkedFileSuperChunk@@@@SIXPAX@Z")
+#pragma ALT("@DelRoot@4", "?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z")
+#pragma ALT("@DelFile@4", "?DeleteData@?$CCountedPointer@VC3DMeshFile@@@@SIXPAX@Z")
+#pragma ALT("@RootDeleting@12", "??_GC3DMeshFileRootChunk@@UAEPAXI@Z")
+#pragma ALT("@CallRow@16", "?LoadMeshFile@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@AAVCDataInputStream@@@Z")
 
-template<class T> class CCountedPointer { public:
-    T* Object;                                      // +0
-    SCountBlock* Count;                             // +4
-    static void __fastcall DeleteData(void* object);   // 0x00A9CB20 (root chunk) / 0x00A9CB50 (file)
-    CCountedPointer(T* object) : Object(object), Count(object ? new SCountBlock(DeleteData, object) : 0) {}
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    ~CCountedPointer()
-    {
-        if (Count) {
-            if (--Count->m_references == 0) {
-                Count->m_pfnDestroy(Count->m_pObject);
-                delete Count;
-            }
-        }
-    }
-    template<class U> CCountedPointer(const CCountedPointer<U>& other) : Object((T*)other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    T& operator*() const { return *Object; }
-};
-
-struct CChunkPrototypeMethods {
-    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4();
-    virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8();
-    virtual CChunkedFileChunk* CreateNewInstance() const;   // slot 9 (+0x24)
-};
-class C3DMeshFileRootChunk : public CChunkedFileSuperChunk { public:};
-
-class CChunkedFile { public:
-    CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root);   // 0x00AA7DB0
-    virtual ~CChunkedFile();
-    unsigned char _body[0x10]; // RootChunk +4, Version +0xc, FileComment +0x10; total 0x14
-};
-class C3DMeshFile : public CChunkedFile { public:
-    C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root);   // 0x00A9AE60
-};
-
-class CChunkedFileLoader { public:
-    virtual ~CChunkedFileLoader();
-    unsigned char _pad04[0x0c];
-    CChunkedFileChunk* RootChunkPrototype;          // +0x10
-    void LoadChunkedFile(CChunkedFile& file, CDataInputStream& in);   // 0x00AA79C0
-};
-
-struct C3DMeshFileLoader : CChunkedFileLoader {
-    CCountedPointer<C3DMeshFile> LoadMeshFile(CDataInputStream& in);
-};
-
-// The C3DMeshFile constructor shares the TU (0x00A9AE60, defined above the caller as in retail): VC7.1 then
-// knows it leaves the root pointer alone and keeps its count word in ebp across the call.
-#pragma auto_inline(off)
-C3DMeshFile::C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root) : CChunkedFile(root)
+struct Info { unsigned long refs; void (__fastcall* del)(void*); void* data; };
+struct CP { void* data; Info* info; };
+extern "C" {
+extern void* g_vtable[]; extern void* g_rootVtable[]; char g_scratch[16];
+void __fastcall DelSuper(void*); void __fastcall DelRoot(void*); void __fastcall DelFile(void*);
+void* __fastcall RootDeleting(void*, int, unsigned int);
+}
+static int g_fail = 0, g_run = 0;
+static void Check(bool ok, int line) { if (!ok) { g_fail = 1; printf("check failed at line %d (run %d)\n", line, g_run); } }
+#define CHECK(c) Check((c) ? true : false, __LINE__)
+// event log
+static char g_log[64][24]; static void* g_logp[64]; static int g_nlog = 0;
+static void Log(const char* e, void* p) { if (g_nlog < 64) { strncpy(g_log[g_nlog], e, 23); g_log[g_nlog][23] = 0; g_logp[g_nlog] = p; } ++g_nlog; }
+static int Find(const char* e, void* p) { for (int i = 0; i < g_nlog && i < 64; ++i) if (!strcmp(g_log[i], e) && (p == (void*)-1 || g_logp[i] == p)) return i; return -1; }
+static int Count(const char* e) { int n = 0; for (int i = 0; i < g_nlog && i < 64; ++i) if (!strcmp(g_log[i], e)) ++n; return n; }
+static unsigned char g_heap[16][0x60]; static unsigned int g_newSize[16]; static int g_nnew = 0;
+void* operator new(unsigned int n) { int k = g_nnew < 16 ? g_nnew : 15; g_newSize[k] = n; ++g_nnew; memset(g_heap[k], 0xEE, sizeof g_heap[k]); Log("new", g_heap[k]); return g_heap[k]; }
+void operator delete(void* p) { Log("delete", p); }
+static void Reset() { ++g_run; g_nlog = 0; g_nnew = 0; }
+extern "C" {
+// CCharString(const char*, long) / ~CCharString / operator=
+static const char* g_strText = 0; static long g_strLen = 0; static void* g_assignSrc = 0;
+void* __fastcall CCharStringCtor(void* self, int, const char* t, long n) { g_strText = t; g_strLen = n; *(const char**)self = t; Log("strctor", self); return self; }
+void __fastcall CCharStringDtor(void* self, int) { Log("strdtor", self); }
+void* __fastcall CCharStringAssign(void* self, int, void* other) { g_assignSrc = other; *(const char**)self = *(const char**)other; Log("strassign", self); return self; }
+// CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>&) / ~CChunkedFile: keeps a reference when g_keep
+static int g_keep = 1; static CP g_baseSeen; static unsigned long g_baseSeenRefs = 0; static const CP* g_baseArg = 0;
+void* __fastcall ChunkedFileCtor(void* self, int, const CP* root)
 {
+    g_baseArg = root; g_baseSeen = *root; g_baseSeenRefs = root->info ? root->info->refs : 0xFFFFFFFF;
+    ((void**)self)[0] = (void*)0x11111111; ((CP*)((char*)self + 4))->data = 0; ((CP*)((char*)self + 4))->info = 0; ((unsigned long*)self)[3] = 7;
+    if (g_keep) { *(CP*)((char*)self + 4) = *root; if (root->info) ++root->info->refs; }
+    Log("filector", self); return self;
 }
-#pragma auto_inline(on)
-
-CCountedPointer<C3DMeshFile> C3DMeshFileLoader::LoadMeshFile(CDataInputStream& in)
+void __fastcall ChunkedFileDtor(void* self, int) { Log("filedtor", self); }
+static const char* g_chunkType = 0;
+void* __fastcall SuperChunkCtor(void* self, int, const char* type) { g_chunkType = type; ((void**)self)[0] = (void*)0x22222222; Log("superctor", self); return self; }
+void __fastcall SuperChunkDtor(void* self, int) { Log("superdtor", self); }
+// CMemoryDataInputStream(const void*, unsigned long) / ~CDataStream; the stream's vtable is the test's (GetPosition slot 2, SetPosition slot 1)
+static unsigned long g_pos = 0x1234; static unsigned long g_setPos = 0xFFFFFFFF;
+unsigned long __fastcall StreamGetPosition(void* self, int) { Log("getpos", self); return g_pos; }
+void __fastcall StreamSetPosition(void* self, int, unsigned long p) { g_setPos = p; Log("setpos", self); }
+void __cdecl UnusedSlot() { printf("unexpected call\n"); g_fail = 1; }
+void* g_streamVtbl[4] = { (void*)UnusedSlot, (void*)StreamSetPosition, (void*)StreamGetPosition, (void*)UnusedSlot };
+static const void* g_msData = 0; static unsigned long g_msSize = 0;
+void* __fastcall MemStreamCtor(void* self, int, const void* data, unsigned long size) { g_msData = data; g_msSize = size; ((void**)self)[0] = g_streamVtbl; Log("msctor", self); return self; }
+void __fastcall DataStreamDtor(void* self, int) { Log("msdtor", self); }
+// CTemporaryBuffer(size, pool, scratch) / ~CTemporaryBuffer
+static unsigned char g_buf[64]; static unsigned long g_tbSize = 0; static void* g_tbPool = 0; static void* g_tbScratch = 0;
+void* __fastcall TempBufCtor(void* self, int, unsigned long size, void* pool, void* scratch) { g_tbSize = size; g_tbPool = pool; g_tbScratch = scratch; ((void**)self)[1] = g_buf; Log("tbctor", self); return self; }
+void __fastcall TempBufDtor(void* self, int) { Log("tbdtor", self); }
+static const unsigned char* g_lzSrc = 0; static unsigned long g_lzLen = 0, g_lzOut = 0; static unsigned char* g_lzDst = 0; static void* g_lzWrk = (void*)1;
+int lzo1x_decompress_asm_fast(const unsigned char* src, unsigned long len, unsigned char* dst, unsigned long* dlen, void* wrk)
+{ g_lzSrc = src; g_lzLen = len; g_lzDst = dst; g_lzOut = *dlen; g_lzWrk = wrk; memcpy(dst, "unpacked", 8); Log("lzo", dst); return 0; }
+// CChunkedFileLoader::LoadChunkedFile(CChunkedFile&, CDataInputStream&)
+static void* g_lcThis = 0; static void* g_lcFile = 0; static void* g_lcIn = 0; static const void* g_lcInData = 0;
+void __fastcall LoadChunked(void* self, int, void* file, void* in) { g_lcThis = self; g_lcFile = file; g_lcIn = in; g_lcInData = g_msData; Log("loadchunked", file); }
+}
+// the root chunk prototype and the root chunks it creates (test vtables: slot 0 deleting destructor, slot 9 CreateNewInstance)
+static unsigned char g_rootObj[4][0x40]; static int g_nroot = 0; static int g_protoNull = 0;
+static void* g_fakeRootVtbl[11]; static void* g_protoVtbl[11];
+extern "C" void* __fastcall FakeRootDeleting(void* self, int, unsigned int flags) { Log(flags == 1 ? "rootdel1" : "rootdelX", self); return self; }
+extern "C" void* __fastcall ProtoCreate(void* self, int) { Log("create", self); if (g_protoNull) return 0; void* r = g_rootObj[g_nroot++ & 3]; *(void**)r = g_fakeRootVtbl; return r; }
+struct Proto { void** vptr; }; static Proto g_proto;
+static void InitFakes()
 {
-    CCountedPointer<C3DMeshFileRootChunk> root((C3DMeshFileRootChunk*)((CChunkPrototypeMethods*)RootChunkPrototype)->CreateNewInstance());
-    CCountedPointer<C3DMeshFile> file(new C3DMeshFile(root));
-    CInputStreamMethods& stream = *(CInputStreamMethods*)&in;
-    unsigned long position = stream.GetPosition();
-    stream.SetPosition(position);
-    LoadChunkedFile(*file, in);
-    return file;
+    for (int i = 0; i < 11; ++i) { g_fakeRootVtbl[i] = (void*)UnusedSlot; g_protoVtbl[i] = (void*)UnusedSlot; }
+    g_fakeRootVtbl[0] = (void*)FakeRootDeleting; g_protoVtbl[9] = (void*)ProtoCreate; g_proto.vptr = g_protoVtbl;
+    for (int k = 0; k < 4; ++k) memset(g_rootObj[k], 0, sizeof g_rootObj[k]);
 }
-static int stage, failures, rootsDestroyed, filesDestroyed, loaded;
-static bool emptyRoot;
-static C3DMeshFileRootChunk rootStorage;
-static CDataInputStream* expectedStream;
-static CChunkedFileLoader* expectedLoader;
-static void Check(bool value) { if (!value) ++failures; }
-void CChunkPrototypeMethods::v0() {} void CChunkPrototypeMethods::v1() {}
-void CChunkPrototypeMethods::v2() {} void CChunkPrototypeMethods::v3() {}
-void CChunkPrototypeMethods::v4() {} void CChunkPrototypeMethods::v5() {}
-void CChunkPrototypeMethods::v6() {} void CChunkPrototypeMethods::v7() {}
-void CChunkPrototypeMethods::v8() {}
-CChunkedFileChunk* CChunkPrototypeMethods::CreateNewInstance() const {
- Check(stage++ == 0); return emptyRoot ? 0 : (CChunkedFileChunk*)&rootStorage;
+static void* NewRoot(int k) { *(void**)g_rootObj[k] = g_fakeRootVtbl; return g_rootObj[k]; }
+
+extern "C" CP* __fastcall CallRow(void* self, int, CP* result, void* in);
+static void Run(int keep, int protoNull)
+{
+    Reset(); g_keep = keep; g_protoNull = protoNull; g_setPos = 0xFFFFFFFF; g_pos = 0x1234 + g_run;
+    unsigned char loader[0x5C]; memset(loader, 0, sizeof loader); *(void**)(loader + 0x10) = &g_proto;
+    void* inStream[2] = { g_streamVtbl, 0 };
+    int rk = g_nroot & 3; if (!protoNull) NewRoot(rk);
+    CP result = { (void*)1, (Info*)1 };
+    CP* r = CallRow(loader, 0, &result, inStream);
+    CHECK(r == &result);
+    CHECK(Find("create", &g_proto) == 0);
+    void* root = protoNull ? 0 : (void*)g_rootObj[rk];
+    int k = 0; Info* rootInfo = 0;
+    if (!protoNull) { CHECK(g_newSize[0] == 0xC); rootInfo = (Info*)g_heap[0]; k = 1; }
+    CHECK(g_nnew == k + 2 && g_newSize[k] == 0x14 && g_newSize[k + 1] == 0xC);
+    void* file = g_heap[k]; Info* fileInfo = (Info*)g_heap[k + 1];
+    CHECK(Find("filector", file) >= 0 && g_baseSeen.data == root && g_baseSeen.info == rootInfo);
+    CHECK(((void**)file)[0] == (void*)g_vtable);
+    CHECK(result.data == file && result.info == fileInfo);
+    CHECK(fileInfo->refs == 1 && fileInfo->del == DelFile && fileInfo->data == file);
+    CHECK(g_lcThis == loader && g_lcFile == file && g_lcIn == inStream && Count("loadchunked") == 1);
+    CHECK(Find("loadchunked", file) > Find("filector", file));
+    CHECK(g_setPos == g_pos && Find("getpos", inStream) >= 0 && Find("setpos", inStream) > Find("getpos", inStream));   // SetPosition(GetPosition())
+    CHECK(Find("loadchunked", file) > Find("setpos", inStream));
+    if (!protoNull) {
+        CHECK(rootInfo->del == DelRoot && rootInfo->data == root);
+        if (keep) { CHECK(rootInfo->refs == 1); CHECK(Count("delete") == 0); }
+        else { CHECK(rootInfo->refs == 0); CHECK(Find("rootdel1", root) >= 0 && Find("delete", rootInfo) > Find("rootdel1", root)); CHECK(Count("delete") == 1); }
+    } else CHECK(Count("delete") == 0);
 }
-void CInputStreamMethods::Reserved0() {}
-unsigned long CInputStreamMethods::GetPosition() {
- Check((CDataInputStream*)this == expectedStream); Check(stage++ == 2); return 0x87654321UL;
+int main()
+{
+    InitFakes();
+    Run(1, 0); Run(0, 0); Run(1, 1);
+    if (g_fail) { printf("00a9b640_TEST FAIL\n"); return 1; }
+    printf("00a9b640_TEST PASS\n");
+    return 0;
 }
-void CInputStreamMethods::SetPosition(unsigned long pos) {
- Check((CDataInputStream*)this == expectedStream); Check(stage++ == 3); Check(pos == 0x87654321UL);
-}
-CChunkedFile::CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root) {
- Check(stage++ == 1);
- Check(root.Object == (emptyRoot ? 0 : (CChunkedFileSuperChunk*)&rootStorage));
- Check(emptyRoot ? root.Count == 0 : root.Count && root.Count->m_references == 2);
- new (_body) CCountedPointer<CChunkedFileSuperChunk>(root);
-}
-CChunkedFile::~CChunkedFile() {
- ((CCountedPointer<CChunkedFileSuperChunk>*)_body)->~CCountedPointer<CChunkedFileSuperChunk>();
-}
-CChunkedFileLoader::~CChunkedFileLoader() {}
-template<> void __fastcall CCountedPointer<C3DMeshFileRootChunk>::DeleteData(void* p) {
- Check(p == &rootStorage); ++rootsDestroyed;
-}
-template<> void __fastcall CCountedPointer<C3DMeshFile>::DeleteData(void* p) {
- ++filesDestroyed; delete (C3DMeshFile*)p;
-}
-void CChunkedFileLoader::LoadChunkedFile(CChunkedFile& file, CDataInputStream& input) {
- Check(this == expectedLoader); Check(&input == expectedStream); Check(stage++ == 4); ++loaded;
- CCountedPointer<CChunkedFileSuperChunk>* root = (CCountedPointer<CChunkedFileSuperChunk>*)file._body;
- Check(root->Object == (emptyRoot ? 0 : (CChunkedFileSuperChunk*)&rootStorage));
- Check(emptyRoot ? root->Count == 0 : root->Count && root->Count->m_references == 2);
-}
-static void Run(bool noRoot) {
- emptyRoot = noRoot; stage = 0; rootsDestroyed = filesDestroyed = loaded = 0;
- CChunkPrototypeMethods prototype; CInputStreamMethods stream; C3DMeshFileLoader loader;
- loader.RootChunkPrototype = (CChunkedFileChunk*)&prototype;
- expectedLoader = &loader; expectedStream = (CDataInputStream*)&stream;
- {
-  CCountedPointer<C3DMeshFile> result = loader.LoadMeshFile(*expectedStream);
-  Check(result.Object != 0 && result.Count != 0); Check(result.Count->m_references == 1);
-  Check(loaded == 1 && stage == 5 && !rootsDestroyed && !filesDestroyed);
-  CCountedPointer<CChunkedFileSuperChunk>* root = (CCountedPointer<CChunkedFileSuperChunk>*)result.Object->_body;
-  Check(noRoot ? root->Count == 0 : root->Count->m_references == 1);
-  { CCountedPointer<C3DMeshFile> copy(result); Check(copy.Count->m_references == 2); }
-  Check(result.Count->m_references == 1);
- }
- Check(filesDestroyed == 1 && rootsDestroyed == (noRoot ? 0 : 1));
-}
-int main() { Run(false); Run(true); printf("00a9b640_TEST %s\n", failures ? "FAIL" : "PASS"); return failures ? 1 : 0; }

@@ -6,6 +6,12 @@ class C3DVector;class CQuaternion;class CMatrix3x4;class C3DAnimFile;class CData
 // Layout: original raw PDB fields and bases; retail sizes reconciled by native accesses and 12-byte vectors.
 class C3DAnimFile:public CChunkedFile{public:
 C3DAnimFile(const C3DAnimFile&);
+#ifdef FABLE_RETAIL_C3DANIMFILE_LOADER_FRIEND
+// Per-TU opt-in (NF422, lib_3d_anim_file.obj unit 0x00A98E60): C3DAnimFileLoader::LoadAnimFile 0x00A99420 calls the PRIVATE root-chunk
+// constructor (0x00A99478 `call 0x00A98F40`; Ego_r.pdb 0x00B980A0 / FableWin.pdb 0x03204CD0 spell it AAE), so the loader is a friend.
+// Access only: no layout or code change.
+friend class C3DAnimFileLoader;
+#endif
 private:
 C3DAnimFile(const CCountedPointer<C3DAnimFileRootChunk>&);
 public:
@@ -21,5 +27,5 @@ CCountedPointer<C3DAnimFileRootChunk> GetRoot();
 virtual ~C3DAnimFile();
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DAnimFile)==0x14);
+FABLE_STATIC_ASSERT_AT(24, sizeof(C3DAnimFile)==0x14);
 #endif

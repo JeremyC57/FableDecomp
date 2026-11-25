@@ -1,11 +1,25 @@
-#include <cstdio>
-#include <cstring>
-static const char* g_t = 0; static long g_l = 0;
-class CCharString { public: void* p; CCharString(const char* t, long l) { g_t = t; g_l = l; p = 0; } };
-struct M { CCharString Get() { return CCharString("3D Mesh File", -1); } };
+// Behaviour test for 0x00A9C9C0 C3DMeshFileRootChunk::GetChunkDescription() const (links the REAL row object, NF422). CCharString(const char*, long) is a
+// recording stub bound by /alternatename; the row symbol is reached through an alias. Checks: the hidden result slot is constructed
+// (once, from "3D Mesh File", length -1), the returned pointer is the slot, and `this` is not touched.
+#include <stdio.h>
+#include <string.h>
+#define ALT(a, b) comment(linker, "/alternatename:" a "=" b)
+#pragma ALT("??0CCharString@@QAE@PBDJ@Z", "@StrCtor@16")
+#pragma ALT("@CallRow@12", "?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ")
+extern "C" {
+void* __fastcall CallRow(void* self, int, void* result);
+static const char* g_t = 0; static long g_l = 0; static void* g_slot = 0; static int g_n = 0;
+void* __fastcall StrCtor(void* self, int, const char* t, long l) { g_t = t; g_l = l; g_slot = self; ++g_n; *(const char**)self = t; return self; }
+}
 int main()
 {
-    M m; CCharString s = m.Get(); if (!g_t || g_l != -1 || std::strcmp(g_t, "3D Mesh File") != 0) { std::printf("00a9c9c0_TEST FAIL\n"); return 1; }
-    std::printf("00a9c9c0_TEST PASS\n");
+    int fail = 0;
+    unsigned char obj[0x40]; memset(obj, 0x5A, sizeof obj);
+    unsigned char result[0x20]; memset(result, 0, sizeof result);
+    void* r = CallRow(obj, 0, result);
+    if (r != result || g_slot != result || g_n != 1 || g_l != -1 || !g_t || strcmp(g_t, "3D Mesh File") != 0) fail = 1;
+    for (int i = 0; i < (int)sizeof obj; ++i) if (obj[i] != 0x5A) fail = 1;
+    if (fail) { printf("00a9c9c0_TEST FAIL\n"); return 1; }
+    printf("00a9c9c0_TEST PASS\n");
     return 0;
 }

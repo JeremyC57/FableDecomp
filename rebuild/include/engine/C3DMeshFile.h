@@ -18,6 +18,11 @@ class C3DMeshFileRootChunk;
 class C3DMeshFile : public CChunkedFile {
 public:
     C3DMeshFile();
+#ifdef FABLE_RETAIL_C3DMESHFILE_LOADER_FRIEND
+    // Per-TU opt-in (NF422, lib_3d_mesh_file.obj unit 0x00A9AD80): C3DMeshFileLoader::LoadMeshFile 0x00A9B640 calls the PRIVATE root-chunk
+    // constructor 0x00A9AE60 (Ego_r.pdb 0x00C0BF60 / FableWin.pdb 0x033D5540 spell it AAE), so the loader is a friend. Access only.
+    friend class C3DMeshFileLoader;
+#endif
 #ifdef FABLE_RETAIL_C3DMESHFILE_GETROOT_BODY
     // Retail opt-in (wfE8, row 0x00A2F740): the body of the landed 0x00A32620 (FableWin.pdb ?GetRoot@C3DMeshFile@@QBE..XZ; no Ego_r.pdb
     // copy, so an inline header member whose retail COMDAT sits among the mesh-stats TU's COMDATs). Visible to the caller, which still
@@ -38,5 +43,5 @@ private:
     C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root);
 #endif
 };
-FABLE_STATIC_ASSERT(sizeof(C3DMeshFile) == 0x14);
+FABLE_STATIC_ASSERT_AT(41, sizeof(C3DMeshFile) == 0x14);
 #endif // FABLE_ENGINE_C3DMESHFILE_H

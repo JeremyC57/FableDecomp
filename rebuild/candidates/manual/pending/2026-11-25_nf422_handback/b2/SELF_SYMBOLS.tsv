@@ -1,0 +1,3 @@
+address	symbol	status	leaf_given	current_line
+00a99e30	?GetChunkDescription@C3DAnimFileRootChunk@@UBE?BVCCharString@@XZ	RELOCATION_MATCH	?GetChunkDescription@C3DAnimFileRootChunk@@UBE?BVCCharString@@XZ	00a99e30 | ?GetChunkDescription@C3DAnimFileRootChunk_Methods@@QAE?AVCCharString@@XZ | RELOCATION_MATCH | GetChunkDescription
+00a9c9c0	?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ	RELOCATION_MATCH	?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ	00a9c9c0 | ?GetChunkDescription@C3DMeshFileRootChunk_Methods@@QAE?AVCCharString@@XZ | RELOCATION_MATCH | GetChunkDescription
