@@ -1,5 +1,8 @@
 // CTCTrophy::CTCTrophy(CThing*) -- trophy thing component: CTCBase(parent), null def pointer, no deed handle, zeroed minigame counters, two empty witness lists, cleared wait flags, Mountable = true; then force a frame update on a parent that is not yet flagged
 // Leaf: ??0CTCTrophy
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DDAE0, length 148 bytes (+ int3 padding). Catalogued as
 // "CEngineSubPrimitive2DClockSprite::Constructor" (a propagated label); the vtable it stores, 0x0125FC54, is CTCTrophy's
 // (rtti-vtables.tsv), and the member layout is the PDB CTCTrophy with retail 4-byte lists.
@@ -28,7 +31,7 @@ class CThing { public:
 class CTCBase { public:
     virtual void v00();
     unsigned char _body[0x8];                      // ParentThing +4, ToBeRemoved +8, IsInGlobalUpdateTCs +9
-    CTCBase(CThing* parent);                       // 0x00686800
+    CTCBase(CThing& parent);                       // 0x00686800
 };
 
 struct CDefPointer_CTrophyDef {
@@ -73,7 +76,7 @@ class CTCTrophy : public CTCBase { public:
 };
 
 CTCTrophy::CTCTrophy(CThing* parent)
-    : CTCBase(parent)
+    : CTCBase(*parent)
     , NonMinigameDeedHandle(-1)
     , MinigameInProgress(false)
     , BestWitnessesAheadToDate(0)

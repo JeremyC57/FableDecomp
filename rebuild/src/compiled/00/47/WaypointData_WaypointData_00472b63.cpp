@@ -44,7 +44,6 @@ class CSubDefClassBase { public:     // the def base; constructor @ 0x0044C0C0
 struct WaypointTemp {
     void* head;                 // +0x00  inlined vtable pointer slot
     char  pad[0x40 - 4];        // pad out to the full 0x40-byte frame temp
-    void Destroy();             // lea ecx,[ebp-0x40]; call
 };
 
 struct WaypointData {
@@ -55,6 +54,10 @@ struct WaypointData {
     void Dtor(void* arg);       // the target: ~WaypointData(arg), ret 4
 };
 
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
+//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
+//   0x009FC550 ??1CResource@@UAE@XZ (was ?Destroy@WaypointTemp@@QAEXXZ)
+class CResource { public: virtual ~CResource(); };
 void WaypointData::Dtor(void* arg)
 {
     CSubDefClassBase def;       // lea ecx,[ebp-0x40]; call CSubDefClassBase::CSubDefClassBase
@@ -63,5 +66,5 @@ void WaypointData::Dtor(void* arg)
     temp.head = (void*)WaypointApplyVtbl_0123543c;
     this->Apply(arg, &temp);
     temp.head = (void*)WaypointDestroyVtbl_01230ba0;
-    temp.Destroy();
+    reinterpret_cast<CResource*>(&(temp))->CResource::~CResource();
 }

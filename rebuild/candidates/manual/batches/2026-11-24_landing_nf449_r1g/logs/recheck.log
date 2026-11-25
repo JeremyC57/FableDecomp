@@ -1,0 +1,46 @@
+addr       parity           behav  name
+005ed190   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+005ed190   RELOCATION_MATCH PASS   CScriptModuleGoToLookInDirection
+007187c0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007187c0   RELOCATION_MATCH PASS   CScriptModuleGoToLookAt
+0073ff70   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+0073ff70   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0073ff70   RELOCATION_MATCH PASS   CModeSitFloor
+007ab450   RELOCATION_MATCH PASS   CScriptModuleCameraOnAStick
+008525f0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008525f0   RELOCATION_MATCH PASS   CScriptModuleFullTransition
+00852710   RELOCATION_MATCH PASS   CScriptModuleSpline
+008aae80   RELOCATION_MATCH PASS   CScriptModuleDolly
+008aaef0   RELOCATION_MATCH PASS   CScriptModuleDollyThing
+008ac3c0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008ac3c0   RELOCATION_MATCH PASS   CModeSitFloor
+008ccd70   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineDropInFromSky (engine/CCreatureAction_BalverineDropInFromSky.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineLungeAttack (engine/CCreatureAction_BalverineLungeAttack.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BalverineCorneredJumpIntoSky (engine/CCreatureAction_BalverineCorneredJumpIntoSky.h)
+008ccd70   WARN SHARED_HEADER_AVAILABLE CTCWillResponse (engine/CTCWillResponse.h)
+008ccd70   WARN RELOC_NAME: ??0CCreatureAction_BalverineLungeAttack@N_008ccc10@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 008ccc10 labelled 'CCreatureAction_BalverineDropInFromSky::CCreatureAction_BalverineDropInFromSky'
+008ccd70   RELOCATION_MATCH PASS   FinishAction
+0094b530   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+0094b530   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0094b530   RELOCATION_MATCH PASS   CModeSitTavernStool
+
+WINS: 11
+  005ed190 RELOCATION_MATCH NCameraModes::CScriptModuleGoToLookInDirection::??0CScriptModuleGoToLookInDirection
+  007187c0 RELOCATION_MATCH NCameraModes::CScriptModuleGoToLookAt::??0CScriptModuleGoToLookAt@
+  0073ff70 RELOCATION_MATCH NCreatureMode::CModeSitFloor::??0CModeSitFloor@
+  007ab450 RELOCATION_MATCH NCameraModes::CScriptModuleCameraOnAStick::??0CScriptModuleCameraOnAStick@
+  008525f0 RELOCATION_MATCH NCameraModes::CScriptModuleFullTransition::??0CScriptModuleFullTransition
+  00852710 RELOCATION_MATCH NCameraModes::CScriptModuleSpline::??0CScriptModuleSpline@
+  008aae80 RELOCATION_MATCH NCameraModes::CScriptModuleDolly::??0CScriptModuleDolly@
+  008aaef0 RELOCATION_MATCH NCameraModes::CScriptModuleDollyThing::??0CScriptModuleDollyThing@
+  008ac3c0 RELOCATION_MATCH NCreatureMode::CModeSitFloor::??0CModeSitFloor@
+  008ccd70 RELOCATION_MATCH CCreatureAction_BalverineCorneredJumpIntoSky::?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+  0094b530 RELOCATION_MATCH CModeSitTavernStool::??0CModeSitTavernStool@

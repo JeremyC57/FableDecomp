@@ -11,6 +11,9 @@
 // object with an inline constructor) after them; the zeroes share one register (`xor ecx,ecx`).
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??0CTCGraphicAppearanceReplaceableMesh
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 class CThing;
 
 namespace NGraphicAppearance {
@@ -34,7 +37,7 @@ class CTCBase { public:                                        // 0x0c bytes: vp
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* owner);                             // 0x00686800
+    CTCBase(CThing& owner);                             // 0x00686800
 };
 
 namespace NGraphicAppearance {
@@ -65,7 +68,7 @@ class CTCGraphicAppearanceReplaceableMesh : public CTCBase, public CAGraphicAppe
 };
 
 CTCGraphicAppearanceReplaceableMesh::CTCGraphicAppearanceReplaceableMesh(CThing* owner)
-    : CTCBase(owner), CAGraphicAppearanceComponent(), Replaced(false), MeshIndex(0), PrimHandle(0), PDef()
+    : CTCBase(*owner), CAGraphicAppearanceComponent(), Replaced(false), MeshIndex(0), PrimHandle(0), PDef()
 {
     ParentThing->PTCGraphicAppearance->RegisterComponent(this);
 }

@@ -1,5 +1,8 @@
 // NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase(CThing* thing) -- CTCBase(thing), then the shot's intelligent pointers, empty hit list and def pointers, the flags and an unset (-1) initial velocity
 // Leaf: ??0CTCShotDefinitionBase
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BF460, 172 bytes (`ret 4`); vtable 0x0126E1A4 NThingShot::CTCShotDefinitionBase.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer ctor @ 0x00A01B10 (five times) and SetPItem
@@ -20,7 +23,7 @@ class CTCBase { public:
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
-    CTCBase(CThing* thing);                             // 0x00686800
+    CTCBase(CThing& thing);                             // 0x00686800
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -90,7 +93,7 @@ class CTCShotDefinitionBase : public CTCBase { public:
 };
 
 CTCShotDefinitionBase::CTCShotDefinitionBase(CThing* thing)
-    : CTCBase(thing), SubShotsTriggered(false), MadeSound(false), CanBeDeflected(true), InitialVelocity(-1.0f),
+    : CTCBase(*thing), SubShotsTriggered(false), MadeSound(false), CanBeDeflected(true), InitialVelocity(-1.0f),
       PBestCollisionThing(0), BestCollisionType(0), PBestCollisionHitLocation(0), MultiArrowShotType(false)
 {
 }

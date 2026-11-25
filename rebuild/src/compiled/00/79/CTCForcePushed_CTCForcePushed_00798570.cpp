@@ -1,5 +1,8 @@
 // CTCForcePushed::CTCForcePushed(CThing& parent) -- constructor: CTCBase, empty pusher/particle pointers, not initialised, no def, no emitters; a live AI-creature owner has its animation suspended; then load SPECIAL_ABILITIES_FORCE_PUSH_DEF
 // Leaf: ??0CTCForcePushed
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798570, length 170 bytes (+ int3 padding). `ret 4`; vtable 0x0126C09C.
 //         Ego_r.pdb: `??0CTCForcePushed@@QAE@AAVCThing@@@Z`.
@@ -78,7 +81,7 @@ class CThingAnimatable : public CThing {
 
 class CTCBase {
 public:
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
@@ -101,7 +104,7 @@ public:
 };
 
 CTCForcePushed::CTCForcePushed(CThing& parent)
-    : CTCBase(&parent), Initialised(false)
+    : CTCBase(parent), Initialised(false)
 {
     if (ParentThing && !(ParentThing->m_flags91 & 1) && ParentThing->ThingClass == 1)
         ((CThingAICreature*)(((CThingAnimatable*)ParentThing)))->SuspendAI(true, 0);

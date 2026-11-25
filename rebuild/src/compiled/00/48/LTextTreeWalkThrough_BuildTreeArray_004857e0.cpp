@@ -5,7 +5,6 @@
 //   lea ecx,[esi+0x10]
 //   call <Sub::Cleanup>
 struct SubObject {
-    void Cleanup_0099b510();
 };
 
 class TreeNode { public:
@@ -21,13 +20,17 @@ struct CTextTreeWalkThrough {
     void BuildTreeArray(TreeNode* node);
 };
 
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
+//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
+//   0x0099B510 ??1CWideString@@QAE@XZ (was ?Cleanup_0099b510@SubObject@@QAEXXZ)
+class CWideString { public: ~CWideString(); };
 void CTextTreeWalkThrough::BuildTreeArray(TreeNode* node)
 {
     if (node) {
         do {
             this->BuildTreeArray(node->child);
             TreeNode* next = node->next;
-            node->sub.Cleanup_0099b510();
+            reinterpret_cast<CWideString*>(&(node->sub))->CWideString::~CWideString();
             free(node);
             node = next;
         } while (node);

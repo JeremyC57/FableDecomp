@@ -7,7 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 34,538 of 64,041 done (53.93%), from the tracker; 34,722 (54.22%) with the 184 registered best guesses. Landed today:
+- **Naming:** 34,542 of 64,041 done (53.94%), from the tracker; 34,726 (54.22%) with the 184 registered best guesses. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
@@ -22,7 +22,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - nf444 + nf445 (28 GameCODA rows: the CSalRender option S unit, 12 derived binders, CSalSw3DVoice Create / Initialize / CreateRenderer + 8 funclets; three add-only header opt-ins; equiv 0 rows outside the batch). **R-NF445-1** (advisor decision, owner delegated): land with booked slot-row debt (`DEBT_SLOTS.tsv`, T3 nf445 family line) after the 19 slot rows were shown to take the SDK signatures' argument sizes. Retail slot 2/3 of 0x012B8AE0 contradict CSalVoice.h PASS22 (T3 nf445 header line). `pending/2026-11-25_nf444_nf445_handback/`.
   - nf446 u1-u3: 0x00793CB0 CTCUnholyPower::GetDamageMultiplier, 0x0074AC80 CTCCreatureGenerator::AddCreatureTriggerer + 0x0089EC60, 0x00A36FE0 CClassFactory::Validate + 0x006E72A0 (+5 proven). **u4 held, owner question:** 0x006D6570 GetExperiencePickUpMultiplier + 0x00899C90 / 0x008E7040 pass every gate (q-NF446-1 granted) but the lander holds them on queue lines that only mention them (flatten-local2 keyed on 0x006D6570; unrelated nf293 0x006E9360). Masking the mentions was blocked by the auto-mode check; the owner decides how those queue lines are edited (`pending/2026-11-25_nf446_handback/`).
   - nf442 p1/b1/q2b/b2/b3/q2c/b4 (98 T1 list-A caller rows, +20 proven). STALE_TABLE (52 deletes) waits on a witness check; q442a (29 tplalt rows) is granted if an `/alternatename` dump shows the token is inert; q442b is port work (T3 nf442 family line). u4 landed as u4a (0x006D6570, REL=nf303,flatten1,flatten-local2) + u4b (0x00899C90, REL=nf324); 0x008E7040 stays behind nf293.
-  - **Running:** NF447 (GameCODA slot-row unit, 16 locks), NF448 (NF442 follow-up: STALE_TABLE witnesses, q442a dump, CThingSearchTools header batch), NF449 (T1 special-member / operator caller respells, the 445-line NF442 residue group). 16 GameCODA slot rows stay locked as NF445 for the slot-row unit.
+  - **Running:** NF447 (GameCODA slot-row unit, 16 locks), NF448 (NF442 follow-up: STALE_TABLE witnesses, q442a dump, CThingSearchTools header batch). NF449 finished: 76 special-member caller rows landed (s1, s2, d1, r1g; +4 proven); rulings r449a granted, r449b declined for now, r449c granted as best guess (one-source:fablewin-pdb), r449d declined (`pending/2026-11-25_nf449_handback/`). 16 GameCODA slot rows stay locked as NF445 for the slot-row unit.
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.

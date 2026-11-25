@@ -1,5 +1,8 @@
 // CTCFineDialogue::CTCFineDialogue(CThing* thing) -- CTCBase(thing), own vtable, give the player the chance to pay, not waiting for confirmation, then join the global update list
 // Leaf: ??0CTCFineDialogue
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E2730, length 40 bytes.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", propagated),
 // CTCBase::AddToGlobalTCs() @ 0x00686ED0 (named by the landed CTCActionUseBuyHouse constructor 0x0072E690).
@@ -15,7 +18,7 @@ class CTCBase { public:                                      // engine/CTCBase.h
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                           // 0x00686800
+    CTCBase(CThing& thing);                           // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -33,7 +36,7 @@ class CTCFineDialogue : public CTCBase { public:                    // vtable 0x
 };
 
 CTCFineDialogue::CTCFineDialogue(CThing* thing)
-    : CTCBase(thing)
+    : CTCBase(*thing)
     , GivePlayerChanceToPayFine(true)
     , WaitingForConfirmation(false)
 {

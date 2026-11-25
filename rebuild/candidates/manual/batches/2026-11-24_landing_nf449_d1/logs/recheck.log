@@ -1,0 +1,64 @@
+addr       parity           behav  name
+  WARN leaf 'CConflict>' matches no symbol in 00403510.obj; graded the largest function
+  WARN leaf 'CConflict>' matches no symbol in 00403510.obj; graded the largest function
+00403510   RELOCATION_MATCH PASS   CConflict>
+004407b0   RELOCATION_MATCH PASS   SortTreeRecursively
+00472b63   WARN SHARED_HEADER_AVAILABLE CSubDefClassBase (engine/CSubDefClassBase.h)
+00472b63   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+  WARN leaf '??1WaypointData@' matches no symbol in 00472b63.obj; graded the largest function
+  WARN leaf '??1WaypointData@' matches no symbol in 00472b63.obj; graded the largest function
+00472b63   WARN RELOC_NAME: ?Apply@WaypointData@@QAEXPAXPAUWaypointTemp@@@Z -> 00472b9d labelled 'CArray<std::pair<long,long>_>::push_back'
+00472b63   WARN STANDIN_LEAF ?Dtor@WaypointData@@QAEXPAX@Z (catalog NScript::CV_TourGuideScript::WaypointData::~WaypointData; names another function)
+00472b63   RELOCATION_MATCH PASS   ~WaypointData
+004857e0   WARN STANDIN_LEAF ?BuildTreeArray@CTextTreeWalkThrough@@QAEXPAVTreeNode@@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+004857e0   RELOCATION_MATCH PASS   BuildTreeArray
+0048b4e0   WARN SHARED_HEADER_AVAILABLE CInputProcessInventoryBase (engine/CInputProcessInventoryBase.h)
+0048b4e0   WARN SHARED_HEADER_AVAILABLE CAInputProcess (engine/CAInputProcess.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0048b4e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0048b4e0.obj; graded the largest function
+0048b4e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004d26f0   RELOCATION_MATCH PASS   ForEachElem0x44__CPatchTesselationEdgeStr_004d26f0
+005299a0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+005299a0   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 005299a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 005299a0.obj; graded the largest function
+005299a0   WARN RELOC_NAME: ?DeleteHelper@CThingBuilding@@QAEXXZ -> 004c73b0 labelled '_global::DeleteArray_004c73b0'
+005299a0   WARN STANDIN_LEAF ?ScalarDeletingDestructor@CThingBuilding@@QAEPAXI@Z (catalog CThingBuilding::`scalar_deleting_destructor'; names another function)
+005299a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf 'CRegisteredMusicEntry>_>' matches no symbol in 006568bb.obj; graded the largest function
+  WARN leaf 'CRegisteredMusicEntry>_>' matches no symbol in 006568bb.obj; graded the largest function
+006568bb   WARN STANDIN_LEAF @FableDualDestval_006568bb@4 (catalog std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>; address-only name)
+006568bb   RELOCATION_MATCH PASS   CRegisteredMusicEntry>_>
+006b5870   WARN SHARED_HEADER_AVAILABLE CTCMapwho (engine/CTCMapwho.h)
+006b5870   RELOCATION_MATCH PASS   OnDie
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 009108e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 009108e0.obj; graded the largest function
+009108e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a5e650   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+00a5e650   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00a5e650   RELOCATION_MATCH PASS   OnDie
+00aa49b0   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+00aa49b0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00aa49b0   RELOCATION_MATCH PASS   Dtor_CChunkedFileChunkBase_00aa49b0
+00aa71f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+00aa71f0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00aa71f0   RELOCATION_MATCH PASS   OnDie
+00aa7210   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+00aa7210   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00aa7210   RELOCATION_MATCH PASS   OnDie
+
+WINS: 14
+  00403510 RELOCATION_MATCH _Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger::CConflict>
+  004407b0 RELOCATION_MATCH CGuiControlTreePane::SortTreeRecursively
+  00472b63 RELOCATION_MATCH WaypointData::??1WaypointData@
+  004857e0 RELOCATION_MATCH LTextTreeWalkThrough::BuildTreeArray
+  0048b4e0 RELOCATION_MATCH CInputProcessInventoryBase::`scalar_deleting_destructor'
+  004d26f0 RELOCATION_MATCH _global::?_Destroy_range_allocator_CSpeechFrame___@@YIXPAVCSpeechFrame@@0@Z
+  005299a0 RELOCATION_MATCH CThingBuilding::`scalar_deleting_destructor'
+  006568bb RELOCATION_MATCH _global::CRegisteredMusicEntry>_>
+  006b5870 RELOCATION_MATCH CTCMapwho::OnDie
+  009108e0 RELOCATION_MATCH NCreatureMode::CModeSitChairStudious::`scalar_deleting_destructor'
+  00a5e650 RELOCATION_MATCH CTCInventoryItem::OnDie
+  00aa49b0 RELOCATION_MATCH _global::OnDie
+  00aa71f0 RELOCATION_MATCH CTCInventoryItem::OnDie
+  00aa7210 RELOCATION_MATCH CTCInventoryItem::OnDie

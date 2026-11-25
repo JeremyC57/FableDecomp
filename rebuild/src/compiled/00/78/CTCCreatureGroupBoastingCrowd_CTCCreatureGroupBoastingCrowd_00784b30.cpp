@@ -1,5 +1,8 @@
 // CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing* parent) -- boasting-crowd group component: the inline CTCCreatureGroup base (counts, shutdown flag, empty member map), a null hero pointer, crowd state 0 / encouragement state 2, no deed handle; forces a frame update and clears the base's shutdown-on-empty flag
 // Leaf: ??0CTCCreatureGroupBoastingCrowd
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00784B30, length 158 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the 0x30-byte map header node),
@@ -30,7 +33,7 @@ class CTCBase { public:
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
-    CTCBase(CThing* parent);                       // 0x00686800
+    CTCBase(CThing& parent);                       // 0x00686800
 };
 
 struct SMemberNode {                               // 0x30 bytes: rb links, key (8), CGroupMemberData (20)
@@ -66,7 +69,7 @@ class CTCCreatureGroup : public CTCBase { public:
     CMemberTree   Members;                         // +0x18
     virtual void v01();
     FABLE_FORCEINLINE CTCCreatureGroup(CThing* parent)
-        : CTCBase(parent), MemberCount(0), ActiveMemberCount(0), ShutdownOnEmpty(true)
+        : CTCBase(*parent), MemberCount(0), ActiveMemberCount(0), ShutdownOnEmpty(true)
     {
     }
 };

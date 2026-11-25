@@ -1,0 +1,62 @@
+addr       parity           behav  name
+0052ac90   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0052ac90   WARN SHARED_HEADER_AVAILABLE CClass (engine/CClass.h)
+0052ac90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0052ac90   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0052ac90   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+0052ac90   WARN SHARED_HEADER_AVAILABLE CThingHolySite (engine/CThingHolySite.h)
+0052ac90   RELOCATION_MATCH PASS   Alloc
+0052ad50   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+0052ad50   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+0052ad50   WARN SHARED_HEADER_AVAILABLE CThingPhysicalSwitch (engine/CThingPhysicalSwitch.h)
+0052ad50   RELOCATION_MATCH PASS   Alloc
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00590d32   WARN RELOC_NAME: ??0CEditBoxList@@QAE@ABU?$CAllocator@PAX@@@Z -> 005931da labelled 'DoublyLinkedList_InitHead'
+00590d32   WARN RELOC_NAME: ??0CComponentByLongMap@@QAE@XZ -> 00593ed0 labelled 'std::map<T_00593ed0>::map'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@J@@QAEXK@Z -> 004433f0 labelled 'std::vector<long, std::allocator<long>>::resize'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@VCFadeInFadeOutBase@@@@QAEXK@Z -> 00594df4 labelled 'CTimedEntryArray_00594df4::ResetEntry'
+00590d32   RELOCATION_MATCH PASS   CTCInventory
+0059eb0c   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+0059eb0c   WARN RELOC_NAME: ??0CComponentPairMap@@QAE@XZ -> 005b2706 labelled 'std::map<T_005b2706>::map'
+0059eb0c   WARN RELOC_NAME: ??0CComponentListMap@@QAE@XZ -> 005b2724 labelled 'std::map<T_005b2724>::map'
+0059eb0c   WARN RELOC_NAME: ??0CLongLongMap@@QAE@XZ -> 004df86c labelled 'std::map<long, long, std::less<long>, std::allocator<std::pair<long const, long>>>::map'
+0059eb0c   WARN RELOC_NAME: ??0CComponentStringMap@@QAE@XZ -> 005b2e6c labelled 'std::map<T_005b2e6c>::map'
+0059eb0c   WARN RELOC_NAME: ??0CComponentMap@@QAE@XZ -> 005b2747 labelled 'std::map<T_005b2747>::map'
+0059eb0c   RELOCATION_MATCH PASS   CTCInventoryTrade
+005c3947   WARN SHARED_HEADER_AVAILABLE CDefIndex (engine/CDefIndex.h)
+005c3947   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3947   WARN RELOC_NAME: ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<class CThing>::CIntelligentPointer'
+005c3947   WARN RELOC_NAME: ??0CEnginePrimitiveHandleVector@@QAE@K@Z -> 00485d30 labelled 'std::vector::vector'
+005c3947   WARN RELOC_NAME: ??0CComponentItemMap@@QAE@XZ -> 004df81d labelled 'std::map<T_004df81d>::map'
+005c3947   RELOCATION_MATCH PASS   CTCInventoryWeapons
+005f3bcf   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f3bcf   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005f3bcf   WARN RELOC_NAME: ??0CLongFillVector@@QAE@KABJABUSAllocator@@@Z -> 00512630 labelled 'std::vector<unsigned long,std::allocator<unsigned long> >::vector'
+005f3bcf   WARN RELOC_NAME: ??0CHeroAbilityDefEntryVector@@QAE@KABU?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@ABUSAllocator@@@Z -> 005f9bfe labelled 'std::vector<pair<long,CDefPointer<const CHeroAbilityDef> > >::vector'
+005f3bcf   WARN RELOC_NAME: ??0CSpellCategoryComponentMap@@QAE@XZ -> 005f9452 labelled 'std::map<T_005f9452>::map'
+005f3bcf   WARN RELOC_NAME: ??0CAbilityComponentMap@@QAE@XZ -> 00579842 labelled 'std::map<T_00579842>::map'
+005f3bcf   RELOCATION_MATCH PASS   CTCInventoryAbilities
+00666090   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+00666090   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00666090   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00666090   RELOCATION_MATCH PASS   CThingCreatureBase
+009b08c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream (engine/CFileDataInputStream.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+009b08c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009b08c0   RELOCATION_MATCH PASS   Compile
+
+WINS: 8
+  0052ac90 RELOCATION_MATCH CThingHolySite::?Alloc@CThingHolySite
+  0052ad50 RELOCATION_MATCH CThingPhysicalSwitch::?Alloc@CThingPhysicalSwitch
+  00590d32 RELOCATION_MATCH CTCInventory::??0CTCInventory
+  0059eb0c RELOCATION_MATCH CTCInventoryTrade::??0CTCInventoryTrade
+  005c3947 RELOCATION_MATCH CTCInventoryWeapons::??0CTCInventoryWeapons
+  005f3bcf RELOCATION_MATCH CTCInventoryAbilities::??0CTCInventoryAbilities
+  00666090 RELOCATION_MATCH CThingCreatureBase::??0CThingCreatureBase
+  009b08c0 RELOCATION_MATCH CDefinitionManager::?Compile@CDefinitionManager@@QAEXXZ

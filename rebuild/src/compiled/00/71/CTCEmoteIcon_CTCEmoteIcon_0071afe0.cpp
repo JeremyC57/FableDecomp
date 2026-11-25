@@ -1,5 +1,8 @@
 // CTCEmoteIcon::CTCEmoteIcon(CThing*) -- CTCBase(thing), the CTCEmoteIcon vtable, timer 0, empty emote text, icon/scale 0, type 2, priority 8, alpha 0xff, replaceable + enabled, and an empty CEnginePrimitiveHandle
 // Leaf: ??0CTCEmoteIcon@@QAE@PAVCThing@@@Z
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071AFE0, length 93 bytes (+ int3 padding). Manifest label "CTCHero::CTCHero"
 // is propagated; vtable 0x01265ABC = CTCEmoteIcon (rtti-vtables.tsv).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CWideString::CWideString() @ 0x0099AED0 (manifest "CCharString" is a
@@ -18,7 +21,7 @@ class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                                 // 0x00686800
+    CTCBase(CThing& thing);                                 // 0x00686800
 };
 
 class CWideString { public:
@@ -54,7 +57,7 @@ class CTCEmoteIcon : public CTCBase { public:                             // vta
 };
 
 CTCEmoteIcon::CTCEmoteIcon(CThing* thing)
-    : CTCBase(thing), ActiveTimer(0), EmoteIcon(0), EmoteScale(0.0f), EmoteType(2), EmotePriority(8),
+    : CTCBase(*thing), ActiveTimer(0), EmoteIcon(0), EmoteScale(0.0f), EmoteType(2), EmotePriority(8),
       EmoteAlpha(0xff), Replaceable(true), Enabled(true)
 {
 }

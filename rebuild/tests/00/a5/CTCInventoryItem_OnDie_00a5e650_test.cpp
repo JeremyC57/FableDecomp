@@ -6,8 +6,10 @@ class CTCInventoryItem
     void* m_field0;
     void* m_thing;
     void OnDie();
-    void BaseOnDie();
 };
+// Naming (NF449, ruling q2): the row now calls the PDB destructor CBaseClass::~CBaseClass (0x0099A2E0) where it called the stand-in
+//   CTCInventoryItem::BaseOnDie; the stub is respelt with the row (callee only), same effect.
+class CBaseClass { public: virtual ~CBaseClass(); };
 
 static int g_freed = 0;
 static void* g_freedPtr = 0;
@@ -17,7 +19,7 @@ static int g_free_hook = 0;   // the CRT frees its own blocks before main: count
 extern "C" void __cdecl free(void* p)
 {
     if (!g_free_hook) return; g_freed++; g_freedPtr = p; }
-void CTCInventoryItem::BaseOnDie() { g_baseCalled++; }
+CBaseClass::~CBaseClass() { g_baseCalled++; }
 
 int main()
 {

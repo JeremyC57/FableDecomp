@@ -1,5 +1,8 @@
 // CCreatureAction_FinishDrainLifeSpell::FinishAction() -- base FinishAction, then re-equip the item taken out (fast unsheathe to the combat pose) when it still lives
 // Leaf: ?FinishAction@CCreatureAction_FinishDrainLifeSpell@@UAEXXZ
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x0069F0F0 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z (was ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z)
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the +0x91 dead test through CThing::IsDead() const (Ego_r.pdb
 //   ?IsDead@CThing@@QBE_NXZ, a bool accessor) instead of a direct bit test; the bool accessor keeps retail's register
 //   choice / test-and-branch shape.
@@ -64,7 +67,7 @@ class CCreatureActionBase { public:                          // retail sizeof 0x
 };
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
-    CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+    CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
     ~CCreatureAction_UnsheatheItemFromInventory();    // 0x005CC091
 };
@@ -81,6 +84,6 @@ void CCreatureAction_FinishDrainLifeSpell::FinishAction()
     CCombatActionBase::FinishAction();
     if (IS_THING_ALIVE(PItemRemoved)) {
         CCharString name("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE");
-        ((CThingCreatureBase*)(GetCreature()))->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(GetCreature(), name, PItemRemoved.GetPItem(), 100, 250, 0));
+        ((CThingCreatureBase*)(GetCreature()))->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(*reinterpret_cast<CThingCreatureBase*>(GetCreature()), name, *(PItemRemoved.GetPItem()), 100, 250, 0));
     }
 }

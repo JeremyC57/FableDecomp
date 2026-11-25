@@ -1,5 +1,8 @@
 // CTCExplodingObject::CTCExplodingObject(CThing& parent) -- constructor: CTCBase, default blast (10 damage, radius 10, 10 fire damage), no countdown, proximity trigger radius 5; then read the exploding-object def and, through its explosion thing def, the explosion's damage, radius and fire damage
 // Leaf: ??0CTCExplodingObject
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750BE0, length 232 bytes (+ int3 padding). `ret 4`; vtable 0x01269674.
 //         Ego_r.pdb: `??0CTCExplodingObject@@QAE@AAVCThing@@@Z`.
@@ -103,7 +106,7 @@ public:
 
 class CTCBase {
 public:
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];
@@ -126,7 +129,7 @@ public:
 };
 
 CTCExplodingObject::CTCExplodingObject(CThing& parent)
-    : CTCBase(&parent), MaxDamage(10.0f), Radius(10.0f), FireDamage(10), CountdownTimer(-1),
+    : CTCBase(parent), MaxDamage(10.0f), Radius(10.0f), FireDamage(10), CountdownTimer(-1),
       TriggeredOnCreatureProximity(false), TriggerRadius(5.0f)
 {
     ParentThing->PBaseDef->GetSubDef(&PDef);

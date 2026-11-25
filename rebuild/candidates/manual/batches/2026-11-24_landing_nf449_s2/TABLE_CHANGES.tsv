@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+delete	??0CFileDataInputStream@@QAE@PAVCDiskFileWin32@@K@Z	00994700	009b08c0	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 12 candidate row(s) naming the identifier and calling the target)
+delete	??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z	005bff07	00590d32	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 6 candidate row(s) naming the identifier and calling the target)
+delete	??0CThingPhysical@@QAE@J@Z	005296b0	0052ac90	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 3 candidate row(s) naming the identifier and calling the target)

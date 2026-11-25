@@ -2,6 +2,9 @@
 // counter), set the 0x9D component's flag, drop combination animations 1 and 0x23, remove creature mode 0x19 unless the
 // player auto-faces, and re-equip the item taken out (fast unsheathe to the combat pose) when it still lives
 // Leaf: ?FinishAction@CCreatureAction_FinishFireballSpell
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x0069F0F0 ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@ABVCCharString@@AAVCThing@@JJPAVCCreatureActionBase@@@Z (was ??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
 #include "fable_compiler.h"
@@ -98,7 +101,7 @@ class CCreatureActionBase { public:                          // retail sizeof 0x
 };
 class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
-    CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& animation, CThing* item,
+    CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase& owner, const CCharString& animation, CThing& item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
     ~CCreatureAction_UnsheatheItemFromInventory();    // 0x005CC091
 };
@@ -134,6 +137,6 @@ void CCreatureAction_FinishFireballSpell::FinishAction()
     }
     if (IS_THING_ALIVE(PItemRemoved)) {
         CCharString name("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE");
-        ((CThingCreatureBase*)(GetCreature()))->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(GetCreature(), name, PItemRemoved.GetPItem(), 100, 250, 0));
+        ((CThingCreatureBase*)(GetCreature()))->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(*reinterpret_cast<CThingCreatureBase*>(GetCreature()), name, *(PItemRemoved.GetPItem()), 100, 250, 0));
     }
 }

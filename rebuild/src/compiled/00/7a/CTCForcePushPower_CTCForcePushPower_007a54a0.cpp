@@ -1,5 +1,8 @@
 // CTCForcePushPower::CTCForcePushPower(CThing& parent) -- constructor: CTCBase, a null def pointer, spell level and removed-item pointer, cleared cast state; load SPECIAL_ABILITIES_FORCE_PUSH_DEF, take the spell level from the owner's ability inventory and convert the level's cast delay to frames
 // Leaf: ??0CTCForcePushPower
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A54A0, length 222 bytes. `ret 4`; vtable 0x0126C9BC.
@@ -124,7 +127,7 @@ public:
 
 class CTCBase {
 public:
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
@@ -143,7 +146,7 @@ public:
 };
 
 CTCForcePushPower::CTCForcePushPower(CThing& parent)
-    : CTCBase(&parent), SpellLevel(0), PItemRemoved(0), Casted(false), CurTimeDelayBetweenCastsFrames(0),
+    : CTCBase(parent), SpellLevel(0), PItemRemoved(0), Casted(false), CurTimeDelayBetweenCastsFrames(0),
       IgnoreFriendlies(false)
 {
     long index;

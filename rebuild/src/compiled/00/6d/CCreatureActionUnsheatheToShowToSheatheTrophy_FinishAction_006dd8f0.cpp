@@ -1,3 +1,6 @@
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x006DF730 ??0CCreatureAction_ShowTrophy@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@J@Z (was ??0CCreatureAction_ShowTrophy@@QAE@PAVCThing@@0ABVCCharString@@J@Z)
 // CCreatureAction_UnsheatheToShowToSheatheTrophy::FinishAction() -- base (unsheathe) FinishAction, then hand the creature a temporary CCreatureAction_ShowToSheatheTrophy(creature, Trophy, ShowAnimName) as its current action
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DD8F0, length 132 bytes.
 // Callees: CCreatureAction_UnsheatheItemFromInventory::FinishAction @ 0x0069FC40 (direct base call), CBaseIntelligentPointer::
@@ -49,14 +52,14 @@ class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:   // ret
     bool PostedDeed;                        // +0xb4
     CIntelligentPointer PEmitter;           // +0xb5 (unaligned in retail and in the PDB)
     unsigned char _pad_bd[3];
-    CCreatureAction_ShowTrophy(CThing* creature, CThing* trophy, const CCharString& animName, long actionCode);   // 0x006DF730
+    CCreatureAction_ShowTrophy(CThingCreatureBase& creature, CThing& trophy, const CCharString& animName, long actionCode);   // 0x006DF730
 };
 #pragma pack(pop)
 
 class CCreatureAction_ShowToSheatheTrophy : public CCreatureAction_ShowTrophy { public:   // vtable 0x0125F9F4
     virtual void v00();
     CCreatureAction_ShowToSheatheTrophy(CThing* creature, CThing* trophy, const CCharString& animName)
-        : CCreatureAction_ShowTrophy(creature, trophy, animName, 1001)
+        : CCreatureAction_ShowTrophy(*reinterpret_cast<CThingCreatureBase*>(creature), *trophy, animName, 1001)
     {
     }
 };

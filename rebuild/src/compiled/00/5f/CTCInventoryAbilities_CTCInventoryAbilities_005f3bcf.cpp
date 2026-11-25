@@ -1,5 +1,8 @@
 // CTCInventoryAbilities::CTCInventoryAbilities(CThing* thing) -- construct the abilities screen: the inventory base, the screen base at +0x130, the ability bookkeeping (20 experience slots, 20 empty ability entries), the button maps and component maps, and the two assigned-level cursors
 // Leaf: ??0CTCInventoryAbilities
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005BFF07 ??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z (was ??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z)
 // Retail 0x005F3BCF, 303 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: NInventory::CTCInventoryBase::CTCInventoryBase(CThing*) 0x005BFF07, NHeroInformationScreens::CBase::CBase()
 // 0x0066E734, vector<long>(size_type, const long&, const allocator&) 0x00512630, vector<pair<long, CDefPointer<const
@@ -70,7 +73,7 @@ struct CAbilityComponentMap {                      // map<EHeroAbility, NUISyste
 namespace NInventory {
 class CTCInventoryBase {                           // vtable 0x01253DBC, retail sizeof 0x130
 public:
-    CTCInventoryBase(CThing* thing);               // 0x005BFF07
+    CTCInventoryBase(CThing& thing);               // 0x005BFF07
     virtual ~CTCInventoryBase();
     unsigned char _body[0x12C];
 };
@@ -121,7 +124,7 @@ __declspec(noinline) CLongFillVector::CLongFillVector(unsigned long n, const lon
 #pragma auto_inline(on)
 
 CTCInventoryAbilities::CTCInventoryAbilities(CThing* thing)
-    : NInventory::CTCInventoryBase(thing),
+    : NInventory::CTCInventoryBase(*thing),
       SpellToAssign(0), SpellSlotToSwap(0), PComponentSlotToSwap(0),
       WaitingToGiveTutorial(false), Initialised(false), CurrentSpecialAbilityUsedFromQuickAccess(false),
       ExperienceSpentOnAbilities(20, 0),

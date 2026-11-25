@@ -1,5 +1,8 @@
 // CTCInGameMenu::CTCInGameMenu(CThing* thing) -- constructor: CTCBase, menu closed, no def, empty item/file/primitive/component lists (five primitive handles reserved), no load or save game selected, the pause and render clocks zeroed, the video-change timer off (-1), no dialogs; then register for the global TC update
 // Leaf: ??0CTCInGameMenu
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail 0x0047DF8A, 245 bytes (`ret 4`); vtable 0x01236804. Size TU (`push dword ptr [esp+0Ch]` pass-through, `fldz ; fstp`
 // double zeroes, `or ecx,-1`): `#pragma optimize("s", on)`, as the landed CTCInGameMenu::ConfirmedVideoOptionsChanged 0x0047D012.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, vector<CEnginePrimitiveHandle>::vector(size_type) @ 0x00485D30 (count 5),
@@ -19,7 +22,7 @@ class CThing;
 
 class CTCBase {
 public:
-    CTCBase(CThing* thing);                                 // 0x00686800
+    CTCBase(CThing& thing);                                 // 0x00686800
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -98,7 +101,7 @@ public:
 };
 
 CTCInGameMenu::CTCInGameMenu(CThing* thing)
-    : CTCBase(thing), InGameMenuOpen(false), PDef(0), ActiveScreen(0), ItemCount(0), ItemHighlightIndex(0), ItemTopIndex(0),
+    : CTCBase(*thing), InGameMenuOpen(false), PDef(0), ActiveScreen(0), ItemCount(0), ItemHighlightIndex(0), ItemTopIndex(0),
       PrimitiveHandles(5), LoadGameIndex(-1), CurStartPauseTime(0.0), AccumulativePausedTime(0.0), LastRenderTime(0.0),
       OpenInventory(false), m_pOKDialog(0), PVideoOptionsNotAcceptedDialog(0), PVideoOptionsChangedDialog(0),
       SaveGameToLoad(-1), VideoChangesTimer(-1.0), SaveGameIndex(-1), FramesToWaitToSave(-1), PSaveInProgress(0),

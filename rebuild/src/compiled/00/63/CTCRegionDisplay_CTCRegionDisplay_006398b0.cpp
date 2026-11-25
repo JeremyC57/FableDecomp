@@ -1,5 +1,8 @@
 // CTCRegionDisplay::CTCRegionDisplay(CThing* thing) -- CTCBase(thing), own vtable, two empty area-name strings, counters/alpha/time zeroed, time-out and update-while-paused on, info display off, then join the global update list
 // Leaf: ??0CTCRegionDisplay
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006398B0, length 72 bytes.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CWideString::CWideString() @ 0x0099AED0 (twice), CTCBase::AddToGlobalTCs()
 // @ 0x00686ED0. Vtable 0x0125A0EC = CTCRegionDisplay (rtti-vtables.tsv).
@@ -13,7 +16,7 @@ class CTCBase { public:                                      // engine/CTCBase.h
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                           // 0x00686800
+    CTCBase(CThing& thing);                           // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -38,7 +41,7 @@ class CTCRegionDisplay : public CTCBase { public:                   // vtable 0x
 };
 
 CTCRegionDisplay::CTCRegionDisplay(CThing* thing)
-    : CTCBase(thing)
+    : CTCBase(*thing)
     , FrameNameChanged(0)
     , CurrentAlpha(0)
     , LastAlpha(0)

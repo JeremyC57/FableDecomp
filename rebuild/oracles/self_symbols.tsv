@@ -28154,3 +28154,12 @@ address	symbol	status	leaf_given
 00def760	?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ	RELOCATION_MATCH	?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
 00e292c0	?Main@CMeetSisterMessenger@CQS_MeetSisterScript@NScript@@EAEXXZ	RELOCATION_MATCH	?Main@CMeetSisterMessenger@CQS_MeetSisterScript@NScript@@EAEXXZ
 00ee2db0	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z	RELOCATION_MATCH	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z
+0071afe0	??0CTCEmoteIcon@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCEmoteIcon@@QAE@PAVCThing@@@Z
+0076e620	??0CTCWeaponTrail@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CTCWeaponTrail@@QAE@PAVCThing@@@Z
+008b96a0	?FinishAction@CCreatureAction_FinishWillTurncoatSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_FinishWillTurncoatSpell@@UAEXXZ
+008b9740	?FinishAction@CCreatureAction_FinishDrainLifeSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_FinishDrainLifeSpell@@UAEXXZ
+008b98d0	?FinishAction@CCreatureAction_FinishHealLifeSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_FinishHealLifeSpell@@UAEXXZ
+008b9a60	?FinishAction@CCreatureAction_FinishGhostSwordSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_FinishGhostSwordSpell@@UAEXXZ
+008b9bf0	?FinishAction@CCreatureAction_ReleaseWillSummonSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_ReleaseWillSummonSpell@@UAEXXZ
+009b08c0	?Compile@CDefinitionManager@@QAEXXZ	RELOCATION_MATCH	?Compile@CDefinitionManager@@QAEXXZ
+004d26f0	?_Destroy_range_allocator_CSpeechFrame___@@YIXPAVCSpeechFrame@@0@Z	RELOCATION_MATCH	?_Destroy_range_allocator_CSpeechFrame___@@YIXPAVCSpeechFrame@@0@Z

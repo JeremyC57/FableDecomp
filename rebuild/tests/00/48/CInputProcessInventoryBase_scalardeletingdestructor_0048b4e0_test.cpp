@@ -2,14 +2,16 @@
 
 struct CInputProcessInventoryBase
 {
-    void ScalarDtor();
 };
+// Naming (NF449, ruling q2): the row now calls the PDB destructor CAInputProcess::~CAInputProcess (0x00A0D3D0) where it called the
+//   stand-in CInputProcessInventoryBase::ScalarDtor; the stub is respelt with the row (callee only), same effect.
+class CAInputProcess { public: virtual ~CAInputProcess(); };
 
 static int g_dtorCalls = 0;
 static int g_deleteCalls = 0;
 static void* g_lastDeleted = 0;
 
-void CInputProcessInventoryBase::ScalarDtor() { g_dtorCalls++; }
+CAInputProcess::~CAInputProcess() { g_dtorCalls++; }
 void __cdecl operator delete(void* p)
 { g_deleteCalls++; g_lastDeleted = p; }
 

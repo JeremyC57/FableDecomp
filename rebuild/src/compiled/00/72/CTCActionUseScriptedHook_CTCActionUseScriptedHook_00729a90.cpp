@@ -1,5 +1,8 @@
 // CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing* owner) -- CTCBase(owner), own vtable, usable and every flag cleared, the two UIDs zeroed, the two intelligent pointers and the two strings default-built, then registered for global updates
 // Leaf: ??0CTCActionUseScriptedHook
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729A90, length 142 bytes (+2 int3 padding). `ret 4`. Vtable 0x0126664C.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 and
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (x2: the inline CIntelligentPointer(T*) ctor with a null item, vtable
@@ -36,7 +39,7 @@ class CCharString { public:
 
 class CTCBase {
 public:
-    CTCBase(CThing* owner);                     // 0x00686800
+    CTCBase(CThing& owner);                     // 0x00686800
     virtual ~CTCBase();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -67,7 +70,7 @@ public:
 };
 
 CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing* owner)
-    : CTCBase(owner)
+    : CTCBase(*owner)
     , Usable(true)
     , ForceConfirmation(false)
     , WaitingForConfirmation(false)

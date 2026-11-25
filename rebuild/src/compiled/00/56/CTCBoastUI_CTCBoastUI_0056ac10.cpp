@@ -1,6 +1,9 @@
 // CTCBoastUI::CTCBoastUI(CThing*) -- boast-UI thing component ctor: empty boast-group map and component vector, flags (allowed to open), registered for updates
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056AC10, 112 bytes (padding included).
 // Leaf: CTCBoastUI
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Label correction: the catalog row says CMesh::CMesh, but the vtable store 0x0124DCFC is CTCBoastUI
 // (rtti-vtables.tsv) and the members match the PDB CTCBoastUI (BoastGroups, Active, Components,
 // Quitting, AllowedToOpen, ActivationRequested, ActivateLater; retail STLport containers are 12 bytes,
@@ -21,7 +24,7 @@ class CTCBase { public:
     CThing*       ParentThing;                      // +0x04
     bool          ToBeRemoved;                      // +0x08
     bool          IsInGlobalUpdateTCs;              // +0x09
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -76,7 +79,7 @@ class CTCBoastUI : public CTCBase { public:                       // vtable 0x01
 };
 
 CTCBoastUI::CTCBoastUI(CThing* parent)
-    : CTCBase(parent)
+    : CTCBase(*parent)
     , Active(false)
     , Quitting(false)
     , AllowedToOpen(true)

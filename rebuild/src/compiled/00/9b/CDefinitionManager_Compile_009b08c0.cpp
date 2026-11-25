@@ -1,6 +1,9 @@
 // 009b08c0 CDefinitionManager::Compile
 // Flags: /O2 /Oy /W3
 // Leaf: ?Compile@CDefinitionManager@@QAEXXZ
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00994700 ??0CFileDataInputStream@@QAE@AAVCAFile@@K@Z (was ??0CFileDataInputStream@@QAE@PAVCDiskFileWin32@@K@Z)
 // Bring the definitions up to date: check the symbol-path dependencies, then try the compiled binary file when
 // binary loading is on and the file exists. When that fails, build the symbols from the symbol paths, compile the
 // compile paths, drop unused memory, and (when binary saving is on) write the definitions to the compiled file
@@ -60,7 +63,7 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:
 };
 class CFileDataInputStream : public CDataInputStream { public:         // 0x24 bytes: the 0x18-byte CDataInputStream + file, buffer
     unsigned char _body[0xc];
-    CFileDataInputStream(CDiskFileWin32* file, unsigned long bufferSize);   // 0x00994700
+    CFileDataInputStream(CAFile& file, unsigned long bufferSize);   // 0x00994700
     ~CFileDataInputStream();                             // 0x00994780
 };
 class CMemoryDataOutputStream : public CDataOutputStream {
@@ -104,7 +107,7 @@ void CDefinitionManager::Compile()
     if (g_bLoadBinaryDefinitions && CAFile::PathExists(GetCompiledFileName())) {
         CDiskFileWin32 file;
         file.Open(GetCompiledFileName(), FILE_ACCESS_READ, 4);
-        CFileDataInputStream stream(&file, 0x4000);
+        CFileDataInputStream stream(*reinterpret_cast<CAFile*>(&file), 0x4000);
         GFGetTime();
         if (LoadBinaryDefinitions(stream)) {
             GFGetTime();

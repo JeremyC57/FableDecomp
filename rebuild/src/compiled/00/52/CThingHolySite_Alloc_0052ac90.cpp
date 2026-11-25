@@ -1,5 +1,8 @@
 // CThingHolySite::Alloc() -- the class-registry factory for CThingHolySite: allocate and construct a holy site (thing type 7): the physical/game-object base chain and a null def pointer; null when the thing manager refuses the allocation
 // Leaf: ?Alloc@CThingHolySite
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005296B0 ??0CThingPhysical@@QAE@K@Z (was ??0CThingPhysical@@QAE@J@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052AC90, 79 bytes, `ret` (Ego_r.pdb `?Alloc@CThingHolySite@@SIPAVCClass@@XZ`: static __fastcall,
 //   no arguments, returns CClass*).
@@ -37,7 +40,7 @@ protected:
 class CThingPhysical : public CThing {
 public:
     unsigned char _pad04[0xbc];                 // +0x04 .. +0xbf (CThing + CThingPhysical members, not touched here)
-    CThingPhysical(long type);                  // 0x005296B0
+    CThingPhysical(unsigned long type);                  // 0x005296B0
 };
 
 class CThingGameObject : public CThingPhysical {           // vtable 0x01244F7C

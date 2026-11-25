@@ -1,3 +1,6 @@
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005ED070 ??0CScriptModuleBase@NCameraModes@@QAE@XZ (was ??0CScriptModuleBase@@QAE@XZ); the model class is wrapped in namespace NCameraModes (PDB scope) with a using-declaration
 // NCameraModes::CScriptModuleDollyThing::CScriptModuleDollyThing(void* thing, const C3DVector& offset, const SHandle& target) -- CScriptModuleBase, the thing at +0x4c, this class's vtable, the offset copied to +0x50..+0x58, the target's word at +0x5c
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AAEF0, length 55 bytes.
@@ -7,11 +10,11 @@
 #include "engine/C3DVector.h"
 struct SHandle_008aaef0 { long m_id; };
 
-struct CScriptModuleBase {
+namespace NCameraModes { struct CScriptModuleBase {
     virtual void v00();
     unsigned char _pad[0x48];                      // +0x04 .. +0x4c
     CScriptModuleBase();                           // 0x005ED070
-};
+}; } using NCameraModes::CScriptModuleBase;
 
 namespace NCameraModes {
 struct CScriptModuleDollyThing : CScriptModuleBase {   // vtable 0x01278188

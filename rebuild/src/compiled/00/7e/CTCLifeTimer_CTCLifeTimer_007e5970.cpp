@@ -1,6 +1,9 @@
 // CTCLifeTimer::CTCLifeTimer(CThing* owner) -- construct the life timer component: CTCBase(owner), FramesLeft -1, FadeOutBeforeKill false, PerformOnDie true, then force the owner to update every frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E5970, length 50 bytes.
 // Leaf: ??0CTCLifeTimer
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CThing::SetForceFrameUpdate(bool) @ 0x004C7C60. Vtable: CTCLifeTimer
 // @ 0x012706A4 (RTTI). Layout: PDB CTCLifeTimer (0x14): the CTCBase owner at +4, FramesLeft +0x0c, FadeOutBeforeKill +0x10,
 // PerformOnDie +0x11. No engine header exists; local model.
@@ -11,7 +14,7 @@
 #include "engine/CThing.h"
 
 class CTCBase { public:
-    CTCBase(CThing* owner);                        // 0x00686800
+    CTCBase(CThing& owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
     long    m_baseWord;                            // +0x08
@@ -26,7 +29,7 @@ class CTCLifeTimer : public CTCBase { public:
 };
 
 CTCLifeTimer::CTCLifeTimer(CThing* owner)
-    : CTCBase(owner), FramesLeft(-1), FadeOutBeforeKill(false), PerformOnDie(true)
+    : CTCBase(*owner), FramesLeft(-1), FadeOutBeforeKill(false), PerformOnDie(true)
 {
     m_pThing->SetForceFrameUpdate(true);
 }

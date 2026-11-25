@@ -1,5 +1,8 @@
 // CTCInventoryTrade::CTCInventoryTrade(CThing* thing) -- constructor: inventory base and hero-information-screen base, own vtables, empty trade containers, cleared counters, no warning and no trophy use pending, an empty special-item string and no open trade menu
 // Leaf: ??0CTCInventoryTrade
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005BFF07 ??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z (was ??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059EB0C, 316 bytes (`ret 4`); the manifest row says "CTCVillage::CTCVillage"
 // (wrong: the two vtable stores are CTCInventoryTrade's primary 0x01253034 and its NHeroInformationScreens::CBase side
 // 0x0125301C at +0x130, as in the landed dtor 0x0059EC48 that follows it).
@@ -49,7 +52,7 @@ class CWideString { public: void* m_pData; CWideString(); };                    
 namespace NInventory {
 class CTCInventoryBase {                        // retail sizeof 0x130
 public:
-    CTCInventoryBase(CThing* thing);            // 0x005BFF07
+    CTCInventoryBase(CThing& thing);            // 0x005BFF07
     virtual void v00();
     unsigned char _pad04[0x130 - 0x04];
 };
@@ -107,7 +110,7 @@ public:
 };
 
 CTCInventoryTrade::CTCInventoryTrade(CThing* thing)
-    : NInventory::CTCInventoryBase(thing),
+    : NInventory::CTCInventoryBase(*thing),
       WarningNeeded(false), TrophyUseNeeded(-1),
       TotNumClothesToSell(0), TotNumWeaponsToSell(0), TotNumItemsToSell(0),
       TotNumClothesToBuy(0), TotNumWeaponsToBuy(0), TotNumItemsToBuy(0),

@@ -1,5 +1,8 @@
 // CTCDrunkenness::CTCDrunkenness(CThing*) -- CTCBase(thing), never sobered, seconds per frame from the frame rate, and a per-creature drunkenness threshold drawn from the drunkenness ability def (0.5 .. 1.5 times its base threshold)
 // Leaf: ??0CTCDrunkenness
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 //
@@ -84,7 +87,7 @@ class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                                 // 0x00686800
+    CTCBase(CThing& thing);                                 // 0x00686800
 protected:
     unsigned long* GetPWorldSeed() const;   // 0x00686DA0
 };
@@ -100,7 +103,7 @@ class CTCDrunkenness : public CTCBase { public:                           // vta
 };
 
 CTCDrunkenness::CTCDrunkenness(CThing* thing)
-    : CTCBase(thing)
+    : CTCBase(*thing)
     , FrameLastUpdatedSobering(0)
     , SecondsPerFrame(1.0f / CMainGameComponent::GetConstantFPS())
 {

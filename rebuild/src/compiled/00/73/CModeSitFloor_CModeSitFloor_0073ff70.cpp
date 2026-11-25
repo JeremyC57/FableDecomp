@@ -1,5 +1,8 @@
 // CModeSitFloor::CModeSitFloor(CThing*) -- base CModeSitBase(thing), own vtable, CAnimFilterOfGroup member at +0x2c built from CCharString(SIT_FLOOR, -1): string assigned, CRC of the name stored
 // Leaf: ??0CModeSitFloor@
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x008D7CA0 ??0CModeSitBase@NCreatureMode@@QAE@AAVCThing@@@Z (was ??0CModeSitBase@@QAE@PAVCThing@@@Z); the model class is wrapped in namespace NCreatureMode (PDB scope) with a using-declaration
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073FF70, oracle length 116 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -55,11 +58,11 @@ class CAnimFilterOfGroup { public:
     }
 };
 
-struct CModeSitBase {
+namespace NCreatureMode { struct CModeSitBase {
     virtual void v00();
     unsigned char _body[0x28];
-    CModeSitBase(CThing* thing);              // 0x008D7CA0
-};
+    CModeSitBase(CThing& thing);              // 0x008D7CA0
+}; } using NCreatureMode::CModeSitBase;
 
 struct CModeSitFloor : CModeSitBase {
     CAnimFilterOfGroup m_name;                         // +0x2c
@@ -68,7 +71,7 @@ struct CModeSitFloor : CModeSitBase {
 };
 
 CModeSitFloor::CModeSitFloor(CThing* thing)
-    : CModeSitBase(thing)
+    : CModeSitBase(*thing)
     , m_name("SIT_FLOOR")                        // implicit CCharString conversion: the temporary is re-addressed with lea (an explicit CCharString("..", -1) would reuse the constructor's returned pointer)
 {
 }

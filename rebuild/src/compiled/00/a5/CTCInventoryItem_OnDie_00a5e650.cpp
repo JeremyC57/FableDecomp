@@ -9,12 +9,15 @@ class CTCInventoryItem
     void* m_field0;                           // +0
     void* m_thing;                            // +4
     void OnDie();
-    void BaseOnDie();                         // thiscall base OnDie @ 0x99a2e0
 };
 
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
+//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
+//   0x0099A2E0 ??1CBaseClass@@UAE@XZ (was ?BaseOnDie@CTCInventoryItem@@QAEXXZ)
+class CBaseClass { public: virtual ~CBaseClass(); };
 void CTCInventoryItem::OnDie()
 {
     if (this->m_thing)
         free(this->m_thing);
-    this->BaseOnDie();
+    reinterpret_cast<CBaseClass*>(this)->CBaseClass::~CBaseClass();
 }

@@ -1,5 +1,8 @@
 // CTCQuestCompletionUI::CTCQuestCompletionUI(CThing* parent) -- quest-completion UI thing component ctor: flags cleared, empty component vector, the boast list and the three start-quest maps built, strings default-constructed, counters zeroed, CanTeleportToGuildMember set; registered for updates
 // Leaf: ??0CTCQuestCompletionUI
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E4030, length 432 bytes (body 0x1a4 + int3 padding), `ret 4`.
 // Label correction: the catalog row says CEngineSubPrimitive2DClockSprite::CEngineSubPrimitive2DClockSprite (propagated); the vtable
 //   stored, 0x0125589C, is CTCQuestCompletionUI (rtti-vtables.tsv), the only caller is 0x004D6302 and the members match the PDB class.
@@ -22,7 +25,7 @@ class CTCBase { public:
     CThing*       ParentThing;                      // +0x04
     bool          ToBeRemoved;                      // +0x08
     bool          IsInGlobalUpdateTCs;              // +0x09
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -133,7 +136,7 @@ class CTCQuestCompletionUI : public CTCBase { public:             // vtable 0x01
 };
 
 CTCQuestCompletionUI::CTCQuestCompletionUI(CThing* parent)
-    : CTCBase(parent)
+    : CTCBase(*parent)
     , Active(false)
     , ReallyActive(false)
     , Quitting(false)

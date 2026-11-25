@@ -1,5 +1,8 @@
 // CTCDrainLife::CTCDrainLife(CThing& parent) -- constructor: CTCBase, a null def pointer, spell level and removed-item pointer, an empty shot vector, JustReleased set; load SPECIAL_ABILITIES_DRAIN_LIFE_DEF, take the spell level from the owner's ability inventory and convert SpellDelaySecs to frames
 // Leaf: ??0CTCDrainLife
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -115,7 +118,7 @@ public:
 
 class CTCBase {
 public:
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
@@ -134,7 +137,7 @@ public:
 };
 
 CTCDrainLife::CTCDrainLife(CThing& parent)
-    : CTCBase(&parent), SpellLevel(0), PItemRemoved(0), JustReleased(true)
+    : CTCBase(parent), SpellLevel(0), PItemRemoved(0), JustReleased(true)
 {
     long index;
     {

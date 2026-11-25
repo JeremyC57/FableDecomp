@@ -1,5 +1,8 @@
 // CTCActionUseBuyHouse::CTCActionUseBuyHouse(CThing*) -- CTCActionUseBase(owner) inline, own vtable, null def, no pending confirmation, join the global update list
 // Leaf: ??0CTCActionUseBuyHouse
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072E690, length 47 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is a
 // propagated name), CTCBase::AddToGlobalTCs() @ 0x00686ED0 (tests IsInGlobalUpdateTCs at +9 and
@@ -23,7 +26,7 @@ class CTCBase { public:                                      // engine/CTCBase.h
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                           // 0x00686800
+    CTCBase(CThing& thing);                           // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -38,7 +41,7 @@ class CTCActionUseBase : public CTCBase { public:                   // vtable 0x
     CDefPointer<CActionUseDef> PActionUseDef;               // +0x0c
     bool                       Usable;                      // +0x10
     virtual void v00();
-    CTCActionUseBase(CThing* owner) : CTCBase(owner), Usable(true) { }
+    CTCActionUseBase(CThing* owner) : CTCBase(*owner), Usable(true) { }
 };
 
 struct CTCActionUseBuyHouse : CTCActionUseBase {            // vtable 0x01266A7C

@@ -1,5 +1,8 @@
 // CTCLook::CTCLook(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, look state cleared (state 1, flags 0x17, eye angles marked changed), register with the owner's graphic appearance and remember the owner as the parent creature when it is one
 // Leaf: ??0CTCLook
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753170, length 284 bytes (+ int3 padding), `ret 4`. Vtables: CTCLook primary
@@ -77,7 +80,7 @@ class CTCBase { public:
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
-    CTCBase(CThing* thing);                         // 0x00686800
+    CTCBase(CThing& thing);                         // 0x00686800
 };
 class CTCLook : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x01269744 / 0x012697B8
     CThingCreatureBase*          PParentCreature;               // +0x10
@@ -125,7 +128,7 @@ class CTCLook : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceCo
 };
 
 CTCLook::CTCLook(CThing* thing)
-    : CTCBase(thing)
+    : CTCBase(*thing)
     , PParentCreature(0)
     , RecoveryAngleToLookAtXY(0.0f)
     , RecoveryAngleToLookAtYZ(0.0f)

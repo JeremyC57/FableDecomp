@@ -9,9 +9,12 @@ struct Node {
 struct CGuiControlTreePane {
     Node* head; // +0x0 pointer to sentinel head node
 };
-extern "C" void __fastcall NodeSub_Dtor(int* self); // 0x55ad60, thiscall on node+0x18
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
+//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
+//   0x0099B510 ??1CWideString@@QAE@XZ (was @NodeSub_Dtor@4)
+class CWideString { public: ~CWideString(); };
 void __fastcall CGuiControlTreePane_SortTreeRecursively(CGuiControlTreePane* self)
 {
     Node* head = self->head;
@@ -20,7 +23,7 @@ void __fastcall CGuiControlTreePane_SortTreeRecursively(CGuiControlTreePane* sel
         do {
             Node* node = cur;
             cur = cur->next;
-            NodeSub_Dtor(&node->sub);
+            reinterpret_cast<CWideString*>(&node->sub)->CWideString::~CWideString();
             free(node);
         } while (cur != self->head);
     }

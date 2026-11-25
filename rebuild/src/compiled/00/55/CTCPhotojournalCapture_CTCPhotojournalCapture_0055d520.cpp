@@ -1,5 +1,8 @@
 // CTCPhotojournalCapture::CTCPhotojournalCapture(CThing* parent) -- CTCBase(parent), own vtable, empty description and file name, 30 frames to wait, first render frame pending, screen closed, zero render time, no components or mannequin, no pending screenshot (-1), then register for the global TC update
 // Leaf: ??0CTCPhotojournalCapture
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055D520, 97 bytes. Vtable 0x0124C4B4 (CTCPhotojournalCapture; RTTI slots 4/11/26).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CWideString::CWideString() @ 0x0099AED0 (twice; catalog label "CCharString"
 //   is a byte twin), CTCBase::AddToGlobalTCs() @ 0x00686ED0 (catalog "std::list::push_back").
@@ -26,7 +29,7 @@ class CTCBase { public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CTCBase(CThing* parent);                    // 0x00686800
+    CTCBase(CThing& parent);                    // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -47,7 +50,7 @@ class CTCPhotojournalCapture : public CTCBase { public:
 };
 
 CTCPhotojournalCapture::CTCPhotojournalCapture(CThing* parent)
-    : CTCBase(parent)
+    : CTCBase(*parent)
     , FrameCounter(30)
     , FirstRenderFrame(true)
     , ScreenOpen(false)

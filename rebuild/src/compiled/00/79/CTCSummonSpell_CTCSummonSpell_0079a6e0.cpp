@@ -1,5 +1,8 @@
 // CTCSummonSpell::CTCSummonSpell(CThing& parent) -- the summon-spell component: look up its SPECIAL_ABILITIES_SUMMON_SPELL_DEF, resolve the base summon creature's global def once (class static), start both fade-in timers from the def's fade-in time and take the caster's summon ability level
 // Leaf: ??0CTCSummonSpell
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079A6E0, 305 bytes, `ret 4`; vtable 0x0126C2B4.
@@ -116,7 +119,7 @@ public:
 };
 class CTCBase {
 public:
-    CTCBase(CThing* parent);                            // 0x00686800
+    CTCBase(CThing& parent);                            // 0x00686800
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x4];                          // ToBeRemoved, IsInGlobalUpdateTCs
@@ -143,7 +146,7 @@ public:
 #pragma pack(pop)
 
 CTCSummonSpell::CTCSummonSpell(CThing& parent)
-    : CTCBase(&parent), JustReleased(true), FadeInTimer(0), CurFadeInTimer(0), SpellLevel(0), CurTimer(0),
+    : CTCBase(parent), JustReleased(true), FadeInTimer(0), CurFadeInTimer(0), SpellLevel(0), CurTimer(0),
       PItemRemoved(0), CutSceneCancelled(false)
 {
     long index;

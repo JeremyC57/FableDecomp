@@ -1,5 +1,8 @@
 // CTCInventoryWeapons::CTCInventoryWeapons(CThing* thing) -- construct the weapons inventory: the inventory base, the screen base at +0x130, both active-weapon pointers, the primitive handle vector, the menu item map and the entries list
 // Leaf: ??0CTCInventoryWeapons
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005BFF07 ??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z (was ??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3947, 169 bytes, `ret 4`; frame-pointer size TU
 // (`#pragma optimize("s", on)`, as the landed dtor @ 0x005C39F0).
@@ -45,7 +48,7 @@ struct CEnginePrimitiveHandleVector {                // std::vector<CEnginePrimi
 namespace NInventory {
 class CTCInventoryBase {                             // retail 0x130 bytes
 public:
-    CTCInventoryBase(CThing* thing);                 // 0x005BFF07
+    CTCInventoryBase(CThing& thing);                 // 0x005BFF07
     virtual ~CTCInventoryBase();
     unsigned char _pad04[0x130 - 0x04];
 };
@@ -92,7 +95,7 @@ public:
 };
 
 CTCInventoryWeapons::CTCInventoryWeapons(CThing* thing)
-    : NInventory::CTCInventoryBase(thing),
+    : NInventory::CTCInventoryBase(*thing),
       PActiveMeleeWeapon(0), ActiveMeleeWeaponDefIndex(0), MeleeWeaponCarriedOnLoad(false),
       PActiveRangedWeapon(0), ActiveRangedWeaponDefIndex(0), RangedWeaponCarriedOnLoad(false),
       ActiveWeaponPrimitiveHandles(2),

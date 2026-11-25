@@ -1,5 +1,8 @@
 // NCameraModes::CScriptModuleFullTransition::CScriptModuleFullTransition(const C3DVector& lookAt, const C3DVector& startPos, const C3DVector& endLookAt, const C3DVector& endPos, long frames) -- scripted camera move: remember the start position and look-at, the per-frame increments towards the end pair (over `frames`, 15 when 0) and the end frame
 // Leaf: ??0CScriptModuleFullTransition
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005ED070 ??0CScriptModuleBase@NCameraModes@@QAE@XZ (was ??0CScriptModuleBase@@QAE@XZ); the model class is wrapped in namespace NCameraModes (PDB scope) with a using-declaration
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008525F0, length 288 bytes (`ret 14h`).
 // Callees: CScriptModuleBase::CScriptModuleBase @ 0x005ED070, CWorld::GetWorldFrame @ 0x0049D870 (static). Vtable 0x01275A44.
@@ -16,11 +19,11 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 
-struct CScriptModuleBase {
+namespace NCameraModes { struct CScriptModuleBase {
     virtual void v00();
     unsigned char m_state[0x4C - 4];            // +0x4 .. +0x4C: base state, untouched here
     CScriptModuleBase();                        // 0x005ED070
-};
+}; } using NCameraModes::CScriptModuleBase;
 
 namespace NCameraModes {
 

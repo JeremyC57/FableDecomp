@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	??0CModeIntangible@NCreatureMode@@QAE@AAVCThing@@MPAVCCreatureActionBase@@@Z	008e72d0	008ccd70	NF449: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	??0CModeIntangible@@QAE@PAVCThing@@MPAVCCreatureActionBase@@@Z	008e72d0	008ccd70	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)

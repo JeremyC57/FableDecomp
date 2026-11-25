@@ -1,6 +1,9 @@
 // CTCWeaponTrail::CTCWeaponTrail(CThing* parent) -- CTCBase(parent), the CTCWeaponTrail vtable, NoTrails = -1, an empty projectile-trail primitive handle, five empty vectors, the projectile trail list (sentinel allocated) and WeaponTrailActive = false
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076E620, length 128 bytes.
 // Leaf: ??0CTCWeaponTrail@@QAE@PAVCThing@@@Z
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseClass::CBaseClass() @ 0x0099A2D0 (the handle's base),
 //          malloc @ 0x00BFEA0E (the list sentinel, 0x24-byte node).
 // Label: the catalog's "CList::CList" is propagated -- the vtable stored, 0x0126A5B4, is CTCWeaponTrail
@@ -17,7 +20,7 @@ class CTCBase { public:
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
-    CTCBase(CThing* thing);                        // 0x00686800
+    CTCBase(CThing& thing);                        // 0x00686800
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePersistentPrimitiveBase;
@@ -67,6 +70,6 @@ class CTCWeaponTrail : public CTCBase { public:                  // vtable 0x012
 };
 
 CTCWeaponTrail::CTCWeaponTrail(CThing* parent)
-    : CTCBase(parent), NoTrails(-1), WeaponTrailActive(false)
+    : CTCBase(*parent), NoTrails(-1), WeaponTrailActive(false)
 {
 }

@@ -1,5 +1,8 @@
 // NCreatureMode::CModeSitFloor::CModeSitFloor(CThing*, const CCharString&) -- CModeSitBase(thing), own vtable, the CAnimFilterOfGroup member built from the group name
 // Leaf: ??0CModeSitFloor@
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x008D7CA0 ??0CModeSitBase@NCreatureMode@@QAE@AAVCThing@@@Z (was ??0CModeSitBase@@QAE@PAVCThing@@@Z); the model class is wrapped in namespace NCreatureMode (PDB scope) with a using-declaration
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC3C0, length 36 bytes (+ int3 padding).
 // Callees: NCreatureMode::CModeSitBase::CModeSitBase(CThing*) @ 0x008D7CA0, CAnimFilterOfGroup::
 // CAnimFilterOfGroup(const CCharString&) @ 0x0073E8F0 (out of line here; the manifest calls it
@@ -19,11 +22,11 @@ class CAnimFilterOfGroup { public:
     CAnimFilterOfGroup(const CCharString& name);                // 0x0073E8F0
 };
 
-struct CModeSitBase {
+namespace NCreatureMode { struct CModeSitBase {
     virtual void v00();
     unsigned char _body[0x28];                                  // +0x04..+0x2b
-    CModeSitBase(CThing* thing);                                // 0x008D7CA0
-};
+    CModeSitBase(CThing& thing);                                // 0x008D7CA0
+}; } using NCreatureMode::CModeSitBase;
 
 struct CModeSitFloor : CModeSitBase {
     CAnimFilterOfGroup Filter;                                  // +0x2c
@@ -32,7 +35,7 @@ struct CModeSitFloor : CModeSitBase {
 };
 
 CModeSitFloor::CModeSitFloor(CThing* thing, const CCharString& group)
-    : CModeSitBase(thing)
+    : CModeSitBase(*thing)
     , Filter(group)
 {
 }

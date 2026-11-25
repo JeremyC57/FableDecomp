@@ -1,5 +1,8 @@
 // CTCTurncoat::CTCTurncoat(CThing* parent) -- constructor: CTCBase, cleared turncoat state and effect pointers, empty stage-effect vector, the turncoat def, then the resistance-recovery delay (frames) and rate (per frame) from the def
 // Leaf: ??0CTCTurncoat
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x007C78C0, 153 bytes (`ret 4`; vtable 0x0126E6F4 = CTCTurncoat per rtti-vtables.tsv).
@@ -78,7 +81,7 @@ public:
 };
 
 class CTCBase { public:
-    CTCBase(CThing* parent);                            // 0x00686800
+    CTCBase(CThing& parent);                            // 0x00686800
     virtual void v00();
     CThingDefs* ParentThing;                            // +0x04
     unsigned char _pad_0x08[0x4];
@@ -102,7 +105,7 @@ class CTCTurncoat : public CTCBase { public:
 };
 
 CTCTurncoat::CTCTurncoat(CThing* parent)
-    : CTCBase(parent), CurrentTurncoatedness(0), TurncoatedEffect(0), TurncoatTimeLast(0), TurncoatOverride(true),
+    : CTCBase(*parent), CurrentTurncoatedness(0), TurncoatedEffect(0), TurncoatTimeLast(0), TurncoatOverride(true),
       CurrentRecoveryTimer(0), CreatureTurncoatResistance(0)
 {
     ParentThing->m_pDefinition->GetSubDef_007c8000(&PDef);

@@ -12,6 +12,9 @@
 // the 1.0f immediate store (AnimSpeed) below the derived vtable stores.
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??0CTCGraphicAppearanceSprite
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 class CThing;
 
 namespace NGraphicAppearance {
@@ -35,7 +38,7 @@ class CTCBase { public:                                        // 0x0c bytes: vp
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* owner);                             // 0x00686800
+    CTCBase(CThing& owner);                             // 0x00686800
 };
 
 namespace NGraphicAppearance {
@@ -59,7 +62,7 @@ class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceCom
 };
 
 CTCGraphicAppearanceSprite::CTCGraphicAppearanceSprite(CThing* owner)
-    : CTCBase(owner), CAGraphicAppearanceComponent(),
+    : CTCBase(*owner), CAGraphicAppearanceComponent(),
       RotationAmountPerFrame(0.0f), RotationAngle(0.0f), OldRotationAngle(0.0f), AnimStage(0.0f), LastAnimStage(0.0f),
       AnimSpeed(1.0f), FadeOutWithAnim(false), PrimHandle(0)
 {

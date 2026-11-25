@@ -1,5 +1,8 @@
 // CTCRandomAppearanceMorph::CTCRandomAppearanceMorph(CThing& thing) -- thing-component and appearance-component bases, an empty mesh-morph set, the appearance seed taken from (and advancing) the world seed, then registration with the owner's graphic appearance
 // Leaf: ??0CTCRandomAppearanceMorph
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00728000, 188 bytes (`ret 4`; PDB ??0CTCRandomAppearanceMorph@@QAE@AAVCThing@@@Z).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, operator new @ 0x00BFEA1A (0x18), CCountedPointer<CMeshMorphSet>::Reset(T*)
@@ -51,7 +54,7 @@ class CTCBase { public:                                        // 0x0c bytes: vp
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    CTCBase(CThing* owner);                             // 0x00686800
+    CTCBase(CThing& owner);                             // 0x00686800
 };
 class CTCSkeletalMorph;
 class CTCAppearanceMorphBase { public:
@@ -71,7 +74,7 @@ class CTCRandomAppearanceMorph : public CTCBase, public NGraphicAppearance::CAGr
 };
 
 CTCRandomAppearanceMorph::CTCRandomAppearanceMorph(CThing& thing)
-    : CTCBase(&thing), CAGraphicAppearanceComponent(), PTCSkeletalMorph(0)
+    : CTCBase(thing), CAGraphicAppearanceComponent(), PTCSkeletalMorph(0)
 {
     PMeshMorphSet.Reset(new CTCAppearanceMorphBase::CMeshMorphSet);
     Seed = *thing.GetPWorldSeed();

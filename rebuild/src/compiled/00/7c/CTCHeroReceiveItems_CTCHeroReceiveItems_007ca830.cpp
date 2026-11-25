@@ -1,5 +1,8 @@
 // CTCHeroReceiveItems::CTCHeroReceiveItems(CThing* thing) -- CTCBase(thing), an empty item list and picked-up vector, cleared pointers and flags, a full-size timer of 1, null primitive handles; then joins the global update list
 // Leaf: ??0CTCHeroReceiveItems
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CA830, 167 bytes (`ret 4`); vtable 0x0126EBFC CTCHeroReceiveItems.
 // Label: the catalog says CTCShotDefinitionBase::CTCShotDefinitionBase (propagated); the vtable store is CTCHeroReceiveItems'
@@ -24,7 +27,7 @@ class CTCBase { public:
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
-    CTCBase(CThing* thing);                             // 0x00686800
+    CTCBase(CThing& thing);                             // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -102,7 +105,7 @@ class CTCHeroReceiveItems : public CTCBase { public:
 };
 
 CTCHeroReceiveItems::CTCHeroReceiveItems(CThing* thing)
-    : CTCBase(thing), PersistCurrentItem(false), ReceivingItems(false), DisplayingItems(false), ForceClear(false),
+    : CTCBase(*thing), PersistCurrentItem(false), ReceivingItems(false), DisplayingItems(false), ForceClear(false),
       SendMessage(false), AmountThroughForAreaResize(0), FullSizeTimer(1)
 {
     AddToGlobalTCs();

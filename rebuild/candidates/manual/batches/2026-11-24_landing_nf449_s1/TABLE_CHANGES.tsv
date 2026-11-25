@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+delete	??0CCreatureAction_ShowTrophy@@QAE@PAVCThing@@0ABVCCharString@@J@Z	006df730	006dd8f0	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 1 candidate row(s) naming the identifier and calling the target)
+delete	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	0069f0f0	008b96a0	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 7 candidate row(s) naming the identifier and calling the target)
+delete	??0CCreatureAction_UseWallMount@@QAE@PAVCThingCreatureBase@@PAVCThingPlayerCreature@@@Z	00843610	007efe70	NF449: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 2 candidate row(s) naming the identifier and calling the target)

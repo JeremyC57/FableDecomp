@@ -1,5 +1,8 @@
 // CTCGhostSword::CTCGhostSword(CThing& parent) -- constructor: CTCBase, a null def pointer, empty minion / effect / fade-timer vectors, no spell level or removed item, not cancelled; load SPECIAL_ABILITIES_GHOST_SWORD_DEF, convert its fade-in seconds to frames and take the spell level from the owner's ability inventory
 // Leaf: ??0CTCGhostSword
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -115,7 +118,7 @@ public:
 
 class CTCBase {
 public:
-    CTCBase(CThing* parent);                        // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
@@ -138,7 +141,7 @@ public:
 };
 
 CTCGhostSword::CTCGhostSword(CThing& parent)
-    : CTCBase(&parent), FadeInTimer(0), SpellLevel(0), PItemRemoved(0), CutSceneCancelled(false)
+    : CTCBase(parent), FadeInTimer(0), SpellLevel(0), PItemRemoved(0), CutSceneCancelled(false)
 {
     long index;
     {

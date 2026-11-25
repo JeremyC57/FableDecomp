@@ -8,14 +8,17 @@ class CTCInventoryItem
 { public:
     char pad0[0x10];
     void* m_ptr;          // +0x10
-    void BaseOnDie_00aa75c0();     // 0xaa75c0  __fastcall base method
     void OnDie_impl();
 };
 
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
+//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
+//   0x00AA75C0 ??1CChunkedFileChunk@@UAE@XZ (was ?BaseOnDie_00aa75c0@CTCInventoryItem@@QAEXXZ)
+class CChunkedFileChunk { public: virtual ~CChunkedFileChunk(); };
 void CTCInventoryItem::OnDie_impl()
 {
     void* p = this->m_ptr;
     if (p)
         free(p);
-    this->BaseOnDie_00aa75c0();
+    reinterpret_cast<CChunkedFileChunk*>(this)->CChunkedFileChunk::~CChunkedFileChunk();
 }

@@ -1,5 +1,8 @@
 // CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction() -- base FinishAction; make the balverine willable again, flying flag on, full alpha; when the jump ran its full time: put it down at EndPos facing a living target, enter an intangible mode (the battle def's time, else 5s) that ends in a lunge at the target (or a drop-in from the sky), and detach its attached particles
 // Leaf: ?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x008E72D0 ??0CModeIntangible@NCreatureMode@@QAE@AAVCThing@@MPAVCCreatureActionBase@@@Z (was ??0CModeIntangible@@QAE@PAVCThing@@MPAVCCreatureActionBase@@@Z); the model class is wrapped in namespace NCreatureMode (PDB scope) with a using-declaration
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -158,11 +161,11 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 #include "engine/CTCCreatureModeManager.h"
 #include "engine/CCountedPointer.h"
 class CCreatureActionBase;
-struct CModeIntangible : CTCCreatureModeManager::CModeBase {
+namespace NCreatureMode { struct CModeIntangible : CTCCreatureModeManager::CModeBase {
     unsigned char _pad[0x44 - 0x1c];
-    CModeIntangible(CThing* thing, float time, CCreatureActionBase* nextAction);   // 0x008E72D0
+    CModeIntangible(CThing& thing, float time, CCreatureActionBase* nextAction);   // 0x008E72D0
     virtual unsigned long GetType() const;
-};
+}; } using NCreatureMode::CModeIntangible;
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"
 class CTCParticleAttacher : public CTCBase {            // interface 0x82 (TCI_PARTICLE_ATTACHER); no shared header: the shape of the landed 0x007DE710 / 0x00772BB0
@@ -227,7 +230,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
                 next = new CCreatureAction_BalverineLungeAttack(PCreature, ((CThing*)PTarget.GetPItem()));
             else
                 next = new CCreatureAction_BalverineDropInFromSky(PCreature.GetPItem());
-            modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeIntangible(PCreature.GetPItem(), time, next)));
+            modeManager->AddMode(CCountedPointer<CTCCreatureModeManager::CModeBase>(new CModeIntangible(*(PCreature.GetPItem()), time, next)));
         }
         CTCParticleAttacher* particles;
         if (PCreature.GetPItem()->GetInterface(&particles, 0x82))

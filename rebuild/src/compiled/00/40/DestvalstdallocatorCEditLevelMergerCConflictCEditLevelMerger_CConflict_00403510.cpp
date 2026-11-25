@@ -14,7 +14,6 @@
 struct MemberA { char pad[4]; };   // sub-object type destroyed by dtorA (four of them)
 struct MemberB { char pad[4]; };   // sub-object type destroyed by dtorB (two of them)
 
-extern "C" void __fastcall dtorA_0099b510(MemberA* p);   // destructor of the MemberA sub-objects (0x00598000)
 extern "C" void __fastcall dtorB(MemberB* p);   // destructor of the MemberB sub-objects (0x0059B5D0)
 
 // CEditLevelMerger::CConflict, as far as the destructor touches it.
@@ -31,13 +30,17 @@ struct Host {
     MemberA  m_bc;         // last declared, destroyed first
 };
 
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
+//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
+//   0x0099B510 ??1CWideString@@QAE@XZ (was @dtorA_0099b510@4)
+class CWideString { public: ~CWideString(); };
 void __fastcall Dest_val(Host* self)
 {
     // Reverse declaration order.
-    dtorA_0099b510(&self->m_bc);
-    dtorA_0099b510(&self->m_b8);
-    dtorA_0099b510(&self->m_94);
+    reinterpret_cast<CWideString*>(&self->m_bc)->CWideString::~CWideString();
+    reinterpret_cast<CWideString*>(&self->m_b8)->CWideString::~CWideString();
+    reinterpret_cast<CWideString*>(&self->m_94)->CWideString::~CWideString();
     dtorB(&self->m_30);
     dtorB(&self->m_2c);
-    dtorA_0099b510(&self->m_0c);
+    reinterpret_cast<CWideString*>(&self->m_0c)->CWideString::~CWideString();
 }

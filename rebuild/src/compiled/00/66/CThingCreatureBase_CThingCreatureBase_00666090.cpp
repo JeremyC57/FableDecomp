@@ -1,5 +1,8 @@
 // CThingCreatureBase::CThingCreatureBase(long type) -- construct the physical thing with the given type, the game-object layer and the creature base's own members (null def / action / interaction pointers, empty containers and queued-action list, handedness 2, default flag bits)
 // Leaf: ??0CThingCreatureBase
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005296B0 ??0CThingPhysical@@QAE@K@Z (was ??0CThingPhysical@@QAE@J@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00666090, 273 bytes, `ret 4`. Label correction: the catalog calls this row
@@ -36,7 +39,7 @@ extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 class CThingPhysical { public:
     virtual void v00();
     unsigned char _pad04[0xbc];
-    CThingPhysical(long type);                  // 0x005296B0
+    CThingPhysical(unsigned long type);                  // 0x005296B0
 };
 class CThingGameObject : public CThingPhysical { public:      // vtable 0x01244F7C
     CThingPointer PThingStandingOn;             // +0xc0

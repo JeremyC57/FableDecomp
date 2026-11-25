@@ -4,6 +4,9 @@
 // three opinion-expression vectors to six entries
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00590D32, 471 bytes, `ret 4` (frame pointer, `leave`).
 // Leaf: ??0CTCInventory
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005BFF07 ??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z (was ??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z)
 // NF64 (round 7, q10639): the four resized members (QuickAccessItems, NumberOfCSOpinionExpressions, LastCSOpinionExpression,
 //   LastButOneCSOpinionExpression; Ego_r.pdb vector<long>) retyped from the local CPODVector<unsigned long> to stlport/fable_containers.h
 //   std::vector<long> (resize kept out of line, FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE): the calls bind
@@ -44,7 +47,7 @@ protected:
 namespace NInventory {
 class CTCInventoryBase : public ::CTCBase {                                      // vtable 0x01253DBC, retail sizeof 0x130
 public:
-    CTCInventoryBase(CThing* owner);                          // 0x005BFF07
+    CTCInventoryBase(CThing& owner);                          // 0x005BFF07
     virtual ~CTCInventoryBase();                              // 0x005C00A0
     unsigned char _body[0x12C];
 };
@@ -134,7 +137,7 @@ public:
 };
 
 CTCInventory::CTCInventory(CThing* owner)
-    : NInventory::CTCInventoryBase(owner),
+    : NInventory::CTCInventoryBase(*owner),
       ThingToAssign(0),
       ThingSlotToSwap(0),
       PComponentSlotToSwap(0),

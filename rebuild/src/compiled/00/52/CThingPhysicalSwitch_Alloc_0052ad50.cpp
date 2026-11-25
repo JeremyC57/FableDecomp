@@ -1,5 +1,8 @@
 // CThingPhysicalSwitch::Alloc() -- the class-registry factory for CThingPhysicalSwitch: allocate and construct a physical switch (thing type 12): the physical/game-object base chain and an empty triggerable-object script name; null when the thing manager refuses the allocation
 // Leaf: ?Alloc@CThingPhysicalSwitch
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x005296B0 ??0CThingPhysical@@QAE@K@Z (was ??0CThingPhysical@@QAE@J@Z)
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052AD50, 80 bytes, `ret` (Ego_r.pdb `?Alloc@CThingPhysicalSwitch@@SIPAVCClass@@XZ`: static __fastcall,
 //   no arguments, returns CClass*).
@@ -25,7 +28,7 @@ class CBaseObjectPointer;
 class CThingPhysical : public CThing {
 public:
     unsigned char _pad04[0x24];   // own members from +0x98
-    CThingPhysical(long type);                  // 0x005296B0
+    CThingPhysical(unsigned long type);                  // 0x005296B0
 };
 
 class CThingGameObject : public CThingPhysical {           // vtable 0x01244F7C

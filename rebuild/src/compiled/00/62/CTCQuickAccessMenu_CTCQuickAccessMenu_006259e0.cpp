@@ -1,5 +1,8 @@
 // CTCQuickAccessMenu::CTCQuickAccessMenu(CThing* thing) -- CTCBase(thing), own vtable, inactive, no components, not quitting, then join the global update list
 // Leaf: ??0CTCQuickAccessMenu
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006259E0, length 48 bytes.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite", propagated),
 // CTCBase::AddToGlobalTCs() @ 0x00686ED0 (manifest "std::list::push_back", propagated; named by the landed
@@ -15,7 +18,7 @@ class CTCBase { public:                                      // engine/CTCBase.h
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
-    CTCBase(CThing* thing);                           // 0x00686800
+    CTCBase(CThing& thing);                           // 0x00686800
 public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
@@ -39,7 +42,7 @@ class CTCQuickAccessMenu : public CTCBase { public:                 // vtable 0x
 };
 
 CTCQuickAccessMenu::CTCQuickAccessMenu(CThing* thing)
-    : CTCBase(thing)
+    : CTCBase(*thing)
     , Active(false)
     , Components()
     , Quitting(false)

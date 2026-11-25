@@ -1,5 +1,8 @@
 // CTCBob::CTCBob(CThing* owner) -- CTCBase(owner), this class's vtable, then tell the owner thing how to behave in cutscenes (behaviour 2)
 // Leaf: ??0CTCBob
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00787750, 35 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (the chunk
@@ -26,7 +29,7 @@ class CTCBase
     bool    ToBeRemoved;                            // +0x08
     bool    IsInGlobalUpdateTCs;                    // +0x09
     unsigned char _pad_0x0a[0x2];                   // +0x0a
-    CTCBase(CThing* owner);                         // 0x00686800
+    CTCBase(CThing& owner);                         // 0x00686800
 };
 
 class CTCBob : public CTCBase                             // vtable 0x0126B76C
@@ -41,7 +44,7 @@ class CTCBob : public CTCBase                             // vtable 0x0126B76C
 #pragma pack(pop)
 
 CTCBob::CTCBob(CThing* owner)
-    : CTCBase(owner)
+    : CTCBase(*owner)
 {
     ParentThing->SetCutscenePauseBehaviour(CUTSCENE_BEHAVIOUR_NOT_PAUSED);
 }

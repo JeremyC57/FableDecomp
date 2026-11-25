@@ -1,3 +1,6 @@
+// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
+//   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
+//   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
 // CTCTeleporter::CTCTeleporter(CThing* parent) -- constructor: CTCBase(parent), own vtable, null PDef, Active/Activated false, HeroInsideRadius true, empty PParticle, WaitingForTutorialToFinish false, then fetches the teleporter definition into PDef
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x007DFEE0, 84 bytes (`ret 4`, vtable 0x0126FDA4).
@@ -41,7 +44,7 @@ class CTCBase { public:
     virtual void v00();
     CThingDefs* m_pParentThing;                         // +0x04
     unsigned char _pad_0x08[0x4];
-    CTCBase(CThing* parent);                            // 0x00686800
+    CTCBase(CThing& parent);                            // 0x00686800
 };
 
 class CTCTeleporter : public CTCBase { public:
@@ -57,7 +60,7 @@ class CTCTeleporter : public CTCBase { public:
 #pragma pack(pop)
 
 CTCTeleporter::CTCTeleporter(CThing* parent)
-    : CTCBase(parent), Active(false), Activated(false), HeroInsideRadius(true)
+    : CTCBase(*parent), Active(false), Activated(false), HeroInsideRadius(true)
 {
     WaitingForTutorialToFinish = false;
     m_pParentThing->m_pDefinition->GetSubDef_007e0540(&PDef);
