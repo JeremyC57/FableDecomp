@@ -14,7 +14,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - nf426 (110 CDefPointer Release/~ copies; **R-NF426-1**, 26 `direct` / 84 `rule` in `pending/2026-11-25_nf426_handback/DIRECT_RULE.tsv`);
   - the AUTH26 unit (below);
   - nf428 (71 CCountedPointer rows; **R-NF428-1**: retail-layout T is one source only), nf427 r1 + r2 (233 creature-action rows on new VIRTUAL_MODEL opt-ins, 226 test ports), nf429 (47 AI state-group rows, 32 models; `pending/2026-11-25_nf429_handback/`), nf430 (102 stale `CVtable_<va>` table lines deleted, 99 addresses close; `pending/2026-11-25_nf430_handback/`), nf431 (18 CGameScriptInterface virtuals on the shared header; `pending/2026-11-25_nf431_handback/`), nf432 (5 NPlayerGui draw ctors + ClearPrimitives / ClearPrimitivesIfNecessary, CScriptBase slots 1-3; 4 new class headers; `pending/2026-11-25_nf432_handback/`), nf433 (28 more CGameScriptInterface rows + the CWorld accessor debt; `pending/2026-11-25_nf433_handback/`).
-  - **Running:** NF434 (the 102 NF430 debt script rows, CEntityScriptBase). Owner allows 2 naming agents.
+  - **Running:** NF434 (the 102 NF430 debt script rows, CEntityScriptBase) and NF435 (CGameScriptInterface round 3: 34 TC rows, 12 body ports, small items). Owner allows 2 naming agents.
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.
