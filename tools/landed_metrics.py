@@ -31,6 +31,9 @@ Counts:
                           the literal (crawl/purity.py baked_string_addresses), or that uses a made-up data symbol the
                           table binds to a retail string literal (crawl/baked_symbols.py): a separate grade, excluded from every
                           genuine figure (and from split) until fixed (owner decision 2026-11-25)
+  baked_address           genuine-class rows (not baked_string) whose code types in a retail vftable / data / IAT address
+                          (crawl/purity.py baked_data_addresses, keyed on rebuild/oracles/data_vas.tsv): a separate grade,
+                          excluded from every genuine figure the same way (advisor decision, owner delegated, 2026-11-25)
   landed_genuine_known / landed_genuine_original
   matched_bytes / matched_bytes_genuine   retail bytes covered by landed rows (catalog row lengths)
   unlanded_bytes_estimate  known functions not landed, each sized as the gap to the next known function start, capped at 64 KB (unlanded_gap_cap; unlanded_gaps_capped counts the caps)
@@ -118,6 +121,7 @@ def main() -> int:
     library_source = set()
     vendor_library, vendor_source = set(), set()
     baked_string = set()
+    baked_address = set()
     missing = 0
     for a in catalog:
         rel = sources.get(a)
@@ -140,10 +144,14 @@ def main() -> int:
         if purity.is_genuine_kind(kinds[a]) and (purity.baked_string_addresses(text_a)
                                                  or baked_symbols.baked_symbol_names(text_a)):
             baked_string.add(a)
+        elif purity.is_genuine_kind(kinds[a]) and purity.baked_data_addresses(text_a):
+            baked_address.add(a)
     # grade `baked_string` (owner 2026-11-25): rows that cast a retail address to a string pointer are counted apart
     # from the genuine figures until the literal is spelled (crawl/purity.py baked_string_addresses; NF418 2026-11-25:
     # also rows that use a made-up data symbol the table binds to a retail string literal, crawl/baked_symbols.py).
-    genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)} - baked_string
+    # grade `baked_address` (advisor decision, owner delegated, 2026-11-25): typed-in vftable / data / IAT addresses, the same
+    # treatment (crawl/purity.py baked_data_addresses); a row with both counts as baked_string.
+    genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)} - baked_string - baked_address
     out = {
         "catalog_rows": len(catalog),
         "known_functions": len(known),
@@ -166,6 +174,10 @@ def main() -> int:
         "landed_baked_string_known": len(baked_string & known),
         "landed_baked_string_original": len(baked_string & original),
         "matched_bytes_baked_string": sum(n for a, n in catalog.items() if a in baked_string),
+        "baked_address": len(baked_address),
+        "landed_baked_address_known": len(baked_address & known),
+        "landed_baked_address_original": len(baked_address & original),
+        "matched_bytes_baked_address": sum(n for a, n in catalog.items() if a in baked_address),
     }
     starts.sort()
     ts = json.loads((REBUILD / "manifest" / "text_section.json").read_text(encoding="utf-8"))

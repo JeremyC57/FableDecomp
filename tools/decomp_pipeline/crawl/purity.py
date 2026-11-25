@@ -205,6 +205,44 @@ def baked_string_addresses(text):
     return out
 
 
+# Grade `baked_address` (advisor decision, owner delegated, 2026-11-25; NF415 RULINGS_NEEDED q1): a hex token in the code
+# whose value is a retail vftable, .data/.bss global, non-string .rdata object or IAT slot -- `self->vtbl = (void*)0x01230BA0;`
+# instead of the class whose inlined ctor/dtor stores ??_7, or a typed-in global instead of its symbol. Like baked_string, the
+# address is a plain immediate (no relocation), so the byte gates cannot see it. Keyed on rebuild/oracles/data_vas.tsv, the
+# committed verified VA list (crawl/build_data_vas.py: RTTI vftables, IAT slots, table bindings whose witness function's retail
+# bytes hold the VA, NF415 manual holds); a flag constant that only lies in the image range (0x01400000) is not listed.
+# FABLE_DATA_VAS overrides the path. String VAs stay in baked_string.
+_DATA_VAS = None
+
+
+def data_vas():
+    """{va: kind} from rebuild/oracles/data_vas.tsv; raises when the file is absent."""
+    global _DATA_VAS
+    if _DATA_VAS is None:
+        p = Path(os.environ.get("FABLE_DATA_VAS") or (_ROOT / "rebuild" / "oracles" / "data_vas.tsv"))
+        if not p.is_file():
+            raise FileNotFoundError("purity.data_vas: %s is missing" % p)
+        vas = {}
+        for line in p.read_text(encoding="utf-8").splitlines()[1:]:
+            f = line.split("\t")
+            if len(f) > 2 and f[0].strip():
+                vas[int(f[0], 16)] = f[2]
+        _DATA_VAS = vas
+    return _DATA_VAS
+
+
+def baked_data_addresses(text):
+    """Retail vftable / data / IAT addresses a row types into its code (comments and literals ignored); [] when none."""
+    code = _BAKED_LITERAL.sub('""', _BAKED_COMMENT.sub("", text))
+    known = data_vas()
+    out = []
+    for m in _BAKED_HEX.finditer(code):
+        va = int(m.group(1), 16)
+        if va in known and va not in out:
+            out.append(va)
+    return out
+
+
 def is_genuine_kind(kind):
     return kind in ("genuine", "retail_asm", "toolchain_library")
 
