@@ -1,0 +1,54 @@
+address	class_in_filename	nf407_form	nf407_status	nf408_link_result	nf408_batch
+0049d450	CTCTargetingPlayer	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2c55	CTCActionUseAcceptBoast	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2c7b	CTCActionUseBed	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2bff	CTCActionUseBlowHorn	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2c2f	CTCActionUseBuyOrSteal	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2c8e	CTCActionUseKickChicken	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2bd9	CTCActionUseMapTable	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2bb3	CTCActionUsePickUpGenericBox	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2ba0	CTCActionUsePickUp	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2bc6	CTCActionUsePutInInventory	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2b8d	CTCActionUseReadable	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2bec	CTCActionUseSearch	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2b7a	CTCActionUseSign	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2c68	CTCActionUseStartExtrapolationMorph	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2b04	CTCActionUseTorch	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2c42	CTCActionUseWindow	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d4df4	CTCAssassinRush	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2cc7	CTCCarriedActionUseDropGenericBox	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2cb4	CTCCarriedActionUseDrop	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2ced	CTCCarriedActionUseGiveBeer	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2cda	CTCCarriedActionUseGive	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2d00	CTCCarriedActionUseGoldBag	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2ca1	CTCCarriedActionUseLamp	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2d13	CTCCarriedActionUseShow	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d4369	CTCDExperienceOrb	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d66c3	CTCDExplosiveTrail	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d41df	CTCDNavigationSeed	other	-	??0CThingComponentDefNameTag@@QAE@XZ v 004d3dfc.obj	-
+004d3ef9	CTCDNone	other	-	??0CThingComponentDefNameTag@@QAE@XZ v 004d3dfc.obj	-
+004d3dfc	CTCDParticleEmitter	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d5ff2	CTCDRumble	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2b17	CTCRotate	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d2a91	CTCTargeted	other	-	no duplicate (with the binder and all 462 other census objects)	-
+004d31c0	CTCVillage	in-class	-	no duplicate (with the binder and all 462 other census objects)	-
+004d4415	NGraphicAppearanceCTCGraphicAppearanceAnimatedMesh	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d5e61	NGraphicAppearanceCTCGraphicAppearanceMultipleStaticMeshes	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d4d8e	NGraphicAppearanceCTCGraphicAppearanceReplaceableMesh	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d44a5	NGraphicAppearanceCTCGraphicAppearanceSprite	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearanceSprite@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d4475	NGraphicAppearanceCTCGraphicAppearanceStaticMeshFadeOutOnProximity	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d4445	NGraphicAppearanceCTCGraphicAppearanceStaticMesh	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d4505	NGraphicAppearanceCTCGraphicAppearance	out-of-line	-	?StatGetClassTypeName@CTCGraphicAppearance@NGraphicAppearance@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d5562	NThingShotCTCShotDefinitionDragonFireball	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionDragonFireball@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d554f	NThingShotCTCShotDefinitionDrainLife	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionDrainLife@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d553c	NThingShotCTCShotDefinitionFireballSpell	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionFireballSpell@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d5529	NThingShotCTCShotDefinitionForcePushBall	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionForcePushBall@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d53db	NThingShotCTCShotDefinitionMultiArrow	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionMultiArrow@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d5401	NThingShotCTCShotDefinitionNymphFun	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionNymphFun@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d54da	NThingShotCTCShotDefinitionProjectilePredictive	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionProjectilePredictive@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d53a8	NThingShotCTCShotDefinitionProjectile	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionProjectile@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d5434	NThingShotCTCShotDefinitionQueenHornetShot	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionQueenHornetShot@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d53ee	NThingShotCTCShotDefinitionSpreadShotProjectile	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionSpreadShotProjectile@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d54ed	NThingShotCTCShotDefinitionTearInGround	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionTearInGround@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d549f	NThingShotCTCShotDefinitionThrowPredictive	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionThrowPredictive@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6
+004d5447	NThingShotCTCShotDefinitionThrow	out-of-line	-	?StatGetClassTypeName@CTCShotDefinitionThrow@NThingShot@@SI?AVCCharString@@XZ v 004ee23f.obj	b6

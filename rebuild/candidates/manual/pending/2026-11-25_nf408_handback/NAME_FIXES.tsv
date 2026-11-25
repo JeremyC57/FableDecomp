@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+004d5853	?StatGetClassTypeName@CTCTargetingSpirit@@SI?AVCCharString@@XZ	retail 0x004D5853 pushes 0x0123D350 "CTCTargetingSpirit" then calls CCharString(const char*, long) (NF408 evidence/literal_check.tsv); FableWin.pdb name set has ?StatGetClassTypeName@CTCTargetingSpirit@@SI?AVCCharString@@XZ; landed row 0x004D5853 grades RELOCATION_MATCH under it; binder 0x004EE23F binds it there	??0CTargetingResult_Retail@@QAE@XZ (reloc_bindings.tsv witness 0x004DEC09, stand-in struct in CTCTargetingSpirit::GetClassTypeName)

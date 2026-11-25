@@ -1,0 +1,139 @@
+addr       parity           behav  name
+004d5103   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d515f   WARN SHARED_HEADER_AVAILABLE CTCTavernTable (engine/CTCTavernTable.h)
+004d515f   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d518f   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d51a2   WARN SHARED_HEADER_AVAILABLE CTCTavernTankard (engine/CTCTavernTankard.h)
+004d51a2   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d51b5   WARN SHARED_HEADER_AVAILABLE CTCTavernJug (engine/CTCTavernJug.h)
+004d51b5   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5232   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5262   WARN SHARED_HEADER_AVAILABLE CTCFollowed (engine/CTCFollowed.h)
+004d5262   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5292   WARN SHARED_HEADER_AVAILABLE CTCTrespassable (engine/CTCTrespassable.h)
+004d5292   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d52c2   WARN SHARED_HEADER_AVAILABLE CTCTrespasser (engine/CTCTrespasser.h)
+004d52c2   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d52d5   WARN SHARED_HEADER_AVAILABLE CTCGossip (engine/CTCGossip.h)
+004d52d5   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d531b   WARN SHARED_HEADER_AVAILABLE CTCDrunkenness (engine/CTCDrunkenness.h)
+004d531b   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d532e   WARN SHARED_HEADER_AVAILABLE CTCOnHeroPush (engine/CTCOnHeroPush.h)
+004d532e   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d55bd   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+004d55bd   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d55ed   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d561d   WARN SHARED_HEADER_AVAILABLE CTCDrainLife (engine/CTCDrainLife.h)
+004d561d   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d564d   WARN SHARED_HEADER_AVAILABLE CTCHealLife (engine/CTCHealLife.h)
+004d564d   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d567d   WARN SHARED_HEADER_AVAILABLE CTCGhostSword (engine/CTCGhostSword.h)
+004d567d   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d56b0   WARN SHARED_HEADER_AVAILABLE CTCTurncoatSpell (engine/CTCTurncoatSpell.h)
+004d56b0   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d56e0   WARN SHARED_HEADER_AVAILABLE CTCTurncoat (engine/CTCTurncoat.h)
+004d56e0   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5710   WARN SHARED_HEADER_AVAILABLE CTCHitOnCollision (engine/CTCHitOnCollision.h)
+004d5710   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5743   WARN SHARED_HEADER_AVAILABLE CTCFireballSpell (engine/CTCFireballSpell.h)
+004d5743   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5756   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d57b4   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d57e7   WARN SHARED_HEADER_AVAILABLE CTCHeroReceiveItems (engine/CTCHeroReceiveItems.h)
+004d57e7   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d57fa   WARN SHARED_HEADER_AVAILABLE CTCActionUseActivateQuest (engine/CTCActionUseActivateQuest.h)
+004d57fa   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d582a   WARN SHARED_HEADER_AVAILABLE CTCGold (engine/CTCGold.h)
+004d582a   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5853   WARN SHARED_HEADER_AVAILABLE CTCTargetingSpirit (engine/CTCTargetingSpirit.h)
+004d5853   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5883   WARN SHARED_HEADER_AVAILABLE CTCMultiArrow (engine/CTCMultiArrow.h)
+004d5883   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d58b3   WARN SHARED_HEADER_AVAILABLE CTCMultiStrike (engine/CTCMultiStrike.h)
+004d58b3   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d58e3   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5913   WARN SHARED_HEADER_AVAILABLE CTCElectrocutedEffect (engine/CTCElectrocutedEffect.h)
+004d5913   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5943   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5956   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d59b5   WARN SHARED_HEADER_AVAILABLE CTCTavernGameShoveHaPenny (engine/CTCTavernGameShoveHaPenny.h)
+004d59b5   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d59fe   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+004d59fe   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5a31   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5a64   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardPairs (engine/CTCTavernGameCardPairs.h)
+004d5a64   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5a97   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+004d5a97   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5aca   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardBlackjack (engine/CTCTavernGameCardBlackjack.h)
+004d5aca   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5add   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5af0   WARN SHARED_HEADER_AVAILABLE CTCDecapitation (engine/CTCDecapitation.h)
+004d5af0   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5b19   WARN SHARED_HEADER_AVAILABLE CTCTavernGameMaster (engine/CTCTavernGameMaster.h)
+004d5b19   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5b5e   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5b8e   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5bbe   WARN SHARED_HEADER_AVAILABLE CTCCreatureFlyInCircles (engine/CTCCreatureFlyInCircles.h)
+004d5bbe   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5bee   WARN SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)
+004d5bee   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5c1e   WARN SHARED_HEADER_AVAILABLE CTCWallMountEffects (engine/CTCWallMountEffects.h)
+004d5c1e   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5c64   WARN SHARED_HEADER_AVAILABLE CTCFish (engine/CTCFish.h)
+004d5c64   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5caa   WARN SHARED_HEADER_AVAILABLE CTCTeleporter (engine/CTCTeleporter.h)
+004d5caa   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5cd3   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 50
+  004d5103 RELOCATION_MATCH CTCOverheadDisplay::?StatGetClassTypeName@CTCOverheadDisplay@@SI?AVCCharString@@XZ
+  004d515f RELOCATION_MATCH CTCTavernTable::?StatGetClassTypeName@CTCTavernTable@@SI?AVCCharString@@XZ
+  004d518f RELOCATION_MATCH CTCTavernBar::?StatGetClassTypeName@CTCTavernBar@@SI?AVCCharString@@XZ
+  004d51a2 RELOCATION_MATCH CTCTavernTankard::?StatGetClassTypeName@CTCTavernTankard@@SI?AVCCharString@@XZ
+  004d51b5 RELOCATION_MATCH CTCTavernJug::?StatGetClassTypeName@CTCTavernJug@@SI?AVCCharString@@XZ
+  004d5232 RELOCATION_MATCH CTCTavern::?StatGetClassTypeName@CTCTavern@@SI?AVCCharString@@XZ
+  004d5262 RELOCATION_MATCH CTCFollowed::?StatGetClassTypeName@CTCFollowed@@SI?AVCCharString@@XZ
+  004d5292 RELOCATION_MATCH CTCTrespassable::?StatGetClassTypeName@CTCTrespassable@@SI?AVCCharString@@XZ
+  004d52c2 RELOCATION_MATCH CTCTrespasser::?StatGetClassTypeName@CTCTrespasser@@SI?AVCCharString@@XZ
+  004d52d5 RELOCATION_MATCH CTCGossip::?StatGetClassTypeName@CTCGossip@@SI?AVCCharString@@XZ
+  004d531b RELOCATION_MATCH CTCDrunkenness::?StatGetClassTypeName@CTCDrunkenness@@SI?AVCCharString@@XZ
+  004d532e RELOCATION_MATCH CTCOnHeroPush::?StatGetClassTypeName@CTCOnHeroPush@@SI?AVCCharString@@XZ
+  004d55bd RELOCATION_MATCH CTCInGameMenu::?StatGetClassTypeName@CTCInGameMenu@@SI?AVCCharString@@XZ
+  004d55ed RELOCATION_MATCH CTCCoopSpirit::?StatGetClassTypeName@CTCCoopSpirit@@SI?AVCCharString@@XZ
+  004d561d RELOCATION_MATCH CTCDrainLife::?StatGetClassTypeName@CTCDrainLife@@SI?AVCCharString@@XZ
+  004d564d RELOCATION_MATCH CTCHealLife::?StatGetClassTypeName@CTCHealLife@@SI?AVCCharString@@XZ
+  004d567d RELOCATION_MATCH CTCGhostSword::?StatGetClassTypeName@CTCGhostSword@@SI?AVCCharString@@XZ
+  004d56b0 RELOCATION_MATCH CTCTurncoatSpell::?StatGetClassTypeName@CTCTurncoatSpell@@SI?AVCCharString@@XZ
+  004d56e0 RELOCATION_MATCH CTCTurncoat::?StatGetClassTypeName@CTCTurncoat@@SI?AVCCharString@@XZ
+  004d5710 RELOCATION_MATCH CTCHitOnCollision::?StatGetClassTypeName@CTCHitOnCollision@@SI?AVCCharString@@XZ
+  004d5743 RELOCATION_MATCH CTCFireballSpell::?StatGetClassTypeName@CTCFireballSpell@@SI?AVCCharString@@XZ
+  004d5756 RELOCATION_MATCH CTCGeneratesExperienceOnKilling::?StatGetClassTypeName@CTCGeneratesExperienceOnKilling@@SI?AVCCharString@@XZ
+  004d57b4 RELOCATION_MATCH CTCCreatureGeneratorCreator::?StatGetClassTypeName@CTCCreatureGeneratorCreator@@SI?AVCCharString@@XZ
+  004d57e7 RELOCATION_MATCH CTCHeroReceiveItems::?StatGetClassTypeName@CTCHeroReceiveItems@@SI?AVCCharString@@XZ
+  004d57fa RELOCATION_MATCH CTCActionUseActivateQuest::?StatGetClassTypeName@CTCActionUseActivateQuest@@SI?AVCCharString@@XZ
+  004d582a RELOCATION_MATCH CTCGold::?StatGetClassTypeName@CTCGold@@SI?AVCCharString@@XZ
+  004d5853 RELOCATION_MATCH CTCTargetingSpirit::?StatGetClassTypeName@CTCTargetingSpirit@@SI?AVCCharString@@XZ
+  004d5883 RELOCATION_MATCH CTCMultiArrow::?StatGetClassTypeName@CTCMultiArrow@@SI?AVCCharString@@XZ
+  004d58b3 RELOCATION_MATCH CTCMultiStrike::?StatGetClassTypeName@CTCMultiStrike@@SI?AVCCharString@@XZ
+  004d58e3 RELOCATION_MATCH CTCBurntEffect::?StatGetClassTypeName@CTCBurntEffect@@SI?AVCCharString@@XZ
+  004d5913 RELOCATION_MATCH CTCElectrocutedEffect::?StatGetClassTypeName@CTCElectrocutedEffect@@SI?AVCCharString@@XZ
+  004d5943 RELOCATION_MATCH CTCCreatureTintEffect::?StatGetClassTypeName@CTCCreatureTintEffect@@SI?AVCCharString@@XZ
+  004d5956 RELOCATION_MATCH CTCCreatureHitNotification::?StatGetClassTypeName@CTCCreatureHitNotification@@SI?AVCCharString@@XZ
+  004d59b5 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?StatGetClassTypeName@CTCTavernGameShoveHaPenny@@SI?AVCCharString@@XZ
+  004d59fe RELOCATION_MATCH CTCTavernGameCoinGolf::?StatGetClassTypeName@CTCTavernGameCoinGolf@@SI?AVCCharString@@XZ
+  004d5a31 RELOCATION_MATCH CTCTavernGameCardSorting::?StatGetClassTypeName@CTCTavernGameCardSorting@@SI?AVCCharString@@XZ
+  004d5a64 RELOCATION_MATCH CTCTavernGameCardPairs::?StatGetClassTypeName@CTCTavernGameCardPairs@@SI?AVCCharString@@XZ
+  004d5a97 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?StatGetClassTypeName@CTCTavernGameSpotTheAddition@@SI?AVCCharString@@XZ
+  004d5aca RELOCATION_MATCH CTCTavernGameCardBlackjack::?StatGetClassTypeName@CTCTavernGameCardBlackjack@@SI?AVCCharString@@XZ
+  004d5add RELOCATION_MATCH CTCGamePlayer::?StatGetClassTypeName@CTCGamePlayer@@SI?AVCCharString@@XZ
+  004d5af0 RELOCATION_MATCH CTCDecapitation::?StatGetClassTypeName@CTCDecapitation@@SI?AVCCharString@@XZ
+  004d5b19 RELOCATION_MATCH CTCTavernGameMaster::?StatGetClassTypeName@CTCTavernGameMaster@@SI?AVCCharString@@XZ
+  004d5b5e RELOCATION_MATCH CTCParticleAttachmentTracker::?StatGetClassTypeName@CTCParticleAttachmentTracker@@SI?AVCCharString@@XZ
+  004d5b8e RELOCATION_MATCH CTCCreatureFlyOnSpline::?StatGetClassTypeName@CTCCreatureFlyOnSpline@@SI?AVCCharString@@XZ
+  004d5bbe RELOCATION_MATCH CTCCreatureFlyInCircles::?StatGetClassTypeName@CTCCreatureFlyInCircles@@SI?AVCCharString@@XZ
+  004d5bee RELOCATION_MATCH CTCWallMount::?StatGetClassTypeName@CTCWallMount@@SI?AVCCharString@@XZ
+  004d5c1e RELOCATION_MATCH CTCWallMountEffects::?StatGetClassTypeName@CTCWallMountEffects@@SI?AVCCharString@@XZ
+  004d5c64 RELOCATION_MATCH CTCFish::?StatGetClassTypeName@CTCFish@@SI?AVCCharString@@XZ
+  004d5caa RELOCATION_MATCH CTCTeleporter::?StatGetClassTypeName@CTCTeleporter@@SI?AVCCharString@@XZ
+  004d5cd3 RELOCATION_MATCH CTCActionUseWallMount::?StatGetClassTypeName@CTCActionUseWallMount@@SI?AVCCharString@@XZ
