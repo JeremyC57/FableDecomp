@@ -44,6 +44,8 @@ def main():
     for fn in ("egor_pdb_names.tsv", "fablewin_pdb_names.tsv"):
         for f in tsv(P("ghidra_out", fn)):   # address \t name
             if len(f) > 1 and f[1]: pdb.add(f[1].strip())
+    for f in tsv(P("ghidra_out", "egod_carved_names.tsv")):   # name \t kinds \t demangles: the third PDB set (owner ruling 2026-11-25)
+        if len(f) > 2 and f[2] == "1" and not f[0].startswith("#") and "@std@@" not in f[0] and "@stdext@@" not in f[0]: pdb.add(f[0].strip())
     sym2addr, addr2sym = {}, {}
     for f in tsv(P("rebuild", "oracles", "reloc_bindings.tsv")):
         if len(f) > 1: sym2addr.setdefault(f[0], set()).add(norm(f[1])); addr2sym.setdefault(norm(f[1]), set()).add(f[0])

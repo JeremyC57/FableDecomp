@@ -8,6 +8,7 @@ Generated, never hand-edited. Reads only committed files:
   rebuild/src/compiled/**/<Source>        each landed row's `// Leaf:` line = the spelling the row itself defines
   rebuild/oracles/auto-re-candidates.tsv  catalog names
   ghidra_out/egor_pdb_names.tsv, fablewin_pdb_names.tsv   the two retail-era PDB name sets (names only)
+  ghidra_out/egod_carved_names.tsv   Ego_d.pdb names, demangling lines without std names (owner ruling 2026-11-25)
   rebuild/candidates/manual/naming/NAME_FIXES_QUEUE.tsv   the queue (free-text log; lines in NAME_FIXES shape are tracked)
 
 A retail address's spellings = every symbol the table binds at it plus its landed row's own Leaf. What this measures is spelling
@@ -50,12 +51,24 @@ def read_tsv(path):
         return [l.rstrip("\r\n").split("\t") for l in f]
 
 
+def egod_names():
+    """Ego_d.pdb names carved from the PDB (ghidra_out/egod_carved_names.tsv), the third PDB name set (owner ruling 2026-11-25, research
+    A2): only lines llvm-undname demangles (column 3 = 1), and no std / stdext names, since Ego_d is a VC10 Dinkumware build whose STL
+    spellings are not retail's STLport."""
+    s = set()
+    p = P("ghidra_out", "egod_carved_names.tsv")
+    if not os.path.exists(p): return s
+    for r in read_tsv(p):
+        if len(r) > 2 and r[2] == "1" and not r[0].startswith("#") and "@std@@" not in r[0] and "@stdext@@" not in r[0]: s.add(r[0])
+    return s
+
+
 def pdb_names():
     s = set()
     for fn in ("egor_pdb_names.tsv", "fablewin_pdb_names.tsv"):
         for r in read_tsv(P("ghidra_out", fn)):
             if len(r) > 1: s.add(r[1])
-    return s
+    return s | egod_names()
 
 
 def landed_rows():

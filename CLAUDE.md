@@ -60,6 +60,7 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   be found after the search, land the best-evidence name: a one-source name (one PDB, the GameCODA SDK, a layout predictor) or
   one in retail's own style for that class and module. Never over a proven name; one address = one name; list it in
   `rebuild/oracles/descriptive_names.tsv` with its basis so later evidence can correct it (the tracker counts it apart from proven).
+  Ego_d (owner, 2026-11-25): `ghidra_out/egod_carved_names.tsv` (demangling lines, no `@std@@`) is the third PDB name set.
 - **Trust the manifest carefully** — module labels are propagated across byte-identical bodies;
   use `label_trust.py` before attributing a function to a class.
 - **Reproducible DB** — names as `ghidra_out/labels_*.tsv`, applied with `LabelApply.java`.
