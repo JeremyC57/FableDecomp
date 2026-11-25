@@ -1,14 +1,10 @@
-struct CVertexShaderConstantLayoutEmpty {
-    void* vftable;
-};
-
-void __fastcall CVertexShaderConstantLayoutEmpty_dtor(CVertexShaderConstantLayoutEmpty* empty);
-void operator delete(void*);
-
-void* __fastcall CVertexShaderConstantLayoutEmpty_scalar_deleting_destructor(CVertexShaderConstantLayoutEmpty* empty, int edx_unused, unsigned int flags)
-{
-    CVertexShaderConstantLayoutEmpty_dtor(empty);
-    if (flags & 1)
-        operator delete(empty);
-    return empty;
-}
+// CVertexShaderConstantLayoutEmpty::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CVertexShaderConstantLayoutEmpty, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCVertexShaderConstantLayoutEmpty@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009E1850, 30 bytes, thiscall, `ret 4`; vftable 0x0129B9B0 slot 0.
+// Identity (NF424, S1x identity): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CVertexShaderConstantLayoutEmpty_scalar_deleting_destructor@@YIPAXPAUCVertexShaderConstantLayoutEmpty@@HI@Z.
+// TU: VC7.1 emits ??_GCVertexShaderConstantLayoutEmpty@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x01224140
+//   _$E1 stores vftable 0x0129B9B0, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/01/22/StaticInitialization_InitializeCUnprovenGlobal013CA8A8_01224140.cpp"

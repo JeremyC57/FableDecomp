@@ -1,0 +1,57 @@
+address	group	kind	reference sites	callees (landed names)
+00442980	g_lbp	unreferenced	noref	?
+00442da0	g_lbp	unreferenced	noref	?CLandscapeBackgroundPatch_dtor_00441cb0@@YIXPAVCLandscapeBackgroundPatch@@@Z
+00442f00	g_lbp	unreferenced	noref	?CLandscapeBackgroundPatch_dtor_00441ee0@@YIXPAVCLandscapeBackgroundPatch@@@Z
+004509d9	g_lbp	QAE: push 0; call	call@00451438 | call@00451b6a	??1CCharString2@@QAE@XZ
+00451c83	g_lbp	QAE: push 0; call	call@00453681 | call@00454410	@inner_dtor@4
+0047b330	g_tsw	unreferenced	noref	??1CWideString@@QAE@XZ | ??1CWideString@@QAE@XZ | ??1CWideString@@QAE@XZ
+0048d870	g_lbp	unreferenced	noref	?CTCMapwho_helper@@YIXPAVCTCMapwho@@@Z
+004a8380	g_lbp	unreferenced	noref	?
+004b7630	g_lbp	unreferenced	noref	??1CWideString@@QAE@XZ
+004c4870	g_lbp	unreferenced	noref	??1CPrimitive@NGraphicAppearance@@QAE@XZ
+004d1fc0	g_lbp	unreferenced	noref	??1CSubtitledMessage@@QAE@XZ
+00512030	g_lbp	unreferenced	noref	??1CLevelFiles@CObject@CLevelLoader@@QAE@XZ
+0053e860	g_lbp	unreferenced	noref	??1?$_List_base@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@
+00565870	g_tsw	unreferenced	noref	??1CCharString2@@QAE@XZ | ??1CWideString@@QAE@XZ | ??1CWideString@@QAE@XZ
+00565bb0	g_tsw	unreferenced	noref	??1CCharString2@@QAE@XZ | ??1CCharString2@@QAE@XZ | ??1CCharString2@@QAE@XZ
+005b157d	g_lbp	QAE: push 0; call	call@005b19d3 | call@005b1e42	??1CWideString@@QAE@XZ
+006685f0	g_lbp	unreferenced	noref	?
+00675770	g_lbp	unreferenced	noref	??1?$CArray@VCBodyPartMesh@CRandomAppearanceMorph@@@@QAE@XZ
+00675bc0	g_lbp	unreferenced	noref	@Mapwho_PreDie@4
+0070bb60	g_lbp	unreferenced	noref	??1CAnimateThing@@QAE@XZ
+007692a0	g_tsw	unreferenced	noref	??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ | ??1CCharString2@@QAE@XZ | ??1CCharString2@@QAE@XZ
+0076b4d0	g_lbp	unreferenced	noref	??1?$vector@UParticleAndEndPoints@@V?$allocator@UParticleAndEndPoints@@@std@@@std@@QAE@XZ
+007811d0	g_tsw	unreferenced	noref	??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ | ??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ | ??1CCharString2@@QAE@XZ
+007ca500	g_lbp	unreferenced	noref	??1?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@UAE@XZ
+007f3dc0	g_lbp	unreferenced	noref	@Mapwho_Cleanup@4
+008413d0	g_lbp	unreferenced	noref	??1LSocket@@QAE@XZ
+008503f0	g_lbp	unreferenced	noref	??1CPhysicsForceModelBase@NCameraModes@@QAE@XZ
+00a82360	g_lbp	unreferenced	noref	??1CNavConnectorNode@@QAE@XZ
+00a857b0	g_lbp	unreferenced	noref	??1CNavigationLayer@CNavQuadTree@@QAE@XZ
+00ab3620	g_lbp	unreferenced	noref	??1CBoneInfo@C3DAnimationBuilder@@QAE@XZ
+00ad79e0	g_lbp	unreferenced	noref	?
+00aecb60	g_lbp	unreferenced	noref	?CTCMapwho_Cleanup@@YIXPAVCTCMapwho@@@Z
+00aecc10	g_lbp	unreferenced	noref	?CTCMapwho_Method@@YIXPAVCTCMapwho@@@Z
+00c097f0	g_lbp	unreferenced	noref	??1CHelper_00c09380@@QAE@XZ
+00c0eef0	g_lbp	unreferenced	noref	?Cleanup@CTCMapwho@@QAEXXZ
+00c13590	g_lbp	unreferenced	noref	??1CPartA_00c13470@@QAE@XZ
+00c135e0	g_lbp	unreferenced	noref	??1CEntry_00c12140@@QAE@XZ
+00c13600	g_lbp	unreferenced	noref	??1CPooledResource@@QAE@XZ
+00c14720	g_lbp	unreferenced	noref	?
+00c15090	g_lbp	unreferenced	noref	??1CDiceController@@QAE@XZ
+00c16280	g_lbp	unreferenced	noref	??1CInputObject_00c16130@@QAE@XZ
+00c2aa70	g_lbp	unreferenced	noref	??1CResourceEntry_00c2a5c0@@QAE@XZ
+00c2aa90	g_lbp	unreferenced	noref	??1CResourceOwner_00c2a5c0@@QAE@XZ
+00c2dca0	g_lbp	unreferenced	noref	?
+00c30a90	g_lbp	unreferenced	noref	?
+00c36b70	g_lbp	unreferenced	noref	??1CResource_00c37130@@QAE@XZ
+00c3c810	g_lbp	unreferenced	noref	??1CUnprovenBackendAudioSource_00C331A0@@UAE@XZ | ??3CVtable_012b4f74@@SAXPAX@Z
+00c449a0	g_lbp	unreferenced	noref	??1CCoda2DSource@@UAE@XZ | ??3CVtable_012b4f74@@SAXPAX@Z
+00c474b0	g_lbp	unreferenced	noref	??1CHandleOwner_00c62500@@QAE@XZ
+00c48750	g_lbp	unreferenced	noref	??1CPKDecompressedStream@@QAE@XZ
+00c4ceb0	g_lbp	unreferenced	noref	??1CMasterObject_00c4cd80@@QAE@XZ
+00c55660	g_lbp	unreferenced	noref	??1CSalSw3DVoice@@UAE@XZ | ??3CVtable_012b4f74@@SAXPAX@Z
+00cafcc0	g_lbp	jump target (thunk)	jmp@00cafcb3	?
+00cafd70	g_lbp	jump target (thunk)	jmp@00cafd63	?
+00cd22c0	g_lbp	QAE: push 0; call	call@00cd26a2 | call@00cd2a23 | call@00cd2a3e | call@00cd2a58	??1CCharString2@@QAE@XZ
+00cdbd00	g_lbp	unreferenced	noref	??1TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ

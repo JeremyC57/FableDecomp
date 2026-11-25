@@ -1,18 +1,10 @@
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-#pragma optimize("t", on)
-class CBaseObject;
-class CBaseObjectPointer;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-class CCreatureActionBase {
-public:
-    virtual ~CCreatureActionBase();   // 0x00693EF0
-};
-void* __fastcall CCreatureAction_PickUpJug_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
-{
-    ((CBaseIntelligentPointer*)(static_cast<unsigned char*>(action) + 168))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
-    ((CCreatureActionBase*)(action))->CCreatureActionBase::~CCreatureActionBase();
-    if (flags & 1)
-        operator delete(action);
-    return action;
-}
+// CCreatureAction_PickUpJug::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CCreatureAction_PickUpJug, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCCreatureAction_PickUpJug@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00968040, 43 bytes, thiscall, `ret 4`; vftable 0x012963A4 slot 0.
+// Identity (NF424, S3 G3): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CCreatureAction_PickUpJug_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z.
+// TU: VC7.1 emits ??_GCCreatureAction_PickUpJug@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00967930
+//   ?PickUpJug@CAIStateGroup_TavernServer@@QAE_NXZ stores vftable 0x012963A4, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/96/CAIStateGroupTavernServer_PickUpJug_00967930.cpp"

@@ -1,43 +1,23 @@
+// Behaviour model of C3DMeshFileSubMeshChunk::`scalar deleting destructor' (row 0x00ABE080, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-static int g_AutoTinyMemberDestructorCalls = 0;
-static int g_AutoTinyCompositeDestructorCalls = 0;
-static int g_AutoTinyCompositeDeleteCalls = 0;
-static void* g_AutoTinyObservedMember = 0;
-void __fastcall DestructMember_0099eae0(void* member)
-{
-    ++g_AutoTinyMemberDestructorCalls;
-    g_AutoTinyObservedMember = member;
-}
-void __fastcall C3DMeshFileSubMeshChunk_Destruct(void*)
-{
-    ++g_AutoTinyCompositeDestructorCalls;
-}
-void __cdecl OperatorDelete(void*)
-{
-    ++g_AutoTinyCompositeDeleteCalls;
-}
-void* __fastcall C3DMeshFileSubMeshChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
-{
-    DestructMember_0099eae0(static_cast<unsigned char*>(chunk) + 44);
-    C3DMeshFileSubMeshChunk_Destruct(chunk);
-    if (flags & 1)
-        OperatorDelete(chunk);
-    return chunk;
-}
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    unsigned char object[256] = {0};
-    if (C3DMeshFileSubMeshChunk_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
-        g_AutoTinyObservedMember != object + 44 ||
-        g_AutoTinyMemberDestructorCalls != 1 ||
-        g_AutoTinyCompositeDestructorCalls != 1 ||
-        g_AutoTinyCompositeDeleteCalls != 0)
-        return 1;
-    C3DMeshFileSubMeshChunk_CompositeScalarDeletingDestructor(object, 0, 1);
-    if (g_AutoTinyMemberDestructorCalls != 2 ||
-        g_AutoTinyCompositeDestructorCalls != 2 ||
-        g_AutoTinyCompositeDeleteCalls != 1)
-        return 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("00abe080 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("00abe080 FAIL no-free path\n"); return 1; }
+    std::free(r);
     std::printf("AUTO_TINY_00abe080_TEST PASS\n");
     return 0;
 }

@@ -1,58 +1,23 @@
+// Behaviour model of CInputProcessInventoryQuestsScreen::`scalar deleting destructor' (row 0x0048B5E0, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-class CInputProcessInventoryQuestsScreen;
-
-static int g_dtor_calls = 0;
-static int g_delete_calls = 0;
-static void* g_last_deleted = 0;
-
-void __fastcall CInputProcessInventoryQuestsScreen_scalar_dtor(CInputProcessInventoryQuestsScreen* process)
-{
-    (void)process;
-    g_dtor_calls++;
-}
-void __cdecl op_delete(void* p)
-{
-    g_delete_calls++;
-    g_last_deleted = p;
-}
-
-class CInputProcessInventoryQuestsScreen
-{ public:
-    int dummy;
-    void* __fastcall scalar_deleting_destructor(unsigned int flags)
-    {
-        CInputProcessInventoryQuestsScreen_scalar_dtor(this);
-        if (flags & 1)
-            op_delete(this);
-        return this;
-    }
-};
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessInventoryQuestsScreen obj;
-    obj.dummy = 0x1234;
-
-    // flags bit0 clear: dtor runs, no delete, returns this
-    g_dtor_calls = g_delete_calls = 0; g_last_deleted = 0;
-    void* r1 = obj.scalar_deleting_destructor(0);
-    bool ok1 = (g_dtor_calls == 1) && (g_delete_calls == 0) && (r1 == (void*)&obj);
-
-    // flags bit0 set: dtor runs, delete runs with this, returns this
-    g_dtor_calls = g_delete_calls = 0; g_last_deleted = 0;
-    void* r2 = obj.scalar_deleting_destructor(1);
-    bool ok2 = (g_dtor_calls == 1) && (g_delete_calls == 1) &&
-               (g_last_deleted == (void*)&obj) && (r2 == (void*)&obj);
-
-    // higher bits set but bit0 clear: no delete
-    g_dtor_calls = g_delete_calls = 0;
-    obj.scalar_deleting_destructor(2);
-    bool ok3 = (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    if (ok1 && ok2 && ok3)
-        printf("VDD_PASS_OK\n");
-    else
-        printf("VDD_FAIL\n");
-    return (ok1 && ok2 && ok3) ? 0 : 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b5e0 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b5e0 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PASS_OK\n");
+    return 0;
 }

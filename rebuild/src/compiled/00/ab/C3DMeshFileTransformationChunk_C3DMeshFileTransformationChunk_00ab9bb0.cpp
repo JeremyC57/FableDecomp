@@ -10,6 +10,7 @@
 // pointers (0x0c: the XUVTangent factory allocates 0x28 bytes for two CArrays behind a 0x10 base).
 // The bytes decide, so this file models the retail layout with the PDB member names and says so here
 // instead of including the disagreeing header.
+// Leaf: ??0C3DMeshFileTransformationChunk@@QAE@ABVCMatrix3x4@@@Z
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)

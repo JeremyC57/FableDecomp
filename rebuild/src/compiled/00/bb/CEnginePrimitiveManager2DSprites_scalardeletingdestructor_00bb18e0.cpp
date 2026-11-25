@@ -1,14 +1,10 @@
-class CEnginePrimitiveManager2DSprites { public:
-    void* vftable;
-};
-
-void __fastcall CEnginePrimitiveManager2DSprites_dtor(CEnginePrimitiveManager2DSprites* sprites);
-void operator delete(void*);
-
-void* __fastcall CEnginePrimitiveManager2DSprites_scalar_deleting_destructor(CEnginePrimitiveManager2DSprites* sprites, int edx_unused, unsigned int flags)
-{
-    CEnginePrimitiveManager2DSprites_dtor(sprites);
-    if (flags & 1)
-        operator delete(sprites);
-    return sprites;
-}
+// CEnginePrimitiveManager2DSprites::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CEnginePrimitiveManager2DSprites, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCEnginePrimitiveManager2DSprites@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00BB18E0, 30 bytes, thiscall, `ret 4`; vftable 0x012A5664 slot 0.
+// Identity (NF424, S1x identity): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CEnginePrimitiveManager2DSprites_scalar_deleting_destructor@@YIPAXPAVCEnginePrimitiveManager2DSprites@@HI@Z.
+// TU: VC7.1 emits ??_GCEnginePrimitiveManager2DSprites@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00BAD040
+//   ??0CEnginePrimitiveManager2DSprites@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z stores vftable 0x012A5664, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/ba/CEnginePrimitiveManager2DSprites_CEnginePrimitiveManager2DSprites_00bad040.cpp"

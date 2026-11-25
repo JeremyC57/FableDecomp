@@ -1,26 +1,10 @@
-// CInputProcessDead::`vector_deleting_destructor' 0x0048b460
-// Standard MSVC scalar/vector deleting destructor idiom:
-//   push esi; mov esi,ecx; call dtor; test [esp+8],1; je L; push esi; call delete; add esp,4; L: mov eax,esi; ret 4
-
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();   // 0x00A0D3D0
-};
-class CInputProcessDead
-{ public:
-    void Destroy();  // real scalar destructor at 0xa0d3d0 (__fastcall)
-};
-
-// operator delete equivalent at 0xbfe9bc (cdecl)
-void operator delete(void*);
-
-// scalar destructor body (external target)
-
-void* __fastcall CInputProcessDead_scalar_deleting_destructor(
-    CInputProcessDead* process, int /*edx*/, unsigned int flags)
-{
-    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessDead::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessDead, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessDead@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B460, 30 bytes, thiscall, `ret 4`; vftable 0x0123762C slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessDead_scalar_deleting_destructor@@YIPAXPAVCInputProcessDead@@HI@Z.
+// TU: VC7.1 emits ??_GCInputProcessDead@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x0123762C, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

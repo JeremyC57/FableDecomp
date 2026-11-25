@@ -5,6 +5,7 @@
 // CCharString::~CCharString @ 0x0099EAE0 (the manifest label is a propagated _Cons_val symbol). Vtable 0x012A5114 = CEnginePrimitiveManagerStaticMeshes
 // (rtti-vtables.tsv). Shape: the temporary lives in the caller's frame (`lea ecx,[esp+10h]` after the two pushes, `lea ecx,[esp+8]` after), the vtable store is
 // scheduled between the pushes and the string constructor, the +0x314 store is an immediate 1.
+// Leaf: ??0CEnginePrimitiveManagerStaticMeshes@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
 #define FABLE_RETAIL_STATICBLOCKS_TEXTURE_HELPERS
 #define FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_PROTECTED_TAIL
 #define FABLE_RETAIL_CCHARSTRING

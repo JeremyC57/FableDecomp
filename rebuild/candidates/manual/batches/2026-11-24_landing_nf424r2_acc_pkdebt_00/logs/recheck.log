@@ -1,0 +1,121 @@
+addr       parity           behav  name
+00456f55   WARN STANDIN_LEAF ??_GCVillagerInteractionsDef@@UAEPAXI@Z (catalog CVillagerInteractionsDef::`scalar_deleting_destructor'; names another function)
+00456f55   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004590e6   WARN STANDIN_LEAF ??_GCThingShotDef@@UAEPAXI@Z (catalog CThingShotDef::`scalar_deleting_destructor'; names another function)
+004590e6   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00497720   WARN STANDIN_LEAF ??_GCFrontendGameComponent@@UAEPAXI@Z (catalog CFrontendGameComponent::`scalar_deleting_destructor'; names another function)
+00497720   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004bbba0   WARN STANDIN_LEAF ??_GCQuestManager@@UAEPAXI@Z (catalog CQuestManager::`scalar_deleting_destructor'; names another function)
+004bbba0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0052c610   RELOCATION_MATCH PASS   `scalar deleting destructor'
+006a0730   WARN STANDIN_LEAF ??_GCTCParamsPhysicsBase@@UAEPAXI@Z (catalog CTCParamsPhysicsBase::`scalar_deleting_destructor'; names another function)
+006a0730   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7e20   WARN STANDIN_LEAF ??_GCCreatureAction_ScreamerDrainAttack@@UAEPAXI@Z (catalog CCreatureAction_ScreamerDrainAttack::`scalar_deleting_destructor'; names another function)
+006f7e20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7e60   WARN STANDIN_LEAF ??_GCCreatureAction_ScreamerIdle@@UAEPAXI@Z (catalog CCreatureAction_ScreamerIdle::`scalar_deleting_destructor'; names another function)
+006f7e60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7e80   WARN STANDIN_LEAF ??_GCCreatureAction_ScreamerAdvance@@UAEPAXI@Z (catalog CCreatureAction_ScreamerAdvance::`scalar_deleting_destructor'; names another function)
+006f7e80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7ea0   WARN STANDIN_LEAF ??_GCCreatureAction_ScreamerBackOff@@UAEPAXI@Z (catalog CCreatureAction_ScreamerBackOff::`scalar_deleting_destructor'; names another function)
+006f7ea0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7ee0   WARN STANDIN_LEAF ??_GCCreatureAction_ScorpionKingDeath@@UAEPAXI@Z (catalog CCreatureAction_ScorpionKingDeath::`scalar_deleting_destructor'; names another function)
+006f7ee0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7f20   WARN STANDIN_LEAF ??_GCCreatureAction_WaspQueenDeath@@UAEPAXI@Z (catalog CCreatureAction_WaspQueenDeath::`scalar_deleting_destructor'; names another function)
+006f7f20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7f50   WARN STANDIN_LEAF ??_GCCreatureAction_RockTrollFallToDeath@@UAEPAXI@Z (catalog CCreatureAction_RockTrollFallToDeath::`scalar_deleting_destructor'; names another function)
+006f7f50   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7f70   WARN STANDIN_LEAF ??_GCCreatureAction_InterruptableFarAttack@@UAEPAXI@Z (catalog CCreatureAction_InterruptableFarAttack::`scalar_deleting_destructor'; names another function)
+006f7f70   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f7ff0   WARN STANDIN_LEAF ??_GCCreatureAction_MidAttackKnockdown@@UAEPAXI@Z (catalog CCreatureAction_MidAttackKnockdown::`scalar_deleting_destructor'; names another function)
+006f7ff0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f8050   WARN STANDIN_LEAF ??_GCCreatureAction_TurnStrikeLeft@@UAEPAXI@Z (catalog CCreatureAction_TurnStrikeLeft::`scalar_deleting_destructor'; names another function)
+006f8050   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f8070   WARN STANDIN_LEAF ??_GCCreatureAction_TurnStrikeRight@@UAEPAXI@Z (catalog CCreatureAction_TurnStrikeRight::`scalar_deleting_destructor'; names another function)
+006f8070   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f8090   WARN STANDIN_LEAF ??_GCCreatureAction_GenericStrafeLeft@@UAEPAXI@Z (catalog CCreatureAction_GenericStrafeLeft::`scalar_deleting_destructor'; names another function)
+006f8090   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f80b0   WARN STANDIN_LEAF ??_GCCreatureAction_GenericStrafeRight@@UAEPAXI@Z (catalog CCreatureAction_GenericStrafeRight::`scalar_deleting_destructor'; names another function)
+006f80b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f80d0   WARN STANDIN_LEAF ??_GCCreatureAction_BreakIntoMelee@@UAEPAXI@Z (catalog CCreatureAction_BreakIntoMelee::`scalar_deleting_destructor'; names another function)
+006f80d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f8140   WARN STANDIN_LEAF ??_GCCreatureAction_HobbeSpellcasterFire@@UAEPAXI@Z (catalog CCreatureAction_HobbeSpellcasterFire::`scalar_deleting_destructor'; names another function)
+006f8140   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f81d0   WARN STANDIN_LEAF ??_GCCreatureAction_SummonerStrike@@UAEPAXI@Z (catalog CCreatureAction_SummonerStrike::`scalar_deleting_destructor'; names another function)
+006f81d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+006f81f0   WARN STANDIN_LEAF ??_GCCreatureAction_SummonerDie@@UAEPAXI@Z (catalog CCreatureAction_SummonerDie::`scalar_deleting_destructor'; names another function)
+006f81f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0087e5c0   WARN STANDIN_LEAF ??_GCCreatureAction_InterruptableMidAttackAutoTurn@@UAEPAXI@Z (catalog CCreatureAction_InterruptableMidAttackAutoTurn::`scalar_deleting_destructor'; names another function)
+0087e5c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008c7d30   WARN STANDIN_LEAF ??_GCCreatureAction_RockTrollShakeAndExplode@@UAEPAXI@Z (catalog CCreatureAction_RockTrollShakeAndExplode::`scalar_deleting_destructor'; names another function)
+008c7d30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009d47a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+009e3560   WARN STANDIN_LEAF ??_GCFontManager@@UAEPAXI@Z (catalog CFontManager::`scalar_deleting_destructor'; names another function)
+009e3560   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009fc750   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a601e0   WARN STANDIN_LEAF ??_GCInputManagerDX@@UAEPAXI@Z (catalog CInputManagerDX::`scalar_deleting_destructor'; names another function)
+00a601e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a628b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00aa9600   WARN STANDIN_LEAF ??_GCChunkedFileSuperChunk@@UAEPAXI@Z (catalog CChunkedFileSuperChunk::`scalar_deleting_destructor'; names another function)
+00aa9600   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b38d10   WARN STANDIN_LEAF ??_GCEnginePrimitiveRenderer@@UAEPAXI@Z (catalog CEnginePrimitiveRenderer::`scalar_deleting_destructor'; names another function)
+00b38d10   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b4b720   WARN STANDIN_LEAF ??_GCEnginePrimitiveRenderer2D@@UAEPAXI@Z (catalog CEnginePrimitiveRenderer2D::`scalar_deleting_destructor'; names another function)
+00b4b720   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b56690   WARN STANDIN_LEAF ??_GCEngineWeatherRenderer@@UAEPAXI@Z (catalog CEngineWeatherRenderer::`scalar_deleting_destructor'; names another function)
+00b56690   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b61a20   WARN STANDIN_LEAF ??_GCEngineScreenEffectGlowRenderer@@UAEPAXI@Z (catalog CEngineScreenEffectGlowRenderer::`scalar_deleting_destructor'; names another function)
+00b61a20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b89050   WARN STANDIN_LEAF ??_GCEngineScreenEffectDisplacementRenderer@@UAEPAXI@Z (catalog CEngineScreenEffectDisplacementRenderer::`scalar_deleting_destructor'; names another function)
+00b89050   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b8b5b0   WARN STANDIN_LEAF ??_GCEngineScreenEffectOutlineGlow@@UAEPAXI@Z (catalog CEngineScreenEffectOutlineGlow::`scalar_deleting_destructor'; names another function)
+00b8b5b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b8f930   WARN STANDIN_LEAF ??_GCEngineOcclusionManager@@UAEPAXI@Z (catalog CEngineOcclusionManager::`scalar_deleting_destructor'; names another function)
+00b8f930   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bb9980   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerParticleDecalGroup@@UAEPAXI@Z (catalog CEnginePrimitiveManagerParticleDecalGroup::`scalar_deleting_destructor'; names another function)
+00bb9980   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bbbba0   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerDecal@@UAEPAXI@Z (catalog CEnginePrimitiveManagerDecal::`scalar_deleting_destructor'; names another function)
+00bbbba0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00d005c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 41
+  00456f55 RELOCATION_MATCH CVillagerInteractionsDef::??_GCVillagerInteractionsDef@@UAEPAXI@Z
+  004590e6 RELOCATION_MATCH CThingShotDef::??_GCThingShotDef@@UAEPAXI@Z
+  00497720 RELOCATION_MATCH CFrontendGameComponent::??_GCFrontendGameComponent@@UAEPAXI@Z
+  004bbba0 RELOCATION_MATCH CQuestManager::??_GCQuestManager@@UAEPAXI@Z
+  0052c610 RELOCATION_MATCH CThingManager::??_GCThingManager@@UAEPAXI@Z
+  006a0730 RELOCATION_MATCH CTCParamsPhysicsBase::??_GCTCParamsPhysicsBase@@UAEPAXI@Z
+  006f7e20 RELOCATION_MATCH CCreatureAction_ScreamerDrainAttack::??_GCCreatureAction_ScreamerDrainAttack@@UAEPAXI@Z
+  006f7e60 RELOCATION_MATCH CCreatureAction_ScreamerIdle::??_GCCreatureAction_ScreamerIdle@@UAEPAXI@Z
+  006f7e80 RELOCATION_MATCH CCreatureAction_ScreamerAdvance::??_GCCreatureAction_ScreamerAdvance@@UAEPAXI@Z
+  006f7ea0 RELOCATION_MATCH CCreatureAction_ScreamerBackOff::??_GCCreatureAction_ScreamerBackOff@@UAEPAXI@Z
+  006f7ee0 RELOCATION_MATCH CCreatureAction_ScorpionKingDeath::??_GCCreatureAction_ScorpionKingDeath@@UAEPAXI@Z
+  006f7f20 RELOCATION_MATCH CCreatureAction_WaspQueenDeath::??_GCCreatureAction_WaspQueenDeath@@UAEPAXI@Z
+  006f7f50 RELOCATION_MATCH CCreatureAction_RockTrollFallToDeath::??_GCCreatureAction_RockTrollFallToDeath@@UAEPAXI@Z
+  006f7f70 RELOCATION_MATCH CCreatureAction_InterruptableFarAttack::??_GCCreatureAction_InterruptableFarAttack@@UAEPAXI@Z
+  006f7ff0 RELOCATION_MATCH CCreatureAction_MidAttackKnockdown::??_GCCreatureAction_MidAttackKnockdown@@UAEPAXI@Z
+  006f8050 RELOCATION_MATCH CCreatureAction_TurnStrikeLeft::??_GCCreatureAction_TurnStrikeLeft@@UAEPAXI@Z
+  006f8070 RELOCATION_MATCH CCreatureAction_TurnStrikeRight::??_GCCreatureAction_TurnStrikeRight@@UAEPAXI@Z
+  006f8090 RELOCATION_MATCH CCreatureAction_GenericStrafeLeft::??_GCCreatureAction_GenericStrafeLeft@@UAEPAXI@Z
+  006f80b0 RELOCATION_MATCH CCreatureAction_GenericStrafeRight::??_GCCreatureAction_GenericStrafeRight@@UAEPAXI@Z
+  006f80d0 RELOCATION_MATCH CCreatureAction_BreakIntoMelee::??_GCCreatureAction_BreakIntoMelee@@UAEPAXI@Z
+  006f8140 RELOCATION_MATCH CCreatureAction_HobbeSpellcasterFire::??_GCCreatureAction_HobbeSpellcasterFire@@UAEPAXI@Z
+  006f81d0 RELOCATION_MATCH CCreatureAction_SummonerStrike::??_GCCreatureAction_SummonerStrike@@UAEPAXI@Z
+  006f81f0 RELOCATION_MATCH CCreatureAction_SummonerDie::??_GCCreatureAction_SummonerDie@@UAEPAXI@Z
+  0087e5c0 RELOCATION_MATCH CCreatureAction_InterruptableMidAttackAutoTurn::??_GCCreatureAction_InterruptableMidAttackAutoTurn@@UAEPAXI@Z
+  008c7d30 RELOCATION_MATCH CCreatureAction_RockTrollShakeAndExplode::??_GCCreatureAction_RockTrollShakeAndExplode@@UAEPAXI@Z
+  009d47a0 RELOCATION_MATCH CBankFile::??_GCBankFile@@UAEPAXI@Z
+  009e3560 RELOCATION_MATCH CFontManager::??_GCFontManager@@UAEPAXI@Z
+  009fc750 RELOCATION_MATCH CResourceBank::??_GCResourceBank@@UAEPAXI@Z
+  00a601e0 RELOCATION_MATCH CInputManagerDX::??_GCInputManagerDX@@UAEPAXI@Z
+  00a628b0 RELOCATION_MATCH CShaderBankEntry::??_GCShaderBankEntry@@UAEPAXI@Z
+  00aa9600 RELOCATION_MATCH CChunkedFileSuperChunk::??_GCChunkedFileSuperChunk@@UAEPAXI@Z
+  00b38d10 RELOCATION_MATCH CEnginePrimitiveRenderer::??_GCEnginePrimitiveRenderer@@UAEPAXI@Z
+  00b4b720 RELOCATION_MATCH CEnginePrimitiveRenderer2D::??_GCEnginePrimitiveRenderer2D@@UAEPAXI@Z
+  00b56690 RELOCATION_MATCH CEngineWeatherRenderer::??_GCEngineWeatherRenderer@@UAEPAXI@Z
+  00b61a20 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::??_GCEngineScreenEffectGlowRenderer@@UAEPAXI@Z
+  00b89050 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::??_GCEngineScreenEffectDisplacementRenderer@@UAEPAXI@Z
+  00b8b5b0 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::??_GCEngineScreenEffectOutlineGlow@@UAEPAXI@Z
+  00b8f930 RELOCATION_MATCH CEngineOcclusionManager::??_GCEngineOcclusionManager@@UAEPAXI@Z
+  00bb9980 RELOCATION_MATCH CEnginePrimitiveManagerParticleDecalGroup::??_GCEnginePrimitiveManagerParticleDecalGroup@@UAEPAXI@Z
+  00bbbba0 RELOCATION_MATCH CEnginePrimitiveManagerDecal::??_GCEnginePrimitiveManagerDecal@@UAEPAXI@Z
+  00d005c0 RELOCATION_MATCH CVtable_012c78b0::??_GCQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z

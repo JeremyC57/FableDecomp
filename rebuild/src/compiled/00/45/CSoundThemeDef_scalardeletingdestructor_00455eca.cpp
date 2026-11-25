@@ -1,21 +1,10 @@
-#pragma optimize("s",on)
-// scalar deleting destructor for CSoundThemeDef
-// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
-//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
-//   operator= 0x00431ED0).
-#define FABLE_RETAIL_DEF_CLASS_BASE
-#include "engine/CParentDefClassBase.h"
-class CSoundThemeDef { public: char pad[0x58]; };
-
-extern "C" void __fastcall Sub54_dtor(void* ecx);
-void operator delete(void* p);
-
-void* __fastcall CSoundThemeDef_scalar_deleting_destructor(CSoundThemeDef* def, int edx, unsigned int flags)
-{
-    (void)edx;
-    Sub54_dtor((char*)def + 0x54);
-    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
-    if (flags & 1)
-        operator delete(def);
-    return def;
-}
+// CSoundThemeDef::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CSoundThemeDef, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCSoundThemeDef@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00455ECA, 38 bytes, thiscall, `ret 4`; vftable 0x01233824 slot 0.
+// Identity (NF424, S3 G3): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CSoundThemeDef_scalar_deleting_destructor@@YIPAXPAVCSoundThemeDef@@HI@Z.
+// TU: VC7.1 emits ??_GCSoundThemeDef@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00455EAC
+//   ??0CSoundThemeDef@@QAE@XZ stores vftable 0x01233824, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/45/CSoundThemeDef_CSoundThemeDef_00455eac.cpp"

@@ -1,19 +1,10 @@
-// CInputProcessInventory::`vector deleting destructor' @ 0x0048b500
-// Leaf: ?CInputProcessInventory_scalar_deleting_destructor@@YIPAXPAVCInputProcessInventory@@HI@Z
-// Standard MSVC vector-deleting-destructor thunk:
-//   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; jz L;
-//   push esi; call operator delete; add esp,4; L: mov eax,esi; pop esi; ret 4
-
-class CInputProcessInventory
-{ public:
-    void dtor();  // real scalar destructor @ 0xa0d3d0 (declaration only -> real call)
-};
-
-
-void* __fastcall CInputProcessInventory_scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
-{
-    process->dtor();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessInventory::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessInventory, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessInventory@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B500, 30 bytes, thiscall, `ret 4`; vftable 0x012376F8 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessInventory_scalar_deleting_destructor@@YIPAXPAVCInputProcessInventory@@HI@Z.
+// TU: VC7.1 emits ??_GCInputProcessInventory@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x012376F8, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

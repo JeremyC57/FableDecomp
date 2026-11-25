@@ -1,14 +1,10 @@
-class CASuspendableProcess { public:
-    void* vftable;
-};
-
-void __fastcall CASuspendableProcess_dtor(CASuspendableProcess* process);
-void operator delete(void*);
-
-void* __fastcall CASuspendableProcess_scalar_deleting_destructor(CASuspendableProcess* process, int edx_unused, unsigned int flags)
-{
-    CASuspendableProcess_dtor(process);
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CASuspendableProcess::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CASuspendableProcess, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCASuspendableProcess@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00A44A20, 30 bytes, thiscall, `ret 4`; vftable 0x0129D428 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CASuspendableProcess_scalar_deleting_destructor@@YIPAXPAVCASuspendableProcess@@HI@Z.
+// TU: VC7.1 emits ??_GCASuspendableProcess@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00A445D0
+//   ??0CASuspendableProcess@@QAE@_NJJ@Z stores vftable 0x0129D428, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/a4/CASuspendableProcess_CASuspendableProcess_00a445d0.cpp"

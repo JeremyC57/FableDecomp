@@ -1,3 +1,4 @@
+// Leaf: ??0CThingShotDef@@QAE@XZ
 #pragma optimize("s", on)
 // CThingShotDef::CThingShotDef() -- CParentDefClassBase(), vtable, ShotDefinitionClassName (-1) and two zeroed CFloatRange members
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00458D3F, oracle length 42 bytes. Size-optimised TU

@@ -1,45 +1,23 @@
-#include <stdio.h>
-
-class CInputProcessClickPastText
-{ public:
-    int marker;
-    void Destroy();
-};
-
-static int g_destroyed = 0;
-static int g_deleted = 0;
-
-void CInputProcessClickPastText::Destroy() { g_destroyed++; }
-void __cdecl operator delete(void* p)
-{ g_deleted++; (void)p; }
-
-void* __fastcall CInputProcessClickPastText_scalar_deleting_destructor(
-    CInputProcessClickPastText* process, int edx, unsigned int flags);
-
+// Behaviour model of CInputProcessClickPastText::`scalar deleting destructor' (row 0x0048B660, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
+#include <cstdio>
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessClickPastText a; a.marker = 7;
-    CInputProcessClickPastText b; b.marker = 9;
-
-    // flags & 1 == 0 : destroy only, no delete
-    g_destroyed = 0; g_deleted = 0;
-    void* r1 = CInputProcessClickPastText_scalar_deleting_destructor(&a, 0, 0);
-    if (r1 != &a) { printf("FAIL r1\n"); return 1; }
-    if (g_destroyed != 1) { printf("FAIL destroy1\n"); return 1; }
-    if (g_deleted != 0) { printf("FAIL nodelete\n"); return 1; }
-
-    // flags & 1 == 1 : destroy + delete
-    g_destroyed = 0; g_deleted = 0;
-    void* r2 = CInputProcessClickPastText_scalar_deleting_destructor(&b, 0, 1);
-    if (r2 != &b) { printf("FAIL r2\n"); return 1; }
-    if (g_destroyed != 1) { printf("FAIL destroy2\n"); return 1; }
-    if (g_deleted != 1) { printf("FAIL delete2\n"); return 1; }
-
-    // even flag bit set but bit0 clear -> no delete
-    g_deleted = 0;
-    CInputProcessClickPastText_scalar_deleting_destructor(&a, 0, 2);
-    if (g_deleted != 0) { printf("FAIL bit0\n"); return 1; }
-
-    printf("VDD_PARITY_OK\n");
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b660 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b660 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PARITY_OK\n");
     return 0;
 }

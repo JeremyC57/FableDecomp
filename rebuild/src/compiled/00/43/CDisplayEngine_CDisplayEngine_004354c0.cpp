@@ -24,6 +24,7 @@
 // The member is re-read from `this` (esi) at each mention because the interleaved
 // masked calls / memory writes may alias `this`, so cl reloads rather than caches --
 // exactly the retail reload pattern.
+// Leaf: ??1CDisplayEngine@@UAE@XZ
 
 typedef signed int   fable_i32;
 typedef unsigned int fable_u32;

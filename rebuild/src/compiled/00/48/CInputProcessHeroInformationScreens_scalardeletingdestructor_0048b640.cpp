@@ -1,26 +1,10 @@
-// CInputProcessHeroInformationScreens::`scalar deleting destructor'  (retail 0x0048b640)
-//
-// MSVC VC7.1 compiler-generated vector deleting destructor shape:
-//   push esi; mov esi,ecx; call <scalar_dtor>(this)
-//   test byte ptr [esp+8],1 ; if(flags&1) operator delete(this)
-//   return this;
-//
-// The scalar destructor (retail 0x00a0d3d0) and operator delete
-// (retail 0x00bfe9bc) are external calls resolved by relocation.
-
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();   // 0x00A0D3D0
-};
-
-// vector deleting destructor: __fastcall (this in ecx, flags on stack).
-// Modelled as __fastcall with a dummy edx slot so 'flags' is passed on the
-// stack (ecx=self, edx=unused), matching retail's 'test [esp+8],1'.
-void* __fastcall CInputProcessHeroInformationScreens_scalar_deleting_destructor(void* process, int edx, unsigned int flags)
-{
-    (void)edx;
-    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessHeroInformationScreens::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessHeroInformationScreens, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessHeroInformationScreens@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B640, 30 bytes, thiscall, `ret 4`; vftable 0x012378B0 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessHeroInformationScreens_scalar_deleting_destructor@@YIPAXPAXHI@Z.
+// TU: VC7.1 emits ??_GCInputProcessHeroInformationScreens@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x012378B0, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

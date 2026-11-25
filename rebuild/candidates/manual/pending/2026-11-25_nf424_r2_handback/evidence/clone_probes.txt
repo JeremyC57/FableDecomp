@@ -1,0 +1,15 @@
+008c9670 008c97e0 CCreatureAction_BanditKingAttack DIFFER(85v71) flags=
+008c96d0 008c98e0 CCreatureAction_BanditKingUnstuck DIFFER(85v71) flags=
+008cd280 008cd330 CCreatureAction_BalverineCorneredJumpIntoSky RELOCATION_MATCH flags=
+008cecc0 008cee70 CCreatureAction_CastTimeSpell DIFFER(83v59) flags=
+008cee50 008cf260 CCreatureAction_CastSkillMultiArrow RELOCATION_MATCH flags=
+008f5700 008f5850 CCreatureAction_DragonRearUpInto RELOCATION_MATCH flags=
+00925a50 00925c40 CCreatureAction_TentacleStrikeInto RELOCATION_MATCH flags=
+0097d130 0097d1c0 CCreatureAction_VillagerAttackKnockdown DIFFER(83v59) flags=
+PROBE_DONE
+0062d7d0 0062f230 CCreatureAction_StartSneaking RELOCATION_MATCH flags=
+0062d870 0062f260 CCreatureAction_StopSneaking RELOCATION_MATCH flags=
+0084ab80 0084c7a0 CCreatureAction_YellOverHere RELOCATION_MATCH flags=
+0084b4a0 0084c460 CCreatureAction_PlayAnimationFromIndex RELOCATION_MATCH flags=
+0087fe80 008800c0 CCreatureAction_StabbedToDeath RELOCATION_MATCH flags=
+PROBE_DONE

@@ -1,17 +1,10 @@
-class CCombatActionBase {
-public:
-    virtual ~CCombatActionBase();   // 0x0062E900
-};
-class CCreatureAction_SummonerDead { public:
-    void* vftable;
-};
-
-void operator delete(void*);
-
-void* __fastcall CCreatureAction_SummonerDead_scalar_deleting_destructor(CCreatureAction_SummonerDead* action, int edx_unused, unsigned int flags)
-{
-    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
-    if (flags & 1)
-        operator delete(action);
-    return action;
-}
+// CCreatureAction_SummonerDead::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CCreatureAction_SummonerDead, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCCreatureAction_SummonerDead@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008E4DE0, 30 bytes, thiscall, `ret 4`; vftable 0x01287174 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CCreatureAction_SummonerDead_scalar_deleting_destructor@@YIPAXPAVCCreatureAction_SummonerDead@@HI@Z.
+// TU: VC7.1 emits ??_GCCreatureAction_SummonerDead@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x008DFEF0
+//   ?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ stores vftable 0x01287174, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/8d/NCreatureModeCModeSummonerDie_FrameUpdate_008dfef0.cpp"

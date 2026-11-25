@@ -1,0 +1,120 @@
+00ce1250	??_G?$CActiveEntityScript@VCPersonalScript_GlobalThingsScript@NScript@@@@UAEPAXI@Z	V(4:00ce11b0) P(E:fwin,D:fwin)
+00cf6860	??_G?$CActiveEntityScript@VCQ_ArenaHoldingScriptScript@NScript@@@@UAEPAXI@Z	V(4:00cf67f0) P(G:fwin,D:fwin) C
+00cfdfa0	??_G?$CActiveEntityScript@VCQ_AwakeningTheOracleScript@NScript@@@@UAEPAXI@Z	V(4:00cfdf50) P(G:fwin,D:fwin) C
+00d032c0	??_G?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEPAXI@Z	V(4:00d03270) P(E:fwin,D:fwin) C
+00d0ede0	??_G?$CActiveEntityScript@VCQ_BanditCampBossBattleScript@NScript@@@@UAEPAXI@Z	V(4:00d0ed60) P(E:fwin,D:fwin) C
+00d17310	??_G?$CActiveEntityScript@VCQ_BountyHuntScript@NScript@@@@UAEPAXI@Z	V(4:00d17290) P(G:fwin,D:fwin) C
+00d20760	??_G?$CActiveEntityScript@VCQ_BreakSiegeScript@NScript@@@@UAEPAXI@Z	V(4:00d20710) P(E:fwin,D:fwin) C
+00d24630	??_G?$CActiveEntityScript@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEPAXI@Z	V(4:00d245c0) P(E:fwin,D:fwin) C
+00d26160	??_G?$CActiveEntityScript@VCQ_DragonBossFightScript@NScript@@@@UAEPAXI@Z	V(4:00d26110) P(E:fwin,D:fwin) C
+00d29800	??_G?$CActiveEntityScript@VCQ_EndGameScript@NScript@@@@UAEPAXI@Z	V(4:00d29790) P(E:fwin,D:fwin) C
+00d2d700	??_G?$CActiveEntityScript@VCQ_EndGameFocalSitesScript@NScript@@@@UAEPAXI@Z	V(4:00d2d680) P(E:fwin,D:fwin) C
+00d30000	??_G?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEPAXI@Z	V(4:00d2ffb0) P(G:fwin,D:fwin) C
+00d38cf0	??_G?$CActiveEntityScript@VCQ_FireHeartScript@NScript@@@@UAEPAXI@Z	V(4:00d38ca0) P(G:fwin,D:fwin) C
+00d44620	??_G?$CActiveEntityScript@VCQ_GuildTrainingScript@NScript@@@@UAEPAXI@Z	V(4:00d445d0) P(G:fwin,D:fwin) C
+00d50c30	??_G?$CActiveEntityScript@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEPAXI@Z	V(4:00d50bc0) P(E:fwin,D:fwin) C
+00d52470	??_G?$CActiveEntityScript@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEPAXI@Z	V(4:00d52420) P(G:fwin,D:fwin) C
+00d58460	??_G?$CActiveEntityScript@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEPAXI@Z	V(4:00d58410) P(E:fwin,D:fwin) C
+00d5ae40	??_G?$CActiveEntityScript@VCQ_GuildTrainingSkillScript@NScript@@@@UAEPAXI@Z	V(4:00d5add0) P(G:fwin,D:fwin) C
+00d5e040	??_G?$CActiveEntityScript@VCQ_GuildTrainingWillScript@NScript@@@@UAEPAXI@Z	V(4:00d5dfd0) P(G:fwin,D:fwin) C
+00d64370	??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEPAXI@Z	V(4:00d64320) P(G:fwin,D:fwin) C
+00d67240	??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEPAXI@Z	V(4:00d671f0) P(E:fwin,D:fwin) C
+00d68e70	??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEPAXI@Z	V(4:00d68e20) P(E:fwin,D:fwin) C
+00d6b6f0	??_G?$CActiveEntityScript@VCQ_HangingTreeEvilScript@NScript@@@@UAEPAXI@Z	V(4:00d6b6a0) P(E:fwin,D:fwin) C
+00d72b40	??_G?$CActiveEntityScript@VCQ_HangingTreeGoodScript@NScript@@@@UAEPAXI@Z	V(4:00d72af0) P(E:fwin,D:fwin) C
+00d7aa00	??_G?$CActiveEntityScript@VCQ_HeroSoulsScript@NScript@@@@UAEPAXI@Z	V(4:00d7a9b0) P(E:fwin,D:fwin) C
+00d7c440	??_G?$CActiveEntityScript@VCQ_HeroSoulsThunderScript@NScript@@@@UAEPAXI@Z	V(4:00d7c3f0) P(G:fwin,D:fwin)
+00d7fc10	??_G?$CActiveEntityScript@VCQ_HeroSoulsArenaScript@NScript@@@@UAEPAXI@Z	V(4:00d7fbc0) P(G:fwin,D:fwin)
+00d82370	??_G?$CActiveEntityScript@VCQ_HeroSoulsBriarScript@NScript@@@@UAEPAXI@Z	V(4:00d82320) P(G:fwin,D:fwin)
+00d84600	??_G?$CActiveEntityScript@VCQ_HeroSoulsMotherScript@NScript@@@@UAEPAXI@Z	V(4:00d845b0) P(G:fwin,D:fwin)
+00d872a0	??_G?$CActiveEntityScript@VCQ_HeroSoulsGuildmasterScript@NScript@@@@UAEPAXI@Z	V(4:00d87250) P(E:fwin,D:fwin) C
+00d896e0	??_G?$CActiveEntityScript@VCQ_HeroSoulsNostroScript@NScript@@@@UAEPAXI@Z	V(4:00d89690) P(E:fwin,D:fwin)
+00d8aae0	??_G?$CActiveEntityScript@VCQ_HerosOldHouseScript@NScript@@@@UAEPAXI@Z	V(4:00d8aa70) P(G:fwin,D:fwin)
+00d91710	??_G?$CActiveEntityScript@VCQ_HobbeCaveScript@NScript@@@@UAEPAXI@Z	V(4:00d916c0) P(E:fwin,D:fwin)
+00d9dac0	??_G?$CActiveEntityScript@VCQ_HobbeToothContestScript@NScript@@@@UAEPAXI@Z	V(4:00d9da40) P(E:fwin,D:fwin)
+00da0130	??_G?$CActiveEntityScript@VCQ_MinionCampScript@NScript@@@@UAEPAXI@Z	V(4:00da00e0) P(G:fwin,D:fwin)
+00da84b0	??_G?$CActiveEntityScript@VCQ_MinionClifftopChaseScript@NScript@@@@UAEPAXI@Z	V(4:00da8430) P(E:fwin,D:fwin)
+00db8680	??_G?$CActiveEntityScript@VCQ_NewOakValeIntroScript@NScript@@@@UAEPAXI@Z	V(4:00db8630) P(E:fwin,D:fwin)
+00dc02d0	??_G?$CActiveEntityScript@VCQ_OakValeBanditRaidScript@NScript@@@@UAEPAXI@Z	V(4:00dc0280) P(E:fwin,D:fwin)
+00dc8860	??_G?$CActiveEntityScript@VCQ_OpeningGraveyardSecretPassageScript@NScript@@@@UAEPAXI@Z	V(4:00dc8810) P(E:fwin,D:fwin)
+00dcf8f0	??_G?$CActiveEntityScript@VCQ_OrchardFarmRaidScript@NScript@@@@UAEPAXI@Z	V(4:00dcf8a0) P(E:fwin,D:fwin)
+00dd9460	??_G?$CActiveEntityScript@VCQ_PrisonEscapeRescueMotherScript@NScript@@@@UAEPAXI@Z	V(4:00dd9410) P(E:fwin,D:fwin)
+00ddc950	??_G?$CActiveEntityScript@VCQ_PrisonRaceScript@NScript@@@@UAEPAXI@Z	V(4:00ddc8e0) P(G:fwin,D:fwin)
+00ddf060	??_G?$CActiveEntityScript@VCQ_PrisonWardenGameScript@NScript@@@@UAEPAXI@Z	V(4:00ddeff0) P(G:fwin,D:fwin)
+00de45e0	??_G?$CActiveEntityScript@VCQ_RansomVictimScript@NScript@@@@UAEPAXI@Z	V(4:00de4590) P(G:fwin,D:fwin) C
+00dec730	??_G?$CActiveEntityScript@VCQ_RansomVictimChiefsHouseScript@NScript@@@@UAEPAXI@Z	V(4:00dec6c0) P(G:fwin,D:fwin)
+00def380	??_G?$CActiveEntityScript@VCQ_SecretPassageScript@NScript@@@@UAEPAXI@Z	V(4:00def330) P(G:fwin,D:fwin)
+00df36b0	??_G?$CActiveEntityScript@VCQ_SummoningTheShipScript@NScript@@@@UAEPAXI@Z	V(4:00df3660) P(E:fwin,D:fwin)
+00df4bb0	??_G?$CActiveEntityScript@VCQ_TentacleKrakenBossFightScript@NScript@@@@UAEPAXI@Z	V(4:00df4b60) P(E:fwin,D:fwin)
+00df9b50	??_G?$CActiveEntityScript@VCQ_TraderConflictEvilScript@NScript@@@@UAEPAXI@Z	V(4:00df9b00) P(E:fwin,D:fwin)
+00dfc260	??_G?$CActiveEntityScript@VCQ_TraderConflictGoodScript@NScript@@@@UAEPAXI@Z	V(4:00dfc210) P(G:fwin,D:fwin)
+00e05300	??_G?$CActiveEntityScript@VCQ_TraderEscortScript@NScript@@@@UAEPAXI@Z	V(4:00e05280) P(G:fwin,D:fwin)
+00e0e730	??_G?$CActiveEntityScript@VCQ_UndeadRisingScript@NScript@@@@UAEPAXI@Z	V(4:00e0e6b0) P(G:fwin,D:fwin) C
+00e122d0	??_G?$CActiveEntityScript@VCQ_WaspBossScript@NScript@@@@UAEPAXI@Z	V(4:00e12280) P(G:fwin,D:fwin) C
+00e18380	??_G?$CActiveEntityScript@VCQ_WhiteBalverineKnotholeGladeScript@NScript@@@@UAEPAXI@Z	V(4:00e18330) P(E:fwin,D:fwin) C
+00e19530	??_G?$CActiveEntityScript@VCQ_WhiteBalverineWWScript@NScript@@@@UAEPAXI@Z	V(4:00e194e0) P(E:fwin,D:fwin) C
+00e1c0c0	??_G?$CActiveEntityScript@VCQ_WizardBattleScript@NScript@@@@UAEPAXI@Z	V(4:00e1c070) P(G:fwin,D:fwin) C
+00e1f7b0	??_G?$CActiveEntityScript@VCQR_EscortTraderScript@NScript@@@@UAEPAXI@Z	V(4:00e1f730) P(E:fwin,D:fwin) C
+00e25f10	??_G?$CActiveEntityScript@VCQS_GuardianSisterInfoScript@NScript@@@@UAEPAXI@Z	V(4:00e25ea0) P(G:fwin,D:fwin) C
+00e26dd0	??_G?$CActiveEntityScript@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@UAEPAXI@Z	V(4:00e26d60) P(G:egor,E:fwin,D:fwin) C
+00e27e30	??_G?$CActiveEntityScript@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEPAXI@Z	V(4:00e27dc0) P(E:fwin,D:fwin) C
+00e29290	??_G?$CActiveEntityScript@VCQS_MeetSisterScript@NScript@@@@UAEPAXI@Z	V(4:00e29220) P(E:fwin,D:fwin) C
+00e2a2f0	??_G?$CActiveEntityScript@VCQS_ScytheInfoScript@NScript@@@@UAEPAXI@Z	V(4:00e2a280) P(E:fwin,D:fwin) C
+00e2ea90	??_G?$CActiveEntityScript@VCV_AmbushScamScript@NScript@@@@UAEPAXI@Z	V(4:00e2ea10) P(E:fwin,D:fwin) C
+00e374f0	??_G?$CActiveEntityScript@VCV_ArcheryCompetitionScript@NScript@@@@UAEPAXI@Z	V(4:00e37450) P(E:fwin,D:fwin) C
+00e38d50	??_G?$CActiveEntityScript@VCV_AssassinAttacksScript@NScript@@@@UAEPAXI@Z	V(4:00e38ce0) P(G:fwin,D:fwin) C
+00e3b8c0	??_G?$CActiveEntityScript@VCV_BordelloScript@NScript@@@@UAEPAXI@Z	V(4:00e3b850) P(G:fwin,D:fwin) C
+00e47770	??_G?$CActiveEntityScript@VCV_BanditCampPathScript@NScript@@@@UAEPAXI@Z	V(4:00e47720) P(E:fwin,D:fwin) C
+00e4b350	??_G?$CActiveEntityScript@VCV_BanditTollScript@NScript@@@@UAEPAXI@Z	V(4:00e4b2e0) P(G:fwin,D:fwin) C
+00e54230	??_G?$CActiveEntityScript@VCV_BeardyBaldyScript@NScript@@@@UAEPAXI@Z	V(4:00e541b0) P(E:fwin,D:fwin) C
+00e54850	??_G?$CActiveEntityScript@VCV_BookCollectingScript@NScript@@@@UAEPAXI@Z	V(4:00e547e0) P(G:fwin,D:fwin) C
+00e5d080	??_G?$CActiveEntityScript@VCV_BeggarAndChildScript@NScript@@@@UAEPAXI@Z	V(4:00e5d030) P(E:fwin,D:fwin) C
+00e5f160	??_G?$CActiveEntityScript@VCV_BodyGuardScript@NScript@@@@UAEPAXI@Z	V(4:00e5f110) P(G:fwin,D:fwin) C
+00e64180	??_G?$CActiveEntityScript@VCV_ChickenKickingScript@NScript@@@@UAEPAXI@Z	V(4:00e64130) P(G:fwin,D:fwin) C
+00e6b3d0	??_G?$CActiveEntityScript@VCV_ChapelOfEvilScript@NScript@@@@UAEPAXI@Z	V(4:00e6b350) P(E:fwin,D:fwin) C
+00e74d40	??_G?$CActiveEntityScript@VCV_DemonDoorsScript@NScript@@@@UAEPAXI@Z	V(4:00e74cd0) P(E:fwin,D:fwin) C
+00e77660	??_G?$CActiveEntityScript@VCV_ExposeMayorScript@NScript@@@@UAEPAXI@Z	V(4:00e775f0) P(E:fwin,D:fwin) C
+00e7c860	??_G?$CActiveEntityScript@VCV_FishermanScript@NScript@@@@UAEPAXI@Z	V(4:00e7c7c0) P(E:fwin,D:fwin) C
+00e7eec0	??_G?$CActiveEntityScript@VCV_FishingCompetitionScript@NScript@@@@UAEPAXI@Z	V(4:00e7ee70) P(G:fwin,D:fwin) C
+00e83d20	??_G?$CActiveEntityScript@VCV_FisticuffsClubScript@NScript@@@@UAEPAXI@Z	V(4:00e83cd0) P(G:fwin,D:fwin) C
+00e8d270	??_G?$CActiveEntityScript@VCV_GhostGrannyNecklaceScript@NScript@@@@UAEPAXI@Z	V(4:00e8d1f0) P(G:fwin,D:fwin) C
+00e90bb0	??_G?$CActiveEntityScript@VCV_GuildMasterScript@NScript@@@@UAEPAXI@Z	V(4:00e90b40) P(G:fwin,D:fwin) C
+00e93be0	??_G?$CActiveEntityScript@VCV_HiddenBootyScript@NScript@@@@UAEPAXI@Z	V(4:00e93b70) P(E:fwin,D:fwin) C
+00e960e0	??_G?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z	V(4:00e96090) P(G:fwin,D:fwin) C
+00e985e0	??_G?$CActiveEntityScript@VCV_HeroDollsScript@NScript@@@@UAEPAXI@Z	V(4:00e98570) P(E:fwin,D:fwin) C
+00e9a240	??_G?$CActiveEntityScript@VCV_HeroDuelScript@NScript@@@@UAEPAXI@Z	V(4:00e9a1f0) P(E:fwin,D:fwin) C
+00e9e0e0	??_G?$CActiveEntityScript@VCV_IntroductionToTrophiesScript@NScript@@@@UAEPAXI@Z	V(4:00e9e040) P(E:fwin,D:fwin) C
+00ea1060	??_G?$CActiveEntityScript@VCV_KnotholeGladeGatesScript@NScript@@@@UAEPAXI@Z	V(4:00ea1010) P(G:fwin,D:fwin) C
+00ea5900	??_G?$CActiveEntityScript@VCV_LostTraderScript@NScript@@@@UAEPAXI@Z	V(4:00ea5890) P(E:fwin,D:fwin) C
+00ea8070	??_G?$CActiveEntityScript@VCV_MazeResearchScript@NScript@@@@UAEPAXI@Z	V(4:00ea8000) P(E:fwin,D:fwin) C
+00ead9c0	??_G?$CActiveEntityScript@VCV_MurderTwistScript@NScript@@@@UAEPAXI@Z	V(4:00ead970) P(G:fwin,D:fwin) C
+00eb64f0	??_G?$CActiveEntityScript@VCV_MurderTwistFinalScript@NScript@@@@UAEPAXI@Z	V(4:00eb6480) P(E:fwin,D:fwin) C
+00eb9870	??_G?$CActiveEntityScript@VCV_MayorsInvitationScript@NScript@@@@UAEPAXI@Z	V(4:00eb9820) P(E:fwin,D:fwin) C
+00ebed70	??_G?$CActiveEntityScript@VCV_OracleScript@NScript@@@@UAEPAXI@Z	V(4:00ebed00) P(E:fwin,D:fwin) C
+00ec1180	??_G?$CActiveEntityScript@VCV_ParanoidWhispersScript@NScript@@@@UAEPAXI@Z	V(4:00ec1110) P(E:fwin,D:fwin) C
+00ec1750	??_G?$CActiveEntityScript@VCV_PicnicAreaAfterWaspBossScript@NScript@@@@UAEPAXI@Z	V(4:00ec16e0) P(E:fwin,D:fwin) C
+00ec29c0	??_G?$CActiveEntityScript@VCV_RandomPopulationSimScript@NScript@@@@UAEPAXI@Z	V(4:00ec2970) P(G:fwin,D:fwin) C
+00ec4940	??_G?$CActiveEntityScript@VCV_RockTrollFirstEncounterScript@NScript@@@@UAEPAXI@Z	V(4:00ec48d0) P(E:fwin,D:fwin) C
+00ecd780	??_G?$CActiveEntityScript@VCV_SickChildScript@NScript@@@@UAEPAXI@Z	V(4:00ecd710) P(E:fwin,D:fwin) C
+00ed2a20	??_G?$CActiveEntityScript@VCV_SingingStonesScript@NScript@@@@UAEPAXI@Z	V(4:00ed29d0) P(E:fwin,D:fwin) C
+00ed4a10	??_G?$CActiveEntityScript@VCV_StatueMasterScript@NScript@@@@UAEPAXI@Z	V(4:00ed49a0) P(G:fwin,D:fwin) C
+00ed54a0	??_G?$CActiveEntityScript@VCV_SwordInTheStoneScript@NScript@@@@UAEPAXI@Z	V(4:00ed5450) P(E:fwin,D:fwin) C
+00ed8390	??_G?$CActiveEntityScript@VCV_TalentlessBardScript@NScript@@@@UAEPAXI@Z	V(4:00ed8320) P(G:fwin,D:fwin) C
+00edd030	??_G?$CActiveEntityScript@VCV_TempleOfLightScript@NScript@@@@UAEPAXI@Z	V(4:00edcfb0) P(E:fwin,D:fwin) C
+00ee1d90	??_G?$CActiveEntityScript@VCV_TravellingHeroesScript@NScript@@@@UAEPAXI@Z	V(4:00ee1d20) P(E:fwin,D:fwin) C
+00ee56f0	??_G?$CActiveEntityScript@VCV_TourGuideScript@NScript@@@@UAEPAXI@Z	V(4:00ee5680) P(E:fwin,D:fwin) C
+00ee76c0	??_G?$CActiveEntityScript@VCV_TrophyDealerScript@NScript@@@@UAEPAXI@Z	V(4:00ee7650) P(E:fwin,D:fwin) C
+00eedbc0	??_G?$CActiveEntityScript@VCPersonalScript_alextestScript@NScript@@@@UAEPAXI@Z	V(4:00eedb50) P(G:fwin,D:fwin) C
+00ef51d0	??_G?$CActiveEntityScript@VCPersonalScript_EmptyScript@NScript@@@@UAEPAXI@Z	V(4:00ef5180) P(E:fwin,D:fwin) C
+00efa390	??_G?$CActiveEntityScript@VCguy_scriptScript@NScript@@@@UAEPAXI@Z	V(4:00efa320) P(E:fwin,D:fwin)
+00efaf00	??_G?$CActiveEntityScript@VCbandit_level_cutsceneScript@NScript@@@@UAEPAXI@Z	V(4:00efae90) P(G:fwin,D:fwin)
+00efb5e0	??_G?$CActiveEntityScript@VCProximityPodiumTestScript@NScript@@@@UAEPAXI@Z	V(4:00efb570) P(G:fwin,D:fwin) C
+00efbb40	??_G?$CActiveEntityScript@VCHitSwitchTestScript@NScript@@@@UAEPAXI@Z	V(4:00efbad0) P(E:fwin,D:fwin)
+00efc100	??_G?$CActiveEntityScript@VCGuildSealTriggerTestScript@NScript@@@@UAEPAXI@Z	V(4:00efc090) P(G:fwin,D:fwin)
+00efdc10	??_G?$CActiveEntityScript@VCMarkTestScriptsScript@NScript@@@@UAEPAXI@Z	V(4:00efdba0) P(E:fwin,D:fwin)
+00efefd0	??_G?$CActiveEntityScript@VCBenTestScriptsScript@NScript@@@@UAEPAXI@Z	V(4:00efef60) P(G:fwin,D:fwin) C
+00eff740	??_G?$CActiveEntityScript@VCTonyTestScriptsScript@NScript@@@@UAEPAXI@Z	V(4:00eff6d0) P(E:fwin,D:fwin)
+00f012d0	??_G?$CActiveEntityScript@VCOracleMinigameTestScript@NScript@@@@UAEPAXI@Z	V(4:00f01260) P(E:fwin,D:fwin)
+00f01e80	??_G?$CActiveEntityScript@VCQ_CinemaTestScript@NScript@@@@UAEPAXI@Z	V(4:00f01e30) P(G:fwin,D:fwin)
+00f09ca0	??_G?$CActiveEntityScript@VCQ_AmbushTradersScript@NScript@@@@UAEPAXI@Z	V(4:00f09c20) P(E:fwin,D:fwin)
+00f1ccb0	??_G?$CActiveEntityScript@VCQ_ArenaScript@NScript@@@@UAEPAXI@Z	V(4:00f1cc60) P(G:fwin,D:fwin)

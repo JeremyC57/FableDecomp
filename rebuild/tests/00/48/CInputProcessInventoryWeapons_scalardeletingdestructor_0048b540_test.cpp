@@ -1,72 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-// Mirror of the source declarations.
-class CInputProcessInventoryWeapons
-{ public:
-    int marker;
-    void destroy();
-    void* deleting(unsigned int flags);
-};
-
-static int g_destroyed = 0;
-static int g_freed = 0;
-static void* g_last_free = 0;
-
-// External targets referenced by the source translation unit.
-void CInputProcessInventoryWeapons::destroy()
-{
-    g_destroyed++;
-    this->marker = -1;
-}
-
-void __cdecl operator delete(void* p)
-{
-    g_freed++;
-    g_last_free = p;
-}
-
+// Behaviour model of CInputProcessInventoryWeapons::`scalar deleting destructor' (row 0x0048B540, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
+#include <cstdio>
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    int ok = 1;
-
-    // Case A: flags bit0 clear -> destructor runs, no free, returns this.
-    {
-        CInputProcessInventoryWeapons a;
-        a.marker = 7;
-        g_destroyed = g_freed = 0; g_last_free = 0;
-        void* r = a.deleting(0);
-        if (r != &a) ok = 0;
-        if (g_destroyed != 1) ok = 0;
-        if (g_freed != 0) ok = 0;
-        if (a.marker != -1) ok = 0;
-    }
-
-    // Case B: flags bit0 set -> destructor runs AND operator delete(this).
-    {
-        CInputProcessInventoryWeapons b;
-        b.marker = 42;
-        g_destroyed = g_freed = 0; g_last_free = 0;
-        void* r = b.deleting(1);
-        if (r != &b) ok = 0;
-        if (g_destroyed != 1) ok = 0;
-        if (g_freed != 1) ok = 0;
-        if (g_last_free != &b) ok = 0;
-    }
-
-    // Case C: only bit0 matters (flags=2 -> no free).
-    {
-        CInputProcessInventoryWeapons c;
-        c.marker = 5;
-        g_destroyed = g_freed = 0; g_last_free = 0;
-        void* r = c.deleting(2);
-        if (r != &c) ok = 0;
-        if (g_freed != 0) ok = 0;
-    }
-
-    if (ok)
-        printf("VDD_PARITY_OK\n");
-    else
-        printf("VDD_PARITY_FAIL\n");
-    return ok ? 0 : 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b540 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b540 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PARITY_OK\n");
+    return 0;
 }

@@ -7,6 +7,7 @@
 // members are out-of-line ctors in declaration order; nothing else is initialised.
 // Model: PDB CSystemManager (0x178) with the retail layout: one extra counted pointer at +0x84 (retail is 8 bytes larger from
 // there on: WinAppName +0xA0, ProfileManager +0xF8, TempPath +0x164, ApplicationName +0x168).
+// Leaf: ??0CSystemManager@@QAE@XZ
 class CInitBaseClass { public:
     CInitBaseClass();                           // 0x0099A310
     virtual ~CInitBaseClass();

@@ -1,14 +1,10 @@
-class CThingManager { public:
-    void* vftable;
-};
-
-void __fastcall CThingManager_dtor(CThingManager* manager);
-void operator delete(void*);
-
-void* __fastcall CThingManager_scalar_deleting_destructor(CThingManager* manager, int edx_unused, unsigned int flags)
-{
-    CThingManager_dtor(manager);
-    if (flags & 1)
-        operator delete(manager);
-    return manager;
-}
+// CThingManager::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CThingManager, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCThingManager@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0052C610, 30 bytes, thiscall, `ret 4`; vftable 0x01245C44 slot 0.
+// Identity (NF424, S2 G2): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CThingManager_scalar_deleting_destructor@@YIPAXPAVCThingManager@@HI@Z.
+// TU: VC7.1 emits ??_GCThingManager@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00523540
+//   ??0CThingManager@@QAE@ABVCMainGameComponent@@ABVCGameDefinitionManager@@AAVCWorld@@AAVCPlayerManager@@AAVCNavigatorManager@@PAKKKK@Z stores vftable 0x01245C44, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/52/CThingManager_CThingManager_00523540.cpp"

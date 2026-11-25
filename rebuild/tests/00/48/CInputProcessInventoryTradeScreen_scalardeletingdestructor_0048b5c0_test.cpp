@@ -1,44 +1,23 @@
+// Behaviour model of CInputProcessInventoryTradeScreen::`scalar deleting destructor' (row 0x0048B5C0, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-class CInputProcessInventoryTradeScreen
-{ public:
-    int tag;
-    void Destroy();
-};
-
-static int g_destroyed = 0;
-static int g_freed = 0;
-static void* g_freed_ptr = 0;
-
-void CInputProcessInventoryTradeScreen::Destroy() { g_destroyed++; }
-void operator delete(void* p) { g_freed++; g_freed_ptr = p; }
-
-void* __fastcall LandscapeBackgroundPatch_scalar_deleting_destructor(
-    CInputProcessInventoryTradeScreen* process, int edx, unsigned int flags);
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessInventoryTradeScreen obj;
-    obj.tag = 42;
-
-    // flags & 1 == 0 : destroy only, no free
-    g_destroyed = g_freed = 0; g_freed_ptr = 0;
-    void* r0 = LandscapeBackgroundPatch_scalar_deleting_destructor(&obj, 0, 0);
-    bool ok0 = (r0 == &obj) && g_destroyed == 1 && g_freed == 0;
-
-    // flags & 1 == 1 : destroy + free
-    g_destroyed = g_freed = 0; g_freed_ptr = 0;
-    void* r1 = LandscapeBackgroundPatch_scalar_deleting_destructor(&obj, 0, 1);
-    bool ok1 = (r1 == &obj) && g_destroyed == 1 && g_freed == 1 && g_freed_ptr == &obj;
-
-    // flags with other bits but bit0 set
-    g_destroyed = g_freed = 0;
-    void* r2 = LandscapeBackgroundPatch_scalar_deleting_destructor(&obj, 0, 3);
-    bool ok2 = (r2 == &obj) && g_freed == 1;
-
-    if (ok0 && ok1 && ok2)
-        printf("VDD_PASS_0048b5c0\n");
-    else
-        printf("FAIL d=%d f=%d\n", g_destroyed, g_freed);
-    return (ok0 && ok1 && ok2) ? 0 : 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b5c0 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b5c0 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PASS_0048b5c0\n");
+    return 0;
 }

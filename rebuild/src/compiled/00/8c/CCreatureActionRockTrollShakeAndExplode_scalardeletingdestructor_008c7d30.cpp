@@ -1,17 +1,10 @@
-class CCombatActionBase {
-public:
-    virtual ~CCombatActionBase();   // 0x0062E900
-};
-class CCreatureAction_RockTrollShakeAndExplode { public:
-    void* vftable;
-};
-
-void operator delete(void*);
-
-void* __fastcall CCreatureAction_RockTrollShakeAndExplode_scalar_deleting_destructor(CCreatureAction_RockTrollShakeAndExplode* action, int edx_unused, unsigned int flags)
-{
-    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
-    if (flags & 1)
-        operator delete(action);
-    return action;
-}
+// CCreatureAction_RockTrollShakeAndExplode::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CCreatureAction_RockTrollShakeAndExplode, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCCreatureAction_RockTrollShakeAndExplode@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008C7D30, 30 bytes, thiscall, `ret 4`; vftable 0x0128154C slot 0.
+// Identity (NF424, S1 local model): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CCreatureAction_RockTrollShakeAndExplode_scalar_deleting_destructor@@YIPAXPAVCCreatureAction_RockTrollShakeAndExplode@@HI@Z.
+// TU: VC7.1 emits ??_GCCreatureAction_RockTrollShakeAndExplode@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x008C74F0
+//   ?FinishAction@CCreatureAction_RockTrollFallToDeath@@UAEXXZ stores vftable 0x0128154C, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/8c/CCreatureActionRockTrollFallToDeath_FinishAction_008c74f0.cpp"

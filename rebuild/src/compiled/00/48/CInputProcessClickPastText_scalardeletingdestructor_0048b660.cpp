@@ -1,20 +1,10 @@
-// CInputProcessClickPastText::`vector_deleting_destructor'  0x0048b660
-// Standard MSVC vector deleting destructor for a class with a scalar
-// (non-virtual) destructor at 0xa0d3d0 and operator delete at 0xbfe9bc.
-
-class CInputProcessClickPastText
-{ public:
-    // scalar destructor - emitted as a direct call in the vector-deleting stub
-    void Destroy();  // maps to 0xa0d3d0
-};
-
-// operator delete used by the class (0xbfe9bc)
-
-void* __fastcall CInputProcessClickPastText_scalar_deleting_destructor(
-    CInputProcessClickPastText* process, int /*edx*/, unsigned int flags)
-{
-    process->Destroy();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessClickPastText::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessClickPastText, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessClickPastText@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B660, 30 bytes, thiscall, `ret 4`; vftable 0x012378D8 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessClickPastText_scalar_deleting_destructor@@YIPAXPAVCInputProcessClickPastText@@HI@Z.
+// TU: VC7.1 emits ??_GCInputProcessClickPastText@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x012378D8, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

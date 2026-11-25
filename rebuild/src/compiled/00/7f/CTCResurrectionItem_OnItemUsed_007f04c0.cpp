@@ -1,5 +1,5 @@
 // CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature) -- the resurrection item revives the creature: full health, the current action finished and replaced by the knockdown recover-from-death action, the def's particle effect attached at its position, then the item thing is destroyed
-// Leaf: OnItemUsed
+// Leaf: ?OnItemUsed@CTCResurrectionItem@@QAEXAAVCThingCreatureBase@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F04C0, 203 bytes (`ret 4`; PDB ?OnItemUsed@CTCResurrectionItem@@QAEXAAVCThingCreatureBase@@@Z).
 // Callees: CThingCreatureBase::FinishCurrentAction() @ 0x00662650, CCombatAction_GenericStrikeResponseKnockdownRecoverBase(

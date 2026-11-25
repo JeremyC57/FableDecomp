@@ -1,5 +1,6 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name fix (agentNF6 2026-11-10): CCombatActionBase::FinishAction 0x00859A20 is protected virtual (?FinishAction@CCombatActionBase@@MAEXXZ, Ego_r.pdb / FableWin.pdb).
+// Leaf: ?FinishAction@CCreatureAction_RockTrollFallToDeath@@UAEXXZ
 #include "fable_compiler.h"
 #define CTrollBattleDef CTrollBattleDefPdb
 #include "engine/_quarantine/CTrollBattleDef.h"

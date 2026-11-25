@@ -1,37 +1,10 @@
-// CInputProcessConsole::`vector deleting destructor'
-// Retail 0x0048b3b0 (VC7.1 /O2 /Oy)
-//
-//   push esi
-//   mov  esi, ecx
-//   call scalar_dtor            ; this (ecx) still live
-//   test byte ptr [esp+8], 1
-//   je   skip
-//   push esi
-//   call operator_delete
-//   add  esp, 4
-//   skip:
-//   mov  eax, esi
-//   pop  esi
-//   ret  4
-
-// operator delete (cdecl, one ptr arg) -> matches call;add esp,4
-
-class CInputProcessConsole
-{ public:
-	// scalar destructor: this in ecx, no args. Out-of-line -> a plain call.
-	void ScalarDtor();
-
-	// vector deleting destructor: __fastcall, one stack arg (flags), returns this.
-	void* scalar_deleting_destructor(unsigned int flags);
-};
-
-// ScalarDtor is left as an external declaration (no body in this TU) so the
-// compiler must emit a real 'call' relocation instead of inlining an empty body.
-
-void* CInputProcessConsole::scalar_deleting_destructor(unsigned int flags)
-{
-	this->ScalarDtor();
-	if (flags & 1)
-		operator delete(this);
-	return this;
-}
+// CInputProcessConsole::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessConsole, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessConsole@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B3B0, 30 bytes, thiscall, `ret 4`; vftable 0x01237F24 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?scalar_deleting_destructor@CInputProcessConsole@@QAEPAXI@Z.
+// TU: VC7.1 emits ??_GCInputProcessConsole@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x01237F24, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

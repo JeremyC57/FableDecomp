@@ -1,17 +1,10 @@
-class CChunkedFileChunk {
-public:
-    virtual ~CChunkedFileChunk();   // 0x00AA75C0
-};
-struct C3DMeshFileXTextureIndexChunk {
-    void* vftable;
-};
-
-void operator delete(void*);
-
-void* __fastcall C3DMeshFileXTextureIndexChunk_scalar_deleting_destructor(C3DMeshFileXTextureIndexChunk* chunk, int edx_unused, unsigned int flags)
-{
-    ((CChunkedFileChunk*)(chunk))->CChunkedFileChunk::~CChunkedFileChunk();
-    if (flags & 1)
-        operator delete(chunk);
-    return chunk;
-}
+// C3DMeshFileXTextureIndexChunk::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~C3DMeshFileXTextureIndexChunk, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GC3DMeshFileXTextureIndexChunk@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AA7030, 30 bytes, thiscall, `ret 4`; vftable 0x0129E1F8 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?C3DMeshFileXTextureIndexChunk_scalar_deleting_destructor@@YIPAXPAUC3DMeshFileXTextureIndexChunk@@HI@Z.
+// TU: VC7.1 emits ??_GC3DMeshFileXTextureIndexChunk@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00AA5C80
+//   ??0C3DMeshFileXLoader@@QAE@XZ stores vftable 0x0129E1F8, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/aa/C3DMeshFileXLoader_C3DMeshFileXLoader_00aa5c80.cpp"

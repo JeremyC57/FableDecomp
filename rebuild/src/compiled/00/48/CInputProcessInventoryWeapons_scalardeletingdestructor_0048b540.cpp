@@ -1,20 +1,10 @@
-// CInputProcessInventoryWeapons::`vector deleting destructor'
-// Standard MSVC deleting-destructor shape:
-//   push esi; mov esi,ecx; call ~T (0xa0d3d0); test [esp+8],1; je;
-//   push esi; call operator delete (0xbfe9bc); add esp,4; mov eax,esi; pop esi; ret 4
-
-class CInputProcessInventoryWeapons
-{ public:
-    void destroy();                        // scalar (base) destructor at 0xa0d3d0
-    void* deleting(unsigned int flags);
-};
-
-// External targets (bodies live elsewhere) -> emitted as real calls, not inlined.
-
-void* CInputProcessInventoryWeapons::deleting(unsigned int flags)
-{
-    this->destroy();
-    if (flags & 1)
-        operator delete(this);
-    return this;
-}
+// CInputProcessInventoryWeapons::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessInventoryWeapons, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessInventoryWeapons@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B540, 30 bytes, thiscall, `ret 4`; vftable 0x01237750 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?deleting@CInputProcessInventoryWeapons@@QAEPAXI@Z.
+// TU: VC7.1 emits ??_GCInputProcessInventoryWeapons@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x01237750, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

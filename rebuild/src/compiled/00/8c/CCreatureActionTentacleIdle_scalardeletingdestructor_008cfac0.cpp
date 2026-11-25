@@ -1,17 +1,10 @@
-class CCombatActionBase {
-public:
-    virtual ~CCombatActionBase();   // 0x0062E900
-};
-class CCreatureAction_TentacleIdle { public:
-    void* vftable;
-};
-
-void operator delete(void*);
-
-void* __fastcall CCreatureAction_TentacleIdle_scalar_deleting_destructor(CCreatureAction_TentacleIdle* action, int edx_unused, unsigned int flags)
-{
-    ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
-    if (flags & 1)
-        operator delete(action);
-    return action;
-}
+// CCreatureAction_TentacleIdle::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CCreatureAction_TentacleIdle, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCCreatureAction_TentacleIdle@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008CFAC0, 30 bytes, thiscall, `ret 4`; vftable 0x01284DAC slot 0.
+// Identity (NF424, S1 local model): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CCreatureAction_TentacleIdle_scalar_deleting_destructor@@YIPAXPAVCCreatureAction_TentacleIdle@@HI@Z.
+// TU: VC7.1 emits ??_GCCreatureAction_TentacleIdle@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x008CF610
+//   ?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ stores vftable 0x01284DAC, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/8c/CCreatureActionTentacleRise_FinishAction_008cf610.cpp"

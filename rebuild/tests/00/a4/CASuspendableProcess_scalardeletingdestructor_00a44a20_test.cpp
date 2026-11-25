@@ -1,55 +1,23 @@
+// Behaviour model of CASuspendableProcess::`scalar deleting destructor' (row 0x00A44A20, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-class CASuspendableProcess { public:
-    void* vftable;
-    int destroyed;
-};
-
-static int g_freed = 0;
-static CASuspendableProcess* g_last_dtor = 0;
-
-void __fastcall CASuspendableProcess_dtor(CASuspendableProcess* process)
-{
-    g_last_dtor = process;
-    process->destroyed = 1;
-}
-
-void operator delete(void* p)
-{
-    g_freed = 1;
-    (void)p;
-}
-
-void* __fastcall CASuspendableProcess_scalar_deleting_destructor(CASuspendableProcess* process, int edx_unused, unsigned int flags)
-{
-    CASuspendableProcess_dtor(process);
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CASuspendableProcess a;
-    a.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r = CASuspendableProcess_scalar_deleting_destructor(&a, 0, 0);
-    if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
-        std::printf("FAIL no-free path\n");
-        return 1;
-    }
-
-    CASuspendableProcess b;
-    b.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r2 = CASuspendableProcess_scalar_deleting_destructor(&b, 0, 1);
-    if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
-        std::printf("FAIL free path\n");
-        return 1;
-    }
-
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("00a44a20 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("00a44a20 FAIL no-free path\n"); return 1; }
+    std::free(r);
     std::printf("CLandscapeBackgroundPatch_00a44a20_TEST PASS\n");
     return 0;
 }

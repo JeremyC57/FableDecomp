@@ -7,6 +7,7 @@
 // CChunkedFileSuperChunk base is 0x34 bytes; in retail TLC it is 0x2c (every derived member sits 8 bytes
 // lower, and the vtable slots are the same).  The bytes decide, so this file models the retail layout
 // with the PDB member names and says so here instead of including the disagreeing header.
+// Leaf: ??0C3DMeshFileHelperPointChunk@@QAE@XZ
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)

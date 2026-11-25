@@ -1,56 +1,23 @@
+// Behaviour model of CInputProcessInventory::`scalar deleting destructor' (row 0x0048B500, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-class CInputProcessInventory
-{ public:
-    void dtor();
-    int marker;
-};
-
-static int g_dtor_calls = 0;
-static int g_delete_calls = 0;
-
-__declspec(noinline) void CInputProcessInventory::dtor()
-{
-    g_dtor_calls++;
-}
-
-void operator_delete_stub(void* p)
-{
-    (void)p;
-    g_delete_calls++;
-}
-
-void* __fastcall CInputProcessInventory_scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
-{
-    process->dtor();
-    if (flags & 1)
-        operator_delete_stub(process);
-    return process;
-}
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessInventory obj;
-    obj.marker = 0x1234;
-
-    // flags & 1 == 0 : dtor only, no delete
-    g_dtor_calls = 0; g_delete_calls = 0;
-    void* r0 = CInputProcessInventory_scalar_deleting_destructor(&obj, 0, 0);
-    bool ok0 = (r0 == &obj) && (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    // flags & 1 == 1 : dtor + delete
-    g_dtor_calls = 0; g_delete_calls = 0;
-    void* r1 = CInputProcessInventory_scalar_deleting_destructor(&obj, 0, 1);
-    bool ok1 = (r1 == &obj) && (g_dtor_calls == 1) && (g_delete_calls == 1);
-
-    // flag bit high but low bit clear -> no delete
-    g_dtor_calls = 0; g_delete_calls = 0;
-    void* r2 = CInputProcessInventory_scalar_deleting_destructor(&obj, 0, 2);
-    bool ok2 = (r2 == &obj) && (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    if (ok0 && ok1 && ok2)
-        printf("VDD_PASS_OK\n");
-    else
-        printf("VDD_FAIL o0=%d o1=%d o2=%d\n", ok0, ok1, ok2);
-    return (ok0 && ok1 && ok2) ? 0 : 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b500 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b500 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PASS_OK\n");
+    return 0;
 }

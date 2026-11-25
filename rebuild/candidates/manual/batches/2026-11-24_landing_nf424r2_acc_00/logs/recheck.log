@@ -1,0 +1,154 @@
+addr       parity           behav  name
+004192b0   WARN STANDIN_LEAF ??_GCAFile@@UAEPAXI@Z (catalog CAFile::`scalar_deleting_destructor'; names another function)
+004192b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004330d2   WARN STANDIN_LEAF ??_GCNewFrontendGameComponent@@UAEPAXI@Z (catalog CNewFrontendGameComponent::`scalar_deleting_destructor'; names another function)
+004330d2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004340b0   WARN STANDIN_LEAF ??_GCEngineDef@@UAEPAXI@Z (catalog CEngineDef::`scalar_deleting_destructor'; names another function)
+004340b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00434220   WARN STANDIN_LEAF ??_GCEngineVideoOptionsDef@@UAEPAXI@Z (catalog CEngineVideoOptionsDef::`scalar_deleting_destructor'; names another function)
+00434220   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00434340   WARN STANDIN_LEAF ??_GCConfigOptionsDefaultsDef@@UAEPAXI@Z (catalog CConfigOptionsDefaultsDef::`scalar_deleting_destructor'; names another function)
+00434340   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00437070   WARN STANDIN_LEAF ??_GCDisplayEngine@@UAEPAXI@Z (catalog CDisplayEngine::`scalar_deleting_destructor'; names another function)
+00437070   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0043e520   WARN STANDIN_LEAF ??_GCWStringParser@@UAEPAXI@Z (catalog CWStringParser::`scalar_deleting_destructor'; names another function)
+0043e520   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0044be30   WARN STANDIN_LEAF ??_GCPlayer@@UAEPAXI@Z (catalog CPlayer::`scalar_deleting_destructor'; names another function)
+0044be30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00455eca   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAE@XZ -> 004302cd labelled 'std::list<T_004302cd>::~list'
+00455eca   WARN STANDIN_LEAF ??_GCSoundThemeDef@@UAEPAXI@Z (catalog CSoundThemeDef::`scalar_deleting_destructor'; names another function)
+00455eca   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00456cc5   WARN STANDIN_LEAF ??_GCExpressionDef@@UAEPAXI@Z (catalog CExpressionDef::`scalar_deleting_destructor'; names another function)
+00456cc5   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00473496   WARN STANDIN_LEAF ??_GCEnvironmentThemeDef@@UAEPAXI@Z (catalog CEnvironmentThemeDef::`scalar_deleting_destructor'; names another function)
+00473496   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b3b0   WARN STANDIN_LEAF ??_GCInputProcessConsole@@UAEPAXI@Z (catalog CInputProcessConsole::`scalar_deleting_destructor'; names another function)
+0048b3b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b3d0   WARN STANDIN_LEAF ??_GCInputProcessMain@@UAEPAXI@Z (catalog CInputProcessMain::`scalar_deleting_destructor'; names another function)
+0048b3d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b400   WARN STANDIN_LEAF ??_GCInputProcessControlCreature@@UAEPAXI@Z (catalog CInputProcessControlCreature::`scalar_deleting_destructor'; names another function)
+0048b400   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b420   WARN STANDIN_LEAF ??_GCInputProcessControlCreatureActivateZTarget@@UAEPAXI@Z (catalog CInputProcessControlCreatureActivateZTarget::`scalar_deleting_destructor'; names another function)
+0048b420   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b440   WARN STANDIN_LEAF ??_GCInputProcessControlCreatureActivateZTargetOnPress@@UAEPAXI@Z (catalog CInputProcessControlCreatureActivateZTargetOnPress::`scalar_deleting_destructor'; names another function)
+0048b440   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b460   WARN STANDIN_LEAF ??_GCInputProcessDead@@UAEPAXI@Z (catalog CInputProcessDead::`scalar_deleting_destructor'; names another function)
+0048b460   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b480   WARN STANDIN_LEAF ??_GCInputProcessStrafe@@UAEPAXI@Z (catalog CInputProcessStrafe::`scalar_deleting_destructor'; names another function)
+0048b480   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b4a0   WARN STANDIN_LEAF ??_GCInputProcessTargetLockCycleTargets@@UAEPAXI@Z (catalog CInputProcessTargetLockCycleTargets::`scalar_deleting_destructor'; names another function)
+0048b4a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b4c0   WARN STANDIN_LEAF ??_GCInputProcessTargetLockRightStickTargetSelect@@UAEPAXI@Z (catalog CInputProcessTargetLockRightStickTargetSelect::`scalar_deleting_destructor'; names another function)
+0048b4c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b500   WARN STANDIN_LEAF ??_GCInputProcessInventory@@UAEPAXI@Z (catalog CInputProcessInventory::`scalar_deleting_destructor'; names another function)
+0048b500   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b520   WARN STANDIN_LEAF ??_GCInputProcessInventoryClothing@@UAEPAXI@Z (catalog CInputProcessInventoryClothing::`scalar_deleting_destructor'; names another function)
+0048b520   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b540   WARN STANDIN_LEAF ??_GCInputProcessInventoryWeapons@@UAEPAXI@Z (catalog CInputProcessInventoryWeapons::`scalar_deleting_destructor'; names another function)
+0048b540   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b560   WARN STANDIN_LEAF ??_GCInputProcessHeroAbilitiesScreen@@UAEPAXI@Z (catalog CInputProcessHeroAbilitiesScreen::`scalar_deleting_destructor'; names another function)
+0048b560   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b580   WARN STANDIN_LEAF ??_GCInputProcessInventoryMapScreen@@UAEPAXI@Z (catalog CInputProcessInventoryMapScreen::`scalar_deleting_destructor'; names another function)
+0048b580   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b5a0   WARN STANDIN_LEAF ??_GCInputProcessInventoryExperienceScreen@@UAEPAXI@Z (catalog CInputProcessInventoryExperienceScreen::`scalar_deleting_destructor'; names another function)
+0048b5a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b5c0   WARN STANDIN_LEAF ??_GCInputProcessInventoryTradeScreen@@UAEPAXI@Z (catalog CInputProcessInventoryTradeScreen::`scalar_deleting_destructor'; names another function)
+0048b5c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b5e0   WARN STANDIN_LEAF ??_GCInputProcessInventoryQuestsScreen@@UAEPAXI@Z (catalog CInputProcessInventoryQuestsScreen::`scalar_deleting_destructor'; names another function)
+0048b5e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b600   WARN STANDIN_LEAF ??_GCInputProcessInventoryMagicScreen@@UAEPAXI@Z (catalog CInputProcessInventoryMagicScreen::`scalar_deleting_destructor'; names another function)
+0048b600   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b620   WARN STANDIN_LEAF ??_GCInputProcessInventoryStatsScreen@@UAEPAXI@Z (catalog CInputProcessInventoryStatsScreen::`scalar_deleting_destructor'; names another function)
+0048b620   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b640   WARN STANDIN_LEAF ??_GCInputProcessHeroInformationScreens@@UAEPAXI@Z (catalog CInputProcessHeroInformationScreens::`scalar_deleting_destructor'; names another function)
+0048b640   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b660   WARN STANDIN_LEAF ??_GCInputProcessClickPastText@@UAEPAXI@Z (catalog CInputProcessClickPastText::`scalar_deleting_destructor'; names another function)
+0048b660   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b680   WARN STANDIN_LEAF ??_GCInputProcessYesNoQuestion@@UAEPAXI@Z (catalog CInputProcessYesNoQuestion::`scalar_deleting_destructor'; names another function)
+0048b680   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b6a0   WARN STANDIN_LEAF ??_GCInputProcessBButtonExitMode@@UAEPAXI@Z (catalog CInputProcessBButtonExitMode::`scalar_deleting_destructor'; names another function)
+0048b6a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b6c0   WARN STANDIN_LEAF ??_GCInputProcessToggleViewHeroMode@@UAEPAXI@Z (catalog CInputProcessToggleViewHeroMode::`scalar_deleting_destructor'; names another function)
+0048b6c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b6e0   WARN STANDIN_LEAF ??_GCInputProcessFirstPerson@@UAEPAXI@Z (catalog CInputProcessFirstPerson::`scalar_deleting_destructor'; names another function)
+0048b6e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b700   WARN STANDIN_LEAF ??_GCInputProcessFreezeControls@@UAEPAXI@Z (catalog CInputProcessFreezeControls::`scalar_deleting_destructor'; names another function)
+0048b700   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b720   WARN STANDIN_LEAF ??_GCInputProcessControlFreeCamera@@UAEPAXI@Z (catalog CInputProcessControlFreeCamera::`scalar_deleting_destructor'; names another function)
+0048b720   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b740   WARN STANDIN_LEAF ??_GCInputProcessCameraLookAround@@UAEPAXI@Z (catalog CInputProcessCameraLookAround::`scalar_deleting_destructor'; names another function)
+0048b740   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b760   WARN STANDIN_LEAF ??_GCInputProcessFirstPersonLookAround@@UAEPAXI@Z (catalog CInputProcessFirstPersonLookAround::`scalar_deleting_destructor'; names another function)
+0048b760   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b780   WARN STANDIN_LEAF ??_GCInputProcessControlCreatureRightStick@@UAEPAXI@Z (catalog CInputProcessControlCreatureRightStick::`scalar_deleting_destructor'; names another function)
+0048b780   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b7a0   WARN STANDIN_LEAF ??_GCInputProcessCycleSpecialCameraModes@@UAEPAXI@Z (catalog CInputProcessCycleSpecialCameraModes::`scalar_deleting_destructor'; names another function)
+0048b7a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b7f0   WARN STANDIN_LEAF ??_GCInputProcessCreatureMovement@@UAEPAXI@Z (catalog CInputProcessCreatureMovement::`scalar_deleting_destructor'; names another function)
+0048b7f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b840   WARN STANDIN_LEAF ??_GCInputProcessCreatureMovementWatchForControlAngleChange@@UAEPAXI@Z (catalog CInputProcessCreatureMovementWatchForControlAngleChange::`scalar_deleting_destructor'; names another function)
+0048b840   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b860   WARN STANDIN_LEAF ??_GCInputProcessUseEnvironment@@UAEPAXI@Z (catalog CInputProcessUseEnvironment::`scalar_deleting_destructor'; names another function)
+0048b860   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b880   WARN STANDIN_LEAF ??_GCInputProcessBlock@@UAEPAXI@Z (catalog CInputProcessBlock::`scalar_deleting_destructor'; names another function)
+0048b880   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b900   WARN STANDIN_LEAF ??_GCInputProcessQuickAccessItems@@UAEPAXI@Z (catalog CInputProcessQuickAccessItems::`scalar_deleting_destructor'; names another function)
+0048b900   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b920   WARN STANDIN_LEAF ??_GCInputProcessUseRangedWeapon@@UAEPAXI@Z (catalog CInputProcessUseRangedWeapon::`scalar_deleting_destructor'; names another function)
+0048b920   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b940   WARN STANDIN_LEAF ??_GCInputProcessSetRangedWeaponMode@@UAEPAXI@Z (catalog CInputProcessSetRangedWeaponMode::`scalar_deleting_destructor'; names another function)
+0048b940   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b960   WARN STANDIN_LEAF ??_GCInputProcessSetRangedWeaponThirdPersonMode@@UAEPAXI@Z (catalog CInputProcessSetRangedWeaponThirdPersonMode::`scalar_deleting_destructor'; names another function)
+0048b960   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 50
+  004192b0 RELOCATION_MATCH CAFile::??_GCAFile@@UAEPAXI@Z
+  004330d2 RELOCATION_MATCH CNewFrontendGameComponent::??_GCNewFrontendGameComponent@@UAEPAXI@Z
+  004340b0 RELOCATION_MATCH CEngineDef::??_GCEngineDef@@UAEPAXI@Z
+  00434220 RELOCATION_MATCH CEngineVideoOptionsDef::??_GCEngineVideoOptionsDef@@UAEPAXI@Z
+  00434340 RELOCATION_MATCH CConfigOptionsDefaultsDef::??_GCConfigOptionsDefaultsDef@@UAEPAXI@Z
+  00437070 RELOCATION_MATCH CDisplayEngine::??_GCDisplayEngine@@UAEPAXI@Z
+  0043e520 RELOCATION_MATCH CWStringParser::??_GCWStringParser@@UAEPAXI@Z
+  0044be30 RELOCATION_MATCH CPlayer::??_GCPlayer@@UAEPAXI@Z
+  00455eca RELOCATION_MATCH CSoundThemeDef::??_GCSoundThemeDef@@UAEPAXI@Z
+  00456cc5 RELOCATION_MATCH CExpressionDef::??_GCExpressionDef@@UAEPAXI@Z
+  00473496 RELOCATION_MATCH CEnvironmentThemeDef::??_GCEnvironmentThemeDef@@UAEPAXI@Z
+  0048b3b0 RELOCATION_MATCH CInputProcessConsole::??_GCInputProcessConsole@@UAEPAXI@Z
+  0048b3d0 RELOCATION_MATCH CInputProcessMain::??_GCInputProcessMain@@UAEPAXI@Z
+  0048b400 RELOCATION_MATCH CInputProcessControlCreature::??_GCInputProcessControlCreature@@UAEPAXI@Z
+  0048b420 RELOCATION_MATCH CInputProcessControlCreatureActivateZTarget::??_GCInputProcessControlCreatureActivateZTarget@@UAEPAXI@Z
+  0048b440 RELOCATION_MATCH CInputProcessControlCreatureActivateZTargetOnPress::??_GCInputProcessControlCreatureActivateZTargetOnPress@@UAEPAXI@Z
+  0048b460 RELOCATION_MATCH CInputProcessDead::??_GCInputProcessDead@@UAEPAXI@Z
+  0048b480 RELOCATION_MATCH CInputProcessStrafe::??_GCInputProcessStrafe@@UAEPAXI@Z
+  0048b4a0 RELOCATION_MATCH CInputProcessTargetLockCycleTargets::??_GCInputProcessTargetLockCycleTargets@@UAEPAXI@Z
+  0048b4c0 RELOCATION_MATCH CInputProcessTargetLockRightStickTargetSelect::??_GCInputProcessTargetLockRightStickTargetSelect@@UAEPAXI@Z
+  0048b500 RELOCATION_MATCH CInputProcessInventory::??_GCInputProcessInventory@@UAEPAXI@Z
+  0048b520 RELOCATION_MATCH CInputProcessInventoryClothing::??_GCInputProcessInventoryClothing@@UAEPAXI@Z
+  0048b540 RELOCATION_MATCH CInputProcessInventoryWeapons::??_GCInputProcessInventoryWeapons@@UAEPAXI@Z
+  0048b560 RELOCATION_MATCH CInputProcessHeroAbilitiesScreen::??_GCInputProcessHeroAbilitiesScreen@@UAEPAXI@Z
+  0048b580 RELOCATION_MATCH CInputProcessInventoryMapScreen::??_GCInputProcessInventoryMapScreen@@UAEPAXI@Z
+  0048b5a0 RELOCATION_MATCH CInputProcessInventoryExperienceScreen::??_GCInputProcessInventoryExperienceScreen@@UAEPAXI@Z
+  0048b5c0 RELOCATION_MATCH CInputProcessInventoryTradeScreen::??_GCInputProcessInventoryTradeScreen@@UAEPAXI@Z
+  0048b5e0 RELOCATION_MATCH CInputProcessInventoryQuestsScreen::??_GCInputProcessInventoryQuestsScreen@@UAEPAXI@Z
+  0048b600 RELOCATION_MATCH CInputProcessInventoryMagicScreen::??_GCInputProcessInventoryMagicScreen@@UAEPAXI@Z
+  0048b620 RELOCATION_MATCH CInputProcessInventoryStatsScreen::??_GCInputProcessInventoryStatsScreen@@UAEPAXI@Z
+  0048b640 RELOCATION_MATCH CInputProcessHeroInformationScreens::??_GCInputProcessHeroInformationScreens@@UAEPAXI@Z
+  0048b660 RELOCATION_MATCH CInputProcessClickPastText::??_GCInputProcessClickPastText@@UAEPAXI@Z
+  0048b680 RELOCATION_MATCH CInputProcessYesNoQuestion::??_GCInputProcessYesNoQuestion@@UAEPAXI@Z
+  0048b6a0 RELOCATION_MATCH CInputProcessBButtonExitMode::??_GCInputProcessBButtonExitMode@@UAEPAXI@Z
+  0048b6c0 RELOCATION_MATCH CInputProcessToggleViewHeroMode::??_GCInputProcessToggleViewHeroMode@@UAEPAXI@Z
+  0048b6e0 RELOCATION_MATCH CInputProcessFirstPerson::??_GCInputProcessFirstPerson@@UAEPAXI@Z
+  0048b700 RELOCATION_MATCH CInputProcessFreezeControls::??_GCInputProcessFreezeControls@@UAEPAXI@Z
+  0048b720 RELOCATION_MATCH CInputProcessControlFreeCamera::??_GCInputProcessControlFreeCamera@@UAEPAXI@Z
+  0048b740 RELOCATION_MATCH CInputProcessCameraLookAround::??_GCInputProcessCameraLookAround@@UAEPAXI@Z
+  0048b760 RELOCATION_MATCH CInputProcessFirstPersonLookAround::??_GCInputProcessFirstPersonLookAround@@UAEPAXI@Z
+  0048b780 RELOCATION_MATCH CInputProcessControlCreatureRightStick::??_GCInputProcessControlCreatureRightStick@@UAEPAXI@Z
+  0048b7a0 RELOCATION_MATCH CInputProcessCycleSpecialCameraModes::??_GCInputProcessCycleSpecialCameraModes@@UAEPAXI@Z
+  0048b7f0 RELOCATION_MATCH CInputProcessCreatureMovement::??_GCInputProcessCreatureMovement@@UAEPAXI@Z
+  0048b840 RELOCATION_MATCH CInputProcessCreatureMovementWatchForControlAngleChange::??_GCInputProcessCreatureMovementWatchForControlAngleChange@@UAEPAXI@Z
+  0048b860 RELOCATION_MATCH CInputProcessUseEnvironment::??_GCInputProcessUseEnvironment@@UAEPAXI@Z
+  0048b880 RELOCATION_MATCH CInputProcessBlock::??_GCInputProcessBlock@@UAEPAXI@Z
+  0048b900 RELOCATION_MATCH CInputProcessQuickAccessItems::??_GCInputProcessQuickAccessItems@@UAEPAXI@Z
+  0048b920 RELOCATION_MATCH CInputProcessUseRangedWeapon::??_GCInputProcessUseRangedWeapon@@UAEPAXI@Z
+  0048b940 RELOCATION_MATCH CInputProcessSetRangedWeaponMode::??_GCInputProcessSetRangedWeaponMode@@UAEPAXI@Z
+  0048b960 RELOCATION_MATCH CInputProcessSetRangedWeaponThirdPersonMode::??_GCInputProcessSetRangedWeaponThirdPersonMode@@UAEPAXI@Z

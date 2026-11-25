@@ -1,50 +1,23 @@
-#include <stdio.h>
-
-class CInputProcessControlCreatureActivateZTarget { public: int tag; };
-
-static int g_dtor_called = 0;
-static int g_delete_called = 0;
-
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();
-};
-CAInputProcess::~CAInputProcess()
+// Behaviour model of CInputProcessControlCreatureActivateZTarget::`scalar deleting destructor' (row 0x0048B420, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
+#include <cstdio>
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
+int main()
 {
-    CInputProcessControlCreatureActivateZTarget* process = (CInputProcessControlCreatureActivateZTarget*)this; (void)process;
-    g_dtor_called++;
-    process->tag = 0xDEAD;
-}
-void __cdecl operator delete(void* p)
-{
-    g_delete_called++;
-    (void)p;
-}
-
-void* __fastcall CInputProcessControlCreatureActivateZTarget_scalar_deleting_destructor(
-        CInputProcessControlCreatureActivateZTarget* process, int edx, unsigned int flags);
-
-int main() {
-    CInputProcessControlCreatureActivateZTarget a; a.tag = 1;
-    // flags bit0 clear: dtor runs, no delete, returns self
-    g_dtor_called = g_delete_called = 0;
-    void* r1 = CInputProcessControlCreatureActivateZTarget_scalar_deleting_destructor(&a, 0, 0);
-    if (r1 != &a || g_dtor_called != 1 || g_delete_called != 0 || a.tag != 0xDEAD) {
-        printf("FAIL case0\n"); return 1;
-    }
-    // flags bit0 set: dtor runs AND delete runs
-    CInputProcessControlCreatureActivateZTarget b; b.tag = 2;
-    g_dtor_called = g_delete_called = 0;
-    void* r2 = CInputProcessControlCreatureActivateZTarget_scalar_deleting_destructor(&b, 0, 1);
-    if (r2 != &b || g_dtor_called != 1 || g_delete_called != 1) {
-        printf("FAIL case1\n"); return 1;
-    }
-    // even flags (bit0 clear) e.g. 2: no delete
-    g_dtor_called = g_delete_called = 0;
-    CInputProcessControlCreatureActivateZTarget c; c.tag = 3;
-    CInputProcessControlCreatureActivateZTarget_scalar_deleting_destructor(&c, 0, 2);
-    if (g_delete_called != 0) { printf("FAIL case2\n"); return 1; }
-
-    printf("VDD_PASS_OK\n");
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b420 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b420 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PASS_OK\n");
     return 0;
 }

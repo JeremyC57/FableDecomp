@@ -1,13 +1,10 @@
-#pragma optimize("s", on)
-// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
-//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
-//   operator= 0x00431ED0).
-#define FABLE_RETAIL_DEF_CLASS_BASE
-#include "engine/CParentDefClassBase.h"
-void* __fastcall CThingShotDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)
-{
-    ((CParentDefClassBase*)(def))->CParentDefClassBase::~CParentDefClassBase();
-    if (flags & 1)
-        operator delete(def);
-    return def;
-}
+// CThingShotDef::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CThingShotDef, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCThingShotDef@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004590E6, 28 bytes, thiscall, `ret 4`; vftable 0x01234E2C slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CThingShotDef_ScalarDeletingDestructor@@YIPAXPAXHI@Z.
+// TU: VC7.1 emits ??_GCThingShotDef@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00458D3F
+//   ??0CThingShotDef@@QAE@XZ stores vftable 0x01234E2C, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/45/CThingShotDef_CThingShotDef_00458d3f.cpp"

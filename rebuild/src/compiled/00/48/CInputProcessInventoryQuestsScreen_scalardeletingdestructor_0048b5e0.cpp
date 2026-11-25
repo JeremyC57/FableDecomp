@@ -1,22 +1,10 @@
-// CInputProcessInventoryQuestsScreen::`vector_deleting_destructor' 0x0048b5e0
-// Standard MSVC vector deleting destructor shape:
-//   push esi; mov esi,ecx; call scalar_dtor; test [esp+8],1; je; push esi; call op_delete; add esp,4; mov eax,esi; ret 4
-
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();   // 0x00A0D3D0
-};
-class CInputProcessInventoryQuestsScreen;
-
-// scalar destructor (direct non-virtual call) @ 0xa0d3d0
-// operator delete @ 0xbfe9bc
-
-// vector deleting destructor, this in ecx, flags pushed on stack.
-void* __fastcall scalar_deleting_destructor(CInputProcessInventoryQuestsScreen* process, int edx, unsigned int flags)
-{
-    (void)edx;
-    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessInventoryQuestsScreen::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessInventoryQuestsScreen, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessInventoryQuestsScreen@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B5E0, 30 bytes, thiscall, `ret 4`; vftable 0x0123782C slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?scalar_deleting_destructor@@YIPAXPAVCInputProcessInventoryQuestsScreen@@HI@Z.
+// TU: VC7.1 emits ??_GCInputProcessInventoryQuestsScreen@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x0123782C, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

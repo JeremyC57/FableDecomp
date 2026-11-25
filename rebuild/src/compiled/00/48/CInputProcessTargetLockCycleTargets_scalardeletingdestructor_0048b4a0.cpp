@@ -1,19 +1,10 @@
-// CInputProcessTargetLockCycleTargets `vector_deleting_destructor'
-// retail 0x0048b4a0 __fastcall(this, uint flags) -> void*
-
-// operator delete (retail 0xbfe9bc)
-
-class CInputProcessTargetLockCycleTargets
-{ public:
-    void destroy();  // real destructor body @ 0xa0d3d0
-};
-
-// scalar/vector deleting destructor shape
-void* __fastcall CInputProcessTargetLockCycleTargets_scalar_deleting_destructor(
-        CInputProcessTargetLockCycleTargets* process, int /*edx*/, unsigned int flags)
-{
-    process->destroy();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessTargetLockCycleTargets::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessTargetLockCycleTargets, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessTargetLockCycleTargets@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B4A0, 30 bytes, thiscall, `ret 4`; vftable 0x0123767C slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessTargetLockCycleTargets_scalar_deleting_destructor@@YIPAXPAVCInputProcessTargetLockCycleTargets@@HI@Z.
+// TU: VC7.1 emits ??_GCInputProcessTargetLockCycleTargets@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x0123767C, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

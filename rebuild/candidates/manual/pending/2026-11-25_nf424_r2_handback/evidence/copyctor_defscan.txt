@@ -1,0 +1,22 @@
+## ??0CCreatureAction_PlayAnimationFromIndex@@QAE@ABV0@@Z definers 2 distinct bodies 1
+  body0 size=25: 0084b4a0(Any) 0084c460(Any)
+## ??0CCreatureAction_StabbedToDeath@@QAE@ABV0@@Z definers 2 distinct bodies 1
+  body0 size=25: 0087fe80(Any) 008800c0(Any)
+## ??0CCreatureAction_StartSneaking@@QAE@ABV0@@Z definers 2 distinct bodies 1
+  body0 size=25: 0062d7d0(Any) 0062f230(Any)
+## ??0CCreatureAction_StopSneaking@@QAE@ABV0@@Z definers 2 distinct bodies 1
+  body0 size=25: 0062d870(Any) 0062f260(Any)
+## ??0CCreatureAction_YellOverHere@@QAE@ABV0@@Z definers 2 distinct bodies 1
+  body0 size=25: 0084ab80(Any) 0084c7a0(Any)
+## ??2@YAPAXIPAX@Z definers 5 distinct bodies 1
+  body0 size=5: 0062d7d0(Any) 0062d870(Any) 0084ab80(Any) 0084b4a0(Any) 0087fe80(Any)
+## ??_GCCreatureAction_PlayAnimationFromIndex@@UAEPAXI@Z definers 2 distinct bodies 1
+  body0 size=30: 0084b4a0(Any) 0084c460(Any)
+## ??_GCCreatureAction_StabbedToDeath@@UAEPAXI@Z definers 2 distinct bodies 1
+  body0 size=30: 0087fe80(Any) 008800c0(Any)
+## ??_GCCreatureAction_StartSneaking@@UAEPAXI@Z definers 3 distinct bodies 1
+  body0 size=30: 0062d7d0(Any) 0062d740(Any) 0062f230(Any)
+## ??_GCCreatureAction_StopSneaking@@UAEPAXI@Z definers 3 distinct bodies 1
+  body0 size=30: 0062d870(Any) 0062d7f0(Any) 0062f260(Any)
+## ??_GCCreatureAction_YellOverHere@@UAEPAXI@Z definers 3 distinct bodies 1
+  body0 size=30: 0084ab80(Any) 008421e0(Any) 0084c7a0(Any)

@@ -9,6 +9,7 @@
 // Layout: engine/CCreatureAction_PerformExpression.h is a flat PDB-offset view (base 0xb4); the retail CCreatureActionBase
 //   is 0xa8 bytes (landed 0x0084BD40), so members sit at PDB - 0x0c. CExpressionDef: retail offsets are PDB - 4
 //   (Animation +0x3c, AnimationInto +0x40, AnimationToOther +0x4c, AnimationToOtherInto +0x50, Extendable +0x84).
+// Leaf: ??0CCreatureAction_PerformExpression@@QAE@PAVCThingCreatureBase@@PAVCThing@@ABV?$CDefPointer@$$CBVCExpressionDef@@@@JJJJ@Z
 class CBaseObject;
 class CThing;
 class CThingCreatureBase;

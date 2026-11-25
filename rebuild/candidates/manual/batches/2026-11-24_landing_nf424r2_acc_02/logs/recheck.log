@@ -1,0 +1,149 @@
+addr       parity           behav  name
+0090027f   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionHawkingFromStall@@UAEPAXI@Z (catalog CAIStateGroup_MinionHawkingFromStall::`scalar_deleting_destructor'; names another function)
+0090027f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00911160   WARN STANDIN_LEAF ??_GCCreatureAction_OrderSecuritySweep@@UAEPAXI@Z (catalog CCreatureAction_OrderSecuritySweep::`scalar_deleting_destructor'; names another function)
+00911160   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00911200   WARN STANDIN_LEAF ??_GCCreatureAction_Curiosity@@UAEPAXI@Z (catalog CCreatureAction_Curiosity::`scalar_deleting_destructor'; names another function)
+00911200   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00916540   WARN STANDIN_LEAF ??_GCCreatureAction_PutGoodsDown@@UAEPAXI@Z (catalog CCreatureAction_PutGoodsDown::`scalar_deleting_destructor'; names another function)
+00916540   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00925a50   WARN STANDIN_LEAF ??_GCCreatureAction_TentacleStrikeInto@@UAEPAXI@Z (catalog CCreatureAction_TentacleStrikeInto::`scalar_deleting_destructor'; names another function)
+00925a50   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00941bc0   WARN STANDIN_LEAF ??_GCCreatureAction_PlayHopscotch@@UAEPAXI@Z (catalog CCreatureAction_PlayHopscotch::`scalar_deleting_destructor'; names another function)
+00941bc0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00957320   WARN STANDIN_LEAF ??_GCCreatureAction_BriarRoseShotFarInto@@UAEPAXI@Z (catalog CCreatureAction_BriarRoseShotFarInto::`scalar_deleting_destructor'; names another function)
+00957320   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00961a50   WARN STANDIN_LEAF ??_GCCreatureAction_BanditKingLunge@@UAEPAXI@Z (catalog CCreatureAction_BanditKingLunge::`scalar_deleting_destructor'; names another function)
+00961a50   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00962a10   WARN STANDIN_LEAF ??_GCCreatureAction_IceTrollIcicleAssaultInto@@UAEPAXI@Z (catalog CCreatureAction_IceTrollIcicleAssaultInto::`scalar_deleting_destructor'; names another function)
+00962a10   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00968040   WARN STANDIN_LEAF ??_GCCreatureAction_PickUpJug@@UAEPAXI@Z (catalog CCreatureAction_PickUpJug::`scalar_deleting_destructor'; names another function)
+00968040   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0098d990   WARN STANDIN_LEAF ??_GCVertexShaderConstantLayout@@UAEPAXI@Z (catalog CVertexShaderConstantLayout::`scalar_deleting_destructor'; names another function)
+0098d990   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009a75a0   WARN STANDIN_LEAF ??_GCSystemManager@@UAEPAXI@Z (catalog CSystemManager::`scalar_deleting_destructor'; names another function)
+009a75a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009c30b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+009e1850   WARN STANDIN_LEAF ??_GCVertexShaderConstantLayoutEmpty@@UAEPAXI@Z (catalog CVertexShaderConstantLayoutEmpty::`scalar_deleting_destructor'; names another function)
+009e1850   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009e45f0   WARN STANDIN_LEAF ??_GCMaintainedEvent@@UAEPAXI@Z (catalog CMaintainedEvent::`scalar_deleting_destructor'; names another function)
+009e45f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009f49e0   WARN STANDIN_LEAF ??_GCInkeyBuffer@@UAEPAXI@Z (catalog CInkeyBuffer::`scalar_deleting_destructor'; names another function)
+009f49e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009f4a30   WARN STANDIN_LEAF ??_GCScratchBuffer@@UAEPAXI@Z (catalog CScratchBuffer::`scalar_deleting_destructor'; names another function)
+009f4a30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009f6fc0   WARN STANDIN_LEAF ??_GCInputManager@@UAEPAXI@Z (catalog CInputManager::`scalar_deleting_destructor'; names another function)
+009f6fc0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a224d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a2d770   WARN STANDIN_LEAF ??_GCMeshBankStateBlock@@UAEPAXI@Z (catalog CMeshBankStateBlock::`scalar_deleting_destructor'; names another function)
+00a2d770   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a2e370   WARN STANDIN_LEAF ??_GCMeshDataBank@@UAEPAXI@Z (catalog CMeshDataBank::`scalar_deleting_destructor'; names another function)
+00a2e370   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a39df0   WARN STANDIN_LEAF ??_GCWADFile@@UAEPAXI@Z (catalog CWADFile::`scalar_deleting_destructor'; names another function)
+00a39df0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a43fd0   WARN STANDIN_LEAF ??_GCLipSyncDataBank@@UAEPAXI@Z (catalog CLipSyncDataBank::`scalar_deleting_destructor'; names another function)
+00a43fd0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a44a20   WARN STANDIN_LEAF ??_GCASuspendableProcess@@UAEPAXI@Z (catalog CASuspendableProcess::`scalar_deleting_destructor'; names another function)
+00a44a20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a47e80   WARN STANDIN_LEAF ??_GCNavigatorBase@@UAEPAXI@Z (catalog CNavigatorBase::`scalar_deleting_destructor'; names another function)
+00a47e80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a5ebe0   WARN STANDIN_LEAF ??_GCShaderResource@@UAEPAXI@Z (catalog CShaderResource::`scalar_deleting_destructor'; names another function)
+00a5ebe0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a66ae0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a673b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a6c000   WARN STANDIN_LEAF ??_GCTextureManager@@UAEPAXI@Z (catalog CTextureManager::`scalar_deleting_destructor'; names another function)
+00a6c000   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a98430   WARN STANDIN_LEAF ??_GC3DPrimitive2@@UAEPAXI@Z (catalog C3DPrimitive2::`scalar_deleting_destructor'; names another function)
+00a98430   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa43c0   WARN STANDIN_LEAF ??_GC3DQuadricBasedMeshOptimiser@@UAEPAXI@Z (catalog C3DQuadricBasedMeshOptimiser::`scalar_deleting_destructor'; names another function)
+00aa43c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa4990   WARN STANDIN_LEAF ??_GC3DAnimFileXAllocationSizeChunk@@UAEPAXI@Z (catalog C3DAnimFileXAllocationSizeChunk::`scalar_deleting_destructor'; names another function)
+00aa4990   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa7030   WARN STANDIN_LEAF ??_GC3DMeshFileXTextureIndexChunk@@UAEPAXI@Z (catalog C3DMeshFileXTextureIndexChunk::`scalar_deleting_destructor'; names another function)
+00aa7030   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa7070   WARN STANDIN_LEAF ??_GC3DMeshFileXMappingInfoChunk@@UAEPAXI@Z (catalog C3DMeshFileXMappingInfoChunk::`scalar_deleting_destructor'; names another function)
+00aa7070   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa70b0   WARN STANDIN_LEAF ??_GC3DMeshFileXAnimatedPrimitiveChunk@@UAEPAXI@Z (catalog C3DMeshFileXAnimatedPrimitiveChunk::`scalar_deleting_destructor'; names another function)
+00aa70b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa7120   WARN STANDIN_LEAF ??_GC3DMeshFileXBoundingSphereChunk@@UAEPAXI@Z (catalog C3DMeshFileXBoundingSphereChunk::`scalar_deleting_destructor'; names another function)
+00aa7120   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aa7460   WARN STANDIN_LEAF ??_GC3DMeshFileXAnimatedPrimitiveBlockChunk@@UAEPAXI@Z (catalog C3DMeshFileXAnimatedPrimitiveBlockChunk::`scalar_deleting_destructor'; names another function)
+00aa7460   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aab150   WARN STANDIN_LEAF ??_GC3DMeshFileHelperPointChunk@@UAEPAXI@Z (catalog C3DMeshFileHelperPointChunk::`scalar_deleting_destructor'; names another function)
+00aab150   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00aab6e0   WARN STANDIN_LEAF ??_GC3DMeshFileConvexVolumeChunk@@UAEPAXI@Z (catalog C3DMeshFileConvexVolumeChunk::`scalar_deleting_destructor'; names another function)
+00aab6e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00abe080   WARN STANDIN_LEAF ??_GC3DMeshFileSubMeshChunk@@UAEPAXI@Z (catalog C3DMeshFileSubMeshChunk::`scalar_deleting_destructor'; names another function)
+00abe080   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00abe0b0   WARN STANDIN_LEAF ??_GC3DMeshFileTransformationChunk@@UAEPAXI@Z (catalog C3DMeshFileTransformationChunk::`scalar_deleting_destructor'; names another function)
+00abe0b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00abe0d0   WARN STANDIN_LEAF ??_GC3DMeshFileBoneChunk@@UAEPAXI@Z (catalog C3DMeshFileBoneChunk::`scalar_deleting_destructor'; names another function)
+00abe0d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00ac1940   WARN STANDIN_LEAF ??_GC3DMeshFileMaterialExtChunk@@UAEPAXI@Z (catalog C3DMeshFileMaterialExtChunk::`scalar_deleting_destructor'; names another function)
+00ac1940   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00ac1e90   WARN STANDIN_LEAF ??_GC3DMeshFileMaterialChunk@@UAEPAXI@Z (catalog C3DMeshFileMaterialChunk::`scalar_deleting_destructor'; names another function)
+00ac1e90   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b31dc0   WARN STANDIN_LEAF ??_GCEngineSceneEnumerator@@UAEPAXI@Z (catalog CEngineSceneEnumerator::`scalar_deleting_destructor'; names another function)
+00b31dc0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b36c20   WARN STANDIN_LEAF ??_GCEngineSceneEnumeratorResetVisibilityRatio@@UAEPAXI@Z (catalog CEngineSceneEnumeratorResetVisibilityRatio::`scalar_deleting_destructor'; names another function)
+00b36c20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b49300   WARN STANDIN_LEAF ??_GCShaderLight@@UAEPAXI@Z (catalog CShaderLight::`scalar_deleting_destructor'; names another function)
+00b49300   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b499c0   WARN STANDIN_LEAF ??_GCShaderDirectionalLight@@UAEPAXI@Z (catalog CShaderDirectionalLight::`scalar_deleting_destructor'; names another function)
+00b499c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b499e0   WARN STANDIN_LEAF ??_GCShaderPointLight@@UAEPAXI@Z (catalog CShaderPointLight::`scalar_deleting_destructor'; names another function)
+00b499e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b67070   WARN STANDIN_LEAF ??_GCLandscapeGPUUpdateQueue@@UAEPAXI@Z (catalog CLandscapeGPUUpdateQueue::`scalar_deleting_destructor'; names another function)
+00b67070   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 50
+  0090027f RELOCATION_MATCH CAIStateGroup_MinionHawkingFromStall::??_GCAIStateGroup_MinionHawkingFromStall@@UAEPAXI@Z
+  00911160 RELOCATION_MATCH CCreatureAction_OrderSecuritySweep::??_GCCreatureAction_OrderSecuritySweep@@UAEPAXI@Z
+  00911200 RELOCATION_MATCH CCreatureAction_Curiosity::??_GCCreatureAction_Curiosity@@UAEPAXI@Z
+  00916540 RELOCATION_MATCH CCreatureAction_PutGoodsDown::??_GCCreatureAction_PutGoodsDown@@UAEPAXI@Z
+  00925a50 RELOCATION_MATCH CCreatureAction_TentacleStrikeInto::??_GCCreatureAction_TentacleStrikeInto@@UAEPAXI@Z
+  00941bc0 RELOCATION_MATCH CCreatureAction_PlayHopscotch::??_GCCreatureAction_PlayHopscotch@@UAEPAXI@Z
+  00957320 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarInto::??_GCCreatureAction_BriarRoseShotFarInto@@UAEPAXI@Z
+  00961a50 RELOCATION_MATCH CCreatureAction_BanditKingLunge::??_GCCreatureAction_BanditKingLunge@@UAEPAXI@Z
+  00962a10 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAssaultInto::??_GCCreatureAction_IceTrollIcicleAssaultInto@@UAEPAXI@Z
+  00968040 RELOCATION_MATCH CCreatureAction_PickUpJug::??_GCCreatureAction_PickUpJug@@UAEPAXI@Z
+  0098d990 RELOCATION_MATCH CVertexShaderConstantLayout::??_GCVertexShaderConstantLayout@@UAEPAXI@Z
+  009a75a0 RELOCATION_MATCH CSystemManager::??_GCSystemManager@@UAEPAXI@Z
+  009c30b0 RELOCATION_MATCH CDisplayManager::??_GCDisplayManager@@UAEPAXI@Z
+  009e1850 RELOCATION_MATCH CVertexShaderConstantLayoutEmpty::??_GCVertexShaderConstantLayoutEmpty@@UAEPAXI@Z
+  009e45f0 RELOCATION_MATCH CMaintainedEvent::??_GCMaintainedEvent@@UAEPAXI@Z
+  009f49e0 RELOCATION_MATCH CInkeyBuffer::??_GCInkeyBuffer@@UAEPAXI@Z
+  009f4a30 RELOCATION_MATCH CScratchBuffer::??_GCScratchBuffer@@UAEPAXI@Z
+  009f6fc0 RELOCATION_MATCH CInputManager::??_GCInputManager@@UAEPAXI@Z
+  00a224d0 RELOCATION_MATCH CNavigatorAStar::??_GCNavigatorAStar@@UAEPAXI@Z
+  00a2d770 RELOCATION_MATCH CMeshBankStateBlock::??_GCMeshBankStateBlock@@UAEPAXI@Z
+  00a2e370 RELOCATION_MATCH CMeshDataBank::??_GCMeshDataBank@@UAEPAXI@Z
+  00a39df0 RELOCATION_MATCH CWADFile::??_GCWADFile@@UAEPAXI@Z
+  00a43fd0 RELOCATION_MATCH CLipSyncDataBank::??_GCLipSyncDataBank@@UAEPAXI@Z
+  00a44a20 RELOCATION_MATCH CASuspendableProcess::??_GCASuspendableProcess@@UAEPAXI@Z
+  00a47e80 RELOCATION_MATCH CNavigatorBase::??_GCNavigatorBase@@UAEPAXI@Z
+  00a5ebe0 RELOCATION_MATCH CShaderResource::??_GCShaderResource@@UAEPAXI@Z
+  00a66ae0 RELOCATION_MATCH CKeyboard::??_GCKeyboard@@UAEPAXI@Z
+  00a673b0 RELOCATION_MATCH CMouse::??_GCMouse@@UAEPAXI@Z
+  00a6c000 RELOCATION_MATCH CTextureManager::??_GCTextureManager@@UAEPAXI@Z
+  00a98430 RELOCATION_MATCH C3DPrimitive2::??_GC3DPrimitive2@@UAEPAXI@Z
+  00aa43c0 RELOCATION_MATCH C3DQuadricBasedMeshOptimiser::??_GC3DQuadricBasedMeshOptimiser@@UAEPAXI@Z
+  00aa4990 RELOCATION_MATCH C3DAnimFileXAllocationSizeChunk::??_GC3DAnimFileXAllocationSizeChunk@@UAEPAXI@Z
+  00aa7030 RELOCATION_MATCH C3DMeshFileXTextureIndexChunk::??_GC3DMeshFileXTextureIndexChunk@@UAEPAXI@Z
+  00aa7070 RELOCATION_MATCH C3DMeshFileXMappingInfoChunk::??_GC3DMeshFileXMappingInfoChunk@@UAEPAXI@Z
+  00aa70b0 RELOCATION_MATCH C3DMeshFileXAnimatedPrimitiveChunk::??_GC3DMeshFileXAnimatedPrimitiveChunk@@UAEPAXI@Z
+  00aa7120 RELOCATION_MATCH C3DMeshFileXBoundingSphereChunk::??_GC3DMeshFileXBoundingSphereChunk@@UAEPAXI@Z
+  00aa7460 RELOCATION_MATCH C3DMeshFileXAnimatedPrimitiveBlockChunk::??_GC3DMeshFileXAnimatedPrimitiveBlockChunk@@UAEPAXI@Z
+  00aab150 RELOCATION_MATCH C3DMeshFileHelperPointChunk::??_GC3DMeshFileHelperPointChunk@@UAEPAXI@Z
+  00aab6e0 RELOCATION_MATCH C3DMeshFileConvexVolumeChunk::??_GC3DMeshFileConvexVolumeChunk@@UAEPAXI@Z
+  00abe080 RELOCATION_MATCH C3DMeshFileSubMeshChunk::??_GC3DMeshFileSubMeshChunk@@UAEPAXI@Z
+  00abe0b0 RELOCATION_MATCH C3DMeshFileTransformationChunk::??_GC3DMeshFileTransformationChunk@@UAEPAXI@Z
+  00abe0d0 RELOCATION_MATCH C3DMeshFileBoneChunk::??_GC3DMeshFileBoneChunk@@UAEPAXI@Z
+  00ac1940 RELOCATION_MATCH C3DMeshFileMaterialExtChunk::??_GC3DMeshFileMaterialExtChunk@@UAEPAXI@Z
+  00ac1e90 RELOCATION_MATCH C3DMeshFileMaterialChunk::??_GC3DMeshFileMaterialChunk@@UAEPAXI@Z
+  00b31dc0 RELOCATION_MATCH CEngineSceneEnumerator::??_GCEngineSceneEnumerator@@UAEPAXI@Z
+  00b36c20 RELOCATION_MATCH CEngineSceneEnumeratorResetVisibilityRatio::??_GCEngineSceneEnumeratorResetVisibilityRatio@@UAEPAXI@Z
+  00b49300 RELOCATION_MATCH CShaderLight::??_GCShaderLight@@UAEPAXI@Z
+  00b499c0 RELOCATION_MATCH CShaderDirectionalLight::??_GCShaderDirectionalLight@@UAEPAXI@Z
+  00b499e0 RELOCATION_MATCH CShaderPointLight::??_GCShaderPointLight@@UAEPAXI@Z
+  00b67070 RELOCATION_MATCH CLandscapeGPUUpdateQueue::??_GCLandscapeGPUUpdateQueue@@UAEPAXI@Z

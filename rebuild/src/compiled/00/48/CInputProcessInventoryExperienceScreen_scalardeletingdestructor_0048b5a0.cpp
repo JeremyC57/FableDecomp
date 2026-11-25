@@ -1,21 +1,10 @@
-// Vector/scalar deleting destructor for CInputProcessInventoryExperienceScreen @ 0048b5a0
-#include <new>
-
-// External destructor body (retail 0xa0d3d0) - kept out-of-line via extern.
-
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();   // 0x00A0D3D0
-};
-class CInputProcessInventoryExperienceScreen { public:
-    // The deleting destructor: __fastcall(this), uint flag arg, returns this.
-    void* deleting_destructor(unsigned int flags);
-};
-
-void* CInputProcessInventoryExperienceScreen::deleting_destructor(unsigned int flags)
-{
-    ((CAInputProcess*)(this))->CAInputProcess::~CAInputProcess();       // call 0xa0d3d0
-    if (flags & 1)                              // test byte [esp+8],1
-        ::operator delete(this);                // call 0xbfe9bc
-    return this;                                // mov eax,esi
-}
+// CInputProcessInventoryExperienceScreen::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessInventoryExperienceScreen, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessInventoryExperienceScreen@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B5A0, 30 bytes, thiscall, `ret 4`; vftable 0x012377D4 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?deleting_destructor@CInputProcessInventoryExperienceScreen@@QAEPAXI@Z.
+// TU: VC7.1 emits ??_GCInputProcessInventoryExperienceScreen@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x012377D4, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

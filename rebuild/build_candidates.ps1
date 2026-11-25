@@ -56468,7 +56468,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d005c0'
-        Module = 'CVtable_012c78b0'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
         Source = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d005c0.cpp'
         TestSource = '00/d0/CLandscapeBackgroundPatch_vectordeletingdestructor_00d005c0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00d005c0_TEST PASS'
@@ -61075,7 +61075,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f25e20'
-        Module = 'CVtable_012fb358'
+        Module = 'CArenaCreatureDef'
         Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f25e20.cpp'
         TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f25e20_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00f25e20_TEST PASS'
@@ -61096,7 +61096,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f29ce0'
-        Module = 'CVtable_012fb630'
+        Module = 'CRegionScriptDef'
         Source = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29ce0.cpp'
         TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29ce0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00f29ce0_TEST PASS'

@@ -1,0 +1,33 @@
+# 0x00D032C0 ??_G?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEPAXI@Z -- ours (thin row over 0x00D03160) then retail; mnemonics only, no bytes
+## ours (30 bytes)
+push esi 
+mov esi, ecx 
+call 8 ; ??1CActiveEntityScriptBase@@UAE@XZ
+test byte ptr [esp + 8], 1 
+je 0x18 
+push esi 
+call 0x15 ; ??3@YAXPAX@Z
+add esp, 4 
+mov eax, esi 
+pop esi 
+ret 4 
+## retail (48 bytes)
+push esi
+mov esi, ecx
+lea ecx, [esi + 0x48]
+call 0x4aa840
+lea ecx, [esi + 0x34]
+call 0xce1000
+mov ecx, esi
+call 0xcdd4c0
+test byte ptr [esp + 8], 1
+je 0xd032ea
+push esi
+call 0xbfe9bc
+add esp, 4
+mov eax, esi
+pop esi
+ret 4
+## with FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY (symbols gone / new vs ours)
+GONE ['DEF ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ', 'DEF ??1CSpawnedFuncBase@@UAE@XZ', 'UND ??1CSuspendableProcessMicrothread@@MAE@XZ']
+NEW ['UND ??1CSpawnedFuncBase@@UAE@XZ']

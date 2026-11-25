@@ -1,55 +1,24 @@
+// Behaviour model of CCreatureAction_CastSkillMultiArrow::`scalar deleting destructor' (row 0x008CEE50, ??_G): a class with an implicit destructor over a base whose
+// virtual destructor is the one callee; delete through a base pointer runs ~CCombatActionBase once and frees the object, an explicit virtual
+// destructor call (flags 0) runs it without freeing. Self-contained: the row object carries an 80-slot-class vtable whose other slots
+// need the whole engine, so the test models the same class shape (NF419 r1: the row's leaf bytes and relocations equal HEAD's).
 #include <cstdio>
-
-class CCreatureAction_CastSkillMultiArrow { public:
-    void* vftable;
-    int destroyed;
-};
-
-static int g_freed = 0;
-static CCreatureAction_CastSkillMultiArrow* g_last_dtor = 0;
-
-void __fastcall CCreatureAction_CastSkillMultiArrow_dtor(CCreatureAction_CastSkillMultiArrow* action)
-{
-    g_last_dtor = action;
-    action->destroyed = 1;
-}
-
-void operator delete(void* p)
-{
-    g_freed = 1;
-    (void)p;
-}
-
-void* __fastcall CCreatureAction_CastSkillMultiArrow_scalar_deleting_destructor(CCreatureAction_CastSkillMultiArrow* action, int edx_unused, unsigned int flags)
-{
-    CCreatureAction_CastSkillMultiArrow_dtor(action);
-    if (flags & 1)
-        operator delete(action);
-    return action;
-}
-
+#include <cstdlib>
+static int g_baseDtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class CCombatActionBase { public: int baseState; CCombatActionBase() : baseState(1) { } virtual ~CCombatActionBase() { ++g_baseDtors; } };
+class CCreatureAction_CastSkillMultiArrow : public CCombatActionBase { public: int ownState[3]; };
 int main()
 {
-    CCreatureAction_CastSkillMultiArrow a;
-    a.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r = CCreatureAction_CastSkillMultiArrow_scalar_deleting_destructor(&a, 0, 0);
-    if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
-        std::printf("FAIL no-free path\n");
-        return 1;
-    }
-
-    CCreatureAction_CastSkillMultiArrow b;
-    b.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r2 = CCreatureAction_CastSkillMultiArrow_scalar_deleting_destructor(&b, 0, 1);
-    if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
-        std::printf("FAIL free path\n");
-        return 1;
-    }
-
+    CCreatureAction_CastSkillMultiArrow* p = new CCreatureAction_CastSkillMultiArrow;
+    CCombatActionBase* b = p;
+    delete b;
+    if (g_baseDtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("008cee50 FAIL delete\n"); return 1; }
+    CCreatureAction_CastSkillMultiArrow* q = new CCreatureAction_CastSkillMultiArrow;
+    q->~CCreatureAction_CastSkillMultiArrow();
+    if (g_baseDtors != 2 || g_frees != 1) { std::printf("008cee50 FAIL no-free path\n"); return 1; }
+    std::free(q);
     std::printf("CLandscapeBackgroundPatch_008cee50_TEST PASS\n");
     return 0;
 }

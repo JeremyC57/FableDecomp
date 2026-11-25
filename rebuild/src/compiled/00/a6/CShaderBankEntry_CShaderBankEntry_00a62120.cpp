@@ -1,7 +1,7 @@
 // CShaderBankEntry::CShaderBankEntry(unsigned long type, unsigned long index, CShaderDataBank* bank) -- read the bank entry's
 //   data into a zeroed char buffer, wrap it in a memory stream and read the shader: the code size in bytes and the code
 //   dwords, the constant-name count and each null-terminated name, then the vertex-shader constant layout name.
-// Leaf: CShaderBankEntry
+// Leaf: ??0CShaderBankEntry@@QAE@KKPAVCShaderDataBank@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A62120, 688 bytes (678 + int3 padding), `ret 0Ch`; vtable 0x0129D698.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 (base), CCharString() 0x0099E4B0,
 //   CBankFile::GetEntryDataSize 0x009CC240, malloc 0x00BFEA0E, CBankFile::ReadEntryData 0x009CC2A0,

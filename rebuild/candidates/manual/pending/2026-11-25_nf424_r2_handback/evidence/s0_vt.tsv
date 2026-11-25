@@ -1,0 +1,316 @@
+address	group	vftable	slot	class (??_G leaf)	sources	thin-row result	note
+00c08790	g_lbp	012b1a54	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source; landed descriptive class CSampleQueryLH (vptr store + callee)
+00c09f10	g_lbp	012b1b78	38	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0a140	g_lbp	012b1c88	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0a430	g_lbp	012b1d44	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0a450	g_lbp	012b1c40	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0f490	g_lbp	012b2240	54	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0f4b0	g_lbp	012b2240	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0f560	g_lbp	012b2348	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0f760	g_lbp	012b2398	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0f960	g_lbp	012b23e8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0fb60	g_lbp	012b2438	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0fb80	g_lbp	012b2350	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0fba0	g_lbp	012b23a0	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0fdd0	g_lbp	012b2438	60	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0ff80	g_lbp	012b2560	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c0ffa0	g_lbp	012b25a8	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c107e0	g_lbp	012b262c	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c10800	g_lbp	012b2634	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c10820	g_lbp	012b2614	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c10840	g_lbp	012b261c	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c109f0	g_lbp	012b2644	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c15380	g_lbp	012b283c	23	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c15420	g_lbp	012b28c8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c154d0	g_lbp	012b28d0	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c158e0	g_lbp	012b28d8	40	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c159f0	g_lbp	012b29b0	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c16730	g_lbp	012b2ab8	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c19660	g_lbp	012b2f0c	14	-		-	libpk/CODA region, no PDB, no RTTI: no name source; landed descriptive class CMap_00c2be10 (vptr store + callee)
+00c19f20	g_lbp	012b2f88	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c19f40	g_lbp	012b2f90	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1b6b0	g_lbp	012b30e4	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1b970	g_lbp	012b3224	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1dd30	g_lbp	012b32a0	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1e0f0	g_lbp	012b33a4	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1feb0	g_lbp	012b3474	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1fed0	g_lbp	012b3498	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1ff00	g_lbp	012b34bc	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1ff70	g_lbp	012b34e0	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c1ffe0	g_lbp	012b3504	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c20050	g_lbp	012b3528	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c20070	g_lbp	012b354c	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c20090	g_lbp	012b3570	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c200b0	g_lbp	012b3594	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c20130	g_lbp	012b35b8	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c201b0	g_lbp	012b35dc	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c202d0	g_lbp	012b3600	8	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c22e30	g_lbp	012b3850	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c234d0	g_lbp	012b3860	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c234f0	g_lbp	012b38a8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c23990	g_lbp	012b38f0	86	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c242b0	g_lbp	012b3840	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c242d0	g_lbp	012b3848	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c242f0	g_lbp	012b3858	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c243a0	g_lbp	012b3aac	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c24450	g_lbp	012b3ab4	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c24500	g_lbp	012b3abc	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c249c0	g_lbp	012b3ba0	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c24bc0	g_lbp	012b3bf0	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c24be0	g_lbp	012b3ac8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c24c00	g_lbp	012b3b10	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c24c20	g_lbp	012b3b58	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c25210	g_lbp	-	-	-	-	-	site in .rdata but no vptr store found
+00c25640	g_lbp	012b3ec8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c25660	g_lbp	012b3f10	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c25680	g_lbp	012b3f58	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c26a80	g_lbp	012b4010	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c26ee0	g_lbp	012b4024	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2a2e0	g_lbp	012b4148	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2abb0	g_lbp	012b4170	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2ac80	g_lbp	012b4188	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b010	g_lbp	012b4188	38	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b0b0	g_lbp	012b4250	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b150	g_lbp	012b4258	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b200	g_lbp	012b4260	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b640	g_lbp	012b4268	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b660	g_lbp	012b42b0	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2b8d0	g_lbp	012b42f8	76	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2bf40	g_lbp	012b44b8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2bf70	g_lbp	012b44c0	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2c0a0	g_lbp	012b44c0	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2c150	g_lbp	012b4508	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2c460	g_lbp	012b4510	40	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2c570	g_lbp	012b45e8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2c6e0	g_lbp	012b4630	2	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2cfc0	g_lbp	012b4664	7	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2d080	g_lbp	012b46b8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2d0a0	g_lbp	012b46fc	7	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2ddc0	g_lbp	012b46fc	21	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2f3c0	g_lbp	012b497c	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2f3f0	g_lbp	012b4984	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2f7b0	g_lbp	012b498c	39	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2fa00	g_lbp	012b4a58	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c2fc50	g_lbp	012b4a60	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c30290	g_lbp	012b4a68	42	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c303a0	g_lbp	012b4b48	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c303c0	g_lbp	012b4b90	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c303e0	g_lbp	012b4bd8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c30bb0	g_lbp	012b4c28	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c30db0	g_lbp	012b4c70	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c30e70	g_lbp	012b4cc0	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c33020	g_lbp	012b4f4c	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c330c0	g_lbp	012b4f60	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c34790	g_lbp	012b4fac	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c34cb0	g_lbp	012b4fec	11	-		-	libpk/CODA region, no PDB, no RTTI: no name source; landed descriptive class CMember_00c34b80 (vptr store + callee)
+00c35190	g_lbp	012b504c	11	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c36740	g_lbp	012b50dc	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c36770	g_lbp	012b50e4	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c36890	g_lbp	012b50e4	7	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c36a90	g_lbp	012b5130	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c36b50	g_lbp	012b5180	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c37370	g_lbp	012b51c8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c373e0	g_lbp	012b51d8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c37410	g_lbp	012b51e0	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c37440	g_lbp	012b51e8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c37700	g_lbp	012b51f0	22	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c37f20	g_lbp	012b528c	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c38040	g_lbp	012b528c	7	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c38240	g_lbp	012b52d8	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c38680	g_lbp	012b53b0	3	??_GCGuiControlTree@@UAEPAXI@Z	V(1:00c38600) P(E:fwin,D:fwin)	DIFFER(100v30)	
+00c3adc0	g_lbp	012b54c4	13	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3afd0	g_lbp	012b5528	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3b090	g_lbp	012b5578	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3b350	g_lbp	012b5578	22	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3b560	g_lbp	012b5600	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3cfc0	g_lbp	012b5a88	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3e4f0	g_lbp	012b5bb0	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3f360	g_lbp	012b5bc0	0	??_GCScriptDefinitionManager@@UAEPAXI@Z	V(3:00c3e580) P(G:egor+fwin,D:egor+fwin)	DIFFER(79v30)	
+00c3f470	g_lbp	012b5c10	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source; landed descriptive class CVtable_012B5C10 (vptr store + callee)
+00c3f640	g_lbp	012b5cd0	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c3f7d0	g_lbp	012b5de0	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c45080	g_lbp	012b7bb4	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c451f0	g_lbp	012b7bbc	7	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c452a0	g_lbp	012b7c08	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c45640	g_lbp	012b7c08	24	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c457a0	g_lbp	012b7ca0	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c457c0	g_lbp	012b7ce8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c46ac0	g_lbp	012b7d64	5	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c46cc0	g_lbp	012b7da8	6	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c46d80	g_lbp	012b7df8	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c475c0	g_lbp	012b7e60	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c47800	g_lbp	012b7e60	22	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c478b0	g_lbp	012b7ee8	1	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c47cf0	g_lbp	012b7ef0	24	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c47e50	g_lbp	012b7f88	4	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c554c0	g_lbp	012b8a64	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c554f0	g_lbp	012b8a78	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c55520	g_lbp	012b8a8c	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c55550	g_lbp	012b8aa0	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c55580	g_lbp	012b8ab4	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c555b0	g_lbp	012b8ac8	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c565d0	g_lbp	012b8c18	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c56830	g_lbp	012b8d48	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c568c0	g_lbp	012b8cc8	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c56e40	g_lbp	012b8d98	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c572d0	g_lbp	012b8d98	14	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c596c0	g_lbp	012b8f78	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c62df0	g_lbp	012b938c	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c699f0	g_lbp	012b9588	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source; landed descriptive class CCombFilter (vptr store + callee)
+00c6a3b0	g_lbp	012b9590	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source; landed descriptive class CReverbTapBank (vptr store + callee)
+00c6ac30	g_lbp	012b9594	5	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c6ad90	g_lbp	012b95c4	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c6d350	g_lbp	012bed7c	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c6e1d0	g_lbp	012bed90	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c6ecb0	g_lbp	012bedb8	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c71cd0	g_lbp	012bedf4	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00c75590	g_lbp	012bf07c	0	-		-	libpk/CODA region, no PDB, no RTTI: no name source
+00ca71e0	g_lbp	012bf408	3	-		-	DirectShow strmbase region (vendor library route)
+00ca7340	g_lbp	012bf498	3	-		-	DirectShow strmbase region (vendor library route); landed descriptive class CBaseRenderer (vptr store + callee)
+00cab750	g_lbp	012bf7a8	3	-		-	DirectShow strmbase region (vendor library route)
+00ce0ec0	g_tsw	012c3434	0	??_GCEndGameBarrier@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z	V(1:00ce0600,2:00cdff30,3:00cdff20) P(G:fwin,D:fwin) C	DIFFER(104v48)	
+00ce1250	g_tsw	012c3578	0	??_G?$CActiveEntityScript@VCPersonalScript_GlobalThingsScript@NScript@@@@UAEPAXI@Z	V(4:00ce11b0) P(E:fwin,D:fwin)	DIFFER(269v48)	CActiveEntityScript<T>: R-NF424-2
+00cef9a0	g_tsw	012c3fa4	0	??_GCGameflowScript@NScript@@UAEPAXI@Z	V(1:00ce75b0,2:00ce7670,3:00ce6cf0,4:00cef8e0) P(G:egor+fwin,D:egor+fwin) C	DIFFER(30v48)	
+00cf6860	g_tsw	012c695c	0	??_G?$CActiveEntityScript@VCQ_ArenaHoldingScriptScript@NScript@@@@UAEPAXI@Z	V(4:00cf67f0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00cfdfa0	g_tsw	012c7da0	0	??_G?$CActiveEntityScript@VCQ_AwakeningTheOracleScript@NScript@@@@UAEPAXI@Z	V(4:00cfdf50) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d005c0	g_lbp	012c78b0	0	??_GCQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z	V(1:00cfaeb0,2:00cfb080,3:00cfadd0,4:00cfaf70) P(G:fwin,E:egor,D:egor+fwin) C	RELOCATION_MATCH	
+00d032c0	g_tsw	012c88ac	0	??_G?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEPAXI@Z	V(4:00d03270) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d0ede0	g_tsw	012c9a70	0	??_G?$CActiveEntityScript@VCQ_BanditCampBossBattleScript@NScript@@@@UAEPAXI@Z	V(4:00d0ed60) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d17310	g_tsw	012ca6ac	0	??_G?$CActiveEntityScript@VCQ_BountyHuntScript@NScript@@@@UAEPAXI@Z	V(4:00d17290) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d20760	g_tsw	012cb140	0	??_G?$CActiveEntityScript@VCQ_BreakSiegeScript@NScript@@@@UAEPAXI@Z	V(4:00d20710) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d24630	g_tsw	012cb5fc	0	??_G?$CActiveEntityScript@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEPAXI@Z	V(4:00d245c0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d26160	g_tsw	012cb7c4	0	??_G?$CActiveEntityScript@VCQ_DragonBossFightScript@NScript@@@@UAEPAXI@Z	V(4:00d26110) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d27270	g_lbp	012cb70c	0	??_GCQ_DragonBossFightScript@NScript@@UAEPAXI@Z	V(1:00d25520,2:00d255e0,3:00d254b0) P(G:egor+fwin,D:egor+fwin) C	DIFFER(54v30)	
+00d29800	g_tsw	012cbcc8	0	??_G?$CActiveEntityScript@VCQ_EndGameScript@NScript@@@@UAEPAXI@Z	V(4:00d29790) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d2d700	g_tsw	012cc470	0	??_G?$CActiveEntityScript@VCQ_EndGameFocalSitesScript@NScript@@@@UAEPAXI@Z	V(4:00d2d680) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d2d900	g_tsw	012cc48c	0	??_GCPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z	V(1:00d2d830,2:00d2d810) P(G:egor+fwin,D:fwin) C	DIFFER(76v48)	
+00d2f620	g_lbp	012cbeb4	0	??_GCQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z	V(1:00d2a950,2:00d2aa40,3:00d2a8a0,4:00d2aa10) P(G:egor,E:fwin,D:egor+fwin) C	DIFFER(54v30)	
+00d30000	g_tsw	012cc724	0	??_G?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEPAXI@Z	V(4:00d2ffb0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d38cf0	g_tsw	012cd1a0	0	??_G?$CActiveEntityScript@VCQ_FireHeartScript@NScript@@@@UAEPAXI@Z	V(4:00d38ca0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d44620	g_tsw	012ce48c	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingScript@NScript@@@@UAEPAXI@Z	V(4:00d445d0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d50c30	g_tsw	012cf6e0	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEPAXI@Z	V(4:00d50bc0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d52470	g_tsw	012cf890	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEPAXI@Z	V(4:00d52420) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d58460	g_tsw	012d0580	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEPAXI@Z	V(4:00d58410) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d5ae40	g_tsw	012d09f4	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingSkillScript@NScript@@@@UAEPAXI@Z	V(4:00d5add0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d5e040	g_tsw	012d108c	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingWillScript@NScript@@@@UAEPAXI@Z	V(4:00d5dfd0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d64370	g_tsw	012d1a64	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEPAXI@Z	V(4:00d64320) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d67240	g_tsw	012d1dbc	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEPAXI@Z	V(4:00d671f0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d68e70	g_tsw	012d1f7c	0	??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEPAXI@Z	V(4:00d68e20) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d6b6f0	g_tsw	012d22b8	0	??_G?$CActiveEntityScript@VCQ_HangingTreeEvilScript@NScript@@@@UAEPAXI@Z	V(4:00d6b6a0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d72b40	g_tsw	012d299c	0	??_G?$CActiveEntityScript@VCQ_HangingTreeGoodScript@NScript@@@@UAEPAXI@Z	V(4:00d72af0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d7aa00	g_tsw	012d346c	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsScript@NScript@@@@UAEPAXI@Z	V(4:00d7a9b0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d7c440	g_tsw	012d3978	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsThunderScript@NScript@@@@UAEPAXI@Z	V(4:00d7c3f0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d7fc10	g_tsw	012d3fe0	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsArenaScript@NScript@@@@UAEPAXI@Z	V(4:00d7fbc0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d82370	g_tsw	012d4428	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsBriarScript@NScript@@@@UAEPAXI@Z	V(4:00d82320) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d83330	g_lbp	012d41bc	0	??_GCQ_HeroSoulsBriarScript@NScript@@UAEPAXI@Z	V(1:00d80d50,2:00d80e40,3:00d80cc0,4:00d80e10) P(G:egor+fwin,D:egor+fwin) C	RELOCATION_MATCH	
+00d84600	g_tsw	012d47c0	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsMotherScript@NScript@@@@UAEPAXI@Z	V(4:00d845b0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d84b20	g_tsw	012d45f0	0	??_GCQ_HeroSoulsMotherScript@NScript@@UAEPAXI@Z	V(1:00d834e0,2:00d835d0,3:00d83470,4:00d835a0) P(G:egor,E:fwin,D:egor+fwin) C	DIFFER(40v48)	
+00d872a0	g_tsw	012d4c78	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsGuildmasterScript@NScript@@@@UAEPAXI@Z	V(4:00d87250) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00d896e0	g_tsw	012d4f84	0	??_G?$CActiveEntityScript@VCQ_HeroSoulsNostroScript@NScript@@@@UAEPAXI@Z	V(4:00d89690) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d8aae0	g_tsw	012d5114	0	??_G?$CActiveEntityScript@VCQ_HerosOldHouseScript@NScript@@@@UAEPAXI@Z	V(4:00d8aa70) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d91710	g_tsw	012d5b70	0	??_G?$CActiveEntityScript@VCQ_HobbeCaveScript@NScript@@@@UAEPAXI@Z	V(4:00d916c0) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00d9dac0	g_tsw	012d6c44	0	??_G?$CActiveEntityScript@VCQ_HobbeToothContestScript@NScript@@@@UAEPAXI@Z	V(4:00d9da40) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00da0130	g_tsw	012d6e5c	0	??_G?$CActiveEntityScript@VCQ_MinionCampScript@NScript@@@@UAEPAXI@Z	V(4:00da00e0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00da84b0	g_tsw	012d7844	0	??_G?$CActiveEntityScript@VCQ_MinionClifftopChaseScript@NScript@@@@UAEPAXI@Z	V(4:00da8430) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00db8680	g_tsw	012d95b0	0	??_G?$CActiveEntityScript@VCQ_NewOakValeIntroScript@NScript@@@@UAEPAXI@Z	V(4:00db8630) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00dc02d0	g_tsw	012d9f9c	0	??_G?$CActiveEntityScript@VCQ_OakValeBanditRaidScript@NScript@@@@UAEPAXI@Z	V(4:00dc0280) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00dc2540	g_tsw	012d9e18	0	??_GCQ_OakValeBanditRaidScript@NScript@@UAEPAXI@Z	V(1:00dbf210,2:00dbf2d0,3:00dbf1e0) P(G:egor+fwin,D:egor+fwin) C	DIFFER(30v48)	
+00dc8860	g_tsw	012daa38	0	??_G?$CActiveEntityScript@VCQ_OpeningGraveyardSecretPassageScript@NScript@@@@UAEPAXI@Z	V(4:00dc8810) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00dcf8f0	g_tsw	012db50c	0	??_G?$CActiveEntityScript@VCQ_OrchardFarmRaidScript@NScript@@@@UAEPAXI@Z	V(4:00dcf8a0) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00dd1f20	g_lbp	012daf78	0	??_GCQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z	V(1:00dcc660,2:00dcc770,3:00dcc140,4:00dcc720) P(G:fwin,E:egor,D:egor+fwin) C	RELOCATION_MATCH	
+00dd9460	g_tsw	012dc584	0	??_G?$CActiveEntityScript@VCQ_PrisonEscapeRescueMotherScript@NScript@@@@UAEPAXI@Z	V(4:00dd9410) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00ddc950	g_tsw	012dca80	0	??_G?$CActiveEntityScript@VCQ_PrisonRaceScript@NScript@@@@UAEPAXI@Z	V(4:00ddc8e0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00ddf060	g_tsw	012dcd2c	0	??_G?$CActiveEntityScript@VCQ_PrisonWardenGameScript@NScript@@@@UAEPAXI@Z	V(4:00ddeff0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00de45e0	g_tsw	012dd4a0	0	??_G?$CActiveEntityScript@VCQ_RansomVictimScript@NScript@@@@UAEPAXI@Z	V(4:00de4590) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00dec730	g_tsw	012ddc04	0	??_G?$CActiveEntityScript@VCQ_RansomVictimChiefsHouseScript@NScript@@@@UAEPAXI@Z	V(4:00dec6c0) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00def380	g_tsw	012ddf08	0	??_G?$CActiveEntityScript@VCQ_SecretPassageScript@NScript@@@@UAEPAXI@Z	V(4:00def330) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00def730	g_tsw	012ddf3c	0	??_GCSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@UAEPAXI@Z	V(1:00def760,2:00def710,3:00def700,5:00def720) P(G:egor+fwin,D:egor+fwin) C	DIFFER(91v48)	
+00df36b0	g_tsw	012de350	0	??_G?$CActiveEntityScript@VCQ_SummoningTheShipScript@NScript@@@@UAEPAXI@Z	V(4:00df3660) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00df4bb0	g_tsw	012de5e4	0	??_G?$CActiveEntityScript@VCQ_TentacleKrakenBossFightScript@NScript@@@@UAEPAXI@Z	V(4:00df4b60) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00df9b50	g_tsw	012deaac	0	??_G?$CActiveEntityScript@VCQ_TraderConflictEvilScript@NScript@@@@UAEPAXI@Z	V(4:00df9b00) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00dfa080	g_tsw	012de6a4	0	??_GCQ_TraderConflictEvilScript@NScript@@UAEPAXI@Z	V(1:00df5f50,2:00df6010,3:00df5cd0) P(G:egor,E:fwin,D:fwin) C	DIFFER(30v48)	
+00dfc260	g_tsw	012dee4c	0	??_G?$CActiveEntityScript@VCQ_TraderConflictGoodScript@NScript@@@@UAEPAXI@Z	V(4:00dfc210) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00e05300	g_tsw	012df7d4	0	??_G?$CActiveEntityScript@VCQ_TraderEscortScript@NScript@@@@UAEPAXI@Z	V(4:00e05280) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00e0e730	g_tsw	012e00c8	0	??_G?$CActiveEntityScript@VCQ_UndeadRisingScript@NScript@@@@UAEPAXI@Z	V(4:00e0e6b0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e0e7b0	g_tsw	012dfd3c	0	??_GCQ_UndeadRisingScript@NScript@@UAEPAXI@Z	V(1:00e0b0a0,2:00e0b160,3:00e0b020) P(G:egor+fwin,D:fwin) C	DIFFER(30v48)	
+00e122d0	g_tsw	012e0574	0	??_G?$CActiveEntityScript@VCQ_WaspBossScript@NScript@@@@UAEPAXI@Z	V(4:00e12280) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e18380	g_tsw	012e0cc8	0	??_G?$CActiveEntityScript@VCQ_WhiteBalverineKnotholeGladeScript@NScript@@@@UAEPAXI@Z	V(4:00e18330) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e19530	g_tsw	012e0e84	0	??_G?$CActiveEntityScript@VCQ_WhiteBalverineWWScript@NScript@@@@UAEPAXI@Z	V(4:00e194e0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e1c0c0	g_tsw	012e10e8	0	??_G?$CActiveEntityScript@VCQ_WizardBattleScript@NScript@@@@UAEPAXI@Z	V(4:00e1c070) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e1f7b0	g_tsw	012e1610	0	??_G?$CActiveEntityScript@VCQR_EscortTraderScript@NScript@@@@UAEPAXI@Z	V(4:00e1f730) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e25f10	g_tsw	012e1e44	0	??_G?$CActiveEntityScript@VCQS_GuardianSisterInfoScript@NScript@@@@UAEPAXI@Z	V(4:00e25ea0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e26dd0	g_tsw	012e1f90	0	??_G?$CActiveEntityScript@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@UAEPAXI@Z	V(4:00e26d60) P(G:egor,E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e27e30	g_tsw	012e20c0	0	??_G?$CActiveEntityScript@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEPAXI@Z	V(4:00e27dc0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e29290	g_tsw	012e2268	0	??_G?$CActiveEntityScript@VCQS_MeetSisterScript@NScript@@@@UAEPAXI@Z	V(4:00e29220) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e2a2f0	g_tsw	012e23d4	0	??_G?$CActiveEntityScript@VCQS_ScytheInfoScript@NScript@@@@UAEPAXI@Z	V(4:00e2a280) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e2ea90	g_tsw	012e2b30	0	??_G?$CActiveEntityScript@VCV_AmbushScamScript@NScript@@@@UAEPAXI@Z	V(4:00e2ea10) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e374f0	g_tsw	012e34e0	0	??_G?$CActiveEntityScript@VCV_ArcheryCompetitionScript@NScript@@@@UAEPAXI@Z	V(4:00e37450) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e37660	g_lbp	012e2ee4	0	??_GCV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z	V(1:00e324a0,2:00e32540,3:00e323b0,4:00e37520) P(G:fwin,E:egor,D:egor+fwin) C	RELOCATION_MATCH	
+00e38d50	g_tsw	012e3780	0	??_G?$CActiveEntityScript@VCV_AssassinAttacksScript@NScript@@@@UAEPAXI@Z	V(4:00e38ce0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e3b8c0	g_tsw	012e3c08	0	??_G?$CActiveEntityScript@VCV_BordelloScript@NScript@@@@UAEPAXI@Z	V(4:00e3b850) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e47770	g_tsw	012e4b60	0	??_G?$CActiveEntityScript@VCV_BanditCampPathScript@NScript@@@@UAEPAXI@Z	V(4:00e47720) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e4b350	g_tsw	012e510c	0	??_G?$CActiveEntityScript@VCV_BanditTollScript@NScript@@@@UAEPAXI@Z	V(4:00e4b2e0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e54230	g_tsw	012e5ee0	0	??_G?$CActiveEntityScript@VCV_BeardyBaldyScript@NScript@@@@UAEPAXI@Z	V(4:00e541b0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e54850	g_tsw	012e5f5c	0	??_G?$CActiveEntityScript@VCV_BookCollectingScript@NScript@@@@UAEPAXI@Z	V(4:00e547e0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e57a80	g_lbp	012e5efc	0	??_GCV_BookCollectingScript@NScript@@UAEPAXI@Z	V(1:00e543b0,2:00e54450,3:00e54990,4:00e54880) P(G:egor+fwin,D:egor+fwin) C	DIFFER(48v30)	
+00e5d080	g_tsw	012e6e30	0	??_G?$CActiveEntityScript@VCV_BeggarAndChildScript@NScript@@@@UAEPAXI@Z	V(4:00e5d030) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e5de50	g_tsw	012e701c	0	??_GCBodyGuard@CV_BodyGuardScript@NScript@@UAEPAXI@Z	V(1:00e5fd40,2:00e5de80,4:00e5f190,5:00e5fb80) P(G:egor,E:fwin,D:fwin) C	DIFFER(90v48)	
+00e5f160	g_tsw	012e70ac	0	??_G?$CActiveEntityScript@VCV_BodyGuardScript@NScript@@@@UAEPAXI@Z	V(4:00e5f110) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e64180	g_tsw	012e74fc	0	??_G?$CActiveEntityScript@VCV_ChickenKickingScript@NScript@@@@UAEPAXI@Z	V(4:00e64130) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e6b3d0	g_tsw	012e851c	0	??_G?$CActiveEntityScript@VCV_ChapelOfEvilScript@NScript@@@@UAEPAXI@Z	V(4:00e6b350) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e74d40	g_tsw	012e9600	0	??_G?$CActiveEntityScript@VCV_DemonDoorsScript@NScript@@@@UAEPAXI@Z	V(4:00e74cd0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e77660	g_tsw	012e9960	0	??_G?$CActiveEntityScript@VCV_ExposeMayorScript@NScript@@@@UAEPAXI@Z	V(4:00e775f0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e7c860	g_tsw	012ea1f8	0	??_G?$CActiveEntityScript@VCV_FishermanScript@NScript@@@@UAEPAXI@Z	V(4:00e7c7c0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e7eec0	g_tsw	012ea604	0	??_G?$CActiveEntityScript@VCV_FishingCompetitionScript@NScript@@@@UAEPAXI@Z	V(4:00e7ee70) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e839d0	g_lbp	012eb0f8	0	??_GCFisticuffsMember@CV_FisticuffsClubScript@NScript@@UAEPAXI@Z	V(1:00e84b80,2:00e83a20) P(G:egor+fwin,D:fwin) C	DIFFER(89v30)	
+00e83d20	g_tsw	012eb1e0	0	??_G?$CActiveEntityScript@VCV_FisticuffsClubScript@NScript@@@@UAEPAXI@Z	V(4:00e83cd0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e8d270	g_tsw	012ebd00	0	??_G?$CActiveEntityScript@VCV_GhostGrannyNecklaceScript@NScript@@@@UAEPAXI@Z	V(4:00e8d1f0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e90bb0	g_tsw	012ec1a0	0	??_G?$CActiveEntityScript@VCV_GuildMasterScript@NScript@@@@UAEPAXI@Z	V(4:00e90b40) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e93be0	g_tsw	012ecb04	0	??_G?$CActiveEntityScript@VCV_HiddenBootyScript@NScript@@@@UAEPAXI@Z	V(4:00e93b70) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e960e0	g_tsw	012ecd58	0	??_G?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z	V(4:00e96090) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e985e0	g_tsw	012ed0a8	0	??_G?$CActiveEntityScript@VCV_HeroDollsScript@NScript@@@@UAEPAXI@Z	V(4:00e98570) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e9a240	g_tsw	012ed370	0	??_G?$CActiveEntityScript@VCV_HeroDuelScript@NScript@@@@UAEPAXI@Z	V(4:00e9a1f0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00e9e0e0	g_tsw	012ed6d4	0	??_G?$CActiveEntityScript@VCV_IntroductionToTrophiesScript@NScript@@@@UAEPAXI@Z	V(4:00e9e040) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ea1060	g_tsw	012edb88	0	??_G?$CActiveEntityScript@VCV_KnotholeGladeGatesScript@NScript@@@@UAEPAXI@Z	V(4:00ea1010) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ea5130	g_lbp	-	-	-	-	-	site in .rdata but no vptr store found
+00ea5900	g_tsw	012ee154	0	??_G?$CActiveEntityScript@VCV_LostTraderScript@NScript@@@@UAEPAXI@Z	V(4:00ea5890) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ea8070	g_tsw	012ee5a0	0	??_G?$CActiveEntityScript@VCV_MazeResearchScript@NScript@@@@UAEPAXI@Z	V(4:00ea8000) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ea86c0	g_tsw	012ee444	0	??_GCV_MazeResearchScript@NScript@@UAEPAXI@Z	V(1:00ea7760,2:00ea7800,3:00ea7750,4:00ea80a0) P(G:fwin,E:egor,D:egor+fwin) C	DIFFER(40v48)	
+00ead9c0	g_tsw	012ef7e4	0	??_G?$CActiveEntityScript@VCV_MurderTwistScript@NScript@@@@UAEPAXI@Z	V(4:00ead970) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00eb62b0	g_tsw	012efa0c	0	??_GCMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@UAEPAXI@Z	V(1:00eaef30,2:00eaee80,3:00eaee00,4:00eb6900,5:00eaee10) P(G:egor+fwin,D:egor+fwin) C	DIFFER(97v48)	
+00eb62e0	g_tsw	012efee8	0	??_GCMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@UAEPAXI@Z	V(1:00eb2140,2:00eb2070,3:00eb2060) P(E:egor+fwin,D:egor+fwin) C	DIFFER(88v48)	
+00eb64f0	g_tsw	012f040c	0	??_G?$CActiveEntityScript@VCV_MurderTwistFinalScript@NScript@@@@UAEPAXI@Z	V(4:00eb6480) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00eb9870	g_tsw	012f0808	0	??_G?$CActiveEntityScript@VCV_MayorsInvitationScript@NScript@@@@UAEPAXI@Z	V(4:00eb9820) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ebed70	g_tsw	012f0ec0	0	??_G?$CActiveEntityScript@VCV_OracleScript@NScript@@@@UAEPAXI@Z	V(4:00ebed00) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ec1180	g_tsw	012f1214	0	??_G?$CActiveEntityScript@VCV_ParanoidWhispersScript@NScript@@@@UAEPAXI@Z	V(4:00ec1110) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ec1750	g_tsw	012f12bc	0	??_G?$CActiveEntityScript@VCV_PicnicAreaAfterWaspBossScript@NScript@@@@UAEPAXI@Z	V(4:00ec16e0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ec29c0	g_tsw	012f13f4	0	??_G?$CActiveEntityScript@VCV_RandomPopulationSimScript@NScript@@@@UAEPAXI@Z	V(4:00ec2970) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ec4940	g_tsw	012f16fc	0	??_G?$CActiveEntityScript@VCV_RockTrollFirstEncounterScript@NScript@@@@UAEPAXI@Z	V(4:00ec48d0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ecd780	g_tsw	012f243c	0	??_G?$CActiveEntityScript@VCV_SickChildScript@NScript@@@@UAEPAXI@Z	V(4:00ecd710) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ed2a20	g_tsw	012f2dc0	0	??_G?$CActiveEntityScript@VCV_SingingStonesScript@NScript@@@@UAEPAXI@Z	V(4:00ed29d0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ed4a10	g_tsw	012f3000	0	??_G?$CActiveEntityScript@VCV_StatueMasterScript@NScript@@@@UAEPAXI@Z	V(4:00ed49a0) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ed54a0	g_tsw	012f3190	0	??_G?$CActiveEntityScript@VCV_SwordInTheStoneScript@NScript@@@@UAEPAXI@Z	V(4:00ed5450) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ed8390	g_tsw	012f34f4	0	??_G?$CActiveEntityScript@VCV_TalentlessBardScript@NScript@@@@UAEPAXI@Z	V(4:00ed8320) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00edd030	g_tsw	012f3f00	0	??_G?$CActiveEntityScript@VCV_TempleOfLightScript@NScript@@@@UAEPAXI@Z	V(4:00edcfb0) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ee1be0	g_tsw	012f42b0	0	??_GCTH_SnowTroll@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z	V(1:00ee36a0,2:00ee0340,3:00ee0330,5:00ee0350) P(G:egor+fwin,D:egor+fwin) C	DIFFER(104v48)	
+00ee1d90	g_tsw	012f4454	0	??_G?$CActiveEntityScript@VCV_TravellingHeroesScript@NScript@@@@UAEPAXI@Z	V(4:00ee1d20) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ee56f0	g_tsw	012f5194	0	??_G?$CActiveEntityScript@VCV_TourGuideScript@NScript@@@@UAEPAXI@Z	V(4:00ee5680) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ee76c0	g_tsw	012f52f8	0	??_G?$CActiveEntityScript@VCV_TrophyDealerScript@NScript@@@@UAEPAXI@Z	V(4:00ee7650) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00eedbc0	g_tsw	012f58c8	0	??_G?$CActiveEntityScript@VCPersonalScript_alextestScript@NScript@@@@UAEPAXI@Z	V(4:00eedb50) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00ef51d0	g_tsw	012f65ac	0	??_G?$CActiveEntityScript@VCPersonalScript_EmptyScript@NScript@@@@UAEPAXI@Z	V(4:00ef5180) P(E:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00efa390	g_tsw	012f69cc	0	??_G?$CActiveEntityScript@VCguy_scriptScript@NScript@@@@UAEPAXI@Z	V(4:00efa320) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00efaf00	g_tsw	012f6a8c	0	??_G?$CActiveEntityScript@VCbandit_level_cutsceneScript@NScript@@@@UAEPAXI@Z	V(4:00efae90) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00efb5e0	g_tsw	012f6b3c	0	??_G?$CActiveEntityScript@VCProximityPodiumTestScript@NScript@@@@UAEPAXI@Z	V(4:00efb570) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00efbb40	g_tsw	012f6bb8	0	??_G?$CActiveEntityScript@VCHitSwitchTestScript@NScript@@@@UAEPAXI@Z	V(4:00efbad0) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00efc100	g_tsw	012f6c3c	0	??_G?$CActiveEntityScript@VCGuildSealTriggerTestScript@NScript@@@@UAEPAXI@Z	V(4:00efc090) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00efdc10	g_tsw	012f6e60	0	??_G?$CActiveEntityScript@VCMarkTestScriptsScript@NScript@@@@UAEPAXI@Z	V(4:00efdba0) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00efefd0	g_tsw	012f6f74	0	??_G?$CActiveEntityScript@VCBenTestScriptsScript@NScript@@@@UAEPAXI@Z	V(4:00efef60) P(G:fwin,D:fwin) C	DIFFER(30v48)	CActiveEntityScript<T>: R-NF424-2
+00eff740	g_tsw	012f7038	0	??_G?$CActiveEntityScript@VCTonyTestScriptsScript@NScript@@@@UAEPAXI@Z	V(4:00eff6d0) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00f012d0	g_tsw	012f72a8	0	??_G?$CActiveEntityScript@VCOracleMinigameTestScript@NScript@@@@UAEPAXI@Z	V(4:00f01260) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00f01e80	g_tsw	012f7354	0	??_G?$CActiveEntityScript@VCQ_CinemaTestScript@NScript@@@@UAEPAXI@Z	V(4:00f01e30) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00f09ca0	g_tsw	012f8178	0	??_G?$CActiveEntityScript@VCQ_AmbushTradersScript@NScript@@@@UAEPAXI@Z	V(4:00f09c20) P(E:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00f1ccb0	g_tsw	012f9ec0	0	??_G?$CActiveEntityScript@VCQ_ArenaScript@NScript@@@@UAEPAXI@Z	V(4:00f1cc60) P(G:fwin,D:fwin)	DIFFER(272v48)	CActiveEntityScript<T>: R-NF424-2
+00f25e20	g_lbp	012fb358	0	??_GCArenaCreatureDef@@UAEPAXI@Z	V(18:00f25e70) P(E:egor+fwin,D:egor+fwin) C D	RELOCATION_MATCH	
+00f270b0	g_lbp	012fb500	0	??_GCHeroSoulsCreatureDef@@UAEPAXI@Z	V(18:00f27100,19:00f27180,20:00f270a0) P(G:egor+fwin,D:egor+fwin) C	RELOCATION_MATCH	
+00f29510	g_lbp	012fb5c8	0	??_GCScriptDef@@UAEPAXI@Z	V(18:00f2d6e0,19:00f2a240,20:00f29500) P(G:fwin,E:egor,D:egor+fwin) C	DIFFER(1388v30)	
+00f29ce0	g_lbp	012fb630	0	??_GCRegionScriptDef@@UAEPAXI@Z	V(18:00f29c60,19:00f29f60,20:00f29c50) P(G:egor,E:fwin,D:fwin) C	RELOCATION_MATCH	

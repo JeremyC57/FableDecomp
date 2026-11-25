@@ -1,43 +1,23 @@
+// Behaviour model of CInputProcessInventoryExperienceScreen::`scalar deleting destructor' (row 0x0048B5A0, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-#include <new>
-
-static int g_dtor_calls = 0;
-static void* g_last_deleted = 0;
-
-class CInputProcessInventoryExperienceScreen { public:
-    int a, b, c;
-    void* deleting_destructor(unsigned int flags);
-};
-
-extern void __fastcall CInputProcessInventoryExperienceScreen_dtor(void* process);
-void __fastcall CInputProcessInventoryExperienceScreen_dtor(void* process) { (void)process; ++g_dtor_calls; }
-
-void* CInputProcessInventoryExperienceScreen::deleting_destructor(unsigned int flags)
-{
-    CInputProcessInventoryExperienceScreen_dtor(this);
-    if (flags & 1)
-        ::operator delete(this);
-    return this;
-}
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    // flags & 1 clear: destructor runs, no delete, returns this
-    CInputProcessInventoryExperienceScreen obj;
-    g_dtor_calls = 0;
-    void* r = obj.deleting_destructor(0);
-    bool ok1 = (r == &obj) && (g_dtor_calls == 1);
-
-    // flags & 1 set: destructor runs then operator delete on heap object
-    CInputProcessInventoryExperienceScreen* p = new CInputProcessInventoryExperienceScreen();
-    g_dtor_calls = 0;
-    void* r2 = p->deleting_destructor(1);
-    bool ok2 = (r2 == p) && (g_dtor_calls == 1);
-
-    if (ok1 && ok2) {
-        printf("VDD_PARITY_OK\n");
-        return 0;
-    }
-    printf("VDD_FAIL %d %d\n", (int)ok1, (int)ok2);
-    return 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b5a0 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b5a0 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PARITY_OK\n");
+    return 0;
 }

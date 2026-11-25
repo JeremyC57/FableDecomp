@@ -14,6 +14,7 @@
 // Model: local polymorphic model (the generated header holds the vptr as a plain word and Head as bytes).
 // NF181 (2026-11-20, q11902): the local CBaseClassNonCopyable default ctor is protected (Ego_r.pdb / FableWin.pdb
 //   ??0CBaseClassNonCopyable@@IAE@XZ, engine/CBaseClassNonCopyable.h); access only, was public (QAE).
+// Leaf: ??0CResourceBank@@QAE@XZ
 struct CBaseClassNonCopyable {
     protected: CBaseClassNonCopyable(); public:                         // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();

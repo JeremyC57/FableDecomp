@@ -101,7 +101,8 @@ for own, mem in sorted(units.items()):
     defnote = "" if not objdir else (" (objects: DEF checked)" if ds is not None else " (no object under --objdir: DEF not checked)")
     for a in rows:
         lf = leaf(text(ent[a]["Source"]))
-        if not lf.startswith("?"): why.append(f"{a} leaf {lf!r} is not a full symbol"); continue
+        if not (lf.startswith("?") or re.fullmatch(r"_\$E\d+", lf)):   # `_$E<n>`: the compiler's dynamic-initializer symbol is complete (one per object)
+            why.append(f"{a} leaf {lf!r} is not a full symbol"); continue
         if ds is not None and lf not in ds: why.append(f"{a} leaf not defined in the unit object")
         sp = spelled(lf)
         m = re.search(sp[0], oc) if sp else None

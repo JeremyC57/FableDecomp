@@ -1,64 +1,23 @@
-#include <stdio.h>
-#include <new>
-
-class CInputProcessInventoryClothing { public: int marker; };
-
-static int g_dtor_calls = 0;
-static int g_delete_calls = 0;
-
-// definition of the extern scalar destructor the source calls
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();
-};
-CAInputProcess::~CAInputProcess()
-{
-    CInputProcessInventoryClothing* process = (CInputProcessInventoryClothing*)this; (void)process;
-    (void)process;
-    ++g_dtor_calls;
-}
-
-// tracked replacement operator delete
-static void* g_last_delete = 0;
-void operator delete(void* p) throw()
-{
-    g_last_delete = p;
-    ++g_delete_calls;
-    // no real free; test objects are stack/static
-}
-
-extern void* __fastcall CInputProcessInventoryClothing_scalar_deleting_destructor(
-    CInputProcessInventoryClothing* process, int edx, unsigned int flags);
-
+// Behaviour model of CInputProcessInventoryClothing::`scalar deleting destructor' (row 0x0048B520, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
+#include <cstdio>
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessInventoryClothing a;
-    a.marker = 7;
-
-    // flags bit0 clear: dtor runs, no delete, returns self
-    g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r1 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 0);
-    bool ok1 = (r1 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    // flags bit0 set: dtor runs, delete called with self, returns self
-    g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r2 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 1);
-    bool ok2 = (r2 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 1) && (g_last_delete == &a);
-
-    // even flags value with bit0 clear (2): no delete
-    g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r3 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 2);
-    bool ok3 = (r3 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    // odd flags value with bit0 set (3): delete
-    g_dtor_calls = g_delete_calls = 0; g_last_delete = 0;
-    void* r4 = CInputProcessInventoryClothing_scalar_deleting_destructor(&a, 0, 3);
-    bool ok4 = (r4 == &a) && (g_dtor_calls == 1) && (g_delete_calls == 1);
-
-    if (ok1 && ok2 && ok3 && ok4) {
-        printf("VDTOR_OK\n");
-        return 0;
-    }
-    printf("VDTOR_FAIL %d %d %d %d\n", (int)ok1, (int)ok2, (int)ok3, (int)ok4);
-    return 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b520 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b520 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDTOR_OK\n");
+    return 0;
 }

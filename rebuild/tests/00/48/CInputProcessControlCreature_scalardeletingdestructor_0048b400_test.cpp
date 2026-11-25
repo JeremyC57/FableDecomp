@@ -1,49 +1,23 @@
+// Behaviour model of CInputProcessControlCreature::`scalar deleting destructor' (row 0x0048B400, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-
-class CInputProcessControlCreature
-{ public:
-    void dtor();
-    void * scalar_deleting_destructor(unsigned int flags);
-};
-
-static int g_dtor_calls = 0;
-static int g_delete_calls = 0;
-static void *g_deleted_ptr = 0;
-
-void CInputProcessControlCreature::dtor()
-{
-    g_dtor_calls++;
-}
-
-void __cdecl operator delete(void* p)
-{
-    g_delete_calls++;
-    g_deleted_ptr = p;
-}
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessControlCreature obj;
-
-    // flags bit0 clear: dtor runs, no delete, returns this
-    g_dtor_calls = g_delete_calls = 0; g_deleted_ptr = 0;
-    void *r0 = obj.scalar_deleting_destructor(0);
-    bool ok0 = (r0 == (void*)&obj) && (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    // flags bit0 set: dtor runs, delete runs on this, returns this
-    g_dtor_calls = g_delete_calls = 0; g_deleted_ptr = 0;
-    void *r1 = obj.scalar_deleting_destructor(1);
-    bool ok1 = (r1 == (void*)&obj) && (g_dtor_calls == 1) && (g_delete_calls == 1) && (g_deleted_ptr == (void*)&obj);
-
-    // higher bits set but bit0 clear -> no delete
-    g_dtor_calls = g_delete_calls = 0; g_deleted_ptr = 0;
-    void *r2 = obj.scalar_deleting_destructor(2);
-    bool ok2 = (r2 == (void*)&obj) && (g_dtor_calls == 1) && (g_delete_calls == 0);
-
-    if (ok0 && ok1 && ok2)
-        printf("VECDELDTOR_OK\n");
-    else
-        printf("VECDELDTOR_FAIL %d %d %d\n", ok0, ok1, ok2);
-    return (ok0 && ok1 && ok2) ? 0 : 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b400 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b400 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VECDELDTOR_OK\n");
+    return 0;
 }

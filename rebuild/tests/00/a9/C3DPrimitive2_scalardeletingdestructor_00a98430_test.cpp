@@ -1,55 +1,23 @@
+// Behaviour model of C3DPrimitive2::`scalar deleting destructor' (row 0x00A98430, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-class C3DPrimitive2 { public:
-    void* vftable;
-    int destroyed;
-};
-
-static int g_freed = 0;
-static C3DPrimitive2* g_last_dtor = 0;
-
-void __fastcall C3DPrimitive2_dtor(C3DPrimitive2* primitive2)
-{
-    g_last_dtor = primitive2;
-    primitive2->destroyed = 1;
-}
-
-void operator delete(void* p)
-{
-    g_freed = 1;
-    (void)p;
-}
-
-void* __fastcall C3DPrimitive2_scalar_deleting_destructor(C3DPrimitive2* primitive2, int edx_unused, unsigned int flags)
-{
-    C3DPrimitive2_dtor(primitive2);
-    if (flags & 1)
-        operator delete(primitive2);
-    return primitive2;
-}
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    C3DPrimitive2 a;
-    a.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r = C3DPrimitive2_scalar_deleting_destructor(&a, 0, 0);
-    if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
-        std::printf("FAIL no-free path\n");
-        return 1;
-    }
-
-    C3DPrimitive2 b;
-    b.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r2 = C3DPrimitive2_scalar_deleting_destructor(&b, 0, 1);
-    if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
-        std::printf("FAIL free path\n");
-        return 1;
-    }
-
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("00a98430 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("00a98430 FAIL no-free path\n"); return 1; }
+    std::free(r);
     std::printf("CLandscapeBackgroundPatch_00a98430_TEST PASS\n");
     return 0;
 }

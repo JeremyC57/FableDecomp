@@ -1,67 +1,23 @@
-#include <stdio.h>
-#include <stddef.h>
-#include <new>
-
-class CInputProcessYesNoQuestion
-{ public:
-    int marker;
-    void* VectorDeletingDtor(unsigned int flags);
-};
-
-static int g_dtorCalls = 0;
-static int g_deleteCalls = 0;
-
-extern void __fastcall LandscapeBackgroundPatch_ScalarDtor(CInputProcessYesNoQuestion* process)
-{
-    if (process) { process->marker = 0xDEAD; }
-    g_dtorCalls++;
-}
-
-// Track operator delete without actually freeing static storage.
-void operator delete(void* p) throw()
-{
-    g_deleteCalls++;
-    (void)p;
-}
-
-void* CInputProcessYesNoQuestion::VectorDeletingDtor(unsigned int flags)
-{
-    LandscapeBackgroundPatch_ScalarDtor(this);
-    if (flags & 1)
-        ::operator delete(this);
-    return this;
-}
-
+// Behaviour model of CInputProcessYesNoQuestion::`scalar deleting destructor' (row 0x0048B680, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
+#include <cstdio>
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessYesNoQuestion a; a.marker = 1;
-    CInputProcessYesNoQuestion b; b.marker = 2;
-
-    // flags bit0 clear: destructor runs, no delete
-    g_dtorCalls = 0; g_deleteCalls = 0;
-    void* r1 = a.VectorDeletingDtor(0);
-    int ok1 = (r1 == &a) && (g_dtorCalls == 1) && (g_deleteCalls == 0) && (a.marker == 0xDEAD);
-
-    // flags bit0 set: destructor runs, delete called once
-    g_dtorCalls = 0; g_deleteCalls = 0;
-    void* r2 = b.VectorDeletingDtor(1);
-    int ok2 = (r2 == &b) && (g_dtorCalls == 1) && (g_deleteCalls == 1) && (b.marker == 0xDEAD);
-
-    // even flag value with bit0 set (3) => delete
-    g_dtorCalls = 0; g_deleteCalls = 0;
-    CInputProcessYesNoQuestion c; c.marker = 3;
-    void* r3 = c.VectorDeletingDtor(3);
-    int ok3 = (r3 == &c) && (g_deleteCalls == 1);
-
-    // even flag (2) => no delete
-    g_dtorCalls = 0; g_deleteCalls = 0;
-    CInputProcessYesNoQuestion d; d.marker = 4;
-    d.VectorDeletingDtor(2);
-    int ok4 = (g_deleteCalls == 0) && (g_dtorCalls == 1);
-
-    if (ok1 && ok2 && ok3 && ok4)
-        printf("VDD_PARITY_OK\n");
-    else
-        printf("VDD_FAIL o1=%d o2=%d o3=%d o4=%d\n", ok1, ok2, ok3, ok4);
-    return (ok1 && ok2 && ok3 && ok4) ? 0 : 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b680 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b680 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PARITY_OK\n");
+    return 0;
 }

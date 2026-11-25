@@ -1,0 +1,51 @@
+addr       parity           behav  name
+00b7a8b0   WARN STANDIN_LEAF ??_GCTriangleStripifierBase@@UAEPAXI@Z (catalog CTriangleStripifierBase::`scalar_deleting_destructor'; names another function)
+00b7a8b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b7ae00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00b806a0   WARN STANDIN_LEAF ??_GCParticleContext@@UAEPAXI@Z (catalog CParticleContext::`scalar_deleting_destructor'; names another function)
+00b806a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b829d0   WARN STANDIN_LEAF ??_GCEngineSimulationBase@@UAEPAXI@Z (catalog CEngineSimulationBase::`scalar_deleting_destructor'; names another function)
+00b829d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b84170   WARN STANDIN_LEAF ??_GCEngineClothSimulationStaticMesh@@UAEPAXI@Z (catalog CEngineClothSimulationStaticMesh::`scalar_deleting_destructor'; names another function)
+00b84170   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b841e0   WARN STANDIN_LEAF ??_GCEngineClothSimulation2DAnimatedMesh@@UAEPAXI@Z (catalog CEngineClothSimulation2DAnimatedMesh::`scalar_deleting_destructor'; names another function)
+00b841e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00ba7ff0   WARN STANDIN_LEAF ??_GCEngineInternalPrimitiveMeshBase@@UAEPAXI@Z (catalog CEngineInternalPrimitiveMeshBase::`scalar_deleting_destructor'; names another function)
+00ba7ff0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00ba9270   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerStaticMeshesBase@@UAEPAXI@Z (catalog CEnginePrimitiveManagerStaticMeshesBase::`scalar_deleting_destructor'; names another function)
+00ba9270   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00ba9290   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerStaticMeshes@@UAEPAXI@Z (catalog CEnginePrimitiveManagerStaticMeshes::`scalar_deleting_destructor'; names another function)
+00ba9290   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bb18e0   WARN STANDIN_LEAF ??_GCEnginePrimitiveManager2DSprites@@UAEPAXI@Z (catalog CEnginePrimitiveManager2DSprites::`scalar_deleting_destructor'; names another function)
+00bb18e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bc2260   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerParticleSpriteGroup@@UAEPAXI@Z (catalog CEnginePrimitiveManagerParticleSpriteGroup::`scalar_deleting_destructor'; names another function)
+00bc2260   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bce630   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerFlareSprites@@UAEPAXI@Z (catalog CEnginePrimitiveManagerFlareSprites::`scalar_deleting_destructor'; names another function)
+00bce630   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bd8660   WARN STANDIN_LEAF ??_GCEnginePrimitiveManagerAnimatedMeshesBase@@UAEPAXI@Z (catalog CEnginePrimitiveManagerAnimatedMeshesBase::`scalar_deleting_destructor'; names another function)
+00bd8660   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bdd640   WARN STANDIN_LEAF ??_GCEngineLandscapeMap@@UAEPAXI@Z (catalog CEngineLandscapeMap::`scalar_deleting_destructor'; names another function)
+00bdd640   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00be8d20   WARN STANDIN_LEAF ??_GCTesselationData@@UAEPAXI@Z (catalog CTesselationData::`scalar_deleting_destructor'; names another function)
+00be8d20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00f25e20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f29ce0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 17
+  00b7a8b0 RELOCATION_MATCH CTriangleStripifierBase::??_GCTriangleStripifierBase@@UAEPAXI@Z
+  00b7ae00 RELOCATION_MATCH CTriangleStripifier2::??_GCTriangleStripifier2@@UAEPAXI@Z
+  00b806a0 RELOCATION_MATCH CParticleContext::??_GCParticleContext@@UAEPAXI@Z
+  00b829d0 RELOCATION_MATCH CEngineSimulationBase::??_GCEngineSimulationBase@@UAEPAXI@Z
+  00b84170 RELOCATION_MATCH CEngineClothSimulationStaticMesh::??_GCEngineClothSimulationStaticMesh@@UAEPAXI@Z
+  00b841e0 RELOCATION_MATCH CEngineClothSimulation2DAnimatedMesh::??_GCEngineClothSimulation2DAnimatedMesh@@UAEPAXI@Z
+  00ba7ff0 RELOCATION_MATCH CEngineInternalPrimitiveMeshBase::??_GCEngineInternalPrimitiveMeshBase@@UAEPAXI@Z
+  00ba9270 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::??_GCEnginePrimitiveManagerStaticMeshesBase@@UAEPAXI@Z
+  00ba9290 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshes::??_GCEnginePrimitiveManagerStaticMeshes@@UAEPAXI@Z
+  00bb18e0 RELOCATION_MATCH CEnginePrimitiveManager2DSprites::??_GCEnginePrimitiveManager2DSprites@@UAEPAXI@Z
+  00bc2260 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::??_GCEnginePrimitiveManagerParticleSpriteGroup@@UAEPAXI@Z
+  00bce630 RELOCATION_MATCH CEnginePrimitiveManagerFlareSprites::??_GCEnginePrimitiveManagerFlareSprites@@UAEPAXI@Z
+  00bd8660 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::??_GCEnginePrimitiveManagerAnimatedMeshesBase@@UAEPAXI@Z
+  00bdd640 RELOCATION_MATCH CEngineLandscapeMap::??_GCEngineLandscapeMap@@UAEPAXI@Z
+  00be8d20 RELOCATION_MATCH CTesselationData::??_GCTesselationData@@UAEPAXI@Z
+  00f25e20 RELOCATION_MATCH CVtable_012fb358::??_GCArenaCreatureDef@@UAEPAXI@Z
+  00f29ce0 RELOCATION_MATCH CVtable_012fb630::??_GCRegionScriptDef@@UAEPAXI@Z

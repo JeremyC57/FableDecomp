@@ -1,22 +1,10 @@
-// CInputProcessInventoryClothing::`vector_deleting_destructor' @ 0x0048b520
-// Standard MSVC scalar/vector deleting destructor:
-//   push esi; mov esi,ecx; call <scalar dtor>; test [esp+8],1; je L; push esi; call operator delete; add esp,4; L: mov eax,esi; ret 4
-#include <new>
-
-class CAInputProcess {
-public:
-    virtual ~CAInputProcess();   // 0x00A0D3D0
-};
-class CInputProcessInventoryClothing { public: };
-
-// The non-deleting (scalar) destructor lives at 0xa0d3d0; declared extern so the
-// authored fn emits a real 'call' to it rather than inlining an empty body.
-
-void* __fastcall CInputProcessInventoryClothing_scalar_deleting_destructor(
-    CInputProcessInventoryClothing* process, int /*edx*/, unsigned int flags)
-{
-    ((CAInputProcess*)(process))->CAInputProcess::~CAInputProcess();
-    if (flags & 1)
-        ::operator delete((void*)process);
-    return process;
-}
+// CInputProcessInventoryClothing::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessInventoryClothing, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessInventoryClothing@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B520, 30 bytes, thiscall, `ret 4`; vftable 0x01237724 slot 0.
+// Identity (NF424, S1 header port): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessInventoryClothing_scalar_deleting_destructor@@YIPAXPAVCInputProcessInventoryClothing@@HI@Z.
+// TU: VC7.1 emits ??_GCInputProcessInventoryClothing@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ stores vftable 0x01237724, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

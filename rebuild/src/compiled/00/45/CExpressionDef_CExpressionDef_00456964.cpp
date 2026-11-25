@@ -1,3 +1,4 @@
+// Leaf: ??0CExpressionDef@@QAE@XZ
 #pragma optimize("s", on)
 // CExpressionDef::CExpressionDef() -- the CParentDefClassBase base, this class's vtable, then the twelve -1 words at +0x3c..+0x58, +0x64..+0x6c and +0x78, and the cleared word at +0x70
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00456964, length 61 bytes.

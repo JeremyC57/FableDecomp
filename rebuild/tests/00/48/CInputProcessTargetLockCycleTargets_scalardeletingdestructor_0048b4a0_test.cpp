@@ -1,45 +1,23 @@
+// Behaviour model of CInputProcessTargetLockCycleTargets::`scalar deleting destructor' (row 0x0048B4A0, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-
-static int g_destroyed = 0;
-static int g_freed = 0;
-
-void __cdecl operator delete(void* p)
-{ (void)p; g_freed = 1; }
-
-class CInputProcessTargetLockCycleTargets
-{ public:
-    int dummy;
-    void destroy();
-};
-void CInputProcessTargetLockCycleTargets::destroy() { g_destroyed = 1; }
-
-void* __fastcall CInputProcessTargetLockCycleTargets_scalar_deleting_destructor(
-        CInputProcessTargetLockCycleTargets* process, int edx, unsigned int flags);
-
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    CInputProcessTargetLockCycleTargets obj;
-    obj.dummy = 42;
-
-    // flags bit0 clear -> destroy but no free
-    g_destroyed = 0; g_freed = 0;
-    void* r1 = CInputProcessTargetLockCycleTargets_scalar_deleting_destructor(&obj, 0, 0);
-    if (r1 != &obj) { printf("FAIL ret1\n"); return 1; }
-    if (g_destroyed != 1) { printf("FAIL destroy1\n"); return 1; }
-    if (g_freed != 0) { printf("FAIL free1\n"); return 1; }
-
-    // flags bit0 set -> destroy AND free
-    g_destroyed = 0; g_freed = 0;
-    void* r2 = CInputProcessTargetLockCycleTargets_scalar_deleting_destructor(&obj, 0, 1);
-    if (r2 != &obj) { printf("FAIL ret2\n"); return 1; }
-    if (g_destroyed != 1) { printf("FAIL destroy2\n"); return 1; }
-    if (g_freed != 1) { printf("FAIL free2\n"); return 1; }
-
-    // even flag (bit0 clear) -> no free
-    g_freed = 0;
-    CInputProcessTargetLockCycleTargets_scalar_deleting_destructor(&obj, 0, 2);
-    if (g_freed != 0) { printf("FAIL free3\n"); return 1; }
-
-    printf("VDD_PARITY_OK\n");
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("0048b4a0 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("0048b4a0 FAIL no-free path\n"); return 1; }
+    std::free(r);
+    std::printf("VDD_PARITY_OK\n");
     return 0;
 }
