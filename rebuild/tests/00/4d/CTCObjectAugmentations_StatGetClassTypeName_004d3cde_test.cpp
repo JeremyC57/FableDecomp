@@ -1,36 +1,35 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x004D3CDE CTCObjectAugmentations::StatGetClassTypeName (NF388 literal audit, NF402 respell): links the row object
+// and asserts what the row hands to CCharString::CCharString(const char*, long): the retail text "CTCObjectAugmentations", length -1,
+// one call, constructed straight into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
 
 class CCharString
 {
 public:
     char* m_data;
-    CCharString(const char* s, long len);
+    CCharString(const char* text, long length);
 };
 
-// local stand-in for the engine ctor @ 0x99ebf0
-CCharString::CCharString(const char* s, long len)
+class CTCObjectAugmentations
 {
-    int n = (len < 0) ? (int)strlen(s) : len;
-    m_data = new char[n + 1];
-    memcpy(m_data, s, n);
-    m_data[n] = 0;
-}
+public:
+    static CCharString __fastcall StatGetClassTypeName();   // definition linked from the row object
+};
 
-class CTCObjectAugmentations { };
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+CCharString::CCharString(const char* text, long length) { m_data = 0; g_text = text; g_len = length; ++g_calls; g_slot = this; }
 
-CCharString __fastcall CActionDoCreatureAction_StatGetClassTypeName(CTCObjectAugmentations* /*self*/)
+int main(void)
 {
-    return CCharString("DoCreatureAction", -1);
-}
-
-int main()
-{
-    CTCObjectAugmentations a;
-    CCharString s = CActionDoCreatureAction_StatGetClassTypeName(&a);
-    if (strcmp(s.m_data, "DoCreatureAction") == 0)
-        printf("GETACTIONNAME_PASS\n");
-    else
-        printf("FAIL:%s\n", s.m_data);
+    CCharString r = CTCObjectAugmentations::StatGetClassTypeName();
+    if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "CTCObjectAugmentations") != 0 || g_slot != (const void*)&r) {
+        printf("FAIL_004d3cde calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+        return 1;
+    }
+    printf("GETACTIONNAME_PASS\n");
     return 0;
 }

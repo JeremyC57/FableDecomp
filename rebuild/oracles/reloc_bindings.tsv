@@ -812,7 +812,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CTCGift@@6B@	0123b83c	004d416d
 ??_7CGiftDef@@6B@	0123b8b4	004d4199
 ??_7CTCDNavigationSeed@@6B@	0123b944	004d41f6
-?Ctor@CCharString@@QAEXPBDH@Z	0099ebf0	004d4232
 ??_7CTCDInternalMarker@@6B@	0123b9e4	004d4260
 ??0CTCDExperienceOrb@@QAE@AAVCThing@@@Z	00779ca0	004d434c
 ?Init@CCharString@@QAEXPBDH@Z	0099ebf0	004d4369

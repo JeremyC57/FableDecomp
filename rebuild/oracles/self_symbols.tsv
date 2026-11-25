@@ -2535,7 +2535,7 @@ address	symbol	status	leaf_given
 004d29ae	?CTCPhysicsControlled_Alloc@@YIPAUCTCPhysicsControlled@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d29e1	?CTCPhysicsNavigator_Alloc@@YIPAUCTCPhysicsNavigator@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d2a14	?CTCSimpleAppearanceMorph_Alloc@@YIPAUCTCSimpleAppearanceMorph@@J@Z	RELOCATION_MATCH	Alloc
-004d2a74	?StatGetClassTypeName@@YI?AVCCharString@@XZ	RELOCATION_MATCH	StatGetClassTypeName
+004d2a74	?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCTargetingAI@@SI?AVCCharString@@XZ
 004d2a91	?CTCTargeted_StatGetClassTypeName@@YIPAXPAUGAN004d2a91@@@Z	RELOCATION_MATCH	StatGetClassTypeName
 004d2ad4	?CTCActionUseScriptedHook_Alloc@@YIPAVCTCActionUseScriptedHook@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d2b04	?CTCActionUseTorch_StatGetClassTypeName@@YIPAXPAUGAN004d2b04@@@Z	RELOCATION_MATCH	StatGetClassTypeName
@@ -2602,7 +2602,7 @@ address	symbol	status	leaf_given
 004d38b7	??0CExplodingObjectDef@@QAE@XZ	RELOCATION_MATCH	??0CExplodingObjectDef@
 004d38f3	?CTCLook_Alloc@@YIPAVCTCLook@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d3926	??0CLookDef@@QAE@XZ	RELOCATION_MATCH	??0CLookDef@
-004d39cf	?StatGetClassTypeName@@YI?AVCCharString@@XZ	RELOCATION_MATCH	StatGetClassTypeName
+004d39cf	?StatGetClassTypeName@CTCDCameraPoint@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDCameraPoint@@SI?AVCCharString@@XZ
 004d3a8f	_CTCCameraPointFixedPoint_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d3acd	_CTCCameraPointFixedDolly_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d3b1a	_CTCCameraPointTrack_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
@@ -2610,7 +2610,7 @@ address	symbol	status	leaf_given
 004d3bb7	_CTCCameraPointDead_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d3c61	?CTCEmoteIcon_Alloc@@YIPAVCTCEmoteIcon@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d3c91	?CTCWeapon_Alloc@@YIPAVCTCWeapon@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
-004d3cde	?CActionDoCreatureAction_StatGetClassTypeName@@YI?AVCCharString@@PAVCTCObjectAugmentations@@@Z	RELOCATION_MATCH	StatGetClassTypeName
+004d3cde	?StatGetClassTypeName@CTCObjectAugmentations@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCObjectAugmentations@@SI?AVCCharString@@XZ
 004d3d46	_CTCCarryable_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d3d69	?CTCEnemy_Alloc@@YIPAVCTCEnemy@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d3dc9	??0CEnemyDef@@QAE@XZ	RELOCATION_MATCH	??0CEnemyDef@
@@ -2635,7 +2635,7 @@ address	symbol	status	leaf_given
 004d41af	?CTCFamilyMember_Alloc@@YIPAVCTCFamilyMember@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d41df	??0CThingComponentDefNameTag@@QAE@XZ	RELOCATION_MATCH	StatGetClassTypeName
 004d4212	_CTCDNavigationSeed_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
-004d4232	?StatGetClassTypeName@@YIPAVCCharString@@PAV1@@Z	RELOCATION_MATCH	StatGetClassTypeName
+004d4232	?StatGetClassTypeName@CTCDHeroSuit@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDHeroSuit@@SI?AVCCharString@@XZ
 004d4249	?StatGetClassTypeName@CTCDInternalMarker@@SI?AVCCharString@@XZ	RELOCATION_MATCH	StatGetClassTypeName@CTCDInternalMarker
 004d427e	_CTCDInternalMarker_GetClassTypeName@4	RELOCATION_MATCH	GetClassTypeName
 004d429b	?StatGetClassTypeName@CTCDRegionEntrance@@SI?AVCCharString@@XZ	RELOCATION_MATCH	StatGetClassTypeName@CTCDRegionEntrance
@@ -2730,7 +2730,7 @@ address	symbol	status	leaf_given
 004d5c77	??0CFishDef@@QAE@XZ	RELOCATION_MATCH	??0CFishDef@
 004d5c8d	?CTCTeleporter_Alloc@@YIPAVCTCTeleporter@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d5cbd	??0CTeleporterDef@@QAE@XZ	RELOCATION_MATCH	??0CTeleporterDef@
-004d5ce6	?StatGetClassTypeName@@YI?AVCCharString@@XZ	RELOCATION_MATCH	StatGetClassTypeName
+004d5ce6	?StatGetClassTypeName@CTCDExplosion@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDExplosion@@SI?AVCCharString@@XZ
 004d5d83	??0CHeroSpecialMovementDef@@QAE@XZ	RELOCATION_MATCH	??0CHeroSpecialMovementDef@
 004d5dac	??0CResurrectionItemDef@@QAE@XZ	RELOCATION_MATCH	??0CResurrectionItemDef@
 004d5dd5	??0CKrakenTentacleDef@@QAE@XZ	RELOCATION_MATCH	??0CKrakenTentacleDef@

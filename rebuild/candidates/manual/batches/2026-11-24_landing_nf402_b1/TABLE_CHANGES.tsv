@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?Ctor@CCharString@@QAEXPBDH@Z	0099ebf0	004d4232	NF402: made-up member spelling of the CCharString(const char*, long) constructor; only the old 0x004D4232 text used it (source census: no other row or test spells ?Ctor@CCharString). The respelt 0x004D4232 calls the PDB constructor ??0CCharString@@QAE@PBDJ@Z (Ego_r + FableWin name sets), already bound to 0099ebf0 (witness 00636e90).
