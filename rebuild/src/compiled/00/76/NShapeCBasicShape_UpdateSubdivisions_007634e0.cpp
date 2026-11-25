@@ -20,6 +20,9 @@
 #define FABLE_RETAIL_C3DVECTOR_ORIGINAL_COPY_FORMAL
 #define FABLE_RETAIL_CCOUNTEDPOINTER
 #define FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL
+// NF397 (T3 nf395 0x00762440): __destroy_aux<CCountedPointer<NShape::CSubdivisionTriangle>*> is pick-any here (engine/NShape_STLHelpers.h
+// opt-in), as retail's implicit STLport instantiation: its out-of-line owner is 0x00764EE0, whose copy is byte-and-reloc identical.
+#define FABLE_RETAIL_NSHAPE_DESTROY_AUX_PICKANY
 #include "engine/C3DVector.h"
 #include "stlport/fable_containers.h"
 

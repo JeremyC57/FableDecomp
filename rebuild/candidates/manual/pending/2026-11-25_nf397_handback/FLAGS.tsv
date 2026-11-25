@@ -1,0 +1,3 @@
+address	old_CompilerFlags	new_CompilerFlags	note
+00728d10	none	/O2 /Oy /W3 /Gr	NF397 b1: the TU is /Gr (retail _Construct<CMeshMorphSetParts> 0x00728A20 __fastcall with no STLport keyword; landed same-unit 00728a40 / 00728b10 / 00728b50 already carry it); the row drops its __fastcall keywords and needs /Gr, or the out-of-line helpers compile cdecl and the recheck fails
+00728df0	none	/O2 /Oy /W3 /Gr	NF397 b1: as 00728d10 (same unit)

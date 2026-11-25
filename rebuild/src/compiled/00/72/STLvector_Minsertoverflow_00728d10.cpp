@@ -1,4 +1,5 @@
 // std::vector::_M_insert_overflow(CMeshMorphSetParts* position, const CMeshMorphSetParts& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD growth of a mesh morph set's part list (vector<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts>): allocate old + max(old, n), copy the head, place the n copies, copy the tail, destroy and free the old block
+// Flags: /Gr
 // Leaf: ?_M_insert_overflow@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728D10, length 216 bytes (+ int3 padding), thiscall, `ret 14h`.
 // Callers: the same vector's _M_fill_insert 0x00728DF0 (0x00728EFE, the no-room arm; reached from resize 0x00728F20).
@@ -22,9 +23,13 @@
 //   ??0?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@ABV01@@Z (0x005BBDF1, FableWin.pdb), not
 //   the CArray copy the old model declared out of line. VC7.1 also emits the implicit CArray<CEngineTextureMorph> copy / destructor
 //   as pick-any COMDATs (19-byte forwarder / 5-byte `jmp` thunk), like 0x00728DF0 and like the retail TUs that kept them.
+// Flags (NF397, T3 nf395 0x00728D10): the TU is /Gr (NF395 / landing nf395_b1: retail's unreferenced out-of-line
+//   _Construct<CMeshMorphSetParts> at 0x00728A20 takes p in ecx and the value in edx, and STLport writes no calling-convention keyword),
+//   so the row compiles /Gr and none of the STLport templates below carries a calling-convention keyword, as in the landed same-unit rows
+//   0x00728A40 / 0x00728B10 / 0x00728B50 (build entry: CompilerFlags '/O2 /Oy /W3 /Gr'). Placement new is <new>'s (explicit __cdecl).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
-inline void* operator new(unsigned int, void* where) { return where; }
+#include <new>
 
 class CEngineTextureMorph;
 namespace std {
@@ -37,7 +42,7 @@ template <class T> inline void _Destroy(T* p) { p->~T(); }
 // learns that the empty tags are never read and homes the __false_type temporaries in the atend slot, as retail.
 #pragma auto_inline(off)
 template <class InputIter, class ForwardIter>
-__declspec(noinline) ForwardIter __fastcall __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
+__declspec(noinline) ForwardIter __uninitialized_copy(InputIter first, InputIter last, ForwardIter result, const __false_type&)
 {
     ForwardIter cur = result;
     for (; first != last; ++first, ++cur)
@@ -45,7 +50,7 @@ __declspec(noinline) ForwardIter __fastcall __uninitialized_copy(InputIter first
     return cur;
 }
 template <class ForwardIter, class Size, class T>
-__declspec(noinline) ForwardIter __fastcall __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
+__declspec(noinline) ForwardIter __uninitialized_fill_n(ForwardIter first, Size n, const T& x, const __false_type&)
 {
     ForwardIter cur = first;
     for (; n > 0; --n, ++cur)
@@ -53,7 +58,7 @@ __declspec(noinline) ForwardIter __fastcall __uninitialized_fill_n(ForwardIter f
     return cur;
 }
 template <class ForwardIter>
-__declspec(noinline) void __fastcall __destroy_aux(ForwardIter first, ForwardIter last, const __false_type&)
+__declspec(noinline) void __destroy_aux(ForwardIter first, ForwardIter last, const __false_type&)
 {
     for (; first != last; ++first)
         _Destroy(&*first);

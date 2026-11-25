@@ -1,0 +1,7 @@
+addr       parity           behav  name
+007634e0   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00764bc0 labelled '_global::Move_CountedPointer_00764bc0'
+007634e0   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@@std@@YIXPAV?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@0ABU__false_type@0@@Z -> 00764ee0 labelled 'std::__destroy_aux<CCountedPointer<NShape::CSubdivisionTriangle>*>'
+007634e0   RELOCATION_MATCH PASS   UpdateSubdivisions
+
+WINS: 1
+  007634e0 RELOCATION_MATCH NShape::CBasicShape::?UpdateSubdivisions@CBasicShape@NShape@@UAEXXZ

@@ -1,4 +1,5 @@
 // std::vector::_M_fill_insert(pointer position, size_type n, const value_type& x) -- (vector<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts>) STLport insert(pos, n, x) of mesh morph-set parts: with room, shift the tail in place (uninitialized copy, copy_backward, fill from a copy of x), else grow through _M_insert_overflow
+// Flags: /Gr
 // Leaf: ?_M_fill_insert@?$vector@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728DF0, 284 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): the landed resize 0x00728F20 (vector<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts>, its
@@ -13,11 +14,15 @@
 //   _M_insert_overflow 0x00728D10, vector<CEngineTextureMorph>::~vector() 0x005BC0D3.
 // Model: this chunk's 0x006D4850 (landed twin 0x0049B5A0 recipe), STLport 4.6 _M_fill_insert verbatim with the out-of-line
 //   helpers as same-TU noinline bodies (they need the element's implicit operator=, hence vector::operator= 0x00728830).
+// Flags (NF397, T3 nf395 0x00728D10): the TU is /Gr (NF395 / landing nf395_b1: retail's unreferenced out-of-line
+//   _Construct<CMeshMorphSetParts> at 0x00728A20 takes p in ecx and the value in edx, and STLport writes no calling-convention keyword),
+//   so the row compiles /Gr and none of the STLport templates below carries a calling-convention keyword, as in the landed same-unit rows
+//   0x00728A40 / 0x00728B10 / 0x00728B50 (build entry: CompilerFlags '/O2 /Oy /W3 /Gr'). Placement new is <new>'s (explicit __cdecl).
 #include "fable_compiler.h"
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
-inline void* operator new(unsigned int, void* p) { return p; }
+#include <new>
 
 class CEngineTextureMorph;
 
@@ -92,7 +97,7 @@ struct random_access_iterator_tag : public bidirectional_iterator_tag { };
 
 #pragma auto_inline(off)
 template <class _InputIter, class _ForwardIter>
-__declspec(noinline) _ForwardIter __fastcall __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
+__declspec(noinline) _ForwardIter __uninitialized_copy(_InputIter __first, _InputIter __last, _ForwardIter __result,
                                              const __false_type&)
 {                                                                                 // 0x00728B10
     _ForwardIter __cur = __result;
@@ -111,13 +116,13 @@ FABLE_FORCEINLINE _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Siz
 }
 
 template <class _ForwardIter, class _Size, class _Tp>
-__declspec(noinline) _ForwardIter __fastcall uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
+__declspec(noinline) _ForwardIter uninitialized_fill_n(_ForwardIter __first, _Size __n, const _Tp& __x)
 {                                                                                 // 0x00728B50
     return __uninitialized_fill_n(__first, __n, __x, __false_type());
 }
 
 template <class _RandomAccessIter, class _BidirectionalIter, class _Distance>
-__declspec(noinline) _BidirectionalIter __fastcall __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
+__declspec(noinline) _BidirectionalIter __copy_backward(_RandomAccessIter __first, _RandomAccessIter __last,
                                           _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*)
 {                                                                                 // 0x00728BB0
     for (_Distance __n = __last - __first; __n > 0; --__n)
@@ -126,7 +131,7 @@ __declspec(noinline) _BidirectionalIter __fastcall __copy_backward(_RandomAccess
 }
 
 template <class _ForwardIter, class _Tp>
-__declspec(noinline) void __fastcall fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
+__declspec(noinline) void fill(_ForwardIter __first, _ForwardIter __last, const _Tp& __val)
 {                                                                                 // 0x00728C10
     for ( ; __first != __last; ++__first)
         *__first = __val;

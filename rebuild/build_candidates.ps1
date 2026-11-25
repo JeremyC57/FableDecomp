@@ -311672,6 +311672,7 @@ $catalog = @(
         Source = '00/72/STLvector_Minsertoverflow_00728d10.cpp'
         TestSource = '00/72/STLvector_Minsertoverflow_00728d10_test.cpp'
         PassPattern = '00728d10_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '00841640'
@@ -352080,6 +352081,7 @@ $catalog = @(
         Source = '00/72/stdvector_Mfillinsert_00728df0.cpp'
         TestSource = '00/72/stdvector_Mfillinsert_00728df0_test.cpp'
         PassPattern = '00728df0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '008066a0'

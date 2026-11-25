@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00728d10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00728d10   WARN SHARED_HEADER_AVAILABLE CTCAppearanceMorphBase (engine/CTCAppearanceMorphBase.h)
+00728d10   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@00ABU__false_type@0@@Z -> 00728b10 labelled '_global::UninitCopy_SPairLongCSecond_005bbdf1_00728b10'
+00728d10   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@IV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@IABV123@ABU__false_type@0@@Z -> 00728a40 labelled '_global::UninitFillN_SPairLongCSecond_005bbdf1_00728a40'
+00728d10   RELOCATION_MATCH PASS   _M_insert_overflow
+00728df0   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00728df0   WARN SHARED_HEADER_AVAILABLE CTCAppearanceMorphBase (engine/CTCAppearanceMorphBase.h)
+00728df0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@00ABU__false_type@0@@Z -> 00728b10 labelled '_global::UninitCopy_SPairLongCSecond_005bbdf1_00728b10'
+00728df0   WARN RELOC_NAME: ??$__copy_backward@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@H@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00728bb0 labelled 'std::__copy_backward<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts *, CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts *, int>'
+00728df0   WARN RELOC_NAME: ??$fill@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@V123@@std@@YIXPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@0ABV123@@Z -> 00728c10 labelled 'std::fill<CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts *, CTCAppearanceMorphBase::CMeshMorphSet::CMeshMorphSetParts>'
+00728df0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@IV123@@std@@YIPAVCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@PAV123@IABV123@@Z -> 00728b50 labelled '_global::UninitFillN_SPairLongCSecond_005bbdf1_00728b50'
+00728df0   RELOCATION_MATCH PASS   _M_fill_insert
+
+WINS: 2
+  00728d10 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  00728df0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCMeshMorphSetParts@CMeshMorphSet@CTCAppearanceMorphBase@@

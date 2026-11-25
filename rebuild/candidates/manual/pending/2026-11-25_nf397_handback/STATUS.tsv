@@ -1,0 +1,4 @@
+address	status	batch	note
+00728d10	ACCEPT	b1	unit u1; /Gr without __fastcall keywords (FLAGS.tsv: CompilerFlags '/O2 /Oy /W3 /Gr' first); self unchanged; YA->YI flips binned (R1 tier 1 / tier 2), no residue; all gates pass; lock released
+00728df0	ACCEPT	b1	unit u1; as 00728d10; its __uninitialized_fill_n becomes the YI copy EQ to landed 00728a40's self (EQ at 0x00728A40); lock released
+007634e0	ACCEPT	b2	self unchanged; header opt-in FABLE_RETAIL_NSHAPE_DESTROY_AUX_PICKANY (engine/NShape_STLHelpers.h, add-only, HEADERS.tsv): __destroy_aux<CCountedPointer*> NoDuplicates -> Any, R1 tier 1 / R10 (identical to the shared-header copy of the landed owner 00764ee0); clears T3 nf395 0x00762440 blocker 1; lock released
