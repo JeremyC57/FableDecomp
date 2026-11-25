@@ -2,6 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00895A10, length 128 bytes.
 // Callees: the hero thing through the player (0x00449970 on PlayerManager, then 0x00487DC0; both labels propagated), live (+0x91 bit 0 clear), the inlined CThing::GetInterface (the presence bitset at +0x20, CVectorMap::LowerBound on the map at +0x44, end or a larger key -> the end entry); CGameDefinitionManager::Get @ 0x0044C6B0 (static), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CTCInventoryBase::GetBestFishWeight @ 0x005BFC90.
 // Leaf: ?GetBestFishWeight@CGameScriptInterface@@UBEMABVCCharString@@@Z
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: g_noFishWeight (table ?g_noFishWeight@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 #include "fable_compiler.h"
@@ -45,7 +47,6 @@ struct CTCInventory_Retail {                        // interface type 0x11
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
 #include "engine/CGameDefinitionManager.h"
-extern const float g_noFishWeight;                  // 0x0122DEDC
 struct CThing_Retail;
 struct CBase {
     CBase();                                        // 0x0099A2D0
@@ -145,5 +146,5 @@ float CGameScriptInterface::GetBestFishWeight(const CCharString& defName) const
                 return inventory->GetBestFishWeight(defIndex);
         }
     }
-    return g_noFishWeight;
+    return 0.0f;
 }

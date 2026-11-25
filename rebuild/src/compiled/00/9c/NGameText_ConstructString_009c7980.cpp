@@ -22,11 +22,12 @@ private:
 
 namespace NGameText {
 
-extern const unsigned short g_FirstPlaceholder[];      // L"%1" @ 0x0129B450
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_FirstPlaceholder (table ?g_FirstPlaceholder@NGameText@@3QBGB -> 0x0129B450) -> L"%1"
 
 bool __fastcall ConstructString(CWideString& output, const CWideString& replacement)
 {
-    CWideString key(g_FirstPlaceholder);
+    CWideString key(L"%1");
     if (output.Contains(key)) {
         output.Replace(key, replacement);
         return true;

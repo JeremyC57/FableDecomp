@@ -38,7 +38,8 @@ CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);
 
 const wchar_t* __fastcall WordWrap_FindNextLineW(const wchar_t* text, unsigned int width, const wchar_t** next);   // 0x00A10390
 
-static const wchar_t s_newLine[] = { '\n', 0 };          // 0x01231728
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   s_newLine (table _s_newLine -> 0x01231728) -> L"\n"
 
 struct CProgressDisplay {
     private:
@@ -60,7 +61,7 @@ CWideString CProgressDisplay::WordWrapText(const C2DBoxF& box, const CFontBank& 
             piece.SetAsSubString(line, end - line);
         else
             piece = line;
-        wrapped += piece + s_newLine;
+        wrapped += piece + L"\n";
         line = end;
     } while (end);
     return wrapped;

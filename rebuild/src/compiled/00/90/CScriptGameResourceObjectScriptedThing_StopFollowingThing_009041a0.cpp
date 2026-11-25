@@ -163,8 +163,9 @@ CEventExpressionPerformedTo::CEventExpressionPerformedTo(void* target, long expr
 class CTCEntityEvents { public:                           // interface 0x42 component
     void AddEvent(NEntityEvents::CEventBase* event);   // 0x008113C0
 };
-extern const char g_actionFollowCreature[];        // 0x0128D850 "CActionFollowCreature"
-extern const char g_expressionWait[];              // 0x012757DC "EXPRESSION_WAIT"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_actionFollowCreature (table ?g_actionFollowCreature@@3QBDB -> 0x0128D850) -> "CActionFollowCreature"
+//   g_expressionWait (table ?g_expressionWait@@3QBDB -> 0x012757DC) -> "EXPRESSION_WAIT"
 
 struct CScriptGameResourceObjectScriptedThing_Methods : CScriptGameResourceObjectScriptedThing {
     void StopFollowingThing(const CScriptThing& target);
@@ -179,14 +180,14 @@ void CScriptGameResourceObjectScriptedThing_Methods::StopFollowingThing(const CS
                 CTCScriptedControl* control;
                 thing->GetPItem()->GetInterface(&control, 0x1f);
                 if (control->CurrentActionType == 4) {
-                    CCharString name(g_actionFollowCreature, -1);
+                    CCharString name("CActionFollowCreature", -1);
                     control->TerminateActionByName(name);
                 } else {
                     CThing_Retail* targetThing = ((CThing_Retail*)target.GetPThing());
                     CThing_Retail* me = thing->GetPItem();
                     CDefPointer<CExpressionDef> def;
                     {
-                        CCharString name(g_expressionWait, -1);
+                        CCharString name("EXPRESSION_WAIT", -1);
                         CGameDefinitionManager::Get().GetDef(name, &def);
                     }
                     CTCEntityEvents* events;

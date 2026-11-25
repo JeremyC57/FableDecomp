@@ -65,7 +65,8 @@ public:
     void SetButton1OverrideText(const CCharString& text);
 };
 
-static const unsigned short s_Default[] = { 'T', 'E', 'X', 'T', '_', 'G', 'U', 'I', '_', 'N', 'E', 'X', 'T', 0 };   // L"TEXT_GUI_NEXT"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   s_Default (table _s_Default -> 0x0123817C) -> L"TEXT_GUI_NEXT"
 
 void CSubtitleRenderer::SetButton1OverrideText(const CCharString& text)
 {
@@ -81,6 +82,6 @@ void CSubtitleRenderer::SetButton1OverrideText(const CCharString& text)
     Button1TextOverridden = true;
     return;
 empty:
-    GetTextFromTextTag(s_Default, Button1OverrideText);
+    GetTextFromTextTag(L"TEXT_GUI_NEXT", Button1OverrideText);
     Button1TextOverridden = false;
 }

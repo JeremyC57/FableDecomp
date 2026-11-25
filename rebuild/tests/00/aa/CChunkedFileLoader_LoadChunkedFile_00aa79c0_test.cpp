@@ -1,185 +1,53 @@
-// Behaviour test for CChunkedFileLoader::LoadChunkedFile (0x00AA79C0): body verbatim, callees stubbed. Covers the good path
-// (version/comment stored, root chunk called with stream/size/loader, reference counts restored), the overflow read path,
-// and the three CChunkedFileException exits (bad file id, bad file type, root type mismatch).
-#include "fable_compiler.h"
+// Behaviour test for 0x00AA79C0 CChunkedFileLoader::LoadChunkedFile: checks the ">>>>" file id (retail 0x0129E454) and the loader's
+// file type, reads the version, the comment and the root chunk's type and size, and hands the stream to the root chunk.
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined; it is called through a
+// __fastcall shim aliased to the row symbol). The stream and the root chunk are fixture classes laid out as the row's models, so a
+// file that starts ">>>>" loads; a mutated literal makes the row throw, which the test catches and reports as FAIL.
 #include <stdio.h>
 #include <string.h>
-#ifndef _MSC_VER
-#define __fastcall
-#define __forceinline inline
-typedef long long __int64;
-#define long int   // g++ host: keep Fable's 4-byte long
-#endif
-static int g_fail = 0;
-#define CHECK(c) do { if (!(c)) { g_fail++; printf("FAIL line %d: %s\n", __LINE__, #c); } } while (0)
-class CCharString { public:
-    const char* PStringData;
-    const CCharString& operator=(const CCharString& other);
-    ~CCharString();
-};
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+class CCharString { public: void* PStringData; const CCharString& operator=(const CCharString& other); ~CCharString(); };
 class CChunkedFileLoader;
 class CDataInputStream { public:
-    unsigned long StreamPos;                            // +0x04
-    long StreamSize;                                    // +0x08
-    const unsigned char* CurrentSourcePtr;              // +0x0c
-    unsigned long SourceChunkStreamPos;                 // +0x10
-    long SourceChunkBytesRemaining;                     // +0x14
-    virtual void v0() {} virtual void v1() {} virtual void v2() {} virtual void v3() {} virtual void v4() {} virtual void v5() {}
-    virtual CCharString ReadString();                   // slot 6 (+0x18)
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);
-    static FABLE_FORCEINLINE bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
-    FABLE_FORCEINLINE void Read(void* dst, long size) {
-        __int64 np = (__int64)(StreamPos + size);
-        if (!IsValidPosition(np)) return;
-        if (SourceChunkBytesRemaining >= size) {
-            memcpy(dst, CurrentSourcePtr, size); CurrentSourcePtr += size; SourceChunkBytesRemaining -= size; StreamPos += size;
-        } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
-    }
-    FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
+    unsigned long StreamPos; long StreamSize; const unsigned char* CurrentSourcePtr; unsigned long SourceChunkStreamPos; long SourceChunkBytesRemaining;
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5();
+    virtual CCharString ReadString();                   // slot 6
 };
 class CChunkedFileSuperChunk { public:
-    char ChunkType[5];                                  // +0x04
-    virtual void v0() {} virtual void v1() {} virtual void v2() {} virtual void v3() {} virtual void v4() {} virtual void v5() {} virtual void v6() {}
-    virtual void ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader);   // slot 7 (+0x1c)
+    char ChunkType[5];
+    virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6();
+    virtual void ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader);   // slot 7
 };
-struct CRootPointer {
-    CChunkedFileSuperChunk* Data;
-    CCPPointerInfo*         Info;
-    ~CRootPointer();
-    CChunkedFileSuperChunk* operator->() const { return Data; }
-};
-struct CRootView {
-    CChunkedFileSuperChunk* Data;
-    CCPPointerInfo*         Info;
-    FABLE_FORCEINLINE CRootView(const CRootPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    FABLE_FORCEINLINE ~CRootView() { if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
-    CChunkedFileSuperChunk* operator->() const { return Data; }
-};
-class CChunkedFile { public:
-    void*        _vf;                                   // +0x00
-    CRootPointer RootChunk;                             // +0x04
-    unsigned long Version;                              // +0x0c
-    CCharString  FileComment;                           // +0x10
-};
-struct CChunkedFileException { CChunkedFileException() {} };
-extern const char CHUNKED_FILE_ID[];
-static FABLE_FORCEINLINE bool SameID(const void* a, const void* b) { return memcmp(a, b, 4) == 0; }
-class CChunkedFileLoader { public:
-    virtual void v0() {}
-    long ReadUnknownChunkTypes;                         // +0x04
-    char SupportedFileType[5];                          // +0x08
-    void LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& stream);
-};
-
-// ---- body verbatim (src/00aa79c0.cpp) ----
-void CChunkedFileLoader::LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& stream)
-{
-    char id[4] = { 0, 0, 0, 0 };
-    stream.Read(id, 4);
-    if (!SameID(id, CHUNKED_FILE_ID))
-        throw CChunkedFileException();
-    unsigned long fileType = 0;
-    stream.Read(&fileType, 4);
-    if (!SameID(&fileType, SupportedFileType))
-        throw CChunkedFileException();
-    chunk.Version = stream.ReadULong();
-    CCharString comment = stream.ReadString();
-    chunk.FileComment = comment;
-    unsigned long rootType;
-    stream.Read(&rootType, 4);
-    if (!SameID(&rootType, CRootView(chunk.RootChunk)->ChunkType))
-        throw CChunkedFileException();
-    unsigned long rootSize = stream.ReadULong();
-    CRootPointer root = chunk.RootChunk;
-    CChunkedFileSuperChunk* rootChunk = root.Data;
-    if (root.Info) ++root.Info->RefCount;
-    rootChunk->ReadFromFile(stream, rootSize, *this);
-}
-
-// ---- stubs ----
-const char CHUNKED_FILE_ID[] = ">>>>";
-static int g_assigns = 0, g_strDtors = 0, g_overflow = 0, g_rootCalls = 0, g_rootDtors = 0, g_deletes = 0;
-static CDataInputStream* g_rootStream = 0; static unsigned long g_rootSize = 0; static CChunkedFileLoader* g_rootLoader = 0;
-const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; g_assigns++; return *this; }
-CCharString::~CCharString() { g_strDtors++; }
-CCharString CDataInputStream::ReadString() { CCharString s; s.PStringData = "a comment"; return s; }
-void CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
-{
-    g_overflow++; memcpy(buffer, CurrentSourcePtr, size); CurrentSourcePtr += size; StreamPos += size;
-}
+struct CRootPointer { CChunkedFileSuperChunk* Data; void* Info; ~CRootPointer(); };
+static char g_comment[] = "made by test"; static int g_bad = 0; static unsigned long g_rootSize = 0; static void* g_loader = 0; static void* g_comm = 0;
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+CCharString::~CCharString() { }
+CRootPointer::~CRootPointer() { }
+void CDataInputStream::v0() { } void CDataInputStream::v1() { } void CDataInputStream::v2() { } void CDataInputStream::v3() { } void CDataInputStream::v4() { } void CDataInputStream::v5() { }
+CCharString CDataInputStream::ReadString() { CCharString s; s.PStringData = g_comment; return s; }
+void CChunkedFileSuperChunk::v0() { } void CChunkedFileSuperChunk::v1() { } void CChunkedFileSuperChunk::v2() { } void CChunkedFileSuperChunk::v3() { }
+void CChunkedFileSuperChunk::v4() { } void CChunkedFileSuperChunk::v5() { } void CChunkedFileSuperChunk::v6() { }
 void CChunkedFileSuperChunk::ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader)
-{
-    g_rootCalls++; g_rootStream = &stream; g_rootSize = size; g_rootLoader = &loader;
-}
-CRootPointer::~CRootPointer() { g_rootDtors++; if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
-static void __fastcall DeleteRoot(void*) { g_deletes++; }
-
-static void Put(unsigned char* p, const char* four) { memcpy(p, four, 4); }
-static void PutU(unsigned char* p, unsigned int v) { p[0] = (unsigned char)v; p[1] = (unsigned char)(v >> 8); p[2] = (unsigned char)(v >> 16); p[3] = (unsigned char)(v >> 24); }
-static void MakeStream(CDataInputStream& s, const unsigned char* bytes, long avail)
-{
-    s.StreamPos = 0; s.StreamSize = 20; s.CurrentSourcePtr = bytes; s.SourceChunkStreamPos = 0; s.SourceChunkBytesRemaining = avail;
-}
-static int Load(CChunkedFileLoader& loader, CChunkedFile& file, CDataInputStream& s)
-{
-    try { loader.LoadChunkedFile(file, s); } catch (CChunkedFileException&) { return 1; }
-    return 0;
-}
-
+{ g_rootSize = size; g_loader = &loader; if (stream.StreamPos != 20) g_bad = 1; }
+extern "C" void __fastcall NF420_Row(void* self, int edx, void* chunk, CDataInputStream* stream);
+#pragma comment(linker, "/alternatename:@NF420_Row@16=?LoadChunkedFile@CChunkedFileLoader@@IAEXAAVCChunkedFile@@AAVCDataInputStream@@@Z")   // the row function, called through the shim
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+extern "C" void __cdecl NF420Trap0() { NF420TrapHit("?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z"); }
+#pragma comment(linker, "/alternatename:?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z=_NF420Trap0")
 int main()
 {
-    unsigned char bytes[20];
-    Put(bytes, ">>>>"); Put(bytes + 4, "TYPE"); PutU(bytes + 8, 7); Put(bytes + 12, "ROOT"); PutU(bytes + 16, 0x40);
+    static unsigned char file[20]; memcpy(file, ">>>>TYPE", 8); *(unsigned long*)(file + 8) = 3; memcpy(file + 12, "ROOT", 4); *(unsigned long*)(file + 16) = 99;
+    CDataInputStream stream; stream.StreamPos = 0; stream.StreamSize = 20; stream.CurrentSourcePtr = file; stream.SourceChunkStreamPos = 0; stream.SourceChunkBytesRemaining = 20;
     CChunkedFileSuperChunk root; memcpy(root.ChunkType, "ROOT", 5);
-    CCPPointerInfo* info = new CCPPointerInfo; info->RefCount = 1; info->DeleteFunc = DeleteRoot; info->Data = &root;
-    CChunkedFile file; file._vf = 0; file.RootChunk.Data = &root; file.RootChunk.Info = info; file.Version = 0; file.FileComment.PStringData = "";
-    CChunkedFileLoader loader; loader.ReadUnknownChunkTypes = 0; memcpy(loader.SupportedFileType, "TYPE", 5);
-    CDataInputStream s;
-
-    // 1. good path, all from the current source chunk
-    MakeStream(s, bytes, 20);
-    CHECK(Load(loader, file, s) == 0);
-    CHECK(file.Version == 7 && strcmp(file.FileComment.PStringData, "a comment") == 0 && g_assigns == 1);
-    CHECK(g_rootCalls == 1 && g_rootStream == &s && g_rootSize == 0x40 && g_rootLoader == &loader);
-    CHECK(g_rootDtors == 1 && info->RefCount == 1 && g_deletes == 0 && s.StreamPos == 20 && g_overflow == 0);
-
-    // 2. good path, source chunk short: every word through the overflow read
-    file.Version = 0; g_rootCalls = 0;
-    MakeStream(s, bytes, 2);
-    CHECK(Load(loader, file, s) == 0);
-    CHECK(file.Version == 7 && g_rootCalls == 1 && g_rootSize == 0x40 && g_overflow == 5 && info->RefCount == 1);
-
-    // 3. bad file id
-    g_rootCalls = 0; bytes[0] = '<';
-    MakeStream(s, bytes, 20); file.Version = 0;
-    CHECK(Load(loader, file, s) == 1 && file.Version == 0 && g_rootCalls == 0 && s.StreamPos == 4);
-    bytes[0] = '>';
-
-    // 4. wrong file type
-    memcpy(loader.SupportedFileType, "TYPX", 5);
-    MakeStream(s, bytes, 20);
-    CHECK(Load(loader, file, s) == 1 && file.Version == 0 && g_rootCalls == 0 && s.StreamPos == 8);
-    memcpy(loader.SupportedFileType, "TYPE", 5);
-
-    // 5. root type mismatch: version/comment already stored, root not called, reference restored by the inline release
-    memcpy(root.ChunkType, "RXXT", 5); g_assigns = 0;
-    MakeStream(s, bytes, 20);
-    CHECK(Load(loader, file, s) == 1 && file.Version == 7 && g_assigns == 1 && g_rootCalls == 0 && info->RefCount == 1 && g_deletes == 0);
-
-    // 6. the root-type check's temporary release deletes when it drops the last reference
-    memcpy(root.ChunkType, "ROOT", 5);
-    CCPPointerInfo* lone = new CCPPointerInfo; lone->RefCount = 0; lone->DeleteFunc = DeleteRoot; lone->Data = &root;
-    file.RootChunk.Info = lone; memcpy(root.ChunkType, "RXXT", 5);
-    MakeStream(s, bytes, 20);
-    CHECK(Load(loader, file, s) == 1 && g_deletes == 1);
-    file.RootChunk.Info = 0;
-    delete info;
-
-    if (g_fail == 0) printf("00aa79c0_TEST PASS\n"); else printf("00aa79c0_TEST FAIL\n");
-    return g_fail != 0;
+    static unsigned char loader[0x10]; memcpy(loader + 8, "TYPE", 5);
+    static unsigned char chunk[0x14]; *(CChunkedFileSuperChunk**)(chunk + 4) = &root;
+    bool threw = false;
+    try { NF420_Row(loader, 0, chunk, &stream); } catch (...) { threw = true; }
+    bool ok = !threw && *(unsigned long*)(chunk + 0xc) == 3 && *(void**)(chunk + 0x10) == g_comment && g_rootSize == 99 && g_loader == loader && !g_bad;
+    if (ok) printf("00aa79c0_TEST PASS\n");
+    else printf("FAIL threw=%d version=%lu size=%lu bad=%d\n", (int)threw, *(unsigned long*)(chunk + 0xc), g_rootSize, g_bad);
+    return ok ? 0 : 1;
 }

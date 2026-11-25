@@ -21,9 +21,10 @@ public:
     const CCharString& operator+=(const char* text);                       // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
-extern const char g_textOpenBracket_0122e028[];                       // 0x0122E028 "("
-extern const char g_textComma_0122e024[];                             // 0x0122E024 ","
-extern const char g_textCloseBracket_0122e020[];                      // 0x0122E020 ")"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_textOpenBracket_0122e028 (table ?g_textOpenBracket_0122e028@@3QBDB -> 0x0122E028) -> "("
+//   g_textComma_0122e024 (table ?g_textComma_0122e024@@3QBDB -> 0x0122E024) -> ","
+//   g_textCloseBracket_0122e020 (table ?g_textCloseBracket_0122e020@@3QBDB -> 0x0122E020) -> ")"
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -56,11 +57,11 @@ template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {
     {
         CPersistTraits<T1> firstTraits;
         CPersistTraits<T2> secondTraits;
-        out += g_textOpenBracket_0122e028;
+        out += "(";
         firstTraits.TransferOut(context, out, value->first);
-        out += g_textComma_0122e024;
+        out += ",";
         secondTraits.TransferOut(context, out, value->second);
-        out += g_textCloseBracket_0122e020;
+        out += ")";
     }
 };
 

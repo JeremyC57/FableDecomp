@@ -1,105 +1,27 @@
+// Behaviour test for 0x00437500 CPlayerGui_UpdateTimer_00437500: steps a fade timer up (mode 2) or down (mode 3) and clamps it at
+// 0.0 (mode 1; retail's pooled 0.0f, 0x0122DEDC) and 1.0 (mode 0).
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined); callees are defined
+// here under the row spellings (or as thiscall-compatible __fastcall fixtures), so the test observes the float literal the row uses:
+// a mutated literal (0.0f -> 0.5f) changes the result and fails.
 #include <stdio.h>
-#include <math.h>
-
-extern const float CPlayerGui_UpdateTimer_00437500_Upper;
-extern const float CPlayerGui_UpdateTimer_00437500_Lower;
-
-void __stdcall CPlayerGui_UpdateTimer_00437500(
-    const float* pRate,
-    float stepUp,
-    float stepDown,
-    int* pMode,
-    float* pTimer)
-{
-    switch (*pMode) {
-    case 2:
-        *pTimer = *pTimer + *pRate / stepUp;
-        break;
-    case 3:
-        *pTimer = *pTimer - *pRate / stepDown;
-        break;
-    }
-
-    if (*pTimer <= CPlayerGui_UpdateTimer_00437500_Upper) {
-        *pMode = 1;
-        *pTimer = 0.0f;
-    } else if (*pTimer >= CPlayerGui_UpdateTimer_00437500_Lower) {
-        *pMode = 0;
-        *pTimer = 1.0f;
-    }
-}
-
-const float CPlayerGui_UpdateTimer_00437500_Upper = 1.0f;
-const float CPlayerGui_UpdateTimer_00437500_Lower = 0.0f;
-
-static int NearlyEqual(float a, float b)
-{
-    return (float)fabs(a - b) < 0.00001f;
-}
-
-static int Check(int cond, const char* msg)
-{
-    if (!cond) { printf("FAIL: %s\n", msg); return 0; }
-    return 1;
-}
-
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+void __stdcall CPlayerGui_UpdateTimer_00437500(const float* pRate, float stepUp, float stepDown, int* pMode, float* pTimer);
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
 int main()
 {
-    int ok = 1;
-
-    /* Case 2 (add): timer stays <= upper -> clamp low branch (mode=1, timer=0). */
-    {
-        float rate = 4.0f;
-        int mode = 2;
-        float timer = 0.25f; /* 0.25 + 4/8 = 0.75 <= 1.0 */
-        CPlayerGui_UpdateTimer_00437500(&rate, 8.0f, 2.0f, &mode, &timer);
-        ok &= Check(mode == 1 && NearlyEqual(timer, 0.0f),
-                    "case2 add stays<=upper -> mode1/0");
-    }
-
-    /* Case 2 (add): timer exceeds upper and is >=lower -> mode=0, timer=1.0. */
-    {
-        float rate = 4.0f;
-        int mode = 2;
-        float timer = 0.9f; /* 0.9 + 4/2 = 2.9 > 1.0, >= 0.0 */
-        CPlayerGui_UpdateTimer_00437500(&rate, 2.0f, 2.0f, &mode, &timer);
-        ok &= Check(mode == 0 && NearlyEqual(timer, 1.0f),
-                    "case2 add above upper -> mode0/1.0");
-    }
-
-    /* Case 3 (subr): timer drops below upper -> mode=1, timer=0. */
-    {
-        float rate = 4.0f;
-        int mode = 3;
-        float timer = 0.25f; /* 0.25 - 4/4 = -0.75 <= 1.0 */
-        CPlayerGui_UpdateTimer_00437500(&rate, 8.0f, 4.0f, &mode, &timer);
-        ok &= Check(mode == 1 && NearlyEqual(timer, 0.0f),
-                    "case3 subr low -> mode1/0");
-    }
-
-    /* Case 3 (subr): timer stays above upper and >=lower -> mode=0, timer=1.0. */
-    {
-        float rate = 1.0f;
-        int mode = 3;
-        float timer = 2.0f; /* 2.0 - 1/8 = 1.875 > 1.0, >= 0.0 */
-        CPlayerGui_UpdateTimer_00437500(&rate, 8.0f, 8.0f, &mode, &timer);
-        ok &= Check(mode == 0 && NearlyEqual(timer, 1.0f),
-                    "case3 subr high -> mode0/1.0");
-    }
-
-    /* Neutral mode (not 2/3): no accumulation; timer 0.5 <= 1.0 -> mode=1, timer=0. */
-    {
-        float rate = 4.0f;
-        int mode = 5;
-        float timer = 0.5f;
-        CPlayerGui_UpdateTimer_00437500(&rate, 8.0f, 4.0f, &mode, &timer);
-        ok &= Check(mode == 1 && NearlyEqual(timer, 0.0f),
-                    "neutral mode clamps<=upper -> mode1/0");
-    }
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CPlayerGui::UpdateTimer 0x00437500");
-    return 0;
+    float rate = 0.1f, timer = 0.3f; int mode = 3;
+    CPlayerGui_UpdateTimer_00437500(&rate, 1.0f, 1.0f, &mode, &timer);          // 0.3 - 0.1: still above zero
+    bool ok = mode == 3 && timer > 0.19f && timer < 0.21f;
+    timer = 0.05f; CPlayerGui_UpdateTimer_00437500(&rate, 1.0f, 1.0f, &mode, &timer);   // below zero: clamped
+    ok = ok && mode == 1 && timer == 0.0f;
+    mode = 2; timer = 0.95f; CPlayerGui_UpdateTimer_00437500(&rate, 1.0f, 1.0f, &mode, &timer);
+    ok = ok && mode == 0 && timer == 1.0f;
+    if (ok) printf("PASS CPlayerGui::UpdateTimer 0x00437500\n");
+    else printf("FAIL mode=%d timer=%f\n", mode, timer);
+    return ok ? 0 : 1;
 }

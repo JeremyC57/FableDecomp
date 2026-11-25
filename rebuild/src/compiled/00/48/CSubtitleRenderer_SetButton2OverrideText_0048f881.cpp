@@ -64,7 +64,8 @@ public:
     void SetButton2OverrideText(const CCharString& text);
 };
 
-static const unsigned short s_TextGuiSkipScene[] = { 'T', 'E', 'X', 'T', '_', 'G', 'U', 'I', '_', 'S', 'K', 'I', 'P', '_', 'S', 'C', 'E', 'N', 'E', 0 };   // L"TEXT_GUI_SKIP_SCENE"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   s_TextGuiSkipScene (table (none: object-local file-static array) -> 0x01238198) -> L"TEXT_GUI_SKIP_SCENE"
 
 void CSubtitleRenderer::SetButton2OverrideText(const CCharString& text)
 {
@@ -78,6 +79,6 @@ void CSubtitleRenderer::SetButton2OverrideText(const CCharString& text)
     Button2TextOverridden = true;
     return;
 empty:
-    GetTextFromTextTag(s_TextGuiSkipScene, Button2OverrideText);
+    GetTextFromTextTag(L"TEXT_GUI_SKIP_SCENE", Button2OverrideText);
     Button2TextOverridden = false;
 }

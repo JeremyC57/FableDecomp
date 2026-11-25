@@ -50,8 +50,9 @@ public:
     static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t16* fileName);
 };
 
-static const wchar_t16 s_backslash[] = { '\\', 0 };  // 0x0122DE78
-static const wchar_t16 s_jpgMask[] = { '*', '.', 'j', 'p', 'g', 0 };   // 0x0124FED0
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   s_backslash (table _s_backslash -> 0x0122DE78) -> L"\\"
+//   s_jpgMask (table _s_jpgMask -> 0x0124FED0) -> L"*.jpg"
 
 class CTCInventory {
 public:
@@ -61,7 +62,7 @@ public:
 bool CTCInventory::HasScreenshots()
 {
     CUserProfileManager& profiles = CUserProfileManager::Get();
-    CWideString pattern = NResourceDirectoryNames::GetPhotojournalDir() + GetValidProfileName(profiles.ProfileName) + s_backslash + s_jpgMask;
+    CWideString pattern = NResourceDirectoryNames::GetPhotojournalDir() + GetValidProfileName(profiles.ProfileName) + L"\\" + L"*.jpg";
     CAFile::CFileScanInfo scanInfo;
     wchar_t16 fileName[0x20C / 2];
     bool found = CAFile::StartFileScan(pattern, scanInfo, fileName);

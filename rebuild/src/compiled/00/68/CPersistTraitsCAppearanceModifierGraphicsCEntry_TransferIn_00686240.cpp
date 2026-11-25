@@ -35,7 +35,8 @@ class CCharString { public:
     }
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-extern const char g_msgUnknownSymbol_0122dfe8[];       // 0x0122DFE8 (the float traits' message)
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_msgUnknownSymbol_0122dfe8 (table ?g_msgUnknownSymbol_0122dfe8@@3QBDB -> 0x0122DFE8) -> "Unable to find symbol "
 class CStringParser { public:
     long PeekNextItemType();                           // 0x009BA900 (EParsedItemType)
     CCharString ReadAsSymbol();                        // 0x009BA790
@@ -84,7 +85,7 @@ __declspec(noinline) void CPersistTraits<float>::TransferIn(CPersistContext& con
         CCharString name = parser.ReadAsString();
         long symbol;
         if (!context.PSymbolMap->Lookup(name, &symbol))
-            context.PersistError(parser, g_msgUnknownSymbol_0122dfe8 + name);
+            context.PersistError(parser, "Unable to find symbol " + name);
         value = (float)symbol;
     }
     else

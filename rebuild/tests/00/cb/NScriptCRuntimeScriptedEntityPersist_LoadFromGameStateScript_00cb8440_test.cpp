@@ -1,75 +1,74 @@
-#include <cstdio>
-#include <cstring>
-
-// Model of CRuntimeScriptedEntityPersist::LoadFromGameStateScript: the persist map is emptied, the text is skipped up
-// to the first START_NEW_ENTITY_SCRIPT, and every START_NEW_ENTITY_SCRIPT <uid> <script> END_NEW_ENTITY_SCRIPT block
-// adds (uid, script) to the map and marks it dirty; a dirty map is sorted by uid once at the end.
-struct CPersistInfo { unsigned long long UID; char PersistScript[64]; };
-struct CEntry { unsigned long long first; CPersistInfo second; };
-
-struct CParser {
-    const char* s; unsigned int pos;
-    void ReadAsStringUntilString(const char* end, char* out)
-    {
-        const char* hit = std::strstr(s + pos, end);
-        unsigned int n = hit ? (unsigned int)(hit - (s + pos)) : (unsigned int)std::strlen(s + pos);
-        if (out) { std::memcpy(out, s + pos, n); out[n] = 0; }
-        pos += n;
-    }
-    void SkipWhitespace() { while (s[pos] == ' ' || s[pos] == '\n' || s[pos] == '\t') ++pos; }
-    void SkipUntilWhitespace() { while (s[pos] && s[pos] != ' ' && s[pos] != '\n' && s[pos] != '\t') ++pos; }
-    bool NextItemIs(const char* item) { SkipWhitespace(); return std::strncmp(s + pos, item, std::strlen(item)) == 0; }
-    bool SkipPastNextItemIfIs(const char* item)
-    {
-        if (!NextItemIs(item)) return false;
-        pos += (unsigned int)std::strlen(item);
-        return true;
-    }
-    unsigned long long ReadInt64()
-    {
-        SkipWhitespace();
-        unsigned long long v = 0;
-        while (s[pos] >= '0' && s[pos] <= '9') v = v * 10 + (unsigned long long)(s[pos++] - '0');
-        return v;
-    }
+// Behaviour test for 0x00CB8440 NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript: clears the map, skips to
+// "START_NEW_ENTITY_SCRIPT" (retail 0x012C1674), and for each entry reads the UID and the script up to "END_NEW_ENTITY_SCRIPT"
+// (0x012C165C) into the map, then sorts it if anything was added.
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined); the callees are defined
+// under the row's own spellings and log the text they receive, so the test asserts both literals and the stored entry; a mutated
+// literal fails. The row's inline STLport vector / list code runs as compiled (CRT malloc / free).
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+class CCharString { public: void* PStringData; CCharString(); CCharString(const char* text, long length); CCharString(const CCharString& other);
+    ~CCharString(); const CCharString& operator=(const CCharString& other); };
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CStringParser { public:
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset);
+    bool SkipPastNextItemIfIs(const CCharString& item); bool SkipPastString(const CCharString& item);
+    CCharString ReadAsStringUntilString(const CCharString& end);
+    long SkipUntilWhitespace(); long SkipWhitespace(); unsigned __int64 ReadAsUHUGE();
 };
-
-struct CPersist {
-    CEntry data[8]; int count; bool Dirty;
-    void LoadFromGameStateScript(const char* text)
-    {
-        count = 0;
-        CParser parser; parser.s = text; parser.pos = 0;
-        parser.ReadAsStringUntilString("START_NEW_ENTITY_SCRIPT", 0);
-        while (parser.SkipPastNextItemIfIs("START_NEW_ENTITY_SCRIPT")) {
-            parser.SkipUntilWhitespace();
-            CPersistInfo info;
-            info.UID = parser.ReadInt64();
-            parser.SkipWhitespace();
-            parser.ReadAsStringUntilString("END_NEW_ENTITY_SCRIPT", info.PersistScript);
-            data[count].first = info.UID; data[count].second = info; ++count;
-            Dirty = true;
-            parser.SkipPastNextItemIfIs("END_NEW_ENTITY_SCRIPT");
-        }
-        if (Dirty) {
-            for (int i = 1; i < count; ++i)
-                for (int j = i; j > 0 && data[j].first < data[j - 1].first; --j) { CEntry t = data[j]; data[j] = data[j - 1]; data[j - 1] = t; }
-            Dirty = false;
-        }
-    }
-};
-
+namespace NScript { struct CRuntimeScriptedEntityPersist {
+    class CPersistInfo { public: unsigned __int64 UID; CCharString PersistScript; };
+    struct CMap { void Clear(); }; void LoadFromGameStateScript(const CCharString& text); }; }
+template <class K, class V> class CKeyPairCompareLess { };
+namespace std {
+template <class T1, class T2> struct pair { T1 first; T2 second; };
+template <class _RandomAccessIter, class _Compare> void __fastcall sort(_RandomAccessIter first, _RandomAccessIter last, _Compare comp);
+}
+typedef std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> CEntry;
+static char g_log[512]; static int g_bad = 0;
+static void Log(const char* tag, const void* s) { strcat(g_log, tag); strcat(g_log, "["); strcat(g_log, s ? (const char*)s : "(null)"); strcat(g_log, "]"); }
+static int g_entries = 0, g_sorts = 0, g_clears = 0, g_erases = 0;
+CCharString::CCharString() { PStringData = 0; }
+CCharString::CCharString(const char* text, long length) { PStringData = (void*)text; if (length != -1) g_bad = 1; }
+CCharString::CCharString(const CCharString& other) { PStringData = other.PStringData; }
+CCharString::~CCharString() { }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+CBaseClass::~CBaseClass() { }
+CStringParser::CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset)
+{
+    Log("parser", text.PStringData); Log("file", filename.PStringData); if (errorCallback || baseLineOffset) g_bad = 1;
+    void** sentinel = (void**)malloc(16); sentinel[0] = sentinel; sentinel[1] = sentinel;     // the empty comment list (+0x14) the row's
+    memset(this, 0, 0x28); *(void***)((unsigned char*)this + 0x14) = sentinel;                // inline destructor walks and frees
+}
+bool CStringParser::SkipPastNextItemIfIs(const CCharString& item) { Log("skip", item.PStringData); return g_entries++ < 1; }
+bool CStringParser::SkipPastString(const CCharString& item) { Log("past", item.PStringData); return true; }
+CCharString CStringParser::ReadAsStringUntilString(const CCharString& end) { Log("until", end.PStringData); return CCharString("SCRIPT_BODY", -1); }
+long CStringParser::SkipUntilWhitespace() { strcat(g_log, "nonws;"); return 0; }
+long CStringParser::SkipWhitespace() { strcat(g_log, "ws;"); return 0; }
+unsigned __int64 CStringParser::ReadAsUHUGE() { return 0x123456789ull; }
+void NScript::CRuntimeScriptedEntityPersist::CMap::Clear() { ++g_clears; }
+// the row model's __fastcall std::sort (declared there, defined here) and its out-of-line vector erase (a thiscall-compatible stand-in)
+template <> void __fastcall std::sort(CEntry* first, CEntry* last, CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>)
+{ if (last - first != 1) g_bad = 1; ++g_sorts; }
+extern "C" void* __fastcall NF420_Erase(void*, int, void* first, void* last) { if (first != last) g_bad = 1; ++g_erases; return first; }
+#pragma comment(linker, "/alternatename:?erase@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@std@@QAEPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2@PAU32@0@Z=@NF420_Erase@16")
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
 int main()
 {
-    CPersist p; p.Dirty = false; p.count = 5;
-    p.LoadFromGameStateScript("header stuff\nSTART_NEW_ENTITY_SCRIPT 900 alpha;END_NEW_ENTITY_SCRIPT\n"
-                              "START_NEW_ENTITY_SCRIPT 12 beta;END_NEW_ENTITY_SCRIPT\nSTART_NEW_ENTITY_SCRIPT 77 gamma;END_NEW_ENTITY_SCRIPT\ntrailer");
-    if (p.count != 3 || p.Dirty) { std::printf("00cb8440_TEST FAIL\n"); return 1; }
-    if (p.data[0].first != 12 || p.data[1].first != 77 || p.data[2].first != 900 || p.data[2].second.UID != 900
-        || std::strcmp(p.data[0].second.PersistScript, "beta;") != 0 || std::strcmp(p.data[2].second.PersistScript, "alpha;") != 0)
-        { std::printf("00cb8440_TEST FAIL\n"); return 1; }
-    p.LoadFromGameStateScript("nothing here");
-    if (p.count != 0 || p.Dirty) { std::printf("00cb8440_TEST FAIL\n"); return 1; }
-    std::printf("00cb8440_TEST PASS\n");
-    return 0;
+    static unsigned char obj[0x10];
+    CCharString text("TEXT", -1);
+    ((NScript::CRuntimeScriptedEntityPersist*)obj)->LoadFromGameStateScript(text);
+    const char* want = "parser[TEXT]file[]until[START_NEW_ENTITY_SCRIPT]skip[START_NEW_ENTITY_SCRIPT]nonws;ws;until[END_NEW_ENTITY_SCRIPT]"
+                       "past[END_NEW_ENTITY_SCRIPT]skip[START_NEW_ENTITY_SCRIPT]";
+    unsigned char* first = *(unsigned char**)obj; unsigned char* last = *(unsigned char**)(obj + 4);
+    bool ok = !g_bad && strcmp(g_log, want) == 0 && g_clears == 1 && g_erases == 1 && g_sorts == 1 && obj[0xd] == 0
+        && last - first == 0x18 && *(unsigned __int64*)first == 0x123456789ull && *(unsigned __int64*)(first + 8) == 0x123456789ull
+        && strcmp(*(const char**)(first + 0x10), "SCRIPT_BODY") == 0;
+    if (ok) printf("00cb8440_TEST PASS\n");
+    else printf("FAIL bad=%d log=%s n=%d\n", g_bad, g_log, (int)(last - first));
+    return ok ? 0 : 1;
 }

@@ -93,8 +93,9 @@ public:
     void SaveToScript(CCharString& script, long mapNumber, CStringVector* names);
 };
 
-extern const char g_strVersionSpace[];                         // 0x01245BA4 "Version "
-extern const char g_strSemicolonCRLF[];                        // 0x012353B8 ";\r\n"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_strVersionSpace (table ?g_strVersionSpace@@3QBDB -> 0x01245BA4) -> "Version "
+//   g_strSemicolonCRLF (table ?g_strSemicolonCRLF@@3QBDB -> 0x012353B8) -> ";\r\n"
 
 void WriteThingToScript(CCharString& script, CThing* thing, long mode, CStringVector* names);
 #pragma auto_inline(off)
@@ -109,7 +110,7 @@ __declspec(noinline) void CThingManager::SaveThingList(CCharString& script, long
 
 void CThingManager::SaveToScript(CCharString& script, long mapNumber, CStringVector* names)
 {
-    script += g_strVersionSpace + GFIntToCharString(SerialiseVersionNumber) + g_strSemicolonCRLF;
+    script += "Version " + GFIntToCharString(SerialiseVersionNumber) + ";\r\n";
     CRetailVector<CThing*> things;
     for (SThingListNode* node = Things->_M_next; node != Things; node = node->_M_next) {
         CThing* thing = node->_M_data;

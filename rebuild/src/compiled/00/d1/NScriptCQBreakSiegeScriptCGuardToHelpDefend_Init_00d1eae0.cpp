@@ -97,7 +97,8 @@ class CGameScriptInterface { public:
     virtual void v487(); virtual void v488(); virtual void v489(); virtual void v490(); virtual void v491();
     virtual void EntityAttachToVillage(const CScriptThing& thing, const CScriptThing& village) const;   // slot 492 (+0x7b0)
 };
-extern const char g_knotholeGlade[];               // 0x012CAECC ("VILLAGE_KNOTHOLEGLADE")
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_knotholeGlade (table ?g_knotholeGlade@@3QBDB -> 0x012CAECC) -> "VILLAGE_KNOTHOLEGLADE"
 namespace NScript {
 class CQ_BreakSiegeScript {    // the PDB owner script; only its nested entity class is modelled here
 public:
@@ -124,7 +125,7 @@ void NScript::CQ_BreakSiegeScript::CGuardToHelpDefend::Init()
     m_guarding = false;
     m_state = 0;
     {
-        CCharString villageName(g_knotholeGlade, -1);
+        CCharString villageName("VILLAGE_KNOTHOLEGLADE", -1);
         Interface->EntityAttachToVillage(Me, Interface->GetThingWithScriptName(villageName));
     }
     Interface->SetThingFlag238(Me, false);

@@ -21,7 +21,8 @@ class CWideString { public:
     CWideString(const unsigned short* text);       // 0x0099B6B0
     ~CWideString();                                // 0x0099B510
 };
-extern const unsigned short g_TextQuestFailedTradersDied[];   // 0x012DEC88 L"TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_TextQuestFailedTradersDied (table ?g_TextQuestFailedTradersDied@@3QBGB -> 0x012DEC88) -> L"TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -51,7 +52,7 @@ void CTraderToRescue::OnPredicateFail()
     }
     if (killed)
     {
-        CWideString message(g_TextQuestFailedTradersDied);
+        CWideString message(L"TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED");
         Game->SetQuestAsFailed(Game->GetActiveQuestName(), true, message, true);
     }
 }

@@ -47,9 +47,10 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
         SkipPastNextItemIfIs(item);
     }
 };
-extern const char g_createTC[];                   // 0x01239BFC "CreateTC"
-extern const char g_quote[];                      // 0x0122DF24 "\""
-extern const char g_semicolon[];                  // 0x0123542C ";"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_createTC (table ?g_createTC@@3QBDB -> 0x01239BFC) -> "CreateTC"
+//   g_quote (table ?g_quote@@3QBDB -> 0x0122DF24) -> "\""
+//   g_semicolon (table ?g_semicolon@@3QBDB -> 0x0123542C) -> ";"
 class CTCBase;
 class CTCParamsBase;
 class CThing { protected:
@@ -61,11 +62,11 @@ public:
 void CThing::CreateSerialiseCreatableTCs(const CCharString& text)
 {
     CStringParser parser(text, 0, CCharString("", -1), 0);
-    while (parser.NextItemIsText(g_createTC)) {
-        parser.SkipPastText(g_quote);
+    while (parser.NextItemIsText("CreateTC")) {
+        parser.SkipPastText("\"");
         CCharString name = parser.ReadAsString();
-        parser.SkipPastText(g_quote);
+        parser.SkipPastText("\"");
         AddTC(name, true, 0);
-        parser.SkipPastText(g_semicolon);
+        parser.SkipPastText(";");
     }
 }

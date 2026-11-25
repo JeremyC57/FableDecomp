@@ -52,10 +52,11 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
         SkipPastNextItemIfIs(item);
     }
 };
-extern const char g_startScriptData[];            // 0x012C16C8 "START_SCRIPT_DATA"
-extern const char g_endScriptData[];              // 0x012C16B8 "END_SCRIPT_DATA"
-extern const char g_startEntityScripts[];         // 0x012C16A0 "START_ENTITY_SCRIPTS"
-extern const char g_endEntityScripts[];           // 0x012C168C "END_ENTITY_SCRIPTS"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_startScriptData (table ?g_startScriptData@@3QBDB -> 0x012C16C8) -> "START_SCRIPT_DATA"
+//   g_endScriptData (table ?g_endScriptData@@3QBDB -> 0x012C16B8) -> "END_SCRIPT_DATA"
+//   g_startEntityScripts (table ?g_startEntityScripts@@3QBDB -> 0x012C16A0) -> "START_ENTITY_SCRIPTS"
+//   g_endEntityScripts (table ?g_endEntityScripts@@3QBDB -> 0x012C168C) -> "END_ENTITY_SCRIPTS"
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {
     unsigned char _body[0x14];
@@ -77,14 +78,14 @@ private:
 void CScriptBase::LoadGameState(const CCharString& state)
 {
     CStringParser parser(state, 0, CCharString("", -1), 0);
-    if (parser.NextItemIsText(g_startScriptData)) {
-        CCharString data = parser.ReadUntilText(g_endScriptData);
+    if (parser.NextItemIsText("START_SCRIPT_DATA")) {
+        CCharString data = parser.ReadUntilText("END_SCRIPT_DATA");
         DoScriptDataPersist(data, false);
-        parser.NextItemIsText(g_endScriptData);
+        parser.NextItemIsText("END_SCRIPT_DATA");
     }
-    if (parser.NextItemIsText(g_startEntityScripts)) {
-        CCharString data = parser.ReadUntilText(g_endEntityScripts);
+    if (parser.NextItemIsText("START_ENTITY_SCRIPTS")) {
+        CCharString data = parser.ReadUntilText("END_ENTITY_SCRIPTS");
         RuntimeScriptedEntityPersist.LoadFromGameStateScript(data);
-        parser.NextItemIsText(g_endEntityScripts);
+        parser.NextItemIsText("END_ENTITY_SCRIPTS");
     }
 }

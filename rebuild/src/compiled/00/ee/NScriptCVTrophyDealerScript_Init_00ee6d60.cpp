@@ -21,7 +21,8 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern const char g_trophyDealerObjective[];       // 0x012F5208 "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_..."
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_trophyDealerObjective (table ?g_trophyDealerObjective@@3QBDB -> 0x012F5208) -> "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01"
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -40,6 +41,6 @@ void NScript::CV_TrophyDealerScript::Init()
 {
     CCharString extra("");
     CCharString region("Witchwood2");
-    CCharString text(g_trophyDealerObjective);
+    CCharString text("TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01");
     Game->SetQuestCardObjective(Game->GetActiveQuestName(), text, region, extra);
 }

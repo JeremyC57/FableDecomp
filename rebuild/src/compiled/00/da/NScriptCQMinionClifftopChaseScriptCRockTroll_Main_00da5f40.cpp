@@ -53,7 +53,8 @@ using NScript::CIsThingAlive;
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-extern const char g_rockTrollIcon[];               // 0x012D75D4 "HUD_QUEST_ICON_ROCK_TROLL"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_rockTrollIcon (table ?g_rockTrollIcon@@3QBDB -> 0x012D75D4) -> "HUD_QUEST_ICON_ROCK_TROLL"
 class CEntityScriptBase
 {
     virtual ~CEntityScriptBase();   // retail slot 0 (the stand-in is polymorphic, as retail: the vptr moves here)
@@ -103,7 +104,7 @@ void NScript::CQ_MinionClifftopChaseScript::CRockTroll::Main()
         return;
     Game->DisplayQuestInfo(true);
     {
-        CCharString icon(g_rockTrollIcon, -1);
+        CCharString icon("HUD_QUEST_ICON_ROCK_TROLL", -1);
         HealthBarID = Game->AddQuestInfoBarHealth(Me, CRGBColour(0, 255, 0, 255), icon, 1.0f);
     }
 }

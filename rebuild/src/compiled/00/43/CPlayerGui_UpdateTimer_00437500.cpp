@@ -1,4 +1,6 @@
 // CPlayerGui::UpdateTimer  (retail 0x00437500)
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: CPlayerGui_UpdateTimer_00437500_Upper (table ?CPlayerGui_UpdateTimer_00437500_Upper@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 //
 // Genuine C++ decompilation.  VC7.1 `cl /c /O2 /Oy /W3` compiles this to the
 // exact retail bytes; the only masked bytes are the two `fcomp disp32` operands
@@ -22,7 +24,6 @@
 // The two masked absolute float constants are the comparison thresholds
 // (g_Upper == 1.0f trigger, g_Lower == 0.0f floor).
 
-extern const float CPlayerGui_UpdateTimer_00437500_Upper;
 
 void __stdcall CPlayerGui_UpdateTimer_00437500(
     const float* pRate,
@@ -40,7 +41,7 @@ void __stdcall CPlayerGui_UpdateTimer_00437500(
         break;
     }
 
-    if (*pTimer <= CPlayerGui_UpdateTimer_00437500_Upper) {
+    if (*pTimer <= 0.0f) {
         *pMode = 1;
         *pTimer = 0.0f;
     } else if (*pTimer >= 1.0f) {

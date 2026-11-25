@@ -44,7 +44,8 @@ public:
     bool SkipPastNextItemIfIs(const CCharString& item);        // 0x009B9E00 (Ego_r / FableWin)
 };
 
-extern const char g_msgUnableToFindSymbol_0122dfe8[];          // 0x0122DFE8 "Unable to find symbol "
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_msgUnableToFindSymbol_0122dfe8 (table ?g_msgUnableToFindSymbol_0122dfe8@@3QBDB -> 0x0122DFE8) -> "Unable to find symbol "
 
 
 class CSymbolMap {
@@ -63,7 +64,7 @@ void __fastcall CPersistTraitsSLONG::TransferIn(CPersistContext& context, CStrin
         CCharString name = p->ReadAsString();
         long symbolValue = 0;
         if (!context.PeekPSymbolMap()->FindSymbol(name, symbolValue))
-            context.PersistError(parser, g_msgUnableToFindSymbol_0122dfe8 + name);
+            context.PersistError(parser, "Unable to find symbol " + name);
         value = symbolValue;
     }
     else

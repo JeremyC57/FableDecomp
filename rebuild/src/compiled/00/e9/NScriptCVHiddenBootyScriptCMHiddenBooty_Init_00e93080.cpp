@@ -34,7 +34,8 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern const char g_hiddenBootyName[];             // 0x012ECAD8 ("M_HiddenBooty")
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_hiddenBootyName (table ?g_hiddenBootyName@@3QBDB -> 0x012ECAD8) -> "M_HiddenBooty"
 namespace NScript {
 class CV_HiddenBootyScript {    // the PDB owner script; only its nested entity class is modelled here
 public:
@@ -63,7 +64,7 @@ void NScript::CV_HiddenBootyScript::CM_HiddenBooty::Init()
     m_flag1d = false;
     m_flag1e = false;
     {
-        CCharString spotName(g_hiddenBootyName, -1);
+        CCharString spotName("M_HiddenBooty", -1);
         Interface->SetDiggingSpotAsHidden(Interface->GetThingWithScriptName(spotName), true);
     }
 }

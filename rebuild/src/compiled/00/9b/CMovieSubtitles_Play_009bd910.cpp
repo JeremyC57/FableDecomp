@@ -137,7 +137,8 @@ public:
     void Play(float time, bool display);
 };
 
-extern const char g_szSoundPrefix_01239ed4[];               // 0x01239ED4 "SND_"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_szSoundPrefix_01239ed4 (table ?g_szSoundPrefix_01239ed4@@3QBDB -> 0x01239ED4) -> "SND_"
 
 void CMovieSubtitles::Play(float time, bool display)
 {
@@ -161,7 +162,7 @@ void CMovieSubtitles::Play(float time, bool display)
                     CCharString soundName = subtitle.TextEntry->SoundName;
                     sample = bank->GetSoundIndexFromSymbol(soundName);
                     if (sample == 0)
-                        sample = bank->GetSoundIndexFromSymbol(g_szSoundPrefix_01239ed4 + soundName);
+                        sample = bank->GetSoundIndexFromSymbol("SND_" + soundName);
                 }
                 CSoundInit init;
                 init.GainFaderBits = 8;

@@ -32,7 +32,8 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern const char g_knotholeGlade[];               // 0x012CAECC ("VILLAGE_KNOTHOLEGLADE")
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_knotholeGlade (table ?g_knotholeGlade@@3QBDB -> 0x012CAECC) -> "VILLAGE_KNOTHOLEGLADE"
 namespace NScript { class CQ_BreakSiegeScript; } using NScript::CQ_BreakSiegeScript;
 struct CQ_SunnyvaleMasterData;
 namespace NScript {
@@ -59,7 +60,7 @@ void NScript::CQ_BreakSiegeScript::CKG_Sheriff::Init()
 {
     ToldHeroToGatherGuards = false;
     {
-        CCharString villageName(g_knotholeGlade, -1);
+        CCharString villageName("VILLAGE_KNOTHOLEGLADE", -1);
         Interface->EntityAttachToVillage(Me, Interface->GetThingWithScriptName(villageName));
     }
 }

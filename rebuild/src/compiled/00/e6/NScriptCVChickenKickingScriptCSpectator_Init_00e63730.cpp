@@ -37,8 +37,9 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern const char g_spectator1[];                  // 0x012E7450 "Spectator1"
-extern const char g_spectator2[];                  // 0x012E7418 "Spectator2"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_spectator1 (table ?g_spectator1@@3QBDB -> 0x012E7450) -> "Spectator1"
+//   g_spectator2 (table ?g_spectator2@@3QBDB -> 0x012E7418) -> "Spectator2"
 namespace NScript {
 class CV_ChickenKickingScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
 public:
@@ -66,7 +67,7 @@ void NScript::CV_ChickenKickingScript::CSpectator::Init()
 {
     bool nearFirst;
     {
-        CCharString name(g_spectator1, -1);
+        CCharString name("Spectator1", -1);
         nearFirst = IsDistanceBetweenThingsUnder(Me, Game->GetThingWithScriptName(name), 1.0f);
     }
     if (nearFirst) {
@@ -77,7 +78,7 @@ void NScript::CV_ChickenKickingScript::CSpectator::Init()
     }
     bool nearSecond;
     {
-        CCharString name(g_spectator2, -1);
+        CCharString name("Spectator2", -1);
         nearSecond = IsDistanceBetweenThingsUnder(Me, Game->GetThingWithScriptName(name), 1.0f);
     }
     if (nearSecond) {

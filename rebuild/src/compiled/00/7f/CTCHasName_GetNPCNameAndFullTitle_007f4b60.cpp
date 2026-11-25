@@ -73,8 +73,9 @@ private: public:
     NGameText::CDataBank* TextBank;                         // +0x14
 };
 
-extern const wchar16 g_textSpacedDash[];                    // 0x0122E070 L" - "
-extern const wchar16 g_textMissingTextTag[];                // 0x01271DA8 L"Missing text tag"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_textSpacedDash (table ?g_textSpacedDash@@3QBGB -> 0x0122E070) -> L" - "
+//   g_textMissingTextTag (table ?g_textMissingTextTag@@3QBGB -> 0x01271DA8) -> L"Missing text tag"
 
 class CHasNameDef { public:
     unsigned char _pad00[0x28];
@@ -106,10 +107,10 @@ CWideString CTCHasName::GetNPCNameAndFullTitle()
     NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
     if (bank->EntryExists(GetDef()->Occupation)) {
         CWideString title = bank->GetPTextEntry(GetDef()->Occupation, true)->GetText();
-        CWideString fullTitle = name + g_textSpacedDash + title;
+        CWideString fullTitle = name + L" - " + title;
         return fullTitle;
     }
     if (name.GetLength() > 0)
         return name;
-    return CWideString(g_textMissingTextTag);
+    return CWideString(L"Missing text tag");
 }

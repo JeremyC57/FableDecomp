@@ -34,11 +34,12 @@ public:
 //   CCharString(unsigned __int64) constructor (same registers: hidden result in ecx, the value on the stack).
 CCharString __fastcall GFUHUGEToCharString(unsigned __int64 value);   // 0x0099F930
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
-extern const char g_textOpenBracket_0122e028[];                       // 0x0122E028 "("
-extern const char g_textComma_0122e024[];                             // 0x0122E024 ","
-extern const char g_textCloseBracket_0122e020[];                      // 0x0122E020 ")"
-extern const char g_textTrue_0122d6d4[];                              // 0x0122D6D4 "TRUE"
-extern const char g_textFalse_0122d6cc[];                             // 0x0122D6CC "FALSE"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_textOpenBracket_0122e028 (table ?g_textOpenBracket_0122e028@@3QBDB -> 0x0122E028) -> "("
+//   g_textComma_0122e024 (table ?g_textComma_0122e024@@3QBDB -> 0x0122E024) -> ","
+//   g_textCloseBracket_0122e020 (table ?g_textCloseBracket_0122e020@@3QBDB -> 0x0122E020) -> ")"
+//   g_textTrue_0122d6d4 (table ?g_textTrue_0122d6d4@@3QBDB -> 0x0122D6D4) -> "TRUE"
+//   g_textFalse_0122d6cc (table ?g_textFalse_0122d6cc@@3QBDB -> 0x0122D6CC) -> "FALSE"
 
 template <class T> struct CPersistTraits;
 
@@ -60,9 +61,9 @@ template <> struct CPersistTraits<bool> {
     FABLE_FORCEINLINE void TransferOut(CPersistContext& context, CCharString& out, const bool* value) const
     {
         if (*value)
-            out += g_textTrue_0122d6d4;
+            out += "TRUE";
         else
-            out += g_textFalse_0122d6cc;
+            out += "FALSE";
     }
 };
 
@@ -77,13 +78,13 @@ void CPersistTraits<CHeroMarriageInfo>::TransferOut(CPersistContext& context, CC
     CPersistTraits<unsigned __int64> uidTraits;
     CPersistTraits<long> stateTraits;
     CPersistTraits<bool> flagTraits;
-    out += g_textOpenBracket_0122e028;
+    out += "(";
     uidTraits.TransferOut(context, out, &value->WifeUID);
-    out += g_textComma_0122e024;
+    out += ",";
     uidTraits.TransferOut(context, out, &value->MaritalHomeUID);
-    out += g_textComma_0122e024;
+    out += ",";
     stateTraits.TransferOut(context, out, (const long*)value->State);
-    out += g_textComma_0122e024;
+    out += ",";
     flagTraits.TransferOut(context, out, &value->GayMarriage);
-    out += g_textCloseBracket_0122e020;
+    out += ")";
 }

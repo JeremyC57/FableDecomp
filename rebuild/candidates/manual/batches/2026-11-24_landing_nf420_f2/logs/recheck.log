@@ -1,0 +1,49 @@
+addr       parity           behav  name
+00437500   WARN STANDIN_LEAF ?CPlayerGui_UpdateTimer_00437500@@YGXPBMMMPAHPAM@Z (catalog CPlayerGui::UpdateTimer; address-only name)
+00437500   RELOCATION_MATCH PASS   UpdateTimer
+0054ecb0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0054ecb0   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0054ecb0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0054ecb0   WARN SHARED_HEADER_AVAILABLE CText (engine/CText.h)
+0054ecb0   RELOCATION_MATCH PASS   CanScroll
+006448a4   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006448a4   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+006448a4   RELOCATION_MATCH PASS   Draw
+006a98f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureDef (engine/CThingCreatureDef.h)
+006a98f0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006a98f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006a98f0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+006a98f0   RELOCATION_MATCH PASS   SerialiseGameState
+006e7340   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006e7340   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+006e7340   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+006e7340   RELOCATION_MATCH PASS   GetGameAngleXY
+00753ba0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00753ba0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+00753ba0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753ba0   RELOCATION_MATCH PASS   ImplementHeadSettings
+008909f0   RELOCATION_MATCH PASS   EntityGetOpinionOfPlayer
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StabbedToDeath (engine/CCreatureAction_StabbedToDeath.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00891720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00891720   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00891720   WARN RELOC_NAME: ??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@_N@Z -> 008ed650 labelled 'CCreatureAction_Die::CCreatureAction_Die'
+00891720   RELOCATION_MATCH PASS   ChangeHeroHealthBy
+00895a10   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00895a10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00895a10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00895a10   RELOCATION_MATCH PASS   GetBestFishWeight
+
+WINS: 9
+  00437500 RELOCATION_MATCH CPlayerGui::UpdateTimer
+  0054ecb0 RELOCATION_MATCH NUISystem::CText::CanScroll
+  006448a4 RELOCATION_MATCH NPlayerGui_CDrawMorality::Draw
+  006a98f0 RELOCATION_MATCH CThingPlayerCreature::SerialiseGameState@CThingPlayerCreature
+  006e7340 RELOCATION_MATCH CGameScriptInterface::?GetGameAngleXY@CGameScriptInterface@@UBEMXZ
+  00753ba0 RELOCATION_MATCH CTCLook::?ImplementHeadSettings@CTCLook@@AAEXXZ
+  008909f0 RELOCATION_MATCH CGameScriptInterface::EntityGetOpinionOfPlayer
+  00891720 RELOCATION_MATCH CGameScriptInterface::?ChangeHeroHealthBy@CGameScriptInterface@@UBEXM_N0@Z
+  00895a10 RELOCATION_MATCH CGameScriptInterface::?GetBestFishWeight@CGameScriptInterface@@UBEMABVCCharString@@@Z

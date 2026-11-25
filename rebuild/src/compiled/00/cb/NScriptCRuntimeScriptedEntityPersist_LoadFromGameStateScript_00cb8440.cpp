@@ -30,8 +30,9 @@
 #include "fable_string.h"
 #include "engine/CStringParser.h"
 #include "engine/CVectorMap.h"                    // CKeyPairCompareLess (the PersistScripts map's compare)
-extern const char g_startNewEntityScript[];       // 0x012C1674 "START_NEW_ENTITY_SCRIPT"
-extern const char g_endNewEntityScript[];         // 0x012C165C "END_NEW_ENTITY_SCRIPT"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_startNewEntityScript (table ?g_startNewEntityScript@@3QBDB -> 0x012C1674) -> "START_NEW_ENTITY_SCRIPT"
+//   g_endNewEntityScript (table ?g_endNewEntityScript@@3QBDB -> 0x012C165C) -> "END_NEW_ENTITY_SCRIPT"
 
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {
@@ -68,22 +69,22 @@ void NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript(const CChar
     PersistScripts.Clear();
     CStringParser parser(text, 0, CCharString("", -1), 0);
     {
-        CCharString start(g_startNewEntityScript, -1);
+        CCharString start("START_NEW_ENTITY_SCRIPT", -1);
         parser.ReadAsStringUntilString(start);
     }
-    while (SkipPastText(parser, g_startNewEntityScript)) {
+    while (SkipPastText(parser, "START_NEW_ENTITY_SCRIPT")) {
         parser.SkipUntilWhitespace();
         CPersistInfo info;
         info.UID = parser.ReadAsUHUGE();
         parser.SkipWhitespace();
         {
-            CCharString end(g_endNewEntityScript, -1);
+            CCharString end("END_NEW_ENTITY_SCRIPT", -1);
             info.PersistScript = parser.ReadAsStringUntilString(end);
         }
         PersistScripts.Data.push_back(CEntry(info.UID, info));
         PersistScripts.Dirty = true;
         {
-            CCharString end(g_endNewEntityScript, -1);
+            CCharString end("END_NEW_ENTITY_SCRIPT", -1);
             parser.SkipPastString(end);
         }
     }

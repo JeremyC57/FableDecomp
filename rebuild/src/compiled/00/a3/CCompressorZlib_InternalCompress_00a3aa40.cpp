@@ -34,7 +34,8 @@ struct z_stream {
 extern "C" int __cdecl z_deflateInit_(z_stream* strm, int level, const char* version, int stream_size);   // 0x00C021C0
 extern "C" int __cdecl z_deflate(z_stream* strm, int flush);                                             // 0x00C006A0
 extern "C" int __cdecl z_deflateEnd(z_stream* strm);                                                      // 0x00C00AE0
-extern const char g_zlibVersion[];                                                                      // 0x0129CFE0 ("1.2.1")
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_zlibVersion (table ?g_zlibVersion@@3QBDB -> 0x0129CFE0) -> "1.2.1"
 
 class CCompressorZlib { public:
 private: static void* __cdecl Alloc(void* opaque, uInt items, uInt size);   // 0x00A3A9C0 (Ego_r + FableWin ?Alloc@CCompressorZlib@@CAPAXPAXII@Z, private static)
@@ -50,7 +51,7 @@ unsigned long CCompressorZlib::InternalCompress(const void* source, unsigned lon
     stream.zalloc = Alloc;
     stream.zfree = Free;
     stream.opaque = 0;
-    z_deflateInit_(&stream, 1, g_zlibVersion, sizeof(z_stream));
+    z_deflateInit_(&stream, 1, "1.2.1", sizeof(z_stream));
     stream.next_in = (Bytef*)source;
     stream.next_out = (Bytef*)dest;
     while (stream.total_in != sourceSize && stream.total_out < destSize) {

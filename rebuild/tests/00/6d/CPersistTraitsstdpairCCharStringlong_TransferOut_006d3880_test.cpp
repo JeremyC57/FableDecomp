@@ -1,79 +1,44 @@
-#include <cstdio>
-#include <cstring>
-#ifndef _MSC_VER
-#define __fastcall
-#define __stdcall
-#define __fastcall
-#define __forceinline inline
-#define __declspec(x)
-#define __int64 long long
-#endif
-typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
-#define TEST_ADDR "006d3880"
-#define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", TEST_ADDR, __LINE__); return 1; } } while (0)
-
-class CCharString {
-public:
-    char m_text[64];
-    static int s_live;
-    CCharString() { m_text[0] = 0; ++s_live; }
-    ~CCharString() { --s_live; }
-    CCharString(const char* t) { std::strcpy(m_text, t); }
-    const CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
+// Behaviour test for 0x006D3880 CPersistTraits<std::pair<CCharString, long> >::TransferOut: writes "(first,second)" with the
+// separators "(" "," ")" (retail 0x0122E028 / 0x0122E024 / 0x0122E020), the string through its traits and the long through TransferOutLong.
+// NF420 (2026-11-25): LINKED test -- it links the row object (the explicit instantiation's member is declared here, not defined); the
+// callees are defined under the row's own spellings and append to one text buffer, so the test asserts the exact text; a mutated literal fails.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+class CPersistContext;
+class CCharString { public: void* PStringData; CCharString(); ~CCharString(); const CCharString& operator+=(const char* text); };
+void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }
+template <class T> struct CPersistTraits;
+template <> struct CPersistTraits<CCharString> { CCharString DefaultVal; void TransferOut(CPersistContext& context, CCharString& out, const CCharString& value); };
+template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {   // the row's member, declared only: the test calls the row's copy
+    std::pair<T1, T2> DefaultVal;
+    void TransferOut(CPersistContext& context, CCharString& out, const std::pair<T1, T2>* value) const;
 };
-int CCharString::s_live = 0;
-
-class CPersistContext { public: int id; };
-static CPersistContext* g_lastContext = 0;
-void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, LONG32* value)
-{
-    char buf[16];
-    std::sprintf(buf, "%d", (int)*value);
-    g_lastContext = context;
-    *out += buf;
-}
-
-namespace std {
-template <class T1, class T2> struct pair { T1 first; T2 second; };
-}
-template <class T> struct CPersistTraits {
-    T DefaultVal;
-    CPersistTraits() : DefaultVal() { }
-    void TransferOut(CPersistContext& context, CCharString& out, const T* value) const;
-};
-template <> void CPersistTraits<LONG32>::TransferOut(CPersistContext& context, CCharString& out, const LONG32* value) const
-{
-    LONG32 copy = *value;
-    TransferOutLong(&context, &out, &copy);
-}
-template <> void CPersistTraits<CCharString>::TransferOut(CPersistContext& context, CCharString& out, const CCharString* value) const
-{
-    out += "\"";
-    out += value->m_text;
-    out += "\"";
-}
-template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {
-    void TransferOut(CPersistContext& context, CCharString& out, const std::pair<T1, T2>* value) const
-    {
-        CPersistTraits<T1> firstTraits;
-        CPersistTraits<T2> secondTraits;
-        out += "(";
-        firstTraits.TransferOut(context, out, &value->first);
-        out += ",";
-        secondTraits.TransferOut(context, out, &value->second);
-        out += ")";
-    }
-};
-
+static char g_out[256]; static CPersistContext* g_ctx = 0; static int g_ctxOk = 1; static int g_live = 0;
+CCharString::CCharString() { PStringData = 0; ++g_live; }
+CCharString::~CCharString() { --g_live; }
+const CCharString& CCharString::operator+=(const char* text) { strcat((char*)PStringData, text); return *this; }
+void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value)
+{ char b[16]; if (context != g_ctx) g_ctxOk = 0; sprintf(b, "%ld", *value); strcat((char*)out->PStringData, b); }
+void CPersistTraits<CCharString>::TransferOut(CPersistContext& context, CCharString& out, const CCharString& value)
+{ if (&context != g_ctx) g_ctxOk = 0; out += "'"; out += (const char*)value.PStringData; out += "'"; }
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
+static double g_traits[8];
 int main()
 {
-    CPersistContext c; CCharString s;
-    std::pair<CCharString, LONG32> p; std::strcpy(p.first.m_text, "Name"); p.second = 7;
-    int live = CCharString::s_live;
-    CPersistTraits<std::pair<CCharString, LONG32> > t;
-    t.TransferOut(c, s, &p);
-    CHECK(std::strcmp(s.m_text, "(\"Name\",7)") == 0);
-    CHECK(CCharString::s_live == live);   // the string traits' DefaultVal is built and destroyed
-    std::printf("006d3880_TEST PASS\n");
-    return 0;
+    static double ctxRaw[4]; CPersistContext& ctx = *(CPersistContext*)ctxRaw; g_ctx = &ctx;
+    CPersistTraits<std::pair<CCharString, long> >& traits = *(CPersistTraits<std::pair<CCharString, long> >*)g_traits;
+    static char name[] = "HERO"; static double vraw[4]; std::pair<CCharString, long>& v = *(std::pair<CCharString, long>*)vraw;
+    v.first.PStringData = name; v.second = -9;
+    static double oraw[2]; CCharString& out = *(CCharString*)oraw; out.PStringData = g_out;
+    traits.TransferOut(ctx, out, &v);
+    bool ok = strcmp(g_out, "('HERO',-9)") == 0 && g_ctxOk && g_live == 0;
+    if (ok) printf("006d3880_TEST PASS\n");
+    else printf("FAIL out=%s live=%d\n", g_out, g_live);
+    return ok ? 0 : 1;
 }

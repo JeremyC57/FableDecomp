@@ -30,8 +30,9 @@ using NGameText::CDataBank;
 #include "engine/CMainGameComponent.h"
 #include "engine/CNewFrontendGameComponent.h"
 
-extern const char k_122df40[];
-extern const wchar16 k_122de80[];
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   k_122df40 (table ?k_122df40@@3QBDB -> 0x0122DF40) -> "TEXT_GUI_PROFILE_DEFAULT"
+//   k_122de80 (table ?k_122de80@@3QBGB -> 0x0122DE80) -> L"Default"
 
 class CUserProfileManager { public:
     CWideString GetAutoSaveDisplayName();
@@ -41,13 +42,13 @@ CWideString CUserProfileManager::GetAutoSaveDisplayName()
 {
     CMainGameComponent* a = CMainGameComponent::Get();
     if (a) {
-        CCharString t(k_122df40, -1);
+        CCharString t("TEXT_GUI_PROFILE_DEFAULT", -1);
         return a->GetTextBank().GetTextBySymbol(t);
     }
     CNewFrontendGameComponent* b = CNewFrontendGameComponent::Get();
     if (b) {
-        CCharString t(k_122df40, -1);
+        CCharString t("TEXT_GUI_PROFILE_DEFAULT", -1);
         return b->GetTextBank().GetTextBySymbol(t);
     }
-    return CWideString(k_122de80);
+    return CWideString(L"Default");
 }

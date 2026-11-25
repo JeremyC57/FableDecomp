@@ -1,5 +1,7 @@
 // CThingPlayerCreature::SerialiseGameState(CPersistContext& context) -- base creature serialise; unless the context is in mode 1 or 3, reset MaxHealth from the creature def, top Health up when it holds the sentinel value, and set a CThing state bit
 // Leaf: SerialiseGameState@CThingPlayerCreature
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: HEALTH_UNSET (table _HEALTH_UNSET -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A98F0, length 112 bytes (`ret 4`). Vtable CThingPlayerCreature
 // 0x012457FC slot 3 (manifest "vfunc_3"; slot 3 is SerialiseGameState as for CThingCreatureBase 0x006628E0).
 // Callees: CThingCreatureBase::SerialiseGameState @ 0x006628E0 (direct base call); float pool 0x0122DEDC
@@ -33,7 +35,6 @@ class CThingCreatureBase { public:
     virtual bool SerialiseGameState(CPersistContext& context);    // 0x006628E0 (Ego_r + FableWin UAE: virtual, slot 3)
 };
 
-static const float HEALTH_UNSET = 0.0f;               // 0x0122DEDC (0.0f)
 
 class CThingPlayerCreature : public CThingCreatureBase { public:
     virtual bool SerialiseGameState(CPersistContext& context);   // Ego_r + FableWin UAE (vtable 0x012457FC slot 3)
@@ -45,7 +46,7 @@ bool CThingPlayerCreature::SerialiseGameState(CPersistContext& context)
         if (context.m_mode != 1 && context.m_mode != 3) {
             float maxHealth = PDef->DefaultMaxHealth;
             MaxHealth = maxHealth;
-            if (Health == HEALTH_UNSET)
+            if (Health == 0.0f)
                 Health = maxHealth;
             Drawable = 1;
         }

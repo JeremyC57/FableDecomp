@@ -1,4 +1,6 @@
 // Leaf: ?ChangeHeroHealthBy@CGameScriptInterface@@UBEXM_N0@Z
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: gDamageThreshold (table ?gDamageThreshold@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Naming wave 18: the global stand-in gPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
@@ -89,7 +91,6 @@ public:
     void AddDamageChange(float amount, bool isDamage);
 };
 extern const float DELTA_NOTIONAL_ZERO;
-extern const float gDamageThreshold;
 
 class CGameScriptInterface
 {
@@ -116,6 +117,6 @@ void CGameScriptInterface::ChangeHeroHealthBy(
     {
         hero->SetCurrentAction(CCreatureAction_StabbedToDeath(*hero, false));
     }
-    if (*(const bool*)&applyHealthChange && amount < gDamageThreshold)
+    if (*(const bool*)&applyHealthChange && amount < 0.0f)
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddDamageChange(-amount, true);
 }

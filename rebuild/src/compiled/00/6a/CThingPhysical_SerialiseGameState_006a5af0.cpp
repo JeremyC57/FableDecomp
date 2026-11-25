@@ -70,8 +70,9 @@ class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: float 0x00410620
 };
-extern const char g_strHealth[];                               // 0x0125D090 "Health"
-extern const char g_strScale[];                                // 0x0125D088 "Scale"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_strHealth (table ?g_strHealth@@3QBDB -> 0x0125D090) -> "Health"
+//   g_strScale (table ?g_strScale@@3QBDB -> 0x0125D088) -> "Scale"
 
 class CThing {
 public:
@@ -121,10 +122,10 @@ bool CThingPhysical::SerialiseGameState(CPersistContext& context)
         Damageable = PBaseDef->Damageable;
         AbleToBeEngagedInCombat = true;
     }
-    context.Transfer(g_strHealth, Health, MaxHealth);
+    context.Transfer("Health", Health, MaxHealth);
     if (ThingClass != 2 && Health > MaxHealth)
         Health = MaxHealth;
     float defaultScale = 1.0f;
-    context.Transfer(g_strScale, Scale, defaultScale);
+    context.Transfer("Scale", Scale, defaultScale);
     return true;
 }

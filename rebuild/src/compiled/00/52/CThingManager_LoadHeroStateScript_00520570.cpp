@@ -53,13 +53,14 @@ public:
     void LoadHeroStateScript(CStringParser& parser);
 };
 
-extern const char g_strNewThing[];                 // 0x01245A88 "NewThing"
-extern const char g_strEndThingLevel[];            // 0x01245A78 "END_THING_LEVEL"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_strNewThing (table ?g_strNewThing@@3QBDB -> 0x01245A88) -> "NewThing"
+//   g_strEndThingLevel (table ?g_strEndThingLevel@@3QBDB -> 0x01245A78) -> "END_THING_LEVEL"
 
 void CThingManager::LoadHeroStateScript(CStringParser& parser)
 {
-    parser.ReadAsStringUntilPastString(g_strNewThing);
-    CCharString heroState = parser.ReadAsStringUntilString(g_strEndThingLevel);
+    parser.ReadAsStringUntilPastString("NewThing");
+    CCharString heroState = parser.ReadAsStringUntilString("END_THING_LEVEL");
     CStringParser heroParser(heroState, 0, CCharString("", -1), 0);
     heroParser.SkipWhitespace();
     CPersistContext context(heroParser, 0, true, 0, 0, 0);

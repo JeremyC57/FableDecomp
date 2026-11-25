@@ -33,7 +33,8 @@ template <class T> struct CRetailVector {          // STLport vector (12 bytes)
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern const char g_factionBandits[];              // 0x0125FE68 "FACTION_BANDITS"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_factionBandits (table ?g_factionBandits@@3QBDB -> 0x0125FE68) -> "FACTION_BANDITS"
 class CScriptBase { public:
     bool IsActiveThreadTerminating();              // 0x00CB7940
 };
@@ -73,7 +74,7 @@ void NScript::CQ_TraderConflictGoodScript::WatchForRegionTransitions()
                     return;
                 Game->SetCombatNearbyBreakOffRange(AllCreatures[i], 10.0f);
                 Game->EntitySetSleepEnabled(AllCreatures[i], false);
-                CCharString faction(g_factionBandits, -1);
+                CCharString faction("FACTION_BANDITS", -1);
                 Game->EntitySetInFaction(AllCreatures[i], faction);
             }
             if (IsActiveThreadTerminating())

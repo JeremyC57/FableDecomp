@@ -1,5 +1,7 @@
 // CTCLook::ImplementHeadSettings() -- applies the head angles to the creature's animation: builds the head animations on the first pass, and when the creature is inside the look range, either strips both head-turn combination animations (no head angle) or updates the vertical and horizontal head animations
 // Leaf: ?ImplementHeadSettings@CTCLook@@AAEXXZ
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: g_zero (table ?g_zero@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00753BA0, length 208 bytes (+ int3 padding); speed TU (no frame pointer).
 // Callees: CTCLook::InitialiseHeadAnims @ 0x00752640, IsInsideAnimationRange @ 0x00751BC0, CVectorMap::LowerBound @ 0x0040F020 (the
@@ -41,7 +43,6 @@ class CCharString;
 enum ECreatureAnim;                                  // MS forward enum (Ego_r.pdb)
 extern CCharString g_CCharString_013bace4;           // 0x013BACE4 Ego_r.pdb initializer order: ST_HEAD_TURN_H (spelling of the landed definition row 0x0121EBA0)
 extern CCharString g_CCharString_013bace8;           // 0x013BACE8 Ego_r.pdb initializer order: ST_HEAD_TURN_V (spelling of the landed definition row 0x0121EBC0)
-extern const float g_zero;                           // 0x0122DEDC
 
 class CTCLook { public:
     unsigned char _pad00[0x04];
@@ -73,7 +74,7 @@ void CTCLook::ImplementHeadSettings()
     CTCAnimationComplex* component;
     ParentThing->GetTC(TCI_ANIMATION, &component);
     CAnimateThing& animation = component->GetAnimation();
-    if (HeadAngleRelToBodyXY == g_zero && HeadAngleRelToBodyYZ == g_zero) {
+    if (HeadAngleRelToBodyXY == 0.0f && HeadAngleRelToBodyYZ == 0.0f) {
         animation.RemoveCombinationAnimsOfType(HEAD_ANIM_VERTICAL);
         animation.RemoveCombinationAnimsOfType(HEAD_ANIM_HORIZONTAL);
     } else {

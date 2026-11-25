@@ -76,7 +76,8 @@ class CChunkedFile { public:
     CCharString  FileComment;                           // +0x10
 };
 struct CChunkedFileException { CChunkedFileException() {} };
-extern const char CHUNKED_FILE_ID[];                   // 0x0129E454 ">>>>"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   CHUNKED_FILE_ID (table ?CHUNKED_FILE_ID@@3QBDB -> 0x0129E454) -> ">>>>"
 static FABLE_FORCEINLINE bool SameID(const void* a, const void* b) { return memcmp(a, b, 4) == 0; }
 class CChunkedFileLoader { public:
     virtual void v0();
@@ -91,7 +92,7 @@ void CChunkedFileLoader::LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& 
 {
     char id[4] = { 0, 0, 0, 0 };
     stream.Read(id, 4);
-    if (!SameID(id, CHUNKED_FILE_ID))
+    if (!SameID(id, ">>>>"))
         throw CChunkedFileException();
     unsigned long fileType = 0;
     stream.Read(&fileType, 4);

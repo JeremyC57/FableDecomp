@@ -1,5 +1,7 @@
 // NUISystem::CText::CanScroll(bool down, const C2DBoxF& bounds) -- after the slot-135 refresh, reports how far the text could still scroll inside the bounds: scrolling down, the UI-scaled text height plus the text position measured against the bottom edge; otherwise the position against the top edge; zero when no room
 // Leaf: CanScroll
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: g_zero (table ?g_zero@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054ECB0, 207 bytes (+13 int3). `ret 8`, float on the FPU stack.
 // Callees: own slot 135 (+0x21C) with the +0x148 word, NUISystem::CManager::GetInstance 0x0041E5F2 (`__fastcall`),
 //          NUISystem::CManager::GetUIScale 0x0041CF47 (C2DVector by hidden pointer), own slot 112 (+0x1C0) GetPosition
@@ -16,7 +18,6 @@ class C2DVector { public:
     C2DVector() { }
 };
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
-extern const float g_zero;                                 // 0x0122DEDC
 namespace NUISystem {
 class CManager { public:
     C2DVector GetUIScale() const;                                // 0x0041CF47
@@ -65,5 +66,5 @@ float NUISystem::CText::CanScroll(bool down, const C2DBoxF& bounds)
         if (GetPosition().Y < bounds.TLY)
             return bounds.TLY - GetPosition().Y;
     }
-    return g_zero;
+    return 0.0f;
 }

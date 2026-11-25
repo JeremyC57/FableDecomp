@@ -38,7 +38,8 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-extern const char g_scriptNameHero[];              // 0x0125D1C8 "SCRIPT_NAME_HERO"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_scriptNameHero (table ?g_scriptNameHero@@3QBDB -> 0x0125D1C8) -> "SCRIPT_NAME_HERO"
 namespace NScript {
 class CPersonalScript_alextestScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
 public:
@@ -72,9 +73,9 @@ void NScript::CPersonalScript_alextestScript::CStopDrawing::Main()
     if (IsActiveThreadTerminating())
         return;
     while (!IsActiveThreadTerminating()) {
-        bool touched = Me.MsgIsTalkedToBy(g_scriptNameHero) || Me.MsgIsHitBy(g_scriptNameHero)
-                    || (Me.MsgIsHitByAnySpecialAbilityFrom(g_scriptNameHero)
-                        && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)0xe, g_scriptNameHero));
+        bool touched = Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO") || Me.MsgIsHitBy("SCRIPT_NAME_HERO")
+                    || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
+                        && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)0xe, "SCRIPT_NAME_HERO"));
         if (touched) {
             if (IsActiveThreadTerminating())
                 return;

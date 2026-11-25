@@ -29,7 +29,8 @@ class CCharString { public:
     ~CCharString();                                            // 0x0099EAE0
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690 (hidden result in ecx)
-extern const char g_msgUnknownSymbol_0122dfe8[];               // 0x0122DFE8
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_msgUnknownSymbol_0122dfe8 (table ?g_msgUnknownSymbol_0122dfe8@@3QBDB -> 0x0122DFE8) -> "Unable to find symbol "
 
 
 class CSymbolMap { public:
@@ -56,7 +57,7 @@ template <> void CPersistTraits<float>::TransferIn(CPersistContext& context, CSt
         CCharString name = p.ReadAsString();
         long value;
         if (!context.GetSymbolMap()->FindSymbol(name, value))
-            context.PersistError(parser, g_msgUnknownSymbol_0122dfe8 + name);
+            context.PersistError(parser, "Unable to find symbol " + name);
         *out = (float)value;
     }
     else

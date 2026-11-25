@@ -56,7 +56,8 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
 };
-extern const char g_DefaultFallStunnedAnim[];  // 0x0127717C
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_DefaultFallStunnedAnim (table ?g_DefaultFallStunnedAnim@@3QBDB -> 0x0127717C) -> "RESPONSE_GENERIC_HIT_BACK_KNOCKDOWN"
 
 class CCombatAction_FallStunned : public CCombatActionBase { public:   // vtable 0x012880E4
     virtual void v00();
@@ -67,7 +68,7 @@ CCombatAction_FallStunned::CCombatAction_FallStunned(CThingCreatureBase* owner, 
     : CCombatActionBase(owner, thing ? thing : owner, 250, CSoundPair())
 {
     if (animName == "") {
-        CCharString name(g_DefaultFallStunnedAnim, -1);
+        CCharString name("RESPONSE_GENERIC_HIT_BACK_KNOCKDOWN", -1);
         SetCombatAnimation(name);
     } else
         SetCombatAnimation(animName);

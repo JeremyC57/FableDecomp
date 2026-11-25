@@ -1,61 +1,47 @@
-#include <cstdio>
-#include <cstring>
-// behaviour test: CScriptBase::LoadGameState hands the script-data and entity-script sections to their loaders
-class CCharString { public:
-    char m[64];
-    CCharString(const char* text, long) { std::strncpy(m, text, 63); m[63] = 0; }
-    CCharString() { m[0] = 0; }
-};
-static const char* g_text = 0;
+// Behaviour test for 0x00CB8690 CScriptBase::LoadGameState: reads the text between "START_SCRIPT_DATA" / "END_SCRIPT_DATA" (retail
+// 0x012C16C8 / 0x012C16B8) into the script-data persist, and between "START_ENTITY_SCRIPTS" / "END_ENTITY_SCRIPTS" (0x012C16A0 /
+// 0x012C168C) into the runtime entity-script persist.
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined); the callees are defined
+// under the row's own spellings and log the text they receive, so the test asserts all four literals; a mutated literal fails.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+class CCharString { public: void* m_pData; CCharString(const char* text, long length); ~CCharString(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 class CStringParser { public:
-    const char* pos;
-    CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long) : pos(g_text) {}
-    void skip() { while (*pos == ' ') ++pos; }
-    bool NextItemIs(const CCharString& item) { skip(); size_t n = std::strlen(item.m); if (std::strncmp(pos, item.m, n)) return false; pos += n; return true; }
-    CCharString ReadAsStringUntilString(const CCharString& end)
-    { skip(); CCharString r; int n = 0; while (*pos && std::strncmp(pos, end.m, std::strlen(end.m))) r.m[n++] = *pos++; r.m[n] = 0; return r; }
-    CCharString ReadUntilText(const char* text) { CCharString end(text, -1); return ReadAsStringUntilString(end); }
-    bool NextItemIsText(const char* text) { CCharString item(text, -1); return NextItemIs(item); }
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset);
+    bool SkipPastString(const CCharString& item);
+    CCharString ReadAsStringUntilString(const CCharString& end);
 };
-static const char g_emptyString_0122d70e[] = "";
-static const char g_startScriptData[] = "START_SCRIPT_DATA";
-static const char g_endScriptData[] = "END_SCRIPT_DATA";
-static const char g_startEntityScripts[] = "START_ENTITY_SCRIPTS";
-static const char g_endEntityScripts[] = "END_ENTITY_SCRIPTS";
-static char g_scriptData[64], g_entityData[64]; static bool g_savingFlag = true;
-namespace NScript {
-struct CRuntimeScriptedEntityPersist { void LoadFromGameStateScript(const CCharString& t) { std::strcpy(g_entityData, t.m); } };
-}
-class CScriptBase {
-public:
-    void DoScriptDataPersist(CCharString& data, bool saving) { std::strcpy(g_scriptData, data.m); g_savingFlag = saving; }
-    void LoadGameState(const CCharString& state);
-    NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-};
-void CScriptBase::LoadGameState(const CCharString& state)
-{
-    CStringParser parser(state, 0, CCharString(g_emptyString_0122d70e, -1), 0);
-    if (parser.NextItemIsText(g_startScriptData)) {
-        CCharString data = parser.ReadUntilText(g_endScriptData);
-        DoScriptDataPersist(data, false);
-        parser.NextItemIsText(g_endScriptData);
-    }
-    if (parser.NextItemIsText(g_startEntityScripts)) {
-        CCharString data = parser.ReadUntilText(g_endEntityScripts);
-        RuntimeScriptedEntityPersist.LoadFromGameStateScript(data);
-        parser.NextItemIsText(g_endEntityScripts);
-    }
-}
+namespace NScript { struct CRuntimeScriptedEntityPersist { void LoadFromGameStateScript(const CCharString& text); }; }
+class CScriptBase { protected: void DoScriptDataPersist(CCharString& data, bool saving); public: void LoadGameState(const CCharString& state); };
+static char g_log[512]; static int g_bad = 0;
+static void Log(const char* tag, const void* s) { strcat(g_log, tag); strcat(g_log, "["); strcat(g_log, s ? (const char*)s : "(null)"); strcat(g_log, "]"); }
+static unsigned char g_script[0x48];
+CCharString::CCharString(const char* text, long length) { m_pData = (void*)text; if (length != -1) g_bad = 1; }
+CCharString::~CCharString() { }
+CBaseClass::~CBaseClass() { }
+CStringParser::CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset)
+{ Log("parser", text.m_pData); Log("file", filename.m_pData); if (errorCallback || baseLineOffset) g_bad = 1; }
+bool CStringParser::SkipPastString(const CCharString& item) { Log("next", item.m_pData); return true; }
+CCharString CStringParser::ReadAsStringUntilString(const CCharString& end) { Log("until", end.m_pData); return CCharString("BODY", -1); }
+void NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript(const CCharString& text) { if ((unsigned char*)this != g_script + 0x30) g_bad = 1; Log("entities", text.m_pData); }
+void CScriptBase::DoScriptDataPersist(CCharString& data, bool saving) { if (saving) g_bad = 1; Log("data", data.m_pData); }
+extern "C" void __fastcall NF420_ListBaseDtor(void*, int) { }
+#pragma comment(linker, "/alternatename:??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ=@NF420_ListBaseDtor@8")
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
 int main()
 {
-    CScriptBase s; CCharString in("", -1);
-    g_text = "START_SCRIPT_DATA abc END_SCRIPT_DATA START_ENTITY_SCRIPTS xyz END_ENTITY_SCRIPTS";
-    s.LoadGameState(in);
-    bool ok = std::strcmp(g_scriptData, "abc ") == 0 && !g_savingFlag && std::strcmp(g_entityData, "xyz ") == 0;
-    g_scriptData[0] = 0; g_entityData[0] = 0; g_text = "START_ENTITY_SCRIPTS q END_ENTITY_SCRIPTS";
-    s.LoadGameState(in);
-    ok = ok && g_scriptData[0] == 0 && std::strcmp(g_entityData, "q ") == 0;
-    if (!ok) { std::printf("00cb8690_TEST FAIL\n"); return 1; }
-    std::printf("00cb8690_TEST PASS\n");
-    return 0;
+    CCharString state("STATE", -1);
+    ((CScriptBase*)g_script)->LoadGameState(state);
+    const char* want = "parser[STATE]file[]next[START_SCRIPT_DATA]until[END_SCRIPT_DATA]data[BODY]next[END_SCRIPT_DATA]"
+                       "next[START_ENTITY_SCRIPTS]until[END_ENTITY_SCRIPTS]entities[BODY]next[END_ENTITY_SCRIPTS]";
+    bool ok = !g_bad && strcmp(g_log, want) == 0;
+    if (ok) printf("00cb8690_TEST PASS\n");
+    else printf("FAIL bad=%d log=%s\n", g_bad, g_log);
+    return ok ? 0 : 1;
 }

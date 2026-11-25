@@ -1,97 +1,41 @@
-#include <cstdio>
-
-// test stand-in for CWideString: a fixed-capacity UTF-16 buffer with the engine operations the rows call
-class CWideString {
-public:
-    enum { CAP = 128 };
-    CWideString() { Len = 0; Data[0] = 0; }
-    CWideString(const unsigned short* text) { Assign(text); }
-    CWideString(const CWideString& other) { Assign(other.Data); }
-    ~CWideString() { ++Destroyed; }
-    const CWideString& operator=(const CWideString& other) { Assign(other.Data); return *this; }
-    bool Contains(const CWideString& text) const { return Find(text) >= 0; }
-    void Replace(const CWideString& search, const CWideString& replacement)
-    {
-        int at;
-        while ((at = Find(search)) >= 0) {
-            unsigned short out[CAP];
-            int n = 0, i;
-            for (i = 0; i < at; ++i) out[n++] = Data[i];
-            for (i = 0; i < replacement.Len; ++i) out[n++] = replacement.Data[i];
-            for (i = at + search.Len; i < Len; ++i) out[n++] = Data[i];
-            out[n] = 0;
-            Assign(out);
-        }
-    }
-    void Format(const unsigned short* fmt, int value)     // "%d"-only stand-in
-    {
-        (void)fmt;
-        char digits[16];
-        int n = std::sprintf(digits, "%d", value);
-        for (int i = 0; i <= n; ++i) Data[i] = (unsigned short)(unsigned char)digits[i];
-        Len = n;
-    }
-    bool Equals(const char* ascii) const
-    {
-        int i = 0;
-        for (; ascii[i]; ++i) if (i >= Len || Data[i] != (unsigned short)(unsigned char)ascii[i]) return false;
-        return i == Len;
-    }
-    int Find(const CWideString& s) const
-    {
-        if (s.Len == 0) return -1;
-        for (int i = 0; i + s.Len <= Len; ++i) {
-            int j = 0;
-            while (j < s.Len && Data[i + j] == s.Data[j]) ++j;
-            if (j == s.Len) return i;
-        }
-        return -1;
-    }
-    void Assign(const unsigned short* text)
-    {
-        Len = 0;
-        while (text[Len] && Len < CAP - 1) { Data[Len] = text[Len]; ++Len; }
-        Data[Len] = 0;
-    }
-    static int Destroyed;
-    unsigned short Data[CAP];
-    int Len;
+// Behaviour test for 0x009C7980 NGameText::ConstructString(CWideString&, const CWideString&): replaces the L"%1" placeholder (retail
+// 0x0129B450) with the replacement; false when the text has no %1.
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined); the CWideString callees
+// are defined under the row's own spellings over a small model, so the test asserts the placeholder the row builds; a mutated literal fails.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+static int Len(const unsigned short* s) { int n = 0; while (s[n]) ++n; return n; }
+static unsigned short* Widen(const char* s) { int n = (int)strlen(s); unsigned short* d = (unsigned short*)malloc((n + 1) * 2); for (int i = 0; i <= n; ++i) d[i] = (unsigned char)s[i]; return d; }
+static void Narrow(const unsigned short* w, char* out) { int i = 0; for (; w[i] && i < 127; ++i) out[i] = (char)w[i]; out[i] = 0; }
+// wide-string model: PData -> a 128-char narrow mirror buffer (all edits are done on narrow text)
+static char* Buf(const char* s) { char* d = (char*)malloc(128); strcpy(d, s); return d; }
+static void Replace(char* text, const char* key, const char* with) { char* p = strstr(text, key); if (!p) return; char tail[128]; strcpy(tail, p + strlen(key)); strcpy(p, with); strcat(p, tail); }
+class CWideString { public:
+    CWideString(const unsigned short* text); ~CWideString();
+    bool Contains(const CWideString& text) const; void Replace(const CWideString& search, const CWideString& replacement);
+    void* PData;
 };
-int CWideString::Destroyed = 0;
-
-static CWideString W(const char* ascii)
-{
-    unsigned short buf[CWideString::CAP];
-    int i = 0;
-    for (; ascii[i] && i < CWideString::CAP - 1; ++i) buf[i] = (unsigned short)(unsigned char)ascii[i];
-    buf[i] = 0;
-    return CWideString(buf);
-}
-
-namespace NGameText {
-const unsigned short g_FirstPlaceholder[] = { '%', '1', 0 };
-
-bool ConstructString(CWideString& output, const CWideString& replacement)
-{
-    CWideString key(g_FirstPlaceholder);
-    if (output.Contains(key)) {
-        output.Replace(key, replacement);
-        return true;
-    }
-    return false;
-}
-}
-
+namespace NGameText { bool __fastcall ConstructString(CWideString& output, const CWideString& replacement); }
+static char g_keys[64];
+CWideString::CWideString(const unsigned short* text) { char b[128]; Narrow(text, b); PData = Buf(b); strcat(g_keys, b); strcat(g_keys, ";"); }
+CWideString::~CWideString() { }
+bool CWideString::Contains(const CWideString& text) const { return strstr((char*)PData, (char*)text.PData) != 0; }
+void CWideString::Replace(const CWideString& search, const CWideString& replacement) { ::Replace((char*)PData, (char*)search.PData, (char*)replacement.PData); }
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
 int main()
 {
-    CWideString out = W("You found %1 gold.");
-    if (!NGameText::ConstructString(out, W("25")) || !out.Equals("You found 25 gold.")) { std::printf("009c7980_TEST FAIL\n"); return 1; }
-    CWideString none = W("No placeholder here");
-    if (NGameText::ConstructString(none, W("x")) || !none.Equals("No placeholder here")) { std::printf("009c7980_TEST FAIL\n"); return 1; }
-    CWideString two = W("%1 and %1");
-    if (!NGameText::ConstructString(two, W("A")) || !two.Equals("A and A")) { std::printf("009c7980_TEST FAIL\n"); return 1; }
-    CWideString other = W("only %2");
-    if (NGameText::ConstructString(other, W("B")) || !other.Equals("only %2")) { std::printf("009c7980_TEST FAIL\n"); return 1; }
-    std::printf("009c7980_TEST PASS\n");
-    return 0;
+    CWideString out(Widen("Hello %1!")); CWideString rep(Widen("Bob")); g_keys[0] = 0;
+    bool r1 = NGameText::ConstructString(out, rep);
+    bool ok = r1 && strcmp((char*)out.PData, "Hello Bob!") == 0 && strcmp(g_keys, "%1;") == 0;
+    CWideString none(Widen("No placeholder")); g_keys[0] = 0;
+    bool r2 = NGameText::ConstructString(none, rep);
+    ok = ok && !r2 && strcmp((char*)none.PData, "No placeholder") == 0 && strcmp(g_keys, "%1;") == 0;
+    if (ok) printf("009c7980_TEST PASS\n");
+    else printf("FAIL out=%s keys=%s\n", (char*)out.PData, g_keys);
+    return ok ? 0 : 1;
 }

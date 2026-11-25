@@ -1,144 +1,55 @@
-#include <cstdio>
-
-// test stand-in for CWideString: a fixed-capacity UTF-16 buffer with the engine operations the rows call
-class CWideString {
-public:
-    enum { CAP = 128 };
-    CWideString() { Len = 0; Data[0] = 0; }
-    CWideString(const unsigned short* text) { Assign(text); }
-    CWideString(const CWideString& other) { Assign(other.Data); }
-    ~CWideString() { ++Destroyed; }
-    const CWideString& operator=(const CWideString& other) { Assign(other.Data); return *this; }
-    bool Contains(const CWideString& text) const { return Find(text) >= 0; }
-    void Replace(const CWideString& search, const CWideString& replacement)
-    {
-        int at;
-        while ((at = Find(search)) >= 0) {
-            unsigned short out[CAP];
-            int n = 0, i;
-            for (i = 0; i < at; ++i) out[n++] = Data[i];
-            for (i = 0; i < replacement.Len; ++i) out[n++] = replacement.Data[i];
-            for (i = at + search.Len; i < Len; ++i) out[n++] = Data[i];
-            out[n] = 0;
-            Assign(out);
-        }
-    }
-    void Sprintf(const unsigned short* fmt, int value)     // "%d"-only stand-in
-    {
-        (void)fmt;
-        char digits[16];
-        int n = std::sprintf(digits, "%d", value);
-        for (int i = 0; i <= n; ++i) Data[i] = (unsigned short)(unsigned char)digits[i];
-        Len = n;
-    }
-    bool Equals(const char* ascii) const
-    {
-        int i = 0;
-        for (; ascii[i]; ++i) if (i >= Len || Data[i] != (unsigned short)(unsigned char)ascii[i]) return false;
-        return i == Len;
-    }
-    int Find(const CWideString& s) const
-    {
-        if (s.Len == 0) return -1;
-        for (int i = 0; i + s.Len <= Len; ++i) {
-            int j = 0;
-            while (j < s.Len && Data[i + j] == s.Data[j]) ++j;
-            if (j == s.Len) return i;
-        }
-        return -1;
-    }
-    void Assign(const unsigned short* text)
-    {
-        Len = 0;
-        while (text[Len] && Len < CAP - 1) { Data[Len] = text[Len]; ++Len; }
-        Data[Len] = 0;
-    }
-    static int Destroyed;
-    unsigned short Data[CAP];
-    int Len;
+// Behaviour test for 0x009C7C20 NGameText::ConstructString(CWideString&, const vector<CWideString>&): replaces %1..%N with the vector's
+// strings; each key is L"%" (retail 0x0129B470) + the index formatted with L"%d" (0x0122DE44); false if any placeholder is missing.
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined); the CWideString callees
+// are defined under the row's own spellings over a small model (Sprintf records its format), so the test asserts both literals; a
+// mutated literal fails.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+static int Len(const unsigned short* s) { int n = 0; while (s[n]) ++n; return n; }
+static unsigned short* Widen(const char* s) { int n = (int)strlen(s); unsigned short* d = (unsigned short*)malloc((n + 1) * 2); for (int i = 0; i <= n; ++i) d[i] = (unsigned char)s[i]; return d; }
+static void Narrow(const unsigned short* w, char* out) { int i = 0; for (; w[i] && i < 127; ++i) out[i] = (char)w[i]; out[i] = 0; }
+// wide-string model: PData -> a 128-char narrow mirror buffer (all edits are done on narrow text)
+static char* Buf(const char* s) { char* d = (char*)malloc(128); strcpy(d, s); return d; }
+static void Replace(char* text, const char* key, const char* with) { char* p = strstr(text, key); if (!p) return; char tail[128]; strcpy(tail, p + strlen(key)); strcpy(p, with); strcat(p, tail); }
+class CWideString { public:
+    CWideString(); CWideString(const CWideString& other); ~CWideString();
+    void __cdecl Sprintf(const unsigned short* format, ...);
+    bool Contains(const CWideString& text) const; void Replace(const CWideString& search, const CWideString& replacement);
+    void* PData;
 };
-int CWideString::Destroyed = 0;
-
-static CWideString W(const char* ascii)
-{
-    unsigned short buf[CWideString::CAP];
-    int i = 0;
-    for (; ascii[i] && i < CWideString::CAP - 1; ++i) buf[i] = (unsigned short)(unsigned char)ascii[i];
-    buf[i] = 0;
-    return CWideString(buf);
-}
-
-static CWideString operator+(const unsigned short* left, const CWideString& right)
-{
-    CWideString r(left);
-    unsigned short buf[CWideString::CAP];
-    int n = 0, i;
-    for (i = 0; i < r.Len; ++i) buf[n++] = r.Data[i];
-    for (i = 0; i < right.Len; ++i) buf[n++] = right.Data[i];
-    buf[n] = 0;
-    return CWideString(buf);
-}
-
+CWideString __fastcall operator+(const unsigned short* left, const CWideString& right);
 namespace std {
 template <class _Tp> class allocator { };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
-public:
-    typedef unsigned int size_type;
-    typedef const _Tp* const_iterator;
-    const_iterator begin() const { return _M_start; }
-    const_iterator end() const { return _M_finish; }
-    size_type size() const { return size_type(end() - begin()); }
-    const _Tp& operator[](size_type __n) const { return *(begin() + __n); }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-};
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public: _Tp* _M_start; _Tp* _M_finish; _Tp* _M_end_of_storage; };
 }
-
-namespace NGameText {
-const unsigned short g_PlaceholderPrefix[] = { '%', 0 };
-const unsigned short g_NumberFormat[] = { '%', 'd', 0 };
-
-inline CWideString FormatIndex(int index)
-{
-    CWideString number;
-    number.Sprintf(g_NumberFormat, index);
-    return number;
-}
-
-bool ConstructString(CWideString& output, const std::vector<CWideString>& replacements)
-{
-    bool failed = false;
-    for (unsigned int i = 0; i != replacements.size(); ++i) {
-        CWideString key = g_PlaceholderPrefix + FormatIndex(i + 1);
-        if (output.Contains(key))
-            output.Replace(key, replacements[i]);
-        else
-            failed = true;
-    }
-    if (failed)
-        return false;
-    return true;
-}
-}
-
+namespace NGameText { bool __fastcall ConstructString(CWideString& output, const std::vector<CWideString>& replacements); }
+static char g_formats[64], g_prefixes[64];
+CWideString::CWideString() { PData = Buf(""); }
+CWideString::CWideString(const CWideString& other) { PData = Buf((char*)other.PData); }
+CWideString::~CWideString() { }
+void __cdecl CWideString::Sprintf(const unsigned short* format, ...)
+{ char f[32]; Narrow(format, f); strcat(g_formats, f); strcat(g_formats, ";"); int* args = (int*)&format + 1; sprintf((char*)PData, f, args[0]); }
+CWideString __fastcall operator+(const unsigned short* left, const CWideString& right)
+{ char l[32]; Narrow(left, l); strcat(g_prefixes, l); strcat(g_prefixes, ";"); CWideString r; strcpy((char*)r.PData, l); strcat((char*)r.PData, (char*)right.PData); return r; }
+bool CWideString::Contains(const CWideString& text) const { return strstr((char*)PData, (char*)text.PData) != 0; }
+void CWideString::Replace(const CWideString& search, const CWideString& replacement) { ::Replace((char*)PData, (char*)search.PData, (char*)replacement.PData); }
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
 int main()
 {
-    CWideString items[3];
-    items[0] = W("Hero"); items[1] = W("sword"); items[2] = W("Oakvale");
-    std::vector<CWideString> v;
-    v._M_start = items; v._M_finish = items + 3; v._M_end_of_storage = items + 3;
-
-    CWideString out = W("%1 took the %2 to %3.");
-    if (!NGameText::ConstructString(out, v) || !out.Equals("Hero took the sword to Oakvale.")) { std::printf("009c7c20_TEST FAIL\n"); return 1; }
-
-    CWideString partial = W("%1 and %3 only");
-    if (NGameText::ConstructString(partial, v) || !partial.Equals("Hero and Oakvale only")) { std::printf("009c7c20_TEST FAIL\n"); return 1; }
-
-    std::vector<CWideString> empty;
-    empty._M_start = empty._M_finish = empty._M_end_of_storage = items;
-    CWideString untouched = W("%1");
-    if (!NGameText::ConstructString(untouched, empty) || !untouched.Equals("%1")) { std::printf("009c7c20_TEST FAIL\n"); return 1; }
-    std::printf("009c7c20_TEST PASS\n");
-    return 0;
+    CWideString reps[2]; strcpy((char*)reps[0].PData, "Bob"); strcpy((char*)reps[1].PData, "Oakvale");
+    std::vector<CWideString> v; v._M_start = reps; v._M_finish = reps + 2; v._M_end_of_storage = reps + 2;
+    CWideString out; strcpy((char*)out.PData, "%1 lives in %2.");
+    bool r1 = NGameText::ConstructString(out, v);
+    bool ok = r1 && strcmp((char*)out.PData, "Bob lives in Oakvale.") == 0 && strcmp(g_formats, "%d;%d;") == 0 && strcmp(g_prefixes, "%;%;") == 0;
+    CWideString part; strcpy((char*)part.PData, "Only %2");
+    bool r2 = NGameText::ConstructString(part, v);
+    ok = ok && !r2 && strcmp((char*)part.PData, "Only Oakvale") == 0;
+    if (ok) printf("009c7c20_TEST PASS\n");
+    else printf("FAIL out=%s formats=%s prefixes=%s\n", (char*)out.PData, g_formats, g_prefixes);
+    return ok ? 0 : 1;
 }

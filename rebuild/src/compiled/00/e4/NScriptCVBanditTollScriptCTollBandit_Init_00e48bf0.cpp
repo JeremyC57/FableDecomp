@@ -34,8 +34,9 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 #define FABLE_RETAIL_CDEFSTRINGTABLE
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/fable_script_def_global.h"          // pGlobalScriptDef 0x0143E90C (CDefPointer<const CScriptDef>; agentNF60: was a local CScriptDef model and `CScriptDef* pGlobalScriptDef`)
-extern const char g_strBanditEscapePoint[];              // 0x012E4DA4 "M_BanditEscapePoint"
-extern const char g_strFactionBanditsFriendly[];         // 0x012D218C "FACTION_BANDITS_FRIENDLY"
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_strBanditEscapePoint (table ?g_strBanditEscapePoint@@3QBDB -> 0x012E4DA4) -> "M_BanditEscapePoint"
+//   g_strFactionBanditsFriendly (table ?g_strFactionBanditsFriendly@@3QBDB -> 0x012D218C) -> "FACTION_BANDITS_FRIENDLY"
 
 namespace NScript { class CV_BanditTollScript; } using NScript::CV_BanditTollScript;
 class CQ_SunnyvaleMasterData;
@@ -68,7 +69,7 @@ void NScript::CV_BanditTollScript::CTollBandit::Init()
     TollBanditOnlyCollectsToll = false;
     KilledReluctantTrader = false;
     TollBanditPayMeDistance = pGlobalScriptDef->TollBanditPayDistance;
-    BanditEscapeMarker = Game->GetThingWithScriptName(g_strBanditEscapePoint);
-    Game->EntitySetInFaction(Me, g_strFactionBanditsFriendly);
+    BanditEscapeMarker = Game->GetThingWithScriptName("M_BanditEscapePoint");
+    Game->EntitySetInFaction(Me, "FACTION_BANDITS_FRIENDLY");
     Game->EntitySetThingAsWantingMoney(Me, 0);
 }

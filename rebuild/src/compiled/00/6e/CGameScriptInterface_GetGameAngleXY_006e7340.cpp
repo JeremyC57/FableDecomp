@@ -1,8 +1,9 @@
 // Leaf: ?GetGameAngleXY@CGameScriptInterface@@UBEMXZ
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: g_defaultGameAngleXY (table ?g_defaultGameAngleXY@@3MA -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // CGameScriptInterface::GetGameAngleXY  @ 006e7340
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-extern float g_defaultGameAngleXY;
 
 // Obj: getAngle at vtable +0x64 => slot index 25 (0..24 fillers)
 struct Obj {
@@ -38,6 +39,6 @@ float CGameScriptInterface::GetGameAngleXY() const
     if (h->tryGet(&local)) {
         return local->getAngle();
     }
-    return g_defaultGameAngleXY;
+    return 0.0f;
 }
 // Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_GetGameAngleXY -> CGameScriptInterface::GetGameAngleXY, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

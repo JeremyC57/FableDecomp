@@ -51,13 +51,14 @@ protected:
 
 namespace NGameText {
 
-extern const unsigned short g_PlaceholderPrefix[];     // L"%"  @ 0x0129B470
-extern const unsigned short g_NumberFormat[];          // L"%d" @ 0x0122DE44
+// Literal (NF420, 2026-11-25): made-up data symbol(s) replaced by retail's pooled literal (/GF-merged ??_C@) at each use site:
+//   g_PlaceholderPrefix (table ?g_PlaceholderPrefix@NGameText@@3QBGB -> 0x0129B470) -> L"%"
+//   g_NumberFormat (table ?g_NumberFormat@NGameText@@3QBGB -> 0x0122DE44) -> L"%d"
 
 FABLE_FORCEINLINE CWideString FormatIndex(int index)
 {
     CWideString number;
-    number.Sprintf(g_NumberFormat, index);
+    number.Sprintf(L"%d", index);
     return number;
 }
 
@@ -65,7 +66,7 @@ bool __fastcall ConstructString(CWideString& output, const std::vector<CWideStri
 {
     bool failed = false;
     for (unsigned int i = 0; i != replacements.size(); ++i) {
-        CWideString key = g_PlaceholderPrefix + FormatIndex(i + 1);
+        CWideString key = L"%" + FormatIndex(i + 1);
         if (output.Contains(key))
             output.Replace(key, replacements[i]);
         else

@@ -1,77 +1,32 @@
-#include "engine/CGameScriptInterface.h"
-#include <cstdio>
-
-float g_defaultGameAngleXY = 1.5f;
-
-struct Obj {
-    virtual void f00()=0; virtual void f01()=0; virtual void f02()=0; virtual void f03()=0;
-    virtual void f04()=0; virtual void f05()=0; virtual void f06()=0; virtual void f07()=0;
-    virtual void f08()=0; virtual void f09()=0; virtual void f10()=0; virtual void f11()=0;
-    virtual void f12()=0; virtual void f13()=0; virtual void f14()=0; virtual void f15()=0;
-    virtual void f16()=0; virtual void f17()=0; virtual void f18()=0; virtual void f19()=0;
-    virtual void f20()=0; virtual void f21()=0; virtual void f22()=0; virtual void f23()=0;
-    virtual void f24()=0;
-    virtual float getAngle()=0;
-};
-
-struct Holder {
-    virtual void g00()=0; virtual void g01()=0; virtual void g02()=0; virtual void g03()=0;
-    virtual void g04()=0; virtual void g05()=0; virtual void g06()=0; virtual void g07()=0;
-    virtual void g08()=0; virtual void g09()=0;
-    virtual bool tryGet(Obj** out)=0;
-};
-
-class CWorld { public:
-    char pad34[0x34];
-    Holder* holder;
-};
-
-
-float __fastcall CGameScriptInterface_GetGameAngleXY(CGameScriptInterface* self)
+// Behaviour test for 0x006E7340 CGameScriptInterface::GetGameAngleXY: the camera object's angle when the world's holder yields one,
+// else 0.0 (retail's pooled 0.0f, 0x0122DEDC).
+// NF420 (2026-11-25): LINKED test -- it links the row object (the row function is declared here, not defined); callees are defined
+// here under the row spellings (or as thiscall-compatible __fastcall fixtures), so the test observes the float literal the row uses:
+// a mutated literal (0.0f -> 0.5f) changes the result and fails.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+extern "C" void __cdecl NF420TrapHit(const char* sym) { printf("FAIL unexpected call %s\n", sym); exit(3); }
+extern "C" char NF420TrapData[4096] = { 0 };
+static bool g_has = false; static void* g_objVtbl[26]; static void* g_obj[1] = { g_objVtbl };
+extern "C" bool __fastcall NF420_TryGet(void*, int, void** out) { if (g_has) *out = g_obj; return g_has; }       // holder slot 10
+extern "C" float __fastcall NF420_GetAngle(void*, int) { return 1.25f; }                                          // object slot 25
+extern "C" void __cdecl NF420_VirtualTrap() { NF420TrapHit("fixture virtual"); }
+extern "C" float __fastcall NF420_Row(void* self, int edx);
+#pragma comment(linker, "/alternatename:@NF420_Row@8=?GetGameAngleXY@CGameScriptInterface@@UBEMXZ")   // the row function, called through the shim
+// Row-object externals this test does not model (generated): a call reaches a trap that prints FAIL and exits; a data
+// symbol reads a zeroed buffer.
+// (none)
+int main()
 {
-    Obj* local;
-    Holder* h = self->World->holder;
-    if (h->tryGet(&local)) {
-        return local->getAngle();
-    }
-    return g_defaultGameAngleXY;
-}
-
-struct ObjImpl : Obj {
-    void f00(){} void f01(){} void f02(){} void f03(){}
-    void f04(){} void f05(){} void f06(){} void f07(){}
-    void f08(){} void f09(){} void f10(){} void f11(){}
-    void f12(){} void f13(){} void f14(){} void f15(){}
-    void f16(){} void f17(){} void f18(){} void f19(){}
-    void f20(){} void f21(){} void f22(){} void f23(){}
-    void f24(){}
-    float getAngle() { return 42.0f; }
-};
-
-static ObjImpl g_target;
-static bool g_ret = true;
-
-struct HolderImpl : Holder {
-    void g00(){} void g01(){} void g02(){} void g03(){}
-    void g04(){} void g05(){} void g06(){} void g07(){}
-    void g08(){} void g09(){}
-    bool tryGet(Obj** out) { *out = &g_target; return g_ret; }
-};
-
-int main() {
-    static HolderImpl holder;
-    static CWorld inner; inner.holder = &holder;
-    static CGameScriptInterface gsi; gsi.World = &inner;
-
-    g_ret = true;
-    float a = CGameScriptInterface_GetGameAngleXY(&gsi);
-    g_ret = false;
-    float b = CGameScriptInterface_GetGameAngleXY(&gsi);
-
-    if (a == 42.0f && b == 1.5f) {
-        std::printf("CGameScriptInterface_006e7340_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL a=%f b=%f\n", a, b);
-    return 1;
+    static void* hv[11]; for (int i = 0; i < 11; ++i) hv[i] = (void*)NF420_VirtualTrap; hv[10] = (void*)NF420_TryGet;
+    for (int j = 0; j < 26; ++j) g_objVtbl[j] = (void*)NF420_VirtualTrap; g_objVtbl[25] = (void*)NF420_GetAngle;
+    static void* holder[1] = { hv }; static unsigned char world[0x38]; *(void**)(world + 0x34) = holder;
+    static unsigned char gsi[8]; *(void**)(gsi + 4) = world;
+    float none = NF420_Row(gsi, 0);
+    g_has = true; float angle = NF420_Row(gsi, 0);
+    bool ok = none == 0.0f && angle == 1.25f;
+    if (ok) printf("CGameScriptInterface_006e7340_TEST PASS\n");
+    else printf("FAIL none=%f angle=%f\n", none, angle);
+    return ok ? 0 : 1;
 }
