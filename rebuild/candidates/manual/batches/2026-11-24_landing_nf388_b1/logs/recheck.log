@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00b1ae00   WARN SHARED_HEADER_AVAILABLE CPSCLight (engine/CPSCLight.h)
+00b1ae00   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 1
+  00b1ae00 RELOCATION_MATCH NParticleEngine::CPSCLight::?GetClassTypeName@CPSCLight@NParticleEngine@@UBE?AVCCharString@@XZ

@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00b1ae00	ACCEPT	?GetChunkDescription@C3DMeshFileXBoundingSphereChunk@@UBE?AVCCharString@@XZ	?GetClassTypeName@CPSCLight@NParticleEngine@@UBE?AVCCharString@@XZ	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 1 NEQ reach flips 0; /FORCE dups 0->0

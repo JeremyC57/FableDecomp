@@ -18357,7 +18357,7 @@ address	symbol	status	leaf_given
 00b18af0	?AddToBoundingSphere@CPSCLight@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z	RELOCATION_MATCH	AddToBoundingSphere
 00b1a640	??0CPSCLight@NParticleEngine@@QAE@XZ	RELOCATION_MATCH	??0CPSCLight
 00b1a700	?DatabaseCopy@CPSCLight@NParticleEngine@@QAEXABVCPSCBase@2@@Z	RELOCATION_MATCH	DatabaseCopy
-00b1ae00	?GetChunkDescription@C3DMeshFileXBoundingSphereChunk@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
+00b1ae00	?GetClassTypeName@CPSCLight@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	GetClassTypeName
 00b1ae40	?GetName_Light@global_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetName_Light
 00b1ae70	?DatabaseClone@CPSCLight@NParticleEngine@@QAIPAUCPrim@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCLight@NParticleEngine@@
 00b1ae90	?CPSCLight_scalar_deleting_destructor@@YIPAXPAUCPSCLight@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
