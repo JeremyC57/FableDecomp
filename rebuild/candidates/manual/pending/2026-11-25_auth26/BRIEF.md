@@ -103,16 +103,17 @@ What this means for you:
 |---|---|---|---|---|
 | 1 | 0x005DCC00 | CAnimationSet::GetRandomAnim | 264 | DIFFER(278v264) |
 | 2 | 0x00723E50 | CCharacter_UpdateOrientation (name it from the PDBs) | 310 | DIFFER(306v310) |
-| 3 | 0x0062BD80 | CWorld::EAControlledCreatureStrafe | 354 | DIFFER(339v354) |
-| 4 | 0x006C0B20 | CTCBuyableHouse::FindPosToCreateNewVillager | 368 | DIFFER(383v368) |
-| 5 | 0x0091C220 | CAIStateGroup_NymphAttack::IsTargetInLineOfSight | 419 | DIFFER(416v419), egod3a local model |
-| 6 | 0x00644677 | CDrawLetterBoxBlackBars::Draw | 454 | DIFFER(439v454) |
-| 7 | 0x008F45F0 | CCreatureAction_DragonSwoop::FrameUpdate | 493 | DIFFER(507v493) |
-| 8 | 0x00935C40 | CAIStateGroup_MinionPutOutFires::GoToWell | 502 | DIFFER(499v502), egod3a local model |
+| 3 | 0x006C0B20 | CTCBuyableHouse::FindPosToCreateNewVillager | 368 | DIFFER(383v368) |
+| 4 | 0x00644677 | CDrawLetterBoxBlackBars::Draw | 454 | DIFFER(439v454) |
+| 5 | 0x008F45F0 | CCreatureAction_DragonSwoop::FrameUpdate | 493 | DIFFER(507v493) |
+| 6 | 0x00935C40 | CAIStateGroup_MinionPutOutFires::GoToWell | 502 | DIFFER(499v502), egod3a local model |
+| 7 | 0x0091C220 | CAIStateGroup_NymphAttack::IsTargetInLineOfSight | 419 | DIFFER(416v419), egod3a local model |
+| 8 | 0x0062BD80 | CWorld::EAControlledCreatureStrafe | 354 | DIFFER(339v354) |
 | 9 | 0x009F3DA0 | CSurface::CopyToMemoryB8G8R8A8 | 582 | DIFFER(589v582) |
 | 10 | 0x0068EF50 | CInputProcessUseRangedWeapon::ProcessRangedAttackInput | 550 | DIFFER(547v550), /GS, egod3a local model. PARKED_INDEX: "SSE block = retail inline asm: retail_asm candidate (owner-gated)". If retail really used inline asm here, follow ASM_RULES exactly (an intrinsic first, else a macro-wrapped `__asm` in a SHARED HEADER with a `FABLE_PORTABLE` twin and a dual-path test); if even that cannot be settled, escalate. |
 
 Bounds are checked: PARKED_INDEX gives bounds_class OK for rows 3-10 (the corrected extent equals the retail length the grade uses); rows 1-2 are not in it. No row has a TERMINAL.md.
+Order (coordinator, 2026-11-25, after row 1): rows 3-10 reordered by real attempt history (fewest earlier passes first; 0x0062BD80 has 28 earlier work folders, 0x009F3DA0 is a Codex pass-26 pick-any hold, 0x0068EF50 a possible retail-asm row). The 2026-11-21 Codex pass 26 RESERVED lines for 0x00723E50 / 0x009F3DA0 are stale (that pass returned and landed 2026-11-22; both rows were parked again) and are released.
 The lane is checked: `q.py 005dcc00 <closest_version>` reproduces DIFFER(278v264) today.
 
 ## Naming and headers: done as you author, never left for the naming queue

@@ -6,6 +6,23 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
+## Account A, 2026-11-25 (naming families + hand authoring; agents NF424 r3, NF425, AUTH26 running)
+- **Naming:** 33,388 of 64,040 done (52.14%), from `naming/status/SUMMARY.md`. Landed today:
+  - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
+  - nf426 (110 CDefPointer Release/~ copies; **R-NF426-1**, 26 `direct` / 84 `rule` in `pending/2026-11-25_nf426_handback/DIRECT_RULE.tsv`);
+  - the AUTH26 unit (below).
+  - T3 holds one family line per shape and status, not per address.
+- **Open rulings:**
+  - **R-NF424-2** (120 `CActiveEntityScript<T>` `??_G`): a header port; NF424 r3 is piloting it.
+  - **R-NF424-3** (4 QAE rows): left on the stand-in.
+  - **`_$E1`** (485 dynamic initializers): owner question still unanswered.
+- **Grades:** `baked_address` (advisor decision, owner delegated). 50 rows type in a vftable / global / IAT / code address, counted apart from genuine (48,905 genuine original). Detector: `purity.baked_data_addresses`, key `rebuild/oracles/data_vas.tsv`. Audit: `audits/2026-11-25_baked_address/`.
+- **AUTH26** (owner orders, `pending/2026-11-25_auth26/BRIEF.md`): hand-authors 10 parked rows, one at a time.
+  - It never switches or re-parks a row. A row is done only with byte match + a behaviour test + `lane_tools/name_gate.py` PASS (names and headers right as authored, so naming gains no work).
+  - Row 1 0x005DCC00 has landed.
+  - Row 2 0x00723E50 has escalated. A proven-terminal row goes to the owner; nothing is reordered silently.
+- **Lander notes:** release an agent's locks before landing (the lander holds locked rows). A thin "Option S" row makes s_unit_check gate its owner's Leaf.
+
 ## Account A, 2026-11-24 (naming automation; agents NF333 / NF334 running)
 - **Latest (late 2026-11-24, naming queue):** landed nf352-nf357, nf360_b2, nf361_b1, nf362_b1/b2, nf363_b1/b2 (0x0042AF3C on its PDB name;
   the CThingNoiseDef constructor unit), nf364_b1 (new CCountedPointer.h opt-in ..._RESET_SIZE_BODY_YOFF_TU, 19 rows) and nf365_b1 (the GetDef

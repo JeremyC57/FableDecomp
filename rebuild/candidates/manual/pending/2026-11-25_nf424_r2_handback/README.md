@@ -199,3 +199,4 @@ Plus the 7 round-1 ACCEPT rows (landed before round 2): 1,625 = 1,618 T3 lines +
   - Result: 126 units checked, 0 failed.
 - **T3:** the queue's `nf424 family` lines are replaced by one line per round-2 status (1,363 addresses). The per-address list is `T3_r2.txt`.
 - **Not committed:** the hold batches, which stay in the agent's scratch.
+- **Owner Leaf edits rechecked (post-push, advisor):** the 18 edited owners and their 18 thin members grade 36/36 RELOCATION_MATCH PASS under `vland --recheck-landed` (`logs/owner_leaf_recheck.log`). `s_unit_check --objdir` on those objects: 126 units, 0 failed, and these units' 20 implicit members DEF-verified (`logs/s_unit_check_objdir.log`).

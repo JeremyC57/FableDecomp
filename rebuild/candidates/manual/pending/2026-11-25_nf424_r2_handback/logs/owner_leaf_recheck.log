@@ -1,0 +1,110 @@
+004354c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+004354c0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+004354c0   WARN RELOC_NAME: ?Flush@CDisplaySubsystem@@QAEXXZ -> 006404b0 labelled 'CTCInventoryAbilities::AddLearnedExpression'
+004354c0   RELOCATION_MATCH PASS   ~CDisplayEngine
+00456964   WARN SHARED_HEADER_AVAILABLE CExpressionDef (engine/CExpressionDef.h)
+00456964   RELOCATION_MATCH PASS   CExpressionDef
+00458d3f   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+00458d3f   WARN SHARED_HEADER_AVAILABLE CFloatRange (engine/CFloatRange.h)
+00458d3f   WARN SHARED_HEADER_AVAILABLE CThingShotDef (engine/CThingShotDef.h)
+00458d3f   RELOCATION_MATCH PASS   CThingShotDef
+007f04c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007f04c0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+007f04c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+007f04c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+007f04c0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericStrikeResponseKnockdownRecoverBase (engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h)
+007f04c0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath (engine/CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath.h)
+007f04c0   WARN SHARED_HEADER_AVAILABLE CResurrectionItemDef (engine/CResurrectionItemDef.h)
+007f04c0   RELOCATION_MATCH PASS   OnItemUsed
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CExpressionDef (engine/CExpressionDef.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008430b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PerformExpression (engine/CCreatureAction_PerformExpression.h)
+008430b0   WARN RELOC_NAME: ?GetRandomLoadedAnim@@YIPAVCAnimationEntry@@PAVCThingCreatureBase@@ABVCCharString@@@Z -> 006924b0 labelled 'CCreatureActionBase::GetRandomAnimFromName'
+008430b0   RELOCATION_MATCH PASS   CCreatureAction_PerformExpression
+008c74f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CTrollBattleDef (engine/CTrollBattleDef.h)
+008c74f0   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+008c74f0   WARN RELOC_NAME: ?GetTrollBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCTrollBattleDef@@@@@Z -> 008c78f0 labelled 'CDefClassBase::GetSubDef<CTrollBattleDef>'
+008c74f0   RELOCATION_MATCH PASS   FinishAction
+0098d490   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+0098d490   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+0098d490   RELOCATION_MATCH PASS   CVertexShaderConstantLayout
+009a7440   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+009a7440   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009a7440   RELOCATION_MATCH PASS   CSystemManager
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+009fc5f0   WARN SHARED_HEADER_AVAILABLE CResourceBank (engine/CResourceBank.h)
+009fc5f0   RELOCATION_MATCH PASS   CResourceBank
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile (engine/CBankFile.h)
+00a62120   WARN SHARED_HEADER_AVAILABLE CShaderDataBank (engine/CShaderDataBank.h)
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry
+00aaaa10   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00aaaa10   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00aaaa10   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00aaaa10   WARN SHARED_HEADER_AVAILABLE C3DMeshFileConvexVolumeChunk (engine/C3DMeshFileConvexVolumeChunk.h)
+00aaaa10   RELOCATION_MATCH PASS   C3DMeshFileConvexVolumeChunk
+00aa9b20   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00aa9b20   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00aa9b20   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00aa9b20   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00aa9b20   WARN SHARED_HEADER_AVAILABLE C3DMeshFileHelperPointChunk (engine/C3DMeshFileHelperPointChunk.h)
+00aa9b20   RELOCATION_MATCH PASS   C3DMeshFileHelperPointChunk
+00ab9d50   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00ab9d50   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ab9d50   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00ab9d50   WARN SHARED_HEADER_AVAILABLE C3DMeshFileBoneChunk (engine/C3DMeshFileBoneChunk.h)
+00ab9d50   RELOCATION_MATCH PASS   C3DMeshFileBoneChunk
+00ab9a70   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00ab9a70   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ab9a70   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00ab9a70   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00ab9a70   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00ab9a70   WARN SHARED_HEADER_AVAILABLE C3DMeshFileSubMeshChunk (engine/C3DMeshFileSubMeshChunk.h)
+00ab9a70   RELOCATION_MATCH PASS   C3DMeshFileSubMeshChunk
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream (engine/CDataInputStream.h)
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk (engine/CChunkedFileChunk.h)
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00ab9bb0   WARN SHARED_HEADER_AVAILABLE C3DMeshFileTransformationChunk (engine/C3DMeshFileTransformationChunk.h)
+00ab9bb0   RELOCATION_MATCH PASS   C3DMeshFileTransformationChunk
+00ac0ab0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00ac0ab0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ac0ab0   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk (engine/CChunkedFileSuperChunk.h)
+00ac0ab0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00ac0ab0   WARN SHARED_HEADER_AVAILABLE C3DMeshFileMaterialChunk (engine/C3DMeshFileMaterialChunk.h)
+00ac0ab0   RELOCATION_MATCH PASS   C3DMeshFileMaterialChunk
+00ba1a70   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshes
+00be59c0   WARN SHARED_HEADER_AVAILABLE CTesselationData (engine/CTesselationData.h)
+00be59c0   RELOCATION_MATCH PASS   CTesselationData
+00437070   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00456cc5   RELOCATION_MATCH PASS   `scalar deleting destructor'
+004590e6   RELOCATION_MATCH PASS   `scalar deleting destructor'
+007f0640   RELOCATION_MATCH PASS   `scalar deleting destructor'
+0084b600   RELOCATION_MATCH PASS   `scalar deleting destructor'
+008c7d30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+0098d990   RELOCATION_MATCH PASS   `scalar deleting destructor'
+009a75a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+009fc750   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00a628b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00aab6e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00aab150   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00abe0d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00abe080   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00abe0b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ac1e90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ba9290   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00be8d20   RELOCATION_MATCH PASS   `scalar deleting destructor'
