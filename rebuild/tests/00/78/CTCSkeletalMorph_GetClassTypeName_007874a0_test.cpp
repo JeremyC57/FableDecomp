@@ -1,30 +1,40 @@
-#include <cstdio>
+// Behaviour test for 0x007874A0 CTCSkeletalMorph::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCSkeletalMorph", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-class CCharString { public:
-    char* p;
-    CCharString(const char* s, long n) { p = (char*)s; last_n = n; }
-    static int last_n;
+class CCharString
+{
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
-int CCharString::last_n = 0;
 
-const char kActionName_0123bffc[] = "DoCreatureAction";
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-class CTCSkeletalMorph { public:};
-
-CCharString GetClassTypeName(CTCSkeletalMorph* self);
-
-CCharString GetClassTypeName(CTCSkeletalMorph* self)
+class CTCSkeletalMorph
 {
-    return CCharString(kActionName_0123bffc, -1);
-}
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
 
-int main()
+int main(void)
 {
-    CTCSkeletalMorph obj;
-    CCharString r = GetClassTypeName(&obj);
-    if (r.p == kActionName_0123bffc && CCharString::last_n == -1)
-        std::printf("007874a0_TEST PASS\n");
-    else
-        std::printf("FAIL n=%d\n", CCharString::last_n);
+    {
+        CTCSkeletalMorph tc;
+        const CTCSkeletalMorph& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCSkeletalMorph") != 0) {
+            printf("007874a0_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("007874a0_TEST PASS\n");
     return 0;
 }

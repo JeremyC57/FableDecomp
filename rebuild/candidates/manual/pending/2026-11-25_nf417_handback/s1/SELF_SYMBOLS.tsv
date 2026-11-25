@@ -1,0 +1,6 @@
+address	symbol	status	leaf_given	current_line
+0049d450	?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ	??0CTCTargetingPlayer@@QAE@XZ|RELOCATION_MATCH|StatGetClassTypeName
+004d3dfc	?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ	??0CThingComponentDefNameTag@@QAE@XZ|RELOCATION_MATCH|StatGetClassTypeName
+004d3ef9	?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ	??0CThingComponentDefNameTag@@QAE@XZ|RELOCATION_MATCH|StatGetClassTypeName
+004d41df	?StatGetClassTypeName@CTCDNavigationSeed@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDNavigationSeed@@SI?AVCCharString@@XZ	??0CThingComponentDefNameTag@@QAE@XZ|RELOCATION_MATCH|StatGetClassTypeName
+004d4df4	?StatGetClassTypeName@CTCAssassinRush@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCAssassinRush@@SI?AVCCharString@@XZ	??0CTCAssassinRush@@QAE@XZ|RELOCATION_MATCH|StatGetClassTypeName

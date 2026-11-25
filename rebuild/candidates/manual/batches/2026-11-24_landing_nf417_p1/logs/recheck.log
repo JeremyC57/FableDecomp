@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00afe440   WARN SHARED_HEADER_AVAILABLE CPSCRenderSprite (engine/CPSCRenderSprite.h)
+00afe440   RELOCATION_MATCH PASS   GetClassTypeName
+00b05a50   RELOCATION_MATCH PASS   GetClassTypeName
+00b0a0d0   WARN SHARED_HEADER_AVAILABLE CPSCSingleSprite (engine/CPSCSingleSprite.h)
+00b0a0d0   RELOCATION_MATCH PASS   GetClassTypeName
+00b0f880   WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)
+00b0f880   RELOCATION_MATCH PASS   GetClassTypeName
+00b15a90   WARN SHARED_HEADER_AVAILABLE CPSCEmitterGeneric (engine/CPSCEmitterGeneric.h)
+00b15a90   RELOCATION_MATCH PASS   GetClassTypeName
+00b178d0   RELOCATION_MATCH PASS   GetClassTypeName
+00b186e0   RELOCATION_MATCH PASS   GetClassTypeName
+00b1b430   RELOCATION_MATCH PASS   GetClassTypeName
+00b1ff10   WARN SHARED_HEADER_AVAILABLE CPSCDecalRenderer (engine/CPSCDecalRenderer.h)
+00b1ff10   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 9
+  00afe440 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?GetClassTypeName@CPSCRenderSprite@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b05a50 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?GetClassTypeName@CPSCRenderMesh@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b0a0d0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?GetClassTypeName@CPSCSingleSprite@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b0f880 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?GetClassTypeName@CPSCUpdateNormal@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b15a90 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?GetClassTypeName@CPSCEmitterGeneric@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b178d0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::?GetClassTypeName@CPSCOrbit@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b186e0 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?GetClassTypeName@CPSCAttractor@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b1b430 RELOCATION_MATCH NParticleEngine::CPSCSpline::?GetClassTypeName@CPSCSpline@NParticleEngine@@UBE?AVCCharString@@XZ
+  00b1ff10 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?GetClassTypeName@CPSCDecalRenderer@NParticleEngine@@UBE?AVCCharString@@XZ

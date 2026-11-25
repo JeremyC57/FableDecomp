@@ -1,42 +1,40 @@
-#include <cstdio>
+// Behaviour test for 0x00730400 CTCDummyVillager::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCDummyVillager", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString { public:
-    char* p;
-    CCharString(const char* s, long n) { p = (char*)s; last_s = s; last_n = n; }
-    static const char* last_s;
-    static int last_n;
-};
-const char* CCharString::last_s = 0;
-int CCharString::last_n = 0;
-
-class CTCDummyVillager { public:
-    CCharString GetClassTypeName();
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-CCharString CTCDummyVillager::GetClassTypeName()
-{
-    return CCharString("CTCDummyVillager", -1);
-}
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-int main()
+class CTCDummyVillager
 {
-    CTCDummyVillager obj;
-    CCharString r = obj.GetClassTypeName();
-    if (RetailTextEquals(r.p, "CTCDummyVillager") &&
-        RetailTextEquals(CCharString::last_s, "CTCDummyVillager") &&
-        CCharString::last_n == -1) {
-        printf("00730400_TEST PASS\n");
-    } else {
-        printf("FAIL\n");
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
+
+int main(void)
+{
+    {
+        CTCDummyVillager tc;
+        const CTCDummyVillager& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCDummyVillager") != 0) {
+            printf("00730400_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
     }
+    printf("00730400_TEST PASS\n");
     return 0;
 }

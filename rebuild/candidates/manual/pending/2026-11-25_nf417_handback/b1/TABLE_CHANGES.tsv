@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?kActionStr@@3PADA	0123de20	006285f0	NF417: HEAD 0x006285F0's literal / data spelling (its witness); the re-formed row references the ??_C@ literal instead (retail 0x0123DE20; the target keeps its real binding).

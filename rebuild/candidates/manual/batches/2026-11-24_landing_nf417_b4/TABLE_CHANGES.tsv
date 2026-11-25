@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	_g_actionName	0123d724	007df2c0	NF417: HEAD 0x007DF2C0's literal / data spelling (its witness); the re-formed row references the ??_C@ literal instead (retail 0x0123D724; the target keeps its real binding).

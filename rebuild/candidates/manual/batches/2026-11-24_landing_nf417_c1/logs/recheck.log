@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004d3f30   RELOCATION_MATCH PASS   GetClassTypeName
+004d4212   WARN SHARED_HEADER_AVAILABLE CTCDNavigationSeed (engine/CTCDNavigationSeed.h)
+004d4212   RELOCATION_MATCH PASS   GetClassTypeName
+004e230a   WARN SHARED_HEADER_AVAILABLE CTCTargetingPlayer (engine/CTCTargetingPlayer.h)
+004e230a   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 3
+  004d3f30 RELOCATION_MATCH CTCDNone::?GetClassTypeName@CTCDNone@@UBE?AVCCharString@@XZ
+  004d4212 RELOCATION_MATCH CTCDNavigationSeed::?GetClassTypeName@CTCDNavigationSeed@@UBE?AVCCharString@@XZ
+  004e230a RELOCATION_MATCH CTCTargetingPlayer::?GetClassTypeName@CTCTargetingPlayer@@UBE?AVCCharString@@XZ

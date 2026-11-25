@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0049d450   WARN SHARED_HEADER_AVAILABLE CTCTargetingPlayer (engine/CTCTargetingPlayer.h)
+0049d450   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d3dfc   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+004d3dfc   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d3ef9   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d41df   WARN SHARED_HEADER_AVAILABLE CTCDNavigationSeed (engine/CTCDNavigationSeed.h)
+004d41df   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d4df4   RELOCATION_MATCH PASS   StatGetClassTypeName
+
+WINS: 5
+  0049d450 RELOCATION_MATCH CTCTargetingPlayer::?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ
+  004d3dfc RELOCATION_MATCH CTCDParticleEmitter::?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ
+  004d3ef9 RELOCATION_MATCH CTCDNone::?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ
+  004d41df RELOCATION_MATCH CTCDNavigationSeed::?StatGetClassTypeName@CTCDNavigationSeed@@SI?AVCCharString@@XZ
+  004d4df4 RELOCATION_MATCH CTCAssassinRush::?StatGetClassTypeName@CTCAssassinRush@@SI?AVCCharString@@XZ

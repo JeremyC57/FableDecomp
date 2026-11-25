@@ -1,39 +1,40 @@
-#include <cstdio>
-
-struct StringRep;
+// Behaviour test for 0x007276B0 CTCSimpleAppearanceMorph::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCSimpleAppearanceMorph", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
 class CCharString
-{ public:
-    StringRep* rep;
-    CCharString(const char* s, long n);
+{
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-#pragma auto_inline(off)
-CCharString::CCharString(const char* s, long n)
-{
-    rep = (StringRep*)(s ? (void*)(n) : 0);
-}
-#pragma auto_inline(on)
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-struct CTCSimpleAppearanceMorph
+class CTCSimpleAppearanceMorph
 {
-    void* vtbl;
-    CCharString GetClassTypeName() const;
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-CCharString CTCSimpleAppearanceMorph::GetClassTypeName() const
+int main(void)
 {
-    return CCharString("CTCSimpleAppearanceMorph", -1);
-}
-
-int main()
-{
-    CTCSimpleAppearanceMorph obj;
-    obj.vtbl = 0;
-    CCharString s = obj.GetClassTypeName();
-    if (s.rep == (StringRep*)(-1))
-        printf("007276b0_TEST PASS\n");
-    else
-        printf("FAIL rep=%p\n", (void*)s.rep);
+    {
+        CTCSimpleAppearanceMorph tc;
+        const CTCSimpleAppearanceMorph& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCSimpleAppearanceMorph") != 0) {
+            printf("007276b0_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("007276b0_TEST PASS\n");
     return 0;
 }

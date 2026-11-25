@@ -1,0 +1,5 @@
+0049d450	?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ	?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ
+004d3dfc	?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ	?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ
+004d3ef9	?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ	?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ
+004d41df	?StatGetClassTypeName@CTCDNavigationSeed@@SI?AVCCharString@@XZ	?StatGetClassTypeName@CTCDNavigationSeed@@SI?AVCCharString@@XZ
+004d4df4	?StatGetClassTypeName@CTCAssassinRush@@SI?AVCCharString@@XZ	?StatGetClassTypeName@CTCAssassinRush@@SI?AVCCharString@@XZ

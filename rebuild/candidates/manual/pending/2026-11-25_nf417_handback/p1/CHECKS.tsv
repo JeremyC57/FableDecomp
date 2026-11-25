@@ -1,0 +1,10 @@
+address	head_grade	head_test	new_grade	new_test	mut_test	warn_head	warn_new	lit_proof	leaf_cmp	sections	static_copy	r10	purity	widened	leaf_def	poly_chk
+00afe440	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CPSCRenderSprite (engine/CPSCRenderSprite.h)	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b05a50	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b0a0d0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CPSCSingleSprite (engine/CPSCSingleSprite.h)	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b0f880	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)	ok	ok	ok(+0,libcp)	-	-	[]	[]	ok	ok
+00b15a90	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CPSCEmitterGeneric (engine/CPSCEmitterGeneric.h)	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b178d0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b186e0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b1b430	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0)	-	-	[]	[]	ok	ok
+00b1ff10	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CPSCDecalRenderer (engine/CPSCDecalRenderer.h)	ok	ok	ok(+0)	-	-	[]	[]	ok	ok

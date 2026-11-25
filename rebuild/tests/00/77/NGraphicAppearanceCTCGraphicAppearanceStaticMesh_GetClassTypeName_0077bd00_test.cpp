@@ -1,38 +1,42 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x0077BD00 NGraphicAppearance::CTCGraphicAppearanceStaticMesh::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCGraphicAppearanceStaticMesh", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString { public:
-    char* p;
-    int   len;
-    CCharString(const char* s, long n) : p((char*)s), len(n) {}
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-struct CTCGraphicAppearanceStaticMesh {
-    int dummy;
-    CCharString GetClassTypeName();
-};
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-CCharString CTCGraphicAppearanceStaticMesh::GetClassTypeName()
+namespace NGraphicAppearance {
+class CTCGraphicAppearanceStaticMesh
 {
-    return CCharString("CTCGraphicAppearanceStaticMesh", -1);
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
 }
 
-int main() {
-    CTCGraphicAppearanceStaticMesh a; a.dummy = 7;
-    CCharString r = a.GetClassTypeName();
-    if (RetailTextEquals(r.p, "CTCGraphicAppearanceStaticMesh") && r.len == -1) {
-        printf("0077bd00_TEST PASS\n");
-    } else {
-        printf("FAIL %p %d\n", (void*)r.p, r.len);
+int main(void)
+{
+    {
+        NGraphicAppearance::CTCGraphicAppearanceStaticMesh tc;
+        const NGraphicAppearance::CTCGraphicAppearanceStaticMesh& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCGraphicAppearanceStaticMesh") != 0) {
+            printf("0077bd00_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
     }
+    printf("0077bd00_TEST PASS\n");
     return 0;
 }

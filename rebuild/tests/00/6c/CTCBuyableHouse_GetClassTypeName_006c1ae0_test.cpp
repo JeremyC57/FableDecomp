@@ -1,45 +1,40 @@
-#include <cstdio>
+// Behaviour test for 0x006C1AE0 CTCBuyableHouse::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCBuyableHouse", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString { public:
-    int dummy;
-    CCharString(const char* lit, long len);
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-static const char* g_lit = 0;
-static int g_len = 0;
-static CCharString* g_self = 0;
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-CCharString::CCharString(const char* lit, long len)
+class CTCBuyableHouse
 {
-    g_self = this; g_lit = lit; g_len = len;
-    this->dummy = 0x1234;
-}
-
-class CTCBuyableHouse { public:
-    CCharString GetClassTypeName();
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-CCharString CTCBuyableHouse::GetClassTypeName()
+int main(void)
 {
-    return CCharString("CTCBuyableHouse", -1);
-}
-
-int main()
-{
-    CTCBuyableHouse act;
-    CCharString r = act.GetClassTypeName();
-    if (RetailTextEquals(g_lit, "CTCBuyableHouse") && g_len == -1 && r.dummy == 0x1234)
-        printf("006c1ae0_TEST PASS\n");
-    else
-        printf("FAIL lit=%p len=%d dummy=%x\n", g_lit, g_len, r.dummy);
+    {
+        CTCBuyableHouse tc;
+        const CTCBuyableHouse& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCBuyableHouse") != 0) {
+            printf("006c1ae0_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("006c1ae0_TEST PASS\n");
     return 0;
 }

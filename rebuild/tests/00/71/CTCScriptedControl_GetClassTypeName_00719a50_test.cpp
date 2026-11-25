@@ -1,31 +1,40 @@
-#include <cstdio>
+// Behaviour test for 0x00719A50 CTCScriptedControl::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCScriptedControl", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString { public:
-    void* p;
-    CCharString(const char* s, long n);
-};
-class CTCScriptedControl { public:
-    CCharString GetClassTypeName();
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-static const char* g_s; static int g_n; static int g_calls;
-CCharString::CCharString(const char* s, long n){ g_s=s; g_n=n; g_calls++; p=(void*)s; }
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-int main(){
-    CTCScriptedControl obj;
-    CCharString r = obj.GetClassTypeName();
-    if (g_calls==1 && RetailTextEquals(g_s, "CTCScriptedControl") && g_n==-1 && RetailTextEquals(r.p, "CTCScriptedControl"))
-        printf("00719a50_TEST PASS\n");
-    else
-        printf("FAIL calls=%d s=%p n=%d\n", g_calls, g_s, g_n);
+class CTCScriptedControl
+{
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
+
+int main(void)
+{
+    {
+        CTCScriptedControl tc;
+        const CTCScriptedControl& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCScriptedControl") != 0) {
+            printf("00719a50_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("00719a50_TEST PASS\n");
     return 0;
 }

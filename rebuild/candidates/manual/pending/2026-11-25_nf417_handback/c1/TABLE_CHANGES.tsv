@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ	0049d450	004e230a	NF417: the respelt CTCTargetingPlayer::GetClassTypeName 0x004E230A calls 0x0049D450 (call at 0x004E230E), the s1-respelt self ?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ (its row Leaf / object symbol); no table line bound that address before (RegisterTCs expands this static, it does not call it).

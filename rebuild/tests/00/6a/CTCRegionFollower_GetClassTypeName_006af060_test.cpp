@@ -1,41 +1,40 @@
-#include <cstdio>
+// Behaviour test for 0x006AF060 CTCRegionFollower::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCRegionFollower", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString { public:
-    char* p;
-    CCharString(const char* s, long len) { p = (char*)s; last_len = len; }
-    static int last_len;
-    static const char* last_s;
-};
-int CCharString::last_len = 0;
-const char* CCharString::last_s = 0;
-
-// redefine ctor to capture (single TU test)
-class CTCRegionFollower {
-    int dummy;
 public:
-    CCharString GetClassTypeName();
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-CCharString CTCRegionFollower::GetClassTypeName()
-{
-    return CCharString("CTCRegionFollower", -1);
-}
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-int main()
+class CTCRegionFollower
 {
-    CTCRegionFollower a;
-    CCharString r = a.GetClassTypeName();
-    bool ok = (RetailTextEquals(r.p, "CTCRegionFollower"));
-    if (ok) printf("006af060_TEST PASS\n");
-    else printf("FAIL p=%p\n", r.p);
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
+
+int main(void)
+{
+    {
+        CTCRegionFollower tc;
+        const CTCRegionFollower& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCRegionFollower") != 0) {
+            printf("006af060_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("006af060_TEST PASS\n");
     return 0;
 }

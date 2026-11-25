@@ -1,61 +1,40 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x007E48A0 CTCWillResponse::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCWillResponse", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
-{
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-// ---- reproduce the source under test (self-contained) ----
 class CCharString
 {
 public:
-	CCharString(const char* str, long len);
-	const char* data() const { return m_data; }
-private:
-	char* m_data;
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-// Local stand-in for CCharString::CCharString(const char*, long) @ 0x0099ebf0.
-// Records the literal pointer and length it was invoked with.
-static const char* g_lastStr = 0;
-static int g_lastLen = 0;
-CCharString::CCharString(const char* str, long len)
-{
-	g_lastStr = str;
-	g_lastLen = len;
-	m_data = (char*)str;
-}
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
 class CTCWillResponse
 {
 public:
-	CCharString GetClassTypeName();
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-CCharString CTCWillResponse::GetClassTypeName()
+int main(void)
 {
-	return CCharString("CTCWillResponse", -1);
-}
-
-int main()
-{
-	CTCWillResponse obj;
-	CCharString s = obj.GetClassTypeName();
-
-	bool ok = true;
-	if (!RetailTextEquals(g_lastStr, "CTCWillResponse")) ok = false;
-	if (g_lastLen != -1) ok = false;
-	if (!RetailTextEquals(s.data(), "CTCWillResponse")) ok = false;
-
-	if (ok)
-		printf("GETACTIONNAME_OK\n");
-	else
-		printf("GETACTIONNAME_FAIL str=%p len=%d\n", (void*)g_lastStr, g_lastLen);
-
-	return ok ? 0 : 1;
+    {
+        CTCWillResponse tc;
+        const CTCWillResponse& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCWillResponse") != 0) {
+            printf("007e48a0_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("GETACTIONNAME_OK\n");
+    return 0;
 }

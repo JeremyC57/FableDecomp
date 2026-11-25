@@ -1,21 +1,40 @@
-// CTCSpecialAbilities::GetClassTypeName() -- returns "CTCSpecialAbilities" as a CCharString
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0072DA00, oracle length 25 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13).
-//
-// Retail bytes:  push esi ; mov esi,[esp+8] ; push -1 ; push offset "CTCSpecialAbilities" ; mov ecx,esi ; call CCharString::CCharString(char*,long) ; mov eax,esi ; pop esi ; ret 4
-// A CCharString returned by value: the hidden result slot (first stack argument) is constructed
-// from the literal with length -1 (strlen) through the landed-trusted CCharString(char*, long)
-// @ 0x0099EBF0 and its address is returned in eax; `this` is unused. Naming: the literal is a class name, so this is that class's override of the virtual that returns the type as a string
-// (the same shape as the PDB-named CConsoleVariable::GetTypeAsString @ 0x00413700); the manifest's
-// `CActionDoCreatureAction::GetActionName` is the propagated family label and is NOT trusted.
+// CTCSpecialAbilities::GetClassTypeName() const -- the class-type name "CTCSpecialAbilities" as a CCharString (the in-class StatGetClassTypeName, inlined)
+// Leaf: ?GetClassTypeName@CTCSpecialAbilities@@UBE?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0072DA00, 25 bytes: push esi; mov esi,[esp+8]; push -1; push 0x0123A33C "CTCSpecialAbilities"; mov ecx,esi;
+//   call CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax,esi; pop esi; ret 4 -- a const virtual __thiscall returning
+//   CCharString by value: `this` (ecx) is unused, the hidden result pointer is the one stack argument (kept in esi).
+// Identity (NF417, 2026-11-25): Ego_r.pdb and FableWin.pdb name sets both spell
+//   ?GetClassTypeName@CTCSpecialAbilities@@UBE?AVCCharString@@XZ; retail vftable 0x0126683C (RTTI .?AVCTCSpecialAbilities@@) slot 22
+//   (0x01266894 -> 0x0072DA00) is CTCBase's pure GetClassTypeName slot (engine/CTCBase.h); the literal 0x0123A33C =
+//   "CTCSpecialAbilities" = the class name (read from the exe).
+// Form (NF417): FableWin.pdb spells the class's static ?StatGetClassTypeName@CTCSpecialAbilities@@SI?AVCCharString@@XZ (Ego_r has
+//   none); the 25 retail bytes are that static's 19-byte body (push -1; push lit; call; mov eax) expanded into the virtual, so the
+//   static is an in-class inline (as the binder 0x004EE23F defines it) and the virtual calls it; retail has no out-of-line copy bound
+//   in reloc_bindings.tsv (every use expands it). VC7.1 also emits the static's pick-any COMDAT copy in this object (identical to the
+//   landed copies; the linker keeps one).
+// Respell (NF417): was the stand-in self ?GetClassTypeName@CTCSpecialAbilities_Methods@@QAE?AVCCharString@@XZ (a non-virtual member of
+//   a made-up `_Methods` class).
+// Header: engine/CTCSpecialAbilities.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form).
+#define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+#define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
+#define CTCSpecialAbilities CTCSpecialAbilitiesLayout
+#include "engine/CTCSpecialAbilities.h"
+#undef CTCSpecialAbilities
 
-struct CTCSpecialAbilities_Methods {
-    CCharString GetClassTypeName();
+class CTCSpecialAbilities : public CTCSpecialAbilitiesLayout
+{
+public:
+    static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCSpecialAbilities", -1); }
+    virtual CCharString GetClassTypeName() const;
 };
 
-CCharString CTCSpecialAbilities_Methods::GetClassTypeName()
+CCharString CTCSpecialAbilities::GetClassTypeName() const
 {
-    return CCharString("CTCSpecialAbilities", -1);
+    return StatGetClassTypeName();
 }

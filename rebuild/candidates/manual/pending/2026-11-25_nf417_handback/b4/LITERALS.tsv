@@ -1,0 +1,29 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	preceded_by	form
+007d5ef0	0x0123D550	narrow	"CTCTavernGameCardSorting"	b4	.rdata	43 54 43 54 61 76 65 72 6e 47 61 6d 65 43 61 72 64 53 6f 72 74 69 6e 67 00	NUL	HEAD spelled the same literal ("CTCTavernGameCardSorting", -1); kept
+007d7980	0x0123D56C	narrow	"CTCTavernGameCardPairs"	b4	.rdata	43 54 43 54 61 76 65 72 6e 47 61 6d 65 43 61 72 64 50 61 69 72 73 00	NUL	HEAD spelled the same literal ("CTCTavernGameCardPairs", -1); kept
+007d9eb0	0x0123D584	narrow	"CTCTavernGameSpotTheAddition"	b4	.rdata	43 54 43 54 61 76 65 72 6e 47 61 6d 65 53 70 6f 74 54 68 65 41 64 64 69 74 69 6f 6e 00	NUL	HEAD spelled the same literal ("CTCTavernGameSpotTheAddition", -1); kept
+007dc970	0x0123D5A4	narrow	"CTCTavernGameCardBlackjack"	b4	.rdata	43 54 43 54 61 76 65 72 6e 47 61 6d 65 43 61 72 64 42 6c 61 63 6b 6a 61 63 6b 00	NUL	HEAD spelled the same literal ("CTCTavernGameCardBlackjack", -1); kept
+007dd190	0x0123D6F4	narrow	"CTCCreatureFlyOnSpline"	b4	.rdata	43 54 43 43 72 65 61 74 75 72 65 46 6c 79 4f 6e 53 70 6c 69 6e 65 00	NUL	HEAD spelled the same literal ("CTCCreatureFlyOnSpline", -1); kept
+007de3f0	0x0123D70C	narrow	"CTCCreatureFlyInCircles"	b4	.rdata	43 54 43 43 72 65 61 74 75 72 65 46 6c 79 49 6e 43 69 72 63 6c 65 73 00	NUL	HEAD spelled the same literal ("CTCCreatureFlyInCircles", -1); kept
+007df2c0	0x0123D724	narrow	"CTCWallMount"	b4	.rdata	43 54 43 57 61 6c 6c 4d 6f 75 6e 74 00	NUL	HEAD: no literal in the source (a data symbol or a variable); now the string literal "CTCWallMount" spelled from retail's bytes
+007dfab0	0x0123D734	narrow	"CTCWallMountEffects"	b4	.rdata	43 54 43 57 61 6c 6c 4d 6f 75 6e 74 45 66 66 65 63 74 73 00	NUL	HEAD spelled the same literal ("CTCWallMountEffects", -1); kept
+007dfc60	0x0123D7B0	narrow	"CTCFish"	b4	.rdata	43 54 43 46 69 73 68 00	NUL	HEAD spelled the same literal ("CTCFish", -1); kept
+007e0500	0x0123D820	narrow	"CTCTeleporter"	b4	.rdata	43 54 43 54 65 6c 65 70 6f 72 74 65 72 00	NUL	HEAD spelled the same literal ("CTCTeleporter", -1); kept
+007e0a10	0x0123D8FC	narrow	"CTCHeroSpecialMovement"	b4	.rdata	43 54 43 48 65 72 6f 53 70 65 63 69 61 6c 4d 6f 76 65 6d 65 6e 74 00	NUL	HEAD spelled the same literal ("CTCHeroSpecialMovement", -1); kept
+007e0d80	0x0123D914	narrow	"CTCEffectOnDie"	b4	.rdata	43 54 43 45 66 66 65 63 74 4f 6e 44 69 65 00	NUL	HEAD spelled the same literal ("CTCEffectOnDie", -1); kept
+007e1150	0x0123DB08	narrow	"CTCAICreatureWillPowerIndicator"	b4	.rdata	43 54 43 41 49 43 72 65 61 74 75 72 65 57 69 6c 6c 50 6f 77 65 72 49 6e 64 69 63 61 74 6f 72 00	NUL	HEAD spelled the same literal ("CTCAICreatureWillPowerIndicator", -1); kept
+007e1a80	0x0123DB28	narrow	"CTCGraphicAppearanceMultipleStaticMeshes"	b4	.rdata	43 54 43 47 72 61 70 68 69 63 41 70 70 65 61 72 61 6e 63 65 4d 75 6c 74 69 70 6c 65 53 74 61 74 69 63 4d 65 73 68 65 73 00	NUL	HEAD spelled the same literal ("CTCGraphicAppearanceMultipleStaticMeshes", -1); kept
+007e1bf0	0x0123DB54	narrow	"CTCInfoDisplay"	b4	.rdata	43 54 43 49 6e 66 6f 44 69 73 70 6c 61 79 00	NUL	HEAD spelled the same literal ("CTCInfoDisplay", -1); kept
+007e2490	0x0123DC8C	narrow	"CTCFishingRod"	b4	.rdata	43 54 43 46 69 73 68 69 6e 67 52 6f 64 00	NUL	HEAD spelled the same literal ("CTCFishingRod", -1); kept
+007e2590	0x0123DD38	narrow	"CTCDiggingSpot"	b4	.rdata	43 54 43 44 69 67 67 69 6e 67 53 70 6f 74 00	NUL	HEAD spelled the same literal ("CTCDiggingSpot", -1); kept
+007e26f0	0x0123DD48	narrow	"CTCElectrocuteOnTouch"	b4	.rdata	43 54 43 45 6c 65 63 74 72 6f 63 75 74 65 4f 6e 54 6f 75 63 68 00	NUL	HEAD spelled the same literal ("CTCElectrocuteOnTouch", -1); kept
+007e2d40	0x0123DD74	narrow	"CTCFineDialogue"	b4	.rdata	43 54 43 46 69 6e 65 44 69 61 6c 6f 67 75 65 00	NUL	HEAD spelled the same literal ("CTCFineDialogue", -1); kept
+007e3230	0x0123DFA4	narrow	"CTCCameraCollision"	b4	.rdata	43 54 43 43 61 6d 65 72 61 43 6f 6c 6c 69 73 69 6f 6e 00	NUL	HEAD spelled the same literal ("CTCCameraCollision", -1); kept
+007e3540	0x0123E128	narrow	"CTCDeadShotInThingTracker"	b4	.rdata	43 54 43 44 65 61 64 53 68 6f 74 49 6e 54 68 69 6e 67 54 72 61 63 6b 65 72 00	NUL	HEAD spelled the same literal ("CTCDeadShotInThingTracker", -1); kept
+007e3770	0x0123E2FC	narrow	"CTCAtmosPlayer"	b4	.rdata	43 54 43 41 74 6d 6f 73 50 6c 61 79 65 72 00	NUL	HEAD spelled the same literal ("CTCAtmosPlayer", -1); kept
+007e48a0	0x0123E30C	narrow	"CTCWillResponse"	b4	.rdata	43 54 43 57 69 6c 6c 52 65 73 70 6f 6e 73 65 00	NUL	HEAD spelled the same literal ("CTCWillResponse", -1); kept
+007e4c20	0x0123E39C	narrow	"CTCCreditsUI"	b4	.rdata	43 54 43 43 72 65 64 69 74 73 55 49 00	NUL	HEAD spelled the same literal ("CTCCreditsUI", -1); kept
+007e58f0	0x0123E418	narrow	"CTCBetting"	b4	.rdata	43 54 43 42 65 74 74 69 6e 67 00	NUL	HEAD spelled the same literal ("CTCBetting", -1); kept
+007e5ae0	0x0123E424	narrow	"CTCLifeTimer"	b4	.rdata	43 54 43 4c 69 66 65 54 69 6d 65 72 00	NUL	HEAD spelled the same literal ("CTCLifeTimer", -1); kept
+007e6fe0	0x0123E4EC	narrow	"CTCOracleMinigame"	b4	.rdata	43 54 43 4f 72 61 63 6c 65 4d 69 6e 69 67 61 6d 65 00	NUL	HEAD spelled the same literal ("CTCOracleMinigame", -1); kept
+007e7e80	0x0123E568	narrow	"CTCFireheartMinigame"	b4	.rdata	43 54 43 46 69 72 65 68 65 61 72 74 4d 69 6e 69 67 61 6d 65 00	NUL	HEAD spelled the same literal ("CTCFireheartMinigame", -1); kept

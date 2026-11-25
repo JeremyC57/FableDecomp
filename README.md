@@ -74,12 +74,12 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **48,915 · 98.68%** |
-| Retail function bytes reproduced | **9,270,134 · 92.34%** |
+| Landed byte-matching C++ (genuine) | **48,918 · 98.69%** |
+| Retail function bytes reproduced | **9,270,209 · 92.34%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Landed byte-matching C++ covers **98.68%** of the 49,567-function catalog by count
+Landed byte-matching C++ covers **98.69%** of the 49,567-function catalog by count
 and **92.34%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
@@ -98,16 +98,16 @@ parity, coverage, and naming reports:
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
 | Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **57,158** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **48,915** (98.68%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,850 known functions | 57,118 (98.73%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 9,270,134 (92.34%) |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **48,918** (98.69%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,850 known functions | 57,121 (98.74%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 9,270,209 (92.34%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 340 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 451 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
 | Reconstruction | — of the `toolchain_library` rows, third-party vendor code rebuilt from unmodified source (`// Vendor-library:`) | 9 |
 | Reconstruction | — landed hand-written rows the unmodified vendor build also proves (`// Vendor-proof:` line) | 606 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 1 |
-| Code origin | Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`) | 51,672 / 52,348 (98.71%) |
+| Code origin | Landed genuine, Fable game code (`docs/pipeline/LIBRARY_MAP.tsv`) | 51,675 / 52,348 (98.71%) |
 | Code origin | Landed genuine, Lionhead in-house libraries (libpk/CODA audio, LHNetworkLib) | 4,189 / 4,241 (98.77%) |
 | Code origin | Landed genuine, third-party vendor code (zlib, LZO, Xiph, DirectShow, DXUT) | 817 / 818 (99.88%) |
 | Code origin | Landed genuine, VC7.1 toolchain (CRT objects, import thunks) | 440 / 443 (99.32%) |
@@ -127,7 +127,7 @@ analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-
 naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 98.68% figure is intentionally the strict,
+because a structural checker accepted it. The 98.69% figure is intentionally the strict,
 whole-executable denominator; the byte figure sizes each unlanded function to the next function start, an upper bound. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and

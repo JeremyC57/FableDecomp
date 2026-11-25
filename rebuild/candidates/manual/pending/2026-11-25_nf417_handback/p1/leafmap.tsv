@@ -1,0 +1,9 @@
+00afe440	?GetClassTypeName@CPSCRenderSprite_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCRenderSprite@NParticleEngine@@UBE?AVCCharString@@XZ
+00b05a50	?GetClassTypeName@CPSCRenderMesh_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCRenderMesh@NParticleEngine@@UBE?AVCCharString@@XZ
+00b0a0d0	?GetClassTypeName@CPSCSingleSprite_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCSingleSprite@NParticleEngine@@UBE?AVCCharString@@XZ
+00b0f880	?GetClassTypeName@CPSCUpdateNormal_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCUpdateNormal@NParticleEngine@@UBE?AVCCharString@@XZ
+00b15a90	?GetClassTypeName@CPSCEmitterGeneric_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCEmitterGeneric@NParticleEngine@@UBE?AVCCharString@@XZ
+00b178d0	?GetClassTypeName@CPSCOrbit_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCOrbit@NParticleEngine@@UBE?AVCCharString@@XZ
+00b186e0	?GetClassTypeName@CPSCAttractor_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCAttractor@NParticleEngine@@UBE?AVCCharString@@XZ
+00b1b430	?GetClassTypeName@CPSCSpline_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCSpline@NParticleEngine@@UBE?AVCCharString@@XZ
+00b1ff10	?GetClassTypeName@CPSCDecalRenderer_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CPSCDecalRenderer@NParticleEngine@@UBE?AVCCharString@@XZ

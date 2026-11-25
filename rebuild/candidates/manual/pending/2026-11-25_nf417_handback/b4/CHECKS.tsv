@@ -1,0 +1,29 @@
+address	head_grade	head_test	new_grade	new_test	mut_test	warn_head	warn_new	lit_proof	leaf_cmp	sections	static_copy	r10	purity	widened	leaf_def	poly_chk
+007d5ef0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5a31:EQUAL	[]	[]	ok	ok
+007d7980	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCTavernGameCardPairs (engine/CTCTavernGameCardPairs.h)	SHARED_HEADER_AVAILABLE CTCTavernGameCardPairs (engine/CTCTavernGameCardPairs.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5a64:EQUAL	[]	[]	ok	ok
+007d9eb0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)	SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5a97:EQUAL	[]	[]	ok	ok
+007dc970	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCTavernGameCardBlackjack (engine/CTCTavernGameCardBlackjack.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5aca:EQUAL	[]	[]	ok	ok
+007dd190	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5b8e:EQUAL	[]	[]	ok	ok
+007de3f0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCCreatureFlyInCircles (engine/CTCCreatureFlyInCircles.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5bbe:EQUAL	[]	[]	ok	ok
+007df2c0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)	SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)	ok	ok	ok(+3,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5bee:EQUAL	[]	[]	ok	ok
+007dfab0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCWallMountEffects (engine/CTCWallMountEffects.h)	SHARED_HEADER_AVAILABLE CTCWallMountEffects (engine/CTCWallMountEffects.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5c1e:EQUAL	[]	[]	ok	ok
+007dfc60	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCFish (engine/CTCFish.h)	SHARED_HEADER_AVAILABLE CTCFish (engine/CTCFish.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5c64:EQUAL	[]	[]	ok	ok
+007e0500	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCTeleporter (engine/CTCTeleporter.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5caa:EQUAL	[]	[]	ok	ok
+007e0a10	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCHeroSpecialMovement (engine/CTCHeroSpecialMovement.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5d40:EQUAL	[]	[]	ok	ok
+007e0d80	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCEffectOnDie (engine/CTCEffectOnDie.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5d70:EQUAL	[]	[]	ok	ok
+007e1150	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCAICreatureWillPowerIndicator (engine/CTCAICreatureWillPowerIndicator.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5e31:EQUAL	[]	[]	ok	ok
+007e1a80	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5e61:EQUAL	[]	[]	ok	ok
+007e1bf0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5e91:EQUAL	[]	[]	ok	ok
+007e2490	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	RELOC_NAME: ??0CWideString@@QAE@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d5f82:EQUAL	[]	[]	ok	ok
+007e2590	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCDiggingSpot (engine/CTCDiggingSpot.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6026:EQUAL	[]	[]	ok	ok
+007e26f0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCElectrocuteOnTouch (engine/CTCElectrocuteOnTouch.h)	SHARED_HEADER_AVAILABLE CTCElectrocuteOnTouch (engine/CTCElectrocuteOnTouch.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6056:EQUAL	[]	[]	ok	ok
+007e2d40	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d60bf:EQUAL	[]	[]	ok	ok
+007e3230	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCCameraCollision (engine/CTCCameraCollision.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6226:EQUAL	[]	[]	ok	ok
+007e3540	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCDeadShotInThingTracker (engine/CTCDeadShotInThingTracker.h)	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6353:EQUAL	[]	[]	ok	ok
+007e3770	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL	[]	[]	ok	ok
+007e48a0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	SHARED_HEADER_AVAILABLE CTCWillResponse (engine/CTCWillResponse.h)	SHARED_HEADER_AVAILABLE CTCWillResponse (engine/CTCWillResponse.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d647a:EQUAL	[]	[]	ok	ok
+007e4c20	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d64d3:EQUAL	[]	[]	ok	ok
+007e58f0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCBetting (engine/CTCBetting.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6519:EQUAL	[]	[]	ok	ok
+007e5ae0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6549:EQUAL	[]	[]	ok	ok
+007e6fe0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)	ok	ok	ok(+2,libcp)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d65dc:EQUAL	[]	[]	ok	ok
+007e7e80	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+2)	ok(sel 2, 19 B)	004ee23f:EQUAL;004d6625:EQUAL	[]	[]	ok	ok

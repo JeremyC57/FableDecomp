@@ -1,0 +1,4 @@
+address	vland_head	vland_new	objsec	relocs	pk	mutation	link_binder	link_nobinder
+004d3f30	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	ok	ok	0 copies, 0 NEQ	OK	2->0 dup, 0 new unresolved	2->0 dup, 0 new unresolved
+004d4212	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	ok	ok	0 copies, 0 NEQ	OK	2->0 dup, 0 new unresolved	2->0 dup, 0 new unresolved
+004e230a	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	ok	ok	0 copies, 0 NEQ	OK	2->0 dup, 0 new unresolved	2->0 dup, 0 new unresolved

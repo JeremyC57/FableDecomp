@@ -1,0 +1,4 @@
+address	symbol	status	leaf_given	current_line
+004d3f30	?GetClassTypeName@CTCDNone@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCDNone@@UBE?AVCCharString@@XZ	_CTCDNone_GetClassTypeName@4|RELOCATION_MATCH|GetClassTypeName
+004d4212	?GetClassTypeName@CTCDNavigationSeed@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCDNavigationSeed@@UBE?AVCCharString@@XZ	_CTCDNavigationSeed_GetClassTypeName@4|RELOCATION_MATCH|GetClassTypeName
+004e230a	?GetClassTypeName@CTCTargetingPlayer@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCTargetingPlayer@@UBE?AVCCharString@@XZ	_CTCTargetingPlayer_GetClassTypeName@4|RELOCATION_MATCH|GetClassTypeName

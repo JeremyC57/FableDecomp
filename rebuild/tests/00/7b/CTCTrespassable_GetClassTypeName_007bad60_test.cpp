@@ -1,54 +1,40 @@
-#include <cstdio>
-
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
-{
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-// Model of CCharString: records the (ptr,len) it was constructed with.
-static const char* g_lastPtr = 0;
-static int g_lastLen = 999;
+// Behaviour test for 0x007BAD60 CTCTrespassable::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCTrespassable", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
 class CCharString
 {
 public:
-    CCharString(const char* pText, long length)
-    {
-        g_lastPtr = pText;
-        g_lastLen = length;
-    }
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-// The literal the retail function feeds to the ctor.
-static const char* const kActionNameLiteral =
-    "CTCTrespassable";
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
 class CTCTrespassable
 {
 public:
-    CCharString GetClassTypeName();
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-CCharString CTCTrespassable::GetClassTypeName()
+int main(void)
 {
-    return CCharString(kActionNameLiteral, -1);
-}
-
-int main()
-{
-    CTCTrespassable obj;
-    obj.GetClassTypeName();
-
-    bool ok = (RetailTextEquals(g_lastPtr, "CTCTrespassable")) &&
-              (g_lastLen == -1);
-
-    if (ok)
-        std::printf("007bad60_TEST PASS\n");
-    else
-        std::printf("007bad60_TEST FAIL ptr=%p len=%d\n", (void*)g_lastPtr, g_lastLen);
+    {
+        CTCTrespassable tc;
+        const CTCTrespassable& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCTrespassable") != 0) {
+            printf("007bad60_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("007bad60_TEST PASS\n");
     return 0;
 }

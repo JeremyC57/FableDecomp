@@ -1,44 +1,35 @@
-// CTCSimpleAppearanceMorph::GetClassTypeName() const  @ 0x007276B0
-//
-// Mangled: ?GetActionName@CTCSimpleAppearanceMorph@NTCScriptedControl@@UBE?AVCCharString@@XZ
-// const __fastcall member returning CCharString BY VALUE (hidden return ptr).
-//
-// Retail body:
-//   push esi
-//   mov  esi,[esp+8]        ; esi = hidden return-value pointer (CCharString*)
-//   push -1                 ; 2nd ctor arg (length = -1)
-//   push 0x1239f78          ; 1st ctor arg (const char* literal), reloc-masked
-//   mov  ecx,esi            ; ecx = this for the CCharString ctor
-//   call CCharString::CCharString(const char*,long)
-//   mov  eax,esi            ; return the hidden return pointer in eax
-//   pop  esi
-//   ret  4                  ; clean the hidden return pointer
-//
-// Modeled as a genuine member method so VC7.1 uses the __fastcall struct-
-// return ABI: this in ecx, hidden return pointer on the stack, ret 4.
+// CTCSimpleAppearanceMorph::GetClassTypeName() const -- the class-type name "CTCSimpleAppearanceMorph" as a CCharString (the in-class StatGetClassTypeName, inlined)
+// Leaf: ?GetClassTypeName@CTCSimpleAppearanceMorph@@UBE?AVCCharString@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x007276B0, 25 bytes: push esi; mov esi,[esp+8]; push -1; push 0x01239F78 "CTCSimpleAppearanceMorph"; mov ecx,esi;
+//   call CCharString::CCharString(const char*, long) 0x0099EBF0; mov eax,esi; pop esi; ret 4 -- a const virtual __thiscall returning
+//   CCharString by value: `this` (ecx) is unused, the hidden result pointer is the one stack argument (kept in esi).
+// Identity (NF417, 2026-11-25): Ego_r.pdb and FableWin.pdb name sets both spell
+//   ?GetClassTypeName@CTCSimpleAppearanceMorph@@UBE?AVCCharString@@XZ; retail vftable 0x012664A4 (RTTI .?AVCTCSimpleAppearanceMorph@@)
+//   slot 22 (0x012664FC -> 0x007276B0) is CTCBase's pure GetClassTypeName slot (engine/CTCBase.h); the literal 0x01239F78 =
+//   "CTCSimpleAppearanceMorph" = the class name (read from the exe).
+// Form (NF417): FableWin.pdb spells the class's static ?StatGetClassTypeName@CTCSimpleAppearanceMorph@@SI?AVCCharString@@XZ (Ego_r has
+//   none); the 25 retail bytes are that static's 19-byte body (push -1; push lit; call; mov eax) expanded into the virtual, so the
+//   static is an in-class inline (as the binder 0x004EE23F defines it) and the virtual calls it; retail has no out-of-line copy bound
+//   in reloc_bindings.tsv (every use expands it). VC7.1 also emits the static's pick-any COMDAT copy in this object (identical to the
+//   landed copies; the linker keeps one).
+// Respell (NF417): was the stand-in self ?GetClassTypeName@CTCSimpleAppearanceMorph@@QBE?AVCCharString@@XZ (a non-virtual const member
+//   of the real class).
+// Header: no engine header defines CTCSimpleAppearanceMorph; the RTTI ancestors' headers (engine/CTCAppearanceMorphBase.h) do not reach
+//   the polymorphic CTCBase in any prelude (header debt), so a local class directly over engine/CTCBase.h (rtti_bases.tsv:
+//   .?AVCTCSimpleAppearanceMorph@@ : CTCAppearanceMorphBase ... : CTCBase).
+#define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
+#include "fable_string.h"
+#define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
+#include "engine/CTCBase.h"
 
-struct StringRep;
-
-class CCharString
-{ public:
-    StringRep* rep;
-    CCharString(const char* s, long n);
-};
-
-#pragma auto_inline(off)
-CCharString::CCharString(const char* s, long n)
+class CTCSimpleAppearanceMorph : public CTCBase
 {
-    rep = (StringRep*)(s ? (void*)(n) : 0);
-}
-#pragma auto_inline(on)
-
-struct CTCSimpleAppearanceMorph
-{
-    void* vtbl;
-    CCharString GetClassTypeName() const;
+public:
+    static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCSimpleAppearanceMorph", -1); }
+    virtual CCharString GetClassTypeName() const;
 };
 
 CCharString CTCSimpleAppearanceMorph::GetClassTypeName() const
 {
-    return CCharString("CTCSimpleAppearanceMorph", -1);
+    return StatGetClassTypeName();
 }

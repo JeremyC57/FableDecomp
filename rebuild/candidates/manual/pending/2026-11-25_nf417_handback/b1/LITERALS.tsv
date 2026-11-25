@@ -1,0 +1,51 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	preceded_by	form
+004c5d50	0x012398DC	narrow	"CTCGraphicAppearance"	b1	.rdata	43 54 43 47 72 61 70 68 69 63 41 70 70 65 61 72 61 6e 63 65 00	NUL	HEAD spelled the same literal ("CTCGraphicAppearance", -1); kept
+0055de10	0x0123E718	narrow	"CTCPhotojournalCapture"	b1	.rdata	43 54 43 50 68 6f 74 6f 6a 6f 75 72 6e 61 6c 43 61 70 74 75 72 65 00	NUL	HEAD spelled the same literal ("CTCPhotojournalCapture", -1); kept
+0056a640	0x0123E700	narrow	"CTCHeroOnlineScoreboard"	b1	.rdata	43 54 43 48 65 72 6f 4f 6e 6c 69 6e 65 53 63 6f 72 65 62 6f 61 72 64 00	NUL	HEAD spelled the same literal ("CTCHeroOnlineScoreboard", -1); kept
+0056df90	0x0123DD08	narrow	"CTCBoastUI"	b1	.rdata	43 54 43 42 6f 61 73 74 55 49 00	NUL	HEAD spelled the same literal ("CTCBoastUI", -1); kept
+005dadf0	0x0123B324	narrow	"CTCWeapon"	b1	.rdata	43 54 43 57 65 61 70 6f 6e 00	NUL	HEAD spelled the same literal ("CTCWeapon", -1); kept
+005e9730	0x0123E0A4	narrow	"CTCQuestCompletionUI"	b1	.rdata	43 54 43 51 75 65 73 74 43 6f 6d 70 6c 65 74 69 6f 6e 55 49 00	NUL	HEAD spelled the same literal ("CTCQuestCompletionUI", -1); kept
+00619f10	0x0123A43C	narrow	"CTCInventoryMap"	b1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 4d 61 70 00	NUL	HEAD spelled the same literal ("CTCInventoryMap", -1); kept
+00624d70	0x0123A4DC	narrow	"CTCInventoryQuests"	b1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 51 75 65 73 74 73 00	NUL	HEAD spelled the same literal ("CTCInventoryQuests", -1); kept
+006285f0	0x0123DE20	narrow	"CTCQuickAccessMenu"	b1	.rdata	43 54 43 51 75 69 63 6b 41 63 63 65 73 73 4d 65 6e 75 00	NUL	HEAD: no literal in the source (a data symbol or a variable); now the string literal "CTCQuickAccessMenu" spelled from retail's bytes
+0063a200	0x0123C2BC	narrow	"CTCRegionDisplay"	b1	.rdata	43 54 43 52 65 67 69 6f 6e 44 69 73 70 6c 61 79 00	NUL	HEAD spelled the same literal ("CTCRegionDisplay", -1); kept
+006423d0	0x0123A778	narrow	"CTCLight"	b1	.rdata	43 54 43 4c 69 67 68 74 00	NUL	HEAD spelled the same literal ("CTCLight", -1); kept
+0066c2a0	0x0123A504	narrow	"CTCSoundPlayer"	b1	.rdata	43 54 43 53 6f 75 6e 64 50 6c 61 79 65 72 00	NUL	HEAD spelled the same literal ("CTCSoundPlayer", -1); kept
+00670b60	0x0123D17C	narrow	"CTCCoopSpirit"	b1	.rdata	43 54 43 43 6f 6f 70 53 70 69 72 69 74 00	NUL	HEAD spelled the same literal ("CTCCoopSpirit", -1); kept
+00686690	0x0123B600	narrow	"CTCCreatureOpinionOfHero"	b1	.rdata	43 54 43 43 72 65 61 74 75 72 65 4f 70 69 6e 69 6f 6e 4f 66 48 65 72 6f 00	NUL	HEAD spelled the same literal ("CTCCreatureOpinionOfHero", -1); kept
+006af060	0x0123C110	narrow	"CTCRegionFollower"	b1	.rdata	43 54 43 52 65 67 69 6f 6e 46 6f 6c 6c 6f 77 65 72 00	NUL	HEAD spelled the same literal ("CTCRegionFollower", -1); kept
+006c1ae0	0x0123A5EC	narrow	"CTCBuyableHouse"	b1	.rdata	43 54 43 42 75 79 61 62 6c 65 48 6f 75 73 65 00	NUL	HEAD spelled the same literal ("CTCBuyableHouse", -1); kept
+006c4400	0x01238FE4	narrow	"CTCFadeOutAndIn"	b1	.rdata	43 54 43 46 61 64 65 4f 75 74 41 6e 64 49 6e 00	NUL	HEAD spelled the same literal ("CTCFadeOutAndIn", -1); kept
+006c8d00	0x0123B57C	narrow	"CTCHeroOpinionDeedLog"	b1	.rdata	43 54 43 48 65 72 6f 4f 70 69 6e 69 6f 6e 44 65 65 64 4c 6f 67 00	NUL	HEAD spelled the same literal ("CTCHeroOpinionDeedLog", -1); kept
+006ca700	0x0123A968	narrow	"CTCHero"	b1	.rdata	43 54 43 48 65 72 6f 00	NUL	HEAD spelled the same literal ("CTCHero", -1); kept
+006cd540	0x01239F10	narrow	"CTCCreatureNavigation"	b1	.rdata	43 54 43 43 72 65 61 74 75 72 65 4e 61 76 69 67 61 74 69 6f 6e 00	NUL	HEAD spelled the same literal ("CTCCreatureNavigation", -1); kept
+006d4550	0x0123A700	narrow	"CTCWife"	b1	.rdata	43 54 43 57 69 66 65 00	NUL	HEAD spelled the same literal ("CTCWife", -1); kept
+006d58c0	0x0123CAFC	narrow	"CTCFollowed"	b1	.rdata	43 54 43 46 6f 6c 6c 6f 77 65 64 00	NUL	HEAD spelled the same literal ("CTCFollowed", -1); kept
+006db520	0x0123A460	narrow	"CTCHeroExperience"	b1	.rdata	43 54 43 48 65 72 6f 45 78 70 65 72 69 65 6e 63 65 00	NUL	HEAD spelled the same literal ("CTCHeroExperience", -1); kept
+006dfa20	0x0123AC0C	narrow	"CTCTrophy"	b1	.rdata	43 54 43 54 72 6f 70 68 79 00	NUL	HEAD spelled the same literal ("CTCTrophy", -1); kept
+006e1d10	0x0123B458	narrow	"CTCDParticleEmitter"	b1	.rdata	43 54 43 44 50 61 72 74 69 63 6c 65 45 6d 69 74 74 65 72 00	NUL	HEAD spelled the same literal ("CTCDParticleEmitter", -1); kept
+006e40e0	0x0123A3D4	narrow	"CTCTalk"	b1	.rdata	43 54 43 54 61 6c 6b 00	NUL	HEAD spelled the same literal ("CTCTalk", -1); kept
+00702a00	0x0123A3F0	narrow	"CTCQuestCard"	b1	.rdata	43 54 43 51 75 65 73 74 43 61 72 64 00	NUL	HEAD spelled the same literal ("CTCQuestCard", -1); kept
+00702bd0	0x0123C158	narrow	"CTCDayOrNightOnlySupport"	b1	.rdata	43 54 43 44 61 79 4f 72 4e 69 67 68 74 4f 6e 6c 79 53 75 70 70 6f 72 74 00	NUL	HEAD spelled the same literal ("CTCDayOrNightOnlySupport", -1); kept
+007097c0	0x0123BCD0	narrow	"CTCHeroAttachableAppearanceModifiers"	b1	.rdata	43 54 43 48 65 72 6f 41 74 74 61 63 68 61 62 6c 65 41 70 70 65 61 72 61 6e 63 65 4d 6f 64 69 66 69 65 72 73 00	NUL	HEAD spelled the same literal ("CTCHeroAttachableAppearanceModifiers", -1); kept
+0070b210	0x0123DC7C	narrow	"CTCTextureDecal"	b1	.rdata	43 54 43 54 65 78 74 75 72 65 44 65 63 61 6c 00	NUL	HEAD spelled the same literal ("CTCTextureDecal", -1); kept
+0070b5e0	0x0123BCBC	narrow	"CTCAnimationComplex"	b1	.rdata	43 54 43 41 6e 69 6d 61 74 69 6f 6e 43 6f 6d 70 6c 65 78 00	NUL	HEAD spelled the same literal ("CTCAnimationComplex", -1); kept
+00719a50	0x0123A514	narrow	"CTCScriptedControl"	b1	.rdata	43 54 43 53 63 72 69 70 74 65 64 43 6f 6e 74 72 6f 6c 00	NUL	HEAD spelled the same literal ("CTCScriptedControl", -1); kept
+0071a7f0	0x01239BE4	narrow	"CTCMapwho"	b1	.rdata	43 54 43 4d 61 70 77 68 6f 00	NUL	HEAD spelled the same literal ("CTCMapwho", -1); kept
+0071b0e0	0x0123B314	narrow	"CTCEmoteIcon"	b1	.rdata	43 54 43 45 6d 6f 74 65 49 63 6f 6e 00	NUL	HEAD spelled the same literal ("CTCEmoteIcon", -1); kept
+00722360	0x01239EEC	narrow	"CTCHeroMorph"	b1	.rdata	43 54 43 48 65 72 6f 4d 6f 72 70 68 00	NUL	HEAD spelled the same literal ("CTCHeroMorph", -1); kept
+007230d0	0x01239EFC	narrow	"CTCSmokeGenerator"	b1	.rdata	43 54 43 53 6d 6f 6b 65 47 65 6e 65 72 61 74 6f 72 00	NUL	HEAD spelled the same literal ("CTCSmokeGenerator", -1); kept
+00723420	0x01239F28	narrow	"CTCPhysicsLight"	b1	.rdata	43 54 43 50 68 79 73 69 63 73 4c 69 67 68 74 00	NUL	HEAD spelled the same literal ("CTCPhysicsLight", -1); kept
+00724b80	0x01239F38	narrow	"CTCPhysicsStandard"	b1	.rdata	43 54 43 50 68 79 73 69 63 73 53 74 61 6e 64 61 72 64 00	NUL	HEAD spelled the same literal ("CTCPhysicsStandard", -1); kept
+00725e40	0x01239F4C	narrow	"CTCPhysicsControlled"	b1	.rdata	43 54 43 50 68 79 73 69 63 73 43 6f 6e 74 72 6f 6c 6c 65 64 00	NUL	HEAD spelled the same literal ("CTCPhysicsControlled", -1); kept
+007270e0	0x01239F64	narrow	"CTCPhysicsNavigator"	b1	.rdata	43 54 43 50 68 79 73 69 63 73 4e 61 76 69 67 61 74 6f 72 00	NUL	HEAD spelled the same literal ("CTCPhysicsNavigator", -1); kept
+007276b0	0x01239F78	narrow	"CTCSimpleAppearanceMorph"	b1	.rdata	43 54 43 53 69 6d 70 6c 65 41 70 70 65 61 72 61 6e 63 65 4d 6f 72 70 68 00	NUL	HEAD spelled the same literal ("CTCSimpleAppearanceMorph", -1); kept
+007284c0	0x01239F94	narrow	"CTCRandomAppearanceMorph"	b1	.rdata	43 54 43 52 61 6e 64 6f 6d 41 70 70 65 61 72 61 6e 63 65 4d 6f 72 70 68 00	NUL	HEAD spelled the same literal ("CTCRandomAppearanceMorph", -1); kept
+007299d0	0x01239FCC	narrow	"CTCCreatureExpression"	b1	.rdata	43 54 43 43 72 65 61 74 75 72 65 45 78 70 72 65 73 73 69 6f 6e 00	NUL	HEAD spelled the same literal ("CTCCreatureExpression", -1); kept
+0072a3f0	0x01239FE4	narrow	"CTCActionUseScriptedHook"	b1	.rdata	43 54 43 41 63 74 69 6f 6e 55 73 65 53 63 72 69 70 74 65 64 48 6f 6f 6b 00	NUL	HEAD spelled the same literal ("CTCActionUseScriptedHook", -1); kept
+0072a710	0x0123A154	narrow	"CTCActionUseBuyOrSteal"	b1	.rdata	43 54 43 41 63 74 69 6f 6e 55 73 65 42 75 79 4f 72 53 74 65 61 6c 00	NUL	HEAD spelled the same literal ("CTCActionUseBuyOrSteal", -1); kept
+0072da00	0x0123A33C	narrow	"CTCSpecialAbilities"	b1	.rdata	43 54 43 53 70 65 63 69 61 6c 41 62 69 6c 69 74 69 65 73 00	NUL	HEAD spelled the same literal ("CTCSpecialAbilities", -1); kept
+0072dcf0	0x0123A44C	narrow	"CTCInventoryMagic"	b1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 4d 61 67 69 63 00	NUL	HEAD spelled the same literal ("CTCInventoryMagic", -1); kept
+0072ef40	0x0123A5FC	narrow	"CTCActionUseBuyHouse"	b1	.rdata	43 54 43 41 63 74 69 6f 6e 55 73 65 42 75 79 48 6f 75 73 65 00	NUL	HEAD spelled the same literal ("CTCActionUseBuyHouse", -1); kept
+00730400	0x0123A680	narrow	"CTCDummyVillager"	b1	.rdata	43 54 43 44 75 6d 6d 79 56 69 6c 6c 61 67 65 72 00	NUL	HEAD spelled the same literal ("CTCDummyVillager", -1); kept
+007312c0	0x0123A708	narrow	"CTCDoor"	b1	.rdata	43 54 43 44 6f 6f 72 00	NUL	HEAD spelled the same literal ("CTCDoor", -1); kept

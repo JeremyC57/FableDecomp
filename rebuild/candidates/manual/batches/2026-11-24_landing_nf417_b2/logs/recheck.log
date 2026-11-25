@@ -1,0 +1,138 @@
+addr       parity           behav  name
+007319d0   RELOCATION_MATCH PASS   GetClassTypeName
+00731a30   WARN SHARED_HEADER_AVAILABLE CTCJackShield (engine/CTCJackShield.h)
+00731a30   RELOCATION_MATCH PASS   GetClassTypeName
+00732590   WARN SHARED_HEADER_AVAILABLE CTCSpotLight (engine/CTCSpotLight.h)
+00732590   RELOCATION_MATCH PASS   GetClassTypeName
+00732ba0   WARN SHARED_HEADER_AVAILABLE CTCClock (engine/CTCClock.h)
+00732ba0   RELOCATION_MATCH PASS   GetClassTypeName
+00739cf0   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00739cf0   RELOCATION_MATCH PASS   GetClassTypeName
+00744280   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00744280   RELOCATION_MATCH PASS   GetClassTypeName
+007460b0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+007460b0   RELOCATION_MATCH PASS   GetClassTypeName
+00746bf0   WARN SHARED_HEADER_AVAILABLE CTCBed (engine/CTCBed.h)
+00746bf0   RELOCATION_MATCH PASS   GetClassTypeName
+007493f0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+007493f0   RELOCATION_MATCH PASS   GetClassTypeName
+007499c0   WARN SHARED_HEADER_AVAILABLE CTCNoise (engine/CTCNoise.h)
+007499c0   RELOCATION_MATCH PASS   GetClassTypeName
+0074da00   WARN SHARED_HEADER_AVAILABLE CTCCreatureGenerator (engine/CTCCreatureGenerator.h)
+0074da00   RELOCATION_MATCH PASS   GetClassTypeName
+0074fcb0   WARN SHARED_HEADER_AVAILABLE CTCContainerRewardHero (engine/CTCContainerRewardHero.h)
+0074fcb0   RELOCATION_MATCH PASS   GetClassTypeName
+00750930   WARN SHARED_HEADER_AVAILABLE CTCChest (engine/CTCChest.h)
+00750930   RELOCATION_MATCH PASS   GetClassTypeName
+00750a40   WARN SHARED_HEADER_AVAILABLE CTCDiscovery (engine/CTCDiscovery.h)
+00750a40   RELOCATION_MATCH PASS   GetClassTypeName
+00751260   WARN SHARED_HEADER_AVAILABLE CTCExplodingObject (engine/CTCExplodingObject.h)
+00751260   RELOCATION_MATCH PASS   GetClassTypeName
+007552f0   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+007552f0   RELOCATION_MATCH PASS   GetClassTypeName
+00756ba0   WARN SHARED_HEADER_AVAILABLE CTCHeroRememberCrimes (engine/CTCHeroRememberCrimes.h)
+00756ba0   RELOCATION_MATCH PASS   GetClassTypeName
+00758e90   WARN SHARED_HEADER_AVAILABLE CTCWound (engine/CTCWound.h)
+00758e90   RELOCATION_MATCH PASS   GetClassTypeName
+0075bf20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsRigidBody (engine/CTCPhysicsRigidBody.h)
+0075bf20   RELOCATION_MATCH PASS   GetClassTypeName
+0075edd0   RELOCATION_MATCH PASS   GetClassTypeName
+0075fbd0   WARN SHARED_HEADER_AVAILABLE CTCCameraPointScriptedSpline (engine/CTCCameraPointScriptedSpline.h)
+0075fbd0   RELOCATION_MATCH PASS   GetClassTypeName
+00765620   WARN SHARED_HEADER_AVAILABLE CTCShapeManager (engine/CTCShapeManager.h)
+00765620   RELOCATION_MATCH PASS   GetClassTypeName
+0076c3b0   WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations (engine/CTCObjectAugmentations.h)
+0076c3b0   RELOCATION_MATCH PASS   GetClassTypeName
+0076d880   WARN SHARED_HEADER_AVAILABLE CTCEnemy (engine/CTCEnemy.h)
+0076d880   RELOCATION_MATCH PASS   GetClassTypeName
+0076d960   RELOCATION_MATCH PASS   GetClassTypeName
+00770930   WARN SHARED_HEADER_AVAILABLE CTCWeaponTrail (engine/CTCWeaponTrail.h)
+00770930   RELOCATION_MATCH PASS   GetClassTypeName
+00771000   WARN SHARED_HEADER_AVAILABLE CTCSolidToThing (engine/CTCSolidToThing.h)
+00771000   RELOCATION_MATCH PASS   GetClassTypeName
+00771100   RELOCATION_MATCH PASS   GetClassTypeName
+007711c0   RELOCATION_MATCH PASS   GetClassTypeName
+00771a40   WARN SHARED_HEADER_AVAILABLE CTCOpinionSource (engine/CTCOpinionSource.h)
+00771a40   RELOCATION_MATCH PASS   GetClassTypeName
+00771ee0   RELOCATION_MATCH PASS   GetClassTypeName
+00778390   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+00778390   RELOCATION_MATCH PASS   GetClassTypeName
+00778800   RELOCATION_MATCH PASS   GetClassTypeName
+00778be0   RELOCATION_MATCH PASS   GetClassTypeName
+00779920   WARN SHARED_HEADER_AVAILABLE CTCDRegionExit (engine/CTCDRegionExit.h)
+00779920   RELOCATION_MATCH PASS   GetClassTypeName
+0077ab70   WARN SHARED_HEADER_AVAILABLE CTCDExperienceOrb (engine/CTCDExperienceOrb.h)
+0077ab70   RELOCATION_MATCH PASS   GetClassTypeName
+0077b680   RELOCATION_MATCH PASS   GetClassTypeName
+0077bd00   RELOCATION_MATCH PASS   GetClassTypeName
+0077c260   RELOCATION_MATCH PASS   GetClassTypeName
+0077c7a0   RELOCATION_MATCH PASS   GetClassTypeName
+0077cfd0   WARN SHARED_HEADER_AVAILABLE CTCHighlightItem (engine/CTCHighlightItem.h)
+0077cfd0   RELOCATION_MATCH PASS   GetClassTypeName
+0077eb70   WARN SHARED_HEADER_AVAILABLE CTCHeroCentre (engine/CTCHeroCentre.h)
+0077eb70   RELOCATION_MATCH PASS   GetClassTypeName
+0077fcc0   RELOCATION_MATCH PASS   GetClassTypeName
+007802a0   RELOCATION_MATCH PASS   GetClassTypeName
+007819d0   WARN SHARED_HEADER_AVAILABLE CTCFlammable (engine/CTCFlammable.h)
+007819d0   RELOCATION_MATCH PASS   GetClassTypeName
+00782630   WARN SHARED_HEADER_AVAILABLE CTCBoastingPosition (engine/CTCBoastingPosition.h)
+00782630   RELOCATION_MATCH PASS   GetClassTypeName
+00782ae0   RELOCATION_MATCH PASS   GetClassTypeName
+00784120   WARN SHARED_HEADER_AVAILABLE CTCBoastingCrowdControl (engine/CTCBoastingCrowdControl.h)
+00784120   RELOCATION_MATCH PASS   GetClassTypeName
+00784cb0   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroupBoastingCrowd (engine/CTCCreatureGroupBoastingCrowd.h)
+00784cb0   RELOCATION_MATCH PASS   GetClassTypeName
+00785cd0   WARN SHARED_HEADER_AVAILABLE CTCVolumeContainmentTracker (engine/CTCVolumeContainmentTracker.h)
+00785cd0   RELOCATION_MATCH PASS   GetClassTypeName
+
+WINS: 50
+  007319d0 RELOCATION_MATCH CTCJackPillar::?GetClassTypeName@CTCJackPillar@@UBE?AVCCharString@@XZ
+  00731a30 RELOCATION_MATCH CTCJackShield::?GetClassTypeName@CTCJackShield@@UBE?AVCCharString@@XZ
+  00732590 RELOCATION_MATCH CTCSpotLight::?GetClassTypeName@CTCSpotLight@@UBE?AVCCharString@@XZ
+  00732ba0 RELOCATION_MATCH CTCClock::?GetClassTypeName@CTCClock@@UBE?AVCCharString@@XZ
+  00739cf0 RELOCATION_MATCH CTCCombat::?GetClassTypeName@CTCCombat@@UBE?AVCCharString@@XZ
+  00744280 RELOCATION_MATCH CTCCreatureModeManager::?GetClassTypeName@CTCCreatureModeManager@@UBE?AVCCharString@@XZ
+  007460b0 RELOCATION_MATCH CTCPerceiveThing::?GetClassTypeName@CTCPerceiveThing@@UBE?AVCCharString@@XZ
+  00746bf0 RELOCATION_MATCH CTCBed::?GetClassTypeName@CTCBed@@UBE?AVCCharString@@XZ
+  007493f0 RELOCATION_MATCH CTCStealth::?GetClassTypeName@CTCStealth@@UBE?AVCCharString@@XZ
+  007499c0 RELOCATION_MATCH CTCNoise::?GetClassTypeName@CTCNoise@@UBE?AVCCharString@@XZ
+  0074da00 RELOCATION_MATCH CTCCreatureGenerator::?GetClassTypeName@CTCCreatureGenerator@@UBE?AVCCharString@@XZ
+  0074fcb0 RELOCATION_MATCH CTCContainerRewardHero::?GetClassTypeName@CTCContainerRewardHero@@UBE?AVCCharString@@XZ
+  00750930 RELOCATION_MATCH CTCChest::?GetClassTypeName@CTCChest@@UBE?AVCCharString@@XZ
+  00750a40 RELOCATION_MATCH CTCDiscovery::?GetClassTypeName@CTCDiscovery@@UBE?AVCCharString@@XZ
+  00751260 RELOCATION_MATCH CTCExplodingObject::?GetClassTypeName@CTCExplodingObject@@UBE?AVCCharString@@XZ
+  007552f0 RELOCATION_MATCH CTCLook::?GetClassTypeName@CTCLook@@UBE?AVCCharString@@XZ
+  00756ba0 RELOCATION_MATCH CTCHeroRememberCrimes::?GetClassTypeName@CTCHeroRememberCrimes@@UBE?AVCCharString@@XZ
+  00758e90 RELOCATION_MATCH CTCWound::?GetClassTypeName@CTCWound@@UBE?AVCCharString@@XZ
+  0075bf20 RELOCATION_MATCH CTCPhysicsRigidBody::?GetClassTypeName@CTCPhysicsRigidBody@@UBE?AVCCharString@@XZ
+  0075edd0 RELOCATION_MATCH CTCCameraPointScripted::?GetClassTypeName@CTCCameraPointScripted@@UBE?AVCCharString@@XZ
+  0075fbd0 RELOCATION_MATCH CTCCameraPointScriptedSpline::?GetClassTypeName@CTCCameraPointScriptedSpline@@UBE?AVCCharString@@XZ
+  00765620 RELOCATION_MATCH CTCShapeManager::?GetClassTypeName@CTCShapeManager@@UBE?AVCCharString@@XZ
+  0076c3b0 RELOCATION_MATCH CTCObjectAugmentations::?GetClassTypeName@CTCObjectAugmentations@@UBE?AVCCharString@@XZ
+  0076d880 RELOCATION_MATCH CTCEnemy::?GetClassTypeName@CTCEnemy@@UBE?AVCCharString@@XZ
+  0076d960 RELOCATION_MATCH CTCBandit::?GetClassTypeName@CTCBandit@@UBE?AVCCharString@@XZ
+  00770930 RELOCATION_MATCH CTCWeaponTrail::?GetClassTypeName@CTCWeaponTrail@@UBE?AVCCharString@@XZ
+  00771000 RELOCATION_MATCH CTCSolidToThing::?GetClassTypeName@CTCSolidToThing@@UBE?AVCCharString@@XZ
+  00771100 RELOCATION_MATCH CTCDegradableBarrier::?GetClassTypeName@CTCDegradableBarrier@@UBE?AVCCharString@@XZ
+  007711c0 RELOCATION_MATCH CTCThingUIDDummyForSerialisation::?GetClassTypeName@CTCThingUIDDummyForSerialisation@@UBE?AVCCharString@@XZ
+  00771a40 RELOCATION_MATCH CTCOpinionSource::?GetClassTypeName@CTCOpinionSource@@UBE?AVCCharString@@XZ
+  00771ee0 RELOCATION_MATCH CTCHeroPodium::?GetClassTypeName@CTCHeroPodium@@UBE?AVCCharString@@XZ
+  00778390 RELOCATION_MATCH CTCShop::?GetClassTypeName@CTCShop@@UBE?AVCCharString@@XZ
+  00778800 RELOCATION_MATCH CTCTimeAppearanceFade::?GetClassTypeName@CTCTimeAppearanceFade@@UBE?AVCCharString@@XZ
+  00778be0 RELOCATION_MATCH CTCFamilyMember::?GetClassTypeName@CTCFamilyMember@@UBE?AVCCharString@@XZ
+  00779920 RELOCATION_MATCH CTCDRegionExit::?GetClassTypeName@CTCDRegionExit@@UBE?AVCCharString@@XZ
+  0077ab70 RELOCATION_MATCH CTCDExperienceOrb::?GetClassTypeName@CTCDExperienceOrb@@UBE?AVCCharString@@XZ
+  0077b680 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::?GetClassTypeName@CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@UBE?AVCCharString@@XZ
+  0077bd00 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::?GetClassTypeName@CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@UBE?AVCCharString@@XZ
+  0077c260 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::?GetClassTypeName@CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@UBE?AVCCharString@@XZ
+  0077c7a0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceSprite::?GetClassTypeName@CTCGraphicAppearanceSprite@NGraphicAppearance@@UBE?AVCCharString@@XZ
+  0077cfd0 RELOCATION_MATCH CTCHighlightItem::?GetClassTypeName@CTCHighlightItem@@UBE?AVCCharString@@XZ
+  0077eb70 RELOCATION_MATCH CTCHeroCentre::?GetClassTypeName@CTCHeroCentre@@UBE?AVCCharString@@XZ
+  0077fcc0 RELOCATION_MATCH CTCHeroCentreDoorMarker::?GetClassTypeName@CTCHeroCentreDoorMarker@@UBE?AVCCharString@@XZ
+  007802a0 RELOCATION_MATCH CTCHeroGuide::?GetClassTypeName@CTCHeroGuide@@UBE?AVCCharString@@XZ
+  007819d0 RELOCATION_MATCH CTCFlammable::?GetClassTypeName@CTCFlammable@@UBE?AVCCharString@@XZ
+  00782630 RELOCATION_MATCH CTCBoastingPosition::?GetClassTypeName@CTCBoastingPosition@@UBE?AVCCharString@@XZ
+  00782ae0 RELOCATION_MATCH CTCBoastingArea::?GetClassTypeName@CTCBoastingArea@@UBE?AVCCharString@@XZ
+  00784120 RELOCATION_MATCH CTCBoastingCrowdControl::?GetClassTypeName@CTCBoastingCrowdControl@@UBE?AVCCharString@@XZ
+  00784cb0 RELOCATION_MATCH CTCCreatureGroupBoastingCrowd::?GetClassTypeName@CTCCreatureGroupBoastingCrowd@@UBE?AVCCharString@@XZ
+  00785cd0 RELOCATION_MATCH CTCVolumeContainmentTracker::?GetClassTypeName@CTCVolumeContainmentTracker@@UBE?AVCCharString@@XZ

@@ -1,42 +1,40 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x00778BE0 CTCFamilyMember::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCFamilyMember", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// Self-contained model of the CCharString(const char*, long) construction that
-// GetActionName performs. len==-1 means "use strlen".
-
-class CCharString {
-public:
-    char buf[64];
-    const char* src;
-    int len;
-    CCharString(const char* s, long n) {
-        src = s; len = n;
-        if (n < 0) strncpy(buf, s, 63);
-        else       strncpy(buf, s, (n < 63 ? n : 63));
-        buf[63] = 0;
-    }
-};
-
-class CTCFamilyMember {
-public:
-    CCharString GetClassTypeName();
-};
-
-// The literal 0x123b918 in retail is a pointer into .rdata; here we fake it.
-static const char* g_actionName = "CTCFamilyMember";
-
-CCharString CTCFamilyMember::GetClassTypeName()
+class CCharString
 {
-    // mirrors: return CCharString(<literal ptr>, -1);
-    return CCharString(g_actionName, -1);
-}
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
+};
 
-int main() {
-    CTCFamilyMember a;
-    CCharString r = a.GetClassTypeName();
-    bool ok = (r.len == -1) && (r.src == g_actionName)
-              && (strcmp(r.buf, "CTCFamilyMember") == 0);
-    if (ok) printf("00778be0_TEST PASS\n");
-    else    printf("FAIL len=%d\n", r.len);
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCFamilyMember
+{
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
+
+int main(void)
+{
+    {
+        CTCFamilyMember tc;
+        const CTCFamilyMember& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCFamilyMember") != 0) {
+            printf("00778be0_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("00778be0_TEST PASS\n");
     return 0;
 }

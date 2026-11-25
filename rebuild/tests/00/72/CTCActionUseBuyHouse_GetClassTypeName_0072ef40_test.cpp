@@ -1,38 +1,37 @@
-// Behaviour test for 0x0072EF40 (NF388 literal audit): links the row object and asserts the string the row hands to
-// CCharString::CCharString(char const*, int): "CTCActionUseBuyHouse", length -1, one call, into the hidden return slot.
+// Behaviour test for 0x0072EF40 CTCActionUseBuyHouse::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCActionUseBuyHouse", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
 #include <stdio.h>
 #include <string.h>
-// CTCActionUseBuyHouse::GetClassTypeName @ 0072ef40
-// __fastcall returning CCharString by value; ignores `this`, builds string from a literal.
 
-class CCharString {
+class CCharString
+{
 public:
-    CCharString(const char* s, long len);
-    void* m_data;
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-// The ctor is external (relocation-masked). Provide a declaration only; the
-// harness links a real impl for the test but masks its address in the compare.
-class CTCActionUseBuyHouse {
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCActionUseBuyHouse
+{
 public:
-    CCharString GetClassTypeName();
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-
-static const char* g_text = 0;
-static long g_len = 0;
-static int g_calls = 0;
-static const void* g_slot = 0;
-static char g_storage[1024];
-CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
 int main(void)
 {
-    const void* where = 0;
     {
-        CCharString r = ((CTCActionUseBuyHouse*)g_storage)->CTCActionUseBuyHouse::GetClassTypeName();
-        where = &r;
-        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "CTCActionUseBuyHouse") != 0 || g_slot != where) {
-            printf("FAIL_0072ef40 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+        CTCActionUseBuyHouse tc;
+        const CTCActionUseBuyHouse& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCActionUseBuyHouse") != 0) {
+            printf("0072ef40_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
             return 1;
         }
     }

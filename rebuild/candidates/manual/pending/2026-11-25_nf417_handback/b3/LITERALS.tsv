@@ -1,0 +1,51 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	preceded_by	form
+007874a0	0x0123BFFC	narrow	"CTCSkeletalMorph"	b3	.rdata	43 54 43 53 6b 65 6c 65 74 61 6c 4d 6f 72 70 68 00	NUL	HEAD: no literal in the source (a data symbol or a variable); now the string literal "CTCSkeletalMorph" spelled from retail's bytes
+00787a10	0x0123C108	narrow	"CTCBob"	b3	.rdata	43 54 43 42 6f 62 00	NUL	HEAD spelled the same literal ("CTCBob", -1); kept
+0078af50	0x0123C234	narrow	"CTCHeroRangedAttacks"	b3	.rdata	43 54 43 48 65 72 6f 52 61 6e 67 65 64 41 74 74 61 63 6b 73 00	NUL	HEAD spelled the same literal ("CTCHeroRangedAttacks", -1); kept
+0078dad0	0x0123C274	narrow	"CTCBerserk"	b3	.rdata	43 54 43 42 65 72 73 65 72 6b 00	NUL	HEAD spelled the same literal ("CTCBerserk", -1); kept
+00793320	0x0123C280	narrow	"CTCDivineWrath"	b3	.rdata	43 54 43 44 69 76 69 6e 65 57 72 61 74 68 00	NUL	HEAD spelled the same literal ("CTCDivineWrath", -1); kept
+00798160	0x0123C290	narrow	"CTCUnholyPower"	b3	.rdata	43 54 43 55 6e 68 6f 6c 79 50 6f 77 65 72 00	NUL	HEAD spelled the same literal ("CTCUnholyPower", -1); kept
+00798c90	0x0123C2AC	narrow	"CTCForcePushed"	b3	.rdata	43 54 43 46 6f 72 63 65 50 75 73 68 65 64 00	NUL	HEAD spelled the same literal ("CTCForcePushed", -1); kept
+00799d50	0x0123C368	narrow	"CTCShopKeeper"	b3	.rdata	43 54 43 53 68 6f 70 4b 65 65 70 65 72 00	NUL	HEAD spelled the same literal ("CTCShopKeeper", -1); kept
+0079bce0	0x0123C378	narrow	"CTCSummonSpell"	b3	.rdata	43 54 43 53 75 6d 6d 6f 6e 53 70 65 6c 6c 00	NUL	HEAD spelled the same literal ("CTCSummonSpell", -1); kept
+0079c480	0x0123C388	narrow	"CTCSummonableCreature"	b3	.rdata	43 54 43 53 75 6d 6d 6f 6e 61 62 6c 65 43 72 65 61 74 75 72 65 00	NUL	HEAD spelled the same literal ("CTCSummonableCreature", -1); kept
+0079dc60	0x0123C408	narrow	"CTCBulletTime"	b3	.rdata	43 54 43 42 75 6c 6c 65 74 54 69 6d 65 00	NUL	HEAD spelled the same literal ("CTCBulletTime", -1); kept
+0079f4e0	0x0123C418	narrow	"CTCPhysicalShieldSpell"	b3	.rdata	43 54 43 50 68 79 73 69 63 61 6c 53 68 69 65 6c 64 53 70 65 6c 6c 00	NUL	HEAD spelled the same literal ("CTCPhysicalShieldSpell", -1); kept
+007a4060	0x0123C430	narrow	"CTCWillLightning"	b3	.rdata	43 54 43 57 69 6c 6c 4c 69 67 68 74 6e 69 6e 67 00	NUL	HEAD spelled the same literal ("CTCWillLightning", -1); kept
+007a5050	0x0123C444	narrow	"CTCWillEnflame"	b3	.rdata	43 54 43 57 69 6c 6c 45 6e 66 6c 61 6d 65 00	NUL	HEAD spelled the same literal ("CTCWillEnflame", -1); kept
+007a6140	0x0123C454	narrow	"CTCForcePushPower"	b3	.rdata	43 54 43 46 6f 72 63 65 50 75 73 68 50 6f 77 65 72 00	NUL	HEAD spelled the same literal ("CTCForcePushPower", -1); kept
+007a6db0	0x0123C49C	narrow	"CTCGraphicAppearanceReplaceableMesh"	b3	.rdata	43 54 43 47 72 61 70 68 69 63 41 70 70 65 61 72 61 6e 63 65 52 65 70 6c 61 63 65 61 62 6c 65 4d 65 73 68 00	NUL	HEAD spelled the same literal ("CTCGraphicAppearanceReplaceableMesh", -1); kept
+007a9290	0x0123C4C0	narrow	"CTCBattleCharge"	b3	.rdata	43 54 43 42 61 74 74 6c 65 43 68 61 72 67 65 00	NUL	HEAD spelled the same literal ("CTCBattleCharge", -1); kept
+007ab5b0	0x0123C4D0	narrow	"CTCAssassinRush"	b3	.rdata	43 54 43 41 73 73 61 73 73 69 6e 52 75 73 68 00	NUL	HEAD spelled the same literal ("CTCAssassinRush", -1); kept
+007acdb0	0x0123C4E0	narrow	"CTCAIScratchpad"	b3	.rdata	43 54 43 41 49 53 63 72 61 74 63 68 70 61 64 00	NUL	HEAD spelled the same literal ("CTCAIScratchpad", -1); kept
+007af840	0x0123C580	narrow	"CTCRockTrollShield"	b3	.rdata	43 54 43 52 6f 63 6b 54 72 6f 6c 6c 53 68 69 65 6c 64 00	NUL	HEAD spelled the same literal ("CTCRockTrollShield", -1); kept
+007afce0	0x0123C578	narrow	"CTCBoss"	b3	.rdata	43 54 43 42 6f 73 73 00	NUL	HEAD spelled the same literal ("CTCBoss", -1); kept
+007b0680	0x0123C61C	narrow	"CTCFishingSpot"	b3	.rdata	43 54 43 46 69 73 68 69 6e 67 53 70 6f 74 00	NUL	HEAD spelled the same literal ("CTCFishingSpot", -1); kept
+007b26d0	0x0123C62C	narrow	"CTCFishing"	b3	.rdata	43 54 43 46 69 73 68 69 6e 67 00	NUL	HEAD spelled the same literal ("CTCFishing", -1); kept
+007b4ff0	0x0123C7C0	narrow	"CTCGuard"	b3	.rdata	43 54 43 47 75 61 72 64 00	NUL	HEAD spelled the same literal ("CTCGuard", -1); kept
+007b62b0	0x0123C858	narrow	"CTCWaterWader"	b3	.rdata	43 54 43 57 61 74 65 72 57 61 64 65 72 00	NUL	HEAD spelled the same literal ("CTCWaterWader", -1); kept
+007b6c70	0x0123C8D0	narrow	"CTCCrateStack"	b3	.rdata	43 54 43 43 72 61 74 65 53 74 61 63 6b 00	NUL	HEAD spelled the same literal ("CTCCrateStack", -1); kept
+007b8060	0x0123C8E0	narrow	"CTCOverheadDisplay"	b3	.rdata	43 54 43 4f 76 65 72 68 65 61 64 44 69 73 70 6c 61 79 00	NUL	HEAD spelled the same literal ("CTCOverheadDisplay", -1); kept
+007b9b00	0x0123C9C8	narrow	"CTCTavernTable"	b3	.rdata	43 54 43 54 61 76 65 72 6e 54 61 62 6c 65 00	NUL	HEAD spelled the same literal ("CTCTavernTable", -1); kept
+007baac0	0x0123C9D8	narrow	"CTCTavernBar"	b3	.rdata	43 54 43 54 61 76 65 72 6e 42 61 72 00	NUL	HEAD spelled the same literal ("CTCTavernBar", -1); kept
+007bace0	0x0123CAF0	narrow	"CTCTavern"	b3	.rdata	43 54 43 54 61 76 65 72 6e 00	NUL	HEAD spelled the same literal ("CTCTavern", -1); kept
+007bad60	0x0123CB08	narrow	"CTCTrespassable"	b3	.rdata	43 54 43 54 72 65 73 70 61 73 73 61 62 6c 65 00	NUL	HEAD spelled the same literal ("CTCTrespassable", -1); kept
+007bb610	0x0123CB18	narrow	"CTCTrespasser"	b3	.rdata	43 54 43 54 72 65 73 70 61 73 73 65 72 00	NUL	HEAD spelled the same literal ("CTCTrespasser", -1); kept
+007bb9f0	0x0123CBA0	narrow	"CTCDrunkenness"	b3	.rdata	43 54 43 44 72 75 6e 6b 65 6e 6e 65 73 73 00	NUL	HEAD spelled the same literal ("CTCDrunkenness", -1); kept
+007c3bf0	0x0123D18C	narrow	"CTCDrainLife"	b3	.rdata	43 54 43 44 72 61 69 6e 4c 69 66 65 00	NUL	HEAD spelled the same literal ("CTCDrainLife", -1); kept
+007c50e0	0x0123D19C	narrow	"CTCHealLife"	b3	.rdata	43 54 43 48 65 61 6c 4c 69 66 65 00	NUL	HEAD spelled the same literal ("CTCHealLife", -1); kept
+007c6680	0x0123D1A8	narrow	"CTCGhostSword"	b3	.rdata	43 54 43 47 68 6f 73 74 53 77 6f 72 64 00	NUL	HEAD spelled the same literal ("CTCGhostSword", -1); kept
+007c77a0	0x0123D1B8	narrow	"CTCTurncoatSpell"	b3	.rdata	43 54 43 54 75 72 6e 63 6f 61 74 53 70 65 6c 6c 00	NUL	HEAD spelled the same literal ("CTCTurncoatSpell", -1); kept
+007c80d0	0x0123D1CC	narrow	"CTCTurncoat"	b3	.rdata	43 54 43 54 75 72 6e 63 6f 61 74 00	NUL	HEAD spelled the same literal ("CTCTurncoat", -1); kept
+007c8520	0x0123D1D8	narrow	"CTCHitOnCollision"	b3	.rdata	43 54 43 48 69 74 4f 6e 43 6f 6c 6c 69 73 69 6f 6e 00	NUL	HEAD spelled the same literal ("CTCHitOnCollision", -1); kept
+007c9590	0x0123D1EC	narrow	"CTCFireballSpell"	b3	.rdata	43 54 43 46 69 72 65 62 61 6c 6c 53 70 65 6c 6c 00	NUL	HEAD spelled the same literal ("CTCFireballSpell", -1); kept
+007c9e70	0x0123D294	narrow	"CTCCreatureGeneratorCreator"	b3	.rdata	43 54 43 43 72 65 61 74 75 72 65 47 65 6e 65 72 61 74 6f 72 43 72 65 61 74 6f 72 00	NUL	HEAD spelled the same literal ("CTCCreatureGeneratorCreator", -1); kept
+007cbd50	0x0123D2B0	narrow	"CTCHeroReceiveItems"	b3	.rdata	43 54 43 48 65 72 6f 52 65 63 65 69 76 65 49 74 65 6d 73 00	NUL	HEAD spelled the same literal ("CTCHeroReceiveItems", -1); kept
+007cbe80	0x0123D2E0	narrow	"CTCGold"	b3	.rdata	43 54 43 47 6f 6c 64 00	NUL	HEAD spelled the same literal ("CTCGold", -1); kept
+007cc960	0x0123D364	narrow	"CTCMultiArrow"	b3	.rdata	43 54 43 4d 75 6c 74 69 41 72 72 6f 77 00	NUL	HEAD spelled the same literal ("CTCMultiArrow", -1); kept
+007cd7e0	0x0123D374	narrow	"CTCMultiStrike"	b3	.rdata	43 54 43 4d 75 6c 74 69 53 74 72 69 6b 65 00	NUL	HEAD spelled the same literal ("CTCMultiStrike", -1); kept
+007ce180	0x0123D384	narrow	"CTCBurntEffect"	b3	.rdata	43 54 43 42 75 72 6e 74 45 66 66 65 63 74 00	NUL	HEAD spelled the same literal ("CTCBurntEffect", -1); kept
+007ced10	0x0123D394	narrow	"CTCElectrocutedEffect"	b3	.rdata	43 54 43 45 6c 65 63 74 72 6f 63 75 74 65 64 45 66 66 65 63 74 00	NUL	HEAD spelled the same literal ("CTCElectrocutedEffect", -1); kept
+007cf360	0x0123D3AC	narrow	"CTCCreatureTintEffect"	b3	.rdata	43 54 43 43 72 65 61 74 75 72 65 54 69 6e 74 45 66 66 65 63 74 00	NUL	HEAD spelled the same literal ("CTCCreatureTintEffect", -1); kept
+007d2220	0x0123D4B0	narrow	"CTCTavernGameShoveHaPenny"	b3	.rdata	43 54 43 54 61 76 65 72 6e 47 61 6d 65 53 68 6f 76 65 48 61 50 65 6e 6e 79 00	NUL	HEAD spelled the same literal ("CTCTavernGameShoveHaPenny", -1); kept
+007d4d70	0x0123D538	narrow	"CTCTavernGameCoinGolf"	b3	.rdata	43 54 43 54 61 76 65 72 6e 47 61 6d 65 43 6f 69 6e 47 6f 6c 66 00	NUL	HEAD spelled the same literal ("CTCTavernGameCoinGolf", -1); kept

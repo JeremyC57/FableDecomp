@@ -1,11 +1,42 @@
-#include <cstdio>
-#include <cstring>
-static const char* g_t = 0; static long g_l = 0;
-class CCharString { public: void* p; CCharString(const char* t, long l) { g_t = t; g_l = l; p = 0; } };
-struct M { CCharString Get() { return CCharString("CTCGraphicAppearanceStaticMeshFadeOutOnProximity", -1); } };
-int main()
+// Behaviour test for 0x0077C260 NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCGraphicAppearanceStaticMeshFadeOutOnProximity", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
+
+class CCharString
 {
-    M m; CCharString s = m.Get(); if (!g_t || g_l != -1 || std::strcmp(g_t, "CTCGraphicAppearanceStaticMeshFadeOutOnProximity") != 0) { std::printf("0077c260_TEST FAIL\n"); return 1; }
-    std::printf("0077c260_TEST PASS\n");
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
+};
+
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+namespace NGraphicAppearance {
+class CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+{
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
+};
+}
+
+int main(void)
+{
+    {
+        NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity tc;
+        const NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCGraphicAppearanceStaticMeshFadeOutOnProximity") != 0) {
+            printf("0077c260_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("0077c260_TEST PASS\n");
     return 0;
 }

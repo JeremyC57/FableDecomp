@@ -1756,7 +1756,6 @@ _MAX_ABILITY_LEVEL	01256188	005edea3
 ??4CItemVector@@QAEAAU0@ABU0@@Z	005c1f42	006255b0
 ??4CElement44_006255b0@@QAEAAU0@ABU0@@Z	006255b0	00625820
 ??_7CTCQuickAccessMenu@@6B@	01258b74	006259e0
-?kActionStr@@3PADA	0123de20	006285f0
 ?base_helper@@YIXPAUCActiveFile@@@Z	0062e2b0	0062e820
 ?base_0x62e2b0@@YIXPAUCActiveFile@@@Z	0062e2b0	0062e8e0
 ??1CCreatureActionBase@@UAE@XZ	00693ef0	0062e900
@@ -2678,7 +2677,6 @@ __CIfmod	00bfeb28	006f99b0
 ?InsertGrow@CRetailVector_CElement12_0076fb00@@QAEXPAUCElement12_0076fb00@@ABU2@ABUSScalarTag@@K_N@Z	00770bb0	00770cd0
 ?push_back@CThingPointerVector@@QAEXABUCIntelligentPointer@@@Z	007398b0	00770fa0
 ??_7CTCDegradableBarrier@@6B@	0126a6a4	007710d0
-?kActionNameLiteral@@3QBDB	0123b4b4	00771100
 ??_7CTCThingUIDDummyForSerialisation@@6B@	0126a724	00771140
 ??_7CTCDriverBase@@6B@	0126a79c	00771200
 ??_7CTCOpinionSource@@6B@	0126a81c	00771360
@@ -2847,7 +2845,6 @@ _MAX_APOLOGY_SECONDS	0126d7cc	007b29b0
 ??_7CIntelligentPointerConstCreature@@6B@	0125aaec	007ddf90
 ??_7CTCCreatureFlyInCircles@@6B@	0126fb04	007ddf90
 ??_7CTCWallMount@@6B@	0126fb7c	007de4a0
-_g_actionName	0123d724	007df2c0
 ?IsGameStatePersisted@CThing@@QBE_NXZ	004c8280	007df3e0
 ??_7CTCWallMountEffects@@6B@	0126fc84	007df610
 ?GetSubDef@CDefClassBase@@QAE_NPAUCDefPointer_CWallMountEffectsDef@@@Z	007df9e0	007df610
@@ -39075,3 +39072,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?StatGetClassTypeName@CTCActionUsePutInInventory@@SI?AVCCharString@@XZ	004d2bc6	004daabc
 ?StatGetClassTypeName@CTCActionUseMapTable@@SI?AVCCharString@@XZ	004d2bd9	004daae4
 ?StatGetClassTypeName@CTCActionUseSearch@@SI?AVCCharString@@XZ	004d2bec	004dab0c
+?StatGetClassTypeName@CTCTargetingPlayer@@SI?AVCCharString@@XZ	0049d450	004e230a

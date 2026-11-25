@@ -1,40 +1,40 @@
+// Behaviour test for 0x0072A710 CTCActionUseBuyOrSteal::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCActionUseBuyOrSteal", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
 #include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString {
 public:
-    CCharString(const char* s, long n) { n_ = n; s_ = s; }
-    int n_;
-    const char* s_;
-    void* pad;
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-class CTCActionUseBuyOrSteal {
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
+
+class CTCActionUseBuyOrSteal
+{
 public:
-    CCharString GetClassTypeName();
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-CCharString CTCActionUseBuyOrSteal::GetClassTypeName()
+int main(void)
 {
-    return CCharString("CTCActionUseBuyOrSteal", -1);
-}
-
-int main()
-{
-    CTCActionUseBuyOrSteal obj;
-    CCharString r = obj.GetClassTypeName();
-    if (r.n_ == -1 && RetailTextEquals(r.s_, "CTCActionUseBuyOrSteal")) {
-        printf("0072a710_TEST PASS\n");
-    } else {
-        printf("FAIL n=%d s=%p\n", r.n_, r.s_);
+    {
+        CTCActionUseBuyOrSteal tc;
+        const CTCActionUseBuyOrSteal& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCActionUseBuyOrSteal") != 0) {
+            printf("0072a710_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
     }
+    printf("0072a710_TEST PASS\n");
     return 0;
 }

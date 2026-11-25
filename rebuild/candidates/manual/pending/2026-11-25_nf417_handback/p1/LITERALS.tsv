@@ -1,0 +1,10 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	preceded_by	form
+00afe440	0x0129F500	narrow	"CPSCRenderSprite"	p1	.rdata	43 50 53 43 52 65 6e 64 65 72 53 70 72 69 74 65 00	NUL	HEAD spelled the same literal ("CPSCRenderSprite", -1); kept
+00b05a50	0x0129F524	narrow	"CPSCRenderMesh"	p1	.rdata	43 50 53 43 52 65 6e 64 65 72 4d 65 73 68 00	NUL	HEAD spelled the same literal ("CPSCRenderMesh", -1); kept
+00b0a0d0	0x0129F544	narrow	"CPSCSingleSprite"	p1	.rdata	43 50 53 43 53 69 6e 67 6c 65 53 70 72 69 74 65 00	NUL	HEAD spelled the same literal ("CPSCSingleSprite", -1); kept
+00b0f880	0x0129F568	narrow	"CPSCUpdateNormal"	p1	.rdata	43 50 53 43 55 70 64 61 74 65 4e 6f 72 6d 61 6c 00	NUL	HEAD spelled the same literal ("CPSCUpdateNormal", -1); kept
+00b15a90	0x0129F594	narrow	"CPSCEmitterGeneric"	p1	.rdata	43 50 53 43 45 6d 69 74 74 65 72 47 65 6e 65 72 69 63 00	NUL	HEAD spelled the same literal ("CPSCEmitterGeneric", -1); kept
+00b178d0	0x0129F5B8	narrow	"CPSCOrbit"	p1	.rdata	43 50 53 43 4f 72 62 69 74 00	NUL	HEAD spelled the same literal ("CPSCOrbit", -1); kept
+00b186e0	0x0129F5CC	narrow	"CPSCAttractor"	p1	.rdata	43 50 53 43 41 74 74 72 61 63 74 6f 72 00	NUL	HEAD spelled the same literal ("CPSCAttractor", -1); kept
+00b1b430	0x0129F5FC	narrow	"CPSCSpline"	p1	.rdata	43 50 53 43 53 70 6c 69 6e 65 00	NUL	HEAD spelled the same literal ("CPSCSpline", -1); kept
+00b1ff10	0x0129F610	narrow	"CPSCDecalRenderer"	p1	.rdata	43 50 53 43 44 65 63 61 6c 52 65 6e 64 65 72 65 72 00	NUL	HEAD spelled the same literal ("CPSCDecalRenderer", -1); kept

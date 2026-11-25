@@ -1,39 +1,40 @@
-#include <cstdio>
+// Behaviour test for 0x007D2220 CTCTavernGameShoveHaPenny::GetClassTypeName (NF417 re-form): links the row object (the virtual and the static's pick-any copy come from it) and
+// asserts what reaches CCharString(const char*, long): retail's text "CTCTavernGameShoveHaPenny", length -1, one constructor call, built straight into
+// the caller's own hidden return slot, called through a const reference.
+#include <stdio.h>
+#include <string.h>
 
-// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
-static bool RetailTextEquals(const void* p, const char* want)
+class CCharString
 {
-    const char* s = (const char*)p;
-    if (s == 0) return false;
-    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
-    return *s == 0;
-}
-
-class CCharString { public:
-    char* m_data;
-    int   m_len;
-    int   m_ref;
-    CCharString(const char* s, long len) { m_data = (char*)s; m_len = len; m_ref = 0; }
+public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);       // 0x0099EBF0
+    ~CCharString();
 };
 
-static const char* const kActionNameLit = "CTCTavernGameShoveHaPenny";
+static const char* g_seenText = 0;
+static long g_seenLength = 0;
+static int g_ctorCount = 0;
+CCharString::CCharString(const char* text, long length) { PStringData = this; g_seenText = text; g_seenLength = length; ++g_ctorCount; }
+CCharString::~CCharString() {}
 
-struct CTCTavernGameShoveHaPenny {
-    CCharString GetClassTypeName();
+class CTCTavernGameShoveHaPenny
+{
+public:
+    virtual CCharString GetClassTypeName() const;           // definition linked from the row object
 };
 
-CCharString CTCTavernGameShoveHaPenny::GetClassTypeName()
+int main(void)
 {
-    return CCharString(kActionNameLit, -1);
-}
-
-int main()
-{
-    CTCTavernGameShoveHaPenny obj;
-    CCharString r = obj.GetClassTypeName();
-    if (RetailTextEquals(r.m_data, "CTCTavernGameShoveHaPenny") && r.m_len == -1)
-        std::printf("007d2220_TEST PASS\n");
-    else
-        std::printf("FAIL data=%p len=%d\n", (void*)r.m_data, r.m_len);
+    {
+        CTCTavernGameShoveHaPenny tc;
+        const CTCTavernGameShoveHaPenny& ref = tc;
+        CCharString r = ref.GetClassTypeName();
+        if (g_ctorCount != 1 || r.PStringData != (void*)&r || g_seenLength != -1 || g_seenText == 0 || strcmp(g_seenText, "CTCTavernGameShoveHaPenny") != 0) {
+            printf("007d2220_TEST FAIL ctors=%d len=%ld text=%s\n", g_ctorCount, g_seenLength, g_seenText ? g_seenText : "(null)");
+            return 1;
+        }
+    }
+    printf("007d2220_TEST PASS\n");
     return 0;
 }
