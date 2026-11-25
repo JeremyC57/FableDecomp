@@ -564,3 +564,22 @@ The row comment cites the measurement and the flags:
 - that the tier-1 definers carry no size pragma.
 
 Example: 0x00656EAD's pick-any `~vector<CEnginePrimitiveHandle>` becomes EQ at 0x00440C40, while the row's own size-mode `??_G` is unchanged.
+
+## Typed-in retail addresses (baked grades, 2026-11-25)
+
+Never write a retail address as an integer in row code. This covers:
+- casting a string VA to a pointer, or passing it as an `int`;
+- `self->vtbl = (void*)0x01230BA0;`;
+- a global, IAT slot or function address typed as a hex number;
+- a catch funclet returning its resume address as a constant.
+
+The bytes match, but the address has no relocation, so the code is not reconstructed. These rows grade apart from genuine:
+- `baked_string` is detected by `crawl/purity.py baked_string_addresses` and `crawl/baked_symbols.py`.
+- `baked_address` (advisor decision, owner delegated) is detected by `purity.baked_data_addresses`, keyed on `rebuild/oracles/data_vas.tsv`.
+
+What to write instead:
+- a string: the literal;
+- a vftable store: the class, whose inlined ctor/dtor stores its `??_7`;
+- a global or function: its bound symbol.
+
+Audit: `rebuild/candidates/manual/audits/2026-11-25_baked_address/`.

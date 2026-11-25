@@ -9,7 +9,7 @@
 - `tools/landed_metrics.py` counts genuine-class rows with a hit as `baked_address`, unless the row is already `baked_string`. These rows are excluded from `landed_genuine_*`.
 - The dashboard has a line for the grade.
 
-**Key list:** `rebuild/oracles/data_vas.tsv`, built by `tools/decomp_pipeline/crawl/build_data_vas.py <Fable.exe>`. It holds VAs only, no retail bytes. 5,860 VAs, each verified against the retail image:
+**Key list:** `rebuild/oracles/data_vas.tsv`, built by `tools/decomp_pipeline/crawl/build_data_vas.py <Fable.exe>`. It holds VAs only, no retail bytes. 5,861 VAs, each verified against the retail image:
 
 | kind | count | proof |
 |---|---|---|
@@ -34,6 +34,10 @@ A flag constant that only lies in the image range is not listed. Examples are 0x
   - 00644627 passes 0x0041BE70 as an int.
   - 009f5de9, a catch funclet, returns its resume address 0x009F5DEF as a constant.
   They are keyed as `code` (CODE_ROWS in the builder).
+
+**Out of scope:** a made-up DATA symbol bound to a vftable VA, for example `?CHairCardDef_vftable@@3QAXA` or `?HHQ_vtbl@@3HA` bound to 0x01230BA0. It is a relocation to a stand-in name, not a typed-in address. That is naming debt (T3 / the relocation table), not this grade. So 50 is not the number of vftable stand-ins.
+
+**Headers:** `rebuild/include/**` and the row-local `.h` files hold no hex token in the data range. In the code range they hold only an unused enum of retail addresses (`fable_video_system.h`) and a macro that drops its address argument (`FABLE_TCE_ENTITY_DECL`).
 
 **Count:** 50 rows. `HITS.tsv` lists each row and its baked VAs.
 
