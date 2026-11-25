@@ -29455,38 +29455,43 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d032c0'
-        Module = 'CVtable_012c88ac'
+        Module = 'CActiveEntityScript<NScript::CQ_BanditCampScript>'
         Source = '00/d0/CThingSwitch_vectordeletingdestructor_00d032c0.cpp'
         TestSource = '00/d0/CThingSwitch_vectordeletingdestructor_00d032c0_test.cpp'
         PassPattern = 'AUTO_TINY_00d032c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d17310'
-        Module = 'CVtable_012ca6ac'
+        Module = 'CActiveEntityScript<NScript::CQ_BountyHuntScript>'
         Source = '00/d1/CThingSwitch_vectordeletingdestructor_00d17310.cpp'
         TestSource = '00/d1/CThingSwitch_vectordeletingdestructor_00d17310_test.cpp'
         PassPattern = 'AUTO_TINY_00d17310_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d20760'
-        Module = 'CVtable_012cb140'
+        Module = 'CActiveEntityScript<NScript::CQ_BreakSiegeScript>'
         Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d20760.cpp'
         TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d20760_test.cpp'
         PassPattern = 'AUTO_TINY_00d20760_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d26160'
-        Module = 'CVtable_012cb7c4'
+        Module = 'CActiveEntityScript<NScript::CQ_DragonBossFightScript>'
         Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d26160.cpp'
         TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d26160_test.cpp'
         PassPattern = 'AUTO_TINY_00d26160_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d2d700'
-        Module = 'CVtable_012cc470'
+        Module = 'CActiveEntityScript<NScript::CQ_EndGameFocalSitesScript>'
         Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d2d700.cpp'
         TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d2d700_test.cpp'
         PassPattern = 'AUTO_TINY_00d2d700_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d2d900'
@@ -29497,10 +29502,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d30000'
-        Module = 'CVtable_012cc724'
+        Module = 'CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>'
         Source = '00/d3/CThingSwitch_vectordeletingdestructor_00d30000.cpp'
         TestSource = '00/d3/CThingSwitch_vectordeletingdestructor_00d30000_test.cpp'
         PassPattern = 'AUTO_TINY_00d30000_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d34440'
@@ -29511,80 +29517,91 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d38cf0'
-        Module = 'CVtable_012cd1a0'
+        Module = 'CActiveEntityScript<NScript::CQ_FireHeartScript>'
         Source = '00/d3/CThingSwitch_vectordeletingdestructor_00d38cf0.cpp'
         TestSource = '00/d3/CThingSwitch_vectordeletingdestructor_00d38cf0_test.cpp'
         PassPattern = 'AUTO_TINY_00d38cf0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d50c30'
-        Module = 'CVtable_012cf6e0'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>'
         Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d50c30.cpp'
         TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d50c30_test.cpp'
         PassPattern = 'AUTO_TINY_00d50c30_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d52470'
-        Module = 'CVtable_012cf890'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>'
         Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d52470.cpp'
         TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d52470_test.cpp'
         PassPattern = 'AUTO_TINY_00d52470_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d58460'
-        Module = 'CVtable_012d0580'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>'
         Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d58460.cpp'
         TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d58460_test.cpp'
         PassPattern = 'AUTO_TINY_00d58460_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d5ae40'
-        Module = 'CVtable_012d09f4'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>'
         Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d5ae40.cpp'
         TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d5ae40_test.cpp'
         PassPattern = 'AUTO_TINY_00d5ae40_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d64370'
-        Module = 'CVtable_012d1a64'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>'
         Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d64370.cpp'
         TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d64370_test.cpp'
         PassPattern = 'AUTO_TINY_00d64370_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d67240'
-        Module = 'CVtable_012d1dbc'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>'
         Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d67240.cpp'
         TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d67240_test.cpp'
         PassPattern = 'AUTO_TINY_00d67240_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d68e70'
-        Module = 'CVtable_012d1f7c'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>'
         Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d68e70.cpp'
         TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d68e70_test.cpp'
         PassPattern = 'AUTO_TINY_00d68e70_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d6b6f0'
-        Module = 'CVtable_012d22b8'
+        Module = 'CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>'
         Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d6b6f0.cpp'
         TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d6b6f0_test.cpp'
         PassPattern = 'AUTO_TINY_00d6b6f0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d72b40'
-        Module = 'CVtable_012d299c'
+        Module = 'CActiveEntityScript<NScript::CQ_HangingTreeGoodScript>'
         Source = '00/d7/CThingSwitch_vectordeletingdestructor_00d72b40.cpp'
         TestSource = '00/d7/CThingSwitch_vectordeletingdestructor_00d72b40_test.cpp'
         PassPattern = 'AUTO_TINY_00d72b40_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d7aa00'
-        Module = 'CVtable_012d346c'
+        Module = 'CActiveEntityScript<NScript::CQ_HeroSoulsScript>'
         Source = '00/d7/CThingSwitch_vectordeletingdestructor_00d7aa00.cpp'
         TestSource = '00/d7/CThingSwitch_vectordeletingdestructor_00d7aa00_test.cpp'
         PassPattern = 'AUTO_TINY_00d7aa00_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d7c440'
@@ -29623,10 +29640,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d872a0'
-        Module = 'CVtable_012d4c78'
+        Module = 'CActiveEntityScript<NScript::CQ_HeroSoulsGuildmasterScript>'
         Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d872a0.cpp'
         TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d872a0_test.cpp'
         PassPattern = 'AUTO_TINY_00d872a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d896e0'
@@ -29763,10 +29781,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e0e730'
-        Module = 'CVtable_012e00c8'
+        Module = 'CActiveEntityScript<NScript::CQ_UndeadRisingScript>'
         Source = '00/e0/CThingSwitch_vectordeletingdestructor_00e0e730.cpp'
         TestSource = '00/e0/CThingSwitch_vectordeletingdestructor_00e0e730_test.cpp'
         PassPattern = 'AUTO_TINY_00e0e730_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e0e7b0'
@@ -29777,45 +29796,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e18380'
-        Module = 'CVtable_012e0cc8'
+        Module = 'CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>'
         Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e18380.cpp'
         TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e18380_test.cpp'
         PassPattern = 'AUTO_TINY_00e18380_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e19530'
-        Module = 'CVtable_012e0e84'
+        Module = 'CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>'
         Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e19530.cpp'
         TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e19530_test.cpp'
         PassPattern = 'AUTO_TINY_00e19530_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e1c0c0'
-        Module = 'CVtable_012e10e8'
+        Module = 'CActiveEntityScript<NScript::CQ_WizardBattleScript>'
         Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e1c0c0.cpp'
         TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e1c0c0_test.cpp'
         PassPattern = 'AUTO_TINY_00e1c0c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e1f7b0'
-        Module = 'CVtable_012e1610'
+        Module = 'CActiveEntityScript<NScript::CQR_EscortTraderScript>'
         Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e1f7b0.cpp'
         TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e1f7b0_test.cpp'
         PassPattern = 'AUTO_TINY_00e1f7b0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e29290'
-        Module = 'CVtable_012e2268'
+        Module = 'CActiveEntityScript<NScript::CQS_MeetSisterScript>'
         Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e29290.cpp'
         TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e29290_test.cpp'
         PassPattern = 'AUTO_TINY_00e29290_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e2a2f0'
-        Module = 'CVtable_012e23d4'
+        Module = 'CActiveEntityScript<NScript::CQS_ScytheInfoScript>'
         Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e2a2f0.cpp'
         TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e2a2f0_test.cpp'
         PassPattern = 'AUTO_TINY_00e2a2f0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e2ab30'
@@ -29826,31 +29851,35 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e2ea90'
-        Module = 'CVtable_012e2b30'
+        Module = 'CActiveEntityScript<NScript::CV_AmbushScamScript>'
         Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ea90.cpp'
         TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ea90_test.cpp'
         PassPattern = 'AUTO_TINY_00e2ea90_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e47770'
-        Module = 'CVtable_012e4b60'
+        Module = 'CActiveEntityScript<NScript::CV_BanditCampPathScript>'
         Source = '00/e4/CThingSwitch_vectordeletingdestructor_00e47770.cpp'
         TestSource = '00/e4/CThingSwitch_vectordeletingdestructor_00e47770_test.cpp'
         PassPattern = 'AUTO_TINY_00e47770_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e54230'
-        Module = 'CVtable_012e5ee0'
+        Module = 'CActiveEntityScript<NScript::CV_BeardyBaldyScript>'
         Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e54230.cpp'
         TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e54230_test.cpp'
         PassPattern = 'AUTO_TINY_00e54230_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e5d080'
-        Module = 'CVtable_012e6e30'
+        Module = 'CActiveEntityScript<NScript::CV_BeggarAndChildScript>'
         Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e5d080.cpp'
         TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e5d080_test.cpp'
         PassPattern = 'AUTO_TINY_00e5d080_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e5d110'
@@ -29861,52 +29890,59 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e6b3d0'
-        Module = 'CVtable_012e851c'
+        Module = 'CActiveEntityScript<NScript::CV_ChapelOfEvilScript>'
         Source = '00/e6/CThingSwitch_vectordeletingdestructor_00e6b3d0.cpp'
         TestSource = '00/e6/CThingSwitch_vectordeletingdestructor_00e6b3d0_test.cpp'
         PassPattern = 'AUTO_TINY_00e6b3d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e74d40'
-        Module = 'CVtable_012e9600'
+        Module = 'CActiveEntityScript<NScript::CV_DemonDoorsScript>'
         Source = '00/e7/CThingSwitch_vectordeletingdestructor_00e74d40.cpp'
         TestSource = '00/e7/CThingSwitch_vectordeletingdestructor_00e74d40_test.cpp'
         PassPattern = 'AUTO_TINY_00e74d40_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e7eec0'
-        Module = 'CVtable_012ea604'
+        Module = 'CActiveEntityScript<NScript::CV_FishingCompetitionScript>'
         Source = '00/e7/CThingSwitch_vectordeletingdestructor_00e7eec0.cpp'
         TestSource = '00/e7/CThingSwitch_vectordeletingdestructor_00e7eec0_test.cpp'
         PassPattern = 'AUTO_TINY_00e7eec0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e83d20'
-        Module = 'CVtable_012eb1e0'
+        Module = 'CActiveEntityScript<NScript::CV_FisticuffsClubScript>'
         Source = '00/e8/CThingSwitch_vectordeletingdestructor_00e83d20.cpp'
         TestSource = '00/e8/CThingSwitch_vectordeletingdestructor_00e83d20_test.cpp'
         PassPattern = 'AUTO_TINY_00e83d20_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e90bb0'
-        Module = 'CVtable_012ec1a0'
+        Module = 'CActiveEntityScript<NScript::CV_GuildMasterScript>'
         Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e90bb0.cpp'
         TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e90bb0_test.cpp'
         PassPattern = 'AUTO_TINY_00e90bb0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e960e0'
-        Module = 'CVtable_012ecd58'
+        Module = 'CActiveEntityScript<NScript::CV_HauntedHouseScript>'
         Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e960e0.cpp'
         TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e960e0_test.cpp'
         PassPattern = 'AUTO_TINY_00e960e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e9a240'
-        Module = 'CVtable_012ed370'
+        Module = 'CActiveEntityScript<NScript::CV_HeroDuelScript>'
         Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e9a240.cpp'
         TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e9a240_test.cpp'
         PassPattern = 'AUTO_TINY_00e9a240_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e9fba0'
@@ -29917,10 +29953,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea1060'
-        Module = 'CVtable_012edb88'
+        Module = 'CActiveEntityScript<NScript::CV_KnotholeGladeGatesScript>'
         Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ea1060.cpp'
         TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ea1060_test.cpp'
         PassPattern = 'AUTO_TINY_00ea1060_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ea86c0'
@@ -29931,10 +29968,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ead9c0'
-        Module = 'CVtable_012ef7e4'
+        Module = 'CActiveEntityScript<NScript::CV_MurderTwistScript>'
         Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ead9c0.cpp'
         TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ead9c0_test.cpp'
         PassPattern = 'AUTO_TINY_00ead9c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eb62b0'
@@ -29952,24 +29990,27 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ec1180'
-        Module = 'CVtable_012f1214'
+        Module = 'CActiveEntityScript<NScript::CV_ParanoidWhispersScript>'
         Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1180.cpp'
         TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1180_test.cpp'
         PassPattern = 'AUTO_TINY_00ec1180_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec1750'
-        Module = 'CVtable_012f12bc'
+        Module = 'CActiveEntityScript<NScript::CV_PicnicAreaAfterWaspBossScript>'
         Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1750.cpp'
         TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1750_test.cpp'
         PassPattern = 'AUTO_TINY_00ec1750_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec29c0'
-        Module = 'CVtable_012f13f4'
+        Module = 'CActiveEntityScript<NScript::CV_RandomPopulationSimScript>'
         Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec29c0.cpp'
         TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec29c0_test.cpp'
         PassPattern = 'AUTO_TINY_00ec29c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed0e30'
@@ -29980,31 +30021,35 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed2a20'
-        Module = 'CVtable_012f2dc0'
+        Module = 'CActiveEntityScript<NScript::CV_SingingStonesScript>'
         Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed2a20.cpp'
         TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed2a20_test.cpp'
         PassPattern = 'AUTO_TINY_00ed2a20_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed4a10'
-        Module = 'CVtable_012f3000'
+        Module = 'CActiveEntityScript<NScript::CV_StatueMasterScript>'
         Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed4a10.cpp'
         TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed4a10_test.cpp'
         PassPattern = 'AUTO_TINY_00ed4a10_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed54a0'
-        Module = 'CVtable_012f3190'
+        Module = 'CActiveEntityScript<NScript::CV_SwordInTheStoneScript>'
         Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed54a0.cpp'
         TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed54a0_test.cpp'
         PassPattern = 'AUTO_TINY_00ed54a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00edd030'
-        Module = 'CVtable_012f3f00'
+        Module = 'CActiveEntityScript<NScript::CV_TempleOfLightScript>'
         Source = '00/ed/CThingSwitch_vectordeletingdestructor_00edd030.cpp'
         TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00edd030_test.cpp'
         PassPattern = 'AUTO_TINY_00edd030_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ee1be0'
@@ -30015,17 +30060,19 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee76c0'
-        Module = 'CVtable_012f52f8'
+        Module = 'CActiveEntityScript<NScript::CV_TrophyDealerScript>'
         Source = '00/ee/CThingSwitch_vectordeletingdestructor_00ee76c0.cpp'
         TestSource = '00/ee/CThingSwitch_vectordeletingdestructor_00ee76c0_test.cpp'
         PassPattern = 'AUTO_TINY_00ee76c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ef51d0'
-        Module = 'CVtable_012f65ac'
+        Module = 'CActiveEntityScript<NScript::CPersonalScript_EmptyScript>'
         Source = '00/ef/CThingSwitch_vectordeletingdestructor_00ef51d0.cpp'
         TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00ef51d0_test.cpp'
         PassPattern = 'AUTO_TINY_00ef51d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00efa390'
@@ -30043,10 +30090,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efb5e0'
-        Module = 'CVtable_012f6b3c'
+        Module = 'CActiveEntityScript<NScript::CProximityPodiumTestScript>'
         Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efb5e0.cpp'
         TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efb5e0_test.cpp'
         PassPattern = 'AUTO_TINY_00efb5e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00efbb40'
@@ -30071,10 +30119,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00efefd0'
-        Module = 'CVtable_012f6f74'
+        Module = 'CActiveEntityScript<NScript::CBenTestScriptsScript>'
         Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efefd0.cpp'
         TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efefd0_test.cpp'
         PassPattern = 'AUTO_TINY_00efefd0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eff740'
@@ -88637,52 +88686,59 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf6860'
-        Module = 'CVtable_012c695c'
+        Module = 'CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>'
         Source = '00/cf/CThingSwitch_vectordeletingdestructor_00cf6860.cpp'
         TestSource = '00/cf/CThingSwitch_vectordeletingdestructor_00cf6860_test.cpp'
         PassPattern = 'PASS_00cf6860'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00cfdfa0'
-        Module = 'CVtable_012c7da0'
+        Module = 'CActiveEntityScript<NScript::CQ_AwakeningTheOracleScript>'
         Source = '00/cf/CThingSwitch_vectordeletingdestructor_00cfdfa0.cpp'
         TestSource = '00/cf/CThingSwitch_vectordeletingdestructor_00cfdfa0_test.cpp'
         PassPattern = 'PASS_00cfdfa0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d0ede0'
-        Module = 'CVtable_012c9a70'
+        Module = 'CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>'
         Source = '00/d0/CThingSwitch_vectordeletingdestructor_00d0ede0.cpp'
         TestSource = '00/d0/CThingSwitch_vectordeletingdestructor_00d0ede0_test.cpp'
         PassPattern = 'PASS_00d0ede0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d24630'
-        Module = 'CVtable_012cb5fc'
+        Module = 'CActiveEntityScript<NScript::CQ_BowerstoneTownLifeIntroScript>'
         Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d24630.cpp'
         TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d24630_test.cpp'
         PassPattern = 'PASS_00d24630'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d29800'
-        Module = 'CVtable_012cbcc8'
+        Module = 'CActiveEntityScript<NScript::CQ_EndGameScript>'
         Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d29800.cpp'
         TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d29800_test.cpp'
         PassPattern = 'PASS_00d29800'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d44620'
-        Module = 'CVtable_012ce48c'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingScript>'
         Source = '00/d4/CThingSwitch_vectordeletingdestructor_00d44620.cpp'
         TestSource = '00/d4/CThingSwitch_vectordeletingdestructor_00d44620_test.cpp'
         PassPattern = 'PASS_00d44620'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d5e040'
-        Module = 'CVtable_012d108c'
+        Module = 'CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>'
         Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d5e040.cpp'
         TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d5e040_test.cpp'
         PassPattern = 'PASS_00d5e040'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d7fc10'
@@ -88721,10 +88777,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00de45e0'
-        Module = 'CVtable_012dd4a0'
+        Module = 'CActiveEntityScript<NScript::CQ_RansomVictimScript>'
         Source = '00/de/CThingSwitch_vectordeletingdestructor_00de45e0.cpp'
         TestSource = '00/de/CThingSwitch_vectordeletingdestructor_00de45e0_test.cpp'
         PassPattern = 'PASS_00de45e0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00dec730'
@@ -88742,199 +88799,227 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e122d0'
-        Module = 'CVtable_012e0574'
+        Module = 'CActiveEntityScript<NScript::CQ_WaspBossScript>'
         Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e122d0.cpp'
         TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e122d0_test.cpp'
         PassPattern = 'PASS_00e122d0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e25f10'
-        Module = 'CVtable_012e1e44'
+        Module = 'CActiveEntityScript<NScript::CQS_GuardianSisterInfoScript>'
         Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e25f10.cpp'
         TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e25f10_test.cpp'
         PassPattern = 'PASS_00e25f10'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e26dd0'
-        Module = 'CVtable_012e1f90'
+        Module = 'CActiveEntityScript<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>'
         Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e26dd0.cpp'
         TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e26dd0_test.cpp'
         PassPattern = 'PASS_00e26dd0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e27e30'
-        Module = 'CVtable_012e20c0'
+        Module = 'CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>'
         Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e27e30.cpp'
         TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e27e30_test.cpp'
         PassPattern = 'PASS_00e27e30'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e374f0'
-        Module = 'CVtable_012e34e0'
+        Module = 'CActiveEntityScript<NScript::CV_ArcheryCompetitionScript>'
         Source = '00/e3/CThingSwitch_vectordeletingdestructor_00e374f0.cpp'
         TestSource = '00/e3/CThingSwitch_vectordeletingdestructor_00e374f0_test.cpp'
         PassPattern = 'PASS_00e374f0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e38d50'
-        Module = 'CVtable_012e3780'
+        Module = 'CActiveEntityScript<NScript::CV_AssassinAttacksScript>'
         Source = '00/e3/CThingSwitch_vectordeletingdestructor_00e38d50.cpp'
         TestSource = '00/e3/CThingSwitch_vectordeletingdestructor_00e38d50_test.cpp'
         PassPattern = 'PASS_00e38d50'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e3b8c0'
-        Module = 'CVtable_012e3c08'
+        Module = 'CActiveEntityScript<NScript::CV_BordelloScript>'
         Source = '00/e3/CThingSwitch_vectordeletingdestructor_00e3b8c0.cpp'
         TestSource = '00/e3/CThingSwitch_vectordeletingdestructor_00e3b8c0_test.cpp'
         PassPattern = 'PASS_00e3b8c0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e4b350'
-        Module = 'CVtable_012e510c'
+        Module = 'CActiveEntityScript<NScript::CV_BanditTollScript>'
         Source = '00/e4/CThingSwitch_vectordeletingdestructor_00e4b350.cpp'
         TestSource = '00/e4/CThingSwitch_vectordeletingdestructor_00e4b350_test.cpp'
         PassPattern = 'PASS_00e4b350'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e54850'
-        Module = 'CVtable_012e5f5c'
+        Module = 'CActiveEntityScript<NScript::CV_BookCollectingScript>'
         Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e54850.cpp'
         TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e54850_test.cpp'
         PassPattern = 'PASS_00e54850'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e5f160'
-        Module = 'CVtable_012e70ac'
+        Module = 'CActiveEntityScript<NScript::CV_BodyGuardScript>'
         Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e5f160.cpp'
         TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e5f160_test.cpp'
         PassPattern = 'PASS_00e5f160'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e64180'
-        Module = 'CVtable_012e74fc'
+        Module = 'CActiveEntityScript<NScript::CV_ChickenKickingScript>'
         Source = '00/e6/CThingSwitch_vectordeletingdestructor_00e64180.cpp'
         TestSource = '00/e6/CThingSwitch_vectordeletingdestructor_00e64180_test.cpp'
         PassPattern = 'PASS_00e64180'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e77660'
-        Module = 'CVtable_012e9960'
+        Module = 'CActiveEntityScript<NScript::CV_ExposeMayorScript>'
         Source = '00/e7/CThingSwitch_vectordeletingdestructor_00e77660.cpp'
         TestSource = '00/e7/CThingSwitch_vectordeletingdestructor_00e77660_test.cpp'
         PassPattern = 'PASS_00e77660'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e7c860'
-        Module = 'CVtable_012ea1f8'
+        Module = 'CActiveEntityScript<NScript::CV_FishermanScript>'
         Source = '00/e7/CThingSwitch_vectordeletingdestructor_00e7c860.cpp'
         TestSource = '00/e7/CThingSwitch_vectordeletingdestructor_00e7c860_test.cpp'
         PassPattern = 'PASS_00e7c860'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e8d270'
-        Module = 'CVtable_012ebd00'
+        Module = 'CActiveEntityScript<NScript::CV_GhostGrannyNecklaceScript>'
         Source = '00/e8/CThingSwitch_vectordeletingdestructor_00e8d270.cpp'
         TestSource = '00/e8/CThingSwitch_vectordeletingdestructor_00e8d270_test.cpp'
         PassPattern = 'PASS_00e8d270'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e93be0'
-        Module = 'CVtable_012ecb04'
+        Module = 'CActiveEntityScript<NScript::CV_HiddenBootyScript>'
         Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e93be0.cpp'
         TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e93be0_test.cpp'
         PassPattern = 'PASS_00e93be0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e985e0'
-        Module = 'CVtable_012ed0a8'
+        Module = 'CActiveEntityScript<NScript::CV_HeroDollsScript>'
         Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e985e0.cpp'
         TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e985e0_test.cpp'
         PassPattern = 'PASS_00e985e0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e9e0e0'
-        Module = 'CVtable_012ed6d4'
+        Module = 'CActiveEntityScript<NScript::CV_IntroductionToTrophiesScript>'
         Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e9e0e0.cpp'
         TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e9e0e0_test.cpp'
         PassPattern = 'PASS_00e9e0e0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ea5900'
-        Module = 'CVtable_012ee154'
+        Module = 'CActiveEntityScript<NScript::CV_LostTraderScript>'
         Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ea5900.cpp'
         TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ea5900_test.cpp'
         PassPattern = 'PASS_00ea5900'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ea8070'
-        Module = 'CVtable_012ee5a0'
+        Module = 'CActiveEntityScript<NScript::CV_MazeResearchScript>'
         Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ea8070.cpp'
         TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ea8070_test.cpp'
         PassPattern = 'PASS_00ea8070'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eb64f0'
-        Module = 'CVtable_012f040c'
+        Module = 'CActiveEntityScript<NScript::CV_MurderTwistFinalScript>'
         Source = '00/eb/CThingSwitch_vectordeletingdestructor_00eb64f0.cpp'
         TestSource = '00/eb/CThingSwitch_vectordeletingdestructor_00eb64f0_test.cpp'
         PassPattern = 'PASS_00eb64f0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eb9870'
-        Module = 'CVtable_012f0808'
+        Module = 'CActiveEntityScript<NScript::CV_MayorsInvitationScript>'
         Source = '00/eb/CThingSwitch_vectordeletingdestructor_00eb9870.cpp'
         TestSource = '00/eb/CThingSwitch_vectordeletingdestructor_00eb9870_test.cpp'
         PassPattern = 'PASS_00eb9870'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ebed70'
-        Module = 'CVtable_012f0ec0'
+        Module = 'CActiveEntityScript<NScript::CV_OracleScript>'
         Source = '00/eb/CThingSwitch_vectordeletingdestructor_00ebed70.cpp'
         TestSource = '00/eb/CThingSwitch_vectordeletingdestructor_00ebed70_test.cpp'
         PassPattern = 'PASS_00ebed70'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec4940'
-        Module = 'CVtable_012f16fc'
+        Module = 'CActiveEntityScript<NScript::CV_RockTrollFirstEncounterScript>'
         Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec4940.cpp'
         TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec4940_test.cpp'
         PassPattern = 'PASS_00ec4940'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ecd780'
-        Module = 'CVtable_012f243c'
+        Module = 'CActiveEntityScript<NScript::CV_SickChildScript>'
         Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ecd780.cpp'
         TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ecd780_test.cpp'
         PassPattern = 'PASS_00ecd780'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed8390'
-        Module = 'CVtable_012f34f4'
+        Module = 'CActiveEntityScript<NScript::CV_TalentlessBardScript>'
         Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed8390.cpp'
         TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed8390_test.cpp'
         PassPattern = 'PASS_00ed8390'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ee1d90'
-        Module = 'CVtable_012f4454'
+        Module = 'CActiveEntityScript<NScript::CV_TravellingHeroesScript>'
         Source = '00/ee/CThingSwitch_vectordeletingdestructor_00ee1d90.cpp'
         TestSource = '00/ee/CThingSwitch_vectordeletingdestructor_00ee1d90_test.cpp'
         PassPattern = 'PASS_00ee1d90'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ee56f0'
-        Module = 'CVtable_012f5194'
+        Module = 'CActiveEntityScript<NScript::CV_TourGuideScript>'
         Source = '00/ee/CThingSwitch_vectordeletingdestructor_00ee56f0.cpp'
         TestSource = '00/ee/CThingSwitch_vectordeletingdestructor_00ee56f0_test.cpp'
         PassPattern = 'PASS_00ee56f0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eedbc0'
-        Module = 'CVtable_012f58c8'
+        Module = 'CActiveEntityScript<NScript::CPersonalScript_alextestScript>'
         Source = '00/ee/CThingSwitch_vectordeletingdestructor_00eedbc0.cpp'
         TestSource = '00/ee/CThingSwitch_vectordeletingdestructor_00eedbc0_test.cpp'
         PassPattern = 'PASS_00eedbc0'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00f012d0'
@@ -317950,6 +318035,7 @@ $catalog = @(
         Source = '00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_CreateActiveEntityScript_00cf66e0.cpp'
         TestSource = '00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_CreateActiveEntityScript_00cf66e0_test.cpp'
         PassPattern = '00cf66e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00cf9100'
@@ -317985,6 +318071,7 @@ $catalog = @(
         Source = '00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_CreateActiveEntityScript_00cfde40.cpp'
         TestSource = '00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_CreateActiveEntityScript_00cfde40_test.cpp'
         PassPattern = '00cfde40_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d006a0'
@@ -318006,6 +318093,7 @@ $catalog = @(
         Source = '00/d0/CEntityScriptBindingNScriptCQBanditCampScript_CreateActiveEntityScript_00d03160.cpp'
         TestSource = '00/d0/CEntityScriptBindingNScriptCQBanditCampScript_CreateActiveEntityScript_00d03160_test.cpp'
         PassPattern = '00d03160_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d035e0'
@@ -318027,6 +318115,7 @@ $catalog = @(
         Source = '00/d0/CEntityScriptBindingNScriptCQBanditCampBossBattleScript_CreateActiveEntityScript_00d0ec50.cpp'
         TestSource = '00/d0/CEntityScriptBindingNScriptCQBanditCampBossBattleScript_CreateActiveEntityScript_00d0ec50_test.cpp'
         PassPattern = '00d0ec50_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d12980'
@@ -318055,6 +318144,7 @@ $catalog = @(
         Source = '00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_CreateActiveEntityScript_00d17180.cpp'
         TestSource = '00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_CreateActiveEntityScript_00d17180_test.cpp'
         PassPattern = '00d17180_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d1cc10'
@@ -318083,6 +318173,7 @@ $catalog = @(
         Source = '00/d2/CEntityScriptBindingNScriptCQBreakSiegeScript_CreateActiveEntityScript_00d20600.cpp'
         TestSource = '00/d2/CEntityScriptBindingNScriptCQBreakSiegeScript_CreateActiveEntityScript_00d20600_test.cpp'
         PassPattern = '00d20600_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d23ce0'
@@ -318104,6 +318195,7 @@ $catalog = @(
         Source = '00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_CreateActiveEntityScript_00d244b0.cpp'
         TestSource = '00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_CreateActiveEntityScript_00d244b0_test.cpp'
         PassPattern = '00d244b0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d25520'
@@ -318118,6 +318210,7 @@ $catalog = @(
         Source = '00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_CreateActiveEntityScript_00d26000.cpp'
         TestSource = '00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_CreateActiveEntityScript_00d26000_test.cpp'
         PassPattern = '00d26000_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d27370'
@@ -318139,6 +318232,7 @@ $catalog = @(
         Source = '00/d2/CEntityScriptBindingNScriptCQEndGameScript_CreateActiveEntityScript_00d29680.cpp'
         TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameScript_CreateActiveEntityScript_00d29680_test.cpp'
         PassPattern = '00d29680_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d2a950'
@@ -318153,6 +318247,7 @@ $catalog = @(
         Source = '00/d2/CEntityScriptBindingNScriptCQEndGameFocalSitesScript_CreateActiveEntityScript_00d2d570.cpp'
         TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameFocalSitesScript_CreateActiveEntityScript_00d2d570_test.cpp'
         PassPattern = '00d2d570_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d2f730'
@@ -318167,6 +318262,7 @@ $catalog = @(
         Source = '00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_CreateActiveEntityScript_00d2fea0.cpp'
         TestSource = '00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_CreateActiveEntityScript_00d2fea0_test.cpp'
         PassPattern = '00d2fea0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d34660'
@@ -318181,6 +318277,7 @@ $catalog = @(
         Source = '00/d3/CEntityScriptBindingNScriptCQFireHeartScript_CreateActiveEntityScript_00d38b90.cpp'
         TestSource = '00/d3/CEntityScriptBindingNScriptCQFireHeartScript_CreateActiveEntityScript_00d38b90_test.cpp'
         PassPattern = '00d38b90_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d3bb50'
@@ -318195,6 +318292,7 @@ $catalog = @(
         Source = '00/d4/CEntityScriptBindingNScriptCQGuildTrainingScript_CreateActiveEntityScript_00d444c0.cpp'
         TestSource = '00/d4/CEntityScriptBindingNScriptCQGuildTrainingScript_CreateActiveEntityScript_00d444c0_test.cpp'
         PassPattern = '00d444c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d50680'
@@ -318216,6 +318314,7 @@ $catalog = @(
         Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_CreateActiveEntityScript_00d50ab0.cpp'
         TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_CreateActiveEntityScript_00d50ab0_test.cpp'
         PassPattern = '00d50ab0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d51420'
@@ -318237,6 +318336,7 @@ $catalog = @(
         Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_CreateActiveEntityScript_00d52310.cpp'
         TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_CreateActiveEntityScript_00d52310_test.cpp'
         PassPattern = '00d52310_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d55d70'
@@ -318258,6 +318358,7 @@ $catalog = @(
         Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_CreateActiveEntityScript_00d58300.cpp'
         TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_CreateActiveEntityScript_00d58300_test.cpp'
         PassPattern = '00d58300_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d5aa50'
@@ -318279,6 +318380,7 @@ $catalog = @(
         Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_CreateActiveEntityScript_00d5acc0.cpp'
         TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_CreateActiveEntityScript_00d5acc0_test.cpp'
         PassPattern = '00d5acc0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d5dca0'
@@ -318293,6 +318395,7 @@ $catalog = @(
         Source = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_CreateActiveEntityScript_00d5dec0.cpp'
         TestSource = '00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_CreateActiveEntityScript_00d5dec0_test.cpp'
         PassPattern = '00d5dec0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d61c30'
@@ -318314,6 +318417,7 @@ $catalog = @(
         Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_CreateActiveEntityScript_00d64210.cpp'
         TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_CreateActiveEntityScript_00d64210_test.cpp'
         PassPattern = '00d64210_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d66530'
@@ -318335,6 +318439,7 @@ $catalog = @(
         Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_CreateActiveEntityScript_00d670e0.cpp'
         TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_CreateActiveEntityScript_00d670e0_test.cpp'
         PassPattern = '00d670e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d677a0'
@@ -318356,6 +318461,7 @@ $catalog = @(
         Source = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_CreateActiveEntityScript_00d68d10.cpp'
         TestSource = '00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_CreateActiveEntityScript_00d68d10_test.cpp'
         PassPattern = '00d68d10_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d69390'
@@ -318370,6 +318476,7 @@ $catalog = @(
         Source = '00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_CreateActiveEntityScript_00d6b590.cpp'
         TestSource = '00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_CreateActiveEntityScript_00d6b590_test.cpp'
         PassPattern = '00d6b590_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d6f3c0'
@@ -318384,6 +318491,7 @@ $catalog = @(
         Source = '00/d7/CEntityScriptBindingNScriptCQHangingTreeGoodScript_CreateActiveEntityScript_00d729e0.cpp'
         TestSource = '00/d7/CEntityScriptBindingNScriptCQHangingTreeGoodScript_CreateActiveEntityScript_00d729e0_test.cpp'
         PassPattern = '00d729e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d784d0'
@@ -318405,6 +318513,7 @@ $catalog = @(
         Source = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_CreateActiveEntityScript_00d7a8a0.cpp'
         TestSource = '00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_CreateActiveEntityScript_00d7a8a0_test.cpp'
         PassPattern = '00d7a8a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d7ad70'
@@ -318454,6 +318563,7 @@ $catalog = @(
         Source = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_CreateActiveEntityScript_00d87140.cpp'
         TestSource = '00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_CreateActiveEntityScript_00d87140_test.cpp'
         PassPattern = '00d87140_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00d87ba0'
@@ -318629,6 +318739,7 @@ $catalog = @(
         Source = '00/de/CEntityScriptBindingNScriptCQRansomVictimScript_CreateActiveEntityScript_00de4480.cpp'
         TestSource = '00/de/CEntityScriptBindingNScriptCQRansomVictimScript_CreateActiveEntityScript_00de4480_test.cpp'
         PassPattern = '00de4480_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00debe10'
@@ -318699,6 +318810,7 @@ $catalog = @(
         Source = '00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_CreateActiveEntityScript_00e0e5a0.cpp'
         TestSource = '00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_CreateActiveEntityScript_00e0e5a0_test.cpp'
         PassPattern = '00e0e5a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e0e8e0'
@@ -318713,6 +318825,7 @@ $catalog = @(
         Source = '00/e1/CEntityScriptBindingNScriptCQWaspBossScript_CreateActiveEntityScript_00e12170.cpp'
         TestSource = '00/e1/CEntityScriptBindingNScriptCQWaspBossScript_CreateActiveEntityScript_00e12170_test.cpp'
         PassPattern = '00e12170_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e13e20'
@@ -318727,6 +318840,7 @@ $catalog = @(
         Source = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_CreateActiveEntityScript_00e18220.cpp'
         TestSource = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_CreateActiveEntityScript_00e18220_test.cpp'
         PassPattern = '00e18220_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e18570'
@@ -318741,6 +318855,7 @@ $catalog = @(
         Source = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_CreateActiveEntityScript_00e193d0.cpp'
         TestSource = '00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_CreateActiveEntityScript_00e193d0_test.cpp'
         PassPattern = '00e193d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e1a8d0'
@@ -318755,6 +318870,7 @@ $catalog = @(
         Source = '00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_CreateActiveEntityScript_00e1bf60.cpp'
         TestSource = '00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_CreateActiveEntityScript_00e1bf60_test.cpp'
         PassPattern = '00e1bf60_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e1dc30'
@@ -318769,6 +318885,7 @@ $catalog = @(
         Source = '00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_CreateActiveEntityScript_00e1f620.cpp'
         TestSource = '00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_CreateActiveEntityScript_00e1f620_test.cpp'
         PassPattern = '00e1f620_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e24dd0'
@@ -318804,6 +318921,7 @@ $catalog = @(
         Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_CreateActiveEntityScript_00e25d90.cpp'
         TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_CreateActiveEntityScript_00e25d90_test.cpp'
         PassPattern = '00e25d90_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e267e0'
@@ -318825,6 +318943,7 @@ $catalog = @(
         Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CreateActiveEntityScript_00e26c50.cpp'
         TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CreateActiveEntityScript_00e26c50_test.cpp'
         PassPattern = '00e26c50_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e27840'
@@ -318846,6 +318965,7 @@ $catalog = @(
         Source = '00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_CreateActiveEntityScript_00e27cb0.cpp'
         TestSource = '00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_CreateActiveEntityScript_00e27cb0_test.cpp'
         PassPattern = '00e27cb0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e28d00'
@@ -318867,6 +318987,7 @@ $catalog = @(
         Source = '00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_CreateActiveEntityScript_00e29110.cpp'
         TestSource = '00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_CreateActiveEntityScript_00e29110_test.cpp'
         PassPattern = '00e29110_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e29a80'
@@ -318881,6 +319002,7 @@ $catalog = @(
         Source = '00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_CreateActiveEntityScript_00e2a170.cpp'
         TestSource = '00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_CreateActiveEntityScript_00e2a170_test.cpp'
         PassPattern = '00e2a170_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e2ac90'
@@ -318895,6 +319017,7 @@ $catalog = @(
         Source = '00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_CreateActiveEntityScript_00e2e900.cpp'
         TestSource = '00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_CreateActiveEntityScript_00e2e900_test.cpp'
         PassPattern = '00e2e900_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e324a0'
@@ -318909,6 +319032,7 @@ $catalog = @(
         Source = '00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_CreateActiveEntityScript_00e37340.cpp'
         TestSource = '00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_CreateActiveEntityScript_00e37340_test.cpp'
         PassPattern = '00e37340_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e37730'
@@ -318923,6 +319047,7 @@ $catalog = @(
         Source = '00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_CreateActiveEntityScript_00e38bd0.cpp'
         TestSource = '00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_CreateActiveEntityScript_00e38bd0_test.cpp'
         PassPattern = '00e38bd0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e39aa0'
@@ -318944,6 +319069,7 @@ $catalog = @(
         Source = '00/e3/CEntityScriptBindingNScriptCVBordelloScript_CreateActiveEntityScript_00e3b740.cpp'
         TestSource = '00/e3/CEntityScriptBindingNScriptCVBordelloScript_CreateActiveEntityScript_00e3b740_test.cpp'
         PassPattern = '00e3b740_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e46c40'
@@ -318958,6 +319084,7 @@ $catalog = @(
         Source = '00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_CreateActiveEntityScript_00e47610.cpp'
         TestSource = '00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_CreateActiveEntityScript_00e47610_test.cpp'
         PassPattern = '00e47610_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e478a0'
@@ -318993,6 +319120,7 @@ $catalog = @(
         Source = '00/e4/CEntityScriptBindingNScriptCVBanditTollScript_CreateActiveEntityScript_00e4b1d0.cpp'
         TestSource = '00/e4/CEntityScriptBindingNScriptCVBanditTollScript_CreateActiveEntityScript_00e4b1d0_test.cpp'
         PassPattern = '00e4b1d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e4f730'
@@ -319007,6 +319135,7 @@ $catalog = @(
         Source = '00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_CreateActiveEntityScript_00e540a0.cpp'
         TestSource = '00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_CreateActiveEntityScript_00e540a0_test.cpp'
         PassPattern = '00e540a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e543b0'
@@ -319028,6 +319157,7 @@ $catalog = @(
         Source = '00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_CreateActiveEntityScript_00e546d0.cpp'
         TestSource = '00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_CreateActiveEntityScript_00e546d0_test.cpp'
         PassPattern = '00e546d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e57c60'
@@ -319042,6 +319172,7 @@ $catalog = @(
         Source = '00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_CreateActiveEntityScript_00e5cf20.cpp'
         TestSource = '00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_CreateActiveEntityScript_00e5cf20_test.cpp'
         PassPattern = '00e5cf20_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e5d240'
@@ -319056,6 +319187,7 @@ $catalog = @(
         Source = '00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_CreateActiveEntityScript_00e5f000.cpp'
         TestSource = '00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_CreateActiveEntityScript_00e5f000_test.cpp'
         PassPattern = '00e5f000_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e628e0'
@@ -319070,6 +319202,7 @@ $catalog = @(
         Source = '00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_CreateActiveEntityScript_00e64020.cpp'
         TestSource = '00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_CreateActiveEntityScript_00e64020_test.cpp'
         PassPattern = '00e64020_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e69030'
@@ -319084,6 +319217,7 @@ $catalog = @(
         Source = '00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_CreateActiveEntityScript_00e6b240.cpp'
         TestSource = '00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_CreateActiveEntityScript_00e6b240_test.cpp'
         PassPattern = '00e6b240_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e6e2b0'
@@ -319105,6 +319239,7 @@ $catalog = @(
         Source = '00/e7/CEntityScriptBindingNScriptCVDemonDoorsScript_CreateActiveEntityScript_00e74bc0.cpp'
         TestSource = '00/e7/CEntityScriptBindingNScriptCVDemonDoorsScript_CreateActiveEntityScript_00e74bc0_test.cpp'
         PassPattern = '00e74bc0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e756d0'
@@ -319119,6 +319254,7 @@ $catalog = @(
         Source = '00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_CreateActiveEntityScript_00e774e0.cpp'
         TestSource = '00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_CreateActiveEntityScript_00e774e0_test.cpp'
         PassPattern = '00e774e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e7b3f0'
@@ -319140,6 +319276,7 @@ $catalog = @(
         Source = '00/e7/CEntityScriptBindingNScriptCVFishermanScript_CreateActiveEntityScript_00e7c6b0.cpp'
         TestSource = '00/e7/CEntityScriptBindingNScriptCVFishermanScript_CreateActiveEntityScript_00e7c6b0_test.cpp'
         PassPattern = '00e7c6b0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e7e150'
@@ -319154,6 +319291,7 @@ $catalog = @(
         Source = '00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_CreateActiveEntityScript_00e7ed60.cpp'
         TestSource = '00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_CreateActiveEntityScript_00e7ed60_test.cpp'
         PassPattern = '00e7ed60_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e820d0'
@@ -319175,6 +319313,7 @@ $catalog = @(
         Source = '00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_CreateActiveEntityScript_00e83bc0.cpp'
         TestSource = '00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_CreateActiveEntityScript_00e83bc0_test.cpp'
         PassPattern = '00e83bc0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e8b850'
@@ -319196,6 +319335,7 @@ $catalog = @(
         Source = '00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_CreateActiveEntityScript_00e8d0e0.cpp'
         TestSource = '00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_CreateActiveEntityScript_00e8d0e0_test.cpp'
         PassPattern = '00e8d0e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e90790'
@@ -319210,6 +319350,7 @@ $catalog = @(
         Source = '00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_CreateActiveEntityScript_00e90a30.cpp'
         TestSource = '00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_CreateActiveEntityScript_00e90a30_test.cpp'
         PassPattern = '00e90a30_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e92970'
@@ -319238,6 +319379,7 @@ $catalog = @(
         Source = '00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_CreateActiveEntityScript_00e93a60.cpp'
         TestSource = '00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_CreateActiveEntityScript_00e93a60_test.cpp'
         PassPattern = '00e93a60_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e93d50'
@@ -319259,6 +319401,7 @@ $catalog = @(
         Source = '00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_CreateActiveEntityScript_00e95f80.cpp'
         TestSource = '00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_CreateActiveEntityScript_00e95f80_test.cpp'
         PassPattern = '00e95f80_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e96e30'
@@ -319280,6 +319423,7 @@ $catalog = @(
         Source = '00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_CreateActiveEntityScript_00e98460.cpp'
         TestSource = '00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_CreateActiveEntityScript_00e98460_test.cpp'
         PassPattern = '00e98460_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e986a0'
@@ -319301,6 +319445,7 @@ $catalog = @(
         Source = '00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_CreateActiveEntityScript_00e9a0e0.cpp'
         TestSource = '00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_CreateActiveEntityScript_00e9a0e0_test.cpp'
         PassPattern = '00e9a0e0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e9c410'
@@ -319315,6 +319460,7 @@ $catalog = @(
         Source = '00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_CreateActiveEntityScript_00e9df30.cpp'
         TestSource = '00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_CreateActiveEntityScript_00e9df30_test.cpp'
         PassPattern = '00e9df30_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00e9fc10'
@@ -319329,6 +319475,7 @@ $catalog = @(
         Source = '00/ea/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_CreateActiveEntityScript_00ea0f00.cpp'
         TestSource = '00/ea/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_CreateActiveEntityScript_00ea0f00_test.cpp'
         PassPattern = '00ea0f00_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ea2cf0'
@@ -319350,6 +319497,7 @@ $catalog = @(
         Source = '00/ea/CEntityScriptBindingNScriptCVLostTraderScript_CreateActiveEntityScript_00ea5780.cpp'
         TestSource = '00/ea/CEntityScriptBindingNScriptCVLostTraderScript_CreateActiveEntityScript_00ea5780_test.cpp'
         PassPattern = '00ea5780_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ea7760'
@@ -319364,6 +319512,7 @@ $catalog = @(
         Source = '00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_CreateActiveEntityScript_00ea7ef0.cpp'
         TestSource = '00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_CreateActiveEntityScript_00ea7ef0_test.cpp'
         PassPattern = '00ea7ef0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ea8740'
@@ -319378,6 +319527,7 @@ $catalog = @(
         Source = '00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_CreateActiveEntityScript_00ead860.cpp'
         TestSource = '00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_CreateActiveEntityScript_00ead860_test.cpp'
         PassPattern = '00ead860_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eae980'
@@ -319392,6 +319542,7 @@ $catalog = @(
         Source = '00/eb/CEntityScriptBindingNScriptCVMurderTwistFinalScript_CreateActiveEntityScript_00eb6370.cpp'
         TestSource = '00/eb/CEntityScriptBindingNScriptCVMurderTwistFinalScript_CreateActiveEntityScript_00eb6370_test.cpp'
         PassPattern = '00eb6370_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eb6cb0'
@@ -319406,6 +319557,7 @@ $catalog = @(
         Source = '00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_CreateActiveEntityScript_00eb9710.cpp'
         TestSource = '00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_CreateActiveEntityScript_00eb9710_test.cpp'
         PassPattern = '00eb9710_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ebcca0'
@@ -319427,6 +319579,7 @@ $catalog = @(
         Source = '00/eb/CEntityScriptBindingNScriptCVOracleScript_CreateActiveEntityScript_00ebebf0.cpp'
         TestSource = '00/eb/CEntityScriptBindingNScriptCVOracleScript_CreateActiveEntityScript_00ebebf0_test.cpp'
         PassPattern = '00ebebf0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ebee90'
@@ -319448,6 +319601,7 @@ $catalog = @(
         Source = '00/ec/CEntityScriptBindingNScriptCVParanoidWhispersScript_CreateActiveEntityScript_00ec1000.cpp'
         TestSource = '00/ec/CEntityScriptBindingNScriptCVParanoidWhispersScript_CreateActiveEntityScript_00ec1000_test.cpp'
         PassPattern = '00ec1000_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec1210'
@@ -319469,6 +319623,7 @@ $catalog = @(
         Source = '00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_CreateActiveEntityScript_00ec15d0.cpp'
         TestSource = '00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_CreateActiveEntityScript_00ec15d0_test.cpp'
         PassPattern = '00ec15d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec17e0'
@@ -319490,6 +319645,7 @@ $catalog = @(
         Source = '00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_CreateActiveEntityScript_00ec2860.cpp'
         TestSource = '00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_CreateActiveEntityScript_00ec2860_test.cpp'
         PassPattern = '00ec2860_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec3c20'
@@ -319511,6 +319667,7 @@ $catalog = @(
         Source = '00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_CreateActiveEntityScript_00ec47c0.cpp'
         TestSource = '00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_CreateActiveEntityScript_00ec47c0_test.cpp'
         PassPattern = '00ec47c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ec5440'
@@ -319532,6 +319689,7 @@ $catalog = @(
         Source = '00/ec/CEntityScriptBindingNScriptCVSickChildScript_CreateActiveEntityScript_00ecd600.cpp'
         TestSource = '00/ec/CEntityScriptBindingNScriptCVSickChildScript_CreateActiveEntityScript_00ecd600_test.cpp'
         PassPattern = '00ecd600_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed0f50'
@@ -319553,6 +319711,7 @@ $catalog = @(
         Source = '00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_CreateActiveEntityScript_00ed28c0.cpp'
         TestSource = '00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_CreateActiveEntityScript_00ed28c0_test.cpp'
         PassPattern = '00ed28c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed3a50'
@@ -319574,6 +319733,7 @@ $catalog = @(
         Source = '00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_CreateActiveEntityScript_00ed4890.cpp'
         TestSource = '00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_CreateActiveEntityScript_00ed4890_test.cpp'
         PassPattern = '00ed4890_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed4b90'
@@ -319588,6 +319748,7 @@ $catalog = @(
         Source = '00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_CreateActiveEntityScript_00ed5340.cpp'
         TestSource = '00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_CreateActiveEntityScript_00ed5340_test.cpp'
         PassPattern = '00ed5340_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ed7790'
@@ -319602,6 +319763,7 @@ $catalog = @(
         Source = '00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_CreateActiveEntityScript_00ed8210.cpp'
         TestSource = '00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_CreateActiveEntityScript_00ed8210_test.cpp'
         PassPattern = '00ed8210_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00edadf0'
@@ -319623,6 +319785,7 @@ $catalog = @(
         Source = '00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_CreateActiveEntityScript_00edcea0.cpp'
         TestSource = '00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_CreateActiveEntityScript_00edcea0_test.cpp'
         PassPattern = '00edcea0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00edec70'
@@ -319637,6 +319800,7 @@ $catalog = @(
         Source = '00/ee/CEntityScriptBindingNScriptCVTravellingHeroesScript_CreateActiveEntityScript_00ee1c10.cpp'
         TestSource = '00/ee/CEntityScriptBindingNScriptCVTravellingHeroesScript_CreateActiveEntityScript_00ee1c10_test.cpp'
         PassPattern = '00ee1c10_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ee4710'
@@ -319651,6 +319815,7 @@ $catalog = @(
         Source = '00/ee/CEntityScriptBindingNScriptCVTourGuideScript_CreateActiveEntityScript_00ee5570.cpp'
         TestSource = '00/ee/CEntityScriptBindingNScriptCVTourGuideScript_CreateActiveEntityScript_00ee5570_test.cpp'
         PassPattern = '00ee5570_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ee6d30'
@@ -319672,6 +319837,7 @@ $catalog = @(
         Source = '00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_CreateActiveEntityScript_00ee7540.cpp'
         TestSource = '00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_CreateActiveEntityScript_00ee7540_test.cpp'
         PassPattern = '00ee7540_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ee8210'
@@ -319805,6 +319971,7 @@ $catalog = @(
         Source = '00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_CreateActiveEntityScript_00eeda40.cpp'
         TestSource = '00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_CreateActiveEntityScript_00eeda40_test.cpp'
         PassPattern = '00eeda40_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eee730'
@@ -319966,6 +320133,7 @@ $catalog = @(
         Source = '00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_CreateActiveEntityScript_00ef5070.cpp'
         TestSource = '00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_CreateActiveEntityScript_00ef5070_test.cpp'
         PassPattern = '00ef5070_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00ef9190'
@@ -320043,6 +320211,7 @@ $catalog = @(
         Source = '00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_CreateActiveEntityScript_00efb460.cpp'
         TestSource = '00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_CreateActiveEntityScript_00efb460_test.cpp'
         PassPattern = '00efb460_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00efb670'
@@ -320134,6 +320303,7 @@ $catalog = @(
         Source = '00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_CreateActiveEntityScript_00efee50.cpp'
         TestSource = '00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_CreateActiveEntityScript_00efee50_test.cpp'
         PassPattern = '00efee50_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS20'
     }
     [pscustomobject]@{
         Address = '00eff060'

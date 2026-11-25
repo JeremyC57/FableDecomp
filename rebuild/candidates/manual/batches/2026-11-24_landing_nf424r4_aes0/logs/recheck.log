@@ -1,0 +1,201 @@
+addr       parity           behav  name
+00cf66e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00cf66e0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00cf66e0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00cf66e0   WARN SHARED_HEADER_AVAILABLE CQ_ArenaHoldingScriptScript (engine/CQ_ArenaHoldingScriptScript.h)
+00cf66e0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00cf6860   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfde40   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00cfde40   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00cfde40   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00cfde40   WARN SHARED_HEADER_AVAILABLE CQ_AwakeningTheOracleScript (engine/CQ_AwakeningTheOracleScript.h)
+00cfde40   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00cfdfa0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d03160   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d03160   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d03160   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d03160   WARN SHARED_HEADER_AVAILABLE CQ_BanditCampScript (engine/CQ_BanditCampScript.h)
+00d03160   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d032c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d0ec50   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d0ec50   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d0ec50   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d0ec50   WARN SHARED_HEADER_AVAILABLE CQ_BanditCampBossBattleScript (engine/CQ_BanditCampBossBattleScript.h)
+00d0ec50   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d0ede0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d17180   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d17180   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d17180   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d17180   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)
+00d17180   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d17310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d20600   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d20600   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d20600   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d20600   WARN SHARED_HEADER_AVAILABLE CQ_BreakSiegeScript (engine/CQ_BreakSiegeScript.h)
+00d20600   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d20760   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d244b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d244b0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d244b0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d244b0   WARN SHARED_HEADER_AVAILABLE CQ_BowerstoneTownLifeIntroScript (engine/CQ_BowerstoneTownLifeIntroScript.h)
+00d244b0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d24630   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d26000   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d26000   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d26000   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d26000   WARN SHARED_HEADER_AVAILABLE CQ_DragonBossFightScript (engine/CQ_DragonBossFightScript.h)
+00d26000   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d26160   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d29680   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d29680   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d29680   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d29680   WARN SHARED_HEADER_AVAILABLE CQ_EndGameScript (engine/CQ_EndGameScript.h)
+00d29680   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d29800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2d570   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d2d570   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d2d570   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d2d570   WARN SHARED_HEADER_AVAILABLE CQ_EndGameFocalSitesScript (engine/CQ_EndGameFocalSitesScript.h)
+00d2d570   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d2d700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2fea0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d2fea0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d2fea0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d2fea0   WARN SHARED_HEADER_AVAILABLE CQ_EndGameBossBattleScript (engine/CQ_EndGameBossBattleScript.h)
+00d2fea0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d30000   WARN STANDIN_LEAF ??_G?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEPAXI@Z (catalog CVtable_012cc724::`scalar deleting destructor'; names another function)
+00d30000   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d38b90   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d38b90   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d38b90   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d38b90   WARN SHARED_HEADER_AVAILABLE CQ_FireHeartScript (engine/CQ_FireHeartScript.h)
+00d38b90   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d38cf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d444c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d444c0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d444c0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d444c0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingScript (engine/CQ_GuildTrainingScript.h)
+00d444c0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d44620   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d50ab0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d50ab0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d50ab0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d50ab0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d50c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d52310   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d52310   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d52310   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d52310   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingPreMeleeScript (engine/CQ_GuildTrainingPreMeleeScript.h)
+00d52310   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d52470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d58300   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d58300   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d58300   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d58300   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingMeleeScript (engine/CQ_GuildTrainingMeleeScript.h)
+00d58300   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d58460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5acc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d5acc0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d5acc0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d5acc0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingSkillScript (engine/CQ_GuildTrainingSkillScript.h)
+00d5acc0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d5ae40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5dec0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d5dec0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d5dec0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d5dec0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingWillScript (engine/CQ_GuildTrainingWillScript.h)
+00d5dec0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d5e040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d64210   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d64210   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d64210   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d64210   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingWoodsDepartureScript (engine/CQ_GuildTrainingWoodsDepartureScript.h)
+00d64210   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d64370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d670e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d670e0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d670e0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d670e0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d67240   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d68d10   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d68d10   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d68d10   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d68d10   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d68e70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6b590   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d6b590   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d6b590   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d6b590   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeEvilScript (engine/CQ_HangingTreeEvilScript.h)
+00d6b590   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d6b6f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d729e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d729e0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d729e0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d729e0   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript (engine/CQ_HangingTreeGoodScript.h)
+00d729e0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d72b40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7a8a0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d7a8a0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d7a8a0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d7a8a0   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsScript (engine/CQ_HeroSoulsScript.h)
+00d7a8a0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d7aa00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d87140   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00d87140   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00d87140   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00d87140   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsGuildmasterScript (engine/CQ_HeroSoulsGuildmasterScript.h)
+00d87140   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00d872a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 50
+  00cf66e0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_ArenaHoldingScriptScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00cf6860 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::??_G?$CActiveEntityScript@VCQ_ArenaHoldingScriptScript@NScript@@@@UAEPAXI@Z
+  00cfde40 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_AwakeningTheOracleScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_AwakeningTheOracleScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00cfdfa0 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_AwakeningTheOracleScript>::??_G?$CActiveEntityScript@VCQ_AwakeningTheOracleScript@NScript@@@@UAEPAXI@Z
+  00d03160 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_BanditCampScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_BanditCampScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d032c0 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_BanditCampScript>::??_G?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEPAXI@Z
+  00d0ec50 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_BanditCampBossBattleScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d0ede0 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::??_G?$CActiveEntityScript@VCQ_BanditCampBossBattleScript@NScript@@@@UAEPAXI@Z
+  00d17180 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_BountyHuntScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_BountyHuntScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d17310 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_BountyHuntScript>::??_G?$CActiveEntityScript@VCQ_BountyHuntScript@NScript@@@@UAEPAXI@Z
+  00d20600 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_BreakSiegeScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_BreakSiegeScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d20760 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_BreakSiegeScript>::??_G?$CActiveEntityScript@VCQ_BreakSiegeScript@NScript@@@@UAEPAXI@Z
+  00d244b0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_BowerstoneTownLifeIntroScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d24630 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_BowerstoneTownLifeIntroScript>::??_G?$CActiveEntityScript@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEPAXI@Z
+  00d26000 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_DragonBossFightScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_DragonBossFightScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d26160 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_DragonBossFightScript>::??_G?$CActiveEntityScript@VCQ_DragonBossFightScript@NScript@@@@UAEPAXI@Z
+  00d29680 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_EndGameScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_EndGameScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d29800 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_EndGameScript>::??_G?$CActiveEntityScript@VCQ_EndGameScript@NScript@@@@UAEPAXI@Z
+  00d2d570 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_EndGameFocalSitesScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_EndGameFocalSitesScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d2d700 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_EndGameFocalSitesScript>::??_G?$CActiveEntityScript@VCQ_EndGameFocalSitesScript@NScript@@@@UAEPAXI@Z
+  00d2fea0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_EndGameBossBattleScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d30000 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>::??_G?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEPAXI@Z
+  00d38b90 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_FireHeartScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_FireHeartScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d38cf0 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_FireHeartScript>::??_G?$CActiveEntityScript@VCQ_FireHeartScript@NScript@@@@UAEPAXI@Z
+  00d444c0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d44620 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingScript@NScript@@@@UAEPAXI@Z
+  00d50ab0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingDepartureScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingDepartureScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d50c30 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEPAXI@Z
+  00d52310 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingPreMeleeScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingPreMeleeScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d52470 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEPAXI@Z
+  00d58300 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingMeleeScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingMeleeScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d58460 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEPAXI@Z
+  00d5acc0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingSkillScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingSkillScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d5ae40 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingSkillScript@NScript@@@@UAEPAXI@Z
+  00d5dec0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingWillScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingWillScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d5e040 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingWillScript@NScript@@@@UAEPAXI@Z
+  00d64210 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsDepartureScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d64370 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEPAXI@Z
+  00d670e0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsMeleeScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d67240 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEPAXI@Z
+  00d68d10 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_GuildTrainingWoodsWillScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_GuildTrainingWoodsWillScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d68e70 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::??_G?$CActiveEntityScript@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEPAXI@Z
+  00d6b590 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_HangingTreeEvilScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d6b6f0 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>::??_G?$CActiveEntityScript@VCQ_HangingTreeEvilScript@NScript@@@@UAEPAXI@Z
+  00d729e0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_HangingTreeGoodScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d72b40 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_HangingTreeGoodScript>::??_G?$CActiveEntityScript@VCQ_HangingTreeGoodScript@NScript@@@@UAEPAXI@Z
+  00d7a8a0 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_HeroSoulsScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d7aa00 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_HeroSoulsScript>::??_G?$CActiveEntityScript@VCQ_HeroSoulsScript@NScript@@@@UAEPAXI@Z
+  00d87140 RELOCATION_MATCH CEntityScriptBinding<NScript::CQ_HeroSoulsGuildmasterScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_HeroSoulsGuildmasterScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00d872a0 RELOCATION_MATCH CActiveEntityScript<NScript::CQ_HeroSoulsGuildmasterScript>::??_G?$CActiveEntityScript@VCQ_HeroSoulsGuildmasterScript@NScript@@@@UAEPAXI@Z

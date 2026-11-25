@@ -193,6 +193,13 @@ regraded on the then-current tree first: all 5 RELOCATION_MATCH + PASS, then `re
 | 0x00EDCB80 | loop-head macro (lever "r") + line-2 `// Inline-split:` note | `CV_TempleOfLightScript::WatchForAcolyteHit(CScriptThing acolyte)` | `rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp` |
 | 0x00EF5200 | plain `return;` replaces the `goto terminating` device; marker dropped, no wrapping | `NScript::CPersonalScript_EmptyScript::CheckForHeroActions()` | `rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp` |
 
+## Inline-control families landed under the 2026-11-08 rule
+- **CActiveEntityScript<T> deleting destructors** (nf424 round 4, 2026-11-25; R-NF424-5, advisor decision, owner delegated):
+  - **What it is:** 85 pairs, each a CreateActiveEntityScript owner plus its thin `??_G` row. Both rows carry `// Flags: /d2inlS20` and the decl-only opt-in `FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY`. With both, the implicit `~CActiveEntityScriptBase` is expanded in the TU's `??_G`, as retail does.
+  - **Evidence:** the 120-row sweep matches at 20-40 and fails at 17-19, so 20 is the smallest N. No `/Og` is needed.
+  - **Possible header cause:** one flag fits 85 TUs, and `__declspec(novtable)` came close (it matched, but it is false for this class). Together these suggest an undiscovered header cause. A header spelling found later replaces the flag on the whole family.
+  - **Files:** batches `2026-11-24_landing_nf424r4_aes0..aes3`; hand-back `rebuild/candidates/manual/pending/2026-11-25_nf424_r4_handback/`.
+
 ## two-view-CScriptThing rows (17)
 | Address | Function | Source |
 |---|---|---|

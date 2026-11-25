@@ -1,5 +1,9 @@
 // CEntityScriptBinding<NScript::CV_HauntedHouseScript>::CreateActiveEntityScript(const CScriptThing& thing, unsigned __int64 uid) -- start an entity script for a newly bound entity: with a class allocator, allocate the entity script object (parent, parent's master data, thing), Init() it and wrap it in a new CActiveEntityScript; otherwise wrap the parent's member function
 // Leaf: ?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_HauntedHouseScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+// Flags: /d2inlS20
+// Inline-budget: /d2inlS20 + FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY -- implicit ~CActiveEntityScriptBase (~CScriptThing +0x48, ~CCountedPointer +0x34, call ~CSpawnedFuncBase) expanded in this TU's ??_G as retail does; sweep on 0x00D032C0: /d2inlS17-19 fail, 20-40 match (with or without /Og; without DECL_ONLY 30v48), 85/120 CActiveEntityScript<T> pairs match at /d2inlS20
+// NF424 r4 (2026-11-25, R-NF424-5: 2026-11-08 owner rule, inline-budget residue): DECL_ONLY is the existing engine/CSpawnedFuncBase.h
+//   opt-in (~CSpawnedFuncBase 0x00CDD4C0 declared only); no header changes. The flag emulates an unidentified build setting of the retail script TUs.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E95F80, 272 bytes, `ret 10h` (hidden result + thing + 64-bit uid). Slot 1 of the
 //   CEntityScriptBinding<CV_HauntedHouseScript> vtable @ 0x012ECC98 (slot 0 GetEntityScriptName).
 // Identity: that binding vtable is stored by 0x00E95390 (the script's Main building `new CEntityScriptBinding<T>(name, this,
@@ -22,6 +26,7 @@
 // CCountedPointer: the shared engine/CCountedPointer.h with the per-TU forms the row-local template spelled (the (T*) constructor
 //   0x00CE10B0 called, the destructor 0x00CE1000 visible but called, ShareData 0x00CE1040 declared), as the landed shared-header
 //   CreateActiveEntityScript rows do (e.g. 0x00D7C2E0).
+#define FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_DTOR
 #define FABLE_RETAIL_CCOUNTEDPOINTER_SHAREDATA_DECL_ONLY

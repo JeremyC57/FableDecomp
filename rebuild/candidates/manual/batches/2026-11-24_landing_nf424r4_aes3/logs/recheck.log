@@ -1,0 +1,79 @@
+addr       parity           behav  name
+00ed5340   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ed5340   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00ed5340   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ed5340   WARN SHARED_HEADER_AVAILABLE CV_SwordInTheStoneScript (engine/CV_SwordInTheStoneScript.h)
+00ed5340   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00ed54a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed8210   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ed8210   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00ed8210   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ed8210   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00ed8390   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edcea0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00edcea0   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00edcea0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00edcea0   WARN SHARED_HEADER_AVAILABLE CV_TempleOfLightScript (engine/CV_TempleOfLightScript.h)
+00edcea0   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00edd030   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee1c10   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ee1c10   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00ee1c10   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ee1c10   WARN SHARED_HEADER_AVAILABLE CV_TravellingHeroesScript (engine/CV_TravellingHeroesScript.h)
+00ee1c10   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00ee1d90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee5570   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ee5570   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00ee5570   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ee5570   WARN SHARED_HEADER_AVAILABLE CV_TourGuideScript (engine/CV_TourGuideScript.h)
+00ee5570   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00ee56f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee7540   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ee7540   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00ee7540   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00ee7540   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00ee76c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeda40   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00eeda40   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00eeda40   WARN SHARED_HEADER_AVAILABLE CalextestData (engine/CalextestData.h)
+00eeda40   WARN SHARED_HEADER_AVAILABLE CPersonalScript_alextestScript (engine/CPersonalScript_alextestScript.h)
+00eeda40   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00eedbc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef5070   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00ef5070   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00ef5070   WARN SHARED_HEADER_AVAILABLE CEmptyData (engine/CEmptyData.h)
+00ef5070   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript (engine/CPersonalScript_EmptyScript.h)
+00ef5070   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00ef51d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb460   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00efb460   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00efb460   WARN SHARED_HEADER_AVAILABLE CDanyalTestScriptsData (engine/CDanyalTestScriptsData.h)
+00efb460   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00efb5e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efee50   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00efee50   WARN SHARED_HEADER_AVAILABLE CScriptDataBase (engine/CScriptDataBase.h)
+00efee50   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData (engine/CQ_SunnyvaleMasterData.h)
+00efee50   RELOCATION_MATCH PASS   CreateActiveEntityScript
+00efefd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 20
+  00ed5340 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_SwordInTheStoneScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_SwordInTheStoneScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00ed54a0 RELOCATION_MATCH CActiveEntityScript<NScript::CV_SwordInTheStoneScript>::??_G?$CActiveEntityScript@VCV_SwordInTheStoneScript@NScript@@@@UAEPAXI@Z
+  00ed8210 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_TalentlessBardScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_TalentlessBardScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00ed8390 RELOCATION_MATCH CActiveEntityScript<NScript::CV_TalentlessBardScript>::??_G?$CActiveEntityScript@VCV_TalentlessBardScript@NScript@@@@UAEPAXI@Z
+  00edcea0 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_TempleOfLightScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_TempleOfLightScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00edd030 RELOCATION_MATCH CActiveEntityScript<NScript::CV_TempleOfLightScript>::??_G?$CActiveEntityScript@VCV_TempleOfLightScript@NScript@@@@UAEPAXI@Z
+  00ee1c10 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_TravellingHeroesScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_TravellingHeroesScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00ee1d90 RELOCATION_MATCH CActiveEntityScript<NScript::CV_TravellingHeroesScript>::??_G?$CActiveEntityScript@VCV_TravellingHeroesScript@NScript@@@@UAEPAXI@Z
+  00ee5570 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_TourGuideScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_TourGuideScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00ee56f0 RELOCATION_MATCH CActiveEntityScript<NScript::CV_TourGuideScript>::??_G?$CActiveEntityScript@VCV_TourGuideScript@NScript@@@@UAEPAXI@Z
+  00ee7540 RELOCATION_MATCH CEntityScriptBinding<NScript::CV_TrophyDealerScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCV_TrophyDealerScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00ee76c0 RELOCATION_MATCH CActiveEntityScript<NScript::CV_TrophyDealerScript>::??_G?$CActiveEntityScript@VCV_TrophyDealerScript@NScript@@@@UAEPAXI@Z
+  00eeda40 RELOCATION_MATCH CEntityScriptBinding<NScript::CPersonalScript_alextestScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCPersonalScript_alextestScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00eedbc0 RELOCATION_MATCH CActiveEntityScript<NScript::CPersonalScript_alextestScript>::??_G?$CActiveEntityScript@VCPersonalScript_alextestScript@NScript@@@@UAEPAXI@Z
+  00ef5070 RELOCATION_MATCH CEntityScriptBinding<NScript::CPersonalScript_EmptyScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCPersonalScript_EmptyScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00ef51d0 RELOCATION_MATCH CActiveEntityScript<NScript::CPersonalScript_EmptyScript>::??_G?$CActiveEntityScript@VCPersonalScript_EmptyScript@NScript@@@@UAEPAXI@Z
+  00efb460 RELOCATION_MATCH CEntityScriptBinding<NScript::CProximityPodiumTestScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCProximityPodiumTestScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00efb5e0 RELOCATION_MATCH CActiveEntityScript<NScript::CProximityPodiumTestScript>::??_G?$CActiveEntityScript@VCProximityPodiumTestScript@NScript@@@@UAEPAXI@Z
+  00efee50 RELOCATION_MATCH CEntityScriptBinding<NScript::CBenTestScriptsScript>::?CreateActiveEntityScript@?$CEntityScriptBinding@VCBenTestScriptsScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+  00efefd0 RELOCATION_MATCH CActiveEntityScript<NScript::CBenTestScriptsScript>::??_G?$CActiveEntityScript@VCBenTestScriptsScript@NScript@@@@UAEPAXI@Z

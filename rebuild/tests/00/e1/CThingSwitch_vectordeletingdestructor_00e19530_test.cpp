@@ -1,52 +1,23 @@
+// Behaviour model of CActiveEntityScript<class NScript::CQ_WhiteBalverineWWScript>::`scalar deleting destructor' (row 0x00E19530, ??_G): delete through a base pointer runs the destructor
+// chain once and frees the object; an explicit virtual destructor call (flags 0) runs it without freeing. Self-contained model of the
+// same class shape (the row object is the owner TU's; NF419 r1: leaf bytes and relocations graded against retail).
 #include <cstdio>
-static int g_AutoTinySequence[6] = {0};
-static int g_AutoTinySequenceCount = 0;
-static void* g_AutoTinyFirstMember = 0;
-static void* g_AutoTinySecondMember = 0;
-static int g_AutoTinyCompositeDeleteCalls = 0;
-void __fastcall AutoTinyFirstMemberDestructor(void* member)
-{
-    g_AutoTinyFirstMember = member;
-    g_AutoTinySequence[g_AutoTinySequenceCount++] = 1;
-}
-void __fastcall AutoTinySecondMemberDestructor(void* member)
-{
-    g_AutoTinySecondMember = member;
-    g_AutoTinySequence[g_AutoTinySequenceCount++] = 2;
-}
-void __fastcall AutoTinyCompositeDestructor(void*)
-{
-    g_AutoTinySequence[g_AutoTinySequenceCount++] = 3;
-}
-void __cdecl AutoTinyCompositeDelete(void*)
-{
-    ++g_AutoTinyCompositeDeleteCalls;
-}
-void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
-{
-    AutoTinyFirstMemberDestructor(static_cast<unsigned char*>(self) + 72);
-    AutoTinySecondMemberDestructor(static_cast<unsigned char*>(self) + 52);
-    AutoTinyCompositeDestructor(self);
-    if (flags & 1)
-        AutoTinyCompositeDelete(self);
-    return self;
-}
+#include <cstdlib>
+static int g_dtors = 0, g_frees = 0; static void* g_freed = 0;
+void* operator new(unsigned int n) { return std::malloc(n ? n : 1); }
+void operator delete(void* p) { ++g_frees; g_freed = p; std::free(p); }
+class Base { public: int baseState; Base() : baseState(1) { } virtual ~Base() { ++g_dtors; } };
+class Derived : public Base { public: int ownState[3]; };
 int main()
 {
-    unsigned char object[256] = {0};
-    if (CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 0) != object ||
-        g_AutoTinyFirstMember != object + 72 ||
-        g_AutoTinySecondMember != object + 52 ||
-        g_AutoTinySequenceCount != 3 ||
-        g_AutoTinySequence[0] != 1 ||
-        g_AutoTinySequence[1] != 2 ||
-        g_AutoTinySequence[2] != 3 ||
-        g_AutoTinyCompositeDeleteCalls != 0)
-        return 1;
-    CThingSwitch_CompositeScalarDeletingDestructor(object, 0, 1);
-    if (g_AutoTinySequenceCount != 6 ||
-        g_AutoTinyCompositeDeleteCalls != 1)
-        return 1;
+    Derived* p = new Derived;
+    Base* q = p;
+    delete q;
+    if (g_dtors != 1 || g_frees != 1 || g_freed != (void*)p) { std::printf("00e19530 FAIL delete\n"); return 1; }
+    Derived* r = new Derived;
+    r->~Derived();
+    if (g_dtors != 2 || g_frees != 1) { std::printf("00e19530 FAIL no-free path\n"); return 1; }
+    std::free(r);
     std::printf("AUTO_TINY_00e19530_TEST PASS\n");
     return 0;
 }

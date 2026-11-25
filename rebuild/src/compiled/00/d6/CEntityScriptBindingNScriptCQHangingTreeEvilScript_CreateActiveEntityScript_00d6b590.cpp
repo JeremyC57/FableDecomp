@@ -1,5 +1,9 @@
 // CEntityScriptBinding<NScript::CQ_HangingTreeEvilScript>::CreateActiveEntityScript(const CScriptThing& thing, unsigned __int64 uid) -- start an entity script for a newly bound entity: with a class allocator, allocate the entity script object (parent, parent's master data, thing), Init() it and wrap it in a new CActiveEntityScript; otherwise wrap the parent's member function
 // Leaf: ?CreateActiveEntityScript@?$CEntityScriptBinding@VCQ_HangingTreeEvilScript@NScript@@@@MAE?AV?$CCountedPointer@VCActiveEntityScriptBase@@@@ABVCScriptThing@@_K@Z
+// Flags: /d2inlS20
+// Inline-budget: /d2inlS20 + FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY -- implicit ~CActiveEntityScriptBase (~CScriptThing +0x48, ~CCountedPointer +0x34, call ~CSpawnedFuncBase) expanded in this TU's ??_G as retail does; sweep on 0x00D032C0: /d2inlS17-19 fail, 20-40 match (with or without /Og; without DECL_ONLY 30v48), 85/120 CActiveEntityScript<T> pairs match at /d2inlS20
+// NF424 r4 (2026-11-25, R-NF424-5: 2026-11-08 owner rule, inline-budget residue): DECL_ONLY is the existing engine/CSpawnedFuncBase.h
+//   opt-in (~CSpawnedFuncBase 0x00CDD4C0 declared only); no header changes. The flag emulates an unidentified build setting of the retail script TUs.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6B590, 272 bytes, `ret 10h` (hidden result + thing + 64-bit uid). Slot 1 of the
 //   CEntityScriptBinding<CQ_HangingTreeEvilScript> vtable @ 0x012D2078 (slot 0 GetEntityScriptName).
 // Identity: that binding vtable is stored by 0x00D69480, 0x00D69660 (the script's Main building `new CEntityScriptBinding<T>(name, this,
@@ -19,6 +23,7 @@
 // Shape: the counted-pointer destructor must have its body in the TU (`noinline`): with only a declaration VC7.1 swaps the two
 //   frame slots of the allocator's result temporary and the named copy and does not keep the copy's Data/Info in ebp/ebx for
 //   the later ShareData pushes. Both CActiveEntityScript constructors are `__forceinline` (a plain inline one stays a call).
+#define FABLE_RETAIL_CSPAWNEDFUNCBASE_DTOR_DECL_ONLY
 #include "fable_compiler.h"
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC

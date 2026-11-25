@@ -50085,7 +50085,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d2fe80	`scalar deleting destructor'	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d2\CLandscapeBackgroundPatch_vectordeletingdestructor_00d2fe80.cpp
 00d2fea0	CreateActiveEntityScript	CEntityScriptBinding<NScript::CQ_EndGameBossBattleScript>	unknown	undefined	0		0	yes	accepted									
 00d2ffb0	SuspendableProcess	CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
-00d30000	`scalar deleting destructor'	CVtable_012cc724	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d3\CThingSwitch_vectordeletingdestructor_00d30000.cpp
+00d30000	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d3\CThingSwitch_vectordeletingdestructor_00d30000.cpp
 00d30030	JackOfBladesBossBattle	NScript::CQ_EndGameBossBattleScript	unknown	undefined	0		0	yes	accepted									
 00d321c0	JackOfBladesBossFightCutscene	NScript::CQ_EndGameBossBattleScript	unknown	undefined	0		0	yes	accepted									
 00d328c0	Main	NScript::CQ_EndGameBossBattleScript::CEndGameSister	unknown	undefined	0		0			discovered	gapscan							
