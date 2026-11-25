@@ -1,53 +1,172 @@
-// Behaviour test for CAudioSource::CreateProcessor (0x00C55270): detect the CPU once, then build the SSE2 or the MMX/C variant
-// of the processor for the speaker mode (0x100000 HRTF, 0x200000 four-tap, 0x400000 gain ramp, else stereo); null when the
-// allocation fails.
+// Behaviour test of EH funclet 0x012161B7 (unwind state of CSalSw3DVoice::CreateRenderer 0x00C55270; the row object is the
+// parent's object). The parent's test, linked against the row object, over the shared headers: the CPU is
+// detected once; with SSE2 the full-HRTF / HRTF-delay / volume-pan / disabled renderers are the SSE2 classes, without it the MMX / C ones;
+// each `new` asks CodaMalloc for the class size (0xC6C / 0x214 / 0x78 / 0x38, 0x66C for the MMX HRTF); a failed allocation gives null
+// without running a constructor. The four-tap SIMD constructors are expanded in the row: the test sees the PanDelay base constructor and
+// then the SIMD class's own Process / ClearFilterHistory through the vtable the row stored.
+#define FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+#define FABLE_RETAIL_PASS22_CCODA3D_CREATE
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_SW_PASS23
+#define FABLE_RETAIL_CSALSW3D_CREATE
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalSw3DVoice.h"
+#include "engine/CSalRender.h"
 #include <cstdio>
 #include <cstdlib>
-static bool g_cpuDetected = false, g_cpuHasSSE2 = false, g_failAlloc = false;
-static int g_detects = 0; static unsigned g_lastSize = 0;
-static void DetectCpu() { ++g_detects; g_cpuDetected = true; }
-struct CBase {
-    int kind;
-    static void* operator new(size_t n) throw() { g_lastSize = (unsigned)n; return g_failAlloc ? 0 : std::malloc(n); }
-    static void operator delete(void* p) { std::free(p); }
-    virtual ~CBase() {}
+bool g_cpuDetected = false;
+bool g_cpuHasSSE2 = false;
+static int g_detects = 0, g_mallocs = 0; static unsigned int g_lastSize = 0; static bool g_failAlloc = false;
+static unsigned long g_ctor = 0, g_call = 0;
+void DetectCpu() { ++g_detects; g_cpuDetected = true; }
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { ++g_mallocs; g_lastSize = n; return g_failAlloc ? 0 : std::malloc(n); }
+extern "C" void __cdecl CodaFree(void* p) { std::free(p); }
+// The derived renderer classes, declared as in the row (local models over CSalRender.h); their out-of-line members are stubs that
+// record which one ran (the ids are the retail addresses).
+class CVtable_012bed7c : public CSalRender {                                // four-tap delay panner (PanDelay), 0x214 bytes
+public:
+    CVtable_012bed7c();                                                     // 0x00C6CA20
+    virtual ~CVtable_012bed7c();                                            // 0x00C6CAC0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
+    unsigned char m_state[0x214 - 0x28];
 };
-template <int K, int N> struct CProc : CBase { unsigned char body[N - 16]; CProc() { kind = K; } };
-static CBase* CreateProcessor(unsigned long mode)
+class CVtable_012bed90 : public CSalRender {                                // volume panner (Pan), 0x78 bytes
+public:
+    CVtable_012bed90();                                                     // 0x00C6D9D0
+    virtual ~CVtable_012bed90();                                            // 0x00C6DA30
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
+    unsigned char m_state[0x78 - 0x28];
+};
+class CVtable_012bedb8 : public CSalRender {                                // disabled / plain stereo renderer, 0x38 bytes
+public:
+    CVtable_012bedb8();                                                     // 0x00C6E760
+    virtual ~CVtable_012bedb8();                                            // 0x00C6E780
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
+    unsigned char m_state[0x38 - 0x28];
+};
+class CVtable_012bede0 : public CSalRender {                                // full HRTF renderer (SSE2), 0xC6C bytes
+public:
+    CVtable_012bede0();                                                     // 0x00C70B00
+    virtual ~CVtable_012bede0();                                            // 0x00C70BB0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
+    unsigned char m_state[0xc6c - 0x28];
+};
+class CVtable_012bedcc : public CSalRender {                                // full HRTF renderer (MMX / C), 0x66C bytes
+public:
+    CVtable_012bedcc();                                                     // 0x00C70120
+    virtual ~CVtable_012bedcc();                                            // 0x00C701D0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
+    unsigned char m_state[0x66c - 0x28];
+};
+class CVtable_012b8a64 : public CVtable_012bed7c {                          // SSE2 four-tap panner (vtable 0x012B8A64)
+public:
+    CVtable_012b8a64() {}                                                   // 0x00C55070
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+};
+class CVtable_012b8aa0 : public CVtable_012bed7c {                          // MMX four-tap panner (vtable 0x012B8AA0)
+public:
+    CVtable_012b8aa0() {}                                                   // 0x00C550D0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+};
+class CVtable_012b8a78 : public CVtable_012bed90 {                          // SSE2 volume panner (vtable 0x012B8A78)
+public:
+    CVtable_012b8a78();                                                     // 0x00C55090
+    virtual void Process(const short*, int*(&)[4]);
+};
+class CVtable_012b8ab4 : public CVtable_012bed90 {                          // MMX volume panner (vtable 0x012B8AB4)
+public:
+    CVtable_012b8ab4();                                                     // 0x00C550F0
+    virtual void Process(const short*, int*(&)[4]);
+};
+class CVtable_012b8a8c : public CVtable_012bedb8 {                          // SSE2 disabled renderer (vtable 0x012B8A8C)
+public:
+    CVtable_012b8a8c();                                                     // 0x00C550B0
+    virtual void Process(const short*, int*(&)[4]);
+};
+class CVtable_012b8ac8 : public CVtable_012bedb8 {                          // MMX disabled renderer (vtable 0x012B8AC8)
+public:
+    CVtable_012b8ac8();                                                     // 0x00C55110
+    virtual void Process(const short*, int*(&)[4]);
+};
+
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { }
+CSalRender::~CSalRender() { }
+void CSalRender::ClearFilterHistory() { }
+#define STUB_CTOR(C, id) C::C() { g_ctor = id; }
+#define STUB_DTOR(C) C::~C() { }
+#define STUB_PROC(C, id) void C::Process(const short*, int*(&)[4]) { g_call = id; }
+#define STUB_GAINPOS(C) void C::SetGain(float, const float*, bool) { } void C::SetPosition(float, float, float, float, const float*, bool, bool) { }
+STUB_CTOR(CVtable_012bed7c, 0x00C6CA20) STUB_DTOR(CVtable_012bed7c) STUB_PROC(CVtable_012bed7c, 0x00C6CC60) STUB_GAINPOS(CVtable_012bed7c)
+void CVtable_012bed7c::ClearFilterHistory() { g_call = 0x00C6CAD0; }
+STUB_CTOR(CVtable_012bed90, 0x00C6D9D0) STUB_DTOR(CVtable_012bed90) STUB_PROC(CVtable_012bed90, 0x00C6DA40) STUB_GAINPOS(CVtable_012bed90)
+STUB_CTOR(CVtable_012bedb8, 0x00C6E760) STUB_DTOR(CVtable_012bedb8) STUB_PROC(CVtable_012bedb8, 0x00C6E790) STUB_GAINPOS(CVtable_012bedb8)
+STUB_CTOR(CVtable_012bede0, 0x00C70B00) STUB_DTOR(CVtable_012bede0) STUB_PROC(CVtable_012bede0, 0x00C70BC0) STUB_GAINPOS(CVtable_012bede0)
+void CVtable_012bede0::ClearFilterHistory() { }
+STUB_CTOR(CVtable_012bedcc, 0x00C70120) STUB_DTOR(CVtable_012bedcc) STUB_PROC(CVtable_012bedcc, 0x00C701E0) STUB_GAINPOS(CVtable_012bedcc)
+void CVtable_012bedcc::ClearFilterHistory() { }
+STUB_PROC(CVtable_012b8a64, 0x00C6D630) void CVtable_012b8a64::ClearFilterHistory() { g_call = 0x00C6D560; }
+STUB_PROC(CVtable_012b8aa0, 0x00C6F3E0) void CVtable_012b8aa0::ClearFilterHistory() { g_call = 0x00C6F300; }
+STUB_CTOR(CVtable_012b8a78, 0x00C55090) STUB_PROC(CVtable_012b8a78, 0x00C6E410)
+STUB_CTOR(CVtable_012b8ab4, 0x00C550F0) STUB_PROC(CVtable_012b8ab4, 0x00C6F990)
+STUB_CTOR(CVtable_012b8a8c, 0x00C550B0) STUB_PROC(CVtable_012b8a8c, 0x00C6EEF0)
+STUB_CTOR(CVtable_012b8ac8, 0x00C55110) STUB_PROC(CVtable_012b8ac8, 0x00C6FE10)
+// CreateRenderer is private: the test reaches it through CSalSw3DVoice::Create (row 0x00C556E0, not linked here), defined as a test entry.
+static CHRTFMODE g_entryMode; static CSalRender* g_result;
+int CSalSw3DVoice::Create(const CCodaSource*) { g_result = CreateRenderer(g_entryMode); return 0; }
+static unsigned char g_voice[0x248];
+static CSalRender* Make(int mode)
 {
-    if (!g_cpuDetected) DetectCpu();
-    if (g_cpuHasSSE2) {
-        switch (mode) {
-        case 0x100000: return new CProc<1, 0xc6c>;
-        case 0x200000: return new CProc<2, 0x214>;
-        case 0x400000: return new CProc<3, 0x78>;
-        default:       return new CProc<4, 0x38>;
-        }
-    } else {
-        switch (mode) {
-        case 0x100000: return new CProc<5, 0x66c>;
-        case 0x200000: return new CProc<6, 0x214>;
-        case 0x400000: return new CProc<7, 0x78>;
-        default:       return new CProc<8, 0x38>;
-        }
-    }
+    g_ctor = 0; g_call = 0; g_lastSize = 0; g_entryMode = static_cast<CHRTFMODE>(mode);
+    reinterpret_cast<CSalSw3DVoice*>(g_voice)->CSalSw3DVoice::Create(0);
+    return g_result;
+}
+static bool Check(int mode, unsigned int size, unsigned long ctor, unsigned long process, unsigned long clear)
+{
+    CSalRender* r = Make(mode);
+    if (!r || g_lastSize != size || g_ctor != ctor) return false;
+    int* out[4] = { 0, 0, 0, 0 };
+    r->Process(0, out);
+    bool ok = g_call == process;
+    g_call = 0; r->ClearFilterHistory(); ok = ok && g_call == clear;
+    std::free(r);
+    return ok;
 }
 int main()
 {
     bool ok = true;
-    CBase* p = CreateProcessor(0x100000);
-    ok = ok && g_detects == 1 && p && p->kind == 5; delete p;
+    // MMX / C (no SSE2); the CPU is detected on the first call only
+    ok = ok && Check(C_HRTF_FULL, 0x66c, 0x00C70120, 0x00C701E0, 0) && g_detects == 1;
+    ok = ok && Check(C_HRTF_DELAY, 0x214, 0x00C6CA20, 0x00C6F3E0, 0x00C6F300) && g_detects == 1;
+    ok = ok && Check(C_HRTF_VOLPAN, 0x78, 0x00C550F0, 0x00C6F990, 0);
+    ok = ok && Check(C_HRTF_DISABLED, 0x38, 0x00C55110, 0x00C6FE10, 0);
+    ok = ok && Check(7, 0x38, 0x00C55110, 0x00C6FE10, 0);
+    // SSE2
     g_cpuHasSSE2 = true;
-    p = CreateProcessor(0x100000); ok = ok && p->kind == 1 && g_detects == 1; delete p;
-    p = CreateProcessor(0x200000); ok = ok && p->kind == 2; delete p;
-    p = CreateProcessor(0x400000); ok = ok && p->kind == 3; delete p;
-    p = CreateProcessor(7); ok = ok && p->kind == 4; delete p;
-    g_cpuHasSSE2 = false;
-    p = CreateProcessor(0x400000); ok = ok && p->kind == 7; delete p;
-    p = CreateProcessor(0); ok = ok && p->kind == 8; delete p;
-    g_failAlloc = true;
-    p = CreateProcessor(0x200000); ok = ok && p == 0;
-    if (!ok) { std::printf("00c55270_TEST FAIL\n"); return 1; }
+    ok = ok && Check(C_HRTF_FULL, 0xc6c, 0x00C70B00, 0x00C70BC0, 0);
+    ok = ok && Check(C_HRTF_DELAY, 0x214, 0x00C6CA20, 0x00C6D630, 0x00C6D560);
+    ok = ok && Check(C_HRTF_VOLPAN, 0x78, 0x00C55090, 0x00C6E410, 0);
+    ok = ok && Check(C_HRTF_DISABLED, 0x38, 0x00C550B0, 0x00C6EEF0, 0) && g_detects == 1;
+    // a failed allocation: null, no constructor
+    g_failAlloc = true; int before = g_mallocs;
+    ok = ok && Make(C_HRTF_DELAY) == 0 && g_ctor == 0 && g_mallocs == before + 1 && g_lastSize == 0x214;
+    if (!ok) { std::printf("012161b7_TEST FAIL\n"); return 1; }
     std::printf("012161b7_TEST PASS\n");
     return 0;
 }

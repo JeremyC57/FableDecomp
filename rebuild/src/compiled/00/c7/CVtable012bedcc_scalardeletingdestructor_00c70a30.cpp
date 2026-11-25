@@ -12,29 +12,30 @@
 //   `T::VecDel` placeholder; the class is named after its vtable (no-RTTI module), as the landed siblings are.
 // Shape: the compiler-generated `??_G`; the vtable (and so `??_G`) is emitted by the out-of-line factory below, the
 //   destructor stays an out-of-line call.
-extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
-extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
-class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
+// NF444 binder: the base is the shared engine/CSalRender.h (was a local CCodaObjectBase + CVtable_012beda4 model); this row keeps its own
+//   symbol and no longer references ??0CVtable_012beda4@@QAE@XZ. Fidelity: scaffolding, not retail: the TU-local reference class below
+//   compiles the inline constructor (CSalRender is abstract, so nothing is instantiated), which emits the vtable and this ??_G.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4; constructor 0x00C6E6A0, destructor 0x00C6E630)
+
+class CVtable_012bedcc : public CSalRender {     // vtable 0x012BEDCC
 public:
-    virtual ~CCodaObjectBase() { }
-    static void* __cdecl operator new(unsigned int size) { return CodaMalloc(size); }   // 0x00C3C360
-    static void __cdecl operator delete(void* p) { CodaFree(p); }           // 0x00C3C370
+    CVtable_012bedcc() { }                             // out of line at 0x00C70120 in retail
+    virtual ~CVtable_012bedcc();                       // 0x00C701D0
+    virtual void ClearFilterHistory();                // slot 1: own override (retail 0x012BEDCC slot 1)
+    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BEDCC (SDK signatures;
+    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
 };
 
-class CVtable_012beda4 : public CCodaObjectBase {             // vtable 0x012BEDA4: the mixer voice-effect base
+namespace {
+class CVtable_012bedccReference : public CVtable_012bedcc {
 public:
-    CVtable_012beda4();                                 // 0x00C6E6A0
-    ~CVtable_012beda4();                                // 0x00C6E630
-    unsigned char _pad04[0x24];
+    CVtable_012bedccReference();
 };
-
-class CVtable_012bedcc : public CVtable_012beda4 {     // vtable 0x012BEDCC
-public:
-    CVtable_012bedcc() { }                             // out of line at 0x00C70120
-    ~CVtable_012bedcc();                               // 0x00C701D0
-};
-
-CVtable_012bedcc* Create_CVtable_012bedcc()
+// Out of class, so VC7.1 compiles it although nothing calls it.
+CVtable_012bedccReference::CVtable_012bedccReference()
 {
-    return new CVtable_012bedcc;
+}
 }

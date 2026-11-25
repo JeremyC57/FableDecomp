@@ -11,20 +11,20 @@
 //   and eax,0FFFFFFF0h`) into the 0x110-byte buffer at +0x68; two 12-word records that clear themselves with an intrinsic
 //   memset (`rep stosd`, one shared zero register); the two record pointers; then a body loop clearing two six-word
 //   arrays, which VC7.1 unrolls into interleaved stores (+0x1e4/+0x1fc, +0x1e8/+0x200, ...).
+// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
+//   its own symbol; only the base constructor it calls is respelled (??0CVtable_012beda4@@QAE@XZ -> ??0CSalRender@@QAE@XZ, unit 0x00C6E630).
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4, 0x28 bytes; constructor 0x00C6E6A0, destructor 0x00C6E630)
 #include <string.h>
 
-struct CVtable_012beda4 {                              // vtable 0x012BEDA4, 0x28 bytes
-    virtual void v00();
-    unsigned char _body[0x24];                         // +0x04 lock owner, count, flag
-    CVtable_012beda4();                                // 0x00C6E6A0
-};
 
 struct SRecord_00c6ca20 {                              // twelve words, cleared as a block
     long m_words[12];
     SRecord_00c6ca20() { memset(m_words, 0, sizeof(m_words)); }
 };
 
-struct CVtable_012bed7c : CVtable_012beda4 {           // vtable 0x012BED7C
+struct CVtable_012bed7c : CSalRender {           // vtable 0x012BED7C
     unsigned char     m_state[0x40];                   // +0x28 (not touched by the constructor)
     unsigned char     m_buffer[0x110];                 // +0x68 scratch storage, used 16-byte aligned
     unsigned char*    m_pAlignedBuffer;                // +0x178
@@ -34,8 +34,12 @@ struct CVtable_012bed7c : CVtable_012beda4 {           // vtable 0x012BED7C
     SRecord_00c6ca20* m_pPrevious;                     // +0x1e0
     long              m_valuesA[6];                    // +0x1e4
     long              m_valuesB[6];                    // +0x1fc
-    virtual void v00();
     CVtable_012bed7c();
+    virtual ~CVtable_012bed7c();                      // 0x00C6CAC0 (slot 0 of the vtable is its scalar deleting destructor)
+    virtual void ClearFilterHistory();                // slot 1: own override (retail 0x012BED7C slot 1)
+    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BED7C (SDK signatures;
+    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
 };
 
 CVtable_012bed7c::CVtable_012bed7c()

@@ -10,14 +10,16 @@
 // Callees: ??1CVtable_012beda4@@UAE@XZ 0x00C6E630; data ??_7CVtable_012bedcc@@6B@ 0x012BEDCC.
 // Header: engine/CCodaObjectBase.h (the GameCODA root); the voice-effect classes have no shared header (landed rows model them
 //   locally), so only the destructors are declared.
-#include "engine/CCodaObjectBase.h"
-class CVtable_012beda4 : public CCodaObjectBase {      // vtable 0x012BEDA4
-public:
-    virtual ~CVtable_012beda4();                        // 0x00C6E630
-};
-class CVtable_012bedcc : public CVtable_012beda4 {        // vtable 0x012BEDCC
+// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
+//   its own symbol; only the base destructor it calls is respelled (??1CVtable_012beda4@@UAE@XZ -> ??1CSalRender@@UAE@XZ, unit 0x00C6E630).
+#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4; destructor 0x00C6E630)
+class CVtable_012bedcc : public CSalRender {        // vtable 0x012BEDCC
 public:
     virtual ~CVtable_012bedcc();
+    virtual void ClearFilterHistory();                // slot 1: own override (retail 0x012BEDCC slot 1)
+    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BEDCC (SDK signatures;
+    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
 };
 CVtable_012bedcc::~CVtable_012bedcc()
 {

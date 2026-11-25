@@ -1,14 +1,40 @@
+// Behaviour test of CSalRender::Initialize (0x00C6E660), linked against the unit object: one call of SetPosition (slot 4) on `this` with
+// azimuth / elevation / distance / gain 0, a two-float macro-FX gain record holding zeroes, starting false and update true; nothing else.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRender.h"
 #include <cstdio>
-struct SZeroPair_00c6e660 { float m_first, m_second; };
-struct CRenderCall_00c6e660 {
-    virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { }
-    virtual void Submit(long a, long b, long c, long d, SZeroPair_00c6e660* r, long e, long f) { seen = a + b + c + d + e; last = f; pair = *r; ++calls; }
-    long seen, last, calls; SZeroPair_00c6e660 pair;
-    void Call() { SZeroPair_00c6e660 record; record.m_first = 0.0f; record.m_second = 0.0f; Submit(0, 0, 0, 0, &record, 0, 1); }
+#include <cstdlib>
+#include <cstring>
+#include <new>
+static int g_mallocs = 0, g_frees = 0; static void* g_lastFree = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { ++g_mallocs; return std::malloc(n); }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; g_lastFree = p; std::free(p); }
+static int g_testDtors = 0;
+static void* g_renderVtable = 0;                        // CSalRender's own vtable, captured between the base and derived vptr stores
+struct VtableSpy { explicit VtableSpy(CSalRender* r) { g_renderVtable = *reinterpret_cast<void**>(r); } };
+// A concrete renderer over the shared header (CSalRender is abstract); it keeps the base's ClearFilterHistory.
+static int g_setPos = 0; static float g_args[4]; static float g_macro[2]; static bool g_starting, g_update; static void* g_this;
+// A concrete renderer over the shared header (CSalRender is abstract); its SetPosition records the call.
+class TestRender : public CSalRender {
+public:
+    virtual ~TestRender() { ++g_testDtors; }
+    virtual void Process(const short*, int*(&)[4]) { }
+    virtual void SetGain(float, const float*, bool) { }
+    virtual void SetPosition(float a, float e, float d, float g, const float* m, bool s, bool u)
+    { ++g_setPos; g_this = this; g_args[0] = a; g_args[1] = e; g_args[2] = d; g_args[3] = g; g_macro[0] = m[0]; g_macro[1] = m[1]; g_starting = s; g_update = u; }
 };
 int main()
 {
-    CRenderCall_00c6e660 c; c.calls = 0; c.pair.m_first = 5.0f; c.Call();
-    if (c.calls != 1 || c.seen != 0 || c.last != 1 || c.pair.m_first != 0.0f || c.pair.m_second != 0.0f) { std::printf("00c6e660_TEST FAIL\n"); return 1; }
-    std::printf("00c6e660_TEST PASS\n"); return 0;
+    static double buf[sizeof(TestRender) / sizeof(double) + 1];
+    TestRender* r = ::new (buf) TestRender();
+    g_args[0] = g_args[1] = g_args[2] = g_args[3] = 9.0f; g_macro[0] = g_macro[1] = 9.0f; g_starting = true; g_update = false;
+    static_cast<CSalRender*>(r)->Initialize();
+    bool ok = g_setPos == 1 && g_this == r && g_args[0] == 0.0f && g_args[1] == 0.0f && g_args[2] == 0.0f && g_args[3] == 0.0f
+              && g_macro[0] == 0.0f && g_macro[1] == 0.0f && !g_starting && g_update;
+    if (!ok) { std::printf("00c6e660_TEST FAIL\n"); return 1; }
+    std::printf("00c6e660_TEST PASS\n");
+    return 0;
 }

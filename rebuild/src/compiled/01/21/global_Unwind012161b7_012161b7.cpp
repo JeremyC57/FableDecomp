@@ -1,4 +1,4 @@
-// EH unwind funclet @ 0x012161B7 of CAudioSource::CreateProcessor (parent @ 0x00C55270): VC7.1 emits the
+// EH unwind funclet @ 0x012161B7 of CSalSw3DVoice::CreateRenderer (parent @ 0x00C55270): VC7.1 emits the
 // unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;
 // the linker placed Fable's blocks at 0x0121xxxx. This funclet is 11 bytes at +0x37 of the parent's
 // block and is produced by the parent's translation unit, included below (no code of its own).

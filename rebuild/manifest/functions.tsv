@@ -46982,7 +46982,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c551b0	sub_00c551b0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c551c0	sub_00c551c0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c551d0	Start	CAudioSource	unknown	undefined	0		0	yes	accepted									
-00c55270	CTCHeroStats_CreateSpellEffect	_global	unknown	undefined	0		0	yes	accepted									
+00c55270	CreateRenderer	CSalSw3DVoice	unknown	undefined	0		0	yes	accepted									
 00c554c0	vfunc_0	CVtable_012b8a64	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CLandscapeBackgroundPatch_vectordeletingdestructor_00c554c0.cpp
 00c554e0	TailJmp__CChunkedFileChunk_00c554e0	_global	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CChunkedFileChunk_CChunkedFileChunk_00c554e0.cpp
 00c554f0	vfunc_0	CVtable_012b8a78	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CLandscapeBackgroundPatch_vectordeletingdestructor_00c554f0.cpp
@@ -46997,8 +46997,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c555d0	TailJmp__CChunkedFileChunk_00c555d0	_global	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CChunkedFileChunk_CChunkedFileChunk_00c555d0.cpp
 00c555e0	~CBossDef	CBossDef	__thiscall	void	1	CBossDef *	1	yes	accepted									
 00c55660	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CLandscapeBackgroundPatch_vectordeletingdestructor_00c55660.cpp
-00c55680	Open	CAudioSource	unknown	undefined	0		0	yes	accepted									
-00c556e0	Setup	CAudioSource	unknown	undefined	0		0			discovered	gapscan							
+00c55680	Initialize	CSalSw3DVoice	unknown	undefined	0		0	yes	accepted									
+00c556e0	Create	CSalSw3DVoice	unknown	undefined	0		0			discovered	gapscan							
 00c55750	StringCopyWorkerA	_global	unknown	undefined	0		0	yes	accepted									
 00c557f0	SetMemberConst_00c557f0	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\CBase_CBase_00c557f0.cpp
 00c55800	sub_00c55800	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -47550,11 +47550,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6e1f0	ScaleAccumulate16	Row00c6e1f0	unknown	undefined	0		0	yes	accepted									
 00c6e290	ScaleAccumulate16Ramp	_global	unknown	undefined	0		0	yes	accepted									
 00c6e410	Process	CVtable_012b8a78	unknown	undefined	0		0			discovered	gapscan							
-00c6e630	~CVtable_012beda4	CVtable_012beda4	__thiscall	undefined	2	CConsoleCommandParameters *,EGenericVarType	0	yes	accepted									
-00c6e660	Call	CRenderCall_00c6e660	__thiscall	void	2	CDataOutputStream *,char	1	yes	accepted									
-00c6e690	sub_00c6e690	_global	unknown	undefined	0		0			discovered	gapscan							
-00c6e6a0	CVtable_012beda4	CVtable_012beda4	__thiscall	undefined	2	CConsoleCommandParameters *,EGenericVarType	0	yes	accepted									
-00c6e6d0	vfunc_0	CVtable_012beda4	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0.cpp
+00c6e630	~CSalRender	CSalRender	__thiscall	undefined	2	CConsoleCommandParameters *,EGenericVarType	0	yes	accepted									
+00c6e660	Initialize	CSalRender	__thiscall	void	2	CDataOutputStream *,char	1	yes	accepted									
+00c6e690	ClearFilterHistory	CSalRender	unknown	undefined	0		0			discovered	gapscan							
+00c6e6a0	CSalRender	CSalRender	__thiscall	undefined	2	CConsoleCommandParameters *,EGenericVarType	0	yes	accepted									
+00c6e6d0	`scalar deleting destructor'	CSalRender	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0.cpp
 00c6e760	CVtable_012bedb8	CVtable_012bedb8	unknown	undefined	0		0	yes	accepted									
 00c6e780	~CVtable_012bedb8	CVtable_012bedb8	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
 00c6e790	DSP_AccumulateModulatedWaveform	_global	unknown	undefined	0		0	yes	accepted									

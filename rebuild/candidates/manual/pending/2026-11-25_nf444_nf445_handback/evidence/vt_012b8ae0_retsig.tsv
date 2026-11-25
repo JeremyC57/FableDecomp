@@ -1,0 +1,31 @@
+slot	retail	sdk_header_slot	sdk_arg_bytes	retail_ret	tail_jmp	retail_first_insn	verdict
+0	00c3f0b0	`deleting dtor`(unsigned)	4	[4]	-	push ebx	consistent
+1	00c556e0	Create(const CCodaSource*)	4	[4]	-	push esi	consistent
+2	00c5a1f0	SetBuffer(const CCodaSource*)	4	[]	0xc59710	push esi	tail-call only (args set by the callee)
+3	00c3f460	Release()	0	[4]	-	mov dword ptr [ecx + 0xc], 0	ARG_MISMATCH
+4	00c3f500	IsSoftware() const	0	[0]	-	mov al, 1	consistent
+5	00c551a0	Is3D() const	0	[0]	-	mov al, 1	consistent
+6	00c3f450	IsCreated() const	0	[0]	-	xor al, al	consistent
+7	00c59720	PlayBuffer(const CCodaSource*)	4	[4]	-	push esi	consistent
+8	00c5b250	PlayQueue(CCodaSource*,__int64)	12	[12]	-	push ebx	consistent
+9	00c5b7c0	Update(CCodaSource*,__int64)	12	[12]	-	sub esp, 0x2c	consistent
+10	00c59770	Resume(__int64)	8	[8]	-	mov eax, dword ptr [ecx + 0x28]	consistent
+11	00c5a210	Stop(__int64)	8	[8]	-	mov eax, dword ptr [esp + 4]	consistent
+12	00c597b0	ReleaseEnvelopes(__int64)	8	[8]	-	mov eax, dword ptr [ecx + 0x28]	consistent
+13	00c3f510	GetPlayCursor() const	0	[0]	-	push esi	consistent
+14	00c5a250	SetPlayCursor(unsigned)	4	[4]	-	push ebp	consistent
+15	00c597e0	EAXSet(const GUID*,int,void*,int)	16	[16]	-	push esi	consistent
+16	00c59820	EAXGet(const GUID*,int,void*,int)	16	[16]	-	push esi	consistent
+17	00c5a2a0	InitPlay()	0	[]	0xc5cea0	push esi	tail-call only (args set by the callee)
+18	00c5a2e0	SetPlayBuffer(const CSalBuffer&,bool)	8	[8]	-	push ecx	consistent
+19	00c3f550	GetPlatformObjectSize()	0	[0]	-	mov eax, 1	consistent
+20	00c3f560	GetPlatformBufferLoopStart()	0	[0]	-	xor eax, eax	consistent
+21	00c3f570	GetPlatformBufferEnd()	0	[0]	-	mov eax, dword ptr [ecx + 0x64]	consistent
+22	00c551d0	InitParams(const CCodaSource*,const CODASOURCE&)	8	[8]	-	push ebx	consistent
+23	00c5a5b0	ConvertFormat(CSalSwBuffer&,const void*,unsigned,unsigned)	16	[16]	-	mov ecx, dword ptr [ecx + 0xc]	consistent
+24	00c54f30	Mix(CSalSwBuffer&,unsigned,bool)	12	[12]	-	push ebp	consistent
+25	00c551c0	MixReverbInput(CSalReverb*,CSalSwBuffer&,unsigned)	12	[12]	-	ret 0xc	consistent
+26	00c551b0	MixChannel(CSalSwBuffer&,unsigned,unsigned)	12	[12]	-	ret 0xc	consistent
+27	00c54c00	StartRunOut(__int64)	8	[8]	-	mov dword ptr [ecx + 0xd4], 1	consistent
+28	00c55820	(beyond the 28 header slots)	-	[4]	-	push esi	-
+29	00bfea08	(beyond the 28 header slots)	-	[]	-	jmp dword ptr [0x144015c]	-

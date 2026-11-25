@@ -1,29 +1,11 @@
-// CRenderCall_00c6e660::Call() -- call virtual slot 4 on `this` with four zero arguments, the address of a zeroed two-float record, a zero and a one
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6E660, length 45 bytes.
-// Callees: virtual slot 4 of `this` (seven arguments; the vtable is read before the pushes).
-// Shape: `sub esp,8` is the 8-byte local record, its address is pushed as the fifth argument (`lea edx,[esp+8]` after
-// three pushes) and its two floats are zeroed by immediate stores only after all seven pushes (the scheduler sinks the
-// stores next to the call; float zeroes are immediates, which is why no zero register is shared with the pushes); the trailing `add esp,8` frees the local -- the callee is __fastcall/__stdcall and pops its arguments.
-// The manifest label "CDataOutputStream::WriteCBYTE" is propagated from a same-shape body (WriteCBYTE takes a
-// byte argument; this body takes none), so the class and record are named by address and shape.
-struct SZeroPair_00c6e660 {                 // two floats: their zeroes are immediate stores (an integer zero would claim a
-    float m_first;                         // register and turn the `push 0` immediates into `push eax`)
-    float m_second;
-};
-
-struct CRenderCall_00c6e660 {
-    virtual void v00();
-    virtual void v01();
-    virtual void v02();
-    virtual void v03();
-    virtual void Submit(long a, long b, long c, long d, SZeroPair_00c6e660* record, long e, long f);   // slot 4
-    void Call();
-};
-
-void CRenderCall_00c6e660::Call()
-{
-    SZeroPair_00c6e660 record;
-    record.m_first = 0.0f;
-    record.m_second = 0.0f;
-    Submit(0, 0, 0, 0, &record, 0, 1);
-}
+// Leaf: ?Initialize@CSalRender@@QAEXXZ
+// CSalRender::Initialize() -- put the renderer at the centre: SetPosition (slot 4) with azimuth / elevation / distance / gain 0, zero
+//   macro-FX gains, not starting, update set
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6E660, 45 bytes, `ret`.
+// Name (two sources): (1) GameCODA 2.10 SDK CODAApi.lib Release/SalRender.obj defines ?Initialize@CSalRender@@QAEXXZ, 45 bytes (= retail),
+//   between ~CSalRender and ClearFilterHistory in this retail slice; (2) its only caller ?Initialize@CSalSw3DVoice 0x00C55680 relocates it
+//   in the SDK object (retail call 0x00C556A3 on m_pRender), and slot 4 of vtable 0x012BEDA4 is SetPosition (the 0x00C54C10 CalcParams
+//   call on m_pRender). Was the stand-in ?Call@CRenderCall_00c6e660@@QAEXXZ (table spelling ?Prime@CStreamHandle@@QAEXXZ).
+// Option S unit (NF444 / NF445): this body lives in its retail TU-mate's row 0x00C6E630 (GameCODA SalRender.obj slice), included below
+//   (no code of its own); that object's copy grades against this address.
+#include "../src/compiled/00/c6/CVtable012beda4_CVtable012beda4_00c6e630.cpp"

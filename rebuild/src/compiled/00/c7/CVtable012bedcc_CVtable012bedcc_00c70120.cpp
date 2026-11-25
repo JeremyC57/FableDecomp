@@ -16,23 +16,20 @@
 // from the derived constructor (addressed off `this`, not off a block pointer -- a block constructor addresses them
 // off edx/ebx); the counters are assigned +0x664/+0x668 before +0x654/+0x658 (retail store order); +0x65C/+0x660 stay
 // unset.
+// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
+//   its own symbol; only the base constructor it calls is respelled (??0CVtable_012beda4@@QAE@XZ -> ??0CSalRender@@QAE@XZ, unit 0x00C6E630).
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4, 0x28 bytes; constructor 0x00C6E6A0, destructor 0x00C6E630)
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memset)
 
-struct CVtable_012beda4 {                          // base, constructor 0x00C6E6A0 (two vptrs, a critical section, ...)
-    unsigned char _body[0xa4];
-    CVtable_012beda4();                            // 0x00C6E6A0
-    virtual ~CVtable_012beda4();
-};
 
 template <int N> struct SAlignedFloats {           // N floats, 16-byte aligned inside a padded raw block
     unsigned char Raw[N * 4 + 16];
     float*        Aligned;
 };
 
-template <int N> struct SAlignedScratch : SAlignedFloats<N> {
-    SAlignedScratch() { this->Aligned = (float*)(((unsigned long)this->Raw + 15) & ~15); }
-};
 
 template <int N> struct SDoubleBlock {
     SAlignedFloats<N> A;
@@ -41,7 +38,9 @@ template <int N> struct SDoubleBlock {
     unsigned char     GapB[0x10];
 };
 
-struct CVtable_012bedcc : CVtable_012beda4, SAlignedScratch<64> {
+struct CVtable_012bedcc : CSalRender {
+    unsigned char     m_audioBuffer[0x190];        // +0x28 (SDK CSalRenderHrtf / HrtfMMX names: m_audioBuffer, then m_pAudio = 16-byte aligned m_audioBuffer + 0x80, computed before the vptr store)
+    short*            m_pAudio;                    // +0x1B8
     SDoubleBlock<64>  Block0;                      // +0x1BC
     SDoubleBlock<64>  Block1;                      // +0x404
     SDoubleBlock<64>* PFront;                      // +0x64C
@@ -54,10 +53,15 @@ struct CVtable_012bedcc : CVtable_012beda4, SAlignedScratch<64> {
     long              Count3;                      // +0x668
     CVtable_012bedcc();
     virtual ~CVtable_012bedcc();
+    virtual void ClearFilterHistory();                // slot 1: own override (retail 0x012BEDCC slot 1)
+    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BEDCC (SDK signatures;
+    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
 };
 
 CVtable_012bedcc::CVtable_012bedcc()
 {
+    m_pAudio = (short*)(((unsigned long)m_audioBuffer + 0x80 + 15) & ~15);
     memset(&Block0, 0, sizeof(Block0));
     memset(&Block1, 0, sizeof(Block1));
     Block0.A.Aligned = (float*)(((unsigned long)Block0.A.Raw + 15) & ~15);

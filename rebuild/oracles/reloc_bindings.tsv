@@ -6456,11 +6456,11 @@ _FableResolve_00c62440@4	00c623f0	00c62440
 ??0CSoundRecord00c77770@@QAE@XZ	00c77770	00c6afc0
 ??0CSoundStream00c6a650@@QAE@XZ	00c6a650	00c6afc0
 ??_7CVtable_012b9584@@6B@	012b9584	00c6afc0
-??0CVtable_012beda4@@QAE@XZ	00c6e6a0	00c6ca20
+??0CSalRender@@QAE@XZ	00c6e6a0	00c6ca20
 ??_7CVtable_012bed7c@@6B@	012bed7c	00c6ca20
 ??_7CVtable_012bed90@@6B@	012bed90	00c6d9d0
 ??_7CBase_012b5868@@6B@	012b5868	00c6e630
-??_7CVtable_012beda4@@6B@	012beda4	00c6e630
+??_7CSalRender@@6B@	012beda4	00c6e630
 __imp__mixerClose@4	014404c4	00c715d0
 __imp__mixerSetControlDetails@12	014404c8	00c715d0
 ??0CBase_00c6ad70@@QAE@XZ	00c6ad70	00c71710
@@ -9114,7 +9114,7 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?ResetDocumentParts@LHHttp2@LHNetworkLib@@QAEXXZ	0083eb00	0083eb90
 ?__copy_backward@std@@YIPAU?$pair@KUC3DDummyObject@std@@@1@PAU21@00ABUrandom_access_iterator_tag@1@PAH@Z	00a314e0	00a33800
 ?__unguarded_linear_insert@std@@YIXPAU?$pair@KUC3DDummyObject@std@@@1@U21@UCKeyPairCompareLess@1@@Z	00a31320	00a33800
-??0CVtable_012BEDA4@@QAE@XZ	00c6e6a0	00c70120
+??0CSalRender@@QAE@XZ	00c6e6a0	00c70120
 ??_7CVtable_012BEDCC@@6B@	012bedcc	00c70120
 ??_7CVtable_012BEDE0@@6B@	012bede0	00c70b00
 ?resize@CPODVector_0046fee9@@QAEXKABUSPODElement_0046fee9@@@Z	0046ffd0	0046fee9
@@ -11310,8 +11310,8 @@ __imp__CoInitializeEx@8	0144063c	00c53260
 ?Write@CSampleSink@@QAEXPAM@Z	00c58520	00c546e0
 ?Ramp@CVolumeScaler@@QAEXPAXGJ@Z	00c6ac90	00c54ea0
 ?Scale@CVolumeScaler@@QAEXPAXG@Z	00c6ac60	00c54ea0
-?CreateStream@CAudioSource@@QAEPAUCStreamHandle@@PAX@Z	00c55270	00c55680
-?Prime@CStreamHandle@@QAEXXZ	00c6e660	00c55680
+?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z	00c55270	00c55680
+?Initialize@CSalRender@@QAEXXZ	00c6e660	00c55680
 _StringCopyWorkerA@12	00c55750	00c56090
 ?IsExtensionPresent@CAudioContext@@QAE_NPBD@Z	00c561f0	00c562f0
 ?CloseDevice@CAudioContext@@QAEXXZ	00c56290	00c56420
@@ -18349,7 +18349,7 @@ __imp__DebugBreak@0	0143fe64	00c16750
 ?MillibelsToAmplitude_00c40ee0@@YAMJ@Z	00c40ee0	00c412d0
 ?Initialise@CDecodedStream@@QAE_NXZ	00c54510	00c547a0
 ?Init@CAudioRingBuffer@@QAEXPAEKKKKK@Z	00c5ce00	00c556e0
-?Open@CAudioSource@@QAE_NPAX@Z	00c55680	00c556e0
+?Initialize@CSalSw3DVoice@@AAE_NW4CHRTFMODE@@@Z	00c55680	00c556e0
 ?Setup@CSoftwareVoice_00c5a1d0@@UAEJPAUCVoiceDesc_00c556e0@@@Z	00c5a1d0	00c556e0
 ?g_scratchRing_0143bcb0@@3PAEA	0143bcb0	00c556e0
 ?g_speakerWord_0139c994@@3JA	0139c994	00c56060
@@ -22175,7 +22175,7 @@ __imp__CreateEventA@16	0143fec4	00c5e650
 ??_7CVtable_012b8d98@@6B@	012b8d98	00c56d60
 ??1CVtable_012b8ed4@@UAE@XZ	00c577b0	00c57410
 ??_7CVtable_012b8e20@@6B@	012b8e20	00c57410
-??1CVtable_012beda4@@UAE@XZ	00c6e630	00c6cac0
+??1CSalRender@@UAE@XZ	00c6e630	00c6cac0
 ?push_back@?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAEXABQAVCThingObject@@@Z	0074fae0	00938db0
 ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z	006a1120	005c552c
 ?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z	006a1490	005c552c

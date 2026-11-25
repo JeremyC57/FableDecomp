@@ -10,16 +10,15 @@
 //   The catalog label "CChunkedFileChunk::~CChunkedFileChunk" is propagated across this byte-twin shape and is wrong.
 // Shape: an empty user destructor of a derived polymorphic class stores its own vtable and tail-jumps to the out-of-line
 //   base destructor.
-#include "engine/CCodaObjectBase.h"   // CCodaObjectBase (vtable 0x012B5868), CodaMalloc / CodaFree
-
-class CVtable_012beda4 : public CCodaObjectBase {
-public:
-    virtual ~CVtable_012beda4();                  // 0x00C6E630
-};
-
-class CVtable_012bedb8 : public CVtable_012beda4 {
+// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
+//   its own symbol; only the base destructor it calls is respelled (??1CVtable_012beda4@@UAE@XZ -> ??1CSalRender@@UAE@XZ, unit 0x00C6E630).
+#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4; destructor 0x00C6E630)
+class CVtable_012bedb8 : public CSalRender {
 public:
     virtual ~CVtable_012bedb8();
+    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BEDB8 (SDK signatures;
+    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
 };
 
 CVtable_012bedb8::~CVtable_012bedb8()

@@ -1,0 +1,203 @@
+view	row	vftable	slot	retail	H->N	kind	new_slot_symbol
+full	00c6ca20	??_7CVtable_012bed7c@@6B@	1	00c6cad0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bed7c@@UAEXXZ
+full	00c6ca20	??_7CVtable_012bed7c@@6B@	2	00c6cc60	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bed7c@@UAEXPBFAAY03PAH@Z
+full	00c6ca20	??_7CVtable_012bed7c@@6B@	3	00c6d120	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+full	00c6ca20	??_7CVtable_012bed7c@@6B@	4	00c6d150	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bed7c@@UAEXMMMMPBM_N1@Z
+full	00c6cac0	??_7CVtable_012bed7c@@6B@	1	00c6cad0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bed7c@@UAEXXZ
+full	00c6cac0	??_7CVtable_012bed7c@@6B@	2	00c6cc60	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bed7c@@UAEXPBFAAY03PAH@Z
+full	00c6cac0	??_7CVtable_012bed7c@@6B@	3	00c6d120	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+full	00c6cac0	??_7CVtable_012bed7c@@6B@	4	00c6d150	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bed7c@@UAEXMMMMPBM_N1@Z
+full	00c6d9d0	??_7CVtable_012bed90@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6d9d0	??_7CVtable_012bed90@@6B@	2	00c6dba0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bed90@@UAEXPBFAAY03PAH@Z
+full	00c6d9d0	??_7CVtable_012bed90@@6B@	3	00c6e020	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bed90@@UAEXMPBM_N@Z
+full	00c6d9d0	??_7CVtable_012bed90@@6B@	4	00c6e050	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bed90@@UAEXMMMMPBM_N1@Z
+full	00c6da30	??_7CVtable_012bed90@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6da30	??_7CVtable_012bed90@@6B@	2	00c6dba0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bed90@@UAEXPBFAAY03PAH@Z
+full	00c6da30	??_7CVtable_012bed90@@6B@	3	00c6e020	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bed90@@UAEXMPBM_N@Z
+full	00c6da30	??_7CVtable_012bed90@@6B@	4	00c6e050	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bed90@@UAEXMMMMPBM_N1@Z
+full	00c6e630	??_7CCriticalSectionOwner_012B8FC8@@6B@	0	00c5d5b0	u->-	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	-
+full	00c6e630	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+full	00c6e630	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+full	00c6e630	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e630	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e630	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e630	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e660	??_7CCodaObjectBase@@6B@	0	00c3c840	-->W	DEBT	??_ECCodaObjectBase@@UAEPAXI@Z
+full	00c6e660	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+full	00c6e660	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+full	00c6e660	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e660	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e660	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e660	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e690	??_7CCodaObjectBase@@6B@	0	00c3c840	-->W	DEBT	??_ECCodaObjectBase@@UAEPAXI@Z
+full	00c6e690	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+full	00c6e690	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+full	00c6e690	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e690	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e690	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e690	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e6a0	??_7CCriticalSectionOwner_012B8FC8@@6B@	0	00c5d5b0	u->-	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	-
+full	00c6e6a0	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+full	00c6e6a0	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+full	00c6e6a0	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e6a0	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e6a0	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e6a0	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e6d0	??_7CCodaObjectBase@@6B@	0	00c3c840	-->W	DEBT	??_ECCodaObjectBase@@UAEPAXI@Z
+full	00c6e6d0	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+full	00c6e6d0	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+full	00c6e6d0	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e6d0	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e6d0	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e6d0	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+full	00c6e760	??_7CVtable_012bedb8@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e760	??_7CVtable_012bedb8@@6B@	2	00c6e8f0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedb8@@UAEXPBFAAY03PAH@Z
+full	00c6e760	??_7CVtable_012bedb8@@6B@	3	00c6ec50	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bedb8@@UAEXMPBM_N@Z
+full	00c6e760	??_7CVtable_012bedb8@@6B@	4	00c6ec80	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bedb8@@UAEXMMMMPBM_N1@Z
+full	00c6e780	??_7CVtable_012bedb8@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+full	00c6e780	??_7CVtable_012bedb8@@6B@	2	00c6e8f0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedb8@@UAEXPBFAAY03PAH@Z
+full	00c6e780	??_7CVtable_012bedb8@@6B@	3	00c6ec50	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bedb8@@UAEXMPBM_N@Z
+full	00c6e780	??_7CVtable_012bedb8@@6B@	4	00c6ec80	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bedb8@@UAEXMMMMPBM_N1@Z
+full	00c70120	??_7CVtable_012bedcc@@6B@	1	00c701e0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bedcc@@UAEXXZ
+full	00c70120	??_7CVtable_012bedcc@@6B@	2	00c70480	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedcc@@UAEXPBFAAY03PAH@Z
+full	00c70120	??_7CVtable_012bedcc@@6B@	3	00c70840	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bedcc@@UAEXMPBM_N@Z
+full	00c70120	??_7CVtable_012bedcc@@6B@	4	00c708a0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+full	00c701d0	??_7CVtable_012bedcc@@6B@	1	00c701e0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bedcc@@UAEXXZ
+full	00c701d0	??_7CVtable_012bedcc@@6B@	2	00c70480	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedcc@@UAEXPBFAAY03PAH@Z
+full	00c701d0	??_7CVtable_012bedcc@@6B@	3	00c70840	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bedcc@@UAEXMPBM_N@Z
+full	00c701d0	??_7CVtable_012bedcc@@6B@	4	00c708a0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+full	00c70a30	??_7CVtable_012bedcc@@6B@	1	00c701e0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bedcc@@UAEXXZ
+full	00c70a30	??_7CVtable_012bedcc@@6B@	2	00c70480	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedcc@@UAEXPBFAAY03PAH@Z
+full	00c70a30	??_7CVtable_012bedcc@@6B@	3	00c70840	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bedcc@@UAEXMPBM_N@Z
+full	00c70a30	??_7CVtable_012bedcc@@6B@	4	00c708a0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+full	00c70b00	??_7CVtable_012bede0@@6B@	1	00c70bc0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bede0@@UAEXXZ
+full	00c70b00	??_7CVtable_012bede0@@6B@	2	00c70e50	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bede0@@UAEXPBFAAY03PAH@Z
+full	00c70b00	??_7CVtable_012bede0@@6B@	3	00c71210	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bede0@@UAEXMPBM_N@Z
+full	00c70b00	??_7CVtable_012bede0@@6B@	4	00c71270	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bede0@@UAEXMMMMPBM_N1@Z
+full	00c70bb0	??_7CVtable_012bede0@@6B@	1	00c70bc0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bede0@@UAEXXZ
+full	00c70bb0	??_7CVtable_012bede0@@6B@	2	00c70e50	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bede0@@UAEXPBFAAY03PAH@Z
+full	00c70bb0	??_7CVtable_012bede0@@6B@	3	00c71210	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bede0@@UAEXMPBM_N@Z
+full	00c70bb0	??_7CVtable_012bede0@@6B@	4	00c71270	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bede0@@UAEXMMMMPBM_N1@Z
+full	00c71400	??_7CVtable_012bede0@@6B@	1	00c70bc0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?ClearFilterHistory@CVtable_012bede0@@UAEXXZ
+full	00c71400	??_7CVtable_012bede0@@6B@	2	00c70e50	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bede0@@UAEXPBFAAY03PAH@Z
+full	00c71400	??_7CVtable_012bede0@@6B@	3	00c71210	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetGain@CVtable_012bede0@@UAEXMPBM_N@Z
+full	00c71400	??_7CVtable_012bede0@@6B@	4	00c71270	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bede0@@UAEXMMMMPBM_N1@Z
+slots	00c55270	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	00c55270	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	00c55270	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	00c55270	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	00c6ca20	??_7CVtable_012bed7c@@6B@	1	00c6cad0	-->W	DEBT	?ClearFilterHistory@CVtable_012bed7c@@UAEXXZ
+slots	00c6ca20	??_7CVtable_012bed7c@@6B@	2	00c6cc60	-->W	DEBT	?Process@CVtable_012bed7c@@UAEXPBFAAY03PAH@Z
+slots	00c6ca20	??_7CVtable_012bed7c@@6B@	3	00c6d120	-->W	DEBT	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	00c6ca20	??_7CVtable_012bed7c@@6B@	4	00c6d150	-->W	DEBT	?SetPosition@CVtable_012bed7c@@UAEXMMMMPBM_N1@Z
+slots	00c6cac0	??_7CVtable_012bed7c@@6B@	1	00c6cad0	-->W	DEBT	?ClearFilterHistory@CVtable_012bed7c@@UAEXXZ
+slots	00c6cac0	??_7CVtable_012bed7c@@6B@	2	00c6cc60	-->W	DEBT	?Process@CVtable_012bed7c@@UAEXPBFAAY03PAH@Z
+slots	00c6cac0	??_7CVtable_012bed7c@@6B@	3	00c6d120	-->W	DEBT	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	00c6cac0	??_7CVtable_012bed7c@@6B@	4	00c6d150	-->W	DEBT	?SetPosition@CVtable_012bed7c@@UAEXMMMMPBM_N1@Z
+slots	00c6d9d0	??_7CVtable_012bed90@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6d9d0	??_7CVtable_012bed90@@6B@	2	00c6dba0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bed90@@UAEXPBFAAY03PAH@Z
+slots	00c6d9d0	??_7CVtable_012bed90@@6B@	3	00c6e020	-->W	DEBT	?SetGain@CVtable_012bed90@@UAEXMPBM_N@Z
+slots	00c6d9d0	??_7CVtable_012bed90@@6B@	4	00c6e050	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bed90@@UAEXMMMMPBM_N1@Z
+slots	00c6da30	??_7CVtable_012bed90@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6da30	??_7CVtable_012bed90@@6B@	2	00c6dba0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bed90@@UAEXPBFAAY03PAH@Z
+slots	00c6da30	??_7CVtable_012bed90@@6B@	3	00c6e020	-->W	DEBT	?SetGain@CVtable_012bed90@@UAEXMPBM_N@Z
+slots	00c6da30	??_7CVtable_012bed90@@6B@	4	00c6e050	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?SetPosition@CVtable_012bed90@@UAEXMMMMPBM_N1@Z
+slots	00c6e630	??_7CCriticalSectionOwner_012B8FC8@@6B@	0	00c5d5b0	u->-	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	-
+slots	00c6e630	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+slots	00c6e630	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+slots	00c6e630	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e630	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e630	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e630	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e660	??_7CCodaObjectBase@@6B@	0	00c3c840	-->W	DEBT	??_ECCodaObjectBase@@UAEPAXI@Z
+slots	00c6e660	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+slots	00c6e660	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+slots	00c6e660	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e660	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e660	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e660	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e690	??_7CCodaObjectBase@@6B@	0	00c3c840	-->W	DEBT	??_ECCodaObjectBase@@UAEPAXI@Z
+slots	00c6e690	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+slots	00c6e690	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+slots	00c6e690	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e690	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e690	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e690	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e6a0	??_7CCriticalSectionOwner_012B8FC8@@6B@	0	00c5d5b0	u->-	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	-
+slots	00c6e6a0	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+slots	00c6e6a0	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+slots	00c6e6a0	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e6a0	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e6a0	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e6a0	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e6d0	??_7CCodaObjectBase@@6B@	0	00c3c840	-->W	DEBT	??_ECCodaObjectBase@@UAEPAXI@Z
+slots	00c6e6d0	??_7CSalMutex@@6B@	0	00c5d5b0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalMutex@@UAEPAXI@Z
+slots	00c6e6d0	??_7CSalRender@@6B@	0	00c6e6d0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	??_ECSalRender@@UAEPAXI@Z
+slots	00c6e6d0	??_7CSalRender@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e6d0	??_7CSalRender@@6B@	2	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e6d0	??_7CSalRender@@6B@	3	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e6d0	??_7CSalRender@@6B@	4	00bfea08	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	__purecall
+slots	00c6e760	??_7CVtable_012bedb8@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e760	??_7CVtable_012bedb8@@6B@	2	00c6e8f0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedb8@@UAEXPBFAAY03PAH@Z
+slots	00c6e760	??_7CVtable_012bedb8@@6B@	3	00c6ec50	-->W	DEBT	?SetGain@CVtable_012bedb8@@UAEXMPBM_N@Z
+slots	00c6e760	??_7CVtable_012bedb8@@6B@	4	00c6ec80	-->W	DEBT	?SetPosition@CVtable_012bedb8@@UAEXMMMMPBM_N1@Z
+slots	00c6e780	??_7CVtable_012bedb8@@6B@	1	00c6e690	-->a	IMPROVED	?ClearFilterHistory@CSalRender@@UAEXXZ
+slots	00c6e780	??_7CVtable_012bedb8@@6B@	2	00c6e8f0	-->u	NEUTRAL (slot newly emitted / no longer emitted; unknown either way)	?Process@CVtable_012bedb8@@UAEXPBFAAY03PAH@Z
+slots	00c6e780	??_7CVtable_012bedb8@@6B@	3	00c6ec50	-->W	DEBT	?SetGain@CVtable_012bedb8@@UAEXMPBM_N@Z
+slots	00c6e780	??_7CVtable_012bedb8@@6B@	4	00c6ec80	-->W	DEBT	?SetPosition@CVtable_012bedb8@@UAEXMMMMPBM_N1@Z
+slots	00c70120	??_7CVtable_012bedcc@@6B@	1	00c701e0	-->W	DEBT	?ClearFilterHistory@CVtable_012bedcc@@UAEXXZ
+slots	00c70120	??_7CVtable_012bedcc@@6B@	2	00c70480	-->W	DEBT	?Process@CVtable_012bedcc@@UAEXPBFAAY03PAH@Z
+slots	00c70120	??_7CVtable_012bedcc@@6B@	3	00c70840	-->W	DEBT	?SetGain@CVtable_012bedcc@@UAEXMPBM_N@Z
+slots	00c70120	??_7CVtable_012bedcc@@6B@	4	00c708a0	-->W	DEBT	?SetPosition@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+slots	00c701d0	??_7CVtable_012bedcc@@6B@	1	00c701e0	-->W	DEBT	?ClearFilterHistory@CVtable_012bedcc@@UAEXXZ
+slots	00c701d0	??_7CVtable_012bedcc@@6B@	2	00c70480	-->W	DEBT	?Process@CVtable_012bedcc@@UAEXPBFAAY03PAH@Z
+slots	00c701d0	??_7CVtable_012bedcc@@6B@	3	00c70840	-->W	DEBT	?SetGain@CVtable_012bedcc@@UAEXMPBM_N@Z
+slots	00c701d0	??_7CVtable_012bedcc@@6B@	4	00c708a0	-->W	DEBT	?SetPosition@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+slots	00c70a30	??_7CVtable_012bedcc@@6B@	1	00c701e0	-->W	DEBT	?ClearFilterHistory@CVtable_012bedcc@@UAEXXZ
+slots	00c70a30	??_7CVtable_012bedcc@@6B@	2	00c70480	-->W	DEBT	?Process@CVtable_012bedcc@@UAEXPBFAAY03PAH@Z
+slots	00c70a30	??_7CVtable_012bedcc@@6B@	3	00c70840	-->W	DEBT	?SetGain@CVtable_012bedcc@@UAEXMPBM_N@Z
+slots	00c70a30	??_7CVtable_012bedcc@@6B@	4	00c708a0	-->W	DEBT	?SetPosition@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+slots	00c70b00	??_7CVtable_012bede0@@6B@	1	00c70bc0	-->W	DEBT	?ClearFilterHistory@CVtable_012bede0@@UAEXXZ
+slots	00c70b00	??_7CVtable_012bede0@@6B@	2	00c70e50	-->W	DEBT	?Process@CVtable_012bede0@@UAEXPBFAAY03PAH@Z
+slots	00c70b00	??_7CVtable_012bede0@@6B@	3	00c71210	-->W	DEBT	?SetGain@CVtable_012bede0@@UAEXMPBM_N@Z
+slots	00c70b00	??_7CVtable_012bede0@@6B@	4	00c71270	-->W	DEBT	?SetPosition@CVtable_012bede0@@UAEXMMMMPBM_N1@Z
+slots	00c70bb0	??_7CVtable_012bede0@@6B@	1	00c70bc0	-->W	DEBT	?ClearFilterHistory@CVtable_012bede0@@UAEXXZ
+slots	00c70bb0	??_7CVtable_012bede0@@6B@	2	00c70e50	-->W	DEBT	?Process@CVtable_012bede0@@UAEXPBFAAY03PAH@Z
+slots	00c70bb0	??_7CVtable_012bede0@@6B@	3	00c71210	-->W	DEBT	?SetGain@CVtable_012bede0@@UAEXMPBM_N@Z
+slots	00c70bb0	??_7CVtable_012bede0@@6B@	4	00c71270	-->W	DEBT	?SetPosition@CVtable_012bede0@@UAEXMMMMPBM_N1@Z
+slots	00c71400	??_7CVtable_012bede0@@6B@	1	00c70bc0	-->W	DEBT	?ClearFilterHistory@CVtable_012bede0@@UAEXXZ
+slots	00c71400	??_7CVtable_012bede0@@6B@	2	00c70e50	-->W	DEBT	?Process@CVtable_012bede0@@UAEXPBFAAY03PAH@Z
+slots	00c71400	??_7CVtable_012bede0@@6B@	3	00c71210	-->W	DEBT	?SetGain@CVtable_012bede0@@UAEXMPBM_N@Z
+slots	00c71400	??_7CVtable_012bede0@@6B@	4	00c71270	-->W	DEBT	?SetPosition@CVtable_012bede0@@UAEXMMMMPBM_N1@Z
+slots	01216180	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	01216180	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	01216180	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	01216180	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	0121618b	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	0121618b	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	0121618b	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	0121618b	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	01216196	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	01216196	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	01216196	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	01216196	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161a1	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	012161a1	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161a1	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	012161a1	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161ac	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	012161ac	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161ac	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	012161ac	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161b7	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	012161b7	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161b7	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	012161b7	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161c2	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	012161c2	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161c2	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	012161c2	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161cd	??_7CVtable_012b8a64@@6B@	2	00c6d630	a->W	ALLOWED	?Process@CVtable_012b8a64@@UAEXPBFAAY03PAH@Z
+slots	012161cd	??_7CVtable_012b8a64@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z
+slots	012161cd	??_7CVtable_012b8aa0@@6B@	2	00c6f3e0	a->W	ALLOWED	?Process@CVtable_012b8aa0@@UAEXPBFAAY03PAH@Z
+slots	012161cd	??_7CVtable_012b8aa0@@6B@	3	00c6d120	a->W	ALLOWED	?SetGain@CVtable_012bed7c@@UAEXMPBM_N@Z

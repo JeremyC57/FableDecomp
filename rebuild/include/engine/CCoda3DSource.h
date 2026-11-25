@@ -25,6 +25,11 @@ public:
  // ?Get3DParams@CCoda3DSource@@QBEABUCODA3DSOURCE@@XZ (the CODAApiDbg CalcParams calls it); the release reads m_3D in place.
  const CODA3DSOURCE& Get3DParams()const{return m_3D;}
 #endif
+#ifdef FABLE_RETAIL_CCODA3DSOURCE_HRTFMODE
+ // NF445 opt-in (row 0x00C556E0 CSalSw3DVoice::Create): SDK 2.10 CodeView public accessor CCoda3DSource::GetHrtfMode (returns
+ // CHRTFMODE m_HrtfMode); the release reads it in place (0x00C55727 `mov eax,[eax+1CCh]`, retail offset of m_HrtfMode).
+ CHRTFMODE GetHrtfMode()const{return m_HrtfMode;}
+#endif
 #ifdef FABLE_RETAIL_CCODA3DSOURCE_COMMIT
  // Retail opt-in (hand3c, row 0x00C41FB0 Commit): the SDK 2.10 private helpers Commit uses. IsHeadRelative / IsMaxDistanceMuted are the Dbg
  // COMDAT ?IsHeadRelative@ / ?IsMaxDistanceMuted@CCoda3DSource@@ABE_NXZ bodies (status bits 0x40000 / 0x80000); the five Calc* are out of line (CODAApi.lib Commit

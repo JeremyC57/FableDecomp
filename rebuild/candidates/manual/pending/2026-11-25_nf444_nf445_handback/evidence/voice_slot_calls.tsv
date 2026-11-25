@@ -1,0 +1,5 @@
+site	slot	object_load	pushes_before	enclosing_row	landed_source	self_status
+00c43e95	+0xc	ecx, dword ptr [esi + 0x50]	1	00c43e20 CAudioObject::SetBuffer	CAudioObject_SetBuffer_00c43e20.cpp	-|-
+00c43ef4	+0xc	ecx, dword ptr [esi + 0x50]	1	00c43ec0 CExclusiveAssert::CExclusiveAssert::OnQuestItemUsed	CMarkedBufferOwner_OnQuestItemUsed_00c43ec0.cpp	-|-
+00c43f34	+0xc	ecx, dword ptr [esi + 0x50]	3	00c43ec0 CExclusiveAssert::CExclusiveAssert::OnQuestItemUsed	CMarkedBufferOwner_OnQuestItemUsed_00c43ec0.cpp	-|-
+00c441b1	+0xc	ecx, dword ptr [esi + 0x50]	1	00c44170 CExclusiveAssert::CExclusiveAssert::Destructor_Extended	CMarkedBufferOwner_DestructorExtended_00c44170.cpp	?Close@CMarkedBufferOwner@@UAEXXZ|RELOCATION_MATCH

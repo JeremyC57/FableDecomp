@@ -1,126 +1,139 @@
-// CAudioSource::CreateProcessor(unsigned long mode) -- create the voice's 3D sound processor for the speaker mode: detect the CPU once, then build the SSE2 or the MMX/C variant of the HRTF processor (0x100000), the four-tap delay panner (0x200000), the gain-ramp panner (0x400000) or the plain stereo panner (anything else); null when the allocation fails
-// Leaf: ?CreateProcessor@CAudioSource@@QAEPAVCVtable_012beda4@@K@Z
+// CSalSw3DVoice::CreateRenderer(CHRTFMODE mode) -- create the voice's 3D renderer for the HRTF mode: detect the CPU once, then build the SSE2
+//   or the MMX/C variant of the full-HRTF renderer (C_HRTF_FULL 0x100000), the HRTF-delay panner (C_HRTF_DELAY 0x200000), the
+//   volume panner (C_HRTF_VOLPAN 0x400000) or the disabled (plain stereo) renderer (anything else); null when the allocation fails
+// Leaf: ?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z
 // Flags: /EHsc
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C55270, 587 bytes, thiscall `ret 4` (`this` unused), EH-framed (states 0..7: one per
-//   `new`, the class operator delete runs if a constructor throws).
-// Identity (descriptive; libpk software mixer, no PDB / RTTI): the only caller is the landed CAudioSource::Open 0x00C55680, which
-//   stores the result as the voice's processor (+0x220) and primes it; it binds the address as ?CreateStream@CAudioSource@@ (a
-//   descriptive guess: the body builds the effect objects, not a stream; NAME_FIXES). The catalog label
-//   "CTCHeroStats_CreateSpellEffect" is propagated.
-// Callees: DetectCpu 0x00C52E40 (bound spelling) behind g_cpuDetected 0x0143BC78, g_cpuHasSSE2 0x0143BC7D; CodaMalloc 0x00C3C360
-//   (the CCodaObjectBase operator new); the constructors CVtable_012bede0 0x00C70B00, CVtable_012bedcc 0x00C70120,
-//   CVtable_012bed7c 0x00C6CA20 (base of the SSE2 / MMX four-tap panners, whose own constructors 0x00C55070 / 0x00C550D0 are
-//   expanded here: base call + vtable 0x012B8A64 / 0x012B8AA0), CVtable_012b8a78 0x00C55090, CVtable_012b8a8c 0x00C550B0,
-//   CVtable_012b8ab4 0x00C550F0, CVtable_012b8ac8 0x00C55110.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C55270, 587 bytes, thiscall `ret 4` (`this` unused), EH-framed (states 0..7: one per `new`, the class
+//   operator delete runs if a constructor throws; unwind funclets 0x01216180..0x012161CD are produced by this TU).
+// Name (two sources): (1) GameCODA 2.10 SDK CODAApi.lib Release/SalSw3DVoice.obj: the private ?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@
+//   W4CHRTFMODE@@@Z is one of the two relocations of ?Initialize@CSalSw3DVoice (retail 0x00C55680 calls 0x00C55270 there); (2) the body:
+//   CHRTFMODE values 0x100000 / 0x200000 / 0x400000 (engine/CodaProcessingTypes.h) select the SDK CSalRenderHrtf / PanDelay / Pan /
+//   Disable families, each in an SSE2 and an MMX variant (CSalCpuInfo SSE2 flag 0x0143BC7D). Was the stand-in
+//   ?CreateProcessor@CAudioSource@@QAEPAVCVtable_012beda4@@K@Z (NF444 / NF445 closure).
+// Callees keep the spellings the table binds today (out of this batch): DetectCpu 0x00C52E40 (?Initialize@CSalCpuInfo) behind
+//   g_cpuDetected 0x0143BC78 / g_cpuHasSSE2 0x0143BC7D; CodaMalloc 0x00C3C360 (the CCodaObjectBase operator new); the constructors
+//   CVtable_012bede0 0x00C70B00 (CSalRenderHrtfSSE2), CVtable_012bedcc 0x00C70120 (CSalRenderHrtfMMX), CVtable_012bed7c 0x00C6CA20
+//   (CSalRenderPanDelay, base of the SSE2 / MMX four-tap panners, whose own constructors 0x00C55070 / 0x00C550D0 are expanded here: base
+//   call + vptr 0x012B8A64 / 0x012B8AA0), CVtable_012b8a78 0x00C55090, CVtable_012b8a8c 0x00C550B0, CVtable_012b8ab4 0x00C550F0,
+//   CVtable_012b8ac8 0x00C55110. These derived classes are local models over the shared engine/CSalRender.h base (no derived header yet);
+//   their overrides carry the SDK CSalRender signatures (retail vtables: PanDelay SIMD classes own slots 1-2, the others slot 2).
 // Sizes (the CodaMalloc arguments): 0xC6C, 0x214, 0x78, 0x38 (SSE2) and 0x66C, 0x214, 0x78, 0x38 (MMX / C).
-#include "engine/CCodaObjectBase.h"
+#define FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
+#define FABLE_RETAIL_PASS22_CCODA3D_CREATE
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_SW_PASS23
+#define FABLE_RETAIL_CSALSW3D_CREATE
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalSw3DVoice.h"
+#include "engine/CSalRender.h"
 
 extern bool g_cpuDetected;                                                  // 0x0143BC78
 extern bool g_cpuHasSSE2;                                                   // 0x0143BC7D
 void DetectCpu();                                                           // 0x00C52E40
 
-struct CRITICAL_SECTION { void* DebugInfo; long LockCount, RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-class CUnprovenLock_012B8FC8 { public: virtual ~CUnprovenLock_012B8FC8() {} CRITICAL_SECTION Section; };
-class CVtable_012beda4 : public CCodaObjectBase {                          // 0x28 bytes (ctor 0x00C6E6A0 landed)
-public:
-    CVtable_012beda4();                                                     // 0x00C6E6A0
-    virtual ~CVtable_012beda4();
-    virtual void Clear();
-    virtual void Process(const short*, long* const*);
-    virtual void SetVolume(float, unsigned long, bool) = 0;
-    virtual void Update(float, float, float, float, const float*, bool, bool);
-    CUnprovenLock_012B8FC8 Lock;                                            // +0x04 (its CRITICAL_SECTION at +0x08)
-    float m_volume;                                                         // +0x20
-    bool  m_crossfade;                                                      // +0x24
-};
-class CVtable_012bed7c : public CVtable_012beda4 {                         // four-tap delay panner, 0x214 bytes
+class CVtable_012bed7c : public CSalRender {                                // four-tap delay panner (PanDelay), 0x214 bytes
 public:
     CVtable_012bed7c();                                                     // 0x00C6CA20
-    virtual void SetVolume(float, unsigned long, bool);
+    virtual ~CVtable_012bed7c();                                            // 0x00C6CAC0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x214 - 0x28];
 };
-class CVtable_012bed90 : public CVtable_012beda4 {                         // gain-ramp panner, 0x78 bytes
+class CVtable_012bed90 : public CSalRender {                                // volume panner (Pan), 0x78 bytes
 public:
     CVtable_012bed90();                                                     // 0x00C6D9D0
-    virtual void SetVolume(float, unsigned long, bool);
+    virtual ~CVtable_012bed90();                                            // 0x00C6DA30
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x78 - 0x28];
 };
-class CVtable_012bedb8 : public CVtable_012beda4 {                         // plain stereo panner, 0x38 bytes
+class CVtable_012bedb8 : public CSalRender {                                // disabled / plain stereo renderer, 0x38 bytes
 public:
     CVtable_012bedb8();                                                     // 0x00C6E760
-    virtual void SetVolume(float, unsigned long, bool);
+    virtual ~CVtable_012bedb8();                                            // 0x00C6E780
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x38 - 0x28];
 };
-class CVtable_012bede0 : public CVtable_012beda4 {                         // HRTF processor (SSE2), 0xC6C bytes
+class CVtable_012bede0 : public CSalRender {                                // full HRTF renderer (SSE2), 0xC6C bytes
 public:
     CVtable_012bede0();                                                     // 0x00C70B00
-    virtual void SetVolume(float, unsigned long, bool);
+    virtual ~CVtable_012bede0();                                            // 0x00C70BB0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0xc6c - 0x28];
 };
-class CVtable_012bedcc : public CVtable_012beda4 {                         // HRTF processor (C), 0x66C bytes
+class CVtable_012bedcc : public CSalRender {                                // full HRTF renderer (MMX / C), 0x66C bytes
 public:
     CVtable_012bedcc();                                                     // 0x00C70120
-    virtual void SetVolume(float, unsigned long, bool);
+    virtual ~CVtable_012bedcc();                                            // 0x00C701D0
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
+    virtual void SetGain(float, const float*, bool);
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x66c - 0x28];
 };
-class CVtable_012b8a64 : public CVtable_012bed7c {                         // SSE2 four-tap panner (vtable 0x012B8A64)
+class CVtable_012b8a64 : public CVtable_012bed7c {                          // SSE2 four-tap panner (vtable 0x012B8A64)
 public:
     CVtable_012b8a64() {}                                                   // 0x00C55070
-    virtual void Process(const short*, long* const*);
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
 };
-class CVtable_012b8aa0 : public CVtable_012bed7c {                         // MMX four-tap panner (vtable 0x012B8AA0)
+class CVtable_012b8aa0 : public CVtable_012bed7c {                          // MMX four-tap panner (vtable 0x012B8AA0)
 public:
     CVtable_012b8aa0() {}                                                   // 0x00C550D0
-    virtual void Process(const short*, long* const*);
+    virtual void ClearFilterHistory();
+    virtual void Process(const short*, int*(&)[4]);
 };
-class CVtable_012b8a78 : public CVtable_012bed90 {                         // SSE2 gain-ramp panner (vtable 0x012B8A78)
+class CVtable_012b8a78 : public CVtable_012bed90 {                          // SSE2 volume panner (vtable 0x012B8A78)
 public:
     CVtable_012b8a78();                                                     // 0x00C55090
-    virtual void Process(const short*, long* const*);
+    virtual void Process(const short*, int*(&)[4]);
 };
-class CVtable_012b8ab4 : public CVtable_012bed90 {                         // MMX gain-ramp panner (vtable 0x012B8AB4)
+class CVtable_012b8ab4 : public CVtable_012bed90 {                          // MMX volume panner (vtable 0x012B8AB4)
 public:
     CVtable_012b8ab4();                                                     // 0x00C550F0
-    virtual void Process(const short*, long* const*);
+    virtual void Process(const short*, int*(&)[4]);
 };
-class CVtable_012b8a8c : public CVtable_012bedb8 {                         // SSE2 stereo panner (vtable 0x012B8A8C)
+class CVtable_012b8a8c : public CVtable_012bedb8 {                          // SSE2 disabled renderer (vtable 0x012B8A8C)
 public:
     CVtable_012b8a8c();                                                     // 0x00C550B0
-    virtual void Process(const short*, long* const*);
+    virtual void Process(const short*, int*(&)[4]);
 };
-class CVtable_012b8ac8 : public CVtable_012bedb8 {                         // MMX stereo panner (vtable 0x012B8AC8)
+class CVtable_012b8ac8 : public CVtable_012bedb8 {                          // MMX disabled renderer (vtable 0x012B8AC8)
 public:
     CVtable_012b8ac8();                                                     // 0x00C55110
-    virtual void Process(const short*, long* const*);
+    virtual void Process(const short*, int*(&)[4]);
 };
 
-class CAudioSource {
-public:
-    CVtable_012beda4* CreateProcessor(unsigned long mode);
-};
-
-CVtable_012beda4* CAudioSource::CreateProcessor(unsigned long mode)
+CSalRender* CSalSw3DVoice::CreateRenderer(CHRTFMODE mode)
 {
     if (!g_cpuDetected)
         DetectCpu();
     if (g_cpuHasSSE2) {
         switch (mode) {
-        case 0x100000:
+        case C_HRTF_FULL:
             return new CVtable_012bede0;
-        case 0x200000:
+        case C_HRTF_DELAY:
             return new CVtable_012b8a64;
-        case 0x400000:
+        case C_HRTF_VOLPAN:
             return new CVtable_012b8a78;
         default:
             return new CVtable_012b8a8c;
         }
     } else {
         switch (mode) {
-        case 0x100000:
+        case C_HRTF_FULL:
             return new CVtable_012bedcc;
-        case 0x200000:
+        case C_HRTF_DELAY:
             return new CVtable_012b8aa0;
-        case 0x400000:
+        case C_HRTF_VOLPAN:
             return new CVtable_012b8ab4;
         default:
             return new CVtable_012b8ac8;

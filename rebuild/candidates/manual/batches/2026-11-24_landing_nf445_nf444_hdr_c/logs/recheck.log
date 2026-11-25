@@ -1,0 +1,88 @@
+addr       parity           behav  name
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8a8c@@QAE@XZ -> 00c550b0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8a78@@QAE@XZ -> 00c55090 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8ac8@@QAE@XZ -> 00c55110 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8ab4@@QAE@XZ -> 00c550f0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN STANDIN_LEAF ?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z (catalog CAudioSource::CreateProcessor; names another function)
+00c55270   RELOCATION_MATCH PASS   CreateProcessor
+00c55680   WARN RELOC_NAME: ?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z -> 00c55270 labelled 'CAudioSource::CreateProcessor'
+00c55680   WARN RELOC_NAME: ?Initialize@CSalRender@@QAEXXZ -> 00c6e660 labelled 'CRenderCall_00c6e660::Call'
+00c55680   WARN STANDIN_LEAF ?Initialize@CSalSw3DVoice@@AAE_NW4CHRTFMODE@@@Z (catalog CAudioSource::Open; names another function)
+00c55680   RELOCATION_MATCH PASS   Open
+00c556e0   WARN RELOC_NAME: ?Setup@CSoftwareVoice_00c5a1d0@@UAEJPAUCVoiceDesc_00c556e0@@@Z -> 00c5a1d0 labelled 'CVtable_012B5C60::Initialise'
+00c556e0   WARN RELOC_NAME: ?Initialize@CSalSw3DVoice@@AAE_NW4CHRTFMODE@@@Z -> 00c55680 labelled 'CAudioSource::Open'
+00c556e0   WARN STANDIN_LEAF ?Create@CSalSw3DVoice@@UAEHPBVCCodaSource@@@Z (catalog CAudioSource::Setup; names another function)
+00c556e0   RELOCATION_MATCH PASS   Setup
+00c6ca20   WARN RELOC_NAME: ??0CSalRender@@QAE@XZ -> 00c6e6a0 labelled 'CVtable_012beda4::CVtable_012beda4'
+00c6ca20   RELOCATION_MATCH PASS   CVtable_012bed7c
+00c6cac0   WARN RELOC_NAME: ??1CSalRender@@UAE@XZ -> 00c6e630 labelled 'CVtable_012beda4::~CVtable_012beda4'
+00c6cac0   RELOCATION_MATCH PASS   ~CVtable_012bed7c
+00c6d9d0   WARN RELOC_NAME: ??0CSalRender@@QAE@XZ -> 00c6e6a0 labelled 'CVtable_012beda4::CVtable_012beda4'
+00c6d9d0   RELOCATION_MATCH PASS   CVtable_012bed90
+00c6da30   WARN RELOC_NAME: ??1CSalRender@@UAE@XZ -> 00c6e630 labelled 'CVtable_012beda4::~CVtable_012beda4'
+00c6da30   RELOCATION_MATCH PASS   ~CVtable_012bed90
+00c6e630   WARN STANDIN_LEAF ??1CSalRender@@UAE@XZ (catalog CVtable_012beda4::~CVtable_012beda4; names another function)
+00c6e630   RELOCATION_MATCH PASS   ~CVtable_012beda4
+00c6e760   WARN RELOC_NAME: ??0CSalRender@@QAE@XZ -> 00c6e6a0 labelled 'CVtable_012beda4::CVtable_012beda4'
+00c6e760   RELOCATION_MATCH PASS   CVtable_012bedb8
+00c6e780   WARN RELOC_NAME: ??1CSalRender@@UAE@XZ -> 00c6e630 labelled 'CVtable_012beda4::~CVtable_012beda4'
+00c6e780   RELOCATION_MATCH PASS   ~CVtable_012bedb8
+00c70120   WARN RELOC_NAME: ??0CSalRender@@QAE@XZ -> 00c6e6a0 labelled 'CVtable_012beda4::CVtable_012beda4'
+00c70120   RELOCATION_MATCH PASS   CVtable_012bedcc
+00c701d0   WARN RELOC_NAME: ??1CSalRender@@UAE@XZ -> 00c6e630 labelled 'CVtable_012beda4::~CVtable_012beda4'
+00c701d0   RELOCATION_MATCH PASS   ~CVtable_012bedcc
+00c70a30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c70b00   WARN RELOC_NAME: ??0CSalRender@@QAE@XZ -> 00c6e6a0 labelled 'CVtable_012beda4::CVtable_012beda4'
+00c70b00   RELOCATION_MATCH PASS   CVtable_012bede0
+00c70bb0   WARN RELOC_NAME: ??1CSalRender@@UAE@XZ -> 00c6e630 labelled 'CVtable_012beda4::~CVtable_012beda4'
+00c70bb0   RELOCATION_MATCH PASS   ~CVtable_012bede0
+00c71400   RELOCATION_MATCH PASS   `scalar deleting destructor'
+01216180   RELOCATION_MATCH PASS   Unwind@01216180
+0121618b   RELOCATION_MATCH PASS   Unwind@0121618b
+01216196   RELOCATION_MATCH PASS   Unwind@01216196
+012161a1   RELOCATION_MATCH PASS   Unwind@012161a1
+012161ac   RELOCATION_MATCH PASS   Unwind@012161ac
+012161b7   RELOCATION_MATCH PASS   Unwind@012161b7
+012161c2   RELOCATION_MATCH PASS   Unwind@012161c2
+012161cd   RELOCATION_MATCH PASS   Unwind@012161cd
+
+WINS: 24
+  00c55270 RELOCATION_MATCH CSalSw3DVoice::?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z
+  00c55680 RELOCATION_MATCH CSalSw3DVoice::?Initialize@CSalSw3DVoice@@AAE_NW4CHRTFMODE@@@Z
+  00c556e0 RELOCATION_MATCH CSalSw3DVoice::?Create@CSalSw3DVoice@@UAEHPBVCCodaSource@@@Z
+  00c6ca20 RELOCATION_MATCH CVtable_012bed7c::??0CVtable_012bed7c
+  00c6cac0 RELOCATION_MATCH CVtable_012bed7c::??1CVtable_012bed7c@@UAE@XZ
+  00c6d9d0 RELOCATION_MATCH CVtable_012bed90::??0CVtable_012bed90
+  00c6da30 RELOCATION_MATCH CVtable_012bed90::??1CVtable_012bed90@@UAE@XZ
+  00c6e630 RELOCATION_MATCH CSalRender::??1CSalRender@@UAE@XZ
+  00c6e760 RELOCATION_MATCH CVtable_012bedb8::??0CVtable_012bedb8
+  00c6e780 RELOCATION_MATCH CVtable_012bedb8::??1CVtable_012bedb8@@UAE@XZ
+  00c70120 RELOCATION_MATCH CVtable_012bedcc::??0CVtable_012bedcc@@QAE@XZ
+  00c701d0 RELOCATION_MATCH CVtable_012bedcc::??1CVtable_012bedcc@@UAE@XZ
+  00c70a30 RELOCATION_MATCH CVtable_012bedcc::??_GCVtable_012bedcc@@UAEPAXI@Z
+  00c70b00 RELOCATION_MATCH CVtable_012bede0::??0CVtable_012bede0@@QAE@XZ
+  00c70bb0 RELOCATION_MATCH CVtable_012bede0::??1CVtable_012bede0@@UAE@XZ
+  00c71400 RELOCATION_MATCH CVtable_012bede0::??_GCVtable_012bede0@@UAEPAXI@Z
+  01216180 RELOCATION_MATCH _global::Unwind@01216180
+  0121618b RELOCATION_MATCH _global::Unwind@0121618b
+  01216196 RELOCATION_MATCH _global::Unwind@01216196
+  012161a1 RELOCATION_MATCH _global::Unwind@012161a1
+  012161ac RELOCATION_MATCH _global::Unwind@012161ac
+  012161b7 RELOCATION_MATCH _global::Unwind@012161b7
+  012161c2 RELOCATION_MATCH _global::Unwind@012161c2
+  012161cd RELOCATION_MATCH _global::Unwind@012161cd
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+00c6e660   WARN STANDIN_LEAF ?Initialize@CSalRender@@QAEXXZ (catalog CRenderCall_00c6e660::Call; names another function)
+00c6e660   MATCH            PASS   Call
+00c6e690   MATCH            PASS   sub_00c6e690
+00c6e6a0   WARN STANDIN_LEAF ??0CSalRender@@QAE@XZ (catalog CVtable_012beda4::CVtable_012beda4; names another function)
+00c6e6a0   RELOCATION_MATCH PASS   CVtable_012beda4
+00c6e6d0   WARN RELOC_NAME: ??1CSalRender@@UAE@XZ -> 00c6e630 labelled 'CVtable_012beda4::~CVtable_012beda4'
+00c6e6d0   RELOCATION_MATCH PASS   vfunc_0
+
+WINS: 4
+  00c6e660 MATCH CSalRender::?Initialize@CSalRender@@QAEXXZ
+  00c6e690 MATCH CSalRender::?ClearFilterHistory@CSalRender@@UAEXXZ
+  00c6e6a0 RELOCATION_MATCH CSalRender::??0CSalRender@@QAE@XZ
+  00c6e6d0 RELOCATION_MATCH CSalRender::??_GCSalRender@@UAEPAXI@Z

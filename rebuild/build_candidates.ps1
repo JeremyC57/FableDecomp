@@ -56094,6 +56094,7 @@ $catalog = @(
         Source = '00/c7/CVtable012bede0_scalardeletingdestructor_00c71400.cpp'
         TestSource = '00/c7/CVtable012bede0_scalardeletingdestructor_00c71400_test.cpp'
         PassPattern = '00c71400_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c71cd0'
@@ -82491,10 +82492,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6e6d0'
-        Module = 'CVtable_012beda4'
+        Module = 'CSalRender'
         Source = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0.cpp'
         TestSource = '00/c6/CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0_test.cpp'
         PassPattern = 'PASS_00c6e6d0'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c70a30'
@@ -82502,6 +82504,7 @@ $catalog = @(
         Source = '00/c7/CVtable012bedcc_scalardeletingdestructor_00c70a30.cpp'
         TestSource = '00/c7/CVtable012bedcc_scalardeletingdestructor_00c70a30_test.cpp'
         PassPattern = '00c70a30_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c72910'
@@ -107398,10 +107401,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6e690'
-        Module = '_gapscan'
+        Module = 'CSalRender'
         Source = '00/c6/gapscan_sub00c6e690_00c6e690.cpp'
         TestSource = '00/c6/gapscan_sub00c6e690_00c6e690_test.cpp'
         PassPattern = 'PASS_00c6e690'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c71740'
@@ -195377,17 +195381,19 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6e630'
-        Module = 'CVtable_012beda4'
+        Module = 'CSalRender'
         Source = '00/c6/CVtable012beda4_CVtable012beda4_00c6e630.cpp'
         TestSource = '00/c6/CVtable012beda4_CVtable012beda4_00c6e630_test.cpp'
         PassPattern = '00c6e630_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c6e6a0'
-        Module = 'CVtable_012beda4'
+        Module = 'CSalRender'
         Source = '00/c6/CVtable012beda4_CVtable012beda4_00c6e6a0.cpp'
         TestSource = '00/c6/CVtable012beda4_CVtable012beda4_00c6e6a0_test.cpp'
         PassPattern = '00c6e6a0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00ef5c00'
@@ -198739,10 +198745,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6e660'
-        Module = 'CRenderCall_00c6e660'
+        Module = 'CSalRender'
         Source = '00/c6/CRenderCall00c6e660_Call_00c6e660.cpp'
         TestSource = '00/c6/CRenderCall00c6e660_Call_00c6e660_test.cpp'
         PassPattern = '00c6e660_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '0052cc50'
@@ -209276,6 +209283,7 @@ $catalog = @(
         Source = '00/c6/CVtable012bed90_CVtable012bed90_00c6d9d0.cpp'
         TestSource = '00/c6/CVtable012bed90_CVtable012bed90_00c6d9d0_test.cpp'
         PassPattern = '00c6d9d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00ca5170'
@@ -225864,6 +225872,7 @@ $catalog = @(
         Source = '00/c6/CVtable012bed7c_CVtable012bed7c_00c6ca20.cpp'
         TestSource = '00/c6/CVtable012bed7c_CVtable012bed7c_00c6ca20_test.cpp'
         PassPattern = '00c6ca20_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00d36860'
@@ -277510,6 +277519,7 @@ $catalog = @(
         Source = '00/c7/CVtable012bedcc_CVtable012bedcc_00c70120.cpp'
         TestSource = '00/c7/CVtable012bedcc_CVtable012bedcc_00c70120_test.cpp'
         PassPattern = '00c70120_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c70b00'
@@ -277517,6 +277527,7 @@ $catalog = @(
         Source = '00/c7/CVtable012bede0_CVtable012bede0_00c70b00.cpp'
         TestSource = '00/c7/CVtable012bede0_CVtable012bede0_00c70b00_test.cpp'
         PassPattern = '00c70b00_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00403eb0'
@@ -306898,7 +306909,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c55680'
-        Module = 'CAudioSource'
+        Module = 'CSalSw3DVoice'
         Source = '00/c5/CAudioSource_Open_00c55680.cpp'
         TestSource = '00/c5/CAudioSource_Open_00c55680_test.cpp'
         PassPattern = '00c55680_TEST PASS'
@@ -307416,6 +307427,7 @@ $catalog = @(
         Source = '00/c6/CVtable012bedb8_CVtable012bedb8_00c6e760.cpp'
         TestSource = '00/c6/CVtable012bedb8_CVtable012bedb8_00c6e760_test.cpp'
         PassPattern = '00c6e760_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c70240'
@@ -349164,7 +349176,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c556e0'
-        Module = 'CAudioSource'
+        Module = 'CSalSw3DVoice'
         Source = '00/c5/CAudioSource_Setup_00c556e0.cpp'
         TestSource = '00/c5/CAudioSource_Setup_00c556e0_test.cpp'
         PassPattern = '00c556e0_TEST PASS'
@@ -380303,6 +380315,7 @@ $catalog = @(
         Source = '00/c6/CVtable012bed7c_CVtable012bed7c_00c6cac0.cpp'
         TestSource = '00/c6/CVtable012bed7c_CVtable012bed7c_00c6cac0_test.cpp'
         PassPattern = '00c6cac0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c6da30'
@@ -380310,6 +380323,7 @@ $catalog = @(
         Source = '00/c6/CVtable012bed90_CVtable012bed90_00c6da30.cpp'
         TestSource = '00/c6/CVtable012bed90_CVtable012bed90_00c6da30_test.cpp'
         PassPattern = '00c6da30_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c6e780'
@@ -380317,6 +380331,7 @@ $catalog = @(
         Source = '00/c6/CVtable012bedb8_CVtable012bedb8_00c6e780.cpp'
         TestSource = '00/c6/CVtable012bedb8_CVtable012bedb8_00c6e780_test.cpp'
         PassPattern = '00c6e780_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00938db0'
@@ -384118,6 +384133,7 @@ $catalog = @(
         Source = '00/c7/CVtable012bedcc_CVtable012bedcc_00c701d0.cpp'
         TestSource = '00/c7/CVtable012bedcc_CVtable012bedcc_00c701d0_test.cpp'
         PassPattern = '00c701d0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00c70bb0'
@@ -384125,6 +384141,7 @@ $catalog = @(
         Source = '00/c7/CVtable012bede0_CVtable012bede0_00c70bb0.cpp'
         TestSource = '00/c7/CVtable012bede0_CVtable012bede0_00c70bb0_test.cpp'
         PassPattern = '00c70bb0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Ob1'
     }
     [pscustomobject]@{
         Address = '00ca96f0'
@@ -386415,7 +386432,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c55270'
-        Module = 'CAudioSource'
+        Module = 'CSalSw3DVoice'
         Source = '00/c5/CAudioSource_CreateProcessor_00c55270.cpp'
         TestSource = '00/c5/CAudioSource_CreateProcessor_00c55270_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'

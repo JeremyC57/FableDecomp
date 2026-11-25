@@ -1,20 +1,42 @@
-// Behaviour test for 00c70a30: CVtable_012bedcc scalar deleting destructor -- destroy, then free through the class allocator
+// Behaviour test (NF445, linked against the row object over engine/CSalRender.h; replaces the HEAD self-contained mirror) of the scalar
+// deleting destructor 00c70a30 of CVtable_012bedcc (slot 0 of its vtable): delete through a base pointer runs the derived destructor, then the
+// CSalRender base destructor, each once and in that order, then frees the object once through the class allocator (CodaFree).
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRender.h"
 #include <cstdio>
 #include <cstdlib>
-static int g_dtor = 0, g_base = 0, g_free = 0;
-class CCodaObjectBase {
+static int g_baseCtors = 0, g_baseDtors = 0, g_dtors = 0, g_frees = 0, g_order = 0, g_baseAt = 0, g_derivedAt = 0, g_clear = 0;
+static void* g_lastFree = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { return std::malloc(n); }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; g_lastFree = p; std::free(p); }
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { ++g_baseCtors; }
+CSalRender::~CSalRender() { ++g_baseDtors; g_baseAt = ++g_order; }
+void CSalRender::ClearFilterHistory() { }
+
+class CVtable_012bedcc : public CSalRender {     // vtable 0x012BEDCC
 public:
-    virtual ~CCodaObjectBase() { }
-    static void* operator new(unsigned int size) { return std::malloc(size); }
-    static void operator delete(void* p) { ++g_free; std::free(p); }
+    CVtable_012bedcc() { }                             // out of line at 0x00C70120 in retail
+    virtual ~CVtable_012bedcc();                       // 0x00C701D0
+    virtual void ClearFilterHistory();                // slot 1: own override (retail 0x012BEDCC slot 1)
+    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BEDCC (SDK signatures;
+    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
+    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
 };
-class CVtable_012beda4 : public CCodaObjectBase { public: CVtable_012beda4() { } ~CVtable_012beda4() { ++g_base; } unsigned char _pad04[0x24]; };
-class CVtable_012bedcc : public CVtable_012beda4 { public: CVtable_012bedcc() { } ~CVtable_012bedcc() { ++g_dtor; } };
+
+CVtable_012bedcc::~CVtable_012bedcc() { ++g_dtors; g_derivedAt = ++g_order; }
+void CVtable_012bedcc::ClearFilterHistory() { ++g_clear; }
+void CVtable_012bedcc::Process(const short*, int*(&)[4]) { }
+void CVtable_012bedcc::SetGain(float, const float*, bool) { }
+void CVtable_012bedcc::SetPosition(float, float, float, float, const float*, bool, bool) { }
 int main()
 {
-    CCodaObjectBase* p = new CVtable_012bedcc;
-    delete p;
-    int ok = g_dtor == 1 && g_base == 1 && g_free == 1;
-    std::printf(ok ? "00c70a30_TEST PASS\n" : "00c70a30_TEST FAIL\n");
-    return ok ? 0 : 1;
+    CVtable_012bedcc* r = new CVtable_012bedcc;
+    CCodaObjectBase* p = r; delete p;
+    bool ok = g_baseCtors == 1 && g_dtors == 1 && g_baseDtors == 1 && g_derivedAt == 1 && g_baseAt == 2 && g_frees == 1 && g_lastFree == (void*)r;
+    if (!ok) { std::printf("00c70a30_TEST FAIL\n"); return 1; }
+    std::printf("00c70a30_TEST PASS\n");
+    return 0;
 }
