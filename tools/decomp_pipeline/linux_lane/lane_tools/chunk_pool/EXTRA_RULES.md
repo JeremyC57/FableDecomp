@@ -551,3 +551,16 @@ NF343 group 2: both copy-EQ texts move the leaf 3636 v 3652; batches/2026-11-24_
 - Each opt-in in a block is checked on its own with the others in place. For example, 0x00813460 without
   FABLE_RETAIL_STLP_GROUP_MEMBER_TREE_CLEAR_SIZE_OWNER changes only `clear`, from 41 to 51 bytes, and its leaf stays RELOCATION_MATCH.
   Condition 3 is unchanged.
+
+## 2026-11-25 advisor decision (owner delegated), NF409 R-NF409-2: row-end optimize reset as scaffolding
+This narrowly extends the p25 clause, which allows a pragma that restores the owner's command-line mode. A row may end with `#pragma optimize("", on)`, marked `Fidelity: scaffolding, not retail`, when all of the following hold:
+- It changes only end-of-TU template instances. VC7.1 takes their optimize mode at the end of the TU.
+- It never changes the leaf, or anything spelled out in the row text.
+- Every COMDAT it changes is EQ at its bound retail address, or tier 1.
+
+The row comment cites the measurement and the flags:
+- a comdat_cmp of the row with and without the pragma, showing that only the template chain changes;
+- that the row has no CompilerFlags override;
+- that the tier-1 definers carry no size pragma.
+
+Example: 0x00656EAD's pick-any `~vector<CEnginePrimitiveHandle>` becomes EQ at 0x00440C40, while the row's own size-mode `??_G` is unchanged.
