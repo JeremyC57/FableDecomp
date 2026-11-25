@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00442760   WARN STANDIN_LEAF ?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ (catalog NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary; names another function)
+00442760   MATCH            PASS   ClearPrimitivesIfNecessary
+0064d2a9   RELOCATION_MATCH PASS   CDrawSpiritsHealth
+0064d335   RELOCATION_MATCH PASS   CDrawReceivedItems
+0064d351   RELOCATION_MATCH PASS   CDrawFishingGame
+0064d389   RELOCATION_MATCH PASS   CDrawSpiritScores
+0064da6e   RELOCATION_MATCH PASS   CDrawScriptScreenText
+
+WINS: 6
+  00442760 MATCH NPlayerGui::CDrawBase::?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ
+  0064d2a9 RELOCATION_MATCH NPlayerGui::CDrawSpiritsHealth::??0CDrawSpiritsHealth@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+  0064d335 RELOCATION_MATCH NPlayerGui::CDrawReceivedItems::??0CDrawReceivedItems@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+  0064d351 RELOCATION_MATCH NPlayerGui::CDrawFishingGame::??0CDrawFishingGame@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+  0064d389 RELOCATION_MATCH NPlayerGui::CDrawSpiritScores::??0CDrawSpiritScores@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+  0064da6e RELOCATION_MATCH NPlayerGui::CDrawScriptScreenText::??0CDrawScriptScreenText@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z

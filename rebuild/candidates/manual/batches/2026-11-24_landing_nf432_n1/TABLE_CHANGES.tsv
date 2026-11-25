@@ -1,0 +1,7 @@
+action	symbol	target	witness	note
+replace	??_7CVtable_0125a538@@6B@ -> ??_7CDrawSpiritsHealth@NPlayerGui@@6B@	0125a538	0064d2a9	NF432: retail RTTI COL .?AVCDrawSpiritsHealth@NPlayerGui@@ at 0x0125A534 + FableWin.pdb ??_7CDrawSpiritsHealth@NPlayerGui@@6B@; the ported ctor emits it
+replace	??_7CVtable_0125a574@@6B@ -> ??_7CDrawReceivedItems@NPlayerGui@@6B@	0125a574	0064d335	NF432: retail RTTI COL .?AVCDrawReceivedItems@NPlayerGui@@ + FableWin.pdb ??_7; the ported ctor emits it
+replace	??_7CVtable_0125a580@@6B@ -> ??_7CDrawFishingGame@NPlayerGui@@6B@	0125a580	0064d351	NF432: retail RTTI COL .?AVCDrawFishingGame@NPlayerGui@@ + FableWin.pdb ??_7; the ported ctor emits it
+replace	??_7CVtable_0125a598@@6B@ -> ??_7CDrawSpiritScores@NPlayerGui@@6B@	0125a598	0064d389	NF432: retail RTTI COL .?AVCDrawSpiritScores@NPlayerGui@@ + FableWin.pdb ??_7; the ported ctor emits it
+replace	??_7CVtable_0125a5c4@@6B@ -> ??_7CDrawScriptScreenText@NPlayerGui@@6B@	0125a5c4	0064da6e	NF432: retail RTTI COL .?AVCDrawScriptScreenText@NPlayerGui@@ + FableWin.pdb ??_7; the ported ctor emits it
+add	?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ	00442760	0064d2a9	NF432 (NF430 NAME_FIXES): slot 1 of the ported draw vftables; the respelt row 0x00442760 defines it

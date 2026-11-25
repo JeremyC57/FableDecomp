@@ -14563,7 +14563,7 @@ address	name	length	bytes
 0043e0a0	sub_0043e0a0	5	e96b3b5c00
 0043e170	sub_0043e170	3	32c0c3
 00440020	sub_00440020	1	c3
-00442760	NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary	1	c3
+00442760	NPlayerGui::CDrawBase::ClearPrimitives	1	c3
 004453e0	sub_004453e0	5	e98bfeffff
 00447660	CCountedPointer<const CInputTypeBase>::DeleteData	11	85c974068b016a01ff10c3
 00447a70	CInputTypeMouseButtonEvent::GetType	6	b801000000c3
@@ -16307,9 +16307,9 @@ address	name	length	bytes
 00ca8ec0	sub_00ca8ec0	8	b801400080c20800
 00caa3b0	sub_00caa3b0	1	c3
 00caecb0	CDeferredCommand::Confidence	8	b801400080c20800
-00cbd4b0	sub_00cbd4b0	1	c3
-00cbd4c0	sub_00cbd4c0	1	c3
-00cbd4d0	sub_00cbd4d0	1	c3
+00cbd4b0	CScriptBase::RegisterMain	1	c3
+00cbd4c0	CScriptBase::Main	1	c3
+00cbd4d0	CScriptBase::Init	1	c3
 00cbd4e0	sub_00cbd4e0	3	c20400
 00cd42e0	CCountedPointer<CScriptDefinitionManager>::DeleteData	11	85c974068b016a01ff10c3
 00cd4640	sub_00cd4640	3	c20400

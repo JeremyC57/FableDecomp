@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?Temp_helper@@YIXPAUTemp@@HHH@Z	0043f360	00644627	NF432: the ported 0x00644627 calls the SGI for_each spelling every landed caller binds at 0x0043F360; no other row spells this stand-in

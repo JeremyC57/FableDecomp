@@ -1,27 +1,19 @@
 #pragma optimize("s",on)
-// NPlayerGui::CDrawScriptScreenText::CDrawScriptScreenText(CPlayerGui*, void*) -- forwards both arguments to CDrawBase, then this class's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0064DA6E, oracle length 28 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push [esp+0Ch] ; mov esi,ecx ; push [esp+0Ch] ; call CDrawBase::CDrawBase ; mov dword ptr [esi],offset CVtable_0125a5c4::`vftable' ; mov eax,esi ; pop esi ; ret 8
-// Two-argument constructor of a polymorphic class that only forwards its arguments to the base
-// constructor @ 0x0064CC65 and installs this class's vtable (0x0125A5C4, named through
-// rtti-vtables.tsv). Argument types follow the base constructor's manifest prototype. One of
-// 10 bodies of this shape.
-class CPlayerGui;
-
-struct CDrawBase {
-    virtual void v00();
-    CDrawBase(CPlayerGui* first, void* second);   // 0x0064CC65
-};
-
-struct CDrawScriptScreenText : CDrawBase {
-    virtual void v00();
-    CDrawScriptScreenText(CPlayerGui* first, void* second);
-};
-
-CDrawScriptScreenText::CDrawScriptScreenText(CPlayerGui* first, void* second)
-    : CDrawBase(first, second)
+// NPlayerGui::CDrawScriptScreenText::CDrawScriptScreenText(CPlayerGui&, std::vector<CDrawBase*>&) -- forwards both references to CDrawBase, then this class's vtable
+// Leaf: ??0CDrawScriptScreenText@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0064DA6E; size-mode TU as before (the row's pragmas are HEAD's).
+// Names (NF432, two sources each): the constructor is ??0CDrawScriptScreenText@NPlayerGui@@ in Ego_r.pdb and FableWin.pdb publics, and the table already binds that
+//   spelling here (witness 0x0043B570 CPlayerGui::CPlayerGui); the vftable 0x0125A5C4 is retail RTTI .?AVCDrawScriptScreenText@NPlayerGui@@ (its COL at
+//   0x0125A5C4 - 4) and FableWin.pdb ??_7CDrawScriptScreenText@NPlayerGui@@6B@. Its two slots are CDrawBase's ClearPrimitivesIfNecessary (0x00644627) and
+//   ClearPrimitives (0x00442760) in that order (FableWin vftable of CDrawBase; engine/NPlayerGui_CDrawBase.h VSLOTS).
+// Base constructor: ??0CDrawBase@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z 0x0064CC65 (Ego_r / FableWin; table witness 0x0064E1BE).
+// Was a local model (struct CDrawBase / CDrawScriptScreenText with a placeholder v00) emitting ??_7CVtable_0125a5c4@@6B@ / ??_7CDrawScriptScreenText@@6B@.
+#define FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CTOR
+#define FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_VSLOTS
+#include "engine/NPlayerGui_CDrawScriptScreenText.h"
+namespace NPlayerGui {
+CDrawScriptScreenText::CDrawScriptScreenText(CPlayerGui& playerGui, std::vector<CDrawBase*>& illustrators)
+    : CDrawBase(playerGui, illustrators)
 {
+}
 }

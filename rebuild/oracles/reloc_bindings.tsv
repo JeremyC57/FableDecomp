@@ -1804,7 +1804,6 @@ __imp__QueryPerformanceCounter@4	0143fe00	0062f790
 ?GetSpiritScoreText@PlayerManagerMethods@@QBE_NJAAVCWideString@@@Z	0044a2a0	00644424
 ?g_CoordinateHeight@@3NA	013961f0	00644424
 ?g_CoordinateWidth@@3NA	013961e8	00644424
-?Temp_helper@@YIXPAUTemp@@HHH@Z	0043f360	00644627
 ?PeekGuiDef@@YIPAUPlayerGuiDefNative@@XZ	00438570	006448a4
 ?erase@CRetailDamageList@NPlayerGui@@QAE?AUiterator@12@U312@@Z	00655125	00644ce2
 ?UpdateCounter@CDrawQuestInfo@NPlayerGui@@QAEXJJJ@Z	00644e3c	00644efd
@@ -1825,19 +1824,19 @@ __imp__QueryPerformanceCounter@4	0143fe00	0062f790
 ?PopEntry@SubList@@QAEXXZ	00655fe9	0064ae66
 ??_7CStatBase@NPlayerGui@@6B@	0125a4e4	0064cc11
 ??_7CDrawBase@NPlayerGui@@6B@	0125a52c	0064cc65
-??_7CVtable_0125a538@@6B@	0125a538	0064d2a9
+??_7CDrawSpiritsHealth@NPlayerGui@@6B@	0125a538	0064d2a9
 ??_7CDrawMoney@@6B@	0125a544	0064d2c5
 ??_7CDrawRenown@@6B@	0125a550	0064d2e1
 ??_7CDrawMorality@@6B@	0125a55c	0064d2fd
 ??_7CDrawCrime@@6B@	0125a568	0064d319
-??_7CVtable_0125a574@@6B@	0125a574	0064d335
-??_7CVtable_0125a580@@6B@	0125a580	0064d351
+??_7CDrawReceivedItems@NPlayerGui@@6B@	0125a574	0064d335
+??_7CDrawFishingGame@NPlayerGui@@6B@	0125a580	0064d351
 ??_7CDrawAutoPickups@@6B@	0125a58c	0064d36d
-??_7CVtable_0125a598@@6B@	0125a598	0064d389
+??_7CDrawSpiritScores@NPlayerGui@@6B@	0125a598	0064d389
 ??0CRetailList_node0x14@@QAE@ABUCRetailAllocator@@@Z	00655b18	0064d3da
 ??_7CVtable_0125a5a4@@6B@	0125a5a4	0064d3da
 ?h_0064da5c@@YIXPAUOH@@@Z	0064b668	0064da5c
-??_7CVtable_0125a5c4@@6B@	0125a5c4	0064da6e
+??_7CDrawScriptScreenText@NPlayerGui@@6B@	0125a5c4	0064da6e
 ??0CRetailList_node0x34@@QAE@ABUCRetailAllocator@@@Z	00655b4e	0064da8a
 ??_7CDraw2DText@@6B@	0125a5d0	0064da8a
 ??0CFadeInFadeOutBase@NPlayerGui@@QAE@XZ	00436560	0064dab4
@@ -38961,3 +38960,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ	00910570	009106b0
 ?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z	00408340	0088e090
 ?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z	006b3880	0088fff0
+?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ	00442760	0064d2a9

@@ -95366,8 +95366,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00442760'
         Module = 'NPlayerGui::CDrawBase'
-        Source = '00/44/NPlayerGuiCDrawBase_ClearPrimitivesIfNecessary_00442760.cpp'
-        TestSource = '00/44/NPlayerGuiCDrawBase_ClearPrimitivesIfNecessary_00442760_test.cpp'
+        Source = '00/44/NPlayerGuiCDrawBase_ClearPrimitives_00442760.cpp'
+        TestSource = '00/44/NPlayerGuiCDrawBase_ClearPrimitives_00442760_test.cpp'
         PassPattern = 'PASS_00442760'
     }
     [pscustomobject]@{
@@ -107601,23 +107601,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cbd4b0'
-        Module = '_gapscan'
-        Source = '00/cb/gapscan_sub00cbd4b0_00cbd4b0.cpp'
-        TestSource = '00/cb/gapscan_sub00cbd4b0_00cbd4b0_test.cpp'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_RegisterMain_00cbd4b0.cpp'
+        TestSource = '00/cb/CScriptBase_RegisterMain_00cbd4b0_test.cpp'
         PassPattern = 'PASS_00cbd4b0'
     }
     [pscustomobject]@{
         Address = '00cbd4c0'
-        Module = '_gapscan'
-        Source = '00/cb/gapscan_sub00cbd4c0_00cbd4c0.cpp'
-        TestSource = '00/cb/gapscan_sub00cbd4c0_00cbd4c0_test.cpp'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_Main_00cbd4c0.cpp'
+        TestSource = '00/cb/CScriptBase_Main_00cbd4c0_test.cpp'
         PassPattern = 'PASS_00cbd4c0'
     }
     [pscustomobject]@{
         Address = '00cbd4d0'
-        Module = '_gapscan'
-        Source = '00/cb/gapscan_sub00cbd4d0_00cbd4d0.cpp'
-        TestSource = '00/cb/gapscan_sub00cbd4d0_00cbd4d0_test.cpp'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_Init_00cbd4d0.cpp'
+        TestSource = '00/cb/CScriptBase_Init_00cbd4d0_test.cpp'
         PassPattern = 'PASS_00cbd4d0'
     }
     [pscustomobject]@{

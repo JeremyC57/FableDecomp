@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	??_7CVtable_012b5868@@6B@	012b5868	00c3f490	NF432 D3: the ported 0x00C3C840 emits ??_7CCodaObjectBase@@6B@ (already bound here, witness 0x00C3E2A0); the unported libpk row 0x00C3F490 (~CSoftwareVoice member model) still emits this placeholder (HEAD object census), so the line stays with it (T3 nf432 d3_port)

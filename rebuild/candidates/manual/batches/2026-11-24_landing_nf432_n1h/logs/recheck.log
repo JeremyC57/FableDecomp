@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00644627   RELOCATION_MATCH PASS   ClearPrimitivesIfNecessary
+
+WINS: 1
+  00644627 RELOCATION_MATCH NPlayerGui::CDrawBase::?ClearPrimitivesIfNecessary@CDrawBase@NPlayerGui@@UAEXXZ

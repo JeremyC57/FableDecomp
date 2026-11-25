@@ -6838,7 +6838,7 @@ address	symbol	status	leaf_given
 006442ae	?Draw@CDrawCrime@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@@Z	RELOCATION_MATCH	Draw
 00644424	?Draw@DrawSpiritScoresNative@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	RELOCATION_MATCH	Draw
 00644526	?OnEventUnsheatheWeapon@CDrawTargetInfo@NPlayerGui@@QAEXXZ	RELOCATION_MATCH	OnEventUnsheatheWeapon
-00644627	?ClearPrimitivesIfNecessary@CDrawBase@@QAEXXZ	RELOCATION_MATCH	ClearPrimitivesIfNecessary
+00644627	?ClearPrimitivesIfNecessary@CDrawBase@NPlayerGui@@UAEXXZ	RELOCATION_MATCH	ClearPrimitivesIfNecessary
 00644660	?ClearPrimitives@CDrawMiniMap@NPlayerGui@@UAEXXZ	RELOCATION_MATCH	ClearPrimitives
 0064483d	?Draw@CDrawRenown@NPlayerGui@@QAEXPAVCEnginePrimitivePrepareInfo@@@Z	RELOCATION_MATCH	Draw
 006448a4	?Draw@DrawMoralityNative@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	RELOCATION_MATCH	Draw
@@ -6887,15 +6887,15 @@ address	symbol	status	leaf_given
 0064b6da	?AddText@CDraw2DText@NPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	RELOCATION_MATCH	AddText
 0064cc11	??0CStatBase@NPlayerGui@@QAE@PAVCPlayerGuiDef@@@Z	RELOCATION_MATCH	??0CStatBase
 0064cc65	??0CDrawBase@NPlayerGui@@QAE@PAVCPlayerGui@@PAUCRetailDrawList@1@@Z	RELOCATION_MATCH	??0CDrawBase@
-0064d2a9	??0CDrawSpiritsHealth@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawSpiritsHealth@
+0064d2a9	??0CDrawSpiritsHealth@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	RELOCATION_MATCH	??0CDrawSpiritsHealth@
 0064d2c5	??0CDrawMoney@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawMoney@
 0064d2e1	??0CDrawRenown@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawRenown@
 0064d2fd	??0CDrawMorality@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawMorality@
 0064d319	??0CDrawCrime@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawCrime@
-0064d335	??0CDrawReceivedItems@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawReceivedItems@
-0064d351	??0CDrawFishingGame@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawFishingGame@
+0064d335	??0CDrawReceivedItems@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	RELOCATION_MATCH	??0CDrawReceivedItems@
+0064d351	??0CDrawFishingGame@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	RELOCATION_MATCH	??0CDrawFishingGame@
 0064d36d	??0CDrawAutoPickups@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawAutoPickups@
-0064d389	??0CDrawSpiritScores@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawSpiritScores@
+0064d389	??0CDrawSpiritScores@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	RELOCATION_MATCH	??0CDrawSpiritScores@
 0064d3a5	?GetPerceivedThings@CDrawPerceivers@NPlayerGui@@QAEXPAUCRetailThingVector@@@Z	RELOCATION_MATCH	GetPerceivedThings
 0064d3da	??0CDrawDamage@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawDamage@
 0064d404	?DrawMiniGameInfo@CDrawQuestInfo@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	RELOCATION_MATCH	DrawMiniGameInfo
@@ -6904,7 +6904,7 @@ address	symbol	status	leaf_given
 0064d62f	?ClearPrimitivesIfNecessary@CDrawQuickAccessIcons@NPlayerGui@@UAEXXZ	RELOCATION_MATCH	ClearPrimitivesIfNecessary
 0064d6a8	?Update@CDrawQuickAccessIcons@NPlayerGui@@QAEXXZ	RELOCATION_MATCH	Update
 0064da5c	?fn_0064da5c@@YIXPAUOH@@@Z	RELOCATION_MATCH	OnHeroHit
-0064da6e	??0CDrawScriptScreenText@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawScriptScreenText@
+0064da6e	??0CDrawScriptScreenText@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	RELOCATION_MATCH	??0CDrawScriptScreenText@
 0064da8a	??0CDraw2DText@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDraw2DText@
 0064dab4	??0CDrawTargetInfo@NPlayerGui@@QAE@PAVCPlayerGui@@PAX@Z	RELOCATION_MATCH	??0CDrawTargetInfo@
 0064dae0	?AddChangeText@CStatBar@NPlayerGui@@QAEXABVCRGBColour@@ABVCWideString@@J_N@Z	RELOCATION_MATCH	AddChangeText
@@ -25090,9 +25090,9 @@ address	symbol	status	leaf_given
 00cbcfc0	??$__partial_sort@UElement@N00cbcfc0@@UCKeyPairCompareLess@2@@N00cbcfc0@@YIXPAUElement@0@00PAHUCKeyPairCompareLess@0@@Z	RELOCATION_MATCH	__partial_sort
 00cbd0f0	??$__partial_sort@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@000V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z	RELOCATION_MATCH	??$__partial_sort@
 00cbd310	?push_back@CScriptThingVector@@QAEXABVCScriptThing@@@Z	RELOCATION_MATCH	push_back
-00cbd4b0	?Hook@T@@QAEXXZ	MATCH	sub_00cbd4b0
-00cbd4c0	?Hook@T@@QAEXXZ	MATCH	sub_00cbd4c0
-00cbd4d0	?Hook@T@@QAEXXZ	MATCH	sub_00cbd4d0
+00cbd4b0	?RegisterMain@CScriptBase@@MAEXXZ	MATCH	sub_00cbd4b0
+00cbd4c0	?Main@CScriptBase@@MAEXXZ	MATCH	sub_00cbd4c0
+00cbd4d0	?Init@CScriptBase@@MAEXXZ	MATCH	sub_00cbd4d0
 00cbd4e0	?Hook@T@@QAEXH@Z	MATCH	sub_00cbd4e0
 00cbd510	??1CRecordSet_00cbd510@@UAE@XZ	RELOCATION_MATCH	??1CRecordSet_00cbd510
 00cbd5d0	?InsertEntry@CEntryScriptVectorMap@@QAEXABUCEntryKey@@ABUCCountedPointer_CEntryScriptBase@@@Z	RELOCATION_MATCH	InsertEntry
@@ -27731,3 +27731,4 @@ address	symbol	status	leaf_given
 009106b0	?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ	RELOCATION_MATCH	?OnReplace@CAIStateGroup_MinionListenToStory@@MAEXXZ
 0088e070	?GetWorldFrame@CGameScriptInterface@@UBEJXZ	RELOCATION_MATCH	?GetWorldFrame@CGameScriptInterface@@UBEJXZ
 00890670	?IsHeroInProjectileWeaponMode@CGameScriptInterface@@UBE_NXZ	RELOCATION_MATCH	?IsHeroInProjectileWeaponMode@CGameScriptInterface@@UBE_NXZ
+00442760	?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ	MATCH	?ClearPrimitives@CDrawBase@NPlayerGui@@UAEXXZ

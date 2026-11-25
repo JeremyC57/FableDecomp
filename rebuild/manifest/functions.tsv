@@ -1650,7 +1650,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004425c0	`scalar deleting destructor'	CRecordWithThreeVectors	__thiscall	void	2	CWound *,CTCTextureDecal *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CWound_Kill_004425c0.cpp
 00442610	~CMiniMapDisplay	CMiniMapDisplay	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x00442610_global_RenderState_Destructor.cpp				
 004426e0	`scalar deleting destructor'	CMiniMapDisplay	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CLandscapeBackgroundPatch_vectordeletingdestructor_004426e0.cpp
-00442760	ClearPrimitivesIfNecessary	NPlayerGui::CDrawBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00442760	ClearPrimitives	NPlayerGui::CDrawBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00442770	resize	std::vector<unsigned int, std::allocator<unsigned int>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\vectorunsignedint_resize_00442770.cpp
 004427d0	~deque	std::deque<CSubtitleRenderer::CSetTextInfo, std::allocator<CSubtitleRenderer::CSetTextInfo>>	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted									
 00442870	~vector	std::vector<CSubtitleRenderer::CEmbeddedHighlight,std::allocator<CSubtitleRenderer::CEmbeddedHighlight> >	__thiscall	void	1	CCombatWheel *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CCombatWheel_ResetRings_00442870.cpp
@@ -49007,9 +49007,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cbd310	push_back	CScriptThingVector	unknown	undefined	0		0	yes	accepted									
 00cbd370	sort<std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *, CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>	std	unknown	undefined	0		0	yes	accepted									
 00cbd420	__final_insertion_sort<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*,CCompareString<CCountedPointer<CEntityScriptBindingBase> > >	std	__fastcall	void	3	pair<unsigned_long,CSoundPair> *,pair<unsigned_long,CSoundPair> *,CKeyPairCompareLess<unsigned_long,CSoundPair>	1	yes	accepted									
-00cbd4b0	sub_00cbd4b0	_global	unknown	undefined	0		0			discovered	gapscan							
-00cbd4c0	sub_00cbd4c0	_global	unknown	undefined	0		0			discovered	gapscan							
-00cbd4d0	sub_00cbd4d0	_global	unknown	undefined	0		0			discovered	gapscan							
+00cbd4b0	RegisterMain	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
+00cbd4c0	Main	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
+00cbd4d0	Init	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
 00cbd4e0	sub_00cbd4e0	_global	unknown	undefined	0		0			discovered	gapscan							
 00cbd4f0	`scalar deleting destructor'	CScriptBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CLandscapeBackgroundPatch_vectordeletingdestructor_00cbd4f0.cpp
 00cbd510	~CScriptBase	CScriptBase	__thiscall	void	2	CParticleEmitter *,CIEngine *	1	yes	accepted									

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00cbd4b0   MATCH            PASS   sub_00cbd4b0
+00cbd4c0   MATCH            PASS   sub_00cbd4c0
+00cbd4d0   MATCH            PASS   sub_00cbd4d0
+
+WINS: 3
+  00cbd4b0 MATCH _gapscan::?RegisterMain@CScriptBase@@MAEXXZ
+  00cbd4c0 MATCH _gapscan::?Main@CScriptBase@@MAEXXZ
+  00cbd4d0 MATCH _gapscan::?Init@CScriptBase@@MAEXXZ

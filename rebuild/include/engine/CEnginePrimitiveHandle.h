@@ -56,7 +56,12 @@ public:
         Data=other.Data;return *this;
     }
 #endif
-#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_FORCEINLINE)
+#if defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_DECL_ONLY)
+    // Retail opt-in (NF432, row 0x00644627 NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary): FableWin.pdb ?Clear@CEnginePrimitiveHandle@@QAEXXZ,
+    // declaration only. That TU only takes Clear's address for mem_fun_ref (`push 41BE70h`) and calls retail's out-of-line copy
+    // 0x0041BE70 through for_each; an inline body here would add a pick-any Clear copy that differs from 0x0041BE70 (44 v 57 bytes).
+    void Clear();                                                        // 0x0041BE70
+#elif defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE) && defined(FABLE_RETAIL_CENGINEPRIMITIVEHANDLE_CLEAR_FORCEINLINE)
     // Nested opt-in (bwf2, row 0x007CACB0 CTCHeroReceiveItems::GlobalUpdate): the same Clear text as below, FABLE_FORCEINLINE. Retail
     // expands both Clear sites of that 2974-byte function (0x007CAD10, 0x007CAEE4) while VC7.1's inline scorer (c2 trace: c1 52..54,
     // score 74..108 against the threshold 74 at static frequency 1/4 and 1/8) keeps the plain inline out of line.
