@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0056c880   RELOCATION_MATCH PASS   CCountedPointer_0056c0f0
+00905fd0   RELOCATION_MATCH PASS   Reset
+
+WINS: 2
+  0056c880 RELOCATION_MATCH CCountedPointer_0056c0f0::??0CCountedPointer_0056c0f0@
+  00905fd0 RELOCATION_MATCH CCountedPointer_0085a5a0::Reset

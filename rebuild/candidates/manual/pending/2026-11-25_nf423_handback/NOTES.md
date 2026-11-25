@@ -1,5 +1,39 @@
 # NF423 hand-back (2026-11-25): T1 caller respells, then the whole-T1 generator (coordinator scope change)
 
+## Round 2 (after rulings r1 = YES, r2 = YES)
+The 158 round-1 ACCEPT rows (b1, c1-c3, g1, g2) were being landed by the coordinator and were not touched. Their lock files are no longer present (landing), so they were not re-created.
+
+| batch | rows | verdict | what | table |
+|---|---:|---|---|---|
+| a1 | 2 | ACCEPT | r1 rows 0x00905FD0, 0x0056C880 (formerly b1_hold): callee-only respell; the T3 col-2 self-debt lines (nf295, nf303) stay open | 1 delete + 1 rewitness + 1 add |
+| a2 / a3 | 48 / 21 | ACCEPT | r2 DTFREE rows (formerly g1_hold / g2_hold / g3_hold) | 69 delete + 49 add |
+| s2 | 1 | ACCEPT | SCOPE_ONLY 0x009EC430: local CConsoleTarget -> CGenericVarRef (no shared header) | 2 delete + 1 add |
+| a2_hold | 2 | HOLD | 0x004E0D62, 0x004E422F: the target spelling ~CPatchTesselationEdgeStrip is a propagated label (real dtor 0x00BFC410: called by the RTTI ??_E 0x00BFC860, stores ??_7CPatchTesselationEdgeStrip; the targets store ??_7CDefPointeeBase); apply_table --dry showed a new multi-target symbol | - |
+| s1_hold | 3 | HOLD | SCOPE_ONLY with a method-only local class whose real class has a shared header: RULINGS_NEEDED r3 | - |
+
+- 72 new ACCEPT rows, locks NF423 on exactly these 72; every other NF423 lock (holds, definer self rows) released.
+- Full gate set per batch, same as round 1: prefam clang prechecks (219/219 PASS for a*; HEAD test of 0x009EC430 fails the clang precheck on VC71 ostream/istream, unchanged HEAD file), runpair vland HEAD/new at one path (all RELOCATION_MATCH PASS both sides, 0 LITERAL), objgate ALL_EQ, pk 0 new NEQ, /FORCE link PASS (duplicates a1 0->0, a2 0->0, a3 0->0, s2 0->0; NEW_UNRESOLVED 0), xrcheck 73 renames bad 0, screen newest-claim-B none, reserved_check 0 (77 rows incl. holds), apply_table --dry 0 misses and no new multi-target symbol per batch and together (work/ALL_TABLE_A.tsv: 72 delete + 51 add + 1 rewitness), no (symbol, target) shared with the 158's TABLE_CHANGES, orig/ re-diffed against the repo (154 files, 0 drift).
+- TABLE_CHANGES computed against a snapshot of reloc_bindings.tsv (work/table_snap.tsv, identical to the repo at finalize; b1/c3/g1/g2 changes already applied there, c1's rewitness still pending) with the 158 rows counted as moved.
+- Only new vland WARN kind: SHARED_HEADER_AVAILABLE on the 69 r2 rows (finalize423.py accepts it only for batches marked ruling r2). Booked as one T3 header-debt line (T3.txt, 55 classes).
+- RESULTS reasons cite r1 / r2. a1 keeps the T3 lines open (its leaf is still the stand-in self, r1).
+- **NAME_FIXES.tsv:** 0x00A63C00 CGenericVarRef::PrintToString is non-const in Ego_r.pdb and FableWin.pdb (QAE); the landed self row, the table and caller 0x009EA3C0 (and now 0x009EC430) say QBE.
+
+- **Identity of the r2 targets** rests on the tracker PDB spelling = the landed self row Leaf. The apply_table multi-target check catches a propagated label only when it lands on two targets (a2_hold). In 13 a2/a3 rows the HEAD stand-in named the caller's class while the bound destructor is another (base) class: 009017d6 (CAIStateGroup_TavernKeeper -> CAIStateGroup_CarryCrateAndFollow); 00900341 (CAIStateGroup_GameMaster -> CAIStateGroup_GoToPub); 00903296 (CAIStateGroup_JackOfBladesStage2 -> CAIStateGroup_JackOfBladesBase); 009032e0 (CAIStateGroup_JackOfBladesStage3 -> CAIStateGroup_JackOfBladesBase); 00bc67d0 (CEngineInternalPrimitiveGroup -> CEngineInternalPrimitiveOcclusionBase); 004e290e (CTCGatherPointBuilding -> CTCGatherPointBase); 004e2947 (CTCGatherPointRadialArea -> CTCGatherPointBase); 004dc6e2 (CTCSmashableWindow -> CTCSmashableBase); 004dc71b (CTCSmashableBarrier -> CTCSmashableBase); 007894ef (CTCProjectileTrap -> CTCTrapBase); 007894d3 (CTCMeleeTrap -> CTCTrapBase); 004e037c (CTCSingleUserActionPoints -> CTCUserActionPointBase); 004e241c (CTCNamedUserActionPoints -> CTCUserActionPointBase). These are consistent with derived destructors calling the base destructor, but the identity is the landed self leaf only.
+- evidence/T3_RESOLVES.tsv now covers only a1/a2/a3/s2 (the last screen423 run); the two a1 row lines say "stays open" (r1). s1_hold/evidence comes from the 4-row s1 run, with the 0x009EC430 lines stripped (linkgate.txt still reads "4 rows + 4 definers").
+- a1 TABLE_CHANGES: ?Destroy_0085a5a0 is a delete. finalize423's census matched 0x0085A840's naming comment and suggested a rewitness; its code no longer binds the stand-in.
+
+### SCOPE_ONLY (121 lines)
+tools/scope423.py renames a row-local model class S -> Q only when S is defined once in the row and Q is not named in it. 15 rows qualified. The result:
+- 1 ACCEPT (s2): it is the only qualifying row whose class has no shared header.
+- 3 HOLD (s1_hold, r3): method-only stand-ins (CThingCreatureBase, CBankFileAsyncData, CTCCarrying) gain SHARED_HEADER_AVAILABLE. 008a99f0 also renames a row-local helper COMDAT (DEF set changes).
+- 10 residue: data-bearing padded models of classes that have a shared header. The rename would create a local padded model of a header class (the shared-header rule), and the header route DIFFERs (d1 pilot).
+- 1 residue: 0x0094F730 defines its own Update on the stand-in.
+- The other 106 are screened (scope not a single identifier: 40; row already names the class; T3 col 2/3; ...).
+
+RESIDUE.tsv is refreshed: the a*/s2 rows are removed, and the g*_hold lines are replaced by a2_hold lines. g1_hold / g2_hold / g3_hold were superseded and moved to work/superseded_holds.
+
+## Round 1
+
 ## Result
 - **158 rows ACCEPT** in 6 batches. Locks kept as NF423 on exactly these 158. Every other NF423 lock is released: HOLD rows, pilots, and the definer self rows I locked only to compile them.
 - **76 rows HOLD** in 5 `*_hold` folders. Their locks are released.

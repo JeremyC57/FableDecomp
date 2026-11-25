@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+add	?ReadFromParser@CGenericVarRef@@QAE_NAAVCStringParser@@@Z	00a63fc0	009ec430	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?ReadFromParser@CConsoleTarget@@QAE_NAAVCStringParser@@@Z	00a63fc0	009ec430	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?PrintToString@CConsoleTarget@@QBEXAAVCCharString@@@Z	00a63c00	009ec430	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

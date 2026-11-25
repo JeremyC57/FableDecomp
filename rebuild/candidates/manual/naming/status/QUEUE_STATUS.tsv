@@ -1116,7 +1116,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1127	583	004d0740	??1?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@XZ	no_binding	
 1129	583	007e74d0	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	partial	??1CScriptGameResourceObjectScriptedThingBase@@QAE@XZ || ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
 1130	583	007e7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	partial	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
-1131	mig4	004585bd	??1CAggregate_004585bd@@QAE@XZ	open	??1CArmourDef@@UAE@XZ || ?CArmourDef_Destruct@@YIXPAX@Z
+1131	mig4	004585bd	??1CAggregate_004585bd@@QAE@XZ	open	??1CArmourDef@@UAE@XZ
 1132	584	00e0e040	?ActivateNextLamp@CQ_UndeadRisingScript@NScript@@QAEXXZ	closed	
 1133	584	00f3cf50	?CalcSectionPolyMask@CTriangleStripifier2@@AAEJABV?$CArray@G@@ABV?$CArray@V?$CArray@J@@@@0AAV?$CArray@_N@@@Z	closed	
 1134	584	00cd23b9	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	closed	
@@ -3180,14 +3180,14 @@ line	tag	address	correct_symbol	status	other_spellings
 3664	c697	00bded60	??1CLocalDetailCacheMap@@QAE@XZ	closed	
 3665	c697	00a60ce0	??1CChecksumCacheFile@@QAE@XZ	closed	
 3666	c697	00b81e20	?Clear@CEnginePrimitiveSimulationInfo@@QAEXXZ	closed	
-3667	c697	00b9c660	??1CEngineInternalPrimitiveOcclusionBase@@UAE@XZ	partial	??1CEngineInternalPrimitiveOcclusionBase@@QAE@XZ || ?CEngineInternalPrimitiveGroup_Destruct@@YIXPAX@Z
+3667	c697	00b9c660	??1CEngineInternalPrimitiveOcclusionBase@@UAE@XZ	partial	??1CEngineInternalPrimitiveOcclusionBase@@QAE@XZ
 3668	c697	00bddfb0	??1CQuadTreeElement@CLocalDetailCacheMap@@UAE@XZ	partial	??1CQuadTreeElement
 3669	c697	00569c30	??1LHHttpHeaders@LHNetworkLib@@QAE@XZ	closed	
 3670	c697	0083fbc0	?Reset@LHHttpHeaders@LHNetworkLib@@QAEXXZ	closed	
 3671	c697	00569940	??1?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ	partial	??1LHStringVector@@QAE@XZ
 3672	c697	0099a430	??1CBaseObject@@MAE@XZ	partial	??1CBaseObjectDtor@@UAE@XZ
 3673	c697	0099a300	??1CBaseClassNonCopyable@@MAE@XZ	partial	??1CAFile@@UAE@XZ || ??1CBaseClass@NFactory006ac910@@UAE@XZ || ??1CBaseClassNonCopyable@@UAE@XZ || ??1CBaseClassNonCopyable@X_006e11f0@@UAE@XZ || ??1CTCParamsPhysicsBase@@UAE@XZ || ?BaseDtor_0099a300@@YIXPAX@Z || ?BaseDtor_588240@@YIXPAX@Z || ?C3DAnimationBuilder_Destruct@@YIXPAX@Z || ?C3DSkeletalMorphParameter_Destruct@@YIXPAX@Z || ?CActionDoCreatureAction_Destruct@@YIXPAX@Z || ?CActionFireProjec
-3674	c697	00b9c660	??1CEngineInternalPrimitiveOcclusionBase@@UAE@XZ	partial	??1CEngineInternalPrimitiveOcclusionBase@@QAE@XZ || ?CEngineInternalPrimitiveGroup_Destruct@@YIXPAX@Z
+3674	c697	00b9c660	??1CEngineInternalPrimitiveOcclusionBase@@UAE@XZ	partial	??1CEngineInternalPrimitiveOcclusionBase@@QAE@XZ
 3675	c698	0072da60	??1CTCSpecialAbilities@@UAE@XZ	closed	
 3676	c698	0072da40	??_GCTCSpecialAbilities@@UAEPAXI@Z	no_binding	
 3677	c698	007dca90	??1CTCTavernGameCardBlackjack@@UAE@XZ	closed	
@@ -3345,7 +3345,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3833	c705	0087bbc0	?Update@CScriptedControl@NCameraModes@@UAEXXZ	closed	
 3834	c705	00a3ebc0	?StopAllSounds@CSoundManagerLH@@UAEXXZ	closed	
 3835	c705	009e1440	?erase@?$vector@VCTVertexRHWColSpecTex1@@V?$allocator@VCTVertexRHWColSpecTex1@@@std@@@std@@QAEPAVCTVertexRHWColSpecTex1@@PAV3@0@Z	closed	
-3836	c705	004d9861	??1CFireheartMinigameDef@@UAE@XZ	partial	?CFireheartMinigameDef_Destruct@@YIXPAX@Z
+3836	c705	004d9861	??1CFireheartMinigameDef@@UAE@XZ	closed	
 3837	c705	004c9840	?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z	partial	?Cancel@Sub@@QAEXH@Z || ?Dtor@Sub@@QAEXH@Z || ?OnPropertyChanged@CBaseObject@@QAEXH@Z || ?OnPropertyChanged@CBaseObject@@QAEXJ@Z || ?OnPropertyChanged@CThingCreature@@QAEXJ@Z || ?RemoveTC@CThingKill_Retail@@QAEXJ@Z || ?RemoveTC@CThingTC@NCreatureMode@@QAEXJ@Z || ?m@That@@QAEXH@Z
 3838	c705	009387c0	?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@IAE_NW4EMovementType@@@Z	partial	?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@QAE_NJ@Z
 3839	c705	009130d0	?AIAction_RandomFlyToPos@CAIStateGroup_FlyingThingBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z	partial	?ExecuteFlyingPath@CAIStateGroup_FlyingThingBase@@QAEJPBVC3DVector@@@Z || ?ExecuteFlyingPath@CAIStateGroup_FlyingThingBase@@QAEXABVC3DVector@@@Z
@@ -5544,7 +5544,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7508	land1011ax	004533e3	??1?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@QAE@XZ	partial	OnReadFinished
 7509	land1011ax	004518a0	??1?$_Rb_tree@W4ECombatCreatureType@@U?$pair@$$CBW4ECombatCreatureType@@J@std@@U?$_Select1st@U?$pair@$$CBW4ECombatCreatureType@@J@std@@@3@U?$less@W4ECombatCreatureType@@@3@V?$allocator@U?$pair@$$CBW4ECombatCreatureType@@J@std@@@3@@std@@QAE@XZ	partial	OnReadFinished
 7510	land1011ax	00414ea0	??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ	partial	??1?$vector@UCCharString@NFoot008f7bd0@@@NFoot008f7bd0@@QAE@XZ || ??1?$vector@VCCharString@@@std@@QAE@XZ || ??1CCharStringVector@@QAE@XZ || ?AutoTinyScalarDestructor_00414ea0@@YIXPAX@Z || ?CMember_dtor_00414ea0@@YIXPAUCMember@@@Z || ?CSub_dtor@@YIXPAUCSub@@@Z || ?DestructMember_00414ea0@@YIXPAX@Z || @CGlobalDef_dtor_100@4 || @FableH1_5c281c@4 || @Sub_dtor_00414ea0@4 || @sub_A@4
-7511	land1011ax	00450ba0	??1CThingComponentSet@@QAE@XZ	partial	??1CThingComponentSet || ?DestructMember_00450ba0@@YIXPAX@Z || ?dtor@Inner@@QAEXXZ
+7511	land1011ax	00450ba0	??1CThingComponentSet@@QAE@XZ	partial	??1CThingComponentSet || ?dtor@Inner@@QAEXXZ
 7512	land1011ax	009207a0	?IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground@@MAE_NXZ	open	IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground
 7520	land1011ba	005d97b0	?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z	closed	
 7521	land1011ba	005bf19c	?IsSpaceInCategoryForItem@CCategory@NInventory@@QBE_NJ@Z	closed	
@@ -6777,11 +6777,11 @@ line	tag	address	correct_symbol	status	other_spellings
 8778	land1011cp	005930f3	??1?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@QAE@XZ	partial	?AnimPair_Destroy@@YIXPAUAnimPair@@@Z || ?AutoTinyScalarDestructor_005930f3@@YIXPAX@Z
 8779	land1011cp	005f8736	??1?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@QAE@XZ	partial	?AutoTinyScalarDestructor_005f8736@@YIXPAX@Z
 8780	land1011cp	004db47d	??1CTCSoundAtmosphere@@UAE@XZ	closed	
-8781	land1011cp	004dc600	??1CTCInventoryItem@@UAE@XZ	partial	?CTCInventoryItem_Destruct@@YIXPAX@Z
-8782	land1011cp	004dc916	??1CTCInterestingToVillagers@@UAE@XZ	partial	?CTCInterestingToVillagers_Destruct@@YIXPAX@Z
+8781	land1011cp	004dc600	??1CTCInventoryItem@@UAE@XZ	closed	
+8782	land1011cp	004dc916	??1CTCInterestingToVillagers@@UAE@XZ	closed	
 8783	land1011cp	004dcda4	??1CTCCarriedActionUseRead@@UAE@XZ	closed	
-8784	land1011cp	004da967	??1CTCActionUseBase@@UAE@XZ	partial	?CTCActionUseBase_Destruct@@YIXPAX@Z
-8785	land1011cp	005814e5	??1CTCHeroStats@@UAE@XZ	partial	?CTCHeroStats_Destruct@@YIXPAX@Z
+8784	land1011cp	004da967	??1CTCActionUseBase@@UAE@XZ	closed	
+8785	land1011cp	005814e5	??1CTCHeroStats@@UAE@XZ	closed	
 8786	land1011cp	005bd1b3	?GetCategoryIdentifier@CCategory@NInventory@@QBE?AW4EInventoryCategoryIdentifier@2@XZ	closed	
 8787	land1011cp	005e4430	?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@1@PAVCTCQuestCard@@_N@Z	closed	
 8788	land1011cp	00a42980	?BeginLoading@CLipSyncDataBankEntry@@AAEXKAAVCLipSyncDataBank@@@Z	closed	
@@ -8546,7 +8546,7 @@ line	tag	address	correct_symbol	status	other_spellings
 10693	land1117fu	00462381	?_M_copy@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@M@std@@@2@PAU32@0@Z	closed	
 10694	land1117fu	00463057	?_M_copy@?$_Rb_tree@W4EWorldMapNameGraphic@@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@U?$_Select1st@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@3@U?$less@W4EWorldMapNameGraphic@@@3@V?$allocator@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@2@PAU32@0@Z	closed	
 10695	land1117fu	004661c5	?_M_copy@?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBJVCCharString@@@std@@@2@PAU32@0@Z	closed	
-10696	land1117fu	0047e07f	??1CTCInGameMenu@@UAE@XZ	partial	?CTCInGameMenu_Destruct@@YIXPAX@Z
+10696	land1117fu	0047e07f	??1CTCInGameMenu@@UAE@XZ	closed	
 10697	land1117fu	004e4399	?_M_copy@?$_Rb_tree@W4EQuestCardPrerequisite@@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@U?$_Select1st@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@@3@U?$less@W4EQuestCardPrerequisite@@@3@V?$allocator@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EQuestCardPrerequisite@@J@std@@@2@PAU32@0@Z	closed	
 10698	land1117fu	004e4c89	?_M_copy@?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@3@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4EObjectAugmentationType@@J@std@@@2@PAU32@0@Z	closed	
 10699	land1117fu	004e4e3a	?_M_copy@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@2@PAU32@0@Z	closed	
@@ -8908,7 +8908,7 @@ line	tag	address	correct_symbol	status	other_spellings
 11090	land1117fu	01436e9c	?GPLightingManager@NEngineInternal@@3PAVCEngineLightingManager@@A	closed	
 11091	land1117fu	00789358	??1CHitParameters@@QAE@XZ	closed	
 11092	land1117fu	00451a85	??1?$_Rb_tree@W4EObjectAugmentationType@@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@U?$less@W4EObjectAugmentationType@@@3@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@QAE@XZ	closed	
-11093	land1117fu	004585bd	??1CArmourDef@@UAE@XZ	partial	?CArmourDef_Destruct@@YIXPAX@Z
+11093	land1117fu	004585bd	??1CArmourDef@@UAE@XZ	closed	
 11094	land1117fu	00860150	??0CCreatureAction_GetUpFromSitting@@QAE@AAVCThingCreatureBase@@ABVCCharString@@J_N@Z	closed	
 11095	land1117fu	0059b4d8	?_M_reserve_map_at_back@?$deque@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXI@Z	closed	
 11096	land1117fu	0059b49b	??$__uninitialized_copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@std@@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Const_traits@PAVCComponent@NUISystem@@@std@@@0@0U10@ABU__true_type@0@@Z	closed	

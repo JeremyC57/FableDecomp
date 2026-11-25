@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+delete	?Destroy_0085a5a0@@YIXPAX@Z	0085a5a0	00905fd0	NF423: no landed row binds the stand-in at this target after the respell (code census: 0x0085A840 names it only in a naming comment; 0x00905FD0 was the last binder)
+add	?DeleteData@?$CCountedPointer@VCBase@NCameraModes@@@@SIXPAX@Z	0056c0f0	0056c880	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+rewitness	?Destroy_0056c0f0@@YIXPAX@Z	0056c0f0	0069e460	NF423: the witness moved to the PDB spelling; 4 landed row(s) still bind the stand-in (e.g. 0069e460)

@@ -9,3 +9,7 @@ Lander note: b1/g1/g2 RESULTS gave the new CALLEE in the `new` column; the coord
 The generator (`gen423.py` and its pipeline) covers two shapes; RESIDUE.tsv gives every other T1 wrong spelling a reason code.
 Rulings (coordinator, precedent): r1 yes (callee-only respell of a row T3 names for its own self debt; the line stays open);
 r2 yes (bodiless local class for a qualified destructor call; SHARED_HEADER_AVAILABLE is header debt as for NF412 / NF417).
+
+Round 2 (same day): 72 more rows landed as `2026-11-24_landing_nf423_{a1,a2,a3}` and `_r` (005c297a from a2 and 009ec430 from s2,
+relanded with their self symbol in RESULTS `new`): the r1 / r2 rows and one byte-safe SCOPE_ONLY row. Table: 72 deletes, 51 adds,
+1 rewitness (by hand). r3 (coordinator): yes, r2 extends to other member calls; the three s1_hold rows are queued (T3 nf423 scope).

@@ -1,8 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCShotDefinitionForcePushBall_Destruct(void* ball);
+// Naming (NF423 gen, 2026-11-25): the callee 0x004DC9D2 now binds its PDB spelling ??1CTCShotDefinitionProjectile@NThingShot@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CTCShotDefinitionForcePushBall_Destruct@@YIXPAX@Z.
+namespace NThingShot { class CTCShotDefinitionProjectile { public: virtual ~CTCShotDefinitionProjectile(); }; }
 void* __fastcall CTCShotDefinitionForcePushBall_ScalarDeletingDestructor(void* ball, int, unsigned int flags)
 {
-    CTCShotDefinitionForcePushBall_Destruct(ball);
+    reinterpret_cast<NThingShot::CTCShotDefinitionProjectile*>(ball)->NThingShot::CTCShotDefinitionProjectile::~CTCShotDefinitionProjectile();
     if (flags & 1)
         operator delete(ball);
     return ball;

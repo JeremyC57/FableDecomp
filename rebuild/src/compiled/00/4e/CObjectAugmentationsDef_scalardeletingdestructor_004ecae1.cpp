@@ -1,8 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall CObjectAugmentationsDef_Destruct(void* def);
+// Naming (NF423 gen, 2026-11-25): the callee 0x004ECAFD now binds its PDB spelling ??1CObjectAugmentationsDef@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CObjectAugmentationsDef_Destruct@@YIXPAX@Z.
+class CObjectAugmentationsDef { public: virtual ~CObjectAugmentationsDef(); };
 void* __fastcall CObjectAugmentationsDef_ScalarDeletingDestructor(void* def, int, unsigned int flags)
 {
-    CObjectAugmentationsDef_Destruct(def);
+    reinterpret_cast<CObjectAugmentationsDef*>(def)->CObjectAugmentationsDef::~CObjectAugmentationsDef();
     if (flags & 1)
         operator delete(def);
     return def;

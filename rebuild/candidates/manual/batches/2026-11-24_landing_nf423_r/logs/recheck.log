@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005c297a   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005c297a   RELOCATION_MATCH PASS   ScalarDeletingDtor_005c297a
+009ec430   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009ec430   RELOCATION_MATCH PASS   ProcessCommandLine
+
+WINS: 2
+  005c297a RELOCATION_MATCH _global::?CLandscapeBackgroundPatch_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  009ec430 RELOCATION_MATCH CConsoleVariable::?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z

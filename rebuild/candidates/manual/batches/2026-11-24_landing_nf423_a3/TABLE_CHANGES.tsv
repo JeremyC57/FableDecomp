@@ -1,0 +1,33 @@
+action	symbol	target	witness	note
+delete	?CTCShotDefinitionSpreadShotProjectile_Destruct@@YIXPAX@Z	004dc9d2	004deab3	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCShotDefinitionNymphFun_Destruct@@YIXPAX@Z	004dc9d2	004deaef	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCShotDefinitionProjectilePredictive_Destruct@@YIXPAX@Z	004dc9d2	004deb2b	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCShotDefinitionForcePushBall_Destruct@@YIXPAX@Z	004dc9d2	004deb67	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCShotDefinitionQueenHornetShot_Destruct@@YIXPAX@Z	004dc9d2	007be9ec	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCSmashableBase@@UAE@XZ	004db004	004dc6e2	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCSmashableWindow_Destruct@@YIXPAX@Z	004db004	004dc6e2	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCSmashableBarrier_Destruct@@YIXPAX@Z	004db004	004dc71b	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCStockItem@@UAE@XZ	004de44d	004de431	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCStockItem_Destruct@@YIXPAX@Z	004de44d	004de431	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCSwitchableNavigation@@UAE@XZ	007876d0	004d486f	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCSwitchableNavigation_Destruct@@YIXPAX@Z	007876d0	004d486f	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCTargeted@@UAE@XZ	004dbf56	004dbf3a	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCTargeted_Destruct@@YIXPAX@Z	004dbf56	004dbf3a	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCTrapBase@@UAE@XZ	007891f8	007894ef	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCProjectileTrap_Destruct@@YIXPAX@Z	007891f8	007894ef	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCTrapBase_Destruct@@YIXPAX@Z	007891f8	007894b7	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCMeleeTrap_Destruct@@YIXPAX@Z	007891f8	007894d3	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCUserActionPointBase@@UAE@XZ	004ddf6f	004e037c	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCSingleUserActionPoints_Destruct@@YIXPAX@Z	004ddf6f	004e037c	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CTCNamedUserActionPoints_Destruct@@YIXPAX@Z	004ddf6f	004e241c	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCVillage@@UAE@XZ	0065b598	0066126b	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCVillage_Destruct@@YIXPAX@Z	0065b598	0066126b	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTCVillageMember@@UAE@XZ	004dc659	004dc63d	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTCVillageMember_Destruct@@YIXPAX@Z	004dc659	004dc63d	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DestructMember_00450ba0@@YIXPAX@Z	00450ba0	00677360	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CTrophyDef@@UAE@XZ	004d7fad	004d7f91	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CTrophyDef_Destruct@@YIXPAX@Z	004d7fad	004d7f91	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CVillageDef@@UAE@XZ	004e2170	004e2154	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CVillageDef_Destruct@@YIXPAX@Z	004e2170	004e2154	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1CWeaponDef@@UAE@XZ	004e3d4a	004e3d2e	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CWeaponDef_Destruct@@YIXPAX@Z	004e3d4a	004e3d2e	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

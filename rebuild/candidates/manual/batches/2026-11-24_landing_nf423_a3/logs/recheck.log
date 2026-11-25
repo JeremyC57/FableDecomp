@@ -1,0 +1,109 @@
+addr       parity           behav  name
+004d486f   WARN SHARED_HEADER_AVAILABLE CTCSwitchableNavigation (engine/CTCSwitchableNavigation.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d486f.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d486f.obj; graded the largest function
+004d486f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004d7f91   WARN SHARED_HEADER_AVAILABLE CTrophyDef (engine/CTrophyDef.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d7f91.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d7f91.obj; graded the largest function
+004d7f91   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004dbf3a   WARN SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dbf3a.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dbf3a.obj; graded the largest function
+004dbf3a   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004dc63d   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dc63d.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dc63d.obj; graded the largest function
+004dc63d   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004dc6e2   WARN SHARED_HEADER_AVAILABLE CTCSmashableBase (engine/CTCSmashableBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dc6e2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dc6e2.obj; graded the largest function
+004dc6e2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004dc71b   WARN SHARED_HEADER_AVAILABLE CTCSmashableBase (engine/CTCSmashableBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dc71b.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dc71b.obj; graded the largest function
+004dc71b   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004de431   WARN SHARED_HEADER_AVAILABLE CTCStockItem (engine/CTCStockItem.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004de431.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004de431.obj; graded the largest function
+004de431   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004deab3   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deab3.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deab3.obj; graded the largest function
+004deab3   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004deaef   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deaef.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deaef.obj; graded the largest function
+004deaef   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004deb2b   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deb2b.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deb2b.obj; graded the largest function
+004deb2b   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004deb67   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deb67.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004deb67.obj; graded the largest function
+004deb67   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e037c   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e037c.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e037c.obj; graded the largest function
+004e037c   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e2154   WARN SHARED_HEADER_AVAILABLE CVillageDef (engine/CVillageDef.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e2154.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e2154.obj; graded the largest function
+004e2154   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e241c   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e241c.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e241c.obj; graded the largest function
+004e241c   WARN RELOC_NAME: ?DestructMember_00414ea0@@YIXPAX@Z -> 00414ea0 labelled 'std::vector<CCharString, std::allocator<CCharString>>::~vector'
+004e241c   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e3d2e   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3d2e.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3d2e.obj; graded the largest function
+004e3d2e   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0066126b   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0066126b.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0066126b.obj; graded the largest function
+0066126b   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00677360   WARN SHARED_HEADER_AVAILABLE CThingComponentSet (engine/CThingComponentSet.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00677360.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00677360.obj; graded the largest function
+00677360   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007894b7   WARN SHARED_HEADER_AVAILABLE CTCTrapBase (engine/CTCTrapBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007894b7.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007894b7.obj; graded the largest function
+007894b7   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007894d3   WARN SHARED_HEADER_AVAILABLE CTCTrapBase (engine/CTCTrapBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007894d3.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007894d3.obj; graded the largest function
+007894d3   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007894ef   WARN SHARED_HEADER_AVAILABLE CTCTrapBase (engine/CTCTrapBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007894ef.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007894ef.obj; graded the largest function
+007894ef   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007be9ec   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007be9ec.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007be9ec.obj; graded the largest function
+007be9ec   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 21
+  004d486f RELOCATION_MATCH CTCSwitchableNavigation::`scalar_deleting_destructor'
+  004d7f91 RELOCATION_MATCH CTrophyDef::`scalar_deleting_destructor'
+  004dbf3a RELOCATION_MATCH CTCTargeted::`scalar_deleting_destructor'
+  004dc63d RELOCATION_MATCH CTCVillageMember::`scalar_deleting_destructor'
+  004dc6e2 RELOCATION_MATCH CTCSmashableWindow::`scalar_deleting_destructor'
+  004dc71b RELOCATION_MATCH CTCSmashableBarrier::`scalar_deleting_destructor'
+  004de431 RELOCATION_MATCH CTCStockItem::`scalar_deleting_destructor'
+  004deab3 RELOCATION_MATCH NThingShot::CTCShotDefinitionSpreadShotProjectile::`scalar_deleting_destructor'
+  004deaef RELOCATION_MATCH NThingShot::CTCShotDefinitionNymphFun::`scalar_deleting_destructor'
+  004deb2b RELOCATION_MATCH NThingShot::CTCShotDefinitionProjectilePredictive::`scalar_deleting_destructor'
+  004deb67 RELOCATION_MATCH NThingShot::CTCShotDefinitionForcePushBall::`scalar_deleting_destructor'
+  004e037c RELOCATION_MATCH CTCSingleUserActionPoints::`scalar_deleting_destructor'
+  004e2154 RELOCATION_MATCH CVillageDef::`scalar_deleting_destructor'
+  004e241c RELOCATION_MATCH CTCNamedUserActionPoints::`scalar_deleting_destructor'
+  004e3d2e RELOCATION_MATCH CWeaponDef::`scalar_deleting_destructor'
+  0066126b RELOCATION_MATCH CTCVillage::`scalar_deleting_destructor'
+  00677360 RELOCATION_MATCH CThingBaseDef::`scalar_deleting_destructor'
+  007894b7 RELOCATION_MATCH CTCTrapBase::`scalar_deleting_destructor'
+  007894d3 RELOCATION_MATCH CTCMeleeTrap::`scalar_deleting_destructor'
+  007894ef RELOCATION_MATCH CTCProjectileTrap::`scalar_deleting_destructor'
+  007be9ec RELOCATION_MATCH NThingShot::CTCShotDefinitionQueenHornetShot::`scalar_deleting_destructor'

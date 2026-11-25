@@ -1,8 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCNymph_Destruct(void* nymph);
+// Naming (NF423 gen, 2026-11-25): the callee 0x004E33BB now binds its PDB spelling ??1CTCNymph@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CTCNymph_Destruct@@YIXPAX@Z.
+class CTCNymph { public: virtual ~CTCNymph(); };
 void* __fastcall CTCNymph_ScalarDeletingDestructor(void* nymph, int, unsigned int flags)
 {
-    CTCNymph_Destruct(nymph);
+    reinterpret_cast<CTCNymph*>(nymph)->CTCNymph::~CTCNymph();
     if (flags & 1)
         operator delete(nymph);
     return nymph;

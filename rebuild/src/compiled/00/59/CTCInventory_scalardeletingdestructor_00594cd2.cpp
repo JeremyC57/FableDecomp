@@ -1,8 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCInventory_Destruct(void* inventory);
+// Naming (NF423 gen, 2026-11-25): the callee 0x00589C55 now binds its PDB spelling ??1CTCInventory@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CTCInventory_Destruct@@YIXPAX@Z.
+class CTCInventory { public: virtual ~CTCInventory(); };
 void* __fastcall CTCInventory_ScalarDeletingDestructor(void* inventory, int, unsigned int flags)
 {
-    CTCInventory_Destruct(inventory);
+    reinterpret_cast<CTCInventory*>(inventory)->CTCInventory::~CTCInventory();
     if (flags & 1)
         operator delete(inventory);
     return inventory;

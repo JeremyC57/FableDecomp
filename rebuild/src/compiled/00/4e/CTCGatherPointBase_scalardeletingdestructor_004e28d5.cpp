@@ -1,8 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCGatherPointBase_Destruct(void* point);
+// Naming (NF423 gen, 2026-11-25): the callee 0x004E0AE8 now binds its PDB spelling ??1CTCGatherPointBase@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CTCGatherPointBase_Destruct@@YIXPAX@Z.
+class CTCGatherPointBase { public: virtual ~CTCGatherPointBase(); };
 void* __fastcall CTCGatherPointBase_ScalarDeletingDestructor(void* point, int, unsigned int flags)
 {
-    CTCGatherPointBase_Destruct(point);
+    reinterpret_cast<CTCGatherPointBase*>(point)->CTCGatherPointBase::~CTCGatherPointBase();
     if (flags & 1)
         operator delete(point);
     return point;
