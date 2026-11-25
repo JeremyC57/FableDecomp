@@ -1,65 +1,31 @@
+// Behaviour test for 0x00890400 CGameScriptInterface::GetHealth: the entity from vtable slot 11 -> its Health when alive (+0x91 bit 0 clear) and in
+// combat (+0x6c bit 1), else 0.0f (retail's pooled __real@00000000, 0x0122DEDC).
+// NF418 (2026-11-25): linked behaviour test: the row function is declared here, not defined, so the test links the row object (and
+// defines its callees under the row's spellings); it asserts the value of the float literal the row now spells (a mutated literal fails).
+#include "engine/CGameScriptInterface.h"
 #include <cstdio>
-
-static float g_defaultHealth = 42.5f;
-
-struct HeroObj {
-    unsigned char _pad_0x6c[0x6c];
-    unsigned char flag6c; // +0x6c
-    unsigned char _pad_0x6d[0x24]; // to 0x91
-    unsigned char flag91; // +0x91
-    unsigned char _pad_0x92[0x22]; // to 0xb4
-    float health; // +0xb4
+struct CHealthEntityView {
+    unsigned char _pad_0x00[0x6c];
+    unsigned char CombatFlags;
+    unsigned char _pad_0x6d[0x24];
+    unsigned char StateFlags;
+    unsigned char _pad_0x92[0x22];
+    float Health;
 };
-
-struct GSI;
-typedef HeroObj* (__fastcall *GetObjFn)(GSI*);
-struct GSIVT {
-    void* slots0[11];
-    GetObjFn getObj;
-};
-struct GSI {
-    GSIVT* vt;
-};
-
-static HeroObj g_obj;
-static HeroObj* __fastcall retObj(GSI*) { return &g_obj; }
-static HeroObj* __fastcall retNull(GSI*) { return 0; }
-
-static GSIVT g_vt_obj;
-static GSIVT g_vt_null;
-
-float __stdcall CGameScriptInterface_GetHealth(GSI* self)
+float __stdcall CGameScriptInterface_GetHealth(CGameScriptInterface* self);
+static CHealthEntityView g_entity; static CHealthEntityView* g_ret = 0; static const void* g_self = 0;
+static CHealthEntityView* __fastcall GetEntity(CGameScriptInterface* self) { g_self = self; return g_ret; }
+static void* g_vtbl[16]; static unsigned char g_gsi[0x400];
+int main()
 {
-    HeroObj* o = self->vt->getObj(self);
-    if (o != 0 &&
-        (o->flag91 & 0x1) == 0 &&
-        (o->flag6c & 0x2) != 0) {
-        return o->health;
-    }
-    return g_defaultHealth;
-}
-
-int main() {
-    g_vt_obj.getObj = retObj;
-    g_vt_null.getObj = retNull;
-
-    GSI a; a.vt = &g_vt_obj;
-    GSI b; b.vt = &g_vt_null;
-
-    g_obj.flag91 = 0x00;
-    g_obj.flag6c = 0x02;
-    g_obj.health = 123.0f;
-    if (CGameScriptInterface_GetHealth(&a) != 123.0f) { std::printf("FAIL health\n"); return 1; }
-
-    if (CGameScriptInterface_GetHealth(&b) != g_defaultHealth) { std::printf("FAIL null\n"); return 1; }
-
-    g_obj.flag91 = 0x01;
-    if (CGameScriptInterface_GetHealth(&a) != g_defaultHealth) { std::printf("FAIL flag91\n"); return 1; }
-
-    g_obj.flag91 = 0x00;
-    g_obj.flag6c = 0x00;
-    if (CGameScriptInterface_GetHealth(&a) != g_defaultHealth) { std::printf("FAIL flag6c\n"); return 1; }
-
+    g_vtbl[11] = (void*)&GetEntity; *(void**)g_gsi = g_vtbl;
+    CGameScriptInterface* self = (CGameScriptInterface*)g_gsi;
+    g_entity.Health = 12.5f; g_entity.StateFlags = 0; g_entity.CombatFlags = 2; g_ret = &g_entity;
+    float a = CGameScriptInterface_GetHealth(self);
+    g_entity.CombatFlags = 0; float b = CGameScriptInterface_GetHealth(self);
+    g_entity.CombatFlags = 2; g_entity.StateFlags = 1; float c = CGameScriptInterface_GetHealth(self);
+    g_ret = 0; float d = CGameScriptInterface_GetHealth(self);
+    if (a != 12.5f || b != 0.0f || c != 0.0f || d != 0.0f || g_self != self) { std::printf("FAIL %f %f %f %f\n", a, b, c, d); return 1; }
     std::printf("CGameScriptInterface_00890400_TEST PASS\n");
     return 0;
 }

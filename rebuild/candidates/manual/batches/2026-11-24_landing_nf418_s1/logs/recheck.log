@@ -1,0 +1,54 @@
+addr       parity           behav  name
+00438570   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00438570   WARN RELOC_NAME: ??0InitGuard@@QAE@PAHH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+00438570   WARN RELOC_NAME: ?AcquireBuilder@@YGPAUBuilder@@PAUInitGuard@@PAPAVCPlayerGuiDef@@@Z -> 0044c6b0 labelled 'CGameDefinitionManager::Get'
+00438570   WARN RELOC_NAME: ?Build@Builder@@QAEPAU1@XZ -> 0043ff30 labelled 'CDefinitionManager::GetDef_0043ff30'
+00438570   WARN RELOC_NAME: ??1InitGuard@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00438570   RELOCATION_MATCH PASS   PeekGuiDef
+00697860   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00697860   RELOCATION_MATCH PASS   TellEngineThatCameraHasMoved
+00699090   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00699090   WARN GENERIC_STRUCT module=CGameCameraManager (use engine/CGameCameraManager.h)
+00699090   WARN RELOC_NAME: ??0ScopedGuard@@QAE@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+00699090   WARN RELOC_NAME: ??1ScopedGuard@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00699090   RELOCATION_MATCH PASS   SetAutomaticCameraControl
+00744110   RELOCATION_MATCH PASS   GetEffectName
+00842c00   WARN RELOC_NAME: ?Assign@CExprField@@QAEXPBD@Z -> 005fa740 labelled 'CDefString::operator!='
+00842c00   RELOCATION_MATCH PASS   PreventSneaking
+00842c50   WARN RELOC_NAME: ?Assign@CExprField@@QAEXPBD@Z -> 005fa740 labelled 'CDefString::operator!='
+00842c50   RELOCATION_MATCH PASS   PreventSneaking
+008b34d0   RELOCATION_MATCH PASS   GetName
+008b3980   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditIdleMiddle (engine/CCombatSequence_BanditIdleMiddle.h)
+008b3980   RELOCATION_MATCH PASS   GetName
+008b3b80   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingBackOff (engine/CCombatSequence_BanditKingBackOff.h)
+008b3b80   RELOCATION_MATCH PASS   GetName
+008b3d80   RELOCATION_MATCH PASS   GetName
+008b3ea0   RELOCATION_MATCH PASS   GetName
+008b4200   RELOCATION_MATCH PASS   GetName
+009979e0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+009979e0   RELOCATION_MATCH PASS   ConvertDirectoryAndFilenameToPath
+00abfcd0   WARN RELOC_NAME: ?FableHasExtHelper_abfcd0@@YGHPBD@Z -> 00aa7ea0 labelled 'CChunkedFileSuperChunk::CountSubChunksOfType'
+00abfcd0   RELOCATION_MATCH PASS   HasExtendedProperties
+00b1b470   RELOCATION_MATCH PASS   GetGUIName
+00bdb2f0   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutLightsBones (engine/CEngineVSConstantLayoutLightsBones.h)
+00bdb2f0   RELOCATION_MATCH PASS   PeekName
+00d732a0   RELOCATION_MATCH PASS   OnPredicateFail
+
+WINS: 17
+  00438570 RELOCATION_MATCH _global::PeekGuiDef
+  00697860 RELOCATION_MATCH CGameCameraManager::TellEngineThatCameraHasMoved
+  00699090 RELOCATION_MATCH CGameCameraManager::SetAutomaticCameraControl
+  00744110 RELOCATION_MATCH NCreatureMode::CModeHoverNormal::?GetEffectName@CModeHoverNormal@NCreatureMode@@
+  00842c00 RELOCATION_MATCH CCreatureAction_PerformExpression::?PreventSneaking@CCreatureAction_PerformExpression_Methods@@QAEXXZ
+  00842c50 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::?PreventSneaking@CCreatureAction_PerformExpressionExtended_Methods@@QAEXXZ
+  008b34d0 RELOCATION_MATCH CCombatSequence_GenericRangedAttack::?GetName@CCombatSequence_GenericRangedAttack@@UBE?AVCCharString@@XZ
+  008b3980 RELOCATION_MATCH CCombatSequence_BanditIdleMiddle::GetName
+  008b3b80 RELOCATION_MATCH CCombatSequence_BanditKingBackOff::GetName
+  008b3d80 RELOCATION_MATCH CCombatSequence_FodderSecondaryAttack::?GetName@CCombatSequence_FodderSecondaryAttack@@UBE?AVCCharString@@XZ
+  008b3ea0 RELOCATION_MATCH CCombatSequence_ScorpionLungeAttack::?GetName@CCombatSequence_ScorpionLungeAttack@@UBE?AVCCharString@@XZ
+  008b4200 RELOCATION_MATCH CCombatSequence_TrollBurrowPursue::?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ
+  009979e0 RELOCATION_MATCH _global::ConvertDirectoryAndFilenameToPath
+  00abfcd0 RELOCATION_MATCH C3DMeshFileMaterialChunk::HasExtendedProperties
+  00b1b470 RELOCATION_MATCH NParticleEngine::CPSCSpline::?GetGUIName@CPSCSpline@NParticleEngine@@
+  00bdb2f0 RELOCATION_MATCH CEngineVSConstantLayoutLightsBones::PeekName
+  00d732a0 RELOCATION_MATCH CVtable_012d29b8::?CHTG_Executioner_OnPredicateFail@@YIXPAUCHTG_Executioner@@@Z

@@ -1,17 +1,38 @@
 va	width	text	bytes_len	start_evidence	verified	rows	sources
+0x0122D6CC	narrow	FALSE	6	prev-NUL	ok	0057f78f	agentNF418
+0x0122D6D4	narrow	TRUE	5	prev-NUL	ok	0057f78f	agentNF418
 0x0122D70C	wide		2	prev-NUL	ok	00406f70 004a05c0 004fdab0	2026-11-25_nf413_handback agentNF415
 0x0122D70E	narrow		1	prev-NUL	ok	00451e11 0045228f 004522f4 00452b4d 004568bc 00456903 00499a70 006926f0 006bbf20 008902e0 00891490 00aa75f0 00aae0f0 00ab9c30 00ab9fa0 00ac62b0 00b28ca0	2026-11-25_nf410_handback 2026-11-25_nf413_handback 2026-11-25_nf414_handback agentNF415
+0x0122DE44	wide	%d	6	prev-NUL	ok	009c7c20	agentNF418
+0x0122DE78	wide	\\	4	prev-NUL	ok	009979e0	agentNF418
+0x0122DE80	wide	Default	16	prev-NUL	ok	004069e0	agentNF418
 0x0122DE9C	wide	AutoSave	18	prev-NUL	ok	00406c20 00406f70	2026-11-25_nf410_handback 2026-11-25_nf413_handback
+0x0122DF24	narrow	\"	2	prev-NUL	ok	004ca230	agentNF418
+0x0122DF40	narrow	TEXT_GUI_PROFILE_DEFAULT	25	prev-NUL	ok	004069e0	agentNF418
 0x0122DF5C	wide	<Empty Slot Name>	36	prev-NUL	ok	00406a80	2026-11-25_nf410_handback
 0x0122DF80	narrow	TEXT_GUI_SAVE_EMPTY_SLOT	25	prev-NUL	ok	00406a80	2026-11-25_nf410_handback
 0x0122DFBC	narrow	TEXT_GUI_SAVE_AUTO_SAVE_NAME	29	prev-NUL	ok	00406c20	2026-11-25_nf410_handback
+0x0122DFE8	narrow	Unable to find symbol 	23	prev-NUL	ok	0040f7e0 00686240	agentNF418
+0x0122E020	narrow	)	2	prev-NUL	ok	0057f78f 006c78f0 006d3880 00755a30	agentNF418
+0x0122E024	narrow	,	2	prev-NUL	ok	0057f78f 006c78f0 006d3880 00755a30	agentNF418
+0x0122E028	narrow	(	2	prev-NUL	ok	0057f78f 006c78f0 006d3880 00755a30	agentNF418
 0x0122E05C	narrow	U:\\	4	prev-NUL	ok	00406f70	2026-11-25_nf413_handback
+0x0122E070	wide	 - 	8	prev-NUL	ok	007f4b60	agentNF418
 0x0122EEA4	narrow	Init World Init	16	prev-NUL	ok	0041735a	agentNF415
+0x0122F3B4	narrow	D	2	prev-NUL	ok		agentNF418
+0x01231728	wide	\n	4	after-float(prev 0x3b)	ok	00497a60 009bc900	agentNF418
+0x0123173C	narrow	PLAYER_GUI_PC	14	prev-NUL	ok	00438570	agentNF418
+0x012353B8	narrow	;\r\n	4	prev-NUL	ok	00522600	agentNF418
+0x0123542C	narrow	;	2	prev-NUL	ok	004ca230	agentNF418
+0x012358E8	narrow	CCoopSpiritDef	15	prev-NUL	ok		agentNF418
 0x01236874	narrow	CTCInGameMenu	14	prev-NUL	ok	004d55bd	2026-11-25_nf411_handback
 0x01236A74	wide	.hs	8	prev-NUL	ok	004a05c0	agentNF415
+0x0123817C	wide	TEXT_GUI_NEXT	28	after-float(prev 0x3a)	ok	0048f7c0	agentNF418
 0x01238FE4	narrow	CTCFadeOutAndIn	16	prev-NUL	ok	004d626c	2026-11-25_nf411_handback
 0x012398DC	narrow	CTCGraphicAppearance	21	prev-NUL	ok	004d4505	2026-11-25_nf411_handback
 0x01239BE4	narrow	CTCMapwho	10	prev-NUL	ok	004d376d	2026-11-25_nf411_handback
+0x01239BFC	narrow	CreateTC	9	prev-NUL	ok	004ca230	agentNF418
+0x01239ED4	narrow	SND_	5	prev-NUL	ok	009bd910	agentNF418
 0x01239FC0	narrow	CTCTargeted	12	prev-NUL	ok	004d2a91	2026-11-25_nf414_handback
 0x0123A000	narrow	CTCActionUseTorch	18	prev-NUL	ok	004d2b04	2026-11-25_nf414_handback
 0x0123A014	narrow	CTCRotate	10	prev-NUL	ok	004d2b17	2026-11-25_nf414_handback
@@ -306,32 +327,55 @@ va	width	text	bytes_len	start_evidence	verified	rows	sources
 0x0123E718	narrow	CTCPhotojournalCapture	23	prev-NUL	ok	004d6727	2026-11-25_nf411_handback
 0x0123E730	narrow	CTCCarriedActionUseAbility	27	prev-NUL	ok	004d673a	2026-11-25_nf411_handback
 0x0123E74C	narrow	CTCAbsorbHits	14	prev-NUL	ok	004d674d	2026-11-25_nf411_handback
+0x01245A78	narrow	END_THING_LEVEL	16	prev-NUL	ok	00520570	agentNF418
+0x01245A88	narrow	NewThing	9	prev-NUL	ok	00520570	agentNF418
+0x01245BA4	narrow	Version 	9	prev-NUL	ok	00522600	agentNF418
+0x0124FED0	wide	*.jpg	12	after-float(prev 0x42)	ok	00581b33	agentNF418
+0x01258C1C	narrow	 	2	prev-NUL	ok	00697860	agentNF418
 0x0125C0EC	narrow	PARTICLE	9	prev-NUL	ok	00692150	2026-11-25_nf410_handback
 0x0125C110	narrow	RUMBLE	7	prev-NUL	ok	00692190	2026-11-25_nf410_handback
 0x0125C130	narrow	SOUND	6	prev-NUL	ok	006921d0	2026-11-25_nf410_handback
 0x0125C168	narrow	EXPLOSION	10	prev-NUL	ok	00692250	2026-11-25_nf410_handback
 0x0125C18C	narrow	CARRYTHINGADD	14	prev-NUL	ok	006922a0	2026-11-25_nf410_handback
+0x0125C2A8	narrow	using fast mode	16	prev-NUL	ok	00697860	agentNF418
+0x0125C2B8	narrow	 not 	6	prev-NUL	ok	00697860	agentNF418
+0x0125C2C0	narrow	telling engine that the camera has moved and	45	prev-NUL	ok	00697860	agentNF418
+0x0125C304	narrow	CAMERA_LIST_PUSH_ERROR	23	prev-NUL	ok	00699090	agentNF418
+0x0125C360	narrow	SET_AUTO_CONTROL	17	prev-NUL	ok	00699090	agentNF418
+0x0125D088	narrow	Scale	6	prev-NUL	ok	006a5af0	agentNF418
+0x0125D090	narrow	Health	7	prev-NUL	ok	006a5af0	agentNF418
+0x0125D1C8	narrow	SCRIPT_NAME_HERO	17	prev-NUL	ok	00eed8b0	agentNF418
+0x0125EAC8	narrow	Expression_Picklock	20	prev-NUL	ok	00842c00	agentNF418
 0x0125FD40	narrow	SG_OPINION_REACTION_ROOT	25	prev-NUL	ok	008fe36e	2026-11-25_nf410_handback
+0x0125FE68	narrow	FACTION_BANDITS	16	prev-NUL	ok	00dfc920	agentNF418
 0x0126554C	narrow	CActionTurnToFacePosition	26	prev-NUL	ok	00718610	2026-11-25_nf410_handback
 0x01265824	narrow	CActionTalkedTo	16	prev-NUL	ok	00718d90	2026-11-25_nf410_handback
 0x01265850	narrow	CActionDoCreatureAction	24	prev-NUL	ok	00718db0	2026-11-25_nf410_handback
 0x01265884	narrow	CActionSummonerLightningAttackTarget	37	prev-NUL	ok	00718dd0	2026-11-25_nf410_handback
 0x012659E4	narrow	CActionTalkToThing	19	prev-NUL	ok	0071a4e0	2026-11-25_nf410_handback
+0x01268848	narrow	FLIGHT	7	prev-NUL	ok	00744110	agentNF418
 0x01270934	narrow	CActionMoveTo	14	prev-NUL	ok	007e7280	2026-11-25_nf410_handback
+0x01271DA8	wide	Missing text tag	34	prev-NUL	ok	007f4b60	agentNF418
+0x012757DC	narrow	EXPRESSION_WAIT	16	prev-NUL	ok	009041a0	agentNF418
 0x01275988	narrow	SG_DEED_REACTION_ROOT	22	aligned-after-data:00004040	ok	0088f850 008fe381	2026-11-25_nf410_handback agentNF415
+0x0127717C	narrow	RESPONSE_GENERIC_HIT_BACK_KNOCKDOWN	36	prev-NUL	ok	008eda90	agentNF418
 0x012780DC	narrow	SG_MELEE_COMBAT_NEARBY_ATTACK_WHEN_VERY_CLOSE	46	aligned-after-data:cdcc4c3e	ok	008fd8fd	2026-11-25_nf410_handback
 0x0127810C	narrow	SG_MELEE_COMBAT_NEARBY2	24	prev-NUL	ok	008fd8ea	2026-11-25_nf410_handback
 0x01278124	narrow	SG_MELEE_COMBAT_NEARBY	23	prev-NUL	ok	008fd8c4	2026-11-25_nf410_handback
 0x0127813C	narrow	SG_SEEK_ENEMY	14	prev-NUL	ok	008fd689	2026-11-25_nf410_handback
 0x0127814C	narrow	SG_MINION_SLEEP	16	prev-NUL	ok	008fd2e5	2026-11-25_nf410_handback
+0x012786AC	narrow	COMBAT_SEQUENCE_GENERIC_RANGED_ATTACK	38	after-float(prev 0x3e)	ok	008b34d0 008b3630 008b3d80 008b4200 00bdbf00	agentNF418
 0x012786D4	narrow	COMBAT_SEQUENCE_GENERIC_LEADER	31	prev-NUL	ok	008b3540	2026-11-25_nf410_handback
 0x0127876C	narrow	COMBAT_SEQUENCE_BANDIT_ATTACK_LONG	35	prev-NUL	ok	008b3710	2026-11-25_nf410_handback
 0x01278790	narrow	COMBAT_SEQUENCE_BANDIT_ATTACK_MIDDLE	37	prev-NUL	ok	008b3790	2026-11-25_nf410_handback
 0x012787B8	narrow	COMBAT_SEQUENCE_BANDIT_ATTACK_SIDE	35	prev-NUL	ok	008b3810	2026-11-25_nf410_handback
 0x012787DC	narrow	COMBAT_SEQUENCE_BANDIT_ATTACK_SHORT	36	prev-NUL	ok	008b3890	2026-11-25_nf410_handback
+0x01278824	narrow	COMBAT_SEQUENCE_BANDIT_IDLE_MIDDLE	35	prev-NUL	ok	008b3980	agentNF418
 0x01278868	narrow	COMBAT_SEQUENCE_BANDIT_KING_ATTACK	35	prev-NUL	ok	008b3a70	2026-11-25_nf410_handback
+0x012788B0	narrow	COMBAT_SEQUENCE_BANDIT_KING_BACK_OFF	37	prev-NUL	ok	008b3b80	agentNF418
 0x012788D8	narrow	COMBAT_SEQUENCE_BANDIT_KING_SPIN_AROUND	40	prev-NUL	ok	008b3c00	2026-11-25_nf410_handback
 0x01278924	narrow	COMBAT_SEQUENCE_FODDER_UNBLOCKABLE_MAIN_ATTACK	47	prev-NUL	ok	008b3d00	2026-11-25_nf410_handback
+0x012789A0	narrow	COMBAT_SEQUENCE_SCORPION_LUNGE_ATTACK	38	prev-NUL	ok	008b3ea0	agentNF418
 0x01278A18	narrow	COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE_NON_MELEE	45	prev-NUL	ok	008b4070	2026-11-25_nf410_handback
 0x01278A48	narrow	COMBAT_SEQUENCE_TROLL_OPENING_GROUND_POUND	43	prev-NUL	ok	008b40f0	2026-11-25_nf410_handback
 0x01278A74	narrow	COMBAT_SEQUENCE_TROLL_PROJECTILE_ATTACK	40	prev-NUL	ok	008b4180	2026-11-25_nf410_handback
@@ -546,19 +590,43 @@ va	width	text	bytes_len	start_evidence	verified	rows	sources
 0x0128B018	narrow	SG_SUMMONER_CHARGE	19	prev-NUL	ok	008fe915	2026-11-25_nf410_handback
 0x0128B02C	narrow	SG_SUMMONER_SUMMON	19	prev-NUL	ok	008fe928	2026-11-25_nf410_handback
 0x0128D70C	narrow	CActionPlayAnimation	21	prev-NUL	ok	00903570	2026-11-25_nf410_handback
+0x0128D850	narrow	CActionFollowCreature	22	prev-NUL	ok	009041a0	agentNF418
+0x0129B450	wide	%1	6	prev-NUL	ok	009c7980	agentNF418
+0x0129B470	wide	%	4	prev-NUL	ok	009c7c20	agentNF418
+0x0129CFE0	narrow	1.2.1	6	prev-NUL	ok	00a3aa40	agentNF418
 0x0129E1C0	narrow	Compressed Animation Sequence	30	prev-NUL	ok	00aa49d0	2026-11-25_nf410_handback
 0x0129E2A4	narrow	Animated Primitive	19	prev-NUL	ok	00aa7090	2026-11-25_nf410_handback
 0x0129E368	narrow	Vertex Buffer Data	19	prev-NUL	ok	00aa7230	2026-11-25_nf413_handback
 0x0129E3AC	narrow	Triangle Strip	15	prev-NUL	ok	00aa7280	2026-11-25_nf410_handback
 0x0129E3EC	narrow	UV Tangent Vectors	19	prev-NUL	ok	00aa7350	2026-11-25_nf410_handback
+0x0129E454	narrow	>>>>	5	prev-NUL	ok	00aa79c0	agentNF418
 0x0129E4A0	narrow	Unknown chunk type	19	prev-NUL	ok	00aa75d0	2026-11-25_nf410_handback
 0x0129E564	narrow	Helpers	8	prev-NUL	ok	00aaacd0 00aaea90	2026-11-25_nf410_handback
 0x0129E9AC	narrow	Animation Mask	15	prev-NUL	ok	00ab0b30	2026-11-25_nf410_handback
 0x0129EC54	narrow	Smoothing Groups	17	prev-NUL	ok	00abea90	2026-11-25_nf410_handback
 0x0129ED24	narrow	Vertex List	12	prev-NUL	ok	00abec70	2026-11-25_nf413_handback
+0x0129EDCC	narrow	MTLE	5	prev-NUL	ok	00abfcd0	agentNF418
 0x0129EE0C	narrow	Material List	14	prev-NUL	ok	00ac1270	2026-11-25_nf410_handback
 0x0129F534	narrow	Mesh Renderer	14	prev-NUL	ok	00b05a90	2026-11-25_nf410_handback
+0x0129F608	narrow	Spline	7	prev-NUL	ok	00b1b470	agentNF418
 0x012A2600	narrow	EnableScreenEffectColourFilter	31	prev-NUL	ok	00b5bad0	2026-11-25_nf410_handback
 0x012A2804	narrow	EnableScreenEffectGlowRenderer	31	prev-NUL	ok	00b619f0	2026-11-25_nf410_handback
+0x012A7D0C	narrow	LayoutLightsBones	18	prev-NUL	ok	00bdb2f0	agentNF418
 0x012A7D2C	narrow	LayoutLights	13	prev-NUL	ok	00bdb580	2026-11-25_nf410_handback
 0x012B5B78	narrow	Win32	6	prev-NUL	ok	00c3e290	agentNF415
+0x012C165C	narrow	END_NEW_ENTITY_SCRIPT	22	prev-NUL	ok	00cb8440	agentNF418
+0x012C1674	narrow	START_NEW_ENTITY_SCRIPT	24	prev-NUL	ok	00cb8440	agentNF418
+0x012C168C	narrow	END_ENTITY_SCRIPTS	19	prev-NUL	ok	00cb8690	agentNF418
+0x012C16A0	narrow	START_ENTITY_SCRIPTS	21	prev-NUL	ok	00cb8690	agentNF418
+0x012C16B8	narrow	END_SCRIPT_DATA	16	prev-NUL	ok	00cb8690	agentNF418
+0x012C16C8	narrow	START_SCRIPT_DATA	18	prev-NUL	ok	00cb8690	agentNF418
+0x012CAECC	narrow	VILLAGE_KNOTHOLEGLADE	22	prev-NUL	ok	00d1dff0 00d1eae0	agentNF418
+0x012D218C	narrow	FACTION_BANDITS_FRIENDLY	25	prev-NUL	ok	00e48bf0	agentNF418
+0x012D29D4	narrow	TEXT_QST_030_FAILURE_EXECUTIONER_KILLED	40	prev-NUL	ok	00d732a0	agentNF418
+0x012D75D4	narrow	HUD_QUEST_ICON_ROCK_TROLL	26	prev-NUL	ok	00da5f40	agentNF418
+0x012DEC88	wide	TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED	78	prev-NUL	ok	00dfb100	agentNF418
+0x012E4DA4	narrow	M_BanditEscapePoint	20	prev-NUL	ok	00e48bf0	agentNF418
+0x012E7418	narrow	Spectator2	11	prev-NUL	ok	00e63730	agentNF418
+0x012E7450	narrow	Spectator1	11	prev-NUL	ok	00e63730	agentNF418
+0x012ECAD8	narrow	M_HiddenBooty	14	prev-NUL	ok	00e93080	agentNF418
+0x012F5208	narrow	TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01	43	prev-NUL	ok	00ee6d60	agentNF418

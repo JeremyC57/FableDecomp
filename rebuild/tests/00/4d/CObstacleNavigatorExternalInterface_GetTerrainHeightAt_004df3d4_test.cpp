@@ -1,23 +1,14 @@
-#include <stdio.h>
-
-float g_terrainHeight = 123.5f;
-
-float __stdcall CObstacleNavigatorExternalInterface_GetTerrainHeightAt(void* pos)
-{
-    (void)pos;
-    return g_terrainHeight;
-}
-
+// Behaviour test for 0x004DF3D4 CObstacleNavigatorExternalInterface_GetTerrainHeightAt: returns 0.0f (retail's pooled __real@00000000, 0x0122DEDC), ret 4.
+// NF418 (2026-11-25): linked behaviour test: the row function is declared here, not defined, so the test links the row object (and
+// defines its callees under the row's spellings); it asserts the value of the float literal the row now spells (a mutated literal fails).
+#include <cstdio>
+float __stdcall CObstacleNavigatorExternalInterface_GetTerrainHeightAt(void* pos);
 int main()
 {
-    void* arg = (void*)0x1000;
-    float r = CObstacleNavigatorExternalInterface_GetTerrainHeightAt(arg);
-    if (r != 123.5f) { printf("BAD r=%f\n", r); return 1; }
-
-    g_terrainHeight = -7.25f;
-    r = CObstacleNavigatorExternalInterface_GetTerrainHeightAt(arg);
-    if (r != -7.25f) { printf("BAD2 r=%f\n", r); return 1; }
-
-    printf("OK_0x004df3d4 r=%f\n", r);
+    int dummy = 5;
+    float r = CObstacleNavigatorExternalInterface_GetTerrainHeightAt(&dummy);
+    float r2 = CObstacleNavigatorExternalInterface_GetTerrainHeightAt(0);
+    if (r != 0.0f || r2 != 0.0f) { std::printf("BAD %f %f\n", r, r2); return 1; }
+    std::printf("OK_0x004df3d4\n");
     return 0;
 }

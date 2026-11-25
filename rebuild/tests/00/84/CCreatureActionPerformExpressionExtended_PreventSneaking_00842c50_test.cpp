@@ -1,13 +1,22 @@
+// Behaviour test for 0x00842C50 CCreatureAction_PerformExpressionExtended::PreventSneaking: Assign("Expression_Picklock") (retail 0x0125EAC8) on the field at PExpressionDef_Object + 0x78.
+// NF418 (2026-11-25): linked behaviour test: the row function is declared here, not defined, so the test links the row object and the
+// callees below are defined under the row's spellings; it asserts the literal text the row passes (a mutated literal fails).
+#include "engine/CCreatureAction_PerformExpressionExtended.h"
 #include "rebuild_abi.h"
 #include <cstdio>
-const char kExprName_00842c50[] = "expr";
-static void *g_dst_00842c50=0; static const char *g_name_00842c50=0;
-struct CExprField { void Assign(const char *name){ g_dst_00842c50=this; g_name_00842c50=name; } };
-class CCreatureAction_PerformExpressionExtended { public: char pad00[0xa8]; char *m_holder; void PreventExpression(); };
-void CCreatureAction_PerformExpressionExtended::PreventExpression(){ ((CExprField*)(m_holder + 0x78))->Assign(kExprName_00842c50); }
-int main(){
-    CCreatureAction_PerformExpressionExtended o; char holder[0x100]; o.m_holder=holder;
-    o.PreventExpression();
-    if(g_dst_00842c50!=(void*)(holder+0x78)||g_name_00842c50!=kExprName_00842c50){std::printf("BAD\n");return 1;}
+#include <cstring>
+struct CExprField { void Assign(const char *name); };
+struct CCreatureAction_PerformExpressionExtended_Methods : CCreatureAction_PerformExpressionExtended {
+    void PreventSneaking();
+};
+static void* g_dst = 0; static const char* g_name = 0; static int g_calls = 0;
+void CExprField::Assign(const char *name) { g_dst = this; g_name = name; ++g_calls; }
+static char g_obj[0x400]; static char g_holder[0x100];
+int main()
+{
+    CCreatureAction_PerformExpressionExtended_Methods* o = (CCreatureAction_PerformExpressionExtended_Methods*)g_obj;
+    o->PExpressionDef_Object = (CDefPointeeBase*)g_holder;
+    o->PreventSneaking();
+    if (g_calls != 1 || g_dst != (void*)(g_holder + 0x78) || g_name == 0 || std::strcmp(g_name, "Expression_Picklock") != 0) { std::printf("BAD\n"); return 1; }
     std::printf("EXPR842C50_OK\n"); return 0;
 }

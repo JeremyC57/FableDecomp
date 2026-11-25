@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0124F2B8	?TWO_PI@@3NB	ESTABLISHED_SPELLINGS.tsv (2026-11-01 decision); one retail address, one name	_TWO_PI (reloc_bindings witness 0x008185B0)
+0x0129AAF4	?NullChar@CCharString@@1DB	Ego_d.pdb PUB32 ?NullChar@CCharString@@1DB (ghidra_out/egod_carved_names.tsv); the empty char every CCharString method (0x0099Exxx) and 0x00501D30 / 0x00AE8D50 reference	?NullChar@CCharString@@2DB _g_emptyCharStringData
+0x0129A8E0	?NullChar@CWideString@@1_WB	Ego_d.pdb PUB32 ?NullChar@CWideString@@1_WB; referenced only by CWideString methods 0x0099BDB0.. (likely: one PDB name + the user set; confirm the _W type key before respelling)	_g_emptyWideStringData

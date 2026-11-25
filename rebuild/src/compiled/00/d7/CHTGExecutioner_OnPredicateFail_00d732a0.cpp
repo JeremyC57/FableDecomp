@@ -1,9 +1,8 @@
 // Byte-exact reconstruction of CHTG_Executioner::OnPredicateFail @ 0x00d732a0
 // Leaf: ?CHTG_Executioner_OnPredicateFail@@YIXPAUCHTG_Executioner@@@Z
+// Literal (NF418, 2026-11-25): was an extern char whose address was passed `g_PredMsg` (table ?g_PredMsg@@3DA -> 0x012D29D4); now spelled at the use site:
+//   "TEXT_QST_030_FAILURE_EXECUTIONER_KILLED", retail's pooled literal at 0x012D29D4 (/GF-merged ??_C@, NF418 CLASSIFICATION.tsv).
 
-// The pushed arg is the ADDRESS 0x12d29d4 (a global). Model as extern global,
-// pass its address.
-extern char g_PredMsg;
 
 // Helper subobject living at obj+0x9c; its method takes a void* stack arg.
 // Native member => VC7.1 __fastcall (ecx=this, msg on stack, no edx).
@@ -27,6 +26,6 @@ struct CHTG_Executioner {
 void __fastcall CHTG_Executioner_OnPredicateFail(CHTG_Executioner* self)
 {
     SubObj* s = (SubObj*)((char*)self->obj + 0x9c);
-    ((CCharString*)s)->operator=((char const*)(&g_PredMsg));
+    ((CCharString*)s)->operator=("TEXT_QST_030_FAILURE_EXECUTIONER_KILLED");
     ((char*)self->obj)[0x4b] = 1;
 }

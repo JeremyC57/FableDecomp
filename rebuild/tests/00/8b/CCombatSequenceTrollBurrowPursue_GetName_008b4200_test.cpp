@@ -1,3 +1,4 @@
+// NF418 (2026-11-25): the row now spells the literal itself; the test's copy of the file-static array is gone.
 // Behaviour test for 0x008B4200 (NF388 literal audit): links the row object and asserts the string the row hands to
 // CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_TROLL_BURROW_PURSUE", length -1, one call, into the hidden return slot.
 #include <stdio.h>
@@ -10,7 +11,6 @@
 #include "engine/CCombatSequence_TrollBurrowPursue.h"
 
 class CCharString { public: char* m_buf; CCharString(const char*, long); };
-static const char kName[] = "COMBAT_SEQUENCE_TROLL_BURROW_PURSUE";
 
 
 static const char* g_text = 0;

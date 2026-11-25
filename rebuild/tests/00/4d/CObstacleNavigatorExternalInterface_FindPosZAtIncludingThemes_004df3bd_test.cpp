@@ -1,22 +1,15 @@
-#include <stdio.h>
-
-float g_findPosZTheme;
-
-float __stdcall CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes(float pos, float b)
-{
-    return g_findPosZTheme;
-}
-
+// Behaviour test for 0x004DF3BD CObstacleNavigatorExternalInterface::FindPosZAtIncludingThemes: returns 0.0f (retail's pooled __real@00000000, 0x0122DEDC).
+// NF418 (2026-11-25): linked behaviour test: the row function is declared here, not defined, so the test links the row object (and
+// defines its callees under the row's spellings); it asserts the value of the float literal the row now spells (a mutated literal fails).
+#include <cstdio>
+class C3DVector;
+class CObstacleNavigatorExternalInterface { public: virtual float FindPosZAtIncludingThemes(const class C3DVector&, bool) const; };
+static float g_vec[3] = { 1.0f, 2.0f, 3.0f };
 int main()
 {
-    g_findPosZTheme = 42.5f;
-    float r = CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes(1.0f, 2.0f);
-    if (r != 42.5f) { printf("FAIL got %f\n", r); return 1; }
-
-    g_findPosZTheme = -7.25f;
-    r = CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes(100.0f, 200.0f);
-    if (r != -7.25f) { printf("FAIL got %f\n", r); return 1; }
-
-    printf("OK_0x004df3bd\n");
+    CObstacleNavigatorExternalInterface o;
+    float r = o.FindPosZAtIncludingThemes(*(const C3DVector*)g_vec, false);
+    if (r != 0.0f) { std::printf("BAD %f\n", r); return 1; }
+    std::printf("OK_0x004df3bd\n");
     return 0;
 }

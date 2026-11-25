@@ -1,6 +1,8 @@
 // CAudioParamBlock::GetGain(float value, unsigned short mask) -- the product of value and the current values of the ramped gain parameters selected by mask (sixteen at +4), clamped to [0, 1]
 // Grade: RELOCATION_MATCH retry1 -- the callee declared value-first (MultiplyMaskedParams(float value, ..., mask, count)): fastcall keeps the same registers/stack, but VC7.1 then evaluates the register pointer between the two pushes as retail does
 // Leaf: GetGain
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: kMinGain (table _kMinGain -> 0x0122DEDC) -> 0.0f; kMaxGain (table _kMaxGain -> 0x0122DED8) -> 1.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0B420, 68 bytes (`ret 8`, result in st0). Descriptive names (no PDB covers
 //   this library): the manifest's "Render_ClampAlphaValue" is propagated. The block is the one the landed constructor
 //   0x00C0B200 builds (sixteen ramped parameters "G0".."G15" at +4, eight factors "P0".."P7" at +0x344).
@@ -15,8 +17,6 @@ struct CRampedParam {                           // 0x34 bytes (see 0x00C0B510)
 
 float __fastcall MultiplyMaskedParams(float value, const CRampedParam* params, unsigned long mask, unsigned long count);   // 0x00C0B180
 
-static const float kMinGain = 0.0f;             // 0x0122DEDC
-static const float kMaxGain = 1.0f;             // 0x0122DED8
 
 struct CAudioParamBlock {
     void* m_vtable;                             // +0x000
@@ -28,9 +28,9 @@ struct CAudioParamBlock {
 float CAudioParamBlock::GetGain(float value, unsigned short mask) const
 {
     float gain = MultiplyMaskedParams(value, m_gains, mask, 16);
-    if (gain < kMinGain)
-        return kMinGain;
-    if (gain > kMaxGain)
-        return kMaxGain;
+    if (gain < 0.0f)
+        return 0.0f;
+    if (gain > 1.0f)
+        return 1.0f;
     return gain;
 }

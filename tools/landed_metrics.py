@@ -28,7 +28,8 @@ Counts:
                           (VC7.1 CRT objects and import thunks). A toolchain_library row outside every map range is
                           counted by its proof line (toolchain, or third_party for `// Vendor-library:`).
   baked_string            genuine-class rows whose code casts a retail address to a string pointer instead of spelling
-                          the literal (crawl/purity.py baked_string_addresses): a separate grade, excluded from every
+                          the literal (crawl/purity.py baked_string_addresses), or that uses a made-up data symbol the
+                          table binds to a retail string literal (crawl/baked_symbols.py): a separate grade, excluded from every
                           genuine figure (and from split) until fixed (owner decision 2026-11-25)
   landed_genuine_known / landed_genuine_original
   matched_bytes / matched_bytes_genuine   retail bytes covered by landed rows (catalog row lengths)
@@ -51,6 +52,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools" / "decomp_pipeline"))
 from crawl import purity  # noqa: E402
+from crawl import baked_symbols  # noqa: E402
 
 REBUILD = ROOT / "rebuild"
 
@@ -135,10 +137,12 @@ def main() -> int:
             vendor_library.add(a)
         if kinds[a] in ("genuine", "retail_asm") and re.search(r"^//\s*Vendor-proof:", text_a, re.M):
             vendor_source.add(a)
-        if purity.is_genuine_kind(kinds[a]) and purity.baked_string_addresses(text_a):
+        if purity.is_genuine_kind(kinds[a]) and (purity.baked_string_addresses(text_a)
+                                                 or baked_symbols.baked_symbol_names(text_a)):
             baked_string.add(a)
     # grade `baked_string` (owner 2026-11-25): rows that cast a retail address to a string pointer are counted apart
-    # from the genuine figures until the literal is spelled (crawl/purity.py baked_string_addresses).
+    # from the genuine figures until the literal is spelled (crawl/purity.py baked_string_addresses; NF418 2026-11-25:
+    # also rows that use a made-up data symbol the table binds to a retail string literal, crawl/baked_symbols.py).
     genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)} - baked_string
     out = {
         "catalog_rows": len(catalog),

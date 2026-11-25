@@ -1,0 +1,69 @@
+va	width	text	bytes_len	start_evidence	verified	rows	sources
+0x0122D6CC	narrow	FALSE	6	prev-NUL	ok	0057f78f	agentNF418
+0x0122D6D4	narrow	TRUE	5	prev-NUL	ok	0057f78f	agentNF418
+0x0122DE44	wide	%d	6	prev-NUL	ok	009c7c20	agentNF418
+0x0122DE78	wide	\\	4	prev-NUL	ok	009979e0	agentNF418
+0x0122DE80	wide	Default	16	prev-NUL	ok	004069e0	agentNF418
+0x0122DF24	narrow	\"	2	prev-NUL	ok	004ca230	agentNF418
+0x0122DF40	narrow	TEXT_GUI_PROFILE_DEFAULT	25	prev-NUL	ok	004069e0	agentNF418
+0x0122DFE8	narrow	Unable to find symbol 	23	prev-NUL	ok	0040f7e0 00686240	agentNF418
+0x0122E020	narrow	)	2	prev-NUL	ok	0057f78f 006c78f0 006d3880 00755a30	agentNF418
+0x0122E024	narrow	,	2	prev-NUL	ok	0057f78f 006c78f0 006d3880 00755a30	agentNF418
+0x0122E028	narrow	(	2	prev-NUL	ok	0057f78f 006c78f0 006d3880 00755a30	agentNF418
+0x0122E070	wide	 - 	8	prev-NUL	ok	007f4b60	agentNF418
+0x0122F3B4	narrow	D	2	prev-NUL	ok		agentNF418
+0x01231728	wide	\n	4	after-float(prev 0x3b)	ok	00497a60 009bc900	agentNF418
+0x0123173C	narrow	PLAYER_GUI_PC	14	prev-NUL	ok	00438570	agentNF418
+0x012353B8	narrow	;\r\n	4	prev-NUL	ok	00522600	agentNF418
+0x0123542C	narrow	;	2	prev-NUL	ok	004ca230	agentNF418
+0x012358E8	narrow	CCoopSpiritDef	15	prev-NUL	ok		agentNF418
+0x0123817C	wide	TEXT_GUI_NEXT	28	after-float(prev 0x3a)	ok	0048f7c0	agentNF418
+0x01239BFC	narrow	CreateTC	9	prev-NUL	ok	004ca230	agentNF418
+0x01239ED4	narrow	SND_	5	prev-NUL	ok	009bd910	agentNF418
+0x01245A78	narrow	END_THING_LEVEL	16	prev-NUL	ok	00520570	agentNF418
+0x01245A88	narrow	NewThing	9	prev-NUL	ok	00520570	agentNF418
+0x01245BA4	narrow	Version 	9	prev-NUL	ok	00522600	agentNF418
+0x0124FED0	wide	*.jpg	12	after-float(prev 0x42)	ok	00581b33	agentNF418
+0x01258C1C	narrow	 	2	prev-NUL	ok	00697860	agentNF418
+0x0125C2A8	narrow	using fast mode	16	prev-NUL	ok	00697860	agentNF418
+0x0125C2B8	narrow	 not 	6	prev-NUL	ok	00697860	agentNF418
+0x0125C2C0	narrow	telling engine that the camera has moved and	45	prev-NUL	ok	00697860	agentNF418
+0x0125C304	narrow	CAMERA_LIST_PUSH_ERROR	23	prev-NUL	ok	00699090	agentNF418
+0x0125C360	narrow	SET_AUTO_CONTROL	17	prev-NUL	ok	00699090	agentNF418
+0x0125D088	narrow	Scale	6	prev-NUL	ok	006a5af0	agentNF418
+0x0125D090	narrow	Health	7	prev-NUL	ok	006a5af0	agentNF418
+0x0125D1C8	narrow	SCRIPT_NAME_HERO	17	prev-NUL	ok	00eed8b0	agentNF418
+0x0125EAC8	narrow	Expression_Picklock	20	prev-NUL	ok	00842c00	agentNF418
+0x0125FE68	narrow	FACTION_BANDITS	16	prev-NUL	ok	00dfc920	agentNF418
+0x01268848	narrow	FLIGHT	7	prev-NUL	ok	00744110	agentNF418
+0x01271DA8	wide	Missing text tag	34	prev-NUL	ok	007f4b60	agentNF418
+0x012757DC	narrow	EXPRESSION_WAIT	16	prev-NUL	ok	009041a0	agentNF418
+0x0127717C	narrow	RESPONSE_GENERIC_HIT_BACK_KNOCKDOWN	36	prev-NUL	ok	008eda90	agentNF418
+0x012786AC	narrow	COMBAT_SEQUENCE_GENERIC_RANGED_ATTACK	38	after-float(prev 0x3e)	ok	008b34d0 008b3630 008b3d80 008b4200 00bdbf00	agentNF418
+0x01278824	narrow	COMBAT_SEQUENCE_BANDIT_IDLE_MIDDLE	35	prev-NUL	ok	008b3980	agentNF418
+0x012788B0	narrow	COMBAT_SEQUENCE_BANDIT_KING_BACK_OFF	37	prev-NUL	ok	008b3b80	agentNF418
+0x012789A0	narrow	COMBAT_SEQUENCE_SCORPION_LUNGE_ATTACK	38	prev-NUL	ok	008b3ea0	agentNF418
+0x0128D850	narrow	CActionFollowCreature	22	prev-NUL	ok	009041a0	agentNF418
+0x0129B450	wide	%1	6	prev-NUL	ok	009c7980	agentNF418
+0x0129B470	wide	%	4	prev-NUL	ok	009c7c20	agentNF418
+0x0129CFE0	narrow	1.2.1	6	prev-NUL	ok	00a3aa40	agentNF418
+0x0129E454	narrow	>>>>	5	prev-NUL	ok	00aa79c0	agentNF418
+0x0129EDCC	narrow	MTLE	5	prev-NUL	ok	00abfcd0	agentNF418
+0x0129F608	narrow	Spline	7	prev-NUL	ok	00b1b470	agentNF418
+0x012A7D0C	narrow	LayoutLightsBones	18	prev-NUL	ok	00bdb2f0	agentNF418
+0x012C165C	narrow	END_NEW_ENTITY_SCRIPT	22	prev-NUL	ok	00cb8440	agentNF418
+0x012C1674	narrow	START_NEW_ENTITY_SCRIPT	24	prev-NUL	ok	00cb8440	agentNF418
+0x012C168C	narrow	END_ENTITY_SCRIPTS	19	prev-NUL	ok	00cb8690	agentNF418
+0x012C16A0	narrow	START_ENTITY_SCRIPTS	21	prev-NUL	ok	00cb8690	agentNF418
+0x012C16B8	narrow	END_SCRIPT_DATA	16	prev-NUL	ok	00cb8690	agentNF418
+0x012C16C8	narrow	START_SCRIPT_DATA	18	prev-NUL	ok	00cb8690	agentNF418
+0x012CAECC	narrow	VILLAGE_KNOTHOLEGLADE	22	prev-NUL	ok	00d1dff0 00d1eae0	agentNF418
+0x012D218C	narrow	FACTION_BANDITS_FRIENDLY	25	prev-NUL	ok	00e48bf0	agentNF418
+0x012D29D4	narrow	TEXT_QST_030_FAILURE_EXECUTIONER_KILLED	40	prev-NUL	ok	00d732a0	agentNF418
+0x012D75D4	narrow	HUD_QUEST_ICON_ROCK_TROLL	26	prev-NUL	ok	00da5f40	agentNF418
+0x012DEC88	wide	TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED	78	prev-NUL	ok	00dfb100	agentNF418
+0x012E4DA4	narrow	M_BanditEscapePoint	20	prev-NUL	ok	00e48bf0	agentNF418
+0x012E7418	narrow	Spectator2	11	prev-NUL	ok	00e63730	agentNF418
+0x012E7450	narrow	Spectator1	11	prev-NUL	ok	00e63730	agentNF418
+0x012ECAD8	narrow	M_HiddenBooty	14	prev-NUL	ok	00e93080	agentNF418
+0x012F5208	narrow	TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01	43	prev-NUL	ok	00ee6d60	agentNF418

@@ -1,63 +1,34 @@
-// behaviour test for 0x00C0B180 MultiplyMaskedParams: product of value and the (angle-wrapped) values of the masked params
+// Behaviour test for 0x00C0B180 MultiplyMaskedParams: multiplies value by each masked parameter's GetValue() (an angle parameter wrapped into
+// [-pi, pi) with 3.14159265f / 6.28318531f / -3.14159265f, retail 0x0128F604 / 0x0128F608 / 0x012B1EB8), stopping once value == 0.0f (0x0122DEDC).
+// NF418 (2026-11-25): linked behaviour test: the row function is declared here, not defined, so the test links the row object (and
+// defines its callees under the row's spellings); it asserts the value of the float literal the row now spells (a mutated literal fails).
 #include <cstdio>
-
 struct CRampedParam {
-    float m_value;
-    float m_target;
-    float m_targetRate;
-    float m_rate;
-    float m_10;
-    float m_time;
-    float m_duration;
-    float m_coef[5];
-    bool  m_bAngle;
+    float m_value; float m_target; float m_targetRate; float m_rate; float m_10; float m_time; float m_duration; float m_coef[5]; bool m_bAngle;
     float GetValue() const;
 };
-
-static const float kZero = 0.0f;
-static const float kPi = 3.14159265f;
-static const float kTwoPi = 6.28318531f;
-static const float kMinusPi = -3.14159265f;
-
-inline float CRampedParam::GetValue() const
-{
-    float value = m_value;
-    if (m_bAngle) {
-        if (value >= kPi)
-            value -= kTwoPi;
-        else if (value < kMinusPi)
-            value += kTwoPi;
-    }
-    return value;
-}
-
-float MultiplyMaskedParams(const CRampedParam* params, unsigned long mask, float value, unsigned long count)
-{
-    while (value != kZero && mask != 0 && count != 0) {
-        if (mask & 1)
-            value *= params->GetValue();
-        --count;
-        mask >>= 1;
-        ++params;
-    }
-    return value;
-}
-
-static bool Near(float a, float b) { float d = a - b; return d < 1e-4f && d > -1e-4f; }
-
+float __fastcall MultiplyMaskedParams(const CRampedParam* params, unsigned long mask, float value, unsigned long count);
+static bool near(float a, float b) { float d = a - b; return d < 1e-4f && d > -1e-4f; }
 int main()
 {
-    CRampedParam p[4];
-    for (int i = 0; i < 4; ++i) { p[i].m_value = (float)(i + 2); p[i].m_bAngle = false; }   // 2, 3, 4, 5
-    if (!Near(MultiplyMaskedParams(p, 0x5, 1.0f, 4), 8.0f)) { std::printf("00c0b180_TEST FAIL\n"); return 1; }   // 2*4
-    if (!Near(MultiplyMaskedParams(p, 0xF, 0.5f, 4), 60.0f)) { std::printf("00c0b180_TEST FAIL\n"); return 1; }
-    if (!Near(MultiplyMaskedParams(p, 0xF, 1.0f, 2), 6.0f)) { std::printf("00c0b180_TEST FAIL\n"); return 1; }    // count limits
-    if (!Near(MultiplyMaskedParams(p, 0, 3.0f, 4), 3.0f)) { std::printf("00c0b180_TEST FAIL\n"); return 1; }
-    p[1].m_bAngle = true;                                         // 3 stays 3 (< pi); make it 4 -> 4 - 2pi
-    p[1].m_value = 4.0f;
-    if (!Near(MultiplyMaskedParams(p, 0x2, 1.0f, 4), 4.0f - kTwoPi)) { std::printf("00c0b180_TEST FAIL\n"); return 1; }
-    p[0].m_value = 0.0f;                                          // product hits zero and stops
-    if (MultiplyMaskedParams(p, 0xF, 1.0f, 4) != 0.0f) { std::printf("00c0b180_TEST FAIL\n"); return 1; }
+    static CRampedParam p[4];
+    for (int i = 0; i < 4; ++i) { p[i].m_value = 1.0f; p[i].m_bAngle = false; }
+    p[0].m_value = 2.0f; p[1].m_value = 3.0f; p[2].m_value = 5.0f;
+    float a = MultiplyMaskedParams(p, 0x5, 1.0f, 4);                 // p0 * p2 = 10
+    p[1].m_value = 4.0f; p[1].m_bAngle = true;                      // 4 >= pi -> 4 - 2pi
+    float b = MultiplyMaskedParams(p, 0x2, 1.0f, 4);
+    p[1].m_value = -4.0f;                                           // -4 < -pi -> -4 + 2pi
+    float c = MultiplyMaskedParams(p, 0x2, 1.0f, 4);
+    p[1].m_value = 3.0f;                                            // inside [-pi, pi): unchanged
+    float d = MultiplyMaskedParams(p, 0x2, 1.0f, 4);
+    p[0].m_value = 0.5f; p[2].m_value = 4.0f;                        // 0.5 is not zero: the loop goes on to p2 (0.5 * 4 = 2)
+    float f = MultiplyMaskedParams(p, 0x5, 1.0f, 4);
+    float inf = 1e38f; inf *= 10.0f;
+    p[0].m_value = 0.0f; p[2].m_value = inf;                        // value becomes 0 after p0: the loop stops (0 * inf would be NaN)
+    float e = MultiplyMaskedParams(p, 0x5, 1.0f, 4);
+    if (!near(a, 10.0f) || !near(b, 4.0f - 6.28318531f) || !near(c, -4.0f + 6.28318531f) || !near(d, 3.0f) || e != 0.0f || !near(f, 2.0f)) {
+        std::printf("BAD %f %f %f %f %f %f\n", a, b, c, d, e, f); return 1;
+    }
     std::printf("00c0b180_TEST PASS\n");
     return 0;
 }

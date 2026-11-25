@@ -3,10 +3,8 @@
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the literal @ 0x0125C2C0, -1), operator+= @ 0x0099F100 twice (" " @ 0x01258C1C or " not "
 // @ 0x0125C2B8, then "using fast mode" @ 0x0125C2A8), virtual slot 56 (+0xe0) of the renderer, ~CCharString @ 0x0099EAE0. Shape: a one-word frame for the
 // string, the flag kept in ebx, the ternary literal selected with `mov eax,A ; jne ; mov eax,B`, `ret 4`.
-extern const char g_text_0125c2c0[];               // "telling engine that the camera has moved and"
-extern const char g_text_01258c1c[];               // " "
-extern const char g_text_0125c2b8[];               // " not "
-extern const char g_text_0125c2a8[];               // "using fast mode"
+// Literals (NF418, 2026-11-25): were extern data g_text_0125c2c0 / g_text_01258c1c / g_text_0125c2b8 / g_text_0125c2a8 (table
+//   ?g_text_<va>@@3QBDB); now spelled at the use sites: retail's pooled literals at those VAs (/GF-merged ??_C@).
 
 class CCharString { public:
     void* m_pData;
@@ -31,8 +29,8 @@ class CGameCameraManager { public:
 
 void CGameCameraManager::TellEngineThatCameraHasMoved(bool fastMode)
 {
-    CCharString message(g_text_0125c2c0, -1);
-    message += fastMode ? g_text_01258c1c : g_text_0125c2b8;
-    message += g_text_0125c2a8;
+    CCharString message("telling engine that the camera has moved and", -1);
+    message += fastMode ? " " : " not ";
+    message += "using fast mode";
     CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine().CutscenePreload(fastMode, true);
 }

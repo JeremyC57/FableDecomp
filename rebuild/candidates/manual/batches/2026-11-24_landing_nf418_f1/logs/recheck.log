@@ -1,0 +1,41 @@
+addr       parity           behav  name
+004df3b4   RELOCATION_MATCH PASS   FindPosZAt
+004df3bd   RELOCATION_MATCH PASS   FindPosZAtIncludingThemes
+004df3d4   RELOCATION_MATCH PASS   GetTerrainHeightAt
+004df3dd   RELOCATION_MATCH PASS   GetThemeHeightAt
+004df46e   RELOCATION_MATCH PASS   PeekNavigatorMaxSpeed
+005edff7   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005edff7   RELOCATION_MATCH PASS   GetAbilityMoralityCostFactor
+00697710   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00697710   RELOCATION_MATCH PASS   GetNoControlMovementTime
+006a4e40   WARN SHARED_HEADER_AVAILABLE CParticleSystem (engine/CParticleSystem.h)
+006a4e40   RELOCATION_MATCH PASS   GetNormalisedTime
+00890370   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00890370   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00890370   RELOCATION_MATCH PASS   GetHeroHealth
+008903a0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008903a0   RELOCATION_MATCH PASS   GetHeroHealthMax
+008903d0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008903d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+008903d0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008903d0   RELOCATION_MATCH PASS   GetHeroHealthPercentage
+00890400   RELOCATION_MATCH PASS   GetHealth
+00c0b180   RELOCATION_MATCH PASS   MultiplyMaskedParams
+00c0b420   WARN STANDIN_LEAF ?GetGain@CAudioParamBlock@@QBEMMG@Z (catalog CTarget::Apply; names another function)
+00c0b420   RELOCATION_MATCH PASS   Apply
+
+WINS: 14
+  004df3b4 RELOCATION_MATCH CObstacleNavigatorExternalInterface::?FindPosZAt@CObstacleNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z
+  004df3bd RELOCATION_MATCH CObstacleNavigatorExternalInterface::?FindPosZAtIncludingThemes@CObstacleNavigatorExternalInterface@@UBEMABVC3DVector@@_N@Z
+  004df3d4 RELOCATION_MATCH CObstacleNavigatorExternalInterface::?CObstacleNavigatorExternalInterface_GetTerrainHeightAt@@YGMPAX@Z
+  004df3dd RELOCATION_MATCH CObstacleNavigatorExternalInterface::?GetThemeHeightAt@CObstacleNavigatorExternalInterface@@UBEMABVC3DVector@@@Z
+  004df46e RELOCATION_MATCH CObstacleNavigatorExternalInterface::?CObstacleNavigatorExternalInterface_PeekNavigatorMaxSpeed@@YGMPAX@Z
+  005edff7 RELOCATION_MATCH CTCInventoryAbilities::GetAbilityMoralityCostFactor
+  00697710 RELOCATION_MATCH CGameCameraManager::GetNoControlMovementTime
+  006a4e40 RELOCATION_MATCH CParticleSystem::GetNormalisedTime
+  00890370 RELOCATION_MATCH CGameScriptInterface::?GetHeroHealth@CGameScriptInterface@@UBEMXZ
+  008903a0 RELOCATION_MATCH CGameScriptInterface::?GetHeroHealthMax@CGameScriptInterface@@UBEMXZ
+  008903d0 RELOCATION_MATCH CGameScriptInterface::?GetHeroHealthPercentage@CGameScriptInterface@@UBEMXZ
+  00890400 RELOCATION_MATCH CGameScriptInterface::GetHealth
+  00c0b180 RELOCATION_MATCH _global::MultiplyMaskedParams
+  00c0b420 RELOCATION_MATCH CAudioParamBlock::GetGain

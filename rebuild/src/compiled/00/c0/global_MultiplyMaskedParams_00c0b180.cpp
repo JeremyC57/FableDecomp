@@ -1,5 +1,7 @@
 // _global::MultiplyMaskedParams(const CRampedParam* params, unsigned long mask, float value, unsigned long count) -- multiply value by the current value of every ramped parameter whose bit is set in mask (angle parameters wrapped into [-pi, pi)), walking at most count parameters and stopping early once the mask is exhausted or the product is zero
 // Leaf: MultiplyMaskedParams
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: kZero (table _kZero -> 0x0122DEDC) -> 0.0f; kPi (table _kPi -> 0x0128F604) -> 3.14159265f; kTwoPi (table _kTwoPi -> 0x0128F608) -> 6.28318531f; kMinusPi (table _kMinusPi -> 0x012B1EB8) -> -3.14159265f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0B180, 123 bytes, `__fastcall` (params in ecx, mask in edx, value and count
 //   on the stack, `ret 8`, result in st0). Descriptive name: the manifest's "Render_ApplyAlphaValueMask" is propagated.
 //   The only caller is the parameter block's gain query 0x00C0B420 (the sixteen 0x34-byte ramped parameters at +4).
@@ -19,26 +21,22 @@ struct CRampedParam {                           // 0x34 bytes
     float GetValue() const;
 };
 
-static const float kZero = 0.0f;                // 0x0122DEDC
-static const float kPi = 3.14159265f;           // 0x0128F604
-static const float kTwoPi = 6.28318531f;        // 0x0128F608
-static const float kMinusPi = -3.14159265f;     // 0x012B1EB8
 
 inline float CRampedParam::GetValue() const
 {
     float value = m_value;
     if (m_bAngle) {
-        if (value >= kPi)
-            value -= kTwoPi;
-        else if (value < kMinusPi)
-            value += kTwoPi;
+        if (value >= 3.14159265f)
+            value -= 6.28318531f;
+        else if (value < -3.14159265f)
+            value += 6.28318531f;
     }
     return value;
 }
 
 float __fastcall MultiplyMaskedParams(const CRampedParam* params, unsigned long mask, float value, unsigned long count)
 {
-    while (value != kZero && mask != 0 && count != 0) {
+    while (value != 0.0f && mask != 0 && count != 0) {
         if (mask & 1)
             value *= params->GetValue();
         --count;

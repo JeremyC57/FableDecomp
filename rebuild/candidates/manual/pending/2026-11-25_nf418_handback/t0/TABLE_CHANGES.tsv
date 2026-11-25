@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+delete	?g_str_0122f3b4@@3QBDB	0122f3b4	0041a060	NF418 t0 (table only): stale: the witness 0x0041A060 already spells L"Data\Levels\" (its object references ??_C@_1BK@GEPDHCGD@...); no user in rebuild/
+delete	_CCharString_ConstructCCoopSpiritDef_0066fa10_Name	012358e8	0066fa10	NF418 t0 (table only): stale: the witness 0x0066FA10 already spells "CCoopSpiritDef" (??_C@_0P@BPKCAHMG@...); no user in rebuild/
+delete	?g_PrimitiveDrawDistanceFactor@@3MA	0122ded8	006f5ab0	NF418 t0 (table only): stale: no user in rebuild/; the witness 0x006F5AB0 object references neither the symbol nor 0x0122DED8
+delete	_C2DVector_DivideByScalar_0066f990_Unit	0122ded8	0066f990	NF418 t0 (table only): stale: the witness 0x0066F990 already spells 1.0f (__real@3f800000); no user in rebuild/

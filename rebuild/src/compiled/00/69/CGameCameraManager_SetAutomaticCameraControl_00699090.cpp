@@ -1,4 +1,6 @@
 // CGameCameraManager::SetAutomaticCameraControl @ 00699090  __fastcall void(this)
+// Literals (NF418, 2026-11-25): were extern data kStrA / kStrB (table ?kStrA@@3QBDB -> 0x0125C304, ?kStrB@@3QBDB -> 0x0125C360); now
+//   spelled at the use sites: "CAMERA_LIST_PUSH_ERROR" / "SET_AUTO_CONTROL", retail's pooled literals (/GF-merged ??_C@).
 
 struct ScopedGuard {
     void* p;                 // 4-byte object
@@ -14,8 +16,6 @@ struct Sub100 {
     Inner* get(ScopedGuard* g);   // __fastcall, g on stack, returns Inner*
 };
 
-extern const char kStrA[];
-extern const char kStrB[];
 
 class CGameCameraManager { public:
     char pad[0x100];
@@ -35,14 +35,14 @@ void CGameCameraManager::SetAutomaticCameraControl()
 {
     if (this->flag12c == 0) {
         this->flag12c = 0;
-        ScopedGuard g(kStrA, -1);
+        ScopedGuard g("CAMERA_LIST_PUSH_ERROR", -1);
         int h = this->h134;
         Inner* p = this->sub100.get(&g);
         Inner_call_edx(p, h);
         return;
     }
     {
-        ScopedGuard g(kStrB, -1);
+        ScopedGuard g("SET_AUTO_CONTROL", -1);
         int h = this->h134;
         Inner* p = this->sub100.get(&g);
         Inner_call_edx(p, h);

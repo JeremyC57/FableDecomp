@@ -1,3 +1,6 @@
+// NF418 (2026-11-25): linked behaviour test: CAFile::ConvertDirectoryAndFilenameToPath is declared, not defined (the test links the row
+// object, which now spells L"\\", retail 0x0122DE78); the copied body and the test's g_Slash_0122de78 array are gone. Every check of
+// the joined path reads the separator the row supplies (a mutated literal changes length / characters and fails).
 // 009979e0 CAFile::ConvertDirectoryAndFilenameToPath (catalog; bsim .99 static CAFile member; CWideString method names from FableWin.pdb)
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: ConvertDirectoryAndFilenameToPath
@@ -5,14 +8,7 @@
 class CWideString { public:void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);const CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const unsigned short*);
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
-extern const unsigned short g_Slash_0122de78[];
 class CAFile { public:static CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString&,const CWideString&);};
-CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString& directory,const CWideString& filename){
- CWideString dir(directory),file(filename);
- int length; while((length=dir.GetLength(),dir.GetAsCharArray()[length])=='\\'){CWideString temp;temp.SetAsSubString(dir.GetAsCharArray(),dir.GetLength()-1);dir=temp;}
- while(file.GetAsCharArray()[0]=='\\'){CWideString temp;temp.SetAsSubString(file.GetAsCharArray()+1,file.GetLength()-1);file=temp;}
- return (dir+g_Slash_0122de78)+file;
-}
 
 #include <assert.h>
 #include <stdio.h>
@@ -22,7 +18,7 @@ CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideStri
 extern "C++" {
 // 0099b220 computes(end-begin)/2;0099b720/0099b510 retain/release refs+0x0c.
 struct Buffer {unsigned short*first,*last,*limit;int refs;};
-static int live,copies;const unsigned short g_Slash_0122de78[]={92,0};static const unsigned short Empty[]={0};
+static int live,copies;static const unsigned short Empty[]={0};
 static void Drop(void*p){if(p){Buffer*b=(Buffer*)p;assert(b->refs>0);if(!--b->refs){free(b->first);delete b;--live;}}}
 CWideString::CWideString():data(0){}
 CWideString::CWideString(const CWideString&x):data(x.data){if(data)++((Buffer*)data)->refs;++copies;}

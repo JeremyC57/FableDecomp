@@ -1,15 +1,15 @@
+// NF418 (2026-11-25): the row now returns the float literal 0.0f (retail's pooled __real@00000000, 0x0122DEDC) instead of the data symbol
+// g_defaultNoControlMovementTime; the test's definition of that symbol is gone and case 1 expects 0.0f (a mutated literal fails).
 // Layout: retail STLport 4.6 header offsets; member names re-bound by the bytes this body touches: `InsideHeroCount` -> `ControlNoControlMovementStartFrame` (+0xc0).
 #include "engine/CGameCameraManager.h"
 #include "engine/CMainGameComponent.h"
 #include <stdio.h>
 
 
-extern float g_defaultNoControlMovementTime;
 
 float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager *manager);
 
 // ---- trivial extern stub defs so the test links ----
-float g_defaultNoControlMovementTime = -1.0f;
 // NF166 (round 10): the divisor 0x01375550 is the protected static CMainGameComponent::ConstantFPS (engine/CMainGameComponent.h);
 //   the test defines it (was the stand-in g_noControlTimeDivisor).
 long CMainGameComponent::ConstantFPS = 1000;
@@ -30,7 +30,7 @@ int main(void)
     cm.ControlNoControlMovementStartFrame = 2500;
     float r1 = CGameCameraManager_GetNoControlMovementTime(&cm);
 
-    int ok = (r0 == -1.0f) && (r1 == 3.0f);
+    int ok = (r0 == 0.0f) && (r1 == 3.0f);
 
     printf("r0=%f r1=%f\n", r0, r1);
     if (ok)

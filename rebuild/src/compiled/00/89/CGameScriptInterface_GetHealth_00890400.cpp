@@ -1,6 +1,7 @@
+// Float literals (NF418, 2026-11-25): retail's merged __real@ pool constants were modelled as data: g_defaultHealth (table ?g_defaultHealth@@3MB -> 0x0122DEDC) -> 0.0f. Spelled at the use
+//   site; VC7.1 references a plain float literal through __real@<bits> (COMDAT, exe-wide merged), e.g. `return 0.0f;` -> fld [__real@00000000].
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-extern const float g_defaultHealth;
 
 struct CHealthEntityView {
     unsigned char _pad_0x00[0x6c];
@@ -27,5 +28,5 @@ float __stdcall CGameScriptInterface_GetHealth(CGameScriptInterface* self)
         (entity->CombatFlags & 2) != 0) {
         return entity->Health;
     }
-    return g_defaultHealth;
+    return 0.0f;
 }
