@@ -36,8 +36,15 @@ public:
         virtual void OnPredicateFail();                                 // 0x00E25D30
         virtual void Main();                                            // 0x00E25F70
     };
+#ifdef FABLE_RETAIL_CQS_GUARDIANSISTERINFOSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E26780 Alloc): FableWin.pdb ??_7CQS_GuardianSisterInfoScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQS_GuardianSisterInfoScript. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQS_GuardianSisterInfoScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQS_GuardianSisterInfoScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQS_GuardianSisterInfoScript)==0x4c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern)==0x28);
+FABLE_STATIC_ASSERT_AT(41, sizeof(NScript::CQS_GuardianSisterInfoScript)==0x4c);
+FABLE_STATIC_ASSERT_AT(42, sizeof(NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern)==0x28);
 #endif

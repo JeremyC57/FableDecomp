@@ -11,9 +11,15 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&) const;}; //004365B0
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in ComponentMap (?LowerBound@ComponentMap@@QBEPAUComponentEntry@@ABJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x45];unsigned char LifeFlags;};
+struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x3D];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -39,5 +45,5 @@ struct CGameScriptThingMethods:CGameScriptThing{bool MsgPerformedFlourish()const
 bool CGameScriptThingMethods::MsgPerformedFlourish()const{
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){
  long last=LastFrame(reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->PQuestCurrentlyRunning);long current=CurrentFrame(reinterpret_cast<QuestManagerNative*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())->PQuestCurrentlyRunning);
- CThingNative* thing=((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());if(thing->UsingComponents[2]&4){EntityEventsMethods* events;{long key=66;ComponentMap* map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;events=static_cast<EntityEventsMethods*>((it==end||it->Type>66?end:it)->Component);}EventBase* event;if(events->GetFlourishEvent(&event,Bind2(CreatedBeforeOrOn(current),CreatedAfter(last))))return true;}}return false;
+ CThingNative* thing=((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());if(thing->UsingComponents[2]&4){EntityEventsMethods* events;{ETCInterfaceType key=(ETCInterfaceType)66;const ComponentMap* map=&thing->Components;const ComponentMap::value_type* it=map->LowerBound(key);const ComponentMap::value_type* end=map->end();events=(EntityEventsMethods*)(it==end||it->first>66?end:it)->second;}EventBase* event;if(events->GetFlourishEvent(&event,Bind2(CreatedBeforeOrOn(current),CreatedAfter(last))))return true;}}return false;
 }

@@ -2,7 +2,6 @@
 // CGameScriptInterface::IsPlayerCreatureBlocking @ 00899ba0
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-struct Node { int key; void* val; };
 
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
@@ -11,8 +10,13 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
-struct KeyArg { int* p; };
-extern Node* __fastcall LowerBound(void* tree, KeyArg k);
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local free stand-in (the stand-in ?LowerBound@@YIPAUNode@@PAXUKeyArg@@@Z) over a raw map pointer replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 extern char  __fastcall CheckBlocking(void* obj);
 
 bool CGameScriptInterface::IsPlayerCreatureBlocking() const
@@ -23,14 +27,13 @@ bool CGameScriptInterface::IsPlayerCreatureBlocking() const
     if (e && !(*(unsigned char*)((char*)e + 0x91) & 1)
           && (*(unsigned int*)((char*)e + 0x24) & 0x10000))
     {
-        char* tree = (char*)e + 0x44;
-        int key = 0x30;
-        KeyArg ka; ka.p = &key;
-        Node* found = LowerBound(tree, ka);
-        Node* end = *(Node**)(tree + 4);
-        if (found == end || found->key > 0x30)
+        const CInterfaceMap* map = (const CInterfaceMap*)((char*)e + 0x44);
+        ETCInterfaceType key = (ETCInterfaceType)0x30;
+        const CInterfaceMap::value_type* found = map->LowerBound(key);
+        const CInterfaceMap::value_type* end = map->end();
+        if (found == end || found->first > 0x30)
             found = end;
-        if (CheckBlocking(*(void**)((char*)found + 4)))
+        if (CheckBlocking(found->second))
             return true;
     }
     return false;

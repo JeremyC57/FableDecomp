@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00e28ca0	ACCEPT	?Alloc@CQS_GuardianTrophyDealerInfoScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	?Alloc@CQS_GuardianTrophyDealerInfoScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	port onto the shared engine/CQS_GuardianTrophyDealerInfoScript.h (+ add-only FABLE_RETAIL_<C>_ALLOC opt-in where the header lacked declarations): FableWin.pdb overrides in the vftable, compiler-generated destructor; leaf unchanged

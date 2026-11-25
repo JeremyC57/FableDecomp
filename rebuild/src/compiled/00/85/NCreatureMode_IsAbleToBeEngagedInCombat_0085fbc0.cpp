@@ -24,14 +24,12 @@ struct CTCInterfaceEntry {
     long     type;
     CTCBase* component;
 };
-class CTCInterfaceMap {                                 // CVectorMap<ETCInterfaceType, CTCBase*> (retail vector: first/last/end)
-public:
-    CTCInterfaceEntry* first;
-    CTCInterfaceEntry* last;
-    CTCInterfaceEntry* end;
-    CTCInterfaceEntry* LowerBound(const long& type) const;   // 0x004365B0
-    CTCInterfaceEntry* LowerBound(const long& type);         // 0x0040F020
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCInterfaceMap (?LowerBound@CTCInterfaceMap@@QBEPAUCTCInterfaceEntry@@ABJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCInterfaceMap;
 
 class CTCCreatureModeManager { public:
     class CModeBase {                                       // CTCCreatureModeManager::CModeBase
@@ -80,7 +78,7 @@ public:
     unsigned char   _pad11[0x20 - 0x11];
     unsigned long   m_tcPresent[9];                     // +0x20 interface present bits
     CTCInterfaceMap m_tcs;                              // +0x44
-    unsigned char   _pad50[0x6c - 0x50];
+    unsigned char   _pad54[0x6c - 0x54];          // CVectorMap is 0x10
     unsigned long   ThingTypeFlags;                     // +0x6C THING_TYPE_* bits (1 physical, 3 creature)
     CDefClassBase*  PBaseDef;                           // +0x70 CDefPointer<const CThingDef>::Object
     unsigned char   _pad74[0x91 - 0x74];
@@ -92,25 +90,25 @@ public:
     FABLE_FORCEINLINE unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
     FABLE_FORCEINLINE CTCBase* GetTC(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         const CTCInterfaceMap* map = &m_tcs;
-        CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->type ? map->last : it)->component;
+        CTCInterfaceMap::const_iterator it = map->LowerBound(key);
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
     FABLE_FORCEINLINE CTCBase* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)type;
         CTCInterfaceMap* map = &m_tcs;
-        CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->type ? map->last : it)->component;
+        CTCInterfaceMap::const_iterator it = map->LowerBound(key);
+        return (it == map->end() || type < it->first ? map->end() : it)->second;
     }
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (HasTC(type)) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)type;
             const CTCInterfaceMap* map = &m_tcs;
-            CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            CTCInterfaceMap::const_iterator it = map->LowerBound(key);
+            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -119,10 +117,10 @@ public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)type;
             CTCInterfaceMap* map = &m_tcs;
-            CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            CTCInterfaceMap::const_iterator it = map->LowerBound(key);
+            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

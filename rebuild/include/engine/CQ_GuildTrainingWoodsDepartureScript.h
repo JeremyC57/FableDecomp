@@ -67,11 +67,19 @@ public:
         virtual void OnPredicateFail();                                  // 0x00D62450
         virtual void Main();                                             // 0x00D62480
     };
+#ifdef FABLE_RETAIL_CQ_GUILDTRAININGWOODSDEPARTURESCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00D664D0 Alloc): FableWin.pdb ??_7CQ_GuildTrainingWoodsDepartureScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_GuildTrainingWoodsDepartureScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_GuildTrainingWoodsDepartureScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_GuildTrainingWoodsDepartureScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00D664D0
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingWoodsDepartureScript) == 0x50);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief) == 0x20);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze) == 0x24);
+FABLE_STATIC_ASSERT_AT(72, sizeof(NScript::CQ_GuildTrainingWoodsDepartureScript) == 0x50);
+FABLE_STATIC_ASSERT_AT(73, sizeof(NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief) == 0x20);
+FABLE_STATIC_ASSERT_AT(74, sizeof(NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze) == 0x24);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_GUILDTRAININGWOODSDEPARTURESCRIPT_H

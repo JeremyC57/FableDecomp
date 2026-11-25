@@ -27,29 +27,12 @@
 #include "fable_compiler.h"
 class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
-};
-#pragma auto_inline(off)
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CInterfaceMap (?LowerBound@CInterfaceMap@@QBEPAUSEntry@1@PBJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
 class CThing { public:
     virtual void v00();
@@ -58,7 +41,7 @@ class CThing { public:
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad54[0x91 - 0x54];  // CVectorMap is 0x10
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -73,12 +56,12 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

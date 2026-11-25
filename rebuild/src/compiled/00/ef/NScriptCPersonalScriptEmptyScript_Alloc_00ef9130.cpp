@@ -5,22 +5,23 @@
 // Naming wave 35: was landed as the free __fastcall stand-in `?Alloc_CVtable_012f5d7c@@YIPAUCVtable_012f5d7c@@PAX0@Z` (00/ef/global_AllocCVtable012f5d7c_00ef9130.cpp); same bytes.
 // Callees: scalar operator new 0x00BFEA1A (0x4C = sizeof, Ego_r.pdb 96 - 0x14), CScriptBase::CScriptBase 0x00CB8110; the constructor is inlined
 //   (CLevelScriptBase<T>(data, game): Game +0x40, MasterScriptData +0x44, then the script vtable).
-// Model: engine/CLevelScriptBase.h; layout = Ego_r.pdb - 0x14 (the retail script base is 0x14 smaller), the members this
-//   body does not touch are one pad block.
+// Model (NF436): the shared engine/CPersonalScript_EmptyScript.h, replacing a local class that declared none of the class's own virtuals
+//   and an out-of-line destructor (FableWin.pdb: compiler-generated). The user constructor is defined `inline` here (FableWin.pdb
+//   declares it; Alloc expands it, 0x00D80C00 pattern). The vftable 0x012F5D7C now carries the FableWin.pdb overrides (RegisterMain Main) and
+//   this TU emits the implicit ??_G with it, as retail's TU did; FABLE_RETAIL_CLEVELSCRIPTBASE: the implicit destructor calls
+//   ~CScriptBase 0x00CBD510 directly.
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CEmptyData;
-class CPersonalScript_EmptyScript : public CLevelScriptBase<CEmptyData> {
-public:
-    CPersonalScript_EmptyScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CEmptyData>(data, game) { }
-    virtual ~CPersonalScript_EmptyScript();    // ??1CPersonalScript_EmptyScript@NScript@@UAE@XZ
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    unsigned char _members48[0x4c - 0x48];    // +0x48 (the script's own members; retail sizeof 0x4C)
-};
-CScriptBase* __fastcall CPersonalScript_EmptyScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CCHARSTRING
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CPersonalScript_EmptyScript.h"
+inline NScript::CPersonalScript_EmptyScript::CPersonalScript_EmptyScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CEmptyData>(data, game)
+{
+}
+CScriptBase* FABLE_FASTCALL NScript::CPersonalScript_EmptyScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CPersonalScript_EmptyScript(data, game);
 }
-}
-typedef char ExactOwnerSize[sizeof(NScript::CPersonalScript_EmptyScript) == 0x4c ? 1 : -1];

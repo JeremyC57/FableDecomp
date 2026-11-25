@@ -41,8 +41,15 @@ public:
     private:
         virtual void Main();
     };
+#ifdef FABLE_RETAIL_CMARKTESTSCRIPTSSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00EFE380 Alloc): FableWin.pdb ??_7CMarkTestScriptsScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00EFE380
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CMarkTestScriptsScript) == 0x48);
-FABLE_STATIC_ASSERT(sizeof(NScript::CMarkTestScriptsScript::CShopKeeper) == 0x1c);
+FABLE_STATIC_ASSERT_AT(46, sizeof(NScript::CMarkTestScriptsScript) == 0x48);
+FABLE_STATIC_ASSERT_AT(47, sizeof(NScript::CMarkTestScriptsScript::CShopKeeper) == 0x1c);
 #endif

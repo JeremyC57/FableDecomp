@@ -15,41 +15,14 @@ struct STCEntry_Retail {                           // one CVectorMap<ETCInterfac
     long            m_kind;
     CTCBase_Retail* m_pTC;
 };
-struct CTCMap_Retail {                             // the thing's component map at +0x44: a sorted vector of pairs
-    STCEntry_Retail* m_pFirst;
-    STCEntry_Retail* m_pLast;
-    STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
-    STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
-    {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
-            it = m_pLast;
-        return it->m_pTC;
-    }
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
-    {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
-            it = m_pLast;
-        return it->m_pTC;
-    }
-};
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCMap_Retail (?LowerBound@CTCMap_Retail@@QAEPAUSTCEntry_Retail@@ABK@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 // Same-TU stand-in for CVectorMap::LowerBound 0x0040F020 (not the retail body).
-#pragma auto_inline(off)
-__declspec(noinline) STCEntry_Retail* CTCMap_Retail::LowerBound(const unsigned long& kind)
-{
-    STCEntry_Retail* it = m_pFirst;
-    long count = m_pLast - it;
-    while (count > 0) {
-        long half = count / 2;
-        if ((unsigned long)it[half].m_kind < kind) { it += half + 1; count -= half + 1; }
-        else count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
 struct CThing_Retail {
     unsigned char  _pad00[0x10];
     unsigned char  m_type;                         // +0x10 (1 = a creature)
@@ -57,14 +30,30 @@ struct CThing_Retail {
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    unsigned char  _pad50[0x41];
+    unsigned char  _pad54[0x3D];                   // +0x54 (CVectorMap is 0x10)
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
     FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+// The row-local inline lookups of the stand-in map, now free helpers over the real CVectorMap (same shapes: the key in a stack
+// temporary, the eax-join Find and the ternary entry pick).
+FABLE_FORCEINLINE CTCBase_Retail* FindTC(CTCMap_Retail& map, long kind)
+{
+    CTCMap_Retail::value_type* it = map.LowerBound((ETCInterfaceType)kind);
+    if (it == map.end() || kind < it->first)
+        it = map.end();
+    return (CTCBase_Retail*)it->second;
+}
+FABLE_FORCEINLINE CTCBase_Retail* FindTC(const CTCMap_Retail& map, long kind)
+{
+    const CTCMap_Retail::value_type* it = map.LowerBound((ETCInterfaceType)kind);
+    if (it == map.end() || kind < it->first)
+        it = map.end();
+    return (CTCBase_Retail*)it->second;
+}
 class CThingPlayerCreature : public CThing_Retail { };
-FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return FindTC(thing->m_tcs, kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return FindTC(thing->m_tcs, kind); }
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

@@ -176,6 +176,14 @@ public:
     private:
         CScriptThing BanditEscapeMarker;
     };
+#ifdef FABLE_RETAIL_CV_BANDITTOLLSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E4F550 Alloc): FableWin.pdb ??_7CV_BanditTollScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CV_BanditTollScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CV_BanditTollScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CV_BanditTollScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E4F550
+#endif
 };
 }
 FABLE_STATIC_ASSERT_AT(169, sizeof(NScript::CV_BanditTollScript) == 0x5c);

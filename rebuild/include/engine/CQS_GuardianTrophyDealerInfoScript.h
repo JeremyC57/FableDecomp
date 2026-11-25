@@ -23,7 +23,9 @@ class CQ_SunnyvaleMasterData;
 class CQS_GuardianTrophyDealerInfoScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
     CQS_GuardianTrophyDealerInfoScript(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E27840
+#ifndef FABLE_RETAIL_CQS_GUARDIANTROPHYDEALERINFOSCRIPT_ALLOC   // NF436: FableWin.pdb marks the destructor compiler-generated (the ??_G calls ~CScriptBase directly)
     virtual ~CQS_GuardianTrophyDealerInfoScript();
+#endif
     virtual void RegisterMain();                                         // 0x00E27880
     virtual void Main();                                                 // 0x00E27920
     virtual void Init();                                                 // 0x00E27870
@@ -31,6 +33,13 @@ public:
     void WaitForPieceOver();                                             // 0x00E27AC0
     bool PieceOver;                                                      // +0x48
     class CGTDI_Maze;                                                    // Alloc 0x00E27BB0
+#ifdef FABLE_RETAIL_CQS_GUARDIANTROPHYDEALERINFOSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E28CA0 Alloc): FableWin.pdb ??_7CQS_GuardianTrophyDealerInfoScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E28CA0
+#endif
 };
 class CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze : public CEntityScriptBase {
 public:
@@ -46,8 +55,8 @@ protected:
     float InitialAngle;                                                  // +0x1c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQS_GuardianTrophyDealerInfoScript) == 0x4c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze) == 0x20);
+FABLE_STATIC_ASSERT_AT(49, sizeof(NScript::CQS_GuardianTrophyDealerInfoScript) == 0x4c);
+FABLE_STATIC_ASSERT_AT(50, sizeof(NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze) == 0x20);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQS_GUARDIANTROPHYDEALERINFOSCRIPT_H

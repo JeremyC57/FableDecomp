@@ -27,13 +27,12 @@ struct CTCInterfaceEntry {
     long     type;
     CTCBase* component;
 };
-class CTCInterfaceMap {                                 // CVectorMap<ETCInterfaceType, CTCBase*> (retail vector: first/last/end)
-public:
-    CTCInterfaceEntry* first;
-    CTCInterfaceEntry* last;
-    CTCInterfaceEntry* end;
-    CTCInterfaceEntry* LowerBound(const long& type) const;   // 0x004365B0
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCInterfaceMap (?LowerBound@CTCInterfaceMap@@QBEPAUCTCInterfaceEntry@@ABJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCInterfaceMap;
 class CThing {
 public:
     void*           _vfptr;                             // +0x00
@@ -44,10 +43,10 @@ public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long type) const
     {
         if (HasTC(type)) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)type;
             const CTCInterfaceMap* map = &m_tcs;
-            CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            CTCInterfaceMap::const_iterator it = map->LowerBound(key);
+            *ppOut = (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;
@@ -56,24 +55,6 @@ public:
 // Same-TU stand-in for the const LowerBound (0x004365B0): with its body in the TU VC knows the key's address does not
 // escape, so the dead key slot (the thing argument's home) is reused for the bounding-sphere radius as in retail; an
 // external declaration keeps the key alive to the end and grows the frame by 4.
-#pragma auto_inline(off)
-__declspec(noinline) CTCInterfaceEntry* CTCInterfaceMap::LowerBound(const long& type) const
-{
-    CTCInterfaceEntry* lo = first;
-    long count = (long)(last - first);
-    while (count > 0) {
-        long half = count / 2;
-        CTCInterfaceEntry* mid = lo + half;
-        if (mid->type < type) {
-            lo = mid + 1;
-            count -= half + 1;
-        } else {
-            count = half;
-        }
-    }
-    return lo;
-}
-#pragma auto_inline(on)
 class CThingGameObject : public CThing { };
 #include "engine/C3DVector.h"
 class CTCHitLocations {                                 // interface 0x7F

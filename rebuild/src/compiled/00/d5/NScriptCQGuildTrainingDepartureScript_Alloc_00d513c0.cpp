@@ -5,22 +5,15 @@
 // Naming wave 35: was landed as the free __fastcall stand-in `?Alloc_CVtable_012cf670@@YIPAUCVtable_012cf670@@PAX0@Z` (00/d5/global_AllocCVtable012cf670_00d513c0.cpp); same bytes.
 // Callees: scalar operator new 0x00BFEA1A (0x58 = sizeof, Ego_r.pdb 108 - 0x14), CScriptBase::CScriptBase 0x00CB8110; the constructor is inlined
 //   (CLevelScriptBase<T>(data, game): Game +0x40, MasterScriptData +0x44, then the script vtable).
-// Model: engine/CLevelScriptBase.h; layout = Ego_r.pdb - 0x14 (the retail script base is 0x14 smaller), the members this
-//   body does not touch are one pad block.
+// Model (NF436): the shared engine/CQ_GuildTrainingDepartureScript.h (NEW header: Ego_r.pdb layout, FableWin.pdb methods), replacing a local class that declared none of the class's own virtuals
+//   and an out-of-line destructor (FableWin.pdb: compiler-generated). The user constructor is inline in the header. The vftable 0x012CF670 now carries the FableWin.pdb overrides (RegisterMain Main Init) and
+//   this TU emits the implicit ??_G with it, as retail's TU did; FABLE_RETAIL_CLEVELSCRIPTBASE: the implicit destructor calls
+//   ~CScriptBase 0x00CBD510 directly.
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CQ_GuildTrainingDepartureScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
-public:
-    CQ_GuildTrainingDepartureScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
-    virtual ~CQ_GuildTrainingDepartureScript();    // ??1CQ_GuildTrainingDepartureScript@NScript@@UAE@XZ
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    unsigned char _members48[0x58 - 0x48];    // +0x48 (the script's own members; retail sizeof 0x58)
-};
-CScriptBase* __fastcall CQ_GuildTrainingDepartureScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#include "rebuild_abi.h"
+#include "engine/CQ_GuildTrainingDepartureScript.h"
+CScriptBase* FABLE_FASTCALL NScript::CQ_GuildTrainingDepartureScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CQ_GuildTrainingDepartureScript(data, game);
 }
-}
-typedef char ExactOwnerSize[sizeof(NScript::CQ_GuildTrainingDepartureScript) == 0x58 ? 1 : -1];

@@ -61,10 +61,17 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
     };
+#ifdef FABLE_RETAIL_CV_ROCKTROLLFIRSTENCOUNTERSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00EC5360 Alloc): FableWin.pdb ??_7CV_RockTrollFirstEncounterScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00EC5360
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_RockTrollFirstEncounterScript) == 0x58);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll) == 0x1c);
+FABLE_STATIC_ASSERT_AT(66, sizeof(NScript::CV_RockTrollFirstEncounterScript) == 0x58);
+FABLE_STATIC_ASSERT_AT(67, sizeof(NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll) == 0x1c);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_ROCKTROLLFIRSTENCOUNTERSCRIPT_H

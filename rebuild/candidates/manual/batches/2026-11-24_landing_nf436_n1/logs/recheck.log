@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00cf0640   RELOCATION_MATCH PASS   Alloc
+00d12c50   RELOCATION_MATCH PASS   Alloc
+00d513c0   RELOCATION_MATCH PASS   Alloc
+00d67740   RELOCATION_MATCH PASS   Alloc
+00d68ea0   RELOCATION_MATCH PASS   Alloc
+00e25970   RELOCATION_MATCH PASS   Alloc
+00eeee40   RELOCATION_MATCH PASS   Alloc
+00f02460   RELOCATION_MATCH PASS   Alloc
+
+WINS: 8
+  00cf0640 RELOCATION_MATCH NScript::CGameflowAssistanceScript::?Alloc@CGameflowAssistanceScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d12c50 RELOCATION_MATCH NScript::CQ_BanditCampHoldingScriptScript::?Alloc@CQ_BanditCampHoldingScriptScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d513c0 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::?Alloc@CQ_GuildTrainingDepartureScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d67740 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?Alloc@CQ_GuildTrainingWoodsMeleeScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d68ea0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::?Alloc@CQ_GuildTrainingWoodsWillScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e25970 RELOCATION_MATCH NScript::CQR_EscortTrader_ManagerScript::?Alloc@CQR_EscortTrader_ManagerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eeee40 RELOCATION_MATCH NScript::CTestTheInventoryScript::?Alloc@CTestTheInventoryScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00f02460 RELOCATION_MATCH NScript::CQ_CinemaTestScript::?Alloc@CQ_CinemaTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

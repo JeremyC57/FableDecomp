@@ -82,17 +82,14 @@ class CTCVillage { public:
     void AddThingToVillage(CThing& thing);              // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z (Ego_r.pdb; NF168)
 };
 struct STCEntry { long type; void* component; };
-struct CTCMap {
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);    // 0x0040F020
-    FABLE_FORCEINLINE void* Find(long kind)
-    {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
-    }
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCMap (?LowerBound@CTCMap@@QAEPAUSTCEntry@@ABK@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+class CTCBase;
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
+// (the row-local inline Find(kind) of the stand-in is CVectorMap::Find (engine/CVectorMap.h) on the key temporary, then ->second)
 class CVillagePeopleDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
@@ -131,7 +128,7 @@ class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[9];                         // +0x20
     CTCMap         m_tcs;                               // +0x44
-    unsigned char  _pad50[0x70 - 0x50];
+    unsigned char  _pad54[0x70 - 0x54];                 // CVectorMap is 0x10
     CDefClassBase* m_pDef;                              // +0x70
     unsigned char  _pad74[0x92 - 0x74];
     unsigned char  _flag92_0 : 4;
@@ -148,7 +145,7 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    FABLE_FORCEINLINE void* GetTC(long kind) { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE void* GetTC(long kind) { return (void*)m_tcs.Find((ETCInterfaceType)kind)->second; }
 };
 class CThingAICreature : public CThing { public:
     void AutoPlaceNear(const C3DVector& pos, float radius);   // 0x00665DF0
@@ -169,21 +166,6 @@ class CTCBoastingCrowdControl : public CTCBase { public:
 };
 
 // same-TU stand-in for the interface-map LowerBound (0x0040F020): the returned entry is then known not to alias the key
-__declspec(noinline) STCEntry* CTCMap::LowerBound(const unsigned long& kind)
-{
-    STCEntry* first = m_pFirst;
-    long count = m_pLast - m_pFirst;
-    while (count > 0) {
-        long half = count >> 1;
-        STCEntry* mid = first + half;
-        if ((unsigned long)mid->type < kind) {
-            first = mid + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return first;
-}
 
 bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoint, CThing* village)
 {

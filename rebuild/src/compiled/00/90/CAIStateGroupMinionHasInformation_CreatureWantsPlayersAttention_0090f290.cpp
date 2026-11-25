@@ -24,18 +24,18 @@ class CThingAICreature;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CInterfaceMap (?LowerBound@CInterfaceMapB@@QAEPAUSEntry@1@PBJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x45];
+    unsigned char _pad1[0x3D];                  // +0x54 (CVectorMap is 0x10)
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
     {
@@ -44,12 +44,12 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+            const CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
@@ -123,12 +123,7 @@ class CTCPerceiveThing { public:                       // interface type 0x34
     bool IsPlayerExtendedLineOfSight() const;         // 0x00744830
 };
 
-struct CInterfaceMapB {                         // the same vector map, this module's LowerBound instantiation
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
-};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMapB;
 
 struct CThingB {
     unsigned char _pad0[0x20];
@@ -141,12 +136,12 @@ struct CThingB {
     // the pointer-returning lookup: the component lands straight in ecx for the call that follows
     template<class T> FABLE_FORCEINLINE T* FindTC(long interfaceType)
     {
-        long type = interfaceType;
-        CInterfaceMapB* map = &m_interfaces;
-        CInterfaceMapB::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
-            it = map->last;
-        return (T*)it->component;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+        const CInterfaceMapB* map = &m_interfaces;
+        const CInterfaceMapB::value_type* it = map->LowerBound(type);
+        if (it == map->end() || interfaceType < it->first)
+            it = map->end();
+        return (T*)it->second;
     }
 };
 

@@ -28,8 +28,15 @@ public:
         virtual void Init();
         virtual void Main();
     };
+#ifdef FABLE_RETAIL_CV_HIDDENBOOTYSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E93CF0 Alloc): FableWin.pdb ??_7CV_HiddenBootyScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E93CF0
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_HiddenBootyScript)==0x4c);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_HiddenBootyScript::CM_HiddenBooty)==0x24);
+FABLE_STATIC_ASSERT_AT(33, sizeof(NScript::CV_HiddenBootyScript)==0x4c);
+FABLE_STATIC_ASSERT_AT(34, sizeof(NScript::CV_HiddenBootyScript::CM_HiddenBooty)==0x24);
 #endif

@@ -37,10 +37,21 @@ public:
     private:
         bool PlayerNotWarned;                                            // +0x1c
     };
+#ifdef FABLE_RETAIL_CQ_GUILDTRAININGSKILLSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00D5DBF0 Alloc): FableWin.pdb ??_7CQ_GuildTrainingSkillScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_GuildTrainingSkillScript, Alloc, RegisterMain, Main, Init. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_GuildTrainingSkillScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_GuildTrainingSkillScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00D5DBF0
+    virtual void RegisterMain();                            // slot 1 0x00D5AAA0
+    virtual void Main();                                    // slot 2 0x00D5AB40
+    virtual void Init();                                    // slot 3 0x00D5AA80
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingSkillScript) == 0x58);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster) == 0x20);
+FABLE_STATIC_ASSERT_AT(42, sizeof(NScript::CQ_GuildTrainingSkillScript) == 0x58);
+FABLE_STATIC_ASSERT_AT(43, sizeof(NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster) == 0x20);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_GUILDTRAININGSKILLSCRIPT_H

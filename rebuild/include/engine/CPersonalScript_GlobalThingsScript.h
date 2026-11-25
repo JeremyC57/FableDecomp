@@ -314,7 +314,15 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;
     };
+#ifdef FABLE_RETAIL_CPERSONALSCRIPT_GLOBALTHINGSSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00CE19A0 Alloc): FableWin.pdb ??_7CPersonalScript_GlobalThingsScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CPersonalScript_GlobalThingsScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CPersonalScript_GlobalThingsScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CPersonalScript_GlobalThingsScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00CE19A0
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CPersonalScript_GlobalThingsScript) == 0x48);
+FABLE_STATIC_ASSERT_AT(319, sizeof(NScript::CPersonalScript_GlobalThingsScript) == 0x48);
 #endif

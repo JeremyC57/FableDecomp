@@ -22,39 +22,20 @@ struct STCEntry_Retail {                           // one CVectorMap<ETCInterfac
     long            m_kind;
     CTCBase_Retail* m_pTC;
 };
-struct CTCMap_Retail {                             // the thing's component map at +0x44: a sorted vector of pairs
-    STCEntry_Retail* m_pFirst;
-    STCEntry_Retail* m_pLast;
-    STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
-    STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
-    {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
-            it = m_pLast;
-        return it->m_pTC;
-    }
-    FABLE_FORCEINLINE CTCBase_Retail* FindPick(long kind)      // the ternary entry pick (component loaded straight into the use register)
-    {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        return (it == m_pLast || kind < it->m_kind ? m_pLast : it)->m_pTC;
-    }
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
-    {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
-            it = m_pLast;
-        return it->m_pTC;
-    }
-};
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCMap_Retail (?LowerBound@CTCMap_Retail@@QAEPAUSTCEntry_Retail@@ABK@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CThing_Retail {
     unsigned char  _pad00[0x10];
     unsigned char  m_type;                         // +0x10 (1 = a creature)
     unsigned char  _pad11[0xf];
     unsigned long  m_tcMask[9];                    // +0x20: which component kinds the thing holds (bitset<274>)
     CTCMap_Retail  m_tcs;                          // +0x44
-    unsigned char  _pad50[0x3c];
+    unsigned char  _pad54[0x38];                   // CVectorMap is 0x10
     unsigned short m_id;                           // +0x8c
     unsigned char  _pad8e[3];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
@@ -70,22 +51,29 @@ struct CThing_Retail {
         return (m_tcMask[position >> 5] & (1UL << (position & 31))) != 0;
     }
 };
-__declspec(noinline) STCEntry_Retail* CTCMap_Retail::LowerBound(const unsigned long& kind)
+// The row-local inline lookups of the stand-in map, now free helpers over the real CVectorMap (same shapes: the key in a stack
+// temporary, the eax-join Find and the ternary entry pick).
+FABLE_FORCEINLINE CTCBase_Retail* FindTC(CTCMap_Retail& map, long kind)
 {
-    STCEntry_Retail* it = m_pFirst;
-    while (it != m_pLast && (unsigned long)it->m_kind < kind)
-        ++it;
-    return it;
+    CTCMap_Retail::value_type* it = map.LowerBound((ETCInterfaceType)kind);
+    if (it == map.end() || kind < it->first)
+        it = map.end();
+    return (CTCBase_Retail*)it->second;
 }
-__declspec(noinline) STCEntry_Retail* CTCMap_Retail::LowerBound(const unsigned long& kind) const
+FABLE_FORCEINLINE CTCBase_Retail* FindTCPick(CTCMap_Retail& map, long kind)
 {
-    STCEntry_Retail* it = m_pFirst;
-    while (it != m_pLast && (unsigned long)it->m_kind < kind)
-        ++it;
-    return it;
+    CTCMap_Retail::value_type* it = map.LowerBound((ETCInterfaceType)kind);
+    return (CTCBase_Retail*)(it == map.end() || kind < it->first ? map.end() : it)->second;
 }
-FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
+FABLE_FORCEINLINE CTCBase_Retail* FindTC(const CTCMap_Retail& map, long kind)
+{
+    const CTCMap_Retail::value_type* it = map.LowerBound((ETCInterfaceType)kind);
+    if (it == map.end() || kind < it->first)
+        it = map.end();
+    return (CTCBase_Retail*)it->second;
+}
+FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return FindTC(thing->m_tcs, kind); }
+FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return FindTC(thing->m_tcs, kind); }
 
 #include "engine/C3DVector.h"
 #define VPAD1(a) virtual void a();
@@ -214,7 +202,7 @@ void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, c
     } else if (T(object)->Flags6c & 8) {
         CTCCreatureNavigation* walk = 0;
         if (object->HasTC(7)) {
-            walk = (CTCCreatureNavigation*)object->m_tcs.FindPick(7);
+            walk = (CTCCreatureNavigation*)FindTCPick(object->m_tcs, 7);
             walk->InterruptNavigation();
         }
         ((CTeleportThing*)object)->SetAsGameStatePersisted(false);

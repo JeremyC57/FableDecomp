@@ -32,9 +32,17 @@ public:
     class CStatueMasterStatue;                                           // Alloc 0x00ED40C0
     class CStatueMasterCellarDoors;                                      // Alloc 0x00ED44C0
     class CStatueMasterChest;                                            // Alloc 0x00ED4770
+#ifdef FABLE_RETAIL_CV_STATUEMASTERSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00ED4A40 Alloc): FableWin.pdb ??_7CV_StatueMasterScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CV_StatueMasterScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CV_StatueMasterScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CV_StatueMasterScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00ED4A40
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_StatueMasterScript) == 0x58);
+FABLE_STATIC_ASSERT_AT(37, sizeof(NScript::CV_StatueMasterScript) == 0x58);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_STATUEMASTERSCRIPT_H

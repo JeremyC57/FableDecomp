@@ -38,9 +38,17 @@ public:
     class CNotForODG;                                                    // Alloc 0x00D79B90
     class CEndScythe;                                                    // Alloc 0x00D79C80
     class CEndBriarRose;                                                 // Alloc 0x00D7A290
+#ifdef FABLE_RETAIL_CQ_HEROSOULSSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00D7AC50 Alloc): FableWin.pdb ??_7CQ_HeroSoulsScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_HeroSoulsScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_HeroSoulsScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_HeroSoulsScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00D7AC50
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HeroSoulsScript) == 0x50);
+FABLE_STATIC_ASSERT_AT(43, sizeof(NScript::CQ_HeroSoulsScript) == 0x50);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_HEROSOULSSCRIPT_H

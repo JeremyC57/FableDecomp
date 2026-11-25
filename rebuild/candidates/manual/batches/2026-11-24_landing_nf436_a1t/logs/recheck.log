@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00e28ca0   RELOCATION_MATCH PASS   Alloc
+
+WINS: 1
+  00e28ca0 RELOCATION_MATCH NScript::CQS_GuardianTrophyDealerInfoScript::?Alloc@CQS_GuardianTrophyDealerInfoScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

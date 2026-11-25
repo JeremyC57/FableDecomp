@@ -30,7 +30,15 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;
     };
+#ifdef FABLE_RETAIL_CQ_RANSOMVICTIMCHIEFSHOUSESCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00DEC790 Alloc): FableWin.pdb ??_7CQ_RansomVictimChiefsHouseScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_RansomVictimChiefsHouseScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_RansomVictimChiefsHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_RansomVictimChiefsHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00DEC790
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_RansomVictimChiefsHouseScript) == 0x4c);
+FABLE_STATIC_ASSERT_AT(35, sizeof(NScript::CQ_RansomVictimChiefsHouseScript) == 0x4c);
 #endif

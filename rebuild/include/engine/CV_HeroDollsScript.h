@@ -37,9 +37,21 @@ public:
         CQ_SunnyvaleMasterData* PMasterData;                             // +0x18
         CScriptThing KidIntro;                                           // +0x1c
     };
+#ifdef FABLE_RETAIL_CV_HERODOLLSSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E98640 Alloc): FableWin.pdb ??_7CV_HeroDollsScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CV_HeroDollsScript, Alloc, RegisterMain, Main, Init, OnPersist. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CV_HeroDollsScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CV_HeroDollsScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E98640
+    virtual void RegisterMain();                            // slot 1 0x00E96E70
+    virtual void Main();                                    // slot 2 0x00E96F10
+    virtual void Init();                                    // slot 3 0x00E96E60
+    virtual void OnPersist(CPersistContext&);               // slot 4 0x00E98610
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CV_HeroDollsScript) == 0x4c);                 // Alloc 0x00E98640 `push 4Ch` (0x00E98643); Ego_r.pdb 96 - 0x14
-FABLE_STATIC_ASSERT(sizeof(CV_HeroDollsScript::CBS_Teacher) == 0x28);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CV_HeroDollsScript) == 0x4c);                 // Alloc 0x00E98640 `push 4Ch` (0x00E98643); Ego_r.pdb 96 - 0x14
+FABLE_STATIC_ASSERT_AT(42, sizeof(CV_HeroDollsScript::CBS_Teacher) == 0x28);
 } // namespace NScript
 #endif // FABLE_RETAIL_NSCRIPT
 #endif

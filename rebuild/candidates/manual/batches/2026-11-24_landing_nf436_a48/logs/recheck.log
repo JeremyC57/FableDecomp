@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00ce19a0   RELOCATION_MATCH PASS   Alloc
+00e75590   RELOCATION_MATCH PASS   Alloc
+00ebee30   RELOCATION_MATCH PASS   Alloc
+00eee6d0   RELOCATION_MATCH PASS   Alloc
+00efe380   RELOCATION_MATCH PASS   Alloc
+
+WINS: 5
+  00ce19a0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::?Alloc@CPersonalScript_GlobalThingsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e75590 RELOCATION_MATCH NScript::CV_DemonDoorsScript::?Alloc@CV_DemonDoorsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ebee30 RELOCATION_MATCH NScript::CV_OracleScript::?Alloc@CV_OracleScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eee6d0 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::?Alloc@CPersonalScript_alextestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efe380 RELOCATION_MATCH NScript::CMarkTestScriptsScript::?Alloc@CMarkTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

@@ -51,6 +51,15 @@ public:
         virtual void OnPersist(CPersistContext&);                        // 0x00D8AB70
         virtual void Main();                                             // 0x00D8ABF0
     };
+#ifdef FABLE_RETAIL_CQ_HEROSOLDHOUSESCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00D8D5A0 Alloc): FableWin.pdb ??_7CQ_HerosOldHouseScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_HerosOldHouseScript, Alloc, OnPersist. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_HerosOldHouseScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_HerosOldHouseScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00D8D5A0
+    virtual void OnPersist(CPersistContext&);               // slot 4 0x00D8AB10
+#endif
 };
 #ifdef FABLE_RETAIL_CQ_HEROSOLDHOUSESCRIPT_CFISHERMANSWIFE
 // Retail opt-in (chunk 810): nested CFishermansWife (Ego_r.pdb, 36 bytes): CEntityScriptBase (0x14), ParentClass +0x14, PMasterData

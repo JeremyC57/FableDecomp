@@ -48,10 +48,18 @@ public:
         virtual void Main();                                             // 0x00E7C8E0
         void IdleChatter();                                              // 0x00E7DE60
     };
+#ifdef FABLE_RETAIL_CV_FISHERMANSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E7E0B0 Alloc): FableWin.pdb ??_7CV_FishermanScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CV_FishermanScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CV_FishermanScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CV_FishermanScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E7E0B0
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_FishermanScript) == 0x58);
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_FishermanScript::CFisherman) == 0x20);
+FABLE_STATIC_ASSERT_AT(53, sizeof(NScript::CV_FishermanScript) == 0x58);
+FABLE_STATIC_ASSERT_AT(54, sizeof(NScript::CV_FishermanScript::CFisherman) == 0x20);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_FISHERMANSCRIPT_H

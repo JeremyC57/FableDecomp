@@ -1,0 +1,5 @@
+source	address	unit	reason
+nf437	family	LowerBound split, remainder	After nf437_lb1 lands, 14 stand-in spellings stay at 0x0040F020 / 0x004365B0 (RESIDUE.tsv lowerbound_split lines): 3 held rows (006ce730 / 0085b5b0 local std models -> header port; 007e5230 DIFFER), 9 T3-blocked rows (006412b0 006ac390 007748e0 00809270 00809f80 00809d60 00811760 008e7040 008d0820) whose ports should carry the typedef respell, plus 00713740 007534b0 0094b840 00802d10 (portable, ride with their blocked twins), 0089ec60 (hold_0089ec60) and 00898bb0 (TC port).
+nf437	0x00897630	tc_family port	LowerBound respelled in nf437_lb1 (typedef recipe); the NF435 TC-recipe port (CTCInventoryWeapons + CDefinitionManager) is still open
+nf437	0x0074AC80	self respell	CTCShop::AddShopper -> CTCCreatureGenerator::AddCreatureTriggerer (NAME_FIXES): re-author on engine/CTCCreatureGenerator.h, then NF435 hold_0089ec60
+nf437	0x00A36FE0	self respell	CListOwner_00a36fe0::CallAll -> CClassFactory::Validate: re-author on engine/CClassFactory.h, then NF435 hold_drafts/006e72a0 with a linked test

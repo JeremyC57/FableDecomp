@@ -32,9 +32,17 @@ public:
     bool PoshGuardComplete;                                              // +0x4a
     class CBowerstoneIntroGuard;                                         // Alloc 0x00D24210
     class CBowerstoneIntroGuardToPosh;                                   // Alloc 0x00D24330
+#ifdef FABLE_RETAIL_CQ_BOWERSTONETOWNLIFEINTROSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00D253B0 Alloc): FableWin.pdb ??_7CQ_BowerstoneTownLifeIntroScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_BowerstoneTownLifeIntroScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_BowerstoneTownLifeIntroScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_BowerstoneTownLifeIntroScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00D253B0
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BowerstoneTownLifeIntroScript) == 0x4c);
+FABLE_STATIC_ASSERT_AT(37, sizeof(NScript::CQ_BowerstoneTownLifeIntroScript) == 0x4c);
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_BOWERSTONETOWNLIFEINTROSCRIPT_H

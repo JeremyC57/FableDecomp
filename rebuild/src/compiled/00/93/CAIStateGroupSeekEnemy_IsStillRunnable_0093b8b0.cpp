@@ -27,12 +27,12 @@ public:
 #define FABLE_NATIVE_THISCALL
 #endif
 
-struct CInterfaceMap {
-    struct Entry { fable_i32 Type; void* Component; };
-    Entry* First;
-    Entry* Last;
-    Entry* LowerBound(const fable_i32* type);                 // 0x004365b0
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CInterfaceMap (?LowerBound@CInterfaceMap@@QAEPAUEntry@1@PBH@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 // The generated creature header is real; its native interface set/map remain opaque.
 struct CThingAICreatureComponentAccess : CThingAICreature {
@@ -90,28 +90,28 @@ bool CAIStateGroup_SeekEnemyAccess::IsStillRunnable()
 {
     CThingAICreatureComponentAccess* creature = Creature();
     CTCPerceiveThingAccess* perception = 0;
-    fable_i32 type;
+    ETCInterfaceType type;
     if (creature->ComponentBits()[1] & 0x00100000u) {
-        CInterfaceMap* map = creature->ComponentMap();
-        CInterfaceMap::Entry* it;
-        type = 0x34;
-        it = map->LowerBound(&type);
-        CInterfaceMap::Entry* last = map->Last;
-        if (it == last || it->Type > 0x34)
+        const CInterfaceMap* map = creature->ComponentMap();
+        const CInterfaceMap::value_type* it;
+        type = (ETCInterfaceType)0x34;
+        it = map->LowerBound(type);
+        const CInterfaceMap::value_type* last = map->end();
+        if (it == last || it->first > 0x34)
             it = last;
-        perception = (CTCPerceiveThingAccess*)it->Component;
+        perception = (CTCPerceiveThingAccess*)it->second;
     }
 
     CTCTargetingAI* targetSource;
     if (creature->ComponentBits()[0] & 0x100u) {
-        CInterfaceMap* map = creature->ComponentMap();
-        CInterfaceMap::Entry* it;
-        type = 8;
-        it = map->LowerBound(&type);
-        CInterfaceMap::Entry* last = map->Last;
-        if (it == last || it->Type > 8)
+        const CInterfaceMap* map = creature->ComponentMap();
+        const CInterfaceMap::value_type* it;
+        type = (ETCInterfaceType)8;
+        it = map->LowerBound(type);
+        const CInterfaceMap::value_type* last = map->end();
+        if (it == last || it->first > 8)
             it = last;
-        targetSource = (CTCTargetingAI*)it->Component;
+        targetSource = (CTCTargetingAI*)it->second;
     }
 
     if (((CThing*)PEnemy.GetPItem()) && !((CThingNativeState*)PEnemy.GetPItem())->IsDead()) {

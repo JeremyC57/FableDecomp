@@ -21,13 +21,13 @@ class CTCShopKeeper : public CTCBase { public:
     bool GetAreOtherPeopleInShop(bool); // 0x00799a60
 };
 class CTCShop : public CTCBase { public: bool IsOpeningHours() const; }; // 0x00773950
-struct CVectorMapEntry { long Type; CTCBase* Component; };
-struct CCreatureInterfaceMap {
-    CVectorMapEntry* Start;
-    CVectorMapEntry* Finish;
-    CVectorMapEntry* EndOfStorage;
-    CVectorMapEntry* LowerBound(long* key); // 0x0040f020
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- CThing::Components (+0x44) is the real
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > of engine/CVectorMap.h (the typedef the landed AI rows use,
+//   0x00929F10), so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE... spelling at
+//   0x0040F020; was the row-local stand-in CCreatureInterfaceMap (?LowerBound@CCreatureInterfaceMap@@QAEPAUCVectorMapEntry@@PAJ@Z).
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 #include "engine/C3DVector.h"
 struct CThingLifeStateRetailView {
     unsigned char _nativePrefix[0x91];
@@ -47,13 +47,13 @@ bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
 {
     CThingAICreature* creature = PBrain->Creature;
     if ((*(unsigned int*)&creature->_pad_0x20[0x10] & 0x10000) != 0) {
-        CCreatureInterfaceMap* interfaces = (CCreatureInterfaceMap*)&creature->_pad_0x20[0x24];   // +0x44 (the base-region pads merge in the retail STLport 4.6 header)
-        long key = 0x90;
-        CVectorMapEntry* entry = interfaces->LowerBound(&key);
-        CVectorMapEntry* end = interfaces->Finish;
-        if (entry == end || entry->Type > 0x90)
+        CInterfaceMap* interfaces = (CInterfaceMap*)&creature->_pad_0x20[0x24];   // +0x44 (the base-region pads merge in the retail STLport 4.6 header)
+        ETCInterfaceType key = (ETCInterfaceType)0x90;
+        CInterfaceMap::value_type* entry = interfaces->LowerBound(key);
+        CInterfaceMap::value_type* end = interfaces->end();
+        if (entry == end || entry->first > 0x90)
             entry = end;
-        CTCShopKeeper* keeper = (CTCShopKeeper*)entry->Component;
+        CTCShopKeeper* keeper = (CTCShopKeeper*)entry->second;
         if (keeper->GetShopTC() != 0) {
             unsigned char open;
             if (keeper->GetShopTC() && keeper->GetShopTC()->IsOpeningHours())

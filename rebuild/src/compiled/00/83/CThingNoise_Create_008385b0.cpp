@@ -17,8 +17,15 @@ class CBaseClassNonCopyable:public CBaseClass {protected:CBaseClassNonCopyable()
 class CTCParamsBase:public CBaseClassNonCopyable {};
 class CTCParamsPhysicsBase:public CTCParamsBase {public:C3DVector position;CRightHandedSet axes;CTCParamsPhysicsBase(const C3DVector&,const CRightHandedSet&);};
 extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C (established spelling, naming wave 13)
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CInterfaceMap (?LowerBound@Map@NFactory008385b0@@QAEPAUPair@2@ABH@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): the thing's Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 namespace NFactory008385b0 {
-struct Physics {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual void Set(const CTCParamsPhysicsBase&)=0;};struct Component {void Set(float);};struct Pair {int key;Component* component;};struct Map {Pair *first,*last,*end;__declspec(noinline) Pair* LowerBound(const int& key){Pair*p=first;int n=last-first;while(n>0){int half=n/2;Pair*mid=p+half;if(mid->key<key){p=mid+1;n-=half+1;}else n=half;}return p;}};
+struct Physics {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual void Set(const CTCParamsPhysicsBase&)=0;};struct Component {void Set(float);};struct Pair {int key;Component* component;};typedef ::CInterfaceMap Map;
 struct Defs {
 virtual void v0()=0;
 virtual void v1()=0;
@@ -39,9 +46,9 @@ virtual void v15()=0;
 virtual int Get(const C3DVector&)=0;};struct Global {char pad[40];Defs* defs;};extern Global* global;
 }
 using namespace NFactory008385b0;
-class CThing {public:virtual ~CThing();char pad[32];unsigned flags;char gap[28];Map map;char gap2[16];Physics* physics;FABLE_FORCEINLINE Map& GetComponents(){return map;}CThing(unsigned long);protected:static void* __fastcall operator new(unsigned int,bool);public:bool DoActivationSequence();char tail[52];protected:
+class CThing {public:virtual ~CThing();char pad[32];unsigned flags;char gap[28];Map map;char gap2[12];Physics* physics;FABLE_FORCEINLINE Map& GetComponents(){return map;}CThing(unsigned long);protected:static void* __fastcall operator new(unsigned int,bool);public:bool DoActivationSequence();char tail[52];protected:
     bool ConstructFromParams(long, long, long, bool);   // 0x004CA010
 };
 class CThingNoise:public CThing {public:CThingNoise():CThing(14){}virtual ~CThingNoise();static CThingNoise* __fastcall Create(long,const C3DVector&,float);};
 // Layout: allocation0x98, flags+0x24, components+0x44, physics+0x60.
-CThingNoise* __fastcall CThingNoise::Create(long owner,const C3DVector& position,float duration){CThingNoise* result=0;CThingNoise* p=(CThingNoise*)CThing::operator new(0x98,false);if(p){::new(p)CThingNoise;if(p->ConstructFromParams(owner,5,global->defs->Get(position),true)){Physics* physics=p->physics;physics->Set(CTCParamsPhysicsBase(position,CRightHandedSet()));if(p->DoActivationSequence()){if(-DELTA_NOTIONAL_ZERO<duration){Component* c;if(p->flags&0x800000){int key=55;Map&components=p->GetComponents();Pair* i=components.LowerBound(key);if(i==components.last||key<i->key)i=components.last;c=i->component;}c->Set(duration);}result=p;}}}return result;}
+CThingNoise* __fastcall CThingNoise::Create(long owner,const C3DVector& position,float duration){CThingNoise* result=0;CThingNoise* p=(CThingNoise*)CThing::operator new(0x98,false);if(p){::new(p)CThingNoise;if(p->ConstructFromParams(owner,5,global->defs->Get(position),true)){Physics* physics=p->physics;physics->Set(CTCParamsPhysicsBase(position,CRightHandedSet()));if(p->DoActivationSequence()){if(-DELTA_NOTIONAL_ZERO<duration){Component* c;if(p->flags&0x800000){ETCInterfaceType key=(ETCInterfaceType)55;Map&components=p->GetComponents();Map::value_type* i=components.LowerBound(key);if(i==components.end()||key<i->first)i=components.end();c=(Component*)i->second;}c->Set(duration);}result=p;}}}return result;}

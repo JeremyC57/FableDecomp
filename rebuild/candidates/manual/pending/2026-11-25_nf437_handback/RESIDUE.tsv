@@ -1,0 +1,22 @@
+address	status	shape	reason
+006ce730	held	lowerbound_split	local std::vector model (namespace std vector + _M_insert_overflow stand-in) collides with STLport from engine/CVectorMap.h: needs a header port of the row's std model; keeps ?LowerBound@CInterfaceMap@@QBEPAUSEntry@1@PBJ@Z alive (nf437_lb1 rewitnesses that line here)
+0085b5b0	held	lowerbound_split	local std::list model (_List_iterator / _Nonconst_traits) collides with STLport from engine/CVectorMap.h: header port; keeps ?LowerBound@CTCInterfaceMap@@QBEPAUCTCInterfaceEntry@@ABJ@Z (its witness) alive
+007e5230	held	lowerbound_split	typedef port DIFFER 817v817 (4 shapes tried; retail keeps the map thing+0x44 in edi across the call, the port keeps the thing); keeps ?LowerBound@CTCMap@@QAEPAUSTCEntry@@ABK@Z alive (nf437_lb1 rewitnesses it here); try plain `CTCMap& m = m_tcs` at the call site / the HEAD member-function layout next
+006412b0	t3_blocked	lowerbound_split	T3 nf302 (local-model debt, CTCGraphicAppearance header port); shares ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z with 00713740 (portable, not attempted: the line could only be rewitnessed)
+00713740	not_attempted	lowerbound_split	portable on the typedef recipe, but its spelling is also emitted by the T3-blocked 006412b0, so the line would stay; port together with 006412b0
+006ac390	t3_blocked	lowerbound_split	T3 nf290 / access1 lines (self const respell unit with 0x00805890); only emitter of ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@ABK@Z
+007748e0	t3_blocked	lowerbound_split	T3 nf311 (local char_traits unit with 0x00841790 / 0x0099CD60); shares ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z with 007534b0 / 0094b840 (portable, not attempted)
+007534b0	not_attempted	lowerbound_split	portable; spelling also emitted by T3-blocked 007748e0
+0094b840	not_attempted	lowerbound_split	portable; spelling also emitted by T3-blocked 007748e0
+00809270	t3_blocked	lowerbound_split	T3 nf311 port line; with 00809f80 (T3 nf340) the only emitters of ?LowerBound@CTCMap@@QBEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@@PBW4ETCInterfaceType@@@Z
+00809f80	t3_blocked	lowerbound_split	T3 nf340 pick-any debt line
+00809d60	t3_blocked	lowerbound_split	T3 nf340 / nf308 (namespace N00809d60 port); only emitter of ?LowerBound@CTCMap@N00809d60@@...
+00811760	t3_blocked	lowerbound_split	T3 nf295 / nf311 (CEventHitBase binder self unit); only emitter of ?LowerBound@CInterfaceMap@CThing@@QAEPAUSEntry@12@PBJ@Z
+00802d10	not_attempted	lowerbound_split	portable; shares ?LowerBound@CTCMap@@QBEPAUCTCEntry@@ABK@Z with T3-blocked 008e7040
+008e7040	t3_blocked	lowerbound_split	T3 nf293 (GetCombatantInfo const& unit)
+008d0820	t3_blocked	lowerbound_split	T3 nf324 port line (engine/CGameScriptThing.h IsOpenDoor opt-in); only emitter of ?LowerBound@DoorMap@@QAEPAUMapTreeNode@@PAH@Z
+0089ec60	task2	lowerbound_split	?find@MapT@@QAEPAUNode@@ABK@Z / ...PAH@Z go with NF435's hold_0089ec60 batch (lands after the 0x0074AC80 respell)
+00898bb0	task3	lowerbound_split	?lower_bound@HeroMap@@QAEPAUMapNode@@PBJ@Z goes with its TC-recipe port (NF435 residue line)
+0074ac80	not_attempted	name_fix	CTCShop::AddShopper -> ?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z verified (see NOTES); the self row needs a re-author on engine/CTCCreatureGenerator.h (UNDEAD + TRIGGERERS + SCRIPTTRIGGERERS; STLport vector + __find 0x0074CEE0 / push_back 0x0074DA40 from the shared containers): context budget
+00a36fe0	not_attempted	name_fix	CListOwner_00a36fe0::CallAll -> ?Validate@CClassFactory@@QAEXXZ (Ego_r + FableWin publics); self re-author on engine/CClassFactory.h (NF435 draft opt-in FABLE_RETAIL_CCLASSFACTORY_VALIDATE + _CLASSLIST, CClass slot 1); then NF435's 006e72a0 draft with a linked test: context budget
+nf435_residue	not_attempted	tc_family	the ~20 TC rows, 12 body ports, 5 tc_query rows and 8 T1 caller respells of pending/2026-11-25_nf435_handback/RESIDUE.tsv are untouched (task 3 not reached); 00897630 got only the LowerBound typedef respell in nf437_lb1, its TC-recipe port is still open

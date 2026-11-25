@@ -5,22 +5,20 @@
 // Naming wave 35: was landed as the free __fastcall stand-in `?Alloc_CVtable_012cb52c@@YIPAUCVtable_012cb52c@@PAX0@Z` (00/d2/global_AllocCVtable012cb52c_00d253b0.cpp); same bytes.
 // Callees: scalar operator new 0x00BFEA1A (0x4C = sizeof, Ego_r.pdb 96 - 0x14), CScriptBase::CScriptBase 0x00CB8110; the constructor is inlined
 //   (CLevelScriptBase<T>(data, game): Game +0x40, MasterScriptData +0x44, then the script vtable).
-// Model: engine/CLevelScriptBase.h; layout = Ego_r.pdb - 0x14 (the retail script base is 0x14 smaller), the members this
-//   body does not touch are one pad block.
+// Model (NF436): the shared engine/CQ_BowerstoneTownLifeIntroScript.h (+ add-only opt-in FABLE_RETAIL_CQ_BOWERSTONETOWNLIFEINTROSCRIPT_ALLOC: CQ_BowerstoneTownLifeIntroScript, Alloc), replacing a local class that declared none of the class's own virtuals
+//   and an out-of-line destructor (FableWin.pdb: compiler-generated). The user constructor is defined `inline` here (FableWin.pdb
+//   declares it; Alloc expands it, 0x00D80C00 pattern). The vftable 0x012CB52C now carries the FableWin.pdb overrides (RegisterMain Main Init OnPersist) and
+//   this TU emits the implicit ??_G with it, as retail's TU did; FABLE_RETAIL_CLEVELSCRIPTBASE: the implicit destructor calls
+//   ~CScriptBase 0x00CBD510 directly.
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CQ_BowerstoneTownLifeIntroScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
-public:
-    CQ_BowerstoneTownLifeIntroScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
-    virtual ~CQ_BowerstoneTownLifeIntroScript();    // ??1CQ_BowerstoneTownLifeIntroScript@NScript@@UAE@XZ
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    unsigned char _members48[0x4c - 0x48];    // +0x48 (the script's own members; retail sizeof 0x4C)
-};
-CScriptBase* __fastcall CQ_BowerstoneTownLifeIntroScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#define FABLE_RETAIL_CQ_BOWERSTONETOWNLIFEINTROSCRIPT_ALLOC
+#include "rebuild_abi.h"
+#include "engine/CQ_BowerstoneTownLifeIntroScript.h"
+inline NScript::CQ_BowerstoneTownLifeIntroScript::CQ_BowerstoneTownLifeIntroScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game)
+{
+}
+CScriptBase* FABLE_FASTCALL NScript::CQ_BowerstoneTownLifeIntroScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CQ_BowerstoneTownLifeIntroScript(data, game);
 }
-}
-typedef char ExactOwnerSize[sizeof(NScript::CQ_BowerstoneTownLifeIntroScript) == 0x4c ? 1 : -1];

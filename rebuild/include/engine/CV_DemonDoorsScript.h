@@ -188,6 +188,14 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;
     };
+#ifdef FABLE_RETAIL_CV_DEMONDOORSSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00E75590 Alloc): FableWin.pdb ??_7CV_DemonDoorsScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CV_DemonDoorsScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CV_DemonDoorsScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CV_DemonDoorsScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00E75590
+#endif
 };
 }
 FABLE_STATIC_ASSERT_AT(179, sizeof(NScript::CV_DemonDoorsScript) == 0x48);

@@ -24,44 +24,23 @@ struct STCEntry {                                  // one CVectorMap<ETCInterfac
     long     m_kind;
     CTCBase* m_pTC;
 };
-struct CTCMap {                                    // the thing's component map at +0x44 (sorted vector of pairs)
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);   // 0x0040F020 (same-TU stand-in below)
-    FABLE_FORCEINLINE CTCBase* Find(long kind)
-    {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
-    }
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCMap (?LowerBound@CTCMap@@QAEPAUSTCEntry@@ABK@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
+// (the row-local inline Find(kind) of the stand-in is CVectorMap::Find (engine/CVectorMap.h) on the key temporary, then ->second)
 
-#pragma auto_inline(off)
 // Same-TU stand-in for CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound (0x0040F020, STLport lower_bound over
 // the 8-byte entries): the key is only read, so its address does not escape.
-__declspec(noinline) STCEntry* CTCMap::LowerBound(const unsigned long& kind)
-{
-    STCEntry* it = m_pFirst;
-    int len = int(m_pLast - m_pFirst);
-    while (len > 0) {
-        int half = len / 2;
-        STCEntry* middle = it + half;
-        if ((unsigned long)middle->m_kind < kind) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
 
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                          // +0x44
-    unsigned char  _pad50[0x41];
+    unsigned char  _pad54[0x3D];                   // +0x54 (CVectorMap is 0x10)
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
     FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
@@ -70,7 +49,7 @@ class CThing { public:
 template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing* thing, long kind, T** out)   // out-parameter lookup: the component stays in eax
 {
     if (thing->HasTC(kind)) {
-        *out = (T*)thing->m_tcs.Find(kind);
+        *out = (T*)(CTCBase*)thing->m_tcs.Find((ETCInterfaceType)kind)->second;
         return true;
     }
     return false;

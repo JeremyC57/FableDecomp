@@ -15,12 +15,13 @@ struct SubNode {
     CCharString*     name;   // +0x28
 };
 
-struct Sub {                 // located at QData+0x44
-    char             base0;  // +0x00 (Find 'this')
-    char             pad0[3];
-    SubNode*         end;     // +0x04
-    SubNode* Find(int* pkey); // implicit __fastcall: this=ecx, pkey pushed
-};
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in Sub (?Find@Sub@@QAEPAUSubNode@@PAH@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): the quest data thing's Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Sub;
 
 struct QData {
     char             pad0[0x2c];
@@ -45,7 +46,7 @@ extern CCharString g_defaultQuestName;               // object @ 0x13bd804
 
 CCharString* __fastcall CQuestManager_GetActiveExclusiveQuestName(QManager* self)
 {
-    union { int scratch; SubNode* found; } u; // single local (the push ecx slot)
+    union { ETCInterfaceType scratch; SubNode* found; } u; // single local (the push ecx slot)
     TNode* node = *(TNode**)self->treehdr;
     if (node != self->treehdr) {
         SubNode* found = u.found; // preheader read (once); loop preserves esi
@@ -53,13 +54,13 @@ CCharString* __fastcall CQuestManager_GetActiveExclusiveQuestName(QManager* self
             QData* q = ((QData*)(((CBaseIntelligentPointer*)((TNode*)((char*)node + 8)))->GetPItem()));
             if (q) {
                 if (q->flags & 0x1000) {
-                    Sub* sub = &q->sub;
-                    u.scratch = 0x6c;
-                    SubNode* r = sub->Find(&u.scratch);
-                    SubNode* end = sub->end;
-                    if (r == end || r->key > 0x6c)
+                    const Sub* sub = &q->sub;
+                    u.scratch = (ETCInterfaceType)0x6c;
+                    const Sub::value_type* r = sub->LowerBound(u.scratch);
+                    const Sub::value_type* end = sub->end();
+                    if (r == end || r->first > 0x6c)
                         r = end;
-                    found = r->next;
+                    found = (SubNode*)r->second;
                 }
                 if (found) {
                     if (SubCheck(found))

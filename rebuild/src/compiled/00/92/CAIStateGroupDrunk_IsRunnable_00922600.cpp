@@ -15,39 +15,22 @@ class CThing;
 class CWorld;
 class CThingAICreature;
 
-// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
-// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
-// GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const;       // 0x0040F020
-};
-#pragma auto_inline(off)
-// Same-TU body of the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation (a template member, compiled in the
-// caller's TU): binary search for the first entry whose type is not below the key read through the pointer.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    long count = last - first;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].type < *type) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
+// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and CThing::Components at +0x44,
+// the real CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > (engine/CVectorMap.h; its noinline const LowerBound is
+// 0x004365B0, emitted pick-any in this TU) -- the inlined GetInterface<T>() shape of the landed AI bodies (hit path: lookup result;
+// miss path: the never-written slot).
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local stand-in map CInterfaceMap (?LowerBound@CInterfaceMap@@QBEPAUSEntry@1@PBJ@Z
+//   and its same-TU noinline body) replaced by the shared CVectorMap typedef the landed AI rows use (0x00929F10), so the call binds
+//   the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE... spelling at 0x004365B0.
+enum ETCInterfaceType { ETCInterfaceType_FIRST };
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0x45];
+    unsigned char _pad1[0x3D];                  // +0x54 (CVectorMap is 0x10)
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned long HasTC(long interfaceType) const     // the masked word (a bool return narrows to `shr ; test dl,1`)
     {
@@ -56,12 +39,12 @@ class CThing { public:
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+            const CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once (const LowerBound 0x004365B0)
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            if (it == map->end() || interfaceType < it->first)
+                it = map->end();
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;

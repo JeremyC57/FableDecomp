@@ -38,16 +38,22 @@ struct MazeCreaturePointer:MazeCreaturePointerBase{FABLE_FORCEINLINE MazeCreatur
 #include "engine/CTCBoss.h"
 struct MazeCombat{char base[0x40];MazeCreaturePointer target;};
 struct MazeEntry{long key;void* value;};
-struct MazeTable{MazeEntry* begin;MazeEntry* end;MazeEntry* Find(const long&);MazeEntry* FindConst(const long&); //0040f020,004365b0
- template<int Key> FABLE_FORCEINLINE void* Lookup(){long key=Key;MazeEntry* p=Find(key);if(p==end)p=end;else if(p->key>Key)p=end;return p->value;}
- template<int Key> FABLE_FORCEINLINE void* LookupConst(){long key=Key;MazeEntry* p=FindConst(key);return (p==end || p->key>Key ? end:p)->value;}
-};
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in MazeTable (?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > MazeTable;
+// The stand-in's inline lookups as free helpers over the real CVectorMap (non-const LowerBound 0x0040F020 / const 0x004365B0).
+template<int Key> FABLE_FORCEINLINE void* MazeLookup(MazeTable& t){ETCInterfaceType key=(ETCInterfaceType)Key;MazeTable::value_type* p=t.LowerBound(key);if(p==t.end())p=t.end();else if(p->first>Key)p=t.end();return p->second;}
+template<int Key> FABLE_FORCEINLINE void* MazeLookupConst(MazeTable& t){const MazeTable& c=t;ETCInterfaceType key=(ETCInterfaceType)Key;const MazeTable::value_type* p=c.LowerBound(key);return (p==c.end() || p->first>Key ? c.end():p)->second;}
 class CThing { public:
     const C3DVector& GetPos() const; //004c73d0
 };
-struct MazeThing : public CThing {char base[0x20];unsigned long masks[9];MazeTable table;char beforeFlags[0x20];unsigned char flags;char beforeDead[0x24];unsigned char dead;
-FABLE_FORCEINLINE void GetBoss(CTCBoss** out){if(masks[5]&0x2000)*out=(CTCBoss*)table.Lookup<173>();}
-FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.Lookup<8>();}
+struct MazeThing : public CThing {char base[0x20];unsigned long masks[9];MazeTable table;char beforeFlags[0x18];unsigned char flags;char beforeDead[0x24];unsigned char dead;
+FABLE_FORCEINLINE void GetBoss(CTCBoss** out){if(masks[5]&0x2000)*out=(CTCBoss*)MazeLookup<173>(table);}
+FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)MazeLookup<8>(table);}
 };
 class CCombatManager{ public:void RegisterCombatant(MazeThing*,MazeThing*,bool);}; //006edc50
 #ifndef _MSC_VER

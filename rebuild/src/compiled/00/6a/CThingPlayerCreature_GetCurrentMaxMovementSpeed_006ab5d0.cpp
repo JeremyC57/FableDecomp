@@ -34,17 +34,13 @@ struct STCEntry {
     long     m_kind;
     CTCBase* m_pTC;
 };
-struct CTCMap {
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0
-    FABLE_FORCEINLINE CTCBase* Find(long kind) const
-    {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        return (it == m_pLast || kind < it->m_kind ? m_pLast : it)->m_pTC;
-    }
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CTCMap (?LowerBound@CTCMap@@QBEPAUSTCEntry@@ABK@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
+// (the row-local inline Find(kind) of the stand-in is CVectorMap::Find (engine/CVectorMap.h) on the key temporary, then ->second)
 class CTCStealth {                              // interface 0x36
 public:
     unsigned char _pad00[0x0f];
@@ -64,15 +60,15 @@ public:
     unsigned long  m_tcMask[8];                 // +0x20
     unsigned char  _pad40[4];
     CTCMap         m_tcs;                       // +0x44
-    unsigned char  _pad50[0x60 - 0x50];
+    unsigned char  _pad54[0x60 - 0x54];         // CVectorMap is 0x10
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const { return m_tcs.Find(kind); }
+    FABLE_FORCEINLINE CTCBase* GetTC(long kind) const { return (CTCBase*)m_tcs.Find((ETCInterfaceType)kind)->second; }
     const C3DVector& GetPos() const;            // 0x004C73D0
     template <class T> FABLE_FORCEINLINE bool PeekTC(const T** ppOut, long kind) const
     {
         if (HasTC(kind)) {
-            *ppOut = (const T*)m_tcs.Find(kind);
+            *ppOut = (const T*)(CTCBase*)m_tcs.Find((ETCInterfaceType)kind)->second;
             return true;
         }
         return false;

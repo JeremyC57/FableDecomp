@@ -49,10 +49,21 @@ public:
     };
     class CMeleeOpponent;                                                // Alloc 0x00D566A0
     class CMeleeThunder;                                                 // Alloc 0x00D57FA0
+#ifdef FABLE_RETAIL_CQ_GUILDTRAININGMELEESCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00D5A9F0 Alloc): FableWin.pdb ??_7CQ_GuildTrainingMeleeScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_GuildTrainingMeleeScript, Alloc, RegisterMain, Main, Init. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_GuildTrainingMeleeScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_GuildTrainingMeleeScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00D5A9F0
+    virtual void RegisterMain();                            // slot 1 0x00D55DD0
+    virtual void Main();                                    // slot 2 0x00D55E90
+    virtual void Init();                                    // slot 3 0x00D55DA0
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingMeleeScript) == 0x58);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster) == 0x20);
+FABLE_STATIC_ASSERT_AT(54, sizeof(NScript::CQ_GuildTrainingMeleeScript) == 0x58);
+FABLE_STATIC_ASSERT_AT(55, sizeof(NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster) == 0x20);
 
 #ifdef FABLE_RETAIL_CQ_GUILDTRAININGMELEESCRIPT_MELEEOPPONENT
 // Retail opt-in (chunk 828; drafted by chunk 810): nested CMeleeOpponent (Ego_r.pdb, 36 bytes = the retail Alloc new size 0x24):
@@ -76,7 +87,7 @@ private:
     virtual void Init();                                                 // 0x00D56750
     virtual void Main();                                                 // 0x00D56790
 };
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent) == 0x24);
+FABLE_STATIC_ASSERT_AT(79, sizeof(NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent) == 0x24);
 #endif // FABLE_RETAIL_CQ_GUILDTRAININGMELEESCRIPT_MELEEOPPONENT
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_GUILDTRAININGMELEESCRIPT_H

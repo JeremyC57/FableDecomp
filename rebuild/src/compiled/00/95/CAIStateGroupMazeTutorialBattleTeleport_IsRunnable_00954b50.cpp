@@ -60,10 +60,16 @@ virtual void slot28();
 virtual MazeThing* GetTarget(); //slot29
 };
 struct MazeEntry{long key;void* value;};
-struct MazeTable{MazeEntry* begin;MazeEntry* end;MazeEntry* Find(const long&);MazeEntry* FindConst(const long&); //0040f020,004365b0
- template<int Key> FABLE_FORCEINLINE void* Lookup(){long key=Key;MazeEntry* p=Find(key);if(p==end)p=end;else if(p->key>Key)p=end;return p->value;}
- template<int Key> FABLE_FORCEINLINE void* LookupConst(){long key=Key;MazeEntry* p=FindConst(key);return (p==end || p->key>Key ? end:p)->value;}
-};
+class CTCBase;
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in MazeTable (?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QAE spelling at 0x0040F020.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > MazeTable;
+// The stand-in's inline lookups as free helpers over the real CVectorMap (non-const LowerBound 0x0040F020 / const 0x004365B0).
+template<int Key> FABLE_FORCEINLINE void* MazeLookup(MazeTable& t){ETCInterfaceType key=(ETCInterfaceType)Key;MazeTable::value_type* p=t.LowerBound(key);if(p==t.end())p=t.end();else if(p->first>Key)p=t.end();return p->second;}
+template<int Key> FABLE_FORCEINLINE void* MazeLookupConst(MazeTable& t){const MazeTable& c=t;ETCInterfaceType key=(ETCInterfaceType)Key;const MazeTable::value_type* p=c.LowerBound(key);return (p==c.end() || p->first>Key ? c.end():p)->second;}
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr
     long m_count;
     void DecRef() { --m_count; }
@@ -184,9 +190,9 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-struct MazeThing{char base[0x20];unsigned long masks[9];MazeTable table;char beforeDef[0x24];MazeDefinitionNative* definition;char beforeDead[0x1d];unsigned char dead;
-FABLE_FORCEINLINE void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
-FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
+struct MazeThing{char base[0x20];unsigned long masks[9];MazeTable table;char beforeDef[0x1c];MazeDefinitionNative* definition;char beforeDead[0x1d];unsigned char dead;
+FABLE_FORCEINLINE void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)MazeLookup<173>(table);}
+FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)MazeLookupConst<8>(table);}
 };
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only

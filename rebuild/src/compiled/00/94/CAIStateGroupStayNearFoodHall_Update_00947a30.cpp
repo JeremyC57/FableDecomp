@@ -21,8 +21,14 @@
 #include "engine/CAIBrain.h"
 class CThing;
 #include "engine/C3DVector.h"
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
-class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad4c[0x45]; unsigned char dead; };
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CInterfaceMap (?LowerBound@CInterfaceMap@@QBEPAUEntry@1@PBJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+class CTCBase;
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad54[0x3d]; unsigned char dead; };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 struct CTCVillager;
@@ -39,12 +45,12 @@ void CAIStateGroup_StayNearFoodHall::Update()
 {
     CThing* foodHall;
     CThing* creature;
-    CInterfaceMap::Entry* it;
-    CInterfaceMap* map;
+    const CInterfaceMap::value_type* it;
+    const CInterfaceMap* map;
     CTCVillage* village;
     bool reached;
     long result;
-    long key;
+    ETCInterfaceType key;
     if (!reinterpret_cast<CThing*>(PFoodHall.GetPItem())) goto done;
     foodHall = reinterpret_cast<CThing*>(PFoodHall.GetPItem());
     if (foodHall->dead & 1) goto done;
@@ -56,11 +62,11 @@ void CAIStateGroup_StayNearFoodHall::Update()
         if (foodHall->dead & 1) goto done;
         creature = (CThing*)PBrain->Creature;
         if (!(creature->flags24 & 8)) goto done;
-        key = 0x23;
+        key = (ETCInterfaceType)0x23;
         map = &creature->interfaces;
-        it = map->LowerBound(&key);
-        if (it == map->last || it->type > 0x23) it = map->last;
-        village = ((CTCVillageMember*)((CTCVillager*)it->component))->GetPVillage();
+        it = map->LowerBound(key);
+        if (it == map->end() || it->first > 0x23) it = map->end();
+        village = ((CTCVillageMember*)((CTCVillager*)it->second))->GetPVillage();
         if (!village || !village->IsEatTime()) goto done;
     } while (result == 4);
 done:

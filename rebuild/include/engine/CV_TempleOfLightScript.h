@@ -63,9 +63,18 @@ public:
     bool QuestActivated;                                                 // +0x72
     class CTOL_AcolyteGood;                                              // Alloc 0x00EDC1D0
     class CTOL_AltarGood;                                                // Alloc 0x00EDC2D0
+#ifdef FABLE_RETAIL_CV_TEMPLEOFLIGHTSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00EDEB40 Alloc): FableWin.pdb ??_7CV_TempleOfLightScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CV_TempleOfLightScript, Alloc, OnPersist. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CV_TempleOfLightScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CV_TempleOfLightScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00EDEB40
+    virtual void OnPersist(CPersistContext&);               // slot 4 0x00EDAF30
+#endif
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_TempleOfLightScript) == 0x74);
+FABLE_STATIC_ASSERT_AT(68, sizeof(NScript::CV_TempleOfLightScript) == 0x74);
 #ifdef FABLE_RETAIL_CV_TEMPLEOFLIGHTSCRIPT_ACOLYTEGOOD
 // Retail opt-in (chunk 811): the TOL_AcolyteGood entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
 // retail's: CEntityScriptBase is 0x14 in both): CTOL_AcolyteGood 32 bytes (ParentClass +0x14, PMasterData +0x18,
@@ -90,7 +99,7 @@ protected:
     CTimer AcolytePrayerTimer;                                           // +0x1c
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CV_TempleOfLightScript::CTOL_AcolyteGood) == 0x20);
+FABLE_STATIC_ASSERT_AT(93, sizeof(NScript::CV_TempleOfLightScript::CTOL_AcolyteGood) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

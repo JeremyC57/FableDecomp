@@ -24,47 +24,15 @@ public:
 };            // 0x0049D870
 class CTCBase;
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy, called out of line)
-    SEntry* LowerBound(const long* type)        // STLport lower_bound over the 8-byte {type, component} entries (inlined in Update)
-    {
-        SEntry* it = first;
-        int len = int(last - first);
-        while (len > 0) {
-            int half = len / 2;
-            SEntry* middle = it + half;
-            if (middle->type < *type) {
-                it = middle + 1;
-                len = len - half - 1;
-            } else
-                len = half;
-        }
-        return it;
-    }
-};
+// Naming (NF437, 2026-11-25): the LowerBound split -- the row-local map stand-in CInterfaceMap (?LowerBound@CInterfaceMap@@QBEPAUSEntry@1@PBJ@Z) replaced by the shared
+//   CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<..> > typedef of engine/CVectorMap.h that the landed AI rows use (0x00929F10): CThing::Components at +0x44 (0x10 bytes),
+//   so the call binds the established ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@...@@QBE spelling at 0x004365B0.
+#include "engine/ETCInterfaceType.h"
+#include "engine/CVectorMap.h"
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-#pragma auto_inline(off)
 // Same-TU stand-in for the const CVectorMap::LowerBound (0x004365B0, STLport lower_bound; retail's LTCG saw its body): the
 // key's address does not escape, so the lookup key shares its frame slot with the hit-event out pointer as in retail.
-__declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
-{
-    SEntry* it = first;
-    int len = int(last - first);
-    while (len > 0) {
-        int half = len / 2;
-        SEntry* middle = it + half;
-        if (middle->type < *type) {
-            it = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return it;
-}
-#pragma auto_inline(on)
 
 class C3DVector { public:
     float x, y, z;
@@ -100,7 +68,7 @@ class CThing : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad1[0xf4 - 0x4c];
+    unsigned char _pad1[0xf4 - 0x54];  // CVectorMap is 0x10
     CIntelligentPointer<CThing> LastAttacker;       // +0xf4 (CThingCreatureBase)
     long FrameLastAttacked;                     // +0xfc
     void SetAttackedByCreature(CThing* attacker);   // 0x006624F0
@@ -110,10 +78,10 @@ class CThing : public CThingPhysical { public:
     }
     template<class T> FABLE_FORCEINLINE T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)interfaceType;
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::value_type* it = map->LowerBound(type);
+        return (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
     }
     const C3DVector& GetPos() const;    // 0x004C73D0
     bool TestTC(long interfaceType) const
@@ -124,10 +92,10 @@ class CThing : public CThingPhysical { public:
     {
         bool has = TestTC(interfaceType);
         if (has) {
-            long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            ETCInterfaceType type = (ETCInterfaceType)interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap::value_type* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
         }
         return has;
     }

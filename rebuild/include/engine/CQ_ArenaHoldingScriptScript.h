@@ -67,6 +67,14 @@ public:
         virtual void Init();                                             // 0x00CF3CF0
         virtual void Main();                                             // 0x00CF3D20
     };
+#ifdef FABLE_RETAIL_CQ_ARENAHOLDINGSCRIPTSCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00CF8860 Alloc): FableWin.pdb ??_7CQ_ArenaHoldingScriptScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_ArenaHoldingScriptScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+    CQ_ArenaHoldingScriptScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_ArenaHoldingScriptScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00CF8860
+#endif
 };
 #ifdef FABLE_RETAIL_CQ_ARENAHOLDINGSCRIPTSCRIPT_FANMARKER
 // Retail opt-in (chunk 812): Ego_r.pdb CFanMarker (28 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18); vtable

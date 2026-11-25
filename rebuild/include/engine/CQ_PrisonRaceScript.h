@@ -136,6 +136,16 @@ public:
         NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
     };
 #endif
+#ifdef FABLE_RETAIL_CQ_PRISONRACESCRIPT_ALLOC
+    // Retail opt-in (NF436, row 0x00DDDC30 Alloc): FableWin.pdb ??_7CQ_PrisonRaceScript@NScript@@6B@ / LF_CLASS (all public: the user ctor, static
+    //   Alloc, the virtual overrides) for what this header does not declare yet: CQ_PrisonRaceScript, Alloc. Declarations only, no layout
+    //   change; existing includers do not define the macro.
+public:
+#ifndef FABLE_RETAIL_CQ_PRISONRACESCRIPT_GUARD_PASS27
+    CQ_PrisonRaceScript(CScriptDataBase* data, CGameScriptInterfaceBase& game); // FableWin.pdb ??0CQ_PrisonRaceScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+#endif
+    static CScriptBase* FABLE_FASTCALL Alloc(CScriptDataBase*, CGameScriptInterfaceBase&);   // 0x00DDDC30
+#endif
 };
 }
 FABLE_STATIC_ASSERT_AT(75, sizeof(NScript::CQ_PrisonRaceScript) == 0x60);
