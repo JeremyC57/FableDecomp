@@ -1,0 +1,270 @@
+#ifndef FABLE_ENGINE_CTCCOMBAT_H
+#define FABLE_ENGINE_CTCCOMBAT_H
+#ifdef FABLE_RETAIL_CTCCOMBAT
+// Retail opt-in (Codex pass 11 consolidation 2): the retail CTCCombat (one model for rows 0x007355F0 and 0x00667D30).
+// Ego_r TPI 0x25a80 CTCCombat : CTCBase (needs FABLE_RETAIL_CTCBASE), sizeof 0x98 (STLport 12-byte vectors and tree).
+// Member order and names from the PDB; 0x007355F0 SetCombatType stores PCombatTypeDef and rebuilds CombatAbilities,
+// 0x00667D30 OnHit calls IsAbleToBeKnockedDown 0x007331A0 (reads ParentCreature +0x24 then its combat definition flag).
+#include "engine/CTCBase.h"
+#include "engine/ETCInterfaceType.h"
+#include "engine/CDefPointer.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCombatAbility.h"
+#include "engine/CCombatAbilityData.h"
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+#include "engine/ECombatAbilityDataType.h"
+#endif
+#include "engine/EUnsheatheWeaponType.h"
+#include "stlport/fable_map.h"
+class CCombatManager;class CThingCreatureBase;class CCombatTypeDef;class CMeleeCombatAbilityDef;
+class CTCCombat:public CTCBase {
+#ifdef FABLE_RETAIL_CDRAWABILITYBUTTONS_TEST_CTORS_PASS27
+public:
+    CTCCombat(CThing&);
+private:
+#endif
+
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_ONHIT
+public:
+void SetStruck(const NHitLocations::CHitLocation&,CHitParameters&);void OnHit(const CThing&);
+#endif
+public:
+ static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_COMBAT; }
+#ifdef FABLE_RETAIL_CTCCOMBAT_ALWAYSBLOCK
+ // Nested opt-in (NF435, row 0x0089DFF0 CGameScriptInterface::EntitySetAlwaysBlockAttacksFromThing): Ego_r.pdb / FableWin.pdb
+ // ?AddThingToAlwaysBlock@CTCCombat@@QAEXPBVCThing@@@Z / ?RemoveThingToAlwaysBlock@CTCCombat@@QAEXPBVCThing@@@Z, out of line in retail at
+ // 0x007352D0 / 0x00734190 (the row's call targets). Declarations only: no layout change.
+ void AddThingToAlwaysBlock(const CThing*);                             // 0x007352D0
+ void RemoveThingToAlwaysBlock(const CThing*);                          // 0x00734190
+#endif
+ bool IsAbleToBeKnockedDown() const;
+#ifdef FABLE_RETAIL_CTCCOMBAT_PASS22_UNSHEATHING
+ // FableWin0240E270 named accessor; retail006EC929 reads UnsheathingWeaponType+0x6c.
+ EUnsheatheWeaponType GetUnsheathingWeaponType()const{return UnsheathingWeaponType;}
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_WEAPONTRAIL
+ // Row 0x00839100: Ego_r ?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ (retail 0x00733EE0, landed) and FableWin
+ // ?GetIsInMiddleOfFlourishAction@CTCCombat@@QBE_NXZ (inline: the caller reads +0x94 in place). No layout change.
+ bool IsMeleeFlourishValid() const;                                      // 0x00733EE0
+ bool GetIsInMiddleOfFlourishAction() const { return IsInMiddleOfFlourishAction; }
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_RESETCOMBO
+ // Nested opt-in (chunk 2026, row 0x0094E7B0 CAIStateGroup_EarthTroll::Update): Ego_r.pdb / FableWin.pdb ?ResetComboChainPos@CTCCombat@@QAEXXZ
+ // (public; out of line in retail at 0x00733210, already bound by that spelling; the row calls it on its TCI_COMBAT component). Declaration only.
+ void ResetComboChainPos();                                              // 0x00733210
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISINMELEE
+ // Nested opt-in (chunk 2009, row 0x00745120 CTCPerceiveThing::UpdateLineOfSight): Ego_r.pdb 0x0074B330 ?IsInMelee@CTCCombat@@QBE_NXZ, out of
+ // line in retail at 0x00733190 (mov ecx,[ecx+24h] ; jmp: ParentCreature; Ego_r order IsInMeleeAsAttacker 0x0074B310 / IsInMeleeAsAttacked
+ // 0x0074B320 / IsInMelee 0x0074B330 / IsAbleToBeKnockedDown 0x0074B340 = retail 0x00733170 / 0x00733180 / 0x00733190 / 0x007331A0). Declaration only.
+ bool IsInMelee() const;                                                 // 0x00733190
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_GETPMELEEFLOURISHABILITY
+ // Nested opt-in (NF138, q4747; rows 0x00733480 and its caller 0x0064BE45): Ego_r.pdb 0x0074B600 / FableWin.pdb 0x025005A0
+ // ?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ, out of line in retail at 0x00733480
+ // (the usable ability at CurrentAbilityIndex modulo the list length, copied out with AddRef). Declaration only.
+ CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeFlourishAbility() const;            // 0x00733480
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_GETPMELEEBLOCKCOUNTERABILITY
+ // Nested opt-in (NF138, q4747; rows 0x007334B0 and its caller 0x0064BE45): Ego_r.pdb 0x0074B630 / FableWin.pdb 0x02500790
+ // ?GetPMeleeBlockCounterAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ, out of line in retail at 0x007334B0
+ // (returns PBlockCounterAbility +0x48 with AddRef; Ego_r order GetPMeleeFlourishAbility 0x0074B600 / this 0x0074B630 = retail
+ // 0x00733480 / 0x007334B0). Declaration only.
+ CDefPointer<const CMeleeCombatAbilityDef> GetPMeleeBlockCounterAbility() const;        // 0x007334B0
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ISMELEEBLOCKCOUNTERVALID
+ // Nested opt-in (NF138; rows 0x00733290 and its callers 0x0064BE45 / 0x0068ECA0): Ego_r.pdb 0x0074B420 / FableWin.pdb 0x02500780
+ // ?IsMeleeBlockCounterValid@CTCCombat@@QBE_NXZ, out of line in retail at 0x00733290 (`xor al,al ; ret`; Ego_r order
+ // IsMeleeBlockCounterValid 0x0074B420 / SetPossibleQueuedAction 0x0074B430 = retail 0x00733290 / 0x007332A0). Declaration only.
+ bool IsMeleeBlockCounterValid() const;                                                  // 0x00733290
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_FLOURISH
+ // Nested opt-in (agent1022, row 0x0078C210 CTCBerserk::CTCBerserk): Ego_r.pdb / FableWin.pdb ?AddMeleeFlourishAbility@CTCCombat@@QAEXJ@Z
+ // (retail 0x00736640, landed). Declaration only.
+ void AddMeleeFlourishAbility(long def_index);                           // 0x00736640
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_ABILITYLIST
+ // Nested opt-in (agentNF10, rows 0x00736640 AddMeleeFlourishAbility / 0x007366C0 RemoveMeleeFlourishAbility): Ego_r.pdb / FableWin.pdb
+ // ?RemoveMeleeFlourishAbility@CTCCombat@@QAEXJ@Z (retail 0x007366C0) and the private ?UpdateUsableMeleeCombatAbilities@CTCCombat@@AAEXXZ
+ // (out of line at 0x00736590; both rows call it after editing AbilityList +0x2C). Declarations only: no layout change.
+ void RemoveMeleeFlourishAbility(long def_index);                        // 0x007366C0
+private:
+ void UpdateUsableMeleeCombatAbilities();                                // 0x00736590
+public:
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_BLOCKING
+ // Nested opt-in (chunk 890, row 0x0056AD40 CTCBoastUI::Activate): Ego_r.pdb 0x0074B380 / FableWin.pdb 0x024FD6A0 ?IsBlocking@CTCCombat@@QBE_NXZ
+ // and Ego_r.pdb 0x0074BFF0 / FableWin.pdb 0x024FD420 ?UnsetBlocking@CTCCombat@@QAEXXZ, out of line in retail at 0x007331E0 (reads
+ // Blocking +0x63) / 0x007338A0 (Activate 0x0056BD92 / 0x0056BD9D). Declarations only.
+ bool IsBlocking() const;                                                // 0x007331E0
+ void UnsetBlocking();                                                   // 0x007338A0
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_COMBATTYPE
+ CDefPointer<const CCombatTypeDef> GetPCombatTypeDef()const{return PCombatTypeDef;}
+#endif
+#ifdef FABLE_RETAIL_JACK_STAGE1_UPDATE
+ // Both original PDBs; donor named accessor and native stores to +7c.
+ void SetShotTypeOverride(long type){ShotOverrideType=type;}
+#endif
+ void SetCombatType(const CDefPointer<const CCombatTypeDef>&);
+private:
+ long ComboChainPos;long ComboChainID;long ComboChainGracePeriodCountdown;long HandednessGracePeriodCountdown;long UnarmedCombatIdleCountdown;
+ CCombatManager& CombatManager;CThingCreatureBase* ParentCreature;CDefPointer<const CCombatTypeDef> PCombatTypeDef;
+ std::vector<CDefPointer<const CMeleeCombatAbilityDef> > AbilityList,UsableAbilityList;long CurrentAbilityIndex;
+ CDefPointer<const CMeleeCombatAbilityDef> PBlockCounterAbility,PFlourish360Ability;long BlockCounterTimer;
+ std::vector<CIntelligentPointer<const CThing> > AlwaysBlockThings;
+ bool PerformingAction,PerformingStrikeAction,StartingToBlock,Blocking;long BlockHoldTimer,BlockingNumFrames;
+ EUnsheatheWeaponType UnsheathingWeaponType;
+ typedef std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility> TCombatAbilityData;
+ typedef std::multimap<ECombatAbilityDataType,TCombatAbilityData> TCombatAbilityList;
+ TCombatAbilityList CombatAbilities;
+#ifdef FABLE_RETAIL_CTCCOMBAT_GETHITCOUNTERATTACK
+ // Opt-in (p25N, row 0x00733CF0): Ego_r.pdb / FableWin.pdb the private non-const
+ // ?GetCombatAbilityData@CTCCombat@@AAE_NAAV?$_Tree_iterator@..@W4ECombatAbilityInterfaceType@@@Z (retail 0x00733620, landed; Ego_d.pdb
+ // parameters ittybitty, interface_type) and the public ?UpdateGetHitCounterAttack@CTCCombat@@QAEXABVCThingCreatureBase@@@Z (retail
+ // 0x00733CF0; Ego_d.pdb parameter hit_by). Needs engine/ECombatAbilityInterfaceType.h. Declarations only: no layout change.
+ bool GetCombatAbilityData(TCombatAbilityList::iterator& ittybitty, ECombatAbilityInterfaceType interface_type);   // 0x00733620
+public:
+ void UpdateGetHitCounterAttack(const CThingCreatureBase& hit_by);     // 0x00733CF0
+private:
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_SHOTOVERRIDE
+ // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): the boss AI writes ShotOverrideType (+0x7c)
+ // directly (`mov [eax+7Ch],edx` on the GetTC<CTCCombat> result) and neither PDB name set has an accessor for it, so the member is
+ // reachable from outside the class. Access only; no layout change.
+public:
+#endif
+ long ShotOverrideType;
+#ifdef FABLE_RETAIL_CTCCOMBAT_SHOTOVERRIDE
+private:
+#endif
+ bool ReadyForMelee;long CurFlourishTimer;
+#ifdef FABLE_RETAIL_CTCCOMBAT_READYFORMELEE
+ // Retail opt-in (row 0x008DA410 CModeScreamerAggressive::OnActivate): Ego_r/FableWin ?SetIsReadyForMelee@CTCCombat@@QAEX_N@Z, inline
+ // (the caller stores `mov byte [eax+80h],1` on the GetTC<CTCCombat> result). Access only; no layout change.
+public:
+ void SetIsReadyForMelee(bool ready){ReadyForMelee=ready;}
+private:
+#endif
+ std::vector<CIntelligentPointer<CThing> > FlourishParticles;bool IsInMiddleOfFlourishAction;
+#ifdef FABLE_RETAIL_CTCCOMBAT_ATTEMPTTOSTARTPARTICLE
+ // agentC29 (row 0x00735FD0): Ego_r 0x0074D250 / FableWin 0x02504840 ?AttemptToStartParticle@CTCCombat@@AAEXPAVCThing@@@Z (private). Declaration only.
+ void AttemptToStartParticle(CThing* weapon);                         // 0x00735FD0
+#endif
+ CCombatManager& GetCombatManager(){return CombatManager;}
+ CThingCreatureBase& GetParentCreature(){return *ParentCreature;}
+#ifdef FABLE_RETAIL_CTCCOMBAT_STRIKESOUNDS
+ // Opt-in (hand4a, row 0x00733B70): Ego_r.pdb ?PlayCombatStrikeSounds@CTCCombat@@QAEXXZ (public; retail 0x00733B70) and the private
+ // const accessors ?GetParentCreature@CTCCombat@@ABEABVCThingCreatureBase@@XZ (FableWin 0x024FBF80) / ?GetPHeroCombatDef@CTCCombat@@ABE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ
+ // (Ego_r 0x0074B5E0, FableWin 0x024FBF30: GetParentCreature().GetPHeroCombatDef()), inline in retail (the row calls
+ // CThingCreatureBase::GetPHeroCombatDef 0x00663340 on [this+24h]). Needs engine/CThingCreatureBase.h (HEROCOMBATDEF) included first.
+ const CThingCreatureBase& GetParentCreature() const{return *ParentCreature;}
+ CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const{return GetParentCreature().GetPHeroCombatDef();}
+public:
+ void PlayCombatStrikeSounds();                                      // 0x00733B70
+private:
+#endif
+#ifdef FABLE_RETAIL_CTCCOMBAT_VSLOTS
+    // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
+    // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;
+    // spellings from the Ego_r / FableWin name sets.
+private:
+    virtual bool HasFrameUpdate() const;  // slot 8, 0x00739D10
+public:
+#endif
+};
+FABLE_STATIC_ASSERT_AT(116, sizeof(CTCCombat)==0x98);
+#else
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCCombat = 0xac.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CTCCombat = 0x98.
+// Retail evidence: 4 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class CCombatManager;
+class CDefPointeeBase;
+class CThingCreatureBase;
+
+#pragma pack(push, 1)
+class CTCCombat {
+public:
+#ifdef FABLE_RETAIL_CTCCOMBAT_FLAT_RESETCOMBO
+    // Flat-branch opt-in (agentNF55, row 0x00857B70 CCombatActionBase::ProcessPlayerControl): the retail branch's RESETCOMBO
+    // method on the flattened layout. Ego_r.pdb / FableWin.pdb ?ResetComboChainPos@CTCCombat@@QAEXXZ (0x00733210, landed under
+    // that name). Declaration only (non-virtual; no layout change).
+    void ResetComboChainPos();                               // 0x00733210
+#endif
+    void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
+    long                obj;                                 // +0x04 retail-only long (previous header)
+    unsigned char       _pad_0x08[0x4];                      // +0x08
+    long                ComboChainPos;                       // +0x0c
+    long                ComboChainID;                        // +0x10
+    long                ComboChainGracePeriodCountdown;      // +0x14
+    long                HandednessGracePeriodCountdown;      // +0x18
+    long                UnarmedCombatIdleCountdown;          // +0x1c
+    CCombatManager*     CombatManager;                       // +0x20
+    CThingCreatureBase* ParentCreature;                      // +0x24
+    CDefPointeeBase*    PCombatTypeDef_Object;               // +0x28 CDefPointer<CCombatTypeDef_const_>::Object
+    unsigned char       AbilityList[0xc];                    // +0x2c vector<CDefPointer<CMeleeCombatAbilityDef_const_>,std::allocator<CDefPointer<CMeleeCombatAbilityDef_const_>_>_>
+    unsigned char       UsableAbilityList[0xc];              // +0x38 vector<CDefPointer<CMeleeCombatAbilityDef_const_>,std::allocator<CDefPointer<CMeleeCombatAbilityDef_const_>_>_>
+    long                CurrentAbilityIndex;                 // +0x44
+    CDefPointeeBase*    PBlockCounterAbility_Object;         // +0x48 CDefPointer<CMeleeCombatAbilityDef_const_>::Object
+    CDefPointeeBase*    PFlourish360Ability_Object;          // +0x4c CDefPointer<CMeleeCombatAbilityDef_const_>::Object
+    long                BlockCounterTimer;                   // +0x50
+    unsigned char       AlwaysBlockThings[0xc];              // +0x54 vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+    bool                PerformingAction;                    // +0x60
+    bool                PerformingStrikeAction;              // +0x61
+    bool                StartingToBlock;                     // +0x62
+    bool                Blocking;                            // +0x63
+    long                BlockHoldTimer;                      // +0x64
+    long                BlockingNumFrames;                   // +0x68
+    unsigned char       UnsheathingWeaponType[0x4];          // +0x6c EUnsheatheWeaponType
+    unsigned char       CombatAbilities[0xc];                // +0x70 multimap<ECombatAbilityDataType,std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility>,std::less<ECombatAbilityDataType>,std::allocator<std::pair<ECombatAbilityDataType_const_,std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility>_>_>_>
+    long                ShotOverrideType;                    // +0x7c
+    bool                ReadyForMelee;                       // +0x80
+    unsigned char       _pad_0x81[0x3];                      // +0x81
+    long                CurFlourishTimer;                    // +0x84
+    unsigned char       FlourishParticles[0xc];              // +0x88 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    bool                IsInMiddleOfFlourishAction;          // +0x94
+    unsigned char       _pad_0x95[0x3];                      // +0x95
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT_AT(170, sizeof(CTCCombat) == 0x98);
+FABLE_STATIC_ASSERT_AT(171, offsetof(CTCCombat, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(172, offsetof(CTCCombat, obj) == 0x4);
+FABLE_STATIC_ASSERT_AT(173, offsetof(CTCCombat, ComboChainPos) == 0xc);
+FABLE_STATIC_ASSERT_AT(174, offsetof(CTCCombat, ComboChainID) == 0x10);
+FABLE_STATIC_ASSERT_AT(175, offsetof(CTCCombat, ComboChainGracePeriodCountdown) == 0x14);
+FABLE_STATIC_ASSERT_AT(176, offsetof(CTCCombat, HandednessGracePeriodCountdown) == 0x18);
+FABLE_STATIC_ASSERT_AT(177, offsetof(CTCCombat, UnarmedCombatIdleCountdown) == 0x1c);
+FABLE_STATIC_ASSERT_AT(178, offsetof(CTCCombat, CombatManager) == 0x20);
+FABLE_STATIC_ASSERT_AT(179, offsetof(CTCCombat, ParentCreature) == 0x24);
+FABLE_STATIC_ASSERT_AT(180, offsetof(CTCCombat, PCombatTypeDef_Object) == 0x28);
+FABLE_STATIC_ASSERT_AT(181, offsetof(CTCCombat, AbilityList) == 0x2c);
+FABLE_STATIC_ASSERT_AT(182, offsetof(CTCCombat, UsableAbilityList) == 0x38);
+FABLE_STATIC_ASSERT_AT(183, offsetof(CTCCombat, CurrentAbilityIndex) == 0x44);
+FABLE_STATIC_ASSERT_AT(184, offsetof(CTCCombat, PBlockCounterAbility_Object) == 0x48);
+FABLE_STATIC_ASSERT_AT(185, offsetof(CTCCombat, PFlourish360Ability_Object) == 0x4c);
+FABLE_STATIC_ASSERT_AT(186, offsetof(CTCCombat, BlockCounterTimer) == 0x50);
+FABLE_STATIC_ASSERT_AT(187, offsetof(CTCCombat, AlwaysBlockThings) == 0x54);
+FABLE_STATIC_ASSERT_AT(188, offsetof(CTCCombat, PerformingAction) == 0x60);
+FABLE_STATIC_ASSERT_AT(189, offsetof(CTCCombat, PerformingStrikeAction) == 0x61);
+FABLE_STATIC_ASSERT_AT(190, offsetof(CTCCombat, StartingToBlock) == 0x62);
+FABLE_STATIC_ASSERT_AT(191, offsetof(CTCCombat, Blocking) == 0x63);
+FABLE_STATIC_ASSERT_AT(192, offsetof(CTCCombat, BlockHoldTimer) == 0x64);
+FABLE_STATIC_ASSERT_AT(193, offsetof(CTCCombat, BlockingNumFrames) == 0x68);
+FABLE_STATIC_ASSERT_AT(194, offsetof(CTCCombat, UnsheathingWeaponType) == 0x6c);
+FABLE_STATIC_ASSERT_AT(195, offsetof(CTCCombat, CombatAbilities) == 0x70);
+FABLE_STATIC_ASSERT_AT(196, offsetof(CTCCombat, ShotOverrideType) == 0x7c);
+FABLE_STATIC_ASSERT_AT(197, offsetof(CTCCombat, ReadyForMelee) == 0x80);
+FABLE_STATIC_ASSERT_AT(198, offsetof(CTCCombat, CurFlourishTimer) == 0x84);
+FABLE_STATIC_ASSERT_AT(199, offsetof(CTCCombat, FlourishParticles) == 0x88);
+FABLE_STATIC_ASSERT_AT(200, offsetof(CTCCombat, IsInMiddleOfFlourishAction) == 0x94);
+
+#endif // FABLE_RETAIL_CTCCOMBAT
+#endif // FABLE_ENGINE_CTCCOMBAT_H

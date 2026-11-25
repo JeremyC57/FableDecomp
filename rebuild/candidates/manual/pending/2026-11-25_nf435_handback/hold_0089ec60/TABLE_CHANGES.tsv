@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+delete	?consume_0074ac80@BObj@@QAEXPAU1@@Z	0074ac80	0089ec60	NF435: the row now binds the PDB name at this target; no other landed source spells consume_0074ac80 next to the target (census)
+add	?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	0074ac80	0089ec60	NF435: the row's callee at this retail target, PDB spelling (name_gate OK)
+delete	?find@MapT@@QAEPAUNode@@ABK@Z	0040f020	0089ec60	NF435: the stand-in class MapT is spelled only by 0x0089EC60 and 0x0089ECC0 at HEAD; 0x0089ECC0 is ported in nf435_tc_b1_hold, so land this after that batch
+delete	?find@MapT@@QAEPAUNode@@PAH@Z	0040f020	0089ec60	NF435: the stand-in class MapT is spelled only by 0x0089EC60 and 0x0089ECC0 at HEAD; 0x0089ECC0 is ported in nf435_tc_b1_hold, so land this after that batch

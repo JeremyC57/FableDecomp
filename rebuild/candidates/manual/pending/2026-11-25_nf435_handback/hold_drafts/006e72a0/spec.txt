@@ -1,0 +1,10 @@
+006e72a0|?Validate@CGameScriptInterface@@UBEXXZ|CGameScriptInterface::Validate() const -- the world's thing manager validates its classes, a tail jump
+D: FABLE_RETAIL_CWORLD FABLE_RETAIL_CCLASSFACTORY FABLE_RETAIL_CCLASSFACTORY_VALIDATE
+I: engine/CWorld.h engine/CThingManager.h
+E: FableWin's /Od body: World (+0x04) ?GetThingManager@CWorld@@UAEAAVCThingManager@@XZ (CWorld slot 3, +0x0C), then ?Validate@CClassFactory@@QAEXXZ
+E:   (CThingManager : CClassFactory; retail 0x00A36FE0, the jmp target).
+M: World->GetThingManager().Validate(); => (void)World->GetThingManager();
+void CGameScriptInterface::Validate() const
+{
+    World->GetThingManager().Validate();
+}

@@ -1,0 +1,247 @@
+0089a2d0|The door component is planted in the thing's TC map (TCI_DOOR 0x26); the row must test IsAlive, look the door up and return its IsLockPickable.
+@SCRIPTKIT@
+@TCKIT@
+static long g_door[0x10]; static int g_calls = 0; static const void* g_this = 0; static bool g_val = false;
+bool CTCDoor::IsLockPickable() const { ++g_calls; g_this = this; return g_val; }
+static long g_gsi[0x50 / 4];
+static int run(bool alive, bool bit, bool val, bool want, int calls)
+{
+    nf435_plant(g_thing, 0x26, g_door); if (!bit) nf435_clear(g_thing, 0x26);
+    g_ret = g_thing; g_alive = alive; g_val = val; g_calls = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsEntityPickLockable(NF435_SCRIPT);
+    return got == want && g_calls == calls && (!calls || g_this == (const void*)g_door);
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(true, true, true, true, 1) || !run(true, true, false, false, 1) || !run(true, false, true, false, 0) || !run(false, true, true, false, 0)) @FAIL@
+    @PASS@
+}
+@@
+00895090|The trap component is planted (TCI_TRAP 0x7D); ManualTrigger must be called once on it and the row return true; ManualReset never.
+@SCRIPTKIT@
+@TCKIT@
+static long g_trap[0x20]; static int g_trig = 0, g_reset = 0; static const void* g_this = 0;
+void CTCTrapBase::ManualTrigger() { ++g_trig; g_this = this; }
+void CTCTrapBase::ManualReset() { ++g_reset; g_this = this; }
+static long g_gsi[0x50 / 4];
+static int run(void* thing, bool bit, bool want)
+{
+    nf435_plant(g_thing, 0x7d, g_trap); if (!bit) nf435_clear(g_thing, 0x7d);
+    g_ret = thing; g_trig = 0; g_reset = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::ManuallyTriggerTrap(NF435_SCRIPT);
+    return got == want && g_trig == (want ? 1 : 0) && g_reset == 0 && (!want || g_this == (const void*)g_trap);
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(g_thing, true, true) || !run(g_thing, false, false) || !run(0, true, false)) @FAIL@
+    @PASS@
+}
+@@
+008950e0|The trap component is planted (TCI_TRAP 0x7D); ManualReset must be called once on it and the row return true; ManualTrigger never.
+@SCRIPTKIT@
+@TCKIT@
+static long g_trap[0x20]; static int g_trig = 0, g_reset = 0; static const void* g_this = 0;
+void CTCTrapBase::ManualTrigger() { ++g_trig; g_this = this; }
+void CTCTrapBase::ManualReset() { ++g_reset; g_this = this; }
+static long g_gsi[0x50 / 4];
+static int run(void* thing, bool bit, bool want)
+{
+    nf435_plant(g_thing, 0x7d, g_trap); if (!bit) nf435_clear(g_thing, 0x7d);
+    g_ret = thing; g_trig = 0; g_reset = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::ManuallyResetTrap(NF435_SCRIPT);
+    return got == want && g_reset == (want ? 1 : 0) && g_trig == 0 && (!want || g_this == (const void*)g_trap);
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(g_thing, true, true) || !run(g_thing, false, false) || !run(0, true, false)) @FAIL@
+    @PASS@
+}
+@@
+008a12a0|The hero's hero-stats component (TCI_HERO_STATS 4) holds shops +0xE0 and houses +0xE4; the row must return their sum for a live hero, else 0.
+@HEROPEEK@
+@TCKIT@
+static long g_stats[0x80];
+static int run(void* hero, bool bit, unsigned char dead, long want)
+{
+    nf435_plant(g_thing, 4, g_stats); if (!bit) nf435_clear(g_thing, 4); g_thing[0x91] = dead;
+    g_hero = hero;
+    long got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::GetNumHousesOwned();
+    return got == want;
+}
+int main(void)
+{
+    nf435_hero(); g_stats[0xe0 / 4] = 3; g_stats[0xe4 / 4] = 40;
+    if (!run(g_thing, true, 0, 43) || !run(g_thing, false, 0, 0) || !run(g_thing, true, 1, 0) || !run(0, true, 0, 0)) @FAIL@
+    g_stats[0xe0 / 4] = 7; g_stats[0xe4 / 4] = 1;
+    if (!run(g_thing, true, 0, 8)) @FAIL@
+    @PASS@
+}
+@@
+00895430|The hero's inventory component (TCI_INVENTORY) is planted; the row must pass the expression name to IsButtonHeldForExpression on it and return its result.
+@HEROKIT@
+@TCKIT@
+static long g_inv[0x80]; static int g_calls = 0; static const void* g_this = 0; static const void* g_name = 0; static bool g_val = false;
+bool CTCInventory::IsButtonHeldForExpression(const CCharString& name) const { ++g_calls; g_this = this; g_name = &name; return g_val; }
+static long g_str[4];
+static int run(void* hero, bool bit, unsigned char dead, bool val, bool want, int calls)
+{
+    int id = CTCInventory::StatGetInterfaceType();
+    nf435_plant(g_thing, id, g_inv); if (!bit) nf435_clear(g_thing, id); g_thing[0x91] = dead;
+    g_hero = hero; g_val = val; g_calls = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsDPadButtonHeldForExpression(*(const CCharString*)g_str);
+    return got == want && g_calls == calls && (!calls || (g_this == (const void*)g_inv && g_name == (const void*)g_str));
+}
+int main(void)
+{
+    nf435_hero();
+    if (!run(g_thing, true, 0, true, true, 1) || !run(g_thing, true, 0, false, false, 1) || !run(g_thing, false, 0, true, false, 0)
+        || !run(g_thing, true, 1, true, false, 0) || !run(0, true, 0, true, false, 0)) @FAIL@
+    @PASS@
+}
+@@
+00896210|The village component (TCI_VILLAGE 0x22) is planted; the row must return its IsNightTime for a live thing, else false.
+@SCRIPTKIT@
+@TCKIT@
+static long g_village[0x40]; static int g_calls = 0; static const void* g_this = 0; static bool g_val = false;
+bool CTCVillage::IsNightTime() const { ++g_calls; g_this = this; return g_val; }
+static long g_gsi[0x50 / 4];
+static int run(void* thing, bool bit, unsigned char dead, bool val, bool want, int calls)
+{
+    nf435_plant(g_thing, 0x22, g_village); if (!bit) nf435_clear(g_thing, 0x22); g_thing[0x91] = dead;
+    g_ret = thing; g_val = val; g_calls = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsSleepingTime(NF435_SCRIPT);
+    return got == want && g_calls == calls && (!calls || g_this == (const void*)g_village);
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(g_thing, true, 0, true, true, 1) || !run(g_thing, true, 0, false, false, 1) || !run(g_thing, false, 0, true, false, 0)
+        || !run(g_thing, true, 1, true, false, 0) || !run(0, true, 0, true, false, 0)) @FAIL@
+    @PASS@
+}
+@@
+0089a270|The hero's inventory-stats component (0x14) is planted; SetCreatureAsKilled must get the script thing's CThing once, on that component.
+@SCRIPTKIT@
+@HEROKIT@
+@TCKIT@
+static long g_stats[0x80]; static int g_calls = 0; static const void* g_this = 0; static const void* g_arg = 0;
+void CTCInventoryStats::SetCreatureAsKilled(CThing* thing) { ++g_calls; g_this = this; g_arg = thing; }
+static int run(void* hero, bool bit, int calls)
+{
+    nf435_plant(g_thing, 0x14, g_stats); if (!bit) nf435_clear(g_thing, 0x14);
+    g_hero = hero; g_ret = g_thing2; g_calls = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetThingAsKilled(NF435_SCRIPT);
+    return g_calls == calls && (!calls || (g_this == (const void*)g_stats && g_arg == (const void*)g_thing2));
+}
+int main(void)
+{
+    nf435_scripts(); nf435_hero();
+    if (!run(g_thing, true, 1) || !run(g_thing, false, 0) || !run(0, true, 0)) @FAIL@
+    @PASS@
+}
+@@
+0089c8a0|The hero's opinion deed log (0x51) is planted; IsDeedWitnessed must get (handle, true) on it and its result is returned.
+@HEROKIT@
+@TCKIT@
+static long g_log[0x40]; static int g_calls = 0; static const void* g_this = 0; static long g_h = 0; static bool g_flag = false, g_val = false;
+bool CTCHeroOpinionDeedLog::IsDeedWitnessed(long h, bool f) { ++g_calls; g_this = this; g_h = h; g_flag = f; return g_val; }
+static int run(void* hero, bool bit, unsigned char dead, bool val, bool want, int calls)
+{
+    nf435_plant(g_thing, 0x51, g_log); if (!bit) nf435_clear(g_thing, 0x51); g_thing[0x91] = dead;
+    g_hero = hero; g_val = val; g_calls = 0; g_flag = false;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsDeedWitnessed(1234);
+    return got == want && g_calls == calls && (!calls || (g_this == (const void*)g_log && g_h == 1234 && g_flag));
+}
+int main(void)
+{
+    nf435_hero();
+    if (!run(g_thing, true, 0, true, true, 1) || !run(g_thing, true, 0, false, false, 1) || !run(g_thing, false, 0, true, false, 0)
+        || !run(g_thing, true, 1, true, false, 0) || !run(0, true, 0, true, false, 0)) @FAIL@
+    @PASS@
+}
+@@
+0089d750|The hero's special-abilities component (0xA7) is planted; CancelUsingAbility must get the ability on it, once.
+@HEROKIT@
+@TCKIT@
+static long g_ab[0x40]; static int g_calls = 0; static const void* g_this = 0; static long g_e = 0;
+bool CTCSpecialAbilities::CancelUsingAbility(EHeroAbility e) { ++g_calls; g_this = this; g_e = (long)e; return true; }
+static int run(void* hero, bool bit, unsigned char dead, int calls)
+{
+    nf435_plant(g_thing, 0xa7, g_ab); if (!bit) nf435_clear(g_thing, 0xa7); g_thing[0x91] = dead;
+    g_hero = hero; g_calls = 0; g_e = -1;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::CancelUsingAbility((EHeroAbility)5);
+    return g_calls == calls && (!calls || (g_this == (const void*)g_ab && g_e == 5));
+}
+int main(void)
+{
+    nf435_hero();
+    if (!run(g_thing, true, 0, 1) || !run(g_thing, false, 0, 0) || !run(g_thing, true, 1, 0) || !run(0, true, 0, 0)) @FAIL@
+    @PASS@
+}
+@@
+00895a90|The hero's fishing component (0xB1) is planted; GoFishing must get the flag on it, once.
+@HEROKIT@
+@TCKIT@
+static long g_fish[0x40]; static int g_calls = 0; static const void* g_this = 0; static int g_flag = -1;
+void CTCFishing::GoFishing(bool f) { ++g_calls; g_this = this; g_flag = f ? 1 : 0; }
+static int run(void* hero, bool bit, unsigned char dead, bool f, int calls)
+{
+    nf435_plant(g_thing, 0xb1, g_fish); if (!bit) nf435_clear(g_thing, 0xb1); g_thing[0x91] = dead;
+    g_hero = hero; g_calls = 0; g_flag = -1;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::HeroGoFishing(f);
+    return g_calls == calls && (!calls || (g_this == (const void*)g_fish && g_flag == (f ? 1 : 0)));
+}
+int main(void)
+{
+    nf435_hero();
+    if (!run(g_thing, true, 0, true, 1) || !run(g_thing, true, 0, false, 1) || !run(g_thing, false, 0, true, 0) || !run(g_thing, true, 1, true, 0)
+        || !run(0, true, 0, true, 0)) @FAIL@
+    @PASS@
+}
+@@
+0089ec60|The generator component (0x3D) is planted on the first thing; AddCreatureTriggerer must get the second thing when its type flags have bit 8.
+@SCRIPTKIT@
+@TCKIT@
+static long g_gen[0x40]; static int g_add = 0, g_rem = 0; static const void* g_this = 0; static const void* g_arg = 0;
+void CTCCreatureGenerator::AddCreatureTriggerer(CThingCreatureBase& c) { ++g_add; g_this = this; g_arg = &c; }
+void CTCCreatureGenerator::RemoveCreatureTriggerer(CThingCreatureBase& c) { ++g_rem; g_this = this; g_arg = &c; }
+static long g_gsi[0x50 / 4];
+static int run(bool bit, unsigned long flags, int calls)
+{
+    nf435_plant(g_thing, 0x3d, g_gen); if (!bit) nf435_clear(g_thing, 0x3d);
+    memset(g_thing2, 0, sizeof g_thing2); *(unsigned long*)(g_thing2 + 0x6c) = flags;
+    g_ret = g_thing; g_ret2 = g_thing2; g_add = 0; g_rem = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::CreatureGeneratorAddTriggerer(NF435_SCRIPT, NF435_SCRIPT2);
+    return g_add == calls && g_rem == 0 && (!calls || (g_this == (const void*)g_gen && g_arg == (const void*)g_thing2));
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(true, 8, 1) || !run(true, 0x0e, 1) || !run(true, 4, 0) || !run(false, 8, 0)) @FAIL@
+    @PASS@
+}
+@@
+0089ecc0|The generator component (0x3D) is planted on the first thing; RemoveCreatureTriggerer must get the second thing when its type flags have bit 8.
+@SCRIPTKIT@
+@TCKIT@
+static long g_gen[0x40]; static int g_add = 0, g_rem = 0; static const void* g_this = 0; static const void* g_arg = 0;
+void CTCCreatureGenerator::AddCreatureTriggerer(CThingCreatureBase& c) { ++g_add; g_this = this; g_arg = &c; }
+void CTCCreatureGenerator::RemoveCreatureTriggerer(CThingCreatureBase& c) { ++g_rem; g_this = this; g_arg = &c; }
+static long g_gsi[0x50 / 4];
+static int run(bool bit, unsigned long flags, int calls)
+{
+    nf435_plant(g_thing, 0x3d, g_gen); if (!bit) nf435_clear(g_thing, 0x3d);
+    memset(g_thing2, 0, sizeof g_thing2); *(unsigned long*)(g_thing2 + 0x6c) = flags;
+    g_ret = g_thing; g_ret2 = g_thing2; g_add = 0; g_rem = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::CreatureGeneratorRemoveTriggerer(NF435_SCRIPT, NF435_SCRIPT2);
+    return g_rem == calls && g_add == 0 && (!calls || (g_this == (const void*)g_gen && g_arg == (const void*)g_thing2));
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(true, 8, 1) || !run(true, 0x0e, 1) || !run(true, 4, 0) || !run(false, 8, 0)) @FAIL@
+    @PASS@
+}

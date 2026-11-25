@@ -1,0 +1,35 @@
+source	address	unit	reason
+nf435	0x00895090	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x008950E0	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x00895430	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x00895A90	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x00896210	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x0089A270	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x0089A2D0	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x0089C8A0	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x0089D750	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x0089EC60	tc_family ruling	batches/nf435_tc_b1_hold_0089ec60: after R1, the 0x0074AC80 respell and nf435_tc_b1_hold
+nf435	0x0089ECC0	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x008A12A0	tc_family ruling	batches/nf435_tc_b1_hold: land unchanged once R1 is decided
+nf435	0x0089DFF0	tc_family header	CTCCombat.h retail branch needs a working macro set (ECombatAbilityDataType + size assert line 177); then the drafted row
+nf435	0x00898BB0	tc_family port	same recipe as b1 after R1: CTCHeroReceiveItems GiveItem + GFDebugPDynamicCast<CThingObject>
+nf435	0x0089E4C0	tc_family port	same recipe as b1 after R1: CTCRegionDisplay SetCurrentAreaName
+nf435	0x008954A0	tc_family port	same recipe as b1 after R1: CTCEntityEvents + CDefPointer<CExpressionDef> + new CEventExpressionPerformedTo
+nf435	0x008A37B0	tc_family port	same recipe as b1 after R1: CTCAIScratchpad by-value CScriptThing
+nf435	0x008A5FF0	tc_family port	same recipe as b1 after R1: CTCAIScratchpad by-value CScriptThing
+nf435	0x00895ED0	tc_family port	same recipe as b1 after R1: CTCBuyableHouse SetOwnedByPlayer / SetRented
+nf435	0x00896A30	tc_family port	same recipe as b1 after R1: CQuestManager quest card + GetTC (T3 nf289 / nf372 binder)
+nf435	0x00896D20	tc_family port	same recipe as b1 after R1: CTCQuestCompletionUI Activate / IsActive
+nf435	0x00897630	tc_family port	same recipe as b1 after R1: CTCInventoryWeapons + CDefinitionManager
+nf435	0x008986D0	tc_family port	same recipe as b1 after R1: NInventory::CTCInventoryBase x3 + CTCHeroStats
+nf435	0x00898840	tc_family port	same recipe as b1 after R1: NInventory::CTCInventoryBase x3
+nf435	0x00898940	tc_family port	same recipe as b1 after R1: NInventory::CTCInventoryBase x3 + CTCHeroStats
+nf435	0x0089B110	tc_family port	same recipe as b1 after R1: CTCBoastUI + CASuspendableProcess + CPlayerGui
+nf435	0x0089C560	tc_family port	same recipe as b1 after R1: CTCHeroOpinionDeedLog PostDeed + AddTC<CTCOpinionSource>
+nf435	0x008A03F0	tc_family port	same recipe as b1 after R1: GetTCOfLeafType<CTCTargetingAI>
+nf435	0x008A08A0	tc_family port	same recipe as b1 after R1: CTCCreatureModeManager AddMode(new CModeScreamerSuperAttack)
+nf435	0x008A0B10	tc_family port	same recipe as b1 after R1: CTCRegionFollower Add/RemoveFollower
+nf435	0x008A7F60	tc_family port	same recipe as b1 after R1: CThingSearchTools GetAllThings<CThingFilter_HasTC>
+nf435	0x008A9020	tc_family port	same recipe as b1 after R1: CTCCreatureGenerator SetCreatureGeneratorFamilies (CArray<CDefIndex>)
+nf435	0x008A99F0	tc_family port	same recipe as b1 after R1: NScreenEffect vector + CEnvironmentSpellEffectInterpolator (T3 nf289 binder)
+nf435	0x006E72A0	research unit	with 0x00A36FE0: port the CListOwner_00a36fe0::CallAll stand-in onto engine/CClassFactory.h as Validate, then land hold/006e72a0

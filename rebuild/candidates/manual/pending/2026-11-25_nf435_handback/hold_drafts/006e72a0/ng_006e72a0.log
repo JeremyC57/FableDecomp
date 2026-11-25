@@ -1,0 +1,5 @@
+006e72a0 CGameScriptInterface::Validate RELOCATION_MATCH
+OK   006e72a0 self   agree_pdb        ?Validate@CGameScriptInterface@@UBEXXZ
+OK   00a36fe0 +b     split_fixable    ?Validate@CClassFactory@@QAEXXZ   [landed: ?InterruptAllNavigators@CNavigatorManager@@QAEXXZ]
+FAIL RELOC_NAME: ?Validate@CClassFactory@@QAEXXZ -> 00a36fe0 labelled 'CListOwner_00a36fe0::CallAll'
+NAME_GATE FAIL (1)

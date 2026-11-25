@@ -1,0 +1,235 @@
+0089a2d0|?IsEntityPickLockable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z|CGameScriptInterface::IsEntityPickLockable(const CScriptThing& entity) const -- the live thing's door component, if any, is lock-pickable
+D: FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_CTCDOOR FABLE_RETAIL_CTCDOOR_VANDALISM FABLE_RETAIL_CONTEXTSENSITIVEITEM_QUERY_PASS28
+I: engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/CTCDoor.h
+E: FableWin's /Od body: entity.IsAlive() (CScriptThing slot 75, +0x12c), entity.GetPThing() (slot 11, +0x2c), then
+E:   ??$PeekTC@$$CBVCTCDoor@@@CThing@@QBE_NPAPBVCTCDoor@@@Z (inline in retail: the UsingComponents bit 0x26 TCI_DOOR, the const
+E:   CVectorMap::LowerBound 0x004365B0, the end-or-greater test) and ?IsLockPickable@CTCDoor@@QBE_NXZ (retail 0x00730AE0, the call target).
+M: if (thing->PeekTC(&door) && door->IsLockPickable()) => if (thing->PeekTC(&door) && !door->IsLockPickable())
+bool CGameScriptInterface::IsEntityPickLockable(const CScriptThing& entity) const
+{
+    if (entity.IsAlive()) {
+        const CThing* thing = entity.GetPThing();
+        const CTCDoor* door;
+        if (thing->PeekTC(&door) && door->IsLockPickable())
+            return true;
+    }
+    return false;
+}
+00895090|?ManuallyTriggerTrap@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z|CGameScriptInterface::ManuallyTriggerTrap(const CScriptThing& trap) const -- the thing's trap component, if any, is triggered by hand
+D: FABLE_RETAIL_DEF_CLASS_BASE FABLE_RETAIL_CINTELLIGENTPOINTER FABLE_RETAIL_CTCBASE FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_CTCTRAPBASE
+I: engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/CTCTrapBase.h
+E: FableWin's /Od body: trap.GetPThing() (CScriptThing slot 11, +0x2c), the null test, then ??$GetTC@VCTCTrapBase@@@CThing@@QAE_NPAPAVCTCTrapBase@@@Z
+E:   (inline in retail: the UsingComponents bit 0x7D TCI_TRAP, CVectorMap::LowerBound 0x0040F020, the end-or-greater test) and
+E:   ?ManualTrigger@CTCTrapBase@@QAEXXZ (retail 0x00788388, the call target); true, else false. The DoErrorMessage branch is debug-only.
+M: trap_tc->ManualTrigger(); => trap_tc->ManualReset();
+bool CGameScriptInterface::ManuallyTriggerTrap(const CScriptThing& trap) const
+{
+    CThing* thing = trap.GetPThing();
+    if (thing) {
+        CTCTrapBase* trap_tc;
+        if (thing->GetTC(&trap_tc)) {
+            trap_tc->ManualTrigger();
+            return true;
+        }
+    }
+    return false;
+}
+@@
+008950e0|?ManuallyResetTrap@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z|CGameScriptInterface::ManuallyResetTrap(const CScriptThing& trap) const -- the thing's trap component, if any, is reset by hand
+D: FABLE_RETAIL_DEF_CLASS_BASE FABLE_RETAIL_CINTELLIGENTPOINTER FABLE_RETAIL_CTCBASE FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_CTCTRAPBASE
+I: engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/CTCTrapBase.h
+E: FableWin's /Od body: trap.GetPThing() (CScriptThing slot 11, +0x2c), the null test, then ??$GetTC@VCTCTrapBase@@@CThing@@QAE_NPAPAVCTCTrapBase@@@Z
+E:   (inline in retail: the UsingComponents bit 0x7D TCI_TRAP, CVectorMap::LowerBound 0x0040F020, the end-or-greater test) and
+E:   ?ManualReset@CTCTrapBase@@QAEXXZ (retail 0x00787C0C, the call target); true, else false. The DoErrorMessage branch is debug-only.
+M: trap_tc->ManualReset(); => trap_tc->ManualTrigger();
+bool CGameScriptInterface::ManuallyResetTrap(const CScriptThing& trap) const
+{
+    CThing* thing = trap.GetPThing();
+    if (thing) {
+        CTCTrapBase* trap_tc;
+        if (thing->GetTC(&trap_tc)) {
+            trap_tc->ManualReset();
+            return true;
+        }
+    }
+    return false;
+}
+@@
+008a12a0|?GetNumHousesOwned@CGameScriptInterface@@UBEJXZ|CGameScriptInterface::GetNumHousesOwned() const -- the hero's houses plus shops owned, from its hero stats component
+D: FABLE_RETAIL_PLAYER FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTHINGPLAYERCREATURE FABLE_RETAIL_CTCHEROSTATS FABLE_RETAIL_CTCHEROSTATS_SERIALISE FABLE_RETAIL_CTCHEROSTATS_PERSONALITY
+I: fable_string.h stlport/fable_containers.h engine/CPlayerManager.h engine/CPlayer.h engine/CThing.h engine/ThingAlive.h engine/CThingPlayerCreature.h engine/CTCHeroStats.h
+E: FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+E:   (0x00487DD0), ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z, ??$PeekTC@$$CBVCTCHeroStats@@@CThing@@QBE_NPAPBVCTCHeroStats@@@Z
+E:   (inline in retail: bit 4 TCI_HERO_STATS, const LowerBound 0x004365B0), then the inline ?GetNumberOfHousesOwned@CTCHeroStats@@QBEJXZ (+0xE0) plus
+E:   ?GetNumberOfShopsOwned@CTCHeroStats@@QBEJXZ (+0xE4); else 0. The DoErrorMessage branch is debug-only.
+M: return stats->GetNumberOfHousesOwned() + stats->GetNumberOfShopsOwned(); => return stats->GetNumberOfHousesOwned() - stats->GetNumberOfShopsOwned();
+long CGameScriptInterface::GetNumHousesOwned() const
+{
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        const CTCHeroStats* stats;
+        if (hero->PeekTC(&stats))
+            return stats->GetNumberOfHousesOwned() + stats->GetNumberOfShopsOwned();
+    }
+    return 0;
+}
+@@
+00895430|?IsDPadButtonHeldForExpression@CGameScriptInterface@@UBE_NABVCCharString@@@Z|CGameScriptInterface::IsDPadButtonHeldForExpression(const CCharString& expression_name) const -- the hero inventory's button test for an expression
+D: FABLE_RETAIL_PLAYER FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTHINGPLAYERCREATURE FABLE_RETAIL_DEF_CLASS_BASE FABLE_RETAIL_CCHARSTRING FABLE_RETAIL_CWIDESTRING FABLE_RETAIL_CTCBASE FABLE_RETAIL_CFADEINFADEOUTBASE_DECLS FABLE_RETAIL_CENGINEPRIMITIVEHANDLE FABLE_RETAIL_CTCINVENTORYBASE FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22 FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED FABLE_RETAIL_CTCINVENTORY_ORIGINAL_COMPLETE_CLASS_PASS22 FABLE_RETAIL_EXPRESSION_FRAME
+I: fable_string.h stlport/fable_containers.h engine/CPlayerManager.h engine/CPlayer.h engine/CThing.h engine/ThingAlive.h engine/CThingPlayerCreature.h engine/CTCInventory.h
+E: FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+E:   (0x00487DC0), ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z, ??$PeekTC@$$CBVCTCInventory@@@CThing@@QBE_NPAPBVCTCInventory@@@Z
+E:   (inline in retail: const LowerBound 0x004365B0), then ?IsButtonHeldForExpression@CTCInventory@@QBE_NABVCCharString@@@Z (retail 0x00582A16); else false.
+M: return inventory->IsButtonHeldForExpression(expression_name); => return !inventory->IsButtonHeldForExpression(expression_name);
+bool CGameScriptInterface::IsDPadButtonHeldForExpression(const CCharString& expression_name) const
+{
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        const CTCInventory* inventory;
+        if (hero->PeekTC(&inventory))
+            return inventory->IsButtonHeldForExpression(expression_name);
+    }
+    return false;
+}
+00896210|?IsSleepingTime@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z|CGameScriptInterface::IsSleepingTime(const CScriptThing& village) const -- the live village thing's night-time test
+D: FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTCBASE FABLE_RETAIL_CTCVILLAGE FABLE_RETAIL_CTCVILLAGE_TCI FABLE_RETAIL_CTCVILLAGE_ISNIGHTTIME
+I: engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/ThingAlive.h engine/CTCVillage.h
+E: FableWin's /Od body: village.GetPThing() (CScriptThing slot 11, +0x2c), ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z, then
+E:   ??$PeekTC@$$CBVCTCVillage@@@CThing@@QBE_NPAPBVCTCVillage@@@Z (inline in retail: bit 0x22 TCI_VILLAGE, const LowerBound 0x004365B0) and
+E:   ?IsNightTime@CTCVillage@@QBE_NXZ (retail 0x00658D07, the call target); else false. The DoErrorMessage branches are debug-only.
+M: return village_tc->IsNightTime(); => return !village_tc->IsNightTime();
+bool CGameScriptInterface::IsSleepingTime(const CScriptThing& village) const
+{
+    CThing* thing = village.GetPThing();
+    if (IS_THING_ALIVE(thing)) {
+        const CTCVillage* village_tc;
+        if (thing->PeekTC(&village_tc))
+            return village_tc->IsNightTime();
+    }
+    return false;
+}
+@@
+0089a270|?SetThingAsKilled@CGameScriptInterface@@UBEXABVCScriptThing@@@Z|CGameScriptInterface::SetThingAsKilled(const CScriptThing& entity) const -- the hero's inventory stats count the thing as killed
+D: FABLE_RETAIL_PLAYER FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTHINGPLAYERCREATURE FABLE_RETAIL_CTCBASE FABLE_RETAIL_CTCINVENTORYSTATS FABLE_RETAIL_CTCINVENTORYSTATS_SETCREATUREASKILLED
+I: fable_string.h stlport/fable_containers.h engine/CCountedPointer.h engine/CScriptThing.h engine/CPlayerManager.h engine/CPlayer.h engine/CThing.h engine/CThingPlayerCreature.h engine/CTCInventoryStats.h
+E: FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+E:   (0x00487DC0), the null test, ??$GetTC@VCTCInventoryStats@@@CThing@@QAE_NPAPAVCTCInventoryStats@@@Z (inline in retail: bit 0x14, LowerBound
+E:   0x0040F020), then ?SetCreatureAsKilled@CTCInventoryStats@@QAEXPAVCThing@@@Z (retail 0x005D66BA) with entity.GetPThing() (slot 11, +0x2c).
+M: stats->SetCreatureAsKilled(entity.GetPThing()); => stats->SetCreatureAsKilled(0);
+void CGameScriptInterface::SetThingAsKilled(const CScriptThing& entity) const
+{
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (hero) {
+        CTCInventoryStats* stats;
+        if (hero->GetTC(&stats))
+            stats->SetCreatureAsKilled(entity.GetPThing());
+    }
+}
+@@
+0089ec60|?CreatureGeneratorAddTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z|CGameScriptInterface::CreatureGeneratorAddTriggerer(const CScriptThing& creature_generator, const CScriptThing& creature) const -- a creature becomes one of the generator's triggerers
+D: FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTCBASE FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE FABLE_RETAIL_CTCCREATUREGENERATOR FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS
+I: engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/CThingCreatureBase.h engine/CTCCreatureGenerator.h engine/GFDebugPDynamicCast.h
+E: FableWin's /Od body: both GetPThing() (CScriptThing slot 11, +0x2c; the IsAlive / IS_THING_ALIVE checks are a debug-only assertion), then
+E:   ??$GetTC@VCTCCreatureGenerator@@@CThing@@QAE_NPAPAVCTCCreatureGenerator@@@Z (inline in retail: bit 0x3D, LowerBound 0x0040F020), the inline
+E:   ?GetTypeFlags@CThing@@QBEKXZ (& 8), ??$GFDebugPDynamicCast@PAVCThing@@PAVCThingCreatureBase@@@@YIPAVCThingCreatureBase@@PAVCThing@@PAV0@@Z and
+E:   ?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z (retail 0x0074AC80, the call target).
+M: generator->AddCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0)); => generator->RemoveCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0));
+void CGameScriptInterface::CreatureGeneratorAddTriggerer(const CScriptThing& creature_generator, const CScriptThing& creature) const
+{
+    CThing* generator_thing = creature_generator.GetPThing();
+    CThing* thing = creature.GetPThing();
+    CTCCreatureGenerator* generator;
+    if (generator_thing->GetTC(&generator) && (thing->GetTypeFlags() & 8))
+        generator->AddCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0));
+}
+@@
+0089ecc0|?CreatureGeneratorRemoveTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z|CGameScriptInterface::CreatureGeneratorRemoveTriggerer(const CScriptThing& creature_generator, const CScriptThing& creature) const -- a creature stops being one of the generator's triggerers
+D: FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTCBASE FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE FABLE_RETAIL_CTCCREATUREGENERATOR FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS
+I: engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/CThingCreatureBase.h engine/CTCCreatureGenerator.h engine/GFDebugPDynamicCast.h
+E: FableWin's /Od body: both GetPThing() (CScriptThing slot 11, +0x2c; the IsAlive / IS_THING_ALIVE checks are a debug-only assertion), then
+E:   ??$GetTC@VCTCCreatureGenerator@@@CThing@@QAE_NPAPAVCTCCreatureGenerator@@@Z (inline in retail: bit 0x3D, LowerBound 0x0040F020), the inline
+E:   ?GetTypeFlags@CThing@@QBEKXZ (& 8), ??$GFDebugPDynamicCast@PAVCThing@@PAVCThingCreatureBase@@@@YIPAVCThingCreatureBase@@PAVCThing@@PAV0@@Z and
+E:   ?RemoveCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z (retail 0x0074A1E0, the call target).
+M: generator->RemoveCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0)); => generator->AddCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0));
+void CGameScriptInterface::CreatureGeneratorRemoveTriggerer(const CScriptThing& creature_generator, const CScriptThing& creature) const
+{
+    CThing* generator_thing = creature_generator.GetPThing();
+    CThing* thing = creature.GetPThing();
+    CTCCreatureGenerator* generator;
+    if (generator_thing->GetTC(&generator) && (thing->GetTypeFlags() & 8))
+        generator->RemoveCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0));
+}
+@@
+0089d750|?CancelUsingAbility@CGameScriptInterface@@UBEXW4EHeroAbility@@@Z|CGameScriptInterface::CancelUsingAbility(EHeroAbility e) const -- the hero's special abilities component cancels an ability
+D: FABLE_RETAIL_PLAYER FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTHINGPLAYERCREATURE FABLE_RETAIL_CTCBASE FABLE_RETAIL_CTCSPECIALABILITIES_FULL FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23 FABLE_RETAIL_CTCSPECIALABILITIES_CANCELUSINGABILITY
+I: fable_string.h stlport/fable_containers.h engine/CPlayerManager.h engine/CPlayer.h engine/CThing.h engine/ThingAlive.h engine/CThingPlayerCreature.h engine/CTCSpecialAbilities.h
+E: FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+E:   (0x00487DC0), ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z, ??$GetTC@VCTCSpecialAbilities@@@CThing@@QAE_NPAPAVCTCSpecialAbilities@@@Z (inline in retail: bit 0xA7, LowerBound 0x0040F020), then
+E:   ?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z (retail 0x0072ACF0, the call target; its result is unused).
+M: abilities->CancelUsingAbility(e); => abilities->CancelUsingAbility((EHeroAbility)(e + 1));
+void CGameScriptInterface::CancelUsingAbility(EHeroAbility e) const
+{
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        CTCSpecialAbilities* abilities;
+        if (hero->GetTC(&abilities))
+            abilities->CancelUsingAbility(e);
+    }
+}
+@@
+00895a90|?HeroGoFishing@CGameScriptInterface@@UBEX_N@Z|CGameScriptInterface::HeroGoFishing(bool using_fishing_spot) const -- the hero's fishing component starts fishing
+D: FABLE_RETAIL_PLAYER FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTHINGPLAYERCREATURE FABLE_RETAIL_CTCBASE FABLE_RETAIL_DEF_CLASS_BASE FABLE_RETAIL_CINTELLIGENTPOINTER FABLE_RETAIL_CFISHINGDEF_PASS22 FABLE_RETAIL_CTCFISHING_PASS22 FABLE_RETAIL_CTCFISHING_GOFISHING
+I: fable_string.h stlport/fable_containers.h engine/CPlayerManager.h engine/CPlayer.h engine/CThing.h engine/ThingAlive.h engine/CThingPlayerCreature.h engine/CTCFishing.h
+E: FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+E:   (0x00487DC0), ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z, ??$GetTC@VCTCFishing@@@CThing@@QAE_NPAPAVCTCFishing@@@Z (inline in retail: bit 0xB1, LowerBound 0x0040F020), then
+E:   ?GoFishing@CTCFishing@@QAEX_N@Z (retail 0x007B1EB0, the call target). The DoErrorMessage branch is debug-only.
+M: fishing->GoFishing(using_fishing_spot); => fishing->GoFishing(!using_fishing_spot);
+void CGameScriptInterface::HeroGoFishing(bool using_fishing_spot) const
+{
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        CTCFishing* fishing;
+        if (hero->GetTC(&fishing))
+            fishing->GoFishing(using_fishing_spot);
+    }
+}
+@@
+0089c8a0|?IsDeedWitnessed@CGameScriptInterface@@UBE_NJ@Z|CGameScriptInterface::IsDeedWitnessed(long deed_handle) const -- the hero's opinion deed log reports whether a deed was witnessed
+D: FABLE_RETAIL_PLAYER FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTHINGPHYSICAL FABLE_RETAIL_CTHINGGAMEOBJECT FABLE_RETAIL_CTHINGCREATUREBASE FABLE_RETAIL_CTHINGPLAYERCREATURE FABLE_RETAIL_CTCBASE FABLE_RETAIL_CTCHEROOPINIONDEEDLOG FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_ISDEEDWITNESSED
+I: fable_string.h stlport/fable_containers.h engine/CPlayerManager.h engine/CPlayer.h engine/CThing.h engine/ThingAlive.h engine/CThingPlayerCreature.h engine/CTCHeroOpinionDeedLog.h
+E: FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+E:   (0x00487DC0), ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z, ??$GetTC@VCTCHeroOpinionDeedLog@@@CThing@@QAE_NPAPAVCTCHeroOpinionDeedLog@@@Z (inline in retail: bit 0x51, LowerBound 0x0040F020), then
+E:   ?IsDeedWitnessed@CTCHeroOpinionDeedLog@@QAE_NJ_N@Z (retail 0x006C5E90, the call target) with (deed_handle, true); else false.
+M: return deed_log->IsDeedWitnessed(deed_handle, true); => return deed_log->IsDeedWitnessed(deed_handle, false);
+bool CGameScriptInterface::IsDeedWitnessed(long deed_handle) const
+{
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        CTCHeroOpinionDeedLog* deed_log;
+        if (hero->GetTC(&deed_log))
+            return deed_log->IsDeedWitnessed(deed_handle, true);
+    }
+    return false;
+}
+@@
+0089dff0|?EntitySetAlwaysBlockAttacksFromThing@CGameScriptInterface@@UBEXABVCScriptThing@@0_N@Z|CGameScriptInterface::EntitySetAlwaysBlockAttacksFromThing(const CScriptThing& entity, const CScriptThing& attacker, bool block) const -- the entity's combat component always blocks (or stops blocking) one attacker
+D: FABLE_RETAIL_CTHING FABLE_RETAIL_CTHING_STATEACCESS FABLE_RETAIL_CTHING_GETTC_EXPANDED FABLE_RETAIL_IS_THING_ALIVE FABLE_RETAIL_CTCBASE FABLE_RETAIL_DEF_CLASS_BASE FABLE_RETAIL_CINTELLIGENTPOINTER FABLE_RETAIL_CCOMBATABILITY FABLE_RETAIL_CCOMBATABILITYDATA FABLE_RETAIL_CTCCOMBAT FABLE_RETAIL_CTCCOMBAT_ALWAYSBLOCK
+I: engine/ECombatAbilityDataType.h engine/CCountedPointer.h engine/CScriptThing.h engine/CThing.h engine/ThingAlive.h engine/CTCCombat.h
+E: FableWin's /Od body: entity.GetPThing() and attacker.GetPThing() (CScriptThing slot 11, +0x2c), ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z on
+E:   both, ??$GetTC@VCTCCombat@@@CThing@@QAE_NPAPAVCTCCombat@@@Z (inline in retail: bit 0x30, LowerBound 0x0040F020), then by block
+E:   ?AddThingToAlwaysBlock@CTCCombat@@QAEXPBVCThing@@@Z (retail 0x007352D0) or ?RemoveThingToAlwaysBlock@CTCCombat@@QAEXPBVCThing@@@Z (0x00734190).
+M: if (block) => if (!block)
+void CGameScriptInterface::EntitySetAlwaysBlockAttacksFromThing(const CScriptThing& entity, const CScriptThing& attacker, bool block) const
+{
+    CThing* thing = entity.GetPThing();
+    CThing* attacker_thing = attacker.GetPThing();
+    if (IS_THING_ALIVE(thing) && IS_THING_ALIVE(attacker_thing)) {
+        CTCCombat* combat;
+        if (thing->GetTC(&combat)) {
+            if (block)
+                combat->AddThingToAlwaysBlock(attacker_thing);
+            else
+                combat->RemoveThingToAlwaysBlock(attacker_thing);
+        }
+    }
+}

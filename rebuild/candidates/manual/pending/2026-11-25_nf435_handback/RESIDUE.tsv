@@ -1,0 +1,61 @@
+address	status	shape	reason
+00895090	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+008950e0	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+00895430	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+00895a90	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+00896210	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+0089a270	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+0089a2d0	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+0089c8a0	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+0089d750	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+0089ec60	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold_0089ec60, fully gated; waits on ruling R1, NAME_FIXES 0x0074AC80, then lands after nf435_tc_b1_hold
+0089ecc0	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+008a12a0	rtti_identified	tc_family	HOLD batches/nf435_tc_b1_hold, fully gated; waits on ruling R1 (LowerBound split)
+0089dff0	rtti_identified	tc_family	HOLD draft hold/0089dff0: CTCCombat.h polymorphic branch does not compile (2 distinct macro sets; one hung cl); opt-in FABLE_RETAIL_CTCCOMBAT_ALWAYSBLOCK drafted
+00899c90	rtti_identified	t3_line	T3 flatten-local2 ties it to 0x006D6570 (GetExperiencePickUpMultiplier, out of line in retail); take both as one unit
+00898bb0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCHeroReceiveItems GiveItem + GFDebugPDynamicCast<CThingObject>; recipe in NOTES.md
+0089e4c0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCRegionDisplay SetCurrentAreaName; recipe in NOTES.md
+008954a0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCEntityEvents + CDefPointer<CExpressionDef> + new CEventExpressionPerformedTo; recipe in NOTES.md
+008a37b0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCAIScratchpad by-value CScriptThing; recipe in NOTES.md
+008a5ff0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCAIScratchpad by-value CScriptThing; recipe in NOTES.md
+00895ed0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCBuyableHouse SetOwnedByPlayer / SetRented; recipe in NOTES.md
+00896a30	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CQuestManager quest card + GetTC (T3 nf289 / nf372 binder); recipe in NOTES.md
+00896d20	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCQuestCompletionUI Activate / IsActive; recipe in NOTES.md
+00897630	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCInventoryWeapons + CDefinitionManager; recipe in NOTES.md
+008986d0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); NInventory::CTCInventoryBase x3 + CTCHeroStats; recipe in NOTES.md
+00898840	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); NInventory::CTCInventoryBase x3; recipe in NOTES.md
+00898940	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); NInventory::CTCInventoryBase x3 + CTCHeroStats; recipe in NOTES.md
+0089b110	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCBoastUI + CASuspendableProcess + CPlayerGui; recipe in NOTES.md
+0089c560	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCHeroOpinionDeedLog PostDeed + AddTC<CTCOpinionSource>; recipe in NOTES.md
+008a03f0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); GetTCOfLeafType<CTCTargetingAI>; recipe in NOTES.md
+008a08a0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCCreatureModeManager AddMode(new CModeScreamerSuperAttack); recipe in NOTES.md
+008a0b10	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCRegionFollower Add/RemoveFollower; recipe in NOTES.md
+008a7f60	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CThingSearchTools GetAllThings<CThingFilter_HasTC>; recipe in NOTES.md
+008a9020	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); CTCCreatureGenerator SetCreatureGeneratorFamilies (CArray<CDefIndex>); recipe in NOTES.md
+008a99f0	rtti_identified	tc_family	not attempted (R1 blocks the family; context budget); NScreenEffect vector + CEnvironmentSpellEffectInterpolator (T3 nf289 binder); recipe in NOTES.md
+0088e500	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+008902e0	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+00891490	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+00892f80	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+00893f80	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+00894300	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+006e79e0	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+0088fc60	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+00892810	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+00894aa0	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+0089cd70	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+008a0a20	rtti_identified	not_attempted	not attempted this round (context budget); NF433 recipe; tools/b2.sh dossier
+008a0e80	rtti_identified	tc_query	not attempted; retail keeps only the UsingComponents bit test (IsThingA*), so the GETTC_EXPANDED form (an out-of-line LowerBound call) cannot give it: try the default HasTC branch / a bit-test-only opt-in first
+008a0eb0	rtti_identified	tc_query	not attempted; retail keeps only the UsingComponents bit test (IsThingA*), so the GETTC_EXPANDED form (an out-of-line LowerBound call) cannot give it: try the default HasTC branch / a bit-test-only opt-in first
+008a0ee0	rtti_identified	tc_query	not attempted; retail keeps only the UsingComponents bit test (IsThingA*), so the GETTC_EXPANDED form (an out-of-line LowerBound call) cannot give it: try the default HasTC branch / a bit-test-only opt-in first
+008a0f10	rtti_identified	tc_query	not attempted; retail keeps only the UsingComponents bit test (IsThingA*), so the GETTC_EXPANDED form (an out-of-line LowerBound call) cannot give it: try the default HasTC branch / a bit-test-only opt-in first
+008a0f40	rtti_identified	tc_query	not attempted; retail keeps only the UsingComponents bit test (IsThingA*), so the GETTC_EXPANDED form (an out-of-line LowerBound call) cannot give it: try the default HasTC branch / a bit-test-only opt-in first
+00cbe0c0	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+00cbed82	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+006e71f0	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+006e7510	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+006e7530	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+008ae5e0	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+008ae660	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+008ae810	split_fixable	t1_caller_respell	not attempted (no NF431 dossier; $S/w22/agentNF423 gen423); released
+006e72a0	rtti_identified	research	HOLD draft hold/006e72a0 (RELOCATION_MATCH with CClassFactory.h FABLE_RETAIL_CCLASSFACTORY_VALIDATE); name_gate RELOC_NAME at 0x00A36FE0: needs that row ported to ?Validate@CClassFactory@@QAEXXZ first (NAME_FIXES)
