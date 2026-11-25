@@ -1393,3 +1393,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: NF449 started (T1 special-member caller respells).
 - 2026-11-25 A: landed NF449 s1/s2/d1/r1g (76 rows, +4 proven); rulings r449a-d recorded; NF449 done.
 - 2026-11-25 A: NF450 started (continues NF449).
+- 2026-11-25 A: applied NF448 STALE_TABLE_CHECKED (50 table-only deletes, 26 targets closed, none worse). Owner: agent cap 2; NF448 not replaced (NF447, NF450 running).
