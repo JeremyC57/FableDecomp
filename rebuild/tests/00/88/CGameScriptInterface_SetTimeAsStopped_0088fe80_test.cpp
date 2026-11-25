@@ -1,87 +1,28 @@
-#include <cstdio>
-#include <cstddef>
-typedef unsigned char byte_t;
-
-static bool g_lastStopped = false;
-static long g_lastTime = 0;
-static void* g_lastThis = 0;
-
-class CGameTimeManager
+// Behaviour test for 0x0088FE80 CGameScriptInterface::SetTimeAsStopped (NF431): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// CGameTimeManager::SetTimeAsStopped is defined here; the row must reach the manager through World (+0x04) -> +0x1c and pass both arguments, once.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CGAMETIMEMANAGER_FULL
+#include "engine/CGameScriptInterface.h"
+#include "engine/CWorld.h"
+#include "engine/CGameTimeManager.h"
+#include <stdio.h>
+#include <string.h>
+static int g_calls = 0;
+static const void* g_this = 0;
+static bool g_stopped = false;
+static const long* g_time = 0;
+void CGameTimeManager::SetTimeAsStopped(bool stopped, long& time) { ++g_calls; g_this = this; g_stopped = stopped; g_time = &time; }
+static long g_gsi[0x50 / 4];
+static long g_world[0x40];
+static long g_tm[8];
+int main(void)
 {
-public:
-    void SetTimeAsStopped(bool stopped, long& time);
-};
-
-void CGameTimeManager::SetTimeAsStopped(bool stopped, long& time)
-{
-    g_lastThis = this;
-    g_lastStopped = stopped;
-    g_lastTime = time;
-}
-
-class CGameScriptInterface
-{
-public:
-    void SetTimeAsStopped(bool stopped, long& time) const;
-};
-
-namespace
-{
-struct CGameScriptInterface_SetTimeAsStopped_SelfOverlay
-{
-    byte_t m_Pad00[0x04];
-    void* m_Field04; // 0x04
-};
-
-struct CGameScriptInterface_SetTimeAsStopped_Field04Overlay
-{
-    byte_t m_Pad00[0x1C];
-    CGameTimeManager* m_Field1C; // 0x1C
-};
-}
-
-void CGameScriptInterface::SetTimeAsStopped(
-    bool stopped,
-    long& time) const
-{
-    const CGameScriptInterface_SetTimeAsStopped_SelfOverlay* const self =
-        reinterpret_cast<const CGameScriptInterface_SetTimeAsStopped_SelfOverlay*>(this);
-    const CGameScriptInterface_SetTimeAsStopped_Field04Overlay* const field04 =
-        reinterpret_cast<const CGameScriptInterface_SetTimeAsStopped_Field04Overlay*>(
-            self->m_Field04);
-
-    field04->m_Field1C->SetTimeAsStopped(stopped, time);
-}
-
-int main()
-{
-    CGameTimeManager timeMgr;
-
-    CGameScriptInterface_SetTimeAsStopped_Field04Overlay field04Block;
-    field04Block.m_Field1C = &timeMgr;
-
-    CGameScriptInterface_SetTimeAsStopped_SelfOverlay selfBlock;
-    selfBlock.m_Field04 = &field04Block;
-
-    const CGameScriptInterface* const iface =
-        reinterpret_cast<const CGameScriptInterface*>(&selfBlock);
-
-    long timeVal = 12345;
-    iface->SetTimeAsStopped(true, timeVal);
-
-
-    bool ok = (g_lastThis == static_cast<void*>(&timeMgr)) &&
-              (g_lastStopped == true) &&
-              (g_lastTime == 12345);
-
-    if (ok)
-    {
-        std::printf("SET_TIME_AS_STOPPED_OK\n");
-    }
-    else
-    {
-        std::printf("SET_TIME_AS_STOPPED_FAIL\n");
-    }
-
-    return 0;
+    long t = 77;
+    g_gsi[1] = (long)g_world; g_world[0x1c / 4] = (long)g_tm;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetTimeAsStopped(true, t);
+    if (g_calls != 1 || g_this != (const void*)g_tm || !g_stopped || g_time != &t) { printf("FAIL_0088fe80\n"); return 1; }
+    printf("PASS_0088fe80 SET_TIME_AS_STOPPED_OK\n"); return 0;
 }

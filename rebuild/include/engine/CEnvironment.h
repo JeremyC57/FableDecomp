@@ -96,6 +96,12 @@ public:
     // ?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z, out of line in retail at 0x006B3950 (`ret 8`).
     void TransitionToDefaultThemeAllChannels(long priority, float time);   // 0x006B3950
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_DEFAULTTHEME_CHANNEL
+    // Opt-in (NF431, row 0x0088FFF0 CGameScriptInterface::ResetToDefaultThemeExternals): Ego_r.pdb / FableWin.pdb
+    // ?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z (FableWin's /Od ResetToDefaultThemeExternals calls it), out of line in retail at
+    // 0x006B3880 (`push time ; push 1 ; push 0 ; call`, 0x0088FFFA). Declaration only: no layout change.
+    void TransitionToDefaultTheme(long, long, float);                       // 0x006B3880
+#endif
 #endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_SETTHEMEWEIGHT
     // Opt-in (row 0x00890090 CGameScriptInterface::SetEnvironmentThemeWeightExternals; chunk 1013c's 0x00500540 CWorld::LoadRegion draft):

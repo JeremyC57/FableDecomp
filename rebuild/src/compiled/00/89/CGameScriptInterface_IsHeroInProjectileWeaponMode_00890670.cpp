@@ -1,23 +1,22 @@
-// Leaf: @CGameScriptInterface_IsHeroInProjectileWeaponMode@0
-#include "rebuild_abi.h"
-// CGameScriptInterface::IsHeroInProjectile @ 0x00890670
-// mov eax,ds:g; mov ecx,[eax+0x1c]; call h1; mov ecx,eax; jmp h2
-// Resolve a subsystem from a global singleton, then tail-call a query on it.
-// NF47 (round 7): 0x013B86A0 is ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static, read through the inline
-//   CMainGameComponent::Get(), engine/CMainGameComponent.h), its PPlayerManager +0x1C through the inline PeekPlayerManager() (FableWin.pdb
-//   ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ); the two callees are Ego_r/FableWin
-//   ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ 0x00449960 (engine/CPlayerManager.h) and ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ
-//   0x004874D0 (engine/CPlayer.h); was the stand-in void* g_singleton_890670 (a cast +0x1C word read) and the extern "C" stand-ins FableProjH1_890670 / FableProjH2_890670.
+// CGameScriptInterface::IsHeroInProjectileWeaponMode() const -- the main player's IsFirstPersonTargeting, a tail jump
+// Leaf: ?IsHeroInProjectileWeaponMode@CGameScriptInterface@@UBE_NXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00890670. Identity (NF431, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: ?Get@CMainGameComponent@@SIPAV1@XZ, ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ (inline, +0x1c),
+//   ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (retail 0x00449960), ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ (retail 0x004874D0, the jmp).
+#define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CMAINGAMECOMPONENT
 #define FABLE_RETAIL_CMAINGAMECOMPONENT_PLAYERMANAGER
+#include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
 #include "engine/CMainGameComponent.h"
-extern "C" bool FABLE_FASTCALL CGameScriptInterface_IsHeroInProjectileWeaponMode()
+
+bool CGameScriptInterface::IsHeroInProjectileWeaponMode() const
 {
     return CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().IsFirstPersonTargeting();
 }
-// Stand-in (owner rule 2026-11-05): CGameScriptInterface_IsHeroInProjectileWeaponMode for CGameScriptInterface::IsHeroInProjectileWeaponMode; RTTI vtable slot ?IsHeroInProjectileWeaponMode@CGameScriptInterface@@UBE_NXZ + PDB name set (egor/fablewin).

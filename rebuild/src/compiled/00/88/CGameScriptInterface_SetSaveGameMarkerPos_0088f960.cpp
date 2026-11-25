@@ -1,21 +1,16 @@
-// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-#include "engine/C3DVector.h"
+// CGameScriptInterface::SetSaveGameMarkerPos(const C3DVector& pos) const -- World (+0x04)->SetSaveGameMarkerPos(pos), a tail jump
+// Leaf: ?SetSaveGameMarkerPos@CGameScriptInterface@@UBEXABVC3DVector@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088F960. Identity (NF431, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body calls ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z (retail 0x0049E590, the jmp target) on World.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
+#include "engine/CGameScriptInterface.h"
+#include "engine/CWorld.h"
 
-class CWorld
+void CGameScriptInterface::SetSaveGameMarkerPos(const C3DVector& pos) const
 {
-public:
-    void SetSaveGameMarkerPos(const C3DVector& pos);   // 0x0049E590 (Ego_r.pdb + FableWin.pdb: const C3DVector&)
-};
-
-class CGameScriptInterface
-{
-public:
-    void SetSaveGameMarkerPos(const C3DVector& pos);
-    char m_Pad[0x4];
-    CWorld* m_World;
-};
-
-void CGameScriptInterface::SetSaveGameMarkerPos(const C3DVector& pos)
-{
-    m_World->SetSaveGameMarkerPos(pos);
+    World->SetSaveGameMarkerPos(pos);
 }

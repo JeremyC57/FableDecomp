@@ -1,21 +1,24 @@
+// Behaviour test for 0x0088F450 CGameScriptInterface::IsHeroSleepingEnabled (NF431): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The World image holds HeroSleepingEnabled at the retail offset +0xd9 (asserted against engine/CWorld.h); the row returns it.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
 #include "engine/CGameScriptInterface.h"
-#include <cstdio>
-
-class CWorld { public: char pad[0xd9]; unsigned char flag; };
-
-unsigned char __fastcall CGameScriptInterface_IsHeroSleepingEnabled(const CGameScriptInterface* self)
+#include "engine/CWorld.h"
+#include <stdio.h>
+#include <string.h>
+static long g_gsi[0x50 / 4];
+static unsigned char g_world[0x200];
+static int run(unsigned char v)
 {
-    return self->World->flag;
+    memset(g_world, 0, sizeof g_world); g_world[0xd9] = v; g_gsi[1] = (long)g_world;
+    return ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsHeroSleepingEnabled() == (v != 0);
 }
-
-int main()
+int main(void)
 {
-    CWorld in1; in1.flag = 0;
-    CWorld in2; in2.flag = 7;
-    CGameScriptInterface a; a.World = &in1;
-    CGameScriptInterface b; b.World = &in2;
-    if (CGameScriptInterface_IsHeroSleepingEnabled(&a) != 0) { std::printf("FAIL a\n"); return 1; }
-    if (CGameScriptInterface_IsHeroSleepingEnabled(&b) != 7) { std::printf("FAIL b\n"); return 1; }
-    std::printf("CGameScriptInterface_0088f450_TEST PASS\n");
-    return 0;
+    if (offsetof(CWorld, HeroSleepingEnabled) != 0xd9 || !run(1) || !run(0)) { printf("FAIL_0088f450\n"); return 1; }
+    memset(g_world, 1, sizeof g_world); g_world[0xd9] = 0;
+    if (((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsHeroSleepingEnabled()) { printf("FAIL_0088f450\n"); return 1; }
+    printf("PASS_0088f450 CGameScriptInterface_0088f450_TEST PASS\n"); return 0;
 }

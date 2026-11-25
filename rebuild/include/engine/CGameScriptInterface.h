@@ -32,6 +32,13 @@ private:
     // Both original PDBs: private const method; donor 02A90CA0 and retail 0089C910, ret 12.
     bool CanThingBe_Sensed_ByOtherThing(const CScriptThing&, const CScriptThing&, long) const;
 #endif
+#ifdef FABLE_RETAIL_CGAMESCRIPTINTERFACE_IMPSETENTITYASALLY
+private:
+    // Opt-in (NF431, row 0x008A7EC0 EntitySetThingAsAllyOfThing): Ego_r.pdb / FableWin.pdb
+    // ?ImpSetEntityAsAllyOfThing@CGameScriptInterface@@ABEXABVCScriptThing@@0_N@Z (private const, non-virtual), retail 0x0089C100
+    // (`push 1 ; push eax ; push edx ; call`, 0x008A7EC8; FableWin's /Od EntitySetThingAsAllyOfThing calls it). Declaration only.
+    void ImpSetEntityAsAllyOfThing(const CScriptThing&, const CScriptThing&, bool) const;
+#endif
 public:
     CGameScriptInterface(CMainGameComponent&, const CGameDefinitionManager&, CWorld&, CPlayerManager&, CDisplayEngine&); // 0x006E7740
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?WorldUpdate@CGameScriptInterface@@QAEX_N@Z, retail 0x006E75C0.

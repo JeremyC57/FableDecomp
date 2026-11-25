@@ -1,0 +1,6 @@
+action	symbol	target	witness	note
+delete	?GetSoundSystem@@YGPAUCSoundSys@@H@Z	0040d2a0	0088e090	NF431: the row now binds the PDB name at this target; no other landed source spells GetSoundSystem next to the target (census)
+delete	?SetAllMuted@CSoundSys@@QAEXXZ	00408340	0088e090	NF431: the row now binds the PDB name at this target; no other landed source spells SetAllMuted next to the target (census)
+add	?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z	00408340	0088e090	NF431: the row's callee at this retail target, PDB spelling (name_gate OK)
+delete	?Inner_Do@@YIXPAUInner@@HHHH@Z	006b3880	0088fff0	NF431: the row now binds the PDB name at this target; no other landed source spells Inner_Do next to the target (census)
+add	?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z	006b3880	0088fff0	NF431: the row's callee at this retail target, PDB spelling (name_gate OK)

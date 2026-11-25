@@ -1,61 +1,25 @@
-class C3DVector
-{ public:
-    float x;
-    float y;
-    float z;
-};
-
-static C3DVector g_lastPos;
-static void* g_lastWorld;
-static int g_callCount;
-
-class CWorld
+// Behaviour test for 0x0088F960 CGameScriptInterface::SetSaveGameMarkerPos (NF431): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// CWorld::SetSaveGameMarkerPos is defined here; the row must forward the same position reference to the World at +0x04, once.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_UPDATEREGIONLOAD_CALLEES
+#include "engine/CGameScriptInterface.h"
+#include "engine/CWorld.h"
+#include <stdio.h>
+#include <string.h>
+static int g_calls = 0;
+static const void* g_this = 0;
+static const void* g_pos = 0;
+void CWorld::SetSaveGameMarkerPos(const C3DVector& pos) { ++g_calls; g_this = this; g_pos = &pos; }
+static long g_gsi[0x50 / 4];
+static long g_world[4];
+static float g_vec[3] = { 1.0f, 2.0f, 3.0f };
+int main(void)
 {
-public:
-    void SetSaveGameMarkerPos(const C3DVector* pos)
-    {
-        g_lastWorld = this;
-        g_lastPos = *pos;
-        g_callCount++;
-    }
-};
-
-class CGameScriptInterface
-{
-public:
-    void SetSaveGameMarkerPos(const C3DVector& pos);
-    char m_Pad[0x4];
-    CWorld* m_World;
-};
-
-void CGameScriptInterface::SetSaveGameMarkerPos(const C3DVector& pos)
-{
-    m_World->SetSaveGameMarkerPos(&pos);
-}
-
-#include <cstdio>
-
-int main()
-{
-    CWorld world;
-    CGameScriptInterface gsi;
-    gsi.m_World = &world;
-
-    C3DVector pos;
-    pos.x = 1.0f;
-    pos.y = 2.0f;
-    pos.z = 3.0f;
-
-    gsi.SetSaveGameMarkerPos(pos);
-
-    if (g_callCount == 1 && g_lastWorld == (void*)&world &&
-        g_lastPos.x == 1.0f && g_lastPos.y == 2.0f && g_lastPos.z == 3.0f)
-    {
-        printf("TEST_PASS_MARKER_OK\n");
-    }
-    else
-    {
-        printf("TEST_FAIL\n");
-    }
-    return 0;
+    g_gsi[1] = (long)g_world;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetSaveGameMarkerPos(*(const C3DVector*)g_vec);
+    if (g_calls != 1 || g_this != (const void*)g_world || g_pos != (const void*)g_vec) { printf("FAIL_0088f960\n"); return 1; }
+    printf("PASS_0088f960 TEST_PASS_MARKER_OK\n"); return 0;
 }

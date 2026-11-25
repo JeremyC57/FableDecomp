@@ -1,0 +1,135 @@
+address	status	tier	shape	reason
+00cbe0c0	split_fixable	T1	t1_caller_respell	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00cbed82	split_fixable	T1	t1_caller_respell	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e71f0	split_fixable	T1	t1_caller_respell	split_fixable standin_alias: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e7510	split_fixable	T1	t1_caller_respell	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e7530	split_fixable	T1	t1_caller_respell	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+008ae5e0	split_fixable	T1	t1_caller_respell	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+008ae660	split_fixable	T1	t1_caller_respell	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+008ae810	split_fixable	T1	t1_caller_respell	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00890040	rtti_conflict	T3	t3_research	rtti_conflict RTTI names ?SetEnvironmentThemeWeightAllInternals@CGameScriptInterface@@UBEXABVCCharString@: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00891ac0	rtti_conflict	T3	t3_research	rtti_conflict RTTI names ?AddQuestInfoBar@CGameScriptInterface@@UBEJMMABVCRGBColour@@0ABVCCharString@@1M@: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00891bb0	rtti_conflict	T3	t3_research	rtti_conflict RTTI names ?UpdateQuestInfoTimer@CGameScriptInterface@@UBEXJM@Z: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e7290	rtti_identified	T3	body_port	not attempted this round (8 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+006e7300	rtti_identified	T3	body_port	not attempted this round (49 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088e4d0	rtti_identified	T3	body_port	not attempted this round (32 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088e500	rtti_identified	T3	body_port	not attempted this round (17 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088ece0	rtti_identified	T3	body_port	not attempted this round (49 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088f6b0	rtti_identified	T3	body_port	not attempted this round (39 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088f6e0	rtti_identified	T3	body_port	not attempted this round (34 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088f7d0	rtti_identified	T3	body_port	not attempted this round (59 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088f850	rtti_identified	T3	body_port	not attempted this round (59 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088f980	rtti_identified	T3	body_port	not attempted this round (46 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088fa80	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088faa0	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088fad0	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088fbc0	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088fc00	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088fc40	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088fc50	rtti_identified	T3	scratchpad_static	reads/writes a CTCAIScratchpad static (FableWin.pdb ?PlayerUsing*Dummies@ / ?SpotTheAdditionBeaten@ / ?TradingPriceMult@ / ActiveGossipCategories / IsGossipForPlayer): a data-symbol unit with the split getter/setter rows that bind g_* stand-ins at the same addresses; not attempted
+0088fcc0	rtti_identified	T3	body_port	not attempted this round (52 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008901e0	rtti_identified	T3	tail_jump	HOLD batch nf431_hold: callee 0x006B8390 catalog label is a mislabelled std::_Cons_val (NAME_FIXES.tsv)
+00890220	rtti_identified	T3	body_port	not attempted this round (37 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890250	rtti_identified	T3	thing_virtual	held by flatten_pilot HELD set (NF324 standing brief); not touched
+00890280	rtti_identified	T3	body_port	not attempted this round (42 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008902e0	rtti_identified	T3	body_port	not attempted this round (137 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890400	rtti_identified	T3	body_port	not attempted this round (46 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890430	rtti_identified	T3	body_port	not attempted this round (51 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890690	rtti_identified	T3	body_port	not attempted this round (38 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890870	rtti_identified	T3	body_port	not attempted this round (69 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008908c0	rtti_identified	T3	body_port	not attempted this round (69 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890910	rtti_identified	T3	body_port	not attempted this round (69 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890960	rtti_identified	T3	body_port	not attempted this round (14 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890e80	rtti_identified	T3	body_port	not attempted this round (57 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890ec0	rtti_identified	T3	body_port	not attempted this round (57 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00890f00	rtti_identified	T3	body_port	not attempted this round (57 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008913c0	rtti_identified	T3	body_port	not attempted this round (39 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00891490	rtti_identified	T3	body_port	not attempted this round (72 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00891c60	rtti_identified	T3	body_port	not attempted this round (32 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00891c80	rtti_identified	T3	body_port	not attempted this round (29 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00892ea0	rtti_identified	T3	container_signature	not attempted this round (23 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00892ee0	rtti_identified	T3	container_signature	not attempted this round (23 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00892f80	rtti_identified	T3	body_port	not attempted this round (79 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00893f80	rtti_identified	T3	body_port	not attempted this round (100 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00894300	rtti_identified	T3	body_port	not attempted this round (111 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00895090	rtti_identified	T3	body_port	not attempted this round (79 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008950e0	rtti_identified	T3	body_port	not attempted this round (79 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00896210	rtti_identified	T3	body_port	not attempted this round (83 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00898bb0	rtti_identified	T3	body_port	not attempted this round (129 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00899c90	rtti_identified	T3	body_port	not attempted this round (93 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089a270	rtti_identified	T3	body_port	not attempted this round (92 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089a2d0	rtti_identified	T3	body_port	not attempted this round (93 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089c8a0	rtti_identified	T3	body_port	not attempted this round (104 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089dff0	rtti_identified	T3	body_port	not attempted this round (130 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089e4c0	rtti_identified	T3	body_port	not attempted this round (120 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089ec60	rtti_identified	T3	body_port	not attempted this round (92 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089ecc0	rtti_identified	T3	body_port	not attempted this round (92 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a0e80	rtti_identified	T3	tc_query	IS_THING_ALIVE + CThing::GetTC<CTC*> (FableWin); retail keeps only the UsingComponents bit test: needs a GetTC expansion opt-in on engine/CThing.h, not attempted
+008a0eb0	rtti_identified	T3	tc_query	IS_THING_ALIVE + CThing::GetTC<CTC*> (FableWin); retail keeps only the UsingComponents bit test: needs a GetTC expansion opt-in on engine/CThing.h, not attempted
+008a0ee0	rtti_identified	T3	tc_query	IS_THING_ALIVE + CThing::GetTC<CTC*> (FableWin); retail keeps only the UsingComponents bit test: needs a GetTC expansion opt-in on engine/CThing.h, not attempted
+008a0f10	rtti_identified	T3	tc_query	IS_THING_ALIVE + CThing::GetTC<CTC*> (FableWin); retail keeps only the UsingComponents bit test: needs a GetTC expansion opt-in on engine/CThing.h, not attempted
+008a0f40	rtti_identified	T3	tc_query	IS_THING_ALIVE + CThing::GetTC<CTC*> (FableWin); retail keeps only the UsingComponents bit test: needs a GetTC expansion opt-in on engine/CThing.h, not attempted
+006e72a0	rtti_identified	T3	body_port	not attempted this round (15 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+006e79e0	rtti_identified	T3	body_port	not attempted this round (115 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088e3d0	rtti_identified	T3	body_port	not attempted this round (33 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088fc60	rtti_identified	T3	body_port	not attempted this round (38 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088fe90	rtti_identified	T3	body_port	not attempted this round (65 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008907c0	rtti_identified	T3	body_port	not attempted this round (11 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008907e0	rtti_identified	T3	body_port	not attempted this round (59 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00892810	rtti_identified	T3	body_port	not attempted this round (57 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00892d70	rtti_identified	T3	body_port	not attempted this round (11 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00895430	rtti_identified	T3	body_port	not attempted this round (102 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008954a0	rtti_identified	T3	body_port	not attempted this round (274 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00895a90	rtti_identified	T3	body_port	not attempted this round (99 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00896120	rtti_identified	T3	byvalue_return	not attempted this round (143 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089ac80	rtti_identified	T3	container_signature	not attempted this round (258 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089d750	rtti_identified	T3	body_port	not attempted this round (97 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a0cb0	rtti_identified	T3	container_signature	not attempted this round (456 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a37b0	rtti_identified	T3	body_port	not attempted this round (238 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a5ff0	rtti_identified	T3	body_port	not attempted this round (218 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00894aa0	rtti_identified	T3	body_port	not attempted this round (232 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00895ed0	rtti_identified	T3	body_port	not attempted this round (289 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00896a30	rtti_identified	T3	body_port	not attempted this round (294 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00896d20	rtti_identified	T3	body_port	not attempted this round (196 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00897630	rtti_identified	T3	body_port	not attempted this round (181 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008986d0	rtti_identified	T3	body_port	not attempted this round (262 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00898840	rtti_identified	T3	body_port	not attempted this round (245 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00898940	rtti_identified	T3	body_port	not attempted this round (271 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089b110	rtti_identified	T3	body_port	not attempted this round (248 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089c560	rtti_identified	T3	body_port	not attempted this round (269 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089cd70	rtti_identified	T3	body_port	not attempted this round (247 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089f910	rtti_identified	T3	byvalue_return	not attempted this round (198 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089f9e0	rtti_identified	T3	byvalue_return	not attempted this round (180 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0089fbb0	rtti_identified	T3	byvalue_return	not attempted this round (206 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a03f0	rtti_identified	T3	body_port	not attempted this round (206 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a08a0	rtti_identified	T3	body_port	not attempted this round (168 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a0a20	rtti_identified	T3	body_port	not attempted this round (226 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a0b10	rtti_identified	T3	body_port	not attempted this round (166 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a7e00	rtti_identified	T3	byvalue_return	not attempted this round (190 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a7f60	rtti_identified	T3	body_port	not attempted this round (164 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a9020	rtti_identified	T3	body_port	not attempted this round (216 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a99f0	rtti_identified	T3	body_port	not attempted this round (232 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+0088f810	rtti_identified	T3	body_port	not attempted this round (59 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00893ec0	rtti_identified	T3	body_port	not attempted this round (110 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00896e60	rtti_identified	T3	body_port	not attempted this round (127 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+008a12a0	rtti_identified	T3	body_port	not attempted this round (95 bytes retail): needs a hand port onto the shared headers (callee classes / opt-ins); NF324 T3 port line stays open
+00435000	split_fixable	T3	t3_research	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e7270	split_fixable	T3	t3_research	split_fixable other: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00d68f00	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00d80ba0	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00d80c30	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+004b4590	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00903710	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00e54310	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00e62830	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+008ad050	split_fixable	T3	t3_research	split_fixable signature: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+009e6fa0	split_unknown	T3	t3_research	split_unknown : not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+0143e8f8	split_unknown	T3	t3_research	split_unknown : not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00c308a0	split_unknown	T3	t3_research	split_unknown : not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+004b1670	split_unknown	T3	t3_research	split_unknown : not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e7630	split_unknown	T3	t3_research	split_unknown : not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e7280	split_unknown	T3	t3_research	split_unknown : not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e73b0	standin	T3	t3_research	standin standin: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+006e73e0	standin	T3	t3_research	standin standin: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+007f81c0	standin	T3	t3_research	standin standin: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells
+00b9d650	standin	T3	t3_research	standin standin: not in this round (CGSI rtti port first); T1 rows fit gen423 caller respells

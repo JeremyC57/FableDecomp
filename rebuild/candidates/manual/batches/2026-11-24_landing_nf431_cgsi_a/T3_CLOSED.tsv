@@ -1,0 +1,11 @@
+source	address	unit	reason
+nf324	0x0088E090	port	0088e090 skipped-port ?SetAllSoundsAsMuted@CGameScriptInterface@@UBEX_N@Z triage (-): params: used parameter muted is `int`, the PDB type is `bool` (alias pattern)
+nf324	0x0088E380	port	0088e380 skipped-port ?DontPopulateNextLoadedRegion@CGameScriptInterface@@UBEXXZ triage (local): model: virtual target, local model has no leading vptr slot
+nf324	0x0088F450	rejected	0088f450 rejected ?IsHeroSleepingEnabled@CGameScriptInterface@@UBE_NXZ work/exp_b1 REJECT: objcheck: section .text bytes differ [route switch] [return width: retail keeps the self's int / byte return where the PDB says bool / voi
+nf324	0x0088F460	port	0088f460 skipped-port ?SetExperienceSpendingAsEnabled@CGameScriptInterface@@UBEX_N@Z triage (-): params: used parameter enabled is `unsigned char`, the PDB type is `bool` (alias pattern)
+nf324	0x0088F560	rejected	0088f560 rejected ?EntityCastLightningAtTarget@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z work/exp_b1 REJECT: no object (head ('MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')) [route switch]
+nf324	0x0088F950	rejected	0088f950 rejected ?IsSavingEnabled@CGameScriptInterface@@UBE_NXZ work/exp_b1 REJECT: objcheck: section .text bytes differ [route switch] [return width: retail keeps the self's int / byte return where the PDB says bool / void: NF3
+nf324	0x0088FD60	port	0088fd60 skipped-port ?IsEntityInLimbo@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z triage (-): params: used parameter self is `CGameScriptInterface*`, the PDB type is `const class CScriptThing&` (alias pattern)
+nf324	0x0088FF10	port	0088ff10 skipped-port ?ResetToDefaultTheme@CGameScriptInterface@@UBEXM@Z triage (-): params: used parameter duration is `int`, the PDB type is `float` (alias pattern)
+nf324	0x0088FFF0	port	0088fff0 skipped-port ?ResetToDefaultThemeExternals@CGameScriptInterface@@UBEXM@Z triage (-): params: the edx parameter edx is used
+nf324	0x00891C40	port	00891c40 skipped-port ?DisplayMoneyBag@CGameScriptInterface@@UBEX_N@Z triage (-): params: used parameter val is `unsigned char`, the PDB type is `bool` (alias pattern)

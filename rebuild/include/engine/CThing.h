@@ -662,7 +662,14 @@ public:
     // FableWin.pdb-only inline flag accessors (?IsInLimbo@CThing@@QBE_NXZ, ?IsActivated@, ?IsDying@, ?IsKillLocked@,
     // ?IsGloballyLoaded@, ?IsDeathPersistent@; inline in retail, which tests the +0x91..+0x93 bits in place in every caller --
     // the same evidence as GetTypeFlags above).
+#ifdef FABLE_RETAIL_CTHING_ISINLIMBO_DIRECT
+    // Opt-in (NF431, row 0x0088FD60 CGameScriptInterface::IsEntityInLimbo): retail converts the one-bit field to bool in byte width
+    // (`shr al,5 ; and al,1` at 0x0088FD77), which `return InLimbo;` gives and `InLimbo != 0` does not (movzx / 32-bit shr, and).
+    // Same value. Body only: default path unchanged (the FABLE_RETAIL_CTHING_ISDEAD_DIRECT form).
+    bool IsInLimbo() const { return InLimbo; }
+#else
     bool IsInLimbo() const { return InLimbo != 0; }
+#endif
     bool IsActivated() const { return Activated != 0; }
     bool IsDying() const { return Dying != 0; }
     bool IsKillLocked() const { return KillLocked != 0; }

@@ -1,42 +1,18 @@
-#include <cstddef>
-typedef unsigned char byte_t;
+// CGameScriptInterface::SetTimeAsStopped(bool stopped, long& time) const -- World->GetGameTimeManager().SetTimeAsStopped, a tail jump
+// Leaf: ?SetTimeAsStopped@CGameScriptInterface@@UBEX_NAAJ@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088FE80. Identity (NF431, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: ?GetGameTimeManager@CWorld@@QAEAAVCGameTimeManager@@XZ (inline, World +0x1c) then
+//   ?SetTimeAsStopped@CGameTimeManager@@QAEX_NAAJ@Z (retail 0x006BBE30, the jmp target).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CGAMETIMEMANAGER_FULL
+#include "engine/CGameScriptInterface.h"
+#include "engine/CWorld.h"
+#include "engine/CGameTimeManager.h"
 
-class CGameTimeManager
+void CGameScriptInterface::SetTimeAsStopped(bool stopped, long& time) const
 {
-public:
-    void SetTimeAsStopped(bool stopped, long& time);
-};
-
-class CGameScriptInterface
-{
-public:
-    void SetTimeAsStopped(bool stopped, long& time) const;
-};
-
-namespace
-{
-struct CGameScriptInterface_SetTimeAsStopped_SelfOverlay
-{
-    byte_t m_Pad00[0x04];
-    void* m_Field04; // 0x04
-};
-
-struct CGameScriptInterface_SetTimeAsStopped_Field04Overlay
-{
-    byte_t m_Pad00[0x1C];
-    CGameTimeManager* m_Field1C; // 0x1C
-};
-}
-
-void CGameScriptInterface::SetTimeAsStopped(
-    bool stopped,
-    long& time) const
-{
-    const CGameScriptInterface_SetTimeAsStopped_SelfOverlay* const self =
-        reinterpret_cast<const CGameScriptInterface_SetTimeAsStopped_SelfOverlay*>(this);
-    const CGameScriptInterface_SetTimeAsStopped_Field04Overlay* const field04 =
-        reinterpret_cast<const CGameScriptInterface_SetTimeAsStopped_Field04Overlay*>(
-            self->m_Field04);
-
-    field04->m_Field1C->SetTimeAsStopped(stopped, time);
+    World->GetGameTimeManager().SetTimeAsStopped(stopped, time);
 }

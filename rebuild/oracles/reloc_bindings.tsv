@@ -3237,8 +3237,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 @CGuiVarTransferBool_Setter@12	0088d130	0088d1b0
 ?GetWaterSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z	0063a420	0088df60
 ?LockAllDoors@CThingBuilding@@QAEX_N0@Z	0082db00	0088dfd0
-?GetSoundSystem@@YGPAUCSoundSys@@H@Z	0040d2a0	0088e090
-?SetAllMuted@CSoundSys@@QAEXXZ	00408340	0088e090
 ?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@@J@Z	004fb490	0088e0b0
 ?IsPickPocketable@CThing_Retail@@QAE_NXZ	00665e90	0088e220
 ?IsMapLoadedOnPlayerProximity@CWorldMap_Retail@@QAE_NJ@Z	004fd000	0088e2a0
@@ -3303,7 +3301,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?FastForwardTimeTo@CGameTimeManager@@QAEXMM@Z	006bb720	0088fe90
 ?Method@CInner@@QAEXHH@Z	006b3950	0088ff10
 ?TransitionThemeToDefault@CEnvironment_Retail@@QAEXJJM@Z	006b3880	0088ff80
-?Inner_Do@@YIXPAUInner@@HHHH@Z	006b3880	0088fff0
 ?Callee@@YIXPAUCTarget@@@Z	006b8300	00890180
 ?Effect_ColourFadeOut@@YIPAXPAX0HHH@Z	006b8390	008901e0
 @CheckMeleeWield@4	006a15a0	00890220
@@ -38962,3 +38959,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	006c1dd0	006c0b20
 ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z	00864620	006c0b20
 ?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ	00910570	009106b0
+?SetSoundAsMuted@CUserProfileManager@@QAEX_N@Z	00408340	0088e090
+?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z	006b3880	0088fff0

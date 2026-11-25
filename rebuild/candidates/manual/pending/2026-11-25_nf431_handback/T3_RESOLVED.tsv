@@ -1,0 +1,10 @@
+0088f560	nf324	0x0088F560	0088f560 rejected ?EntityCastLightningAtTarget@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z work/exp_b1 REJE
+0088f450	nf324	0x0088F450	0088f450 rejected ?IsHeroSleepingEnabled@CGameScriptInterface@@UBE_NXZ work/exp_b1 REJECT: objcheck: section .
+0088f950	nf324	0x0088F950	0088f950 rejected ?IsSavingEnabled@CGameScriptInterface@@UBE_NXZ work/exp_b1 REJECT: objcheck: section .text b
+0088e380	nf324	0x0088E380	0088e380 skipped-port ?DontPopulateNextLoadedRegion@CGameScriptInterface@@UBEXXZ triage (local): model: virtua
+0088f460	nf324	0x0088F460	0088f460 skipped-port ?SetExperienceSpendingAsEnabled@CGameScriptInterface@@UBEX_N@Z triage (-): params: used 
+0088fd60	nf324	0x0088FD60	0088fd60 skipped-port ?IsEntityInLimbo@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z triage (-): params: used
+00891c40	nf324	0x00891C40	00891c40 skipped-port ?DisplayMoneyBag@CGameScriptInterface@@UBEX_N@Z triage (-): params: used parameter val i
+0088e090	nf324	0x0088E090	0088e090 skipped-port ?SetAllSoundsAsMuted@CGameScriptInterface@@UBEX_N@Z triage (-): params: used parameter m
+0088ff10	nf324	0x0088FF10	0088ff10 skipped-port ?ResetToDefaultTheme@CGameScriptInterface@@UBEXM@Z triage (-): params: used parameter du
+0088fff0	nf324	0x0088FFF0	0088fff0 skipped-port ?ResetToDefaultThemeExternals@CGameScriptInterface@@UBEXM@Z triage (-): params: the edx 

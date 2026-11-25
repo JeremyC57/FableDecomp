@@ -1,33 +1,20 @@
-#include <cstdio>
-
-struct COwner
+// Behaviour test for 0x0088E380 CGameScriptInterface::DontPopulateNextLoadedRegion (NF431): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The row must set the World's DontPopulateNextLoadedRegion byte (retail +0xd8, asserted against engine/CWorld.h) to 1 and nothing else.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#include "engine/CGameScriptInterface.h"
+#include "engine/CWorld.h"
+#include <stdio.h>
+#include <string.h>
+static long g_gsi[0x50 / 4];
+static unsigned char g_world[0x200];
+int main(void)
 {
-    unsigned char m_Pad00[0xD8];
-    unsigned char m_bDontPopulateNextLoadedRegion; // 0xD8
-};
-
-class CGameScriptInterface
-{ public:
-    void* m_Pad00;   // 0x0
-    COwner* m_pOwner; // 0x4
-};
-
-void __fastcall CGameScriptInterface_DontPopulateNextLoadedRegion(CGameScriptInterface* self)
-{
-    self->m_pOwner->m_bDontPopulateNextLoadedRegion = 1;
-}
-
-int main()
-{
-    COwner owner;
-    owner.m_bDontPopulateNextLoadedRegion = 0;
-    CGameScriptInterface iface;
-    iface.m_Pad00 = 0;
-    iface.m_pOwner = &owner;
-    CGameScriptInterface_DontPopulateNextLoadedRegion(&iface);
-    if (owner.m_bDontPopulateNextLoadedRegion == 1)
-        printf("DONTPOP_OK\n");
-    else
-        printf("DONTPOP_FAIL\n");
-    return 0;
+    if (offsetof(CWorld, DontPopulateNextLoadedRegion) != 0xd8) { printf("FAIL_0088e380\n"); return 1; }
+    memset(g_world, 0, sizeof g_world); g_gsi[1] = (long)g_world;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::DontPopulateNextLoadedRegion();
+    for (int i = 0; i < (int)sizeof g_world; ++i) if (g_world[i] != (i == 0xd8 ? 1 : 0)) { printf("FAIL_0088e380\n"); return 1; }
+    printf("PASS_0088e380 DONTPOP_OK\n"); return 0;
 }

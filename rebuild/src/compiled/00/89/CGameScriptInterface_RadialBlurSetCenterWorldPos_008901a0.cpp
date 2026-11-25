@@ -1,48 +1,21 @@
-// CGameScriptInterface::RadialBlurSetCenterWorldPos(void*, const C3DVector&) @ 0x008901A0.
-// Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
-//
-// Genuine C++ tail-call thunk: chase this->World->field_0018->field_1964
-// to reach the CEnvironmentSpellEffectInterpolator instance, then forward the
-// call (same ecx-this, same stack args) to that object's own
-// RadialBlurSetCenterWorldPos member (real retail impl at fixed address
-// 0x006B8310). CEnvironmentSpellEffectInterpolator::RadialBlurSetCenterWorldPos
-// is DECLARED but not DEFINED in this TU, so the compiler cannot inline it and
-// -- because the call is this function's last statement with a compatible
-// (__fastcall/void) signature -- VC7.1 tail-call-optimizes the call into a
-// single relative jmp (relocation-masked in parity) instead of a call+ret,
-// reproducing retail's 12-byte pointer chase followed by `e9 xx xx xx xx`.
+// CGameScriptInterface::RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos) const -- the world environment's spell-effect interpolator, a tail jump
+// Leaf: ?RadialBlurSetCenterWorldPos@CGameScriptInterface@@UBEXPAXABVC3DVector@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008901A0. Identity (NF431, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: ?GetEnvironment@CWorld@@QAEAAVCEnvironment@@XZ (inline: World +0x18), then the inline
+//   ?GetSpellEffectInterpolator@CEnvironment@@QAEAAVCEnvironmentSpellEffectInterpolator@@XZ (+0x1964), then
+//   ?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffectInterpolator@@QAEXPAXABVC3DVector@@@Z (retail 0x006B8310, the jmp target).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERPOLATOR
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_SCRIPTFORWARDS
+#include "engine/CGameScriptInterface.h"
+#include "engine/CWorld.h"
+#include "engine/CEnvironment.h"
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
 
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-#include "engine/C3DVector.h"
-
-class CEnvironmentSpellEffectInterpolator
+void CGameScriptInterface::RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos) const
 {
-public:
-    void RadialBlurSetCenterWorldPos(void* param_2, const C3DVector& param_3);
-};
-
-
-struct CGameScriptInterface_Field4_Overlay
-{
-    unsigned char pad_0000[0x18];
-    void* field_0018;
-};
-
-struct CGameScriptInterface_Field18_Overlay
-{
-    unsigned char pad_0000[0x1964];
-    CEnvironmentSpellEffectInterpolator* radialBlurInterpolator;
-};
-
-extern "C" void __fastcall
-CGameScriptInterface_RadialBlurSetCenterWorldPos(
-    CGameScriptInterface* self, void* edxDummy,
-    void* worldPosArg, const C3DVector& worldPosVec)
-{
-    CGameScriptInterface_Field4_Overlay* field4 =
-        *reinterpret_cast<CGameScriptInterface_Field4_Overlay* const*>(&self->World);
-    CGameScriptInterface_Field18_Overlay* field18 =
-        *reinterpret_cast<CGameScriptInterface_Field18_Overlay* const*>(&field4->field_0018);
-
-    field18->radialBlurInterpolator->RadialBlurSetCenterWorldPos(worldPosArg, worldPosVec);
+    World->PEnvironment_ptr->GetSpellEffectInterpolator().RadialBlurSetCenterWorldPos(key, pos);
 }

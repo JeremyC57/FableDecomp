@@ -1,74 +1,31 @@
+// Behaviour test for 0x008901A0 CGameScriptInterface::RadialBlurSetCenterWorldPos (NF431): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The interpolator member is defined here; the row must reach it through World (+0x04) -> +0x18 environment -> +0x1964 and pass both arguments, once.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CENVIRONMENT_SPELLEFFECTINTERPOLATOR
+#define FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_SCRIPTFORWARDS
 #include "engine/CGameScriptInterface.h"
-#include <cstdio>
-#include <cstring>
-
-class C3DVector { public: float x, y, z; };
-
-class CEnvironmentSpellEffectInterpolator
+#include "engine/CWorld.h"
+#include "engine/CEnvironment.h"
+#include "engine/CEnvironmentSpellEffectInterpolator.h"
+#include <stdio.h>
+#include <string.h>
+static int g_calls = 0;
+static const void* g_this = 0;
+static void* g_key = 0;
+static const void* g_pos = 0;
+void CEnvironmentSpellEffectInterpolator::RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos) { ++g_calls; g_this = this; g_key = key; g_pos = &pos; }
+static long g_gsi[0x50 / 4];
+static long g_world[0x40];
+static long g_env[0x1964 / 4 + 4];
+static long g_interp[8];
+static float g_vec[3] = { 1.0f, 2.0f, 3.0f };
+int main(void)
 {
-public:
-    void RadialBlurSetCenterWorldPos(void* param_2, const C3DVector& param_3);
-};
-
-
-struct CGameScriptInterface_Field4_Overlay
-{
-    unsigned char pad_0000[0x18];
-    void* field_0018;
-};
-
-struct CGameScriptInterface_Field18_Overlay
-{
-    unsigned char pad_0000[0x1964];
-    CEnvironmentSpellEffectInterpolator* radialBlurInterpolator;
-};
-
-extern "C" void __fastcall
-CGameScriptInterface_RadialBlurSetCenterWorldPos(
-    CGameScriptInterface* self, void* edxDummy,
-    void* param_2, const C3DVector& param_3);
-
-int main()
-{
-    // Patch the fixed-address call target with a small trampoline is not
-    // possible in a plain test binary, so instead we validate the pointer-
-    // chase arithmetic directly (the part that is testable without the
-    // real retail image mapped at 0x006B8310), and separately sanity check
-    // the struct layout offsets used by the candidate.
-
-    unsigned char blob18[0x1964 + sizeof(void*)];
-    std::memset(blob18, 0, sizeof(blob18));
-    CEnvironmentSpellEffectInterpolator* fakeInterp =
-        reinterpret_cast<CEnvironmentSpellEffectInterpolator*>(0x12345678u);
-    std::memcpy(blob18 + 0x1964, &fakeInterp, sizeof(fakeInterp));
-    CGameScriptInterface_Field18_Overlay* field18 =
-        reinterpret_cast<CGameScriptInterface_Field18_Overlay*>(blob18);
-
-    unsigned char blob4[0x18 + sizeof(void*)];
-    std::memset(blob4, 0, sizeof(blob4));
-    void* field18ptr = field18;
-    std::memcpy(blob4 + 0x18, &field18ptr, sizeof(field18ptr));
-    CGameScriptInterface_Field4_Overlay* field4 =
-        reinterpret_cast<CGameScriptInterface_Field4_Overlay*>(blob4);
-
-    unsigned char blob0[0x4 + sizeof(void*)];
-    std::memset(blob0, 0, sizeof(blob0));
-    void* field4ptr = field4;
-    std::memcpy(blob0 + 0x4, &field4ptr, sizeof(field4ptr));
-    CGameScriptInterface* selfObj =
-        reinterpret_cast<CGameScriptInterface*>(blob0);
-
-    CGameScriptInterface_Field4_Overlay* chasedField4 =
-        *reinterpret_cast<CGameScriptInterface_Field4_Overlay* const*>(&selfObj->World);
-    CGameScriptInterface_Field18_Overlay* chasedField18 =
-        *reinterpret_cast<CGameScriptInterface_Field18_Overlay* const*>(&chasedField4->field_0018);
-
-    bool ok = (chasedField18->radialBlurInterpolator == fakeInterp);
-
-    if (ok) {
-        std::printf("RADIALBLUR_CENTER_CHASE_OK\n");
-        return 0;
-    }
-    std::printf("RADIALBLUR_CENTER_CHASE_FAIL\n");
-    return 1;
+    g_gsi[1] = (long)g_world; g_world[0x18 / 4] = (long)g_env; g_env[0x1964 / 4] = (long)g_interp;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::RadialBlurSetCenterWorldPos((void*)0x1234, *(const C3DVector*)g_vec);
+    if (g_calls != 1 || g_this != (const void*)g_interp || g_key != (void*)0x1234 || g_pos != (const void*)g_vec) { printf("FAIL_008901a0\n"); return 1; }
+    printf("PASS_008901a0 RADIALBLUR_CENTER_CHASE_OK\n"); return 0;
 }

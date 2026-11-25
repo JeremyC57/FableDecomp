@@ -1,66 +1,44 @@
-#include <cstdio>
+// Behaviour test for 0x0088FD60 CGameScriptInterface::IsEntityInLimbo (NF431): links the row object. No class body is defined here:
+// the classes come from the row's shared headers. The script thing is a vftable whose slot 11 (+0x2c, GetPThing) is a __fastcall
+// stand-in returning a thing image; the flag byte at the retail offset +0x91 carries Dead (bit 0) and InLimbo (bit 5).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_ISINLIMBO_DIRECT
+#define FABLE_RETAIL_IS_THING_ALIVE
+#include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include <stdio.h>
 
-struct Inner {
-    unsigned char _pad[0x91];
-    unsigned char flags; // +0x91
-};
-class CGameScriptInterface { public:
-    Inner* (__fastcall **p0)(void*);
-};
+static unsigned char g_thing[0x100];
+static void* g_ret = 0;
+static int g_calls = 0;
+extern "C" void* __fastcall nf431_get_pthing(const void*) { ++g_calls; return g_ret; }   // CScriptThing slot 11
+static void* g_vtbl[79];
+static void* g_script[3];
+static long g_gsi[0x50 / 4];
 
-bool __stdcall CGameScriptInterface_IsEntityInLimbo(CGameScriptInterface* self)
+static int check(void* ret, unsigned char flags, bool want)
 {
-    Inner* (__fastcall **vt)(void*) = self->p0;
-    Inner* e = (*(Inner* (__fastcall **)(void*))((char*)vt + 0x2c))(self);
-    if (e == 0)
-        return false;
-    unsigned char f = e->flags;
-    if (!(f & 1))
-        return (f & 0x20) ? true : false;
-    return false;
+    g_ret = ret; g_thing[0x91] = flags; g_calls = 0;
+    const CGameScriptInterface* gsi = (const CGameScriptInterface*)g_gsi;
+    bool got = gsi->CGameScriptInterface::IsEntityInLimbo(*(const CScriptThing*)g_script);
+    return got == want && g_calls == 1;
 }
 
-static Inner g_inner;
-static Inner* g_ret;
-
-Inner* __fastcall vfn(void* /*ecx*/)
+int main(void)
 {
-    return g_ret;
-}
-
-int main()
-{
-    void* vtbl[16];
-    for (int i = 0; i < 16; ++i) vtbl[i] = (void*)&vfn;
-    CGameScriptInterface self;
-    self.p0 = (Inner* (__fastcall **)(void*))&vtbl[0];
-
-    // case 1: null entity -> false
-    g_ret = 0;
-    if (CGameScriptInterface_IsEntityInLimbo(&self) != false) { std::printf("FAIL null\n"); return 1; }
-
-    g_ret = &g_inner;
-
-    // case 2: bit0 set -> false
-    g_inner.flags = 0x01;
-    if (CGameScriptInterface_IsEntityInLimbo(&self) != false) { std::printf("FAIL bit0\n"); return 1; }
-
-    // case 3: bit5 set, bit0 clear -> true
-    g_inner.flags = 0x20;
-    if (CGameScriptInterface_IsEntityInLimbo(&self) != true) { std::printf("FAIL bit5true\n"); return 1; }
-
-    // case 4: bit5 clear, bit0 clear -> false
-    g_inner.flags = 0x00;
-    if (CGameScriptInterface_IsEntityInLimbo(&self) != false) { std::printf("FAIL bit5false\n"); return 1; }
-
-    // case 5: bit0 wins over bit5
-    g_inner.flags = 0x21;
-    if (CGameScriptInterface_IsEntityInLimbo(&self) != false) { std::printf("FAIL both\n"); return 1; }
-
-    // case 6: high bits set but bit0/bit5 clear -> false
-    g_inner.flags = 0xDA; // 11011010: bit0=0, bit5=0
-    if (CGameScriptInterface_IsEntityInLimbo(&self) != false) { std::printf("FAIL high\n"); return 1; }
-
-    std::printf("CGameScriptInterface_0088fd60_TEST PASS\n");
+    for (int i = 0; i < 79; ++i) g_vtbl[i] = 0;
+    g_vtbl[11] = (void*)&nf431_get_pthing;
+    g_script[0] = g_vtbl;
+    if (!check(0, 0x20, false) || !check(g_thing, 0x21, false) || !check(g_thing, 0x20, true) || !check(g_thing, 0x00, false)
+        || !check(g_thing, 0xdf, false)) {
+        printf("FAIL_0088fd60\n");
+        return 1;
+    }
+    printf("PASS_0088fd60 CGameScriptInterface_0088fd60_TEST PASS\n");
     return 0;
 }

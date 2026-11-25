@@ -24,6 +24,16 @@ public:
  void RadialBlurSetCenterWorldPos(void*,const C3DVector&);
  CEnvironmentSpellEffectInterface::CRadialBlurParams GetRadialBlurParam(void*)const;
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_SCRIPTFORWARDS
+    // Opt-in (NF431, rows 0x008901A0 / 0x008901E0, the CGameScriptInterface forwarders): Ego_r.pdb / FableWin.pdb
+    // ?RadialBlurSetCenterWorldPos@CEnvironmentSpellEffectInterpolator@@QAEXPAXABVC3DVector@@@Z (retail 0x006B8310) and
+    // ?DisplacementMonochromeEffectColourFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z (retail 0x006B8390), the tail-jump
+    // targets of those rows (FableWin's /Od bodies call them). Declarations only: no layout change.
+#ifndef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_BULLETTIME_PASS23
+    void RadialBlurSetCenterWorldPos(void*, const class C3DVector&);
+#endif
+    void DisplacementMonochromeEffectColourFadeOut(float, void*);
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENTSPELLEFFECTINTERPOLATOR_FRAMEUPDATE
     // Opt-in (row 0x006B3FF0 CEnvironment::Update): Ego_r.pdb ?FrameUpdate@CEnvironmentSpellEffectInterpolator@@QAEXXZ, retail 0x006B8640
     // (landed). Declaration only.

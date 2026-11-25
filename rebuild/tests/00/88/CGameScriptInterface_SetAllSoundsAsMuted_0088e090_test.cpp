@@ -1,33 +1,25 @@
-#include <cstdio>
-
-struct CSoundSys {
-    int muted;
-    void SetAllMuted();
-};
-static CSoundSys g_sys;
-static int g_getarg = -999;
-static int g_getcalls = 0;
-static int g_setcalls = 0;
-
-void CSoundSys::SetAllMuted() { g_setcalls++; this->muted = g_getarg ? 1 : 0; }
-CSoundSys* __stdcall GetSoundSystem(int muted) { g_getcalls++; g_getarg = muted; return &g_sys; }
-
-void __fastcall CGameScriptInterface_SetAllSoundsAsMuted(void* self, void* edx, int muted)
+// Behaviour test for 0x0088E090 CGameScriptInterface::SetAllSoundsAsMuted (NF431): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// CUserProfileManager::Get and SetSoundAsMuted are defined here; the row must pass the flag to the singleton Get returns, once.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CUSERPROFILEMANAGER_SETSOUNDASMUTED
+#include "engine/CGameScriptInterface.h"
+#include "engine/CUserProfileManager.h"
+#include <stdio.h>
+#include <string.h>
+static long g_mgr[4];
+static int g_gets = 0, g_calls = 0;
+static const void* g_this = 0;
+static bool g_muted = false;
+CUserProfileManager& __fastcall CUserProfileManager::Get() { ++g_gets; return *(CUserProfileManager*)g_mgr; }
+void CUserProfileManager::SetSoundAsMuted(bool muted) { ++g_calls; g_this = this; g_muted = muted; }
+static long g_gsi[0x50 / 4];
+int main(void)
 {
-    GetSoundSystem(muted)->SetAllMuted();
-}
-
-int main()
-{
-    g_sys.muted = -1;
-    CGameScriptInterface_SetAllSoundsAsMuted(0, 0, 1);
-    if (g_sys.muted == 1 && g_getcalls == 1 && g_setcalls == 1 && g_getarg == 1) {
-        CGameScriptInterface_SetAllSoundsAsMuted(0, 0, 0);
-        if (g_sys.muted == 0 && g_getcalls == 2 && g_setcalls == 2 && g_getarg == 0) {
-            std::printf("CGameScriptInterface_0088e090_TEST PASS\n");
-            return 0;
-        }
-    }
-    std::printf("FAIL\n");
-    return 1;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetAllSoundsAsMuted(true);
+    if (g_gets != 1 || g_calls != 1 || g_this != (const void*)g_mgr || !g_muted) { printf("FAIL_0088e090\n"); return 1; }
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetAllSoundsAsMuted(false);
+    if (g_calls != 2 || g_muted) { printf("FAIL_0088e090\n"); return 1; }
+    printf("PASS_0088e090 CGameScriptInterface_0088e090_TEST PASS\n"); return 0;
 }

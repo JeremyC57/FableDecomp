@@ -69,6 +69,13 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#if defined(FABLE_RETAIL_CPLAYERGUI_SETSHOWMONEYBAG) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
+public:
+    // Opt-in (NF431, row 0x00891C40 CGameScriptInterface::DisplayMoneyBag): FableWin.pdb ?SetShowMoneyBag@CPlayerGui@@QAEX_N@Z (public,
+    // called by FableWin's /Od DisplayMoneyBag), inline in retail (`mov [ecx+29Eh],al`, 0x00891C4A). Body only: no layout change.
+    void SetShowMoneyBag(bool show) { ShowMoneyBag = show; }
+private:
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_ISOPEN_PASS26
 public:
     bool IsOpen() const;
