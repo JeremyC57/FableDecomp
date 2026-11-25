@@ -1,0 +1,11 @@
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+00aa7db0   RELOCATION_MATCH PASS   CChunkedFile
+00aa7df0   RELOCATION_MATCH PASS   ~CChunkedFile
+00aa9190   WARN STANDIN_LEAF ??_GCChunkedFile@@UAEPAXI@Z (catalog CChunkedFile::~CChunkedFile; names another function)
+00aa9190   RELOCATION_MATCH PASS   ~CChunkedFile
+
+WINS: 3
+  00aa7db0 RELOCATION_MATCH CChunkedFile::??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z
+  00aa7df0 RELOCATION_MATCH CChunkedFile::??1CChunkedFile@@UAE@XZ
+  00aa9190 RELOCATION_MATCH CChunkedFile::??_GCChunkedFile@@UAEPAXI@Z

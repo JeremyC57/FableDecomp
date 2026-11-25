@@ -1,15 +1,19 @@
-// behaviour test for 0x005C1ECC vector<NInventory::CItem >::erase(first, last): the tail is assigned down onto first in order, every vacated slot past the new finish is destroyed once through its destructor, finish moves back by last - first, first is returned; an empty range only self-assigns the tail and erase(begin, end) empties the vector
+// behaviour test for 0x005C1ECC vector<NInventory::CItem >::erase(first, last) (the element's destructor implicit, as NInventory::CItem): the tail is assigned down onto first in order, every vacated slot past the new finish is destroyed once through its destructor, finish moves back by last - first, first is returned; an empty range only self-assigns the tail and erase(begin, end) empties the vector
 #include <cstdio>
 #include <cstdlib>
 #include <new>
 static int gDestroyed = 0;
 static int gAssigned = 0;
-class Elem {                                   // stands for NInventory::CItem (non-trivial assignment and destructor)
+struct PerItemRef {                            // stands for CCountedPointer<NInventory::CPerItemData> PPerItemData (+8)
+    int Alive;
+    ~PerItemRef() { ++gDestroyed; Alive = 0; }
+};
+class Elem {                                   // stands for NInventory::CItem: user assignment, implicit destructor (runs the member's)
 public:
-    explicit Elem(int v) : Id(v) { }
-    ~Elem() { ++gDestroyed; Id = -1; }
-    Elem& operator=(const Elem& other) { Id = other.Id; ++gAssigned; return *this; }
+    explicit Elem(int v) : Id(v) { Ref.Alive = 1; }
+    Elem& operator=(const Elem& other) { Id = other.Id; Ref.Alive = other.Ref.Alive; ++gAssigned; return *this; }
     int Id;
+    PerItemRef Ref;
 };
 struct Vec { Elem* s; Elem* f; Elem* e; };
 static Elem* Copy(Elem* first, Elem* last, Elem* result)
@@ -41,7 +45,7 @@ int main()
     if (v.f != p + 4 || v.s != p || v.e != p + 8) fails |= 2;
     if (p[0].Id != 0 || p[1].Id != 30 || p[2].Id != 40 || p[3].Id != 50) fails |= 4;
     if (gAssigned != 3 || gDestroyed != 2) fails |= 8;
-    if (p[4].Id != -1 || p[5].Id != -1) fails |= 16;   // the two vacated slots were destroyed
+    if (p[4].Ref.Alive != 0 || p[5].Ref.Alive != 0 || p[3].Ref.Alive != 1) fails |= 16;   // the two vacated slots were destroyed
     gAssigned = 0; gDestroyed = 0;
     r = Erase(v, p + 2, p + 2);                        // empty range: no early-out, the tail self-assigns
     if (r != p + 2 || v.f != p + 4 || gAssigned != 2 || gDestroyed != 0 || p[2].Id != 40 || p[3].Id != 50) fails |= 32;

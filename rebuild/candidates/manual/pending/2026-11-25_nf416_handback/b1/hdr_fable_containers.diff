@@ -1,0 +1,22 @@
+3a4,6
+> #ifdef FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE_FASTCALL
+> #include "fable_compiler.h"
+> #endif
+430c433,440
+< #if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
+---
+> #if defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE_FASTCALL) && defined(_MSC_VER)
+> // NF416 opt-in (2026-11-25, the NInventory::CTCInventoryBase TU rows 0x005BF91A / 0x005BF969, vector<NInventory::CItem>::erase
+> // 0x005C1ECC): the dispatch expanded at every call (retail erase calls __destroy_aux 0x005C18C6 directly) in the /Gr TU's __fastcall
+> // convention. Retail keeps the unreferenced out-of-line copies 0x005C1937 (__destroy: `push ecx ; lea eax,[esp+3] ; push eax ;
+> // call 0x005C18C6 ; pop ecx ; ret 4`) and 0x005C1996 (_Destroy(first, last): the same with a plain `ret`). Pair with
+> // FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL. The FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE text with __fastcall added.
+> template<class I,class T> FABLE_FORCEINLINE void __fastcall __destroy(I first,I last,T*) {
+> #elif defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
+443c453,456
+< #if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
+---
+> #if defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE_FASTCALL) && defined(_MSC_VER)
+> // NF416 opt-in: see __destroy above (retail copy 0x005C1996).
+> template<class I> FABLE_FORCEINLINE void __fastcall _Destroy(I first,I last) {
+> #elif defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)

@@ -17579,8 +17579,8 @@ address	symbol	status	leaf_given
 00aa7850	?CreateNewInstance@CChunkedFileRawDataChunk_Retail@@UAEPAUCChunkedFileChunk_Retail@@XZ	RELOCATION_MATCH	CreateNewInstance
 00aa78c0	?WriteToFile@CChunkedFileSuperChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	RELOCATION_MATCH	WriteToFile
 00aa7950	?FindRegisteredSubChunkType@CChunkedFileSuperChunk@@QBEPAVCChunkedFileChunk@@PBD@Z	MATCH	FindRegisteredSubChunkType
-00aa7db0	??0CChunkedFile@@QAE@ABUCCountedSuperChunkPointer@@@Z	RELOCATION_MATCH	??0CChunkedFile@
-00aa7df0	??1CChunkedFile@@QAE@XZ	RELOCATION_MATCH	??1CChunkedFile@
+00aa7db0	??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z	RELOCATION_MATCH	??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z
+00aa7df0	??1CChunkedFile@@UAE@XZ	RELOCATION_MATCH	??1CChunkedFile@@UAE@XZ
 00aa7ea0	?CountSubChunksOfType@CChunkedFileSuperChunk@@QBEJPBD@Z	RELOCATION_MATCH	CountSubChunksOfType
 00aa8280	?RemoveSubChunk@CChunkedFileSuperChunk_Retail@@QAEXAAUCCountedChunkPointer@@@Z	RELOCATION_MATCH	RemoveSubChunk
 00aa82c0	?RemoveSubChunksOfType@CChunkedFileSuperChunk@@QAEXPBD@Z	RELOCATION_MATCH	RemoveSubChunksOfType
@@ -17596,7 +17596,7 @@ address	symbol	status	leaf_given
 00aa8f00	?Uninit_copy@@YIPAUElem@@PAU1@00UTag@@@Z	MATCH	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>
 00aa8f40	?Move_CountedPointer_00aa8f40@@YIPAUCCountedPointer@@PAU1@00USIteratorTag@@1@Z	RELOCATION_MATCH	Move_CountedPointer_00aa8f40
 00aa8fc0	?Move_CountedPointer_00aa8fc0@@YIPAUCCountedPointer@@PAU1@00USIteratorTag@@1@Z	RELOCATION_MATCH	Move_CountedPointer_00aa8fc0
-00aa9190	??_GCChunkedFile@@UAEPAXI@Z	RELOCATION_MATCH	??1CChunkedFile@
+00aa9190	??_GCChunkedFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GCChunkedFile@@UAEPAXI@Z
 00aa94e0	?_M_insert_overflow@?$vector@V?$CCountedPointer@VCChunkedFileChunk@@@@V?$allocator@V?$CCountedPointer@VCChunkedFileChunk@@@@@std@@@std@@IAEXPAV?$CCountedPointer@VCChunkedFileChunk@@@@ABV3@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@?$vector@V?$CCountedPointer@
 00aa9600	?ScalarDeletingDestructor@CChunkedFileSuperChunk@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00aa9650	??0C3DMeshFileHelpersChunk@@QAE@XZ	RELOCATION_MATCH	??0C3DMeshFileHelpersChunk@

@@ -1,0 +1,4 @@
+address	check	head	new	verdict	evidence
+00621a20	leaf grade HEAD / +TRANSFERIN (nf387 VC7.1 grade)	RELOCATION_MATCH	RELOCATION_MATCH	ok	logs/grade_t1.log
+00621a20	pk_all ??_GCItem v 0x005C1390	NEQ 30 B (reach n)	NEQ 74 B (reach n)	HOLD	evidence/pk/H_00621a20.pkall.tsv evidence/pk/N_00621a20.pkall.tsv
+00621a20	pk_all reach flips	-	__destroy_aux<CItem*> NEQ v 0x005C18C6, reach n -> y	HOLD	evidence/pk/

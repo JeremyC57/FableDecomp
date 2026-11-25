@@ -1,0 +1,13 @@
+address	check	head	new	verdict	evidence
+00aa7db0,00aa7df0,00aa9190	vland --recheck-landed (new: thin rows resolve the owner through FABLE_HDR_OVERLAY=hdr -> agent src/compiled copy)	RELOCATION_MATCH PASS x3	RELOCATION_MATCH PASS x3	ok	logs/vland_v1h.log logs/vland_v1n.log
+00aa7db0,00aa7df0,00aa9190	LITERAL_DIFF	0	0	ok	logs/vland_v1n.log ("" 0x0122D70E)
+00aa7db0,00aa7df0,00aa9190	tests real + mutation control	-	PASS x3 / mutant FAIL x3	ok	logs/mutation_controls.txt
+00aa7db0,00aa7df0,00aa9190	thin object == owner object	-	ALL_EQ x2	ok	evidence/objsec/unit_owner_v_thin*.txt
+00aa7db0,00aa7df0,00aa9190	objsec HEAD v unit	-	renames only (stand-in local types -> shared header) + the 30 B ??_G -> 95 B EQ copy	ok	evidence/objsec/00aa*_H_v_unit.txt
+00aa7db0,00aa7df0,00aa9190	pk_all (troot = repo + SELF_SYMBOLS) each leaf	HEAD 00aa7db0 ??_G NEQ	ctor EQ 00aa7db0, ??1 EQ 00aa7df0, ??_G EQ 00aa9190; NOADDR copy ctor 25 B / ~CCountedPointer 53 B TIER1	ok	evidence/pk/TU_* evidence/defscan_cf.txt
+00aa7db0,00aa7df0,00aa9190	??_7CChunkedFile@@6B@ v retail 0x0129E4E8 (pk does not walk vftables)	-	4 B, one reloc ??_E (weak -> ??_G) = 0x00AA9190, retail slot 0 = 0x00AA9190; HEAD 0x00AA7DF0 object had ?VSlot0 there	ok	evidence/objsec/00aa7df0_H_v_unit.txt
+00aa7db0,00aa7df0,00aa9190	census pk (24 CChunkedFile objects, HEAD table v troot)	-	no verdict change	ok	evidence/pk/CH_* CT_*
+00aa7db0,00aa7df0,00aa9190	s_unit_check --objdir	-	OK, DEF checked	ok	evidence/s_unit_check.txt
+00aa7db0,00aa7df0,00aa9190	vland strict leaf (LANDVERIFY_STRICT_LEAF=1, new)	-	RELOCATION_MATCH PASS x3	ok	logs/vland_s1n_strict.log
+00aa7db0,00aa7df0,00aa9190	/FORCE census link (one object per TU)	dup 16; ??0CChunkedFile(real) unresolved x8	dup 16 (same set); that name resolved; nothing new unresolved	ok	evidence/link_census.txt
+00aa7db0,00aa7df0,00aa9190	apply_table --dry / reserved_check	-	0 misses / reserved 0	ok	-

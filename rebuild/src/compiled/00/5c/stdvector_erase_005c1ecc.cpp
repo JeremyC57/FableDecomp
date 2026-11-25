@@ -11,7 +11,20 @@
 //   _M_finish = __i; return __first;` -- the family G067 body with __copy left out of line: both callees are same-TU noinline
 //   `__fastcall` bodies that never touch their tag, so VC7.1 homes both tags in the live `first` slot ([ebp+0Bh]) as retail does.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// Mode and copies (NF416, T3 nf409 R-NF409-1 b): there is no `#pragma optimize("y", off)`. No CompilerFlags. The erase leaf is
+//   framed without it too: its section is byte-equal with and without the pragma. The pragma framed only the end-of-TU template
+//   instances and the compiler-generated members. Three changes, each measured with the others in place:
+//   - no y-off;
+//   - an implicit ~CItem;
+//   - a __fastcall _Destroy(T*), the /Gr convention of the row's other free templates.
+//   With all three, every copy the change touches is EQ at its table address: __copy 0x005C12FA (leaf-referenced; at HEAD a
+//   51-byte framed NEQ), __destroy_aux 0x005C18C6, ??_GCItem 0x005C1390, ~CCountedPointer / ??4 / ShareData 0x005C04BF /
+//   0x005C077F / 0x005C04EB, and CItem::operator= 0x005C0C24. The unreferenced 8-byte _Destroy(CItem*) copy has one retail home
+//   whose call resolves to 0x005C1390: 0x005C149E. ReleaseData's NEQ at 005c04bf is unchanged from HEAD.
+//   Leaving one change out:
+//   - y-off kept: ??_G is framed, 34 bytes;
+//   - ~CItem kept: __destroy_aux is 27 v 29 bytes and ??_G calls ??1CItem;
+//   - cdecl _Destroy: a 12-byte copy with no retail home.
 #pragma optimize("s", on)
 #include <stddef.h>
 #include "engine/CCountedPointer.h"
@@ -23,7 +36,7 @@ public:
     long                          NumberOfItems;             // +0x04
     CCountedPointer<CPerItemData> PPerItemData;              // +0x08
     long                          AverageBoughtPrice;        // +0x10
-    ~CItem();
+    // ~CItem implicit (NF416): retail's ??_GCItem 0x005C1390 calls ~CCountedPointer<CPerItemData> 0x005C04BF on +8 directly
 };
 }
 
@@ -67,7 +80,7 @@ FABLE_FORCEINLINE _Tp* __copy_ptrs(_Tp* __first, _Tp* __last, _Tp* __result, con
     return __copy(__first, __last, __result, random_access_iterator_tag(), (ptrdiff_t*)0);
 }
 
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
+template <class _Tp> inline void __fastcall _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }   // retail copy 0x005C149E (unreferenced)
 
 #pragma auto_inline(off)
 template <class _ForwardIterator>                                                        // 0x005C18C6 (same-TU body)

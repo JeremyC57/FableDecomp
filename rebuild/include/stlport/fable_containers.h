@@ -1,6 +1,9 @@
 #ifdef FABLE_RETAIL_STLP_BOOL_FILL_OWNER_PASS26
 #include "fable_compiler.h"
 #endif
+#ifdef FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE_FASTCALL
+#include "fable_compiler.h"
+#endif
 // Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_STLPORT_CONTAINERS_H
 #define FABLE_STLPORT_CONTAINERS_H
@@ -427,7 +430,14 @@ template<class I> inline void FABLE_FASTCALL __destroy_aux(I,I,const __true_type
 #else
 template<class I> inline void __destroy_aux(I,I,const __true_type&) { }
 #endif
-#if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
+#if defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE_FASTCALL) && defined(_MSC_VER)
+// NF416 opt-in (2026-11-25, the NInventory::CTCInventoryBase TU rows 0x005BF91A / 0x005BF969, vector<NInventory::CItem>::erase
+// 0x005C1ECC): the dispatch expanded at every call (retail erase calls __destroy_aux 0x005C18C6 directly) in the /Gr TU's __fastcall
+// convention. Retail keeps the unreferenced out-of-line copies 0x005C1937 (__destroy: `push ecx ; lea eax,[esp+3] ; push eax ;
+// call 0x005C18C6 ; pop ecx ; ret 4`) and 0x005C1996 (_Destroy(first, last): the same with a plain `ret`). Pair with
+// FABLE_RETAIL_STLP_DESTROY_AUX_FASTCALL. The FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE text with __fastcall added.
+template<class I,class T> FABLE_FORCEINLINE void __fastcall __destroy(I first,I last,T*) {
+#elif defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I,class T> FABLE_FORCEINLINE void __destroy(I first,I last,T*) {
 #else
@@ -440,7 +450,10 @@ template<class I,class T> inline void __destroy(I first,I last,T*) {
     typedef typename __type_traits<T>::has_trivial_destructor Trivial;
     __destroy_aux(first,last,Trivial());
 }
-#if defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
+#if defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE_FASTCALL) && defined(_MSC_VER)
+// NF416 opt-in: see __destroy above (retail copy 0x005C1996).
+template<class I> FABLE_FORCEINLINE void __fastcall _Destroy(I first,I last) {
+#elif defined(FABLE_RETAIL_AUGMENTATION_PARTICLES) || defined(FABLE_RETAIL_STLP_DESTROY_DISPATCH_FORCEINLINE)
 // Inline-budget: native helpers expand this original destruction dispatch wrapper.
 template<class I> FABLE_FORCEINLINE void _Destroy(I first,I last) {
 #else

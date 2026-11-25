@@ -1,0 +1,10 @@
+address	check	head	new	verdict	evidence
+005c1ecc	vland --recheck-landed	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	ok	logs/vland_v1h.log logs/vland_v1n.log (WARN SHARED_HEADER_AVAILABLE CItem + two RELOC_NAME catalog labels: HEAD too)
+005c1ecc	LITERAL_DIFF	0	0	ok	logs/vland_v1n.log
+005c1ecc	tests real + mutation control	-	PASS / mutant FAIL	ok	logs/mutation_controls.txt
+005c1ecc	objsec HEAD v new	-	leaf EQ; 9 template / compiler-generated COMDATs differ	ok	evidence/objsec/005c1ecc_H_v_new.txt
+005c1ecc	pk_all + pickany_vs_retail	6 NEQ	1 NEQ (ReleaseData, unchanged)	ok	evidence/pk/Hh_005c1ecc.* evidence/pk/F_005c1ecc.*
+005c1ecc	reach flips	-	0	ok	evidence/pk/
+005c1ecc	extra COMDATs	-	??1CItem TIER1; ??_GCItem byte+reloc = landed 0x005C1390 copy; _Destroy(CItem*) tier-2 0x005C149E, EQ under pk_all --addrs	ok	evidence/mscan_tier2_005c1ecc.txt evidence/pk_addrs_tier2_005c1ecc.tsv evidence/boundary_homes.txt
+005c1ecc	/FORCE census link	dup 16	dup 16 (same set), no new unresolved	ok	evidence/link_census.txt
+005c1ecc	apply_table --dry / reserved_check	-	0 misses / reserved 0 (0x005BFD5E cited as a caller in the existing comment only)	ok	-

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+005bf91a   RELOCATION_MATCH PASS   ReturnAllConfiscatedItems
+005bf969   RELOCATION_MATCH PASS   RemoveAllConfiscatedItems
+
+WINS: 2
+  005bf91a RELOCATION_MATCH NInventory::CTCInventoryBase::?ReturnAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ
+  005bf969 RELOCATION_MATCH NInventory::CTCInventoryBase::?RemoveAllConfiscatedItems@CTCInventoryBase@NInventory@@UAEXXZ

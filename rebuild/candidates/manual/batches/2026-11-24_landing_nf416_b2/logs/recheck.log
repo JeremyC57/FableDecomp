@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005c1ecc   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c1ecc   WARN RELOC_NAME: ??$__copy@PAVCItem@NInventory@@PAV12@H@std@@YIPAVCItem@NInventory@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z -> 005c12fa labelled 'std::__copy<NInventory::CItem *, NInventory::CItem *, int>'
+005c1ecc   WARN RELOC_NAME: ??$__destroy_aux@PAVCItem@NInventory@@@std@@YIXPAVCItem@NInventory@@0ABU__false_type@0@@Z -> 005c18c6 labelled '_global::ForEachElem0x14__vector_deleting_destruct_005c18c6'
+005c1ecc   RELOCATION_MATCH PASS   erase
+
+WINS: 1
+  005c1ecc RELOCATION_MATCH std::vector::?erase@?$vector@VCItem@NInventory@@

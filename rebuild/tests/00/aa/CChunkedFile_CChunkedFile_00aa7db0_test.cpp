@@ -1,7 +1,8 @@
 #include <cstdio>
 #include <cstring>
 static int g_baseCtor = 0, g_baseDtor = 0, g_destroyed = 0, g_commentCtor = 0, g_commentDtor = 0; static const char* g_commentText = 0; static long g_commentLength = 0; static void* g_destroyedObject = 0;
-struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } ~CBase() { ++g_baseDtor; } };
+// NF416: models the shared engine/CChunkedFile.h shape (CBaseClassNonCopyable base with a virtual destructor; virtual ~CChunkedFile).
+struct CBaseClassNonCopyable { CBaseClassNonCopyable() { ++g_baseCtor; } virtual ~CBaseClassNonCopyable() { ++g_baseDtor; } };
 class CChunkedFileSuperChunk;
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(void*); void* m_pObject; };
 static void __fastcall DestroyChunk(void* object) { ++g_destroyed; g_destroyedObject = object; }
@@ -21,10 +22,10 @@ public:
     CCharString(const char* text, long length) : PStringData(0) { ++g_commentCtor; g_commentText = text; g_commentLength = length; }
     ~CCharString() { ++g_commentDtor; }
 };
-class CChunkedFile : public CBase { public:
+class CChunkedFile : public CBaseClassNonCopyable { public:
     CCountedSuperChunkPointer RootChunk; unsigned long Version; CCharString FileComment;
-    CChunkedFile(const CCountedSuperChunkPointer& rootChunk) : CBase(), RootChunk(rootChunk), Version(0), FileComment("", -1) { }
-    ~CChunkedFile() { }
+    CChunkedFile(const CCountedSuperChunkPointer& rootChunk) : CBaseClassNonCopyable(), RootChunk(rootChunk), Version(0), FileComment("", -1) { }
+    virtual ~CChunkedFile() { }
 };
 int main()
 {
@@ -36,5 +37,6 @@ int main()
     }
     CCountedSuperChunkPointer empty;
     { CChunkedFile file2(empty); if (file2.RootChunk.Info != 0 || file2.RootChunk.Data != 0 || g_commentCtor != 2) { std::printf("00aa7db0_TEST FAIL\n"); return 1; } }
+    if (block->m_references != 1 || g_baseDtor != 2 || g_commentDtor != 2) { std::printf("00aa7db0_TEST FAIL\n"); return 1; }   // both files destroyed, the shared block released once
     std::printf("00aa7db0_TEST PASS\n"); return 0;
 }

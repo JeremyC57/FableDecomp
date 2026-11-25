@@ -1,0 +1,18 @@
+address	check	head	new	verdict	evidence
+005bf91a	vland --recheck-landed (one LANDVERIFY_WORK path; new with FABLE_HDR_OVERLAY=hdr)	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	ok	logs/vland_v1h.log logs/vland_v1n.log
+005bf91a	LITERAL_DIFF	0	0	ok	logs/vland_v1n.log
+005bf91a	tests real + mutation control	-	PASS / mutant FAIL	ok	logs/mutation_controls.txt
+005bf91a	objsec HEAD v new (by COMDAT symbol)	-	leaf EQ; only the CItem destroy-chain COMDATs differ	ok	evidence/objsec/005bf91a_H_v_new.txt
+005bf91a	pk_all + pickany_vs_retail (--leaf)	see pk	0 NEQ bound copies; IMPROVED ??_G / erase	ok	evidence/pk/
+005bf91a	reach flips (pkflip H v new)	-	REGRESS 0, NEW_NEQ 0, REACHFLIP 0	ok	evidence/pk/
+005bf91a	extra COMDATs (R1/R10)	-	??1CItem TIER1; ??_GCItem byte+reloc = landed 0x005C1390 copy; 3 fastcall copies unique tier-2 homes, EQ under pk_all --addrs	ok	evidence/defscan_item_final.txt evidence/mscan_tier2_*.txt evidence/pk_addrs_tier2_005bf91a.tsv evidence/boundary_homes.txt
+005bf969	vland --recheck-landed (one LANDVERIFY_WORK path; new with FABLE_HDR_OVERLAY=hdr)	RELOCATION_MATCH PASS	RELOCATION_MATCH PASS	ok	logs/vland_v1h.log logs/vland_v1n.log
+005bf969	LITERAL_DIFF	0	0	ok	logs/vland_v1n.log
+005bf969	tests real + mutation control	-	PASS / mutant FAIL	ok	logs/mutation_controls.txt
+005bf969	objsec HEAD v new (by COMDAT symbol)	-	leaf EQ; only the CItem destroy-chain COMDATs differ	ok	evidence/objsec/005bf969_H_v_new.txt
+005bf969	pk_all + pickany_vs_retail (--leaf)	see pk	0 NEQ bound copies; IMPROVED ??_G / erase / __copy	ok	evidence/pk/
+005bf969	reach flips (pkflip H v new)	-	REGRESS 0, NEW_NEQ 0, REACHFLIP 0	ok	evidence/pk/
+005bf969	extra COMDATs (R1/R10)	-	??1CItem TIER1; ??_GCItem byte+reloc = landed 0x005C1390 copy; 3 fastcall copies unique tier-2 homes, EQ under pk_all --addrs	ok	evidence/defscan_item_final.txt evidence/mscan_tier2_*.txt evidence/pk_addrs_tier2_005bf91a.tsv evidence/boundary_homes.txt
+005bf91a,005bf969	/FORCE census link (67 HEAD v 65 new objects, one per TU; 0x005C1390 / 0x005C18C6 included)	dup 16, unresolved list L	dup 16 (same set), unresolved L minus 0	ok	evidence/link_census.txt
+005bf91a,005bf969	apply_table --dry (no table change)	-	0 misses, multi-target 1 -> 1	ok	-
+005bf91a,005bf969	reserved_check (RESERVED_REFS="")	-	reserved 0	ok	-

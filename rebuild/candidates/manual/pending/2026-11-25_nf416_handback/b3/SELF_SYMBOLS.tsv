@@ -1,0 +1,4 @@
+address	symbol	status	leaf_given
+00aa7db0	??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z	RELOCATION_MATCH	??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z
+00aa7df0	??1CChunkedFile@@UAE@XZ	RELOCATION_MATCH	??1CChunkedFile@@UAE@XZ
+00aa9190	??_GCChunkedFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GCChunkedFile@@UAEPAXI@Z
