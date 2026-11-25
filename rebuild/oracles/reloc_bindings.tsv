@@ -1133,8 +1133,7 @@ _FreeThing@4	00451b82	00453630
 ?g_emptyString_0122d70e@@3QBDB	0122d70e	004e59e1
 ??0CGroupMemberMap@@QAE@XZ	004e4082	004e5c2f
 ??_7CTCCreatureGroup@@6B@	0124326c	004e5c2f
-?inner@FableDestVal_004e5c71_t@@QAIXXZ	004e350f	004e5c71
-?outer@FableDestVal_004e5c71_t@@QAIXXZ	00686830	004e5c71
+??1?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAE@XZ	004e350f	004e5c71
 ??_7CTCCreatureGroupTag@@6B@	012432f4	004e5f18
 ??_7CTCLightningNode@@6B@	0124337c	004e6d17
 ?push_back@CRetailVector_SPair@@QAEXABUSPair@@@Z	004e40c3	004e6d8a

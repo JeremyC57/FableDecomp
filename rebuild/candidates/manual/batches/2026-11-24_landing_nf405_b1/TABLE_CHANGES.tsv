@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?inner@FableDestVal_004e5c71_t@@QAIXXZ -> ??1?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAE@XZ	004e350f	004e5c71	NF405: ~CTCCreatureGroup ported onto engine/CTCCreatureGroup.h (implicit destructor); its Members call names the tree destructor (landed nf398_b1 self of 0x004E350F); the stand-in line goes (T3 nf398 0x004E5C71)
+delete	?outer@FableDestVal_004e5c71_t@@QAIXXZ	00686830	004e5c71	NF405: same port; the base call is ??1CTCBase@@UAE@XZ, already bound at 00686830 (witness 004dcedd); this row was the only witness of the stand-in

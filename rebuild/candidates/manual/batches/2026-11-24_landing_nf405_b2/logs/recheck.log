@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004dbe39   RELOCATION_MATCH PASS   ScalarDeletingDtor_004dbe39
+
+WINS: 1
+  004dbe39 RELOCATION_MATCH _global::??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z

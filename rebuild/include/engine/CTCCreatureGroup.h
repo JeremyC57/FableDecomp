@@ -39,7 +39,13 @@ protected:
 private:
  void ShutdownGroupIfEmpty();
 public:
+#ifndef FABLE_RETAIL_CTCCREATUREGROUP_IMPLICIT_DTOR
  virtual ~CTCCreatureGroup();
+#else
+ // Opt-in (agentNF405, row 0x004E5C71 ??1CTCCreatureGroup@@UAE@XZ): no user-declared destructor. The retail destructor (tc_register.obj
+ // in FableWin / Ego_d; tc_creature_group.obj defines none) is `lea ecx,[esi+18h] ; call ~_Rb_tree 0x004E350F ; mov ecx,esi ; jmp ~CTCBase`: it
+ // stores no vtable of its own, which only the compiler-generated destructor does (a user-declared one stores it first; CArenaRoundDef).
+#endif
  CTCCreatureGroup& operator=(const CTCCreatureGroup&);
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureGroup)==36);

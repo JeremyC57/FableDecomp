@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004e5c71   WARN RELOC_NAME: ??1?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAE@XZ -> 004e350f labelled '_global::StdList_Dtor_004e350f'
+004e5c71   RELOCATION_MATCH PASS   ~CTCCreatureGroup
+
+WINS: 1
+  004e5c71 RELOCATION_MATCH CTCCreatureGroup::??1CTCCreatureGroup@@UAE@XZ

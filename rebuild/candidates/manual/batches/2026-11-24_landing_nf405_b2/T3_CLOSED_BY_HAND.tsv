@@ -1,0 +1,1 @@
+nf398	0x004DBE39	identity	self is the stand-in ?vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z; the body is ??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z (b1 table line, EQ copies from 0x004DFB8F and 0x00813460). Compiler-generated: needs the nf86/nf88 pick-any re-row form. | CLOSED by nf405_b2 (2026-11-25)
