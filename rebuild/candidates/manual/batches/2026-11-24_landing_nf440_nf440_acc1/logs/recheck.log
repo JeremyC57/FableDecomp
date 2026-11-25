@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00535ebb   RELOCATION_MATCH PASS   CCountedPointer_Release_00535ebb
+00578a8d   RELOCATION_MATCH PASS   ~CCountedPointer
+007044d0   RELOCATION_MATCH PASS   ShareData
+008aa8e0   RELOCATION_MATCH PASS   ShareData
+00cdd4f0   RELOCATION_MATCH PASS   ~CCountedPointer
+
+WINS: 5
+  00535ebb RELOCATION_MATCH CCountedPointer<NUISystem::CListArrow>::?ReleaseData@?$CCountedPointer@VCListArrow@NUISystem@@@@QAEXXZ
+  00578a8d RELOCATION_MATCH CCountedPointer<NUISystem::CComponentContainer>::??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ
+  007044d0 RELOCATION_MATCH CCountedPointer<CScriptThing>::?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z
+  008aa8e0 RELOCATION_MATCH CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z
+  00cdd4f0 RELOCATION_MATCH CCountedPointer<NScript::CPredicateBase const>::??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ

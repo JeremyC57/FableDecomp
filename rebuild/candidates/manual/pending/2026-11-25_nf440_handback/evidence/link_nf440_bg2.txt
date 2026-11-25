@@ -1,0 +1,14 @@
+## HEAD set: 56 objects, rc=0, dll=True, fatal=[]
+duplicates 0
+unresolved matching watch: 3
+  UNRESOLVED x2 ?AddMorphParameter@C3DSkeletalMorph@@QAEXABV?$CCountedPointer@VC3DSkeletalMorphParameter@@@@@Z
+  UNRESOLVED x1 ?GetMorphTarget@CSkeletalMorphResourceManager@@QAEAAV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+all unresolved lines: 96
+## new set: 56 objects, rc=0, dll=True, fatal=[]
+duplicates 0
+unresolved matching watch: 3
+  UNRESOLVED x2 ?AddMorphParameter@C3DSkeletalMorph@@QAEXABV?$CCountedPointer@VC3DSkeletalMorphParameter@@@@@Z
+  UNRESOLVED x1 ?GetMorphTarget@CSkeletalMorphResourceManager@@QAEAAV?$CCountedPointer@VC3DSkeletalMorphTarget@@@@ABVCCharString@@@Z
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCSkeletalMorphResourceManager@@@@0V?$CCountedPointer@VCSkeletalMorphResourceManager@@@@A
+all unresolved lines: 96

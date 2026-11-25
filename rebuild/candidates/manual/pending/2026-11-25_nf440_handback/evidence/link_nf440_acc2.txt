@@ -1,0 +1,33 @@
+## HEAD set: 25 objects, rc=0, dll=True, fatal=[]
+duplicates 4
+  DUP x1 ??0CEnginePrimitiveRenderer@@QAE@XZ
+  DUP x1 ?AddPrimitiveManager@CEnginePrimitiveRenderer@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
+  DUP x1 ?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z
+  DUP x1 ?OnCreate@CTCOpinionSource@@UAEXXZ
+unresolved matching watch: 10
+  UNRESOLVED x1 ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@0ABU__false_type@0@@Z
+  UNRESOLVED x2 ??0CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@ABV?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@@Z
+  UNRESOLVED x1 ?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z
+  UNRESOLVED x1 ?DeleteData@?$CCountedPointer@VCParticleSimulationRenderData@@@@SIXPAX@Z
+  UNRESOLVED x1 ?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@SIXPAX@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VC3DMeshPartitionElement@@@@QAEXPAVC3DMeshPartitionElement@@@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VCCreatureStatsDef@@@@QAEXPAVCCreatureStatsDef@@@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VCParticleSimulationRenderData@@@@QAEXPAVCParticleSimulationRenderData@@@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VCRandomAppearanceMorph@@@@QAEXPAVCRandomAppearanceMorph@@@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXPAVCScriptGameResourceObjectMovieBase@@@Z
+all unresolved lines: 314
+## new set: 25 objects, rc=0, dll=True, fatal=[]
+duplicates 4
+  DUP x1 ??0CEnginePrimitiveRenderer@@QAE@XZ
+  DUP x1 ?AddPrimitiveManager@CEnginePrimitiveRenderer@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
+  DUP x1 ?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z
+  DUP x1 ?OnCreate@CTCOpinionSource@@UAEXXZ
+unresolved matching watch: 7
+  UNRESOLVED x1 ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@0ABU__false_type@0@@Z
+  UNRESOLVED x2 ??0CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@ABV?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@@Z
+  UNRESOLVED x1 ?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z
+  UNRESOLVED x1 ?DeleteData@?$CCountedPointer@VCParticleSimulationRenderData@@@@SIXPAX@Z
+  UNRESOLVED x1 ?DeleteData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@SIXPAX@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VCCreatureStatsDef@@@@QAEXPAVCCreatureStatsDef@@@Z
+  UNRESOLVED x1 ?Reset@?$CCountedPointer@VCRandomAppearanceMorph@@@@QAEXPAVCRandomAppearanceMorph@@@Z
+all unresolved lines: 311

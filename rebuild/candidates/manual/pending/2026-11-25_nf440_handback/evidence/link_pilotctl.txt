@@ -1,0 +1,18 @@
+## HEAD set: 20 objects, rc=0, dll=True, fatal=[]
+duplicates 1
+  DUP x1 ?Initialise@CList@NUISystem@@UAEXXZ
+unresolved matching watch: 5
+  UNRESOLVED x1 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ
+  UNRESOLVED x1 ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCFileInstaller@@@@0V?$CCountedPointer@VCFileInstaller@@@@A
+  UNRESOLVED x1 ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z
+  UNRESOLVED x2 ?push_back@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+all unresolved lines: 418
+## new set: 20 objects, rc=0, dll=True, fatal=[]
+duplicates 1
+  DUP x1 ?Initialise@CList@NUISystem@@UAEXXZ
+unresolved matching watch: 3
+  UNRESOLVED x1 ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCFileInstaller@@@@0V?$CCountedPointer@VCFileInstaller@@@@A
+  UNRESOLVED x2 ?push_back@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+all unresolved lines: 416

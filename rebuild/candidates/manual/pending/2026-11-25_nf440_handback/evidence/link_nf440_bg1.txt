@@ -1,0 +1,20 @@
+## HEAD set: 57 objects, rc=0, dll=True, fatal=[]
+duplicates 0
+unresolved matching watch: 6
+  UNRESOLVED x1 ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@0ABU__false_type@0@@Z
+  UNRESOLVED x1 ?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@PAVCASuspendableProcess@@H@Z
+  UNRESOLVED x1 ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCEngineManager@@@@0V?$CCountedPointer@VCEngineManager@@@@A
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCFileInstaller@@@@0V?$CCountedPointer@VCFileInstaller@@@@A
+  UNRESOLVED x1 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A
+all unresolved lines: 329
+## new set: 57 objects, rc=0, dll=True, fatal=[]
+duplicates 0
+unresolved matching watch: 6
+  UNRESOLVED x1 ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@0ABU__false_type@0@@Z
+  UNRESOLVED x1 ?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@PAVCASuspendableProcess@@H@Z
+  UNRESOLVED x1 ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCEngineManager@@@@0V?$CCountedPointer@VCEngineManager@@@@A
+  UNRESOLVED x1 ?PClass@?$CTBaseSingleton@VCFileInstaller@@@@0V?$CCountedPointer@VCFileInstaller@@@@A
+  UNRESOLVED x1 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A
+all unresolved lines: 329

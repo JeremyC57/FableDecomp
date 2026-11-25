@@ -1,0 +1,1121 @@
+# NF440 T3 lines (2026-11-25): one summary line per outcome, then one line per family address.
+nf440	526 addresses	HOLD (no T / collision / TU conflict; reason per line)
+nf440	134 addresses	CANDIDATE T3
+nf440	71 addresses	NF428 ACCEPT (not started by NF440)
+nf440	61 addresses	NF428 NOT_ATTEMPTED (not started by NF440)
+nf440	56 addresses	NF428 HOLD (not started by NF440)
+nf440	53 addresses	NF428 SKIP (not started by NF440)
+nf440	50 addresses	HOLD nf440_bg1:
+nf440	50 addresses	HOLD nf440_bg2:
+nf440	50 addresses	HOLD nf440_bg3:
+nf440	22 addresses	CANDIDATE T2
+nf440	20 addresses	HOLD nf440_bg4:
+nf440	9 addresses	ACCEPT nf440_acc2:
+nf440	5 addresses	ACCEPT nf440_acc1:
+nf440	00403d20	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00413590	NF428 SKIP: T3_PORT_QUEUE: t3q:nf294 (not started by NF440)
+nf440	0041915a	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00429c15	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303,nf340 (not started by NF440)
+nf440	00450142	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	004850f9	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	0048afb0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	0048c5c0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	004b6ad0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	0056c050	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	0056c0f0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	005c07e4	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	005c0800	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	005c1946	NF428 SKIP: T3_PORT_QUEUE: t3q:nf294 (not started by NF440)
+nf440	00654b0a	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00654b94	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInf) (not started by NF440)
+nf440	00654c1e	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ReleaseData@?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@N) (not started by NF440)
+nf440	00654c63	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	0065d5a0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	00695880	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	006e7ab0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	007044b0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf309,nf326 (not started by NF440)
+nf440	00704580	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295,nf326 (not started by NF440)
+nf440	007180b0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	007222b0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	008ab1e0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303,nf326 (not started by NF440)
+nf440	00a29d20	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?Reset@?$CCountedPointer@VCMeshDataBankEntry@@@@QAEXPAVCMeshDataBankEn) (not started by NF440)
+nf440	00a36ec0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00aa4460	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?Reset@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@) (not started by NF440)
+nf440	00ae9450	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00ae94a0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00b230e0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	00b3e4a0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf309 (not started by NF440)
+nf440	00b3e510	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?Reset@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAEXPAVCLoad) (not started by NF440)
+nf440	00cb8d30	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295 (not started by NF440)
+nf440	00ce10b0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295 (not started by NF440)
+nf440	00403db0	NF428 HOLD: batches/hold_r1: form b (a binder defines Reset<CFileInstaller> pick-any) adds a pick-any ?ReleaseData@?$CCountedPointer@VCFileInstaller@@@@ (not started by NF440)
+nf440	00403e40	NF428 HOLD: batches/hold_r1: form b adds a pick-any ?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ copy that differs from every landed de (not started by NF440)
+nf440	00413520	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	0041956c	NF428 HOLD: T candidate from callers; not generated this round (ctor(T*) shape: header ctor form not measured) (not started by NF440)
+nf440	0041bd80	NF428 SKIP: T3_PORT_QUEUE: t3q:tracker (not started by NF440)
+nf440	0042913a	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ShareData@CCPtr@@QAEXPAXPAJ@Z) (not started by NF440)
+nf440	0042943a	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ShareData@CCPtr@@QAEXPAXPAJ@Z) (not started by NF440)
+nf440	004366b0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00436cc0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00443500	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self @OnDie@4) (not started by NF440)
+nf440	00443540	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z) (not started by NF440)
+nf440	004440c0	NF428 HOLD: second source missing: the stored deleter 0x00443520 is bound only to stand-ins (?Destroy_00443520@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004441a0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444210	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444280	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004442f0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444360	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004443d0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444440	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004444b0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444520	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444590	NF428 HOLD: second source missing: the stored deleter 0x004437C0 is bound only to stand-ins (?Destroy_004437c0@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	00444600	NF428 HOLD: second source missing: the stored deleter 0x004437E0 is bound only to stand-ins (?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z ; ?Destroy_0 (not started by NF440)
+nf440	00444670	NF428 HOLD: second source missing: the stored deleter 0x00443820 is bound only to stand-ins (?Destroy_00443820@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004446e0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444750	NF428 HOLD: second source missing: the stored deleter 0x00443890 is bound only to stand-ins (?Destroy_00443890@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004447c0	NF428 HOLD: second source missing: the stored deleter 0x004438B0 is bound only to stand-ins (?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z ; ?Destroy_0 (not started by NF440)
+nf440	00444830	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004448a0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444910	NF428 HOLD: second source missing: the stored deleter 0x00443980 is bound only to stand-ins (?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z ; ?Destroy_0 (not started by NF440)
+nf440	00444980	NF428 HOLD: second source missing: the stored deleter 0x004439C0 is bound only to stand-ins (?Destroy_004439c0@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004449f0	NF428 HOLD: second source missing: the stored deleter 0x004439E0 is bound only to stand-ins (?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z ; ?Destroy_0 (not started by NF440)
+nf440	00444a60	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444ad0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00444bb0	NF428 HOLD: second source missing: the stored deleter 0x00443AC0 is bound only to stand-ins (?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z ; ?Destroy_0 (not started by NF440)
+nf440	00444c20	NF428 HOLD: second source missing: the stored deleter 0x00443B00 is bound only to stand-ins (?Destroy_00443b00@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	00444c90	NF428 HOLD: second source missing: the stored deleter 0x00443B20 is bound only to stand-ins (?Catch_0047e8cc@@YIXPAUCatchCleanupOverlay@@@Z ; ?Destroy_0 (not started by NF440)
+nf440	00444d00	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00445120	NF428 HOLD: second source missing: the stored deleter 0x00444D70 is bound only to stand-ins (?CTCMapwho_OnDie@@YIXPAVCTCMapwho@@@Z ; ?Destroy_00444d70@@ (not started by NF440)
+nf440	00445190	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00445200	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00445270	NF428 HOLD: second source missing: the stored deleter 0x00444E10 is bound only to stand-ins (?CGuiControlTreePane_Destructor_4@@YIXPAUGuiControlTreePane (not started by NF440)
+nf440	004452e0	NF428 HOLD: second source missing: the stored deleter 0x00444E50 is bound only to stand-ins (?CGuiControlTreePane_Destructor_5@@YIXPAUGuiControlTreePane (not started by NF440)
+nf440	00445400	NF428 HOLD: second source missing: the stored deleter 0x00445350 is bound only to stand-ins (?Destroy_00445350@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	00445470	NF428 HOLD: second source missing: the stored deleter 0x00445370 is bound only to stand-ins (?Destroy_00445370@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	00445520	NF428 HOLD: second source missing: the stored deleter 0x004454E0 is bound only to stand-ins (?Destroy_004454e0@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	0048524c	NF428 SKIP: T3_PORT_QUEUE: t3q:nf423 (not started by NF440)
+nf440	0049bce0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004a9a10	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004a9a80	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004ab300	NF428 HOLD: second source missing: the stored deleter 0x004A9B50 is bound only to stand-ins (?Destroy_004a9b50@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004ab370	NF428 HOLD: second source missing: the stored deleter 0x004A9B70 is bound only to stand-ins (?Destroy_004a9b70@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004adf80	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004ae650	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	004bb9d0	NF428 HOLD: second source missing: the stored deleter 0x004BB990 is bound only to stand-ins (?Destroy_004bb990@@YIXPAX@Z ; @OnDie@4); the deleter names  (not started by NF440)
+nf440	004da6f7	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self _Forward) (not started by NF440)
+nf440	0050cdd0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050cdd0@@YIXPAX@Z) (not started by NF440)
+nf440	0050cde0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050cde0@@YIXPAX@Z) (not started by NF440)
+nf440	0050ceb0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData_0050ceb0@@YIXPAX@Z) (not started by NF440)
+nf440	0050cec0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050cec0@@YIXPAX@Z) (not started by NF440)
+nf440	0050cf90	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050cf90@@YIXPAX@Z) (not started by NF440)
+nf440	0050cfa0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050cfa0@@YIXPAX@Z) (not started by NF440)
+nf440	0050d030	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050d030@@YIXPAX@Z) (not started by NF440)
+nf440	0050d040	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050d040@@YIXPAX@Z) (not started by NF440)
+nf440	0050d0a0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050d0a0@@YIXPAX@Z) (not started by NF440)
+nf440	0050d120	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050d120@@YIXPAX@Z) (not started by NF440)
+nf440	0050d180	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050d180@@YIXPAX@Z) (not started by NF440)
+nf440	0050d230	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_0050d230@@YIXPAX@Z) (not started by NF440)
+nf440	0050f2b0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	0050faa0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	0050fb90	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	0051cea0	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CRegionConnectionGraph>::Reset stand-in (self ?Reset@CCountedPointer_0051ccd0@@QAEXPAX@Z) takes th
+nf440	00535ebb	ACCEPT nf440_acc1: self respell (NF440): the binding table already binds the PDB name ?ReleaseData@?$CCountedPointer@VCListArrow@NUISystem@@@@QAEXXZ at 0x00535EBB (landed caller),
+nf440	00535fbe	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ShareData@CCPtr@@QAEXPAXPAJ@Z) (not started by NF440)
+nf440	005669c0	NF428 HOLD: stored deleter 0x0041BD80 has a split spelling (?DeleteData@?$CCountedPointer@VCTexture@@@@SIXPAX@Z ; @OnDie@4): settle the deleter first, t (not started by NF440)
+nf440	0056c880	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	00578a8d	ACCEPT nf440_acc1: self respell (NF440): the binding table already binds the PDB name ??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ at 0x00578A8D (landed caller), 
+nf440	00578c2a	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ShareData@CCPtr@@QAEXPAXPAJ@Z) (not started by NF440)
+nf440	005c053d	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ShareData@CCPtr@@QAEXPAXPAJ@Z) (not started by NF440)
+nf440	005c058f	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?ShareData@CCPtr@@QAEXPAXPAJ@Z) (not started by NF440)
+nf440	005c077f	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?AssignFrom@CCPtr@@QAEAAU1@ABU1@@Z) (not started by NF440)
+nf440	005c1981	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OnDie@CTCMapwho@@QAEXXZ) (not started by NF440)
+nf440	005c281c	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OnDie@CTCMapwho@@QAEXXZ) (not started by NF440)
+nf440	00618660	NF428 HOLD: T candidate from callers; not generated this round (template T: the row needs <vector>) (not started by NF440)
+nf440	00641eb0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf294 (not started by NF440)
+nf440	006570bc	NF428 HOLD: second source missing: the stored deleter 0x00656FFE is bound only to stand-ins (?CallIfNonNull_00656ffe@@YIXPAUCTarget@@@Z ; ?Destroy_00656 (not started by NF440)
+nf440	006570fa	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295 (not started by NF440)
+nf440	00657138	NF428 HOLD: second source missing: the stored deleter 0x00657016 is bound only to stand-ins (?CallIfNonNull_00657016@@YIXPAUCTarget@@@Z ; ?Destroy_00657 (not started by NF440)
+nf440	00657176	NF428 SKIP: T3_PORT_QUEUE: t3q:nf309 (not started by NF440)
+nf440	0065e198	NF428 HOLD: T candidate from callers; not generated this round (ctor(T*) shape: header ctor form not measured) (not started by NF440)
+nf440	0065e1db	NF428 HOLD: second source missing: the stored deleter 0x0065D263 is bound only to stand-ins (?Destroy_0065d263@@YIXPAX@Z); the deleter names are derived (not started by NF440)
+nf440	0065e25a	NF428 HOLD: second source missing: the stored deleter 0x0065D290 is bound only to stand-ins (?Destroy_0065d290@@YIXPAX@Z); the deleter names are derived (not started by NF440)
+nf440	0065e29d	NF428 SKIP: T3_PORT_QUEUE: t3q:nf340 (not started by NF440)
+nf440	0065e2e0	NF428 HOLD: T candidate from callers; not generated this round (ctor(T*) shape: header ctor form not measured) (not started by NF440)
+nf440	0065e33b	NF428 HOLD: second source missing: the stored deleter 0x0065D2DF is bound only to stand-ins (?Destroy_0065d2df@@YIXPAX@Z); the deleter names are derived (not started by NF440)
+nf440	00673500	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00675060	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CWoundMorphs>::Reset stand-in (self ?Reset@CCountedPointer_00674e50@@QAEXPAX@Z) takes the PDB name
+nf440	006750d0	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CExpressionSet>::Reset stand-in (self ?Reset@CCountedPointer_00674e80@@QAEXPAX@Z) takes the PDB na
+nf440	00676840	NF428 HOLD: second source missing: the stored deleter 0x00676720 is bound only to stand-ins (?Destroy_00676720@@YIXPAX@Z ; ?OnDie@@YIXPAVCTCMapwho@@@Z); (not started by NF440)
+nf440	0067f650	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	00694ef0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00695a00	NF428 HOLD: stored deleter 0x00694EF0 has a split spelling (?DeleteData@?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@SIXPAX@Z ; ?D): settle th (not started by NF440)
+nf440	0069c2f0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295 (not started by NF440)
+nf440	0069c380	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self @CCountedPtr_assign@12) (not started by NF440)
+nf440	006c3ac0	NF428 HOLD: second source missing: the stored deleter 0x006C3A70 is bound only to stand-ins (?Destroy_006c3a70@@YIXPAUCNamedEntryList_006c3a70@@@Z ; ?De (not started by NF440)
+nf440	006ee3d0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf303 (not started by NF440)
+nf440	006fd460	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00704430	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ??0?$CCountedPointer@VCUnprovenPointee_00704430@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	007044d0	ACCEPT nf440_acc1: self respell (NF440): the binding table already binds the PDB name ?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z at 0
+nf440	007180c0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00718940	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00718a00	NF428 HOLD: stored deleter 0x007180B0 has a split spelling (?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z ; ?D): settle th (not started by NF440)
+nf440	007222f0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295 (not started by NF440)
+nf440	007374f0	NF428 HOLD: second source missing: the stored deleter 0x00736DF0 is bound only to stand-ins (?Destroy_00736df0@@YIXPAX@Z); the deleter names are derived (not started by NF440)
+nf440	0073d180	NF428 SKIP: T3_PORT_QUEUE: t3q:tracker (not started by NF440)
+nf440	00763a20	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00764400	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self @CCountedPtr_assign@12) (not started by NF440)
+nf440	00771b60	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<COpinionSet>::Reset stand-in (self ?Reset@CCountedPointer_00771b30@@QAEXPAX@Z) takes the PDB name 
+nf440	00786bf0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	007a4120	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OnDie@@YIXPAVCTCMapwho@@@Z) (not started by NF440)
+nf440	007f3f00	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OnDie@@YIXPAVCTCMapwho@@@Z) (not started by NF440)
+nf440	00822bf0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822bf0@@YIXPAX@Z) (not started by NF440)
+nf440	00822c00	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822c00@@YIXPAX@Z) (not started by NF440)
+nf440	00822ca0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822ca0@@YIXPAX@Z) (not started by NF440)
+nf440	00822cb0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822cb0@@YIXPAX@Z) (not started by NF440)
+nf440	00822d10	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822d10@@YIXPAX@Z) (not started by NF440)
+nf440	00822d90	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822d90@@YIXPAX@Z) (not started by NF440)
+nf440	00822e60	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822e60@@YIXPAX@Z) (not started by NF440)
+nf440	00822ea0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00822ea0@@YIXPAX@Z) (not started by NF440)
+nf440	00834d30	NF428 HOLD: second source missing: the stored deleter 0x00834970 is bound only to stand-ins (?Destroy_00834970@@YIXPAX@Z ; ?FreeSelf_00834970@CClass_008 (not started by NF440)
+nf440	0085a840	NF428 HOLD: T candidate from callers; not generated this round (ctor(T*) shape: header ctor form not measured) (not started by NF440)
+nf440	0085b250	NF428 HOLD: second source missing: the stored deleter 0x0085B090 is bound only to stand-ins (?DestroyNamedBufferOwner_0085b090@@YIXPAUCNamedBufferOwner_ (not started by NF440)
+nf440	00863090	NF428 SKIP: T3_PORT_QUEUE: t3q:tracker (not started by NF440)
+nf440	008aa8e0	ACCEPT nf440_acc1: self respell (NF440): the binding table already binds the PDB name ?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGam
+nf440	008ab230	NF428 HOLD: batches/hold_r1: form b adds a pick-any ?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ copy equal to 0 (not started by NF440)
+nf440	008ab2b0	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CScriptGameResourceObjectMovieBase>::Reset stand-in (self ?Reset@CCountedPointer_008aa7f0@@QAEXPAX
+nf440	008c5980	NF428 HOLD: second source missing: the stored deleter 0x008C57F0 is bound only to stand-ins (?Destroy_008c57f0@@YIXPAX@Z); the deleter names are derived (not started by NF440)
+nf440	008ebdd0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteObject@SCountedNamedRecord_008ebdd0@@SIXPAU1@@Z) (not started by NF440)
+nf440	00905fd0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf295 (not started by NF440)
+nf440	0098ba10	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00992170	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	009b1f50	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	009e3090	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	009e3100	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00a110d0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	00a16640	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00a29c50	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00a31640	NF428 HOLD: stored deleter 0x00A110D0 has a split spelling (?DeleteData@?$CCountedPointer@VCContainmentVolume@@@@SIXPAX@Z ; ?DeleteData@@YIX): settle th (not started by NF440)
+nf440	00a44170	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CLipSyncSampleData>::Reset stand-in (self ?Reset@CCountedPointer_00a44130@@QAEXPAX@Z) takes the PD
+nf440	00a47060	NF428 HOLD: second source missing: the stored deleter 0x00A47040 is bound only to stand-ins (?CTCMapwho_OnDie@@YIXPAVCTCMapwho@@@Z ; ?Destroy_00a47040@@ (not started by NF440)
+nf440	00a52be0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00a52ce0	NF428 HOLD: second source missing: the stored deleter 0x00A51190 is bound only to stand-ins (?Destroy_00a51190@@YIXPAX@Z ; ?FreeSelf_00a51190@CClass_00a (not started by NF440)
+nf440	00a52d90	NF428 HOLD: second source missing: the stored deleter 0x00A511A0 is bound only to stand-ins (?Destroy_00a511a0@@YIXPAX@Z ; ?FreeSelf_00a511a0@CClass_00a (not started by NF440)
+nf440	00a5fc30	NF428 HOLD: stored deleter 0x00A5FB70 has no binding (not started by NF440)
+nf440	00a6ae60	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00a6e9a0	NF428 HOLD: second source missing: the stored deleter 0x00A6DD80 is bound only to stand-ins (?Destroy_00a6dd80@@YIXPAX@Z ; @CallIfSet@4); the deleter na (not started by NF440)
+nf440	00a7c0a0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?OperatorDelete_thunk_00a7c0a0@@YIXPAX@Z) (not started by NF440)
+nf440	00a8cb70	NF428 SKIP: T3_PORT_QUEUE: t3q:tracker (not started by NF440)
+nf440	00a99fd0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00a99fe0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284,nf422 (not started by NF440)
+nf440	00a9a000	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00a9a420	NF428 HOLD: stored deleter 0x00A99FE0 has a split spelling (?DeleteData@?$CCountedPointer@VC3DAnimFileRootChunk@@@@SIXPAX@Z ; ?DeleteData@@Y): settle th (not started by NF440)
+nf440	00a9cb20	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284,nf422 (not started by NF440)
+nf440	00a9cb50	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00a9ced0	NF428 HOLD: stored deleter 0x00A9CB20 has a split spelling (?DeleteData@?$CCountedPointer@VC3DMeshFileRootChunk@@@@SIXPAX@Z ; ?DeleteData@@Y): settle th (not started by NF440)
+nf440	00ac38a0	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<C3DMeshPartitionElement>::Reset stand-in (self ?Reset@CCountedPointer_00ac3810@@QAEXPAX@Z) takes t
+nf440	00ac3ff0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00acf440	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self ?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z) (not started by NF440)
+nf440	00ae93e0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00aecac0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00aecc30	NF428 HOLD: second source missing: the stored deleter 0x00AECBF0 is bound only to stand-ins (?CTCMapwho_OnDie@@YIXPAVCTCMapwho@@@Z ; ?Destroy_00aecbf0@@ (not started by NF440)
+nf440	00aeccc0	NF428 HOLD: second source missing: the stored deleter 0x00AECCA0 is bound only to stand-ins (?Destroy_00aecca0@@YIXPAX@Z ; ?OnDie@@YIXPAVCTCMapwho@@@Z); (not started by NF440)
+nf440	00b23170	NF428 HOLD: second source missing: the stored deleter 0x00B230E0 is bound only to stand-ins (?Destroy_00b230e0@@YIXPAX@Z); the deleter names are derived (not started by NF440)
+nf440	00b23240	NF428 HOLD: second source missing: the stored deleter 0x00B231E0 is bound only to stand-ins (?DeleteSplineRandomOffsetData@@YIXPAUCSplineRandomOffsetDat (not started by NF440)
+nf440	00b2e290	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b2e340	NF428 SKIP: T3_PORT_QUEUE: t3q:nf309 (not started by NF440)
+nf440	00b37470	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37520	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b375d0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37680	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37730	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b377e0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37890	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37940	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b379f0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37aa0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37b90	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CEnginePrimitiveOcclusionGroupManager>::Reset stand-in (self ?Reset@CCountedPointer_00b36100@@QAEX
+nf440	00b37c40	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37cf0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37da0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37e50	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37f00	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b37fb0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b38060	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b38110	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b381c0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b38270	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b38320	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b4b360	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b4b410	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b4b4c0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b4b570	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b4b620	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00b8ebc0	NF428 NOT_ATTEMPTED: shape outside this round (split_fixable; self @CCountedPtr_assign@12) (not started by NF440)
+nf440	00b94f90	NF428 SKIP: T3_PORT_QUEUE: t3q:nf284 (not started by NF440)
+nf440	00b95a30	NF428 HOLD: stored deleter 0x00B94F90 has a split spelling (?DeleteData@?$CCountedPointer@VCEngineSceneGrid@@@@SIXPAX@Z ; ?DeleteData@@YIXPA): settle th (not started by NF440)
+nf440	00b95aa0	NF428 ACCEPT: batches/acc_r*: Reset self port; T from callers' PDB binding + retail RTTI of the object passed (not started by NF440)
+nf440	00bb64a0	ACCEPT nf440_acc2: self respell (NF440, from NF428 hold_r1): the CCountedPointer<CParticleSimulationRenderData>::Reset stand-in (self ?Reset@CCountedPointer_00bb6330@@QAEXPAX@Z) t
+nf440	00cdd4f0	ACCEPT nf440_acc1: self respell (NF440): the binding table already binds the PDB name ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ at 0x00CDD4F0 (landed caller), and
+nf440	004d76b8	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@QAEXXZ (not batched: bound_other): TU tc_register.obj (LESS: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)); member: base rate of the shape
+nf440	004d78ed	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCEventBase@NEntityEvents@@@@QAEXXZ (not batched: bound_other): TU tc_register.obj (LESS: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)); member: base rate of the shape
+nf440	004d799a	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@QAEXXZ (not batched: bound_other): TU tc_register.obj (LESS: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)); member: base rate of the shape
+nf440	005ba0f8	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00696560	NF428 NOT_ATTEMPTED: shape outside this round (split_unknown; self ?DeleteData@?$CCountedPointer@UCIVRecord_00696560@@@@SIXPAX@Z) (not started by NF440)
+nf440	0071ee70	CANDIDATE T2 ??1?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@QAE@XZ (not batched: bound_other): TU tc_hero_appearance.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair wi
+nf440	0075f2b0	CANDIDATE T2 ??1?$CCountedPointer@VCCardinalSpline@@@@QAE@XZ (not batched: bound_other): TU tc_camera_point_definitions.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	00a45d20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a8e000	CANDIDATE T3 ??1?$CCountedPointer@VCTriangleStripifierBase@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_LAYOUT ??0C3DMeshStripifier@@QAE@XZ; member: positional pair with 0x00a8dfc0 (ReleaseData on the earlier copy, ~ on
+nf440	00a94c70	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXPAVC3DClothPrimitive@@@Z; member: positional pair with 0x00
+nf440	00a9a350	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00403700	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU main.obj (EQ: 5 copies v 3 FableWin types, 1 named anchors, 2 alignment(s)); member: base rate of the shap
+nf440	00403790	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU main.obj (EQ: 5 copies v 3 FableWin types, 1 named anchors, 2 alignment(s)); member: positional pair with 
+nf440	00403cb0	CANDIDATE T3 ??1?$CCountedPointer@VCAProgressDisplay@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ??0?$CCountedPointer@VCAProgressDisplay@@@@QAE@PAVCAProgressDisplay@@@Z; member: positional pair with 0x004037
+nf440	00403d70	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU main.obj (EQ: 5 copies v 3 FableWin types, 1 named anchors, 2 alignment(s)); member: positional pair with 
+nf440	00405900	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0040dca0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU user_profile_manager.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: posit
+nf440	0040f170	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU user_profile_manager.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: posit
+nf440	00413310	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCodeSectionManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCCodeSectionManager@@@@SIXPAX@Z; member: positional pair with 0x00413350 (Relea
+nf440	00413350	CANDIDATE T3 ??1?$CCountedPointer@VCCodeSectionManager@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCCodeSectionManager@@@@SIXPAX@Z; member: positional pair with 0x00413310 (Relea
+nf440	004362c0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCEngineManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z; member: positional pair with 0x00436300 (ReleaseDat
+nf440	00436300	CANDIDATE T3 ??1?$CCountedPointer@VCEngineManager@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCEngineManager@@@@SIXPAX@Z; member: positional pair with 0x004362c0 (ReleaseDat
+nf440	00436340	HOLD HOLD: type CEngineManager has no free member name left (collision; kept 004362c0,00436300)
+nf440	00436620	HOLD HOLD: type CEngineManager has no free member name left (collision; kept 004362c0,00436300)
+nf440	004368a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d200	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d240	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d280	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d2c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d300	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d340	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d380	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d3c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d400	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d440	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d480	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d4c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d500	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d540	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d580	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d5c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d600	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d640	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d680	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d6c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d700	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d740	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d780	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d7c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d800	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d840	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d880	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d8c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d900	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d940	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d980	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043d9c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043da00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043da40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043da80	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043dac0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043db00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043db40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e5e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e620	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e660	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e6a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e6e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e720	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e760	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e7a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e7e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e820	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e860	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e8a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e8e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e920	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e960	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e9a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043e9e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ea20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ea60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eaa0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eae0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eb20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eb60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eba0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ebe0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ec20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ec60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eca0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ece0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ed20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ed60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eda0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ede0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ee20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ee60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043eef0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ef30	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043ef70	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043efb0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0043f780	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00447760	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU game_player_interface.obj (LESS: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: po
+nf440	00447920	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU game_player_interface.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-so
+nf440	00447d50	CANDIDATE T3 ??1?$CCountedPointer@$$CBVCInputTypeBase@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@$$CBVCInputTypeBase@@@@QAEXPBVCInputTypeBase@@@Z; member: positional pair with 0x0044
+nf440	004483d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0044ab10	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU player_manager.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional 
+nf440	0044b190	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU player_manager.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional 
+nf440	0049bc30	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCGameJoystickManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCGameJoystickManager@@@@SIXPAX@Z; member: positional pair with 0x0049bca0 (Rele
+nf440	0049bca0	CANDIDATE T3 ??1?$CCountedPointer@VCGameJoystickManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCGameJoystickManager@@@@QAEXPAVCGameJoystickManager@@@Z; member: positional pair wit
+nf440	004a8660	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a86a0	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a86e0	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a8720	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a8760	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a87a0	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a87e0	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a8820	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a8860	HOLD HOLD: TU world.obj: 2 possible types
+nf440	004a88a0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. L
+nf440	004a90b0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a9160	CANDIDATE T3 ??1?$CCountedPointer@VCDisplayViewManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_LAYOUT ?IsScreenFullyFadedOut@CDisplayEngine@@QBE_NXZ; member: base rate of the shape
+nf440	004a9470	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a95a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a95e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a9620	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a9660	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a96b0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004a9780	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004aa700	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004aa7b0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	004b70e0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b7120	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b7160	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b71a0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b7a10	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b7aa0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b7b30	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCActiveQuest@CQuestManager@@@@QAEXXZ (not batched: class_scope): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	004b7b70	CANDIDATE T2 ??1?$CCountedPointer@VCActiveQuest@CQuestManager@@@@QAE@XZ (not batched: class_scope): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	004b7d80	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004b8d30	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU quest_manager.obj (MORE: 10 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	004c1b20	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU tc_graphic_appearance.obj (EQ: 2 copies v 1 FableWin types, 1 named anchors, 1 alignment(s)); member: posi
+nf440	004c1b60	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU tc_graphic_appearance.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-so
+nf440	0050d240	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d280	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d2c0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d300	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d340	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050d390	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d570	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d5b0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d700	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d740	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050d790	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCObject@CLevelLoader@@@@QAEXXZ (not batched: class_scope): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with 0x00
+nf440	0050d7d0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050d850	CANDIDATE T2 ??1?$CCountedPointer@VCObject@CLevelLoader@@@@QAE@XZ (not batched: class_scope): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with 0x00
+nf440	0050d890	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050d8e0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d920	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050d980	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050d9c0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050da10	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050da50	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050daa0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050dae0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050db30	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050db70	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050dbc0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050dc00	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050dc50	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050dc90	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050dce0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050dd20	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050ea20	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 13 copies v 13 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-or
+nf440	0050ecc0	HOLD nf440_bg1: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050f140	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050f1f0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050f270	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050f4c0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050f6a0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050ff40	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	0050ff90	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005101b0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	00510250	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	00510400	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005104a0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005105f0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	00510690	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005107f0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005108f0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	00510a10	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	00510b00	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	00510bf0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005120c0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU world_map.obj (EQ: 38 copies v 19 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pai
+nf440	005353a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	005353e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0056c4a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0056c7e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0056cea0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0056d6a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	005ba0cc	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	005ba124	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_005ba124@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	005df1c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	005df9e0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU animation_set.obj (LESS: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: base rate 
+nf440	005ecf90	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006126a0	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@QAEXXZ (not batched: odd): TU tc_inventory_map.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00613580	CANDIDATE T2 ??1?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@QAE@XZ (not batched: odd): TU tc_inventory_map.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	0062d6f0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0062e270	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00640170	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006409d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00641e70	CANDIDATE T2 ??1?$CCountedPointer@VCLightInfo@CTCLight@@@@QAE@XZ (not batched: class_scope): TU tc_light.obj (LESS: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: base rate of the shape
+nf440	00654dfd	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_00654dfd@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	0065d806	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_0065d806@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	0065d822	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_0065d822@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	0065d87f	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_0065d87f@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	0065d8d0	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_0065d8d0@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	0065d8f6	NF428 NOT_ATTEMPTED: shape outside this round (standin; self ??0?$CCountedPointer@VCUnprovenPointee_0065d8f6@@@@QAE@ABV0@@Z) (not started by NF440)
+nf440	006686c0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU thing_creature_base.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: positi
+nf440	00668700	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU thing_creature_base.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sour
+nf440	00668750	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU thing_creature_base.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: positi
+nf440	00668790	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU thing_creature_base.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sour
+nf440	00668ba0	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@QAEXXZ (not batched: class_scope): TU thing_creature_base.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: positional in the
+nf440	00669a10	HOLD HOLD: type CCombatActionBase::CStrikeEvent has no free member name left (collision; kept 00668ba0)
+nf440	00672b90	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCreatureStatsDef@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCCreatureStatsDef@@@@SIXPAX@Z; member: positional pair with 0x00672bd0 (Release
+nf440	00672bd0	CANDIDATE T3 ??1?$CCountedPointer@VCCreatureStatsDef@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCCreatureStatsDef@@@@SIXPAX@Z; member: positional pair with 0x00672b90 (Release
+nf440	00672c10	HOLD HOLD: type CCreatureStatsDef has no free member name left (collision; kept 00672b90,00672bd0)
+nf440	00672c50	HOLD HOLD: type CCreatureStatsDef has no free member name left (collision; kept 00672b90,00672bd0)
+nf440	00673400	HOLD HOLD: type CCreatureStatsDef has no free member name left (collision; kept 00672b90,00672bd0)
+nf440	00673440	HOLD HOLD: type CCreatureStatsDef has no free member name left (collision; kept 00672b90,00672bd0)
+nf440	00673480	HOLD HOLD: type CCreatureStatsDef has no free member name left (collision; kept 00672b90,00672bd0)
+nf440	006734c0	HOLD HOLD: type CCreatureStatsDef has no free member name left (collision; kept 00672b90,00672bd0)
+nf440	0067fe10	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00695160	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00695350	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU creature_action_base.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sou
+nf440	00695830	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCreatureActionBase@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ??0?$CCountedPointer@VCCreatureActionBase@@@@QAE@PAVCCreatureActionBase@@@Z; member: forced (the other member 
+nf440	00695920	HOLD HOLD: type CCreatureActionBase has no free member name left (collision; kept 00695830)
+nf440	006964d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0069be10	HOLD HOLD: no PDB ShareData name for this type
+nf440	0069be60	HOLD HOLD: no PDB ShareData name for this type
+nf440	0069beb0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCBaseInit@NCameraModes@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCBaseInit@NCameraModes@@@@SIXPAX@Z; member: positional pair with 0x0069bef0 (Re
+nf440	0069bef0	CANDIDATE T3 ??1?$CCountedPointer@VCBaseInit@NCameraModes@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCBaseInit@NCameraModes@@@@SIXPAX@Z; member: positional pair with 0x0069beb0 (Re
+nf440	0069c600	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0069c690	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006b8a00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006c2a60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006c2fb0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006d5a50	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006e1960	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCParticleCreationParameters@CTCDParticleEmitter@@@@QAEXXZ (not batched: class_scope): TU tcd_particle_emitter.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair 
+nf440	006e1b90	CANDIDATE T2 ??1?$CCountedPointer@VCParticleCreationParameters@CTCDParticleEmitter@@@@QAE@XZ (not batched: class_scope): TU tcd_particle_emitter.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair 
+nf440	006e4410	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006e7af0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU game_script_interface.obj (EQ: 2 copies v 1 FableWin types, 1 named anchors, 1 alignment(s)); member: forc
+nf440	006eec90	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCombatSequenceBase@@@@QAEXXZ (not batched: T3 precision 13/24): TU module single type; member: positional pair with 0x006ef740 (ReleaseData on the earlier copy, ~ on the later)
+nf440	006ef170	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU combat_manager.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu
+nf440	006ef740	CANDIDATE T3 ??1?$CCountedPointer@VCCombatSequenceBase@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCCombatSequenceBase@@@@QAE@PAVCCombatSequenceBase@@@Z; member: positional pair with 0x00
+nf440	006f16b0	HOLD HOLD: type CCombatSequenceBase has no free member name left (collision; kept 006eec90,006ef740)
+nf440	006f8db0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	006fad10	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00718280	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_scripted_control.obj (LESS: 3 copies v 2 FableWin types, 0 named anchors, 2 alignment(s)); member: posi
+nf440	007182c0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@SIXPAX@Z; member: positional pair with 0x0071
+nf440	00718300	CANDIDATE T2 ??1?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@QAE@XZ (not batched: class_scope): TU tc_scripted_control.obj (LESS: 3 copies v 2 FableWin types, 0 named anchors, 2 alignment(s)); member: positional pair
+nf440	00718900	CANDIDATE T3 ??1?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAEXPAVCScriptConversa; member: positional
+nf440	00718a50	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureMode; member: positional
+nf440	00718ae0	CANDIDATE T3 ??1?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@QAE@PAVCModeBase@CTCCreatureMode; member: positional
+nf440	00718f60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0071e8a0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_hero_appearance.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positio
+nf440	0071e8e0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_hero_appearance.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sourc
+nf440	00732340	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@VCSpotLightInfo@CTCSpotLight@@@@QAEXXZ (not batched: class_scope): TU tc_spot_light.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with 0x
+nf440	00732390	CANDIDATE T2 ??1?$CCountedPointer@VCSpotLightInfo@CTCSpotLight@@@@QAE@XZ (not batched: class_scope): TU tc_spot_light.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with 0x
+nf440	00737120	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCombatAbilityData@@@@QAEXXZ (not batched: T3 precision 13/24): TU module single type; member: positional pair with 0x00737540 (ReleaseData on the earlier copy, ~ on the later)
+nf440	00737540	CANDIDATE T3 ??1?$CCountedPointer@VCCombatAbilityData@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCCombatAbilityData@@@@QAE@PAVCCombatAbilityData@@@Z; member: positional pair with 0x0073
+nf440	00737de0	HOLD HOLD: type CCombatAbilityData has no free member name left (collision; kept 00737120,00737540)
+nf440	0073ce20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0073cef0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0073d1d0	CANDIDATE T3 ??1?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAE@PAVCAnimEntryLite@NAnimat; member: base rate 
+nf440	0073dd10	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0073e750	HOLD HOLD: type CTCCreatureModeManager::CModeBase has no free member name left (collision; kept 00718a50,00718ae0)
+nf440	00754d30	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_look.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order.
+nf440	0075f060	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_camera_point_definitions.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member
+nf440	00763cf0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@SIXPAX@Z; member: positional pair with 0x00763d8
+nf440	00763d30	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_geometric_shapes.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sour
+nf440	00763d80	CANDIDATE T3 ??1?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@SIXPAX@Z; member: positional pair with 0x00763cf
+nf440	00764180	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_geometric_shapes.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sour
+nf440	00764280	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCShape@NShape@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCShape@NShape@@@@QAEXPAVCShape@NShape@@@Z; member: positional pair with 0x00764380 (
+nf440	00764380	CANDIDATE T3 ??1?$CCountedPointer@VCShape@NShape@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ??4?$CCountedPointer@VCShape@NShape@@@@QAEAAV0@ABV0@@Z; member: positional pair with 0x00764280 (ReleaseData o
+nf440	00764910	HOLD HOLD: TU tc_geometric_shapes.obj: no alignment fits the anchors
+nf440	00764c90	HOLD HOLD: TU tc_geometric_shapes.obj: no alignment fits the anchors
+nf440	00771890	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_opinion_source.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00771900	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_opinion_source.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00786aa0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_skeletal_morph.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00786cb0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_skeletal_morph.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	007a2e80	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAEXXZ (not batched: T3 precision 13/24): TU module single type; member: forced (the other member name is taken)
+nf440	007a3660	HOLD HOLD: type CTCWillLightning::CLightningBeam has no free member name left (collision; kept 007a2e80)
+nf440	007dd0e0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU tc_creature_fly_on_spline.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis on
+nf440	007e7130	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	007f36e0	CANDIDATE T2 ?ShareData@?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@QAEXPAVCLightningBranch@CTCLightningNode@@PAVCCPPointerInfo@@@Z (not batched: class_scope): TU tc_lightning_orb.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s))
+nf440	008119f0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00811aa0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00822eb0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00822f20	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00822f60	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00822fb0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00822ff0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	00823040	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823080	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	008230d0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823110	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	00823160	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	008231a0	HOLD nf440_bg2: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	008231f0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823230	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	00823280	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	008232c0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	00823310	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823350	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	00823930	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 8 copies v 8 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order. Lea
+nf440	00823b00	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823d30	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823d80	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823e90	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00823f30	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00824090	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00824180	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	008242a0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00824390	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00824480	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU map.obj (EQ: 20 copies v 10 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair with
+nf440	00827a60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00834b50	CANDIDATE T2 ??1?$CCountedPointer@VCRelationshipsInit@CThingAICreature@@@@QAE@XZ (not batched: class_scope): TU thing_ai_creature.obj (LESS: 5 copies v 3 FableWin types, 0 named anchors, 3 alignment(s)); member: base rate of the 
+nf440	00834b90	HOLD HOLD: TU thing_ai_creature.obj: 2 possible types
+nf440	00834cf0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU thing_ai_creature.obj (LESS: 5 copies v 3 FableWin types, 0 named anchors, 3 alignment(s)); member: base r
+nf440	00834da0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCAIBrain@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCAIBrain@@@@QAEXPAVCAIBrain@@@Z; member: positional pair with 0x00834de0 (ReleaseDat
+nf440	00834de0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU thing_ai_creature.obj (LESS: 5 copies v 3 FableWin types, 0 named anchors, 3 alignment(s)); member: positi
+nf440	008364c0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU thing_dead_creature.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positi
+nf440	00836540	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU thing_dead_creature.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positi
+nf440	0084ed70	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU cm_base.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order.
+nf440	0085a640	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_base.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positio
+nf440	0085a890	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_base.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positio
+nf440	0088c3a0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU ai_brain.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:tu-order
+nf440	008aa930	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@SIXPAX@Z; member: forced (the other member name 
+nf440	008aa970	HOLD HOLD: type NCreatureMode::CModeSitFloor has no free member name left (collision; kept 008aa930)
+nf440	008b16f0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_sequence.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:t
+nf440	008b2200	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	008b2be0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	008c2dc0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_rival_heroes.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	008c2e00	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_rival_heroes.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis o
+nf440	008c2e50	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_rival_heroes.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	008c31d0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_rival_heroes.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	008c32b0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_rival_heroes.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	008c5800	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_scorpion.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: pos
+nf440	008c5860	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_scorpion.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: pos
+nf440	008c5940	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_scorpion.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: pos
+nf440	008c59d0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU combat_action_scorpion.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: pos
+nf440	008eb810	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	008eb9a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0098be60	CANDIDATE T3 ??1?$CCountedPointer@VCShaderResource@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCShaderResource@@@@SIXPAX@Z; member: base rate of the shape
+nf440	0098c600	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	0098cbe0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00991f20	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCResourceBank@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCResourceBank@@@@QAEXPAVCResourceBank@@@Z; member: positional pair with 0x00991fb0 (
+nf440	00991f60	HOLD HOLD: no PDB ShareData name for this type
+nf440	00991fb0	CANDIDATE T3 ??1?$CCountedPointer@VCResourceBank@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCResourceBank@@@@QAEXPAVCResourceBank@@@Z; member: positional pair with 0x00991f20 (
+nf440	00991ff0	HOLD HOLD: no PDB ShareData name for this type
+nf440	00992040	HOLD HOLD: no PDB ShareData name for this type
+nf440	009920e0	HOLD HOLD: type CResourceBank has no free member name left (collision; kept 00991f20,00991fb0)
+nf440	009921e0	HOLD HOLD: type CResourceBank has no free member name left (collision; kept 00991f20,00991fb0)
+nf440	009a42c0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009a4300	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009a4e00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009a6c30	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCDriveManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCDriveManager@@@@SIXPAX@Z; member: positional pair with 0x009a6c70 (ReleaseData
+nf440	009a6c70	CANDIDATE T3 ??1?$CCountedPointer@VCDriveManager@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCDriveManager@@@@SIXPAX@Z; member: positional pair with 0x009a6c30 (ReleaseData
+nf440	009a6cb0	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6cf0	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6d30	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6d70	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6db0	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6df0	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6e30	HOLD HOLD: type CDriveManager has no free member name left (collision; kept 009a6c30,009a6c70)
+nf440	009a6ea0	HOLD HOLD: TU lib_system_manager.obj: no alignment fits the anchors
+nf440	009a6f50	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCDisplayManager@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCDisplayManager@@@@QAEXPAVCDisplayManager@@@Z; member: positional pair with 0x009a6f
+nf440	009a6f90	CANDIDATE T3 ??1?$CCountedPointer@VCDisplayManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCDisplayManager@@@@QAEXPAVCDisplayManager@@@Z; member: positional pair with 0x009a6f
+nf440	009a7040	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCInputManager@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCInputManager@@@@QAEXPAVCInputManager@@@Z; member: positional pair with 0x009a7080 (
+nf440	009a7080	CANDIDATE T3 ??1?$CCountedPointer@VCInputManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCInputManager@@@@QAEXPAVCInputManager@@@Z; member: positional pair with 0x009a7040 (
+nf440	009a70c0	HOLD HOLD: type CInputManager has no free member name left (collision; kept 009a7040,009a7080)
+nf440	009a7100	HOLD HOLD: type CInputManager has no free member name left (collision; kept 009a7040,009a7080)
+nf440	009a7140	HOLD HOLD: type CInputManager has no free member name left (collision; kept 009a7040,009a7080)
+nf440	009a95a0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCThreadedFile@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCThreadedFile@@@@SIXPAX@Z; member: forced (the other member name is taken)
+nf440	009a95e0	CANDIDATE T3 ?ShareData@?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAEXPAVCRetailBank@NBankFileManager@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): TU module single type
+nf440	009a9630	HOLD HOLD: type CThreadedFile has no free member name left (collision; kept 009a95a0)
+nf440	009a9670	HOLD HOLD: type CThreadedFile has no free member name left (collision; kept 009a95a0)
+nf440	009a96b0	HOLD HOLD: collision with 009a95e0 (tier 3)
+nf440	009aa8c0	HOLD HOLD: type CThreadedFile has no free member name left (collision; kept 009a95a0)
+nf440	009b1400	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCSymbolMap@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCSymbolMap@@@@SIXPAX@Z; member: positional pair with 0x009b1f10 (ReleaseData on
+nf440	009b1f10	CANDIDATE T3 ??1?$CCountedPointer@VCSymbolMap@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCSymbolMap@@@@QAEXPAVCSymbolMap@@@Z; member: positional pair with 0x009b1400 (Releas
+nf440	009c5d40	CANDIDATE T2 ?ReleaseData@?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@QAEXXZ (not batched: class_scope): TU lib_file_installer.obj (MORE: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair 
+nf440	009c6090	CANDIDATE T2 ??1?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@QAE@XZ (not batched: class_scope): TU lib_file_installer.obj (MORE: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: positional pair 
+nf440	009c60d0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_file_installer.obj (MORE: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: posit
+nf440	009c6980	HOLD HOLD: type CFileInstaller has no free member name left (collision; kept 00403d70,009c60d0)
+nf440	009c9ac0	HOLD HOLD: TU lib_text_bank.obj: no alignment fits the anchors
+nf440	009d19a0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCDiskFileWin32@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_LAYOUT ?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z; member: forced (the other member name is taken)
+nf440	009d1f50	HOLD HOLD: type CDiskFileWin32 has no free member name left (collision; kept 009d19a0)
+nf440	009d6c60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009d6cb0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009d6cf0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009d6d30	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009d7030	HOLD HOLD: type CThreadedFile has no free member name left (collision; kept 009a95a0)
+nf440	009d7070	HOLD HOLD: type CThreadedFile has no free member name left (collision; kept 009a95a0)
+nf440	009d7940	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009de5f0	CANDIDATE T3 ?ShareData@?$CCountedPointer@VCShaderResource@@@@QAEXPAVCShaderResource@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): PREV_LAYOUT ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
+nf440	009e29c0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_font_manager.obj (LESS: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: positio
+nf440	009e2a00	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_font_manager.obj (LESS: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: base ra
+nf440	009e3000	CANDIDATE T3 ??1?$CCountedPointer@VCFontDataBank@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCFontDataBank@@@@QAEXPAVCFontDataBank@@@Z; member: positional pair with 0x009e29c0 (
+nf440	009e3050	HOLD HOLD: type CFontDataBank has no free member name left (collision; kept 009e29c0,009e3000)
+nf440	009e4ee0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009edfa0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_console2.obj (EQ: 3 copies v 2 FableWin types, 0 named anchors, 2 alignment(s)); member: base rate of 
+nf440	009ee400	HOLD HOLD: TU lib_console2.obj: 2 possible types
+nf440	009ee500	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_console2.obj (EQ: 3 copies v 2 FableWin types, 0 named anchors, 2 alignment(s)); member: base rate of 
+nf440	009f0990	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009f61e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009f6400	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009f6660	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	009ffdc0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCTextureManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCTextureManager@@@@SIXPAX@Z; member: positional pair with 0x009ffe00 (ReleaseDa
+nf440	009ffe00	CANDIDATE T3 ??1?$CCountedPointer@VCTextureManager@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCTextureManager@@@@SIXPAX@Z; member: positional pair with 0x009ffdc0 (ReleaseDa
+nf440	009ffe40	CANDIDATE T3 ?ShareData@?$CCountedPointer@VCTextureManager@@@@QAEXPAVCTextureManager@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCTextureManager@@@@SIXPAX@Z
+nf440	00a001a0	HOLD HOLD: TU engine_surface_composition_manager.obj: no alignment fits the anchors
+nf440	00a00250	HOLD HOLD: type CTextureManager has no free member name left (collision; kept 009ffdc0,009ffe00)
+nf440	00a018e0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCRCSymbolMap@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_LAYOUT ?GetSoundIndexFromSymbol@CASoundBank@@QBEJABVCCharString@@@Z; member: forced (the other member name is taken
+nf440	00a0bb50	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a0bb90	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a0bbd0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a0bc10	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a0bc50	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a16400	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCNavQuadTree@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCNavQuadTree@@@@SIXPAX@Z; member: positional pair with 0x00a16800 (ReleaseData 
+nf440	00a16800	CANDIDATE T3 ??1?$CCountedPointer@VCNavQuadTree@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?Reset@?$CCountedPointer@VCNavQuadTree@@@@QAEXPAVCNavQuadTree@@@Z; member: positional pair with 0x00a16400 (Re
+nf440	00a28920	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a28970	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DMeshStripifier@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DMeshStripifier@@@@SIXPAX@Z; member: positional pair with 0x00a28a00 (Release
+nf440	00a289b0	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a28a00	CANDIDATE T3 ??1?$CCountedPointer@VC3DMeshStripifier@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DMeshStripifier@@@@SIXPAX@Z; member: positional pair with 0x00a28970 (Release
+nf440	00a28a40	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a28a90	HOLD HOLD: type C3DMeshStripifier has no free member name left (collision; kept 00a28970,00a28a00)
+nf440	00a28ad0	HOLD HOLD: type C3DMeshStripifier has no free member name left (collision; kept 00a28970,00a28a00)
+nf440	00a28b10	HOLD HOLD: type C3DMeshStripifier has no free member name left (collision; kept 00a28970,00a28a00)
+nf440	00a28b50	HOLD HOLD: type C3DMeshStripifier has no free member name left (collision; kept 00a28970,00a28a00)
+nf440	00a28b90	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a28be0	HOLD HOLD: type C3DMeshStripifier has no free member name left (collision; kept 00a28970,00a28a00)
+nf440	00a28c20	HOLD HOLD: type C3DMeshStripifier has no free member name left (collision; kept 00a28970,00a28a00)
+nf440	00a28c60	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a28cb0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a28dc0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a28e40	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a28e80	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a293a0	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a293f0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a295d0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a296c0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a297c0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a29870	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a298b0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a298f0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a29980	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a29bc0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a29de0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a29e20	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a29eb0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a2a090	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a2a680	HOLD HOLD: TU lib_mesh_data_bank.obj: 5 possible types
+nf440	00a2b5b0	HOLD HOLD: TU lib_mesh_data_bank.obj: 11 possible types
+nf440	00a30a70	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30ad0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30b10	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30b50	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30b90	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30bd0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30c20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30c60	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30cb0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30cf0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30d40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30d80	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30ee0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30f30	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a30f80	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31920	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31960	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a319a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a319e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31a20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31ae0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31b70	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31c00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a31c40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a3a300	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a3a3d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a3c840	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_animation_state.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-s
+nf440	00a43240	HOLD HOLD: TU lib_lipsync_data_bank.obj: 5 possible types
+nf440	00a43380	HOLD HOLD: TU lib_lipsync_data_bank.obj: 5 possible types
+nf440	00a45780	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCShared@C3DSkeletalMorphParameter@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_LAYOUT ??0C3DSkeletalMorphParameter@@QAE@ABVC3DSkeletalMorphTarget@@@Z; member: positional pair with 0x00a45810 (Re
+nf440	00a457c0	CANDIDATE T3 ?ShareData@?$CCountedPointer@VCShared@C3DSkeletalMorphParameter@@@@QAEXPAVCShared@C3DSkeletalMorphParameter@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): PREV_LAYOUT ??0C3DSkeletalMorphParameter@@QAE@ABVC3DSkeletalMorphTarget@@@Z
+nf440	00a45810	CANDIDATE T3 ??1?$CCountedPointer@VCShared@C3DSkeletalMorphParameter@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_LAYOUT ??0C3DSkeletalMorphParameter@@QAE@ABVC3DSkeletalMorphTarget@@@Z; member: positional pair with 0x00a45780 (Re
+nf440	00a45db0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a45f30	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a46260	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a48220	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a48430	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a48520	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a515b0	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a515f0	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51630	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51670	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_animation_2.obj (EQ: 5 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sourc
+nf440	00a516c0	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51700	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51740	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51780	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a517c0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_animation_2.obj (EQ: 5 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sourc
+nf440	00a51810	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51850	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51890	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a518f0	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51930	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a519b0	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a51e30	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_animation_2.obj (EQ: 5 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sourc
+nf440	00a51e90	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_animation_2.obj (EQ: 5 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sourc
+nf440	00a51ee0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_animation_2.obj (EQ: 5 copies v 5 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-sourc
+nf440	00a52b50	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCSimpleMemoryPool@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCSimpleMemoryPool@@@@QAEXPAVCSimpleMemoryPool@@@Z; member: positional pair with 0x00
+nf440	00a52ba0	CANDIDATE T3 ??1?$CCountedPointer@VCSimpleMemoryPool@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCSimpleMemoryPool@@@@QAEXPAVCSimpleMemoryPool@@@Z; member: positional pair with 0x00
+nf440	00a52c50	CANDIDATE T3 ??1?$CCountedPointer@VC3DAnimationSequence@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VC3DAnimationSequence@@@@QAEXPAVC3DAnimationSequence@@@Z; member: base rate of the sh
+nf440	00a52d50	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DAnimationSequenceData@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VC3DAnimationSequenceData@@@@QAEXPAVC3DAnimationSequenceData@@@Z; member: positional 
+nf440	00a52e20	CANDIDATE T3 ??1?$CCountedPointer@VC3DAnimationSequenceData@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?Reset@?$CCountedPointer@VC3DAnimationSequenceData@@@@QAEXPAVC3DAnimationSequenceData@@@Z; member: positional 
+nf440	00a52e60	HOLD HOLD: type C3DAnimationSequenceData has no free member name left (collision; kept 00a52d50,00a52e20)
+nf440	00a52ea0	HOLD HOLD: type C3DAnimationSequenceData has no free member name left (collision; kept 00a52d50,00a52e20)
+nf440	00a52f80	HOLD HOLD: type C3DAnimationSequenceData has no free member name left (collision; kept 00a52d50,00a52e20)
+nf440	00a52fc0	HOLD HOLD: type C3DAnimationSequenceData has no free member name left (collision; kept 00a52d50,00a52e20)
+nf440	00a53000	HOLD HOLD: type C3DAnimationSequenceData has no free member name left (collision; kept 00a52d50,00a52e20)
+nf440	00a53040	HOLD HOLD: type C3DAnimationSequenceData has no free member name left (collision; kept 00a52d50,00a52e20)
+nf440	00a530b0	HOLD HOLD: TU lib_3d_animation_2.obj: no alignment fits the anchors
+nf440	00a5f5f0	CANDIDATE T3 ?ShareData@?$CCountedPointer@VCBankFileAsyncEntry@@@@QAEXPAVCBankFileAsyncEntry@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): PREV_LAYOUT ?NotifyEntryAdded@CStreamingFontDataBank@@MAEXKKABV?$CArray@D@@@Z
+nf440	00a5fbe0	CANDIDATE T3 ?ShareData@?$CCountedPointer@VCJoystick@@@@QAEXPAVCJoystick@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): NEXT_NAME ??0?$CCountedPointer@VCJoystick@@@@QAE@PAVCJoystick@@@Z
+nf440	00a6e150	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e190	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e1d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e220	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e260	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e2b0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e2f0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a6e960	CANDIDATE T3 ??1?$CCountedPointer@$$CBVCIPhysicsFacesSegmentBase@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@$$CBVCIPhysicsFacesSegmentBase@@@@QAEXPBVCIPhysicsFacesSegmentBas; member: base rate 
+nf440	00a6ea10	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@$$CBVC3DMeshFilePrimitiveChunk@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ??4?$CCountedPointer@$$CBVC3DMeshFilePrimitiveChunk@@@@QAEAAV0@ABV0@@Z; member: positional pair with 0x00a6eaa
+nf440	00a6eaa0	CANDIDATE T3 ??1?$CCountedPointer@$$CBVC3DMeshFilePrimitiveChunk@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ??4?$CCountedPointer@$$CBVC3DMeshFilePrimitiveChunk@@@@QAEAAV0@ABV0@@Z; member: positional pair with 0x00a6ea1
+nf440	00a6eb30	HOLD HOLD: type const C3DMeshFilePrimitiveChunk has no free member name left (collision; kept 00a6ea10,00a6eaa0)
+nf440	00a6eb70	HOLD HOLD: type const C3DMeshFilePrimitiveChunk has no free member name left (collision; kept 00a6ea10,00a6eaa0)
+nf440	00a7c9a0	CANDIDATE T3 ??1?$CCountedPointer@VCNavRegionConnection@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCNavRegionConnection@@@@SIXPAX@Z; member: base rate of the shape
+nf440	00a7cb90	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a7d370	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a7de50	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a7dee0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a7f7d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a8cd30	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DBone2@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z; member: positional pair with 0x00a8cd70 (ReleaseData on t
+nf440	00a8cd70	CANDIDATE T3 ??1?$CCountedPointer@VC3DBone2@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z; member: positional pair with 0x00a8cd30 (ReleaseData on t
+nf440	00a8cdb0	CANDIDATE T3 ?ShareData@?$CCountedPointer@VC3DBone2@@@@QAEXPAVC3DBone2@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DBone2@@@@SIXPAX@Z
+nf440	00a8ce00	HOLD HOLD: type C3DBone2 has no free member name left (collision; kept 00a8cd30,00a8cd70)
+nf440	00a8ce40	HOLD HOLD: type C3DBone2 has no free member name left (collision; kept 00a8cd30,00a8cd70)
+nf440	00a8ce80	HOLD HOLD: collision with 00a8cdb0 (tier 3)
+nf440	00a8cf30	HOLD HOLD: type C3DBone2 has no free member name left (collision; kept 00a8cd30,00a8cd70)
+nf440	00a8cf70	HOLD HOLD: collision with 00a8cdb0 (tier 3)
+nf440	00a8cfc0	HOLD HOLD: type C3DBone2 has no free member name left (collision; kept 00a8cd30,00a8cd70)
+nf440	00a8d110	HOLD HOLD: collision with 00a8cdb0 (tier 3)
+nf440	00a8d1c0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@$$CBVC3DMeshFileTransformationChunk@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ??4?$CCountedPointer@$$CBVC3DMeshFileTransformationChunk@@@@QAEAAV0@ABV0@@Z; member: positional pair with 0x00
+nf440	00a8d200	CANDIDATE T3 ??1?$CCountedPointer@$$CBVC3DMeshFileTransformationChunk@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ??4?$CCountedPointer@$$CBVC3DMeshFileTransformationChunk@@@@QAEAAV0@ABV0@@Z; member: positional pair with 0x00
+nf440	00a8d2a0	HOLD HOLD: type const C3DMeshFileTransformationChunk has no free member name left (collision; kept 00a8d1c0,00a8d200)
+nf440	00a8d330	HOLD HOLD: type const C3DMeshFileTransformationChunk has no free member name left (collision; kept 00a8d1c0,00a8d200)
+nf440	00a8d3c0	HOLD HOLD: type const C3DMeshFileTransformationChunk has no free member name left (collision; kept 00a8d1c0,00a8d200)
+nf440	00a8d4e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a8d940	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a8d980	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00a8dfc0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCTriangleStripifierBase@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_LAYOUT ??0C3DMeshStripifier@@QAE@XZ; member: positional pair with 0x00a8e000 (ReleaseData on the earlier copy, ~ on
+nf440	00a93ea0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a93ee0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a93f20	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a93f60	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a93fb0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a93ff0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94040	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94080	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a940c0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94110	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94190	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a941d0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94220	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94260	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a942c0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94300	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94340	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94660	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a946b0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94700	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94750	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a947a0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a947f0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94a50	CANDIDATE T3 ?ShareData@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXPAVC3DClothPrimitive@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXPAVC3DClothPrimitive@@@Z
+nf440	00a94db0	CANDIDATE T3 ??1?$CCountedPointer@VC3DClothPrimitive@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VC3DClothPrimitive@@@@QAEXPAVC3DClothPrimitive@@@Z; member: positional pair with 0x00
+nf440	00a94ec0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a94fa0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95030	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95070	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95100	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95140	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a951d0	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95210	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95250	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a95290	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a96540	HOLD HOLD: TU lib_3d_primitive_2.obj: no alignment fits the anchors
+nf440	00a965a0	CANDIDATE T3 ??1?$CCountedPointer@VC3DGroup2@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ??0?$vector@V?$CCountedPointer@VC3DGroup2@@@@V?$allocator@V?$CCountedPointer@VC3DGroup2@@@; member: base rate 
+nf440	00a9a030	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9a070	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9a0d0	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9a130	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9a170	HOLD HOLD: TU lib_3d_anim_file.obj: 2 possible types
+nf440	00a9a1c0	HOLD HOLD: TU lib_3d_anim_file.obj: 2 possible types
+nf440	00a9a210	HOLD HOLD: TU lib_3d_anim_file.obj: 2 possible types
+nf440	00a9a260	HOLD HOLD: TU lib_3d_anim_file.obj: 2 possible types
+nf440	00a9a3e0	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9a530	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9a570	HOLD HOLD: TU lib_3d_anim_file.obj: no alignment fits the anchors
+nf440	00a9cb60	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DMeshFileHelpersChunk@@@@QAEXXZ (not batched: T3 precision 13/24): TU module single type; member: positional pair with 0x00a9cbc0 (ReleaseData on the earlier copy, ~ on the later)
+nf440	00a9cbc0	CANDIDATE T3 ??1?$CCountedPointer@VC3DMeshFileHelpersChunk@@@@QAE@XZ (not batched: T3 precision 13/24): TU module single type; member: positional pair with 0x00a9cb60 (ReleaseData on the earlier copy, ~ on the later)
+nf440	00a9cc20	HOLD HOLD: type C3DMeshFileHelpersChunk has no free member name left (collision; kept 00a9cb60,00a9cbc0)
+nf440	00a9cc80	HOLD HOLD: type C3DMeshFileHelpersChunk has no free member name left (collision; kept 00a9cb60,00a9cbc0)
+nf440	00a9ccc0	HOLD HOLD: TU lib_3d_mesh_file.obj: no alignment fits the anchors
+nf440	00a9cd10	HOLD HOLD: TU lib_3d_mesh_file.obj: no alignment fits the anchors
+nf440	00a9cd60	HOLD HOLD: TU lib_3d_mesh_file.obj: no alignment fits the anchors
+nf440	00a9cdb0	HOLD HOLD: TU lib_3d_mesh_file.obj: no alignment fits the anchors
+nf440	00a9ce90	HOLD HOLD: type C3DMeshFileHelpersChunk has no free member name left (collision; kept 00a9cb60,00a9cbc0)
+nf440	00a9d020	HOLD HOLD: type C3DMeshFileHelpersChunk has no free member name left (collision; kept 00a9cb60,00a9cbc0)
+nf440	00a9d060	HOLD HOLD: type C3DMeshFileHelpersChunk has no free member name left (collision; kept 00a9cb60,00a9cbc0)
+nf440	00a9d0a0	HOLD HOLD: type C3DMeshFileHelpersChunk has no free member name left (collision; kept 00a9cb60,00a9cbc0)
+nf440	00aa4320	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z; member: positional pair w
+nf440	00aa4360	CANDIDATE T3 ??1?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@SIXPAX@Z; member: positional pair w
+nf440	00aa43e0	HOLD HOLD: type QuadricOptimiserInternals::COptimisedMesh has no free member name left (collision; kept 00aa4320,00aa4360)
+nf440	00aa4420	HOLD HOLD: type QuadricOptimiserInternals::COptimisedMesh has no free member name left (collision; kept 00aa4320,00aa4360)
+nf440	00aa90a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aaae30	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_mesh_file_helpers.obj (LESS: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	00aaae90	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_mesh_file_helpers.obj (LESS: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	00aaaef0	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_mesh_file_helpers.obj (LESS: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)); member:
+nf440	00aaaf90	HOLD nf440_bg3: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_mesh_file_helpers.obj (EQ: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)). Basis one
+nf440	00aaafe0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_mesh_file_helpers.obj (EQ: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)). Basis one
+nf440	00aab030	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_mesh_file_helpers.obj (EQ: 3 copies v 3 FableWin types, 0 named anchors, 1 alignment(s)). Basis one
+nf440	00aab1e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aab220	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aab260	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aac760	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aacab0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aaec00	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DAnimFileTimingEventChunk@@@@QAEXXZ (not batched: T3 precision 13/24): TU module single type; member: positional pair with 0x00aaec40 (ReleaseData on the earlier copy, ~ on the later)
+nf440	00aaec40	CANDIDATE T3 ??1?$CCountedPointer@VC3DAnimFileTimingEventChunk@@@@QAE@XZ (not batched: T3 precision 13/24): TU module single type; member: positional pair with 0x00aaec00 (ReleaseData on the earlier copy, ~ on the later)
+nf440	00aaeca0	HOLD HOLD: type C3DAnimFileTimingEventChunk has no free member name left (collision; kept 00aaec00,00aaec40)
+nf440	00aaece0	HOLD HOLD: TU lib_3d_anim_file_helpers.obj: no alignment fits the anchors
+nf440	00aaed30	HOLD HOLD: TU lib_3d_anim_file_helpers.obj: no alignment fits the anchors
+nf440	00aaed80	HOLD HOLD: TU lib_3d_anim_file_helpers.obj: no alignment fits the anchors
+nf440	00aaedd0	HOLD HOLD: TU lib_3d_anim_file_helpers.obj: no alignment fits the anchors
+nf440	00aaee20	HOLD HOLD: TU lib_3d_anim_file_helpers.obj: no alignment fits the anchors
+nf440	00aaef00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aaef40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aaef80	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ab0930	HOLD HOLD: TU lib_3d_anim_file_object.obj: 2 possible types
+nf440	00ab0970	HOLD HOLD: TU lib_3d_anim_file_object.obj: 2 possible types
+nf440	00ab09c0	HOLD HOLD: TU lib_3d_anim_file_object.obj: 2 possible types
+nf440	00ab0a40	HOLD HOLD: TU lib_3d_anim_file_object.obj: 2 possible types
+nf440	00ab0ef0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ab0f30	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ab1280	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ab2b00	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ab2b40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ab5e00	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCSurface@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCSurface@@@@QAEXPAVCSurface@@@Z; member: positional pair with 0x00ab5e40 (ReleaseDat
+nf440	00ab5e40	CANDIDATE T3 ??1?$CCountedPointer@VCSurface@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCSurface@@@@QAEXPAVCSurface@@@Z; member: positional pair with 0x00ab5e00 (ReleaseDat
+nf440	00abd8a0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abd8e0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abd960	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abd9c0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abda20	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abda60	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdac0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdb00	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdb40	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdb80	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdbc0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdc90	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdce0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdd30	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdd80	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abddd0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abde20	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abde70	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdec0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdf10	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdf60	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abdfb0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe000	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe1c0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe200	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe240	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe280	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe2c0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe300	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe340	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe380	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe3c0	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe400	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00abe440	HOLD HOLD: TU lib_3d_mesh_file_submesh.obj: no alignment fits the anchors
+nf440	00ac1470	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z; member: positional pair with 0x00ac14b0 (Relea
+nf440	00ac14b0	CANDIDATE T3 ??1?$CCountedPointer@VC3DMeshFileMapChunk@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z; member: positional pair with 0x00ac1470 (Relea
+nf440	00ac1510	HOLD HOLD: type C3DMeshFileMapChunk has no free member name left (collision; kept 00ac1470,00ac14b0)
+nf440	00ac1570	HOLD HOLD: type C3DMeshFileMapChunk has no free member name left (collision; kept 00ac1470,00ac14b0)
+nf440	00ac15b0	HOLD HOLD: type C3DMeshFileMapChunk has no free member name left (collision; kept 00ac1470,00ac14b0)
+nf440	00ac15f0	HOLD HOLD: type C3DMeshFileMapChunk has no free member name left (collision; kept 00ac1470,00ac14b0)
+nf440	00ac1630	CANDIDATE T3 ?ShareData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@QAEXPAVC3DMeshFileMapChunk@@PAVCCPPointerInfo@@@Z (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VC3DMeshFileMapChunk@@@@SIXPAX@Z
+nf440	00ac1680	HOLD HOLD: type C3DMeshFileMapChunk has no free member name left (collision; kept 00ac1470,00ac14b0)
+nf440	00ac16c0	HOLD HOLD: collision with 00ac1630 (tier 3)
+nf440	00ac1770	HOLD HOLD: collision with 00ac1630 (tier 3)
+nf440	00ac17c0	HOLD HOLD: collision with 00ac1630 (tier 3)
+nf440	00ac1810	HOLD HOLD: collision with 00ac1630 (tier 3)
+nf440	00ac1860	HOLD HOLD: collision with 00ac1630 (tier 3)
+nf440	00ac18b0	HOLD HOLD: collision with 00ac1630 (tier 3)
+nf440	00ac1990	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac19d0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac1a10	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac1a50	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac1a90	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac1b20	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac1bb0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ac3850	CANDIDATE T3 ??1?$CCountedPointer@VC3DMeshPartitionElement@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VC3DMeshPartitionElement@@@@QAEXPAVC3DMeshPartitionElement@@@Z; member: base rate of 
+nf440	00acfd60	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00acfda0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_quadric_optimiser_internals.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)).
+nf440	00acfdf0	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00ad0440	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU lib_3d_quadric_optimiser_internals.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)).
+nf440	00ad0ad0	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00ad0c00	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00ad1f60	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00ad2c30	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00ad2c70	HOLD HOLD: TU lib_3d_quadric_optimiser_internals.obj: no alignment fits the anchors
+nf440	00ae4c90	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ae53b0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00ae9270	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAEXPAVCParticleDataBank@NP; member: positional
+nf440	00ae92b0	CANDIDATE T3 ??1?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCParticleDataBank@NParticleEngine@@@@QAEXPAVCParticleDataBank@NP; member: positional
+nf440	00ae92f0	HOLD HOLD: no PDB ShareData name for this type
+nf440	00ae93a0	HOLD HOLD: type NParticleEngine::CParticleDataBank has no free member name left (collision; kept 00ae9270,00ae92b0)
+nf440	00aec120	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec160	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec1a0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec1e0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec300	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec340	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec380	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00aec660	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00af0760	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00af0830	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00af09b0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00af0cc0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00af5e10	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU particle_system.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional
+nf440	00af5e50	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU particle_system.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source:t
+nf440	00af5fd0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU particle_system.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positional
+nf440	00b09830	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00b09870	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00b09c40	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00b09c80	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00b2dfd0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCCompositeSurfaceCache@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCCompositeSurfaceCache@@@@SIXPAX@Z; member: positional pair with 0x00b2e010 (Re
+nf440	00b2e010	CANDIDATE T3 ??1?$CCountedPointer@VCCompositeSurfaceCache@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCCompositeSurfaceCache@@@@SIXPAX@Z; member: positional pair with 0x00b2dfd0 (Re
+nf440	00b2e050	HOLD HOLD: type CCompositeSurfaceCache has no free member name left (collision; kept 00b2dfd0,00b2e010)
+nf440	00b2e210	HOLD HOLD: type CCompositeSurfaceCache has no free member name left (collision; kept 00b2dfd0,00b2e010)
+nf440	00b2e250	HOLD HOLD: type CCompositeSurfaceCache has no free member name left (collision; kept 00b2dfd0,00b2e010)
+nf440	00b2e390	CANDIDATE T3 ??1?$CCountedPointer@VCGraphicBankStateBlock@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCGraphicBankStateBlock@@@@QAE@PAVCGraphicBankStateBlock@@@Z; member: base rate of the sh
+nf440	00b2e870	HOLD HOLD: TU engine_surface_composition_manager.obj: no alignment fits the anchors
+nf440	00b36280	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@SIXPAX@Z; member: positional pair with 0x
+nf440	00b362c0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCEnginePrimitiveManagerWeatherMask@@@@SIXPAX@Z; member: positional pair with 0x
+nf440	00b36300	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36340	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36380	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b363c0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36400	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36440	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36480	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b364c0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36500	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36540	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36580	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b365c0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36600	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36640	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36680	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b366c0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36700	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36740	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36780	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b367c0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36800	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b36840	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b37430	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerStaticMeshes@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerStaticMeshes@@@@QAEXPAVCEnginePrimitiveMa; member: base rate 
+nf440	00b374e0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerAnimatedMeshes@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerAnimatedMeshes@@@@QAEXPAVCEnginePrimitive; member: base rate 
+nf440	00b37590	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerRepeatedStaticMeshes@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedStaticMeshes@@@@QAEXPAVCEnginePri; member: base rate 
+nf440	00b37640	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerRepeatedZSprites@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerRepeatedZSprites@@@@QAEXPAVCEnginePrimiti; member: base rate 
+nf440	00b376f0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerSprites@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerSprites@@@@QAEXPAVCEnginePrimitiveManager; member: base rate 
+nf440	00b377a0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerFlareSprites@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerFlareSprites@@@@QAEXPAVCEnginePrimitiveMa; member: base rate 
+nf440	00b37850	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerWeaponTrails@@@@QAEXPAVCEnginePrimitiveMa; member: base rate 
+nf440	00b37900	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@QAEXPAVCEnginePrimitiveMa; member: base rate 
+nf440	00b379b0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerLines@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerLines@@@@QAEXPAVCEnginePrimitiveManagerLi; member: base rate 
+nf440	00b37a60	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerText@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerText@@@@QAEXPAVCEnginePrimitiveManagerTex; member: base rate 
+nf440	00b37b10	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXPAVCEnginePrimitive; member: positional
+nf440	00b37b50	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveOcclusionGroupManager@@@@QAEXPAVCEnginePrimitive; member: positional
+nf440	00b37c00	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveGroupManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveGroupManager@@@@QAEXPAVCEnginePrimitiveGroupMana; member: base rate 
+nf440	00b37cb0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveChangerManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveChangerManager@@@@QAEXPAVCEnginePrimitiveChanger; member: base rate 
+nf440	00b37d60	CANDIDATE T3 ??1?$CCountedPointer@VCEngineClothRenderer@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEngineClothRenderer@@@@QAEXPAVCEngineClothRenderer@@@Z; member: base rate of the sh
+nf440	00b37e10	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerParticleLineGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleLineGroup@@@@QAEXPAVCEnginePrimit; member: base rate 
+nf440	00b37ec0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerParticleMeshGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleMeshGroup@@@@QAEXPAVCEnginePrimit; member: base rate 
+nf440	00b37f70	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteGroup@@@@QAEXPAVCEnginePrim; member: base rate 
+nf440	00b38020	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteTrailGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleSpriteTrailGroup@@@@QAEXPAVCEngin; member: base rate 
+nf440	00b380d0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerParticleGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleGroup@@@@QAEXPAVCEnginePrimitiveM; member: base rate 
+nf440	00b38180	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerDecal@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerDecal@@@@QAEXPAVCEnginePrimitiveManagerDe; member: base rate 
+nf440	00b38230	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManagerParticleDecalGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManagerParticleDecalGroup@@@@QAEXPAVCEnginePrimi; member: base rate 
+nf440	00b382e0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b383b0	HOLD HOLD: type CEnginePrimitiveManagerWeatherMask has no free member name left (collision; kept 00b36280,00b362c0)
+nf440	00b38740	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00b3e2b0	CANDIDATE T3 ??1?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@SIXPAX@Z; member: base rate of the shape
+nf440	00b3e5d0	CANDIDATE T3 ??1?$CCountedPointer@VCMeshBankStateBlock@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ??0?$CCountedPointer@VCMeshBankStateBlock@@@@QAE@PAVCMeshBankStateBlock@@@Z; member: base rate of the shape
+nf440	00b43160	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_World_Map.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	00b434c0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_World_Map.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: positiona
+nf440	00b4b070	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@QAEXXZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@QAEXPAVCEnginePrimitive; member: positional
+nf440	00b4b0b0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DStaticMeshes@@@@QAEXPAVCEnginePrimitive; member: positional
+nf440	00b4b0f0	HOLD HOLD: type CEnginePrimitiveManager2DStaticMeshes has no free member name left (collision; kept 00b4b070,00b4b0b0)
+nf440	00b4b130	HOLD HOLD: type CEnginePrimitiveManager2DStaticMeshes has no free member name left (collision; kept 00b4b070,00b4b0b0)
+nf440	00b4b170	HOLD HOLD: type CEnginePrimitiveManager2DStaticMeshes has no free member name left (collision; kept 00b4b070,00b4b0b0)
+nf440	00b4b320	HOLD HOLD: type CEnginePrimitiveManager2DStaticMeshes has no free member name left (collision; kept 00b4b070,00b4b0b0)
+nf440	00b4b3d0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManager2DAnimatedMeshes@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DAnimatedMeshes@@@@QAEXPAVCEnginePrimiti; member: base rate 
+nf440	00b4b480	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManager2DSprites@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DSprites@@@@QAEXPAVCEnginePrimitiveManag; member: base rate 
+nf440	00b4b530	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitive2DViewportManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitive2DViewportManager@@@@QAEXPAVCEnginePrimitive2DVi; member: base rate 
+nf440	00b4b5e0	CANDIDATE T3 ??1?$CCountedPointer@VCEnginePrimitiveManager2DParticleGroup@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCEnginePrimitiveManager2DParticleGroup@@@@QAEXPAVCEnginePrimitiv; member: base rate 
+nf440	00b826a0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCParticleSimulation@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCParticleSimulation@@@@SIXPAX@Z; member: positional pair with 0x00b826e0 (Relea
+nf440	00b826e0	CANDIDATE T3 ??1?$CCountedPointer@VCParticleSimulation@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCParticleSimulation@@@@SIXPAX@Z; member: positional pair with 0x00b826a0 (Relea
+nf440	00b82720	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Simulation_Manager.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)). Basis on
+nf440	00b828b0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Simulation_Manager.obj (EQ: 2 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)). Basis on
+nf440	00b82b60	HOLD HOLD: TU Engine_Simulation_Manager.obj: no alignment fits the anchors
+nf440	00b82ba0	HOLD HOLD: TU Engine_Simulation_Manager.obj: no alignment fits the anchors
+nf440	00b83200	HOLD HOLD: TU Engine_Simulation_Manager.obj: no alignment fits the anchors
+nf440	00b83440	HOLD HOLD: TU Engine_Simulation_Manager.obj: no alignment fits the anchors
+nf440	00b8e770	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Occlusion_Manager.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: p
+nf440	00b8e7b0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Occlusion_Manager.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one
+nf440	00b8eb80	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Occlusion_Manager.obj (EQ: 2 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)); member: p
+nf440	00b953e0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Scene_Grid.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00b95420	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Scene_Grid.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00b95750	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Scene_Grid.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)). Basis one-source
+nf440	00b959f0	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Scene_Grid.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00b95c40	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Scene_Grid.obj (EQ: 4 copies v 2 FableWin types, 0 named anchors, 1 alignment(s)); member: position
+nf440	00b96660	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00bed010	HOLD nf440_bg4: best-guess respell (NF440, owner rule 2026-11-25): TU Engine_Primitive_Manager_Mesh_Base.obj (EQ: 1 copies v 1 FableWin types, 0 named anchors, 1 alignment(s)).
+nf440	00cb8fe0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCEntityScriptBindingBase@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCEntityScriptBindingBase@@@@SIXPAX@Z; member: positional pair with 0x00cb9020 (
+nf440	00cb9020	CANDIDATE T3 ??1?$CCountedPointer@VCEntityScriptBindingBase@@@@QAE@XZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCEntityScriptBindingBase@@@@SIXPAX@Z; member: positional pair with 0x00cb8fe0 (
+nf440	00cb9060	HOLD HOLD: type CEntityScriptBindingBase has no free member name left (collision; kept 00cb8fe0,00cb9020)
+nf440	00cb9150	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00cb9330	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00cb9560	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00cb95f0	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00cb9680	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00cba320	HOLD HOLD: no candidate type (no TU module set, no named neighbour)
+nf440	00cd42f0	CANDIDATE T3 ?ReleaseData@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXXZ (not batched: T3 precision 13/24): PREV_NAME ?DeleteData@?$CCountedPointer@VCScriptDefinitionManager@@@@SIXPAX@Z; member: positional pair with 0x00cd4360 (
+nf440	00cd4360	CANDIDATE T3 ??1?$CCountedPointer@VCScriptDefinitionManager@@@@QAE@XZ (not batched: T3 precision 13/24): NEXT_NAME ?Reset@?$CCountedPointer@VCScriptDefinitionManager@@@@QAEXPAVCScriptDefinitionManager@@@Z; member: positional 
+nf440	0043e1c0	NF428 SKIP: T3_PORT_QUEUE: t3q:nf383 (not started by NF440)
+nf440	005c04bf	NF428 SKIP: T3_PORT_QUEUE: t3q:nf416 (not started by NF440)

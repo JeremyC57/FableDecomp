@@ -1,0 +1,65 @@
+00403750	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ	{}
+004057a0	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ	{}
+004190b6	?ReleaseData@?$CCountedPointer@VCLUA@@@@QAEXXZ	{"NB_MEMBER": ["VCFontBank@@"], "PREV_NAME": ["VCPlayerGui@@"]}
+00419108	?ReleaseData@?$CCountedPointer@VCGraphicDataBank@@@@QAEXXZ	{"NB_MEMBER": ["VCFontBank@@", "VCGraphicDataBank@@"]}
+0041915a	?ReleaseData@?$CCountedPointer@VCPlayerGui@@@@QAEXXZ	{"NB_MEMBER": ["VCGraphicDataBank@@"]}
+004191c1	??1?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@QAE@XZ	{}
+0041bb30	?ReleaseData@?$CCountedPointer@VCTexture@@@@QAEXXZ	{}
+0041bc90	??1?$CCountedPointer@VCTexture@@@@QAE@XZ	{}
+00429160	?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ	{"NB_MEMBER": ["VCMeshDataBank@@", "VCTexture@@"]}
+0042918c	?ReleaseData@?$CCountedPointer@VCMeshDataBank@@@@QAEXXZ	{"NB_MEMBER": ["VCMeshDataBank@@", "VCTexture@@"]}
+004291de	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ	{"NB_MEMBER": ["VCComponent@NUISystem@@", "VCMeshDataBank@@"]}
+00429230	?ReleaseData@?$CCountedPointer@VCMesh@NUISystem@@@@QAEXXZ	{"NB_MEMBER": ["VCComponent@NUISystem@@"]}
+0042925c	?ReleaseData@?$CCountedPointer@VCText@NUISystem@@@@QAEXXZ	{"NB_MEMBER": ["VCComponent@NUISystem@@"]}
+00429288	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ	{"NB_MEMBER": ["VCComponent@NUISystem@@"]}
+0042f948	?ReleaseData@?$CCountedPointer@$$CBVCFontBank@@@@QAEXXZ	{"NB_MEMBER": ["$$CBVCFontBank@@"]}
+0042f974	?ReleaseData@?$CCountedPointer@VCIEngine@@@@QAEXXZ	{"NB_MEMBER": ["$$CBVCFontBank@@"]}
+0042f9a0	?ReleaseData@?$CCountedPointer@VCASoundBank@@@@QAEXXZ	{"NB_MEMBER": ["$$CBVCFontBank@@"]}
+00433cc0	?ReleaseData@?$CCountedPointer@VCStartupDefinitionManager@@@@QAEXXZ	{}
+0044f3b2	?ReleaseData@?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@QAEXXZ	{}
+0044f3de	?ReleaseData@?$CCountedPointer@VCGameDefinitionManager@@@@QAEXXZ	{}
+004850f9	?ReleaseData@?$CCountedPointer@VCMenuEntry@NUISystem@@@@QAEXXZ	{}
+0048afb0	?ReleaseData@?$CCountedPointer@VCCreatureActionBase@@@@QAEXXZ	{}
+0048c5c0	??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ	{}
+004c24c0	??1?$CCountedPointer@$$CBVC3DMeshStats@@@@QAE@XZ	{}
+00535ebb	?ReleaseData@?$CCountedPointer@VCListArrow@NUISystem@@@@QAEXXZ	{}
+0056c8d0	??1?$CCountedPointer@VCBase@NCameraModes@@@@QAE@XZ	{"PREV_NAME": ["VCBase@NCameraModes@@"]}
+00578a8d	??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ	{}
+0059a994	?ReleaseData@?$CCountedPointer@VCScrollableList@NUISystem@@@@QAEXXZ	{}
+005c0511	?ReleaseData@?$CCountedPointer@V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@@QAEXXZ	{"NB_MEMBER": ["V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@"]}
+005c0563	?ReleaseData@?$CCountedPointer@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@@QAEXXZ	{"NB_MEMBER": ["V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@", "V?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@"]}
+005ed2c0	??1?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAE@XZ	{"PREV_NAME": ["VCScriptModuleBase@NCameraModes@@"]}
+0062d9a0	??1?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@QAE@XZ	{}
+00654b0a	?ReleaseData@?$CCountedPointer@VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	{"NEXT_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@"]}
+00654b4f	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	{"NEXT_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@"], "PREV_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementBar@CDrawQuestInfo@NPlayerGui@@"]}
+00654b94	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	{"NEXT_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@"], "PREV_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@"]}
+00654bd9	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	{"NEXT_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@"], "PREV_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@"]}
+00654c1e	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	{"NEXT_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@"], "PREV_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@"]}
+00654c63	?ReleaseData@?$CCountedPointer@VCQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	{"NEXT_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@"], "PREV_NAME": ["VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@", "VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@"]}
+0065d507	??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ	{}
+0065d533	??1?$CCountedPointer@VCVillageTaskPickCrops@@@@QAE@XZ	{}
+0065d574	?ReleaseData@?$CCountedPointer@VCVillageTaskTorch@@@@QAEXXZ	{}
+0065d5a0	??1?$CCountedPointer@VCVillageTaskHorn@@@@QAE@XZ	{}
+0065d5cc	?ReleaseData@?$CCountedPointer@VCVillageTaskSecuritySweep@@@@QAEXXZ	{}
+0065d5f8	?ReleaseData@?$CCountedPointer@VCVillageTaskCarryCrate@@@@QAEXXZ	{}
+0065da6b	??1?$CCountedPointer@VCVillageTaskBase@@@@QAE@XZ	{"PREV_NAME": ["VCVillageTaskBase@@", "VCVillageTaskTorch@@"]}
+006e46f0	??1?$CCountedPointer@VCLipSyncSampleData@@@@QAE@XZ	{}
+006e7ab0	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	{"NEXT_LAYOUT": ["VCScriptThing@@"]}
+007044d0	?ShareData@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@PAVCCPPointerInfo@@@Z	{"NEXT_NAME": ["VCScriptThing@@"], "PREV_NAME": ["VCScriptThing@@"]}
+0073d630	??1?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@QAE@XZ	{}
+007a3200	??1?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@QAE@XZ	{}
+007e70e0	?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXXZ	{}
+008aa8e0	?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z	{"NEXT_NAME": ["VCModeSitBase@NCreatureMode@@", "VCModeSitFloor@NCreatureMode@@"], "PREV_NAME": ["VCModeSitFloor@NCreatureMode@@"]}
+008ab320	??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ	{"NEXT_NAME": ["VCModeSitFloor@NCreatureMode@@"], "PREV_NAME": ["VCScriptGameResourceObjectMovieBase@@"]}
+008ab3d0	??1?$CCountedPointer@VCModeSitFloor@NCreatureMode@@@@QAE@XZ	{"PREV_NAME": ["VCModeSitFloor@NCreatureMode@@"]}
+009a4400	??1?$CCountedPointer@VCBankFileAsyncData@@@@QAE@XZ	{"NEXT_NAME": ["VCBankFileAsyncData@@"]}
+009a9bb0	??1?$CCountedPointer@VCDiskFileWin32@@@@QAE@XZ	{"NEXT_NAME": ["VCDiskFileWin32@@"], "PREV_NAME": ["VCDiskFileWin32@@"]}
+009a9c40	??1?$CCountedPointer@VCThreadedFile@@@@QAE@XZ	{"NEXT_NAME": ["VCThreadedFile@@"], "PREV_NAME": ["VCDiskFileWin32@@"]}
+009a9d60	??1?$CCountedPointer@VCRetailBank@NBankFileManager@@@@QAE@XZ	{"PREV_NAME": ["VCRetailBank@NBankFileManager@@"]}
+009c9fc0	??1?$CCountedPointer@VCBankFileAsyncEntry@@@@QAE@XZ	{}
+00a36ec0	??1?$CCountedPointer@$$CBVC3DMesh2@@@@QAE@XZ	{}
+00a52f40	??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ	{"PREV_NAME": ["VC3DAnimationSequenceData@@"]}
+00ae94a0	??1?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@XZ	{"PREV_NAME": ["VCParticleEmitter@NParticleEngine@@"]}
+00cdd4f0	??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ	{}
+00ce1000	??1?$CCountedPointer@VCEntityScriptBase@@@@QAE@XZ	{"NEXT_LAYOUT": ["VCEntityScriptBase@@"]}
+00ce1040	?ShareData@?$CCountedPointer@VCEntityScriptBase@@@@QAEXPAVCEntityScriptBase@@PAVCCPPointerInfo@@@Z	{"NEXT_LAYOUT": ["VCEntityScriptBase@@"]}

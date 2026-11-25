@@ -64806,9 +64806,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008aa8e0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/8a/CCountedPointerCScriptThing_ShareData_008aa8e0.cpp'
-        TestSource = '00/8a/CCountedPointerCScriptThing_ShareData_008aa8e0_test.cpp'
+        Module = 'CCountedPointer<CScriptGameResourceObjectScriptedThingBase>'
+        Source = '00/8a/CCountedPointerCScriptGameResourceObjectScriptedThingBase_ShareData_008aa8e0.cpp'
+        TestSource = '00/8a/CCountedPointerCScriptGameResourceObjectScriptedThingBase_ShareData_008aa8e0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -73410,7 +73410,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdd4f0'
-        Module = '_global'
+        Module = 'CCountedPointer<NScript::CPredicateBase const>'
         Source = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cdd4f0.cpp'
         TestSource = '00/cd/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cdd4f0_test.cpp'
         PassPattern = 'PASS_00cdd4f0'
@@ -79073,14 +79073,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00535ebb'
-        Module = '_global'
-        Source = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00535ebb.cpp'
-        TestSource = '00/53/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00535ebb_test.cpp'
+        Module = 'CCountedPointer<NUISystem::CListArrow>'
+        Source = '00/53/CCountedPointerNUISystemCListArrow_ReleaseData_00535ebb.cpp'
+        TestSource = '00/53/CCountedPointerNUISystemCListArrow_ReleaseData_00535ebb_test.cpp'
         PassPattern = 'PASS_00535ebb'
     }
     [pscustomobject]@{
         Address = '00578a8d'
-        Module = '_global'
+        Module = 'CCountedPointer<NUISystem::CComponentContainer>'
         Source = '00/57/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00578a8d.cpp'
         TestSource = '00/57/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00578a8d_test.cpp'
         PassPattern = 'PASS_00578a8d'
