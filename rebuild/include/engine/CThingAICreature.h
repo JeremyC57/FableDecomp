@@ -76,6 +76,11 @@ public:
     // SetStateGroupEnabled 0x005370F0 / SetAllStateGroupsEnabled 0x00537100). Declaration only.
     void SetStateGroupEnabled(const CCharString& name, bool enabled);   // 0x008302D0
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SETALLSTATEGROUPSENABLED
+    // Opt-in (NF433, row 0x0088F6E0 CGameScriptInterface::EntitySetAllStategroupsEnabled): Ego_r.pdb / FableWin.pdb
+    // ?SetAllStateGroupsEnabled@CThingAICreature@@QAEX_N@Z, out of line in retail at 0x008302E0 (the row's call). Declaration only.
+    void SetAllStateGroupsEnabled(bool enabled);                         // 0x008302E0
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_STATTYPEFLAGS
     // Nested opt-in (chunk 1016, row 0x00934E50 via CMessageEvent::GetPOriginator<CThingAICreature>): FableWin.pdb
     // ?StatGetTypeFlags@CThingAICreature@@SIKXZ (static fastcall, inline in retail: the type test `not eax ; test al,1Fh`, 0x00934E9D).

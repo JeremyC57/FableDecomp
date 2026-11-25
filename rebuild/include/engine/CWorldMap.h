@@ -34,6 +34,12 @@ extern const C2DCoordI g_BlockNeighbourOffsets[9];                    // 0x01385
 #endif
 class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
 public:
+#ifdef FABLE_RETAIL_CWORLDMAP_SETREGIONSASCONNECTED
+    // Opt-in (NF433, row 0x0088E3D0 CGameScriptInterface::MiniMapAllowRouteBetweenRegions): Ego_r.pdb / FableWin.pdb
+    // ?SetRegionsAsConnectedInGraph@CWorldMap@@QAEXABVCCharString@@0_N@Z, out of line in retail at 0x004FC970 (the row's call on
+    // CWorld::GetWorldMap's result, CWorld vtable slot 12). Declaration only, no layout change.
+    void SetRegionsAsConnectedInGraph(const CCharString& region_1, const CCharString& region_2, bool connected);   // 0x004FC970
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_LOCAL_TO_WORLD_VECTOR_PASS26
     // Ego_r 004CFC10 and FableWin 01C83290, called by LoadRoute on PeekWorldMap().
     C2DVector ConvertLocalCoordsToWorldMapCoords(long region, const C2DVector& position) const;

@@ -115,6 +115,18 @@ public:
     bool IsHeroSleepingEnabled() const { return HeroSleepingEnabled; }
 private:
 #endif
+#ifdef FABLE_RETAIL_CWORLD_SCRIPTFLAGACCESSORS
+public:
+    // Opt-in (NF433, rows 0x0088F950 / 0x0088E380 / 0x0088F460 CGameScriptInterface::IsSavingEnabled / DontPopulateNextLoadedRegion /
+    // SetExperienceSpendingAsEnabled): FableWin.pdb ?IsSavingEnabled@CWorld@@QBE_NXZ, ?SetDontPopulateNextLoadedRegion@CWorld@@QAEXXZ (also
+    // Ego_r.pdb) and ?SetExperienceSpendingEnabled@CWorld@@QAEX_N@Z (/Od bodies 0x02648F80 / 0x02A86040 / 0x02AA3D50: the bytes
+    // SavingEnabled / DontPopulateNextLoadedRegion = 1 / ExperienceSpendingEnabled), inline in retail (the rows read or store +0xD7 / +0xD8 /
+    // +0xD6 in place). Bodies only, no layout change.
+    bool IsSavingEnabled() const { return SavingEnabled; }
+    void SetDontPopulateNextLoadedRegion() { DontPopulateNextLoadedRegion = true; }
+    void SetExperienceSpendingEnabled(bool enabled) { ExperienceSpendingEnabled = enabled; }
+private:
+#endif
 public:
 #ifdef FABLE_RETAIL_CWORLD_NESTED_ESAVETYPE
     // Opt-in (agentNF54, rows 0x0049F4C0 / 0x004A21F0 / 0x004AB7F0): ESaveType is nested in CWorld -- both PDBs spell its
@@ -402,6 +414,27 @@ public:
     // ?GetGameScriptInterface@CWorld@@QBEAAVCGameScriptInterface@@XZ, inline in retail (`mov ecx,[eax+38h]` straight after GetWorld,
     // then the IsInMovieSequence slot +0x62C; as the landed CTCLook::IsInsideAnimationRange 0x00751BC0). No layout change.
     CGameScriptInterface& GetGameScriptInterface() const { return *PGameScriptInterface_ptr; }
+#endif
+#ifdef FABLE_RETAIL_CWORLD_GETFACTIONMANAGER
+    // Opt-in (NF433, rows 0x00890870 / 0x008908C0 / 0x00890910 CGameScriptInterface::SetFactionAs*): FableWin.pdb
+    // ?GetFactionManager@CWorld@@QAEAAVCFactionManager@@XZ (the non-const overload; FableWin also has the const one of
+    // FABLE_RETAIL_CWORLD_FACTIONMANAGER), inline in retail (the rows read the scoped_ptr word +0x54 in place: `mov ecx,[eax+54h]`,
+    // 0x0089087A). No layout change.
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    CFactionManager& GetFactionManager() { return *PFactionManager; }
+#else
+    CFactionManager& GetFactionManager() { return *PFactionManager_ptr; }
+#endif
+#endif
+#ifdef FABLE_RETAIL_CWORLD_SCRIPTCONVERSATIONMANAGER
+    // Opt-in (NF433, row 0x008907C0 CGameScriptInterface::RemoveConversation): FableWin.pdb
+    // ?GetScriptConversationManager@CWorld@@QAEAAVCScriptConversationManager@@XZ, inline in retail (the row reads the scoped_ptr word
+    // +0x7C in place: `mov eax,[ecx+4] ; mov ecx,[eax+7Ch]`, 0x008907C0). No layout change.
+#ifdef FABLE_RETAIL_CWORLD_TYPED_MEMBERS
+    CScriptConversationManager& GetScriptConversationManager() { return *PScriptConversationManager; }
+#else
+    CScriptConversationManager& GetScriptConversationManager() { return *PScriptConversationManager_ptr; }
+#endif
 #endif
 #ifdef FABLE_RETAIL_CWORLD_MESSAGEEVENTMANAGER
     // Chunk 764 (row 0x0096DBC0 CCreatureAction_ScreamerIntoAggressive::Initialise): FableWin.pdb

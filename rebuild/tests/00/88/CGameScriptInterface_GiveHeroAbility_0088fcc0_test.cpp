@@ -1,59 +1,46 @@
-#include <cstdio>
-
-class CGameScriptInterface { public:
-    void* vt;
-    void* member14_pad[4];
-    void* member14; // +0x14
-};
-
-static int g_calls = 0;
-static int g_a, g_b, g_c, g_d;
-
-struct HeroObj {
-    unsigned char pad[0x91];
-    unsigned char flags; // +0x91
-    void GiveAbility(int a, int b, int c, int d) {
-        g_calls++; g_a=a; g_b=b; g_c=c; g_d=d;
-    }
-};
-
-static HeroObj g_hero;
-static HeroObj* g_resolve = 0;
-
-int __fastcall GetHeroManager(void* self) { return self ? 7 : 0; }
-HeroObj* __fastcall ResolveHero(int mgr) { (void)mgr; return g_resolve; }
-
-void __fastcall CGameScriptInterface_GiveHeroAbility(CGameScriptInterface* self, void* edx, int abilityId, int give)
+// Behaviour test for 0x0088FCC0 CGameScriptInterface::GiveHeroAbility (NF433): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// GetMainPlayer, GetPControlledCreature and LearnAbility are defined here; the row must reach the main player's creature through PlayerManager
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE_LEARNABILITY
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPlayerCreature.h"
+#include <stdio.h>
+#include <string.h>
+// (+0x14) and, when it is alive (bit 0 of +0x91 clear), call LearnAbility(ability, silent, -1, true) on it once.
+static long g_pm[8], g_player[8]; static unsigned char g_cr[0x100]; static void* g_crp = 0;
+static int g_mains = 0, g_peeks = 0, g_calls = 0; static const void* g_pmthis = 0; static const void* g_plthis = 0; static const void* g_lthis = 0;
+static EHeroAbility g_ab; static bool g_silent = false; static long g_slot = 0; static bool g_add = false;
+CPlayer& CPlayerManager::GetMainPlayer() { ++g_mains; g_pmthis = this; return *(CPlayer*)g_player; }
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const { ++g_peeks; g_plthis = this; return (CThingPlayerCreature*)g_crp; }
+bool CThingPlayerCreature::LearnAbility(EHeroAbility ability, bool silent, long slot, bool add) { ++g_calls; g_lthis = this; g_ab = ability; g_silent = silent; g_slot = slot; g_add = add; return true; }
+static long g_gsi[0x50 / 4];
+static int run(void* cr, unsigned char dead, EHeroAbility ab, bool silent, int want)
 {
-    (void)edx;
-    int mgr = GetHeroManager(*(void**)((char*)self + 0x14));
-    HeroObj* h = ResolveHero(mgr);
-    if (h != 0 && (h->flags & 1) == 0) {
-        h->GiveAbility(abilityId, give, -1, 1);
-    }
+    g_crp = cr; g_cr[0x91] = dead; g_mains = g_peeks = g_calls = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::GiveHeroAbility(ab, silent);
+    if (g_mains != 1 || g_peeks != 1 || g_pmthis != (const void*)g_pm || g_plthis != (const void*)g_player || g_calls != want) return 0;
+    return !want || (g_lthis == (const void*)g_cr && g_ab == ab && g_silent == silent && g_slot == -1 && g_add);
 }
-
-int main() {
-    CGameScriptInterface obj;
-    obj.member14 = (void*)1;
-
-    // Case 1: null hero -> no call
-    g_resolve = 0; g_calls = 0;
-    CGameScriptInterface_GiveHeroAbility(&obj, 0, 111, 222);
-    if (g_calls != 0) { std::printf("FAIL null hero\n"); return 1; }
-
-    // Case 2: flag set -> no call
-    g_hero.flags = 1; g_resolve = &g_hero; g_calls = 0;
-    CGameScriptInterface_GiveHeroAbility(&obj, 0, 111, 222);
-    if (g_calls != 0) { std::printf("FAIL flag set\n"); return 1; }
-
-    // Case 3: valid -> call with proper args
-    g_hero.flags = 0; g_resolve = &g_hero; g_calls = 0;
-    CGameScriptInterface_GiveHeroAbility(&obj, 0, 111, 222);
-    if (g_calls != 1 || g_a != 111 || g_b != 222 || g_c != -1 || g_d != 1) {
-        std::printf("FAIL valid path a=%d b=%d c=%d d=%d calls=%d\n", g_a,g_b,g_c,g_d,g_calls); return 1;
-    }
-
-    std::printf("CGameScriptInterface_0088fcc0_TEST PASS\n");
-    return 0;
+int main(void)
+{
+    g_gsi[0x14 / 4] = (long)g_pm;
+    if (!run(g_cr, 0, (EHeroAbility)7, true, 1) || !run(g_cr, 0, (EHeroAbility)3, false, 1) || !run(g_cr, 1, (EHeroAbility)7, true, 0)
+        || !run(0, 0, (EHeroAbility)7, true, 0)) { printf("FAIL_0088fcc0\n"); return 1; }
+    printf("PASS_0088fcc0 CGameScriptInterface_0088fcc0_TEST PASS\n"); return 0;
 }

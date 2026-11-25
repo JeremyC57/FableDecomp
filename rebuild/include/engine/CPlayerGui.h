@@ -76,6 +76,14 @@ public:
     void SetShowMoneyBag(bool show) { ShowMoneyBag = show; }
 private:
 #endif
+#if defined(FABLE_RETAIL_CPLAYERGUI_GETQUESTINFO) && defined(FABLE_RETAIL_CPLAYERGUI_MEMBERS)
+public:
+    // Opt-in (NF433, row 0x00891C60 CGameScriptInterface::DisplayMiniGameInfo): FableWin.pdb ?GetQuestInfo@CPlayerGui@@QAEAAVCDrawQuestInfo@NPlayerGui@@XZ
+    // (public, called by FableWin's /Od DisplayMiniGameInfo), inline in retail (the row reads PDrawQuestInfo's Data word +0x1C8 in place:
+    // `mov ecx,[edx+1C8h]`, 0x00891C72). Body only: no layout change.
+    NPlayerGui::CDrawQuestInfo& GetQuestInfo() { return *PDrawQuestInfo; }
+private:
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_ISOPEN_PASS26
 public:
     bool IsOpen() const;

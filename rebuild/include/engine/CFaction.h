@@ -20,6 +20,14 @@ public:
         EnemyFactions=faction.EnemyFactions;
         AlliedFactions=faction.AlliedFactions;
     }
+#ifdef FABLE_RETAIL_CFACTION_SCRIPTRELATIONS
+    // Opt-in (NF433, rows 0x00890870 / 0x008908C0 / 0x00890910 CGameScriptInterface::SetFactionAsAlliedToFaction / AsNeutralToFaction /
+    // AsEnemyToFaction): Ego_r.pdb / FableWin.pdb ?SetAsAlliedWithFaction@ / ?SetAsNeutralToFaction@ / ?SetAsEnemyOfFaction@CFaction@@QAEXABV1@@Z,
+    // out of line in retail at 0x006B94E0 / 0x006B9510 / 0x006B9530 (each row calls its one twice). Declarations only.
+    void SetAsAlliedWithFaction(const CFaction& faction);               // 0x006B94E0
+    void SetAsNeutralToFaction(const CFaction& faction);                // 0x006B9510
+    void SetAsEnemyOfFaction(const CFaction& faction);                  // 0x006B9530
+#endif
 #ifdef FABLE_RETAIL_CFACTION_ISALLIEDWITHFACTION
     // NF37 opt-in (row 0x0076C7F0 CTCEnemy::IsAlliedWithFaction): Ego_r.pdb ?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z (Ego_r 0x006F4EC0;
     // retail 0x006B9460, the catalog's CFaction::IsAlliedWithFaction). Declaration only.

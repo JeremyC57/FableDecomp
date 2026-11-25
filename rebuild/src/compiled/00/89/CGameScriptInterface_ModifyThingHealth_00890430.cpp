@@ -1,40 +1,29 @@
+// CGameScriptInterface::ModifyThingHealth(const CScriptThing& entity, float amount, bool can_kill) const -- the live physical thing's ModifyHealth (a virtual)
+// Leaf: ?ModifyThingHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00890430. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: entity.GetPThing() (CScriptThing slot 11, +0x2c), ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z, the inline
+//   ?GetTypeFlags@CThing@@QBEKXZ (& 2), ??$GFDebugPDynamicCast@PAVCThing@@PAVCThingPhysical@@@@YIPAVCThingPhysical@@PAVCThing@@PAV0@@Z, then
+//   the virtual ?ModifyHealth@CThingPhysical@@UAEXM_N@Z (retail slot +0xEC; FableWin's debug vtable +0xF8), arguments in order.
+//   FableWin's CDebugManager::DoErrorMessage blocks are debug-only (absent in retail).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_ORIGINAL_VTABLE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
 #include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPhysical.h"
+#include "engine/GFDebugPDynamicCast.h"
 
-struct HealthModifiableThing {
-    virtual void s0(); virtual void s1(); virtual void s2(); virtual void s3();
-    virtual void s4(); virtual void s5(); virtual void s6(); virtual void s7();
-    virtual void s8(); virtual void s9(); virtual void s10(); virtual void s11();
-    virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15();
-    virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
-    virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23();
-    virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27();
-    virtual void s28(); virtual void s29(); virtual void s30(); virtual void s31();
-    virtual void s32(); virtual void s33(); virtual void s34(); virtual void s35();
-    virtual void s36(); virtual void s37(); virtual void s38(); virtual void s39();
-    virtual void s40(); virtual void s41(); virtual void s42(); virtual void s43();
-    virtual void s44(); virtual void s45(); virtual void s46(); virtual void s47();
-    virtual void s48(); virtual void s49(); virtual void s50(); virtual void s51();
-    virtual void s52(); virtual void s53(); virtual void s54(); virtual void s55();
-    virtual void s56(); virtual void s57(); virtual void s58();
-    virtual void ModifyHealth(int amount, int source);
-    unsigned char _pad_0x04[0x68];
-    unsigned char healthFlags;
-    unsigned char _pad_0x6d[0x24];
-    unsigned char stateFlags;
-};
-
-struct CGameScriptInterfaceVirtuals {
-    virtual void g0(); virtual void g1(); virtual void g2(); virtual void g3();
-    virtual void g4(); virtual void g5(); virtual void g6(); virtual void g7();
-    virtual void g8(); virtual void g9(); virtual void g10();
-    virtual HealthModifiableThing* GetThing();
-};
-
-void __stdcall CGameScriptInterface_ModifyThingHealth(
-    CGameScriptInterface* scriptInterface, int amount, int source) {
-    CGameScriptInterfaceVirtuals* virtuals =
-        reinterpret_cast<CGameScriptInterfaceVirtuals*>(scriptInterface);
-    HealthModifiableThing* thing = virtuals->GetThing();
-    if (thing && !(thing->stateFlags & 1) && (thing->healthFlags & 2))
-        thing->ModifyHealth(amount, source);
+void CGameScriptInterface::ModifyThingHealth(const CScriptThing& entity, float amount, bool can_kill) const
+{
+    CThing* thing = entity.GetPThing();
+    if (IS_THING_ALIVE(thing) && (thing->GetTypeFlags() & 2))
+        GFDebugPDynamicCast(thing, (CThingPhysical*)0)->ModifyHealth(amount, can_kill);
 }

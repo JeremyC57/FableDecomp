@@ -1,31 +1,18 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+// CGameScriptInterface::EntitySetSleepEnabled(const CScriptThing& entity, bool enabled) const -- the "SG_MINION_SLEEP" state group through the virtual EntitySetStategroupEnabled
+// Leaf: ?EntitySetSleepEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088F7D0. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: ??0CCharString@@QAE@PBDJ@Z ("SG_MINION_SLEEP", -1; retail 0x0099EBF0), the virtual
+//   ?EntitySetStategroupEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z (slot 590, +0x938) with the entity, the
+//   named local and the flag, then ??1CCharString@@QAE@XZ (retail 0x0099EAE0).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
 
-class CCharString {
-public:
-    CCharString(const char* text, long length);
-    ~CCharString();
-};
-
-class CScriptThing;
-
-#pragma pointers_to_members(full_generality, single_inheritance)
-struct CGameScriptInterfaceDispatch { void member(); };
-typedef void (CGameScriptInterfaceDispatch::*DispatchPMF)(
-    const CScriptThing*, const CCharString*, bool);
-
-struct CGameScriptInterfaceVTableView {
-    unsigned char _pad_0x000[0x938];
-    DispatchPMF EntitySetSleepEnabled;
-};
-
-void __fastcall CGameScriptInterface_EntitySetSleepEnabled(
-    const CGameScriptInterface* self, int /*edx*/,
-    const CScriptThing* entity, bool enabled)
+void CGameScriptInterface::EntitySetSleepEnabled(const CScriptThing& entity, bool enabled) const
 {
-    CCharString stateName("SG_MINION_SLEEP", -1);
-    CGameScriptInterfaceDispatch* callee =
-        (CGameScriptInterfaceDispatch*)const_cast<CGameScriptInterface*>(self);
-    const CGameScriptInterfaceVTableView* vtable =
-        (const CGameScriptInterfaceVTableView*)self->__vftable;
-    (callee->*(vtable->EntitySetSleepEnabled))(entity, &stateName, enabled);
+    CCharString state_group("SG_MINION_SLEEP");
+    EntitySetStategroupEnabled(entity, state_group, enabled);
 }

@@ -1,23 +1,30 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct Faction {
-    void AddAlly(Faction* other);
-};
-struct FactionMgr {
-    Faction* GetFaction(int id);
-};
-class CWorld { public:
-    unsigned char _pad[0x54];
-    FactionMgr* mgr; // +0x54
-};
+// CGameScriptInterface::SetFactionAsAlliedToFaction(const CCharString& faction_name_1, const CCharString& faction_name_2) const -- both factions' SetAsAlliedWithFaction, each with the other
+// Leaf: ?SetFactionAsAlliedToFaction@CGameScriptInterface@@UBEXABVCCharString@@0@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00890870. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: the inline ?GetFactionManager@CWorld@@QAEAAVCFactionManager@@XZ (World +0x54) and
+//   ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z (retail 0x006B93D0) for each name, then, when both are found,
+//   ?SetAsAlliedWithFaction@CFaction@@QAEXABV1@@Z (retail 0x006B94E0) on the first with the second and on the second with the first. Its two
+//   CDebugManager::DoErrorMessage blocks (a faction not found) are debug-only (absent in retail).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_GETFACTIONMANAGER
+#define FABLE_RETAIL_CFACTION_SCRIPTRELATIONS
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "engine/CWorld.h"
+#include "engine/CFactionManager.h"
+#include "engine/CFaction.h"
 
-void __fastcall CGameScriptInterface_SetFactionAsAlliedToFaction(CGameScriptInterface* self, int edx, int faction1, int faction2)
+void CGameScriptInterface::SetFactionAsAlliedToFaction(const CCharString& faction_name_1, const CCharString& faction_name_2) const
 {
-    FactionMgr* m = self->World->mgr;
-    Faction* a = m->GetFaction(faction1);
-    FactionMgr* m2 = self->World->mgr;
-    Faction* b = m2->GetFaction(faction2);
-    if (a && b) {
-        a->AddAlly(b);
-        b->AddAlly(a);
+    CFaction* faction_1 = World->GetFactionManager().GetPFaction(faction_name_1);
+    CFaction* faction_2 = World->GetFactionManager().GetPFaction(faction_name_2);
+    if (faction_1 && faction_2)
+    {
+        faction_1->SetAsAlliedWithFaction(*faction_2);
+        faction_2->SetAsAlliedWithFaction(*faction_1);
     }
 }

@@ -1,24 +1,33 @@
-
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct HeroObj {
-    unsigned char pad[0x91];
-    unsigned char flags; // +0x91
-    void GiveAbility(int a, int b, int c, int d);
-};
-class CThingPlayerCreature : public HeroObj { };
-class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-
-// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
-//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
-//   GetMainPlayerNumber 0x00449700).
+// CGameScriptInterface::GiveHeroAbility(EHeroAbility ability, bool silent) const -- the main player's live controlled creature learns the ability
+// Leaf: ?GiveHeroAbility@CGameScriptInterface@@UBEXW4EHeroAbility@@_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088FCC0. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: PlayerManager (+0x14), ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (retail 0x00449970),
+//   ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (retail 0x00487DC0), ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z,
+//   then ?LearnAbility@CThingPlayerCreature@@QAE_NW4EHeroAbility@@_NJ1@Z (retail 0x006AC690) with (ability, silent, -1, true).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE_LEARNABILITY
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 #include "engine/CPlayerManager.h"
- /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPlayerCreature.h"
 
-void __fastcall CGameScriptInterface_GiveHeroAbility(CGameScriptInterface* self, void* edx, int abilityId, int give)
+void CGameScriptInterface::GiveHeroAbility(EHeroAbility ability, bool silent) const
 {
-    CPlayer* mgr = (&((CPlayerManager*)(*(void**)((char*)self + 0x14)))->GetMainPlayer());
-    HeroObj* h = mgr->GetPControlledCreature();
-    if (h != 0 && (h->flags & 1) == 0) {
-        h->GiveAbility(abilityId, give, -1, 1);
-    }
+    CThingPlayerCreature* creature = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(creature))
+        creature->LearnAbility(ability, silent, -1, true);
 }

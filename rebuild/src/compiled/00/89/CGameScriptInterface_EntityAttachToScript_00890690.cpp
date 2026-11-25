@@ -1,30 +1,27 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+// CGameScriptInterface::EntityAttachToScript(const CScriptThing& entity, const CCharString& script_name) const -- a live thing's serialisation section name becomes the script name
+// Leaf: ?EntityAttachToScript@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00890690. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: entity.GetPThing() (CScriptThing slot 11, +0x2c), ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z, then the inline
+//   ?SetSerialisationSectionName@CThing@@QAEXABVCCharString@@@Z (SerialisationSectionName +0x58 = name: ??4CCharString@@QAEAAV0@ABV0@@Z, retail
+//   0x0099EFB0). Its CDebugManager::DoErrorMessage block (thing not alive) is debug-only (absent in retail).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_LOADSINGLE
+#define FABLE_RETAIL_IS_THING_ALIVE
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
 
-struct CScriptAttachmentTargetView {
-    unsigned char _pad_0x00[0x91];
-    unsigned char StateFlags;
-    unsigned char _pad_0x92[0x100];
-};
-
-struct CGameScriptInterfaceAttachmentVTable {
-    void* Slots[11];
-    CScriptAttachmentTargetView* (__fastcall* GetTarget)(CGameScriptInterface*);
-};
-
-class CCharString { public:
-    void* Data;
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-
-void __stdcall CGameScriptInterface_EntityAttachToScript(
-    CGameScriptInterface* self, int scriptId)
+void CGameScriptInterface::EntityAttachToScript(const CScriptThing& entity, const CCharString& script_name) const
 {
-    CGameScriptInterfaceAttachmentVTable* vtable =
-        (CGameScriptInterfaceAttachmentVTable*)self->__vftable;
-    CScriptAttachmentTargetView* target = vtable->GetTarget(self);
-    if (target == 0)
-        return;
-    if (target->StateFlags & 1)
-        return;
-    *(CCharString*)((char*)target + 0x58) = *(const CCharString*)scriptId;
+    CThing* thing = entity.GetPThing();
+    if (IS_THING_ALIVE(thing))
+        thing->SetSerialisationSectionName(script_name);
 }

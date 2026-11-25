@@ -1,26 +1,18 @@
-// Literal (NF415, 2026-11-25): was the bare integer 0x1275988 (the retail VA of "SG_DEED_REACTION_ROOT"); now the literal is spelled, cast to the
-//   stand-in's existing int parameter so no callee or table line changes (the callee port is T3). Retail 0x01275988: 53 47 5F 44 45 45 44 5F 52 45 41 43 54 49 4F 4E 5F 52 4F 4F 54 00 (4-aligned, after the float 3.0f at 0x01275984).
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+// CGameScriptInterface::EntitySetDeedReactionsEnabled(const CScriptThing& entity, bool enabled) const -- the "SG_DEED_REACTION_ROOT" state group through the virtual EntitySetStategroupEnabled
+// Leaf: ?EntitySetDeedReactionsEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088F850. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: ??0CCharString@@QAE@PBDJ@Z ("SG_DEED_REACTION_ROOT", -1; retail 0x0099EBF0), the virtual
+//   ?EntitySetStategroupEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z (slot 590, +0x938) with the entity, the
+//   named local and the flag, then ??1CCharString@@QAE@XZ (retail 0x0099EAE0).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
 
-struct CDeedReactionName {
-    int Value;
-    CDeedReactionName(int value, int length);
-    ~CDeedReactionName();
-};
-
-typedef void (__fastcall *SetDeedReactionsFn)(
-    CGameScriptInterface*, CDeedReactionName*, int,
-    CDeedReactionName*, int);
-
-struct CGameScriptInterfaceDeedVTable {
-    SetDeedReactionsFn Slots[0x300];
-};
-
-void __fastcall CGameScriptInterface_EntitySetDeedReactionsEnabled(
-    CGameScriptInterface* self, int, int entity, int enabled)
+void CGameScriptInterface::EntitySetDeedReactionsEnabled(const CScriptThing& entity, bool enabled) const
 {
-    CDeedReactionName name((int)"SG_DEED_REACTION_ROOT", -1);
-    CGameScriptInterfaceDeedVTable* vtable =
-        (CGameScriptInterfaceDeedVTable*)self->__vftable;
-    vtable->Slots[0x938 / 4](self, &name, entity, &name, enabled);
+    CCharString state_group("SG_DEED_REACTION_ROOT");
+    EntitySetStategroupEnabled(entity, state_group, enabled);
 }

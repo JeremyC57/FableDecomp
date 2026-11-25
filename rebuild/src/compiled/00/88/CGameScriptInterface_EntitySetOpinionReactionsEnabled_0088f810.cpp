@@ -1,34 +1,18 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+// CGameScriptInterface::EntitySetOpinionReactionsEnabled(const CScriptThing& entity, bool enabled) const -- the "SG_OPINION_REACTION_ROOT" state group through the virtual EntitySetStategroupEnabled
+// Leaf: ?EntitySetOpinionReactionsEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088F810. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: ??0CCharString@@QAE@PBDJ@Z ("SG_OPINION_REACTION_ROOT", -1; retail 0x0099EBF0), the virtual
+//   ?EntitySetStategroupEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z (slot 590, +0x938) with the entity, the
+//   named local and the flag, then ??1CCharString@@QAE@XZ (retail 0x0099EAE0).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
 
-class CScriptThing;
-
-class CCharString { public:
-    void* m_pRep;
-    CCharString(const char* text, long length);
-    ~CCharString();
-};
-
-struct CGameScriptReactionSlot {
-    virtual void SetReactionEnabled(
-        const void* entity, const CCharString* componentName, int enabled) = 0;
-};
-
-typedef void (CGameScriptReactionSlot::*ReactionSlotMFP)(
-    const void* entity, const CCharString* componentName, int enabled);
-
-extern const char kName_0125fd40[];
-
-struct CGameScriptInterface_Methods : CGameScriptInterface {
-    void EntitySetOpinionReactionsEnabled(
-        const CScriptThing& entity, int enabled) const;
-};
-
-void CGameScriptInterface_Methods::EntitySetOpinionReactionsEnabled(
-    const CScriptThing& entity, int enabled) const
+void CGameScriptInterface::EntitySetOpinionReactionsEnabled(const CScriptThing& entity, bool enabled) const
 {
-    CCharString componentName(kName_0125fd40, -1);
-    CGameScriptReactionSlot* target = (CGameScriptReactionSlot*)this;
-    ReactionSlotMFP method;
-    *(void**)&method = ((void**)this->__vftable)[0x938 / 4];
-    (target->*method)((const void*)&entity, &componentName, enabled);
+    CCharString state_group("SG_OPINION_REACTION_ROOT");
+    EntitySetStategroupEnabled(entity, state_group, enabled);
 }

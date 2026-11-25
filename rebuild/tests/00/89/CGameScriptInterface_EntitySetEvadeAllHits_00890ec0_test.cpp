@@ -1,93 +1,45 @@
-#include <cstdio>
-
-struct Entity {
-    char _pad_6c[0x6c];
-    unsigned char f6c;
-    char _pad_91[0x24];
-    unsigned char f91;
-    char _pad_bc[0x2a];
-    unsigned char fbc;
-};
-
-class CGameScriptInterface { public:
-    virtual void s0() = 0;
-    virtual void s1() = 0;
-    virtual void s2() = 0;
-    virtual void s3() = 0;
-    virtual void s4() = 0;
-    virtual void s5() = 0;
-    virtual void s6() = 0;
-    virtual void s7() = 0;
-    virtual void s8() = 0;
-    virtual void s9() = 0;
-    virtual void s10() = 0;
-    virtual Entity* GetEntity() = 0;
-};
-
-static Entity* g_ent;
-
-struct TestGSI : public CGameScriptInterface {
-    void s0() {} void s1() {} void s2() {} void s3() {} void s4() {}
-    void s5() {} void s6() {} void s7() {} void s8() {} void s9() {} void s10() {}
-    Entity* GetEntity() { return g_ent; }
-};
-
-void __stdcall CGameScriptInterface_EntitySetEvadeAllHits(CGameScriptInterface* self, char param)
+// Behaviour test for 0x00890EC0 CGameScriptInterface::EntitySetEvadeAllHits (NF433): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The CScriptThing's slot 11 is planted here; the row must set only bit 0x08 of the physical thing's +0xBC flags byte, and only for a live
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGPHYSICAL_SCRIPTHITSETTERS
+#include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPhysical.h"
+#include "engine/GFDebugPDynamicCast.h"
+#include <stdio.h>
+#include <string.h>
+// thing whose type flags have bit 2 (Dead is bit 0 of +0x91; ThingTypeFlags is +0x6C).
+static unsigned char g_thing[0x100];
+static void* g_ret = 0;
+static int g_gets = 0;
+extern "C" void* __fastcall nf433_get_pthing(const void*) { ++g_gets; return g_ret; }   // CScriptThing slot 11 (+0x2c)
+static void* g_svtbl[79];
+static void* g_script[3];
+static long g_gsi[0x50 / 4];
+static void setup(void) { for (int i = 0; i < 79; ++i) g_svtbl[i] = 0; g_svtbl[11] = (void*)&nf433_get_pthing; g_script[0] = g_svtbl; }
+static int run(void* ret, unsigned char dead, unsigned char tf, bool v, unsigned char start, unsigned char want)
 {
-    Entity* e = self->GetEntity();
-    if (e == 0) return;
-    if (e->f91 & 1) return;
-    if (!(e->f6c & 2)) return;
-    unsigned char v = (unsigned char)param;
-    v <<= 3;
-    v ^= e->fbc;
-    v &= 8;
-    e->fbc ^= v;
+    memset(g_thing, 0x5a, sizeof g_thing); g_thing[0x91] = dead; g_thing[0x6c] = tf; g_thing[0xbc] = start; g_ret = ret; g_gets = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::EntitySetEvadeAllHits(*(const CScriptThing*)g_script, v);
+    for (int i = 0; i < (int)sizeof g_thing; ++i) {
+        unsigned char e = i == 0x91 ? dead : i == 0x6c ? tf : i == 0xbc ? want : (unsigned char)0x5a;
+        if (g_thing[i] != e) return 0;
+    }
+    return g_gets == 1;
 }
-
-int main()
+int main(void)
 {
-    TestGSI self;
-    CGameScriptInterface* pself = &self;
-
-    Entity e;
-    for (int i = 0; i < (int)sizeof(e); i++) ((char*)&e)[i] = 0;
-    g_ent = &e;
-
-    e.f6c = 0x02;
-    e.f91 = 0x00;
-    e.fbc = 0x00;
-
-    // param bit0 set -> (1<<3)&8 = 8 -> sets bit3 of fbc
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 1);
-    if (e.fbc != 0x08) { std::printf("FAIL set bit: %02x\n", e.fbc); return 1; }
-
-    // param bit0 clear -> clears bit3
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 0);
-    if (e.fbc != 0x00) { std::printf("FAIL clear bit: %02x\n", e.fbc); return 1; }
-
-    // idempotent set
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 1);
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 1);
-    if (e.fbc != 0x08) { std::printf("FAIL idem: %02x\n", e.fbc); return 1; }
-
-    // ineligible: f6c bit1 clear -> no change
-    e.fbc = 0x55;
-    e.f6c = 0x00;
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 0);
-    if (e.fbc != 0x55) { std::printf("FAIL ineligible: %02x\n", e.fbc); return 1; }
-
-    // f91 bit0 set -> skip
-    e.f6c = 0x02;
-    e.f91 = 0x01;
-    e.fbc = 0x00;
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 1);
-    if (e.fbc != 0x00) { std::printf("FAIL f91: %02x\n", e.fbc); return 1; }
-
-    // null entity -> no crash
-    g_ent = 0;
-    CGameScriptInterface_EntitySetEvadeAllHits(pself, 1);
-
-    std::printf("CGameScriptInterface_00890ec0_TEST PASS\n");
-    return 0;
+    setup();
+    if (!run(g_thing, 0, 2, true, 0x00, 0x08) || !run(g_thing, 0, 2, false, 0xff, (unsigned char)(0xff & ~0x08))
+        || !run(g_thing, 1, 2, true, 0x00, 0x00) || !run(g_thing, 0, 1, true, 0x00, 0x00) || !run(0, 0, 2, true, 0x00, 0x00)) { printf("FAIL_00890ec0\n"); return 1; }
+    printf("PASS_00890ec0 CGameScriptInterface_00890ec0_TEST PASS\n"); return 0;
 }

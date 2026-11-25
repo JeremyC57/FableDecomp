@@ -10,6 +10,9 @@
 // +0x1CD, LastThingCollisionPosition +0x1D9; Ego_r +0x1F8 / +0x1F9 / +0x205), so the class is packed to 1 with the PDB's alignment
 // gaps spelled out. Allocation size 0x208 (Create 0x006AC910 `push 208h`): the last dword is not in the Ego_r member list.
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_LEARNABILITY
+#include "engine/EHeroAbility.h"                                  // LearnAbility (opt-in below)
+#endif
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ACCELERATIONMAP
 // Opt-in (wf7, row 0x006AD3C0 ApplyRelativeMovementAcceleration): RelativeMovementAccelerationComponents typed as the Ego_r.pdb
 // member type map<EGameAction,pair<C3DVector,long> > (STLport, 0xC bytes in retail) instead of the opaque byte array.
@@ -53,6 +56,12 @@ public:
     bool LearnExpression(const CCharString& expressionName, long quickAccessSlot, bool silent);   // 0x006AC430
 #endif
 public:
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_LEARNABILITY
+    // Opt-in (NF433, row 0x0088FCC0 CGameScriptInterface::GiveHeroAbility): Ego_r.pdb / FableWin.pdb
+    // ?LearnAbility@CThingPlayerCreature@@QAE_NW4EHeroAbility@@_NJ1@Z, out of line in retail at 0x006AC690 (the row pushes 1, -1, the flag
+    // and the ability). Declaration only, no layout change.
+    bool LearnAbility(EHeroAbility ability, bool silent, long quick_access_slot, bool add_to_quick_access);   // 0x006AC690
+#endif
 #ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_ONHIT_PASS26
     virtual void OnHit(CHitParameters&);
 #endif

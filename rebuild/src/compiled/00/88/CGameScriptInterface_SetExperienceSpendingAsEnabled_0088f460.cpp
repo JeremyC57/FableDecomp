@@ -1,15 +1,17 @@
-// CGameScriptInterface::SetExperienceSpendingAsEnabled(bool enabled) const -- World (+0x04)->ExperienceSpendingEnabled (+0xd6) = enabled
+// CGameScriptInterface::SetExperienceSpendingAsEnabled(enabled) const -- World (+0x04)->SetExperienceSpendingEnabled(enabled), FableWin's inline CWorld accessor
 // Leaf: ?SetExperienceSpendingAsEnabled@CGameScriptInterface@@UBEX_N@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0088F460, `ret 4`.
-// Identity (NF431, 2026-11-25): the retail RTTI vftable placement of CGameScriptInterface (0x01260F0C) names this PDB member here;
-//   Ego_r.pdb and FableWin.pdb list the symbol. FableWin's /Od body calls the inline FableWin.pdb ?SetExperienceSpendingEnabled@CWorld@@QAEX_N@Z
-//   (one byte store); retail expands it, written here as the store to the shared header's CWorld::ExperienceSpendingEnabled.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0088F460. Identity (NF433, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: World (+0x04), then the inline ?SetExperienceSpendingEnabled@CWorld@@QAEX_N@Z (ExperienceSpendingEnabled +0xD6 = enabled), expanded in retail.
+// Round 2 of NF431's landed port (coordinator debt line "nf431 CWorld accessors"): the member is now reached through FableWin's accessor; same bytes.
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_SCRIPTFLAGACCESSORS
 #include "engine/CGameScriptInterface.h"
 #include "engine/CWorld.h"
 
 void CGameScriptInterface::SetExperienceSpendingAsEnabled(bool enabled) const
 {
-    World->ExperienceSpendingEnabled = enabled;
+    World->SetExperienceSpendingEnabled(enabled);
 }

@@ -116,6 +116,12 @@ bool __fastcall IsUnderground(const CThing& thing);                     // 0x008
 bool __fastcall IsToEvadeAllHits(const CThing& thing);                  // 0x0085FA00
 }
 #endif
+#ifdef FABLE_RETAIL_NCREATUREMODE_ISABLETOMOVE
+// Opt-in (NF433, row 0x00890280 CGameScriptInterface::IsEntityAbleToAttack): Ego_r.pdb / FableWin.pdb ?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z
+// (static `__fastcall` free function), out of line in retail at 0x0085F3E0 (the row's `mov ecx,eax ; call`). Declaration only.
+class CThing;
+namespace NCreatureMode { bool __fastcall IsAbleToMove(const CThing& thing); }   // 0x0085F3E0
+#endif
 #ifdef FABLE_RETAIL_NCREATUREMODE_LIGHTNINGABLE
 // Nested opt-in (chunk 2015, row 0x007A0D90 CTCWillLightning::GetTargets): Ego_r.pdb ?IsLightningable@NCreatureMode@@YI_NABVCThing@@@Z, the
 // static `__fastcall` thing query out of line at 0x0085FAA0 (landed; `mov ecx,<thing> ; call`, 0x007A0E98 / 0x007A1029). Declaration only.

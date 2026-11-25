@@ -1,74 +1,37 @@
+// Behaviour test for 0x00890870 CGameScriptInterface::SetFactionAsAlliedToFaction (NF433): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// GetPFaction and CFaction::SetAsAlliedWithFaction are defined here; the row must look both names up on World (+0x04) -> +0x54, then relate each found
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_GETFACTIONMANAGER
+#define FABLE_RETAIL_CFACTION_SCRIPTRELATIONS
 #include "engine/CGameScriptInterface.h"
-#include <cstdio>
-
-struct Faction;
-struct FactionMgr;
-
-static int g_add_calls = 0;
-static Faction* g_last_this[8];
-static Faction* g_last_arg[8];
-
-struct Faction {
-    int id;
-    void AddAlly(Faction* other);
-};
-struct FactionMgr {
-    Faction* fa;
-    Faction* fb;
-    Faction* GetFaction(int id);
-};
-class CWorld { public:
-    unsigned char _pad[0x54];
-    FactionMgr* mgr;
-};
-
-void Faction::AddAlly(Faction* other) {
-    if (g_add_calls < 8) {
-        g_last_this[g_add_calls] = this;
-        g_last_arg[g_add_calls] = other;
-    }
-    g_add_calls++;
-}
-
-Faction* FactionMgr::GetFaction(int id) {
-    if (id == 1) return fa;
-    if (id == 2) return fb;
-    return 0;
-}
-
-void __fastcall CGameScriptInterface_SetFactionAsAlliedToFaction(CGameScriptInterface* self, int edx, int faction1, int faction2)
+#include "fable_string.h"
+#include "engine/CWorld.h"
+#include "engine/CFactionManager.h"
+#include "engine/CFaction.h"
+#include <stdio.h>
+#include <string.h>
+// faction to the other (first, then second), and do nothing when either is missing.
+static long g_n1[4], g_n2[4], g_f1[8], g_f2[8], g_mgr[4], g_world[0x40];
+static long g_gsi[0x50 / 4];
+static void* g_found1 = 0; static void* g_found2 = 0; static int g_looks = 0; static const void* g_mthis = 0;
+CFaction* CFactionManager::GetPFaction(const CCharString& name) const
+{ ++g_looks; g_mthis = this; return (CFaction*)((const void*)&name == (const void*)g_n1 ? g_found1 : (const void*)&name == (const void*)g_n2 ? g_found2 : 0); }
+static int g_calls = 0; static const void* g_this[4]; static const void* g_arg[4];
+void CFaction::SetAsAlliedWithFaction(const CFaction& faction) { if (g_calls < 4) { g_this[g_calls] = this; g_arg[g_calls] = &faction; } ++g_calls; }
+static int run(void* f1, void* f2, int want)
 {
-    FactionMgr* m = self->World->mgr;
-    Faction* a = m->GetFaction(faction1);
-    FactionMgr* m2 = self->World->mgr;
-    Faction* b = m2->GetFaction(faction2);
-    if (a && b) {
-        a->AddAlly(b);
-        b->AddAlly(a);
-    }
+    g_found1 = f1; g_found2 = f2; g_looks = 0; g_calls = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetFactionAsAlliedToFaction(*(const CCharString*)g_n1, *(const CCharString*)g_n2);
+    if (g_looks != 2 || g_mthis != (const void*)g_mgr || g_calls != want) return 0;
+    return !want || (g_this[0] == f1 && g_arg[0] == f2 && g_this[1] == f2 && g_arg[1] == f1);
 }
-
-int main() {
-    Faction fA; fA.id = 1;
-    Faction fB; fB.id = 2;
-    FactionMgr mgr; mgr.fa = &fA; mgr.fb = &fB;
-    CWorld midObj; midObj.mgr = &mgr;
-    CGameScriptInterface gsi; gsi.World = &midObj;
-
-    // both present -> two AddAlly calls, cross referenced
-    g_add_calls = 0;
-    CGameScriptInterface_SetFactionAsAlliedToFaction(&gsi, 0, 1, 2);
-    if (g_add_calls != 2) { std::printf("FAIL calls=%d\n", g_add_calls); return 1; }
-    if (g_last_this[0] != &fA) { std::printf("FAIL c0t\n"); return 1; }
-    if (g_last_arg[0] != &fB) { std::printf("FAIL c0a\n"); return 1; }
-    if (g_last_this[1] != &fB) { std::printf("FAIL c1t\n"); return 1; }
-    if (g_last_arg[1] != &fA) { std::printf("FAIL c1a\n"); return 1; }
-
-    // one missing -> no calls
-    g_add_calls = 0;
-    CGameScriptInterface_SetFactionAsAlliedToFaction(&gsi, 0, 1, 99);
-    if (g_add_calls != 0) { std::printf("FAIL missing=%d\n", g_add_calls); return 1; }
-
-    std::printf("CGameScriptInterface_00890870_TEST PASS\n");
-    return 0;
+int main(void)
+{
+    g_gsi[1] = (long)g_world; g_world[0x54 / 4] = (long)g_mgr;
+    if (!run(g_f1, g_f2, 2) || !run(g_f1, 0, 0) || !run(0, g_f2, 0) || !run(0, 0, 0)) { printf("FAIL_00890870\n"); return 1; }
+    printf("PASS_00890870 CGameScriptInterface_00890870_TEST PASS\n"); return 0;
 }

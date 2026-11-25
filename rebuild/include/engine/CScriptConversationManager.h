@@ -21,6 +21,11 @@ public:
     void AddLineToConversation(long conversation, const CThing& speaker, const CThing* listener, const CCharString& line,
                                bool play_during_cut_scenes);                  // 0x006E5950
 #endif
+#ifdef FABLE_RETAIL_CSCRIPTCONVERSATIONMANAGER_REMOVECONVERSATION
+    // Opt-in (NF433, row 0x008907C0 CGameScriptInterface::RemoveConversation): Ego_r.pdb / FableWin.pdb
+    // ?RemoveConversation@CScriptConversationManager@@QAEXJ_N@Z, out of line in retail at 0x006E5990 (the row's tail jump). Declaration only.
+    void RemoveConversation(long conversation, bool remove_now);               // 0x006E5990
+#endif
 private:
     std::map<long, CScriptConversation> Conversations;                         // +0x00
     long NextConversationIndex;                                                // +0x0C

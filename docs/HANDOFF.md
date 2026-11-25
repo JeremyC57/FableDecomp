@@ -7,14 +7,14 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 34,257 of 64,041 done (53.49%), from the tracker. Landed today:
+- **Naming:** 34,285 of 64,041 done (53.54%), from the tracker. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
   - nf426 (110 CDefPointer Release/~ copies; **R-NF426-1**, 26 `direct` / 84 `rule` in `pending/2026-11-25_nf426_handback/DIRECT_RULE.tsv`);
   - the AUTH26 unit (below);
-  - nf428 (71 CCountedPointer rows; **R-NF428-1**: retail-layout T is one source only), nf427 r1 + r2 (233 creature-action rows on new VIRTUAL_MODEL opt-ins, 226 test ports), nf429 (47 AI state-group rows, 32 models; `pending/2026-11-25_nf429_handback/`), nf430 (102 stale `CVtable_<va>` table lines deleted, 99 addresses close; `pending/2026-11-25_nf430_handback/`), nf431 (18 CGameScriptInterface virtuals on the shared header; `pending/2026-11-25_nf431_handback/`), nf432 (5 NPlayerGui draw ctors + ClearPrimitives / ClearPrimitivesIfNecessary, CScriptBase slots 1-3; 4 new class headers; `pending/2026-11-25_nf432_handback/`).
-  - **Running:** NF433 (NF431's 80 CGameScriptInterface body ports) and NF434 (the 102 NF430 debt script rows, CEntityScriptBase). Owner allows 2 naming agents.
+  - nf428 (71 CCountedPointer rows; **R-NF428-1**: retail-layout T is one source only), nf427 r1 + r2 (233 creature-action rows on new VIRTUAL_MODEL opt-ins, 226 test ports), nf429 (47 AI state-group rows, 32 models; `pending/2026-11-25_nf429_handback/`), nf430 (102 stale `CVtable_<va>` table lines deleted, 99 addresses close; `pending/2026-11-25_nf430_handback/`), nf431 (18 CGameScriptInterface virtuals on the shared header; `pending/2026-11-25_nf431_handback/`), nf432 (5 NPlayerGui draw ctors + ClearPrimitives / ClearPrimitivesIfNecessary, CScriptBase slots 1-3; 4 new class headers; `pending/2026-11-25_nf432_handback/`), nf433 (28 more CGameScriptInterface rows + the CWorld accessor debt; `pending/2026-11-25_nf433_handback/`).
+  - **Running:** NF434 (the 102 NF430 debt script rows, CEntityScriptBase). Owner allows 2 naming agents.
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.

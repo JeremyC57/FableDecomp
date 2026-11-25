@@ -64,6 +64,11 @@ public:
     // ?ReceiveFeedbackGameEvent@CDisplayEngine@@QAEXPBVCGameEvent@@@Z (public), out of line in retail at 0x00434A30. Declaration only.
     void ReceiveFeedbackGameEvent(const class CGameEvent* event);       // 0x00434A30
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_ENDLETTERBOXMODE
+    // Opt-in (NF433, row 0x006E7290 CGameScriptInterface::EndLetterBox): Ego_r.pdb / FableWin.pdb ?EndLetterBoxMode@CDisplayEngine@@QAEXXZ,
+    // out of line in retail at 0x004349D0 (the row's tail jump with DisplayEngine in ecx). Declaration only, no layout change.
+    void EndLetterBoxMode();                                            // 0x004349D0
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_ISLETTERBOXMODE
     // Retail opt-in (wf5, row 0x0064C869 NPlayerGui::CDrawSpiritTargetingCursor::Draw): FableWin.pdb ?IsLetterBoxMode@CDisplayEngine@@QBE_NXZ,
     // inline in retail (the row tests the first byte of LetterBox +0x70 in place: `cmp byte ptr [eax+70h],0`, 0x0064C94F). No layout change.
@@ -105,6 +110,19 @@ public:
     // (0x01A70098), inline in retail (the caller tests the byte +0xBC, ScreenFadeOutInfo +0xBC with CFadeInFadeOutBase::Active at +0, in
     // place, 0x007E27A2). ScreenFadeOutInfo is typed CFadeInFadeOutBase under this opt-in (same 0x1c bytes, pack 1).
     bool IsScreenFadeOut() const { return ScreenFadeOutInfo.IsActive(); }
+#endif
+#if defined(FABLE_RETAIL_CDISPLAYENGINE_ISSCREENFADEOUTOPENING) && defined(FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT)
+    // Opt-in (NF433, row 0x0088E4D0 CGameScriptInterface::IsScreenFadingOut): FableWin.pdb ?IsScreenFadeOutOpening@CDisplayEngine@@QBE_NXZ
+    // (/Od body 0x02A8A630: ScreenFadeOutInfo +0xBC, then ?IsOpening@CFadeInFadeOutBase@@QBE_NXZ), inline in retail (the row tests the byte
+    // +0xC9 = Opening +0x0D in place, 0x0088E4DD). Needs FABLE_RETAIL_CDISPLAYENGINE_SCREENFADEOUT (typed ScreenFadeOutInfo) and
+    // FABLE_RETAIL_CFADEINFADEOUTBASE_ISOPENING_PASS26 with _OPEN or _FADE. No layout change.
+    bool IsScreenFadeOutOpening() const { return ScreenFadeOutInfo.IsOpening(); }
+#endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_SETSCREENFADEOUTLOCKFLAG
+    // Opt-in (NF433, row 0x008907E0 CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn): FableWin.pdb
+    // ?SetScreenFadeOutLockFlag@CDisplayEngine@@QAEX_N@Z (/Od body 0x018D8D80: the byte +0xD8 = the flag), inline in retail (the row stores
+    // `mov byte ptr [eax+0D8h],1` in place, 0x00890810). Body only, no layout change.
+    void SetScreenFadeOutLockFlag(bool locked) { ScreenFadeOutLocked = locked; }
 #endif
 #ifdef FABLE_RETAIL_CDISPLAYENGINE_ENDSCREENFADEOUT
     // Retail opt-in (wfA1, row 0x006D0830 CTCWife::GlobalUpdate): Ego_r.pdb / FableWin.pdb ?EndScreenFadeOut@CDisplayEngine@@QAEXXZ, out of

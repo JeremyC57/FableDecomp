@@ -1,75 +1,39 @@
-#include <cstdio>
-
-struct Entity {
-    void* vt;
-    unsigned char pad[0x91 - 4];
-    unsigned char flags; // +0x91
-};
-
-class CGameScriptInterface;
-typedef Entity* (__fastcall* GetEntityFn)(CGameScriptInterface*);
-class CGameScriptInterface { public:
-    void** vt;
-};
-
-static Entity* g_ent = 0;
-static char g_canAttack = 1;
-
-char __fastcall Entity_CanAttack(Entity* self)
+// Behaviour test for 0x00890280 CGameScriptInterface::IsEntityAbleToAttack (NF433): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// NCreatureMode::IsAbleToMove is defined here; the row must return its answer for a live thing and false otherwise.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_NCREATUREMODE_ISABLETOMOVE
+#include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/NCreatureMode.h"
+#include <stdio.h>
+#include <string.h>
+static unsigned char g_thing[0x100];
+static void* g_ret = 0;
+static int g_gets = 0;
+extern "C" void* __fastcall nf433_get_pthing(const void*) { ++g_gets; return g_ret; }   // CScriptThing slot 11 (+0x2c)
+static void* g_svtbl[79];
+static void* g_script[3];
+static long g_gsi[0x50 / 4];
+static void setup(void) { for (int i = 0; i < 79; ++i) g_svtbl[i] = 0; g_svtbl[11] = (void*)&nf433_get_pthing; g_script[0] = g_svtbl; }
+static int g_calls = 0; static const void* g_arg = 0; static bool g_val = false;
+bool __fastcall NCreatureMode::IsAbleToMove(const CThing& thing) { ++g_calls; g_arg = &thing; return g_val; }
+static int run(void* ret, unsigned char dead, bool val, bool want, int calls)
 {
-    (void)self;
-    return g_canAttack;
+    g_thing[0x91] = dead; g_ret = ret; g_val = val; g_calls = 0; g_gets = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsEntityAbleToAttack(*(const CScriptThing*)g_script);
+    return got == want && g_calls == calls && g_gets == 1 && (!calls || g_arg == (const void*)g_thing);
 }
-
-Entity* __fastcall GetEnt(CGameScriptInterface* self)
+int main(void)
 {
-    (void)self;
-    return g_ent;
-}
-
-bool __stdcall CGameScriptInterface_IsEntityAbleToAttack(CGameScriptInterface* self)
-{
-    Entity* e = ((GetEntityFn*)self->vt)[0x2c / 4](self);
-    if (e != 0 && (e->flags & 0x1) == 0)
-        return Entity_CanAttack(e);
-    return false;
-}
-
-int main()
-{
-    // Build a vtable with slot 0x2c/4 = 11 pointing at GetEnt
-    void* vt[16];
-    for (int i = 0; i < 16; ++i) vt[i] = 0;
-    vt[0x2c / 4] = (void*)&GetEnt;
-    CGameScriptInterface obj;
-    obj.vt = (void**)vt;
-
-    // Case 1: null entity -> false
-    g_ent = 0;
-    if (CGameScriptInterface_IsEntityAbleToAttack(&obj) != false) { std::printf("FAIL null\n"); return 1; }
-
-    // Case 2: entity with flag 0x1 set -> false
-    Entity ent;
-    for (unsigned i = 0; i < sizeof(ent.pad); ++i) ent.pad[i] = 0;
-    ent.vt = 0;
-    ent.flags = 0x1;
-    g_ent = &ent;
-    if (CGameScriptInterface_IsEntityAbleToAttack(&obj) != false) { std::printf("FAIL flag\n"); return 1; }
-
-    // Case 3: entity flag clear, CanAttack true -> true
-    ent.flags = 0x0;
-    g_canAttack = true;
-    if (CGameScriptInterface_IsEntityAbleToAttack(&obj) != true) { std::printf("FAIL true\n"); return 1; }
-
-    // Case 4: entity flag clear, CanAttack false -> false
-    g_canAttack = false;
-    if (CGameScriptInterface_IsEntityAbleToAttack(&obj) != false) { std::printf("FAIL false\n"); return 1; }
-
-    // Case 5: flag 0x2 only (not 0x1) with CanAttack true -> true
-    ent.flags = 0x2;
-    g_canAttack = true;
-    if (CGameScriptInterface_IsEntityAbleToAttack(&obj) != true) { std::printf("FAIL flag2\n"); return 1; }
-
-    std::printf("CGameScriptInterface_00890280_TEST PASS\n");
-    return 0;
+    setup();
+    if (!run(g_thing, 0, true, true, 1) || !run(g_thing, 0, false, false, 1) || !run(g_thing, 1, true, false, 0) || !run(0, 0, true, false, 0)) { printf("FAIL_00890280\n"); return 1; }
+    printf("PASS_00890280 CGameScriptInterface_00890280_TEST PASS\n"); return 0;
 }

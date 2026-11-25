@@ -1,56 +1,37 @@
+// Behaviour test for 0x00890910 CGameScriptInterface::SetFactionAsEnemyToFaction (NF433): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// GetPFaction and CFaction::SetAsEnemyOfFaction are defined here; the row must look both names up on World (+0x04) -> +0x54, then relate each found
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWORLD
+#define FABLE_RETAIL_CWORLD_GETFACTIONMANAGER
+#define FABLE_RETAIL_CFACTION_SCRIPTRELATIONS
 #include "engine/CGameScriptInterface.h"
-#include <cstdio>
-
-struct Faction {
-    int id; int enemies[8]; int nEnemies;
-    void AddEnemy(Faction* other);
-};
-struct FactionMgr {
-    Faction* list[16]; int n;
-    Faction* Lookup(int id);
-};
-class CWorld { public: char pad[0x54]; FactionMgr* mgr; };
-
-Faction* FactionMgr::Lookup(int id)
+#include "fable_string.h"
+#include "engine/CWorld.h"
+#include "engine/CFactionManager.h"
+#include "engine/CFaction.h"
+#include <stdio.h>
+#include <string.h>
+// faction to the other (first, then second), and do nothing when either is missing.
+static long g_n1[4], g_n2[4], g_f1[8], g_f2[8], g_mgr[4], g_world[0x40];
+static long g_gsi[0x50 / 4];
+static void* g_found1 = 0; static void* g_found2 = 0; static int g_looks = 0; static const void* g_mthis = 0;
+CFaction* CFactionManager::GetPFaction(const CCharString& name) const
+{ ++g_looks; g_mthis = this; return (CFaction*)((const void*)&name == (const void*)g_n1 ? g_found1 : (const void*)&name == (const void*)g_n2 ? g_found2 : 0); }
+static int g_calls = 0; static const void* g_this[4]; static const void* g_arg[4];
+void CFaction::SetAsEnemyOfFaction(const CFaction& faction) { if (g_calls < 4) { g_this[g_calls] = this; g_arg[g_calls] = &faction; } ++g_calls; }
+static int run(void* f1, void* f2, int want)
 {
-    for (int i = 0; i < n; ++i)
-        if (list[i]->id == id) return list[i];
-    return 0;
+    g_found1 = f1; g_found2 = f2; g_looks = 0; g_calls = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetFactionAsEnemyToFaction(*(const CCharString*)g_n1, *(const CCharString*)g_n2);
+    if (g_looks != 2 || g_mthis != (const void*)g_mgr || g_calls != want) return 0;
+    return !want || (g_this[0] == f1 && g_arg[0] == f2 && g_this[1] == f2 && g_arg[1] == f1);
 }
-
-void Faction::AddEnemy(Faction* other)
+int main(void)
 {
-    enemies[nEnemies++] = other->id;
-}
-
-void __fastcall CGameScriptInterface_SetFactionAsEnemyToFaction(CGameScriptInterface* self, int dummy, int faction1, int faction2)
-{
-    FactionMgr* m = self->World->mgr;
-    Faction* fa = m->Lookup(faction1);
-    FactionMgr* m2 = self->World->mgr;
-    Faction* fb = m2->Lookup(faction2);
-    if (fa && fb) {
-        fa->AddEnemy(fb);
-        fb->AddEnemy(fa);
-    }
-}
-
-int main()
-{
-    Faction f0; f0.id = 10; f0.nEnemies = 0;
-    Faction f1; f1.id = 20; f1.nEnemies = 0;
-    FactionMgr mgr; mgr.list[0] = &f0; mgr.list[1] = &f1; mgr.n = 2;
-    CWorld midObj; midObj.mgr = &mgr;
-    CGameScriptInterface gsi; gsi.World = &midObj;
-
-    CGameScriptInterface_SetFactionAsEnemyToFaction(&gsi, 0, 10, 20);
-    if (f0.nEnemies != 1 || f0.enemies[0] != 20) { std::printf("FAIL a\n"); return 1; }
-    if (f1.nEnemies != 1 || f1.enemies[0] != 10) { std::printf("FAIL b\n"); return 1; }
-
-    f0.nEnemies = 0; f1.nEnemies = 0;
-    CGameScriptInterface_SetFactionAsEnemyToFaction(&gsi, 0, 10, 99);
-    if (f0.nEnemies != 0 || f1.nEnemies != 0) { std::printf("FAIL c\n"); return 1; }
-
-    std::printf("CGameScriptInterface_00890910_TEST PASS\n");
-    return 0;
+    g_gsi[1] = (long)g_world; g_world[0x54 / 4] = (long)g_mgr;
+    if (!run(g_f1, g_f2, 2) || !run(g_f1, 0, 0) || !run(0, g_f2, 0) || !run(0, 0, 0)) { printf("FAIL_00890910\n"); return 1; }
+    printf("PASS_00890910 CGameScriptInterface_00890910_TEST PASS\n"); return 0;
 }

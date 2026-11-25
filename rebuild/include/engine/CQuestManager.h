@@ -119,6 +119,14 @@ private:
 }
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
+#ifdef FABLE_RETAIL_CQUESTMANAGER_CREATUREGENERATIONDURINGSCRIPT
+public:
+    // Opt-in (NF433, row 0x00892D70 CGameScriptInterface::SetCreatureGeneratorsEnabledDuringScript): Ego_r.pdb / FableWin.pdb
+    // ?SetCreatureGenerationEnabledDuringScript@CQuestManager@@QAEXABVCCharString@@_N@Z, out of line in retail at 0x004B3810 (landed; the
+    // row's tail jump with the singleton's PClass word 0x013B89FC in ecx). Declaration only, no layout change.
+    void SetCreatureGenerationEnabledDuringScript(const class CCharString& script_name, bool enabled);   // 0x004B3810
+private:
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_CTOR_PASS23
  // Both original PDB PUBLICs: original three-reference constructor.
 public: CQuestManager(class CWorld&,class CScriptInfoManager&,class CGameScriptInterface&);

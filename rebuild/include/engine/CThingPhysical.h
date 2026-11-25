@@ -127,6 +127,15 @@ bool IsToNegateAllHits()const{return NegateAllHits;}
     // inline in retail (`test byte ptr [thing+0BCh],8`, bit 3 of the +0xBC flag run). Body only: no layout change.
     bool IsToEvadeAllHits() const { return EvadeAllHits; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_SCRIPTHITSETTERS
+    // Opt-in (NF433, rows 0x00890E80 / 0x00890EC0 / 0x00890F00 CGameScriptInterface::EntitySetNegateAllHits / EvadeAllHits /
+    // AbleToBeEngagedInCombat): FableWin.pdb ?SetAsNegateAllHits@ / ?SetAsEvadeAllHits@ / ?SetAsAbleToBeEngagedInCombat@CThingPhysical@@QAEX_N@Z
+    // (/Od bodies 0x02A9AC90 / 0x02A9AD40 / 0x02A9ADF0 store bits 4 / 3 / 5 of the flags byte), inline in retail (bits 4 / 3 / 5 of +0xBC
+    // stored in place, 0x00890EA0 / 0x00890EE0 / 0x00890F20). Bodies only, no layout change.
+    void SetAsNegateAllHits(bool value) { NegateAllHits = value; }
+    void SetAsEvadeAllHits(bool value) { EvadeAllHits = value; }
+    void SetAsAbleToBeEngagedInCombat(bool value) { AbleToBeEngagedInCombat = value; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGPHYSICAL_HITSETTERS
     // Nested opt-in (chunk 802, row 0x00974AA0): FableWin.pdb ?SetAsDamageable@CThingPhysical@@QAEX_N@Z and
     // ?SetAsRespondToHits@CThingPhysical@@QAEX_N@Z, inline in retail (`and byte ptr [thing+0BCh],0FEh` / `0FBh`). Bodies only.
