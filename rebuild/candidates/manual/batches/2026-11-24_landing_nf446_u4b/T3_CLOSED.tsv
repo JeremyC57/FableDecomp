@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf324	0x00899C90	held	00899c90 skipped-held ?GetPlayerCreatureCombatMultiplier@CGameScriptInterface@@UBEJXZ triage (-): reserved: T3_PORT_QUEUE

@@ -32,7 +32,10 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
-extern "C" long __fastcall Sub_GetExperiencePickUpMultiplier(void* iface);
+// Naming (NF446, 2026-11-25): callee-only rebind of the interface 0x68 (TCI_HERO_EXPERIENCE) call 0x006D6570 to its PDB spelling
+//   ?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ (was the free stand-in @Sub_GetExperiencePickUpMultiplier@4) through a bodiless
+//   declaration (no layout; rulings r2/r3); the self row 0x006D6570 is respelt to it in the same batch.
+class CTCHeroExperience { public: long GetExperiencePickUpMultiplier() const; };
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
 
@@ -52,7 +55,7 @@ long __fastcall CGameScriptInterface_GetPlayerCreatureCombatMultiplier(
         if (pEntry == pEnd || (int)pEntry->first > 0x68)
             pEntry = pEnd;
 
-        return Sub_GetExperiencePickUpMultiplier(((void*)pEntry->second));
+        return reinterpret_cast<const CTCHeroExperience*>(pEntry->second)->GetExperiencePickUpMultiplier();
     }
     return 1;
 }

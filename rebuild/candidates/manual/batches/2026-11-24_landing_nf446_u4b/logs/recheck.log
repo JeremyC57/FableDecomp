@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00899c90   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00899c90   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00899c90   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience (engine/CTCHeroExperience.h)
+00899c90   RELOCATION_MATCH PASS   GetPlayerCreatureCombatMultiplier
+
+WINS: 1
+  00899c90 RELOCATION_MATCH CGameScriptInterface::GetPlayerCreatureCombatMultiplier

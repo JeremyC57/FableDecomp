@@ -8611,7 +8611,7 @@ address	symbol	status	leaf_given
 006d64b0	?GetRoughExperienceLevel@CTCHeroExperience@@QBEJXZ	MATCH	GetRoughExperienceLevel
 006d6530	?GetFloatThrough_0x58_0xf4_006d6530@_unattributed@@QAEMXZ	MATCH	?GetFloatThrough_0x58_0xf4_006d6530@_unattributed@@
 006d6540	?GetFloatThrough_0x58_0xf0_006d6540@_unattributed@@QAEMXZ	MATCH	?GetFloatThrough_0x58_0xf0_006d6540@_unattributed@@
-006d6570	?CTCHeroExperience_GetExperiencePickUpMultiplier@@YIJPBVCTCHeroExperience@@@Z	RELOCATION_MATCH	GetExperiencePickUpMultiplier
+006d6570	?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ	RELOCATION_MATCH	GetExperiencePickUpMultiplier
 006d65c0	?M@S@@QAEXHH@Z	MATCH	OnRegistedZSortingPatchRelocation
 006d65e0	?GetSoundRadiusMultiplier@CTCHeroExperience@@QBEMXZ	MATCH	GetSoundRadiusMultiplier
 006d6620	?GetVisibilityMultiplier@CTCHeroExperience@@QBEMXZ	MATCH	GetVisibilityMultiplier

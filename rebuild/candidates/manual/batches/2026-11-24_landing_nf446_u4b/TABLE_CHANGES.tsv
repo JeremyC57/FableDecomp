@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	@Sub_GetExperiencePickUpMultiplier@4	006d6570	00899c90	NF446 u4b: the free stand-in is spelt only by 0x00899C90 (row + its test, both respelt here), which now binds ?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ (already in the table, witness 0x0077A180)

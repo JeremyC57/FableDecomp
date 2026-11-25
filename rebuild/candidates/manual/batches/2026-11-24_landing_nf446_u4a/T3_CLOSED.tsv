@@ -1,0 +1,4 @@
+source	address	unit	reason
+nf303	0x006D6570	port (census)	binder -: entry 442: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, WRONGCLASS 1; tools/census303.py, evidence/census.tsv).
+flatten1	0x006D6570	identity research	flatten pilot 1 measured ?CTCHeroExperience_GetExperiencePickUpMultiplier@@YIJPBUCTCHeroExperience@@@Z -> ?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ (objsec ALL_EQ, grade PASS) but held: another address claims the PDB name (catalog / landed self) or another row defines it; prove which address owns it first
+flatten-local2	0x006D6570	unit 0x006D6570 + 0x00899C90	flatten measured ?CTCHeroExperience_GetExperiencePickUpMultiplier -> ?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ (objsec ALL_EQ, PASS; table binder 0x0077A180 agrees); binder 0x00899C90 spells @Sub_GetExperiencePickUpMultiplier@4 and moves in the same unit

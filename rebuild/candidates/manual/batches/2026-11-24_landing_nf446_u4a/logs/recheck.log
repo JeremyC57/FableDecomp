@@ -1,0 +1,5 @@
+addr       parity           behav  name
+006d6570   RELOCATION_MATCH PASS   GetExperiencePickUpMultiplier
+
+WINS: 1
+  006d6570 RELOCATION_MATCH CTCHeroExperience::?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ

@@ -50,9 +50,12 @@ CThingPlayerCreature* CPlayer::GetPControlledCreature() const
     return (CThingPlayerCreature*)g_thing;
 }
 
-extern "C" long __fastcall Sub_GetExperiencePickUpMultiplier(void* iface)
+// NF446: the callee is bound by its PDB spelling ?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ (retail 0x006D6570); the row's
+//   bodiless declaration, verbatim, and a recording definition.
+class CTCHeroExperience { public: long GetExperiencePickUpMultiplier() const; };
+long CTCHeroExperience::GetExperiencePickUpMultiplier() const
 {
-    g_target_iface = iface;
+    g_target_iface = (void*)this;
     return g_target_ret;
 }
 

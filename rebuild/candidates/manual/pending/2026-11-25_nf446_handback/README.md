@@ -23,3 +23,8 @@ NF446's method and every gate are in `NOTES.md`. Each unit renames a self row to
   - Getting past the hold needs an owner decision on how those queue lines are edited (see HANDOFF).
 - **The u4 self fixes a wrong constant.** HEAD's local model of the double at 0x01237F00 added 0.5; retail's is 1.0. It still graded RELOCATION_MATCH, because the grade does not compare constant values (GOTCHAS).
 - **equiv_check (u3 header):** 57,160 rows checked; only u3's own rows 0x00A36FE0 and 0x006E72A0 differ.
+
+## u4 landed as u4a + u4b (advisor route, no queue edit)
+- **u4a:** the self 0x006D6570 alone, as a pick-any re-row on `engine/CTCHeroExperience.h` with retail's 1.0 constant. Landed with `REL=nf303,flatten1,flatten-local2`, which closed those three lines.
+- **u4b:** 0x00899C90 alone, with its test respelt (q-NF446-1). Landed with `REL=nf324`, which closed that line.
+- **Still held:** 0x008E7040, behind the nf293 reservation. Its row and its `?GetComboMultiplier@CTCHeroStats@@QBEJXZ` delete stay in NF446's `batches/u4`. 0x006D6570 keeps that one stray spelling until then.

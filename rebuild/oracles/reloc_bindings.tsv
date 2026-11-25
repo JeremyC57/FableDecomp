@@ -3326,7 +3326,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00899ba0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00899c10
 ?IsPCReady_GetReadiness@@YIMPAX@Z	00789a60	00899c10
-@Sub_GetExperiencePickUpMultiplier@4	006d6570	00899c90
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00899c90
 @Sub_InvokeTarget@4	006d63a0	00899cf0
 ?CalcPct@@YIJPAX@Z	0057a57a	0089a210
