@@ -1,0 +1,95 @@
+addr       parity           behav  name
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459b57.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459b57.obj; graded the largest function
+00459b57   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004db417.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004db417.obj; graded the largest function
+004db417   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004db461.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004db461.obj; graded the largest function
+004db461   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dcde1.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dcde1.obj; graded the largest function
+004dcde1   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e0968.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e0968.obj; graded the largest function
+004e0968   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e09a1.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e09a1.obj; graded the largest function
+004e09a1   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e09e4.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e09e4.obj; graded the largest function
+004e09e4   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e183a.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e183a.obj; graded the largest function
+004e183a   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0073e3e0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073e3e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073e3e0.obj; graded the largest function
+0073e3e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0073e4d0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073e4d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073e4d0.obj; graded the largest function
+0073e4d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0073e5c0   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073e5c0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073e5c0.obj; graded the largest function
+0073e5c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073ff40.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0073ff40.obj; graded the largest function
+0073ff40   WARN RELOC_NAME: ?DestructMember_00739dd0@@YIXPAX@Z -> 00739dd0 labelled 'CAnimFilterBase::~CAnimFilterBase'
+0073ff40   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00740010.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00740010.obj; graded the largest function
+00740010   WARN RELOC_NAME: ?DestructMember_00739db0@@YIXPAX@Z -> 00739db0 labelled 'CAnimFilterNamed_00739db0::~CAnimFilterNamed_00739db0'
+00740010   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007400e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007400e0.obj; graded the largest function
+007400e0   WARN RELOC_NAME: ?DestructMember_00739db0@@YIXPAX@Z -> 00739db0 labelled 'CAnimFilterNamed_00739db0::~CAnimFilterNamed_00739db0'
+007400e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00740220.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00740220.obj; graded the largest function
+00740220   WARN RELOC_NAME: ?DestructMember_00739db0@@YIXPAX@Z -> 00739db0 labelled 'CAnimFilterNamed_00739db0::~CAnimFilterNamed_00739db0'
+00740220   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00740310.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00740310.obj; graded the largest function
+00740310   WARN RELOC_NAME: ?DestructMember_00739db0@@YIXPAX@Z -> 00739db0 labelled 'CAnimFilterNamed_00739db0::~CAnimFilterNamed_00739db0'
+00740310   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 009108e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 009108e0.obj; graded the largest function
+009108e0   WARN RELOC_NAME: ?CModeSitChairStudious_Destruct@@YIXPAX@Z -> 008d71d0 labelled 'NCreatureMode::CModeSitBase::~CModeSitBase'
+009108e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00938180.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00938180.obj; graded the largest function
+00938180   WARN RELOC_NAME: ?DestructMember_00739dd0@@YIXPAX@Z -> 00739dd0 labelled 'CAnimFilterBase::~CAnimFilterBase'
+00938180   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00938250.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00938250.obj; graded the largest function
+00938250   WARN RELOC_NAME: ?DestructMember_00739dd0@@YIXPAX@Z -> 00739dd0 labelled 'CAnimFilterBase::~CAnimFilterBase'
+00938250   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0094b5d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0094b5d0.obj; graded the largest function
+0094b5d0   WARN RELOC_NAME: ?DestructMember_00739db0@@YIXPAX@Z -> 00739db0 labelled 'CAnimFilterNamed_00739db0::~CAnimFilterNamed_00739db0'
+0094b5d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 20
+  00459b57 RELOCATION_MATCH CPlayerInventoryDef::`scalar_deleting_destructor'
+  004db417 RELOCATION_MATCH CTCDiceGame::`scalar_deleting_destructor'
+  004db461 RELOCATION_MATCH CTCPlot::`scalar_deleting_destructor'
+  004dcde1 RELOCATION_MATCH CTCDRumble::`scalar_deleting_destructor'
+  004e0968 RELOCATION_MATCH CTCCreatureItemLevitationBase::`scalar_deleting_destructor'
+  004e09a1 RELOCATION_MATCH CTCCreatureItemLevitationNymph::`scalar_deleting_destructor'
+  004e09e4 RELOCATION_MATCH CTCCreatureItemLevitationHero::`scalar_deleting_destructor'
+  004e183a RELOCATION_MATCH CTCAISummon::`scalar_deleting_destructor'
+  0073e3e0 RELOCATION_MATCH NCreatureMode::CModeStandFront::`scalar_deleting_destructor'
+  0073e4d0 RELOCATION_MATCH NCreatureMode::CModeStandLeft::`scalar_deleting_destructor'
+  0073e5c0 RELOCATION_MATCH NCreatureMode::CModeStandRight::`scalar_deleting_destructor'
+  0073ff40 RELOCATION_MATCH NCreatureMode::CModeSitChair::`scalar_deleting_destructor'
+  00740010 RELOCATION_MATCH NCreatureMode::CModeSitFloor::`scalar_deleting_destructor'
+  007400e0 RELOCATION_MATCH NCreatureMode::CModeSitBench::`scalar_deleting_destructor'
+  00740220 RELOCATION_MATCH NCreatureMode::CModeStunned::`scalar_deleting_destructor'
+  00740310 RELOCATION_MATCH NCreatureMode::CModeDazed::`scalar_deleting_destructor'
+  009108e0 RELOCATION_MATCH NCreatureMode::CModeSitChairStudious::`scalar_deleting_destructor'
+  00938180 RELOCATION_MATCH NCreatureMode::CModeSitChairBored::`scalar_deleting_destructor'
+  00938250 RELOCATION_MATCH NCreatureMode::CModeSitChairSleeping::`scalar_deleting_destructor'
+  0094b5d0 RELOCATION_MATCH NCreatureMode::CModeSitTavernStool::`scalar_deleting_destructor'

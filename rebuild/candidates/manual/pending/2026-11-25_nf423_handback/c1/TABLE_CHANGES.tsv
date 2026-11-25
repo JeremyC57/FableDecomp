@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+rewitness	?AutoTinySecondMemberDestructor@@YIXPAX@Z	00ce1000	00f1ccb0	NF423 unit sw120: the witness 00d30000 moves in c1; c3's 00f1ccb0 still binds the stand-in until c3 lands (land c1, c2, c3 in that order)

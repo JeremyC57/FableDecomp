@@ -1,0 +1,9 @@
+source	address	unit	reason
+nf423	0x00905FD0	callee respell ready (batches/b1_hold)	?Destroy_0085a5a0 -> ?DeleteData@?$CCountedPointer@VCCombatActionBase@@@@SIXPAX@Z gated ALL_EQ + RELOCATION_MATCH; held only by the nf295 col-2 line on its own self (RULINGS_NEEDED r1)
+nf423	0x0056C880	callee respell ready (batches/b1_hold)	?Destroy_0056c0f0 -> DeleteData<NCameraModes::CBase> gated ALL_EQ; held by the nf303 col-2 line; the other binders 0x0069E460 0x0069E3D0 0x0069E5D0 0x00636E90 carry local CCountedPointer templates (port), 0x0069C2F0 is nf295
+nf423	0x0065FE69	ruling / port	respell drops the HEAD's unreferenced stand-in pick-any ??_GCValue_0065d5a0 (or renames it to a non-PDB ??_G?$CCountedPointer); self is the list::clear port
+nf423	0x005CC091	header form	CCountedPointer<CCreatureActionBase> member under RELEASEDATA_DECL_ONLY emits a 5-byte ??1 pick-any that is NEQ to retail 0x0048C5C0
+nf423	0x0088EA20	port	CThing_Retail family (0x0088E410 0x0088F530 0x00890BA0 0x0088E220 0x00890C10 0x008D03A0 ...): including engine/CThing.h DIFFERs the leaf; per-row port onto CThing / CThingCreatureBase headers (NF253 recipe)
+nf423	0x0048524C	identity	its ReleaseData callee 0x004850F9 is CCountedPointer<NUISystem::CMenuEntry> while the row's stand-in self says CAction: self identity first
+nf423	-	71 rows (batches/g1_hold g2_hold g3_hold)	generated DTFREE respells ALL_EQ but gain SHARED_HEADER_AVAILABLE; RULINGS_NEEDED r2
+nf423	-	RESIDUE.tsv	every other T1 wrong spelling with a reason code (SPECIAL / OTHER_NAME / SCOPE_AND_TAIL / TAIL_ONLY / SCOPE_ONLY / C_NAME / A0X_HASH / screens)

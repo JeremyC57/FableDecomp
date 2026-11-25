@@ -1,0 +1,203 @@
+addr       parity           behav  name
+00ce1250   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00ce1250   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CPersonalScript_GlobalThingsScript>::`scalar deleting destructor'; names another function)
+00ce1250   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf6860   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00cf6860   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::`scalar deleting destructor'; names another function)
+00cf6860   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfdfa0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00cfdfa0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_AwakeningTheOracleScript>::`scalar deleting destructor'; names another function)
+00cfdfa0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d032c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d032c0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_BanditCampScript>::`scalar deleting destructor'; names another function)
+00d032c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d0ede0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d0ede0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::`scalar deleting destructor'; names another function)
+00d0ede0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d17310   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d17310   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_BountyHuntScript>::`scalar deleting destructor'; names another function)
+00d17310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d20760   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d20760   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_BreakSiegeScript>::`scalar deleting destructor'; names another function)
+00d20760   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d24630   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d24630   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_BowerstoneTownLifeIntroScript>::`scalar deleting destructor'; names another function)
+00d24630   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d26160   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d26160   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_DragonBossFightScript>::`scalar deleting destructor'; names another function)
+00d26160   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d29800   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d29800   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_EndGameScript>::`scalar deleting destructor'; names another function)
+00d29800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2d700   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d2d700   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_EndGameFocalSitesScript>::`scalar deleting destructor'; names another function)
+00d2d700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d30000   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d30000   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CVtable_012cc724::`scalar deleting destructor'; names another function)
+00d30000   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d38cf0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d38cf0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_FireHeartScript>::`scalar deleting destructor'; names another function)
+00d38cf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d44620   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d44620   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingScript>::`scalar deleting destructor'; names another function)
+00d44620   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d50c30   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d50c30   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingDepartureScript>::`scalar deleting destructor'; names another function)
+00d50c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d52470   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d52470   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>::`scalar deleting destructor'; names another function)
+00d52470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d58460   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d58460   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingMeleeScript>::`scalar deleting destructor'; names another function)
+00d58460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5ae40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d5ae40   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingSkillScript>::`scalar deleting destructor'; names another function)
+00d5ae40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5e040   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d5e040   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingWillScript>::`scalar deleting destructor'; names another function)
+00d5e040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d64370   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d64370   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingWoodsDepartureScript>::`scalar deleting destructor'; names another function)
+00d64370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d67240   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d67240   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingWoodsMeleeScript>::`scalar deleting destructor'; names another function)
+00d67240   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d68e70   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d68e70   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_GuildTrainingWoodsWillScript>::`scalar deleting destructor'; names another function)
+00d68e70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6b6f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d6b6f0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>::`scalar deleting destructor'; names another function)
+00d6b6f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d72b40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d72b40   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HangingTreeGoodScript>::`scalar deleting destructor'; names another function)
+00d72b40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7aa00   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d7aa00   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsScript>::`scalar deleting destructor'; names another function)
+00d7aa00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7c440   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d7c440   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsThunderScript>::`scalar deleting destructor'; names another function)
+00d7c440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7fc10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d7fc10   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsArenaScript>::`scalar deleting destructor'; names another function)
+00d7fc10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d82370   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d82370   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsBriarScript>::`scalar deleting destructor'; names another function)
+00d82370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d84600   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d84600   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsMotherScript>::`scalar deleting destructor'; names another function)
+00d84600   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d872a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d872a0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsGuildmasterScript>::`scalar deleting destructor'; names another function)
+00d872a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d896e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d896e0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HeroSoulsNostroScript>::`scalar deleting destructor'; names another function)
+00d896e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8aae0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d8aae0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HerosOldHouseScript>::`scalar deleting destructor'; names another function)
+00d8aae0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d91710   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d91710   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HobbeCaveScript>::`scalar deleting destructor'; names another function)
+00d91710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9dac0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00d9dac0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_HobbeToothContestScript>::`scalar deleting destructor'; names another function)
+00d9dac0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da0130   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00da0130   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CVtable_012d6e5c::`scalar deleting destructor'; names another function)
+00da0130   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da84b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00da84b0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_MinionClifftopChaseScript>::`scalar deleting destructor'; names another function)
+00da84b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db8680   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00db8680   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_NewOakValeIntroScript>::`scalar deleting destructor'; names another function)
+00db8680   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc02d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00dc02d0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_OakValeBanditRaidScript>::`scalar deleting destructor'; names another function)
+00dc02d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc8860   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00dc8860   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_OpeningGraveyardSecretPassageScript>::`scalar deleting destructor'; names another function)
+00dc8860   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcf8f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00dcf8f0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>::`scalar deleting destructor'; names another function)
+00dcf8f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd9460   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00dd9460   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_PrisonEscapeRescueMotherScript>::`scalar deleting destructor'; names another function)
+00dd9460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc950   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00ddc950   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_PrisonRaceScript>::`scalar deleting destructor'; names another function)
+00ddc950   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddf060   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00ddf060   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_PrisonWardenGameScript>::`scalar deleting destructor'; names another function)
+00ddf060   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de45e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00de45e0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_RansomVictimScript>::`scalar deleting destructor'; names another function)
+00de45e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dec730   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00dec730   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_RansomVictimChiefsHouseScript>::`scalar deleting destructor'; names another function)
+00dec730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00def380   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00def380   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_SecretPassageScript>::`scalar deleting destructor'; names another function)
+00def380   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df36b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00df36b0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_SummoningTheShipScript>::`scalar deleting destructor'; names another function)
+00df36b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df4bb0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00df4bb0   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_TentacleKrakenBossFightScript>::`scalar deleting destructor'; names another function)
+00df4bb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df9b50   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00df9b50   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::`scalar deleting destructor'; names another function)
+00df9b50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfc260   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase (engine/CSpawnedFuncBase.h)
+00dfc260   WARN STANDIN_LEAF ?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z (catalog CActiveEntityScript<NScript::CQ_TraderConflictGoodScript>::`scalar deleting destructor'; names another function)
+00dfc260   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 50
+  00ce1250 RELOCATION_MATCH CVtable_012c3578::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00cf6860 RELOCATION_MATCH CVtable_012c695c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00cfdfa0 RELOCATION_MATCH CVtable_012c7da0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d032c0 RELOCATION_MATCH CVtable_012c88ac::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d0ede0 RELOCATION_MATCH CVtable_012c9a70::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d17310 RELOCATION_MATCH CVtable_012ca6ac::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d20760 RELOCATION_MATCH CVtable_012cb140::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d24630 RELOCATION_MATCH CVtable_012cb5fc::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d26160 RELOCATION_MATCH CVtable_012cb7c4::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d29800 RELOCATION_MATCH CVtable_012cbcc8::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d2d700 RELOCATION_MATCH CVtable_012cc470::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d30000 RELOCATION_MATCH CVtable_012cc724::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d38cf0 RELOCATION_MATCH CVtable_012cd1a0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d44620 RELOCATION_MATCH CVtable_012ce48c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d50c30 RELOCATION_MATCH CVtable_012cf6e0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d52470 RELOCATION_MATCH CVtable_012cf890::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d58460 RELOCATION_MATCH CVtable_012d0580::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d5ae40 RELOCATION_MATCH CVtable_012d09f4::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d5e040 RELOCATION_MATCH CVtable_012d108c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d64370 RELOCATION_MATCH CVtable_012d1a64::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d67240 RELOCATION_MATCH CVtable_012d1dbc::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d68e70 RELOCATION_MATCH CVtable_012d1f7c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d6b6f0 RELOCATION_MATCH CVtable_012d22b8::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d72b40 RELOCATION_MATCH CVtable_012d299c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d7aa00 RELOCATION_MATCH CVtable_012d346c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d7c440 RELOCATION_MATCH CVtable_012d3978::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d7fc10 RELOCATION_MATCH CVtable_012d3fe0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d82370 RELOCATION_MATCH CVtable_012d4428::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d84600 RELOCATION_MATCH CVtable_012d47c0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d872a0 RELOCATION_MATCH CVtable_012d4c78::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d896e0 RELOCATION_MATCH CVtable_012d4f84::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d8aae0 RELOCATION_MATCH CVtable_012d5114::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d91710 RELOCATION_MATCH CVtable_012d5b70::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00d9dac0 RELOCATION_MATCH CVtable_012d6c44::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00da0130 RELOCATION_MATCH CVtable_012d6e5c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00da84b0 RELOCATION_MATCH CVtable_012d7844::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00db8680 RELOCATION_MATCH CVtable_012d95b0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dc02d0 RELOCATION_MATCH CVtable_012d9f9c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dc8860 RELOCATION_MATCH CVtable_012daa38::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dcf8f0 RELOCATION_MATCH CVtable_012db50c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dd9460 RELOCATION_MATCH CVtable_012dc584::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00ddc950 RELOCATION_MATCH CVtable_012dca80::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00ddf060 RELOCATION_MATCH CVtable_012dcd2c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00de45e0 RELOCATION_MATCH CVtable_012dd4a0::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dec730 RELOCATION_MATCH CVtable_012ddc04::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00def380 RELOCATION_MATCH CVtable_012ddf08::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00df36b0 RELOCATION_MATCH CVtable_012de350::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00df4bb0 RELOCATION_MATCH CVtable_012de5e4::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00df9b50 RELOCATION_MATCH CVtable_012deaac::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00dfc260 RELOCATION_MATCH CVtable_012dee4c::?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z

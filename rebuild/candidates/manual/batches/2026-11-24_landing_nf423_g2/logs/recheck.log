@@ -1,0 +1,43 @@
+addr       parity           behav  name
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8dbc.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8dbc.obj; graded the largest function
+004d8dbc   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8df8.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8df8.obj; graded the largest function
+004d8df8   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8e34.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8e34.obj; graded the largest function
+004d8e34   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8e70.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d8e70.obj; graded the largest function
+004d8e70   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d95cf.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004d95cf.obj; graded the largest function
+004d95cf   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004db1a6.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004db1a6.obj; graded the largest function
+004db1a6   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dcb20.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dcb20.obj; graded the largest function
+004dcb20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dccb6.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004dccb6.obj; graded the largest function
+004dccb6   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e0bda.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e0bda.obj; graded the largest function
+004e0bda   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 005c2d16.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 005c2d16.obj; graded the largest function
+005c2d16   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 10
+  004d8dbc RELOCATION_MATCH NThingShot::CTCShotDefinitionThrow::`scalar_deleting_destructor'
+  004d8df8 RELOCATION_MATCH NThingShot::CTCShotDefinitionThrowPredictive::`scalar_deleting_destructor'
+  004d8e34 RELOCATION_MATCH NThingShot::CTCShotDefinitionTearInGround::`scalar_deleting_destructor'
+  004d8e70 RELOCATION_MATCH NThingShot::CTCShotDefinitionDragonFireball::`scalar_deleting_destructor'
+  004d95cf RELOCATION_MATCH CTCObstacle::`scalar_deleting_destructor'
+  004db1a6 RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::`scalar_deleting_destructor'
+  004dcb20 RELOCATION_MATCH NThingShot::CTCShotDefinitionFireballSpell::`scalar_deleting_destructor'
+  004dccb6 RELOCATION_MATCH CTCResurrectionItem::`scalar_deleting_destructor'
+  004e0bda RELOCATION_MATCH CTCParticleAttacher::`scalar_deleting_destructor'
+  005c2d16 RELOCATION_MATCH NInventory::CTCInventoryBase::`scalar_deleting_destructor'

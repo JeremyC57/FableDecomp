@@ -1,0 +1,38 @@
+addr       parity           behav  name
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045887f.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045887f.obj; graded the largest function
+0045887f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0065e935   RELOCATION_MATCH PASS   ScalarDeletingDtor_0065e935
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0069e700.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0069e700.obj; graded the largest function
+0069e700   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007190f0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 007190f0.obj; graded the largest function
+007190f0   WARN RELOC_NAME: ?CActionDoCreatureAction_Destruct@@YIXPAX@Z -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+007190f0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00741eb0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00741eb0.obj; graded the largest function
+00741eb0   WARN RELOC_NAME: ?CModeIntangible_Destruct@@YIXPAX@Z -> 0073a5d0 labelled 'CModeWithTwoFilters_0073a5d0::~CModeWithTwoFilters_0073a5d0'
+00741eb0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ced20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 008ced20.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 008ced20.obj; graded the largest function
+008ced20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a437b0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00a437b0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00a437b0.obj; graded the largest function
+00a437b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00af1bd0   WARN SHARED_HEADER_AVAILABLE CResource (engine/CResource.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00af1bd0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00af1bd0.obj; graded the largest function
+00af1bd0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 8
+  0045887f RELOCATION_MATCH CHitLocationDef::`scalar_deleting_destructor'
+  0065e935 RELOCATION_MATCH _global::?CLandscapeBackgroundPatch_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  0069e700 RELOCATION_MATCH NCameraModes::CScriptedControl::`scalar_deleting_destructor'
+  007190f0 RELOCATION_MATCH NTCScriptedControl::CActionDoCreatureAction::`scalar_deleting_destructor'
+  00741eb0 RELOCATION_MATCH NCreatureMode::CModeIntangible::`scalar_deleting_destructor'
+  008ced20 RELOCATION_MATCH CCreatureAction_CastAssassinRush::`scalar_deleting_destructor'
+  00a437b0 RELOCATION_MATCH CLipSyncDataBankEntry::CData::`scalar_deleting_destructor'
+  00af1bd0 RELOCATION_MATCH NParticleEngine::CParticleEmitterInfo::CEmitterData::`scalar_deleting_destructor'

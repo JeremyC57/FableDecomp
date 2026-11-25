@@ -1,0 +1,11 @@
+address	objgate	vland_head/new	pk	pk_flag	link	note
+005c2d16	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004d95cf	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004e0bda	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004dccb6	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004d8dbc	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004d8df8	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004d8e34	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004d8e70	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004db1a6	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)
+004dcb20	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS	gate logs and linkgate.txt cover the 50-row pre-split superset (same objects)

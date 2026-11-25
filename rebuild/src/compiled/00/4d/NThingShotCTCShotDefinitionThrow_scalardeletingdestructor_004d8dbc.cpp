@@ -1,8 +1,10 @@
 #pragma optimize("s", on)
-extern void __fastcall CTCShotDefinitionThrow_Destruct(void* definitionThrow);
+// Naming (NF423 gen, 2026-11-25): the callee 0x007BF2B0 now binds its PDB spelling ??1CTCShotDefinitionBase@NThingShot@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CTCShotDefinitionThrow_Destruct@@YIXPAX@Z.
+namespace NThingShot { class CTCShotDefinitionBase { public: virtual ~CTCShotDefinitionBase(); }; }
 void* __fastcall CTCShotDefinitionThrow_ScalarDeletingDestructor(void* definitionThrow, int, unsigned int flags)
 {
-    CTCShotDefinitionThrow_Destruct(definitionThrow);
+    reinterpret_cast<NThingShot::CTCShotDefinitionBase*>(definitionThrow)->NThingShot::CTCShotDefinitionBase::~CTCShotDefinitionBase();
     if (flags & 1)
         operator delete(definitionThrow);
     return definitionThrow;

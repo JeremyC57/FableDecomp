@@ -1,0 +1,10 @@
+action	symbol	target	witness	note
+delete	?DestructMember_0044f3b2@@YIXPAX@Z	0044f3b2	0045887f	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DestructMember_0048c5c0@@YIXPAX@Z	0048c5c0	008ced20	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DestructMember_005ed2c0@@YIXPAX@Z	005ed2c0	0069e700	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DestructFirstMember_009a4400@@YIXPAX@Z	009a4400	00a437b0	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DestructSecondMember_006e46f0@@YIXPAX@Z	006e46f0	00a437b0	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	??1?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@QAE@XZ	00ae94a0	00af1bd0	NF423: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?DestructFirstMember_00ae94a0@@YIXPAX@Z	00ae94a0	00af1bd0	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DestructSecondMember_009a4400@@YIXPAX@Z	009a4400	00af1bd0	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?AutoTinyScalarDestructor_0065d5a0@@YIXPAX@Z	0065d5a0	0065e935	NF423: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

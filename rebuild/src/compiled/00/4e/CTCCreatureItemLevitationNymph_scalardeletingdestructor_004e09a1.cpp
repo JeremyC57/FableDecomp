@@ -4,11 +4,13 @@ class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-extern void __fastcall CTCCreatureItemLevitationNymph_Destruct(void* nymph);
+// Naming (NF423 gen, 2026-11-25): the callee 0x004DE6ED now binds its PDB spelling ??1CTCCreatureItemLevitationBase@@UAE@XZ (the T1 tracker target; the self row's
+//   Leaf / PDB name sets), called qualified on a declaration of the class (no body, no layout); was the free stand-in ?CTCCreatureItemLevitationNymph_Destruct@@YIXPAX@Z.
+class CTCCreatureItemLevitationBase { public: virtual ~CTCCreatureItemLevitationBase(); };
 void* __fastcall CTCCreatureItemLevitationNymph_CompositeScalarDeletingDestructor(void* nymph, int, unsigned int flags)
 {
     ((CBaseIntelligentPointer*)(static_cast<unsigned char*>(nymph) + 40))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
-    CTCCreatureItemLevitationNymph_Destruct(nymph);
+    reinterpret_cast<CTCCreatureItemLevitationBase*>(nymph)->CTCCreatureItemLevitationBase::~CTCCreatureItemLevitationBase();
     if (flags & 1)
         operator delete(nymph);
     return nymph;
