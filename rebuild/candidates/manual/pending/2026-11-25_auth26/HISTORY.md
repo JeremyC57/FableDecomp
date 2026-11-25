@@ -1,0 +1,437 @@
+# Row history (regenerated 2026-11-25: every file under pending/, docs/ and naming/ that names the row, newest dated folder first; batches/*/logs excluded; commits touching pending/ or docs/)
+
+## 005dcc00
+Files (44):
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-13_acctB_FINAL/payload.json
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/rows/0087f3a0.cpp
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/payload.json
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/coordverify/vland.log
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/README.md
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/LESSONS.md
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2053/LABELS.tsv
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2051/NOTES.md
+- rebuild/candidates/manual/naming/2026-11-11_agentNF8/NAME_FIXES.tsv
+- rebuild/candidates/manual/naming/2026-11-11_agentNF11/NAME_FIXES.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/hdr/README.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/005dcc00.cpp
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/LABELS.tsv
+- rebuild/candidates/manual/naming/2026-11-05_plan_p7_w1/idxpost/QUEUE_STATUS.tsv
+- rebuild/candidates/manual/naming/2026-11-05_plan_p6_w1/idxpost/QUEUE_STATUS.tsv
+- rebuild/candidates/manual/naming/2026-11-04_vendor_v2/index/QUEUE_STATUS.tsv
+- rebuild/candidates/manual/naming/2026-11-04_plan_p3_cvectormap/PASS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec3/differ/0087ee70.cpp
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/005dcc00.cpp
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/STATUS.tsv
+- rebuild/candidates/manual/naming/2026-10-29_lowerbound/recheck.log
+- rebuild/candidates/manual/naming/2026-10-28_wave1/DEFERRED.tsv
+- rebuild/candidates/manual/naming/2026-10-28_wave1/DECISIONS.tsv
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand522/differ/005dcc00.cpp
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand522/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/0087ee70.cpp
+- rebuild/candidates/manual/pending/2026-10-20_linux_hand236/NOTES.md
+- rebuild/candidates/manual/pending/2026-10-20_linux_hand214/differ/00662ef0.cpp
+- rebuild/candidates/manual/naming/status/QUEUE_STATUS.tsv
+- rebuild/candidates/manual/naming/briefs/DECISIONS.tsv
+- docs/pipeline/external_chunks_963-965.tsv
+- docs/pipeline/external_963-965_AUTHORIZED_SCOPE.json
+Commits (5):
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- c4ab9606b5 land: acctB five more rows matched and re-verified (0x0087F3A0, 0x00A7AF60, 0x00821A80, 0x00563920, 0x00BC25F0) and one helper text set for the three C3DAnimationManager rows, pending for the coordinator
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 00723e50
+Files (33):
+- rebuild/candidates/manual/pending/2026-11-24_nf328_handback/evidence/stayoff.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass28/NAMING_AND_HEADERS.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass27/README_CODEX.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass27/NAMING_AND_HEADERS.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/START_HERE_CLAUDE.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/NAME_FIXES.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/LABELS.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/TEST_RESULT.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/PROBES.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/PARTIAL_TREE_GRADE.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/PARTIAL_RELOCATIONS.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/NAME_FIXES.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/BINDING_EVIDENCE.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/AUDIT.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/00723e50/00723e50_test.cpp
+- rebuild/candidates/manual/pending/2026-11-21_codex_pass26/rows.tsv
+- rebuild/candidates/manual/pending/2026-11-21_codex_pass26/RESERVED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_IDENTIFY.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.md
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723e50.cpp
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand523/STATUS.tsv
+- rebuild/candidates/manual/naming/status/QUEUE_STATUS.tsv
+- docs/pipeline/external_chunks_963-965.tsv
+- docs/pipeline/external_963-965_AUTHORIZED_SCOPE.json
+Commits (7):
+- fbf7e67758 docs: NF328 hand-back (CScriptThing destructor / copy-constructor pick-any unit, not yet landed) and its tools
+- 23f34b7f81 land: Codex pass 26, 95 rows (minimap, AI states, engine, audio filters, quests) and 327 header patches
+- 360311526b docs: Package and reserve 100 parked near misses for Codex pass 26
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 0062bd80
+Files (63):
+- rebuild/candidates/manual/pending/2026-11-22_nf250_handback/orig/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-22_nf250_handback/hdr/engine/CWorld.h
+- rebuild/candidates/manual/naming/2026-11-20_agentNF108/hdr/engine/CWorld.h
+- rebuild/candidates/manual/naming/2026-11-19_agentNF95_part2/held/hdr/engine/CGameEventDataPackage.h
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/naming/2026-11-17_agentNF91/hdr/engine/CThingPlayerCreature.h
+- rebuild/candidates/manual/naming/2026-11-17_agentNF73/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_lane_overlays.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-15_acctC_wfE12/LABELS.tsv
+- rebuild/candidates/manual/pending/2026-11-13_acctB_parked/hdr/0060eeb0/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-13_acctB_parked/hdr/0048e78e/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_linux_handWF7/DOSSIERS.md
+- rebuild/candidates/manual/pending/2026-11-12_acctB_r3019/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_r3018/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_r2041/hdr/engine/CThingPlayerCreature.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2055/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2054/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2052/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2051/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2041/hdr/engine/CThingPlayerCreature.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2040/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-12_acctB_c2039/hdr/engine/CThingPlayerCreature.h
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ9/hdr/engine/CThingPlayerCreature.h
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0062bd80.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/README.md
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-11_acctB_c2020/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-11_acctB_c2016/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-11_acctB_c2012/hdr/engine/CWorld.h
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/hdr/engine/CGameEventDataPackage.h
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/hdr/README.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012c/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/hdr/engine/CGameEventDataPackage.h
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/hdr/README.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/differ/0062bd80.cpp
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012b/LESSONS.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/hdr/README.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/differ/0062bd80.cpp
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/NAME_FIXES.tsv
+- rebuild/candidates/manual/pending/2026-11-10_linux_hand1012/LABELS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/UNTOUCHED_RESERVED.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand256/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand256/differ/0062bd80.cpp
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand256/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand256/NOTES.md
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand256/LESSONS.md
+Commits (6):
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- cd79818b1e docs: acctC stages seventeen matched rows from the third unworked-rows round and files its open drafts
+- ecf5ac317e land: chunk Q11, 3 parked near misses
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 006c0b20
+Files (18):
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/006c0b20.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/UNTOUCHED_RESERVED.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand250/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand250/differ/006c0b20.cpp
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand250/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand250/NOTES.md
+Commits (5):
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- ecf5ac317e land: chunk Q11, 3 parked near misses
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 0091c220
+Files (32):
+- rebuild/candidates/manual/pending/2026-11-22_nf238_handback/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-22_nf236_handback/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0091c220.cpp
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-18_egod3/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod2/return/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod2/return/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-18_egod2/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/0091c220.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/PARKED_NOTES.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0091c6a0.cpp
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/0091c6a0.cpp
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-22_linux_hand279/differ/0091c6a0.cpp
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand259/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand259/differ/0091c220.cpp
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand259/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand259/NOTES.md
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand259/LESSONS.md
+- rebuild/candidates/manual/pending/PLAYBOOK_CANDIDATES.tsv
+Commits (9):
+- f95c9c41e8 land: landing egod3 -- 3 rows from the in-house Ego_d author, round 3 (1,757 bytes)
+- 7e819d4c17 docs: in-house Ego_d round 3 -- 12 rows reserved for one author, hand authoring first
+- 7fbc23db1c land: landing egod2 -- 2 rows from the in-house Ego_d author (1,654 bytes)
+- 93af9d8180 docs: in-house Ego_d round 2 -- 14 near misses reserved for one author agent
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- a3d1be80e9 land: chunk Q8, 3 parked near misses; PDB names for the point-to-line helpers
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 00644677
+Files (20):
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-15_acctC_r6_wfA2/test/00439070.cpp
+- rebuild/candidates/manual/pending/2026-11-15_acctC_r6_wfA2/src/00439070.cpp
+- rebuild/candidates/manual/pending/2026-11-15_acctC_r6_wfA2/payload.json
+- rebuild/candidates/manual/pending/2026-11-14_acctC_wfA2/open/00439070.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00644677.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/00644677.cpp
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/UNTOUCHED_RESERVED.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand262/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand262/differ/00644677.cpp
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand262/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand262/NOTES.md
+Commits (6):
+- fad098df28 tools: name_gate checks an authored row's names, headers and code rules the way the naming tracker and lander will, so new rows add no naming work
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- d7fd750d0e docs: acctC stages four audited fix-up rows (134 of 180)
+- 33f9cd38a3 docs: acctC stages nine rows matched by the unworked-rows workflow and records its near misses
+- 2e12a6504c land: chunk Q15, two port-first near misses matched
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 008f45f0
+Files (17):
+- rebuild/candidates/manual/pending/2026-11-24_nf329_handback/hdr/engine/CCreatureAction_DragonSwoop.h
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/STATUS.tsv
+- rebuild/candidates/manual/naming/2026-10-29_wave9/DECISIONS_W9.tsv
+- rebuild/candidates/manual/naming/2026-10-29_wave8/DECISIONS_W8.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand261/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand261/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand261/NOTES.md
+Commits (6):
+- fad098df28 tools: name_gate checks an authored row's names, headers and code rules the way the naming tracker and lander will, so new rows add no naming work
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- f13d5086ef land: chunk Q14, NCameraModes::CTools::PotentialFieldBufferObjects
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 00935c40
+Files (28):
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/00935c40.cpp
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-18_egod3/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod2/return/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod2/return/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-18_egod2/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/00935c40.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand536/differ/00935c40.cpp
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand536/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-27_linux_hand536/NOTES.md
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand258/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand258/differ/00935c40.cpp
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand258/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand258/NOTES.md
+- rebuild/candidates/manual/pending/2026-10-21_linux_hand258/LESSONS.md
+- rebuild/candidates/manual/pending/PLAYBOOK_CANDIDATES.tsv
+Commits (10):
+- fad098df28 tools: name_gate checks an authored row's names, headers and code rules the way the naming tracker and lander will, so new rows add no naming work
+- f95c9c41e8 land: landing egod3 -- 3 rows from the in-house Ego_d author, round 3 (1,757 bytes)
+- 7e819d4c17 docs: in-house Ego_d round 3 -- 12 rows reserved for one author, hand authoring first
+- 7fbc23db1c land: landing egod2 -- 2 rows from the in-house Ego_d author (1,654 bytes)
+- 93af9d8180 docs: in-house Ego_d round 2 -- 14 near misses reserved for one author agent
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- 6e32e42089 land: chunk Q10, 4 parked near misses
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 0068ef50
+Files (26):
+- rebuild/candidates/manual/pending/2026-11-22_nf240_handback/rows/0068f9d0.cpp
+- rebuild/candidates/manual/pending/2026-11-22_nf236_handback/rows/0068d890.cpp
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0068ef50.cpp
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/NOTES.md
+- rebuild/candidates/manual/pending/2026-11-18_egod3/return/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-18_egod3/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod2/return/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-18_egod2/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/differ/0068ef50.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/PARKED_NOTES.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ8/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2b/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-22_linux_hand289/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-22_linux_hand289/differ/0068ef50.cpp
+- rebuild/candidates/manual/pending/2026-10-22_linux_hand289/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-22_linux_hand289/NOTES.md
+Commits (10):
+- fad098df28 tools: name_gate checks an authored row's names, headers and code rules the way the naming tracker and lander will, so new rows add no naming work
+- f95c9c41e8 land: landing egod3 -- 3 rows from the in-house Ego_d author, round 3 (1,757 bytes)
+- 7e819d4c17 docs: in-house Ego_d round 3 -- 12 rows reserved for one author, hand authoring first
+- 7fbc23db1c land: landing egod2 -- 2 rows from the in-house Ego_d author (1,654 bytes)
+- 93af9d8180 docs: in-house Ego_d round 2 -- 14 near misses reserved for one author agent
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- a3d1be80e9 land: chunk Q8, 3 parked near misses; PDB names for the point-to-line helpers
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+
+## 009f3da0
+Files (40):
+- rebuild/candidates/manual/pending/2026-11-24_nf328_handback/evidence/stayoff.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass28/NAMING_AND_HEADERS.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass27/README_CODEX.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass27/NAMING_AND_HEADERS.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/START_HERE_CLAUDE.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/QUEST_GRADE_LEDGER.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/LABELS.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/repeated_callers/REPEATED_CALLER_EVIDENCE.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/main_game_component_extents_test.cpp
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/expanded_extent_control_test.cpp
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/TEST_RESULTS.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/README.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/GRADE.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/alternate/COMPILAND_EVIDENCE.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/TEST_RESULT.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/PROBES.md
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/OWNER_SCOPE.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/NAME_FIXES.tsv
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/FINAL.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/AUDIT.json
+- rebuild/candidates/manual/pending/2026-11-22_codex_pass26_open/009f3da0/009f3da0_test.cpp
+- rebuild/candidates/manual/pending/2026-11-22_auth14/sweep_default_inline_flags.tsv
+- rebuild/candidates/manual/pending/2026-11-21_codex_pass26/rows.tsv
+- rebuild/candidates/manual/pending/2026-11-21_codex_pass26/RESERVED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/RELEASED.tsv
+- rebuild/candidates/manual/pending/2026-11-17_egod_parked/EGOD_NAMED.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/triage_current_headers.tsv
+- rebuild/candidates/manual/pending/2026-11-16_w24/triage/ranking_aligned.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009f3da0.cpp
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/ATTEMPTS.log
+- rebuild/candidates/manual/pending/2026-11-03_groups/ROWS.tsv
+- rebuild/candidates/manual/pending/2026-11-03_groups/GROUPS.tsv
+- rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-23_linux_hand299/rows.tsv
+- rebuild/candidates/manual/pending/2026-10-23_linux_hand299/differ/009f3da0.cpp
+- rebuild/candidates/manual/pending/2026-10-23_linux_hand299/STATUS.tsv
+- rebuild/candidates/manual/pending/2026-10-23_linux_hand299/NOTES.md
+Commits (10):
+- fad098df28 tools: name_gate checks an authored row's names, headers and code rules the way the naming tracker and lander will, so new rows add no naming work
+- fbf7e67758 docs: NF328 hand-back (CScriptThing destructor / copy-constructor pick-any unit, not yet landed) and its tools
+- 103a22f420 land: nf227, the CManager and CObservable vtable-slot rows on their PDB names and six STL map / tree rows; the default-flag sweep recorded
+- 23f34b7f81 land: Codex pass 26, 95 rows (minimap, AI states, engine, audio filters, quests) and 327 header patches
+- 360311526b docs: Package and reserve 100 parked near misses for Codex pass 26
+- 96fdf625f3 tools: egod lane batch builder and brief, and the STATUS ledger for the 774 reserved rows
+- 3cd153e0c7 docs: reserve 774 parked rows Ego_d.pdb can help for the other account
+- 771cae2f2d docs: w24 triage ranking, parked-row notes, CArray assert marked inferred, 0x00BF0B20 fixes marked applied
+- 6e32e42089 land: chunk Q10, 4 parked near misses
+- 88a15fb806 land: agentNF15, 224 landed rows respelt to proven callee names
+

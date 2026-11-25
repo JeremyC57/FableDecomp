@@ -116,7 +116,7 @@ skipped_detail = []
 for r in csv.DictReader(open(a.unmatched, encoding='utf-8-sig'), delimiter='\t'):
     ad = r['address'].strip().lower()
     st = r['status']
-    if st != 'parked': continue
+    if st != 'parked' and not (ad in INC and st.startswith('parked')): continue
     def skip(why): skips[why] += 1; skipped_detail.append((ad, why))
     if ad.startswith('012'): skip('funclet'); continue
     grade_txt = r['best_grade_on_record'] or ''

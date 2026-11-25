@@ -6,7 +6,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
-## Account A, 2026-11-25 (naming families + hand authoring; agents NF427 and AUTH26/27 on row 2)
+## Account A, 2026-11-25 (naming families; agent NF427; Codex pass 29 reserved)
 - **Naming:** 33,774 of 64,040 done (52.74%), from `naming/status/SUMMARY.md`. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
@@ -19,10 +19,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - **R-NF424-3** (4 QAE rows): left on the stand-in.
   - **`_$E1`** (485 dynamic initializers): owner question still unanswered.
 - **Grades:** `baked_address` (advisor decision, owner delegated). 50 rows type in a vftable / global / IAT / code address, counted apart from genuine (48,905 genuine original). Detector: `purity.baked_data_addresses`, key `rebuild/oracles/data_vas.tsv`. Audit: `audits/2026-11-25_baked_address/`.
-- **AUTH26** (owner orders, `pending/2026-11-25_auth26/BRIEF.md`): hand-authors 10 parked rows, one at a time.
-  - It never switches or re-parks a row. A row is done only with byte match + a behaviour test + `lane_tools/name_gate.py` PASS (names and headers right as authored, so naming gains no work).
-  - Row 1 0x005DCC00 has landed.
-  - Row 2 0x00723E50 has escalated. A proven-terminal row goes to the owner; nothing is reordered silently.
+- **Authoring stopped (owner, 2026-11-25):** "dont launch new author". AUTH26 matched rows 1 (0x005DCC00) and 3 (0x006C0B20), both landed; row 2 (0x00723E50) was set aside at g18. AUTH26 is released.
+- **Codex pass 29** (`pending/2026-11-25_codex_pass29/`): 200 parked rows are reserved for Codex (RESERVED.tsv; locks `CODEX29`). AUTH26's 8 unmatched rows go first, then the closest 192. The package is a zip in scratch, built by its `build.py`. It carries the PDB tables in `names/`, and the name-gate checklist is NAMING_AND_HEADERS section 9.
 - **Lander notes:** release an agent's locks before landing (the lander holds locked rows). A thin "Option S" row makes s_unit_check gate its owner's Leaf.
 
 ## Account A, 2026-11-24 (naming automation; agents NF333 / NF334 running)
