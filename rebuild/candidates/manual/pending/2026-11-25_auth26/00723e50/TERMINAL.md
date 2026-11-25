@@ -129,3 +129,6 @@ added at the front also moves the cut, regions 83 / 28). Use g17 as the base for
 Files: g18.cpp (best legal base), g17.cpp, LOG.md (round 4, with the trace command), STATUS.tsv, and the traces auth27/tr/g17.json, t3.json,
 t4.json, t5.json, bt.json (0x0079C880) with the readers tr/show.py / show2.py. The 0x007B6810 and P1 traces were deleted for disk; the
 command in LOG.md reproduces them.
+
+## Owner decision (2026-11-25): set aside
+The owner set row 2 aside after round 4 ("Set aside, start row 3"). g18.cpp is the best rule-compliant base, 2 instructions off at the front (`mov eax,[esp+1Ch]` / `mov edi,17Ch` one slot late). The row stays parked in UNMATCHED_ROWS.tsv. A later attempt starts from g18 (no tuple added at the front) or g17 (a front fix that adds a tuple), per the State section above.
