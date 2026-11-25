@@ -403798,6 +403798,13 @@ $catalog = @(
         TestSource = '00/5d/CAnimationSet_GetRandomAnim_005dcc00_test.cpp'
         PassPattern = '005dcc00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006c0b20'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_FindPosToCreateNewVillager_006c0b20.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_FindPosToCreateNewVillager_006c0b20_test.cpp'
+        PassPattern = '006c0b20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

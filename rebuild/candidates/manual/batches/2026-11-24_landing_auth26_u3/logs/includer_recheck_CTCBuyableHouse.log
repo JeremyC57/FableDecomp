@@ -1,0 +1,132 @@
+addr       parity           behav  name
+004d3208   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+004d3208   RELOCATION_MATCH PASS   StatGetClassTypeName
+00600b60   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+00600b60   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z -> 00617a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingBuilding const *, std::allocator<CThingBuilding const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+00600b60   RELOCATION_MATCH PASS   ConstructRegionDescriptionBuyableBuildings
+00603000   WARN RELOC_NAME: ??$__copy@PAVCUIMiniMapMarker@CTCInventoryMap@@PAV12@H@std@@YIPAVCUIMiniMapMarker@CTCInventoryMap@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00612f70 labelled 'std::__copy<CTCInventoryMap::CUIMiniMapMarker*,CTCInventoryMap::CUIMiniMapMarker*,int>'
+00603000   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingAICreature@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasInformation@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasInformation@@VCThingFilter_InMap@@@@AAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@Z -> 00617a00 labelled 'CThingSearchTools::GetAllLeafThings<CThingAICreature, std::list<CThingAICreature *, std::allocator<CThingAICreature *>>, CFilter_Bind2<CThingFilter_HasInformation, CThingFilter_InMap>>'
+00603000   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingMarker@@V?$list@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@@Z -> 00617780 labelled 'CThingSearchTools::GetAllLeafThings<CThingMarker, std::list<CThingMarker const *, std::allocator<CThingMarker const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+00603000   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z -> 00617a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingBuilding const *, std::allocator<CThingBuilding const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+00603000   WARN RELOC_NAME: ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ -> 00437ce0 labelled 'CVertexBufferWin32::DoSizeof'
+00603000   RELOCATION_MATCH PASS   CreateMiniMapMarkers
+006aca30   WARN RELOC_NAME: ?PeekGlobalDefinition@CThing@@IBEABVCGlobalDef@@XZ -> 004c79a0 labelled 'CAnimateThing::GetMeshBank'
+006aca30   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+006aca30   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+006aca30   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+006aca30   RELOCATION_MATCH PASS   OnCollisionWithObject
+006bf7a0   MATCH            PASS   HasFrameUpdate
+006bf7c0   MATCH            PASS   IsComponentSerialisable
+006bf7f0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+006bf7f0   MATCH            PASS   HasMultipleDressLevels
+006bfcd0   RELOCATION_MATCH PASS   GetSignPostPos
+006c04b0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+006c04b0   WARN RELOC_NAME: ?SetDressLevel@CTCBuyableHouse_Methods@@QAEXH@Z -> 006c0330 labelled 'CTCBuyableHouse::SetupDressingAtLevel'
+006c04b0   RELOCATION_MATCH PASS   IncrementDressLevel
+006c06d0   RELOCATION_MATCH PASS   GetRentMoneyPos
+006c0970   RELOCATION_MATCH PASS   CreateSignPost
+006c0f00   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006c0f00   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006c0f00   RELOCATION_MATCH PASS   CreateMainSignPost
+006c1150   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+006c1150   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006c1150   RELOCATION_MATCH PASS   SetRented
+006c1250   WARN SHARED_HEADER_AVAILABLE CBuyableHouseDef (engine/CBuyableHouseDef.h)
+006c1250   WARN SHARED_HEADER_AVAILABLE HasBuildingAsHomeOrWork (engine/HasBuildingAsHomeOrWork.h)
+006c1250   RELOCATION_MATCH PASS   FrameUpdate
+006c14d0   RELOCATION_MATCH PASS   OnInitialActivate
+006c1ae0   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006c1ae0   RELOCATION_MATCH PASS   GetClassTypeName
+006d0830   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+006d0830   RELOCATION_MATCH PASS   GlobalUpdate
+006d18a0   WARN RELOC_NAME: ?SetHomeBuilding@CThingAICreature@@QAEXPAVCThingBuilding@@@Z -> 00512210 labelled '_unattributed::AssignTarget_00512210'
+006d18a0   RELOCATION_MATCH PASS   Marry
+006d1e30   RELOCATION_MATCH PASS   FrameUpdate
+006d3c40   RELOCATION_MATCH PASS   SetWifeLivingHere
+007039a0   WARN SHARED_HEADER_AVAILABLE CHeroStatsDef (engine/CHeroStatsDef.h)
+007039a0   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+007039a0   RELOCATION_MATCH PASS   OnHit
+0072e810   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0072e810   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0072e810   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0072e810   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0072e810   RELOCATION_MATCH PASS   OnActionUseRent
+0072e940   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0072e940   RELOCATION_MATCH PASS   OnActionUseMain
+0072eb40   RELOCATION_MATCH PASS   ReceivedConfirmation
+0072f750   RELOCATION_MATCH PASS   CreateVillager
+00750530   RELOCATION_MATCH PASS   OnInitialActivate
+00750950   MATCH            PASS   HasFrameUpdate
+00750960   MATCH            PASS   BulletTimeFrameUpdate
+00750970   MATCH            PASS   IsComponentSerialisable
+007735d0   RELOCATION_MATCH PASS   GetAttitudeBuyPriceMultiplier
+00773790   RELOCATION_MATCH PASS   GetAttitudeSellPriceMultiplier
+007cacb0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+007cacb0   RELOCATION_MATCH PASS   GlobalUpdate
+007ebea0   RELOCATION_MATCH PASS   OnActionUse
+0082e090   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0082e090   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0082e090   RELOCATION_MATCH PASS   SetIsAvailableForResidency
+0082e0e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0082e0e0   WARN SHARED_HEADER_AVAILABLE CThingBuilding (engine/CThingBuilding.h)
+0082e0e0   RELOCATION_MATCH PASS   GetIsAvailableForResidency
+00895ed0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00895ed0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00895ed0   RELOCATION_MATCH PASS   SetHouseOwnedByPlayer
+00896000   RELOCATION_MATCH PASS   SetBuyableHouseAsScripted
+00896390   WARN RELOC_NAME: ?GetOpenAnimNameForCreature@CTCChest@@QBE?AVCCharString@@XZ -> 00750240 labelled 'CTCChest::GetOpenAnimationForCreature'
+00896390   RELOCATION_MATCH PASS   OpenChest
+
+WINS: 38
+  004d3208 RELOCATION_MATCH CTCBuyableHouse::?StatGetClassTypeName@CTCBuyableHouse@@SI?AVCCharString@@XZ
+  00600b60 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescriptionBuyableBuildings@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z
+  00603000 RELOCATION_MATCH CTCInventoryMap::?CreateMiniMapMarkers@CTCInventoryMap@@QAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z
+  006aca30 RELOCATION_MATCH CThingPlayerCreature::?OnCollisionWithObject@CThingPlayerCreature@@QAEXPAVCThing@@@Z
+  006bf7a0 MATCH CTCBuyableHouse::?HasFrameUpdate@CTCBuyableHouse@@UBE_NXZ
+  006bf7c0 MATCH CTCBuyableHouse::?IsComponentSerialisable@CTCBuyableHouse@@UBE_NXZ
+  006bf7f0 MATCH CTCBuyableHouse::?CTCBuyableHouse_HasMultipleDressLevels@@YI_NPAVCTCBuyableHouse@@@Z
+  006bfcd0 RELOCATION_MATCH CTCBuyableHouse::?GetSignPostPos@CTCBuyableHouse@@AAE_N_NAAVC3DVector@@PAVCRightHandedSet@@@Z
+  006c04b0 RELOCATION_MATCH CTCBuyableHouse::IncrementDressLevel
+  006c06d0 RELOCATION_MATCH CTCBuyableHouse::?GetRentMoneyPos@CTCBuyableHouse@@AAE_NAAVC3DVector@@JJ@Z
+  006c0970 RELOCATION_MATCH CTCBuyableHouse::?CreateSignPost@CTCBuyableHouse@@AAEPAVCThing@@ABVCCharString@@_N@Z
+  006c0f00 RELOCATION_MATCH CTCBuyableHouse::?CreateMainSignPost@CTCBuyableHouse@@AAEXXZ
+  006c1150 RELOCATION_MATCH CTCBuyableHouse::?SetRented@CTCBuyableHouse@@QAEX_N@Z
+  006c1250 RELOCATION_MATCH CTCBuyableHouse::?FrameUpdate@CTCBuyableHouse@@UAEXXZ
+  006c14d0 RELOCATION_MATCH CTCBuyableHouse::?OnInitialActivate@CTCBuyableHouse@@UAEXXZ
+  006c1ae0 RELOCATION_MATCH CTCBuyableHouse::?GetClassTypeName@CTCBuyableHouse@@UBE?AVCCharString@@XZ
+  006d0830 RELOCATION_MATCH CTCWife::?GlobalUpdate@CTCWife@@UAEX_N@Z
+  006d18a0 RELOCATION_MATCH CTCWife::?Marry@CTCWife@@QAEX_N@Z
+  006d1e30 RELOCATION_MATCH CTCWife::?FrameUpdate@CTCWife@@UAEXXZ
+  006d3c40 RELOCATION_MATCH CTCBuyableHouse::?SetWifeLivingHere@CTCBuyableHouse@@QAEXPAVCThing@@@Z
+  007039a0 RELOCATION_MATCH CThingObject::?OnHit@CThingObject@@MAEXAAVCHitParameters@@@Z
+  0072e810 RELOCATION_MATCH CTCActionUseBuyHouse::OnActionUseRent
+  0072e940 RELOCATION_MATCH CTCActionUseBuyHouse::?OnActionUseMain@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@J@Z
+  0072eb40 RELOCATION_MATCH CTCActionUseBuyHouse::?ReceivedConfirmation@CTCActionUseBuyHouse@@AAEXAAVCTCBuyableHouse@@@Z
+  0072f750 RELOCATION_MATCH CTCDummyVillager::?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@AAVCTCVillage@@ABVC3DVector@@_N@Z
+  00750530 RELOCATION_MATCH CTCChest::?OnInitialActivate@CTCChest@@UAEXXZ
+  00750950 MATCH CTCChest::?HasFrameUpdate@CTCChest@@UBE_NXZ
+  00750960 MATCH CTCChest::?BulletTimeFrameUpdate@CTCChest@@UAEXXZ
+  00750970 MATCH CTCChest::?IsComponentSerialisable@CTCChest@@UBE_NXZ
+  007735d0 RELOCATION_MATCH CTCShop::?GetAttitudeBuyPriceMultiplier@CTCShop@@QBEMXZ
+  00773790 RELOCATION_MATCH CTCShop::?GetAttitudeSellPriceMultiplier@CTCShop@@QBEMXZ
+  007cacb0 RELOCATION_MATCH CTCHeroReceiveItems::?GlobalUpdate@CTCHeroReceiveItems@@UAEX_N@Z
+  007ebea0 RELOCATION_MATCH CTCActionUseBed::?OnActionUse@CTCActionUseBed@@UAEXAAVCThing@@@Z
+  0082e090 RELOCATION_MATCH CThingBuilding::SetIsAvailableForResidency
+  0082e0e0 RELOCATION_MATCH CThingBuilding::GetIsAvailableForResidency
+  00895ed0 RELOCATION_MATCH CGameScriptInterfaceMethods::SetHouseOwnedByPlayer
+  00896000 RELOCATION_MATCH CGameScriptInterface::SetBuyableHouseAsScripted
+  00896390 RELOCATION_MATCH CGameScriptInterface::?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z

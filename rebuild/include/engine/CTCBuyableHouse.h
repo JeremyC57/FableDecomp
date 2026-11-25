@@ -121,6 +121,13 @@ private:
 #endif
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_FINDPOSTOCREATENEWVILLAGER
+    // Retail opt-in (AUTH26, row 0x006C0B20): Ego_r.pdb / FableWin.pdb ?FindPosToCreateNewVillager@CTCBuyableHouse@@AAE_NAAVC3DVector@@@Z
+    // (private, by reference; Ego_d.pdb names the parameter ret_pos). Declaration only: no layout or vtable change.
+private:
+    bool FindPosToCreateNewVillager(class C3DVector& ret_pos);          // 0x006C0B20
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCBUYABLEHOUSE_VSLOTS
     // agentFAM03 (2026-11-11): retail virtuals the declarations above lack, declaration only (no layout change; the
     // vtable already exists). Slots from the TLC vtable aligned with the Xbox 360 Test PDB order on TLC-named slots;

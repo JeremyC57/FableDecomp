@@ -1,0 +1,9 @@
+# address	draft override	grade override	note  (owner 2026-11-25: "auth 26 can be released so codex can take its rows and continue the ones that arent matched")
+00723e50	rebuild/candidates/manual/pending/2026-11-25_auth26/00723e50/g18.cpp	DIFFER(310v310)	AUTH26 row 2, set aside by the owner after 4 rounds at g18, 2 instructions off at the front (mov eax,[esp+1Ch] / mov edi,17Ch one slot late): read auth26/TERMINAL.md (every hypothesis already graded) before any attempt.
+0062bd80			AUTH26 row 8 (not started; released by the owner).
+0091c220			AUTH26 row 7 (not started; released by the owner). Needs a CAIStateGroup_NymphAttack header (the draft is a local model).
+00644677			AUTH26 row 4 (not started; released by the owner).
+008f45f0			AUTH26 row 5 (not started; released by the owner).
+00935c40			AUTH26 row 6 (not started; released by the owner). Needs a CAIStateGroup_MinionPutOutFires header (the draft is a local model).
+0068ef50			AUTH26 row 10 (not started; released by the owner). /GS row; needs a CInputProcessUseRangedWeapon header (the draft is a local model).
+009f3da0			AUTH26 row 9 (not started; released by the owner).

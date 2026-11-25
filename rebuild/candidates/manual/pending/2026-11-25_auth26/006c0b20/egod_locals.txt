@@ -1,0 +1,8 @@
+== CTCBuyableHouse::FindPosToCreateNewVillager (debug length 569)
+  bprel -88 type 0x2f1ed this
+  bprel +8 type 0x2454 ret_pos
+  bprel -36 type 0x22e83 phero
+  bprel -32 type 0x19e17 entrances
+  {
+    bprel -60 type 0x390d6 end_it
+    bprel -48 type 0x390d6 it

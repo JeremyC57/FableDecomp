@@ -1,0 +1,8 @@
+addr       parity           behav  name
+006c0b20   RELOCATION_MATCH PASS   FindPosToCreateNewVillager
+
+WINS: 1
+  006c0b20 RELOCATION_MATCH CTCBuyableHouse::FindPosToCreateNewVillager
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCBuyableHouse_FindPosToCreateNewVillager_006c0b20

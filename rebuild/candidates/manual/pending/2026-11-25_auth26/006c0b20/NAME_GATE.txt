@@ -1,0 +1,12 @@
+006c0b20 CTCBuyableHouse::FindPosToCreateNewVillager RELOCATION_MATCH
+OK   00449970 +7a    agree_pdb        ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+OK   00487dc0 +81    agree_pdb        ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+OK   004c73d0 +109   split_fixable    ?GetPos@CThing@@QBEABVC3DVector@@XZ   [landed: ?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ,?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ,?GetPosition@CThingPos@@QAEABVC]
+OK   00686a70 +5a    split_fixable    ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ   [landed: ?GetWorld@CTCCarrying@NRemap006a23e0@@QAEPAUCWorld@2@XZ,?GetWorld@CTCDeedReaction@@QAEPAVCWorld@@XZ]
+OK   00686d30 +18    split_fixable    ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ   [landed: ?GetWorldMap@CTCCreatureFlyInCircles@@QAEPAVCWorldMap@@XZ]
+OK   00686d40 +73    split_fixable    ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ   [landed: ?GetPlayerManager@CTCOracleMinigame@@QAEPAVCPlayerManager@@XZ]
+OK   006c0b20 self   agree_pdb        ?FindPosToCreateNewVillager@CTCBuyableHouse@@AAE_NAAVC3DVector@@@Z
+OK   006c1dd0 +6c    agree_pdb        ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+OK   00864620 +9f    agree_pdb        ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z
+OK   00bfea14 +127   agree_std        _free
+NAME_GATE PASS

@@ -105,7 +105,6 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006af7d0	CTCPhysicsBase	ImpulseRespondToCollision	624	parked	codex pass24 PARKED: The original scoped axis locals on the shared physics headers improve the shape, but the response-basis computations and x87 operands differ.	20	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/006af7d0/006af7d0.cpp	original
 006b97e0	_global	CWorld_InitFactions	1456	parked	DIFFER(1450v1438)	1	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/006b97e0.cpp	original
 006bb390	`anonymousnamespace'	Game_IsTimeOfDayInRange	544	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec2/differ/006bb390.cpp	original
-006c0b20	CTCBuyableHouse	FindPosToCreateNewVillager	368	parked	DIFFER(383v368)	4	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/006c0b20.cpp	original
 006c2170	CObject	Load	1344	parked	DIFFER(1345v1329)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c2170.alt.cpp	original
 006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2384	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(2793v2377)	13	rebuild/candidates/manual/pending/2026-11-07_linux_hand828/differ/006c6040.test.cpp	original
 006c6990	CTCHeroOpinionDeedLog	PostDeed	1168	parked	DIFFER(1183v1168)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6990.alt.cpp	original

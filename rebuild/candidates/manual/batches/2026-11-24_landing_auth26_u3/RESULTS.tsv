@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+006c0b20	LANDED	(parked DIFFER(383v368))	?FindPosToCreateNewVillager@CTCBuyableHouse@@AAE_NAAVC3DVector@@@Z	AUTH26 row 3, hand-authored
