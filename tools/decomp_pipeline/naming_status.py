@@ -19,6 +19,7 @@ Status of an address (measured, not "done"):
   agree_pdb        one spelling, and it is a PDB name                       -> nothing to do
   agree_std        one spelling, not a PDB name, std:: / compiler-generated / C name  -> nothing to do (no PDB spelling expected)
   agree_unverified one spelling, not a PDB name, no stand-in marker          -> check later (often a cross-build signature difference)
+  agree_descriptive one spelling, not a PDB name, listed in rebuild/oracles/descriptive_names.tsv (best-guess name, owner 2026-11-25)
   standin          one spelling with a stand-in marker (struct T, _<addr>, Native::, DAT_, ...) -> open
   split_fixable    2+ spellings, exactly one a PDB name                      -> open, the target spelling is known
   split_pdb_multi  2+ spellings, 2+ of them PDB names                        -> ruling (byte-identical bodies folded by the linker?)
@@ -274,6 +275,12 @@ def main():
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     pdb = pdb_names()
+    descr = {}
+    _dp = P("rebuild", "oracles", "descriptive_names.tsv")
+    if os.path.exists(_dp):
+        for _l in open(_dp, encoding="utf-8").read().splitlines()[1:]:
+            _f = _l.split("\t")
+            if len(_f) > 1 and _f[0].strip(): descr[_f[0].strip().lower().replace("0x", "").zfill(8)] = _f[1].strip()
     ent = landed_rows()
     cat = {r[0].lower(): r[1] for r in read_tsv(P("rebuild", "oracles", "auto-re-candidates.tsv"))[1:] if len(r) > 1}
     by = table_spellings(open(P("rebuild", "oracles", "reloc_bindings.tsv"), encoding="utf-8", errors="replace").read())
@@ -307,6 +314,7 @@ def main():
         if len(names) == 1:
             s = names[0]
             st = "agree_pdb" if s in pdb else ("standin" if STANDIN.search(s) else ("agree_std" if is_std(s) else "agree_unverified"))
+            if st == "agree_unverified" and descr.get(t.lower().replace("0x", "").zfill(8)) == s: st = "agree_descriptive"
         else:
             st = "split_fixable" if len(pd) == 1 else ("split_pdb_multi" if len(pd) > 1 else "split_unknown")
         cn = cat.get(t, "")
@@ -379,7 +387,7 @@ def main():
         if rn[:4] in ("??_G", "??_E") and any(x[:4] in ("??_G", "??_E") and x[4:] == rn[4:] for x in r2.get("names", ())): continue
         if r2["status"] in ("agree_pdb", "agree_std"):
             r2.update(status="rtti_conflict", tier="T3", fix="RTTI names " + rn[:80]); status[t2] = "rtti_conflict"
-        elif r2["status"] in ("agree_unverified", "standin", "split_unknown"):
+        elif r2["status"] in ("agree_unverified", "agree_descriptive", "standin", "split_unknown"):
             r2.update(status="rtti_identified", tier="T3", fix="emit " + rn[:80]); status[t2] = "rtti_identified"
     cols = ["target", "status", "tier", "fix", "klass", "n_spellings", "pdb_spelling", "self_leaf", "landed", "catalog", "source", "spellings", "rtti"]
     if a.dump_rec:
@@ -436,16 +444,17 @@ def main():
         o.write("| Status | Addresses | Share | Meaning |\n|---|---:|---:|---|\n")
         mean = dict(agree_pdb="one spelling, a PDB name: done", agree_std="one spelling, std / compiler / C name: done",
                     agree_unverified="one spelling, not a PDB name, no stand-in marker: check later",
+                    agree_descriptive="one spelling, a best-guess name listed in descriptive_names.tsv (no second source exists; owner 2026-11-25)",
                     catalog_standin="callers agree on the PDB name, catalog / file name is a stand-in (T0 when the row's own Leaf confirms it, else T3 self)",
                     standin="one spelling with a stand-in marker: open", split_fixable="2+ spellings, one PDB name: open, target known",
                     split_pdb_multi="2+ PDB names at one address: ruling", split_unknown="2+ spellings, no PDB name: open, research")
         mean["unmeasured"] = "landed row, no caller binding and no usable mangled Leaf line: not measured"
         mean["rtti_conflict"] = "one spelling, but the retail RTTI vftable placement names another symbol: open, identity"
         mean["rtti_identified"] = "the retail RTTI placement names it; the code does not define that name yet: identified, emission open"
-        for k in ["agree_pdb", "agree_std", "agree_unverified", "catalog_standin", "standin", "split_fixable", "split_pdb_multi", "split_unknown",
+        for k in ["agree_pdb", "agree_std", "agree_descriptive", "agree_unverified", "catalog_standin", "standin", "split_fixable", "split_pdb_multi", "split_unknown",
                   "rtti_conflict", "rtti_identified", "unmeasured"]:
             o.write("| %s | %d | %.2f%% | %s |\n" % (k, c[k], 100.0 * c[k] / max(total, 1), mean[k]))
-        o.write("| **total** | **%d** | | done (agree_pdb + agree_std): **%d (%.2f%%)** |\n\n" % (total, done, 100.0 * done / max(total, 1)))
+        o.write("| **total** | **%d** | | done (agree_pdb + agree_std): **%d (%.2f%%)**; named incl. best-guess (+ agree_descriptive): **%d (%.2f%%)** |\n\n" % (total, done, 100.0 * done / max(total, 1), done + c["agree_descriptive"], 100.0 * (done + c["agree_descriptive"]) / max(total, 1)))
         o.write("| Tier | Open addresses | Batches (by class) | What the fix touches |\n|---|---:|---:|---|\n")
         tm = dict(T0="catalog / file rename only, no compile", T1="callers' spellings only (the row already defines the PDB name, or there is no landed row)",
                   T2="the row's own leaf, access / virtual / const letters only (zero line delta)",

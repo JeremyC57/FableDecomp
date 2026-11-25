@@ -55,6 +55,11 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   Made-up names (owner, 2026-11-10): allowed only when the original name is found nowhere (PDBs, strings, FSE, EgoCore,
   sibling repos), used consistently (one name per address everywhere), and as accurate and sensible as evidence allows
   (say what the function does; no `VirtualNN_<addr>` / `Unproven` placeholders in landed code). Mark them descriptive in NOTES.
+  Best-guess names (owner, 2026-11-25): "for anything where proving a name is impossible, as long as you try to make it as close
+  to what you believe retail would have named the function based on what it does, it should be fine". Where two sources cannot
+  be found after the search, land the best-evidence name: a one-source name (one PDB, the GameCODA SDK, a layout predictor) or
+  one in retail's own style for that class and module. Never over a proven name; one address = one name; list it in
+  `rebuild/oracles/descriptive_names.tsv` with its basis so later evidence can correct it (the tracker counts it apart from proven).
 - **Trust the manifest carefully** — module labels are propagated across byte-identical bodies;
   use `label_trust.py` before attributing a function to a class.
 - **Reproducible DB** — names as `ghidra_out/labels_*.tsv`, applied with `LabelApply.java`.
