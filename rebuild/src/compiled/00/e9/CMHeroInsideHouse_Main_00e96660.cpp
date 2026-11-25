@@ -113,7 +113,6 @@ struct CHauntedHouseScript {
     bool          HouseCleared;                         // +0x50 (descriptive)
     unsigned char _pad51[2];
     bool          HeroInside;                           // +0x53
-    void DoMission_BodyGuardSimple(CCharString guard1, CCharString guard2);   // 0x00E96C30
 };
 class CEntityScriptBase
 {
@@ -130,6 +129,10 @@ struct CM_HeroInsideHouse : public CEntityScriptBase {
     void Main();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00E96C30 ?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z (was ?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z)
+namespace NScript { class CV_HauntedHouseScript { public: void SendBodyguardsToTheRightPlace(CCharString, CCharString); }; }
 void CM_HeroInsideHouse::Main()
 {
     CScriptThing door = Game->GetThingWithScriptName("DoorToLock");
@@ -146,7 +149,7 @@ void CM_HeroInsideHouse::Main()
     CScriptThing field1 = Game->CreateEffect("NEW_RED_FORCEFIELD_IDLE_SMALL_01", here.PosOrZero(), "", 0.0f, false, false);
     CScriptThing field2 = Game->CreateEffect("NEW_RED_FORCEFIELD_IDLE_SMALL_02", here.PosOrZero(), "", 0.0f, false, false);
     Game->SetTeleportingAsActive(false);
-    ParentClass->DoMission_BodyGuardSimple("HH_BGuard1", "HH_BGuard2");
+    reinterpret_cast<NScript::CV_HauntedHouseScript*>(ParentClass)->SendBodyguardsToTheRightPlace("HH_BGuard1", "HH_BGuard2");
     CScriptThing barrier = Game->CreatePhysicalBarrier(8.0f, Game->GetThingWithScriptName("M_ThePhysBarrier").GetPos(), 0, "");
     {
         CScriptGameResourceObjectScriptedThingBase hero;

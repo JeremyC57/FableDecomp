@@ -43,9 +43,13 @@ class CIsThingAlive { public:                                      // vtable 0x0
 }
 using NScript::CIsThingAlive;
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00F35B10 ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z (was ?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z)
+namespace NScript { class CPredicateBase; }
 class CEntityScriptBase { public:   // the PDB class the accessor belongs to
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
-};
+ public: void SetPredicate(NScript::CPredicateBase const&); };
 namespace NScript {
 class CV_MurderTwistScript {    // the PDB owner script; only its nested entity class is modelled here
 public:
@@ -59,7 +63,6 @@ public:
     virtual void v00();
     CGameScriptInterface_Calls* m_pInterface;               // +0x04
     CScriptThing_Calls          m_thing;                    // +0x08
-    void WaitFor(CIsThingAlive* condition);                 // 0x00F35B10
 private:
     virtual void Main();                          // PDB ?Main@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@EAEXXZ
 };
@@ -69,7 +72,7 @@ void NScript::CV_MurderTwistScript::CMurderTwistBuriedGem::Main()
 {
     {
         CIsThingAlive condition(m_thing);
-        WaitFor(&condition);
+        reinterpret_cast<CEntityScriptBase*>(this)->SetPredicate(*reinterpret_cast<NScript::CPredicateBase const*>(&condition));
     }
     m_pInterface->Pump();
     while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating())

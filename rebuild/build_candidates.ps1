@@ -33024,9 +33024,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cbf50'
-        Module = 'CTCDivineWrath'
-        Source = '00/7c/CTCDivineWrath_GetDamageMultiplier_007cbf50.cpp'
-        TestSource = '00/7c/CTCDivineWrath_GetDamageMultiplier_007cbf50_test.cpp'
+        Module = 'CTCMultiArrow'
+        Source = '00/7c/CTCMultiArrow_GetPerArrowDamageMultiplier_007cbf50.cpp'
+        TestSource = '00/7c/CTCMultiArrow_GetPerArrowDamageMultiplier_007cbf50_test.cpp'
         PassPattern = '007cbf50_TEST PASS'
     }
     [pscustomobject]@{
@@ -261847,9 +261847,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00789cc0'
-        Module = 'CTCDivineWrath'
-        Source = '00/78/CTCDivineWrath_GetDamageMultiplier_00789cc0.cpp'
-        TestSource = '00/78/CTCDivineWrath_GetDamageMultiplier_00789cc0_test.cpp'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_GetProjectileWeaponFirstPersonTargetingModeZoomFOV_00789cc0.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_GetProjectileWeaponFirstPersonTargetingModeZoomFOV_00789cc0_test.cpp'
         PassPattern = '00789cc0_TEST PASS'
     }
     [pscustomobject]@{

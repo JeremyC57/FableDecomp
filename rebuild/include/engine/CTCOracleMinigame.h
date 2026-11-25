@@ -22,7 +22,7 @@
 #include "engine/COracleMinigameDef.h"
 #include "stlport/fable_containers.h"
 class CThing;
-enum EOracleMinigameInput { };                                           // W4EOracleMinigameInput@@ (enumerators not needed here)
+#include "engine/EOracleMinigameInput.h"
 class CTCOracleMinigame : public CTCBase {
 public:
     virtual void FrameUpdate();                                          // slot 9 0x007E6750 ?FrameUpdate@CTCOracleMinigame@@UAEXXZ

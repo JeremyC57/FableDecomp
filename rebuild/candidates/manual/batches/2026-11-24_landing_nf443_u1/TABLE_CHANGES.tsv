@@ -1,0 +1,7 @@
+action	symbol	target	witness	note
+add	?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ	00789cc0	00698d10	NF443 unit u1: the respelt caller binds the PDB spelling at this target
+add	?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ	007cbf50	007bdcfc	NF443 unit u1: the respelt caller binds the PDB spelling at this target
+add	?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	0078e7b0	00868b40	NF443 unit u1: the respelt caller binds the PDB spelling at this target
+delete	?B@Component@Row00868b40@@QAEMXZ	0078e7b0	00868b40	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	007cbf50	007bdcfc	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CCameraRangedMethods@@QBEMXZ	00789cc0	00698d10	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)

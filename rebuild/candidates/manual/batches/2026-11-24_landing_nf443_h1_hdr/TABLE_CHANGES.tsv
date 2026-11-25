@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z	007e5f70	00691680	NF443: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z	007e5f70	00691680	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)

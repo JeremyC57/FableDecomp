@@ -16,10 +16,14 @@ class CTCBase;
 #include "engine/ETCInterfaceType.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+// Naming (NF443, 2026-11-25; coordinator round 3): callee-only rebind of the interface 0x85 (TCI_DIVINE_WRATH) call 0x0078E7B0 to its
+//   PDB spelling ?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ (was ?B@Component@Row00868b40@@QAEMXZ) through a bodiless declaration (no
+//   layout; rulings r2/r3); the self row 0x0078E7B0 is respelt to it in the same batch.
+class CTCDivineWrath { public: float GetDamageMultiplier() const; };
 namespace Row00868b40 {
 struct Component;struct Scale{float Get(Component*);};
 struct Def {virtual void Dummy()=0;virtual void Release()=0;int refs;char gap[0xb4];float high,low;Scale scale;};
-struct Component{char pad[0x58];Def*def;int total,current;char gap[0x60];Scale scale;float A();float B();float C();};
+struct Component{char pad[0x58];Def*def;int total,current;char gap[0x60];Scale scale;float A();float C();};
 struct Entry{int key;Component*component;};
 typedef ::CInterfaceMap Map;
 // Layout: this is thing interface owner, flags+2c/+30, map+44. Component and def offsets taken from retail, no shared matching headers.
@@ -36,7 +40,7 @@ class CHeroAbilityStatWeight { public: float GetParameter(CTCHeroExperience cons
 namespace {
 float __fastcall GetToughnessDamageReductionFactorForThing(const CThing& thing){float value=1.0f;if(thing.flags&0x100){Component*c=thing.Get<0x68>();Def*d=c->def;if(d)++d->refs;float scale=reinterpret_cast<const CHeroAbilityStatWeight*>(&(d->scale))->GetParameter(*reinterpret_cast<CTCHeroExperience const*>(c));const float low=d->low;value=(d->high-low)*scale+low;if(--d->refs==0)d->Release();}
  if(thing.flags2&0x10)value*=thing.Get<0x84>()->A();
- if(thing.flags2&0x20){Component*c=thing.Get<0x85>();if(c->current<c->total)value*=c->B();}
+ if(thing.flags2&0x20){Component*c=thing.Get<0x85>();if(c->current<c->total)value*=reinterpret_cast<const CTCDivineWrath*>(c)->GetDamageMultiplier();}
  if(thing.flags2&0x40){Component*c=thing.Get<0x86>();if(c->current<c->total)return c->C()*value;}
  return value;
 }

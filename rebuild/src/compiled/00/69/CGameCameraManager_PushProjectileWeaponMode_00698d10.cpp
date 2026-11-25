@@ -16,7 +16,12 @@
 #include "engine/CWorld.h"
 #include "engine/CIVCountedPointeeBase.h"
 #include "fable_string.h"
+#define CTCHeroRangedAttacks CTCHeroRangedAttacksLayout   // NF443: layout-rename include (the 0x00789C90 pattern) so the PDB getter can be declared
 #include "engine/CTCHeroRangedAttacks.h"
+#undef CTCHeroRangedAttacks
+class CTCHeroRangedAttacks : public CTCHeroRangedAttacksLayout { public:
+    float GetProjectileWeaponFirstPersonTargetingModeZoomFOV() const;   // 0x00789CC0 ?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ
+};
 #include <new>
 struct CCameraNativeDef:CIVCountedPointeeBase {void ReleaseReference(){--IVRefCount;if(!IVRefCount){typedef void(CCameraNativeDef::*F)()const;(this->*static_cast<const F*>(__vftable)[1])();}}};
 class CCameraModeDef:public CCameraNativeDef { public:unsigned char BeforeMode[0x34];long CameraMode;}; //native3C vs donor40
@@ -39,7 +44,10 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
  FABLE_FORCEINLINE CTCHeroRangedAttacks* Find()const{ETCInterfaceType key = (ETCInterfaceType)(0x81);const CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->first)p=End;return ((CTCHeroRangedAttacks*)p->second);}};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CCameraComponentMap;
 class CThing { public:unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
-struct CCameraRangedMethods:CTCHeroRangedAttacks {float GetProjectileWeaponFirstPersonTargetingModeZoomFOV()const;}; //789CC0
+// Naming (NF443, 2026-11-25; coordinator round 3): the callee 0x00789CC0 binds its PDB spelling
+//   ?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ (was ...@CCameraRangedMethods@@QBEMXZ), declared on the
+//   layout-renamed engine/CTCHeroRangedAttacks.h class; the self row 0x00789CC0 is respelt to it in the same batch.
+struct CCameraRangedMethods:CTCHeroRangedAttacks {}; //789CC0
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"

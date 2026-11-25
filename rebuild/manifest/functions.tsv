@@ -21501,7 +21501,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00789bb0	CTCHeroRangedAttacks	CTCHeroRangedAttacks	__thiscall	undefined	2	CTCOpinionSource *,CThing *	0	yes	accepted									
 00789c20	OnCreate	CTCHeroRangedAttacks	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00789c90	IncrementProjectileWeaponMode	CTCHeroRangedAttacks	__thiscall	void	1	CTCHeroRangedAttacks *	1	yes	accepted									
-00789cc0	GetDamageMultiplier	CTCDivineWrath	__thiscall	float	1	CTCDivineWrath *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\CTCDivineWrath_GetDamageMultiplier_00789cc0.cpp
+00789cc0	GetProjectileWeaponFirstPersonTargetingModeZoomFOV	CTCHeroRangedAttacks	__thiscall	float	1	CTCDivineWrath *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\78\CTCDivineWrath_GetDamageMultiplier_00789cc0.cpp
 00789ce0	GetDamageMultiplierFromThingAtBuildUpTime	`anonymousnamespace'	__fastcall	float	3	CThing *,CDefPointer<CHeroCombatDef_const_>,float	1	yes	accepted									
 00789d90	GetAccuracyPercentageFromThingAtBuildUpTime	_global	__fastcall	float	3	CThing *,CDefPointer<CHeroCombatDef_const_>,float	1	yes	accepted									
 00789e60	IsAbleToUseRangedWeapon	CTCHeroRangedAttacks	__thiscall	bool	1	CTCHeroRangedAttacks *	1	yes	accepted									
@@ -22619,7 +22619,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007cbea0	`scalar_deleting_destructor'	CTCGold	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7c\CLandscapeBackgroundPatch_vectordeletingdestructor_007cbea0.cpp
 007cbee0	CFlash_	_Dest_val_std::allocator_NCreatureHitNotification::CFlash_,NCreatureHitNotification	__fastcall	void	2	allocator<NCreatureHitNotification::CFlash> *,CFlash *	1	yes	accepted									
 007cbf20	SetAICast	CTCMultiArrow	__thiscall	void	2	CTCMultiArrow *,long	1	yes	accepted									
-007cbf50	GetDamageMultiplier	CTCDivineWrath	__thiscall	float	1	CTCDivineWrath *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7c\CTCDivineWrath_GetDamageMultiplier_007cbf50.cpp
+007cbf50	GetPerArrowDamageMultiplier	CTCMultiArrow	__thiscall	float	1	CTCDivineWrath *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7c\CTCDivineWrath_GetDamageMultiplier_007cbf50.cpp
 007cbf60	~CTCMultiArrow	CTCMultiArrow	__thiscall	void	1	CTCMultiArrow *	1	yes	accepted									
 007cc060	ApplyEffectOnWeapon	CTCMultiArrow	__thiscall	void	2	CTCMultiArrow *,CThing *	1	yes	accepted									
 007cc120	RemoveEffectOnWeapon	CTCMultiArrow	__thiscall	void	2	CTCMultiArrow *,CThing *	1	yes	accepted									

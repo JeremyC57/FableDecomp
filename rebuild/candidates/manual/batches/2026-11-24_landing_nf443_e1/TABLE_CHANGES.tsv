@@ -1,0 +1,4 @@
+action	symbol	target	witness	note
+add	?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z	00e96c30	00e96660	NF443: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z	00e96c30	00e96660	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z	00f35b10	00ead800	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)

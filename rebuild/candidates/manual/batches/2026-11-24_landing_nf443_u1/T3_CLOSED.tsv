@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf384	0x00789CC0	self respell (identity)	NF384: the self row 0x00789CC0 defines ?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ but the body is CTCHeroRangedAttacks::GetProjectileWeaponFirstPersonTargetingModeZoomFOV (NAME_FIXES nf384: PHeroCombatDef +0x10, ProjectileWeaponFirstPersonZoomModeIndex +0x44, both Ego_r members). Respell the self, the catalog label and the file name. Then binder 00698d10 (T3) moves from CCameraRangedMethods to the PDB class.

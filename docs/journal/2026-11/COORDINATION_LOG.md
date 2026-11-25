@@ -1384,3 +1384,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: NF444 resume 1 still HOLD (SDK expands ??_GCSalRender; CreateRenderer forces renames of 0x00C55680 / 0x00C556E0). R-NF444-1 granted on retail evidence under the 2026-11-08 inline rule; NF444 resumed to freeze the closure.
 - 2026-11-25 A: landed NF443 a1/a2/a4/a5/c1 (238 rows, +86 proven); a3 held (r1 declined); NF444 out of context, NF445 started on its last 12 rows; NF443 resumed.
 - 2026-11-25 A: landed NF443 a3 + d1 (70 rows, +29 proven); r2 granted; NF443 round 3 started.
+- 2026-11-25 A: landed NF443 round 3 (h1_hdr, u1, e1; +5 proven; equiv 0/57,160); NF443 done; NF446 started (queued name-fix units).

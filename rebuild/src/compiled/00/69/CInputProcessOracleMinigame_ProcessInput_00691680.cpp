@@ -19,6 +19,7 @@
 #include "engine/EGameAction.h"
 #define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
 #include "engine/CInputProcessGameBase.h"
+#include "engine/EOracleMinigameInput.h"   // NF443 (ruling r2): the PDB enum of the oracle callee's parameter
 class CInputEvent;
 struct CMemoryBuffer {
 };
@@ -42,7 +43,9 @@ public:
     void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 class CTCOracleMinigame { public:
-    void PushSymbolToQueue(long symbol);           // 0x007E5F70
+    // Naming (NF443, 2026-11-25; NF439 r1 / coordinator r2): the callee 0x007E5F70 binds its PDB spelling
+    //   ?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z (was ?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z).
+    bool ProcessInput(EOracleMinigameInput input);  // 0x007E5F70
     void Quit();                                   // 0x007E62D0
 };
 class CTCBase;
@@ -89,13 +92,13 @@ void CInputProcessOracleMinigame::ProcessInput(const CInputEvent& event, CProces
     if (hero->HasTC(0x107))
         oracle = hero->GetTC(0x107);
     if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_UP, event))
-        oracle->PushSymbolToQueue(0);
+        oracle->ProcessInput((EOracleMinigameInput)0);
     else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_DOWN, event))
-        oracle->PushSymbolToQueue(2);
+        oracle->ProcessInput((EOracleMinigameInput)2);
     else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_LEFT, event))
-        oracle->PushSymbolToQueue(3);
+        oracle->ProcessInput((EOracleMinigameInput)3);
     else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_RIGHT, event))
-        oracle->PushSymbolToQueue(1);
+        oracle->ProcessInput((EOracleMinigameInput)1);
     else if (IsEventGameAction(GAME_ACTION_ORACLE_MINIGAME_QUIT, event))
         oracle->Quit();
     else if (IsEventGameAction(GAME_ACTION_OPEN_IN_GAME_MENU, event) && hero->HasTC(0xc6)) {

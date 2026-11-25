@@ -2082,7 +2082,6 @@ _GetActionRegistrar	006f90b0	00692380
 ?PreparePendingMode@CGameCameraManager@@QAEXUCCameraDefPointer@@@Z	00698840	00698c30
 ??0CCameraModePointer@@QAE@PAUCCameraMode@@@Z	0056c880	00698d10
 ?GetDef@CGameDefinitionManager@@QAE_NJPAUCCameraDefPointer@@@Z	0056d0c0	00698d10
-?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CCameraRangedMethods@@QBEMXZ	00789cc0	00698d10
 ?SetCameraMode@CGameCameraManager@@QAEXUCCameraModePointer@@@Z	00697e20	00698d10
 ?Find@CCameraRegisteredMap@@QAE?AUCCameraRegisteredIterator@@ABW4EMode@NCameraModes@@@Z	0069cf90	00698f50
 ?Reset@CCameraModePointer@@QAEXPAUCCameraMode@@@Z	0069c2f0	00698f50
@@ -8899,7 +8898,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ??$__uninitialized_fill_n@UElement@N0085ebb0@@@N0085ebb0@@YIPAUElement@0@PAU10@IABU10@@Z	0085e440	0085ebb0
 ??0Buffer@N0085ebb0@@QAE@ABU01@@Z	0085de40	0085ebb0
 ?A@Component@Row00868b40@@QAEMXZ	0078be40	00868b40
-?B@Component@Row00868b40@@QAEMXZ	0078e7b0	00868b40
 ?C@Component@Row00868b40@@QAEMXZ	00793cb0	00868b40
 ??$__copy_backward@UElement@N008890f0@@@N008890f0@@YIPAUElement@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	00885e60	008890f0
 ??$fill@UElement@N008890f0@@@N008890f0@@YIXPAUElement@0@0ABU10@@Z	00885d90	008890f0
@@ -22743,7 +22741,6 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?WatchForBanditDead@CQR_EscortTraderScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e1f520	00e1f3e0
 ?Add@CV_AssassinAttacksScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e38f80
 ?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e39140	00e38f80
-?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z	00f35b10	00ead800
 ?GetStatueAngle@CV_StatueMasterScript@NScript@@QAEMXZ	00ed43d0	00ed41d0
 ?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z	00f35b10	00eed6b0
 ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z	00cb7e50	00f08a30
@@ -26146,7 +26143,6 @@ __imp__GetCursorPos@4	014403a8	00ab5030
 ??1CCreatureAction_HeroLoadRangedWeapon@@QAE@XZ	0078ab20	0078a2c0
 ?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z	0066bdf0	0079fe90
 ?GetCurrentRelativeMovementAngleXY@CThingPlayerCreature@@QBEMXZ	006a9640	007a7000
-?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	007cbf50	007bdcfc
 ?GetShotDamage@CTCShotDefinitionBase@@QBEMXZ	007bee10	007bdcfc
 ?OnActionUseCommon@CTCCarriedActionUseTrophy@@AAEXAAVCThing@@@Z	007edee0	007edfb0
 ?AddMoney@CTCHeroStats@@QAEXJ_N@Z	0057b327	00813c50
@@ -33338,7 +33334,6 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?floor@@YAMM@Z	00689370	0068ae30
 ?IsActive@CTCQuickAccessMenu@@QBE_NXZ	00625930	00690fd0
 ?Deactivate@CTCQuestCompletionUI@@QAEXXZ	005e3df0	00691130
-?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z	007e5f70	00691680
 ?Quit@CTCOracleMinigame@@QAEXXZ	007e62d0	00691680
 ?Answer@CTCFireheartMinigame@@QAEX_N@Z	007e7c00	00691870
 ?DelayedQuit@CTCFireheartMinigame@@QAEXXZ	007e7ac0	00691870
@@ -36825,7 +36820,6 @@ _z_inflateInit_	00c02310	00a3a840
 ?WatchForLevelChanges@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	00dc0ff0	00dbf2d0
 ?WatchForWhistling@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ	00dbf9e0	00dbf2d0
 ?GetCutsceneName@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	00e8a1d0	00e8b020
-?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z	00e96c30	00e96660
 ?UnLimboSword@CV_MazeResearchScript@NScript@@QAEXXZ	00ea85e0	00ea8130
 ?MakeHenchmanPerformIdleComment@CV_BodyGuardScript@NScript@@QAE_NXZ	00e5e5a0	00e5e350
 ??A?$map@KUCSectionDesc@CCodeSectionManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUCSectionDesc@CCodeSectionManager@@@std@@@4@@std@@QAEAAUCSectionDesc@CCodeSectionManager@@ABK@Z	009f1470	009f05a0
@@ -38733,3 +38727,8 @@ __real@0000000000000000	0122ed70	00b260b0
 ?FrameEnd@CGraphicBankManager@@QAEXXZ	009f8200	00b3b7c0
 ?RenderUpdate@CObjectTypeCollection@CLocalDetailCacheMap@@QAEXABVCEngineCamera@@MMKM@Z	00bdd860	00bdd930
 ?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode@@AAEXXZ	00bf6ac0	00bf7370
+?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z	00e96c30	00e96660
+?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z	007e5f70	00691680
+?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ	00789cc0	00698d10
+?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ	007cbf50	007bdcfc
+?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	0078e7b0	00868b40

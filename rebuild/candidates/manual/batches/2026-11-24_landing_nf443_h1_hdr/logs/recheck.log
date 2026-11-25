@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00691680   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CInputProcessOracleMinigame (engine/CInputProcessOracleMinigame.h)
+00691680   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 1
+  00691680 RELOCATION_MATCH CInputProcessOracleMinigame::ProcessInput

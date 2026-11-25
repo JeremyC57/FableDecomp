@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00e96660   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase (engine/CScriptGameResourceObjectMovieBase.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00e96660   WARN SHARED_HEADER_AVAILABLE CV_HauntedHouseScript (engine/CV_HauntedHouseScript.h)
+00e96660   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e96660   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00e96660   RELOCATION_MATCH PASS   Main
+00ead800   WARN SHARED_HEADER_AVAILABLE CIsThingAlive (engine/CIsThingAlive.h)
+00ead800   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00ead800   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistScript (engine/CV_MurderTwistScript.h)
+00ead800   WARN RELOC_NAME: ??0CScriptThing_Calls@@QAE@ABU0@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ead800   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00e96660 RELOCATION_MATCH CM_HeroInsideHouse::?Main@CM_HeroInsideHouse@
+  00ead800 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBuriedGem::?Main@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@EAEXXZ

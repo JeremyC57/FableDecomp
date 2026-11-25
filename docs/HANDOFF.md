@@ -7,7 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 34,506 of 64,041 done (53.88%), from the tracker; 34,690 (54.17%) with the 184 registered best guesses. Landed today:
+- **Naming:** 34,511 of 64,041 done (53.89%), from the tracker; 34,695 (54.18%) with the 184 registered best guesses. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
@@ -18,7 +18,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - nf440 bg1p..bg4p (170 more registered best guesses after an emitter pk check of 4,909 rows: no reached NEQ; 145 debt lines). Best-guess total 34,575 (53.99%).
   - NF444 round 1 (GameCODA CSalRender pilot, 14 rows `nf444_hdr`): all HOLD on closure (0x00C55270 + 8 funclets, 0x00C70A30, 0x00C71400 reference the old CVtable_012beda4 names). **R-NF444-1** (advisor decision, owner delegated; under the owner's 2026-11-08 inline-control rule): `/Ob1` granted on every row of the measured render TUs, on retail's bytes alone. Retail expands every inline-marked body (/Ob0 fails 3 rows) and no unmarked one (/Ob2 fails the `??_G` bodies). SDK 2.10 expands `??_GCSalRender`: noted as a dissent, since that build also inlines `~CSalMutex` differently. Precedent: 0x00D1EB80 and 0x00C95580 already use /Ob1. Accepted renames: 0x00C55680 `CSalSw3DVoice::Initialize`, 0x00C556E0 `CSalSw3DVoice::Create`. **R-NF444-2** declined: fold Initialize 0x00C6E660 into the unit. A proven name that clashes with a registry guess wins (REGISTRY_CORRECTIONS.tsv).
   - nf443 a1, a2, a4, a5, c1 (238 T1 list-B caller rows; 86 addresses split_fixable -> agree_pdb). a3 followed after its r1 forwarding-stub form was declined (NF438 q2 form) and the tests were fixed; then d1 (21 rows). Together +29 proven (`pending/2026-11-25_nf443_handback/`). NF444 froze the CreateRenderer closure at 28 rows (16 built and gated; Create is retail slot 1 of 0x012B8AE0; /Ob1 scope check 20/20) and ran out of context; NF445 finishes the other 12.
-  - **Running:** NF442 (T1 list A round 2), NF443 round 3 (GetDamageMultiplier three-address rename unit, r2 EOracleMinigameInput.h `_hdr` batch + 0x00691680, 00e96660 / 00ead800, the UnloadBoneConfigs identity), NF445 (the remaining 12 rows of nf444_hdr; 28 rows locked as NF445).
+  - nf443 round 3: h1_hdr (EOracleMinigameInput.h, equiv 0/57,160), u1 (GetDamageMultiplier three-address split + callers; T3 nf384 released), e1 (2 NScript rows). NF443 finished.
+  - **Running:** NF442 (T1 list A round 2), NF445 (the remaining 12 rows of nf444_hdr; 28 rows locked as NF445), NF446 (queued name-fix units: 0x00793CB0 CTCUnholyPower, 0x0074AC80 + 0x0089EC60, 0x00A36FE0 + 0x006E72A0, 0x006D6570).
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.

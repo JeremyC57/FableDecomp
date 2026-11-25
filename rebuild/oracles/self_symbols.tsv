@@ -10798,7 +10798,7 @@ address	symbol	status	leaf_given
 00789b30	?ResetProjectileWeaponMode@CTCHeroRangedAttacks@@QAEXXZ	RELOCATION_MATCH	ResetProjectileWeaponMode
 00789c20	?OnCreate@CTCHeroRangedAttacks@@UAEXXZ	RELOCATION_MATCH	OnCreate
 00789c90	?IncrementProjectileWeaponMode@CTCHeroRangedAttacks_Methods@@QAEXXZ	RELOCATION_MATCH	IncrementProjectileWeaponMode
-00789cc0	?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	RELOCATION_MATCH	GetDamageMultiplier@CTCDivineWrath
+00789cc0	?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ	RELOCATION_MATCH	GetDamageMultiplier@CTCDivineWrath
 00789ce0	?GetDamageMultiplierFromThingAtBuildUpTime@?A0x7dc2304b@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	RELOCATION_MATCH	?GetDamageMultiplierFromThingAtBuildUpTime@
 00789d90	?GetAccuracyPercentageFromThingAtBuildUpTime@?A0xdc9bdd76@@YIMABVCThing@@V?$CDefPointer@$$CBVCHeroCombatDef@@@@M@Z	RELOCATION_MATCH	?GetAccuracyPercentageFromThingAtBuildUpTime@
 00789e60	?IsAbleToUseRangedWeapon@CTCHeroRangedAttacksMethods@@QAE_NXZ	RELOCATION_MATCH	IsAbleToUseRangedWeapon
@@ -10835,7 +10835,7 @@ address	symbol	status	leaf_given
 0078e5b0	??0?$CIntelligentPointer@VCThingCreatureBase@@@@QAE@ABV0@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
 0078e650	?Decrement@CRetailTreeIterator@@QAEAAU1@XZ	MATCH	Decrement
 0078e700	??0CTargetAndThing_0078e700@@QAE@J@Z	RELOCATION_MATCH	??0CTargetAndThing_0078e700@
-0078e7b0	?GetDamageMultiplier@@YIMPAUS@@@Z	MATCH	GetDamageMultiplier
+0078e7b0	?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	MATCH	GetDamageMultiplier
 0078e7c0	?Attackable@CTCDivineWrath@@AAE_NPAVCThingCreatureBase@@@Z	RELOCATION_MATCH	?Attackable@CTCDivineWrath@@AAE_NPAVCThingCreatureBase@@@Z
 0078e820	?SetPTarget@CTCDivineWrath@@AAEXXZ	RELOCATION_MATCH	?SetPTarget@CTCDivineWrath@@AAEXXZ
 0078e9c0	?UnsheatheWeapon@CTCDivineWrath@@AAEXXZ	RELOCATION_MATCH	?UnsheatheWeapon@CTCDivineWrath@@AAEXXZ
@@ -11325,7 +11325,7 @@ address	symbol	status	leaf_given
 007cbea0	?ScalarDeletingDestructor@CTCGold@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007cbee0	?NotifyOwnerProperty136@CFlashPropertySender136@@QAEXXZ	RELOCATION_MATCH	CFlash_
 007cbf20	?SetAICast@CTCMultiArrow@@QAEXJ@Z	MATCH	SetAICast
-007cbf50	?GetDamageMultiplier@@YIMPAUS@@@Z	MATCH	GetDamageMultiplier
+007cbf50	?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ	MATCH	GetDamageMultiplier
 007cc120	?RemoveEffectOnWeapon@CTCMultiArrow@@QAEXPAVCThing@@@Z	RELOCATION_MATCH	RemoveEffectOnWeapon
 007cc2b0	?CreateAmmoEffect@CTCMultiArrow@@IAEXXZ	RELOCATION_MATCH	?CreateAmmoEffect@CTCMultiArrow@@IAEXXZ
 007cc410	?FinalCleanup@CTCMultiArrow@@IAEXXZ	RELOCATION_MATCH	?FinalCleanup@CTCMultiArrow@@IAEXXZ
@@ -28118,3 +28118,4 @@ address	symbol	status	leaf_given
 0089e780	?AddItemToContainer@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z	RELOCATION_MATCH	?AddItemToContainer@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
 008c0900	?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ
 008f3100	?PerformAction@CCreatureAction_DragonLandFireball@@UAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_DragonLandFireball@@UAEXXZ
+00ead800	?Main@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@EAEXXZ	RELOCATION_MATCH	?Main@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@EAEXXZ

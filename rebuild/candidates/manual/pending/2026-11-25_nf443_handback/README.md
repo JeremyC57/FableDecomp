@@ -42,3 +42,21 @@ a3 (49 rows) is held as a whole, because a delete witnessed by one row could oth
   - 0x007CBF50 → `CTCMultiArrow::GetPerArrowDamageMultiplier`;
   - 0x00789CC0 → `CTCHeroRangedAttacks::GetProjectileWeaponFirstPersonTargetingModeZoomFOV`.
 - **r2 (coordinator): granted.** An enum-only `engine/EOracleMinigameInput.h` (EGameAction.h form), included by CTCOracleMinigame.h inside its retail-class branch and by row 0x00691680, shipped as a `_hdr` batch.
+
+## Round 3 (landed): h1_hdr (1 row + header), u1 (6 rows), e1 (2 rows)
+- **h1_hdr (r2):** new enum-only `engine/EOracleMinigameInput.h`. The enum line moves unchanged out of CTCOracleMinigame.h's retail-class branch. 0x00691680 now calls `?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z` (0x007E5F70).
+  - Coordinator equiv_check, copy against copy: 0 of 57,160 rows differ.
+- **u1:** the GetDamageMultiplier split, landed as one unit:
+  - 0x0078E7B0 stays `CTCDivineWrath::GetDamageMultiplier`;
+  - 0x007CBF50 becomes `CTCMultiArrow::GetPerArrowDamageMultiplier`;
+  - 0x00789CC0 becomes `CTCHeroRangedAttacks::GetProjectileWeaponFirstPersonTargetingModeZoomFOV`;
+  - callers 0x00698D10, 0x007BDCFC and 0x00868B40 move with them.
+  - Released T3 line nf384 (same identity, found independently).
+  - The lander held the unit on that line until it was rerun with `REL=nf384`.
+  - apply_renames skips 0x0078E7B0, whose name and file do not change.
+- **e1:** 0x00E96660 and 0x00EAD800, held in round 2 only by my 0x00C00000 limit.
+- **Tracker:** +5 proven (4 split_fixable and 1 split_unknown → agree_pdb), none worse.
+- **Still held:**
+  - 00b32820: its target 0x00B93DF0 is mislabelled UnloadBoneConfigs; the real name is unproven (one source only).
+  - 00bb6980: a float parameter changes the code.
+- **Queued:** 0x00793CB0 = `CTCUnholyPower::GetDamageMultiplier` (NAME_FIXES_QUEUE, nf443), which NF446 is doing.

@@ -39,8 +39,11 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0040DC
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-class CTCDivineWrath { public:
-    float GetDamageMultiplier() const;              // 0x007CBF50
+// Naming (NF443, 2026-11-25; coordinator round 3): the callee 0x007CBF50 is CTCMultiArrow::GetPerArrowDamageMultiplier
+//   (?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ, was ?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ): interface 0x88 is TCI_MULTI_ARROW
+//   (engine/ETCInterfaceType.h); the self row 0x007CBF50 is respelt to it in the same batch.
+class CTCMultiArrow { public:
+    float GetPerArrowDamageMultiplier() const;      // 0x007CBF50
 };
 struct CTCShotDefinitionBase {
     void*                   __vftable;              // +0x00
@@ -59,7 +62,7 @@ float CTCShotDefinitionMultiArrow::GetShotDamage() const
     if (IS_THING_ALIVE<CThing*>(((CThing*)PShooter.GetPItem()))) {
         CThing* shooter = ((CThing*)PShooter.GetPItem());
         if (shooter->HasInterface(0x88))
-            multiplier = shooter->GetInterfaceUnchecked<CTCDivineWrath>(0x88)->GetDamageMultiplier();
+            multiplier = shooter->GetInterfaceUnchecked<CTCMultiArrow>(0x88)->GetPerArrowDamageMultiplier();
     }
     return CTCShotDefinitionBase::GetShotDamage() * multiplier;
 }

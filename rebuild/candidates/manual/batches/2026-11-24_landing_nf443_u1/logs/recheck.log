@@ -1,0 +1,38 @@
+addr       parity           behav  name
+00698d10   WARN SHARED_HEADER_AVAILABLE CTCHeroRangedAttacks (engine/CTCHeroRangedAttacks.h)
+00698d10   WARN SHARED_HEADER_AVAILABLE CCameraModeDef (engine/CCameraModeDef.h)
+00698d10   WARN SHARED_HEADER_AVAILABLE CCameraManagerDef (engine/CCameraManagerDef.h)
+00698d10   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00698d10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00698d10   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+00698d10   WARN RELOC_NAME: ?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ -> 00789cc0 labelled 'CTCDivineWrath::GetDamageMultiplier'
+00698d10   WARN RELOC_NAME: ??0CCameraModePointer@@QAE@PAUCCameraMode@@@Z -> 0056c880 labelled 'CCountedPointer_0056c0f0::CCountedPointer_0056c0f0'
+00698d10   RELOCATION_MATCH PASS   PushProjectileWeaponMode
+00789cc0   WARN SHARED_HEADER_AVAILABLE CHeroCombatDef (engine/CHeroCombatDef.h)
+00789cc0   WARN SHARED_HEADER_AVAILABLE CTCHeroRangedAttacks (engine/CTCHeroRangedAttacks.h)
+00789cc0   WARN STANDIN_LEAF ?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ (catalog CTCDivineWrath::GetDamageMultiplier; names another function)
+00789cc0   RELOCATION_MATCH PASS   GetDamageMultiplier
+0078e7b0   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesDivineWrathDef (engine/CSpecialAbilitiesDivineWrathDef.h)
+0078e7b0   WARN SHARED_HEADER_AVAILABLE CTCDivineWrath (engine/CTCDivineWrath.h)
+0078e7b0   MATCH            PASS   GetDamageMultiplier
+007bdcfc   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007bdcfc   WARN SHARED_HEADER_AVAILABLE CTCMultiArrow (engine/CTCMultiArrow.h)
+007bdcfc   WARN RELOC_NAME: ?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ -> 007cbf50 labelled 'CTCDivineWrath::GetDamageMultiplier'
+007bdcfc   RELOCATION_MATCH PASS   GetShotDamage
+007cbf50   WARN SHARED_HEADER_AVAILABLE CTCMultiArrow (engine/CTCMultiArrow.h)
+007cbf50   WARN STANDIN_LEAF ?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ (catalog CTCDivineWrath::GetDamageMultiplier; names another function)
+007cbf50   MATCH            PASS   GetDamageMultiplier
+00868b40   WARN SHARED_HEADER_AVAILABLE CTCDivineWrath (engine/CTCDivineWrath.h)
+00868b40   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00868b40   WARN SHARED_HEADER_AVAILABLE CHeroAbilityStatWeight (engine/CHeroAbilityStatWeight.h)
+00868b40   WARN RELOC_CONFLICT: ?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ -> 0078e7b0 here, 007cbf50 in landed 007bdcfc
+00868b40   WARN RELOC_NAME: ?C@Component@Row00868b40@@QAEMXZ -> 00793cb0 labelled 'CTCDivineWrath::GetDamageMultiplier'
+00868b40   RELOCATION_MATCH PASS   GetToughnessDamageReductionFactorForThing
+
+WINS: 6
+  00698d10 RELOCATION_MATCH CGameCameraManager::PushProjectileWeaponMode
+  00789cc0 RELOCATION_MATCH CTCHeroRangedAttacks::?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ
+  0078e7b0 MATCH CTCDivineWrath::?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ
+  007bdcfc RELOCATION_MATCH CTCShotDefinitionMultiArrow::GetShotDamage
+  007cbf50 MATCH CTCMultiArrow::?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ
+  00868b40 RELOCATION_MATCH _global::?GetToughnessDamageReductionFactorForThing@?A0x
