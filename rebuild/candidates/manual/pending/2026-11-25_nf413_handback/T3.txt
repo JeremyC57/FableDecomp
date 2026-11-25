@@ -1,0 +1,33 @@
+# NF413 (2026-11-25): the seven baked-string rows left after nf410 / nf411, and the T3_PORT_QUEUE.tsv lines that name them.
+# Verdict per line: CLOSE = this hand-back finishes the line (mark it done when b1 lands); KEEP = set aside and keep open, rebase on the
+# NF413 text; AMEND = keep open, but
+# its literal half is answered. Line numbers are rebuild/candidates/manual/naming/T3_PORT_QUEUE.tsv at hand-back (4020 lines).
+#
+# address	batch	T3 line (source address kind)	verdict	why / order
+0x00406F70	b1	access1 0x00406F70 self respell (line 2113)	KEEP	QAE -> QBE (const) self respell; touches the class declaration and the definition line, not the literals. Land NF413 b1 first; the respell must also change the method declaration in NF413's linked test (it declares `CWideString GetAutoSavePathName();`).
+0x00406F70	b1	access2 0x00406F70 self respell (line 2114)	KEEP	same as access1 (--wide measure).
+0x00406F70	b1	nf317 0x00406F70 port (line 2296)	KEEP	CreateSaveGame stand-in (callee 0x00406E30) port; touches the extern "C" declaration and the call line, not the literals. Rebase on NF413 b1 and keep "U:\\" / L"AutoSave" / L"" spelled; the test's CreateSaveGame stub changes with the port.
+0x00406F70	b1	nf321 0x00406F70 port (line 2527)	KEEP	same as nf317 (const self + CreateSaveGame stand-in).
+0x004D4369	b1	(none names it)	-	No T3 line names 0x004D4369 / 0x004D66C3 / 0x004D5FF2 (the brief's "each held by a T3 line" does not hold for these three). How they were left: NF410 skipped them as members of NF407 evidence/family_census.tsv (NF410 evidence/worklist_skip.tsv: "NF407 family_census"), and NF411 missed them because they have no `// Leaf:` line (NF411 selected rows whose Leaf is a StatGetClassTypeName). Related lines only: nf407 family debt (line 3979, "32 rows of unparsed shape ... CTCD* drivers", settled by nf408: no duplicate with the binder) and nf408 / nf411 family standin (lines 3994 / 4016). Their selves are stand-ins (vland WARN STANDIN_LEAF): ?FableStatGetClassTypeName_5@@YIPAVCCharString@@PAV1@@Z, @StatGetClassTypeName_9@4, ?StatGetClassTypeName_8@CCharString@@QAEPAV1@XZ. NEW T3 line suggested: "nf413 0x004D4369 0x004D66C3 0x004D5FF2 self: re-form onto ?StatGetClassTypeName@<CTCD class>@@SI?AVCCharString@@XZ (nf406_b2 0x004D31C0 form, add // Leaf:), then respell the forwarders 0x004DB3BB (-> 0x004D5FF2) and 0x004E3457 (-> 0x004D66C3) (NF412 worklist); keep the NF413 literals; the NF413 linked tests name the stand-in selves and must be rewritten with the respell."
+0x004D66C3	b1	(none names it)	-	as 0x004D4369. NF412's in-progress worklist (no lock on this row) lists its forwarder caller 0x004E3457.
+0x004D5FF2	b1	(none names it)	-	as 0x004D4369. NF412's in-progress worklist (no lock on this row) lists its forwarder caller 0x004DB3BB.
+0x008FD4BC	b1	nf406 0x008FD4BC test (line 3961)	CLOSE	NF413 b1 rewrites the test exactly as asked: a linked test in the nf406_b2 0x004D31C0 form that declares (not defines) ?GetName@CAIStateGroup_MinionReactToCorpse@@SI?AVCCharString@@XZ, links the row object and asserts "SG_MINION_REACT_TO_CORPSE", length -1, one constructor call, the hidden return slot (mutant FAIL). Close the line when b1 lands.
+0x00AA7230	b1	alias1 0x00AA7230 self respell (line 2170)	KEEP	_Methods -> real class, UBE ?B return; rewrites the class / definition lines, not the literal. Rebase on NF413 b1; the NF413 linked test declares the stand-in C3DMeshFileXVertexDataChunk_Methods and must follow the respell.
+0x00AA7230	b1	nf318 0x00AA7230 port (line 2350)	KEEP	the same-TU strong stand-in CCharString(const char*, long) body is still there (NF413 changed only the literal). The NF413 linked test relies on that body (Data == text + 1); when the port drops it, define the constructor in the test (008fd4bc form) and assert "Vertex Buffer Data".
+0x00AA7230	b1	nf321 0x00AA7230 held (line 2582)	AMEND	its literal half ("passes the string as a hard-coded address", nf321 Q3) is answered by the owner's 2026-11-25 baked_string decision and fixed here (a new ??_C@ COMDAT + relocation accepted, the NF410 gate); the strong stand-in ctor half stays open (nf318).
+0x00ABEC70	b1	nf319 0x00ABEC70 port (line 2421)	KEEP	body port onto the real class model; as nf318 for 0x00AA7230. Keep "Vertex List".
+0x00ABEC70	b1	nf321 0x00ABEC70 held (line 2585)	AMEND	as line 2582: the hard-coded literal address 0x129ED24 is fixed; the stand-in ctor body stays open.
+#
+# Order for the coordinator: none of the open lines above changes the literal text, so each NF413 b1 row can land now; land b1 before
+# any of them (their authors rebase on the literal-spelled text and carry the NF413 tests along). Nothing in b1 changes a self symbol
+# (RESULTS old == new), so no table / self_symbols line moves.
+#
+# b2 (pooled "" data symbols): no T3 line names 0x004522F4 / 0x00499A70 / 0x006BBF20 / 0x008902E0 (grep of T3_PORT_QUEUE.tsv).
+# Suggested new T3 naming lines (not done here):
+#   nf413 0x004522F4 name: catalog _global::PersistTransfer_004522f4, row self ?CEngineLightingManager_UpdateShadowScene@@YI... (made up);
+#     its EnterShadowScope callee is bound to 0x00404500, which reloc_bindings.tsv also binds as ?CheckCRC@CPersistContext@@IAEXPBD@Z (one
+#     address, nine spellings): the row looks like a CPersistContext::Transfer<...> instance (the 0x00431020 / 0x004E59E1 shape:
+#     CheckCRC(""), Mode switch), not a lighting function. Rename after proof.
+#   nf413 0x0122D70C table: _s_Empty (witness 0x004FDAB0, also 0x004A05C0) models retail's wide L"" 0x0122D70C as a local static array
+#     `{ 0 }` (`wcscmp(s_Empty, s_Empty)`): the same data-symbol form of a baked literal; outside the six, not touched.
+#   nf413 purity: see RULINGS_NEEDED q1 (24 StatGetClassTypeName rows cast through `void*` + 0x00452B4D, not graded baked_string).

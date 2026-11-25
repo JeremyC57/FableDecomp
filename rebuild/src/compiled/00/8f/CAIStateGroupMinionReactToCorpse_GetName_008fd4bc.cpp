@@ -19,7 +19,9 @@ public:
     static CCharString __fastcall GetName();
 };
 
+// Literal (NF413, 2026-11-25): HEAD cast the retail address (const char*)0x01288FF0; it is now the literal spelled from retail's bytes
+//   at 0x01288FF0 (narrow "SG_MINION_REACT_TO_CORPSE", NUL-terminated).
 CCharString __fastcall CAIStateGroup_MinionReactToCorpse::GetName()
 {
-    return CCharString((const char*)0x01288FF0, -1);   // "SG_MINION_REACT_TO_CORPSE"
+    return CCharString("SG_MINION_REACT_TO_CORPSE", -1);
 }

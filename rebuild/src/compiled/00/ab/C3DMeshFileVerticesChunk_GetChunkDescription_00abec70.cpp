@@ -15,7 +15,9 @@ struct C3DMeshFileVerticesChunk_Methods : C3DMeshFileVerticesChunk {
     CCharString GetChunkDescription() const;
 };
 
+// Literal (NF413, 2026-11-25): HEAD cast the retail address (const char*)0x0129ED24; it is now the literal spelled from retail's bytes
+//   at 0x0129ED24 (narrow "Vertex List", NUL-terminated).
 CCharString C3DMeshFileVerticesChunk_Methods::GetChunkDescription() const
 {
-    return CCharString((const char*)0x129ed24, -1);
+    return CCharString("Vertex List", -1);
 }

@@ -1,0 +1,22 @@
+addr       parity           behav  name
+004522f4   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+004522f4   WARN RELOC_NAME: _EnterShadowScope@4 -> 00404500 labelled 'CPersistContext::CheckCRC'
+004522f4   WARN RELOC_NAME: ?Consume@CShadowSink@@QAEXPAUCShadowArg@@@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+004522f4   WARN RELOC_NAME: ?Handle@CLocalHolder@@QAEXPAX0@Z -> 00452335 labelled '_unattributed::TransferBinaryIn_00452335'
+004522f4   RELOCATION_MATCH PASS   PersistTransfer_004522f4
+00499a70   RELOCATION_MATCH PASS   SetToDisplayText
+006bbf20   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+006bbf20   RELOCATION_MATCH PASS   GetDisplayName
+008902e0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+008902e0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+008902e0   WARN RELOC_NAME: ?CountObjects@ObjContainer@@QAEHH@Z -> 009ad410 labelled 'CDefinitionManager::GetDefGlobalIndexFromName'
+008902e0   WARN RELOC_NAME: ?ctor@Str@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008902e0   WARN RELOC_NAME: ?Give@Hero@@QAEEHHHPAVCCharString@@@Z -> 006ac200 labelled 'CThingPlayerCreature::CreateAndAddObjectToInventory'
+008902e0   WARN RELOC_NAME: ?dtor@Str@@QAEXXZ -> 0099eae0 labelled 'CCharString::~CCharString'
+008902e0   RELOCATION_MATCH PASS   GiveHeroObject
+
+WINS: 4
+  004522f4 RELOCATION_MATCH _global::UpdateShadowScene
+  00499a70 RELOCATION_MATCH CProgressDisplay::?SetToDisplayText@CProgressDisplay@@UAEX_N@Z
+  006bbf20 RELOCATION_MATCH CRegion::GetDisplayName
+  008902e0 RELOCATION_MATCH CGameScriptInterface::GiveHeroObject

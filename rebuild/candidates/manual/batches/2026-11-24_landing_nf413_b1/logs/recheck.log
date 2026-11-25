@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00406f70   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00406f70   WARN RELOC_NAME: ?WConcat@@YI?AVCWideString@@PBGABV1@@Z -> 0099bff0 labelled '_global::operator+'
+00406f70   RELOCATION_MATCH PASS   GetAutoSavePathName
+004d4369   WARN RELOC_NAME: ?Init@CCharString@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+004d4369   WARN STANDIN_LEAF ?FableStatGetClassTypeName_5@@YIPAVCCharString@@PAV1@@Z (catalog CTCDExperienceOrb::StatGetClassTypeName; free function lacks its class)
+004d4369   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d5ff2   WARN RELOC_NAME: ?ctorB@CCharString@@QAEPAV1@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+004d5ff2   WARN STANDIN_LEAF ?StatGetClassTypeName_8@CCharString@@QAEPAV1@XZ (catalog CTCDRumble::StatGetClassTypeName; names another function)
+004d5ff2   RELOCATION_MATCH PASS   StatGetClassTypeName
+004d66c3   WARN RELOC_NAME: ?Do@Helper@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+004d66c3   WARN STANDIN_LEAF @StatGetClassTypeName_9@4 (catalog CTCDExplosiveTrail::StatGetClassTypeName; free function lacks its class)
+004d66c3   RELOCATION_MATCH PASS   StatGetClassTypeName
+008fd4bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCorpse (engine/CAIStateGroup_MinionReactToCorpse.h)
+008fd4bc   RELOCATION_MATCH PASS   GetName
+00aa7230   RELOCATION_MATCH PASS   GetChunkDescription
+00abec70   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 7
+  00406f70 RELOCATION_MATCH CUserProfileManager::GetAutoSavePathName
+  004d4369 RELOCATION_MATCH CTCDExperienceOrb::StatGetClassTypeName
+  004d5ff2 RELOCATION_MATCH CTCDRumble::StatGetClassTypeName
+  004d66c3 RELOCATION_MATCH CTCDExplosiveTrail::StatGetClassTypeName
+  008fd4bc RELOCATION_MATCH CAIStateGroup_MinionReactToCorpse::?GetName@CAIStateGroup_MinionReactToCorpse@@SI?AVCCharString@@XZ
+  00aa7230 RELOCATION_MATCH C3DMeshFileXVertexDataChunk::GetChunkDescription
+  00abec70 RELOCATION_MATCH C3DMeshFileVerticesChunk::GetChunkDescription

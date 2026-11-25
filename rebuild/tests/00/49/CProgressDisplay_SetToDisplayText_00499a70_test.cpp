@@ -1,13 +1,10 @@
 // Behaviour test for 0x00499A70 CProgressDisplay::SetToDisplayText(bool) on the shared engine/CProgressDisplay.h:
-// false -> DisplayText (+0x7C) cleared, TextTag = the shared empty literal, TextTagIndex (+0x44) = 0, no CalculateNextTextTag;
+// false -> DisplayText (+0x7C) cleared, TextTag = retail's pooled "" (NF413: asserted by text), TextTagIndex (+0x44) = 0, no CalculateNextTextTag;
 // true -> DisplayText set, CalculateNextTextTag called once, no assignment, TextTagIndex left to it.
 #include "engine/CProgressDisplay.h"
 
 #include <stdio.h>
 #include <string.h>
-
-extern const char g_FableEmptyText_0122D70E[];
-const char g_FableEmptyText_0122D70E[] = "";
 
 namespace
 {
@@ -41,7 +38,7 @@ int main()
     *index = 9;
     storage[0x7c] = 1;
     display->CProgressDisplay::SetToDisplayText(false);          // direct (non-virtual) call: no vtable in raw storage
-    if (storage[0x7c] != 0 || *index != 0 || g_AssignmentCalls != 1 || g_AssignedText != g_FableEmptyText_0122D70E ||
+    if (storage[0x7c] != 0 || *index != 0 || g_AssignmentCalls != 1 || g_AssignedText == 0 || g_AssignedText[0] != 0 ||
         g_CalculateCalls != 0)
         return 1;
 

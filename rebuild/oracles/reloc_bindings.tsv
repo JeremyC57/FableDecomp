@@ -136,7 +136,6 @@ _helper_5b155a	0042a8bd	0042b44a
 ?PTR__vector_deleting_destructor__01230ba0@@3PAXA	01230ba0	004303f0
 ?Fill@Handle@@QAEXPAXPAUCtx@@@Z	0040f8a0	00431020
 ?Take@Sink@@QAEXH@Z	00993eb0	00431020
-?g_profileTag@@3QBDB	0122d70e	00431020
 _BeginProfile@4	00404500	00431020
 ?TreeNext_004292c0@@YAPAUSNode@@PAU1@@Z	004292c0	00431277
 @Ring_reset@4	0099eae0	00433040
@@ -299,7 +298,6 @@ _Freer@4	004508a9	004511f3
 ?PersistB@CPersistContext@@QAEXPAE@Z	004522f4	004522c6
 ?Consume@CShadowSink@@QAEXPAUCShadowArg@@@Z	00993eb0	004522f4
 ?Handle@CLocalHolder@@QAEXPAX0@Z	00452335	004522f4
-?g_shadowTag@@3HA	0122d70e	004522f4
 _EnterShadowScope@4	00404500	004522f4
 ??_7CHitLocationsDef@@6B@	01232cb4	0045264e
 ?PersistA_004526f7@CPersistContext@@QAEXPAX@Z	004526f7	004526b3
@@ -595,7 +593,6 @@ _FreeThing@4	00451b82	00453630
 ??_7CAProgressDisplay@@6B@	012387a0	00497870
 ??_7CSurface@@6B@	0122f84c	004979a0
 ?Uninitialise@CSurface@@QAEXXZ	009f2e20	004979a0
-?g_FableEmptyText_0122D70E@@3QBDB	0122d70e	00499a70
 ?CalculateSmoothedTime@CFrameRateSmoother@@AAEXXZ	0049b9a0	0049b9e0
 ??_7CGameJoystickManager@@6B@	01238b54	0049bb60
 ??_7CIDrawWorld@@6B@	01238b78	0049c920
@@ -1130,7 +1127,6 @@ _FreeThing@4	00451b82	00453630
 ??1CTransferScopeMember_004dd470@@QAE@XZ	004dd470	004e59e1
 ?SerialiseAllocatedAreas_004e5a39@@YIXPAUCDefMap_004e59e1@@PAX@Z	004e5a39	004e59e1
 ?SetHelperName@CFlammableDef@@QAEXPBD@Z	00404500	004e59e1
-?g_emptyString_0122d70e@@3QBDB	0122d70e	004e59e1
 ??0CGroupMemberMap@@QAE@XZ	004e4082	004e5c2f
 ??_7CTCCreatureGroup@@6B@	0124326c	004e5c2f
 ??1?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAE@XZ	004e350f	004e5c71
@@ -2266,7 +2262,6 @@ _HEALTH_UNSET	0122dedc	006a98f0
 ?g_dayStart_0125d640@@3MB	0125d640	006bb1e0
 ?Erase@CStopperSet_006bbe30@@QAEXPBJ@Z	00639590	006bbe30
 ?Insert@CStopperSet_006bbe30@@QAEPAUSSetIterator_006bbe30@@PAU2@PBJ@Z	00512da0	006bbe30
-?kEmptyDisplayNameTag@@3QBDB	0122d70e	006bbf20
 ?InsertionSort_006bf2c0@@YIXPAUSElement24@@0USCompare@@@Z	006bf2c0	006bf480
 ?UnguardedInsertionSortAux_006beb80@@YIXPAUSElement24@@00USCompare@@@Z	006beb80	006bf480
 ?push_back@CWideRecordVector@@QAEXABUSWideRecord@@@Z	006bf410	006bf500
@@ -33062,7 +33057,6 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ??0?$CCountedPointer@VCCombatActionBase@@@@QAE@PAVCCombatActionBase@@@Z	0085a840	00857430
 ?SetTarget@CCombatActionBase@@QAEXAAVCThing@@@Z	0085aa90	00857430
 ?CountObjects@ObjContainer@@QAEHH@Z	009ad410	008902e0
-?GHO_ItemName@@3QBDB	0122d70e	008902e0
 ?Give@Hero@@QAEEHHHPAVCCharString@@@Z	006ac200	008902e0
 ?ctor@Str@@QAEXPBDH@Z	0099ebf0	008902e0
 ?dtor@Str@@QAEXXZ	0099eae0	008902e0

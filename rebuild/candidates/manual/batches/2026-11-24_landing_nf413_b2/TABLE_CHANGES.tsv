@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+delete	?g_shadowTag@@3HA	0122d70e	004522f4	NF413 b2: the witness row now spells retail's pooled "" (literal ??_C@_00CNPNBAHC@?$AA@) instead of pushing the address of this extern int; no other user in rebuild/src, rebuild/oracles, rebuild/include
+delete	?g_FableEmptyText_0122D70E@@3QBDB	0122d70e	00499a70	NF413 b2: the witness row now spells "" ; the only other mention is the unused declaration in rebuild/include/fable_boot.h, removed by NF413 b3 (land b3 with or after this line)
+delete	?kEmptyDisplayNameTag@@3QBDB	0122d70e	006bbf20	NF413 b2: the witness row now spells ""; no other user
+delete	?GHO_ItemName@@3QBDB	0122d70e	008902e0	NF413 b2: the witness row now spells ""; no other user

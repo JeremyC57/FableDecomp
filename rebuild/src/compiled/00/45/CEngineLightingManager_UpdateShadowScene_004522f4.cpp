@@ -21,12 +21,13 @@ struct CLocalHolder {
 };
 
 extern "C" void __stdcall EnterShadowScope(void* tag);
-extern int g_shadowTag;
 
+// Literal (NF413, 2026-11-25): HEAD pushed the address of an extern int data symbol that reloc_bindings.tsv bound to 0x0122D70E, retail's one pooled ""
+//   (00 at 0x0122D70E, NUL-preceded); it is now that literal.
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, CShadowArg** ppArg)
 {
     (void)edx;
-    EnterShadowScope((void*)&g_shadowTag);
+    EnterShadowScope((void*)"");
     CLocalHolder local;
     local.v = 0;
     switch (self->mode) {

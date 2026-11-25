@@ -20,8 +20,8 @@
  *   ret 0xc         -> 3 incoming dwords: objDefId, quantity, suppressFlag
  */
 
-/* literal C-string operand at abs 0x122d70e (relocation-masked -> extern) */
-extern const char GHO_ItemName[];
+// Literal (NF413, 2026-11-25): HEAD passed an extern data symbol that reloc_bindings.tsv bound to 0x0122D70E, retail's one pooled ""
+//   (00 at 0x0122D70E, NUL-preceded); it is now that literal.
 
 /* global at ds:0x13d2838 -- gate for the post-give UI refresh. NF52 (round 7): it is the running script process, the established
    ?g_pScriptRunner@@3PAVCSuspendableProcessMicrothread@@A (descriptive; the spelling of the landed 0x00A44660 / 0x00A44880 that store
@@ -69,7 +69,7 @@ void __fastcall CGameScriptInterface_GiveHeroObject(void* thisptr, unsigned long
         return;
 
     CCharString name;
-    ((Str*)&name)->ctor(GHO_ItemName, -1);                  /* push -1; push 0x122d70e */
+    ((Str*)&name)->ctor("", -1);                            /* push -1; push 0x122d70e */
 
     /* push &name; push suppress(ebx); push quantity(edx); push count(ebp);
        mov ecx,esi(hero); call 0xffe1bf20 */

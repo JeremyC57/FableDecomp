@@ -110,7 +110,6 @@ struct FableReferenceCount;
 
 extern fable_u8 g_CProgressDisplayVTable_012388B4;
 extern double g_FableZeroDouble_0122ED70;
-extern const char g_FableEmptyText_0122D70E[];
 extern FableProgressTextBankSlot*
     g_FableProgressTextBankSlot_013B86A0;
 extern FableGameTextBankSlot*

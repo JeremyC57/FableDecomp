@@ -1,0 +1,15 @@
+addr       parity           behav  name
+004022b0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+004022b0   WARN SHARED_HEADER_AVAILABLE CXMVPlayer (engine/CXMVPlayer.h)
+004022b0   WARN RELOC_NAME: ?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ -> 009a4ec0 labelled 'GFGetSystemManager'
+004022b0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004022b0   WARN RELOC_NAME: ?g_FableDisplayPrimitive_013B8384@@3PAUFableDisplayPrimitive@@A -> 013b8384 labelled 'PRenderManager'
+004022b0   RELOCATION_MATCH PASS   GFInitialise
+0049b460   MATCH            PASS   IsActive
+009e9fd0   WARN STANDIN_LEAF ?SetProgressDisplay@@YIXPAUCCountedProgressDisplay@@@Z (catalog NProgressDisplay::SetProgressDisplay; free function lacks its class)
+009e9fd0   RELOCATION_MATCH PASS   SetProgressDisplay
+
+WINS: 3
+  004022b0 RELOCATION_MATCH _global::GFInitialise
+  0049b460 MATCH CProgressDisplay::IsActive
+  009e9fd0 RELOCATION_MATCH _global::SetProgressDisplay

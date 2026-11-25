@@ -1,0 +1,14 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	preceded_by	form
+00406f70	0x0122E05C	narrow	"U:\\"	b1	.rdata	55 3A 5C 00	NUL	was static const char* const LIT_C = (const char*)0x122e05c; inlined at its one use (NF410 r1)
+00406f70	0x0122DE9C	wide	L"AutoSave"	b1	.rdata	41 00 75 00 74 00 6F 00 53 00 61 00 76 00 65 00 00 00	NUL NUL	was LIT_A (const wchar16*) cast, missed by purity (typedef); inlined, row's cast kept: (const wchar16*)L"AutoSave"; same retail literal as NF410's 00406c20
+00406f70	0x0122D70C	wide	L""	b1	.rdata	00 00	NUL NUL	was LIT_B (const wchar16*) cast, missed by purity (typedef); inlined: (const wchar16*)L""
+004d4369	0x0123BB40	narrow	"CTCDExperienceOrb"	b1	.rdata	"CTCDExperienceOrb" 00	NUL	cast address in the call argument
+004d66c3	0x0123E6EC	narrow	"CTCDExplosiveTrail"	b1	.rdata	"CTCDExplosiveTrail" 00	NUL	cast address in the call argument
+004d5ff2	0x0123DD2C	narrow	"CTCDRumble"	b1	.rdata	"CTCDRumble" 00	NUL	cast address in the call argument
+008fd4bc	0x01288FF0	narrow	"SG_MINION_REACT_TO_CORPSE"	b1	.rdata	"SG_MINION_REACT_TO_CORPSE" 00	NUL	cast address in the call argument
+00aa7230	0x0129E368	narrow	"Vertex Buffer Data"	b1	.rdata	"Vertex Buffer Data" 00	NUL (last byte of the vftable entry 0x00AA7690 at 0x0129E364; 4-aligned start)	cast address in the call argument
+00abec70	0x0129ED24	narrow	"Vertex List"	b1	.rdata	"Vertex List" 00	NUL (last byte of the vftable entry 0x00AA7690 at 0x0129ED20; 4-aligned start)	cast address in the call argument
+004522f4	0x0122D70E	narrow	""	b2	.rdata	00	NUL	was &g_shadowTag (extern int bound to 0x0122D70E)
+00499a70	0x0122D70E	narrow	""	b2	.rdata	00	NUL	was g_FableEmptyText_0122D70E (extern const char[] bound to 0x0122D70E)
+006bbf20	0x0122D70E	narrow	""	b2	.rdata	00	NUL	was kEmptyDisplayNameTag (extern const char[] bound to 0x0122D70E)
+008902e0	0x0122D70E	narrow	""	b2	.rdata	00	NUL	was GHO_ItemName (extern const char[] bound to 0x0122D70E)

@@ -27,21 +27,19 @@ class CUserProfileManager { public:
     CWideString GetAutoSavePathName();
 };
 
-static const char*    const LIT_C = (const char*)0x122e05c;
-static const wchar16* const LIT_A = (const wchar16*)0x122de9c;
-static const wchar16* const LIT_B = (const wchar16*)0x122d70c;
-
+// Literal (NF413, 2026-11-25): HEAD cast three retail addresses held in named constants (LIT_C / LIT_A / LIT_B); each is now the literal spelled from
+//   retail's bytes, at its use site: 0x0122E05C narrow "U:\\" (55 3A 5C 00), 0x0122DE9C wide L"AutoSave", 0x0122D70C wide L"".
 CWideString CUserProfileManager::GetAutoSavePathName()
 {
     wchar16 buf[0x104];
     bool ok;
     {
-        CCharString cs(LIT_C, -1);
+        CCharString cs("U:\\", -1);
         ok = (CreateSaveGame(&cs, &this->field8, 3, 0, buf, 0x104) == 0);
     }
     if (ok) {
-        CWideString suf(LIT_A);
+        CWideString suf((const wchar16*)L"AutoSave");
         return WConcat(buf, suf);
     }
-    return CWideString(LIT_B);
+    return CWideString((const wchar16*)L"");
 }
