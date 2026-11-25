@@ -1,0 +1,14 @@
+C4 PASS on size/offset; member list partially differs from the PDB (pre-existing stand-in base, NF399 T3 "port 0x004DF507" line; non-blocking)
+sizeof = 0x14:
+  - retail `new` size: push 14h at 0x004DF366 (OnInitialActivate) and 0x004DF4CB (Clone, the class factory) -- c3c4_retail_disasm.txt
+  - new model compiled: MakeOne push 14h (HEAD model pushed 0Ch) -- c4_makeone_HN.txt; header engine/_quarantine/CObstacleNavigatorExternalInterface.h asserts 0x14
+  - Ego_r.pdb gives 0x18 (struct_layouts_egor.tsv): its vector<CSteeringAgent const*> is Dinkumware, 16 B (_Vector_val: _Myfirst +0,
+    _Mylast +4, _Myend +8, _Alval +0xC); retail STLport vector is 12 B (+8/+0xC/+0x10 zeroed in 0x004DF365 and 0x004DF4E7). 4+4+12 = 0x14.
+Vector offset +8: `lea ecx,[esi+8]` at 0x004DF50A before `call 0x004DF54F` at 0x004DF513 (retail 0x004DF507); Ego_r DummyAgentList +8;
+  0x004DF4E7 / 0x004DF365 zero +8..+0x13.
+What grew: HEAD model = vptr + base `long m_4` + CMember_004df54f {unsigned char _body[4]} at +8 = 0xC; NEW = vptr + m_4 + vector (12 B) at +8 = 0x14.
+  The vector replaced the 4-byte stand-in member, so +8 bytes.
+PDB names vs the new 004df507 model: DummyAgentList +8 matches (name, type, offset, owner). +4 does not: the model has `long m_4` in a stand-in
+  base CNavigatorExternalInterface {virtual v00(); long m_4;}, where Ego_r has the base as vptr only (size 4) and `CThing* Obstacle` +4 in
+  CObstacleNavigatorExternalInterface. Offsets agree; the name/type/owner of +4 is the booked stand-in (shared engine/CNavigatorExternalInterface.h
+  exists; vland WARN SHARED_HEADER_AVAILABLE).

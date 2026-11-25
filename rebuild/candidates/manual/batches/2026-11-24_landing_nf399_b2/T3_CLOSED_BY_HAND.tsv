@@ -1,0 +1,1 @@
+nf396	0x004DF54F	identity	~vector<const CSteeringAgent*> (5-byte jmp to b1's 0x004DF554); self `_Forward` and table ??1CMember_004df54f@@QAE@XZ (witness 004df507). | CLOSED by nf399_b2 (2026-11-25): 0x004DF54F respelt ~vector<const CSteeringAgent*>, landed with binder 0x004DF507 and census port 0x004DF365

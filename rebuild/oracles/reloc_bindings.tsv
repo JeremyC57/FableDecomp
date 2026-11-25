@@ -1036,7 +1036,6 @@ _FreeThing@4	00451b82	00453630
 ?g_terrainHeight@@3MA	0122dedc	004df3d4
 ?g_themeHeight@@3MA	0122dedc	004df3dd
 ?g_value_01241d68@@3MA	01241d68	004df4a3
-??1CMember_004df54f@@QAE@XZ	004df54f	004df507
 ??_7CNavigatorExternalInterface@@6B@	01241d74	004df507
 ?Handler@CDisplayManager@@QAEXPAD0@Z	004dd1f2	004df84e
 ?Helper_004dd342@CDisplayManager@@QAEXPAD0@Z	004dd342	004df8cb
@@ -39140,3 +39139,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ?GetNumberOfNavigationLineLevels@CPhysicsMesh@@QBEJXZ	00a73cf0	00a127c0
 ?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@Z	00578ff5	005793e8
 ?clear@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEXXZ	004e1bd2	004e350f
+??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	004df54f	004df507

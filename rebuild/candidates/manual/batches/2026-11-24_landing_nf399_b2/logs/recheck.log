@@ -1,0 +1,13 @@
+addr       parity           behav  name
+004df365   WARN SHARED_HEADER_AVAILABLE CSteeringAgent (engine/CSteeringAgent.h)
+004df365   RELOCATION_MATCH PASS   OnInitialActivate
+004df507   WARN SHARED_HEADER_AVAILABLE CNavigatorExternalInterface (engine/CNavigatorExternalInterface.h)
+004df507   WARN RELOC_NAME: ??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ -> 004df54f labelled '_global::TailJmp_OnReadFinished_004df54f'
+004df507   RELOCATION_MATCH PASS   `scalar deleting destructor'
+004df54f   WARN RELOC_NAME: ??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ -> 004df554 labelled '_global::FreeMember0_004df554'
+004df54f   MATCH            PASS   TailJmp_OnReadFinished_004df54f
+
+WINS: 3
+  004df365 RELOCATION_MATCH CTCObstacle::?OnInitialActivate@CTCObstacle@@UAEXXZ
+  004df507 RELOCATION_MATCH CObstacleNavigatorExternalInterface::??_GCObstacleNavigatorExternalInterface@@UAEPAXI@Z
+  004df54f MATCH _global::??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ

@@ -1,0 +1,9 @@
+C2 PASS (NF400)
+grep -RIn CMember_004df54f over the private tree after TABLE_CHANGES (rebuild/src, include, tests, oracles, build_candidates.ps1, tools): c2_grep.txt
+  - reloc_bindings.tsv: 0 lines (line 1039 respelt to ??1?$vector@PBVCSteeringAgent...; tree/rebuild/oracles diff = 1 line each in reloc_bindings / self_symbols)
+  - self_symbols.tsv: 0 lines
+  - rebuild/src: only history comments in the two files the unit replaces (004df507 lines 6-7, 004df54f line 11) -- exception applies
+  - rebuild/oracles/reloc_audit.tsv:4940 is a generated audit snapshot (004df507 RELOC_NAME warning), not a binding table: refresh at baselines.
+  - rebuild/candidates/manual/batches/2026-10-14_linux_hand53 keeps the historical candidate copy (archive, not landed source).
+Note: NF399's work/troot self_symbols.tsv appended a second 004df54f line and keeps the old `_Forward` one (pre-b1 base); apply as a replace
+  (one address, one line), as done in tree/rebuild/oracles/self_symbols.tsv.

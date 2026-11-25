@@ -3155,7 +3155,7 @@ address	symbol	status	leaf_given
 004df47f	?CObstacleNavigatorExternalInterface_GetPNavigatorObstacles@@YIHXZ	MATCH	GetPNavigatorObstacles
 004df4e7	??0CObstacleNavigatorExternalInterface@@QAE@ABUCObstacleOwner@@@Z	RELOCATION_MATCH	??0CObstacleNavigatorExternalInterface@
 004df532	??_GCNavigatorExternalInterface@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
-004df54f	_Forward	MATCH	_Forward
+004df54f	??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	MATCH	??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ
 004df554	??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ
 004df6f4	?Transfer@CContextSensitiveItemDef@@QAEXAAVCPersistContext@@@Z	RELOCATION_MATCH	Transfer
 004df7d3	?map@map_T_004df7d3@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_004df7d3@std@@

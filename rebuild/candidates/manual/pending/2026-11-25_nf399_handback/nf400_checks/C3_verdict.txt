@@ -1,0 +1,17 @@
+C3: NO MATCH (book as debt per the ruling; not a hold)
+New implicit ctor ??0CObstacleNavigatorExternalInterface@@QAE@XZ in 004df507's object (20 B): 8bc1 33c9 c700[vtbl] 894808 89480c 894810 c3
+  (mov eax,ecx; xor ecx,ecx; mov [eax],vtbl; zero +8/+0xC/+0x10; ret) -- c3_ctor20_disasm.txt
+Reloc-masked search over every byte offset of retail .text (c3_masked_search.txt): 0 hits (so 0 vtable-filtered); MakeOne 33 B: 0 hits.
+  HEAD 9-byte ctor for comparison: 291 masked hits, 0 with the masked dword = 0x01241D04 (c3_masked_search_HEAD9.txt).
+Retail never emits a default ctor (FableWin.pdb tc_register.obj lists only ??0...@@QAE@AAVCThing@@@Z and ??0...@@QAE@ABV0@@Z).
+Every xref to vtable 0x01241D04 (c1_retail_xrefs.txt): 0x004DF379, 0x004DF4EF, 0x004DF50F. Construction shapes (c3c4_retail_disasm.txt):
+  (a) inline CThing& ctor in CTCObstacle::OnInitialActivate 0x004DF365: push 14h; call new 0x00BFEA1A; mov ecx,[esi+4];
+      mov [eax],0x01241D04 (0x004DF377); mov [eax+4],ecx; and [eax+8/+0xC/+0x10],0 -- no base-vtable store.
+  (b) out-of-line copy ctor 0x004DF4E7 (32 B, ret 4): mov eax,ecx; mov ecx,[esp+4]; mov [eax],0x01241D04; Obstacle = [arg+4];
+      xor ecx,ecx; zero +8/+0xC/+0x10 -- called only from Clone 0x004DF4CA (slot 24) at 0x004DF4DC: push 14h; call new; push esi(this); call 0x004DF4E7.
+  (c) 0x004DF50F is the ??_G vtable store, not construction.
+The model's 20-byte ctor is (b) without the Obstacle copy and argument: a section retail does not have (scaffolding, NOADDR in pk_all).
+Search control (c3_control_search_G.txt): the same scan on the leaf ??_G (4 relocs) gives 2 masked hits, vtable-filtered exactly 0x004DF507.
+Probe (probe_copyctor_004df507.txt): MakeOne through a declared-only copy ctor emits no vtable and no ??_G (DIFFER 27v43): not a way out.
+Ruling RULING_Q1_Q2.md Q2: a different retail shape is debt booked now, not a hold. Proposed T3 line (NF399 format):
+nf400	0x004DF507	debt	scaffolding ctor ??0CObstacleNavigatorExternalInterface@@QAE@XZ (20 B, implicit, NOADDR) has no retail counterpart: retail builds the object inline in 0x004DF365 (CThing& ctor, 0x004DF377) and through the copy ctor 0x004DF4E7 from Clone 0x004DF4CA; reloc-masked .text search 0 hits. Retire with the shared-header port of the class.

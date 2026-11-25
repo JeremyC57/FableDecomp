@@ -1,0 +1,19 @@
+C1 PASS (NF400, 2026-11-25)
+Retail: only reference to 0x004DF54F in the whole image (every E8/E9/Jcc rel32 at every .text byte offset + every absolute dword in every section)
+  is `call 0x004DF54F` at 0x004DF513 inside 0x004DF507 (c1_retail_xrefs.txt). 0x004DF554's only reference is the jmp at 0x004DF54F.
+Candidate set (133 landed rows, c1_header_reach.txt / c1_rows.txt): every row naming CSteeringAgent outside comments, or including a header
+  that does (transitively, 13 headers); superset of NF399's 112 reach_vec rows + 21 text-only rows; recheck --with-includers: none.
+  Compiled with VC7.1 under HEAD (repo) and NEW (private tree with the unit applied): grades identical, 28 MATCH / 105 RELOCATION_MATCH
+  (c1_compile_H.txt, c1_compile_N.txt).
+Symbol scan, all sections' relocs (c1_symscan_H.tsv, c1_symscan_N.tsv):
+  NEW ~vector<const CSteeringAgent*>: 004df507 UND (leaf .text +0xD); DEF only in 004df54f (5 B, self), 004df365 (5 B), 006cc1e0 (14 B), all .debug$F-only.
+  HEAD: 004df507 UND ??1CMember_004df54f; DEF 004df365 (14 B) and 006cc1e0 (14 B), .debug$F-only. No other object defines/references either name.
+  Near-miss info only: 006ce730's local one-arg vector@PBVCSteeringAgent@@@std@@ (_M_insert_overflow / push_back), unchanged.
+UND site check (c1_und_sites.txt): 004df507 leaf +0xD REL32 -> retail E8 at 0x004DF513 -> 0x004DF54F. The jmp copies (004df54f, 004df365) E9 -> 0x004DF554.
+vland --recheck-landed HEAD vs NEW (004df507 004df54f 004df365 006cc1e0 004df554; c1_vland_H.log / c1_vland_N.log):
+  all PASS, no grade change: 004df54f MATCH->MATCH, others RELOCATION_MATCH->RELOCATION_MATCH; 0 RELOC_CONFLICT, 0 LITERAL lines.
+pk_all (one.py) HEAD vs NEW (c1_pk_{H,N}_*.txt): table-live control 006cc1e0 ~vector copy NOADDR -> NEQ 14 v 5 (booked debt, .debug$F only,
+  leaf=n reach=n); 004df365 copy NOADDR(14) -> EQ 5 at 0x004DF54F; 004df507 adds tier-1 COMDATs (EQ/NOADDR), no NEQ; pre-existing
+  NEQ ??_GCNavigatorExternalInterface @0x004DF532 in 004df365 unchanged.
+Census reconciliation (c1_vec19.txt v nf399_census_graded.txt): the rows whose text names vector<const CSteeringAgent*>, minus the unit's
+  004df507 / 004df54f, are exactly NF399's 19 VC7.1-graded vector rows (its 22 graded = these 19 + the 3 b1 EHero rows 0057846f 005793e8 005f519f).

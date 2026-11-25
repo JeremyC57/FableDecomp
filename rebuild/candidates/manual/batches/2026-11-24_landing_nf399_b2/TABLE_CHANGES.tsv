@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	??1CMember_004df54f@@QAE@XZ	004df54f	004df507	NF399: stand-in member destructor of 0x004DF507's old model; one address one name
+add	??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	004df54f	004df507	NF399: ~vector<const CSteeringAgent*> (self of 0x004DF54F), called by the respelt 0x004DF507 leaf

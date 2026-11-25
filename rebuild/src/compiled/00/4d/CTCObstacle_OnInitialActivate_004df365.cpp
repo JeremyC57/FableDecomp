@@ -10,6 +10,10 @@
 // CSteeringAgent: only its constructor ??0CSteeringAgent@@QAE@PBVCNavigatorExternalInterface@@_N@Z (0x00A1C700, Ego_r.pdb) and
 // its allocation size 0x68 from this body (`push 68h ; call operator new`).
 #pragma optimize("s", on)
+// NF399: FABLE_RETAIL_STLP_VECTOR_BASE_DTOR_DECL_ONLY makes this TU's pick-any ~vector<const CSteeringAgent*> copy (emitted, only
+//   .debug$F refers) the retail 5-byte `jmp ~_Vector_base` of 0x004DF54F (its own row; was the inlined 14-byte body, NEQ there once that
+//   address carries the name); the leaf and every other section are unchanged (probe p4), and the ~_Vector_base / deallocate copies go.
+#define FABLE_RETAIL_STLP_VECTOR_BASE_DTOR_DECL_ONLY
 #define FABLE_RETAIL_CTCBASE
 #include "engine/ETCInterfaceType.h"
 #include "engine/CTCBase.h"

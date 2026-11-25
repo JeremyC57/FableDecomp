@@ -13665,3 +13665,4 @@ nf398	0x004DFB8F	?_M_erase@ (STLport, CGroupMemberData tree; self respelt nf398_
 nf398	0x004E1BD2	?clear@ (STLport, CGroupMemberData tree; self respelt nf398_b1)	catalog label / file name	RbTree_Clear_004e1bd2 / CTCCarryable_OnKill
 nf398	0x004E350F	??1?$_Rb_tree (CGroupMemberData tree; self respelt nf398_b1)	catalog label / file name	StdList_Dtor_004e350f / CActiveFile_OnReadFinished
 nf398	0x004DBE39	??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z (table line nf398_b1; self re-row queued T3 nf398)	catalog label / self / file name	ScalarDeletingDtor_004dbe39 / CLandscapeBackgroundPatch vector_deleting_destructor
+nf400	0x004DF4E7	??0CObstacleNavigatorExternalInterface@@QAE@ABV0@@Z	self (FableWin.pdb tc_register.obj + retail Clone 0x004DF4CA; table already binds it)	??0CObstacleNavigatorExternalInterface@@QAE@ABUCObstacleOwner@@@Z

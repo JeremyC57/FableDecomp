@@ -675,6 +675,12 @@ public:
     // (0x008F96B8; ReceiveBlock 0x008F9B20 `push esi ; call free` too) while the LAddress strings next to it keep their null test.
     // FITTED (owner acceptance test 2026-11-14): retail-shaped release, the null test of ~_Vector_base / deallocate dropped; free(0) is a no-op.
     ~_Vector_base() { free(_M_start); }
+#elif defined(FABLE_RETAIL_STLP_VECTOR_BASE_DTOR_DECL_ONLY)
+    // NF399 opt-in (2026-11-25, row 0x004DF54F ~vector<const CSteeringAgent*>; like FABLE_RETAIL_STLP_TREE_DTOR_DECL_ONLY and
+    // FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY): retail's ~vector of a pointer vector is the 5-byte tail jump
+    // `jmp 0x004DF554` into the out-of-line ~_Vector_base (landed there, nf396_b1); with the inline body below VC7.1 expands it
+    // (14 bytes). Declaration only: the TU calls the base destructor out of line.
+    ~_Vector_base();
 #else
     ~_Vector_base() {
         if (_M_start != 0)
