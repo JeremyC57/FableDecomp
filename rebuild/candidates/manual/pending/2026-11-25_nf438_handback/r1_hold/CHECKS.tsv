@@ -1,0 +1,4 @@
+address	objgate	vland_head/new	pk	pk_flag	link
+004022b0	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=1 neq=0 | N copies=1 neq=0	OK	PASS
+00449cb0	NOT_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS
+007ea2d0	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	PASS

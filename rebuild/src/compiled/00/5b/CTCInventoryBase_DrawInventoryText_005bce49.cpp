@@ -26,7 +26,6 @@ public:
     float GetVStringWidth(const CWideString&) const;   // 0x0043E4D0
 };
 
-void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 void __fastcall Draw2DText(C2DVector* position, CWideString* text, CFontBank* font, CRGBColour* colour,
                            float scale, bool shadow);                    // 0x005BCAFE
 
@@ -41,10 +40,14 @@ struct CTCInventoryBase_Retail {
                            CRGBColour* colour, bool shadow);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009E21D0 ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (was ?GFACoordToVCoord@@YIXPBVC2DVector@@PAV1@@Z)
+void __fastcall GFACoordToVCoord(C2DVector const&, C2DVector&);
 void CTCInventoryBase_Retail::DrawInventoryText(C2DVector position, CFontBank* font, CWideString* text,
                                                 ETextLayout layout, CRGBColour* colour, bool shadow)
 {
-    GFACoordToVCoord(&position, &position);
+    GFACoordToVCoord(position, position);
     if (layout == TEXT_LAYOUT_CENTRE)
         position.X -= font->GetVStringWidth(*text) * 0.5f;
     else if (layout == TEXT_LAYOUT_RIGHT)

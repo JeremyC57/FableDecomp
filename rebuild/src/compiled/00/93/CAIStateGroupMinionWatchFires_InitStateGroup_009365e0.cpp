@@ -18,6 +18,7 @@ class CThing;
 // GetInterface_0x.. bodies, inlined into the AI bodies through GetTC<T>().
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
+enum EIdleStateGroup {};   // PDB enum type (enumerators not modelled)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -98,7 +99,8 @@ public:
 };
 
 class CTCIdleScheduler { public:                       // interface type 0xD3 component
-    void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleType);   // 0x00801920
+    // Naming (NF439 gen, 2026-11-25): callee 0x00801920 binds its PDB spelling ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@W4EIdleStateGroup@@@Z (T1 target; was ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@J@Z).
+    void RegisterIdleStateGroup(CAIStateGroupBase*group, EIdleStateGroup idleType);
 };
 
 struct CAIStateGroup_MinionWatchFires : CAIStateGroupBase {
@@ -110,5 +112,5 @@ void CAIStateGroup_MinionWatchFires::InitStateGroup(CAIBrain& brain, CThing& cre
 {
     CTCIdleScheduler* pScheduler;
     if (creature.GetInterface(&pScheduler, 0xD3))
-        pScheduler->RegisterIdleStateGroup(this, 6);
+        pScheduler->RegisterIdleStateGroup(this, (EIdleStateGroup)6);
 }

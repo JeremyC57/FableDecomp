@@ -19,7 +19,6 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CSpeechEmitter {
-    bool IsSampleLoadedAndPlaying(unsigned long sampleID);   // 0x0066AE60
 };
 class CWorld { public:
     long GetFrame();                            // 0x00416225
@@ -47,13 +46,17 @@ class CTCTalk { public:
     bool IsSpeechSampleLoadedAndPlaying() const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0066AE60 ?IsAttachedSoundLoadedAndPlaying@CTCSoundPlayer@@QBE_NK@Z (was ?IsSampleLoadedAndPlaying@CSpeechEmitter@@QAE_NK@Z)
+class CTCSoundPlayer { public: bool IsAttachedSoundLoadedAndPlaying(unsigned long) const; };
 bool CTCTalk::IsSpeechSampleLoadedAndPlaying() const
 {
     if (SpeechSample > 0 && SampleID > 0) {
         long rate = CMainGameComponent::GetConstantFPS();
         long elapsed = g_pWorld->GetFrame() - SampleStartedFrame;
         if (!((float)elapsed > (float)rate * 10000.0f) && ParentThing->HasTC(TCI_SOUND_PLAYER))
-            return ((CSpeechEmitter*)((CSpeechEmitter*)&ParentThing->GetTC(TCI_SOUND_PLAYER)))->IsSampleLoadedAndPlaying(SampleID);
+            return reinterpret_cast<const CTCSoundPlayer*>(((CSpeechEmitter*)((CSpeechEmitter*)&ParentThing->GetTC(TCI_SOUND_PLAYER))))->IsAttachedSoundLoadedAndPlaying(SampleID);
     }
     return true;
 }

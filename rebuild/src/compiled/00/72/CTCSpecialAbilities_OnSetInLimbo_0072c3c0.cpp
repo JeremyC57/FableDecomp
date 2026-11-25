@@ -1,3 +1,4 @@
+class CThingGameObject;
 // CTCSpecialAbilities::OnSetInLimbo(bool on) -- when switched on, kill every reclaimed undead follower whose thing is still alive and conscious
 // Leaf: ?OnSetInLimbo@CTCSpecialAbilities@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072C3C0, length 98 bytes (`ret 4`), CTCSpecialAbilities vtable 0x0126683C slot 16
@@ -51,7 +52,8 @@ class CTCSpecialAbilities { public:
     long CurrentAbility;                        // +0x10
     CUndeadFollowerList UndeadFollowers;        // +0x14
     CThing* Creature;                           // +0x18 (PDB +0x20)
-    void KillReclaimedUndead(CThing* thing);    // 0x0072B3B0
+    // Naming (NF439 gen, 2026-11-25): callee 0x0072B3B0 binds its PDB spelling ?ReclaimUndeadFollower@CTCSpecialAbilities@@QAEXAAVCThingGameObject@@@Z (T1 target; was ?KillReclaimedUndead@CTCSpecialAbilities@@QAEXPAVCThing@@@Z).
+    void ReclaimUndeadFollower(CThingGameObject& thing);
     void OnSetInLimbo(bool on);
 };
 
@@ -61,7 +63,7 @@ void CTCSpecialAbilities::OnSetInLimbo(bool on)
         for (CUndeadFollowerList::node* n = UndeadFollowers.head->next; n != UndeadFollowers.head; n = n->next) {
             CIntelligentPointer<CThing>& thing = n->value.PThing;
             if (thing.GetPItem() && !(thing.GetPItem()->m_flags91 & 1) && !thing.GetPItem()->IsUnconscious())
-                KillReclaimedUndead(thing.GetPItem());
+                ReclaimUndeadFollower(*(CThingGameObject*)(thing.GetPItem()));
         }
     }
 }

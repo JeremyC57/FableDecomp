@@ -27811,3 +27811,77 @@ address	symbol	status	leaf_given
 00e25970	?Alloc@CQR_EscortTrader_ManagerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	RELOCATION_MATCH	?Alloc@CQR_EscortTrader_ManagerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 00eeee40	?Alloc@CTestTheInventoryScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	RELOCATION_MATCH	?Alloc@CTestTheInventoryScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 00f02460	?Alloc@CQ_CinemaTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	RELOCATION_MATCH	?Alloc@CQ_CinemaTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+004336bc	?InitAndCompilePlatformSpecific@CStartupDefinitionManager@@QAEX_N@Z	RELOCATION_MATCH	
+0068f250	?Update@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z	RELOCATION_MATCH	
+006a99d0	?GetMaxTurnSpeed@CThingPlayerCreature@@IBEMXZ	RELOCATION_MATCH	
+006f9be0	?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	RELOCATION_MATCH	
+007122d0	?OnActivate@CActionLeadCreature@@QAEXXZ	RELOCATION_MATCH	
+0072c3c0	?OnSetInLimbo@CTCSpecialAbilities@@QAEX_N@Z	RELOCATION_MATCH	
+00733ee0	?IsMeleeFlourishValid@CTCCombat@@QBE_NXZ	RELOCATION_MATCH	
+008444a0	?PerformAction@CCreatureAction_KickCreature@@UAEXXZ	RELOCATION_MATCH	
+008b0780	?GetNextActionInSequence@CCombatSequenceBase_Retail@@QAEPAVCCombatActionBase@@XZ	RELOCATION_MATCH	
+009061e0	?OnCreate@CCombatSequence_BanditAdvanceFar@@UAEXXZ	RELOCATION_MATCH	
+00937d20	?IsRunnable@CAIStateGroup_MinionReactToUnconsciousPerson@@UAE_NXZ	RELOCATION_MATCH	
+00954190	?OnActivate@CAIStateGroup_MazeTutorialBattle@@UAEXXZ	RELOCATION_MATCH	
+009621f0	?Update@CAIStateGroup_IceTrollIcicleAttack@@QAEXXZ	RELOCATION_MATCH	
+00977c40	?OnActivate@CAIStateGroup_Guildmaster@@UAEXXZ	RELOCATION_MATCH	
+00715710	?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ	RELOCATION_MATCH	
+00745730	?UpdatePerception@CTCPerceiveThing@@AAEXXZ	RELOCATION_MATCH	
+007fc820	?SetPhase@CTCKraken@@QAEXJ@Z	RELOCATION_MATCH	
+0080c210	?GetDistanceFromMeAsRatioOfDamageRadius@CTCDExplosion@@QBEMPBVCThing@@@Z	RELOCATION_MATCH	
+00906050	?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ	RELOCATION_MATCH	
+009079c0	?OnCreate@CCombatSequence_TrollProjectileAttack@@UAEXXZ	RELOCATION_MATCH	
+00907d00	?OnCreate@CCombatSequence_TrollRockAdvance@@UAEXXZ	RELOCATION_MATCH	
+00907e00	?OnCreate@CCombatSequence_TrollRockThrowRock@@UAEXXZ	RELOCATION_MATCH	
+00908810	?OnCreate@CCombatSequence_VillagerBackOff@@UAEXXZ	RELOCATION_MATCH	
+00908960	?OnCreate@CCombatSequence_VillagerAdvance@@UAEXXZ	RELOCATION_MATCH	
+00908f20	?OnCreate@CCombatSequenceWhisperStrafeAround@@UAEXXZ	RELOCATION_MATCH	
+00909e30	?OnCreate@CCombatSequenceWhisperAttackBigCombo@@UAEXXZ	RELOCATION_MATCH	
+0090a1f0	?OnCreate@CCombatSequenceJacksCombo@@UAEXXZ	RELOCATION_MATCH	
+0090a340	?OnCreate@CCombatSequenceNonInterruptable2StrikeCombo@@UAEXXZ	RELOCATION_MATCH	
+0090a400	?OnCreate@CCombatSequence2StrikeCombo@@UAEXXZ	RELOCATION_MATCH	
+00918480	?InitStateGroup@CAIStateGroup_GazeOutside@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	RELOCATION_MATCH	
+00918560	?InitStateGroup@CAIStateGroup_GazeAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z	RELOCATION_MATCH	
+00404e10	?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z	RELOCATION_MATCH	?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z
+005ae86b	?OpenInventoryPC@CTCInventoryTrade@@QAEXXZ	RELOCATION_MATCH	?OpenInventoryPC@CTCInventoryTrade@@QAEXXZ
+005dc230	?GetTimeToBlendIn@CAnimationEntry@@QBEJPAVCThing@@@Z	RELOCATION_MATCH	?GetTimeToBlendIn@CAnimationEntry@@QBEJPAVCThing@@@Z
+0069f9e0	?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ
+006b0250	?GetPositionInterpolator@CTCPhysicsBase@@QBEXAAVC3DPositionInterpolator@@@Z	RELOCATION_MATCH	?GetPositionInterpolator@CTCPhysicsBase@@QBEXAAVC3DPositionInterpolator@@@Z
+006b0460	?GetOrientationInterpolator@CTCPhysicsBase@@QBEXAAVC3DOrientationInterpolator@@@Z	RELOCATION_MATCH	?GetOrientationInterpolator@CTCPhysicsBase@@QBEXAAVC3DOrientationInterpolator@@@Z
+006e28a0	?IsTalking@CTCTalk@@QBE_NXZ	RELOCATION_MATCH	?IsTalking@CTCTalk@@QBE_NXZ
+0073a690	?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z	RELOCATION_MATCH	?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z
+0078f6e0	?FinishMove@CTCDivineWrath@@QAEXXZ	RELOCATION_MATCH	?FinishMove@CTCDivineWrath@@QAEXXZ
+007a71b0	??0CTCBattleCharge@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCBattleCharge@@QAE@AAVCThing@@@Z
+007f01f0	?OnActionUse@CTCCarriedActionUseFishingRod@@UAEXAAVCThing@@@Z	RELOCATION_MATCH	?OnActionUse@CTCCarriedActionUseFishingRod@@UAEXAAVCThing@@@Z
+007f4d50	?OnActionUse@CTCCarriedActionUseAbility@@UAEXAAVCThing@@@Z	RELOCATION_MATCH	?OnActionUse@CTCCarriedActionUseAbility@@UAEXAAVCThing@@@Z
+008116d0	??1CEventShownItem@@QAE@XZ	RELOCATION_MATCH	??1CEventShownItem@@QAE@XZ
+00846410	?PerformAction@CCreatureAction_Undress@@UAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_Undress@@UAEXXZ
+0088e220	?IsEntityPickPocketable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z	RELOCATION_MATCH	?IsEntityPickPocketable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+0088e410	?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	RELOCATION_MATCH	?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e810	?EntityResetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	RELOCATION_MATCH	?EntityResetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088e870	?EntityResetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	RELOCATION_MATCH	?EntityResetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088f530	?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	RELOCATION_MATCH	?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+008985a0	?IsReportedOrUnreportedCrimeKnown@CGameScriptInterface@@QBE_NABVCScriptThing@@@Z	RELOCATION_MATCH	?IsReportedOrUnreportedCrimeKnown@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+0089bc50	?EntityGetStandingInsideBuilding@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z	RELOCATION_MATCH	?EntityGetStandingInsideBuilding@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+0089df10	?SetLightColour@CGameScriptInterface@@QBEXABVCScriptThing@@ABVCRGBColour@@@Z	RELOCATION_MATCH	?SetLightColour@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCRGBColour@@@Z
+008ba3c0	?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ	RELOCATION_MATCH	?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+00904540	?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThing_Methods@@QAEXABUCScriptGameResourceObjectScriptedThingBase_View@@@Z	RELOCATION_MATCH	?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@@Z
+0090fc50	?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ	RELOCATION_MATCH	?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ
+00918b50	?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ	RELOCATION_MATCH	?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ
+00936a60	?IsRunnable@CAIStateGroup_MinionReactToCorpse@@UAE_NXZ	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_MinionReactToCorpse@@UAE_NXZ
+0093db10	?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z	RELOCATION_MATCH	?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z
+0093dcd0	?IsEnemyCreatureInCombatPosition@CCombatStateMethods@@QAE_NXZ	RELOCATION_MATCH	?IsEnemyCreatureInCombatPosition@CCombatStateMethods@@QAE_NXZ
+0094cb40	?GetSeat@CAIStateGroup_GameMaster@@QAE_NXZ	RELOCATION_MATCH	?GetSeat@CAIStateGroup_GameMaster@@QAE_NXZ
+00962a90	?OnActivate@CAIStateGroup_VersusEnemyBase@@UAEXXZ	RELOCATION_MATCH	?OnActivate@CAIStateGroup_VersusEnemyBase@@UAEXXZ
+0042e3ee	?Input@CNewFrontendGameComponent@@AAEXXZ	RELOCATION_MATCH	?Input@CNewFrontendGameComponent@@AAEXXZ
+00449f90	?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z	RELOCATION_MATCH	?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z
+0044fadc	?TransferBinaryIn@CCombatAbilityData@@UAEXAAVCMemoryDataInputStream@@AAV1@@Z	RELOCATION_MATCH	?TransferBinaryIn@CCombatAbilityData@@UAEXAAVCMemoryDataInputStream@@AAV1@@Z
+0049dbe0	?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ	RELOCATION_MATCH	?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ
+00640f00	??0CTCLight@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCLight@@QAE@AAVCThing@@@Z
+006e37d0	?Update@NSpeechGainManager@@YIXABVCWorld@@@Z	RELOCATION_MATCH	?Update@NSpeechGainManager@@YIXABVCWorld@@@Z
+00731d40	??0CTCSpotLight@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCSpotLight@@QAE@AAVCThing@@@Z
+007502d0	?InitClosed@CTCChest@@AAEXXZ	RELOCATION_MATCH	?InitClosed@CTCChest@@AAEXXZ
+0077b9b0	??0CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+0077be40	??0CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@QAE@AAVCThing@@@Z
+008c1f70	?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport@@UAEXXZ	RELOCATION_MATCH	?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport@@UAEXXZ
+00957f20	?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ

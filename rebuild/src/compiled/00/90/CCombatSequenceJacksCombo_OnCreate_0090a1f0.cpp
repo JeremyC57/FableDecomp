@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequenceJacksCombo::OnCreate() -- queue Jack's three-hit combo: three CCreatureAction_InterruptableMidAttack(owner, target) actions (code 150, no sounds) through AddAction, then the base OnCreate; the counted-pointer temporary is released inline
 // Leaf: ?OnCreate@CCombatSequenceJacksCombo@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0090A1F0, 321 bytes (336 with padding).
@@ -57,7 +58,8 @@ class CCombatSequenceBase { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c
     CThing* m_pTarget;                      // +0x20
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 
@@ -76,10 +78,10 @@ void CCombatSequenceJacksCombo::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_InterruptableMidAttack(m_pOwner, m_pTarget);
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_InterruptableMidAttack(m_pOwner, m_pTarget);
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_InterruptableMidAttack(m_pOwner, m_pTarget);
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

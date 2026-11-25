@@ -79,6 +79,7 @@ __declspec(noinline) bool CThingSearchTools::GetPFirstThing(const CThingFilter_H
     return first != 0;
 }
 #pragma auto_inline(on)
+class CThingCreatureBase;
 struct CTCEnemySource {                         // interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -90,7 +91,8 @@ struct CTCEnemySource {                         // interface 8
 class CThingAICreature;
 namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* viewer, const CThing* target, bool ignoreLight); }   // 0x008645E0
 class CCombatManager { public:
-    void RegisterCombatant(CThing* creature, CThing* enemy, bool b);   // 0x006EDC50
+    // Naming (NF439 gen, 2026-11-25): callee 0x006EDC50 binds its PDB spelling ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (T1 target; was ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z).
+    void RegisterCombatant(CThingCreatureBase& creature, CThingCreatureBase& enemy, bool b);
 };
 class CWorld { public:
     unsigned char _pad[0x4c];
@@ -147,7 +149,7 @@ bool CAIStateGroup_ScorpionKing::IsRunnable()
             HealthAtLastTailStrike = PBrain->PCreature->Health;
             CThing* creature = PBrain->PCreature;
             CCombatManager* combat = GetWorld().PCombatManager;
-            combat->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
+            combat->RegisterCombatant(*(CThingCreatureBase*)creature, *(CThingCreatureBase*)(((CThing*)PEnemy.GetPItem())), true);
             return true;
         }
         PEnemy = CIntelligentPointerCreature(0);

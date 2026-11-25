@@ -40,7 +40,8 @@ class CPlayer { public:
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_PEEKPLAYER
 #include "engine/CThing.h"
-bool __fastcall IsAvailableForHeroRun(CThing* thing);       // 0x0085F560
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F560 binds its PDB spelling ?IsAvailableForHeroRun@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsAvailableForHeroRun@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsAvailableForHeroRun(CThing const& thing); }
 bool __fastcall IsAvailableForHeroSprint(CThing* thing);    // 0x0085F470
 
 class CHeroSpecialMovementDef { public:
@@ -82,7 +83,7 @@ class CTCHeroSpecialMovement : public CTCBase { public:
     void SetRunning(bool running)                       // 0x007E06B0
     {
         if (running) {
-            if (!Running && IsAvailableForHeroRun(ParentThing))
+            if (!Running && NCreatureMode::IsAvailableForHeroRun(*ParentThing))
                 Running = true;
         } else if (Running)
             Running = false;
@@ -95,7 +96,7 @@ void CTCHeroSpecialMovement::FrameUpdate()
     CGamePlayerInterface* input = ParentThing->PeekPlayer().m_pInterface;
     if (g_bHeroRunOption) {
         SetRunning(input->IsGameActionEventInQueue(GAME_ACTION_RUN, (EInputButtonEventType)2, GetThing().GetPlayer().GetJoystickDeviceNumber())
-                   && !GetThing().GetPlayer().m_controlsLocked && IsAvailableForHeroRun(ParentThing));
+                   && !GetThing().GetPlayer().m_controlsLocked && NCreatureMode::IsAvailableForHeroRun(*ParentThing));
         if (Running) {
             if (!Sprinting) {
                 if (++RunTimer > (long)(CMainGameComponent::GetConstantFPS() * PHeroSpecialMovementDef->NoSecondsToRunBeforeSprintStarts))

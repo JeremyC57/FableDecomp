@@ -21,7 +21,6 @@ class CTCBoss { public:                                            // TC 0xad
     float GetMinHealthForPhase(long phase) const;           // 0x007AEE40
 };
 struct CTCHeroHealthObserver {                              // TC 4
-    void OnHealthChanged();                                 // 0x0057A753
 };
 class CTCTargeted { public:                                      // TC 9
     unsigned char _pad00[0x0c];
@@ -74,6 +73,10 @@ private:
     void InternalModifyHealth(float delta, bool allowDeath);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0057A753 ?OnHealthModified@CTCHeroStats@@QAEXXZ (was ?OnHealthChanged@CTCHeroHealthObserver@@QAEXXZ)
+class CTCHeroStats { public: void OnHealthModified(); };
 void CThingPhysical::InternalModifyHealth(float delta, bool allowDeath)
 {
     if (delta < 0.0f) {
@@ -102,7 +105,7 @@ void CThingPhysical::InternalModifyHealth(float delta, bool allowDeath)
         Health = MaxHealth;
     if (ThingClass == 2) {
         if (HasTC(4))
-            ((CTCHeroHealthObserver*)GetTC(4))->OnHealthChanged();
+            reinterpret_cast<CTCHeroStats*>(((CTCHeroHealthObserver*)GetTC(4)))->OnHealthModified();
     } else if (ThingClass == 1) {
         if (Health <= 0.0001f && HasTC(9)) {
             CTCTargeted* observable = (CTCTargeted*)GetTC(9);

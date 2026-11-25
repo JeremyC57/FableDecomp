@@ -1,0 +1,3 @@
+address	objgate	vland_head/new	pk	pk_flag	link
+009bf160	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=1 neq=0 | N copies=1 neq=0	OK	FAIL
+009bf220	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=1 neq=0 | N copies=1 neq=0	OK	FAIL

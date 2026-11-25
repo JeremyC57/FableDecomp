@@ -39,7 +39,6 @@ struct CTCInventoryBase_Retail {              // primary base, retail size 0x130
     unsigned char _pad_0x04[0x68 - 4];
     CDefPointer PDef;                         // +0x68
     unsigned char _pad_0x6c[0x130 - 0x6c];
-    CWideString GetInventoryText(long index); // 0x005BD273
 };
 
 namespace NHeroInformationScreens {
@@ -52,8 +51,12 @@ class CTCInventoryQuests : public CTCInventoryBase_Retail, public NHeroInformati
     virtual CWideString vfunc_0();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BD273 ?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z (was ?GetInventoryText@CTCInventoryBase_Retail@@QAE?AVCWideString@@J@Z)
+namespace NInventory { class CTCInventoryBase { public: CWideString GetInventoryText(long) const; }; }
 CWideString CTCInventoryQuests::vfunc_0()
 {
     CDefPointer def = PDef;
-    return GetInventoryText(def->m_titleTextIndex);
+    return reinterpret_cast<const NInventory::CTCInventoryBase*>(this)->GetInventoryText(def->m_titleTextIndex);
 }

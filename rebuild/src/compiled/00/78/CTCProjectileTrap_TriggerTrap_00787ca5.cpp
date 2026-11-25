@@ -60,8 +60,8 @@ template <class T> class CDefPointer { public:
     }
 };
 class CThing;
-CThing* __fastcall CreateShot(long defIndex, CThing* shooter, CThing* origin, CThing* target, float accuracy, float a, float b,
-                              CDefPointer<CMeleeCombatAbilityDef>* ability, C3DVector* position, CRightHandedSet* frame);   // 0x007C0AD0
+// Naming (NF439 gen, 2026-11-25): callee 0x007C0AD0 binds its PDB spelling ?CreateShot@NThingShot@@YIPAVCThing@@JPAV2@0PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@PBVC3DVector@@PBVCRightHandedSet@@@Z (T1 target; was the free stand-in ?CreateShot@@YIPAVCThing@@JPAV1@00MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@PAVC3DVector@@PAVCRightHandedSet@@@Z).
+namespace NThingShot { CThing * __fastcall CreateShot(long defIndex, CThing* shooter, CThing* origin, CThing const* target, float accuracy, float a, float b, CDefPointer<CMeleeCombatAbilityDef const> const& ability, C3DVector const* position, CRightHandedSet const* frame); }
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -110,7 +110,7 @@ void CTCProjectileTrap::TriggerTrap()
     }
     {
         CDefPointer<CMeleeCombatAbilityDef> ability;
-        CreateShot(shotIndex, ParentThing, 0, 0, 100.0f, 1.0f, 1.0f, &ability, 0, 0);
+        NThingShot::CreateShot(shotIndex, ParentThing, 0, (CThing const *)0, 100.0f, 1.0f, 1.0f, *(CDefPointer<CMeleeCombatAbilityDef const> const*)(&ability), (C3DVector const *)0, (CRightHandedSet const *)0);
     }
     SetTransitionParams(0.0f, 0.0f);
 }

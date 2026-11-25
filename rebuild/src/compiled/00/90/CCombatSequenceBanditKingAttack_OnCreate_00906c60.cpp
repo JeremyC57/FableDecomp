@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_BanditKingAttack::OnCreate() -- queue a CCreatureAction_BanditKingAttack on the "STRIKE_MEDIUM_FRONT" animation (flags 1, 0), then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00906C60, 177 bytes (192 with padding), virtual `?OnCreate@CCombatSequence_BanditKingAttack@@UAEXXZ`.
 // Callees: operator new 0x00BFEA1A (0x118 bytes), CCharString::CCharString(const char*, long) 0x0099EBF0 ("STRIKE_MEDIUM_FRONT"
@@ -59,7 +60,8 @@ class CCombatSequenceBase { public:
     CThing* m_pTarget;                      // +0x20
     CThingCreatureBase* GetCreature() const { return m_pOwner; }
     CThing* GetTarget() const { return m_pTarget; }
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 
@@ -82,6 +84,6 @@ void CCombatSequence_BanditKingAttack::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_BanditKingAttack(GetCreature(), GetTarget(), "STRIKE_MEDIUM_FRONT", 1, 0);
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

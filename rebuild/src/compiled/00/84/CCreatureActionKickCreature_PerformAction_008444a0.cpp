@@ -38,7 +38,8 @@ class CThing : public CThingPhysical { public:
     void OnKicked();                        // 0x00661EE0 (name unconfirmed)
     bool IsKickable();                      // 0x00838A30 (name unconfirmed)
 };
-void __fastcall GetCreatureFirePosAndOrientation(CThing* creature, C3DVector* position, CRightHandedSet* orientation);   // 0x007BF000
+// Naming (NF439 gen, 2026-11-25): callee 0x007BF000 binds its PDB spelling ?GetCreatureFirePosAndOrientation@NThingShot@@YIXABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@@Z (T1 target; was the free stand-in ?GetCreatureFirePosAndOrientation@@YIXPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@@Z).
+namespace NThingShot { void __fastcall GetCreatureFirePosAndOrientation(CThing const& creature, C3DVector& position, CRightHandedSet& orientation); }
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -86,7 +87,7 @@ void CCreatureAction_KickCreature::PerformAction()
             if (PTargetCreature.GetPItem()->IsKickable()) {
                 C3DVector position;
                 CRightHandedSet orientation;
-                GetCreatureFirePosAndOrientation(PCreature.GetPItem(), &position, &orientation);
+                NThingShot::GetCreatureFirePosAndOrientation(*(PCreature.GetPItem()), *(&position), *(&orientation));
             }
         }
     }

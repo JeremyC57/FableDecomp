@@ -45,9 +45,12 @@ private: public:
 
 struct CTCInventoryClothing_Retail {
     void* __vftable;
-    long GetCurrentTotalArmorValue();                             // 0x005B4A95
     void ConstructTitleString(CWideString& title);
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005B4A95 ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ (was ?GetCurrentTotalArmorValue@CTCInventoryClothing_Retail@@QAEJXZ)
+class CTCInventoryClothing { public: long GetCurrentTotalArmorValue() const; };
 void CTCInventoryClothing_Retail::ConstructTitleString(CWideString& title)
 {
     {
@@ -56,5 +59,5 @@ void CTCInventoryClothing_Retail::ConstructTitleString(CWideString& title)
         title += textBank->GetTextBySymbol(symbol);
     }
     title += CWideString(L" ");
-    title += GFIntToWideString(GetCurrentTotalArmorValue());
+    title += GFIntToWideString(reinterpret_cast<const CTCInventoryClothing*>(this)->GetCurrentTotalArmorValue());
 }

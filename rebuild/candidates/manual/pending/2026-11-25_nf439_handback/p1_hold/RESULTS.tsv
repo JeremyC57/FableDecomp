@@ -1,0 +1,11 @@
+address	verdict	old	new	reason
+00407040	HOLD	?DeleteProfile@CUserProfileManager@@QAEXABVCWideString@@@Z	?DeleteProfile@CUserProfileManager@@QAEXABVCWideString@@@Z	RULINGS_NEEDED r1: the respell adds an empty local enum definition (enum E {};) for a PDB enum parameter type that a shared engine header defines
+00687db0	HOLD	?IsEventFromPlayerDevice@CInputProcessMain@@QAE_NABVCInputEvent@@@Z	?IsEventFromPlayerDevice@CInputProcessMain@@QAE_NABVCInputEvent@@@Z	RULINGS_NEEDED r1: the respell adds an empty local enum definition (enum E {};) for a PDB enum parameter type that a shared engine header defines
+00691680	HOLD	?ProcessInput@CInputProcessOracleMinigame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessInput@CInputProcessOracleMinigame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	RULINGS_NEEDED r1: the respell adds an empty local enum definition (enum E {};) for a PDB enum parameter type that a shared engine header defines
+00757f90	HOLD	?AddPossibleWoundGivenStrikePoint@CTCWound@@QAE_NABVC3DVector@@@Z	?AddPossibleWoundGivenStrikePoint@CTCWound@@QAE_NABVC3DVector@@@Z	RULINGS_NEEDED r1: the respell adds an empty local enum definition (enum E {};) for a PDB enum parameter type that a shared engine header defines
+00750470	HOLD	?UpdateAnimation@CTCChest@@AAEXM@Z	?UpdateAnimation@CTCChest@@AAEXM@Z	screen: target 0x0070E8B0's newest COORDINATION_CLAIMS line is Account B
+0077d190	HOLD	?UpdateAnimation@CTCCreatureHive@@AAEXXZ	?UpdateAnimation@CTCCreatureHive@@AAEXXZ	screen: target 0x0070E8B0's newest COORDINATION_CLAIMS line is Account B
+004fe510	HOLD	-	-	objgate NOT_EQ (leaf DATA + RELOC); vland RELOCATION_MATCH -> DIFFER(59v54): the generated argument / return shim changed codegen
+008e9110	HOLD	-	-	name_gate WORSE: new FAIL RELOC_NAME ?GetStrafingAnimationName@NCreatureMode@@... -> 0x008E8E50 labelled 'GetStrafeAnimationName' in the catalog (target not landed; catalog label needs the PDB spelling first)
+00b321b0	HOLD	-	-	objgate NOT_EQ: HEAD emits ?Enumerate@CEngineScene@@QAEXAAVCBaseClassNonCopyable@@@Z, not the table spelling ?Enumerate@CEngineScene@@QAEXAAUCBase@@@Z (stale table witness line)
+00b428e0	HOLD	-	-	objgate NOT_EQ (EH sections added); vland DIFFER(233v245); pk COPIES 0->5: the shim changed codegen

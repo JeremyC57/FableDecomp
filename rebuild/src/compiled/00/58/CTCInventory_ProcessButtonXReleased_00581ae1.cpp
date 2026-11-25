@@ -14,10 +14,13 @@ class CTCInventory { public:                            // vtable 0x01250DE4
     unsigned char _pad_0x04[0x1cc - 0x04];
     bool m_suppressA;                          // +0x1cc
     bool m_suppressB;                          // +0x1cd
-    void Hook_005BC68F();                      // 0x005BC68F (empty)
     void ProcessButtonXReleased();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BC68F ?ProcessButtonXReleased@CTCInventoryBase@NInventory@@UAEXXZ (was ?Hook_005BC68F@CTCInventory@@QAEXXZ)
+namespace NInventory { class CTCInventoryBase { public: virtual void ProcessButtonXReleased(); }; }
 void CTCInventory::ProcessButtonXReleased()
 {
     bool& flag = m_suppressB;
@@ -25,5 +28,5 @@ void CTCInventory::ProcessButtonXReleased()
         flag = false;
     else if (!m_suppressA)
         flag = true;
-    Hook_005BC68F();
+    reinterpret_cast<NInventory::CTCInventoryBase*>(this)->NInventory::CTCInventoryBase::ProcessButtonXReleased();
 }

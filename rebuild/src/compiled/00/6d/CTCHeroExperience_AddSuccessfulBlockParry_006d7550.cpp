@@ -1,3 +1,4 @@
+class CComboMultiplierData;
 // CTCHeroExperience::AddSuccessfulBlockParry  @ 0x006d7550
 // Naming wave 18: the global stand-in g_blockParryInt (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -18,11 +19,12 @@ class CTCHeroExperience { public:
     char pad[0x38];
     int field_38;    // [esi+0x38]
 
-    SubObj* GetSub();                 // call 0x6d72d0 (thiscall, returns SubObj*)
+    // Naming (NF439 gen, 2026-11-25): callee 0x006D72D0 binds its PDB spelling ?GetActiveComboMultiplierData@CTCHeroExperience@@ABEABVCComboMultiplierData@@XZ (T1 target; was ?GetSub@CTCHeroExperience@@QAEPAUSubObj@@XZ).
+    private: CComboMultiplierData const & GetActiveComboMultiplierData() const; public:
     void AddSuccessfulBlockParry();
 };
 
 void CTCHeroExperience::AddSuccessfulBlockParry()
 {
-    this->field_38 = (int)( (float)CMainGameComponent::GetConstantFPS() * this->GetSub()->field_c );
+    this->field_38 = (int)( (float)CMainGameComponent::GetConstantFPS() * ((SubObj *)&(this->GetActiveComboMultiplierData()))->field_c );
 }

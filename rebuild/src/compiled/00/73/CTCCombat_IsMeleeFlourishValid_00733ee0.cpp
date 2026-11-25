@@ -26,7 +26,8 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !thing->IsDead();
 }
 
-bool __fastcall IsThingVulnerableToMeleeStrikesFromThing(CThing* target, CThing* attacker);   // 0x007F59F0
+// Naming (NF439 gen, 2026-11-25): callee 0x007F59F0 binds its PDB spelling ?IsThingVulnerableToMeleeStrikesFromThing@NTargeting@@YI_NABVCThing@@0@Z (T1 target; was the free stand-in ?IsThingVulnerableToMeleeStrikesFromThing@@YI_NPAVCThing@@0@Z).
+namespace NTargeting { bool __fastcall IsThingVulnerableToMeleeStrikesFromThing(CThing const& target, CThing const& attacker); }
 
 struct CTCTargeting {                                       // the interface-8 component
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -58,7 +59,7 @@ bool CTCCombat::IsMeleeFlourishValid() const
         const CTCTargeting* targeting;
         ParentThing->PeekTC(TCI_TARGETING, &targeting);
         CThing* target = targeting->GetTarget();
-        if (IsThingAlive(target) && IsThingVulnerableToMeleeStrikesFromThing(target, ParentThing)
+        if (IsThingAlive(target) && NTargeting::IsThingVulnerableToMeleeStrikesFromThing(*target, *ParentThing)
             && CurrentAbilityIndex >= 0 && UsableAbilityList_first != UsableAbilityList_last)
             return true;
     }

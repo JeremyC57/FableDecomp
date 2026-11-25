@@ -35,7 +35,6 @@ struct CFontBank_Retail;
 class CRGBColour;
 struct CSubtitleRenderer_Retail {               // embedded at CGameUI+0x18 (`add ecx,18h`)
     void SetText(CFontBank_Retail* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
-    void SetText(CFontBank_Retail* font, const CCharString& text, const CCharString& name, const CCharString& a, const CCharString& b, unsigned long colour, float time, bool c, bool d);   // 0x00492FB4
 };
 struct CMiniMapDisplay_Retail {
     void AddMarker(CThing_Retail* thing, long id);         // 0x0082A890 (CMiniMapDisplay::AddMarker)
@@ -70,8 +69,13 @@ class CMainGameComponent { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00492FB4 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@111KM_N2@Z (was ?SetText@CSubtitleRenderer_Retail@@QAEXPAUCFontBank_Retail@@ABVCCharString@@111KM_N2@Z)
+class CFontBank;
+class CSubtitleRenderer { public: void SetText(CFontBank const&, CCharString const&, CCharString const&, CCharString const&, CCharString const&, unsigned long, float, bool, bool); };
 void CGameScriptInterface::ShowOnScreenMessage(const CCharString& text, const CCharString& a, const CCharString& b, float time) const
 {
     CCharString empty("");
-    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitles.SetText(Component->m_pFontBank, text, empty, a, b, 0, time, false, true);
+    reinterpret_cast<CSubtitleRenderer*>(&(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitles))->SetText(*reinterpret_cast<CFontBank const*>(Component->m_pFontBank), text, empty, a, b, 0, time, false, true);
 }

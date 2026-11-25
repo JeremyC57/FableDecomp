@@ -1,0 +1,4 @@
+address	verdict	old	new	reason
+004022b0	HOLD	?GFInitialise@@YI_NXZ	?GFInitialise@@YI_NXZ	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')
+00449cb0	HOLD	?SwapToHero@CPlayerManager@@QAEXJ@Z	?SwapToHero@CPlayerManager@@QAEXJ@Z	objgate NOT_EQ
+007ea2d0	HOLD	?CTCTargeted_GetNumTargetPoints@@YIJPAVCTCTargeted@@@Z	?CTCTargeted_GetNumTargetPoints@@YIJPAVCTCTargeted@@@Z	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')

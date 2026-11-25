@@ -34,7 +34,6 @@ struct CAnimManager_Calls {                     // CManager (anim manager)
 CAnimManager_Calls* __fastcall GetAnimManager();  // 0x006F90B0
 
 class CThingCreatureBase_Calls { public:
-    float GetAnimDuration(long animID);         // 0x006627F0 (CTCAnimationComplex::GetAnimDuration)
 };
 
 class CBaseObject;
@@ -75,6 +74,10 @@ class CCombatActionBase { public:
     public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006627F0 ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z (was ?GetAnimDuration@CThingCreatureBase_Calls@@QAEMJ@Z)
+class CThingCreatureBase { public: float GetAnimDuration(long) const; };
 void CCombatActionBase::InitialiseActionTimes()
 {
     long framesPerSecond = CMainGameComponent::GetConstantFPS();
@@ -85,7 +88,7 @@ void CCombatActionBase::InitialiseActionTimes()
         ActionTime = (long)(manager->GetEventTimeInSeconds(animID, PERFORM_ACTION) * framesPerSecond) + TotalTime;
         HasPerformAction = true;
     }
-    TotalTime = (long)(PCreature.GetPItem()->GetAnimDuration(animID) * framesPerSecond + TotalTime);
+    TotalTime = (long)(reinterpret_cast<const CThingCreatureBase*>(PCreature.GetPItem())->GetAnimDuration(animID) * framesPerSecond + TotalTime);
     if (ActionTime >= 0)
         ActionTime += GetAnimDelayTime();
     TotalTime += GetAnimDelayTime();

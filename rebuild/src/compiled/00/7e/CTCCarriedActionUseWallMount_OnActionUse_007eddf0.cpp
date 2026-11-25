@@ -22,7 +22,6 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CTCInterface1A {
-    void Notify();                                          // 0x005D8E50
 };
 
 class CThingCreatureBase { public:
@@ -77,6 +76,10 @@ struct CTCCarriedActionUseWallMount : CTCCarriedActionUseBase {
     virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThingCreatureBase*))
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?Notify@CTCInterface1A@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CTCCarriedActionUseWallMount::OnActionUse(CThing& thing)
 {
     CThingCreatureBase* user = (CThingCreatureBase*)&thing;
@@ -87,5 +90,5 @@ void CTCCarriedActionUseWallMount::OnActionUse(CThing& thing)
         user->SetCurrentAction(CCreatureAction_DeclarePlayerACriminal(user, (CThingPlayerCreature*)holder));
     }
     else if (ParentThing->HasInterface(0x1a))
-        ((CTCInterface1A*)ParentThing->GetInterface(0x1a))->Notify();
+        reinterpret_cast<CTCInventoryItem*>(((CTCInterface1A*)ParentThing->GetInterface(0x1a)))->ReturnToInventory();
 }

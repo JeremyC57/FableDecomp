@@ -142,7 +142,6 @@ public:
     CInterfaceMap m_interfaces;                              // +0x44
     unsigned char _pad54[0x38];
     unsigned short DefIndex;                                 // +0x8c
-    C3DVector GetHeadPos(bool world);                        // 0x00661B40
     void Kill(bool removeNow);                               // 0x004C9B80
     template <class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -200,6 +199,10 @@ struct CCreatureAction_WearGameObject : CCreatureActionBase {
     virtual void PerformAction();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00661B40 ?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z (was ?GetHeadPos@CThing@@QAE?AVC3DVector@@_N@Z)
+class CThingCreatureBase { public: C3DVector GetHeadPos(bool) const; };
 void CCreatureAction_WearGameObject::PerformAction()
 {
     CTCCarrying* carrying;
@@ -229,7 +232,7 @@ void CCreatureAction_WearGameObject::PerformAction()
                     C3DVector offset;
                     offset.X = velocity.X;
                     offset.Y = velocity.Y;
-                    C3DVector position = GetCreature()->GetHeadPos(true) + offset;
+                    C3DVector position = reinterpret_cast<const CThingCreatureBase*>(GetCreature())->GetHeadPos(true) + offset;
                     thing = CThingObject::Create(id, position, player, 0, 0, name);
                 }
                 if (thing)

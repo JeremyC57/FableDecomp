@@ -24,6 +24,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
+class CTCCreatureGroupBoastingCrowd;
             // 0x00449970
 class CEngine
 { public:
@@ -69,7 +70,8 @@ struct CCrowdGroup
 
 class CTCBoastingCrowdControl                      // interface type 0x73
 { public:
-    bool GetCrowdGroup(CThing* hero, CCrowdGroup** group);   // 0x00783730
+    // Naming (NF439 gen, 2026-11-25): callee 0x00783730 binds its PDB spelling ?GetCrowdGroup@CTCBoastingCrowdControl@@QBE_NAAVCThing@@PAPAVCTCCreatureGroupBoastingCrowd@@@Z (T1 target; was ?GetCrowdGroup@CTCBoastingCrowdControl@@QAE_NPAVCThing@@PAPAUCCrowdGroup@@@Z).
+    bool GetCrowdGroup(CThing& hero, CTCCreatureGroupBoastingCrowd**group) const;
 };
 
 struct CAIStateGroup_BoastingCrowdMember
@@ -90,7 +92,7 @@ bool CAIStateGroup_BoastingCrowdMember::IsRunnable()
     CTCBoastingCrowdControl* crowd;
     if (hero && !hero->IsDead() && hero->GetTC(TCI_BOASTING_CROWD_CONTROL, &crowd))
     {
-        if (crowd->GetCrowdGroup(hero, &group) && group->State != 0 && group->State != 10
+        if (crowd->GetCrowdGroup(*hero, (CTCCreatureGroupBoastingCrowd **)(&group)) && group->State != 0 && group->State != 10
             && group->AcceptsMember(PBrain->GetCreature()))
         {
             CIntelligentPointer<CThing> boaster(group->Boaster);

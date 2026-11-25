@@ -1,0 +1,173 @@
+addr       parity           behav  name
+008d2d90   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d2d90   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d2d90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d2d90   WARN RELOC_NAME: ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ -> 00810fc0 labelled 'NEntityEvents::CEventHitBase::GetPHitBy'
+008d2d90   RELOCATION_MATCH PASS   MsgIsHitByAnyAggressiveSpecialAbilityFrom
+008d2f80   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+008d2f80   WARN SHARED_HEADER_AVAILABLE CQuestManager (engine/CQuestManager.h)
+008d2f80   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d2f80   WARN RELOC_NAME: ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ -> 00810fc0 labelled 'NEntityEvents::CEventHitBase::GetPHitBy'
+008d2f80   RELOCATION_MATCH PASS   MsgIsHitByAnyNonAggressiveSpecialAbilityFrom
+008f3020   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+008f3020   WARN SHARED_HEADER_AVAILABLE CMeleeCombatAbilityDef (engine/CMeleeCombatAbilityDef.h)
+008f3020   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008f3020   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008f3020   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f3020   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonFlight (engine/CCreatureAction_DragonFlight.h)
+008f3020   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008f3020   RELOCATION_MATCH PASS   PerformAction
+00904540   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00904540   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00904540   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00904540   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+  WARN leaf '?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@@Z' matches no symbol in 00904540.obj; graded the largest function
+  WARN leaf '?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@@Z' matches no symbol in 00904540.obj; graded the largest function
+00904540   RELOCATION_MATCH PASS   WaitForEntityToFinishPerformingTasks
+00905130   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00905130   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00905130   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00905130   RELOCATION_MATCH PASS   CActionWaitForThingToFinishPerformingTasks
+0090fc50   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0090fc50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0090fc50   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+0090fc50   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+0090fc50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0090fc50   RELOCATION_MATCH PASS   InitCreaturePosition
+00917330   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00917330   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00917330   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00917330   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00917330   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_IdleAtHome (engine/CAIStateGroup_IdleAtHome.h)
+00917330   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00917330   RELOCATION_MATCH PASS   InitCreaturePosition
+00918b50   WARN SHARED_HEADER_AVAILABLE CThingGameObject (engine/CThingGameObject.h)
+00918b50   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00918b50   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00918b50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00918b50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Gaze (engine/CAIStateGroup_Gaze.h)
+00918b50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeAtWork (engine/CAIStateGroup_GazeAtWork.h)
+00918b50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00918b50   RELOCATION_MATCH PASS   InitCreaturePosition
+  WARN leaf 'IsRunnable' matches no symbol in 0092bf30.obj; graded the largest function
+  WARN leaf 'IsRunnable' matches no symbol in 0092bf30.obj; graded the largest function
+0092bf30   WARN STANDIN_LEAF ?Is@C@@QAEDXZ (catalog CAIStateGroup_MinionWander::IsRunnable; generic placeholder)
+0092bf30   RELOCATION_MATCH PASS   IsRunnable
+00936a60   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CThingPhysical (engine/CThingPhysical.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CThingFilter_None (engine/CThingFilter_None.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CThingCompare_Nearest (engine/CThingCompare_Nearest.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCorpse (engine/CAIStateGroup_MinionReactToCorpse.h)
+00936a60   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00936a60   RELOCATION_MATCH PASS   IsRunnable
+0093db10   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyBase (engine/CAIStateGroup_MeleeCombatNearbyBase.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearby2 (engine/CAIStateGroup_MeleeCombatNearby2.h)
+0093db10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093db10   RELOCATION_MATCH PASS   IsStillRunnable
+0093dcd0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093dcd0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0093dcd0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093dcd0   WARN RELOC_NAME: ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z -> 006e94d0 labelled 'CCombatManager::Combat_CheckRingRangeToTarget'
+0093dcd0   WARN RELOC_NAME: ?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0093dcd0   WARN STANDIN_LEAF ?IsEnemyCreatureInCombatPosition@CCombatStateMethods@@QAE_NXZ (catalog CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition; names another function)
+0093dcd0   RELOCATION_MATCH PASS   IsEnemyCreatureInCombatPosition
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyBase (engine/CAIStateGroup_MeleeCombatNearbyBase.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose (engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h)
+0093e2d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0093e2d0   WARN RELOC_NAME: ?IsInCombatMode@CThing@@QAE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+0093e2d0   RELOCATION_MATCH PASS   Update
+009429c0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009429c0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+009429c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009429c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009429c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkAtSchool (engine/CAIStateGroup_WorkAtSchool.h)
+009429c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009429c0   RELOCATION_MATCH PASS   InitCreaturePosition
+009460c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009460c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009460c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009460c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_PrepareMeal (engine/CAIStateGroup_PrepareMeal.h)
+009460c0   RELOCATION_MATCH PASS   InitCreaturePosition
+0094cb40   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CTCTavernTable (engine/CTCTavernTable.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GoToPub (engine/CAIStateGroup_GoToPub.h)
+0094cb40   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+0094cb40   WARN RELOC_NAME: ??1?$CStlList@PAVCThing@@@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+0094cb40   RELOCATION_MATCH PASS   GetSeat
+0095d070   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0095d070   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0095d070   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0095d070   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_RangedCombatUsePreferredFirePoint (engine/CAIStateGroup_RangedCombatUsePreferredFirePoint.h)
+0095d070   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0095d070   RELOCATION_MATCH PASS   AttackEnemy
+00962a90   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00962a90   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+00962a90   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00962a90   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00962a90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00962a90   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VersusEnemyBase (engine/CAIStateGroup_VersusEnemyBase.h)
+00962a90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00962a90   RELOCATION_MATCH PASS   OnActivate
+00966a90   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00966a90   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00966a90   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00966a90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00966a90   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernServer (engine/CAIStateGroup_TavernServer.h)
+00966a90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00966a90   RELOCATION_MATCH PASS   InitCreaturePosition
+009681a0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009681a0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+009681a0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009681a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009681a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernKeeper (engine/CAIStateGroup_TavernKeeper.h)
+009681a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009681a0   RELOCATION_MATCH PASS   InitCreaturePosition
+00b99d90   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes (engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b99d90   WARN RELOC_NAME: ??0CEnginePrimitiveGroupManager@@QAE@PAUCEngineSceneArray@@@Z -> 00bebc30 labelled 'CEnginePrimitiveManagerMeshBase::CEnginePrimitiveManagerMeshBase'
+00b99d90   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedStaticMeshes
+
+WINS: 21
+  008d2d90 RELOCATION_MATCH CGameScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom
+  008d2f80 RELOCATION_MATCH CGameScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom
+  008f3020 RELOCATION_MATCH CCreatureAction_DragonFlight::PerformAction
+  00904540 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@@Z
+  00905130 RELOCATION_MATCH NTCScriptedControl::CActionWaitForThingToFinishPerformingTasks::??0CActionWaitForThingToFinishPerformingTasks
+  0090fc50 RELOCATION_MATCH CAIStateGroup_MinionSitAtSchool::?InitCreaturePosition@CAIStateGroup_MinionSitAtSchool@@MAE_NXZ
+  00917330 RELOCATION_MATCH CAIStateGroup_IdleAtHome::InitCreaturePosition
+  00918b50 RELOCATION_MATCH CAIStateGroup_GazeAtWork::?InitCreaturePosition@CAIStateGroup_GazeAtWork@@QAE_NXZ
+  0092bf30 RELOCATION_MATCH CAIStateGroup_MinionWander::IsRunnable
+  00936a60 RELOCATION_MATCH CAIStateGroup_MinionReactToCorpse::?IsRunnable@CAIStateGroup_MinionReactToCorpse@@UAE_NXZ
+  0093db10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::?IsStillRunnable@CAIStateGroup_MeleeCombatNearby2@@MBE_N_N@Z
+  0093dcd0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::?IsEnemyCreatureInCombatPosition@CCombatStateMethods@@QAE_NXZ
+  0093e2d0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::?Update@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@MAEXXZ
+  009429c0 RELOCATION_MATCH CAIStateGroup_WorkAtSchool::InitCreaturePosition
+  009460c0 RELOCATION_MATCH CAIStateGroup_PrepareMeal::?InitCreaturePosition@CAIStateGroup_PrepareMeal@@MAE_NXZ
+  0094cb40 RELOCATION_MATCH CAIStateGroup_GameMaster::?GetSeat@CAIStateGroup_GameMaster@@QAE_NXZ
+  0095d070 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::?AttackEnemy@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ
+  00962a90 RELOCATION_MATCH CAIStateGroup_VersusEnemyBase::?OnActivate@CAIStateGroup_VersusEnemyBase@@UAEXXZ
+  00966a90 RELOCATION_MATCH CAIStateGroup_TavernServer::InitCreaturePosition
+  009681a0 RELOCATION_MATCH CAIStateGroup_TavernKeeper::InitCreaturePosition
+  00b99d90 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::??0CEnginePrimitiveManagerRepeatedStaticMeshes

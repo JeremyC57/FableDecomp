@@ -66,7 +66,8 @@ __declspec(noinline) void CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
 #include "stlport/fable_containers.h"
 #include "engine/CIntelligentPointer.h"
 class CTCCreatureModeManager { public:                 // interface 0x31
-    bool HasMode(unsigned long mode);           // 0x0073A8A0
+    // Naming (NF439 gen, 2026-11-25): callee 0x0073A8A0 binds its PDB spelling ?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z (T1 target; was ?HasMode@CTCCreatureModeManager@@QAE_NK@Z).
+    bool IsModeActive(unsigned long mode) const;
     bool AddMode(unsigned long mode);           // 0x0073AE10
 };
 class CAIBrain { public:
@@ -112,6 +113,6 @@ void CAIStateGroup_Guildmaster::OnActivate()
     LastTeleportFrame = 0;
     CTCCreatureModeManager* modes;
     GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
-    if (!modes->HasMode(0x3b))
+    if (!modes->IsModeActive(0x3b))
         modes->AddMode(0x3b);
 }

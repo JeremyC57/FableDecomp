@@ -40,7 +40,6 @@ class CThing { public:
     }
     CCombatManager* GetCombatManager();         // 0x00661ED0
     bool IsInCombatMode();                      // 0x006621A0
-    bool IsCombatant();                         // 0x00662410
 };
 
 class CBaseObject;
@@ -195,6 +194,10 @@ struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroup_MeleeC
     public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662410 ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (was ?IsCombatant@CThing@@QAE_NXZ)
+class CThingCreatureBase { public: bool IsInMeleeAsAttacker() const; };
 void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
 {
     if (!IS_THING_ALIVE(PEnemy)) {
@@ -209,12 +212,12 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
     if (GetCreature()->IsInCombatMode())
         AddStrafeMode();
     OnReadyToAttack();
-    if (GetCreature()->IsCombatant()) {
+    if (reinterpret_cast<const CThingCreatureBase*>(GetCreature())->IsInMeleeAsAttacker()) {
         CThing* attacker = GetCreature();
         CWorld* world = &GetWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(*(const CThingCreatureBase*)attacker, true);
     }
-    while (IS_THING_ALIVE(PEnemy) && !IsStopping() && IsStillRunnable(true) && GetCreature()->IsCombatant()) {
+    while (IS_THING_ALIVE(PEnemy) && !IsStopping() && IsStillRunnable(true) && reinterpret_cast<const CThingCreatureBase*>(GetCreature())->IsInMeleeAsAttacker()) {
         CBrainOutput output;
         output.Types |= 0x20;
         output.SetAsLookAtThing(((CThing*)PEnemy.GetPItem()), 0x11);
@@ -225,7 +228,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
             return;
         }
     }
-    if (GetCreature()->IsCombatant()) {
+    if (reinterpret_cast<const CThingCreatureBase*>(GetCreature())->IsInMeleeAsAttacker()) {
         CThing* attacker = GetCreature();
         CWorld* world = &GetWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(*(const CThingCreatureBase*)attacker, false);

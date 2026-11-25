@@ -113,11 +113,13 @@ struct CTCCharge {                                   // interface 0x84 (descript
     bool IsDecapitating() const;                     // 0x0078BFC0
     void GetHitPosition(C3DVector* out) const;       // 0x0078C150
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005DA810 ?GetDamageType@CTCWeapon@@QBE?AW4EDamageAttribute@@XZ (was ?GetDamageAttribute@CTCWeapon@@QBEJXZ)
 class CTCWeapon { public:                                   // interface 0x48 (descriptive)
     bool IsMeleeWeapon() const;                          // 0x005DAA00; NF296: PDB name, was HasDamage
-    long GetDamageAttribute() const;                 // 0x005DA810
     float GetDamage() const;                         // 0x005DAAA0
-};
+ public: EDamageAttribute GetDamageType() const; };
 struct CDamageMultiplierDef : CCountedBase {
     unsigned char _pad08[0x44 - 0x08];
     float DamageMultiplier;                          // +0x44
@@ -296,7 +298,7 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
     const CTCWeapon* tc;
     if (weapon && !weapon->Dead && weapon->GetConstInterface(&tc, 0x48) && tc->IsMeleeWeapon()) {
         damage = tc->GetDamage();
-        attribute = (EDamageAttribute)tc->GetDamageAttribute();
+        attribute = (EDamageAttribute)reinterpret_cast<const CTCWeapon*>(tc)->GetDamageType();
     } else {
         attribute = DAMAGE_MELEE_UNARMED;
         damage = hitter.GetBaseMeleeDamage();

@@ -85,16 +85,19 @@ class CThingBuilding;
 struct CThingCreatureHome {
     unsigned char _pad[0x170];
     CIntelligentPointer<CThing> PHome;              // +0x170 CIntelligentPointer<CThingBuilding>
-    bool AutoPlaceNearBuilding(CThingBuilding* building, float radius);   // 0x00666EF0
 };
 
 struct CAIStateGroup_MinionSitAtSchool : CAIStateGroupBase {
 protected: virtual bool InitCreaturePosition(); public:   // Ego_r.pdb 0x00934B00 + FableWin.pdb: protected virtual (MAE)
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00666EF0 ?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z (was ?AutoPlaceNearBuilding@CThingCreatureHome@@QAE_NPAVCThingBuilding@@M@Z)
+class CThingCreatureBase { public: bool AutoPlaceNearBuilding(CThingBuilding const*, float); };
 FABLE_FORCEINLINE bool PlaceNearHome(CThingCreatureHome* creature)
 {
-    return creature->AutoPlaceNearBuilding((CThingBuilding*)creature->PHome.Get(), 5.0f);
+    return reinterpret_cast<CThingCreatureBase*>(creature)->AutoPlaceNearBuilding((CThingBuilding*)creature->PHome.Get(), 5.0f);
 }
 
 bool CAIStateGroup_MinionSitAtSchool::InitCreaturePosition()

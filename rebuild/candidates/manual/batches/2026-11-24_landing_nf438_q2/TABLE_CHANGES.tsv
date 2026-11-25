@@ -1,0 +1,39 @@
+action	symbol	target	witness	note
+delete	?FinishCurrentAction@CThing@@QAEXXZ	00662650	007a71b0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetHeightZBelowAt@CThing@@QAEMABVC3DVector@@_N1@Z	00666d40	007aa9e0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?Notify@CTCInterface1A@@QAEXXZ	005d8e50	007eddf0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?ConvertLocalMapAreaToWorldArea@CWorldMap@@QBE?AVC2DBoxI@@JABV2@@Z	004fc560	008203a0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetWorldBox@CMapRegionTable@@QAE?AVC2DBoxI@@JABV2@@Z	004fc560	008203a0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?ResumeForCutscene_0066aeb0@CTCSummonSpell@@QAEXXZ	0066aeb0	008337b0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetState@CThingSoundEmitter@@QAEEXZ	004c8050	00836780	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetHeadPos@CThing@@QAE?AVC3DVector@@_N@Z	00661b40	00846100	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetAnimDuration@CThingCreatureBase_Calls@@QAEMJ@Z	006627f0	00856a20	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?IsPickPocketable@CThingCreatureBase@@QBE_NXZ	00665e90	0088e220	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?IsPickPocketable@CThing_Retail@@QAE_NXZ	00665e90	0088e220	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetMapNumberFromScriptName@CWorldMap_Retail@@QAEJABVCCharString@@@Z	004fb880	0088e2a0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?SetHiddenOnMiniMap@CThingCreatureBase@@QAEX_N@Z	006626a0	0088e410	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?SetHiddenOnMiniMap@CThing_Retail@@QAEX_N@Z	006626a0	0088e410	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?ResetMaxRunningSpeedToDefault@CThingPlayerCreature@@QAEXXZ	006a9bc0	0088e810	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?ResetMaxRunningSpeedToDefault@CThing_Retail@@QAEXXZ	006a9bc0	0088e810	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?ResetMaxWalkingSpeedToDefault@CThingPlayerCreature@@QAEXXZ	006a9b70	0088e870	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?ResetMaxWalkingSpeedToDefault@CThing_Retail@@QAEXXZ	006a9b70	0088e870	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?PreloadBasicAnimations@CThingCreatureBase@@QAEXXZ	00663610	0088f530	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?PreloadBasicAnimations@CThing_Retail@@QAEXXZ	00663610	0088f530	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?SetNonScriptedEntitesPaused@CThingManager@@QAEX_N@Z	0051efc0	00890ab0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?SetNonScriptedEntitesPaused@CThingManager_Retail@@QAEX_N@Z	0051efc0	00890ab0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?FinishCurrentAction@CThing_Retail@@QAEXXZ	00662650	00890ba0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?SheatheAllWeapons@CThing_Retail@@QAEXXZ	006647f0	00890ba0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?UnsheatheAllWeapons@CThing_Retail@@QAEXXZ	00666830	00890c10	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?BuildScriptThing@CBaseObject@@QAE?AVCScriptThing@@XZ	004c7e50	00891610	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?SetCutsceneActionMode@CSubtitleRenderer@@QAEX_NABVCCharString@@@Z	004908da	008922c0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?SetMode@Inner@@QAEX_NABVCCharString@@@Z	004908da	008922c0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?IsAllowedToSetText@CSubtitleRenderer@@QBE_N_N@Z	00490927	00892b30	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?Query@CSub@@QAE_N_N@Z	00490927	00892b30	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?IsCreatureGenerationAllowed@CQuestManager_Retail@@QAE_NXZ	004afc60	00892d80	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?IsReportedOrUnreportedCrimeKnown@CTCVillage@@QAE_NXZ	0065bffa	008985a0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?IsReportedOrUnreportedCrimeKnown@CTCVillage_Retail@@QAE_NXZ	0065bffa	008985a0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetScriptThing@CBaseObject_Retail@@QAE?AVCScriptThing@@XZ	004c7e50	0089bc50	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?SetColour@CTCLight_Retail@@QAEXABVCRGBColour@@@Z	00640bb0	0089df10	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetScriptThing@CThingNative@@QAE?AVCScriptThing@@XZ	004c7e50	008a8440	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetAnimDuration@CThing@@QAEMJ@Z	006627f0	008c0fb0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetScriptThing@CThingRetail@@QBE?AVCScriptThing@@XZ	004c7e50	008d0610	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

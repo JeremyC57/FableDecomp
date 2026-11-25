@@ -23,7 +23,8 @@ class CBaseObjectPointer;
 
 
 class CCombatManager { public:
-    void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
+    // Naming (NF439 gen, 2026-11-25): callee 0x006EDC50 binds its PDB spelling ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (T1 target; was ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@PAVCThing@@_N@Z).
+    void RegisterCombatant(CThingCreatureBase& creature, CThingCreatureBase& target, bool hostile);
 };
 
 class CWorld { public:
@@ -59,7 +60,7 @@ void CAIStateGroup_MazeTutorialBattle::OnActivate()
         CThing* enemy = PEnemy.Get();
         CThingCreatureBase* creature = PBrain->Creature;
         CWorld* world = &GetWorld();
-        world->m_pCombatManager->RegisterCombatant(creature, enemy, true);
+        world->m_pCombatManager->RegisterCombatant(*creature, *(CThingCreatureBase*)enemy, true);
     }
     FrameOfLastShield = GetWorld().GetFrame();
 }

@@ -122,7 +122,6 @@ template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& 
 #pragma auto_inline(on)
 
 struct CTCRenownRatio {                         // the interface-0x14 component
-    float CalculateRatio();                     // 0x005CDBBE
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
@@ -176,6 +175,10 @@ public:
     void ResetCrier();                          // 0x00658E73
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005CDBBE ?GetStatsPersonalityValueRenown@CTCInventoryStats@@QAEMXZ (was ?CalculateRatio@CTCRenownRatio@@QAEMXZ)
+class CTCInventoryStats { public: float GetStatsPersonalityValueRenown(); };
 void CTCVillage::OnCreate()
 {
     CDefPointer<const CThingBaseDef> thingDef;
@@ -187,7 +190,7 @@ void CTCVillage::OnCreate()
     CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)(CMainGameComponent::Get()->World))->PeekMyPlayer())->GetPControlledCreature();
     CDefPointer<const CVillagePeopleDef> peopleDef;
     if (thingDef->GetSubDef(&peopleDef) && IS_THING_ALIVE(hero) && hero->HasTC(0x14))
-        NextGuardRespawn = (long)(((CTCRenownRatio*)hero->GetTC(0x14))->CalculateRatio()
+        NextGuardRespawn = (long)(reinterpret_cast<CTCInventoryStats*>(((CTCRenownRatio*)hero->GetTC(0x14)))->GetStatsPersonalityValueRenown()
                                   * peopleDef->GuardRespawnMaxRenownBasedOffset);
     LightActiveStateToChange = !PeekWorld().PGameTimeManager->IsDay();
     MaxFrameToAssignTask = -1;

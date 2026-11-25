@@ -77,7 +77,6 @@ struct CMapRegionTable {
     virtual void r06(); virtual void r07(); virtual void r08(); virtual void r09(); virtual void r10(); virtual void r11();
     virtual void r12(); virtual void r13(); virtual void r14(); virtual void r15(); virtual void r16();
     virtual long GetRegionIndex(const void* key);  // slot 17 (+0x44)
-    C2DBoxI GetWorldBox(long index, const C2DBoxI& box);   // 0x004FC560
 };
 struct CMapUpdateSink {
     virtual void u00(); virtual void u01(); virtual void u02(); virtual void u03(); virtual void u04(); virtual void u05();
@@ -121,6 +120,10 @@ class CMap { public:
     void ApplyScriptedMapBrushUpdate(float amount, CScriptedMapBrush* brush);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004FC560 ?ConvertLocalMapAreaToWorldArea@CWorldMap@@QBE?AVC2DBoxI@@JABV2@@Z (was ?GetWorldBox@CMapRegionTable@@QAE?AVC2DBoxI@@JABV2@@Z)
+class CWorldMap { public: C2DBoxI ConvertLocalMapAreaToWorldArea(long, C2DBoxI const&) const; };
 void CMap::ApplyScriptedMapBrushUpdate(float amount, CScriptedMapBrush* brush)
 {
     const C2DBoxI& area = brush->GetGameArea();
@@ -163,6 +166,6 @@ void CMap::ApplyScriptedMapBrushUpdate(float amount, CScriptedMapBrush* brush)
         UpdateBrushBlends(brush);
     }
     long region = POwner->GetRegionTable()->GetRegionIndex(RegionKey);
-    C2DBoxI worldBox = POwner->GetRegionTable()->GetWorldBox(region, brush->GetGameArea());
+    C2DBoxI worldBox = reinterpret_cast<const CWorldMap*>(POwner->GetRegionTable())->ConvertLocalMapAreaToWorldArea(region, brush->GetGameArea());
     POwner->GetUpdateSink()->AddUpdateArea(worldBox);
 }

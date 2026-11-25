@@ -1,0 +1,4 @@
+004022b0	?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	009a4ec0
+00449cb0	?GetPlayer@CPlayerManager@@QAEPAUCPlayer@@J@Z	?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z	004498c0
+00449cb0	?SwitchPlayerCharactersWith@CPlayer@@QAE_NPAU1@@Z	?SwitchPlayerCharactersWith@CPlayer@@QAE_NAAV1@@Z	004888c0
+007ea2d0	?Query@Inner@@QAEJPAXM@Z	?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z	004bde90

@@ -83,7 +83,6 @@ public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    float GetAnimDuration(long animation);            // 0x006627F0 (CThingCreatureBase)
     FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -142,9 +141,13 @@ class CCreatureAction_JackFloatUp : public CCombatActionBase { public:
     void PerformAction();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006627F0 ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z (was ?GetAnimDuration@CThing@@QAEMJ@Z)
+class CThingCreatureBase { public: float GetAnimDuration(long) const; };
 void CCreatureAction_JackFloatUp::PerformAction()
 {
-    FloatSpeed = FloatHeight / (GetCreature()->GetAnimDuration(GetAnimationIndex()) - RunningTimeSeconds);
+    FloatSpeed = FloatHeight / (reinterpret_cast<const CThingCreatureBase*>(GetCreature())->GetAnimDuration(GetAnimationIndex()) - RunningTimeSeconds);
     Moving = true;
     CDefPointer<CSpecialEffectsDef> effectsSlot;
     long effectType = 0;

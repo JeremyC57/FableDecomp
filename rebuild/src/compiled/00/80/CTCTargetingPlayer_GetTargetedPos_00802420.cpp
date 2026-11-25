@@ -18,7 +18,8 @@ class CWorld;
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTHING_PEEKPLAYER
 #include "engine/CThing.h"
-C3DVector __fastcall GetTargetFirePoint(const CWorld* world, const CThing* target, float t);   // 0x007EA2F0
+// Naming (NF439 gen, 2026-11-25): callee 0x007EA2F0 binds its PDB spelling ?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z (T1 target; was the free stand-in ?GetTargetFirePoint@@YI?AVC3DVector@@PBVCWorld@@PBVCThing@@M@Z).
+namespace NTargeting { C3DVector __fastcall GetTargetingPositionOnThing(CWorld const& world, CThing const& target, float t); }
 class CTCBase
 {
 public:
@@ -56,7 +57,7 @@ bool CTCTargetingPlayer::GetTargetedPos(C3DVector& pos, float t)
         return true;
     }
     if (target && !target->IsDead()) {
-        pos = GetTargetFirePoint((&PeekWorld()), target, t);
+        pos = NTargeting::GetTargetingPositionOnThing(*((&PeekWorld())), *target, t);
         return true;
     }
     return false;

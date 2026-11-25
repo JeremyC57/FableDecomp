@@ -73,9 +73,11 @@ class CQuestManager { public:
     bool ActivateTestQuestCard(const CCharString& name, const CCharString& cardDefName);   // 0x004B4C50
     bool ActivateQuest(const CCharString& name, bool a, bool b);               // 0x004B4A10 (NF75 q10942: Ego_r.pdb bool result, ?ActivateQuest@CQuestManager@@QAE_NABVCCharString@@_N1@Z; was void)
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004A0940 ?TeleportHeroToHSP@CWorld@@QAE_NABVCCharString@@@Z (was ?LoadQuestHSP@CWorld@@QAEXABVCCharString@@@Z)
 class CWorld { public:
-    void LoadQuestHSP(const CCharString& hspName);  // 0x004A0940
-};
+ public: bool TeleportHeroToHSP(CCharString const&); };
 class CConsole {
 public:
     static CConsole* Get();                        // 0x00414C90
@@ -133,7 +135,7 @@ void CTCInventoryQuests::ActivateSelectedTestQuest()
     }
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().DeactivateQuest(quest.QuestName, 0);
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ClearQuestPersistScript(quest.QuestName);
-    GetWorld().LoadQuestHSP(quest.HSPName);
+    reinterpret_cast<CWorld*>(&(GetWorld()))->TeleportHeroToHSP(quest.HSPName);
     if (quest.QuestCardDefName != "")
         CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateTestQuestCard(quest.QuestName, quest.QuestCardDefName);
     else

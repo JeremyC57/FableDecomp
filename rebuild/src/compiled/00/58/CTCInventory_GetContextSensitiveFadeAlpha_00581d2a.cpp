@@ -34,7 +34,6 @@ template<class T> struct CRetailVector {
 struct CFadeInFadeOutBaseCalls {
     bool          Active;                // +0x00
     unsigned char _rest[0x1B];
-    float GetAlpha();                    // 0x004348D0
 };
 
 // Retail CTCInventory view: the vector sits at +0x160 (PDB +0x188; every container member
@@ -45,6 +44,10 @@ struct CTCInventory_Retail {
     float GetContextSensitiveFadeAlpha(long index);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004348D0 ?GetFadeInOutAlpha@CFadeInFadeOutBase@@QBEMXZ (was ?GetAlpha@CFadeInFadeOutBaseCalls@@QAEMXZ)
+class CFadeInFadeOutBase { public: float GetFadeInOutAlpha() const; };
 float CTCInventory_Retail::GetContextSensitiveFadeAlpha(long index)
 {
     // Inactive fader => fully opaque (1.0f from the .rdata constant pool), else the fader's alpha.
@@ -52,5 +55,5 @@ float CTCInventory_Retail::GetContextSensitiveFadeAlpha(long index)
     // the lander's pragma sweep selects (#pragma optimize("s",on)).
     if (!this->ContextSensitiveFadeTimes[index].Active)
         return 1.0f;
-    return this->ContextSensitiveFadeTimes[index].GetAlpha();
+    return reinterpret_cast<const CFadeInFadeOutBase*>(&(this->ContextSensitiveFadeTimes[index]))->GetFadeInOutAlpha();
 }

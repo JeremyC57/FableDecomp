@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+009bf160	HOLD	?SetRenderTarget@CDisplayManagerSetRenderTargetView@@QAE_NAAVCRenderTarget@@@Z	?SetRenderTarget@CDisplayManagerSetRenderTargetView@@QAE_NAAVCRenderTarget@@@Z	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL'); link gate
+009bf220	HOLD	?SetRenderTargetAsBackScreen@CDisplayManagerBackScreenView@@QAE_NXZ	?SetRenderTargetAsBackScreen@CDisplayManagerBackScreenView@@QAE_NXZ	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL'); link gate

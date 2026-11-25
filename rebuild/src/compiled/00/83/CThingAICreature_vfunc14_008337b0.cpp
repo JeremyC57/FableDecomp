@@ -12,7 +12,6 @@
 class CTCBase;
 
 class CTCSummonSpell { public:
-    void ResumeForCutscene_0066aeb0();                        // 0x0066AEB0
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -49,12 +48,16 @@ class CThingAICreature : public CThingCreatureBase { public:
     void vfunc_14(bool resuming);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0066AEB0 ?StopAllAttachedSounds@CTCSoundPlayer@@QAEXXZ (was ?ResumeForCutscene_0066aeb0@CTCSummonSpell@@QAEXXZ)
+class CTCSoundPlayer { public: void StopAllAttachedSounds(); };
 void CThingAICreature::vfunc_14(bool resuming)
 {
     if (resuming) {
         CTCSummonSpell* summon;
         if (GetInterface(&summon, 0x10))
-            summon->ResumeForCutscene_0066aeb0();
+            reinterpret_cast<CTCSoundPlayer*>(summon)->StopAllAttachedSounds();
     } else {
         PlayCreatureContinuousSounds();
     }

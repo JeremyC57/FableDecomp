@@ -14,9 +14,13 @@ struct Physics {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virt
 void* __fastcall Allocate(unsigned charSize,bool);
 } // (hoisted to global scope: naming wave 22, the PDB CCharString)
 class CCharString { public:void* data;CCharString(const char*,int=-1);~CCharString();};
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C9CA0 ?DoActivationSequence@CThing@@QAE_NXZ (was ?DoActivationSequence@CThingPlayerCreature@NFactory006ac910@@QAE_NXZ)
+class CThing { public: bool DoActivationSequence(); };
 namespace NFactory006ac910 {
 void __fastcall DisplayProgress(const CCharString&,bool,float,int);
 struct Extra {void Set(void*);};struct Handle {virtual void v0()=0;virtual void* Get()=0;};
 struct CThingPlayerCreature {char prefix[96];Physics* physics;char gap[108];Extra extra;CThingPlayerCreature();bool ConstructFromParams(int,const C3DVector&,int,int);bool Init8(int,int,int,int,int,int,int,int);bool DoActivationSequence();void Add(const CCharString&,int,int);static CThingPlayerCreature* __fastcall Create(int,const C3DVector&,int,int);};
-CThingPlayerCreature* __fastcall CThingPlayerCreature::Create(int a,const C3DVector& position,int b,int c){CThingPlayerCreature* result=0;CThingPlayerCreature* p=new(Allocate(0x208,false))CThingPlayerCreature;if(p&&p->ConstructFromParams(a,position,b,c)){DisplayProgress("CThingPlayerCreature::Create 1",false,-1.0f,0);Physics* physics=p->physics;physics->Set(CTCParamsPhysicsBase(position,CRightHandedSet()));if(p->DoActivationSequence())result=p;DisplayProgress("CThingPlayerCreature::Create 2",false,-1.0f,0);}return result;}
+CThingPlayerCreature* __fastcall CThingPlayerCreature::Create(int a,const C3DVector& position,int b,int c){CThingPlayerCreature* result=0;CThingPlayerCreature* p=new(Allocate(0x208,false))CThingPlayerCreature;if(p&&p->ConstructFromParams(a,position,b,c)){DisplayProgress("CThingPlayerCreature::Create 1",false,-1.0f,0);Physics* physics=p->physics;physics->Set(CTCParamsPhysicsBase(position,CRightHandedSet()));if(reinterpret_cast<CThing*>(p)->DoActivationSequence())result=p;DisplayProgress("CThingPlayerCreature::Create 2",false,-1.0f,0);}return result;}
 }

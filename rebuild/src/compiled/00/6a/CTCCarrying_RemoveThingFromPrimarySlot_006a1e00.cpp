@@ -41,7 +41,6 @@ class CThing { public:
 struct CTCInterface1A {
     unsigned char _pad00[0x10];
     void*         Armed;                                // +0x10
-    void OnUseFailed();                                 // 0x005D8E50
 };
 class CTCWeapon { public:
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
@@ -68,6 +67,10 @@ public:
     CThing* GetThingInPrimarySlot() const;   // 0x006A1440
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnUseFailed@CTCInterface1A@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
 {
     if (!IsPrimarySlotFree()) {
@@ -79,7 +82,7 @@ CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
         if (!IsCarryingThing(*thing) && thing->HasTC(0x1a)) {
             CTCInterface1A* c = thing->GetTC<CTCInterface1A>(0x1a);
             if (c->Armed)
-                c->OnUseFailed();
+                reinterpret_cast<CTCInventoryItem*>(c)->ReturnToInventory();
         }
         if (thing->HasTC(0x48)) {
             CTCWeapon* weapon = thing->GetTC<CTCWeapon>(0x48);

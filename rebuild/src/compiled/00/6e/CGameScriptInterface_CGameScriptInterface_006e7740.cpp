@@ -73,7 +73,6 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
 
 class CGameScriptInterface;
 extern CGameScriptInterface* g_pGameScriptInterfaceInstance;      // 0x0143E8F0
-void __fastcall SetGameScriptInterface(CGameScriptInterface* gsi); // 0x00CBE0C0
 
 class CGameScriptInterface : public CBaseClassNonCopyable {
 public:
@@ -99,6 +98,11 @@ public:
     long                          CreateCreatureDelayFrames;        // +0x4c
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00CBE0C0 ?SetDSTGame@@YIXAAVCGameScriptInterfaceBase@@@Z (was ?SetGameScriptInterface@@YIXPAVCGameScriptInterface@@@Z)
+class CGameScriptInterfaceBase;
+void __fastcall SetDSTGame(CGameScriptInterfaceBase&);
 CGameScriptInterface::CGameScriptInterface(CMainGameComponent& component, const CGameDefinitionManager& definitions,
                                            CWorld& world, CPlayerManager& players, CDisplayEngine& display)
     : World(&world),
@@ -117,5 +121,5 @@ CGameScriptInterface::CGameScriptInterface(CMainGameComponent& component, const 
       CreateCreatureDelayFrames(0)
 {
     g_pGameScriptInterfaceInstance = this;
-    SetGameScriptInterface(this);
+    SetDSTGame(*reinterpret_cast<CGameScriptInterfaceBase*>(this));
 }

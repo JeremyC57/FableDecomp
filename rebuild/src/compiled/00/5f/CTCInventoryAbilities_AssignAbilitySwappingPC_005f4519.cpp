@@ -25,14 +25,19 @@ template <class T> struct CRetailVector {            // STLport vector (12 bytes
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005F0DC5 ?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z (was ?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAUCComponent@@@Z)
+//   0x005F1320 ?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAVCComponent@NUISystem@@@Z (was ?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAUCComponent@@@Z)
+namespace NUISystem { class CComponent; }
 class CTCInventoryAbilities { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x174];
     CRetailVector<long> AssignedAbilities;           // +0x17C vector<EHeroAbility>
 
-    void UnAssignAbilityPC(unsigned long slot, CComponent* slotComponent);                  // 0x005F1320
-    void AssignAbilityPC(long ability, unsigned long slot, CComponent* slotComponent);      // 0x005F0DC5
+    void UnAssignAbilityPC(unsigned long, NUISystem::CComponent*);                  // 0x005F1320
+    void AssignAbilityPC(long, unsigned long, NUISystem::CComponent*);      // 0x005F0DC5
     void AssignAbilitySwappingPC(long ability, unsigned long slot, unsigned long fromSlot,
                                  CComponent* slotComponent, CComponent* fromComponent);
 };
@@ -43,16 +48,16 @@ void CTCInventoryAbilities::AssignAbilitySwappingPC(long ability, unsigned long 
     long current = AssignedAbilities[slot];
     if (!(slot & 1) && slot < AssignedAbilities.size() - 1) {
         if (current == 0 && fromSlot == slot + 1)
-            UnAssignAbilityPC(fromSlot, fromComponent);
+            UnAssignAbilityPC(fromSlot, reinterpret_cast<NUISystem::CComponent*>(fromComponent));
         else if (AssignedAbilities[slot + 1] == ability)
-            UnAssignAbilityPC(slot, slotComponent);
+            UnAssignAbilityPC(slot, reinterpret_cast<NUISystem::CComponent*>(slotComponent));
     } else if (slot > 0) {
         if (current == 0 && fromSlot == slot - 1)
-            UnAssignAbilityPC(fromSlot, fromComponent);
+            UnAssignAbilityPC(fromSlot, reinterpret_cast<NUISystem::CComponent*>(fromComponent));
         else if (AssignedAbilities[slot - 1] == ability)
-            UnAssignAbilityPC(slot, slotComponent);
+            UnAssignAbilityPC(slot, reinterpret_cast<NUISystem::CComponent*>(slotComponent));
     }
     if (current)
-        AssignAbilityPC(current, fromSlot, fromComponent);
-    AssignAbilityPC(ability, slot, slotComponent);
+        AssignAbilityPC(current, fromSlot, reinterpret_cast<NUISystem::CComponent*>(fromComponent));
+    AssignAbilityPC(ability, slot, reinterpret_cast<NUISystem::CComponent*>(slotComponent));
 }

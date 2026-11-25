@@ -39,9 +39,12 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     }
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z)
 class CDefString { public:
     long TablePos;
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);   // 0x0044FC00
 };
 
 struct CPhysicalPrimitiveSphere {
@@ -53,7 +56,7 @@ struct CPhysicalPrimitiveSphere {
 
 void CPhysicalPrimitiveSphere::TransferBinaryIn(CMemoryDataInputStream* stream)
 {
-    BaseName.TransferBinaryIn(stream);
+    BaseName.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(stream));
     float radius;
     stream->Read(&radius, sizeof(radius));
     Radius = radius;

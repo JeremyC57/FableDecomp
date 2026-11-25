@@ -100,10 +100,10 @@ namespace NCreatureMode {
     bool __fastcall IsToEvadeAllHits(const CThing& thing);                  // 0x0085FA00
 }
 
-C3DVector __fastcall Geometry_ClosestPointOnLineSegment(const C3DVector& lineStart, const C3DVector& lineEnd,
-                                                        const C3DVector& point);   // 0x008F5970
-float __fastcall Geometry_DistancePointToLineSegment(const C3DVector& lineStart, const C3DVector& lineEnd,
-                                                     const C3DVector& point);   // 0x008F5BA0
+// Naming (NF439 gen, 2026-11-25): callee 0x008F5970 binds its PDB spelling ?GetClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z (T1 target; was the free stand-in ?Geometry_ClosestPointOnLineSegment@@YI?AVC3DVector@@ABV1@00@Z).
+namespace NPhysicsHelpers { C3DVector __fastcall GetClosestPointOnFiniteLineToPoint(C3DVector const& lineStart, C3DVector const& lineEnd, C3DVector const& point); }
+// Naming (NF439 gen, 2026-11-25): callee 0x008F5BA0 binds its PDB spelling ?GetPerpendicularDistanceFromFiniteLine@NPhysicsHelpers@@YIMABVC3DVector@@00@Z (T1 target; was the free stand-in ?Geometry_DistancePointToLineSegment@@YIMABVC3DVector@@00@Z).
+namespace NPhysicsHelpers { float __fastcall GetPerpendicularDistanceFromFiniteLine(C3DVector const& lineStart, C3DVector const& lineEnd, C3DVector const& point); }
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -153,7 +153,7 @@ public:
     CRetailVector<CIntelligentPointer<CThing> > HitThings;   // +0x54
     float GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) const
     {
-        return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPos()) / DamageRadius;
+        return NPhysicsHelpers::GetPerpendicularDistanceFromFiniteLine(StartPos, EndPos, thing->GetPos()) / DamageRadius;
     }
     private:
     void GiveDamageToThing(CThingGameObject& thing);
@@ -164,7 +164,7 @@ void CTCDExplosion::GiveDamageToThing(CThingGameObject& thing)
 {
     if (NCreatureMode::IsToEvadeAllHits(thing))
         return;
-    C3DVector closest = Geometry_ClosestPointOnLineSegment(StartPos, EndPos, thing.GetPos());
+    C3DVector closest = NPhysicsHelpers::GetClosestPointOnFiniteLineToPoint(StartPos, EndPos, thing.GetPos());
     const C3DVector& position = thing.GetPos();
     CHitParameters hit(0, ParentThing, 0, closest,
                        C3DVector(position.X - closest.X, position.Y - closest.Y, position.Z - closest.Z),

@@ -45,7 +45,6 @@ public:
     }
 };
 struct CTCInterface1A {
-    void Notify();                                          // 0x005D8E50
 };
 
 template <class T> class CDefPointer;
@@ -141,6 +140,10 @@ void CTCInventoryBase::GetAllItems(CItemVector& items)
 }
 #pragma auto_inline(on)
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?Notify@CTCInterface1A@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 CThing* CTCInventoryBase::GetResurrectionItemInInventory()
 {
     CItemVector items;
@@ -157,7 +160,7 @@ CThing* CTCInventoryBase::GetResurrectionItemInInventory()
                 return object;
             CTCInterface1A* component = 0;
             object->GetInterface(&component, 0x1a);
-            component->Notify();
+            reinterpret_cast<CTCInventoryItem*>(component)->ReturnToInventory();
         }
     }
     return 0;

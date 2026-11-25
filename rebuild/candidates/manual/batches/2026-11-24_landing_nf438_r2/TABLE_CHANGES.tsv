@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	?Init@CDisplayManager@@QAEXABVCDisplayManagerInit@@_N@Z	009c0e50	009a6610	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?Init@CDisplayManager@@QAE_NABVCDisplayManagerInit@@_N@Z	009c0e50	009a6610	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

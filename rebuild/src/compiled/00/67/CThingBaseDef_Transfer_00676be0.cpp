@@ -39,9 +39,13 @@ class CThingComponentSet { public:                             // CSmallVector<C
     void TransferBinaryOut(CDataOutputStream& stream) const;        // 0x008708F0
 };
 #pragma pack(pop)
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z)
+class CDataInputStream;
 class CDefString { public:
     long m_index;
-    void TransferBinaryIn(CMemoryDataInputStream* stream);          // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);          // 0x0044FC00
 };
 
 template<class T> struct CPersistTraits {              // a value with its own binary transfer
@@ -61,7 +65,7 @@ template<> struct CPersistTraits<float> {
 };
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
+    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(&stream)); }
     static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.m_index); }
 };
 

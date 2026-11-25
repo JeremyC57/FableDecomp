@@ -1,0 +1,7 @@
+action	symbol	target	witness	note
+delete	?Geometry_DistancePointToLineSegment@@YIMABVC3DVector@@00@Z	008f5ba0	0080c210	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?AddLightPrimitive@CEngineLightingManager@@QAEXABVCEngineInternalPrimitiveLight@@@Z	00b47fd0	00b481e0	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?AddPointLightPrimitive@CEngineLightingManager@@QAEXPAVCEngineInternalPrimitiveBase@@@Z	00b47fd0	00b481e0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?AddLightPrimitive@CEngineLightingManager@@QAEXABVCEngineInternalPrimitiveShadowedSpotLight@@@Z	00b480e0	00b481e0	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?AddSpotLightPrimitive@CEngineLightingManager@@QAEXPAVCEngineInternalPrimitiveBase@@@Z	00b480e0	00b481e0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?UpdateBackgroundLOD@CEngineLandscapeMap@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z	00bdc180	00b68610	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before

@@ -80,6 +80,9 @@ class CPlayerSave { public:
 };
 }
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004498C0 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z (was ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z)
 class CPlayerManager { public:
     void*               __vftable;
     CMainGameComponent* Component;                      // +0x04
@@ -87,13 +90,13 @@ class CPlayerManager { public:
     unsigned char       Players[0x0c];                  // +0x0c vector<CPlayer*>
     long                PlayerNeutral;                  // +0x18
     long                MainPlayer;                     // +0x1c
-    CPlayer* GetPlayer(long number);                    // 0x004498C0
+    CPlayer& GetPlayer(long);                    // 0x004498C0
     void SaveGameState(CPersistContext& context);
 };
 
 void CPlayerManager::SaveGameState(CPersistContext& context)
 {
-    CThing* character = GetPlayer(MainPlayer)->GetPlayerCharacter();
+    CThing* character = (&GetPlayer(MainPlayer))->GetPlayerCharacter();
     NPlayerManager::CPlayerSave save;
     save.CharacterUID = character->GetUniqueID();
     const C3DVector& position = character->GetPos();

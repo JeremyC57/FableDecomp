@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_ScorpionLungeAttack::OnCreate() -- stamp the sequence with the current frame plus a world-random 0..(10 s of frames) offset, queue the lunge action, then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00907010, 200 bytes (208 with padding), virtual OnCreate.
 // Callees: CWorld::GetPRandomSeed 0x0049D810 on the world at [0x013B86A0]+0x24 (manifest "CVertexBufferWin32::DoSizeof"
@@ -100,7 +101,8 @@ class CCombatSequenceBase { public:
     CThing* m_pTarget;                      // +0x20
     CThingCreatureBase* GetCreature() const { return m_pOwner; }
     CThing* GetTarget() const { return m_pTarget; }
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 
@@ -123,6 +125,6 @@ void CCombatSequence_ScorpionLungeAttack::OnCreate()
     m_frameOfNextUse = CWorld::GetFrame() + offset;
     CCountedPointer action;
     action = new CCombatAction_008ccc70(GetCreature(), GetTarget());
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

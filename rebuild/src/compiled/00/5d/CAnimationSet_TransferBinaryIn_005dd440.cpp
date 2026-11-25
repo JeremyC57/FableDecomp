@@ -52,10 +52,13 @@ template <class T> FABLE_FORCEINLINE T PersistRead(CMemoryDataInputStream* strea
     return value;
 }
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z)
 class CDefString { public:
     long Index;                            // -1 = none
     CDefString() : Index(-1) { }
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);   // 0x0044FC00
 };
 class CAnimComponentMap { public:
     virtual void v00();
@@ -129,5 +132,5 @@ void CAnimationSet::TransferBinaryIn(CMemoryDataInputStream* stream)
     PersistTransferBinaryIn(stream, &DefaultFlags);
     PersistTransferBinaryIn(stream, &DefaultTransitionTime);
     PersistTransferBinaryIn(stream, &DefaultDelay);
-    DefaultGroup.TransferBinaryIn(stream);
+    DefaultGroup.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(stream));
 }

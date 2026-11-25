@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_TrollProjectileAttack::OnCreate() -- queue the two troll projectile attacks (PROJECTILE_ATTACK_FIRST / _SECOND), then the base OnCreate
 // Leaf: ?OnCreate@CCombatSequence_TrollProjectileAttack@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009079C0, 288 bytes (incl. int3 padding).
@@ -62,7 +63,8 @@ class CCombatSequenceBase { public:
     CThing* m_pTarget;                      // +0x20
     CThingCreatureBase* GetCreature() const { return m_pCreature; }
     CThing* GetTarget() const { return m_pTarget; }
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 struct CCombatSequence_TrollProjectileAttack : CCombatSequenceBase {
@@ -73,8 +75,8 @@ void CCombatSequence_TrollProjectileAttack::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_TrollProjectileAttack(GetCreature(), GetTarget(), "PROJECTILE_ATTACK_FIRST");
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_TrollProjectileAttack(GetCreature(), GetTarget(), "PROJECTILE_ATTACK_SECOND");
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

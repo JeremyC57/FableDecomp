@@ -14,7 +14,6 @@ struct Sub18 {
 
 struct Obj4 {
     // method at 0x4c7ac0; no args
-    void Method();
 };
 
 struct CParticleSystem {
@@ -27,9 +26,13 @@ struct CParticleSystem {
 };
 
 // __fastcall models this-call: self in ecx, edx dead, arg on stack, ret 4.
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7AC0 ?AddToRenderList@CThing@@QAEXXZ (was ?Method@Obj4@@QAEXXZ)
+class CThing { public: void AddToRenderList(); };
 void __fastcall Kill(CParticleSystem* self, int edx, int arg)
 {
     self->sub.Method(&arg);
-    self->PParentEmitter->Method();
+    reinterpret_cast<CThing*>(self->PParentEmitter)->AddToRenderList();
     self->flags |= 4;
 }

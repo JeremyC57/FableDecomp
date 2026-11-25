@@ -50,9 +50,11 @@ struct CLoader {
 class CInputManager;
 extern CInputManager* GPInputManager;                   // 0x013B8388 ?GPInputManager@@3PAVCInputManager@@A
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00416225 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ (was ?GetFrame@CMainGameComponent@@QAEKXZ)
 class CMainGameComponent { public:
-    unsigned long GetFrame();                           // 0x00416225
-};
+ public: long GetCurrentServerFrame() const; };
 
 class CDiskFileWin32 { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -77,7 +79,7 @@ void CGamePlayerInterface::SavePacketEvent(const CInputEvent& event)
 {
     CSavedInputEvent saved;
     saved.InputEvent = event;
-    saved.Frame = Component->GetFrame();
+    saved.Frame = reinterpret_cast<const CMainGameComponent*>(Component)->GetCurrentServerFrame();
     CMouseDevice* mouse = ((CLoader*)GPInputManager)->m_pMouse;
     if (mouse)
         mouse->GetPosition(&saved.MousePos);

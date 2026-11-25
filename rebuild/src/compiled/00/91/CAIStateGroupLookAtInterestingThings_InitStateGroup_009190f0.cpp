@@ -24,6 +24,7 @@ class CThingAICreature;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 #include "engine/CVectorMap.h"
+enum EIdleStateGroup {};   // PDB enum type (enumerators not modelled)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CBaseIntelligentPointer {
@@ -150,7 +151,8 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 
 class CThingAICreature;
 class CTCIdleScheduler { public:                       // interface 0xd3
-    void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleType);   // 0x00801920
+    // Naming (NF439 gen, 2026-11-25): callee 0x00801920 binds its PDB spelling ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@W4EIdleStateGroup@@@Z (T1 target; was ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@J@Z).
+    void RegisterIdleStateGroup(CAIStateGroupBase*group, EIdleStateGroup idleType);
 };
 
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
@@ -170,5 +172,5 @@ void CAIStateGroup_LookAtInterestingThings::InitStateGroup(const CWorld& world, 
     FrameToLook = CWorld::GetFrame() + (a + b) * framesPerSecond;
     CTCIdleScheduler* scheduler;
     if (((CThing&)creature).GetTC(TCI_IDLE_SCHEDULER, &scheduler))
-        scheduler->RegisterIdleStateGroup(this, 9);
+        scheduler->RegisterIdleStateGroup(this, (EIdleStateGroup)9);
 }

@@ -11,7 +11,8 @@
 // Shape: `last` re-read every iteration; the thing pointer is a named local.
 extern bool g_FlourishDangerThings;                         // 0x0137574D
 class CThing;
-bool __fastcall IsKnockedDown(CThing* thing);               // 0x0085F010
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F010 binds its PDB spelling ?IsKnockedDown@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsKnockedDown@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsKnockedDown(CThing const& thing); }
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -64,7 +65,7 @@ bool CTCStealth::IsAbleToFlourishDangerThings() const
         return true;
     for (CDangerThing* it = m_pDangerFirst; it != m_pDangerLast; ++it) {
         CThing* thing = ((CThing*)((CBaseIntelligentPointer*)&(it->first))->GetPItem());
-        if (thing && !IsKnockedDown(thing) && it->Status != 4)
+        if (thing && !NCreatureMode::IsKnockedDown(*thing) && it->Status != 4)
             return true;
     }
     return false;

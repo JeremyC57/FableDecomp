@@ -74,11 +74,14 @@ class CSystemManagerInit { public:                        // retail layout
 struct SCountBlock { long RefCount; void (__fastcall* Destroy)(void* object); void* Object; };
 class CDeviceResetCallback { public: virtual void OnDeviceReset(); };
 class CSystemManager;
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009C0E50 ?Init@CDisplayManager@@QAEXABVCDisplayManagerInit@@_N@Z (was ?Init@CDisplayManager@@QAE_NABVCDisplayManagerInit@@_N@Z)
 class CDisplayManager { public:                       // 0x2c8 bytes
     unsigned char _body[0x2c8];
     CDisplayManager(CSystemManager& owner);        // 0x009C0880 (Ego_r + FableWin AAV)
     void AddDeviceResetCallback(CDeviceResetCallback* callback);   // 0x009C0190
-    bool Init(const CDisplayManagerInit& init, bool exclusive);    // 0x009C0E50
+    void Init(CDisplayManagerInit const&, bool);    // 0x009C0E50
 };
 // Name fix (agentNF27, 2026-11-12, FAM10 NAME_FIXES): the counted pointers are the shared CCountedPointer<T> (Ego_r.pdb CSystemManager:
 //   LibDebugManager CCountedPointer<CDebugManager>, PInputManager <CInputManager>, PDisplayManager <CDisplayManager>, PGraphicBankManager

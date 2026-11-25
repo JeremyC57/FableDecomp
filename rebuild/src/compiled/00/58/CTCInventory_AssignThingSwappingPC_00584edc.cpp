@@ -20,17 +20,21 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00584B86 ?AssignThingPC@CTCInventory@@QAEXJKPAVCComponent@NUISystem@@@Z (was ?AssignThingPC@CTCInventory@@QAEXJKPAUCComponent@@@Z)
+namespace NUISystem { class CComponent; }
 class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
-    void AssignThingPC(long item, unsigned long slot, CComponent* component);   // 0x00584B86
+    void AssignThingPC(long, unsigned long, NUISystem::CComponent*);   // 0x00584B86
     void AssignThingSwappingPC(long item, unsigned long slot, long previousSlot, CComponent* component, CComponent* previousComponent);
 };
 
 void CTCInventory::AssignThingSwappingPC(long item, unsigned long slot, long previousSlot, CComponent* component, CComponent* previousComponent)
 {
     long previousItem = QuickAccessItems[slot];
-    AssignThingPC(item, slot, component);
+    AssignThingPC(item, slot, reinterpret_cast<NUISystem::CComponent*>(component));
     if (previousItem)
-        AssignThingPC(previousItem, previousSlot, previousComponent);
+        AssignThingPC(previousItem, previousSlot, reinterpret_cast<NUISystem::CComponent*>(previousComponent));
 }

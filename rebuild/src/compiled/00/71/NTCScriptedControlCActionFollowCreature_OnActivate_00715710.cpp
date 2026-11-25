@@ -89,8 +89,10 @@ class CThing { public:
     }
 };
 
-bool __fastcall IsAbleToMove(CThing* creature);                  // 0x0085F3E0
-void __fastcall RemoveMovementBlockingModes(CThing* creature);   // 0x0085F600
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F3E0 binds its PDB spelling ?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsAbleToMove@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsAbleToMove(CThing const& creature); }
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F600 binds its PDB spelling ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z (T1 target; was the free stand-in ?RemoveMovementBlockingModes@@YIXPAVCThing@@@Z).
+namespace NCreatureMode { void __fastcall RemoveMovementBlockingModes(CThing& creature); }
 
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -132,8 +134,8 @@ private:
 void NTCScriptedControl::CActionFollowCreature::OnActivate()
 {
     Activated = true;
-    if (!IsAbleToMove(PTCScript->ParentThing))
-        RemoveMovementBlockingModes(PTCScript->ParentThing);
+    if (!NCreatureMode::IsAbleToMove(*(PTCScript->ParentThing)))
+        NCreatureMode::RemoveMovementBlockingModes(*(PTCScript->ParentThing));
     PTCOldPhysics = 0;
     CTCPhysicsBase* physics = PTCScript->ParentThing->PPhysics;
     if (physics->GetName() != "CTCPhysicsNavigator") {

@@ -74,7 +74,6 @@ class C3DVector : public C2DVector { public:    // the X/Y head is the C2DVector
     float Z;
 };
 struct CThingPos : CThing {
-    bool CanAttackNow();                        // 0x00662410
 };
 
 extern const float g_firePointToleranceSquared;    // 0x0129531C (0.0025f)
@@ -97,9 +96,13 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     }
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662410 ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (was ?CanAttackNow@CThingPos@@QAE_NXZ)
+class CThingCreatureBase { public: bool IsInMeleeAsAttacker() const; };
 bool CAIStateGroup_RangedCombatUsePreferredFirePoint::AttackEnemy()
 {
-    if (!((CThingPos*)GetCreature())->CanAttackNow())
+    if (!reinterpret_cast<const CThingCreatureBase*>(((CThingPos*)GetCreature()))->IsInMeleeAsAttacker())
         return false;
     if (IsAwayFromFirePoint())
         return false;

@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_NonInterruptableBoxStrafe::OnCreate() -- queue the box strafe: strafe backward, diagonal back-right, diagonal back-left, strafe backward, then a combat idle (code 50, no sounds) through AddAction, then the base OnCreate; the counted-pointer temporary is released inline
 // Leaf: ?OnCreate@CCombatSequence_NonInterruptableBoxStrafe
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009064B0, 382 bytes (384 with padding).
@@ -73,7 +74,8 @@ class CCombatSequenceBase { public:
     CThing* Target;                         // +0x20
     CThingCreatureBase& GetCreature() const { return *Creature; }
     CThing& GetTarget() const { return *Target; }
-    void AddAction(const CCountedPointer& action); // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     void OnCreate();                        // 0x008B0650 (base slot, called directly)
 };
 struct CCombatSequence_NonInterruptableBoxStrafe : CCombatSequenceBase {
@@ -84,14 +86,14 @@ void CCombatSequence_NonInterruptableBoxStrafe::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_StrafeBackward(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_DiagonalStrafeBR(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_DiagonalStrafeBL(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_StrafeBackward(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_CombatIdle(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

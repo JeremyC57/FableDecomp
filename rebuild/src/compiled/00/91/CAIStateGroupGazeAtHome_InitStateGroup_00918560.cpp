@@ -20,6 +20,7 @@ class CThingGameObject;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
+enum EIdleStateGroup {};   // PDB enum type (enumerators not modelled)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingAICreature {
@@ -46,7 +47,8 @@ class CWorld;
 class CAIStateGroupBase;
 
 class CTCIdleScheduler { public:                       // interface type 0xd3
-    void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleGroup);   // 0x00801920
+    // Naming (NF439 gen, 2026-11-25): callee 0x00801920 binds its PDB spelling ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@W4EIdleStateGroup@@@Z (T1 target; was ?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@J@Z).
+    void RegisterIdleStateGroup(CAIStateGroupBase*group, EIdleStateGroup idleGroup);
 };
 
 class CBaseObject;
@@ -105,5 +107,5 @@ void CAIStateGroup_GazeAtHome::InitStateGroup(const CWorld& world, CThingAICreat
     GazeMarker = CIntelligentPointer<CThingGameObject>(0);
     CTCIdleScheduler* scheduler;
     if (creature.GetInterface(&scheduler, 0xd3))
-        scheduler->RegisterIdleStateGroup(this, 7);
+        scheduler->RegisterIdleStateGroup(this, (EIdleStateGroup)7);
 }

@@ -1,0 +1,2 @@
+address	name_gate	objgate	vland_head/new	pk	pk_flag	link
+004a2d70	OK	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=3 neq=0 | N copies=3 neq=0	OK	(0 new names whose target has no landed definer: expected unresolved) PASS

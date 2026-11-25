@@ -79,7 +79,8 @@ class CTCShop { public:
     bool                    IsInGlobalUpdateTCs;// +0x09
     long                    StockState;         // +0x0c
     CBaseIntelligentPointer PShopKeeper;        // +0x10
-    void SetShopKeeper(CThing* keeper);         // 0x007751A0 (CThingCreatureBase*)
+    // Naming (NF439 gen, 2026-11-25): callee 0x007751A0 binds its PDB spelling ?SetShopKeeper@CTCShop@@QAEXPAVCThingCreatureBase@@@Z (T1 target; was ?SetShopKeeper@CTCShop@@QAEXPAVCThing@@@Z).
+    void SetShopKeeper(CThingCreatureBase*keeper);
 };
 
 class CTCBase { public:                             // the PDB base the accessor belongs to (its first virtual slot only: offset 0)
@@ -121,6 +122,6 @@ void CTCShopKeeper::OnInitialActivate()
         }
     }
     if (shop)
-        shop->SetShopKeeper(ParentThing);
+        shop->SetShopKeeper((CThingCreatureBase *)ParentThing);
     CTCBase::OnInitialActivate();
 }

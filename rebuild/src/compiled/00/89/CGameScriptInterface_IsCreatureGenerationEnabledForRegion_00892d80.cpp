@@ -186,7 +186,6 @@ class CWorld { public:
     bool                         m_creatureGeneratorsEnabled;   // +0xd4 (global switch)
 };
 struct CQuestManager_Retail {
-    bool IsCreatureGenerationAllowed();             // 0x004AFC60 (walks the active quests at +0x40..+0x44)
 };
 extern CQuestManager_Retail* g_pQuestManager;       // 0x013B89FC
 class CWorld;
@@ -196,9 +195,13 @@ struct CDefinitionManager_Retail;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004AFC60 ?IsCreatureGenerationEnabled@CQuestManager@@QBE_NXZ (was ?IsCreatureGenerationAllowed@CQuestManager_Retail@@QAE_NXZ)
+class CQuestManager { public: bool IsCreatureGenerationEnabled() const; };
 bool CGameScriptInterface::IsCreatureGenerationEnabledForRegion(const CCharString& regionName) const
 {
-    if (!g_pQuestManager->IsCreatureGenerationAllowed())
+    if (!reinterpret_cast<const CQuestManager*>(g_pQuestManager)->IsCreatureGenerationEnabled())
         return false;
     if (regionName != "") {
         long region = World->PeekWorldMap().GetRegionNumberFromName(regionName);

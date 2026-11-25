@@ -78,7 +78,6 @@ class CTCHeroStats { public:
     void ApplyBonusItemEffects(const CBonusItemDef& def);   // 0x0057C4F1
 };
 struct CTCShowableItem {
-    void OnShowEnded();                                 // 0x005D8E50
 };
 struct CTCCarriedActionUseRead {
     virtual void v00();
@@ -88,6 +87,10 @@ struct CTCCarriedActionUseRead {
     void vfunc_28(CThing* user);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CTCCarriedActionUseRead::vfunc_28(CThing* user)
 {
     if (!AlreadyRead) {
@@ -101,5 +104,5 @@ void CTCCarriedActionUseRead::vfunc_28(CThing* user)
         AlreadyRead = true;
     }
     if (ParentThing->HasTC(0x1a))
-        ((CTCShowableItem*)ParentThing->GetTC(0x1a))->OnShowEnded();
+        reinterpret_cast<CTCInventoryItem*>(((CTCShowableItem*)ParentThing->GetTC(0x1a)))->ReturnToInventory();
 }

@@ -71,7 +71,8 @@ class CSymbolMap { public:                                    // retail 0x24 byt
     unsigned char _body[0x24];
     CSymbolMap();                                      // 0x009E5200
     ~CSymbolMap();                                     // 0x006FD040
-    void LoadFromHeaderFile(const CWideString& fileName);              // 0x009E5C90
+    // Naming (NF439 gen, 2026-11-25): callee 0x009E5C90 binds its PDB spelling ?LoadFromFile@CSymbolMap@@QAE_NABVCWideString@@@Z (T1 target; was ?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z).
+    bool LoadFromFile(CWideString const& fileName);
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;   // 0x009E50C0
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const;       // 0x009E5090
 };
@@ -119,7 +120,7 @@ void CManager::Save(const CWideString& fileName)
             context.WriteString(line);
         }
         CSymbolMap animTypes;
-        animTypes.LoadFromHeaderFile(NBankFileManager::GetHeaderDir() + (const unsigned short*)L"meshdata.h");
+        animTypes.LoadFromFile(NBankFileManager::GetHeaderDir() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
             const CSymbolMap::CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType2", animID);

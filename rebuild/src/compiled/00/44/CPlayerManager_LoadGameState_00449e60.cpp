@@ -47,6 +47,9 @@ template <class T> struct vector {                     // STLport vector (12 byt
     T& operator[](long n) { return *(_M_start + n); }
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004498C0 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z (was ?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z)
 class CPlayerManager { public:
     void*            __vftable;                        // +0x00
     void*            Component;                        // +0x04
@@ -55,7 +58,7 @@ class CPlayerManager { public:
     long             PlayerNeutral;                    // +0x18
     long             MainPlayer;                       // +0x1c
     bool IsPlayerAssociatedWithJoystickDeviceNumber(long device) const;   // 0x004499E0
-    CPlayer* GetPlayer(long id);                       // 0x004498C0
+    CPlayer& GetPlayer(long);                       // 0x004498C0
     FABLE_FORCEINLINE CPlayer* FindPlayer(long id)         // GetPlayer's body, expanded inline
     {
         long count = Players.size();
@@ -71,7 +74,7 @@ void CPlayerManager::LoadGameState(CPersistContext& context)
 {
     for (long i = 0; i < 4; ++i) {
         if (IsPlayerAssociatedWithJoystickDeviceNumber(i) && MainPlayer != i)
-            GetPlayer(i)->UninitCharacter();
+            (&GetPlayer(i))->UninitCharacter();
     }
     NPlayerManager::CPlayerSave save;
     context.Transfer("PlayerCharacterUID", save.CharacterUID, (unsigned __int64)0);

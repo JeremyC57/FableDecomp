@@ -27,7 +27,8 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingCreatureBase : public CThing { public: };
-bool __fastcall IsKnockedDown(CThing* thing);   // 0x0085F010
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F010 binds its PDB spelling ?IsKnockedDown@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsKnockedDown@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsKnockedDown(CThing const& thing); }
 class CTCBoss { public:                                // interface 0xad
     long GetBossPhase() const;                        // 0x007AED10
     void IncrementBossPhase();                  // 0x007AED20
@@ -132,7 +133,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
                     Terminate();
                     return;
                 }
-                if (IsKnockedDown(PTarget.Get()))
+                if (NCreatureMode::IsKnockedDown(*(PTarget.Get())))
                     PlayIdle();
             } while (IsStillRunnable());
         }
@@ -153,7 +154,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
                 Terminate();
                 return;
             }
-            if (IsKnockedDown(PTarget.Get()))
+            if (NCreatureMode::IsKnockedDown(*(PTarget.Get())))
                 PlayIdle();
         } while (IsStillRunnable());
         break;

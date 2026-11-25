@@ -38,9 +38,11 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00416225 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ (was ?GetFrame@CMainGameComponent@@QAEJXZ)
 class CMainGameComponent { public:
-    long GetFrame();                               // 0x00416225
-};
+ public: long GetCurrentServerFrame() const; };
 class CWorld { public:
     virtual void v00();
     unsigned char       _base04[4];                // +0x04
@@ -55,12 +57,12 @@ class CWorld { public:
 };
 C3DVector CWorld::GetGameLODCentre() const
 {
-    if (FrameCachedLODCentre == -1 || FrameCachedLODCentre != Component->GetFrame()) {
+    if (FrameCachedLODCentre == -1 || FrameCachedLODCentre != reinterpret_cast<const CMainGameComponent*>(Component)->GetCurrentServerFrame()) {
         if (PlayerManager->GetMainPlayer().UsingFreeCamera)
             CachedLODCentre = PlayerManager->GetMainPlayer().CurrentFreeCamera.WorldPosition;
         else
             CachedLODCentre = PCurrentGameCamera->GetRenderCamera(0.0f).WorldPosition;
-        FrameCachedLODCentre = Component->GetFrame();
+        FrameCachedLODCentre = reinterpret_cast<const CMainGameComponent*>(Component)->GetCurrentServerFrame();
     }
     return CachedLODCentre;
 }

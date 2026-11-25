@@ -42,7 +42,6 @@ struct CBulletTime {
     void*         m_pController;                    // +0x04
     unsigned char _pad1[4];
     bool          m_active;                         // +0x0c
-    float GetTimeScale();                           // 0x004C5FA0
     bool IsActive() const { return m_active || m_pController != 0; }
 };
 class CWorld { public:
@@ -71,10 +70,14 @@ public:
     void GetPositionInterpolator(C3DPositionInterpolator& out) const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C5FA0 ?GetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QBEMXZ (was ?GetTimeScale@CBulletTime@@QAEMXZ)
+class CBulletTimeManager { public: float GetBulletTimeSlowdownMultiplier() const; };
 void CTCPhysicsBase::GetPositionInterpolator(C3DPositionInterpolator& out) const
 {
     if (PeekWorld().m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
-        float timeScale = PeekWorld().m_pBulletTime->GetTimeScale();
+        float timeScale = reinterpret_cast<const CBulletTimeManager*>(PeekWorld().m_pBulletTime)->GetBulletTimeSlowdownMultiplier();
         long step = (CWorld::GetFrame() - 1) % (long)timeScale;
         float stepSize = 1.0f / timeScale;
         C3DVector start = OldPosition.Interpolate(Position, step * stepSize);

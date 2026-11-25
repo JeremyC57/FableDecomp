@@ -44,7 +44,8 @@ class CParticleEmitter { public:
     CRightHandedSet GetCurrentOrientation() const;           // 0x006E1B40
     void SetPosition(const C3DPositionInterpolator& position);          // 0x00AEDDC0
     void SetOrientation(const C3DOrientationInterpolator& orientation); // 0x00AEDE60
-    void SetHidden(bool hidden);                                         // 0x006DFDA0
+    // Naming (NF439 gen, 2026-11-25): callee 0x006DFDA0 binds its PDB spelling ?SetParticleCreationDisabled@CParticleEmitter@NParticleEngine@@QAEX_N@Z (T1 target; was ?SetHidden@CParticleEmitter@NParticleEngine@@QAEX_N@Z).
+    void SetParticleCreationDisabled(bool hidden);
 };
 }
 struct CParticleCreationParameters {
@@ -235,7 +236,7 @@ void CTCDParticleEmitter::FrameUpdate()
             SetParticleCreationDisabled(false);
         if (PEmitter.GetPItem()) {
             CThing* attached = PAttachedToThing.GetPItem();
-            PEmitter.GetPItem()->SetHidden((attached->Flags91 >> 5) & 1);
+            PEmitter.GetPItem()->SetParticleCreationDisabled((attached->Flags91 >> 5) & 1);
         }
         CTCInterface47* component;
         if (!PAttachedToThing.GetPItem()->GetInterface(&component, 0x47) || !component->Field10)

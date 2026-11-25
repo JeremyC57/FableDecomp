@@ -102,7 +102,8 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class CThingCreatureBase;
 class CCombatManager { public:
-    void RegisterCombatant(CThingCreatureBase* creature, CThingCreatureBase* enemy, bool ranged);   // 0x006EDC50
+    // Naming (NF439 gen, 2026-11-25): callee 0x006EDC50 binds its PDB spelling ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (T1 target; was ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@0_N@Z).
+    void RegisterCombatant(CThingCreatureBase& creature, CThingCreatureBase& enemy, bool ranged);
     // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
     void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
@@ -130,7 +131,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
         return;
     }
     CThingCreatureBase* creature = GetCreature();
-    creature->GetCombatManager().RegisterCombatant(creature, (CThingCreatureBase*)PEnemy.GetPItem(), false);
+    creature->GetCombatManager().RegisterCombatant(*creature, *((CThingCreatureBase*)PEnemy.GetPItem()), false);
     bool reached;
     EAIActionReturn result;
     do {

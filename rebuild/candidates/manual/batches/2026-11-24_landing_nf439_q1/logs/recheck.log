@@ -1,0 +1,274 @@
+addr       parity           behav  name
+00715710   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CScriptThing (engine/CScriptThing.h)
+00715710   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+00715710   RELOCATION_MATCH PASS   OnActivate
+00745730   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00745730   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+00745730   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00745730   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00745730   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing (engine/CTCPerceiveThing.h)
+00745730   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00745730   RELOCATION_MATCH PASS   UpdatePerception
+007471a0   WARN SHARED_HEADER_AVAILABLE CStealthDef (engine/CStealthDef.h)
+007471a0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+007471a0   RELOCATION_MATCH PASS   IsAbleToFlourishDangerThings
+00752300   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CLookDef (engine/CLookDef.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00752300   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00752300   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00752300   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00752300   RELOCATION_MATCH PASS   ImplementBodySettings
+007fc820   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCBoss (engine/CTCBoss.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007fc820   WARN SHARED_HEADER_AVAILABLE CTCKraken (engine/CTCKraken.h)
+007fc820   RELOCATION_MATCH PASS   SetPhase
+0080c210   WARN SHARED_HEADER_AVAILABLE CTCDExplosion (engine/CTCDExplosion.h)
+0080c210   RELOCATION_MATCH PASS   GetDistanceFromMeAsRatioOfDamageRadius
+00906050   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00906050   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GenericAimProjectileWeapon (engine/CCreatureAction_GenericAimProjectileWeapon.h)
+00906050   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GenericFireProjectileWeapon (engine/CCreatureAction_GenericFireProjectileWeapon.h)
+00906050   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GenericLoadProjectileWeapon (engine/CCreatureAction_GenericLoadProjectileWeapon.h)
+00906050   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00906050   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00906050   WARN SHARED_HEADER_AVAILABLE CCombatSequence_GenericRangedAttack (engine/CCombatSequence_GenericRangedAttack.h)
+00906050   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00906050   RELOCATION_MATCH PASS   OnCreate
+009064b0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StrafeBackward (engine/CCreatureAction_StrafeBackward.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DiagonalStrafeBR (engine/CCreatureAction_DiagonalStrafeBR.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DiagonalStrafeBL (engine/CCreatureAction_DiagonalStrafeBL.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CombatIdle (engine/CCreatureAction_CombatIdle.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+009064b0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_NonInterruptableBoxStrafe (engine/CCombatSequence_NonInterruptableBoxStrafe.h)
+009064b0   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@QAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+009064b0   RELOCATION_MATCH PASS   OnCreate
+00906c60   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00906c60   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00906c60   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00906c60   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00906c60   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BanditKingAttack (engine/CCreatureAction_BanditKingAttack.h)
+00906c60   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingAttack (engine/CCombatSequence_BanditKingAttack.h)
+00906c60   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00906c60   RELOCATION_MATCH PASS   OnCreate
+00906e40   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00906e40   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00906e40   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00906e40   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00906e40   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BanditKingAttack (engine/CCreatureAction_BanditKingAttack.h)
+00906e40   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingSpinAround (engine/CCombatSequence_BanditKingSpinAround.h)
+00906e40   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00906e40   RELOCATION_MATCH PASS   OnCreate
+00907010   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00907010   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00907010   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00907010   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00907010   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00907010   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00907010   WARN SHARED_HEADER_AVAILABLE CCombatSequence_ScorpionLungeAttack (engine/CCombatSequence_ScorpionLungeAttack.h)
+00907010   WARN RELOC_NAME: ??0CCombatAction_008ccc70@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 008ccc70 labelled 'CCreatureAction_BalverineLungeAttack::CCreatureAction_BalverineLungeAttack'
+00907010   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00907010   RELOCATION_MATCH PASS   OnCreate
+009079c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009079c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollProjectileAttack (engine/CCreatureAction_TrollProjectileAttack.h)
+009079c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+009079c0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+009079c0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollProjectileAttack (engine/CCombatSequence_TrollProjectileAttack.h)
+009079c0   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+009079c0   RELOCATION_MATCH PASS   OnCreate
+00907d00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00907d00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_WalkInto (engine/CCreatureAction_WalkInto.h)
+00907d00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollPursue (engine/CCreatureAction_TrollPursue.h)
+00907d00   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00907d00   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00907d00   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockAdvance (engine/CCombatSequence_TrollRockAdvance.h)
+00907d00   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00907d00   RELOCATION_MATCH PASS   OnCreate
+00907e00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00907e00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollGetProjectile (engine/CCreatureAction_TrollGetProjectile.h)
+00907e00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollThrowProjectile (engine/CCreatureAction_TrollThrowProjectile.h)
+00907e00   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00907e00   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00907e00   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockThrowRock (engine/CCombatSequence_TrollRockThrowRock.h)
+00907e00   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+00907e00   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00907e00   RELOCATION_MATCH PASS   OnCreate
+00908810   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00908810   WARN SHARED_HEADER_AVAILABLE CCreatureAction_VillagerBackOff (engine/CCreatureAction_VillagerBackOff.h)
+00908810   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00908810   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00908810   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerBackOff (engine/CCombatSequence_VillagerBackOff.h)
+00908810   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+00908810   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00908810   RELOCATION_MATCH PASS   OnCreate
+00908960   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00908960   WARN SHARED_HEADER_AVAILABLE CCreatureAction_VillagerAdvance (engine/CCreatureAction_VillagerAdvance.h)
+00908960   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00908960   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00908960   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerAdvance (engine/CCombatSequence_VillagerAdvance.h)
+00908960   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+00908960   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00908960   RELOCATION_MATCH PASS   OnCreate
+00908f20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00908f20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StrafeBackward (engine/CCreatureAction_StrafeBackward.h)
+00908f20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StrafeForward (engine/CCreatureAction_StrafeForward.h)
+00908f20   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00908f20   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00908f20   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperStrafeAround (engine/CCombatSequenceWhisperStrafeAround.h)
+00908f20   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+00908f20   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00908f20   RELOCATION_MATCH PASS   OnCreate
+00909ba0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StrafeBackward (engine/CCreatureAction_StrafeBackward.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_StrafeForward (engine/CCreatureAction_StrafeForward.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_InterruptableMidAttack (engine/CCreatureAction_InterruptableMidAttack.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00909ba0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAdvance (engine/CCombatSequenceWhisperAdvance.h)
+00909ba0   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@QAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00909ba0   RELOCATION_MATCH PASS   OnCreate
+00909e30   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00909e30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00909e30   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00909e30   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00909e30   WARN SHARED_HEADER_AVAILABLE CCreatureAction_InterruptableMidAttack (engine/CCreatureAction_InterruptableMidAttack.h)
+00909e30   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAttackBigCombo (engine/CCombatSequenceWhisperAttackBigCombo.h)
+00909e30   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00909e30   RELOCATION_MATCH PASS   OnCreate
+00909fd0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00909fd0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00909fd0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+00909fd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+00909fd0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericResponseToDrain (engine/CCombatAction_GenericResponseToDrain.h)
+00909fd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperStrikeStrafeBack (engine/CCombatSequenceWhisperStrikeStrafeBack.h)
+00909fd0   WARN RELOC_NAME: ??0CCombatAction_GenericResponseToDrain@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 008bfd60 labelled 'CCreatureAction_StrafeBackward::CCreatureAction_StrafeBackward'
+00909fd0   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00909fd0   RELOCATION_MATCH PASS   OnCreate
+0090a1f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0090a1f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0090a1f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+0090a1f0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+0090a1f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_InterruptableMidAttack (engine/CCreatureAction_InterruptableMidAttack.h)
+0090a1f0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceJacksCombo (engine/CCombatSequenceJacksCombo.h)
+0090a1f0   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+0090a1f0   RELOCATION_MATCH PASS   OnCreate
+0090a340   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0090a340   WARN SHARED_HEADER_AVAILABLE CCreatureAction_MidAttackFacing (engine/CCreatureAction_MidAttackFacing.h)
+0090a340   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+0090a340   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+0090a340   WARN SHARED_HEADER_AVAILABLE CCombatSequenceNonInterruptable2StrikeCombo (engine/CCombatSequenceNonInterruptable2StrikeCombo.h)
+0090a340   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+0090a340   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+0090a340   RELOCATION_MATCH PASS   OnCreate
+0090a400   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0090a400   WARN SHARED_HEADER_AVAILABLE CCreatureAction_MidAttackFacing (engine/CCreatureAction_MidAttackFacing.h)
+0090a400   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+0090a400   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+0090a400   WARN SHARED_HEADER_AVAILABLE CCombatSequence2StrikeCombo (engine/CCombatSequence2StrikeCombo.h)
+0090a400   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+0090a400   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+0090a400   RELOCATION_MATCH PASS   OnCreate
+00918480   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00918480   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+00918480   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00918480   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00918480   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Gaze (engine/CAIStateGroup_Gaze.h)
+00918480   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeOutside (engine/CAIStateGroup_GazeOutside.h)
+00918480   RELOCATION_MATCH PASS   InitStateGroup
+00918560   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00918560   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+00918560   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00918560   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00918560   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Gaze (engine/CAIStateGroup_Gaze.h)
+00918560   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeAtHome (engine/CAIStateGroup_GazeAtHome.h)
+00918560   RELOCATION_MATCH PASS   InitStateGroup
+009190f0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+009190f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_LookAtInterestingThings (engine/CAIStateGroup_LookAtInterestingThings.h)
+009190f0   RELOCATION_MATCH PASS   InitStateGroup
+0091db50   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0091db50   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+0091db50   RELOCATION_MATCH PASS   GetEnemy
+009365e0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009365e0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009365e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009365e0   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+009365e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionWatchFires (engine/CAIStateGroup_MinionWatchFires.h)
+009365e0   RELOCATION_MATCH PASS   InitStateGroup
+0097b900   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasScriptName (engine/CThingFilter_HasScriptName.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0097b900   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ScorpionKing (engine/CAIStateGroup_ScorpionKing.h)
+0097b900   RELOCATION_MATCH PASS   IsRunnable
+00b481e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b481e0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00b481e0   RELOCATION_MATCH PASS   RenderPrimitive
+00b68610   WARN SHARED_HEADER_AVAILABLE CLandscapeGPUUpdateQueue (engine/CLandscapeGPUUpdateQueue.h)
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00b68610   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b68610   WARN RELOC_NAME: ?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A -> 01436e60 labelled 'g_pEngineShadowRenderer'
+00b68610   RELOCATION_MATCH PASS   FrameStart
+
+WINS: 31
+  00715710 RELOCATION_MATCH NTCScriptedControl::CActionFollowCreature::?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+  00745730 RELOCATION_MATCH CTCPerceiveThing::?UpdatePerception@CTCPerceiveThing@@AAEXXZ
+  007471a0 RELOCATION_MATCH CTCStealth::IsAbleToFlourishDangerThings
+  00752300 RELOCATION_MATCH CTCLook::ImplementBodySettings
+  007fc820 RELOCATION_MATCH CTCKraken::?SetPhase@CTCKraken@@QAEXJ@Z
+  0080c210 RELOCATION_MATCH CTCDExplosion::?GetDistanceFromMeAsRatioOfDamageRadius@CTCDExplosion@@QBEMPBVCThing@@@Z
+  00906050 RELOCATION_MATCH CCombatSequence_GenericRangedAttack::?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ
+  009064b0 RELOCATION_MATCH CCombatSequence_NonInterruptableBoxStrafe::?OnCreate@CCombatSequence_NonInterruptableBoxStrafe
+  00906c60 RELOCATION_MATCH CCombatSequence_BanditKingAttack::OnCreate
+  00906e40 RELOCATION_MATCH CCombatSequence_BanditKingSpinAround::OnCreate
+  00907010 RELOCATION_MATCH CCombatSequence_ScorpionLungeAttack::OnCreate
+  009079c0 RELOCATION_MATCH CCombatSequence_TrollProjectileAttack::?OnCreate@CCombatSequence_TrollProjectileAttack@@UAEXXZ
+  00907d00 RELOCATION_MATCH CCombatSequence_TrollRockAdvance::?OnCreate@CCombatSequence_TrollRockAdvance@@UAEXXZ
+  00907e00 RELOCATION_MATCH CCombatSequence_TrollRockThrowRock::?OnCreate@CCombatSequence_TrollRockThrowRock@@UAEXXZ
+  00908810 RELOCATION_MATCH CCombatSequence_VillagerBackOff::?OnCreate@CCombatSequence_VillagerBackOff@@UAEXXZ
+  00908960 RELOCATION_MATCH CCombatSequence_VillagerAdvance::?OnCreate@CCombatSequence_VillagerAdvance@@UAEXXZ
+  00908f20 RELOCATION_MATCH CCombatSequenceWhisperStrafeAround::?OnCreate@CCombatSequenceWhisperStrafeAround@@UAEXXZ
+  00909ba0 RELOCATION_MATCH CCombatSequenceWhisperAdvance::?OnCreate@CCombatSequenceWhisperAdvance
+  00909e30 RELOCATION_MATCH CCombatSequenceWhisperAttackBigCombo::?OnCreate@CCombatSequenceWhisperAttackBigCombo@@UAEXXZ
+  00909fd0 RELOCATION_MATCH CCombatSequenceWhisperStrikeStrafeBack::OnCreate
+  0090a1f0 RELOCATION_MATCH CCombatSequenceJacksCombo::?OnCreate@CCombatSequenceJacksCombo@@UAEXXZ
+  0090a340 RELOCATION_MATCH CCombatSequenceNonInterruptable2StrikeCombo::?OnCreate@CCombatSequenceNonInterruptable2StrikeCombo@@UAEXXZ
+  0090a400 RELOCATION_MATCH CCombatSequence2StrikeCombo::?OnCreate@CCombatSequence2StrikeCombo@@UAEXXZ
+  00918480 RELOCATION_MATCH CAIStateGroup_GazeOutside::?InitStateGroup@CAIStateGroup_GazeOutside@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+  00918560 RELOCATION_MATCH CAIStateGroup_GazeAtHome::?InitStateGroup@CAIStateGroup_GazeAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+  009190f0 RELOCATION_MATCH CAIStateGroup_LookAtInterestingThings::?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
+  0091db50 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::GetEnemy
+  009365e0 RELOCATION_MATCH CAIStateGroup_MinionWatchFires::InitStateGroup
+  0097b900 RELOCATION_MATCH CAIStateGroup_ScorpionKing::?IsRunnable@CAIStateGroup_ScorpionKing@@MAE_NXZ
+  00b481e0 RELOCATION_MATCH CEngineLightingManager::RenderPrimitive
+  00b68610 RELOCATION_MATCH CEngineLandscapeRenderer::FrameStart

@@ -71,7 +71,6 @@ public:
 };
 
 struct CThingCreature : CThing {
-    bool AutoPlaceNear(C3DVector* pos, float radius);   // 0x00665DF0
 };
 
 struct CAIBrainCreature {
@@ -79,6 +78,10 @@ struct CAIBrainCreature {
     CThingCreature* PCreature;                  // +0x18
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00665DF0 ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z (was ?AutoPlaceNear@CThingCreature@@QAE_NPAVC3DVector@@M@Z)
+class CThingCreatureBase { public: bool AutoPlaceNear(C3DVector const&, float); };
 struct CAIStateGroup_PrepareMeal : CAIStateGroupBase {
     CIntelligentPointer<CThing> PCookingPot;        // +0x14 CIntelligentPointer<CThing>
     protected:
@@ -87,7 +90,7 @@ struct CAIStateGroup_PrepareMeal : CAIStateGroupBase {
     bool PlaceNearPot()
     {
         CThingCreature* pCreature = ((CAIBrainCreature*)PBrain)->PCreature;
-        return pCreature->AutoPlaceNear((C3DVector*)&PCookingPot.Get()->GetPos(), 3.0f);
+        return reinterpret_cast<CThingCreatureBase*>(pCreature)->AutoPlaceNear(*((C3DVector*)&PCookingPot.Get()->GetPos()), 3.0f);
     }
 };
 

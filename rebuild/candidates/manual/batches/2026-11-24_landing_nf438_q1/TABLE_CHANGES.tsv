@@ -1,0 +1,35 @@
+action	symbol	target	witness	note
+rewitness	?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	0064499c	NF438: the witness moved to the PDB spelling; 3 landed row(s) still bind the stand-in (e.g. 0064499c)
+add	?GetNonLocalThingChecksum@CThingManager@@QBEKXZ	0051e530	0049e200	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetNonLocalThingChecksum@CThingManagerCalls@@QAEKXZ	0051e530	0049e200	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?Method@Obj4@@QAEXXZ	004c7ac0	004bfae0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?BaseChangeState@CMenuEntry@NUISystem@@QAEXK@Z	0052cf40	0053d3b0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?RemoveBaseChild@CDynamicList@NUISystem@@QAEXK@Z	00533bc0	00541120	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetInventoryText@CTCInventoryExperience@@QAE?AVCWideString@@J@Z	005bd273	0056f26f	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?ProcessButtonXReleased@CTCInventoryBase@NInventory@@UAEXXZ	005bc68f	00581ae1	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?Hook_005BC68F@CTCInventory@@QAEXXZ	005bc68f	00581ae1	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetAlpha@CFadeInFadeOutBaseCalls@@QAEMXZ	004348d0	00581d2a	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?ProcessDPadUpReleased@CTCInventoryBase@NInventory@@UAEXXZ	005bc693	00587749	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?BaseProcessDPadUpReleased@CTCInventory@@QAEXXZ	005bc693	00587749	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?Close@CTCInterfaceC6@@QAEX_N@Z	0047dbb8	00587a41	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?OpenInventory@CTCInventoryTrade@@QAEXXZ	005bd4ea	005ae86b	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ	005b4a95	005b6881	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetCurrentTotalArmorValue@CTCInventoryClothing_Retail@@QAEJXZ	005b4a95	005b6881	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetRightStickPosition@CTCInventoryBase@NInventory@@QAEXAAVC2DVector@@@Z	005bc5c6	005bcea4	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetRightStickPosition@CTCInventoryBase_Retail@@QAEXPAVC2DVector@@@Z	005bc5c6	005bcea4	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?SetInventoryAnimRenderBox@CTCInventoryBase_Weapons@@QAEXABVC2DBoxF@@@Z	005bc58f	005c2f27	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?SetInventoryAnimRenderBox@CTCInventoryBase_Stats@@QAEXABVC2DBoxF@@@Z	005bc58f	005ccf86	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetInventoryText@CTCInventoryBase_Retail@@QAE?AVCWideString@@J@Z	005bd273	005faf10	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetStatsPersonalityValueRenown@CTCInventoryStats@@QAEMXZ	005cdbbe	00659164	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?CalculateRatio@CTCRenownRatio@@QAEMXZ	005cdbbe	00659164	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetScreenArea@CDisplay@@QBE?AVC2DBoxF@@XZ	00434b50	0066fc90	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetButtonPressureForEvent@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z	00445800	00687d10	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetButtonPressureForEvent@CGamePlayerInterfaceCalls@@QAEMPAVCInputEvent@@@Z	00445800	00687d10	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?OnNotCarried@CTC1A@@QAEXXZ	005d8e50	0069f9e0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?OnHealthModified@CTCHeroStats@@QAEXXZ	0057a753	006a62e0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?OnHealthChanged@CTCHeroHealthObserver@@QAEXXZ	0057a753	006a62e0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?DoActivationSequence@CThingPlayerCreature@NFactory006ac910@@QAE_NXZ	004c9ca0	006ac910	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+rewitness	?GetFrame@CWorld@@QAEJXZ	00416225	006e2dc0	NF438: the witness moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 006e2dc0)
+add	?IsAttachedSoundLoadedAndPlaying@CTCSoundPlayer@@QBE_NK@Z	0066ae60	006e2dc0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?IsSampleLoadedAndPlaying@CSpeechEmitter@@QAE_NK@Z	0066ae60	006e2dc0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?StopSample@CTCSoundEmitter@@QAEXK@Z	0066add0	0079d020	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

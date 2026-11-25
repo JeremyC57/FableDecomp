@@ -156,7 +156,8 @@ class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
     protected:
     virtual bool IsRunnable();
     public:
-    CThing* FindAndValidateTask(CThing* building);      // 0x00946AE0
+    // Naming (NF439 gen, 2026-11-25): callee 0x00946AE0 binds its PDB spelling ?GetCandleInBuildingNeedingChanging@CAIStateGroup_LightHomeCandle@@ABEPAVCThing@@AAVCThingBuilding@@@Z (T1 target; was ?FindAndValidateTask@CAIStateGroup_LightHomeCandle@@QAEPAVCThing@@PAV2@@Z).
+    private: CThing * GetCandleInBuildingNeedingChanging(CThingBuilding& building) const; public:
     bool IsCandleInNeedOfChanging(CThing* candle);      // 0x00946730
 };
 struct CAIStateGroup_LightHomeCandleV {         // the class's own virtual slots past the base
@@ -177,7 +178,7 @@ bool CAIStateGroup_LightHomeCandle::IsRunnable()
             if (material.Object && (material->Flags & 0x20))
                 return false;
         }
-        PCandle = CIntelligentPointer<CThing>(FindAndValidateTask(building));
+        PCandle = CIntelligentPointer<CThing>(GetCandleInBuildingNeedingChanging(*(CThingBuilding*)building));
     }
     return IS_THING_ALIVE(PCandle) && IsCandleInNeedOfChanging(PCandle.GetPItem());
 }

@@ -51,7 +51,6 @@ struct CThing_Retail {
     float                m_playerMaxRunningSpeed;  // +0x1c0
     void SetMaxHealth(float health, bool flag);    // 0x006A5260 (CThingPhysical)
     bool IsPickPocketable();                       // 0x00665E90 (CThingCreatureBase)
-    void SetHiddenOnMiniMap(bool hidden);          // 0x006626A0 (CThingCreatureBase)
     void SetHasInformation(long kind, bool a, bool b, bool c);   // 0x00830EB0 (CThingAICreature)
     void SetAsGameStatePersisted(bool persisted);  // 0x004C7880 (CThing)
     void ResetMaxRunningSpeedToDefault();          // 0x006A9BC0 (CThingPlayerCreature)
@@ -71,11 +70,15 @@ struct CThing_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006626A0 ?SetHiddenOnMiniMap@CThingCreatureBase@@QAEX_N@Z (was ?SetHiddenOnMiniMap@CThing_Retail@@QAEX_N@Z)
+class CThingCreatureBase { public: void SetHiddenOnMiniMap(bool); };
 void CGameScriptInterface::EntitySetAsHiddenOnMiniMap(const CScriptThing& thing, bool hidden) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->m_type == 1)
-            t->SetHiddenOnMiniMap(hidden);
+            reinterpret_cast<CThingCreatureBase*>(t)->SetHiddenOnMiniMap(hidden);
     }
 }

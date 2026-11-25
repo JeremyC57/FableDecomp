@@ -104,10 +104,13 @@ class CTCInventoryTrade { public:
 private:
     void ConstructActualInventoryPC();          // 0x005ACEDA FableWin.pdb ?ConstructActualInventoryPC@CTCInventoryTrade@@AAEXXZ (private; was spelled ConstructTradeScreenPC)
 public:
-    void OpenInventory();                       // 0x005BD4EA (CTCInventoryBase)
     void OpenInventoryPC();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BD4EA ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ (was ?OpenInventory@CTCInventoryTrade@@QAEXXZ)
+namespace NInventory { class CTCInventoryBase { public: virtual void OpenInventory(); }; }
 void CTCInventoryTrade::OpenInventoryPC()
 {
     PrepareScreen();
@@ -128,6 +131,6 @@ void CTCInventoryTrade::OpenInventoryPC()
     }
     PMouse_Pointer->Reset();
     Components.push_back(PMouse_Pointer);
-    OpenInventory();
+    reinterpret_cast<NInventory::CTCInventoryBase*>(this)->NInventory::CTCInventoryBase::OpenInventory();
     InventoryTradeOpen = true;
 }

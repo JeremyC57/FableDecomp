@@ -54,7 +54,6 @@ class CWorld { public:
     CEnvironment* PEnvironment;                 // +0x18
 };
 struct CTCSoundEmitter {                        // interface 0x10
-    void StopSample(unsigned long sampleID);    // 0x0066ADD0
 };
 struct CTCInterfaceA7 {                         // interface 0xA7 component
     unsigned char _pad00[0x0c];
@@ -73,6 +72,10 @@ protected:
     CWorld& GetWorld() const;   // 0x00686A70
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0066ADD0 ?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z (was ?StopSample@CTCSoundEmitter@@QAEXK@Z)
+class CTCSoundPlayer { public: void StopAttachedSound(unsigned long); };
 class CTCUnholyPower : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];
@@ -97,7 +100,7 @@ class CTCUnholyPower : public CTCBase { public:
     {
         CTCSoundEmitter* emitter;
         if (ParentThing->GetTC(TCI_SOUND_PLAYER, &emitter))
-            emitter->StopSample(sound);
+            reinterpret_cast<CTCSoundPlayer*>(emitter)->StopAttachedSound(sound);
     }
     void FinishMove();
 };

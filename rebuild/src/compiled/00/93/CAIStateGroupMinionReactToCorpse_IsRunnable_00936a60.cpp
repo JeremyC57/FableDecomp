@@ -100,7 +100,6 @@ class CThingPhysical : public CThing { public:
 struct CThingPos : CThing {
 };
 struct CThingCreatureLook : CThing {
-    bool CanSeePosition(const C3DVector& pos, bool checkLineOfSight);  // 0x00665260
 };
 bool __fastcall AreThingsAllies(CThing* a, CThing* b);   // 0x0076D4F0
 class CThingFilter_None { public:
@@ -143,6 +142,10 @@ struct CAIStateGroup_MinionReactToCorpse : CAIStateGroupBase {
     virtual bool IsRunnable();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00665260 ?IsPosInFOV@CThingCreatureBase@@QBE_NABVC3DVector@@_N@Z (was ?CanSeePosition@CThingCreatureLook@@QAE_NABVC3DVector@@_N@Z)
+class CThingCreatureBase { public: bool IsPosInFOV(C3DVector const&, bool) const; };
 bool CAIStateGroup_MinionReactToCorpse::IsRunnable()
 {
     CThingDeadCreature* corpse = 0;
@@ -156,7 +159,7 @@ bool CAIStateGroup_MinionReactToCorpse::IsRunnable()
                 CThing* creature = PBrain->PCreature;
                 if (AreThingsAllies(creature, ((CThing*)PCorpse.GetPItem()))) {
                     CThingCreatureLook* looker = (CThingCreatureLook*)PBrain->PCreature;
-                    return looker->CanSeePosition(((CThingPos*)PCorpse.GetPItem())->GetPos(), true);
+                    return reinterpret_cast<const CThingCreatureBase*>(looker)->IsPosInFOV(((CThingPos*)PCorpse.GetPItem())->GetPos(), true);
                 }
             }
         }

@@ -84,7 +84,6 @@ class CThingAICreature { public:
     void GetSleepTimes(long& start, long& end) const; // 0x00833390 (NF35: Ego_r + FableWin ?GetSleepTimes@CThingAICreature@@QBEXAAJ0@Z)
 };
 struct CThingPos {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 class CThingBuilding { public:
     bool IsPointInside(const C3DVector& point) const; // 0x0082D000
@@ -113,6 +112,9 @@ struct CAIStateGroup_MinionReactToBurglary : CAIStateGroupBase {
     virtual bool IsRunnable();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (was ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ)
 bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
 {
     long start;
@@ -124,7 +126,7 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     if (sleepTime && home != 0) {
         const CThing* player = GetWorld().PeekMyPlayer()->PeekPControlledCreature();
         if (player != 0 && !player->IsDead() && NCreatureAI::IsAwareOfThing((const CThingAICreature*)(PBrain->PCreature), player, false) &&
-            home->IsPointInside(((CThingPos*)player)->GetPosition())) {
+            home->IsPointInside(reinterpret_cast<const CThing*>(((CThingPos*)player))->GetPos())) {
             CIntelligentPointer<const CThing> burglar(player);
             PBurglar = burglar;
             return true;

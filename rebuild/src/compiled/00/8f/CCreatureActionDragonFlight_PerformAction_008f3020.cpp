@@ -67,7 +67,6 @@ template <> __declspec(noinline) bool CDefClassBase::GetSubDef<CWeaponDef>(CDefP
 class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PhysicsTC;                    // +0x70 (the def-class base queried for the sub def)
-    long GetShotAccuracyPercentage();            // 0x00663B10 (CThingCreatureBase)
 };
 CThing* __fastcall CreateShot(long shotDef, CThing* owner, CThing* parent, CThing* target, float accuracy, float a, float b,
                               CDefPointerMelee* meleeDef, C3DVector* offset, CRightHandedSet* hands);   // 0x007C0AD0
@@ -97,6 +96,10 @@ public:
     virtual void PerformAction();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00663B10 ?GetShotAccuracyPercentage@CThingCreatureBase@@QBEJXZ (was ?GetShotAccuracyPercentage@CThing@@QAEJXZ)
+class CThingCreatureBase { public: long GetShotAccuracyPercentage() const; };
 void CCreatureAction_DragonFlight::PerformAction()
 {
     if (PTarget.GetPItem()) {
@@ -104,7 +107,7 @@ void CCreatureAction_DragonFlight::PerformAction()
         CDefClassBase* defClass = ((CThing*)PCreature.GetPItem())->PhysicsTC;
         if (defClass->GetSubDef(&ability)) {
             long shotDef = ability->ShotDefIndex;
-            long accuracy = ((CThing*)PCreature.GetPItem())->GetShotAccuracyPercentage();
+            long accuracy = reinterpret_cast<const CThingCreatureBase*>(((CThing*)PCreature.GetPItem()))->GetShotAccuracyPercentage();
             CDefPointerMelee melee;
             CreateShot(shotDef, PCreature, 0, ((CThing*)PTarget.GetPItem()), (float)accuracy, 1.0f, 1.0f, &melee, 0, 0);
         }

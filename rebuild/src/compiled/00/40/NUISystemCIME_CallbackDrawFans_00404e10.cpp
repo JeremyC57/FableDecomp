@@ -37,7 +37,6 @@ class CSystemManager { public:
     CDisplayManager* DisplayManager;            // +0x60
 };
 CSystemManager* __fastcall GFGetSystemManager();                         // 0x009A4EC0
-void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 extern unsigned char g_imeCompositionAlpha_013750b0;                     // 0x013750B0
 
 struct IMEUI_VERTEX {
@@ -51,6 +50,10 @@ struct IMEUI_VERTEX {
     float tv;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009E21D0 ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (was ?GFACoordToVCoord@@YIXPBVC2DVector@@PAV1@@Z)
+void __fastcall GFACoordToVCoord(C2DVector const&, C2DVector&);
 namespace NUISystem {
 class CIME {
 public:
@@ -62,15 +65,15 @@ void __fastcall CIME::Callback_DrawFans(const IMEUI_VERTEX* vertices, unsigned i
     C2DVector points[3];
     points[0].X = vertices[0].sx;
     points[0].Y = vertices[0].sy;
-    GFACoordToVCoord(&points[0], &points[0]);
+    GFACoordToVCoord(*(&points[0]), *(&points[0]));
     for (unsigned int i = 1; i < count; ++i) {
         unsigned int next = (i == count - 1) ? 1 : i + 1;
         points[1].X = vertices[i].sx;
         points[1].Y = vertices[i].sy;
         points[2].X = vertices[next].sx;
         points[2].Y = vertices[next].sy;
-        GFACoordToVCoord(&points[1], &points[1]);
-        GFACoordToVCoord(&points[2], &points[2]);
+        GFACoordToVCoord(*(&points[1]), *(&points[1]));
+        GFACoordToVCoord(*(&points[2]), *(&points[2]));
         unsigned long color = vertices[i].color;
         unsigned char b = (unsigned char)color;
         color >>= 8;

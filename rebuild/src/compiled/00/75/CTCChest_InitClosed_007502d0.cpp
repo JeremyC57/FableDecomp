@@ -40,9 +40,11 @@ struct CAnimFilterNoGroup : CAnimFilterBase {                  // vtable 0x0122F
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                    // 0x00429A2F
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005DC340 ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (was ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z)
 class CAnimationSet { public:
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
+ public: CAnimationEntry const& GetAnim(CCharString const&, long, CAnimFilterBase const&) const; };
 
 class CDefPointeeBase { public:
     virtual void Destroy0();
@@ -197,7 +199,7 @@ void CTCChest::InitClosed()
     CDefPointer<CThingBaseDef> thingDef(ParentThing->PBaseDef);
     CDefPointer<CAppearanceDef> appearance;
     thingDef->GetSubDef(&appearance);
-    const CAnimationEntry* entry = appearance->Animation.GetAnimation("CHEST_OPEN", 0, CAnimFilterNoGroup());
+    const CAnimationEntry* entry = (&reinterpret_cast<const CAnimationSet*>(&(appearance->Animation))->GetAnim("CHEST_OPEN", 0, CAnimFilterNoGroup()));
     CMeshDataBank* meshBank = GetWorld().PMainMeshBank;
     float duration = meshBank->PeekAnimation(entry->AnimIndex)->GetNonLoopingDuration();
     CAnimInit init(0, 0, entry->AnimIndex, ANIM_UPDATE_FROM_SPEED, false, 0, 100);

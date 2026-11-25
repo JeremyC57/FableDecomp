@@ -8,7 +8,8 @@
 // Layout: Sprinting +0x0C, ParentThing +0x04 (PDB = retail for this class).
 
 class CThing;
-bool __fastcall IsAvailableForHeroSprint(CThing* thing);   // 0x0085F470
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F470 binds its PDB spelling ?IsAvailableForHeroSprint@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsAvailableForHeroSprint@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsAvailableForHeroSprint(CThing const& thing); }
 
 struct CTCHeroSpecialMovement_Retail {
     void*         __vftable;                   // +0x00
@@ -23,7 +24,7 @@ struct CTCHeroSpecialMovement_Retail {
 void CTCHeroSpecialMovement_Retail::SetSprinting(bool sprint)
 {
     if (sprint) {
-        if (!Sprinting && IsAvailableForHeroSprint(ParentThing))
+        if (!Sprinting && NCreatureMode::IsAvailableForHeroSprint(*ParentThing))
             Sprinting = true;
     } else {
         if (Sprinting)

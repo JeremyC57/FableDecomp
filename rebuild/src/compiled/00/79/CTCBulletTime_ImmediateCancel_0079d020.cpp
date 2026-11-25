@@ -94,9 +94,12 @@ class CWorld { public:
     void RemoveBulletTimeSlowdownMultiplier(void* key) { PBulletTimeManager->RemoveBulletTimeSlowdownMultiplier(key); }
 };
 struct CTCSoundEmitter {                        // interface type 0x10
-    void StopSample(unsigned long sampleID);    // 0x0066ADD0
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0066ADD0 ?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z (was ?StopSample@CTCSoundEmitter@@QAEXK@Z)
+class CTCSoundPlayer { public: void StopAttachedSound(unsigned long); };
 struct CTCBulletTimeImpl : CTCBulletTime {
     CThing* GetParentThing() const { return (CThing*)f4; }
     CIntelligentPointer<NParticleEngine::CParticleEmitter>& LoopingEffect()
@@ -107,7 +110,7 @@ struct CTCBulletTimeImpl : CTCBulletTime {
     {
         CTCSoundEmitter* emitter;
         if (GetParentThing()->GetTC(TCI_SOUND_PLAYER, &emitter))
-            emitter->StopSample(sound);
+            reinterpret_cast<CTCSoundPlayer*>(emitter)->StopAttachedSound(sound);
     }
     void ImmediateCancel();
 };

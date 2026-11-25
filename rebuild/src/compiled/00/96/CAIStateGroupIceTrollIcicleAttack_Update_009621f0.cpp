@@ -52,7 +52,8 @@ class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
-    bool HasMode(long mode);                    // 0x0073A8A0
+    // Naming (NF439 gen, 2026-11-25): callee 0x0073A8A0 binds its PDB spelling ?IsModeActive@CTCCreatureModeManager@@QBE_NK@Z (T1 target; was ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z).
+    bool IsModeActive(unsigned long mode) const;
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -149,7 +150,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
             stealth->SetAsInDanger(*GetCreature(), NStealth::DANGER_STATUS_COMBAT);
         }
         CTCCreatureModeManager* modes;
-        if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->HasMode(0x1e)) {
+        if (GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes) && modes->IsModeActive((unsigned long)0x1e)) {
             long result = AIAction_PerformActionAndWait(CCreatureAction_RiseUp(*GetCreature()), false);
             if (result == 1) {
                 Terminate();

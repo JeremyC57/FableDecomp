@@ -1,0 +1,32 @@
+action	symbol	target	witness	note
+add	?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z	005f0dc5	0041e6d3	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?AssignAbilityPC@CTCInventoryAbilities@@QAEXW4EHeroAbility@@KPAVCComponent@NUISystem@@@Z	005f0dc5	0041e6d3	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?Get@CActiveJoystick@@SIAAV1@XZ	0049bb90	0042e3ee	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetFrame@CMainGameComponent@@QAEKXZ	00416225	00445a60	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?AssignThingPC@CTCInventory@@QAEXJKPAUCComponent@@@Z	00584b86	00584edc	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?SetText@CSubtitleRenderer_Retail@@QAEXPAUCFontBank_Retail@@ABVCCharString@@KM_N2@Z	00492ed1	00892780	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAUCComponent@@@Z	005f0dc5	005f4519	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?UnAssignAbilityPC@CTCInventoryAbilities@@QAEXKPAUCComponent@@@Z	005f1320	005f4519	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?TeleportHeroToHSP@CWorld@@QAE_NABVCCharString@@@Z	004a0940	0061ab30	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?LoadQuestHSP@CWorld@@QAEXABVCCharString@@@Z	004a0940	0061ab30	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?RegisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z	004bd390	00640f00	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetAnimFromName@CThingPlayerCreature@@QAEPAVCAnimationEntry@@ABVCCharString@@J@Z	00662a00	006635d0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetWorldFrame@CMainGameComponent@@QAEJXZ	00416225	006e37d0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?SetDSTGame@@YIXAAVCGameScriptInterfaceBase@@@Z	00cbe0c0	006e7740	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?SetGameScriptInterface@@YIXPAVCGameScriptInterface@@@Z	00cbe0c0	006e7740	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetCurrentSpeed@CThing@@QBEMXZ	00661cd0	00713ee0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?QueueAction@CThingCreatureBase@@QAEXPAUCCreatureAction@@@Z	00664490	007332a0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?CreateGamePiece@CTCTavernGameSpotTheAddition@@QAEPAXJ@Z	005ea9b0	007d83c0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?OnInitialActivateBase@CTCTavernGameSpotTheAddition@@QAEXXZ	005ea650	007d83c0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z	004fe5b0	00820e20	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?Remove@Target@NManager00820e20@@QAEXPAUObject@2@@Z	004fe5b0	00820e20	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetDamageType@CTCWeapon@@QBE?AW4EDamageAttribute@@XZ	005da810	00838bc0	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetDamageAttribute@CTCWeapon@@QBEJXZ	005da810	00838bc0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@@J@Z	004fb490	0088e0b0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?AddMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z	0082a890	00891f50	NF438: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?AddMarker@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z	0082a890	00891f50	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?SetText@CSubtitleRenderer_Retail@@QAEXPAUCFontBank_Retail@@ABVCCharString@@111KM_N2@Z	00492fb4	008927b0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetPSound@CSoundMap@@QBEPBJABVCCharString@@@Z	0065fba4	008c1f70	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThing@@PAVCWorld@@_N@Z	0065a8ee	0090fd20	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetPosition@CThingPos@@QAEABVC3DVector@@XZ	004c73d0	00957f20	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ	004c7950	00969470	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

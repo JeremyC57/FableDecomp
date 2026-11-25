@@ -18,7 +18,6 @@ class CThingGameObject : public CThing { public:
 };
 
 class CThingAICreature { public:
-    bool AutoPlaceNear(C3DVector* pPosition, float radius);   // 0x00665DF0
 };
 
 class CAIBrain { public:
@@ -51,12 +50,16 @@ struct CAIStateGroup_GazeAtWork : CAIStateGroup_Gaze {
     bool InitCreaturePosition();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00665DF0 ?AutoPlaceNear@CThingCreatureBase@@QAE_NABVC3DVector@@M@Z (was ?AutoPlaceNear@CThingAICreature@@QAE_NPAVC3DVector@@M@Z)
+class CThingCreatureBase { public: bool AutoPlaceNear(C3DVector const&, float); };
 bool CAIStateGroup_GazeAtWork::InitCreaturePosition()
 {
     if (IsRunnable()) {
         CThingGameObject* pGazePos = FindFreeGazePos();
         CThingAICreature* pCreature = PBrain->PCreature;
-        return pCreature->AutoPlaceNear((C3DVector*)&pGazePos->GetPos(), 1.0f);
+        return reinterpret_cast<CThingCreatureBase*>(pCreature)->AutoPlaceNear(*((C3DVector*)&pGazePos->GetPos()), 1.0f);
     }
     return false;
 }

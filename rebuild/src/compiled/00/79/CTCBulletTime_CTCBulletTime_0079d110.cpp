@@ -83,7 +83,6 @@ class CWorld { public:
     void RemoveBulletTimeSlowdownMultiplier(void* key) { PBulletTimeManager->RemoveBulletTimeSlowdownMultiplier(key); }
 };
 struct CTCSoundEmitter {
-    void StopSample(unsigned long sampleID);    // 0x0066ADD0
 };
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase {
@@ -146,6 +145,10 @@ class CTCBase { public:
 protected:
     CWorld& GetWorld() const;   // 0x00686A70
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0066ADD0 ?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z (was ?StopSample@CTCSoundEmitter@@QAEXK@Z)
+class CTCSoundPlayer { public: void StopAttachedSound(unsigned long); };
 class CTCBulletTime : public CTCBase { public:
     long BulletTimeRemainingTicks;              // +0x0c
     long BulletTimeAbilityLevel;                // +0x10
@@ -168,7 +171,7 @@ class CTCBulletTime : public CTCBase { public:
     {
         CTCSoundEmitter* emitter;
         if (ParentThing->GetTC(TCI_SOUND_PLAYER, &emitter))
-            emitter->StopSample(sound);
+            reinterpret_cast<CTCSoundPlayer*>(emitter)->StopAttachedSound(sound);
     }
 private:
     unsigned long PlaySoundW(const CCharString& sound, bool loop);   // 0x0079CE80 (Ego_r / FableWin ?PlaySoundW@CTCBulletTime@@AAEKABVCCharString@@_N@Z, private)

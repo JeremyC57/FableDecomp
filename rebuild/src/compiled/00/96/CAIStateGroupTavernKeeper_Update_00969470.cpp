@@ -89,7 +89,6 @@ struct CThingBuildingModel : CThing {
     bool IsPointInside(const C3DVector& pos);   // 0x0082D000
 };
 struct CThingPos : CThing {                     // no data of its own: PBody is CThing's +0x60
-    C3DVector GetPhysPos() const;               // 0x004C7950
 };
 struct CIntelligentPointerObject : CBaseIntelligentPointer {     // CIntelligentPointer<CThingObject>
     virtual void v00();
@@ -120,6 +119,9 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7950 ?GetPhysPos@CThing@@QBE?AVC3DVector@@XZ (was ?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ)
 void CAIStateGroup_TavernKeeper::Update()
 {
     CTCShopKeeper* shopKeeper;
@@ -134,7 +136,7 @@ void CAIStateGroup_TavernKeeper::Update()
         bool arrived;
         CTCPhysicsBase* body = ((CThingPos*)PPub.GetPItem())->GetPhysicsTC();
         CThingPos* pubThing = (CThingPos*)PPub.GetPItem();
-        if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, pubThing->GetPhysPos(), body->Radius, arrived, AI_MOVEMENT_WALKING, true,
+        if (AIAction_MoveToPosProximity(ACTION_REPEAT_UNTIL_FINISHED, reinterpret_cast<const CThing*>(pubThing)->GetPhysPos(), body->Radius, arrived, AI_MOVEMENT_WALKING, true,
                 false, true, 0, true, 0.0f) != 2) {
             Terminate();
             return;

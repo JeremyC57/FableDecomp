@@ -34,7 +34,6 @@ private:
 class CBaseObject
 {
 public:
-    CScriptThing BuildScriptThing();
 };
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -67,6 +66,10 @@ struct CGSIGetMostRecentValidUsedTarget_BaseObject
 class CQuestManager;
 // 0x013B89FC = CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (private static; reached through the public inline Get())
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?BuildScriptThing@CBaseObject@@QAE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 CScriptThing
 CGameScriptInterface::GetMostRecentValidUsedTarget() const
 {
@@ -80,7 +83,7 @@ CGameScriptInterface::GetMostRecentValidUsedTarget() const
     {
         reinterpret_cast<CVillageTaskCarryCrate*>(&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get())
             ->AssignCreatureToTask(0);
-        return item->BuildScriptThing();
+        return reinterpret_cast<const CThing*>(item)->GetScriptThing();
     }
 
     return CScriptThing();

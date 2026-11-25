@@ -6,6 +6,11 @@
 #include <new>
 void __cdecl operator delete[](void*);
 #include "engine/CIDrawMap.h"
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004FE5B0 ?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z (was ?Remove@Target@NManager00820e20@@QAEXPAUObject@2@@Z)
+class CScriptedMapBrush;
+class CWorldMap { public: void DeregisterScriptedMapBrush(CScriptedMapBrush const&); };
 namespace NManager00820e20 {
 // Layout: retail CMap/CIDrawMap header4, secondary base+4, cached volumes+8, list+0c, strings+10, context+20,storage+1a6c, ownedobjects+1a78/+1a7c.
 // CMap.h is quarantined; CIDrawMap active header used as authoritative primary base ABI view.
@@ -26,5 +31,5 @@ struct CachedEntry{int key;Counted value;};
 template<class T>__declspec(noinline)void __fastcall _Destroy(CachedEntry*first,CachedEntry*last,const T&){for(;first!=last;++first)first->~CachedEntry();}
 struct vector{CachedEntry*first,*last,*end;};
 struct CMap:CIDrawMap{CBaseClassNonCopyable sub;vector*heap;Node*list;Strings*first,*last,*end;int gap;Context*context;char pad[0x1a6c-36];void*storage;char pad2[8];Object*a,*b;void Destroy();FABLE_FORCEINLINE void Clear(){Node*p=list->next;while(p!=list){Node*old=p;p=p->next;Value(old)->~Object();free(old);}list->next=list;list->prev=list;}};
-void CMap::Destroy(){__vftable=CMap_vftable_CIDrawMap_0127252c;sub.table=CMap_vftable_CBaseClassNonCopyable_01272524;Target*t=context->Get();for(Node*p=list->next;p!=list;p=p->next)t->Remove(Value(p));Clear();if(b)delete b;if(a)delete a;if(storage)free(storage);Strings*finish=last;for(Strings*s=first;s!=finish;++s)s->~Strings();if(first)free(first);Clear();if(list)free(list);vector*p=heap;if(p){_Destroy(p->first,p->last,__false_type());if(p->first)free(p->first);delete p;}sub.Destroy();__vftable=CIDrawMap_vftable_01272494;}
+void CMap::Destroy(){__vftable=CMap_vftable_CIDrawMap_0127252c;sub.table=CMap_vftable_CBaseClassNonCopyable_01272524;Target*t=context->Get();for(Node*p=list->next;p!=list;p=p->next)reinterpret_cast<CWorldMap*>(t)->DeregisterScriptedMapBrush(*reinterpret_cast<CScriptedMapBrush const*>(Value(p)));Clear();if(b)delete b;if(a)delete a;if(storage)free(storage);Strings*finish=last;for(Strings*s=first;s!=finish;++s)s->~Strings();if(first)free(first);Clear();if(list)free(list);vector*p=heap;if(p){_Destroy(p->first,p->last,__false_type());if(p->first)free(p->first);delete p;}sub.Destroy();__vftable=CIDrawMap_vftable_01272494;}
 }

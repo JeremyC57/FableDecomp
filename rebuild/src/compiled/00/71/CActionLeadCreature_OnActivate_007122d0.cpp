@@ -104,8 +104,10 @@ class CTCScriptedControl { public:
     CThing* m_pCreature;                                // +0x04
 };
 
-bool __fastcall IsAbleToMove(CThing* thing);                   // 0x0085F3E0
-void __fastcall RemoveMovementBlockingModes(CThing* thing);    // 0x0085F600
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F3E0 binds its PDB spelling ?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsAbleToMove@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsAbleToMove(CThing const& thing); }
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F600 binds its PDB spelling ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z (T1 target; was the free stand-in ?RemoveMovementBlockingModes@@YIXPAVCThing@@@Z).
+namespace NCreatureMode { void __fastcall RemoveMovementBlockingModes(CThing& thing); }
 
 struct CActionLeadCreature {
     virtual void v00();
@@ -122,6 +124,6 @@ void CActionLeadCreature::OnActivate()
         m_savedMovementLocked = m_pControl->m_pCreature->GetPhysicsTC()->GetMovementLocked();
         m_pControl->m_pCreature->GetPhysicsTC()->SetMovementLocked(0);
     }
-    if (!IsAbleToMove(m_pControl->m_pCreature))
-        RemoveMovementBlockingModes(m_pControl->m_pCreature);
+    if (!NCreatureMode::IsAbleToMove(*(m_pControl->m_pCreature)))
+        NCreatureMode::RemoveMovementBlockingModes(*(m_pControl->m_pCreature));
 }

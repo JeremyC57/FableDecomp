@@ -60,7 +60,8 @@ class CThing { public:
 };
 
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
-bool __fastcall IsLyingDown(CThing* thing);             // 0x0085F2B0
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F2B0 binds its PDB spelling ?IsLyingDown@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsLyingDown@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsLyingDown(CThing const& thing); }
 bool __fastcall IsIncapacitated(CThing* thing);         // 0x0085F0C0
 
 class CThingCreatureBase : public CThing { public:
@@ -101,7 +102,7 @@ void CThingCreatureBase::UpdateBodyReorientation()
     }
     if (IsAlive() && HadFacingAngleYZSetByBodyOrientation) {
         if (fabs(PhysicsTC->GetFacingAngleYZ()) > DELTA_NOTIONAL_ZERO) {
-            if (!IsPerformingAnyAction() && !IsLyingDown(this) && !IsIncapacitated(this)) {
+            if (!IsPerformingAnyAction() && !NCreatureMode::IsLyingDown(*this) && !IsIncapacitated(this)) {
                 PhysicsTC->SetFacingAngleYZ(0.0f);
                 HadFacingAngleYZSetByBodyOrientation = false;
             }

@@ -19,7 +19,6 @@ class C3DVector;
 
 class CThing { public:
     const C3DVector& GetPos() const;         // 0x004C73D0
-    long GetRegionAtPosition(const C3DVector& pos);   // 0x00661D20
 };
 
 class CBaseObject;
@@ -62,13 +61,17 @@ protected:
     virtual bool IsStillRunnable(bool checkEnemy) const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00661D20 ?GetNavigationLevelAt@CThingCreatureBase@@QBEJABVC3DVector@@@Z (was ?GetRegionAtPosition@CThing@@QAEJABVC3DVector@@@Z)
+class CThingCreatureBase { public: long GetNavigationLevelAt(C3DVector const&) const; };
 bool CAIStateGroup_MeleeCombatNearby2::IsStillRunnable(bool checkEnemy) const
 {
     if (CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(checkEnemy)) {
         CThing* enemy = PEnemy.GetPItem();
         CThing* creature = PBrain->Creature;
-        long enemyRegion = enemy->GetRegionAtPosition(PEnemy.GetPItem()->GetPos());
-        long creatureRegion = creature->GetRegionAtPosition(creature->GetPos());
+        long enemyRegion = reinterpret_cast<const CThingCreatureBase*>(enemy)->GetNavigationLevelAt(PEnemy.GetPItem()->GetPos());
+        long creatureRegion = reinterpret_cast<const CThingCreatureBase*>(creature)->GetNavigationLevelAt(creature->GetPos());
         if (enemyRegion == creatureRegion)
             return true;
     }

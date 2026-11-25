@@ -160,10 +160,13 @@ public:
     virtual bool Accept(const CAnimationEntry* entry) const;         // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                          // 0x00429A2F
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005F0DC5 ?AssignAbilityPC@CTCInventoryAbilities@@QAEXJKPAVCComponent@NUISystem@@@Z (was ?AssignAbilityPC@CTCInventoryAbilities@@QAEXW4EHeroAbility@@KPAVCComponent@NUISystem@@@Z)
+//   0x005DC340 ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (was ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z)
 class CAnimationSet {
 public:
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
+ public: CAnimationEntry const& GetAnim(CCharString const&, long, CAnimFilterBase const&) const; };
 class CAppearanceDef : public CDefClassBase {
 public:
     unsigned char _pad_0x25[0x34 - sizeof(CDefClassBase)];
@@ -372,7 +375,7 @@ class CTCInventoryAbilities : public NInventory::CTCInventoryBase {
 public:
     void AssignAbility(long, unsigned long);                         // 0x005F0C5F
     void UnAssignAbility(unsigned long);                             // 0x005F11A9
-    void AssignAbilityPC(EHeroAbility, unsigned long, NUISystem::CComponent*);    // 0x005F0DC5
+    void AssignAbilityPC(long, unsigned long, NUISystem::CComponent*);    // 0x005F0DC5
     void UnAssignAbilityPC(unsigned long, NUISystem::CComponent*);                // 0x005F1320
     void ResetAssignedAbilities();                                                // 0x005F694D
     void ResetAssignedAbilitiesPC();                                              // 0x005F6A6F
@@ -2138,7 +2141,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 if (def->Graphic.Type == 4) {
                     CDefPointer<const CAppearanceDef> appearance;
                     def->GetSubDef(&appearance);
-                    mesh->SetAnimationIndex(appearance->Animation.GetAnimation("DEFAULT", 0, CAnimFilterNoGroup())->AnimIndex);
+                    mesh->SetAnimationIndex((&reinterpret_cast<const CAnimationSet*>(&(appearance->Animation))->GetAnim("DEFAULT", 0, CAnimFilterNoGroup()))->AnimIndex);
                     mesh->SetMeshType((EEngineGraphicType)4);
                 }
                 parent->AddChildDynamically(component);

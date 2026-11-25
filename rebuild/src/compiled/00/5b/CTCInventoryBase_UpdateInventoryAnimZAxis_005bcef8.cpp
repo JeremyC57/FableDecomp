@@ -17,13 +17,16 @@ struct CTCInventoryBase_Retail {
     float InventoryAnimXRotationAngleGain;      // +0x114
     float InventoryAnimYRotationAngleGain;      // +0x118
     float InventoryAnimZRotationAngleGain;      // +0x11C
-    void GetRightStickPosition(C2DVector* out); // 0x005BC5C6
     void UpdateInventoryAnimZAxis();
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BC5C6 ?GetRightStickPosition@CTCInventoryBase@NInventory@@QAEXAAVC2DVector@@@Z (was ?GetRightStickPosition@CTCInventoryBase_Retail@@QAEXPAVC2DVector@@@Z)
+namespace NInventory { class CTCInventoryBase { public: void GetRightStickPosition(C2DVector&); }; }
 void CTCInventoryBase_Retail::UpdateInventoryAnimZAxis()
 {
     C2DVector stick;
-    GetRightStickPosition(&stick);
+    reinterpret_cast<NInventory::CTCInventoryBase*>(this)->GetRightStickPosition(stick);
     if (sqrtf(stick.y * stick.y + stick.x * stick.x) > 0.01f)
         InventoryAnimZRotationAngleGain += (stick.y - InventoryAnimZRotationAngleGain) * 0.1f;
     else

@@ -52,10 +52,13 @@ struct CInventoryDefPointer {
 class CTCInventoryExperience { public:
     unsigned char _pad_000[0x68];
     CInventoryDefPointer PDef;                     // +0x068
-    CWideString GetInventoryText(long textId);     // 0x005BD273 (CTCInventoryBase)
     CWideString GetExperienceStatName(long stat);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BD273 ?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z (was ?GetInventoryText@CTCInventoryExperience@@QAE?AVCWideString@@J@Z)
+namespace NInventory { class CTCInventoryBase { public: CWideString GetInventoryText(long) const; }; }
 CWideString CTCInventoryExperience::GetExperienceStatName(long stat)
 {
     long textId;
@@ -64,6 +67,6 @@ CWideString CTCInventoryExperience::GetExperienceStatName(long stat)
         textId = def->ExperienceItemLabelStat._M_start[stat];
     }
     if (textId)
-        return GetInventoryText(textId);
+        return reinterpret_cast<const NInventory::CTCInventoryBase*>(this)->GetInventoryText(textId);
     return CWideString::NullString;
 }

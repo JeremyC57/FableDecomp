@@ -1,0 +1,15 @@
+addr       parity           behav  name
+009a6610   WARN SHARED_HEADER_AVAILABLE CInputManagerInit (engine/CInputManagerInit.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDisplayManagerInit (engine/CDisplayManagerInit.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CSystemManagerInit (engine/CSystemManagerInit.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDeviceResetCallback (engine/CDeviceResetCallback.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CFontManager (engine/CFontManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CMeshBankManager (engine/CMeshBankManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CDriveManager (engine/CDriveManager.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CInitBaseClass (engine/CInitBaseClass.h)
+009a6610   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+009a6610   RELOCATION_MATCH PASS   Initialise
+
+WINS: 1
+  009a6610 RELOCATION_MATCH CSystemManager::Initialise

@@ -59,7 +59,6 @@ struct CThing_Retail {
     void RemoveMovementBlockingModes();            // 0x0085F600
     void SetCutscenePauseBehaviour(long behaviour);   // 0x004C78A0 (CThing)
     long GetSex();                                 // 0x00661FF0 (CThingCreatureBase; the label "CPixelShader::CountReferences" is propagated)
-    void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
 #include "engine/CCountedPointer.h"
@@ -71,11 +70,15 @@ struct CThing_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00663610 ?PreloadBasicAnimations@CThingCreatureBase@@QAEXXZ (was ?PreloadBasicAnimations@CThing_Retail@@QAEXXZ)
+class CThingCreatureBase { public: void PreloadBasicAnimations(); };
 void CGameScriptInterface::EntityBeginLoadingBasicAnimations(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->m_flags & 8)
-            t->PreloadBasicAnimations();
+            reinterpret_cast<CThingCreatureBase*>(t)->PreloadBasicAnimations();
     }
 }

@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_GenericRangedAttack::OnCreate() -- queue aim, fire and load projectile-weapon actions, then the base OnCreate
 // Leaf: ?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00906050, 256 bytes (incl. int3 padding).
@@ -67,7 +68,8 @@ class CCombatSequenceBase { public:
     CThing* m_pTarget;                      // +0x20 target
     CThingCreatureBase* GetCreature() const { return m_pCreature; }
     CThing* GetTarget() const { return m_pTarget; }
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 
@@ -79,10 +81,10 @@ void CCombatSequence_GenericRangedAttack::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_GenericAimProjectileWeapon(GetCreature(), GetTarget());
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_GenericFireProjectileWeapon(GetCreature(), GetTarget());
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_GenericLoadProjectileWeapon(GetCreature(), GetTarget());
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

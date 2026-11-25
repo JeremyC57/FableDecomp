@@ -60,7 +60,6 @@ class CThingCreatureBase { public:
     bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0
 };
 struct CTCShowableItem {
-    void OnShowEnded();                                 // 0x005D8E50
 };
 class CThing;
 class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
@@ -77,6 +76,10 @@ struct CTCCarriedActionUseSpade : CTCCarriedActionUseBase {
     static bool __fastcall IsThingAbleToDig(const CThingCreatureBase& creature);   // 0x007F0300
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CTCCarriedActionUseSpade::OnActionUse(CThing& thing)
 {
     CThingCreatureBase* user = (CThingCreatureBase*)&thing;
@@ -86,5 +89,5 @@ void CTCCarriedActionUseSpade::OnActionUse(CThing& thing)
         user->SetCurrentAction(CCreatureAction_ActivateQuest(*user, 0, name, false));
     }
     if (ParentThing->HasTC(0x1a))
-        ((CTCShowableItem*)ParentThing->GetTC(0x1a))->OnShowEnded();
+        reinterpret_cast<CTCInventoryItem*>(((CTCShowableItem*)ParentThing->GetTC(0x1a)))->ReturnToInventory();
 }

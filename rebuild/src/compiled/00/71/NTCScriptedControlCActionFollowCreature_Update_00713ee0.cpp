@@ -69,7 +69,6 @@ class CThing { public:
     unsigned char _pad54[0xc];
     CTCPhysicsBase* PPhysics;                   // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
-    float GetCurrentSpeed() const;              // 0x00661CD0
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -99,10 +98,13 @@ class CThing { public:
 };
 // Name fix (naming agent NF21, 2026-11-11): 0x006622A0 is ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (Ego_r.pdb /
 //   FableWin.pdb), reached through the scripted creature (CThingCreatureBase derives from CThing).
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00661CD0 ?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ (was ?GetCurrentSpeed@CThing@@QBEMXZ)
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
     float GetMaxSneakingSpeed(const C3DVector& pos) const;   // 0x00664CB0 ?GetMaxSneakingSpeed@CThingCreatureBase@@QBEMABVC3DVector@@@Z (Ego_r + FableWin; NF384, was CThing::GetSneakSpeedTowards)
-};
+ public: float GetCurrentSpeed() const; };
 class CTCStealth { public: char _pad[0xf]; bool Sneaking; };   // interface 0x36
 class CNavigationInput { public:
     C3DVector Destination;                      // +0x00
@@ -198,7 +200,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
         myPos.Y = mp.Y;
         distance = GFGet2DBoxDistance(myPos, targetPos);
     }
-    float targetSpeed = PTargetThing.GetThing()->GetCurrentSpeed();
+    float targetSpeed = reinterpret_cast<const CThingCreatureBase*>(PTargetThing.GetThing())->GetCurrentSpeed();
     if (targetSpeed == 0.0f) {
         CThing* t = PTargetThing.GetThing();
         targetSpeed = t->GetMaxSpeedTowards(PTCScript->ParentThing->GetPos());

@@ -93,7 +93,8 @@ public:
     long                BlockingNumFrames;                 // +0x68
     long                UnsheathingWeaponType;             // +0x6c
     SAbilityNode*       CombatAbilities;                   // +0x70 (multimap header node)
-    void OnBlockHoldExpired();                             // 0x007338A0
+    // Naming (NF439 gen, 2026-11-25): callee 0x007338A0 binds its PDB spelling ?UnsetBlocking@CTCCombat@@QAEXXZ (T1 target; was ?OnBlockHoldExpired@CTCCombat@@QAEXXZ).
+    void UnsetBlocking();
     private:
     void UpdateCombatTimers();
     public:
@@ -135,7 +136,7 @@ void CTCCombat::UpdateCombatTimers()
             node->Timer = (long)(CMainGameComponent::GetConstantFPS() * data->CooldownSeconds);
     }
     if (BlockHoldTimer == 0)
-        OnBlockHoldExpired();
+        UnsetBlocking();
     if (BlockHoldTimer >= 0)
         --BlockHoldTimer;
     if (Blocking)

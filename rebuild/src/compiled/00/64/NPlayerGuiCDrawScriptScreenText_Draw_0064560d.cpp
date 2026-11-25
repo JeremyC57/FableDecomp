@@ -21,7 +21,6 @@ class C2DVector { public:
     C2DVector operator*(float s) const { return C2DVector(X * s, Y * s); }
     C2DVector& operator+=(const C2DVector& o) { X += o.X; Y += o.Y; return *this; }
 };
-void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 class CWideString {
 public:
     void* m_pStringData;
@@ -133,6 +132,10 @@ struct CGuiResources {
 };
 class CEnginePrimitivePrepareInfo;
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009E21D0 ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (was ?GFACoordToVCoord@@YIXPBVC2DVector@@PAV1@@Z)
+void __fastcall GFACoordToVCoord(C2DVector const&, C2DVector&);
 namespace NPlayerGui {
 class CDrawScriptScreenText { public:
     void*          _vtable;
@@ -163,9 +166,9 @@ void CDrawScriptScreenText::Draw(CEnginePrimitivePrepareInfo* info)
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CFontBank* font = PFontManager->GetFont(def->ScriptTextFont).Data;
         C2DVector pos;
-        GFACoordToVCoord(&def->ScriptTextPos, &pos);
+        GFACoordToVCoord(*(&def->ScriptTextPos), pos);
         C2DVector step;
-        GFACoordToVCoord(&def->ScriptTextLineStep, &step);
+        GFACoordToVCoord(*(&def->ScriptTextLineStep), step);
         long count = 0;
         for (CListIter<SScriptLineNode> it = lines.ibegin(); it != lines.iend(); ++it) {
             SScriptLine& line = it._M_node->Data;

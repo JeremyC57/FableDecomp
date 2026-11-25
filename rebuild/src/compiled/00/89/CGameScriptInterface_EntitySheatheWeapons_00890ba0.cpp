@@ -100,8 +100,6 @@ struct CThing_Retail {
     CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
     CTCBase_Retail* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
-    void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
-    void SheatheAllWeapons();                       // 0x006647F0 (CThingCreatureBase)
     void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
     void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
     void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
@@ -180,6 +178,11 @@ struct CDefinitionManager_Retail;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662650 ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ (was ?FinishCurrentAction@CThing_Retail@@QAEXXZ)
+//   0x006647F0 ?SheatheAllWeapons@CThingCreatureBase@@QAEXXZ (was ?SheatheAllWeapons@CThing_Retail@@QAEXXZ)
+class CThingCreatureBase { public: void FinishCurrentAction(); void SheatheAllWeapons(); };
 void CGameScriptInterface::EntitySheatheWeapons(const CScriptThing& thing, bool flag) const
 {
     if (thing.IsValid()) {
@@ -189,9 +192,9 @@ void CGameScriptInterface::EntitySheatheWeapons(const CScriptThing& thing, bool 
                 SheatheHeroWeapons();
                 return;
             }
-            creature->FinishCurrentAction();
+            reinterpret_cast<CThingCreatureBase*>(creature)->FinishCurrentAction();
             if (!flag)
-                creature->SheatheAllWeapons();
+                reinterpret_cast<CThingCreatureBase*>(creature)->SheatheAllWeapons();
             else
                 World->m_pCombatManager->CreatureUnsheathWeapon(creature, 1);
         }

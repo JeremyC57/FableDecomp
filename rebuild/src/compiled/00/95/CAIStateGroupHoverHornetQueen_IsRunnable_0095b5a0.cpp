@@ -155,9 +155,11 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
+class CThingCreatureBase;
 
 class CCombatManager { public:
-    void RegisterCombatant(CThing* creature, CThing* target, bool notify);   // 0x006EDC50
+    // Naming (NF439 gen, 2026-11-25): callee 0x006EDC50 binds its PDB spelling ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (T1 target; was ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z).
+    void RegisterCombatant(CThingCreatureBase& creature, CThingCreatureBase& target, bool notify);
 };
 
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
@@ -187,7 +189,7 @@ bool CAIStateGroup_HoverHornetQueen::IsRunnable()
         PTargetThing = CIntelligentPointerCreature(enemy);
         CThing* creature = PBrain->PCreature;
         CCombatManager* manager = GetWorld().CombatManager;
-        manager->RegisterCombatant(creature, ((CThing*)PTargetThing.GetPItem()), true);
+        manager->RegisterCombatant(*(CThingCreatureBase*)creature, *(CThingCreatureBase*)(((CThing*)PTargetThing.GetPItem())), true);
         SetupArena();
         return true;
     }

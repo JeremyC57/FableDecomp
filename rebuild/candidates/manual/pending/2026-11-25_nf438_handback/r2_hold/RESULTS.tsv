@@ -1,0 +1,4 @@
+address	verdict	old	new	reason
+00ab5390	HOLD	?SetMouseCursor@CMouseDX@@QAEXABVCSurface@@@Z	?SetMouseCursor@CMouseDX@@QAEXABVCSurface@@@Z	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL'); link gate
+00b869a0	HOLD	?FinishDisplacementRendering@CEngineScreenEffectDisplacementRenderer@@QAEXXZ	?FinishDisplacementRendering@CEngineScreenEffectDisplacementRenderer@@QAEXXZ	link gate
+00b89140	HOLD	?FinishOutlineRendering@CEngineScreenEffectOutlineGlow_Finish@@QAEXXZ	?FinishOutlineRendering@CEngineScreenEffectOutlineGlow_Finish@@QAEXXZ	link gate

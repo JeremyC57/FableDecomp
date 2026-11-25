@@ -1,0 +1,5 @@
+address	verdict	old	new	reason
+004a2d70	HOLD	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z	RULINGS_NEEDED r1: the respell adds an empty local enum definition (enum E {};) for a PDB enum parameter type that a shared engine header defines
+00749b40	HOLD	?UpdateAnimation@CTCCupboard@@AAEXXZ	?UpdateAnimation@CTCCupboard@@AAEXXZ	screen: target 0x0070E8B0's newest COORDINATION_CLAIMS line is Account B
+00a01950	HOLD	?InitSymbols@CASoundBank@@QAEXABVCWideString@@@Z	?InitSymbols@CASoundBank@@QAEXABVCWideString@@@Z	objgate NOT_EQ; vland ('RELOCATION_MATCH', 'PASS') -> ('DIFFER(331v334)', 'PASS'); pk COPIES 0->10
+00a262b0	HOLD	?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ	?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ	objgate NOT_EQ; vland ('RELOCATION_MATCH', 'PASS') -> ('DIFFER(188v191)', 'PASS'); pk COPIES 3->5

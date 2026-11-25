@@ -11,10 +11,13 @@
 
 struct CCreatureAction;
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00664490 ?AddQueuedAction@CThingCreatureBase@@QAEXABVCCreatureActionBase@@@Z (was ?QueueAction@CThingCreatureBase@@QAEXPAUCCreatureAction@@@Z)
+class CCreatureActionBase;
 class CThingCreatureBase { public:
     bool HasQueuedActions();                                // 0x00661F20
-    void QueueAction(CCreatureAction* action);              // 0x00664490
-};
+ public: void AddQueuedAction(CCreatureActionBase const&); };
 
 struct CTCCombat_Methods : CTCCombat {
     bool SetPossibleQueuedAction(CCreatureAction* action);
@@ -23,7 +26,7 @@ struct CTCCombat_Methods : CTCCombat {
 bool CTCCombat_Methods::SetPossibleQueuedAction(CCreatureAction* action)
 {
     if (ParentCreature->HasQueuedActions()) {
-        ParentCreature->QueueAction(action);
+        reinterpret_cast<CThingCreatureBase*>(ParentCreature)->AddQueuedAction(*reinterpret_cast<CCreatureActionBase const*>(action));
         return true;
     }
     return false;

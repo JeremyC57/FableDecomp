@@ -13,8 +13,8 @@
 
 #include "engine/CThing.h"
 
-float __fastcall Geometry_DistancePointToLineSegment(const C3DVector& lineStart, const C3DVector& lineEnd,
-                                                     const C3DVector& point);   // 0x008F5BA0
+// Naming (NF439 gen, 2026-11-25): callee 0x008F5BA0 binds its PDB spelling ?GetPerpendicularDistanceFromFiniteLine@NPhysicsHelpers@@YIMABVC3DVector@@00@Z (T1 target; was the free stand-in ?Geometry_DistancePointToLineSegment@@YIMABVC3DVector@@00@Z).
+namespace NPhysicsHelpers { float __fastcall GetPerpendicularDistanceFromFiniteLine(C3DVector const& lineStart, C3DVector const& lineEnd, C3DVector const& point); }
 
 class CTCDExplosion { public:
     void* __vftable;                        // +0x00 (CTCBase)
@@ -33,5 +33,5 @@ class CTCDExplosion { public:
 
 float CTCDExplosion::GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) const
 {
-    return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPos()) / DamageRadius;
+    return NPhysicsHelpers::GetPerpendicularDistanceFromFiniteLine(StartPos, EndPos, thing->GetPos()) / DamageRadius;
 }

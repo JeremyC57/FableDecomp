@@ -19,6 +19,7 @@ class CWorld;
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
+class CThingCreatureBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
@@ -101,7 +102,8 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 }
 
 class CTCShop { public:                                // interface 0x53
-    void RemoveShopper(CThing* shopper);        // 0x00772120
+    // Naming (NF439 gen, 2026-11-25): callee 0x00772120 binds its PDB spelling ?RemoveShopper@CTCShop@@QAEXPAVCThingCreatureBase@@@Z (T1 target; was ?RemoveShopper@CTCShop@@QAEXPAVCThing@@@Z).
+    void RemoveShopper(CThingCreatureBase*shopper);
 };
 
 class CTCIdleScheduler { public:                       // interface 0xD3
@@ -120,7 +122,7 @@ void CAIStateGroup_WanderAroundShops::OnReplace()
     if (IS_THING_ALIVE(Shop)) {
         CTCShop* shop;
         Shop.GetPItem()->GetInterface(&shop, 0x53);
-        shop->RemoveShopper(PBrain->PCreature);
+        shop->RemoveShopper((CThingCreatureBase *)(PBrain->PCreature));
     }
     if (PBrain->PCreature->HasTC(0xD3))
         ((CTCIdleScheduler*)PBrain->PCreature->FindEntry(0xD3)->second)->ChooseNewIdle();

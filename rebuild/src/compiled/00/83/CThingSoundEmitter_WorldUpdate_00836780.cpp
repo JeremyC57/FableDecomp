@@ -8,11 +8,14 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. `this` passes through ecx untouched to the callee; the `dec/neg/sbb/inc` tail is VC's `== 1` on a byte.
 class CThingSoundEmitter { public:
-    unsigned char GetState();             // 0x004C8050
     unsigned char WorldUpdate();                   // a byte result: a `bool` return would widen through eax
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C8050 ?WorldUpdate@CThing@@UAE_NXZ (was ?GetState@CThingSoundEmitter@@QAEEXZ)
+class CThing { public: virtual bool WorldUpdate(); };
 unsigned char CThingSoundEmitter::WorldUpdate()
 {
-    return GetState() == 1;
+    return reinterpret_cast<CThing*>(this)->CThing::WorldUpdate() == 1;
 }

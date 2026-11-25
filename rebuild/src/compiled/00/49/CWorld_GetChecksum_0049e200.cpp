@@ -11,17 +11,20 @@
 extern unsigned long g_WorldChecksumSalt;   // 0x013B89BC (.data; name from use)
 
 struct CThingManagerCalls {
-    unsigned long GetNonLocalThingChecksum();   // 0x0051E530
 };
 
 struct CWorld_Methods : CWorld {
     unsigned long GetChecksum();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0051E530 ?GetNonLocalThingChecksum@CThingManager@@QBEKXZ (was ?GetNonLocalThingChecksum@CThingManagerCalls@@QAEKXZ)
+class CThingManager { public: unsigned long GetNonLocalThingChecksum() const; };
 unsigned long CWorld_Methods::GetChecksum()
 {
     // Two named locals: a one-expression sum folds the salt into `add eax,[salt]` (15 bytes).
-    unsigned long checksum = reinterpret_cast<CThingManagerCalls*>(this->PThingManager_ptr)->GetNonLocalThingChecksum();
+    unsigned long checksum = reinterpret_cast<const CThingManager*>(reinterpret_cast<CThingManagerCalls*>(this->PThingManager_ptr))->GetNonLocalThingChecksum();
     unsigned long salt = g_WorldChecksumSalt;
     return checksum + salt;
 }

@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_TrollRockThrowRock::OnCreate() -- queue the sequence's two actions (a new CCreatureAction_TrollGetProjectile, then a new CCreatureAction_TrollThrowProjectile, each on the sequence's creature and target) and run the base OnCreate
 // Leaf: ?OnCreate@CCombatSequence_TrollRockThrowRock@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00907E00, 188 bytes, thiscall, plain `ret` (virtual).
@@ -61,7 +62,8 @@ public:
     CThingCreatureBase* Creature;                           // +0x1C
     CThingCreatureBase* Target;                             // +0x20
     bool CreateCalled;                                      // +0x24
-    void AddAction(const CCountedPointer<CCreatureActionBase>& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABV?$CCountedPointer@VCCreatureActionBase@@@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     CThingCreatureBase& GetCreature() const { return *Creature; }   // inline accessors (the landed sibling model)
     CThingCreatureBase& GetTarget() const { return *Target; }
 };
@@ -73,8 +75,8 @@ void CCombatSequence_TrollRockThrowRock::OnCreate()
 {
     CCountedPointer<CCreatureActionBase> action;
     action = new CCreatureAction_TrollGetProjectile(GetCreature(), GetTarget());
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_TrollThrowProjectile(GetCreature(), GetTarget());
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

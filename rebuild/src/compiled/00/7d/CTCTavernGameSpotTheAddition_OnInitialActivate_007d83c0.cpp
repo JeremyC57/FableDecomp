@@ -127,8 +127,6 @@ struct CTCTavernGameSpotTheAddition : public CTCBase {
     C3DVector GamePositionPos;                          // +0x165
     unsigned char _pad171[0x174 - 0x171];
     long GamePositionActionPointIndex;                  // +0x174
-    void OnInitialActivateBase();                       // 0x005EA650
-    void* CreateGamePiece(long type);                   // 0x005EA9B0
     private:
     void PositionCover(float t);
     public:
@@ -137,9 +135,15 @@ struct CTCTavernGameSpotTheAddition : public CTCBase {
 };
 #pragma pack(pop)
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005EA9B0 ?CreateGamePiece@CTCTavernGame@@QAEPAVCThingObject@@J@Z (was ?CreateGamePiece@CTCTavernGameSpotTheAddition@@QAEPAXJ@Z)
+//   0x005EA650 ?OnInitialActivate@CTCTavernGame@@UAEXXZ (was ?OnInitialActivateBase@CTCTavernGameSpotTheAddition@@QAEXXZ)
+class CThingObject;
+class CTCTavernGame { public: CThingObject* CreateGamePiece(long); virtual void OnInitialActivate(); };
 void CTCTavernGameSpotTheAddition::OnInitialActivate()
 {
-    OnInitialActivateBase();
+    reinterpret_cast<CTCTavernGame*>(this)->CTCTavernGame::OnInitialActivate();
     CDefPointer<const CTavernGameSpotTheAdditionDef> def;
     ParentThing->DefClass->GetSubDef(&def);
     CThing* thing = ParentThing;
@@ -147,7 +151,7 @@ void CTCTavernGameSpotTheAddition::OnInitialActivate()
     thing->GetInterface(&points, 46);
     points->GetFreeNamedActionPoint(*thing, GamePositionPos, GamePositionRHSet, CCharString("DUMMY_OBJECT_GAME_POSITION"),
                                     GamePositionActionPointIndex, 0, true);
-    GamePiece = CreateGamePiece(def->PointerModel);
+    GamePiece = reinterpret_cast<void*>(reinterpret_cast<CTCTavernGame*>(this)->CreateGamePiece(def->PointerModel));
     CoverState = 0;
     Cover = 0;
     CTCLinkedThings* links;

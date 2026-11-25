@@ -17,7 +17,6 @@ class CScriptThing { public:
     void* m_pImpData;                               // +4 CCountedPointer<CScriptThing>::Data
     void* m_pImpInfo;                               // +8 CCountedPointer<CScriptThing>::Info
     CScriptThing(const CScriptThing& other);        // out of line (not emitted here)
-    CScriptThing MakeScriptThing() const;           // 0x004C7E50
 };
 
 namespace CTCScriptedControl {
@@ -29,6 +28,10 @@ class CActionBase : public CBaseClassNonCopyable { public:
 };
 }
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?MakeScriptThing@CScriptThing@@QBE?AV1@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 namespace NTCScriptedControl {
 struct CActionWaitForThingToFinishPerformingTasks : CTCScriptedControl::CActionBase {
     CScriptThing m_thing;                           // +0x0c
@@ -36,7 +39,7 @@ struct CActionWaitForThingToFinishPerformingTasks : CTCScriptedControl::CActionB
 };
 
 CActionWaitForThingToFinishPerformingTasks::CActionWaitForThingToFinishPerformingTasks(const CScriptThing& thing)
-    : m_thing(thing.MakeScriptThing())
+    : m_thing(reinterpret_cast<const CThing*>(&(thing))->GetScriptThing())
 {
 }
 }

@@ -8,7 +8,8 @@
 // Shape: two returns that each re-read the def pointer member (no local), through the def pointer's
 // inline operator->.
 class CThing;
-bool __fastcall IsCarryingTooHeavyWeapon(CThing* thing);   // 0x0085EF70
+// Naming (NF439 gen, 2026-11-25): callee 0x0085EF70 binds its PDB spelling ?IsCarryingTooHeavyWeapon@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsCarryingTooHeavyWeapon@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsCarryingTooHeavyWeapon(CThing const& thing); }
 
 class CPlayerMovementDef { public:
     unsigned char _pad00[0x68];
@@ -31,7 +32,7 @@ public:
 
 float CThingPlayerCreature::GetMaxTurnSpeed() const
 {
-    if (IsCarryingTooHeavyWeapon((CThing*)this))
+    if (NCreatureMode::IsCarryingTooHeavyWeapon(*((CThing*)this)))
         return PPlayerMovementDef->MaxTurnSpeedHeavyWeapon;
     return PPlayerMovementDef->MaxTurnSpeed;
 }

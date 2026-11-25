@@ -1,0 +1,7 @@
+address	verdict	old	new	reason
+007c04a0	HOLD	?UpdateCreatureAwarenessOfMe@CTCShotDefinitionBase@@QAEXXZ	?UpdateCreatureAwarenessOfMe@CTCShotDefinitionBase@@QAEXXZ	objgate NOT_EQ; vland ('RELOCATION_MATCH', 'PASS') -> ('DIFFER(500v496)', 'PASS'); pk COPIES 9->13
+00891d50	HOLD	?GetThingWithUID@CGameScriptInterface@@UBE?AVCScriptThing@@_K@Z	?GetThingWithUID@CGameScriptInterface@@UBE?AVCScriptThing@@_K@Z	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')
+0089a070	HOLD	?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ	?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')
+0089a0e0	HOLD	?ChangeHeroMoralityDueToPicklock@CGameScriptInterface@@UBEXXZ	?ChangeHeroMoralityDueToPicklock@CGameScriptInterface@@UBEXXZ	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')
+008c5fd0	HOLD	?Initialise@Fable_TrollInit_008c5fd0@@QAEXXZ	?Initialise@Fable_TrollInit_008c5fd0@@QAEXXZ	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')
+008d03a0	HOLD	?SetToKillOnLevelUnload@CGameScriptThing@@QAEXJ@Z	?SetToKillOnLevelUnload@CGameScriptThing@@QAEXJ@Z	objgate NOT_EQ; vland ('RELOCATION_MATCH', 'PASS') -> ('DIFFER(59v54)', 'PASS')

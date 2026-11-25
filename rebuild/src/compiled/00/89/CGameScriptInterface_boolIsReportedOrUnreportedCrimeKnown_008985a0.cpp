@@ -54,7 +54,6 @@ struct CTCVillage_Retail {                           // the component (no vtable
     void SetVillageLimbo(long limbo);              // 0x0065C36E
     void EnableGuards(long enable);                // 0x0065C45A
     void EnableVillagerDefTypes(long a, long b);   // 0x0065B142
-    bool IsReportedOrUnreportedCrimeKnown();       // 0x0065BFFA
     unsigned char _pad[0xd4];
     long m_heroEnemyOfGuards;                      // +0xd4
 };
@@ -83,13 +82,17 @@ class CGameScriptInterface { public:
     bool IsReportedOrUnreportedCrimeKnown(const CScriptThing& thing) const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0065BFFA ?IsReportedOrUnreportedCrimeKnown@CTCVillage@@QAE_NXZ (was ?IsReportedOrUnreportedCrimeKnown@CTCVillage_Retail@@QAE_NXZ)
+class CTCVillage { public: bool IsReportedOrUnreportedCrimeKnown(); };
 bool CGameScriptInterface::IsReportedOrUnreportedCrimeKnown(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->HasTC(0x22)) {
             CTCVillage_Retail* tc = (CTCVillage_Retail*)GetTC(t, 0x22);
-            return tc->IsReportedOrUnreportedCrimeKnown();
+            return reinterpret_cast<CTCVillage*>(tc)->IsReportedOrUnreportedCrimeKnown();
         }
     }
     return false;

@@ -20,11 +20,14 @@ struct CLightInfo;
 #include "engine/CCountedPointer.h"
 class CDefClassBase;
 class CLightDef;
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004BD390 ?RegisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z (was ?RegisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCAGraphicAppearanceComponent@2@@Z)
 namespace NGraphicAppearance {
 class CPrimitive;
 class CAGraphicAppearanceComponent;
 class CTCGraphicAppearance { public:
-    void RegisterComponent(CAGraphicAppearanceComponent* component);   // 0x004BD390
+    void RegisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent&);   // 0x004BD390
 };
 class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
     virtual void OnAppearanceDraw();
@@ -88,6 +91,6 @@ CTCLight::CTCLight(CThing& thing)
     , OldAccumilativeFlickerFactor(1.0f)
     , Initialised(false)
 {
-    ParentThing->PTCGraphicAppearance->RegisterComponent(this);
+    ParentThing->PTCGraphicAppearance->RegisterComponent(*(this));
     ParentThing->PDef->GetSubDef(&PLightDef);
 }

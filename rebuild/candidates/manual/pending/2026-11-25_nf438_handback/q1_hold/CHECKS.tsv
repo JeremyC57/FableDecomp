@@ -1,0 +1,3 @@
+address	objgate	vland_head/new	pk	pk_flag	link
+0047db73	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=5 neq=1 | N copies=5 neq=1	OK	old ?GetFrame@CWorld@@QAEJXZ still bound by 006e2dc0.obj
+0066fb50	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	old ?GetFrame@CWorld@@QAEJXZ still bound by 006e2dc0.obj

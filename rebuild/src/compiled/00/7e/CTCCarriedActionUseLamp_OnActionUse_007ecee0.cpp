@@ -73,7 +73,6 @@ class CTCLight { public:
     void SetActive(bool active);                        // 0x006412B0
 };
 struct CTCShowableItem {
-    void OnShowEnded();                                 // 0x005D8E50
 };
 class CThing;
 class CTCActionUseBase { public:                 // Ego_r.pdb base of CTCCarriedActionUseBase (row-local view: the one member called)
@@ -87,6 +86,10 @@ struct CTCCarriedActionUseLamp : CTCCarriedActionUseBase {
     virtual void OnActionUse(CThing& user);   // Ego_r.pdb (UAE; RTTI slot 28, was vfunc_28(CThing*))
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CTCCarriedActionUseLamp::OnActionUse(CThing& thing)
 {
     CThing* user = (CThing*)&thing;
@@ -99,5 +102,5 @@ void CTCCarriedActionUseLamp::OnActionUse(CThing& thing)
     light->SetLightDef(def);
     light->SetActive(!light->Active);
     if (ParentThing->HasTC(0x1a))
-        ((CTCShowableItem*)ParentThing->GetTC(0x1a))->OnShowEnded();
+        reinterpret_cast<CTCInventoryItem*>(((CTCShowableItem*)ParentThing->GetTC(0x1a)))->ReturnToInventory();
 }

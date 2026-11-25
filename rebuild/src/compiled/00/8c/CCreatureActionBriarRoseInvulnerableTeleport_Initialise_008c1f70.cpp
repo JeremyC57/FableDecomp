@@ -55,9 +55,12 @@ template<class T> class CDefPointer { public:
 class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& value) const;   // 0x00669D30 // agentNF16: Ego_r/FableWin ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0065FBA4 ?GetPSoundPair@CSoundMap@@QBEPBVCSoundPair@@ABVCCharString@@@Z (was ?GetPSound@CSoundMap@@QBEPBJABVCCharString@@@Z)
+class CSoundPair;
 class CSoundMap { public:
-    const long* GetPSound(const CCharString& name) const;       // 0x0065FBA4
-};
+ public: CSoundPair const* GetPSoundPair(CCharString const&) const; };
 class CEntitySoundDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CSoundMap     SoundMap;                             // +0x28
@@ -191,7 +194,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
         CTCDParticleEmitter::Create(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
     CDefPointer<CEntitySoundDef> sounds;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&soundPlayer, 0x10) && CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&sounds)) {
-        const long* sound = sounds->SoundMap.GetPSound("TELEPORT_AWAY_WANK");
+        const long* sound = reinterpret_cast<long const*>(reinterpret_cast<const CSoundMap*>(&(sounds->SoundMap))->GetPSoundPair("TELEPORT_AWAY_WANK"));
         if (sound)
             soundPlayer->PlayUnattachedSample(*sound, CSoundInit(), false, false);
     }

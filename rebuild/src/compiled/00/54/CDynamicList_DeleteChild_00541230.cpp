@@ -11,6 +11,10 @@
 #define CComponent CComponentDonor
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00533BC0 ?RemoveChild@CComponent@NUISystem@@UAEXK@Z (was ?RemoveBaseChild@CDynamicList@NUISystem@@QAEXK@Z)
+namespace NUISystem { class CComponent { public: virtual void RemoveChild(unsigned long); }; }
 namespace NUISystem {
 class CComponent;
 struct ChildPointer {CComponent* Data;void* CountInfo;CComponent* GetPItem()const{return Data;}};
@@ -34,7 +38,6 @@ class CDynamicList { public:
  long BInitialised;float PositionOffsetX,PositionOffsetY;long TopIndex,SelectionIndex,NumVisible;ScrollingArray ScrollingChildren;
  typedef void(CDynamicList::*ResetMethod)();
  void ResetPositions(){(this->*static_cast<ResetMethod*>(VTable)[142])();}
- void RemoveBaseChild(unsigned long); //00533BC0 CComponent::RemoveChild
  void DeleteChild(unsigned long);
 };
 #ifdef _MSC_VER
@@ -53,7 +56,7 @@ void CDynamicList::DeleteChild(unsigned long index){
   }
   if(TopIndex>SelectionIndex)--TopIndex;
   if(BInitialised)ResetPositions();
-  RemoveBaseChild(childIndex);
+  reinterpret_cast<NUISystem::CComponent*>(this)->NUISystem::CComponent::RemoveChild(childIndex);
  }
 }
 }

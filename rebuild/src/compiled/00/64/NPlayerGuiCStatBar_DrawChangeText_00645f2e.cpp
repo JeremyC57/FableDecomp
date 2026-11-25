@@ -25,11 +25,13 @@ enum EEngine2DLayer { ENGINE_2D_LAYER_TEXT = 0x43 };
 struct CGameUI {
     unsigned char _pad00[0x2A0];
     float         m_globalAlpha;                  // +0x2A0
-    void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
-                    float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
 extern CGameUI* g_pGameUI;                         // 0x013B8790
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00438010 ?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z (was ?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z)
+class CPlayerGui { public: void Draw2DText(C2DVector const&, CWideString const&, CFontBank const&, CRGBColour const&, float, EEngine2DLayer, bool); };
 namespace NPlayerGui {
 
 class CStatBar { public:
@@ -41,7 +43,7 @@ class CStatBar { public:
 void CStatBar::DrawChangeText(const C2DVector& pos, const CWideString& text, const CRGBColour& colour)
 {
     CRGBColour faded(colour.R, colour.G, colour.B, (unsigned char)(colour.A * g_pGameUI->m_globalAlpha));
-    g_pGameUI->Draw2DText(pos, text, m_pFont, faded, 1.0f, ENGINE_2D_LAYER_TEXT, true);
+    reinterpret_cast<CPlayerGui*>(g_pGameUI)->Draw2DText(pos, text, *(m_pFont), faded, 1.0f, ENGINE_2D_LAYER_TEXT, true);
 }
 
 }

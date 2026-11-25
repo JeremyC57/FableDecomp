@@ -12,7 +12,6 @@ public:
     void StopAttachedSound(unsigned long);   // 0x0066ADD0
 };
 class CWorld { public:
-    long GetFrame();                         // 0x00416225
 };
 extern CWorld* g_pWorld;                     // 0x013B86A0
 
@@ -34,10 +33,14 @@ class CTCTalk { public:
     private: void StopCurrentSpeech(CTCSoundPlayer* emitter);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00416225 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ (was ?GetFrame@CWorld@@QAEJXZ)
+class CMainGameComponent { public: long GetCurrentServerFrame() const; };
 void CTCTalk::StopCurrentSpeech(CTCSoundPlayer* emitter)
 {
     emitter->StopAttachedSound(SampleID);
-    SampleDurationFrames = g_pWorld->GetFrame() - SampleStartedFrame - 1;
+    SampleDurationFrames = reinterpret_cast<const CMainGameComponent*>(g_pWorld)->GetCurrentServerFrame() - SampleStartedFrame - 1;
     LipSynching = false;
     SpeechSample = 0;
     MimeStartTime = 0.0f;

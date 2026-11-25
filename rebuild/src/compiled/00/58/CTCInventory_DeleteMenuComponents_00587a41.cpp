@@ -90,7 +90,6 @@ public:
     }
 };
 struct CTCInterfaceC6 {
-    void Close(bool b);                                     // 0x0047DBB8
 };
 
 namespace NUISystem {
@@ -152,6 +151,10 @@ class CTCInventory { public:
     void DeleteMenuComponents();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0047DBB8 ?CloseInGameMenuPC@CTCInGameMenu@@QAEX_N@Z (was ?Close@CTCInterfaceC6@@QAEX_N@Z)
+class CTCInGameMenu { public: void CloseInGameMenuPC(bool); };
 void CTCInventory::DeleteMenuComponents()
 {
     BaseDeleteMenuComponents();
@@ -171,7 +174,7 @@ void CTCInventory::DeleteMenuComponents()
         CThing* thing = ParentThing;
         CTCInterfaceC6* menu;
         if (thing->GetInterface(&menu, 0xc6))
-            menu->Close(true);
+            reinterpret_cast<CTCInGameMenu*>(menu)->CloseInGameMenuPC(true);
         break;
     }
     case 6:

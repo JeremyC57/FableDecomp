@@ -19,6 +19,7 @@
 //   (positions +0x0C / +0x18), dead flag bit 0 of +0x91, +0x178 bit 0; CPlayer +0x34 CIntelligentPointer<CThing>.
 #include <math.h>
 #pragma intrinsic(fmod)
+class CBaseObject;
 float __fastcall GFGetSignedAngleDifference(float a, float b);   // 0x00A441E0; NF303: PDB name, was __stdcall AngleDifference
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
@@ -68,7 +69,8 @@ class CThingCreatureBase : public CThing { public:
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* m_pItem;
-    CThing* GetPItem() const;                        // 0x00A01B50
+    // Naming (NF439 gen, 2026-11-25): callee 0x00A01B50 binds its PDB spelling ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ (T1 target; was ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ).
+    CBaseObject * GetPItem() const;
 };
 class CPlayer { public:
     unsigned char _pad00[0x34];
@@ -118,7 +120,7 @@ void CTCLook::ImplementBodySettings()
     }
     if (ParentThing->ThingType == 2) {
         CPlayer* player = &GetPlayerManager().GetMainPlayer();
-        CThing* character = player->PCharacter.GetPItem();
+        CThing* character = ((CThing *)(player->PCharacter.GetPItem()));
         if (character && !(character->Flags91 & 1) && (character->Flags178 & 1)) {
             CThingPlacement* placement = ParentThing->PPlacement;
             if ((placement->PreviousPosition - placement->Position).GetSquaredLength() > DELTA_NOTIONAL_ZERO)

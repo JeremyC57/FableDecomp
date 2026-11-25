@@ -79,7 +79,8 @@ class CCombatManager { public:
     {
         return Combatants.find(uid)->second;
     }
-    void ResetAttackerSequence(const CThingCreatureBase& creature);   // 0x006EA2C0
+    // Naming (NF439 gen, 2026-11-25): callee 0x006EA2C0 binds its PDB spelling ?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z (T1 target; was ?ResetAttackerSequence@CCombatManager@@QAEXABVCThingCreatureBase@@@Z).
+    private: void PerformSequenceReset(CThingCreatureBase& creature); public:
     void SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creature, bool performed);
 };
 
@@ -98,5 +99,5 @@ void CCombatManager::SetCreatureAsAttemptedToPerformedAction(const CThingCreatur
     else if (!sequence->CanContinue())
         sequence->Finish();
     else if (!sequence->m_finished)
-        ResetAttackerSequence(creature);
+        PerformSequenceReset(*(CThingCreatureBase*)&(creature));
 }

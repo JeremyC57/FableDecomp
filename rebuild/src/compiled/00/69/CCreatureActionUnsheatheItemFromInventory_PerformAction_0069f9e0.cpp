@@ -96,7 +96,6 @@ public:
 };
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 struct CTC1A {
-    void OnNotCarried();                                     // 0x005D8E50
 };
 class CTCInventoryWeapons { public:
     void RemoveWeaponsFromSheathes();                           // 0x005C552C
@@ -121,6 +120,10 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
     virtual void PerformAction();   // NF268 (q12772): virtual, as both PDBs (UAE, Ego_r 0x006C4C10 / FableWin 0x02211A10) and the UnsheatheItemFromInventory vftable slot 3 (0x0069F0F0, 0x005CA68E bind UAE); was QAE
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnNotCarried@CTC1A@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
 {
     CTCCarrying* carrying = 0;
@@ -138,7 +141,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
         if (held->HasTC(0x1a)) {
             CTC1A* tc = held->GetTC<CTC1A>(0x1a);
             if (!carrying->IsCarryingThing(*held))
-                tc->OnNotCarried();
+                reinterpret_cast<CTCInventoryItem*>(tc)->ReturnToInventory();
         }
         if (!carrying->IsPrimarySlotFree())
             carrying->RemoveThingFromPrimarySlot(false);

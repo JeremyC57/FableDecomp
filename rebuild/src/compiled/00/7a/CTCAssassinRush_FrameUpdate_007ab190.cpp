@@ -38,7 +38,6 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
     void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
-    void FinishCurrentAction();                         // 0x00662650
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -139,11 +138,15 @@ class CTCAssassinRush : public CTCBase { public:
     void FrameUpdate();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662650 ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ (was ?FinishCurrentAction@CThing@@QAEXXZ)
+class CThingCreatureBase { public: void FinishCurrentAction(); };
 void CTCAssassinRush::FrameUpdate()
 {
     CThing* parent = ParentThing;
     if (JustReleased) {
-        parent->FinishCurrentAction();
+        reinterpret_cast<CThingCreatureBase*>(parent)->FinishCurrentAction();
         CTCSound* sound;
         if (ParentThing->GetInterface(&sound, 0x10))
             ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_ASSASSIN_RUSH_CAST", 1, 0, 0, -1);

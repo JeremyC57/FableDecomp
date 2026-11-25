@@ -56,7 +56,6 @@ class CIndexBuffer { public:                              // 0x14 bytes
     CIndexBuffer();                                // 0x00AC1EC0
 };
 struct CEngineDisplay {
-    unsigned long CalculateTextureMemoryFromQuality();   // 0x009BEE00
 };
 extern CEngineDisplay* g_pEngineDisplay;           // 0x01436E1C
 void* __fastcall AllocateAligned(unsigned long size, unsigned long alignment);   // 0x009F2BE0
@@ -94,6 +93,10 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveGroup
     virtual ~CEnginePrimitiveManagerRepeatedStaticMeshes();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009BEE00 ?GetPixelShaderVersion@CDisplayManager@@QBEKXZ (was ?CalculateTextureMemoryFromQuality@CEngineDisplay@@QAEKXZ)
+class CDisplayManager { public: unsigned long GetPixelShaderVersion() const; };
 CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes(CEngineSceneArray* scenes)
     : CEnginePrimitiveGroupManager(scenes)
 {
@@ -106,7 +109,7 @@ CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStat
     VertexShaderDepthBufferShadowed = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_SHADOWED");
     PixelShaderDepthBufferShadowedStippleAlpha = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_SHADOWED_STIPPLE_ALPHA");
     VertexShaderDepthBufferShadowedStippleAlpha = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_SHADOWED_STIPPLE_ALPHA");
-    if (g_pEngineDisplay->CalculateTextureMemoryFromQuality() >= 1400)
+    if (reinterpret_cast<const CDisplayManager*>(g_pEngineDisplay)->GetPixelShaderVersion() >= 1400)
     {
         PixelShaderColourBufferShadowed = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_REPEATED_MESH_COLBUFF_SHADOWED");
         VertexShaderColourBufferShadowed = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)14)->GetVertexShader("VSHADER_REPEATED_MESH_COLBUFF_SHADOWED");

@@ -92,7 +92,6 @@ struct CSubtitleRenderer_Retail {               // embedded at CGameUI+0x18 (`ad
     void SetText(CFontBank_Retail* font, const CCharString& text, const CCharString& name, const CCharString& a, const CCharString& b, unsigned long colour, float time, bool c, bool d);   // 0x00492FB4
 };
 struct CMiniMapDisplay_Retail {
-    void AddMarker(CThing_Retail* thing, long id);         // 0x0082A890 (CMiniMapDisplay::AddMarker)
     void SetMarkerGraphic(CThing_Retail* thing, long id);  // 0x0082A340 (CMiniMapDisplay::SetMarkerGraphic)
     void RemoveMarker(CThing_Retail* thing);               // 0x0082A380 (the label is propagated)
 };
@@ -119,13 +118,18 @@ struct CMainGameComponent_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0082A890 ?AddMarker@CMiniMapDisplay@@QAEXABVCThing@@J@Z (was ?AddMarker@CMiniMapDisplay_Retail@@QAEXPAUCThing_Retail@@J@Z)
+class CThing;
+class CMiniMapDisplay { public: void AddMarker(CThing const&, long); };
 void CGameScriptInterface::MiniMapAddMarker(const CScriptThing& thing, const CCharString& symbol) const
 {
     if (thing.IsAlive()) {
         long id = GetScriptSpriteBySymbol(symbol);
         if (id > 0) {
             CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
-            g_pGameUI_013b8790->GetMiniMapDisplay()->AddMarker(t, id);
+            reinterpret_cast<CMiniMapDisplay*>(g_pGameUI_013b8790->GetMiniMapDisplay())->AddMarker(*reinterpret_cast<CThing const*>(t), id);
         }
     }
 }

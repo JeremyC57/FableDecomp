@@ -23,7 +23,8 @@ class CCombatManager { public:
     bool IsAttacker(const CThingCreatureBase& creature) const;                  // 0x006E92C0 ?IsAttacker@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (Ego_r + FableWin)
     // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
     void DeregisterCombatant(CThingCreatureBase& creature);                     // 0x006ED9C0
-    void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
+    // Naming (NF439 gen, 2026-11-25): callee 0x006EDC50 binds its PDB spelling ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (T1 target; was ?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@PAVCThing@@_N@Z).
+    void RegisterCombatant(CThingCreatureBase& creature, CThingCreatureBase& target, bool hostile);
 };
 
 class CWorld { public:
@@ -100,7 +101,7 @@ void CTCKraken::SetPhase(EKrakenBossPhase phase)
         if (!combat->IsAttacker(*thing)) {
             if (IS_THING_ALIVE(PTarget)) {
                 CThing* target = ((CThing*)PTarget.GetPItem());
-                combat->RegisterCombatant(thing, target, false);
+                combat->RegisterCombatant(*thing, *(CThingCreatureBase*)target, false);
             }
         }
         Mode = 1;

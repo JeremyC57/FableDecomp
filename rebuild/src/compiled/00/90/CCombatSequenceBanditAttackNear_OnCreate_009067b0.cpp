@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequence_BanditAttackNear::OnCreate() -- queue an interruptable near attack (action code 150) and a leap back (code 50), then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009067B0, 230 bytes (240 with padding), virtual `?OnCreate@CCombatSequence_BanditAttackNear@@UAEXXZ`.
 // Callees: operator new 0x00BFEA1A (0x114-byte actions), CCombatActionBase::CCombatActionBase(owner, thing, code, sound)
@@ -55,7 +56,8 @@ class CCombatSequenceBase { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c
     CThing* m_pTarget;                      // +0x20
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 
@@ -81,8 +83,8 @@ void CCombatSequence_BanditAttackNear::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_InterruptableNearAttack(m_pOwner, m_pTarget);
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_LeapBack(m_pOwner, m_pTarget);
-    AddAction(action);
+    PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

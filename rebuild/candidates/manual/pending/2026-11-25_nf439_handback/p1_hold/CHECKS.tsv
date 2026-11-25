@@ -1,0 +1,5 @@
+address	name_gate	objgate	vland_head/new	pk	pk_flag	link
+00407040	OK	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=1 neq=0 | N copies=1 neq=0	OK	(2 new names whose target has no landed definer: expected unresolved) PASS
+00687db0	OK	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=0 neq=0 | N copies=0 neq=0	OK	(2 new names whose target has no landed definer: expected unresolved) PASS
+00691680	OK	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=6 neq=0 | N copies=6 neq=0	OK	(2 new names whose target has no landed definer: expected unresolved) PASS
+00757f90	OK	ALL_EQ	RELOCATION_MATCH/RELOCATION_MATCH	H copies=1 neq=0 | N copies=1 neq=0	OK	(2 new names whose target has no landed definer: expected unresolved) PASS

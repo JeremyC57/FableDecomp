@@ -34,7 +34,6 @@ struct CBulletTime {
     void*         m_pController;                         // +0x04
     unsigned char _pad1[4];
     bool          m_active;                              // +0x0c
-    float GetTimeScale();                                // 0x004C5FA0
     bool IsActive() const { return m_active || m_pController != 0; }
 };
 
@@ -43,6 +42,10 @@ class CWorld { public:
     CBulletTime*  m_pBulletTime;                         // +0x68
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C5FA0 ?GetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QBEMXZ (was ?GetTimeScale@CBulletTime@@QAEMXZ)
+class CBulletTimeManager { public: float GetBulletTimeSlowdownMultiplier() const; };
 namespace {
 
 float __fastcall GetUpdateTimeForThing(const CThing& thing, const CWorld& world)
@@ -51,7 +54,7 @@ float __fastcall GetUpdateTimeForThing(const CThing& thing, const CWorld& world)
     if (!world.m_pBulletTime->IsActive())
         return seconds;
     if (thing.IsAffectedByBulletTime())
-        return seconds / world.m_pBulletTime->GetTimeScale();
+        return seconds / reinterpret_cast<const CBulletTimeManager*>(world.m_pBulletTime)->GetBulletTimeSlowdownMultiplier();
     return seconds;
 }
 

@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequenceWhisperAdvance::OnCreate() -- queue strafe-backward, strafe-forward and an interruptable mid attack, then the base OnCreate
 // Leaf: ?OnCreate@CCombatSequenceWhisperAdvance
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00909BA0, 272 bytes (incl. int3 padding).
@@ -70,7 +71,8 @@ class CCombatSequenceBase { public:
     CThing* Target;                         // +0x20
     CThingCreatureBase& GetCreature() const { return *Creature; }
     CThing& GetTarget() const { return *Target; }
-    void AddAction(const CCountedPointer& action); // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     void OnCreate();                        // 0x008B0650 (base slot, called directly)
 };
 struct CCombatSequenceWhisperAdvance : CCombatSequenceBase {
@@ -81,10 +83,10 @@ void CCombatSequenceWhisperAdvance::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_StrafeBackward(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_StrafeForward(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     action = new CCreatureAction_InterruptableMidAttack(GetCreature(), GetTarget());
-    CCombatSequenceBase::AddAction(action);
+    CCombatSequenceBase::PushAction(*(CCombatAction*)&(action));
     CCombatSequenceBase::OnCreate();
 }

@@ -29,10 +29,13 @@ class CTCInventory { public:
 
     void SetHighlightedItemAsQuickAccessItem(long slot);   // 0x005850DF
     void SetQuickAccessAssign(bool enable);                // 0x00581A14
-    void BaseProcessDPadUpReleased();                      // 0x005BC693 CTCInventoryBase::ProcessDPadUpReleased
     void ProcessDPadUpReleased();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BC693 ?ProcessDPadUpReleased@CTCInventoryBase@NInventory@@UAEXXZ (was ?BaseProcessDPadUpReleased@CTCInventory@@QAEXXZ)
+namespace NInventory { class CTCInventoryBase { public: virtual void ProcessDPadUpReleased(); }; }
 void CTCInventory::ProcessDPadUpReleased()
 {
     if (EnableQuickAccessAssign) {
@@ -42,6 +45,6 @@ void CTCInventory::ProcessDPadUpReleased()
         QuickAccessItems[0] = 0;
         EnableQuickAccessRemove = false;
     } else {
-        BaseProcessDPadUpReleased();
+        reinterpret_cast<NInventory::CTCInventoryBase*>(this)->NInventory::CTCInventoryBase::ProcessDPadUpReleased();
     }
 }

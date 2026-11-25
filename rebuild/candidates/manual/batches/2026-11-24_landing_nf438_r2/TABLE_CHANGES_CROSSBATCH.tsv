@@ -1,0 +1,9 @@
+action	symbol	target	witness	note
+rewitness	?GetTimeScale@CBulletTime@@QAEMXZ	004c5fa0	007308f0	NF438: the witness moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 007308f0)
+delete	?OnShowEnded@CTCShowableItem@@QAEXXZ	005d8e50	008116d0	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetScriptThing@CThingNative@@QBE?AVCScriptThing@@XZ	004c7e50	008d0c50	NF438: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+rewitness	?IsCombatant@CThing@@QAE_NXZ	00662410	0095b280	NF438: the witness moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 0095b280)
+rewitness	?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z	005dc340	00730c00	NF438: the witness moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 00730c00)
+rewitness	?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z	004498c0	0066fc90	NF438: the witness moved to the PDB spelling; 4 landed row(s) still bind the stand-in (e.g. 0066fc90)
+rewitness	?GetFrame@CMainGameComponent@@QAEJXZ	00416225	007e5230	NF438: the witness moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 007e5230)
+rewitness	?RegisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCAGraphicAppearanceComponent@2@@Z	004bd390	0077b250	NF438: the witness moved to the PDB spelling; 1 landed row(s) still bind the stand-in (e.g. 0077b250)

@@ -65,7 +65,6 @@ struct CThing_Retail {
 struct CThingManager_Retail {
     unsigned char _pad[0x55];
     bool          m_allEntitiesPaused;              // +0x55
-    void SetNonScriptedEntitesPaused(bool paused);  // 0x0051EFC0
 };
 // NF108 (2026-11-19, q5099): the CBulletTimeManager_Retail stand-in replaced by the shared engine/CBulletTimeManager.h (opt-ins
 //   REMOVESLOWDOWN / SETSLOWDOWN): Ego_r.pdb / FableWin.pdb ?SetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QAEXJPAXM@Z 0x004C6170 and
@@ -130,9 +129,13 @@ class CWorld { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0051EFC0 ?SetNonScriptedEntitesPaused@CThingManager@@QAEX_N@Z (was ?SetNonScriptedEntitesPaused@CThingManager_Retail@@QAEX_N@Z)
+class CThingManager { public: void SetNonScriptedEntitesPaused(bool); };
 void CGameScriptInterface::PauseAllNonScriptedEntities(bool pause)
 {
-    World->GetThingManager()->SetNonScriptedEntitesPaused(pause);
+    reinterpret_cast<CThingManager*>(World->GetThingManager())->SetNonScriptedEntitesPaused(pause);
     if (pause)
         World->PBulletTimeManager_ptr->SetBulletTimeSlowdownMultiplier(0xFFFF, (void*)0xBEEFBEEF, 1.0f);
     else

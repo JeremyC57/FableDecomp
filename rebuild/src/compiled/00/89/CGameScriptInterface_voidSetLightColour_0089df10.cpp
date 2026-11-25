@@ -52,7 +52,6 @@ class CThingPlayerCreature : public CThing_Retail { };
 FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 struct CTCLight_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
-    void SetColour(const CRGBColour& colour);      // 0x00640BB0
     unsigned char _pad[0x1d];
     bool m_on;                                     // +0x1d
 };
@@ -81,6 +80,10 @@ class CGameScriptInterface { public:
     void SetLightColour(const CScriptThing& thing, const CRGBColour& colour) const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00640BB0 ?SetColour@CTCLight@@QAEXABVCRGBColour@@@Z (was ?SetColour@CTCLight_Retail@@QAEXABVCRGBColour@@@Z)
+class CTCLight { public: void SetColour(CRGBColour const&); };
 void CGameScriptInterface::SetLightColour(const CScriptThing& thing, const CRGBColour& colour) const
 {
     if (thing.IsAlive()) {
@@ -88,7 +91,7 @@ void CGameScriptInterface::SetLightColour(const CScriptThing& thing, const CRGBC
         if (t->HasTC(0x27)) {
             CTCLight_Retail* tc = (CTCLight_Retail*)GetTC(t, 0x27);
             if (tc->m_on)
-                tc->SetColour(colour);
+                reinterpret_cast<CTCLight*>(tc)->SetColour(colour);
         }
     }
 }

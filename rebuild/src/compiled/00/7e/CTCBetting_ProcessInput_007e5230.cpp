@@ -139,7 +139,8 @@ class CTCBetting { public:
     long          Mult;                                 // +0x30
     long          FrameToStart;                         // +0x34
     long          PreviousDonation;                     // +0x38
-    void PlaySound(const CCharString& name);            // 0x007E51D0
+    // Naming (NF439 gen, 2026-11-25): callee 0x007E51D0 binds its PDB spelling ?PlaySoundW@CTCBetting@@QAEKABVCCharString@@@Z (T1 target; was ?PlaySound@CTCBetting@@QAEXABVCCharString@@@Z).
+    unsigned long PlaySoundW(CCharString const& name);
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessGameBase* input);
 };
 
@@ -188,14 +189,14 @@ void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& process
         if (stick.y > 0.2f) {
             FrameBetWasLastChanged = CMainGameComponent::Get()->GetFrame();
             if ((g_CurrentBet < def->MaxBet || def->MaxBet == 0) && change && g_CurrentBet < stats->Gold) {
-                PlaySound("TAVERN_GAME_BET_INCREMENT");
+                PlaySoundW("TAVERN_GAME_BET_INCREMENT");
                 g_CurrentBet += def->BetStep * Mult;
             }
             processed.SetAsPerformedEvent();
         } else if (stick.y < -0.2f) {
             FrameBetWasLastChanged = CMainGameComponent::Get()->GetFrame();
             if (g_CurrentBet != def->MinBet && change) {
-                PlaySound("TAVERN_GAME_BET_DECREMENT");
+                PlaySoundW("TAVERN_GAME_BET_DECREMENT");
                 g_CurrentBet -= def->BetStep * Mult;
                 if (g_CurrentBet < def->MinBet)
                     g_CurrentBet = def->MinBet;

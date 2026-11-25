@@ -20,7 +20,6 @@ class C2DVector { public:
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 namespace NPlayerGui { C2DVector __fastcall GFAnchorToTopRight(const C2DVector& in); } using NPlayerGui::GFAnchorToTopRight;   // 0x00643CA1 (NF308: PDB scope)
-void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);  // 0x009E21D0
 class CWideString {
 public:
     void* m_pStringData;
@@ -98,6 +97,10 @@ struct CHandleVector {
 namespace NPlayerGui { class CDrawBase { public:
     unsigned char ScaleAlpha(unsigned char a0) const;   // 0x00643D5D (Ego_r.pdb ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z)
 }; }
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009E21D0 ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (was ?GFACoordToVCoord@@YIXPBVC2DVector@@PAV1@@Z)
+void __fastcall GFACoordToVCoord(C2DVector const&, C2DVector&);
 namespace NPlayerGui {
 class CDrawPerceivers { public:
     virtual void v00();
@@ -165,7 +168,7 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
         C2DVector textPos = pos + def->CountOffset;
         textPos.X -= GetFont()->GetStringWidth(text) * 0.5f;
         C2DVector screen;
-        GFACoordToVCoord(&textPos, &screen);
+        GFACoordToVCoord(textPos, screen);
         PlayerGui->Draw2DText(C2DVector(screen.X, screen.Y), text, GetFont(), CRGBColour(0xff, 0xff, 0xff, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(0xff)), 1.0f,
                               ENGINE_2D_LAYER_TEXT, true);
     }

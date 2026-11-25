@@ -86,7 +86,6 @@ private: public:
         return (T*)((it == map->end() || wanted < it->first) ? map->end() : it)->second;
     }
     CTCBase* AddTC(const CCharString& name, bool flag, const class CTCParamsBase* params);   // 0x004C9D60 (Ego_r.pdb; name fix NF21)
-    void SetAttackedByCreature(CThing* attacker);       // 0x006624F0
     void Kill(bool flag);                               // 0x004C9B80
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
@@ -141,6 +140,10 @@ class CWorld { public:
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"   // CBaseIntelligentPointer 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 (Ego_r.pdb)
 #include "engine/ECollideType.h"
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006624F0 ?SetAttackedByCreature@CThingCreatureBase@@QAEXPAV1@@Z (was ?SetAttackedByCreature@CThing@@QAEXPAV1@@Z)
+class CThingCreatureBase { public: void SetAttackedByCreature(CThingCreatureBase*); };
 namespace NThingShot {
 
 class CTCShotDefinitionBase : public CTCBase { public:   // engine/CTCBase.h retail (0xc bytes: vptr, ParentThing +0x04, +0x08)
@@ -183,7 +186,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(ECollideType type, const C3DVec
                 }
                 pushed->SetUpForcePush(-away, PushForce, *shooter);
             }
-            thing->SetAttackedByCreature(shooter);
+            reinterpret_cast<CThingCreatureBase*>(thing)->SetAttackedByCreature(reinterpret_cast<CThingCreatureBase*>(shooter));
             CDefPointer<const CMessageEventDef> def;
             bool found;
             {

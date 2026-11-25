@@ -29,7 +29,9 @@ class CThing : public CThingAICreature { public:
 
 #include "engine/C3DVector.h"
 
-C3DVector __fastcall GetHeadPosWithOffset(CThing* thing);   // 0x0085EE50
+class CThingCreatureBase;
+// Naming (NF439 gen, 2026-11-25): callee 0x0085EE50 binds its PDB spelling ?GetStunnedEffectCreationPos@NCreatureMode@@YI?AVC3DVector@@ABVCThingCreatureBase@@@Z (T1 target; was the free stand-in ?GetHeadPosWithOffset@@YI?AVC3DVector@@PAVCThing@@@Z).
+namespace NCreatureMode { C3DVector __fastcall GetStunnedEffectCreationPos(CThingCreatureBase const& thing); }
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
 };
@@ -95,7 +97,7 @@ void CModeOutOfActionBase::OnActivate()
         ParentThing->SuspendAI(true, 0);
     long emitterType = GetEmitterType();
     if (emitterType >= 0 && (ParentThing->m_flags6c & 8)) {
-        C3DVector position = GetHeadPosWithOffset(ParentThing);
+        C3DVector position = NCreatureMode::GetStunnedEffectCreationPos(*(CThingCreatureBase const*)ParentThing);
         PEmitter = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(emitterType, *(&position), false));
     }
     StartOutOfActionAnim();

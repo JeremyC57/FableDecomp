@@ -12,6 +12,10 @@
 #define CComponent CComponentDonor
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0052CF40 ?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z (was ?BaseChangeState@CMenuEntry@NUISystem@@QAEXK@Z)
+namespace NUISystem { class CChangingStateComponent { public: virtual void ChangeState(unsigned long); }; }
 namespace NUISystem {
 class CUIDef:public CIVCountedPointeeBase { public:
  unsigned char DefinitionData[0x221-8];bool PCStyle;
@@ -40,7 +44,6 @@ class CMenuEntry:public CComponent { public:
  typedef DefinitionPointer(CMenuEntry::*DefinitionMethod)()const;
  typedef void(CMenuEntry::*ActionsMethod)(ActionList*);
  typedef void(CMenuEntry::*UnhoverMethod)();
- void BaseChangeState(unsigned long); //0052CF40 actual CChangingStateComponent::ChangeState(unsigned long)
  void ChangeState(unsigned long);
 };
 #ifdef _MSC_VER
@@ -55,10 +58,10 @@ FABLE_STATIC_ASSERT(sizeof(CUIDef::DeleteMethod)==4);
 #endif
 void CMenuEntry::ChangeState(unsigned long state){
  switch(state){
- default:BaseChangeState(state);break;
+ default:reinterpret_cast<NUISystem::CChangingStateComponent*>(this)->NUISystem::CChangingStateComponent::ChangeState(state);break;
  case 4:
   (this->*static_cast<ActionsMethod*>(VTable)[131])(PActionsOnUnselected);
-  BaseChangeState(4);
+  reinterpret_cast<NUISystem::CChangingStateComponent*>(this)->NUISystem::CChangingStateComponent::ChangeState(4);
   if((this->*static_cast<DefinitionMethod*>(VTable)[108])()->PCStyle){
    (this->*static_cast<UnhoverMethod*>(VTable)[144])();WasHovered=false;
   }
@@ -66,7 +69,7 @@ void CMenuEntry::ChangeState(unsigned long state){
  case 3:
   for(unsigned long i=0;i<Children.size();++i)Children.First[i].Data->SetParent(this);
   (this->*static_cast<ActionsMethod*>(VTable)[131])(PActionsOnSelected);
-  BaseChangeState(3);break;
+  reinterpret_cast<NUISystem::CChangingStateComponent*>(this)->NUISystem::CChangingStateComponent::ChangeState(3);break;
  }
 }
 }

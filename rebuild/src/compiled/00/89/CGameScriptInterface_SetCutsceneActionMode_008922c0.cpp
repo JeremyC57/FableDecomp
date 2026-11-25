@@ -4,6 +4,10 @@
 class CCharString;
 struct Inner { void SetMode(bool, const CCharString&); };
 extern Inner* g_cutscene;
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004908DA ?SetCutsceneActionMode@CSubtitleRenderer@@QAEX_NABVCCharString@@@Z (was ?SetMode@Inner@@QAEX_NABVCCharString@@@Z)
+class CSubtitleRenderer { public: void SetCutsceneActionMode(bool, CCharString const&); };
 void CGameScriptInterface::SetCutsceneActionMode(bool a, const CCharString& name) const {
-    ((Inner*)((char*)g_cutscene + 0x18))->SetMode(a, name);
+    reinterpret_cast<CSubtitleRenderer*>(((Inner*)((char*)g_cutscene + 0x18)))->SetCutsceneActionMode(a, name);
 }

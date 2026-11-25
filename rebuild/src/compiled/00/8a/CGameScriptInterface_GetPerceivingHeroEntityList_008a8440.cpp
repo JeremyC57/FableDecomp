@@ -35,10 +35,14 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct ThingVector{CThingNative **Start,**Finish,**Capacity;ThingVector():Start(0),Finish(0),Capacity(0){}~ThingVector(){if(Start)free(Start);}};
 struct HeroPerceptionManager{void GetPerceivingThings(ThingVector&)const;}; //00437910 ->0064D3A5 via manager+1B8
 extern HeroPerceptionManager* g_HeroPerceptionManager; //013B8790
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CThingNative@@QAE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 bool CGameScriptInterface::GetPerceivingHeroEntityList(std::vector<CScriptThing>& output)const{
  bool found=false;output.erase(output.begin(),output.end());CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)){
  ThingVector things;g_HeroPerceptionManager->GetPerceivingThings(things);for(CThingNative** it=things.Start;it!=things.Finish;++it){CThingNative* thing=*it;if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[1]&0x100000)){
- const ComponentMap* map=&thing->Components;const ComponentEntry* entry=map->LowerBound((ETCInterfaceType)52);const ComponentEntry* end=map->Finish;const CTCPerceiveThing* perceive=static_cast<CTCPerceiveThing*>(((void*)(entry==end||entry->first>52?end:entry)->second));if(perceive->LineOfSight||perceive->AwarenessTimer!=0.0f||perceive->ExtendedLineOfSight){output.push_back(thing->GetScriptThing());found=true;}
+ const ComponentMap* map=&thing->Components;const ComponentEntry* entry=map->LowerBound((ETCInterfaceType)52);const ComponentEntry* end=map->Finish;const CTCPerceiveThing* perceive=static_cast<CTCPerceiveThing*>(((void*)(entry==end||entry->first>52?end:entry)->second));if(perceive->LineOfSight||perceive->AwarenessTimer!=0.0f||perceive->ExtendedLineOfSight){output.push_back(reinterpret_cast<const CThing*>(thing)->GetScriptThing());found=true;}
  }}
  }return found;
 }

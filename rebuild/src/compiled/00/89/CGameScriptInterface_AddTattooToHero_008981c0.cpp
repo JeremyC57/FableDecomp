@@ -93,7 +93,8 @@ class CThingObject : public CThing_Retail { public:
 };
 struct CLongSet;
 class CTCHeroMorph { public:
-    void AddTattoo(CThing_Retail* tattoo);              // 0x0071D7C0
+    // Naming (NF439 gen, 2026-11-25): callee 0x0071D7C0 binds its PDB spelling ?AddTattoo@CTCHeroMorph@@QAEXABVCThing@@@Z (T1 target; was ?AddTattoo@CTCHeroMorph@@QAEXPAUCThing_Retail@@@Z).
+    void AddTattoo(CThing const& tattoo);
     void UploadTextureMorphsToEngine(CIEngine* engine, CLongSet* morphs, bool b, float f);   // 0x006CA7F0
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
@@ -125,7 +126,7 @@ void CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) con
     if (!tattoo || tattoo->m_dead)
         return;
     if (hero->HasInterface(3)) {
-        ((CTCHeroMorph*)hero->GetInterface(3))->AddTattoo(tattoo);
+        ((CTCHeroMorph*)hero->GetInterface(3))->AddTattoo(*(CThing const*)tattoo);
         CTCHeroMorph* morph;
         if (!hero->m_dead && hero->GetInterfaceOut(&morph, 3))
             morph->UploadTextureMorphsToEngine(g_pEngine->Graphics->Engine, 0, false, 0.0f);

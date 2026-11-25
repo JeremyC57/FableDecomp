@@ -17,7 +17,6 @@ inline float GroundDistanceSquared(const C3DVector& a,const C3DVector& b) {
 }
 #include "engine/CThing.h"
 struct CCreatureCombatView : public CThing {
- bool IsRegisteredCombatant(); // 00662410 (propagated AddCombinationBlend label is incompatible with this call)
 };
 class CThingCreatureBase;
 class CCombatManager { public:
@@ -28,9 +27,13 @@ struct CCombatPositionMethods {
  bool IsCreatureWithValidMeleeCombatSequence(CThingAICreature*); // 006E9450
  C3DVector GetPreferredPos(CThingAICreature*); // 006EA770
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662410 ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (was ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ)
+class CThingCreatureBase { public: bool IsInMeleeAsAttacker() const; };
 struct CCombatStateMethods : CAIStateGroupBase {
  inline bool InRange() {
-  if(((CCreatureCombatView*)PBrain->Creature)->IsRegisteredCombatant()) {
+  if(reinterpret_cast<const CThingCreatureBase*>(((CCreatureCombatView*)PBrain->Creature))->IsInMeleeAsAttacker()) {
   CThingAICreature* creature=PBrain->Creature;
   CCombatManager* combat=(CCombatManager*)GetWorld().PThingCombatManager_ptr;
   if(combat->IsCreatureInAttackRingSector(*(const CThingCreatureBase*)creature)) return true;

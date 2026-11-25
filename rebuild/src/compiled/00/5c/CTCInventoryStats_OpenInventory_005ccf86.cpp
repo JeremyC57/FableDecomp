@@ -43,14 +43,17 @@ struct CTCInventoryBase_Stats {
     CDefPointer<CInventoryDef> PDef;            // +0x68
     FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void OpenInventory();                       // 0x005BD4EA
-    void SetInventoryAnimRenderBox(const C2DBoxF& box);   // 0x005BC58F
 };
 class CTCInventoryStats : public CTCInventoryBase_Stats { public:
     void OpenInventory();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BC58F ?SetInventoryAnimRenderBox@CTCInventoryBase@NInventory@@QAEXABVC2DBoxF@@@Z (was ?SetInventoryAnimRenderBox@CTCInventoryBase_Stats@@QAEXABVC2DBoxF@@@Z)
+namespace NInventory { class CTCInventoryBase { public: void SetInventoryAnimRenderBox(C2DBoxF const&); }; }
 void CTCInventoryStats::OpenInventory()
 {
     CTCInventoryBase_Stats::OpenInventory();
-    SetInventoryAnimRenderBox(C2DBoxF(GetPDef()->StatsAnimBoxTLPos, GetPDef()->StatsAnimBoxExtents));
+    reinterpret_cast<NInventory::CTCInventoryBase*>(this)->SetInventoryAnimRenderBox(C2DBoxF(GetPDef()->StatsAnimBoxTLPos, GetPDef()->StatsAnimBoxExtents));
 }

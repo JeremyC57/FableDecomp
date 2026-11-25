@@ -51,9 +51,12 @@ template <class T> FABLE_FORCEINLINE void TransferIn(CMemoryDataInputStream& str
     out = value;
 }
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z)
 class CDefString { public:
     long TablePos;
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);   // 0x0044FC00
 };
 
 class CCombatAbilityData {
@@ -72,5 +75,5 @@ void CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream& stream, CComba
     TransferIn(stream, PercentageChance);
     TransferIn(stream, SecondsDuration);
     TransferIn(stream, SecondsToWaitBeforeRepeat);
-    Anim.TransferBinaryIn(&stream);
+    Anim.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(&stream));
 }

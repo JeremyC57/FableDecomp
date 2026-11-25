@@ -74,7 +74,6 @@ struct CThingRetail {
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Dead : 1;                             // +0x91 bit 0
     unsigned char _bits91 : 7;
-    CScriptThing GetScriptThing() const;                // 0x004C7E50
 };
 template <class T> inline bool IsThingOfType(const CThingRetail* const& thing)
 {
@@ -118,6 +117,10 @@ struct CGameScriptThingMethods : CGameScriptThing {
     bool MsgIsKilledBy(const CCharString& killer) const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CThingRetail@@QBE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 bool CGameScriptThingMethods::MsgIsKilledBy(const CCharString& killer) const
 {
     CMessageEventManager* messages = World->PMessageEventManager_Data;
@@ -130,7 +133,7 @@ bool CGameScriptThingMethods::MsgIsKilledBy(const CCharString& killer) const
         } else if (killer.PStringData->Data == "")
             goto killed;
         CThingRetail* thing = message->POriginator.GetPTypedItem();
-        if (thing && !thing->Dead && killer == thing->GetScriptThing().GetName())
+        if (thing && !thing->Dead && killer == reinterpret_cast<const CThing*>(thing)->GetScriptThing().GetName())
             goto killed;
     }
     return false;

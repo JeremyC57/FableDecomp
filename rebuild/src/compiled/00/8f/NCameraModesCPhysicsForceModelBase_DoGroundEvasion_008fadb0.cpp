@@ -35,7 +35,8 @@ class CPhysicsState { public:
 class CPhysicsCollisionPointsObject { public:             // retail 0x24 bytes
     SVectorNode* Points;                           // +0x00 list<C3DVector> header
     unsigned char _pad04[0x20];
-    void Finalise();                               // 0x008FA9F0
+    // Naming (NF439 gen, 2026-11-25): callee 0x008FA9F0 binds its PDB spelling ?GetPointsList@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ (T1 target; was ?Finalise@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ).
+    void GetPointsList();
 };
 class CPhysicsForceModelBase { public:
     virtual void v00();
@@ -63,7 +64,7 @@ C3DVector CPhysicsForceModelBase::DoGroundEvasion()
     C3DVector position = LinkedState->Position;
     const CWorldMap& map = CameraManager->World->GetWorldMap();
     UpdateScan(Ground, map, position, 0, 50.0f);
-    Ground.Finalise();
+    Ground.GetPointsList();
     SVectorNode* head = Ground.Points;
     float potential[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
     for (SVectorNode* it = head->_M_next; it != head; it = it->_M_next) {

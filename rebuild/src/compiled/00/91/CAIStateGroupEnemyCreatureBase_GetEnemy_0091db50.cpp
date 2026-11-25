@@ -179,7 +179,8 @@ struct CTCCombatTarget {                        // interface type 8
 #define FABLE_RETAIL_CTCPERCEIVETHING_FLAT_ISAWAREOFTHING
 #include "engine/CTCPerceiveThing.h"
 
-bool __fastcall IsIncapacitated(CThing* thing);                       // 0x0085F0C0
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F0C0 binds its PDB spelling ?IsIncapacitated@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsIncapacitated@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsIncapacitated(CThing const& thing); }
 // 0x008645E0 Ego_r.pdb + FableWin.pdb ?IsAwareOfThing@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@_N@Z (name-fix 2026-11-12)
 namespace NCreatureAI { bool __fastcall IsAwareOfThing(const CThingAICreature* creature, const CThing* thing, bool flag); }
 
@@ -195,7 +196,7 @@ CThing* CAIStateGroup_EnemyCreatureBase::GetEnemy()
         CTCPerceiveThing* perceive;
         if (PBrain->PCreature->GetInterface(&perceive, 0x34)) {
             CThing* enemy = combat->GetEnemy();
-            if (enemy && !IsIncapacitated(enemy)) {
+            if (enemy && !NCreatureMode::IsIncapacitated(*enemy)) {
                 if (enemy == perceive->GetPerceivedThing()) {
                     if (UsesTargetLock() ? perceive->CanSeeOrSmellPerceivedThing() : perceive->IsAwareOfThing())
                         result = enemy;

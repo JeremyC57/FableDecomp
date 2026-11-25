@@ -15,7 +15,11 @@ public:
 };
 class CPlayerGui { public: char pad[0x18]; CSub sub; };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00490927 ?IsAllowedToSetText@CSubtitleRenderer@@QBE_N_N@Z (was ?Query@CSub@@QAE_N_N@Z)
+class CSubtitleRenderer { public: bool IsAllowedToSetText(bool) const; };
 bool CGameScriptInterface::IsSafeToDisplayGameInfo() const
 {
-    return CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().sub.Query(false);
+    return reinterpret_cast<const CSubtitleRenderer*>(&(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().sub))->IsAllowedToSetText(false);
 }

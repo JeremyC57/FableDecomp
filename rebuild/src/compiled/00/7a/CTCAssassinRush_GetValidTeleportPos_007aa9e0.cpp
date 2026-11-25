@@ -101,7 +101,6 @@ class CThing { public:
     unsigned char _pad38[0x60 - 0x38];
     CPlacement*   Placement;                            // +0x60
     const C3DVector& GetPos() const;               // 0x004C73D0
-    float GetHeightZBelowAt(const C3DVector& pos, bool a, bool b);   // 0x00666D40
 };
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -148,6 +147,10 @@ class CTCAssassinRush : public CTCBase { public:
 };
 #pragma pack(pop)
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00666D40 ?GetHeightZBelowAt@CThingCreatureBase@@QBEMABVC3DVector@@_N1@Z (was ?GetHeightZBelowAt@CThing@@QAEMABVC3DVector@@_N1@Z)
+class CThingCreatureBase { public: float GetHeightZBelowAt(C3DVector const&, bool, bool) const; };
 C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
 {
     CThing* collided = ((CThing*)CollidedThing.GetPItem());
@@ -180,5 +183,5 @@ C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
             break;
         }
     }
-    return C3DVector(candidate.X, candidate.Y, collided->GetHeightZBelowAt(candidate, false, true));
+    return C3DVector(candidate.X, candidate.Y, reinterpret_cast<const CThingCreatureBase*>(collided)->GetHeightZBelowAt(candidate, false, true));
 }

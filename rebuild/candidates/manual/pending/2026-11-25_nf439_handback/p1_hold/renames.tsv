@@ -1,0 +1,4 @@
+00407040	?DeleteFile@CDriveManager@@QAEJABVCWideString@@@Z	?DeleteFileW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z	009e4bc0
+00687db0	?GetDevice@CInputEvent@@QBEJXZ	?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ	00a03b50
+00691680	?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z	?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z	007e5f70
+00757f90	?AddWound@CTCWound@@QAEXJ@Z	?AddWound@CTCWound@@QAEXW4EBodyLocation@@@Z	00757b30

@@ -74,7 +74,6 @@ public:
     bool Locked;                                   // +8
     long GetDeviceNumber() const;                  // 0x0049BB40
     bool IsLocked() const;                         // 0x0049BB50
-    static CActiveJoystick& __fastcall Get();      // 0x0049BB90
 };
 class CStopWatch {
 public:
@@ -106,6 +105,10 @@ public:
     private: void Input(); public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0049BB90 ?Get@CGameJoystickManager@@SIAAV1@XZ (was ?Get@CActiveJoystick@@SIAAV1@XZ)
+class CGameJoystickManager { public: static CGameJoystickManager& __fastcall Get(); };
 void CNewFrontendGameComponent::Input()
 {
     if (m_inputDelayTimer.IsRunning()) {
@@ -170,8 +173,8 @@ void CNewFrontendGameComponent::Input()
             break;
         case 19: {
             bool activePad = true;
-            if (CActiveJoystick::Get().IsLocked())
-                activePad = CActiveJoystick::Get().GetDeviceNumber() == event.GetDeviceNumber();
+            if ((*reinterpret_cast<CActiveJoystick*>(&CGameJoystickManager::Get())).IsLocked())
+                activePad = (*reinterpret_cast<CActiveJoystick*>(&CGameJoystickManager::Get())).GetDeviceNumber() == event.GetDeviceNumber();
             if (m_bAllowInputs && activePad) {
                 LastActiveJoystickDeviceNumber = event.GetDeviceNumber();
                 switch (event.GetJoystickButton()) {

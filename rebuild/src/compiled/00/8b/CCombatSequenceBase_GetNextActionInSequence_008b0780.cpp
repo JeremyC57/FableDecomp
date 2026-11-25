@@ -18,7 +18,8 @@ template<class T> struct CRetailVector {
 
 #include "engine/CThing.h"
 
-bool __fastcall IsIncapacitated(CThing* thing);   // 0x0085F0C0
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F0C0 binds its PDB spelling ?IsIncapacitated@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsIncapacitated@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsIncapacitated(CThing const& thing); }
 
 class CCombatActionBase { public:
     void ReinitialiseActionID();               // 0x00692450 (CCreatureActionBase)
@@ -66,7 +67,7 @@ struct CCombatSequenceBase_Retail {        // vtable 0x01278FEC
 CCombatActionBase* CCombatSequenceBase_Retail::GetNextActionInSequence()
 {
     CThing* target = Target;
-    if (target && target->IsDead() == 0 && IsIncapacitated(target) && IsMeleeSequence() && IsInterruptable())
+    if (target && target->IsDead() == 0 && NCreatureMode::IsIncapacitated(*target) && IsMeleeSequence() && IsInterruptable())
         return 0;
     long index = CurrentActionIndex;
     if (index >= 0 && (unsigned long)index < CombatActions.size()) {

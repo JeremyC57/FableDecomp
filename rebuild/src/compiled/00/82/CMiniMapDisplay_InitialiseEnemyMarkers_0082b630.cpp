@@ -83,7 +83,8 @@ class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); 
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTCENEMY_ARETHINGSENEMIES
 #include "engine/CTCEnemy.h"   // CTCEnemy::AreThingsEnemies 0x0076D2F0 (NF167 opt-in)
-bool __fastcall IsUnderground(const CThing* thing);                  // 0x0085F120
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F120 binds its PDB spelling ?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsUnderground@@YI_NPBVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsUnderground(CThing const& thing); }
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
@@ -139,7 +140,7 @@ void CMiniMapDisplay::InitialiseEnemyMarkers()
                 if (worldMap->GetLoadedRegion() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex())
                     && CTCEnemy::AreThingsEnemies(*hero, *thing)
                     && thing->GetDefName() != "CREATURE_BIRD_GUILD_SPARROW"
-                    && !IsUnderground(thing)
+                    && !NCreatureMode::IsUnderground(*thing)
                     && !thing->HiddenFromMiniMap)
                     AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[8].Primary);
             }

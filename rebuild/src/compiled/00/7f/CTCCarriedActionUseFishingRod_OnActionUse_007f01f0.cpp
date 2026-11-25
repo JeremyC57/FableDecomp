@@ -77,7 +77,6 @@ struct CThingWithComponents {
 };
 class CTCShowableItem {                         // interface type 0x1a
 public:
-    void OnShowEnded();                         // 0x005D8E50
 };
 class CTCActionUseBase {
 public:
@@ -95,6 +94,10 @@ public:
     virtual void OnActionUse(CThing& user);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CTCCarriedActionUseFishingRod::OnActionUse(CThing& user)
 {
     CTCActionUseBase::OnActionUse(user);
@@ -104,5 +107,5 @@ void CTCCarriedActionUseFishingRod::OnActionUse(CThing& user)
         creature.SetCurrentAction(CCreatureAction_ActivateQuest(creature, &GetParentThing(), expression, false));
     }
     if (GetParentComponents()->HasTC(0x1a))
-        GetParentComponents()->GetTC<CTCShowableItem>(0x1a)->OnShowEnded();
+        reinterpret_cast<CTCInventoryItem*>(GetParentComponents()->GetTC<CTCShowableItem>(0x1a))->ReturnToInventory();
 }

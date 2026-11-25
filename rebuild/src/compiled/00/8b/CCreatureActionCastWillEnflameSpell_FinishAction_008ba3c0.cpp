@@ -91,7 +91,6 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 struct CTCShowableItem {
-    void OnShowEnded();                               // 0x005D8E50
 };
 class CTCCarrying;
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
@@ -132,6 +131,10 @@ class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CCreatureAction_CastWillEnflameSpell::FinishAction()
 {
     CCombatActionBase::FinishAction();
@@ -149,7 +152,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
             CTCShowableItem* showable;
             if (thing->GetInterface(&showable, 0x1a)) {
                 if (!carrying->IsCarryingThing(*thing))
-                    showable->OnShowEnded();
+                    reinterpret_cast<CTCInventoryItem*>(showable)->ReturnToInventory();
             }
             if (!carrying->IsPrimarySlotFree())
                 carrying->RemoveThingFromPrimarySlot(false);

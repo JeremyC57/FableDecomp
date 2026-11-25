@@ -33,7 +33,6 @@ struct CThingRetail {                              // retail CThing (0x10 below 
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _bits91 : 7;
-    CScriptThing GetScriptThing() const;           // 0x004C7E50
 };
 template <class T> inline bool IsThingOfType(const CThingRetail* const& thing)
 {
@@ -84,6 +83,10 @@ struct CGameScriptThingMethods : CGameScriptThing {
     CScriptThing MsgWhoKilledMe() const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CThingRetail@@QBE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 CScriptThing CGameScriptThingMethods::MsgWhoKilledMe() const
 {
     CMessageEventManager* messages = World->PMessageEventManager_Data;
@@ -94,7 +97,7 @@ CScriptThing CGameScriptThingMethods::MsgWhoKilledMe() const
             IsThingOfType<CThingRetail>((CThingRetail*)message->POriginator.GetPItem())) {
             CThingRetail* killer = (CThingRetail*)message->POriginator.GetPItem();
             if (killer && !killer->Dead)
-                return killer->GetScriptThing();
+                return reinterpret_cast<const CThing*>(killer)->GetScriptThing();
         }
     }
     return CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetGameScriptThingManager()->GetNullScriptThing();

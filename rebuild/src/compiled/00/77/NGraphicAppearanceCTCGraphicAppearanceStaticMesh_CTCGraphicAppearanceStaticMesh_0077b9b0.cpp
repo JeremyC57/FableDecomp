@@ -3,7 +3,10 @@
 // Identity: proven; RTTI primary vtable0x0126AD6C/secondary0x0126AD50, PDB own CThing& constructor and PrimHandle+16; CAGraphicAppearanceComponent secondary+12/RegisterComponent0x4BD390.
 // Layout: engine/CTCBase.h flattens the vptr into void* and supplies no constructor/destructor/accessor API. The local actual polymorphic chain is needed for target constructor/vtable/MI behavior; ParentThing+4 and flags+8 agree with that header and PDB. For nonvirtual queries only these inherited data offsets are used.
 // Layout: no target header. Real RTTI multiple inheritance supplies secondary vptr+12 and PrimHandle+16; CThing is quarantined, local named PTCGraphicAppearance view preserves+0x64.
-namespace NGraphicAppearance { class CAGraphicAppearanceComponent { public: CAGraphicAppearanceComponent() {} virtual ~CAGraphicAppearanceComponent() {} virtual void OnAppearanceClear() {} }; class CTCGraphicAppearance { public: void RegisterComponent(CAGraphicAppearanceComponent*); void RemoveTintColour(void*); void ClearHighlighted(void*); }; class CPrimitive; }
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004BD390 ?RegisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z (was ?RegisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCAGraphicAppearanceComponent@2@@Z)
+namespace NGraphicAppearance { class CAGraphicAppearanceComponent { public: CAGraphicAppearanceComponent() {} virtual ~CAGraphicAppearanceComponent() {} virtual void OnAppearanceClear() {} }; class CTCGraphicAppearance { public: void RegisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent&); void RemoveTintColour(void*); void ClearHighlighted(void*); }; class CPrimitive; }
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
 class CThing;
@@ -12,4 +15,4 @@ class CThing;
 };
 class CTCBase:public CBaseClassNonCopyable { public: CTCBase(CThing&); CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 namespace NGraphicAppearance { class CTCGraphicAppearanceStaticMesh:public CTCBase,public CAGraphicAppearanceComponent { public: CPrimitive* PrimHandle; CTCGraphicAppearanceStaticMesh(CThing&); };
-CTCGraphicAppearanceStaticMesh::CTCGraphicAppearanceStaticMesh(CThing& thing):CTCBase(thing),PrimHandle(0) { ParentThing->GetTCGraphicAppearance()->RegisterComponent(this); } }
+CTCGraphicAppearanceStaticMesh::CTCGraphicAppearanceStaticMesh(CThing& thing):CTCBase(thing),PrimHandle(0) { ParentThing->GetTCGraphicAppearance()->RegisterComponent(*(this)); } }

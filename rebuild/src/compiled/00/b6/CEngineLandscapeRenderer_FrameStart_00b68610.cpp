@@ -27,13 +27,15 @@
 #define FABLE_RETAIL_CRENDERSTATECAPTUREBLOCK_SCOPED_FORCEINLINE
 #include "engine/CEngineShadowRenderer.h"
 #include "engine/CRenderStateCaptureBlock.h"
+enum LS_LOADING_STATUS {};   // PDB enum type (enumerators not modelled)
 namespace NEngineInternal { extern CEngineShadowRenderer* GPShadowRenderer; }   // 0x01436E60
 
 double __fastcall GFGetFastSubFrameTimer();        // 0x009E1C70
 
 class CLandscapeGPUUpdateQueue { public: unsigned char _body[0x10]; };
 class CEngineLandscapeMap { public:
-    int  UpdateBackgroundLOD(CLandscapeGPUUpdateQueue* queue, double time, bool force);   // 0x00BDC180
+    // Naming (NF439 gen, 2026-11-25): callee 0x00BDC180 binds its PDB spelling ?UpdateBackgroundLOD@CEngineLandscapeMap@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z (T1 target; was ?UpdateBackgroundLOD@CEngineLandscapeMap@@QAEHPAVCLandscapeGPUUpdateQueue@@N_N@Z).
+    LS_LOADING_STATUS UpdateBackgroundLOD(CLandscapeGPUUpdateQueue& queue, double time, bool force);
     void UpdateBackgroundTesselation();                                                   // 0x00BDC020
     int  UpdateForeground();                                                              // 0x00BDC510
 };
@@ -115,7 +117,7 @@ void CEngineLandscapeRenderer::FrameStart(const CEngineComponentParams& params)
     CEngineMapList& maps = NEngineInternal::GPEngineWorldMap->VisibleMapList;
     if (UpdateBackgroundLODs)
         for (_List_iterator it = maps.begin(); it != maps.end(); ++it)
-            (*it)->LandscapeMap->UpdateBackgroundLOD(&GPUUpdateQueue, time, false);
+            ((int)((*it)->LandscapeMap->UpdateBackgroundLOD(*(&GPUUpdateQueue), time, false)));
     if (UpdateBackgroundTesselations)
         for (_List_iterator it = maps.begin(); it != maps.end(); ++it)
             (*it)->LandscapeMap->UpdateBackgroundTesselation();

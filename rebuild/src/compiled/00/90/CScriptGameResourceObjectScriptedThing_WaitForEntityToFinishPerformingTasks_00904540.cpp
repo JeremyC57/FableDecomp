@@ -29,7 +29,6 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CScriptThing;
 class CThing_Retail { public:
-    CScriptThing GetScriptThing() const;          // 0x004C7E50
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                   // +0x44
@@ -99,6 +98,10 @@ public:
 };
 
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CThing_Retail@@QBE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 namespace NTCScriptedControl {
 struct CActionBase : CBase {                       // vtable 0x01265504
     long m_actionState;                            // +0x04
@@ -108,7 +111,7 @@ struct CActionBase : CBase {                       // vtable 0x01265504
 };
 struct CActionWaitForThingToFinishPerformingTasks : CActionBase {   // vtable 0x0128D7F0, 0x18 bytes
     CScriptThing Target;                           // +0x0c
-    CActionWaitForThingToFinishPerformingTasks(CThing_Retail* target) : Target(target->GetScriptThing()) { }
+    CActionWaitForThingToFinishPerformingTasks(CThing_Retail* target) : Target(reinterpret_cast<const CThing*>(target)->GetScriptThing()) { }
     virtual void v01();
 };
 }

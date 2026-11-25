@@ -37,7 +37,6 @@ class CFontBank;
 
 float __fastcall GFVXToAX(float x);                           // 0x009E1E10
 float __fastcall GFVYToAY(float y);                           // 0x009E1E40
-void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 
 class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
 // Name fix (naming agent NF21, 2026-11-11): the position constructor 0x00493AC2 takes the PDB enums (Ego_r.pdb 0x0049C7E3 /
@@ -72,8 +71,6 @@ const CPlayerGuiDef* __fastcall PeekGuiDef();                // 0x00438570
 
 enum EEngine2DLayer { ENGINE_2D_LAYER_SUBTITLE = 0x43 };
 struct CGameUI {
-    void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
-                    float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
 extern CGameUI* g_pGameUI;                                   // 0x013B8790
 
@@ -111,6 +108,12 @@ public:
     public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00438010 ?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z (was ?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z)
+//   0x009E21D0 ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (was ?GFACoordToVCoord@@YIXPBVC2DVector@@PAV1@@Z)
+class CPlayerGui { public: void Draw2DText(C2DVector const&, CWideString const&, CFontBank const&, CRGBColour const&, float, EEngine2DLayer, bool); };
+void __fastcall GFACoordToVCoord(C2DVector const&, C2DVector&);
 void CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareInfo& info, const C2DBoxF& box)
 {
     if (EmbeddedGraphics.empty())
@@ -126,8 +129,8 @@ void CSubtitleRenderer::DrawTextEmbeddedGraphics(const CEnginePrimitivePrepareIn
             if (text != L"") {
                 C2DVector textPos;
                 C2DVector at = pos + GetTextOffsetFromEmbeddedTagGraphic(EmbeddedGraphics[i].Graphic);
-                GFACoordToVCoord(&at, &textPos);
-                g_pGameUI->Draw2DText(textPos, text, PFont, CRGBColour(0xff, 0xff, 0xff, 0xff), 0.75f, ENGINE_2D_LAYER_SUBTITLE, true);
+                GFACoordToVCoord(at, textPos);
+                reinterpret_cast<CPlayerGui*>(g_pGameUI)->Draw2DText(textPos, text, *(PFont), CRGBColour(0xff, 0xff, 0xff, 0xff), 0.75f, ENGINE_2D_LAYER_SUBTITLE, true);
             }
         }
     }

@@ -99,7 +99,6 @@ public:
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
     CPlayer& GetPlayer();                     // 0x004C7A30
-    void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
     FABLE_FORCEINLINE bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -171,6 +170,10 @@ public:
     void Reset();                                   // 0x007A6F00
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662650 ?FinishCurrentAction@CThingCreatureBase@@QAEXXZ (was ?FinishCurrentAction@CThing@@QAEXXZ)
+class CThingCreatureBase { public: void FinishCurrentAction(); };
 CTCBattleCharge::CTCBattleCharge(CThing& parent)
     : CTCBase(parent), DashDistance(0.0f), SpellLevel(0), RadiusOfEffect(0.0f), ShieldEffect(0), LeftFeetEffect(0),
       RightFeetEffect(0), PoseDelay(0), StartPoseDelay(false), HitSomething(false), DisplacementVector(0.0f, 0.0f, 0.0f),
@@ -194,5 +197,5 @@ CTCBattleCharge::CTCBattleCharge(CThing& parent)
     if (parentThing->HasTC(0x6f))
         SpellLevel = ((CTCInventoryAbilities*)parentThing->GetTC(0x6f))->GetAbilityLevel(HERO_ABILITY_BATTLE_CHARGE);
     Reset();
-    ParentThing->FinishCurrentAction();
+    reinterpret_cast<CThingCreatureBase*>(ParentThing)->FinishCurrentAction();
 }

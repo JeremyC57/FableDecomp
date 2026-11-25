@@ -1,0 +1,3 @@
+address	verdict	old	new	reason
+0047db73	HOLD	?SavedConfirmed@@YIXXZ	?SavedConfirmed@@YIXXZ	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')
+0066fb50	HOLD	@KillField04ThingIfFieldB4NonPositive_0066fb50@4	@KillField04ThingIfFieldB4NonPositive_0066fb50@4	vland ('RELOCATION_MATCH', 'PASS') -> ('RELOCATION_MATCH', 'LINK_FAIL')

@@ -19,9 +19,13 @@ public:
     void WriteSLONG(long);   // 0x00993EB0
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z)
+class CDataInputStream;
 class CDefString { public:                                     // a name stored as its def-string table position
     long TablePos;
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);   // 0x0044FC00
 };
 
 struct CLongVector {                                    // std::vector<long> (retail 12 bytes)
@@ -40,7 +44,7 @@ template<> struct CPersistTraits<long> {
 };
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
+    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(&stream)); }
     static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.TablePos); }
 };
 

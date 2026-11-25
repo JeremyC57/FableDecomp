@@ -55,7 +55,6 @@ struct CThing_Retail {
     void SetHasInformation(long kind, bool a, bool b, bool c);   // 0x00830EB0 (CThingAICreature)
     void SetAsGameStatePersisted(bool persisted);  // 0x004C7880 (CThing)
     void ResetMaxRunningSpeedToDefault();          // 0x006A9BC0 (CThingPlayerCreature)
-    void ResetMaxWalkingSpeedToDefault();          // 0x006A9B70 (CThingPlayerCreature; the manifest repeats the running label)
     void RemoveMovementBlockingModes();            // 0x0085F600
     void SetCutscenePauseBehaviour(long behaviour);   // 0x004C78A0 (CThing)
     long GetSex();                                 // 0x00661FF0 (CThingCreatureBase; the label "CPixelShader::CountReferences" is propagated)
@@ -71,12 +70,16 @@ struct CThing_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x006A9B70 ?ResetMaxWalkingSpeedToDefault@CThingPlayerCreature@@QAEXXZ (was ?ResetMaxWalkingSpeedToDefault@CThing_Retail@@QAEXXZ)
+class CThingPlayerCreature { public: void ResetMaxWalkingSpeedToDefault(); };
 void CGameScriptInterface::EntityResetMaxWalkingSpeed(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         if (((CThing_Retail*)thing.GetPThing())->m_type == 1)
             ((CThing_Retail*)thing.GetPThing())->m_playerMaxWalkingSpeed = 0.0f;
         else if (((CThing_Retail*)thing.GetPThing())->m_type == 2)
-            ((CThing_Retail*)thing.GetPThing())->ResetMaxWalkingSpeedToDefault();
+            reinterpret_cast<CThingPlayerCreature*>(((CThing_Retail*)thing.GetPThing()))->ResetMaxWalkingSpeedToDefault();
     }
 }

@@ -14,7 +14,8 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
     void RemoveMode(EPlayerMode mode);                    // 0x00634190
 };
-bool __fastcall IsThingToKeepStrafing_0068eb20(CThing_Retail* thing);   // 0x0068EB20
+// Naming (NF439 gen, 2026-11-25): callee 0x0068EB20 binds its PDB spelling ?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z (T1 target; was the free stand-in ?IsThingToKeepStrafing_0068eb20@@YI_NPAUCThing_Retail@@@Z).
+namespace NInputProcess { bool __fastcall IsThingToKeepStrafing(CThingPlayerCreature const& thing); }
 class CProcessedInput;
 class CInputProcessWatchForRangedWeaponThirdPersonModeTermination { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
@@ -29,7 +30,7 @@ void CInputProcessWatchForRangedWeaponThirdPersonModeTermination::Update(CProces
 {
     CThing_Retail* hero = m_pPlayer->GetPControlledCreature();
     if (hero && !hero->m_91_0) {
-        if (IsThingToKeepStrafing_0068eb20(hero)) {
+        if (NInputProcess::IsThingToKeepStrafing(*(CThingPlayerCreature const*)hero)) {
             m_countdown = 5;
             return;
         }

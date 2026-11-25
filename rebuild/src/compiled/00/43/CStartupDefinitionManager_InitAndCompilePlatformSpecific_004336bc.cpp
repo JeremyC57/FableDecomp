@@ -12,6 +12,7 @@
 //   push_back / ~vector / operator=; was a CWideStringVector stand-in) under the PDB member names SymbolPathList / CompilePathList.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
+class CDefClassInit;
 
 class CWideString {
 public:
@@ -64,7 +65,8 @@ public:
     std::vector<CWideString> SymbolPathList;           // +0x40
     std::vector<CWideString> CompilePathList;          // +0x4c
     unsigned char _pad58[0xf0 - 0x58];
-    void AddDefinitionType(const SDefinitionType& type);   // 0x009B0AC0
+    // Naming (NF439 gen, 2026-11-25): callee 0x009B0AC0 binds its PDB spelling ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z (T1 target; was ?AddDefinitionType@CDefinitionManager@@QAEXABUSDefinitionType@@@Z).
+    void AddDefClass(CDefClassInit const& type);
     void Compile();                                    // 0x009B08C0
 };
 class CStartupDefinitionManager : public CDefinitionManager {
@@ -106,11 +108,11 @@ void CStartupDefinitionManager::InitAndCompilePlatformSpecific(bool testFrontEnd
         defs.push_back(NResourceDirectoryNames::GetDefDir() + L"pc_controls.def");
         defs.push_back(NResourceDirectoryNames::GetDefDir() + L"config_options_defaults.def");
     }
-    AddDefinitionType(SDefinitionType("ENGINE_VIDEO_OPTIONS", CreateEngineVideoOptionsDef));
-    AddDefinitionType(SDefinitionType("ENGINE", CreateEngineDef));
-    AddDefinitionType(SDefinitionType("UI", CreateUIDef));
-    AddDefinitionType(SDefinitionType("CONTROL_SCHEME", CreateControlSchemeDef));
-    AddDefinitionType(SDefinitionType("CONFIG_OPTIONS_DEFAULTS_DEF", CreateConfigOptionsDefaultsDef));
+    AddDefClass(*(CDefClassInit const*)&(SDefinitionType("ENGINE_VIDEO_OPTIONS", CreateEngineVideoOptionsDef)));
+    AddDefClass(*(CDefClassInit const*)&(SDefinitionType("ENGINE", CreateEngineDef)));
+    AddDefClass(*(CDefClassInit const*)&(SDefinitionType("UI", CreateUIDef)));
+    AddDefClass(*(CDefClassInit const*)&(SDefinitionType("CONTROL_SCHEME", CreateControlSchemeDef)));
+    AddDefClass(*(CDefClassInit const*)&(SDefinitionType("CONFIG_OPTIONS_DEFAULTS_DEF", CreateConfigOptionsDefaultsDef)));
     SymbolPathList = headers;
     CompilePathList = defs;
     Compile();

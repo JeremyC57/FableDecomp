@@ -1,0 +1,33 @@
+action	symbol	target	witness	note
+delete	?AddDefinitionType@CDefinitionManager@@QAEXABUSDefinitionType@@@Z	009b0ac0	004336bc	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z	0068eb20	0068f250	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?IsThingToKeepStrafing_0068eb20@@YI_NPAUCThing_Retail@@@Z	0068eb20	0068f250	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?cons_construct_008648a0@@YIXPAXPAUPair@@@Z	008648a0	006a7570	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetBlockParryData@CTCHeroExperience@@QAEPAUHelperData@@XZ	006d72d0	006d7490	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?GetSub@CTCHeroExperience@@QAEPAUSubObj@@XZ	006d72d0	006d7550	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?SetParticleCreationDisabled@CParticleEmitter@NParticleEngine@@QAEX_N@Z	006dfda0	006e1620	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?SetHidden@CParticleEmitter@NParticleEngine@@QAEX_N@Z	006dfda0	006e1620	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?ResetAttackerSequence@CCombatManager@@QAEXABVCThingCreatureBase@@@Z	006ea2c0	006ea540	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z	009e5c90	006f9be0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?KillReclaimedUndead@CTCSpecialAbilities@@QAEXPAVCThing@@@Z	0072b3b0	0072c3c0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?OnBlockHoldExpired@CTCCombat@@QAEXXZ	007338a0	007339e0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?IsAbleToUseTurningAnimations@NCreatureMode@@YI_NABVCThing@@@Z	0085fcd0	00752480	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?IsAbleToUseTurningAnimations@@YI_NPAVCThing@@@Z	0085fcd0	00752480	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?IsAvailableForHeroSprint@NCreatureMode@@YI_NABVCThing@@@Z	0085f470	007e0670	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?IsAvailableForHeroSprint@@YI_NPAVCThing@@@Z	0085f470	007e0670	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?PlaySoundW@CTCBetting@@QAEKABVCCharString@@@Z	007e51d0	007e5230	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?PlaySound@CTCBetting@@QAEXABVCCharString@@@Z	007e51d0	007e5230	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+delete	?Geometry_ClosestPointOnLineSegment@@YI?AVC3DVector@@ABV1@00@Z	008f5970	0080ca20	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetPerpendicularDistanceFromFiniteLine@NPhysicsHelpers@@YIMABVC3DVector@@00@Z	008f5ba0	0080ca20	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+add	?GetCreatureFirePosAndOrientation@NThingShot@@YIXABVCThing@@AAVC3DVector@@AAVCRightHandedSet@@@Z	007bf000	008444a0	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetCreatureFirePosAndOrientation@@YIXPAVCThing@@PAVC3DVector@@PAVCRightHandedSet@@@Z	007bf000	008444a0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?AddTattoo@CTCHeroMorph@@QAEXABVCThing@@@Z	0071d7c0	008981c0	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?AddTattoo@CTCHeroMorph@@QAEXPAUCThing_Retail@@@Z	0071d7c0	008981c0	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetStunnedEffectCreationPos@NCreatureMode@@YI?AVC3DVector@@ABVCThingCreatureBase@@@Z	0085ee50	008d7270	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?GetHeadPosWithOffset@@YI?AVC3DVector@@PAVCThing@@@Z	0085ee50	008d7270	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ	00937c20	00937d20	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ	00937c20	00937d20	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ	00937b10	00937d20	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ	00937b10	00937d20	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)
+add	?GetCandleInBuildingNeedingChanging@CAIStateGroup_LightHomeCandle@@ABEPAVCThing@@AAVCThingBuilding@@@Z	00946ae0	00946b50	NF439: the respelt caller binds the PDB spelling at this target; no line bound it before
+delete	?FindAndValidateTask@CAIStateGroup_LightHomeCandle@@QAEPAVCThing@@PAV2@@Z	00946ae0	00946b50	NF439: no landed row binds the stand-in at this target after the respell (census of the identifier + retail call targets)

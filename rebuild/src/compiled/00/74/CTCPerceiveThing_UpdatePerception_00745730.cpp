@@ -138,13 +138,15 @@ public:
     float& GetAwarenessTimer() { return AwarenessTimer; }
 };
 
-bool __fastcall IsIncapacitated(CThing* thing);   // 0x0085F0C0
-bool __fastcall IsLyingDown(CThing* thing);       // 0x0085F2B0
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F0C0 binds its PDB spelling ?IsIncapacitated@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsIncapacitated@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsIncapacitated(CThing const& thing); }
+// Naming (NF439 gen, 2026-11-25): callee 0x0085F2B0 binds its PDB spelling ?IsLyingDown@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsLyingDown@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsLyingDown(CThing const& thing); }
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 void CTCPerceiveThing::UpdatePerception()
 {
-    if (IsIncapacitated(ParentThing)) {
+    if (NCreatureMode::IsIncapacitated(*ParentThing)) {
         SetThingLineOfSight(false);
         SetThingExtendedLineOfSight(false);
         SetThingIgnoreFOVLineOfSight(false);
@@ -153,7 +155,7 @@ void CTCPerceiveThing::UpdatePerception()
         DirectAwareness = false;
         return;
     }
-    if (!IsLyingDown(ParentThing))
+    if (!NCreatureMode::IsLyingDown(*ParentThing))
         UpdateLineOfSight();
     UpdateSmell();
     UpdateHearing();

@@ -1,3 +1,4 @@
+class CCombatAction;
 // CCombatSequenceWhisperStrikeStrafeBack::OnCreate() -- queue an interruptable near attack (action code 150) and a CCombatAction_GenericResponseToDrain-constructed follow-up, then the base OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00909FD0, 210 bytes (224 with padding), virtual `?OnCreate@CCombatSequenceWhisperStrikeStrafeBack@@UAEXXZ`.
 // Callees: operator new 0x00BFEA1A (0x114-byte actions), CCombatActionBase::CCombatActionBase(owner, thing, code, sound)
@@ -59,7 +60,8 @@ class CCombatSequenceBase { public:
     CThing* m_pTarget;                      // +0x20
     CThingCreatureBase* GetCreature() const { return m_pOwner; }
     CThing* GetTarget() const { return m_pTarget; }
-    void AddAction(const CCountedPointer& action);   // 0x008B0B10
+    // Naming (NF439 gen, 2026-11-25): callee 0x008B0B10 binds its PDB spelling ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z (T1 target; was ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z).
+    protected: void PushAction(CCombatAction& action); public:
     virtual void OnCreate();                // 0x008B0650
 };
 
@@ -83,7 +85,7 @@ void CCombatSequenceWhisperStrikeStrafeBack::OnCreate()
 {
     CCountedPointer action;
     action = new CCreatureAction_InterruptableNearAttack(GetCreature(), GetTarget());
-    AddAction(action);
-    AddAction(action = new CCombatAction_GenericResponseToDrain(GetCreature(), GetTarget()));
+    PushAction(*(CCombatAction*)&(action));
+    PushAction(*(CCombatAction*)&(action = new CCombatAction_GenericResponseToDrain(GetCreature(), GetTarget())));
     CCombatSequenceBase::OnCreate();
 }

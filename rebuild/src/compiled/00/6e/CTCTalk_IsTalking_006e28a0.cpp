@@ -7,7 +7,6 @@
 // `frame - started < duration`; the `xor ecx,ecx ; setl cl ; mov al,cl` result is the plain `return cond;` bool
 // form (GOTCHAS 2026-10-13: a bool written `return cond;` goes through a full register).
 class CWorld { public:
-    long GetFrame();                         // 0x00416225
 };
 extern CWorld* g_pWorld;                     // 0x013B86A0
 
@@ -20,7 +19,11 @@ extern CWorld* g_pWorld;                     // 0x013B86A0
 #include "engine/ETCInterfaceType.h"
 #include "engine/CTCTalk.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00416225 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ (was ?GetFrame@CWorld@@QAEJXZ)
+class CMainGameComponent { public: long GetCurrentServerFrame() const; };
 bool CTCTalk::IsTalking() const
 {
-    return g_pWorld->GetFrame() - SampleStartedFrame < SampleDurationFrames;
+    return reinterpret_cast<const CMainGameComponent*>(g_pWorld)->GetCurrentServerFrame() - SampleStartedFrame < SampleDurationFrames;
 }

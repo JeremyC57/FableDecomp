@@ -60,7 +60,6 @@ class CTCInventory { public:                                // interface type 0x
     virtual void UseTrophy(long trophyDefIndex, bool* fromShop);   // slot 33 (+0x84)
 };
 struct CSubtitleRenderer_Retail {                    // embedded at (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())+0x18
-    void SetText(CFontBank_Retail* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
@@ -73,6 +72,11 @@ class CPlayerGui { public:
     CSubtitleRenderer_Retail m_subtitles;            // +0x18
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00492ED1 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z (was ?SetText@CSubtitleRenderer_Retail@@QAEXPAUCFontBank_Retail@@ABVCCharString@@KM_N2@Z)
+class CFontBank;
+class CSubtitleRenderer { public: void SetText(CFontBank const&, CCharString const&, unsigned long, float, bool, bool); };
 namespace NInventory {
 struct CTCInventoryTrade {
     unsigned char _pad00[0x04];
@@ -95,7 +99,7 @@ void CTCInventoryTrade::ShowWarningIfNeeded()
         WarningNeeded = false;
         CCharString warning("TEXT_GUI_SHOP_WEAPON_HELD_WARNING");
         CDisplayEngine_Retail* engine = ParentThing->GetDisplayEngine();
-        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitles.SetText(engine->m_pFontBank, warning, 0x122, 0.0f, true, true);
+        reinterpret_cast<CSubtitleRenderer*>(&(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitles))->SetText(*reinterpret_cast<CFontBank const*>(engine->m_pFontBank), warning, 0x122, 0.0f, true, true);
     }
 }
 }

@@ -57,7 +57,6 @@ class CSystemManager { public:
     CFontManager*    GetFontBank() const { return FontBank; }
 };
 CSystemManager* __fastcall GFGetSystemManager();        // 0x009A4EC0
-void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 extern unsigned char g_imeCompositionAlpha_013750b0;    // 0x013750B0
 class CImeUiFont_Base {
 public:
@@ -67,6 +66,10 @@ public:
     virtual void GetTextExtent(const unsigned short*, unsigned long*, unsigned long*) = 0;
     virtual void DrawTextW(const unsigned short*) = 0;
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009E21D0 ?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z (was ?GFACoordToVCoord@@YIXPBVC2DVector@@PAV1@@Z)
+void __fastcall GFACoordToVCoord(C2DVector const&, C2DVector&);
 namespace NUISystem {
 class CIMEFont : public CImeUiFont_Base {
 public:
@@ -114,11 +117,11 @@ void CIMEFont::DrawTextW(const unsigned short* text)
     GetFontNameAndScale(fontName, scale);
     CCountedPointer<CFontBank> font = GFGetSystemManager()->GetFontBank()->GetFont(fontName);
     C2DVector position(Position[0], Position[1]);
-    GFACoordToVCoord(&position, &position);
+    GFACoordToVCoord(position, position);
     Colour.A = g_imeCompositionAlpha_013750b0;
     if (Colour.R > 0x60 || Colour.G > 0x60 || Colour.B > 0x60) {
         C2DVector shadowPosition(Position[0] - 2.0f, Position[1] + 2.0f);
-        GFACoordToVCoord(&shadowPosition, &shadowPosition);
+        GFACoordToVCoord(shadowPosition, shadowPosition);
         CRGBColour shadow(0, 0, 0, Colour.A);
         C3DVector shadowPosition3(shadowPosition.X, shadowPosition.Y, 0.0f);
         CRenderManager2D* renderManager = GFGetSystemManager()->DisplayManager->RenderManager2D;

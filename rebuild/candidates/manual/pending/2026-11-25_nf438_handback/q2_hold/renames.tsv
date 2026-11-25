@@ -1,0 +1,7 @@
+007c04a0	?PlaySound@CTCAI@@QAEXABEABVCSoundInit@@JJ@Z	?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z	0066ace0
+00891d50	?GetTicks@CStopWatch@@QBEPAX_K@Z	?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z	0051ed80
+00891d50	?WrapForScript@CGSIGetThingWithUID_Thing@@QBE?AVCScriptThing@@XZ	?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ	004c7e50
+0089a070	?SetMorality@CGSITheftMoralityStats@@QAEXJ@Z	?SetMorality@CTCHeroStats@@QAEXJ@Z	0057c2e6
+0089a0e0	?SetMorality@CGSIPicklockMoralityStats@@QAEXJ@Z	?SetMorality@CTCHeroStats@@QAEXJ@Z	0057c2e6
+008c5fd0	?base@Fable_TrollInit_008c5fd0@@QAIXXZ	?Initialise@CCombatActionBase@@UAEXXZ	00857520
+008d03a0	?SetToKillOnLevelUnload@CThing_Retail@@QAEXJ@Z	?SetToKillOnLevelUnload@CThing@@QAEX_N@Z	004c9c40

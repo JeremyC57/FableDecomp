@@ -35,7 +35,8 @@ template<class T> inline bool IS_ALIVE(T* const& p)
 {
     return p != 0 && !(p->m_flags91 & 1);
 }
-bool __fastcall IsAbleToUseTurningAnimations(CThing* thing);   // 0x0085FCD0
+// Naming (NF439 gen, 2026-11-25): callee 0x0085FCD0 binds its PDB spelling ?IsAbleToUseTurningAnimations@NCreatureMode@@YI_NABVCThing@@@Z (T1 target; was the free stand-in ?IsAbleToUseTurningAnimations@@YI_NPAVCThing@@@Z).
+namespace NCreatureMode { bool __fastcall IsAbleToUseTurningAnimations(CThing const& thing); }
 class CLookDef { public:
     unsigned char _pad00[0x40];
     bool  AllowTurningViaAnimation;                  // +0x40
@@ -75,7 +76,7 @@ bool CTCLook::IsAbleToTurnViaAnimation() const
     if (allowed) {
         if (!(IS_ALIVE(PParentCreature) && PParentCreature->IsPerformingAnyAction() && PParentCreature->PCurrentAction->PreventsTurningViaAnimation())) {
             if (TurningAnimsStart != TurningAnimsFinish && !TurningViaAnimationDisable) {
-                if (IsAbleToUseTurningAnimations(ParentThing))
+                if (NCreatureMode::IsAbleToUseTurningAnimations(*ParentThing))
                     return true;
             }
         }

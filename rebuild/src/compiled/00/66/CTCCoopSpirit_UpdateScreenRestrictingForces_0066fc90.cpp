@@ -42,7 +42,6 @@ class CCamera { public:
 struct CDisplay {
     unsigned char _pad00[0x2c];
     CCamera* PCamera;                                        // +0x2c
-    C2DBoxF GetScreenArea() const;                           // 0x00434B50
 };
 class CMainGameComponent {
 protected:
@@ -100,11 +99,15 @@ class CTCCoopSpirit : public CTCBase { public:
     public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00434B50 ?GetMainWindow@CDisplayEngine@@QBE?AVC2DBoxF@@XZ (was ?GetScreenArea@CDisplay@@QBE?AVC2DBoxF@@XZ)
+class CDisplayEngine { public: C2DBoxF GetMainWindow() const; };
 void CTCCoopSpirit::UpdateScreenRestrictingForces()
 {
     CDisplay* display = CMainGameComponent::Get()->PDisplay;
     CCamera* camera = display->PCamera;
-    C2DBoxF area = display->GetScreenArea();
+    C2DBoxF area = reinterpret_cast<const CDisplayEngine*>(display)->GetMainWindow();
     const C3DVector& position = ParentThing->GetPos();
     C3DVector spiritPos;
     spiritPos.X = position.X;

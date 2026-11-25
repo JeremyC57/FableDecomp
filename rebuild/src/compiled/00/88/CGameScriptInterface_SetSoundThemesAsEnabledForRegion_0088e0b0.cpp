@@ -9,15 +9,18 @@ namespace NInventory
 class CTCInventoryBase
 {
 public:
-    CCategory* GetCategoryWithIndex(long index);
 };
 }
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004FB490 ?GetRegion@CWorldMap@@QAEAAVCRegion@@J@Z (was ?GetCategoryWithIndex@CTCInventoryBase@NInventory@@QAEPAVCCategory@@J@Z)
+class CRegion;
 class CWorldMap
 {
 public:
     long GetRegionNumberFromName(const CCharString& regionName) const;   // 0x004FC210 (NF313: the PDB QBE const-reference form, both PDBs)
-};
+ public: CRegion& GetRegion(long); };
 
 namespace
 {
@@ -67,8 +70,7 @@ void CGameScriptInterface::SetSoundThemesAsEnabledForRegion(
     {
         CWorld* const pWorld2 = self->m_pWorld;
         CCategory* const pCategory =
-            reinterpret_cast<CWorldOverlay*>(pWorld2)->m_pVTable->m_GetTCInventoryBase(pWorld2)
-                ->GetCategoryWithIndex(regionNumber);
+            reinterpret_cast<CCategory*>(&reinterpret_cast<CWorldMap*>(reinterpret_cast<CWorldOverlay*>(pWorld2)->m_pVTable->m_GetTCInventoryBase(pWorld2))->GetRegion(regionNumber));
         reinterpret_cast<CCategorySoundThemesEnabledOverlay*>(pCategory)->m_SoundThemesEnabled =
             static_cast<unsigned char>(enabled);
     }

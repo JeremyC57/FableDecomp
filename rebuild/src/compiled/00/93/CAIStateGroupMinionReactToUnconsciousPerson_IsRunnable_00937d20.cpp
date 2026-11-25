@@ -95,8 +95,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 
 struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
     CIntelligentPointerThing PPerson;           // +0x14 CIntelligentPointer<CThingCreatureBase>
-    CThing* FindUndiscoveredUnconsciousPerson();    // 0x00937B10
-    CThing* FindUnconsciousPerson();            // 0x00937C20
+    // Naming (NF439 gen, 2026-11-25): callee 0x00937B10 binds its PDB spelling ?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ (T1 target; was ?FindUndiscoveredUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ).
+    private: CThingCreatureBase * FindUndiscoveredUnconsciousPerson() const; public:
+    // Naming (NF439 gen, 2026-11-25): callee 0x00937C20 binds its PDB spelling ?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@ABEPAVCThingCreatureBase@@XZ (T1 target; was ?FindUnconsciousPerson@CAIStateGroup_MinionReactToUnconsciousPerson@@QAEPAVCThing@@XZ).
+    private: CThingCreatureBase * FindUnconsciousPerson() const; public:
     virtual bool IsRunnable();
 };
 
@@ -104,9 +106,9 @@ bool CAIStateGroup_MinionReactToUnconsciousPerson::IsRunnable()
 {
     CThing* person;
     if (((CThingCreatureBase*)PBrain->PCreature)->GetProperty() == 3)
-        person = FindUnconsciousPerson();
+        person = ((CThing *)(FindUnconsciousPerson()));
     else
-        person = FindUndiscoveredUnconsciousPerson();
+        person = ((CThing *)(FindUndiscoveredUnconsciousPerson()));
     if (person != 0 && !person->IsDead()) {
         PPerson = person;
         return true;

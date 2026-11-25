@@ -34,7 +34,6 @@ class CThingAICreature { public:
     unsigned char _pad[0x168];
     CIntelligentPointer<CThingBuilding> PHome;              // +0x168 CIntelligentPointer<CThingBuilding>
     CThingBuilding* GetPHome() { return PHome.GetPItem(); }
-    bool AutoPlaceNearBuilding(CThingBuilding* pBuilding, float radius);   // 0x00666EF0
 };
 
 class CAIBrain { public:
@@ -57,11 +56,15 @@ struct CAIStateGroup_IdleAtHome : CAIStateGroupBase {
     long InitCreaturePosition();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00666EF0 ?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z (was ?AutoPlaceNearBuilding@CThingAICreature@@QAE_NPAVCThingBuilding@@M@Z)
+class CThingCreatureBase { public: bool AutoPlaceNearBuilding(CThingBuilding const*, float); };
 long CAIStateGroup_IdleAtHome::InitCreaturePosition()
 {
     if (PBrain->PCreature->GetPHome() != 0) {
         CThingAICreature* pCreature = PBrain->PCreature;
-        if (pCreature->AutoPlaceNearBuilding(pCreature->GetPHome(), 3.0f))
+        if (reinterpret_cast<CThingCreatureBase*>(pCreature)->AutoPlaceNearBuilding(pCreature->GetPHome(), 3.0f))
             return 1;
     }
     return 0;

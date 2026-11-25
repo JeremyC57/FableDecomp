@@ -34,9 +34,11 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005DC340 ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (was ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z)
 class CAnimationSet { public:
-    const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-};
+ public: CAnimationEntry const& GetAnim(CCharString const&, long, CAnimFilterBase const&) const; };
 struct CBlendPair {
     float m_first;
     float m_second;
@@ -191,7 +193,7 @@ void CTCDoor_Methods::Close()
     CThingBaseDef* baseDef = Parent()->GetPBaseDef();
     CDefPointer<CAnimatingObjectDef> def;
     baseDef->GetSubDef(&def);
-    const CAnimationEntry* entry = def->Animation.GetAnimation(SDoorCloseAnim, 0, CAnimFilterNoGroup());
+    const CAnimationEntry* entry = (&reinterpret_cast<const CAnimationSet*>(&(def->Animation))->GetAnim(SDoorCloseAnim, 0, CAnimFilterNoGroup()));
     CAnimInit init(6, 0, entry->AnimIndex, 1, false, 0, 100);
     animate.SetMainAnim(init, 1, 0);
     CTCSwitchableNavigation* navigation;

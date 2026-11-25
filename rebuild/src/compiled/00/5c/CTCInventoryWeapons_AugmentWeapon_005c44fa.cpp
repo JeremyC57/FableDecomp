@@ -67,7 +67,6 @@ class CTCObjectAugmentations { public:
     void AttachAugmentationToSlot(long augmentation, long slot);   // 0x00768120
 };
 struct CTCShowableItem {
-    void OnShowEnded();                                     // 0x005D8E50
 };
 // Name fix (agentNF54, e114): the 0x005D99D0 stand-in declaration is gone: it is the static
 //   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z (Ego_r.pdb 0x0055A9A0 + FableWin.pdb 0x01E03620: the TC interface
@@ -104,6 +103,9 @@ class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     void AugmentWeapon(long weaponDefIndex, long augmentationDefIndex, bool& augmented);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
 void CTCInventoryWeapons::AugmentWeapon(long weaponDefIndex, long augmentationDefIndex, bool& augmented)
 {
     augmented = false;
@@ -129,6 +131,6 @@ void CTCInventoryWeapons::AugmentWeapon(long weaponDefIndex, long augmentationDe
     if (created) {
         CTCShowableItem* showable = 0;
         weapon->GetInterface(&showable, 0x1a);
-        showable->OnShowEnded();
+        reinterpret_cast<CTCInventoryItem*>(showable)->ReturnToInventory();
     }
 }

@@ -44,7 +44,6 @@ struct CTCInventoryBase_Weapons {
     CDefPointer<CInventoryDef> PDef;            // +0x68
     FABLE_FORCEINLINE CDefPointer<CInventoryDef> GetPDef() const { return PDef; }
     void OpenInventory();                       // 0x005BD4EA
-    void SetInventoryAnimRenderBox(const C2DBoxF& box);   // 0x005BC58F
 };
 class CTCInventoryWeapons;
 namespace NUISystem { class CManager { public:
@@ -70,9 +69,13 @@ class CTCInventoryWeapons : public CTCInventoryBase_Weapons { public:
     void OpenInventory();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005BC58F ?SetInventoryAnimRenderBox@CTCInventoryBase@NInventory@@QAEXABVC2DBoxF@@@Z (was ?SetInventoryAnimRenderBox@CTCInventoryBase_Weapons@@QAEXABVC2DBoxF@@@Z)
+namespace NInventory { class CTCInventoryBase { public: void SetInventoryAnimRenderBox(C2DBoxF const&); }; }
 void CTCInventoryWeapons::OpenInventory()
 {
     CTCInventoryBase_Weapons::OpenInventory();
-    SetInventoryAnimRenderBox(C2DBoxF(GetPDef()->WeaponsAnimBoxTLPos, GetPDef()->WeaponsAnimBoxExtents));
+    reinterpret_cast<NInventory::CTCInventoryBase*>(this)->SetInventoryAnimRenderBox(C2DBoxF(GetPDef()->WeaponsAnimBoxTLPos, GetPDef()->WeaponsAnimBoxExtents));
     NUISystem::CManager::GetInstance()->OnScreenOpened(this);
 }

@@ -106,7 +106,6 @@ class CTCTavernTable { public:                         // interface 0xB8
     CThingObject* GetTankard(long seat);           // 0x007B8590
 };
 class CTCTavernGameCoinGolf { public:                  // interface 0xCF
-    void SetGameMaster(CThing* master);         // 0x0094D430
 };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
@@ -139,6 +138,10 @@ template <> CStlList<CThing*>::~CStlList()
 }
 #pragma auto_inline(on)
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0094D430 ?RegisterGameMaster@CTCTavernGame@@QAEXPAVCThingAICreature@@@Z (was ?SetGameMaster@CTCTavernGameCoinGolf@@QAEXPAVCThing@@@Z)
+class CTCTavernGame { public: void RegisterGameMaster(CThingAICreature*); };
 bool CAIStateGroup_GameMaster::GetSeat()
 {
     CStlList<CThing*> tables;
@@ -162,7 +165,7 @@ bool CAIStateGroup_GameMaster::GetSeat()
             PTankard = CIntelligentPointer<CThing>(table->GetTankard(SeatIndex));
             CTCTavernGameCoinGolf* golf;
             ((CThing*)PTable.GetPItem())->GetTC(TCI_TAVERN_GAME, &golf);
-            golf->SetGameMaster(GetCreature());
+            reinterpret_cast<CTCTavernGame*>(golf)->RegisterGameMaster(GetCreature());
             return true;
         }
     }

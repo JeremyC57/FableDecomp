@@ -78,7 +78,6 @@ struct CWorldMap_Retail {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009();
     virtual bool IsMapLoaded(long map);            // slot 10 (+0x28)
-    long GetMapNumberFromScriptName(const CCharString& levelName);   // 0x004FB880
     bool IsMapLoadedOnPlayerProximity(long map);   // 0x004FD000
     long GetCurrentRegionNumber();                 // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
     CRegion_Retail* GetRegion(long region);        // 0x004FC180
@@ -121,9 +120,13 @@ class CWorld { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004FB880 ?GetMapNumberFromScriptName@CWorldMap@@QBEJABVCCharString@@@Z (was ?GetMapNumberFromScriptName@CWorldMap_Retail@@QAEJABVCCharString@@@Z)
+class CWorldMap { public: long GetMapNumberFromScriptName(CCharString const&) const; };
 bool CGameScriptInterface::IsLevelLoaded(const CCharString& levelName) const
 {
-    long map = World->GetWorldMap()->GetMapNumberFromScriptName(levelName);
+    long map = reinterpret_cast<const CWorldMap*>(World->GetWorldMap())->GetMapNumberFromScriptName(levelName);
     if (!map)
         return false;
     return World->GetWorldMap()->IsMapLoaded(map) && !World->GetWorldMap()->IsMapLoadedOnPlayerProximity(map);

@@ -44,10 +44,13 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     FABLE_FORCEINLINE unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0044FC00 ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z (was ?TransferBinaryIn@CDefString@@QAEXPAVCMemoryDataInputStream@@@Z)
 class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
+    void TransferBinaryIn(CDataInputStream&);   // 0x0044FC00
 };
 
 struct CEntry {
@@ -80,7 +83,7 @@ void CSkeletalMorphs::TransferBinaryIn(CMemoryDataInputStream* stream)
     for (unsigned long i = 0; i < count; ++i) {
         Morphs._M_start[i].first = stream->ReadULong();
         CEntry& entry = Morphs._M_start[i].second;
-        entry.Name.TransferBinaryIn(stream);
+        entry.Name.TransferBinaryIn(*reinterpret_cast<CDataInputStream*>(stream));
         short index;
         stream->Read(&index, sizeof(index));
         entry.m_index = index;

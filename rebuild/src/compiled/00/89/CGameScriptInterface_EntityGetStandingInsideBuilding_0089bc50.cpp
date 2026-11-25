@@ -106,7 +106,6 @@ FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing ex
     return t && !t->m_dead;
 }
 class CBaseObject_Retail { public:
-    CScriptThing GetScriptThing();                 // 0x004C7E50
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -133,6 +132,10 @@ struct CTCInsideBuilding_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CBaseObject_Retail@@QAE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 CScriptThing CGameScriptInterface::EntityGetStandingInsideBuilding(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
@@ -140,7 +143,7 @@ CScriptThing CGameScriptInterface::EntityGetStandingInsideBuilding(const CScript
         if (t->HasTC(0x75)) {
             CBaseObject_Retail* building = ((CTCInsideBuilding_Retail*)GetTCConst(t, 0x75))->m_building.GetPItem();
             if (building)
-                return building->GetScriptThing();
+                return reinterpret_cast<const CThing*>(building)->GetScriptThing();
         }
     }
     return CGameScriptThing::CreateNullThing();

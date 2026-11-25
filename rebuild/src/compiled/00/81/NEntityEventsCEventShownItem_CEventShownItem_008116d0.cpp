@@ -15,7 +15,6 @@
 class CTCBase;
 
 struct CTCShowableItem {                         // the type-0x1a thing component
-    void OnShowEnded();                          // 0x005D8E50
 };
 
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
@@ -53,11 +52,15 @@ struct CEventShownItem : NEntityEvents::CEventBase {   // vtable 0x012723D8
     ~CEventShownItem();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 CEventShownItem::~CEventShownItem()
 {
     if (IS_THING_ALIVE(ItemShown)) {
         CTCShowableItem* item;
         if (ItemShown.Get()->GetTC(TCI_INVENTORY_ITEM, &item))
-            item->OnShowEnded();
+            reinterpret_cast<CTCInventoryItem*>(item)->ReturnToInventory();
     }
 }

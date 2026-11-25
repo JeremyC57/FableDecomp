@@ -79,8 +79,11 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPr
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CTCVillager;
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0065A8EE ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z (was ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThing@@PAVCWorld@@_N@Z)
 class CTCVillage { public:
-    bool IsTimeToGoToSchool(CThing* creature, CWorld* world, bool flag);   // 0x0065A8EE
+    bool IsTimeToGoToSchool(CThingAICreature*, CWorld const&, bool);   // 0x0065A8EE
 };
 class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
@@ -100,7 +103,7 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase {
     FABLE_FORCEINLINE bool IsTimeForSchool(CTCVillager* villager)
     {
         CThing* creature = PBrain->PCreature;
-        return ((CTCVillageMember*)villager)->GetPVillage()->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), true);
+        return ((CTCVillageMember*)villager)->GetPVillage()->IsTimeToGoToSchool(reinterpret_cast<CThingAICreature*>(creature), *((CWorld*)&PeekWorld()), true);
     }
 };
 

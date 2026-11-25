@@ -78,6 +78,9 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00416225 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ (was ?GetWorldFrame@CMainGameComponent@@QAEJXZ)
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
@@ -85,8 +88,7 @@ public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private:
 public:
-    long GetWorldFrame();                                   // 0x00416225
-};
+ public: long GetCurrentServerFrame() const; };
 
 namespace NSpeechGainManager {
 
@@ -135,7 +137,7 @@ extern long g_LastUpdateFrame;                              // 0x013BAB8C
 void __fastcall Update(const CWorld& world)
 {
     if (!g_ActiveDialogue.empty()) {
-        long elapsedFrames = CMainGameComponent::Get()->GetWorldFrame() - g_LastUpdateFrame;
+        long elapsedFrames = reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame() - g_LastUpdateFrame;
         const std::vector<CDialogueLayerDef>& layerDefs = world.PDefinitionManager->PGlobalDef->DialogueLayers;
         std::list<CActiveDialogueInfo>::iterator it = g_ActiveDialogue.begin();
         std::list<CActiveDialogueInfo>::iterator next = it;
@@ -149,7 +151,7 @@ void __fastcall Update(const CWorld& world)
             it = next;
         }
     }
-    g_LastUpdateFrame = CMainGameComponent::Get()->GetWorldFrame();
+    g_LastUpdateFrame = reinterpret_cast<const CMainGameComponent*>(CMainGameComponent::Get())->GetCurrentServerFrame();
 }
 
 }

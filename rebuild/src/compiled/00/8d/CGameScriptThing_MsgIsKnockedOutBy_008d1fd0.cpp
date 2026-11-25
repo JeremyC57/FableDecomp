@@ -99,7 +99,6 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char Metadata[0x41]; unsigned char LifeFlags;
-    CScriptThing GetScriptThing() const;                // 0x004C7E50
     FABLE_FORCEINLINE CTCEntityEvents* GetEvents()
     {
 
@@ -141,6 +140,10 @@ struct CGameScriptThingMethods : CGameScriptThing {
     bool MsgIsKnockedOutBy(const CCharString& name) const;
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CThingNative@@QBE?AVCScriptThing@@XZ)
+class CThing { public: CScriptThing GetScriptThing() const; };
 bool CGameScriptThingMethods::MsgIsKnockedOutBy(const CCharString& name) const
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
@@ -154,7 +157,7 @@ bool CGameScriptThingMethods::MsgIsKnockedOutBy(const CCharString& name) const
             for (n = reinterpret_cast<EventList*>(events->Events)->Head->Next; n != reinterpret_cast<EventList*>(events->Events)->Head; n = n->Next) {
                 EventBase* e = n->Data;
                 if (e->GetType() == 8 && e->WorldFrame > last && e->WorldFrame <= current) {
-                    if (name == "" || (static_cast<OriginatorEvent*>(e)->POriginator.Get() && static_cast<OriginatorEvent*>(e)->POriginator.Get()->GetScriptThing().GetName() == name))
+                    if (name == "" || (static_cast<OriginatorEvent*>(e)->POriginator.Get() && reinterpret_cast<const CThing*>(static_cast<OriginatorEvent*>(e)->POriginator.Get())->GetScriptThing().GetName() == name))
                         return true;
                 }
             }

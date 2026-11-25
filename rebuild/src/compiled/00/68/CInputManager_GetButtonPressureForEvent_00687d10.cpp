@@ -11,7 +11,6 @@
 class CInputEvent;
 
 struct CGamePlayerInterfaceCalls {
-    float GetButtonPressureForEvent(CInputEvent* event);   // 0x00445800
 };
 
 struct CInterfaceOwner_Retail {
@@ -20,9 +19,13 @@ struct CInterfaceOwner_Retail {
     float GetButtonPressureForEvent(CInputEvent* event);
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00445800 ?GetButtonPressureForEvent@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z (was ?GetButtonPressureForEvent@CGamePlayerInterfaceCalls@@QAEMPAVCInputEvent@@@Z)
+class CGamePlayerInterface { public: float GetButtonPressureForEvent(CInputEvent const&) const; };
 float CInterfaceOwner_Retail::GetButtonPressureForEvent(CInputEvent* event)
 {
     // The named float local is what stops VC7.1 turning this into a sibling-call `jmp`.
-    float pressure = this->Interface->GetButtonPressureForEvent(event);
+    float pressure = reinterpret_cast<const CGamePlayerInterface*>(this->Interface)->GetButtonPressureForEvent(*(event));
     return pressure;
 }

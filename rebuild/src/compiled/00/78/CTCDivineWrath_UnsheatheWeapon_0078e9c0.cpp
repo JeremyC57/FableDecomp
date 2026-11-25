@@ -95,7 +95,6 @@ public:
 };
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 struct CTC1A {
-    void OnNotCarried();                                     // 0x005D8E50
 };
 class CTCInventoryWeapons { public:
     void RefreshSheathedWeapons();                           // 0x005C9962
@@ -119,6 +118,10 @@ class CTCDivineWrath { public:
     public:
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnNotCarried@CTC1A@@QAEXXZ)
+class CTCInventoryItem { public: void ReturnToInventory(); };
 void CTCDivineWrath::UnsheatheWeapon()
 {
     if (!PItemRemoved.GetPItem() || (PItemRemoved.GetPItem()->m_flags91 & 1))
@@ -136,7 +139,7 @@ void CTCDivineWrath::UnsheatheWeapon()
         if (held->HasTC(0x1a)) {
             CTC1A* tc = held->GetTC<CTC1A>(0x1a);
             if (!carrying->IsCarryingThing(*held))
-                tc->OnNotCarried();
+                reinterpret_cast<CTCInventoryItem*>(tc)->ReturnToInventory();
         }
         if (!carrying->IsPrimarySlotFree())
             carrying->RemoveThingFromPrimarySlot(false);

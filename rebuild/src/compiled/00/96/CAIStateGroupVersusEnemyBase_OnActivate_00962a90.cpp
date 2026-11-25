@@ -16,7 +16,6 @@
 #include "engine/CThing.h"
 
 class CThingAICreature { public:
-    bool IsRegisteredCombatant();               // 0x00662410
 };
 
 class CCombatManager { public:
@@ -66,9 +65,13 @@ struct CAIStateGroup_VersusEnemyBase : CAIStateGroupBase {
     virtual void OnActivate();
 };
 
+// Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00662410 ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ (was ?IsRegisteredCombatant@CThingAICreature@@QAE_NXZ)
+class CThingCreatureBase { public: bool IsInMeleeAsAttacker() const; };
 void CAIStateGroup_VersusEnemyBase::OnActivate()
 {
-    if (!PBrain->Creature->IsRegisteredCombatant()) {
+    if (!reinterpret_cast<const CThingCreatureBase*>(PBrain->Creature)->IsInMeleeAsAttacker()) {
         if (PTargetThing.IsAlive()) {
             CThingAICreature* creature = PBrain->Creature;
             CCombatManager* combatManager = GetWorld().m_pCombatManager;
