@@ -3153,7 +3153,7 @@ address	symbol	status	leaf_given
 004df477	?M@C004df477@@QAEPAXXZ	MATCH	GetNavigatorObstacles
 004df47b	?M@C004df47b@@QAEPAXXZ	MATCH	GetNavigatorObstacles
 004df47f	?CObstacleNavigatorExternalInterface_GetPNavigatorObstacles@@YIHXZ	MATCH	GetPNavigatorObstacles
-004df4e7	??0CObstacleNavigatorExternalInterface@@QAE@ABUCObstacleOwner@@@Z	RELOCATION_MATCH	??0CObstacleNavigatorExternalInterface@
+004df4e7	??0CObstacleNavigatorExternalInterface@@QAE@ABV0@@Z	RELOCATION_MATCH	??0CObstacleNavigatorExternalInterface@@QAE@ABV0@@Z
 004df532	??_GCNavigatorExternalInterface@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
 004df54f	??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	MATCH	??1?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ
 004df554	??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ	RELOCATION_MATCH	??1?$_Vector_base@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@QAE@XZ
@@ -4783,7 +4783,7 @@ address	symbol	status	leaf_given
 0057fe82	?Container_EraseAndFree@MapEraseState@@QAEXK@Z	RELOCATION_MATCH	Container_EraseAndFree
 0057feb1	?UInt_RBTreeFindGreaterOrEqual@@YIPAURBNode@@PAURBTree@@HPAI@Z	MATCH	UInt_RBTreeFindGreaterOrEqual
 0057fed6	?_M_upper_bound@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBEPAU_Rb_tree_node_base@2@ABK@Z	MATCH	_M_upper_bound
-0057fefb	?BuildTreeArray@CTextTreeWalkThrough@@QAEXPAVTreeNode@@@Z	RELOCATION_MATCH	BuildTreeArray
+0057fefb	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@2@@Z	RELOCATION_MATCH	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@2@@Z
 0057ff30	?GetDef_0057ff30@CDefinitionManager@@QAE_NJAAV?$CDefPointer@$$CBVCDefClassBase@@@@@Z	RELOCATION_MATCH	GetDef<CSpecialAbilitiesDrunkennessDef>
 005800d6	??$GetPFirstLeafThing@V?$CFilter_Bind2@VCThingFilter_HasDefName@@VCThingFilter_HasScriptData@@@@VCThingMarker@@@CThingSearchToolsMethods@@QAE_NABV?$CFilter_Bind2@VCThingFilter_HasDefName@@VCThingFilter_HasScriptData@@@@PAPAVCThingMarker@@@Z	RELOCATION_MATCH	GetPFirstLeafThing
 00580133	?GetCellBoundingBox@@YADKK@Z	RELOCATION_MATCH	GetCellBoundingBox

@@ -34,7 +34,16 @@ public:
  virtual bool IsPlayer() const=0;
  virtual bool IsDead() const=0;
  virtual float GetForwardNavigationWidthExtension() const=0;
+#ifdef FABLE_RETAIL_CNAVIGATOREXTERNALINTERFACE_INLINE_DTOR
+ // Retail opt-in (NF403, row 0x004DF4E7): retail's destructor is the empty inline one. The class's deleting destructor 0x004DF532
+ // (`test byte [esp+4],1 ; push esi ; mov esi,ecx ; mov [esi],0x01241D74 ; ...`) and CObstacleNavigatorExternalInterface's 0x004DF507
+ // (`mov [esi],0x01241D04 ; call ~vector ; ... ; mov [esi],0x01241D74`) store this vtable themselves instead of calling a destructor, and
+ // retail's out-of-line copy is the unreferenced 7-byte `mov [ecx],0x01241D74 ; ret` at 0x006CB510. Default off: the out-of-line
+ // declaration below is unchanged.
+ virtual ~CNavigatorExternalInterface() { }
+#else
  virtual ~CNavigatorExternalInterface();
+#endif
  virtual CNavigatorExternalInterface* Clone() const=0;
 #ifdef FABLE_RETAIL_CNAVIGATOREXTERNALINTERFACE_AGENTLISTS
  // Retail opt-in (chunk 1021, row 0x00A47D10): the static registry of every live navigator's agent vector and its two

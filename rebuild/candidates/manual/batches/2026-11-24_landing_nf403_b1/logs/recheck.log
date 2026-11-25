@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004df4e7   RELOCATION_MATCH PASS   CObstacleNavigatorExternalInterface
+
+WINS: 1
+  004df4e7 RELOCATION_MATCH CObstacleNavigatorExternalInterface::??0CObstacleNavigatorExternalInterface@@QAE@ABV0@@Z

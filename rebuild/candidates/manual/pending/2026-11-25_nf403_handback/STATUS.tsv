@@ -1,0 +1,3 @@
+address	verdict	batch	note
+004df4e7	ACCEPT	b1	copy ctor respell; header opt-in FABLE_RETAIL_CNAVIGATOREXTERNALINTERFACE_INLINE_DTOR
+0057fefb	HOLD_RULING Q1	b2	gate-clean; non-unique tier-2 home for the __fastcall _Destroy
