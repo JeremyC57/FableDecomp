@@ -149,6 +149,24 @@ def lib_symbols():
     return _LIBSYMS
 
 
+_LIBADDR = None
+def lib_symbol_at(addr):
+    """the libsig symbol proven at <addr> (library_signatures.tsv first, then vendor_signatures.tsv), '' when there is none."""
+    global _LIBADDR
+    if _LIBADDR is None:
+        _LIBADDR = {}
+        for f in ("library_signatures.tsv", "vendor_signatures.tsv"):
+            p = P("rebuild", "oracles", f)
+            if not os.path.exists(p): continue
+            rows = read_tsv(p)
+            if not rows or "symbol" not in rows[0]: continue
+            ai = rows[0].index("address") if "address" in rows[0] else 0
+            k = rows[0].index("symbol")
+            for r in rows[1:]:
+                if len(r) > max(ai, k) and r[k]: _LIBADDR.setdefault(r[ai].lower().replace("0x", "").zfill(8), r[k])
+    return _LIBADDR.get(addr.lower().replace("0x", "").zfill(8), "")
+
+
 def is_std(sym):
     # A C name (no `?`) counts only when it is a proven library symbol (finish plan route 0, 2026-11-23: is_std used to accept every C
     # name, so 1,270 made-up C names such as `_Construct` / `@VecDelDtor@12` counted as done).
@@ -288,11 +306,16 @@ def main():
     # the measurement pass (lane_tools/self_symbols.py -> rebuild/oracles/self_symbols.tsv, ROADMAP NF302 Q3): the symbol each landed row's
     # own object defines, read from the grade's own comparison. Trusted only when the grade matched (a DIFFER row may have graded another
     # function); used when the row's Leaf line is not a usable full spelling. Last line per address wins.
-    measured = {}
+    measured, libmeasured = {}, {}
     msp = P("rebuild", "oracles", "self_symbols.tsv")
     if os.path.exists(msp):
         for r in read_tsv(msp)[1:]:
             if len(r) > 2: measured[r[0].lower()] = r[1] if (r[1] and r[2] in ("MATCH", "RELOCATION_MATCH")) else ""
+            # a toolchain_library row (lib_verify proved the bytes, no object of ours defines a symbol): the symbol is the one libsig proved
+            # at that address, counted only when is_std accepts it (research A1, owner 2026-11-25)
+            if len(r) > 2 and r[2] == "LIBRARY_MATCH" and not r[1]:
+                ls = lib_symbol_at(r[0])
+                if ls and is_std(ls): libmeasured[r[0].lower()] = ls
 
     status, rec = {}, {}
     unmeasured = collections.Counter()
@@ -302,6 +325,11 @@ def main():
         self_leaf, self_how = resolve_leaf(leaf.get(t, ""), sp)
         if t in ent and self_how != "full" and measured.get(t):
             self_leaf, self_how = norm(measured[t]), "full"     # what the object defines (measurement pass)
+        elif t in ent and self_how != "full" and libmeasured.get(t):
+            # the libsig symbol may be the undecorated export name (D3DX `D3DXFilterTexture` for `_D3DXFilterTexture@16`): read it
+            # like a Leaf line so it agrees with the decorated caller spelling instead of splitting from it
+            ls, how = resolve_leaf(libmeasured[t], sp)
+            self_leaf, self_how = (norm(ls), "full") if ls else (libmeasured[t], "full")
         if self_leaf: sp.setdefault(self_leaf, set()).add("self")
         if t in ent and self_how != "full": unmeasured[self_how] += 1
         if not sp:

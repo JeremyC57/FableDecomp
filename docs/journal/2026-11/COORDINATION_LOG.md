@@ -1397,3 +1397,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: landed NF448 ta27 + h1_hdr (+17) and NF450 n1 (+1, 3 best guesses); r450a/b declined; NF451 started (drift regrade first).
 - 2026-11-25 A: landed NF447 b1 (23 GameCODA rows, equiv clean); research agent on naming speed running at owner request.
 - 2026-11-25 A: research agent (owner request) on naming speed: report at docs/journal/2026-11/2026-11-25_naming_speed_research.md.
+- 2026-11-25 A: speed-up A1 (owner approved): naming_status.py reads the libsig symbol for LIBRARY_MATCH self rows; +239 done (34,587 -> 34,826), 0 rows worse.
