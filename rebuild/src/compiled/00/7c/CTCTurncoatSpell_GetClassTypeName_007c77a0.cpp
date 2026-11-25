@@ -14,15 +14,21 @@
 //   the landed copies; the linker keeps one).
 // Respell (NF417): was the stand-in self ?GetClassTypeName@CTCTurncoatSpell_Methods@@QAE?AVCCharString@@XZ (a non-virtual member of a
 //   made-up `_Methods` class).
-// Header: engine/CTCTurncoatSpell.h does not compile to the polymorphic class in any prelude P0..P3 (no opt-in guards a polymorphic
-//   definition of the class in it) (header debt: its default branch is not the polymorphic retail class); a local class over its RTTI
-//   direct base engine/CTCBase.h (rtti_bases.tsv: .?AVCTCTurncoatSpell@@ : CTCBase).
+// Header: engine/CTCTurncoatSpell.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form); its polymorphic branch compiles
+//   with the prelude FABLE_RETAIL_CTCTURNCOATSPELL, FABLE_RETAIL_DEF_CLASS_BASE (the smallest prelude, from the header's landed
+//   includers, minimised line by line, under which the polymorphic check TU compiles: static_cast to CTCBase,
+//   &CTCBase::GetClassTypeName, sizeof(class) == sizeof(layout); NF421 tools/psearch.py). Port (NF421, T3 `nf417 headers debt`): was a
+//   local class over CTCBase; no header edit was needed.
 #define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
 #define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
-#include "engine/CTCBase.h"
+#define FABLE_RETAIL_CTCTURNCOATSPELL
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define CTCTurncoatSpell CTCTurncoatSpellLayout
+#include "engine/CTCTurncoatSpell.h"
+#undef CTCTurncoatSpell
 
-class CTCTurncoatSpell : public CTCBase
+class CTCTurncoatSpell : public CTCTurncoatSpellLayout
 {
 public:
     static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCTurncoatSpell", -1); }

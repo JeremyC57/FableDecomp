@@ -14,16 +14,21 @@
 //   the landed copies; the linker keeps one).
 // Respell (NF417): was the stand-in self ?GetClassTypeName@CTCWeaponTrail@@QAE?AVCCharString@@XZ (a non-virtual, non-const member of
 //   the real class).
-// Header: engine/CTCWeaponTrail.h does not compile to the polymorphic class in any prelude P0..P3 nor with its class opt-ins
-//   FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE (header debt: its default branch is not the polymorphic retail class); a local class over its
-//   RTTI direct base engine/CTCBase.h (rtti_bases.tsv: .?AVCTCWeaponTrail@@ : CTCBase).
+// Header: engine/CTCWeaponTrail.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form); its polymorphic branch compiles
+//   with the prelude FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE, "engine/CThing.h" (the smallest prelude, from the header's landed
+//   includers, minimised line by line, under which the polymorphic check TU compiles: static_cast to CTCBase,
+//   &CTCBase::GetClassTypeName, sizeof(class) == sizeof(layout); NF421 tools/psearch.py). Port (NF421, T3 `nf417 headers debt`): was a
+//   local class over CTCBase; no header edit was needed.
 #define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
-#define FABLE_RETAIL_CTCWEAPONTRAIL_UPDATE
 #define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
-#include "engine/CTCBase.h"
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#include "engine/CThing.h"
+#define CTCWeaponTrail CTCWeaponTrailLayout
+#include "engine/CTCWeaponTrail.h"
+#undef CTCWeaponTrail
 
-class CTCWeaponTrail : public CTCBase
+class CTCWeaponTrail : public CTCWeaponTrailLayout
 {
 public:
     static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCWeaponTrail", -1); }

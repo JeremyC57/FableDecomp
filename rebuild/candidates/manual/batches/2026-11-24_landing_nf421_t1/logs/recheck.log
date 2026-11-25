@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00486172   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+00486172   WARN STANDIN_LEAF ?GetClassTypeName@CTCInGameMenu@@UBE?AVCCharString@@XZ (catalog CTCInGameMenu::GetTypeAsString; names another function)
+00486172   RELOCATION_MATCH PASS   GetTypeAsString
+0057a23c   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0057a23c   WARN STANDIN_LEAF ?GetClassTypeName@CTCInventoryExperience@@UBE?AVCCharString@@XZ (catalog CTCInventoryExperience::GetTypeAsString; names another function)
+0057a23c   RELOCATION_MATCH PASS   GetTypeAsString
+005814ac   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+005814ac   WARN STANDIN_LEAF ?GetClassTypeName@CTCHeroStats@@UBE?AVCCharString@@XZ (catalog CTCHeroStats::GetTypeAsString; names another function)
+005814ac   RELOCATION_MATCH PASS   GetTypeAsString
+00594bcd   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00594bcd   WARN STANDIN_LEAF ?GetClassTypeName@CTCInventory@@UBE?AVCCharString@@XZ (catalog CTCInventory::GetTypeAsString; names another function)
+00594bcd   RELOCATION_MATCH PASS   GetTypeAsString
+005b304e   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)
+005b304e   WARN STANDIN_LEAF ?GetClassTypeName@CTCInventoryTrade@@UBE?AVCCharString@@XZ (catalog CTCInventoryTrade::GetTypeAsString; names another function)
+005b304e   RELOCATION_MATCH PASS   GetTypeAsString
+005cc4e1   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005cc4e1   WARN STANDIN_LEAF ?GetClassTypeName@CTCInventoryWeapons@@UBE?AVCCharString@@XZ (catalog CTCInventoryWeapons::GetTypeAsString; names another function)
+005cc4e1   RELOCATION_MATCH PASS   GetTypeAsString
+005d877d   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005d877d   WARN STANDIN_LEAF ?GetClassTypeName@CTCInventoryStats@@UBE?AVCCharString@@XZ (catalog CTCInventoryStats::GetTypeAsString; names another function)
+005d877d   RELOCATION_MATCH PASS   GetTypeAsString
+005fa385   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005fa385   WARN STANDIN_LEAF ?GetClassTypeName@CTCInventoryAbilities@@UBE?AVCCharString@@XZ (catalog CTCInventoryAbilities::GetTypeAsString; names another function)
+005fa385   RELOCATION_MATCH PASS   GetTypeAsString
+0066122e   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+0066122e   WARN STANDIN_LEAF ?GetClassTypeName@CTCVillage@@UBE?AVCCharString@@XZ (catalog CTCVillage::GetTypeAsString; names another function)
+0066122e   RELOCATION_MATCH PASS   GetTypeAsString
+00789341   WARN SHARED_HEADER_AVAILABLE CTCMeleeTrap (engine/CTCMeleeTrap.h)
+00789341   WARN STANDIN_LEAF ?GetClassTypeName@CTCMeleeTrap@@UBE?AVCCharString@@XZ (catalog CTCMeleeTrap::GetTypeAsString; names another function)
+00789341   RELOCATION_MATCH PASS   GetTypeAsString
+00789397   WARN STANDIN_LEAF ?GetClassTypeName@CTCProjectileTrap@@UBE?AVCCharString@@XZ (catalog CTCProjectileTrap::GetTypeAsString; names another function)
+00789397   RELOCATION_MATCH PASS   GetTypeAsString
+007be5e0   WARN STANDIN_LEAF ?GetClassTypeName@CTCShotDefinitionMultiArrow@NThingShot@@UBE?AVCCharString@@XZ (catalog CTCShotDefinitionMultiArrow::GetTypeAsString; names another function)
+007be5e0   RELOCATION_MATCH PASS   GetTypeAsString
+007be9d5   WARN STANDIN_LEAF ?GetClassTypeName@CTCShotDefinitionQueenHornetShot@NThingShot@@UBE?AVCCharString@@XZ (catalog CTCShotDefinitionQueenHornetShot::GetTypeAsString; names another function)
+007be9d5   RELOCATION_MATCH PASS   GetTypeAsString
+
+WINS: 13
+  00486172 RELOCATION_MATCH CTCInGameMenu::?GetClassTypeName@CTCInGameMenu@@UBE?AVCCharString@@XZ
+  0057a23c RELOCATION_MATCH CTCInventoryExperience::?GetClassTypeName@CTCInventoryExperience@@UBE?AVCCharString@@XZ
+  005814ac RELOCATION_MATCH CTCHeroStats::?GetClassTypeName@CTCHeroStats@@UBE?AVCCharString@@XZ
+  00594bcd RELOCATION_MATCH CTCInventory::?GetClassTypeName@CTCInventory@@UBE?AVCCharString@@XZ
+  005b304e RELOCATION_MATCH CTCInventoryTrade::?GetClassTypeName@CTCInventoryTrade@@UBE?AVCCharString@@XZ
+  005cc4e1 RELOCATION_MATCH CTCInventoryWeapons::?GetClassTypeName@CTCInventoryWeapons@@UBE?AVCCharString@@XZ
+  005d877d RELOCATION_MATCH CTCInventoryStats::?GetClassTypeName@CTCInventoryStats@@UBE?AVCCharString@@XZ
+  005fa385 RELOCATION_MATCH CTCInventoryAbilities::?GetClassTypeName@CTCInventoryAbilities@@UBE?AVCCharString@@XZ
+  0066122e RELOCATION_MATCH CTCVillage::?GetClassTypeName@CTCVillage@@UBE?AVCCharString@@XZ
+  00789341 RELOCATION_MATCH CTCMeleeTrap::?GetClassTypeName@CTCMeleeTrap@@UBE?AVCCharString@@XZ
+  00789397 RELOCATION_MATCH CTCProjectileTrap::?GetClassTypeName@CTCProjectileTrap@@UBE?AVCCharString@@XZ
+  007be5e0 RELOCATION_MATCH CTCShotDefinitionMultiArrow::?GetClassTypeName@CTCShotDefinitionMultiArrow@NThingShot@@UBE?AVCCharString@@XZ
+  007be9d5 RELOCATION_MATCH CTCShotDefinitionQueenHornetShot::?GetClassTypeName@CTCShotDefinitionQueenHornetShot@NThingShot@@UBE?AVCCharString@@XZ

@@ -17,8 +17,8 @@ T1	access	CTCTavernGameCardBase	1	1	engine/CTCTavernGameCardBase.h	008f1d40
 T1	access	CThingPhysical	1	1	engine/CThingPhysical.h	006a4d20
 T1	access	CWideString	1	1		0099b4d0
 T1	standin_alias	vector	17	16		00411910 004774d6 004e34b2 005bba94 005e3040 005f9074 006755e0 006fcf10 00708ca0 00722eb0 0082c620 0082c8a0 0086b2a0 00ad83a0 00b83df0 00b97af0 00cdbc90
-T1	standin_alias	CCountedPointer	12	13	engine/CCountedPointer.h	0044f3b2 004850f9 0048afb0 0056c0f0 005ed2c0 0065d5a0 006e46f0 007180b0 007222b0 0085a5a0 009a4400 00b230e0
 T1	standin_alias	GetSubDef	9	9		007086f0 0077e430 007a6ca0 007c8000 007e0540 007e1400 007f9330 007fe5b0 00810c80
+T1	standin_alias	CCountedPointer	8	8	engine/CCountedPointer.h	004850f9 0048afb0 0056c0f0 0065d5a0 007180b0 007222b0 0085a5a0 00b230e0
 T1	standin_alias	pair	8	8		004d788d 004dd728 005799fd 005f8736 006b8e20 00825090 00827f80 00ae98e0
 T1	standin_alias	C3DAnimationUtil	7	5		00c55090 00c550b0 00c550f0 00c55110 00c56d30 00c573e0 00c72600
 T1	standin_alias	CBankFile	6	5	engine/CBankFile.h	009cb960 009cbfe0 009ce370 009cfbc0 009d1160 009d1260
@@ -28,6 +28,7 @@ T1	standin_alias	CTCInventoryExperience	5	3	engine/CTCInventoryExperience.h	0056
 T1	standin_alias	CThingCreatureBase	5	5	engine/CThingCreatureBase.h	006626a0 00663610 006647f0 00665e90 00666830
 T1	standin_alias	CWorldMap	5	4	engine/CWorldMap.h	004fb880 004fc210 004fc970 004fcb30 004fede0
 T1	standin_alias	CQuestManager	4	2	engine/CQuestManager.h	004af610 004afc60 004b0c80 004b0d30
+T1	standin_alias	CTCInventoryBase	4	4		005bc5c6 005bf3f1 005bf91a 005c00a0
 T1	standin_alias	CThing	4	4	engine/CThing.h	004c78a0 004c7a10 004c9c40 004ca1d0
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
@@ -37,7 +38,6 @@ T1	standin_alias	CTCCombat	3	1	engine/CTCCombat.h	007339e0 00736590 00736760
 T1	standin_alias	CTCHeroMorph	3	3	engine/CTCHeroMorph.h	0071c360 0071d7c0 0071de80
 T1	standin_alias	CTCHeroOpinionDeedLog	3	1	engine/CTCHeroOpinionDeedLog.h	006c5920 006c59e0 006c5f80
 T1	standin_alias	CTCInventoryAbilities	3	3	engine/CTCInventoryAbilities.h	005edd04 005ee02e 00c22040
-T1	standin_alias	CTCInventoryBase	3	3		005bc5c6 005bf3f1 005bf91a
 T1	standin_alias	CTCVillage	3	3	engine/CTCVillage.h	0065a852 0065b349 0065bffa
 T1	standin_alias	C3DMeshFileMaterialChunk	2	1	engine/C3DMeshFileMaterialChunk.h	00ac0e50 00ac0ee0
 T1	standin_alias	CAIStateGroupBase	2	1	engine/CAIStateGroupBase.h	0097d580 0097ec00
@@ -72,7 +72,6 @@ T1	standin_alias	CAIStateGroup_OpinionReactionRoot	1	1	engine/CAIStateGroup_Opin
 T1	standin_alias	CAIStateGroup_VersusEnemyBase	1	1	engine/CAIStateGroup_VersusEnemyBase.h	00962af0
 T1	standin_alias	CAIStateGroup_WorkAtSchool	1	1	engine/CAIStateGroup_WorkAtSchool.h	009426d0
 T1	standin_alias	CAbilityTrackLevelDef	1	1	engine/CAbilityTrackLevelDef.h	004787f6
-T1	standin_alias	CAnimFilterOf3Groups	1	1		00739df0
 T1	standin_alias	CAnimationSet	1	1	engine/CAnimationSet.h	005dd2e0
 T1	standin_alias	CArenaWaveDef	1	1	engine/CArenaWaveDef.h	00f25c60
 T1	standin_alias	CBankFileManager	1	1	engine/CBankFileManager.h	009a7ac0
@@ -231,10 +230,8 @@ T1	signature	CTCTavernGame	2	2	engine/CTCTavernGame.h	005eb4b0 005eca50
 T1	signature	GFSerialiseMapBinaryIn	2	2		00632830 00632b90
 T1	signature	deque	2	2		004432b0 0059b4fe
 T1	signature	list	2	2		0053cb20 009be100
-T1	signature	C3DAnimFile	1	1	engine/C3DAnimFile.h	00a98f40
 T1	signature	C3DAnimationInfo	1	1	engine/C3DAnimationInfo.h	00a25970
 T1	signature	C3DAnimationStats	1	1	engine/C3DAnimationStats.h	00a4eae0
-T1	signature	C3DMeshFile	1	1	engine/C3DMeshFile.h	00a9ae60
 T1	signature	C3DMeshFileLoader	1	1	engine/C3DMeshFileLoader.h	00a9b740
 T1	signature	CAIStateGroup_MinionReactToPlayerInteraction	1	1	engine/CAIStateGroup_MinionReactToPlayerInteraction.h	0092fab0
 T1	signature	CAIStateGroup_MoveGoodsBase	1	1	engine/CAIStateGroup_MoveGoodsBase.h	00915b60
@@ -317,8 +314,8 @@ T1	signature	NProgressDisplay	1	1	engine/NProgressDisplay.h	009ea060
 T1	signature	pair	1	1		005e0e20
 T1	other	vector	129	194		00410460 00412a50 00414ea0 00431f90 0043cac0 004433f0 00454886 00456263 0045bc09 0045c64d 00460c41 00461da1 004624c6 00462cb0 00462e78 0046eabd 0046eecf 0046f565 00471e44 004772a7 0047876b 0047ba50 0047bb90 00485d30 00486024 004ad520 004ae040 004cc290 004cc9b0 004d07a0 004e201f 004e24ba 004ea398 004f9408 00514160 00514eb0 0051b4c0 0051bcd0 005290e0 0052c6a0 00535470 00535ad0 0057fcdd 005947b6 005b3325 005bb346 005bba5b 005bbdf1 005d85de 005e24d0 00624a30 0062ed40 0062f590 00639810 00656806 0066e630 0066e6d0 006714b0 00673e10 006741e0 00674300 00674400 00674520 006753f0 00675980 0067d450 00681340 00696fe0 006b58f0 006e22f0 006e6a30 006f19f0 006f43c0 006fc2d0 00708830 007101a0 00710700 00719470 007398b0 00739b40 0074da40 0076fb00 0077e580 00787340 0078915c 0081df50 00824dd0 0082c980 0086ea80 008ac970 008adf90 0098ccc0 009b4030 009b4d80 009b4f30 009b8350 009cb1f0 009cb2a0 009f9930 00a016f0 00a01820 00a2b970 00a2c210 00a2c2b0 00a2c360 00a38150 00a5ae00 00a5e9c0 00a80b80 00a80ee0 00a83170 00a83a30 00a83d70 00a84940 00a8d750 00aa9330 00aafd90 00ad26d0 00ad2730 00aeca80 00bbdd40 00bc5e90 00bcc3b0 00beeb80 00d34f00 00f25d20 00f25f90 00f280a0 00f28810
 T1	other	GetSubDef	69	102		0042b0a2 0042b248 004dc858 00580034 005936c2 005da180 005da300 0065f604 0065f7b4 00669580 00685c00 00696130 006a2fa0 006cd2f0 006d3d00 006d3dc0 006d3ef0 006daa90 00702930 0071f930 00722d30 0072ef60 007325d0 0073dbe0 00748900 0074d160 0074f7d0 00751190 00778900 0077d080 007815a0 00787060 00788e53 0079c4b0 007ad9c0 007afa90 007b2540 007b2600 007b44e0 007b5680 007bb920 007be7ea 007df9e0 007e1230 007e1d30 007e5820 007e6e00 007e7d80 007e8200 007ea960 007f16b0 007f1ee0 007f5560 007f87a0 007fcd50 0080fe60 0087c490 008c33e0 008c3510 008c5a50 008c78f0 008c79b0 008c7a70 008cbff0 008cd0d0 008e3240 008e3300 008f00f0 00956590
-T1	other	CCountedPointer	30	69	engine/CCountedPointer.h	00403d20 00413590 0041915a 00429c15 00450142 0048c5c0 004b6ad0 0056c050 005c07e4 005c0800 005c1946 00654b0a 00654b94 00654c1e 00654c63 00695880 006e7ab0 007044b0 00704580 008ab1e0 00a29d20 00a36ec0 00aa4460 00ae9450 00ae94a0 00b3e4a0 00b3e510 00cb8d30 00ce1000 00ce10b0
-T1	other	CTCInventoryBase	20	43		005bc499 005bc58f 005bc638 005bc649 005bc65b 005bc65c 005bc68e 005bc68f 005bc692 005bc693 005bcafe 005bce2f 005bd1eb 005bd273 005bd4ea 005bdd8c 005bddb8 005bff07 005c00a0 005c0121
+T1	other	CCountedPointer	29	66	engine/CCountedPointer.h	00403d20 00413590 0041915a 00429c15 00450142 0048c5c0 004b6ad0 0056c050 005c07e4 005c0800 005c1946 00654b0a 00654b94 00654c1e 00654c63 00695880 006e7ab0 007044b0 00704580 008ab1e0 00a29d20 00a36ec0 00aa4460 00ae9450 00ae94a0 00b3e4a0 00b3e510 00cb8d30 00ce10b0
+T1	other	CTCInventoryBase	19	41		005bc499 005bc58f 005bc638 005bc649 005bc65b 005bc65c 005bc68e 005bc68f 005bc692 005bc693 005bcafe 005bce2f 005bd1eb 005bd273 005bd4ea 005bdd8c 005bddb8 005bff07 005c0121
 T1	other	CThingCreatureBase	19	35	engine/CThingCreatureBase.h	00661b40 00661cd0 00661d20 00661f70 00662410 006624f0 00662650 006627f0 00662a00 00662ef0 00662fa0 00663990 00663b10 00664490 00664d40 00665260 00665df0 00666d40 00666ef0
 T1	other	list	19	25		0042b687 00463871 004ba390 004c3460 00517720 00519420 0055c4c0 005791b5 00579a1c 00618da0 0062f610 00655ece 006604eb 0067cf40 006db9d0 0076ff90 0084ace0 009d7b00 00da0ed0
 T1	other	CThing	17	49	engine/CThing.h	004c7380 004c73d0 004c7950 004c7990 004c79d0 004c79e0 004c79f0 004c7a00 004c7a60 004c7ab0 004c7ac0 004c7e50 004c8050 004c9840 004c9b80 004c9ca0 004c9d60
@@ -354,7 +351,6 @@ T1	other	CMiniMapDisplay	5	7	engine/CMiniMapDisplay.h	00442610 0082a1d0 0082a300
 T1	other	CPlayerGui	5	8	engine/CPlayerGui.h	004374d0 00438010 00438310 00438440 00438570
 T1	other	CQuestManager	5	5	engine/CQuestManager.h	004af670 004b0160 004b1d30 004b3810 004b4260
 T1	other	CTCAIScratchpad	5	6	engine/CTCAIScratchpad.h	008ae5e0 008ae660 008ae810 008ae890 008aea40
-T1	other	CTCShotDefinitionBase	5	8		007beff0 007bf2b0 007bfe30 007c0690 007c1000
 T1	other	CTCTavernGame	5	4	engine/CTCTavernGame.h	005ea000 005ea650 005ea9b0 005eda50 0094d430
 T1	other	CThingPlayerCreature	5	5	engine/CThingPlayerCreature.h	0052ab20 006a9dd0 006aa230 006ac200 006ac690
 T1	other	CWorld	5	5	engine/CWorld.h	0048db13 0049d810 0049d880 004a0940 004a67d0
@@ -376,6 +372,7 @@ T1	other	CTCCarrying	4	7	engine/CTCCarrying.h	006a1440 006a15a0 006a1620 006a222
 T1	other	CTCHeroStats	4	5	engine/CTCHeroStats.h	0057a57a 0057a753 0057c2e6 005814e5
 T1	other	CTCInventory	4	3	engine/CTCInventory.h	005829cd 00584157 0058502d 00589c55
 T1	other	CTCInventoryStats	4	4	engine/CTCInventoryStats.h	005ccc91 005cd2fe 005cdbbe 005d66ba
+T1	other	CTCShotDefinitionBase	4	4		007beff0 007bfe30 007c0690 007c1000
 T1	other	CTCSpecialAbilities	4	4	engine/CTCSpecialAbilities.h	0072abd0 0072b3b0 0072b940 0072c6e0
 T1	other	CThingBuilding	4	8	engine/CThingBuilding.h	0082d000 0082d2d0 0082d920 0082e090
 T1	other	CThingManager	4	8	engine/CThingManager.h	0051e530 0051ed80 00521eb0 005239c0
@@ -454,7 +451,7 @@ T1	other	CKeyboard	2	1	engine/CKeyboard.h	00a66770 00a66880
 T1	other	CLandscapeBackgroundLoadTask	2	2		00bdc000 00bf8c10
 T1	other	CLightningBeam	2	2		007a0770 007a1380
 T1	other	CMap	2	3	engine/CMap.h	00820b80 00821850
-T1	other	CModeSitBase	2	8		008d71d0 008d7ca0
+T1	other	CModeSitBase	2	2		008d71d0 008d7ca0
 T1	other	CModeStandBase	2	11	engine/CModeStandBase.h	00861d00 008621a0
 T1	other	CObjectCacheGroupCollection	2	2		00bde190 00bdeb50
 T1	other	CObjectTypeCollection	2	2		00bdd860 00bde600
@@ -481,7 +478,6 @@ T1	other	CTCActionUseBase	2	3	engine/CTCActionUseBase.h	004da967 007eac10
 T1	other	CTCContainerRewardHero	2	2	engine/CTCContainerRewardHero.h	0074e6b0 0074ee90
 T1	other	CTCCreatureGroup	2	3	engine/CTCCreatureGroup.h	004e5c71 008128f0
 T1	other	CTCCreatureModeManager	2	8	engine/CTCCreatureModeManager.h	0073a6e0 0073a8a0
-T1	other	CTCDRumble	2	2		004dcdfd 007f1ac0
 T1	other	CTCEntityEvents	2	6	engine/CTCEntityEvents.h	00811340 00811380
 T1	other	CTCGatherPointBase	2	4	engine/CTCGatherPointBase.h	004e0ae8 007ffdb0
 T1	other	CTCHeroOpinionDeedLog	2	3	engine/CTCHeroOpinionDeedLog.h	006c5630 006c5e90
@@ -690,7 +686,6 @@ T1	other	CMemoryDataOutputStream	1	3	engine/CMemoryDataOutputStream.h	00996b30
 T1	other	CMemoryFile	1	2	engine/CMemoryFile.h	009e9390
 T1	other	CModeGuildmasterPowerUpSpeed	1	1		00742e60
 T1	other	CModeIntangible	1	1		008e72d0
-T1	other	CModeOutOfActionBase	1	2		008d7580
 T1	other	CModeStandLeft	1	1		0073e410
 T1	other	CMovableResourceMemoryPool	1	1	engine/CMovableResourceMemoryPool.h	00a62e20
 T1	other	CNavQuadTree	1	1	engine/CNavQuadTree.h	00a79240
@@ -718,7 +713,6 @@ T1	other	CPhysicalPrimitiveSphere	1	1		00814c70
 T1	other	CPhysicsMesh	1	1	engine/CPhysicsMesh.h	00a6c560
 T1	other	CPixelFormat	1	1	engine/CPixelFormat.h	009e3830
 T1	other	CPlayerGuiDef	1	1	engine/CPlayerGuiDef.h	00459e46
-T1	other	CPlayerInventoryDef	1	1		00459b73
 T1	other	CPreAllocVectorMap	1	1	engine/CPreAllocVectorMap.h	00a316b0
 T1	other	CPredicate_And	1	1	engine/CPredicate_And.h	00ef7b50
 T1	other	CProfileManager	1	1		009f9020
@@ -761,7 +755,6 @@ T1	other	CStatBase	1	4		00442280
 T1	other	CStringParser	1	1	engine/CStringParser.h	009ba790
 T1	other	CSummonerDef	1	1	engine/CSummonerDef.h	0045426c
 T1	other	CSymbolMap	1	1	engine/CSymbolMap.h	009e5c90
-T1	other	CTCAISummon	1	1		004e1856
 T1	other	CTCActionUseBed	1	1	engine/CTCActionUseBed.h	007ebdd0
 T1	other	CTCActionUseReadable	1	1	engine/CTCActionUseReadable.h	004dc03d
 T1	other	CTCActivationReceptorBase	1	1	engine/CTCActivationReceptorBase.h	007f7700
@@ -777,12 +770,11 @@ T1	other	CTCCameraPointFixedDolly	1	1		0075db90
 T1	other	CTCCarryable	1	1	engine/CTCCarryable.h	00705cc0
 T1	other	CTCContainer	1	1	engine/CTCContainer.h	008ed010
 T1	other	CTCCreatureGroupBoastingCrowd	1	1	engine/CTCCreatureGroupBoastingCrowd.h	007846b0
-T1	other	CTCCreatureItemLevitationBase	1	3		004de6ed
 T1	other	CTCDExplosiveTrail	1	1	engine/CTCDExplosiveTrail.h	004e4045
 T1	other	CTCDInternalMarker	1	1	engine/CTCDInternalMarker.h	00870bb0
+T1	other	CTCDRumble	1	1		007f1ac0
 T1	other	CTCDayOrNightOnlySupport	1	1		00702aa0
 T1	other	CTCDecapitation	1	1	engine/CTCDecapitation.h	004dcbce
-T1	other	CTCDiceGame	1	2		004d607c
 T1	other	CTCEmoteIcon	1	1	engine/CTCEmoteIcon.h	0071aab0
 T1	other	CTCExclusiveUse	1	1	engine/CTCExclusiveUse.h	004d7d7e
 T1	other	CTCExpression	1	1	engine/CTCExpression.h	004dc7c8
@@ -802,20 +794,15 @@ T1	other	CTCKraken	1	2	engine/CTCKraken.h	007fc210
 T1	other	CTCLightningNode	1	1	engine/CTCLightningNode.h	004e769f
 T1	other	CTCLightningOrb	1	1	engine/CTCLightningOrb.h	004dcedd
 T1	other	CTCNoiseDef	1	2	engine/CTCNoiseDef.h	004537e9
-T1	other	CTCObstacle	1	1		004d95eb
 T1	other	CTCOracleMinigame	1	1	engine/CTCOracleMinigame.h	007e5f70
 T1	other	CTCParamsPhysicsBase	1	2	engine/CTCParamsPhysicsBase.h	006a06e0
-T1	other	CTCParticleAttacher	1	1		004e0bf6
 T1	other	CTCPerceiveThing	1	2	engine/CTCPerceiveThing.h	00744730
 T1	other	CTCPhotojournalCapture	1	1	engine/CTCPhotojournalCapture.h	0055dc00
 T1	other	CTCPreCalculatedNavigationRoute	1	1	engine/CTCPreCalculatedNavigationRoute.h	004e2bc7
 T1	other	CTCRegionDisplay	1	1	engine/CTCRegionDisplay.h	00639ba0
 T1	other	CTCRegionFollower	1	1	engine/CTCRegionFollower.h	006aeba0
-T1	other	CTCResurrectionItem	1	1		004dccd2
 T1	other	CTCScriptedControl	1	3	engine/CTCScriptedControl.h	007122c0
 T1	other	CTCShop	1	1	engine/CTCShop.h	00773b20
-T1	other	CTCShotDefinitionDrainLife	1	1		007bd80a
-T1	other	CTCShotDefinitionFireballSpell	1	1		007bd7ca
 T1	other	CTCShotDefinitionProjectile	1	6	engine/CTCShotDefinitionProjectile.h	004dc9d2
 T1	other	CTCSimpleAppearanceMorph	1	1		00727580
 T1	other	CTCSkeletalMorph	1	1	engine/CTCSkeletalMorph.h	00786670
@@ -3561,27 +3548,14 @@ T3	standin	CTCBulletTime_Methods	1	1		0079c680
 T3	standin	CTCCountedComponent_007b5130	1	1		007b5130
 T3	standin	CTCGraphicAppearanceSprite_00c15b90	1	1		01211bf4
 T3	standin	CTCGraphicAppearanceSprite_00c15c00	1	1		01211c06
-T3	standin	CTCHeroStats_Methods	1	1		005814ac
 T3	standin	CTCHeroStats_Retail	1	1		0057a939
 T3	standin	CTCHero_00c12270	1	1		012116b3
 T3	standin	CTCHighlightItem_Methods	1	1		0077cde0
-T3	standin	CTCInGameMenu_Methods	1	1		00486172
-T3	standin	CTCInventoryAbilities_Methods	1	1		005fa385
-T3	standin	CTCInventoryExperience_Methods	1	1		0057a23c
 T3	standin	CTCInventoryItem_Methods	1	1		005d9380
 T3	standin	CTCInventoryMagic_00c15c70	1	1		01211c18
 T3	standin	CTCInventoryMagic_00c1c6a0	1	1		01212499
-T3	standin	CTCInventoryStats_Methods	1	1		005d877d
-T3	standin	CTCInventoryTrade_Methods	1	1		005b304e
-T3	standin	CTCInventoryWeapons_Methods	1	1		005cc4e1
-T3	standin	CTCInventory_Methods	1	1		00594bcd
-T3	standin	CTCMeleeTrap_Methods	1	1		00789341
 T3	standin	CTCNamedTargetBase_007b2720	1	1		007b2720
-T3	standin	CTCProjectileTrap_Methods	1	1		00789397
-T3	standin	CTCShotDefinitionMultiArrow_Methods	1	1		007be5e0
-T3	standin	CTCShotDefinitionQueenHornetShot_Methods	1	1		007be9d5
 T3	standin	CTCTargetedCountedComponent_006ca760	1	1		006ca760
-T3	standin	CTCVillage_Methods	1	1		0066122e
 T3	standin	CTCWife_Retail	1	1		006ceef0
 T3	standin	CTargetAndThing_0078e700	1	1		0078e700
 T3	standin	CTargetAndThing_00792430	1	1		00792430
@@ -8407,7 +8381,6 @@ T3	emit ?GetChunkDescription@C3DMeshFileHelpersChunk@@UBE?BVCCharString@@XZ	C3DA
 T3	emit ?GetChunkDescription@C3DAnimFileHelpersChunk@@UBE?BVCCharString@@XZ	C3DAnimFileHelpersChunk	1	1	engine/C3DAnimFileHelpersChunk.h	00aaea90
 T3	emit ?GetChunkDescription@C3DAnimFileObjectChunk@@UBE?BVCCharString@@XZ	C3DAnimFileObjectChunk_Methods	1	1		00ab0870
 T3	emit ??_GC3DAnimFileRootChunk@@UAEPAXI@Z	C3DAnimFileRootChunk	1	1	engine/C3DAnimFileRootChunk.h	00a9a2e0
-T3	emit ?GetChunkDescription@C3DAnimFileRootChunk@@UBE?BVCCharString@@XZ	C3DAnimFileRootChunk_Methods	1	1		00a99e30
 T3	emit ?GetChunkInfo@C3DAnimFileSequenceChunk@@UBE?BVCCharString@@XZ	C3DAnimFileSequenceChunk	1	1	engine/C3DAnimFileSequenceChunk.h	00aaf5b0
 T3	emit ??_EC3DAnimFileSequenceChunk@@UAEPAXI@Z	C3DAnimFileSequenceChunk	1	1	engine/C3DAnimFileSequenceChunk.h	00aafff0
 T3	emit ?GetChunkDescription@C3DAnimFileSequenceChunk@@UBE?BVCCharString@@XZ	C3DAnimFileSequenceChunk_Methods	1	1		00aaff90
@@ -8455,7 +8428,6 @@ T3	emit ?CreateNewInstance@C3DMeshFilePrimitiveChunk@@UBEPAVCChunkedFileChunk@@X
 T3	emit ?GetChunkDescription@C3DMeshFilePrimitiveChunk@@UBE?BVCCharString@@XZ	C3DMeshFilePrimitiveChunk	1	1	engine/C3DMeshFilePrimitiveChunk.h	00abee90
 T3	emit ??_EC3DMeshFilePrimitiveChunk@@UAEPAXI@Z	C3DMeshFilePrimitiveChunk	1	1	engine/C3DMeshFilePrimitiveChunk.h	00abeeb0
 T3	emit ??_EC3DMeshFileRootChunk@@UAEPAXI@Z	C3DMeshFileRootChunk	1	1	engine/C3DMeshFileRootChunk.h	00a9ce20
-T3	emit ?GetChunkDescription@C3DMeshFileRootChunk@@UBE?BVCCharString@@XZ	C3DMeshFileRootChunk_Methods	1	1		00a9c9c0
 T3	emit ?GetChunkInfo@C3DMeshFileSmoothingGroupsChunk@@UBE?BVCCharString@@XZ	C3DMeshFileSmoothingGroupsChunk	1	1	engine/C3DMeshFileSmoothingGroupsChunk.h	00ab9f80
 T3	emit ?CreateNewInstance@C3DMeshFileSubMeshChunk@@UBEPAVCChunkedFileChunk@@XZ	C3DMeshFileSubMeshChunkFactory	1	1		00ab9b50
 T3	emit ?GetChunkDescription@C3DMeshFileTransformationChunk@@UBE?BVCCharString@@XZ	C3DMeshFileTransformationChunk	1	1	engine/C3DMeshFileTransformationChunk.h	00abd3e0

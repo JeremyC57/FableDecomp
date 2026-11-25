@@ -13,19 +13,19 @@
 //   the landed copies; the linker keeps one).
 // Respell (NF417): was the stand-in self ?GetClassTypeName@CTCWeapon_Methods@@QAE?AVCCharString@@XZ (a non-virtual member of a made-up
 //   `_Methods` class).
-// Header: engine/CTCWeapon.h does not compile to the polymorphic class in any prelude P0..P3 nor with its class opt-ins
-//   FABLE_RETAIL_CTCWEAPON_ONCREATE,FABLE_RETAIL_CTCWEAPON_DAMAGE,FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE (header debt: its default branch
-//   is not the polymorphic retail class); a local class over its RTTI direct base engine/CTCBase.h (rtti_bases.tsv: .?AVCTCWeapon@@ :
-//   CTCBase).
+// Header: engine/CTCWeapon.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form); its polymorphic branch compiles with the
+//   prelude FABLE_RETAIL_CTCWEAPON (the smallest prelude, from the header's landed includers, minimised line by line, under which the
+//   polymorphic check TU compiles: static_cast to CTCBase, &CTCBase::GetClassTypeName, sizeof(class) == sizeof(layout); NF421
+//   tools/psearch.py). Port (NF421, T3 `nf417 headers debt`): was a local class over CTCBase; no header edit was needed.
 #define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
-#define FABLE_RETAIL_CTCWEAPON_ONCREATE
-#define FABLE_RETAIL_CTCWEAPON_DAMAGE
-#define FABLE_RETAIL_CTCWEAPON_GETWEAPONTYPE
 #define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
-#include "engine/CTCBase.h"
+#define FABLE_RETAIL_CTCWEAPON
+#define CTCWeapon CTCWeaponLayout
+#include "engine/CTCWeapon.h"
+#undef CTCWeapon
 
-class CTCWeapon : public CTCBase
+class CTCWeapon : public CTCWeaponLayout
 {
 public:
     static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCWeapon", -1); }

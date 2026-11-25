@@ -1,0 +1,13 @@
+00486172	?GetTypeAsString@CTCInGameMenu_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInGameMenu@@UBE?AVCCharString@@XZ
+0057a23c	?GetTypeAsString@CTCInventoryExperience_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInventoryExperience@@UBE?AVCCharString@@XZ
+005814ac	?GetTypeAsString@CTCHeroStats_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCHeroStats@@UBE?AVCCharString@@XZ
+00594bcd	?GetTypeAsString@CTCInventory_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInventory@@UBE?AVCCharString@@XZ
+005b304e	?GetTypeAsString@CTCInventoryTrade_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInventoryTrade@@UBE?AVCCharString@@XZ
+005cc4e1	?GetTypeAsString@CTCInventoryWeapons_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInventoryWeapons@@UBE?AVCCharString@@XZ
+005d877d	?GetTypeAsString@CTCInventoryStats_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInventoryStats@@UBE?AVCCharString@@XZ
+005fa385	?GetTypeAsString@CTCInventoryAbilities_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCInventoryAbilities@@UBE?AVCCharString@@XZ
+0066122e	?GetTypeAsString@CTCVillage_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCVillage@@UBE?AVCCharString@@XZ
+00789341	?GetTypeAsString@CTCMeleeTrap_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCMeleeTrap@@UBE?AVCCharString@@XZ
+00789397	?GetTypeAsString@CTCProjectileTrap_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCProjectileTrap@@UBE?AVCCharString@@XZ
+007be5e0	?GetTypeAsString@CTCShotDefinitionMultiArrow_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCShotDefinitionMultiArrow@NThingShot@@UBE?AVCCharString@@XZ
+007be9d5	?GetTypeAsString@CTCShotDefinitionQueenHornetShot_Methods@@QAE?AVCCharString@@XZ	?GetClassTypeName@CTCShotDefinitionQueenHornetShot@NThingShot@@UBE?AVCCharString@@XZ

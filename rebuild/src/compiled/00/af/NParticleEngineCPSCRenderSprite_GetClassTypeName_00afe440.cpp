@@ -11,15 +11,21 @@
 //   so the body returns the literal directly (the landed 0x00B1AE00 CPSCLight form).
 // Respell (NF417): was the stand-in self ?GetClassTypeName@CPSCRenderSprite_Methods@@QAE?AVCCharString@@XZ (a non-virtual member of a
 //   made-up `_Methods` class).
-// Header: engine/CPSCRenderSprite.h does not compile to the polymorphic class in any prelude P0..P3 (no opt-in guards a polymorphic
-//   definition of the class in it) (header debt: its default branch is not the polymorphic retail class); a local class over its RTTI
-//   direct base engine/CPSCBase.h (rtti_bases.tsv: .?AVCPSCRenderSprite@NParticleEngine@@ : NParticleEngine::CPSCBase).
+// Header: engine/CPSCRenderSprite.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form); its polymorphic branch compiles
+//   with the prelude FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE (the smallest prelude, from the header's
+//   landed includers, minimised line by line, under which the polymorphic check TU compiles: static_cast to NParticleEngine::CPSCBase,
+//   &NParticleEngine::CPSCBase::GetClassTypeName, sizeof(class) == sizeof(layout); NF421 tools/psearch.py). Port (NF421, T3 `nf417
+//   headers debt`): was a local class over CPSCBase; no header edit was needed.
 #define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
-#include "engine/CPSCBase.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define CPSCRenderSprite CPSCRenderSpriteLayout
+#include "engine/CPSCRenderSprite.h"
+#undef CPSCRenderSprite
 
 namespace NParticleEngine {
-class CPSCRenderSprite : public CPSCBase
+class CPSCRenderSprite : public CPSCRenderSpriteLayout
 {
 public:
     virtual CCharString GetClassTypeName() const;

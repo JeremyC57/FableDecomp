@@ -1,0 +1,14 @@
+address	head_grade	head_test	new_grade	new_test	mut_test	warn_head	warn_new	lit_proof	leaf_cmp	sections	static_copy	r10	purity	widened	leaf_def	poly_chk
+00486172	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+0057a23c	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+005814ac	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)	ok	ok	ok(+0)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+00594bcd	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)	ok	ok	ok(+0)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+005b304e	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInventoryTrade (engine/CTCInventoryTrade.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+005cc4e1	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+005d877d	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+005fa385	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+0066122e	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+00789341	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	SHARED_HEADER_AVAILABLE CTCMeleeTrap (engine/CTCMeleeTrap.h)	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+00789397	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+007be5e0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok
+007be9d5	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	-	-	ok	ok	ok(+0,libcp)	none emitted (ok)	n/a (no static copy)	[]	[]	ok	ok

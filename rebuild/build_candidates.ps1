@@ -147707,92 +147707,92 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00486172'
         Module = 'CTCInGameMenu'
-        Source = '00/48/CTCInGameMenu_GetTypeAsString_00486172.cpp'
-        TestSource = '00/48/CTCInGameMenu_GetTypeAsString_00486172_test.cpp'
+        Source = '00/48/CTCInGameMenu_GetClassTypeName_00486172.cpp'
+        TestSource = '00/48/CTCInGameMenu_GetClassTypeName_00486172_test.cpp'
         PassPattern = '00486172_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0057a23c'
         Module = 'CTCInventoryExperience'
-        Source = '00/57/CTCInventoryExperience_GetTypeAsString_0057a23c.cpp'
-        TestSource = '00/57/CTCInventoryExperience_GetTypeAsString_0057a23c_test.cpp'
+        Source = '00/57/CTCInventoryExperience_GetClassTypeName_0057a23c.cpp'
+        TestSource = '00/57/CTCInventoryExperience_GetClassTypeName_0057a23c_test.cpp'
         PassPattern = '0057a23c_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005814ac'
         Module = 'CTCHeroStats'
-        Source = '00/58/CTCHeroStats_GetTypeAsString_005814ac.cpp'
-        TestSource = '00/58/CTCHeroStats_GetTypeAsString_005814ac_test.cpp'
+        Source = '00/58/CTCHeroStats_GetClassTypeName_005814ac.cpp'
+        TestSource = '00/58/CTCHeroStats_GetClassTypeName_005814ac_test.cpp'
         PassPattern = '005814ac_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00594bcd'
         Module = 'CTCInventory'
-        Source = '00/59/CTCInventory_GetTypeAsString_00594bcd.cpp'
-        TestSource = '00/59/CTCInventory_GetTypeAsString_00594bcd_test.cpp'
+        Source = '00/59/CTCInventory_GetClassTypeName_00594bcd.cpp'
+        TestSource = '00/59/CTCInventory_GetClassTypeName_00594bcd_test.cpp'
         PassPattern = '00594bcd_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005b304e'
         Module = 'CTCInventoryTrade'
-        Source = '00/5b/CTCInventoryTrade_GetTypeAsString_005b304e.cpp'
-        TestSource = '00/5b/CTCInventoryTrade_GetTypeAsString_005b304e_test.cpp'
+        Source = '00/5b/CTCInventoryTrade_GetClassTypeName_005b304e.cpp'
+        TestSource = '00/5b/CTCInventoryTrade_GetClassTypeName_005b304e_test.cpp'
         PassPattern = '005b304e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005cc4e1'
         Module = 'CTCInventoryWeapons'
-        Source = '00/5c/CTCInventoryWeapons_GetTypeAsString_005cc4e1.cpp'
-        TestSource = '00/5c/CTCInventoryWeapons_GetTypeAsString_005cc4e1_test.cpp'
+        Source = '00/5c/CTCInventoryWeapons_GetClassTypeName_005cc4e1.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_GetClassTypeName_005cc4e1_test.cpp'
         PassPattern = '005cc4e1_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005d877d'
         Module = 'CTCInventoryStats'
-        Source = '00/5d/CTCInventoryStats_GetTypeAsString_005d877d.cpp'
-        TestSource = '00/5d/CTCInventoryStats_GetTypeAsString_005d877d_test.cpp'
+        Source = '00/5d/CTCInventoryStats_GetClassTypeName_005d877d.cpp'
+        TestSource = '00/5d/CTCInventoryStats_GetClassTypeName_005d877d_test.cpp'
         PassPattern = '005d877d_TEST PASS'
     }
     [pscustomobject]@{
         Address = '005fa385'
         Module = 'CTCInventoryAbilities'
-        Source = '00/5f/CTCInventoryAbilities_GetTypeAsString_005fa385.cpp'
-        TestSource = '00/5f/CTCInventoryAbilities_GetTypeAsString_005fa385_test.cpp'
+        Source = '00/5f/CTCInventoryAbilities_GetClassTypeName_005fa385.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_GetClassTypeName_005fa385_test.cpp'
         PassPattern = '005fa385_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0066122e'
         Module = 'CTCVillage'
-        Source = '00/66/CTCVillage_GetTypeAsString_0066122e.cpp'
-        TestSource = '00/66/CTCVillage_GetTypeAsString_0066122e_test.cpp'
+        Source = '00/66/CTCVillage_GetClassTypeName_0066122e.cpp'
+        TestSource = '00/66/CTCVillage_GetClassTypeName_0066122e_test.cpp'
         PassPattern = '0066122e_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00789341'
         Module = 'CTCMeleeTrap'
-        Source = '00/78/CTCMeleeTrap_GetTypeAsString_00789341.cpp'
-        TestSource = '00/78/CTCMeleeTrap_GetTypeAsString_00789341_test.cpp'
+        Source = '00/78/CTCMeleeTrap_GetClassTypeName_00789341.cpp'
+        TestSource = '00/78/CTCMeleeTrap_GetClassTypeName_00789341_test.cpp'
         PassPattern = '00789341_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00789397'
         Module = 'CTCProjectileTrap'
-        Source = '00/78/CTCProjectileTrap_GetTypeAsString_00789397.cpp'
-        TestSource = '00/78/CTCProjectileTrap_GetTypeAsString_00789397_test.cpp'
+        Source = '00/78/CTCProjectileTrap_GetClassTypeName_00789397.cpp'
+        TestSource = '00/78/CTCProjectileTrap_GetClassTypeName_00789397_test.cpp'
         PassPattern = '00789397_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007be5e0'
-        Module = 'CTCShotDefinitionMultiArrow'
-        Source = '00/7b/CTCShotDefinitionMultiArrow_GetTypeAsString_007be5e0.cpp'
-        TestSource = '00/7b/CTCShotDefinitionMultiArrow_GetTypeAsString_007be5e0_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionMultiArrow'
+        Source = '00/7b/NThingShotCTCShotDefinitionMultiArrow_GetClassTypeName_007be5e0.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionMultiArrow_GetClassTypeName_007be5e0_test.cpp'
         PassPattern = '007be5e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007be9d5'
-        Module = 'CTCShotDefinitionQueenHornetShot'
-        Source = '00/7b/CTCShotDefinitionQueenHornetShot_GetTypeAsString_007be9d5.cpp'
-        TestSource = '00/7b/CTCShotDefinitionQueenHornetShot_GetTypeAsString_007be9d5_test.cpp'
+        Module = 'NThingShot::CTCShotDefinitionQueenHornetShot'
+        Source = '00/7b/NThingShotCTCShotDefinitionQueenHornetShot_GetClassTypeName_007be9d5.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionQueenHornetShot_GetClassTypeName_007be9d5_test.cpp'
         PassPattern = '007be9d5_TEST PASS'
     }
     [pscustomobject]@{

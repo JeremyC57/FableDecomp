@@ -1717,7 +1717,7 @@ address	symbol	status	leaf_given
 00485f3a	?_M_fill_insert@?$vector@E@std@@QAEXPAEIABE@Z	RELOCATION_MATCH	?_M_fill_insert@?$vector@E
 00486055	?map@map_T_00486055@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_00486055@std@@
 0048608c	?_M_fill_insert@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@QAEXPAVCDateAndTime@@IABV3@@Z	RELOCATION_MATCH	_M_fill_insert
-00486172	?GetTypeAsString@CTCInGameMenu_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+00486172	?GetClassTypeName@CTCInGameMenu@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInGameMenu@@UBE?AVCCharString@@XZ
 00486189	?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXIABE@Z	RELOCATION_MATCH	?resize@?$vector@
 004861c3	?CTCInGameMenu_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00486360	?CAInputProcess_Init@@YIXXZ	MATCH	Init
@@ -4687,7 +4687,7 @@ address	symbol	status	leaf_given
 0057a106	?map@map_T_0057a106@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_0057a106@std@@
 0057a230	?OnItemDeselected@CTCInventoryBase@@QAEXHH@Z	MATCH	OnItemDeselected
 0057a233	?ConstructScreen@CTCInventoryBase@@QAEHH@Z	MATCH	ConstructScreen
-0057a23c	?GetTypeAsString@CTCInventoryExperience_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+0057a23c	?GetClassTypeName@CTCInventoryExperience@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventoryExperience@@UBE?AVCCharString@@XZ
 0057a253	_Clear@8	MATCH	OnItemSelected
 0057a28b	?ScalarDeletingDestructor@CTCInventoryExperience@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0057a3a2	?CHeroMarriageInfo@@YIPAUMI@@PAU1@HPBU1@@Z	MATCH	??0CHeroMarriageInfo@
@@ -4827,7 +4827,7 @@ address	symbol	status	leaf_given
 00581376	?Construct_CRangeString_00581376@CRangeString_00581376@@QAEPAU1@USIterator@@0PAX@Z	RELOCATION_MATCH	vector<CHeroMarriageInfo> > >
 005813a0	?GetLookDirection@CTCCameraPointScripted@@QAEPAV1@PAVC3DVector@@PAVCRightHandedSet@@@Z	RELOCATION_MATCH	list<CHeroMarriageInfo> > >
 00581404	??$GFSerialiseVectorBinaryIn@VCHeroMarriageInfo@@@@YIXAAUCMemoryDataInputStreamReader@@AAV?$vector@VCHeroMarriageInfo@@@std@@@Z	RELOCATION_MATCH	GFSerialiseVectorBinaryIn
-005814ac	?GetTypeAsString@CTCHeroStats_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+005814ac	?GetClassTypeName@CTCHeroStats@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCHeroStats@@UBE?AVCCharString@@XZ
 005814c9	?CTCHeroStats_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00581765	?IsInvalidCustomTattoo@CTattooDef@@QBE_NXZ	RELOCATION_MATCH	IsInvalidCustomTattoo
 00581928	?Get@T@@QAEHXZ	MATCH	sub_00581928
@@ -4975,7 +4975,7 @@ address	symbol	status	leaf_given
 00594a08	??A?$map@VCDateAndTime@@VCWideString@@U?$less@VCDateAndTime@@@std@@@std@@QAEAAVCWideString@@ABVCDateAndTime@@@Z	RELOCATION_MATCH	??A?$map@VCDateAndTime
 00594a73	?_M_fill_insert@?$vector@VCFadeInFadeOutBase@@@std@@QAEXPAVCFadeInFadeOutBase@@IABV3@@Z	RELOCATION_MATCH	_M_fill_insert
 00594b8d	??$sort_heap@PAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@VCContextSensitivePriorityCompare@@@std@@YIXPAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@0@0VCContextSensitivePriorityCompare@@@Z	RELOCATION_MATCH	??$sort_heap@PAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@
-00594bcd	?GetTypeAsString@CTCInventory_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+00594bcd	?GetClassTypeName@CTCInventory@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventory@@UBE?AVCCharString@@XZ
 00594be8	?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
 00594c10	?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
 00594c33	?make_heap_004711f5@@YIXPAUCThingHeapElem@@0PAX@Z	RELOCATION_MATCH	make_heap<CThing**,CThingCompare_BestForTargeting2>
@@ -5098,7 +5098,7 @@ address	symbol	status	leaf_given
 005b2847	??1list_T_005b2847@std@@QAE@XZ	RELOCATION_MATCH	??1list_T_005b2847@std@@
 005b2df4	?GetInterface_0x5e@CThingComponents_005b2df4@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x5e
 005b2e6c	?map@map_T_005b2e6c@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_005b2e6c@std@@
-005b304e	?GetTypeAsString@CTCInventoryTrade_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+005b304e	?GetClassTypeName@CTCInventoryTrade@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventoryTrade@@UBE?AVCCharString@@XZ
 005b3065	_Clear@8	MATCH	OnItemSelected
 005b31ac	?OnReadFinished@@YIXPAUAutoTinyActiveFile@@@Z	RELOCATION_MATCH	OnReadFinished
 005b31ec	?_M_clear@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@QAEXXZ	RELOCATION_MATCH	?_M_clear@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@
@@ -5348,7 +5348,7 @@ address	symbol	status	leaf_given
 005cc3fb	?GetInterface_0x88@CThingComponents_005cc3fb@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x88
 005cc447	?GetInterface_0x31@CThingComponents_005cc447@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x31
 005cc492	?GetInterface_0x16@CThingComponents_005cc492@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x16
-005cc4e1	?GetTypeAsString@CTCInventoryWeapons_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+005cc4e1	?GetClassTypeName@CTCInventoryWeapons@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventoryWeapons@@UBE?AVCCharString@@XZ
 005cc512	?CTCInventoryWeapons_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 005cc530	?RoundToDecimalPlaces@@YIMJM@Z	RELOCATION_MATCH	RoundToDecimalPlaces
 005cc5e8	?Get@T@@QAEHXZ	MATCH	sub_005cc5e8
@@ -5388,7 +5388,7 @@ address	symbol	status	leaf_given
 005d86b2	?push_back@?$list@U?$pair@VCWideString@@J@std@@V?$allocator@U?$pair@VCWideString@@J@std@@@2@@std@@QAEXABU?$pair@VCWideString@@J@2@@Z	RELOCATION_MATCH	?push_back@?$list@U?$pair@VCWideString@@J@std@@
 005d86e5	?GetInterface_0x42@CThingComponents_005d86e5@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x42
 005d8730	?erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAEIABK@Z	RELOCATION_MATCH	?erase@?$_Rb_tree@
-005d877d	?GetTypeAsString@CTCInventoryStats_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+005d877d	?GetClassTypeName@CTCInventoryStats@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventoryStats@@UBE?AVCCharString@@XZ
 005d8797	_Clear@8	MATCH	OnItemSelected
 005d88fa	?CTCInventoryStats_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 005d8c6a	?Transfer_long_@CPersistContext@@QAEXPADPAJ@Z	RELOCATION_MATCH	Transfer<long>
@@ -5707,7 +5707,7 @@ address	symbol	status	leaf_given
 005fa1ba	??4?$vector@U?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@@std@@QAEAAV01@ABV01@@Z	RELOCATION_MATCH	??4?$vector@
 005fa26b	??$__introsort_loop@PAU?$pair@JW4EHeroAbility@@@std@@U12@HV?$CKeyPairCompareLess@JW4EHeroAbility@@@@@std@@YIXPAU?$pair@JW4EHeroAbility@@@0@00HV?$CKeyPairCompareLess@JW4EHeroAbility@@@@@Z	RELOCATION_MATCH	??$__introsort_loop@
 005fa2f6	??$__introsort_loop@PAU?$pair@JJ@std@@U12@HV?$CKeyPairCompareLess@JJ@@@std@@YIXPAU?$pair@JJ@0@00HV?$CKeyPairCompareLess@JJ@@@Z	RELOCATION_MATCH	??$__introsort_loop@
-005fa385	?GetTypeAsString@CTCInventoryAbilities_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+005fa385	?GetClassTypeName@CTCInventoryAbilities@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCInventoryAbilities@@UBE?AVCCharString@@XZ
 005fa39c	?OnItemSelected@CTCInventoryAbilities@@QAEXHH@Z	MATCH	OnItemSelected
 005fa3a5	?push_back@?$vector@V?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@QAEXABV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@Z	RELOCATION_MATCH	?push_back@
 005fa461	?CTCInventoryAbilities_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -6515,7 +6515,7 @@ address	symbol	status	leaf_given
 006610a3	?InvokeOnSelf_00660457@@YGXPAUCSelfTarget_00660457@@@Z	RELOCATION_MATCH	operator_new
 006610b5	?InvokeOnSelf_00660494@@YGXPAUCSelfTarget_00660494@@@Z	RELOCATION_MATCH	operator_new
 006611f7	??$__copy@U?$_Rb_tree_iterator@J@std@@V?$back_insert_iterator@V?$vector@JV?$allocator@J@std@@@std@@@2@H@std@@YI?AV?$back_insert_iterator@V?$vector@JV?$allocator@J@std@@@std@@@0@U?$_Rb_tree_iterator@J@0@0V10@ABUinput_iterator_tag@0@PAH@Z	RELOCATION_MATCH	??$__copy@
-0066122e	?GetTypeAsString@CTCVillage_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+0066122e	?GetClassTypeName@CTCVillage@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCVillage@@UBE?AVCCharString@@XZ
 0066124b	?ConstructString@@YIPAVCWideString@@PAV1@PAXJJJ@Z	RELOCATION_MATCH	ConstructString
 0066126b	?CTCVillage_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00661287	?copy@std@@YI?AU?$back_insert_iterator@U?$vector@K@std@@@1@U?$_Rb_tree_iterator@K@1@0U21@@Z	RELOCATION_MATCH	copy
@@ -9700,8 +9700,8 @@ address	symbol	status	leaf_given
 007891f8	??1CTCTrapBase@@UAE@XZ	RELOCATION_MATCH	??1CTCTrapBase
 00789238	??0CHitParameters@@QAE@PAUCHitLocation@@PAVCThing@@1ABVC3DVector@@2_N333@Z	RELOCATION_MATCH	??0CHitParameters
 007892ea	??RCThingFilter_IsAffectedByTraps@@QBE_NPAVCThing@@@Z	RELOCATION_MATCH	??RCThingFilter_IsAffectedByTraps
-00789341	?GetTypeAsString@CTCMeleeTrap_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
-00789397	?GetTypeAsString@CTCProjectileTrap_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+00789341	?GetClassTypeName@CTCMeleeTrap@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCMeleeTrap@@UBE?AVCCharString@@XZ
+00789397	?GetClassTypeName@CTCProjectileTrap@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCProjectileTrap@@UBE?AVCCharString@@XZ
 007894b7	?CTCTrapBase_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007894d3	?CTCMeleeTrap_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007894ef	?CTCProjectileTrap_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -10068,9 +10068,9 @@ address	symbol	status	leaf_given
 007bdac7	?UpdateCollision@CTCShotDefinitionDrainLife@@QAEXPA_N@Z	RELOCATION_MATCH	UpdateCollision
 007bdcfc	?GetShotDamage@CTCShotDefinitionMultiArrow@@QBEMXZ	RELOCATION_MATCH	GetShotDamage
 007be0f9	?OnCollision@CTCShotDefinitionForcePushBall@NThingShot@@MAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	RELOCATION_MATCH	OnCollision
-007be5e0	?GetTypeAsString@CTCShotDefinitionMultiArrow_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+007be5e0	?GetClassTypeName@CTCShotDefinitionMultiArrow@NThingShot@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCShotDefinitionMultiArrow@NThingShot@@UBE?AVCCharString@@XZ
 007be696	?ScalarDeletingDestructor@CTCShotDefinitionMultiArrow@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-007be9d5	?GetTypeAsString@CTCShotDefinitionQueenHornetShot_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetTypeAsString
+007be9d5	?GetClassTypeName@CTCShotDefinitionQueenHornetShot@NThingShot@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCShotDefinitionQueenHornetShot@NThingShot@@UBE?AVCCharString@@XZ
 007be9ec	?CTCShotDefinitionQueenHornetShot_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007bea08	?GetInterface_0x7d@CThingComponents_007bea08@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x7d
 007bea53	?GetInterface_0x88@CThingComponents_007bea53@@QAE_NPAPAVCTCBase@@@Z	RELOCATION_MATCH	GetInterface_0x88

@@ -1,0 +1,14 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	preceded_by	form
+00486172	0x01236874	narrow	"CTCInGameMenu"	t1	.rdata	43 54 43 49 6e 47 61 6d 65 4d 65 6e 75 00	NUL	HEAD spelled the same literal ("CTCInGameMenu", -1); kept
+0057a23c	0x0123A4B0	narrow	"CTCInventoryExperience"	t1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 45 78 70 65 72 69 65 6e 63 65 00	NUL	HEAD spelled the same literal ("CTCInventoryExperience", -1); kept
+005814ac	0x0123A474	narrow	"CTCHeroStats"	t1	.rdata	43 54 43 48 65 72 6f 53 74 61 74 73 00	NUL	HEAD spelled the same literal ("CTCHeroStats", -1); kept
+00594bcd	0x0123A400	narrow	"CTCInventory"	t1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 00	NUL	HEAD spelled the same literal ("CTCInventory", -1); kept
+005b304e	0x0123A4C8	narrow	"CTCInventoryTrade"	t1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 54 72 61 64 65 00	NUL	HEAD spelled the same literal ("CTCInventoryTrade", -1); kept
+005cc4e1	0x0123A428	narrow	"CTCInventoryWeapons"	t1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 57 65 61 70 6f 6e 73 00	NUL	HEAD spelled the same literal ("CTCInventoryWeapons", -1); kept
+005d877d	0x0123A484	narrow	"CTCInventoryStats"	t1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 53 74 61 74 73 00	NUL	HEAD spelled the same literal ("CTCInventoryStats", -1); kept
+005fa385	0x0123A498	narrow	"CTCInventoryAbilities"	t1	.rdata	43 54 43 49 6e 76 65 6e 74 6f 72 79 41 62 69 6c 69 74 69 65 73 00	NUL	HEAD spelled the same literal ("CTCInventoryAbilities", -1); kept
+0066122e	0x0123A5CC	narrow	"CTCVillage"	t1	.rdata	43 54 43 56 69 6c 6c 61 67 65 00	NUL	HEAD spelled the same literal ("CTCVillage", -1); kept
+00789341	0x0123C188	narrow	"CTCMeleeTrap"	t1	.rdata	43 54 43 4d 65 6c 65 65 54 72 61 70 00	NUL	HEAD spelled the same literal ("CTCMeleeTrap", -1); kept
+00789397	0x0123C174	narrow	"CTCProjectileTrap"	t1	.rdata	43 54 43 50 72 6f 6a 65 63 74 69 6c 65 54 72 61 70 00	NUL	HEAD spelled the same literal ("CTCProjectileTrap", -1); kept
+007be5e0	0x0123CD24	narrow	"CTCShotDefinitionMultiArrow"	t1	.rdata	43 54 43 53 68 6f 74 44 65 66 69 6e 69 74 69 6f 6e 4d 75 6c 74 69 41 72 72 6f 77 00	NUL	HEAD spelled the same literal ("CTCShotDefinitionMultiArrow", -1); kept
+007be9d5	0x0123CD84	narrow	"CTCShotDefinitionQueenHornetShot"	t1	.rdata	43 54 43 53 68 6f 74 44 65 66 69 6e 69 74 69 6f 6e 51 75 65 65 6e 48 6f 72 6e 65 74 53 68 6f 74 00	NUL	HEAD spelled the same literal ("CTCShotDefinitionQueenHornetShot", -1); kept

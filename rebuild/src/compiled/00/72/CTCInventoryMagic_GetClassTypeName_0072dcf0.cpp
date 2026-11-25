@@ -14,16 +14,24 @@
 //   landed copies; the linker keeps one).
 // Respell (NF417): was the stand-in self ?GetClassTypeName@CTCInventoryMagic_Methods@@QAE?AVCCharString@@XZ (a non-virtual member of a
 //   made-up `_Methods` class).
-// Header: engine/CTCInventoryMagic.h does not compile to the polymorphic class in any prelude P0..P3 nor with its class opt-ins
-//   FABLE_RETAIL_CTCINVENTORYMAGIC_PASS22 (header debt: its default branch is not the polymorphic retail class); a local class over its
-//   RTTI direct base engine/NInventory_CTCInventoryBase.h (rtti_bases.tsv: .?AVCTCInventoryMagic@@ : NInventory::CTCInventoryBase).
+// Header: engine/CTCInventoryMagic.h under the layout-rename pattern (the 0x004D4A86 CTCBerserk form); its polymorphic branch compiles
+//   with the prelude FABLE_RETAIL_CTCINVENTORYBASE, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE,
+//   FABLE_RETAIL_CTCINVENTORYMAGIC_PASS22 (the smallest prelude, from the header's landed includers, minimised line by line, under
+//   which the polymorphic check TU compiles: static_cast to CTCBase, &CTCBase::GetClassTypeName, sizeof(class) == sizeof(layout); NF421
+//   tools/psearch.py). Port (NF421, T3 `nf417 headers debt`): was a local class over NInventory::CTCInventoryBase; no header edit was
+//   needed.
 #define FABLE_RETAIL_CCHARSTRING                     // fable_string.h: CCharString(const char*, long length = -1) 0x0099EBF0
 #include "fable_string.h"
-#define FABLE_RETAIL_CTCINVENTORYMAGIC_PASS22
 #define FABLE_RETAIL_CTCBASE                         // the polymorphic CTCBase (slot 22 = the pure GetClassTypeName this overrides)
-#include "engine/NInventory_CTCInventoryBase.h"
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCINVENTORYMAGIC_PASS22
+#define CTCInventoryMagic CTCInventoryMagicLayout
+#include "engine/CTCInventoryMagic.h"
+#undef CTCInventoryMagic
 
-class CTCInventoryMagic : public NInventory::CTCInventoryBase
+class CTCInventoryMagic : public CTCInventoryMagicLayout
 {
 public:
     static CCharString __fastcall StatGetClassTypeName() { return CCharString("CTCInventoryMagic", -1); }
