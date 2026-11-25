@@ -78,6 +78,11 @@ public:
 #ifdef FABLE_RETAIL_CTCVILLAGE_TCI
     // Original FableWin01901440; native00488684 type34.
     static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_VILLAGE;}
+#ifdef FABLE_RETAIL_CTCVILLAGE_ISNIGHTTIME
+    // Nested opt-in (NF435, row 0x00896210 CGameScriptInterface::IsSleepingTime): Ego_r.pdb / FableWin.pdb ?IsNightTime@CTCVillage@@QBE_NXZ,
+    // out of line in retail at 0x00658D07 (the row's call target after the inline PeekTC<const CTCVillage>). Declaration only: no layout change.
+    bool IsNightTime() const;                                            // 0x00658D07
+#endif
 #endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_ENABLE_DEF_TYPES
     void EnableVillagerDefTypes(bool,const CCharString&);

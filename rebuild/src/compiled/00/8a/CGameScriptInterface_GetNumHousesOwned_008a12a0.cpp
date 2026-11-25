@@ -1,3 +1,42 @@
-struct Hero8a12a0;class CThingPlayerCreature;class CPlayer{public:const CThingPlayerCreature* PeekPControlledCreature() const;};class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
-struct Provider8a12a0{};struct Stats8a12a0{unsigned char p[0xe0];long first;long second;};struct Entry8a12a0{long key;Stats8a12a0* value;};struct Map8a12a0{Entry8a12a0* begin;Entry8a12a0* end;const Entry8a12a0* LowerBound(long* key) const;};struct Hero8a12a0{unsigned char p0[0x20];unsigned char flags20;unsigned char p21[0x23];Map8a12a0 map44;unsigned char p4c[0x45];unsigned char flags91;};class CThingPlayerCreature:public Hero8a12a0{};struct Script8a12a0{unsigned char p[0x14];Provider8a12a0* provider;long GetNumHousesOwned()const;};
-long Script8a12a0::GetNumHousesOwned()const{const Hero8a12a0* hero=((CPlayerManager*)provider)->GetMainPlayer().PeekPControlledCreature();if(hero&&!(hero->flags91&1)&&(hero->flags20&0x10)){const Map8a12a0* map=&hero->map44;long key=4;const Entry8a12a0* entry=map->LowerBound(&key);const Entry8a12a0* end=map->end;if(entry==end||entry->key>4)entry=end;return entry->value->second+entry->value->first;}return 0;}
+// CGameScriptInterface::GetNumHousesOwned() const -- the hero's houses plus shops owned, from its hero stats component
+// Leaf: ?GetNumHousesOwned@CGameScriptInterface@@UBEJXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008A12A0. Identity (NF435, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+//   (0x00487DD0), ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z, ??$PeekTC@$$CBVCTCHeroStats@@@CThing@@QBE_NPAPBVCTCHeroStats@@@Z
+//   (inline in retail: bit 4 TCI_HERO_STATS, const LowerBound 0x004365B0), then the inline ?GetNumberOfHousesOwned@CTCHeroStats@@QBEJXZ (+0xE0) plus
+//   ?GetNumberOfShopsOwned@CTCHeroStats@@QBEJXZ (+0xE4); else 0. The DoErrorMessage branch is debug-only.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTCHEROSTATS
+#define FABLE_RETAIL_CTCHEROSTATS_SERIALISE
+#define FABLE_RETAIL_CTCHEROSTATS_PERSONALITY
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCHeroStats.h"
+
+long CGameScriptInterface::GetNumHousesOwned() const
+{
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        const CTCHeroStats* stats;
+        if (hero->PeekTC(&stats))
+            return stats->GetNumberOfHousesOwned() + stats->GetNumberOfShopsOwned();
+    }
+    return 0;
+}

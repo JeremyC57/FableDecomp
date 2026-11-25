@@ -1,0 +1,8 @@
+source	address	unit	reason
+nf324	0x00895090	port	00895090 skipped-port ?ManuallyTriggerTrap@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z triage (-): params: used parameter self is `CGameScriptInterface*`, the PDB type is `const class CScriptThing&` (alias pattern)
+nf324	0x008950E0	port	008950e0 skipped-port ?ManuallyResetTrap@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z triage (-): params: used parameter self is `CGameScriptInterface*`, the PDB type is `const class CScriptThing&` (alias pattern)
+nf324	0x00896210	port	00896210 skipped-port ?IsSleepingTime@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z triage (-): params: used parameter scriptThing is `CScriptThing*`, the PDB type is `const class CScriptThing&` (alias pattern)
+nf324	0x0089A270	port	0089a270 skipped-port ?SetThingAsKilled@CGameScriptInterface@@UBEXABVCScriptThing@@@Z triage (-): params: used parameter thing is `CScriptThingArgument*`, the PDB type is `const class CScriptThing&` (alias pattern)
+nf324	0x0089A2D0	port	0089a2d0 skipped-port ?IsEntityPickLockable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z triage (-): unit: the row's own test calls CGameScriptInterface_IsEntityPickLockable
+nf324	0x0089C8A0	port	0089c8a0 skipped-port ?IsDeedWitnessed@CGameScriptInterface@@UBE_NJ@Z triage (-): params: used parameter arg0 is `void*`, the PDB type is `long` (alias pattern)
+nf324	0x0089ECC0	port	0089ecc0 skipped-port ?CreatureGeneratorRemoveTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z triage (-): params: used parameter p0 is `Host*`, the PDB type is `const class CScriptThing&` (alias pattern)

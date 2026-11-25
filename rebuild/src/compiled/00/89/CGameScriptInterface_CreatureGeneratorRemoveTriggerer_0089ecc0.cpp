@@ -1,47 +1,35 @@
-#include "fable_compiler.h"
-struct BObj {
-    unsigned char pad[0x6c];
-    unsigned char flag6c;
-    void consume(BObj* b);   // real member => thiscall, arg on stack
-};
-struct Node { int key; BObj* value; };
-struct MapT {
-    Node* first;
-    Node* end;
-    Node* find(const unsigned long& key);    // the map lower bound (0x0040F020), key by address
-    FABLE_FORCEINLINE BObj* Find(long kind)   // the inlined map find: end when the key is absent
-    {
-        Node* it = find((unsigned long)kind);
-        if (it == end || kind < it->key)
-            it = end;
-        return it->value;
-    }
-};
-struct AObj {
-    unsigned char pad0[0x24];
-    unsigned int field24; // read as [esi+0x24]
-    unsigned char pad2[0x1c];
-    MapT map44;           // at +0x44
-};
-template <class T> FABLE_FORCEINLINE bool GetTCOut(AObj* thing, long kind, T** out)
+// CGameScriptInterface::CreatureGeneratorRemoveTriggerer(const CScriptThing& creature_generator, const CScriptThing& creature) const -- a creature stops being one of the generator's triggerers
+// Leaf: ?CreatureGeneratorRemoveTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0089ECC0. Identity (NF435, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: both GetPThing() (CScriptThing slot 11, +0x2c; the IsAlive / IS_THING_ALIVE checks are a debug-only assertion), then
+//   ??$GetTC@VCTCCreatureGenerator@@@CThing@@QAE_NPAPAVCTCCreatureGenerator@@@Z (inline in retail: bit 0x3D, LowerBound 0x0040F020), the inline
+//   ?GetTypeFlags@CThing@@QBEKXZ (& 8), ??$GFDebugPDynamicCast@PAVCThing@@PAVCThingCreatureBase@@@@YIPAVCThingCreatureBase@@PAVCThing@@PAV0@@Z and
+//   ?RemoveCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z (retail 0x0074A1E0, the call target).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCCREATUREGENERATOR
+#define FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS
+#include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCCreatureGenerator.h"
+#include "engine/GFDebugPDynamicCast.h"
+
+void CGameScriptInterface::CreatureGeneratorRemoveTriggerer(const CScriptThing& creature_generator, const CScriptThing& creature) const
 {
-    if (thing->field24 & 0x20000000) {
-        *out = (T*)thing->map44.Find(kind);
-        return true;
-    }
-    return false;
-}
-struct Host { void** vt; };
-
-typedef AObj* (__fastcall *GetA_t)(void*);
-typedef BObj* (__fastcall *GetB_t)(void*);
-
-void __stdcall CGameScriptInterface_CreatureGeneratorRemoveTriggerer(Host* p0, Host* p1)
-{
-    AObj* a = ((GetA_t)(p0->vt[0x0b]))(p0);
-    BObj* b = ((GetB_t)(p1->vt[0x0b]))(p1);
-
-    BObj* val;
-    if (GetTCOut(a, 0x3d, &val) && (b->flag6c & 8))
-        val->consume(b);
+    CThing* generator_thing = creature_generator.GetPThing();
+    CThing* thing = creature.GetPThing();
+    CTCCreatureGenerator* generator;
+    if (generator_thing->GetTC(&generator) && (thing->GetTypeFlags() & 8))
+        generator->RemoveCreatureTriggerer(*GFDebugPDynamicCast(thing, (CThingCreatureBase*)0));
 }

@@ -1,49 +1,34 @@
-// CGameScriptInterface::IsSleepingTime @ 00896210
+// CGameScriptInterface::IsSleepingTime(const CScriptThing& village) const -- the live village thing's night-time test
+// Leaf: ?IsSleepingTime@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00896210. Identity (NF435, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: village.GetPThing() (CScriptThing slot 11, +0x2c), ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z, then
+//   ??$PeekTC@$$CBVCTCVillage@@@CThing@@QBE_NPAPBVCTCVillage@@@Z (inline in retail: bit 0x22 TCI_VILLAGE, const LowerBound 0x004365B0) and
+//   ?IsNightTime@CTCVillage@@QBE_NXZ (retail 0x00658D07, the call target); else false. The DoErrorMessage branches are debug-only.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCVILLAGE
+#define FABLE_RETAIL_CTCVILLAGE_TCI
+#define FABLE_RETAIL_CTCVILLAGE_ISNIGHTTIME
 #include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CTCVillage.h"
 
-struct MapNode {
-    int key;
-    void* value;
-};
-
-struct Map {
-    void* comp;
-    MapNode* head;
-};
-
-struct Env {
-    void* vt;
-    unsigned char _p04[0x20];
-    unsigned char flag24;
-    unsigned char _p25[0x1f];
-    Map map;
-    unsigned char _p4c[0x45];
-    unsigned char flag91;
-};
-
-struct KeyArg { int* p; };
-extern "C" MapNode* __fastcall Map_LowerBound(Map* self, KeyArg k);
-class CTCVillage { public:
-    bool IsNightTime() const;   // 0x00658D07 (Ego_r.pdb ?IsNightTime@CTCVillage@@QBE_NXZ)
-};
-
-typedef Env* (__fastcall *GetEnvFn)(CScriptThing*);
-
-// The retail body does not access its CGameScriptInterface `this`; this ABI-normalized
-// free function therefore exposes only the one stack argument used by the body.
-bool __stdcall CGameScriptInterface_IsSleepingTime(CScriptThing* scriptThing)
+bool CGameScriptInterface::IsSleepingTime(const CScriptThing& village) const
 {
-    Env* e = ((GetEnvFn)((void**)scriptThing->__vftable)[0x2c/4])(scriptThing);
-    if (e != 0 && (e->flag91 & 1) == 0 && (e->flag24 & 4) != 0) {
-        Map* m = &e->map;
-        int key = 0x22;
-        KeyArg ka; ka.p = &key;
-        MapNode* it = Map_LowerBound(m, ka);
-        MapNode* end = m->head;
-        if (it == end) it = end;
-        else if (it->key > 0x22) it = end;
-        return ((CTCVillage*)(it->value))->IsNightTime();
+    CThing* thing = village.GetPThing();
+    if (IS_THING_ALIVE(thing)) {
+        const CTCVillage* village_tc;
+        if (thing->PeekTC(&village_tc))
+            return village_tc->IsNightTime();
     }
     return false;
 }

@@ -3372,10 +3372,8 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?Activate@CTCTrap_Retail@@QAEXXZ	00787c07	00895130
 ?Deactivate@CTCTrap_Retail@@QAEXXZ	00787bfe	00895130
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	008953a0
-?IsButtonHeldForExpression@CTCInventory_Retail@@QAE_NJ@Z	00582a16	00895430
 ?PlayGame@CTCFireheartMinigame_Retail@@QAEXXZ	007e78e0	00895c90
 ??RCOpenDoor_Retail@@QAEXPAUCThing_Retail@@@Z	008ad530	00895db0
-@Map_LowerBound@8	004365b0	00896210
 ?GetNumberOfKeysToUnlock@CTCChest_Retail@@QAEJAAVCCharString@@@Z	00750050	008966c0
 ?Activate@CTCQuestCompletionUIMethods@@QAEXJABVCCharString@@_NABVCWideString@@1@Z	005e4740	00896d20
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00896d20
@@ -3405,21 +3403,17 @@ _FableSpellWrap_880200@4	006af630	00880200
 @Sub_InvokeTarget@4	006d63a0	00899cf0
 ?CalcPct@@YIJPAX@Z	0057a57a	0089a210
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089a210
-?Iface_Do@@YIXPAUCKillInterface@@UCKillInteger@@@Z	005d66ba	0089a270
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089a270
-?VMap_LowerBound@@YIPAUCKillInterfaceEntry@@PAUCKillInterfaceMap@@UCKillMapKey@@@Z	0040f020	0089a270
 ?IsLockPickable@CTCDoor@@QBE_NXZ	00730ae0	0089a2d0
 ?IsWearingAppearanceModifier@CTCHeroAttachableAppearanceModifiers_Retail@@QAE_NJJ@Z	00706000	0089b2b0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089b330
 @TCShop_GetName@4	00706290	0089b330
 ?SetOnFire@CTCFlammable_Retail@@QAEXXZ	00780410	0089bcd0
 ?IsOnFire@CTCFlammable_Retail@@QAE_NXZ	00780400	0089bd90
-?Final@IDeedIface@@QAE_NPAXH@Z	006c5e90	0089c8a0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089c8a0
 ?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	0089c910	0089cd50
 ?GetHearingRadius@CTCHearing_Retail@@QAEMXZ	00744440	0089d340
 ?g_pPlayerGui@@3PAUCPlayerGuiCalls_Retail@@A	013b8790	0089d600
-?CancelUsingAbility@CTCSpecialAbilities_Retail@@QAE_NJ@Z	0072acf0	0089d750
 ?SetPScriptOverrideInterestingThing@CTCTargetingBase_Retail@@QAEXPAUCThing_Retail@@@Z	007f5890	0089d830
 ?SetPScriptOverrideInterestingThing@CTCTargetingBase_Retail@@QAEXPAX@Z	007f5890	0089d970
 ?RemoveItem@CTCContainer_Retail@@QAEXJ@Z	008ed040	0089e810
@@ -3429,7 +3423,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?SetRangedTarget@CTCTargeting_Retail@@QAEXPAUCThing_Retail@@@Z	008abb50	008a04c0
 ?RemoveTC@CThingKill_Retail@@QAEXJ@Z	004c9840	008a0820
 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	008a12a0
-?LowerBound@Map8a12a0@@QBEPBUEntry8a12a0@@PAJ@Z	004365b0	008a12a0
 ?FinalCall@@YIXPAX@Z	00747560	008a1300
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	008a1300
 ?IsTurncoated@CTCTurncoat_Retail@@QAE_NXZ	007c7890	008a19b0
@@ -15499,7 +15492,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	008abed0	008933f0
 ?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@VCMessageEventFilter_OccuredBetween@@@@@Z	008abf20	00893960
 ?GetDef@CGameDefinitionManager@@QAE_NABVCCharString@@PAUCDefPointerExpressionDef@@@Z	00593666	008954a0
-?GoFishing@CTCFishing_Retail@@QAEXABVCScriptThing@@@Z	007b1eb0	00895a90
 ?IsQuestCardActive@CQuestManager@@QBE_NABVCCharString@@@Z	004af560	008968c0
 ?GetDefGlobalIndexFromName@CDefinitionManager_Retail@@QBEJABVCCharString@@@Z	009ad410	008981c0
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	008981c0
@@ -38956,3 +38948,8 @@ __real@0000000000000000	0122ed70	00b260b0
 ?SetAsNeutralToFaction@CFaction@@QAEXABV1@@Z	006b9510	008908c0
 ?SetAsEnemyOfFaction@CFaction@@QAEXABV1@@Z	006b9530	00890910
 ?SetCreatureGenerationEnabledDuringScript@CQuestManager@@QAEXABVCCharString@@_N@Z	004b3810	00892d70
+?GoFishing@CTCFishing@@QAEX_N@Z	007b1eb0	00895a90
+?SetCreatureAsKilled@CTCInventoryStats@@QAEXPAVCThing@@@Z	005d66ba	0089a270
+?IsDeedWitnessed@CTCHeroOpinionDeedLog@@QAE_NJ_N@Z	006c5e90	0089c8a0
+?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z	0072acf0	0089d750
+?RemoveCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	0074a1e0	0089ecc0

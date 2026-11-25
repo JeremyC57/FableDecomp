@@ -1,236 +1,74 @@
-#define ADDR "00895430"
-#include <cstdio>
-#include <cstring>
-// Behaviour model: stub callees record a call trace (one letter each) and their arguments.
-static char g_seq[64] = "";
-static long g_arg[8];
-static void rec(const char* s) { std::strcat(g_seq, s); }
-static int g_strDtors = 0;
-class CCharString { public:
-    const char* s;
-    CCharString() : s("") { }
-    CCharString(const char* t) : s(t) { }
-    CCharString(const char* t, long) : s(t) { }
-    CCharString(const CCharString& o) : s(o.s) { }
-    ~CCharString() { ++g_strDtors; }
-    const CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
-    bool operator==(const char* t) const { return std::strcmp(s, t) == 0; }
-    bool operator!=(const char* t) const { return std::strcmp(s, t) != 0; }
-    bool IsEmpty() const { return s[0] == 0; }
-};
-static const char* g_strings[4] = { "", "DEF_ONE", "DEF_TWO", "DEF_THREE" };
-struct CDefStringTable_Retail { CCharString GetString(long index) { return CCharString(g_strings[index]); } };
-static CDefStringTable_Retail g_defStringTable;
-class CDefString { public:
-    long m_index;
-    CDefString(long i) : m_index(i) { }
-    CDefString(const CDefString& o) : m_index(o.m_index) { }
-    bool operator==(const CCharString& name) const { return std::strcmp(g_strings[m_index], name.s) == 0; }
-};
-struct CTCBase_Retail { int x; };
-struct CInterfaceMap_Retail {
-    struct SEntry { long type; CTCBase_Retail* component; };
-    SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
-};
-class CScriptThing;
-struct CThing_Retail {
-    unsigned char m_type;
-    unsigned long m_presentBits[9];
-    CInterfaceMap_Retail m_interfaces;
-    unsigned char m_flags;
-    unsigned char m_dead : 1;
-    unsigned char m_91_1 : 7;
-    unsigned char m_bc_0 : 1;
-    unsigned char m_givesHeroStatChangesOnHit : 1;
-    unsigned char m_bc_2 : 6;
-    unsigned char m_1c9_0 : 3;
-    unsigned char m_marryable : 1;
-    unsigned char m_marryableToHero : 1;
-    unsigned char m_1c9_5 : 3;
-    bool m_isPlayer;
-    CInterfaceMap_Retail::SEntry m_entries[6]; long m_entryCount;
-    bool IsPlayer() { rec("P"); return m_isPlayer; }
-    CTCBase_Retail* AddTC(const CCharString& name, long a, long b) { rec("A"); g_arg[0] = (long)name.s; g_arg[1] = a; g_arg[2] = b; return 0; }
-    void RemoveTC(long type) { rec("R"); g_arg[0] = type; }
-    void FinishCurrentAction() { rec("F"); }
-    void SheatheAllWeapons() { rec("S"); }
-    void UnsheatheAllWeapons() { rec("U"); }
-    void UnsheatheMeleeWeapon() { rec("M"); }
-    void SetAsGivingHeroStatChangesOnBeingHit(bool giving) { rec("G"); g_arg[3] = giving; }
-    template<class T> bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
-            CInterfaceMap_Retail* map = &m_interfaces;
-            CInterfaceMap_Retail::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
-                it = map->last;
-            *ppOut = (T*)it->component;
-            return true;
-        }
-        return false;
-    }
-    unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    CThing_Retail() { Reset(); }
-    void Reset()
-    {
-        m_type = 0; std::memset(m_presentBits, 0, sizeof(m_presentBits)); m_flags = 0; m_dead = 0; m_91_1 = 0;
-        m_bc_0 = 0; m_givesHeroStatChangesOnHit = 0; m_bc_2 = 0; m_1c9_0 = 0; m_marryable = 0; m_marryableToHero = 0; m_1c9_5 = 0;
-        m_isPlayer = false; m_entryCount = 0; m_interfaces.first = m_entries; m_interfaces.last = m_entries;
-        m_entries[0].type = 0x7fffffff; m_entries[0].component = 0;
-    }
-    void AddComponent(long type, void* comp)   // keeps the entries sorted; the end entry carries a null component
-    {
-        long i = m_entryCount; while (i > 0 && m_entries[i - 1].type > type) { m_entries[i] = m_entries[i - 1]; --i; }
-        m_entries[i].type = type; m_entries[i].component = (CTCBase_Retail*)comp; ++m_entryCount;
-        m_interfaces.last = m_entries + m_entryCount; m_entries[m_entryCount].type = 0x7fffffff; m_entries[m_entryCount].component = 0;
-        m_presentBits[type >> 5] |= (1UL << (type & 31));
-    }
-};
-static bool g_valid = true;
-class CScriptThing { public:
-    CThing_Retail* m_pThing;
-    CThing_Retail* GetThing() const { rec("g"); return m_pThing; }
-    bool IsValid() const { rec("v"); return g_valid; }
-};
-// components
-struct CExpression_Retail { long m_def; CDefString GetDefName() const { rec("D"); return CDefString(m_def); } };
-struct CTCHeroExpression_Retail { CExpression_Retail* m_pCurrentExpression; };
-struct CTCInventory_Retail {
-    bool m_held;
-    bool IsButtonHeldForExpression(long button) { rec("B"); g_arg[0] = button; return m_held; }
-    float GetBestFishWeight(long defIndex) { rec("W"); g_arg[1] = defIndex; return 2.5f; }
-};
-struct CTCFishing_Retail { void GoFishing(const CScriptThing& spot) { rec("O"); g_arg[0] = (long)&spot; } };
-struct CTCOracleMinigame_Retail { void* m_pGame; };
-struct CTCChest_Retail { long GetNumberOfKeysToUnlock(CCharString& keyName) { rec("K"); keyName = "KEY"; return 3; } };
-struct CGameDefinitionManager_Retail {
-    static CGameDefinitionManager_Retail& Get();
-    long GetDefGlobalIndexFromName(const CCharString& name) { rec("I"); return std::strcmp(name.s, "FISH") == 0 ? 77 : 0; }
-};
-static CGameDefinitionManager_Retail g_gameDefs;
-CGameDefinitionManager_Retail& CGameDefinitionManager_Retail::Get() { return g_gameDefs; }
-static const float g_noFishWeight = 0.0f;
-struct CPlayer_Retail {
-    CThing_Retail* m_pHero;
-    CThing_Retail* GetHeroThing() { rec("h"); return m_pHero; }
-    CThing_Retail* GetControlledCreature() { rec("c"); return m_pHero; }
-};
-static CPlayer_Retail g_player;
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetPlayer() { return &g_player; }
-    CPlayer_Retail* GetMainPlayer() { return &g_player; }
-    void UnfreezePlayerControls(long player) { rec("Z"); g_arg[5] = player; }
-};
-// world
-struct CRegionDef_Retail {
-    long m_refCount; long m_def; int m_deleted;
-    CDefString m_wanderingPopulationScriptDef;
-    CRegionDef_Retail() : m_refCount(1), m_def(1), m_deleted(0), m_wanderingPopulationScriptDef(2) { }
-    void AddRef() { ++m_refCount; }
-    void DeleteThis() { ++m_deleted; }
-    CDefString GetDefName() const { return CDefString(m_def); }
-};
-template<class T> class CCountedPointer { public:
-    T* Data;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data) { if (Data) Data->AddRef(); }
-    ~CCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
-    explicit CCountedPointer(T* data) : Data(data) { if (Data) Data->AddRef(); }
-    T* operator->() const { return Data; }
-    bool IsNull() const { return Data == 0; }
-};
-struct CRegion_Retail {
-    CCountedPointer<CRegionDef_Retail> m_pDef;
-    bool m_creatureGenerationEnabled;
-    CRegion_Retail() : m_pDef(0), m_creatureGenerationEnabled(false) { }
-};
-struct CWorldMap_Retail {
-    CRegion_Retail m_regions[4]; long m_current;
-    long GetCurrentRegionNumber() { return m_current; }
-    CRegion_Retail& GetRegion(long region) { return m_regions[region]; }
-    CRegion_Retail& GetRegionEntry(long region) { return m_regions[region]; }
-    long GetRegionNumberFromName(const CCharString& name) { return std::strcmp(name.s, "TWO") == 0 ? 2 : (std::strcmp(name.s, "ZERO") == 0 ? 0 : -1); }
-};
-struct CCombatManager_Retail { void CreatureUnsheathWeapon(CThing_Retail* creature, long mode) { rec("C"); g_arg[0] = (long)creature; g_arg[1] = mode; } };
-class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
-struct CMessageEventManager_Retail {
-    void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data)
-    { rec("m"); g_arg[0] = type; g_arg[1] = (long)delay; g_arg[2] = (long)(position.X + position.Y + position.Z); g_arg[3] = (long)from + (long)to; g_arg[4] = (long)(value1 + value2); g_arg[6] = data; return 0; }
-};
-struct CAIGameCameraBase_Retail { void ScriptEnd() { rec("E"); } };
-class CWorld { public:
-    CWorldMap_Retail m_map; CCombatManager_Retail m_combat; CMessageEventManager_Retail m_messages; CAIGameCameraBase_Retail m_camera;
-    CCombatManager_Retail* m_pCombatManager;
-    CMessageEventManager_Retail* PMessageEventManager_Data;
-    CAIGameCameraBase_Retail* PCurrentGameCamera;
-    bool m_creatureGeneratorsEnabled;
-    CWorldMap_Retail* GetWorldMap() { return &m_map; }
-    CWorldMap_Retail* PeekWorldMap() { return &m_map; }
-};
-struct CQuestManager_Retail { bool m_allowed; bool IsCreatureGenerationAllowed() { return m_allowed; } };
-static CQuestManager_Retail g_questManager;
-static CQuestManager_Retail* g_pQuestManager = &g_questManager;
-struct CPlayerGui_Retail { void Close() { rec("X"); } };
-static CPlayerGui_Retail g_gui;
-static CPlayerGui_Retail* g_pPlayerGui = &g_gui;
-struct CDisplayEngine_Retail { void EndScreenFadeOut() { rec("Y"); } };
-class CGameScriptInterface { public:
-    CWorld* World;
-    CDisplayEngine_Retail* DisplayEngine;
-    CPlayerManager_Retail* PlayerManager;
-    long CurrentPlayer;
-    void SheatheHeroWeapons() const { rec("H"); }
-    void GiveHeroItem(const CScriptThing& thing) const { rec("i"); g_arg[7] = (long)&thing; }
-    bool GiveHeroItemsFromContainer(const CScriptThing& container, bool flag) const { rec("j"); g_arg[7] = (long)&container + flag; return true; }
-    void EntitySetAsToAddToComboMultiplierWhenHit(const CScriptThing&, bool flag) const { rec("1"); g_arg[1] = flag; }
-    void EntitySetAsToAddToStatChangesWhenHit(const CScriptThing&, bool flag) const { rec("2"); g_arg[2] = flag; }
-    void EndLetterBox() { rec("L"); }
-    void UnfreezeControls()
-    {
-        CThing_Retail* creature = PlayerManager->GetMainPlayer()->GetControlledCreature();
-        if (creature && !creature->m_dead)
-            PlayerManager->UnfreezePlayerControls(CurrentPlayer);
-    }
-    bool IsDPadButtonHeldForExpression(long button) const;
-};
-static CWorld g_world;
-static CDisplayEngine_Retail g_display;
-static CPlayerManager_Retail g_players;
-static CGameScriptInterface g_gsi;
-static CThing_Retail g_hero, g_thing;
-static CScriptThing g_script;
-static void setup()
+// Behaviour test for 0x00895430 CGameScriptInterface::IsDPadButtonHeldForExpression (NF435): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The hero's inventory component (TCI_INVENTORY) is planted; the row must pass the expression name to IsButtonHeldForExpression on it and return its result.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CFADEINFADEOUTBASE_DECLS
+#define FABLE_RETAIL_CENGINEPRIMITIVEHANDLE
+#define FABLE_RETAIL_CTCINVENTORYBASE
+#define FABLE_RETAIL_CTCINVENTORYBASE_ORIGINAL_COMPLETE_METHODS_PASS22
+#define FABLE_RETAIL_CTCINVENTORYBASE_SELECTEDOWNED
+#define FABLE_RETAIL_CTCINVENTORY_ORIGINAL_COMPLETE_CLASS_PASS22
+#define FABLE_RETAIL_EXPRESSION_FRAME
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCInventory.h"
+#include <stdio.h>
+#include <string.h>
+static void* g_hero = 0; static long g_player[0x40]; static long g_pm[0x40]; static int g_hero_gets = 0;
+CPlayer& CPlayerManager::GetMainPlayer() { return *(CPlayer*)g_player; }
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const { ++g_hero_gets; return (CThingPlayerCreature*)g_hero; }
+static long g_gsi[0x50 / 4];
+static void nf435_hero(void) { g_gsi[0x14 / 4] = (long)g_pm; }
+typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > NF435Map;
+// CVectorMap::LowerBound comes from the row object (the header's template body, the same code retail calls out of line).
+static unsigned char g_thing[0x200];                       // CThing: UsingComponents +0x20, Components +0x44 / +0x48, dead flag byte +0x91
+static unsigned char g_thing2[0x200];
+static NF435Map::value_type g_pairs[3];
+static void nf435_plant(unsigned char* thing, int id, void* tc)   // three sorted entries around id, the bit for id set
 {
-    g_seq[0] = 0; std::memset(g_arg, 0, sizeof(g_arg)); g_valid = true; g_strDtors = 0;
-    g_hero.Reset(); g_thing.Reset();
-    g_player.m_pHero = &g_hero; g_script.m_pThing = &g_thing;
-    g_world.m_pCombatManager = &g_world.m_combat; g_world.PMessageEventManager_Data = &g_world.m_messages; g_world.PCurrentGameCamera = &g_world.m_camera;
-    g_world.m_creatureGeneratorsEnabled = false; g_world.m_map.m_current = 0;
-    g_gsi.World = &g_world; g_gsi.DisplayEngine = &g_display; g_gsi.PlayerManager = &g_players; g_gsi.CurrentPlayer = 3;
-    g_questManager.m_allowed = true;
+    memset(thing, 0, 0x200);
+    g_pairs[0].first = (ETCInterfaceType)(id - 1); g_pairs[0].second = 0;
+    g_pairs[1].first = (ETCInterfaceType)id;       g_pairs[1].second = (CTCBase*)tc;
+    g_pairs[2].first = (ETCInterfaceType)(id + 1); g_pairs[2].second = 0;
+    *(void**)(thing + 0x44) = g_pairs; *(void**)(thing + 0x48) = g_pairs + 3;
+    thing[0x20 + id / 8] |= (unsigned char)(1 << (id % 8));
 }
-#define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", ADDR, __LINE__); return 1; } } while (0)
-#define SEQ(x) (std::strcmp(g_seq, x) == 0)
-
-bool CGameScriptInterface::IsDPadButtonHeldForExpression(long button) const
+static void nf435_clear(unsigned char* thing, int id) { thing[0x20 + id / 8] &= (unsigned char)~(1 << (id % 8)); }
+static long g_inv[0x80]; static int g_calls = 0; static const void* g_this = 0; static const void* g_name = 0; static bool g_val = false;
+bool CTCInventory::IsButtonHeldForExpression(const CCharString& name) const { ++g_calls; g_this = this; g_name = &name; return g_val; }
+static long g_str[4];
+static int run(void* hero, bool bit, unsigned char dead, bool val, bool want, int calls)
 {
-    CThing_Retail* hero = PlayerManager->GetPlayer()->GetHeroThing();
-    if (hero && !hero->m_dead) {
-        CTCInventory_Retail* inventory;
-        if (hero->GetInterface(&inventory, 0x11))
-            return inventory->IsButtonHeldForExpression(button);
-    }
-    return false;
+    int id = CTCInventory::StatGetInterfaceType();
+    nf435_plant(g_thing, id, g_inv); if (!bit) nf435_clear(g_thing, id); g_thing[0x91] = dead;
+    g_hero = hero; g_val = val; g_calls = 0;
+    bool got = ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::IsDPadButtonHeldForExpression(*(const CCharString*)g_str);
+    return got == want && g_calls == calls && (!calls || (g_this == (const void*)g_inv && g_name == (const void*)g_str));
 }
-
-int main()
+int main(void)
 {
-    static CTCInventory_Retail inv; inv.m_held = true;
-    setup(); CHECK(!g_gsi.IsDPadButtonHeldForExpression(4)); CHECK(SEQ("h"));
-    g_hero.AddComponent(0x11, &inv); CHECK(g_gsi.IsDPadButtonHeldForExpression(4)); CHECK(g_arg[0] == 4);
-    inv.m_held = false; CHECK(!g_gsi.IsDPadButtonHeldForExpression(5));
-    inv.m_held = true; g_hero.m_dead = 1; g_seq[0] = 0; CHECK(!g_gsi.IsDPadButtonHeldForExpression(4)); CHECK(SEQ("h"));
-    std::printf("00895430_TEST PASS\n");
-    return 0;
+    nf435_hero();
+    if (!run(g_thing, true, 0, true, true, 1) || !run(g_thing, true, 0, false, false, 1) || !run(g_thing, false, 0, true, false, 0)
+        || !run(g_thing, true, 1, true, false, 0) || !run(0, true, 0, true, false, 0)) { printf("FAIL_00895430\n"); return 1; }
+    printf("PASS_00895430 00895430_TEST PASS\n"); return 0;
 }

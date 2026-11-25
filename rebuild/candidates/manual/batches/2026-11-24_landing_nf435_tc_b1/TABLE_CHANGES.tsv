@@ -1,0 +1,14 @@
+action	symbol	target	witness	note
+add	?GoFishing@CTCFishing@@QAEX_N@Z	007b1eb0	00895a90	NF435: the row's callee at this retail target, PDB spelling (name_gate OK)
+delete	@Map_LowerBound@8	004365b0	00896210	NF435: the row now binds the PDB name at this target; no other landed source spells Map_LowerBound next to the target (census)
+delete	?Iface_Do@@YIXPAUCKillInterface@@UCKillInteger@@@Z	005d66ba	0089a270	NF435: the row now binds the PDB name at this target; no other landed source spells Iface_Do next to the target (census)
+delete	?VMap_LowerBound@@YIPAUCKillInterfaceEntry@@PAUCKillInterfaceMap@@UCKillMapKey@@@Z	0040f020	0089a270	NF435: the row now binds the PDB name at this target; no other landed source spells VMap_LowerBound next to the target (census)
+add	?SetCreatureAsKilled@CTCInventoryStats@@QAEXPAVCThing@@@Z	005d66ba	0089a270	NF435: the row's callee at this retail target, PDB spelling (name_gate OK)
+delete	?Final@IDeedIface@@QAE_NPAXH@Z	006c5e90	0089c8a0	NF435: the row now binds the PDB name at this target; no other landed source spells Final next to the target (census)
+add	?IsDeedWitnessed@CTCHeroOpinionDeedLog@@QAE_NJ_N@Z	006c5e90	0089c8a0	NF435: the row's callee at this retail target, PDB spelling (name_gate OK)
+delete	?CancelUsingAbility@CTCSpecialAbilities_Retail@@QAE_NJ@Z	0072acf0	0089d750	NF435: the row now binds the PDB name at this target; no other landed source spells CancelUsingAbility next to the target (census)
+add	?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z	0072acf0	0089d750	NF435: the row's callee at this retail target, PDB spelling (name_gate OK)
+add	?RemoveCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	0074a1e0	0089ecc0	NF435: the row's callee at this retail target, PDB spelling (name_gate OK)
+delete	?IsButtonHeldForExpression@CTCInventory_Retail@@QAE_NJ@Z	00582a16	00895430	NF435: re-tested by class token (assemble's keep rule grepped the bare member, which the real self row also spells): no other landed source spells this stand-in class next to the target; this row was the only witness
+delete	?GoFishing@CTCFishing_Retail@@QAEXABVCScriptThing@@@Z	007b1eb0	00895a90	NF435: re-tested by class token (assemble's keep rule grepped the bare member, which the real self row also spells): no other landed source spells this stand-in class next to the target; this row was the only witness
+delete	?LowerBound@Map8a12a0@@QBEPBUEntry8a12a0@@PAJ@Z	004365b0	008a12a0	NF435: re-tested by class token (assemble's keep rule grepped the bare member, which the real self row also spells): no other landed source spells this stand-in class next to the target; this row was the only witness

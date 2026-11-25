@@ -57,6 +57,11 @@ public: std::vector<NUISystem::CComponent*> CreateExperienceSliders(NUISystem::C
 // NUISystem@@W4EHeroAbility@@AAM@Z, out of line at 0x005D64DD (landed): one ability row on the stats screen, the row position by
 // reference (read for the slider's Y, then advanced).
 public: void AddHeroAbility(NUISystem::CComponent *,EHeroAbility,float &);
+#ifdef FABLE_RETAIL_CTCINVENTORYSTATS_SETCREATUREASKILLED
+// Nested opt-in (NF435, row 0x0089A270 CGameScriptInterface::SetThingAsKilled): Ego_r.pdb / FableWin.pdb
+// ?SetCreatureAsKilled@CTCInventoryStats@@QAEXPAVCThing@@@Z, out of line in retail at 0x005D66BA (landed). Declaration only: no layout change.
+public: void SetCreatureAsKilled(CThing*);                               // 0x005D66BA
+#endif
 #endif
 public: virtual NUISystem::CComponent * ConstructPersonalityListPC(NUISystem::CComponent *);
 #ifdef FABLE_RETAIL_CTCINVENTORYSTATS_PERSONALITY

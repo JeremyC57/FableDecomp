@@ -1,65 +1,64 @@
-// Behaviour test for 0x0089D750 (CancelUsingAbility): the reconstructed logic run over a host model of the thing, its component map and the callees.
-#include <cstdio>
-// Behaviour model of the script-interface plumbing: a thing with a component-presence bitset (+0x20 words in retail)
-// and a sorted component map searched by lower bound (end entry when the kind is absent), a script thing with
-// GetThing/IsValid, and the hero lookup chain PlayerManager -> MainPlayer -> hero creature.
-struct TC { int kind; TC() : kind(0) {} virtual ~TC() {} };
-struct Entry { long kind; TC* tc; };
-struct Thing {
-    unsigned int mask[8];
-    Entry entries[9];                      // sorted; entries[count] is the end entry
-    int count;
-    unsigned char type;
-    bool dead;
-    Thing() : count(0), type(0), dead(false) { for (int i = 0; i < 8; ++i) mask[i] = 0; entries[0].kind = 0; entries[0].tc = 0; }
-    void Add(long kind, TC* tc)
-    {
-        int i = count;
-        while (i > 0 && entries[i - 1].kind > kind) { entries[i] = entries[i - 1]; --i; }
-        entries[i].kind = kind; entries[i].tc = tc; ++count;
-        entries[count].kind = 0; entries[count].tc = 0;
-        mask[kind >> 5] |= 1u << (kind & 31);
-        tc->kind = (int)kind;
-    }
-    unsigned int HasTC(long kind) const { return mask[kind >> 5] & (1u << (kind & 31)); }
-    Entry* LowerBound(long kind) { int i = 0; while (i < count && entries[i].kind < kind) ++i; return &entries[i]; }
-    TC* GetTC(long kind) { Entry* it = LowerBound(kind); Entry* last = &entries[count]; if (it == last || kind < it->kind) it = last; return it->tc; }
-};
-template <class T> bool GetTCOut(Thing* t, long kind, T** out) { if (t->HasTC(kind)) { *out = (T*)t->GetTC(kind); return true; } return false; }
-struct ScriptThing {
-    Thing* thing; bool valid;
-    ScriptThing(Thing* t, bool v) : thing(t), valid(v) {}
-    Thing* GetThing() const { return thing; }
-    bool IsValid() const { return valid; }
-};
-inline bool IsThingAlive(const ScriptThing& s) { Thing* t = s.GetThing(); return t && !t->dead; }
-struct Player { Thing* hero; Thing* GetHeroCreature() { return hero; } Thing* GetControlledCreature() { return hero; } };
-struct PlayerManager { Player* main; Player* GetMainPlayer() { return main; } };
-struct DefinitionManager { const char* known; long index; long GetDefGlobalIndexFromName(const char* n) const { const char* a = n; const char* b = known; while (*a && *a == *b) { ++a; ++b; } return (*a == *b) ? index : -1; } };
-static int g_fail = 0;
-#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct Abilities : TC { long cancelled; int calls; Abilities() : cancelled(-1), calls(0) {} bool CancelUsingAbility(long a) { cancelled = a; ++calls; return true; } };
-struct GSI {
-    PlayerManager* PM;
-    void CancelUsingAbility(long ability) const
-    {
-        Thing* hero = PM->GetMainPlayer()->GetHeroCreature();
-        Abilities* abilities;
-        if (hero && !hero->dead && GetTCOut(hero, 0xa7, &abilities)) abilities->CancelUsingAbility(ability);
-    }
-};
-static void Run()
+// Behaviour test for 0x0089D750 CGameScriptInterface::CancelUsingAbility (NF435): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The hero's special-abilities component (0xA7) is planted; CancelUsingAbility must get the ability on it, once.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+#define FABLE_RETAIL_CTCSPECIALABILITIES_CANCELUSINGABILITY
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCSpecialAbilities.h"
+#include <stdio.h>
+#include <string.h>
+static void* g_hero = 0; static long g_player[0x40]; static long g_pm[0x40]; static int g_hero_gets = 0;
+CPlayer& CPlayerManager::GetMainPlayer() { return *(CPlayer*)g_player; }
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const { ++g_hero_gets; return (CThingPlayerCreature*)g_hero; }
+static long g_gsi[0x50 / 4];
+static void nf435_hero(void) { g_gsi[0x14 / 4] = (long)g_pm; }
+typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > NF435Map;
+// CVectorMap::LowerBound comes from the row object (the header's template body, the same code retail calls out of line).
+static unsigned char g_thing[0x200];                       // CThing: UsingComponents +0x20, Components +0x44 / +0x48, dead flag byte +0x91
+static unsigned char g_thing2[0x200];
+static NF435Map::value_type g_pairs[3];
+static void nf435_plant(unsigned char* thing, int id, void* tc)   // three sorted entries around id, the bit for id set
 {
-    Thing hero; Abilities a; hero.Add(0xa7, &a); Player p; p.hero = &hero; PlayerManager pm; pm.main = &p; GSI g; g.PM = &pm;
-    g.CancelUsingAbility(4); CHECK(a.calls == 1 && a.cancelled == 4);
-    hero.dead = true; g.CancelUsingAbility(5); CHECK(a.calls == 1);
-    Thing bare; p.hero = &bare; g.CancelUsingAbility(5); CHECK(a.calls == 1);
+    memset(thing, 0, 0x200);
+    g_pairs[0].first = (ETCInterfaceType)(id - 1); g_pairs[0].second = 0;
+    g_pairs[1].first = (ETCInterfaceType)id;       g_pairs[1].second = (CTCBase*)tc;
+    g_pairs[2].first = (ETCInterfaceType)(id + 1); g_pairs[2].second = 0;
+    *(void**)(thing + 0x44) = g_pairs; *(void**)(thing + 0x48) = g_pairs + 3;
+    thing[0x20 + id / 8] |= (unsigned char)(1 << (id % 8));
 }
-
-int main()
+static void nf435_clear(unsigned char* thing, int id) { thing[0x20 + id / 8] &= (unsigned char)~(1 << (id % 8)); }
+static long g_ab[0x40]; static int g_calls = 0; static const void* g_this = 0; static long g_e = 0;
+bool CTCSpecialAbilities::CancelUsingAbility(EHeroAbility e) { ++g_calls; g_this = this; g_e = (long)e; return true; }
+static int run(void* hero, bool bit, unsigned char dead, int calls)
 {
-    Run();
-    if (g_fail) { std::printf("0089d750_TEST FAIL\n"); return 1; }
-    std::printf("0089d750_TEST PASS\n");
-    return 0;
+    nf435_plant(g_thing, 0xa7, g_ab); if (!bit) nf435_clear(g_thing, 0xa7); g_thing[0x91] = dead;
+    g_hero = hero; g_calls = 0; g_e = -1;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::CancelUsingAbility((EHeroAbility)5);
+    return g_calls == calls && (!calls || (g_this == (const void*)g_ab && g_e == 5));
+}
+int main(void)
+{
+    nf435_hero();
+    if (!run(g_thing, true, 0, 1) || !run(g_thing, false, 0, 0) || !run(g_thing, true, 1, 0) || !run(0, true, 0, 0)) { printf("FAIL_0089d750\n"); return 1; }
+    printf("PASS_0089d750 0089d750_TEST PASS\n"); return 0;
 }

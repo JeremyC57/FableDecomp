@@ -1,83 +1,74 @@
-#include <cstdio>
-
-struct KeyPair { int key; void* value; };
-struct VMap { KeyPair* begin; KeyPair* end; };
-
-struct Thing {
-    char pad0[0x20];
-    unsigned int flags20;
-    char pad24[0x20];
-    VMap map44;
-};
-
-struct GSI {
-    char pad0[0x14];
-    void* member14;
-};
-
-struct ArgVT;
-struct Arg { ArgVT* vt; };
-struct ArgVT {
-    char pad[0x2c];
-    int (__fastcall* slot2c)(Arg* self);
-};
-
-struct Iface;
-struct IntBox { int v; };
-struct PtrBox { const int* p; };
-
-static Thing g_obj;
-static KeyPair g_entry;
-static int g_iface_val = -1;
-static int g_slot_called = 0;
-
-void* __fastcall Sub1(void* self) { return self; }
-Thing* __fastcall Sub2(void* self) { (void)self; return &g_obj; }
-KeyPair* __fastcall VMap_LowerBound(VMap* self, PtrBox key) { (void)self; (void)key; return &g_entry; }
-void __fastcall Iface_Do(Iface* self, IntBox v) { g_iface_val = (int)(long)self + v.v; }
-
-int g_slot_ret = 7;
-int __fastcall slot2c_impl(Arg* self) { (void)self; g_slot_called = 1; return g_slot_ret; }
-
-void __fastcall CGameScriptInterface_SetThingAsKilled(const GSI* self, int edx_unused, Arg* thing)
+// Behaviour test for 0x0089A270 CGameScriptInterface::SetThingAsKilled (NF435): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The hero's inventory-stats component (0x14) is planted; SetCreatureAsKilled must get the script thing's CThing once, on that component.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYSTATS
+#define FABLE_RETAIL_CTCINVENTORYSTATS_SETCREATUREASKILLED
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCInventoryStats.h"
+#include <stdio.h>
+#include <string.h>
+static void* g_ret = 0; static void* g_ret2 = 0; static bool g_alive = true; static int g_gets = 0;
+extern "C" void* __fastcall nf435_get_pthing(const void*) { ++g_gets; return g_ret; }     // CScriptThing slot 11 (+0x2c)
+extern "C" void* __fastcall nf435_get_pthing2(const void*) { ++g_gets; return g_ret2; }
+extern "C" bool __fastcall nf435_is_alive(const void*) { return g_alive; }                // CScriptThing slot 75 (+0x12c)
+static void* g_svtbl[79]; static void* g_svtbl2[79]; static void* g_script[3]; static void* g_script2[3];
+static void nf435_scripts(void)
 {
-    int key;
-    (void)edx_unused;
-    void* a = Sub1(((GSI*)self)->member14);
-    Thing* obj = Sub2(a);
-    if (obj != 0 && (obj->flags20 & 0x100000)) {
-        VMap* m = &obj->map44;
-        PtrBox kb;
-        key = 0x14;
-        kb.p = &key;
-        KeyPair* e = VMap_LowerBound(m, kb);
-        KeyPair* end = m->end;
-        if (e == end || e->key > 0x14)
-            e = end;
-        Iface* iv = (Iface*)e->value;
-        IntBox box;
-        box.v = thing->vt->slot2c(thing);
-        Iface_Do(iv, box);
-    }
+    g_svtbl[11] = (void*)&nf435_get_pthing; g_svtbl[75] = (void*)&nf435_is_alive; g_script[0] = g_svtbl;
+    g_svtbl2[11] = (void*)&nf435_get_pthing2; g_svtbl2[75] = (void*)&nf435_is_alive; g_script2[0] = g_svtbl2;
 }
-
-int main() {
-    GSI gsi; gsi.member14 = (void*)&gsi;
-    g_obj.flags20 = 0x100000;
-    g_obj.map44.begin = &g_entry;
-    g_obj.map44.end = (KeyPair*)0;
-    g_entry.key = 0x10;
-    g_entry.value = (void*)0x1000;
-
-    ArgVT vt; vt.slot2c = (int(__fastcall*)(Arg*))slot2c_impl;
-    Arg arg; arg.vt = &vt;
-
-    CGameScriptInterface_SetThingAsKilled(&gsi, 0, &arg);
-
-    if (g_slot_called == 1 && g_iface_val == 0x1000 + 7) {
-        std::printf("CGameScriptInterface_0089a270_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL slot=%d ifaceval=%d\n", g_slot_called, g_iface_val);
-    return 1;
+#define NF435_SCRIPT (*(const CScriptThing*)g_script)
+#define NF435_SCRIPT2 (*(const CScriptThing*)g_script2)
+static void* g_hero = 0; static long g_player[0x40]; static long g_pm[0x40]; static int g_hero_gets = 0;
+CPlayer& CPlayerManager::GetMainPlayer() { return *(CPlayer*)g_player; }
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const { ++g_hero_gets; return (CThingPlayerCreature*)g_hero; }
+static long g_gsi[0x50 / 4];
+static void nf435_hero(void) { g_gsi[0x14 / 4] = (long)g_pm; }
+typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > NF435Map;
+// CVectorMap::LowerBound comes from the row object (the header's template body, the same code retail calls out of line).
+static unsigned char g_thing[0x200];                       // CThing: UsingComponents +0x20, Components +0x44 / +0x48, dead flag byte +0x91
+static unsigned char g_thing2[0x200];
+static NF435Map::value_type g_pairs[3];
+static void nf435_plant(unsigned char* thing, int id, void* tc)   // three sorted entries around id, the bit for id set
+{
+    memset(thing, 0, 0x200);
+    g_pairs[0].first = (ETCInterfaceType)(id - 1); g_pairs[0].second = 0;
+    g_pairs[1].first = (ETCInterfaceType)id;       g_pairs[1].second = (CTCBase*)tc;
+    g_pairs[2].first = (ETCInterfaceType)(id + 1); g_pairs[2].second = 0;
+    *(void**)(thing + 0x44) = g_pairs; *(void**)(thing + 0x48) = g_pairs + 3;
+    thing[0x20 + id / 8] |= (unsigned char)(1 << (id % 8));
+}
+static void nf435_clear(unsigned char* thing, int id) { thing[0x20 + id / 8] &= (unsigned char)~(1 << (id % 8)); }
+static long g_stats[0x80]; static int g_calls = 0; static const void* g_this = 0; static const void* g_arg = 0;
+void CTCInventoryStats::SetCreatureAsKilled(CThing* thing) { ++g_calls; g_this = this; g_arg = thing; }
+static int run(void* hero, bool bit, int calls)
+{
+    nf435_plant(g_thing, 0x14, g_stats); if (!bit) nf435_clear(g_thing, 0x14);
+    g_hero = hero; g_ret = g_thing2; g_calls = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::SetThingAsKilled(NF435_SCRIPT);
+    return g_calls == calls && (!calls || (g_this == (const void*)g_stats && g_arg == (const void*)g_thing2));
+}
+int main(void)
+{
+    nf435_scripts(); nf435_hero();
+    if (!run(g_thing, true, 1) || !run(g_thing, false, 0) || !run(0, true, 0)) { printf("FAIL_0089a270\n"); return 1; }
+    printf("PASS_0089a270 CGameScriptInterface_0089a270_TEST PASS\n"); return 0;
 }

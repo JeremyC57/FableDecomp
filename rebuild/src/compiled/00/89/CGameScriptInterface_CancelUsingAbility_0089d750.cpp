@@ -1,121 +1,41 @@
-// CGameScriptInterface::CancelUsingAbility(long ability) const -- cancel the live hero creature's use of an ability through its special-abilities component (kind 0xa7)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0089D750, length 97 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the component-map LowerBound @ 0x0040F020,
-//          CTCSpecialAbilities::CancelUsingAbility @ 0x0072ACF0 (bool result ignored).
-// Shape: the out-parameter component lookup (`mov eax,[eax+4] ; push ; mov ecx,eax`).
-// Leaf: ?CancelUsingAbility@CGameScriptInterface@@UBEXJ@Z
-// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
-#include "fable_compiler.h"
-struct CTCBase_Retail;
-class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
-    STCEntry_Retail* m_pFirst;
-    STCEntry_Retail* m_pLast;
-    STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
-    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
-    {
-        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCBase_Retail*)it->second);
-    }
-    FABLE_FORCEINLINE CTCBase_Retail* Find(long kind) const
-    {
-        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
-        if (it == m_pLast || kind < it->first)
-            it = m_pLast;
-        return ((CTCBase_Retail*)it->second);
-    }
-};
-typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
-struct CThing_Retail {
-    unsigned char  _pad00[0x10];
-    unsigned char  m_type;                         // +0x10 (1 = a creature)
-    unsigned char  _pad11[0xf];
-    unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
-    unsigned char  _pad40[4];
-    CTCMap_Retail  m_tcs;                          // +0x44
-    unsigned char  _pad50[0x41];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    FABLE_FORCEINLINE unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
-};
-class CThingPlayerCreature : public CThing_Retail { };
-FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-#include "engine/CCountedPointer.h"
-// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+// CGameScriptInterface::CancelUsingAbility(EHeroAbility e) const -- the hero's special abilities component cancels an ability
+// Leaf: ?CancelUsingAbility@CGameScriptInterface@@UBEXW4EHeroAbility@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0089D750. Identity (NF435, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+//   (0x00487DC0), ??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z, ??$GetTC@VCTCSpecialAbilities@@@CThing@@QAE_NPAPAVCTCSpecialAbilities@@@Z (inline in retail: bit 0xA7, LowerBound 0x0040F020), then
+//   ?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z (retail 0x0072ACF0, the call target; its result is unused).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CScriptThing.h"
-class CPlayer { public:
-    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
-    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
-};
-// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
-//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
-//   GetMainPlayerNumber 0x00449700).
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_IS_THING_ALIVE
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCSPECIALABILITIES_FULL
+#define FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
+#define FABLE_RETAIL_CTCSPECIALABILITIES_CANCELUSINGABILITY
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
 #include "engine/CPlayerManager.h"
-class CCharString;
-struct CDefinitionManager_Retail {
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
-};
-class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
-FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
-{
-    CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
-    if (thing->HasTC(kind))
-        tc = GetTC(thing, kind);
-    return tc;
-}
-FABLE_FORCEINLINE CTCBase_Retail* GetTCIfPresentConst(const CThing_Retail* thing, long kind)
-{
-    CTCBase_Retail* tc;
-    if (thing->HasTC(kind))
-        tc = GetTCConst(thing, kind);
-    return tc;
-}
-template <class T> FABLE_FORCEINLINE bool GetTCOut(CThing_Retail* thing, long kind, T** out)   // the out-parameter lookup: the component stays in eax
-{
-    if (thing->HasTC(kind)) {
-        *out = (T*)GetTC(thing, kind);
-        return true;
-    }
-    return false;
-}
-class CCharString { public:                               // fable_string.h layout: one data-block pointer
-    void* m_pData;
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-};
-FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
-{
-    CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
-    return t && !t->m_dead;
-}
-struct CTCSpecialAbilities_Retail { bool CancelUsingAbility(long ability); };   // 0x0072ACF0
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent*         Component;         // +0x08
-    CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager*      PlayerManager;     // +0x14
-    CThingSearchTools*          ThingSearchTools;  // +0x18
-    virtual void CancelUsingAbility(long ability) const;
-};
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/ThingAlive.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCSpecialAbilities.h"
 
-void CGameScriptInterface::CancelUsingAbility(long ability) const
+void CGameScriptInterface::CancelUsingAbility(EHeroAbility e) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
-    CTCSpecialAbilities_Retail* abilities;
-    if (hero && !hero->m_dead && GetTCOut(hero, 0xa7, &abilities))
-        abilities->CancelUsingAbility(ability);
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        CTCSpecialAbilities* abilities;
+        if (hero->GetTC(&abilities))
+            abilities->CancelUsingAbility(e);
+    }
 }

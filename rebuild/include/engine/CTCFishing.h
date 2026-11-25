@@ -32,6 +32,11 @@ public:
  CDefPointer<const CFishingDef> PDef;
  static ETCInterfaceType FABLE_FASTCALL StatGetInterfaceType(){return TCI_FISHING;}
  CDefPointer<const CFishingDef> GetPDef()const{return PDef;}
+#ifdef FABLE_RETAIL_CTCFISHING_GOFISHING
+ // Nested opt-in (NF435, row 0x00895A90 CGameScriptInterface::HeroGoFishing): Ego_r.pdb / FableWin.pdb ?GoFishing@CTCFishing@@QAEX_N@Z, out of
+ // line in retail at 0x007B1EB0 (landed). Declaration only: no layout change.
+ void GoFishing(bool);                                                  // 0x007B1EB0
+#endif
 #ifdef FABLE_RETAIL_CTCFISHING_DRAW_GETTERS
  // Nested opt-in (hand4a, row 0x00649E8B NPlayerGui::CDrawFishingGame::Draw): FableWin.pdb's inline const getters
  // ?GetStage@CTCFishing@@QBE?AW4EFishingStage@@XZ, ?IsStageInitialised@CTCFishing@@QBE_NXZ, ?GetDistance@CTCFishing@@QBEMXZ and

@@ -1,116 +1,68 @@
-#include "fable_compiler.h"
-#include <cstdio>
-#if !defined(_MSC_VER)
-#  define __fastcall
-#  define __stdcall
-#  define __forceinline inline
-#endif
-
-static int  g_consumed;
-static void* g_consumedSelf;
-static unsigned long g_findKey;
-
-struct BObj {
-    unsigned char pad[0x6c];
-    unsigned char flag6c;
-    void consume(BObj* b);   // real member => thiscall, arg on stack
-};
-struct Node { int key; BObj* value; };
-struct MapT {
-    Node* first;
-    Node* end;
-    Node* find(const unsigned long& key);    // the map lower bound (0x0040F020), key by address
-    FABLE_FORCEINLINE BObj* Find(long kind)   // the inlined map find: end when the key is absent
-    {
-        Node* it = find((unsigned long)kind);
-        if (it == end || kind < it->key)
-            it = end;
-        return it->value;
-    }
-};
-struct AObj {
-    unsigned char pad0[0x24];
-    unsigned int field24; // read as [esi+0x24]
-    unsigned char pad2[0x1c];
-    MapT map44;           // at +0x44
-};
-template <class T> FABLE_FORCEINLINE bool GetTCOut(AObj* thing, long kind, T** out)
+// Behaviour test for 0x0089ECC0 CGameScriptInterface::CreatureGeneratorRemoveTriggerer (NF435): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The generator component (0x3D) is planted on the first thing; RemoveCreatureTriggerer must get the second thing when its type flags have bit 8.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCCREATUREGENERATOR
+#define FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS
+#include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCCreatureGenerator.h"
+#include "engine/GFDebugPDynamicCast.h"
+#include <stdio.h>
+#include <string.h>
+static void* g_ret = 0; static void* g_ret2 = 0; static bool g_alive = true; static int g_gets = 0;
+extern "C" void* __fastcall nf435_get_pthing(const void*) { ++g_gets; return g_ret; }     // CScriptThing slot 11 (+0x2c)
+extern "C" void* __fastcall nf435_get_pthing2(const void*) { ++g_gets; return g_ret2; }
+extern "C" bool __fastcall nf435_is_alive(const void*) { return g_alive; }                // CScriptThing slot 75 (+0x12c)
+static void* g_svtbl[79]; static void* g_svtbl2[79]; static void* g_script[3]; static void* g_script2[3];
+static void nf435_scripts(void)
 {
-    if (thing->field24 & 0x20000000) {
-        *out = (T*)thing->map44.Find(kind);
-        return true;
-    }
-    return false;
+    g_svtbl[11] = (void*)&nf435_get_pthing; g_svtbl[75] = (void*)&nf435_is_alive; g_script[0] = g_svtbl;
+    g_svtbl2[11] = (void*)&nf435_get_pthing2; g_svtbl2[75] = (void*)&nf435_is_alive; g_script2[0] = g_svtbl2;
 }
-struct Host { void** vt; };
-
-typedef AObj* (__fastcall *GetA_t)(void*);
-typedef BObj* (__fastcall *GetB_t)(void*);
-
-void __stdcall CGameScriptInterface_CreatureGeneratorRemoveTriggerer(Host* p0, Host* p1)
+#define NF435_SCRIPT (*(const CScriptThing*)g_script)
+#define NF435_SCRIPT2 (*(const CScriptThing*)g_script2)
+typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > NF435Map;
+// CVectorMap::LowerBound comes from the row object (the header's template body, the same code retail calls out of line).
+static unsigned char g_thing[0x200];                       // CThing: UsingComponents +0x20, Components +0x44 / +0x48, dead flag byte +0x91
+static unsigned char g_thing2[0x200];
+static NF435Map::value_type g_pairs[3];
+static void nf435_plant(unsigned char* thing, int id, void* tc)   // three sorted entries around id, the bit for id set
 {
-    AObj* a = ((GetA_t)(p0->vt[0x0b]))(p0);
-    BObj* b = ((GetB_t)(p1->vt[0x0b]))(p1);
-
-    BObj* val;
-    if (GetTCOut(a, 0x3d, &val) && (b->flag6c & 8))
-        val->consume(b);
+    memset(thing, 0, 0x200);
+    g_pairs[0].first = (ETCInterfaceType)(id - 1); g_pairs[0].second = 0;
+    g_pairs[1].first = (ETCInterfaceType)id;       g_pairs[1].second = (CTCBase*)tc;
+    g_pairs[2].first = (ETCInterfaceType)(id + 1); g_pairs[2].second = 0;
+    *(void**)(thing + 0x44) = g_pairs; *(void**)(thing + 0x48) = g_pairs + 3;
+    thing[0x20 + id / 8] |= (unsigned char)(1 << (id % 8));
 }
-
-
-static Node g_end;
-static Node g_hit;
-static BObj g_valObj;
-
-Node* MapT::find(const unsigned long& key) { g_findKey = key; return &g_hit; }
-void  BObj::consume(BObj* b) { (void)b; g_consumed = 1; g_consumedSelf = this; }
-
-static AObj g_a;
-static BObj g_b;
-static AObj* __fastcall getA(void* self) { (void)self; return &g_a; }
-static BObj* __fastcall getB(void* self) { (void)self; return &g_b; }
-
-int main()
+static void nf435_clear(unsigned char* thing, int id) { thing[0x20 + id / 8] &= (unsigned char)~(1 << (id % 8)); }
+static long g_gen[0x40]; static int g_add = 0, g_rem = 0; static const void* g_this = 0; static const void* g_arg = 0;
+void CTCCreatureGenerator::AddCreatureTriggerer(CThingCreatureBase& c) { ++g_add; g_this = this; g_arg = &c; }
+void CTCCreatureGenerator::RemoveCreatureTriggerer(CThingCreatureBase& c) { ++g_rem; g_this = this; g_arg = &c; }
+static long g_gsi[0x50 / 4];
+static int run(bool bit, unsigned long flags, int calls)
 {
-    void* vtA[16]; void* vtB[16];
-    vtA[0x0b] = (void*)(GetA_t)getA;
-    vtB[0x0b] = (void*)(GetB_t)getB;
-    Host h0; h0.vt = vtA;
-    Host h1; h1.vt = vtB;
-
-    g_a.field24 = 0x20000000;
-    g_a.map44.end = &g_end;
-    g_hit.key = 0x10;
-    g_hit.value = &g_valObj;
-    g_b.flag6c = 0x08;
-
-    g_consumed = 0; g_consumedSelf = 0;
-    CGameScriptInterface_CreatureGeneratorRemoveTriggerer(&h0, &h1);
-    if (g_consumed != 1 || g_findKey != 0x3d) { std::printf("FAIL: not consumed\n"); return 1; }
-    if (g_consumedSelf != (void*)&g_valObj) { std::printf("FAIL: wrong self\n"); return 1; }
-
-    // key > 0x3d -> forced to end; end's value used
-    g_end.value = 0;
-    g_hit.key = 0x50;
-    g_consumed = 0; g_consumedSelf = 0;
-    CGameScriptInterface_CreatureGeneratorRemoveTriggerer(&h0, &h1);
-    if (g_consumed != 1) { std::printf("FAIL: case2 not consumed\n"); return 1; }
-    if (g_consumedSelf != (void*)0) { std::printf("FAIL: case2 wrong self\n"); return 1; }
-
-    // the triggerer flag clear -> no call
-    g_hit.key = 0x3d;
-    g_b.flag6c = 0;
-    g_consumed = 0;
-    CGameScriptInterface_CreatureGeneratorRemoveTriggerer(&h0, &h1);
-    if (g_consumed != 0) { std::printf("FAIL: case3 consumed\n"); return 1; }
-
-    // component bit clear -> no-op
-    g_b.flag6c = 0x08;
-    g_a.field24 = 0;
-    g_consumed = 0;
-    CGameScriptInterface_CreatureGeneratorRemoveTriggerer(&h0, &h1);
-    if (g_consumed != 0) { std::printf("FAIL: case4 consumed\n"); return 1; }
-
-    std::printf("CGameScriptInterface_0089ecc0_TEST PASS\n");
-    return 0;
+    nf435_plant(g_thing, 0x3d, g_gen); if (!bit) nf435_clear(g_thing, 0x3d);
+    memset(g_thing2, 0, sizeof g_thing2); *(unsigned long*)(g_thing2 + 0x6c) = flags;
+    g_ret = g_thing; g_ret2 = g_thing2; g_add = 0; g_rem = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::CreatureGeneratorRemoveTriggerer(NF435_SCRIPT, NF435_SCRIPT2);
+    return g_rem == calls && g_add == 0 && (!calls || (g_this == (const void*)g_gen && g_arg == (const void*)g_thing2));
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(true, 8, 1) || !run(true, 0x0e, 1) || !run(true, 4, 0) || !run(false, 8, 0)) { printf("FAIL_0089ecc0\n"); return 1; }
+    printf("PASS_0089ecc0 CGameScriptInterface_0089ecc0_TEST PASS\n"); return 0;
 }

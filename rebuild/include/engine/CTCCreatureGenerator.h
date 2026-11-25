@@ -52,6 +52,13 @@ public:
     virtual CCharString GetClassTypeName() const;            // slot 22 0x0074DA00
     virtual bool IsComponentSerialisable() const;            // slot 23 0x0074DA20
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_GENERATOR; }
+#ifdef FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS
+    // Nested opt-in (NF435, rows 0x0089EC60 / 0x0089ECC0 CGameScriptInterface::CreatureGeneratorAdd/RemoveTriggerer): Ego_r.pdb / FableWin.pdb
+    // ?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z and ?RemoveCreatureTriggerer@..., out of line in retail at
+    // 0x0074AC80 / 0x0074A1E0 (the rows' call targets). Declarations only: no layout change.
+    void AddCreatureTriggerer(CThingCreatureBase&);                      // 0x0074AC80
+    void RemoveCreatureTriggerer(CThingCreatureBase&);                   // 0x0074A1E0
+#endif
     void InitialiseCreatureGenerator(bool);                  // 0x0074B770 ?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
     void DrawDebugInfo(const CEnginePrimitivePrepareInfo&);  // 0x0074BC20 ?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
 protected:

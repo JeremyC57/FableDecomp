@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00895090   RELOCATION_MATCH PASS   ManuallyTriggerTrap
+008950e0   RELOCATION_MATCH PASS   ManuallyResetTrap
+00895430   RELOCATION_MATCH PASS   IsDPadButtonHeldForExpression
+00895a90   RELOCATION_MATCH PASS   HeroGoFishing
+00896210   RELOCATION_MATCH PASS   IsSleepingTime
+0089a270   RELOCATION_MATCH PASS   SetThingAsKilled
+0089a2d0   RELOCATION_MATCH PASS   IsEntityPickLockable
+0089c8a0   RELOCATION_MATCH PASS   IsDeedWitnessed
+0089d750   RELOCATION_MATCH PASS   CancelUsingAbility
+0089ecc0   RELOCATION_MATCH PASS   CreatureGeneratorRemoveTriggerer
+008a12a0   RELOCATION_MATCH PASS   GetNumHousesOwned
+
+WINS: 11
+  00895090 RELOCATION_MATCH CGameScriptInterface::?ManuallyTriggerTrap@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  008950e0 RELOCATION_MATCH CGameScriptInterface::?ManuallyResetTrap@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  00895430 RELOCATION_MATCH CGameScriptInterface::?IsDPadButtonHeldForExpression@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+  00895a90 RELOCATION_MATCH CGameScriptInterface::?HeroGoFishing@CGameScriptInterface@@UBEX_N@Z
+  00896210 RELOCATION_MATCH CGameScriptInterface::?IsSleepingTime@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089a270 RELOCATION_MATCH CGameScriptInterface::?SetThingAsKilled@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089a2d0 RELOCATION_MATCH CGameScriptInterface::?IsEntityPickLockable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089c8a0 RELOCATION_MATCH CGameScriptInterface::?IsDeedWitnessed@CGameScriptInterface@@UBE_NJ@Z
+  0089d750 RELOCATION_MATCH CGameScriptInterface::?CancelUsingAbility@CGameScriptInterface@@UBEXW4EHeroAbility@@@Z
+  0089ecc0 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorRemoveTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  008a12a0 RELOCATION_MATCH CGameScriptInterface::?GetNumHousesOwned@CGameScriptInterface@@UBEJXZ

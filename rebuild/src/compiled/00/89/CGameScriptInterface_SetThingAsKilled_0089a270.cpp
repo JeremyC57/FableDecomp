@@ -1,56 +1,39 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-
-struct CKillInterfaceEntry { int Key; void* Value; };
-struct CKillInterfaceMap { CKillInterfaceEntry* Begin; CKillInterfaceEntry* End; };
-struct CKillTargetView {
-    unsigned char _pad_0x00[0x20];
-    unsigned int TypeFlags;
-    unsigned char _pad_0x24[0x20];
-    CKillInterfaceMap Interfaces;
-};
-class CThingPlayerCreature : public CKillTargetView { };
-class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-
-struct CScriptThingArgument;
-struct CScriptThingArgumentVTable {
-    unsigned char _pad_0x00[0x2c];
-    int (__fastcall* GetValue)(CScriptThingArgument* self);
-};
-struct CScriptThingArgument { CScriptThingArgumentVTable* __vftable; };
-
-struct CKillInterface;
-struct CKillInteger { int Value; };
-struct CKillMapKey { const int* Value; };
-
-// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
-//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
-//   GetMainPlayerNumber 0x00449700).
+// CGameScriptInterface::SetThingAsKilled(const CScriptThing& entity) const -- the hero's inventory stats count the thing as killed
+// Leaf: ?SetThingAsKilled@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0089A270. Identity (NF435, 2026-11-25): the retail RTTI vftable placement of
+//   CGameScriptInterface (vtable 0x01260F0C, ghidra_out/labels_rtti_port.tsv) names this PDB member here, and Ego_r.pdb /
+//   FableWin.pdb list the symbol (two sources); defined on the real class of engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT).
+// FableWin's /Od body: PlayerManager (+0x14) ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (0x00449970), ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+//   (0x00487DC0), the null test, ??$GetTC@VCTCInventoryStats@@@CThing@@QAE_NPAPAVCTCInventoryStats@@@Z (inline in retail: bit 0x14, LowerBound
+//   0x0040F020), then ?SetCreatureAsKilled@CTCInventoryStats@@QAEXPAVCThing@@@Z (retail 0x005D66BA) with entity.GetPThing() (slot 11, +0x2c).
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_PLAYER
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTHINGPLAYERCREATURE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCINVENTORYSTATS
+#define FABLE_RETAIL_CTCINVENTORYSTATS_SETCREATUREASKILLED
+#include "engine/CGameScriptInterface.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 #include "engine/CPlayerManager.h"
- /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
-extern CKillInterfaceEntry* __fastcall VMap_LowerBound(
-    CKillInterfaceMap* self, CKillMapKey key);
-extern void __fastcall Iface_Do(CKillInterface* self, CKillInteger value);
+#include "engine/CPlayer.h"
+#include "engine/CThing.h"
+#include "engine/CThingPlayerCreature.h"
+#include "engine/CTCInventoryStats.h"
 
-void __fastcall CGameScriptInterface_SetThingAsKilled(
-    const CGameScriptInterface* self, int edx_unused,
-    CScriptThingArgument* thing)
+void CGameScriptInterface::SetThingAsKilled(const CScriptThing& entity) const
 {
-    int key;
-    (void)edx_unused;
-    CPlayer* value = (&((CPlayerManager*)(((CGameScriptInterface*)self)->PlayerManager))->GetMainPlayer());
-    CKillTargetView* target = value->GetPControlledCreature();
-    if (target != 0 && (target->TypeFlags & 0x100000)) {
-        CKillInterfaceMap* map = &target->Interfaces;
-        CKillMapKey mapKey;
-        key = 0x14;
-        mapKey.Value = &key;
-        CKillInterfaceEntry* entry = VMap_LowerBound(map, mapKey);
-        CKillInterfaceEntry* end = map->End;
-        if (entry == end || entry->Key > 0x14)
-            entry = end;
-        CKillInterface* interfaceValue = (CKillInterface*)entry->Value;
-        CKillInteger boxed;
-        boxed.Value = thing->__vftable->GetValue(thing);
-        Iface_Do(interfaceValue, boxed);
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (hero) {
+        CTCInventoryStats* stats;
+        if (hero->GetTC(&stats))
+            stats->SetCreatureAsKilled(entity.GetPThing());
     }
 }

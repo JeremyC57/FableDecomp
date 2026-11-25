@@ -30,6 +30,11 @@ public:
     virtual ETCInterfaceType GetInterfaceType() const;
 #endif
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_HERO_OPINION_DEED_LOG; }
+#ifdef FABLE_RETAIL_CTCHEROOPINIONDEEDLOG_ISDEEDWITNESSED
+    // Nested opt-in (NF435, row 0x0089C8A0 CGameScriptInterface::IsDeedWitnessed): Ego_r.pdb / FableWin.pdb
+    // ?IsDeedWitnessed@CTCHeroOpinionDeedLog@@QAE_NJ_N@Z, out of line in retail at 0x006C5E90 (landed). Declaration only: no layout change.
+    bool IsDeedWitnessed(long, bool);                                    // 0x006C5E90
+#endif
     long PostDeed(EOpinionDeedType type, const C3DVector& position, const CThing* thing, CThingAICreature* creature,
                   EOpinionPostDeedType postType, bool b1, bool b2, const CFaction* faction, bool b3, long l1);   // 0x006C6990
 private:

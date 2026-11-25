@@ -43,6 +43,12 @@ public: EHeroAbility GetCurrentAbilityBeingUsed() const { return CurrentAbility;
 // out of line in retail at 0x0072AF30 (`push ebx ; mov esi,ecx ; call 0x0072AF30`, 0x0072C437). Declaration only; no layout change.
 public: bool IsAbleToUseAnyAbility(EHeroAbility type) const;              // 0x0072AF30
 #endif
+#ifdef FABLE_RETAIL_CTCSPECIALABILITIES_CANCELUSINGABILITY
+// Opt-in (NF435, row 0x0089D750 CGameScriptInterface::CancelUsingAbility): Ego_r.pdb / FableWin.pdb
+// ?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z, out of line in retail at 0x0072ACF0 (the row's call target). Declaration
+// only; no layout change.
+public: bool CancelUsingAbility(EHeroAbility);                            // 0x0072ACF0
+#endif
 #ifdef FABLE_RETAIL_CTCSPECIALABILITIES_GUI_DRAW_PASS23
  // Both original ctor/dtor and exact static interface API, full branch only.
  CTCSpecialAbilities(CThing&);virtual ~CTCSpecialAbilities();
