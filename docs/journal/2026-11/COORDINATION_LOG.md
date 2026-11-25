@@ -1380,3 +1380,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: filed NF441 hand-back (research only; 7 port-only name fixes queued); NF440 resumed on the bg emitter pilot; NF444 started (GameCODA render header port).
 - 2026-11-25 A: owner: agent cap drops from 4 to 3 once the next running agent finishes (no replacement for it).
 - 2026-11-25 A: landed NF440 bg1p-bg4p (170 registered best guesses, 145 debt lines); NF440 done, agent cap now 3 (no replacement).
+- 2026-11-25 A: NF444 round 1 all HOLD on closure; R-NF444-1 granted with conditions, R-NF444-2 declined; NF444 resumed (cap 3: NF442, NF443, NF444); proven-vs-guess clash rule sent to NF442 / NF443.

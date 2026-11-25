@@ -26,7 +26,7 @@ These rows are self respells. Each one moves a `CCountedPointer` stand-in self (
 Self-test: a PDB-named registry line at 0x00401067 took that address out of proven (34,391 → 34,390) and graded it agree_descriptive. The best-guess total did not move. The line was then reverted.
 
 ## Landed later the same day: 170 rows (`batches/..._nf440_bg1p` .. `_bg4p`, 50 / 50 / 50 / 20)
-NF440's emitter pilot cleared all of them.
+NF440's emitter check found no reason to hold any of them. Note (advisor, 2026-11-25): that check could not fail by construction, because every guessed name was chosen where nothing binds it. What it produced is the debt list, not validation. Do not make it a gate for later CCountedPointer candidates. If a proven name later clashes with a guess (SYMBOL_ELSEWHERE), the guess loses: correct the registry line and the row.
 - **Emitters:** NF440 compiled 4,909 candidate rows whose include tree spells `CCountedPointer<T>`. Every object that defines a guessed symbol was run through pk_all against its batch's addresses.
 - **Result:** no reached NEQ, and no relocation maps a guessed name to another address.
 - **Debt:** 145 lines of unreached NEQ copies, in `bgNp/DEBT.tsv` (per-row tables in `bgNp/emit_table.tsv`). The nf440 T3 family line covers them.
