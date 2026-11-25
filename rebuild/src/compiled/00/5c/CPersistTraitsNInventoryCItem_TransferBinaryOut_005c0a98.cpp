@@ -25,7 +25,8 @@
 //   GetPerItemData, GetAverageBoughtPrice; inferred one-member bodies); engine/CPersistTraits.h FABLE_RETAIL_CPERSISTTRAITS_BINARYOUT_CONSTREF
 //   (the primary template's writer by const reference, declaration only, so this member can be specialised as TransferIn is).
 // Inferred: the getter bodies (Ego_d / FableWin names; each returns its member, which the retail loads show).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CDEFSTRINGTABLE

@@ -33,7 +33,8 @@
 //   ~CCountedPointer<NInventory::CPerItemData> 0x005C04BF, free 0x00BFEA14.
 // Overlay (add-only opt-ins): engine/NInventory_CTCInventoryBase.h FABLE_RETAIL_NINVENTORY_CITEM_TRANSFERIN (the CItem(long, long, const
 //   CPerItemData*, long) declaration; the implicit destructor); engine/CPersistTraits.h FABLE_RETAIL_CPERSISTTRAITS_CCHARSTRING_TRANSFERIN_DECL.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CPARSEDITEM
 #define FABLE_RETAIL_CCHARSTRING

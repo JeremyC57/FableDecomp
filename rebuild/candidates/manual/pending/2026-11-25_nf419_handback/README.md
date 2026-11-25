@@ -15,7 +15,7 @@ Landing notes:
 - 2 rows (005bc3ed, 005c36c2) were first held because their RESULTS gave the full anonymous-namespace symbol; the lander accepts the
   `...?A0x` prefix (the hash depends on the build path). Relanded in `_r` with the prefix.
 - 3 rows (005bde50, 005bf414, 005bf4ed) were held by Account A's own round-9 claim (NF100), never closed: closed and relanded in `_r`.
-- 4 rows stay held by Account B's open 2026-11-20 claims (T3 `nf419 ... held`).
+- 4 rows (005bfd5e, 005c0a98, 005b01fe, 005c2118) were held by Account B claims from 2026-11-20; the owner had the stale claims closed and they landed as `2026-11-24_landing_nf419_h`.
 - reserved_check reported 005bfd5e (held) and 005cda50 (landed) as reserved by B's Codex passes 27 / 26; both passes are landed
   and merged (B stopped), so the reservation is stale.
 

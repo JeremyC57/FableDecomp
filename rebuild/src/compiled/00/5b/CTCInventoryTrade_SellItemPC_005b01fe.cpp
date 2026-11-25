@@ -6,7 +6,7 @@
 //   The Buy text reuses p_text the same way (Ego_d 7617 78 B / 7618 22 B; byte-neutral). Ego_d 7410 (6 B, inside the NumSellable
 //   test) stays unidentified: no statement placed for it.
 // Leaf: ?SellItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005B01FE, 2222 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005B01FE, 2222 bytes, `ret 8`. Frame-pointer size TU: optimize("s", on).
 // Callees: map<CComponent*,pair<long,long> >::operator[] 0x005B322B (ItemsToSell / ItemsToBuy), CTCInventoryStats::GetXString 0x005CC772,
 //   CCharString(const char*,long) 0x0099EBF0 / () 0x0099E4B0 / copy 0x0099EC30 / = 0x0099EFB0 / ~ 0x0099EAE0, GetMenuBranchFromDefIndexPC
 //   0x0059C0C6, map<CComponent*,pair<CWideString,long> >::operator[] 0x005B3100 (NumSellableThings), CWideString copy 0x0099B720 / ()
@@ -28,7 +28,8 @@
 //   tails (one `operator=` call after the `push &g_..Subtitle` of each arm); the sold item's category inventory is found with GetTC on
 //   the hero, the affordability loop uses PeekTC; a buy entry that is new is keyed by the buy map's size, as retail does (`mov eax,
 //   [esi+148h]`: _M_node_count); the dead parameters' slots are reused by the compiler for the GetTC key and the `found` flag.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

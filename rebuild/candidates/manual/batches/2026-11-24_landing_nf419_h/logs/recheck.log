@@ -1,0 +1,14 @@
+addr       parity           behav  name
+005b01fe   WARN RELOC_NAME: ?BuyItem@CTCShop@@QAEXJ@Z -> 00774d20 labelled '_global::CTCShop_SellHighlightedItem'
+005b01fe   RELOCATION_MATCH PASS   SellItemPC
+005bfd5e   WARN RELOC_NAME: ??$TransferVector@VCItem@NInventory@@@CPersistContext@@QAEXPBDAAV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@Z -> 005c2b8b labelled 'CPersistContext::TransferVector<NInventory::CItem>'
+005bfd5e   WARN RELOC_NAME: ??1?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005bfd5e   RELOCATION_MATCH PASS   OnSerialise
+005c0a98   RELOCATION_MATCH PASS   TransferBinaryOut
+005c2118   RELOCATION_MATCH PASS   TransferIn
+
+WINS: 4
+  005b01fe RELOCATION_MATCH CTCInventoryTrade::?SellItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+  005bfd5e RELOCATION_MATCH NInventory::CTCInventoryBase::?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z
+  005c0a98 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferBinaryOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCDataOutputStream@@ABVCItem@NInventory@@@Z
+  005c2118 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferIn@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCItem@NInventory@@@Z
