@@ -1,29 +1,34 @@
 // Behaviour test for 0x004E046F CTrophyDef::Copy (NF425): links the row object; CTrophyDef::operator= is defined here and records its `this` and
 // argument, so the test checks the copy goes from `other` into `this` exactly once (a swapped or doubled copy fails).
+// Ported (NF427 round 2, 2026-11-25): no class body is defined here; the classes come from the shared headers (the row's
+//   prelude below, verbatim, plus engine/CTrophyDef.h). Removed local bodies: CTrophyDef. The members the test supplies (??4CTrophyDef@@QAEAAV0@ABV0@@Z) and the row's CTrophyDef::Copy are
+//   reached through extern "C" __fastcall stand-ins mapped by /alternatename (ecx = this, edx unused, stack arguments
+//   popped by the callee: the __thiscall frame); sizes and offsets are the retail literals of the original test.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "rebuild_abi.h"
+#include "engine/CSubDefClassBase.h"
+#include "engine/CTrophyDef.h"
 #include <stdio.h>
 
 class CDefClassBase;
-class CTrophyDef
-{
-public:
-    virtual void Copy(const CDefClassBase* other);   // defined in the row object
-    CTrophyDef& operator=(const CTrophyDef& other);
-    char pad[64];
-};
 
 static const void* g_this = 0;
 static const void* g_other = 0;
 static int g_calls = 0;
-CTrophyDef& CTrophyDef::operator=(const CTrophyDef& other) { g_this = this; g_other = &other; ++g_calls; return *this; }
+extern "C" void* __fastcall nf427_assign(void* self, int edx_unused, const void* other) { g_this = self; g_other = other; ++g_calls; return self; }   // CTrophyDef::operator=
+#pragma comment(linker, "/alternatename:??4CTrophyDef@@QAEAAV0@ABV0@@Z=@nf427_assign@12")
 
 static long g_dst[32];
 static long g_src[32];
 
+extern "C" void __fastcall nf427_copy(void* self, int edx_unused, const void* other);   // the row's CTrophyDef::Copy
+#pragma comment(linker, "/alternatename:@nf427_copy@12=?Copy@CTrophyDef@@UAEXPBVCDefClassBase@@@Z")
+
 int main(void)
 {
-    CTrophyDef* dst = (CTrophyDef*)g_dst;
+    void* dst = g_dst;
     const CDefClassBase* src = (const CDefClassBase*)g_src;
-    dst->CTrophyDef::Copy(src);
+    nf427_copy(dst, 0, src);
     if (g_calls != 1 || g_this != (const void*)g_dst || g_other != (const void*)g_src) {
         printf("FAIL_004e046f calls=%d\n", g_calls);
         return 1;

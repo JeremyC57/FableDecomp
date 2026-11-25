@@ -27,6 +27,28 @@ public:
 #endif
 };
 #else
+#ifdef FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127A894 (RTTI .?AVCCreatureAction_GoUnderground@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_GoUnderground); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_GoUnderground : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008B75E0 ?PerformAction@CCreatureAction_GoUnderground@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008B6A20 ?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008B8970 ?Clone@CCreatureAction_GoUnderground@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B69F0 ?Initialise@CCreatureAction_GoUnderground@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x008B86A0 ?IsToEvadeAllHits@CCreatureAction_GoUnderground@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GoUnderground) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_GoUnderground {
 public:
@@ -47,6 +69,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_GoUnderground) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_GoUnderground, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_VIRTUAL_MODEL
 #endif // FABLE_RETAIL_CCREATUREACTION_GOUNDERGROUND_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_GOUNDERGROUND_H

@@ -1,27 +1,56 @@
 // Behaviour test for 0x008BE8B0 CCreatureAction_BuildUpWillSummonSpell::Clone (NF425): links the row object; operator new and the base copy constructor are defined here.
 // Checks: one allocation of 0x114 bytes; the base copy constructor runs once into the block from `*this`; the block gets the class's
 // vftable pointer (the source's, as both are CCreatureAction_BuildUpWillSummonSpell objects); the class's own members are copied; 0 with no construction when new fails.
+// Ported (NF427 round 2, 2026-11-25): no class body is defined here; the classes come from the shared headers (the row's
+//   prelude below, verbatim, plus engine/CCreatureAction_BuildUpWillSummonSpell.h). Removed local bodies: CCombatActionBase, CCreatureAction_BuildUpWillSummonSpell. The members the test supplies (??0CCombatActionBase@@QAE@ABV0@@Z) and the row's CCreatureAction_BuildUpWillSummonSpell::Clone are
+//   reached through extern "C" __fastcall stand-ins mapped by /alternatename (ecx = this, edx unused, stack arguments
+//   popped by the callee: the __thiscall frame); sizes and offsets are the retail literals of the original test.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#define FABLE_RETAIL_CCREATUREACTION_BUILDUPWILLSUMMONSPELL_VIRTUAL_MODEL
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+#include "engine/CCreatureAction_BuildUpWillSummonSpell.h"
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
 
 static int g_ctors = 0; static const void* g_this = 0; static const void* g_other = 0;
 class CCreatureActionBase;
-class CCombatActionBase
-{
-public:
-    CCombatActionBase(const CCombatActionBase& other);
-    void* vptr_;
-    unsigned char _base[0x114 - 4];
-};
-CCombatActionBase::CCombatActionBase(const CCombatActionBase& other) { g_this = this; g_other = &other; ++g_ctors; memcpy(_base, other._base, 0x114 - 4); }
-class CCreatureAction_BuildUpWillSummonSpell : public CCombatActionBase
-{
-    friend int main(void);
-public:
-public:
-    virtual CCreatureActionBase* Clone() const;   // defined in the row object
-};
+extern "C" void* __fastcall nf427_copy_ctor(void* self, int edx_unused, const void* other) { g_this = self; g_other = other; ++g_ctors; memcpy((unsigned char*)self + 4, (const unsigned char*)other + 4, 0x114 - 4); return self; }   // CCombatActionBase::CCombatActionBase
+#pragma comment(linker, "/alternatename:??0CCombatActionBase@@QAE@ABV0@@Z=@nf427_copy_ctor@12")
 // The row object emits the class's vftable (its inlined copy constructor stores it); the test never calls through it, so
 // every slot target the object leaves unresolved is mapped onto one unused stub for the link.
 extern "C" void nf425_unused_slot(void) { }
@@ -111,18 +140,21 @@ static unsigned int g_size = 0; static int g_news = 0, g_fail = 0;
 static long g_block[0x114 / 4 + 4];
 void* operator new(size_t n) { g_size = (unsigned int)n; ++g_news; return g_fail ? 0 : (void*)g_block; }
 
+extern "C" CCreatureActionBase* __fastcall nf427_clone(const void* self);   // the row's CCreatureAction_BuildUpWillSummonSpell::Clone
+#pragma comment(linker, "/alternatename:@nf427_clone@4=?Clone@CCreatureAction_BuildUpWillSummonSpell@@UBEPAVCCreatureActionBase@@XZ")
+
 int main(void)
 {
     static long src_store[0x114 / 4 + 4];
     unsigned char* s = (unsigned char*)src_store;
     for (int i = 4; i < 0x114; ++i) s[i] = (unsigned char)(i * 7 + 3);
-    const CCreatureAction_BuildUpWillSummonSpell* src = (const CCreatureAction_BuildUpWillSummonSpell*)(void*)src_store;
-    CCreatureActionBase* r = src->CCreatureAction_BuildUpWillSummonSpell::Clone();
+    const void* src = (void*)src_store;
+    CCreatureActionBase* r = nf427_clone(src);
     unsigned char* d = (unsigned char*)g_block;
     int ok = r == (CCreatureActionBase*)(void*)g_block && g_news == 1 && g_size == 0x114 && g_ctors == 1 && g_this == (void*)g_block && g_other == (const void*)src_store
         && memcmp(d + 4, s + 4, 0x114 - 4) == 0 && *(void**)d != 0;
     g_fail = 1;
-    r = src->CCreatureAction_BuildUpWillSummonSpell::Clone();
+    r = nf427_clone(src);
     ok = ok && r == 0 && g_news == 2 && g_ctors == 1;
     if (!ok) {
         printf("008be8b0_TEST FAIL news=%d ctors=%d size=%u\n", g_news, g_ctors, g_size);

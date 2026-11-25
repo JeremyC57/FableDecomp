@@ -8218,9 +8218,6 @@ T3	emit ?IsKnockdownStrike@CCombatActionBase@@MBE_NXZ	CCombatActionBase	1	1	engi
 T3	emit ?GetAnimationTransitionInTime@CCombatActionBase@@UBEJXZ	CCombatActionBase	1	1	engine/CCombatActionBase.h	008571a0
 T3	emit ?UpdateActionRunningTime@CCombatActionBase@@UAEXXZ	CCombatActionBase	1	1	engine/CCombatActionBase.h	008579d0
 T3	emit ?GetWeaponTrailUsedInStrikeAction@CCombatActionBase@@MBEPAVCTCWeaponTrail@@AAJ@Z	CCombatActionBase	1	1	engine/CCombatActionBase.h	00857d10
-T3	emit ?Clone@CCombatAction_FallStunned@@UBEPAVCCreatureActionBase@@XZ	CCombatAction_FallStunned	1	1		008edc10
-T3	emit ?Clone@CCombatAction_GenericBreakOffDrain@@UBEPAVCCreatureActionBase@@XZ	CCombatAction_GenericBreakOffDrain	1	1		00690e30
-T3	emit ?Clone@CCombatAction_GenericResponseToDecapitation@@EBEPAVCCreatureActionBase@@X	CCombatAction_GenericResponseToDecapitation	1	1	engine/CCombatAction_GenericResponseToDecapitation.h	0066a780
 T3	emit ?Clone@CCombatAction_GenericResponseToDrain@@UBEPAVCCreatureActionBase@@XZ	CCombatAction_GenericResponseToDrain	1	1	engine/CCombatAction_GenericResponseToDrain.h	0066a880
 T3	emit ?Clone@CCombatAction_GenericStrikeResponse@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_GenericStrikeResponse	1	1	engine/CCombatAction_GenericStrikeResponse.h	00868500
 T3	emit ?SetHitter@CCombatAction_GenericStrikeResponseBase@@UAEXABVCThing@@@Z	CCombatAction_GenericStrikeResponseBase	1	1	engine/CCombatAction_GenericStrikeResponseBase.h	006f5720
@@ -8229,21 +8226,10 @@ T3	emit ??_GCCombatAction_GenericStrikeResponseKnockdownRecover@@UAEPAXI@Z	CComb
 T3	emit ?IsToEvadeAllHits@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UBE_N	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h	00865b30
 T3	emit ?FrameUpdate@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h	00866d80
 T3	emit ?Clone@CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@UBEPAVCCrea	CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	1	1	engine/CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath.h	007f06d0
-T3	emit ?Clone@CCombatAction_Guildmaster_HealFollowersInto@@EBEPAVCCreatureActionBase@@X	CCombatAction_Guildmaster_HealFollowersInto	1	1		00978650
-T3	emit ?Clone@CCombatAction_Guildmaster_HealFollowersRelease@@EBEPAVCCreatureActionBase	CCombatAction_Guildmaster_HealFollowersRelease	1	1		008e5070
-T3	emit ?Clone@CCombatAction_Guildmaster_ShieldFollowersInto@@EBEPAVCCreatureActionBase@	CCombatAction_Guildmaster_ShieldFollowersInto	1	1		00978680
-T3	emit ?Clone@CCombatAction_Guildmaster_ShieldFollowersRelease@@EBEPAVCCreatureActionBa	CCombatAction_Guildmaster_ShieldFollowersRelease	1	1		008e50a0
-T3	emit ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@EBEPAVCCreatureActionBase	CCombatAction_Guildmaster_SpeedUpFollowersInto	1	1		009786b0
-T3	emit ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersRelease@@EBEPAVCCreatureActionB	CCombatAction_Guildmaster_SpeedUpFollowersRelease	1	1		008e50d0
 T3	emit ?FinishAction@CCombatAction_KickThingOnGround@@UAEXXZ	CCombatAction_KickThingOnGround	1	1	engine/CCombatAction_KickThingOnGround.h	0087ebd0
-T3	emit ?Clone@CCombatAction_RecoverFromDazed@@UBEPAVCCreatureActionBase@@XZ	CCombatAction_RecoverFromDazed	1	1		008e4e00
 T3	emit ?Clone@CCombatAction_StrikeResponseJackOfBladesIntoRush@@EBEPAVCCreatureActionBa	CCombatAction_StrikeResponseJackOfBladesIntoRush	1	1	engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h	008c3c10
 T3	emit ?Clone@CCombatAction_StrikeResponseMazeDoForcePush@@EBEPAVCCreatureActionBase@@X	CCombatAction_StrikeResponseMazeDoForcePush	1	1		006f8390
 T3	emit ?Clone@CCombatAction_StrikeResponseScorpionKing@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_StrikeResponseScorpionKing	1	1	engine/CCombatAction_StrikeResponseScorpionKing.h	006f8500
-T3	emit ?Clone@CCombatAction_WillEnflameInto@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_WillEnflameInto	1	1	engine/CCombatAction_WillEnflameInto.h	009569e0
-T3	emit ?Clone@CCombatAction_WillForcePushInto@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_WillForcePushInto	1	1	engine/CCombatAction_WillForcePushInto.h	008c3c80
-T3	emit ?Clone@CCombatAction_WillHealRelease@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_WillHealRelease	1	1		008c3cb0
-T3	emit ?Clone@CCombatAction_WillShieldInto@@EBEPAVCCreatureActionBase@@XZ	CCombatAction_WillShieldInto	1	1	engine/CCombatAction_WillShieldInto.h	00956990
 T3	emit ??_GCCombatManager@@UAEPAXI@Z	CCombatManager	1	1	engine/CCombatManager.h	006f5120
 T3	emit ??_ECCombatSequence2StrikeCombo@@UAEPAXI@Z	CCombatSequence2StrikeCombo	1	1	engine/CCombatSequence2StrikeCombo.h	008b4f50
 T3	emit ?IsSequenceWithActions@CCombatSequenceGeneric@@UBE_NXZ	CCombatSequenceGeneric_Retail	1	1		008b06b0
@@ -8354,10 +8340,6 @@ T3	emit ?GetAnimationIndex@CCreatureActionBase@@UBEJXZ	CCreatureActionBase	1	1	e
 T3	emit ?InitialiseActionMovement@CCreatureActionBase@@MAEXXZ	CCreatureActionBase	1	1	engine/CCreatureActionBase.h	00692c80
 T3	emit ?GetActionStartRunningTimeSeconds@CCreatureActionBase@@MBEMXZ	CCreatureActionBase_Methods	1	1		006923a0
 T3	emit ?UpdateActionRunningTime@CCreatureActionBase@@UAEXXZ	CCreatureActionBase_Methods	1	2		00692480
-T3	emit ?Clone@CCreatureActionHeroJump@@UBEPAVCCreatureActionBase@@XZ	CCreatureActionHeroJump	1	1		0085bc80
-T3	emit ?Clone@CCreatureAction_BalverineBreakOffFromCombat@@UBEPAVCCreatureActionBase@@X	CCreatureAction_BalverineBreakOffFromCombat	1	1	engine/CCreatureAction_BalverineBreakOffFromCombat.h	008cd3a0
-T3	emit ?Clone@CCreatureAction_BalverineBreakOffFromCombatLong@@UBEPAVCCreatureActionBas	CCreatureAction_BalverineBreakOffFromCombatLong	1	1	engine/CCreatureAction_BalverineBreakOffFromCombatLong.h	008cd3d0
-T3	emit ?Clone@CCreatureAction_BalverineLungeAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BalverineLungeAttack	1	1	engine/CCreatureAction_BalverineLungeAttack.h	008cd370
 T3	emit ?Clone@CCreatureAction_BanditKingAdvance@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BanditKingAdvance	1	1	engine/CCreatureAction_BanditKingAdvance.h	00906f40
 T3	emit ?IsToCauseRecoil@CCreatureAction_BanditKingAttack@@UBE_NXZ	CCreatureAction_BanditKingAttack	1	1	engine/CCreatureAction_BanditKingAttack.h	008c8080
 T3	emit ?Clone@CCreatureAction_BanditKingAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BanditKingAttack	1	1	engine/CCreatureAction_BanditKingAttack.h	008c97e0
@@ -8366,7 +8348,6 @@ T3	emit ?Clone@CCreatureAction_BanditKingBackOff@@UBEPAVCCreatureActionBase@@XZ	
 T3	emit ?Clone@CCreatureAction_BanditKingGetHit@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BanditKingGetHit	1	1	engine/CCreatureAction_BanditKingGetHit.h	006f8830
 T3	emit ?OnAnimationLoaded@CCreatureAction_BanditKingLunge@@UAEXXZ	CCreatureAction_BanditKingLunge	1	1	engine/CCreatureAction_BanditKingLunge.h	008c7f40
 T3	emit ?PerformAction@CCreatureAction_BanditKingLunge@@UAEXXZ	CCreatureAction_BanditKingLunge	1	1	engine/CCreatureAction_BanditKingLunge.h	008c8180
-T3	emit ?Clone@CCreatureAction_BanditKingLunge@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BanditKingLunge	1	1	engine/CCreatureAction_BanditKingLunge.h	00961a70
 T3	emit ?IsToCauseRecoil@CCreatureAction_BanditKingStuck@@UBE_NXZ	CCreatureAction_BanditKingStuck	1	1	engine/CCreatureAction_BanditKingStuck.h	008c80e0
 T3	emit ?FinishAction@CCreatureAction_BanditKingStuck@@UAEXXZ	CCreatureAction_BanditKingStuck	1	1	engine/CCreatureAction_BanditKingStuck.h	008c8f70
 T3	emit ?FinishAction@CCreatureAction_BanditKingStuckGetHit@@UAEXXZ	CCreatureAction_BanditKingStuckGetHit	1	1		008c91e0
@@ -8375,92 +8356,44 @@ T3	emit ?Clone@CCreatureAction_BanditKingUnstuck@@UBEPAVCCreatureActionBase@@XZ	
 T3	emit ?IsKnockdownStrike@CCreatureAction_BanditKingUnstuck@@UBE_NXZ	CCreatureAction_BanditKingUnstuck_Methods	1	1		008c9610
 T3	emit ?FinishAction@CCreatureAction_BattleChargeImpact@@UAEXXZ	CCreatureAction_BattleChargeImpact	1	1	engine/CCreatureAction_BattleChargeImpact.h	008cd820
 T3	emit ?FinishAction@CCreatureAction_BattleChargeMiss@@UAEXXZ	CCreatureAction_BattleChargeMiss	1	1	engine/CCreatureAction_BattleChargeMiss.h	008cda30
-T3	emit ?Clone@CCreatureAction_BeStunned@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BeStunned	1	1		00868390
-T3	emit ?Clone@CCreatureAction_BeetleLand@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BeetleLand	1	1		00982d40
-T3	emit ?Clone@CCreatureAction_BeetleTakeOff@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BeetleTakeOff	1	1		00982d10
 T3	emit ??_ECCreatureAction_BlockBroken@@UAEPAXI@Z	CCreatureAction_BlockBroken	1	1		00739cc0
-T3	emit ?Clone@CCreatureAction_BlockBroken@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BlockBroken	1	1		00739d80
 T3	emit ?Clone@CCreatureAction_BlockRespond@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BlockRespond	1	1	engine/CCreatureAction_BlockRespond.h	00855e50
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_BlockRespond@@UBE_NXZ	CCreatureAction_BlockRespond_Methods	1	1		00855d50
-T3	emit ?Clone@CCreatureAction_BodgeSideStrike@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BodgeSideStrike	1	1	engine/CCreatureAction_BodgeSideStrike.h	008c0340
-T3	emit ?Clone@CCreatureAction_BreakIntoMelee@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BreakIntoMelee	1	1		006f8800
 T3	emit ?Clone@CCreatureAction_BriarRoseConcentrateOutof@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BriarRoseConcentrateOutof	1	1		008c3d60
 T3	emit ?Clone@CCreatureAction_BriarRoseShotFarInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_BriarRoseShotFarInto	1	1	engine/CCreatureAction_BriarRoseShotFarInto.h	009573a0
-T3	emit ?Clone@CCreatureAction_CastStrengthBerserk@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastStrengthBerserk	1	1	engine/CCreatureAction_CastStrengthBerserk.h	008e6eb0
-T3	emit ?Clone@CCreatureAction_CastStrengthMultiStrike@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastStrengthMultiStrike	1	1	engine/CCreatureAction_CastStrengthMultiStrike.h	008e6f10
 T3	emit ?Clone@CCreatureAction_CastTimeSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastTimeSpell	1	1	engine/CCreatureAction_CastTimeSpell.h	008cee70
-T3	emit ?Clone@CCreatureAction_CastWillDrainLifeSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastWillDrainLifeSpell	1	1		006f8280
-T3	emit ?Clone@CCreatureAction_CastWillEnflameSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastWillEnflameSpell	1	1	engine/CCreatureAction_CastWillEnflameSpell.h	008be350
-T3	emit ?Clone@CCreatureAction_CastWillLightningSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CastWillLightningSpell	1	1	engine/CCreatureAction_CastWillLightningSpell.h	008be910
 T3	emit ?PerformAction@CCreatureAction_CastWillTurncoatSpell@@UAEXXZ	CCreatureAction_CastWillTurncoatSpell	1	1		008b95a0
-T3	emit ?Clone@CCreatureAction_Charge@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_Charge	1	1	engine/CCreatureAction_Charge.h	008b8a60
-T3	emit ?Clone@CCreatureAction_ChargeStrike@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ChargeStrike	1	1		008b8a90
-T3	emit ?Clone@CCreatureAction_CombatBoast@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CombatBoast	1	1	engine/CCreatureAction_CombatBoast.h	006f8710
 T3	emit ?Clone@CCreatureAction_CombatIdle@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_CombatIdle	1	1	engine/CCreatureAction_CombatIdle.h	006f86e0
 T3	emit ?PerformAction@CCreatureAction_DeclarePlayerACriminal@@UAEXXZ	CCreatureAction_DeclarePlayerACriminal	1	1	engine/CCreatureAction_DeclarePlayerACriminal.h	008492b0
-T3	emit ?Clone@CCreatureAction_DiagonalStrafeBL@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DiagonalStrafeBL	1	1	engine/CCreatureAction_DiagonalStrafeBL.h	008c0210
-T3	emit ?Clone@CCreatureAction_DiagonalStrafeBR@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DiagonalStrafeBR	1	1	engine/CCreatureAction_DiagonalStrafeBR.h	008c0240
 T3	RTTI names ?FinishAction@CCombatAction_GenericResponseToDecapitation@@UAEXXZ	CCreatureAction_Die	1	1	engine/CCreatureAction_Die.h	00865e20
 T3	RTTI names ?FinishAction@CCreatureAction_StabbedToDeath@@UAEXXZ	CCreatureAction_Die	1	1	engine/CCreatureAction_Die.h	0087e840
 T3	RTTI names ?FinishAction@CCreatureAction_ScorpionKingDeath@@UAEXXZ	CCreatureAction_Die	1	1	engine/CCreatureAction_Die.h	008c3f00
 T3	RTTI names ?FinishAction@CCreatureAction_NymphGetHitDie@@UAEXXZ	CCreatureAction_Die	1	1	engine/CCreatureAction_Die.h	008c9fc0
 T3	emit ?Clone@CCreatureAction_Die@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_Die	1	1	engine/CCreatureAction_Die.h	008edbd0
-T3	emit ?Clone@CCreatureAction_DragonFireBeamOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonFireBeamOutOf	1	1		008e5130
 T3	emit ?Clone@CCreatureAction_DragonFireBlastForward@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonFireBlastForward	1	1	engine/CCreatureAction_DragonFireBlastForward.h	00953eb0
 T3	emit ?Clone@CCreatureAction_DragonFireBlastLeft@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonFireBlastLeft	1	1	engine/CCreatureAction_DragonFireBlastLeft.h	00953d30
 T3	emit ?FrameUpdate@CCreatureAction_DragonFlight@@UAEXXZ	CCreatureAction_DragonFlight	1	1	engine/CCreatureAction_DragonFlight.h	008f2e00
 T3	emit ?IsToFaceTarget@CCreatureAction_DragonFlight@@UBE_NXZ	CCreatureAction_DragonFlight_Methods	1	1		008f55f0
-T3	emit ?Clone@CCreatureAction_DragonHoverInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonHoverInto	1	1		00953c90
 T3	emit ?Clone@CCreatureAction_DragonHoverOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonHoverOutOf	1	1	engine/CCreatureAction_DragonHoverOutOf.h	00953cc0
-T3	emit ?Clone@CCreatureAction_DragonLand@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonLand	1	1	engine/CCreatureAction_DragonLand.h	00953b60
-T3	emit ?Clone@CCreatureAction_DragonRoar@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_DragonRoar	1	1	engine/CCreatureAction_DragonRoar.h	00953b30
 T3	emit ?FinishAction@CCreatureAction_DragonTakeOffIntoFlying@@UAEXXZ	CCreatureAction_DragonTakeOffIntoFlying	1	1	engine/CCreatureAction_DragonTakeOffIntoFlying.h	008f47e0
 T3	emit ?FinishAction@CCreatureAction_FinishFireballSpell@@UAEXXZ	CCreatureAction_FinishFireballSpell	1	1	engine/CCreatureAction_FinishFireballSpell.h	008bac40
-T3	emit ?Clone@CCreatureAction_FinishFireballSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_FinishFireballSpell	1	1	engine/CCreatureAction_FinishFireballSpell.h	008bea50
-T3	emit ?Clone@CCreatureAction_ForcePushInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ForcePushInto	1	1		008ae2f0
-T3	emit ?Clone@CCreatureAction_ForcePushOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ForcePushOutOf	1	1	engine/CCreatureAction_ForcePushOutOf.h	008e5030
-T3	emit ?Clone@CCreatureAction_GenericAimProjectileWeapon@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GenericAimProjectileWeapon	1	1	engine/CCreatureAction_GenericAimProjectileWeapon.h	008c0120
 T3	emit ?OnAnimationLoaded@CCreatureAction_GenericAimProjectileWeapon@@UAEXXZ	CCreatureAction_GenericAimProjectileWeapon_Methods	1	1		008bedc0
-T3	emit ?Clone@CCreatureAction_GenericFireProjectileWeapon@@UBEPAVCCreatureActionBase@@X	CCreatureAction_GenericFireProjectileWeapon	1	1	engine/CCreatureAction_GenericFireProjectileWeapon.h	008c0180
-T3	emit ?Clone@CCreatureAction_GenericLeaderCommand@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GenericLeaderCommand	1	1	engine/CCreatureAction_GenericLeaderCommand.h	008c01b0
-T3	emit ?Clone@CCreatureAction_GenericLoadProjectileWeapon@@UBEPAVCCreatureActionBase@@X	CCreatureAction_GenericLoadProjectileWeapon	1	1	engine/CCreatureAction_GenericLoadProjectileWeapon.h	008c0150
-T3	emit ?Clone@CCreatureAction_GenericStrafeLeft@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GenericStrafeLeft	1	1	engine/CCreatureAction_GenericStrafeLeft.h	006f87a0
-T3	emit ?Clone@CCreatureAction_GenericStrafeRight@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GenericStrafeRight	1	1	engine/CCreatureAction_GenericStrafeRight.h	006f87d0
 T3	emit ?PerformAction@CCreatureAction_GetInBed@@UAEXXZ	CCreatureAction_GetInBed	1	1	engine/CCreatureAction_GetInBed.h	00848db0
 T3	emit ?Clone@CCreatureAction_GetUpFromSitting@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GetUpFromSitting	1	1	engine/CCreatureAction_GetUpFromSitting.h	00860290
 T3	emit ?OnAnimationLoaded@CCreatureAction_GetUpFromSitting@@UAEXXZ	CCreatureAction_GetUpFromSitting	1	1	engine/CCreatureAction_GetUpFromSitting.h	008b6530
-T3	emit ?Clone@CCreatureAction_GoUnderground@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_GoUnderground	1	1	engine/CCreatureAction_GoUnderground.h	008b8970
-T3	emit ?Clone@CCreatureAction_HobbeLungeAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_HobbeLungeAttack	1	1	engine/CCreatureAction_HobbeLungeAttack.h	008c9d90
 T3	emit ?Clone@CCreatureAction_HobbeSpellcasterAim@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_HobbeSpellcasterAim	1	1		006f8860
 T3	emit ?Clone@CCreatureAction_HobbeSpellcasterFire@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_HobbeSpellcasterFire	1	1		006f88e0
-T3	emit ?Clone@CCreatureAction_IceTrollIcicleAssaultInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_IceTrollIcicleAssaultInto	1	1	engine/CCreatureAction_IceTrollIcicleAssaultInto.h	00962a60
-T3	emit ?Clone@CCreatureAction_IceTrollIcicleAssaultLoop@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_IceTrollIcicleAssaultLoop	1	1		008e4e90
-T3	emit ?Clone@CCreatureAction_IceTrollIcicleAssaultOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_IceTrollIcicleAssaultOutOf	1	1		008e4ec0
-T3	emit ?Clone@CCreatureAction_InterruptableFarAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_InterruptableFarAttack	1	1	engine/CCreatureAction_InterruptableFarAttack.h	006f85e0
 T3	emit ?Clone@CCreatureAction_InterruptableMidAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_InterruptableMidAttack	1	1	engine/CCreatureAction_InterruptableMidAttack.h	006f8640
 T3	emit ?IsAbleToBeAttacked@CCreatureAction_InterruptableMidAttackAutoTurn@@UBE_NXZ	CCreatureAction_InterruptableMidAttackAutoTurn	1	1	engine/CCreatureAction_InterruptableMidAttackAutoTurn.h	0087c8b0
 T3	emit ?PerformAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ	CCreatureAction_InterruptableMidAttackAutoTurn	1	1	engine/CCreatureAction_InterruptableMidAttackAutoTurn.h	0087cd50
-T3	emit ?Clone@CCreatureAction_InterruptableNearAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_InterruptableNearAttack	1	1		006f8610
-T3	emit ?Clone@CCreatureAction_JackDeathInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_JackDeathInto	1	1	engine/CCreatureAction_JackDeathInto.h	00977630
-T3	emit ?Clone@CCreatureAction_JackFall@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_JackFall	1	1	engine/CCreatureAction_JackFall.h	009776e0
-T3	emit ?Clone@CCreatureAction_JackFlash@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_JackFlash	1	1	engine/CCreatureAction_JackFlash.h	00977500
 T3	emit ?PerformAction@CCreatureAction_JackFloatUp@@UAEXXZ	CCreatureAction_JackFloatUp	1	1	engine/CCreatureAction_JackFloatUp.h	008c0fb0
-T3	emit ?Clone@CCreatureAction_JackGetUp@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_JackGetUp	1	1		008c3be0
-T3	emit ?Clone@CCreatureAction_JackShotFloat@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_JackShotFloat	1	1	engine/CCreatureAction_JackShotFloat.h	00977530
 T3	emit ?Clone@CCreatureAction_LeapLong@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_LeapLong	1	1	engine/CCreatureAction_LeapLong.h	008b8900
-T3	emit ?Clone@CCreatureAction_MidAttack360@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_MidAttack360	1	1		0090a810
-T3	emit ?Clone@CCreatureAction_MidAttackKnockdown@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_MidAttackKnockdown	1	1		006f86b0
-T3	emit ?Clone@CCreatureAction_MidAttackSide@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_MidAttackSide	1	1	engine/CCreatureAction_MidAttackSide.h	008b8940
 T3	emit ?PerformAction@CCreatureAction_NymphGetHit@@UAEXXZ	CCreatureAction_NymphGetHit	1	1	engine/CCreatureAction_NymphGetHit.h	008ca310
 T3	emit ?Clone@CCreatureAction_NymphGetHitDie@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_NymphGetHitDie	1	1	engine/CCreatureAction_NymphGetHitDie.h	006f8980
 T3	emit ?FrameUpdate@CCreatureAction_NymphGetHitDie@@UAEXXZ	CCreatureAction_NymphGetHitDie	1	1	engine/CCreatureAction_NymphGetHitDie.h	008c9f40
 T3	emit ?OnAnimationLoaded@CCreatureAction_NymphGetHit@@UAEXXZ	CCreatureAction_NymphGetHit_Methods	1	1		008c9dd0
-T3	emit ?Clone@CCreatureAction_NymphIdleAfterShot@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_NymphIdleAfterShot	1	1	engine/CCreatureAction_NymphIdleAfterShot.h	008cab40
-T3	emit ?Clone@CCreatureAction_NymphShot@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_NymphShot	1	1	engine/CCreatureAction_NymphShot.h	008cab10
-T3	emit ?Clone@CCreatureAction_NymphSummonInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_NymphSummonInto	1	1	engine/CCreatureAction_NymphSummonInto.h	008caa40
 T3	emit ?Clone@CCreatureAction_NymphTeleportIntoLimbo@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_NymphTeleportIntoLimbo	1	1		008cab70
 T3	emit ?Clone@CCreatureAction_NymphTeleportOutOfLimbo@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_NymphTeleportOutOfLimbo	1	1		008caaa0
-T3	emit ?Clone@CCreatureAction_OnGenerate@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_OnGenerate	1	1	engine/CCreatureAction_OnGenerate.h	0074df50
 T3	emit ?OnFollowUpActionFailedToAdd@CCreatureAction_OpenChest@@UAEXXZ	CCreatureAction_OpenChest	1	1	engine/CCreatureAction_OpenChest.h	00842bc0
 T3	emit ?PerformAction@CCreatureAction_OpenChest@@UAEXXZ	CCreatureAction_OpenChest	1	1	engine/CCreatureAction_OpenChest.h	008448e0
 T3	RTTI names ??_ECCreatureAction_PerformExpressionExtended@@UAEPAXI@Z	CCreatureAction_PerformExpressionExtended	1	1	engine/CCreatureAction_PerformExpressionExtended.h	0084b620
@@ -8476,29 +8409,17 @@ T3	emit ?Clone@CCreatureAction_PlayCombatAnimationWithLooking@@UBEPAVCCreatureAc
 T3	emit ?IsUsingAnimationMovement@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBE_NXZ	CCreatureAction_PlayIntoLoopOutOfAnimation	1	1	engine/CCreatureAction_PlayIntoLoopOutOfAnimation.h	0084a860
 T3	emit ?PerformAction@CCreatureAction_PlayerInteractionGreet@@UAEXXZ	CCreatureAction_PlayerInteractionGreet	1	1	engine/CCreatureAction_PlayerInteractionGreet.h	00845900
 T3	emit ?PerformAction@CCreatureAction_PutDownJugFromFilling@@UAEXXZ	CCreatureAction_PutDownJugFromFilling	1	1		0084a4a0
-T3	emit ?Clone@CCreatureAction_QueenHornetShootBabies@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_QueenHornetShootBabies	1	1	engine/CCreatureAction_QueenHornetShootBabies.h	0095cd00
 T3	emit ?Clone@CCreatureAction_ReleaseAndLoopDivineWrathSpell@@UBEPAVCCreatureActionBase	CCreatureAction_ReleaseAndLoopDivineWrathSpell	1	1	engine/CCreatureAction_ReleaseAndLoopDivineWrathSpell.h	008bec00
 T3	emit ?Clone@CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@UBEPAVCCreatureActionBase	CCreatureAction_ReleaseAndLoopUnholyPowerSpell	1	1	engine/CCreatureAction_ReleaseAndLoopUnholyPowerSpell.h	008becc0
-T3	emit ?Clone@CCreatureAction_ReleasePhysicalShieldSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ReleasePhysicalShieldSpell	1	1	engine/CCreatureAction_ReleasePhysicalShieldSpell.h	008be4c0
-T3	emit ?Clone@CCreatureAction_ReleaseStrengthBerserk@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ReleaseStrengthBerserk	1	1	engine/CCreatureAction_ReleaseStrengthBerserk.h	008e6ee0
 T3	emit ?Clone@CCreatureAction_ReleaseTimeSpell@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ReleaseTimeSpell	1	1	engine/CCreatureAction_ReleaseTimeSpell.h	008ceee0
 T3	emit ?Clone@CCreatureAction_RemoveFoodFromTable@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_RemoveFoodFromTable	1	1		00923bb0
 T3	emit ?IsToFaceTargetAtStart@CCreatureAction_RiseUp@@UBE_NXZ	CCreatureAction_RiseUp	1	1	engine/CCreatureAction_RiseUp.h	0074db70
-T3	emit ?Clone@CCreatureAction_RiseUp@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_RiseUp	1	1	engine/CCreatureAction_RiseUp.h	0074df10
-T3	emit ?Clone@CCreatureAction_RockTrollFallToDeath@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_RockTrollFallToDeath	1	1		006f85b0
 T3	emit ?Clone@CCreatureAction_RockTrollShakeAndExplode@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_RockTrollShakeAndExplode	1	1		008c7e00
 T3	emit ?FinishAction@CCreatureAction_ScorpionCharge@@UAEXXZ	CCreatureAction_ScorpionCharge	1	1	engine/CCreatureAction_ScorpionCharge.h	008c55b0
-T3	emit ?Clone@CCreatureAction_ScorpionKingDeath@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScorpionKingDeath	1	1	engine/CCreatureAction_ScorpionKingDeath.h	006f84d0
-T3	emit ?Clone@CCreatureAction_ScorpionRecover@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScorpionRecover	1	1	engine/CCreatureAction_ScorpionRecover.h	008e5000
 T3	emit ?Initialise@CCreatureAction_ScorpionRecover@@UAEXXZ	CCreatureAction_ScorpionRecover_Methods	1	1		008c3ee0
-T3	emit ?Clone@CCreatureAction_ScorpionSummon@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScorpionSummon	1	1	engine/CCreatureAction_ScorpionSummon.h	008e4fd0
 T3	emit ?PerformAction@CCreatureAction_ScorpionTailPlunge@@UAEXXZ	CCreatureAction_ScorpionTailPlunge	1	1		008c4810
-T3	emit ?Clone@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBEPAVCCreatureActionB	CCreatureAction_ScorpionUnblockableLeftTurnAttack	1	1	engine/CCreatureAction_ScorpionUnblockableLeftTurnAttack.h	0097ca20
-T3	emit ?Clone@CCreatureAction_ScorpionUnblockableRightTurnAttack@@UBEPAVCCreatureAction	CCreatureAction_ScorpionUnblockableRightTurnAttack	1	1	engine/CCreatureAction_ScorpionUnblockableRightTurnAttack.h	0097ca50
 T3	emit ?Clone@CCreatureAction_ScreamerAdvance@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScreamerAdvance	1	1	engine/CCreatureAction_ScreamerAdvance.h	006f8330
 T3	emit ?Clone@CCreatureAction_ScreamerBackOff@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScreamerBackOff	1	1	engine/CCreatureAction_ScreamerBackOff.h	006f8360
-T3	emit ?Clone@CCreatureAction_ScreamerDrainOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScreamerDrainOutOf	1	1	engine/CCreatureAction_ScreamerDrainOutOf.h	006f82d0
-T3	emit ?Clone@CCreatureAction_ScreamerIdle@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ScreamerIdle	1	1	engine/CCreatureAction_ScreamerIdle.h	006f8300
 T3	RTTI names ??_ECCreatureAction_SendMessage@@UAEPAXI@Z	CCreatureAction_SendMessage	1	1		00982550
 T3	emit ?PerformAction@CCreatureAction_SheatheItemToInventory@@UAEXXZ	CCreatureAction_SheatheItemToInventory	1	1	engine/CCreatureAction_SheatheItemToInventory.h	0069f4f0
 T3	emit ?Clone@CCreatureAction_SheatheItemToInventory_ForDivineWrath@@EBEPAVCCreatureAct	CCreatureAction_SheatheItemToInventory_ForDivineWrath	1	1	engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h	006a0cc0
@@ -8506,67 +8427,38 @@ T3	emit ?Clone@CCreatureAction_SheatheItemToInventory_ForEnflame@@EBEPAVCCreatur
 T3	emit ??_ECCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAEPAXI@Z	CCreatureAction_SheatheItemToInventory_ForUnholyPower	1	1	engine/CCreatureAction_SheatheItemToInventory_ForUnholyPower.h	006a0990
 T3	emit ?Clone@CCreatureAction_SheatheItemToInventory_ForUnholyPower@@EBEPAVCCreatureAct	CCreatureAction_SheatheItemToInventory_ForUnholyPower	1	1	engine/CCreatureAction_SheatheItemToInventory_ForUnholyPower.h	006a0cf0
 T3	emit ?Clone@CCreatureAction_SheatheTrophy@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SheatheTrophy	1	1		006dfce0
-T3	emit ?Clone@CCreatureAction_SheatheWeapons@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SheatheWeapons	1	1	engine/CCreatureAction_SheatheWeapons.h	008cc500
 T3	emit ?Clone@CCreatureAction_ShowToSheatheTrophy@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ShowToSheatheTrophy	1	1		006dfcb0
 T3	emit ?PerformAction@CCreatureAction_SnapDragon@@UAEXXZ	CCreatureAction_SnapDragon	1	1	engine/CCreatureAction_SnapDragon.h	008f5060
-T3	emit ?Clone@CCreatureAction_SnapDragon@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SnapDragon	1	1	engine/CCreatureAction_SnapDragon.h	00953ad0
 T3	emit ?PerformAction@CCreatureAction_SnapDragonFast@@UAEXXZ	CCreatureAction_SnapDragonFast	1	1	engine/CCreatureAction_SnapDragonFast.h	008f5220
-T3	emit ?Clone@CCreatureAction_SnapDragonFast@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SnapDragonFast	1	1	engine/CCreatureAction_SnapDragonFast.h	00953b00
 T3	emit ?Initialise@CCreatureAction_SpiritAttack@@UAEXXZ	CCreatureAction_SpiritAttack_Methods	1	1		008545f0
 T3	emit ?GetAnimationTransitionInTime@CCreatureAction_StabbedToDeath@@UBEJXZ	CCreatureAction_StabbedToDeath_Methods	1	1		0087fe60
 T3	emit ?Clone@CCreatureAction_StartEatingAtTable@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StartEatingAtTable	1	1		0096d4d0
-T3	emit ?Clone@CCreatureAction_StrafeBackward@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StrafeBackward	1	1	engine/CCreatureAction_StrafeBackward.h	008c02a0
-T3	emit ?Clone@CCreatureAction_StrafeForward@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_StrafeForward	1	1	engine/CCreatureAction_StrafeForward.h	008c0270
-T3	emit ?Clone@CCreatureAction_SummonerDead@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SummonerDead	1	1	engine/CCreatureAction_SummonerDead.h	008e5190
-T3	emit ?Clone@CCreatureAction_SummonerDie@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SummonerDie	1	1	engine/CCreatureAction_SummonerDie.h	006f8a70
 T3	emit ?PerformAction@CCreatureAction_SummonerFlameSlice@@UAEXXZ	CCreatureAction_SummonerFlameSlice	1	1	engine/CCreatureAction_SummonerFlameSlice.h	008cafa0
 T3	emit ?FinishAction@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ	CCreatureAction_SummonerLightningOrbInto	1	1	engine/CCreatureAction_SummonerLightningOrbInto.h	008cabe0
-T3	emit ?Clone@CCreatureAction_SummonerLightningOrbOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SummonerLightningOrbOutOf	1	1		008cc5f0
 T3	emit ?PerformAction@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@UAEXXZ	CCreatureAction_SummonerLightningOrbOutOfGroundSmash	1	1		008cb500
-T3	emit ?Clone@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@UBEPAVCCreatureActi	CCreatureAction_SummonerLightningOrbOutOfGroundSmash	1	1		008cc620
-T3	emit ?Clone@CCreatureAction_SummonerStrike@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SummonerStrike	1	1	engine/CCreatureAction_SummonerStrike.h	006f8a40
-T3	emit ?Clone@CCreatureAction_SummonerSummonInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SummonerSummonInto	1	1		008cc540
-T3	emit ?Clone@CCreatureAction_SummonerSummonOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_SummonerSummonOutOf	1	1		008cc570
-T3	emit ?Clone@CCreatureAction_TeleportIn@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TeleportIn	1	1	engine/CCreatureAction_TeleportIn.h	008beb00
-T3	emit ?Clone@CCreatureAction_TentacleIdle@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TentacleIdle	1	1		008cfb40
 T3	emit ?FinishAction@CCreatureAction_TentacleRise@@UAEXXZ	CCreatureAction_TentacleRise	1	1	engine/CCreatureAction_TentacleRise.h	008cf610
-T3	emit ?Clone@CCreatureAction_TentacleStrikeGetHit@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TentacleStrikeGetHit	1	1	engine/CCreatureAction_TentacleStrikeGetHit.h	008cfc00
 T3	emit ?FinishAction@CCreatureAction_TentacleStrikeInto@@UAEXXZ	CCreatureAction_TentacleStrikeInto	1	1	engine/CCreatureAction_TentacleStrikeInto.h	008cf700
-T3	emit ?Clone@CCreatureAction_TentacleStrikeOutOf@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TentacleStrikeOutOf	1	1		008cfbd0
 T3	emit ??_GCCreatureAction_ThrowGameObject@@UAEPAXI@Z	CCreatureAction_ThrowGameObject	1	1		0062d920
-T3	emit ?Clone@CCreatureAction_ThunderLightningStorm@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_ThunderLightningStorm	1	1	engine/CCreatureAction_ThunderLightningStorm.h	0096c780
 T3	emit ?Clone@CCreatureAction_TrollAngryGroundPound@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TrollAngryGroundPound	1	1	engine/CCreatureAction_TrollAngryGroundPound.h	00908750
 T3	emit ?PerformAction@CCreatureAction_TrollAngryGroundPound@@UAEXXZ	CCreatureAction_TrollAngryGroundPound_Methods	1	1		008c63a0
 T3	emit ?PerformAction@CCreatureAction_TrollGroundPound@@UAEXXZ	CCreatureAction_TrollGroundPound	1	1	engine/CCreatureAction_TrollGroundPound.h	008c6b20
-T3	emit ?Clone@CCreatureAction_TrollGroundPound@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TrollGroundPound	1	1	engine/CCreatureAction_TrollGroundPound.h	0094e680
 T3	emit ?InitAnimation@CCreatureAction_TrollProjectileAttack@@MAEXXZ	CCreatureAction_TrollProjectileAttack	1	1	engine/CCreatureAction_TrollProjectileAttack.h	008c6000
 T3	emit ?Clone@CCreatureAction_TrollProjectileAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TrollProjectileAttack	1	1	engine/CCreatureAction_TrollProjectileAttack.h	009085b0
 T3	emit ?FrameUpdate@CCreatureAction_TrollThrowProjectile@@UAEXXZ	CCreatureAction_TrollThrowProjectile	1	1	engine/CCreatureAction_TrollThrowProjectile.h	008c67a0
 T3	emit ?Clone@CCreatureAction_TrollTunnel@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TrollTunnel	1	1	engine/CCreatureAction_TrollTunnel.h	00908600
-T3	emit ?Clone@CCreatureAction_TurnStrikeLeft@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TurnStrikeLeft	1	1		006f8740
-T3	emit ?Clone@CCreatureAction_TurnStrikeRight@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_TurnStrikeRight	1	1		006f8770
-T3	emit ?Clone@CCreatureAction_UnblockableMidAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UnblockableMidAttack	1	1	engine/CCreatureAction_UnblockableMidAttack.h	008c01e0
-T3	emit ?Clone@CCreatureAction_UndeadIdleUnderground@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UndeadIdleUnderground	1	1	engine/CCreatureAction_UndeadIdleUnderground.h	0074dfd0
 T3	emit ?FinishAction@CCreatureAction_UndeadReturnToEarth@@UAEXXZ	CCreatureAction_UndeadReturnToEarth	1	1	engine/CCreatureAction_UndeadReturnToEarth.h	008ec700
-T3	emit ?Clone@CCreatureAction_UndeadReturnToEarth@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UndeadReturnToEarth	1	1	engine/CCreatureAction_UndeadReturnToEarth.h	008ec7b0
 T3	emit ?Clone@CCreatureAction_UndeadRiseUp@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UndeadRiseUp	1	1	engine/CCreatureAction_UndeadRiseUp.h	0074df80
 T3	emit ?FinishAction@CCreatureAction_UndeadRiseUp@@UAEXXZ	CCreatureAction_UndeadRiseUp	1	1	engine/CCreatureAction_UndeadRiseUp.h	008ec470
 T3	emit ?Clone@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@EBEPAVCCreatur	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	1	1	engine/CCreatureAction_UnsheatheItemFromInventoryWithHasteAction.h	006a0ef0
-T3	emit ?Clone@CCreatureAction_UnsheatheWeapons@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_UnsheatheWeapons	1	1	engine/CCreatureAction_UnsheatheWeapons.h	008b8ac0
 T3	emit ?FinishAction@CCreatureAction_UnsheatheWeapons@@UAEXXZ	CCreatureAction_UnsheatheWeapons_Methods	1	1		008b69d0
 T3	emit ?PerformAction@CCreatureAction_UseLamp@@UAEXXZ	CCreatureAction_UseLamp	1	1	engine/CCreatureAction_UseLamp.h	00847fb0
 T3	emit ?Clone@CCreatureAction_VillagerAttackKnockdown@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_VillagerAttackKnockdown	1	1	engine/CCreatureAction_VillagerAttackKnockdown.h	0097d1c0
 T3	emit ?IsBlockable@CCreatureAction_VillagerAttackKnockdown@@UBE_NXZ	CCreatureAction_VillagerAttackKnockdown_Methods	1	1		0097d0e0
-T3	emit ?Clone@CCreatureAction_WalkInto@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_WalkInto	1	1	engine/CCreatureAction_WalkInto.h	00908720
 T3	emit ?FinishAction@CCreatureAction_WaspQueenDeath@@UAEXXZ	CCreatureAction_WaspQueenDeath	1	1		008c52c0
 T3	emit ?Clone@CCreatureAction_WaspQueenDie@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_WaspQueenDie	1	1		008c5e90
-T3	emit ?Clone@CCreatureAction_WaspQueenDiveAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_WaspQueenDiveAttack	1	1	engine/CCreatureAction_WaspQueenDiveAttack.h	008c5ed0
-T3	emit ?Clone@CCreatureAction_WaspQueenPrimaryAttack@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_WaspQueenPrimaryAttack	1	1	engine/CCreatureAction_WaspQueenPrimaryAttack.h	0095cca0
 T3	emit ?PerformAction@CCreatureAction_WhisperSommersaultBackward@@UAEXXZ	CCreatureAction_WhisperSommersaultBackward	1	1		008c0620
 T3	emit ?IsToEvadeAllHits@CCreatureAction_WhisperSommersaultBackward@@UBE_NXZ	CCreatureAction_WhisperSommersaultBackward	1	1		0096bff0
-T3	emit ?Clone@CCreatureAction_WhisperSommersaultBackward@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_WhisperSommersaultBackward	1	1		0096c140
 T3	emit ?IsToEvadeAllHits@CCreatureAction_WhisperSommersaultForward@@UBE_NXZ	CCreatureAction_WhisperSommersaultForward	1	1		0096bf70
-T3	emit ?Clone@CCreatureAction_WhisperSommersaultForward@@UBEPAVCCreatureActionBase@@XZ	CCreatureAction_WhisperSommersaultForward	1	1		0096c100
 T3	emit ??_ECCreatureStatsDef@@UAEPAXI@Z	CCreatureStatsDef	1	1	engine/CCreatureStatsDef.h	0044f90f
 T3	emit ?ReadNullTerminatedWString@CDataInputStream@@UAE?AVCWideString@@XZ	CDataInputStreamReader	1	1		00994d20
 T3	emit ?GetPosition@CDataInputStream@@UBEKXZ	CDataInputStream_Methods	1	1		00405fa0

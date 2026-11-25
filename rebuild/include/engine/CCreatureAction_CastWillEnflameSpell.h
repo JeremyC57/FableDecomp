@@ -40,6 +40,32 @@ protected:
 #endif
 };
 #else
+#ifdef FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127B9DC (RTTI .?AVCCreatureAction_CastWillEnflameSpell@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_CastWillEnflameSpell); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// NF427: no `#pragma pack` and no trailing `_pad_0x119` member: retail's inlined copy constructor (Clone, 0x008BE350) does not copy those bytes, so they are tail padding (sizeof and offsets asserted).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008BA370 ?PerformAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008BA3C0 ?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008BE350 ?Clone@CCreatureAction_CastWillEnflameSpell@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008BA220 ?Initialise@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x008BD930 ?IsToEvadeAllHits@CCreatureAction_CastWillEnflameSpell@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x008BD940 ?IsAbleToBeAttacked@CCreatureAction_CastWillEnflameSpell@@UBE_NXZ
+public:
+    long          Level;                                     // +0x114
+    bool          IsZTargetting;                             // +0x118
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_CastWillEnflameSpell) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillEnflameSpell, Level) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastWillEnflameSpell, IsZTargetting) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_CastWillEnflameSpell {
 public:
@@ -114,6 +140,7 @@ FABLE_STATIC_ASSERT_AT(82, sizeof(CCreatureAction_CastWillEnflameSpell) == 0x11c
 FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_CastWillEnflameSpell, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_CastWillEnflameSpell, Level) == 0x114);
 FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_CastWillEnflameSpell, IsZTargetting) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_VIRTUAL_MODEL
 #endif // FABLE_RETAIL_CCREATUREACTION_CASTWILLENFLAMESPELL_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_CASTWILLENFLAMESPELL_H

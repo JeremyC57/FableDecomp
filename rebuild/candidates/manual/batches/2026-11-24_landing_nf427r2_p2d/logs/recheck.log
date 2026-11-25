@@ -1,0 +1,24 @@
+addr       parity           behav  name
+0074df10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_RiseUp (engine/CCreatureAction_RiseUp.h)
+0074df10   RELOCATION_MATCH PASS   Clone
+0074dfd0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UndeadIdleUnderground (engine/CCreatureAction_UndeadIdleUnderground.h)
+0074dfd0   RELOCATION_MATCH PASS   Clone
+008b8940   WARN SHARED_HEADER_AVAILABLE CCreatureAction_MidAttackSide (engine/CCreatureAction_MidAttackSide.h)
+008b8940   RELOCATION_MATCH PASS   Clone
+008c3c80   WARN SHARED_HEADER_AVAILABLE CCombatAction_WillForcePushInto (engine/CCombatAction_WillForcePushInto.h)
+008c3c80   RELOCATION_MATCH PASS   Clone
+008cc500   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SheatheWeapons (engine/CCreatureAction_SheatheWeapons.h)
+008cc500   RELOCATION_MATCH PASS   Clone
+0094e680   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollGroundPound (engine/CCreatureAction_TrollGroundPound.h)
+0094e680   RELOCATION_MATCH PASS   Clone
+00953b30   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonRoar (engine/CCreatureAction_DragonRoar.h)
+00953b30   RELOCATION_MATCH PASS   Clone
+
+WINS: 7
+  0074df10 RELOCATION_MATCH CCreatureAction_RiseUp::?Clone@CCreatureAction_RiseUp@@UBEPAVCCreatureActionBase@@XZ
+  0074dfd0 RELOCATION_MATCH CCreatureAction_UndeadIdleUnderground::?Clone@CCreatureAction_UndeadIdleUnderground@@UBEPAVCCreatureActionBase@@XZ
+  008b8940 RELOCATION_MATCH CCreatureAction_MidAttackSide::?Clone@CCreatureAction_MidAttackSide@@UBEPAVCCreatureActionBase@@XZ
+  008c3c80 RELOCATION_MATCH CCombatAction_WillForcePushInto::?Clone@CCombatAction_WillForcePushInto@@EBEPAVCCreatureActionBase@@XZ
+  008cc500 RELOCATION_MATCH CCreatureAction_SheatheWeapons::?Clone@CCreatureAction_SheatheWeapons@@UBEPAVCCreatureActionBase@@XZ
+  0094e680 RELOCATION_MATCH CCreatureAction_TrollGroundPound::?Clone@CCreatureAction_TrollGroundPound@@UBEPAVCCreatureActionBase@@XZ
+  00953b30 RELOCATION_MATCH CCreatureAction_DragonRoar::?Clone@CCreatureAction_DragonRoar@@UBEPAVCCreatureActionBase@@XZ

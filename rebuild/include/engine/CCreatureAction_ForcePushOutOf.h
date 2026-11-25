@@ -9,6 +9,28 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_FORCEPUSHOUTOF_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01286874 (RTTI .?AVCCreatureAction_ForcePushOutOf@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_ForcePushOutOf); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// NF427: no `#pragma pack` and no trailing `_pad_0x115` member: retail's inlined copy constructor (Clone, 0x008E5030) does not copy those bytes, so they are tail padding (sizeof and offsets asserted).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+class CCreatureAction_ForcePushOutOf : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008BA0B0 ?PerformAction@CCreatureAction_ForcePushOutOf@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008B93B0 ?FinishAction@CCreatureAction_ForcePushOutOf@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008E5030 ?Clone@CCreatureAction_ForcePushOutOf@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B9370 ?Initialise@CCreatureAction_ForcePushOutOf@@UAEXXZ
+public:
+    bool          OnlyHitEnemies;                            // +0x114
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ForcePushOutOf) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ForcePushOutOf, OnlyHitEnemies) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ForcePushOutOf {
 public:
@@ -78,8 +100,9 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ForcePushOutOf) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ForcePushOutOf, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ForcePushOutOf, OnlyHitEnemies) == 0x114);
+FABLE_STATIC_ASSERT_AT(81, sizeof(CCreatureAction_ForcePushOutOf) == 0x118);
+FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_ForcePushOutOf, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_ForcePushOutOf, OnlyHitEnemies) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_FORCEPUSHOUTOF_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_FORCEPUSHOUTOF_H

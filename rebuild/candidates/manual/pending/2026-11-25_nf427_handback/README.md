@@ -16,7 +16,9 @@
   - Equivalence: 0 of 57,160 landed rows change their preprocessed input (`evidence/equiv_g_batches.log`), measured copy against copy, as described below.
 - **T3 lines closed:** the nf324 / nf330 lines these rows port.
 
-**Part 2 waits** (p2a-p2d, 108 rows: NF425's held Clone rows moved onto the new class models).
+**Part 2 landed in round 2** (`batches/2026-11-24_landing_nf427r2_p2a..p2d`, 108 rows: NF425's held Clone rows moved onto the class models; 15 more headers, equiv copy-v-copy 0 of 57,160). **Round 2 also landed 226 test-only fixes** (`..._nf427r2_t1..t3`): every NF425 test now builds on the shared headers with no class body (9 leave their header out, it does not compile there: T3_r2.txt). Round 2's notes and tools: NOTES_r2.md, tools_r2/.
+
+Round 1 said:
 - Their vftables are right. Every unbound slot carries retail's exact RTTI spelling: 1,724 slots (`vtx427.py`, `evidence/vtx_p2*.tsv`). The 68 slot-0 `??_E` entries are VC7.1's weak externals linked to `??_G`.
 - But all 108 tests add a local body of a class that has an engine header, where HEAD's tests had none. NF427 round 2 is porting them, together with the 221 NF425 tests that landed with the same debt (GOTCHAS nf425 / nf427).
 

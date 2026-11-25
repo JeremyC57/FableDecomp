@@ -1,0 +1,220 @@
+addr       parity           behav  name
+0062eb20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GiveItemToThing (engine/CCreatureAction_GiveItemToThing.h)
+0062eb20   RELOCATION_MATCH PASS   Clone
+0062ef30   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayerInteractionGreet (engine/CCreatureAction_PlayerInteractionGreet.h)
+0062ef30   RELOCATION_MATCH PASS   Clone
+0062efb0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayerInteractionInsult (engine/CCreatureAction_PlayerInteractionInsult.h)
+0062efb0   RELOCATION_MATCH PASS   Clone
+0062f030   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayerInteractionThreaten (engine/CCreatureAction_PlayerInteractionThreaten.h)
+0062f030   RELOCATION_MATCH PASS   Clone
+0062f0b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayerInteractionBribe (engine/CCreatureAction_PlayerInteractionBribe.h)
+0062f0b0   RELOCATION_MATCH PASS   Clone
+0062f130   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayerInteractionFlirt (engine/CCreatureAction_PlayerInteractionFlirt.h)
+0062f130   RELOCATION_MATCH PASS   Clone
+0062f1b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TavernGameMasterInteraction (engine/CCreatureAction_TavernGameMasterInteraction.h)
+0062f1b0   RELOCATION_MATCH PASS   Clone
+0062f710   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0062f710   RELOCATION_MATCH PASS   Clone
+0066a7b0   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericResponseToExplosion (engine/CCombatAction_GenericResponseToExplosion.h)
+0066a7b0   RELOCATION_MATCH PASS   Clone
+006a0c20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SheatheItemToInventory (engine/CCreatureAction_SheatheItemToInventory.h)
+006a0c20   RELOCATION_MATCH PASS   Clone
+006dfb60   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ShowTrophy (engine/CCreatureAction_ShowTrophy.h)
+006dfb60   RELOCATION_MATCH PASS   Clone
+006dfc20   RELOCATION_MATCH PASS   Clone
+006f8910   WARN SHARED_HEADER_AVAILABLE CCreatureAction_NymphGetHit (engine/CCreatureAction_NymphGetHit.h)
+006f8910   RELOCATION_MATCH PASS   Clone
+006f89c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonerFlameSlice (engine/CCreatureAction_SummonerFlameSlice.h)
+006f89c0   RELOCATION_MATCH PASS   Clone
+00719d20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_AimMissileWeapon (engine/CCreatureAction_AimMissileWeapon.h)
+00719d20   RELOCATION_MATCH PASS   Clone
+0078bd30   WARN SHARED_HEADER_AVAILABLE CCreatureAction_HeroLoadRangedWeapon (engine/CCreatureAction_HeroLoadRangedWeapon.h)
+0078bd30   RELOCATION_MATCH PASS   Clone
+007eb230   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickupGameObject (engine/CCreatureAction_PickupGameObject.h)
+007eb230   RELOCATION_MATCH PASS   Clone
+007eb5d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayerInteractionViewQuests (engine/CCreatureAction_PlayerInteractionViewQuests.h)
+007eb5d0   RELOCATION_MATCH PASS   Clone
+007eea50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_OpenChest (engine/CCreatureAction_OpenChest.h)
+007eea50   RELOCATION_MATCH PASS   Clone
+0084bd10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PerformExpression (engine/CCreatureAction_PerformExpression.h)
+0084bd10   RELOCATION_MATCH PASS   Clone
+0084be00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PerformExpressionExtended (engine/CCreatureAction_PerformExpressionExtended.h)
+0084be00   RELOCATION_MATCH PASS   Clone
+0084c040   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseLamp (engine/CCreatureAction_UseLamp.h)
+0084c040   RELOCATION_MATCH PASS   Clone
+0084c0c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseWallMount (engine/CCreatureAction_UseWallMount.h)
+0084c0c0   RELOCATION_MATCH PASS   Clone
+0084c140   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ShopkeeperGetOut (engine/CCreatureAction_ShopkeeperGetOut.h)
+0084c140   RELOCATION_MATCH PASS   Clone
+0084c210   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ShopkeeperPutAway (engine/CCreatureAction_ShopkeeperPutAway.h)
+0084c210   RELOCATION_MATCH PASS   Clone
+0084c290   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BlowHorn (engine/CCreatureAction_BlowHorn.h)
+0084c290   RELOCATION_MATCH PASS   Clone
+0084c310   RELOCATION_MATCH PASS   Clone
+0084c3b0   RELOCATION_MATCH PASS   Clone
+0084c510   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DowseFire (engine/CCreatureAction_DowseFire.h)
+0084c510   RELOCATION_MATCH PASS   Clone
+0084c5c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FillBucket (engine/CCreatureAction_FillBucket.h)
+0084c5c0   RELOCATION_MATCH PASS   Clone
+0084c640   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickUpGenericBox (engine/CCreatureAction_PickUpGenericBox.h)
+0084c640   RELOCATION_MATCH PASS   Clone
+0084c720   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ShowLove (engine/CCreatureAction_ShowLove.h)
+0084c720   RELOCATION_MATCH PASS   Clone
+0084c850   WARN SHARED_HEADER_AVAILABLE CCreatureAction_Hammer (engine/CCreatureAction_Hammer.h)
+0084c850   RELOCATION_MATCH PASS   Clone
+0084c8d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ActivateQuest (engine/CCreatureAction_ActivateQuest.h)
+0084c8d0   RELOCATION_MATCH PASS   Clone
+00855190   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritHitResponse (engine/CCreatureAction_SpiritHitResponse.h)
+00855190   RELOCATION_MATCH PASS   Clone
+00855230   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritAttack (engine/CCreatureAction_SpiritAttack.h)
+00855230   RELOCATION_MATCH PASS   Clone
+0085bcb0   WARN SHARED_HEADER_AVAILABLE CCreatureActionHero180RunningTurn (engine/CCreatureActionHero180RunningTurn.h)
+0085bcb0   RELOCATION_MATCH PASS   Clone
+0085c330   WARN SHARED_HEADER_AVAILABLE CCombatAction_ControlledStrafeJump (engine/CCombatAction_ControlledStrafeJump.h)
+0085c330   RELOCATION_MATCH PASS   Clone
+00860210   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GetOutOfBed (engine/CCreatureAction_GetOutOfBed.h)
+00860210   RELOCATION_MATCH PASS   Clone
+00868400   WARN SHARED_HEADER_AVAILABLE CCombatAction_GenericStrikeResponseKnockdown (engine/CCombatAction_GenericStrikeResponseKnockdown.h)
+00868400   RELOCATION_MATCH PASS   Clone
+0087e660   WARN SHARED_HEADER_AVAILABLE CCreatureAction_InterruptableMidAttackAutoTurn (engine/CCreatureAction_InterruptableMidAttackAutoTurn.h)
+0087e660   RELOCATION_MATCH PASS   Clone
+008800f0   WARN SHARED_HEADER_AVAILABLE CCombatAction_KickThingOnGround (engine/CCombatAction_KickThingOnGround.h)
+008800f0   RELOCATION_MATCH PASS   Clone
+00880190   WARN SHARED_HEADER_AVAILABLE CCombatAction_StabThing (engine/CCombatAction_StabThing.h)
+00880190   RELOCATION_MATCH PASS   Clone
+008b89e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ProjectileCrouch (engine/CCreatureAction_ProjectileCrouch.h)
+008b89e0   RELOCATION_MATCH PASS   Clone
+008be400   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastPhysicalShieldSpell (engine/CCreatureAction_CastPhysicalShieldSpell.h)
+008be400   RELOCATION_MATCH PASS   Clone
+008bea80   RELOCATION_MATCH PASS   Clone
+008c02d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_Ambush (engine/CCreatureAction_Ambush.h)
+008c02d0   RELOCATION_MATCH PASS   Clone
+008c3ce0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BriarRoseShotFarOutof (engine/CCreatureAction_BriarRoseShotFarOutof.h)
+008c3ce0   RELOCATION_MATCH PASS   Clone
+008c5d10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionChargeInto (engine/CCreatureAction_ScorpionChargeInto.h)
+008c5d10   RELOCATION_MATCH PASS   Clone
+008c5d90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionCharge (engine/CCreatureAction_ScorpionCharge.h)
+008c5d90   RELOCATION_MATCH PASS   Clone
+008c5e10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionChargeStrike (engine/CCreatureAction_ScorpionChargeStrike.h)
+008c5e10   RELOCATION_MATCH PASS   Clone
+008c7d50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollThrowProjectile (engine/CCreatureAction_TrollThrowProjectile.h)
+008c7d50   RELOCATION_MATCH PASS   Clone
+008c9760   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BanditKingThrowWeapons (engine/CCreatureAction_BanditKingThrowWeapons.h)
+008c9760   RELOCATION_MATCH PASS   Clone
+008c9830   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BanditKingStuck (engine/CCreatureAction_BanditKingStuck.h)
+008c9830   RELOCATION_MATCH PASS   Clone
+008cef20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastAssassinRush (engine/CCreatureAction_CastAssassinRush.h)
+008cef20   RELOCATION_MATCH PASS   Clone
+008ceff0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastBattleCharge (engine/CCreatureAction_CastBattleCharge.h)
+008ceff0   RELOCATION_MATCH PASS   Clone
+008cf0c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BattleChargeImpact (engine/CCreatureAction_BattleChargeImpact.h)
+008cf0c0   RELOCATION_MATCH PASS   Clone
+008cf160   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BattleChargeMiss (engine/CCreatureAction_BattleChargeMiss.h)
+008cf160   RELOCATION_MATCH PASS   Clone
+008d62f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FireMissileWeapon (engine/CCreatureAction_FireMissileWeapon.h)
+008d62f0   RELOCATION_MATCH PASS   Clone
+008e4ef0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionTailWithdraw (engine/CCreatureAction_ScorpionTailWithdraw.h)
+008e4ef0   RELOCATION_MATCH PASS   Clone
+008e8d30   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BriarRoseConcentrateInto (engine/CCreatureAction_BriarRoseConcentrateInto.h)
+008e8d30   RELOCATION_MATCH PASS   Clone
+008f57c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonSwoop (engine/CCreatureAction_DragonSwoop.h)
+008f57c0   RELOCATION_MATCH PASS   Clone
+00910ff0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DeclarePlayerACriminal (engine/CCreatureAction_DeclarePlayerACriminal.h)
+00910ff0   RELOCATION_MATCH PASS   Clone
+0092e7e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_GetInBed (engine/CCreatureAction_GetInBed.h)
+0092e7e0   RELOCATION_MATCH PASS   Clone
+00933fd0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_KickCreature (engine/CCreatureAction_KickCreature.h)
+00933fd0   RELOCATION_MATCH PASS   Clone
+009406b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PickCrop (engine/CCreatureAction_PickCrop.h)
+009406b0   RELOCATION_MATCH PASS   Clone
+00953b90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonTakeOffIntoFlying (engine/CCreatureAction_DragonTakeOffIntoFlying.h)
+00953b90   RELOCATION_MATCH PASS   Clone
+00953dc0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonBurninateInto (engine/CCreatureAction_DragonBurninateInto.h)
+00953dc0   RELOCATION_MATCH PASS   Clone
+009573d0   RELOCATION_MATCH PASS   Clone
+00971840   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DuckAndCover (engine/CCreatureAction_DuckAndCover.h)
+00971840   RELOCATION_MATCH PASS   Clone
+009775c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JackScream (engine/CCreatureAction_JackScream.h)
+009775c0   RELOCATION_MATCH PASS   Clone
+00977660   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JackFloatUp (engine/CCreatureAction_JackFloatUp.h)
+00977660   RELOCATION_MATCH PASS   Clone
+0097b5f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_JumpOutFromCover (engine/CCreatureAction_JumpOutFromCover.h)
+0097b5f0   RELOCATION_MATCH PASS   Clone
+0097ca80   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ScorpionPrepareTailPlunge (engine/CCreatureAction_ScorpionPrepareTailPlunge.h)
+0097ca80   RELOCATION_MATCH PASS   Clone
+
+WINS: 74
+  0062eb20 RELOCATION_MATCH CCreatureAction_GiveItemToThing::?Clone@CCreatureAction_GiveItemToThing@@UBEPAVCCreatureActionBase@@XZ
+  0062ef30 RELOCATION_MATCH CCreatureAction_PlayerInteractionGreet::?Clone@CCreatureAction_PlayerInteractionGreet@@UBEPAVCCreatureActionBase@@XZ
+  0062efb0 RELOCATION_MATCH CCreatureAction_PlayerInteractionInsult::?Clone@CCreatureAction_PlayerInteractionInsult@@UBEPAVCCreatureActionBase@@XZ
+  0062f030 RELOCATION_MATCH CCreatureAction_PlayerInteractionThreaten::?Clone@CCreatureAction_PlayerInteractionThreaten@@UBEPAVCCreatureActionBase@@XZ
+  0062f0b0 RELOCATION_MATCH CCreatureAction_PlayerInteractionBribe::?Clone@CCreatureAction_PlayerInteractionBribe@@UBEPAVCCreatureActionBase@@XZ
+  0062f130 RELOCATION_MATCH CCreatureAction_PlayerInteractionFlirt::?Clone@CCreatureAction_PlayerInteractionFlirt@@UBEPAVCCreatureActionBase@@XZ
+  0062f1b0 RELOCATION_MATCH CCreatureAction_TavernGameMasterInteraction::?Clone@CCreatureAction_TavernGameMasterInteraction@@UBEPAVCCreatureActionBase@@XZ
+  0062f710 RELOCATION_MATCH CCombatActionBase::?Clone@CCombatActionBase@@MBEPAVCCreatureActionBase@@XZ
+  0066a7b0 RELOCATION_MATCH CCombatAction_GenericResponseToExplosion::?Clone@CCombatAction_GenericResponseToExplosion@@EBEPAVCCreatureActionBase@@XZ
+  006a0c20 RELOCATION_MATCH CCreatureAction_SheatheItemToInventory::?Clone@CCreatureAction_SheatheItemToInventory@@EBEPAVCCreatureActionBase@@XZ
+  006dfb60 RELOCATION_MATCH CCreatureAction_ShowTrophy::?Clone@CCreatureAction_ShowTrophy@@UBEPAVCCreatureActionBase@@XZ
+  006dfc20 RELOCATION_MATCH CCreatureAction_UnsheatheToShowToSheatheTrophy::?Clone@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UBEPAVCCreatureActionBase@@XZ
+  006f8910 RELOCATION_MATCH CCreatureAction_NymphGetHit::?Clone@CCreatureAction_NymphGetHit@@UBEPAVCCreatureActionBase@@XZ
+  006f89c0 RELOCATION_MATCH CCreatureAction_SummonerFlameSlice::?Clone@CCreatureAction_SummonerFlameSlice@@UBEPAVCCreatureActionBase@@XZ
+  00719d20 RELOCATION_MATCH CCreatureAction_AimMissileWeapon::?Clone@CCreatureAction_AimMissileWeapon@@UBEPAVCCreatureActionBase@@XZ
+  0078bd30 RELOCATION_MATCH CCreatureAction_HeroLoadRangedWeapon::?Clone@CCreatureAction_HeroLoadRangedWeapon@@UBEPAVCCreatureActionBase@@XZ
+  007eb230 RELOCATION_MATCH CCreatureAction_PickupGameObject::?Clone@CCreatureAction_PickupGameObject@@UBEPAVCCreatureActionBase@@XZ
+  007eb5d0 RELOCATION_MATCH CCreatureAction_PlayerInteractionViewQuests::?Clone@CCreatureAction_PlayerInteractionViewQuests@@UBEPAVCCreatureActionBase@@XZ
+  007eea50 RELOCATION_MATCH CCreatureAction_OpenChest::?Clone@CCreatureAction_OpenChest@@UBEPAVCCreatureActionBase@@XZ
+  0084bd10 RELOCATION_MATCH CCreatureAction_PerformExpression::?Clone@CCreatureAction_PerformExpression@@UBEPAVCCreatureActionBase@@XZ
+  0084be00 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::?Clone@CCreatureAction_PerformExpressionExtended@@UBEPAVCCreatureActionBase@@XZ
+  0084c040 RELOCATION_MATCH CCreatureAction_UseLamp::?Clone@CCreatureAction_UseLamp@@UBEPAVCCreatureActionBase@@XZ
+  0084c0c0 RELOCATION_MATCH CCreatureAction_UseWallMount::?Clone@CCreatureAction_UseWallMount@@UBEPAVCCreatureActionBase@@XZ
+  0084c140 RELOCATION_MATCH CCreatureAction_ShopkeeperGetOut::?Clone@CCreatureAction_ShopkeeperGetOut@@UBEPAVCCreatureActionBase@@XZ
+  0084c210 RELOCATION_MATCH CCreatureAction_ShopkeeperPutAway::?Clone@CCreatureAction_ShopkeeperPutAway@@UBEPAVCCreatureActionBase@@XZ
+  0084c290 RELOCATION_MATCH CCreatureAction_BlowHorn::?Clone@CCreatureAction_BlowHorn@@UBEPAVCCreatureActionBase@@XZ
+  0084c310 RELOCATION_MATCH CCreatureAction_PlayAnimation::?Clone@CCreatureAction_PlayAnimation@@UBEPAVCCreatureActionBase@@XZ
+  0084c3b0 RELOCATION_MATCH CCreatureAction_PlayIntoLoopOutOfAnimation::?Clone@CCreatureAction_PlayIntoLoopOutOfAnimation@@UBEPAVCCreatureActionBase@@XZ
+  0084c510 RELOCATION_MATCH CCreatureAction_DowseFire::?Clone@CCreatureAction_DowseFire@@UBEPAVCCreatureActionBase@@XZ
+  0084c5c0 RELOCATION_MATCH CCreatureAction_FillBucket::?Clone@CCreatureAction_FillBucket@@UBEPAVCCreatureActionBase@@XZ
+  0084c640 RELOCATION_MATCH CCreatureAction_PickUpGenericBox::?Clone@CCreatureAction_PickUpGenericBox@@UBEPAVCCreatureActionBase@@XZ
+  0084c720 RELOCATION_MATCH CCreatureAction_ShowLove::?Clone@CCreatureAction_ShowLove@@UBEPAVCCreatureActionBase@@XZ
+  0084c850 RELOCATION_MATCH CCreatureAction_Hammer::?Clone@CCreatureAction_Hammer@@UBEPAVCCreatureActionBase@@XZ
+  0084c8d0 RELOCATION_MATCH CCreatureAction_ActivateQuest::?Clone@CCreatureAction_ActivateQuest@@UBEPAVCCreatureActionBase@@XZ
+  00855190 RELOCATION_MATCH CCreatureAction_SpiritHitResponse::?Clone@CCreatureAction_SpiritHitResponse@@UBEPAVCCreatureActionBase@@XZ
+  00855230 RELOCATION_MATCH CCreatureAction_SpiritAttack::?Clone@CCreatureAction_SpiritAttack@@UBEPAVCCreatureActionBase@@XZ
+  0085bcb0 RELOCATION_MATCH CCreatureActionHero180RunningTurn::?Clone@CCreatureActionHero180RunningTurn@@UBEPAVCCreatureActionBase@@XZ
+  0085c330 RELOCATION_MATCH CCombatAction_ControlledStrafeJump::?Clone@CCombatAction_ControlledStrafeJump@@UBEPAVCCreatureActionBase@@XZ
+  00860210 RELOCATION_MATCH CCreatureAction_GetOutOfBed::?Clone@CCreatureAction_GetOutOfBed@@UBEPAVCCreatureActionBase@@XZ
+  00868400 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdown::?Clone@CCombatAction_GenericStrikeResponseKnockdown@@EBEPAVCCreatureActionBase@@XZ
+  0087e660 RELOCATION_MATCH CCreatureAction_InterruptableMidAttackAutoTurn::?Clone@CCreatureAction_InterruptableMidAttackAutoTurn@@UBEPAVCCreatureActionBase@@XZ
+  008800f0 RELOCATION_MATCH CCombatAction_KickThingOnGround::?Clone@CCombatAction_KickThingOnGround@@UBEPAVCCreatureActionBase@@XZ
+  00880190 RELOCATION_MATCH CCombatAction_StabThing::?Clone@CCombatAction_StabThing@@UBEPAVCCreatureActionBase@@XZ
+  008b89e0 RELOCATION_MATCH CCreatureAction_ProjectileCrouch::?Clone@CCreatureAction_ProjectileCrouch@@UBEPAVCCreatureActionBase@@XZ
+  008be400 RELOCATION_MATCH CCreatureAction_CastPhysicalShieldSpell::?Clone@CCreatureAction_CastPhysicalShieldSpell@@UBEPAVCCreatureActionBase@@XZ
+  008bea80 RELOCATION_MATCH CCreatureAction_TeleportOut::?Clone@CCreatureAction_TeleportOut@@UBEPAVCCreatureActionBase@@XZ
+  008c02d0 RELOCATION_MATCH CCreatureAction_Ambush::?Clone@CCreatureAction_Ambush@@UBEPAVCCreatureActionBase@@XZ
+  008c3ce0 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarOutof::?Clone@CCreatureAction_BriarRoseShotFarOutof@@UBEPAVCCreatureActionBase@@XZ
+  008c5d10 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::?Clone@CCreatureAction_ScorpionChargeInto@@UBEPAVCCreatureActionBase@@XZ
+  008c5d90 RELOCATION_MATCH CCreatureAction_ScorpionCharge::?Clone@CCreatureAction_ScorpionCharge@@UBEPAVCCreatureActionBase@@XZ
+  008c5e10 RELOCATION_MATCH CCreatureAction_ScorpionChargeStrike::?Clone@CCreatureAction_ScorpionChargeStrike@@UBEPAVCCreatureActionBase@@XZ
+  008c7d50 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Clone@CCreatureAction_TrollThrowProjectile@@UBEPAVCCreatureActionBase@@XZ
+  008c9760 RELOCATION_MATCH CCreatureAction_BanditKingThrowWeapons::?Clone@CCreatureAction_BanditKingThrowWeapons@@UBEPAVCCreatureActionBase@@XZ
+  008c9830 RELOCATION_MATCH CCreatureAction_BanditKingStuck::?Clone@CCreatureAction_BanditKingStuck@@UBEPAVCCreatureActionBase@@XZ
+  008cef20 RELOCATION_MATCH CCreatureAction_CastAssassinRush::?Clone@CCreatureAction_CastAssassinRush@@UBEPAVCCreatureActionBase@@XZ
+  008ceff0 RELOCATION_MATCH CCreatureAction_CastBattleCharge::?Clone@CCreatureAction_CastBattleCharge@@UBEPAVCCreatureActionBase@@XZ
+  008cf0c0 RELOCATION_MATCH CCreatureAction_BattleChargeImpact::?Clone@CCreatureAction_BattleChargeImpact@@UBEPAVCCreatureActionBase@@XZ
+  008cf160 RELOCATION_MATCH CCreatureAction_BattleChargeMiss::?Clone@CCreatureAction_BattleChargeMiss@@UBEPAVCCreatureActionBase@@XZ
+  008d62f0 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::?Clone@CCreatureAction_FireMissileWeapon@@UBEPAVCCreatureActionBase@@XZ
+  008e4ef0 RELOCATION_MATCH CCreatureAction_ScorpionTailWithdraw::?Clone@CCreatureAction_ScorpionTailWithdraw@@UBEPAVCCreatureActionBase@@XZ
+  008e8d30 RELOCATION_MATCH CCreatureAction_BriarRoseConcentrateInto::?Clone@CCreatureAction_BriarRoseConcentrateInto@@UBEPAVCCreatureActionBase@@XZ
+  008f57c0 RELOCATION_MATCH CCreatureAction_DragonSwoop::?Clone@CCreatureAction_DragonSwoop@@UBEPAVCCreatureActionBase@@XZ
+  00910ff0 RELOCATION_MATCH CCreatureAction_DeclarePlayerACriminal::?Clone@CCreatureAction_DeclarePlayerACriminal@@UBEPAVCCreatureActionBase@@XZ
+  0092e7e0 RELOCATION_MATCH CCreatureAction_GetInBed::?Clone@CCreatureAction_GetInBed@@UBEPAVCCreatureActionBase@@XZ
+  00933fd0 RELOCATION_MATCH CCreatureAction_KickCreature::?Clone@CCreatureAction_KickCreature@@UBEPAVCCreatureActionBase@@XZ
+  009406b0 RELOCATION_MATCH CCreatureAction_PickCrop::?Clone@CCreatureAction_PickCrop@@UBEPAVCCreatureActionBase@@XZ
+  00953b90 RELOCATION_MATCH CCreatureAction_DragonTakeOffIntoFlying::?Clone@CCreatureAction_DragonTakeOffIntoFlying@@UBEPAVCCreatureActionBase@@XZ
+  00953dc0 RELOCATION_MATCH CCreatureAction_DragonBurninateInto::?Clone@CCreatureAction_DragonBurninateInto@@UBEPAVCCreatureActionBase@@XZ
+  009573d0 RELOCATION_MATCH CCreatureAction_BriarRoseIntoInvulnerable::?Clone@CCreatureAction_BriarRoseIntoInvulnerable@@UBEPAVCCreatureActionBase@@XZ
+  00971840 RELOCATION_MATCH CCreatureAction_DuckAndCover::?Clone@CCreatureAction_DuckAndCover@@UBEPAVCCreatureActionBase@@XZ
+  009775c0 RELOCATION_MATCH CCreatureAction_JackScream::?Clone@CCreatureAction_JackScream@@UBEPAVCCreatureActionBase@@XZ
+  00977660 RELOCATION_MATCH CCreatureAction_JackFloatUp::?Clone@CCreatureAction_JackFloatUp@@UBEPAVCCreatureActionBase@@XZ
+  0097b5f0 RELOCATION_MATCH CCreatureAction_JumpOutFromCover::?Clone@CCreatureAction_JumpOutFromCover@@UBEPAVCCreatureActionBase@@XZ
+  0097ca80 RELOCATION_MATCH CCreatureAction_ScorpionPrepareTailPlunge::?Clone@CCreatureAction_ScorpionPrepareTailPlunge@@UBEPAVCCreatureActionBase@@XZ

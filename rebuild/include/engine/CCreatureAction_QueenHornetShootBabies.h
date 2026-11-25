@@ -33,6 +33,26 @@ public:
 FABLE_STATIC_ASSERT_AT(23, sizeof(CCreatureAction_QueenHornetShootBabies) == 0x114);
 #else
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129519C (RTTI .?AVCCreatureAction_QueenHornetShootBabies@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_QueenHornetShootBabies); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_QueenHornetShootBabies : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0095CD00 ?Clone@CCreatureAction_QueenHornetShootBabies@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsStrikeAction() const;                                  // slot 15 0x0095CC00 ?IsStrikeAction@CCreatureAction_QueenHornetShootBabies@@UBE_NXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x0095CC10 ?IsToEvadeAllHits@CCreatureAction_QueenHornetShootBabies@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_QueenHornetShootBabies) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_QueenHornetShootBabies {
 public:
@@ -53,6 +73,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(44, sizeof(CCreatureAction_QueenHornetShootBabies) == 0x114);
 FABLE_STATIC_ASSERT_AT(45, offsetof(CCreatureAction_QueenHornetShootBabies, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_QUEENHORNETSHOOTBABIES
 #endif // FABLE_ENGINE_CCREATUREACTION_QUEENHORNETSHOOTBABIES_H

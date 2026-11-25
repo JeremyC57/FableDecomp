@@ -35,6 +35,30 @@ FABLE_STATIC_ASSERT_AT(21, sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x1
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012874EC (RTTI .?AVCCreatureAction_ReleaseStrengthBerserk@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_ReleaseStrengthBerserk); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008E6DF0 ?PerformAction@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008E6940 ?FinishAction@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008E6EE0 ?Clone@CCreatureAction_ReleaseStrengthBerserk@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008E6490 ?Initialise@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x008E6E00 ?IsToCauseRecoil@CCreatureAction_ReleaseStrengthBerserk@@UBE_NXZ
+    virtual bool IsAbleToBeAttacked() const;                              // slot 47 0x008E6E10 ?IsAbleToBeAttacked@CCreatureAction_ReleaseStrengthBerserk@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008E6500 ?FrameUpdate@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ReleaseStrengthBerserk {
 public:
@@ -55,6 +79,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_ReleaseStrengthBerserk) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_ReleaseStrengthBerserk, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_RELEASESTRENGTHBERSERK
 #endif // FABLE_ENGINE_CCREATUREACTION_RELEASESTRENGTHBERSERK_H

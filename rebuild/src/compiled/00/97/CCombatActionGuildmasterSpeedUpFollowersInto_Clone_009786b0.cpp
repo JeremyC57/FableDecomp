@@ -1,24 +1,63 @@
-// CCombatAction_Guildmaster_SpeedUpFollowersInto::Clone() -- new CCombatAction_Guildmaster_SpeedUpFollowersInto(*this) with the implicit copy constructor inlined
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009786B0, oracle length 47 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; push 0x114 ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je N ; push edi ; mov ecx,esi ; call CCombatActionBase::CCombatActionBase(const CCombatActionBase&) ; pop edi ; mov dword ptr [esi],offset CCombatAction_Guildmaster_SpeedUpFollowersInto::`vftable' ; mov eax,esi ; pop esi ; ret ; N: pop edi ; xor eax,eax ; pop esi ; ret
-// Virtual clone of a class that adds no data to its base: the implicit copy constructor is
-// inlined as the base copy constructor @ 0x0062F3B0 plus this class's vtable store
-// (0x012986FC, named through rtti-vtables.tsv). sizeof = 0x114. One of 28 bodies of this shape.
-class CCombatActionBase { public:
-    virtual void v00();
-    unsigned char _body[0x114 - 4];    // sizeof(CCombatActionBase) = sizeof(CCombatAction_Guildmaster_SpeedUpFollowersInto) = 0x114
-    CCombatActionBase(const CCombatActionBase& other);     // 0x0062F3B0
+// CCombatAction_Guildmaster_SpeedUpFollowersInto::Clone() const -- `return new CCombatAction_Guildmaster_SpeedUpFollowersInto(*this);` with the implicit copy constructor inlined (CCombatActionBase copy constructor, vftable store)
+// Leaf: ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@EBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009786B0, 47 bytes: operator new(0x114) 0x00BFEA1A, null test, CCombatActionBase(const CCombatActionBase&) 0x0062F3B0, C's vftable store;
+//   a private const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@EBEPAVCCreatureActionBase@@XZ: RTTI
+//   placement + Ego_r/FableWin; base copy constructor ??0CCombatActionBase@@QAE@ABV0@@Z 0x0062F3B0 (Ego_r/FableWin; MELEE_COPYCTOR /
+//   COPYCTOR opt-in).
+// Respell (NF425; NF427 retail override set): was the stand-in self ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@QAEPAVCCombatActionBase@@XZ
+//   (non-virtual, non-const); now the real virtual member, so the RTTI-placed name is defined.
+// Overrides (NF427): no engine/CCombatAction_Guildmaster_SpeedUpFollowersInto.h exists, so the local class declares the class's retail
+//   override set: every slot of retail vftable 0x012986FC that differs from CCombatActionBase's (evidence/slotdiff.tsv), each
+//   RTTI-placed and in a PDB name set; the emitted ??_7CCombatAction_Guildmaster_SpeedUpFollowersInto@@6B@ names all 81 of retail's
+//   slots (0 DIFF, 0 WRONG).
+// Header: no engine header defines CCombatAction_Guildmaster_SpeedUpFollowersInto (header debt); a local class over its RTTI direct
+//   base CCombatActionBase (engine/CCombatActionBase.h).
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+
+class CCreatureActionBase;
+class CCombatAction_Guildmaster_SpeedUpFollowersInto : public CCombatActionBase
+{
+private:
+    virtual CCreatureActionBase* Clone() const;                       // slot 11 ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@EBEPAVCCreatureActionBase@@XZ (egor+fablewin)
+public:
+    virtual void Initialise();                                        // slot 12 ?Initialise@CCombatAction_Guildmaster_SpeedUpFollowersInto@@UAEXXZ (egor+fablewin)
 };
 
-class CCombatAction_Guildmaster_SpeedUpFollowersInto : public CCombatActionBase { public:
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CCombatActionBase* Clone();
-};
-
-CCombatActionBase* CCombatAction_Guildmaster_SpeedUpFollowersInto::Clone()
+CCreatureActionBase* CCombatAction_Guildmaster_SpeedUpFollowersInto::Clone() const
 {
     return new CCombatAction_Guildmaster_SpeedUpFollowersInto(*this);
 }

@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf330	0x008C0270	port	008c0270 CCreatureAction_StrafeForward::Clone landed as a non-virtual non-const stand-in returning CCombatActionBase*; PDB ?Clone@CCreatureAction_StrafeForward@@UBEPAVCCreatureActionBase@@XZ (Ego_r + FableWin, RTTI slot 11); NF330 b6 base probe
+nf330	0x008C02A0	port	008c02a0 CCreatureAction_StrafeBackward::Clone, the same stand-in shape; PDB ?Clone@CCreatureAction_StrafeBackward@@UBEPAVCCreatureActionBase@@XZ (RTTI slot 11); NF330 b6 base probe

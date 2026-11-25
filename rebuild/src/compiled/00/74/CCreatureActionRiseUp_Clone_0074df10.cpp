@@ -1,26 +1,74 @@
-// CCreatureAction_RiseUp::Clone() -- new CCreatureAction_RiseUp(*this) with the implicit copy constructor inlined (base copy + one member at +0x114)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0074DF10, oracle length 59 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; push 0x118 ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je N ; push edi ; mov ecx,esi ; call CBase_0062f3b0::CBase_0062f3b0(const CBase_0062f3b0&) ; mov dword ptr [esi],offset CCreatureAction_RiseUp::`vftable' ; mov al,[edi+0x114] ; mov [esi+0x114],al ; pop edi ; mov eax,esi ; pop esi ; ret ; N: pop edi ; xor eax,eax ; pop esi ; ret
-// Virtual clone of a class that adds one byte member at +0x114 to its base: the implicit
-// copy constructor is inlined as the base copy constructor @ 0x0062F3B0, this class's vtable
-// store (0x01268C9C, named through rtti-vtables.tsv) and the member copy. sizeof = 0x118.
-// The member's exact type is not recoverable from the body; `unsigned char` models its size. One of 35 bodies.
-struct CBase_0062f3b0 {
-    virtual void v00();
-    unsigned char _body[0x114 - 4];     // sizeof(CBase_0062f3b0) = 0x114
-    CBase_0062f3b0(const CBase_0062f3b0& other);     // 0x0062F3B0
+// CCreatureAction_RiseUp::Clone() const -- `return new CCreatureAction_RiseUp(*this);` with the implicit copy constructor inlined (CCombatActionBase copy constructor, vftable store, own members)
+// Leaf: ?Clone@CCreatureAction_RiseUp@@UBEPAVCCreatureActionBase@@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0074DF10, 59 bytes: operator new(0x118) 0x00BFEA1A, null test, CCombatActionBase(const CCombatActionBase&) 0x0062F3B0, C's vftable store, then 1 member copy;
+//   a public const virtual __thiscall returning CCreatureActionBase* (0 when the allocation fails).
+// Identity (NF425, 2026-11-25): self ?Clone@CCreatureAction_RiseUp@@UBEPAVCCreatureActionBase@@XZ: RTTI placement + Ego_r/FableWin;
+//   base copy constructor ??0CCombatActionBase@@QAE@ABV0@@Z 0x0062F3B0 (Ego_r/FableWin; MELEE_COPYCTOR / COPYCTOR opt-in).
+// Respell (NF425; NF427 retail override set): was the stand-in self ?Clone@CCreatureAction_RiseUp@@QAEPAUCBase_0062f3b0@@XZ (non-virtual, non-const, over a
+//   made-up base model); now the real virtual member, so the RTTI-placed name is defined.
+// Overrides (NF427): engine/CCreatureAction_RiseUp.h has a hand-written polymorphic branch that the model generator cannot extend
+//   (header debt, T3), so the local class declares the class's retail override set: every slot of retail vftable 0x01268C9C that
+//   differs from CCombatActionBase's (evidence/slotdiff.tsv), each RTTI-placed and in a PDB name set; the emitted
+//   ??_7CCreatureAction_RiseUp@@6B@ names all 81 of retail's slots (0 DIFF, 0 WRONG).
+// Header: engine/CCreatureAction_RiseUp.h its default branch declares the polymorphic CCreatureAction_RiseUp without Clone, so the real
+//   member cannot be defined on it without a header edit (header debt); a local class over its RTTI direct base CCombatActionBase
+//   (engine/CCombatActionBase.h).
+// Members: Ego_r.pdb names at retail offsets (PDB offset - 0x18: the base shrinks from 0x12C to 0x114 with the retail STLport
+//   containers); each width matches retail's copy.
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_C3DVECTOR_PACKED
+#define FABLE_RETAIL_CTCPHYSICSBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE_FULL_MEMBERS
+#define FABLE_RETAIL_MAZE_DEFENSIVE_MELEE_PASS27
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_COPYCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FRAMEUPDATE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_INITIALISE
+#define FABLE_RETAIL_CCOMBATACTIONBASE_FINISHACTION
+#define FABLE_RETAIL_CCOMBATACTIONBASE_ONANIMATIONLOADED
+#define FABLE_RETAIL_CCOMBATACTIONBASE_MELEE_OWN_VIRTUALS
+#define FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+#define FABLE_RETAIL_CCOMBATACTIONBASE_TARGETCTOR
+#include "fable_string.h"
+#include "engine/fable_ai_action_enums.h"
+#include "engine/C3DVector.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/CCreatureActionBase.h"
+#include "engine/CCombatActionBase.h"
+#include "engine/CSoundPair.h"
+#include "engine/CTCPhysicsBase.h"
+
+class CCreatureActionBase;
+class CCreatureAction_RiseUp : public CCombatActionBase
+{
+public:
+    virtual void PerformAction();                                     // slot 3 ?PerformAction@CCreatureAction_RiseUp@@UAEXXZ (egor+fablewin)
+    virtual void FinishAction();                                      // slot 4 ?FinishAction@CCreatureAction_RiseUp@@UAEXXZ (egor+fablewin)
+    virtual long GetAnimationTransitionInTime() const;                // slot 8 ?GetAnimationTransitionInTime@CCreatureAction_RiseUp@@UBEJXZ (fablewin)
+    virtual CCreatureActionBase* Clone() const;                       // slot 11 ?Clone@CCreatureAction_RiseUp@@UBEPAVCCreatureActionBase@@XZ (egor+fablewin)
+    virtual void Initialise();                                        // slot 12 ?Initialise@CCreatureAction_RiseUp@@UAEXXZ (egor+fablewin)
+    virtual bool IsKnockdownStrike() const;                           // slot 19 ?IsKnockdownStrike@CCreatureAction_RiseUp@@UBE_NXZ (fablewin)
+    virtual bool IsOverrideableByActionOfSamePriority() const;        // slot 24 ?IsOverrideableByActionOfSamePriority@CCreatureAction_RiseUp@@UBE_NXZ (fablewin)
+    virtual bool IsBlockable() const;                                 // slot 29 ?IsBlockable@CCreatureAction_RiseUp@@UBE_NXZ (fablewin)
+    virtual bool IsToEvadeAllHits() const;                            // slot 45 ?IsToEvadeAllHits@CCreatureAction_RiseUp@@UBE_NXZ (fablewin)
+    virtual bool IsToFaceTargetAtStart() const;                       // slot 74 ?IsToFaceTargetAtStart@CCreatureAction_RiseUp@@UBE_NXZ (fablewin)
+public:
+    bool FaceTarget;                          // +0x114 (Ego_r.pdb bool FaceTarget at +0x12C)
 };
 
-class CCreatureAction_RiseUp : public CBase_0062f3b0 { public:
-    unsigned char m_extra;                          // +0x114
-    virtual void v00();                    // own vtable; copy constructor implicit
-    CBase_0062f3b0* Clone();
-};
-
-CBase_0062f3b0* CCreatureAction_RiseUp::Clone()
+CCreatureActionBase* CCreatureAction_RiseUp::Clone() const
 {
     return new CCreatureAction_RiseUp(*this);
 }

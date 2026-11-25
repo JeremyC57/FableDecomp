@@ -1,6 +1,16 @@
 // Behaviour test for 0x0084C800 CCreatureAction_AlertAllNearbyToThing::Clone (NF425): links the row object; operator new and the base copy constructor are defined here.
 // Checks: one allocation of 0xB0 bytes; the base copy constructor runs once into the block from `*this`; the block gets the class's
 // vftable pointer (the source's, as both are CCreatureAction_AlertAllNearbyToThing objects); the class's own members are copied (base bytes, then each member; padding is not copied); 0 with no construction when new fails.
+// Ported (NF427 round 2, 2026-11-25): no class body is defined here; the classes come from the shared headers (the row's
+//   prelude below, verbatim). Removed local bodies: CCreatureActionBase, CCreatureAction_AlertAllNearbyToThing. The members the test supplies (??0CCreatureActionBase@@QAE@ABV0@@Z) and the row's CCreatureAction_AlertAllNearbyToThing::Clone are
+//   reached through extern "C" __fastcall stand-ins mapped by /alternatename (ecx = this, edx unused, stack arguments
+//   popped by the callee: the __thiscall frame); sizes and offsets are the retail literals of the original test.
+#define FABLE_RETAIL_CCREATUREACTIONBASE_COPYCTOR
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "fable_string.h"
+#include "engine/CCreatureActionBase.h"
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
@@ -8,24 +18,8 @@
 static int g_ctors = 0; static const void* g_this = 0; static const void* g_other = 0;
 class CThing;
 class CCreatureActionBase;
-class CCreatureActionBase
-{
-public:
-    CCreatureActionBase(const CCreatureActionBase& other);
-    void* vptr_;
-    unsigned char _base[0xA8 - 4];
-};
-CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase& other) { g_this = this; g_other = &other; ++g_ctors; memcpy(_base, other._base, 0xA8 - 4); }
-class CCreatureAction_AlertAllNearbyToThing : public CCreatureActionBase
-{
-    friend int main(void);
-public:
-public:
-    virtual CCreatureActionBase* Clone() const;   // defined in the row object
-public:
-    long Radius;
-    CThing * Thing;
-};
+extern "C" void* __fastcall nf427_copy_ctor(void* self, int edx_unused, const void* other) { g_this = self; g_other = other; ++g_ctors; memcpy((unsigned char*)self + 4, (const unsigned char*)other + 4, 0xA8 - 4); return self; }   // CCreatureActionBase::CCreatureActionBase
+#pragma comment(linker, "/alternatename:??0CCreatureActionBase@@QAE@ABV0@@Z=@nf427_copy_ctor@12")
 // The row object emits the class's vftable (its inlined copy constructor stores it); the test never calls through it, so
 // every slot target the object leaves unresolved is mapped onto one unused stub for the link.
 extern "C" void nf425_unused_slot(void) { }
@@ -104,18 +98,21 @@ static unsigned int g_size = 0; static int g_news = 0, g_fail = 0;
 static long g_block[0xB0 / 4 + 4];
 void* operator new(size_t n) { g_size = (unsigned int)n; ++g_news; return g_fail ? 0 : (void*)g_block; }
 
+extern "C" CCreatureActionBase* __fastcall nf427_clone(const void* self);   // the row's CCreatureAction_AlertAllNearbyToThing::Clone
+#pragma comment(linker, "/alternatename:@nf427_clone@4=?Clone@CCreatureAction_AlertAllNearbyToThing@@UBEPAVCCreatureActionBase@@XZ")
+
 int main(void)
 {
     static long src_store[0xB0 / 4 + 4];
     unsigned char* s = (unsigned char*)src_store;
     for (int i = 4; i < 0xB0; ++i) s[i] = (unsigned char)(i * 7 + 3);
-    const CCreatureAction_AlertAllNearbyToThing* src = (const CCreatureAction_AlertAllNearbyToThing*)(void*)src_store;
-    CCreatureActionBase* r = src->CCreatureAction_AlertAllNearbyToThing::Clone();
+    const void* src = (void*)src_store;
+    CCreatureActionBase* r = nf427_clone(src);
     unsigned char* d = (unsigned char*)g_block;
     int ok = r == (CCreatureActionBase*)(void*)g_block && g_news == 1 && g_size == 0xB0 && g_ctors == 1 && g_this == (void*)g_block && g_other == (const void*)src_store
         && memcmp(d + 4, s + 4, 0xA8 - 4) == 0 && memcmp(d + 0xA8, s + 0xA8, 4) == 0 && memcmp(d + 0xAC, s + 0xAC, 4) == 0 && *(void**)d != 0;
     g_fail = 1;
-    r = src->CCreatureAction_AlertAllNearbyToThing::Clone();
+    r = nf427_clone(src);
     ok = ok && r == 0 && g_news == 2 && g_ctors == 1;
     if (!ok) {
         printf("0084c800_TEST FAIL news=%d ctors=%d size=%u\n", g_news, g_ctors, g_size);

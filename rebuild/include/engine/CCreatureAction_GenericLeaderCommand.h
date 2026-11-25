@@ -35,6 +35,26 @@ FABLE_STATIC_ASSERT_AT(16, sizeof(CCreatureAction_GenericLeaderCommand)==276);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_GENERICLEADERCOMMAND_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127F75C (RTTI .?AVCCreatureAction_GenericLeaderCommand@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_GenericLeaderCommand); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_GenericLeaderCommand : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C01B0 ?Clone@CCreatureAction_GenericLeaderCommand@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008BF800 ?Initialise@CCreatureAction_GenericLeaderCommand@@UAEXXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008BFF10 ?IsToFaceTargetAtStart@CCreatureAction_GenericLeaderCommand@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GenericLeaderCommand) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_GenericLeaderCommand {
 public:
@@ -55,6 +75,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(45, sizeof(CCreatureAction_GenericLeaderCommand) == 0x114);
 FABLE_STATIC_ASSERT_AT(46, offsetof(CCreatureAction_GenericLeaderCommand, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_GENERICLEADERCOMMAND_VIRTUAL_MODEL
 
 #endif
 #endif // FABLE_RETAIL_CCREATUREACTION_GENERICLEADERCOMMAND_PROTOTYPE
