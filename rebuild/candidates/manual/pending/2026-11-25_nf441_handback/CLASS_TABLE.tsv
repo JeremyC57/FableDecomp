@@ -1,0 +1,45 @@
+va	class	basis	status	evidence
+012b5868	CCodaObjectBase	decided(D3)	anchor	EXTRA_RULES D3
+012beda4	CSalRender	one-source:coda-sdk	identified	slot1 ClearFilterHistory shared by Pan/Disable family (0x00C6E690 in 7 vftables = SDK ?ClearFilterHistory@CSalRender inherited); slots 2-4 _purecall = SDK pure Process/SetGain/SetPosition; dtor chain -> CCodaObjectBase 0x012B5868; 5 slots = SDK 5
+012bed7c	CSalRenderPanDelay	one-source:coda-sdk	identified	own ClearFilterHistory (9 insns = SDK 9), SetGain 12 = 12, SetPosition 150 = SDK 150 insns; slots 3/4 inherited by 0x012B8A64/0x012B8AA0 as SDK MMX/SSE2 inherit SetGain/SetPosition@CSalRenderPanDelay; base CSalRender
+012bed90	CSalRenderPan	one-source:coda-sdk	identified	inherits CSalRender ClearFilterHistory (SDK same); SetGain 12 = 12, SetPosition 119 = SDK 119 insns; slots 3/4 inherited by 0x012B8A78/0x012B8AB4
+012bedb8	CSalRenderDisable	one-source:coda-sdk	identified	inherits CSalRender ClearFilterHistory; SetGain 12 = 12, SetPosition 15 = SDK 15 insns (Pan 119: the Pan/Disable tie is broken by this); slots 3/4 inherited by 0x012B8A8C/0x012B8AC8
+012bedcc	CSalRenderHrtfMMX	one-source:coda-sdk	identified	all 4 slots own, base CSalRender; SetGain 29 = 29, SetPosition 122 = 122 insns; ClearFilterHistory clears with MMX (18 mm-register uses, SDK HrtfMMX calls mmxMemclear192, plain Hrtf has no MMX)
+012bede0	CSalRenderHrtfSSE2	style	identified	sibling of 0x012BEDCC (same 29/122-insn SetGain/SetPosition, base CSalRender) whose ClearFilterHistory uses SSE2 (10 xmm uses); GameCODA 2.10 has only CSalRenderHrtf (plain C) + CSalRenderHrtfMMX, so the SSE2 variant is named in the SDK's own <Class>MMX/<Class>SSE2 style
+012b8a64	CSalRenderPanDelaySSE2	one-source:coda-sdk	identified	derives CSalRenderPanDelay (inherits slots 3/4 = SDK SetGain/SetPosition@CSalRenderPanDelay), own ClearFilterHistory + Process like SDK; Process/ClearFilterHistory use xmm registers (8 / 6), no mm
+012b8aa0	CSalRenderPanDelayMMX	one-source:coda-sdk	identified	derives CSalRenderPanDelay as above; Process/ClearFilterHistory use mm registers (16 / 10), no xmm
+012b8a78	CSalRenderPanSSE2	one-source:coda-sdk	identified	derives CSalRenderPan (inherits ClearFilterHistory@CSalRender + SetGain/SetPosition@CSalRenderPan like SDK); Process calls the xmm mix kernel 0x00C6E290 (21 xmm uses)
+012b8ab4	CSalRenderPanMMX	one-source:coda-sdk	identified	derives CSalRenderPan; Process calls the MMX mix kernel 0x00C6F800 (40 mm uses)
+012b8a8c	CSalRenderDisableSSE2	one-source:coda-sdk	identified	derives CSalRenderDisable; Process calls xmm kernel 0x00C6ED70
+012b8ac8	CSalRenderDisableMMX	one-source:coda-sdk	identified	derives CSalRenderDisable; Process calls mm kernel 0x00C6FC80
+00c55270	CSalSw3DVoice::CreateRenderer	one-source:coda-sdk	identified	SDK ?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z (release SalSw3DVoice.obj) relocates CodaMalloc + ??0 DisableSSE2, PanSSE2, PanDelay, DisableMMX, PanMMX, PanDelay, HrtfMMX; retail 0x00C55270 (ret 4) calls CodaMalloc + 0x00C550B0, 0x00C55090, 0x00C6CA20, 0x00C70B00, 0x00C55110, 0x00C550F0, 0x00C6CA20, 0x00C70120 in that order: a second, retail-side tie for every render class it constructs (retail adds 0x00C70B00 = the SSE2 HRTF in the SSE2 branch)
+012b8778	CCodaObject	one-source:coda-sdk	candidate	1 slot (dtor), prev/next at +4/+8 (SDK CCodaObject m_pPrev/m_pNext; the 2.10 debug-only m_DebugTest absent in release), base of 0x012B5A88 (CCodaSource, header engine/CCodaSource.h names that VA) and of 0x012B5C10; chain -> 0x012B5868. Retail CCodaObject has no Is*/Release virtuals (older than 2.10). engine/CCodaObject.h exists: check its virtual list first
+012b5a88	CCodaSource	header(engine/CCodaSource.h)	anchor	already named by the header; shares slots 2/4 with 0x012B5AB0 / 0x012B7B88
+012b7b88	CCoda2DSource	one-source:coda-sdk	identified	slot 0 = 0x00C3D8B0, the CCoda2DSource vector deleting destructor Codex pass 23 tied through CODAApi.lib CodaContext.obj relocations of CCodaContext::Create 0x00C3DFD0; 3 exact-count slot matches; derives 0x012B5A88
+012b5ab0	CCoda3DSource	one-source:coda-sdk	identified	slot 0 = 0x00C3D910 (pass 23 CCoda3DSource vdd); table already binds ??_7CCoda3DSource (and a stand-in ??_7C3DAnimationUtil); 4 exact-count slot matches
+012b5a80	CCodaListener	one-source:coda-sdk	identified	slot 0 = 0x00C3D9A0 (pass 23 CCodaListener vdd); 1 slot (retail CCodaObject has no Is* virtuals)
+012b5a84	CCodaEnvironment	one-source:coda-sdk	identified	slot 0 = 0x00C3D0F0 (pass 23 CCodaEnvironment vdd)
+012b87f4	CCodaEAX	header(engine/CCodaEAX.h)	anchor	header names the VA
+012b5be0	CSalMixerLimiter	one-source:coda-sdk	candidate	6 exact-count slots; its own Reset (slot 1) is inherited by 0x012B5D40 / 0x012B5DE0 as SDK MMX/SSE2 inherit Reset@CSalMixerLimiter; inherits slots 2-9 from 0x012B8F38
+012b8f38	CSalMixer	one-source:coda-sdk	candidate	5 exact-count slots; slots 2-9 inherited by 0x012B5BE0 (CSalMixerLimiter : CSalMixer in SDK); table binds ??_7CMixBuffer (stand-in); engine/CSalMixer.h exists
+012b5d40	CSalMixerLimiterMMX	table+one-source:coda-sdk	anchor	table binds ??_7CSalMixerLimiterMMX; 5 exact-count slots
+012b5de0	CSalMixerLimiterSSE2	table+one-source:coda-sdk	anchor	table binds ??_7CSalMixerLimiterSSE2; 6 exact-count slots
+012b5c10	CSalVoice	one-source:coda-sdk	candidate	19 slots with _purecall entries (abstract), derives CCodaObject 0x012B8778, base of every 20/28-slot voice vftable; SDK CSalVoice : CCodaObject (abstract). engine/CSalVoice.h exists
+012b5c60	CSalSwBaseVoice	one-source:coda-sdk	candidate	28 slots, derives 0x012B5C10, base of 0x012B5CD0; 11 exact-count slots v SDK CSalSwBaseVoice/CSalSwVoice (36 in 2.10)
+012b5cd0	CSalSwVoice	one-source:coda-sdk	candidate	derives 0x012B5C60; 11 exact-count slots; tie with CSalSwBaseVoice broken only by derivation order (HOLD until a body ties)
+012b5d70	CSalSw2DVoice	one-source:coda-sdk	candidate	13 exact-count slots v CSalSw2DVoice (next best 9); vector-deleting slot 0
+012b8ae0	CSalSw3DVoice	one-source:coda-sdk	candidate	12 exact-count slots v CSalSw3DVoice (next 10); engine/CSalSw3DVoice.h (CreateRenderer 0x00C55270 belongs to it)
+012b8cc8	CSalOpenALVoice|CSalOpenAL3DVoice	one-source:coda-sdk	HOLD	20 slots, derives 0x012B5C10; 13 exact-count slots tie OpenALVoice/OpenAL3DVoice; sibling of 0x012B8D48 / 0x012BEE40
+012b8d48	CSalOpenAL2DVoice	one-source:coda-sdk	candidate	13 exact-count slots v CSalOpenAL2DVoice (OpenALVoice 12)
+012bee40	CSalOpenALVoice|CSalOpenAL3DVoice	one-source:coda-sdk	HOLD	as 0x012B8CC8 (tie)
+012b8c18	CSalOpenAL	one-source:coda-sdk	candidate	5 exact-count slots of 12 v CSalOpenAL (next 1); engine/CSalOpenAL.h exists
+012b5b80	CSalContext	one-source:coda-sdk	candidate	vmatch 0.75 v CSalContext; base of 0x012B5BC0; derives 0x012B586C (an extra retail base, unidentified)
+012b5bc0	CSalPlatform	one-source:coda-sdk	candidate	2 exact-count slots, vmatch 0.58; derives 0x012B5B80; engine/CSalPlatform.h exists
+012b5bb0	CSalOutputConfigDs	one-source:coda-sdk	candidate	3 of 4 exact-count slots
+012b8dd0	CSalOutput	header-comment	identified	its destructor 0x00C56E60 is the ??1CSalOutput copy engine/CSalOutputKS.h documents (SDK SalOutputKS.obj, byte-identical)
+012b914c	CSalOutputKS	header-comment	identified	its destructor 0x00C5ECA0 is ~CSalOutputKS per engine/CSalOutputKS.h; 5 exact-count slots
+012b8fcc	CSalOutputMM	one-source:coda-sdk	candidate	5 exact-count slots v CSalOutputMM (KS 2); engine/CSalOutputMM.h exists
+012b8df8	CSalOutputDs	one-source:coda-sdk	candidate	6 exact-count slots tie Ds/DsReverb; base of 0x012B8D98 -> the base is CSalOutputDs (SDK DsReverb : Ds)
+012b8d98	CSalOutputDsReverb	one-source:coda-sdk	candidate	derives 0x012B8DF8
+012b9594	CFloatReverbDspEngine	one-source:coda-sdk	candidate	5 of 5 exact-count slots
+012b8fc8	CSalMutex	header-comment	anchor	engine/CSalOutputKS.h: CSalMutex vtable 0x012B8FC8
