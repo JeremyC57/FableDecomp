@@ -1,0 +1,7 @@
+call	CCountedPointer<$$CBVCFontBank>	callee 0042f948	?Reset@ 0042fc13	callee_lower
+call	CCountedPointer<VCGraphicDataBank>	callee 00419108	??1 004194b5	callee_lower
+call	CCountedPointer<VCGraphicDataBank>	callee 00419108	?Reset@ 004194d1	callee_lower
+call	CCountedPointer<VCIEngine>	callee 0042f974	?Reset@ 0042fd04	callee_lower
+call	CCountedPointer<VCLUA>	callee 004190b6	?Reset@ 00419428	callee_lower
+call	CCountedPointer<VCStartupDefinitionManager>	callee 00433cc0	?Reset@ 00433d3a	callee_lower
+inlined	CCountedPointer<VCTexture>	callee 0041bb30	??1 0041bc90	callee_lower

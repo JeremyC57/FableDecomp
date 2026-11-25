@@ -23685,9 +23685,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ecf70'
-        Module = '_global'
-        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ecf70.cpp'
-        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ecf70_test.cpp'
+        Module = 'CDefPointer<const CTavernGameDef>'
+        Source = '00/5e/CDefPointerconstCTavernGameDef_Release_005ecf70.cpp'
+        TestSource = '00/5e/CDefPointerconstCTavernGameDef_Release_005ecf70_test.cpp'
         PassPattern = 'AUTO_TINY_005ecf70_TEST PASS'
     }
     [pscustomobject]@{
@@ -23734,9 +23734,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00670af0'
-        Module = '_global'
-        Source = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670af0.cpp'
-        TestSource = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670af0_test.cpp'
+        Module = 'CDefPointer<const CCoopSpiritDef>'
+        Source = '00/67/CDefPointerconstCCoopSpiritDef_CDefPointer_00670af0.cpp'
+        TestSource = '00/67/CDefPointerconstCCoopSpiritDef_CDefPointer_00670af0_test.cpp'
         PassPattern = 'AUTO_TINY_00670af0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23853,16 +23853,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006b0ef0'
-        Module = '_global'
-        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0ef0.cpp'
-        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0ef0_test.cpp'
+        Module = 'CDefPointer<const CPhysicsDef>'
+        Source = '00/6b/CDefPointerconstCPhysicsDef_Release_006b0ef0.cpp'
+        TestSource = '00/6b/CDefPointerconstCPhysicsDef_Release_006b0ef0_test.cpp'
         PassPattern = 'AUTO_TINY_006b0ef0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006b0f50'
-        Module = '_global'
-        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f50.cpp'
-        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f50_test.cpp'
+        Module = 'CDefPointer<const CPhysicsDef>'
+        Source = '00/6b/CDefPointerconstCPhysicsDef_CDefPointer_006b0f50.cpp'
+        TestSource = '00/6b/CDefPointerconstCPhysicsDef_CDefPointer_006b0f50_test.cpp'
         PassPattern = 'AUTO_TINY_006b0f50_TEST PASS'
     }
     [pscustomobject]@{
@@ -23881,9 +23881,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006ccb50'
-        Module = '_global'
-        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ccb50.cpp'
-        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ccb50_test.cpp'
+        Module = 'CDefPointer<const CCreatureNavigationDef>'
+        Source = '00/6c/CDefPointerconstCCreatureNavigationDef_Release_006ccb50.cpp'
+        TestSource = '00/6c/CDefPointerconstCCreatureNavigationDef_Release_006ccb50_test.cpp'
         PassPattern = 'AUTO_TINY_006ccb50_TEST PASS'
     }
     [pscustomobject]@{
@@ -24000,9 +24000,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00722af0'
-        Module = '_global'
-        Source = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722af0.cpp'
-        TestSource = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722af0_test.cpp'
+        Module = 'CDefPointer<const CSmokeGeneratorDef>'
+        Source = '00/72/CDefPointerconstCSmokeGeneratorDef_CDefPointer_00722af0.cpp'
+        TestSource = '00/72/CDefPointerconstCSmokeGeneratorDef_CDefPointer_00722af0_test.cpp'
         PassPattern = 'AUTO_TINY_00722af0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24014,30 +24014,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00732440'
-        Module = '_global'
-        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732440.cpp'
-        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732440_test.cpp'
+        Module = 'CDefPointer<const CSpotLightDef>'
+        Source = '00/73/CDefPointerconstCSpotLightDef_Release_00732440.cpp'
+        TestSource = '00/73/CDefPointerconstCSpotLightDef_Release_00732440_test.cpp'
         PassPattern = 'AUTO_TINY_00732440_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00732530'
-        Module = '_global'
-        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732530.cpp'
-        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732530_test.cpp'
+        Module = 'CDefPointer<const CSpotLightDef>'
+        Source = '00/73/CDefPointerconstCSpotLightDef_CDefPointer_00732530.cpp'
+        TestSource = '00/73/CDefPointerconstCSpotLightDef_CDefPointer_00732530_test.cpp'
         PassPattern = 'AUTO_TINY_00732530_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00732ad0'
-        Module = '_global'
-        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732ad0.cpp'
-        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732ad0_test.cpp'
+        Module = 'CDefPointer<const CClockDef>'
+        Source = '00/73/CDefPointerconstCClockDef_Release_00732ad0.cpp'
+        TestSource = '00/73/CDefPointerconstCClockDef_Release_00732ad0_test.cpp'
         PassPattern = 'AUTO_TINY_00732ad0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00732b30'
-        Module = '_global'
-        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732b30.cpp'
-        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732b30_test.cpp'
+        Module = 'CDefPointer<const CClockDef>'
+        Source = '00/73/CDefPointerconstCClockDef_CDefPointer_00732b30.cpp'
+        TestSource = '00/73/CDefPointerconstCClockDef_CDefPointer_00732b30_test.cpp'
         PassPattern = 'AUTO_TINY_00732b30_TEST PASS'
     }
     [pscustomobject]@{
@@ -24196,23 +24196,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00746b60'
-        Module = '_global'
-        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746b60.cpp'
-        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746b60_test.cpp'
+        Module = 'CDefPointer<const CBedDef>'
+        Source = '00/74/CDefPointerconstCBedDef_Release_00746b60.cpp'
+        TestSource = '00/74/CDefPointerconstCBedDef_Release_00746b60_test.cpp'
         PassPattern = 'AUTO_TINY_00746b60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00746bc0'
-        Module = '_global'
-        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746bc0.cpp'
-        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746bc0_test.cpp'
+        Module = 'CDefPointer<const CBedDef>'
+        Source = '00/74/CDefPointerconstCBedDef_CDefPointer_00746bc0.cpp'
+        TestSource = '00/74/CDefPointerconstCBedDef_CDefPointer_00746bc0_test.cpp'
         PassPattern = 'AUTO_TINY_00746bc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007482a0'
-        Module = '_global'
-        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007482a0.cpp'
-        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007482a0_test.cpp'
+        Module = 'CDefPointer<const CStealthDef>'
+        Source = '00/74/CDefPointerconstCStealthDef_Release_007482a0.cpp'
+        TestSource = '00/74/CDefPointerconstCStealthDef_Release_007482a0_test.cpp'
         PassPattern = 'AUTO_TINY_007482a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24294,16 +24294,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00754c80'
-        Module = '_global'
-        Source = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754c80.cpp'
-        TestSource = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754c80_test.cpp'
+        Module = 'CDefPointer<const CLookDef>'
+        Source = '00/75/CDefPointerconstCLookDef_Release_00754c80.cpp'
+        TestSource = '00/75/CDefPointerconstCLookDef_Release_00754c80_test.cpp'
         PassPattern = 'AUTO_TINY_00754c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00754ef0'
-        Module = '_global'
-        Source = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754ef0.cpp'
-        TestSource = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754ef0_test.cpp'
+        Module = 'CDefPointer<const CLookDef>'
+        Source = '00/75/CDefPointerconstCLookDef_CDefPointer_00754ef0.cpp'
+        TestSource = '00/75/CDefPointerconstCLookDef_CDefPointer_00754ef0_test.cpp'
         PassPattern = 'AUTO_TINY_00754ef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24322,16 +24322,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00771940'
-        Module = '_global'
-        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771940.cpp'
-        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771940_test.cpp'
+        Module = 'CDefPointer<const COpinionSourceDef>'
+        Source = '00/77/CDefPointerconstCOpinionSourceDef_Release_00771940.cpp'
+        TestSource = '00/77/CDefPointerconstCOpinionSourceDef_Release_00771940_test.cpp'
         PassPattern = 'AUTO_TINY_00771940_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007719a0'
-        Module = '_global'
-        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007719a0.cpp'
-        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007719a0_test.cpp'
+        Module = 'CDefPointer<const COpinionSourceDef>'
+        Source = '00/77/CDefPointerconstCOpinionSourceDef_CDefPointer_007719a0.cpp'
+        TestSource = '00/77/CDefPointerconstCOpinionSourceDef_CDefPointer_007719a0_test.cpp'
         PassPattern = 'AUTO_TINY_007719a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24371,16 +24371,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007810b0'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007810b0.cpp'
-        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007810b0_test.cpp'
+        Module = 'CDefPointer<const CFlammableDef>'
+        Source = '00/78/CDefPointerconstCFlammableDef_Release_007810b0.cpp'
+        TestSource = '00/78/CDefPointerconstCFlammableDef_Release_007810b0_test.cpp'
         PassPattern = 'AUTO_TINY_007810b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00781260'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00781260.cpp'
-        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00781260_test.cpp'
+        Module = 'CDefPointer<const CFlammableDef>'
+        Source = '00/78/CDefPointerconstCFlammableDef_CDefPointer_00781260.cpp'
+        TestSource = '00/78/CDefPointerconstCFlammableDef_CDefPointer_00781260_test.cpp'
         PassPattern = 'AUTO_TINY_00781260_TEST PASS'
     }
     [pscustomobject]@{
@@ -24399,9 +24399,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00786f40'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786f40.cpp'
-        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786f40_test.cpp'
+        Module = 'CDefPointer<const CSkeletalMorphDef>'
+        Source = '00/78/CDefPointerconstCSkeletalMorphDef_CDefPointer_00786f40.cpp'
+        TestSource = '00/78/CDefPointerconstCSkeletalMorphDef_CDefPointer_00786f40_test.cpp'
         PassPattern = 'AUTO_TINY_00786f40_TEST PASS'
     }
     [pscustomobject]@{
@@ -24420,9 +24420,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0078d9e0'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d9e0.cpp'
-        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d9e0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesBerserkDef>'
+        Source = '00/78/CDefPointerconstCSpecialAbilitiesBerserkDef_CDefPointer_0078d9e0.cpp'
+        TestSource = '00/78/CDefPointerconstCSpecialAbilitiesBerserkDef_CDefPointer_0078d9e0_test.cpp'
         PassPattern = 'AUTO_TINY_0078d9e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24434,100 +24434,100 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079bc20'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bc20.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bc20_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesSummonSpellDef>'
+        Source = '00/79/CDefPointerconstCSpecialAbilitiesSummonSpellDef_CDefPointer_0079bc20.cpp'
+        TestSource = '00/79/CDefPointerconstCSpecialAbilitiesSummonSpellDef_CDefPointer_0079bc20_test.cpp'
         PassPattern = 'AUTO_TINY_0079bc20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0079c3e0'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c3e0.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c3e0_test.cpp'
+        Module = 'CDefPointer<const CSummonableCreatureDef>'
+        Source = '00/79/CDefPointerconstCSummonableCreatureDef_Release_0079c3e0.cpp'
+        TestSource = '00/79/CDefPointerconstCSummonableCreatureDef_Release_0079c3e0_test.cpp'
         PassPattern = 'AUTO_TINY_0079c3e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0079c450'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c450.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c450_test.cpp'
+        Module = 'CDefPointer<const CSummonableCreatureDef>'
+        Source = '00/79/CDefPointerconstCSummonableCreatureDef_CDefPointer_0079c450.cpp'
+        TestSource = '00/79/CDefPointerconstCSummonableCreatureDef_CDefPointer_0079c450_test.cpp'
         PassPattern = 'AUTO_TINY_0079c450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0079db50'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079db50.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079db50_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesBulletTimeDef>'
+        Source = '00/79/CDefPointerconstCSpecialAbilitiesBulletTimeDef_CDefPointer_0079db50.cpp'
+        TestSource = '00/79/CDefPointerconstCSpecialAbilitiesBulletTimeDef_CDefPointer_0079db50_test.cpp'
         PassPattern = 'AUTO_TINY_0079db50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0079ecb0'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ecb0.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ecb0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesPhysicalShieldDef>'
+        Source = '00/79/CDefPointerconstCSpecialAbilitiesPhysicalShieldDef_Release_0079ecb0.cpp'
+        TestSource = '00/79/CDefPointerconstCSpecialAbilitiesPhysicalShieldDef_Release_0079ecb0_test.cpp'
         PassPattern = 'AUTO_TINY_0079ecb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a3170'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a3170.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a3170_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesLightningSpellDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesLightningSpellDef_CDefPointer_007a3170.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesLightningSpellDef_CDefPointer_007a3170_test.cpp'
         PassPattern = 'AUTO_TINY_007a3170_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a4f70'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4f70.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4f70_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesEnflameDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesEnflameDef_Release_007a4f70.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesEnflameDef_Release_007a4f70_test.cpp'
         PassPattern = 'AUTO_TINY_007a4f70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a4fe0'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4fe0.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4fe0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesEnflameDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesEnflameDef_CDefPointer_007a4fe0.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesEnflameDef_CDefPointer_007a4fe0_test.cpp'
         PassPattern = 'AUTO_TINY_007a4fe0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a5ef0'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a5ef0.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a5ef0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesForcePushDataDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesForcePushDataDef_Release_007a5ef0.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesForcePushDataDef_Release_007a5ef0_test.cpp'
         PassPattern = 'AUTO_TINY_007a5ef0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a6050'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6050.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6050_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesForcePushDataDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesForcePushDataDef_CDefPointer_007a6050.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesForcePushDataDef_CDefPointer_007a6050_test.cpp'
         PassPattern = 'AUTO_TINY_007a6050_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a6c10'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c10.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c10_test.cpp'
+        Module = 'CDefPointer<const CReplaceableMeshDef>'
+        Source = '00/7a/CDefPointerconstCReplaceableMeshDef_Release_007a6c10.cpp'
+        TestSource = '00/7a/CDefPointerconstCReplaceableMeshDef_Release_007a6c10_test.cpp'
         PassPattern = 'AUTO_TINY_007a6c10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007a6c80'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c80.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c80_test.cpp'
+        Module = 'CDefPointer<const CReplaceableMeshDef>'
+        Source = '00/7a/CDefPointerconstCReplaceableMeshDef_CDefPointer_007a6c80.cpp'
+        TestSource = '00/7a/CDefPointerconstCReplaceableMeshDef_CDefPointer_007a6c80_test.cpp'
         PassPattern = 'AUTO_TINY_007a6c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007ab4d0'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab4d0.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab4d0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesAssassinRushDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesAssassinRushDef_CDefPointer_007ab4d0.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesAssassinRushDef_CDefPointer_007ab4d0_test.cpp'
         PassPattern = 'AUTO_TINY_007ab4d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007acb30'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007acb30.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007acb30_test.cpp'
+        Module = 'CDefPointer<const CAIScratchpadDef>'
+        Source = '00/7a/CDefPointerconstCAIScratchpadDef_CDefPointer_007acb30.cpp'
+        TestSource = '00/7a/CDefPointerconstCAIScratchpadDef_CDefPointer_007acb30_test.cpp'
         PassPattern = 'AUTO_TINY_007acb30_TEST PASS'
     }
     [pscustomobject]@{
@@ -24567,9 +24567,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b3950'
-        Module = '_global'
-        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3950.cpp'
-        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3950_test.cpp'
+        Module = 'CDefPointer<const CGuardDef>'
+        Source = '00/7b/CDefPointerconstCGuardDef_Release_007b3950.cpp'
+        TestSource = '00/7b/CDefPointerconstCGuardDef_Release_007b3950_test.cpp'
         PassPattern = 'AUTO_TINY_007b3950_TEST PASS'
     }
     [pscustomobject]@{
@@ -24637,23 +24637,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c4d20'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4d20.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4d20_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesHealLifeDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesHealLifeDef_Release_007c4d20.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesHealLifeDef_Release_007c4d20_test.cpp'
         PassPattern = 'AUTO_TINY_007c4d20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007c65a0'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c65a0.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c65a0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesGhostSwordDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesGhostSwordDef_CDefPointer_007c65a0.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesGhostSwordDef_CDefPointer_007c65a0_test.cpp'
         PassPattern = 'AUTO_TINY_007c65a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007c7670'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7670.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7670_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesTurncoatSpellDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesTurncoatSpellDef_CDefPointer_007c7670.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesTurncoatSpellDef_CDefPointer_007c7670_test.cpp'
         PassPattern = 'AUTO_TINY_007c7670_TEST PASS'
     }
     [pscustomobject]@{
@@ -24665,16 +24665,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cc880'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc880.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc880_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesMultiArrowDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesMultiArrowDef_CDefPointer_007cc880.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesMultiArrowDef_CDefPointer_007cc880_test.cpp'
         PassPattern = 'AUTO_TINY_007cc880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007cd700'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd700.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd700_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesMultiStrikeDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesMultiStrikeDef_CDefPointer_007cd700.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesMultiStrikeDef_CDefPointer_007cd700_test.cpp'
         PassPattern = 'AUTO_TINY_007cd700_TEST PASS'
     }
     [pscustomobject]@{
@@ -24693,9 +24693,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cf280'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf280.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf280_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesCreatureTintDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesCreatureTintDef_CDefPointer_007cf280.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesCreatureTintDef_CDefPointer_007cf280_test.cpp'
         PassPattern = 'AUTO_TINY_007cf280_TEST PASS'
     }
     [pscustomobject]@{
@@ -24707,9 +24707,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d4b70'
-        Module = '_global'
-        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b70.cpp'
-        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b70_test.cpp'
+        Module = 'CDefPointer<const CTavernGameCoinGolfDef>'
+        Source = '00/7d/CDefPointerconstCTavernGameCoinGolfDef_CDefPointer_007d4b70.cpp'
+        TestSource = '00/7d/CDefPointerconstCTavernGameCoinGolfDef_CDefPointer_007d4b70_test.cpp'
         PassPattern = 'AUTO_TINY_007d4b70_TEST PASS'
     }
     [pscustomobject]@{
@@ -24721,37 +24721,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d9630'
-        Module = '_global'
-        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9630.cpp'
-        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9630_test.cpp'
+        Module = 'CDefPointer<const CTavernGameSpotTheAdditionDef>'
+        Source = '00/7d/CDefPointerconstCTavernGameSpotTheAdditionDef_Release_007d9630.cpp'
+        TestSource = '00/7d/CDefPointerconstCTavernGameSpotTheAdditionDef_Release_007d9630_test.cpp'
         PassPattern = 'AUTO_TINY_007d9630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007df980'
-        Module = '_global'
-        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df980.cpp'
-        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df980_test.cpp'
+        Module = 'CDefPointer<const CWallMountEffectsDef>'
+        Source = '00/7d/CDefPointerconstCWallMountEffectsDef_CDefPointer_007df980.cpp'
+        TestSource = '00/7d/CDefPointerconstCWallMountEffectsDef_CDefPointer_007df980_test.cpp'
         PassPattern = 'AUTO_TINY_007df980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e0490'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0490.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0490_test.cpp'
+        Module = 'CDefPointer<const CTeleporterDef>'
+        Source = '00/7e/CDefPointerconstCTeleporterDef_CDefPointer_007e0490.cpp'
+        TestSource = '00/7e/CDefPointerconstCTeleporterDef_CDefPointer_007e0490_test.cpp'
         PassPattern = 'AUTO_TINY_007e0490_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e0980'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0980.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0980_test.cpp'
+        Module = 'CDefPointer<const CHeroSpecialMovementDef>'
+        Source = '00/7e/CDefPointerconstCHeroSpecialMovementDef_Release_007e0980.cpp'
+        TestSource = '00/7e/CDefPointerconstCHeroSpecialMovementDef_Release_007e0980_test.cpp'
         PassPattern = 'AUTO_TINY_007e0980_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e09e0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e09e0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e09e0_test.cpp'
+        Module = 'CDefPointer<const CHeroSpecialMovementDef>'
+        Source = '00/7e/CDefPointerconstCHeroSpecialMovementDef_CDefPointer_007e09e0.cpp'
+        TestSource = '00/7e/CDefPointerconstCHeroSpecialMovementDef_CDefPointer_007e09e0_test.cpp'
         PassPattern = 'AUTO_TINY_007e09e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24798,30 +24798,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e31a0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e31a0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e31a0_test.cpp'
+        Module = 'CDefPointer<const CCameraCollisionDef>'
+        Source = '00/7e/CDefPointerconstCCameraCollisionDef_Release_007e31a0.cpp'
+        TestSource = '00/7e/CDefPointerconstCCameraCollisionDef_Release_007e31a0_test.cpp'
         PassPattern = 'AUTO_TINY_007e31a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e3200'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e3200.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e3200_test.cpp'
+        Module = 'CDefPointer<const CCameraCollisionDef>'
+        Source = '00/7e/CDefPointerconstCCameraCollisionDef_CDefPointer_007e3200.cpp'
+        TestSource = '00/7e/CDefPointerconstCCameraCollisionDef_CDefPointer_007e3200_test.cpp'
         PassPattern = 'AUTO_TINY_007e3200_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e4750'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4750.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4750_test.cpp'
+        Module = 'CDefPointer<const CWillResponseDef>'
+        Source = '00/7e/CDefPointerconstCWillResponseDef_Release_007e4750.cpp'
+        TestSource = '00/7e/CDefPointerconstCWillResponseDef_Release_007e4750_test.cpp'
         PassPattern = 'AUTO_TINY_007e4750_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e47b0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e47b0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e47b0_test.cpp'
+        Module = 'CDefPointer<const CWillResponseDef>'
+        Source = '00/7e/CDefPointerconstCWillResponseDef_CDefPointer_007e47b0.cpp'
+        TestSource = '00/7e/CDefPointerconstCWillResponseDef_CDefPointer_007e47b0_test.cpp'
         PassPattern = 'AUTO_TINY_007e47b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24875,9 +24875,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0083cec0'
-        Module = '_global'
-        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083cec0.cpp'
-        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083cec0_test.cpp'
+        Module = 'CDefPointer<const CThingSwitchDef>'
+        Source = '00/83/CDefPointerconstCThingSwitchDef_CDefPointer_0083cec0.cpp'
+        TestSource = '00/83/CDefPointerconstCThingSwitchDef_CDefPointer_0083cec0_test.cpp'
         PassPattern = 'AUTO_TINY_0083cec0_TEST PASS'
     }
     [pscustomobject]@{
@@ -24903,9 +24903,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085a5c0'
-        Module = '_global'
-        Source = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a5c0.cpp'
-        TestSource = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a5c0_test.cpp'
+        Module = 'CDefPointer<const CMeleeCombatKnockdownEffects>'
+        Source = '00/85/CDefPointerconstCMeleeCombatKnockdownEffects_Release_0085a5c0.cpp'
+        TestSource = '00/85/CDefPointerconstCMeleeCombatKnockdownEffects_Release_0085a5c0_test.cpp'
         PassPattern = 'AUTO_TINY_0085a5c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -25001,23 +25001,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008cbf90'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf90.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf90_test.cpp'
+        Module = 'CDefPointer<const CSummonerDef>'
+        Source = '00/8c/CDefPointerconstCSummonerDef_CDefPointer_008cbf90.cpp'
+        TestSource = '00/8c/CDefPointerconstCSummonerDef_CDefPointer_008cbf90_test.cpp'
         PassPattern = 'AUTO_TINY_008cbf90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008cd050'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd050.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd050_test.cpp'
+        Module = 'CDefPointer<const CBalverineBattleDef>'
+        Source = '00/8c/CDefPointerconstCBalverineBattleDef_Release_008cd050.cpp'
+        TestSource = '00/8c/CDefPointerconstCBalverineBattleDef_Release_008cd050_test.cpp'
         PassPattern = 'AUTO_TINY_008cd050_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008cd0b0'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd0b0.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd0b0_test.cpp'
+        Module = 'CDefPointer<const CBalverineBattleDef>'
+        Source = '00/8c/CDefPointerconstCBalverineBattleDef_CDefPointer_008cd0b0.cpp'
+        TestSource = '00/8c/CDefPointerconstCBalverineBattleDef_CDefPointer_008cd0b0_test.cpp'
         PassPattern = 'AUTO_TINY_008cd0b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -25057,37 +25057,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00956520'
-        Module = '_global'
-        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00956520.cpp'
-        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00956520_test.cpp'
+        Module = 'CDefPointer<const CWhisperBattleDef>'
+        Source = '00/95/CDefPointerconstCWhisperBattleDef_CDefPointer_00956520.cpp'
+        TestSource = '00/95/CDefPointerconstCWhisperBattleDef_CDefPointer_00956520_test.cpp'
         PassPattern = 'AUTO_TINY_00956520_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0095c540'
-        Module = '_global'
-        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c540.cpp'
-        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c540_test.cpp'
+        Module = 'CDefPointer<const CWaspQueenBattleDef>'
+        Source = '00/95/CDefPointerconstCWaspQueenBattleDef_CDefPointer_0095c540.cpp'
+        TestSource = '00/95/CDefPointerconstCWaspQueenBattleDef_CDefPointer_0095c540_test.cpp'
         PassPattern = 'AUTO_TINY_0095c540_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00978130'
-        Module = '_global'
-        Source = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978130.cpp'
-        TestSource = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978130_test.cpp'
+        Module = 'CDefPointer<const CGuildMasterDef>'
+        Source = '00/97/CDefPointerconstCGuildMasterDef_CDefPointer_00978130.cpp'
+        TestSource = '00/97/CDefPointerconstCGuildMasterDef_CDefPointer_00978130_test.cpp'
         PassPattern = 'AUTO_TINY_00978130_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00981fb0'
-        Module = '_global'
-        Source = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00981fb0.cpp'
-        TestSource = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00981fb0_test.cpp'
+        Module = 'CDefPointer<const CVillagerInteractionsDef>'
+        Source = '00/98/CDefPointerconstCVillagerInteractionsDef_Release_00981fb0.cpp'
+        TestSource = '00/98/CDefPointerconstCVillagerInteractionsDef_Release_00981fb0_test.cpp'
         PassPattern = 'AUTO_TINY_00981fb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00982060'
-        Module = '_global'
-        Source = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00982060.cpp'
-        TestSource = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00982060_test.cpp'
+        Module = 'CDefPointer<const CVillagerInteractionsDef>'
+        Source = '00/98/CDefPointerconstCVillagerInteractionsDef_CDefPointer_00982060.cpp'
+        TestSource = '00/98/CDefPointerconstCVillagerInteractionsDef_CDefPointer_00982060_test.cpp'
         PassPattern = 'AUTO_TINY_00982060_TEST PASS'
     }
     [pscustomobject]@{
@@ -73522,9 +73522,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0044b930'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b930.cpp'
-        TestSource = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b930_test.cpp'
+        Module = 'CDefPointer<const CPlayerDef>'
+        Source = '00/44/CDefPointerconstCPlayerDef_CDefPointer_0044b930.cpp'
+        TestSource = '00/44/CDefPointerconstCPlayerDef_CDefPointer_0044b930_test.cpp'
         PassPattern = 'PASS_0044b930'
     }
     [pscustomobject]@{
@@ -78037,9 +78037,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0044b620'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b620.cpp'
-        TestSource = '00/44/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044b620_test.cpp'
+        Module = 'CDefPointer<const CPlayerDef>'
+        Source = '00/44/CDefPointerconstCPlayerDef_Release_0044b620.cpp'
+        TestSource = '00/44/CDefPointerconstCPlayerDef_Release_0044b620_test.cpp'
         PassPattern = 'PASS_0044b620'
     }
     [pscustomobject]@{
@@ -78163,9 +78163,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005ed330'
-        Module = '_global'
-        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ed330.cpp'
-        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ed330_test.cpp'
+        Module = 'CDefPointer<const CTavernGameDef>'
+        Source = '00/5e/CDefPointerconstCTavernGameDef_CDefPointer_005ed330.cpp'
+        TestSource = '00/5e/CDefPointerconstCTavernGameDef_CDefPointer_005ed330_test.cpp'
         PassPattern = 'PASS_005ed330'
     }
     [pscustomobject]@{
@@ -78198,9 +78198,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00670ac0'
-        Module = '_global'
-        Source = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670ac0.cpp'
-        TestSource = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670ac0_test.cpp'
+        Module = 'CDefPointer<const CCoopSpiritDef>'
+        Source = '00/67/CDefPointerconstCCoopSpiritDef_Release_00670ac0.cpp'
+        TestSource = '00/67/CDefPointerconstCCoopSpiritDef_Release_00670ac0_test.cpp'
         PassPattern = 'PASS_00670ac0'
     }
     [pscustomobject]@{
@@ -78254,9 +78254,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006cd0a0'
-        Module = '_global'
-        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006cd0a0.cpp'
-        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006cd0a0_test.cpp'
+        Module = 'CDefPointer<const CCreatureNavigationDef>'
+        Source = '00/6c/CDefPointerconstCCreatureNavigationDef_CDefPointer_006cd0a0.cpp'
+        TestSource = '00/6c/CDefPointerconstCCreatureNavigationDef_CDefPointer_006cd0a0_test.cpp'
         PassPattern = 'PASS_006cd0a0'
     }
     [pscustomobject]@{
@@ -78282,16 +78282,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006d93a0'
-        Module = '_global'
-        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d93a0.cpp'
-        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d93a0_test.cpp'
+        Module = 'CDefPointer<const CHeroExperienceDef>'
+        Source = '00/6d/CDefPointerconstCHeroExperienceDef_Release_006d93a0.cpp'
+        TestSource = '00/6d/CDefPointerconstCHeroExperienceDef_Release_006d93a0_test.cpp'
         PassPattern = 'PASS_006d93a0'
     }
     [pscustomobject]@{
         Address = '006da000'
-        Module = '_global'
-        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006da000.cpp'
-        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006da000_test.cpp'
+        Module = 'CDefPointer<const CHeroExperienceDef>'
+        Source = '00/6d/CDefPointerconstCHeroExperienceDef_CDefPointer_006da000.cpp'
+        TestSource = '00/6d/CDefPointerconstCHeroExperienceDef_CDefPointer_006da000_test.cpp'
         PassPattern = 'PASS_006da000'
     }
     [pscustomobject]@{
@@ -78352,23 +78352,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071e4a0'
-        Module = '_global'
-        Source = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071e4a0.cpp'
-        TestSource = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071e4a0_test.cpp'
+        Module = 'CDefPointer<const CHeroMorphDef>'
+        Source = '00/71/CDefPointerconstCHeroMorphDef_Release_0071e4a0.cpp'
+        TestSource = '00/71/CDefPointerconstCHeroMorphDef_Release_0071e4a0_test.cpp'
         PassPattern = 'PASS_0071e4a0'
     }
     [pscustomobject]@{
         Address = '0071ef40'
-        Module = '_global'
-        Source = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071ef40.cpp'
-        TestSource = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0071ef40_test.cpp'
+        Module = 'CDefPointer<const CHeroMorphDef>'
+        Source = '00/71/CDefPointerconstCHeroMorphDef_CDefPointer_0071ef40.cpp'
+        TestSource = '00/71/CDefPointerconstCHeroMorphDef_CDefPointer_0071ef40_test.cpp'
         PassPattern = 'PASS_0071ef40'
     }
     [pscustomobject]@{
         Address = '00722960'
-        Module = '_global'
-        Source = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722960.cpp'
-        TestSource = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722960_test.cpp'
+        Module = 'CDefPointer<const CSmokeGeneratorDef>'
+        Source = '00/72/CDefPointerconstCSmokeGeneratorDef_Release_00722960.cpp'
+        TestSource = '00/72/CDefPointerconstCSmokeGeneratorDef_Release_00722960_test.cpp'
         PassPattern = 'PASS_00722960'
     }
     [pscustomobject]@{
@@ -78387,23 +78387,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00745d70'
-        Module = '_global'
-        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745d70.cpp'
-        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745d70_test.cpp'
+        Module = 'CDefPointer<const CPerceivedThingDef>'
+        Source = '00/74/CDefPointerconstCPerceivedThingDef_Release_00745d70.cpp'
+        TestSource = '00/74/CDefPointerconstCPerceivedThingDef_Release_00745d70_test.cpp'
         PassPattern = 'PASS_00745d70'
     }
     [pscustomobject]@{
         Address = '00745fd0'
-        Module = '_global'
-        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745fd0.cpp'
-        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00745fd0_test.cpp'
+        Module = 'CDefPointer<const CPerceivedThingDef>'
+        Source = '00/74/CDefPointerconstCPerceivedThingDef_CDefPointer_00745fd0.cpp'
+        TestSource = '00/74/CDefPointerconstCPerceivedThingDef_CDefPointer_00745fd0_test.cpp'
         PassPattern = 'PASS_00745fd0'
     }
     [pscustomobject]@{
         Address = '007484d0'
-        Module = '_global'
-        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007484d0.cpp'
-        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007484d0_test.cpp'
+        Module = 'CDefPointer<const CStealthDef>'
+        Source = '00/74/CDefPointerconstCStealthDef_CDefPointer_007484d0.cpp'
+        TestSource = '00/74/CDefPointerconstCStealthDef_CDefPointer_007484d0_test.cpp'
         PassPattern = 'PASS_007484d0'
     }
     [pscustomobject]@{
@@ -78436,30 +78436,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0077def0'
-        Module = '_global'
-        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077def0.cpp'
-        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077def0_test.cpp'
+        Module = 'CDefPointer<const CHeroCentreDef>'
+        Source = '00/77/CDefPointerconstCHeroCentreDef_Release_0077def0.cpp'
+        TestSource = '00/77/CDefPointerconstCHeroCentreDef_Release_0077def0_test.cpp'
         PassPattern = 'PASS_0077def0'
     }
     [pscustomobject]@{
         Address = '0077e1d0'
-        Module = '_global'
-        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077e1d0.cpp'
-        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077e1d0_test.cpp'
+        Module = 'CDefPointer<const CHeroCentreDef>'
+        Source = '00/77/CDefPointerconstCHeroCentreDef_CDefPointer_0077e1d0.cpp'
+        TestSource = '00/77/CDefPointerconstCHeroCentreDef_CDefPointer_0077e1d0_test.cpp'
         PassPattern = 'PASS_0077e1d0'
     }
     [pscustomobject]@{
         Address = '00786cf0'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786cf0.cpp'
-        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786cf0_test.cpp'
+        Module = 'CDefPointer<const CSkeletalMorphDef>'
+        Source = '00/78/CDefPointerconstCSkeletalMorphDef_Release_00786cf0.cpp'
+        TestSource = '00/78/CDefPointerconstCSkeletalMorphDef_Release_00786cf0_test.cpp'
         PassPattern = 'PASS_00786cf0'
     }
     [pscustomobject]@{
         Address = '0078d950'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d950.cpp'
-        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d950_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesBerserkDef>'
+        Source = '00/78/CDefPointerconstCSpecialAbilitiesBerserkDef_Release_0078d950.cpp'
+        TestSource = '00/78/CDefPointerconstCSpecialAbilitiesBerserkDef_Release_0078d950_test.cpp'
         PassPattern = 'PASS_0078d950'
     }
     [pscustomobject]@{
@@ -78485,72 +78485,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0079bbf0'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bbf0.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bbf0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesSummonSpellDef>'
+        Source = '00/79/CDefPointerconstCSpecialAbilitiesSummonSpellDef_Release_0079bbf0.cpp'
+        TestSource = '00/79/CDefPointerconstCSpecialAbilitiesSummonSpellDef_Release_0079bbf0_test.cpp'
         PassPattern = 'PASS_0079bbf0'
     }
     [pscustomobject]@{
         Address = '0079daf0'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079daf0.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079daf0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesBulletTimeDef>'
+        Source = '00/79/CDefPointerconstCSpecialAbilitiesBulletTimeDef_Release_0079daf0.cpp'
+        TestSource = '00/79/CDefPointerconstCSpecialAbilitiesBulletTimeDef_Release_0079daf0_test.cpp'
         PassPattern = 'PASS_0079daf0'
     }
     [pscustomobject]@{
         Address = '0079ee50'
-        Module = '_global'
-        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ee50.cpp'
-        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ee50_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesPhysicalShieldDef>'
+        Source = '00/79/CDefPointerconstCSpecialAbilitiesPhysicalShieldDef_CDefPointer_0079ee50.cpp'
+        TestSource = '00/79/CDefPointerconstCSpecialAbilitiesPhysicalShieldDef_CDefPointer_0079ee50_test.cpp'
         PassPattern = 'PASS_0079ee50'
     }
     [pscustomobject]@{
         Address = '007a2df0'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a2df0.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a2df0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesLightningSpellDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesLightningSpellDef_Release_007a2df0.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesLightningSpellDef_Release_007a2df0_test.cpp'
         PassPattern = 'PASS_007a2df0'
     }
     [pscustomobject]@{
         Address = '007a8e50'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a8e50.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a8e50_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesBattleChargeDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesBattleChargeDef_Release_007a8e50.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesBattleChargeDef_Release_007a8e50_test.cpp'
         PassPattern = 'PASS_007a8e50'
     }
     [pscustomobject]@{
         Address = '007a9000'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a9000.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a9000_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesBattleChargeDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesBattleChargeDef_CDefPointer_007a9000.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesBattleChargeDef_CDefPointer_007a9000_test.cpp'
         PassPattern = 'PASS_007a9000'
     }
     [pscustomobject]@{
         Address = '007ab420'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab420.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab420_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesAssassinRushDef>'
+        Source = '00/7a/CDefPointerconstCSpecialAbilitiesAssassinRushDef_Release_007ab420.cpp'
+        TestSource = '00/7a/CDefPointerconstCSpecialAbilitiesAssassinRushDef_Release_007ab420_test.cpp'
         PassPattern = 'PASS_007ab420'
     }
     [pscustomobject]@{
         Address = '007ac7a0'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ac7a0.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ac7a0_test.cpp'
+        Module = 'CDefPointer<const CAIScratchpadDef>'
+        Source = '00/7a/CDefPointerconstCAIScratchpadDef_Release_007ac7a0.cpp'
+        TestSource = '00/7a/CDefPointerconstCAIScratchpadDef_Release_007ac7a0_test.cpp'
         PassPattern = 'PASS_007ac7a0'
     }
     [pscustomobject]@{
         Address = '007af750'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af750.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af750_test.cpp'
+        Module = 'CDefPointer<const CBossDef>'
+        Source = '00/7a/CDefPointerconstCBossDef_Release_007af750.cpp'
+        TestSource = '00/7a/CDefPointerconstCBossDef_Release_007af750_test.cpp'
         PassPattern = 'PASS_007af750'
     }
     [pscustomobject]@{
         Address = '007af890'
-        Module = '_global'
-        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af890.cpp'
-        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007af890_test.cpp'
+        Module = 'CDefPointer<const CBossDef>'
+        Source = '00/7a/CDefPointerconstCBossDef_CDefPointer_007af890.cpp'
+        TestSource = '00/7a/CDefPointerconstCBossDef_CDefPointer_007af890_test.cpp'
         PassPattern = 'PASS_007af890'
     }
     [pscustomobject]@{
@@ -78562,9 +78562,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007b3e70'
-        Module = '_global'
-        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3e70.cpp'
-        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3e70_test.cpp'
+        Module = 'CDefPointer<const CGuardDef>'
+        Source = '00/7b/CDefPointerconstCGuardDef_CDefPointer_007b3e70.cpp'
+        TestSource = '00/7b/CDefPointerconstCGuardDef_CDefPointer_007b3e70_test.cpp'
         PassPattern = 'PASS_007b3e70'
     }
     [pscustomobject]@{
@@ -78590,51 +78590,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007c4e20'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4e20.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4e20_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesHealLifeDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesHealLifeDef_CDefPointer_007c4e20.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesHealLifeDef_CDefPointer_007c4e20_test.cpp'
         PassPattern = 'PASS_007c4e20'
     }
     [pscustomobject]@{
         Address = '007c6570'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c6570.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c6570_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesGhostSwordDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesGhostSwordDef_Release_007c6570.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesGhostSwordDef_Release_007c6570_test.cpp'
         PassPattern = 'PASS_007c6570'
     }
     [pscustomobject]@{
         Address = '007c7640'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7640.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7640_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesTurncoatSpellDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesTurncoatSpellDef_Release_007c7640.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesTurncoatSpellDef_Release_007c7640_test.cpp'
         PassPattern = 'PASS_007c7640'
     }
     [pscustomobject]@{
         Address = '007c7f50'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f50.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f50_test.cpp'
+        Module = 'CDefPointer<const CTurncoatDef>'
+        Source = '00/7c/CDefPointerconstCTurncoatDef_Release_007c7f50.cpp'
+        TestSource = '00/7c/CDefPointerconstCTurncoatDef_Release_007c7f50_test.cpp'
         PassPattern = 'PASS_007c7f50'
     }
     [pscustomobject]@{
         Address = '007c7f80'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f80.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7f80_test.cpp'
+        Module = 'CDefPointer<const CTurncoatDef>'
+        Source = '00/7c/CDefPointerconstCTurncoatDef_CDefPointer_007c7f80.cpp'
+        TestSource = '00/7c/CDefPointerconstCTurncoatDef_CDefPointer_007c7f80_test.cpp'
         PassPattern = 'PASS_007c7f80'
     }
     [pscustomobject]@{
         Address = '007cc850'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc850.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc850_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesMultiArrowDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesMultiArrowDef_Release_007cc850.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesMultiArrowDef_Release_007cc850_test.cpp'
         PassPattern = 'PASS_007cc850'
     }
     [pscustomobject]@{
         Address = '007cd6d0'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd6d0.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd6d0_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesMultiStrikeDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesMultiStrikeDef_Release_007cd6d0.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesMultiStrikeDef_Release_007cd6d0_test.cpp'
         PassPattern = 'PASS_007cd6d0'
     }
     [pscustomobject]@{
@@ -78653,9 +78653,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007cf250'
-        Module = '_global'
-        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf250.cpp'
-        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf250_test.cpp'
+        Module = 'CDefPointer<const CSpecialAbilitiesCreatureTintDef>'
+        Source = '00/7c/CDefPointerconstCSpecialAbilitiesCreatureTintDef_Release_007cf250.cpp'
+        TestSource = '00/7c/CDefPointerconstCSpecialAbilitiesCreatureTintDef_Release_007cf250_test.cpp'
         PassPattern = 'PASS_007cf250'
     }
     [pscustomobject]@{
@@ -78667,9 +78667,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d4b30'
-        Module = '_global'
-        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b30.cpp'
-        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b30_test.cpp'
+        Module = 'CDefPointer<const CTavernGameCoinGolfDef>'
+        Source = '00/7d/CDefPointerconstCTavernGameCoinGolfDef_Release_007d4b30.cpp'
+        TestSource = '00/7d/CDefPointerconstCTavernGameCoinGolfDef_Release_007d4b30_test.cpp'
         PassPattern = 'PASS_007d4b30'
     }
     [pscustomobject]@{
@@ -78681,23 +78681,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007d9850'
-        Module = '_global'
-        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9850.cpp'
-        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9850_test.cpp'
+        Module = 'CDefPointer<const CTavernGameSpotTheAdditionDef>'
+        Source = '00/7d/CDefPointerconstCTavernGameSpotTheAdditionDef_CDefPointer_007d9850.cpp'
+        TestSource = '00/7d/CDefPointerconstCTavernGameSpotTheAdditionDef_CDefPointer_007d9850_test.cpp'
         PassPattern = 'PASS_007d9850'
     }
     [pscustomobject]@{
         Address = '007df950'
-        Module = '_global'
-        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df950.cpp'
-        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df950_test.cpp'
+        Module = 'CDefPointer<const CWallMountEffectsDef>'
+        Source = '00/7d/CDefPointerconstCWallMountEffectsDef_Release_007df950.cpp'
+        TestSource = '00/7d/CDefPointerconstCWallMountEffectsDef_Release_007df950_test.cpp'
         PassPattern = 'PASS_007df950'
     }
     [pscustomobject]@{
         Address = '007e0460'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0460.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0460_test.cpp'
+        Module = 'CDefPointer<const CTeleporterDef>'
+        Source = '00/7e/CDefPointerconstCTeleporterDef_Release_007e0460.cpp'
+        TestSource = '00/7e/CDefPointerconstCTeleporterDef_Release_007e0460_test.cpp'
         PassPattern = 'PASS_007e0460'
     }
     [pscustomobject]@{
@@ -78709,16 +78709,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e6ad0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6ad0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6ad0_test.cpp'
+        Module = 'CDefPointer<const COracleMinigameDef>'
+        Source = '00/7e/CDefPointerconstCOracleMinigameDef_Release_007e6ad0.cpp'
+        TestSource = '00/7e/CDefPointerconstCOracleMinigameDef_Release_007e6ad0_test.cpp'
         PassPattern = 'PASS_007e6ad0'
     }
     [pscustomobject]@{
         Address = '007e6bd0'
-        Module = '_global'
-        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6bd0.cpp'
-        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e6bd0_test.cpp'
+        Module = 'CDefPointer<const COracleMinigameDef>'
+        Source = '00/7e/CDefPointerconstCOracleMinigameDef_CDefPointer_007e6bd0.cpp'
+        TestSource = '00/7e/CDefPointerconstCOracleMinigameDef_CDefPointer_007e6bd0_test.cpp'
         PassPattern = 'PASS_007e6bd0'
     }
     [pscustomobject]@{
@@ -78751,9 +78751,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0083ce90'
-        Module = '_global'
-        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083ce90.cpp'
-        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083ce90_test.cpp'
+        Module = 'CDefPointer<const CThingSwitchDef>'
+        Source = '00/83/CDefPointerconstCThingSwitchDef_Release_0083ce90.cpp'
+        TestSource = '00/83/CDefPointerconstCThingSwitchDef_Release_0083ce90_test.cpp'
         PassPattern = 'PASS_0083ce90'
     }
     [pscustomobject]@{
@@ -78765,9 +78765,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085a8d0'
-        Module = '_global'
-        Source = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a8d0.cpp'
-        TestSource = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a8d0_test.cpp'
+        Module = 'CDefPointer<const CMeleeCombatKnockdownEffects>'
+        Source = '00/85/CDefPointerconstCMeleeCombatKnockdownEffects_CDefPointer_0085a8d0.cpp'
+        TestSource = '00/85/CDefPointerconstCMeleeCombatKnockdownEffects_CDefPointer_0085a8d0_test.cpp'
         PassPattern = 'PASS_0085a8d0'
     }
     [pscustomobject]@{
@@ -78786,9 +78786,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008cbf60'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf60.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf60_test.cpp'
+        Module = 'CDefPointer<const CSummonerDef>'
+        Source = '00/8c/CDefPointerconstCSummonerDef_Release_008cbf60.cpp'
+        TestSource = '00/8c/CDefPointerconstCSummonerDef_Release_008cbf60_test.cpp'
         PassPattern = 'PASS_008cbf60'
     }
     [pscustomobject]@{
@@ -78814,23 +78814,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009564f0'
-        Module = '_global'
-        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009564f0.cpp'
-        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009564f0_test.cpp'
+        Module = 'CDefPointer<const CWhisperBattleDef>'
+        Source = '00/95/CDefPointerconstCWhisperBattleDef_Release_009564f0.cpp'
+        TestSource = '00/95/CDefPointerconstCWhisperBattleDef_Release_009564f0_test.cpp'
         PassPattern = 'PASS_009564f0'
     }
     [pscustomobject]@{
         Address = '0095c450'
-        Module = '_global'
-        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c450.cpp'
-        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c450_test.cpp'
+        Module = 'CDefPointer<const CWaspQueenBattleDef>'
+        Source = '00/95/CDefPointerconstCWaspQueenBattleDef_Release_0095c450.cpp'
+        TestSource = '00/95/CDefPointerconstCWaspQueenBattleDef_Release_0095c450_test.cpp'
         PassPattern = 'PASS_0095c450'
     }
     [pscustomobject]@{
         Address = '00978100'
-        Module = '_global'
-        Source = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978100.cpp'
-        TestSource = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978100_test.cpp'
+        Module = 'CDefPointer<const CGuildMasterDef>'
+        Source = '00/97/CDefPointerconstCGuildMasterDef_Release_00978100.cpp'
+        TestSource = '00/97/CDefPointerconstCGuildMasterDef_Release_00978100_test.cpp'
         PassPattern = 'PASS_00978100'
     }
     [pscustomobject]@{

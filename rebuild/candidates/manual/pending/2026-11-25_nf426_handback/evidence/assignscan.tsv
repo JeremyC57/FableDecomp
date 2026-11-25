@@ -1,0 +1,56 @@
+ai_state_group_actions.obj	L=00981fb0	H=00982060	next_after_L=-	next_after_H=-	SDC@00982144:after_H
+ai_state_group_guildmaster.obj	L=00978100	H=00978130	next_after_L=-	next_after_H=SDC	SDC@00978184:after_H
+ai_state_group_hover_hornet_queen.obj	L=0095c450	H=0095c540	next_after_L=-	next_after_H=SDC	SDC@0095c5b4:after_H
+ai_state_group_maze.obj	L=009564f0	H=00956520	next_after_L=-	next_after_H=SDC	SDC@00956574:after_H
+combat_action_balverine.obj	L=008cd050	H=008cd0b0	next_after_L=SDC	next_after_H=-	SDC@008cd0a4:between
+combat_action_base.obj	L=0085a5c0	H=0085a8d0	next_after_L=-	next_after_H=-	SDC@0085a954:after_H SDC@0085aa54:after_H
+combat_action_summoner.obj	L=008cbf60	H=008cbf90	next_after_L=-	next_after_H=SDC	SDC@008cbfe4:after_H
+player_manager.obj	L=0044b620	H=0044b930	next_after_L=-	next_after_H=-	SDC@0044b864:between
+tc_ai_scratchpad.obj	L=007ac7a0	H=007acb30	next_after_L=-	next_after_H=-	-
+tc_assassin_rush.obj	L=007ab420	H=007ab4d0	next_after_L=-	next_after_H=SDC	SDC@007ab524:after_H
+tc_battle_charge.obj	L=007a8e50	H=007a9000	next_after_L=-	next_after_H=-	SDC@007a90c4:after_H
+tc_bed.obj	L=00746b60	H=00746bc0	next_after_L=SDC	next_after_H=-	SDC@00746bb4:between
+tc_berserk.obj	L=0078d950	H=0078d9e0	next_after_L=-	next_after_H=SDC	SDC@0078da44:after_H
+tc_boss.obj	L=007af750	H=007af890	next_after_L=-	next_after_H=-	SDC@007afa04:after_H
+tc_bullet_time.obj	L=0079daf0	H=0079db50	next_after_L=-	next_after_H=SDC	SDC@0079dba4:after_H
+tc_camera_collision.obj	L=007e31a0	H=007e3200	next_after_L=SDC	next_after_H=-	SDC@007e31f4:between
+tc_clock.obj	L=00732ad0	H=00732b30	next_after_L=SDC	next_after_H=op=	SDC@00732b24:between op=@00732b86:after_H
+tc_coop_spirit.obj	L=00670ac0	H=00670af0	next_after_L=-	next_after_H=SDC	SDC@00670b44:after_H
+tc_creature_navigation.obj	L=006ccb50	H=006cd0a0	next_after_L=-	next_after_H=-	SDC@006cd1d4:after_H
+tc_creature_tint_effect.obj	L=007cf250	H=007cf280	next_after_L=-	next_after_H=SDC	SDC@007cf2d4:after_H
+tc_flammable.obj	L=007810b0	H=00781260	next_after_L=-	next_after_H=-	SDC@00781494:after_H
+tc_force_push_power.obj	L=007a5ef0	H=007a6050	next_after_L=-	next_after_H=-	SDC@007a6124:after_H
+tc_ghost_sword.obj	L=007c6570	H=007c65a0	next_after_L=-	next_after_H=SDC	SDC@007c65f4:after_H
+tc_graphic_appearance_replaceable_mesh.obj	L=007a6c10	H=007a6c80	next_after_L=SDC	next_after_H=-	SDC@007a6c64:between
+tc_guard.obj	L=007b3950	H=007b3e70	next_after_L=-	next_after_H=-	SDC@007b4134:after_H
+tc_heal_life.obj	L=007c4d20	H=007c4e20	next_after_L=-	next_after_H=-	SDC@007c4ef4:after_H
+tc_hero_appearance.obj	L=0071e4a0	H=0071ef40	next_after_L=-	next_after_H=-	SDC@0071f374:after_H op=@0071f426:after_H
+tc_hero_centre.obj	L=0077def0	H=0077e1d0	next_after_L=-	next_after_H=-	SDC@0077e3a4:after_H
+tc_hero_experience.obj	L=006d93a0	H=006da000	next_after_L=-	next_after_H=-	op=@006d9f76:between SDC@006da634:after_H
+tc_hero_special_movement.obj	L=007e0980	H=007e09e0	next_after_L=SDC	next_after_H=-	SDC@007e09d4:between
+tc_look.obj	L=00754c80	H=00754ef0	next_after_L=-	next_after_H=-	SDC@00755074:after_H
+tc_multiarrow.obj	L=007cc850	H=007cc880	next_after_L=-	next_after_H=SDC	SDC@007cc8d4:after_H
+tc_multistrike.obj	L=007cd6d0	H=007cd700	next_after_L=-	next_after_H=SDC	SDC@007cd754:after_H
+tc_opinion_source.obj	L=00771940	H=007719a0	next_after_L=SDC	next_after_H=-	SDC@00771994:between
+tc_oracle_minigame.obj	L=007e6ad0	H=007e6bd0	next_after_L=-	next_after_H=-	SDC@007e6d04:after_H
+tc_perceive_thing.obj	L=00745d70	H=00745fd0	next_after_L=-	next_after_H=-	SDC@00746074:after_H
+tc_physics_base.obj	L=006b0ef0	H=006b0f50	next_after_L=SDC	next_after_H=-	SDC@006b0f44:between
+tc_skeletal_morph.obj	L=00786cf0	H=00786f40	next_after_L=-	next_after_H=-	SDC@00786eb4:between
+tc_smoke_generator.obj	L=00722960	H=00722af0	next_after_L=-	next_after_H=-	SDC@00722a54:between
+tc_spot_light.obj	L=00732440	H=00732530	next_after_L=SDC	next_after_H=-	SDC@00732494:between
+tc_stealth.obj	L=007482a0	H=007484d0	next_after_L=-	next_after_H=-	SDC@007485e4:after_H
+tc_summon_spell.obj	L=0079bbf0	H=0079bc20	next_after_L=-	next_after_H=SDC	SDC@0079bc74:after_H
+tc_summoned_creature.obj	L=0079c3e0	H=0079c450	next_after_L=SDC	next_after_H=-	SDC@0079c434:between
+tc_tavern_game.obj	L=005ecf70	H=005ed330	next_after_L=-	next_after_H=-	SDC@005ed3b4:after_H
+tc_tavern_game_coin_golf.obj	L=007d4b30	H=007d4b70	next_after_L=-	next_after_H=SDC	SDC@007d4bc4:after_H
+tc_tavern_game_spot_the_addition.obj	L=007d9630	H=007d9850	next_after_L=-	next_after_H=-	SDC@007d99f4:after_H
+tc_teleporter.obj	L=007e0460	H=007e0490	next_after_L=-	next_after_H=SDC	SDC@007e04e4:after_H
+tc_trap.obj	L=00788b55	H=00788cba	next_after_L=-	next_after_H=-	SDC@00788ded:after_H
+tc_turncoat.obj	L=007c7f50	H=007c7f80	next_after_L=-	next_after_H=SDC	SDC@007c7ff4:after_H
+tc_turncoat_spell.obj	L=007c7640	H=007c7670	next_after_L=-	next_after_H=SDC	SDC@007c76c4:after_H
+tc_wall_mount_effects.obj	L=007df950	H=007df980	next_after_L=-	next_after_H=SDC	SDC@007df9d4:after_H
+tc_will_enflame.obj	L=007a4f70	H=007a4fe0	next_after_L=-	next_after_H=SDC	SDC@007a5034:after_H
+tc_will_lightning.obj	L=007a2df0	H=007a3170	next_after_L=-	next_after_H=op=	op=@007a31c6:after_H SDC@007a3354:after_H
+tc_will_response.obj	L=007e4750	H=007e47b0	next_after_L=SDC	next_after_H=-	SDC@007e47a4:between
+tc_will_shield.obj	L=0079ecb0	H=0079ee50	next_after_L=-	next_after_H=-	SDC@0079efb4:after_H
+thing_switch.obj	L=0083ce90	H=0083cec0	next_after_L=-	next_after_H=SDC	SDC@0083cf14:after_H
