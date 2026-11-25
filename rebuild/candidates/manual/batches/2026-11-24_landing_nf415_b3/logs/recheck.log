@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a66550   RELOCATION_MATCH PASS   GetFragmentation
+
+WINS: 1
+  00a66550 RELOCATION_MATCH CMemoryAllocatorFixedSize::GetFragmentation

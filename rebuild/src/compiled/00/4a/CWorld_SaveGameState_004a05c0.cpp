@@ -9,6 +9,9 @@
 //   const wchar16*) 0x0099BF30 (L".hs" 0x01236A74), PathExists 0x00999230, CDriveManager::DeleteFileW 0x009E4BC0
 //   (g_pDriveManager 0x013CAA28), ~CWideString 0x0099B510. L"" 0x0122D70C.
 // Globals: two file-static save flags 0x013B89D0 / 0x013B89D1 (read by SaveGameStateInternal; descriptive names).
+// Literals (NF415, 2026-11-25): were file-statics `s_Empty[] = { 0 }` and `s_HeroStateExt[] = { '.', 'h', 's', 0 }` (table symbols
+//   _s_Empty -> 0x0122D70C, _s_HeroStateExt -> 0x01236A74); now spelled at each use site: L"" (retail's pooled wide empty literal,
+//   0x0122D70C: 00 00) and L".hs" (0x01236A74: 2E 00 68 00 73 00 00 00).
 typedef unsigned short wchar16;
 extern "C" int __cdecl wcscmp(const unsigned short* a, const unsigned short* b);   // 0x00BFE94C
 namespace std {
@@ -18,8 +21,6 @@ template <class _CharT, class _IntT> class __char_traits_base { public:   // STL
 }
 double __fastcall GFGetTime();                          // 0x009E1BC0
 
-static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
-static const unsigned short s_HeroStateExt[] = { '.', 'h', 's', 0 };   // L".hs" 0x01236A74
 
 class CWideStringData { public:
     unsigned short* _M_start;
@@ -107,17 +108,17 @@ void CWorld::SaveGameState(const CWideString& name, bool questScreens, bool flag
     CWideString fileName;
     CAFile::SplitPath(name, &drive, &directory, &fileName, 0);
     if (directory.PStringData == 0) {
-        if (wcscmp(s_Empty, s_Empty) == 0)
+        if (wcscmp(L"", L"") == 0)
             goto empty;
         goto resolved;
     }
     if ((unsigned long)(directory.PStringData->_M_finish - directory.PStringData->_M_start) != 0
-        || std::__char_traits_base<unsigned short, unsigned short>::compare(directory.PStringData->_M_start, s_Empty, 0) != 0)
+        || std::__char_traits_base<unsigned short, unsigned short>::compare(directory.PStringData->_M_start, L"", 0) != 0)
         goto resolved;
 empty:
     {
         CWideString profilePath = CUserProfileManager::Get().GetPathNameFromFileName(name, true);
-        if (profilePath != s_Empty)
+        if (profilePath != L"")
             path = profilePath;
     }
 resolved:
@@ -134,7 +135,7 @@ resolved:
         SaveHeroStateInternal(name, flag);
     }
     else {
-        CWideString heroState = path + s_HeroStateExt;
+        CWideString heroState = path + L".hs";
         if (CAFile::PathExists(heroState))
             g_pDriveManager->DeleteFileW(heroState);
     }

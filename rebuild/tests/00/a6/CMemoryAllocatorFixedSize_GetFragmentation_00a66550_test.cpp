@@ -1,26 +1,15 @@
-#include <math.h>
+// Behaviour test for 0x00A66550 CMemoryAllocatorFixedSize::GetFragmentation() (NF415: linked): links the row object (the method is
+// declared in the shared header, not defined here) and checks that it returns exactly 0.0f (retail's pooled constant at 0x0122DEDC).
 #include <stdio.h>
+#include <string.h>
 #include "candidates/fixed_size_allocator_accessors_compiled.h"
-
-extern "C" __declspec(dllimport) void* FABLE_STDCALL VirtualAlloc(
-    void*, unsigned long, unsigned long, unsigned long);
-extern "C" __declspec(dllimport) int FABLE_STDCALL VirtualFree(
-    void*, unsigned long, unsigned long);
-
-static const unsigned long kMemCommit = 0x1000;
-static const unsigned long kMemReserve = 0x2000;
-static const unsigned long kMemRelease = 0x8000;
-static const unsigned long kPageReadWrite = 0x04;
 
 int main()
 {
-    void* page = VirtualAlloc(reinterpret_cast<void*>(0x0122D000), 0x1000,
-        kMemReserve | kMemCommit, kPageReadWrite);
-    if (page == 0) return 1;
-    *reinterpret_cast<float*>(0x0122DEDC) = 0.375f;
-    CMemoryAllocatorFixedSize* allocator = 0;
-    if (fabs(allocator->GetFragmentation() - 0.375f) > 0.0001f) return 2;
-    VirtualFree(page, 0, kMemRelease);
+    CMemoryAllocatorFixedSize* allocator = 0;          // the method reads no member
+    float f = allocator->GetFragmentation();
+    unsigned int bits; memcpy(&bits, &f, sizeof(bits));
+    if (f != 0.0f || bits != 0u) { printf("FIXED_ALLOCATOR_FRAGMENTATION_TEST FAIL\n"); return 1; }
     printf("FIXED_ALLOCATOR_FRAGMENTATION_TEST PASS\n");
     return 0;
 }

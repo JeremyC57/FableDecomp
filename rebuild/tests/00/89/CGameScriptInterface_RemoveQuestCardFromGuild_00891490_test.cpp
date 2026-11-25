@@ -1,50 +1,47 @@
+// Behaviour test for 0x00891490 CGameScriptInterface::RemoveQuestCardFromGuild(int questId) (NF415: linked): links the row object (the
+// function is declared here, not defined) and defines its callees under the row's spellings. Checks: the quest manager maps the id,
+// a temporary string is built from the result and checked against retail's pooled "" (0x0122D70E); only a passing check removes the
+// card; the temporary is destroyed either way.
 #include <cstdio>
+#include <cstring>
 
-struct Str { char buf[0x20]; };
-struct Guild { void* vt; char pad[0x100]; };
+struct Str {
+    void* p;
+    void ctor(int v);
+    char check(int c);
+    void dtor();
+};
+struct Guild {
+    void* vt;
+    char pad[0x100];
+    int  map(int id);
+    void remove(Str* s);
+};
+#include "engine/CTBaseSingletonNoDefaultAlloc.h"
+class CQuestManager;
+void __stdcall CGameScriptInterface_RemoveQuestCardFromGuild(int questId);   // the row (linked)
 
-static Guild g_guild_obj;
-Guild* g_guild = &g_guild_obj;
-
-static int g_mapArg = -1;
-static int g_checkArg = 0;
-static int g_ctorVal = 0;
-static bool g_removed = false;
-static bool g_dtored = false;
-static bool g_returnCheck = true;
-
-int __fastcall Guild_map(Guild* g, int id) { g_mapArg = id; return id + 100; }
-void __fastcall Str_ctor(Str* s, int v) { g_ctorVal = v; s->buf[0] = 0; }
-char __fastcall Str_check(Str* s, int c) { g_checkArg = c; return g_returnCheck ? 1 : 0; }
-void __fastcall Guild_remove(Guild* g, Str* s) { g_removed = true; }
-void __fastcall Str_dtor(Str* s) { g_dtored = true; }
-
-void CGameScriptInterface_RemoveQuestCardFromGuild(int questId)
-{
-    int v = Guild_map(g_guild, questId);
-    Str tmp;
-    Str_ctor(&tmp, v);
-    if (Str_check(&tmp, 0x122d70e)) {
-        Guild_remove(g_guild, &tmp);
-    }
-    Str_dtor(&tmp);
-}
+static Guild g_guild;
+static CCountedPointer<CQuestManager> MakeManagerPointer() { CCountedPointer<CQuestManager> p; p.Data = (CQuestManager*)&g_guild; return p; }
+template <> CCountedPointer<CQuestManager> CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass = MakeManagerPointer();   // the quest manager (the row reads it as the guild)
+static int g_mapArg = -1, g_ctorVal = 0, g_checks = 0, g_bad = 0;
+static bool g_removed = false, g_dtored = false, g_returnCheck = true;
+static Str* g_tmp = 0;
+int Guild::map(int id) { if (this != &g_guild) ++g_bad; g_mapArg = id; return id + 100; }
+void Str::ctor(int v) { g_ctorVal = v; g_tmp = this; }
+char Str::check(int c) { ++g_checks; const char* s = (const char*)c; if (this != g_tmp || s == 0 || std::strcmp(s, "") != 0) ++g_bad; return g_returnCheck ? 1 : 0; }
+void Guild::remove(Str* s) { if (this != &g_guild || s != g_tmp) ++g_bad; g_removed = true; }
+void Str::dtor() { if (this != g_tmp) ++g_bad; g_dtored = true; }
 
 int main()
 {
     g_returnCheck = true;
     CGameScriptInterface_RemoveQuestCardFromGuild(42);
-    if (g_mapArg != 42) { std::printf("FAIL mapArg=%d\n", g_mapArg); return 1; }
-    if (g_ctorVal != 142) { std::printf("FAIL ctorVal=%d\n", g_ctorVal); return 1; }
-    if (g_checkArg != 0x122d70e) { std::printf("FAIL checkArg=%x\n", g_checkArg); return 1; }
-    if (!g_removed) { std::printf("FAIL not removed\n"); return 1; }
-    if (!g_dtored) { std::printf("FAIL not dtored\n"); return 1; }
-
+    if (g_mapArg != 42 || g_ctorVal != 142 || g_checks != 1 || !g_removed || !g_dtored) { std::printf("FAIL pass path\n"); return 1; }
     g_removed = false; g_dtored = false; g_returnCheck = false;
     CGameScriptInterface_RemoveQuestCardFromGuild(7);
-    if (g_removed) { std::printf("FAIL removed when check false\n"); return 1; }
-    if (!g_dtored) { std::printf("FAIL not dtored on false path\n"); return 1; }
-
+    if (g_removed || !g_dtored || g_checks != 2) { std::printf("FAIL false path\n"); return 1; }
+    if (g_bad) { std::printf("FAIL argument check (%d)\n", g_bad); return 1; }
     std::printf("CGameScriptInterface_00891490_TEST PASS\n");
     return 0;
 }

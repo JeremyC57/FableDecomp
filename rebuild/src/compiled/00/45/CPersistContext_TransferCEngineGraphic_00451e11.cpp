@@ -4,6 +4,8 @@
 //   "CEngineLightingManager::UpdateShadowScene" / Transfer*_xxx was propagated or descriptive.
 // source_cpp
 // Leaf: ??$Transfer@VCEngineGraphic@@@CPersistContext@@QAEXAAVCEngineGraphic@@@Z
+// Literal (NF415, 2026-11-25): was the bare integer 0x122d70e (the retail VA of the pooled ""); now the literal is spelled, cast to the
+//   stand-in's existing int parameter so no callee or table line changes (the callee port is T3). Retail 0x0122D70E: 00 (retail's one pooled "", NF388 / NF413 b2 / NF414 b1).
 struct LocalObj {
     char pad[16];
     LocalObj();
@@ -29,7 +31,7 @@ template <> void CPersistContext::Transfer<CEngineGraphic>(CEngineGraphic& value
 {
     CPersistContext* self = this;
     int arg = (int)&value_;
-    ProfileEnter(0x122d70e);
+    ProfileEnter((int)"");
     LocalObj local;
     switch (self->mode) {
     case 2:

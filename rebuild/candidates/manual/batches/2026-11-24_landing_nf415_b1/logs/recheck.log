@@ -1,0 +1,21 @@
+addr       parity           behav  name
+004a05c0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CDriveManager (engine/CDriveManager.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool (engine/CHandleBasedMemoryPool.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+004a05c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+004a05c0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004a05c0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004a05c0   RELOCATION_MATCH PASS   SaveGameState
+004fdab0   WARN SHARED_HEADER_AVAILABLE CCountedPointer (engine/CCountedPointer.h)
+004fdab0   WARN SHARED_HEADER_AVAILABLE CBankFileAsync (engine/CBankFileAsync.h)
+004fdab0   WARN SHARED_HEADER_AVAILABLE CWADBank (engine/CWADBank.h)
+004fdab0   WARN SHARED_HEADER_AVAILABLE CWorldMap (engine/CWorldMap.h)
+004fdab0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004fdab0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004fdab0   RELOCATION_MATCH PASS   SetAsUsingWAD
+
+WINS: 2
+  004a05c0 RELOCATION_MATCH CWorld::?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z
+  004fdab0 RELOCATION_MATCH CWorldMap::SetAsUsingWAD

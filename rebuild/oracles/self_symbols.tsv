@@ -15502,7 +15502,7 @@ address	symbol	status	leaf_given
 009c3250	?Unpause@CFileInstaller@@QAEXXZ	RELOCATION_MATCH	Unpause
 009c32c0	?GetPercentComplete@CFileInstaller@@QAEMXZ	RELOCATION_MATCH	GetPercentComplete
 009c3330	?FreeBuffer@CFileInstaller@@QAEXPAUSInstallBuffer_009c3330@@@Z	RELOCATION_MATCH	FreeBuffer
-009c3510	?OnReadFinished@CActiveFile@@QAEXXZ	MATCH	OnReadFinished
+009c3510	?OnReadFinished@CActiveFile@@QAEXXZ	RELOCATION_MATCH	OnReadFinished
 009c3a60	?AllocateBuffer@CFileInstaller@@QAEPAUCBufferChunk@@_N@Z	MATCH	AllocateBuffer
 009c4330	??0CActiveFile@@QAE@ABUCFileInfoPointer@@@Z	RELOCATION_MATCH	??0CActiveFile
 009c5110	?FreeBuffers@CFileInstaller@@QAEXXZ	RELOCATION_MATCH	FreeBuffers
@@ -16981,7 +16981,7 @@ address	symbol	status	leaf_given
 00a62860	??_GCShaderDataBank@@UAEPAXI@Z	RELOCATION_MATCH	??_GCShaderDataBank
 00a62920	??0CCriticalSectionLock_Methods@@QAE@PAU_RTL_CRITICAL_SECTION@@_N@Z	RELOCATION_MATCH	??0CCriticalSectionLock@
 00a62960	??1CCriticalSectionLock@@QAE@XZ	RELOCATION_MATCH	Release
-00a62980	?Lock@CCriticalSectionLock_Methods@@QAEXXZ	MATCH	Lock
+00a62980	?Lock@CCriticalSectionLock_Methods@@QAEXXZ	RELOCATION_MATCH	Lock
 00a629a0	??1CCriticalSectionLock@@QAE@XZ	RELOCATION_MATCH	??1CCriticalSectionLock@
 00a629d0	?Clear@CPackedUIntArray@@QAEXXZ	RELOCATION_MATCH	?Clear@CPackedUIntArray@@QAEXXZ
 00a629f0	??ACPackedUIntArray@@QBEKK@Z	RELOCATION_MATCH	??ACPackedUIntArray
@@ -17055,7 +17055,7 @@ address	symbol	status	leaf_given
 00a662a0	?Deallocate@FixedSizeAllocator@@QAEXPAX@Z	RELOCATION_MATCH	Deallocate
 00a663d0	?NewChunk@CMemoryAllocatorFixedSizeChunks@@QAEPAUCMemoryAreaChunk@@XZ	RELOCATION_MATCH	NewChunk
 00a66450	?Allocate@FixedSizeAllocator@@QAEPAXK@Z	RELOCATION_MATCH	Allocate
-00a66550	?GetFragmentation@CMemoryAllocatorFixedSize@@QAEMXZ	MATCH	GetFragmentation
+00a66550	?GetFragmentation@CMemoryAllocatorFixedSize@@QAEMXZ	RELOCATION_MATCH	GetFragmentation
 00a66750	?operator_delete@@YIXPAX@Z	RELOCATION_MATCH	operator_delete
 00a66850	?M@S@@QAEXPAD@Z	MATCH	EventScanEnd
 00a66860	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ	RELOCATION_MATCH	?ClearAllMaintainedEvents@CKeyboard@@QAEXXZ
@@ -20964,7 +20964,7 @@ address	symbol	status	leaf_given
 00c3dcd0	?CreateCharacterMorphAction@CTCHeroStats_00c3dcd0@@QAEPAUCAction_00c3dcd0@@XZ	RELOCATION_MATCH	CreateCharacterMorphAction
 00c3df10	?CreateIndexBuffer@CTCHeroStats_00c3df10@@QAEPAUCIndexBuffer_00c3df10@@XZ	RELOCATION_MATCH	CreateSoundBankResizeAction
 00c3e260	?InitDefaultDescriptor_00c3e260@@YAXPAUSDescriptor_00c3e260@@@Z	RELOCATION_MATCH	InitDefaultDescriptor_00c3e260
-00c3e290	?Get@T@@QAEHXZ	MATCH	sub_00c3e290
+00c3e290	?Get@T@@QAEHXZ	RELOCATION_MATCH	sub_00c3e290
 00c3e320	?Hook@T@@QAEXH@Z	MATCH	sub_00c3e320
 00c3e330	_Forward	RELOCATION_MATCH	sub_00c3e330
 00c3e340	?Get@T@@QAEHXZ	MATCH	sub_00c3e340

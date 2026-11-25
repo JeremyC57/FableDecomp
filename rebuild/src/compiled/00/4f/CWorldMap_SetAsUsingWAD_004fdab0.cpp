@@ -8,6 +8,8 @@
 //   CBankFileAsync::CBankFileAsync() 0x009D5F80 (the CWADBank base), CCountedPointer<CWADBank>::Reset(CWADBank*) 0x0050F2B0
 //   (catalogued for CIPhysicsFacesSegmentBase), CWADBank virtual slot 3 (+0x0C, open by name with flags 0x102; descriptive),
 //   operator delete 0x00BFE9BC. L"" is 0x0122D70C. CWADBank vtable 0x012442DC (0x164 bytes).
+// Literal (NF415, 2026-11-25): was a file-static `s_Empty[] = { 0 }` (table symbol _s_Empty -> 0x0122D70C); now L"" spelled at each
+//   use site, retail's pooled wide empty literal (Fable.exe 0x0122D70C: 00 00; ??_C@_11LOCGONAA@?$AA?$AA@).
 // Layout: engine/CWorldMap.h carries Ego_r.pdb offsets (LevelWADBank +0xC0); retail CWorldMap containers are 12 bytes, so
 //   LevelWADBank is at +0xA0 (Data) / +0xA4 (Info) and UseLevelWADBank at +0xA8 (GOTCHAS chunk 179/220 retail offsets); a
 //   local model is used.
@@ -22,7 +24,6 @@ template <class _CharT, class _IntT> class __char_traits_base { public:   // STL
 }
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 
-static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
 
 class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
@@ -82,11 +83,11 @@ public:
 void CWorldMap::SetAsUsingWAD(const CWideString& wadName)
 {
     if (wadName.PStringData == 0) {
-        if (wcscmp(s_Empty, s_Empty) == 0)
+        if (wcscmp(L"", L"") == 0)
             goto empty;
     }
     else if ((unsigned long)(wadName.PStringData->_M_finish - wadName.PStringData->_M_start) == 0
-             && std::__char_traits_base<unsigned short, unsigned short>::compare(wadName.PStringData->_M_start, s_Empty, 0) == 0)
+             && std::__char_traits_base<unsigned short, unsigned short>::compare(wadName.PStringData->_M_start, L"", 0) == 0)
         goto empty;
     UseLevelWADBank = true;
     LevelWADBank.Reset(new CWADBank);

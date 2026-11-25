@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	_s_Empty	0122d70c	004fdab0	NF415 b1: both users (004fdab0 witness, 004a05c0) now spell L"" (??_C@_11LOCGONAA@?$AA?$AA@, retail 0x0122D70C 00 00) instead of a file-static `s_Empty[] = { 0 }`; land with BOTH rows (the table is symbol-keyed); no other user in rebuild/ (src, include, tests, oracles, integration)
+delete	_s_HeroStateExt	01236a74	004a05c0	NF415 b1: the witness row now spells L".hs" (??_C@_17OLAMNCLH@?$AA?4?$AAh?$AAs?$AA?$AA@, retail 0x01236A74) instead of a file-static array; no other user in rebuild/

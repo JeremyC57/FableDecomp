@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00692380   WARN RELOC_NAME: _GetActionRegistrar -> 006f90b0 labelled '_global::GetGlobal_013babb4_006f90b0'
+00692380   WARN RELOC_NAME: ?RegisterAction@ActionRegistrar@@QAEXHPAX@Z -> 006f9720 labelled 'CAnimationEventQuery_006f9720::AnimHasEvent'
+00692380   RELOCATION_MATCH PASS   InitialiseActionPause
+007ea2d0   WARN SHARED_HEADER_AVAILABLE CTCTargeted (engine/CTCTargeted.h)
+007ea2d0   WARN GENERIC_STRUCT module=CTCTargeted (use engine/CTCTargeted.h)
+007ea2d0   WARN RELOC_NAME: ?Query@Inner@@QAEJPAXM@Z -> 004bde90 labelled 'NGraphicAppearance::CTCGraphicAppearance::GetNoHelperPoints'
+007ea2d0   RELOCATION_MATCH PASS   GetNumTargetPoints
+009c3510   WARN SHARED_HEADER_AVAILABLE CActiveFile (engine/CActiveFile.h)
+009c3510   RELOCATION_MATCH PASS   OnReadFinished
+00a62980   RELOCATION_MATCH PASS   Lock
+
+WINS: 4
+  00692380 RELOCATION_MATCH CCreatureActionBase::?CCreatureActionBase_InitialiseActionPause@@YIXPAVCCreatureActionBase@@@Z
+  007ea2d0 RELOCATION_MATCH CTCTargeted::GetNumTargetPoints
+  009c3510 RELOCATION_MATCH CActiveFile::OnReadFinished
+  00a62980 RELOCATION_MATCH CCriticalSectionLock::Lock

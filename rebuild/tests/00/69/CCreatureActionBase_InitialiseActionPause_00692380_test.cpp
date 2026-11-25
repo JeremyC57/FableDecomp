@@ -1,44 +1,36 @@
+// Behaviour test for 0x00692380 CCreatureActionBase::InitialiseActionPause (NF415: linked): links the row object (the function is declared
+// here, not defined) and defines its callees under the row's spellings. A positive action id (virtual slot 7) registers the action with
+// the description ACTION_PAUSE_ON_THIS_FRAME (0x013BAC90); an id <= 0 registers nothing.
 #include <cstdio>
 
-// Behaviour model of InitialiseActionPause
+class CCharString { public: int Tag; };
+extern const CCharString ACTION_PAUSE_ON_THIS_FRAME = { 1 };          // the row's data symbol, defined here
+extern const CCharString TARGETING_CURSOR_POSITION_NAME = { 2 };      // a decoy (the mutant control passes this one)
+class CCreatureActionBase;
+struct ActionRegistrar { void RegisterAction(int actionId, void* description); };
+extern "C" ActionRegistrar* __cdecl GetActionRegistrar();
+void __fastcall CCreatureActionBase_InitialiseActionPause(CCreatureActionBase* action);   // the row (linked)
 
-struct Reg { int lastId; void* lastDesc; int calls; };
-static Reg g_reg = {0,0,0};
-
-struct Obj {
-    int actionId;
-    int getId() { return actionId; }
+static ActionRegistrar g_reg; static int g_calls = 0, g_lastId = 0; static void* g_lastDesc = 0;
+extern "C" ActionRegistrar* __cdecl GetActionRegistrar() { return &g_reg; }
+void ActionRegistrar::RegisterAction(int actionId, void* description) { ++g_calls; g_lastId = actionId; g_lastDesc = description; }
+struct TestAction {                                     // the row reads GetActionId from vtable slot 7
+    int Id;
+    virtual void v0() {} virtual void v1() {} virtual void v2() {} virtual void v3() {}
+    virtual void v4() {} virtual void v5() {} virtual void v6() {}
+    virtual int GetActionId() { return Id; }
 };
 
-static Reg* getRegistrar() { return &g_reg; }
-static void registerAction(Reg* r, int id, void* desc) {
-    r->lastId = id; r->lastDesc = desc; r->calls++;
-}
-
-static void init(Obj* self) {
-    int esi = self->getId();
-    if (esi > 0) {
-        Reg* r = getRegistrar();
-        registerAction(r, esi, (void*)0x13bac90);
-    }
-}
-
 int main() {
-    Obj a; a.actionId = 5;
-    init(&a);
-    bool ok = (g_reg.calls == 1 && g_reg.lastId == 5 && g_reg.lastDesc == (void*)0x13bac90);
-
-    // non-positive => no registration
-    g_reg.calls = 0;
-    Obj b; b.actionId = 0;
-    init(&b);
-    ok = ok && (g_reg.calls == 0);
-
-    Obj c; c.actionId = -3;
-    init(&c);
-    ok = ok && (g_reg.calls == 0);
-
-    if (ok) printf("PARITY_OK\n");
-    else printf("FAIL\n");
-    return 0;
+    TestAction a; a.Id = 5;
+    CCreatureActionBase_InitialiseActionPause((CCreatureActionBase*)&a);
+    bool ok = g_calls == 1 && g_lastId == 5 && g_lastDesc == (void*)&ACTION_PAUSE_ON_THIS_FRAME;
+    TestAction b; b.Id = 0;
+    CCreatureActionBase_InitialiseActionPause((CCreatureActionBase*)&b);
+    ok = ok && g_calls == 1;
+    TestAction c; c.Id = -3;
+    CCreatureActionBase_InitialiseActionPause((CCreatureActionBase*)&c);
+    ok = ok && g_calls == 1;
+    std::printf(ok ? "PARITY_OK\n" : "PARITY_FAIL\n");
+    return ok ? 0 : 1;
 }

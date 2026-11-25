@@ -159,14 +159,49 @@ _BAKED_CAST = re.compile(
 BAKED_STRING_RANGE = (0x00400000, 0x02000000)   # retail image (ImageBase 0x400000)
 
 
+# Second pass (NF415, 2026-11-25): any hex token in the code -- a cast through void* or a typedef, a bare integer argument, a
+# return value, a macro body -- whose value is a retail string VA in rebuild/oracles/string_vas.tsv (every string VA a landed row
+# spells, verified narrow/wide + NUL-terminated + start of string; NF415 STRING_VAS.tsv). Keyed on known strings, so a flag
+# constant that only lies in the image range is not reported. FABLE_STRING_VAS overrides the path (tests, agent lanes).
+_BAKED_HEX = re.compile(r"\b0[xX]([0-9A-Fa-f]{6,8})(?:[uUlL]{0,3})\b")
+_STRING_VAS = None
+
+
+def string_vas():
+    """The committed set of retail string VAs (rebuild/oracles/string_vas.tsv, column `va`); raises when the file is absent."""
+    global _STRING_VAS
+    if _STRING_VAS is None:
+        p = Path(os.environ.get("FABLE_STRING_VAS") or (_ROOT / "rebuild" / "oracles" / "string_vas.tsv"))
+        if not p.is_file():
+            # Fail loudly: a missing list would silently switch the second pass off.
+            raise FileNotFoundError("purity.string_vas: %s is missing" % p)
+        vas = set()
+        for line in p.read_text(encoding="utf-8").splitlines()[1:]:
+            f = line.split("\t")
+            if f and f[0].strip():
+                vas.add(int(f[0], 16))
+        _STRING_VAS = vas
+    return _STRING_VAS
+
+
 def baked_string_addresses(text):
-    """Retail addresses a row casts to a string pointer in its code (comments and literals ignored); [] when none."""
+    """Retail string addresses a row bakes into its code (comments and literals ignored); [] when none.
+    Pass 1: a cast of a retail-image address to a string pointer. Pass 2: any hex token whose value is a known retail string
+    VA (string_vas()), whatever the spelling around it."""
     code = _BAKED_LITERAL.sub('""', _BAKED_COMMENT.sub("", text))
     out = []
     for m in _BAKED_CAST.finditer(code):
         va = int(m.group(1), 16)
         if BAKED_STRING_RANGE[0] <= va < BAKED_STRING_RANGE[1]:
             out.append(va)
+    known = string_vas()
+    if known:
+        seen = set(out)
+        for m in _BAKED_HEX.finditer(code):
+            va = int(m.group(1), 16)
+            if va in known and va not in seen:
+                out.append(va)
+                seen.add(va)
     return out
 
 

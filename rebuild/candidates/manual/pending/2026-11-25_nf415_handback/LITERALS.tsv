@@ -1,0 +1,11 @@
+address	va	width	c_spelling	batch	section	retail_bytes_to_terminator	start	form
+004fdab0	0x0122D70C	wide	L""	b1	.rdata	00 00	NUL-preceded	file-static s_Empty[] = { 0 } (table _s_Empty) -> L"" at 2 sites
+004a05c0	0x0122D70C	wide	L""	b1	.rdata	00 00	NUL-preceded	file-statics s_Empty / s_HeroStateExt (table lines) -> L"" at 3 sites, L".hs" at 1
+004a05c0	0x01236A74	wide	L".hs"	b1	.rdata	2E 00 68 00 73 00 00 00	NUL-preceded	file-statics s_Empty / s_HeroStateExt (table lines) -> L"" at 3 sites, L".hs" at 1
+0041735a	0x0122EEA4	narrow	"Init World Init"	b2	.rdata	49 6E 69 74 20 57 6F 72 6C 64 20 49 6E 69 74 00	NUL-preceded	CCharString2 s(0x122eea4, -1) (bare integer) -> CCharString2 s((int)"Init World Init", -1)
+00451e11	0x0122D70E	narrow	""	b2	.rdata	00	NUL-preceded	ProfileEnter(0x122d70e) (bare integer) -> ProfileEnter((int)"")
+0045228f	0x0122D70E	narrow	""	b2	.rdata	00	NUL-preceded	PrepShadow(0x122d70e) (bare integer) -> PrepShadow((int)"")
+0088f850	0x01275988	narrow	"SG_DEED_REACTION_ROOT"	b2	.rdata	53 47 5F 44 45 45 44 5F 52 45 41 43 54 49 4F 4E 5F 52 4F 4F 54 00	4-aligned after data 00004040	CDeedReactionName name(0x1275988, -1) (bare integer) -> name((int)"SG_DEED_REACTION_ROOT", -1)
+00891490	0x0122D70E	narrow	""	b2	.rdata	00	NUL-preceded	tmp.check(0x122d70e) (bare integer) -> tmp.check((int)"")
+00c3e290	0x012B5B78	narrow	"Win32"	b2	.rdata	57 69 6E 33 32 00	NUL-preceded	return 0x12b5b78; (bare integer) -> return (int)"Win32";
+00a66550	0x0122DEDC	float	0.0f	b3	.rdata	00 00 00 00	float pool (3.0f / 1.0f / 0.0f / -1.0f at 0x0122DED4..E0)	*reinterpret_cast<const float*>(0x0122DEDC) -> 0.0f (__real@00000000)

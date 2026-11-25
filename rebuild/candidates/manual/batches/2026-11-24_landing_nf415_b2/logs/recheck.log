@@ -1,0 +1,37 @@
+addr       parity           behav  name
+0041735a   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0041735a   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0041735a   WARN RELOC_NAME: ?Construct@WorldObj@@QAEPAU1@PAUWorldCtx@@@Z -> 004a67d0 labelled 'CWorld::CWorld'
+0041735a   WARN RELOC_NAME: ??0CCharString2@@QAE@HH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+0041735a   WARN RELOC_NAME: ??1CCharString2@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+0041735a   RELOCATION_MATCH PASS   InitWorld
+00451e11   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+00451e11   WARN RELOC_NAME: ?ProfileEnter@@YGXH@Z -> 00404500 labelled 'CPersistContext::CheckCRC'
+00451e11   WARN RELOC_NAME: ??0LocalObj@@QAE@XZ -> 0067d7b0 labelled 'CPlayerGui::ForceOpen'
+00451e11   WARN RELOC_NAME: ?apply28@LocalObj@@QAEXPAXH@Z -> 0067d7d0 labelled 'CPersistTraits<CEngineGraphic>::TransferBinaryOut'
+00451e11   WARN RELOC_NAME: ?apply24@LocalObj@@QAEXPAXH@Z -> 0067d830 labelled 'CPersistTraits<CEngineGraphic>::TransferBinaryIn'
+00451e11   RELOCATION_MATCH PASS   Transfer<CEngineGraphic>
+0045228f   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+0045228f   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+0045228f   WARN RELOC_NAME: ?PrepShadow@@YGXH@Z -> 00404500 labelled 'CPersistContext::CheckCRC'
+0045228f   WARN RELOC_NAME: ?Put@CShadowSceneB@@QAEXH@Z -> 0044fc00 labelled 'CDefString::TransferBinaryIn'
+0045228f   RELOCATION_MATCH PASS   Transfer<CDefString>
+0088f850   WARN RELOC_NAME: ??0CDeedReactionName@@QAE@HH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+0088f850   WARN RELOC_NAME: ??1CDeedReactionName@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+0088f850   RELOCATION_MATCH PASS   EntitySetDeedReactionsEnabled
+00891490   WARN RELOC_NAME: ?map@Guild@@QAEHH@Z -> 004af670 labelled 'CQuestManager::GetAvailableQuestCardDefNameFromScriptName'
+00891490   WARN RELOC_NAME: ?ctor@Str@@QAEXH@Z -> 0099ec30 labelled 'CCharString::CCharString'
+00891490   WARN RELOC_NAME: ?check@Str@@QAEDH@Z -> 0099e960 labelled 'CCharString::operator!='
+00891490   WARN RELOC_NAME: ?dtor@Str@@QAEXXZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00891490   RELOCATION_MATCH PASS   RemoveQuestCardFromGuild
+  WARN leaf 'sub_00c3e290' matches no symbol in 00c3e290.obj; graded the largest function
+  WARN leaf 'sub_00c3e290' matches no symbol in 00c3e290.obj; graded the largest function
+00c3e290   RELOCATION_MATCH PASS   sub_00c3e290
+
+WINS: 6
+  0041735a RELOCATION_MATCH CMainGameComponent::?InitWorld@CMainGameComponent@@IAEXXZ
+  00451e11 RELOCATION_MATCH CPersistContext::??$Transfer@VCEngineGraphic@@@CPersistContext@@QAEXAAVCEngineGraphic@@@Z
+  0045228f RELOCATION_MATCH CPersistContext::??$Transfer@VCDefString@@@CPersistContext@@QAEXAAVCDefString@@@Z
+  0088f850 RELOCATION_MATCH CGameScriptInterface::EntitySetDeedReactionsEnabled
+  00891490 RELOCATION_MATCH CGameScriptInterface::RemoveQuestCardFromGuild
+  00c3e290 RELOCATION_MATCH _gapscan::sub_00c3e290

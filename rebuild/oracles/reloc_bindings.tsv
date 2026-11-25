@@ -7625,7 +7625,6 @@ __imp__realloc	01440054	00c90fc0
 ??_7CPSCRenderSprite@NParticleEngine@@6B@	0129f67c	00afbbd0
 ??_7CPSCRenderMesh@NParticleEngine@@6B@	0129f96c	00b017f0
 ?Reset@?$CCountedPointer@VCWADBank@@@@QAEXPAVCWADBank@@@Z	0050f2b0	004fdab0
-_s_Empty	0122d70c	004fdab0
 _wcscmp	00bfe94c	004fdab0
 ??$__destroy_aux@UCActivity@@@@YIXPAUCActivity@@0ABU__false_type@@@Z	00567350	00562ff0
 ?_M_erase@?$CMap@$0BI@@@QAEXPAUSRbTreeNodeBase@@@Z	00566110	00562ff0
@@ -37136,7 +37135,6 @@ __imp__VirtualAlloc@16	0143fd44	009f2870
 ?SaveGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z	0049f4c0	004a05c0
 ?g_SavingHeroState@@3_NA	013b89d1	004a05c0
 ?g_SavingQuestScreenState@@3_NA	013b89d0	004a05c0
-_s_HeroStateExt	01236a74	004a05c0
 ?GetSubDef@CThingCreatureDef@@QAE_NPAV?$CDefPointer@UCCreatureSoundSubDef@@@@@Z	0065f604	00665f90
 ?SetVoiceName@CTCSoundPlayer@@QAEXABVCCharString@@@Z	0066a9d0	00665f90
 ?g_CreatureContinuousSoundVoice@@3JA	013ba874	00665f90

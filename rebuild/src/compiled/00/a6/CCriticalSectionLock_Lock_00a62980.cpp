@@ -2,11 +2,10 @@
 // Enters the wrapped critical section once (idempotent via a "locked" flag).
 
 #include "engine/CCriticalSectionLock.h"  // retyped onto the PDB layout; byte parity re-verified
-typedef void (__stdcall *EnterFn)(void*);
-
-// Import thunk slot at 0x143fe0c (EnterCriticalSection).
-extern EnterFn * const g_pfnEnter;
-EnterFn * const g_pfnEnter = (EnterFn *)0x0143fe0c;
+#include "engine/Win32Types.h"           // EnterCriticalSection (kernel32 import, IAT 0x0143FE0C)
+// Import (NF415, 2026-11-25): was `(*g_pfnEnter)(CriticalSection)` through an extern const pointer holding the baked IAT slot
+//   0x0143FE0C; the slot is KERNEL32!EnterCriticalSection (Fable.exe import directory; reloc_bindings __imp__EnterCriticalSection@4
+//   -> 0143fe0c; engine/Win32Types.h declares it). The pointer object g_pfnEnter (unread data, no table line) is gone.
 
 struct CCriticalSectionLock_Methods : CCriticalSectionLock {
     // +0x04 : already-entered flag
@@ -18,7 +17,7 @@ void CCriticalSectionLock_Methods::Lock()
 {
     if (!Locked)
     {
-        (*g_pfnEnter)(CriticalSection);
+        EnterCriticalSection(CriticalSection);
         Locked = 1;
     }
 }

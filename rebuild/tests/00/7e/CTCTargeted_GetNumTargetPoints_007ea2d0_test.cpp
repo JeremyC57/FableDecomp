@@ -1,51 +1,33 @@
+// Behaviour test for 0x007EA2D0 CTCTargeted::GetNumTargetPoints (NF415: linked): links the row object (the function is declared here,
+// not defined) and defines its callee under the row's spelling. With no object at +4 -> +0x64 it returns 0; otherwise it returns the
+// object's answer for (TARGETING_CURSOR_POSITION_NAME (0x013BAC50), 1.0f).
 #include <cstdio>
 
-static long g_ret = 0;
-static void* g_self = 0;
-static void* g_p = 0;
-static float g_f = 0.0f;
-
+class CCharString { public: int Tag; };
+extern const CCharString TARGETING_CURSOR_POSITION_NAME = { 1 };      // the row's data symbol, defined here
+extern const CCharString ACTION_PAUSE_ON_THIS_FRAME = { 2 };          // a decoy (the mutant control passes this one)
 struct Inner {
     char pad[0x64];
-    Inner* subObj; // +0x64
+    Inner* sub; // +0x64
     long Query(void* p, float f);
 };
-
-long Inner::Query(void* p, float f)
-{
-    g_self = this; g_p = p; g_f = f;
-    return g_ret;
-}
-
 class CTCTargeted { public:
-    void* v;
-    Inner* obj;
+    void* v;      // +0
+    Inner* obj;   // +4
 };
+long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* targeted);   // the row (linked)
 
-long __fastcall CTCTargeted_GetNumTargetPoints(CTCTargeted* targeted);
+static long g_ret = 0; static void* g_self = 0; static void* g_p = 0; static float g_f = 0.0f; static int g_calls = 0;
+long Inner::Query(void* p, float f) { ++g_calls; g_self = this; g_p = p; g_f = f; return g_ret; }
 
 int main()
 {
-    // Case 1: subObj == null -> returns 0
-    Inner inner;
-    inner.subObj = 0;
-    CTCTargeted t;
-    t.obj = &inner;
-    long r0 = CTCTargeted_GetNumTargetPoints(&t);
-
-    // Case 2: subObj != null -> forwards to Inner::Query with (0x13bac50, 1.0f)
-    Inner subObj;
-    inner.subObj = &subObj;
-    g_ret = 42;
-    long r1 = CTCTargeted_GetNumTargetPoints(&t);
-
-    bool ok = (r0 == 0)
-        && (r1 == 42)
-        && (g_self == (void*)&subObj)
-        && (g_p == (void*)0x13bac50)
-        && (g_f == 1.0f);
-
-    if (ok) { printf("PASS_GNTP_OK\n"); return 0; }
-    printf("FAIL r0=%ld r1=%ld p=%p f=%f\n", r0, r1, g_p, g_f);
-    return 1;
+    Inner outer; Inner inner; outer.sub = 0;
+    CTCTargeted t; t.v = 0; t.obj = &outer;
+    bool ok = CTCTargeted_GetNumTargetPoints(&t) == 0 && g_calls == 0;
+    outer.sub = &inner; g_ret = 7;
+    ok = ok && CTCTargeted_GetNumTargetPoints(&t) == 7 && g_calls == 1 && g_self == &inner
+         && g_p == (void*)&TARGETING_CURSOR_POSITION_NAME && g_f == 1.0f;
+    std::printf(ok ? "PASS_GNTP_OK\n" : "FAIL_GNTP\n");
+    return ok ? 0 : 1;
 }

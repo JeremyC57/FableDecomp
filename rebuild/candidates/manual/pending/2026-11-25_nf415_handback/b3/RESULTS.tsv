@@ -1,0 +1,2 @@
+address	verdict	old	new	reason
+00a66550	ACCEPT	?GetFragmentation@CMemoryAllocatorFixedSize@@QAEMXZ	?GetFragmentation@CMemoryAllocatorFixedSize@@QAEMXZ	baked float-constant address -> retail literal (0.0f); grade MATCH/PASS -> RELOCATION_MATCH/PASS; test asserts (mutant FAIL); literal_check ok (no string literal), 0 LITERAL warnings; COMDAT literal-only; purity / widened []; no stray string-symbol relocation

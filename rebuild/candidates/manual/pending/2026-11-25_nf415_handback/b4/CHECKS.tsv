@@ -1,0 +1,5 @@
+address	head_grade	head_test	new_grade	new_test	mut_test	test_kind	lit_warn_new	lit_proof	lit_warn_mut	comdat	purity	leftover	widened	stray
+00692380	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	asserts (mutant FAIL)	0	ok (no string literal)	0	literal-only	[]	0	[]	[]
+007ea2d0	RELOCATION_MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	asserts (mutant FAIL)	0	ok (no string literal)	0	literal-only	[]	0	[]	[]
+009c3510	MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	asserts (mutant FAIL)	0	ok (no string literal)	0	literal-only	[]	0	[]	[]
+00a62980	MATCH	PASS	RELOCATION_MATCH	PASS	FAIL	asserts (mutant FAIL)	0	ok (no string literal)	0	literal-only	[]	0	[]	[]

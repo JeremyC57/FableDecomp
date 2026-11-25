@@ -1,4 +1,6 @@
 // Leaf: ?InitWorld@CMainGameComponent@@IAEXXZ
+// Literal (NF415, 2026-11-25): was the bare integer 0x122eea4 (the retail VA of "Init World Init"); now the literal is spelled, cast to the
+//   stand-in's existing int parameter so no callee or table line changes (the callee port is T3). Retail 0x0122EEA4: 49 6E 69 74 20 57 6F 72 6C 64 20 49 6E 69 74 00.
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013B8660 is GEventPackageFileName (CWideString; Ego_r.pdb + FableWin.pdb
 //   `dynamic initializer for 'GEventPackageFileName'', initializer 0x01219F80 landed by agentFAM09; Anniv360 ?GEventPackageFileName@@3VCWideString@@A),
 //   read through CWideString::operator const wchar_t*() const 0x0099AF00 (fable_string.h; the ??BCWideString@@QBEPBGXZ spelling the landed
@@ -43,7 +45,7 @@ void CMainGameComponent::InitWorld()
     if (g_flag1) this->InitEventPackageLoading(GEventPackageFileName);
     if (g_flag2) this->InitEventPackageSaving(GEventPackageFileName);
     {
-        CCharString2 s(0x122eea4, -1);
+        CCharString2 s((int)"Init World Init", -1);
         // NF239 (2026-11-22, 0x0122DEE0 census): retail pushes the -1.0f literal at 0x0122DEE0 here (Fable.exe: 00 00 80 BF); the row
         //   had 0.5f (__real@3f000000), which graded only because relocation fields are masked.
         DisplayProgress(&s, false, -1.0f, 0);

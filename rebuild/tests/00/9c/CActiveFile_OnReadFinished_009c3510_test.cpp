@@ -1,54 +1,27 @@
+// Behaviour test for 0x009C3510 CActiveFile::OnReadFinished (NF415: linked): links the row object (the method is declared here, not
+// defined). A valid handle is closed through KERNEL32!CloseHandle (the import the row calls) and reset to -1; -1 is left alone.
 #include <cstdio>
 
-typedef int (__stdcall *CloseFn)(void*);
-CloseFn * const g_pCloseSlot = (CloseFn*)0x0143fe30;
-
+extern "C" __declspec(dllimport) void* __stdcall CreateEventA(void* attributes, int manualReset, int initialState, const char* name);
+extern "C" __declspec(dllimport) int __stdcall GetHandleInformation(void* handle, unsigned long* flags);
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);
 struct CActiveFile
 {
-    void* handle;
-    void OnReadFinished();
+    void* handle;   // +0x00
+    void OnReadFinished();                              // the row (linked)
 };
-
-void CActiveFile::OnReadFinished()
-{
-    if (this->handle != (void*)-1)
-    {
-        (*g_pCloseSlot)(this->handle);
-        this->handle = (void*)-1;
-    }
-}
-
-// test harness: supply our own IAT slot + close function
-static int g_closeCalls = 0;
-static void* g_lastClosed = 0;
-static int __stdcall myClose(void* h){ g_closeCalls++; g_lastClosed = h; return 1; }
 
 int main()
 {
-    // point the "IAT slot" at our close fn by allocating a writable slot.
-    // We cannot write to 0x143fe30, so exercise the logic via a local copy.
-    // Reimplement identical body against a local slot to validate behaviour.
-    CloseFn slot = myClose;
-
-    // case 1: valid handle -> close called, handle reset
-    void* h = (void*)0x1234;
-    {
-        // mimic body
-        if (h != (void*)-1) { slot(h); h = (void*)-1; }
-    }
-    bool ok = true;
-    if (g_closeCalls != 1) ok = false;
-    if (g_lastClosed != (void*)0x1234) ok = false;
-    if (h != (void*)-1) ok = false;
-
-    // case 2: already -1 -> no close
-    void* h2 = (void*)-1;
-    {
-        if (h2 != (void*)-1) { slot(h2); h2 = (void*)-1; }
-    }
-    if (g_closeCalls != 1) ok = false; // unchanged
-
-    if (ok) printf("ONREADFINISHED_OK\n");
-    else printf("FAIL\n");
+    void* h = CreateEventA(0, 1, 0, 0);
+    unsigned long flags = 0;
+    bool ok = h != 0 && GetHandleInformation(h, &flags) != 0;          // open before
+    CActiveFile f; f.handle = h;
+    f.OnReadFinished();
+    ok = ok && f.handle == (void*)-1 && GetHandleInformation(h, &flags) == 0;   // closed by the row, field reset
+    f.OnReadFinished();                                                 // -1: nothing to close
+    ok = ok && f.handle == (void*)-1;
+    if (!ok && h && GetHandleInformation(h, &flags)) CloseHandle(h);
+    std::printf(ok ? "ONREADFINISHED_OK\n" : "ONREADFINISHED_FAIL\n");
     return ok ? 0 : 1;
 }
