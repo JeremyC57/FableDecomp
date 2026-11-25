@@ -15,7 +15,8 @@
 // Layout: STLport map header node (begin = header->_M_left +8; key +0x10, value +0x14), list sentinel (_M_next +0, data +8).
 // Label: the catalog's CTCInventoryStats_AggregateCreatureGroupStats is this method.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CWideString {
 public:

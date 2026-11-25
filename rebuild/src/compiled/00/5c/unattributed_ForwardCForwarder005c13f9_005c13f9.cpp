@@ -10,7 +10,8 @@
 // temporary that VC homes in the high byte of the (dead) second argument's slot; the helper's
 // result rides through eax. The manifest label (`_Copy_impl<CArray<...>>`) is propagated.
 // One of 46 bodies of this shape.
-#pragma optimize("y", off)              // frame pointer kept in this TU
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 
 struct SScalarTag { SScalarTag() { } };   // user constructor: no zero-initialisation of the 1-byte temporary
 

@@ -10,7 +10,8 @@
 // Body: offset = frame >= firstFrame ? frame - firstFrame : frameCount - firstFrame + frame;
 //       result = Round(scale * (float)offset) + firstFrame; if (result >= frameCount) result -= frameCount;
 //   `fild ; jge ; fadd [2^32]` is the unsigned -> float conversion, `fmul [ebp+8]` the scale.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // the engine's inline-assembly ROUND helper (round to nearest, the FPU default); expanded in place as a __forceinline
 #include "engine/GFFloatToLongNear.h"

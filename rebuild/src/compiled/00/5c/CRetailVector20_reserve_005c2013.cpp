@@ -10,9 +10,10 @@
 // compare), the old size computed before the reallocation and kept in the frame word, then either
 // _M_allocate_and_copy + _M_clear (a buffer exists) or the end-of-storage allocator's allocate(n, 0) (on
 // `&_M_end_of_storage`, kept in ebx), and the inline _M_set(start, start + size, start + n). The frame pointer
-// with `leave` and the push/pop constant are `optimize("y", off)` + `optimize("s", on)`.
+// with `leave` and the push/pop constant are `optimize("s", on)`.
 // Leaf: ?reserve@CRetailVector20
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 struct SRecord20 {

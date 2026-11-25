@@ -3,13 +3,14 @@
 // Callees: CTCInventoryBase::GetAllInventoryItemsOfType(long, vector<NInventory::CItem>*) @ 0x005BFA69, the
 //          vector<NInventory::CItem> destructor @ 0x005C1E30 (manifest label "CActiveFile::OnReadFinished" is propagated).
 //
-// Shape: frame pointer in a size TU (`#pragma optimize("y", off)` + `optimize("s", on)`): the 12-byte vector local at
+// Shape: frame pointer in a size TU (`#pragma optimize("s", on)`): the 12-byte vector local at
 // [ebp-0Ch] zeroed through the result register (`xor esi,esi` is the result local, declared first, reused for the
 // three stores), filled by the base call, `first != last` tested on the frame copies, the first item's
 // PPerItemData object pointer (CItem +8, PDB NInventory::CItem) compared with that same zero register, then the
 // vector's out-of-line destructor before `mov eax,esi`. The per-item data word at +0x10 is named from the
 // function's own label. Local model: the retail Dinkumware vector is reconstructed by hand.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 namespace NInventory {
 class CPerItemData { public:

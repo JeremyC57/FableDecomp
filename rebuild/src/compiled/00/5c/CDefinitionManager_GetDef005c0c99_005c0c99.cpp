@@ -16,7 +16,8 @@
 // test (re-read in the size TU: `dec [eax] ; cmp [eax],0`) and the def is kept in ecx for the virtual call. Frame pointer and size optimisation from the TU's pragmas. The manifest
 // label names one instantiation; the def type is opaque. One of 13 bodies of this shape.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 struct CRefCounted {                       // second base: the count sits at +4 behind the vptr

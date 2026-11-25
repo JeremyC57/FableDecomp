@@ -1,4 +1,5 @@
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // NInventory::CCategory::RemoveItem(long itemDefIndex, long count) -- removes a number of items from the stack matching the item type (no end check)
 // Leaf: ?RemoveItem@CCategory@NInventory@@QAEXJJ@Z
@@ -6,7 +7,7 @@
 // Callees: std::find_if<NInventory::CItem*, CIsSameItemType> @ 0x005C190B (__fastcall, the 8-byte predicate pushed by value),
 //   NInventory::CItem::RemoveItem(long) @ 0x005BF00B. Callers: CTCInventoryTrade::RemoveItemFromInventory 0x0059C747 (tail jump) and
 //   NInventory::CTCInventoryBase::RemoveItemFromInventory 0x005BF3C6 (both landed, binding this spelling).
-// Frame-pointer body in the size TU (`optimize("y",off)`): the predicate temporary lives at [ebp-8]. The found item is a named local so
+// Frame-pointer body in the size TU (`optimize("s", on)`): the predicate temporary lives at [ebp-8]. The found item is a named local so
 //   `count` is pushed after the find call (a single expression hoists that push above it).
 // Name fix (NF96 part 2, q11458): Ego_r.pdb 0x00621FFD + FableWin.pdb 0x0236130C ?RemoveItem@CCategory@NInventory@@QAEXJJ@Z (engine/CCategory.h
 //   FABLE_RETAIL_CCATEGORY_REMOVEITEM declares it). The old row defined ?RemoveItem@CCategory_Retail@@QAEXJJ@Z on a local CCategory_Retail /

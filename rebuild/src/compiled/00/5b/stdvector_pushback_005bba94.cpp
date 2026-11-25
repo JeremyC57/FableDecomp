@@ -6,8 +6,9 @@
 // Callee: vector<EClothingSuitPart>::_M_insert_overflow(pointer, EClothingSuitPart const&, const __false_type&, size_type, bool) 0x005BB4E6 (__false_type: an enum element is not POD to STLport 4.6's type traits).
 // Shape: STLport 4.6 `push_back(x) { if (_M_finish != _M_end_of_storage._M_data) { _Construct(_M_finish, x); ++_M_finish; } else
 //   _M_insert_overflow(_M_finish, x, _IsPODType(), 1UL, true); }` -- placement new's null test, `this` kept in ecx for the call;
-//   `optimize("y", off)` + `("s", on)` as the landed vector<long> push_back callers' TUs.
-#pragma optimize("y", off)
+//   `optimize("s", on)` as the landed vector<long> push_back callers' TUs.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 inline void* operator new(unsigned int, void* p) { return p; }
 enum EClothingSuitPart { };                                 // enumerators not needed

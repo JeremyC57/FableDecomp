@@ -47,7 +47,8 @@ template<> inline bool std::bitset<274>::test(size_t n) const
 #include "engine/CAnimationEntry.h"
 #include "engine/CAnimFilterNoGroup.h"
 #include "engine/CTCInventoryStats.h"
-#pragma optimize("y",off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s",on)
 #include "engine/CAnimateThing.h"
 #include "engine/CTCAnimationComplex.h"

@@ -1,8 +1,9 @@
 // CTCInventoryWeapons::RemoveWeaponsFromSheathes() -- take the wielded weapons out of their sheathes: for the active melee and ranged weapon that the carrier does not hold in a primary slot, find the weapon def's sheathe object (carried in the slot SheatheObject names, or the weapon itself when it is 0), restore its full scale, drop it from the carrier and end its show (or kill it when it is not showable)
 // Leaf: ?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ
 // Flags: none
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C552C, 546 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-#pragma optimize("y", off)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C552C, 546 bytes, plain `ret`. Frame-pointer size TU: optimize("s", on).
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING

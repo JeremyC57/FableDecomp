@@ -6,12 +6,13 @@
 // The manifest's "CAC_HighScorePost::CAC_HighScorePost" label is a constructor name on a body
 // that returns nothing (`leave ; ret 4`, no `mov eax,esi`), so it is rejected; the class is
 // named by what the body does. Frame-pointer body with `push dword ptr [ebp+8]`, `leave` and no
-// spills, but with the entry's constructors inlined: a size-optimised TU with /Oy off only
-// (optimize("y",off) then ("s",on); the "gsy" form of GOTCHAS 114 disables inlining and spills
+// spills, but with the entry's constructors inlined: a size-optimised TU
+// (optimize("s",on); the "gsy" form of GOTCHAS 114 disables inlining and spills
 // `this`). The 0x14-byte entry is zeroed through one register by its inline constructors
 // (pair -> CSoundPair -> CCountedPointer), passed by reference after the index, and only the
 // counted pointer sub-object has a destructor to run.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 
 // NF158 (q5208): the counted pointer is the shared engine/CCountedPointer.h CCountedPointer<NInventory::CPerItemData>; its inline

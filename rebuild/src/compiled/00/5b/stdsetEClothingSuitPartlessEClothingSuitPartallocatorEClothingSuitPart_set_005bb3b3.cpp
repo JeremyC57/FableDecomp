@@ -12,7 +12,8 @@
 //   whole-program build did (GOTCHAS wave 25 chunks 205-206 precedent); with a declaration only, VC gives the
 //   allocator its own [ebp-2] byte. VC7.1 numbers the `std` back-reference 3 in this TU (`@3@@std@@`).
 //   `less` derives from binary_function (STLport), so `_Compare()` is not zero-filled.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 

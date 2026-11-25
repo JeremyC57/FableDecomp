@@ -1,0 +1,215 @@
+addr       parity           behav  name
+005b0aac   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005b0aac   RELOCATION_MATCH PASS   BuyItemPC
+005b1e5a   WARN SHARED_HEADER_AVAILABLE CHeroTitleDef (engine/CHeroTitleDef.h)
+005b1e5a   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b1e5a   RELOCATION_MATCH PASS   GetSubDef<CHeroTitleDef>
+005b1efc   WARN SHARED_HEADER_AVAILABLE CTattooDef (engine/CTattooDef.h)
+005b1efc   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b1efc   RELOCATION_MATCH PASS   GetSubDef<CTattooDef>
+005b2337   WARN STANDIN_LEAF ?_M_insert@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@0@Z (catalog std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<long, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<long, long> > >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<long, long> > > >::_M_insert; names another function)
+005b2337   RELOCATION_MATCH PASS   _M_insert
+005b36e9   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+005b36e9   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b36e9   RELOCATION_MATCH PASS   OnCreate
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimFilterNoGroup (engine/CAnimFilterNoGroup.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimInit (engine/CAnimInit.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimSet (engine/CAnimSet.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005b37f7   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b37f7   RELOCATION_MATCH PASS   InitialiseMannequin
+005b3c95   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b3c95   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b3c95   RELOCATION_MATCH PASS   OnItemAdded
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CHeroSuitDef (engine/CHeroSuitDef.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b3d7a   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b3d7a   RELOCATION_MATCH PASS   SetThingAsWearingClothingSuit
+005b413d   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b413d   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b413d   RELOCATION_MATCH PASS   SetAsWearing
+005b43a2   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CHeroSuitDef (engine/CHeroSuitDef.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b43a2   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b43a2   WARN RELOC_NAME: ?FindLong@@YIPAJPAJ0ABJ@Z -> 005ba7f9 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+005b43a2   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005b43a2   WARN RELOC_NAME: ?erase@?$list@JV?$allocator@J@std@@@std@@QAE?AU?$_List_iterator@JU?$_Nonconst_traits@J@std@@@2@U32@@Z -> 00429b02 labelled 'LinkedList_Unlink_and_Free'
+005b43a2   RELOCATION_MATCH PASS   AddClothingToThing
+005b4795   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CHeroSuitDef (engine/CHeroSuitDef.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b4795   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b4795   RELOCATION_MATCH PASS   SetUpSelectedClothes
+005b5be6   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CHeroSuitDef (engine/CHeroSuitDef.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CAppearanceModifierDef (engine/CAppearanceModifierDef.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b5be6   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b5be6   RELOCATION_MATCH PASS   OnItemHighlighted
+005ba48a   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+005ba48a   WARN SHARED_HEADER_AVAILABLE CCompositeBlendDesc (engine/CCompositeBlendDesc.h)
+005ba48a   MATCH            PASS   CCompositeBlendDesc
+005bade1   WARN SHARED_HEADER_AVAILABLE CInventoryItemDef (engine/CInventoryItemDef.h)
+005bade1   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005bade1   RELOCATION_MATCH PASS   GetSubDef<CInventoryItemDef>
+005bc527   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+005bc527   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bc527   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bc527   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005bc527   RELOCATION_MATCH PASS   AddCloseInventoryEvent
+005bcafe   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005bcafe   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+005bcafe   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+005bcafe   RELOCATION_MATCH PASS   Draw2DText
+005bd82e   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CInventoryItemDef (engine/CInventoryItemDef.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bd82e   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005bd82e   RELOCATION_MATCH PASS   GetInventoryItemDef
+005bdde4   RELOCATION_MATCH PASS   AddInventoryItem
+005be284   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005be284   RELOCATION_MATCH PASS   SetNumberOfSelectedItemOwned
+005be3b1   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005be3b1   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005be3b1   RELOCATION_MATCH PASS   GetPrerequisitesString
+005be8f3   WARN SHARED_HEADER_AVAILABLE CTCTrophy (engine/CTCTrophy.h)
+005be8f3   RELOCATION_MATCH PASS   CreateInventoryObject
+005beb57   WARN SHARED_HEADER_AVAILABLE CPlayerGuiDef (engine/CPlayerGuiDef.h)
+005beb57   WARN SHARED_HEADER_AVAILABLE CRegion (engine/CRegion.h)
+005beb57   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005beb57   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+005beb57   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005beb57   RELOCATION_MATCH PASS   GetMiniMapGraphic
+005bec92   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bec92   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005bec92   WARN SHARED_HEADER_AVAILABLE CObjectAugmentationsDef (engine/CObjectAugmentationsDef.h)
+005bec92   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005bec92   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005bec92   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005bec92   WARN RELOC_NAME: ?IsAugmentation@@YI_NJ@Z -> 005d97f0 labelled 'CTCInventoryItem::IsWeapon'
+005bec92   RELOCATION_MATCH PASS   AddItem
+005bedcb   RELOCATION_MATCH PASS   UpdateItemStats
+005bf32d   RELOCATION_MATCH PASS   AddItemToInventory
+005bf654   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CHeroTitleDef (engine/CHeroTitleDef.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+005bf654   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005bf654   WARN RELOC_NAME: ?GetCategoryIdentifier@CTCInventoryItem@@QBEJXZ -> 005d91f0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005bf654   WARN RELOC_NAME: ?FindCategory@@YIPAVCCategory@NInventory@@PAV12@0J@Z -> 005c08d3 labelled 'std::find_if'
+005bf654   RELOCATION_MATCH PASS   AddItemToInventory
+005bf77d   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CResurrectionItemDef (engine/CResurrectionItemDef.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005bf77d   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bf77d   WARN RELOC_NAME: ?Notify@CTCInterface1A@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+005bf77d   RELOCATION_MATCH PASS   GetResurrectionItemInInventory
+
+WINS: 27
+  005b0aac RELOCATION_MATCH CTCInventoryTrade::?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+  005b1e5a RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroTitleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroTitleDef@@@@@Z
+  005b1efc RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTattooDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTattooDef@@@@@Z
+  005b2337 RELOCATION_MATCH std::_Rb_tree<NUISystem::CComponent*, std::pair<NUISystem::CComponent* const, std::pair<long, long> >, std::_Select1st<std::pair<NUISystem::CComponent* const, std::pair<long, long> > >, std::less<NUISystem::CComponent* >, std::allocator<std::pair<NUISystem::CComponent* const, std::pair<long, long> > > >::?_M_insert@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@2@0@Z
+  005b36e9 RELOCATION_MATCH CTCInventoryClothing::?OnCreate@CTCInventoryClothing@@UAEXXZ
+  005b37f7 RELOCATION_MATCH CTCInventoryClothing::?InitialiseMannequin@CTCInventoryClothing@@AAEXXZ
+  005b3c95 RELOCATION_MATCH CTCInventoryClothing::OnItemAdded
+  005b3d7a RELOCATION_MATCH CTCInventoryClothing::SetThingAsWearingClothingSuit
+  005b413d RELOCATION_MATCH CTCInventoryClothing::SetAsWearing
+  005b43a2 RELOCATION_MATCH CTCInventoryClothing::AddClothingToThing
+  005b4795 RELOCATION_MATCH CTCInventoryClothing::SetUpSelectedClothes
+  005b5be6 RELOCATION_MATCH CTCInventoryClothing::OnItemHighlighted
+  005ba48a MATCH CCompositeBlendDesc::??0CCompositeBlendDesc@
+  005bade1 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z
+  005bc527 RELOCATION_MATCH NInventory::CTCInventoryBase::?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ
+  005bcafe RELOCATION_MATCH NInventory::CTCInventoryBase::?Draw2DText@CTCInventoryBase@NInventory@@SIXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@M_N@Z
+  005bd82e RELOCATION_MATCH CItem::?GetInventoryItemDef@CItem@NInventory@@ABE?AV?$CDefPointer@$$CBVCInventoryItemDef@@@@XZ
+  005bdde4 RELOCATION_MATCH NInventory::CItem::?AddInventoryItem@CItem@NInventory@@QAEXABV12@@Z
+  005be284 RELOCATION_MATCH NInventory::CTCInventoryBase::?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z
+  005be3b1 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z
+  005be8f3 RELOCATION_MATCH CTCInventoryBase::?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z
+  005beb57 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z
+  005bec92 RELOCATION_MATCH NInventory::CItem::?AddItem@CItem@NInventory@@QAEXJJJ@Z
+  005bedcb RELOCATION_MATCH NInventory::CItem::?UpdateItemStats@CItem@NInventory@@QAEXABVCThing@@@Z
+  005bf32d RELOCATION_MATCH NInventory::CTCInventoryBase::?AddItemToInventory@CTCInventoryBase@NInventory@@UAE_NJJ_N0J0@Z
+  005bf654 RELOCATION_MATCH NInventory::CTCInventoryBase::AddItemToInventory
+  005bf77d RELOCATION_MATCH CTCInventoryBase::GetResurrectionItemInInventory

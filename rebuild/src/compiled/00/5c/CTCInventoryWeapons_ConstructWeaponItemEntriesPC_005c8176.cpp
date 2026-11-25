@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::ConstructWeaponItemEntriesPC(std::vector<std::pair<long,long> >& items, NUISystem::CList* list, CCountedPointer<NUISystem::CComponent>& augmentationEntry, NUISystem::CComponent* parent, NUISystem::CManager* manager, NUISystem::CViewport* viewport, CDefPointer<const NUISystem::CUIMiscThingsDef>& miscDef, float damage, CCountedPointer<NUISystem::CComponent>& title) -- fills a PC weapon sub-list: splits the weapon items by the first item's kind (melee: light weapons, then the rest; ranged: weapons of type 3, then the rest) and hands both groups to FinalConstructWeaponItemEntriesPC with an empty wield entry, the second with the entry offset
 // Leaf: ?ConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C8176, 737 bytes, thiscall `ret 24h`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C8176, 737 bytes, thiscall `ret 24h`. Frame-pointer size TU: optimize("s", on).
 // Identity: Ego_r.pdb / FableWin.pdb ?ConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAE... (private; called by the landed
 //   ConstructScreenPC 0x005C9A95); Ego_r donor 0x0062C1D1. The PC twin of ConstructWeaponItemEntries 0x005C66B2: the same body with
 //   a default-constructed (empty) wield entry instead of ConstructWieldEntry and the PC builder 0x005C47D5.
@@ -10,7 +10,8 @@
 // Shape: as 0x005C66B2 (same-TU template bodies; an MSVC-only noinline stand-in for the PC builder that only reads the items keeps
 //   the second group's end in ebx across the first call; the empty wield entry lives in its own block).
 // Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

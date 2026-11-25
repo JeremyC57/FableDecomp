@@ -1,7 +1,7 @@
 // NInventory::CTCInventoryBase::SetNumberOfSelectedItemOwned(long itemDefIndex) -- for the highlighted item def, stores the selected category's per-slot maximum and how many the living hero owns across its three inventory components
 // Leaf: ?SetNumberOfSelectedItemOwned@CTCInventoryBase@NInventory@@IAEXJ@Z
 // Flags: none
-// Retail 0x005BE284, 301 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on), as the landed same-TU sibling
+// Retail 0x005BE284, 301 bytes, `ret 4`. Frame-pointer size TU: optimize("s", on), as the landed same-TU sibling
 //   GetInventoryShoppingValidity 0x005BE119.
 // Callees: CTCInventoryBase::GetSelectedCategory 0x005BCACE, CCategory::GetHighlightedItemMaxInCategory 0x005BD993,
 //   CTCBase::PeekPlayerManager 0x00686D50, CPlayerManager::GetMainPlayer() const 0x00449960, CPlayer::PeekPControlledCreature
@@ -9,7 +9,8 @@
 //   const CVectorMap LowerBound 0x004365B0 (inline PeekTC: TCI_INVENTORY, TCI_INVENTORY_WEAPONS, TCI_INVENTORY_CLOTHING),
 //   CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) const 0x005BDF08.
 // Layout (Ego_r.pdb names): HighlightedItemNumOwned +0x2C, HighlightedItemMaxOwned +0x30.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTHING
 #define FABLE_RETAIL_CTCBASE

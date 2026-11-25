@@ -4,8 +4,9 @@
 // Identity (proven): bound ??0?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAE@ABV01@@Z (from the _M_insert_overflow 0x005BC0FB); its _Vector_base is the landed _Vector_base<std::pair<long,long> > 0x005128B0 (8-byte stride).
 // Callees: _Vector_base<std::pair<long, long>>::_Vector_base(size_t, const allocator&) 0x005128B0, std::__uninitialized_copy 0x005BAA1C (`__fastcall`).
 // Shape (family M149, representative 0x0059AE54): the landed vector<CEngineTextureMorph> copy constructor 0x005BBDF1 with a
-//   power-of-two stride (`sar eax,3` instead of the idiv); `optimize("y", off)` + `optimize("s", on)`.
-#pragma optimize("y", off)
+//   power-of-two stride (`sar eax,3` instead of the idiv); `optimize("s", on)`.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 namespace std {
 template <class _T1, class _T2> struct pair {

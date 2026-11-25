@@ -9,9 +9,10 @@
 // Shape: STLport 4.x source; `(max)(old, fill)` through references (`lea ecx,&fill ; cmp ; jb ; lea ecx,&old`),
 // allocate's `n ? malloc(n * 0x2c) : 0` reusing the old-size slot; the __false_type temporaries sit in the high byte
 // of the atEnd argument slot (`lea eax,[ebp+1Bh]`); _M_set stores end of storage, finish, start.
-// Flags: #pragma optimize("y", off) + ("s", on) (frame pointer and `leave`, size TU).
+// Flags: #pragma optimize("s", on) (frame pointer and `leave`, size TU).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }

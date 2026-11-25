@@ -2,7 +2,7 @@
 // Leaf: ConstructWeaponDescriptionWeight
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C770C, 519 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C770C, 519 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("s", on).
 //   Ego_r.pdb ?ConstructWeaponDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z (the float is unused).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CGameDefinitionManager::Get 0x0044C6B0 / GetDefGlobalIndexFromName 0x009AD390 /
 //   GetDef<NUISystem::CUIMiscThingsDef> const 0x0042B312, CTCBase::GetDefinitionManager const 0x006869D0, GetPDefFromGlobalIndex
@@ -16,7 +16,8 @@
 // Layout: the local per-item data is 0x24 bytes (vector + three longs + bool + index -1 + one word the inline ctor leaves unset);
 //   misc things def +0x3C weight-units string; weapon def class +0x2C; augmentation def slot count +0x28, slot values +0x40.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 class CCharString { public:

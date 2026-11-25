@@ -1,6 +1,6 @@
 // NInventory::CTCInventoryBase::ConfiscateItems(vector<NInventory::CItem>& items) -- moves every confiscatable stack of `items` into ConfiscatedItems and removes it from the inventory (virtual slot 79)
 // Leaf: ?ConfiscateItems@CTCInventoryBase@NInventory@@MAEX
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFB01, length 149 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFB01, length 149 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: vector<CItem>::reserve @ 0x005C2013 (manifest "CActiveFile::ReserveSpace", propagated), the item-type test
 // @ 0x005D9790 (__fastcall, manifest "IsBuyable"), vector<CItem>::push_back @ 0x005C2996, virtual slot 79 (+0x13C,
 // RemoveItemsOfType(type, count)).
@@ -11,7 +11,8 @@
 // Ego_r.exe ?ConfiscateItems@CTCInventoryBase@NInventory@@MAEXABV?$vector@VCItem@NInventory@@...@Z 0x0062293A (protected virtual;
 // the PDB parameter is `const std::vector<NInventory::CItem>&`, the local CItemVector model keeps a non-const reference, so
 // the Leaf pins the prefix).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CItem.h"
 

@@ -51,10 +51,10 @@ class CAnimInit{public:
 // (same NF184 opt-in) Fidelity: scaffolding, not retail. Callers still see the body (retail expands it in place, e.g. 0x007502D0), but
 // VC7.1 also emits the inline constructor as a pick-any COMDAT. Under the TU's /O2 that copy is 59 bytes against the owner 0x005B33F4's
 // 49, from a size-optimised frame-pointer TU. The advisor pick-any rule (EXTRA_RULES 2026-11-20) needs the owner's body, so the
-// definition is compiled under that TU's optimize("y", off) + ("s", on), then the command-line settings are restored. Same body.
+// definition is compiled under that TU's optimize("s", on), then the command-line settings are restored. Same body. (NF419: the
+// owner row and this block dropped optimize("y", off): size mode keeps the frame; the copy is byte-identical in all three users.)
 // Owner check (landing nf184): the owner row sets the same optimize pragmas itself. `#pragma optimize("", on)` below returns to the
 // command-line settings (VC7.1 has no push / pop for optimize), so a row that uses this opt-in must not carry a row-head optimize pragma before its include of this header (nf189).
-#pragma optimize("y", off)
 #pragma optimize("s", on)
 inline CAnimInit::CAnimInit(unsigned char type,unsigned long typeFlags,long anim,EAnimUpdateMode updateMode,bool looping,unsigned long flags,long priority)
 {Init(type,typeFlags,anim,updateMode,looping,flags,priority);}

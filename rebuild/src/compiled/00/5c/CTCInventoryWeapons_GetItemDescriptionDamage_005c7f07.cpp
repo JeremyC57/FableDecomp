@@ -1,7 +1,7 @@
 // CTCInventoryWeapons::GetItemDescriptionDamage(CWideString& description, long defIndex) const -- for a weapon item: the live active melee weapon's damage and the live active ranged weapon's damage (its ability def's damage def value times the object-augmentations damage multiplier), then ConstructWeaponDescriptionDamage with the one matching the item's weapon class; other items go to the base description
 // Leaf: ?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C7F07, 506 bytes, `ret 8`; Ego_r.pdb ?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z.
-//   Frame-pointer size TU: optimize("y",off) + ("s",on) (`fldz ; fstp`, `leave`). One of four byte-twins (0x005C7913 GetItemDescription, 0x005C7B10 GetItemDescriptionNoDamageNorWeight, 0x005C7D0D GetItemDescriptionWeight) that
+//   Frame-pointer size TU: optimize("s", on) (`fldz ; fstp`, `leave`). One of four byte-twins (0x005C7913 GetItemDescription, 0x005C7B10 GetItemDescriptionNoDamageNorWeight, 0x005C7D0D GetItemDescriptionWeight) that
 //   differ only in the final Construct* callee and its arguments.
 // Callees: CTCInventoryItem::IsWeapon @ 0x005D97F0 (static __fastcall), IS_THING_ALIVE<CIntelligentPointer<CThing> > @ 0x004CC340,
 //   GetPItem @ 0x00A01B50, the expanded CThing::PeekTC (bitset::test 0x00410DE0, const CVectorMap::LowerBound 0x004365B0) for
@@ -22,7 +22,8 @@
 //   ?GetDefinitionManager@CTCInventoryBase@NInventory@@QBEPAVCDefinitionManager@@XZ), 0x0042B1A6 GetSubDef<CWeaponDef>, 0x005D97F0
 //   ?IsWeapon@CTCInventoryItem@@SI_NJ@Z (was ?IsWeaponItem@@YI_NJ@Z), 0x005DA510 ?IsMeleeWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z
 //   (was ?IsMeleeWeaponClass@@YI_NJ@Z), 0x004CC340 the IS_THING_ALIVE template, 0x005BC6B3 the PDB virtual UBE base spelling.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_BASE_OBJECT
 #define FABLE_RETAIL_CCHARSTRING

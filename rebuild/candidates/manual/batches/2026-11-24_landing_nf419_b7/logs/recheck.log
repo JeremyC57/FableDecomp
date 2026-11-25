@@ -1,0 +1,14 @@
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+00a98f40   RELOCATION_MATCH PASS   C3DAnimFile
+00a9a730   WARN STANDIN_LEAF ??_GC3DAnimFile@@UAEPAXI@Z (catalog C3DAnimFile::`scalar_deleting_destructor'; names another function)
+00a9a730   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a9ae60   RELOCATION_MATCH PASS   C3DMeshFile
+00a9d2a0   WARN STANDIN_LEAF ??_GC3DMeshFile@@UAEPAXI@Z (catalog C3DMeshFile::`scalar_deleting_destructor'; names another function)
+00a9d2a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 4
+  00a98f40 RELOCATION_MATCH C3DAnimFile::??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z
+  00a9a730 RELOCATION_MATCH C3DAnimFile::??_GC3DAnimFile@@UAEPAXI@Z
+  00a9ae60 RELOCATION_MATCH C3DMeshFile::??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z
+  00a9d2a0 RELOCATION_MATCH C3DMeshFile::??_GC3DMeshFile@@UAEPAXI@Z

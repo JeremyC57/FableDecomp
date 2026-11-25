@@ -19,7 +19,8 @@
 // bool (170v168), a plain inline one stays a call (140v168). The bank is read into edi before the symbol temporary;
 // GetCRC is called out of line on that explicit temporary (its constructor's eax); the tag is a signed `> 0` (`jle`).
 // Label: the catalog's NParticleMorphs_GetDisplayText is this method.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CItem.h"
 typedef unsigned short wchar_t;                         // VC7.1 without /Zc:wchar_t

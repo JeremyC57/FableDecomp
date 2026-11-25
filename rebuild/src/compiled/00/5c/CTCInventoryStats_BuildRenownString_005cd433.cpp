@@ -4,7 +4,7 @@
 // Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CD433, length 145 bytes (`ret 4`: hidden CWideString result). Frame-pointer size TU:
-// optimize("y",off) + ("s",on). Ego_r.pdb: ?BuildRenownString@CTCInventoryStats@@QAE?AVCWideString@@XZ.
+// optimize("s", on). Ego_r.pdb: ?BuildRenownString@CTCInventoryStats@@QAE?AVCWideString@@XZ.
 // Callees: std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface for interface 4,
 // the hero renown component), CCharString(const char*, long) @ 0x0099EBF0, GFIntToCharString(long) @ 0x0099F830 (`__fastcall`,
 // PDB ?GFIntToCharString@@YI?AVCCharString@@J@Z; hidden result in ecx, value in edx), CCharString::operator+=(const CCharString&)
@@ -14,7 +14,8 @@
 // slot [ebp+8]); the int-string temporary reuses the key's frame word [ebp-8].
 // Layout: retail CTCBase ParentThing +0x04; the renown component's class level at +0x70 (retail offset).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL

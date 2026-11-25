@@ -7,12 +7,12 @@
 // CMainGameComponent::Get()(0x013B86A0) +0x24 -> +0x10), CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<const ..>*) const @ 0x005BADE1
 // (both landed); the defs' virtual slot 1 (Delete) on the last release.
 // Model: NInventory::CItem over engine/CItem.h (ItemType +0, NumberOfItems +4; the landed 0x005BD931 pattern); the counted defs as the landed CItem::GetMaximumNumberOfItems
-// 0x005BD931 (vptr, IVRefCount +4). Pragmas: the frame-pointer size TU of the CItem module (`optimize("y", off)` +
-// `("s", on)`).
+// 0x005BD931 (vptr, IVRefCount +4). Pragmas: the frame-pointer size TU of the CItem module (`optimize("s", on)`).
 // Shape: both def pointers are zeroed frame words (`and [ebp-4],0`); `CDefPtr sub; ...; return sub;` copies out with the
 // merged `inc ; dec ; jne` (VC7.1 has no NRVO); the base def is read once into esi and released by hand after the copy.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CItem.h"
 class CIVCountedPointeeBase { public:

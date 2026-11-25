@@ -10,7 +10,8 @@
 // Port (NF90, q11182 / q11183 binder, claimed through the lock): was the local CCategory_Retail model (leaf
 //   ?AddItem@CCategory_Retail@@QAE_NPAVCThing@@_NJ@Z) binding both entry addresses under CCategory_Retail spellings; now on the 0x005BF060 headers
 //   (NF90 opt-ins _CCATEGORY_ADDITEM_THING / _CITEM_ADDITEM_THING) + engine/CThing.h.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE

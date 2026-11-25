@@ -5,7 +5,7 @@
 // Names (NF95, 2026-11-19, queue q11241): the 0x005D91F0 callee respelled from the made-up GetCategoryIdentifier to the PDB
 //   ?GetInventoryCategory@CTCInventoryItem@@QBEJXZ (the landed self row's leaf). A header port (work/005bf414_headerport_differ103v110.cpp)
 //   gets every relocation right but differs in register choice (this spilled to [ebp-4] in retail); the row keeps its local models.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF414, length 110 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF414, length 110 bytes. Frame-pointer size TU: optimize("s", on).
 // Ego_r.pdb: ?UpdateItemStatsForThing@CTCInventoryBase@NInventory@@IAEXABVCThing@@@Z (catalog label "CTCInventoryStats::
 // BuildRenownString" is propagated; the body reads CTCInventoryBase's Categories at +0x20).
 // Callees: std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x004365B0 (the inline CThing::GetInterface for interface
@@ -16,7 +16,8 @@
 // it back from the frame; the GetInterface key sits in the dead `thing` slot; `this` is spilled to [ebp-4] around the lookup.
 // Layout: retail CTCInventoryBase Categories {first,last,end} +0x20 (0x2C-byte CCategory); CThing bitset +0x20, map +0x44.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL

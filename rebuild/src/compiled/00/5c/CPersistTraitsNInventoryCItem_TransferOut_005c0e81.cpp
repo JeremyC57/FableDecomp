@@ -18,9 +18,10 @@
 //   copy lands in a dead argument slot; the item's def name is copy-initialised from the CDefString conversion
 //   temporary. The augmentation index goes through STLport's `operator[]` = `*(begin() + n)`: that form gives retail's
 //   byte-offset CSE (`shl ecx,2 ; cmp [ecx+eax],0 ... push [ecx+eax]`); `*(_M_start + n)` CSEs the whole address.
-//   EBP frame + size TU (optimize "y" off + "s" on, below).
+//   EBP frame + size TU (optimize "s" on, below).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define CItem CItemLayout
 #include "engine/CItem.h"

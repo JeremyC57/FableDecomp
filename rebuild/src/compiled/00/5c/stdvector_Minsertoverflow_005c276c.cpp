@@ -12,7 +12,8 @@
 //   new_finish in the frame. The constructor-less __false_type tags get no store and share the padding of the `atend` slot
 //   ([ebp+1Bh]) because this TU compiles both callee bodies (STLport's loops, instantiated above) ahead of the growth insert.
 // Element: NInventory::CItem (Ego_r.pdb 0x14 bytes)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 inline void* operator new(unsigned int, void* __p) { return __p; }
 namespace std {

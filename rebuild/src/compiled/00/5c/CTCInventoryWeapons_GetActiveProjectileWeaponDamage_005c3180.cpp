@@ -1,5 +1,5 @@
 // CTCInventoryWeapons::GetActiveProjectileWeaponDamage() -- the damage of the projectile fired by the hero's active ranged weapon (its weapon def's projectile def), or 0 when no living ranged weapon is active
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3180, length 186 bytes (float in st0). Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3180, length 186 bytes (float in st0). Frame-pointer size TU: optimize("s", on).
 // Callees: IS_THING_ALIVE<CIntelligentPointer<const CThingPhysical>> @ 0x004CC340 (`__fastcall`, by reference), CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef>(CDefPointer<const CWeaponDef>*) const @ 0x0042B1A6, CTCBase::GetDefinitionManager()
 // const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) const @ 0x009AD9E0 (a CDefPointer<const CDefClassBase> by value through the
@@ -14,7 +14,8 @@
 // released by its destructor through the `DecRefToZero(long&)` helper (`mov eax,[esi+54h] ; dec [esi+4] ; mov [ebp-8],eax ; jne`: the
 // damage load is scheduled before the decrement only with the by-reference helper), then the weapon def by hand.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 struct CRefCounted {                                 // the count sits at +4 behind the vptr
     long m_count;

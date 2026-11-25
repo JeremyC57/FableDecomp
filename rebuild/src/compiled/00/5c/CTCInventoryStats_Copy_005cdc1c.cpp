@@ -13,7 +13,8 @@
 // Layout: retail CTCInventoryBase 0x130 bytes with the screen base at +0x130; CTCInventoryStats pTCHeroExperience +0x14C,
 // pTCHeroStats +0x150 (PDB minus 0x1C; the landed OnCreate's model).
 // Label: the catalog's CTCInventoryBase_CopyAndSyncInterface is this method.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern bool g_SuppressInventoryBaseCopy;                // 0x013B8A88
 class CTCBase;

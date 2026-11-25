@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::PutWeaponsInSheathes() -- takes the weapons out of the hands, then puts each live active weapon (melee, then ranged) into its passive carry slot on the owner, the two sharing one running stack offset
 // Leaf: ?PutWeaponsInSheathes@CTCInventoryWeapons@@QAEXXZ
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C8101, 117 bytes, thiscall plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C8101, 117 bytes, thiscall plain `ret`. Frame-pointer size TU: optimize("s", on).
 // Identity: Ego_r.pdb / FableWin.pdb ?PutWeaponsInSheathes@CTCInventoryWeapons@@QAEXXZ (Ego_r donor 0x006280DB, between
 //   ConstructWieldEntryPC and FinalConstructWeaponItemEntriesPC); callers RefreshSheathedWeapons 0x005C9962 and the carrier code.
 // Callees: RemoveWeaponsFromSheathes 0x005C552C (landed; Ego_r spelling), std::bitset<274>::test 0x00410DE0 (the carrying
@@ -10,7 +10,8 @@
 //   Find expanded in place (FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND, as the landed 0x005C552C / 0x005C36C2 of this TU), so the pure
 //   Find is dropped and only the out-of-line presence test survives, through the `mov eax,[esi+4] ; lea ecx,[eax+20h]` temporary.
 //   The owner is named before each call, which loads it ahead of the offset push (ebx shrink-wrapped to the melee block).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING

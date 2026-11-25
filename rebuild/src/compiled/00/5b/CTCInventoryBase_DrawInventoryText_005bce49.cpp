@@ -1,12 +1,13 @@
 // CTCInventoryBase::DrawInventoryText(C2DVector, CFontBank*, CWideString*, ETextLayout, CRGBColour*, bool) -- converts the GFA position to virtual screen coordinates, shifts it left for centred (1) or right-aligned (2) text, and draws the string
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BCE49, length 91 bytes.
 // Callees: GFACoordToVCoord(C2DVector* in, C2DVector* out) @ 0x009E21D0 (`__fastcall`, both the by-value position),
 //          CFontBank::GetVStringWidth(const CWideString&) @ 0x0043E4D0 (float),
 //          Draw2DText(C2DVector*, CWideString*, CFontBank*, CRGBColour*, float, bool) @ 0x005BCAFE (`__fastcall`).
 //          The 0.5f multiplier is the .rdata float @ 0x0122F59C.
-// Pragmas: frame-pointer size TU (`optimize("y", off)` + `("s", on)`).
+// Pragmas: frame-pointer size TU (`optimize("s", on)`).
 // Shape: `this` is unused (`ret 1Ch` for the seven argument dwords); the by-value position is converted in place
 //        (`lea edx,[ebp+8] ; mov ecx,edx`); the two alignment arms tail-merge their `pos.X -= width` store
 //        (`fsubr [ebp+8] ; fstp [ebp+8]`), the centred arm scaling the width by 0.5f first; the 1.0f scale is

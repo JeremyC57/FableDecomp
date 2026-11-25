@@ -18,10 +18,11 @@
 // class element, the 0x00594D36 / 0x00594880 template (this chunk) with the one-element `_Copy_Construct` the inline
 // add-ref copy (`mov eax,[x] ; test eax,eax ; mov [edi],eax ; je ; inc [eax+4]` inside the placement null test). Every
 // empty tag lives in the high byte of the `atend` slot (`lea eax,[ebp+1Bh]`, same-TU helper bodies below).
-// Shape: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`; the copy ctor is `__forceinline` (the size TU
+// Shape: frame-pointer size TU: `optimize("s", on)`; the copy ctor is `__forceinline` (the size TU
 // otherwise calls it out of line from `_Copy_Construct`, and the register choice flips: 172 v 176).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include <stddef.h>
 #include <new>

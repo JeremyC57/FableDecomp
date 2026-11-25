@@ -17,7 +17,8 @@
 // the two wide literals are CSE'd into esi/edi; the result is a copy of the local (no NRVO), then the narrow copy and
 // the local are destroyed.
 // Label: the catalog's GetXString is right (class added).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 typedef unsigned short wchar_t;                         // VC7.1 without /Zc:wchar_t (no header in this TU)
 class CWideString;

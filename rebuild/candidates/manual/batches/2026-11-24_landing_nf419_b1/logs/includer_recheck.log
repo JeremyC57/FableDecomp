@@ -1,0 +1,96 @@
+addr       parity           behav  name
+004d45f7   MATCH            PASS   HasFrameUpdate
+004de87e   MATCH            PASS   HasFrameUpdate
+005b33f4   RELOCATION_MATCH PASS   CAnimInit
+00665860   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00665860   RELOCATION_MATCH PASS   UpdateAnimation
+00666310   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00666310   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00666310   RELOCATION_MATCH PASS   OnCreate
+0070b4d0   RELOCATION_MATCH PASS   OnCreate
+0070b600   MATCH            PASS   HasFrameUpdate
+00728ff0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00728ff0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00728ff0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00728ff0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00728ff0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00728ff0   WARN SHARED_HEADER_AVAILABLE CTCCreatureExpression (engine/CTCCreatureExpression.h)
+00728ff0   RELOCATION_MATCH PASS   UpdateBlinking
+00732850   WARN RELOC_NAME: ?SClockTurnAnim@?A0xc268fbbc@@3VCCharString@@A -> 013bad3c labelled 'g_ClockHandTurnName'
+00732850   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+00732850   RELOCATION_MATCH PASS   OnInitialActivate
+00732bc0   MATCH            PASS   HasFrameUpdate
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimFilterNoGroup (engine/CAnimFilterNoGroup.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimationSet (engine/CAnimationSet.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAppearanceDef (engine/CAppearanceDef.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CThingBaseDef (engine/CThingBaseDef.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimSet (engine/CAnimSet.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCAnimationComplex (engine/CTCAnimationComplex.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo (engine/C3DAnimationInfo.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank (engine/CMeshDataBank.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCContainer (engine/CTCContainer.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCContainerRewardHero (engine/CTCContainerRewardHero.h)
+007502d0   WARN SHARED_HEADER_AVAILABLE CTCChest (engine/CTCChest.h)
+007502d0   WARN RELOC_NAME: ?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+007502d0   RELOCATION_MATCH PASS   InitClosed
+00753630   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+00753630   WARN RELOC_NAME: ??$for_each@PAU?$pair@MPBVCAnimationEntry@@@std@@VCGetBestTurningAnim@?A0x7e51c660@@@std@@YI?AVCGetBestTurningAnim@?A0x7e51c660@@PAU?$pair@MPBVCAnimationEntry@@@0@0V12@@Z -> 00754d80 labelled '_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::_For_each<std::pair<float,CAnimationEntry_const*>*,_anon_247890BC::CGetBestTurningAnim>'
+00753630   RELOCATION_MATCH PASS   InitialiseTurningViaAnimation
+0077d230   RELOCATION_MATCH PASS   Open
+0077d330   RELOCATION_MATCH PASS   FrameUpdate
+0078809b   WARN RELOC_NAME: ?Init@CAnimateThing@@QAEXABVCAnimInit@@@Z -> 0070d920 labelled 'CTCAnimation::SetMainAnim'
+0078809b   RELOCATION_MATCH PASS   InitialiseAnimation
+007f8bd0   MATCH            PASS   BulletTimeFrameUpdate
+007f8c20   RELOCATION_MATCH PASS   AddQueuedAnimation
+007f8f30   RELOCATION_MATCH PASS   PlayDefaultAnimation
+007f90a0   RELOCATION_MATCH PASS   OnInitialActivate
+00835e30   WARN RELOC_NAME: ?GetRandomAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@AAKABVCAnimFilterBase@@J@Z -> 005dcc00 labelled 'AnimDef_FilterAnimationList'
+00835e30   RELOCATION_MATCH PASS   SetupDeadAnimation
+00862780   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CTCCombat (engine/CTCCombat.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimationEntry (engine/CAnimationEntry.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CAnimateThing (engine/CAnimateThing.h)
+00862780   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+00862780   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ -> 008300f0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   RELOCATION_MATCH PASS   UpdateIdleAnim
+008d6ac0   RELOCATION_MATCH PASS   AnimUpdate
+008d9b00   RELOCATION_MATCH PASS   AnimUpdate
+
+WINS: 23
+  004d45f7 MATCH CTCCreatureHive::?HasFrameUpdate@CTCCreatureHive@@UBE_NXZ
+  004de87e MATCH CTCAnimatingObject::?HasFrameUpdate@CTCAnimatingObject@@UBE_NXZ
+  005b33f4 RELOCATION_MATCH CAnimInit::??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z
+  00665860 RELOCATION_MATCH CThingCreatureBase::?UpdateAnimation@CThingCreatureBase@@IAEXM@Z
+  00666310 RELOCATION_MATCH CThingCreatureBase::?OnCreate@CThingCreatureBase@@MAE_NXZ
+  0070b4d0 RELOCATION_MATCH CTCAnimationComplex::?OnCreate@CTCAnimationComplex@@UAEXXZ
+  0070b600 MATCH CTCAnimationComplex::?HasFrameUpdate@CTCAnimationComplex@@UBE_NXZ
+  00728ff0 RELOCATION_MATCH CTCCreatureExpression::UpdateBlinking
+  00732850 RELOCATION_MATCH CTCClock::?OnInitialActivate@CTCClock@@UAEXXZ
+  00732bc0 MATCH CTCClock::?HasFrameUpdate@CTCClock@@UBE_NXZ
+  007502d0 RELOCATION_MATCH CTCChest::?InitClosed@CTCChest@@AAEXXZ
+  00753630 RELOCATION_MATCH CTCLook::?InitialiseTurningViaAnimation@CTCLook@@AAEXABVC3DVector@@J@Z
+  0077d230 RELOCATION_MATCH CTCCreatureHive::?Open@CTCCreatureHive@@QAEXXZ
+  0077d330 RELOCATION_MATCH CTCCreatureHive::?FrameUpdate@CTCCreatureHive@@UAEXXZ
+  0078809b RELOCATION_MATCH CTCMeleeTrap::?InitialiseAnimation@CTCMeleeTrap@@AAEXABVCCharString@@_N@Z
+  007f8bd0 MATCH CTCAnimatingObject::?BulletTimeFrameUpdate@CTCAnimatingObject@@UAEXXZ
+  007f8c20 RELOCATION_MATCH CTCAnimatingObject::?AddQueuedAnimation@CTCAnimatingObject@@QAEXABVCCharString@@_N@Z
+  007f8f30 RELOCATION_MATCH CTCAnimatingObject::?PlayDefaultAnimation@CTCAnimatingObject@@QAEXXZ
+  007f90a0 RELOCATION_MATCH CTCAnimatingObject::?OnInitialActivate@CTCAnimatingObject@@UAEXXZ
+  00835e30 RELOCATION_MATCH CThingDeadCreature::?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ
+  00862780 RELOCATION_MATCH CModeStandBase::?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+  008d6ac0 RELOCATION_MATCH NCreatureMode::CModeSitBase::?AnimUpdate@CModeSitBase@NCreatureMode@@UAEXAAVCAnimateThing@@@Z
+  008d9b00 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?AnimUpdate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXAAVCAnimateThing@@@Z

@@ -1,5 +1,5 @@
 // CTCInventoryClothing::RemoveAllClothing() -- with the mannequin flag dropped, selects the HERO_SUIT_NAKED item and dresses the owner in the selected clothes, then raises the flag again
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B40E6, length 87 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B40E6, length 87 bytes. Frame-pointer size TU: optimize("s", on)
 // (a `push ecx` frame for the CCharString temporary).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 and ~CCharString @ 0x0099EAE0 on "HERO_SUIT_NAKED" @ 0x0124F510;
 // the definition-manager accessor @ 0x006869D0 (`mov ecx,[ecx+4] ; jmp 0x004C7990`, the world's +0x20 manager, reached through the
@@ -10,7 +10,8 @@
 // Shape: the flag clear precedes the literal conversion (it is scheduled among the constructor's pushes); the name is an
 // IMPLICIT conversion temporary of the const-reference argument (re-addressed with `lea eax,[ebp-4]` after its constructor),
 // destroyed before SelectItemWithDefIndex, so the index is a named local (edi).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CCharString { public:
     void* m_pData;

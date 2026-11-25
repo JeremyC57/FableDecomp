@@ -1,6 +1,6 @@
 // CCategory::GetCategoryName() -- the display name of an inventory category: the associated thing's name when the category is bound to a thing, else the localised CategoryName text from the category def, else the empty wide string
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDAC5, length 136 bytes (ret 4: the CWideString result by hidden
-// pointer); a frame-pointer size TU with esi/edi in use = `#pragma optimize("y", off)` + `("s", on)`.
+// pointer); a frame-pointer size TU with esi/edi in use = `#pragma optimize("s", on)`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PAssociatedThing, twice), CTCInventoryBase::GetInventoryText
 // @ 0x005BD273 (`__fastcall`, hidden CWideString result, the text id), CWideString::CWideString(const CWideString&)
 // @ 0x0099B720 (from the global empty wide string @ 0x013BCA24), CTCInventoryBase virtual slot 76 (+0x130, the
@@ -11,7 +11,8 @@
 // vtable is fetched before the inner GetPItem call.
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
 //   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_EmptyWideString.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // Retail CCategory (sizeof 0x2C): engine/CCategory.h is the Ego_r.pdb layout with a 16-byte vector<CItem>; the shipped
 // vector is {first, last, end} (12 bytes), so every member after ItemsInCategory sits 4 bytes lower than the header

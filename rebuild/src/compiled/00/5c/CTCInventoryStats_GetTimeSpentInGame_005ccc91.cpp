@@ -21,7 +21,8 @@
 //   label CCharStrings are named in a block around the one long concatenation (both built before the expression,
 //   both destroyed before the return copy); the dead `bank` argument slot holds temporaries.
 #pragma optimize("s", on)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 
 class CCharString {
 public:

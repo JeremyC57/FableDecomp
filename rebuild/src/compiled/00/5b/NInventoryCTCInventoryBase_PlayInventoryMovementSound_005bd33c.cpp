@@ -18,7 +18,8 @@
 // Names (NF95, 2026-11-19, queue q11227): access-only self rename QBE -> ABE (private const), as Ego_r.pdb 0x0061F35E / FableWin.pdb
 //   0x02368DC8 and the PASS22 complete-methods block of engine/NInventory_CTCInventoryBase.h declare it; the landed callers 0x005BDB94 /
 //   0x005BDC08 / 0x005BDCB4 / 0x005BDCDC bind ABE.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CASoundBank;
 #include "engine/CSoundInit.h"

@@ -1,7 +1,7 @@
 // NInventory::CTCInventoryBase::CreateInventoryObject(long itemDefIndex) -- creates the world object of an owned item type at the owner's position (for the owner's player) and restores its per-item data: weapon kills / time wielded, the augmentation slots and their contents, the trophy's best witness count; then connects the object's inventory-item component to this inventory. Returns the thing (0 when no such item is owned; the unchecked thing when it is not alive).
 // Leaf: ?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z
 // Flags: none
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005BE8F3, 482 bytes, thiscall `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005BE8F3, 482 bytes, thiscall `ret 4`. Frame-pointer size TU: optimize("s", on).
 // Identity: Ego_r.pdb (donor 0x0062118F) / FableWin.pdb ?CreateInventoryObject@CTCInventoryBase@NInventory@@IAEPAVCThing@@J@Z (protected).
 // Callees: GetNumberOfItemsOfTypeInInventory 0x005BDF08, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CThing::GetPos 0x004C73D0, CThingObject::Create 0x00703210 (static __fastcall), IS_THING_ALIVE<CThing*> 0x0040DCE0,
@@ -14,7 +14,8 @@
 //   maximum slot count is a local evaluated BEFORE the vector size (`mov [ebp-4],eax` then size), and STLport's min(max, size)
 //   picks by address; the inventory-item pointer is zeroed first and used unconditionally; the item block runs even without
 //   per-item data. CTCTrophy has no shared header (local minimal Ego_r.pdb model below).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

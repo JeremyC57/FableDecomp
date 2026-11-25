@@ -6,8 +6,9 @@
 //   0x005C0DF0 (`__fastcall`).
 // Shape (family M141, representative 0x0057F8A7): STLport 4.6 `pointer __result = _M_end_of_storage.allocate(__n);
 //   __uninitialized_copy(__first, __last, __result, _IsPODType()); return __result;` (no /EHsc: the try/unwind vanish) --
-//   `optimize("y", off)` + `optimize("s", on)`; the tag temporary sits in the top byte of the dead n slot.
-#pragma optimize("y", off)
+//   `optimize("s", on)`; the tag temporary sits in the top byte of the dead n slot.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 namespace NInventory { class CItem { public: unsigned long Members[5]; }; }
 namespace std {

@@ -1,13 +1,14 @@
 // CTCInventoryBase::GetCategoryWithAssociationThing(CThing* thing) -- returns the first category whose associated thing is `thing`, or null
 // [ebp-4] (`lea ecx,[ebx+eax]`, `cmp edi,[ebp-4]`); the lane keeps the count in ebx and spills the offset (`add ecx,[ebp-4]`,
 // `add dword ptr [ebp-4],2Ch`). Same instructions otherwise.
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD5DB, length 85 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD5DB, length 85 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 on each CCategory's PAssociatedThing (+0).
 // Retail CTCInventoryBase: no engine header; Categories (0x2C-byte CCategory) at +0x20. The loop compares signed (`jl`/`jge`):
 // the element count is a long local; the found element is rebuilt after the loop as `imul edi,2Ch ; add edi,[esi+20h]`.
 // Tried: for-break + post `if (i < count)` (this file), a while loop with i/count/result declared in reverse order, a for loop
 // with the `&&` condition and `first + i`, and an outer `if (count > 0)` (worse: esi/edi swap).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // Shape: the vector's operator[] is STLport's `*(begin() + n)` through an inline begin() accessor (`_SweepBegin1()`): the element
 //   address is formed from the accessor's returned pointer plus the scaled index as retail; `first[n]` folds the index into the

@@ -7,8 +7,9 @@
 // Shape (family M152, representative 0x005B3076): STLport 4.6 `iterator __i = lower_bound(__k); if (__i == end() ||
 //   key_comp()(__k, (*__i).first)) __i = insert(__i, value_type(__k, _Tp())); return (*__i).second;` -- the pair temporary in
 //   the 8-byte frame, the hint iterator copy-constructed in its argument slot, the result homed in the dead k slot.
-//   `optimize("y", off)` + `optimize("s", on)`.
-#pragma optimize("y", off)
+//   `optimize("s", on)`.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 namespace NUISystem { class CComponent; class CList; }
 namespace std {

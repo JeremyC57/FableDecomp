@@ -1,5 +1,5 @@
 // CTCInventoryBase::GetBestFishWeight(long fishType) -- returns the best recorded weight of the first stack of `fishType` (its per-item data's BestFishWeight), or 0 when there is none
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFC90, length 73 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFC90, length 73 bytes. Frame-pointer size TU: optimize("s", on)
 // (`and dword ptr [..],0` zero stores).
 // Callees: CTCInventoryBase::GetAllInventoryItemsOfType(long, vector<CItem>&) @ 0x005BFA69, std::vector<NInventory::CItem>::~vector @ 0x005C1E30.
 // Models: engine/CItem.h matches the retail CItem (0x14 bytes) but holds the counted pointer as an opaque Data/Info pair whose
@@ -7,7 +7,8 @@
 // Retail CPerItemData: the PDB layout with its leading std::vector<long> 12 bytes wide, so BestFishWeight sits at +0x20 (PDB +0x24).
 // Shape: the float result is a named local; VC homes it in the dead `fishType` argument slot (`[ebp+8]`) across the vector
 // destructor and copies the member with integer moves; the else arm is a literal `fldz`.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 struct CPerItemData_Retail {
     unsigned char Augmentations[0xC];                            // +0x00 std::vector<long> (retail 12 bytes)

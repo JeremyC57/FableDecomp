@@ -1,0 +1,153 @@
+addr       parity           behav  name
+005c12a1   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+005c12a1   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c12a1   WARN SHARED_HEADER_AVAILABLE CPersistTraits (engine/CPersistTraits.h)
+005c12a1   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut
+005c155b   WARN STANDIN_LEAF ?GetInterface_0x48@CThingComponents_005c155b@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x48; address-only name)
+005c155b   RELOCATION_MATCH PASS   GetInterface_0x48
+005c15a6   WARN STANDIN_LEAF ?GetInterface_0x39@CThingComponents_005c15a6@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x39; address-only name)
+005c15a6   RELOCATION_MATCH PASS   GetInterface_0x39
+005c15f1   WARN STANDIN_LEAF ?GetInterface_0xdc@CThingComponents_005c15f1@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0xdc; address-only name)
+005c15f1   RELOCATION_MATCH PASS   GetInterface_0xdc
+005c163d   WARN STANDIN_LEAF ?GetInterface_0x1a@CThingComponents_005c163d@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x1a; address-only name)
+005c163d   RELOCATION_MATCH PASS   GetInterface_0x1a
+005c1688   WARN STANDIN_LEAF ?GetInterface_0x48@CThingComponents_005c1688@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x48; address-only name)
+005c1688   RELOCATION_MATCH PASS   GetInterface_0x48
+005c16d3   WARN STANDIN_LEAF ?GetInterface_0xbf@CThingComponents_005c16d3@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0xbf; address-only name)
+005c16d3   RELOCATION_MATCH PASS   GetInterface_0xbf
+005c171f   WARN STANDIN_LEAF ?GetInterface_0x2@CThingComponents_005c171f@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x2; address-only name)
+005c171f   RELOCATION_MATCH PASS   GetInterface_0x2
+005c276c   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c276c   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCItem@NInventory@@PAV12@@std@@YIPAVCItem@NInventory@@PAV12@00ABU__false_type@0@@Z -> 005c0df0 labelled 'std::__uninitialized_copy<NInventory::CItem*,NInventory::CItem*>'
+005c276c   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCItem@NInventory@@IV12@@std@@YIPAVCItem@NInventory@@PAV12@IABV12@ABU__false_type@0@@Z -> 005c0e1b labelled 'std::__uninitialized_fill_n<NInventory::CItem*,unsigned int,NInventory::CItem>'
+005c276c   WARN RELOC_NAME: ?_M_clear@?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@IAEXXZ -> 005c1f1f labelled '_global::StdList_Dtor_005c1f1f'
+005c276c   RELOCATION_MATCH PASS   _M_insert_overflow
+005c2f27   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005c2f27   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005c2f27   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005c2f27   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005c2f27   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005c2f27   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005c2f27   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c2f27   RELOCATION_MATCH PASS   OpenInventory
+005c2fe1   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo (engine/CEnginePrimitivePrepareInfo.h)
+005c2fe1   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c2fe1   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+005c323a   RELOCATION_MATCH PASS   ConstructWieldEntry
+005c3444   RELOCATION_MATCH PASS   ConstructWieldEntryPC
+005c3947   WARN SHARED_HEADER_AVAILABLE CDefIndex (engine/CDefIndex.h)
+005c3947   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3947   WARN RELOC_NAME: ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<class CThing>::CIntelligentPointer'
+005c3947   WARN RELOC_NAME: ??0CEnginePrimitiveHandleVector@@QAE@K@Z -> 00485d30 labelled 'std::vector::vector'
+005c3947   WARN RELOC_NAME: ??0CComponentItemMap@@QAE@XZ -> 004df81d labelled 'std::map<T_004df81d>::map'
+005c3947   RELOCATION_MATCH PASS   CTCInventoryWeapons
+005c39f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005c39f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c39f0   WARN RELOC_NAME: ??1CClothingItemMap@@QAE@XZ -> 004dd1c4 labelled '_global::StdList_Dtor_004dd1c4'
+005c39f0   WARN RELOC_NAME: ??1CRetailHandleVector@@QAE@XZ -> 00440c40 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+005c39f0   RELOCATION_MATCH PASS   ~CTCInventoryWeapons
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+005c3a95   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3a95   RELOCATION_MATCH PASS   OnSerialise
+005c44fa   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c44fa   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005c44fa   WARN SHARED_HEADER_AVAILABLE CTCObjectAugmentations (engine/CTCObjectAugmentations.h)
+005c44fa   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c44fa   WARN RELOC_NAME: ?OnShowEnded@CTCShowableItem@@QAEXXZ -> 005d8e50 labelled 'CTCInventoryItem::ReturnToInventory'
+005c44fa   RELOCATION_MATCH PASS   AugmentWeapon
+005c4671   RELOCATION_MATCH PASS   GetFreeAugmentationSlotForWeapon
+005c4769   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c4769   WARN SHARED_HEADER_AVAILABLE CTCWeapon (engine/CTCWeapon.h)
+005c4769   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c4769   RELOCATION_MATCH PASS   GetActiveMeleeWeaponDamage
+005c7452   WARN RELOC_NAME: ??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z -> 0042b312 labelled 'CDefinitionManager::GetDef<NUISystem::CUIMiscThingsDef>'
+005c7452   RELOCATION_MATCH PASS   ConstructWeaponDescriptionDamage
+005c7913   RELOCATION_MATCH PASS   GetItemDescription
+005c7b10   RELOCATION_MATCH PASS   GetItemDescriptionNoDamageNorWeight
+005c7d0d   RELOCATION_MATCH PASS   GetItemDescriptionWeight
+005c7f07   RELOCATION_MATCH PASS   GetItemDescriptionDamage
+005c8101   RELOCATION_MATCH PASS   PutWeaponsInSheathes
+005c9962   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c9962   RELOCATION_MATCH PASS   RefreshSheathedWeapons
+005cb128   RELOCATION_MATCH PASS   RemoveItemFromInventory
+005cb2b0   RELOCATION_MATCH PASS   SetThingAsActiveWeapon
+005cb780   RELOCATION_MATCH PASS   CheckForSoldWieldedWeapons
+005cb974   RELOCATION_MATCH PASS   OnInitialActivate
+005cc364   WARN STANDIN_LEAF ?GetInterface_0x47@CThingComponents_005cc364@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x47; address-only name)
+005cc364   RELOCATION_MATCH PASS   GetInterface_0x47
+005cc3af   WARN STANDIN_LEAF ?GetInterface_0x87@CThingComponents_005cc3af@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x87; address-only name)
+005cc3af   RELOCATION_MATCH PASS   GetInterface_0x87
+005cc3fb   WARN STANDIN_LEAF ?GetInterface_0x88@CThingComponents_005cc3fb@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x88; address-only name)
+005cc3fb   RELOCATION_MATCH PASS   GetInterface_0x88
+005cc447   WARN STANDIN_LEAF ?GetInterface_0x31@CThingComponents_005cc447@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x31; address-only name)
+005cc447   RELOCATION_MATCH PASS   GetInterface_0x31
+005cc492   WARN STANDIN_LEAF ?GetInterface_0x16@CThingComponents_005cc492@@QAE_NPAPAVCTCBase@@@Z (catalog _unattributed::GetInterface_0x16; address-only name)
+005cc492   RELOCATION_MATCH PASS   GetInterface_0x16
+005ccf0e   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005ccf0e   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005ccf0e   RELOCATION_MATCH PASS   CreateTitle
+005ccf86   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005ccf86   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005ccf86   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005ccf86   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005ccf86   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005ccf86   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005ccf86   RELOCATION_MATCH PASS   OpenInventory
+005ccffc   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005ccffc   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005ccffc   RELOCATION_MATCH PASS   CreateTitlePC
+005cd074   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005cd074   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cd074   RELOCATION_MATCH PASS   ConstructScreen
+005cdccb   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005cdccb   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+005cdccb   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+005cdccb   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cdccb   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 40
+  005c12a1 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut
+  005c155b RELOCATION_MATCH _unattributed::GetInterface_0x48
+  005c15a6 RELOCATION_MATCH _unattributed::GetInterface_0x39
+  005c15f1 RELOCATION_MATCH _unattributed::GetInterface_0xdc
+  005c163d RELOCATION_MATCH _unattributed::GetInterface_0x1a
+  005c1688 RELOCATION_MATCH _unattributed::GetInterface_0x48
+  005c16d3 RELOCATION_MATCH _unattributed::GetInterface_0xbf
+  005c171f RELOCATION_MATCH _unattributed::GetInterface_0x2
+  005c276c RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@IAEXPAVCItem@NInventory@@ABV34@ABU__false_type@2@I_N@Z
+  005c2f27 RELOCATION_MATCH CTCInventoryWeapons::OpenInventory@CTCInventoryWeapons
+  005c2fe1 RELOCATION_MATCH CTCInventoryWeapons::DrawPreparePrimitivesForRendering
+  005c323a RELOCATION_MATCH CTCInventoryWeapons::?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z
+  005c3444 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWieldEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@PAVCComponent@4@J@Z
+  005c3947 RELOCATION_MATCH CTCInventoryWeapons::??0CTCInventoryWeapons
+  005c39f0 RELOCATION_MATCH CTCInventoryWeapons::??1CTCInventoryWeapons
+  005c3a95 RELOCATION_MATCH CTCInventoryWeapons::OnSerialise@CTCInventoryWeapons
+  005c44fa RELOCATION_MATCH CTCInventoryWeapons::AugmentWeapon
+  005c4671 RELOCATION_MATCH CTCInventoryWeapons::?GetFreeAugmentationSlotForWeapon@CTCInventoryWeapons@@QAEJJ@Z
+  005c4769 RELOCATION_MATCH CTCInventoryWeapons::GetActiveMeleeWeaponDamage
+  005c7452 RELOCATION_MATCH CTCInventoryWeapons::?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z
+  005c7913 RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescription@CTCInventoryWeapons@@UBEXAAVCWideString@@J_N@Z
+  005c7b10 RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescriptionNoDamageNorWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@J_N@Z
+  005c7d0d RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
+  005c7f07 RELOCATION_MATCH CTCInventoryWeapons::?GetItemDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@J@Z
+  005c8101 RELOCATION_MATCH CTCInventoryWeapons::?PutWeaponsInSheathes@CTCInventoryWeapons@@QAEXXZ
+  005c9962 RELOCATION_MATCH CTCInventoryWeapons::?RefreshSheathedWeapons@CTCInventoryWeapons@@QAEXXZ
+  005cb128 RELOCATION_MATCH CTCInventoryWeapons::?RemoveItemFromInventory@CTCInventoryWeapons@@UAEXJJ@Z
+  005cb2b0 RELOCATION_MATCH CTCInventoryWeapons::?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z
+  005cb780 RELOCATION_MATCH CTCInventoryWeapons::?CheckForSoldWieldedWeapons@CTCInventoryWeapons@@QAEXXZ
+  005cb974 RELOCATION_MATCH CTCInventoryWeapons::?OnInitialActivate@CTCInventoryWeapons@@UAEXXZ
+  005cc364 RELOCATION_MATCH _unattributed::GetInterface_0x47
+  005cc3af RELOCATION_MATCH _unattributed::GetInterface_0x87
+  005cc3fb RELOCATION_MATCH _unattributed::GetInterface_0x88
+  005cc447 RELOCATION_MATCH _unattributed::GetInterface_0x31
+  005cc492 RELOCATION_MATCH _unattributed::GetInterface_0x16
+  005ccf0e RELOCATION_MATCH CTCInventoryStats::CreateTitle
+  005ccf86 RELOCATION_MATCH CTCInventoryStats::OpenInventory@CTCInventoryStats
+  005ccffc RELOCATION_MATCH CTCInventoryStats::CreateTitlePC
+  005cd074 RELOCATION_MATCH NInventory::CTCInventoryStats::ConstructScreen
+  005cdccb RELOCATION_MATCH CTCInventoryStats::FrameUpdate

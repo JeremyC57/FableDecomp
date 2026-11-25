@@ -2,7 +2,7 @@
 // Leaf: ?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005B62FE, 1129 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005B62FE, 1129 bytes, `ret 8`. Frame-pointer size TU: optimize("s", on).
 // Callees: ArgPasser::ArgPasser 0x005B336A, CTCInventoryClothing::CalculateArmorValues(ArgPasser&, long) 0x005B4EBA,
 //   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at CMainGameComponent::Get() 0x013B86A0 +0x14), GFIntToWideString 0x00405F00,
 //   GetItemDefDescription 0x005D9630 (both `__fastcall`, CWideString by hidden pointer), CWideString(const wchar*) 0x0099B6B0 /
@@ -13,7 +13,8 @@
 // Layout: ArgPasser (Ego_r.pdb, 0x30 bytes): is_suit, num/max_suit_parts, item/cur armour, attractiveness, scariness,
 //   goodstrength pairs, total_price. engine/CTCInventoryClothing.h is the PDB layout and no member is read here, so `this`
 //   is a method-only local model.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CCharString { public:
     void* PStringData;

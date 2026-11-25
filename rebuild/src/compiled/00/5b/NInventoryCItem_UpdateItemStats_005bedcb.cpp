@@ -17,7 +17,8 @@
 //   CQuestManager stand-ins); now on the shared headers with the NF90 opt-in _CITEM_UPDATEITEMSTATS and the NF92 opt-ins
 //   CTCINVENTORYITEM_ISTONOTPERSISTUNTILQUESTCOMPLETED / CTCFISH_MOSTRECENTFISHWEIGHT.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CTCBASE

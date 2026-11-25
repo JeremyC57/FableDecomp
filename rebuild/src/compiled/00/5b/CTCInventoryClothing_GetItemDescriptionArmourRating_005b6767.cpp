@@ -1,13 +1,14 @@
 // CTCInventoryClothing::GetItemDescriptionArmourRating(CWideString& text, long itemDefIndex) const -- append "<Armour rating> N (+D)" for a clothing item: its armour value and the signed difference to what is worn now
 // Leaf: ?GetItemDescriptionArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
-// Retail 0x005B6767, 282 bytes, `ret 8`. Frame-pointer size TU: optimize("y", off) + ("s", on). Callees: ArgPasser::ArgPasser 0x005B336A, CalculateArmorValues 0x005B4EBA, NGameText::CDataBank::GetTextBySymbol 0x009C95E0 through the inline CMainGameComponent::GetTextBank (PTextBank +0x14 of PMainGameComponent 0x013B86A0), CCharString 0x0099EBF0 / ~ 0x0099EAE0, CWideString(const wchar_t*) 0x0099B6B0, operator+= 0x0099B8D0, ~CWideString 0x0099B510, GFIntToWideString 0x00405F00.
+// Retail 0x005B6767, 282 bytes, `ret 8`. Frame-pointer size TU: optimize("s", on). Callees: ArgPasser::ArgPasser 0x005B336A, CalculateArmorValues 0x005B4EBA, NGameText::CDataBank::GetTextBySymbol 0x009C95E0 through the inline CMainGameComponent::GetTextBank (PTextBank +0x14 of PMainGameComponent 0x013B86A0), CCharString 0x0099EBF0 / ~ 0x0099EAE0, CWideString(const wchar_t*) 0x0099B6B0, operator+= 0x0099B8D0, ~CWideString 0x0099B510, GFIntToWideString 0x00405F00.
 // Shape: retail reads PMainGameComponent (0x005B6787) before the armour difference (0x005B678C / 0x005B678F) and the text bank
 //   pointer (+0x14, 0x005B6792) after it. The c2 list scheduler ties the +0x14 load and the `sub` (prio 0x15000) and takes the lower
 //   IL index, so the IL must be global load, difference, +0x14 load. A named `game` pointer read before the difference gives that
 //   only when it has a second use: VC7.1 otherwise forwards the global read to its one use after the difference (md 4), and the
 //   bank reference bound first loads +0x14 IL-first (md 2). The null test on `game` after GetTextBank() is that use; VC7.1 drops
 //   it (game was already dereferenced), so no test is emitted. A test before the dereference stays in the code (290 bytes).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

@@ -2,10 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF24A, length 124 bytes; a frame-pointer size TU (`leave`).
 // Callees: NInventory::CItem::RemoveItem(long) @ 0x005BF00B, CCategory::GetNextOccupiedSlot @ 0x005BCF61,
 // CInventoryCategoryDef virtual slot 1 (+0x04, destroy).
-// Shape: `optimize("y", off)` + `("s", on)`; the `!SelectEmptySlots && slot empty` condition is evaluated while the
+// Shape: `optimize("s", on)`; the `!SelectEmptySlots && slot empty` condition is evaluated while the
 // scoped CDefPointer reference is alive, so its result is parked in the frame byte [ebp-1] across the release (the
 // zeroed dword at [ebp-8] is the same frame artefact and reproduces from this source).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // Retail CCategory (sizeof 0x2C): engine/CCategory.h is the Ego_r.pdb layout with a 16-byte vector<CItem>; the shipped
 // vector is {first, last, end} (12 bytes), so every member after ItemsInCategory sits 4 bytes lower than the header

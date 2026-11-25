@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF77D, 334 bytes, plain `ret`. Size TU with a frame pointer:
-//   `#pragma optimize("y", off)` + `("s", on)`.
+//   `#pragma optimize("s", on)`.
 // Callees: CTCInventoryBase::GetAllItems(vector<NInventory::CItem>&) @ 0x005BF482 (landed), CTCBase::GetDefinitions
 //   @ 0x006869D0, CDefinitionManager::GetDef<CThingDef> @ 0x0042AF3C, CDefClassBase::GetSubDef<CResurrectionItemDef>
 //   @ 0x005C0CFB (landed), CTCInventoryBase::CreateInventoryObject(long) @ 0x005BE8F3, std::bitset<>::test @ 0x00410DE0
@@ -15,7 +15,8 @@
 //   `__forceinline`; the item vector's destructor frees its storage with free().
 // Layout: NInventory::CItem is 8 bytes (def index first); retail CThing bitset +0x20, interface map +0x44.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14

@@ -1,0 +1,11 @@
+rows	check	head	new	verdict	evidence
+40 rows	vland --recheck-landed, HEAD and new at one LANDVERIFY_WORK path (tools/runpair.sh)	grades per row	SUMMARY rows=40 not_ok=0 literal_diff=0	ok	evidence/vland_b4h.log evidence/vland_b4n.log vcmp.txt
+40 rows	LITERAL_DIFF	0	0	ok	vcmp.txt
+40 rows	leaf bytes + relocations HEAD v new (graded symbol)	-	identical in every row	ok	../../evidence/leafsym.tsv (agent root)
+40 rows	object section compare by COMDAT symbol (same path)	-	DIFF=40; leaf section never differs; no section added or removed; new object functions == measured no-y-off variant	ok	objsec.txt
+40 rows	pk_all + pickany_vs_retail HEAD v new, keyed on (symbol, address), exact graded leaf	-	CHANGED=2 GONE=2 IMPROVED=29 NEW_EQ=2 PVR_IMPROVED=29	ok (0 REGRESS / NEW_NEQ / REACHFLIP / PVR_NEW_NEQ)	evidence/pkflip.tsv evidence/pk/
+40 rows	changed copies v landed same-named COMDATs (532 other 00/5b-00/5c rows, HEAD) and reloc-masked retail homes	-	evidence classes a1=40	ok	evidence/copies_HEAD_v_new.tsv
+222 rows (all batches) + 532 other 00/5b-00/5c objects	/FORCE census link, one object per row	see evidence	duplicates 49 -> 49; new duplicate lines 0; gone 0; unresolved 668 -> 668; newly unresolved 0; newly resolved 0	ok	../../evidence/link_t1all.txt (agent root)
+40 rows	apply_table --dry (no table changes)	-	0 misses	ok	-
+40 rows	reserved_check (RESERVED_REFS="")	-	reserved 0	ok	-
+40 rows	behaviour tests (HEAD tests unchanged)	-	PASS x40; 0 link the row object, mutation FAIL x0; 40 self-contained at HEAD (no row link: mutation cannot reach them)	see RULINGS_NEEDED	evidence/mutation_controls.tsv

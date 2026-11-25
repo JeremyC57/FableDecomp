@@ -2,7 +2,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3057, length 124 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3057, length 124 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 (manifest "CWorld::DrawGetEnvironment", propagated;
 // the body reads +0x32C), NHeroInformationScreens::CManager::RegisterScreen(const CBase*) @ 0x0066EB11,
 // CDefClassBase::GetSubDef<T>(CDefPointer<const T>*) @ 0x00485815, CTCInventoryBase::SetPDef(long) @ 0x005BDB4D,
@@ -14,7 +14,8 @@
 // CDefPointer (inline copy ctor) puts the zero store before the load instead.
 // Layout: CThing PDef +0x70; retail CTCInventoryBase 0x130 bytes, ParentThing +0x04; the weapons def's inventory-def index at
 // +0x80 (retail offset).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CDefPointeeBase { public:
     virtual void v00();

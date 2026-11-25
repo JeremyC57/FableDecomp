@@ -12,14 +12,15 @@
 //   (CComponent*) 0x00429C15 / copy 0x00428928 / ~CCountedPointer 0x004291DE, NGameText::CDataBank::GetTextBySymbol 0x009C95E0,
 //   ~CWideString 0x0099B510; the component's SetText(const CWideString&, bool, bool) vtable slot 144 (+0x240); global
 //   CMainGameComponent::Get() 0x013B86A0 (Ego_r.pdb CMainGameComponent::PTextBank +0x14).
-// Shape (family L013): `#pragma optimize("y", off)` + `("s", on)`; the definition string goes through the implicit
+// Shape (family L013): `#pragma optimize("s", on)`; the definition string goes through the implicit
 //   const char* -> const CCharString& conversion (the temporary's address is reloaded for the push); the text bank is
 //   read into a local before the call; the CWideString temporary is homed on the symbol's argument slot.
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
 #include "engine/CCountedPointer.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CWideString {
 public:

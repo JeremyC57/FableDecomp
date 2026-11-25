@@ -1,5 +1,5 @@
 // CTCInventoryBase::UpdateInventoryAnim() -- advances the inventory preview thing's rotation: latches last angles and set, steps each axis angle by its gain over the def's per-axis seconds, rotates the right-handed set and wraps the angles past one turn
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD699, length 405 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD699, length 405 bytes. Frame-pointer size TU: optimize("s", on).
 // Leaf: UpdateInventoryAnim
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -12,7 +12,8 @@
 // under both spellings.
 // Layout: CTCInventoryBase retail = PDB minus 0x14 at the tail: RH sets +0xcc/+0xe4, angles +0xfc..+0x110, gains +0x114..+0x11c.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #include "engine/C3DVector.h"

@@ -2,7 +2,7 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CCBBD, length 212 bytes (CWideString by value: hidden pointer at [ebp+8], `ret 8`).
-// Frame-pointer size TU: optimize("y",off) + ("s",on). `this` is unused.
+// Frame-pointer size TU: optimize("s", on). `this` is unused.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 and ~CCharString @ 0x0099EAE0, operator+(const CCharString&, const CCharString&)
 // @ 0x0099F570 (`__fastcall`, the result through the hidden pointer in ecx, the left operand in edx), NGameText::CDataBank::GetTextBySymbol
 // (const CCharString&) @ 0x009C95E0 (CWideString by value, straight into this function's result) on CMainGameComponent::Get()(0x013B86A0)->
@@ -13,7 +13,8 @@
 // unknown case keeps its own body (its temporaries in [ebp-8]/[ebp-4]; the merged arms use the slots the other way round) and
 // the concatenation temporary lives in the dead argument slot ([ebp+0Ch]). An if-chain assigning a `const char*` first
 // materialises the literal in eax (one byte longer); a switch becomes a jump table.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CCharString { public:
     void* PStringData;

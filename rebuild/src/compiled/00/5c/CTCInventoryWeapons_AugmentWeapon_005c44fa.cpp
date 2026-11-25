@@ -3,7 +3,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C44FA, 375 bytes, `ret 0Ch`. Size TU with a frame pointer:
-//   `#pragma optimize("y", off)` + `("s", on)` (`push 1Ah ; pop edi`, `leave`).
+//   `#pragma optimize("s", on)` (`push 1Ah ; pop edi`, `leave`).
 //   Ego_r.pdb: `?AugmentWeapon@CTCInventoryWeapons@@QAEXJJAA_N@Z`.
 // Callees: IS_THING_ALIVE<CIntelligentPointer<...> > @ 0x004CC340 (`__fastcall`, const ref), CBaseIntelligentPointer::
 //   GetPItem @ 0x00A01B50, CTCInventoryBase::CreateInventoryObject(long) @ 0x005BE8F3, std::bitset<>::test @ 0x00410DE0
@@ -15,7 +15,8 @@
 //   +0x159: the same 13-byte {pointer, def index, bool} stride, 0x18 lower in the release base; the intelligent pointer
 //   is 1-aligned as in the landed 0x007CA670); CThing def index +0x8C.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CTCBase;

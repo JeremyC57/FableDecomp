@@ -13,12 +13,13 @@
 // `_Tp()` default (pair's inline default ctor: CWideString() then `and [ebp-4],0`) at the top of the frame, the
 // value_type temporary (12 bytes) below it, the iterator argument rebuilt in its slot and the insert result in the dead
 // `k` slot; the value is node + 0x14.
-// Shape: frame-pointer size TU: `optimize("y", off)` + `optimize("s", on)`; `_Tp()` as a named local of the insert block
+// Shape: frame-pointer size TU: `optimize("s", on)`; `_Tp()` as a named local of the insert block
 // (the 0x005812DF form).
 // NF42 (round 5): the local CWideString / three-parameter map / one-parameter iterator model (a truncated mangling) replaced by the
 // shared fable_string.h and stlport/fable_map.h (FABLE_RETAIL_STLP_MAP operator[], FABLE_RETAIL_STLP_TREE_BOUNDS_OUTOFLINE), so the
 // row and its callees carry the full STLport spelling the 38 callers bind; descriptive-by-library (STLport 4.6.2).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CWIDESTRING
 #define FABLE_RETAIL_STLP_MAP

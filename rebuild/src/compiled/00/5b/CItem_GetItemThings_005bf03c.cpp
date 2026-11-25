@@ -1,7 +1,8 @@
 // CItem::GetItemThings(CItemPairVector* out) -- when the slot holds items, push its (type, count) pair onto the vector (0x005947B6)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF03C, length 36 bytes.
 // Shape: the EBP frame with the 8-byte pair at [ebp-8], `jle`, `leave`, `ret 4`.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CItem.h"
 struct SItemPair_005bf03c { long m_type; long m_count; };

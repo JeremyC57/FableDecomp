@@ -1,4 +1,5 @@
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // CCategory::SelectItemOfType(long) -- finds the stack of the given type, makes its slot the selected one and tells the inventory (virtual slot 33)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDEC1, length 71 bytes; size-optimised TU (`push 14h ; pop ecx` divisor, pass-through pushes).
@@ -9,7 +10,7 @@
 // CInventoryCategoryDef>), +0x18 PInventory, +0x1C GlobalDefIndex, +0x20 SelectedItemIndex,
 // +0x24 HighlightedItemIndex, +0x28 Selected, +0x29 DisplayItems. The header therefore cannot
 // model `this` here; the local CCategory_Retail view below carries the PDB names at the retail offsets.
-// Frame-pointer body in the size TU (`optimize("y",off)`): the slot-33 call takes a const reference to an
+// Frame-pointer body in the size TU (`optimize("s", on)`): the slot-33 call takes a const reference to an
 // empty tag object, which VC homes in the high byte of the argument slot (`lea edx,[ebp+0Bh]`) because
 // the tag's user constructor writes nothing.
 #include "engine/CItem.h"

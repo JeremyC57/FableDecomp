@@ -1,6 +1,6 @@
 // CTCInventoryClothing::ProcessButtonAReleased() -- in item-selection state selects the highlighted item and, if one was selected, raises the close-inventory event; then runs the base handler
 // Leaf: ?ProcessButtonAReleased@CTCInventoryClothing@@UAEXXZ
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B34D5, length 52 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B34D5, length 52 bytes. Frame-pointer size TU: optimize("s", on)
 // (one-byte `selected` local at [ebp-1] in a `push ecx` frame). Virtual slot 58 of the CTCInventoryClothing vtable 0x0124356C.
 // Callees: CTCInventoryBase::SelectHighlightedItem(bool&) @ 0x005BDD04, virtual slot 32 (+0x80, AddCloseInventoryEvent @ 0x005BC527
 // in these vtables), CTCInventoryBase::ProcessButtonAReleased @ 0x005BC65C (the explicit base call).
@@ -8,7 +8,8 @@
 //   (opt-in FABLE_RETAIL_CTCINVENTORYCLOTHING_PROCESSBUTTONARELEASED: Ego_r.pdb / FableWin.pdb ?ProcessButtonAReleased@CTCInventoryClothing@@UAEXXZ) and
 //   engine/NInventory_CTCInventoryBase.h, so the helper binds ?SelectHighlightedItem@CTCInventoryBase@NInventory@@QAEXAA_N@Z (0x005BDD04)
 //   and the base call ?ProcessButtonAReleased@CTCInventoryBase@NInventory@@UAEXXZ (0x005BC65C).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

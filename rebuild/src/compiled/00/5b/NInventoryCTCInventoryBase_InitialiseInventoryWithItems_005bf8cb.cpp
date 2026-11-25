@@ -1,6 +1,6 @@
 // NInventory::CTCInventoryBase::InitialiseInventoryWithItems(const std::vector<NInventory::CItem>& items) -- adds every saved item stack in `items` to the inventory
 // Leaf: ?InitialiseInventoryWithItems@CTCInventoryBase@NInventory@@AAEXABV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF8CB, length 79 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF8CB, length 79 bytes. Frame-pointer size TU: optimize("s", on)
 // (`this` and the index spilled to the frame, `push 14h ; pop ebx` divisor).
 // Callees: CTCInventoryBase::AddInventoryItem(const CItem&) @ 0x005BF4A3 (manifest "Inventory_AddItem"; the result is ignored).
 // Retail NInventory::CItem is 0x14 bytes; the retail std::vector is {first, last, end} (12 bytes). size() is the signed
@@ -9,7 +9,8 @@
 //   ?InitialiseInventoryWithItems@CTCInventoryBase@NInventory@@AAEXABV?$vector@VCItem@NInventory@@...@Z (private; the landed caller 0x005BF9E3
 //   binds it so), and the callee to ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z (Ego_r.pdb 0x00622247 / FableWin.pdb
 //   0x0236BE37); moved onto engine/NInventory_CTCInventoryBase.h (PASS22 complete-methods block).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

@@ -31,6 +31,12 @@ public:
     CCountedPointer<const C3DMeshFileRootChunk> GetRoot() const;        // 0x00A32620
 #endif
     CCountedPointer<C3DMeshFileRootChunk> GetRoot();
+#ifdef FABLE_RETAIL_C3DMESHFILE_ROOT_CTOR
+    // Per-TU opt-in (NF419, rows 0x00A9AE60 / 0x00A9D2A0, lib_3d_mesh_file.obj): the private root-chunk constructor, Ego_r.pdb 0x00C0BF60
+    // and FableWin.pdb 0x033D5540 ??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z (retail 0x00A9AE60). Declaration only.
+private:
+    C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root);
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DMeshFile) == 0x14);
 #endif // FABLE_ENGINE_C3DMESHFILE_H

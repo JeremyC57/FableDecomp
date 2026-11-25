@@ -12,7 +12,8 @@
 //   FABLE_RETAIL_CTCINVENTORYBASE_GETALLSELECTEDITEMS) + engine/CCategory.h (NF90 opt-in FABLE_RETAIL_CCATEGORY_GETHIGHLIGHTEDITEM) +
 //   stlport/fable_containers.h (VECTOR_ERASE_RANGE_OUTOFLINE, VECTOR_PUSHBACK_OUTOFLINE, VECTOR_INDEX_START: with begin()-based operator[] VC7.1
 //   swaps the index and byte-offset registers, 100 v 98 bytes, grade 1; the old row also indexed _M_start).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CINTELLIGENTPOINTER

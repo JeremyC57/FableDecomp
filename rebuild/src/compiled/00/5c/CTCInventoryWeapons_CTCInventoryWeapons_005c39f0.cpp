@@ -1,7 +1,7 @@
 // CTCInventoryWeapons::~CTCInventoryWeapons() -- releases both active-weapon pointers, then the menu list, the item map and the primitive handles, then the screen and inventory bases
 // Leaf: ??1CTCInventoryWeapons
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C39F0, 165 bytes; frame-pointer size TU
-// (`#pragma optimize("y", off)` + `optimize("s", on)`). Label correction: the catalog calls this row
+// (`#pragma optimize("s", on)`). Label correction: the catalog calls this row
 // "~CTCInventoryAbilities"; the vtables it stores, 0x01253FF4 (+0) and 0x01253FE0 (+0x130), are CTCInventoryWeapons'
 // (rtti-vtables.tsv), and the members it destroys are CTCInventoryWeapons' PDB members.
 // Callees: CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0, ::operator= @ 0x004A9760,
@@ -16,7 +16,8 @@
 // Layout: Ego_r.pdb CTCInventoryWeapons at retail offsets (CTCInventoryBase is 0x130 bytes in retail):
 // PActiveMeleeWeapon +0x134, PActiveRangedWeapon +0x141 (the PDB's odd offset: pack(1) on the pointer classes
 // only), ActiveWeaponPrimitiveHandles +0x154, WeaponMenuItemMap +0x170, AvailableWeaponsEntries +0x198.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CThing;

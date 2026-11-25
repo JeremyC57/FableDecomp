@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   RELOCATION_MATCH PASS   InitialiseSharedAnimation
+00a98f40   RELOCATION_MATCH PASS   C3DAnimFile
+00a9ae60   RELOCATION_MATCH PASS   C3DMeshFile
+00aa4500   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00aa4500   RELOCATION_MATCH PASS   WriteToFile
+00aa4970   RELOCATION_MATCH PASS   GetChunkDescription
+00aae0f0   RELOCATION_MATCH PASS   GetChunkInfo
+00aaee90   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 7
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z
+  00a98f40 RELOCATION_MATCH C3DAnimFile::??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z
+  00a9ae60 RELOCATION_MATCH C3DMeshFile::??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z
+  00aa4500 RELOCATION_MATCH C3DAnimFileXAllocationSizeChunk::?WriteToFile@C3DAnimFileXAllocationSizeChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
+  00aa4970 RELOCATION_MATCH C3DAnimFileXAllocationSizeChunk::?GetChunkDescription@C3DAnimFileXAllocationSizeChunk@@UBE?BVCCharString@@XZ
+  00aae0f0 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::?GetChunkInfo@C3DAnimFileMovementVectorChunk@@UBE?BVCCharString@@XZ
+  00aaee90 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::?GetChunkDescription@C3DAnimFileMovementVectorChunk@@UBE?BVCCharString@@XZ

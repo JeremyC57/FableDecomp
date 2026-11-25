@@ -4,10 +4,11 @@
 // Identity (proven): its only caller is the push_back 0x005BBA5B that the landed CTCInventoryClothing::AddClothingMenuEntry 0x005B4771 uses on ClothingMenuEntries, which Ego_r.pdb types vector<pair<EClothingSuitPart, NUISystem::CComponent*> >.
 // Callees: malloc 0x00BFEA0E, std::__uninitialized_copy 0x005BA833 and std::__uninitialized_fill_n 0x005BA858 (`__fastcall`), free 0x00BFEA14.
 // Shape (family M147, representative 0x0059400C): the M124 model (STLport 4.6, range helpers out of line with visible
-//   bodies, tags homed in the dead __atend slot) in a frame-pointer size module: `optimize("y", off)` + `optimize("s", on)`;
+//   bodies, tags homed in the dead __atend slot) in a frame-pointer size module: `optimize("s", on)`;
 //   the old size lives in the frame because (max) takes it by reference.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14

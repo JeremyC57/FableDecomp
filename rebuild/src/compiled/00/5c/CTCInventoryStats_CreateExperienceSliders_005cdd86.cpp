@@ -9,7 +9,8 @@
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CCOMPONENT_RESET_SIZE_BODY   // NF362: Reset<NUISystem::CComponent> pick-any copy = size-mode owner 0x00429C6F (NF352 opt-in; scaffolding, not retail)
 #include "fable_compiler.h"
 #include "engine/CCountedPointer.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"

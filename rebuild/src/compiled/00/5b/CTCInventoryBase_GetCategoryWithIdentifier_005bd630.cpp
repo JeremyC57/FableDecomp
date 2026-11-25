@@ -1,7 +1,7 @@
 // CTCInventoryBase::GetCategoryWithIdentifier(long) -- the inventory category whose def carries the given identifier, or 0
 // Leaf: GetCategoryWithIdentifier
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD630, 105 bytes; frame-pointer size TU
-// (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
+// (`#pragma optimize("s", on)`), `ret 4`.
 // Callee: the category def's release through vtable slot 1 (+0x04) when its count drops to zero.
 // Shape: the category count is a signed local (`cdq ; idiv` by 0x2C) kept in the frame with the index (ebx, esi, edi
 // hold the hit flag, this and the byte offset); each category's def pointer is copied by value through an inline
@@ -12,7 +12,8 @@
 // HighlightedItemIndex +0x24, Selected +0x28, DisplayItems +0x29; retail CTCInventoryBase Categories +0x20 (PDB +0x24);
 // CInventoryCategoryDef Identifier +0x50.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CInventoryCategoryDef { public:

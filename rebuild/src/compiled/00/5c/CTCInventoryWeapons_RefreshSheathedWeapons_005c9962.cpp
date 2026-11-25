@@ -9,12 +9,12 @@
 //
 // Shape: the inline out-parameter GetInterface (landed 0x007BEA08 family) whose result is IGNORED: the component local
 // starts at 0 (`xor ebx,ebx` scheduled before the bitset call), is only assigned on a hit, and is dereferenced
-// unconditionally (`cmp byte ptr [ebx+0Ch],0`). Frame pointer kept in a size TU (`#pragma optimize("y", off)` +
-// `optimize("s", on)`); `this` lives in the frame slot [ebp-4] across the lookup and both tails are `call ; leave ;
+// unconditionally (`cmp byte ptr [ebx+0Ch],0`). Frame pointer kept in a size TU (`#pragma optimize("s", on)`); `this` lives in the frame slot [ebp-4] across the lookup and both tails are `call ; leave ;
 // ret` (no sibling jump with a frame). The helper must be `__forceinline` under "s". +4 is CTCBase::ParentThing; the
 // component's flag at +0x0C is named from use. Local model.
 #include "engine/CTCBase.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CTCBase;
 

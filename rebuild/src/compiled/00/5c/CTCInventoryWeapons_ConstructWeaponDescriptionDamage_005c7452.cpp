@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::ConstructWeaponDescriptionDamage(CWideString& text, long itemDefIndex, float damage) const -- appends the damage line of a weapon item to its description: the weapon's damage (its def's own, or its shot's hit damage for a ranged weapon) times the multiplier of its def's initial augmentations, in tenths, and in brackets the signed difference to the given (wielded weapon's) damage
 // Leaf: ?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C7452, 698 bytes, thiscall `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C7452, 698 bytes, thiscall `ret 0Ch`. Frame-pointer size TU: optimize("s", on).
 // Retail-asm: 0x005C75CA `fistp dword ptr [ebp-0Ch]` and 0x005C75DC `fistp dword ptr [ebp-8]` -- the two GFFloatToLongNear roundings (engine/GFFloatToLongNear.h, the engine's inline-asm float-to-long helper; VC7.1 emits no bare dword fistp from C++).
 // Identity: Ego_r.pdb / FableWin.pdb ?ConstructWeaponDescriptionDamage@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z (Ego_r donor
 //   0x00626ACE, between ConstructWeaponDescriptionNoDamageNorWeight 0x005C71AA and ConstructWeaponDescriptionWeight 0x005C770C, the
@@ -15,7 +15,8 @@
 //   (FABLE_RETAIL_STLP_VECTOR_RESIZE_OUTOFLINE); the shot def is released through FABLE_RETAIL_CDEFPOINTER_RELEASE_POINTEE (the
 //   HitThingDamage load before the `dec`); the two roundings are the engine's GFFloatToLongNear (engine/GFFloatToLongNear.h: the bare
 //   `fld ; fistp dword` pairs at 0x005C75C7 / 0x005C75D9, the shared-header retail-asm helper with its FABLE_PORTABLE twin).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

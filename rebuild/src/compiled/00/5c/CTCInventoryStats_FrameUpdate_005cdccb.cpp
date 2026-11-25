@@ -2,7 +2,7 @@
 // Inline-budget: __declspec(noinline) through FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE -- retail calls the map<unsigned long,long> _M_find
 //   COMDAT 0x005D83B3 out of line with its body visible (the job of the old same-TU stand-in); recheck_final.log RELOCATION_MATCH PASS.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CDCCB, length 187 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CDCCB, length 187 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound const @ 0x004365B0 (the inline GetInterface for type 0x42 =
 // CTCEntityEvents), CWorld::GetWorldFrame @ 0x0049D870, the event's virtual slot 1 (GetType), map<unsigned long,long>::find
 // @ 0x005D83B3 (catalog "CMemoryAllocatorVariableSize_FindNode", propagated) and insert(const value_type&) @ 0x0045CA09 (the landed
@@ -21,7 +21,8 @@
 //   views (CThing, CVectorMap specialisation, events) are unchanged: their move onto engine/CTCInventoryStats.h (a global, polymorphic
 //   class: FrameUpdate is ?FrameUpdate@CTCInventoryStats@@UAEXXZ), CThing.h and CTCEntityEvents.h is separate work.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_STLP_TREE_MFIND_NOINLINE

@@ -1,7 +1,7 @@
 // NInventory::CTCInventoryBase::GetRightStickPosition(C2DVector&) -- stores the right analogue stick vector of the main player's pad when a stick event is queued, else (0, 0)
 // Leaf: GetRightStickPosition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BC5C6, 114 bytes; frame-pointer size TU
-// (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`: a void member with an out reference (no
+// (`#pragma optimize("s", on)`), `ret 4`: a void member with an out reference (no
 // `mov eax` before the return).
 // Callees: CInputEvent::CInputEvent() @ 0x00A04410 / ~CInputEvent() @ 0x00A03B30 (0x34-byte frame object),
 //          CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer() @ 0x00449970,
@@ -12,7 +12,8 @@
 // list); `out = event.GetAnalogueVector()` comes back into a frame temporary ([ebp-8]) copied as two dwords; the
 // fallback stores the two zero members directly (`fldz ; fstp` twice, the size-TU zero form; a
 // `C2DVector(0, 0)` temporary adds a frame copy); one shared dtor call.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 
 class C2DVector { public:

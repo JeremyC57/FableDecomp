@@ -2,7 +2,7 @@
 // Leaf: OnItemReturnedToInventory
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF4ED, length 105 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF4ED, length 105 bytes. Frame-pointer size TU: optimize("s", on).
 // Vtable slot 83 of the inventory screens (CTCInventoryClothing vtable 0x0124356C slot 83); Ego_r.pdb
 // ?OnItemReturnedToInventory@CTCInventoryBase@NInventory@@MAEXAAVCThing@@@Z (catalog label "CTCInventoryStats::
 // HandleMinigameCompletion" is propagated).
@@ -12,7 +12,8 @@
 // Shape: `this` is only needed for the first call (ecx passes straight through); the trophy is a named local kept in esi; the
 // key sits in the dead `item` slot; the miss and the not-in-minigame paths share the Kill(false) arm.
 // Layout: CTCTrophy MinigameInProgress +0x14 (Ego_r.pdb); CThing bitset +0x20, interface map +0x44.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL

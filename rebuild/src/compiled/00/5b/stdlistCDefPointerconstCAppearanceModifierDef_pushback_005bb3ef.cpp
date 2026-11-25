@@ -8,7 +8,8 @@
 //   ListWrapper_005bb3ef::ListPushFrontWrapper_005bb3ef, binding ?InsertBefore@ListWrapper_005bb3ef.. at 0x005BB0A7.
 // Callee: list<CDefPointer<const CAppearanceModifierDef> >::insert(iterator, const T&) 0x005BB0A7 (out of line, as in retail).
 #pragma optimize("s",on)
-#pragma optimize("y",off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointer.h"
 #include "engine/CAppearanceModifierDef.h"

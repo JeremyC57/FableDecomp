@@ -21,7 +21,8 @@
 //   0x0042AB73 and GetAppearanceModifierList 0x00706800 bound under their real spellings; the ctor keeps its same-TU body (STLport
 //   _List_base body as an explicit specialisation).
 // Label: the catalog's Appearance_UpdateModifiers is this method.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL

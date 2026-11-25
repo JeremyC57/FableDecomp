@@ -1,6 +1,6 @@
 // NInventory::CTCInventoryBase::Copy(const CTCInventoryBase* other) -- copies another inventory's state: selection state, serialised item lists, confiscated items, def pointer and indices, open flag, display lists, then re-adds every non-empty item and copies the CTCBase part
 // Retail 0x005BFB96, 250 bytes, `ret 4` (vtable slot 12; the derived Copy overrides call it qualified).
-// Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Frame-pointer size TU: optimize("s", on).
 // Callees: CCountedPointer<vector<CItem>>::operator= 0x005C07E4, CCountedPointer<vector<CCharString>>::operator=
 // 0x005C0800 (manifest "CCountedPointer<CTexture>::operator=" twins), vector<CItem>::operator= 0x005C1F42,
 // vector<long>::operator= 0x00454886 (x2), GetAllNonEmptyInventoryItems(vector<CItem>&, bool) 0x005BFA44 (on the
@@ -17,7 +17,8 @@
 //   0x0236BE37 ?AddInventoryItem@CTCInventoryBase@NInventory@@AAE_NABVCItem@2@@Z (private, bool; the landed self row's leaf). The row keeps
 //   its pre-existing local models (a header port was not attempted).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CDefPointeeBase { public:

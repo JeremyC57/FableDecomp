@@ -13,7 +13,8 @@
 //   before v's key), as in the landed /O2 sibling 0x00AD5030.
 // NF58 (round 7): the local _Rb_tree::_M_insert is declared private as in STLport 4.6 _tree.h (and stlport/fable_map.h), so the call binds
 //   the private (AAE) _M_insert that the re-authored callee row now defines; nothing else changed.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 namespace NUISystem {
 class CComponent;

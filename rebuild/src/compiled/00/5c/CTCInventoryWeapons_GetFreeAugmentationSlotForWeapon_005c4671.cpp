@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::GetFreeAugmentationSlotForWeapon(long weaponDefIndex) -- the first free augmentation slot of a weapon of that def: the live active melee or ranged weapon when it is of that def, otherwise a weapon object created from the inventory for the question (and returned to the inventory afterwards); -1 when it has no augmentations component
 // Leaf: ?GetFreeAugmentationSlotForWeapon@CTCInventoryWeapons@@QAEJJ@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C4671, 246 bytes, thiscall `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C4671, 246 bytes, thiscall `ret 4`. Frame-pointer size TU: optimize("s", on).
 // Identity: Ego_r.pdb / FableWin.pdb ?GetFreeAugmentationSlotForWeapon@CTCInventoryWeapons@@QAEJJ@Z (Ego_r donor 0x00627D5F, after
 //   AugmentWeapon 0x005C44FA whose first half is the same weapon search).
 // Callees: IS_THING_ALIVE 0x004CC340, CBaseIntelligentPointer::GetPItem 0x00A01B50, CTCInventoryBase::CreateInventoryObject 0x005BE8F3
@@ -9,7 +9,8 @@
 //   CTCObjectAugmentations::GetFreeSlot 0x00765D50, CTCInventoryItem::ReturnToInventory 0x005D8E50.
 // Shape: the two weapon tests share one GetPItem tail (cross-jumped); the created flag is a frame byte and the result a frame word
 //   preset to -1; the component lookups are the expanded PeekTC / GetTC (FABLE_RETAIL_CTHING_GETTC_EXPANDED).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING

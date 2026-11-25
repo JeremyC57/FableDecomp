@@ -1,5 +1,5 @@
 // CTCInventoryClothing::RemoveItemFromInventory(long itemType, long count) -- removes items with the mannequin update suppressed; if a worn item went, selects the replacement for its slot and re-dresses the owner
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B4340, length 98 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B4340, length 98 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCInventoryBase::IsItemSelected(long) @ 0x005BCA87, CTCInventoryBase::RemoveItemFromInventory(long, long)
 // @ 0x005BF3C6 (manifest "GetItemDescription", propagated), the per-type replacement item @ 0x005D99B0 (__fastcall,
 // manifest "GetInventoryCategory"), CTCInventoryBase::SelectItemWithDefIndex @ 0x005BDFB1,
@@ -8,7 +8,8 @@
 // ([ebp-1]); nothing happens after the base removal while the inventory is Dying (+0x88).
 // Layout: retail CTCInventoryClothing ParentThing +0x04, CTCInventoryBase::Dying +0x88, UseMannequin +0x15C
 // (engine/CTCInventoryClothing.h has it at +0x180: 16-byte PDB containers), so a local view is used.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CThing;
 // NF64 (round 7, q10647): the free stand-in `GetReplacementItemForType` is the static __fastcall CTCInventoryItem::GetItemToSelectUponRemoval (Ego_r.pdb / FableWin.pdb; the

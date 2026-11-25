@@ -6,7 +6,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
-// Retail 0x005B36E9, 270 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Retail 0x005B36E9, 270 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (global player GUI 0x013B8790),
 // NHeroInformationScreens::CManager::RegisterScreen(const CBase*) 0x0066EB11, CDefClassBase::GetSubDef<T> 0x00485815,
 // CTCInventoryBase::SetPDef(long) 0x005BDB4D, CTCInventoryBase::OnCreate 0x005C0121, this's slot 86 (+0x158, the
@@ -24,7 +24,8 @@
 // Layout (retail): NHeroInformationScreens::CBase secondary base +0x130; the clothing def's inventory-def index +0x7C;
 // CTCInventoryItem flag +0x20.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #include "engine/C3DVector.h"

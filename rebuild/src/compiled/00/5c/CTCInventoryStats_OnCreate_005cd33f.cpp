@@ -8,8 +8,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CD33F, length 244 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) +
-// ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CD33F, length 244 bytes, plain `ret`. Frame-pointer size TU: optimize("s",on).
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) (0x013B8790), NHeroInformationScreens::
 // CManager::RegisterScreen(const CBase*) @ 0x0066EB11, CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*)
 // @ 0x00485815, CTCInventoryBase::SetPDef(long) @ 0x005BDB4D, CTCInventoryBase::OnCreate() @ 0x005C0121, std::bitset::test
@@ -23,7 +22,8 @@
 // with CBase at +0x130; CTCInventoryStats CreaturesKilled +0x134 (12-byte map), pMannequin +0x140, UseMannequin +0x144,
 // lastCategoryIdx +0x148, pTCHeroExperience +0x14c, pTCHeroStats +0x150 (PDB minus 0x18).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 FABLE_FORCEINLINE bool DecRefToZero(long& count) { return --count == 0; }
 class CDefPointeeBase { public:

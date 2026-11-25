@@ -1,6 +1,6 @@
 // CTCInventoryClothing::GetCurrentTotalArmorValue() -- sum the armour of every worn clothing modifier plus the "no clothing" defaults of the uncovered suit parts
 // Leaf: ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005B4A95, frame-pointer size TU (optimize("y", off) + ("s", on)), thiscall `ret`.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005B4A95, frame-pointer size TU (optimize("s", on)), thiscall `ret`.
 // Name: Ego_r.pdb ?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ (public const; header opt-in FABLE_RETAIL_CTCINVENTORYCLOTHING_TOTALARMOUR).
 // Name fix (agentNF 2026-11-10, Codex fixes [5]-[10]): moved off the local CSuitPartSet / CDamageFactorMap / CLongList / CThingDefPointer
 //   models onto the shared headers of the landed neighbour 0x005B4EBA CTCInventoryClothing::CalculateArmorValues (same TU). The
@@ -9,7 +9,8 @@
 //   0x005BA9BE, list<long> _List_base ctor/dtor 0x0042AB58 / 0x0042AB73, _Rb_global<bool>::_M_increment 0x004292C0,
 //   GetAppearanceModifierList(list<long>&, EHeroAttachableAppearanceModifierType) const 0x00706800, GetSubDef<CAppearanceModifierDef>
 //   0x0057FF92 (same-TU body, as 0x005B4EBA).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTCINVENTORYCLOTHING_TOTALARMOUR
 #define FABLE_RETAIL_DEF_CLASS_BASE

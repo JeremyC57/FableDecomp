@@ -8,7 +8,8 @@
 // descriptive-by-library. No retail E8 caller (an emitted COMDAT). Was the placeholder `CEngineSceneGrid::GetCellBoundingBox` calling
 // `helper_5b1afd`; now an explicit instantiation over the shared STLport headers.
 #pragma optimize("s", on)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #define FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
 #include "stlport/fable_map.h"
 namespace NUISystem { class CComponent; }

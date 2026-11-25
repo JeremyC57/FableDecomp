@@ -1,7 +1,7 @@
 // CTCInventoryClothing::ConstructTitleString(CWideString& title) -- appends "<localised TOTAL ARMOUR> <armour value>" to the title
 // Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B6881, length 138 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B6881, length 138 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 on
 // "TEXT_GUI_MENU_CLOTHING_TOTAL_ARMOUR" @ 0x01253A48, CDataBank::GetTextBySymbol @ 0x009C95E0 (engine globals
 // @ 0x013B86A0 +0x14), CWideString::operator+= @ 0x0099B8D0, CWideString(const wchar_t*) @ 0x0099B6B0 on L" " @ 0x0122D820,
@@ -10,7 +10,8 @@
 // Shape: three `title += <temporary>` statements; the symbol is a named CCharString in its own block and the text bank a
 // named local read AFTER it (retail loads the globals between the string constructor and the argument pushes); the looked-up
 // text dies before the symbol; the two later temporaries share the [ebp-8] frame word.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 

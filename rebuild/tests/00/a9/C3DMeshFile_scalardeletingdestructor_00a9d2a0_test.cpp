@@ -1,55 +1,43 @@
-#include <cstdio>
-
-class C3DMeshFile { public:
-    void* vftable;
-    int destroyed;
-};
-
-static int g_freed = 0;
-static C3DMeshFile* g_last_dtor = 0;
-
-void __fastcall C3DMeshFile_dtor(C3DMeshFile* file)
-{
-    g_last_dtor = file;
-    file->destroyed = 1;
+// Behaviour test for 0x00A9D2A0 C3DMeshFile::`scalar deleting destructor' (links the REAL row object: the Option S owner's TU, NF419).
+// ~CChunkedFile is a recording stub bound by /alternatename (as is the base constructor the owner's TU references); operator delete is
+// replaced to record its argument. Each call checks the destructor ran once on this, operator delete ran on this exactly when bit 0 of
+// the flags is set, and the returned pointer is this; the vtable slot 0 of C3DMeshFile's vftable is this function.
+#include <stdio.h>
+#include <string.h>
+#define ALT(a, b) comment(linker, "/alternatename:" a "=" b)
+#pragma ALT("??0CChunkedFile@@QAE@ABV?$CCountedPointer@VCChunkedFileSuperChunk@@@@@Z", "@BaseCtor@12")
+#pragma ALT("??1CChunkedFile@@UAE@XZ", "@BaseDtor@8")
+#pragma ALT("@CallRow@12", "??_GC3DMeshFile@@UAEPAXI@Z")
+#pragma ALT("_g_vtable", "??_7C3DMeshFile@@6B@")
+extern "C" {
+void* __fastcall CallRow(void* self, int, unsigned int flags);
+extern void* g_vtable[];
 }
-
-void operator delete(void* p)
+static int g_fail = 0, g_run = 0;
+static void Check(bool ok, int line) { if (!ok) { g_fail = 1; printf("check failed at line %d (run %d)\n", line, g_run); } }
+#define CHECK(c) Check((c) ? true : false, __LINE__)
+static void* g_deleted = 0; static int g_ndel = 0;
+void operator delete(void* p) { g_deleted = p; ++g_ndel; }
+static void* g_dtorThis = 0; static int g_ndtor = 0;
+extern "C" void* __fastcall BaseCtor(void* self, int, const void*) { return self; }
+extern "C" void __fastcall BaseDtor(void* self, int) { g_dtorThis = self; ++g_ndtor; }
+static void Run(unsigned int flags, bool expectDelete)
 {
-    g_freed = 1;
-    (void)p;
+    ++g_run; g_deleted = 0; g_ndel = 0; g_dtorThis = 0; g_ndtor = 0;
+    unsigned char obj[0x14]; memset(obj, 0x5A, sizeof obj); ((void**)obj)[0] = (void*)g_vtable;
+    void* r = CallRow(obj, 0, flags);
+    CHECK(r == obj);
+    CHECK(g_ndtor == 1 && g_dtorThis == obj);
+    CHECK(g_ndel == (expectDelete ? 1 : 0));
+    if (expectDelete) CHECK(g_deleted == obj);
+    CHECK(((unsigned char*)obj)[4] == 0x5A);           // nothing else written
 }
-
-void* __fastcall C3DMeshFile_scalar_deleting_destructor(C3DMeshFile* file, int edx_unused, unsigned int flags)
-{
-    C3DMeshFile_dtor(file);
-    if (flags & 1)
-        operator delete(file);
-    return file;
-}
-
 int main()
 {
-    C3DMeshFile a;
-    a.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r = C3DMeshFile_scalar_deleting_destructor(&a, 0, 0);
-    if (r != &a || a.destroyed != 1 || g_freed != 0 || g_last_dtor != &a) {
-        std::printf("FAIL no-free path\n");
-        return 1;
-    }
-
-    C3DMeshFile b;
-    b.destroyed = 0;
-    g_freed = 0;
-    g_last_dtor = 0;
-    void* r2 = C3DMeshFile_scalar_deleting_destructor(&b, 0, 1);
-    if (r2 != &b || b.destroyed != 1 || g_freed != 1 || g_last_dtor != &b) {
-        std::printf("FAIL free path\n");
-        return 1;
-    }
-
-    std::printf("CLandscapeBackgroundPatch_00a9d2a0_TEST PASS\n");
+    Run(0, false); Run(1, true); Run(2, false); Run(3, true); Run(0x80000001u, true);
+    // slot 0 holds ??_E, which VC7.1 defaults to this ??_G
+    CHECK(g_vtable[0] == (void*)CallRow);
+    if (g_fail) { printf("00a9d2a0_TEST FAIL\n"); return 1; }
+    printf("CLandscapeBackgroundPatch_00a9d2a0_TEST PASS\n");
     return 0;
 }

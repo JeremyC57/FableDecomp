@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::OnInitialActivate() -- on activation re-creates the active melee and ranged weapons loaded from the save (by def index), puts a weapon that was carried in the hands back into its active carry slot on the owner (when the hero's weapons are usable), then runs the base inventory activation
 // Leaf: ?OnInitialActivate@CTCInventoryWeapons@@UAEXXZ
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005CB974, 706 bytes, thiscall plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005CB974, 706 bytes, thiscall plain `ret`. Frame-pointer size TU: optimize("s", on).
 // Identity: slot 6 of the CTCInventoryWeapons vtable 0x01253FF4 (CTCBase::OnInitialActivate; checked in Fable.exe); Ego_r.pdb / FableWin.pdb
 //   ?OnInitialActivate@CTCInventoryWeapons@@UAEXXZ (Ego_r donor 0x0062C46A); it ends in NInventory::CTCInventoryBase::OnInitialActivate
 //   0x005BD1EB, called qualified.
@@ -10,7 +10,8 @@
 // Shape: the owner side of the carrier test is the inline accessor GetParentThing() (it loads ParentThing into ebx before the call,
 //   `mov ebx,[esi+4] ; ... call ; cmp eax,ebx`); a direct `ParentThing` read is compared from memory after the call and moves the
 //   carrying component out of its frame slot (retail keeps it in edi).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

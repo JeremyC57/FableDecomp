@@ -4,7 +4,7 @@
 // Plan phase 3 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed. Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BE119, 363 bytes, plain `ret`. Size TU with a frame pointer:
-//   `#pragma optimize("y", off)` + `("s", on)` (`leave`, `push 53h ; pop edi`).
+//   `#pragma optimize("s", on)` (`leave`, `push 53h ; pop edi`).
 // Callees: IS_THING_ALIVE<CThing*> @ 0x0040DCE0 (twice), IS_THING_ALIVE @ 0x005C05C0 (the keeper creature) and
 //   @ 0x0043DBD0 (the hero), all `__fastcall` on the pointer's address; std::bitset<>::test @ 0x00410DE0 and
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, types 0x53 and 2),
@@ -21,7 +21,8 @@
 //   creature's intelligent pointer at +0x10; the type-2 component's X / Y at +0x0C / +0x10; retail CThing bitset +0x20,
 //   interface map +0x44.
 // Name fix (agentNF24): 0x006621C0 respelled CThingCreatureBase::IsFreeToFinishAction() const (Ego_r/FableWin ?IsFreeToFinishAction@CThingCreatureBase@@QBE_NXZ; was non-const)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include <math.h>
 #pragma intrinsic(atan2, fmod)

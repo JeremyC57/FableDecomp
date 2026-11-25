@@ -1,0 +1,5 @@
+address	symbol	status	leaf_given	current_line
+00a98f40	??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z	RELOCATION_MATCH	??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z	00a98f40 | ??0C3DAnimFile@@QAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z | RELOCATION_MATCH | ??0C3DAnimFile@
+00a9a730	??_GC3DAnimFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GC3DAnimFile@@UAEPAXI@Z	00a9a730 | ?ScalarDeletingDestructor@C3DAnimFile@@QAEPAXI@Z | RELOCATION_MATCH | `scalar_deleting_destructor'
+00a9ae60	??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z	RELOCATION_MATCH	??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z	00a9ae60 | ??0C3DMeshFile@@QAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z | RELOCATION_MATCH | ??0C3DMeshFile@
+00a9d2a0	??_GC3DMeshFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GC3DMeshFile@@UAEPAXI@Z	00a9d2a0 | ?C3DMeshFile_scalar_deleting_destructor@@YIPAXPAVC3DMeshFile@@HI@Z | RELOCATION_MATCH | `scalar_deleting_destructor'

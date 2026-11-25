@@ -17,7 +17,8 @@
 //   colour temporary takes the dead `dropShadow` slot; the final draw's position is a named function-scope
 //   C3DVector (its own frame slot below the shadow temporary; as a temporary it shares the shadow temporary's slot).
 #pragma optimize("s", on)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 
 class CWideString {
 public:

@@ -1,5 +1,5 @@
 // CTCInventoryClothing::SetAsWearing(const CCharString& defName) -- makes the hero wear the named clothing item: unless the piece already worn in that suit part cannot be removed, selects the item and dresses the owner in the selected clothes
-// Retail 0x005B413D, 286 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Retail 0x005B413D, 286 bytes, `ret 4`. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCBase::GetDefinitionManager const 0x006869D0 (x3), CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
 // 0x009AD410, GetDef<CThingObjectDef>(long, CDefPointer<const CThingObjectDef>*) const 0x0042B040, CDefClassBase::GetSubDef<
 // CAppearanceModifierDef> const 0x0057FF92 (x2), map<EClothingSuitPart, long>::find 0x005BA986 (returns the node; manifest
@@ -12,7 +12,8 @@
 // Layout (retail): CurrentClothingSelected +0x140, UseMannequin +0x15C; ParentThing +0x04; CAppearanceModifierDef
 // IsRemoveable +0x44, SuitPart +0x4C (Ego_r.pdb, 8 below the PDB); the map node's value +0x14.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CThing;

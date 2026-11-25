@@ -12,11 +12,12 @@
 // AverageBoughtPrice}; the body is the Dinkumware one-argument `resize(n) { resize(n, T()); }`.
 //
 // Shape: frame pointer kept in a size TU (`push ebp ; mov ebp,esp ; sub esp,14h ... leave ; ret 4`, the argument
-// re-pushed as `push dword ptr [ebp+8]`): `#pragma optimize("y", off)` + `optimize("s", on)` (GOTCHAS wave 24b). The
+// re-pushed as `push dword ptr [ebp+8]`): `#pragma optimize("s", on)` (GOTCHAS wave 24b). The
 // five zero stores run in member order through one zero register: the CItem constructor's init list with the counted
 // pointer's own inline default constructor in the middle. The container is reconstructed by hand (retail Dinkumware
 // vector, 12 bytes); the DDK STL is not the retail revision.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 struct SCountBlock;
 

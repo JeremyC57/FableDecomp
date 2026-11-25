@@ -1,6 +1,6 @@
 // NInventory::CTCInventoryBase::AddItemToInventory(CThing& item, bool silent, bool fromShop, long price, bool noTutorials) -- a hero-title item sets the owner's title instead; otherwise the item goes into the category matching its identifier and OnItemAdded is raised; true when added
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail 0x005BF654, 297 bytes, `ret 14h`. Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Retail 0x005BF654, 297 bytes, `ret 14h`. Frame-pointer size TU: optimize("s", on).
 // Callees: CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const CHeroTitleDef>*) const 0x005B1E5A (on the item's def),
 // std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (inline GetInterface: the owner's hero component 0x29)
 // and the const LowerBound 0x004365B0 (the item's inventory-item component 0x1A), CTCHero::SetTitle(long) 0x006CA400,
@@ -15,7 +15,8 @@
 // word +0x8C.
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>

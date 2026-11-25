@@ -1,5 +1,5 @@
 // CTCInventoryBase::AddCategory(CTCInventoryBase* inventory, long defIndex, CThing* owner) -- looks up the category def and, when present, appends a CCategory built from it and hands the new back() its owner
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C024A, length 119 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C024A, length 119 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CGameDefinitionManager::Get() @ 0x0044C6B0, CDefinitionManager::GetDef<CInventoryCategoryDef>(long,
 // CDefPointer*) @ 0x005C0C99 (manifest "GetDef<CSpecialAbilitiesDrunkennessDef>", byte twin), NInventory::CCategory::CCategory(
 // CDefPointer<const CInventoryCategoryDef>, CTCInventoryBase*, long) @ 0x005BFCD9, vector<CCategory>::push_back @ 0x005C2D32,
@@ -12,7 +12,8 @@
 // CCategory (0x2C bytes) occupies [ebp-30h].
 // Layout: retail CTCInventoryBase Categories {first,last,end} at +0x20.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CThing;
 struct CTCInventoryBase_Retail;

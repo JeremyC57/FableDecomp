@@ -1,10 +1,11 @@
 // CTCInventoryBase::ConfiscateAllItems() -- collects every non-empty item stack into a local vector and hands it to the virtual ConfiscateItems
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFA8E, length 56 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFA8E, length 56 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCInventoryBase::GetAllNonEmptyInventoryItems(vector<CItem>&, bool) @ 0x005BFA44 (with true), virtual slot 85
 // (+0x154, "ConfiscateItems" in the CTCInventoryClothing vtable 0x0124356C), std::vector<NInventory::CItem>::~vector @ 0x005C1E30.
 // Shape: the 12-byte retail vector local is zeroed through `xor eax,eax` + three stores (inline constructor) and destroyed
 // out of line; the module has no C++ EH, so there is no unwind frame around the local.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 struct CItem_Retail { unsigned char _body[0x14]; };
 struct CItemVector {

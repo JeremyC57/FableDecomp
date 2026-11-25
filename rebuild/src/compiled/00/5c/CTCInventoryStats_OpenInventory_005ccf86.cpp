@@ -1,6 +1,6 @@
 // CTCInventoryStats::OpenInventory() -- opens the base inventory, then sets the inventory animation render box from the inventory def's stats-screen box position and extents
 // Leaf: OpenInventory@CTCInventoryStats
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CCF86, length 118 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CCF86, length 118 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCInventoryBase::OpenInventory() @ 0x005BD4EA (explicit base call), CTCInventoryBase::SetInventoryAnimRenderBox(
 // const C2DBoxF&) @ 0x005BC58F, the def's slot 1 on release.
 // Shape: the box is built from two by-value GetPDef() temporaries in one full expression (arguments right to left: the
@@ -9,7 +9,8 @@
 // Layout: retail CTCInventoryBase PDef +0x68 (CDefPointer<const CInventoryDef>); the stats box position/extents at
 // CInventoryDef +0xA4/+0xAC (retail offsets; names descriptive).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class C2DVector { public:
     float X, Y;

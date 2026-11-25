@@ -3,7 +3,7 @@
 // Leaf: ?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C323A, 522 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C323A, 522 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("s", on).
 // FableWin.pdb: ?ConstructWieldEntry@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@@Z
 // Callees: NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 (CMainGameComponent::Get() 0x013B86A0 +0x14), CManager::GetInstance
 // @ 0x0041E5F2, CManager::CreateMenuEntryComponent(const CWideString&, float, float, const CCharString&, float, CCharString, float,
@@ -22,7 +22,8 @@
 //   ..MV5@MV5@@Z (the local model's non-const 6th parameter gave the stand-in ..MV5@M2@Z); slots by their header names (59 AddChild,
 //   66 AddAction, CViewport 142 AddFakeChild, CText 144 SetValue); FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR (as 0x005C574E) keeps
 //   the entry pointer tracked, so its load into esi stays after the viewport call as in retail.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

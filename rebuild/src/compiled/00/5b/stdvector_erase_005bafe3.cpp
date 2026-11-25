@@ -6,7 +6,8 @@
 // Callee: std::__copy<std::pair<EClothingSuitPart, NUISystem::CComponent*>*, std::pair<EClothingSuitPart, NUISystem::CComponent*>*, int>(first, last, result, const random_access_iterator_tag&, int*) 0x005BA371 (__fastcall, the counted assignment loop).
 // Shape: STLport 4.6 `erase(first, last) { pointer i = __copy_ptrs(last, _M_finish, first, _TrivialAss()); _Destroy(i, _M_finish); _M_finish = i;
 //   return first; }` -- `__copy_ptrs(..., __false_type)` inline forwarding to the out-of-line `__copy`, the trivial destructor loop empty.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 enum EClothingSuitPart { };                                // enumerators not needed
 namespace NUISystem { class CComponent; }

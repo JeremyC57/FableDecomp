@@ -4,7 +4,7 @@
 //   returning unsigned long: Ego_r.pdb 0x00620EC7 + FableWin.pdb 0x01823160 / 0x0236E25F
 //   ?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z; the landed caller 0x005FBAA0 binds this symbol.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BEB57, length 233 bytes (`ret 4`). Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BEB57, length 233 bytes (`ret 4`). Frame-pointer size TU: optimize("s", on).
 // Callees: PeekGuiDef @ 0x00438570 (`__fastcall`; MiniMapGraphics -- map<CCharString,long> -- at retail +0x94C), map::find
 // @ 0x0042B467 (STLport node: key +0x10, value +0x14; end() is the header at +0), CCharString(const char*, long) @ 0x0099EBF0 and
 // ~CCharString @ 0x0099EAE0 ("MINIMAP_PRISONCOURTYARD1" 0x01253D5C, "MINIMAP_EXECUTIONTREE" 0x01253D44, "MINIMAP_PRISONCOURTYARD2"
@@ -17,7 +17,8 @@
 // key sits in [ebp-8]: its block builds and destroys the name without a lookup, a leftover of the execution-tree special case that
 // this function no longer has. The GUI def is a pointer local so the table address is one `lea esi,[eax+94Ch]`; `this` is spilled
 // to [ebp-0Ch]. The height test is `Z > 51.0f` (`fcomp ; test ah,41h ; jne` skips on below-or-equal).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"

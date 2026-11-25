@@ -11,7 +11,8 @@
 //   Access: public (QAE), as every _Rb_tree::_M_insert reloc binding in the tree spells it.
 // Shape: STLport 4.6 _M_insert (as the landed 0x00AD42C0): `y == header || (w == 0 && (x != 0 || comp(v, key(y))))`,
 //   _M_create_node out of line in both arms, `and [z+8],0 ; and [z+0Ch],0 ; mov [z+4],y`. Frame-pointer size TU.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE };

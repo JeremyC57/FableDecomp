@@ -1,6 +1,6 @@
 # NF414 hand-back (2026-11-25): void*-cast baked strings
 
-28 rows, all ACCEPT, landed as `2026-11-25_landing_nf414_b1..b3` (RELOCATION_MATCH PASS -> PASS, 0 LITERAL_DIFF).
+28 rows, all ACCEPT, landed as `2026-11-24_landing_nf414_b1..b3` (RELOCATION_MATCH PASS -> PASS, 0 LITERAL_DIFF).
 
 - b1 0x00452B4D: `(const void*)0x0122D70E` -> `""` (retail's pooled empty string).
 - b2 24 StatGetClassTypeName rows (0x004D2A91, 0x004D2B04..0x004D2D13): literal spelt, re-formed in class

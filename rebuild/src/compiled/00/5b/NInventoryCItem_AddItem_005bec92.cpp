@@ -7,7 +7,8 @@
 //   0x0042AF9E (its StatGetTypeName literal 0x0122FF9C is "CObjectAugmentationsDef"; was spelt GetSubDef<CAugmentationDef>).
 #include "fable_compiler.h"
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 bool __fastcall IsAugmentation(long itemType);     // 0x005D97F0

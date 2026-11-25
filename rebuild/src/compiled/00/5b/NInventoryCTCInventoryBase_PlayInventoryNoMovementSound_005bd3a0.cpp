@@ -15,7 +15,8 @@
 // Shape: frame-pointer size TU; the sound player is fetched into a local BEFORE the def pointer is copied (add-ref after the
 // virtual call), the copy's add-ref is null-tested but its release is not (`dec [esi+4] ; jne ; call [vt+4]`: the local copy
 // is released by hand on the already-dereferenced pointer).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CASoundBank;
 #include "engine/CSoundInit.h"

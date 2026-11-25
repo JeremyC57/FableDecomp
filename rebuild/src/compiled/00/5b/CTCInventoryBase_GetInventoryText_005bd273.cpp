@@ -2,7 +2,7 @@
 // Leaf: ?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD273, length 181 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD273, length 181 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: NGameText::CDataBank::GetTextInfo(unsigned long) @ 0x009C7D00, NGameText::CDataBank::GetPGroupEntry(unsigned long, bool)
 // const @ 0x009C9070 (CIVCountedPointer<const CGroupEntry> by hidden pointer), NGameText::CGroupEntry::GetText() const @ 0x009C7A40
 // (CWideString by hidden pointer -- the function's own result pointer is passed straight through), CWideString::CWideString(const
@@ -15,7 +15,8 @@
 // Name fix (agentNF26, 2026-11-12, FAM09 follow-up): 0x013BCA24 is CWideString::NullString (?NullString@CWideString@@2V1@A, public static;
 //   Ego_r.pdb + FableWin.pdb `dynamic initializer for 'CWideString::NullString'', initializer 0x01223DA0 landed by agentFAM09); was g_emptyWideString.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CWideString { public:
     void* PStringData;

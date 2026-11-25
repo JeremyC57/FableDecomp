@@ -6,10 +6,11 @@
 //   traits' DefaultVal), ReadWithSrcChunkOverflow 0x00993CA0.
 // Model: engine/CMemoryDataInputStream.h + reader adapter. NInventory::CItem is a LOCAL model next to engine/CItem.h: the header
 //   flattens the CCountedPointer<CPerItemData> member into two words, which cannot carry the pointer's ctor/dtor that retail runs.
-// Shape: `#pragma optimize("y", off)` + `("s", on)`; the traits object holds a DefaultVal CItem (zeroed, destroyed at exit);
+// Shape: `#pragma optimize("s", on)`; the traits object holds a DefaultVal CItem (zeroed, destroyed at exit);
 //   `out[i]` is `*(begin() + i)` and the loop is `out.resize(count); for (long i = 0; i < count; ++i) traits.TransferBinaryIn(...)`.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CMemoryDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);

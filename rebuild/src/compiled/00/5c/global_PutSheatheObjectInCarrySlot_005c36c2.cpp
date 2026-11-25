@@ -5,7 +5,8 @@
 // Name: Ego_r.pdb ?PutSheatheObjectInCarrySlot@?A0x0a34196c@@YIXAAVCThing@@0AAM@Z (anonymous namespace of the CTCInventoryWeapons TU,
 //   between GetActiveMeleeWeaponDamage and FinalConstructWeaponItemEntries in donor order); its only caller is
 //   CTCInventoryWeapons::PutWeaponsInSheathes 0x005C8101 (`mov edx,eax; mov ecx,ebx; call` for the melee and ranged weapon).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CCHARSTRING

@@ -2,7 +2,7 @@
 //   price_bought_for, bool silent) -- add items of a type: a hero title sets the owner's title instead (false); otherwise the category of the
 //   item's inventory category takes them and OnItemAdded is raised (true)
 // Leaf: ?AddItemToInventory@CTCInventoryBase@NInventory@@UAE_NJJ_N0J0@Z
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF32D, length 153 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF32D, length 153 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCInventoryItem::IsHeroTitle 0x005D98F0 (static __fastcall; was bound as the made-up ?IsAugmentation_005d98f0@@YI_NJ@Z),
 //   CTCInventoryItem::GetInventoryCategory 0x005D97B0, std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline
 //   CThing::GetTC<CTCHero>), CTCHero::SetTitle 0x006CA400, std::find_if<CCategory*, CIsInventoryCategory> 0x005C08D3 (__fastcall; the
@@ -14,7 +14,8 @@
 //   CTCInventoryBase_Retail model (leaf ?AddItemToInventory@CTCInventoryBase_Retail@@QAE_NJJ_N0J0@Z) with local CTCHero / CCategory /
 //   CTCInventoryItem / find stand-ins; now on engine/NInventory_CTCInventoryBase.h (VTABLE, ALL_ITEMS_CHAIN_PASS22), CCategory.h, CThing.h,
 //   CTCHero.h and CTCInventoryItem.h (NF92 opt-in ISHEROTITLE).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

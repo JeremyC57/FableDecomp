@@ -12,7 +12,14 @@ public:
 C3DAnimFile();
 CCountedPointer<C3DAnimFileRootChunk const > GetRoot() const;
 CCountedPointer<C3DAnimFileRootChunk> GetRoot();
+#ifdef FABLE_RETAIL_C3DANIMFILE_IMPLICIT_DESTRUCTOR
+// Per-TU opt-in (NF419, rows 0x00A98F40 / 0x00A9A730, lib_3d_anim_file.obj): the destructor is the implicit one (still virtual through
+// CChunkedFile). Retail has no ~C3DAnimFile body (no call or jump reaches ~CChunkedFile 0x00AA7DF0 except from the two ??_G at
+// 0x00A9A733 / 0x00A9D2A3), and ??_GC3DAnimFile 0x00A9A730 calls ~CChunkedFile directly with no vtable store: VC7.1 emits that
+// 30-byte body only for the implicit destructor (a user-written empty one stores the vtable first: 36 bytes, measured).
+#else
 virtual ~C3DAnimFile();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(C3DAnimFile)==0x14);
 #endif

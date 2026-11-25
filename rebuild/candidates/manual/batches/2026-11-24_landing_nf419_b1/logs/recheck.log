@@ -1,0 +1,183 @@
+addr       parity           behav  name
+005b33f4   RELOCATION_MATCH PASS   CAnimInit
+005b34d5   RELOCATION_MATCH PASS   ProcessButtonAReleased
+005b369a   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+005b369a   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b369a   RELOCATION_MATCH PASS   OnSerialise
+005b40e6   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005b40e6   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+005b40e6   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005b40e6   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b40e6   RELOCATION_MATCH PASS   RemoveAllClothing
+005b4340   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b4340   RELOCATION_MATCH PASS   RemoveItemFromInventory
+005b5cf8   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b5cf8   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b5cf8   WARN RELOC_NAME: ?GetItemDefDescription@@YI?AVCWideString@@J@Z -> 005d9630 labelled 'CTCInventoryItem::GetDetails'
+005b5cf8   RELOCATION_MATCH PASS   GetItemDescription
+005b62fe   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b62fe   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b62fe   WARN RELOC_NAME: ?GetItemDefDescription@@YI?AVCWideString@@J@Z -> 005d9630 labelled 'CTCInventoryItem::GetDetails'
+005b62fe   RELOCATION_MATCH PASS   GetItemDescriptionNoArmourRating
+005b6767   RELOCATION_MATCH PASS   GetItemDescriptionArmourRating
+005b6881   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b6881   RELOCATION_MATCH PASS   ConstructTitleString
+005ba81b   WARN RELOC_NAME: ?Helper@CForwarder_005ba81b@@QAEPAXPAXABUSScalarTag@@J@Z -> 005ba371 labelled 'std::__copy<std::pair<EClothingSuitPart, NUISystem::CComponent *> *, std::pair<EClothingSuitPart, NUISystem::CComponent *> *, int>'
+005ba81b   WARN STANDIN_LEAF ?Forward_CForwarder_005ba81b@CForwarder_005ba81b@@QAEPAXPAX0@Z (catalog _unattributed::Forward_CForwarder_005ba81b; address-only name)
+005ba81b   RELOCATION_MATCH PASS   Forward_CForwarder_005ba81b
+005baeac   WARN RELOC_NAME: _GetCellBoundingBox_callee_005ba9f9 -> 005ba9f9 labelled '_global::Distance_005ba9f9'
+005baeac   WARN STANDIN_LEAF ?GetCellBoundingBox@@YADKK@Z (catalog CEngineSceneGrid::GetCellBoundingBox; free function lacks its class)
+005baeac   RELOCATION_MATCH PASS   GetCellBoundingBox
+005bc5c6   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CInputManager (engine/CInputManager.h)
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bc5c6   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+005bc5c6   RELOCATION_MATCH PASS   GetRightStickPosition
+005bc6b3   WARN RELOC_NAME: ?GetItemDefDescription@@YI?AVCWideString@@J@Z -> 005d9630 labelled 'CTCInventoryItem::GetDetails'
+005bc6b3   RELOCATION_MATCH PASS   GetItemDescription
+005bce49   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005bce49   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+005bce49   RELOCATION_MATCH PASS   DrawInventoryText
+005bd273   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+005bd273   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+005bd273   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bd273   RELOCATION_MATCH PASS   GetInventoryText
+005bd33c   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005bd33c   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005bd33c   RELOCATION_MATCH PASS   PlayInventoryMovementSound
+005bd3a0   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005bd3a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005bd3a0   RELOCATION_MATCH PASS   PlayInventoryNoMovementSound
+005bd8a0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+005bd8a0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+005bd8a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bd8a0   RELOCATION_MATCH PASS   GetItemDescription
+005bd931   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+005bd931   WARN SHARED_HEADER_AVAILABLE CInventoryItemDef (engine/CInventoryItemDef.h)
+005bd931   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bd931   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005bd931   RELOCATION_MATCH PASS   GetMaximumNumberOfItems
+005bda1d   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bda1d   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005bda1d   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+005bda1d   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+005bda1d   RELOCATION_MATCH PASS   GetHighlightedItemText
+005bdb68   RELOCATION_MATCH PASS   GetCategoryNameWithIndex
+005be62c   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005be62c   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005be62c   RELOCATION_MATCH PASS   GetPrerequisitesString
+005bec40   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005bec40   RELOCATION_MATCH PASS   CItem
+005bf03c   RELOCATION_MATCH PASS   GetItemThings
+005bfa8e   WARN RELOC_NAME: ??1CItemVector@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005bfa8e   RELOCATION_MATCH PASS   ConfiscateAllItems
+005bfac6   WARN RELOC_NAME: ??1CItemVector@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005bfac6   RELOCATION_MATCH PASS   ConfiscateAllItemsOfType
+005bfc90   WARN RELOC_NAME: ??1CItemVector@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005bfc90   RELOCATION_MATCH PASS   GetBestFishWeight
+005c10f7   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c10f7   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCItem@NInventory@@PAV12@@std@@YIPAVCItem@NInventory@@PAV12@00ABU__false_type@0@@Z -> 005c0df0 labelled 'std::__uninitialized_copy<NInventory::CItem*,NInventory::CItem*>'
+005c10f7   RELOCATION_MATCH PASS   CItem *>
+005c13f9   WARN RELOC_NAME: ?Helper@CForwarder_005c13f9@@QAEPAXPAXABUSScalarTag@@J@Z -> 005c12fa labelled 'std::__copy<NInventory::CItem *, NInventory::CItem *, int>'
+005c13f9   WARN STANDIN_LEAF ?Forward_CForwarder_005c13f9@CForwarder_005c13f9@@QAEPAXPAX0@Z (catalog _unattributed::Forward_CForwarder_005c13f9; address-only name)
+005c13f9   RELOCATION_MATCH PASS   Forward_CForwarder_005c13f9
+005c140e   WARN RELOC_NAME: ?Initialize@CRetailVector20_005c140e@@QAEXJABUSScalarTag@@@Z -> 005c0932 labelled 'std::_Vector_base<NInventory::CItem, std::allocator<NInventory::CItem> >::_Vector_base'
+005c140e   WARN RELOC_NAME: ?UninitCopy_005c10cc@@YIPAUSElement20_005c140e@@PAU1@00ABUSScalarTag@@@Z -> 005c10cc labelled 'std::__uninitialized_copy<NInventory::CItem const*,NInventory::CItem*>'
+005c140e   RELOCATION_MATCH PASS   CRetailVector20_005c140e
+005c144a   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c144a   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCItem@NInventory@@PAV12@@std@@YIPAVCItem@NInventory@@PBV12@0PAV12@ABU__false_type@0@@Z -> 005c10cc labelled 'std::__uninitialized_copy<NInventory::CItem const*,NInventory::CItem*>'
+005c144a   RELOCATION_MATCH PASS   CItem const *>
+005c1474   WARN RELOC_NAME: ?Helper@CForwarder_005c1474@@QAEPAXPAXABUSScalarTag@@J@Z -> 005c132c labelled 'std::__copy<NInventory::CItem const *, NInventory::CItem *, int>'
+005c1474   WARN STANDIN_LEAF ?Forward_CForwarder_005c1474@CForwarder_005c1474@@QAEPAXPAX0@Z (catalog _unattributed::Forward_CForwarder_005c1474; address-only name)
+005c1474   RELOCATION_MATCH PASS   Forward_CForwarder_005c1474
+005c1489   WARN RELOC_NAME: ?Helper@CForwarder_005c1489@@QAEPAXPAXABUSScalarTag@@J@Z -> 005c135e labelled 'std::__copy_backward'
+005c1489   WARN STANDIN_LEAF ?Forward_CForwarder_005c1489@CForwarder_005c1489@@QAEPAXPAX0@Z (catalog _unattributed::Forward_CForwarder_005c1489; address-only name)
+005c1489   RELOCATION_MATCH PASS   Forward_CForwarder_005c1489
+005c2a5c   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+005c2a5c   WARN RELOC_NAME: ?SetAt@CSoundPairArray@@QAEXJABUSSoundPairEntry@@@Z -> 005c2a13 labelled 'CRetailVector_elem20::resize'
+005c2a5c   WARN STANDIN_LEAF ?ClearEntry@CSoundPairTable_005c2a5c@@QAEXJ@Z (catalog _unattributed::ClearEntry; address-only name)
+005c2a5c   RELOCATION_MATCH PASS   ClearEntry
+005c2aa9   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c2aa9   RELOCATION_MATCH PASS   resize
+005c2e2a   RELOCATION_MATCH PASS   ProcessButtonAReleased
+005c3057   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CCreatureDef (engine/CCreatureDef.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+005c3057   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c3057   RELOCATION_MATCH PASS   OnCreate
+005c99be   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005c99be   WARN SHARED_HEADER_AVAILABLE CTCInventoryWeapons (engine/CTCInventoryWeapons.h)
+005c99be   WARN RELOC_NAME: ??1CItemVector@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005c99be   RELOCATION_MATCH PASS   GetTimeWieldedWeapon
+005cc772   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005cc772   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cc772   RELOCATION_MATCH PASS   GetXString
+005cc862   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005cc862   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cc862   RELOCATION_MATCH PASS   GetFatnessAsString
+005cc9ad   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005cc9ad   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cc9ad   RELOCATION_MATCH PASS   GetCreatureGroupAsString
+005ccbbd   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005ccbbd   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005ccbbd   RELOCATION_MATCH PASS   GetHeroSexualityAsString
+005ccc91   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005ccc91   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005ccc91   RELOCATION_MATCH PASS   GetTimeSpentInGame
+
+WINS: 43
+  005b33f4 RELOCATION_MATCH CAnimInit::??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z
+  005b34d5 RELOCATION_MATCH CTCInventoryClothing::?ProcessButtonAReleased@CTCInventoryClothing@@UAEXXZ
+  005b369a RELOCATION_MATCH CTCInventoryClothing::OnSerialise@CTCInventoryClothing
+  005b40e6 RELOCATION_MATCH CTCInventoryClothing::RemoveAllClothing
+  005b4340 RELOCATION_MATCH CTCInventoryClothing::RemoveItemFromInventory
+  005b5cf8 RELOCATION_MATCH CTCInventoryClothing::GetItemDescription@CTCInventoryClothing
+  005b62fe RELOCATION_MATCH CTCInventoryClothing::?GetItemDescriptionNoArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
+  005b6767 RELOCATION_MATCH CTCInventoryClothing::?GetItemDescriptionArmourRating@CTCInventoryClothing@@QBEXAAVCWideString@@J@Z
+  005b6881 RELOCATION_MATCH CTCInventoryClothing::ConstructTitleString
+  005ba81b RELOCATION_MATCH _unattributed::Forward_CForwarder_005ba81b
+  005baeac RELOCATION_MATCH CEngineSceneGrid::GetCellBoundingBox
+  005bc5c6 RELOCATION_MATCH CTCInventoryBase::GetRightStickPosition
+  005bc6b3 RELOCATION_MATCH NInventory::CTCInventoryBase::GetItemDescription
+  005bce49 RELOCATION_MATCH CTCInventoryBase::DrawInventoryText
+  005bd273 RELOCATION_MATCH CTCInventoryBase::?GetInventoryText@CTCInventoryBase@NInventory@@QBE?AVCWideString@@J@Z
+  005bd33c RELOCATION_MATCH NInventory::CTCInventoryBase::?PlayInventoryMovementSound@CTCInventoryBase@NInventory@@ABEXXZ
+  005bd3a0 RELOCATION_MATCH NInventory::CTCInventoryBase::?PlayInventoryNoMovementSound@
+  005bd8a0 RELOCATION_MATCH CItem::GetItemDescription
+  005bd931 RELOCATION_MATCH CItem::?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ
+  005bda1d RELOCATION_MATCH NInventory::CCategory::?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z
+  005bdb68 RELOCATION_MATCH CTCInventoryBase::GetCategoryNameWithIndex
+  005be62c RELOCATION_MATCH NInventory::CTCInventoryBase::GetPrerequisitesString
+  005bec40 RELOCATION_MATCH CItem::??0CItem@
+  005bf03c RELOCATION_MATCH CItem::GetItemThings
+  005bfa8e RELOCATION_MATCH CTCInventoryBase::ConfiscateAllItems
+  005bfac6 RELOCATION_MATCH CTCInventoryBase::ConfiscateAllItemsOfType
+  005bfc90 RELOCATION_MATCH CTCInventoryBase::GetBestFishWeight
+  005c10f7 RELOCATION_MATCH std::vector<NInventory::CItem>::??$_M_allocate_and_copy@PAVCItem@NInventory@@@?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@IAEPAVCItem@NInventory@@IPAV23@0@Z
+  005c13f9 RELOCATION_MATCH _unattributed::Forward_CForwarder_005c13f9
+  005c140e RELOCATION_MATCH CRetailVector20_005c140e::??0CRetailVector20_005c140e@
+  005c144a RELOCATION_MATCH std::vector<NInventory::CItem>::??$_M_allocate_and_copy@PBVCItem@NInventory@@@?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@IAEPAVCItem@NInventory@@IPBV23@0@Z
+  005c1474 RELOCATION_MATCH _unattributed::Forward_CForwarder_005c1474
+  005c1489 RELOCATION_MATCH _unattributed::Forward_CForwarder_005c1489
+  005c2a5c RELOCATION_MATCH _unattributed::ClearEntry
+  005c2aa9 RELOCATION_MATCH std::vector<NInventory::CItem>::?resize@
+  005c2e2a RELOCATION_MATCH CTCInventoryWeapons::?ProcessButtonAReleased@CTCInventoryWeapons@@UAEXXZ
+  005c3057 RELOCATION_MATCH CTCInventoryWeapons::OnCreate
+  005c99be RELOCATION_MATCH CTCInventoryWeapons::GetTimeWieldedWeapon
+  005cc772 RELOCATION_MATCH CTCInventoryStats::?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ
+  005cc862 RELOCATION_MATCH CTCInventoryStats::GetFatnessAsString
+  005cc9ad RELOCATION_MATCH CTCInventoryStats::GetCreatureGroupAsString
+  005ccbbd RELOCATION_MATCH CTCInventoryStats::GetHeroSexualityAsString
+  005ccc91 RELOCATION_MATCH CTCInventoryStats::?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z

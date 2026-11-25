@@ -2,7 +2,7 @@
 // Leaf: ??0CTCInventoryWeapons
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3947, 169 bytes, `ret 4`; frame-pointer size TU
-// (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed dtor @ 0x005C39F0).
+// (`#pragma optimize("s", on)`, as the landed dtor @ 0x005C39F0).
 // Label correction: the catalog calls this row "CTCWallMountEffects::CTCWallMountEffects"; the vtables it stores,
 // 0x01253FF4 (+0) and 0x01253FE0 (+0x130), are CTCInventoryWeapons' (rtti-vtables.tsv), and the members it builds
 // are CTCInventoryWeapons' PDB members at retail offsets.
@@ -12,7 +12,8 @@
 //          ctor @ 0x004DF81D, _List_base<NUISystem::CComponent*>::_List_base(const allocator&) @ 0x0042ABAF.
 // Shape: initialiser list in declaration order; only WeaponsList of the raw component pointers is zeroed; the list's
 // default allocator temporary lives in the dead argument slot (`lea eax,[ebp+0Bh]`).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CThing;

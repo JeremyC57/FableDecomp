@@ -1,6 +1,6 @@
 // CTCInventoryStats::CreateTitlePC(const CWideString& text, NUISystem::CComponent* parent, bool statTitle) -- PC layout: creates a personality-stats title text component (the stat title, or the viewport text) and adds it under the parent
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CCFFC, length 120 bytes (`ret 0Ch`; `this` unused). Frame-pointer size TU:
-// optimize("y",off) + ("s",on).
+// optimize("s", on).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCharString::operator=(const char*) @ 0x0099EFE0,
 // NUISystem::CManager::GetInstance() @ 0x0041E5F2 (__fastcall, no arguments), NUISystem::CManager::CreateComponent(
 // const CCharString&, bool) @ 0x0041DB1D, CCountedPointer<NUISystem::CComponent>(CComponent*) @ 0x00429C15 / its dtor @ 0x004291DE,
@@ -16,7 +16,8 @@
 // Name fix (agentNF 2026-11-10): 0x004291DE is CCountedPointer<NUISystem::CComponent>::ReleaseData (the destructor is the 5-byte
 //   `jmp` COMDAT 0x00429C53; Ego_r.pdb ??1 is 5 bytes): FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA (engine/CCountedPointer.h).
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CWideString { public:
     void* m_pStringData;

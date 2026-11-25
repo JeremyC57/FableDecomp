@@ -9,8 +9,9 @@
 //   vector), CPersistContext::TransferVectorLoadText 0x009BB110 and TransferVectorSaveText 0x009BAC80.
 // Shape (family M143, representative 0x005815D6): the frame-mode sibling of the landed TransferVector<ECategory>
 //   0x00619890 -- here the mode switch keeps a real default (STLport clear() = `erase(begin(), end())`, the erase out of
-//   line), so VC7.1 emits the sub/dec compare chain instead of a table; `optimize("y", off)` + `optimize("s", on)`.
-#pragma optimize("y", off)
+//   line), so VC7.1 emits the sub/dec compare chain instead of a table; `optimize("s", on)`.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CDataOutputStream;
 class CMemoryDataInputStream;

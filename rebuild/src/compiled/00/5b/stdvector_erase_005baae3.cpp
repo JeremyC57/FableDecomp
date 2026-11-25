@@ -12,9 +12,10 @@
 //   --_M_finish; _Destroy(_M_finish); return __position;` with __copy_ptrs(__false_type) = `__copy(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0)`; __copy is a same-TU noinline body (retail's sits a few hundred bytes
 //   earlier in the same TU).
-// Pragma: optimize("s", on) + optimize("y", off) -- a frame-pointer size TU (`push ebp ; mov ebp,esp`).
+// Pragma: optimize("s", on) -- a frame-pointer size TU (`push ebp ; mov ebp,esp`).
 #pragma optimize("s", on)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #include <stddef.h>
 enum EClothingSuitPart { };
 namespace NUISystem { class CComponent; }

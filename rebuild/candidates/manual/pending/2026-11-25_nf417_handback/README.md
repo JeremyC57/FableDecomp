@@ -1,6 +1,6 @@
 # NF417 hand-back (2026-11-25): the remaining GetClassTypeName stand-ins
 
-195 rows, all ACCEPT, landed as `2026-11-25_landing_nf417_{s1,c1,b1,b2,b3,b4,p1}` (RELOCATION_MATCH PASS, 0 LITERAL_DIFF).
+195 rows, all ACCEPT, landed as `2026-11-24_landing_nf417_{s1,c1,b1,b2,b3,b4,p1}` (RELOCATION_MATCH PASS, 0 LITERAL_DIFF).
 - s1 (5): stand-in statics respelt to `?StatGetClassTypeName@<C>@@SI?AVCCharString@@XZ` (0x004D3EF9 CTCDNone, 0x004D41DF
   CTCDNavigationSeed, 0x0049D450 CTCTargetingPlayer, 0x004D3DFC CTCDParticleEmitter, 0x004D4DF4 CTCAssassinRush); the constructor
   name `??0CThingComponentDefNameTag@@QAE@XZ` leaves all three addresses it sat on (2 LNK4006 duplicates -> 0).

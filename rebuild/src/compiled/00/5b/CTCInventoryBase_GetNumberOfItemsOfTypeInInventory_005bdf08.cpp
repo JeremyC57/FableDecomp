@@ -1,5 +1,5 @@
 // CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long itemType) -- how many items of the definition `itemType` the inventory holds: looks the definition up, takes its inventory-item sub-definition, finds the category that holds that item category and asks it; 0 when any step fails
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDF08, length 169 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDF08, length 169 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CGameDefinitionManager::Get() @ 0x0044C6B0 (`__fastcall`, no arguments), CDefinitionManager::GetDef<CThingBaseDef>(long,
 // CDefPointer<const CThingBaseDef>*) const @ 0x0042AF3C (FableWin.pdb template), CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<
 // const CInventoryItemDef>*) const @ 0x005BADE1 (catalog GetSubDef<CInventoryItemDef> --
@@ -21,7 +21,8 @@
 //   (engine/CDefPointer.h, CDefinitionManager.h, CGameDefinitionManager.h, CDefClassBase_GetSubDef.h NOINLINE, CThingBaseDef.h,
 //   CInventoryItemDef.h), engine/NInventory_CTCInventoryBase.h (Categories typed by ALL_ITEMS_CHAIN_PASS22), engine/CCategory.h (NF88 opt-in
 //   FABLE_RETAIL_CCATEGORY_ITEMQUERIES: CIsInventoryCategory and GetNumberOfItemsOfTypeInCategory) and stlport/fable_algorithm.h (find_if declared).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE

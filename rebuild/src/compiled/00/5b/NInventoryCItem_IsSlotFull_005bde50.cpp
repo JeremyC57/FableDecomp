@@ -9,7 +9,8 @@
 //   def / pointee models; now on engine/NInventory_CTCInventoryBase.h (NF90 opt-in _CITEM_ISSLOTFULL, NF92 opt-in _CITEM_GETINVENTORYITEMDEF),
 //   engine/CDefPointer.h and engine/CInventoryItemDef.h.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CLOTHING_DEFS

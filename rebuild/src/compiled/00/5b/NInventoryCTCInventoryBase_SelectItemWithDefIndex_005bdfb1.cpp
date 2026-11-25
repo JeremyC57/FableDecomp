@@ -2,7 +2,7 @@
 //   type in it
 // Leaf: ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDFB1, 117 bytes (+2 int3); frame-pointer size TU
-// (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
+// (`#pragma optimize("s", on)`), `ret 4`.
 // Identity: Ego_r.pdb (0x00620D0F) + FableWin.pdb ?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z (protected), declared by
 //   engine/NInventory_CTCInventoryBase.h FABLE_RETAIL_CTCINVENTORYBASE_SELECTION.
 // Callees: CGameDefinitionManager::Get() @ 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<CThingBaseDef> const @ 0x0042AF3C,
@@ -13,7 +13,8 @@
 //   find_if@NInventory(.., CCategoryHasIdentifier); now on the shared headers, the GetNumberOfItemsOfTypeInInventory 0x005BDF08 recipe
 //   (the predicate a named object built before the end pointer keeps retail's load order).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE

@@ -1,6 +1,6 @@
 # NF418 hand-back (2026-11-25): made-up data symbols standing in for retail literals
 
-31 rows landed as `2026-11-25_landing_nf418_s1` (17 string rows) and `_f1` (14 float-pool rows), RELOCATION_MATCH PASS,
+31 rows landed as `2026-11-24_landing_nf418_s1` (17 string rows) and `_f1` (14 float-pool rows), RELOCATION_MATCH PASS,
 only `??_C@` / `__real@` sections new; 9 f1 rows held (their tests are self-contained copies; T3 `nf418 0x00437500 ... tests`).
 Table: 33 deletes by the lander; 4 stale deletes (t0) and 3 rewitnesses (`_kPi` / `_kTwoPi` / `_kMinusPi` -> 00c0b4c0) applied by hand.
 

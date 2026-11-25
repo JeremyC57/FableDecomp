@@ -5,9 +5,10 @@
 // Callees: vector::_M_insert_overflow(pointer, const value_type&, const __false_type&, size_type, bool) 0x005BB409.
 // Shape (family M148, representative 0x005947B6): STLport `if (_M_finish != _M_end_of_storage._M_data) { _Construct(_M_finish,
 //   __x); ++_M_finish; } else _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);` -- the pair's explicit copy
-//   constructor (two dword moves, null-checked placement); `optimize("y", off)` + `optimize("s", on)`.
+//   constructor (two dword moves, null-checked placement); `optimize("s", on)`.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE = 0 };

@@ -1,9 +1,10 @@
 // CTCInventoryBase::ConfiscateAllItemsOfType(long itemType) -- collects every stack of `itemType` into a local vector and hands it to the virtual ConfiscateItems
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFAC6, length 59 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFAC6, length 59 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCInventoryBase::GetAllInventoryItemsOfType(long, vector<CItem>&) @ 0x005BFA69, virtual slot 85 (+0x154,
 // ConfiscateItems), std::vector<NInventory::CItem>::~vector @ 0x005C1E30.
 // Shape: as ConfiscateAllItems (0x005BFA8E): inline-constructed 12-byte vector local, out-of-line destructor, no EH frame.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 struct CItem_Retail { unsigned char _body[0x14]; };
 struct CItemVector {

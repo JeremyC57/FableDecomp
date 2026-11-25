@@ -13,7 +13,8 @@
 // Port (NF90, q11182 / q11183 binder): was the local CCategory_Retail / CDefPointer / CTCInventoryBase (33 placeholder slots) model (leaf
 //   ?AddItem@CCategory_Retail@@QAE_NJ_NJJ@Z); now on engine/NInventory_CTCInventoryBase.h (CONFISCATED CItem, VTABLE, NF90 opt-ins
 //   _CITEM_ISSLOTFULL / _CITEM_ADDITEM) + engine/CCategory.h (PASS22, NF88 _ITEMQUERIES, NF89's _ADDITEM declaration, NF90 _SETSELECTEDITEMINDEX).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE

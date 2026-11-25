@@ -5,8 +5,9 @@
 // Callees: CDataOutputStream::WriteLong 0x00993EB0, CItem traits TransferBinaryOut 0x005C0A98.
 // Model: engine/CDataOutputStream.h with a methods-only writer adapter; NInventory::CItem is a local model (see 005C2AD8:
 //   engine/CItem.h flattens the counted pointer).
-// Shape: `#pragma optimize("y", off)` + `("s", on)`; the count is `value.size()` (`idiv` by 0x14); the traits holds a DefaultVal.
-#pragma optimize("y", off)
+// Shape: `#pragma optimize("s", on)`; the count is `value.size()` (`idiv` by 0x14); the traits holds a DefaultVal.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"

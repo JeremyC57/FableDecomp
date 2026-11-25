@@ -1,7 +1,7 @@
 // CTCInventoryTrade::BuyItemPC(NUISystem::CComponent* entry, long count) -- the PC trade screen buys `count` of the item behind a buy-list entry: the entry's stock drops (specials never run out), its name / title refresh, the entry goes unavailable when the hero can hold no more; the hero pays, then the item takes effect by kind -- a tattoo card is applied, a hair card applied, a title def sets the hero's title, anything else is sold `count` times by the shop into the hero's category inventory (a weapon the hero cannot use raises the warning) and, if it can be sold back, adds to the sell totals and the sell entry's "Sell x N" text. Specials make the other affordable, not-yet-owned specials available again; the buy descriptions, buy actions, gold readouts and (for a normal shop) the buy entry amounts refresh, and the UI steps back.
 // Leaf: ?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005B0AAC, 1518 bytes (0x5EE; the catalog's 1,793 also covers the 15 small COMDAT stubs from
-//   0x005B109A on: SPLITS.tsv), thiscall `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+//   0x005B109A on: SPLITS.tsv), thiscall `ret 8`. Frame-pointer size TU: optimize("s", on).
 // Identity: FableWin.pdb ?BuyItemPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z (the catalog's doubled
 //   "CTCInventoryTrade::CTCInventoryTrade::BuyItemPC" scope is a label typo): the PC twin of the landed BuyItem 0x005AF64E -- the same
 //   purchase body with the PC callees (RefreshNameAndTitlePC 0x0059CA95, RefreshBuyPossibilityPC 0x005A887D, GetTypeFromDefIndexPC
@@ -13,7 +13,8 @@
 // Callees: as 0x005AF64E, plus the PC ones named above, CComponent::FindAllChildren (slot 5, +0x14), list<CComponent*> ctor
 //   0x0042ABAF / dtor 0x0042ABCA.
 #define FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

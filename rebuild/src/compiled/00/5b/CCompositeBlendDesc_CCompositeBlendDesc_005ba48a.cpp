@@ -6,10 +6,11 @@
 // bytes are loaded before any is stored and the stores land in R, G, B, A order, which with the
 // D3DCOLOR byte layout (B, G, R, A) gives the retail permutation. The body keeps a frame pointer and
 // spills two of the channel bytes (one to its single local slot, one into the dead high byte of the
-// argument slot at [ebp+0Bh]) while still using ebx freely: an `optimize("y", off)` + `optimize("s", on)`
+// argument slot at [ebp+0Bh]) while still using ebx freely: an `optimize("s", on)`
 // translation unit, as the other NUISystem/engine data-description files.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CRGBColour { public:                                             // the union's channel view: D3DCOLOR byte order

@@ -1,0 +1,26 @@
+addr       parity           behav  name
+005bc3ed   RELOCATION_MATCH PASS   GFGetGraphicFrame
+005bde50   RELOCATION_MATCH PASS   IsSlotFull
+005bf414   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005bf414   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem (engine/CTCInventoryItem.h)
+005bf414   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005bf414   WARN RELOC_NAME: ?FindCategory@@YIPAVCCategory@NInventory@@PAV12@0J@Z -> 005c08d3 labelled 'std::find_if'
+005bf414   RELOCATION_MATCH PASS   UpdateItemStatsForThing
+005bf4ed   WARN SHARED_HEADER_AVAILABLE CTCTrophy (engine/CTCTrophy.h)
+005bf4ed   RELOCATION_MATCH PASS   OnItemReturnedToInventory
+005c36c2   WARN SHARED_HEADER_AVAILABLE CCarryableDef (engine/CCarryableDef.h)
+005c36c2   WARN SHARED_HEADER_AVAILABLE CWeaponDef (engine/CWeaponDef.h)
+005c36c2   WARN SHARED_HEADER_AVAILABLE CEngineGraphic (engine/CEngineGraphic.h)
+005c36c2   WARN SHARED_HEADER_AVAILABLE CTCCarryable (engine/CTCCarryable.h)
+005c36c2   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+005c36c2   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+005c36c2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+005c36c2   WARN STANDIN_LEAF ?PutSheatheObjectInCarrySlot@?A0xf6ac6b8f@@YIXAAVCThing@@0AAM@Z (catalog (anonymous namespace)::PutSheatheObjectInCarrySlot; names another function)
+005c36c2   RELOCATION_MATCH PASS   PutSheatheObjectInCarrySlot
+
+WINS: 5
+  005bc3ed RELOCATION_MATCH _global::?GFGetGraphicFrame@?A
+  005bde50 RELOCATION_MATCH NInventory::CItem::?IsSlotFull@CItem@NInventory@@QBE_NXZ
+  005bf414 RELOCATION_MATCH NInventory::CTCInventoryBase::UpdateItemStatsForThing
+  005bf4ed RELOCATION_MATCH NInventory::CTCInventoryBase::OnItemReturnedToInventory
+  005c36c2 RELOCATION_MATCH _global::?PutSheatheObjectInCarrySlot@

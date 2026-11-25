@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::RemoveItemFromInventory(long itemDefIndex, long count) -- removes the items through the base inventory, then for each live active weapon (melee, then ranged) of which none are left: takes it off the owner's carrier if carried (refreshing the sheathes), takes the weapons out of their sheathes and kills the weapon thing; finally refreshes the sheathed weapons and sets the active weapons up on the carrier again
 // Leaf: ?RemoveItemFromInventory@CTCInventoryWeapons@@UAEXJJ@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005CB128, 390 bytes, thiscall `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005CB128, 390 bytes, thiscall `ret 8`. Frame-pointer size TU: optimize("s", on).
 // Identity: slot 79 of the CTCInventoryWeapons vtable 0x01253FF4 (the NInventory::CTCInventoryBase slot RemoveItemFromInventory,
 //   base 0x005BF3C6 called qualified first); Ego_r.pdb / FableWin.pdb ?RemoveItemFromInventory@CTCInventoryWeapons@@UAEXJJ@Z.
 // Callees: CTCInventoryBase::RemoveItemFromInventory 0x005BF3C6, IS_THING_ALIVE 0x004CC340, GetPItem 0x00A01B50,
@@ -8,7 +8,8 @@
 //   (GetTC<CTCCarrying>, interface 0x46), CTCCarrying::IsCarryingThing 0x006A1060 / RemoveThing 0x006A19B0,
 //   RefreshSheathedWeapons 0x005C9962, RemoveWeaponsFromSheathes 0x005C552C, CThing::Kill 0x004C9B80,
 //   SetupActiveWeaponsOnCarrier 0x005CA68E.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CTCBASE
 #define FABLE_RETAIL_CTHING

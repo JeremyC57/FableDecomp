@@ -5,7 +5,8 @@
 // Flags: /GS
 // Name: the class is NInventory::CTCInventoryBase (RTTI vtable 0x01253DBC .?AVCTCInventoryBase@NInventory@@, slot 32);
 // Ego_r.exe ?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ 0x0061F3AF.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BC527, length 95 bytes.
 // Callees: CTCBase::PeekPlayerManager @ 0x00686D50 (`mov eax,[0x013B8A1C] ; mov eax,[eax+30h]`; manifest label
@@ -13,7 +14,7 @@
 //          CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760 (landed), CMainGameComponent::AddGameEvent
 //          (const CGameEvent&) @ 0x0041649C on the global component @ 0x013B86A0, __security_check_cookie @ 0x00BFE9F9.
 // GS note: /GS -- the event's 32-byte data array gets the cookie frame (cookie @ 0x0139C8A8 stored at [ebp-4]).
-// Pragmas: frame-pointer size TU (`optimize("y", off)` + `("s", on)`); without them the body is esp-based (105v95).
+// Pragmas: frame-pointer size TU (`optimize("s", on)`); without them the body is esp-based (105v95).
 // Layout: CGameEvent from Ego_r.pdb (40 bytes): Type +0, Player +4 (signed char), Data[32] +5, EndPos +0x25,
 //         Valid +0x26, Replacement +0x27; it derives from CMemoryBuffer at offset 0 (landed 0x004159E0).
 // Shape: the inline constructor stores Type, Player = -1, EndPos 0, Valid 1, Replacement 0; the player number

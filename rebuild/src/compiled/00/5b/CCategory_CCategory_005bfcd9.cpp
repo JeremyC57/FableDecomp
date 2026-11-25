@@ -1,7 +1,7 @@
 // CCategory::CCategory(CDefPointer def, CTCInventoryBase* inventory, long globalDefIndex) -- build an inventory category: no associated thing, an empty item vector sized to the def's NumberOfSlots, the def (shared), the owning inventory, its def index, no selection and the highlight on slot 0
 // Leaf: ??0CCategory_Retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFCD9, length 133 bytes (ret 0Ch); a frame-pointer size TU
-// (`leave`, `or dword ptr [esi+20h],-1`) = `#pragma optimize("y", off)` + `("s", on)`. Callers 0x005C01CB, 0x005C0287.
+// (`leave`, `or dword ptr [esi+20h],-1`) = `#pragma optimize("s", on)`. Callers 0x005C01CB, 0x005C0287.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (PAssociatedThing's base; vtable
 // CIntelligentPointer 0x01238C6C), the item vector's resize(n) @ 0x005C2AA9 (manifest label
 // "CTCInventoryStats::OnSerialise" is propagated), CIntelligentPointer<CThing>::CIntelligentPointer(CThing*)
@@ -17,7 +17,8 @@
 // the frame (an IMPLICIT conversion: its address is re-formed with `lea` after the constructor, an explicit
 // temporary reuses the constructor's eax), assigns it out of line and runs its inline destructor's out-of-line base part.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CThing;

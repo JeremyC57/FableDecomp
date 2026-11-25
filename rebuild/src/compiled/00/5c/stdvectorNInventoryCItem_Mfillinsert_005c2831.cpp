@@ -14,7 +14,8 @@
 // ([ebp+10h]); every tag temporary sits in the high byte of `position`'s slot ([ebp+0Bh], never written). Same-TU bodies of
 // the out-of-line helpers (as in retail's TU) let VC7.1 see that the tag and x_copy references do not escape.
 // Layout: a local CItem model -- engine/CItem.h flattens the CCountedPointer member whose out-of-line destructor this body calls.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 namespace std { struct __false_type { __false_type() {} }; }
 using std::__false_type;

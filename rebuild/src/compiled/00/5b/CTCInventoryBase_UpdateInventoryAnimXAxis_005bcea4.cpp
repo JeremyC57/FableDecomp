@@ -1,5 +1,5 @@
 // CTCInventoryBase::UpdateInventoryAnimXAxis() -- eases InventoryAnimXRotationAngleGain toward the right stick's X while the stick is deflected past 0.01, else zeroes it
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BCEA4, length 84 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BCEA4, length 84 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCInventoryBase::GetRightStickPosition(C2DVector*) @ 0x005BC5C6 (out-pointer to the 8-byte frame local).
 // Constants: 0.01f @ 0x01230A5C (dead-zone), 0.1f @ 0x0122EE58 (easing factor); the else arm's 0.0f is a literal `fldz`.
 // Retail CTCInventoryBase has no generated engine header; the PDB layout (Ego_r.pdb) shifted down by 4 bytes per
@@ -8,7 +8,8 @@
 // Shape: the stick length is computed for the compare only (`fld st(0) ; fcomp ; fstp st(0)`); y*y is multiplied
 // first, which VC7.1 does for the source `x*x + y*y` (the right operand of `+` is evaluated first).
 // `gain += (x - gain) * 0.1f` forms `lea eax,[esi+114h]` because the member is addressed three times.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include <math.h>
 class C2DVector { public: float x; float y; };

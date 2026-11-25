@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::SetThingAsActiveWeapon(long itemDefIndex, NUISystem::CComponent* entry) -- makes a weapon of that def the active melee or ranged weapon (unless it already is): creates the inventory object in limbo, sets it as the active pointer, moves the menu's assigned-weapon icon to the entry (with the item's graphic) and makes the entry the list default, unwields the replaced weapon and kills its sheathe object on the owner's carrier, and re-dresses the carrier
 // Leaf: ?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005CB2B0, 1168 bytes, thiscall `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005CB2B0, 1168 bytes, thiscall `ret 8`. Frame-pointer size TU: optimize("s", on).
 // Identity: Ego_r.pdb / FableWin.pdb ?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z (Ego_r donor 0x0062B692,
 //   after RemoveItemFromInventory 0x005CB128, the retail order); callers OnInitialActivate 0x005CB974 and the select handlers.
 // Callees: NUISystem::CManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D, IS_THING_ALIVE 0x004CC340 / <CThing*> 0x0040DCE0,
@@ -14,7 +14,8 @@
 // Shape: the visible IS_THING_ALIVE<CThing*> body (below), the visible noinline CDeletion constructors (FABLE_RETAIL_CDELETION_BODIES:
 //   the Method store sinks below the copy's pushes), the out-of-line CIntelligentPointer (T*) / operator= pair for `= thing`, the
 //   expanded GetTC / PeekTC; the hero's WeaponsUsable flag (+0x0C) gates the re-dress (no hero component: always).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

@@ -11,7 +11,8 @@
 // Shape: STLport 4.6 insert_unique (as the landed 0x00485E5C): `__comp` in dl starting true, the enum key compared
 //   signed at node +0x10 (`setl`), `__j` in eax, `--__j` through _Rb_global_inst::_M_decrement, _M_insert's iterator
 //   homed in the dead `v` argument slot. Frame-pointer size TU.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 enum EClothingSuitPart { CLOTHING_SUIT_PART_NONE };

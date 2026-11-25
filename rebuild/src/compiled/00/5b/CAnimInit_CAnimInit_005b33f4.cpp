@@ -8,9 +8,10 @@
 //   ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z 0x0070C050 (Ego_r.pdb / FableWin.pdb) with the seven arguments, and `this` is
 //   returned. Its callers build CAnimInit temporaries for animation requests (CTCCreatureExpression::UpdateBlinking 0x00728FF0,
 //   CModeStandBase::UpdateIdleAnim 0x00862780, both passing an anim index and the entry's GetAnimateThingFlags()).
-// Shape: the size-optimised frame-pointer TU (`optimize("y", off)` + `("s", on)`) that emits the inline constructor out of line; the
+// Shape: the size-optimised frame-pointer TU (`optimize("s", on)`) that emits the inline constructor out of line; the
 //   header's CTOR_OUTOFLINE opt-in (agentNF54 overlay) declares it and this row defines it with the header's body.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CANIMINIT_CTORS
 #define FABLE_RETAIL_CANIMINIT_CTOR_OUTOFLINE

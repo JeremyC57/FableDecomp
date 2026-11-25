@@ -1,7 +1,7 @@
 // CTCInventoryClothing::OnItemAdded(long item, bool assignQuickAccess, bool silent) -- after the base hook, when the added def is an OBJECT whose appearance-modifier sub-def is a clothing modifier (type 2), gives the owner's hero the clothing tutorial (unless silent)
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B3C95, length 229 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B3C95, length 229 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: NInventory::CTCInventoryBase::OnItemAdded(long, bool, bool) @ 0x005BE028, CTCBase::GetDefinitionManager() const @ 0x006869D0,
 // CDefinitionManager::GetDefClassTypeNameFromGlobalIndex(long) @ 0x009ACCE0 (CDefString by value), CDefString::operator==(const char*)
 // @ 0x005B3440 on "OBJECT" @ 0x01235FF4, CDefinitionManager::GetDef<CThingObjectDef>(long, CDefPointer<const ..>*) const @ 0x0042B040,
@@ -14,7 +14,8 @@
 // landed CTCInventoryTrade/Weapons::OnCreate twins (`dec [p+4] ; jne ; call [vt+4]`), the sub-def held in ebx as a named local. The CDefString temporary (one word, no destructor) lives in [ebp-8]. The interface type and the tutorial category are the
 // same immediate (0x29), so one register (edi) serves both. The sub-def is held in ebx across the tutorial call.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CDefString { public:                                  // one table position, no destructor
     long TablePos;

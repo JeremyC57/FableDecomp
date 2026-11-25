@@ -1,12 +1,13 @@
 // CTCInventoryBase::GetInventoryGuildValidity() -- finds the first building thing carrying thing-component 0x6A and, when one exists, remembers it in pBuildingThing and returns true
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDC77, length 61 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDC77, length 61 bytes. Frame-pointer size TU: optimize("s", on)
 // (`and dword ptr [ebp-4],0` zero store).
 // Callees: the thing-search-tools accessor @ 0x00686D80 (`mov ecx,[0x013B8A1C] ; jmp`, no arguments), and
 // CThingSearchTools::GetPFirstLeafThing<CThingFilter_HasTC, CThingBuilding>(filter, CThing** out) @ 0x005C0D9D (its bool is ignored).
 // Retail CTCInventoryBase: no engine header; pBuildingThing at +0xB8 (PDB +0xCC minus five 4-byte-narrower vectors).
 // Shape: the out pointer is zeroed first (named local), the HasTC filter is a temporary built in the call (its
 // TC store lands after the pushes), and the bool result uses the `mov al,1 / xor al,al` two-exit form.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CThing;
 class CThingFilter_HasTC { public:

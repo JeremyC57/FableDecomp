@@ -3,7 +3,7 @@
 //   ?ReleaseData@?$CCountedPointer@VCAction@NUISystem@@@@QAEXXZ (FableWin.pdb; the destructor is the 5-byte jmp COMDAT 0x00429B72):
 //   per-TU opt-in FABLE_RETAIL_CCOUNTEDPOINTER_RELEASEDATA_DECL_ONLY (the inline destructor expands to the out-of-line ReleaseData).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005CD074, 562 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005CD074, 562 bytes, `ret 4`. Frame-pointer size TU: optimize("s", on).
 // Callees: CManager::GetInstance @ 0x0041E5F2 (called once with the result dropped, then again for CreateComponent
 // @ 0x0041DB1D), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, the component's slot 3 (+0x0C, child by name; CCharString by value
 // built in its argument slot), operator new @ 0x00BFEA1A, NUISystem::CAction::CAction @ 0x0042BE50, CCountedPointer<CAction>
@@ -14,7 +14,8 @@
 // dead topLevel argument slot ([ebp+8]) as retail does; with a declaration only they take the frame word at [ebp-8].
 // The first `if` arm calls AddSelectedAction on the experience entry, not on the personality entry (retail behaviour).
 // Layout: CAction is the landed 0x10-byte model (AddSoundAction 0x0056F615); slot names 66/68 are descriptive.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 // NF104 (q4770, 2026-11-19): the param list is STLport std::list<NUISystem::CActionParam*> (stlport/fable_containers.h), its push_back
 //   0x0042B646 FableWin.pdb ?push_back@?$list@PAVCActionParam@NUISystem@@V?$allocator@PAVCActionParam@NUISystem@@@std@@@std@@QAEXABQAVCActionParam@NUISystem@@@Z

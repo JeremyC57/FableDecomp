@@ -1,0 +1,12 @@
+rows	check	head	new	verdict	evidence
+44 rows	vland --recheck-landed, HEAD and new at one LANDVERIFY_WORK path (tools/runpair.sh)	grades per row	SUMMARY rows=44 not_ok=0 literal_diff=0	ok	evidence/vland_b1h.log evidence/vland_b1n.log vcmp.txt
+44 rows	LITERAL_DIFF	0	0	ok	vcmp.txt
+44 rows	leaf bytes + relocations HEAD v new (graded symbol)	-	identical in every row	ok	../../evidence/leafsym.tsv (agent root)
+44 rows	object section compare by COMDAT symbol (same path)	-	ALL_EQ=44; leaf section never differs; no section added or removed; new object functions == measured no-y-off variant	ok	objsec.txt
+44 rows	pk_all + pickany_vs_retail HEAD v new, keyed on (symbol, address), exact graded leaf	-	no change	ok (0 REGRESS / NEW_NEQ / REACHFLIP / PVR_NEW_NEQ)	evidence/pkflip.tsv evidence/pk/
+44 rows	changed copies v landed same-named COMDATs (532 other 00/5b-00/5c rows, HEAD) and reloc-masked retail homes	-	evidence classes a0=44	ok	evidence/copies_HEAD_v_new.tsv
+222 rows (all batches) + 532 other 00/5b-00/5c objects	/FORCE census link, one object per row	see evidence	duplicates 49 -> 49; new duplicate lines 0; gone 0; unresolved 668 -> 668; newly unresolved 0; newly resolved 0	ok	../../evidence/link_t1all.txt (agent root)
+44 rows	apply_table --dry (no table changes)	-	0 misses	ok	-
+44 rows	reserved_check (RESERVED_REFS="")	-	reserved 0	ok	-
+44 rows	behaviour tests (HEAD tests unchanged)	-	PASS x44; 1 link the row object, mutation FAIL x1; 43 self-contained at HEAD (no row link: mutation cannot reach them)	see RULINGS_NEEDED	evidence/mutation_controls.tsv
+005b33f4 + users 007502d0 00753630 00666310	header hdr/engine/CAnimInit.h (SIZE_BODY block drops its y-off; owner 0x005B33F4 now sets only ("s", on))	-	every COMDAT of all four objects byte-identical with and without the header change	ok	../../evidence/hdr_CAnimInit.txt (agent root)

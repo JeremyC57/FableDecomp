@@ -17478,7 +17478,7 @@ address	symbol	status	leaf_given
 00a98a70	?WriteToFile@C3DAnimFileRootChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	RELOCATION_MATCH	WriteToFile
 00a98af0	?ReadFromFile@C3DAnimFileRootChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	RELOCATION_MATCH	ReadFromFile@C3DAnimFileRootChunk
 00a98e60	??0C3DAnimFile@@QAE@XZ	RELOCATION_MATCH	??0C3DAnimFile
-00a98f40	??0C3DAnimFile@@QAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z	RELOCATION_MATCH	??0C3DAnimFile@
+00a98f40	??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z	RELOCATION_MATCH	??0C3DAnimFile@@AAE@ABV?$CCountedPointer@VC3DAnimFileRootChunk@@@@@Z
 00a99840	?SaveAnimFileCompressed@C3DAnimFileSaver@X_00a99840@@QAEKAAUC3DAnimFile@2@AAVCDataOutputStream@@@Z	RELOCATION_MATCH	SaveAnimFileCompressed
 00a999b0	??0C3DAnimFileLoader@@QAE@XZ	RELOCATION_MATCH	??0C3DAnimFileLoader
 00a99e30	?GetChunkDescription@C3DAnimFileRootChunk_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetChunkDescription
@@ -17487,10 +17487,10 @@ address	symbol	status	leaf_given
 00a9a000	?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z	MATCH	DeleteData
 00a9a2c0	?C3DAnimFileSaver_scalar_deleting_destructor@@YIPAXPAUC3DAnimFileSaver@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00a9a2e0	?ScalarDeletingDestructor@C3DAnimFileRootChunk@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00a9a730	?ScalarDeletingDestructor@C3DAnimFile@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00a9a730	??_GC3DAnimFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GC3DAnimFile@@UAEPAXI@Z
 00a9a7a0	?C3DAnimFileLoader_scalar_deleting_destructor@@YIPAXPAUC3DAnimFileLoader@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00a9ad80	??0C3DMeshFile@@QAE@XZ	RELOCATION_MATCH	??0C3DMeshFile
-00a9ae60	??0C3DMeshFile@@QAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z	RELOCATION_MATCH	??0C3DMeshFile@
+00a9ae60	??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z	RELOCATION_MATCH	??0C3DMeshFile@@AAE@ABV?$CCountedPointer@VC3DMeshFileRootChunk@@@@@Z
 00a9b460	?CountVertices@C3DMeshFileRootChunk@@QBEKXZ	RELOCATION_MATCH	CountVertices@C3DMeshFileRootChunk
 00a9b550	?CountTriangles@C3DMeshFileRootChunk@@QBEKXZ	RELOCATION_MATCH	CountTriangles@C3DMeshFileRootChunk
 00a9ba70	?SaveMeshFileCompressed@C3DMeshFileSaver@X_00a9ba70@@QAEKAAUC3DMeshFile@2@AAVCDataOutputStream@@@Z	RELOCATION_MATCH	SaveMeshFileCompressed
@@ -17501,7 +17501,7 @@ address	symbol	status	leaf_given
 00a9cb50	?DeleteData@@YIXPAUAutoTinyVirtualObject@@@Z	MATCH	DeleteData
 00a9ce00	?C3DMeshFileSaver_scalar_deleting_destructor@@YIPAXPAUC3DMeshFileSaver@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00a9ce20	?ScalarDeletingDestructor@C3DMeshFileRootChunk@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00a9d2a0	?C3DMeshFile_scalar_deleting_destructor@@YIPAXPAVC3DMeshFile@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00a9d2a0	??_GC3DMeshFile@@UAEPAXI@Z	RELOCATION_MATCH	??_GC3DMeshFile@@UAEPAXI@Z
 00a9d2c0	?ScalarDeletingDestructor@C3DMeshFileLoader@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00a9d310	?GetChunkDescription@CMirroredTextureHighlightsChunk@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetChunkDescription
 00a9d3f0	??1C3DMeshFileConvexVolumeChunk@@UAE@XZ	RELOCATION_MATCH	??1C3DMeshFileConvexVolumeChunk

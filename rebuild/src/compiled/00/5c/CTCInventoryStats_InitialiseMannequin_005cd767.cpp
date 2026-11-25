@@ -2,7 +2,7 @@
 // Leaf: InitialiseMannequin@CTCInventoryStats
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005CD767, 745 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005CD767, 745 bytes, plain `ret`. Frame-pointer size TU: optimize("s", on).
 // Callees: CThing::GetPos 0x004C73D0, the thing-create helper 0x00835A20 (`__fastcall` def index / position, stack bool),
 //   CThing::AddAndCopyTC 0x004C9F60, CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) 0x004C9D60, bitset test 0x00410DE0,
 //   LowerBound 0x0040F020 (non-const), CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, animation-set lookup 0x005DC340
@@ -15,7 +15,8 @@
 // Layout: local views -- CTCInventoryStats ParentThing +0x04, hero def +0x68, Mannequin +0x140; CThing presence bits +0x20,
 //   interface map +0x44, component +0x64, base def +0x70; hero def mannequin def index +0x2E0; appearance animation set +0x34.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CTCBase;
 class C3DVector;

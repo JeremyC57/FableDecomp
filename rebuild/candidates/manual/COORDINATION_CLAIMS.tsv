@@ -599,3 +599,4 @@ date	account	item	kind	status	note
 2026-11-25	A	agent NF398 T3 nf396 0x004DFB8F unit: map<unsigned __int64, CGroupMemberData> tree members (_M_erase self, clear, binder port) in one landing	naming	done	locks via nflocks owner NF398
 2026-11-25	A	agent NF399 T3 nf396 0x00578FF5 / 0x005796AB / 0x004DF54F: EHeroTrainableStatType tree member selves and the CSteeringAgent ~vector thunk	naming	done	locks via nflocks owner NF399
 2026-11-25	A	agent NF399 T3 nf396 0x00578FF5 / 0x005796AB / 0x004DF54F: EHeroTrainableStatType tree member selves and the CSteeringAgent ~vector thunk	naming	done	landing b1 (00578ff5, 005796ab); b2 0x004DF54F unit held on ruling Q1
+2026-11-25	A	q11236,q11237,q11282,q11400,q11444,q11447,q11448,q11463,q11464,q11466,q11467	naming	done	round 9 agent NF100 closed (its rows long landed); closing it lets nf419 land 005bde50 / 005bf414 / 005bf4ed

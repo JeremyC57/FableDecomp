@@ -8,7 +8,8 @@
 //   Its callee _M_insert 0x005B23BF is the same instance. STLport 4.6.2 source, descriptive-by-library. Was the stand-in
 //   `CRetailTree_ulongkey_ins005b23bf::insert`; now an explicit instantiation over stlport/fable_map.h (FABLE_RETAIL_STLP_MAP body;
 //   FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ: out-of-line _M_decrement), the landed 0x0042CEE3 pattern.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_MAP
 #define FABLE_RETAIL_PASS22_LIP_SYNC_SAMPLE_READ

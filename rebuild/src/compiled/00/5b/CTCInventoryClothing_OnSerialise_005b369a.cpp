@@ -1,6 +1,6 @@
 // CTCInventoryClothing::OnSerialise(CPersistContext& context, bool inGameSave) -- serialises the base inventory, then the "InGameSave" flag: written from the argument when saving, read into LoadedFromSaveGame when loading
 // Leaf: OnSerialise@CTCInventoryClothing
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B369A, length 79 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B369A, length 79 bytes. Frame-pointer size TU: optimize("s", on).
 // Virtual slot 1 of the CTCInventoryClothing vtable 0x0124356C.
 // Callees: CTCInventoryBase::OnSerialise(CPersistContext&, bool) @ 0x005BFD5E, CPersistContext::IsSaving @ 0x004AEF50 (landed;
 // the manifest's "IsBinary" is a misread), CPersistContext::Transfer<bool>(name, bool&, const bool& default) @ 0x004045C0 (the
@@ -11,7 +11,8 @@
 // Shape: the saving arm transfers the PARAMETER by reference (`lea eax,[ebp+0Ch]`); its `false` default temporary is homed in
 // the high byte of the dead `context` slot (`lea eax,[ebp+0Bh]`, `mov byte ptr [ebp+0Bh],0`); `mov ecx,edi` is hoisted above the
 // branch because both arms call on `context`.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)

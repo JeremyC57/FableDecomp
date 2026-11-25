@@ -1,4 +1,5 @@
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 // CRetailVector20_005c140e::CRetailVector20_005c140e(const CRetailVector20_005c140e& other) -- the VC6 vector copy constructor for 20-byte elements: allocate for the source's count (its byte span divided by 20), then uninitialised-copy the range and set the end
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C140E, length 60 bytes.

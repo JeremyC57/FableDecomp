@@ -9,11 +9,12 @@
 // TransferObjectLoadText @ 0x009BBA40; wrapper vtable 0x01253F18 (CPersistContext_TransferableComponent<CDefIndex>).
 // Layout: CPersistContext (Ego_r.pdb, 0x2c bytes): use-defaults flag +0x14, mode +0x18, load stream +0x24, save stream +0x28;
 // CDefIndex is one long.
-// Shape: frame-pointer size TU (`#pragma optimize("y", off)` + `("s", on)`); a switch over cases 0..3 in source order lowers
+// Shape: frame-pointer size TU (`#pragma optimize("s", on)`); a switch over cases 0..3 in source order lowers
 // to `sub eax,0 ; je ; dec ; je ...` with the default arm first and the cases in reverse; the empty traits object of case 2
 // lives in the value argument's slot (`lea ecx,[ebp+0Ch]` after the value is pushed); the 8-byte frame is the
 // TransferableComponent wrapper {vtable, value*}; `ret 0Ch`.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CDefIndex { public: long Index; };
 class CDataInputStream;

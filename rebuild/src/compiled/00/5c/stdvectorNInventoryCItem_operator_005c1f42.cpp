@@ -12,7 +12,8 @@
 // `push ecx` word; the tag temporaries share the high byte of that slot ([ebp+0Bh]); __copy's null distance pointer is pushed
 // once above the size() >= xlen test for both arms. Same-TU bodies of the out-of-line helpers (as in retail's TU) let VC7.1
 // see that the tag references do not escape.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CItem.h"
 struct __false_type { __false_type() {} };

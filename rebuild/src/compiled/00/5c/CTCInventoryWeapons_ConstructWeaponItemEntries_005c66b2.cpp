@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::ConstructWeaponItemEntries(std::vector<std::pair<long,long> >& items, NUISystem::CList* list, CCountedPointer<NUISystem::CComponent>& augmentationEntry, NUISystem::CComponent* parent, NUISystem::CManager* manager, NUISystem::CViewport* viewport, CDefPointer<const NUISystem::CUIMiscThingsDef>& miscDef, float damage, CCountedPointer<NUISystem::CComponent>& title) -- fills a console weapon sub-list: splits the weapon items by the first item's kind (melee: light weapons, then the rest; ranged: weapons of type 3, then the rest), builds the wield entry and hands both groups to FinalConstructWeaponItemEntries, the second with the entry offset
 // Leaf: ?ConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M2@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x005C66B2, 758 bytes, thiscall `ret 24h`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C66B2, 758 bytes, thiscall `ret 24h`. Frame-pointer size TU: optimize("s", on).
 // Identity: Ego_r.pdb / FableWin.pdb ?ConstructWeaponItemEntries@CTCInventoryWeapons@@AAE... (private; the landed ConstructScreen
 //   0x005C8459 calls it for the melee and ranged sub-lists); Ego_r donor 0x0062BB7A.
 // Callees: CTCBase::GetDefinitionManager 0x006869D0, GetDef<CThingBaseDef> 0x0042AF3C, GetSubDef<CWeaponDef> 0x0042B1A6,
@@ -13,7 +13,8 @@
 //   (hoisted identical code). The second call's entry offset is the size of the vector it builds in the ranged branch, as retail
 //   computes it (`sub edi,[ebp-24h]` on the second group in both branches).
 // Name fix (agentNF7 2026-11-10): 0x0042AF3C is CDefinitionManager::GetDef<CThingBaseDef> (FableWin.pdb; NF5/NF6 STATUS): the out handle retyped CDefPointer<const CThingBaseDef> (shared engine/CThingBaseDef.h), so the template binds that instantiation.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

@@ -2,14 +2,15 @@
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CC9AD, 528 bytes (CWideString by value: hidden pointer at [ebp+8], `ret 8`); called once @ 0x005CD6DD.
-// Frame-pointer size TU: optimize("y",off) + ("s",on). `this` is unused.
+// Frame-pointer size TU: optimize("s", on). `this` is unused.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, operator+(const CCharString&, const CCharString&)
 // @ 0x0099F570 (`__fastcall`, hidden result in ecx, left operand in edx), NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 on
 // CMainGameComponent::Get() (0x013B86A0)->TextBank (+0x14).
 // Shape: the landed GetHeroSexualityAsString (0x005CCBBD) form: one `return` per bit test in mask order (HOBBES tests 0x20 || 0x40 and UNDEAD 0x400 || 0x800, which VC7.1 folds to one mask test and places at the end;
 // ICETROLL 0x2000000 is tested after SUMMONER 0x4000000), each the same sum of two temporaries; VC7.1
 // head-merges the `push -1` and tail-merges everything after the per-arm literal push, so only the first arm keeps its own body.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CCharString { public:
     void* PStringData;

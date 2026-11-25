@@ -1,6 +1,6 @@
 // CTCInventoryWeapons::CheckForSoldWieldedWeapons() -- when the wielded melee (then ranged) weapon is gone (IS_THING_DEAD: null or dead, e.g. sold), re-arm from the first carried item (count > 0) whose weapon sub-def has a melee (non-melee) weapon class
 // Leaf: ?CheckForSoldWieldedWeapons@CTCInventoryWeapons@@QAEXXZ
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CB780, 500 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + "s".
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005CB780, 500 bytes, plain `ret`. Frame-pointer size TU: optimize("s",on).
 // Callees: IS_THING_DEAD<CIntelligentPointer<CThing> > @ 0x005CC1B0 (`__fastcall`, out of line), NInventory::CTCInventoryBase::GetAllItems
 //   @ 0x005BF482, CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex @ 0x009AD9E0,
 //   CDefClassBase::GetSubDef<CWeaponDef> @ 0x0042B1A6, CTCWeapon::IsMeleeWeaponClass @ 0x005DA510, SetThingAsActiveWeapon @ 0x005CB2B0,
@@ -10,7 +10,8 @@
 //   CTCInventoryWeapons models (and a fake GetSubDef stand-in body) onto the shared headers, so it binds 0x005BF482 as the const PDB
 //   ?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z (was AAUCItemVector).
 //   The GetSubDef<T> header template body (FABLE_RETAIL_CDEFCLASSBASE_GETSUBDEF_BODY) is what retail's TU saw (the 0x005C8459 recipe).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING

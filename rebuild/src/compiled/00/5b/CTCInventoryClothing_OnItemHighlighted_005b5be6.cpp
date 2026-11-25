@@ -1,5 +1,5 @@
 // CTCInventoryClothing::OnItemHighlighted(long itemDefIndex) -- while the inventory is open, previews the highlighted clothing on the mannequin: a whole suit directly, otherwise the selected clothes with the highlighted piece in its suit part
-// Retail 0x005B5BE6, 274 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Retail 0x005B5BE6, 274 bytes, `ret 4`. Frame-pointer size TU: optimize("s", on).
 // Callees: NInventory::CTCInventoryBase::OnItemHighlighted(long) 0x005BC4C0 (manifest "$E2"), CTCBase::GetDefinitionManager
 // const 0x006869D0, CDefinitionManager::GetDef<CThingBaseDef>(long, CDefPointer<const CThingBaseDef>*) const 0x0042AF3C,
 // CDefClassBase::GetSubDef<CHeroSuitDef> 0x005935C4 and GetSubDef<CAppearanceModifierDef> 0x0057FF92,
@@ -11,7 +11,8 @@
 // Layout (retail): InventoryOpen +0x58, CurrentClothingSelected +0x140, PMannequin +0x158, UseMannequin +0x15C (as the
 // landed ctor 0x005B7049); CAppearanceModifierDef suit part +0x4C.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CThing;

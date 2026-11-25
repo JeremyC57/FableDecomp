@@ -1,5 +1,5 @@
 // NInventory::CTCInventoryBase::CTCInventoryBase(CThing&) -- inventory component ctor: empty containers, selection states 1, cleared def/bank pointers and animation angles, then loads the main graphics bank with the best texture formats and registers for global updates
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFF07, length 409 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BFF07, length 409 bytes, `ret 4`. Frame-pointer size TU: optimize("s", on).
 // Callees: CTCBase::CTCBase(CThing*) 0x00686800, CGraphicDataBankInit ctor 0x00415B80, CDisplayManager format pickers
 // 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::OpenGraphicBank 0x009F83D0,
 // CCountedPointer<CGraphicDataBank>::ReleaseData 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
@@ -9,7 +9,8 @@
 // Layout: local model -- retail CTCInventoryBase is the PDB layout minus 0x14 from the tail (no engine header;
 // offsets from this ctor's stores and from UpdateInventoryAnim 0x005BD699: angles +0xfc..+0x110, def index +0x128).
 // Names: manifest/PDB 0x00686800 "ClockSprite" is the CTCBase ctor (propagated label).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CThing;

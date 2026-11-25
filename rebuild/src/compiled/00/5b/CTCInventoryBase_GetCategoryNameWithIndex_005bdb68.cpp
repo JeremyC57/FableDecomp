@@ -1,12 +1,13 @@
 // CTCInventoryBase::GetCategoryNameWithIndex(long index, CWideString& name) -- copies the display name of category `index` into `name`
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDB68, length 44 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDB68, length 44 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: CCategory::GetCategoryName() const @ 0x005BDAC5 (returns CWideString by value through a hidden pointer),
 // CWideString::operator= @ 0x0099B7D0, CWideString::~CWideString @ 0x0099B510.
 // Retail CTCInventoryBase: no engine header; Categories (0x2C-byte CCategory elements) at +0x20.
 // Shape: the by-value temporary is homed in the dead `index` argument slot (`lea ecx,[ebp+8]`) once the index has
 // been consumed; Categories.first is loaded into eax BEFORE the hidden-pointer push, which needs it in a named local
 // (`Categories[index]` through the accessor re-derives it as `add ecx,[eax+20h]` after the push).
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 class CWideString { public:
     void* m_pData;

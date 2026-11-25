@@ -10,9 +10,9 @@
 // (test @ 0x00410DE0) is consulted first, then the sorted vector map at +0x44 {first, last}
 // of {type, component} pairs is searched with LowerBound @ 0x0040F020 (key by address);
 // a miss (end, or a larger key) yields the end entry, whose value is handed out regardless. The
-// frame pointer and `leave` come from this TU's settings: `#pragma optimize("y",off)` +
-// `("s",on)`. The constant 0xbf is the interface type. One of 25 bodies.
-#pragma optimize("y", off)              // frame pointer kept (`leave`), size-optimised TU
+// frame pointer and `leave` come from this TU's size mode, `#pragma optimize("s",on)`. The constant 0xbf is the interface type. One of 25 bodies.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 class CTCBase;

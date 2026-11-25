@@ -11,13 +11,14 @@
 //     else new_finish = __uninitialized_fill_n(new_finish, fill_len, x, __false_type());
 //     if (!atend) new_finish = __uninitialized_copy(pos, _M_finish, new_finish, __false_type());
 //     _M_clear(); _M_set(new_start, new_finish, new_start + len);
-// Shape: frame-pointer size TU (`optimize("y",off)` + `("s",on)`, `leave`); `(max)` through references (`lea ecx,[ebp+14h] ;
+// Shape: frame-pointer size TU (`optimize("s", on)`, `leave`); `(max)` through references (`lea ecx,[ebp+14h] ;
 // jb ; lea ecx,[ebp-4]`) so old size lives in the frame word that allocate's result then reuses (`and [ebp-4],0` for zero);
 // the __false_type temporaries sit in the high byte of the atend slot (`lea eax,[ebp+1Bh]`); fill_n, _Construct, _M_clear
 // (trivial _Destroy + `if (p) free(p)`) and _M_set are inline. Model follows the landed vector<CCategory> twin 0x005C2C65.
 // Element: a 4-byte class-type value (STLport's traits send class types down the __false_type path); type not established.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                    // 0x00BFEA14

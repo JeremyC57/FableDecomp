@@ -12,8 +12,9 @@
 // destructor only runs the counted pointer's destructor at +8 ([ebp-0Ch]).
 // Model: engine/CItem.h flattens PPerItemData into two raw words (no destructor), so CItem stays row-local with the shared
 // counted pointer as its +8 member; offsets agree with the header (Ego_r.pdb CItem 0x14 bytes).
-// EBP frame + size TU (optimize("y", off), optimize("s", on)), as the landed 0x005C2A5C next to it.
-#pragma optimize("y", off)
+// EBP frame + size TU (optimize("s", on)), as the landed 0x005C2A5C next to it.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CPersistContext;
 class CStringParser;

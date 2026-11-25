@@ -4,8 +4,9 @@
 // Identity (proven): bound ??0?$vector@VCCompositeBlendDesc@@V?$allocator@VCCompositeBlendDesc@@@std@@@std@@QAE@ABV01@@Z (callers 0x006CB390, 0x00BEE280); the landed CEngineTextureMorph copy constructor 0x005BB9FA calls it on Blends (vector<CCompositeBlendDesc>); its range copy is the landed __uninitialized_copy<const CCompositeBlendDesc*, CCompositeBlendDesc*> 0x005BAF28.
 // Callees: _Vector_base<CCompositeBlendDesc>::_Vector_base(size_t, const allocator&) 0x005BAA6B, std::__uninitialized_copy 0x005BAF28 (`__fastcall`).
 // Shape (family M149, representative 0x0059AE54): the landed vector<CEngineTextureMorph> copy constructor 0x005BBDF1 with a
-//   power-of-two stride (`sar eax,4` instead of the idiv); `optimize("y", off)` + `optimize("s", on)`.
-#pragma optimize("y", off)
+//   power-of-two stride (`sar eax,4` instead of the idiv); `optimize("s", on)`.
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 class CCompositeBlendDesc {                              // 16 bytes in retail
 public:

@@ -1,7 +1,7 @@
 // CTCInventoryWeapons::GetActiveMeleeWeaponDamage() const -- the active melee weapon's damage while that weapon thing is alive, else 0
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed; map pointer made const (the row grades the const LowerBound).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C4769, length 108 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C4769, length 108 bytes. Frame-pointer size TU: optimize("s", on)
 // (`fldz ; fstp` zero). Ego_r.pdb: ?GetActiveMeleeWeaponDamage@CTCInventoryWeapons@@QBEMXZ.
 // Callees: IS_THING_ALIVE<CIntelligentPointer> @ 0x004CC340 (`__fastcall`), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound @ 0x004365B0 (the inline CThing::GetInterface for interface 0x48,
@@ -15,7 +15,8 @@
 //   FableWin.pdb ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z. Other row-local
 //   models unchanged (in place).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL

@@ -5,7 +5,8 @@
 //   dtor 0x0042AB73, list<long>::erase 0x00429B02 and GetAppearanceModifierList 0x00706800 bound under their real spellings; the ctor keeps
 //   its same-TU out-of-line body (R&D I-3 below), now the STLport _List_base body as an explicit specialisation.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_STLP_LIST
 #define FABLE_RETAIL_STLP_LIST_BASE_OUTOFLINE

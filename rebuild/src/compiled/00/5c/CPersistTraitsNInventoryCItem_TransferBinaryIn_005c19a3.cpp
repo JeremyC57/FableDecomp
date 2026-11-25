@@ -5,7 +5,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C19A3, 1165 bytes, EBP frame, `ret 8` (traits `this` unused); same TU as the
-//   landed GFSerialiseVectorBinaryIn 0x005C2AD8 (size TU: `#pragma optimize("y", off)` + `("s", on)`).
+//   landed GFSerialiseVectorBinaryIn 0x005C2AD8 (size TU: `#pragma optimize("s", on)`).
 // Ego_r.pdb / FableWin.pdb: this leaf; NInventory::CPerItemData (retail 0x24 bytes: STLport vector<long> 0xC, NumberOfKills +0xC,
 //   TimeWielded +0x10, BestTrophyWitnessesAheadToDate +0x14, QuestPersistent +0x18, QuestPersistentRefCount +0x1C,
 //   BestFishWeight +0x20 -- the inline default ctor leaves the fish weight unset); ??0CItem@NInventory@@QAE@JJPBVCPerItemData@1@J@Z.
@@ -22,7 +22,8 @@
 //   NInventory::CItem / CPerItemData models are row-local as in the landed same-TU siblings 0x005C2AD8 / 0x00614AF0
 //   (engine/CItem.h flattens the counted pointer; the retail CDataInputStream branch has no ReadString; see NOTES.md).
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_DEF_CLASS_BASE

@@ -1,0 +1,132 @@
+addr       parity           behav  name
+005b28f8   RELOCATION_MATCH PASS   insert_unique
+005b2b76   WARN STANDIN_LEAF ?insert_unique@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@2@@Z (catalog std::_Rb_tree<NUISystem::CComponent *, std::pair<NUISystem::CComponent *const, std::pair<CWideString, long>>, std::_Select1st<std::pair<NUISystem::CComponent *const, std::pair<CWideString, long>>>, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, std::pair<CWideString, long>>>>::insert_unique; names another function)
+005b2b76   RELOCATION_MATCH PASS   insert_unique
+005b2cb5   RELOCATION_MATCH PASS   insert_unique
+005b358c   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005b358c   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b358c   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b358c   RELOCATION_MATCH PASS   CreateMenuDesc
+005b3613   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005b3613   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b3613   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b3613   RELOCATION_MATCH PASS   CreateMenuDescPC
+005b406d   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+005b406d   RELOCATION_MATCH PASS   SetThingAsWearingSelectedClothes
+005b425b   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers (engine/CTCHeroAttachableAppearanceModifiers.h)
+005b425b   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b425b   RELOCATION_MATCH PASS   ResetMannequin
+005b4771   RELOCATION_MATCH PASS   AddClothingMenuEntry
+005b4a95   RELOCATION_MATCH PASS   GetCurrentTotalArmorValue
+005ba8cf   RELOCATION_MATCH PASS   _M_insert
+005bad5b   RELOCATION_MATCH PASS   insert_unique
+005bb85a   WARN STANDIN_LEAF ?insert_unique@?$_Rb_tree@W4EClothingSuitPart@@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@U?$less@W4EClothingSuitPart@@@3@V?$allocator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EClothingSuitPart@@_N@std@@@2@@2@U32@ABU?$pair@$$CBW4EClothingSuitPart@@_N@2@@Z (catalog _global::CMemoryAllocatorVariableSize_InsertOrFind_24Byte; names another function)
+005bb85a   RELOCATION_MATCH PASS   CMemoryAllocatorVariableSize_InsertOrFind_24Byte
+005bc3ed   RELOCATION_MATCH PASS   GFGetGraphicFrame
+005bcea4   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005bcea4   RELOCATION_MATCH PASS   UpdateInventoryAnimXAxis
+005bcef8   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005bcef8   RELOCATION_MATCH PASS   UpdateInventoryAnimZAxis
+005bd5db   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005bd5db   RELOCATION_MATCH PASS   GetCategoryWithAssociationThing
+005bd630   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bd630   WARN SHARED_HEADER_AVAILABLE CCategory (engine/CCategory.h)
+005bd630   MATCH            PASS   GetCategoryWithIdentifier
+005bd699   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005bd699   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005bd699   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005bd699   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005bd699   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bd699   RELOCATION_MATCH PASS   UpdateInventoryAnim
+005bdac5   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bdac5   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005bdac5   RELOCATION_MATCH PASS   GetCategoryName
+005bdc77   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC (engine/CThingFilter_HasTC.h)
+005bdc77   WARN SHARED_HEADER_AVAILABLE CThingSearchTools (engine/CThingSearchTools.h)
+005bdc77   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bdc77   RELOCATION_MATCH PASS   GetInventoryGuildValidity
+005bdec1   WARN RELOC_NAME: ?FindItemOfType@@YIPAUCItem_Methods@@PAU1@0USItemTypeBinder@@@Z -> 005c13e3 labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005bdec1   RELOCATION_MATCH PASS   SelectItemOfType
+005bdf08   RELOCATION_MATCH PASS   GetNumberOfItemsOfTypeInInventory
+005bdfb1   RELOCATION_MATCH PASS   SelectItemWithDefIndex
+005be028   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005be028   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents (engine/CTCEntityEvents.h)
+005be028   WARN SHARED_HEADER_AVAILABLE CTCHero (engine/CTCHero.h)
+005be028   WARN RELOC_NAME: ?IsTutorialSubDefItem@@YI_NJ@Z -> 005d98b0 labelled 'CTCInventoryItem::IsStockItem'
+005be028   RELOCATION_MATCH PASS   OnItemAdded
+005be119   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+005be119   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+005be119   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+005be119   WARN SHARED_HEADER_AVAILABLE CTCShop (engine/CTCShop.h)
+005be119   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+005be119   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005be119   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+005be119   RELOCATION_MATCH PASS   GetInventoryShoppingValidity
+005be839   RELOCATION_MATCH PASS   GetBoughtPrice
+005be85b   RELOCATION_MATCH PASS   GetSlotWithItemsOfType
+005be8b1   RELOCATION_MATCH PASS   GetPerItemDataForItem
+005beaf5   RELOCATION_MATCH PASS   GetAllSelectedItems
+005bf060   RELOCATION_MATCH PASS   AddItem
+005bf221   WARN RELOC_NAME: ??$find_if@PAVCItem@NInventory@@VCIsSameItemType@@@std@@YIPAVCItem@NInventory@@PAV12@0VCIsSameItemType@@@Z -> 005c190b labelled 'std::vector<std::pair<long,CCountedPointer<CContainmentVolume>_>,std::allocator<std::pair<long,CCountedPointer<CContainmentVolume>_>_>_>::_Ucopy<std::pair<long,CCountedPointer<CContainmentVolume>_>*>'
+005bf221   RELOCATION_MATCH PASS   RemoveItem
+005bf24a   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bf24a   RELOCATION_MATCH PASS   RemoveSelectedItem
+005bf5a4   RELOCATION_MATCH PASS   AddItem
+005bf8cb   RELOCATION_MATCH PASS   InitialiseInventoryWithItems
+005bfb01   RELOCATION_MATCH PASS   ConfiscateItems
+005bfb96   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005bfb96   WARN SHARED_HEADER_AVAILABLE CInventoryDef (engine/CInventoryDef.h)
+005bfb96   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bfb96   WARN SHARED_HEADER_AVAILABLE CItem (engine/CItem.h)
+005bfb96   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bfb96   WARN RELOC_NAME: ??1CItemVector@@QAE@XZ -> 005c1e30 labelled '_global::StdList_Dtor_005c1e30'
+005bfb96   RELOCATION_MATCH PASS   Copy
+005bfcd9   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005bfcd9   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005bfcd9   RELOCATION_MATCH PASS   CCategory
+005bff07   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005bff07   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+005bff07   RELOCATION_MATCH PASS   CTCInventoryBase
+
+WINS: 38
+  005b28f8 RELOCATION_MATCH std::_Rb_tree<K, pair<const K, T>, ...>::?insert_unique@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@PAVCList@2@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@PAVCList@2@@2@@Z
+  005b2b76 RELOCATION_MATCH std::_Rb_tree<K, pair<const K, T>, ...>::?insert_unique@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@U?$pair@VCWideString@@J@std@@@2@@Z
+  005b2cb5 RELOCATION_MATCH std::_Rb_tree<K, pair<const K, T>, ...>::?insert_unique@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@QAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@QAVCComponent@NUISystem@@PAV12@@2@@Z
+  005b358c RELOCATION_MATCH CTCInventoryClothing::?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  005b3613 RELOCATION_MATCH CTCInventoryClothing::?CreateMenuDescPC@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  005b406d RELOCATION_MATCH CTCInventoryClothing::?SetThingAsWearingSelectedClothes@CTCInventoryClothing_Retail@@QAEXPAVCThing@@@Z
+  005b425b RELOCATION_MATCH CTCInventoryClothing::?ResetMannequin@CTCInventoryClothing@@QAEXXZ
+  005b4771 RELOCATION_MATCH CTCInventoryClothing::AddClothingMenuEntry
+  005b4a95 RELOCATION_MATCH CTCInventoryClothing::?GetCurrentTotalArmorValue@CTCInventoryClothing@@QBEJXZ
+  005ba8cf RELOCATION_MATCH std::_Rb_tree<EClothingSuitPart,EClothingSuitPart,_Identity<EClothingSuitPart>,less<EClothingSuitPart>,allocator<EClothingSuitPart> >::?_M_insert@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@AAE?AU?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@2@PAU_Rb_tree_node_base@2@0ABW4EClothingSuitPart@@0@Z
+  005bad5b RELOCATION_MATCH std::_Rb_tree<EClothingSuitPart,EClothingSuitPart,_Identity<EClothingSuitPart>,less<EClothingSuitPart>,allocator<EClothingSuitPart> >::?insert_unique@?$_Rb_tree@W4EClothingSuitPart@@W41@U?$_Identity@W4EClothingSuitPart@@@std@@U?$less@W4EClothingSuitPart@@@3@V?$allocator@W4EClothingSuitPart@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@W4EClothingSuitPart@@U?$_Nonconst_traits@W4EClothingSuitPart@@@std@@@std@@_N@2@ABW4EClothingSuitPart@@@Z
+  005bb85a RELOCATION_MATCH std::_Rb_tree<EClothingSuitPart, pair<const EClothingSuitPart, bool>, ...>::?insert_unique@?$_Rb_tree@W4EClothingSuitPart@@
+  005bc3ed RELOCATION_MATCH _global::?GFGetGraphicFrame@?A
+  005bcea4 RELOCATION_MATCH CTCInventoryBase::UpdateInventoryAnimXAxis
+  005bcef8 RELOCATION_MATCH CTCInventoryBase::UpdateInventoryAnimZAxis
+  005bd5db RELOCATION_MATCH CTCInventoryBase::GetCategoryWithAssociationThing
+  005bd630 MATCH CTCInventoryBase::GetCategoryWithIdentifier
+  005bd699 RELOCATION_MATCH CTCInventoryBase::UpdateInventoryAnim
+  005bdac5 RELOCATION_MATCH CCategory::GetCategoryName
+  005bdc77 RELOCATION_MATCH CTCInventoryBase::GetInventoryGuildValidity
+  005bdec1 RELOCATION_MATCH CCategory::SelectItemOfType
+  005bdf08 RELOCATION_MATCH CTCInventoryBase::?GetNumberOfItemsOfTypeInInventory@CTCInventoryBase@NInventory@@QBEJJ@Z
+  005bdfb1 RELOCATION_MATCH NInventory::CTCInventoryBase::?SelectItemWithDefIndex@CTCInventoryBase@NInventory@@IAEXJ@Z
+  005be028 RELOCATION_MATCH NInventory::CTCInventoryBase::?OnItemAdded@CTCInventoryBase@NInventory@@MAEXJ_N0@Z
+  005be119 RELOCATION_MATCH CTCInventoryBase::GetInventoryShoppingValidity
+  005be839 RELOCATION_MATCH NInventory::CCategory::?GetBoughtPrice@CCategory@NInventory@@QBEJJ@Z
+  005be85b RELOCATION_MATCH NInventory::CCategory::?GetSlotWithItemsOfType@CCategory@NInventory@@ABEJJ@Z
+  005be8b1 RELOCATION_MATCH NInventory::CCategory::?GetPerItemDataForItem@CCategory@NInventory@@QBEPBVCPerItemData@2@J@Z
+  005beaf5 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetAllSelectedItems@CTCInventoryBase@NInventory@@IBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+  005bf060 RELOCATION_MATCH NInventory::CCategory::?AddItem@CCategory@NInventory@@QAE_NJ_NJJ@Z
+  005bf221 RELOCATION_MATCH CCategory::?RemoveItem@CCategory@NInventory@@QAEXJJ@Z
+  005bf24a RELOCATION_MATCH CCategory::RemoveSelectedItem
+  005bf5a4 RELOCATION_MATCH NInventory::CCategory::?AddItem@CCategory@NInventory@@QAE_NAAVCThing@@_NJ@Z
+  005bf8cb RELOCATION_MATCH NInventory::CTCInventoryBase::?InitialiseInventoryWithItems@CTCInventoryBase@NInventory@@AAEXABV?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@@Z
+  005bfb01 RELOCATION_MATCH NInventory::CTCInventoryBase::?ConfiscateItems@CTCInventoryBase@NInventory@@MAEX
+  005bfb96 RELOCATION_MATCH NInventory::CTCInventoryBase::?Copy@CTCInventoryBase
+  005bfcd9 RELOCATION_MATCH CIntelligentPointer<CThing>::??0CCategory_Retail
+  005bff07 RELOCATION_MATCH NInventory::CTCInventoryBase::??0CTCInventoryBase

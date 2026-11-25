@@ -1,6 +1,6 @@
 # NF415 hand-back (2026-11-25): wide empty string, bare-integer strings, data addresses, detector pass 2
 
-13 rows, all ACCEPT, landed as `2026-11-25_landing_nf415_b1..b4` (RELOCATION_MATCH PASS, 0 LITERAL_DIFF).
+13 rows, all ACCEPT, landed as `2026-11-24_landing_nf415_b1..b4` (RELOCATION_MATCH PASS, 0 LITERAL_DIFF).
 - b1 004fdab0 + 004a05c0: file-static `s_Empty` / `s_HeroStateExt` arrays -> `L""` / `L".hs"`; table lines `_s_Empty`, `_s_HeroStateExt` deleted.
 - b2 six rows passed a string VA as a bare integer -> spelt literal (cast to the stand-in's existing `int`; the cast goes with the T3 ports).
 - b3 00a66550 baked float-pool read -> `return 0.0f;` (`__real@00000000`).

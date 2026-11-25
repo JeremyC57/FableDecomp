@@ -8,7 +8,8 @@
 // Shape (family K001, representative 0x0042C1C1): the landed speed-TU hinted insert 0x00AD5030 in a frame/size TU, its iterator
 //   ++/-- going through the _Rb_global helpers; the signed key compares (jle / jl / setl). The helpers' STLport bodies sit in
 //   this TU as noinline stand-ins: VC7.1 then sees they write no memory and keeps v's key in a register across the steps.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14

@@ -5,7 +5,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD931, length 58 bytes.
 // Shape: the EBP frame with the 4-byte counted temporary at [ebp-4], the maximum in esi across the release, `leave`.
 #include "fable_compiler.h"
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: this row's object is byte-identical without it (size mode keeps the
+//   leaf's frame; T3 nf416 audit).
 #pragma optimize("s", on)
 #include "engine/CItem.h"
 struct CIVCountedPointeeVirtual {

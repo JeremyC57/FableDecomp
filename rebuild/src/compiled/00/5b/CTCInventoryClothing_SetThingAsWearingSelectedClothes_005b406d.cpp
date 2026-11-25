@@ -2,7 +2,7 @@
 // Leaf: ?SetThingAsWearingSelectedClothes@CTCInventoryClothing_Retail@@QAEXPAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B406D, length 121 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B406D, length 121 bytes. Frame-pointer size TU: optimize("s", on).
 // Callees: std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 // CTCHeroAttachableAppearanceModifiers::RemoveAllAppearanceModifiers(type) @ 0x00706640 and
 // AddAppearanceModifierWithReplace(long) @ 0x00706950 (interface 0x5E), the STLport tree successor
@@ -11,7 +11,8 @@
 // re-reads end() (the header pointer) every pass and only positive item indices are applied.
 // Layout: engine/CTCInventoryClothing.h (PDB) has CurrentClothingSelected at +0x15C with 16-byte containers; retail has
 // 12-byte containers and a narrower base, so the map (header pointer first) sits at +0x140 and a local view carries the PDB name.
-#pragma optimize("y", off)
+// NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
+//   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
 
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
