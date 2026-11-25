@@ -40,7 +40,6 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CTCHeroExperience;                       // interface 0x68
 struct CExperienceRequirements {                // the +0x13c sub-object of the creature's +0x1e8 record
-    bool IsMetBy(const CTCHeroExperience* experience) const;   // 0x00851B50
 };
 struct CCreatureRecord1E8 {                     // unidentified
     unsigned char           _pad00[0x13c];
@@ -58,6 +57,10 @@ struct CTCWeapon_Getters : CTCWeapon {
     EWeaponClass GetWeaponClass() const;        // 0x005DA7F0
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00851B50 ?IsValid@CHeroAbilityStatPackage@@QBE_NABVCTCHeroExperience@@@Z (was ?IsMetBy@CExperienceRequirements@@QBE_NPBVCTCHeroExperience@@@Z)
+class CHeroAbilityStatPackage { public: bool IsValid(CTCHeroExperience const&) const; };
 bool CTCWeapon::IsUsableBy(const CThing& thing) const
 {
     if (thing.GetTypeFlags() & 8) {
@@ -73,7 +76,7 @@ bool CTCWeapon::IsUsableBy(const CThing& thing) const
         case WEAPON_CLASS_3:
             return true;
         case WEAPON_CLASS_2:
-            return thing.HasTC(TCI_BERSERK) || record->Requirements.IsMetBy(experience);
+            return thing.HasTC(TCI_BERSERK) || reinterpret_cast<const CHeroAbilityStatPackage*>(&(record->Requirements))->IsValid(*(experience));
         }
     }
     return false;

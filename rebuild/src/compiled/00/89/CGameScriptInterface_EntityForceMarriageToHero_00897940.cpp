@@ -106,6 +106,10 @@ struct CTCWife_Retail { void Marry(bool b); };     // 0x006D18A0
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006D18A0 ?Marry@CTCWife@@QAEX_N@Z (was ?Marry@CTCWife_Retail@@QAEX_N@Z)
+class CTCWife { public: void Marry(bool); };
 void CGameScriptInterface::EntityForceMarriageToHero(const CScriptThing& thing, bool b) const
 {
     CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
@@ -113,6 +117,6 @@ void CGameScriptInterface::EntityForceMarriageToHero(const CScriptThing& thing, 
         EntitySetAsMarryable(thing, true);
         CTCWife_Retail* wife;
         if (GetTCOut(t, 0xd7, &wife))
-            wife->Marry(b);
+            reinterpret_cast<CTCWife*>(wife)->Marry(b);
     }
 }

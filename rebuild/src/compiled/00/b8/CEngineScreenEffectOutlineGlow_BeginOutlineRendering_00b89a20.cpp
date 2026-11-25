@@ -80,7 +80,6 @@ class CRGBColour { public:
 };
 
 struct CRenderManagerCore {
-    void Clear(const CRGBColour& colour, unsigned long flags);   // 0x009D8CF0
 };
 extern CRenderManagerCore* g_pRenderManagerCore;  // 0x01436E18
 
@@ -107,6 +106,10 @@ struct CEngineScreenEffectOutlineGlow_Begin : CEngineScreenEffectOutlineGlow {
     void BeginOutlineRendering();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009D8CF0 ?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z (was ?Clear@CRenderManagerCore@@QAEXABVCRGBColour@@K@Z)
+class CRenderManager2D { public: void ClearRenderTarget(CRGBColour const&, unsigned long); };
 void CEngineScreenEffectOutlineGlow_Begin::BeginOutlineRendering()
 {
     if (IsActive()) {
@@ -127,6 +130,6 @@ void CEngineScreenEffectOutlineGlow_Begin::BeginOutlineRendering()
         CRenderTarget target;
         target.AttachTarget(OutlineTexture->GetSurfaceLevel(0));
         NEngineInternal::GPDisplayManager->SetRenderTarget(target);
-        g_pRenderManagerCore->Clear(CRGBColour(0, 0, 0, 0), 4);
+        reinterpret_cast<CRenderManager2D*>(g_pRenderManagerCore)->ClearRenderTarget(CRGBColour(0, 0, 0, 0), 4);
     }
 }

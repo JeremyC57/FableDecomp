@@ -108,8 +108,6 @@ class CEngineInternalPrimitiveAttached : public CEnginePersistentPrimitiveBase {
 public:
     unsigned char _body[0xdc - 0xc];
     CEngineInternalPrimitiveAttached();            // 0x00B3A910
-    bool Attach(const CEnginePrimitive& primitive, const CEnginePrimitiveAttachmentInfo& info,
-                const CEnginePrimitiveHandle& parent, long boneIndex, unsigned long flags);   // 0x00B396E0
 };
 
 template <class T> struct CRetailList {            // STLport list: header node pointer
@@ -153,6 +151,10 @@ public:
                               long boneIndex, unsigned long flags);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00B396E0 ?Update@CEngineInternalAttachedPrimitive@@QAE_NABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABVCEnginePrimitiveHandle@@JK@Z (was ?Attach@CEngineInternalPrimitiveAttached@@QAE_NABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABVCEnginePrimitiveHandle@@JK@Z)
+class CEngineInternalAttachedPrimitive { public: bool Update(CEnginePrimitive const&, CEnginePrimitiveAttachmentInfo const&, CEnginePrimitiveHandle const&, long, unsigned long); };
 void CEnginePrimitiveAttachmentManager::SetAttachedPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive,
                                                              const CEnginePrimitiveAttachmentInfo& info,
                                                              const CEnginePrimitiveHandle& parent, long boneIndex,
@@ -165,6 +167,6 @@ void CEnginePrimitiveAttachmentManager::SetAttachedPrimitive(CEnginePrimitiveHan
         AttachedPrimitives.push_back(attached);
     }
     CEngineInternalPrimitiveAttached* attachedPrimitive = static_cast<CEngineInternalPrimitiveAttached*>(handle.Data.Object);
-    if (!attachedPrimitive->Attach(primitive, info, parent, boneIndex, flags))
+    if (!reinterpret_cast<CEngineInternalAttachedPrimitive*>(attachedPrimitive)->Update(primitive, info, parent, boneIndex, flags))
         handle.Clear();
 }

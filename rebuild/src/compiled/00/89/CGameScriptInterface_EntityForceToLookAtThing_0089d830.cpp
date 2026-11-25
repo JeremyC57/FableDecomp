@@ -105,11 +105,16 @@ struct CTCTargetingBase_Retail { void SetPScriptOverrideInterestingThing(CThing_
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007F5890 ?SetPScriptOverrideInterestingThing@CTCTargetingBase@@QAEXPAVCThing@@@Z (was ?SetPScriptOverrideInterestingThing@CTCTargetingBase_Retail@@QAEXPAUCThing_Retail@@@Z)
+class CThing;
+class CTCTargetingBase { public: void SetPScriptOverrideInterestingThing(CThing*); };
 void CGameScriptInterface::EntityForceToLookAtThing(const CScriptThing& thing, const CScriptThing& target) const
 {
     if (thing.IsAlive() && ((CThing_Retail*)thing.GetPThing()) != ((CThing_Retail*)target.GetPThing())) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->HasTC(0x8))
-            ((CTCTargetingBase_Retail*)GetTC(t, 0x8))->SetPScriptOverrideInterestingThing(((CThing_Retail*)target.GetPThing()));
+            reinterpret_cast<CTCTargetingBase*>(((CTCTargetingBase_Retail*)GetTC(t, 0x8)))->SetPScriptOverrideInterestingThing(reinterpret_cast<CThing*>(((CThing_Retail*)target.GetPThing())));
     }
 }

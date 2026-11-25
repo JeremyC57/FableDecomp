@@ -36,10 +36,13 @@ class CTCBoss { public:                                // interface 0xad
 public:
     bool IsReadyForPhaseChange() const;   // 0x007AEE90
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006EDC50 ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (was ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z)
 class CCombatManager { public:
     // NF122 (2026-11-20, q4266): Ego_r.pdb 0x007173E0 / FableWin.pdb 0x02412E40 ?DeregisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z (by reference; engine/CCombatManager.h); was DeregisterCombatant(CThingCreatureBase*).
     void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
-    void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
+    void RegisterCombatant(CThingCreatureBase&, CThingCreatureBase&, bool);   // 0x006EDC50
 };
 class CWorld { public:
     unsigned char _pad0[0x4c];
@@ -118,7 +121,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
         {
             CThingCreatureBase* creature = GetCreature();
             CCombatManager* combat = GetWorld().PCombatManager;
-            combat->RegisterCombatant(creature, PTarget.Get(), true);
+            combat->RegisterCombatant(*reinterpret_cast<CThingCreatureBase*>(creature), *reinterpret_cast<CThingCreatureBase*>(PTarget.Get()), true);
         }
         boss->IncrementBossPhase();
         break;

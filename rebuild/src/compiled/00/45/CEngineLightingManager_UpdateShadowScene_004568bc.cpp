@@ -17,6 +17,11 @@ extern void __stdcall Marker(const char* s);
 struct ObjA { int* Fetch(SVec2* out); };
 struct ObjB { void Apply(SVec2* p); };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00993F90 ?Write2DVector@CDataOutputStream@@QAEXABVC2DVector@@@Z (was ?Apply@ObjB@@QAEXPAUSVec2@@@Z)
+class C2DVector;
+class CDataOutputStream { public: void Write2DVector(C2DVector const&); };
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, SVec2* out)
 {
     SVec2 tmp;
@@ -29,7 +34,7 @@ void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager*
         break;
     }
     case 3:
-        ((ObjB*)self->objB)->Apply(out);
+        reinterpret_cast<CDataOutputStream*>(((ObjB*)self->objB))->Write2DVector(*reinterpret_cast<C2DVector const*>(out));
         break;
     }
 }

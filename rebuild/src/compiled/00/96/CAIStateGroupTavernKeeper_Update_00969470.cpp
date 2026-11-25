@@ -86,7 +86,6 @@ struct CTCPhysicsBase {
     float Radius;                               // +0x34
 };
 struct CThingBuildingModel : CThing {
-    bool IsPointInside(const C3DVector& pos);   // 0x0082D000
 };
 struct CThingPos : CThing {                     // no data of its own: PBody is CThing's +0x60
 };
@@ -122,6 +121,10 @@ struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
 // Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x004C7950 ?GetPhysPos@CThing@@QBE?AVC3DVector@@XZ (was ?GetPhysPos@CThingPos@@QBE?AVC3DVector@@XZ)
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0082D000 ?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z (was ?IsPointInside@CThingBuildingModel@@QAE_NABVC3DVector@@@Z)
+class CThingBuilding { public: bool IsPointInside(C3DVector const&) const; };
 void CAIStateGroup_TavernKeeper::Update()
 {
     CTCShopKeeper* shopKeeper;
@@ -132,7 +135,7 @@ void CAIStateGroup_TavernKeeper::Update()
     ((CTCVillageMember*)scratch)->GetPVillage();
     CThingPos* creature = (CThingPos*)GetCreature();
     CThingBuildingModel* pub = (CThingBuildingModel*)PPub.GetPItem();
-    if (!pub->IsPointInside(creature->GetPos())) {
+    if (!reinterpret_cast<const CThingBuilding*>(pub)->IsPointInside(creature->GetPos())) {
         bool arrived;
         CTCPhysicsBase* body = ((CThingPos*)PPub.GetPItem())->GetPhysicsTC();
         CThingPos* pubThing = (CThingPos*)PPub.GetPItem();

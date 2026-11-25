@@ -4,7 +4,6 @@
 // at +0). Shape: the count increment and the flag byte test are interleaved (`mov edx ; mov al ; inc edx ; test al,7 ; mov [count],edx ; je`), the owner null test
 // sits between `and al,0F8h` and the byte store.
 struct CSceneGridOwner_00b91710 {
-    void InvalidateAll();                          // 0x00B91710
 };
 
 class CEngineSceneGridCell;
@@ -15,6 +14,9 @@ class CEngineInternalPrimitiveBase { public:
     void AddToList(CEngineInternalPrimitiveBase**a0);                    // 0x00B8FDF0
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00B91710 ?InvalidateAll@CEngineSceneGridCell@@AAEXXZ (was ?InvalidateAll@CSceneGridOwner_00b91710@@QAEXXZ)
 class CEngineSceneGridCell { public:
     CSceneGridOwner_00b91710* m_pOwner;            // +0x00
     unsigned char             m_list[0x30];        // +0x04 .. +0x34 (the primitive list head)
@@ -22,7 +24,7 @@ class CEngineSceneGridCell { public:
     unsigned char             _pad38[0xc];
     unsigned char             m_dirtyFlags;        // +0x44
     void AddPrimitive(CEngineInternalPrimitiveBase* primitive);
-};
+ private: void InvalidateAll(); public:  };
 
 void CEngineSceneGridCell::AddPrimitive(CEngineInternalPrimitiveBase* primitive)
 {
@@ -32,6 +34,6 @@ void CEngineSceneGridCell::AddPrimitive(CEngineInternalPrimitiveBase* primitive)
     if (m_dirtyFlags & 7) {
         m_dirtyFlags &= ~7;
         if (m_pOwner)
-            m_pOwner->InvalidateAll();
+            reinterpret_cast<CEngineSceneGridCell*>(m_pOwner)->InvalidateAll();
     }
 }

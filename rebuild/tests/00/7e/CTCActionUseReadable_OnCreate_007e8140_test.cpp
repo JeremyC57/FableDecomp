@@ -16,14 +16,15 @@ struct Owner {
     char  pad[0x14 - 8];
     int   f14;
     void  OnCreate();
-    void  Base_OnCreate();
 };
 
 static int   g_base_called = 0;
 static void* g_cons_self   = 0;
 static int   g_arg_val     = 0;
 
-void Owner::Base_OnCreate()
+// Naming (NF443, 2026-11-25; NF438 q2): the callee stub is renamed with the row to its PDB spelling ?OnCreate@CTCActionUseBase@@UAEXXZ (was ?Base_OnCreate@Owner@@QAEXXZ).
+class CTCActionUseBase { public: virtual void OnCreate(); };
+void CTCActionUseBase::OnCreate()
 {
     g_base_called = 1;
 }

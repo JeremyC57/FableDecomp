@@ -9,12 +9,15 @@
 #include "engine/CTCWife.h"
 #undef CTCWife
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006D18A0 ?Marry@CTCWife@@QAEX_N@Z (was ?Marry@CTCWife_Confirm@@QAEX_N@Z)
 class CTCWife : public CTCWifeLayout
 {
 public:
     bool IsOfferingSex() const;   // 0x006CEEA0
     bool IsWillingToMarry() const;   void HaveSex();   // 0x006CFEC0; HaveSex 0x006CF920 (Ego_r + FableWin ?HaveSex@CTCWife@@QAEXXZ; NF334: moved here from CTCWife_Confirm)
-};
+ public: void Marry(bool); };
 
 class CWorld {
 public:
@@ -23,7 +26,6 @@ public:
 
 struct CTCWife_Confirm : CTCWife {
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
-    void Marry(bool fromScript);                            // 0x006D18A0
     // void HaveSex();                                         // 0x006CF920
     void ReceivedConfirmation(bool confirmed);
 };
@@ -33,7 +35,7 @@ void CTCWife_Confirm::ReceivedConfirmation(bool confirmed)
     if (confirmed) {
         if (!IsMarriedToThePlayer()) {
             if (IsWillingToMarry())
-                Marry(false);
+                reinterpret_cast<CTCWife*>(this)->Marry(false);
         }
         if (IsMarriedToThePlayer()) {
             if (IsOfferingSex())

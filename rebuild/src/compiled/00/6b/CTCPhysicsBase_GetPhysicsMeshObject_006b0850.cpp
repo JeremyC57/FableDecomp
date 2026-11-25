@@ -43,7 +43,6 @@ class CPhysicsMeshInfo { public:
     CIVCountedPointer<const CPhysicsMesh> GetMesh() const;   // 0x00A262B0 ?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ
 };
 struct CMeshBank {
-    CPhysicsMeshInfo* GetPhysicsMeshInfo(long index);  // 0x00A24250
 };
 class CWorld { public:
     unsigned char _pad00[0x3c];
@@ -89,10 +88,14 @@ class CTCPhysicsBase : public CTCBase { public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A24250 ?PeekPhysicsMeshInfo@CMeshDataBank@@QBEPBVCPhysicsMeshInfo@@K@Z (was ?GetPhysicsMeshInfo@CMeshBank@@QAEPAVCPhysicsMeshInfo@@J@Z)
+class CMeshDataBank { public: CPhysicsMeshInfo const* PeekPhysicsMeshInfo(unsigned long) const; };
 CPhysicsMeshObject CTCPhysicsBase::GetPhysicsMeshObject() const
 {
     const CThingPhysicsMeshInfo* info = GetPhysicsMeshInfo();
     CMeshBank* bank = PeekWorld().PMeshBank;
-    CPhysicsMeshInfo* meshInfo = bank->GetPhysicsMeshInfo(info->BankIndex);
+    CPhysicsMeshInfo* meshInfo = ((CPhysicsMeshInfo*)(reinterpret_cast<const CMeshDataBank*>(bank)->PeekPhysicsMeshInfo(info->BankIndex)));
     return CPhysicsMeshObject(meshInfo->GetMesh(), Position, GetRightHandedSet(), info->RenderSizeX * 0.01f);
 }

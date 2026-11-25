@@ -55,7 +55,11 @@ struct MazeThing : public CThing {char base[0x20];unsigned long masks[9];MazeTab
 FABLE_FORCEINLINE void GetBoss(CTCBoss** out){if(masks[5]&0x2000)*out=(CTCBoss*)MazeLookup<173>(table);}
 FABLE_FORCEINLINE void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)MazeLookup<8>(table);}
 };
-class CCombatManager{ public:void RegisterCombatant(MazeThing*,MazeThing*,bool);}; //006edc50
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006EDC50 ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (was ?RegisterCombatant@CCombatManager@@QAEXPAUMazeThing@@0_N@Z)
+class CThingCreatureBase;
+class CCombatManager{ public:void RegisterCombatant(CThingCreatureBase&, CThingCreatureBase&, bool);}; //006edc50
 #ifndef _MSC_VER
 class CWorld{ public:char prefix[0x4c];CCombatManager* PThingCombatManager_ptr;};
 #endif
@@ -72,5 +76,5 @@ CTCBoss* boss;Creature()->GetBoss(&boss);
 if(boss->GetBossPhase()==0)boss->SetPhaseStartPos(Creature()->GetPos());
 MazeThing* target=((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem());MazeCombat* combat;Creature()->GetCombat(&combat);
 combat->target=MazeCreaturePointer(target);
-if(((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem())->flags&8){MazeThing* opponent=((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem());MazeThing* actor=Creature();CWorld* world=&GetWorld();world->PThingCombatManager_ptr->RegisterCombatant(actor,opponent,true);}
+if(((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem())->flags&8){MazeThing* opponent=((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem());MazeThing* actor=Creature();CWorld* world=&GetWorld();world->PThingCombatManager_ptr->RegisterCombatant(*reinterpret_cast<CThingCreatureBase*>(actor),*reinterpret_cast<CThingCreatureBase*>(opponent),true);}
 }

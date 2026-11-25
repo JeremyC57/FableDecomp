@@ -196,7 +196,6 @@ class CCombatActionBase { public:
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;                   // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    CWorld* GetPWorld() const;                         // 0x00692940
 };
 
 class CCreatureAction_BriarRoseShotFarOutof : public CCombatActionBase { public:
@@ -204,6 +203,11 @@ class CCreatureAction_BriarRoseShotFarOutof : public CCombatActionBase { public:
     virtual void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692940 ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (was ?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ)
+class CCreatureAction_BriarRoseShotFarOutof;
+class CCreatureActionBase { public: protected: CWorld& GetWorld(); public: friend class ::CCreatureAction_BriarRoseShotFarOutof; };
 void CCreatureAction_BriarRoseShotFarOutof::PerformAction()
 {
     CDefPointer<const CWeaponDef> weaponDef;
@@ -212,7 +216,7 @@ void CCreatureAction_BriarRoseShotFarOutof::PerformAction()
     CThingShotDef* shotDef;
     {
         CThingShotDef* out = 0;
-        CDefinitionManager* manager = GetPWorld()->PDefinitionManager;
+        CDefinitionManager* manager = (&reinterpret_cast<CCreatureActionBase*>(this)->GetWorld())->PDefinitionManager;
         manager->GetDef(weaponDef->Shot, &out);
         shotDef = out;
     }

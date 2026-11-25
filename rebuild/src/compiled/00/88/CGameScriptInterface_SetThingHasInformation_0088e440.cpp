@@ -52,7 +52,6 @@ struct CThing_Retail {
     void SetMaxHealth(float health, bool flag);    // 0x006A5260 (CThingPhysical)
     bool IsPickPocketable();                       // 0x00665E90 (CThingCreatureBase)
     void SetHiddenOnMiniMap(bool hidden);          // 0x006626A0 (CThingCreatureBase)
-    void SetHasInformation(long kind, bool a, bool b, bool c);   // 0x00830EB0 (CThingAICreature)
     void SetAsGameStatePersisted(bool persisted);  // 0x004C7880 (CThing)
     void ResetMaxRunningSpeedToDefault();          // 0x006A9BC0 (CThingPlayerCreature)
     void ResetMaxWalkingSpeedToDefault();          // 0x006A9B70 (CThingPlayerCreature; the manifest repeats the running label)
@@ -71,11 +70,15 @@ struct CThing_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00830EB0 ?SetHasInformation@CThingAICreature@@QAEX_N000@Z (was ?SetHasInformation@CThing_Retail@@QAEXJ_N00@Z)
+class CThingAICreature { public: void SetHasInformation(bool, bool, bool, bool); };
 void CGameScriptInterface::SetThingHasInformation(const CScriptThing& thing, bool a, bool b, bool c) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->m_type == 1)
-            t->SetHasInformation(1, a, b, c);
+            reinterpret_cast<CThingAICreature*>(t)->SetHasInformation(1, a, b, c);
     }
 }

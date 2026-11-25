@@ -1,0 +1,101 @@
+addr       parity           behav  name
+008b5550   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5550   WARN SHARED_HEADER_AVAILABLE CCombatSequence_GenericRangedAttack (engine/CCombatSequence_GenericRangedAttack.h)
+008b5550   RELOCATION_MATCH PASS   Alloc_CCombatSequence_GenericRangedAttack
+008b6210   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6210   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperIdles (engine/CCombatSequenceWhisperIdles.h)
+008b6210   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperIdles
+008b6250   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6250   WARN SHARED_HEADER_AVAILABLE CCombatSequenceJacksCombo (engine/CCombatSequenceJacksCombo.h)
+008b6250   RELOCATION_MATCH PASS   Alloc_CCombatSequenceJacksCombo
+008b6290   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6290   WARN SHARED_HEADER_AVAILABLE CCombatSequence2StrikeCombo (engine/CCombatSequence2StrikeCombo.h)
+008b6290   RELOCATION_MATCH PASS   Alloc_CCombatSequence2StrikeCombo
+008b62d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b62d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceUnblockableFacing (engine/CCombatSequenceUnblockableFacing.h)
+008b62d0   RELOCATION_MATCH PASS   Alloc_CCombatSequenceUnblockableFacing
+008b6310   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6310   WARN SHARED_HEADER_AVAILABLE CCombatSequenceNonInterruptable2StrikeCombo (engine/CCombatSequenceNonInterruptable2StrikeCombo.h)
+008b6310   RELOCATION_MATCH PASS   Alloc_CCombatSequenceNonInterruptable2StrikeCombo
+008b6350   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6350   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BattleCharge (engine/CCombatSequence_BattleCharge.h)
+008b6350   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BattleCharge
+008b6390   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6390   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillLightning (engine/CCombatSequence_WillLightning.h)
+008b6390   RELOCATION_MATCH PASS   Alloc_CCombatSequence_WillLightning
+008b63d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b63d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillEnflame (engine/CCombatSequence_WillEnflame.h)
+008b63d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_WillEnflame
+008b6410   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6410   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillForcePush (engine/CCombatSequence_WillForcePush.h)
+008b6410   RELOCATION_MATCH PASS   Alloc_CCombatSequence_WillForcePush
+008b6450   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6450   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillForcePushLongRange (engine/CCombatSequence_WillForcePushLongRange.h)
+008b6450   RELOCATION_MATCH PASS   Alloc_CCombatSequence_WillForcePushLongRange
+008b6490   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6490   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillPhysicalShield (engine/CCombatSequence_WillPhysicalShield.h)
+008b6490   RELOCATION_MATCH PASS   Alloc_CCombatSequence_WillPhysicalShield
+008b64d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b64d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillPhysicalShieldNonMelee (engine/CCombatSequence_WillPhysicalShieldNonMelee.h)
+008b64d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_WillPhysicalShieldNonMelee
+00b3a180   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00b3a180   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00b3a180   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00b3a180   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveAttachmentManager (engine/CEnginePrimitiveAttachmentManager.h)
+00b3a180   WARN SHARED_HEADER_AVAILABLE CEngineInternalAttachedPrimitive (engine/CEngineInternalAttachedPrimitive.h)
+00b3a180   WARN RELOC_NAME: ??0CEngineInternalPrimitiveAttached@@QAE@XZ -> 00b3a910 labelled 'CEngineInternalAttachedPrimitive::CEngineInternalAttachedPrimitive'
+00b3a180   RELOCATION_MATCH PASS   SetAttachedPrimitive
+00b3b7c0   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00b3b7c0   WARN SHARED_HEADER_AVAILABLE CGraphicDataBank (engine/CGraphicDataBank.h)
+00b3b7c0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b3b7c0   RELOCATION_MATCH PASS   Render
+00b91870   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase (engine/CEngineInternalPrimitiveBase.h)
+00b91870   WARN SHARED_HEADER_AVAILABLE CEngineSceneGridCell (engine/CEngineSceneGridCell.h)
+00b91870   RELOCATION_MATCH PASS   AddPrimitive
+00b99d90   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes (engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00b99d90   WARN SHARED_HEADER_AVAILABLE CMemoryAllocator (engine/CMemoryAllocator.h)
+00b99d90   WARN RELOC_NAME: ??0CEnginePrimitiveGroupManager@@QAE@PAUCEngineSceneArray@@@Z -> 00bebc30 labelled 'CEnginePrimitiveManagerMeshBase::CEnginePrimitiveManagerMeshBase'
+00b99d90   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedStaticMeshes
+00bb8090   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+00bb8090   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00bb8090   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00bb8090   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange (engine/CShaderConstantRange.h)
+00bb8090   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+00bb8090   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager (engine/CShaderRenderManager.h)
+00bb8090   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore (engine/CRenderManagerCore.h)
+00bb8090   WARN RELOC_NAME: ?g_renderStateDefault_01396f9c@@3KA -> 01396f9c labelled 'CRenderStateManager::D3DPolyShadeModeTable'
+00bb8090   RELOCATION_MATCH PASS   RenderMeshDecalStencilClear
+00bdd930   RELOCATION_MATCH PASS   RenderUpdateGroups
+00bde160   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager (engine/CEngineStaticMapFileBlockManager.h)
+00bde160   RELOCATION_MATCH PASS   OnMapVisibilityChanged
+00bf7370   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf7370   RELOCATION_MATCH PASS   SetVisibilityFlagAndUpdateParentChain
+
+WINS: 21
+  008b5550 RELOCATION_MATCH _global::Alloc_CCombatSequence_GenericRangedAttack
+  008b6210 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperIdles
+  008b6250 RELOCATION_MATCH _global::Alloc_CCombatSequenceJacksCombo
+  008b6290 RELOCATION_MATCH _global::Alloc_CCombatSequence2StrikeCombo
+  008b62d0 RELOCATION_MATCH _global::Alloc_CCombatSequenceUnblockableFacing
+  008b6310 RELOCATION_MATCH _global::Alloc_CCombatSequenceNonInterruptable2StrikeCombo
+  008b6350 RELOCATION_MATCH _global::Alloc_CCombatSequence_BattleCharge
+  008b6390 RELOCATION_MATCH _global::Alloc_CCombatSequence_WillLightning
+  008b63d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_WillEnflame
+  008b6410 RELOCATION_MATCH _global::Alloc_CCombatSequence_WillForcePush
+  008b6450 RELOCATION_MATCH _global::Alloc_CCombatSequence_WillForcePushLongRange
+  008b6490 RELOCATION_MATCH _global::Alloc_CCombatSequence_WillPhysicalShield
+  008b64d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_WillPhysicalShieldNonMelee
+  00b3a180 RELOCATION_MATCH CEnginePrimitiveAttachmentManager::SetAttachedPrimitive
+  00b3b7c0 RELOCATION_MATCH CEngineResourceManager::Render
+  00b91870 RELOCATION_MATCH CEngineSceneGridCell::AddPrimitive
+  00b99d90 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::??0CEnginePrimitiveManagerRepeatedStaticMeshes
+  00bb8090 RELOCATION_MATCH CEnginePrimitiveManagerParticleDecalGroup::RenderMeshDecalStencilClear
+  00bdd930 RELOCATION_MATCH CObjectCacheGroupOwner_00bdd930::RenderUpdateGroups
+  00bde160 RELOCATION_MATCH CLocalDetailCacheMap::OnMapVisibilityChanged
+  00bf7370 RELOCATION_MATCH CLandscapeBackgroundTreeNode::SetVisibilityFlagAndUpdateParentChain

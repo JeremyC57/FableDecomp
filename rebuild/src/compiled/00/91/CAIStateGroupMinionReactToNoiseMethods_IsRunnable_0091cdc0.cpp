@@ -53,7 +53,6 @@ class CThing { public:
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
-    bool IsPointInside(const C3DVector& point); // 0x0082D000 (CThingBuilding)
     template<class T> FABLE_FORCEINLINE bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -152,6 +151,10 @@ CMessageEvent* CMessageEventManager::FindMostRecentMessage(const CFilter_Bind2<C
     return (CMessageEvent*)StandInSink(hc, 10);
 }
 #pragma auto_inline(on)
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0082D000 ?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z (was ?IsPointInside@CThing@@QAE_NABVC3DVector@@@Z)
+class CThingBuilding { public: bool IsPointInside(C3DVector const&) const; };
 bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
 {
     float u0 = 0.0f;   // E-19 symbol-count re-key (no bytes)
@@ -170,7 +173,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
                 CMessageEventManager* messages = GetWorld().PMessageManager;
                 if (!messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x1f)
                         && CMessageEventFilter_IsOriginatedByThing(GetCreature()->PHome.GetPItem()))
-                    && perceive->CanHear && home->IsPointInside(noisePos)) {
+                    && perceive->CanHear && reinterpret_cast<const CThingBuilding*>(home)->IsPointInside(noisePos)) {
                     NoisePosition() = noisePos;
                     CThingAICreature* creature = GetCreature();
                     long fps2 = CMainGameComponent::GetConstantFPS();

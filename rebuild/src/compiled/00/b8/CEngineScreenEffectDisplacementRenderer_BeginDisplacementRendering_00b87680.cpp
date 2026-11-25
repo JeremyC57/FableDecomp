@@ -98,7 +98,6 @@ struct CRenderManagerCore {
     unsigned long      CaptureMask;                // +0x2814
     unsigned char      _pad2818[0x2840 - 0x2818];
     CRenderStateValue  DisplacementState;          // +0x2840
-    void Clear(const CRGBColour& colour, unsigned long flags);   // 0x009D8CF0
     FABLE_FORCEINLINE void SetState(CRenderStateValue& state, unsigned long value)
     {
         if (state.Value == value)
@@ -123,6 +122,10 @@ struct CEngineScreenEffectDisplacementRenderer_Begin : CEngineScreenEffectDispla
     bool BeginDisplacementRendering();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009D8CF0 ?ClearRenderTarget@CRenderManager2D@@QAEXABVCRGBColour@@K@Z (was ?Clear@CRenderManagerCore@@QAEXABVCRGBColour@@K@Z)
+class CRenderManager2D { public: void ClearRenderTarget(CRGBColour const&, unsigned long); };
 bool CEngineScreenEffectDisplacementRenderer_Begin::BeginDisplacementRendering()
 {
     if (!IsActive())
@@ -139,7 +142,7 @@ bool CEngineScreenEffectDisplacementRenderer_Begin::BeginDisplacementRendering()
     target.AttachTarget(DisplacementTexture->GetSurfaceLevel(0));
     NEngineInternal::GPDisplayManager->SetRenderTarget(target);
     if (!HasContent) {
-        g_pRenderManagerCore->Clear(CRGBColour(0xff, (unsigned char)ClearY, (unsigned char)ClearX, 0), 4);
+        reinterpret_cast<CRenderManager2D*>(g_pRenderManagerCore)->ClearRenderTarget(CRGBColour(0xff, (unsigned char)ClearY, (unsigned char)ClearX, 0), 4);
         HasContent = true;
     }
     g_pRenderManagerCore->SetState(g_pRenderManagerCore->DisplacementState, 0xe);

@@ -14,11 +14,13 @@ struct GFSerialiser {
     int seenCount;
     int elemSum;
     void WriteCount(int count);
-    void WriteElem(C2DVector* elem);
 };
 
 void GFSerialiser::WriteCount(int count) { seenCount = count; }
-void GFSerialiser::WriteElem(C2DVector* elem) { elemSum += (int)elem->x; }
+// Naming (NF443, 2026-11-25; NF438 q2): the callee stub is renamed with the row to its PDB spelling ?WriteColour@CDataOutputStream@@QAEXABVCRGBColour@@@Z (was ?WriteElem@GFSerialiser@@QAEXPAVC2DVector@@@Z).
+class CRGBColour;
+class CDataOutputStream { public: void WriteColour(const CRGBColour& c); };
+void CDataOutputStream::WriteColour(const CRGBColour& c) { reinterpret_cast<GFSerialiser*>(this)->elemSum += (int)((const C2DVector*)&c)->x; }
 
 void __fastcall GFSerialiseVectorBinaryOut_C2DVector(GFSerialiser* thisptr, void* vec);
 

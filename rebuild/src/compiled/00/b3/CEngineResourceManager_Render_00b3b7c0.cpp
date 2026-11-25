@@ -3,7 +3,6 @@
 // Callees: the global accessor @ 0x009A4EC0 (returns the device record @ 0x013CA618), the owner's flush @ 0x009F8200 (on the object at +0x6c of it), the bank's
 // reload @ 0x009FD100 (on +0x954, argument 1). Shape: the request word is compared with the immediate before `this` is used; `ret 4`.
 struct CDeviceOwner_009f8200 {
-    void Flush();                                  // 0x009F8200
 };
 
 class CSystemManager { public:
@@ -27,10 +26,14 @@ class CEngineResourceManager { public:
     void Render(SRenderRequest_00b3b7c0* request);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009F8200 ?FrameEnd@CGraphicBankManager@@QAEXXZ (was ?Flush@CDeviceOwner_009f8200@@QAEXXZ)
+class CGraphicBankManager { public: void FrameEnd(); };
 void CEngineResourceManager::Render(SRenderRequest_00b3b7c0* request)
 {
     if (request->m_kind == 0x40000000) {
-        GFGetSystemManager()->m_pOwner->Flush();
+        reinterpret_cast<CGraphicBankManager*>(GFGetSystemManager()->m_pOwner)->FrameEnd();
         m_pDataBank->SetReduceSizeFrameDelay(1);
     }
 }

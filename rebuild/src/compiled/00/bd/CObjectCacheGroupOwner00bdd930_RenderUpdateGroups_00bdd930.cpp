@@ -9,7 +9,6 @@ class CEngineCamera;
 struct CObjectCacheGroupCollection {
     unsigned char                _pad[0xc];
     CObjectCacheGroupCollection* m_pNext;          // +0x0c
-    void RenderUpdate(CEngineCamera* camera, float a, float b, unsigned long c, float d);   // 0x00BDD860
 };
 
 struct CObjectCacheGroupOwner_00bdd930 {
@@ -20,10 +19,14 @@ struct CObjectCacheGroupOwner_00bdd930 {
     void RenderUpdateGroups(CEngineCamera* camera, float a, float b, unsigned long c, float d);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00BDD860 ?RenderUpdate@CObjectTypeCollection@CLocalDetailCacheMap@@QAEXABVCEngineCamera@@MMKM@Z (was ?RenderUpdate@CObjectCacheGroupCollection@@QAEXPAVCEngineCamera@@MMKM@Z)
+namespace CLocalDetailCacheMap { class CObjectTypeCollection { public: void RenderUpdate(CEngineCamera const&, float, float, unsigned long, float); }; }
 void CObjectCacheGroupOwner_00bdd930::RenderUpdateGroups(CEngineCamera* camera, float a, float b, unsigned long c, float d)
 {
     if (m_renderEnabled) {
         for (CObjectCacheGroupCollection* group = m_pGroups; group; group = group->m_pNext)
-            group->RenderUpdate(camera, a, b, c, d);
+            reinterpret_cast<CLocalDetailCacheMap::CObjectTypeCollection*>(group)->RenderUpdate(*(camera), a, b, c, d);
     }
 }

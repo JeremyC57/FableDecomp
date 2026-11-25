@@ -14,15 +14,17 @@ class CThingAICreature { public:
 
 #include "engine/CThing.h"
 
-void __fastcall CleanupRangedWeapon(CThing* creature);                  // 0x007E5B40
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E5B40 ?Cleanup@CTCFireRangedWeaponOnLeavingStateGroup@@SIXAAVCThingAICreature@@@Z (was ?CleanupRangedWeapon@@YIXPAVCThing@@@Z)
 class CTCFireRangedWeaponOnLeavingStateGroup : public CTCBase { public:
     void FinalCleanup();
-};
+ public: static void __fastcall Cleanup(CThingAICreature&); };
 
 void CTCFireRangedWeaponOnLeavingStateGroup::FinalCleanup()
 {
     CThing* creature = ParentThing;
     ((CThingAICreature*)creature)->SuspendAI(false, this);
-    CleanupRangedWeapon(creature);
+    CTCFireRangedWeaponOnLeavingStateGroup::Cleanup(*reinterpret_cast<CThingAICreature*>(creature));
 }

@@ -35,7 +35,6 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CCreatureActionBase;
 struct CCreatureActionQueue {
-    long GetCurrentActionID();                  // 0x00692620
 };
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -90,6 +89,9 @@ class CSoundPair { public:
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692620 ?GetActionID@CCreatureActionBase@@QBEJXZ (was ?GetCurrentActionID@CCreatureActionQueue@@QAEJXZ)
 class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -97,7 +99,7 @@ class CCreatureActionBase { public:
     virtual CCreatureActionBase* Clone() const; // slot 11 (+0x2c)
     unsigned char _body[0xa4];
     virtual ~CCreatureActionBase();                     // 0x00693EF0
-};
+ public: long GetActionID() const; };
 class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
@@ -136,7 +138,7 @@ void CAIStateGroup_Clean::OnReplace()
         PBrain->PCreature->FinishCurrentAction();
         KneelingIntoCleaning = false;
     } else if (Cleaning) {
-        if (PBrain->PCreature->IsPerformingAnyAction() && PBrain->PCreature->PActionQueue->GetCurrentActionID() == CleanActionID)
+        if (PBrain->PCreature->IsPerformingAnyAction() && reinterpret_cast<const CCreatureActionBase*>(PBrain->PCreature->PActionQueue)->GetActionID() == CleanActionID)
             PBrain->PCreature->FinishCurrentAction();
         Cleaning = false;
         CBrainOutput output;

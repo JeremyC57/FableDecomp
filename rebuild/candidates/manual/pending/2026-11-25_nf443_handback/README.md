@@ -32,3 +32,13 @@ a3 (49 rows) is held as a whole, because a delete witnessed by one row could oth
 | 4 | worse on name_gate (the bodiless class adds SHARED_HEADER_AVAILABLE) |
 | 1 | 0x00698D10, on the `?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ` clash between 0x00789CC0 (self) and 0x007CBF50 (bound via row 0x007BDCFC) |
 | 1 | 0x009D0380, whose callee 0x009CFBC0 is Codex-reserved |
+
+## Round 2 (landed): a3 (49 rows) and d1 (21 rows)
+- **a3:** the five tests now use the a1 stub form (r1 resolved). NF443 re-gated a3 on the new HEAD.
+- **d1:** the 12 g4_bin_5 rows plus the 13 leftover CCombatSequenceBase ctor rows. Its delete closes 0x008B0AB0.
+- **Tracker:** 29 addresses go split_fixable → agree_pdb, none worse. Proven count: 34,506.
+- **Name fixes (`round2/NAME_FIXES.tsv`), sent back to NF443 as one unit batch.** The three addresses all carry the catalog name `CTCDivineWrath::GetDamageMultiplier`; the fix renames them together with their callers 0x00698D10, 0x007BDCFC and 0x00868B40:
+  - 0x0078E7B0 → GetDamageMultiplier;
+  - 0x007CBF50 → `CTCMultiArrow::GetPerArrowDamageMultiplier`;
+  - 0x00789CC0 → `CTCHeroRangedAttacks::GetProjectileWeaponFirstPersonTargetingModeZoomFOV`.
+- **r2 (coordinator): granted.** An enum-only `engine/EOracleMinigameInput.h` (EGameAction.h form), included by CTCOracleMinigame.h inside its retail-class branch and by row 0x00691680, shipped as a `_hdr` batch.

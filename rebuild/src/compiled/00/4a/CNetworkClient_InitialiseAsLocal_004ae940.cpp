@@ -14,13 +14,17 @@ public:
     unsigned char unused2670[8];
     CMainGameComponent* gameComponent; // +0x2678
 
-    bool InitialiseNetworkBase();
     bool InitialiseAsLocal(CMainGameComponent* component);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0099A350 ?Initialise@CInitBaseClass@@IAE_NXZ (was ?InitialiseNetworkBase@CNetworkClient@@QAE_NXZ)
+class CNetworkClient;
+class CInitBaseClass { public: protected: bool Initialise(); public: friend class ::CNetworkClient; };
 bool CNetworkClient::InitialiseAsLocal(CMainGameComponent* component)
 {
-    if (InitialiseNetworkBase() == true)
+    if (reinterpret_cast<CInitBaseClass*>(this)->Initialise() == true)
     {
         host = false;
         localPlayer = 0;

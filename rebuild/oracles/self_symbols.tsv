@@ -28105,3 +28105,16 @@ address	symbol	status	leaf_given
 009d1320	?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z	RELOCATION_MATCH	?UpdateEntry@CBankFile@@QAEXKAAVCDataInputStream@@K0K_N@Z
 009d4ce0	?SaveTable@CDefStringTable@@QAEX_N@Z	RELOCATION_MATCH	?SaveTable@CDefStringTable@@QAEX_N@Z
 00a256f0	?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z	RELOCATION_MATCH	?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z
+004c9560	?OnCreate@CThing@@UAE_NXZ	RELOCATION_MATCH	?OnCreate@CThing@@UAE_NXZ
+005b36e9	?OnCreate@CTCInventoryClothing@@UAEXXZ	RELOCATION_MATCH	?OnCreate@CTCInventoryClothing@@UAEXXZ
+005dab10	?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z	RELOCATION_MATCH	?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z
+006e0af0	?ClearAttachments@CTCDParticleEmitter@@QAEXXZ	RELOCATION_MATCH	?ClearAttachments@CTCDParticleEmitter@@QAEXXZ
+0088e440	?SetThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@_N11@Z	RELOCATION_MATCH	?SetThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@_N11@Z
+0088e480	?ClearThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	RELOCATION_MATCH	?ClearThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00897940	?EntityForceMarriageToHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z	RELOCATION_MATCH	?EntityForceMarriageToHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+00898ac0	?GiveThingHeroRewardItem@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z	RELOCATION_MATCH	?GiveThingHeroRewardItem@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z
+0089d830	?EntityForceToLookAtThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z	RELOCATION_MATCH	?EntityForceToLookAtThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+0089d970	?EntityResetForceToLookAt@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	RELOCATION_MATCH	?EntityResetForceToLookAt@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0089e780	?AddItemToContainer@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z	RELOCATION_MATCH	?AddItemToContainer@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+008c0900	?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ
+008f3100	?PerformAction@CCreatureAction_DragonLandFireball@@UAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_DragonLandFireball@@UAEXXZ

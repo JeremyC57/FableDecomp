@@ -58,7 +58,6 @@ class CIndexBuffer { public:                              // 0x14 bytes
 struct CEngineDisplay {
 };
 extern CEngineDisplay* g_pEngineDisplay;           // 0x01436E1C
-void* __fastcall AllocateAligned(unsigned long size, unsigned long alignment);   // 0x009F2BE0
 struct CSIMDVariableBlock;
 
 class CEnginePrimitiveManager { public:                   // 0x0c bytes
@@ -97,6 +96,10 @@ class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveGroup
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x009BEE00 ?GetPixelShaderVersion@CDisplayManager@@QBEKXZ (was ?CalculateTextureMemoryFromQuality@CEngineDisplay@@QAEKXZ)
 class CDisplayManager { public: unsigned long GetPixelShaderVersion() const; };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009F2BE0 ?AllocateAligned@CMemoryAllocator@@SIPAXKJ@Z (was ?AllocateAligned@@YIPAXKK@Z)
+class CMemoryAllocator { public: static void* __fastcall AllocateAligned(unsigned long, long); };
 CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStaticMeshes(CEngineSceneArray* scenes)
     : CEnginePrimitiveGroupManager(scenes)
 {
@@ -120,5 +123,5 @@ CEnginePrimitiveManagerRepeatedStaticMeshes::CEnginePrimitiveManagerRepeatedStat
     VertexShaderShadowed = &VertexShaderDepthBufferShadowed;
     PixelShaderShadowedStippleAlpha = &PixelShaderDepthBufferShadowedStippleAlpha;
     VertexShaderShadowedStippleAlpha = &VertexShaderDepthBufferShadowedStippleAlpha;
-    SIMDVariableBlock = (CSIMDVariableBlock*)AllocateAligned(0xc00, 0x10);
+    SIMDVariableBlock = (CSIMDVariableBlock*)CMemoryAllocator::AllocateAligned(0xc00, 0x10);
 }

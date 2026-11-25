@@ -9,7 +9,6 @@ struct SomeState {
 
 struct ModeBase {
     virtual ~ModeBase();
-    void BaseOnActivate();
 };
 
 struct CModeDragonRearUp : public ModeBase {
@@ -23,7 +22,9 @@ static int g_lastArg = -1;
 static CModeDragonRearUp* g_lastSelf = 0;
 
 ModeBase::~ModeBase() {}
-void ModeBase::BaseOnActivate() { g_baseCalls++; }
+// Naming (NF443, 2026-11-25; NF438 q2): the callee stub is renamed with the row to its PDB spelling ?OnActivate@CModeStandBase@@UAEXXZ (was ?BaseOnActivate@ModeBase@@QAEXXZ).
+class CModeStandBase { public: virtual void OnActivate(); };
+void CModeStandBase::OnActivate() { g_baseCalls++; }
 class CThingAICreature { public: void SuspendAI(bool suspend, void* suspender); };   // 0x00833A10 (Ego_r.pdb)
 void CThingAICreature::SuspendAI(bool suspend, void* suspender) { g_doCalls++; g_lastArg = suspend; g_lastSelf = (CModeDragonRearUp*)suspender; }
 

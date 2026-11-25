@@ -5,13 +5,14 @@ struct FableDestValV_008d6a30_t
 {
     void* field_0;
     void* field_4;
-    void FABLE_FASTCALL h1();
 };
 struct FableDestValV_008d6a30_inner
 {
     void FABLE_FASTCALL h2(char flag);
 };
-void FABLE_FASTCALL FableDestValV_008d6a30_t::h1() { g_h1++; }
+// Naming (NF443, 2026-11-25; NF438 q2): the callee stub is renamed with the row to its PDB spelling ?OnActivate@CModeStandBase@@UAEXXZ (was ?h1@FableDestValV_008d6a30_t@@QAIXXZ).
+class CModeStandBase { public: virtual void OnActivate(); };
+void CModeStandBase::OnActivate() { g_h1++; }
 void FABLE_FASTCALL FableDestValV_008d6a30_inner::h2(char flag) { g_h2++; g_flag = flag; g_this = (void*)this; }
 extern "C" void FABLE_FASTCALL FableDestValV_008d6a30(FableDestValV_008d6a30_t* mode);
 int main()

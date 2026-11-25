@@ -19,7 +19,6 @@ class CThing;
 #define FABLE_RETAIL_CCHARSTRING
 #include "engine/CThing.h"
 
-void __fastcall CleanupRangedWeapon(CThing* creature);     // 0x007E5B40
 
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -87,10 +86,14 @@ struct CAIStateGroup_CreatureRangedCombat2 : CAIStateGroupBase {
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E5B40 ?Cleanup@CTCFireRangedWeaponOnLeavingStateGroup@@SIXAAVCThingAICreature@@@Z (was ?CleanupRangedWeapon@@YIXPAVCThing@@@Z)
+class CTCFireRangedWeaponOnLeavingStateGroup { public: static void __fastcall Cleanup(CThingAICreature&); };
 void CAIStateGroup_CreatureRangedCombat2::Cleanup()
 {
     if (GetWorld().GetGameState()->m_bShuttingDown) {
-        CleanupRangedWeapon((CThing*)PBrain->Creature);
+        CTCFireRangedWeaponOnLeavingStateGroup::Cleanup(*reinterpret_cast<CThingAICreature*>((CThing*)PBrain->Creature));
     } else {
         CTCBase* fireOnLeaving = GetCreature()->AddTC("CTCFireRangedWeaponOnLeavingStateGroup", false, 0);
         if (!AddedStrafe)

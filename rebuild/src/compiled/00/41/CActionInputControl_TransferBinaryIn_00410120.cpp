@@ -17,9 +17,12 @@ class C2DVector { public:
     C2DVector() {}                              // non-POD: returned through a hidden pointer
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00995030 ?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ (was ?ReadC2DVector@CMemoryDataInputStream@@QAE?AVC2DVector@@XZ)
 class CDataInputStream { friend class CMemoryDataInputStream;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
-};
+ public: C2DVector Read2DVector(); };
 class CMemoryDataInputStream : public CDataInputStream { public:
     void* m_pVtable;                            // +0x00
     unsigned long m_position;                   // +0x04
@@ -27,7 +30,6 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;               // +0x0c current chunk read pointer
     long SourceChunkStreamPos;
     long m_remaining;                           // +0x14 bytes left in the current chunk
-    C2DVector ReadC2DVector();                  // 0x00995030
     static FABLE_FORCEINLINE bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     FABLE_FORCEINLINE void Read(void* buffer, long size)
     {
@@ -69,5 +71,5 @@ void CActionInputControl::TransferBinaryIn(CMemoryDataInputStream& stream)
     KeyboardKey = (EInputKey)stream.ReadLong();
     XboxButton = (EXboxControllerButton)stream.ReadLong();
     MouseButton = (EMouseButtonControl)stream.ReadLong();
-    ControlDirection = stream.ReadC2DVector();
+    ControlDirection = reinterpret_cast<CDataInputStream*>(&(stream))->Read2DVector();
 }

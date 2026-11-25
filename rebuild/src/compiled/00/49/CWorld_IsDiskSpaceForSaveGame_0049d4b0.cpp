@@ -23,7 +23,6 @@ class CWideString { public:
 // Returns the save-game directory name by value; __stdcall (the hidden result pointer is
 // callee-cleaned: no `add esp,4` after the call).
 extern CWideString __stdcall GFGetSaveGameDirectoryName();     // 0x0040D2A0
-extern bool __fastcall IsRoomForFile(long byteCount, const wchar_t* directory);   // 0x00999AB0
 
 #define SAVE_GAME_RESERVED_BYTES 0x96000
 
@@ -31,9 +30,13 @@ struct CWorld_Methods {
     bool IsDiskSpaceForSaveGame();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00999AB0 ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z (was ?IsRoomForFile@@YI_NJPBG@Z)
+class CAFile { public: static bool __fastcall IsRoomForFile(long, CWideString const&); };
 bool CWorld_Methods::IsDiskSpaceForSaveGame()
 {
     // Is there room for a 600 KiB save in the profile's save directory? The directory string is
     // a temporary that lives until the full expression ends (destroyed after the space check).
-    return IsRoomForFile(SAVE_GAME_RESERVED_BYTES, GFGetSaveGameDirectoryName().GetText());
+    return CAFile::IsRoomForFile(SAVE_GAME_RESERVED_BYTES, *reinterpret_cast<CWideString const*>(GFGetSaveGameDirectoryName().GetText()));
 }

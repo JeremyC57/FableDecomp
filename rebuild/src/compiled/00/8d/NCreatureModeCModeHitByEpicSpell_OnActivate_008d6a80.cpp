@@ -14,13 +14,16 @@ struct CModeHitByEpicSpell
 {
     int   vslot;    // +0x00 (padding to reach +4)
     CThingAICreature*  sub;      // +0x04
-    void  BaseActivate();
     void  OnActivate();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008621A0 ?OnActivate@CModeStandBase@@UAEXXZ (was ?BaseActivate@CModeHitByEpicSpell@@QAEXXZ)
+class CModeStandBase { public: virtual void OnActivate(); };
 void CModeHitByEpicSpell::OnActivate()
 {
-    BaseActivate();
+    reinterpret_cast<CModeStandBase*>(this)->CModeStandBase::OnActivate();
     CThingAICreature* s = this->sub;
     if (s->flag == 1)
         s->SuspendAI(1, this);

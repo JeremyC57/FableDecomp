@@ -15,19 +15,22 @@ struct CQuadTreeElementCalls {
 };
 
 struct CFileBlockManagerCalls {
-    void RemoveFinishedBlocks();                                           // 0x00BE04F0
 };
 
 struct CLocalDetailCacheMap_Methods : CLocalDetailCacheMap {
     void OnMapVisibilityChanged(bool visible);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00BE04F0 ?DeleteUnusedBlocks@CEngineStaticMapFileBlockManager@@QAEXXZ (was ?RemoveFinishedBlocks@CFileBlockManagerCalls@@QAEXXZ)
+class CEngineStaticMapFileBlockManager { public: void DeleteUnusedBlocks(); };
 void CLocalDetailCacheMap_Methods::OnMapVisibilityChanged(bool visible)
 {
     if (!visible) {
         reinterpret_cast<CQuadTreeElementCalls*>(&this->QuadTree[0])->UnloadStaticContents(this->FileBlockManager);
         CFileBlockManagerCalls* manager = reinterpret_cast<CFileBlockManagerCalls*>(this->FileBlockManager);
         if (manager)
-            manager->RemoveFinishedBlocks();
+            reinterpret_cast<CEngineStaticMapFileBlockManager*>(manager)->DeleteUnusedBlocks();
     }
 }

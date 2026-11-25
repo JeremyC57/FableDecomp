@@ -43,18 +43,21 @@ class CThing { public:
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
 #include "engine/CGameDefinitionManager.h"
 class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
-CThing* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos, const C3DVector& dir);   // 0x0080C500
-CThing* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos);                         // 0x0080C460
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0080C500 ?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@0@Z (was ?CreateExplosionThing@@YIPAVCThing@@JABVC3DVector@@0@Z)
+//   0x0080C460 ?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@@Z (was ?CreateExplosionThing@@YIPAVCThing@@JABVC3DVector@@@Z)
+class CTCDExplosion { public: static CThing* __fastcall Create(long, C3DVector const&, C3DVector const&); static CThing* __fastcall Create(long, C3DVector const&); };
 CScriptThing CGameScriptInterface::CreateExplosion(const CCharString& defName, const C3DVector& pos, const C3DVector* dir, CCharString scriptName) const
 {
     long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(defName);
     if (defIndex > 0) {
-        CThing* t = dir ? CreateExplosionThing(defIndex, pos, *dir) : CreateExplosionThing(defIndex, pos);
+        CThing* t = dir ? CTCDExplosion::Create(defIndex, pos, *dir) : CTCDExplosion::Create(defIndex, pos);
         if (t && !t->m_dead) {
             t->ScriptName = scriptName;
             return t->GetScriptThing();

@@ -22,7 +22,6 @@ struct AObj {
 };
 
 struct BaseAction {
-    void OnCreate();  // 0x7eac10
 };
 
 struct CTCActionUseBuyHouse {
@@ -33,8 +32,12 @@ struct CTCActionUseBuyHouse {
     void OnCreate();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007EAC10 ?OnCreate@CTCActionUseBase@@UAEXXZ (was ?OnCreate@BaseAction@@QAEXXZ)
+class CTCActionUseBase { public: virtual void OnCreate(); };
 void CTCActionUseBuyHouse::OnCreate()
 {
     this->field4->field70->Sub(&this->field14);
-    ((BaseAction*)this)->OnCreate();
+    reinterpret_cast<CTCActionUseBase*>(((BaseAction*)this))->CTCActionUseBase::OnCreate();
 }

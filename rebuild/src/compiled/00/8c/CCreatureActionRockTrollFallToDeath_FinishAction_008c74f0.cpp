@@ -303,8 +303,10 @@ bool CDefLookup::GetTrollBattle(DefPointer<CTrollBattleDef>* out)const {
 }
 #pragma auto_inline(on)
 
-class CTCDExplosion { public:void SetThingAsImmune(CThing&);}; //0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z pushes intelligent pointer to ImmuneThings native60 (PDB68)
-CThing* __fastcall CreateExplosion(long,const C3DVector&); //0080C460
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0080C460 ?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@@Z (was ?CreateExplosion@@YIPAVCThing@@JABVC3DVector@@@Z)
+class CTCDExplosion { public:void SetThingAsImmune(CThing&); public: static CThing* __fastcall Create(long, C3DVector const&); }; //0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z pushes intelligent pointer to ImmuneThings native60 (PDB68)
 class CCreatureAction_RockTrollFallToDeath:public CCombatActionBase { public:
     virtual ~CCreatureAction_RockTrollFallToDeath();
     virtual CCreatureActionBase* Clone()const;
@@ -321,7 +323,7 @@ class CCreatureAction_RockTrollShakeAndExplode:public CCombatActionBase { public
 void CCreatureAction_RockTrollFallToDeath::FinishAction(){
  DefPointer<CTrollBattleDef> battle;
  if(DefPointer<CDefLookup>(PCreature->PBaseDef)->GetTrollBattle(&battle)&&battle->FallDownExplosionIndex>0){
-  CThing* explosion=CreateExplosion(battle->FallDownExplosionIndex,PCreature->GetPos());
+  CThing* explosion=CTCDExplosion::Create(battle->FallDownExplosionIndex,PCreature->GetPos());
   if(explosion&&(explosion->UsingComponents[2]&2)){
    CTCDExplosion* driver=explosion->PTCDriver;driver->SetThingAsImmune(*PCreature);
   }

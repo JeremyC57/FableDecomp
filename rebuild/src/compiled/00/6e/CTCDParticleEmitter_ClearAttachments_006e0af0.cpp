@@ -20,7 +20,6 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CTCDependentThings {                             // interface 0xd8
-    void AddDependentThing(CThing* thing);              // 0x0071A8F0
 };
 
 class CBaseObject;
@@ -60,12 +59,16 @@ class CTCDParticleEmitter { public:
     void ClearAttachments();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0071A8F0 ?SetParticleAsDetached@CTCParticleAttachmentTracker@@QAEXAAVCThing@@@Z (was ?AddDependentThing@CTCDependentThings@@QAEXPAVCThing@@@Z)
+class CTCParticleAttachmentTracker { public: void SetParticleAsDetached(CThing&); };
 void CTCDParticleEmitter::ClearAttachments()
 {
     if (IS_THING_ALIVE(PAttachedToThing)) {
         CTCDependentThings* dependents;
         if (PAttachedToThing.Get()->GetTC(TCI_PARTICLE_ATTACHMENT_TRACKER, &dependents))
-            dependents->AddDependentThing(ParentThing);
+            reinterpret_cast<CTCParticleAttachmentTracker*>(dependents)->SetParticleAsDetached(*(ParentThing));
     }
     AttachmentFlags = 1;
     ResetEmitterPosition = true;

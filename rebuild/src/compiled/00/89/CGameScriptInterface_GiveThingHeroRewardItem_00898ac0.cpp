@@ -103,7 +103,6 @@ FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing ex
     return t && !t->m_dead;
 }
 struct CTCContainer_Retail {
-    void InsertItem(long defIndex, const CCharString& extra);   // 0x008ED1F0
     unsigned char _pad[0x19];
     bool m_19;                                     // +0x19
 };
@@ -112,6 +111,10 @@ struct CTCContainer_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008ED1F0 ?InsertItem@CTCContainer@@QAEXJABVCCharString@@@Z (was ?InsertItem@CTCContainer_Retail@@QAEXJABVCCharString@@@Z)
+class CTCContainer { public: void InsertItem(long, CCharString const&); };
 void CGameScriptInterface::GiveThingHeroRewardItem(const CScriptThing& thing, const CCharString& defName, const CCharString& extra) const
 {
     CTCContainer_Retail* container = 0;
@@ -119,6 +122,6 @@ void CGameScriptInterface::GiveThingHeroRewardItem(const CScriptThing& thing, co
     if (t->HasTC(0x3c))
         container = (CTCContainer_Retail*)GetTC(t, 0x3c);
     long defIndex = DefinitionManager->GetDefGlobalIndexFromName(defName);   // named: retail resolves it before pushing `extra`
-    container->InsertItem(defIndex, extra);
+    reinterpret_cast<CTCContainer*>(container)->InsertItem(defIndex, extra);
     container->m_19 = false;
 }

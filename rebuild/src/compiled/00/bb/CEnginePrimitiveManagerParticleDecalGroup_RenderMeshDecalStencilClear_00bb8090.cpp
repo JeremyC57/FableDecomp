@@ -156,8 +156,6 @@ struct CRenderManagerCoreView {                    // the render manager core @ 
     CTrackedRenderState  m_state2bb0;               // +0x2BB0
     CTrackedRenderState  m_state2bc4;               // +0x2BC4
     CTrackedRenderState  m_state2bd8;               // +0x2BD8
-    void DrawAsIndexedTris(const void* vertices, long vertexStride, long vertexCount, const void* indices,
-                           long triangleCount);   // 0x00A0AF40
 };
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
 extern unsigned long g_renderStateDefault_01396f3c;    // 0x01396F3C
@@ -189,6 +187,10 @@ struct CEnginePrimitiveManagerParticleDecalGroupMethods : CEnginePrimitiveManage
     void RenderMeshDecalStencilClear(const C3DVector& minimum, const C3DVector& maximum);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A0AF40 ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (was ?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z)
+class CRenderManagerCore { public: void DrawAsIndexedTris(void const*, long, long, void*, long); };
 void CEnginePrimitiveManagerParticleDecalGroupMethods::RenderMeshDecalStencilClear(const C3DVector& minimum,
                                                                                 const C3DVector& maximum)
 {
@@ -210,5 +212,5 @@ void CEnginePrimitiveManagerParticleDecalGroupMethods::RenderMeshDecalStencilCle
         { minimum.X, minimum.Y, minimum.Z }, { maximum.X, minimum.Y, minimum.Z },
     };
     NEngineInternal::GPShaderRenderManager->PrepareForRender(0);
-    g_pRenderManagerCore->DrawAsIndexedTris(corners, sizeof(C3DVector), 8, g_boxTriangleIndices, 12);
+    reinterpret_cast<CRenderManagerCore*>(g_pRenderManagerCore)->DrawAsIndexedTris(corners, sizeof(C3DVector), 8, reinterpret_cast<void*>(g_boxTriangleIndices), 12);
 }

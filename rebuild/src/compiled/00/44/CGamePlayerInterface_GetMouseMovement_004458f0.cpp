@@ -18,15 +18,18 @@ class C2DVector { public:
 };
 
 struct CInputEventCalls {
-    C3DVector GetMovement();        // 0x00A043D0
 };
 
 struct CGamePlayerInterface_Methods {
     C2DVector GetMouseMovement(CInputEventCalls* event);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A043D0 ?GetMouseMovement@CInputEvent@@QBE?AVC3DVector@@XZ (was ?GetMovement@CInputEventCalls@@QAE?AVC3DVector@@XZ)
+class CInputEvent { public: C3DVector GetMouseMovement() const; };
 C2DVector CGamePlayerInterface_Methods::GetMouseMovement(CInputEventCalls* event)
 {
-    C3DVector movement = event->GetMovement();
+    C3DVector movement = reinterpret_cast<const CInputEvent*>(event)->GetMouseMovement();
     return C2DVector(movement.X, -movement.Y);
 }

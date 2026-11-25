@@ -118,11 +118,15 @@ private: public:
     unsigned char  IsAffectedByBulletTimeOverride : 1;
     unsigned char  AddingTCsPermitted : 1;
     unsigned char  InitialisationStage : 3;             // +0x94
-    void RegisterWithManager(CThingManager* manager);   // 0x00A36F80 (name not recovered)
     CDefinitionManager* GetDefinitionManager() const { return CThing::GetPCurrentThingManager()->DefinitionManager; }   // inline copy of 0x004C7990
     virtual bool OnCreate();                     // slot 8 (+0x20) 0x004C9560
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A36F80 ?PostConstructionInit@CClass@@QAEXAAVCClassFactory@@@Z (was ?RegisterWithManager@CThing@@QAEXPAVCThingManager@@@Z)
+class CClassFactory;
+class CClass { public: void PostConstructionInit(CClassFactory&); };
 bool CThing::OnCreate()
 {
     ++InitialisationStage;
@@ -146,7 +150,7 @@ bool CThing::OnCreate()
         if (!component->ToBeRemoved)
             component->OnCreate();
     }
-    RegisterWithManager(CThing::GetPCurrentThingManager());
+    reinterpret_cast<CClass*>(this)->PostConstructionInit(*reinterpret_cast<CClassFactory*>(CThing::GetPCurrentThingManager()));
     if (CThing::GetPCurrentThingManager()->NonScriptedEntitesPauseMode) {
         PausedDuringCutscenes = false;
         NotPausedDuringCutscenes = true;

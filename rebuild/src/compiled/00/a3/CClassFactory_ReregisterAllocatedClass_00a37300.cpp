@@ -54,7 +54,6 @@ struct CClassFactory_Retail {                               // retail 0x1c bytes
     unsigned long MaxClassTypeID;                           // +0x10
     unsigned long NoAllocatedClasses;                       // +0x14
     CRetailList<CClass_Retail*> ClassList;                  // +0x18
-    void RegisterAllocatedClass(CClass_Retail* cls, unsigned long type, bool local);   // 0x00A371F0
     void ReregisterAllocatedClass(CClass_Retail* cls, unsigned long type, bool local); // 0x00A37300
     // Inlined into both 0x00A37160 and 0x00A37300: drop the factory-wide and per-type counts, then
     // unlink the class from its type list and from the global class list.
@@ -68,8 +67,14 @@ struct CClassFactory_Retail {                               // retail 0x1c bytes
     }
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A371F0 ?RegisterAllocatedClass@CClassFactory@@IAEXAAVCClass@@J_N@Z (was ?RegisterAllocatedClass@CClassFactory_Retail@@QAEXPAUCClass_Retail@@K_N@Z)
+class CClass;
+struct CClassFactory_Retail;
+class CClassFactory { public: protected: void RegisterAllocatedClass(CClass&, long, bool); public: friend struct ::CClassFactory_Retail; };
 void CClassFactory_Retail::ReregisterAllocatedClass(CClass_Retail* cls, unsigned long type, bool local)
 {
     UnregisterAllocatedClass(cls);
-    RegisterAllocatedClass(cls, type, local);
+    reinterpret_cast<CClassFactory*>(this)->RegisterAllocatedClass(*reinterpret_cast<CClass*>(cls), type, local);
 }

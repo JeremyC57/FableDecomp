@@ -10,15 +10,19 @@ struct VecRange {
 
 struct GFSerialiser {
     void WriteCount(int count);
-    void WriteElem(C2DVector* elem);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00993F30 ?WriteColour@CDataOutputStream@@QAEXABVCRGBColour@@@Z (was ?WriteElem@GFSerialiser@@QAEXPAVC2DVector@@@Z)
+class CRGBColour;
+class CDataOutputStream { public: void WriteColour(CRGBColour const&); };
 void __fastcall GFSerialiseVectorBinaryOut_C2DVector(GFSerialiser* thisptr, void* /*edx*/ vec)
 {
     VecRange* r = (VecRange*)vec;
     int count = (int)(((char*)r->last - (char*)r->first) >> 2);
     thisptr->WriteCount(count);
     for (int i = 0; i < count; ++i) {
-        thisptr->WriteElem((C2DVector*)((char*)r->first + i * 4));
+        reinterpret_cast<CDataOutputStream*>(thisptr)->WriteColour(*reinterpret_cast<CRGBColour const*>((C2DVector*)((char*)r->first + i * 4)));
     }
 }

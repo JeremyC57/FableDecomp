@@ -56,9 +56,12 @@ class CThing { public:
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
     const C3DVector& GetPos() const;    // 0x004C73D0
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0080C460 ?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@@Z (was ?CreateThing@@YIPAVCThing@@JPAVC3DVector@@@Z)
 class CTCDExplosion { public:
     void SetThingAsImmune(CThing& thing); // 0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z
-};
+ public: static CThing* __fastcall Create(long, C3DVector const&); };
 struct CActionEventExplosion {
     unsigned char _pad00[0x0c];
     CThing* SourceThing;                  // +0x0c
@@ -69,7 +72,6 @@ struct CActionEventExplosion {
     unsigned char UseActionHelper;        // +0x1d
     void Dispatch(const CCreatureActionBase& action);
 };
-CThing* __fastcall CreateThing(long id, C3DVector* position); // 0x0080C460
 
 void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
 {
@@ -84,7 +86,7 @@ void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
     } else {
         appearance->GetHelperPoint(AttachmentObject, 0, 0, sourcePosition, 1.0f);
     }
-    CThing* created = CreateThing(ExplosionDefIndex, &sourcePosition);
+    CThing* created = CTCDExplosion::Create(ExplosionDefIndex, sourcePosition);
     if (created) {
         CTCDExplosion* explosion;
         if ((created->UsingComponents[2] & 2) != 0) {

@@ -144,8 +144,11 @@ class CTCPerceiveThing { public:                       // interface 0x34
     virtual void Refresh();                     // slot 9 (+0x24, descriptive)
 };
 class CThingCreatureBase;   // NF34: the PDB parameter type (no layout needed)
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006EDC50 ?RegisterCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z (was ?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z)
 class CCombatManager { public:
-    void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
+    void RegisterCombatant(CThingCreatureBase&, CThingCreatureBase&, bool);   // 0x006EDC50
     void SetAttackerAsReadyToAttack(const CThingCreatureBase& attacker, bool ready);   // 0x006EA450 (NF34: Ego_r + FableWin ?SetAttackerAsReadyToAttack@CCombatManager@@QAEXABVCThingCreatureBase@@_N@Z)
 };
 class CWorld { public:
@@ -205,7 +208,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
         return;
     }
     CThing* creature = GetCreature();
-    creature->GetCombatManager()->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
+    creature->GetCombatManager()->RegisterCombatant(*reinterpret_cast<CThingCreatureBase*>(creature), *reinterpret_cast<CThingCreatureBase*>(((CThing*)PEnemy.GetPItem())), true);
     CTCPerceiveThing* perceive;
     if (GetCreature()->GetInterface(&perceive, 0x34))
         perceive->Refresh();

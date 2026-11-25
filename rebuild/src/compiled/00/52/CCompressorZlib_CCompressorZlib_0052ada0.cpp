@@ -20,20 +20,22 @@ class CACompressor { public:                                           // landed
     CACompressor(long workspaceSize);                           // 0x00A3AEA0
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A3A7D0 ?GetRequiredWorkspaceSize@CCompressorZlib@@SIKXZ (was ?GetWorkspaceSize@CCompressorZlib@@SAJXZ)
 class CCompressorZlib : public CACompressor {                   // vtable 0x01245974, retail 0x58 bytes
 public:
     unsigned char Stream[0x38];                                 // +0x1c z_stream_s
     bool          ZlibInitialised;                              // +0x54
     bool          Compressing;                                  // +0x55
     bool          ErrorFlag;                                    // +0x56
-    static long GetWorkspaceSize();                             // 0x00A3A7D0
     private: void Initialise(); public:                                                // 0x00A3AA10; NF299: PDB name, was Init
     virtual ~CCompressorZlib();
     CCompressorZlib();
-};
+ public: static unsigned long __fastcall GetRequiredWorkspaceSize(); };
 
 CCompressorZlib::CCompressorZlib()
-    : CACompressor(GetWorkspaceSize())
+    : CACompressor(CCompressorZlib::GetRequiredWorkspaceSize())
 {
     Initialise();
 }

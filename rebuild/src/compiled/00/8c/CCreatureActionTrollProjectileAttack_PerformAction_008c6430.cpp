@@ -91,7 +91,6 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThingCreatureBase> PTarget;                   // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    CWorld* GetPWorld() const;                         // 0x00692940
 private: void WhackGround(); friend class CCreatureAction_TrollProjectileAttack;   // 0x008C61C0, PDB AAE (private)
 };
 
@@ -100,6 +99,11 @@ public:
     virtual void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692940 ?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ (was ?GetPWorld@CCreatureAction_TrollWhackGroundBase@@QBEPAVCWorld@@XZ)
+class CCreatureAction_TrollProjectileAttack;
+class CCreatureActionBase { public: protected: CWorld& GetWorld(); public: friend class ::CCreatureAction_TrollProjectileAttack; };
 void CCreatureAction_TrollProjectileAttack::PerformAction()
 {
     WhackGround();
@@ -107,7 +111,7 @@ void CCreatureAction_TrollProjectileAttack::PerformAction()
     long shotIndex;
     {
         CCharString name("SHOT_TROLL_CRACK_IN_GROUND", -1);
-        CDefinitionManager* manager = GetPWorld()->PDefinitionManager;
+        CDefinitionManager* manager = (&reinterpret_cast<CCreatureActionBase*>(this)->GetWorld())->PDefinitionManager;
         shotIndex = manager->GetDefGlobalIndexFromName(name);
     }
     {

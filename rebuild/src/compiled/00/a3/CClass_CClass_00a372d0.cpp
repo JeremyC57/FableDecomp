@@ -22,12 +22,17 @@ struct CClass_Calls : CBaseObject {
 };
 
 struct CClassFactory_Calls {
-    void RegisterAllocatedClass(CClass_Calls* cls, unsigned long type, bool local);   // 0x00A371F0
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A371F0 ?RegisterAllocatedClass@CClassFactory@@IAEXAAVCClass@@J_N@Z (was ?RegisterAllocatedClass@CClassFactory_Calls@@QAEXPAUCClass_Calls@@K_N@Z)
+class CClass;
+struct CClass_Calls;
+class CClassFactory { public: protected: void RegisterAllocatedClass(CClass&, long, bool); public: friend struct ::CClass_Calls; };
 CClass_Calls::CClass_Calls(CClassFactory_Calls* factory, unsigned long type, bool local)
     : CBaseObject()
     , Type((unsigned char)type)
 {
-    factory->RegisterAllocatedClass(this, type, local);
+    reinterpret_cast<CClassFactory*>(factory)->RegisterAllocatedClass(*reinterpret_cast<CClass*>(this), type, local);
 }

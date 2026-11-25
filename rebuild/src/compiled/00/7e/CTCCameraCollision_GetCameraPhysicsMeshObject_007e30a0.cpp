@@ -48,7 +48,6 @@ class CPhysicsMeshInfo { public:
     CIVCountedPointer<CPhysicsMesh> GetMesh() const;   // 0x00A262B0
 };
 struct CMeshBank {
-    CPhysicsMeshInfo* GetPhysicsMeshInfo(long index);  // 0x00A24250
 };
 class CWorld { public:
     unsigned char _pad00[0x3c];
@@ -94,13 +93,17 @@ public:
     CPhysicsMeshObject GetCameraPhysicsMeshObject() const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A24250 ?PeekPhysicsMeshInfo@CMeshDataBank@@QBEPBVCPhysicsMeshInfo@@K@Z (was ?GetPhysicsMeshInfo@CMeshBank@@QAEPAVCPhysicsMeshInfo@@J@Z)
+class CMeshDataBank { public: CPhysicsMeshInfo const* PeekPhysicsMeshInfo(unsigned long) const; };
 CPhysicsMeshObject CTCCameraCollision::GetCameraPhysicsMeshObject() const
 {
     CTCPhysicsBase* physics = ParentThing->GetPhysicsTC();
     const CThingPhysicsMeshInfo* thingMesh = physics->GetPhysicsMeshInfo();
     const CCameraCollisionDef* def = CameraCollisionDef;
     CMeshBank* bank = PeekWorld().PMainMeshBank;
-    CPhysicsMeshInfo* info = bank->GetPhysicsMeshInfo(def->PhysicsMesh);
+    CPhysicsMeshInfo* info = ((CPhysicsMeshInfo*)(reinterpret_cast<const CMeshDataBank*>(bank)->PeekPhysicsMeshInfo(def->PhysicsMesh)));
     CPhysicsMeshObject object(info->GetMesh(), physics->Position, physics->GetOrientation(), thingMesh->Radius * 0.01f);
     return object;
 }

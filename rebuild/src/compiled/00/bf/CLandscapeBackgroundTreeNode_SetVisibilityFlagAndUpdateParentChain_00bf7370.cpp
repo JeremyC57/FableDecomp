@@ -21,16 +21,20 @@ struct CLandscapeBackgroundTreeNode_Retail {
     unsigned char                        _pad_0xA0[0x44];
     bool                                 VisibleLastFrame;                // +0xE4 (PDB +0xEC)
     bool                                 VisibleLastFrameHasBeenUpdated;  // +0xE5 (PDB +0xED)
-    void UpdateParentChainVisibilityFlag();     // 0x00BF6AC0
     void SetVisibilityFlagAndUpdateParentChain(bool visible);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00BF6AC0 ?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode@@AAEXXZ (was ?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode_Retail@@QAEXXZ)
+struct CLandscapeBackgroundTreeNode_Retail;
+class CLandscapeBackgroundTreeNode { public: private: void UpdateParentChainVisibilityFlag(); public: friend struct ::CLandscapeBackgroundTreeNode_Retail; };
 void CLandscapeBackgroundTreeNode_Retail::SetVisibilityFlagAndUpdateParentChain(bool visible)
 {
     if (this->VisibleLastFrame != visible) {
         this->VisibleLastFrame = visible;
         this->VisibleLastFrameHasBeenUpdated = true;
         if (this->Parent)
-            this->Parent->UpdateParentChainVisibilityFlag();
+            reinterpret_cast<CLandscapeBackgroundTreeNode*>(this->Parent)->UpdateParentChainVisibilityFlag();
     }
 }

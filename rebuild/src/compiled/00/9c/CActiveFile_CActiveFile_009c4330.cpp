@@ -35,13 +35,15 @@ class CACompressor { public:                               // landed 0x00A3AEA0 
     CACompressor(long workspaceSize);               // 0x00A3AEA0
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A3A7D0 ?GetRequiredWorkspaceSize@CCompressorZlib@@SIKXZ (was ?GetWorkspaceSize@CCompressorZlib@@SAJXZ)
 class CCompressorZlib : public CACompressor { public:             // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
-    static long GetWorkspaceSize();                 // 0x00A3A7D0
     private: void Initialise(); public:                                    // 0x00A3AA10; NF299: PDB name, was Init
     virtual void v00();
-    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Initialise(); }
-};
+    CCompressorZlib() : CACompressor(CCompressorZlib::GetRequiredWorkspaceSize()) { Initialise(); }
+ public: static unsigned long __fastcall GetRequiredWorkspaceSize(); };
 
 template<unsigned int NodeSize> struct CSentinelList {   // STLport list: the sentinel pointer only
     struct node { node* next; node* prev; unsigned char data[NodeSize - 8]; };

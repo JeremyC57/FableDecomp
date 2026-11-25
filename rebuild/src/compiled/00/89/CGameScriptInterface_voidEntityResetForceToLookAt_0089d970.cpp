@@ -51,7 +51,6 @@ class CThingPlayerCreature : public CThing_Retail { };
 FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 struct CTCTargetingBase_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
-    void SetPScriptOverrideInterestingThing(void* thing);   // 0x007F5890
     unsigned char _pad[0xc];
     bool m_forceLookAtNothing;                     // +0x0c
 };
@@ -80,13 +79,18 @@ class CGameScriptInterface { public:
     void EntityResetForceToLookAt(const CScriptThing& thing) const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007F5890 ?SetPScriptOverrideInterestingThing@CTCTargetingBase@@QAEXPAVCThing@@@Z (was ?SetPScriptOverrideInterestingThing@CTCTargetingBase_Retail@@QAEXPAX@Z)
+class CThing;
+class CTCTargetingBase { public: void SetPScriptOverrideInterestingThing(CThing*); };
 void CGameScriptInterface::EntityResetForceToLookAt(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->HasTC(0x8)) {
             CTCTargetingBase_Retail* tc = (CTCTargetingBase_Retail*)GetTC(t, 0x8);
-            tc->SetPScriptOverrideInterestingThing(0);
+            reinterpret_cast<CTCTargetingBase*>(tc)->SetPScriptOverrideInterestingThing(reinterpret_cast<CThing*>(0));
             tc->m_forceLookAtNothing = false;
         }
     }

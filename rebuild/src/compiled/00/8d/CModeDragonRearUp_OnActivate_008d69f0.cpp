@@ -11,7 +11,6 @@ struct SomeState {
 
 struct ModeBase {
     virtual ~ModeBase();     // vptr at +0 -> base subobject occupies 4 bytes
-    void BaseOnActivate();   // -> 0x8621a0 (thiscall)
 };
 
 struct CModeDragonRearUp : public ModeBase {
@@ -19,9 +18,13 @@ struct CModeDragonRearUp : public ModeBase {
     void OnActivate();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008621A0 ?OnActivate@CModeStandBase@@UAEXXZ (was ?BaseOnActivate@ModeBase@@QAEXXZ)
+class CModeStandBase { public: virtual void OnActivate(); };
 void CModeDragonRearUp::OnActivate()
 {
-    this->BaseOnActivate();
+    reinterpret_cast<CModeStandBase*>(this)->CModeStandBase::OnActivate();
     if (this->state->flag == 1)
         ((CThingAICreature*)(this->state))->SuspendAI(1, this);
 }

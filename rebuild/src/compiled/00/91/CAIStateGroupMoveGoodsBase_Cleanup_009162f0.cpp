@@ -67,7 +67,6 @@ class CThingPlayerCreature : public CThing { };
 struct CActionBase {
     unsigned char _pad[0x28];
     long ID;                                    // +0x28
-    long GetID() const;                         // 0x00692620
 };
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad2[0x100 - 0x64];
@@ -121,10 +120,14 @@ struct CAIStateGroup_MoveGoodsBase : CAIStateGroupBase {
     virtual void Cleanup();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692620 ?GetActionID@CCreatureActionBase@@QBEJXZ (was ?GetID@CActionBase@@QBEJXZ)
+class CCreatureActionBase { public: long GetActionID() const; };
 void CAIStateGroup_MoveGoodsBase::Cleanup()
 {
     if (PBrain->PCreature->IsPerformingAnyAction()
-        && PBrain->PCreature->PCurrentAction->GetID() == PickUpGoodsActionID)
+        && reinterpret_cast<const CCreatureActionBase*>(PBrain->PCreature->PCurrentAction)->GetActionID() == PickUpGoodsActionID)
         PBrain->PCreature->FinishCurrentAction();
     CTCCarrying* carrying;
     PBrain->PCreature->GetInterface(&carrying, 0x46);

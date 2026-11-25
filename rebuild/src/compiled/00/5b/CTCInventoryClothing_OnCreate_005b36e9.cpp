@@ -89,7 +89,6 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateThing_007ff7d0(long defIndex, const C3DVector& position);   // 0x007FF7D0
 // Stand-in for CThing::GetPos() const @ 0x004C73D0 (the retail body; same TU so the caller sees it writes nothing).
 #pragma auto_inline(off)
 __declspec(noinline) const C3DVector& CThing::GetPos() const
@@ -233,6 +232,10 @@ public:
     virtual void OnCreate();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007FF7D0 ?Create@CTCDHeroSuit@@SIPAVCThing@@JABVC3DVector@@@Z (was ?CreateThing_007ff7d0@@YIPAVCThing@@JABVC3DVector@@@Z)
+class CTCDHeroSuit { public: static CThing* __fastcall Create(long, C3DVector const&); };
 void CTCInventoryClothing::OnCreate()
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(*this);
@@ -249,7 +252,7 @@ void CTCInventoryClothing::OnCreate()
     const CLongVector& startingItems = GetStartingItems();
     for (unsigned long i = 0; i < startingItems.size(); ++i) {
         const C3DVector& pos = ParentThing->GetPos();
-        CThing* thing = CreateThing_007ff7d0(startingItems._M_start[i], pos);
+        CThing* thing = CTCDHeroSuit::Create(startingItems._M_start[i], pos);
         if (thing) {
             CTCInventoryItem* item;
             if (thing->GetInterface(&item, 0x1a)) {
