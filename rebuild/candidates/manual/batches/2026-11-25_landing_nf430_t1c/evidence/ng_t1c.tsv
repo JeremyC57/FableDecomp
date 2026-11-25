@@ -1,0 +1,34 @@
+00eeb780	FAIL	FAIL LOCAL_CLASS CExpression_PicklockScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eebdc0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CExpression_StealScript: #include "engine/CExpression_StealScript.h"
+00eec3e0	FAIL	FAIL LOCAL_CLASS CGlobal_GiveHeroItemsFromRewardChestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eec7a0	FAIL	FAIL LOCAL_CLASS CGlobal_OpenChestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eecef0	FAIL	FAIL LOCAL_CLASS CGlobal_ToggleTimeDisplayScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eed220	FAIL	FAIL LOCAL_CLASS CalextestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eee6d0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CPersonalScript_alextestScript: #include "engine/CPersonalScript_alextestScript.h"
+00eee940	FAIL	FAIL LOCAL_CLASS CEmptyScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eeee40	FAIL	FAIL LOCAL_CLASS CTestTheInventoryScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eef540	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CTestQuestCard1Script: #include "engine/CTestQuestCard1Script.h"
+00eef6d0	FAIL	FAIL LOCAL_CLASS CTestQuestCard2Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eef860	FAIL	FAIL LOCAL_CLASS CTestQuestCard3Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eef9c0	FAIL	FAIL LOCAL_CLASS CTestNewNav1Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eefb20	FAIL	FAIL LOCAL_CLASS CTestNewNav2Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eefc80	FAIL	FAIL LOCAL_CLASS CTestNewNav3Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eefde0	FAIL	FAIL LOCAL_CLASS CTestNewNav4Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eeff40	FAIL	FAIL LOCAL_CLASS CTestNewNav5Script: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ef9130	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CPersonalScript_EmptyScript: #include "engine/CPersonalScript_EmptyScript.h"
+00ef9ee0	FAIL	FAIL LOCAL_CLASS Cjoss_test_scriptsScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efa3c0	FAIL	FAIL LOCAL_CLASS Cguy_scriptScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efaf30	FAIL	FAIL LOCAL_CLASS Cbandit_level_cutsceneScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efb0b0	FAIL	FAIL LOCAL_CLASS CDanyalTestScriptsScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efb610	FAIL	FAIL LOCAL_CLASS CProximityPodiumTestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efbb70	FAIL	FAIL LOCAL_CLASS CHitSwitchTestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efc130	FAIL	FAIL LOCAL_CLASS CGuildSealTriggerTestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efc460	FAIL	FAIL LOCAL_CLASS CHeroTurningDebuggerScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efc8d0	FAIL	FAIL LOCAL_CLASS CPersonalScript_AardvarkScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00efe380	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CMarkTestScriptsScript: #include "engine/CMarkTestScriptsScript.h"
+00eff000	FAIL	FAIL LOCAL_CLASS CBenTestScriptsScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eff770	FAIL	FAIL LOCAL_CLASS CTonyTestScriptsScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00effcd0	FAIL	FAIL LOCAL_CLASS CShowTargetedThingHealthScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00f01330	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) COracleMinigameTestScript: #include "engine/COracleMinigameTestScript.h"
+00f01760	FAIL	FAIL LOCAL_CLASS CCS_PlayCutsceneScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00f02460	FAIL	FAIL LOCAL_CLASS CQ_CinemaTestScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)

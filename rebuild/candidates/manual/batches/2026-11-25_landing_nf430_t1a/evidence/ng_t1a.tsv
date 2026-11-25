@@ -1,0 +1,34 @@
+00cdd550	FAIL	FAIL LOCAL_CLASS CQ_SunnyvaleMasterScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00cddb60	FAIL	FAIL LOCAL_CLASS CGlobal_TeleportToHeroGuildScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00cde2f0	FAIL	FAIL LOCAL_CLASS CPersonalScriptMainScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ce19a0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CPersonalScript_GlobalThingsScript: #include "engine/CPersonalScript_GlobalThingsScript.h"
+00ce1a00	FAIL	FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL LOCAL_CLASS CHeroBoastsScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ce6c40	FAIL	FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL LOCAL_CLASS CHeroBoastsScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ce6cb0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CScriptBase: #include "engine/CScriptBase.h"|FAIL SHARED_HEADER_AVAILABLE (row) CGameflowScript: #include "engine/CGameflowScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL LOCAL_CLASS SScriptState: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00cf0640	FAIL	FAIL LOCAL_CLASS CGameflowAssistanceScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00cf8860	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_ArenaHoldingScriptScript: #include "engine/CQ_ArenaHoldingScriptScript.h"
+00d03580	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_BanditCampScript: #include "engine/CQ_BanditCampScript.h"
+00d12920	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_BanditCampBossBattleScript: #include "engine/CQ_BanditCampBossBattleScript.h"
+00d12c50	FAIL	FAIL LOCAL_CLASS CQ_BanditCampHoldingScriptScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00d12cb0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_BountyHuntScript: #include "engine/CQ_BountyHuntScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CGameScriptInterface: #include "engine/CGameScriptInterface.h"|FAIL SHARED_HEADER_AVAILABLE (test) CTimer: #include "engine/CTimer.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00d23c80	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_BreakSiegeScript: #include "engine/CQ_BreakSiegeScript.h"
+00d253b0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_BowerstoneTownLifeIntroScript: #include "engine/CQ_BowerstoneTownLifeIntroScript.h"
+00d2a7c0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_EndGameScript: #include "engine/CQ_EndGameScript.h"
+00d2f6b0	FAIL	FAIL 01238c8c +42    split_unknown    ??_7CScriptThing@@6B@   [landed: ??_7CEvent_00d16780@@6B@,??_7CEvent_00d2d530@@6B@,??_7CEvent_00d97360@@6B@,??_7CEvent_00d|FAIL SHARED_HEADER_AVAILABLE (row) CQ_EndGameBossBattleScript: #include "engine/CQ_EndGameBossBattleScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL SHARED_HEADER_AVAILABLE (test) CBaseObject: #include "engine/CBaseObject.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptGameResourceObjectScriptedThingBase: #include "engine/CScriptGameResourceObjectScriptedThingBase.h"|FAIL SHARED_HEADER_AVAILABLE (test) CBaseClass: #include "engine/CBaseClass.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptThing: #include "engine/CScriptThing.h"
+00d513c0	FAIL	FAIL LOCAL_CLASS CQ_GuildTrainingDepartureScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00d55d10	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_GuildTrainingPreMeleeScript: #include "engine/CQ_GuildTrainingPreMeleeScript.h"
+00d5a9f0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_GuildTrainingMeleeScript: #include "engine/CQ_GuildTrainingMeleeScript.h"
+00d5dbf0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_GuildTrainingSkillScript: #include "engine/CQ_GuildTrainingSkillScript.h"
+00d664d0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_GuildTrainingWoodsDepartureScript: #include "engine/CQ_GuildTrainingWoodsDepartureScript.h"
+00d67740	FAIL	FAIL LOCAL_CLASS CQ_GuildTrainingWoodsMeleeScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00d68ea0	FAIL	FAIL LOCAL_CLASS CQ_GuildTrainingWoodsWillScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00d7ac50	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_HeroSoulsScript: #include "engine/CQ_HeroSoulsScript.h"
+00d7c700	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_HeroSoulsArenaScript: #include "engine/CQ_HeroSoulsArenaScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CGameScriptInterface: #include "engine/CGameScriptInterface.h"|FAIL SHARED_HEADER_AVAILABLE (test) CTimer: #include "engine/CTimer.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00d8d5a0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_HerosOldHouseScript: #include "engine/CQ_HerosOldHouseScript.h"
+00dd2300	FAIL	FAIL LOCAL_CLASS CQ_OrchardFarmRaidEvilScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00dd2680	FAIL	FAIL LOCAL_CLASS CQ_OrchardFarmRaidGoodScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00dddc30	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_PrisonRaceScript: #include "engine/CQ_PrisonRaceScript.h"
+00dec790	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_RansomVictimChiefsHouseScript: #include "engine/CQ_RansomVictimChiefsHouseScript.h"
+00e00690	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQ_TraderEscortScript: #include "engine/CQ_TraderEscortScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CGameScriptInterface: #include "engine/CGameScriptInterface.h"|FAIL SHARED_HEADER_AVAILABLE (test) CTimer: #include "engine/CTimer.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00e0afe0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CScriptBase: #include "engine/CScriptBase.h"|FAIL SHARED_HEADER_AVAILABLE (row) CQ_UndeadRisingScript: #include "engine/CQ_UndeadRisingScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL LOCAL_CLASS SScriptState: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00e25970	FAIL	FAIL LOCAL_CLASS CQR_EscortTrader_ManagerScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)

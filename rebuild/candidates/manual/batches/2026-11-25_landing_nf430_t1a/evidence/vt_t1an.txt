@@ -1,0 +1,216 @@
+00cdd550 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00cdd550 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00cdd550 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cdd550 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cdd550 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00cdd550 ??_7CQ_SunnyvaleMasterScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cdd550 ??_7CQ_SunnyvaleMasterScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cdd550 ??_7CQ_SunnyvaleMasterScript@NScript@@6B@ 012c2f64 uuuWW
+00cddb60 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00cddb60 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00cddb60 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cddb60 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cddb60 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00cddb60 ??_7CGlobal_TeleportToHeroGuildScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cddb60 ??_7CGlobal_TeleportToHeroGuildScript@NScript@@6B@ 012c2fb8 uuuuW
+00cde2f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00cde2f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00cde2f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cde2f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cde2f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00cde2f0 ??_7CPersonalScriptMainScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cde2f0 ??_7CPersonalScriptMainScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cde2f0 ??_7CPersonalScriptMainScript@NScript@@6B@ 012c3000 uuuWW
+00ce19a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00ce19a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00ce19a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00ce19a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00ce19a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00ce19a0 ??_7CPersonalScript_GlobalThingsScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00ce19a0 ??_7CPersonalScript_GlobalThingsScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00ce19a0 ??_7CPersonalScript_GlobalThingsScript@NScript@@6B@ 012c30cc uuuWW
+00ce1a00 ??_7CHeroBoastsScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00ce1af0 self ?Main@CHeroBoastsScript@NScript@@UAEXXZ
+00ce1a00 ??_7CHeroBoastsScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00ce1a00 ??_7CHeroBoastsScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00ce1a00 ??_7CHeroBoastsScript@NScript@@6B@ 012c3688 uuWWWu
+00ce6c40 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00ce6c40 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00ce6c40 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00ce6c40 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00ce6c40 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00ce6c40 ??_7CHeroBoastsScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00ce1af0 self ?Main@CHeroBoastsScript@NScript@@UAEXXZ
+00ce6c40 ??_7CHeroBoastsScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00ce6c40 ??_7CHeroBoastsScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00ce6c40 ??_7CHeroBoastsScript@NScript@@6B@ 012c3688 uuWWW
+00ce6cb0 ??_7CGameflowScript@NScript@@6B@ 012c3fa4 uu
+00cf0640 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00cf0640 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00cf0640 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cf0640 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cf0640 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00cf0640 ??_7CGameflowAssistanceScript@NScript@@6B@ 012c5de0 uuuuu
+00cf8860 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00cf8860 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00cf8860 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00cf8860 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cf8860 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00cf8860 ??_7CQ_ArenaHoldingScriptScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00cf8860 ??_7CQ_ArenaHoldingScriptScript@NScript@@6B@ 012c60a0 uuuuW
+00d03580 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d03580 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d03580 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d03580 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d03580 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d03580 ??_7CQ_BanditCampScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00d00af0 self ?Main@CQ_BanditCampScript@NScript@@UAEXXZ
+00d03580 ??_7CQ_BanditCampScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00d006d0 self ?Init@CQ_BanditCampScript@NScript@@QAEXXZ
+00d03580 ??_7CQ_BanditCampScript@NScript@@6B@ 012c8300 uuWWu
+00d12920 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d12920 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d12920 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d12920 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d12920 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d12920 ??_7CQ_BanditCampBossBattleScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00d03610 self ?Init@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+00d12920 ??_7CQ_BanditCampBossBattleScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d12920 ??_7CQ_BanditCampBossBattleScript@NScript@@6B@ 012c88e0 uuuWW
+00d12c50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d12c50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d12c50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d12c50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d12c50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d12c50 ??_7CQ_BanditCampHoldingScriptScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00d129c0 self ?Main@CQ_BanditCampHoldingScriptScript@NScript@@UAEXXZ
+00d12c50 ??_7CQ_BanditCampHoldingScriptScript@NScript@@6B@ 012c9e14 uuWuu
+00d12cb0 ??_7CQ_BountyHuntScript@NScript@@6B@ slot 0 ??_ECQ_BountyHuntScript@NScript@@UAEPAXI@Z retail 00d1cbd0 self ??_GCBase_00cbd510_Derived_00d1cbd0@@QAEPAXI@Z
+00d12cb0 ??_7CQ_BountyHuntScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00d12d00 self ?Init@CQ_BountyHuntScript@NScript@@QAEXXZ
+00d12cb0 ??_7CQ_BountyHuntScript@NScript@@6B@ 012c9e68 WuuWuu
+00d23c80 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d23c80 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d23c80 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d23c80 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d23c80 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d23c80 ??_7CQ_BreakSiegeScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00d1cc40 self ?Init@CQ_BreakSiegeScript@NScript@@QAEXXZ
+00d23c80 ??_7CQ_BreakSiegeScript@NScript@@6B@ 012cab18 uuuWu
+00d253b0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d253b0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d253b0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d253b0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d253b0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d253b0 ??_7CQ_BowerstoneTownLifeIntroScript@NScript@@6B@ 012cb52c uuuuu
+00d2a7c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d2a7c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d2a7c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d2a7c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d2a7c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d2a7c0 ??_7CQ_EndGameScript@NScript@@6B@ 012cba58 uuuuu
+00d2f6b0 ??_7CScriptGameResourceObjectBase@@6B@ 0126008c uu
+00d2f6b0 ??_7CScriptThing@@6B@ slot 0 ??_ECScriptGameResourceObjectBase@@UAEPAXI@Z retail 004ab170 self ??_GCScriptThing@@UAEPAXI@Z
+00d2f6b0 ??_7CScriptThing@@6B@ slot 1 ?Validate@CBaseObject@@UBEXXZ retail 004aa8b0 self ?GetName@CScriptThing@@UBEABVCCharString@@XZ
+00d2f6b0 ??_7CScriptThing@@6B@ 01238c8c WW
+00d2f6b0 ??_7CScriptGameResourceObjectScriptedThingBase@@6B@ slot 0 ??_ECScriptGameResourceObjectBase@@UAEPAXI@Z retail 007e7520 self ??_GCScriptGameResourceObjectScriptedThingBaseRetail@@QAEPAXI@Z
+00d2f6b0 ??_7CScriptGameResourceObjectScriptedThingBase@@6B@ slot 1 ?Validate@CBaseObject@@UBEXXZ retail 007e72c0 self ?CScriptGameResourceObjectScriptedThingBase_Validate@@YIXXZ
+00d2f6b0 ??_7CScriptGameResourceObjectScriptedThingBase@@6B@ 0127094c WW
+00d2f6b0 ??_7CQ_EndGameBossBattleScript@NScript@@6B@ 012cc60c uu
+00d513c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d513c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d513c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d513c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d513c0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d513c0 ??_7CQ_GuildTrainingDepartureScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00d506b0 self ?Init@CQ_GuildTrainingDepartureScript@NScript@@UAEXXZ
+00d513c0 ??_7CQ_GuildTrainingDepartureScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d513c0 ??_7CQ_GuildTrainingDepartureScript@NScript@@6B@ 012cf670 uuuWW
+00d55d10 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d55d10 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d55d10 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d55d10 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d55d10 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d55d10 ??_7CQ_GuildTrainingPreMeleeScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d55d10 ??_7CQ_GuildTrainingPreMeleeScript@NScript@@6B@ 012cf788 uuuuW
+00d5a9f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d5a9f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d5a9f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d5a9f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d5a9f0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d5a9f0 ??_7CQ_GuildTrainingMeleeScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d5a9f0 ??_7CQ_GuildTrainingMeleeScript@NScript@@6B@ 012d0274 uuuuW
+00d5dbf0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d5dbf0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d5dbf0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d5dbf0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d5dbf0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d5dbf0 ??_7CQ_GuildTrainingSkillScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d5dbf0 ??_7CQ_GuildTrainingSkillScript@NScript@@6B@ 012d09a0 uuuuW
+00d664d0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d664d0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d664d0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d664d0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d664d0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d664d0 ??_7CQ_GuildTrainingWoodsDepartureScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00d61d20 self ?Main@CQ_GuildTrainingWoodsDepartureScript@NScript@@UAEXXZ
+00d664d0 ??_7CQ_GuildTrainingWoodsDepartureScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d664d0 ??_7CQ_GuildTrainingWoodsDepartureScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d664d0 ??_7CQ_GuildTrainingWoodsDepartureScript@NScript@@6B@ 012d15fc uuWWW
+00d67740 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d67740 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d67740 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d67740 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d67740 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d67740 ??_7CQ_GuildTrainingWoodsMeleeScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00d66620 self ?Main@CQ_GuildTrainingWoodsMeleeScript@NScript@@UAEXXZ
+00d67740 ??_7CQ_GuildTrainingWoodsMeleeScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d67740 ??_7CQ_GuildTrainingWoodsMeleeScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d67740 ??_7CQ_GuildTrainingWoodsMeleeScript@NScript@@6B@ 012d1d1c uuWWW
+00d68ea0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d68ea0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d68ea0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d68ea0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d68ea0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d68ea0 ??_7CQ_GuildTrainingWoodsWillScript@NScript@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d68ea0 ??_7CQ_GuildTrainingWoodsWillScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d68ea0 ??_7CQ_GuildTrainingWoodsWillScript@NScript@@6B@ 012d1e08 uuuWW
+00d7ac50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d7ac50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d7ac50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d7ac50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d7ac50 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d7ac50 ??_7CQ_HeroSoulsScript@NScript@@6B@ 012d2f48 uuuuu
+00d7c700 ??_7CQ_HeroSoulsArenaScript@NScript@@6B@ 012d3994 uuuuuu
+00d8d5a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00d8d5a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00d8d5a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00d8d5a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00d8d5a0 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00d8d5a0 ??_7CQ_HerosOldHouseScript@NScript@@6B@ 012d5018 uuuuu
+00dd2300 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00dd2300 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00dd2300 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00dd2300 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00dd2300 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00dd2300 ??_7CQ_OrchardFarmRaidEvilScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00dd2300 ??_7CQ_OrchardFarmRaidEvilScript@NScript@@6B@ 012db7b0 uuuuW
+00dd2680 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00dd2680 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00dd2680 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00dd2680 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00dd2680 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00dd2680 ??_7CQ_OrchardFarmRaidGoodScript@NScript@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00dd2680 ??_7CQ_OrchardFarmRaidGoodScript@NScript@@6B@ 012db810 uuuuW
+00dddc30 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00dddc30 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00dddc30 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00dddc30 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00dddc30 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00dddc30 ??_7CQ_PrisonRaceScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00ddae40 self ?Main@CQ_PrisonRaceScript@NScript@@UAEXXZ
+00dddc30 ??_7CQ_PrisonRaceScript@NScript@@6B@ 012dc88c uuWuu
+00dec790 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00dec790 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00dec790 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00dec790 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00dec790 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00dec790 ??_7CQ_RansomVictimChiefsHouseScript@NScript@@6B@ 012ddba8 uuuuu
+00e00690 ??_7CQ_TraderEscortScript@NScript@@6B@ 012df16c uuuuuu
+00e0afe0 ??_7CQ_UndeadRisingScript@NScript@@6B@ 012dfd3c uu
+00e25970 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 1 ?RegisterMain@CScriptBase@@MAEXXZ retail 00cbd4b0 self ?Hook@T@@QAEXXZ
+00e25970 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00cbd4c0 self ?Hook@T@@QAEXXZ
+00e25970 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 3 ?Init@CScriptBase@@MAEXXZ retail 00cbd4d0 self ?Hook@T@@QAEXXZ
+00e25970 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ slot 4 ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z retail 00cbd4e0 self ?Hook@T@@QAEXH@Z
+00e25970 ??_7?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@6B@ 012c2eec uWWWW
+00e25970 ??_7CQR_EscortTrader_ManagerScript@NScript@@6B@ slot 2 ?Main@CScriptBase@@MAEXXZ retail 00e24e10 self ?Main@CQR_EscortTrader_ManagerScript@NScript@@UAEXXZ
+00e25970 ??_7CQR_EscortTrader_ManagerScript@NScript@@6B@ 012e1d48 uuWuu
+TOTAL {'agree': 0, 'WRONG': 151, 'unknown': 155}

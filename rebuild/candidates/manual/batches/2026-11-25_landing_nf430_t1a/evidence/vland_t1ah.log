@@ -1,0 +1,94 @@
+addr       parity           behav  name
+00cdd550   RELOCATION_MATCH PASS   Alloc
+00cddb60   RELOCATION_MATCH PASS   Alloc
+00cde2f0   RELOCATION_MATCH PASS   Alloc
+00ce19a0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_GlobalThingsScript (engine/CPersonalScript_GlobalThingsScript.h)
+00ce19a0   RELOCATION_MATCH PASS   Alloc
+00ce1a00   RELOCATION_MATCH PASS   CHeroBoastsScript
+00ce6c40   RELOCATION_MATCH PASS   Alloc
+00ce6cb0   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00ce6cb0   WARN SHARED_HEADER_AVAILABLE CGameflowScript (engine/CGameflowScript.h)
+00ce6cb0   RELOCATION_MATCH PASS   CGameflowScript
+00cf0640   RELOCATION_MATCH PASS   Alloc
+00cf8860   WARN SHARED_HEADER_AVAILABLE CQ_ArenaHoldingScriptScript (engine/CQ_ArenaHoldingScriptScript.h)
+00cf8860   RELOCATION_MATCH PASS   Alloc
+00d03580   WARN SHARED_HEADER_AVAILABLE CQ_BanditCampScript (engine/CQ_BanditCampScript.h)
+00d03580   RELOCATION_MATCH PASS   Alloc
+00d12920   WARN SHARED_HEADER_AVAILABLE CQ_BanditCampBossBattleScript (engine/CQ_BanditCampBossBattleScript.h)
+00d12920   RELOCATION_MATCH PASS   Alloc
+00d12c50   RELOCATION_MATCH PASS   Alloc
+00d12cb0   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)
+00d12cb0   RELOCATION_MATCH PASS   CQ_BountyHuntScript
+00d23c80   WARN SHARED_HEADER_AVAILABLE CQ_BreakSiegeScript (engine/CQ_BreakSiegeScript.h)
+00d23c80   RELOCATION_MATCH PASS   Alloc
+00d253b0   WARN SHARED_HEADER_AVAILABLE CQ_BowerstoneTownLifeIntroScript (engine/CQ_BowerstoneTownLifeIntroScript.h)
+00d253b0   RELOCATION_MATCH PASS   Alloc
+00d2a7c0   WARN SHARED_HEADER_AVAILABLE CQ_EndGameScript (engine/CQ_EndGameScript.h)
+00d2a7c0   RELOCATION_MATCH PASS   Alloc
+00d2f6b0   WARN SHARED_HEADER_AVAILABLE CQ_EndGameBossBattleScript (engine/CQ_EndGameBossBattleScript.h)
+00d2f6b0   RELOCATION_MATCH PASS   CQ_EndGameBossBattleScript
+00d513c0   RELOCATION_MATCH PASS   Alloc
+00d55d10   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingPreMeleeScript (engine/CQ_GuildTrainingPreMeleeScript.h)
+00d55d10   RELOCATION_MATCH PASS   Alloc
+00d5a9f0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingMeleeScript (engine/CQ_GuildTrainingMeleeScript.h)
+00d5a9f0   RELOCATION_MATCH PASS   Alloc
+00d5dbf0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingSkillScript (engine/CQ_GuildTrainingSkillScript.h)
+00d5dbf0   RELOCATION_MATCH PASS   Alloc
+00d664d0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingWoodsDepartureScript (engine/CQ_GuildTrainingWoodsDepartureScript.h)
+00d664d0   RELOCATION_MATCH PASS   Alloc
+00d67740   RELOCATION_MATCH PASS   Alloc
+00d68ea0   RELOCATION_MATCH PASS   Alloc
+00d7ac50   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsScript (engine/CQ_HeroSoulsScript.h)
+00d7ac50   RELOCATION_MATCH PASS   Alloc
+00d7c700   WARN SHARED_HEADER_AVAILABLE CQ_HeroSoulsArenaScript (engine/CQ_HeroSoulsArenaScript.h)
+00d7c700   RELOCATION_MATCH PASS   CQ_HeroSoulsArenaScript
+00d8d5a0   WARN SHARED_HEADER_AVAILABLE CQ_HerosOldHouseScript (engine/CQ_HerosOldHouseScript.h)
+00d8d5a0   RELOCATION_MATCH PASS   Alloc
+00dd2300   RELOCATION_MATCH PASS   Alloc
+00dd2680   RELOCATION_MATCH PASS   Alloc
+00dddc30   WARN SHARED_HEADER_AVAILABLE CQ_PrisonRaceScript (engine/CQ_PrisonRaceScript.h)
+00dddc30   RELOCATION_MATCH PASS   Alloc
+00dec790   WARN SHARED_HEADER_AVAILABLE CQ_RansomVictimChiefsHouseScript (engine/CQ_RansomVictimChiefsHouseScript.h)
+00dec790   RELOCATION_MATCH PASS   Alloc
+00e00690   WARN SHARED_HEADER_AVAILABLE CQ_TraderEscortScript (engine/CQ_TraderEscortScript.h)
+00e00690   RELOCATION_MATCH PASS   CQ_TraderEscortScript
+00e0afe0   WARN SHARED_HEADER_AVAILABLE CScriptBase (engine/CScriptBase.h)
+00e0afe0   WARN SHARED_HEADER_AVAILABLE CQ_UndeadRisingScript (engine/CQ_UndeadRisingScript.h)
+00e0afe0   RELOCATION_MATCH PASS   CQ_UndeadRisingScript
+00e25970   RELOCATION_MATCH PASS   Alloc
+
+WINS: 34
+  00cdd550 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterScript::?Alloc@CQ_SunnyvaleMasterScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00cddb60 RELOCATION_MATCH NScript::CGlobal_TeleportToHeroGuildScript::?Alloc@CGlobal_TeleportToHeroGuildScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00cde2f0 RELOCATION_MATCH NScript::CPersonalScriptMainScript::?Alloc@CPersonalScriptMainScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ce19a0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::?Alloc@CPersonalScript_GlobalThingsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ce1a00 RELOCATION_MATCH NScript::CHeroBoastsScript::??0CHeroBoastsScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ce6c40 RELOCATION_MATCH NScript::CHeroBoastsScript::?Alloc@CHeroBoastsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ce6cb0 RELOCATION_MATCH NScript::CGameflowScript::??0CGameflowScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00cf0640 RELOCATION_MATCH NScript::CGameflowAssistanceScript::?Alloc@CGameflowAssistanceScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00cf8860 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::?Alloc@CQ_ArenaHoldingScriptScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d03580 RELOCATION_MATCH NScript::CQ_BanditCampScript::?Alloc@CQ_BanditCampScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d12920 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?Alloc@CQ_BanditCampBossBattleScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d12c50 RELOCATION_MATCH NScript::CQ_BanditCampHoldingScriptScript::?Alloc@CQ_BanditCampHoldingScriptScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d12cb0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::??0CQ_BountyHuntScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d23c80 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?Alloc@CQ_BreakSiegeScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d253b0 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::?Alloc@CQ_BowerstoneTownLifeIntroScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d2a7c0 RELOCATION_MATCH NScript::CQ_EndGameScript::?Alloc@CQ_EndGameScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d2f6b0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::??0CQ_EndGameBossBattleScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d513c0 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::?Alloc@CQ_GuildTrainingDepartureScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d55d10 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::?Alloc@CQ_GuildTrainingPreMeleeScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d5a9f0 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::?Alloc@CQ_GuildTrainingMeleeScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d5dbf0 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::?Alloc@CQ_GuildTrainingSkillScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d664d0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::?Alloc@CQ_GuildTrainingWoodsDepartureScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d67740 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?Alloc@CQ_GuildTrainingWoodsMeleeScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d68ea0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::?Alloc@CQ_GuildTrainingWoodsWillScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d7ac50 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::?Alloc@CQ_HeroSoulsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d7c700 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::??0CQ_HeroSoulsArenaScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d8d5a0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::?Alloc@CQ_HerosOldHouseScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00dd2300 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidEvilScript::?Alloc@CQ_OrchardFarmRaidEvilScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00dd2680 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidGoodScript::?Alloc@CQ_OrchardFarmRaidGoodScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00dddc30 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::?Alloc@CQ_PrisonRaceScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00dec790 RELOCATION_MATCH NScript::CQ_RansomVictimChiefsHouseScript::?Alloc@CQ_RansomVictimChiefsHouseScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e00690 RELOCATION_MATCH NScript::CQ_TraderEscortScript::??0CQ_TraderEscortScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e0afe0 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::??0CQ_UndeadRisingScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e25970 RELOCATION_MATCH NScript::CQR_EscortTrader_ManagerScript::?Alloc@CQR_EscortTrader_ManagerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

@@ -1,0 +1,34 @@
+00e26780	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQS_GuardianSisterInfoScript: #include "engine/CQS_GuardianSisterInfoScript.h"
+00e277e0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQS_GuardianSisterInfo2_SisterInBanditCampScript: #include "engine/CQS_GuardianSisterInfo2_SisterInBanditCampScript.h"
+00e28ca0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CQS_GuardianTrophyDealerInfoScript: #include "engine/CQS_GuardianTrophyDealerInfoScript.h"
+00e29990	FAIL	FAIL LOCAL_CLASS CQS_MeetSisterScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00e2ab60	FAIL	FAIL SHARED_HEADER_AVAILABLE (test) CGameScriptInterface: #include "engine/CGameScriptInterface.h"|FAIL SHARED_HEADER_AVAILABLE (test) CTimer: #include "engine/CTimer.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL SHARED_HEADER_AVAILABLE (test) CV_AmbushScamScript: #include "engine/CV_AmbushScamScript.h"
+00e4f550	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_BanditTollScript: #include "engine/CV_BanditTollScript.h"
+00e68f70	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_ChapelOfEvilScript: #include "engine/CV_ChapelOfEvilScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00e6e230	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_ChapelOfEvilScript: #include "engine/CV_ChapelOfEvilScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00e75590	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_DemonDoorsScript: #include "engine/CV_DemonDoorsScript.h"
+00e7e0b0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_FishermanScript: #include "engine/CV_FishermanScript.h"
+00e906f0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_GhostGrannyNecklaceScript: #include "engine/CV_GhostGrannyNecklaceScript.h"
+00e90750	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_GuildMasterScript: #include "engine/CV_GuildMasterScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00e92900	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_GuildMasterScript: #include "engine/CV_GuildMasterScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"
+00e93cf0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_HiddenBootyScript: #include "engine/CV_HiddenBootyScript.h"
+00e98640	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_HeroDollsScript: #include "engine/CV_HeroDollsScript.h"
+00ea7680	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_LostTraderScript: #include "engine/CV_LostTraderScript.h"
+00eb2000	FAIL	FAIL 012c3224 +18    split_unknown    ??_7CVtable_012c3224@@6B@   [landed: ??_7CEntityScriptBase@@6B@]|FAIL SHARED_HEADER_AVAILABLE (row) CV_MurderTwistFinalScript: #include "engine/CV_MurderTwistFinalScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptThing: #include "engine/CScriptThing.h"|FAIL SHARED_HEADER_AVAILABLE (test) CBaseObject: #include "engine/CBaseObject.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptGameResourceObjectScriptedThingBase: #include "engine/CScriptGameResourceObjectScriptedThingBase.h"|FAIL LOCAL_CLASS CVtable_012c3224: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS CCharString: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ebee30	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_OracleScript: #include "engine/CV_OracleScript.h"
+00ec11b0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_ParanoidWhispersScript: #include "engine/CV_ParanoidWhispersScript.h"
+00ec1780	FAIL	FAIL LOCAL_CLASS CV_PicnicAreaAfterWaspBossScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ec3bc0	FAIL	FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL LOCAL_CLASS CV_RandomPopulationSimScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ec5360	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_RockTrollFirstEncounterScript: #include "engine/CV_RockTrollFirstEncounterScript.h"
+00ec53c0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_SickChildScript: #include "engine/CV_SickChildScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL SHARED_HEADER_AVAILABLE (test) CBaseObject: #include "engine/CBaseObject.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptGameResourceObjectScriptedThingBase: #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+00ed0e60	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_SingingStonesScript: #include "engine/CV_SingingStonesScript.h"|FAIL SHARED_HEADER_AVAILABLE (test) CScriptBase: #include "engine/CScriptBase.h"|FAIL SHARED_HEADER_AVAILABLE (test) CV_SingingStonesScript: #include "engine/CV_SingingStonesScript.h"|FAIL LOCAL_CLASS __true_type: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS __false_type: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS __type_traits: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS allocator: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS _STLP_alloc_proxy: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS _Vector_base: a local model; put the class in a header in the overlay (or --local-ok with evidence)|FAIL LOCAL_CLASS vector: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ed4a40	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_StatueMasterScript: #include "engine/CV_StatueMasterScript.h"
+00edeb40	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CV_TempleOfLightScript: #include "engine/CV_TempleOfLightScript.h"
+00ee80a0	FAIL	FAIL LOCAL_CLASS CV_TrophyDealerScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ee8e80	FAIL	FAIL LOCAL_CLASS CGlobal_WatchForHeroDeathScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ee90f0	FAIL	FAIL LOCAL_CLASS CGlobal_DebugCycleThroughSpeechScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00ee94a0	FAIL	FAIL SHARED_HEADER_AVAILABLE (row) CExpression_FishScript: #include "engine/CExpression_FishScript.h"
+00ee9f50	FAIL	FAIL LOCAL_CLASS CExpression_FollowScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eea430	FAIL	FAIL LOCAL_CLASS CExpression_WaitScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eea790	FAIL	FAIL LOCAL_CLASS CExpression_DigScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)
+00eeaec0	FAIL	FAIL LOCAL_CLASS CExpression_PickpocketScript: a local model; put the class in a header in the overlay (or --local-ok with evidence)

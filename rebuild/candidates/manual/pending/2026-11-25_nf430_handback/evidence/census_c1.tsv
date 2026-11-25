@@ -1,0 +1,112 @@
+0125a538	??_7CDrawSpiritsHealth@@6B@	0064d2a9
+0125a574	??_7CDrawReceivedItems@@6B@	0064d335
+0125a580	??_7CDrawFishingGame@@6B@	0064d351
+0125a598	??_7CDrawSpiritScores@@6B@	0064d389
+0125a5a4	??_7CDrawDamage@@6B@	0064d3da
+0125a5c4	??_7CDrawScriptScreenText@@6B@	0064da6e
+012bf6bc	??_7CVtable_012bf6bc@@6B@	00cab120
+012bf6bc	??_7CEnumMediaTypes@@6B@	00cabf70 00cac170
+012c1648	??_7CScriptBase@@6B@	00cb8110
+012c2f64	??_7CQ_SunnyvaleMasterScript@NScript@@6B@	00cdd330 00cdd550
+012c2fb8	??_7CGlobal_TeleportToHeroGuildScript@NScript@@6B@	00cdd5b0 00cddb60
+012c3000	??_7CPersonalScriptMainScript@NScript@@6B@	00cddbc0 00cde2f0
+012c30cc	??_7CPersonalScript_GlobalThingsScript@NScript@@6B@	00cde350 00ce19a0
+012c3688	??_7CHeroBoastsScript@NScript@@6B@	00ce1a00 00ce6c40
+012c3fa4	??_7CGameflowScript@NScript@@6B@	00ce6cb0 00cef950
+012c5de0	??_7CGameflowAssistanceScript@NScript@@6B@	00cef9d0 00cf0640
+012c60a0	??_7CQ_ArenaHoldingScriptScript@NScript@@6B@	00cf06a0 00cf8860
+012c8300	??_7CQ_BanditCampScript@NScript@@6B@	00d006a0 00d03580
+012c88e0	??_7CQ_BanditCampBossBattleScript@NScript@@6B@	00d035e0 00d12920
+012c9e14	??_7CQ_BanditCampHoldingScriptScript@NScript@@6B@	00d12980 00d12c50
+012c9e68	??_7CQ_BountyHuntScript@NScript@@6B@	00d12cb0
+012cab18	??_7CQ_BreakSiegeScript@NScript@@6B@	00d1cc10 00d23c80
+012cb52c	??_7CQ_BowerstoneTownLifeIntroScript@NScript@@6B@	00d23ce0 00d253b0
+012cba58	??_7CQ_EndGameScript@NScript@@6B@	00d27370 00d2a7c0
+012cc60c	??_7CQ_EndGameBossBattleScript@NScript@@6B@	00d2f6b0
+012cf670	??_7CQ_GuildTrainingDepartureScript@NScript@@6B@	00d50680 00d513c0
+012cf788	??_7CQ_GuildTrainingPreMeleeScript@NScript@@6B@	00d51420 00d55d10
+012d0274	??_7CQ_GuildTrainingMeleeScript@NScript@@6B@	00d55d70 00d5a9f0
+012d09a0	??_7CQ_GuildTrainingSkillScript@NScript@@6B@	00d5aa50 00d5dbf0
+012d15fc	??_7CQ_GuildTrainingWoodsDepartureScript@NScript@@6B@	00d61c30 00d664d0
+012d1d1c	??_7CQ_GuildTrainingWoodsMeleeScript@NScript@@6B@	00d66530 00d67740
+012d1e08	??_7CQ_GuildTrainingWoodsWillScript@NScript@@6B@	00d677a0 00d68ea0
+012d2f48	??_7CQ_HeroSoulsScript@NScript@@6B@	00d784d0 00d7ac50
+012d3994	??_7CQ_HeroSoulsArenaScript@NScript@@6B@	00d7c700 00d80ba0
+012d5018	??_7CQ_HerosOldHouseScript@NScript@@6B@	00d89d70 00d8d5a0
+012d6e5c	??_7CActiveEntityScript@EntityScriptBinding_00d9ffd0@@6B@	00d9ffd0
+012db7b0	??_7CQ_OrchardFarmRaidEvilScript@NScript@@6B@	00dd1fe0 00dd2300
+012db810	??_7CQ_OrchardFarmRaidGoodScript@NScript@@6B@	00dd2360 00dd2680
+012dc88c	??_7CQ_PrisonRaceScript@NScript@@6B@	00ddad30 00dddc30
+012ddba8	??_7CQ_RansomVictimChiefsHouseScript@NScript@@6B@	00debe10 00dec790
+012ddf3c	??_7CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@6B@	00def6a0
+012df16c	??_7CQ_TraderEscortScript@NScript@@6B@	00e00690 00e0af60
+012dfd3c	??_7CQ_UndeadRisingScript@NScript@@6B@	00e0afe0 00e0e760
+012e1d48	??_7CQR_EscortTrader_ManagerScript@NScript@@6B@	00e24dd0 00e25970
+012e1dac	??_7CQS_GuardianSisterInfoScript@NScript@@6B@	00e259d0 00e26780
+012e1f08	??_7CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@6B@	00e267e0 00e277e0
+012e2018	??_7CQS_GuardianTrophyDealerInfoScript@NScript@@6B@	00e27840 00e28ca0
+012e2194	??_7CQS_MeetSisterScript@NScript@@6B@	00e28d00 00e29990
+012e2428	??_7CV_AmbushScamScript@NScript@@6B@	00e2ab60
+012e4b7c	??_7CV_BanditTollScript@NScript@@6B@	00e478a0 00e4f550
+012e8080	??_7CV_ChapelOfEvilScript@NScript@@6B@	00e68f70 00e6e230
+012e8b10	??_7CV_DemonDoorsScript@NScript@@6B@	00e6e2b0 00e75590
+012ea024	??_7CV_FishermanScript@NScript@@6B@	00e7b3f0 00e7e0b0
+012eba3c	??_7CV_GhostGrannyNecklaceScript@NScript@@6B@	00e8b850 00e906f0
+012ec138	??_7CV_GuildMasterScript@NScript@@6B@	00e90750 00e92900
+012ec9a4	??_7CV_HiddenBootyScript@NScript@@6B@	00e92970 00e93cf0
+012ece7c	??_7CV_HeroDollsScript@NScript@@6B@	00e96e30 00e98640
+012edce8	??_7CV_LostTraderScript@NScript@@6B@	00ea2cf0 00ea7680
+012efee8	??_7CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@6B@	00eb2000
+012f0c84	??_7CV_OracleScript@NScript@@6B@	00ebcca0 00ebee30
+012f0f38	??_7CV_ParanoidWhispersScript@NScript@@6B@	00ebee90 00ec11b0
+012f1230	??_7CV_PicnicAreaAfterWaspBossScript@NScript@@6B@	00ec1210 00ec1780
+012f12d8	??_7CV_RandomPopulationSimScript@NScript@@6B@	00ec17e0 00ec3bc0
+012f15c4	??_7CV_RockTrollFirstEncounterScript@NScript@@6B@	00ec3c20 00ec5360
+012f17dc	??_7CV_SickChildScript@NScript@@6B@	00ec53c0
+012f2b0c	??_7CV_SingingStonesScript@NScript@@6B@	00ed0e60
+012f2e6c	??_7CV_StatueMasterScript@NScript@@6B@	00ed3a50 00ed4a40
+012f3c68	??_7CV_TempleOfLightScript@NScript@@6B@	00edadf0 00edeb40
+012f51f4	??_7CV_TrophyDealerScript@NScript@@6B@	00ee6d30 00ee80a0
+012f5470	??_7CGlobal_WatchForHeroDeathScript@NScript@@6B@	00ee8e80
+012f54b4	??_7CGlobal_DebugCycleThroughSpeechScript@NScript@@6B@	00ee90f0
+012f54e4	??_7CExpression_FishScript@NScript@@6B@	00ee94a0 00ee9f00
+012f55b8	??_7CExpression_FollowScript@NScript@@6B@	00ee9f50
+012f55f8	??_7CExpression_WaitScript@NScript@@6B@	00eea430
+012f5628	??_7CExpression_DigScript@NScript@@6B@	00eea790
+012f56a0	??_7CExpression_PickpocketScript@NScript@@6B@	00eeaec0 00eeb730
+012f56d0	??_7CExpression_PicklockScript@NScript@@6B@	00eeb780
+012f5700	??_7CExpression_StealScript@NScript@@6B@	00eebdc0
+012f5730	??_7CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@6B@	00eec3e0
+012f5760	??_7CGlobal_OpenChestScript@NScript@@6B@	00eec7a0
+012f57a0	??_7CGlobal_ToggleTimeDisplayScript@NScript@@6B@	00eecef0 00eed060
+012f57e4	??_7CalextestScript@NScript@@6B@	00eed0b0 00eed220
+012f5814	??_7CPersonalScript_alextestScript@NScript@@6B@	00eed280 00eee6d0
+012f5954	??_7CEmptyScript@NScript@@6B@	00eee730 00eee940
+012f5998	??_7CTestTheInventoryScript@NScript@@6B@	00eee9a0 00eeee40
+012f5a78	??_7CTestQuestCard1Script@NScript@@6B@	00eeeea0 00eef540
+012f5bf4	??_7CTestQuestCard2Script@NScript@@6B@	00eef5a0 00eef6d0
+012f5c40	??_7CTestQuestCard3Script@NScript@@6B@	00eef730 00eef860
+012f5c8c	??_7CTestNewNav1Script@NScript@@6B@	00eef8c0 00eef9c0
+012f5cbc	??_7CTestNewNav2Script@NScript@@6B@	00eefa20 00eefb20
+012f5cec	??_7CTestNewNav3Script@NScript@@6B@	00eefb80 00eefc80
+012f5d1c	??_7CTestNewNav4Script@NScript@@6B@	00eefce0 00eefde0
+012f5d4c	??_7CTestNewNav5Script@NScript@@6B@	00eefe40 00eeff40
+012f5d7c	??_7CPersonalScript_EmptyScript@NScript@@6B@	00eeffa0 00ef9130
+012f68d0	??_7Cjoss_test_scriptsScript@NScript@@6B@	00ef9190 00ef9ee0
+012f696c	??_7Cguy_scriptScript@NScript@@6B@	00ef9f40 00efa3c0
+012f69e8	??_7Cbandit_level_cutsceneScript@NScript@@6B@	00efa420 00efaf30
+012f6aa8	??_7CDanyalTestScriptsScript@NScript@@6B@	00efaf90 00efb0b0
+012f6ad8	??_7CProximityPodiumTestScript@NScript@@6B@	00efb110 00efb610
+012f6b58	??_7CHitSwitchTestScript@NScript@@6B@	00efb670 00efbb70
+012f6bd4	??_7CGuildSealTriggerTestScript@NScript@@6B@	00efbbd0 00efc130
+012f6c58	??_7CHeroTurningDebuggerScript@NScript@@6B@	00efc190 00efc460
+012f6ca8	??_7CPersonalScript_AardvarkScript@NScript@@6B@	00efc4c0 00efc8d0
+012f6d00	??_7CMarkTestScriptsScript@NScript@@6B@	00efc930 00efe380
+012f6ec0	??_7CBenTestScriptsScript@NScript@@6B@	00efe3e0 00eff000
+012f6f90	??_7CTonyTestScriptsScript@NScript@@6B@	00eff060 00eff770
+012f7054	??_7CShowTargetedThingHealthScript@NScript@@6B@	00eff7d0 00effcd0
+012f70a0	??_7COracleMinigameTestScript@NScript@@6B@	00effd30 00f01330
+012f72d0	??_7CCS_PlayCutsceneScript@NScript@@6B@	00f01390 00f01760
+012f7300	??_7CQ_CinemaTestScript@NScript@@6B@	00f017c0 00f02460
+012fb778	??_7CFeatDef@@6B@	00f2d270
+012fb778	??_7CVtable_012fb778@@6B@	00f344c0

@@ -1,0 +1,77 @@
+addr       parity           behav  name
+00eeb780   RELOCATION_MATCH PASS   CExpression_PicklockScript
+00eebdc0   WARN SHARED_HEADER_AVAILABLE CExpression_StealScript (engine/CExpression_StealScript.h)
+00eebdc0   RELOCATION_MATCH PASS   CExpression_StealScript
+00eec3e0   RELOCATION_MATCH PASS   CGlobal_GiveHeroItemsFromRewardChestScript
+00eec7a0   RELOCATION_MATCH PASS   CGlobal_OpenChestScript
+00eecef0   RELOCATION_MATCH PASS   CGlobal_ToggleTimeDisplayScript
+00eed220   RELOCATION_MATCH PASS   Alloc
+00eee6d0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_alextestScript (engine/CPersonalScript_alextestScript.h)
+00eee6d0   RELOCATION_MATCH PASS   Alloc
+00eee940   RELOCATION_MATCH PASS   Alloc
+00eeee40   RELOCATION_MATCH PASS   Alloc
+00eef540   WARN SHARED_HEADER_AVAILABLE CTestQuestCard1Script (engine/CTestQuestCard1Script.h)
+00eef540   RELOCATION_MATCH PASS   Alloc
+00eef6d0   RELOCATION_MATCH PASS   Alloc
+00eef860   RELOCATION_MATCH PASS   Alloc
+00eef9c0   RELOCATION_MATCH PASS   Alloc
+00eefb20   RELOCATION_MATCH PASS   Alloc
+00eefc80   RELOCATION_MATCH PASS   Alloc
+00eefde0   RELOCATION_MATCH PASS   Alloc
+00eeff40   RELOCATION_MATCH PASS   Alloc
+00ef9130   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript (engine/CPersonalScript_EmptyScript.h)
+00ef9130   RELOCATION_MATCH PASS   Alloc
+00ef9ee0   RELOCATION_MATCH PASS   Alloc
+00efa3c0   RELOCATION_MATCH PASS   Alloc
+00efaf30   RELOCATION_MATCH PASS   Alloc
+00efb0b0   RELOCATION_MATCH PASS   Alloc
+00efb610   RELOCATION_MATCH PASS   Alloc
+00efbb70   RELOCATION_MATCH PASS   Alloc
+00efc130   RELOCATION_MATCH PASS   Alloc
+00efc460   RELOCATION_MATCH PASS   Alloc
+00efc8d0   RELOCATION_MATCH PASS   Alloc
+00efe380   WARN SHARED_HEADER_AVAILABLE CMarkTestScriptsScript (engine/CMarkTestScriptsScript.h)
+00efe380   RELOCATION_MATCH PASS   Alloc
+00eff000   RELOCATION_MATCH PASS   Alloc
+00eff770   RELOCATION_MATCH PASS   Alloc
+00effcd0   RELOCATION_MATCH PASS   Alloc
+00f01330   WARN SHARED_HEADER_AVAILABLE COracleMinigameTestScript (engine/COracleMinigameTestScript.h)
+00f01330   RELOCATION_MATCH PASS   Alloc
+00f01760   RELOCATION_MATCH PASS   Alloc
+00f02460   RELOCATION_MATCH PASS   Alloc
+
+WINS: 34
+  00eeb780 RELOCATION_MATCH NScript::CExpression_PicklockScript::??0CExpression_PicklockScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eebdc0 RELOCATION_MATCH NScript::CExpression_StealScript::??0CExpression_StealScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eec3e0 RELOCATION_MATCH NScript::CGlobal_GiveHeroItemsFromRewardChestScript::??0CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eec7a0 RELOCATION_MATCH NScript::CGlobal_OpenChestScript::??0CGlobal_OpenChestScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eecef0 RELOCATION_MATCH NScript::CGlobal_ToggleTimeDisplayScript::??0CGlobal_ToggleTimeDisplayScript@NScript@@QAE@AAVCGameScriptInterfaceBase@@@Z
+  00eed220 RELOCATION_MATCH NScript::CalextestScript::?Alloc@CalextestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eee6d0 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::?Alloc@CPersonalScript_alextestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eee940 RELOCATION_MATCH NScript::CEmptyScript::?Alloc@CEmptyScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eeee40 RELOCATION_MATCH NScript::CTestTheInventoryScript::?Alloc@CTestTheInventoryScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eef540 RELOCATION_MATCH NScript::CTestQuestCard1Script::?Alloc@CTestQuestCard1Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eef6d0 RELOCATION_MATCH NScript::CTestQuestCard2Script::?Alloc@CTestQuestCard2Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eef860 RELOCATION_MATCH NScript::CTestQuestCard3Script::?Alloc@CTestQuestCard3Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eef9c0 RELOCATION_MATCH NScript::CTestNewNav1Script::?Alloc@CTestNewNav1Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eefb20 RELOCATION_MATCH NScript::CTestNewNav2Script::?Alloc@CTestNewNav2Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eefc80 RELOCATION_MATCH NScript::CTestNewNav3Script::?Alloc@CTestNewNav3Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eefde0 RELOCATION_MATCH NScript::CTestNewNav4Script::?Alloc@CTestNewNav4Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eeff40 RELOCATION_MATCH NScript::CTestNewNav5Script::?Alloc@CTestNewNav5Script@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ef9130 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::?Alloc@CPersonalScript_EmptyScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ef9ee0 RELOCATION_MATCH NScript::Cjoss_test_scriptsScript::?Alloc@Cjoss_test_scriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efa3c0 RELOCATION_MATCH NScript::Cguy_scriptScript::?Alloc@Cguy_scriptScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efaf30 RELOCATION_MATCH NScript::Cbandit_level_cutsceneScript::?Alloc@Cbandit_level_cutsceneScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efb0b0 RELOCATION_MATCH NScript::CDanyalTestScriptsScript::?Alloc@CDanyalTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efb610 RELOCATION_MATCH NScript::CProximityPodiumTestScript::?Alloc@CProximityPodiumTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efbb70 RELOCATION_MATCH NScript::CHitSwitchTestScript::?Alloc@CHitSwitchTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efc130 RELOCATION_MATCH NScript::CGuildSealTriggerTestScript::?Alloc@CGuildSealTriggerTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efc460 RELOCATION_MATCH NScript::CHeroTurningDebuggerScript::?Alloc@CHeroTurningDebuggerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efc8d0 RELOCATION_MATCH NScript::CPersonalScript_AardvarkScript::?Alloc@CPersonalScript_AardvarkScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00efe380 RELOCATION_MATCH NScript::CMarkTestScriptsScript::?Alloc@CMarkTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eff000 RELOCATION_MATCH NScript::CBenTestScriptsScript::?Alloc@CBenTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00eff770 RELOCATION_MATCH NScript::CTonyTestScriptsScript::?Alloc@CTonyTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00effcd0 RELOCATION_MATCH NScript::CShowTargetedThingHealthScript::?Alloc@CShowTargetedThingHealthScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00f01330 RELOCATION_MATCH NScript::COracleMinigameTestScript::?Alloc@COracleMinigameTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00f01760 RELOCATION_MATCH NScript::CCS_PlayCutsceneScript::?Alloc@CCS_PlayCutsceneScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00f02460 RELOCATION_MATCH NScript::CQ_CinemaTestScript::?Alloc@CQ_CinemaTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

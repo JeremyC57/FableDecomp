@@ -1,0 +1,429 @@
+0125a538	rtti	2	
+0125a574	rtti	2	
+0125a580	rtti	2	
+0125a598	rtti	2	
+0125a5a4	rtti	2	
+0125a5c4	rtti	2	
+012b1a54	fable+libpk	1	
+012b1a64	libpk	24	
+012b1aa0	libpk	9	
+012b1aa8	libpk	7	
+012b1ab0	libpk	5	
+012b1b40	libpk	2	
+012b1b70	libpk	91	
+012b1b78	libpk	89	
+012b1bc0	libpk	71	
+012b1c00	libpk	55	
+012b1c40	fable+libpk	39	
+012b1c90	libpk	19	
+012b1c98	libpk	17	
+012b1d50	libpk	86	
+012b1d98	libpk	68	
+012b1de0	libpk	50	
+012b221c	libpk	234	
+012b2238	libpk	227	
+012b2240	libpk	225	
+012b2248	libpk	223	
+012b2288	libpk	207	
+012b22c8	libpk	191	
+012b2308	libpk	175	
+012b2350	libpk	157	
+012b23a0	libpk	137	
+012b23f0	libpk	117	
+012b2440	libpk	97	
+012b2488	libpk	79	
+012b24d0	libpk	61	
+012b2518	libpk	43	
+012b2560	libpk	25	
+012b25a8	libpk	7	
+012b260c	libpk	16	
+012b2614	libpk	14	
+012b261c	libpk	12	
+012b2624	libpk	10	
+012b262c	libpk	8	
+012b2634	libpk	6	
+012b2644	libpk	2	
+012b2748	libpk	37	
+012b27e0	libpk	25	
+012b2828	libpk	7	
+012b2834	libpk	4	
+012b283c	libpk	2	
+012b2848	libpk	71	
+012b2888	libpk	55	
+012b28d8	libpk	35	
+012b2920	libpk	17	
+012b2968	libpk	35	
+012b29b0	libpk	17	
+012b29f8	libpk	51	
+012b2a40	libpk	33	
+012b2a74	libpk	20	
+012b2ab0	libpk	5	
+012b2ab8	libpk	3	
+012b2db0	libpk	30	
+012b2f0c	libpk	15	??_7CReverbFns@@6B@ ok=1 bad=8 ls=9
+012b2f88	libpk	20	
+012b2f90	libpk	18	
+012b2f98	libpk	16	
+012b2fb8	libpk	8	
+012b30e4	libpk	4	
+012b3224	libpk	2	
+012b32a0	libpk	12	??_7CSalContext@@6B@ ok=1 bad=5 ls=7
+012b33a4	libpk	192	??_7CSalContext@@6B@ ok=3 bad=3 ls=7
+012b33c0	libpk	185	??_7CSalContext@@6B@ ok=1 bad=5 ls=7
+012b33f0	libpk	173	
+012b3404	libpk	168	??_7CSalContext@@6B@ ok=2 bad=4 ls=7
+012b3420	libpk	161	
+012b3444	libpk	152	
+012b3474	libpk	140	
+012b3498	libpk	131	
+012b34bc	libpk	122	
+012b34e0	libpk	113	
+012b3504	libpk	104	
+012b3528	libpk	95	
+012b354c	libpk	86	
+012b3570	libpk	77	
+012b3594	libpk	68	
+012b35b8	libpk	59	
+012b35dc	libpk	50	
+012b3600	libpk	41	
+012b37fc	libpk	6	
+012b3804	libpk	4	
+012b380c	libpk	2	
+012b3820	libpk	69	
+012b3840	libpk	61	
+012b3848	libpk	59	
+012b3850	libpk	57	
+012b3858	libpk	55	
+012b3860	libpk	53	
+012b38a8	libpk	35	
+012b38f0	libpk	17	
+012b3938	libpk	80	
+012b3978	libpk	64	
+012b39b8	libpk	48	
+012b39f8	libpk	32	
+012b3a38	libpk	16	
+012b3a94	libpk	12	
+012b3a9c	libpk	10	
+012b3aa4	libpk	8	
+012b3ac8	libpk	255	
+012b3b10	libpk	237	
+012b3b58	libpk	219	
+012b3ba8	libpk	199	
+012b3bf8	libpk	179	
+012b3c40	fable+libpk	161	
+012b3c88	libpk	143	
+012b3cd0	libpk	125	
+012b3d18	libpk	107	
+012b3d60	libpk	89	
+012b3da8	libpk	71	
+012b3df0	libpk	53	
+012b3e38	libpk	35	
+012b3e80	libpk	17	
+012b3ec8	libpk	55	
+012b3f10	libpk	37	
+012b3f58	libpk	19	
+012b3fa0	libpk	1	
+012b4010	libpk	17	
+012b401c	libpk	14	
+012b4024	libpk	12	
+012b4030	libpk	9	
+012b4148	libpk	329	
+012b4150	libpk	327	
+012b4158	libpk	325	
+012b4160	libpk	323	
+012b4168	libpk	321	
+012b4170	libpk	319	
+012b4178	libpk	317	
+012b4180	libpk	315	
+012b4188	libpk	313	
+012b4190	libpk	311	
+012b41d0	libpk	295	
+012b4210	libpk	279	
+012b4268	libpk	257	
+012b42b0	libpk	239	
+012b42f8	libpk	221	
+012b4340	libpk	203	
+012b4388	libpk	185	
+012b43d0	libpk	167	
+012b4418	libpk	149	
+012b4460	libpk	131	
+012b44a8	libpk	113	
+012b44b0	libpk	111	
+012b44b8	libpk	109	
+012b44c0	libpk	107	
+012b44c8	libpk	105	
+012b4510	libpk	87	
+012b4558	libpk	69	
+012b45a0	libpk	51	
+012b45e8	libpk	33	
+012b4630	libpk	15	
+012b463c	libpk	12	
+012b465c	libpk	4	
+012b4664	libpk	2	
+012b4670	libpk	17	
+012b46b8	libpk	25	
+012b46fc	libpk	8	
+012b4740	libpk	54	
+012b4788	libpk	36	
+012b4964	libpk	12	
+012b496c	libpk	10	
+012b4974	libpk	8	
+012b497c	libpk	6	
+012b4984	libpk	4	
+012b498c	libpk	2	
+012b4998	libpk	220	
+012b49d8	libpk	204	
+012b4a18	libpk	188	
+012b4a70	libpk	166	
+012b4ab8	libpk	148	
+012b4b00	libpk	130	
+012b4b48	libpk	112	
+012b4b90	libpk	94	
+012b4bd8	libpk	76	
+012b4c20	libpk	58	
+012b4c28	libpk	56	
+012b4c30	libpk	54	
+012b4c78	libpk	36	
+012b4cc0	libpk	18	
+012b4e00	libpk	4	
+012b4e08	libpk	2	
+012b4e80	libpk	15	??_7CReverbFnsSSE@@6B@ ok=1 bad=8 ls=9
+012b4f38	libpk	23	
+012b4f4c	libpk	18	
+012b4f60	libpk	13	??_7CSalBufferBase@@6B@ ok=1 bad=11 ls=13 | ??_7CSalBuffer@@6B@ ok=1 bad=12 ls=13
+012b4f74	libpk	8	
+012b4f84	libpk	4	
+012b4f9c	libpk	56	
+012b4fac	libpk	52	
+012b4fbc	libpk	48	
+012b4fec	libpk	36	
+012b501c	libpk	24	
+012b504c	libpk	12	
+012b50c4	libpk	10	
+012b50cc	libpk	8	
+012b50d4	libpk	6	
+012b50dc	libpk	4	
+012b50e4	libpk	2	
+012b50f0	libpk	81	
+012b5138	libpk	63	
+012b5180	libpk	45	
+012b51c8	libpk	27	
+012b51d0	libpk	25	
+012b51d8	libpk	23	
+012b51e0	libpk	21	
+012b51e8	libpk	19	
+012b51f0	libpk	17	
+012b5238	libpk	23	
+012b527c	libpk	6	
+012b5284	libpk	4	
+012b528c	libpk	2	
+012b5298	libpk	94	
+012b52e0	libpk	76	
+012b5328	libpk	58	
+012b53a0	libpk	28	
+012b53b0	libpk	24	
+012b54e8	libpk	108	
+012b5530	libpk	90	
+012b5578	libpk	72	
+012b55c0	libpk	54	
+012b5608	libpk	36	
+012b5650	libpk	18	
+012b5860	libpk	6	??_7CSalRender@@6B@ ok=1 bad=0 ls=5 | ??_7CSalRenderPanSSE2@@6B@ ok=1 bad=3 ls=5 | ??_7CSalRenderPanMMX@@6B@ ok=1 bad=3 ls=5
+012b5868	libpk	4	
+012b586c	libpk	3	
+012b5870	libpk	2	
+012b5a80	libpk	11	??_7CCodaObject@@6B@ ok=1 bad=8 ls=11 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012b5a84	libpk	10	
+012b5a88	libpk	9	
+012b5ab0	libpk	9	
+012b5b80	libpk	35	??_7CSalContext@@6B@ ok=4 bad=2 ls=7 | ??_7CSalPlatform@@6B@ ok=1 bad=5 ls=7
+012b5ba0	libpk	27	
+012b5bb0	libpk	23	??_7CSalOutputConfigDs@@6B@ ok=2 bad=2 ls=5
+012b5bc0	libpk	19	??_7CSalPlatform@@6B@ ok=1 bad=5 ls=7 | ??_7CSalContext@@6B@ ok=1 bad=5 ls=7
+012b5be0	libpk	11	??_7CSalMixerLimiter@@6B@ ok=1 bad=8 ls=10 | ??_7CSalMixer@@6B@ ok=1 bad=8 ls=10
+012b5c10	libpk	19	??_7CSalOutputConfig@@6B@ ok=1 bad=0 ls=5 | ??_7CSalOutputConfigDs@@6B@ ok=1 bad=3 ls=5 | ??_7CCodaObject@@6B@ ok=3 bad=6 ls=11
+012b5c60	libpk	67	??_7CCodaEnvironment@@6B@ ok=3 bad=8 ls=11 | ??_7CCodaObject@@6B@ ok=2 bad=7 ls=11 | ??_7CCodaEAX@@6B@ ok=2 bad=8 ls=11
+012b5cd0	libpk	39	??_7CCodaEnvironment@@6B@ ok=3 bad=8 ls=11 | ??_7CCodaObject@@6B@ ok=2 bad=7 ls=11 | ??_7CCodaEAX@@6B@ ok=2 bad=8 ls=11
+012b5d40	libpk	11	
+012b5d70	libpk	39	??_7CCodaEnvironment@@6B@ ok=3 bad=8 ls=11 | ??_7CCodaObject@@6B@ ok=2 bad=7 ls=11 | ??_7CCodaEAX@@6B@ ok=2 bad=8 ls=11
+012b5de0	libpk	11	
+012b7bac	libpk	6	
+012b7bb4	libpk	4	
+012b7bbc	libpk	2	
+012b7bc8	libpk	53	
+012b7c10	libpk	35	
+012b7c58	libpk	17	
+012b7ca0	libpk	35	
+012b7ce8	libpk	17	
+012b7d50	libpk	141	
+012b7d58	libpk	139	
+012b7d68	libpk	135	
+012b7db0	libpk	117	
+012b7df8	libpk	99	
+012b7e40	libpk	81	
+012b7e48	libpk	79	
+012b7e50	libpk	77	
+012b7e58	libpk	75	
+012b7e60	libpk	73	
+012b7e68	libpk	71	
+012b7ea8	libpk	55	
+012b7ef8	libpk	35	
+012b7f40	libpk	17	
+012b7f88	libpk	44	
+012b7fd0	libpk	26	
+012b8034	libpk	1	
+012b80ac	libpk	15	
+012b8138	libpk	7	
+012b8778	libpk	1	
+012b87f4	libpk	1	
+012b89c4	libpk	9	
+012b89c8	libpk	8	
+012b8a64	libpk	30	??_7CSalRenderPanDelaySSE2@@6B@ ok=2 bad=2 ls=5 | ??_7CSalHw@@6B@ ok=1 bad=1 ls=12 | ??_7CSalRenderPanSSE2@@6B@ ok=1 bad=3 ls=5
+012b8a78	libpk	25	??_7CSalRender@@6B@ ok=1 bad=0 ls=5 | ??_7CSalRenderPanSSE2@@6B@ ok=2 bad=2 ls=5 | ??_7CSalRenderPanMMX@@6B@ ok=2 bad=2 ls=5
+012b8a8c	libpk	20	??_7CSalRenderDisableSSE2@@6B@ ok=3 bad=1 ls=5 | ??_7CSalRenderDisableMMX@@6B@ ok=3 bad=1 ls=5 | ??_7CSalRenderDisable@@6B@ ok=3 bad=1 ls=5
+012b8aa0	libpk	15	??_7CSalRenderPanDelayMMX@@6B@ ok=2 bad=2 ls=5 | ??_7CSalHw@@6B@ ok=1 bad=1 ls=12 | ??_7CSalRenderPanSSE2@@6B@ ok=1 bad=3 ls=5
+012b8ab4	libpk	10	??_7CSalRender@@6B@ ok=1 bad=0 ls=5 | ??_7CSalRenderPanSSE2@@6B@ ok=2 bad=2 ls=5 | ??_7CSalRenderPanMMX@@6B@ ok=2 bad=2 ls=5
+012b8ac8	libpk	5	??_7CSalRenderDisableSSE2@@6B@ ok=3 bad=1 ls=5 | ??_7CSalRenderDisableMMX@@6B@ ok=3 bad=1 ls=5 | ??_7CSalRenderDisable@@6B@ ok=3 bad=1 ls=5
+012b8b50	libpk	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012b8c18	libpk	12	??_7CSalOpenAL@@6B@ ok=1 bad=10 ls=12
+012b8cc8	libpk	20	??_7CSalOutputConfig@@6B@ ok=1 bad=0 ls=5 | ??_7CSalOutputConfigDs@@6B@ ok=1 bad=3 ls=5 | ??_7CCodaObject@@6B@ ok=2 bad=7 ls=11
+012b8d48	libpk	30	??_7CSalOutputConfig@@6B@ ok=1 bad=0 ls=5 | ??_7CSalOutputConfigDs@@6B@ ok=1 bad=3 ls=5 | ??_7CCodaObject@@6B@ ok=3 bad=6 ls=11
+012b8d98	libpk	10	
+012b8dd0	libpk	30	
+012b8df8	libpk	20	
+012b8e20	libpk	10	
+012b8ed4	libpk	10	
+012b8f64	libpk	1	
+012b8f78	libpk	17	??_7CSalOutputConfig@@6B@ ok=1 bad=0 ls=5 | ??_7CSalOutputConfigDs@@6B@ ok=1 bad=3 ls=5 | ??_7CCodaObject@@6B@ ok=3 bad=6 ls=11
+012b8fc4	libpk	12	
+012b8fc8	libpk	11	
+012b90d4	libpk	1	
+012b90e8	libpk	2	
+012b914c	libpk	20	
+012b9174	libpk	10	??_7CSalOutputNull@@6B@ ok=1 bad=7 ls=9
+012b938c	libpk	2	
+012b93d4	libpk	3	
+012b9584	libpk	24	??_7CSalHw@@6B@ ok=1 bad=1 ls=12 | ??_7CSalReverb@@6B@ ok=2 bad=10 ls=16 | ??_7CSalBaseReverb@@6B@ ok=2 bad=11 ls=22
+012b9588	libpk	23	??_7CSalHw@@6B@ ok=1 bad=1 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11 | ??_7CCodaSource@@6B@ ok=1 bad=13 ls=16
+012b958c	libpk	22	??_7CSalBaseReverb@@6B@ ok=1 bad=12 ls=22 | ??_7CSalSwReverb@@6B@ ok=1 bad=20 ls=22
+012b9590	libpk	21	??_7CCodaObject@@6B@ ok=1 bad=8 ls=11 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11 | ??_7CCodaContext@@6B@ ok=1 bad=9 ls=11
+012b95a8	libpk	15	??_7CCodaObject@@6B@ ok=1 bad=8 ls=11 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012b95c4	libpk	8	
+012bed7c	libpk	38	??_7CSalRenderPanDelay@@6B@ ok=2 bad=2 ls=5 | ??_7CSalHw@@6B@ ok=1 bad=1 ls=12 | ??_7CSalRenderPanSSE2@@6B@ ok=1 bad=3 ls=5
+012bed90	libpk	33	??_7CSalRender@@6B@ ok=1 bad=0 ls=5 | ??_7CSalRenderPanSSE2@@6B@ ok=2 bad=2 ls=5 | ??_7CSalRenderPanMMX@@6B@ ok=2 bad=2 ls=5
+012beda4	libpk	28	??_7CSalRender@@6B@ ok=1 bad=0 ls=5 | ??_7CSalRenderPanSSE2@@6B@ ok=1 bad=3 ls=5 | ??_7CSalRenderPanMMX@@6B@ ok=1 bad=3 ls=5
+012bedb8	libpk	23	??_7CSalRenderDisableSSE2@@6B@ ok=3 bad=1 ls=5 | ??_7CSalRenderDisableMMX@@6B@ ok=3 bad=1 ls=5 | ??_7CSalRenderDisable@@6B@ ok=3 bad=1 ls=5
+012bedcc	libpk	18	
+012bede0	libpk	13	??_7CSalHw@@6B@ ok=1 bad=1 ls=12 | ??_7CCodaObject@@6B@ ok=1 bad=8 ls=11 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012bedf4	libpk	8	
+012bee40	libpk	20	??_7CSalOutputConfig@@6B@ ok=1 bad=0 ls=5 | ??_7CSalOutputConfigDs@@6B@ ok=1 bad=3 ls=5 | ??_7CCodaObject@@6B@ ok=3 bad=6 ls=11
+012beffc	libpk	22	
+012bf014	libpk	16	??_7CSalContext@@6B@ ok=1 bad=5 ls=7
+012bf050	libpk	1	
+012bf07c	libpk	2	
+012bf0c8	libpk	5	??_7CReverbDspEngine@@6B@ ok=3 bad=0 ls=5 | ??_7CFloatReverbDspEngine@@6B@ ok=2 bad=2 ls=5
+012bf1dc	libpk	15	
+012bf1f4	libpk	9	??_7CReverbFnsSSE@@6B@ ok=9 bad=0 ls=9 | ??_7CReverbFns@@6B@ ok=1 bad=8 ls=9
+012bf6bc	fable	8	
+012c1648	fable	5	??_7CSalRender@@6B@ ok=1 bad=0 ls=5 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CSalRenderPanSSE2@@6B@ ok=1 bad=3 ls=5
+012c2f64	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c2fb8	fable	30	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c3000	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c30cc	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c3224	fable	7	
+012c3688	fable	19	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c5de0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c60a0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c8300	fable	5	
+012c88e0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012c9e14	fable	5	
+012c9e68	fable	5	
+012cab18	fable	5	
+012cb52c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012cba58	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012cc60c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012cf670	fable	5	
+012cf788	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d0274	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d09a0	fable	28	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d15fc	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d1d1c	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d1e08	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d2f48	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d3994	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d5018	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012d6e5c	fable	12	
+012db7b0	fable	5	
+012db810	fable	5	
+012dc88c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012ddba8	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012ddf3c	fable	7	
+012df16c	fable	5	
+012e1d48	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e1dac	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e1f08	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e2018	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e2194	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e2428	fable	5	
+012e4b7c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e8080	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012e8b10	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012ea024	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012eba3c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012ec138	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012ec9a4	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012ece7c	fable	21	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012edce8	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012efee8	fable	7	
+012f0c84	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f0f38	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f1230	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f12d8	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f15c4	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f17dc	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f2b0c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f2e6c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f3c68	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f51f4	fable	5	
+012f5470	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f54b4	fable	24	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f54e4	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f55b8	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f55f8	fable	17	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5628	fable	5	??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5
+012f56a0	fable	60	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f56d0	fable	48	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5700	fable	36	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5730	fable	24	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5760	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f57a0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f57e4	fable	24	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5814	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5954	fable	13	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5998	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5a78	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5bf4	fable	5	??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5
+012f5c40	fable	5	??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5
+012f5c8c	fable	72	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5cbc	fable	60	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5cec	fable	48	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5d1c	fable	36	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5d4c	fable	24	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f5d7c	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f68d0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f696c	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f69e8	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6aa8	fable	26	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6ad8	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6b58	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6bd4	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6c58	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6ca8	fable	5	
+012f6d00	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6ec0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f6f90	fable	14	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f7054	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f70a0	fable	12	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f72d0	fable	40	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012f7300	fable	28	??_7CSalHw@@6B@ ok=2 bad=0 ls=12 | ??_7CReverbDspEngine@@6B@ ok=1 bad=2 ls=5 | ??_7CCodaEAX@@6B@ ok=1 bad=9 ls=11
+012fb778	fable	25	??_7CSalOutputConfig@@6B@ ok=1 bad=0 ls=5 | ??_7CSalOutputConfigDs@@6B@ ok=1 bad=3 ls=5 | ??_7CCodaObject@@6B@ ok=1 bad=8 ls=11
