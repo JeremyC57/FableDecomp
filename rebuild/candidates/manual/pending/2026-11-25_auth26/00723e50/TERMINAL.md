@@ -35,3 +35,29 @@ local) or be a fitted device, and would be reported, not landed.
 
 ## Files
 g0.cpp (oracle), g2.cpp (legal base), g1/g3/g4/g5.cpp, LOG.md (every hypothesis), NOTES.md, ESCALATE.md (round 1).
+
+## Owner round (2026-11-25): call-site grouping and ordering, Ego_d locals kept exactly
+Constraint kept in every candidate: locals xy (float), right_2d, forward (C3DVector) and GFFastOneOverSqrt's n / seed / r only; no
+added named locals, references or temporaries. Base g2 = FRONT (mov eax / mov edi one slot late) + TAIL (retail issues `add esi,50h`
+and `pop edi` before the first normalised store, so it writes X*r back through [esp+8] after the pop; ours pops later and stores
+through [esp+0Ch]). Each candidate was written in LOG.md before its grade; one source per q.py call.
+
+| grade | candidate (call-site change) | Ego_d lines affected | result |
+|---|---|---|---|
+| g6 | `xy -= 0.25f;` then `InitialiseFromAngles(xy, 0.0f, 1.0f)` | 455 split in two | DIFFER 310v310: FRONT unchanged; TAIL changed to another non-retail order |
+| g7 | argument `-0.25f + xy` | none | DIFFER 310v310: FRONT unchanged; TAIL = g6's |
+| g8 | `C3DVector right_2d;` declared before `float xy = ...` | 453 <-> 454 swapped | DIFFER 310v310: identical to g2 |
+| g9 | `RHSet.SetUp(normal);` before `RHSet.SetForward(forward);` | 458 <-> 459 swapped | DIFFER 310v310: FRONT unchanged; TAIL far worse (retail stores Forward first) |
+| g10 | one statement `C3DVector forward = right_2d.InitialiseFromAngles((xy - 0.25f), 0.0f, 1.0f) ^ normal;` (operator^'s argument `normal` evaluated before the angle chain) | 455 + 456 merged | DIFFER 310v310: identical to g2 (front unchanged) |
+| g11 | `RHSet.SetForward(forward.Normalise());` | 457 + 458 merged | DIFFER 310v310: identical to g2 |
+| g12 | `C3DVector forward; forward = right_2d ^ normal;` | 456 split | DIFFER 340v310: the result is copied through a temporary; rejected |
+| g13 | int literals `InitialiseFromAngles((xy - 0.25f), 0, 1)` | none | DIFFER 310v310: identical to g2 |
+
+Earlier in this row (same constraint): g1 double quarter turn (front unchanged; literal proven float), g3 two-statement Newton
+(front unchanged), g4 unparenthesised heading (front unchanged), g5 CTCPhysicsStandard override declarations (identical to g2).
+
+Reading: no statement order or grouping at the call site moves the FRONT, because the VC7.1 scheduler orders by the dependence DAG,
+not by source order (g8 / g10 / g11 are byte-identical to g2 though they reorder or merge Ego_d lines); the only spellings that move
+anything (g6 / g7) move the TAIL, not to retail. The TAIL is the same kind of residue as the FRONT: integer instructions (`add esi`,
+`pop edi`) that retail issues earlier among the x87 work. Grades by AUTH26 on this row: 14 (g0..g13). Codex's g0 closes the TAIL only
+with the memcpy `bits` device (extra local, contradicts Ego_d), which this round did not reuse.
