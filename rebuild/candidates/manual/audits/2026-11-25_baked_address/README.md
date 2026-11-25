@@ -39,6 +39,8 @@ A flag constant that only lies in the image range is not listed. Examples are 0x
 
 **Headers:** `rebuild/include/**` and the row-local `.h` files hold no hex token in the data range. In the code range they hold only an unused enum of retail addresses (`fable_video_system.h`) and a macro that drops its address argument (`FABLE_TCE_ENTITY_DECL`).
 
+**Unkeyed data-range scan (HEAD, after NF416–NF424):** across 57,155 genuine rows, every hex token in 0x0122D000–0x0146B47C that is in neither `data_vas.tsv` nor `string_vas.tsv` was listed. There are 4 tokens, all the `0x1400000` flag in 00c41e40 and 00c41fb0, NF415's known FALSE_POSITIVE lines. No `manual` key is missing.
+
 **Count:** 50 rows. `HITS.tsv` lists each row and its baked VAs.
 
 **Fix queue:**
