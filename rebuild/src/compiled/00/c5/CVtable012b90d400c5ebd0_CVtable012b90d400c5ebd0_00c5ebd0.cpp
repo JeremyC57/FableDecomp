@@ -1,18 +1,25 @@
-// CVtable_012b90d4_00c5ebd0::~CVtable_012b90d4_00c5ebd0() -- this class's vtable (0x012B90D4, no RTTI), then close the Win32 handle at +4 (CloseHandle @ IAT 0x0143FE30) unless it is -1 and set it to -1
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5EBD0, length 48 bytes.
-// Leaf: ??1CVtable_012b90d4_00c5ebd0@@QAE@XZ
-// The chunk label "ClearTextures" is propagated; named by the vtable (one of two byte-identical bodies). Shape: the handle loaded and compared before the vtable store, `ret`.
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);   // IAT 0x0143FE30
-struct CVtable_012b90d4_00c5ebd0 {                     // vtable 0x012B90D4
-    virtual void v00();
-    void* m_hHandle;                               // +0x04
-    ~CVtable_012b90d4_00c5ebd0();
+// CSalFile::~CSalFile() -- close the handle unless it is -1 (Close inlined); the vtable 0x012B90D4 is stored first
+// Leaf: ??1CSalFile@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5EBD0, 33 bytes.
+// Name (NF404, joins the T3 nf401 0x00C5ECA0 unit): the GameCODA 2.10 SDK member (CODAApi.lib Release/SalOutputKS.obj, section 97, defines
+//   ??1CSalFile@@UAE@XZ as a pick-any (Any) COMDAT with this body, relocations masked); retail vtable 0x012B90D4 is the CSalFile vtable the
+//   CSalOutputKS constructor 0x00C5ED90 stores for its member. The unit's ~CSalOutputKS / CSalOutputKS rows emit this COMDAT from
+//   engine/CSalOutputKS.h; it is re-rowed in the nf86 / nf88 pick-any form, so no strong definition here clashes with their copies. Was the
+//   descriptive stand-in ??1CVtable_012b90d4_00c5ebd0@@QAE@XZ.
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#include "engine/CSalOutputKS.h"
+namespace {
+// Fidelity: scaffolding, not retail: the qualified (non-virtual) destructor call names the header's inline destructor, so VC7.1
+// emits it out of line as a pick-any COMDAT together with the vtable and the scalar deleting destructor it references. Internal to
+// this TU; never called.
+class CSalFileReference {
+public:
+    static void Reference(CSalFile* object);
 };
-
-CVtable_012b90d4_00c5ebd0::~CVtable_012b90d4_00c5ebd0()
+// Out of class, so it is an ordinary (not inline) function that VC7.1 compiles even though nothing calls it.
+void CSalFileReference::Reference(CSalFile* object)
 {
-    if (m_hHandle != (void*)-1) {
-        CloseHandle(m_hHandle);
-        m_hHandle = (void*)-1;
-    }
+    object->CSalFile::~CSalFile();
+}
 }

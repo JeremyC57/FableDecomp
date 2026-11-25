@@ -1,33 +1,14 @@
-// Behaviour test for CVtable_012b90d4_00c5ec50::`scalar deleting destructor' (0x00C5EC00): an owned handle is closed
-// exactly once; the -1 sentinel is never closed.
+// Behaviour model of CSalFile's scalar deleting destructor (0x00C5EC00): delete through the base pointer runs the destructor (a held handle
+// closed once) and frees the object; a -1 handle is not closed.
 #include <cstdio>
-
-static int g_closed = 0; static void* g_lastClosed = 0;
-static int CloseHandleStub(void* handle) { ++g_closed; g_lastClosed = handle; return 1; }   // kernel32 stand-in
-
-struct CVtable_012b90d4_00c5ec50 {
-    CVtable_012b90d4_00c5ec50() : m_hHandle((void*)-1) {}
-    virtual ~CVtable_012b90d4_00c5ec50();
-    void* m_hHandle;
-};
-CVtable_012b90d4_00c5ec50::~CVtable_012b90d4_00c5ec50()
-{
-    if (m_hHandle != (void*)-1) {
-        CloseHandleStub(m_hHandle);
-        m_hHandle = (void*)-1;
-    }
-}
-
+static int g_closed; static void* g_last;
+static void CloseStub(void* h) { ++g_closed; g_last = h; }
+class CSalFile { public: CSalFile() : m_h((void*)-1) {} virtual ~CSalFile() { if (m_h != (void*)-1) { CloseStub(m_h); m_h = (void*)-1; } } void* m_h; };
 int main()
 {
-    int dummy;
-    CVtable_012b90d4_00c5ec50* owner = new CVtable_012b90d4_00c5ec50;
-    owner->m_hHandle = &dummy;
-    delete owner;
-    if (g_closed != 1 || g_lastClosed != &dummy) { std::printf("00c5ec00_TEST FAIL\n"); return 1; }
-    CVtable_012b90d4_00c5ec50* idle = new CVtable_012b90d4_00c5ec50;
-    delete idle;
+    int h; CSalFile* p = new CSalFile; p->m_h = &h; delete p;
+    if (g_closed != 1 || g_last != &h) { std::printf("00c5ec00_TEST FAIL\n"); return 1; }
+    p = new CSalFile; delete p;
     if (g_closed != 1) { std::printf("00c5ec00_TEST FAIL\n"); return 1; }
-    std::printf("00c5ec00_TEST PASS\n");
-    return 0;
+    std::printf("00c5ec00_TEST PASS\n"); return 0;
 }

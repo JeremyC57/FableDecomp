@@ -6,11 +6,55 @@ copies of every replaced source, test and header), hdr/ (new headers), head/payl
 
 | Batch | Item | Rows | Verdict |
 |---|---|---|---|
-| b1 | 5: RELOC_CONFLICT on ??1CCharString | 004af220, 0056c840 | ACCEPT |
-| b3 | 2: five IsThingAlive_<addr> | 008d04b0, 0093a890, 009445c0, 00944ce0, 0095ee40 | ACCEPT |
-| b4 | 1: 0x007FB120 table name | 007fb120 (+ joined binder 00924c70) | ACCEPT (table name proven wrong) |
-| b5 | 3: CWound_00c5eca0 stand-in | 00c5eca0, 00c5ed90, 00c5e3d0, 00c3c830 + funclets 01216360..01216394 | ACCEPT pending Q1 (locks kept) |
+| b1 | 5: RELOC_CONFLICT on ??1CCharString | 004af220, 0056c840 | ACCEPT (landed by the coordinator) |
+| b3 | 2: five IsThingAlive_<addr> | 008d04b0, 0093a890, 009445c0, 00944ce0, 0095ee40 | ACCEPT (landed) |
+| b4 | 1: 0x007FB120 table name | 007fb120 (+ joined binder 00924c70) | ACCEPT (landed) |
+| b5 | 3: CWound_00c5eca0 stand-in | 00c5eca0, 00c5ed90, 00c5e3d0, 00c3c830, 00c5ebd0, 00c5ec00, 00c5ec50, 00c5ec80, 00c5e440, 00c5e4a0 + funclets 01216360..01216394 | ACCEPT (round 2, below) |
 | h4 | 4: 0x00CAC300 respell | 00cac300, 012170c0, 012170c8 | HOLD_RULING Q2 (locks released) |
+
+## Round 2: b5 after the coordinator's ruling (blockers 1 and 2)
+
+**Blocker 1, the stand-in vtable names.** Only two landed objects referenced the six `??_7*_00c5eca0` names: 0x00C5E440 (`??_7CEvent_00c5eca0`) and
+0x00C5E4A0 (`??_7CMutex_00c5eca0`); I checked every HEAD object in work/hobj. Both are now in the unit as `??_GCSalEvent@@UAEPAXI@Z` and
+`??_GCSalThread@@UAEPAXI@Z`, in the pick-any form on engine/CSalOutputKS.h:
+- SDK SalOutputKS.obj sections 74 / 78 hold the same bodies (relocations masked).
+- They sit in slot 0 of vtables 0x012B90E8 / 0x012B90EC, which ??0CSalOutputKS stores.
+- Their HEAD `?MakeHolder@@YAPAXXZ` duplicate is gone, so the link goes from 1 duplicate to 0.
+
+Fixed-string grep of rebuild/src + rebuild/oracles: the six names appear only in the six reloc_bindings lines that TABLE_CHANGES replaces. After the unit
+(table root + rows + headers) they appear nowhere (batches/b5/evidence/grep_standin_vtables.txt). 0x00C5EAD0 / 0x00C5E2B0 still use the *class*
+name CWound_00c5eca0, but their objects reference no `??_7` stand-in (T3).
+
+**Blocker 2, Q1 (R1 pass).**
+- (a) comdat_cmp HEAD v new of the 0x00C5ED90 object (evidence/q1_comdat_cmp_head_v_new_00c5ed90.txt): the HEAD object emitted no `??_G` for the
+  m_pin class, so the 53 B `??_GCSalKsPin` was new.
+- (b) The reloc-masked retail scan finds the 53 B shape exactly once, at 0x00C5EC00, which is `??_GCSalFile`: the two copies are equal in both bytes and relocations, so it has no home of its own. So it was residue. One bounded pass followed.
+- Spellings that keep ~CSalOutputKS expanding ~CSalKsPin, none of which gives 30 B (work/q1/):
+
+  | Variant | Spelling | `??_GCSalKsPin` size | Other effect |
+  |---|---|---|---|
+  | v1 | `~CSalKsPin(){Close();}` | 81 B | dtor DIFFER 222v212 |
+  | v2 | implicit ~CSalKsPin | 53 B | |
+  | v3 | inline, or non-inline, definition placed after the constructor | 53 B | /O2 auto-inlines any visible body |
+  | v4 | the declared and implicit variants under /Ob1 | 53 B | |
+
+- What works: in a TU where ~CSalKsPin is only *declared*, VC7.1 emits retail's 30 B `??_GCSalKsPin` (`call ??1CSalKsPin`). The new nested
+  scaffolding switch `FABLE_RETAIL_CSALOUTPUTKS_KSPIN_DTOR_DECL_ONLY` gives that, and is used only by 0x00C5ED90 (the constructor, whose stored
+  vtable pulls in the `??_G`) and 0x00C5EC80. The TUs that destroy a CSalKsPin (0x00C5ECA0, 0x00C5EC50) keep the inline body, as retail
+  ~CSalOutputKS requires. RULINGS_NEEDED Q1 asks only to confirm this switch.
+- Also as asked, the landed homes 0x00C5EBD0 / 0x00C5EC00 / 0x00C5EC50 / 0x00C5EC80 are re-rowed in the pick-any form as `??1CSalFile`,
+  `??_GCSalFile`, `??1CSalKsPin` and `??_GCSalKsPin` (SDK sections 97 / 99 / 104 / 106). Each takes a new behaviour-model test with the catalog
+  PassPattern.
+
+**Results (final run wd_b5h; its objects are COMDAT-identical to wd_b5g's, which pk, tiers and link used):**
+- 16/16 RELOCATION_MATCH PASS on HEAD and new.
+- pk on all ten objects: 0 NEQ (repo table and table root), 0 reach flips. With --addrs, every addressed COMDAT is EQ at its home.
+- tier398: every added COMDAT is TIER1 / TIER2 / TIER2_NOT_UNIQUE. The only RESIDUE lines are the TU-local Reference helpers of the pick-any form.
+- /FORCE link of the unit with 18 neighbours: duplicates 1 -> 0.
+- Census of both final headers (equiv_b5c): 0 differ.
+
+**GameCODA rule.** No SDK .obj / .lib / header / dump is in batches/; the rows cite the library path and section index. The extracted SDK
+objects stay in work/coda/ (evidence only, not for copying).
 
 ## Names and their two sources
 
@@ -108,10 +152,10 @@ The censuses use gcc cpp, not Wine.
 
 ## Locks
 
-- **Kept as NF404 (ACCEPT rows, and the b5 rows pending Q1):**
+- **Kept as NF404 (ACCEPT rows; b1/b3/b4 are landed, so the coordinator may release those):**
   - Task rows: 007fb120, 008d04b0, 0093a890, 009445c0, 00944ce0, 0095ee40, 00c5eca0, 004af220, 0056c840
   - Funclets: 01216360, 01216368, 01216373, 0121637e, 01216389, 01216394
-  - Joined rows: 00924c70, 00c5ed90, 00c5e3d0, 00c3c830
+  - Joined rows: 00924c70, 00c5ed90, 00c5e3d0, 00c3c830, and from round 2 00c5ebd0, 00c5ec00, 00c5ec50, 00c5ec80, 00c5e440, 00c5e4a0
 - **Released (item-4 hold):** 00cac300, 012170c0, 012170c8.
 - **Not touched:** 00433530 and the b5 siblings (00c5e440, 00c5e4a0, 00c5ead0, 00c5e2b0 and the home rows). I only compiled their HEAD
   sources read-only for pk and link evidence.
@@ -121,6 +165,4 @@ The censuses use gcc cpp, not Wine.
 - The selves of 0x004AF220 / 0x0056C840 are still stand-ins (T3).
 - The CSalOutputKS slot functions and member homes are landed under stand-in names (T3). They show as NEW_UNRESOLVED vtable slot
   functions in the b5 link, which is expected.
-- Q1: the ??_GCSalKsPin 53 B v 30 B pick-any residue. Retail's COMDAT order shows that the 30 B body is this TU's own revision. SDK 2.10
-  emits 53 B, exactly like our model. This is a gap in the opt-in's model, not a second body from another object. The coordinator decides
-  whether to land b5 (locks kept) or hold it.
+- Q1 answered in round 2. Left for the coordinator: confirm the per-TU switch FABLE_RETAIL_CSALOUTPUTKS_KSPIN_DTOR_DECL_ONLY (RULINGS_NEEDED Q1).

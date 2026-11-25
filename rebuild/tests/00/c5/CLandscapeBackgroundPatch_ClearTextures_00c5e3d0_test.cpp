@@ -1,57 +1,16 @@
+// Behaviour model of CSalFile::Close (0x00C5E3D0): a valid handle is closed once and reset to -1; an INVALID_HANDLE_VALUE (-1) handle is
+// left alone. The CloseHandle import is a stub here.
 #include <cstdio>
-
-static int g_lastReleased;
-static int g_releaseCalls;
-
-void __stdcall ReleaseImpl(int handle)
-{
-    g_lastReleased = handle;
-    g_releaseCalls++;
-}
-void (__stdcall *g_ReleaseTexture)(int handle) = ReleaseImpl;
-
-class CLandscapeBackgroundPatch
-{ public:
-    int field_0;
-    int textureHandle;
-    void ClearTextures();
-};
-
-void CLandscapeBackgroundPatch::ClearTextures()
-{
-    int h = this->textureHandle;
-    if (h != -1)
-    {
-        g_ReleaseTexture(h);
-        this->textureHandle = -1;
-    }
-}
-
+static int g_closed; static void* g_last;
+static void CloseStub(void* h) { ++g_closed; g_last = h; }
+class CSalFile { public: void* m_hDevice; void Close() { if (m_hDevice != (void*)-1) { CloseStub(m_hDevice); m_hDevice = (void*)-1; } } };
 int main()
 {
-    int ok = 1;
-
-    // Case 1: valid handle -> released and cleared
-    CLandscapeBackgroundPatch a;
-    a.field_0 = 0x11111111;
-    a.textureHandle = 42;
-    g_releaseCalls = 0; g_lastReleased = -999;
-    a.ClearTextures();
-    if (g_releaseCalls != 1) ok = 0;
-    if (g_lastReleased != 42) ok = 0;
-    if (a.textureHandle != -1) ok = 0;
-    if (a.field_0 != 0x11111111) ok = 0;
-
-    // Case 2: already -1 -> no call, stays -1
-    CLandscapeBackgroundPatch b;
-    b.field_0 = 0x22222222;
-    b.textureHandle = -1;
-    g_releaseCalls = 0;
-    b.ClearTextures();
-    if (g_releaseCalls != 0) ok = 0;
-    if (b.textureHandle != -1) ok = 0;
-
-    if (ok) printf("CLEARTEX_OK\n");
-    else printf("CLEARTEX_FAIL\n");
-    return ok ? 0 : 1;
+    int h; CSalFile f; f.m_hDevice = &h;
+    f.Close();
+    if (g_closed != 1 || g_last != &h || f.m_hDevice != (void*)-1) { std::printf("CLEARTEX_BAD 1\n"); return 1; }
+    f.Close();
+    if (g_closed != 1) { std::printf("CLEARTEX_BAD 2\n"); return 1; }
+    std::printf("CLEARTEX_OK\n");
+    return 0;
 }

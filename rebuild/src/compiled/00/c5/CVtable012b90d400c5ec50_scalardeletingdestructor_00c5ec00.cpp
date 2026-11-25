@@ -1,25 +1,25 @@
-// CVtable_012b90d4_00c5ec50::`scalar deleting destructor'(unsigned int) -- this class's vtable (0x012B90D4, no RTTI), close the Win32 handle at +4 unless it is -1 and set it to -1, flag-tested delete
-// Leaf: ??_GCVtable_012b90d4_00c5ec50@@UAEPAXI@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C5EC00, 53 bytes, thiscall, `ret 4`.
-// Identity: the only slot of the no-RTTI vtable 0x012B90D4 (the next words are GUID data); the class is the landed
-//   handle owner CVtable_012b90d4_00c5ec50 (destructor 0x00C5EC50 right after this body, Reset 0x00C5E3F0; constructor
-//   0x00C5DFD0 stores the vtable and -1). Named by the vtable as those rows are; the catalog label
-//   CWaterPatchMesh::`scalar_deleting_destructor' is propagated.
-// Callees: CloseHandle (kernel32 import through 0x0143FE30), operator delete 0x00BFE9BC.
-// Shape: the landed destructor body (handle loaded and compared before the vtable store) inlined into the deleting
-//   destructor; the destructor is virtual here (slot 0 is this body) and defined out of line in the TU, which emits the
-//   vtable and the deleting destructor.
-extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);   // IAT 0x0143FE30
-
-struct CVtable_012b90d4_00c5ec50 {                     // vtable 0x012B90D4
-    virtual ~CVtable_012b90d4_00c5ec50();
-    void* m_hHandle;                                   // +0x04
+// CSalFile's scalar deleting destructor -- ~CSalFile inlined (vtable 0x012B90D4, Close), then operator delete on flag 1
+// Leaf: ??_GCSalFile@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5EC00, 53 bytes, `ret 4`; slot 0 of vtable 0x012B90D4.
+// Name (NF404, joins the T3 nf401 0x00C5ECA0 unit): the GameCODA 2.10 SDK member (CODAApi.lib Release/SalOutputKS.obj, section 99, defines
+//   ??_GCSalFile@@UAEPAXI@Z as a pick-any (Any) COMDAT with this body, relocations masked); retail vtable 0x012B90D4 is the CSalFile vtable the
+//   CSalOutputKS constructor 0x00C5ED90 stores for its member. The unit's ~CSalOutputKS / CSalOutputKS rows emit this COMDAT from
+//   engine/CSalOutputKS.h; it is re-rowed in the nf86 / nf88 pick-any form, so no strong definition here clashes with their copies. Was the
+//   descriptive stand-in ??_GCVtable_012b90d4_00c5ec50@@UAEPAXI@Z.
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#include "engine/CSalOutputKS.h"
+namespace {
+// Fidelity: scaffolding, not retail: the qualified (non-virtual) destructor call names the header's inline destructor, so VC7.1
+// emits it out of line as a pick-any COMDAT together with the vtable and the scalar deleting destructor it references. Internal to
+// this TU; never called.
+class CSalFileReference {
+public:
+    static void Reference(CSalFile* object);
 };
-
-CVtable_012b90d4_00c5ec50::~CVtable_012b90d4_00c5ec50()
+// Out of class, so it is an ordinary (not inline) function that VC7.1 compiles even though nothing calls it.
+void CSalFileReference::Reference(CSalFile* object)
 {
-    if (m_hHandle != (void*)-1) {
-        CloseHandle(m_hHandle);
-        m_hHandle = (void*)-1;
-    }
+    object->CSalFile::~CSalFile();
+}
 }

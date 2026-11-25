@@ -28,4 +28,11 @@ public:
  static void __cdecl operator delete[](void* p) {CodaFree(p);}
 #endif
 };
+#ifdef FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+// NF404 opt-in (rows 0x00C3C830 ??1CCodaObjectBase@@UAE@XZ, 0x00C5ECA0 / 0x00C5ED90 / 0x00C5E3D0 with FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS):
+// retail's destructor is an inline member. ~CSalOutputKS 0x00C5ECA0 expands it in place (the closing 0x012B5868 vptr store), and every
+// original GameCODA 2.10 SDK CODAApi.lib object that emits it (Object.obj, ObjectList.obj, SalPlatform.obj, SalRender.obj, SalSwBaseVoice.obj,
+// SalSw3DVoice.obj, ...) carries ??1CCodaObjectBase@@UAE@XZ as a 7-byte pick-any (Any) COMDAT: 0x00C3C830 is that copy.
+inline CCodaObjectBase::~CCodaObjectBase(){}
+#endif
 #endif

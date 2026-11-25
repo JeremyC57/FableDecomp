@@ -1,0 +1,61 @@
+addr       parity           behav  name
+00c3c5c0   RELOCATION_MATCH PASS   ~CVtable_012b5860
+00c3c830   RELOCATION_MATCH PASS   ~CCodaObjectBase
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8a8c@@QAE@XZ -> 00c550b0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8a78@@QAE@XZ -> 00c55090 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8ac8@@QAE@XZ -> 00c55110 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8ab4@@QAE@XZ -> 00c550f0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   RELOCATION_MATCH PASS   CreateProcessor
+00c56d60   RELOCATION_MATCH PASS   ~CVtable_012b8d98
+00c57410   RELOCATION_MATCH PASS   ~CVtable_012b8e20
+00c5e0c0   RELOCATION_MATCH PASS   SetConnectionState
+00c5e3d0   WARN STANDIN_LEAF ?Close@CSalFile@@QAEXXZ (catalog CLandscapeBackgroundPatch::ClearTextures; names another function)
+00c5e3d0   RELOCATION_MATCH PASS   ClearTextures
+00c5e440   WARN STANDIN_LEAF ??_GCSalEvent@@UAEPAXI@Z (catalog CEvent_00c5eca0::`scalar deleting destructor'; names another function)
+00c5e440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c5e4a0   WARN STANDIN_LEAF ??_GCSalThread@@UAEPAXI@Z (catalog CMutex_00c5eca0::`scalar deleting destructor'; names another function)
+00c5e4a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c5e650   WARN RELOC_NAME: ?Attach@CSalFile@@QAEXPAX@Z -> 00c5e3f0 labelled 'CVtable_012b90d4_00c5ec50::Reset'
+00c5e650   WARN RELOC_NAME: ?Close@CSalFile@@QAEXXZ -> 00c5e3d0 labelled 'CLandscapeBackgroundPatch::ClearTextures'
+00c5e650   RELOCATION_MATCH PASS   CreateBuffer
+00c5ebd0   WARN STANDIN_LEAF ??1CSalFile@@UAE@XZ (catalog CVtable_012b90d4_00c5ebd0::~CVtable_012b90d4_00c5ebd0; names another function)
+00c5ebd0   RELOCATION_MATCH PASS   ~CVtable_012b90d4_00c5ebd0
+00c5ec00   WARN STANDIN_LEAF ??_GCSalFile@@UAEPAXI@Z (catalog CVtable_012b90d4_00c5ec50::`scalar deleting destructor'; names another function)
+00c5ec00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c5ec50   WARN STANDIN_LEAF ??1CSalKsPin@@UAE@XZ (catalog CVtable_012b90d4_00c5ec50::~CVtable_012b90d4_00c5ec50; names another function)
+00c5ec50   RELOCATION_MATCH PASS   ~CVtable_012b90d4_00c5ec50
+00c5ec80   WARN RELOC_NAME: ??1CSalKsPin@@UAE@XZ -> 00c5ec50 labelled 'CVtable_012b90d4_00c5ec50::~CVtable_012b90d4_00c5ec50'
+00c5ec80   WARN STANDIN_LEAF ??_GCSalKsPin@@UAEPAXI@Z (catalog CVtable_012b9148::`scalar deleting destructor'; names another function)
+00c5ec80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c5eca0   WARN STANDIN_LEAF ??1CSalOutputKS@@UAE@XZ (catalog CVtable_012b5868::CVtable_012b5868; names another function)
+00c5eca0   RELOCATION_MATCH PASS   CVtable_012b5868
+00c5ed90   WARN STANDIN_LEAF ??0CSalOutputKS@@QAE@XZ (catalog CWound_00c5eca0::CWound_00c5eca0; names another function)
+00c5ed90   RELOCATION_MATCH PASS   CWound_00c5eca0
+00c6cac0   RELOCATION_MATCH PASS   ~CVtable_012bed7c
+00c6da30   RELOCATION_MATCH PASS   ~CVtable_012bed90
+00c6e780   RELOCATION_MATCH PASS   ~CVtable_012bedb8
+00c701d0   RELOCATION_MATCH PASS   ~CVtable_012bedcc
+00c70bb0   RELOCATION_MATCH PASS   ~CVtable_012bede0
+
+WINS: 21
+  00c3c5c0 RELOCATION_MATCH CVtable_012b5860::??1CVtable_012b5860@@UAE@XZ
+  00c3c830 RELOCATION_MATCH CCodaObjectBase::??1CCodaObjectBase@@UAE@XZ
+  00c55270 RELOCATION_MATCH CAudioSource::?CreateProcessor@CAudioSource@@QAEPAVCVtable_012beda4@@K@Z
+  00c56d60 RELOCATION_MATCH CVtable_012b8d98::??1CVtable_012b8d98@@UAE@XZ
+  00c57410 RELOCATION_MATCH CVtable_012b8e20::??1CVtable_012b8e20@@UAE@XZ
+  00c5e0c0 RELOCATION_MATCH CSalKsPin::?SetConnectionState@CSalKsPin@@QAE_NW4KSSTATE@@@Z
+  00c5e3d0 RELOCATION_MATCH CLandscapeBackgroundPatch::?Close@CSalFile@@QAEXXZ
+  00c5e440 RELOCATION_MATCH CEvent_00c5eca0::??_GCSalEvent@@UAEPAXI@Z
+  00c5e4a0 RELOCATION_MATCH CMutex_00c5eca0::??_GCSalThread@@UAEPAXI@Z
+  00c5e650 RELOCATION_MATCH CSalOutputKS::?CreateBuffer@CSalOutputKS@@UAE_NII@Z
+  00c5ebd0 RELOCATION_MATCH CVtable_012b90d4_00c5ebd0::??1CSalFile@@UAE@XZ
+  00c5ec00 RELOCATION_MATCH CVtable_012b90d4_00c5ec50::??_GCSalFile@@UAEPAXI@Z
+  00c5ec50 RELOCATION_MATCH CVtable_012b90d4_00c5ec50::??1CSalKsPin@@UAE@XZ
+  00c5ec80 RELOCATION_MATCH CVtable_012b9148::??_GCSalKsPin@@UAEPAXI@Z
+  00c5eca0 RELOCATION_MATCH CVtable_012b5868::??1CSalOutputKS@@UAE@XZ
+  00c5ed90 RELOCATION_MATCH CWound_00c5eca0::??0CSalOutputKS@@QAE@XZ
+  00c6cac0 RELOCATION_MATCH CVtable_012bed7c::??1CVtable_012bed7c@@UAE@XZ
+  00c6da30 RELOCATION_MATCH CVtable_012bed90::??1CVtable_012bed90@@UAE@XZ
+  00c6e780 RELOCATION_MATCH CVtable_012bedb8::??1CVtable_012bedb8@@UAE@XZ
+  00c701d0 RELOCATION_MATCH CVtable_012bedcc::??1CVtable_012bedcc@@UAE@XZ
+  00c70bb0 RELOCATION_MATCH CVtable_012bede0::??1CVtable_012bede0@@UAE@XZ
