@@ -61,3 +61,20 @@ not by source order (g8 / g10 / g11 are byte-identical to g2 though they reorder
 anything (g6 / g7) move the TAIL, not to retail. The TAIL is the same kind of residue as the FRONT: integer instructions (`add esi`,
 `pop edi`) that retail issues earlier among the x87 work. Grades by AUTH26 on this row: 14 (g0..g13). Codex's g0 closes the TAIL only
 with the memcpy `bits` device (extra local, contradicts Ego_d), which this round did not reuse.
+
+## Owner round 3 (2026-11-25): the inlined callees against landed matched users; call site kept as g2
+| grade | check / candidate | evidence | result |
+|---|---|---|---|
+| - | InitialiseFromAngles signature | Ego_r ?InitialiseFromAngles@C3DVector@@QAEABV1@MMM@Z: three floats BY VALUE, returns const C3DVector&; GFSin / GFCos ?GFSin@@YINM@Z / ?GFCos@@YINM@Z (fastcall float -> double, sin / cos intrinsics; GFSin.h / GFCos.h `#pragma intrinsic`); FableWin 0x017F8708 body: cos_yz = GFCos(angleyz), X = (magnitude*cos_yz)*GFSin(anglexy), Y with GFCos, Z = magnitude*GFSin(angleyz) | header matches |
+| g14 | InitialiseFromAngles body: the landed spelling FABLE_RETAIL_C3DVECTOR_INITFROMANGLES_GFSIN instead of Codex's ANGLE_FORMALS_MAGNITUDE_PASS26 (no landed user) | landed matched 0x006AB820, 0x0068CB90 | identical to g2 |
+| g15 | no row-level `#pragma intrinsic(sin,cos)` (the landed users have none; the headers declare it) | same two rows | identical to g2 |
+| - | CRightHandedSet::SetForward | FableWin 0x022163A0: struct copy into Forward (+0Ch) as three dword moves = header `Forward = forward` | header matches; nothing to grade |
+| g16 | Normalise: NORMALISE_SQUARE_HELPER without NORMALISE_GROUPED_SUM (67 of 72 landed SQUARE_HELPER users; FableWin's body has no extra parens) | landed users; FableWin Normalise | FRONT unchanged; TAIL becomes another non-retail block |
+| g17 | GFFastOneOverSqrt: FABLE_RETAIL_GFFASTONEOVERSQRT_ORIGINAL_UNION_SQUARE_PAREN_PASS26 (Ego_d locals n / seed / r exactly; `(r*r)*n`) | landed matched user 0x0066C900; Ego_d + FableWin 01ACE0A0 locals | FRONT unchanged; TAIL reduced to ONE swap: retail `fld X ; lea edx,[esi+5Ch] ; fmul st(1)`, ours `fld ; fmul ; lea` |
+| - | TU flags | Ego_r module 45 `release\tc_physics_standard.obj` records no VC7.1 flags; the 70+ landed rows of 0x00723xxx-0x00724xxx carry no `// Flags:` override except 0x00724630 (/EHsc only) and no optimize pragma; GetRHSet 0x00723C80 (x87-heavy, same TU) matches at the default /O2 /Oy /W3 | evidence points to the default flags: no flag grade |
+
+New best legal base: g17.cpp (Ego_d locals exact, every opt-in has a landed matched user): DIFFER(310v310) with the FRONT pair plus one
+TAIL swap. All three remaining moves are the same kind: retail issues an integer instruction (`mov eax,[esp+1Ch]`, `mov edi,17Ch`,
+`lea edx,[esi+5Ch]`) one slot ahead of a dependent x87 op that ours issues first. No call-site spelling (owner round 2) and no
+landed-evidenced callee body (this round) moves the front; the evidence-backed flag setting is the default. Grades by AUTH26 on this
+row: 18 (g0..g17).

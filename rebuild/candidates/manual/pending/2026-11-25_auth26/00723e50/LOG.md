@@ -39,3 +39,15 @@ g12 = F7
 g12 (F7) DIFFER 340v310: much worse (temporary copied) -> rejected
 g13 = F6
 g13 (F6) DIFFER 310v310: = g2. Stop: every call-site regrouping / ordering leaves the front residue; TERMINAL.md owner-round section
+--- owner round 3 (inlined callees; call site stays g2) ---
+PDB: ?InitialiseFromAngles@C3DVector@@QAEABV1@MMM@Z (float by value x3, returns const C3DVector&); ?GFSin@@YINM@Z / ?GFCos@@YINM@Z
+  (fastcall, float -> double). Landed matched users of InitialiseFromAngles: 0x006AB820 and 0x0068CB90 both use
+  FABLE_RETAIL_C3DVECTOR_INITFROMANGLES_GFSIN (X = GFSin(a)*(cosYZ*length) ...); no landed row uses Codex's ANGLE_FORMALS_MAGNITUDE_PASS26.
+g14 = I1: g2 with ANGLE_FORMALS_MAGNITUDE_PASS26 removed, so the landed INITFROMANGLES_GFSIN body applies
+g14 (I1) DIFFER 310v310: identical to g2
+g15 = I2: g14 without the row's own '#pragma intrinsic(sin,cos)' (GFSin.h / GFCos.h already declare the intrinsics; the landed 0x006AB820 / 0x0068CB90 have no row pragma)
+g15 (I2) DIFFER 310v310: identical to g2
+Normalise: landed users -- NORMALISE_SQUARE_HELPER 72 rows, of which only 5 add NORMALISE_GROUPED_SUM (extra parens around the sum, not in FableWin's body). g16 = N1: g2 without NORMALISE_GROUPED_SUM (the 67-row / FableWin spelling GFFastOneOverSqrt(GFSqr(X)+GFSqr(Y)+GFSqr(Z)))
+g16 (N1) DIFFER 310v310: FRONT unchanged; TAIL = the g6 tail (not retail)
+g17 = N2: g2 + GFFASTONEOVERSQRT_ORIGINAL_UNION_SQUARE_PAREN_PASS26 (Ego_d locals n/seed/r, union seed, '(r*r)*n'; landed matched user 0x0066C900) -- Codex g0's arithmetic without the memcpy bits local
+g17 (N2) DIFFER 310v310: FRONT unchanged; TAIL reduced to one swap (retail: fld X ; lea edx,[esi+5Ch] ; fmul st(1) -- ours: fld ; fmul ; lea). New best legal base: g17
