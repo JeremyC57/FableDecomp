@@ -64659,79 +64659,79 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004a88a0'
-        Module = 'CCountedPointer'
-        Source = '00/4a/CCountedPointer_ShareData_004a88a0.cpp'
-        TestSource = '00/4a/CCountedPointer_ShareData_004a88a0_test.cpp'
+        Module = 'CCountedPointer<CAProgressDisplay>'
+        Source = '00/4a/CCountedPointerCAProgressDisplay_ShareData_004a88a0.cpp'
+        TestSource = '00/4a/CCountedPointerCAProgressDisplay_ShareData_004a88a0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050d340'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d340.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d340_test.cpp'
+        Module = 'CCountedPointer<CAFile>'
+        Source = '00/50/CCountedPointerCAFile_ShareData_0050d340.cpp'
+        TestSource = '00/50/CCountedPointerCAFile_ShareData_0050d340_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050d740'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d740.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d740_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader8>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader8_ShareData_0050d740.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader8_ShareData_0050d740_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050d890'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d890.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d890_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader7>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader7_ShareData_0050d890.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader7_ShareData_0050d890_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050d9c0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d9c0.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d9c0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader6>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader6_ShareData_0050d9c0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader6_ShareData_0050d9c0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050da50'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050da50.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050da50_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel1>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel1_ShareData_0050da50.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel1_ShareData_0050da50_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050dae0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dae0.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dae0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader5>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader5_ShareData_0050dae0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader5_ShareData_0050dae0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050db70'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050db70.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050db70_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader4>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader4_ShareData_0050db70.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader4_ShareData_0050db70_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050dc00'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dc00.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dc00_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader3>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader3_ShareData_0050dc00.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader3_ShareData_0050dc00_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '0050dc90'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dc90.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dc90_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader2>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader2_ShareData_0050dc90.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader2_ShareData_0050dc90_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00668700'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/66/CCountedPointerCScriptThing_ShareData_00668700.cpp'
-        TestSource = '00/66/CCountedPointerCScriptThing_ShareData_00668700_test.cpp'
+        Module = 'CCountedPointer<CCreatureInteraction>'
+        Source = '00/66/CCountedPointerCCreatureInteraction_ShareData_00668700.cpp'
+        TestSource = '00/66/CCountedPointerCCreatureInteraction_ShareData_00668700_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -64750,58 +64750,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00754d30'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/75/CCountedPointerCScriptThing_ShareData_00754d30.cpp'
-        TestSource = '00/75/CCountedPointerCScriptThing_ShareData_00754d30_test.cpp'
+        Module = 'CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>'
+        Source = '00/75/CCountedPointerNAnimationEntryBodgeCAnimEntryLite_ShareData_00754d30.cpp'
+        TestSource = '00/75/CCountedPointerNAnimationEntryBodgeCAnimEntryLite_ShareData_00754d30_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00763d30'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/76/CCountedPointerCScriptThing_ShareData_00763d30.cpp'
-        TestSource = '00/76/CCountedPointerCScriptThing_ShareData_00763d30_test.cpp'
+        Module = 'CCountedPointer<NShape::CShape>'
+        Source = '00/76/CCountedPointerNShapeCShape_ShareData_00763d30.cpp'
+        TestSource = '00/76/CCountedPointerNShapeCShape_ShareData_00763d30_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00822ff0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_00822ff0.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00822ff0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell6>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell6_ShareData_00822ff0.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell6_ShareData_00822ff0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00823080'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823080.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823080_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatBrush>'
+        Source = '00/82/CCountedPointerCOldFileFormatBrush_ShareData_00823080.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatBrush_ShareData_00823080_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00823110'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823110.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823110_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell5>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell5_ShareData_00823110.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell5_ShareData_00823110_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '008231a0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_008231a0.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_008231a0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell4>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell4_ShareData_008231a0.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell4_ShareData_008231a0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00823230'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823230.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823230_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell3>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell3_ShareData_00823230.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell3_ShareData_00823230_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '008232c0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_008232c0.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_008232c0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell2>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell2_ShareData_008232c0.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell2_ShareData_008232c0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -64813,9 +64813,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008c2e00'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/8c/CCountedPointerCScriptThing_ShareData_008c2e00.cpp'
-        TestSource = '00/8c/CCountedPointerCScriptThing_ShareData_008c2e00_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeJackOfBladesScream>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesScream_ShareData_008c2e00.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesScream_ShareData_008c2e00_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -64939,23 +64939,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a51670'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a51670.cpp'
-        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a51670_test.cpp'
+        Module = 'CCountedPointer<C3DAnimationSequence>'
+        Source = '00/a5/CCountedPointerC3DAnimationSequence_ShareData_00a51670.cpp'
+        TestSource = '00/a5/CCountedPointerC3DAnimationSequence_ShareData_00a51670_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00a517c0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a517c0.cpp'
-        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a517c0_test.cpp'
+        Module = 'CCountedPointer<C3DAnimFileTimingEventChunk const>'
+        Source = '00/a5/CCountedPointerConstC3DAnimFileTimingEventChunk_ShareData_00a517c0.cpp'
+        TestSource = '00/a5/CCountedPointerConstC3DAnimFileTimingEventChunk_ShareData_00a517c0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00a51e90'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a51e90.cpp'
-        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a51e90_test.cpp'
+        Module = 'CCountedPointer<C3DAnimFileXAllocationSizeChunk>'
+        Source = '00/a5/CCountedPointerC3DAnimFileXAllocationSizeChunk_ShareData_00a51e90.cpp'
+        TestSource = '00/a5/CCountedPointerC3DAnimFileXAllocationSizeChunk_ShareData_00a51e90_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -65107,16 +65107,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aaaf90'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaaf90.cpp'
-        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaaf90_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileHelperPointChunk>'
+        Source = '00/aa/CCountedPointerC3DMeshFileHelperPointChunk_ShareData_00aaaf90.cpp'
+        TestSource = '00/aa/CCountedPointerC3DMeshFileHelperPointChunk_ShareData_00aaaf90_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
         Address = '00aaafe0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aaafe0.cpp'
-        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aaafe0_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileDummyObjectChunk>'
+        Source = '00/aa/CCountedPointerC3DMeshFileDummyObjectChunk_ShareData_00aaafe0.cpp'
+        TestSource = '00/aa/CCountedPointerC3DMeshFileDummyObjectChunk_ShareData_00aaafe0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -65289,9 +65289,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00acfda0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/ac/CCountedPointerCScriptThing_ShareData_00acfda0.cpp'
-        TestSource = '00/ac/CCountedPointerCScriptThing_ShareData_00acfda0_test.cpp'
+        Module = 'CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction>'
+        Source = '00/ac/CCountedPointerQuadricOptimiserInternalsCVertexPairContraction_ShareData_00acfda0.cpp'
+        TestSource = '00/ac/CCountedPointerQuadricOptimiserInternalsCVertexPairContraction_ShareData_00acfda0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -70785,9 +70785,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00403d70'
-        Module = '_global'
-        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403d70.cpp'
-        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403d70_test.cpp'
+        Module = 'CCountedPointer<CFileInstaller>'
+        Source = '00/40/CCountedPointerCFileInstaller_ReleaseData_00403d70.cpp'
+        TestSource = '00/40/CCountedPointerCFileInstaller_ReleaseData_00403d70_test.cpp'
         PassPattern = 'PASS_00403d70'
     }
     [pscustomobject]@{
@@ -70799,16 +70799,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040dca0'
-        Module = '_global'
-        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040dca0.cpp'
-        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040dca0_test.cpp'
+        Module = 'CCountedPointer<CUserProfileManager>'
+        Source = '00/40/CCountedPointerCUserProfileManager_ReleaseData_0040dca0.cpp'
+        TestSource = '00/40/CCountedPointerCUserProfileManager_ReleaseData_0040dca0_test.cpp'
         PassPattern = 'PASS_0040dca0'
     }
     [pscustomobject]@{
         Address = '0040f170'
-        Module = '_global'
-        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040f170.cpp'
-        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0040f170_test.cpp'
+        Module = 'CCountedPointer<CUserProfileManager>'
+        Source = '00/40/CCountedPointerCUserProfileManager_CCountedPointer_0040f170.cpp'
+        TestSource = '00/40/CCountedPointerCUserProfileManager_CCountedPointer_0040f170_test.cpp'
         PassPattern = 'PASS_0040f170'
     }
     [pscustomobject]@{
@@ -70932,23 +70932,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b70e0'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b70e0.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b70e0_test.cpp'
+        Module = 'CCountedPointer<CScriptBase>'
+        Source = '00/4b/CCountedPointerCScriptBase_ReleaseData_004b70e0.cpp'
+        TestSource = '00/4b/CCountedPointerCScriptBase_ReleaseData_004b70e0_test.cpp'
         PassPattern = 'PASS_004b70e0'
     }
     [pscustomobject]@{
         Address = '004b7120'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7120.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7120_test.cpp'
+        Module = 'CCountedPointer<CScriptBase>'
+        Source = '00/4b/CCountedPointerCScriptBase_CCountedPointer_004b7120.cpp'
+        TestSource = '00/4b/CCountedPointerCScriptBase_CCountedPointer_004b7120_test.cpp'
         PassPattern = 'PASS_004b7120'
     }
     [pscustomobject]@{
         Address = '004b7160'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7160.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7160_test.cpp'
+        Module = 'CCountedPointer<CScriptDataBase>'
+        Source = '00/4b/CCountedPointerCScriptDataBase_ReleaseData_004b7160.cpp'
+        TestSource = '00/4b/CCountedPointerCScriptDataBase_ReleaseData_004b7160_test.cpp'
         PassPattern = 'PASS_004b7160'
     }
     [pscustomobject]@{
@@ -70960,58 +70960,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b8d30'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b8d30.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b8d30_test.cpp'
+        Module = 'CCountedPointer<CQuestManager>'
+        Source = '00/4b/CCountedPointerCQuestManager_CCountedPointer_004b8d30.cpp'
+        TestSource = '00/4b/CCountedPointerCQuestManager_CCountedPointer_004b8d30_test.cpp'
         PassPattern = 'PASS_004b8d30'
     }
     [pscustomobject]@{
         Address = '004c1b20'
-        Module = '_global'
-        Source = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c1b20.cpp'
-        TestSource = '00/4c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004c1b20_test.cpp'
+        Module = 'CCountedPointer<C3DMeshStats const>'
+        Source = '00/4c/CCountedPointerConstC3DMeshStats_ReleaseData_004c1b20.cpp'
+        TestSource = '00/4c/CCountedPointerConstC3DMeshStats_ReleaseData_004c1b20_test.cpp'
         PassPattern = 'PASS_004c1b20'
     }
     [pscustomobject]@{
         Address = '0050d240'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d240.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d240_test.cpp'
+        Module = 'CCountedPointer<CMap>'
+        Source = '00/50/CCountedPointerCMap_ReleaseData_0050d240.cpp'
+        TestSource = '00/50/CCountedPointerCMap_ReleaseData_0050d240_test.cpp'
         PassPattern = 'PASS_0050d240'
     }
     [pscustomobject]@{
         Address = '0050d280'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d280.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d280_test.cpp'
+        Module = 'CCountedPointer<CMap>'
+        Source = '00/50/CCountedPointerCMap_CCountedPointer_0050d280.cpp'
+        TestSource = '00/50/CCountedPointerCMap_CCountedPointer_0050d280_test.cpp'
         PassPattern = 'PASS_0050d280'
     }
     [pscustomobject]@{
         Address = '0050d2c0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d2c0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d2c0_test.cpp'
+        Module = 'CCountedPointer<CRegionConnectionGraph>'
+        Source = '00/50/CCountedPointerCRegionConnectionGraph_ReleaseData_0050d2c0.cpp'
+        TestSource = '00/50/CCountedPointerCRegionConnectionGraph_ReleaseData_0050d2c0_test.cpp'
         PassPattern = 'PASS_0050d2c0'
     }
     [pscustomobject]@{
         Address = '0050d300'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d300.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d300_test.cpp'
+        Module = 'CCountedPointer<CRegionConnectionGraph>'
+        Source = '00/50/CCountedPointerCRegionConnectionGraph_CCountedPointer_0050d300.cpp'
+        TestSource = '00/50/CCountedPointerCRegionConnectionGraph_CCountedPointer_0050d300_test.cpp'
         PassPattern = 'PASS_0050d300'
     }
     [pscustomobject]@{
         Address = '0050d570'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d570.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d570_test.cpp'
+        Module = 'CCountedPointer<CWADBank>'
+        Source = '00/50/CCountedPointerCWADBank_CCountedPointer_0050d570.cpp'
+        TestSource = '00/50/CCountedPointerCWADBank_CCountedPointer_0050d570_test.cpp'
         PassPattern = 'PASS_0050d570'
     }
     [pscustomobject]@{
         Address = '0050d700'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d700.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d700_test.cpp'
+        Module = 'CCountedPointer<CAFile>'
+        Source = '00/50/CCountedPointerCAFile_CCountedPointer_0050d700.cpp'
+        TestSource = '00/50/CCountedPointerCAFile_CCountedPointer_0050d700_test.cpp'
         PassPattern = 'PASS_0050d700'
     }
     [pscustomobject]@{
@@ -71030,65 +71030,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050d8e0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d8e0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d8e0_test.cpp'
+        Module = 'CCountedPointer<CFileFormatMapHeader>'
+        Source = '00/50/CCountedPointerCFileFormatMapHeader_ReleaseData_0050d8e0.cpp'
+        TestSource = '00/50/CCountedPointerCFileFormatMapHeader_ReleaseData_0050d8e0_test.cpp'
         PassPattern = 'PASS_0050d8e0'
     }
     [pscustomobject]@{
         Address = '0050d980'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d980.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d980_test.cpp'
+        Module = 'CCountedPointer<CFileFormatMapHeader>'
+        Source = '00/50/CCountedPointerCFileFormatMapHeader_CCountedPointer_0050d980.cpp'
+        TestSource = '00/50/CCountedPointerCFileFormatMapHeader_CCountedPointer_0050d980_test.cpp'
         PassPattern = 'PASS_0050d980'
     }
     [pscustomobject]@{
         Address = '0050da10'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050da10.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050da10_test.cpp'
+        Module = 'CCountedPointer<CFileFormatLevel>'
+        Source = '00/50/CCountedPointerCFileFormatLevel_ReleaseData_0050da10.cpp'
+        TestSource = '00/50/CCountedPointerCFileFormatLevel_ReleaseData_0050da10_test.cpp'
         PassPattern = 'PASS_0050da10'
     }
     [pscustomobject]@{
         Address = '0050daa0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050daa0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050daa0_test.cpp'
+        Module = 'CCountedPointer<CFileFormatLevel>'
+        Source = '00/50/CCountedPointerCFileFormatLevel_CCountedPointer_0050daa0.cpp'
+        TestSource = '00/50/CCountedPointerCFileFormatLevel_CCountedPointer_0050daa0_test.cpp'
         PassPattern = 'PASS_0050daa0'
     }
     [pscustomobject]@{
         Address = '0050db30'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050db30.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050db30_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader8>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader8_ReleaseData_0050db30.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader8_ReleaseData_0050db30_test.cpp'
         PassPattern = 'PASS_0050db30'
     }
     [pscustomobject]@{
         Address = '0050dbc0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dbc0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dbc0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader8>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader8_CCountedPointer_0050dbc0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader8_CCountedPointer_0050dbc0_test.cpp'
         PassPattern = 'PASS_0050dbc0'
     }
     [pscustomobject]@{
         Address = '0050dc50'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dc50.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dc50_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel3>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel3_ReleaseData_0050dc50.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel3_ReleaseData_0050dc50_test.cpp'
         PassPattern = 'PASS_0050dc50'
     }
     [pscustomobject]@{
         Address = '0050dce0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dce0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050dce0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel3>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel3_CCountedPointer_0050dce0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel3_CCountedPointer_0050dce0_test.cpp'
         PassPattern = 'PASS_0050dce0'
     }
     [pscustomobject]@{
         Address = '0050f270'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f270.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f270_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel2>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel2_CCountedPointer_0050f270.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel2_CCountedPointer_0050f270_test.cpp'
         PassPattern = 'PASS_0050f270'
     }
     [pscustomobject]@{
@@ -71156,16 +71156,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006686c0'
-        Module = '_global'
-        Source = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006686c0.cpp'
-        TestSource = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006686c0_test.cpp'
+        Module = 'CCountedPointer<CCreatureInteraction>'
+        Source = '00/66/CCountedPointerCCreatureInteraction_ReleaseData_006686c0.cpp'
+        TestSource = '00/66/CCountedPointerCCreatureInteraction_ReleaseData_006686c0_test.cpp'
         PassPattern = 'PASS_006686c0'
     }
     [pscustomobject]@{
         Address = '00668750'
-        Module = '_global'
-        Source = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668750.cpp'
-        TestSource = '00/66/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00668750_test.cpp'
+        Module = 'CCountedPointer<CCreatureInteraction>'
+        Source = '00/66/CCountedPointerCCreatureInteraction_CCountedPointer_00668750.cpp'
+        TestSource = '00/66/CCountedPointerCCreatureInteraction_CCountedPointer_00668750_test.cpp'
         PassPattern = 'PASS_00668750'
     }
     [pscustomobject]@{
@@ -71275,9 +71275,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00718280'
-        Module = '_global'
-        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718280.cpp'
-        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00718280_test.cpp'
+        Module = 'CCountedPointer<NTCScriptedControl::CScriptConversation>'
+        Source = '00/71/CCountedPointerNTCScriptedControlCScriptConversation_ReleaseData_00718280.cpp'
+        TestSource = '00/71/CCountedPointerNTCScriptedControlCScriptConversation_ReleaseData_00718280_test.cpp'
         PassPattern = 'PASS_00718280'
     }
     [pscustomobject]@{
@@ -71296,9 +71296,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071e8a0'
-        Module = '_global'
-        Source = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0071e8a0.cpp'
-        TestSource = '00/71/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0071e8a0_test.cpp'
+        Module = 'CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>'
+        Source = '00/71/CCountedPointerCTCAppearanceMorphBaseCMeshMorphSet_ReleaseData_0071e8a0.cpp'
+        TestSource = '00/71/CCountedPointerCTCAppearanceMorphBaseCMeshMorphSet_ReleaseData_0071e8a0_test.cpp'
         PassPattern = 'PASS_0071e8a0'
     }
     [pscustomobject]@{
@@ -71352,16 +71352,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00771900'
-        Module = '_global'
-        Source = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771900.cpp'
-        TestSource = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771900_test.cpp'
+        Module = 'CCountedPointer<COpinionSet>'
+        Source = '00/77/CCountedPointerCOpinionSet_CCountedPointer_00771900.cpp'
+        TestSource = '00/77/CCountedPointerCOpinionSet_CCountedPointer_00771900_test.cpp'
         PassPattern = 'PASS_00771900'
     }
     [pscustomobject]@{
         Address = '00786cb0'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786cb0.cpp'
-        TestSource = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786cb0_test.cpp'
+        Module = 'CCountedPointer<C3DSkeletalMorphParameter>'
+        Source = '00/78/CCountedPointerC3DSkeletalMorphParameter_CCountedPointer_00786cb0.cpp'
+        TestSource = '00/78/CCountedPointerC3DSkeletalMorphParameter_CCountedPointer_00786cb0_test.cpp'
         PassPattern = 'PASS_00786cb0'
     }
     [pscustomobject]@{
@@ -71380,58 +71380,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00822f20'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f20.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f20_test.cpp'
+        Module = 'CCountedPointer<CFileFormatHeightMapCell>'
+        Source = '00/82/CCountedPointerCFileFormatHeightMapCell_CCountedPointer_00822f20.cpp'
+        TestSource = '00/82/CCountedPointerCFileFormatHeightMapCell_CCountedPointer_00822f20_test.cpp'
         PassPattern = 'PASS_00822f20'
     }
     [pscustomobject]@{
         Address = '00822fb0'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822fb0.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822fb0_test.cpp'
+        Module = 'CCountedPointer<CFileFormatBrush>'
+        Source = '00/82/CCountedPointerCFileFormatBrush_CCountedPointer_00822fb0.cpp'
+        TestSource = '00/82/CCountedPointerCFileFormatBrush_CCountedPointer_00822fb0_test.cpp'
         PassPattern = 'PASS_00822fb0'
     }
     [pscustomobject]@{
         Address = '00823040'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823040.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823040_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell6>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell6_ReleaseData_00823040.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell6_ReleaseData_00823040_test.cpp'
         PassPattern = 'PASS_00823040'
     }
     [pscustomobject]@{
         Address = '008230d0'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008230d0.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008230d0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell6>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell6_CCountedPointer_008230d0.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell6_CCountedPointer_008230d0_test.cpp'
         PassPattern = 'PASS_008230d0'
     }
     [pscustomobject]@{
         Address = '00823160'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823160.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823160_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatBrush>'
+        Source = '00/82/CCountedPointerCOldFileFormatBrush_ReleaseData_00823160.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatBrush_ReleaseData_00823160_test.cpp'
         PassPattern = 'PASS_00823160'
     }
     [pscustomobject]@{
         Address = '008231f0'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008231f0.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008231f0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatBrush>'
+        Source = '00/82/CCountedPointerCOldFileFormatBrush_CCountedPointer_008231f0.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatBrush_CCountedPointer_008231f0_test.cpp'
         PassPattern = 'PASS_008231f0'
     }
     [pscustomobject]@{
         Address = '00823280'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823280.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823280_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell5>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell5_ReleaseData_00823280.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell5_ReleaseData_00823280_test.cpp'
         PassPattern = 'PASS_00823280'
     }
     [pscustomobject]@{
         Address = '00823310'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823310.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823310_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell5>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell5_CCountedPointer_00823310.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell5_CCountedPointer_00823310_test.cpp'
         PassPattern = 'PASS_00823310'
     }
     [pscustomobject]@{
@@ -71443,9 +71443,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00834cf0'
-        Module = '_global'
-        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834cf0.cpp'
-        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834cf0_test.cpp'
+        Module = 'CCountedPointer<CBrainOutput>'
+        Source = '00/83/CCountedPointerCBrainOutput_CCountedPointer_00834cf0.cpp'
+        TestSource = '00/83/CCountedPointerCBrainOutput_CCountedPointer_00834cf0_test.cpp'
         PassPattern = 'PASS_00834cf0'
     }
     [pscustomobject]@{
@@ -71457,23 +71457,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00836540'
-        Module = '_global'
-        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00836540.cpp'
-        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00836540_test.cpp'
+        Module = 'CCountedPointer<CAnimFilterBase>'
+        Source = '00/83/CCountedPointerCAnimFilterBase_CCountedPointer_00836540.cpp'
+        TestSource = '00/83/CCountedPointerCAnimFilterBase_CCountedPointer_00836540_test.cpp'
         PassPattern = 'PASS_00836540'
     }
     [pscustomobject]@{
         Address = '0085a640'
-        Module = '_global'
-        Source = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a640.cpp'
-        TestSource = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a640_test.cpp'
+        Module = 'CCountedPointer<CCombatActionBase>'
+        Source = '00/85/CCountedPointerCCombatActionBase_ReleaseData_0085a640.cpp'
+        TestSource = '00/85/CCountedPointerCCombatActionBase_ReleaseData_0085a640_test.cpp'
         PassPattern = 'PASS_0085a640'
     }
     [pscustomobject]@{
         Address = '0085a890'
-        Module = '_global'
-        Source = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a890.cpp'
-        TestSource = '00/85/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0085a890_test.cpp'
+        Module = 'CCountedPointer<CCombatActionBase>'
+        Source = '00/85/CCountedPointerCCombatActionBase_CCountedPointer_0085a890.cpp'
+        TestSource = '00/85/CCountedPointerCCombatActionBase_CCountedPointer_0085a890_test.cpp'
         PassPattern = 'PASS_0085a890'
     }
     [pscustomobject]@{
@@ -71499,23 +71499,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008c2dc0'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2dc0.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2dc0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeJackOfBladesScream>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesScream_ReleaseData_008c2dc0.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesScream_ReleaseData_008c2dc0_test.cpp'
         PassPattern = 'PASS_008c2dc0'
     }
     [pscustomobject]@{
         Address = '008c32b0'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c32b0.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c32b0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeJackOfBladesFlash>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesFlash_CCountedPointer_008c32b0.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesFlash_CCountedPointer_008c32b0_test.cpp'
         PassPattern = 'PASS_008c32b0'
     }
     [pscustomobject]@{
         Address = '008c5940'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5940.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5940_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeScorpionKingVulnerable>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingVulnerable_ReleaseData_008c5940.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingVulnerable_ReleaseData_008c5940_test.cpp'
         PassPattern = 'PASS_008c5940'
     }
     [pscustomobject]@{
@@ -71758,9 +71758,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e29c0'
-        Module = '_global'
-        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e29c0.cpp'
-        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e29c0_test.cpp'
+        Module = 'CCountedPointer<CFontDataBank>'
+        Source = '00/9e/CCountedPointerCFontDataBank_ReleaseData_009e29c0.cpp'
+        TestSource = '00/9e/CCountedPointerCFontDataBank_ReleaseData_009e29c0_test.cpp'
         PassPattern = 'PASS_009e29c0'
     }
     [pscustomobject]@{
@@ -71772,16 +71772,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009edfa0'
-        Module = '_global'
-        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009edfa0.cpp'
-        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009edfa0_test.cpp'
+        Module = 'CCountedPointer<CConsoleInputBase>'
+        Source = '00/9e/CCountedPointerCConsoleInputBase_CCountedPointer_009edfa0.cpp'
+        TestSource = '00/9e/CCountedPointerCConsoleInputBase_CCountedPointer_009edfa0_test.cpp'
         PassPattern = 'PASS_009edfa0'
     }
     [pscustomobject]@{
         Address = '009ee500'
-        Module = '_global'
-        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee500.cpp'
-        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee500_test.cpp'
+        Module = 'CCountedPointer<CConsole>'
+        Source = '00/9e/CCountedPointerCConsole_CCountedPointer_009ee500.cpp'
+        TestSource = '00/9e/CCountedPointerCConsole_CCountedPointer_009ee500_test.cpp'
         PassPattern = 'PASS_009ee500'
     }
     [pscustomobject]@{
@@ -72878,16 +72878,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af5e10'
-        Module = '_global'
-        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5e10.cpp'
-        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5e10_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CPSCBase>'
+        Source = '00/af/CCountedPointerNParticleEngineCPSCBase_ReleaseData_00af5e10.cpp'
+        TestSource = '00/af/CCountedPointerNParticleEngineCPSCBase_ReleaseData_00af5e10_test.cpp'
         PassPattern = 'PASS_00af5e10'
     }
     [pscustomobject]@{
         Address = '00af5fd0'
-        Module = '_global'
-        Source = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5fd0.cpp'
-        TestSource = '00/af/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00af5fd0_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CPSCBase>'
+        Source = '00/af/CCountedPointerNParticleEngineCPSCBase_CCountedPointer_00af5fd0.cpp'
+        TestSource = '00/af/CCountedPointerNParticleEngineCPSCBase_CCountedPointer_00af5fd0_test.cpp'
         PassPattern = 'PASS_00af5fd0'
     }
     [pscustomobject]@{
@@ -73347,30 +73347,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b8e770'
-        Module = '_global'
-        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8e770.cpp'
-        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8e770_test.cpp'
+        Module = 'CCountedPointer<CVertexBufferWin32>'
+        Source = '00/b8/CCountedPointerCVertexBufferWin32_ReleaseData_00b8e770.cpp'
+        TestSource = '00/b8/CCountedPointerCVertexBufferWin32_ReleaseData_00b8e770_test.cpp'
         PassPattern = 'PASS_00b8e770'
     }
     [pscustomobject]@{
         Address = '00b8eb80'
-        Module = '_global'
-        Source = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8eb80.cpp'
-        TestSource = '00/b8/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b8eb80_test.cpp'
+        Module = 'CCountedPointer<CVertexBufferWin32>'
+        Source = '00/b8/CCountedPointerCVertexBufferWin32_CCountedPointer_00b8eb80.cpp'
+        TestSource = '00/b8/CCountedPointerCVertexBufferWin32_CCountedPointer_00b8eb80_test.cpp'
         PassPattern = 'PASS_00b8eb80'
     }
     [pscustomobject]@{
         Address = '00b953e0'
-        Module = '_global'
-        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b953e0.cpp'
-        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b953e0_test.cpp'
+        Module = 'CCountedPointer<CEngineSceneGrid>'
+        Source = '00/b9/CCountedPointerCEngineSceneGrid_ReleaseData_00b953e0.cpp'
+        TestSource = '00/b9/CCountedPointerCEngineSceneGrid_ReleaseData_00b953e0_test.cpp'
         PassPattern = 'PASS_00b953e0'
     }
     [pscustomobject]@{
         Address = '00b959f0'
-        Module = '_global'
-        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b959f0.cpp'
-        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b959f0_test.cpp'
+        Module = 'CCountedPointer<CEngineSceneMap>'
+        Source = '00/b9/CCountedPointerCEngineSceneMap_ReleaseData_00b959f0.cpp'
+        TestSource = '00/b9/CCountedPointerCEngineSceneMap_ReleaseData_00b959f0_test.cpp'
         PassPattern = 'PASS_00b959f0'
     }
     [pscustomobject]@{
@@ -84388,23 +84388,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00447760'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447760.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00447760_test.cpp'
+        Module = 'CCountedPointer<CInputTypeBase const>'
+        Source = '00/44/CCountedPointerConstCInputTypeBase_ReleaseData_00447760.cpp'
+        TestSource = '00/44/CCountedPointerConstCInputTypeBase_ReleaseData_00447760_test.cpp'
         PassPattern = 'PASS_00447760'
     }
     [pscustomobject]@{
         Address = '00403700'
-        Module = '_global'
-        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403700.cpp'
-        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403700_test.cpp'
+        Module = 'CCountedPointer<NGameText::CDataBank>'
+        Source = '00/40/CCountedPointerNGameTextCDataBank_CCountedPointer_00403700.cpp'
+        TestSource = '00/40/CCountedPointerNGameTextCDataBank_CCountedPointer_00403700_test.cpp'
         PassPattern = 'PASS_00403700'
     }
     [pscustomobject]@{
         Address = '00403790'
-        Module = '_global'
-        Source = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403790.cpp'
-        TestSource = '00/40/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00403790_test.cpp'
+        Module = 'CCountedPointer<CAProgressDisplay>'
+        Source = '00/40/CCountedPointerCAProgressDisplay_ReleaseData_00403790.cpp'
+        TestSource = '00/40/CCountedPointerCAProgressDisplay_ReleaseData_00403790_test.cpp'
         PassPattern = 'PASS_00403790'
     }
     [pscustomobject]@{
@@ -84458,16 +84458,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0044ab10'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044ab10.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044ab10_test.cpp'
+        Module = 'CCountedPointer<CHeroLogBook>'
+        Source = '00/44/CCountedPointerCHeroLogBook_ReleaseData_0044ab10.cpp'
+        TestSource = '00/44/CCountedPointerCHeroLogBook_ReleaseData_0044ab10_test.cpp'
         PassPattern = 'PASS_0044ab10'
     }
     [pscustomobject]@{
         Address = '0044b190'
-        Module = '_global'
-        Source = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044b190.cpp'
-        TestSource = '00/44/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044b190_test.cpp'
+        Module = 'CCountedPointer<CHeroLogBook>'
+        Source = '00/44/CCountedPointerCHeroLogBook_CCountedPointer_0044b190.cpp'
+        TestSource = '00/44/CCountedPointerCHeroLogBook_CCountedPointer_0044b190_test.cpp'
         PassPattern = 'PASS_0044b190'
     }
     [pscustomobject]@{
@@ -84521,23 +84521,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b71a0'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b71a0.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b71a0_test.cpp'
+        Module = 'CCountedPointer<CScriptDataBase>'
+        Source = '00/4b/CCountedPointerCScriptDataBase_CCountedPointer_004b71a0.cpp'
+        TestSource = '00/4b/CCountedPointerCScriptDataBase_CCountedPointer_004b71a0_test.cpp'
         PassPattern = 'PASS_004b71a0'
     }
     [pscustomobject]@{
         Address = '004b7a10'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7a10.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7a10_test.cpp'
+        Module = 'CCountedPointer<CGameScriptThingManager>'
+        Source = '00/4b/CCountedPointerCGameScriptThingManager_ReleaseData_004b7a10.cpp'
+        TestSource = '00/4b/CCountedPointerCGameScriptThingManager_ReleaseData_004b7a10_test.cpp'
         PassPattern = 'PASS_004b7a10'
     }
     [pscustomobject]@{
         Address = '004b7aa0'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7aa0.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7aa0_test.cpp'
+        Module = 'CCountedPointer<CGameScriptThingManager>'
+        Source = '00/4b/CCountedPointerCGameScriptThingManager_CCountedPointer_004b7aa0.cpp'
+        TestSource = '00/4b/CCountedPointerCGameScriptThingManager_CCountedPointer_004b7aa0_test.cpp'
         PassPattern = 'PASS_004b7aa0'
     }
     [pscustomobject]@{
@@ -84549,9 +84549,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004b7d80'
-        Module = '_global'
-        Source = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7d80.cpp'
-        TestSource = '00/4b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b7d80_test.cpp'
+        Module = 'CCountedPointer<CQuestManager>'
+        Source = '00/4b/CCountedPointerCQuestManager_ReleaseData_004b7d80.cpp'
+        TestSource = '00/4b/CCountedPointerCQuestManager_ReleaseData_004b7d80_test.cpp'
         PassPattern = 'PASS_004b7d80'
     }
     [pscustomobject]@{
@@ -84563,149 +84563,149 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050d390'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d390.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d390_test.cpp'
+        Module = 'CCountedPointer<CWADBank>'
+        Source = '00/50/CCountedPointerCWADBank_ReleaseData_0050d390.cpp'
+        TestSource = '00/50/CCountedPointerCWADBank_ReleaseData_0050d390_test.cpp'
         PassPattern = 'PASS_0050d390'
     }
     [pscustomobject]@{
         Address = '0050d5b0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d5b0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050d5b0_test.cpp'
+        Module = 'CCountedPointer<CAFile>'
+        Source = '00/50/CCountedPointerCAFile_ReleaseData_0050d5b0.cpp'
+        TestSource = '00/50/CCountedPointerCAFile_ReleaseData_0050d5b0_test.cpp'
         PassPattern = 'PASS_0050d5b0'
     }
     [pscustomobject]@{
         Address = '0050ecc0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ecc0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ecc0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader7>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader7_ReleaseData_0050ecc0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader7_ReleaseData_0050ecc0_test.cpp'
         PassPattern = 'PASS_0050ecc0'
     }
     [pscustomobject]@{
         Address = '0050f140'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f140.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f140_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader7>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader7_CCountedPointer_0050f140.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader7_CCountedPointer_0050f140_test.cpp'
         PassPattern = 'PASS_0050f140'
     }
     [pscustomobject]@{
         Address = '0050f1f0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f1f0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f1f0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel2>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel2_ReleaseData_0050f1f0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel2_ReleaseData_0050f1f0_test.cpp'
         PassPattern = 'PASS_0050f1f0'
     }
     [pscustomobject]@{
         Address = '0050f4c0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f4c0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f4c0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader6>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader6_ReleaseData_0050f4c0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader6_ReleaseData_0050f4c0_test.cpp'
         PassPattern = 'PASS_0050f4c0'
     }
     [pscustomobject]@{
         Address = '0050f6a0'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f6a0.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050f6a0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader6>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader6_CCountedPointer_0050f6a0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader6_CCountedPointer_0050f6a0_test.cpp'
         PassPattern = 'PASS_0050f6a0'
     }
     [pscustomobject]@{
         Address = '0050ff40'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff40.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff40_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel1>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel1_ReleaseData_0050ff40.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel1_ReleaseData_0050ff40_test.cpp'
         PassPattern = 'PASS_0050ff40'
     }
     [pscustomobject]@{
         Address = '0050ff90'
-        Module = '_global'
-        Source = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff90.cpp'
-        TestSource = '00/50/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0050ff90_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel1>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel1_CCountedPointer_0050ff90.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel1_CCountedPointer_0050ff90_test.cpp'
         PassPattern = 'PASS_0050ff90'
     }
     [pscustomobject]@{
         Address = '005101b0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005101b0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005101b0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader5>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader5_ReleaseData_005101b0.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader5_ReleaseData_005101b0_test.cpp'
         PassPattern = 'PASS_005101b0'
     }
     [pscustomobject]@{
         Address = '00510250'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510250.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510250_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader5>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader5_CCountedPointer_00510250.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader5_CCountedPointer_00510250_test.cpp'
         PassPattern = 'PASS_00510250'
     }
     [pscustomobject]@{
         Address = '00510400'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510400.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510400_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader4>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader4_ReleaseData_00510400.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader4_ReleaseData_00510400_test.cpp'
         PassPattern = 'PASS_00510400'
     }
     [pscustomobject]@{
         Address = '005104a0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005104a0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005104a0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader4>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader4_CCountedPointer_005104a0.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader4_CCountedPointer_005104a0_test.cpp'
         PassPattern = 'PASS_005104a0'
     }
     [pscustomobject]@{
         Address = '005105f0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005105f0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005105f0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader3>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader3_ReleaseData_005105f0.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader3_ReleaseData_005105f0_test.cpp'
         PassPattern = 'PASS_005105f0'
     }
     [pscustomobject]@{
         Address = '00510690'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510690.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510690_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader3>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader3_CCountedPointer_00510690.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader3_CCountedPointer_00510690_test.cpp'
         PassPattern = 'PASS_00510690'
     }
     [pscustomobject]@{
         Address = '005107f0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005107f0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005107f0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader2>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader2_ReleaseData_005107f0.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader2_ReleaseData_005107f0_test.cpp'
         PassPattern = 'PASS_005107f0'
     }
     [pscustomobject]@{
         Address = '005108f0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005108f0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005108f0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader2>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader2_CCountedPointer_005108f0.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader2_CCountedPointer_005108f0_test.cpp'
         PassPattern = 'PASS_005108f0'
     }
     [pscustomobject]@{
         Address = '00510a10'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510a10.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510a10_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader1>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader1_ReleaseData_00510a10.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader1_ReleaseData_00510a10_test.cpp'
         PassPattern = 'PASS_00510a10'
     }
     [pscustomobject]@{
         Address = '00510b00'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510b00.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510b00_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader1>'
+        Source = '00/51/CCountedPointerCOldFileFormatMapHeader1_CCountedPointer_00510b00.cpp'
+        TestSource = '00/51/CCountedPointerCOldFileFormatMapHeader1_CCountedPointer_00510b00_test.cpp'
         PassPattern = 'PASS_00510b00'
     }
     [pscustomobject]@{
         Address = '00510bf0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510bf0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510bf0_test.cpp'
+        Module = 'CCountedPointer<CRegionConnectionNode>'
+        Source = '00/51/CCountedPointerCRegionConnectionNode_ReleaseData_00510bf0.cpp'
+        TestSource = '00/51/CCountedPointerCRegionConnectionNode_ReleaseData_00510bf0_test.cpp'
         PassPattern = 'PASS_00510bf0'
     }
     [pscustomobject]@{
         Address = '005120c0'
-        Module = '_global'
-        Source = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005120c0.cpp'
-        TestSource = '00/51/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005120c0_test.cpp'
+        Module = 'CCountedPointer<CRegionConnectionNode>'
+        Source = '00/51/CCountedPointerCRegionConnectionNode_CCountedPointer_005120c0.cpp'
+        TestSource = '00/51/CCountedPointerCRegionConnectionNode_CCountedPointer_005120c0_test.cpp'
         PassPattern = 'PASS_005120c0'
     }
     [pscustomobject]@{
@@ -84738,9 +84738,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005df9e0'
-        Module = '_global'
-        Source = '00/5d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005df9e0.cpp'
-        TestSource = '00/5d/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005df9e0_test.cpp'
+        Module = 'CCountedPointer<C3DAnimationStats const>'
+        Source = '00/5d/CCountedPointerConstC3DAnimationStats_CCountedPointer_005df9e0.cpp'
+        TestSource = '00/5d/CCountedPointerConstC3DAnimationStats_CCountedPointer_005df9e0_test.cpp'
         PassPattern = 'PASS_005df9e0'
     }
     [pscustomobject]@{
@@ -84871,9 +84871,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006e7af0'
-        Module = '_global'
-        Source = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7af0.cpp'
-        TestSource = '00/6e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7af0_test.cpp'
+        Module = 'CCountedPointer<CScriptGameResourceObjectMovieBase>'
+        Source = '00/6e/CCountedPointerCScriptGameResourceObjectMovieBase_ReleaseData_006e7af0.cpp'
+        TestSource = '00/6e/CCountedPointerCScriptGameResourceObjectMovieBase_ReleaseData_006e7af0_test.cpp'
         PassPattern = 'PASS_006e7af0'
     }
     [pscustomobject]@{
@@ -84983,9 +84983,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0075f060'
-        Module = '_global'
-        Source = '00/75/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0075f060.cpp'
-        TestSource = '00/75/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0075f060_test.cpp'
+        Module = 'CCountedPointer<CCardinalSpline>'
+        Source = '00/75/CCountedPointerCCardinalSpline_ReleaseData_0075f060.cpp'
+        TestSource = '00/75/CCountedPointerCCardinalSpline_ReleaseData_0075f060_test.cpp'
         PassPattern = 'PASS_0075f060'
     }
     [pscustomobject]@{
@@ -85025,16 +85025,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00771890'
-        Module = '_global'
-        Source = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771890.cpp'
-        TestSource = '00/77/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00771890_test.cpp'
+        Module = 'CCountedPointer<COpinionSet>'
+        Source = '00/77/CCountedPointerCOpinionSet_ReleaseData_00771890.cpp'
+        TestSource = '00/77/CCountedPointerCOpinionSet_ReleaseData_00771890_test.cpp'
         PassPattern = 'PASS_00771890'
     }
     [pscustomobject]@{
         Address = '00786aa0'
-        Module = '_global'
-        Source = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786aa0.cpp'
-        TestSource = '00/78/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00786aa0_test.cpp'
+        Module = 'CCountedPointer<C3DSkeletalMorphParameter>'
+        Source = '00/78/CCountedPointerC3DSkeletalMorphParameter_ReleaseData_00786aa0.cpp'
+        TestSource = '00/78/CCountedPointerC3DSkeletalMorphParameter_ReleaseData_00786aa0_test.cpp'
         PassPattern = 'PASS_00786aa0'
     }
     [pscustomobject]@{
@@ -85074,86 +85074,86 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00822eb0'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822eb0.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822eb0_test.cpp'
+        Module = 'CCountedPointer<CFileFormatHeightMapCell>'
+        Source = '00/82/CCountedPointerCFileFormatHeightMapCell_ReleaseData_00822eb0.cpp'
+        TestSource = '00/82/CCountedPointerCFileFormatHeightMapCell_ReleaseData_00822eb0_test.cpp'
         PassPattern = 'PASS_00822eb0'
     }
     [pscustomobject]@{
         Address = '00822f60'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f60.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00822f60_test.cpp'
+        Module = 'CCountedPointer<CFileFormatBrush>'
+        Source = '00/82/CCountedPointerCFileFormatBrush_ReleaseData_00822f60.cpp'
+        TestSource = '00/82/CCountedPointerCFileFormatBrush_ReleaseData_00822f60_test.cpp'
         PassPattern = 'PASS_00822f60'
     }
     [pscustomobject]@{
         Address = '00823b00'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823b00.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823b00_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell4>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell4_ReleaseData_00823b00.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell4_ReleaseData_00823b00_test.cpp'
         PassPattern = 'PASS_00823b00'
     }
     [pscustomobject]@{
         Address = '00823d30'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d30.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d30_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell4>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell4_CCountedPointer_00823d30.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell4_CCountedPointer_00823d30_test.cpp'
         PassPattern = 'PASS_00823d30'
     }
     [pscustomobject]@{
         Address = '00823d80'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d80.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823d80_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell3>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell3_ReleaseData_00823d80.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell3_ReleaseData_00823d80_test.cpp'
         PassPattern = 'PASS_00823d80'
     }
     [pscustomobject]@{
         Address = '00823e90'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823e90.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823e90_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell3>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell3_CCountedPointer_00823e90.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell3_CCountedPointer_00823e90_test.cpp'
         PassPattern = 'PASS_00823e90'
     }
     [pscustomobject]@{
         Address = '00823f30'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823f30.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00823f30_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell2>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell2_ReleaseData_00823f30.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell2_ReleaseData_00823f30_test.cpp'
         PassPattern = 'PASS_00823f30'
     }
     [pscustomobject]@{
         Address = '00824090'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824090.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824090_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell2>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell2_CCountedPointer_00824090.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell2_CCountedPointer_00824090_test.cpp'
         PassPattern = 'PASS_00824090'
     }
     [pscustomobject]@{
         Address = '00824180'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824180.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824180_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell1>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell1_ReleaseData_00824180.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell1_ReleaseData_00824180_test.cpp'
         PassPattern = 'PASS_00824180'
     }
     [pscustomobject]@{
         Address = '008242a0'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008242a0.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008242a0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell1>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell1_CCountedPointer_008242a0.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell1_CCountedPointer_008242a0_test.cpp'
         PassPattern = 'PASS_008242a0'
     }
     [pscustomobject]@{
         Address = '00824390'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824390.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824390_test.cpp'
+        Module = 'CCountedPointer<CContainmentVolume>'
+        Source = '00/82/CCountedPointerCContainmentVolume_ReleaseData_00824390.cpp'
+        TestSource = '00/82/CCountedPointerCContainmentVolume_ReleaseData_00824390_test.cpp'
         PassPattern = 'PASS_00824390'
     }
     [pscustomobject]@{
         Address = '00824480'
-        Module = '_global'
-        Source = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824480.cpp'
-        TestSource = '00/82/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00824480_test.cpp'
+        Module = 'CCountedPointer<CContainmentVolume>'
+        Source = '00/82/CCountedPointerCContainmentVolume_CCountedPointer_00824480.cpp'
+        TestSource = '00/82/CCountedPointerCContainmentVolume_CCountedPointer_00824480_test.cpp'
         PassPattern = 'PASS_00824480'
     }
     [pscustomobject]@{
@@ -85165,16 +85165,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00834de0'
-        Module = '_global'
-        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834de0.cpp'
-        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00834de0_test.cpp'
+        Module = 'CCountedPointer<CAIBrain>'
+        Source = '00/83/CCountedPointerCAIBrain_CCountedPointer_00834de0.cpp'
+        TestSource = '00/83/CCountedPointerCAIBrain_CCountedPointer_00834de0_test.cpp'
         PassPattern = 'PASS_00834de0'
     }
     [pscustomobject]@{
         Address = '008364c0'
-        Module = '_global'
-        Source = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008364c0.cpp'
-        TestSource = '00/83/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008364c0_test.cpp'
+        Module = 'CCountedPointer<CAnimFilterBase>'
+        Source = '00/83/CCountedPointerCAnimFilterBase_ReleaseData_008364c0.cpp'
+        TestSource = '00/83/CCountedPointerCAnimFilterBase_ReleaseData_008364c0_test.cpp'
         PassPattern = 'PASS_008364c0'
     }
     [pscustomobject]@{
@@ -85200,37 +85200,37 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '008c2e50'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2e50.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c2e50_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeJackOfBladesScream>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesScream_CCountedPointer_008c2e50.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesScream_CCountedPointer_008c2e50_test.cpp'
         PassPattern = 'PASS_008c2e50'
     }
     [pscustomobject]@{
         Address = '008c31d0'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c31d0.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c31d0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeJackOfBladesFlash>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesFlash_ReleaseData_008c31d0.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeJackOfBladesFlash_ReleaseData_008c31d0_test.cpp'
         PassPattern = 'PASS_008c31d0'
     }
     [pscustomobject]@{
         Address = '008c5800'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5800.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5800_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeScorpionKingTailPlunge>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingTailPlunge_ReleaseData_008c5800.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingTailPlunge_ReleaseData_008c5800_test.cpp'
         PassPattern = 'PASS_008c5800'
     }
     [pscustomobject]@{
         Address = '008c5860'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5860.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c5860_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeScorpionKingTailPlunge>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingTailPlunge_CCountedPointer_008c5860.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingTailPlunge_CCountedPointer_008c5860_test.cpp'
         PassPattern = 'PASS_008c5860'
     }
     [pscustomobject]@{
         Address = '008c59d0'
-        Module = '_global'
-        Source = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c59d0.cpp'
-        TestSource = '00/8c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008c59d0_test.cpp'
+        Module = 'CCountedPointer<NCreatureMode::CModeScorpionKingVulnerable>'
+        Source = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingVulnerable_CCountedPointer_008c59d0.cpp'
+        TestSource = '00/8c/CCountedPointerNCreatureModeCModeScorpionKingVulnerable_CCountedPointer_008c59d0_test.cpp'
         PassPattern = 'PASS_008c59d0'
     }
     [pscustomobject]@{
@@ -85305,9 +85305,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c60d0'
-        Module = '_global'
-        Source = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c60d0.cpp'
-        TestSource = '00/9c/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009c60d0_test.cpp'
+        Module = 'CCountedPointer<CFileInstaller>'
+        Source = '00/9c/CCountedPointerCFileInstaller_CCountedPointer_009c60d0.cpp'
+        TestSource = '00/9c/CCountedPointerCFileInstaller_CCountedPointer_009c60d0_test.cpp'
         PassPattern = 'PASS_009c60d0'
     }
     [pscustomobject]@{
@@ -85347,9 +85347,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009e2a00'
-        Module = '_global'
-        Source = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e2a00.cpp'
-        TestSource = '00/9e/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009e2a00_test.cpp'
+        Module = 'CCountedPointer<CStreamingFontDataBank>'
+        Source = '00/9e/CCountedPointerCStreamingFontDataBank_CCountedPointer_009e2a00.cpp'
+        TestSource = '00/9e/CCountedPointerCStreamingFontDataBank_CCountedPointer_009e2a00_test.cpp'
         PassPattern = 'PASS_009e2a00'
     }
     [pscustomobject]@{
@@ -85872,23 +85872,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aaae30'
-        Module = '_global'
-        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae30.cpp'
-        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae30_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileHelperPointChunk>'
+        Source = '00/aa/CCountedPointerC3DMeshFileHelperPointChunk_CCountedPointer_00aaae30.cpp'
+        TestSource = '00/aa/CCountedPointerC3DMeshFileHelperPointChunk_CCountedPointer_00aaae30_test.cpp'
         PassPattern = 'PASS_00aaae30'
     }
     [pscustomobject]@{
         Address = '00aaae90'
-        Module = '_global'
-        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae90.cpp'
-        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaae90_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileDummyObjectChunk>'
+        Source = '00/aa/CCountedPointerC3DMeshFileDummyObjectChunk_CCountedPointer_00aaae90.cpp'
+        TestSource = '00/aa/CCountedPointerC3DMeshFileDummyObjectChunk_CCountedPointer_00aaae90_test.cpp'
         PassPattern = 'PASS_00aaae90'
     }
     [pscustomobject]@{
         Address = '00aaaef0'
-        Module = '_global'
-        Source = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaaef0.cpp'
-        TestSource = '00/aa/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00aaaef0_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileConvexVolumeChunk>'
+        Source = '00/aa/CCountedPointerC3DMeshFileConvexVolumeChunk_CCountedPointer_00aaaef0.cpp'
+        TestSource = '00/aa/CCountedPointerC3DMeshFileConvexVolumeChunk_CCountedPointer_00aaaef0_test.cpp'
         PassPattern = 'PASS_00aaaef0'
     }
     [pscustomobject]@{
@@ -86159,16 +86159,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b43160'
-        Module = '_global'
-        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b43160.cpp'
-        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b43160_test.cpp'
+        Module = 'CCountedPointer<CStaticMapBankStateBlock>'
+        Source = '00/b4/CCountedPointerCStaticMapBankStateBlock_ReleaseData_00b43160.cpp'
+        TestSource = '00/b4/CCountedPointerCStaticMapBankStateBlock_ReleaseData_00b43160_test.cpp'
         PassPattern = 'PASS_00b43160'
     }
     [pscustomobject]@{
         Address = '00b434c0'
-        Module = '_global'
-        Source = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b434c0.cpp'
-        TestSource = '00/b4/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b434c0_test.cpp'
+        Module = 'CCountedPointer<CStaticMapBankStateBlock>'
+        Source = '00/b4/CCountedPointerCStaticMapBankStateBlock_CCountedPointer_00b434c0.cpp'
+        TestSource = '00/b4/CCountedPointerCStaticMapBankStateBlock_CCountedPointer_00b434c0_test.cpp'
         PassPattern = 'PASS_00b434c0'
     }
     [pscustomobject]@{
@@ -86201,16 +86201,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b95420'
-        Module = '_global'
-        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95420.cpp'
-        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95420_test.cpp'
+        Module = 'CCountedPointer<CEngineSceneGrid>'
+        Source = '00/b9/CCountedPointerCEngineSceneGrid_CCountedPointer_00b95420.cpp'
+        TestSource = '00/b9/CCountedPointerCEngineSceneGrid_CCountedPointer_00b95420_test.cpp'
         PassPattern = 'PASS_00b95420'
     }
     [pscustomobject]@{
         Address = '00b95c40'
-        Module = '_global'
-        Source = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95c40.cpp'
-        TestSource = '00/b9/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b95c40_test.cpp'
+        Module = 'CCountedPointer<CEngineSceneMap>'
+        Source = '00/b9/CCountedPointerCEngineSceneMap_CCountedPointer_00b95c40.cpp'
+        TestSource = '00/b9/CCountedPointerCEngineSceneMap_CCountedPointer_00b95c40_test.cpp'
         PassPattern = 'PASS_00b95c40'
     }
     [pscustomobject]@{
@@ -87916,58 +87916,58 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00447920'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/44/CCountedPointerCScriptThing_ShareData_00447920.cpp'
-        TestSource = '00/44/CCountedPointerCScriptThing_ShareData_00447920_test.cpp'
+        Module = 'CCountedPointer<CInputTypeBase const>'
+        Source = '00/44/CCountedPointerConstCInputTypeBase_ShareData_00447920.cpp'
+        TestSource = '00/44/CCountedPointerConstCInputTypeBase_ShareData_00447920_test.cpp'
         PassPattern = 'PASS_00447920'
     }
     [pscustomobject]@{
         Address = '004c1b60'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/4c/CCountedPointerCScriptThing_ShareData_004c1b60.cpp'
-        TestSource = '00/4c/CCountedPointerCScriptThing_ShareData_004c1b60_test.cpp'
+        Module = 'CCountedPointer<C3DMeshStats const>'
+        Source = '00/4c/CCountedPointerConstC3DMeshStats_ShareData_004c1b60.cpp'
+        TestSource = '00/4c/CCountedPointerConstC3DMeshStats_ShareData_004c1b60_test.cpp'
         PassPattern = 'PASS_004c1b60'
     }
     [pscustomobject]@{
         Address = '0050d7d0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d7d0.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d7d0_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel3>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel3_ShareData_0050d7d0.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel3_ShareData_0050d7d0_test.cpp'
         PassPattern = 'PASS_0050d7d0'
     }
     [pscustomobject]@{
         Address = '0050d920'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050d920.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050d920_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatLevel2>'
+        Source = '00/50/CCountedPointerCOldFileFormatLevel2_ShareData_0050d920.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatLevel2_ShareData_0050d920_test.cpp'
         PassPattern = 'PASS_0050d920'
     }
     [pscustomobject]@{
         Address = '0050dd20'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050dd20.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050dd20_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatMapHeader1>'
+        Source = '00/50/CCountedPointerCOldFileFormatMapHeader1_ShareData_0050dd20.cpp'
+        TestSource = '00/50/CCountedPointerCOldFileFormatMapHeader1_ShareData_0050dd20_test.cpp'
         PassPattern = 'PASS_0050dd20'
     }
     [pscustomobject]@{
         Address = '0050ea20'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/50/CCountedPointerCScriptThing_ShareData_0050ea20.cpp'
-        TestSource = '00/50/CCountedPointerCScriptThing_ShareData_0050ea20_test.cpp'
+        Module = 'CCountedPointer<CMap>'
+        Source = '00/50/CCountedPointerCMap_ShareData_0050ea20.cpp'
+        TestSource = '00/50/CCountedPointerCMap_ShareData_0050ea20_test.cpp'
         PassPattern = 'PASS_0050ea20'
     }
     [pscustomobject]@{
         Address = '00668790'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/66/CCountedPointerCScriptThing_ShareData_00668790.cpp'
-        TestSource = '00/66/CCountedPointerCScriptThing_ShareData_00668790_test.cpp'
+        Module = 'CCountedPointer<CAnimationEntry>'
+        Source = '00/66/CCountedPointerCAnimationEntry_ShareData_00668790.cpp'
+        TestSource = '00/66/CCountedPointerCAnimationEntry_ShareData_00668790_test.cpp'
         PassPattern = 'PASS_00668790'
     }
     [pscustomobject]@{
         Address = '00695350'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/69/CCountedPointerCScriptThing_ShareData_00695350.cpp'
-        TestSource = '00/69/CCountedPointerCScriptThing_ShareData_00695350_test.cpp'
+        Module = 'CCountedPointer<NCreatureAction::CActionEventBase>'
+        Source = '00/69/CCountedPointerNCreatureActionCActionEventBase_ShareData_00695350.cpp'
+        TestSource = '00/69/CCountedPointerNCreatureActionCActionEventBase_ShareData_00695350_test.cpp'
         PassPattern = 'PASS_00695350'
     }
     [pscustomobject]@{
@@ -87979,9 +87979,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006ef170'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/6e/CCountedPointerCScriptThing_ShareData_006ef170.cpp'
-        TestSource = '00/6e/CCountedPointerCScriptThing_ShareData_006ef170_test.cpp'
+        Module = 'CCountedPointer<CCombatSequenceBase>'
+        Source = '00/6e/CCountedPointerCCombatSequenceBase_ShareData_006ef170.cpp'
+        TestSource = '00/6e/CCountedPointerCCombatSequenceBase_ShareData_006ef170_test.cpp'
         PassPattern = 'PASS_006ef170'
     }
     [pscustomobject]@{
@@ -87993,23 +87993,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0071e8e0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/71/CCountedPointerCScriptThing_ShareData_0071e8e0.cpp'
-        TestSource = '00/71/CCountedPointerCScriptThing_ShareData_0071e8e0_test.cpp'
+        Module = 'CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>'
+        Source = '00/71/CCountedPointerCTCAppearanceMorphBaseCMeshMorphSet_ShareData_0071e8e0.cpp'
+        TestSource = '00/71/CCountedPointerCTCAppearanceMorphBaseCMeshMorphSet_ShareData_0071e8e0_test.cpp'
         PassPattern = 'PASS_0071e8e0'
     }
     [pscustomobject]@{
         Address = '00764180'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/76/CCountedPointerCScriptThing_ShareData_00764180.cpp'
-        TestSource = '00/76/CCountedPointerCScriptThing_ShareData_00764180_test.cpp'
+        Module = 'CCountedPointer<NShape::CSubdivisionTriangle>'
+        Source = '00/76/CCountedPointerNShapeCSubdivisionTriangle_ShareData_00764180.cpp'
+        TestSource = '00/76/CCountedPointerNShapeCSubdivisionTriangle_ShareData_00764180_test.cpp'
         PassPattern = 'PASS_00764180'
     }
     [pscustomobject]@{
         Address = '007dd0e0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/7d/CCountedPointerCScriptThing_ShareData_007dd0e0.cpp'
-        TestSource = '00/7d/CCountedPointerCScriptThing_ShareData_007dd0e0_test.cpp'
+        Module = 'CCountedPointer<CCardinalSpline>'
+        Source = '00/7d/CCountedPointerCCardinalSpline_ShareData_007dd0e0.cpp'
+        TestSource = '00/7d/CCountedPointerCCardinalSpline_ShareData_007dd0e0_test.cpp'
         PassPattern = 'PASS_007dd0e0'
     }
     [pscustomobject]@{
@@ -88021,16 +88021,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00823350'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823350.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823350_test.cpp'
+        Module = 'CCountedPointer<COldFileFormatHeightMapCell1>'
+        Source = '00/82/CCountedPointerCOldFileFormatHeightMapCell1_ShareData_00823350.cpp'
+        TestSource = '00/82/CCountedPointerCOldFileFormatHeightMapCell1_ShareData_00823350_test.cpp'
         PassPattern = 'PASS_00823350'
     }
     [pscustomobject]@{
         Address = '00823930'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/82/CCountedPointerCScriptThing_ShareData_00823930.cpp'
-        TestSource = '00/82/CCountedPointerCScriptThing_ShareData_00823930_test.cpp'
+        Module = 'CCountedPointer<CContainmentVolume>'
+        Source = '00/82/CCountedPointerCContainmentVolume_ShareData_00823930.cpp'
+        TestSource = '00/82/CCountedPointerCContainmentVolume_ShareData_00823930_test.cpp'
         PassPattern = 'PASS_00823930'
     }
     [pscustomobject]@{
@@ -88042,23 +88042,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0084ed70'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/84/CCountedPointerCScriptThing_ShareData_0084ed70.cpp'
-        TestSource = '00/84/CCountedPointerCScriptThing_ShareData_0084ed70_test.cpp'
+        Module = 'CCountedPointer<NCameraModes::CSubComponentBase>'
+        Source = '00/84/CCountedPointerNCameraModesCSubComponentBase_ShareData_0084ed70.cpp'
+        TestSource = '00/84/CCountedPointerNCameraModesCSubComponentBase_ShareData_0084ed70_test.cpp'
         PassPattern = 'PASS_0084ed70'
     }
     [pscustomobject]@{
         Address = '0088c3a0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/88/CCountedPointerCScriptThing_ShareData_0088c3a0.cpp'
-        TestSource = '00/88/CCountedPointerCScriptThing_ShareData_0088c3a0_test.cpp'
+        Module = 'CCountedPointer<CCreatureActionBase>'
+        Source = '00/88/CCountedPointerCCreatureActionBase_ShareData_0088c3a0.cpp'
+        TestSource = '00/88/CCountedPointerCCreatureActionBase_ShareData_0088c3a0_test.cpp'
         PassPattern = 'PASS_0088c3a0'
     }
     [pscustomobject]@{
         Address = '008b16f0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/8b/CCountedPointerCScriptThing_ShareData_008b16f0.cpp'
-        TestSource = '00/8b/CCountedPointerCScriptThing_ShareData_008b16f0_test.cpp'
+        Module = 'CCountedPointer<CCombatActionBase>'
+        Source = '00/8b/CCountedPointerCCombatActionBase_ShareData_008b16f0.cpp'
+        TestSource = '00/8b/CCountedPointerCCombatActionBase_ShareData_008b16f0_test.cpp'
         PassPattern = 'PASS_008b16f0'
     }
     [pscustomobject]@{
@@ -88112,9 +88112,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3c840'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/a3/CCountedPointerCScriptThing_ShareData_00a3c840.cpp'
-        TestSource = '00/a3/CCountedPointerCScriptThing_ShareData_00a3c840_test.cpp'
+        Module = 'CCountedPointer<C3DSkeletalMorph const>'
+        Source = '00/a3/CCountedPointerConstC3DSkeletalMorph_ShareData_00a3c840.cpp'
+        TestSource = '00/a3/CCountedPointerConstC3DSkeletalMorph_ShareData_00a3c840_test.cpp'
         PassPattern = 'PASS_00a3c840'
     }
     [pscustomobject]@{
@@ -88133,16 +88133,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a51e30'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a51e30.cpp'
-        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a51e30_test.cpp'
+        Module = 'CCountedPointer<C3DAnimFileSequenceChunk const>'
+        Source = '00/a5/CCountedPointerConstC3DAnimFileSequenceChunk_ShareData_00a51e30.cpp'
+        TestSource = '00/a5/CCountedPointerConstC3DAnimFileSequenceChunk_ShareData_00a51e30_test.cpp'
         PassPattern = 'PASS_00a51e30'
     }
     [pscustomobject]@{
         Address = '00a51ee0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/a5/CCountedPointerCScriptThing_ShareData_00a51ee0.cpp'
-        TestSource = '00/a5/CCountedPointerCScriptThing_ShareData_00a51ee0_test.cpp'
+        Module = 'CCountedPointer<C3DAnimFileXSequenceChunk const>'
+        Source = '00/a5/CCountedPointerConstC3DAnimFileXSequenceChunk_ShareData_00a51ee0.cpp'
+        TestSource = '00/a5/CCountedPointerConstC3DAnimFileXSequenceChunk_ShareData_00a51ee0_test.cpp'
         PassPattern = 'PASS_00a51ee0'
     }
     [pscustomobject]@{
@@ -88203,9 +88203,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aab030'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/aa/CCountedPointerCScriptThing_ShareData_00aab030.cpp'
-        TestSource = '00/aa/CCountedPointerCScriptThing_ShareData_00aab030_test.cpp'
+        Module = 'CCountedPointer<C3DMeshFileConvexVolumeChunk>'
+        Source = '00/aa/CCountedPointerC3DMeshFileConvexVolumeChunk_ShareData_00aab030.cpp'
+        TestSource = '00/aa/CCountedPointerC3DMeshFileConvexVolumeChunk_ShareData_00aab030_test.cpp'
         PassPattern = 'PASS_00aab030'
     }
     [pscustomobject]@{
@@ -88231,9 +88231,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad0440'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/ad/CCountedPointerCScriptThing_ShareData_00ad0440.cpp'
-        TestSource = '00/ad/CCountedPointerCScriptThing_ShareData_00ad0440_test.cpp'
+        Module = 'CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>'
+        Source = '00/ad/CCountedPointerQuadricOptimiserInternalsCOptimisedPrimitive_ShareData_00ad0440.cpp'
+        TestSource = '00/ad/CCountedPointerQuadricOptimiserInternalsCOptimisedPrimitive_ShareData_00ad0440_test.cpp'
         PassPattern = 'PASS_00ad0440'
     }
     [pscustomobject]@{
@@ -88252,44 +88252,44 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af5e50'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/af/CCountedPointerCScriptThing_ShareData_00af5e50.cpp'
-        TestSource = '00/af/CCountedPointerCScriptThing_ShareData_00af5e50_test.cpp'
+        Module = 'CCountedPointer<NParticleEngine::CPSCBase>'
+        Source = '00/af/CCountedPointerNParticleEngineCPSCBase_ShareData_00af5e50.cpp'
+        TestSource = '00/af/CCountedPointerNParticleEngineCPSCBase_ShareData_00af5e50_test.cpp'
         PassPattern = 'PASS_00af5e50'
     }
     [pscustomobject]@{
         Address = '00b82720'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/b8/CCountedPointerCScriptThing_ShareData_00b82720.cpp'
-        TestSource = '00/b8/CCountedPointerCScriptThing_ShareData_00b82720_test.cpp'
+        Module = 'CCountedPointer<CEngineSimulationBase>'
+        Source = '00/b8/CCountedPointerCEngineSimulationBase_ShareData_00b82720.cpp'
+        TestSource = '00/b8/CCountedPointerCEngineSimulationBase_ShareData_00b82720_test.cpp'
         PassPattern = 'PASS_00b82720'
     }
     [pscustomobject]@{
         Address = '00b828b0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/b8/CCountedPointerCScriptThing_ShareData_00b828b0.cpp'
-        TestSource = '00/b8/CCountedPointerCScriptThing_ShareData_00b828b0_test.cpp'
+        Module = 'CCountedPointer<CParticleSimulation>'
+        Source = '00/b8/CCountedPointerCParticleSimulation_ShareData_00b828b0.cpp'
+        TestSource = '00/b8/CCountedPointerCParticleSimulation_ShareData_00b828b0_test.cpp'
         PassPattern = 'PASS_00b828b0'
     }
     [pscustomobject]@{
         Address = '00b8e7b0'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/b8/CCountedPointerCScriptThing_ShareData_00b8e7b0.cpp'
-        TestSource = '00/b8/CCountedPointerCScriptThing_ShareData_00b8e7b0_test.cpp'
+        Module = 'CCountedPointer<CVertexBufferWin32>'
+        Source = '00/b8/CCountedPointerCVertexBufferWin32_ShareData_00b8e7b0.cpp'
+        TestSource = '00/b8/CCountedPointerCVertexBufferWin32_ShareData_00b8e7b0_test.cpp'
         PassPattern = 'PASS_00b8e7b0'
     }
     [pscustomobject]@{
         Address = '00b95750'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/b9/CCountedPointerCScriptThing_ShareData_00b95750.cpp'
-        TestSource = '00/b9/CCountedPointerCScriptThing_ShareData_00b95750_test.cpp'
+        Module = 'CCountedPointer<CEngineSceneGrid>'
+        Source = '00/b9/CCountedPointerCEngineSceneGrid_ShareData_00b95750.cpp'
+        TestSource = '00/b9/CCountedPointerCEngineSceneGrid_ShareData_00b95750_test.cpp'
         PassPattern = 'PASS_00b95750'
     }
     [pscustomobject]@{
         Address = '00bed010'
-        Module = 'CCountedPointer<CScriptThing>'
-        Source = '00/be/CCountedPointerCScriptThing_ShareData_00bed010.cpp'
-        TestSource = '00/be/CCountedPointerCScriptThing_ShareData_00bed010_test.cpp'
+        Module = 'CCountedPointer<CCompositeSurfaceCache>'
+        Source = '00/be/CCountedPointerCCompositeSurfaceCache_ShareData_00bed010.cpp'
+        TestSource = '00/be/CCountedPointerCCompositeSurfaceCache_ShareData_00bed010_test.cpp'
         PassPattern = 'PASS_00bed010'
     }
     [pscustomobject]@{

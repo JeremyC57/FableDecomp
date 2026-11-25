@@ -113,3 +113,28 @@ source (grep of every `template<>` specialization: only declarations).
 - SH rows in bg carry the RELEASEDATA opt-in: re-check their ReleaseData<T> copies against all definers at ruling time (same exposure as
   0x007044D0; census coverage partial).
 - runs/pilot, runs/shx, runs/acc2x are measurement dirs (form trials), not for landing.
+
+## Resume round (after R-NF440-1 granted; acc1/acc2 landed at 03aac77523; gate fix abcd45ab83)
+Emitter check for bg1..bg4 (`tools/emitcand440.py`, `emit440.py`, `pkemit440.py`, `mkp440.py`):
+- Candidates: every landed row whose own text, or any header it includes (transitively), spells `CCountedPointer<[const] [ns::]T>`
+  once comments are stripped (CCountedPointer.h's comments named CAFile and pulled in 14,473 rows before stripping). Tests are excluded
+  because they are never linked into the exe. Union over the four batches: 4,909 rows, all compiled at HEAD with catalog flags (0 errors).
+  An object counts as an emitter only if it DEFines the guessed `??1` / `?ReleaseData` / `?ShareData` symbol.
+- pk_all ran on each emitter object with its own leaf and `--addrs` = that batch's own SELF_SYMBOLS (the names its landing registers).
+- Result, all four batches: 0 reached NEQ; 0 emitters whose leaf relocations map a guessed name to another retail address; every
+  emitter was measured. So 170 of 170 rows are landable: 119 ACCEPT (emitted copies all EQ, or no other emitter) and 51 ACCEPT+DEBT
+  (unreached NEQ copies, mostly the header's Info-first ReleaseData default and 5-byte `jmp ReleaseData` destructors in
+  RELEASEDATA_DECL_ONLY TUs). There are 145 debt lines in total, in `batches/nf440_bg*p/DEBT.tsv`, each tagged to the row's registry line
+  and noted in its BEST_GUESS line.
+- No retail 5-byte jmp thunk targets a guessed or bound ReleaseData<T> of a ~ guess, so there is no thunk-destructor evidence against
+  the ~ guesses.
+- An EQ emitter copy is not evidence for T: every 53-byte copy has the same body.
+- Batches `nf440_bg1p..bg4p` (50/50/50/20) have verdicts flipped to ACCEPT and carry DEBT.tsv. descriptive_check --extra: 0 FAIL each,
+  and 0 FAIL over all four together (184 lines including the 14 registered). reserved_check 0; apply_table --dry: no new multi-target.
+- The six never-locked rows were free (no lock dir); all 170 bg rows are now locked NF440.
+- Accuracy per batch (T / member):
+  - bg1p: anchored 4, unanchored 46; member: pair 32, base rate 1, TU-positional 1, ShareData 16.
+  - bg2p: anchored 1, unanchored 49; member: pair 35, base rate 1, forced 1, ShareData 13.
+  - bg3p: unanchored 50; member: pair 28, base rate 7, ShareData 15.
+  - bg4p: unanchored 20; member: pair 10, ShareData 10.
+  - Figures: T about 90% unanchored (19/21 decided) and 18/18 anchored; member pair rule about 83% (5/6), base rate about 81-82%.

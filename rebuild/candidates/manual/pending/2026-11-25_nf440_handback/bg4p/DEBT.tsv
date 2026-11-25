@@ -1,0 +1,13 @@
+row_address	symbol	emitter_row	verdict	size	reach	note
+00af5e10	?ReleaseData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXXZ	00af4530	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00af5e10
+00af5e10	?ReleaseData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXXZ	00af4ee0	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00af5e10
+00af5e10	?ReleaseData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXXZ	00af6010	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00af5e10
+00af5e10	?ReleaseData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXXZ	00af6d90	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00af5e10
+00af5e10	?ReleaseData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXXZ	00af7570	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00af5e10
+00b8e770	?ReleaseData@?$CCountedPointer@VCVertexBufferWin32@@@@QAEXXZ	00b8dcd0	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b8e770
+00b8e770	?ReleaseData@?$CCountedPointer@VCVertexBufferWin32@@@@QAEXXZ	00b8ec10	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b8e770
+00b8e770	?ReleaseData@?$CCountedPointer@VCVertexBufferWin32@@@@QAEXXZ	00b8ef60	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b8e770
+00b8e770	?ReleaseData@?$CCountedPointer@VCVertexBufferWin32@@@@QAEXXZ	00b8f950	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b8e770
+00b959f0	?ReleaseData@?$CCountedPointer@VCEngineSceneMap@@@@QAEXXZ	00b94bf0	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b959f0
+00b959f0	?ReleaseData@?$CCountedPointer@VCEngineSceneMap@@@@QAEXXZ	00b95aa0	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b959f0
+00b953e0	?ReleaseData@?$CCountedPointer@VCEngineSceneGrid@@@@QAEXXZ	00b96280	NEQ	53	n	unreached pick-any copy differs from retail at the best-guess address; registry line descriptive_names.tsv 00b953e0

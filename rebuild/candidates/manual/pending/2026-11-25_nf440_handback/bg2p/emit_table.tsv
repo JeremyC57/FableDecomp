@@ -1,0 +1,51 @@
+address	guess	emitters	EQ/NEQ	reached	other_address_evidence	verdict	note
+0050f140	??1?$CCountedPointer@VCOldFileFormatMapHeader7@@@@QAE@XZ	0051b0a0,0051b940	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+0050f1f0	?ReleaseData@?$CCountedPointer@VCOldFileFormatLevel2@@@@QAEXXZ	00515e90	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00515e90
+0050f270	??1?$CCountedPointer@VCOldFileFormatLevel2@@@@QAE@XZ	00514790,00515e90	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+0050f4c0	?ReleaseData@?$CCountedPointer@VCOldFileFormatMapHeader6@@@@QAEXXZ	0051b0a0	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 0051b0a0
+0050f6a0	??1?$CCountedPointer@VCOldFileFormatMapHeader6@@@@QAE@XZ	0051a5a0,0051b0a0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+0050ff40	?ReleaseData@?$CCountedPointer@VCOldFileFormatLevel1@@@@QAEXXZ	00514790	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00514790
+0050ff90	??1?$CCountedPointer@VCOldFileFormatLevel1@@@@QAE@XZ	00512bc0,00514790	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+005101b0	?ReleaseData@?$CCountedPointer@VCOldFileFormatMapHeader5@@@@QAEXXZ	0051a5a0	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 0051a5a0
+00510250	??1?$CCountedPointer@VCOldFileFormatMapHeader5@@@@QAE@XZ	005196e0,0051a5a0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00510400	?ReleaseData@?$CCountedPointer@VCOldFileFormatMapHeader4@@@@QAEXXZ	005196e0	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 005196e0
+005104a0	??1?$CCountedPointer@VCOldFileFormatMapHeader4@@@@QAE@XZ	00518040,005196e0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+005105f0	?ReleaseData@?$CCountedPointer@VCOldFileFormatMapHeader3@@@@QAEXXZ	00518040	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00518040
+00510690	??1?$CCountedPointer@VCOldFileFormatMapHeader3@@@@QAE@XZ	00516010,00518040	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+005107f0	?ReleaseData@?$CCountedPointer@VCOldFileFormatMapHeader2@@@@QAEXXZ	00516010	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00516010
+005108f0	??1?$CCountedPointer@VCOldFileFormatMapHeader2@@@@QAE@XZ	005148d0,00516010	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00510a10	?ReleaseData@?$CCountedPointer@VCOldFileFormatMapHeader1@@@@QAEXXZ	005148d0	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 005148d0
+00510b00	??1?$CCountedPointer@VCOldFileFormatMapHeader1@@@@QAE@XZ	00512c70,005148d0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00510bf0	?ReleaseData@?$CCountedPointer@VCRegionConnectionNode@@@@QAEXXZ	00448380,00827f80,00827fd0,008280a0,00828260,00828fe0,008293b0	0EQ/7NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00448380,00827f80,00827fd0,008280a0,00828260,00828fe0,008293b0
+005120c0	??1?$CCountedPointer@VCRegionConnectionNode@@@@QAE@XZ	00448910,00519050,0051c8e0,00827ec0,00827f00,00827fd0,008280a0,00828d80,00828f60,00828fe0,00829090,008292d0,008293b0,00829430,008294f0,008295e0,00829630,00829760,008297f0	19EQ/0NEQ	n	-	ACCEPT	all 19 emitted copies EQ at the guess
+005df9e0	??1?$CCountedPointer@$$CBVC3DAnimationStats@@@@QAE@XZ	005db6b0,006f90d0,006f9130,006f9820,008575c0,00867b40,00867d20,00a269c0,00a36df0	7EQ/2NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 006f90d0,006f9130
+006686c0	?ReleaseData@?$CCountedPointer@VCCreatureInteraction@@@@QAEXXZ	00662550	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00662550
+00668700	?ShareData@?$CCountedPointer@VCCreatureInteraction@@@@QAEXPAVCCreatureInteraction@@PAVCCPPointerInfo@@@Z	00662550	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00668750	??1?$CCountedPointer@VCCreatureInteraction@@@@QAE@XZ	006661b0	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00668790	?ShareData@?$CCountedPointer@VCAnimationEntry@@@@QAEXPAVCAnimationEntry@@PAVCCPPointerInfo@@@Z	00669280	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00695350	?ShareData@?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@QAEXPAVCActionEventBase@NCreatureAction@@PAVCCPPointerInfo@@@Z	00696240	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+006e7af0	?ReleaseData@?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAEXXZ	008ab970	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 008ab970
+006ef170	?ShareData@?$CCountedPointer@VCCombatSequenceBase@@@@QAEXPAVCCombatSequenceBase@@PAVCCPPointerInfo@@@Z	-	0EQ/0NEQ	n	-	ACCEPT	no other landed object emits the name
+00718280	?ReleaseData@?$CCountedPointer@VCScriptConversation@NTCScriptedControl@@@@QAEXXZ	00714d30,00718940	0EQ/2NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00714d30,00718940
+0071e8a0	?ReleaseData@?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@QAEXXZ	007222b0,00728000	0EQ/2NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 007222b0,00728000
+0071e8e0	?ShareData@?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@QAEXPAVCMeshMorphSet@CTCAppearanceMorphBase@@PAVCCPPointerInfo@@@Z	007222b0	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00754d30	?ShareData@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@PAVCCPPointerInfo@@@Z	00752640,00754f10,008621a0	3EQ/0NEQ	n	-	ACCEPT	all 3 emitted copies EQ at the guess
+0075f060	?ReleaseData@?$CCountedPointer@VCCardinalSpline@@@@QAEXXZ	0075f830,0075fa30,007dcfd0,00b13530,00b149d0	0EQ/5NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 0075f830,0075fa30,007dcfd0,00b13530,00b149d0
+00763d30	?ShareData@?$CCountedPointer@VCShape@NShape@@@@QAEXPAVCShape@NShape@@PAVCCPPointerInfo@@@Z	00764640	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00764180	?ShareData@?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@QAEXPAVCSubdivisionTriangle@NShape@@PAVCCPPointerInfo@@@Z	00763060,007634e0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00771890	?ReleaseData@?$CCountedPointer@VCOpinionSet@@@@QAEXXZ	00771660,00771b30,00771b60	0EQ/3NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00771660,00771b30,00771b60
+00771900	??1?$CCountedPointer@VCOpinionSet@@@@QAE@XZ	00771a90,00771b30	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00786aa0	?ReleaseData@?$CCountedPointer@VC3DSkeletalMorphParameter@@@@QAEXXZ	-	0EQ/0NEQ	n	-	ACCEPT	no other landed object emits the name
+00786cb0	??1?$CCountedPointer@VC3DSkeletalMorphParameter@@@@QAE@XZ	007864c0,00786700,00a464e0,00a46cb0	4EQ/0NEQ	n	-	ACCEPT	all 4 emitted copies EQ at the guess
+007dd0e0	?ShareData@?$CCountedPointer@VCCardinalSpline@@@@QAEXPAVCCardinalSpline@@PAVCCPPointerInfo@@@Z	0075f830,007dcfd0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00822eb0	?ReleaseData@?$CCountedPointer@VCFileFormatHeightMapCell@@@@QAEXXZ	-	0EQ/0NEQ	n	-	ACCEPT	no other landed object emits the name
+00822f20	??1?$CCountedPointer@VCFileFormatHeightMapCell@@@@QAE@XZ	008271e0	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00822f60	?ReleaseData@?$CCountedPointer@VCFileFormatBrush@@@@QAEXXZ	-	0EQ/0NEQ	n	-	ACCEPT	no other landed object emits the name
+00822fb0	??1?$CCountedPointer@VCFileFormatBrush@@@@QAE@XZ	00825590	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00822ff0	?ShareData@?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@QAEXPAVCOldFileFormatHeightMapCell6@@PAVCCPPointerInfo@@@Z	008271e0	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00823040	?ReleaseData@?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@QAEXXZ	008271e0	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 008271e0
+00823080	?ShareData@?$CCountedPointer@VCOldFileFormatBrush@@@@QAEXPAVCOldFileFormatBrush@@PAVCCPPointerInfo@@@Z	00825590	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+008230d0	??1?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@QAE@XZ	00826f10,008271e0	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00823110	?ShareData@?$CCountedPointer@VCOldFileFormatHeightMapCell5@@@@QAEXPAVCOldFileFormatHeightMapCell5@@PAVCCPPointerInfo@@@Z	00826f10	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00823160	?ReleaseData@?$CCountedPointer@VCOldFileFormatBrush@@@@QAEXXZ	00825590	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00825590
+008231a0	?ShareData@?$CCountedPointer@VCOldFileFormatHeightMapCell4@@@@QAEXPAVCOldFileFormatHeightMapCell4@@PAVCCPPointerInfo@@@Z	00826c90	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess

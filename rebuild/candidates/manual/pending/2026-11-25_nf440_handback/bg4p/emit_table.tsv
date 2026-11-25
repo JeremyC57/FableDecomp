@@ -1,0 +1,21 @@
+address	guess	emitters	EQ/NEQ	reached	other_address_evidence	verdict	note
+00aaafe0	?ShareData@?$CCountedPointer@VC3DMeshFileDummyObjectChunk@@@@QAEXPAVC3DMeshFileDummyObjectChunk@@PAVCCPPointerInfo@@@Z	00aaa3e0,00aaa470	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00aab030	?ShareData@?$CCountedPointer@VC3DMeshFileConvexVolumeChunk@@@@QAEXPAVC3DMeshFileConvexVolumeChunk@@PAVCCPPointerInfo@@@Z	00aaa6c0,00aaa750	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00acfda0	?ShareData@?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@QAEXPAVCVertexPairContraction@QuadricOptimiserInternals@@PAVCCPPointerInfo@@@Z	00aca830,00ad1fc0,00ad6740	3EQ/0NEQ	n	-	ACCEPT	all 3 emitted copies EQ at the guess
+00ad0440	?ShareData@?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@QAEXPAVCOptimisedPrimitive@QuadricOptimiserInternals@@PAVCCPPointerInfo@@@Z	-	0EQ/0NEQ	n	-	ACCEPT	no other landed object emits the name
+00af5e10	?ReleaseData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXXZ	00af4530,00af4ee0,00af6010,00af6d90,00af7570	0EQ/5NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00af4530,00af4ee0,00af6010,00af6d90,00af7570
+00af5e50	?ShareData@?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAEXPAVCPSCBase@NParticleEngine@@PAVCCPPointerInfo@@@Z	00af6d90,00af7570	2EQ/0NEQ	n	-	ACCEPT	all 2 emitted copies EQ at the guess
+00af5fd0	??1?$CCountedPointer@VCPSCBase@NParticleEngine@@@@QAE@XZ	00af4530,00af6570,00af65b0,00af67b0,00af6920,00af6980,00af6b90,00af6f90,00af7250,00af7460,00af7570,00af7730,00af7a10	13EQ/0NEQ	n	-	ACCEPT	all 13 emitted copies EQ at the guess
+00b43160	?ReleaseData@?$CCountedPointer@VCStaticMapBankStateBlock@@@@QAEXXZ	-	0EQ/0NEQ	n	-	ACCEPT	no other landed object emits the name
+00b434c0	??1?$CCountedPointer@VCStaticMapBankStateBlock@@@@QAE@XZ	00b3ff70	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00b82720	?ShareData@?$CCountedPointer@VCEngineSimulationBase@@@@QAEXPAVCEngineSimulationBase@@PAVCCPPointerInfo@@@Z	00b82e30,00b83020,00b83e70	3EQ/0NEQ	n	-	ACCEPT	all 3 emitted copies EQ at the guess
+00b828b0	?ShareData@?$CCountedPointer@VCParticleSimulation@@@@QAEXPAVCParticleSimulation@@PAVCCPPointerInfo@@@Z	00b82fa0,00b832b0,00b83330,00b83b00	4EQ/0NEQ	n	-	ACCEPT	all 4 emitted copies EQ at the guess
+00b8e770	?ReleaseData@?$CCountedPointer@VCVertexBufferWin32@@@@QAEXXZ	00b8dcd0,00b8ec10,00b8ef60,00b8f950	0EQ/4NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00b8dcd0,00b8ec10,00b8ef60,00b8f950
+00b8e7b0	?ShareData@?$CCountedPointer@VCVertexBufferWin32@@@@QAEXPAVCVertexBufferWin32@@PAVCCPPointerInfo@@@Z	00b8dcd0,00b8ef60,00b8f950	3EQ/0NEQ	n	-	ACCEPT	all 3 emitted copies EQ at the guess
+00b8eb80	??1?$CCountedPointer@VCVertexBufferWin32@@@@QAE@XZ	00b8dcd0,00b8ede0,00b8ee20,00b8f470,00b8f840,00b8f950,00bce4b0	7EQ/0NEQ	n	-	ACCEPT	all 7 emitted copies EQ at the guess
+00b953e0	?ReleaseData@?$CCountedPointer@VCEngineSceneGrid@@@@QAEXXZ	00b96280	0EQ/1NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00b96280
+00b95420	??1?$CCountedPointer@VCEngineSceneGrid@@@@QAE@XZ	00b94540,00b94bf0,00b97af0	3EQ/0NEQ	n	-	ACCEPT	all 3 emitted copies EQ at the guess
+00b95750	?ShareData@?$CCountedPointer@VCEngineSceneGrid@@@@QAEXPAVCEngineSceneGrid@@PAVCCPPointerInfo@@@Z	00b96280	1EQ/0NEQ	n	-	ACCEPT	all 1 emitted copies EQ at the guess
+00b959f0	?ReleaseData@?$CCountedPointer@VCEngineSceneMap@@@@QAEXXZ	00b94bf0,00b95aa0	0EQ/2NEQ	n	-	ACCEPT+DEBT	unreached NEQ copies (debt, tagged to the registry line): 00b94bf0,00b95aa0
+00b95c40	??1?$CCountedPointer@VCEngineSceneMap@@@@QAE@XZ	00b94bf0,00b96f00,00b97580,00b97980,00b97c10	5EQ/0NEQ	n	-	ACCEPT	all 5 emitted copies EQ at the guess
+00bed010	?ShareData@?$CCountedPointer@VCCompositeSurfaceCache@@@@QAEXPAVCCompositeSurfaceCache@@PAVCCPPointerInfo@@@Z	00bed640,00bed690,00bed790,00bed880,00bed9a0,00bedd70,00bee070,00bee8f0	8EQ/0NEQ	n	-	ACCEPT	all 8 emitted copies EQ at the guess

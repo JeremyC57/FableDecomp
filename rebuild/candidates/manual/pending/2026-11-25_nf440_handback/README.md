@@ -25,7 +25,24 @@ These rows are self respells. Each one moves a `CCountedPointer` stand-in self (
 
 Self-test: a PDB-named registry line at 0x00401067 took that address out of proven (34,391 → 34,390) and graded it agree_descriptive. The best-guess total did not move. The line was then reverted.
 
-## Held: 170 rows (`nf440_bg1..bg4`, in the agent's scratch, not landed)
+## Landed later the same day: 170 rows (`batches/..._nf440_bg1p` .. `_bg4p`, 50 / 50 / 50 / 20)
+NF440's emitter pilot cleared all of them.
+- **Emitters:** NF440 compiled 4,909 candidate rows whose include tree spells `CCountedPointer<T>`. Every object that defines a guessed symbol was run through pk_all against its batch's addresses.
+- **Result:** no reached NEQ, and no relocation maps a guessed name to another address.
+- **Debt:** 145 lines of unreached NEQ copies, in `bgNp/DEBT.tsv` (per-row tables in `bgNp/emit_table.tsv`). The nf440 T3 family line covers them.
+- **Registry:** 170 lines, basis `one-source:tu-order`.
+- **Accuracy (NF440's leave-one-out figures):**
+  - T is about 90% right unanchored (19 of 21) and 18 of 18 anchored;
+  - `~` / ReleaseData is about 81–83% right;
+  - so about one name in four is wrong somewhere.
+- **Coordinator checks at landing:**
+  - header-free, so no equiv rerun;
+  - registry check: 184 lines, 0 FAIL;
+  - tracker per address: 170 standin T3 → agree_descriptive, and nothing else moves;
+  - proven stays at 34,391; the best-guess total is 34,575 (53.99%);
+  - bindings_multi 1 (NullCoord), funclets 0 broken, s units 0 failed.
+
+## Earlier hold, now resolved: 170 rows (`nf440_bg1..bg4`)
 These are layout-predictor guesses. They are blocked by emitters outside NF428's 151 objects.
 - Binding a name to an address makes every landed object that emits that name comparable to the address.
 - **Next step:**
