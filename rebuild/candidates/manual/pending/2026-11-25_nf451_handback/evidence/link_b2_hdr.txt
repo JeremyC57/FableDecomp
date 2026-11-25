@@ -1,0 +1,14 @@
+## HEAD set (3 objects): 00af7c10_D/w22 00af8ad0_D/w22 00af7c80/work
+duplicates 0
+UNRESOLVED 1 ?dtor_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ
+UNRESOLVED 1 ?free_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ
+DEFINED ??1CDecal@NParticleEngine@@QAE@XZ in 00af7c10.obj
+DEFINED ??3CDecal@NParticleEngine@@SIXPAX@Z in 00af8ad0.obj
+## new set (3 objects): 00af7c10_D/w22 00af8ad0_D/w22 00af7c80/work
+duplicates 0
+DEFINED ??1CDecal@NParticleEngine@@QAE@XZ in 00af7c10.obj
+DEFINED ??3CDecal@NParticleEngine@@SIXPAX@Z in 00af8ad0.obj
+## diff HEAD -> new
+GONE_UNRESOLVED ?dtor_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ 
+GONE_UNRESOLVED ?free_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ 
+LK_DONE

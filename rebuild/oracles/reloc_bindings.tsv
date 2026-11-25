@@ -157,9 +157,7 @@ _helper_5b155a	0042a8bd	0042b44a
 @CActiveFile_Helper_0043f230@4	0043f230	0043fcd0
 ?Release@T@@QAEXPAX0@Z	0043f510	0043fdc0
 ?CActiveFile_Base_OnReadFinished@@YIXPAUCActiveFile@@@Z	00440730	00441670
-??1CBase_00443220@@QAE@XZ	00442280	00443220
 ?clear@CStringRecordList@@QAEXXZ	004407b0	00443220
-?BaseDestructor@GuiControlTreePaneOverlay@@QAEXXZ	00442280	00443bd0
 ?SortTreeRecursively@GuiTreeStorageOverlay@@QAEXXZ	004407b0	00443bd0
 ?Destroy_00443520@@YIXPAX@Z	00443520	004440c0
 ?Destroy_004437c0@@YIXPAX@Z	004437c0	00444590
@@ -174,7 +172,6 @@ _helper_5b155a	0042a8bd	0042b44a
 ?Destroy_00443ac0@@YIXPAX@Z	00443ac0	00444bb0
 ?Destroy_00443b00@@YIXPAX@Z	00443b00	00444c20
 ?Destroy_00443b20@@YIXPAX@Z	00443b20	00444c90
-?BaseDestructor@GuiControlTreePaneOverlay5@@QAEXXZ	00442280	00444e10
 ?SortTreeRecursively@GuiSortStateOverlay@@QAEXXZ	0043fd40	00444e10
 ?SortTreeRecursively@GuiTreeStorageOverlay5@@QAEXXZ	004407b0	00444e10
 ?Destroy_00444d70@@YIXPAX@Z	00444d70	00445120
@@ -4899,8 +4896,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CParticle@NParticleEngine@@6B@	0129f4f0	00af7a90
 ?inner_dtor@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af7b60	00af7b40
 ?member_free@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af8650	00af7b40
-?dtor_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af7c10	00af7c80
-?free_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af8ad0	00af7c80
 ?CDecal_Dtor@@YIXPAUCDecal@@@Z	00af7c10	00af7ca0
 ?CDecal_OpDelete@@YIXPAUCDecal@@@Z	00af8ad0	00af7ca0
 ??0CPSCRenderSprite@@QAE@XZ	00afb7c0	00af7d10
@@ -7907,7 +7902,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?Update@CDrawQuestInfo@NPlayerGui@@QAEXXZ	0064a32e	004383d0
 ?ClearGui@CPlayerGui@@QAEXXZ	00438230	00438400
 ?clear@?$_List_base@UCListRecordWithWideStringAt24@@@std@@QAEXXZ	00440770	00443140
-??1CRecordBase@@QAE@XZ	00442280	00443190
 ?clear@?$_List_base@UCListEntry@@@std@@QAEXXZ	004407b0	00443190
 ??1CPodListB@@QAE@XZ	0043fd80	00443ca0
 ?LowerBound@CControlsMap@@QBEPBUCControlsEntry@@ABW4EGameAction@@@Z	00447c80	00445bd0
@@ -16385,7 +16379,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Dtor@CSpecialAbilitiesBurntEffectDef@@QAEXXZ	00457e77	00457e5b
 @CSpecialAbilitiesElectrocutedEffectDef_dtor@4	00457ed6	00457eba
 ?CSpecialAbilitiesDivineWrathDef_dtor@@YIXPAVCSpecialAbilitiesDivineWrathDef@@@Z	00458111	004580f5
-@CSpecialAbilitiesUnholyPowerDef_dtor@4	004582d6	004582ba
 ?CSpecialAbilitiesCreatureTintDef_Destruct@@YIXPAX@Z	004583fa	004583de
 ?CObjectFamilyDef_Destruct@@YIXPAX@Z	0045855a	0045853e
 @CCombatSequenceDef_dtor@4	004588e2	004588c6
@@ -16545,7 +16538,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??1CBase@NCameraModes@@UAE@XZ	0056e0e0	0056e2d0
 @CSoundDef_dtor@4	00458476	0045845a
 ?CAttackPatternDef_dtor@@YIXPAVCLandscapeBackgroundPatch@@@Z	00458504	004584e8
-@CBrainDef_dtor@4	00459abe	00459aa2
 ?dtor@CInputProcessControlCreature@@QAEXXZ	00a0d3d0	0048b400
 ?dtor@CInputProcessControlCreatureActivateZTargetOnPress@@QAEXXZ	00a0d3d0	0048b440
 ?destroy@CInputProcessTargetLockCycleTargets@@QAEXXZ	00a0d3d0	0048b4a0
@@ -38607,3 +38599,5 @@ __real@0000000000000000	0122ed70	00b260b0
 ??1CDrawStatUpdates@NPlayerGui@@QAE@XZ	00441b90	00442cc0
 ??1CDrawMeleeActionButtonEffects@NPlayerGui@@QAE@XZ	004420d0	00443010
 ??1CDrawSpiritTargetingCursor@NPlayerGui@@QAE@XZ	00442190	00443080
+??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ	004582d6	004582ba
+??1CBrainDef@@UAE@XZ	00459abe	00459aa2

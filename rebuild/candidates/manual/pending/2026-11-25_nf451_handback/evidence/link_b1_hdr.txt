@@ -1,0 +1,18 @@
+## HEAD set (11 objects): 00442280_D/w22 00443190/work 004431c0/work 004431f0/work 00443c50/work 00443ca0/work 00443220/work 00443bd0/work 00443c10/work 00444e10/work 00444e50/work
+duplicates 1
+  DUP 004431c0.obj : warning LNK4006: "void __cdecl DestroyRecordWithEntryList(class CRecordWithEntryList *)" (?DestroyRecordWithEntryList@@YAXPAVCRecordWithEntryList@@@Z) already defined in 00443190.obj; second definition ignored
+UNRESOLVED 1 ??1CBase_00443220@@QAE@XZ
+UNRESOLVED 5 ??1CRecordBase@@QAE@XZ
+UNRESOLVED 2 ?BaseDestructor@GuiControlTreePaneOverlay5@@QAEXXZ
+UNRESOLVED 2 ?BaseDestructor@GuiControlTreePaneOverlay@@QAEXXZ
+DEFINED ??1CStatBase@NPlayerGui@@QAE@XZ in 00442280.obj
+## new set (11 objects): 00442280_D/w22 00443190/work 004431c0/work 004431f0/work 00443c50/work 00443ca0/work 00443220/work 00443bd0/work 00443c10/work 00444e10/work 00444e50/work
+duplicates 1
+  DUP 004431c0.obj : warning LNK4006: "void __cdecl DestroyRecordWithEntryList(class CRecordWithEntryList *)" (?DestroyRecordWithEntryList@@YAXPAVCRecordWithEntryList@@@Z) already defined in 00443190.obj; second definition ignored
+DEFINED ??1CStatBase@NPlayerGui@@QAE@XZ in 00442280.obj
+## diff HEAD -> new
+GONE_UNRESOLVED ??1CBase_00443220@@QAE@XZ 
+GONE_UNRESOLVED ??1CRecordBase@@QAE@XZ 
+GONE_UNRESOLVED ?BaseDestructor@GuiControlTreePaneOverlay5@@QAEXXZ 
+GONE_UNRESOLVED ?BaseDestructor@GuiControlTreePaneOverlay@@QAEXXZ 
+LK_DONE

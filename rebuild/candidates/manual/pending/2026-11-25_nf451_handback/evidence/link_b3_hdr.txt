@@ -1,0 +1,10 @@
+## HEAD set (2 objects): 004582d6_D/w22 004582ba/work
+duplicates 0
+UNRESOLVED 1 @CSpecialAbilitiesUnholyPowerDef_dtor@4
+DEFINED ??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ in 004582d6.obj
+## new set (2 objects): 004582d6_D/w22 004582ba/work
+duplicates 0
+DEFINED ??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ in 004582d6.obj
+## diff HEAD -> new
+GONE_UNRESOLVED @CSpecialAbilitiesUnholyPowerDef_dtor@4 
+LK_DONE

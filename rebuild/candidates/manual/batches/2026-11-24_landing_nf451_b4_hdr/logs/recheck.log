@@ -1,0 +1,8 @@
+addr       parity           behav  name
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459aa2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459aa2.obj; graded the largest function
+00459aa2   WARN STANDIN_LEAF ?CBrainDef_vector_deleting_dtor@@YIPAXPAVCBrainDef@@HI@Z (catalog CBrainDef::`scalar_deleting_destructor'; names another function)
+00459aa2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 1
+  00459aa2 RELOCATION_MATCH CBrainDef::`scalar_deleting_destructor'

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00af7c80.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00af7c80.obj; graded the largest function
+00af7c80   WARN STANDIN_LEAF ?vector_deleting_destructor@CEngineSubPrimitiveGameMesh@@QAEPAXI@Z (catalog CEngineSubPrimitiveGameMesh::`vector_deleting_destructor'; names another function)
+00af7c80   RELOCATION_MATCH PASS   `vector_deleting_destructor'
+
+WINS: 1
+  00af7c80 RELOCATION_MATCH CEngineSubPrimitiveGameMesh::`vector_deleting_destructor'

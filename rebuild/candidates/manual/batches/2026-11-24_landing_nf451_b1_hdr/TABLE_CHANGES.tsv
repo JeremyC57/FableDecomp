@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+delete	??1CBase_00443220@@QAE@XZ	00442280	00443220	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	??1CRecordBase@@QAE@XZ	00442280	00443190	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	?BaseDestructor@GuiControlTreePaneOverlay5@@QAEXXZ	00442280	00444e10	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	?BaseDestructor@GuiControlTreePaneOverlay@@QAEXXZ	00442280	00443bd0	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)

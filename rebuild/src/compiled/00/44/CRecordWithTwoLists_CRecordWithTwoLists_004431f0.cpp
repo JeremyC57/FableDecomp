@@ -9,6 +9,15 @@
 // Layout: base 0x64 bytes, list<entry> sentinel pointer +0x64 (entry = 16 bytes + CWideString), second list +0x68
 // (its element type does not reach the bytes; its destructor is spelled as a declared out-of-line one).
 // Shape: the destructor is implicit (no vptr store); DestroyRecordWithTwoLists's qualified call emits it out of line.
+// Naming (NF451, 2026-11-25; r450b done through the shared header): this record derives from NPlayerGui::CStatBase
+//   (engine/NPlayerGui_CStatBase.h, add-only no-containers view: +0x00..+0x30, the vptr and the scalar members), so the implicit
+//   base-destructor call names 0x00442280 ??1CStatBase@NPlayerGui@@QAE@XZ (FableWin.pdb only, r449c best guess); was ??1CRecordBase@@QAE@XZ.
+//   The derived model pads +0x30..+0x64 itself (the base's two STLport vectors +0x30/+0x3C, left out of the view, and the
+//   derived scalar members).
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_GUIMODE
+#define FABLE_RETAIL_NPLAYERGUI_CSTATBASE_NO_CONTAINERS
+#include "engine/NPlayerGui_CStatBase.h"                // ~CStatBase 0x00442280 (FableWin.pdb ??1CStatBase@NPlayerGui@@QAE@XZ)
 #include <stdlib.h>
 class CWideString {
 public:
@@ -34,13 +43,9 @@ public:
     void* _M_node;                                       // sentinel
     ~CPodList();                                         // 0x0043FD40
 };
-class CRecordBase {
+class CRecordWithTwoLists : public NPlayerGui::CStatBase {
 public:
-    ~CRecordBase();                                      // 0x00442280
-    unsigned char _body[0x64];
-};
-class CRecordWithTwoLists : public CRecordBase {
-public:
+    unsigned char _body[0x64 - 0x30];                    // +0x30 (base vectors, derived scalars)
     std::list<CListEntry> Entries;                       // +0x64
     CPodList              Others;                        // +0x68
 };

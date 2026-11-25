@@ -1641,3 +1641,13 @@ against CODAApi.lib, or stay compiled C++?
 - Reading (a guess from one probe, not proved): the leaf matches only with the default (speed) body visible, so retail's TU likely emitted the
   speed copy and lost the pick at link. This fits the standing rule that copies reflecting retail's object composition wait for B's
   object-order build mode. Loop rule: no further agents on these rows' copies.
+
+## 2026-11-25 A: landed rows whose own grade is DIFFER still count as genuine coverage (NF451 finding)
+- NF451 regraded the five rows NF448 saw DIFFER. Two were census errors (0x0072A680, no `// Leaf:`; 0x01214190, an EH funclet row);
+  three CLandscapeBackgroundPatch rows (0x00BE7D70 Load 1437v2983, 0x00BE6F70 Render 198v2654, 0x00BE8920 LoadCompressed 328v365)
+  have graded DIFFER since nf127's 2026-11-20 check: July behaviour-only rows that call made-up helpers where retail inlines.
+- Measured: 43 landed catalog rows grade DIFFER in `rebuild/compile-gate/retail-parity.tsv` (29,872 retail bytes); 31 read DIFFER in
+  `self_symbols.tsv`. `tools/landed_metrics.py` counts every catalog row by its source's purity class only, so these 43 count in
+  `landed_genuine_*` and `matched_bytes_genuine`. README already reports "Compiled sources still honestly DIFFER" from the parity file.
+- Not acted on: numbers are not hand-edited. Fix belongs in landed_metrics (exclude parity DIFFER rows from the genuine figures, as
+  baked_string / baked_address are) or in re-decomp of the rows; that needs an owner decision on how DIFFER rows are counted.

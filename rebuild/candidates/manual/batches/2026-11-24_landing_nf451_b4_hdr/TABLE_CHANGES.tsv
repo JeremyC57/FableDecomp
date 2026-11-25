@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+delete	@CBrainDef_dtor@4	00459abe	00459aa2	NF451: the only row naming the stand-in (source census of rebuild/src/compiled) now binds ??1CBrainDef@@UAE@XZ
+add	??1CBrainDef@@UAE@XZ	00459abe	00459aa2	NF451: the respelt row binds the target self row Leaf (landed 0x00459ABE defines it)

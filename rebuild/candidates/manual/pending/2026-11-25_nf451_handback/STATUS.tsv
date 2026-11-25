@@ -1,0 +1,21 @@
+address	task	status	note
+0072a680	T1	OK_CENSUS_ARTEFACT	vland --recheck-landed RELOCATION_MATCH PASS; NF448 leaf '~CTCActionUseBuyOrSteal' matched no symbol (no // Leaf line), largest function graded
+01214190	T1	OK_CENSUS_ARTEFACT	vland --recheck-landed RELOCATION_MATCH PASS; EH funclet row (parent 00c31f00 funclet block); NF448 graded the parent's largest function
+00be7d70	T1	DIFFER_PREEXISTING	DIFFER(1437v2983) PASS; same as retail-parity.tsv, self_symbols status, every includer_recheck since nf108; legacy behaviour-only row, never a byte match
+00be6f70	T1	DIFFER_PREEXISTING	DIFFER(198v2654) PASS; same as above (made-up helpers where retail inlines)
+00be8920	T1	DIFFER_PREEXISTING	DIFFER(328v365) PASS; same as above
+00443190	T2	ACCEPT b1_hdr	r450b six model rows onto CStatBase.h view
+004431c0	T2	ACCEPT b1_hdr	
+004431f0	T2	ACCEPT b1_hdr	
+00443c50	T2	ACCEPT b1_hdr	
+00443ca0	T2	ACCEPT b1_hdr	
+00443220	T2	ACCEPT b1_hdr	
+00443bd0	T2	ACCEPT b1_hdr	DTORX through header view
+00443c10	T2	ACCEPT b1_hdr	
+00444e10	T2	ACCEPT b1_hdr	
+00444e50	T2	ACCEPT b1_hdr	
+00af7c80	T2	ACCEPT b2_hdr	r450a onto CDecal.h no-containers view
+00443cf0	T3	NOT_STARTED	catalog CMiniMapDisplay::ClearPrimitiveHandles but row model reads +0x154/+0x158 (CMiniMapDisplay retail sizeof 0xC0) and self is a free __fastcall: identity work, not a header port; lock not taken
+004582ba	T3	ACCEPT b3_hdr	DTORX via UnholyPowerDef dtor-only opt-in; best guess fablewin
+00459aa2	T3	ACCEPT b4_hdr	DTORX via CBrainDef dtor-only opt-in; test respelt (links row)
+00739e20	T3	NOT_STARTED	context

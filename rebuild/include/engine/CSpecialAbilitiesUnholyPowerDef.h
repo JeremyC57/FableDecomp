@@ -1,5 +1,20 @@
 #ifndef FABLE_ENGINE_CSPECIALABILITIESUNHOLYPOWERDEF_H
 #define FABLE_ENGINE_CSPECIALABILITIESUNHOLYPOWERDEF_H
+#ifdef FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_DTOR_DECL_ONLY
+#if defined(FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_ALLOC) || defined(FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_RTTI_DECLS) || defined(FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_COPY_DECLS)
+#error "FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_DTOR_DECL_ONLY cannot be combined with the full view's opt-ins"
+#endif
+// Add-only per-TU opt-in (NF451, 2026-11-25; row 0x004582BA, the scalar deleting destructor, which calls the out-of-line
+// ~CSpecialAbilitiesUnholyPowerDef 0x004582D6): the class with its retail base and the destructor declared (Ego_r.pdb / FableWin.pdb
+// ??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ; virtual through ~CParentDefClassBase), WITHOUT its members: the first member (+0x3C) is
+// already an STLport vector and stlport/fable_containers.h adds /DEFAULTLIB:"libcp" to the object's .drectve, which the caller's object
+// never had. Use it only to name the class or call the destructor (a qualified call); never for its layout. Declarations only.
+#include "engine/CParentDefClassBase.h"
+class CSpecialAbilitiesUnholyPowerDef : public CParentDefClassBase {
+public:
+    virtual ~CSpecialAbilitiesUnholyPowerDef();                          // 0x004582D6
+};
+#else
 // New shared header (chunk 782, row 0x007941D0 CTCUnholyPower ctor): the retail CSpecialAbilitiesUnholyPowerDef, laid out as the
 // sibling CSpecialAbilities*Def headers (CParentDefClassBase base, packed 0x39, the first member at +0x3C): the 22 Ego_r.pdb members in
 // order and spelling (ghidra_out/struct_layouts_egor.tsv, size 312 there) with 12-byte STLport vectors (retail 0x100). The ctor reads
@@ -57,4 +72,5 @@ public:
     CSpecialAbilitiesUnholyPowerDef& operator=(const CSpecialAbilitiesUnholyPowerDef&);
 #endif
 };
+#endif // FABLE_RETAIL_CSPECIALABILITIESUNHOLYPOWERDEF_DTOR_DECL_ONLY
 #endif

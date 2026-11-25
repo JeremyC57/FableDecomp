@@ -1,0 +1,11 @@
+action	symbol	target	witness	note
+delete	??1CBase_00443220@@QAE@XZ	00442280	00443220	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	??1CRecordBase@@QAE@XZ	00442280	00443190	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	?BaseDestructor@GuiControlTreePaneOverlay5@@QAEXXZ	00442280	00444e10	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	?BaseDestructor@GuiControlTreePaneOverlay@@QAEXXZ	00442280	00443bd0	NF451: no landed row outside this batch names the stand-in identifier (source census of rebuild/src/compiled + rebuild/include, 2026-11-25; NF450 compiled census agrees)
+delete	?dtor_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af7c10	00af7c80	NF451: the only row naming the stand-in (source census of rebuild/src/compiled) now binds ??1CDecal@NParticleEngine@@QAE@XZ
+delete	?free_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af8ad0	00af7c80	NF451: the only row naming the stand-in (source census of rebuild/src/compiled) now binds ??3CDecal@NParticleEngine@@SIXPAX@Z
+delete	@CSpecialAbilitiesUnholyPowerDef_dtor@4	004582d6	004582ba	NF451: the only row naming the stand-in (source census of rebuild/src/compiled) now binds ??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ
+add	??1CSpecialAbilitiesUnholyPowerDef@@UAE@XZ	004582d6	004582ba	NF451: the respelt row binds the target self row Leaf (landed 0x004582D6 defines it)
+delete	@CBrainDef_dtor@4	00459abe	00459aa2	NF451: the only row naming the stand-in (source census of rebuild/src/compiled) now binds ??1CBrainDef@@UAE@XZ
+add	??1CBrainDef@@UAE@XZ	00459abe	00459aa2	NF451: the respelt row binds the target self row Leaf (landed 0x00459ABE defines it)

@@ -9,6 +9,15 @@
 // Shape: no vtable store of its own, so the most-derived class is `__declspec(novtable)` with an empty destructor; the
 // members die in reverse order. The +0x64 list's destructor is inline (`clear(); if (m_head) free(m_head);` -- the head
 // null test and free inline after the out-of-line clear), the +0x68 list's is out of line; the base destructor is a `jmp`.
+// Naming (NF451, 2026-11-25; r450b done through the shared header): this record derives from NPlayerGui::CStatBase
+//   (engine/NPlayerGui_CStatBase.h, add-only no-containers view: +0x00..+0x30, the vptr and the scalar members), so the implicit
+//   base-destructor call names 0x00442280 ??1CStatBase@NPlayerGui@@QAE@XZ (FableWin.pdb only, r449c best guess); was ??1CBase_00443220@@QAE@XZ.
+//   The derived model pads +0x30..+0x64 itself (the base's two STLport vectors +0x30/+0x3C, left out of the view, and the
+//   derived scalar members).
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_GUIMODE
+#define FABLE_RETAIL_NPLAYERGUI_CSTATBASE_NO_CONTAINERS
+#include "engine/NPlayerGui_CStatBase.h"                // ~CStatBase 0x00442280 (FableWin.pdb ??1CStatBase@NPlayerGui@@QAE@XZ)
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
 struct SListNode;
@@ -24,13 +33,8 @@ namespace N_0043fd80 { struct CPodList {                              // VC6-era
     ~CPodList();                               // 0x0043FD80
 }; } using N_0043fd80::CPodList;
 
-struct CBase_00443220 {
-    virtual void v00();
-    unsigned char _body[0x60];                 // +0x04..+0x64
-    ~CBase_00443220();                         // 0x00442280
-};
-
-struct __declspec(novtable) CDerived_00443220 : CBase_00443220 {
+struct __declspec(novtable) CDerived_00443220 : NPlayerGui::CStatBase {
+    unsigned char _body[0x64 - 0x30];          // +0x30 (base vectors, derived scalars)
     CStringRecordList m_records;               // +0x64
     CPodList          m_entries;               // +0x68
     ~CDerived_00443220();

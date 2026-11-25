@@ -1,0 +1,14 @@
+equiv_check $S/nf451_equiv old vs new (4 headers): 57,160 rows checked; differing addresses (all 13 are batch rows, 0 outside):
+00443190
+004431c0
+004431f0
+00443220
+00443bd0
+00443c10
+00443c50
+00443ca0
+00444e10
+00444e50
+004582ba
+00459aa2
+00af7c80

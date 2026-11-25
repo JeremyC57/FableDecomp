@@ -8,6 +8,15 @@
 // recoverable from the bytes.
 // Layout: base 0x64 bytes, list<entry> sentinel +0x64 (entry = 16 bytes + CWideString), second list +0x68.
 // Shape: non-virtual destructor; the `delete p` helper makes VC7.1 emit ??_G.
+// Naming (NF451, 2026-11-25; r450b done through the shared header): this record derives from NPlayerGui::CStatBase
+//   (engine/NPlayerGui_CStatBase.h, add-only no-containers view: +0x00..+0x30, the vptr and the scalar members), so the implicit
+//   base-destructor call names 0x00442280 ??1CStatBase@NPlayerGui@@QAE@XZ (FableWin.pdb only, r449c best guess); was ??1CRecordBase@@QAE@XZ.
+//   The derived model pads +0x30..+0x64 itself (the base's two STLport vectors +0x30/+0x3C, left out of the view, and the
+//   derived scalar members).
+#define FABLE_RETAIL_CPLAYERGUI
+#define FABLE_RETAIL_CPLAYERGUI_GUIMODE
+#define FABLE_RETAIL_NPLAYERGUI_CSTATBASE_NO_CONTAINERS
+#include "engine/NPlayerGui_CStatBase.h"                // ~CStatBase 0x00442280 (FableWin.pdb ??1CStatBase@NPlayerGui@@QAE@XZ)
 #include <stdlib.h>
 class CWideString {
 public:
@@ -33,13 +42,9 @@ public:
     void* _M_node;                                       // sentinel
     ~CPodListB();                                         // 0x0043FD80
 };
-class CRecordBase {
+class CRecordWithTwoListsB : public NPlayerGui::CStatBase {
 public:
-    ~CRecordBase();                                      // 0x00442280
-    unsigned char _body[0x64];
-};
-class CRecordWithTwoListsB : public CRecordBase {
-public:
+    unsigned char _body[0x64 - 0x30];                    // +0x30 (base vectors, derived scalars)
     std::list<CListEntry> Entries;                       // +0x64
     CPodListB              Others;                        // +0x68
 };

@@ -1,0 +1,5 @@
+target	wrong_symbol	row	reason
+00442610	@Sub28_clear@4	00443cf0	not a header port: the row model reads +0x154/+0x158 (CMiniMapDisplay retail sizeof 0xC0) and its self is a free __fastcall ?ClearPrimitiveHandles@@YIXPAVCMiniMapDisplay@@@Z; the +0x28 subobject is what calls ~CMiniMapDisplay 0x00442610, so the row's own class is likely an owner holding a CMiniMapDisplay at +0x28 (a CDrawMiniMap-like class; unverified): identity first, the self symbol and the class name both change
+00739e20	6 x ?CMode*_Destruct@@YIXPAX@Z	0073fe70 007408c0 00740990 00868100 008e36b0 008e39d0	not started (context): _hdr opt-in in engine/CTCCreatureModeManager.h declaring the public nested CModeBase dtor; check the header for STLport first (libcp trap; decl-only view if so)
+00af7c10 00af8ad0	?CDecal_Dtor@@YIXPAUCDecal@@@Z / ?CDecal_OpDelete@@YIXPAUCDecal@@@Z	00af7ca0	unchanged from NF450: self-identity work (CDecal::Delete, vtable slot 0); b2_hdr's CDecal no-containers view is the header to use
+0045784b	@CSpecialAbilitiesPhysicalShieldDef_scalar_dtor@4	0045782f	same shape as b3/b4: the destructor-only opt-in recipe applies; not done

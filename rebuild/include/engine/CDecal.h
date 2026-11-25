@@ -1,5 +1,47 @@
 #ifndef FABLE_ENGINE_CDECAL_H
 #define FABLE_ENGINE_CDECAL_H
+#ifdef FABLE_RETAIL_CDECAL_NO_CONTAINERS
+#ifdef FABLE_RETAIL_CDECAL
+#error "FABLE_RETAIL_CDECAL_NO_CONTAINERS is defined instead of FABLE_RETAIL_CDECAL, not with it"
+#endif
+// Add-only per-TU opt-in (NF451, 2026-11-25; row 0x00AF7C80, CDecal's deleting destructor, which calls ~CDecal 0x00AF7C10 and the
+// class operator delete 0x00AF8AD0): NParticleEngine::CDecal as FABLE_RETAIL_CDECAL below declares it, without its two CArray
+// (STLport vector) members PrimIDList +0x5C / ParentHandleList +0x68 and without engine/CArray.h, which pulls in STLport and adds
+// /DEFAULTLIB:"libcp" to the object's .drectve. Define this INSTEAD of FABLE_RETAIL_CDECAL. Same members, names and order up to
+// +0x5C; sizeof is 0x5C here, not 0x74. Declarations only: no bodies, no accessors.
+#include "rebuild_abi.h"
+#include "engine/C3DVector.h"
+#include "engine/CRightHandedSet.h"
+namespace NParticleEngine {
+class CDecal {
+public:
+    ~CDecal();                                                           // 0x00AF7C10
+    virtual void Delete();                                               // slot 0 0x00AF7CA0
+    static void* __fastcall operator new(unsigned int);
+    static void __fastcall operator delete(void*);                       // 0x00AF8AD0
+    float GetInterpolatedLifetimerInSeconds(float) const;
+private:
+    C3DVector                             Position;                      // +0x04
+    CRightHandedSet                       RHSet;                         // +0x10
+    long                                  Lifetimer;                     // +0x28
+    float                                 CreationTime;                  // +0x2c
+    long                                  MaxLife;                       // +0x30
+    unsigned char                         FlickerIndex;                  // +0x34
+    unsigned char                         FlickerTimeOffset;             // +0x35
+    float                                 SizeFactor[2];                 // +0x38
+    float                                 AlphaFactor[2];                // +0x40
+    float                                 GraphicFrame;                  // +0x48
+    long                                  UpdateTimer;                   // +0x4c
+    float                                 MinLife;                       // +0x50
+    float                                 MinSize;                       // +0x54
+    bool                                  Active : 1;                    // +0x58 bit 0
+    bool                                  SizeCollisionThisFrame : 1;
+    bool                                  AlphaCollisionThisFrame : 1;
+    bool                                  LandscapeOnlyDecal : 1;
+};
+}
+FABLE_STATIC_ASSERT_AT(76, sizeof(NParticleEngine::CDecal) == 0x5C);
+#else
 #ifdef FABLE_RETAIL_CDECAL
 // Retail opt-in (chunk 761, row 0x00AF7C10 ~CDecal): the polymorphic retail class NParticleEngine::CDecal (RTTI
 // .?AVCDecal@NParticleEngine@@, no bases; vtable 0x0129F4FC: slot 0 Delete 0x00AF7CA0). Ego_r.pdb: ??1CDecal@NParticleEngine@@QAE@XZ
@@ -226,4 +268,5 @@ FABLE_STATIC_ASSERT_AT(131, offsetof(CDecal, ParentHandleList) == 0x68);
 
 #endif // FABLE_RETAIL_CDECAL
 
+#endif // FABLE_RETAIL_CDECAL_NO_CONTAINERS
 #endif // FABLE_ENGINE_CDECAL_H

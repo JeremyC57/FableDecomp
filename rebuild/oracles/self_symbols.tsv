@@ -28183,3 +28183,5 @@ address	symbol	status	leaf_given
 00c6f300	?ClearFilterHistory@CSalRenderPanDelayMMX@@UAEXXZ	MATCH	?ClearFilterHistory@CSalRenderPanDelayMMX@@UAEXXZ
 00c6f3e0	?Process@CSalRenderPanDelayMMX@@UAEXPBFAAY03PAH@Z	RELOCATION_MATCH	?Process@CSalRenderPanDelayMMX@@UAEXPBFAAY03PAH@Z
 00c6cf40	?UpdateFilters@CSalRenderPanDelay@@AAEX_N@Z	RELOCATION_MATCH	?UpdateFilters@CSalRenderPanDelay@@AAEX_N@Z
+00443c50	??_GCRecordWithTwoLists@@QAEPAXI@Z	RELOCATION_MATCH	??_GCRecordWithTwoLists@@QAEPAXI@Z
+00443ca0	??_GCRecordWithTwoListsB@@QAEPAXI@Z	RELOCATION_MATCH	??_GCRecordWithTwoListsB@@QAEPAXI@Z
