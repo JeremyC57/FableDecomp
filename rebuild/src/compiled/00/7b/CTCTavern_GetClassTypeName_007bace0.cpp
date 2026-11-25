@@ -13,5 +13,5 @@ class CTCTavern { public:
 
 CCharString CTCTavern::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123caf0, -1);
+    return CCharString("CTCTavern", -1);
 }

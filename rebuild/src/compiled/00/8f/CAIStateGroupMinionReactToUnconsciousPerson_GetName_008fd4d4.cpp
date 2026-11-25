@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToUnconsciousPerson::GetName()
 {
-    return CCharString((const char*)0x0128900C, -1);   // "SG_MINION_REACT_TO_UNCONSCIOUS_PERSON"
+    return CCharString("SG_MINION_REACT_TO_UNCONSCIOUS_PERSON", -1);   // "SG_MINION_REACT_TO_UNCONSCIOUS_PERSON"
 }

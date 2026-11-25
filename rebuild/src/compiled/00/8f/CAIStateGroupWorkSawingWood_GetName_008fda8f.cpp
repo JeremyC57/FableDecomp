@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WorkSawingWood::GetName()
 {
-    return CCharString((const char*)0x0128992C, -1);   // "SG_WORK_SAWING_WOOD"
+    return CCharString("SG_WORK_SAWING_WOOD", -1);   // "SG_WORK_SAWING_WOOD"
 }

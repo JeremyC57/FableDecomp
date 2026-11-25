@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionGuardReactToPlayerWithWeapon::GetName()
 {
-    return CCharString((const char*)0x01289260, -1);   // "SG_MINION_GUARD_REACT_TO_PLAYER_WEAPON"
+    return CCharString("SG_MINION_GUARD_REACT_TO_PLAYER_WEAPON", -1);   // "SG_MINION_GUARD_REACT_TO_PLAYER_WEAPON"
 }

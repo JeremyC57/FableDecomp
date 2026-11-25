@@ -1,0 +1,132 @@
+addr       parity           behav  name
+00456903   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+00456903   WARN RELOC_NAME: ?Prof_Enter@@YGXPBD@Z -> 00404500 labelled 'CPersistContext::CheckCRC'
+00456903   WARN RELOC_NAME: ?LM_Handle3@@YIXPAXUPBox@@@Z -> 00993fd0 labelled 'CDataOutputStream::Write3DVector'
+00456903   WARN RELOC_NAME: ?LM_Handle2@@YI?AUVec12@@PAX@Z -> 009950f0 labelled 'CDataInputStream::Read3DVector'
+00456903   RELOCATION_MATCH PASS   PersistTransfer_00456903
+00692150   RELOCATION_MATCH PASS   GetHook
+00692190   RELOCATION_MATCH PASS   GetHook
+00692250   RELOCATION_MATCH PASS   GetHook
+00718610   RELOCATION_MATCH PASS   GetActionName
+00718d90   RELOCATION_MATCH PASS   GetActionName
+00718db0   WARN SHARED_HEADER_AVAILABLE CActionDoCreatureAction (engine/CActionDoCreatureAction.h)
+00718db0   RELOCATION_MATCH PASS   GetActionName
+00718dd0   RELOCATION_MATCH PASS   GetActionName
+0071a4e0   RELOCATION_MATCH PASS   GetActionName
+007e7280   RELOCATION_MATCH PASS   GetActionName
+008b3540   RELOCATION_MATCH PASS   GetName
+008b3710   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackFar (engine/CCombatSequence_BanditAttackFar.h)
+008b3710   RELOCATION_MATCH PASS   GetName
+008b3790   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackMiddle (engine/CCombatSequence_BanditAttackMiddle.h)
+008b3790   RELOCATION_MATCH PASS   GetName
+008b3810   RELOCATION_MATCH PASS   GetName
+008b3890   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackNear (engine/CCombatSequence_BanditAttackNear.h)
+008b3890   RELOCATION_MATCH PASS   GetName
+008b3a70   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingAttack (engine/CCombatSequence_BanditKingAttack.h)
+008b3a70   RELOCATION_MATCH PASS   GetName
+008b3c00   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingSpinAround (engine/CCombatSequence_BanditKingSpinAround.h)
+008b3c00   RELOCATION_MATCH PASS   GetName
+008b3d00   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderUnblockableMainAttack (engine/CCombatSequence_FodderUnblockableMainAttack.h)
+008b3d00   RELOCATION_MATCH PASS   GetName
+008b4070   RELOCATION_MATCH PASS   GetName
+008b40f0   RELOCATION_MATCH PASS   GetName
+008b4180   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollProjectileAttack (engine/CCombatSequence_TrollProjectileAttack.h)
+008b4180   RELOCATION_MATCH PASS   GetName
+008b4270   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollBurrowPursueNoZone (engine/CCombatSequence_TrollBurrowPursueNoZone.h)
+008b4270   RELOCATION_MATCH PASS   GetName
+008b4440   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockThrowRock (engine/CCombatSequence_TrollRockThrowRock.h)
+008b4440   RELOCATION_MATCH PASS   GetName
+008b44d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockIdle (engine/CCombatSequence_TrollRockIdle.h)
+008b44d0   RELOCATION_MATCH PASS   GetName
+008b4540   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockShuffleBack (engine/CCombatSequence_TrollRockShuffleBack.h)
+008b4540   RELOCATION_MATCH PASS   GetName
+008b4720   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerAdvance (engine/CCombatSequence_VillagerAdvance.h)
+008b4720   RELOCATION_MATCH PASS   GetName
+008b47a0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerCombo (engine/CCombatSequence_VillagerCombo.h)
+008b47a0   RELOCATION_MATCH PASS   GetName
+008b4920   RELOCATION_MATCH PASS   GetName
+008b49a0   RELOCATION_MATCH PASS   GetName
+008b4a20   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAttackCombo (engine/CCombatSequenceWhisperAttackCombo.h)
+008b4a20   RELOCATION_MATCH PASS   GetName
+008b4aa0   RELOCATION_MATCH PASS   GetName
+008b4b20   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAttack360 (engine/CCombatSequenceWhisperAttack360.h)
+008b4b20   RELOCATION_MATCH PASS   GetName
+008b4ba0   RELOCATION_MATCH PASS   GetName
+008b4c20   RELOCATION_MATCH PASS   GetName
+008b4ca0   RELOCATION_MATCH PASS   GetName
+008b4d20   RELOCATION_MATCH PASS   GetName
+008b4e10   RELOCATION_MATCH PASS   GetName
+008b4e90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceJacksCombo (engine/CCombatSequenceJacksCombo.h)
+008b4e90   RELOCATION_MATCH PASS   GetName
+008b4f90   RELOCATION_MATCH PASS   GetName
+008b5010   WARN SHARED_HEADER_AVAILABLE CCombatSequenceNonInterruptable2StrikeCombo (engine/CCombatSequenceNonInterruptable2StrikeCombo.h)
+008b5010   RELOCATION_MATCH PASS   GetName
+008b5090   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BattleCharge (engine/CCombatSequence_BattleCharge.h)
+008b5090   RELOCATION_MATCH PASS   GetName
+008b5410   RELOCATION_MATCH PASS   GetName
+008b54c0   RELOCATION_MATCH PASS   GetName
+008fd3e5   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditGossip (engine/CAIStateGroup_BanditGossip.h)
+008fd3e5   RELOCATION_MATCH PASS   GetName
+008fde2d   RELOCATION_MATCH PASS   GetName
+008fde52   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BalverineCornered (engine/CAIStateGroup_BalverineCornered.h)
+008fde52   RELOCATION_MATCH PASS   GetName
+008fde65   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BalverineJumpAtFleeingEnemy (engine/CAIStateGroup_BalverineJumpAtFleeingEnemy.h)
+008fde65   RELOCATION_MATCH PASS   GetName
+008fe3df   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditKingCharge (engine/CAIStateGroup_BanditKingCharge.h)
+008fe3df   RELOCATION_MATCH PASS   GetName
+008fe84f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ApprenticeHero (engine/CAIStateGroup_ApprenticeHero.h)
+008fe84f   RELOCATION_MATCH PASS   GetName
+008fe8dd   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_AvoidRegionExit (engine/CAIStateGroup_AvoidRegionExit.h)
+008fe8dd   RELOCATION_MATCH PASS   GetName
+
+WINS: 50
+  00456903 RELOCATION_MATCH _global::UpdateShadowScene
+  00692150 RELOCATION_MATCH NCreatureAction::CActionEventTriggerParticle::?GetHook@CActionEventTriggerParticle@NCreatureAction@@
+  00692190 RELOCATION_MATCH NCreatureAction::CActionEventCameraShake::?GetHook@CActionEventCameraShake@NCreatureAction@@
+  00692250 RELOCATION_MATCH NCreatureAction::CActionEventExplosion::?GetHook@CActionEventExplosion@NCreatureAction@@
+  00718610 RELOCATION_MATCH NTCScriptedControl::CActionTurnToFacePosition::?GetActionName@CActionTurnToFacePosition@NTCScriptedControl@@
+  00718d90 RELOCATION_MATCH NTCScriptedControl::CActionTalkedTo::?GetActionName@CActionTalkedTo@NTCScriptedControl@@
+  00718db0 RELOCATION_MATCH CActionDoCreatureAction::GetActionName
+  00718dd0 RELOCATION_MATCH NTCScriptedControl::CActionSummonerLightningAttackTarget::?GetActionName@CActionSummonerLightningAttackTarget@NTCScriptedControl@@
+  0071a4e0 RELOCATION_MATCH NTCScriptedControl::CActionTalkToThing::?GetActionName@CActionTalkToThing@NTCScriptedControl@@
+  007e7280 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::?GetActionName@CActionMoveTo@NTCScriptedControl@@
+  008b3540 RELOCATION_MATCH CCombatSequence_GenericLeader::?GetName@CCombatSequence_GenericLeader@@UBE?AVCCharString@@XZ
+  008b3710 RELOCATION_MATCH CCombatSequence_BanditAttackFar::GetName
+  008b3790 RELOCATION_MATCH CCombatSequence_BanditAttackMiddle::GetName
+  008b3810 RELOCATION_MATCH CCombatSequence_BanditAttackSide::?GetName@CCombatSequence_BanditAttackSide@@UBE?AVCCharString@@XZ
+  008b3890 RELOCATION_MATCH CCombatSequence_BanditAttackNear::GetName
+  008b3a70 RELOCATION_MATCH CCombatSequence_BanditKingAttack::GetName
+  008b3c00 RELOCATION_MATCH CCombatSequence_BanditKingSpinAround::GetName
+  008b3d00 RELOCATION_MATCH CCombatSequence_FodderUnblockableMainAttack::GetName
+  008b4070 RELOCATION_MATCH CCombatSequence_TrollDoubleSwipeNonMelee::?GetName@CCombatSequence_TrollDoubleSwipeNonMelee@@UBE?AVCCharString@@XZ
+  008b40f0 RELOCATION_MATCH CCombatSequence_TrollOpeningGroundPound::?GetName@CCombatSequence_TrollOpeningGroundPound@@UBE?AVCCharString@@XZ
+  008b4180 RELOCATION_MATCH CCombatSequence_TrollProjectileAttack::GetName
+  008b4270 RELOCATION_MATCH CCombatSequence_TrollBurrowPursueNoZone::GetName
+  008b4440 RELOCATION_MATCH CCombatSequence_TrollRockThrowRock::GetName
+  008b44d0 RELOCATION_MATCH CCombatSequence_TrollRockIdle::GetName
+  008b4540 RELOCATION_MATCH CCombatSequence_TrollRockShuffleBack::GetName
+  008b4720 RELOCATION_MATCH CCombatSequence_VillagerAdvance::GetName
+  008b47a0 RELOCATION_MATCH CCombatSequence_VillagerCombo::GetName
+  008b4920 RELOCATION_MATCH CCombatSequenceWhisperLunge::?GetName@CCombatSequenceWhisperLunge@@UBE?AVCCharString@@XZ
+  008b49a0 RELOCATION_MATCH CCombatSequenceWhisperAdvance::?GetName@CCombatSequenceWhisperAdvance@@UBE?AVCCharString@@XZ
+  008b4a20 RELOCATION_MATCH CCombatSequenceWhisperAttackCombo::GetName
+  008b4aa0 RELOCATION_MATCH CCombatSequenceWhisperAttackBigCombo::?GetName@CCombatSequenceWhisperAttackBigCombo@@UBE?AVCCharString@@XZ
+  008b4b20 RELOCATION_MATCH CCombatSequenceWhisperAttack360::GetName
+  008b4ba0 RELOCATION_MATCH CCombatSequenceWhisperStrikeStrafeBack::?GetName@CCombatSequenceWhisperStrikeStrafeBack@@UBE?AVCCharString@@XZ
+  008b4c20 RELOCATION_MATCH CCombatSequenceWhisperTooCloseLeapBack::?GetName@CCombatSequenceWhisperTooCloseLeapBack@@UBE?AVCCharString@@XZ
+  008b4ca0 RELOCATION_MATCH CCombatSequenceWhisperBoast::?GetName@CCombatSequenceWhisperBoast@@UBE?AVCCharString@@XZ
+  008b4d20 RELOCATION_MATCH CCombatSequenceWhisperSortYourselfOut::?GetName@CCombatSequenceWhisperSortYourselfOut@@UBE?AVCCharString@@XZ
+  008b4e10 RELOCATION_MATCH CCombatSequenceWhisperIdles::?GetName@CCombatSequenceWhisperIdles@@UBE?AVCCharString@@XZ
+  008b4e90 RELOCATION_MATCH CCombatSequenceJacksCombo::GetName
+  008b4f90 RELOCATION_MATCH CCombatSequenceUnblockableFacing::?GetName@CCombatSequenceUnblockableFacing@@UBE?AVCCharString@@XZ
+  008b5010 RELOCATION_MATCH CCombatSequenceNonInterruptable2StrikeCombo::GetName
+  008b5090 RELOCATION_MATCH CCombatSequence_BattleCharge::GetName
+  008b5410 RELOCATION_MATCH CCombatSequence_WillPhysicalShield::?GetName@CCombatSequence_WillPhysicalShield@@UBE?AVCCharString@@XZ
+  008b54c0 RELOCATION_MATCH CCombatSequence_WillPhysicalShieldNonMelee::?GetName@CCombatSequence_WillPhysicalShieldNonMelee@@UBE?AVCCharString@@XZ
+  008fd3e5 RELOCATION_MATCH CAIStateGroup_BanditGossip::?GetName@CAIStateGroup_BanditGossip@@SI?AVCCharString@@XZ
+  008fde2d RELOCATION_MATCH CAIStateGroup_BalverineWander::?GetName@CAIStateGroup_BalverineWander@@SI?AVCCharString@@XZ
+  008fde52 RELOCATION_MATCH CAIStateGroup_BalverineCornered::?GetName@CAIStateGroup_BalverineCornered@@SI?AVCCharString@@XZ
+  008fde65 RELOCATION_MATCH CAIStateGroup_BalverineJumpAtFleeingEnemy::?GetName@CAIStateGroup_BalverineJumpAtFleeingEnemy@@SI?AVCCharString@@XZ
+  008fe3df RELOCATION_MATCH CAIStateGroup_BanditKingCharge::?GetName@CAIStateGroup_BanditKingCharge@@SI?AVCCharString@@XZ
+  008fe84f RELOCATION_MATCH CAIStateGroup_ApprenticeHero::?GetName@CAIStateGroup_ApprenticeHero@@SI?AVCCharString@@XZ
+  008fe8dd RELOCATION_MATCH CAIStateGroup_AvoidRegionExit::?GetName@CAIStateGroup_AvoidRegionExit@@SI?AVCCharString@@XZ

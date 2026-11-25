@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionMotherConsoleChild::GetName()
 {
-    return CCharString((const char*)0x0128A3B8, -1);   // "SG_MINION_MOTHER_CONSOLE_CHILD"
+    return CCharString("SG_MINION_MOTHER_CONSOLE_CHILD", -1);   // "SG_MINION_MOTHER_CONSOLE_CHILD"
 }

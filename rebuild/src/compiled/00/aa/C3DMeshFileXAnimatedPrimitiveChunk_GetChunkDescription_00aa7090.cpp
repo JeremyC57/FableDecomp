@@ -33,5 +33,5 @@ public:
 
 CCharString C3DMeshFileXAnimatedPrimitiveChunk::GetChunkDescription() const
 {
-    return CCharString((const char*)0x129e2a4, -1);
+    return CCharString("Animated Primitive", -1);
 }

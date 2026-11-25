@@ -13,5 +13,5 @@ class CTCCrateStack { public:
 
 CCharString CTCCrateStack::GetClassTypeName()
 {
-    return CCharString((const char*)0x123c8d0, -1);
+    return CCharString("CTCCrateStack", -1);
 }

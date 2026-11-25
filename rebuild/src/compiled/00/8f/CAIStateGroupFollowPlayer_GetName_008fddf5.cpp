@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_FollowPlayer::GetName()
 {
-    return CCharString((const char*)0x01289D5C, -1);   // "SG_MINION_FOLLOW_PLAYER"
+    return CCharString("SG_MINION_FOLLOW_PLAYER", -1);   // "SG_MINION_FOLLOW_PLAYER"
 }

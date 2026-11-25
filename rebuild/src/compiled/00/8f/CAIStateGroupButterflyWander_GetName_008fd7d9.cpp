@@ -21,5 +21,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ButterflyWander::GetName()
 {
-    return CCharString((const char*)0x0128954C, -1);   // "SG_BUTTERFLY_WANDER"
+    return CCharString("SG_BUTTERFLY_WANDER", -1);   // "SG_BUTTERFLY_WANDER"
 }

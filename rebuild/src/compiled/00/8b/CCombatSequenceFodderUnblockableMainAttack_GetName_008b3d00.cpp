@@ -27,5 +27,5 @@ public:
 
 CCharString CCombatSequence_FodderUnblockableMainAttack::GetName() const
 {
-    return CCharString((const char*)0x1278924, -1);
+    return CCharString("COMBAT_SEQUENCE_FODDER_UNBLOCKABLE_MAIN_ATTACK", -1);
 }

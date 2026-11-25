@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SummonerCharge::GetName()
 {
-    return CCharString((const char*)0x0128B018, -1);   // "SG_SUMMONER_CHARGE"
+    return CCharString("SG_SUMMONER_CHARGE", -1);   // "SG_SUMMONER_CHARGE"
 }

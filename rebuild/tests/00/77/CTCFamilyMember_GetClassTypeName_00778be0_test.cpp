@@ -23,7 +23,7 @@ public:
 };
 
 // The literal 0x123b918 in retail is a pointer into .rdata; here we fake it.
-static const char* g_actionName = "DoCreatureAction";
+static const char* g_actionName = "CTCFamilyMember";
 
 CCharString CTCFamilyMember::GetClassTypeName()
 {
@@ -35,7 +35,7 @@ int main() {
     CTCFamilyMember a;
     CCharString r = a.GetClassTypeName();
     bool ok = (r.len == -1) && (r.src == g_actionName)
-              && (strcmp(r.buf, "DoCreatureAction") == 0);
+              && (strcmp(r.buf, "CTCFamilyMember") == 0);
     if (ok) printf("00778be0_TEST PASS\n");
     else    printf("FAIL len=%d\n", r.len);
     return 0;

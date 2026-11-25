@@ -17,5 +17,5 @@ struct CActionEventExplosion {
 
 CCharString NCreatureAction::CActionEventExplosion::GetHook()
 {
-    return CCharString((const char*)0x125c168, -1);
+    return CCharString("EXPLOSION", -1);
 }

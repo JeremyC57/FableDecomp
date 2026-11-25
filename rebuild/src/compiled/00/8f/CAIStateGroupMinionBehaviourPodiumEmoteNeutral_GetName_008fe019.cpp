@@ -21,5 +21,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::GetName()
 {
-    return CCharString((const char*)0x0128A07C, -1);   // "SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL"
+    return CCharString("SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL", -1);   // "SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL"
 }

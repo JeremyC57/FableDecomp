@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WorkAtSchool::GetName()
 {
-    return CCharString((const char*)0x01289878, -1);   // "SG_WORK_AT_SCHOOL"
+    return CCharString("SG_WORK_AT_SCHOOL", -1);   // "SG_WORK_AT_SCHOOL"
 }

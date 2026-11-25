@@ -15,5 +15,5 @@ public:
 
 CCharString CEngineVSConstantLayoutLights::PeekName()
 {
-    return CCharString((const char*)0x012a7d2c, -1);
+    return CCharString("LayoutLights", -1);
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionGuardHeardYellForHelp::GetName()
 {
-    return CCharString((const char*)0x01289200, -1);   // "SG_MINION_GUARD_HEARD_YELL_FOR_HELP"
+    return CCharString("SG_MINION_GUARD_HEARD_YELL_FOR_HELP", -1);   // "SG_MINION_GUARD_HEARD_YELL_FOR_HELP"
 }

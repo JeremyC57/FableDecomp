@@ -12,7 +12,7 @@ private:
     char* m_data;
 };
 
-static const char* const kDesc = "BoneMask";
+static const char* const kDesc = "Animation Mask";
 
 class C3DAnimFileBoneMaskChunk {
 public:
@@ -22,7 +22,7 @@ public:
 int main() {
     C3DAnimFileBoneMaskChunk c;
     CCharString s = c.GetChunkDescription();
-    bool ok = (g_lastPtr == kDesc) && (g_lastLen == -1) && (strcmp(s.data(), "BoneMask") == 0);
+    bool ok = (g_lastPtr == kDesc) && (g_lastLen == -1) && (strcmp(s.data(), "Animation Mask") == 0);
     printf(ok ? "CHUNKDESC_OK\n" : "CHUNKDESC_FAIL\n");
     return ok ? 0 : 1;
 }

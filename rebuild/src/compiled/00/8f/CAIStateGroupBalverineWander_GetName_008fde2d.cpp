@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BalverineWander::GetName()
 {
-    return CCharString((const char*)0x01289DC0, -1);   // "SG_BALVERINE_WANDER"
+    return CCharString("SG_BALVERINE_WANDER", -1);   // "SG_BALVERINE_WANDER"
 }

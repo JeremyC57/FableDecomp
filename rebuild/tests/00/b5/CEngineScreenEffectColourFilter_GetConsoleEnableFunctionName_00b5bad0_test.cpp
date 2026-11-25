@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* m_data;
 };
@@ -23,7 +32,7 @@ class CEngineScreenEffectColourFilter { public:
 CCharString CEngineScreenEffectColourFilter::GetConsoleEnableFunctionName()
 {
     CCharString ret;
-    CCharString_ctor(&ret, 0, (const char*)0x12a2600, -1);
+    CCharString_ctor(&ret, 0, "EnableScreenEffectColourFilter", -1);
     return ret;
 }
 
@@ -34,7 +43,7 @@ int main()
 
     int ok = 1;
     if (g_last_len != -1) ok = 0;
-    if (g_last_str != (const char*)0x12a2600) ok = 0;
+    if (!RetailTextEquals(g_last_str, "EnableScreenEffectColourFilter")) ok = 0;
     if (s.m_data != g_last_str) ok = 0;
 
     if (ok) printf("COLOURFILTER_CONSOLEENABLE_OK\n");

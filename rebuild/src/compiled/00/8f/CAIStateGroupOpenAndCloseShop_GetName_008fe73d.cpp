@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_OpenAndCloseShop::GetName()
 {
-    return CCharString((const char*)0x0128AC80, -1);   // "SG_OPEN_AND_CLOSE_SHOP"
+    return CCharString("SG_OPEN_AND_CLOSE_SHOP", -1);   // "SG_OPEN_AND_CLOSE_SHOP"
 }

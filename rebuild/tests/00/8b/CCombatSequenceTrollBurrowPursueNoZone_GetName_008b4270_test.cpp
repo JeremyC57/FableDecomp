@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString {
 public:
     CCharString(const char* s, long len);
@@ -23,15 +32,15 @@ public:
 };
 
 CCharString CCombatSequence_TrollBurrowPursueNoZone::GetName() const {
-    return CCharString((const char*)0x1278ac0, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_BURROW_PURSUE_NO_ZONE", -1);
 }
 
 int main() {
     CCombatSequence_TrollBurrowPursueNoZone obj;
     CCharString r = obj.GetName();
-    bool ok = (g_lastStr == (const char*)0x1278ac0)
+    bool ok = (RetailTextEquals(g_lastStr, "COMBAT_SEQUENCE_TROLL_BURROW_PURSUE_NO_ZONE"))
            && (g_lastLen == -1)
-           && (r.m_data == (char*)0x1278ac0);
+           && (RetailTextEquals(r.m_data, "COMBAT_SEQUENCE_TROLL_BURROW_PURSUE_NO_ZONE"));
     if (ok) {
         printf("GETNAME_TROLLBURROW_OK\n");
         return 0;

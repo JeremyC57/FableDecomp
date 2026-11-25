@@ -32,8 +32,8 @@ CWideString CUserProfileManager::GetEmptySlotName() const
 {
     CMainGameComponent* mgr = CMainGameComponent::Get();
     if (mgr) {
-        CCharString temp((const char*)0x122df80, -1);
+        CCharString temp("TEXT_GUI_SAVE_EMPTY_SLOT", -1);
         return mgr->GetTextBank().GetTextBySymbol(temp);
     }
-    return CWideString((const unsigned short*)0x122df5c);
+    return CWideString((const unsigned short*)L"<Empty Slot Name>");
 }

@@ -14,5 +14,5 @@ public:
 
 CCharString CTCTavernGameCardPairs::GetClassTypeName()
 {
-    return CCharString((const char*)0x123d56c, -1);
+    return CCharString("CTCTavernGameCardPairs", -1);
 }

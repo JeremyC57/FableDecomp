@@ -16,7 +16,7 @@ private:
     char* m_data;
 };
 
-static const char* const kDesc = "SmoothingGroups";
+static const char* const kDesc = "Smoothing Groups";
 
 class C3DMeshFileSmoothingGroupsChunk {
 public:
@@ -26,7 +26,7 @@ public:
 int main() {
     C3DMeshFileSmoothingGroupsChunk c;
     CCharString s = c.GetChunkDescription();
-    bool ok = (g_lastPtr == kDesc) && (g_lastLen == -1) && (strcmp(s.data(), "SmoothingGroups") == 0);
+    bool ok = (g_lastPtr == kDesc) && (g_lastLen == -1) && (strcmp(s.data(), "Smoothing Groups") == 0);
     printf(ok ? "CHUNKDESC_OK\n" : "CHUNKDESC_FAIL\n");
     return ok ? 0 : 1;
 }

@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* p;
 };
@@ -21,7 +30,7 @@ CCharString* __fastcall CCharString_ctor(CCharString* self, int /*edx*/, const c
     return self;
 }
 
-static const char* const kName = (const char*)0x1278d00;
+static const char* const kName = "COMBAT_SEQUENCE_WHISPER_ADVANCE";
 
 CCharString* __fastcall GetName_CCombatSequenceWhisperAdvance(
         const CCombatSequenceWhisperAdvance* self, int edx, CCharString* __ret)
@@ -43,7 +52,8 @@ int main()
            && (g_self == &ret)
            && (g_len == -1)
            && (g_str == kName)
-           && (ret.p == (char*)kName);
+           && (ret.p == (char*)kName)
+           && RetailTextEquals(g_str, "COMBAT_SEQUENCE_WHISPER_ADVANCE");
 
     if (ok) {
         printf("GETNAME_WHISPER_ADVANCE_OK\n");

@@ -34,5 +34,5 @@ public:
 
 CCharString CCombatSequenceNonInterruptable2StrikeCombo::GetName() const
 {
-    return CCharString((const char*)0x1278eb4, -1);
+    return CCharString("COMBAT_SEQUENCE_NON_INTERRUPTABLE_TWO_STRIKE", -1);
 }

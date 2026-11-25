@@ -6,4 +6,4 @@
 #include "engine/CCombatSequenceWhisperStrikeStrafeBack.h"
 
 class CCharString { public: char* m_data; CCharString(); CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
-CCharString CCombatSequenceWhisperStrikeStrafeBack::GetName() const { return CCharString((const char*)0x1278d6c, -1); }
+CCharString CCombatSequenceWhisperStrikeStrafeBack::GetName() const { return CCharString("COMBAT_SEQUENCE_WHISPER_STRIKE_STRAFE_BACK", -1); }

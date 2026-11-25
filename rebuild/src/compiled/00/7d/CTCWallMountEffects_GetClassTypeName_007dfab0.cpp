@@ -13,5 +13,5 @@ class CTCWallMountEffects { public:
 
 CCharString CTCWallMountEffects::GetClassTypeName()
 {
-    return CCharString((const char*)0x123d734, -1);
+    return CCharString("CTCWallMountEffects", -1);
 }

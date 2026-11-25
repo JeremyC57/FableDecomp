@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_EatAtHome::GetName()
 {
-    return CCharString((const char*)0x0128A9DC, -1);   // "SG_EAT_AT_HOME"
+    return CCharString("SG_EAT_AT_HOME", -1);   // "SG_EAT_AT_HOME"
 }

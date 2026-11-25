@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureIdleUnderground::GetName()
 {
-    return CCharString((const char*)0x0128A610, -1);   // "SG_CREATURE_IDLE_UNDERGROUND"
+    return CCharString("SG_CREATURE_IDLE_UNDERGROUND", -1);   // "SG_CREATURE_IDLE_UNDERGROUND"
 }

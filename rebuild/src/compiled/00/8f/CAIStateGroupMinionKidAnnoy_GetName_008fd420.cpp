@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionKidAnnoy::GetName()
 {
-    return CCharString((const char*)0x01288EF8, -1);   // "SG_MINION_KID_ANNOY"
+    return CCharString("SG_MINION_KID_ANNOY", -1);   // "SG_MINION_KID_ANNOY"
 }

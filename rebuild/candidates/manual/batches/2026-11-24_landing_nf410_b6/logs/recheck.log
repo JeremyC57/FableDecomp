@@ -1,0 +1,137 @@
+addr       parity           behav  name
+008fd606   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SitRoundCampfire (engine/CAIStateGroup_SitRoundCampfire.h)
+008fd606   RELOCATION_MATCH PASS   GetName
+008fd6af   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_StealthSeekEnemy (engine/CAIStateGroup_StealthSeekEnemy.h)
+008fd6af   RELOCATION_MATCH PASS   GetName
+008fd6fa   RELOCATION_MATCH PASS   GetName
+008fd744   RELOCATION_MATCH PASS   GetName
+008fd816   RELOCATION_MATCH PASS   GetName
+008fd910   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskTorch (engine/CAIStateGroup_VillageTaskTorch.h)
+008fd910   RELOCATION_MATCH PASS   GetName
+008fd923   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskPatrol (engine/CAIStateGroup_VillageTaskPatrol.h)
+008fd923   RELOCATION_MATCH PASS   GetName
+008fd93b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskSecuritySweep (engine/CAIStateGroup_VillageTaskSecuritySweep.h)
+008fd93b   RELOCATION_MATCH PASS   GetName
+008fd966   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VillageTaskHorn (engine/CAIStateGroup_VillageTaskHorn.h)
+008fd966   RELOCATION_MATCH PASS   GetName
+008fd9ff   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkAtSchool (engine/CAIStateGroup_WorkAtSchool.h)
+008fd9ff   RELOCATION_MATCH PASS   GetName
+008fda4a   RELOCATION_MATCH PASS   GetName
+008fda7c   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkInWarehouse (engine/CAIStateGroup_WorkInWarehouse.h)
+008fda7c   RELOCATION_MATCH PASS   GetName
+008fda8f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkSawingWood (engine/CAIStateGroup_WorkSawingWood.h)
+008fda8f   RELOCATION_MATCH PASS   GetName
+008fdaa2   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkHammerAnvil (engine/CAIStateGroup_WorkHammerAnvil.h)
+008fdaa2   RELOCATION_MATCH PASS   GetName
+008fdab5   RELOCATION_MATCH PASS   GetName
+008fdada   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ThrowLogsOnFire (engine/CAIStateGroup_ThrowLogsOnFire.h)
+008fdada   RELOCATION_MATCH PASS   GetName
+008fdb8f   RELOCATION_MATCH PASS   GetName
+008fdc91   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WanderAroundShops (engine/CAIStateGroup_WanderAroundShops.h)
+008fdc91   RELOCATION_MATCH PASS   GetName
+008fdca4   RELOCATION_MATCH PASS   GetName
+008fdcfd   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SitInPub (engine/CAIStateGroup_SitInPub.h)
+008fdcfd   RELOCATION_MATCH PASS   GetName
+008fde08   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_StandStill (engine/CAIStateGroup_StandStill.h)
+008fde08   RELOCATION_MATCH PASS   GetName
+008fe288   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TestTestTest (engine/CAIStateGroup_TestTestTest.h)
+008fe288   RELOCATION_MATCH PASS   GetName
+008fe464   RELOCATION_MATCH PASS   GetName
+008fe48a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VersusScorpionKing (engine/CAIStateGroup_VersusScorpionKing.h)
+008fe48a   RELOCATION_MATCH PASS   GetName
+008fe4d5   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_StealStealableItem (engine/CAIStateGroup_StealStealableItem.h)
+008fe4d5   RELOCATION_MATCH PASS   GetName
+008fe50e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernServer (engine/CAIStateGroup_TavernServer.h)
+008fe50e   RELOCATION_MATCH PASS   GetName
+008fe521   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_TavernKeeper (engine/CAIStateGroup_TavernKeeper.h)
+008fe521   RELOCATION_MATCH PASS   GetName
+008fe534   RELOCATION_MATCH PASS   GetName
+008fe547   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperRetreat (engine/CAIStateGroup_WhisperRetreat.h)
+008fe547   RELOCATION_MATCH PASS   GetName
+008fe55a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperPotionCombat (engine/CAIStateGroup_WhisperPotionCombat.h)
+008fe55a   RELOCATION_MATCH PASS   GetName
+008fe56d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Thunder (engine/CAIStateGroup_Thunder.h)
+008fe56d   RELOCATION_MATCH PASS   GetName
+008fe718   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WifeGiveYouGift (engine/CAIStateGroup_WifeGiveYouGift.h)
+008fe718   RELOCATION_MATCH PASS   GetName
+008fe778   RELOCATION_MATCH PASS   GetName
+008fe893   RELOCATION_MATCH PASS   GetName
+008fe902   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SummonerLightningAttack (engine/CAIStateGroup_SummonerLightningAttack.h)
+008fe902   RELOCATION_MATCH PASS   GetName
+008fe915   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SummonerCharge (engine/CAIStateGroup_SummonerCharge.h)
+008fe915   RELOCATION_MATCH PASS   GetName
+008fe928   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SummonerSummon (engine/CAIStateGroup_SummonerSummon.h)
+008fe928   RELOCATION_MATCH PASS   GetName
+00903570   RELOCATION_MATCH PASS   GetActionName
+00aa7090   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXAnimatedPrimitiveChunk (engine/C3DMeshFileXAnimatedPrimitiveChunk.h)
+00aa7090   RELOCATION_MATCH PASS   GetChunkDescription
+00aa7280   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXTriangleStripChunk (engine/C3DMeshFileXTriangleStripChunk.h)
+00aa7280   RELOCATION_MATCH PASS   GetChunkDescription
+00aa7350   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXUVTangentChunk (engine/C3DMeshFileXUVTangentChunk.h)
+00aa7350   RELOCATION_MATCH PASS   GetChunkDescription
+00aa75d0   RELOCATION_MATCH PASS   GetChunkDescription
+00aa75f0   RELOCATION_MATCH PASS   GetChunkInfo
+00aaacd0   WARN SHARED_HEADER_AVAILABLE C3DAnimFileHelpersChunk (engine/C3DAnimFileHelpersChunk.h)
+00aaacd0   WARN STANDIN_LEAF ?GetChunkDescription@C3DAnimFileHelpersChunk@@QBE?AVCCharString@@XZ (catalog C3DMeshFileHelpersChunk::GetChunkDescription; names another function)
+00aaacd0   RELOCATION_MATCH PASS   GetChunkDescription
+00aae0f0   RELOCATION_MATCH PASS   GetChunkInfo
+00aaea90   WARN SHARED_HEADER_AVAILABLE C3DAnimFileHelpersChunk (engine/C3DAnimFileHelpersChunk.h)
+00aaea90   RELOCATION_MATCH PASS   GetChunkDescription
+00ab0b30   WARN SHARED_HEADER_AVAILABLE C3DAnimFileBoneMaskChunk (engine/C3DAnimFileBoneMaskChunk.h)
+00ab0b30   RELOCATION_MATCH PASS   GetChunkDescription
+00ab9c30   RELOCATION_MATCH PASS   GetChunkInfo
+00ab9fa0   RELOCATION_MATCH PASS   GetChunkInfo
+00abea90   WARN SHARED_HEADER_AVAILABLE C3DMeshFileSmoothingGroupsChunk (engine/C3DMeshFileSmoothingGroupsChunk.h)
+00abea90   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 50
+  008fd606 RELOCATION_MATCH CAIStateGroup_SitRoundCampfire::?GetName@CAIStateGroup_SitRoundCampfire@@SI?AVCCharString@@XZ
+  008fd6af RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::?GetName@CAIStateGroup_StealthSeekEnemy@@SI?AVCCharString@@XZ
+  008fd6fa RELOCATION_MATCH CAIStateGroup_Wander::?GetName@CAIStateGroup_Wander@@SI?AVCCharString@@XZ
+  008fd744 RELOCATION_MATCH CAIStateGroup_WanderAroundInitialPos::?GetName@CAIStateGroup_WanderAroundInitialPos@@SI?AVCCharString@@XZ
+  008fd816 RELOCATION_MATCH CAIStateGroup_SmallBirdWander::?GetName@CAIStateGroup_SmallBirdWander@@SI?AVCCharString@@XZ
+  008fd910 RELOCATION_MATCH CAIStateGroup_VillageTaskTorch::?GetName@CAIStateGroup_VillageTaskTorch@@SI?AVCCharString@@XZ
+  008fd923 RELOCATION_MATCH CAIStateGroup_VillageTaskPatrol::?GetName@CAIStateGroup_VillageTaskPatrol@@SI?AVCCharString@@XZ
+  008fd93b RELOCATION_MATCH CAIStateGroup_VillageTaskSecuritySweep::?GetName@CAIStateGroup_VillageTaskSecuritySweep@@SI?AVCCharString@@XZ
+  008fd966 RELOCATION_MATCH CAIStateGroup_VillageTaskHorn::?GetName@CAIStateGroup_VillageTaskHorn@@SI?AVCCharString@@XZ
+  008fd9ff RELOCATION_MATCH CAIStateGroup_WorkAtSchool::?GetName@CAIStateGroup_WorkAtSchool@@SI?AVCCharString@@XZ
+  008fda4a RELOCATION_MATCH CAIStateGroup_TellStory::?GetName@CAIStateGroup_TellStory@@SI?AVCCharString@@XZ
+  008fda7c RELOCATION_MATCH CAIStateGroup_WorkInWarehouse::?GetName@CAIStateGroup_WorkInWarehouse@@SI?AVCCharString@@XZ
+  008fda8f RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?GetName@CAIStateGroup_WorkSawingWood@@SI?AVCCharString@@XZ
+  008fdaa2 RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::?GetName@CAIStateGroup_WorkHammerAnvil@@SI?AVCCharString@@XZ
+  008fdab5 RELOCATION_MATCH CAIStateGroup_StayNearSchool::?GetName@CAIStateGroup_StayNearSchool@@SI?AVCCharString@@XZ
+  008fdada RELOCATION_MATCH CAIStateGroup_ThrowLogsOnFire::?GetName@CAIStateGroup_ThrowLogsOnFire@@SI?AVCCharString@@XZ
+  008fdb8f RELOCATION_MATCH CAIStateGroup_SitForMeal::?GetName@CAIStateGroup_SitForMeal@@SI?AVCCharString@@XZ
+  008fdc91 RELOCATION_MATCH CAIStateGroup_WanderAroundShops::?GetName@CAIStateGroup_WanderAroundShops@@SI?AVCCharString@@XZ
+  008fdca4 RELOCATION_MATCH CAIStateGroup_StayNearFoodHall::?GetName@CAIStateGroup_StayNearFoodHall@@SI?AVCCharString@@XZ
+  008fdcfd RELOCATION_MATCH CAIStateGroup_SitInPub::?GetName@CAIStateGroup_SitInPub@@SI?AVCCharString@@XZ
+  008fde08 RELOCATION_MATCH CAIStateGroup_StandStill::?GetName@CAIStateGroup_StandStill@@SI?AVCCharString@@XZ
+  008fe288 RELOCATION_MATCH CAIStateGroup_TestTestTest::?GetName@CAIStateGroup_TestTestTest@@SI?AVCCharString@@XZ
+  008fe464 RELOCATION_MATCH CAIStateGroup_VersusRockTroll::?GetName@CAIStateGroup_VersusRockTroll@@SI?AVCCharString@@XZ
+  008fe48a RELOCATION_MATCH CAIStateGroup_VersusScorpionKing::?GetName@CAIStateGroup_VersusScorpionKing@@SI?AVCCharString@@XZ
+  008fe4d5 RELOCATION_MATCH CAIStateGroup_StealStealableItem::?GetName@CAIStateGroup_StealStealableItem@@SI?AVCCharString@@XZ
+  008fe50e RELOCATION_MATCH CAIStateGroup_TavernServer::?GetName@CAIStateGroup_TavernServer@@SI?AVCCharString@@XZ
+  008fe521 RELOCATION_MATCH CAIStateGroup_TavernKeeper::?GetName@CAIStateGroup_TavernKeeper@@SI?AVCCharString@@XZ
+  008fe534 RELOCATION_MATCH CAIStateGroup_SleepOnFloor::?GetName@CAIStateGroup_SleepOnFloor@@SI?AVCCharString@@XZ
+  008fe547 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?GetName@CAIStateGroup_WhisperRetreat@@SI?AVCCharString@@XZ
+  008fe55a RELOCATION_MATCH CAIStateGroup_WhisperPotionCombat::?GetName@CAIStateGroup_WhisperPotionCombat@@SI?AVCCharString@@XZ
+  008fe56d RELOCATION_MATCH CAIStateGroup_Thunder::?GetName@CAIStateGroup_Thunder@@SI?AVCCharString@@XZ
+  008fe718 RELOCATION_MATCH CAIStateGroup_WifeGiveYouGift::?GetName@CAIStateGroup_WifeGiveYouGift@@SI?AVCCharString@@XZ
+  008fe778 RELOCATION_MATCH CAIStateGroup_ShopkeeperWatchPlayer::?GetName@CAIStateGroup_ShopkeeperWatchPlayer@@SI?AVCCharString@@XZ
+  008fe893 RELOCATION_MATCH CAIStateGroup_SkillPractice::?GetName@CAIStateGroup_SkillPractice@@SI?AVCCharString@@XZ
+  008fe902 RELOCATION_MATCH CAIStateGroup_SummonerLightningAttack::?GetName@CAIStateGroup_SummonerLightningAttack@@SI?AVCCharString@@XZ
+  008fe915 RELOCATION_MATCH CAIStateGroup_SummonerCharge::?GetName@CAIStateGroup_SummonerCharge@@SI?AVCCharString@@XZ
+  008fe928 RELOCATION_MATCH CAIStateGroup_SummonerSummon::?GetName@CAIStateGroup_SummonerSummon@@SI?AVCCharString@@XZ
+  00903570 RELOCATION_MATCH NTCScriptedControl::CActionPlayAnimation::?GetActionName@CActionPlayAnimation@NTCScriptedControl@@
+  00aa7090 RELOCATION_MATCH C3DMeshFileXAnimatedPrimitiveChunk::GetChunkDescription
+  00aa7280 RELOCATION_MATCH C3DMeshFileXTriangleStripChunk::GetChunkDescription
+  00aa7350 RELOCATION_MATCH C3DMeshFileXUVTangentChunk::GetChunkDescription
+  00aa75d0 RELOCATION_MATCH CChunkedFileChunk::GetChunkDescription
+  00aa75f0 RELOCATION_MATCH CChunkedFileChunk::?GetChunkInfo@CChunkedFileChunk@@UBE?BVCCharString@@XZ
+  00aaacd0 RELOCATION_MATCH C3DMeshFileHelpersChunk::GetChunkDescription
+  00aae0f0 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::?GetChunkInfo@C3DAnimFileMovementVectorChunk@@UBE?BVCCharString@@XZ
+  00aaea90 RELOCATION_MATCH C3DAnimFileHelpersChunk::GetChunkDescription
+  00ab0b30 RELOCATION_MATCH C3DAnimFileBoneMaskChunk::GetChunkDescription
+  00ab9c30 RELOCATION_MATCH C3DMeshFileTransformationChunk::?GetChunkInfo@C3DMeshFileTransformationChunk@@UBE?BVCCharString@@XZ
+  00ab9fa0 RELOCATION_MATCH C3DMeshFileUniqueVerticesChunk::?GetChunkInfo@C3DMeshFileUniqueVerticesChunk@@UBE?BVCCharString@@XZ
+  00abea90 RELOCATION_MATCH C3DMeshFileSmoothingGroupsChunk::GetChunkDescription

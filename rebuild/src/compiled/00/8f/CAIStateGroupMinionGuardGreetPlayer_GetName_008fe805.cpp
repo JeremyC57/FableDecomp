@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionGuardGreetPlayer::GetName()
 {
-    return CCharString((const char*)0x0128ADFC, -1);   // "SG_MINION_GUARD_GREET_PLAYER"
+    return CCharString("SG_MINION_GUARD_GREET_PLAYER", -1);   // "SG_MINION_GUARD_GREET_PLAYER"
 }

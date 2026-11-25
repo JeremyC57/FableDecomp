@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_IdleAtHome::GetName()
 {
-    return CCharString((const char*)0x012899FC, -1);   // "SG_IDLE_AT_HOME"
+    return CCharString("SG_IDLE_AT_HOME", -1);   // "SG_IDLE_AT_HOME"
 }

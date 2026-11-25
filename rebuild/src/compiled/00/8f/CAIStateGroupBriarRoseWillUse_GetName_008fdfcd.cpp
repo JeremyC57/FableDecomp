@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BriarRoseWillUse::GetName()
 {
-    return CCharString((const char*)0x0128A028, -1);   // "SG_BRIAR_ROSE_WILL_USE"
+    return CCharString("SG_BRIAR_ROSE_WILL_USE", -1);   // "SG_BRIAR_ROSE_WILL_USE"
 }

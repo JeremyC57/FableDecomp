@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* p;
     CCharString(const char* s, long len);
@@ -21,7 +30,7 @@ struct CCombatSequence_TrollDoubleSwipeNonMelee {
 
 CCharString CCombatSequence_TrollDoubleSwipeNonMelee::GetName() const
 {
-    return CCharString((const char*)0x1278a18, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE_NON_MELEE", -1);
 }
 
 int main()
@@ -30,8 +39,8 @@ int main()
     CCharString r = obj.GetName();
 
     bool ok = (g_lastLen == -1)
-           && (g_lastStr == (const char*)0x1278a18)
-           && (r.p == (char*)0x1278a18);
+           && (RetailTextEquals(g_lastStr, "COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE_NON_MELEE"))
+           && (RetailTextEquals(r.p, "COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE_NON_MELEE"));
 
     if (ok) {
         printf("GETNAME_TROLL_OK\n");

@@ -1,6 +1,15 @@
 #include <cstdio>
 #include <cstring>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 // Independent behaviour test for CTCGraphicAppearanceMultipleStaticMeshes::GetActionName.
 // We re-declare a self-contained CCharString whose ctor records the literal
 // pointer + length it was constructed with, then confirm the factory forwards
@@ -18,14 +27,14 @@ struct CTCGraphicAppearanceMultipleStaticMeshes {
 
 CCharString CTCGraphicAppearanceMultipleStaticMeshes::GetClassTypeName()
 {
-    return CCharString((const char*)0x123db28, -1);
+    return CCharString("CTCGraphicAppearanceMultipleStaticMeshes", -1);
 }
 
 int main()
 {
     CTCGraphicAppearanceMultipleStaticMeshes obj;
     CCharString r = obj.GetClassTypeName();
-    bool ok = (r.rec_s == (const char*)0x123db28) && (r.rec_len == -1);
+    bool ok = (RetailTextEquals(r.rec_s, "CTCGraphicAppearanceMultipleStaticMeshes")) && (r.rec_len == -1);
     if (ok) {
         printf("GETACTIONNAME_OK\n");
         return 0;

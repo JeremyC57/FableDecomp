@@ -1,0 +1,137 @@
+addr       parity           behav  name
+008fd242   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionWander (engine/CAIStateGroup_MinionWander.h)
+008fd242   RELOCATION_MATCH PASS   GetName
+008fd2e5   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSleep (engine/CAIStateGroup_MinionSleep.h)
+008fd2e5   RELOCATION_MATCH PASS   GetName
+008fd2f8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionWorkInInn (engine/CAIStateGroup_MinionWorkInInn.h)
+008fd2f8   RELOCATION_MATCH PASS   GetName
+008fd330   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToPlayerInteraction (engine/CAIStateGroup_MinionReactToPlayerInteraction.h)
+008fd330   RELOCATION_MATCH PASS   GetName
+008fd343   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCriminal (engine/CAIStateGroup_MinionReactToCriminal.h)
+008fd343   RELOCATION_MATCH PASS   GetName
+008fd40d   RELOCATION_MATCH PASS   GetName
+008fd420   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionKidAnnoy (engine/CAIStateGroup_MinionKidAnnoy.h)
+008fd420   RELOCATION_MATCH PASS   GetName
+008fd433   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionKidGroupTag (engine/CAIStateGroup_MinionKidGroupTag.h)
+008fd433   RELOCATION_MATCH PASS   GetName
+008fd446   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionKidCalledToMother (engine/CAIStateGroup_MinionKidCalledToMother.h)
+008fd446   RELOCATION_MATCH PASS   GetName
+008fd496   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionPutOutFires (engine/CAIStateGroup_MinionPutOutFires.h)
+008fd496   RELOCATION_MATCH PASS   GetName
+008fd4a9   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionWatchFires (engine/CAIStateGroup_MinionWatchFires.h)
+008fd4a9   RELOCATION_MATCH PASS   GetName
+008fd4d4   RELOCATION_MATCH PASS   GetName
+008fd4e7   RELOCATION_MATCH PASS   GetName
+008fd4fa   RELOCATION_MATCH PASS   GetName
+008fd557   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeat (engine/CAIStateGroup_MinionSitOnSeat.h)
+008fd557   RELOCATION_MATCH PASS   GetName
+008fd582   RELOCATION_MATCH PASS   GetName
+008fd595   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitAtInn (engine/CAIStateGroup_MinionSitAtInn.h)
+008fd595   RELOCATION_MATCH PASS   GetName
+008fd5a8   RELOCATION_MATCH PASS   GetName
+008fd5bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionListenToStory (engine/CAIStateGroup_MinionListenToStory.h)
+008fd5bb   RELOCATION_MATCH PASS   GetName
+008fd5e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOutside (engine/CAIStateGroup_MinionSitOutside.h)
+008fd5e0   RELOCATION_MATCH PASS   GetName
+008fd5f3   RELOCATION_MATCH PASS   GetName
+008fd689   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SeekEnemy (engine/CAIStateGroup_SeekEnemy.h)
+008fd689   RELOCATION_MATCH PASS   GetName
+008fd69c   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SeekScriptTarget (engine/CAIStateGroup_SeekScriptTarget.h)
+008fd69c   RELOCATION_MATCH PASS   GetName
+008fd6c2   RELOCATION_MATCH PASS   GetName
+008fdd10   RELOCATION_MATCH PASS   GetName
+008fdd4c   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SellToBuyer (engine/CAIStateGroup_SellToBuyer.h)
+008fdd4c   RELOCATION_MATCH PASS   GetName
+008fdd97   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_RockTroll (engine/CAIStateGroup_RockTroll.h)
+008fdd97   RELOCATION_MATCH PASS   GetName
+008fddd0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SeekPerceivedThing (engine/CAIStateGroup_SeekPerceivedThing.h)
+008fddd0   RELOCATION_MATCH PASS   GetName
+008fde78   RELOCATION_MATCH PASS   GetName
+008fde8b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_NymphAttack (engine/CAIStateGroup_NymphAttack.h)
+008fde8b   RELOCATION_MATCH PASS   GetName
+008fe036   RELOCATION_MATCH PASS   GetName
+008fe049   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToTrespassing (engine/CAIStateGroup_MinionReactToTrespassing.h)
+008fe049   RELOCATION_MATCH PASS   GetName
+008fe05c   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToNoise (engine/CAIStateGroup_MinionReactToNoise.h)
+008fe05c   RELOCATION_MATCH PASS   GetName
+008fe081   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCrime (engine/CAIStateGroup_MinionReactToCrime.h)
+008fe081   RELOCATION_MATCH PASS   GetName
+008fe0a7   RELOCATION_MATCH PASS   GetName
+008fe0ba   RELOCATION_MATCH PASS   GetName
+008fe1ef   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionLeaveRegion (engine/CAIStateGroup_MinionLeaveRegion.h)
+008fe1ef   RELOCATION_MATCH PASS   GetName
+008fe214   RELOCATION_MATCH PASS   GetName
+008fe2c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_RangedCombatUsePreferredFirePoint (engine/CAIStateGroup_RangedCombatUsePreferredFirePoint.h)
+008fe2c0   RELOCATION_MATCH PASS   GetName
+008fe2e6   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ReactToDeadLeader (engine/CAIStateGroup_ReactToDeadLeader.h)
+008fe2e6   RELOCATION_MATCH PASS   GetName
+008fe36e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot (engine/CAIStateGroup_OpinionReactionRoot.h)
+008fe36e   RELOCATION_MATCH PASS   GetName
+008fe451   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ScorpionKing (engine/CAIStateGroup_ScorpionKing.h)
+008fe451   RELOCATION_MATCH PASS   GetName
+008fe4b0   RELOCATION_MATCH PASS   GetName
+008fe4e8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_RecoverStealableItem (engine/CAIStateGroup_RecoverStealableItem.h)
+008fe4e8   RELOCATION_MATCH PASS   GetName
+008fe603   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ServeFoodAtHome (engine/CAIStateGroup_ServeFoodAtHome.h)
+008fe603   RELOCATION_MATCH PASS   GetName
+008fe649   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ServeFoodAtTavern (engine/CAIStateGroup_ServeFoodAtTavern.h)
+008fe649   RELOCATION_MATCH PASS   GetName
+008fe671   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ScreamerPursueTarget (engine/CAIStateGroup_ScreamerPursueTarget.h)
+008fe671   RELOCATION_MATCH PASS   GetName
+008fe73d   RELOCATION_MATCH PASS   GetName
+008fe78b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SetupWares (engine/CAIStateGroup_SetupWares.h)
+008fe78b   RELOCATION_MATCH PASS   GetName
+008fe8b8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_OnHeroPush (engine/CAIStateGroup_OnHeroPush.h)
+008fe8b8   RELOCATION_MATCH PASS   GetName
+
+WINS: 50
+  008fd242 RELOCATION_MATCH CAIStateGroup_MinionWander::?GetName@CAIStateGroup_MinionWander@@SI?AVCCharString@@XZ
+  008fd2e5 RELOCATION_MATCH CAIStateGroup_MinionSleep::?GetName@CAIStateGroup_MinionSleep@@SI?AVCCharString@@XZ
+  008fd2f8 RELOCATION_MATCH CAIStateGroup_MinionWorkInInn::?GetName@CAIStateGroup_MinionWorkInInn@@SI?AVCCharString@@XZ
+  008fd330 RELOCATION_MATCH CAIStateGroup_MinionReactToPlayerInteraction::?GetName@CAIStateGroup_MinionReactToPlayerInteraction@@SI?AVCCharString@@XZ
+  008fd343 RELOCATION_MATCH CAIStateGroup_MinionReactToCriminal::?GetName@CAIStateGroup_MinionReactToCriminal@@SI?AVCCharString@@XZ
+  008fd40d RELOCATION_MATCH CAIStateGroup_MinionMotherProtectFamily::?GetName@CAIStateGroup_MinionMotherProtectFamily@@SI?AVCCharString@@XZ
+  008fd420 RELOCATION_MATCH CAIStateGroup_MinionKidAnnoy::?GetName@CAIStateGroup_MinionKidAnnoy@@SI?AVCCharString@@XZ
+  008fd433 RELOCATION_MATCH CAIStateGroup_MinionKidGroupTag::?GetName@CAIStateGroup_MinionKidGroupTag@@SI?AVCCharString@@XZ
+  008fd446 RELOCATION_MATCH CAIStateGroup_MinionKidCalledToMother::?GetName@CAIStateGroup_MinionKidCalledToMother@@SI?AVCCharString@@XZ
+  008fd496 RELOCATION_MATCH CAIStateGroup_MinionPutOutFires::?GetName@CAIStateGroup_MinionPutOutFires@@SI?AVCCharString@@XZ
+  008fd4a9 RELOCATION_MATCH CAIStateGroup_MinionWatchFires::?GetName@CAIStateGroup_MinionWatchFires@@SI?AVCCharString@@XZ
+  008fd4d4 RELOCATION_MATCH CAIStateGroup_MinionReactToUnconsciousPerson::?GetName@CAIStateGroup_MinionReactToUnconsciousPerson@@SI?AVCCharString@@XZ
+  008fd4e7 RELOCATION_MATCH CAIStateGroup_MinionReactToEnemy::?GetName@CAIStateGroup_MinionReactToEnemy@@SI?AVCCharString@@XZ
+  008fd4fa RELOCATION_MATCH CAIStateGroup_MinionReactToAlert::?GetName@CAIStateGroup_MinionReactToAlert@@SI?AVCCharString@@XZ
+  008fd557 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeat::?GetName@CAIStateGroup_MinionSitOnSeat@@SI?AVCCharString@@XZ
+  008fd582 RELOCATION_MATCH CAIStateGroup_MinionSitAtWork::?GetName@CAIStateGroup_MinionSitAtWork@@SI?AVCCharString@@XZ
+  008fd595 RELOCATION_MATCH CAIStateGroup_MinionSitAtInn::?GetName@CAIStateGroup_MinionSitAtInn@@SI?AVCCharString@@XZ
+  008fd5a8 RELOCATION_MATCH CAIStateGroup_MinionSitAtSchool::?GetName@CAIStateGroup_MinionSitAtSchool@@SI?AVCCharString@@XZ
+  008fd5bb RELOCATION_MATCH CAIStateGroup_MinionListenToStory::?GetName@CAIStateGroup_MinionListenToStory@@SI?AVCCharString@@XZ
+  008fd5e0 RELOCATION_MATCH CAIStateGroup_MinionSitOutside::?GetName@CAIStateGroup_MinionSitOutside@@SI?AVCCharString@@XZ
+  008fd5f3 RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::?GetName@CAIStateGroup_MinionSitAtHome@@SI?AVCCharString@@XZ
+  008fd689 RELOCATION_MATCH CAIStateGroup_SeekEnemy::?GetName@CAIStateGroup_SeekEnemy@@SI?AVCCharString@@XZ
+  008fd69c RELOCATION_MATCH CAIStateGroup_SeekScriptTarget::?GetName@CAIStateGroup_SeekScriptTarget@@SI?AVCCharString@@XZ
+  008fd6c2 RELOCATION_MATCH CAIStateGroup_NonVillageGuardPatrol::?GetName@CAIStateGroup_NonVillageGuardPatrol@@SI?AVCCharString@@XZ
+  008fdd10 RELOCATION_MATCH CAIStateGroup_MinionHawkingFromStall::?GetName@CAIStateGroup_MinionHawkingFromStall@@SI?AVCCharString@@XZ
+  008fdd4c RELOCATION_MATCH CAIStateGroup_SellToBuyer::?GetName@CAIStateGroup_SellToBuyer@@SI?AVCCharString@@XZ
+  008fdd97 RELOCATION_MATCH CAIStateGroup_RockTroll::?GetName@CAIStateGroup_RockTroll@@SI?AVCCharString@@XZ
+  008fddd0 RELOCATION_MATCH CAIStateGroup_SeekPerceivedThing::?GetName@CAIStateGroup_SeekPerceivedThing@@SI?AVCCharString@@XZ
+  008fde78 RELOCATION_MATCH CAIStateGroup_NymphFloatAround::?GetName@CAIStateGroup_NymphFloatAround@@SI?AVCCharString@@XZ
+  008fde8b RELOCATION_MATCH CAIStateGroup_NymphAttack::?GetName@CAIStateGroup_NymphAttack@@SI?AVCCharString@@XZ
+  008fe036 RELOCATION_MATCH CAIStateGroup_MinionReactToBurglary::?GetName@CAIStateGroup_MinionReactToBurglary@@SI?AVCCharString@@XZ
+  008fe049 RELOCATION_MATCH CAIStateGroup_MinionReactToTrespassing::?GetName@CAIStateGroup_MinionReactToTrespassing@@SI?AVCCharString@@XZ
+  008fe05c RELOCATION_MATCH CAIStateGroup_MinionReactToNoise::?GetName@CAIStateGroup_MinionReactToNoise@@SI?AVCCharString@@XZ
+  008fe081 RELOCATION_MATCH CAIStateGroup_MinionReactToCrime::?GetName@CAIStateGroup_MinionReactToCrime@@SI?AVCCharString@@XZ
+  008fe0a7 RELOCATION_MATCH CAIStateGroup_MinionReactToCrimeFromSleep::?GetName@CAIStateGroup_MinionReactToCrimeFromSleep@@SI?AVCCharString@@XZ
+  008fe0ba RELOCATION_MATCH CAIStateGroup_MinionReactToApology::?GetName@CAIStateGroup_MinionReactToApology@@SI?AVCCharString@@XZ
+  008fe1ef RELOCATION_MATCH CAIStateGroup_MinionLeaveRegion::?GetName@CAIStateGroup_MinionLeaveRegion@@SI?AVCCharString@@XZ
+  008fe214 RELOCATION_MATCH CAIStateGroup_MinionMotherConsoleChild::?GetName@CAIStateGroup_MinionMotherConsoleChild@@SI?AVCCharString@@XZ
+  008fe2c0 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::?GetName@CAIStateGroup_RangedCombatUsePreferredFirePoint@@SI?AVCCharString@@XZ
+  008fe2e6 RELOCATION_MATCH CAIStateGroup_ReactToDeadLeader::?GetName@CAIStateGroup_ReactToDeadLeader@@SI?AVCCharString@@XZ
+  008fe36e RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?GetName@CAIStateGroup_OpinionReactionRoot@@SI?AVCCharString@@XZ
+  008fe451 RELOCATION_MATCH CAIStateGroup_ScorpionKing::?GetName@CAIStateGroup_ScorpionKing@@SI?AVCCharString@@XZ
+  008fe4b0 RELOCATION_MATCH CAIStateGroup_MinionWalkToMarker::?GetName@CAIStateGroup_MinionWalkToMarker@@SI?AVCCharString@@XZ
+  008fe4e8 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::?GetName@CAIStateGroup_RecoverStealableItem@@SI?AVCCharString@@XZ
+  008fe603 RELOCATION_MATCH CAIStateGroup_ServeFoodAtHome::?GetName@CAIStateGroup_ServeFoodAtHome@@SI?AVCCharString@@XZ
+  008fe649 RELOCATION_MATCH CAIStateGroup_ServeFoodAtTavern::?GetName@CAIStateGroup_ServeFoodAtTavern@@SI?AVCCharString@@XZ
+  008fe671 RELOCATION_MATCH CAIStateGroup_ScreamerPursueTarget::?GetName@CAIStateGroup_ScreamerPursueTarget@@SI?AVCCharString@@XZ
+  008fe73d RELOCATION_MATCH CAIStateGroup_OpenAndCloseShop::?GetName@CAIStateGroup_OpenAndCloseShop@@SI?AVCCharString@@XZ
+  008fe78b RELOCATION_MATCH CAIStateGroup_SetupWares::?GetName@CAIStateGroup_SetupWares@@SI?AVCCharString@@XZ
+  008fe8b8 RELOCATION_MATCH CAIStateGroup_OnHeroPush::?GetName@CAIStateGroup_OnHeroPush@@SI?AVCCharString@@XZ

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_KidReactToBlockage::GetName()
 {
-    return CCharString((const char*)0x0128985C, -1);   // "SG_KID_REACT_TO_BLOCKAGE"
+    return CCharString("SG_KID_REACT_TO_BLOCKAGE", -1);   // "SG_KID_REACT_TO_BLOCKAGE"
 }

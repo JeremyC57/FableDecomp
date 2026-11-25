@@ -34,5 +34,5 @@ public:
 
 CCharString CCombatSequence_VillagerAdvance::GetName() const
 {
-    return CCharString((const char*)0x1278c38, -1);
+    return CCharString("COMBAT_SEQUENCE_VILLAGER_ADVANCE", -1);
 }

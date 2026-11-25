@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_Drunk::GetName()
 {
-    return CCharString((const char*)0x0128A994, -1);   // "SG_DRUNK"
+    return CCharString("SG_DRUNK", -1);   // "SG_DRUNK"
 }

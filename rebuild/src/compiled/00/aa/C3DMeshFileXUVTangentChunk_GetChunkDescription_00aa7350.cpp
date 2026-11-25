@@ -12,7 +12,6 @@ private:
 };
 
 // The string literal lives at 0x0129e3ec in the retail image.
-static const char* const kDesc = (const char*)0x0129e3ec;
 
 class C3DMeshFileXUVTangentChunk {
 public:
@@ -21,5 +20,5 @@ public:
 
 const CCharString C3DMeshFileXUVTangentChunk::GetChunkDescription() const
 {
-    return CCharString(kDesc, -1);
+    return CCharString("UV Tangent Vectors", -1);
 }

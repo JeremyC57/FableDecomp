@@ -10,12 +10,11 @@ class CCharString { public:
 };
 
 // The literal at 0x129e4a0
-static const char* const s_desc = (const char*)0x129e4a0;
 
 struct CChunkedFileChunk_Methods : CChunkedFileChunk {
     CCharString GetChunkDescription() const;
 };
 
 CCharString CChunkedFileChunk_Methods::GetChunkDescription() const {
-    return CCharString(s_desc, -1);
+    return CCharString("Unknown chunk type", -1);
 }

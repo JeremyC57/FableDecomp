@@ -20,7 +20,7 @@ struct ObjB { void Apply(SVec2* p); };
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, SVec2* out)
 {
     SVec2 tmp;
-    Marker((const char*)0x122d70e);
+    Marker("");
     switch (self->mode) {
     case 2: {
         int* r = ((ObjA*)self->objA)->Fetch(&tmp);

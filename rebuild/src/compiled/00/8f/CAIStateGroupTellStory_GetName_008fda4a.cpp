@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_TellStory::GetName()
 {
-    return CCharString((const char*)0x012898C8, -1);   // "SG_TELL_STORY"
+    return CCharString("SG_TELL_STORY", -1);   // "SG_TELL_STORY"
 }

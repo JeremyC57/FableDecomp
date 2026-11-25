@@ -15,5 +15,5 @@ struct CActionTalkedTo {
 
 CCharString NTCScriptedControl::CActionTalkedTo::GetActionName()
 {
-    return CCharString((const char*)0x1265824, -1);
+    return CCharString("CActionTalkedTo", -1);
 }

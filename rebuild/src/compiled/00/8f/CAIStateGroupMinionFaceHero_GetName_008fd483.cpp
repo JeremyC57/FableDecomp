@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionFaceHero::GetName()
 {
-    return CCharString((const char*)0x01288F94, -1);   // "SG_MINION_FACE_HERO_READY_FOR_INTERACTION"
+    return CCharString("SG_MINION_FACE_HERO_READY_FOR_INTERACTION", -1);   // "SG_MINION_FACE_HERO_READY_FOR_INTERACTION"
 }

@@ -6,4 +6,4 @@
 #include "engine/CCombatSequenceWhisperLunge.h"
 
 class CCharString { public: char* m_data; CCharString(); CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
-CCharString CCombatSequenceWhisperLunge::GetName() const { return CCharString((const char*)0x1278ce0, -1); }
+CCharString CCombatSequenceWhisperLunge::GetName() const { return CCharString("COMBAT_SEQUENCE_WHISPER_LUNGE", -1); }

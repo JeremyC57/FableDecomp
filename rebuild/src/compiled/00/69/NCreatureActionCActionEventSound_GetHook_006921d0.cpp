@@ -16,5 +16,5 @@ struct CActionEventSound {
 // ptr on stack, ret 4. this is unused.
 CCharString NCreatureAction::CActionEventSound::GetHook()
 {
-    return CCharString((const char*)0x125c130, -1);
+    return CCharString("SOUND", -1);
 }

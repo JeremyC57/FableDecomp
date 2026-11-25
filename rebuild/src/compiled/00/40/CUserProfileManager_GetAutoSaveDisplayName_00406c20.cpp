@@ -34,8 +34,6 @@ using NGameText::CDataBank;
 #include "engine/CMainGameComponent.h"
 #include "engine/CNewFrontendGameComponent.h"
 
-static const char* const LIT_AB = (const char*)0x122dfbc;
-static const unsigned short* const LIT_FACTORY = (const unsigned short*)0x122de9c;
 
 class CUserProfileManager
 { public:
@@ -46,13 +44,13 @@ CWideString CUserProfileManager::GetAutoSaveDisplayName() const
 {
     CMainGameComponent* a = CMainGameComponent::Get();
     if (a) {
-        CCharString fmt(LIT_AB, -1);
+        CCharString fmt("TEXT_GUI_SAVE_AUTO_SAVE_NAME", -1);
         return a->GetTextBank().GetTextBySymbol(fmt);
     }
     CNewFrontendGameComponent* b = CNewFrontendGameComponent::Get();
     if (b) {
-        CCharString fmt(LIT_AB, -1);
+        CCharString fmt("TEXT_GUI_SAVE_AUTO_SAVE_NAME", -1);
         return b->GetTextBank().GetTextBySymbol(fmt);
     }
-    return CWideString(LIT_FACTORY);
+    return CWideString((const unsigned short*)L"AutoSave");
 }

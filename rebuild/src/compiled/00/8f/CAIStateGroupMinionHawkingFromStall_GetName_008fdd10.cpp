@@ -21,5 +21,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionHawkingFromStall::GetName()
 {
-    return CCharString((const char*)0x01289C44, -1);   // "SG_MINION_HAWKING_FROM_STALL"
+    return CCharString("SG_MINION_HAWKING_FROM_STALL", -1);   // "SG_MINION_HAWKING_FROM_STALL"
 }

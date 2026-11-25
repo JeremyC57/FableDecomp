@@ -6,4 +6,4 @@
 #include "engine/CCombatSequenceUnblockableFacing.h"
 
 class CCharString { public: char* m_data; CCharString(); CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
-CCharString CCombatSequenceUnblockableFacing::GetName() const { return CCharString((const char*)0x1278e90, -1); }
+CCharString CCombatSequenceUnblockableFacing::GetName() const { return CCharString("COMBAT_SEQUENCE_UNBLOCKABLE_FACING", -1); }

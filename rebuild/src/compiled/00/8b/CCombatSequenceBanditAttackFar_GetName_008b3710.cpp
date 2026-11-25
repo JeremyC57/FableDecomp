@@ -22,5 +22,5 @@ public:
 
 CCharString CCombatSequence_BanditAttackFar::GetName() const
 {
-	return CCharString((const char*)0x0127876c, -1);
+	return CCharString("COMBAT_SEQUENCE_BANDIT_ATTACK_LONG", -1);
 }

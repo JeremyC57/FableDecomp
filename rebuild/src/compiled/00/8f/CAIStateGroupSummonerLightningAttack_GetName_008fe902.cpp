@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SummonerLightningAttack::GetName()
 {
-    return CCharString((const char*)0x0128AFF8, -1);   // "SG_SUMMONER_LIGHTNING_ATTACK"
+    return CCharString("SG_SUMMONER_LIGHTNING_ATTACK", -1);   // "SG_SUMMONER_LIGHTNING_ATTACK"
 }

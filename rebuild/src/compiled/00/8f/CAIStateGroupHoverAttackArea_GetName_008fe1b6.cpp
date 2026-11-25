@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverAttackArea::GetName()
 {
-    return CCharString((const char*)0x0128A310, -1);   // "SG_HOVER_ATTACK_AREA"
+    return CCharString("SG_HOVER_ATTACK_AREA", -1);   // "SG_HOVER_ATTACK_AREA"
 }

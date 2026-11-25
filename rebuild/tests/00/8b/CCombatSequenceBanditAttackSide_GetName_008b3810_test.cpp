@@ -7,6 +7,15 @@
 #include <stdio.h>
 #include <string.h>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* m_data;
     CCharString(const char* s, long n);
@@ -27,7 +36,7 @@ int main()
     memset(storage, 0, sizeof(storage));
     const CCombatSequence_BanditAttackSide* obj = (const CCombatSequence_BanditAttackSide*)storage;
     CCharString out = obj->CCombatSequence_BanditAttackSide::GetName();
-    int ok = g_last_s == (const char*)0x012787b8 && g_last_n == -1 && out.m_data == (char*)0x012787b8;
+    int ok = RetailTextEquals(g_last_s, "COMBAT_SEQUENCE_BANDIT_ATTACK_SIDE") && g_last_n == -1 && RetailTextEquals(out.m_data, "COMBAT_SEQUENCE_BANDIT_ATTACK_SIDE");
     if (ok) printf("GETNAME_BANDITATTACKSIDE_OK\n");
     else printf("FAIL s=%p n=%ld self=%p\n", g_last_s, g_last_n, g_last_self);
     return ok ? 0 : 1;

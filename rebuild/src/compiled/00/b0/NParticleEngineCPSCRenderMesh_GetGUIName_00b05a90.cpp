@@ -22,5 +22,5 @@ class CPSCRenderMesh { public:
 }
 
 CCharString NParticleEngine::CPSCRenderMesh::GetGUIName() {
-    return CCharString((const char*)0x129f534, -1);
+    return CCharString("Mesh Renderer", -1);
 }

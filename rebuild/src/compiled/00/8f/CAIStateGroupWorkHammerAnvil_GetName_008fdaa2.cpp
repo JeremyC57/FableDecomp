@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WorkHammerAnvil::GetName()
 {
-    return CCharString((const char*)0x01289940, -1);   // "SG_WORK_HAMMER_ANVIL"
+    return CCharString("SG_WORK_HAMMER_ANVIL", -1);   // "SG_WORK_HAMMER_ANVIL"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ShopkeeperWatchPlayer::GetName()
 {
-    return CCharString((const char*)0x0128ACD4, -1);   // "SG_SHOPKEEPER_WATCH_PLAYER"
+    return CCharString("SG_SHOPKEEPER_WATCH_PLAYER", -1);   // "SG_SHOPKEEPER_WATCH_PLAYER"
 }

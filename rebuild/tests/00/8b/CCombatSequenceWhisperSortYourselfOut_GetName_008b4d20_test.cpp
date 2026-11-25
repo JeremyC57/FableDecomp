@@ -1,6 +1,15 @@
 #include <cstdio>
 #include <cstring>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 // Mirror the source's declared types.
 class CCharString
 { public:
@@ -28,7 +37,7 @@ struct CCombatSequenceWhisperSortYourselfOut
 
 CCharString CCombatSequenceWhisperSortYourselfOut::GetName() const
 {
-    return CCharString((const char*)0x1278de4, -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_SORT_YOURSELF_OUT", -1);
 }
 
 int main()
@@ -37,9 +46,9 @@ int main()
     obj.vfptr = 0;
     CCharString r = obj.GetName();
 
-    bool ok = (g_lastPtr == (const char*)0x1278de4)
+    bool ok = (RetailTextEquals(g_lastPtr, "COMBAT_SEQUENCE_WHISPER_SORT_YOURSELF_OUT"))
            && (g_lastLen == -1)
-           && (r.buf == (void*)0x1278de4);
+           && (RetailTextEquals(r.buf, "COMBAT_SEQUENCE_WHISPER_SORT_YOURSELF_OUT"));
 
     if (ok)
         printf("WHISPER_GETNAME_OK\n");

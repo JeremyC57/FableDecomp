@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverHornetQueen::GetName()
 {
-    return CCharString((const char*)0x0128A34C, -1);   // "SG_HOVER_HORNET_QUEEN"
+    return CCharString("SG_HOVER_HORNET_QUEEN", -1);   // "SG_HOVER_HORNET_QUEEN"
 }

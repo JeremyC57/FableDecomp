@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionFindPersonalSpace::GetName()
 {
-    return CCharString((const char*)0x01288D00, -1);   // "SG_MINION_FIND_PERSONAL_SPACE"
+    return CCharString("SG_MINION_FIND_PERSONAL_SPACE", -1);   // "SG_MINION_FIND_PERSONAL_SPACE"
 }

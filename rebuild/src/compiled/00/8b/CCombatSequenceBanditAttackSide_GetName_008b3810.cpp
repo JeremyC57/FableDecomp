@@ -13,5 +13,5 @@ class CCharString { public:
 
 CCharString CCombatSequence_BanditAttackSide::GetName() const
 {
-    return CCharString((const char*)0x012787b8, -1);
+    return CCharString("COMBAT_SEQUENCE_BANDIT_ATTACK_SIDE", -1);
 }

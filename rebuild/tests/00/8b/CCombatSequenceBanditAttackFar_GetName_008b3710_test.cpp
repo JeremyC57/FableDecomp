@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString
 {
 public:
@@ -33,8 +42,8 @@ int main()
 	CCharString r = obj.GetName();
 
 	if (g_capturedLen == -1 &&
-		g_capturedPtr == (const char*)0x0127876c &&
-		r.m_data == (char*)0x0127876c)
+		RetailTextEquals(g_capturedPtr, "COMBAT_SEQUENCE_BANDIT_ATTACK_LONG") &&
+		RetailTextEquals(r.m_data, "COMBAT_SEQUENCE_BANDIT_ATTACK_LONG"))
 	{
 		printf("GETNAME_BANDITFAR_OK\n");
 		return 0;

@@ -6,4 +6,4 @@
 #include "engine/CCombatSequenceWhisperBoast.h"
 
 class CCharString { public: char* m_pData; int m_nLength; CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
-CCharString CCombatSequenceWhisperBoast::GetName() const { return CCharString(reinterpret_cast<const char*>(0x1278dc4), -1); }
+CCharString CCombatSequenceWhisperBoast::GetName() const { return CCharString("COMBAT_SEQUENCE_WHISPER_BOAST", -1); }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ScreamerPursueTarget::GetName()
 {
-    return CCharString((const char*)0x0128AAC0, -1);   // "SG_SCREAMER_PURSUE_TARGET"
+    return CCharString("SG_SCREAMER_PURSUE_TARGET", -1);   // "SG_SCREAMER_PURSUE_TARGET"
 }

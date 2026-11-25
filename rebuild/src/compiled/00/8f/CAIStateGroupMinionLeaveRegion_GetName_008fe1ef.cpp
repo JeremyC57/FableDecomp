@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionLeaveRegion::GetName()
 {
-    return CCharString((const char*)0x0128A364, -1);   // "SG_MINION_LEAVE_REGION"
+    return CCharString("SG_MINION_LEAVE_REGION", -1);   // "SG_MINION_LEAVE_REGION"
 }

@@ -22,5 +22,5 @@ struct CActionEventTriggerParticle {
 
 CCharString NCreatureAction::CActionEventTriggerParticle::GetHook()
 {
-    return CCharString((const char*)0x125c0ec, -1);
+    return CCharString("PARTICLE", -1);
 }

@@ -13,5 +13,5 @@ public:
 };
 
 CCharString CCombatSequence_TrollBurrowPursueNoZone::GetName() const {
-    return CCharString((const char*)0x1278ac0, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_BURROW_PURSUE_NO_ZONE", -1);
 }

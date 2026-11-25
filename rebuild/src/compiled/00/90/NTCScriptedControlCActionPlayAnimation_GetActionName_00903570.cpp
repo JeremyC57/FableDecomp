@@ -18,5 +18,5 @@ struct CActionPlayAnimation {
 
 CCharString NTCScriptedControl::CActionPlayAnimation::GetActionName()
 {
-    return CCharString((const char*)0x128d70c, -1);
+    return CCharString("CActionPlayAnimation", -1);
 }

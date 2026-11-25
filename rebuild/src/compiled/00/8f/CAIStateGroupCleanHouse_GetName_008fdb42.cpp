@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CleanHouse::GetName()
 {
-    return CCharString((const char*)0x01289A88, -1);   // "SG_CLEAN_HOUSE"
+    return CCharString("SG_CLEAN_HOUSE", -1);   // "SG_CLEAN_HOUSE"
 }

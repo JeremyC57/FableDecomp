@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionSleep::GetName()
 {
-    return CCharString((const char*)0x0127814C, -1);   // "SG_MINION_SLEEP"
+    return CCharString("SG_MINION_SLEEP", -1);   // "SG_MINION_SLEEP"
 }

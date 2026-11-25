@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionGossip::GetName()
 {
-    return CCharString((const char*)0x01288E1C, -1);   // "SG_MINION_GOSSIP"
+    return CCharString("SG_MINION_GOSSIP", -1);   // "SG_MINION_GOSSIP"
 }

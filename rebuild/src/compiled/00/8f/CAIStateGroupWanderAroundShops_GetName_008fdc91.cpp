@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WanderAroundShops::GetName()
 {
-    return CCharString((const char*)0x01289BF4, -1);   // "SG_WANDER_AROUND_SHOPS"
+    return CCharString("SG_WANDER_AROUND_SHOPS", -1);   // "SG_WANDER_AROUND_SHOPS"
 }

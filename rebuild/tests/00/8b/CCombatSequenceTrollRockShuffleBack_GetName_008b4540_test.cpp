@@ -18,7 +18,7 @@ public:
     virtual CCharString GetName() const;
 };
 
-static const char* g_testLit = "TrollRockShuffleBack";
+static const char* g_testLit = "COMBAT_SEQUENCE_TROLL_ROCK_SHUFFLE_BACK";
 
 CCharString CCombatSequence_TrollRockShuffleBack::GetName() const
 {
@@ -28,7 +28,7 @@ CCharString CCombatSequence_TrollRockShuffleBack::GetName() const
 int main() {
     CCombatSequence_TrollRockShuffleBack obj;
     CCharString r = obj.GetName();
-    if (strcmp(r.m_data, "TrollRockShuffleBack") == 0) {
+    if (strcmp(r.m_data, "COMBAT_SEQUENCE_TROLL_ROCK_SHUFFLE_BACK") == 0) {
         printf("GETNAME_PASS\n");
         return 0;
     }

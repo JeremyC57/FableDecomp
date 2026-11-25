@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverHornetQueenTakeDamage::GetName()
 {
-    return CCharString((const char*)0x0128A328, -1);   // "SG_HOVER_HORNET_QUEEN_TAKE_DAMAGE"
+    return CCharString("SG_HOVER_HORNET_QUEEN_TAKE_DAMAGE", -1);   // "SG_HOVER_HORNET_QUEEN_TAKE_DAMAGE"
 }

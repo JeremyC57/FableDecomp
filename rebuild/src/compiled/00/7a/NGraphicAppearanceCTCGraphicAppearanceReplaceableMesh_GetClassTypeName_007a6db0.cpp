@@ -14,9 +14,8 @@ public:
 };
 
 // literal string pointer baked in at 0x123c49c
-static const char* const kName = (const char* const)0x0123c49c;
 
 CCharString CTCGraphicAppearanceReplaceableMesh::GetClassTypeName()
 {
-    return CCharString(kName, -1);
+    return CCharString("CTCGraphicAppearanceReplaceableMesh", -1);
 }

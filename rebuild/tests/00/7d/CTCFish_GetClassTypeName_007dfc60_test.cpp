@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 // Standalone behaviour test. We provide a local CCharString whose ctor
 // records the string pointer and length it was called with, then verify
 // GetActionName forwards the fixed literal + (-1).
@@ -20,14 +29,14 @@ public:
 
 CCharString CTCFish::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123d7b0, -1);
+    return CCharString("CTCFish", -1);
 }
 
 int main()
 {
     CTCFish a;
     CCharString r = a.GetClassTypeName();
-    if (g_lastStr == (const char*)0x0123d7b0 && g_lastLen == -1 && r.p == (void*)0x0123d7b0)
+    if (RetailTextEquals(g_lastStr, "CTCFish") && g_lastLen == -1 && RetailTextEquals(r.p, "CTCFish"))
         printf("OK str=%p len=%d\n", g_lastStr, g_lastLen);
     else
         printf("FAIL\n");

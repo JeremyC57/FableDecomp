@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BanditPlayDice::GetName()
 {
-    return CCharString((const char*)0x0128AD3C, -1);   // "SG_BANDIT_PLAY_DICE"
+    return CCharString("SG_BANDIT_PLAY_DICE", -1);   // "SG_BANDIT_PLAY_DICE"
 }

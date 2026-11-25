@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005c1390   RELOCATION_MATCH PASS   ScalarDeletingDtor_005c1390
+
+WINS: 1
+  005c1390 RELOCATION_MATCH _global::??_GCItem@NInventory@@QAEPAXI@Z

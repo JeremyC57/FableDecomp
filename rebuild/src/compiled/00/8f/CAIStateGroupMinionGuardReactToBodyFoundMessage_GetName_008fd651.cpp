@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionGuardReactToBodyFoundMessage::GetName()
 {
-    return CCharString((const char*)0x01289288, -1);   // "SG_MINION_GUARD_REACT_TO_BODY_FOUND_MESSAGE"
+    return CCharString("SG_MINION_GUARD_REACT_TO_BODY_FOUND_MESSAGE", -1);   // "SG_MINION_GUARD_REACT_TO_BODY_FOUND_MESSAGE"
 }

@@ -16,5 +16,5 @@ public:
 
 CCharString CTCFish::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123d7b0, -1);
+    return CCharString("CTCFish", -1);
 }

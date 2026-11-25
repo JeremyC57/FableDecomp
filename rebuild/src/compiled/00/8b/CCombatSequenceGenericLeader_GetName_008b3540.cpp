@@ -16,5 +16,5 @@ class CCharString { public:
 
 CCharString CCombatSequence_GenericLeader::GetName() const
 {
-    return CCharString((const char*)0x12786d4, -1);
+    return CCharString("COMBAT_SEQUENCE_GENERIC_LEADER", -1);
 }

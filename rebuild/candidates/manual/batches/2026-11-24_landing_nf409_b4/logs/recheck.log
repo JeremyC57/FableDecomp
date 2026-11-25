@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00656ead   RELOCATION_MATCH PASS   ScalarDeletingDtor_00656ead
+
+WINS: 1
+  00656ead RELOCATION_MATCH _global::??_GCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@QAEPAXI@Z

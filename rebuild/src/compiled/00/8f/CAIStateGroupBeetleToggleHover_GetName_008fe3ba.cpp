@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BeetleToggleHover::GetName()
 {
-    return CCharString((const char*)0x0128A6D0, -1);   // "SG_BEETLE_TOGGLE_HOVER"
+    return CCharString("SG_BEETLE_TOGGLE_HOVER", -1);   // "SG_BEETLE_TOGGLE_HOVER"
 }

@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WifeGiveYouGift::GetName()
 {
-    return CCharString((const char*)0x0128AC2C, -1);   // "SG_WIFE_GIVE_YOU_GIFT"
+    return CCharString("SG_WIFE_GIVE_YOU_GIFT", -1);   // "SG_WIFE_GIVE_YOU_GIFT"
 }

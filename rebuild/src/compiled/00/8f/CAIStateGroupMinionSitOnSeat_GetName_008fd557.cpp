@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionSitOnSeat::GetName()
 {
-    return CCharString((const char*)0x01289100, -1);   // "SG_MINION_SIT_ON_SEAT"
+    return CCharString("SG_MINION_SIT_ON_SEAT", -1);   // "SG_MINION_SIT_ON_SEAT"
 }

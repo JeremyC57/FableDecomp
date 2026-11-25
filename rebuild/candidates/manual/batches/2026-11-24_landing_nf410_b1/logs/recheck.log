@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00406a80   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00406a80   RELOCATION_MATCH PASS   GetEmptySlotName
+00406c20   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+00406c20   RELOCATION_MATCH PASS   GetAutoSaveDisplayName
+004568bc   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager (engine/CEngineLightingManager.h)
+004568bc   WARN RELOC_NAME: ?Marker@@YGXPBD@Z -> 00404500 labelled 'CPersistContext::CheckCRC'
+004568bc   WARN RELOC_NAME: ?Apply@ObjB@@QAEXPAUSVec2@@@Z -> 00993f90 labelled 'CDataOutputStream::Write2DVector'
+004568bc   WARN RELOC_NAME: ?Fetch@ObjA@@QAEPAHPAUSVec2@@@Z -> 00995030 labelled 'CDataInputStream::Read2DVector'
+004568bc   RELOCATION_MATCH PASS   PersistTransfer_004568bc
+006921d0   RELOCATION_MATCH PASS   GetHook
+006922a0   RELOCATION_MATCH PASS   GetHook
+006926f0   RELOCATION_MATCH PASS   GetStrikeEventHelperName
+007a6db0   RELOCATION_MATCH PASS   GetClassTypeName
+007bad60   WARN SHARED_HEADER_AVAILABLE CTCTrespassable (engine/CTCTrespassable.h)
+007bad60   RELOCATION_MATCH PASS   GetClassTypeName
+008fe381   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_DeedReactionRoot (engine/CAIStateGroup_DeedReactionRoot.h)
+008fe381   RELOCATION_MATCH PASS   GetName
+00aa49d0   WARN RELOC_NAME: ?ctor_99ebf0@CCharString@@QAEPAV1@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+00aa49d0   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 10
+  00406a80 RELOCATION_MATCH CUserProfileManager::?GetEmptySlotName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  00406c20 RELOCATION_MATCH CUserProfileManager::?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ
+  004568bc RELOCATION_MATCH _global::UpdateShadowScene
+  006921d0 RELOCATION_MATCH NCreatureAction::CActionEventSound::?GetHook@CActionEventSound@NCreatureAction@@
+  006922a0 RELOCATION_MATCH NCreatureAction::CActionEventAddObject::?GetHook@CActionEventAddObject@NCreatureAction@@UBE?AVCCharString@@XZ
+  006926f0 RELOCATION_MATCH CCreatureActionBase::?GetStrikeEventHelperName@CCreatureActionBase@@UBE?AVCCharString@@XZ
+  007a6db0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::GetClassTypeName
+  007bad60 RELOCATION_MATCH CTCTrespassable::GetClassTypeName
+  008fe381 RELOCATION_MATCH CAIStateGroup_DeedReactionRoot::?GetName@CAIStateGroup_DeedReactionRoot@@SI?AVCCharString@@XZ
+  00aa49d0 RELOCATION_MATCH C3DAnimFileXSequenceChunk::@C3DAnimFileXSequenceChunk_GetChunkDescription@12

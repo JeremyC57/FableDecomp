@@ -9,7 +9,6 @@ class CCharString { public:
     CCharString(const char* s, long len);
 };
 
-static const char* const kActionNameLit = (const char*)0x0123d4b0;
 
 struct CTCTavernGameShoveHaPenny {
     CCharString GetClassTypeName();
@@ -17,5 +16,5 @@ struct CTCTavernGameShoveHaPenny {
 
 CCharString CTCTavernGameShoveHaPenny::GetClassTypeName()
 {
-    return CCharString(kActionNameLit, -1);
+    return CCharString("CTCTavernGameShoveHaPenny", -1);
 }

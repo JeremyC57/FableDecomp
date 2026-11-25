@@ -11,5 +11,5 @@ class CTCDiscovery { public:
 };
 
 CCharString CTCDiscovery::GetClassTypeName() {
-    return CCharString((const char*)0x123ad54, -1);
+    return CCharString("CTCDiscovery", -1);
 }

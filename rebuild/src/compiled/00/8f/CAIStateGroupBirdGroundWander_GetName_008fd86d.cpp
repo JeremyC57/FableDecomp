@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BirdGroundWander::GetName()
 {
-    return CCharString((const char*)0x01289654, -1);   // "SG_BIRD_GROUND_WANDER"
+    return CCharString("SG_BIRD_GROUND_WANDER", -1);   // "SG_BIRD_GROUND_WANDER"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionPutOutFires::GetName()
 {
-    return CCharString((const char*)0x01288FC0, -1);   // "SG_MINION_PUT_OUT_FIRES"
+    return CCharString("SG_MINION_PUT_OUT_FIRES", -1);   // "SG_MINION_PUT_OUT_FIRES"
 }

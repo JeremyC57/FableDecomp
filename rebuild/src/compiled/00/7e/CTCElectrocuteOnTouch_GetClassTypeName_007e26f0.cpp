@@ -16,5 +16,5 @@ public:
 
 CCharString CTCElectrocuteOnTouch::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123dd48, -1);
+    return CCharString("CTCElectrocuteOnTouch", -1);
 }

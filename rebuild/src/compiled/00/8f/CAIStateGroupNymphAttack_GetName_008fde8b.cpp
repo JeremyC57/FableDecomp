@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_NymphAttack::GetName()
 {
-    return CCharString((const char*)0x01289E64, -1);   // "SG_NYMPH_ATTACK"
+    return CCharString("SG_NYMPH_ATTACK", -1);   // "SG_NYMPH_ATTACK"
 }

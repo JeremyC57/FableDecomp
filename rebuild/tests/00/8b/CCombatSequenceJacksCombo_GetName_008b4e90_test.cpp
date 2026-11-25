@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 // ---- reproduce the source under test (self-contained) ----
 class CCharString
 {
@@ -28,7 +37,7 @@ public:
 
 CCharString CCombatSequenceJacksCombo::GetName() const
 {
-    return CCharString((const char*)0x1278e58, -1);
+    return CCharString("COMBAT_SEQUENCE_JACKS_COMBO", -1);
 }
 
 int main()
@@ -37,9 +46,9 @@ int main()
     CCharString s = obj.GetName();
 
     bool ok = true;
-    if (g_lastStr != (const char*)0x1278e58) ok = false;
+    if (!RetailTextEquals(g_lastStr, "COMBAT_SEQUENCE_JACKS_COMBO")) ok = false;
     if (g_lastLen != -1) ok = false;
-    if (s.data() != (const char*)0x1278e58) ok = false;
+    if (!RetailTextEquals(s.data(), "COMBAT_SEQUENCE_JACKS_COMBO")) ok = false;
 
     if (ok)
         printf("GETNAME_JACKSCOMBO_OK\n");

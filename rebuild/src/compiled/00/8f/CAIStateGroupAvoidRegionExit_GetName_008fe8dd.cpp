@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_AvoidRegionExit::GetName()
 {
-    return CCharString((const char*)0x0128AFA4, -1);   // "SG_AVOID_REGION_EXIT"
+    return CCharString("SG_AVOID_REGION_EXIT", -1);   // "SG_AVOID_REGION_EXIT"
 }

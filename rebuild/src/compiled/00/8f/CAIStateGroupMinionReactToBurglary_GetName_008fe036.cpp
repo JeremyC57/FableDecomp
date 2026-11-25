@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToBurglary::GetName()
 {
-    return CCharString((const char*)0x0128A0A8, -1);   // "SG_MINION_REACT_TO_BURGLARY"
+    return CCharString("SG_MINION_REACT_TO_BURGLARY", -1);   // "SG_MINION_REACT_TO_BURGLARY"
 }

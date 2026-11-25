@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionMotherProtectFamily::GetName()
 {
-    return CCharString((const char*)0x01288ED8, -1);   // "SG_MINION_MOTHER_PROTECT_FAMILY"
+    return CCharString("SG_MINION_MOTHER_PROTECT_FAMILY", -1);   // "SG_MINION_MOTHER_PROTECT_FAMILY"
 }

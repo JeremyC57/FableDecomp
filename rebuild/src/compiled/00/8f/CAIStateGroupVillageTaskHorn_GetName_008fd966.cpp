@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_VillageTaskHorn::GetName()
 {
-    return CCharString((const char*)0x01289764, -1);   // "SG_VILLAGE_TASK_HORN"
+    return CCharString("SG_VILLAGE_TASK_HORN", -1);   // "SG_VILLAGE_TASK_HORN"
 }

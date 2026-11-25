@@ -15,5 +15,5 @@ public:
 
 CCharString CTCActionUseBuyOrSteal::GetClassTypeName()
 {
-    return CCharString((const char*)0x123a154, -1);
+    return CCharString("CTCActionUseBuyOrSteal", -1);
 }

@@ -19,5 +19,5 @@ public:
 
 CCharString NTCScriptedControl::CActionMoveTo::GetActionName()
 {
-    return CCharString((const char*)0x01270934, -1);
+    return CCharString("CActionMoveTo", -1);
 }

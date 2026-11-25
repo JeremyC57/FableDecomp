@@ -18,5 +18,5 @@ public:
 
 CCharString CEngineComponent::GetConsoleEnableFunctionName()
 {
-    return CCharString((const char*)0x122d70e, -1);
+    return CCharString("", -1);
 }

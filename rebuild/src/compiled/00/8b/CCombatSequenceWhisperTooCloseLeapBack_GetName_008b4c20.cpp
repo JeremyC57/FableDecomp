@@ -13,5 +13,5 @@ class CCharString { public:
 
 CCharString CCombatSequenceWhisperTooCloseLeapBack::GetName() const
 {
-    return CCharString((const char*)0x1278d98, -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_TOO_CLOSE_LEAP_BACK", -1);
 }

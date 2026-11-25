@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SleepOnFloor::GetName()
 {
-    return CCharString((const char*)0x0128A8FC, -1);   // "SG_SLEEP_ON_FLOOR"
+    return CCharString("SG_SLEEP_ON_FLOOR", -1);   // "SG_SLEEP_ON_FLOOR"
 }

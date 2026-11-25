@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SeekScriptTarget::GetName()
 {
-    return CCharString((const char*)0x01289310, -1);   // "SG_SEEK_SCRIPT_TARGET"
+    return CCharString("SG_SEEK_SCRIPT_TARGET", -1);   // "SG_SEEK_SCRIPT_TARGET"
 }

@@ -14,7 +14,7 @@ public:
     int m_len;
 };
 
-static const char* const s_name = "CombatSequence_BattleCharge";
+static const char* const s_name = "COMBAT_SEQUENCE_BATTLE_CHARGE";
 
 struct CCombatSequence_BattleCharge {
     void* vtbl;
@@ -31,8 +31,8 @@ int main() {
     obj.vtbl = 0;
     char buf[sizeof(CCharString)];
     CCharString* r = obj.GetName_CCombatSequence_BattleCharge((CCharString*)buf);
-    if (r == (CCharString*)buf && strcmp(r->m_data, "CombatSequence_BattleCharge") == 0
-        && r->m_len == 27) {
+    if (r == (CCharString*)buf && strcmp(r->m_data, "COMBAT_SEQUENCE_BATTLE_CHARGE") == 0
+        && r->m_len == 29) {
         printf("GETNAME_BATTLECHARGE_OK\n");
         return 0;
     }

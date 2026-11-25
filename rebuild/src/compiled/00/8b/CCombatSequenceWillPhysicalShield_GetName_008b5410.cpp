@@ -6,4 +6,4 @@
 #include "engine/CCombatSequence_WillPhysicalShield.h"
 
 class CCharString { public: char* m_data; CCharString(); CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
-CCharString CCombatSequence_WillPhysicalShield::GetName() const { return CCharString((const char*)0x1278f90, -1); }
+CCharString CCombatSequence_WillPhysicalShield::GetName() const { return CCharString("COMBAT_SEQUENCE_WILL_PHYSICAL_SHIELD", -1); }

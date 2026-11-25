@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ChickenBeg::GetName()
 {
-    return CCharString((const char*)0x01289500, -1);   // "SG_CHICKEN_BEG"
+    return CCharString("SG_CHICKEN_BEG", -1);   // "SG_CHICKEN_BEG"
 }

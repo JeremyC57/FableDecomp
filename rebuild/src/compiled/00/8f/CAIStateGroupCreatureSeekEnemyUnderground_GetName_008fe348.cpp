@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureSeekEnemyUnderground::GetName()
 {
-    return CCharString((const char*)0x0128A66C, -1);   // "SG_CREATURE_SEEK_ENEMY_UNDERGROUND"
+    return CCharString("SG_CREATURE_SEEK_ENEMY_UNDERGROUND", -1);   // "SG_CREATURE_SEEK_ENEMY_UNDERGROUND"
 }

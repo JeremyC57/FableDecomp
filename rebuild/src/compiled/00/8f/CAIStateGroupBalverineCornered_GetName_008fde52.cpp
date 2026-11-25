@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BalverineCornered::GetName()
 {
-    return CCharString((const char*)0x01289E10, -1);   // "SG_BALVERINE_CORNERED"
+    return CCharString("SG_BALVERINE_CORNERED", -1);   // "SG_BALVERINE_CORNERED"
 }

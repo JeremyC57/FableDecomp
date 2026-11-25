@@ -17,5 +17,5 @@ class CCharString
 
 CCharString CCombatSequenceWhisperSortYourselfOut::GetName() const
 {
-    return CCharString((const char*)0x1278de4, -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_SORT_YOURSELF_OUT", -1);
 }

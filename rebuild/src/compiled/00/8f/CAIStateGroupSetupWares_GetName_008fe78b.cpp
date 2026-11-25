@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SetupWares::GetName()
 {
-    return CCharString((const char*)0x0128ACF0, -1);   // "SG_SETUP_WARES"
+    return CCharString("SG_SETUP_WARES", -1);   // "SG_SETUP_WARES"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_KidWatchHopscotch::GetName()
 {
-    return CCharString((const char*)0x012897D0, -1);   // "SG_KID_WATCH_HOPSCOTCH"
+    return CCharString("SG_KID_WATCH_HOPSCOTCH", -1);   // "SG_KID_WATCH_HOPSCOTCH"
 }

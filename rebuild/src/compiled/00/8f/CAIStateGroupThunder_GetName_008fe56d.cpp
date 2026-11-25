@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_Thunder::GetName()
 {
-    return CCharString((const char*)0x0128A940, -1);   // "SG_THUNDER"
+    return CCharString("SG_THUNDER", -1);   // "SG_THUNDER"
 }

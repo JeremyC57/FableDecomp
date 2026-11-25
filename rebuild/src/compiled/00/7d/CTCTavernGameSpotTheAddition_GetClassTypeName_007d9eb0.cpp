@@ -14,5 +14,5 @@ public:
 };
 
 CCharString CTCTavernGameSpotTheAddition::GetClassTypeName() {
-    return CCharString((const char*)0x123d584, -1);
+    return CCharString("CTCTavernGameSpotTheAddition", -1);
 }

@@ -27,5 +27,5 @@ public:
 
 CCharString CCombatSequenceJacksCombo::GetName() const
 {
-    return CCharString((const char*)0x1278e58, -1);
+    return CCharString("COMBAT_SEQUENCE_JACKS_COMBO", -1);
 }

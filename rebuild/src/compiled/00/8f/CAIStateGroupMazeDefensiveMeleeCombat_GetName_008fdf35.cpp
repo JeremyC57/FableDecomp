@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MazeDefensiveMeleeCombat::GetName()
 {
-    return CCharString((const char*)0x01289F40, -1);   // "SG_MAZE_DEFENSIVE_MELEE_COMBAT"
+    return CCharString("SG_MAZE_DEFENSIVE_MELEE_COMBAT", -1);   // "SG_MAZE_DEFENSIVE_MELEE_COMBAT"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WanderAroundInitialPos::GetName()
 {
-    return CCharString((const char*)0x0128943C, -1);   // "SG_WANDER_AROUND_INITIAL_POS"
+    return CCharString("SG_WANDER_AROUND_INITIAL_POS", -1);   // "SG_WANDER_AROUND_INITIAL_POS"
 }

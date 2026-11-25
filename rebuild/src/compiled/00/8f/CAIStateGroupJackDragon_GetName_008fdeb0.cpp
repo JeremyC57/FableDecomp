@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_JackDragon::GetName()
 {
-    return CCharString((const char*)0x01289EB0, -1);   // "SG_JACK_DRAGON"
+    return CCharString("SG_JACK_DRAGON", -1);   // "SG_JACK_DRAGON"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SkillPractice::GetName()
 {
-    return CCharString((const char*)0x0128AF00, -1);   // "SG_SKILL_PRACTICE"
+    return CCharString("SG_SKILL_PRACTICE", -1);   // "SG_SKILL_PRACTICE"
 }

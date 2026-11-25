@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_RockTroll::GetName()
 {
-    return CCharString((const char*)0x01289CE8, -1);   // "SG_ROCK_TROLL"
+    return CCharString("SG_ROCK_TROLL", -1);   // "SG_ROCK_TROLL"
 }

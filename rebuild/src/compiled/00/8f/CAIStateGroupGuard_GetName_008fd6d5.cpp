@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_Guard::GetName()
 {
-    return CCharString((const char*)0x0128935C, -1);   // "SG_GUARD"
+    return CCharString("SG_GUARD", -1);   // "SG_GUARD"
 }

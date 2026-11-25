@@ -34,5 +34,5 @@ public:
 
 CCharString CCombatSequenceWhisperAttack360::GetName() const
 {
-    return CCharString((const char*)0x1278d48, -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_ATTACK_360", -1);
 }

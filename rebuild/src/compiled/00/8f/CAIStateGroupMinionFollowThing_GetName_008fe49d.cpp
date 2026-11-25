@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionFollowThing::GetName()
 {
-    return CCharString((const char*)0x0128A814, -1);   // "SG_MINION_FOLLOW_THING"
+    return CCharString("SG_MINION_FOLLOW_THING", -1);   // "SG_MINION_FOLLOW_THING"
 }

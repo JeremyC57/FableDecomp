@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToAlert::GetName()
 {
-    return CCharString((const char*)0x01289050, -1);   // "SG_MINION_REACT_TO_ALERT"
+    return CCharString("SG_MINION_REACT_TO_ALERT", -1);   // "SG_MINION_REACT_TO_ALERT"
 }

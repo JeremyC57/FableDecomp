@@ -10,12 +10,11 @@ class CCharString { public:
 };
 
 // The literal at 0x129ee0c
-static const char* const s_desc = (const char*)0x129ee0c;
 
 struct C3DMeshFileMaterialListChunk_Methods : C3DMeshFileMaterialListChunk {
     CCharString GetChunkDescription() const;
 };
 
 CCharString C3DMeshFileMaterialListChunk_Methods::GetChunkDescription() const {
-    return CCharString(s_desc, -1);
+    return CCharString("Material List", -1);
 }

@@ -8,7 +8,7 @@ class CCharString { public:
     CCharString(const char* str, long len) : m_ptr(str), m_len((int)len) {}
 };
 
-static const char* const s_desc = "MATERIAL_LIST_CHUNK";
+static const char* const s_desc = "Material List";
 
 class C3DMeshFileMaterialListChunk { public:
     void* vtbl;
@@ -24,7 +24,7 @@ int main() {
     c.vtbl = 0;
     CCharString r = c.GetChunkDescription();
     if (r.m_ptr == s_desc && r.m_len == -1 &&
-        std::strcmp(r.m_ptr, "MATERIAL_LIST_CHUNK") == 0) {
+        std::strcmp(r.m_ptr, "Material List") == 0) {
         std::printf("GETCHUNKDESC_MATLIST_OK\n");
         return 0;
     }

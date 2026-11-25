@@ -1,0 +1,138 @@
+addr       parity           behav  name
+008fd2b7   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GoToBed (engine/CAIStateGroup_GoToBed.h)
+008fd2b7   RELOCATION_MATCH PASS   GetName
+008fd676   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditSitRoundCampfire (engine/CAIStateGroup_BanditSitRoundCampfire.h)
+008fd676   RELOCATION_MATCH PASS   GetName
+008fd6d5   RELOCATION_MATCH PASS   GetName
+008fd71f   RELOCATION_MATCH PASS   GetName
+008fd77c   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureFindCover (engine/CAIStateGroup_CreatureFindCover.h)
+008fd77c   RELOCATION_MATCH PASS   GetName
+008fd78f   RELOCATION_MATCH PASS   GetName
+008fd7b4   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_ChickenBeg (engine/CAIStateGroup_ChickenBeg.h)
+008fd7b4   RELOCATION_MATCH PASS   GetName
+008fd7d9   RELOCATION_MATCH PASS   GetName
+008fd7f1   RELOCATION_MATCH PASS   GetName
+008fd83b   RELOCATION_MATCH PASS   GetName
+008fd86d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BirdGroundWander (engine/CAIStateGroup_BirdGroundWander.h)
+008fd86d   RELOCATION_MATCH PASS   GetName
+008fd89f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BirdStartled (engine/CAIStateGroup_BirdStartled.h)
+008fd89f   RELOCATION_MATCH PASS   GetName
+008fdb42   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CleanHouse (engine/CAIStateGroup_CleanHouse.h)
+008fdb42   RELOCATION_MATCH PASS   GetName
+008fdb6a   RELOCATION_MATCH PASS   GetName
+008fdc1d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeAtWork (engine/CAIStateGroup_GazeAtWork.h)
+008fdc1d   RELOCATION_MATCH PASS   GetName
+008fdcb7   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GoToPub (engine/CAIStateGroup_GoToPub.h)
+008fdcb7   RELOCATION_MATCH PASS   GetName
+008fdd39   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BuyFromSeller (engine/CAIStateGroup_BuyFromSeller.h)
+008fdd39   RELOCATION_MATCH PASS   GetName
+008fdd5f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HandyMan (engine/CAIStateGroup_HandyMan.h)
+008fdd5f   RELOCATION_MATCH PASS   GetName
+008fdd84   RELOCATION_MATCH PASS   GetName
+008fddbd   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EarthTroll (engine/CAIStateGroup_EarthTroll.h)
+008fddbd   RELOCATION_MATCH PASS   GetName
+008fddf5   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_FollowPlayer (engine/CAIStateGroup_FollowPlayer.h)
+008fddf5   RELOCATION_MATCH PASS   GetName
+008fdfa7   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Guildmaster (engine/CAIStateGroup_Guildmaster.h)
+008fdfa7   RELOCATION_MATCH PASS   GetName
+008fdfba   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BriarRose (engine/CAIStateGroup_BriarRose.h)
+008fdfba   RELOCATION_MATCH PASS   GetName
+008fdfcd   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BriarRoseWillUse (engine/CAIStateGroup_BriarRoseWillUse.h)
+008fdfcd   RELOCATION_MATCH PASS   GetName
+008fe16b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttackUnlessTargetIsFleeing (engine/CAIStateGroup_HoverAttackUnlessTargetIsFleeing.h)
+008fe16b   RELOCATION_MATCH PASS   GetName
+008fe17e   RELOCATION_MATCH PASS   GetName
+008fe1a3   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverKeepInArea (engine/CAIStateGroup_HoverKeepInArea.h)
+008fe1a3   RELOCATION_MATCH PASS   GetName
+008fe1b6   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttackArea (engine/CAIStateGroup_HoverAttackArea.h)
+008fe1b6   RELOCATION_MATCH PASS   GetName
+008fe1c9   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverHornetQueenTakeDamage (engine/CAIStateGroup_HoverHornetQueenTakeDamage.h)
+008fe1c9   RELOCATION_MATCH PASS   GetName
+008fe1dc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverHornetQueen (engine/CAIStateGroup_HoverHornetQueen.h)
+008fe1dc   RELOCATION_MATCH PASS   GetName
+008fe239   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureAdvanceInCover (engine/CAIStateGroup_CreatureAdvanceInCover.h)
+008fe239   RELOCATION_MATCH PASS   GetName
+008fe24c   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureRangedCombat2 (engine/CAIStateGroup_CreatureRangedCombat2.h)
+008fe24c   RELOCATION_MATCH PASS   GetName
+008fe25f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureRangedCombatUseWillShield (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h)
+008fe25f   RELOCATION_MATCH PASS   GetName
+008fe2ad   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureTakeCover (engine/CAIStateGroup_CreatureTakeCover.h)
+008fe2ad   RELOCATION_MATCH PASS   GetName
+008fe2d3   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets (engine/CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets.h)
+008fe2d3   RELOCATION_MATCH PASS   GetName
+008fe2f9   RELOCATION_MATCH PASS   GetName
+008fe31e   RELOCATION_MATCH PASS   GetName
+008fe348   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureSeekEnemyUnderground (engine/CAIStateGroup_CreatureSeekEnemyUnderground.h)
+008fe348   RELOCATION_MATCH PASS   GetName
+008fe35b   RELOCATION_MATCH PASS   GetName
+008fe3a7   RELOCATION_MATCH PASS   GetName
+008fe3ba   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BeetleToggleHover (engine/CAIStateGroup_BeetleToggleHover.h)
+008fe3ba   RELOCATION_MATCH PASS   GetName
+008fe3f2   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditKingLunge (engine/CAIStateGroup_BanditKingLunge.h)
+008fe3f2   RELOCATION_MATCH PASS   GetName
+008fe405   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditKingThrowWeapons (engine/CAIStateGroup_BanditKingThrowWeapons.h)
+008fe405   RELOCATION_MATCH PASS   GetName
+008fe4fb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CarryCrateAndFollow (engine/CAIStateGroup_CarryCrateAndFollow.h)
+008fe4fb   RELOCATION_MATCH PASS   GetName
+008fe580   RELOCATION_MATCH PASS   GetName
+008fe5a5   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Drunk (engine/CAIStateGroup_Drunk.h)
+008fe5a5   RELOCATION_MATCH PASS   GetName
+008fe5ca   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EatAtHome (engine/CAIStateGroup_EatAtHome.h)
+008fe5ca   RELOCATION_MATCH PASS   GetName
+008fe5f0   RELOCATION_MATCH PASS   GetName
+008fe7b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditPlayDice (engine/CAIStateGroup_BanditPlayDice.h)
+008fe7b0   RELOCATION_MATCH PASS   GetName
+008fe7dd   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BanditPlot (engine/CAIStateGroup_BanditPlot.h)
+008fe7dd   RELOCATION_MATCH PASS   GetName
+
+WINS: 50
+  008fd2b7 RELOCATION_MATCH CAIStateGroup_GoToBed::?GetName@CAIStateGroup_GoToBed@@SI?AVCCharString@@XZ
+  008fd676 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?GetName@CAIStateGroup_BanditSitRoundCampfire@@SI?AVCCharString@@XZ
+  008fd6d5 RELOCATION_MATCH CAIStateGroup_Guard::?GetName@CAIStateGroup_Guard@@SI?AVCCharString@@XZ
+  008fd71f RELOCATION_MATCH CAIStateGroup_ChickenWander::?GetName@CAIStateGroup_ChickenWander@@SI?AVCCharString@@XZ
+  008fd77c RELOCATION_MATCH CAIStateGroup_CreatureFindCover::?GetName@CAIStateGroup_CreatureFindCover@@SI?AVCCharString@@XZ
+  008fd78f RELOCATION_MATCH CAIStateGroup_ChickenPanic::?GetName@CAIStateGroup_ChickenPanic@@SI?AVCCharString@@XZ
+  008fd7b4 RELOCATION_MATCH CAIStateGroup_ChickenBeg::?GetName@CAIStateGroup_ChickenBeg@@SI?AVCCharString@@XZ
+  008fd7d9 RELOCATION_MATCH CAIStateGroup_ButterflyWander::?GetName@CAIStateGroup_ButterflyWander@@SI?AVCCharString@@XZ
+  008fd7f1 RELOCATION_MATCH CAIStateGroup_FireflyWander::?GetName@CAIStateGroup_FireflyWander@@SI?AVCCharString@@XZ
+  008fd83b RELOCATION_MATCH CAIStateGroup_BirdFlyToFood::?GetName@CAIStateGroup_BirdFlyToFood@@SI?AVCCharString@@XZ
+  008fd86d RELOCATION_MATCH CAIStateGroup_BirdGroundWander::?GetName@CAIStateGroup_BirdGroundWander@@SI?AVCCharString@@XZ
+  008fd89f RELOCATION_MATCH CAIStateGroup_BirdStartled::?GetName@CAIStateGroup_BirdStartled@@SI?AVCCharString@@XZ
+  008fdb42 RELOCATION_MATCH CAIStateGroup_CleanHouse::?GetName@CAIStateGroup_CleanHouse@@SI?AVCCharString@@XZ
+  008fdb6a RELOCATION_MATCH CAIStateGroup_CleanWork::?GetName@CAIStateGroup_CleanWork@@SI?AVCCharString@@XZ
+  008fdc1d RELOCATION_MATCH CAIStateGroup_GazeAtWork::?GetName@CAIStateGroup_GazeAtWork@@SI?AVCCharString@@XZ
+  008fdcb7 RELOCATION_MATCH CAIStateGroup_GoToPub::?GetName@CAIStateGroup_GoToPub@@SI?AVCCharString@@XZ
+  008fdd39 RELOCATION_MATCH CAIStateGroup_BuyFromSeller::?GetName@CAIStateGroup_BuyFromSeller@@SI?AVCCharString@@XZ
+  008fdd5f RELOCATION_MATCH CAIStateGroup_HandyMan::?GetName@CAIStateGroup_HandyMan@@SI?AVCCharString@@XZ
+  008fdd84 RELOCATION_MATCH CAIStateGroup_GameMaster::?GetName@CAIStateGroup_GameMaster@@SI?AVCCharString@@XZ
+  008fddbd RELOCATION_MATCH CAIStateGroup_EarthTroll::?GetName@CAIStateGroup_EarthTroll@@SI?AVCCharString@@XZ
+  008fddf5 RELOCATION_MATCH CAIStateGroup_FollowPlayer::?GetName@CAIStateGroup_FollowPlayer@@SI?AVCCharString@@XZ
+  008fdfa7 RELOCATION_MATCH CAIStateGroup_Guildmaster::?GetName@CAIStateGroup_Guildmaster@@SI?AVCCharString@@XZ
+  008fdfba RELOCATION_MATCH CAIStateGroup_BriarRose::?GetName@CAIStateGroup_BriarRose@@SI?AVCCharString@@XZ
+  008fdfcd RELOCATION_MATCH CAIStateGroup_BriarRoseWillUse::?GetName@CAIStateGroup_BriarRoseWillUse@@SI?AVCCharString@@XZ
+  008fe16b RELOCATION_MATCH CAIStateGroup_HoverAttackUnlessTargetIsFleeing::?GetName@CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@SI?AVCCharString@@XZ
+  008fe17e RELOCATION_MATCH CAIStateGroup_HoverAllAroundTest::?GetName@CAIStateGroup_HoverAllAroundTest@@SI?AVCCharString@@XZ
+  008fe1a3 RELOCATION_MATCH CAIStateGroup_HoverKeepInArea::?GetName@CAIStateGroup_HoverKeepInArea@@SI?AVCCharString@@XZ
+  008fe1b6 RELOCATION_MATCH CAIStateGroup_HoverAttackArea::?GetName@CAIStateGroup_HoverAttackArea@@SI?AVCCharString@@XZ
+  008fe1c9 RELOCATION_MATCH CAIStateGroup_HoverHornetQueenTakeDamage::?GetName@CAIStateGroup_HoverHornetQueenTakeDamage@@SI?AVCCharString@@XZ
+  008fe1dc RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::?GetName@CAIStateGroup_HoverHornetQueen@@SI?AVCCharString@@XZ
+  008fe239 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::?GetName@CAIStateGroup_CreatureAdvanceInCover@@SI?AVCCharString@@XZ
+  008fe24c RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::?GetName@CAIStateGroup_CreatureRangedCombat2@@SI?AVCCharString@@XZ
+  008fe25f RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatUseWillShield::?GetName@CAIStateGroup_CreatureRangedCombatUseWillShield@@SI?AVCCharString@@XZ
+  008fe2ad RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::?GetName@CAIStateGroup_CreatureTakeCover@@SI?AVCCharString@@XZ
+  008fe2d3 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::?GetName@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@SI?AVCCharString@@XZ
+  008fe2f9 RELOCATION_MATCH CAIStateGroup_CreatureGoUnderground::?GetName@CAIStateGroup_CreatureGoUnderground@@SI?AVCCharString@@XZ
+  008fe31e RELOCATION_MATCH CAIStateGroup_CreatureIdleUnderground::?GetName@CAIStateGroup_CreatureIdleUnderground@@SI?AVCCharString@@XZ
+  008fe348 RELOCATION_MATCH CAIStateGroup_CreatureSeekEnemyUnderground::?GetName@CAIStateGroup_CreatureSeekEnemyUnderground@@SI?AVCCharString@@XZ
+  008fe35b RELOCATION_MATCH CAIStateGroup_BoastingCrowdMember::?GetName@CAIStateGroup_BoastingCrowdMember@@SI?AVCCharString@@XZ
+  008fe3a7 RELOCATION_MATCH CAIStateGroup_DeedReactionRootFromSleep::?GetName@CAIStateGroup_DeedReactionRootFromSleep@@SI?AVCCharString@@XZ
+  008fe3ba RELOCATION_MATCH CAIStateGroup_BeetleToggleHover::?GetName@CAIStateGroup_BeetleToggleHover@@SI?AVCCharString@@XZ
+  008fe3f2 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::?GetName@CAIStateGroup_BanditKingLunge@@SI?AVCCharString@@XZ
+  008fe405 RELOCATION_MATCH CAIStateGroup_BanditKingThrowWeapons::?GetName@CAIStateGroup_BanditKingThrowWeapons@@SI?AVCCharString@@XZ
+  008fe4fb RELOCATION_MATCH CAIStateGroup_CarryCrateAndFollow::?GetName@CAIStateGroup_CarryCrateAndFollow@@SI?AVCCharString@@XZ
+  008fe580 RELOCATION_MATCH CAIStateGroup_Freeze::?GetName@CAIStateGroup_Freeze@@SI?AVCCharString@@XZ
+  008fe5a5 RELOCATION_MATCH CAIStateGroup_Drunk::?GetName@CAIStateGroup_Drunk@@SI?AVCCharString@@XZ
+  008fe5ca RELOCATION_MATCH CAIStateGroup_EatAtHome::?GetName@CAIStateGroup_EatAtHome@@SI?AVCCharString@@XZ
+  008fe5f0 RELOCATION_MATCH CAIStateGroup_EatAtTavern::?GetName@CAIStateGroup_EatAtTavern@@SI?AVCCharString@@XZ
+  008fe7b0 RELOCATION_MATCH CAIStateGroup_BanditPlayDice::?GetName@CAIStateGroup_BanditPlayDice@@SI?AVCCharString@@XZ
+  008fe7dd RELOCATION_MATCH CAIStateGroup_BanditPlot::?GetName@CAIStateGroup_BanditPlot@@SI?AVCCharString@@XZ

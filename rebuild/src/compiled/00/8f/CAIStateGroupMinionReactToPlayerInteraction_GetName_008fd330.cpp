@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToPlayerInteraction::GetName()
 {
-    return CCharString((const char*)0x01288D20, -1);   // "SG_MINION_REACT_TO_PLAYER_INTERACTION"
+    return CCharString("SG_MINION_REACT_TO_PLAYER_INTERACTION", -1);   // "SG_MINION_REACT_TO_PLAYER_INTERACTION"
 }

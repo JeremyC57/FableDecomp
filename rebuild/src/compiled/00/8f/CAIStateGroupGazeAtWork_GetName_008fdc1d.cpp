@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_GazeAtWork::GetName()
 {
-    return CCharString((const char*)0x01289B68, -1);   // "SG_GAZE_AT_WORK"
+    return CCharString("SG_GAZE_AT_WORK", -1);   // "SG_GAZE_AT_WORK"
 }

@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BanditKingThrowWeapons::GetName()
 {
-    return CCharString((const char*)0x0128A754, -1);   // "SG_BANDIT_KING_THROW_WEAPONS"
+    return CCharString("SG_BANDIT_KING_THROW_WEAPONS", -1);   // "SG_BANDIT_KING_THROW_WEAPONS"
 }

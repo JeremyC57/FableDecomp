@@ -12,7 +12,6 @@ private:
 };
 
 // The string literal lives at 0x0129ec54 in the retail image.
-static const char* const kDesc = (const char*)0x0129ec54;
 
 class C3DMeshFileSmoothingGroupsChunk {
 public:
@@ -21,5 +20,5 @@ public:
 
 const CCharString C3DMeshFileSmoothingGroupsChunk::GetChunkDescription() const
 {
-    return CCharString(kDesc, -1);
+    return CCharString("Smoothing Groups", -1);
 }

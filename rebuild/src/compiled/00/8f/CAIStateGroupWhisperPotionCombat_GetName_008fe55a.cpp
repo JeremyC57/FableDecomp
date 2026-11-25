@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WhisperPotionCombat::GetName()
 {
-    return CCharString((const char*)0x0128A924, -1);   // "SG_WHISPER_POTION_COMBAT"
+    return CCharString("SG_WHISPER_POTION_COMBAT", -1);   // "SG_WHISPER_POTION_COMBAT"
 }

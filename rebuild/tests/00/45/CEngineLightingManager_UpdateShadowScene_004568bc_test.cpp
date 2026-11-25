@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 struct SVec2 { int a; int b; };
 
 class CEngineLightingManager { public:
@@ -11,11 +20,12 @@ class CEngineLightingManager { public:
 };
 
 static int g_markerCalls = 0;
+static const char* g_markerText = 0;
 static int g_fetchRet[2] = {111, 222};
 static void* g_lastApplyOut = 0;
 static void* g_lastApplySelf = 0;
 
-void __stdcall Marker(const char* s) { (void)s; g_markerCalls++; }
+void __stdcall Marker(const char* s) { g_markerText = s; g_markerCalls++; }
 
 struct ObjA { int* Fetch(SVec2* out); };
 struct ObjB { void Apply(SVec2* p); };
@@ -26,7 +36,7 @@ void ObjB::Apply(SVec2* p) { g_lastApplySelf = this; g_lastApplyOut = p; }
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, SVec2* out)
 {
     SVec2 tmp;
-    Marker((const char*)0x122d70e);
+    Marker("");
     switch (self->mode) {
     case 2: {
         int* r = ((ObjA*)self->objA)->Fetch(&tmp);
@@ -60,6 +70,7 @@ int main() {
     if (out.a != 77) { std::printf("FAIL mode5\n"); return 1; }
 
     if (g_markerCalls != 3) { std::printf("FAIL marker\n"); return 1; }
+    if (!RetailTextEquals(g_markerText, "")) { std::printf("FAIL marker text\n"); return 1; }
 
     std::printf("CEngineLightingManager_004568bc_TEST PASS\n");
     return 0;

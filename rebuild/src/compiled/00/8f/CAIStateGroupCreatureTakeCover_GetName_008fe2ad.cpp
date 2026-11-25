@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureTakeCover::GetName()
 {
-    return CCharString((const char*)0x0128A514, -1);   // "SG_CREATURE_RANGED_COMBAT_USE_COVER"
+    return CCharString("SG_CREATURE_RANGED_COMBAT_USE_COVER", -1);   // "SG_CREATURE_RANGED_COMBAT_USE_COVER"
 }

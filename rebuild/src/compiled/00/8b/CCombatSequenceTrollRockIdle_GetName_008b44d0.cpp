@@ -16,5 +16,5 @@ public:
 
 CCharString CCombatSequence_TrollRockIdle::GetName() const
 {
-    return CCharString((const char*)0x1278b88, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_ROCK_IDLE", -1);
 }

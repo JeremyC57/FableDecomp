@@ -13,5 +13,5 @@ class CTCDummyVillager { public:
 
 CCharString CTCDummyVillager::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123a680, -1);
+    return CCharString("CTCDummyVillager", -1);
 }

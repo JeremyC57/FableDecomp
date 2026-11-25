@@ -23,7 +23,7 @@ class CCharString { public:
 extern "C" CCharString* FABLE_FASTCALL
 C3DAnimFileXSequenceChunk_GetChunkDescription(void* thisptr, void* edx, CCharString* result)
 {
-    result->ctor_99ebf0((const char*)0x129e1c0, -1);
+    result->ctor_99ebf0("Compressed Animation Sequence", -1);
     return result;
 }
 // Stand-in (owner rule 2026-11-05): C3DAnimFileXSequenceChunk_GetChunkDescription for C3DAnimFileXSequenceChunk::GetChunkDescription; RTTI vtable slot ?GetChunkDescription@C3DAnimFileXSequenceChunk@@UBE?BVCCharString@@XZ + PDB name set (egor/fablewin).

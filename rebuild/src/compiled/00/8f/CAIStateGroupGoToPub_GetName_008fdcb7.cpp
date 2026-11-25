@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_GoToPub::GetName()
 {
-    return CCharString((const char*)0x01289C24, -1);   // "SG_GO_TO_PUB"
+    return CCharString("SG_GO_TO_PUB", -1);   // "SG_GO_TO_PUB"
 }

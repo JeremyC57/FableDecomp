@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_KrakenTentacleRise::GetName()
 {
-    return CCharString((const char*)0x0128AB80, -1);   // "SG_KRAKEN_TENTACLE_RISE"
+    return CCharString("SG_KRAKEN_TENTACLE_RISE", -1);   // "SG_KRAKEN_TENTACLE_RISE"
 }

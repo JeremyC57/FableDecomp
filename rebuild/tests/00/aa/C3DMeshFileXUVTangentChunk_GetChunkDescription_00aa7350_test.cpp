@@ -16,7 +16,7 @@ private:
     char* m_data;
 };
 
-static const char* const kDesc = "XUVTangent";
+static const char* const kDesc = "UV Tangent Vectors";
 
 class C3DMeshFileXUVTangentChunk {
 public:
@@ -26,7 +26,7 @@ public:
 int main() {
     C3DMeshFileXUVTangentChunk c;
     CCharString s = c.GetChunkDescription();
-    bool ok = (g_lastPtr == kDesc) && (g_lastLen == -1) && (strcmp(s.data(), "XUVTangent") == 0);
+    bool ok = (g_lastPtr == kDesc) && (g_lastLen == -1) && (strcmp(s.data(), "UV Tangent Vectors") == 0);
     printf(ok ? "CHUNKDESC_OK\n" : "CHUNKDESC_FAIL\n");
     return ok ? 0 : 1;
 }

@@ -1,0 +1,140 @@
+addr       parity           behav  name
+008fd31d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFindPersonalSpace (engine/CAIStateGroup_MinionFindPersonalSpace.h)
+008fd31d   RELOCATION_MATCH PASS   GetName
+008fd356   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardReactToCriminal (engine/CAIStateGroup_MinionGuardReactToCriminal.h)
+008fd356   RELOCATION_MATCH PASS   GetName
+008fd369   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardReactToBribe (engine/CAIStateGroup_MinionGuardReactToBribe.h)
+008fd369   RELOCATION_MATCH PASS   GetName
+008fd37c   RELOCATION_MATCH PASS   GetName
+008fd3a1   RELOCATION_MATCH PASS   GetName
+008fd3b4   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGossip (engine/CAIStateGroup_MinionGossip.h)
+008fd3b4   RELOCATION_MATCH PASS   GetName
+008fd483   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFaceHero (engine/CAIStateGroup_MinionFaceHero.h)
+008fd483   RELOCATION_MATCH PASS   GetName
+008fd51f   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionHasInformation (engine/CAIStateGroup_MinionHasInformation.h)
+008fd51f   RELOCATION_MATCH PASS   GetName
+008fd619   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardHeardYellForHelp (engine/CAIStateGroup_MinionGuardHeardYellForHelp.h)
+008fd619   RELOCATION_MATCH PASS   GetName
+008fd63e   RELOCATION_MATCH PASS   GetName
+008fd651   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardReactToBodyFoundMessage (engine/CAIStateGroup_MinionGuardReactToBodyFoundMessage.h)
+008fd651   RELOCATION_MATCH PASS   GetName
+008fd8c4   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearby (engine/CAIStateGroup_MeleeCombatNearby.h)
+008fd8c4   RELOCATION_MATCH PASS   GetName
+008fd8ea   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearby2 (engine/CAIStateGroup_MeleeCombatNearby2.h)
+008fd8ea   RELOCATION_MATCH PASS   GetName
+008fd8fd   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose (engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h)
+008fd8fd   RELOCATION_MATCH PASS   GetName
+008fd979   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_KidWanderNearKids (engine/CAIStateGroup_KidWanderNearKids.h)
+008fd979   RELOCATION_MATCH PASS   GetName
+008fd9a1   RELOCATION_MATCH PASS   GetName
+008fd9b4   RELOCATION_MATCH PASS   GetName
+008fd9c7   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_KidHurtSelfRunToMother (engine/CAIStateGroup_KidHurtSelfRunToMother.h)
+008fd9c7   RELOCATION_MATCH PASS   GetName
+008fd9ec   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_KidReactToBlockage (engine/CAIStateGroup_KidReactToBlockage.h)
+008fd9ec   RELOCATION_MATCH PASS   GetName
+008fdaff   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_IdleAtHome (engine/CAIStateGroup_IdleAtHome.h)
+008fdaff   RELOCATION_MATCH PASS   GetName
+008fdc30   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_LightHomeCandle (engine/CAIStateGroup_LightHomeCandle.h)
+008fdc30   RELOCATION_MATCH PASS   GetName
+008fdc56   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_LightWorkCandle (engine/CAIStateGroup_LightWorkCandle.h)
+008fdc56   RELOCATION_MATCH PASS   GetName
+008fdc69   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_LookAtInterestingThings (engine/CAIStateGroup_LookAtInterestingThings.h)
+008fdc69   RELOCATION_MATCH PASS   GetName
+008fdeb0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackDragon (engine/CAIStateGroup_JackDragon.h)
+008fdeb0   RELOCATION_MATCH PASS   GetName
+008fdec3   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage1 (engine/CAIStateGroup_JackOfBladesStage1.h)
+008fdec3   RELOCATION_MATCH PASS   GetName
+008fded6   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage2 (engine/CAIStateGroup_JackOfBladesStage2.h)
+008fded6   RELOCATION_MATCH PASS   GetName
+008fdee9   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage3 (engine/CAIStateGroup_JackOfBladesStage3.h)
+008fdee9   RELOCATION_MATCH PASS   GetName
+008fdefc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTeleport (engine/CAIStateGroup_MazeTeleport.h)
+008fdefc   RELOCATION_MATCH PASS   GetName
+008fdf22   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeRangedCombat (engine/CAIStateGroup_MazeRangedCombat.h)
+008fdf22   RELOCATION_MATCH PASS   GetName
+008fdf35   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeDefensiveMeleeCombat (engine/CAIStateGroup_MazeDefensiveMeleeCombat.h)
+008fdf35   RELOCATION_MATCH PASS   GetName
+008fdf48   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeShieldedChase (engine/CAIStateGroup_MazeShieldedChase.h)
+008fdf48   RELOCATION_MATCH PASS   GetName
+008fdf5b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattle (engine/CAIStateGroup_MazeTutorialBattle.h)
+008fdf5b   RELOCATION_MATCH PASS   GetName
+008fdf6e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattleTeleport (engine/CAIStateGroup_MazeTutorialBattleTeleport.h)
+008fdf6e   RELOCATION_MATCH PASS   GetName
+008fdf81   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattleRespondToLightning (engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h)
+008fdf81   RELOCATION_MATCH PASS   GetName
+008fdf94   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MazeTutorialBattleUseShield (engine/CAIStateGroup_MazeTutorialBattleUseShield.h)
+008fdf94   RELOCATION_MATCH PASS   GetName
+008fdfe0   RELOCATION_MATCH PASS   GetName
+008fdff3   RELOCATION_MATCH PASS   GetName
+008fe019   RELOCATION_MATCH PASS   GetName
+008fe127   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverWanderAroundThing (engine/CAIStateGroup_HoverWanderAroundThing.h)
+008fe127   RELOCATION_MATCH PASS   GetName
+008fe13a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverWander (engine/CAIStateGroup_HoverWander.h)
+008fe13a   RELOCATION_MATCH PASS   GetName
+008fe418   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_IceTrollIcicleAttack (engine/CAIStateGroup_IceTrollIcicleAttack.h)
+008fe418   RELOCATION_MATCH PASS   GetName
+008fe42b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_IceTrollPoundGroundAttack (engine/CAIStateGroup_IceTrollPoundGroundAttack.h)
+008fe42b   RELOCATION_MATCH PASS   GetName
+008fe43e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_IceTrollIcicleAssault (engine/CAIStateGroup_IceTrollIcicleAssault.h)
+008fe43e   RELOCATION_MATCH PASS   GetName
+008fe49d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionFollowThing (engine/CAIStateGroup_MinionFollowThing.h)
+008fe49d   RELOCATION_MATCH PASS   GetName
+008fe684   RELOCATION_MATCH PASS   GetName
+008fe6a9   RELOCATION_MATCH PASS   GetName
+008fe6ce   RELOCATION_MATCH PASS   GetName
+008fe6f3   RELOCATION_MATCH PASS   GetName
+008fe805   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionGuardGreetPlayer (engine/CAIStateGroup_MinionGuardGreetPlayer.h)
+008fe805   RELOCATION_MATCH PASS   GetName
+008fe82a   RELOCATION_MATCH PASS   GetName
+
+WINS: 50
+  008fd31d RELOCATION_MATCH CAIStateGroup_MinionFindPersonalSpace::?GetName@CAIStateGroup_MinionFindPersonalSpace@@SI?AVCCharString@@XZ
+  008fd356 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToCriminal::?GetName@CAIStateGroup_MinionGuardReactToCriminal@@SI?AVCCharString@@XZ
+  008fd369 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToBribe::?GetName@CAIStateGroup_MinionGuardReactToBribe@@SI?AVCCharString@@XZ
+  008fd37c RELOCATION_MATCH CAIStateGroup_MinionGuardFollowPlayer::?GetName@CAIStateGroup_MinionGuardFollowPlayer@@SI?AVCCharString@@XZ
+  008fd3a1 RELOCATION_MATCH CAIStateGroup_MinionCuriosity::?GetName@CAIStateGroup_MinionCuriosity@@SI?AVCCharString@@XZ
+  008fd3b4 RELOCATION_MATCH CAIStateGroup_MinionGossip::?GetName@CAIStateGroup_MinionGossip@@SI?AVCCharString@@XZ
+  008fd483 RELOCATION_MATCH CAIStateGroup_MinionFaceHero::?GetName@CAIStateGroup_MinionFaceHero@@SI?AVCCharString@@XZ
+  008fd51f RELOCATION_MATCH CAIStateGroup_MinionHasInformation::?GetName@CAIStateGroup_MinionHasInformation@@SI?AVCCharString@@XZ
+  008fd619 RELOCATION_MATCH CAIStateGroup_MinionGuardHeardYellForHelp::?GetName@CAIStateGroup_MinionGuardHeardYellForHelp@@SI?AVCCharString@@XZ
+  008fd63e RELOCATION_MATCH CAIStateGroup_MinionGuardReactToPlayerWithWeapon::?GetName@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@SI?AVCCharString@@XZ
+  008fd651 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToBodyFoundMessage::?GetName@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@SI?AVCCharString@@XZ
+  008fd8c4 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::?GetName@CAIStateGroup_MeleeCombatNearby@@SI?AVCCharString@@XZ
+  008fd8ea RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::?GetName@CAIStateGroup_MeleeCombatNearby2@@SI?AVCCharString@@XZ
+  008fd8fd RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::?GetName@CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@SI?AVCCharString@@XZ
+  008fd979 RELOCATION_MATCH CAIStateGroup_KidWanderNearKids::?GetName@CAIStateGroup_KidWanderNearKids@@SI?AVCCharString@@XZ
+  008fd9a1 RELOCATION_MATCH CAIStateGroup_KidWatchHopscotch::?GetName@CAIStateGroup_KidWatchHopscotch@@SI?AVCCharString@@XZ
+  008fd9b4 RELOCATION_MATCH CAIStateGroup_KidPlayHopscotch::?GetName@CAIStateGroup_KidPlayHopscotch@@SI?AVCCharString@@XZ
+  008fd9c7 RELOCATION_MATCH CAIStateGroup_KidHurtSelfRunToMother::?GetName@CAIStateGroup_KidHurtSelfRunToMother@@SI?AVCCharString@@XZ
+  008fd9ec RELOCATION_MATCH CAIStateGroup_KidReactToBlockage::?GetName@CAIStateGroup_KidReactToBlockage@@SI?AVCCharString@@XZ
+  008fdaff RELOCATION_MATCH CAIStateGroup_IdleAtHome::?GetName@CAIStateGroup_IdleAtHome@@SI?AVCCharString@@XZ
+  008fdc30 RELOCATION_MATCH CAIStateGroup_LightHomeCandle::?GetName@CAIStateGroup_LightHomeCandle@@SI?AVCCharString@@XZ
+  008fdc56 RELOCATION_MATCH CAIStateGroup_LightWorkCandle::?GetName@CAIStateGroup_LightWorkCandle@@SI?AVCCharString@@XZ
+  008fdc69 RELOCATION_MATCH CAIStateGroup_LookAtInterestingThings::?GetName@CAIStateGroup_LookAtInterestingThings@@SI?AVCCharString@@XZ
+  008fdeb0 RELOCATION_MATCH CAIStateGroup_JackDragon::?GetName@CAIStateGroup_JackDragon@@SI?AVCCharString@@XZ
+  008fdec3 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::?GetName@CAIStateGroup_JackOfBladesStage1@@SI?AVCCharString@@XZ
+  008fded6 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage2::?GetName@CAIStateGroup_JackOfBladesStage2@@SI?AVCCharString@@XZ
+  008fdee9 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage3::?GetName@CAIStateGroup_JackOfBladesStage3@@SI?AVCCharString@@XZ
+  008fdefc RELOCATION_MATCH CAIStateGroup_MazeTeleport::?GetName@CAIStateGroup_MazeTeleport@@SI?AVCCharString@@XZ
+  008fdf22 RELOCATION_MATCH CAIStateGroup_MazeRangedCombat::?GetName@CAIStateGroup_MazeRangedCombat@@SI?AVCCharString@@XZ
+  008fdf35 RELOCATION_MATCH CAIStateGroup_MazeDefensiveMeleeCombat::?GetName@CAIStateGroup_MazeDefensiveMeleeCombat@@SI?AVCCharString@@XZ
+  008fdf48 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::?GetName@CAIStateGroup_MazeShieldedChase@@SI?AVCCharString@@XZ
+  008fdf5b RELOCATION_MATCH CAIStateGroup_MazeTutorialBattle::?GetName@CAIStateGroup_MazeTutorialBattle@@SI?AVCCharString@@XZ
+  008fdf6e RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleTeleport::?GetName@CAIStateGroup_MazeTutorialBattleTeleport@@SI?AVCCharString@@XZ
+  008fdf81 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::?GetName@CAIStateGroup_MazeTutorialBattleRespondToLightning@@SI?AVCCharString@@XZ
+  008fdf94 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleUseShield::?GetName@CAIStateGroup_MazeTutorialBattleUseShield@@SI?AVCCharString@@XZ
+  008fdfe0 RELOCATION_MATCH CAIStateGroup_MinionBehaviourGreetCreature::?GetName@CAIStateGroup_MinionBehaviourGreetCreature@@SI?AVCCharString@@XZ
+  008fdff3 RELOCATION_MATCH CAIStateGroup_MinionBehaviourSad::?GetName@CAIStateGroup_MinionBehaviourSad@@SI?AVCCharString@@XZ
+  008fe019 RELOCATION_MATCH CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::?GetName@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@SI?AVCCharString@@XZ
+  008fe127 RELOCATION_MATCH CAIStateGroup_HoverWanderAroundThing::?GetName@CAIStateGroup_HoverWanderAroundThing@@SI?AVCCharString@@XZ
+  008fe13a RELOCATION_MATCH CAIStateGroup_HoverWander::?GetName@CAIStateGroup_HoverWander@@SI?AVCCharString@@XZ
+  008fe418 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAttack::?GetName@CAIStateGroup_IceTrollIcicleAttack@@SI?AVCCharString@@XZ
+  008fe42b RELOCATION_MATCH CAIStateGroup_IceTrollPoundGroundAttack::?GetName@CAIStateGroup_IceTrollPoundGroundAttack@@SI?AVCCharString@@XZ
+  008fe43e RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAssault::?GetName@CAIStateGroup_IceTrollIcicleAssault@@SI?AVCCharString@@XZ
+  008fe49d RELOCATION_MATCH CAIStateGroup_MinionFollowThing::?GetName@CAIStateGroup_MinionFollowThing@@SI?AVCCharString@@XZ
+  008fe684 RELOCATION_MATCH CAIStateGroup_KrakenAttack::?GetName@CAIStateGroup_KrakenAttack@@SI?AVCCharString@@XZ
+  008fe6a9 RELOCATION_MATCH CAIStateGroup_KrakenTentacleIdle::?GetName@CAIStateGroup_KrakenTentacleIdle@@SI?AVCCharString@@XZ
+  008fe6ce RELOCATION_MATCH CAIStateGroup_KrakenTentacleRise::?GetName@CAIStateGroup_KrakenTentacleRise@@SI?AVCCharString@@XZ
+  008fe6f3 RELOCATION_MATCH CAIStateGroup_KrakenTentacleAttack::?GetName@CAIStateGroup_KrakenTentacleAttack@@SI?AVCCharString@@XZ
+  008fe805 RELOCATION_MATCH CAIStateGroup_MinionGuardGreetPlayer::?GetName@CAIStateGroup_MinionGuardGreetPlayer@@SI?AVCCharString@@XZ
+  008fe82a RELOCATION_MATCH CAIStateGroup_MinionGuardBribed::?GetName@CAIStateGroup_MinionGuardBribed@@SI?AVCCharString@@XZ

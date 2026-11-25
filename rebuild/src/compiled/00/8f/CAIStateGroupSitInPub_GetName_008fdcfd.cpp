@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SitInPub::GetName()
 {
-    return CCharString((const char*)0x01289C34, -1);   // "SG_SIT_IN_PUB"
+    return CCharString("SG_SIT_IN_PUB", -1);   // "SG_SIT_IN_PUB"
 }

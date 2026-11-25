@@ -6,5 +6,5 @@ class CTCScriptedControl { public:
     CCharString GetClassTypeName();
 };
 CCharString CTCScriptedControl::GetClassTypeName(){
-    return CCharString((const char*)0x123a514, -1);
+    return CCharString("CTCScriptedControl", -1);
 }

@@ -1,0 +1,2 @@
+R-NF409-1 (b3): ACCEPT (advisor, owner delegated) after the rawref chain check, which passed; copies booked as T3 port + lever lines.
+R-NF409-2 (b4): ACCEPT as a narrow extension of the p25 clause; checks 1-3 passed (see b4 RESULTS).

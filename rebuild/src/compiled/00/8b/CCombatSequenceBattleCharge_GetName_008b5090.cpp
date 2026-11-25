@@ -34,5 +34,5 @@ public:
 
 CCharString CCombatSequence_BattleCharge::GetName() const
 {
-    return CCharString((const char*)0x1278ee4, -1);
+    return CCharString("COMBAT_SEQUENCE_BATTLE_CHARGE", -1);
 }

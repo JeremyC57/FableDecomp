@@ -15,5 +15,5 @@ public:
 
 CCharString C3DAnimFileHelpersChunk::GetChunkDescription() const
 {
-    return CCharString((const char*)0x129e564, -1);
+    return CCharString("Helpers", -1);
 }

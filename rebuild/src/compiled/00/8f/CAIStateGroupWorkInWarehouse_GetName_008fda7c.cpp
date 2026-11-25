@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WorkInWarehouse::GetName()
 {
-    return CCharString((const char*)0x01289914, -1);   // "SG_WORK_IN_WAREHOUSE"
+    return CCharString("SG_WORK_IN_WAREHOUSE", -1);   // "SG_WORK_IN_WAREHOUSE"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToEnemy::GetName()
 {
-    return CCharString((const char*)0x01289034, -1);   // "SG_MINION_REACT_TO_ENEMY"
+    return CCharString("SG_MINION_REACT_TO_ENEMY", -1);   // "SG_MINION_REACT_TO_ENEMY"
 }

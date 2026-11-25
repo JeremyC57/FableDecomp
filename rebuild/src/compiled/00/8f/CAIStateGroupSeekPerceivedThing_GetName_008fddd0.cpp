@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SeekPerceivedThing::GetName()
 {
-    return CCharString((const char*)0x01289D08, -1);   // "SG_SEEK_PERCEIVED_THING"
+    return CCharString("SG_SEEK_PERCEIVED_THING", -1);   // "SG_SEEK_PERCEIVED_THING"
 }

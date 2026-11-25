@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SitRoundCampfire::GetName()
 {
-    return CCharString((const char*)0x012891E8, -1);   // "SG_SIT_ROUND_CAMPFIRE"
+    return CCharString("SG_SIT_ROUND_CAMPFIRE", -1);   // "SG_SIT_ROUND_CAMPFIRE"
 }

@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 struct Vec12 { int a, b, c; };
 
 class CEngineLightingManager { public:
@@ -16,14 +25,15 @@ static Vec12 g_ret = {11,22,33};
 static Vec12* g_h3_arg = 0;
 static void* g_h3_self = 0;
 static int g_prof = 0;
+static const char* g_profText = 0;
 
-void __stdcall Prof_Enter(const char*) { g_prof++; }
+void __stdcall Prof_Enter(const char* s) { g_profText = s; g_prof++; }
 void __fastcall LM_Handle3(void* self28, PBox p) { g_h3_self = self28; g_h3_arg = p.p; }
 Vec12 __fastcall LM_Handle2(void* self24) { return g_ret; }
 
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, Vec12* param)
 {
-    Prof_Enter((const char*)0x122d70e);
+    Prof_Enter("");
     switch (self->mode) {
     case 2:
         *param = LM_Handle2(self->obj24);
@@ -59,6 +69,7 @@ int main() {
     CEngineLightingManager_UpdateShadowScene(&lm, 0, &out);
     if (g_h3_arg != 0) { std::printf("FAIL mode-other\n"); return 1; }
 
+    if (g_prof != 3 || !RetailTextEquals(g_profText, "")) { std::printf("FAIL prof\n"); return 1; }
     std::printf("CEngineLightingManager_00456903_TEST PASS\n");
     return 0;
 }

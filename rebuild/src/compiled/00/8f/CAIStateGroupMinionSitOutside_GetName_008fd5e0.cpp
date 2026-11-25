@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionSitOutside::GetName()
 {
-    return CCharString((const char*)0x012891B8, -1);   // "SG_MINION_SIT_OUTSIDE"
+    return CCharString("SG_MINION_SIT_OUTSIDE", -1);   // "SG_MINION_SIT_OUTSIDE"
 }

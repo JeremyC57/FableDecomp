@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_VillageTaskSecuritySweep::GetName()
 {
-    return CCharString((const char*)0x01289728, -1);   // "SG_VILLAGE_TASK_SECURITY_SWEEP"
+    return CCharString("SG_VILLAGE_TASK_SECURITY_SWEEP", -1);   // "SG_VILLAGE_TASK_SECURITY_SWEEP"
 }

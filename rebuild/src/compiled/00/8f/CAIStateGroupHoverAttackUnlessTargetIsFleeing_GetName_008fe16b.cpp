@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverAttackUnlessTargetIsFleeing::GetName()
 {
-    return CCharString((const char*)0x0128A278, -1);   // "SG_HOVER_ATTACK_UNLESS_TARGET_FLEEING"
+    return CCharString("SG_HOVER_ATTACK_UNLESS_TARGET_FLEEING", -1);   // "SG_HOVER_ATTACK_UNLESS_TARGET_FLEEING"
 }

@@ -27,5 +27,5 @@ public:
 
 CCharString NCreatureAction::CActionEventAddObject::GetHook() const
 {
-    return CCharString((const char*)0x0125C18C, -1);   // "CARRYTHINGADD"
+    return CCharString("CARRYTHINGADD", -1);   // "CARRYTHINGADD"
 }

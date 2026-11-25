@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToCrime::GetName()
 {
-    return CCharString((const char*)0x0128A13C, -1);   // "SG_MINION_REACT_TO_CRIME"
+    return CCharString("SG_MINION_REACT_TO_CRIME", -1);   // "SG_MINION_REACT_TO_CRIME"
 }

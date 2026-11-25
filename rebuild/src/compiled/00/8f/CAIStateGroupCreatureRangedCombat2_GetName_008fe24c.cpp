@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureRangedCombat2::GetName()
 {
-    return CCharString((const char*)0x0128A434, -1);   // "SG_CREATURE_RANGED_COMBAT_TWO"
+    return CCharString("SG_CREATURE_RANGED_COMBAT_TWO", -1);   // "SG_CREATURE_RANGED_COMBAT_TWO"
 }

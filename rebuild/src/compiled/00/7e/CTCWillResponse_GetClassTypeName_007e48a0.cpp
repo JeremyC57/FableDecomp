@@ -22,5 +22,5 @@ public:
 
 CCharString CTCWillResponse::GetClassTypeName()
 {
-	return CCharString((const char*)0x0123e30c, -1);
+	return CCharString("CTCWillResponse", -1);
 }

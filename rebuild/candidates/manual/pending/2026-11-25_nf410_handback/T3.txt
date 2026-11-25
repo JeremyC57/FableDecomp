@@ -1,0 +1,7 @@
+# NF410: rows with a baked string address that a T3_PORT_QUEUE.tsv line names in column 2 or 3; skipped, not touched (lock not taken).
+# address	baked VA(s)	retail text	T3 line(s)
+00406f70	0x0122E05C	'U:\\'	access1 0x00406F70 self respell|access2 0x00406F70 self respell|nf317 0x00406F70 port|nf321 0x00406F70 port|
+008fd4bc	0x01288FF0	'SG_MINION_REACT_TO_CORPSE'	nf406 0x008FD4BC test|
+00aa7230	0x0129E368	'Vertex Buffer Data'	alias1 0x00AA7230 self respell|nf318 0x00AA7230 port|nf321 0x00AA7230 held|nf321 0x00ABEC70 held|
+00abec70	0x0129ED24	'Vertex List'	nf319 0x00ABEC70 port|nf321 0x00ABEC70 held|
+# note for whoever lands 00406f70 after its T3 line: retail bytes at 0x0122E05C are 55 3a 5c 00 = narrow U:\ (one backslash), C spelling "U:\\"; it is a static const pointer (LIT_C), so check for the extra .rdata pointer object (NOTES "Named literal pointers").

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_DeedReactionRoot::GetName()
 {
-    return CCharString((const char*)0x01275988, -1);   // "SG_DEED_REACTION_ROOT"
+    return CCharString("SG_DEED_REACTION_ROOT", -1);   // "SG_DEED_REACTION_ROOT"
 }

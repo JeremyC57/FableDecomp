@@ -15,5 +15,5 @@ struct CActionDoCreatureAction {
 
 CCharString CActionDoCreatureAction::GetActionName()
 {
-    return CCharString((const char*)0x1265850, -1);
+    return CCharString("CActionDoCreatureAction", -1);
 }

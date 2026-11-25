@@ -150,3 +150,18 @@ How many copies of the old stand-in remain, from the census /FORCE link (HEAD: 4
 
 ## Descriptive names
 None. Every self and callee name is a PDB spelling or the repo's STLport spelling of a PDB-typed instance.
+
+## Follow-up after the rulings (coordinator message: b1 / b2 landed as nf409_b1 / nf409_b2)
+- R-NF409-1 ACCEPT. The rawref check passed: retail's own chain is 0x005BF969 -> 0x005C1ECC (call at 0x005BF977) -> 0x005C18C6
+  (0x005C1EF2) -> 0x005C1390 (0x005C18D2). The ??_GCItem copies are now two T3 lines: a `port` line (0x005BF91A, 0x00621A20) and a
+  `lever` line (0x005BF969, 0x005C1ECC) that carries the link-order note.
+- R-NF409-2 ACCEPT. Checks 1-3 passed:
+  1. Without v with the closing pragma, only the vector<CEnginePrimitiveHandle> template chain differs.
+  2. No CompilerFlags on 0x00656EAD, and neither CompilerFlags nor optimize pragmas on 0x0072DB90, 0x0072DBE0 or 0x004A3740. This is now
+     cited in the row's comment (comment-only edit).
+  3. `Sub_destroy` has no other user.
+- Locks 005c1390 and 00656ead are re-claimed as NF409.
+- Re-run on the current tree:
+  - vland HEAD/new, one path per batch (wd_r3*, wd_r4*): RELOCATION_MATCH PASS, no LITERAL_DIFF.
+  - pk_all: 0 NEQ / 0 flips on both the current table and the table with the changes applied.
+  - Census link with b1 / b2 as the baseline: 18 -> 17 duplicates, stand-in definers 2 -> 0, nothing newly unresolved.

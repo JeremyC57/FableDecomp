@@ -19,5 +19,5 @@ class CCharString { public:
 
 CCharString CCombatSequence_TrollOpeningGroundPound::GetName() const
 {
-    return CCharString((const char*)0x1278a48, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_OPENING_GROUND_POUND", -1);
 }

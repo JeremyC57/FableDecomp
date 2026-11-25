@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BirdFlyToFood::GetName()
 {
-    return CCharString((const char*)0x01289604, -1);   // "SG_BIRD_FLY_TO_FOOD"
+    return CCharString("SG_BIRD_FLY_TO_FOOD", -1);   // "SG_BIRD_FLY_TO_FOOD"
 }

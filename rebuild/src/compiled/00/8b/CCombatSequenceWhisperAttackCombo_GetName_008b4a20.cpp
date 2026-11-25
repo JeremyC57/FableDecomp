@@ -27,5 +27,5 @@ public:
 
 CCharString CCombatSequenceWhisperAttackCombo::GetName() const
 {
-    return CCharString((const char*)0x1278d20, -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_ATTACK_COMBO", -1);
 }

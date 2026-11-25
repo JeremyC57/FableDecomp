@@ -17,5 +17,5 @@ public:
 
 CCharString CTCRegionFollower::GetClassTypeName()
 {
-    return CCharString((const char*)0x123c110, -1);
+    return CCharString("CTCRegionFollower", -1);
 }

@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverWanderAroundThing::GetName()
 {
-    return CCharString((const char*)0x0128A238, -1);   // "SG_HOVER_WANDER_AROUND_THING"
+    return CCharString("SG_HOVER_WANDER_AROUND_THING", -1);   // "SG_HOVER_WANDER_AROUND_THING"
 }

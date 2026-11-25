@@ -17,5 +17,5 @@ public:
 
 CCharString CCombatSequence_BanditKingSpinAround::GetName() const
 {
-    return CCharString((const char*)0x12788d8, -1);
+    return CCharString("COMBAT_SEQUENCE_BANDIT_KING_SPIN_AROUND", -1);
 }

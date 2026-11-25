@@ -10,5 +10,5 @@ class CTCBuyableHouse { public:
 
 CCharString CTCBuyableHouse::GetClassTypeName()
 {
-    return CCharString((const char*)0x123a5ec, -1);
+    return CCharString("CTCBuyableHouse", -1);
 }

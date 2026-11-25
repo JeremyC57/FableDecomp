@@ -1,0 +1,92 @@
+addr       parity           behav  name
+006af060   WARN SHARED_HEADER_AVAILABLE CTCRegionFollower (engine/CTCRegionFollower.h)
+006af060   RELOCATION_MATCH PASS   GetClassTypeName
+006c1ae0   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse (engine/CTCBuyableHouse.h)
+006c1ae0   RELOCATION_MATCH PASS   GetClassTypeName
+00702bd0   RELOCATION_MATCH PASS   GetClassTypeName
+00719a50   WARN SHARED_HEADER_AVAILABLE CTCScriptedControl (engine/CTCScriptedControl.h)
+00719a50   RELOCATION_MATCH PASS   GetClassTypeName
+0071b0e0   WARN SHARED_HEADER_AVAILABLE CTCEmoteIcon (engine/CTCEmoteIcon.h)
+0071b0e0   RELOCATION_MATCH PASS   GetClassTypeName
+0072a710   RELOCATION_MATCH PASS   GetClassTypeName
+00730400   WARN SHARED_HEADER_AVAILABLE CTCDummyVillager (engine/CTCDummyVillager.h)
+00730400   RELOCATION_MATCH PASS   GetClassTypeName
+00731a30   WARN SHARED_HEADER_AVAILABLE CTCJackShield (engine/CTCJackShield.h)
+00731a30   RELOCATION_MATCH PASS   GetClassTypeName
+00750a40   WARN SHARED_HEADER_AVAILABLE CTCDiscovery (engine/CTCDiscovery.h)
+00750a40   RELOCATION_MATCH PASS   GetClassTypeName
+00770930   WARN SHARED_HEADER_AVAILABLE CTCWeaponTrail (engine/CTCWeaponTrail.h)
+00770930   RELOCATION_MATCH PASS   GetClassTypeName
+00778be0   RELOCATION_MATCH PASS   GetClassTypeName
+0077bd00   RELOCATION_MATCH PASS   GetClassTypeName
+007b6c70   WARN SHARED_HEADER_AVAILABLE CTCCrateStack (engine/CTCCrateStack.h)
+007b6c70   RELOCATION_MATCH PASS   GetClassTypeName
+007bace0   RELOCATION_MATCH PASS   GetClassTypeName
+007bb610   WARN SHARED_HEADER_AVAILABLE CTCTrespasser (engine/CTCTrespasser.h)
+007bb610   RELOCATION_MATCH PASS   GetClassTypeName
+007c8520   WARN SHARED_HEADER_AVAILABLE CTCHitOnCollision (engine/CTCHitOnCollision.h)
+007c8520   RELOCATION_MATCH PASS   GetClassTypeName
+007d2220   WARN SHARED_HEADER_AVAILABLE CTCTavernGameShoveHaPenny (engine/CTCTavernGameShoveHaPenny.h)
+007d2220   RELOCATION_MATCH PASS   GetClassTypeName
+007d4d70   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCoinGolf (engine/CTCTavernGameCoinGolf.h)
+007d4d70   RELOCATION_MATCH PASS   GetClassTypeName
+007d5ef0   RELOCATION_MATCH PASS   GetClassTypeName
+007d7980   WARN SHARED_HEADER_AVAILABLE CTCTavernGameCardPairs (engine/CTCTavernGameCardPairs.h)
+007d7980   RELOCATION_MATCH PASS   GetClassTypeName
+007d9eb0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+007d9eb0   RELOCATION_MATCH PASS   GetClassTypeName
+007dfab0   WARN SHARED_HEADER_AVAILABLE CTCWallMountEffects (engine/CTCWallMountEffects.h)
+007dfab0   RELOCATION_MATCH PASS   GetClassTypeName
+007dfc60   WARN SHARED_HEADER_AVAILABLE CTCFish (engine/CTCFish.h)
+007dfc60   RELOCATION_MATCH PASS   GetClassTypeName
+007e1a80   RELOCATION_MATCH PASS   GetClassTypeName
+007e26f0   WARN SHARED_HEADER_AVAILABLE CTCElectrocuteOnTouch (engine/CTCElectrocuteOnTouch.h)
+007e26f0   RELOCATION_MATCH PASS   GetClassTypeName
+007e48a0   WARN SHARED_HEADER_AVAILABLE CTCWillResponse (engine/CTCWillResponse.h)
+007e48a0   RELOCATION_MATCH PASS   GetClassTypeName
+00ac1270   RELOCATION_MATCH PASS   GetChunkDescription
+00ac62b0   RELOCATION_MATCH PASS   GetChunkInfo
+00b05a90   RELOCATION_MATCH PASS   GetGUIName
+00b28ca0   WARN SHARED_HEADER_AVAILABLE CEngineComponent (engine/CEngineComponent.h)
+00b28ca0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b5bad0   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter (engine/CEngineScreenEffectColourFilter.h)
+00b5bad0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b619f0   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectGlowRenderer (engine/CEngineScreenEffectGlowRenderer.h)
+00b619f0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00bdb580   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutLights (engine/CEngineVSConstantLayoutLights.h)
+00bdb580   RELOCATION_MATCH PASS   PeekName
+
+WINS: 33
+  006af060 RELOCATION_MATCH CTCRegionFollower::GetClassTypeName
+  006c1ae0 RELOCATION_MATCH CTCBuyableHouse::GetClassTypeName
+  00702bd0 RELOCATION_MATCH CTCDayOrNightOnlySupport::GetClassTypeName
+  00719a50 RELOCATION_MATCH CTCScriptedControl::GetClassTypeName
+  0071b0e0 RELOCATION_MATCH CTCEmoteIcon::GetClassTypeName
+  0072a710 RELOCATION_MATCH CTCActionUseBuyOrSteal::GetClassTypeName
+  00730400 RELOCATION_MATCH CTCDummyVillager::GetClassTypeName
+  00731a30 RELOCATION_MATCH CTCJackShield::GetClassTypeName
+  00750a40 RELOCATION_MATCH CTCDiscovery::GetClassTypeName
+  00770930 RELOCATION_MATCH CTCWeaponTrail::GetClassTypeName
+  00778be0 RELOCATION_MATCH CTCFamilyMember::GetClassTypeName
+  0077bd00 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::GetClassTypeName
+  007b6c70 RELOCATION_MATCH CTCCrateStack::GetClassTypeName
+  007bace0 RELOCATION_MATCH CTCTavern::GetClassTypeName
+  007bb610 RELOCATION_MATCH CTCTrespasser::GetClassTypeName
+  007c8520 RELOCATION_MATCH CTCHitOnCollision::GetClassTypeName
+  007d2220 RELOCATION_MATCH CTCTavernGameShoveHaPenny::GetClassTypeName
+  007d4d70 RELOCATION_MATCH CTCTavernGameCoinGolf::GetClassTypeName
+  007d5ef0 RELOCATION_MATCH CTCTavernGameCardSorting::GetClassTypeName
+  007d7980 RELOCATION_MATCH CTCTavernGameCardPairs::GetClassTypeName
+  007d9eb0 RELOCATION_MATCH CTCTavernGameSpotTheAddition::GetClassTypeName
+  007dfab0 RELOCATION_MATCH CTCWallMountEffects::GetClassTypeName
+  007dfc60 RELOCATION_MATCH CTCFish::GetClassTypeName
+  007e1a80 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::GetClassTypeName
+  007e26f0 RELOCATION_MATCH CTCElectrocuteOnTouch::GetClassTypeName
+  007e48a0 RELOCATION_MATCH CTCWillResponse::GetClassTypeName
+  00ac1270 RELOCATION_MATCH C3DMeshFileMaterialListChunk::GetChunkDescription
+  00ac62b0 RELOCATION_MATCH C3DMeshFileClothChunk::?GetChunkInfo@C3DMeshFileClothChunk@@UBE?BVCCharString@@XZ
+  00b05a90 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?GetGUIName@CPSCRenderMesh@NParticleEngine@@
+  00b28ca0 RELOCATION_MATCH CEngineComponent::GetConsoleEnableFunctionName
+  00b5bad0 RELOCATION_MATCH CEngineScreenEffectColourFilter::GetConsoleEnableFunctionName
+  00b619f0 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::GetConsoleEnableFunctionName
+  00bdb580 RELOCATION_MATCH CEngineVSConstantLayoutLights::PeekName

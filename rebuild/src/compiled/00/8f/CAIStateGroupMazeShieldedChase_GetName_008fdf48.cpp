@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MazeShieldedChase::GetName()
 {
-    return CCharString((const char*)0x01289F60, -1);   // "SG_MAZE_SHIELDED_CHASE"
+    return CCharString("SG_MAZE_SHIELDED_CHASE", -1);   // "SG_MAZE_SHIELDED_CHASE"
 }

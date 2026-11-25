@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_WhisperRetreat::GetName()
 {
-    return CCharString((const char*)0x0128A910, -1);   // "SG_WHISPER_RETREAT"
+    return CCharString("SG_WHISPER_RETREAT", -1);   // "SG_WHISPER_RETREAT"
 }

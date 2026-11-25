@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_EarthTroll::GetName()
 {
-    return CCharString((const char*)0x01289CF8, -1);   // "SG_EARTH_TROLL"
+    return CCharString("SG_EARTH_TROLL", -1);   // "SG_EARTH_TROLL"
 }

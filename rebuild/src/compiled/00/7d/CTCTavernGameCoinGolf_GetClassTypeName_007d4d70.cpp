@@ -8,5 +8,5 @@ class CTCTavernGameCoinGolf { public:
 };
 
 CCharString CTCTavernGameCoinGolf::GetClassTypeName() {
-    return CCharString((const char*)0x123d538, -1);
+    return CCharString("CTCTavernGameCoinGolf", -1);
 }

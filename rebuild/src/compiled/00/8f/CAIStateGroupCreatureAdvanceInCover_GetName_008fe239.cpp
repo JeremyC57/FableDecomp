@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureAdvanceInCover::GetName()
 {
-    return CCharString((const char*)0x0128A414, -1);   // "SG_CREATURE_ADVANCE_IN_COVER"
+    return CCharString("SG_CREATURE_ADVANCE_IN_COVER", -1);   // "SG_CREATURE_ADVANCE_IN_COVER"
 }

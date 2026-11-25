@@ -9,5 +9,5 @@ class CTCJackShield { public:
 
 CCharString CTCJackShield::GetClassTypeName()
 {
-    return CCharString((const char*)0x123a784, -1);
+    return CCharString("CTCJackShield", -1);
 }

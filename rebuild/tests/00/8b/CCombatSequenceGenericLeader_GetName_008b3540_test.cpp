@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* p;
     CCharString(const char* s, long len);
@@ -19,16 +28,16 @@ CCharString::CCharString(const char* s, long len) {
 
 CCharString CCombatSequence_GenericLeader::GetName() const
 {
-    return CCharString((const char*)0x12786d4, -1);
+    return CCharString("COMBAT_SEQUENCE_GENERIC_LEADER", -1);
 }
 
 int main()
 {
     CCombatSequence_GenericLeader obj;
     CCharString r = obj.GetName();
-    bool ok = (g_lastStr == (const char*)0x12786d4)
+    bool ok = (RetailTextEquals(g_lastStr, "COMBAT_SEQUENCE_GENERIC_LEADER"))
            && (g_lastLen == -1)
-           && (r.p == (char*)0x12786d4);
+           && (RetailTextEquals(r.p, "COMBAT_SEQUENCE_GENERIC_LEADER"));
     if (ok) printf("008b3540_TEST PASS\n");
     else    printf("008b3540_TEST FAIL str=%p len=%d p=%p\n", g_lastStr, g_lastLen, r.p);
     return 0;

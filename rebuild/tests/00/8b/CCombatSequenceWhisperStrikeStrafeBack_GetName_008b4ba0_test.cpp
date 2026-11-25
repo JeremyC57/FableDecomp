@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* m_data;
 };
@@ -23,7 +32,7 @@ struct CCombatSequenceWhisperStrikeStrafeBack {
 CCharString CCombatSequenceWhisperStrikeStrafeBack::GetName()
 {
     CCharString ret;
-    CCharString_ctor(&ret, 0, (const char*)0x1278d6c, -1);
+    CCharString_ctor(&ret, 0, "COMBAT_SEQUENCE_WHISPER_STRIKE_STRAFE_BACK", -1);
     return ret;
 }
 
@@ -33,8 +42,8 @@ int main()
     CCharString s = obj.GetName();
 
     int ok = 1;
-    if (s.m_data != (char*)0x1278d6c) ok = 0;
-    if (g_last_str != (const char*)0x1278d6c) ok = 0;
+    if (!RetailTextEquals(s.m_data, "COMBAT_SEQUENCE_WHISPER_STRIKE_STRAFE_BACK")) ok = 0;
+    if (!RetailTextEquals(g_last_str, "COMBAT_SEQUENCE_WHISPER_STRIKE_STRAFE_BACK")) ok = 0;
     if (g_last_len != -1) ok = 0;
 
     if (ok) printf("WHISPERSTRAFEBACK_GETNAME_OK\n");

@@ -11,5 +11,5 @@ public:
 
 CCharString CTCEmoteIcon::GetClassTypeName()
 {
-    return CCharString((const char*)0x123b314, -1);
+    return CCharString("CTCEmoteIcon", -1);
 }

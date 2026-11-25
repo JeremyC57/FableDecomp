@@ -9,7 +9,6 @@ class CCharString { public:
     CCharString(const char* s, long len);
 };
 
-static const char* const kActionNameLit = (const char*)0x0123cb18;
 
 class CTCTrespasser { public:
     CCharString GetClassTypeName();
@@ -17,5 +16,5 @@ class CTCTrespasser { public:
 
 CCharString CTCTrespasser::GetClassTypeName()
 {
-    return CCharString(kActionNameLit, -1);
+    return CCharString("CTCTrespasser", -1);
 }

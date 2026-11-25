@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_KidHurtSelfRunToMother::GetName()
 {
-    return CCharString((const char*)0x01289800, -1);   // "SG_KID_HURT_SELF_RUN_TO_MOTHER"
+    return CCharString("SG_KID_HURT_SELF_RUN_TO_MOTHER", -1);   // "SG_KID_HURT_SELF_RUN_TO_MOTHER"
 }

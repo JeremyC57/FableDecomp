@@ -13,5 +13,5 @@ struct CActionTurnToFacePosition {
 }
 
 CCharString NTCScriptedControl::CActionTurnToFacePosition::GetActionName() {
-    return CCharString((const char*)0x126554c, -1);
+    return CCharString("CActionTurnToFacePosition", -1);
 }

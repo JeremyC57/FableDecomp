@@ -21,5 +21,5 @@ public:
 
 CCharString NTCScriptedControl::CActionTalkToThing::GetActionName()
 {
-    return CCharString((const char*)0x12659e4, -1);
+    return CCharString("CActionTalkToThing", -1);
 }

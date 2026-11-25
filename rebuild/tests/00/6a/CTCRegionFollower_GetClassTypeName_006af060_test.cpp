@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     char* p;
     CCharString(const char* s, long len) { p = (char*)s; last_len = len; }
@@ -18,14 +27,14 @@ public:
 
 CCharString CTCRegionFollower::GetClassTypeName()
 {
-    return CCharString((const char*)0x123c110, -1);
+    return CCharString("CTCRegionFollower", -1);
 }
 
 int main()
 {
     CTCRegionFollower a;
     CCharString r = a.GetClassTypeName();
-    bool ok = (r.p == (char*)0x123c110);
+    bool ok = (RetailTextEquals(r.p, "CTCRegionFollower"));
     if (ok) printf("006af060_TEST PASS\n");
     else printf("FAIL p=%p\n", r.p);
     return 0;

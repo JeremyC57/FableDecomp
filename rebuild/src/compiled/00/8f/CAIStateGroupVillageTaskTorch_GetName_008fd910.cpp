@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_VillageTaskTorch::GetName()
 {
-    return CCharString((const char*)0x012896F8, -1);   // "SG_VILLAGE_TASK_TORCH"
+    return CCharString("SG_VILLAGE_TASK_TORCH", -1);   // "SG_VILLAGE_TASK_TORCH"
 }

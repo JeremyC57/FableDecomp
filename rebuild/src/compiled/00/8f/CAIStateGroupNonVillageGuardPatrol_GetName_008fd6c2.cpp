@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_NonVillageGuardPatrol::GetName()
 {
-    return CCharString((const char*)0x01289340, -1);   // "SG_NON_VILLAGE_GUARD_PATROL"
+    return CCharString("SG_NON_VILLAGE_GUARD_PATROL", -1);   // "SG_NON_VILLAGE_GUARD_PATROL"
 }

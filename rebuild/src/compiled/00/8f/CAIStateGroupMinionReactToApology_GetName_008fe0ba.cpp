@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToApology::GetName()
 {
-    return CCharString((const char*)0x0128A17C, -1);   // "SG_MINION_REACT_TO_APOLOGY"
+    return CCharString("SG_MINION_REACT_TO_APOLOGY", -1);   // "SG_MINION_REACT_TO_APOLOGY"
 }

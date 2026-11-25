@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_LightWorkCandle::GetName()
 {
-    return CCharString((const char*)0x01289B88, -1);   // "SG_WORK_CANDLE"
+    return CCharString("SG_WORK_CANDLE", -1);   // "SG_WORK_CANDLE"
 }

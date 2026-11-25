@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionWatchFires::GetName()
 {
-    return CCharString((const char*)0x01288FD8, -1);   // "SG_MINION_WATCH_FIRES"
+    return CCharString("SG_MINION_WATCH_FIRES", -1);   // "SG_MINION_WATCH_FIRES"
 }

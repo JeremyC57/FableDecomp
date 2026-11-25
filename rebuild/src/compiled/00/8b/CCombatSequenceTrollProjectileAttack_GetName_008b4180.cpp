@@ -27,5 +27,5 @@ public:
 
 CCharString CCombatSequence_TrollProjectileAttack::GetName() const
 {
-    return CCharString((const char*)0x1278a74, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_PROJECTILE_ATTACK", -1);
 }

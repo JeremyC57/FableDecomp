@@ -21,5 +21,5 @@ class CTCHitOnCollision
 
 CCharString CTCHitOnCollision::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123d1d8, -1);
+    return CCharString("CTCHitOnCollision", -1);
 }

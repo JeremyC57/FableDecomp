@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ScorpionKing::GetName()
 {
-    return CCharString((const char*)0x0128A7D0, -1);   // "SG_SCORPION_KING"
+    return CCharString("SG_SCORPION_KING", -1);   // "SG_SCORPION_KING"
 }

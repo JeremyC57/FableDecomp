@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CarryCrateAndFollow::GetName()
 {
-    return CCharString((const char*)0x0128A8B8, -1);   // "SG_CARRY_CRATE_AND_FOLLOW"
+    return CCharString("SG_CARRY_CRATE_AND_FOLLOW", -1);   // "SG_CARRY_CRATE_AND_FOLLOW"
 }

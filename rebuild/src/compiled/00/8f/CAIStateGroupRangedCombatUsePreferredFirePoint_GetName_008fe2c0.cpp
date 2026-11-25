@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_RangedCombatUsePreferredFirePoint::GetName()
 {
-    return CCharString((const char*)0x0128A538, -1);   // "SG_CREATURE_RANGED_COMBAT_USE_PREFERRED_FIRE_POINT"
+    return CCharString("SG_CREATURE_RANGED_COMBAT_USE_PREFERRED_FIRE_POINT", -1);   // "SG_CREATURE_RANGED_COMBAT_USE_PREFERRED_FIRE_POINT"
 }

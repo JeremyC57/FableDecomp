@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MeleeCombatNearby::GetName()
 {
-    return CCharString((const char*)0x01278124, -1);   // "SG_MELEE_COMBAT_NEARBY"
+    return CCharString("SG_MELEE_COMBAT_NEARBY", -1);   // "SG_MELEE_COMBAT_NEARBY"
 }

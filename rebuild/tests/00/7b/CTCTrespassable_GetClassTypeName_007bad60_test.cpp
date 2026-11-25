@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 // Model of CCharString: records the (ptr,len) it was constructed with.
 static const char* g_lastPtr = 0;
 static int g_lastLen = 999;
@@ -16,7 +25,7 @@ public:
 
 // The literal the retail function feeds to the ctor.
 static const char* const kActionNameLiteral =
-    reinterpret_cast<const char*>(0x0123cb08);
+    "CTCTrespassable";
 
 class CTCTrespassable
 {
@@ -34,7 +43,7 @@ int main()
     CTCTrespassable obj;
     obj.GetClassTypeName();
 
-    bool ok = (g_lastPtr == reinterpret_cast<const char*>(0x0123cb08)) &&
+    bool ok = (RetailTextEquals(g_lastPtr, "CTCTrespassable")) &&
               (g_lastLen == -1);
 
     if (ok)

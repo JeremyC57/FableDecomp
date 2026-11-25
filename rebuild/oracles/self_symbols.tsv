@@ -27247,3 +27247,5 @@ address	symbol	status	leaf_given
 00c5e4a0	??_GCSalThread@@UAEPAXI@Z	RELOCATION_MATCH	??_GCSalThread@@UAEPAXI@Z
 004da6a9	??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z	RELOCATION_MATCH	??_G?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@QAEPAXI@Z
 004e41a1	??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z	RELOCATION_MATCH	??_G?$pair@$$CBW4EObjectAugmentationType@@VCObjectAugmentationParticleSet@@@std@@QAEPAXI@Z
+005c1390	??_GCItem@NInventory@@QAEPAXI@Z	RELOCATION_MATCH	??_GCItem@NInventory@@QAEPAXI@Z
+00656ead	??_GCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@QAEPAXI@Z	RELOCATION_MATCH	??_GCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@QAEPAXI@Z

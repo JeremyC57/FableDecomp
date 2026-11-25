@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ThrowLogsOnFire::GetName()
 {
-    return CCharString((const char*)0x012899A8, -1);   // "SG_THROW_LOGS_ON_FIRE"
+    return CCharString("SG_THROW_LOGS_ON_FIRE", -1);   // "SG_THROW_LOGS_ON_FIRE"
 }

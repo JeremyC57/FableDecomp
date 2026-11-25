@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BanditKingCharge::GetName()
 {
-    return CCharString((const char*)0x0128A724, -1);   // "SG_BANDIT_KING_CHARGE"
+    return CCharString("SG_BANDIT_KING_CHARGE", -1);   // "SG_BANDIT_KING_CHARGE"
 }

@@ -24,5 +24,5 @@ public:
 
 CCharString CCombatSequence_TrollRockThrowRock::GetName() const
 {
-	return CCharString((const char*)0x01278b60, -1);
+	return CCharString("COMBAT_SEQUENCE_TROLL_ROCK_THROW_ROCK", -1);
 }

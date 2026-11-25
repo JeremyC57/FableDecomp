@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SeekEnemy::GetName()
 {
-    return CCharString((const char*)0x0127813C, -1);   // "SG_SEEK_ENEMY"
+    return CCharString("SG_SEEK_ENEMY", -1);   // "SG_SEEK_ENEMY"
 }

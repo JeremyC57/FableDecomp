@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ApprenticeHero::GetName()
 {
-    return CCharString((const char*)0x0128AEAC, -1);   // "SG_APPRENTICE_HERO"
+    return CCharString("SG_APPRENTICE_HERO", -1);   // "SG_APPRENTICE_HERO"
 }

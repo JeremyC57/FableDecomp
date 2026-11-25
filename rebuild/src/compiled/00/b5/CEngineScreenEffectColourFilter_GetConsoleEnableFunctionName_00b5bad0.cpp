@@ -35,5 +35,5 @@ public:
 
 CCharString CEngineScreenEffectColourFilter::GetConsoleEnableFunctionName()
 {
-    return CCharString((const char*)0x12a2600, -1);
+    return CCharString("EnableScreenEffectColourFilter", -1);
 }

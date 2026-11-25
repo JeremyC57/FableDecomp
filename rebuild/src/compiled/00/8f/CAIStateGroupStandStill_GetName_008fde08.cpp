@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_StandStill::GetName()
 {
-    return CCharString((const char*)0x01289D74, -1);   // "SG_STAND_STILL"
+    return CCharString("SG_STAND_STILL", -1);   // "SG_STAND_STILL"
 }

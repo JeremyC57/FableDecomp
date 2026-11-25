@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ChickenPanic::GetName()
 {
-    return CCharString((const char*)0x012894B0, -1);   // "SG_CHICKEN_PANIC"
+    return CCharString("SG_CHICKEN_PANIC", -1);   // "SG_CHICKEN_PANIC"
 }

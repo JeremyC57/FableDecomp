@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionBehaviourSad::GetName()
 {
-    return CCharString((const char*)0x0128A064, -1);   // "SG_MINION_BEHAVIOUR_SAD"
+    return CCharString("SG_MINION_BEHAVIOUR_SAD", -1);   // "SG_MINION_BEHAVIOUR_SAD"
 }

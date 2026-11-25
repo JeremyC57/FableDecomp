@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::GetName()
 {
-    return CCharString((const char*)0x0128A56C, -1);   // "SG_CREATURE_RANGED_COMBAT_FIRE_AT_SPECIFIC_TARGETS"
+    return CCharString("SG_CREATURE_RANGED_COMBAT_FIRE_AT_SPECIFIC_TARGETS", -1);   // "SG_CREATURE_RANGED_COMBAT_FIRE_AT_SPECIFIC_TARGETS"
 }

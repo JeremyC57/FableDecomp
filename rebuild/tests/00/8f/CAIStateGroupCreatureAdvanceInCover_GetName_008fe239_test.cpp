@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString
 {
 public:
@@ -26,7 +35,7 @@ int main()
         CCharString name = CAIStateGroup_CreatureAdvanceInCover::GetName();
         if (g_ctorCount != 1 || name.PStringData != &name) { std::printf("BAD_IDENTITY\n"); return 1; }
         if (g_seenLength != -1) { std::printf("BAD_LEN\n"); return 1; }
-        if (g_seenText != (const char*)0x0128A414) { std::printf("BAD_TEXT\n"); return 1; }
+        if (!RetailTextEquals(g_seenText, "SG_CREATURE_ADVANCE_IN_COVER")) { std::printf("BAD_TEXT\n"); return 1; }
     }
     std::printf("GETACTIONNAME_008fe239_OK\n");
     return 0;

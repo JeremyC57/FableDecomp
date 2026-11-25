@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_GoToBed::GetName()
 {
-    return CCharString((const char*)0x01288C98, -1);   // "SG_MINION_GO_TO_BED"
+    return CCharString("SG_MINION_GO_TO_BED", -1);   // "SG_MINION_GO_TO_BED"
 }

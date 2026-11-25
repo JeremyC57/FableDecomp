@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_RecoverStealableItem::GetName()
 {
-    return CCharString((const char*)0x0128A89C, -1);   // "SG_RECOVER_STEALABLE_ITEM"
+    return CCharString("SG_RECOVER_STEALABLE_ITEM", -1);   // "SG_RECOVER_STEALABLE_ITEM"
 }

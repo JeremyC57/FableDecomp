@@ -22,5 +22,5 @@ public:
 // member => this in ecx, hidden ret ptr on stack => ret 4
 CCharString NTCScriptedControl::CActionSummonerLightningAttackTarget::GetActionName()
 {
-    return CCharString((const char*)0x1265884, -1);
+    return CCharString("CActionSummonerLightningAttackTarget", -1);
 }

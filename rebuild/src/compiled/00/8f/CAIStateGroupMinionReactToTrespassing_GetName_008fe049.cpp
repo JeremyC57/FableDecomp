@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToTrespassing::GetName()
 {
-    return CCharString((const char*)0x0128A0C4, -1);   // "SG_MINION_REACT_TO_TRESPASSING"
+    return CCharString("SG_MINION_REACT_TO_TRESPASSING", -1);   // "SG_MINION_REACT_TO_TRESPASSING"
 }

@@ -1,6 +1,15 @@
 #include <cstdio>
 #include <cstring>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 // ---- reproduce the source under test (self-contained) ----
 class CCharString
 {
@@ -30,7 +39,7 @@ public:
 
 CCharString CTCWillResponse::GetClassTypeName()
 {
-	return CCharString((const char*)0x0123e30c, -1);
+	return CCharString("CTCWillResponse", -1);
 }
 
 int main()
@@ -39,9 +48,9 @@ int main()
 	CCharString s = obj.GetClassTypeName();
 
 	bool ok = true;
-	if (g_lastStr != (const char*)0x0123e30c) ok = false;
+	if (!RetailTextEquals(g_lastStr, "CTCWillResponse")) ok = false;
 	if (g_lastLen != -1) ok = false;
-	if (s.data() != (const char*)0x0123e30c) ok = false;
+	if (!RetailTextEquals(s.data(), "CTCWillResponse")) ok = false;
 
 	if (ok)
 		printf("GETACTIONNAME_OK\n");

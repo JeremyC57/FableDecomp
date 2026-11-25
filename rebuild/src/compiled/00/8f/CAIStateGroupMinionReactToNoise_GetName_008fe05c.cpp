@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionReactToNoise::GetName()
 {
-    return CCharString((const char*)0x0128A0E4, -1);   // "SG_MINION_REACT_TO_NOISE"
+    return CCharString("SG_MINION_REACT_TO_NOISE", -1);   // "SG_MINION_REACT_TO_NOISE"
 }

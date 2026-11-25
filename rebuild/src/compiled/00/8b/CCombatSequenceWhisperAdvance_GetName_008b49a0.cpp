@@ -17,9 +17,8 @@ class CCharString { public:
 };
 
 // literal pointer baked in retail as 0x1278d00
-static const char* const kName = (const char*)0x1278d00;
 
 CCharString CCombatSequenceWhisperAdvance::GetName() const
 {
-    return CCharString(kName, -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_ADVANCE", -1);
 }

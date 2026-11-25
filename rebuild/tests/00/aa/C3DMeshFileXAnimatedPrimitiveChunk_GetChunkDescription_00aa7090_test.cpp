@@ -7,6 +7,15 @@
 
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 static const char* g_lastPtr = 0;
 static int         g_lastLen = 0;
 
@@ -32,7 +41,7 @@ public:
 
 CCharString C3DMeshFileXAnimatedPrimitiveChunk::GetChunkDescription() const
 {
-    return CCharString((const char*)0x129e2a4, -1);
+    return CCharString("Animated Primitive", -1);
 }
 
 int main()
@@ -40,7 +49,7 @@ int main()
     C3DMeshFileXAnimatedPrimitiveChunk chunk;
     chunk.GetChunkDescription();
 
-    if (g_lastPtr == (const char*)0x129e2a4 && g_lastLen == -1)
+    if (RetailTextEquals(g_lastPtr, "Animated Primitive") && g_lastLen == -1)
     {
         printf("GETCHUNKDESC_OK\n");
         return 0;

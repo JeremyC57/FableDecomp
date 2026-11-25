@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_FireflyWander::GetName()
 {
-    return CCharString((const char*)0x01289560, -1);   // "SG_FIREFLY_WANDER"
+    return CCharString("SG_FIREFLY_WANDER", -1);   // "SG_FIREFLY_WANDER"
 }

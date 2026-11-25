@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_OpinionReactionRoot::GetName()
 {
-    return CCharString((const char*)0x0125FD40, -1);   // "SG_OPINION_REACTION_ROOT"
+    return CCharString("SG_OPINION_REACTION_ROOT", -1);   // "SG_OPINION_REACTION_ROOT"
 }

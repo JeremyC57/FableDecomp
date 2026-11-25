@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BalverineJumpAtFleeingEnemy::GetName()
 {
-    return CCharString((const char*)0x01289E28, -1);   // "SG_BALVERINE_JUMP_AT_FLEEING_ENEMY"
+    return CCharString("SG_BALVERINE_JUMP_AT_FLEEING_ENEMY", -1);   // "SG_BALVERINE_JUMP_AT_FLEEING_ENEMY"
 }

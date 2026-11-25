@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionSitAtHome::GetName()
 {
-    return CCharString((const char*)0x012891D0, -1);   // "SG_MINION_SIT_AT_HOME"
+    return CCharString("SG_MINION_SIT_AT_HOME", -1);   // "SG_MINION_SIT_AT_HOME"
 }

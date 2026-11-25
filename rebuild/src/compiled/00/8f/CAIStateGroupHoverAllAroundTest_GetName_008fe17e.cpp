@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverAllAroundTest::GetName()
 {
-    return CCharString((const char*)0x0128A2A0, -1);   // "SG_HOVER_ALL_AROUND_TEST"
+    return CCharString("SG_HOVER_ALL_AROUND_TEST", -1);   // "SG_HOVER_ALL_AROUND_TEST"
 }

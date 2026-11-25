@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?Sub_destroy@@YIXPAUSub@@@Z	00440c40	00656ead	NF409 b4: 0x00656EAD ported onto engine/NPlayerGui_CDrawQuestInfo.h; its +0x10 call is ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ, already bound at 00440c40 (witness 0057846f); this row was the only witness of the stand-in

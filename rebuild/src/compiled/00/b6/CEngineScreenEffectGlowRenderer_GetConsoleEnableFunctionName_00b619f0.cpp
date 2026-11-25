@@ -34,5 +34,5 @@ public:
 
 CCharString CEngineScreenEffectGlowRenderer::GetConsoleEnableFunctionName()
 {
-    return CCharString((const char*)0x12a2804, -1);
+    return CCharString("EnableScreenEffectGlowRenderer", -1);
 }

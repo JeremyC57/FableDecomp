@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionListenToStory::GetName()
 {
-    return CCharString((const char*)0x01289160, -1);   // "SG_MINION_LISTEN_TO_STORY"
+    return CCharString("SG_MINION_LISTEN_TO_STORY", -1);   // "SG_MINION_LISTEN_TO_STORY"
 }

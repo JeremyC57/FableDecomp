@@ -21,5 +21,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_VillageTaskPatrol::GetName()
 {
-    return CCharString((const char*)0x01289710, -1);   // "SG_VILLAGE_TASK_PATROL"
+    return CCharString("SG_VILLAGE_TASK_PATROL", -1);   // "SG_VILLAGE_TASK_PATROL"
 }

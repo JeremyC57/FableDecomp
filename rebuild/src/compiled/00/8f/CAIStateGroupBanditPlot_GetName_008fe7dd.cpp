@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BanditPlot::GetName()
 {
-    return CCharString((const char*)0x0128AD9C, -1);   // "SG_BANDIT_PLOT"
+    return CCharString("SG_BANDIT_PLOT", -1);   // "SG_BANDIT_PLOT"
 }

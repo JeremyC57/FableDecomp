@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HandyMan::GetName()
 {
-    return CCharString((const char*)0x01289C8C, -1);   // "SG_HANDY_MAN"
+    return CCharString("SG_HANDY_MAN", -1);   // "SG_HANDY_MAN"
 }

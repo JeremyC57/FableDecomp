@@ -15,5 +15,5 @@ struct CActionEventCameraShake {
 
 CCharString NCreatureAction::CActionEventCameraShake::GetHook()
 {
-    return CCharString((const char*)0x125c110, -1);
+    return CCharString("RUMBLE", -1);
 }

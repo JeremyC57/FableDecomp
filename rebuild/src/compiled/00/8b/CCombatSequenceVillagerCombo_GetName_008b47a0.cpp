@@ -27,5 +27,5 @@ public:
 
 CCharString CCombatSequence_VillagerCombo::GetName() const
 {
-    return CCharString((const char*)0x1278c5c, -1);
+    return CCharString("COMBAT_SEQUENCE_VILLAGER_COMBO_ATTACK", -1);
 }

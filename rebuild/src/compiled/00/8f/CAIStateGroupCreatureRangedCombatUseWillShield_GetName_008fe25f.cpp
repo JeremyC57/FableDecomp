@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CreatureRangedCombatUseWillShield::GetName()
 {
-    return CCharString((const char*)0x0128A454, -1);   // "SG_CREATURE_RANGED_COMBAT_USE_WILL_SHIELD"
+    return CCharString("SG_CREATURE_RANGED_COMBAT_USE_WILL_SHIELD", -1);   // "SG_CREATURE_RANGED_COMBAT_USE_WILL_SHIELD"
 }

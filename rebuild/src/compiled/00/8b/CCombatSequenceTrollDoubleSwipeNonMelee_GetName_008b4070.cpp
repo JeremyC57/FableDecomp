@@ -6,4 +6,4 @@
 #include "engine/CCombatSequence_TrollDoubleSwipeNonMelee.h"
 
 class CCharString { public: char* p; CCharString(const char*, long); };
-CCharString CCombatSequence_TrollDoubleSwipeNonMelee::GetName() const { return CCharString((const char*)0x1278a18, -1); }
+CCharString CCombatSequence_TrollDoubleSwipeNonMelee::GetName() const { return CCharString("COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE_NON_MELEE", -1); }

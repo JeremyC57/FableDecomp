@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_KrakenAttack::GetName()
 {
-    return CCharString((const char*)0x0128AADC, -1);   // "SG_KRAKEN_ATTACK"
+    return CCharString("SG_KRAKEN_ATTACK", -1);   // "SG_KRAKEN_ATTACK"
 }

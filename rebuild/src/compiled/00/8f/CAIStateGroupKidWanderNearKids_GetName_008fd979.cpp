@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_KidWanderNearKids::GetName()
 {
-    return CCharString((const char*)0x0128977C, -1);   // "SG_KID_WANDER_NEAR_KIDS"
+    return CCharString("SG_KID_WANDER_NEAR_KIDS", -1);   // "SG_KID_WANDER_NEAR_KIDS"
 }

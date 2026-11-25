@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_IceTrollPoundGroundAttack::GetName()
 {
-    return CCharString((const char*)0x0128A790, -1);   // "SG_ICE_TROLL_POUND_GROUND_ATTACK"
+    return CCharString("SG_ICE_TROLL_POUND_GROUND_ATTACK", -1);   // "SG_ICE_TROLL_POUND_GROUND_ATTACK"
 }

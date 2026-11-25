@@ -21,14 +21,14 @@ class CActionDoCreatureAction { };
 
 CCharString __fastcall CActionDoCreatureAction_GetActionName(CActionDoCreatureAction* /*self*/)
 {
-    return CCharString("DoCreatureAction", -1);
+    return CCharString("SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL", -1);
 }
 
 int main()
 {
     CActionDoCreatureAction a;
     CCharString s = CActionDoCreatureAction_GetActionName(&a);
-    if (strcmp(s.m_data, "DoCreatureAction") == 0)
+    if (strcmp(s.m_data, "SG_MINION_BEHAVIOUR_PODIUM_EMOTE_NEUTRAL") == 0)
         printf("GETACTIONNAME_PASS\n");
     else
         printf("FAIL:%s\n", s.m_data);

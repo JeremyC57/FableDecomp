@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionWander::GetName()
 {
-    return CCharString((const char*)0x01288C48, -1);   // "SG_MINION_WANDER"
+    return CCharString("SG_MINION_WANDER", -1);   // "SG_MINION_WANDER"
 }

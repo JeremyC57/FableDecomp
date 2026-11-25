@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionWalkToMarker::GetName()
 {
-    return CCharString((const char*)0x0128A82C, -1);   // "SG_MINION_WALK_TO_MARKER"
+    return CCharString("SG_MINION_WALK_TO_MARKER", -1);   // "SG_MINION_WALK_TO_MARKER"
 }

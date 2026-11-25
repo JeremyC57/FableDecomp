@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_Freeze::GetName()
 {
-    return CCharString((const char*)0x0128A94C, -1);   // "SG_FREEZE"
+    return CCharString("SG_FREEZE", -1);   // "SG_FREEZE"
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BoastingCrowdMember::GetName()
 {
-    return CCharString((const char*)0x0128A690, -1);   // "SG_BOASTING_CROWD_MEMBER"
+    return CCharString("SG_BOASTING_CROWD_MEMBER", -1);   // "SG_BOASTING_CROWD_MEMBER"
 }

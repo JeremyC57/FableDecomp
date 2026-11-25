@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionHasInformation::GetName()
 {
-    return CCharString((const char*)0x012890A8, -1);   // "SG_MINION_HAS_INFORMATION"
+    return CCharString("SG_MINION_HAS_INFORMATION", -1);   // "SG_MINION_HAS_INFORMATION"
 }

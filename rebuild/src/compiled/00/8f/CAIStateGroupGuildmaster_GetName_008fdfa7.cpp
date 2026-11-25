@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_Guildmaster::GetName()
 {
-    return CCharString((const char*)0x0128A008, -1);   // "SG_GUILDMASTER"
+    return CCharString("SG_GUILDMASTER", -1);   // "SG_GUILDMASTER"
 }

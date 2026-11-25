@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_TestTestTest::GetName()
 {
-    return CCharString((const char*)0x0128A4BC, -1);   // "SG_CREATURE_TEST_TEST_TEST"
+    return CCharString("SG_CREATURE_TEST_TEST_TEST", -1);   // "SG_CREATURE_TEST_TEST_TEST"
 }

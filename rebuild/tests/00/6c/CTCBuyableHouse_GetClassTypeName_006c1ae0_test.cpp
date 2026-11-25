@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString { public:
     int dummy;
     CCharString(const char* lit, long len);
@@ -21,14 +30,14 @@ class CTCBuyableHouse { public:
 
 CCharString CTCBuyableHouse::GetClassTypeName()
 {
-    return CCharString((const char*)0x123a5ec, -1);
+    return CCharString("CTCBuyableHouse", -1);
 }
 
 int main()
 {
     CTCBuyableHouse act;
     CCharString r = act.GetClassTypeName();
-    if (g_lit == (const char*)0x123a5ec && g_len == -1 && r.dummy == 0x1234)
+    if (RetailTextEquals(g_lit, "CTCBuyableHouse") && g_len == -1 && r.dummy == 0x1234)
         printf("006c1ae0_TEST PASS\n");
     else
         printf("FAIL lit=%p len=%d dummy=%x\n", g_lit, g_len, r.dummy);

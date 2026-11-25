@@ -1,5 +1,14 @@
 #include <cstdio>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 static const char* g_lastS;
 static int g_lastLen;
 
@@ -22,16 +31,16 @@ struct CCombatSequence_TrollOpeningGroundPound {
 
 CCharString CCombatSequence_TrollOpeningGroundPound::GetName() const
 {
-    return CCharString((const char*)0x1278a48, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_OPENING_GROUND_POUND", -1);
 }
 
 int main()
 {
     CCombatSequence_TrollOpeningGroundPound obj;
     CCharString r = obj.GetName();
-    bool ok = (g_lastS == (const char*)0x1278a48)
+    bool ok = (RetailTextEquals(g_lastS, "COMBAT_SEQUENCE_TROLL_OPENING_GROUND_POUND"))
            && (g_lastLen == -1)
-           && (r.p == (void*)0x1278a48);
+           && (RetailTextEquals(r.p, "COMBAT_SEQUENCE_TROLL_OPENING_GROUND_POUND"));
     if (ok) printf("GETNAME_GROUNDPOUND_OK\n");
     else    printf("FAIL s=%p len=%d p=%p\n", g_lastS, g_lastLen, r.p);
     return ok ? 0 : 1;

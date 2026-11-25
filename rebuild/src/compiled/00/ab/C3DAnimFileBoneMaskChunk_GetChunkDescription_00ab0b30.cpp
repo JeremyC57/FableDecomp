@@ -12,7 +12,6 @@ private:
 };
 
 // The string literal lives at 0x0129e9ac in the retail image.
-static const char* const kDesc = (const char*)0x0129e9ac;
 
 class C3DAnimFileBoneMaskChunk {
 public:
@@ -21,5 +20,5 @@ public:
 
 const CCharString C3DAnimFileBoneMaskChunk::GetChunkDescription() const
 {
-    return CCharString(kDesc, -1);
+    return CCharString("Animation Mask", -1);
 }

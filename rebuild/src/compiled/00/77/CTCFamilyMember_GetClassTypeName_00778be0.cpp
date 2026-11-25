@@ -20,5 +20,5 @@ public:
 
 CCharString CTCFamilyMember::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123b918, -1);
+    return CCharString("CTCFamilyMember", -1);
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_NymphFloatAround::GetName()
 {
-    return CCharString((const char*)0x01289E4C, -1);   // "SG_NYMPH_FLOAT_AROUND"
+    return CCharString("SG_NYMPH_FLOAT_AROUND", -1);   // "SG_NYMPH_FLOAT_AROUND"
 }

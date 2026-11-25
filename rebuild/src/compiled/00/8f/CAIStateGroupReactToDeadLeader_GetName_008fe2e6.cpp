@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ReactToDeadLeader::GetName()
 {
-    return CCharString((const char*)0x0128A5A0, -1);   // "SG_REACT_TO_DEAD_LEADER"
+    return CCharString("SG_REACT_TO_DEAD_LEADER", -1);   // "SG_REACT_TO_DEAD_LEADER"
 }

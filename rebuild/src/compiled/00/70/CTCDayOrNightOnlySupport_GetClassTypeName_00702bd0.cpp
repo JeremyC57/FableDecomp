@@ -9,5 +9,5 @@ class CTCDayOrNightOnlySupport { public:
 
 CCharString CTCDayOrNightOnlySupport::GetClassTypeName()
 {
-    return CCharString((const char*)0x123c158, -1);
+    return CCharString("CTCDayOrNightOnlySupport", -1);
 }

@@ -15,5 +15,5 @@ public:
 
 CCharString CCombatSequence_TrollRockShuffleBack::GetName() const
 {
-    return CCharString((const char*)0x1278ba8, -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_ROCK_SHUFFLE_BACK", -1);
 }

@@ -35,5 +35,5 @@
 
 const CCharString C3DAnimFileMovementVectorChunk::GetChunkInfo() const
 {
-    return CCharString((const char*)0x122d70e, -1);
+    return CCharString("", -1);
 }

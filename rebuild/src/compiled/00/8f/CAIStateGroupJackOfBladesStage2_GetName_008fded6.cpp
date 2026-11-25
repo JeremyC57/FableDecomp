@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_JackOfBladesStage2::GetName()
 {
-    return CCharString((const char*)0x01289EDC, -1);   // "SG_JACK_OF_BLADES_STAGE2"
+    return CCharString("SG_JACK_OF_BLADES_STAGE2", -1);   // "SG_JACK_OF_BLADES_STAGE2"
 }

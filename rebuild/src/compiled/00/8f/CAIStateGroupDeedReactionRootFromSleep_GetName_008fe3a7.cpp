@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_DeedReactionRootFromSleep::GetName()
 {
-    return CCharString((const char*)0x0128A6AC, -1);   // "SG_DEED_REACTION_ROOT_FROM_SLEEP"
+    return CCharString("SG_DEED_REACTION_ROOT_FROM_SLEEP", -1);   // "SG_DEED_REACTION_ROOT_FROM_SLEEP"
 }

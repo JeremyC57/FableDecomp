@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MazeRangedCombat::GetName()
 {
-    return CCharString((const char*)0x01289F28, -1);   // "SG_MAZE_RANGED_COMBAT"
+    return CCharString("SG_MAZE_RANGED_COMBAT", -1);   // "SG_MAZE_RANGED_COMBAT"
 }

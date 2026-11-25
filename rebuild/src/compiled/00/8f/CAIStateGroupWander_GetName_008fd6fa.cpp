@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_Wander::GetName()
 {
-    return CCharString((const char*)0x012893A4, -1);   // "SG_WANDER"
+    return CCharString("SG_WANDER", -1);   // "SG_WANDER"
 }

@@ -17,5 +17,5 @@ public:
 
 CCharString C3DMeshFileXTriangleStripChunk::GetChunkDescription() const
 {
-    return CCharString((const char*)0x129e3ac, -1);
+    return CCharString("Triangle Strip", -1);
 }

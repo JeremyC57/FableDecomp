@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+// NF410: the row spells retail's literal now, so compare the text it passes, not a retail address.
+static bool RetailTextEquals(const void* p, const char* want)
+{
+    const char* s = (const char*)p;
+    if (s == 0) return false;
+    while (*want != 0) { if (*s != *want) return false; ++s; ++want; }
+    return *s == 0;
+}
+
 class CCharString {
 public:
     CCharString(const char* s, long n);
@@ -31,15 +40,15 @@ public:
 
 CCharString C3DMeshFileXTriangleStripChunk::GetChunkDescription() const
 {
-    return CCharString((const char*)0x129e3ac, -1);
+    return CCharString("Triangle Strip", -1);
 }
 
 int main()
 {
     C3DMeshFileXTriangleStripChunk chunk;
     CCharString r = chunk.GetChunkDescription();
-    if (g_seen_ptr == (const char*)0x129e3ac && g_seen_len == -1 &&
-        r.ptr() == (const char*)0x129e3ac && r.len() == -1) {
+    if (RetailTextEquals(g_seen_ptr, "Triangle Strip") && g_seen_len == -1 &&
+        RetailTextEquals(r.ptr(), "Triangle Strip") && r.len() == -1) {
         printf("STRIPCHUNK_DESC_OK\n");
         return 0;
     }

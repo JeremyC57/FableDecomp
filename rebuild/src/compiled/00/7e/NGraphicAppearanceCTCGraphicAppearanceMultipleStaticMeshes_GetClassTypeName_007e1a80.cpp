@@ -18,5 +18,5 @@ struct CTCGraphicAppearanceMultipleStaticMeshes {
 // stack arg, 'this' in ecx, saves esi=buffer, invokes the ctor, returns buffer in eax.
 CCharString CTCGraphicAppearanceMultipleStaticMeshes::GetClassTypeName()
 {
-    return CCharString((const char*)0x123db28, -1);
+    return CCharString("CTCGraphicAppearanceMultipleStaticMeshes", -1);
 }

@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_HoverKeepInArea::GetName()
 {
-    return CCharString((const char*)0x0128A2F8, -1);   // "SG_HOVER_KEEP_IN_AREA"
+    return CCharString("SG_HOVER_KEEP_IN_AREA", -1);   // "SG_HOVER_KEEP_IN_AREA"
 }

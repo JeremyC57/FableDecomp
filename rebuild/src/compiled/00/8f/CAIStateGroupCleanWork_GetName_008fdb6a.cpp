@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_CleanWork::GetName()
 {
-    return CCharString((const char*)0x01289AD8, -1);   // "SG_CLEAN_WORK"
+    return CCharString("SG_CLEAN_WORK", -1);   // "SG_CLEAN_WORK"
 }

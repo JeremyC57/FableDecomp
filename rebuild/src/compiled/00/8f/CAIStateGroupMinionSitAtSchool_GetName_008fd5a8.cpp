@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MinionSitAtSchool::GetName()
 {
-    return CCharString((const char*)0x01289148, -1);   // "SG_MINION_SIT_AT_SCHOOL"
+    return CCharString("SG_MINION_SIT_AT_SCHOOL", -1);   // "SG_MINION_SIT_AT_SCHOOL"
 }

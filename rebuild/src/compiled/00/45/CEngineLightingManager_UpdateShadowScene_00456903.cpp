@@ -18,7 +18,7 @@ extern Vec12 __fastcall LM_Handle2(void* self24);          // __fastcall(ecx=obj
 
 void __fastcall CEngineLightingManager_UpdateShadowScene(CEngineLightingManager* self, void* edx, Vec12* param)
 {
-    Prof_Enter((const char*)0x122d70e);
+    Prof_Enter("");
     switch (self->mode) {
     case 2:
         *param = LM_Handle2(self->obj24);

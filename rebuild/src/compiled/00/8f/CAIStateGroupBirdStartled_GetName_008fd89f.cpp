@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_BirdStartled::GetName()
 {
-    return CCharString((const char*)0x012896A8, -1);   // "SG_BIRD_STARTLED"
+    return CCharString("SG_BIRD_STARTLED", -1);   // "SG_BIRD_STARTLED"
 }

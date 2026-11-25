@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_LookAtInterestingThings::GetName()
 {
-    return CCharString((const char*)0x01289B98, -1);   // "SG_LOOK_AT_INTERESTING_THINGS"
+    return CCharString("SG_LOOK_AT_INTERESTING_THINGS", -1);   // "SG_LOOK_AT_INTERESTING_THINGS"
 }

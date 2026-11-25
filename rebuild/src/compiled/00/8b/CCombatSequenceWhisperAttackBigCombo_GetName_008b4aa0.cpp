@@ -6,4 +6,4 @@
 #include "engine/CCombatSequenceWhisperAttackBigCombo.h"
 
 class CCharString { public: char* m_data; CCharString(); CCharString(const char*, long); CCharString(const CCharString&); ~CCharString(); };
-CCharString CCombatSequenceWhisperAttackBigCombo::GetName() const { return CCharString((const char*)0x1278d20, -1); }
+CCharString CCombatSequenceWhisperAttackBigCombo::GetName() const { return CCharString("COMBAT_SEQUENCE_WHISPER_ATTACK_COMBO", -1); }

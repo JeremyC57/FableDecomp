@@ -14,5 +14,5 @@ struct CTCGraphicAppearanceStaticMesh {
 
 CCharString CTCGraphicAppearanceStaticMesh::GetClassTypeName()
 {
-    return CCharString((const char*)0x0123bc4c, -1);
+    return CCharString("CTCGraphicAppearanceStaticMesh", -1);
 }

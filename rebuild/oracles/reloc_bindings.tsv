@@ -1941,7 +1941,6 @@ _g_FloatZero	0122dedc	006448a4
 @FableH1_656e3e@4	0064a515	00656e3e
 ??1InnerMember@@QAE@XZ	00440c40	00656e6f
 ?SubObj_dtor@@YIXPAUSubObj@@@Z	00440c40	00656e8e
-?Sub_destroy@@YIXPAUSub@@@Z	00440c40	00656ead
 ?InsertGrow@CRetailVector_CElement16_00654dd4@@QAEXPAUCElement16_00654dd4@@ABU2@ABUSScalarTag@@K_N@Z	00656d5e	00656ef2
 ?Destroy_00656e3e@@YIXPAX@Z	00656e3e	00656f2f
 ?Method_00656e6f@CTarget@@QAEXJ@Z	00656e6f	00656ffe

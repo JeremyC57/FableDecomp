@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_MazeTutorialBattle::GetName()
 {
-    return CCharString((const char*)0x01289F78, -1);   // "SG_MAZE_TUTORIAL_BATTLE"
+    return CCharString("SG_MAZE_TUTORIAL_BATTLE", -1);   // "SG_MAZE_TUTORIAL_BATTLE"
 }

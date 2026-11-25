@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_OnHeroPush::GetName()
 {
-    return CCharString((const char*)0x0128AF58, -1);   // "SG_ON_HERO_PUSH"
+    return CCharString("SG_ON_HERO_PUSH", -1);   // "SG_ON_HERO_PUSH"
 }

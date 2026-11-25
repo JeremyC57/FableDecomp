@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_IceTrollIcicleAttack::GetName()
 {
-    return CCharString((const char*)0x0128A774, -1);   // "SG_ICE_TROLL_ICICLE_ATTACK"
+    return CCharString("SG_ICE_TROLL_ICICLE_ATTACK", -1);   // "SG_ICE_TROLL_ICICLE_ATTACK"
 }

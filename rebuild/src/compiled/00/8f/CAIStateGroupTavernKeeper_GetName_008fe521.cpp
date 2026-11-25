@@ -26,5 +26,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_TavernKeeper::GetName()
 {
-    return CCharString((const char*)0x0128A8E8, -1);   // "SG_TAVERN_KEEPER"
+    return CCharString("SG_TAVERN_KEEPER", -1);   // "SG_TAVERN_KEEPER"
 }

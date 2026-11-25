@@ -1,46 +1,37 @@
+// Behaviour model of ??_GCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@QAEPAXI@Z 0x00656EAD: destroy the element (the base
+// CQuestInfoElement's PrimitiveHandles vector, after the vptr / ID / ScriptID / Scale), then free the storage only when bit 0 of the
+// flags is set; returns this. Its only retail caller, CCountedPointer<CQuestInfoElementCounterList>::DeleteData, passes 1.
 #include <cstdio>
-
-// Standalone behaviour model of the vector deleting destructor.
-static int g_destroyed;
-static int g_freed;
-
-struct Sub { int v; };
-
-struct Obj {
-    char pad[0x10];
-    Sub  sub;
+#include <cstdlib>
+#include <new>
+static int g_dtor_calls = 0, g_delete_calls = 0;
+static const void* g_last_dtor_self = 0;
+static const void* g_last_delete_self = 0;
+struct CPrimitiveHandleVector { void* Start; void* Finish; void* EndOfStorage; ~CPrimitiveHandleVector() { g_dtor_calls++; g_last_dtor_self = this; } };
+struct CQuestInfoElementCounterList {
+    void* VTable; int ID, ScriptID; float Scale; CPrimitiveHandleVector PrimitiveHandles; int Graphic, Value, MaxValue;
+    static void operator delete(void* p) { g_delete_calls++; g_last_delete_self = p; std::free(p); }
 };
-
-static void sub_destroy(Sub* s) { s->v = 0; g_destroyed++; }
-static void my_delete(void* p) { (void)p; g_freed++; }
-
-static void* vdd(Obj* self, unsigned int flags)
+static void* ScalarDeletingDestructor(CQuestInfoElementCounterList* self, unsigned int flags)
 {
-    sub_destroy(&self->sub);
+    self->~CQuestInfoElementCounterList();
     if (flags & 1)
-        my_delete(self);
+        CQuestInfoElementCounterList::operator delete(self);
     return self;
 }
-
 int main()
 {
-    Obj a; a.sub.v = 5;
-    g_destroyed = g_freed = 0;
-    void* r = vdd(&a, 0);
-    if (r != &a) { printf("FAIL ret0\n"); return 1; }
-    if (g_destroyed != 1) { printf("FAIL destroy0\n"); return 1; }
-    if (g_freed != 0) { printf("FAIL free0\n"); return 1; }
-
-    g_destroyed = g_freed = 0;
-    r = vdd(&a, 1);
-    if (r != &a) { printf("FAIL ret1\n"); return 1; }
-    if (g_destroyed != 1) { printf("FAIL destroy1\n"); return 1; }
-    if (g_freed != 1) { printf("FAIL free1\n"); return 1; }
-
-    g_freed = 0;
-    vdd(&a, 2);
-    if (g_freed != 0) { printf("FAIL free2\n"); return 1; }
-
-    printf("VDD_OK\n");
+    void* mem = std::malloc(sizeof(CQuestInfoElementCounterList));
+    CQuestInfoElementCounterList* p = new (mem) CQuestInfoElementCounterList;
+    void* r = ScalarDeletingDestructor(p, 0);
+    if (r != p || g_dtor_calls != 1 || g_delete_calls != 0) { std::printf("FAIL flag0\n"); return 1; }
+    if (g_last_dtor_self != &p->PrimitiveHandles) { std::printf("FAIL member\n"); return 1; }
+    p = new (mem) CQuestInfoElementCounterList;
+    r = ScalarDeletingDestructor(p, 2);
+    if (r != p || g_dtor_calls != 2 || g_delete_calls != 0) { std::printf("FAIL flag2\n"); return 1; }
+    p = new (mem) CQuestInfoElementCounterList;
+    r = ScalarDeletingDestructor(p, 1);
+    if (r != p || g_dtor_calls != 3 || g_delete_calls != 1 || g_last_delete_self != p) { std::printf("FAIL flag1\n"); return 1; }
+    std::printf("VDD_OK\n");
     return 0;
 }

@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_SellToBuyer::GetName()
 {
-    return CCharString((const char*)0x01289C78, -1);   // "SG_SELL_TO_BUYER"
+    return CCharString("SG_SELL_TO_BUYER", -1);   // "SG_SELL_TO_BUYER"
 }

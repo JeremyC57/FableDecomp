@@ -22,5 +22,5 @@ public:
 
 CCharString __fastcall CAIStateGroup_ChickenWander::GetName()
 {
-    return CCharString((const char*)0x012893EC, -1);   // "SG_CHICKEN_WANDER"
+    return CCharString("SG_CHICKEN_WANDER", -1);   // "SG_CHICKEN_WANDER"
 }
