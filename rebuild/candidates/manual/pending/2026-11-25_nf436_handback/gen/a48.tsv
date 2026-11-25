@@ -1,0 +1,5 @@
+00ce19a0	CPersonalScript_GlobalThingsScript	CQ_SunnyvaleMasterData	RM	00cde380,00cde420	48	012c30cc	?Alloc@CPersonalScript_GlobalThingsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00e75590	CV_DemonDoorsScript	CQ_SunnyvaleMasterData	RM	00e6e2e0,00e6e380	48	012e8b10	?Alloc@CV_DemonDoorsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00ebee30	CV_OracleScript	CQ_SunnyvaleMasterData	RM	00ebccd0,00ebcd70	48	012f0c84	?Alloc@CV_OracleScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00eee6d0	CPersonalScript_alextestScript	CalextestData	RMI	00eed2c0,00eed360,00eed2b0	48	012f5814	?Alloc@CPersonalScript_alextestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00efe380	CMarkTestScriptsScript	CQ_SunnyvaleMasterData	RM	00efc960,00efca00	48	012f6d00	?Alloc@CMarkTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

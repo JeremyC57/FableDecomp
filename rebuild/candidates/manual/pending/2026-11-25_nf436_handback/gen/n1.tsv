@@ -1,0 +1,8 @@
+00cf0640	CGameflowAssistanceScript	CQ_SunnyvaleMasterData	RMIO	00cefa20,00cefac0,00cefa00,00cf0560	68	012c5de0	?Alloc@CGameflowAssistanceScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00d12c50	CQ_BanditCampHoldingScriptScript	CQ_SunnyvaleMasterData	RMIO	00d12b60,00d129c0,00d129b0,00d12c20	4c	012c9e14	?Alloc@CQ_BanditCampHoldingScriptScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00d513c0	CQ_GuildTrainingDepartureScript	CQ_SunnyvaleMasterData	RMI	00d50760,00d50800,00d506b0	58	012cf670	?Alloc@CQ_GuildTrainingDepartureScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00d67740	CQ_GuildTrainingWoodsMeleeScript	CQ_SunnyvaleMasterData	RM	00d66560,00d66620	4c	012d1d1c	?Alloc@CQ_GuildTrainingWoodsMeleeScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00d68ea0	CQ_GuildTrainingWoodsWillScript	CQ_SunnyvaleMasterData	RM	00d677d0,00d67890	50	012d1e08	?Alloc@CQ_GuildTrainingWoodsWillScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00e25970	CQR_EscortTrader_ManagerScript	CQ_SunnyvaleMasterData	RMIO	00e25690,00e24e10,00e24e00,00e25750	58	012e1d48	?Alloc@CQR_EscortTrader_ManagerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00eeee40	CTestTheInventoryScript	CEmptyData	RM	00eee9d0,00eeea90	4c	012f5998	?Alloc@CTestTheInventoryScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+00f02460	CQ_CinemaTestScript	CQ_SunnyvaleMasterData	RM	00f017f0,00f018b0	4c	012f7300	?Alloc@CQ_CinemaTestScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
