@@ -16,5 +16,5 @@ public:
 };
 
 CCharString CEngineVSConstantLayoutRepeatedMesh::PeekName() const {
-    return CCharString("VSConstantLayoutRepeatedMesh", -1);
+    return CCharString("LayoutRepeatedMesh", -1);
 }

@@ -23,5 +23,5 @@ public:
 
 CCharString CEnginePrimitiveRenderer2D::GetConsoleEnableFunctionName()
 {
-    return CCharString("ConsoleEnable", -1);
+    return CCharString("Enable2DPrimitives", -1);
 }

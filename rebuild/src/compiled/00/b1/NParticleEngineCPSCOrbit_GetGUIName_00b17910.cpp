@@ -23,5 +23,5 @@ public:
 }
 
 CCharString NParticleEngine::CPSCOrbit::GetGUIName() const {
-    return CCharString("DoCreatureAction", -1);
+    return CCharString("Orbit", -1);
 }

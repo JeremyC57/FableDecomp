@@ -15,5 +15,5 @@ public:
 
 CCharString CCombatSequence_WillLightning::GetName() const
 {
-    return CCharString("CombatSequence_WillLightning", -1);
+    return CCharString("COMBAT_SEQUENCE_WILL_LIGHTNING", -1);
 }

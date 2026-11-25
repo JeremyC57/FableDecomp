@@ -1,38 +1,34 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x008B4630 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_VILLAGER_BACK_OFF", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// Leaf: ?GetName@CCombatSequence_VillagerBackOff@@UBE?AVCCharString@@XZ
+// Class-model move (NF325, 2026-11-24): defined on the real class of engine/CCombatSequence_VillagerBackOff.h under FABLE_RETAIL_CCOMBATSEQUENCE_VILLAGERBACKOFF_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CCombatSequence_VillagerBackOff_Methods::GetName); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CCOMBATSEQUENCE_VILLAGERBACKOFF_VIRTUAL_MODEL
+#define FABLE_RETAIL_CCOMBATSEQUENCEBASE
+#include "engine/CCombatSequence_VillagerBackOff.h"
 
-class CCharString { public:
-    char* m_pData;
-    CCharString(const char* str, long len);
-};
+class CCharString { public: char* m_pData; CCharString(const char*, long); };
 
-static char g_buf[256];
-CCharString::CCharString(const char* str, long len)
+
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    // emulate retail ctor: copy the literal (len<0 => strlen)
-    if (len < 0) len = (int)std::strlen(str);
-    std::memcpy(g_buf, str, len);
-    g_buf[len] = 0;
-    m_pData = g_buf;
-}
-
-struct CActionDoCreatureAction {
-    virtual CCharString GetName() const;
-};
-
-CCharString CActionDoCreatureAction::GetName() const
-{
-    return CCharString("CombatSequence_VillagerBackOff", -1);
-}
-
-int main()
-{
-    CActionDoCreatureAction a;
-    CCharString s = a.GetName();
-    if (std::strcmp(s.m_pData, "CombatSequence_VillagerBackOff") == 0) {
-        std::printf("GETNAME_OK\n");
-        return 0;
+    const void* where = 0;
+    {
+        CCharString r = ((CCombatSequence_VillagerBackOff*)g_storage)->CCombatSequence_VillagerBackOff::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_VILLAGER_BACK_OFF") != 0 || g_slot != where) {
+            printf("FAIL_008b4630 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    std::printf("GETNAME_FAIL\n");
-    return 1;
+    printf("GETNAME_OK\n");
+    return 0;
 }

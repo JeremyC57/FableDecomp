@@ -34,5 +34,5 @@
 #include "engine/CScopedLockFlagBool.h"
 const CCharString C3DAnimFileMovementVectorChunk::GetChunkDescription() const
 {
-    return CCharString("MovementVector", -1);
+    return CCharString("Movement Vector", -1);
 }

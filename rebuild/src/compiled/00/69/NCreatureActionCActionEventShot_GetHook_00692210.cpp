@@ -19,5 +19,5 @@ public:
 }
 
 CCharString NCreatureAction::CActionEventShot::GetHook() {
-    return CCharString("DO_CREATURE_ACTION", -1);
+    return CCharString("SHOT", -1);
 }

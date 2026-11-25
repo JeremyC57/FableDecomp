@@ -1,45 +1,60 @@
+// Behaviour test for 0x00AAB130 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "Helper Point", length -1, one call, into the hidden return slot.
 #include <stdio.h>
 #include <string.h>
+// C3DMeshFileHelperPointChunk::GetChunkDescription
+// Byte-exact reconstruction of retail 0x00aab130.
+//
+// Retail body (NRVO struct-return forwarder):
+//   push esi
+//   mov  esi, [esp+8]        ; hidden return-buffer ptr
+//   push -1
+//   push 0x129e5e0           ; string literal
+//   mov  ecx, esi
+//   call CCharString::CCharString(const char*, long)
+//   mov  eax, esi
+//   pop  esi
+//   ret  4
 
-// Independent behaviour test for
-// C3DMeshFileHelperPointChunk::GetChunkDescription.
-// We reimplement a matching CCharString + class locally so this TU
-// links standalone, and assert the returned string content.
-
+// CCharString: a small string class. Only the ctor(const char*, long)
+// signature/ABI matters for byte parity; body is a link-only stub.
 class CCharString {
 public:
-    CCharString(const char* s, long len) {
-        if (len < 0) len = (int)strlen(s);
-        m_len = len;
-        for (int i = 0; i < len && i < 63; ++i) m_buf[i] = s[i];
-        m_buf[(len < 63) ? len : 63] = 0;
-    }
-    const char* c_str() const { return m_buf; }
-    int length() const { return m_len; }
+    CCharString(const char* s, long len);
 private:
-    char m_buf[64];
-    int  m_len;
+    char* m_p;
+    int   m_len;
+    int   m_cap;
 };
+
+// Constructor is only DECLARED here (defined in another TU) so the compiler
+// must emit a real, opaque __fastcall call, matching retail's
+// `call CCharString::CCharString` and forcing the ret-buffer ptr to live in a
+// callee-saved register across the call.
 
 class C3DMeshFileHelperPointChunk {
 public:
-    virtual CCharString GetChunkDescription() const;
+    virtual const CCharString GetChunkDescription() const;
 };
 
-CCharString C3DMeshFileHelperPointChunk::GetChunkDescription() const {
-    return CCharString("PointChunk", -1);
-}
 
-int main() {
-    C3DMeshFileHelperPointChunk chunk;
-    CCharString d = chunk.GetChunkDescription();
-    int ok = 1;
-    if (strcmp(d.c_str(), "PointChunk") != 0) ok = 0;
-    if (d.length() != 10) ok = 0;
-    if (ok) {
-        printf("GETCHUNKDESC_OK\n");
-        return 0;
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
+{
+    const void* where = 0;
+    {
+        CCharString r = ((C3DMeshFileHelperPointChunk*)g_storage)->C3DMeshFileHelperPointChunk::GetChunkDescription();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "Helper Point") != 0 || g_slot != where) {
+            printf("FAIL_00aab130 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    printf("GETCHUNKDESC_FAIL\n");
-    return 1;
+    printf("GETCHUNKDESC_OK\n");
+    return 0;
 }

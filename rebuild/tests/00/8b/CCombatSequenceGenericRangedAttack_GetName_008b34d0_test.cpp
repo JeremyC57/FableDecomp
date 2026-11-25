@@ -1,38 +1,35 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x008B34D0 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_GENERIC_RANGED_ATTACK", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// Leaf: ?GetName@CCombatSequence_GenericRangedAttack@@UBE?AVCCharString@@XZ
+// Class-model move (NF325, 2026-11-24): defined on the real class of engine/CCombatSequence_GenericRangedAttack.h under FABLE_RETAIL_CCOMBATSEQUENCE_GENERICRANGEDATTACK_VIRTUAL_MODEL (the opt-in polymorphic model;
+//   was CCombatSequence_GenericRangedAttack_Methods::GetName); the retail RTTI vftable placement names this PDB member here.
+#define FABLE_RETAIL_CCOMBATSEQUENCE_GENERICRANGEDATTACK_VIRTUAL_MODEL
+#define FABLE_RETAIL_CCOMBATSEQUENCEBASE
+#include "engine/CCombatSequence_GenericRangedAttack.h"
 
-// Local standalone model mirroring s.cpp (independent behaviour test).
+class CCharString { public: char* m_buf; CCharString(const char*, long); };
+static const char kName[] = "COMBAT_SEQUENCE_GENERIC_RANGED_ATTACK";
 
-class CCharString { public:
-    char* m_buf;
-    CCharString(const char* s, long len) {
-        int n = (len < 0) ? (int)strlen(s) : len;
-        m_buf = new char[n + 1];
-        memcpy(m_buf, s, n);
-        m_buf[n] = 0;
-    }
-};
 
-static const char kName[] = "GenericRangedAttack";
-
-struct CCombatSequence_GenericRangedAttack {
-    void* vtbl;
-    virtual CCharString GetName() const;
-};
-
-CCharString CCombatSequence_GenericRangedAttack::GetName() const
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    return CCharString(kName, -1);
-}
-
-int main() {
-    CCombatSequence_GenericRangedAttack obj;
-    obj.vtbl = 0;
-    CCharString s = obj.GetName();
-    if (strcmp(s.m_buf, "GenericRangedAttack") == 0) {
-        printf("GETNAME_OK\n");
-        return 0;
+    const void* where = 0;
+    {
+        CCharString r = ((CCombatSequence_GenericRangedAttack*)g_storage)->CCombatSequence_GenericRangedAttack::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_GENERIC_RANGED_ATTACK") != 0 || g_slot != where) {
+            printf("FAIL_008b34d0 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    printf("GETNAME_BAD\n");
-    return 1;
+    printf("GETNAME_OK\n");
+    return 0;
 }

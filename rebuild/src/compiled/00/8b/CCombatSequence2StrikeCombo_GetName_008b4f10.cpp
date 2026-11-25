@@ -14,6 +14,6 @@ class CCharString { public:
 extern "C" CCharString* __fastcall CCombatSequence2StrikeCombo_GetName(
     CCombatSequence2StrikeCombo* sequence, int edx, CCharString* ret)
 {
-    ret->ctor("2StrikeCombo", -1);
+    ret->ctor("COMBAT_SEQUENCE_TWO_STRIKE", -1);
     return ret;
 }

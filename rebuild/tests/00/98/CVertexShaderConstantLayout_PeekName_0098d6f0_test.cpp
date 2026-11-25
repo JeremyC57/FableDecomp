@@ -1,15 +1,13 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x0098D6F0 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// CVertexShaderConstantLayout::  @ 0098d6f0
+// __fastcall, returns CCharString by value from a string literal.
 
 class CCharString {
 public:
-    CCharString(const char* s, long count) {
-        int n = (count < 0) ? (int)strlen(s) : count;
-        m_data = new char[n + 1];
-        memcpy(m_data, s, n);
-        m_data[n] = 0;
-    }
-    const char* c_str() const { return m_data; }
+    CCharString(const char* s, long count);
 private:
     char* m_data;
 };
@@ -19,19 +17,24 @@ public:
     CCharString PeekName();
 };
 
-CCharString CVertexShaderConstantLayout::PeekName()
-{
-    return CCharString("PeekName", -1);
-}
 
-int main()
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    CVertexShaderConstantLayout layout;
-    CCharString r = layout.PeekName();
-    if (strcmp(r.c_str(), "PeekName") == 0) {
-        printf("PEEKNAME_OK\n");
-        return 0;
+    const void* where = 0;
+    {
+        CCharString r = ((CVertexShaderConstantLayout*)g_storage)->CVertexShaderConstantLayout::PeekName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "") != 0 || g_slot != where) {
+            printf("FAIL_0098d6f0 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    printf("FAIL\n");
-    return 1;
+    printf("PEEKNAME_OK\n");
+    return 0;
 }

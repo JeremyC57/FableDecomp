@@ -1,0 +1,176 @@
+addr       parity           behav  name
+00692210   RELOCATION_MATCH PASS   GetHook
+0071a7f0   WARN SHARED_HEADER_AVAILABLE CTCMapwho (engine/CTCMapwho.h)
+0071a7f0   RELOCATION_MATCH PASS   GetClassTypeName
+0072ef40   RELOCATION_MATCH PASS   GetClassTypeName
+007711c0   RELOCATION_MATCH PASS   GetClassTypeName
+007cbe80   WARN SHARED_HEADER_AVAILABLE CTCGold (engine/CTCGold.h)
+007cbe80   RELOCATION_MATCH PASS   GetClassTypeName
+007df2c0   WARN SHARED_HEADER_AVAILABLE CTCWallMount (engine/CTCWallMount.h)
+007df2c0   RELOCATION_MATCH PASS   GetClassTypeName
+007e2490   WARN RELOC_NAME: ??0CWideString@@QAE@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+007e2490   RELOCATION_MATCH PASS   GetClassTypeName
+008b34d0   RELOCATION_MATCH PASS   GetName
+008b35b0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditUnblockableAttack (engine/CCombatSequence_BanditUnblockableAttack.h)
+008b35b0   RELOCATION_MATCH PASS   GetName
+008b3630   WARN SHARED_HEADER_AVAILABLE CCombatSequence_NonInterruptableBoxStrafe (engine/CCombatSequence_NonInterruptableBoxStrafe.h)
+008b3630   RELOCATION_MATCH PASS   GetName
+008b36a0   RELOCATION_MATCH PASS   GetName
+008b3910   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditIdleNear (engine/CCombatSequence_BanditIdleNear.h)
+008b3910   RELOCATION_MATCH PASS   GetName
+008b39f0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditBoast (engine/CCombatSequence_BanditBoast.h)
+008b39f0   RELOCATION_MATCH PASS   GetName
+008b3b00   RELOCATION_MATCH PASS   GetName
+008b3c80   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderMainAttack (engine/CCombatSequence_FodderMainAttack.h)
+008b3c80   RELOCATION_MATCH PASS   GetName
+008b3d80   WARN RELOC_CONFLICT: _kName -> 01278954 here, 012786ac in landed 008b34d0
+008b3d80   RELOCATION_MATCH PASS   GetName
+008b3e00   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderCombatIdle (engine/CCombatSequence_FodderCombatIdle.h)
+008b3e00   RELOCATION_MATCH PASS   GetName
+008b3f50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_KingScorpionTailPlunge (engine/CCombatSequence_KingScorpionTailPlunge.h)
+008b3f50   RELOCATION_MATCH PASS   GetName
+008b3ff0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollDoubleSwipe (engine/CCombatSequence_TrollDoubleSwipe.h)
+008b3ff0   RELOCATION_MATCH PASS   GetName
+008b4200   WARN RELOC_CONFLICT: _kName -> 01278a9c here, 012786ac in landed 008b34d0
+008b4200   RELOCATION_MATCH PASS   GetName
+008b42e0   RELOCATION_MATCH PASS   GetName
+008b4350   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockPursueNoZone (engine/CCombatSequence_TrollRockPursueNoZone.h)
+008b4350   RELOCATION_MATCH PASS   GetName
+008b43d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockAdvance (engine/CCombatSequence_TrollRockAdvance.h)
+008b43d0   RELOCATION_MATCH PASS   GetName
+008b45b0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerAttack (engine/CCombatSequence_VillagerAttack.h)
+008b45b0   RELOCATION_MATCH PASS   GetName
+008b4630   RELOCATION_MATCH PASS   GetName
+008b46a0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerStepIn (engine/CCombatSequence_VillagerStepIn.h)
+008b46a0   RELOCATION_MATCH PASS   GetName
+008b4820   WARN RELOC_NAME: ?ctor@CCharString@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008b4820   RELOCATION_MATCH PASS   GetName
+008b48a0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerNearAttack (engine/CCombatSequence_VillagerNearAttack.h)
+008b48a0   RELOCATION_MATCH PASS   GetName
+008b4d90   RELOCATION_MATCH PASS   GetName
+008b4f10   WARN RELOC_NAME: ?ctor@CCharString@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008b4f10   RELOCATION_MATCH PASS   GetName
+008b5120   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillLightning (engine/CCombatSequence_WillLightning.h)
+008b5120   RELOCATION_MATCH PASS   GetName
+008b51d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillEnflame (engine/CCombatSequence_WillEnflame.h)
+008b51d0   RELOCATION_MATCH PASS   GetName
+008b5290   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillForcePush (engine/CCombatSequence_WillForcePush.h)
+008b5290   RELOCATION_MATCH PASS   GetName
+008b5350   WARN SHARED_HEADER_AVAILABLE CCombatSequence_WillForcePushLongRange (engine/CCombatSequence_WillForcePushLongRange.h)
+008b5350   RELOCATION_MATCH PASS   GetName
+009035f0   RELOCATION_MATCH PASS   GetActionName
+00903640   RELOCATION_MATCH PASS   GetActionName
+00903680   RELOCATION_MATCH PASS   GetActionName
+00905160   RELOCATION_MATCH PASS   GetActionName
+00a9d310   WARN SHARED_HEADER_AVAILABLE CMirroredTextureHighlightsChunk (engine/CMirroredTextureHighlightsChunk.h)
+00a9d310   RELOCATION_MATCH PASS   GetChunkDescription
+00aa4970   RELOCATION_MATCH PASS   GetChunkDescription
+00aa7010   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXTextureIndexChunk (engine/C3DMeshFileXTextureIndexChunk.h)
+00aa7010   RELOCATION_MATCH PASS   GetChunkDescription
+00aa7050   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXMappingInfoChunk (engine/C3DMeshFileXMappingInfoChunk.h)
+00aa7050   RELOCATION_MATCH PASS   GetChunkDescription
+00aa7140   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXBoundingBoxChunk (engine/C3DMeshFileXBoundingBoxChunk.h)
+00aa7140   RELOCATION_MATCH PASS   GetChunkDescription
+00aab130   WARN SHARED_HEADER_AVAILABLE C3DMeshFileHelperPointChunk (engine/C3DMeshFileHelperPointChunk.h)
+00aab130   RELOCATION_MATCH PASS   GetChunkDescription
+00aab180   WARN SHARED_HEADER_AVAILABLE C3DMeshFileDummyObjectChunk (engine/C3DMeshFileDummyObjectChunk.h)
+00aab180   RELOCATION_MATCH PASS   GetChunkDescription
+00aaee90   RELOCATION_MATCH PASS   GetChunkDescription
+00abd3c0   RELOCATION_MATCH PASS   GetChunkDescription
+00abd3e0   WARN SHARED_HEADER_AVAILABLE C3DMeshFileTransformationChunk (engine/C3DMeshFileTransformationChunk.h)
+00abd3e0   RELOCATION_MATCH PASS   GetChunkDescription
+00abec50   WARN SHARED_HEADER_AVAILABLE C3DMeshFileGroupChunk (engine/C3DMeshFileGroupChunk.h)
+00abec50   RELOCATION_MATCH PASS   GetChunkDescription
+00abec90   RELOCATION_MATCH PASS   GetChunkDescription
+00ac1920   WARN SHARED_HEADER_AVAILABLE C3DMeshFileMaterialExtChunk (engine/C3DMeshFileMaterialExtChunk.h)
+00ac1920   RELOCATION_MATCH PASS   GetChunkDescription
+00ac1e70   WARN SHARED_HEADER_AVAILABLE C3DMeshFileMaterialChunk (engine/C3DMeshFileMaterialChunk.h)
+00ac1e70   RELOCATION_MATCH PASS   GetChunkDescription
+00ac6270   RELOCATION_MATCH PASS   GetChunkDescription
+00b17910   RELOCATION_MATCH PASS   GetGUIName
+00b18720   RELOCATION_MATCH PASS   GetGUIName
+00b38c90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer (engine/CEnginePrimitiveRenderer.h)
+00b38c90   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b4b6f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D (engine/CEnginePrimitiveRenderer2D.h)
+00b4b6f0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b5ead0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b66dc0   WARN SHARED_HEADER_AVAILABLE CEngineSkyRenderer (engine/CEngineSkyRenderer.h)
+00b66dc0   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b88f80   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectDisplacementRenderer (engine/CEngineScreenEffectDisplacementRenderer.h)
+00b88f80   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b8b580   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectOutlineGlow (engine/CEngineScreenEffectOutlineGlow.h)
+00b8b580   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00bdb040   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutParticles (engine/CEngineVSConstantLayoutParticles.h)
+00bdb040   RELOCATION_MATCH PASS   PeekName
+00bdb200   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutRepeatedMesh (engine/CEngineVSConstantLayoutRepeatedMesh.h)
+00bdb200   RELOCATION_MATCH PASS   PeekName
+00bdbf00   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutBasic (engine/CEngineVSConstantLayoutBasic.h)
+00bdbf00   RELOCATION_MATCH PASS   PeekName
+00e403d0   RELOCATION_MATCH PASS   GetLHTSTag
+
+WINS: 65
+  00692210 RELOCATION_MATCH NCreatureAction::CActionEventShot::?GetHook@CActionEventShot@NCreatureAction@@
+  0071a7f0 RELOCATION_MATCH CTCMapwho::GetClassTypeName
+  0072ef40 RELOCATION_MATCH CTCActionUseBuyHouse::GetClassTypeName
+  007711c0 RELOCATION_MATCH CTCThingUIDDummyForSerialisation::GetClassTypeName
+  007cbe80 RELOCATION_MATCH CTCGold::GetClassTypeName
+  007df2c0 RELOCATION_MATCH CTCWallMount::GetClassTypeName
+  007e2490 RELOCATION_MATCH CTCFishingRod::GetClassTypeName
+  008b34d0 RELOCATION_MATCH CCombatSequence_GenericRangedAttack::?GetName@CCombatSequence_GenericRangedAttack@@UBE?AVCCharString@@XZ
+  008b35b0 RELOCATION_MATCH CCombatSequence_BanditUnblockableAttack::GetName
+  008b3630 RELOCATION_MATCH CCombatSequence_NonInterruptableBoxStrafe::GetName
+  008b36a0 RELOCATION_MATCH CCombatSequence_BanditAdvanceFar::?GetName@CCombatSequence_BanditAdvanceFar@@UBE?AVCCharString@@XZ
+  008b3910 RELOCATION_MATCH CCombatSequence_BanditIdleNear::GetName
+  008b39f0 RELOCATION_MATCH CCombatSequence_BanditBoast::GetName
+  008b3b00 RELOCATION_MATCH CCombatSequence_BanditKingAdvance::?GetName@CCombatSequence_BanditKingAdvance@@UBE?AVCCharString@@XZ
+  008b3c80 RELOCATION_MATCH CCombatSequence_FodderMainAttack::GetName
+  008b3d80 RELOCATION_MATCH CCombatSequence_FodderSecondaryAttack::?GetName@CCombatSequence_FodderSecondaryAttack@@UBE?AVCCharString@@XZ
+  008b3e00 RELOCATION_MATCH CCombatSequence_FodderCombatIdle::GetName
+  008b3f50 RELOCATION_MATCH CCombatSequence_KingScorpionTailPlunge::?GetName@CCombatSequence_KingScorpionTailPlunge@@UBE?AVCCharString@@XZ
+  008b3ff0 RELOCATION_MATCH CCombatSequence_TrollDoubleSwipe::GetName
+  008b4200 RELOCATION_MATCH CCombatSequence_TrollBurrowPursue::?GetName@CCombatSequence_TrollBurrowPursue@@UBE?AVCCharString@@XZ
+  008b42e0 RELOCATION_MATCH CCombatSequence_TrollRockPursue::?GetName@CCombatSequence_TrollRockPursue@@UBE?AVCCharString@@XZ
+  008b4350 RELOCATION_MATCH CCombatSequence_TrollRockPursueNoZone::GetName
+  008b43d0 RELOCATION_MATCH CCombatSequence_TrollRockAdvance::GetName
+  008b45b0 RELOCATION_MATCH CCombatSequence_VillagerAttack::GetName
+  008b4630 RELOCATION_MATCH CCombatSequence_VillagerBackOff::?GetName@CCombatSequence_VillagerBackOff@@UBE?AVCCharString@@XZ
+  008b46a0 RELOCATION_MATCH CCombatSequence_VillagerStepIn::GetName
+  008b4820 RELOCATION_MATCH CCombatSequence_VillagerComboUnblockable::GetName
+  008b48a0 RELOCATION_MATCH CCombatSequence_VillagerNearAttack::GetName
+  008b4d90 RELOCATION_MATCH CCombatSequenceWhisperStrafeAround::?GetName@CCombatSequenceWhisperStrafeAround@@UBE?AVCCharString@@XZ
+  008b4f10 RELOCATION_MATCH CCombatSequence2StrikeCombo::GetName
+  008b5120 RELOCATION_MATCH CCombatSequence_WillLightning::GetName
+  008b51d0 RELOCATION_MATCH CCombatSequence_WillEnflame::GetName
+  008b5290 RELOCATION_MATCH CCombatSequence_WillForcePush::GetName
+  008b5350 RELOCATION_MATCH CCombatSequence_WillForcePushLongRange::GetName
+  009035f0 RELOCATION_MATCH NTCScriptedControl::CActionPlayCombatAnimation::?GetActionName@CActionPlayCombatAnimation@NTCScriptedControl@@
+  00903640 RELOCATION_MATCH NTCScriptedControl::CActionWait::?GetActionName@CActionWait@NTCScriptedControl@@
+  00903680 RELOCATION_MATCH NTCScriptedControl::CActionStopScripting::?GetActionName@CActionStopScripting@NTCScriptedControl@@
+  00905160 RELOCATION_MATCH NTCScriptedControl::CActionWaitForThingToFinishPerformingTasks::?GetActionName@CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@
+  00a9d310 RELOCATION_MATCH CMirroredTextureHighlightsChunk::GetChunkDescription
+  00aa4970 RELOCATION_MATCH C3DAnimFileXAllocationSizeChunk::?GetChunkDescription@C3DAnimFileXAllocationSizeChunk@@UBE?BVCCharString@@XZ
+  00aa7010 RELOCATION_MATCH C3DMeshFileXTextureIndexChunk::GetChunkDescription
+  00aa7050 RELOCATION_MATCH C3DMeshFileXMappingInfoChunk::GetChunkDescription
+  00aa7140 RELOCATION_MATCH C3DMeshFileXBoundingBoxChunk::GetChunkDescription
+  00aab130 RELOCATION_MATCH C3DMeshFileHelperPointChunk::GetChunkDescription
+  00aab180 RELOCATION_MATCH C3DMeshFileDummyObjectChunk::GetChunkDescription
+  00aaee90 RELOCATION_MATCH C3DAnimFileMovementVectorChunk::?GetChunkDescription@C3DAnimFileMovementVectorChunk@@UBE?BVCCharString@@XZ
+  00abd3c0 RELOCATION_MATCH C3DMeshFileSubMeshChunk::?GetChunkDescription@C3DMeshFileSubMeshChunk@@UBE?BVCCharString@@XZ
+  00abd3e0 RELOCATION_MATCH C3DMeshFileTransformationChunk::GetChunkDescription
+  00abec50 RELOCATION_MATCH C3DMeshFileGroupChunk::GetChunkDescription
+  00abec90 RELOCATION_MATCH C3DMeshFileTrianglesChunk::?GetChunkDescription@C3DMeshFileTrianglesChunk@@UBE?BVCCharString@@XZ
+  00ac1920 RELOCATION_MATCH C3DMeshFileMaterialExtChunk::GetChunkDescription
+  00ac1e70 RELOCATION_MATCH C3DMeshFileMaterialChunk::GetChunkDescription
+  00ac6270 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::?GetChunkDescription@C3DMeshFileEngineMaterialChunk@@UBE?BVCCharString@@XZ
+  00b17910 RELOCATION_MATCH NParticleEngine::CPSCOrbit::?GetGUIName@CPSCOrbit@NParticleEngine@@
+  00b18720 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?GetGUIName@CPSCAttractor@NParticleEngine@@
+  00b38c90 RELOCATION_MATCH CEnginePrimitiveRenderer::GetConsoleEnableFunctionName
+  00b4b6f0 RELOCATION_MATCH CEnginePrimitiveRenderer2D::GetConsoleEnableFunctionName
+  00b5ead0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ
+  00b66dc0 RELOCATION_MATCH CEngineSkyRenderer::GetConsoleEnableFunctionName
+  00b88f80 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::GetConsoleEnableFunctionName
+  00b8b580 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::GetConsoleEnableFunctionName
+  00bdb040 RELOCATION_MATCH CEngineVSConstantLayoutParticles::PeekName
+  00bdb200 RELOCATION_MATCH CEngineVSConstantLayoutRepeatedMesh::PeekName
+  00bdbf00 RELOCATION_MATCH CEngineVSConstantLayoutBasic::PeekName
+  00e403d0 RELOCATION_MATCH CBordelloLady::GetLHTSTag

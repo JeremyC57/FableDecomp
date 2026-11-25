@@ -17,5 +17,5 @@ public:
 };
 
 CCharString C3DMeshFileXBoundingBoxChunk::GetChunkDescription() const {
-    return CCharString("BoundingBox", -1);
+    return CCharString("Bounding Box", -1);
 }

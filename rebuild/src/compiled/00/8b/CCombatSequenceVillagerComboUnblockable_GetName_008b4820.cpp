@@ -14,6 +14,6 @@ class CCharString { public:
 extern "C" CCharString* __fastcall CCombatSequence_VillagerComboUnblockable_GetName(
     CCombatSequence_VillagerComboUnblockable* sequence, int edx, CCharString* ret)
 {
-    ret->ctor("VillagerComboUnblockable", -1);
+    ret->ctor("COMBAT_SEQUENCE_VILLAGER_COMBO_ATTACK_UNBLOCKABLE", -1);
     return ret;
 }

@@ -23,5 +23,5 @@ public:
 
 CCharString NTCScriptedControl::CActionPlayCombatAnimation::GetActionName()
 {
-    return CCharString("DoCreatureAction", -1);
+    return CCharString("CActionPlayCombatAnimation", -1);
 }

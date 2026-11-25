@@ -16,5 +16,5 @@ public:
 };
 
 CCharString C3DMeshFileGroupChunk::GetChunkDescription() const {
-    return CCharString("group", -1);
+    return CCharString("Vertex Group", -1);
 }

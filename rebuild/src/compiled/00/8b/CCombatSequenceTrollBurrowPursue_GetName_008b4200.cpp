@@ -6,5 +6,5 @@
 #include "engine/CCombatSequence_TrollBurrowPursue.h"
 
 class CCharString { public: char* m_buf; CCharString(const char*, long); };
-static const char kName[] = "TrollBurrowPursue";
+static const char kName[] = "COMBAT_SEQUENCE_TROLL_BURROW_PURSUE";
 CCharString CCombatSequence_TrollBurrowPursue::GetName() const { return CCharString(kName, -1); }

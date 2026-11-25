@@ -6,5 +6,5 @@
 #include "engine/CCombatSequence_GenericRangedAttack.h"
 
 class CCharString { public: char* m_buf; CCharString(const char*, long); };
-static const char kName[] = "GenericRangedAttack";
+static const char kName[] = "COMBAT_SEQUENCE_GENERIC_RANGED_ATTACK";
 CCharString CCombatSequence_GenericRangedAttack::GetName() const { return CCharString(kName, -1); }

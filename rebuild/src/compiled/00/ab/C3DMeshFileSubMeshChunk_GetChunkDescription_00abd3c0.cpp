@@ -36,5 +36,5 @@
 #include "engine/CMemoryDataOutputStream.h"
 const CCharString C3DMeshFileSubMeshChunk::GetChunkDescription() const
 {
-    return CCharString("SubMesh", -1);
+    return CCharString("Sub-Mesh", -1);
 }

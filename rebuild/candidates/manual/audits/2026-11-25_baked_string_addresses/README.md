@@ -1,0 +1,3 @@
+# Baked string addresses (NF388 q10)
+
+569 landed rows cast a retail address to a string pointer (for example `(const char*)0x0129E564`) instead of spelling the literal. They grade MATCH by construction: the address is a plain immediate with no relocation, so neither the relocation-identity check nor the new LITERAL_DIFF check can see them, and the code would not survive relinking at another base. Fixing a row needs no ruling: spell the literal (same bytes, a relocation present, no LITERAL_DIFF). Some targets may be data symbols rather than literals, so decide per row. Whether these rows count as coverage until fixed is the owner's grade question (raised 2026-11-25).

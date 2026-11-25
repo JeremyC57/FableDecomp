@@ -17,5 +17,5 @@ public:
 
 CCharString CCombatSequence_FodderCombatIdle::GetName() const
 {
-    return CCharString("FodderCombatIdle", -1);
+    return CCharString("COMBAT_SEQUENCE_FODDER_COMBAT_IDLE", -1);
 }

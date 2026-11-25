@@ -16,5 +16,5 @@ public:
 
 CCharString CTCActionUseBuyHouse::GetClassTypeName()
 {
-    return CCharString("CActionDoCreatureAction", -1);
+    return CCharString("CTCActionUseBuyHouse", -1);
 }

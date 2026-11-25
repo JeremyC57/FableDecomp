@@ -1,20 +1,27 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x008B3FF0 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// CCombatSequence_TrollDoubleSwipe::GetName -> CCharString by value
+// retail 0x008b3ff0
+//
+// push esi
+// mov esi,[esp+8]        ; esi = hidden return-buffer ptr
+// push -1
+// push 0x12789f4         ; string literal
+// mov ecx,esi
+// call CCharString::CCharString(char const*, int)   @0x99ebf0
+// mov eax,esi
+// pop esi
+// ret 4
 
 class CCharString
 {
 public:
     CCharString(const char* s, long n);
-    char buf[64];
-    int len;
+private:
+    void* m_data;
 };
-
-CCharString::CCharString(const char* s, long n)
-{
-    std::strncpy(buf, s, 63);
-    buf[63] = 0;
-    len = n;
-}
 
 class CCombatSequence_TrollDoubleSwipe
 {
@@ -22,15 +29,24 @@ public:
     virtual CCharString GetName() const;
 };
 
-int main()
+
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    CCombatSequence_TrollDoubleSwipe obj;
-    CCharString r = obj.GetName();
-    if (std::strcmp(r.buf, "TrollDoubleSwipe") == 0 && r.len == -1)
+    const void* where = 0;
     {
-        std::printf("PASS_TROLLDOUBLESWIPE_GETNAME\n");
-        return 0;
+        CCharString r = ((CCombatSequence_TrollDoubleSwipe*)g_storage)->CCombatSequence_TrollDoubleSwipe::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE") != 0 || g_slot != where) {
+            printf("FAIL_008b3ff0 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    std::printf("FAIL got=%s len=%d\n", r.buf, r.len);
-    return 1;
+    printf("PASS_TROLLDOUBLESWIPE_GETNAME\n");
+    return 0;
 }

@@ -11,5 +11,5 @@ class CTCMapwho { public:
 
 CCharString CTCMapwho::GetClassTypeName()
 {
-    return CCharString("ACTION_DO_CREATURE_ACTION", -1);
+    return CCharString("CTCMapwho", -1);
 }

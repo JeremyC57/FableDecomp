@@ -13,5 +13,5 @@ class CTCThingUIDDummyForSerialisation { public:
 
 CCharString CTCThingUIDDummyForSerialisation::GetClassTypeName()
 {
-    return CCharString("SomeActionName", -1);
+    return CCharString("CTCThingUIDDummyForSerialisation", -1);
 }

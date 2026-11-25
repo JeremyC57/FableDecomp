@@ -1,0 +1,130 @@
+address	batch	role	verdict	lock	reason
+00b1ae00	b1	owner	ACCEPT	NF385	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 1 NEQ reach flips 0; /FORCE dups 0->0
+0044c6c2	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0048f939	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+004d2a74	b2	owner	HOLD	NF388	graded symbol is a stand-in (STANDIN_LEAF): literal fix ready, the respell is naming work (QUEUE_PROPOSALS)
+004d39cf	b2	owner	HOLD	NF388	graded symbol is a stand-in (STANDIN_LEAF): literal fix ready, the respell is naming work (QUEUE_PROPOSALS)
+004d3cde	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically; graded symbol is a stand-in (STANDIN_LEAF): literal fix ready, the respell is naming work (QUEUE_PROPOSALS)
+004d4232	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically; graded symbol is a stand-in (STANDIN_LEAF): literal fix ready, the respell is naming work (QUEUE_PROPOSALS)
+004d5ce6	b2	owner	HOLD	NF388	graded symbol is a stand-in (STANDIN_LEAF): literal fix ready, the respell is naming work (QUEUE_PROPOSALS)
+0053fe50	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0054fbc0	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005621b0	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005820e7	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005907ab	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00594fdb	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005b358c	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005be3b1	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005be62c	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+005ea9b0	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0068e8f0	b2	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+006572a0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00692210	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+006f9be0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0071a7f0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+007276b0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0072ef40	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+0073eac0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0073fdb0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00741730	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+007711c0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+007cbe80	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+007df2c0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+007e2490	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+0083efe0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0088f7d0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00892850	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+008b34d0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b35b0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3630	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only (+1 other COMDAT(s) using the same literal: _kName); pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b36a0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3910	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b39f0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3b00	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3c80	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3d80	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3e00	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3f50	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b3ff0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b4200	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b42e0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only (+1 other COMDAT(s) using the same literal: _s_name); pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b4350	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b43d0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b45b0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b4630	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b46a0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b4820	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b48a0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b4d90	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b4f10	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b5120	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b51d0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b5290	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008b5350	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+008bd7f0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+008c3700	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+008d7d60	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+008da0f0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+009035f0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00903640	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00903680	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00905160	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+009574d0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+009944a0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically; the fix also changes the literal of another function of the unit (??0CDataOutputStream@@QAE@XZ), whose retail literal was not compared
+009bba40	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+009d56c0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+009e90c0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00a01950	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00a447d0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00a9d310	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aa4970	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aa7010	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aa7050	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aa7140	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aab130	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aab180	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00aaee90	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00abd3c0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00abd3e0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00abec50	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00abec90	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00ac1920	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00ac1e70	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00ac6270	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b17910	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b18720	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b38c90	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b3b240	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00b4b6f0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b5ead0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b66dc0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b88f80	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00b8b580	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00bb6e00	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00bba480	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00bc6b50	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00bdb040	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00bdb200	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00bdbf00	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only (+1 other COMDAT(s) using the same literal: _kName); pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+00c0e0f0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically; the fix also changes the literal of another function of the unit (?GetData@CString@@QBEPAUCStringData@@XZ), whose retail literal was not compared
+00c48860	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically; graded symbol is a stand-in (STANDIN_LEAF): literal fix ready, the respell is naming work (QUEUE_PROPOSALS)
+00d66f50	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00d74ce0	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00d89380	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00db7e10	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00df2380	b3	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+00e403d0	b3	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 101 NEQ reach flips 0; /FORCE dups 0->0
+01210f4b	b3	includer_of_00c0e0f0	HOLD	NF388	the fix also changes the literal of another function of the unit (?GetData@CString@@QBEPAUCStringData@@XZ), whose retail literal was not compared; includer of 00c0e0f0: lands with its owner
+01210f64	b3	includer_of_00c0e0f0	HOLD	NF388	the fix also changes the literal of another function of the unit (?GetData@CString@@QBEPAUCStringData@@XZ), whose retail literal was not compared; includer of 00c0e0f0: lands with its owner
+01215810	b3	includer_of_00c48860	HOLD	NF388	includer of 00c48860: lands with its owner
+01215818	b3	includer_of_00c48860	HOLD	NF388	includer of 00c48860: lands with its owner
+01215820	b3	includer_of_00c48860	HOLD	NF388	includer of 00c48860: lands with its owner
+00743dd0	b4	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 5 NEQ reach flips 0; /FORCE dups 0->0
+008d7de0	b4	owner	HOLD	NF388	test does not assert the retail string (new test on the HEAD text: PASS); the fix itself is proven statically
+0098d6f0	b4	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 5 NEQ reach flips 0; /FORCE dups 0->0
+00ab0110	b4	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 5 NEQ reach flips 0; /FORCE dups 0->0
+00ab9f80	b4	owner	ACCEPT	NF388	literal fix: LITERAL_DIFF 1 -> 0; grade RELOCATION_MATCH/PASS -> RELOCATION_MATCH/PASS; COMDAT literal-only; pick-any  -> ; pairs 5 NEQ reach flips 0; /FORCE dups 0->0
+0047eee4	-	owner	QUEUE	none	not changed: see QUEUE_PROPOSALS.tsv
+00cadd00	-	owner	QUEUE	none	not changed: see QUEUE_PROPOSALS.tsv
+00cb09a0	-	owner	QUEUE	none	not changed: see QUEUE_PROPOSALS.tsv
+004804de	-	owner	QUEUE	released	not changed: see QUEUE_PROPOSALS.tsv

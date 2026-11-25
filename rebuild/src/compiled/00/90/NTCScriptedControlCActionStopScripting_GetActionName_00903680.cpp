@@ -39,5 +39,5 @@ public:
 
 CCharString NTCScriptedControl::CActionStopScripting::GetActionName() const
 {
-    return CCharString("ACTION_DO_CREATURE_ACTION", -1);
+    return CCharString("CActionStopScripting", -1);
 }

@@ -1,43 +1,42 @@
+// Behaviour test for 0x00A9D310 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "Mirrored Texture Triangle List", length -1, one call, into the hidden return slot.
 #include <stdio.h>
+#include <string.h>
+// CMirroredTextureHighlightsChunk::GetChunkDescription  (retail 0x00a9d310)
+// __fastcall, returns CCharString by value (hidden retbuf as first stack arg).
+// Body: return CCharString("...", -1);  -- 'this' unused.
 
-class CCharString { public:
-    char* m_data;
+class CCharString {
+public:
+    CCharString(const char *s, long n);   // 0x0099ebf0, out-of-line ctor
+private:
+    char *m_p;
 };
 
-static const char* g_last_str = 0;
-static int g_last_len = 0;
-
-// Local stand-in for the real ctor at 0x0099ebf0.
-CCharString* __fastcall CCharString_ctor(CCharString* self, int /*edx*/, const char* str, int len)
-{
-    g_last_str = str;
-    g_last_len = len;
-    self->m_data = (char*)str;
-    return self;
-}
-
-class CMirroredTextureHighlightsChunk { public:
+class CMirroredTextureHighlightsChunk {
+public:
     CCharString GetChunkDescription();
+    int m_dummy;
 };
 
-CCharString CMirroredTextureHighlightsChunk::GetChunkDescription()
+
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    CCharString ret;
-    CCharString_ctor(&ret, 0, "MirroredTextureHighlights", -1);
-    return ret;
-}
-
-int main()
-{
-    CMirroredTextureHighlightsChunk obj;
-    CCharString s = obj.GetChunkDescription();
-
-    int ok = 1;
-    if (g_last_len != -1) ok = 0;
-    if (g_last_str == 0) ok = 0;
-    if (s.m_data != g_last_str) ok = 0;
-
-    if (ok) printf("MIRRTEXHIGHLIGHTS_GETDESC_OK\n");
-    else    printf("FAIL str=%p len=%d\n", (void*)s.m_data, g_last_len);
-    return ok ? 0 : 1;
+    const void* where = 0;
+    {
+        CCharString r = ((CMirroredTextureHighlightsChunk*)g_storage)->CMirroredTextureHighlightsChunk::GetChunkDescription();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "Mirrored Texture Triangle List") != 0 || g_slot != where) {
+            printf("FAIL_00a9d310 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
+    }
+    printf("MIRRTEXHIGHLIGHTS_GETDESC_OK\n");
+    return 0;
 }

@@ -17,5 +17,5 @@ public:
 
 CCharString CCombatSequence_FodderMainAttack::GetName() const
 {
-    return CCharString("FodderMainAttack", -1);
+    return CCharString("COMBAT_SEQUENCE_FODDER_MAIN_ATTACK", -1);
 }

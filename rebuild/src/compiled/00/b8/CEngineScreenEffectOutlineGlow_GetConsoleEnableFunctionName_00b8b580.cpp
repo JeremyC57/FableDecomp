@@ -35,5 +35,5 @@ public:
 
 CCharString CEngineScreenEffectOutlineGlow::GetConsoleEnableFunctionName()
 {
-    return CCharString("EnableOutlineGlow", -1);
+    return CCharString("EnableScreenEffectOutlineGlow", -1);
 }

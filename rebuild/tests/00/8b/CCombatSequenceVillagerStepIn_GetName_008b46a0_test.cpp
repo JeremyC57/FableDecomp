@@ -1,42 +1,40 @@
+// Behaviour test for 0x008B46A0 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_VILLAGER_STEP_IN", length -1, one call, into the hidden return slot.
 #include <stdio.h>
 #include <string.h>
+// CCombatSequence_VillagerStepIn::GetName  0x008b46a0
+// Returns a CCharString by value, constructed from a string literal via
+// CCharString::CCharString(char const*, int)  (call 0x99ebf0, arg -1).
 
-// Local stand-in matching the source's CCharString layout/ctor.
 class CCharString {
 public:
-    CCharString(const char* s, long len);
+    CCharString(const char* s, long len);   // declared only -> real call emitted
     void* buf;
 };
-
-static const char* g_lastStr = 0;
-static int g_lastLen = 999;
-
-CCharString::CCharString(const char* s, long len) {
-    g_lastStr = s;
-    g_lastLen = len;
-    buf = (void*)s;
-}
 
 class CCombatSequence_VillagerStepIn {
 public:
     virtual CCharString GetName() const;
 };
 
-CCharString CCombatSequence_VillagerStepIn::GetName() const {
-    return CCharString("Villager Step In", -1);
-}
 
-int main() {
-    CCombatSequence_VillagerStepIn obj;
-    CCharString r = obj.GetName();
-    bool ok = (g_lastLen == -1)
-           && (g_lastStr != 0)
-           && (strcmp(g_lastStr, "Villager Step In") == 0)
-           && (r.buf == (void*)g_lastStr);
-    if (ok) {
-        printf("GETNAME_VSI_OK\n");
-        return 0;
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
+{
+    const void* where = 0;
+    {
+        CCharString r = ((CCombatSequence_VillagerStepIn*)g_storage)->CCombatSequence_VillagerStepIn::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_VILLAGER_STEP_IN") != 0 || g_slot != where) {
+            printf("FAIL_008b46a0 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    printf("GETNAME_VSI_FAIL len=%d\n", g_lastLen);
-    return 1;
+    printf("GETNAME_VSI_OK\n");
+    return 0;
 }

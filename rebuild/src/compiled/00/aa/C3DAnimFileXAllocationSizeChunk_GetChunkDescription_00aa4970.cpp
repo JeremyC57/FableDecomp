@@ -34,5 +34,5 @@
 #include "engine/CScopedLockFlagBool.h"
 const CCharString C3DAnimFileXAllocationSizeChunk::GetChunkDescription() const
 {
-    return CCharString("AllocationSize", -1);
+    return CCharString("Allocation Size Helper Chunk", -1);
 }

@@ -36,5 +36,5 @@ public:
 
 CCharString CCombatSequence_TrollRockAdvance::GetName() const
 {
-    return CCharString("SEQUENCE_TROLL_ROCK_ADVANCE", -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_ROCK_ADVANCE", -1);
 }

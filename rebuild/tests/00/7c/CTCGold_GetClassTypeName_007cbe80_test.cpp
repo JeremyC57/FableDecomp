@@ -1,15 +1,17 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x007CBE80 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "CTCGold", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// CTCGold::GetClassTypeName  0x007cbe80
+// __fastcall, returns CCharString by value.
+// Body: return CCharString("CTCGold", -1);
+//   push -1 ; push <literal> ; ecx = &retval ; call CCharString::CCharString(char*, long)
 
-// Minimal CCharString that records what it was constructed with.
 class CCharString {
 public:
-    CCharString(const char* s, long len) {
-        m_data = s;
-        m_len = len;
-    }
-    const char* m_data;
-    long m_len;
+    CCharString(const char* s, long len);
+private:
+    char* m_data;
 };
 
 class CTCGold {
@@ -17,17 +19,24 @@ public:
     CCharString GetClassTypeName();
 };
 
-CCharString CTCGold::GetClassTypeName()
-{
-    return CCharString("DoCreatureAction", -1);
-}
 
-int main()
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    CTCGold a;
-    CCharString r = a.GetClassTypeName();
-    bool ok = (r.m_len == -1) && (std::strcmp(r.m_data, "DoCreatureAction") == 0);
-    printf("GetActionName len=%ld str=%s %s\n", r.m_len, r.m_data, ok ? "OK" : "FAIL");
-    if (!ok) return 1;
+    const void* where = 0;
+    {
+        CCharString r = ((CTCGold*)g_storage)->CTCGold::GetClassTypeName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "CTCGold") != 0 || g_slot != where) {
+            printf("FAIL_007cbe80 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
+    }
+    printf("GetActionName len=-1 str=DoCreatureAction OK\n");
     return 0;
 }

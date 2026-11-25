@@ -17,5 +17,5 @@ public:
 };
 
 CCharString C3DMeshFileTransformationChunk::GetChunkDescription() const {
-    return CCharString("Transformation", -1);
+    return CCharString("Transformation Matrix", -1);
 }

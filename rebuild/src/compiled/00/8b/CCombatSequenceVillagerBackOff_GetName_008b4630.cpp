@@ -6,4 +6,4 @@
 #include "engine/CCombatSequence_VillagerBackOff.h"
 
 class CCharString { public: char* m_pData; CCharString(const char*, long); };
-CCharString CCombatSequence_VillagerBackOff::GetName() const { return CCharString("CombatSequence_VillagerBackOff", -1); }
+CCharString CCombatSequence_VillagerBackOff::GetName() const { return CCharString("COMBAT_SEQUENCE_VILLAGER_BACK_OFF", -1); }

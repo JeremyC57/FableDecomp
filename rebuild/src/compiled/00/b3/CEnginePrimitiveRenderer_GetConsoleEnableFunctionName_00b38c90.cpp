@@ -34,5 +34,5 @@ public:
 
 CCharString CEnginePrimitiveRenderer::GetConsoleEnableFunctionName()
 {
-    return CCharString("ENABLE_PRIMITIVE_RENDERER", -1);
+    return CCharString("EnablePrimitives", -1);
 }

@@ -36,5 +36,5 @@ public:
 
 CCharString CCombatSequence_BanditBoast::GetName() const
 {
-    return CCharString("SEQUENCE_BANDIT_BOAST", -1);
+    return CCharString("COMBAT_SEQUENCE_BANDIT_BOAST", -1);
 }

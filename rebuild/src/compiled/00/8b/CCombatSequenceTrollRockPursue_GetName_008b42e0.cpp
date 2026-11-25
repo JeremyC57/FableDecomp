@@ -14,7 +14,7 @@ public:
 };
 
 // String literal lives at 0x1278aec in retail.
-static const char* const s_name = "CombatSequence_TrollRockPursue";
+static const char* const s_name = "COMBAT_SEQUENCE_TROLL_ROCK_PURSUE";
 
 CCharString CCombatSequence_TrollRockPursue::GetName() const {
     return CCharString(s_name, -1);

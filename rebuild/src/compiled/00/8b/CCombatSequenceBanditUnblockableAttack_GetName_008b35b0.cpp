@@ -14,5 +14,5 @@ public:
 };
 
 CCharString CCombatSequence_BanditUnblockableAttack::GetName() const {
-    return CCharString("BanditUnblockableAttack", -1);
+    return CCharString("COMBAT_SEQUENCE_BANDIT_UNBLOCKABLE", -1);
 }

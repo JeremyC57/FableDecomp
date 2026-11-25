@@ -31,5 +31,5 @@ public:
 
 CCharString C3DMeshFileSmoothingGroupsChunk::GetChunkInfo() const
 {
-    return CCharString("SmoothingGroups", -1);
+    return CCharString("", -1);
 }

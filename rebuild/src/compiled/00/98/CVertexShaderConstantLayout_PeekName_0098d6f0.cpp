@@ -15,5 +15,5 @@ public:
 
 CCharString CVertexShaderConstantLayout::PeekName()
 {
-    return CCharString("PeekName", -1);
+    return CCharString("", -1);
 }

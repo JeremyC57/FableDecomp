@@ -16,5 +16,5 @@ public:
 
 CCharString C3DMeshFileXMappingInfoChunk::GetChunkDescription() const
 {
-    return CCharString("Mapping Information", -1);
+    return CCharString("Mapping Info", -1);
 }

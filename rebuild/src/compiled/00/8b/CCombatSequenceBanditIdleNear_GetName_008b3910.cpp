@@ -1,6 +1,6 @@
 // CCombatSequence_BanditIdleNear::GetName  @ 008b3910
 // __fastcall, returns CCharString by value; param CActionDoCreatureAction* (unused).
-// Body: builds CCharString("BanditIdleNear", -1) into the hidden return buffer, returns it.
+// Body: builds CCharString("COMBAT_SEQUENCE_BANDIT_IDLE_SHORT", -1) into the hidden return buffer, returns it.
 
 class CCharString {
 public:
@@ -15,5 +15,5 @@ public:
 
 CCharString CCombatSequence_BanditIdleNear::GetName() const
 {
-    return CCharString("BanditIdleNear", -1);
+    return CCharString("COMBAT_SEQUENCE_BANDIT_IDLE_SHORT", -1);
 }

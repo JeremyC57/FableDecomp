@@ -13,5 +13,5 @@ public:
 
 CCharString CEngineScreenEffectDisplacementRenderer::GetConsoleEnableFunctionName()
 {
-    return CCharString("EnableScreenEffectDisplacement", -1);
+    return CCharString("EnableScreenEffectDisplacementRenderer", -1);
 }

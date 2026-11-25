@@ -34,5 +34,5 @@ public:
 };
 
 const CCharString C3DMeshFileHelperPointChunk::GetChunkDescription() const {
-    return CCharString("PointChunk", -1);
+    return CCharString("Helper Point", -1);
 }

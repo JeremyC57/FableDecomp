@@ -1,21 +1,15 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x008B35B0 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_BANDIT_UNBLOCKABLE", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// CCombatSequence_BanditUnblockableAttack::GetName -> CCharString by value
+// retail 0x008b35b0
 
-// Local stand-in for CCharString ctor (mimics a length-counted string).
 class CCharString {
 public:
-    CCharString(const char* s, long n) {
-        if (n < 0) n = (int)strlen(s);
-        m_len = n;
-        m_data = new char[n + 1];
-        memcpy(m_data, s, n);
-        m_data[n] = 0;
-    }
-    const char* c_str() const { return m_data; }
-    int len() const { return m_len; }
+    CCharString(const char* s, long n);   // 0x99ebf0
 private:
     char* m_data;
-    int   m_len;
 };
 
 class CCombatSequence_BanditUnblockableAttack {
@@ -23,17 +17,24 @@ public:
     CCharString GetName() const;
 };
 
-CCharString CCombatSequence_BanditUnblockableAttack::GetName() const {
-    return CCharString("BanditUnblockableAttack", -1);
-}
 
-int main() {
-    CCombatSequence_BanditUnblockableAttack seq;
-    CCharString n = seq.GetName();
-    if (strcmp(n.c_str(), "BanditUnblockableAttack") == 0 && n.len() == 23) {
-        printf("GETNAME_OK\n");
-        return 0;
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
+{
+    const void* where = 0;
+    {
+        CCharString r = ((CCombatSequence_BanditUnblockableAttack*)g_storage)->CCombatSequence_BanditUnblockableAttack::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_BANDIT_UNBLOCKABLE") != 0 || g_slot != where) {
+            printf("FAIL_008b35b0 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    printf("GETNAME_FAIL\n");
-    return 1;
+    printf("GETNAME_OK\n");
+    return 0;
 }

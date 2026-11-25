@@ -14,5 +14,5 @@ public:
 };
 
 CCharString CCombatSequence_VillagerStepIn::GetName() const {
-    return CCharString("Villager Step In", -1);
+    return CCharString("COMBAT_SEQUENCE_VILLAGER_STEP_IN", -1);
 }

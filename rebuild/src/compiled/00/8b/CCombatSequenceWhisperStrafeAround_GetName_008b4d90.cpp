@@ -15,5 +15,5 @@ class CCharString { public:
 
 CCharString CCombatSequenceWhisperStrafeAround::GetName() const
 {
-    return CCharString("CombatSequenceWhisperStrafeAround", -1);
+    return CCharString("COMBAT_SEQUENCE_WHISPER_STRAFE_AROUND", -1);
 }

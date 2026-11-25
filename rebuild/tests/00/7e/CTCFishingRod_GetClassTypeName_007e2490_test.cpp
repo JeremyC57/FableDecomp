@@ -35,7 +35,7 @@ int main()
     CWideString r = act.GetClassTypeName();
 
     if (g_capturedLen == -1 &&
-        strcmp(g_captured, "DoCreatureAction") == 0 &&
+        strcmp(g_captured, "CTCFishingRod") == 0 &&
         r.m_data == g_captured)
     {
         printf("GETACTIONNAME_OK\n");

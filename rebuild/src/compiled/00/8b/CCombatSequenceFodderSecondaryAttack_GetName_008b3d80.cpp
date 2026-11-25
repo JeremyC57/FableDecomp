@@ -6,5 +6,5 @@
 #include "engine/CCombatSequence_FodderSecondaryAttack.h"
 
 class CCharString { public: char* m_buf; CCharString(const char*, long); };
-static const char kName[] = "FodderSecondaryAttack";
+static const char kName[] = "COMBAT_SEQUENCE_FODDER_SECONDARY_ATTACK";
 CCharString CCombatSequence_FodderSecondaryAttack::GetName() const { return CCharString(kName, -1); }

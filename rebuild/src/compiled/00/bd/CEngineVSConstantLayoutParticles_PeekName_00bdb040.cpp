@@ -27,5 +27,5 @@ public:
 
 CCharString CEngineVSConstantLayoutParticles::PeekName()
 {
-    return CCharString("engineParticleVSConstantLayout", -1);
+    return CCharString("LayoutParticles", -1);
 }

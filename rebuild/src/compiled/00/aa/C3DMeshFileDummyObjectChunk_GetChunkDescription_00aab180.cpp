@@ -21,5 +21,5 @@ public:
 
 const CCharString C3DMeshFileDummyObjectChunk::GetChunkDescription() const
 {
-    return CCharString("DummyObject", -1);
+    return CCharString("Dummy Object", -1);
 }

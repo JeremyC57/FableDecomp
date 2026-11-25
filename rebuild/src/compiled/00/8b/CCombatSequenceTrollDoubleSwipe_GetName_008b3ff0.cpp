@@ -27,5 +27,5 @@ public:
 
 CCharString CCombatSequence_TrollDoubleSwipe::GetName() const
 {
-    return CCharString("TrollDoubleSwipe", -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_DOUBLE_SWIPE", -1);
 }

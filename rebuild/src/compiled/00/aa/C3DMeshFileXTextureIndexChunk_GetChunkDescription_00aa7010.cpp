@@ -17,5 +17,5 @@ public:
 
 CCharString C3DMeshFileXTextureIndexChunk::GetChunkDescription() const
 {
-    return CCharString("XTextureIndex", -1);
+    return CCharString("Texture Index", -1);
 }

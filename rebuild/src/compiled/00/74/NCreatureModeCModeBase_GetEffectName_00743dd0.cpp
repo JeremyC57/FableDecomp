@@ -20,5 +20,5 @@ public:
 
 CCharString NCreatureMode::CModeBase::GetEffectName()
 {
-    return CCharString("DoCreatureAction", -1);
+    return CCharString("", -1);
 }

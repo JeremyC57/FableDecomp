@@ -6,4 +6,4 @@
 #include "engine/CCombatSequence_BanditAdvanceFar.h"
 
 class CCharString { public: char* p; CCharString(const char*, long); };
-CCharString CCombatSequence_BanditAdvanceFar::GetName() const { return CCharString("CombatSequence_BanditAdvanceFar", -1); }
+CCharString CCombatSequence_BanditAdvanceFar::GetName() const { return CCharString("COMBAT_SEQUENCE_BANDIT_ADVANCE_LONG", -1); }

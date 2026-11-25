@@ -21,5 +21,5 @@ public:
 
 CCharString CCombatSequence_WillForcePush::GetName(void) const
 {
-    return CCharString("CombatSequence_WillForcePush", -1);
+    return CCharString("COMBAT_SEQUENCE_WILL_FORCE_PUSH", -1);
 }

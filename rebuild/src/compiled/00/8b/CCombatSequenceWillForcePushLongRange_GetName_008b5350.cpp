@@ -19,5 +19,5 @@ public:
 
 CCharString CCombatSequence_WillForcePushLongRange::GetName() const
 {
-    return CCharString("WillForcePushLongRange", -1);
+    return CCharString("COMBAT_SEQUENCE_WILL_FORCE_PUSH_LONG_RANGE", -1);
 }

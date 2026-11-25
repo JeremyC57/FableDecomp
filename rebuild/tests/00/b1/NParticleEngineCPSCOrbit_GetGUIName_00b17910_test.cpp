@@ -1,6 +1,51 @@
-#include <cstdio>
-#include <cstring>
-class CCharString { public: const char* p; CCharString(const char* s, long n) : p(s) { } CCharString(const CCharString& o) : p(o.p) { } };
-struct CPSCOrbit { CCharString GetGUIName(); };
-CCharString CPSCOrbit::GetGUIName() { return CCharString("Orbit", -1); }
-int main() { CPSCOrbit o; bool ok = std::strcmp(o.GetGUIName().p, "Orbit") == 0; std::printf(ok ? "00b17910_TEST PASS\n" : "00b17910_TEST FAIL\n"); return ok ? 0 : 1; }
+// Behaviour test for 0x00B17910 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "Orbit", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// NParticleEngine::CPSCOrbit::GetGUIName() -- the component's editor name: "Orbit"
+// Leaf: ?GetGUIName@CPSCOrbit@NParticleEngine@@
+// Renamed (fistp pass, 2026-10-24) from NTCScriptedControl::CActionDoCreatureAction::GetActionName @ 00/b1/CActionDoCreatureAction_GetActionName_00b17910.cpp: vtable slot 6 of NParticleEngine::CPSCOrbit; Ego_r.pdb lists GetGUIName / StaticGetGUIName on the particle component classes; literal "Orbit"
+// (was: NParticleEngine::CPSCOrbit::GetGUIName)
+// Retail 0x00b17910 - __fastcall, returns CCharString by value from a string literal.
+// 'this' is unused; body constructs CCharString(literal, -1) into the hidden return buffer.
+
+class CCharString {
+public:
+    // (const char*, long length = -1) constructor; out-of-line (matches call 0x99ebf0)
+    CCharString(const char* s, long len);
+    CCharString(const CCharString& o);
+    ~CCharString();
+private:
+    char* m_data;
+};
+
+namespace NParticleEngine {
+class CPSCOrbit {
+public:
+    CCharString GetGUIName() const;
+};
+}
+
+
+
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+CCharString::~CCharString() {}
+int main(void)
+{
+    const void* where = 0;
+    {
+        CCharString r = ((NParticleEngine::CPSCOrbit*)g_storage)->NParticleEngine::CPSCOrbit::GetGUIName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "Orbit") != 0 || g_slot != where) {
+            printf("FAIL_00b17910 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
+    }
+    printf("00b17910_TEST PASS\n");
+    return 0;
+}

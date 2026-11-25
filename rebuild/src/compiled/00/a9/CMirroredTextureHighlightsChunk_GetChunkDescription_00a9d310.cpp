@@ -17,5 +17,5 @@ public:
 
 CCharString CMirroredTextureHighlightsChunk::GetChunkDescription()
 {
-    return CCharString("MirroredTextureHighlights", -1);
+    return CCharString("Mirrored Texture Triangle List", -1);
 }

@@ -1,0 +1,128 @@
+// NInventory::CTCInventoryBase::GetPrerequisitesString(CTCQuestCard*) -- per renown prerequisite of the card's def, "Renown: <n> (Current level <hero renown>)"
+// Leaf: ?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z
+// Identity (agentFAM06): Ego_r.pdb / FableWin.pdb ?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z
+//   (protected; the CTCQuestCard* overload, the other takes CDefPointer<const CQuestCardDef>); the body's "Renown:" / "Current level"
+//   text. Unreferenced in retail. Respelled: protected access (bytes unchanged). Catalog CIVCountedPointer_Assign was a placeholder.
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+#include "fable_compiler.h"
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+#include <stddef.h>
+#include "engine/CTCQuestCard.h"
+class CCharString { public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                     // 0x0099EAE0
+};
+class CWideString { public:
+    void* PStringData;
+    CWideString(const wchar_t* text);                   // 0x0099B6B0
+    CWideString(const CWideString& other);              // 0x0099B720
+    ~CWideString();                                     // 0x0099B510
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    static CWideString __fastcall CreateFromCharString(const CCharString& text);   // 0x0099B6A0
+};
+CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
+CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);      // 0x0099BF30
+CWideString __fastcall GFIntToWideString(long value);                            // 0x00405F00
+
+namespace NGameText {
+class CDataBank { public:
+    const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
+};
+}
+using NGameText::CDataBank;
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
+    unsigned char _pad00[0x14];
+    CDataBank* TextBank;                                // +0x14
+};
+FABLE_FORCEINLINE CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
+
+struct SNode {
+    long color; SNode* parent; SNode* left; SNode* right;
+    long first;                                         // +0x10 EQuestCardPrerequisite
+    long second;                                        // +0x14
+};
+SNode* __cdecl Successor(SNode* node);                  // 0x004292C0
+struct CPrerequisiteMap {                               // STLport map<EQuestCardPrerequisite,long> (12 bytes in retail)
+    SNode* header; long count; long compare;
+    FABLE_FORCEINLINE SNode* begin() const { return header->left; }
+    FABLE_FORCEINLINE SNode* end() const { return header; }
+    FABLE_FORCEINLINE bool empty() const { return count == 0; }
+};
+class CDefPointeeBase { public: virtual void VFunc00(); virtual void Release(); long RefCount; };
+class CQuestCardDef : public CDefPointeeBase { public:
+    unsigned char _pad08[0x54];
+    CPrerequisiteMap Prerequisites;                     // +0x5c
+};
+template<class T> class CDefPointer { public:
+    T* Object;
+    FABLE_FORCEINLINE CDefPointer(T* p) : Object(p) { if (Object) ++((CDefPointeeBase*)Object)->RefCount; }
+    FABLE_FORCEINLINE ~CDefPointer() { if (Object) { CDefPointeeBase* p = (CDefPointeeBase*)Object; if (--p->RefCount == 0) p->Release(); } }
+    FABLE_FORCEINLINE T* operator->() const { return Object; }
+};
+FABLE_FORCEINLINE CDefPointer<const CQuestCardDef> GetDef(const CTCQuestCard* card) { return CDefPointer<const CQuestCardDef>((const CQuestCardDef*)card->PDef_Object); }
+class CTCHeroStats { public:
+    unsigned char _pad00[0x70];
+    long RenownLevel;                                   // +0x70
+    FABLE_FORCEINLINE long GetRenownLevel() const { return RenownLevel; }
+};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
+    Entry* first; Entry* last;
+    Entry* LowerBound(const ETCInterfaceType& key);                     // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
+class CThing { public:
+    unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
+    template<class T> FABLE_FORCEINLINE bool GetInterface(T** out, long kind) {
+        if (present.test(kind)) {
+            ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);
+            *out = (T*)((void*)(it == map->last || kind < it->first ? map->last : it)->second);
+            return true;
+        }
+        return false;
+    }
+};
+namespace NInventory {
+class CTCInventoryBase { public:
+    void* __vftable; CThing* ParentThing;
+protected:                                     // Ego_r / FableWin ?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE... (agentFAM06)
+    CWideString GetPrerequisitesString(CTCQuestCard* card);
+};
+CWideString CTCInventoryBase::GetPrerequisitesString(CTCQuestCard* card)
+{
+    CWideString result = CWideString::CreateFromCharString("");
+    if (!GetDef(card)->Prerequisites.empty()) {
+        SNode* node = GetDef(card)->Prerequisites.begin();
+        while (node != GetDef(card)->Prerequisites.end()) {
+            if (node->first == 0) {
+                result += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + CWideString(L": ") + GFIntToWideString(node->second) + CWideString(L" ");
+                CTCHeroStats* stats;
+                if (ParentThing->GetInterface(&stats, 4) && stats)
+                    result += CWideString(L"(") + GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_CURRENT_LEVEL") + GFIntToWideString(stats->GetRenownLevel()) + CWideString(L")\n\n");
+            }
+            node = Successor(node);
+        }
+    }
+    return result;
+}
+}

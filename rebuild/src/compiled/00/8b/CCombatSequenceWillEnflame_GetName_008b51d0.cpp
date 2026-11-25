@@ -17,5 +17,5 @@ public:
 
 CCharString CCombatSequence_WillEnflame::GetName() const
 {
-    return CCharString("SEQ_HERO_WILL_ENFLAME", -1);
+    return CCharString("COMBAT_SEQUENCE_WILL_ENFLAME", -1);
 }

@@ -15,5 +15,5 @@
 #include "engine/C3DMeshFileTrianglesChunk.h"
 const CCharString C3DMeshFileTrianglesChunk::GetChunkDescription() const
 {
-    return CCharString("Triangles", -1);
+    return CCharString("Triangle List", -1);
 }

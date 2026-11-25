@@ -26,7 +26,7 @@ int main()
     out.p = 0;
     CCharString* r = CCombatSequence_VillagerComboUnblockable_GetName(&obj, 0, &out);
     if (r != &out) { printf("FAIL ret\n"); return 1; }
-    if (out.p == 0 || strcmp(out.p, "VillagerComboUnblockable") != 0) { printf("FAIL str\n"); return 1; }
+    if (out.p == 0 || strcmp(out.p, "COMBAT_SEQUENCE_VILLAGER_COMBO_ATTACK_UNBLOCKABLE") != 0) { printf("FAIL str\n"); return 1; }
     printf("GETNAME_VILLAGER_OK\n");
     return 0;
 }

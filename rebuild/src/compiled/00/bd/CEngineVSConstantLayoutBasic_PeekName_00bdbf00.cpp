@@ -15,7 +15,7 @@ public:
 };
 
 // The fixed literal the engine passes (address 0x012a7d48 in retail).
-static const char* const kName = "CEngineVSConstantLayoutBasic";
+static const char* const kName = "LayoutBasic";
 
 CCharString CEngineVSConstantLayoutBasic::PeekName()
 {

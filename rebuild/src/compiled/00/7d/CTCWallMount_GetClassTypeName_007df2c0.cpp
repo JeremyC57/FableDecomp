@@ -15,7 +15,7 @@ private:
 };
 
 // The literal the ctor is fed (address 0x123d724 in retail).
-const char g_actionName[] = "DoCreatureAction";
+const char g_actionName[] = "CTCWallMount";
 
 class CTCWallMount {
 public:

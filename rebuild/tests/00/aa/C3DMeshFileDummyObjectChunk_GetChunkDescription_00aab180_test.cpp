@@ -1,25 +1,21 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x00AAB180 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "Dummy Object", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// C3DMeshFileDummyObjectChunk::GetChunkDescription
+// Retail 0x00aab180 : virtual const CCharString GetChunkDescription() const
+//
+// push esi ; mov esi,[esp+8] (hidden ret buf) ; push -1 ; push 0x129e620 ;
+// mov ecx,esi ; call CCharString::CCharString(const char*,long) ; mov eax,esi ; ret 4
 
 class CCharString
 {
 public:
+    // ctor at 0x0099ebf0 : CCharString(const char* s, long len)
     CCharString(const char* s, long len);
-    const char* c_str() const { return m_data; }
 private:
     char* m_data;
-    char  m_buf[64];
 };
-
-// local stand-in for the ctor at 0x0099ebf0
-CCharString::CCharString(const char* s, long len)
-{
-    int n = (len < 0) ? (int)strlen(s) : len;
-    if (n > 63) n = 63;
-    memcpy(m_buf, s, n);
-    m_buf[n] = 0;
-    m_data = m_buf;
-}
 
 class C3DMeshFileDummyObjectChunk
 {
@@ -27,18 +23,24 @@ public:
     virtual const CCharString GetChunkDescription() const;
 };
 
-const CCharString C3DMeshFileDummyObjectChunk::GetChunkDescription() const
-{
-    return CCharString("DummyObject", -1);
-}
 
-int main()
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    C3DMeshFileDummyObjectChunk chunk;
-    CCharString d = chunk.GetChunkDescription();
-    if (strcmp(d.c_str(), "DummyObject") == 0)
-        printf("CHUNKDESC_OK\n");
-    else
-        printf("CHUNKDESC_FAIL\n");
-    return strcmp(d.c_str(), "DummyObject") == 0 ? 0 : 1;
+    const void* where = 0;
+    {
+        CCharString r = ((C3DMeshFileDummyObjectChunk*)g_storage)->C3DMeshFileDummyObjectChunk::GetChunkDescription();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "Dummy Object") != 0 || g_slot != where) {
+            printf("FAIL_00aab180 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
+    }
+    printf("CHUNKDESC_OK\n");
+    return 0;
 }

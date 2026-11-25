@@ -20,5 +20,5 @@ public:
 
 CCharString C3DMeshFileMaterialChunk::GetChunkDescription() const
 {
-    return CCharString("MaterialChunk", -1);
+    return CCharString("Material Description", -1);
 }

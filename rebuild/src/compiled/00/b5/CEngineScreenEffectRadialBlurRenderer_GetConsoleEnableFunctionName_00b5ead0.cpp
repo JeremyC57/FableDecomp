@@ -1,4 +1,4 @@
-// CEngineScreenEffectRadialBlurRenderer::GetConsoleEnableFunctionName() -- returns "ENGINE_SCREEN_EFFECT_RADIAL_BLUR" as a CCharString
+// CEngineScreenEffectRadialBlurRenderer::GetConsoleEnableFunctionName() -- returns "EnableScreenEffectRadialBlurRenderer" as a CCharString
 // Leaf: ?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B5EAD0: the hidden result is constructed through CCharString(const char*, long) 0x0099EBF0
 //   with length -1, its address returned in eax.
@@ -13,5 +13,5 @@
 
 CCharString CEngineScreenEffectRadialBlurRenderer::GetConsoleEnableFunctionName()
 {
-    return CCharString("ENGINE_SCREEN_EFFECT_RADIAL_BLUR", -1);
+    return CCharString("EnableScreenEffectRadialBlurRenderer", -1);
 }

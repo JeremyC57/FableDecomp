@@ -20,5 +20,5 @@ public:
 
 CCharString CCombatSequence_KingScorpionTailPlunge::GetName() const
 {
-    return CCharString("CombatSequence_KingScorpionTailPlunge", -1);
+    return CCharString("COMBAT_SEQUENCE_KING_SCORPION_TAIL_PLUNGE", -1);
 }

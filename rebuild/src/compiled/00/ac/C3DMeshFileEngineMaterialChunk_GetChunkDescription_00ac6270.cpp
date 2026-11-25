@@ -20,5 +20,5 @@
 #include "engine/C3DMeshFileEngineMaterialChunk.h"
 
 const CCharString C3DMeshFileEngineMaterialChunk::GetChunkDescription() const {
-    return CCharString("Engine material chunk", -1);
+    return CCharString("Engine Material", -1);
 }

@@ -18,5 +18,5 @@ struct CActionWait {
 
 CCharString NTCScriptedControl::CActionWait::GetActionName()
 {
-    return CCharString("CACTION_DO_CREATURE_ACTION", -1);
+    return CCharString("CActionWait", -1);
 }

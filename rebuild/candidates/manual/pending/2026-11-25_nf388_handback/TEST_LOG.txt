@@ -1,0 +1,60 @@
+# Grader patch test log (NF388, 2026-11-24)
+# Patched files: patches/new/tools/decomp_pipeline/{reloc_identity,verify_and_land}.py; diff: patches/literal_check.diff (against HEAD; repo sha1 reloc_identity 2d1049ad, verify_and_land fc2e2779).
+# Run from a symlink shadow of tools/ (patches/shadow, cp -rs) with the two patched files real; cwd = shadow, FABLE_ROOT = repo, private LANDVERIFY_WORK.
+
+## 1. HEAD 0x00B1AE00 (must warn) + clean 0x00AA7100 (must not): payload = recheck.py 00b1ae00 00aa7100 (repo HEAD text)
+$ python3 tools/decomp_pipeline/linux_lane/lane_tools/vland.py test_head/payload.json test_head/oracle.tsv --recheck-landed
+addr       parity           behav  name
+00b1ae00   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXBoundingSphereChunk (engine/C3DMeshFileXBoundingSphereChunk.h)
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+00b1ae00   WARN LITERAL_DIFF +8 ??_C@_0BA@MLDIEJDD@Bounding?5Sphere?$AA@: object 'Bounding Sphere', retail 0x0129F5E8 'CPSCLight'
+00b1ae00   WARN STANDIN_LEAF ?GetChunkDescription@C3DMeshFileXBoundingSphereChunk@@UBE?AVCCharString@@XZ (catalog NParticleEngine::CPSCLight::GetClassTypeName; names another function)
+00b1ae00   RELOCATION_MATCH PASS   GetClassTypeName
+00aa7100   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXBoundingSphereChunk (engine/C3DMeshFileXBoundingSphereChunk.h)
+00aa7100   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 2
+  00b1ae00 RELOCATION_MATCH NParticleEngine::CPSCLight::GetClassTypeName
+  00aa7100 RELOCATION_MATCH C3DMeshFileXBoundingSphereChunk::GetChunkDescription
+
+## 2. Same rows, UNPATCHED repo grader (baseline: no LITERAL line, grades identical)
+addr       parity           behav  name
+00b1ae00   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXBoundingSphereChunk (engine/C3DMeshFileXBoundingSphereChunk.h)
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+00b1ae00   WARN STANDIN_LEAF ?GetChunkDescription@C3DMeshFileXBoundingSphereChunk@@UBE?AVCCharString@@XZ (catalog NParticleEngine::CPSCLight::GetClassTypeName; names another function)
+00b1ae00   RELOCATION_MATCH PASS   GetClassTypeName
+00aa7100   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXBoundingSphereChunk (engine/C3DMeshFileXBoundingSphereChunk.h)
+00aa7100   RELOCATION_MATCH PASS   GetChunkDescription
+
+WINS: 2
+  00b1ae00 RELOCATION_MATCH NParticleEngine::CPSCLight::GetClassTypeName
+  00aa7100 RELOCATION_MATCH C3DMeshFileXBoundingSphereChunk::GetChunkDescription
+
+## 3. Patched grader with FABLE_EXE unset (prints LITERAL_UNCHECKED only for functions that relocate a ??_C / $SG string)
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+00b1ae00   WARN LITERAL_UNCHECKED FABLE_EXE unset (the literal check reads the retail image)
+00b1ae00   RELOCATION_MATCH PASS   GetClassTypeName
+00aa7100   WARN LITERAL_UNCHECKED FABLE_EXE unset (the literal check reads the retail image)
+00aa7100   RELOCATION_MATCH PASS   GetChunkDescription
+  00b1ae00 RELOCATION_MATCH NParticleEngine::CPSCLight::GetClassTypeName
+  00aa7100 RELOCATION_MATCH C3DMeshFileXBoundingSphereChunk::GetChunkDescription
+
+## 4. The fixed 0x00B1AE00 text (batches/b1) under the patched grader: no LITERAL_DIFF
+00b1ae00   WARN SHARED_HEADER_AVAILABLE CPSCLight (engine/CPSCLight.h)
+00b1ae00   RELOCATION_MATCH PASS   GetClassTypeName
+
+## 5. Mutation: fixed symbol, wrong literal 'Bounding Sphere' (batches/b1/evidence/mutation_wrong_literal.log): warns, and the new asserting test FAILs
+addr       parity           behav  name
+00b1ae00   WARN SHARED_HEADER_AVAILABLE CPSCLight (engine/CPSCLight.h)
+00b1ae00   WARN LITERAL_DIFF +8 ??_C@_0BA@MLDIEJDD@Bounding?5Sphere?$AA@: object 'Bounding Sphere', retail 0x0129F5E8 'CPSCLight'
+00b1ae00   RELOCATION_MATCH FAIL   GetClassTypeName
+
+WINS: 0
+
+## 6. check() unchanged by the retail_target() refactor: repo vs patched reloc_identity.check() on 316 objects
+check() identical on 316 objects, different on 0
+
+## 7. Whole-tree use: tools/audit.py calls the same reloc_identity.literal_check() over every compiled landed row (LITERAL_AUDIT.tsv).

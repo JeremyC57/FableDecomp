@@ -1,22 +1,36 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x008B39F0 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_BANDIT_BOAST", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// Faithful VC7.1 reconstruction of
+//   ?GetName@CCombatSequence_BanditBoast@@UBE?AVCCharString@@XZ  (0x008b39f0)
+//
+// Retail disasm:
+//   push esi
+//   mov  esi, [esp+8]        ; esi = hidden return buffer (CCharString*)
+//   push -1
+//   push 0x1278848           ; const char* literal
+//   mov  ecx, esi            ; this = return buffer
+//   call CCharString::CCharString(const char*, long)  ; 0x99ebf0
+//   mov  eax, esi
+//   pop  esi
+//   ret  4
+//
+// A GetName() const that returns a CCharString by value, NRVO'd into the
+// caller-supplied return buffer, initialised from a string literal with an
+// explicit length arg of -1.
 
-// Independent behaviour test.
 class CCharString
 {
 public:
+    // Declaration only: defined in another TU (retail 0x99ebf0), so the
+    // compiler MUST emit a real call, matching retail's push/push/call.
     CCharString(const char* s, long len);
-    const char* data() const { return m_data; }
 private:
     char* m_data;
 };
 
-CCharString::CCharString(const char* s, long len)
-{
-    m_data = 0;
-    if (s && len != 0)
-        m_data = const_cast<char*>(s);
-}
+class CActionDoCreatureAction;
 
 class CCombatSequence_BanditBoast
 {
@@ -24,18 +38,24 @@ public:
     virtual CCharString GetName() const;
 };
 
-CCharString CCombatSequence_BanditBoast::GetName() const
-{
-    return CCharString("SEQUENCE_BANDIT_BOAST", -1);
-}
 
-int main()
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    CCombatSequence_BanditBoast obj;
-    CCharString name = obj.GetName();
-    if (name.data() && std::strcmp(name.data(), "SEQUENCE_BANDIT_BOAST") == 0)
-        std::printf("BANDITBOAST_NAME_OK\n");
-    else
-        std::printf("FAIL\n");
-    return (name.data() && std::strcmp(name.data(), "SEQUENCE_BANDIT_BOAST") == 0) ? 0 : 1;
+    const void* where = 0;
+    {
+        CCharString r = ((CCombatSequence_BanditBoast*)g_storage)->CCombatSequence_BanditBoast::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_BANDIT_BOAST") != 0 || g_slot != where) {
+            printf("FAIL_008b39f0 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
+    }
+    printf("BANDITBOAST_NAME_OK\n");
+    return 0;
 }

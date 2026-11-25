@@ -27,5 +27,5 @@ struct CBordelloLady {
 
 CCharString CBordelloLady::GetLHTSTag(const CCharString& suffix)
 {
-    return "LHTS_" + Name + "_" + suffix;
+    return "TEXT_QST_B13_" + Name + "_" + suffix;
 }

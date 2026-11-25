@@ -15,5 +15,5 @@ public:
 };
 
 CCharString CCombatSequence_TrollRockPursueNoZone::GetName() const {
-    return CCharString("CCombatSequence_TrollRockPursueNoZone", -1);
+    return CCharString("COMBAT_SEQUENCE_TROLL_ROCK_PURSUE_NO_ZONE", -1);
 }

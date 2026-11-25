@@ -23,5 +23,5 @@ public:
 
 CCharString C3DMeshFileMaterialExtChunk::GetChunkDescription() const
 {
-    return CCharString("MaterialExt", -1);
+    return CCharString("Extended Material Properties", -1);
 }

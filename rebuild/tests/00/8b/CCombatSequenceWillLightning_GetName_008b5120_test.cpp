@@ -1,40 +1,40 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x008B5120 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "COMBAT_SEQUENCE_WILL_LIGHTNING", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// CCombatSequence_WillLightning::GetName  (retail 0x008b5120)
+// __fastcall, returns CCharString by value from a string literal.
 
 class CCharString {
 public:
     char* m_ptr;
+    // out-of-line ctor -> retail CCharString::CCharString(const char*, long)
     CCharString(const char* s, long len);
 };
-
-// standalone impl of the extern ctor for linking the test
-CCharString::CCharString(const char* s, long len)
-{
-    static char buf[256];
-    int n = (len < 0) ? (int)std::strlen(s) : len;
-    if (n > 255) n = 255;
-    std::memcpy(buf, s, n);
-    buf[n] = 0;
-    m_ptr = buf;
-}
 
 class CCombatSequence_WillLightning {
 public:
     virtual CCharString GetName() const;
 };
 
-CCharString CCombatSequence_WillLightning::GetName() const
-{
-    return CCharString("CombatSequence_WillLightning", -1);
-}
 
-int main()
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    CCombatSequence_WillLightning obj;
-    CCharString r = obj.GetName();
-    if (r.m_ptr && std::strcmp(r.m_ptr, "CombatSequence_WillLightning") == 0)
-        std::printf("GETNAME_OK\n");
-    else
-        std::printf("GETNAME_FAIL\n");
+    const void* where = 0;
+    {
+        CCharString r = ((CCombatSequence_WillLightning*)g_storage)->CCombatSequence_WillLightning::GetName();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "COMBAT_SEQUENCE_WILL_LIGHTNING") != 0 || g_slot != where) {
+            printf("FAIL_008b5120 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
+    }
+    printf("GETNAME_OK\n");
     return 0;
 }

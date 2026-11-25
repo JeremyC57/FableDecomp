@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00743dd0   RELOCATION_MATCH PASS   GetEffectName
+0098d6f0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout (engine/CVertexShaderConstantLayout.h)
+0098d6f0   RELOCATION_MATCH PASS   PeekName
+00ab0110   WARN SHARED_HEADER_AVAILABLE C3DAnimFileBoneMaskChunk (engine/C3DAnimFileBoneMaskChunk.h)
+00ab0110   RELOCATION_MATCH PASS   GetChunkInfo
+00ab9f80   WARN SHARED_HEADER_AVAILABLE C3DMeshFileSmoothingGroupsChunk (engine/C3DMeshFileSmoothingGroupsChunk.h)
+00ab9f80   RELOCATION_MATCH PASS   GetChunkInfo
+
+WINS: 4
+  00743dd0 RELOCATION_MATCH NCreatureMode::CModeBase::?GetEffectName@CModeBase@NCreatureMode@@
+  0098d6f0 RELOCATION_MATCH CVertexShaderConstantLayout::PeekName
+  00ab0110 RELOCATION_MATCH C3DAnimFileBoneMaskChunk::GetChunkInfo
+  00ab9f80 RELOCATION_MATCH C3DMeshFileSmoothingGroupsChunk::GetChunkInfo

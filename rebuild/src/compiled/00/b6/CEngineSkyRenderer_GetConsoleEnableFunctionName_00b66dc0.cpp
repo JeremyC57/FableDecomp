@@ -14,5 +14,5 @@ public:
 
 CCharString CEngineSkyRenderer::GetConsoleEnableFunctionName()
 {
-    return CCharString("SkyRenderer", -1);
+    return CCharString("EnableSky", -1);
 }

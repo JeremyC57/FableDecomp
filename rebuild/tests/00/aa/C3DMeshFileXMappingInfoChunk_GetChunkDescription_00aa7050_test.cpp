@@ -1,5 +1,9 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour test for 0x00AA7050 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "Mapping Info", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// C3DMeshFileXMappingInfoChunk::GetChunkDescription
+// Returns a CCharString by value describing the chunk.
 
 class CCharString {
 public:
@@ -8,33 +12,30 @@ public:
     int   m_len;
 };
 
-CCharString::CCharString(const char* s, long len)
-{
-    m_data = const_cast<char*>(s);
-    m_len  = (len < 0) ? (int)std::strlen(s) : len;
-}
-
 class C3DMeshFileXMappingInfoChunk {
 public:
     virtual CCharString GetChunkDescription() const;
     void* vtbl_pad;
 };
 
-CCharString C3DMeshFileXMappingInfoChunk::GetChunkDescription() const
-{
-    return CCharString("Mapping Information", -1);
-}
 
-int main()
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+int main(void)
 {
-    C3DMeshFileXMappingInfoChunk chunk;
-    CCharString s = chunk.GetChunkDescription();
-    bool ok = (s.m_len == (int)std::strlen("Mapping Information"))
-              && (std::strcmp(s.m_data, "Mapping Information") == 0);
-    if (ok) {
-        std::printf("CHUNKDESC_OK\n");
-        return 0;
+    const void* where = 0;
+    {
+        CCharString r = ((C3DMeshFileXMappingInfoChunk*)g_storage)->C3DMeshFileXMappingInfoChunk::GetChunkDescription();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "Mapping Info") != 0 || g_slot != where) {
+            printf("FAIL_00aa7050 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    std::printf("CHUNKDESC_FAIL\n");
-    return 1;
+    printf("CHUNKDESC_OK\n");
+    return 0;
 }

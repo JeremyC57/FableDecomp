@@ -1,6 +1,6 @@
 // C3DAnimFileBoneMaskChunk::GetChunkInfo  (retail 0x00ab0110)
 // Virtual const member returning CCharString by value.
-// Body: return CCharString("BoneMask");  (a fixed fourcc/name literal)
+// Body: return CCharString("");  (a fixed fourcc/name literal)
 
 class CCharString {
 public:
@@ -15,5 +15,5 @@ public:
 
 CCharString C3DAnimFileBoneMaskChunk::GetChunkInfo() const
 {
-    return CCharString("BoneMask");
+    return CCharString("");
 }

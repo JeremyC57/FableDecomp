@@ -1,24 +1,16 @@
-#include <cstdio>
-#include <cstring>
-
-// Behaviour test: our own standalone CCharString + chunk, verifying the
-// GetChunkDescription returns the expected description string by value.
+// Behaviour test for 0x00AA7140 (NF388 literal audit): links the row object and asserts the string the row hands to
+// CCharString::CCharString(char const*, int): "Bounding Box", length -1, one call, into the hidden return slot.
+#include <stdio.h>
+#include <string.h>
+// C3DMeshFileXBoundingBoxChunk::GetChunkDescription
+// Retail 0x00aa7140 - virtual, returns CCharString by value from a string literal.
 
 class CCharString {
 public:
-    CCharString(const char* s, long len) {
-        int n = (len < 0) ? (int)strlen(s) : len;
-        m_data = new char[n + 1];
-        memcpy(m_data, s, n);
-        m_data[n] = 0;
-    }
-    CCharString(const CCharString& o) {
-        int n = (int)strlen(o.m_data);
-        m_data = new char[n + 1];
-        memcpy(m_data, o.m_data, n + 1);
-    }
-    ~CCharString() { delete[] m_data; }
-    const char* c_str() const { return m_data; }
+    // (const char*, long length = -1) constructor; out-of-line (matches call 0x99ebf0)
+    CCharString(const char* s, long len);
+    CCharString(const CCharString& o);
+    ~CCharString();
 private:
     char* m_data;
 };
@@ -28,17 +20,25 @@ public:
     virtual CCharString GetChunkDescription() const;
 };
 
-CCharString C3DMeshFileXBoundingBoxChunk::GetChunkDescription() const {
-    return CCharString("BoundingBox", -1);
-}
 
-int main() {
-    C3DMeshFileXBoundingBoxChunk chunk;
-    CCharString d = chunk.GetChunkDescription();
-    if (strcmp(d.c_str(), "BoundingBox") == 0) {
-        printf("CHUNKDESC_OK\n");
-        return 0;
+static const char* g_text = 0;
+static long g_len = 0;
+static int g_calls = 0;
+static const void* g_slot = 0;
+static char g_storage[1024];
+CCharString::CCharString(const char* s, long n) { g_text = s; g_len = n; ++g_calls; g_slot = this; }
+CCharString::~CCharString() {}
+int main(void)
+{
+    const void* where = 0;
+    {
+        CCharString r = ((C3DMeshFileXBoundingBoxChunk*)g_storage)->C3DMeshFileXBoundingBoxChunk::GetChunkDescription();
+        where = &r;
+        if (g_calls != 1 || g_len != -1 || g_text == 0 || strcmp(g_text, "Bounding Box") != 0 || g_slot != where) {
+            printf("FAIL_00aa7140 calls=%d len=%ld text=%s\n", g_calls, g_len, g_text ? g_text : "(null)");
+            return 1;
+        }
     }
-    printf("CHUNKDESC_FAIL\n");
-    return 1;
+    printf("CHUNKDESC_OK\n");
+    return 0;
 }

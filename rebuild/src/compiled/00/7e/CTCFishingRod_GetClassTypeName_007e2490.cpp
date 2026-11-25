@@ -21,5 +21,5 @@ public:
 
 CWideString CTCFishingRod::GetClassTypeName()
 {
-    return CWideString("DoCreatureAction", -1);
+    return CWideString("CTCFishingRod", -1);
 }

@@ -12,7 +12,7 @@ public:
     virtual CCharString GetName() const;
 };
 
-static const char* const kName = "NonInterruptableBoxStrafe";
+static const char* const kName = "COMBAT_SEQUENCE_NON_INTERRUPTABLE_BOX_STRAFE";
 
 CCharString CCombatSequence_NonInterruptableBoxStrafe::GetName() const
 {
