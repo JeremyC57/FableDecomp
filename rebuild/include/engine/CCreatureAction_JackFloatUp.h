@@ -33,6 +33,40 @@ FABLE_STATIC_ASSERT_AT(16, sizeof(CCreatureAction_JackFloatUp)==0x124);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_JACKFLOATUP_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01297F54 (RTTI .?AVCCreatureAction_JackFloatUp@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_JackFloatUp); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_JackFloatUp : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C0FB0 ?PerformAction@CCreatureAction_JackFloatUp@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008C1180 ?FinishAction@CCreatureAction_JackFloatUp@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00977660 ?Clone@CCreatureAction_JackFloatUp@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C0730 ?Initialise@CCreatureAction_JackFloatUp@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x009772F0 ?IsToEvadeAllHits@CCreatureAction_JackFloatUp@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008C0790 ?FrameUpdate@CCreatureAction_JackFloatUp@@UAEXXZ
+    virtual bool HasFrameUpdate() const;                                  // slot 81 0x00977300 ?HasFrameUpdate@CCreatureAction_JackFloatUp@@UBE_NXZ
+public:
+    float         FloatHeight;                               // +0x114
+    float         FloatSpeed;                                // +0x118
+    bool          Moving;                                    // +0x11c
+    unsigned char _pad_0x11d[0x3];                           // +0x11d
+    float         StartHeight;                               // +0x120
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackFloatUp) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackFloatUp, FloatHeight) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackFloatUp, FloatSpeed) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackFloatUp, Moving) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackFloatUp, _pad_0x11d) == 0x11d);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackFloatUp, StartHeight) == 0x120);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_JackFloatUp {
 public:
@@ -111,6 +145,7 @@ FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_JackFloatUp, FloatHeight) ==
 FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_JackFloatUp, FloatSpeed) == 0x118);
 FABLE_STATIC_ASSERT_AT(88, offsetof(CCreatureAction_JackFloatUp, Moving) == 0x11c);
 FABLE_STATIC_ASSERT_AT(89, offsetof(CCreatureAction_JackFloatUp, StartHeight) == 0x120);
+#endif // FABLE_RETAIL_CCREATUREACTION_JACKFLOATUP_VIRTUAL_MODEL
 
 #endif
 #endif // FABLE_ENGINE_CCREATUREACTION_JACKFLOATUP_H

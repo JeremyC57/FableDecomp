@@ -20,6 +20,27 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GenericLoadProjectileWeapon) == 0x114
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_GENERICLOADPROJECTILEWEAPON_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127F4CC (RTTI .?AVCCreatureAction_GenericLoadProjectileWeapon@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_GenericLoadProjectileWeapon); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_GenericLoadProjectileWeapon : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008BF6A0 ?FinishAction@CCreatureAction_GenericLoadProjectileWeapon@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C0150 ?Clone@CCreatureAction_GenericLoadProjectileWeapon@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008BED80 ?Initialise@CCreatureAction_GenericLoadProjectileWeapon@@UAEXXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008BFF00 ?IsToFaceTargetAtStart@CCreatureAction_GenericLoadProjectileWeapon@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_GenericLoadProjectileWeapon) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_GenericLoadProjectileWeapon {
 public:
@@ -40,6 +61,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_GenericLoadProjectileWeapon) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_GenericLoadProjectileWeapon, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_GENERICLOADPROJECTILEWEAPON_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_GENERICLOADPROJECTILEWEAPON_PROTOTYPE
 #endif // FABLE_ENGINE_CCREATUREACTION_GENERICLOADPROJECTILEWEAPON_H

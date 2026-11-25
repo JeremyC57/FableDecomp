@@ -1,0 +1,6 @@
+source	address	unit	reason
+nf324	0x006F5AB0	port	006f5ab0 skipped-port ?GetIsToFaceTargetCone@CCreatureAction_GenericAimProjectileWeapon@@UBEMXZ triage (header): model: engine/CCreatureAction_GenericAimProjectileWeapon.h does not declare GetIsToFaceTargetCone (add-only opt-in)
+nf324	0x006F5AF0	port	006f5af0 skipped-port ?GetIsToFaceTargetCone@CCreatureAction_GenericFireProjectileWeapon@@UBEMXZ triage (header): model: engine/CCreatureAction_GenericFireProjectileWeapon.h does not declare GetIsToFaceTargetCone (add-only opt-in
+nf324	0x008BFFB0	held	008bffb0 done by NF324 but held at landing: no HEAD payload (byte-dump comment row, Q4); regrade with a HEAD entry built from the repo
+nf324	0x008C7CE0	port	008c7ce0 skipped-port ?GetIsToFaceTargetCone@CCreatureAction_TrollThrowProjectile@@UBEMXZ triage (header): model: engine/CCreatureAction_TrollThrowProjectile.h does not declare GetIsToFaceTargetCone (add-only opt-in)
+nf324	0x008CA8F0	port	008ca8f0 skipped-port ?GetIsToFaceTargetCone@CCreatureAction_NymphShot@@UBEMXZ triage (header): model: engine/CCreatureAction_NymphShot.h does not declare GetIsToFaceTargetCone (add-only opt-in)

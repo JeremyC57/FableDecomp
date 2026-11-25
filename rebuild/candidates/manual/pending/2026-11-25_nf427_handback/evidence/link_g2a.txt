@@ -1,0 +1,79 @@
+## HEAD set (23 objects): 00859a20_D/w22 00694d10_D/w22 00857520_D/w22 00859d80_D/w22 00842140/work 0085b890/work 00865b20/work 0087c770/work 0087c840/work 008b9460/work 008b9470/work 008b9480/work 008b9490/work 008c0440/work 008c0450/work 008c3e10/work 008c3e20/work 008c3e30/work 008c3e40/work 008c5ff0/work 008c6060/work 008cad00/work 008cd450/work
+duplicates 0
+UNRESOLVED 11 _ForwardTarget
+UNRESOLVED 1 _ForwardTarget_00694d10
+UNRESOLVED 4 _ForwardTarget_00857520
+UNRESOLVED 3 _ForwardTarget_00859d80
+DEFINED ?FinishAction@CCombatActionBase@@MAEXXZ in 00859a20.obj
+DEFINED ?FrameUpdate@CCombatActionBase@@UAEXXZ in 00859d80.obj
+DEFINED ?Initialise@CCombatActionBase@@UAEXXZ in 00857520.obj
+DEFINED ?Initialise@CCreatureActionBase@@UAEXXZ in 00694d10.obj
+DEFINED _CCombatAction_GenericStrikeResponseKnockdown_FrameUpdate in 00865b20.obj
+DEFINED _CCreatureActionHero180RunningTurn_FinishAction in 0085b890.obj
+DEFINED _CCreatureAction_BuildUpDivineWrathSpell_FinishAction in 008b9480.obj
+DEFINED _CCreatureAction_BuildUpUnholyPowerSpell_FinishAction in 008b9490.obj
+DEFINED _CCreatureAction_CastWillFireballSpell_Initialise in 008b9460.obj
+DEFINED _CCreatureAction_InterruptableMidAttackAutoTurn_FinishAction in 0087c770.obj
+DEFINED _CCreatureAction_InterruptableMidAttack_FrameUpdate in 0087c840.obj
+DEFINED _CCreatureAction_JackScream_FinishAction in 008c0450.obj
+DEFINED _CCreatureAction_ReleaseTimeSpell_Initialise in 008cd450.obj
+DEFINED _CCreatureAction_ScorpionChargeStrike_FinishAction in 008c3e30.obj
+DEFINED _CCreatureAction_ScorpionChargeStrike_Initialise in 008c3e20.obj
+DEFINED _CCreatureAction_ScorpionCharge_FrameUpdate in 008c3e10.obj
+DEFINED _CCreatureAction_ScorpionTailWithdraw_Initialise in 008c3e40.obj
+DEFINED _CCreatureAction_SummonerDead_FinishAction in 008cad00.obj
+DEFINED _CCreatureAction_TeleportIn_FinishAction in 008b9470.obj
+DEFINED _CCreatureAction_ThunderLightningStorm_FinishAction in 008c0440.obj
+DEFINED _CCreatureAction_TrollAngryGroundPound_FinishAction in 008c5ff0.obj
+DEFINED _CCreatureAction_UseWallMount_Initialise in 00842140.obj
+DEFINED _CCreatureAction_WalkInto_FinishAction in 008c6060.obj
+## new set (23 objects): 00859a20_D/w22 00694d10_D/w22 00857520_D/w22 00859d80_D/w22 00842140/work 0085b890/work 00865b20/work 0087c770/work 0087c840/work 008b9460/work 008b9470/work 008b9480/work 008b9490/work 008c0440/work 008c0450/work 008c3e10/work 008c3e20/work 008c3e30/work 008c3e40/work 008c5ff0/work 008c6060/work 008cad00/work 008cd450/work
+duplicates 0
+DEFINED ?FinishAction@CCombatActionBase@@MAEXXZ in 00859a20.obj
+DEFINED ?FinishAction@CCreatureActionHero180RunningTurn@@UAEXXZ in 0085b890.obj
+DEFINED ?FinishAction@CCreatureAction_BuildUpDivineWrathSpell@@UAEXXZ in 008b9480.obj
+DEFINED ?FinishAction@CCreatureAction_BuildUpUnholyPowerSpell@@UAEXXZ in 008b9490.obj
+DEFINED ?FinishAction@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ in 0087c770.obj
+DEFINED ?FinishAction@CCreatureAction_JackScream@@UAEXXZ in 008c0450.obj
+DEFINED ?FinishAction@CCreatureAction_ScorpionChargeStrike@@UAEXXZ in 008c3e30.obj
+DEFINED ?FinishAction@CCreatureAction_SummonerDead@@UAEXXZ in 008cad00.obj
+DEFINED ?FinishAction@CCreatureAction_TeleportIn@@UAEXXZ in 008b9470.obj
+DEFINED ?FinishAction@CCreatureAction_ThunderLightningStorm@@UAEXXZ in 008c0440.obj
+DEFINED ?FinishAction@CCreatureAction_TrollAngryGroundPound@@UAEXXZ in 008c5ff0.obj
+DEFINED ?FinishAction@CCreatureAction_WalkInto@@UAEXXZ in 008c6060.obj
+DEFINED ?FrameUpdate@CCombatActionBase@@UAEXXZ in 00859d80.obj
+DEFINED ?FrameUpdate@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ in 00865b20.obj
+DEFINED ?FrameUpdate@CCreatureAction_InterruptableMidAttack@@UAEXXZ in 0087c840.obj
+DEFINED ?FrameUpdate@CCreatureAction_ScorpionCharge@@UAEXXZ in 008c3e10.obj
+DEFINED ?Initialise@CCombatActionBase@@UAEXXZ in 00857520.obj
+DEFINED ?Initialise@CCreatureActionBase@@UAEXXZ in 00694d10.obj
+DEFINED ?Initialise@CCreatureAction_CastWillFireballSpell@@UAEXXZ in 008b9460.obj
+DEFINED ?Initialise@CCreatureAction_ReleaseTimeSpell@@UAEXXZ in 008cd450.obj
+DEFINED ?Initialise@CCreatureAction_ScorpionChargeStrike@@UAEXXZ in 008c3e20.obj
+DEFINED ?Initialise@CCreatureAction_ScorpionTailWithdraw@@UAEXXZ in 008c3e40.obj
+DEFINED ?Initialise@CCreatureAction_UseWallMount@@UAEXXZ in 00842140.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE _CCombatAction_GenericStrikeResponseKnockdown_FrameUpdate
+RESOLVED_TO_GONE _CCreatureActionHero180RunningTurn_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_BuildUpDivineWrathSpell_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_BuildUpUnholyPowerSpell_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_CastWillFireballSpell_Initialise
+RESOLVED_TO_GONE _CCreatureAction_InterruptableMidAttackAutoTurn_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_InterruptableMidAttack_FrameUpdate
+RESOLVED_TO_GONE _CCreatureAction_JackScream_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_ReleaseTimeSpell_Initialise
+RESOLVED_TO_GONE _CCreatureAction_ScorpionChargeStrike_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_ScorpionChargeStrike_Initialise
+RESOLVED_TO_GONE _CCreatureAction_ScorpionCharge_FrameUpdate
+RESOLVED_TO_GONE _CCreatureAction_ScorpionTailWithdraw_Initialise
+RESOLVED_TO_GONE _CCreatureAction_SummonerDead_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_TeleportIn_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_ThunderLightningStorm_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_TrollAngryGroundPound_FinishAction
+RESOLVED_TO_GONE _CCreatureAction_UseWallMount_Initialise
+RESOLVED_TO_GONE _CCreatureAction_WalkInto_FinishAction
+GONE_UNRESOLVED _ForwardTarget 
+GONE_UNRESOLVED _ForwardTarget_00694d10 
+GONE_UNRESOLVED _ForwardTarget_00857520 
+GONE_UNRESOLVED _ForwardTarget_00859d80 
+LK_DONE

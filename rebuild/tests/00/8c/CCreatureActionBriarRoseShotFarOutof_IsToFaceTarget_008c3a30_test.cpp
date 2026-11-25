@@ -1,11 +1,19 @@
-#include <cstdio>
-bool __fastcall CCreatureAction_BriarRoseShotFarOutof_IsToFaceTarget()
+// Behaviour test for 0x008C3A30 CCreatureAction_BriarRoseShotFarOutof::IsToFaceTarget (NF427 G1): links the row object and calls the member directly (qualified call, no vftable);
+// the constant must come back. The object image is static storage: the member reads nothing.
+#define FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_BriarRoseShotFarOutof.h"
+#include <stdio.h>
+static unsigned char g_obj[sizeof(CCreatureAction_BriarRoseShotFarOutof)];
+int main(void)
 {
-    return true;
-}
-int main()
-{
-    if (CCreatureAction_BriarRoseShotFarOutof_IsToFaceTarget() == true) { std::printf("AUTO_TINY_008c3a30_TEST PASS\n"); return 0; }
-    std::printf("AUTO_TINY_008c3a30_TEST FAIL\n");
+    const CCreatureAction_BriarRoseShotFarOutof* p = (const CCreatureAction_BriarRoseShotFarOutof*)g_obj;
+    bool r = p->CCreatureAction_BriarRoseShotFarOutof::IsToFaceTarget();
+    int ok = (r == true);
+    if (ok) { printf("AUTO_TINY_008c3a30_TEST PASS\n"); return 0; }
+    printf("AUTO_TINY_008c3a30_TEST FAIL\n");
     return 1;
 }

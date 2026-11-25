@@ -33,6 +33,27 @@ FABLE_STATIC_ASSERT_AT(14, sizeof(CCreatureAction_LeapBack)==0x114);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_LEAPBACK_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01263024 (RTTI .?AVCCreatureAction_LeapBack@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_LeapBack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_LeapBack : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x006F8680 ?Clone@CCreatureAction_LeapBack@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B6550 ?Initialise@CCreatureAction_LeapBack@@UAEXXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x006F58E0 ?IsToFaceTarget@CCreatureAction_LeapBack@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x006F58F0 ?GetIsToFaceTargetCone@CCreatureAction_LeapBack@@UBEMXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_LeapBack) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_LeapBack {
 public:
@@ -53,6 +74,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(43, sizeof(CCreatureAction_LeapBack) == 0x114);
 FABLE_STATIC_ASSERT_AT(44, offsetof(CCreatureAction_LeapBack, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_LEAPBACK_VIRTUAL_MODEL
 
 #endif // original-model opt-in
 #endif // FABLE_RETAIL_CCREATUREACTION_LEAPBACK_PROTOTYPE

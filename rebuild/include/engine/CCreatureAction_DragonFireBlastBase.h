@@ -36,6 +36,28 @@ FABLE_STATIC_ASSERT_AT(22, sizeof(CCreatureAction_DragonFireBlastBase) == 0x124)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_DRAGONFIREBLASTBASE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01293F9C (RTTI .?AVCCreatureAction_DragonFireBlastBase@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_DragonFireBlastBase); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+#pragma pack(push, 1)
+class CCreatureAction_DragonFireBlastBase : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008F3310 ?PerformAction@CCreatureAction_DragonFireBlastBase@@UAEXXZ
+    virtual bool IsPreventingLookTurning() const;                         // slot 50 0x009536C0 ?IsPreventingLookTurning@CCreatureAction_DragonFireBlastBase@@UBE_NXZ
+public:
+    unsigned char PShot[0x8];                                // +0x114 CIntelligentPointer<CThing>
+    unsigned char Line1[0x8];                                // +0x11c CEnginePrimitiveHandle
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_DragonFireBlastBase) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFireBlastBase, PShot) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFireBlastBase, Line1) == 0x11c);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_DragonFireBlastBase {
 public:
@@ -109,6 +131,7 @@ FABLE_STATIC_ASSERT_AT(81, sizeof(CCreatureAction_DragonFireBlastBase) == 0x124)
 FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_DragonFireBlastBase, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(83, offsetof(CCreatureAction_DragonFireBlastBase, PShot) == 0x114);
 FABLE_STATIC_ASSERT_AT(84, offsetof(CCreatureAction_DragonFireBlastBase, Line1) == 0x11c);
+#endif // FABLE_RETAIL_CCREATUREACTION_DRAGONFIREBLASTBASE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_DRAGONFIREBLASTBASE
 #endif // FABLE_ENGINE_CCREATUREACTION_DRAGONFIREBLASTBASE_H

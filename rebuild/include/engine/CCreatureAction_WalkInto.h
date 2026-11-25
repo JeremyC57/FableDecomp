@@ -9,6 +9,25 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_WALKINTO_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0128ECFC (RTTI .?AVCCreatureAction_WalkInto@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_WalkInto); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_WalkInto : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C6060 ?FinishAction@CCreatureAction_WalkInto@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00908720 ?Clone@CCreatureAction_WalkInto@@UBEPAVCCreatureActionBase@@XZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WalkInto) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_WalkInto {
 public:
@@ -27,7 +46,8 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_WalkInto) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_WalkInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_WalkInto) == 0x114);
+FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_WalkInto, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_WALKINTO_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_WALKINTO_H

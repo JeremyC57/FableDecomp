@@ -20,6 +20,29 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerUnsheatheStrike) == 0x118);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012834C4 (RTTI .?AVCCreatureAction_SummonerUnsheatheStrike@@ : CCreatureAction_UnsheatheWeapons), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_SummonerUnsheatheStrike); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR, FABLE_RETAIL_CCREATUREACTION_UNSHEATHEWEAPONS_VIRTUAL_MODEL.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCreatureAction_UnsheatheWeapons.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_SummonerUnsheatheStrike : public CCreatureAction_UnsheatheWeapons {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008CB6E0 ?PerformAction@CCreatureAction_SummonerUnsheatheStrike@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008CC650 ?Clone@CCreatureAction_SummonerUnsheatheStrike@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008CB620 ?Initialise@CCreatureAction_SummonerUnsheatheStrike@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x008CC3C0 ?IsKnockdownStrike@CCreatureAction_SummonerUnsheatheStrike@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x008CC3D0 ?IsBlockable@CCreatureAction_SummonerUnsheatheStrike@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008CC3E0 ?IsToFaceTargetAtStart@CCreatureAction_SummonerUnsheatheStrike@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerUnsheatheStrike) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SummonerUnsheatheStrike {
 public:
@@ -40,6 +63,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_SummonerUnsheatheStrike) == 0x118);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_SummonerUnsheatheStrike, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_PROTOTYPE
 #endif // FABLE_ENGINE_CCREATUREACTION_SUMMONERUNSHEATHESTRIKE_H

@@ -1,0 +1,190 @@
+## HEAD set (257 objects): 0062ebc0_D/w22 0062f3b0_D/w22 0066a560_D/w22 0066a710_D/w22 006ebdd0_D/w22 006f7e40_D/w22 006f7e60_D/w22 006f7ee0_D/w22 006f7f70_D/w22 006f8030_D/w22 006f8090_D/w22 006f80b0_D/w22 006f81d0_D/w22 006f81f0_D/w22 0072c790_D/w22 0072cba0_D/w22 0074dbb0_D/w22 0074ddf0_D/w22 007c9180_D/w22 0085bba0_D/w22 00867010_D/w22 0087c780_D/w22 008b6850_D/w22 008b6890_D/w22 008b6910_D/w22 008b69f0_D/w22 008b6a20_D/w22 008b6e60_D/w22 008b74d0_D/w22 008b75e0_D/w22 008b7ba0_D/w22 008b7ed0_D/w22 008b8110_D/w22 008b84a0_D/w22 008b84e0_D/w22 008b8560_D/w22 008b8590_D/w22 008b85d0_D/w22 008b8780_D/w22 008b87e0_D/w22 008b8820_D/w22 008b8b00_D/w22 008b8b40_D/w22 008b9010_D/w22 008b9150_D/w22 008b9190_D/w22 008b9370_D/w22 008b9c90_D/w22 008ba0b0_D/w22 008ba220_D/w22 008ba3c0_D/w22 008bab70_D/w22 008bac40_D/w22 008bb450_D/w22 008bb500_D/w22 008bb830_D/w22 008bc790_D/w22 008bc8c0_D/w22 008bca00_D/w22 008bce10_D/w22 008bce50_D/w22 008bd040_D/w22 008bdd60_D/w22 008bde00_D/w22 008be070_D/w22 008be110_D/w22 008be150_D/w22 008bed40_D/w22 008bed80_D/w22 008bede0_D/w22 008bee20_D/w22 008bee60_D/w22 008beea0_D/w22 008bf0f0_D/w22 008bf1c0_D/w22 008bf6a0_D/w22 008bf740_D/w22 008bfa40_D/w22 008bfa60_D/w22 008bfaa0_D/w22 008bfac0_D/w22 008bfb00_D/w22 008bfb20_D/w22 008bfb60_D/w22 008bfb80_D/w22 008bfbc0_D/w22 008bfbe0_D/w22 008bfc20_D/w22 008bfc40_D/w22 008bfc80_D/w22 008bfca0_D/w22 008bfce0_D/w22 008bfd00_D/w22 008bfd40_D/w22 008bfd60_D/w22 008bfe00_D/w22 008bffc0_D/w22 008bffe0_D/w22 008c0000_D/w22 008c0020_D/w22 008c0040_D/w22 008c0060_D/w22 008c0080_D/w22 008c00a0_D/w22 008c00c0_D/w22 008c0100_D/w22 008c40f0_D/w22 008c4170_D/w22 008c4250_D/w22 008c4a80_D/w22 008c4b00_D/w22 008c5410_D/w22 008c5cf0_D/w22 008c9980_D/w22 008c9ba0_D/w22 008c9cc0_D/w22 008c9d20_D/w22 008c9d70_D/w22 008c9df0_D/w22 008ca5a0_D/w22 008ca680_D/w22 008ca700_D/w22 008ca980_D/w22 008caa00_D/w22 008caa20_D/w22 008cac80_D/w22 008cacc0_D/w22 008cb6e0_D/w22 008cb8f0_D/w22 008cb940_D/w22 008cc650_D/w22 008cc720_D/w22 008cc760_D/w22 008cc8a0_D/w22 008cc8e0_D/w22 008ccc50_D/w22 008ccc70_D/w22 008cccb0_D/w22 008cccd0_D/w22 008ccd10_D/w22 008ccd30_D/w22 008ccd70_D/w22 008cd2a0_D/w22 008cd2c0_D/w22 008cd2e0_D/w22 008cf2e0_D/w22 008cf8f0_D/w22 008cfb20_D/w22 008dfef0_D/w22 008dff50_D/w22 008e46d0_D/w22 008e4770_D/w22 008e4800_D/w22 008e4b80_D/w22 008e4cc0_D/w22 008e4ce0_D/w22 008e4d00_D/w22 008e4de0_D/w22 008e6400_D/w22 008e6490_D/w22 008e6500_D/w22 008e6780_D/w22 008e6880_D/w22 008e68e0_D/w22 008e6940_D/w22 008e6a70_D/w22 008e6e30_D/w22 008e6e50_D/w22 008e6e70_D/w22 008ec320_D/w22 008ec6a0_D/w22 008ec700_D/w22 008ec790_D/w22 008f2b80_D/w22 008f2bc0_D/w22 008f3ad0_D/w22 008f3c00_D/w22 008f5060_D/w22 008f5220_D/w22 00904f60_D/w22 00906050_D/w22 009061e0_D/w22 00906380_D/w22 009064b0_D/w22 009069e0_D/w22 00906b00_D/w22 00906b40_D/w22 00907d00_D/w22 00908400_D/w22 00908590_D/w22 00908f20_D/w22 00909140_D/w22 009091d0_D/w22 00909ba0_D/w22 0090a0b0_D/w22 0092da20_D/w22 0094f640_D/w22 0094f730_D/w22 00951070_D/w22 009531c0_D/w22 00953260_D/w22 00953370_D/w22 009538e0_D/w22 00953900_D/w22 00953940_D/w22 0097c580_D/w22 0097c5e0_D/w22 0066a780/work 006f82d0/work 006f8300/work 006f84d0/work 006f85e0/work 006f8710/work 006f87a0/work 006f87d0/work 006f8a40/work 006f8a70/work 0074df50/work 008b8970/work 008b8a60/work 008b8ac0/work 008be350/work 008be4c0/work 008be910/work 008bea50/work 008beb00/work 008c0120/work 008c0150/work 008c0180/work 008c01b0/work 008c01e0/work 008c0210/work 008c0240/work 008c0270/work 008c02a0/work 008c0340/work 008c5ed0/work 008c9d90/work 008caa40/work 008cab10/work 008cab40/work 008cd370/work 008cd3a0/work 008cd3d0/work 008cfc00/work 008e4fd0/work 008e5000/work 008e5030/work 008e5190/work 008e6eb0/work 008e6ee0/work 008e6f10/work 008ec7b0/work 00908720/work 00953ad0/work 00953b00/work 00953b60/work
+duplicates 15
+  DUP 006f7ee0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f7f70.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f8090.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f80b0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f81d0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f81f0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP call CCreatureAction_ScreamerDrainOutOf::CCreatureAction_ScreamerDrainOutOf(class CThingCreatureBase &,class CThing &)" (??0CCreatureAction_ScreamerDrainOutOf@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z) already defined in 008b9010.obj; second definition ignored
+  DUP call CDefinitionManager::GetDef(long,class CDefPointer<class CSpecialAbilitiesLightningSpellDef> *)const " (?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@VCSpecialAbilitiesLightningSpellDef@@@@@Z) already defined in 008bc790.obj; second definition ignored
+  DUP call CDefinitionManager::GetDef(long,class CDefPointer<class CSpecialAbilitiesLightningSpellDef> *)const " (?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@VCSpecialAbilitiesLightningSpellDef@@@@@Z) already defined in 008bc790.obj; second definition ignored
+  DUP b940.obj : warning LNK4006: "public: bool __thiscall CDefClassBase::GetSubDef(class CDefPointer<class CSpecialEffectsDef> *)" (?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z) already defined in 008c4170.obj; second definition ignored
+  DUP obj : warning LNK4006: "public: __thiscall CCreatureAction_ForcePushOutOf::CCreatureAction_ForcePushOutOf(class CThingCreatureBase &)" (??0CCreatureAction_ForcePushOutOf@@QAE@AAVCThingCreatureBase@@@Z) already defined in 008dff50.obj; second definition ignored
+  DUP e4b80.obj : warning LNK4006: "public: __thiscall CCreatureAction_SummonerDead::CCreatureAction_SummonerDead(class CThingCreatureBase *)" (??0CCreatureAction_SummonerDead@@QAE@PAVCThingCreatureBase@@@Z) already defined in 008dfef0.obj; second definition ignored
+  DUP 008e4de0.obj : warning LNK4006: "public: virtual void __thiscall NCreatureMode::CModeSummonerDie::FrameUpdate(void)" (?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ) already defined in 008dfef0.obj; second definition ignored
+  DUP public: __thiscall CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(class CThingCreatureBase &)" (??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z) already defined in 008e68e0.obj; second definition ignored
+  DUP 06: "public: __thiscall CCreatureAction_CombatBoast::CCreatureAction_CombatBoast(class CThingCreatureBase &,class CThingCreatureBase &)" (??0CCreatureAction_CombatBoast@@QAE@AAVCThingCreatureBase@@0@Z) already defined in 009069e0.obj; second definition ignored
+UNRESOLVED 6 ??0CBase_0062f3b0@@QAE@ABU0@@Z
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ?Clone@CCombatAction_GenericResponseToDecapitation@@QAEPAVCCombatActionBase@@XZ in 0066a780.obj
+DEFINED ?Clone@CCreatureAction_BalverineBreakOffFromCombat@@QAEPAVCCombatActionBase@@XZ in 008cd3a0.obj
+DEFINED ?Clone@CCreatureAction_BalverineBreakOffFromCombatLong@@QAEPAVCCombatActionBase@@XZ in 008cd3d0.obj
+DEFINED ?Clone@CCreatureAction_BalverineLungeAttack@@QAEPAVCCombatActionBase@@XZ in 008cd370.obj
+DEFINED ?Clone@CCreatureAction_BodgeSideStrike@@QAEPAVCCombatActionBase@@XZ in 008c0340.obj
+DEFINED ?Clone@CCreatureAction_CastStrengthBerserk@@QAEPAVCCombatActionBase@@XZ in 008e6eb0.obj
+DEFINED ?Clone@CCreatureAction_CastStrengthMultiStrike@@QAEPAUCBase_0062f3b0@@XZ in 008e6f10.obj
+DEFINED ?Clone@CCreatureAction_CastWillEnflameSpell@@QAEPAUCBase_0062f3b0@@XZ in 008be350.obj
+DEFINED ?Clone@CCreatureAction_CastWillLightningSpell@@QAEPAUCBase_0062f3b0@@XZ in 008be910.obj
+DEFINED ?Clone@CCreatureAction_Charge@@QAEPAVCCombatActionBase@@XZ in 008b8a60.obj
+DEFINED ?Clone@CCreatureAction_CombatBoast@@QAEPAVCCombatActionBase@@XZ in 006f8710.obj
+DEFINED ?Clone@CCreatureAction_DiagonalStrafeBL@@QAEPAVCCombatActionBase@@XZ in 008c0210.obj
+DEFINED ?Clone@CCreatureAction_DiagonalStrafeBR@@QAEPAVCCombatActionBase@@XZ in 008c0240.obj
+DEFINED ?Clone@CCreatureAction_DragonLand@@QAEPAVCCombatActionBase@@XZ in 00953b60.obj
+DEFINED ?Clone@CCreatureAction_FinishFireballSpell@@QAEPAVCCombatActionBase@@XZ in 008bea50.obj
+DEFINED ?Clone@CCreatureAction_ForcePushOutOf@@QAEPAUCBase_0062f3b0@@XZ in 008e5030.obj
+DEFINED ?Clone@CCreatureAction_GenericAimProjectileWeapon@@QAEPAVCCombatActionBase@@XZ in 008c0120.obj
+DEFINED ?Clone@CCreatureAction_GenericFireProjectileWeapon@@QAEPAVCCombatActionBase@@XZ in 008c0180.obj
+DEFINED ?Clone@CCreatureAction_GenericLeaderCommand@@QAEPAVCCombatActionBase@@XZ in 008c01b0.obj
+DEFINED ?Clone@CCreatureAction_GenericLoadProjectileWeapon@@QAEPAVCCombatActionBase@@XZ in 008c0150.obj
+DEFINED ?Clone@CCreatureAction_GenericStrafeLeft@@QAEPAVCCombatActionBase@@XZ in 006f87a0.obj
+DEFINED ?Clone@CCreatureAction_GenericStrafeRight@@QAEPAVCCombatActionBase@@XZ in 006f87d0.obj
+DEFINED ?Clone@CCreatureAction_GoUnderground@@QAEPAVCCombatActionBase@@XZ in 008b8970.obj
+DEFINED ?Clone@CCreatureAction_HobbeLungeAttack@@QAEPAVCCombatActionBase@@XZ in 008c9d90.obj
+DEFINED ?Clone@CCreatureAction_InterruptableFarAttack@@QAEPAVCCombatActionBase@@XZ in 006f85e0.obj
+DEFINED ?Clone@CCreatureAction_NymphIdleAfterShot@@QAEPAVCCombatActionBase@@XZ in 008cab40.obj
+DEFINED ?Clone@CCreatureAction_NymphShot@@QAEPAVCCombatActionBase@@XZ in 008cab10.obj
+DEFINED ?Clone@CCreatureAction_NymphSummonInto@@QAEPAVCCombatActionBase@@XZ in 008caa40.obj
+DEFINED ?Clone@CCreatureAction_OnGenerate@@QAEPAVCCombatActionBase@@XZ in 0074df50.obj
+DEFINED ?Clone@CCreatureAction_ReleasePhysicalShieldSpell@@QAEPAVCCombatActionBase@@XZ in 008be4c0.obj
+DEFINED ?Clone@CCreatureAction_ReleaseStrengthBerserk@@QAEPAVCCombatActionBase@@XZ in 008e6ee0.obj
+DEFINED ?Clone@CCreatureAction_ScorpionKingDeath@@QAEPAVCCombatActionBase@@XZ in 006f84d0.obj
+DEFINED ?Clone@CCreatureAction_ScorpionRecover@@QAEPAVCCombatActionBase@@XZ in 008e5000.obj
+DEFINED ?Clone@CCreatureAction_ScorpionSummon@@QAEPAVCCombatActionBase@@XZ in 008e4fd0.obj
+DEFINED ?Clone@CCreatureAction_ScreamerDrainOutOf@@QAEPAVCCombatActionBase@@XZ in 006f82d0.obj
+DEFINED ?Clone@CCreatureAction_ScreamerIdle@@QAEPAVCCombatActionBase@@XZ in 006f8300.obj
+DEFINED ?Clone@CCreatureAction_SnapDragon@@QAEPAVCCombatActionBase@@XZ in 00953ad0.obj
+DEFINED ?Clone@CCreatureAction_SnapDragonFast@@QAEPAVCCombatActionBase@@XZ in 00953b00.obj
+DEFINED ?Clone@CCreatureAction_StrafeBackward@@QAEPAVCCombatActionBase@@XZ in 008c02a0.obj
+DEFINED ?Clone@CCreatureAction_StrafeForward@@QAEPAVCCombatActionBase@@XZ in 008c0270.obj
+DEFINED ?Clone@CCreatureAction_SummonerDead@@QAEPAVCCombatActionBase@@XZ in 008e5190.obj
+DEFINED ?Clone@CCreatureAction_SummonerDie@@QAEPAVCCombatActionBase@@XZ in 006f8a70.obj
+DEFINED ?Clone@CCreatureAction_SummonerStrike@@QAEPAVCCombatActionBase@@XZ in 006f8a40.obj
+DEFINED ?Clone@CCreatureAction_TeleportIn@@QAEPAUCBase_0062f3b0@@XZ in 008beb00.obj
+DEFINED ?Clone@CCreatureAction_TentacleStrikeGetHit@@QAEPAVCCombatActionBase@@XZ in 008cfc00.obj
+DEFINED ?Clone@CCreatureAction_UnblockableMidAttack@@QAEPAVCCombatActionBase@@XZ in 008c01e0.obj
+DEFINED ?Clone@CCreatureAction_UndeadReturnToEarth@@QAEPAVCCombatActionBase@@XZ in 008ec7b0.obj
+DEFINED ?Clone@CCreatureAction_UnsheatheWeapons@@QAEPAUCBase_0062f3b0@@XZ in 008b8ac0.obj
+DEFINED ?Clone@CCreatureAction_WalkInto@@QAEPAVCCombatActionBase@@XZ in 00908720.obj
+DEFINED ?Clone@CCreatureAction_WaspQueenDiveAttack@@QAEPAVCCombatActionBase@@XZ in 008c5ed0.obj
+## new set (257 objects): 0062ebc0_D/w22 0062f3b0_D/w22 0066a560_D/w22 0066a710_D/w22 006ebdd0_D/w22 006f7e40_D/w22 006f7e60_D/w22 006f7ee0_D/w22 006f7f70_D/w22 006f8030_D/w22 006f8090_D/w22 006f80b0_D/w22 006f81d0_D/w22 006f81f0_D/w22 0072c790_D/w22 0072cba0_D/w22 0074dbb0_D/w22 0074ddf0_D/w22 007c9180_D/w22 0085bba0_D/w22 00867010_D/w22 0087c780_D/w22 008b6850_D/w22 008b6890_D/w22 008b6910_D/w22 008b69f0_D/w22 008b6a20_D/w22 008b6e60_D/w22 008b74d0_D/w22 008b75e0_D/w22 008b7ba0_D/w22 008b7ed0_D/w22 008b8110_D/w22 008b84a0_D/w22 008b84e0_D/w22 008b8560_D/w22 008b8590_D/w22 008b85d0_D/w22 008b8780_D/w22 008b87e0_D/w22 008b8820_D/w22 008b8b00_D/w22 008b8b40_D/w22 008b9010_D/w22 008b9150_D/w22 008b9190_D/w22 008b9370_D/w22 008b9c90_D/w22 008ba0b0_D/w22 008ba220_D/w22 008ba3c0_D/w22 008bab70_D/w22 008bac40_D/w22 008bb450_D/w22 008bb500_D/w22 008bb830_D/w22 008bc790_D/w22 008bc8c0_D/w22 008bca00_D/w22 008bce10_D/w22 008bce50_D/w22 008bd040_D/w22 008bdd60_D/w22 008bde00_D/w22 008be070_D/w22 008be110_D/w22 008be150_D/w22 008bed40_D/w22 008bed80_D/w22 008bede0_D/w22 008bee20_D/w22 008bee60_D/w22 008beea0_D/w22 008bf0f0_D/w22 008bf1c0_D/w22 008bf6a0_D/w22 008bf740_D/w22 008bfa40_D/w22 008bfa60_D/w22 008bfaa0_D/w22 008bfac0_D/w22 008bfb00_D/w22 008bfb20_D/w22 008bfb60_D/w22 008bfb80_D/w22 008bfbc0_D/w22 008bfbe0_D/w22 008bfc20_D/w22 008bfc40_D/w22 008bfc80_D/w22 008bfca0_D/w22 008bfce0_D/w22 008bfd00_D/w22 008bfd40_D/w22 008bfd60_D/w22 008bfe00_D/w22 008bffc0_D/w22 008bffe0_D/w22 008c0000_D/w22 008c0020_D/w22 008c0040_D/w22 008c0060_D/w22 008c0080_D/w22 008c00a0_D/w22 008c00c0_D/w22 008c0100_D/w22 008c40f0_D/w22 008c4170_D/w22 008c4250_D/w22 008c4a80_D/w22 008c4b00_D/w22 008c5410_D/w22 008c5cf0_D/w22 008c9980_D/w22 008c9ba0_D/w22 008c9cc0_D/w22 008c9d20_D/w22 008c9d70_D/w22 008c9df0_D/w22 008ca5a0_D/w22 008ca680_D/w22 008ca700_D/w22 008ca980_D/w22 008caa00_D/w22 008caa20_D/w22 008cac80_D/w22 008cacc0_D/w22 008cb6e0_D/w22 008cb8f0_D/w22 008cb940_D/w22 008cc650_D/w22 008cc720_D/w22 008cc760_D/w22 008cc8a0_D/w22 008cc8e0_D/w22 008ccc50_D/w22 008ccc70_D/w22 008cccb0_D/w22 008cccd0_D/w22 008ccd10_D/w22 008ccd30_D/w22 008ccd70_D/w22 008cd2a0_D/w22 008cd2c0_D/w22 008cd2e0_D/w22 008cf2e0_D/w22 008cf8f0_D/w22 008cfb20_D/w22 008dfef0_D/w22 008dff50_D/w22 008e46d0_D/w22 008e4770_D/w22 008e4800_D/w22 008e4b80_D/w22 008e4cc0_D/w22 008e4ce0_D/w22 008e4d00_D/w22 008e4de0_D/w22 008e6400_D/w22 008e6490_D/w22 008e6500_D/w22 008e6780_D/w22 008e6880_D/w22 008e68e0_D/w22 008e6940_D/w22 008e6a70_D/w22 008e6e30_D/w22 008e6e50_D/w22 008e6e70_D/w22 008ec320_D/w22 008ec6a0_D/w22 008ec700_D/w22 008ec790_D/w22 008f2b80_D/w22 008f2bc0_D/w22 008f3ad0_D/w22 008f3c00_D/w22 008f5060_D/w22 008f5220_D/w22 00904f60_D/w22 00906050_D/w22 009061e0_D/w22 00906380_D/w22 009064b0_D/w22 009069e0_D/w22 00906b00_D/w22 00906b40_D/w22 00907d00_D/w22 00908400_D/w22 00908590_D/w22 00908f20_D/w22 00909140_D/w22 009091d0_D/w22 00909ba0_D/w22 0090a0b0_D/w22 0092da20_D/w22 0094f640_D/w22 0094f730_D/w22 00951070_D/w22 009531c0_D/w22 00953260_D/w22 00953370_D/w22 009538e0_D/w22 00953900_D/w22 00953940_D/w22 0097c580_D/w22 0097c5e0_D/w22 0066a780/work 006f82d0/work 006f8300/work 006f84d0/work 006f85e0/work 006f8710/work 006f87a0/work 006f87d0/work 006f8a40/work 006f8a70/work 0074df50/work 008b8970/work 008b8a60/work 008b8ac0/work 008be350/work 008be4c0/work 008be910/work 008bea50/work 008beb00/work 008c0120/work 008c0150/work 008c0180/work 008c01b0/work 008c01e0/work 008c0210/work 008c0240/work 008c0270/work 008c02a0/work 008c0340/work 008c5ed0/work 008c9d90/work 008caa40/work 008cab10/work 008cab40/work 008cd370/work 008cd3a0/work 008cd3d0/work 008cfc00/work 008e4fd0/work 008e5000/work 008e5030/work 008e5190/work 008e6eb0/work 008e6ee0/work 008e6f10/work 008ec7b0/work 00908720/work 00953ad0/work 00953b00/work 00953b60/work
+duplicates 15
+  DUP 006f7ee0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f7f70.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f8090.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f80b0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f81d0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP 006f81f0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f7e60.obj; second definition ignored
+  DUP call CCreatureAction_ScreamerDrainOutOf::CCreatureAction_ScreamerDrainOutOf(class CThingCreatureBase &,class CThing &)" (??0CCreatureAction_ScreamerDrainOutOf@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z) already defined in 008b9010.obj; second definition ignored
+  DUP call CDefinitionManager::GetDef(long,class CDefPointer<class CSpecialAbilitiesLightningSpellDef> *)const " (?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@VCSpecialAbilitiesLightningSpellDef@@@@@Z) already defined in 008bc790.obj; second definition ignored
+  DUP call CDefinitionManager::GetDef(long,class CDefPointer<class CSpecialAbilitiesLightningSpellDef> *)const " (?GetDef@CDefinitionManager@@QBE_NJPAV?$CDefPointer@VCSpecialAbilitiesLightningSpellDef@@@@@Z) already defined in 008bc790.obj; second definition ignored
+  DUP b940.obj : warning LNK4006: "public: bool __thiscall CDefClassBase::GetSubDef(class CDefPointer<class CSpecialEffectsDef> *)" (?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z) already defined in 008c4170.obj; second definition ignored
+  DUP obj : warning LNK4006: "public: __thiscall CCreatureAction_ForcePushOutOf::CCreatureAction_ForcePushOutOf(class CThingCreatureBase &)" (??0CCreatureAction_ForcePushOutOf@@QAE@AAVCThingCreatureBase@@@Z) already defined in 008dff50.obj; second definition ignored
+  DUP e4b80.obj : warning LNK4006: "public: __thiscall CCreatureAction_SummonerDead::CCreatureAction_SummonerDead(class CThingCreatureBase *)" (??0CCreatureAction_SummonerDead@@QAE@PAVCThingCreatureBase@@@Z) already defined in 008dfef0.obj; second definition ignored
+  DUP 008e4de0.obj : warning LNK4006: "public: virtual void __thiscall NCreatureMode::CModeSummonerDie::FrameUpdate(void)" (?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ) already defined in 008dfef0.obj; second definition ignored
+  DUP public: __thiscall CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(class CThingCreatureBase &)" (??0CCreatureAction_ReleaseStrengthBerserk@@QAE@AAVCThingCreatureBase@@@Z) already defined in 008e68e0.obj; second definition ignored
+  DUP 06: "public: __thiscall CCreatureAction_CombatBoast::CCreatureAction_CombatBoast(class CThingCreatureBase &,class CThingCreatureBase &)" (??0CCreatureAction_CombatBoast@@QAE@AAVCThingCreatureBase@@0@Z) already defined in 009069e0.obj; second definition ignored
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ?Clone@CCombatAction_GenericResponseToDecapitation@@EBEPAVCCreatureActionBase@@XZ in 0066a780.obj
+DEFINED ?Clone@CCreatureAction_BalverineBreakOffFromCombat@@UBEPAVCCreatureActionBase@@XZ in 008cd3a0.obj
+DEFINED ?Clone@CCreatureAction_BalverineBreakOffFromCombatLong@@UBEPAVCCreatureActionBase@@XZ in 008cd3d0.obj
+DEFINED ?Clone@CCreatureAction_BalverineLungeAttack@@UBEPAVCCreatureActionBase@@XZ in 008cd370.obj
+DEFINED ?Clone@CCreatureAction_BodgeSideStrike@@UBEPAVCCreatureActionBase@@XZ in 008c0340.obj
+DEFINED ?Clone@CCreatureAction_CastStrengthBerserk@@UBEPAVCCreatureActionBase@@XZ in 008e6eb0.obj
+DEFINED ?Clone@CCreatureAction_CastStrengthMultiStrike@@UBEPAVCCreatureActionBase@@XZ in 008e6f10.obj
+DEFINED ?Clone@CCreatureAction_CastWillEnflameSpell@@UBEPAVCCreatureActionBase@@XZ in 008be350.obj
+DEFINED ?Clone@CCreatureAction_CastWillLightningSpell@@UBEPAVCCreatureActionBase@@XZ in 008be910.obj
+DEFINED ?Clone@CCreatureAction_Charge@@UBEPAVCCreatureActionBase@@XZ in 008b8a60.obj
+DEFINED ?Clone@CCreatureAction_CombatBoast@@UBEPAVCCreatureActionBase@@XZ in 006f8710.obj
+DEFINED ?Clone@CCreatureAction_DiagonalStrafeBL@@UBEPAVCCreatureActionBase@@XZ in 008c0210.obj
+DEFINED ?Clone@CCreatureAction_DiagonalStrafeBR@@UBEPAVCCreatureActionBase@@XZ in 008c0240.obj
+DEFINED ?Clone@CCreatureAction_DragonLand@@UBEPAVCCreatureActionBase@@XZ in 00953b60.obj
+DEFINED ?Clone@CCreatureAction_FinishFireballSpell@@UBEPAVCCreatureActionBase@@XZ in 008bea50.obj
+DEFINED ?Clone@CCreatureAction_ForcePushOutOf@@UBEPAVCCreatureActionBase@@XZ in 008e5030.obj
+DEFINED ?Clone@CCreatureAction_GenericAimProjectileWeapon@@UBEPAVCCreatureActionBase@@XZ in 008c0120.obj
+DEFINED ?Clone@CCreatureAction_GenericFireProjectileWeapon@@UBEPAVCCreatureActionBase@@XZ in 008c0180.obj
+DEFINED ?Clone@CCreatureAction_GenericLeaderCommand@@UBEPAVCCreatureActionBase@@XZ in 008c01b0.obj
+DEFINED ?Clone@CCreatureAction_GenericLoadProjectileWeapon@@UBEPAVCCreatureActionBase@@XZ in 008c0150.obj
+DEFINED ?Clone@CCreatureAction_GenericStrafeLeft@@UBEPAVCCreatureActionBase@@XZ in 006f87a0.obj
+DEFINED ?Clone@CCreatureAction_GenericStrafeRight@@UBEPAVCCreatureActionBase@@XZ in 006f87d0.obj
+DEFINED ?Clone@CCreatureAction_GoUnderground@@UBEPAVCCreatureActionBase@@XZ in 008b8970.obj
+DEFINED ?Clone@CCreatureAction_HobbeLungeAttack@@UBEPAVCCreatureActionBase@@XZ in 008c9d90.obj
+DEFINED ?Clone@CCreatureAction_InterruptableFarAttack@@UBEPAVCCreatureActionBase@@XZ in 006f85e0.obj
+DEFINED ?Clone@CCreatureAction_NymphIdleAfterShot@@UBEPAVCCreatureActionBase@@XZ in 008cab40.obj
+DEFINED ?Clone@CCreatureAction_NymphShot@@UBEPAVCCreatureActionBase@@XZ in 008cab10.obj
+DEFINED ?Clone@CCreatureAction_NymphSummonInto@@UBEPAVCCreatureActionBase@@XZ in 008caa40.obj
+DEFINED ?Clone@CCreatureAction_OnGenerate@@UBEPAVCCreatureActionBase@@XZ in 0074df50.obj
+DEFINED ?Clone@CCreatureAction_ReleasePhysicalShieldSpell@@UBEPAVCCreatureActionBase@@XZ in 008be4c0.obj
+DEFINED ?Clone@CCreatureAction_ReleaseStrengthBerserk@@UBEPAVCCreatureActionBase@@XZ in 008e6ee0.obj
+DEFINED ?Clone@CCreatureAction_ScorpionKingDeath@@UBEPAVCCreatureActionBase@@XZ in 006f84d0.obj
+DEFINED ?Clone@CCreatureAction_ScorpionRecover@@UBEPAVCCreatureActionBase@@XZ in 008e5000.obj
+DEFINED ?Clone@CCreatureAction_ScorpionSummon@@UBEPAVCCreatureActionBase@@XZ in 008e4fd0.obj
+DEFINED ?Clone@CCreatureAction_ScreamerDrainOutOf@@UBEPAVCCreatureActionBase@@XZ in 006f82d0.obj
+DEFINED ?Clone@CCreatureAction_ScreamerIdle@@UBEPAVCCreatureActionBase@@XZ in 006f8300.obj
+DEFINED ?Clone@CCreatureAction_SnapDragon@@UBEPAVCCreatureActionBase@@XZ in 00953ad0.obj
+DEFINED ?Clone@CCreatureAction_SnapDragonFast@@UBEPAVCCreatureActionBase@@XZ in 00953b00.obj
+DEFINED ?Clone@CCreatureAction_StrafeBackward@@UBEPAVCCreatureActionBase@@XZ in 008c02a0.obj
+DEFINED ?Clone@CCreatureAction_StrafeForward@@UBEPAVCCreatureActionBase@@XZ in 008c0270.obj
+DEFINED ?Clone@CCreatureAction_SummonerDead@@UBEPAVCCreatureActionBase@@XZ in 008e5190.obj
+DEFINED ?Clone@CCreatureAction_SummonerDie@@UBEPAVCCreatureActionBase@@XZ in 006f8a70.obj
+DEFINED ?Clone@CCreatureAction_SummonerStrike@@UBEPAVCCreatureActionBase@@XZ in 006f8a40.obj
+DEFINED ?Clone@CCreatureAction_TeleportIn@@UBEPAVCCreatureActionBase@@XZ in 008beb00.obj
+DEFINED ?Clone@CCreatureAction_TentacleStrikeGetHit@@UBEPAVCCreatureActionBase@@XZ in 008cfc00.obj
+DEFINED ?Clone@CCreatureAction_UnblockableMidAttack@@UBEPAVCCreatureActionBase@@XZ in 008c01e0.obj
+DEFINED ?Clone@CCreatureAction_UndeadReturnToEarth@@UBEPAVCCreatureActionBase@@XZ in 008ec7b0.obj
+DEFINED ?Clone@CCreatureAction_UnsheatheWeapons@@UBEPAVCCreatureActionBase@@XZ in 008b8ac0.obj
+DEFINED ?Clone@CCreatureAction_WalkInto@@UBEPAVCCreatureActionBase@@XZ in 00908720.obj
+DEFINED ?Clone@CCreatureAction_WaspQueenDiveAttack@@UBEPAVCCreatureActionBase@@XZ in 008c5ed0.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?Clone@CCombatAction_GenericResponseToDecapitation@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BalverineBreakOffFromCombat@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BalverineBreakOffFromCombatLong@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BalverineLungeAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BodgeSideStrike@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_CastStrengthBerserk@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_CastStrengthMultiStrike@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_CastWillEnflameSpell@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_CastWillLightningSpell@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_Charge@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_CombatBoast@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_DiagonalStrafeBL@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_DiagonalStrafeBR@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_DragonLand@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_FinishFireballSpell@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ForcePushOutOf@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GenericAimProjectileWeapon@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GenericFireProjectileWeapon@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GenericLeaderCommand@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GenericLoadProjectileWeapon@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GenericStrafeLeft@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GenericStrafeRight@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_GoUnderground@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_HobbeLungeAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_InterruptableFarAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_NymphIdleAfterShot@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_NymphShot@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_NymphSummonInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_OnGenerate@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ReleasePhysicalShieldSpell@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ReleaseStrengthBerserk@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScorpionKingDeath@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScorpionRecover@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScorpionSummon@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScreamerDrainOutOf@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScreamerIdle@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SnapDragon@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SnapDragonFast@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_StrafeBackward@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_StrafeForward@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerDead@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerDie@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerStrike@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TeleportIn@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TentacleStrikeGetHit@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_UnblockableMidAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_UndeadReturnToEarth@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_UnsheatheWeapons@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_WalkInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_WaspQueenDiveAttack@@QAEPAVCCombatActionBase@@XZ
+GONE_UNRESOLVED ??0CBase_0062f3b0@@QAE@ABU0@@Z 
+LK_DONE

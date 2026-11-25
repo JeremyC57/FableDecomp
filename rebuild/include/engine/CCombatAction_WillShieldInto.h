@@ -29,6 +29,33 @@ private:
 };
 #else
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129461C (RTTI .?AVCCombatAction_WillShieldInto@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatAction_WillShieldInto); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCombatAction_WillShieldInto : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C29F0 ?FinishAction@CCombatAction_WillShieldInto@@UAEXXZ
+private:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00956990 ?Clone@CCombatAction_WillShieldInto@@EBEPAVCCreatureActionBase@@XZ
+public:
+    virtual void Initialise();                                            // slot 12 0x008C04E0 ?Initialise@CCombatAction_WillShieldInto@@UAEXXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x009567D0 ?IsToFaceTarget@CCombatAction_WillShieldInto@@UBE_NXZ
+public:
+    float         ShieldUpTime;                              // +0x114
+    float         ShieldHealth;                              // +0x118
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_WillShieldInto) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, ShieldUpTime) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_WillShieldInto, ShieldHealth) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCombatAction_WillShieldInto {
 public:
@@ -102,6 +129,7 @@ FABLE_STATIC_ASSERT_AT(96, sizeof(CCombatAction_WillShieldInto) == 0x11c);
 FABLE_STATIC_ASSERT_AT(97, offsetof(CCombatAction_WillShieldInto, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(98, offsetof(CCombatAction_WillShieldInto, ShieldUpTime) == 0x114);
 FABLE_STATIC_ASSERT_AT(99, offsetof(CCombatAction_WillShieldInto, ShieldHealth) == 0x118);
+#endif // FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCOMBATACTION_WILLSHIELDINTO
 #endif // FABLE_ENGINE_CCOMBATACTION_WILLSHIELDINTO_H

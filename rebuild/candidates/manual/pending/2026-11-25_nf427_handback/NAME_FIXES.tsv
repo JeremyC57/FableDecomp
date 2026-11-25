@@ -1,0 +1,6 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0069f4f0	?PerformAction@CCreatureAction_SheatheItemToInventory@@UAEXXZ	RTTI vftable placement (labels_rtti_port.tsv) + Ego_r and FableWin name sets; three derived overrides (0x0069F740 / 0x0069F7F0 / 0x0069F8A0) tail-jump to it, so it is the virtual (U), not a non-virtual member	?PerformAction@CCreatureAction_SheatheItemToInventory@@QAEXXZ (the landed self; held the three G2 rows)
+0122ded8	__real@3f800000	pooled float literal 1.0f (bits 0x3F800000 at the VA, read from Fable.exe); VC7.1 spells `return 1.0f;` as fld [__real@3f800000] (NF415 / NF418); 5 rows in g1f now spell the literal	?g_FloatOne@@3MA (made-up data symbol; still in 0x008CA950 0x00956730 0x00B23360 0x00908120 and others: grep g_FloatOne)
+0123078c	__real@3e800000	pooled float literal 0.25f (bits 0x3E800000); 0x006F58F0 now spells the literal	?g_value_0123078c@@3MA, ?g_someConst@@3MA (table, witness 0x00788AEF), _kMinPitch (table, witness 0x00C0B130)
+0123095c	__real@3e000000	pooled float literal 0.125f (bits 0x3E000000); 0x00906C10 / 0x00906C50 now spell the literal	?g_value_0123095c@@3MA
+01276ab8	__real@3f7f49f5	pooled float literal 0.99722224f (bits 0x3F7F49F5); 0x0085C300 now spells the literal	?g_value_01276ab8@@3MA

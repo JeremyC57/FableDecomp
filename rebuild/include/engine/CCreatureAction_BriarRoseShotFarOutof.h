@@ -23,6 +23,29 @@ protected:
     CIntelligentPointer<CThing> PShot;                                   // +0x114
 };
 #else
+#ifdef FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012807A4 (RTTI .?AVCCreatureAction_BriarRoseShotFarOutof@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BriarRoseShotFarOutof); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BriarRoseShotFarOutof : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C0900 ?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C3CE0 ?Clone@CCreatureAction_BriarRoseShotFarOutof@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x008C3A30 ?IsToFaceTarget@CCreatureAction_BriarRoseShotFarOutof@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008C3A40 ?IsToFaceTargetAtStart@CCreatureAction_BriarRoseShotFarOutof@@UBE_NXZ
+public:
+    unsigned char PShot[0x8];                                // +0x114 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BriarRoseShotFarOutof) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseShotFarOutof, PShot) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BriarRoseShotFarOutof {
 public:
@@ -94,6 +117,7 @@ public:
 FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_BriarRoseShotFarOutof) == 0x11c);
 FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_BriarRoseShotFarOutof, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_BriarRoseShotFarOutof, PShot) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_VIRTUAL_MODEL
 #endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSESHOTFAROUTOF_CLASS
 
 #endif // FABLE_ENGINE_CCREATUREACTION_BRIARROSESHOTFAROUTOF_H

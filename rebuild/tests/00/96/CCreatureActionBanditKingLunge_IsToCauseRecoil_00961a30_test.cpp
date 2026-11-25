@@ -1,4 +1,19 @@
-#include "rebuild_abi.h"
-#include <cstdio>
-extern "C" char FABLE_FASTCALL CCreatureAction_BanditKingLunge_IsToCauseRecoil(void* action){ return 1; }
-int main(){ int x; if(CCreatureAction_BanditKingLunge_IsToCauseRecoil(&x)!=1){std::printf("B1");return 1;} std::printf("RB_961a30_OK\n"); return 0; }
+// Behaviour test for 0x00961A30 CCreatureAction_BanditKingLunge::IsToCauseRecoil (NF427 G1): links the row object and calls the member directly (qualified call, no vftable);
+// the constant must come back. The object image is static storage: the member reads nothing.
+#define FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_BanditKingLunge.h"
+#include <stdio.h>
+static unsigned char g_obj[sizeof(CCreatureAction_BanditKingLunge)];
+int main(void)
+{
+    const CCreatureAction_BanditKingLunge* p = (const CCreatureAction_BanditKingLunge*)g_obj;
+    bool r = p->CCreatureAction_BanditKingLunge::IsToCauseRecoil();
+    int ok = (r == true);
+    if (ok) { printf("RB_961a30_OK PASS\n"); return 0; }
+    printf("RB_961a30_OK FAIL\n");
+    return 1;
+}

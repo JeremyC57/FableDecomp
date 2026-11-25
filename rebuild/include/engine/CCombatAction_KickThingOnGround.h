@@ -29,6 +29,45 @@ FABLE_STATIC_ASSERT(sizeof(CCombatAction_KickThingOnGround) == 0x130);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01277D3C (RTTI .?AVCCombatAction_KickThingOnGround@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatAction_KickThingOnGround); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class C3DVector;
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCombatAction_KickThingOnGround : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x0087F3A0 ?PerformAction@CCombatAction_KickThingOnGround@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x0087EBD0 ?FinishAction@CCombatAction_KickThingOnGround@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008800F0 ?Clone@CCombatAction_KickThingOnGround@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0087E860 ?Initialise@CCombatAction_KickThingOnGround@@UAEXXZ
+    virtual C3DVector GetNextPos() const;                                 // slot 70 0x0087E770 ?GetNextPos@CCombatAction_KickThingOnGround@@UBE?AVC3DVector@@XZ
+    virtual bool IsToPerformActionOnStrike() const;                       // slot 76 0x00880020 ?IsToPerformActionOnStrike@CCombatAction_KickThingOnGround@@UBE_NXZ
+    virtual bool IsToHitProneThings() const;                              // slot 77 0x00880030 ?IsToHitProneThings@CCombatAction_KickThingOnGround@@UBE_NXZ
+public:
+    float         MoveToPos_X;                               // +0x114 C3DVector::X
+    float         MoveToPos_Y;                               // +0x118 C3DVector::Y
+    float         MoveToPos_Z;                               // +0x11c C3DVector::Z
+    float         Movement_X;                                // +0x120 C3DVector::X
+    float         Movement_Y;                                // +0x124 C3DVector::Y
+    float         Movement_Z;                                // +0x128 C3DVector::Z
+    float         MaxRunningSpeed;                           // +0x12c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_KickThingOnGround) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_Z) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_X) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Y) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Z) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MaxRunningSpeed) == 0x12c);
+#else
 #pragma pack(push, 1)
 class CCombatAction_KickThingOnGround {
 public:
@@ -103,15 +142,16 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCombatAction_KickThingOnGround) == 0x130);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_X) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_Y) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MoveToPos_Z) == 0x11c);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_X) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Y) == 0x124);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, Movement_Z) == 0x128);
-FABLE_STATIC_ASSERT(offsetof(CCombatAction_KickThingOnGround, MaxRunningSpeed) == 0x12c);
+FABLE_STATIC_ASSERT_AT(106, sizeof(CCombatAction_KickThingOnGround) == 0x130);
+FABLE_STATIC_ASSERT_AT(107, offsetof(CCombatAction_KickThingOnGround, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(108, offsetof(CCombatAction_KickThingOnGround, MoveToPos_X) == 0x114);
+FABLE_STATIC_ASSERT_AT(109, offsetof(CCombatAction_KickThingOnGround, MoveToPos_Y) == 0x118);
+FABLE_STATIC_ASSERT_AT(110, offsetof(CCombatAction_KickThingOnGround, MoveToPos_Z) == 0x11c);
+FABLE_STATIC_ASSERT_AT(111, offsetof(CCombatAction_KickThingOnGround, Movement_X) == 0x120);
+FABLE_STATIC_ASSERT_AT(112, offsetof(CCombatAction_KickThingOnGround, Movement_Y) == 0x124);
+FABLE_STATIC_ASSERT_AT(113, offsetof(CCombatAction_KickThingOnGround, Movement_Z) == 0x128);
+FABLE_STATIC_ASSERT_AT(114, offsetof(CCombatAction_KickThingOnGround, MaxRunningSpeed) == 0x12c);
+#endif // FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCOMBATACTION_KICKTHINGONGROUND
 #endif // FABLE_ENGINE_CCOMBATACTION_KICKTHINGONGROUND_H

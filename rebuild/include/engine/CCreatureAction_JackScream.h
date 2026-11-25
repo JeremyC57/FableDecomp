@@ -28,6 +28,32 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackScream) == 0x11c);
 class CCPPointerInfo;
 struct CModeJackOfBladesScream;
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_JACKSCREAM_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01297CB4 (RTTI .?AVCCreatureAction_JackScream@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_JackScream); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_JackScream : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C2240 ?PerformAction@CCreatureAction_JackScream@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008C0450 ?FinishAction@CCreatureAction_JackScream@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x009775C0 ?Clone@CCreatureAction_JackScream@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C0D10 ?Initialise@CCreatureAction_JackScream@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x00977190 ?IsToEvadeAllHits@CCreatureAction_JackScream@@UBE_NXZ
+public:
+    CModeJackOfBladesScream* PModeCountedPointer_Data;       // +0x114 CCountedPointer<NCreatureMode::CModeJackOfBladesScream>::Data
+    CCPPointerInfo*          PModeCountedPointer_Info;       // +0x118 CCountedPointer<NCreatureMode::CModeJackOfBladesScream>::Info
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackScream) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackScream, PModeCountedPointer_Data) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_JackScream, PModeCountedPointer_Info) == 0x118);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_JackScream {
 public:
@@ -101,6 +127,7 @@ FABLE_STATIC_ASSERT_AT(84, sizeof(CCreatureAction_JackScream) == 0x11c);
 FABLE_STATIC_ASSERT_AT(85, offsetof(CCreatureAction_JackScream, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(86, offsetof(CCreatureAction_JackScream, PModeCountedPointer_Data) == 0x114);
 FABLE_STATIC_ASSERT_AT(87, offsetof(CCreatureAction_JackScream, PModeCountedPointer_Info) == 0x118);
+#endif // FABLE_RETAIL_CCREATUREACTION_JACKSCREAM_VIRTUAL_MODEL
 
 #endif
 

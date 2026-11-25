@@ -31,6 +31,30 @@ public:
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01298A04 (RTTI .?AVCCreatureAction_ScorpionUnblockableLeftTurnAttack@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_ScorpionUnblockableLeftTurnAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_ScorpionUnblockableLeftTurnAttack : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C43B0 ?FinishAction@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0097CA20 ?Clone@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C42B0 ?Initialise@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UAEXXZ
+    virtual bool IsStrikeAction() const;                                  // slot 15 0x0097C810 ?IsStrikeAction@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x0097C7F0 ?IsKnockdownStrike@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x0097C7E0 ?IsBlockable@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ
+    virtual bool IsToFaceMovementDirection() const;                       // slot 81 0x0097C800 ?IsToFaceMovementDirection@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionUnblockableLeftTurnAttack) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ScorpionUnblockableLeftTurnAttack {
 public:
@@ -51,6 +75,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(42, sizeof(CCreatureAction_ScorpionUnblockableLeftTurnAttack) == 0x114);
 FABLE_STATIC_ASSERT_AT(43, offsetof(CCreatureAction_ScorpionUnblockableLeftTurnAttack, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONUNBLOCKABLELEFTTURNATTACK_H

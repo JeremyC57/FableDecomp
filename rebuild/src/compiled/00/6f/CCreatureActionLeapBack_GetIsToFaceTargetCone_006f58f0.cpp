@@ -1,5 +1,16 @@
-// Float global getter: `fld dword ptr [g]; ret`. Free function, no `this`.
-// Leaf: _CCreatureAction_LeapBack_GetIsToFaceTargetCone
-extern float g_value_0123078c;
-extern "C" float CCreatureAction_LeapBack_GetIsToFaceTargetCone() { return g_value_0123078c; }
-// Stand-in (owner rule 2026-11-05): CCreatureAction_LeapBack_GetIsToFaceTargetCone for CCreatureAction_LeapBack::GetIsToFaceTargetCone; RTTI vtable slot ?GetIsToFaceTargetCone@CCreatureAction_LeapBack@@UBEMXZ + PDB name set (egor/fablewin).
+// Leaf: ?GetIsToFaceTargetCone@CCreatureAction_LeapBack@@UBEMXZ
+// CCreatureAction_LeapBack::GetIsToFaceTargetCone() const -- returns 0.25f (retail loads the pooled float literal at 0x0123078C).
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + Ego_r/FableWin name set; the landed stand-in
+//   _CCreatureAction_LeapBack_GetIsToFaceTargetCone becomes the virtual member on engine/CCreatureAction_LeapBack.h
+//   (FABLE_RETAIL_CCREATUREACTION_LEAPBACK_VIRTUAL_MODEL, Needs FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE,
+//   FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR). NF427 G1 (CONST shape).
+#define FABLE_RETAIL_CCREATUREACTION_LEAPBACK_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_LeapBack.h"
+float CCreatureAction_LeapBack::GetIsToFaceTargetCone() const
+{
+    return 0.25f;
+}

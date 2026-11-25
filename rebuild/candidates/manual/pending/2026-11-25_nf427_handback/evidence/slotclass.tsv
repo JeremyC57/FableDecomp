@@ -1,0 +1,467 @@
+class	base	verdict	nslots	nbase	n_decl	n_bad	bad
+CCombatActionBase	CCreatureActionBase	OK	81	70	46	0	
+CCombatAction_ControlledStrafeJump	CCombatActionBase	OK	81	81	8	0	
+CCombatAction_FallStunned	CCombatActionBase	OK	81	81	3	0	
+CCombatAction_GenericBreakOffDrain	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_GenericResponseToDecapitation	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_GenericResponseToDrain	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_GenericResponseToExplosion	CCombatActionBase	OK	81	81	6	0	
+CCombatAction_GenericStrikeResponse	CCombatAction_GenericStrikeResponseBase	OK	81	81	2	0	
+CCombatAction_GenericStrikeResponseBase	CCombatActionBase	OK	81	81	13	0	
+CCombatAction_GenericStrikeResponseKnockdown	CCombatActionBase	OK	81	81	10	0	
+CCombatAction_GenericStrikeResponseKnockdownRecover	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	OK	81	81	2	0	
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase	CCombatActionBase	OK	81	81	9	0	
+CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	CCombatAction_GenericStrikeResponseKnockdownRecover	OK	81	81	4	0	
+CCombatAction_Guildmaster_HealFollowersInto	CCombatActionBase	OK	81	81	3	0	
+CCombatAction_Guildmaster_HealFollowersRelease	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_Guildmaster_ShieldFollowersInto	CCombatActionBase	OK	81	81	3	0	
+CCombatAction_Guildmaster_ShieldFollowersRelease	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_Guildmaster_SpeedUpFollowersInto	CCombatActionBase	OK	81	81	3	0	
+CCombatAction_Guildmaster_SpeedUpFollowersRelease	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_KickThingOnGround	CCombatActionBase	OK	81	81	8	0	
+CCombatAction_RecoverFromDazed	CCombatActionBase	OK	81	81	4	0	
+CCombatAction_StabThing	CCombatActionBase	OK	83	81	9	0	
+CCombatAction_StrikeResponseJackOfBladesIntoRush	CCombatAction_GenericStrikeResponseBase	OK	81	81	7	0	
+CCombatAction_StrikeResponseMazeDoForcePush	CCombatAction_GenericStrikeResponseBase	OK	81	81	3	0	
+CCombatAction_StrikeResponseScorpionKing	CCombatAction_GenericStrikeResponseBase	OK	81	81	4	0	
+CCombatAction_WillEnflameInto	CCombatActionBase	OK	81	81	5	0	
+CCombatAction_WillForcePushInto	CCombatActionBase	OK	81	81	5	0	
+CCombatAction_WillHealRelease	CCombatActionBase	OK	81	81	3	0	
+CCombatAction_WillShieldInto	CCombatActionBase	OK	81	81	5	0	
+CCombatSequence_BanditAdvanceFar	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_BanditAttackFar	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditAttackMiddle	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditAttackNear	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditAttackSide	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditBoast	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditIdleMiddle	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_BanditIdleNear	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_BanditKingAdvance	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditKingAttack	CCombatSequenceBase	OK	19	19	6	0	
+CCombatSequence_BanditKingBackOff	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditKingSpinAround	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_BanditUnblockableAttack	CCombatSequenceBase	OK	19	19	6	0	
+CCombatSequence_BanditUnblockableAttack_NativeView	?	NO_VT					class
+CCombatSequence_BanditUnblockableAttack_Retail	?	NO_VT					class
+CCombatSequence_BattleCharge	CCombatSequenceBase	OK	19	19	8	0	
+CCombatSequence_BattleCharge_Retail	?	NO_VT					class
+CCombatSequence_FodderCombatIdle	CCombatSequenceBase	OK	19	19	7	0	
+CCombatSequence_FodderMainAttack	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_FodderSecondaryAttack	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_FodderUnblockableMainAttack	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_GenericLeader	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_GenericRangedAttack	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_KingScorpionTailPlunge	CCombatSequenceBase	OK	19	19	8	0	
+CCombatSequence_NonInterruptableBoxStrafe	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_ScorpionLungeAttack	CCombatSequenceBase	OK	19	19	10	0	
+CCombatSequence_TrollBurrowPursue	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_TrollBurrowPursueNoZone	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_TrollDoubleSwipe	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_TrollDoubleSwipeNonMelee	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_TrollOpeningGroundPound	CCombatSequenceBase	OK	19	19	8	0	
+CCombatSequence_TrollOpeningGroundPound_Retail	?	NO_VT					class
+CCombatSequence_TrollProjectileAttack	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_TrollRockAdvance	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_TrollRockIdle	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_TrollRockPursue	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_TrollRockPursueNoZone	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_TrollRockShuffleBack	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_TrollRockThrowRock	CCombatSequenceBase	OK	19	19	6	0	
+CCombatSequence_VillagerAdvance	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_VillagerAttack	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_VillagerBackOff	CCombatSequenceBase	OK	19	19	4	0	
+CCombatSequence_VillagerCombo	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_VillagerComboUnblockable	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_VillagerNearAttack	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_VillagerStepIn	CCombatSequenceBase	OK	19	19	5	0	
+CCombatSequence_WillEnflame	CCombatSequenceBase	OK	20	19	11	0	
+CCombatSequence_WillEnflame_Retail	?	NO_VT					class
+CCombatSequence_WillForcePush	CCombatSequenceBase	OK	20	19	11	0	
+CCombatSequence_WillForcePushLongRange	CCombatSequenceBase	OK	20	19	11	0	
+CCombatSequence_WillLightning	CCombatSequenceBase	OK	19	19	10	0	
+CCombatSequence_WillLightning_Retail	?	NO_VT					class
+CCombatSequence_WillPhysicalShield	CCombatSequenceBase	OK	19	19	10	0	
+CCombatSequence_WillPhysicalShieldNonMelee_Retail	?	NO_VT					class
+CCombatSequence_WillPhysicalShield_Retail	?	NO_VT					class
+CCreatureActionBase	CBaseObject	BAD	70	2	69	2	3:- 11:-
+CCreatureActionBase_Methods	?	NO_VT					class
+CCreatureActionHero180RunningTurn	CCombatActionBase	OK	81	81	6	0	
+CCreatureActionHeroJump	CCombatActionBase	OK	81	81	7	0	
+CCreatureActionHeroJump_00c08a80	?	NO_VT					class
+CCreatureActionHeroRunningStop	CCombatActionBase	OK	81	81	5	0	
+CCreatureActionList	?	NO_VT					class
+CCreatureActionQueue	?	NO_VT					class
+CCreatureAction_00628f30	?	NO_VT					class
+CCreatureAction_00628f50	?	NO_VT					class
+CCreatureAction_00628f70	?	NO_VT					class
+CCreatureAction_00628f90	?	NO_VT					class
+CCreatureAction_00628fb0	?	NO_VT					class
+CCreatureAction_00629000	?	NO_VT					class
+CCreatureAction_007e7fa0	?	NO_VT					class
+CCreatureAction_007eaf00	?	NO_VT					class
+CCreatureAction_007eb990	?	NO_VT					class
+CCreatureAction_007ed420	?	NO_VT					class
+CCreatureAction_007edff0	?	NO_VT					class
+CCreatureAction_007ee7a0	?	NO_VT					class
+CCreatureAction_0085edf0	?	NO_VT					class
+CCreatureAction_00922eb0	?	NO_VT					class
+CCreatureAction_00935970	?	NO_VT					class
+CCreatureAction_00966890	?	NO_VT					class
+CCreatureAction_00968150	?	NO_VT					class
+CCreatureAction_00968170	?	NO_VT					class
+CCreatureAction_0097d280	?	NO_VT					class
+CCreatureAction_ActivateQuest	CCreatureActionBase	OK	70	70	6	0	
+CCreatureAction_AddFoodToTable	CCreatureAction_PutDownThingAtTable	OK	70	70	2	0	
+CCreatureAction_AddRealObjectToInventory	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_AimMissileWeapon	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_AlertAllNearbyToThing	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_Ambush	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BalverineBreakOffFromCombat	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BalverineBreakOffFromCombatLong	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BalverineCorneredJumpIntoSky	CCombatActionBase	OK	81	81	10	0	
+CCreatureAction_BalverineDropInFromSky	CCombatActionBase	OK	81	81	8	0	
+CCreatureAction_BalverineLungeAttack	CCombatActionBase	OK	82	81	7	0	
+CCreatureAction_BanditKingAdvance	CCreatureAction_StrafeForward	OK	81	81	4	0	
+CCreatureAction_BanditKingAttack	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_BanditKingAttack_Methods	?	NO_VT					class
+CCreatureAction_BanditKingBackOff	CCreatureAction_StrafeBackward	OK	81	81	4	0	
+CCreatureAction_BanditKingChangeWeapons	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_BanditKingGetHit	CCombatAction_GenericStrikeResponseBase	OK	81	81	4	0	
+CCreatureAction_BanditKingLunge	CCombatActionBase	OK	81	81	10	0	
+CCreatureAction_BanditKingStuck	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_BanditKingStuckGetHit	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BanditKingThrowWeapons	CCreatureActionBase	OK	71	70	4	0	
+CCreatureAction_BanditKingUnstuck	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_BanditKingUnstuck_Methods	?	NO_VT					class
+CCreatureAction_BattleChargeImpact	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_BattleChargeMiss	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_BattleChargeTurnLeft	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BattleChargeTurnRight	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BeStunned	CCreatureActionBase	OK	70	70	7	0	
+CCreatureAction_BeetleLand	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BeetleTakeOff	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BeingForcePushed	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BlockBase	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_BlockBroken	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BlockCounter	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BlockRespond	CCreatureAction_BlockBase	OK	81	81	6	0	
+CCreatureAction_BlockRespond_Methods	?	NO_VT					class
+CCreatureAction_BlowHorn	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_BodgeSideStrike	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BreakIntoMelee	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BriarRoseConcentrateInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BriarRoseConcentrateOutof	CCreatureAction_CastWillDrainLifeSpell	OK	81	81	3	0	
+CCreatureAction_BriarRoseForcePush	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BriarRoseIntoInvulnerable	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BriarRoseInvulnerableTeleport	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BriarRoseShotFarInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_BriarRoseShotFarOutof	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BuildDrainLifeSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildFireballSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildGhostSwordSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildHealLifeSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildUpBattleCharge	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BuildUpDivineWrathSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BuildUpPhysicalShieldSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildUpTimeSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildUpUnholyPowerSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_BuildUpWillEnflameSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildUpWillLightningSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildUpWillSummonSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildWillForceSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_BuildWillTurncoatSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_CallSpouseHome	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_CastAssassinRush	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastBattleCharge	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastDivineWrathSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_CastPhysicalShieldSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_CastSkillMultiArrow	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_CastStrengthBerserk	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastStrengthMultiStrike	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_CastStrengthMultiStrikeProper	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_CastTimeSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastUnholyPowerSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_CastWillDrainLifeSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastWillEnflameSpell	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_CastWillFireballSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastWillGhostSwordSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastWillHarvestSoulSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_CastWillHealLifeSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_CastWillLightningSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastWillReclaimUndeadFollower	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_CastWillSummonSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CastWillTurncoatSpell	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_Charge	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ChargeStrike	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_CombatBoast	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_CombatIdle	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DeclarePlayerACriminal	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_DiagonalStrafeBL	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DiagonalStrafeBR	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_Die	CCreatureActionBase	OK	70	70	10	0	
+CCreatureAction_DowseFire	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_DragonBurninateInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DragonFireBeamOutOf	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_DragonFireBlastBase	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_DragonFireBlastForward	CCreatureAction_DragonFireBlastBase	OK	81	81	3	0	
+CCreatureAction_DragonFireBlastLeft	CCreatureAction_DragonFireBlastBase	OK	81	81	3	0	
+CCreatureAction_DragonFlight	CCombatActionBase	OK	81	81	9	0	
+CCreatureAction_DragonFlight_Methods	?	NO_VT					class
+CCreatureAction_DragonHoverInto	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_DragonHoverOutOf	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_DragonLand	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_DragonRearUpFull	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_DragonRearUpInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DragonRearUpOutOf	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DragonRetreat	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_DragonRoar	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DragonStrafeOutOf	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_DragonSwoop	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_DragonTakeOffIntoFlying	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_Drink	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_DropWeapon	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_DuckAndCover	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_FillBucket	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_FinishDrainLifeSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_FinishFireballSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_FinishGhostSwordSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_FinishHealLifeSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_FinishWillForceSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_FinishWillTurncoatSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_FireMissileTest	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_FireMissileWeapon	CCreatureActionBase	OK	70	70	7	0	
+CCreatureAction_FodderIdle	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_FodderPrimaryAttack	CCombatActionBase	OK	82	81	5	0	
+CCreatureAction_FodderSecondaryAttack	CCombatActionBase	OK	82	81	5	0	
+CCreatureAction_FodderUnblockablePrimaryAttack	CCombatActionBase	OK	82	81	7	0	
+CCreatureAction_ForcePushInto	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_ForcePushOutOf	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_GeneralInterruptedAttack	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_GenericAimProjectileWeapon	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_GenericAimProjectileWeapon_Methods	?	NO_VT					class
+CCreatureAction_GenericFireProjectileWeapon	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_GenericLeaderCommand	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_GenericLoadProjectileWeapon	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_GenericStrafeLeft	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_GenericStrafeRight	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_GetInBed	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_GetItemOutOfPocket	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_GetOutOfBed	CCreatureActionBase	OK	70	70	7	0	
+CCreatureAction_GetUpFromSitting	CCombatActionBase	OK	81	81	8	0	
+CCreatureAction_GiveItemToThing	CCreatureActionBase	OK	70	70	4	0	
+CCreatureAction_GiveMoneyToThing	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_GoUnderground	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_Hammer	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_HeroLoadRangedWeapon	CCreatureActionBase	OK	70	70	7	0	
+CCreatureAction_HobbeLungeAttack	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_HobbeSpellcasterAim	CCreatureAction_GenericAimProjectileWeapon	OK	81	81	4	0	
+CCreatureAction_HobbeSpellcasterFire	CCreatureAction_GenericFireProjectileWeapon	OK	81	81	3	0	
+CCreatureAction_IceTrollIcicleAssaultInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_IceTrollIcicleAssaultLoop	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_IceTrollIcicleAssaultOutOf	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_IceTrollIcicleAttack	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_InterruptableFarAttack	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_InterruptableMidAttack	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_InterruptableMidAttackAutoTurn	CCombatActionBase	OK	81	81	11	0	
+CCreatureAction_InterruptableNearAttack	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_JackDeathInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_JackFall	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_JackFlash	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_JackFloatUp	CCombatActionBase	OK	82	81	8	0	
+CCreatureAction_JackGetUp	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend	CCombatActionBase	OK	82	81	8	0	
+CCreatureAction_JackScream	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_JackShotFar	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_JackShotFloat	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_JackShotNear	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_JumpOutFromCover	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_KickCreature	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_KrakenHighAttackInto	?	NO_VT					class
+CCreatureAction_KrakenHighAttackLoop	?	NO_VT					class
+CCreatureAction_KrakenHighAttackOutOf	?	NO_VT					class
+CCreatureAction_KrakenLowAttackLoop	?	NO_VT					class
+CCreatureAction_KrakenLowAttackOutOf	?	NO_VT					class
+CCreatureAction_KrakenLowChargeLoop	?	NO_VT					class
+CCreatureAction_KrakenLowPoseInto	?	NO_VT					class
+CCreatureAction_KrakenRiseUp	?	NO_VT					class
+CCreatureAction_KrakenRoarInto	?	NO_VT					class
+CCreatureAction_KrakenRoarLoop	?	NO_VT					class
+CCreatureAction_KrakenRoarOutOf	?	NO_VT					class
+CCreatureAction_LeapBack	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_LeapLong	CCombatActionBase	OK	82	81	9	0	
+CCreatureAction_LearnExpression	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_MagicBlast	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_MidAttack360	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_MidAttackFacing	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_MidAttackKnockdown	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_MidAttackSide	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_NymphGetHit	CCombatAction_GenericStrikeResponseBase	OK	81	81	6	0	
+CCreatureAction_NymphGetHitDie	CCombatAction_GenericStrikeResponseBase	OK	81	81	6	0	
+CCreatureAction_NymphGetHit_Methods	?	NO_VT					class
+CCreatureAction_NymphIdleAfterShot	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_NymphShot	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_NymphSummonInto	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_NymphTeleportIntoLimbo	CCreatureAction_NymphTeleportLimboBase	OK	82	82	3	0	
+CCreatureAction_NymphTeleportOutOfLimbo	CCreatureAction_NymphTeleportLimboBase	OK	82	82	3	0	
+CCreatureAction_OnGenerate	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_OpenChest	CCreatureActionBase	OK	70	70	7	0	
+CCreatureAction_PerformExpression	CCreatureActionBase	OK	70	70	9	0	
+CCreatureAction_PerformExpressionExtended	CCreatureActionBase	OK	70	70	6	0	
+CCreatureAction_PerformExpressionExtended_Methods	?	NO_VT					class
+CCreatureAction_PerformExpression_Methods	?	NO_VT					class
+CCreatureAction_PickCrop	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_PickUpFoodAtTable	?	NO_VT					class
+CCreatureAction_PickUpGenericBox	CCreatureActionBase	OK	70	70	6	0	
+CCreatureAction_PickUpGoods	CCreatureActionBase	OK	70	70	4	0	
+CCreatureAction_PickUpJug	CCreatureAction_PickUpThingAtTable	OK	70	70	3	0	
+CCreatureAction_PickUpJugToFill	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_PickUpTankard	CCreatureAction_PickUpThingAtTable	OK	70	70	2	0	
+CCreatureAction_PickUpThingAtTable	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_PickupGameObject	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_PlayAnimation	CCreatureActionBase	OK	70	70	8	0	
+CCreatureAction_PlayAnimationWithLookTurning	CCreatureAction_PlayAnimation	OK	70	70	4	0	
+CCreatureAction_PlayCombatAnimation	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_PlayCombatAnimationWithLooking	CCreatureAction_PlayCombatAnimation	OK	81	81	3	0	
+CCreatureAction_PlayIntoLoopOutOfAnimation	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_PlayerInteractionBribe	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_PlayerInteractionFlirt	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_PlayerInteractionGreet	CCreatureActionBase	OK	70	70	6	0	
+CCreatureAction_PlayerInteractionInsult	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_PlayerInteractionThreaten	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_PlayerInteractionViewQuests	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_ProjectileCrouch	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_PutDownJugFromFilling	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_PutDownThingAtTable	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_PutGoodsDown	CCreatureActionBase	OK	70	70	4	0	
+CCreatureAction_QueenHornetShootBabies	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ReleaseAndLoopDivineWrathSpell	CCreatureAction_BuildUpDivineWrathSpell	OK	81	81	7	0	
+CCreatureAction_ReleaseAndLoopUnholyPowerSpell	CCreatureAction_BuildUpUnholyPowerSpell	OK	81	81	7	0	
+CCreatureAction_ReleaseDivineWrathSpell	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_ReleasePhysicalShieldSpell	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_ReleaseStrengthBerserk	CCombatActionBase	OK	81	81	8	0	
+CCreatureAction_ReleaseTimeSpell	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_ReleaseUnholyPowerSpell	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_ReleaseWillEnflameSpell	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_ReleaseWillLightningSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ReleaseWillSummonSpell	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ReloadMissileWeapon	CCreatureActionBase	OK	70	70	4	0	
+CCreatureAction_RemoveFoodFromTable	CCreatureAction_PickUpThingAtTable	OK	70	70	2	0	
+CCreatureAction_RemovePhysicalShieldSpell	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_RiseUp	CCombatActionBase	OK	81	81	11	0	
+CCreatureAction_RockTrollFallToDeath	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_RockTrollShakeAndExplode	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ScorpionCharge	CCombatActionBase	OK	83	81	8	0	
+CCreatureAction_ScorpionChargeInto	CCombatActionBase	OK	83	81	7	0	
+CCreatureAction_ScorpionChargeStrike	CCombatActionBase	OK	83	81	9	0	
+CCreatureAction_ScorpionKingDeath	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ScorpionPrepareTailPlunge	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ScorpionRecover	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ScorpionRecover_Methods	?	NO_VT					class
+CCreatureAction_ScorpionSummon	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_ScorpionTailPlunge	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_ScorpionTailWithdraw	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ScorpionUnblockableLeftTurnAttack	CCombatActionBase	OK	82	81	8	0	
+CCreatureAction_ScorpionUnblockableRightTurnAttack	CCombatActionBase	OK	82	81	8	0	
+CCreatureAction_ScreamerAdvance	CCreatureAction_StrafeForward	OK	81	81	5	0	
+CCreatureAction_ScreamerBackOff	CCreatureAction_StrafeBackward	OK	81	81	4	0	
+CCreatureAction_ScreamerDie	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_ScreamerDrainAttack	CCreatureAction_CastWillDrainLifeSpell	OK	81	81	7	0	
+CCreatureAction_ScreamerDrainOutOf	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_ScreamerIdle	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_SendMessage	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_SheatheItemToInventory	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_SheatheItemToInventory_ForDivineWrath	CCreatureAction_SheatheItemToInventory	OK	70	70	7	0	
+CCreatureAction_SheatheItemToInventory_ForEnflame	CCreatureAction_SheatheItemToInventory	OK	70	70	7	0	
+CCreatureAction_SheatheItemToInventory_ForUnholyPower	CCreatureAction_SheatheItemToInventory	OK	70	70	7	0	
+CCreatureAction_SheatheTrophy	CCreatureAction_SheatheItemToInventory	OK	70	70	2	0	
+CCreatureAction_SheatheWeapons	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_ShopkeeperGetOut	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_ShopkeeperPutAway	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_ShowItemToThing	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_ShowLove	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_ShowToSheatheTrophy	CCreatureAction_ShowTrophy	OK	70	70	3	0	
+CCreatureAction_ShowTrophy	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_SitDown	CCreatureActionBase	OK	70	70	8	0	
+CCreatureAction_SnapDragon	CCombatActionBase	OK	82	81	7	0	
+CCreatureAction_SnapDragonFast	CCombatActionBase	OK	82	81	7	0	
+CCreatureAction_SnapDragonOutOf	CCombatActionBase	OK	82	81	6	0	
+CCreatureAction_SpiritAttack	CCreatureActionBase	OK	70	70	6	0	
+CCreatureAction_SpiritAttack_Methods	?	NO_VT					class
+CCreatureAction_SpiritHitResponse	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_SpiritReturnToHero	CCreatureActionBase	OK	70	70	4	0	
+CCreatureAction_StabbedToDeath_Methods	?	NO_VT					class
+CCreatureAction_StartBlocking	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_StartEatingAtTable	CCreatureAction_PickUpThingAtTable	OK	70	70	2	0	
+CCreatureAction_StartFillingTankard	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_StopEatingAtTable	CCreatureAction_PutDownThingAtTable	OK	70	70	2	0	
+CCreatureAction_StopFillingTankard	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_StrafeBackward	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_StrafeForward	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_SummonerCharge	?	NO_VT					class
+CCreatureAction_SummonerChargeSuccess	?	NO_VT					class
+CCreatureAction_SummonerDead	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_SummonerDie	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_SummonerFlameSlice	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_SummonerLightningIdle	?	NO_VT					class
+CCreatureAction_SummonerLightningOrbInto	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_SummonerLightningOrbOutOf	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_SummonerLightningOrbOutOfGroundSmash	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_SummonerStrike	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_SummonerSummonInto	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_SummonerSummonOutOf	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_SummonerUnsheatheStrike	CCreatureAction_UnsheatheWeapons	OK	81	81	7	0	
+CCreatureAction_Talk	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_TavernGameMasterInteraction	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_TeleportIn	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_TeleportOut	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_TentacleIdle	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_TentacleRise	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_TentacleStrikeGetHit	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_TentacleStrikeInto	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_TentacleStrikeLoop	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_TentacleStrikeOutOf	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_ThrowGameObject	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_ThunderLightningStorm	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_TrollAngryGroundPound	CCreatureAction_TrollWhackGroundBase	OK	83	83	9	0	
+CCreatureAction_TrollAngryGroundPound_Methods	?	NO_VT					class
+CCreatureAction_TrollGetProjectile	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_TrollGroundPound	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_TrollIdle	CCombatActionBase	OK	81	81	2	0	
+CCreatureAction_TrollProjectileAttack	CCreatureAction_TrollWhackGroundBase	OK	84	83	8	0	
+CCreatureAction_TrollPursue	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_TrollSwipe	CCombatActionBase	OK	81	81	7	0	
+CCreatureAction_TrollThrowProjectile	CCombatActionBase	OK	82	81	10	0	
+CCreatureAction_TrollTunnel	CCreatureAction_TrollWhackGroundBase	OK	83	83	5	0	
+CCreatureAction_TrollVulnerableInto	CCombatActionBase	OK	81	81	2	0	
+CCreatureAction_TrollVulnerableOutOf	CCombatActionBase	OK	81	81	2	0	
+CCreatureAction_TrollWhackGroundBase	CCombatActionBase	OK	83	81	5	0	
+CCreatureAction_TurnStrikeLeft	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_TurnStrikeRight	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_UnblockableMidAttack	CCombatActionBase	OK	82	81	6	0	
+CCreatureAction_UndeadIdleUnderground	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_UndeadReturnToEarth	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_UndeadRiseUp	CCreatureAction_RiseUp	OK	81	81	11	0	
+CCreatureAction_UnsheatheItemFromInventory	CCreatureActionBase	OK	70	70	5	0	
+CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	CCreatureAction_UnsheatheItemFromInventory	OK	70	70	4	0	
+CCreatureAction_UnsheatheToShowToSheatheTrophy	CCreatureAction_UnsheatheItemFromInventory	OK	70	70	3	0	
+CCreatureAction_UnsheatheWeapons	CCombatActionBase	OK	81	81	5	0	
+CCreatureAction_UnsheatheWeapons_Methods	?	NO_VT					class
+CCreatureAction_UseLamp	CCreatureActionBase	OK	70	70	6	0	
+CCreatureAction_UseObject	CCreatureActionBase	OK	70	70	11	0	
+CCreatureAction_UseSwitch	CCreatureActionBase	OK	70	70	3	0	
+CCreatureAction_UseWallMount	CCreatureActionBase	OK	70	70	4	0	
+CCreatureAction_VillagerAdvance	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_VillagerAttack	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_VillagerAttackKnockdown	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_VillagerAttackKnockdown_Methods	?	NO_VT					class
+CCreatureAction_VillagerBackOff	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_WalkInto	CCombatActionBase	OK	81	81	3	0	
+CCreatureAction_WalkOutOf	CCombatActionBase	OK	81	81	2	0	
+CCreatureAction_WaspQueenDeath	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_WaspQueenDie	CCombatActionBase	OK	82	81	6	0	
+CCreatureAction_WaspQueenDiveAttack	CCombatActionBase	OK	82	81	6	0	
+CCreatureAction_WaspQueenLashOutAttack	CCombatActionBase	OK	82	81	9	0	
+CCreatureAction_WaspQueenPrimaryAttack	CCombatActionBase	OK	82	81	9	0	
+CCreatureAction_WhisperJumpIntoSky	CCombatActionBase	OK	81	81	4	0	
+CCreatureAction_WhisperSommersaultBackward	CCombatActionBase	OK	81	81	6	0	
+CCreatureAction_WhisperSommersaultForward	CCombatActionBase	OK	81	81	7	0	

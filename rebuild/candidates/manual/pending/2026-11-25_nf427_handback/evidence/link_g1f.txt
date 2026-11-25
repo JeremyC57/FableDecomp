@@ -1,0 +1,45 @@
+## HEAD set (9 objects): 006f58f0/work 006f5ab0/work 006f5af0/work 0085c300/work 008bffb0/work 008c7ce0/work 008ca8f0/work 00906c10/work 00906c50/work
+duplicates 0
+UNRESOLVED 5 ?g_FloatOne@@3MA
+UNRESOLVED 1 ?g_value_0123078c@@3MA
+UNRESOLVED 2 ?g_value_0123095c@@3MA
+UNRESOLVED 1 ?g_value_01276ab8@@3MA
+DEFINED ?CCreatureAction_BodgeSideStrike__GetActionSpeedParameter@@YIMPAX@Z in 008bffb0.obj
+DEFINED ?CCreatureAction_GenericAimProjectileWeapon__GetIsToFaceTargetCone@@YIMPAX@Z in 006f5ab0.obj
+DEFINED ?CCreatureAction_GenericFireProjectileWeapon__GetIsToFaceTargetCone@@YIMPAX@Z in 006f5af0.obj
+DEFINED ?CCreatureAction_NymphShot__GetIsToFaceTargetCone@@YIMPAX@Z in 008ca8f0.obj
+DEFINED ?CCreatureAction_TrollThrowProjectile__GetIsToFaceTargetCone@@YIMPAX@Z in 008c7ce0.obj
+DEFINED _CCombatAction_ControlledStrafeJump_GetIsToFaceTargetCone in 0085c300.obj
+DEFINED _CCreatureAction_BanditKingAdvance_GetIsToFaceTargetCone in 00906c10.obj
+DEFINED _CCreatureAction_BanditKingBackOff_GetIsToFaceTargetCone in 00906c50.obj
+DEFINED _CCreatureAction_LeapBack_GetIsToFaceTargetCone in 006f58f0.obj
+## new set (9 objects): 006f58f0/work 006f5ab0/work 006f5af0/work 0085c300/work 008bffb0/work 008c7ce0/work 008ca8f0/work 00906c10/work 00906c50/work
+duplicates 0
+DEFINED ?GetActionSpeedParameter@CCreatureAction_BodgeSideStrike@@UBEMXZ in 008bffb0.obj
+DEFINED ?GetIsToFaceTargetCone@CCombatAction_ControlledStrafeJump@@UBEMXZ in 0085c300.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_BanditKingAdvance@@UBEMXZ in 00906c10.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_BanditKingBackOff@@UBEMXZ in 00906c50.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_GenericAimProjectileWeapon@@UBEMXZ in 006f5ab0.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_GenericFireProjectileWeapon@@UBEMXZ in 006f5af0.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_LeapBack@@UBEMXZ in 006f58f0.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_NymphShot@@UBEMXZ in 008ca8f0.obj
+DEFINED ?GetIsToFaceTargetCone@CCreatureAction_TrollThrowProjectile@@UBEMXZ in 008c7ce0.obj
+DEFINED __real@3e000000 in 00906c10.obj
+DEFINED __real@3e800000 in 006f58f0.obj
+DEFINED __real@3f7f49f5 in 0085c300.obj
+DEFINED __real@3f800000 in 006f5ab0.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CCreatureAction_BodgeSideStrike__GetActionSpeedParameter@@YIMPAX@Z
+RESOLVED_TO_GONE ?CCreatureAction_GenericAimProjectileWeapon__GetIsToFaceTargetCone@@YIMPAX@Z
+RESOLVED_TO_GONE ?CCreatureAction_GenericFireProjectileWeapon__GetIsToFaceTargetCone@@YIMPAX@Z
+RESOLVED_TO_GONE ?CCreatureAction_NymphShot__GetIsToFaceTargetCone@@YIMPAX@Z
+RESOLVED_TO_GONE ?CCreatureAction_TrollThrowProjectile__GetIsToFaceTargetCone@@YIMPAX@Z
+RESOLVED_TO_GONE _CCombatAction_ControlledStrafeJump_GetIsToFaceTargetCone
+RESOLVED_TO_GONE _CCreatureAction_BanditKingAdvance_GetIsToFaceTargetCone
+RESOLVED_TO_GONE _CCreatureAction_BanditKingBackOff_GetIsToFaceTargetCone
+RESOLVED_TO_GONE _CCreatureAction_LeapBack_GetIsToFaceTargetCone
+GONE_UNRESOLVED ?g_FloatOne@@3MA 
+GONE_UNRESOLVED ?g_value_0123078c@@3MA 
+GONE_UNRESOLVED ?g_value_0123095c@@3MA 
+GONE_UNRESOLVED ?g_value_01276ab8@@3MA 
+LK_DONE

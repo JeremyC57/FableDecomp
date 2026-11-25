@@ -1,0 +1,9 @@
+## HEAD set (1 objects): 006f55a0/work
+duplicates 0
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_ScreamerDrainOutOf@@UBE_NXZ in 006f55a0.obj
+## new set (2 objects): 006f55a0/work ctl/scratchpad
+duplicates 1
+  DUP copy.obj : warning LNK4006: "public: virtual bool __thiscall CCreatureAction_ScreamerDrainOutOf::IsToFaceTargetAtStart(void)const " (?IsToFaceTargetAtStart@CCreatureAction_ScreamerDrainOutOf@@UBE_NXZ) already defined in 006f55a0.obj; second definition ignored
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_ScreamerDrainOutOf@@UBE_NXZ in 006f55a0.obj
+## diff HEAD -> new
+LK_DONE

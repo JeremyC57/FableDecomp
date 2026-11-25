@@ -33,6 +33,32 @@ public:
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01295F64 (RTTI .?AVCCreatureAction_BanditKingLunge@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BanditKingLunge); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BanditKingLunge : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C8180 ?PerformAction@CCreatureAction_BanditKingLunge@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008C8C30 ?FinishAction@CCreatureAction_BanditKingLunge@@UAEXXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x00961A00 ?GetAnimationTransitionInTime@CCreatureAction_BanditKingLunge@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00961A70 ?Clone@CCreatureAction_BanditKingLunge@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C7F00 ?Initialise@CCreatureAction_BanditKingLunge@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x00961A10 ?IsKnockdownStrike@CCreatureAction_BanditKingLunge@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x00961A20 ?IsBlockable@CCreatureAction_BanditKingLunge@@UBE_NXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x00961A30 ?IsToCauseRecoil@CCreatureAction_BanditKingLunge@@UBE_NXZ
+    virtual void OnAnimationLoaded();                                     // slot 68 0x008C7F40 ?OnAnimationLoaded@CCreatureAction_BanditKingLunge@@UAEXXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BanditKingLunge) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BanditKingLunge {
 public:
@@ -53,6 +79,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_BanditKingLunge) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_BanditKingLunge, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_BANDITKINGLUNGE
 #endif // FABLE_ENGINE_CCREATUREACTION_BANDITKINGLUNGE_H

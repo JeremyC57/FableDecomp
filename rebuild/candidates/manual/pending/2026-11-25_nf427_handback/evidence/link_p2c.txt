@@ -1,0 +1,148 @@
+## HEAD set (193 objects): 0062d380_D/w22 0062ebc0_D/w22 0062f3b0_D/w22 00690d30_D/w22 00690db0_D/w22 00690e10_D/w22 006f5c10_D/w22 006f7f50_D/w22 006f7f90_D/w22 006f7ff0_D/w22 006f8050_D/w22 006f8070_D/w22 006f80d0_D/w22 006f8210_D/w22 006f8260_D/w22 00739a00_D/w22 00739cc0_D/w22 008559e0_D/w22 0085ba90_D/w22 0085bad0_D/w22 0085bb60_D/w22 0085bc20_D/w22 00865940_D/w22 008663d0_D/w22 00867820_D/w22 00867b40_D/w22 00867d20_D/w22 00867f20_D/w22 0087c7c0_D/w22 008a9320_D/w22 008a9610_D/w22 008adfe0_D/w22 008ae260_D/w22 008b6610_D/w22 008b6690_D/w22 008b67d0_D/w22 008b6810_D/w22 008b68d0_D/w22 008b6950_D/w22 008b8500_D/w22 008b8540_D/w22 008b8800_D/w22 008b9010_D/w22 008b9400_D/w22 008b9ff0_D/w22 008ba7f0_D/w22 008bbb10_D/w22 008bbb40_D/w22 008bbba0_D/w22 008c05a0_D/w22 008c05e0_D/w22 008c0630_D/w22 008c0670_D/w22 008c06b0_D/w22 008c0820_D/w22 008c0b10_D/w22 008c1260_D/w22 008c19b0_D/w22 008c1ac0_D/w22 008c1bd0_D/w22 008c1e00_D/w22 008c2ad0_D/w22 008c3810_D/w22 008c3930_D/w22 008c3af0_D/w22 008c3b70_D/w22 008c3d60_D/w22 008c60f0_D/w22 008c6160_D/w22 008c7200_D/w22 008c74f0_D/w22 008cac00_D/w22 008cac40_D/w22 008cb060_D/w22 008cb120_D/w22 008cb250_D/w22 008cb4a0_D/w22 008cb500_D/w22 008cb5c0_D/w22 008cbcf0_D/w22 008cbd50_D/w22 008cbe10_D/w22 008cbea0_D/w22 008cc410_D/w22 008cc430_D/w22 008cc480_D/w22 008cc4a0_D/w22 008cf2a0_D/w22 008cf540_D/w22 008cf610_D/w22 008cf7d0_D/w22 008cf920_D/w22 008cfa10_D/w22 008cfac0_D/w22 008cfb00_D/w22 008de620_D/w22 008df9c0_D/w22 008dffd0_D/w22 008e0780_D/w22 008e43a0_D/w22 008e4500_D/w22 008e4560_D/w22 008e4860_D/w22 008e48d0_D/w22 008e4940_D/w22 008e4a60_D/w22 008e4be0_D/w22 008e4c40_D/w22 008e4c60_D/w22 008e4d20_D/w22 008e4d40_D/w22 008e4d60_D/w22 008e4da0_D/w22 008e8760_D/w22 008ed6e0_D/w22 008ed8c0_D/w22 008ed950_D/w22 008eda10_D/w22 008eda90_D/w22 008edbb0_D/w22 008f3fd0_D/w22 008f42a0_D/w22 009067b0_D/w22 00906ba0_D/w22 00908c80_D/w22 00909fd0_D/w22 0090a550_D/w22 0090a700_D/w22 0090a760_D/w22 0090a7c0_D/w22 009211d0_D/w22 009250f0_D/w22 00951d60_D/w22 009534d0_D/w22 00953980_D/w22 0096ae50_D/w22 0096bf10_D/w22 0096bf90_D/w22 0096c0a0_D/w22 0096c0c0_D/w22 0096e610_D/w22 0096fcd0_D/w22 00977e00_D/w22 009784a0_D/w22 00978510_D/w22 00978580_D/w22 009785f0_D/w22 00978610_D/w22 00978630_D/w22 00982b50_D/w22 00982bb0_D/w22 00982c10_D/w22 00982c70_D/w22 00982cd0_D/w22 00982cf0_D/w22 00690e30/work 006f8280/work 006f85b0/work 006f8610/work 006f86b0/work 006f8740/work 006f8770/work 006f8800/work 00739d80/work 0085bc80/work 00868390/work 008ae2f0/work 008b8a90/work 008c3be0/work 008c3cb0/work 008cc540/work 008cc570/work 008cc5f0/work 008cc620/work 008cfb40/work 008cfbd0/work 008e4e00/work 008e4e90/work 008e4ec0/work 008e5070/work 008e50a0/work 008e50d0/work 008e5130/work 008edc10/work 0090a810/work 00953c90/work 0096c100/work 0096c140/work 00978650/work 00978680/work 009786b0/work 00982d10/work 00982d40/work
+duplicates 9
+  DUP 006f7f50.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f7ff0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f8050.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f8070.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f80d0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP cf920.obj : warning LNK4006: "public: __thiscall CCreatureAction_TentacleIdle::CCreatureAction_TentacleIdle(class CThingCreatureBase *)" (??0CCreatureAction_TentacleIdle@@QAE@PAVCThingCreatureBase@@@Z) already defined in 008cf610.obj; second definition ignored
+  DUP NK4006: "public: __thiscall CCreatureAction_TentacleStrikeOutOf::CCreatureAction_TentacleStrikeOutOf(class CThingCreatureBase *)" (??0CCreatureAction_TentacleStrikeOutOf@@QAE@PAVCThingCreatureBase@@@Z) already defined in 008cf7d0.obj; second definition ignored
+  DUP 008cfac0.obj : warning LNK4006: "public: void __thiscall CCreatureAction_TentacleRise::FinishAction(void)" (?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ) already defined in 008cf610.obj; second definition ignored
+  DUP 008cfb00.obj : warning LNK4006: "public: virtual void __thiscall CCreatureAction_TentacleStrikeLoop::FinishAction(void)" (?FinishAction@CCreatureAction_TentacleStrikeLoop@@UAEXXZ) already defined in 008cf7d0.obj; second definition ignored
+UNRESOLVED 1 ??0CBase_0062ebc0@@QAE@ABU0@@Z
+UNRESOLVED 4 ??0CBase_0062f3b0@@QAE@ABU0@@Z
+UNRESOLVED 1 ?Clone@CCreatureAction_CastWillDrainLifeSpell@@UBEPAVCCreatureActionBase@@XZ
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ??0CCreatureActionBase@@QAE@ABV0@@Z in 0062ebc0.obj
+DEFINED ?Clone@CCombatAction_FallStunned@@QAEPAVCCombatActionBase@@XZ in 008edc10.obj
+DEFINED ?Clone@CCombatAction_GenericBreakOffDrain@@QAEPAVCCombatActionBase@@XZ in 00690e30.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_HealFollowersInto@@QAEPAVCCombatActionBase@@XZ in 00978650.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_HealFollowersRelease@@QAEPAVCCombatActionBase@@XZ in 008e5070.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_ShieldFollowersInto@@QAEPAVCCombatActionBase@@XZ in 00978680.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_ShieldFollowersRelease@@QAEPAVCCombatActionBase@@XZ in 008e50a0.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@QAEPAVCCombatActionBase@@XZ in 009786b0.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersRelease@@QAEPAVCCombatActionBase@@XZ in 008e50d0.obj
+DEFINED ?Clone@CCombatAction_RecoverFromDazed@@QAEPAVCCombatActionBase@@XZ in 008e4e00.obj
+DEFINED ?Clone@CCombatAction_WillHealRelease@@QAEPAVCCombatActionBase@@XZ in 008c3cb0.obj
+DEFINED ?Clone@CCreatureActionHeroJump@@QAEPAVCCombatActionBase@@XZ in 0085bc80.obj
+DEFINED ?Clone@CCreatureAction_BeStunned@@QAEPAUCBase_0062ebc0@@XZ in 00868390.obj
+DEFINED ?Clone@CCreatureAction_BeetleLand@@QAEPAVCCombatActionBase@@XZ in 00982d40.obj
+DEFINED ?Clone@CCreatureAction_BeetleTakeOff@@QAEPAVCCombatActionBase@@XZ in 00982d10.obj
+DEFINED ?Clone@CCreatureAction_BlockBroken@@QAEPAVCCombatActionBase@@XZ in 00739d80.obj
+DEFINED ?Clone@CCreatureAction_BreakIntoMelee@@QAEPAVCCombatActionBase@@XZ in 006f8800.obj
+DEFINED ?Clone@CCreatureAction_CastWillDrainLifeSpell@@QAEPAUCBase_0062f3b0@@XZ in 006f8280.obj
+DEFINED ?Clone@CCreatureAction_ChargeStrike@@QAEPAVCCombatActionBase@@XZ in 008b8a90.obj
+DEFINED ?Clone@CCreatureAction_DragonFireBeamOutOf@@QAEPAVCCombatActionBase@@XZ in 008e5130.obj
+DEFINED ?Clone@CCreatureAction_DragonHoverInto@@QAEPAVCCombatActionBase@@XZ in 00953c90.obj
+DEFINED ?Clone@CCreatureAction_ForcePushInto@@QAEPAUCBase_0062f3b0@@XZ in 008ae2f0.obj
+DEFINED ?Clone@CCreatureAction_IceTrollIcicleAssaultLoop@@QAEPAVCCombatActionBase@@XZ in 008e4e90.obj
+DEFINED ?Clone@CCreatureAction_IceTrollIcicleAssaultOutOf@@QAEPAVCCombatActionBase@@XZ in 008e4ec0.obj
+DEFINED ?Clone@CCreatureAction_InterruptableNearAttack@@QAEPAVCCombatActionBase@@XZ in 006f8610.obj
+DEFINED ?Clone@CCreatureAction_JackGetUp@@QAEPAVCCombatActionBase@@XZ in 008c3be0.obj
+DEFINED ?Clone@CCreatureAction_MidAttack360@@QAEPAVCCombatActionBase@@XZ in 0090a810.obj
+DEFINED ?Clone@CCreatureAction_MidAttackKnockdown@@QAEPAVCCombatActionBase@@XZ in 006f86b0.obj
+DEFINED ?Clone@CCreatureAction_RockTrollFallToDeath@@QAEPAVCCombatActionBase@@XZ in 006f85b0.obj
+DEFINED ?Clone@CCreatureAction_SummonerLightningOrbOutOf@@QAEPAVCCombatActionBase@@XZ in 008cc5f0.obj
+DEFINED ?Clone@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAEPAVCCombatActionBase@@XZ in 008cc620.obj
+DEFINED ?Clone@CCreatureAction_SummonerSummonInto@@QAEPAVCCombatActionBase@@XZ in 008cc540.obj
+DEFINED ?Clone@CCreatureAction_SummonerSummonOutOf@@QAEPAVCCombatActionBase@@XZ in 008cc570.obj
+DEFINED ?Clone@CCreatureAction_TentacleIdle@@QAEPAVCCombatActionBase@@XZ in 008cfb40.obj
+DEFINED ?Clone@CCreatureAction_TentacleStrikeOutOf@@QAEPAVCCombatActionBase@@XZ in 008cfbd0.obj
+DEFINED ?Clone@CCreatureAction_TurnStrikeLeft@@QAEPAVCCombatActionBase@@XZ in 006f8740.obj
+DEFINED ?Clone@CCreatureAction_TurnStrikeRight@@QAEPAVCCombatActionBase@@XZ in 006f8770.obj
+DEFINED ?Clone@CCreatureAction_WhisperSommersaultBackward@@QAEPAUCBase_0062f3b0@@XZ in 0096c140.obj
+DEFINED ?Clone@CCreatureAction_WhisperSommersaultForward@@QAEPAUCBase_0062f3b0@@XZ in 0096c100.obj
+## new set (193 objects): 0062d380_D/w22 0062ebc0_D/w22 0062f3b0_D/w22 00690d30_D/w22 00690db0_D/w22 00690e10_D/w22 006f5c10_D/w22 006f7f50_D/w22 006f7f90_D/w22 006f7ff0_D/w22 006f8050_D/w22 006f8070_D/w22 006f80d0_D/w22 006f8210_D/w22 006f8260_D/w22 00739a00_D/w22 00739cc0_D/w22 008559e0_D/w22 0085ba90_D/w22 0085bad0_D/w22 0085bb60_D/w22 0085bc20_D/w22 00865940_D/w22 008663d0_D/w22 00867820_D/w22 00867b40_D/w22 00867d20_D/w22 00867f20_D/w22 0087c7c0_D/w22 008a9320_D/w22 008a9610_D/w22 008adfe0_D/w22 008ae260_D/w22 008b6610_D/w22 008b6690_D/w22 008b67d0_D/w22 008b6810_D/w22 008b68d0_D/w22 008b6950_D/w22 008b8500_D/w22 008b8540_D/w22 008b8800_D/w22 008b9010_D/w22 008b9400_D/w22 008b9ff0_D/w22 008ba7f0_D/w22 008bbb10_D/w22 008bbb40_D/w22 008bbba0_D/w22 008c05a0_D/w22 008c05e0_D/w22 008c0630_D/w22 008c0670_D/w22 008c06b0_D/w22 008c0820_D/w22 008c0b10_D/w22 008c1260_D/w22 008c19b0_D/w22 008c1ac0_D/w22 008c1bd0_D/w22 008c1e00_D/w22 008c2ad0_D/w22 008c3810_D/w22 008c3930_D/w22 008c3af0_D/w22 008c3b70_D/w22 008c3d60_D/w22 008c60f0_D/w22 008c6160_D/w22 008c7200_D/w22 008c74f0_D/w22 008cac00_D/w22 008cac40_D/w22 008cb060_D/w22 008cb120_D/w22 008cb250_D/w22 008cb4a0_D/w22 008cb500_D/w22 008cb5c0_D/w22 008cbcf0_D/w22 008cbd50_D/w22 008cbe10_D/w22 008cbea0_D/w22 008cc410_D/w22 008cc430_D/w22 008cc480_D/w22 008cc4a0_D/w22 008cf2a0_D/w22 008cf540_D/w22 008cf610_D/w22 008cf7d0_D/w22 008cf920_D/w22 008cfa10_D/w22 008cfac0_D/w22 008cfb00_D/w22 008de620_D/w22 008df9c0_D/w22 008dffd0_D/w22 008e0780_D/w22 008e43a0_D/w22 008e4500_D/w22 008e4560_D/w22 008e4860_D/w22 008e48d0_D/w22 008e4940_D/w22 008e4a60_D/w22 008e4be0_D/w22 008e4c40_D/w22 008e4c60_D/w22 008e4d20_D/w22 008e4d40_D/w22 008e4d60_D/w22 008e4da0_D/w22 008e8760_D/w22 008ed6e0_D/w22 008ed8c0_D/w22 008ed950_D/w22 008eda10_D/w22 008eda90_D/w22 008edbb0_D/w22 008f3fd0_D/w22 008f42a0_D/w22 009067b0_D/w22 00906ba0_D/w22 00908c80_D/w22 00909fd0_D/w22 0090a550_D/w22 0090a700_D/w22 0090a760_D/w22 0090a7c0_D/w22 009211d0_D/w22 009250f0_D/w22 00951d60_D/w22 009534d0_D/w22 00953980_D/w22 0096ae50_D/w22 0096bf10_D/w22 0096bf90_D/w22 0096c0a0_D/w22 0096c0c0_D/w22 0096e610_D/w22 0096fcd0_D/w22 00977e00_D/w22 009784a0_D/w22 00978510_D/w22 00978580_D/w22 009785f0_D/w22 00978610_D/w22 00978630_D/w22 00982b50_D/w22 00982bb0_D/w22 00982c10_D/w22 00982c70_D/w22 00982cd0_D/w22 00982cf0_D/w22 00690e30/work 006f8280/work 006f85b0/work 006f8610/work 006f86b0/work 006f8740/work 006f8770/work 006f8800/work 00739d80/work 0085bc80/work 00868390/work 008ae2f0/work 008b8a90/work 008c3be0/work 008c3cb0/work 008cc540/work 008cc570/work 008cc5f0/work 008cc620/work 008cfb40/work 008cfbd0/work 008e4e00/work 008e4e90/work 008e4ec0/work 008e5070/work 008e50a0/work 008e50d0/work 008e5130/work 008edc10/work 0090a810/work 00953c90/work 0096c100/work 0096c140/work 00978650/work 00978680/work 009786b0/work 00982d10/work 00982d40/work
+duplicates 9
+  DUP 006f7f50.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f7ff0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f8050.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f8070.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP 006f80d0.obj : warning LNK4006: "public: static void __fastcall CCreatureActionBase::StatRegisterClass(void)" (?StatRegisterClass@CCreatureActionBase@@SIXXZ) already defined in 006f5c10.obj; second definition ignored
+  DUP cf920.obj : warning LNK4006: "public: __thiscall CCreatureAction_TentacleIdle::CCreatureAction_TentacleIdle(class CThingCreatureBase *)" (??0CCreatureAction_TentacleIdle@@QAE@PAVCThingCreatureBase@@@Z) already defined in 008cf610.obj; second definition ignored
+  DUP NK4006: "public: __thiscall CCreatureAction_TentacleStrikeOutOf::CCreatureAction_TentacleStrikeOutOf(class CThingCreatureBase *)" (??0CCreatureAction_TentacleStrikeOutOf@@QAE@PAVCThingCreatureBase@@@Z) already defined in 008cf7d0.obj; second definition ignored
+  DUP 008cfac0.obj : warning LNK4006: "public: void __thiscall CCreatureAction_TentacleRise::FinishAction(void)" (?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ) already defined in 008cf610.obj; second definition ignored
+  DUP 008cfb00.obj : warning LNK4006: "public: virtual void __thiscall CCreatureAction_TentacleStrikeLoop::FinishAction(void)" (?FinishAction@CCreatureAction_TentacleStrikeLoop@@UAEXXZ) already defined in 008cf7d0.obj; second definition ignored
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ??0CCreatureActionBase@@QAE@ABV0@@Z in 0062ebc0.obj
+DEFINED ?Clone@CCombatAction_FallStunned@@UBEPAVCCreatureActionBase@@XZ in 008edc10.obj
+DEFINED ?Clone@CCombatAction_GenericBreakOffDrain@@UBEPAVCCreatureActionBase@@XZ in 00690e30.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_HealFollowersInto@@EBEPAVCCreatureActionBase@@XZ in 00978650.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_HealFollowersRelease@@EBEPAVCCreatureActionBase@@XZ in 008e5070.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_ShieldFollowersInto@@EBEPAVCCreatureActionBase@@XZ in 00978680.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_ShieldFollowersRelease@@EBEPAVCCreatureActionBase@@XZ in 008e50a0.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@EBEPAVCCreatureActionBase@@XZ in 009786b0.obj
+DEFINED ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersRelease@@EBEPAVCCreatureActionBase@@XZ in 008e50d0.obj
+DEFINED ?Clone@CCombatAction_RecoverFromDazed@@UBEPAVCCreatureActionBase@@XZ in 008e4e00.obj
+DEFINED ?Clone@CCombatAction_WillHealRelease@@EBEPAVCCreatureActionBase@@XZ in 008c3cb0.obj
+DEFINED ?Clone@CCreatureActionHeroJump@@UBEPAVCCreatureActionBase@@XZ in 0085bc80.obj
+DEFINED ?Clone@CCreatureAction_BeStunned@@UBEPAVCCreatureActionBase@@XZ in 00868390.obj
+DEFINED ?Clone@CCreatureAction_BeetleLand@@UBEPAVCCreatureActionBase@@XZ in 00982d40.obj
+DEFINED ?Clone@CCreatureAction_BeetleTakeOff@@UBEPAVCCreatureActionBase@@XZ in 00982d10.obj
+DEFINED ?Clone@CCreatureAction_BlockBroken@@UBEPAVCCreatureActionBase@@XZ in 00739d80.obj
+DEFINED ?Clone@CCreatureAction_BreakIntoMelee@@UBEPAVCCreatureActionBase@@XZ in 006f8800.obj
+DEFINED ?Clone@CCreatureAction_CastWillDrainLifeSpell@@UBEPAVCCreatureActionBase@@XZ in 006f8280.obj
+DEFINED ?Clone@CCreatureAction_ChargeStrike@@UBEPAVCCreatureActionBase@@XZ in 008b8a90.obj
+DEFINED ?Clone@CCreatureAction_DragonFireBeamOutOf@@UBEPAVCCreatureActionBase@@XZ in 008e5130.obj
+DEFINED ?Clone@CCreatureAction_DragonHoverInto@@UBEPAVCCreatureActionBase@@XZ in 00953c90.obj
+DEFINED ?Clone@CCreatureAction_ForcePushInto@@UBEPAVCCreatureActionBase@@XZ in 008ae2f0.obj
+DEFINED ?Clone@CCreatureAction_IceTrollIcicleAssaultLoop@@UBEPAVCCreatureActionBase@@XZ in 008e4e90.obj
+DEFINED ?Clone@CCreatureAction_IceTrollIcicleAssaultOutOf@@UBEPAVCCreatureActionBase@@XZ in 008e4ec0.obj
+DEFINED ?Clone@CCreatureAction_InterruptableNearAttack@@UBEPAVCCreatureActionBase@@XZ in 006f8610.obj
+DEFINED ?Clone@CCreatureAction_JackGetUp@@UBEPAVCCreatureActionBase@@XZ in 008c3be0.obj
+DEFINED ?Clone@CCreatureAction_MidAttack360@@UBEPAVCCreatureActionBase@@XZ in 0090a810.obj
+DEFINED ?Clone@CCreatureAction_MidAttackKnockdown@@UBEPAVCCreatureActionBase@@XZ in 006f86b0.obj
+DEFINED ?Clone@CCreatureAction_RockTrollFallToDeath@@UBEPAVCCreatureActionBase@@XZ in 006f85b0.obj
+DEFINED ?Clone@CCreatureAction_SummonerLightningOrbOutOf@@UBEPAVCCreatureActionBase@@XZ in 008cc5f0.obj
+DEFINED ?Clone@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@UBEPAVCCreatureActionBase@@XZ in 008cc620.obj
+DEFINED ?Clone@CCreatureAction_SummonerSummonInto@@UBEPAVCCreatureActionBase@@XZ in 008cc540.obj
+DEFINED ?Clone@CCreatureAction_SummonerSummonOutOf@@UBEPAVCCreatureActionBase@@XZ in 008cc570.obj
+DEFINED ?Clone@CCreatureAction_TentacleIdle@@UBEPAVCCreatureActionBase@@XZ in 008cfb40.obj
+DEFINED ?Clone@CCreatureAction_TentacleStrikeOutOf@@UBEPAVCCreatureActionBase@@XZ in 008cfbd0.obj
+DEFINED ?Clone@CCreatureAction_TurnStrikeLeft@@UBEPAVCCreatureActionBase@@XZ in 006f8740.obj
+DEFINED ?Clone@CCreatureAction_TurnStrikeRight@@UBEPAVCCreatureActionBase@@XZ in 006f8770.obj
+DEFINED ?Clone@CCreatureAction_WhisperSommersaultBackward@@UBEPAVCCreatureActionBase@@XZ in 0096c140.obj
+DEFINED ?Clone@CCreatureAction_WhisperSommersaultForward@@UBEPAVCCreatureActionBase@@XZ in 0096c100.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?Clone@CCombatAction_FallStunned@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_GenericBreakOffDrain@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_Guildmaster_HealFollowersInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_Guildmaster_HealFollowersRelease@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_Guildmaster_ShieldFollowersInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_Guildmaster_ShieldFollowersRelease@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_Guildmaster_SpeedUpFollowersRelease@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_RecoverFromDazed@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_WillHealRelease@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureActionHeroJump@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BeStunned@@QAEPAUCBase_0062ebc0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BeetleLand@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BeetleTakeOff@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BlockBroken@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BreakIntoMelee@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_CastWillDrainLifeSpell@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ChargeStrike@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_DragonFireBeamOutOf@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_DragonHoverInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ForcePushInto@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_IceTrollIcicleAssaultLoop@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_IceTrollIcicleAssaultOutOf@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_InterruptableNearAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_JackGetUp@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_MidAttack360@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_MidAttackKnockdown@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_RockTrollFallToDeath@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerLightningOrbOutOf@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerSummonInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SummonerSummonOutOf@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TentacleIdle@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TentacleStrikeOutOf@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TurnStrikeLeft@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TurnStrikeRight@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_WhisperSommersaultBackward@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_WhisperSommersaultForward@@QAEPAUCBase_0062f3b0@@XZ
+GONE_UNRESOLVED ??0CBase_0062ebc0@@QAE@ABU0@@Z 
+GONE_UNRESOLVED ??0CBase_0062f3b0@@QAE@ABU0@@Z 
+NOW_RESOLVED ?Clone@CCreatureAction_CastWillDrainLifeSpell@@UBEPAVCCreatureActionBase@@XZ 006f8280.obj
+LK_DONE

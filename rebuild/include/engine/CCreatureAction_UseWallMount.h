@@ -29,6 +29,26 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseWallMount) == 0xb0);
 #else
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_USEWALLMOUNT_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127498C (RTTI .?AVCCreatureAction_UseWallMount@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_UseWallMount); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_UseWallMount : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x00848020 ?PerformAction@CCreatureAction_UseWallMount@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0084C0C0 ?Clone@CCreatureAction_UseWallMount@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x00842140 ?Initialise@CCreatureAction_UseWallMount@@UAEXXZ
+public:
+    unsigned char PObjectToUse[0x8];                         // +0xa8 CIntelligentPointer<CThing>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UseWallMount) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UseWallMount, PObjectToUse) == 0xa8);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_UseWallMount {
 public:
@@ -73,6 +93,7 @@ public:
 FABLE_STATIC_ASSERT_AT(53, sizeof(CCreatureAction_UseWallMount) == 0xb0);
 FABLE_STATIC_ASSERT_AT(54, offsetof(CCreatureAction_UseWallMount, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(55, offsetof(CCreatureAction_UseWallMount, PObjectToUse) == 0xa8);
+#endif // FABLE_RETAIL_CCREATUREACTION_USEWALLMOUNT_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_USEWALLMOUNT_CLASS
 #endif // FABLE_ENGINE_CCREATUREACTION_USEWALLMOUNT_H

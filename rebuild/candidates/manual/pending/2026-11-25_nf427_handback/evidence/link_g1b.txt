@@ -1,0 +1,147 @@
+## HEAD set (47 objects): 008ca910/work 008cc3c0/work 008cc3d0/work 008cc3e0/work 008cd220/work 008cd230/work 008cd240/work 008cd250/work 008e4750/work 008e4a40/work 008e4bc0/work 008e8c10/work 00915860/work 009252a0/work 00925310/work 00953240/work 009532e0/work 009533d0/work 00953590/work 009536c0/work 009567d0/work 00956850/work 009571f0/work 0095ca60/work 0095ca70/work 0095ca80/work 0095ca90/work 0095caa0/work 0095cb60/work 00961a30/work 00962970/work 009629d0/work 0096c080/work 0096c740/work 00976f10/work 00976fa0/work 00977040/work 009770e0/work 00977190/work 00977270/work 00977300/work 009773a0/work 0097c800/work 0097c810/work 0097c8d0/work 0097c8e0/work 0097c9a0/work
+duplicates 0
+DEFINED ?CCreatureAction_BalverineBreakOffFromCombatLong_IsToFaceTargetAtStart@@YI_NXZ in 008cd250.obj
+DEFINED ?CCreatureAction_BalverineBreakOffFromCombat_IsToFaceTargetAtStart@@YI_NXZ in 008cd240.obj
+DEFINED ?CCreatureAction_BalverineLungeAttack_IsToFaceTargetAtStart@@YI_NXZ in 008cd220.obj
+DEFINED ?CCreatureAction_BalverineLungeAttack_IsToRetainSafeDistance@@YI_NXZ in 008cd230.obj
+DEFINED ?CCreatureAction_BriarRoseConcentrateInto_IsToFaceTargetAtStart@@YI_NXZ in 008e8c10.obj
+DEFINED ?CCreatureAction_DragonFireBlastBase_IsPreventingLookTurning@@YI_NXZ in 009536c0.obj
+DEFINED ?CCreatureAction_DragonLand_IsMovementUsingPhysics@@YI_NXZ in 009533d0.obj
+DEFINED ?CCreatureAction_JackScream_IsToEvadeAllHits@@YI_NXZ in 00977190.obj
+DEFINED ?CCreatureAction_NymphIdleAfterShot_IsToFaceTarget@@YI_NXZ in 008ca910.obj
+DEFINED ?CCreatureAction_ScorpionUnblockableLeftTurnAttack_IsToFaceMovementDirection@@YI_NXZ in 0097c800.obj
+DEFINED ?CCreatureAction_ScorpionUnblockableRightTurnAttack_IsToFaceMovementDirection@@YI_NXZ in 0097c8d0.obj
+DEFINED ?CCreatureAction_SummonerUnsheatheStrike_IsBlockable@@YI_NXZ in 008cc3d0.obj
+DEFINED ?CCreatureAction_SummonerUnsheatheStrike_IsKnockdownStrike@@YI_NXZ in 008cc3c0.obj
+DEFINED ?CCreatureAction_SummonerUnsheatheStrike_IsToFaceTargetAtStart@@YI_NXZ in 008cc3e0.obj
+DEFINED ?CCreatureAction_WaspQueenPrimaryAttack_IsBlockable@@YI_NXZ in 0095ca80.obj
+DEFINED ?CCreatureAction_WaspQueenPrimaryAttack_IsKnockdownStrike@@YI_NXZ in 0095ca90.obj
+DEFINED ?CCreatureAction_WaspQueenPrimaryAttack_IsToFaceTargetAtStart@@YI_NXZ in 0095ca70.obj
+DEFINED ?CCreatureAction_WaspQueenPrimaryAttack_IsToRetainSafeDistance@@YI_NXZ in 0095ca60.obj
+DEFINED @CCombatAction_WillEnflameInto_IsToFaceTarget@4 in 00956850.obj
+DEFINED @CCombatAction_WillShieldInto_IsToFaceTarget@4 in 009567d0.obj
+DEFINED @CCreatureAction_BanditKingLunge_IsToCauseRecoil@4 in 00961a30.obj
+DEFINED @CCreatureAction_BriarRoseShotFarInto_IsToFaceTarget@4 in 009571f0.obj
+DEFINED @CCreatureAction_DragonHoverOutOf_IsMovementUsingPhysics@4 in 00953590.obj
+DEFINED @CCreatureAction_IceTrollIcicleAssaultInto_IsStrikeAction@4 in 009629d0.obj
+DEFINED @CCreatureAction_IceTrollIcicleAttack_IsToFaceTarget@4 in 00962970.obj
+DEFINED @CCreatureAction_JackDeathInto_IsToEvadeAllHits@4 in 00977270.obj
+DEFINED @CCreatureAction_JackFall_IsToEvadeAllHits@4 in 009773a0.obj
+DEFINED @CCreatureAction_JackFlash_IsToFaceTarget@4 in 00976f10.obj
+DEFINED @CCreatureAction_JackFloatUp_HasFrameUpdate@4 in 00977300.obj
+DEFINED @CCreatureAction_JackShotFar_IsToFaceTarget@4 in 009770e0.obj
+DEFINED @CCreatureAction_JackShotFloat_IsToFaceTarget@4 in 00976fa0.obj
+DEFINED @CCreatureAction_JackShotNear_IsToFaceTarget@4 in 00977040.obj
+DEFINED @CCreatureAction_PutGoodsDown_GetAnimExtraFlags@4 in 00915860.obj
+DEFINED @CCreatureAction_ScorpionPrepareTailPlunge_IsToEvadeAllHits@4 in 0097c9a0.obj
+DEFINED @CCreatureAction_ScorpionSummon_IsToEvadeAllHits@4 in 008e4750.obj
+DEFINED @CCreatureAction_ScorpionUnblockableLeftTurnAttack_IsStrikeAction@4 in 0097c810.obj
+DEFINED @CCreatureAction_ScorpionUnblockableRightTurnAttack_IsStrikeAction@4 in 0097c8e0.obj
+DEFINED @CCreatureAction_SnapDragonFast_IsToFaceMovementDirection@4 in 009532e0.obj
+DEFINED @CCreatureAction_SnapDragonOutOf_IsToFaceMovementDirection@4 in 008e4a40.obj
+DEFINED @CCreatureAction_SnapDragon_IsToFaceMovementDirection@4 in 00953240.obj
+DEFINED @CCreatureAction_SummonerDead_IsToEvadeAllHits@4 in 008e4bc0.obj
+DEFINED @CCreatureAction_TentacleRise_IsMovementUsingPhysics@4 in 009252a0.obj
+DEFINED @CCreatureAction_TentacleStrikeInto_IsMovementUsingPhysics@4 in 00925310.obj
+DEFINED @CCreatureAction_ThunderLightningStorm_IsToEvadeAllHits@4 in 0096c740.obj
+DEFINED @CCreatureAction_WaspQueenLashOutAttack_IsMovementUsingPhysics@4 in 0095cb60.obj
+DEFINED @CCreatureAction_WaspQueenPrimaryAttack_IsMovementUsingPhysics@4 in 0095caa0.obj
+DEFINED @CCreatureAction_WhisperJumpIntoSky_IsToEvadeAllHits@4 in 0096c080.obj
+## new set (47 objects): 008ca910/work 008cc3c0/work 008cc3d0/work 008cc3e0/work 008cd220/work 008cd230/work 008cd240/work 008cd250/work 008e4750/work 008e4a40/work 008e4bc0/work 008e8c10/work 00915860/work 009252a0/work 00925310/work 00953240/work 009532e0/work 009533d0/work 00953590/work 009536c0/work 009567d0/work 00956850/work 009571f0/work 0095ca60/work 0095ca70/work 0095ca80/work 0095ca90/work 0095caa0/work 0095cb60/work 00961a30/work 00962970/work 009629d0/work 0096c080/work 0096c740/work 00976f10/work 00976fa0/work 00977040/work 009770e0/work 00977190/work 00977270/work 00977300/work 009773a0/work 0097c800/work 0097c810/work 0097c8d0/work 0097c8e0/work 0097c9a0/work
+duplicates 0
+DEFINED ?GetAnimExtraFlags@CCreatureAction_PutGoodsDown@@UBEKXZ in 00915860.obj
+DEFINED ?HasFrameUpdate@CCreatureAction_JackFloatUp@@UBE_NXZ in 00977300.obj
+DEFINED ?IsBlockable@CCreatureAction_SummonerUnsheatheStrike@@UBE_NXZ in 008cc3d0.obj
+DEFINED ?IsBlockable@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ in 0095ca80.obj
+DEFINED ?IsKnockdownStrike@CCreatureAction_SummonerUnsheatheStrike@@UBE_NXZ in 008cc3c0.obj
+DEFINED ?IsKnockdownStrike@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ in 0095ca90.obj
+DEFINED ?IsMovementUsingPhysics@CCreatureAction_DragonHoverOutOf@@UBE_NXZ in 00953590.obj
+DEFINED ?IsMovementUsingPhysics@CCreatureAction_DragonLand@@UBE_NXZ in 009533d0.obj
+DEFINED ?IsMovementUsingPhysics@CCreatureAction_TentacleRise@@UBE_NXZ in 009252a0.obj
+DEFINED ?IsMovementUsingPhysics@CCreatureAction_TentacleStrikeInto@@UBE_NXZ in 00925310.obj
+DEFINED ?IsMovementUsingPhysics@CCreatureAction_WaspQueenLashOutAttack@@UBE_NXZ in 0095cb60.obj
+DEFINED ?IsMovementUsingPhysics@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ in 0095caa0.obj
+DEFINED ?IsPreventingLookTurning@CCreatureAction_DragonFireBlastBase@@UBE_NXZ in 009536c0.obj
+DEFINED ?IsStrikeAction@CCreatureAction_IceTrollIcicleAssaultInto@@UBE_NXZ in 009629d0.obj
+DEFINED ?IsStrikeAction@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ in 0097c810.obj
+DEFINED ?IsStrikeAction@CCreatureAction_ScorpionUnblockableRightTurnAttack@@UBE_NXZ in 0097c8e0.obj
+DEFINED ?IsToCauseRecoil@CCreatureAction_BanditKingLunge@@UBE_NXZ in 00961a30.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_JackDeathInto@@UBE_NXZ in 00977270.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_JackFall@@UBE_NXZ in 009773a0.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_JackScream@@UBE_NXZ in 00977190.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_ScorpionPrepareTailPlunge@@UBE_NXZ in 0097c9a0.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_ScorpionSummon@@UBE_NXZ in 008e4750.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_SummonerDead@@UBE_NXZ in 008e4bc0.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_ThunderLightningStorm@@UBE_NXZ in 0096c740.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_WhisperJumpIntoSky@@UBE_NXZ in 0096c080.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBE_NXZ in 0097c800.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_ScorpionUnblockableRightTurnAttack@@UBE_NXZ in 0097c8d0.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_SnapDragon@@UBE_NXZ in 00953240.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_SnapDragonFast@@UBE_NXZ in 009532e0.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_SnapDragonOutOf@@UBE_NXZ in 008e4a40.obj
+DEFINED ?IsToFaceTarget@CCombatAction_WillEnflameInto@@UBE_NXZ in 00956850.obj
+DEFINED ?IsToFaceTarget@CCombatAction_WillShieldInto@@UBE_NXZ in 009567d0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_BriarRoseShotFarInto@@UBE_NXZ in 009571f0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_IceTrollIcicleAttack@@UBE_NXZ in 00962970.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_JackFlash@@UBE_NXZ in 00976f10.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_JackShotFar@@UBE_NXZ in 009770e0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_JackShotFloat@@UBE_NXZ in 00976fa0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_JackShotNear@@UBE_NXZ in 00977040.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_NymphIdleAfterShot@@UBE_NXZ in 008ca910.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_BalverineBreakOffFromCombat@@UBE_NXZ in 008cd240.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_BalverineBreakOffFromCombatLong@@UBE_NXZ in 008cd250.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_BalverineLungeAttack@@UBE_NXZ in 008cd220.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_BriarRoseConcentrateInto@@UBE_NXZ in 008e8c10.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_SummonerUnsheatheStrike@@UBE_NXZ in 008cc3e0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ in 0095ca70.obj
+DEFINED ?IsToRetainSafeDistance@CCreatureAction_BalverineLungeAttack@@UBE_NXZ in 008cd230.obj
+DEFINED ?IsToRetainSafeDistance@CCreatureAction_WaspQueenPrimaryAttack@@UBE_NXZ in 0095ca60.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CCreatureAction_BalverineBreakOffFromCombatLong_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BalverineBreakOffFromCombat_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BalverineLungeAttack_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BalverineLungeAttack_IsToRetainSafeDistance@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BriarRoseConcentrateInto_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_DragonFireBlastBase_IsPreventingLookTurning@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_DragonLand_IsMovementUsingPhysics@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_JackScream_IsToEvadeAllHits@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_NymphIdleAfterShot_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScorpionUnblockableLeftTurnAttack_IsToFaceMovementDirection@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScorpionUnblockableRightTurnAttack_IsToFaceMovementDirection@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerUnsheatheStrike_IsBlockable@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerUnsheatheStrike_IsKnockdownStrike@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerUnsheatheStrike_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_WaspQueenPrimaryAttack_IsBlockable@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_WaspQueenPrimaryAttack_IsKnockdownStrike@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_WaspQueenPrimaryAttack_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_WaspQueenPrimaryAttack_IsToRetainSafeDistance@@YI_NXZ
+RESOLVED_TO_GONE @CCombatAction_WillEnflameInto_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCombatAction_WillShieldInto_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_BanditKingLunge_IsToCauseRecoil@4
+RESOLVED_TO_GONE @CCreatureAction_BriarRoseShotFarInto_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_DragonHoverOutOf_IsMovementUsingPhysics@4
+RESOLVED_TO_GONE @CCreatureAction_IceTrollIcicleAssaultInto_IsStrikeAction@4
+RESOLVED_TO_GONE @CCreatureAction_IceTrollIcicleAttack_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_JackDeathInto_IsToEvadeAllHits@4
+RESOLVED_TO_GONE @CCreatureAction_JackFall_IsToEvadeAllHits@4
+RESOLVED_TO_GONE @CCreatureAction_JackFlash_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_JackFloatUp_HasFrameUpdate@4
+RESOLVED_TO_GONE @CCreatureAction_JackShotFar_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_JackShotFloat_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_JackShotNear_IsToFaceTarget@4
+RESOLVED_TO_GONE @CCreatureAction_PutGoodsDown_GetAnimExtraFlags@4
+RESOLVED_TO_GONE @CCreatureAction_ScorpionPrepareTailPlunge_IsToEvadeAllHits@4
+RESOLVED_TO_GONE @CCreatureAction_ScorpionSummon_IsToEvadeAllHits@4
+RESOLVED_TO_GONE @CCreatureAction_ScorpionUnblockableLeftTurnAttack_IsStrikeAction@4
+RESOLVED_TO_GONE @CCreatureAction_ScorpionUnblockableRightTurnAttack_IsStrikeAction@4
+RESOLVED_TO_GONE @CCreatureAction_SnapDragonFast_IsToFaceMovementDirection@4
+RESOLVED_TO_GONE @CCreatureAction_SnapDragonOutOf_IsToFaceMovementDirection@4
+RESOLVED_TO_GONE @CCreatureAction_SnapDragon_IsToFaceMovementDirection@4
+RESOLVED_TO_GONE @CCreatureAction_SummonerDead_IsToEvadeAllHits@4
+RESOLVED_TO_GONE @CCreatureAction_TentacleRise_IsMovementUsingPhysics@4
+RESOLVED_TO_GONE @CCreatureAction_TentacleStrikeInto_IsMovementUsingPhysics@4
+RESOLVED_TO_GONE @CCreatureAction_ThunderLightningStorm_IsToEvadeAllHits@4
+RESOLVED_TO_GONE @CCreatureAction_WaspQueenLashOutAttack_IsMovementUsingPhysics@4
+RESOLVED_TO_GONE @CCreatureAction_WaspQueenPrimaryAttack_IsMovementUsingPhysics@4
+RESOLVED_TO_GONE @CCreatureAction_WhisperJumpIntoSky_IsToEvadeAllHits@4
+LK_DONE

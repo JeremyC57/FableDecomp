@@ -1,11 +1,19 @@
-#include <cstdio>
-bool __fastcall CCreatureAction_BalverineBreakOffFromCombat_IsToFaceTargetAtStart()
+// Behaviour test for 0x008CD240 CCreatureAction_BalverineBreakOffFromCombat::IsToFaceTargetAtStart (NF427 G1): links the row object and calls the member directly (qualified call, no vftable);
+// the constant must come back. The object image is static storage: the member reads nothing.
+#define FABLE_RETAIL_CCREATUREACTION_BALVERINEBREAKOFFFROMCOMBAT_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_BalverineBreakOffFromCombat.h"
+#include <stdio.h>
+static unsigned char g_obj[sizeof(CCreatureAction_BalverineBreakOffFromCombat)];
+int main(void)
 {
-    return true;
-}
-int main()
-{
-    if (CCreatureAction_BalverineBreakOffFromCombat_IsToFaceTargetAtStart() == true) { std::printf("AUTO_TINY_008cd240_TEST PASS\n"); return 0; }
-    std::printf("AUTO_TINY_008cd240_TEST FAIL\n");
+    const CCreatureAction_BalverineBreakOffFromCombat* p = (const CCreatureAction_BalverineBreakOffFromCombat*)g_obj;
+    bool r = p->CCreatureAction_BalverineBreakOffFromCombat::IsToFaceTargetAtStart();
+    int ok = (r == true);
+    if (ok) { printf("AUTO_TINY_008cd240_TEST PASS\n"); return 0; }
+    printf("AUTO_TINY_008cd240_TEST FAIL\n");
     return 1;
 }

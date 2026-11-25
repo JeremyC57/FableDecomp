@@ -1,8 +1,17 @@
-#include <cstdio>
-void __fastcall CCreatureAction_SpiritHitResponse_PerformAction() {}
-int main()
+// Behaviour test for 0x008550B0 CCreatureAction_SpiritHitResponse::PerformAction (NF427 G1): links the row object and calls the member directly (qualified call, no vftable);
+// the constant must come back. The object image is static storage: the member reads nothing.
+#define FABLE_RETAIL_CCREATUREACTION_SPIRITHITRESPONSE_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#include "engine/CCreatureAction_SpiritHitResponse.h"
+#include <stdio.h>
+static unsigned char g_obj[sizeof(CCreatureAction_SpiritHitResponse)];
+int main(void)
 {
-    CCreatureAction_SpiritHitResponse_PerformAction();
-    std::printf("AUTO_TINY_008550b0_TEST PASS\n");
-    return 0;
+    CCreatureAction_SpiritHitResponse* p = (CCreatureAction_SpiritHitResponse*)g_obj;
+    p->CCreatureAction_SpiritHitResponse::PerformAction();
+    int ok = 1;
+    if (ok) { printf("AUTO_TINY_008550b0_TEST PASS\n"); return 0; }
+    printf("AUTO_TINY_008550b0_TEST FAIL\n");
+    return 1;
 }

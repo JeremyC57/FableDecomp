@@ -1,5 +1,16 @@
-// Float global getter: `fld dword ptr [g]; ret`. Free function, no `this`.
-// Leaf: _CCombatAction_ControlledStrafeJump_GetIsToFaceTargetCone
-extern float g_value_01276ab8;
-extern "C" float CCombatAction_ControlledStrafeJump_GetIsToFaceTargetCone() { return g_value_01276ab8; }
-// Stand-in (owner rule 2026-11-05): CCombatAction_ControlledStrafeJump_GetIsToFaceTargetCone for CCombatAction_ControlledStrafeJump::GetIsToFaceTargetCone; RTTI vtable slot ?GetIsToFaceTargetCone@CCombatAction_ControlledStrafeJump@@UBEMXZ + PDB name set (egor/fablewin).
+// Leaf: ?GetIsToFaceTargetCone@CCombatAction_ControlledStrafeJump@@UBEMXZ
+// CCombatAction_ControlledStrafeJump::GetIsToFaceTargetCone() const -- returns 0.99722224f (retail loads the pooled float literal at 0x01276AB8).
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + Ego_r/FableWin name set; the landed stand-in
+//   _CCombatAction_ControlledStrafeJump_GetIsToFaceTargetCone becomes the virtual member on engine/CCombatAction_ControlledStrafeJump.h
+//   (FABLE_RETAIL_CCOMBATACTION_CONTROLLEDSTRAFEJUMP_VIRTUAL_MODEL, Needs FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE,
+//   FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR). NF427 G1 (CONST shape).
+#define FABLE_RETAIL_CCOMBATACTION_CONTROLLEDSTRAFEJUMP_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCombatAction_ControlledStrafeJump.h"
+float CCombatAction_ControlledStrafeJump::GetIsToFaceTargetCone() const
+{
+    return 0.99722224f;
+}

@@ -1,0 +1,55 @@
+## HEAD set (60 objects): 0062ebc0_D/w22 0062f3b0_D/w22 008c04e0_D/w22 008c0520_D/w22 008c0b70_D/w22 008c0c00_D/w22 008c0ea0_D/w22 008c11f0_D/w22 008c2490_D/w22 008c3f90_D/w22 008c4020_D/w22 008c42b0_D/w22 008c4330_D/w22 008c43b0_D/w22 008c4430_D/w22 008c7600_D/w22 008c7f00_D/w22 008c7f40_D/w22 008c8180_D/w22 008c8c30_D/w22 00956460_D/w22 00956760_D/w22 009567f0_D/w22 00956900_D/w22 00956920_D/w22 0095ca00_D/w22 0095cb80_D/w22 0095cc40_D/w22 0095cc80_D/w22 009619c0_D/w22 00961a50_D/w22 00962990_D/w22 00962a10_D/w22 0096c6e0_D/w22 0096c760_D/w22 00976e80_D/w22 00976f30_D/w22 009771f0_D/w22 00977320_D/w22 009773c0_D/w22 009773e0_D/w22 009774a0_D/w22 009774e0_D/w22 0097c760_D/w22 0097c830_D/w22 0097c9c0_D/w22 0097c9e0_D/w22 00956990/work 009569e0/work 0095cca0/work 0095cd00/work 00961a70/work 00962a60/work 0096c780/work 00977500/work 00977530/work 00977630/work 009776e0/work 0097ca20/work 0097ca50/work
+duplicates 3
+  DUP 8180.obj : warning LNK4006: "public: bool __thiscall CDefClassBase::GetSubDef(class CDefPointer<class CSpecialEffectsDef> *)" (?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z) already defined in 008c0ea0.obj; second definition ignored
+  DUP c: __thiscall CCreatureAction_BanditKingLunge::CCreatureAction_BanditKingLunge(class CThingCreatureBase &,class CThing &)" (??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z) already defined in 009619c0.obj; second definition ignored
+  DUP IceTrollIcicleAssaultInto::CCreatureAction_IceTrollIcicleAssaultInto(class CThingCreatureBase &,class CThing &)" (??0CCreatureAction_IceTrollIcicleAssaultInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z) already defined in 00962990.obj; second definition ignored
+UNRESOLVED 2 ??0CBase_0062f3b0@@QAE@ABU0@@Z
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ?Clone@CCombatAction_WillEnflameInto@@QAEPAUCBase_0062f3b0@@XZ in 009569e0.obj
+DEFINED ?Clone@CCombatAction_WillShieldInto@@QAEPAUCBase_0062f3b0@@XZ in 00956990.obj
+DEFINED ?Clone@CCreatureAction_BanditKingLunge@@QAEPAVCCombatActionBase@@XZ in 00961a70.obj
+DEFINED ?Clone@CCreatureAction_IceTrollIcicleAssaultInto@@QAEPAVCCombatActionBase@@XZ in 00962a60.obj
+DEFINED ?Clone@CCreatureAction_JackDeathInto@@QAEPAVCCombatActionBase@@XZ in 00977630.obj
+DEFINED ?Clone@CCreatureAction_JackFall@@QAEPAVCCombatActionBase@@XZ in 009776e0.obj
+DEFINED ?Clone@CCreatureAction_JackFlash@@QAEPAVCCombatActionBase@@XZ in 00977500.obj
+DEFINED ?Clone@CCreatureAction_JackShotFloat@@QAEPAVCCombatActionBase@@XZ in 00977530.obj
+DEFINED ?Clone@CCreatureAction_QueenHornetShootBabies@@QAEPAVCCombatActionBase@@XZ in 0095cd00.obj
+DEFINED ?Clone@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@QAEPAVCCombatActionBase@@XZ in 0097ca20.obj
+DEFINED ?Clone@CCreatureAction_ScorpionUnblockableRightTurnAttack@@QAEPAVCCombatActionBase@@XZ in 0097ca50.obj
+DEFINED ?Clone@CCreatureAction_ThunderLightningStorm@@QAEPAVCCombatActionBase@@XZ in 0096c780.obj
+DEFINED ?Clone@CCreatureAction_WaspQueenPrimaryAttack@@QAEPAVCCombatActionBase@@XZ in 0095cca0.obj
+## new set (60 objects): 0062ebc0_D/w22 0062f3b0_D/w22 008c04e0_D/w22 008c0520_D/w22 008c0b70_D/w22 008c0c00_D/w22 008c0ea0_D/w22 008c11f0_D/w22 008c2490_D/w22 008c3f90_D/w22 008c4020_D/w22 008c42b0_D/w22 008c4330_D/w22 008c43b0_D/w22 008c4430_D/w22 008c7600_D/w22 008c7f00_D/w22 008c7f40_D/w22 008c8180_D/w22 008c8c30_D/w22 00956460_D/w22 00956760_D/w22 009567f0_D/w22 00956900_D/w22 00956920_D/w22 0095ca00_D/w22 0095cb80_D/w22 0095cc40_D/w22 0095cc80_D/w22 009619c0_D/w22 00961a50_D/w22 00962990_D/w22 00962a10_D/w22 0096c6e0_D/w22 0096c760_D/w22 00976e80_D/w22 00976f30_D/w22 009771f0_D/w22 00977320_D/w22 009773c0_D/w22 009773e0_D/w22 009774a0_D/w22 009774e0_D/w22 0097c760_D/w22 0097c830_D/w22 0097c9c0_D/w22 0097c9e0_D/w22 00956990/work 009569e0/work 0095cca0/work 0095cd00/work 00961a70/work 00962a60/work 0096c780/work 00977500/work 00977530/work 00977630/work 009776e0/work 0097ca20/work 0097ca50/work
+duplicates 3
+  DUP 8180.obj : warning LNK4006: "public: bool __thiscall CDefClassBase::GetSubDef(class CDefPointer<class CSpecialEffectsDef> *)" (?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z) already defined in 008c0ea0.obj; second definition ignored
+  DUP c: __thiscall CCreatureAction_BanditKingLunge::CCreatureAction_BanditKingLunge(class CThingCreatureBase &,class CThing &)" (??0CCreatureAction_BanditKingLunge@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z) already defined in 009619c0.obj; second definition ignored
+  DUP IceTrollIcicleAssaultInto::CCreatureAction_IceTrollIcicleAssaultInto(class CThingCreatureBase &,class CThing &)" (??0CCreatureAction_IceTrollIcicleAssaultInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z) already defined in 00962990.obj; second definition ignored
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ?Clone@CCombatAction_WillEnflameInto@@EBEPAVCCreatureActionBase@@XZ in 009569e0.obj
+DEFINED ?Clone@CCombatAction_WillShieldInto@@EBEPAVCCreatureActionBase@@XZ in 00956990.obj
+DEFINED ?Clone@CCreatureAction_BanditKingLunge@@UBEPAVCCreatureActionBase@@XZ in 00961a70.obj
+DEFINED ?Clone@CCreatureAction_IceTrollIcicleAssaultInto@@UBEPAVCCreatureActionBase@@XZ in 00962a60.obj
+DEFINED ?Clone@CCreatureAction_JackDeathInto@@UBEPAVCCreatureActionBase@@XZ in 00977630.obj
+DEFINED ?Clone@CCreatureAction_JackFall@@UBEPAVCCreatureActionBase@@XZ in 009776e0.obj
+DEFINED ?Clone@CCreatureAction_JackFlash@@UBEPAVCCreatureActionBase@@XZ in 00977500.obj
+DEFINED ?Clone@CCreatureAction_JackShotFloat@@UBEPAVCCreatureActionBase@@XZ in 00977530.obj
+DEFINED ?Clone@CCreatureAction_QueenHornetShootBabies@@UBEPAVCCreatureActionBase@@XZ in 0095cd00.obj
+DEFINED ?Clone@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@UBEPAVCCreatureActionBase@@XZ in 0097ca20.obj
+DEFINED ?Clone@CCreatureAction_ScorpionUnblockableRightTurnAttack@@UBEPAVCCreatureActionBase@@XZ in 0097ca50.obj
+DEFINED ?Clone@CCreatureAction_ThunderLightningStorm@@UBEPAVCCreatureActionBase@@XZ in 0096c780.obj
+DEFINED ?Clone@CCreatureAction_WaspQueenPrimaryAttack@@UBEPAVCCreatureActionBase@@XZ in 0095cca0.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?Clone@CCombatAction_WillEnflameInto@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCombatAction_WillShieldInto@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_BanditKingLunge@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_IceTrollIcicleAssaultInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_JackDeathInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_JackFall@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_JackFlash@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_JackShotFloat@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_QueenHornetShootBabies@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScorpionUnblockableLeftTurnAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ScorpionUnblockableRightTurnAttack@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_ThunderLightningStorm@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_WaspQueenPrimaryAttack@@QAEPAVCCombatActionBase@@XZ
+GONE_UNRESOLVED ??0CBase_0062f3b0@@QAE@ABU0@@Z 
+LK_DONE

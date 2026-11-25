@@ -20,6 +20,27 @@ public:
 };
 FABLE_STATIC_ASSERT_AT(33, sizeof(CCreatureAction_NymphShot) == 0x114);
 #else
+#ifdef FABLE_RETAIL_CCREATUREACTION_NYMPHSHOT_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012824B4 (RTTI .?AVCCreatureAction_NymphShot@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_NymphShot); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_NymphShot : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008CAB10 ?Clone@CCreatureAction_NymphShot@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsStrikeAction() const;                                  // slot 15 0x008CA900 ?IsStrikeAction@CCreatureAction_NymphShot@@UBE_NXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x008CA8E0 ?IsToFaceTarget@CCreatureAction_NymphShot@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x008CA8F0 ?GetIsToFaceTargetCone@CCreatureAction_NymphShot@@UBEMXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_NymphShot) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_NymphShot {
 public:
@@ -40,6 +61,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_NymphShot) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_NymphShot, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_NYMPHSHOT_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_NYMPH_ATTACK_PASS27
 

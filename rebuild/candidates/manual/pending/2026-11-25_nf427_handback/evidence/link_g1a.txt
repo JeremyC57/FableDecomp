@@ -1,0 +1,156 @@
+## HEAD set (50 objects): 006f55a0/work 006f55b0/work 006f55f0/work 006f5600/work 006f5630/work 006f5640/work 006f5670/work 006f5680/work 006f5850/work 006f58a0/work 006f58e0/work 006f5940/work 006f5970/work 006f59e0/work 006f5a10/work 006f5aa0/work 006f5ae0/work 006f5b80/work 006f5bb0/work 006f5bc0/work 006f5bd0/work 006f5c00/work 0074dc20/work 008550a0/work 008550b0/work 00868310/work 00868320/work 00880020/work 00880030/work 008b86f0/work 008bdaf0/work 008bff00/work 008bff40/work 008bff50/work 008bff60/work 008bff70/work 008bff80/work 008bffa0/work 008c3a30/work 008c3a40/work 008c5ba0/work 008c5bb0/work 008c5c40/work 008c5c50/work 008c7cc0/work 008c7cd0/work 008c9d60/work 008ca8d0/work 008ca8e0/work 008ca900/work
+duplicates 0
+DEFINED ?CCombatAction_GenericStrikeResponseKnockdown_IsToAlignWithGroundNormal@@YI_NXZ in 00868310.obj
+DEFINED ?CCombatAction_GenericStrikeResponseKnockdown_IsToUseRotationInAnimation@@YI_NXZ in 00868320.obj
+DEFINED ?CCombatAction_KickThingOnGround_IsToHitProneThings@@YI_NXZ in 00880030.obj
+DEFINED ?CCombatAction_KickThingOnGround_IsToPerformActionOnStrike@@YI_NXZ in 00880020.obj
+DEFINED ?CCreatureAction_BodgeSideStrike_IsToFaceTargetAtStart@@YI_NXZ in 008bffa0.obj
+DEFINED ?CCreatureAction_BriarRoseShotFarOutof_IsToFaceTarget@@YI_NXZ in 008c3a30.obj
+DEFINED ?CCreatureAction_BriarRoseShotFarOutof_IsToFaceTargetAtStart@@YI_NXZ in 008c3a40.obj
+DEFINED ?CCreatureAction_Charge_IsToFaceTargetAtStart@@YI_NXZ in 008b86f0.obj
+DEFINED ?CCreatureAction_CombatBoast_IsToFaceTargetAtStart@@YI_NXZ in 006f5970.obj
+DEFINED ?CCreatureAction_CombatIdle_IsToFaceTargetAtStart@@YI_NXZ in 006f5940.obj
+DEFINED ?CCreatureAction_DiagonalStrafeBL_IsToFaceTarget@@YI_NXZ in 008bff50.obj
+DEFINED ?CCreatureAction_DiagonalStrafeBR_IsToFaceTarget@@YI_NXZ in 008bff60.obj
+DEFINED ?CCreatureAction_FinishFireballSpell_IsToFaceTargetAtStart@@YI_NXZ in 008bdaf0.obj
+DEFINED ?CCreatureAction_GenericAimProjectileWeapon_IsToFaceTarget@@YI_NXZ in 006f5aa0.obj
+DEFINED ?CCreatureAction_GenericFireProjectileWeapon_IsToFaceTarget@@YI_NXZ in 006f5ae0.obj
+DEFINED ?CCreatureAction_GenericLoadProjectileWeapon_IsToFaceTargetAtStart@@YI_NXZ in 008bff00.obj
+DEFINED ?CCreatureAction_GenericStrafeLeft_IsToFaceTarget@@YI_NXZ in 006f59e0.obj
+DEFINED ?CCreatureAction_GenericStrafeRight_IsToFaceTarget@@YI_NXZ in 006f5a10.obj
+DEFINED ?CCreatureAction_HobbeLungeAttack_IsToFaceTargetAtStart@@YI_NXZ in 008c9d60.obj
+DEFINED ?CCreatureAction_InterruptableFarAttack_IsToFaceTargetAtStart@@YI_NXZ in 006f5850.obj
+DEFINED ?CCreatureAction_InterruptableMidAttack_IsToFaceTargetAtStart@@YI_NXZ in 006f58a0.obj
+DEFINED ?CCreatureAction_LeapBack_IsToFaceTarget@@YI_NXZ in 006f58e0.obj
+DEFINED ?CCreatureAction_NymphShot_IsStrikeAction@@YI_NXZ in 008ca900.obj
+DEFINED ?CCreatureAction_NymphShot_IsToFaceTarget@@YI_NXZ in 008ca8e0.obj
+DEFINED ?CCreatureAction_NymphSummonInto_IsToFaceTargetAtStart@@YI_NXZ in 008ca8d0.obj
+DEFINED ?CCreatureAction_OnGenerate_IsToFaceTargetAtStart@@YI_NXZ in 0074dc20.obj
+DEFINED ?CCreatureAction_ScorpionChargeInto_IsToFaceMovementDirection@@YI_NXZ in 008c5ba0.obj
+DEFINED ?CCreatureAction_ScorpionChargeInto_IsToRetainSafeDistance@@YI_NXZ in 008c5bb0.obj
+DEFINED ?CCreatureAction_ScreamerAdvance_GetAnimationTransitionInTime@@YIHXZ in 006f5640.obj
+DEFINED ?CCreatureAction_ScreamerAdvance_IsToFaceTarget@@YI_NXZ in 006f5630.obj
+DEFINED ?CCreatureAction_ScreamerBackOff_GetAnimationTransitionInTime@@YIHXZ in 006f5680.obj
+DEFINED ?CCreatureAction_ScreamerBackOff_IsToFaceTarget@@YI_NXZ in 006f5670.obj
+DEFINED ?CCreatureAction_ScreamerDrainOutOf_IsToFaceTarget@@YI_NXZ in 006f55b0.obj
+DEFINED ?CCreatureAction_ScreamerDrainOutOf_IsToFaceTargetAtStart@@YI_NXZ in 006f55a0.obj
+DEFINED ?CCreatureAction_ScreamerIdle_GetAnimationTransitionInTime@@YIHXZ in 006f5600.obj
+DEFINED ?CCreatureAction_ScreamerIdle_IsToFaceTarget@@YI_NXZ in 006f55f0.obj
+DEFINED ?CCreatureAction_SpiritHitResponse_IsOverrideableByActionOfSamePriority@@YI_NXZ in 008550a0.obj
+DEFINED ?CCreatureAction_SpiritHitResponse_PerformAction@@YIXXZ in 008550b0.obj
+DEFINED ?CCreatureAction_StrafeBackward_IsToFaceTarget@@YI_NXZ in 008bff80.obj
+DEFINED ?CCreatureAction_StrafeForward_IsToFaceTarget@@YI_NXZ in 008bff70.obj
+DEFINED ?CCreatureAction_SummonerDie_IsToEvadeAllHits@@YI_NXZ in 006f5c00.obj
+DEFINED ?CCreatureAction_SummonerFlameSlice_IsToFaceTargetAtStart@@YI_NXZ in 006f5b80.obj
+DEFINED ?CCreatureAction_SummonerStrike_IsKnockdownStrike@@YI_NXZ in 006f5bb0.obj
+DEFINED ?CCreatureAction_SummonerStrike_IsPartOfComboChain@@YI_NXZ in 006f5bc0.obj
+DEFINED ?CCreatureAction_SummonerStrike_IsToFaceTargetAtStart@@YI_NXZ in 006f5bd0.obj
+DEFINED ?CCreatureAction_TrollThrowProjectile_HasFrameUpdate@@YI_NXZ in 008c7cc0.obj
+DEFINED ?CCreatureAction_TrollThrowProjectile_IsToFaceTarget@@YI_NXZ in 008c7cd0.obj
+DEFINED ?CCreatureAction_UnblockableMidAttack_IsToFaceMovementDirection@@YI_NXZ in 008bff40.obj
+DEFINED ?CCreatureAction_WaspQueenDiveAttack_IsToFaceTargetAtStart@@YI_NXZ in 008c5c40.obj
+DEFINED ?CCreatureAction_WaspQueenDiveAttack_IsToRetainSafeDistance@@YI_NXZ in 008c5c50.obj
+## new set (50 objects): 006f55a0/work 006f55b0/work 006f55f0/work 006f5600/work 006f5630/work 006f5640/work 006f5670/work 006f5680/work 006f5850/work 006f58a0/work 006f58e0/work 006f5940/work 006f5970/work 006f59e0/work 006f5a10/work 006f5aa0/work 006f5ae0/work 006f5b80/work 006f5bb0/work 006f5bc0/work 006f5bd0/work 006f5c00/work 0074dc20/work 008550a0/work 008550b0/work 00868310/work 00868320/work 00880020/work 00880030/work 008b86f0/work 008bdaf0/work 008bff00/work 008bff40/work 008bff50/work 008bff60/work 008bff70/work 008bff80/work 008bffa0/work 008c3a30/work 008c3a40/work 008c5ba0/work 008c5bb0/work 008c5c40/work 008c5c50/work 008c7cc0/work 008c7cd0/work 008c9d60/work 008ca8d0/work 008ca8e0/work 008ca900/work
+duplicates 0
+DEFINED ?GetAnimationTransitionInTime@CCreatureAction_ScreamerAdvance@@UBEJXZ in 006f5640.obj
+DEFINED ?GetAnimationTransitionInTime@CCreatureAction_ScreamerBackOff@@UBEJXZ in 006f5680.obj
+DEFINED ?GetAnimationTransitionInTime@CCreatureAction_ScreamerIdle@@UBEJXZ in 006f5600.obj
+DEFINED ?HasFrameUpdate@CCreatureAction_TrollThrowProjectile@@UBE_NXZ in 008c7cc0.obj
+DEFINED ?IsKnockdownStrike@CCreatureAction_SummonerStrike@@UBE_NXZ in 006f5bb0.obj
+DEFINED ?IsOverrideableByActionOfSamePriority@CCreatureAction_SpiritHitResponse@@UBE_NXZ in 008550a0.obj
+DEFINED ?IsPartOfComboChain@CCreatureAction_SummonerStrike@@UBE_NXZ in 006f5bc0.obj
+DEFINED ?IsStrikeAction@CCreatureAction_NymphShot@@UBE_NXZ in 008ca900.obj
+DEFINED ?IsToAlignWithGroundNormal@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ in 00868310.obj
+DEFINED ?IsToEvadeAllHits@CCreatureAction_SummonerDie@@UBE_NXZ in 006f5c00.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_ScorpionChargeInto@@UBE_NXZ in 008c5ba0.obj
+DEFINED ?IsToFaceMovementDirection@CCreatureAction_UnblockableMidAttack@@UBE_NXZ in 008bff40.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_BriarRoseShotFarOutof@@UBE_NXZ in 008c3a30.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_DiagonalStrafeBL@@UBE_NXZ in 008bff50.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_DiagonalStrafeBR@@UBE_NXZ in 008bff60.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_GenericAimProjectileWeapon@@UBE_NXZ in 006f5aa0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_GenericFireProjectileWeapon@@UBE_NXZ in 006f5ae0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_GenericStrafeLeft@@UBE_NXZ in 006f59e0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_GenericStrafeRight@@UBE_NXZ in 006f5a10.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_LeapBack@@UBE_NXZ in 006f58e0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_NymphShot@@UBE_NXZ in 008ca8e0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_ScreamerAdvance@@UBE_NXZ in 006f5630.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_ScreamerBackOff@@UBE_NXZ in 006f5670.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_ScreamerDrainOutOf@@UBE_NXZ in 006f55b0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_ScreamerIdle@@UBE_NXZ in 006f55f0.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_StrafeBackward@@UBE_NXZ in 008bff80.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_StrafeForward@@UBE_NXZ in 008bff70.obj
+DEFINED ?IsToFaceTarget@CCreatureAction_TrollThrowProjectile@@UBE_NXZ in 008c7cd0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_BodgeSideStrike@@UBE_NXZ in 008bffa0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_BriarRoseShotFarOutof@@UBE_NXZ in 008c3a40.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_Charge@@UBE_NXZ in 008b86f0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_CombatBoast@@UBE_NXZ in 006f5970.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_CombatIdle@@UBE_NXZ in 006f5940.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_FinishFireballSpell@@UBE_NXZ in 008bdaf0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_GenericLoadProjectileWeapon@@UBE_NXZ in 008bff00.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_HobbeLungeAttack@@UBE_NXZ in 008c9d60.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_InterruptableFarAttack@@UBE_NXZ in 006f5850.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_InterruptableMidAttack@@UBE_NXZ in 006f58a0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_NymphSummonInto@@UBE_NXZ in 008ca8d0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_OnGenerate@@UBE_NXZ in 0074dc20.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_ScreamerDrainOutOf@@UBE_NXZ in 006f55a0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_SummonerFlameSlice@@UBE_NXZ in 006f5b80.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_SummonerStrike@@UBE_NXZ in 006f5bd0.obj
+DEFINED ?IsToFaceTargetAtStart@CCreatureAction_WaspQueenDiveAttack@@UBE_NXZ in 008c5c40.obj
+DEFINED ?IsToHitProneThings@CCombatAction_KickThingOnGround@@UBE_NXZ in 00880030.obj
+DEFINED ?IsToPerformActionOnStrike@CCombatAction_KickThingOnGround@@UBE_NXZ in 00880020.obj
+DEFINED ?IsToRetainSafeDistance@CCreatureAction_ScorpionChargeInto@@UBE_NXZ in 008c5bb0.obj
+DEFINED ?IsToRetainSafeDistance@CCreatureAction_WaspQueenDiveAttack@@UBE_NXZ in 008c5c50.obj
+DEFINED ?IsToUseRotationInAnimation@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ in 00868320.obj
+DEFINED ?PerformAction@CCreatureAction_SpiritHitResponse@@UAEXXZ in 008550b0.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?CCombatAction_GenericStrikeResponseKnockdown_IsToAlignWithGroundNormal@@YI_NXZ
+RESOLVED_TO_GONE ?CCombatAction_GenericStrikeResponseKnockdown_IsToUseRotationInAnimation@@YI_NXZ
+RESOLVED_TO_GONE ?CCombatAction_KickThingOnGround_IsToHitProneThings@@YI_NXZ
+RESOLVED_TO_GONE ?CCombatAction_KickThingOnGround_IsToPerformActionOnStrike@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BodgeSideStrike_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BriarRoseShotFarOutof_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_BriarRoseShotFarOutof_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_Charge_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_CombatBoast_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_CombatIdle_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_DiagonalStrafeBL_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_DiagonalStrafeBR_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_FinishFireballSpell_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_GenericAimProjectileWeapon_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_GenericFireProjectileWeapon_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_GenericLoadProjectileWeapon_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_GenericStrafeLeft_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_GenericStrafeRight_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_HobbeLungeAttack_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_InterruptableFarAttack_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_InterruptableMidAttack_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_LeapBack_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_NymphShot_IsStrikeAction@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_NymphShot_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_NymphSummonInto_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_OnGenerate_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScorpionChargeInto_IsToFaceMovementDirection@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScorpionChargeInto_IsToRetainSafeDistance@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerAdvance_GetAnimationTransitionInTime@@YIHXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerAdvance_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerBackOff_GetAnimationTransitionInTime@@YIHXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerBackOff_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerDrainOutOf_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerDrainOutOf_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerIdle_GetAnimationTransitionInTime@@YIHXZ
+RESOLVED_TO_GONE ?CCreatureAction_ScreamerIdle_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SpiritHitResponse_IsOverrideableByActionOfSamePriority@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SpiritHitResponse_PerformAction@@YIXXZ
+RESOLVED_TO_GONE ?CCreatureAction_StrafeBackward_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_StrafeForward_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerDie_IsToEvadeAllHits@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerFlameSlice_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerStrike_IsKnockdownStrike@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerStrike_IsPartOfComboChain@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_SummonerStrike_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_TrollThrowProjectile_HasFrameUpdate@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_TrollThrowProjectile_IsToFaceTarget@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_UnblockableMidAttack_IsToFaceMovementDirection@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_WaspQueenDiveAttack_IsToFaceTargetAtStart@@YI_NXZ
+RESOLVED_TO_GONE ?CCreatureAction_WaspQueenDiveAttack_IsToRetainSafeDistance@@YI_NXZ
+LK_DONE

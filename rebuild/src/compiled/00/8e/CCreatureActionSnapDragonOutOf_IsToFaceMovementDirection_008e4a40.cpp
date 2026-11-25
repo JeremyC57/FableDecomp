@@ -1,4 +1,16 @@
-// Leaf: @CCreatureAction_SnapDragonOutOf_IsToFaceMovementDirection@4
-#include "rebuild_abi.h"
-extern "C" char FABLE_FASTCALL CCreatureAction_SnapDragonOutOf_IsToFaceMovementDirection(void* action){ return 0; }
-// Stand-in (owner rule 2026-11-05): CCreatureAction_SnapDragonOutOf_IsToFaceMovementDirection for CCreatureAction_SnapDragonOutOf::IsToFaceMovementDirection; RTTI vtable slot ?IsToFaceMovementDirection@CCreatureAction_SnapDragonOutOf@@UBE_NXZ + PDB name set (fablewin).
+// Leaf: ?IsToFaceMovementDirection@CCreatureAction_SnapDragonOutOf@@UBE_NXZ
+// CCreatureAction_SnapDragonOutOf::IsToFaceMovementDirection() const -- returns false.
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + FableWin name set; the landed stand-in
+//   @CCreatureAction_SnapDragonOutOf_IsToFaceMovementDirection@4 becomes the virtual member on engine/CCreatureAction_SnapDragonOutOf.h
+//   (FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONOUTOF_VIRTUAL_MODEL, Needs FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE,
+//   FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR). NF427 G1 (CONST shape).
+#define FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONOUTOF_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_SnapDragonOutOf.h"
+bool CCreatureAction_SnapDragonOutOf::IsToFaceMovementDirection() const
+{
+    return false;
+}

@@ -1,0 +1,31 @@
+## HEAD set (48 objects): 0062ebc0_D/w22 0062f3b0_D/w22 0074dac0_D/w22 0074dd20_D/w22 0074ddd0_D/w22 0074de30_D/w22 0074df80_D/w22 008b6990_D/w22 008b6a60_D/w22 008b6a90_D/w22 008b81e0_D/w22 008b8200_D/w22 008b8760_D/w22 008bc1a0_D/w22 008bd880_D/w22 008c04a0_D/w22 008c2810_D/w22 008c38b0_D/w22 008c3b50_D/w22 008c6b20_D/w22 008c7480_D/w22 008cb780_D/w22 008cc370_D/w22 008cc3f0_D/w22 008cc6a0_D/w22 008ec3f0_D/w22 008ec470_D/w22 008ec4f0_D/w22 008ec700_D/w22 008f2c70_D/w22 00929340_D/w22 0093b1d0_D/w22 0094dbc0_D/w22 0094e5f0_D/w22 0094e660_D/w22 0094e7b0_D/w22 00953300_D/w22 00953920_D/w22 0095b280_D/w22 009621f0_D/w22 009624d0_D/w22 0074df10/work 0074dfd0/work 008b8940/work 008c3c80/work 008cc500/work 0094e680/work 00953b30/work
+duplicates 0
+UNRESOLVED 2 ??0CBase_0062f3b0@@QAE@ABU0@@Z
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ?Clone@CCombatAction_WillForcePushInto@@QAEPAVCCombatActionBase@@XZ in 008c3c80.obj
+DEFINED ?Clone@CCreatureAction_DragonRoar@@QAEPAVCCombatActionBase@@XZ in 00953b30.obj
+DEFINED ?Clone@CCreatureAction_MidAttackSide@@QAEPAVCCombatActionBase@@XZ in 008b8940.obj
+DEFINED ?Clone@CCreatureAction_RiseUp@@QAEPAUCBase_0062f3b0@@XZ in 0074df10.obj
+DEFINED ?Clone@CCreatureAction_SheatheWeapons@@QAEPAUCBase_0062f3b0@@XZ in 008cc500.obj
+DEFINED ?Clone@CCreatureAction_TrollGroundPound@@QAEPAVCCombatActionBase@@XZ in 0094e680.obj
+DEFINED ?Clone@CCreatureAction_UndeadIdleUnderground@@QAEPAVCCombatActionBase@@XZ in 0074dfd0.obj
+## new set (48 objects): 0062ebc0_D/w22 0062f3b0_D/w22 0074dac0_D/w22 0074dd20_D/w22 0074ddd0_D/w22 0074de30_D/w22 0074df80_D/w22 008b6990_D/w22 008b6a60_D/w22 008b6a90_D/w22 008b81e0_D/w22 008b8200_D/w22 008b8760_D/w22 008bc1a0_D/w22 008bd880_D/w22 008c04a0_D/w22 008c2810_D/w22 008c38b0_D/w22 008c3b50_D/w22 008c6b20_D/w22 008c7480_D/w22 008cb780_D/w22 008cc370_D/w22 008cc3f0_D/w22 008cc6a0_D/w22 008ec3f0_D/w22 008ec470_D/w22 008ec4f0_D/w22 008ec700_D/w22 008f2c70_D/w22 00929340_D/w22 0093b1d0_D/w22 0094dbc0_D/w22 0094e5f0_D/w22 0094e660_D/w22 0094e7b0_D/w22 00953300_D/w22 00953920_D/w22 0095b280_D/w22 009621f0_D/w22 009624d0_D/w22 0074df10/work 0074dfd0/work 008b8940/work 008c3c80/work 008cc500/work 0094e680/work 00953b30/work
+duplicates 0
+DEFINED ??0CCombatActionBase@@QAE@ABV0@@Z in 0062f3b0.obj
+DEFINED ?Clone@CCombatAction_WillForcePushInto@@EBEPAVCCreatureActionBase@@XZ in 008c3c80.obj
+DEFINED ?Clone@CCreatureAction_DragonRoar@@UBEPAVCCreatureActionBase@@XZ in 00953b30.obj
+DEFINED ?Clone@CCreatureAction_MidAttackSide@@UBEPAVCCreatureActionBase@@XZ in 008b8940.obj
+DEFINED ?Clone@CCreatureAction_RiseUp@@UBEPAVCCreatureActionBase@@XZ in 0074df10.obj
+DEFINED ?Clone@CCreatureAction_SheatheWeapons@@UBEPAVCCreatureActionBase@@XZ in 008cc500.obj
+DEFINED ?Clone@CCreatureAction_TrollGroundPound@@UBEPAVCCreatureActionBase@@XZ in 0094e680.obj
+DEFINED ?Clone@CCreatureAction_UndeadIdleUnderground@@UBEPAVCCreatureActionBase@@XZ in 0074dfd0.obj
+## diff HEAD -> new
+RESOLVED_TO_GONE ?Clone@CCombatAction_WillForcePushInto@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_DragonRoar@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_MidAttackSide@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_RiseUp@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_SheatheWeapons@@QAEPAUCBase_0062f3b0@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_TrollGroundPound@@QAEPAVCCombatActionBase@@XZ
+RESOLVED_TO_GONE ?Clone@CCreatureAction_UndeadIdleUnderground@@QAEPAVCCombatActionBase@@XZ
+GONE_UNRESOLVED ??0CBase_0062f3b0@@QAE@ABU0@@Z 
+LK_DONE

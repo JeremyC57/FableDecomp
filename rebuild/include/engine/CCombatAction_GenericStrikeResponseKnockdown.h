@@ -68,6 +68,58 @@ FABLE_STATIC_ASSERT_AT(34, sizeof(CCombatAction_GenericStrikeResponseKnockdown)=
 
 class CCharStringData;
 
+#ifdef FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWN_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01277344 (RTTI .?AVCCombatAction_GenericStrikeResponseKnockdown@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCombatAction_GenericStrikeResponseKnockdown); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x00867B40 ?FinishAction@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x00868300 ?GetAnimationTransitionInTime@CCombatAction_GenericStrikeResponseKnockdown@@UBEJXZ
+private:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00868400 ?Clone@CCombatAction_GenericStrikeResponseKnockdown@@EBEPAVCCreatureActionBase@@XZ
+public:
+    virtual void Initialise();                                            // slot 12 0x008664F0 ?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x00865B10 ?IsToEvadeAllHits@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ
+    virtual bool IsToCauseRecoil() const;                                 // slot 46 0x00865E10 ?IsToCauseRecoil@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x00865B20 ?FrameUpdate@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ
+    virtual bool IsToUseRotationInAnimation() const;                      // slot 71 0x00868320 ?IsToUseRotationInAnimation@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ
+    virtual bool IsToAlignWithGroundNormal() const;                       // slot 72 0x00868310 ?IsToAlignWithGroundNormal@CCombatAction_GenericStrikeResponseKnockdown@@UBE_NXZ
+public:
+    CCharStringData* AnimName_PStringData;                   // +0x114 CCharString::PStringData
+    unsigned char    PThingThatHit[0x8];                     // +0x118 CIntelligentPointer<CThing_const_>
+    float            PointOfHit_X;                           // +0x120 C3DVector::X
+    float            PointOfHit_Y;                           // +0x124 C3DVector::Y
+    float            PointOfHit_Z;                           // +0x128 C3DVector::Z
+    bool             GotPointOfHit;                          // +0x12c
+    float            DirectionOfHit_X;                       // +0x12d C3DVector::X
+    float            DirectionOfHit_Y;                       // +0x131 C3DVector::Y
+    float            DirectionOfHit_Z;                       // +0x135 C3DVector::Z
+    bool             GotDirectionOfHit;                      // +0x139
+    bool             FlipFacing;                             // +0x13a
+    unsigned char    _pad_0x13b[0x1];                        // +0x13b
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCombatAction_GenericStrikeResponseKnockdown) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, AnimName_PStringData) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PThingThatHit) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_X) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Y) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, PointOfHit_Z) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotPointOfHit) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_X) == 0x12d);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Y) == 0x131);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x135);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x139);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x13a);
+FABLE_STATIC_ASSERT(offsetof(CCombatAction_GenericStrikeResponseKnockdown, _pad_0x13b) == 0x13b);
+#else
 #pragma pack(push, 1)
 class CCombatAction_GenericStrikeResponseKnockdown {
 public:
@@ -111,6 +163,7 @@ FABLE_STATIC_ASSERT_AT(86, offsetof(CCombatAction_GenericStrikeResponseKnockdown
 FABLE_STATIC_ASSERT_AT(87, offsetof(CCombatAction_GenericStrikeResponseKnockdown, DirectionOfHit_Z) == 0x135);
 FABLE_STATIC_ASSERT_AT(88, offsetof(CCombatAction_GenericStrikeResponseKnockdown, GotDirectionOfHit) == 0x139);
 FABLE_STATIC_ASSERT_AT(89, offsetof(CCombatAction_GenericStrikeResponseKnockdown, FlipFacing) == 0x13a);
+#endif // FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWN_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCOMBATACTIONGENERICSTRIKERESPONSEKNOCKDOWN
 #endif // FABLE_ENGINE_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWN_H

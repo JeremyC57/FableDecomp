@@ -20,6 +20,28 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerStrike) == 0x114);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0126435C (RTTI .?AVCCreatureAction_SummonerStrike@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_SummonerStrike); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_SummonerStrike : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x006F8A40 ?Clone@CCreatureAction_SummonerStrike@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008CAC80 ?Initialise@CCreatureAction_SummonerStrike@@UAEXXZ
+    virtual bool IsPartOfComboChain() const;                              // slot 16 0x006F5BC0 ?IsPartOfComboChain@CCreatureAction_SummonerStrike@@UBE_NXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x006F5BB0 ?IsKnockdownStrike@CCreatureAction_SummonerStrike@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x006F5BD0 ?IsToFaceTargetAtStart@CCreatureAction_SummonerStrike@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SummonerStrike) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SummonerStrike {
 public:
@@ -40,6 +62,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_SummonerStrike) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_SummonerStrike, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SUMMONERSTRIKE_PROTOTYPE
 #endif // FABLE_ENGINE_CCREATUREACTION_SUMMONERSTRIKE_H

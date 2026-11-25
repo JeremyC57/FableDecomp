@@ -1,4 +1,17 @@
-// Leaf: @CCreatureAction_ScorpionUnblockableRightTurnAttack_IsStrikeAction@4
-#include "rebuild_abi.h"
-extern "C" char FABLE_FASTCALL CCreatureAction_ScorpionUnblockableRightTurnAttack_IsStrikeAction(void* action){ return 1; }
-// Stand-in (owner rule 2026-11-05): CCreatureAction_ScorpionUnblockableRightTurnAttack_IsStrikeAction for CCreatureAction_ScorpionUnblockableRightTurnAttack::IsStrikeAction; RTTI vtable slot ?IsStrikeAction@CCreatureAction_ScorpionUnblockableRightTurnAttack@@UBE_NXZ + PDB name set (fablewin).
+// Leaf: ?IsStrikeAction@CCreatureAction_ScorpionUnblockableRightTurnAttack@@UBE_NXZ
+// CCreatureAction_ScorpionUnblockableRightTurnAttack::IsStrikeAction() const -- returns true.
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + FableWin name set; the landed stand-in
+//   @CCreatureAction_ScorpionUnblockableRightTurnAttack_IsStrikeAction@4 becomes the virtual member on
+//   engine/CCreatureAction_ScorpionUnblockableRightTurnAttack.h
+//   (FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLERIGHTTURNATTACK_VIRTUAL_MODEL, Needs FABLE_RETAIL_BASE_OBJECT,
+//   FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR). NF427 G1 (CONST shape).
+#define FABLE_RETAIL_CCREATUREACTION_SCORPIONUNBLOCKABLERIGHTTURNATTACK_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_ScorpionUnblockableRightTurnAttack.h"
+bool CCreatureAction_ScorpionUnblockableRightTurnAttack::IsStrikeAction() const
+{
+    return true;
+}

@@ -20,6 +20,27 @@ public:
 
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackFall) == 0x114);
 #else
+#ifdef FABLE_RETAIL_CCREATUREACTION_JACKFALL_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x012980A4 (RTTI .?AVCCreatureAction_JackFall@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_JackFall); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_JackFall : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C2490 ?FinishAction@CCreatureAction_JackFall@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x009776E0 ?Clone@CCreatureAction_JackFall@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C11F0 ?Initialise@CCreatureAction_JackFall@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x009773A0 ?IsToEvadeAllHits@CCreatureAction_JackFall@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_JackFall) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_JackFall {
 public:
@@ -40,6 +61,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_JackFall) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_JackFall, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_JACKFALL_VIRTUAL_MODEL
 
 #endif
 

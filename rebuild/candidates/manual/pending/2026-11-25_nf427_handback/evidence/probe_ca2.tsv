@@ -1,0 +1,30 @@
+CCreatureAction_ActivateQuest	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ActivateQuest@@UAEPAXI@Z
+CCreatureAction_AimMissileWeapon	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_AimMissileWeapon@@UAEPAXI@Z
+CCreatureAction_BanditKingThrowWeapons	OK	retail 71 emitted 71 SAME 71 DIFF 0 NOLABEL 0 
+CCreatureAction_BlowHorn	COMPILE_FAIL	e-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF427\hdr\engine\CCreatureAction_BlowHorn.h(79) : fatal error C1022: expected #endif
+CCreatureAction_Die	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_Die@@UAEPAXI@Z
+CCreatureAction_FireMissileWeapon	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_FireMissileWeapon@@UAEPAXI@Z
+CCreatureAction_GetInBed	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GetInBed@@UAEPAXI@Z
+CCreatureAction_GetOutOfBed	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GetOutOfBed@@UAEPAXI@Z
+CCreatureAction_HeroLoadRangedWeapon	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_HeroLoadRangedWeapon@@UAEPAXI@
+CCreatureAction_OpenChest	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_OpenChest@@UAEPAXI@Z
+CCreatureAction_PerformExpression	OK	retail 70 emitted 70 SAME 70 DIFF 0 NOLABEL 0 
+CCreatureAction_PerformExpressionExtended	OK	retail 70 emitted 70 SAME 70 DIFF 0 NOLABEL 0 
+CCreatureAction_PickCrop	COMPILE_FAIL	e-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF427\hdr\engine\CCreatureAction_PickCrop.h(77) : fatal error C1022: expected #endif
+CCreatureAction_PickUpGenericBox	OK	retail 70 emitted 70 SAME 70 DIFF 0 NOLABEL 0 
+CCreatureAction_PickupGameObject	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_PickupGameObject@@UAEPAXI@Z
+CCreatureAction_PlayAnimation	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_PlayAnimation@@UAEPAXI@Z
+CCreatureAction_PutGoodsDown	OK	retail 70 emitted 70 SAME 70 DIFF 0 NOLABEL 0 
+CCreatureAction_SitDown	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_SitDown@@UAEPAXI@Z
+CCreatureAction_SpiritAttack	OK	retail 70 emitted 70 SAME 70 DIFF 0 NOLABEL 0 
+CCreatureAction_SpiritHitResponse	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_SpiritHitResponse@@UAEPAXI@Z
+CCreatureAction_UseLamp	OK	retail 70 emitted 70 SAME 70 DIFF 0 NOLABEL 0 
+CCreatureAction_UseObject	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_UseObject@@UAEPAXI@Z
+CCreatureAction_UseWallMount	BAD	retail 70 emitted 70 SAME 69 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_UseWallMount@@UAEPAXI@Z
+CCreatureAction_PlayCombatAnimationWithLooking	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_PlayCombatAnimationWithLooking
+CCreatureAction_ScreamerAdvance	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ScreamerAdvance@@UAEPAXI@Z
+CCreatureAction_ScreamerBackOff	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_SummonerUnsheatheStrike	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_CastWillEnflameSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_CastWillEnflameSpell@@UAEPAXI@
+CCreatureAction_TeleportIn	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_ForcePushOutOf	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 

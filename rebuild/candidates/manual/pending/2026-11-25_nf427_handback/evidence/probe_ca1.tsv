@@ -1,0 +1,97 @@
+CCombatAction_GenericResponseToDecapitation	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCombatAction_GenericResponseToDecapitation@@U
+CCombatAction_GenericResponseToExplosion	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCombatAction_GenericStrikeResponseKnockdown	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCombatAction_GenericStrikeResponseKnockdownRe
+CCombatAction_KickThingOnGround	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCombatAction_KickThingOnGround@@UAEPAXI@Z
+CCombatAction_WillEnflameInto	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCombatAction_WillShieldInto	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_BalverineBreakOffFromCombat	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_BalverineBreakOffFromCombat@@U
+CCreatureAction_BalverineBreakOffFromCombatLong	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_BalverineLungeAttack	OK	retail 82 emitted 82 SAME 82 DIFF 0 NOLABEL 0 
+CCreatureAction_BanditKingLunge	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_BeingForcePushed	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_BodgeSideStrike	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_BodgeSideStrike@@UAEPAXI@Z
+CCreatureAction_BriarRoseConcentrateInto	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_BriarRoseConcentrateInto@@UAEP
+CCreatureAction_BriarRoseIntoInvulnerable	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_BriarRoseIntoInvulnerable@@UAE
+CCreatureAction_BriarRoseShotFarInto	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_BriarRoseShotFarInto@@UAEPAXI@
+CCreatureAction_BriarRoseShotFarOutof	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_BriarRoseShotFarOutof@@UAEPAXI
+CCreatureAction_CastAssassinRush	COMPILE_FAIL	94b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF427\work\probe\ca1\CCreatureAction_CastAssassinRush.cpp(7) : error C2143: syntax error : missing ',' before '&' | 5ec\scratchpad\w22\agentNF427\work\probe\ca1\CCreatureAction_CastAssassinRush.cpp(7) : error C2061: syntax error : identifier 'CCreatureAction_CastAssassinRush'
+CCreatureAction_CastBattleCharge	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_CastBattleCharge@@UAEPAXI@Z
+CCreatureAction_CastPhysicalShieldSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_CastPhysicalShieldSpell@@UAEPA
+CCreatureAction_CastStrengthBerserk	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_CastStrengthBerserk@@UAEPAXI@Z
+CCreatureAction_CastStrengthMultiStrike	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_CastWillEnflameSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_CastWillEnflameSpell@@UAEPAXI@
+CCreatureAction_CastWillLightningSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_CastWillLightningSpell@@UAEPAX
+CCreatureAction_Charge	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_CombatBoast	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_CombatIdle	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_DiagonalStrafeBL	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_DiagonalStrafeBL@@UAEPAXI@Z
+CCreatureAction_DiagonalStrafeBR	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_DragonBurninateInto	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_DragonBurninateInto@@UAEPAXI@Z
+CCreatureAction_DragonFireBlastBase	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_DragonFireBlastBase@@UAEPAXI@Z
+CCreatureAction_DragonHoverOutOf	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_DragonLand	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_DragonRearUpFull	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_DragonRearUpFull@@UAEPAXI@Z
+CCreatureAction_FinishFireballSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_FinishFireballSpell@@UAEPAXI@Z
+CCreatureAction_ForcePushOutOf	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_GenericAimProjectileWeapon	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GenericAimProjectileWeapon@@UA
+CCreatureAction_GenericFireProjectileWeapon	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GenericFireProjectileWeapon@@U
+CCreatureAction_GenericLeaderCommand	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GenericLeaderCommand@@UAEPAXI@
+CCreatureAction_GenericLoadProjectileWeapon	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_GenericStrafeLeft	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GenericStrafeLeft@@UAEPAXI@Z
+CCreatureAction_GenericStrafeRight	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_GoUnderground	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_GoUnderground@@UAEPAXI@Z
+CCreatureAction_HobbeLungeAttack	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_HobbeLungeAttack@@UAEPAXI@Z
+CCreatureAction_IceTrollIcicleAssaultInto	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_InterruptableFarAttack	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_InterruptableFarAttack@@UAEPAX
+CCreatureAction_InterruptableMidAttack	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_InterruptableMidAttack@@UAEPAX
+CCreatureAction_JackDeathInto	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_JackFall	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_JackFlash	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_JackFlash@@UAEPAXI@Z
+CCreatureAction_JackFloatUp	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_JackFloatUp@@UAEPAXI@Z
+CCreatureAction_JackScream	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_JackScream@@UAEPAXI@Z
+CCreatureAction_JackShotFar	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_JackShotFloat	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_JackShotFloat@@UAEPAXI@Z
+CCreatureAction_JackShotNear	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_LeapBack	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_LeapBack@@UAEPAXI@Z
+CCreatureAction_NymphIdleAfterShot	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_NymphIdleAfterShot@@UAEPAXI@Z
+CCreatureAction_NymphShot	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_NymphShot@@UAEPAXI@Z
+CCreatureAction_NymphSummonInto	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_OnGenerate	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_OnGenerate@@UAEPAXI@Z
+CCreatureAction_PlayCombatAnimation	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_PlayCombatAnimation@@UAEPAXI@Z
+CCreatureAction_ProjectileCrouch	COMPILE_FAIL	94b-5111-9a88-ca0c32f095ec\scratchpad\w22\agentNF427\work\probe\ca1\CCreatureAction_ProjectileCrouch.cpp(7) : error C2143: syntax error : missing ',' before '&' | 5ec\scratchpad\w22\agentNF427\work\probe\ca1\CCreatureAction_ProjectileCrouch.cpp(7) : error C2061: syntax error : identifier 'CCreatureAction_ProjectileCrouch'
+CCreatureAction_QueenHornetShootBabies	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_QueenHornetShootBabies@@UAEPAX
+CCreatureAction_ReleasePhysicalShieldSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ReleasePhysicalShieldSpell@@UA
+CCreatureAction_ReleaseStrengthBerserk	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_ReleaseTimeSpell	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ReleaseTimeSpell@@UAEPAXI@Z
+CCreatureAction_ScorpionChargeInto	OK	retail 83 emitted 83 SAME 83 DIFF 0 NOLABEL 0 
+CCreatureAction_ScorpionKingDeath	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_ScorpionPrepareTailPlunge	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_ScorpionRecover	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ScorpionRecover@@UAEPAXI@Z
+CCreatureAction_ScorpionSummon	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ScorpionSummon@@UAEPAXI@Z
+CCreatureAction_ScorpionTailWithdraw	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_ScorpionUnblockableLeftTurnAttack	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ScorpionUnblockableLeftTurnAtt
+CCreatureAction_ScorpionUnblockableRightTurnAttack	OK	retail 82 emitted 82 SAME 82 DIFF 0 NOLABEL 0 
+CCreatureAction_ScreamerDrainOutOf	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_ScreamerDrainOutOf@@UAEPAXI@Z
+CCreatureAction_ScreamerIdle	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_SnapDragon	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_SnapDragon@@UAEPAXI@Z
+CCreatureAction_SnapDragonFast	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_SnapDragonFast@@UAEPAXI@Z
+CCreatureAction_StrafeBackward	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_StrafeBackward@@UAEPAXI@Z
+CCreatureAction_StrafeForward	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_SummonerDead	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_SummonerDead@@UAEPAXI@Z
+CCreatureAction_SummonerDie	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_SummonerFlameSlice	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_SummonerLightningOrbInto	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_SummonerStrike	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_TeleportIn	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_TeleportOut	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_TentacleStrikeGetHit	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_TentacleStrikeGetHit@@UAEPAXI@
+CCreatureAction_ThunderLightningStorm	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_TrollThrowProjectile	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_TrollThrowProjectile@@UAEPAXI@
+CCreatureAction_TrollWhackGroundBase	BAD	retail 83 emitted 83 SAME 82 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_TrollWhackGroundBase@@UAEPAXI@
+CCreatureAction_UnblockableMidAttack	OK	retail 82 emitted 82 SAME 82 DIFF 0 NOLABEL 0 
+CCreatureAction_UndeadReturnToEarth	OK	retail 81 emitted 81 SAME 81 DIFF 0 NOLABEL 0 
+CCreatureAction_UnsheatheWeapons	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_UnsheatheWeapons@@UAEPAXI@Z
+CCreatureAction_WalkInto	BAD	retail 81 emitted 81 SAME 80 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_WalkInto@@UAEPAXI@Z
+CCreatureAction_WaspQueenDiveAttack	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_WaspQueenDiveAttack@@UAEPAXI@Z
+CCreatureAction_WaspQueenPrimaryAttack	BAD	retail 82 emitted 82 SAME 81 DIFF 1 NOLABEL 0 0:??_ECCreatureAction_WaspQueenPrimaryAttack@@UAEPAX

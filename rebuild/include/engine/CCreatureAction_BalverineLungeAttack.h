@@ -28,6 +28,29 @@ FABLE_STATIC_ASSERT_AT(12, sizeof(CCreatureAction_BalverineLungeAttack) == 0x114
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BALVERINELUNGEATTACK_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01283A54 (RTTI .?AVCCreatureAction_BalverineLungeAttack@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BalverineLungeAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BalverineLungeAttack : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008CC8A0 ?FinishAction@CCreatureAction_BalverineLungeAttack@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008CD370 ?Clone@CCreatureAction_BalverineLungeAttack@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008CC8E0 ?Initialise@CCreatureAction_BalverineLungeAttack@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x008CD210 ?IsKnockdownStrike@CCreatureAction_BalverineLungeAttack@@UBE_NXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008CD220 ?IsToFaceTargetAtStart@CCreatureAction_BalverineLungeAttack@@UBE_NXZ
+    virtual bool IsToRetainSafeDistance() const;                          // slot 81 0x008CD230 ?IsToRetainSafeDistance@CCreatureAction_BalverineLungeAttack@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BalverineLungeAttack) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BalverineLungeAttack {
 public:
@@ -48,6 +71,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(30, sizeof(CCreatureAction_BalverineLungeAttack) == 0x114);
 FABLE_STATIC_ASSERT_AT(31, offsetof(CCreatureAction_BalverineLungeAttack, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_BALVERINELUNGEATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_BALVERINELUNGEATTACK_PROTOTYPE
 #endif // FABLE_ENGINE_CCREATUREACTION_BALVERINELUNGEATTACK_H

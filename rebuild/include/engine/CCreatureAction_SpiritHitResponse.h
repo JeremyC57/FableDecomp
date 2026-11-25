@@ -27,6 +27,31 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SpiritHitResponse)==0xb4);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SPIRITHITRESPONSE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01275B34 (RTTI .?AVCCreatureAction_SpiritHitResponse@@ : CCreatureActionBase), 70 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_SpiritHitResponse); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_CCREATUREACTIONBASE.
+#include "engine/CCreatureActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_SpiritHitResponse : public CCreatureActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008550B0 ?PerformAction@CCreatureAction_SpiritHitResponse@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00855190 ?Clone@CCreatureAction_SpiritHitResponse@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x00854810 ?Initialise@CCreatureAction_SpiritHitResponse@@UAEXXZ
+    virtual bool IsOverrideableByActionOfSamePriority() const;            // slot 24 0x008550A0 ?IsOverrideableByActionOfSamePriority@CCreatureAction_SpiritHitResponse@@UBE_NXZ
+public:
+    float         Acceleration_X;                            // +0xa8 C3DVector::X
+    float         Acceleration_Y;                            // +0xac C3DVector::Y
+    float         Acceleration_Z;                            // +0xb0 C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SpiritHitResponse) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration_X) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration_Y) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_SpiritHitResponse, Acceleration_Z) == 0xb0);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SpiritHitResponse {
 public:
@@ -75,6 +100,7 @@ FABLE_STATIC_ASSERT_AT(56, offsetof(CCreatureAction_SpiritHitResponse, __vftable
 FABLE_STATIC_ASSERT_AT(57, offsetof(CCreatureAction_SpiritHitResponse, Acceleration_X) == 0xa8);
 FABLE_STATIC_ASSERT_AT(58, offsetof(CCreatureAction_SpiritHitResponse, Acceleration_Y) == 0xac);
 FABLE_STATIC_ASSERT_AT(59, offsetof(CCreatureAction_SpiritHitResponse, Acceleration_Z) == 0xb0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SPIRITHITRESPONSE_VIRTUAL_MODEL
 
 #endif // FABLE_ENGINE_CCREATUREACTION_SPIRITHITRESPONSE_H
 

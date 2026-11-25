@@ -1,0 +1,897 @@
+address	disposition	status	class	member	retail_shape	reason
+0057a545	RESIDUE	split_fixable	CCreatureAction_PlayIntoLoopOutOfAnimation	?1	OTHER	destructor split (split_fixable): not generated this pass
+005cc091	RESIDUE	split_fixable	CCreatureAction_UnsheatheItemFromInventory	?1	OTHER	destructor split (split_fixable): not generated this pass
+00628f30	RESIDUE	standin	CCreatureAction_00628f30	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00628f50	RESIDUE	standin	CCreatureAction_00628f50	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00628f70	RESIDUE	standin	CCreatureAction_00628f70	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00628f90	RESIDUE	standin	CCreatureAction_00628f90	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00628fb0	RESIDUE	standin	CCreatureAction_00628fb0	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00629000	RESIDUE	standin	CCreatureAction_00629000	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00629060	RESIDUE	split_fixable	CCreatureAction_ActivateQuest	?1	OTHER	destructor split (split_fixable): not generated this pass
+006290e0	RESIDUE	split_fixable	CCreatureAction_UseObject	?1	OTHER	destructor split (split_fixable): not generated this pass
+0062d920	RESIDUE	rtti_identified	CCreatureAction_ThrowGameObject	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+0062eb20	NF425	rtti_identified	CCreatureAction_GiveItemToThing	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062eb50	RESIDUE	split_fixable	CCreatureAction_GiveItemToThing	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0062ebc0	RESIDUE	split_fixable	CCreatureActionBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0062ef30	NF425	rtti_identified	CCreatureAction_PlayerInteractionGreet	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062efb0	NF425	rtti_identified	CCreatureAction_PlayerInteractionInsult	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f030	NF425	rtti_identified	CCreatureAction_PlayerInteractionThreaten	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f0b0	NF425	rtti_identified	CCreatureAction_PlayerInteractionBribe	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f130	NF425	rtti_identified	CCreatureAction_PlayerInteractionFlirt	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f1b0	NF425	rtti_identified	CCreatureAction_TavernGameMasterInteraction	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f290	NF425	rtti_identified	CCreatureAction_ThrowGameObject	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f300	NF425	rtti_identified	CCreatureAction_Talk	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0062f3b0	RESIDUE	split_fixable	CCombatActionBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0062f710	NF425	rtti_identified	CCombatActionBase	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+00669280	RESIDUE	split_unknown	CCreatureActionBase	SetPreceedingPAnimEntry	OTHER	split_unknown SetPreceedingPAnimEntry: caller/self respell not generated this pass (retail shape OTHER)
+00669af0	RESIDUE	split_unknown	CCreatureActionList	erase	OTHER	split_unknown erase: caller/self respell not generated this pass (retail shape OTHER)
+0066a510	RESIDUE	split_fixable	CCombatAction_GenericStrikeResponseBase	?1	OTHER	destructor split (split_fixable): not generated this pass
+0066a5b0	RESIDUE	split_fixable	CCombatAction_GenericResponseToExplosion	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0066a670	RESIDUE	split_fixable	CCombatAction_GenericResponseToExplosion	?1	OTHER	destructor split (split_fixable): not generated this pass
+0066a690	RESIDUE	split_fixable	CCombatAction_GenericResponseToDrain	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0066a6d0	RESIDUE	rtti_identified	CCombatAction_GenericResponseToDrain	IsAbleToBeAttacked	RET_FALSE	virtual override, retail shape RET_FALSE (len 3): no shape generator this pass
+0066a780	ACCEPT	rtti_identified	CCombatAction_GenericResponseToDecapitation	Clone	OTHER	batch p2a
+0066a7b0	NF425	rtti_identified	CCombatAction_GenericResponseToExplosion	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0066a880	HOLD	rtti_identified	CCombatAction_GenericResponseToDrain	Clone	OTHER	gvl generator: no local class block
+00690df0	HOLD	rtti_identified	CCombatAction_GenericBreakOffDrain	IsAbleToBeAttacked	RET_FALSE	gc generator: no engine/CCombatAction_GenericBreakOffDrain.h
+00690e30	ACCEPT	rtti_identified	CCombatAction_GenericBreakOffDrain	Clone	OTHER	batch p2c
+006923a0	RESIDUE	rtti_identified	CCreatureActionBase_Methods	GetActionStartRunningTimeSeconds	OTHER	flatten_pilot: self ?GetActionStartRunningTimeSeconds@CCreat is not a flattened CCreatureActionBase_GetActionStartRunningTimeSeconds
+00692450	RESIDUE	split_unknown	CCombatActionBase	CCreatureActionBase_ReinitialiseActionID	OTHER	split_unknown CCreatureActionBase_ReinitialiseActionID: caller/self respell not generated this pass (retail shape OTHER)
+00692480	RESIDUE	rtti_identified	CCreatureActionBase_Methods	UpdateActionRunningTime	OTHER	flatten_pilot: self ?UpdateActionRunningTime@CCreatureAction is not a flattened CCreatureActionBase_UpdateActionRunningTime
+006925a0	RESIDUE	split_fixable	CCreatureActionBase	HasPerformedAction	GET_MEMBER	split_fixable HasPerformedAction: caller/self respell not generated this pass (retail shape GET_MEMBER)
+006925e0	RESIDUE	split_fixable	CCreatureActionBase	GetPercentageComplete	OTHER	split_fixable GetPercentageComplete: caller/self respell not generated this pass (retail shape OTHER)
+00692620	RESIDUE	split_fixable	CCreatureActionBase	GetActionID	GET_MEMBER	split_fixable GetActionID: caller/self respell not generated this pass (retail shape GET_MEMBER)
+006927d0	RESIDUE	rtti_identified	CCreatureActionBase	SetHitDirection	OTHER	flatten_pilot: params: __stdcall self has 3 stack parameters, the member 1
+006927e0	RESIDUE	rtti_identified	CCreatureActionBase	SetHitPosition	OTHER	flatten_pilot: params: __stdcall self has 3 stack parameters, the member 1
+006927f0	RESIDUE	split_fixable	CCreatureActionBase	OnBlowBlocked	EMPTY_RET4	split_fixable OnBlowBlocked: caller/self respell not generated this pass (retail shape EMPTY_RET4)
+00692870	RESIDUE	rtti_identified	CCreatureActionBase	GetAnimationIndex	GET_MEMBER	flatten_pilot: self ?GetAnimationIndex@CCreatureActionBase@@ is not a flattened CCreatureActionBase_GetAnimationIndex
+00692910	RESIDUE	split_fixable	CCreatureActionBase	PeekDefinitionManager	OTHER	split_fixable PeekDefinitionManager: caller/self respell not generated this pass (retail shape OTHER)
+00692940	RESIDUE	split_fixable	CCreatureActionBase	GetWorld	OTHER	split_fixable GetWorld: caller/self respell not generated this pass (retail shape OTHER)
+00692950	RESIDUE	split_fixable	CCreatureActionBase	PeekWorld	OTHER	split_fixable PeekWorld: caller/self respell not generated this pass (retail shape OTHER)
+00692960	RESIDUE	rtti_identified	CCreatureActionBase	GetTotalTimeSeconds	OTHER	virtual override, retail shape OTHER (len 32): no shape generator this pass
+00692990	RESIDUE	split_fixable	CCreatureActionBase	PeekThingSearchTools	OTHER	split_fixable PeekThingSearchTools: caller/self respell not generated this pass (retail shape OTHER)
+006929e0	RESIDUE	split_fixable	CCreatureActionBase	SetMoveToPos	OTHER	split_fixable SetMoveToPos: caller/self respell not generated this pass (retail shape OTHER)
+00692a50	RESIDUE	split_fixable	CCreatureActionBase	IsUsingActionMovement	OTHER	split_fixable IsUsingActionMovement: caller/self respell not generated this pass (retail shape OTHER)
+00692bc0	RESIDUE	split_fixable	CCreatureActionBase	GetFrameUpdateTime	OTHER	split_fixable GetFrameUpdateTime: caller/self respell not generated this pass (retail shape OTHER)
+00692c10	RESIDUE	split_fixable	CCreatureActionBase	GetWorldMap	OTHER	split_fixable GetWorldMap: caller/self respell not generated this pass (retail shape OTHER)
+00692c80	RESIDUE	rtti_identified	CCreatureActionBase	InitialiseActionMovement	OTHER	flatten_pilot: self ?InitialiseActionMovement@CCreatureActio is not a flattened CCreatureActionBase_InitialiseActionMovement
+00693030	RESIDUE	split_fixable	CCreatureActionBase	SetAnimation	OTHER	split_fixable SetAnimation: caller/self respell not generated this pass (retail shape OTHER)
+00693b30	RESIDUE	split_fixable	CCreatureActionBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00693dc0	RESIDUE	split_unknown	CCreatureActionBase	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00693ef0	RESIDUE	split_fixable	CCreatureActionBase	?1	OTHER	destructor split (split_fixable): not generated this pass
+00694430	RESIDUE	split_fixable	CCreatureActionBase	FinishAction	OTHER	split_fixable FinishAction: caller/self respell not generated this pass (retail shape OTHER)
+00694d10	RESIDUE	split_fixable	CCreatureActionBase	Initialise	OTHER	split_fixable Initialise: caller/self respell not generated this pass (retail shape OTHER)
+00697e20	RESIDUE	split_fixable	CCombatSequence_WillLightning	SetCameraMode	OTHER	split_fixable SetCameraMode: caller/self respell not generated this pass (retail shape OTHER)
+0069ef80	RESIDUE	split_fixable	CCreatureAction_SheatheItemToInventory	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0069f0f0	RESIDUE	split_fixable	CCreatureAction_UnsheatheItemFromInventory	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0069f1f0	RESIDUE	split_fixable	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0069f4f0	RESIDUE	rtti_identified	CCreatureAction_SheatheItemToInventory	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_SheatheIt is not a flattened CCreatureAction_SheatheItemToInventory_PerformAction
+0069f740	HOLD	rtti_identified	CCreatureAction_SheatheItemToInventory_ForEnflame	PerformAction	JMP	gj generator: target 0x0069f4f0 landed self ?PerformAction@CCreatureAction_SheatheItemToInventory@@QAEXXZ != its RTTI label ?PerformAction@CCreatureAction_SheatheItemToInventory@@UAEXXZ
+0069f7f0	HOLD	rtti_identified	CCreatureAction_SheatheItemToInventory_ForDivineWrath	PerformAction	JMP	gj generator: target 0x0069f4f0 landed self ?PerformAction@CCreatureAction_SheatheItemToInventory@@QAEXXZ != its RTTI label ?PerformAction@CCreatureAction_SheatheItemToInventory@@UAEXXZ
+0069f8a0	HOLD	rtti_identified	CCreatureAction_SheatheItemToInventory_ForUnholyPower	PerformAction	JMP	gj generator: target 0x0069f4f0 landed self ?PerformAction@CCreatureAction_SheatheItemToInventory@@QAEXXZ != its RTTI label ?PerformAction@CCreatureAction_SheatheItemToInventory@@UAEXXZ
+0069ffd0	RESIDUE	split_fixable	CCreatureAction_SheatheItemToInventory	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+006a0990	RESIDUE	rtti_identified	CCreatureAction_SheatheItemToInventory_ForUnholyPower	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+006a0c20	NF425	rtti_identified	CCreatureAction_SheatheItemToInventory	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+006a0c90	RESIDUE	rtti_identified	CCreatureAction_SheatheItemToInventory_ForEnflame	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006a0cc0	RESIDUE	rtti_identified	CCreatureAction_SheatheItemToInventory_ForDivineWrath	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006a0cf0	RESIDUE	rtti_identified	CCreatureAction_SheatheItemToInventory_ForUnholyPower	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006a0ef0	RESIDUE	rtti_identified	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006df730	RESIDUE	split_fixable	CCreatureAction_ShowTrophy	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+006dfb60	NF425	rtti_identified	CCreatureAction_ShowTrophy	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+006dfc20	NF425	rtti_identified	CCreatureAction_UnsheatheToShowToSheatheTrophy	Clone	OTHER	NF425 batch o3 (pending landing; not this pass)
+006dfcb0	RESIDUE	rtti_identified	CCreatureAction_ShowToSheatheTrophy	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006dfce0	RESIDUE	rtti_identified	CCreatureAction_SheatheTrophy	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f5550	HOLD	rtti_identified	CCreatureAction_ScreamerDrainAttack	IsToFaceTargetAtStart	RET_TRUE	gc generator: engine/CCreatureAction_ScreamerDrainAttack.h has no FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINATTACK_VIRTUAL_MODEL
+006f5560	HOLD	rtti_identified	CCreatureAction_ScreamerDrainAttack	IsToFaceTarget	RET_TRUE	gc generator: engine/CCreatureAction_ScreamerDrainAttack.h has no FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINATTACK_VIRTUAL_MODEL
+006f5570	HOLD	rtti_identified	CCreatureAction_ScreamerDrainAttack	GetAnimationTransitionInTime	RET_LONG	gc generator: engine/CCreatureAction_ScreamerDrainAttack.h has no FABLE_RETAIL_CCREATUREACTION_SCREAMERDRAINATTACK_VIRTUAL_MODEL
+006f55a0	ACCEPT	rtti_identified	CCreatureAction_ScreamerDrainOutOf	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f55b0	ACCEPT	rtti_identified	CCreatureAction_ScreamerDrainOutOf	IsToFaceTarget	RET_TRUE	batch g1a
+006f55f0	ACCEPT	rtti_identified	CCreatureAction_ScreamerIdle	IsToFaceTarget	RET_TRUE	batch g1a
+006f5600	ACCEPT	rtti_identified	CCreatureAction_ScreamerIdle	GetAnimationTransitionInTime	RET_LONG	batch g1a
+006f5630	ACCEPT	rtti_identified	CCreatureAction_ScreamerAdvance	IsToFaceTarget	RET_TRUE	batch g1a
+006f5640	ACCEPT	rtti_identified	CCreatureAction_ScreamerAdvance	GetAnimationTransitionInTime	RET_LONG	batch g1a
+006f5670	ACCEPT	rtti_identified	CCreatureAction_ScreamerBackOff	IsToFaceTarget	RET_TRUE	batch g1a
+006f5680	ACCEPT	rtti_identified	CCreatureAction_ScreamerBackOff	GetAnimationTransitionInTime	RET_LONG	batch g1a
+006f5700	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseBase	IsUsingAnimationMovement	OTHER	flatten_pilot: this: the body uses self typed `GS*` (another class)
+006f5720	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseBase	SetHitter	OTHER	flatten_pilot: self ?SetHitter@CCombatAction_GenericStrikeRe is not a flattened CCombatAction_GenericStrikeResponseBase_SetHitter
+006f5850	ACCEPT	rtti_identified	CCreatureAction_InterruptableFarAttack	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f58a0	ACCEPT	rtti_identified	CCreatureAction_InterruptableMidAttack	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f58e0	ACCEPT	rtti_identified	CCreatureAction_LeapBack	IsToFaceTarget	RET_TRUE	batch g1a
+006f58f0	ACCEPT	rtti_identified	CCreatureAction_LeapBack	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+006f5940	ACCEPT	rtti_identified	CCreatureAction_CombatIdle	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f5970	ACCEPT	rtti_identified	CCreatureAction_CombatBoast	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f59e0	ACCEPT	rtti_identified	CCreatureAction_GenericStrafeLeft	IsToFaceTarget	RET_TRUE	batch g1a
+006f5a10	ACCEPT	rtti_identified	CCreatureAction_GenericStrafeRight	IsToFaceTarget	RET_TRUE	batch g1a
+006f5aa0	ACCEPT	rtti_identified	CCreatureAction_GenericAimProjectileWeapon	IsToFaceTarget	RET_TRUE	batch g1a
+006f5ab0	ACCEPT	rtti_identified	CCreatureAction_GenericAimProjectileWeapon	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+006f5ae0	ACCEPT	rtti_identified	CCreatureAction_GenericFireProjectileWeapon	IsToFaceTarget	RET_TRUE	batch g1a
+006f5af0	ACCEPT	rtti_identified	CCreatureAction_GenericFireProjectileWeapon	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+006f5b80	ACCEPT	rtti_identified	CCreatureAction_SummonerFlameSlice	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f5bb0	ACCEPT	rtti_identified	CCreatureAction_SummonerStrike	IsKnockdownStrike	RET_TRUE	batch g1a
+006f5bc0	ACCEPT	rtti_identified	CCreatureAction_SummonerStrike	IsPartOfComboChain	RET_TRUE	batch g1a
+006f5bd0	ACCEPT	rtti_identified	CCreatureAction_SummonerStrike	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+006f5c00	ACCEPT	rtti_identified	CCreatureAction_SummonerDie	IsToEvadeAllHits	RET_TRUE	batch g1a
+006f8280	ACCEPT	rtti_identified	CCreatureAction_CastWillDrainLifeSpell	Clone	OTHER	batch p2c
+006f82d0	ACCEPT	rtti_identified	CCreatureAction_ScreamerDrainOutOf	Clone	OTHER	batch p2a
+006f8300	ACCEPT	rtti_identified	CCreatureAction_ScreamerIdle	Clone	OTHER	batch p2a
+006f8330	RESIDUE	rtti_identified	CCreatureAction_ScreamerAdvance	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f8360	RESIDUE	rtti_identified	CCreatureAction_ScreamerBackOff	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f8390	RESIDUE	rtti_identified	CCombatAction_StrikeResponseMazeDoForcePush	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f83c0	RESIDUE	split_fixable	CCombatAction_GenericStrikeResponseBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+006f84d0	ACCEPT	rtti_identified	CCreatureAction_ScorpionKingDeath	Clone	OTHER	batch p2a
+006f8500	RESIDUE	rtti_identified	CCombatAction_StrikeResponseScorpionKing	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f8530	NF425	rtti_identified	CCreatureAction_WaspQueenDeath	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+006f85b0	ACCEPT	rtti_identified	CCreatureAction_RockTrollFallToDeath	Clone	OTHER	batch p2c
+006f85e0	ACCEPT	rtti_identified	CCreatureAction_InterruptableFarAttack	Clone	OTHER	batch p2a
+006f8610	ACCEPT	rtti_identified	CCreatureAction_InterruptableNearAttack	Clone	OTHER	batch p2c
+006f8640	NF425	rtti_identified	CCreatureAction_InterruptableMidAttack	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+006f8680	NF425	rtti_identified	CCreatureAction_LeapBack	Clone	OTHER	NF425 batch h3 (pending landing; not this pass)
+006f86b0	ACCEPT	rtti_identified	CCreatureAction_MidAttackKnockdown	Clone	OTHER	batch p2c
+006f86e0	NF425	rtti_identified	CCreatureAction_CombatIdle	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+006f8710	ACCEPT	rtti_identified	CCreatureAction_CombatBoast	Clone	OTHER	batch p2a
+006f8740	ACCEPT	rtti_identified	CCreatureAction_TurnStrikeLeft	Clone	OTHER	batch p2c
+006f8770	ACCEPT	rtti_identified	CCreatureAction_TurnStrikeRight	Clone	OTHER	batch p2c
+006f87a0	ACCEPT	rtti_identified	CCreatureAction_GenericStrafeLeft	Clone	OTHER	batch p2a
+006f87d0	ACCEPT	rtti_identified	CCreatureAction_GenericStrafeRight	Clone	OTHER	batch p2a
+006f8800	ACCEPT	rtti_identified	CCreatureAction_BreakIntoMelee	Clone	OTHER	batch p2c
+006f8830	RESIDUE	rtti_identified	CCreatureAction_BanditKingGetHit	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f8860	RESIDUE	rtti_identified	CCreatureAction_HobbeSpellcasterAim	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f88e0	RESIDUE	rtti_identified	CCreatureAction_HobbeSpellcasterFire	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f8910	NF425	rtti_identified	CCreatureAction_NymphGetHit	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+006f8980	RESIDUE	rtti_identified	CCreatureAction_NymphGetHitDie	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+006f89c0	NF425	rtti_identified	CCreatureAction_SummonerFlameSlice	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+006f8a40	ACCEPT	rtti_identified	CCreatureAction_SummonerStrike	Clone	OTHER	batch p2a
+006f8a70	ACCEPT	rtti_identified	CCreatureAction_SummonerDie	Clone	OTHER	batch p2a
+00718650	RESIDUE	split_fixable	CCreatureAction_AimMissileWeapon	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00718710	RESIDUE	split_fixable	CCreatureAction_ReloadMissileWeapon	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00719360	RESIDUE	split_unknown	CCreatureActionQueue	push_back	OTHER	split_unknown push_back: caller/self respell not generated this pass (retail shape OTHER)
+00719c30	RESIDUE	split_fixable	CCreatureAction_SummonerLightningOrbInto	?1	OTHER	destructor split (split_fixable): not generated this pass
+00719d20	NF425	rtti_identified	CCreatureAction_AimMissileWeapon	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+00719da0	NF425	rtti_identified	CCreatureAction_ReloadMissileWeapon	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+00739a50	HOLD	rtti_identified	CCreatureAction_BlockBroken	IsToFaceTargetAtStart	RET_TRUE	gc generator: no engine/CCreatureAction_BlockBroken.h
+00739cc0	RESIDUE	rtti_identified	CCreatureAction_BlockBroken	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+00739d80	ACCEPT	rtti_identified	CCreatureAction_BlockBroken	Clone	OTHER	batch p2c
+0074dac0	RESIDUE	split_fixable	CCreatureAction_RiseUp	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0074db70	RESIDUE	rtti_identified	CCreatureAction_RiseUp	IsToFaceTargetAtStart	GET_MEMBER	flatten_pilot: self ?IsToFaceTargetAtStart@CCreatureAction_R is not a flattened CCreatureAction_RiseUp_IsToFaceTargetAtStart
+0074db90	HOLD	rtti_identified	CCreatureAction_RiseUp	IsOverrideableByActionOfSamePriority	RET_TRUE	gc generator: engine/CCreatureAction_RiseUp.h has no FABLE_RETAIL_CCREATUREACTION_RISEUP_VIRTUAL_MODEL
+0074dbb0	RESIDUE	split_fixable	CCreatureAction_OnGenerate	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0074dc20	ACCEPT	rtti_identified	CCreatureAction_OnGenerate	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+0074dcb0	HOLD	rtti_identified	CCreatureAction_UndeadRiseUp	PerformAction	EMPTY	gc generator: engine/CCreatureAction_UndeadRiseUp.h has no FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_VIRTUAL_MODEL
+0074dcc0	HOLD	rtti_identified	CCreatureAction_UndeadRiseUp	IsKnockdownStrike	RET_FALSE	gc generator: engine/CCreatureAction_UndeadRiseUp.h has no FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_VIRTUAL_MODEL
+0074dcd0	HOLD	rtti_identified	CCreatureAction_UndeadRiseUp	IsBlockable	RET_TRUE	gc generator: engine/CCreatureAction_UndeadRiseUp.h has no FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_VIRTUAL_MODEL
+0074dcf0	HOLD	rtti_identified	CCreatureAction_UndeadRiseUp	WaitForMeshToLoad	RET_TRUE	gc generator: engine/CCreatureAction_UndeadRiseUp.h has no FABLE_RETAIL_CCREATUREACTION_UNDEADRISEUP_VIRTUAL_MODEL
+0074dd70	HOLD	rtti_identified	CCreatureAction_UndeadIdleUnderground	GetAnimationTransitionInTime	RET_ZERO	gc generator: engine/CCreatureAction_UndeadIdleUnderground.h has no FABLE_RETAIL_CCREATUREACTION_UNDEADIDLEUNDERGROUND_VIRTUAL_MODEL
+0074df10	ACCEPT	rtti_identified	CCreatureAction_RiseUp	Clone	OTHER	batch p2d
+0074df50	ACCEPT	rtti_identified	CCreatureAction_OnGenerate	Clone	OTHER	batch p2a
+0074df80	RESIDUE	rtti_identified	CCreatureAction_UndeadRiseUp	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+0074dfd0	ACCEPT	rtti_identified	CCreatureAction_UndeadIdleUnderground	Clone	OTHER	batch p2d
+0078bd30	NF425	rtti_identified	CCreatureAction_HeroLoadRangedWeapon	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007df380	RESIDUE	split_fixable	CCreatureAction_UseWallMount	?1	OTHER	destructor split (split_fixable): not generated this pass
+007e7fa0	RESIDUE	standin	CCreatureAction_007e7fa0	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+007eaf00	RESIDUE	standin	CCreatureAction_007eaf00	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+007eb030	RESIDUE	split_fixable	CCreatureAction_PickupGameObject	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+007eb230	NF425	rtti_identified	CCreatureAction_PickupGameObject	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007eb3f0	NF425	rtti_identified	CCreatureAction_AddRealObjectToInventory	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007eb5d0	NF425	rtti_identified	CCreatureAction_PlayerInteractionViewQuests	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007eb990	RESIDUE	standin	CCreatureAction_007eb990	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+007ecfd0	RESIDUE	split_fixable	CCreatureAction_DropWeapon	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+007ed420	RESIDUE	split_unknown	CCreatureAction_007ed420	DestroyMembers	OTHER	split_unknown DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+007ed6d0	NF425	rtti_identified	CCreatureAction_GiveMoneyToThing	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007ed780	RESIDUE	split_fixable	CCreatureAction_ShowItemToThing	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+007ed9f0	NF425	rtti_identified	CCreatureAction_ShowItemToThing	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007edff0	RESIDUE	standin	CCreatureAction_007edff0	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+007ee130	NF425	rtti_identified	CCreatureAction_UseSwitch	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007ee7a0	RESIDUE	standin	CCreatureAction_007ee7a0	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+007ee7e0	RESIDUE	split_fixable	CCreatureAction_OpenChest	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+007eea50	NF425	rtti_identified	CCreatureAction_OpenChest	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+007f05f0	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseKnockdownRecover	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+007f0630	HOLD	rtti_identified	CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	IsPreventingQuickAccessItemUsage	RET_TRUE	gc generator: engine/CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath.h has no FABLE_RETAIL_CCOMBATACTION_GENERICSTRIKERESPONSEKNOCKDOWNRECOVERFROMDEATH_VIRTUAL_MODEL
+007f06d0	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00842140	ACCEPT	rtti_identified	CCreatureAction_UseWallMount	Initialise	JMP	batch g2a
+008421c0	RESIDUE	rtti_identified	CCreatureAction_GetOutOfBed	FinishAction	OTHER	flatten_pilot: unit: the row's own test calls CCreatureAction_GetOutOfBed_FinishAction
+008424f0	RESIDUE	split_fixable	CCreatureAction_PlayAnimation	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00842570	RESIDUE	split_fixable	CCreatureAction_PlayAnimation	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008425e0	RESIDUE	split_fixable	CCreatureAction_PlayAnimation	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00842a80	RESIDUE	split_fixable	CCreatureAction_StartFillingTankard	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00842af0	RESIDUE	split_fixable	CCreatureAction_StopFillingTankard	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00842bc0	RESIDUE	rtti_identified	CCreatureAction_OpenChest	OnFollowUpActionFailedToAdd	OTHER	flatten_pilot: self ?OnFollowUpActionFailedToAdd@CCreatureAc is not a flattened CCreatureAction_OpenChest_OnFollowUpActionFailedToAdd
+00842c00	RESIDUE	rtti_identified	CCreatureAction_PerformExpression_Methods	PreventSneaking	OTHER	flatten_pilot: self ?PreventSneaking@CCreatureAction_Perform is not a flattened CCreatureAction_PerformExpression_PreventSneaking
+00842c20	RESIDUE	rtti_identified	CCreatureAction_PerformExpression	IsToHaveEmptyHands	OTHER	flatten_pilot: this: the body uses action typed `S*` (another class)
+00842c30	RESIDUE	rtti_identified	CCreatureAction_PerformExpression	IsToReplaceItemIfRemoved	OTHER	flatten_pilot: this: the body uses action typed `S*` (another class)
+00842c40	RESIDUE	rtti_identified	CCreatureAction_PerformExpressionExtended	IsToReplaceItemIfRemoved	OTHER	flatten_pilot: this: the body uses action typed `S*` (another class)
+00842c50	RESIDUE	rtti_identified	CCreatureAction_PerformExpressionExtended_Methods	PreventSneaking	OTHER	flatten_pilot: self ?PreventSneaking@CCreatureAction_Perform is not a flattened CCreatureAction_PerformExpressionExtended_PreventSneaking
+00842ec0	RESIDUE	split_fixable	CCreatureAction_BlowHorn	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008430b0	RESIDUE	split_fixable	CCreatureAction_PerformExpression	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00843610	RESIDUE	split_fixable	CCreatureAction_UseWallMount	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00843a80	RESIDUE	split_fixable	CCreatureAction_PlayAnimation	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008440c0	RESIDUE	split_unknown	CCreatureAction_PickUpThingAtTable	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008448e0	RESIDUE	rtti_identified	CCreatureAction_OpenChest	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_OpenChest is not a flattened CCreatureAction_OpenChest_PerformAction
+00845900	RESIDUE	rtti_identified	CCreatureAction_PlayerInteractionGreet	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_PlayerInt is not a flattened CCreatureAction_PlayerInteractionGreet_PerformAction
+00845ce0	RESIDUE	split_fixable	CCreatureAction_DropWeapon	DropWeapon	OTHER	split_fixable DropWeapon: caller/self respell not generated this pass (retail shape OTHER)
+00847fb0	RESIDUE	rtti_identified	CCreatureAction_UseLamp	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_UseLamp@@ is not a flattened CCreatureAction_UseLamp_PerformAction
+00848730	RESIDUE	rtti_identified	CCreatureAction_PickUpGoods	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_PickUpGoo is not a flattened CCreatureAction_PickUpGoods_PerformAction
+00848db0	RESIDUE	rtti_identified	CCreatureAction_GetInBed	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_GetInBed@ is not a flattened CCreatureAction_GetInBed_PerformAction
+008492b0	RESIDUE	rtti_identified	CCreatureAction_DeclarePlayerACriminal	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_DeclarePl is not a flattened CCreatureAction_DeclarePlayerACriminal_PerformAction
+0084a350	RESIDUE	rtti_identified	CCreatureAction_PickUpJugToFill	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_PickUpJug is not a flattened CCreatureAction_PickUpJugToFill_PerformAction
+0084a4a0	RESIDUE	rtti_identified	CCreatureAction_PutDownJugFromFilling	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_PutDownJu is not a flattened CCreatureAction_PutDownJugFromFilling_PerformAction
+0084a860	RESIDUE	rtti_identified	CCreatureAction_PlayIntoLoopOutOfAnimation	IsUsingAnimationMovement	GET_MEMBER	flatten_pilot: self ?IsUsingAnimationMovement@CCreatureActio is not a flattened CCreatureAction_PlayIntoLoopOutOfAnimation_IsUsingAnimationMovement
+0084ac70	RESIDUE	rtti_identified	CCreatureAction_PlayAnimationWithLookTurning	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+0084b620	RESIDUE	rtti_conflict	CCreatureAction_PerformExpressionExtended	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+0084bd10	NF425	rtti_identified	CCreatureAction_PerformExpression	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084be00	NF425	rtti_identified	CCreatureAction_PerformExpressionExtended	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084bed0	NF425	rtti_identified	CCreatureAction_LearnExpression	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084bf70	NF425	rtti_identified	CCreatureAction_Drink	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c040	NF425	rtti_identified	CCreatureAction_UseLamp	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c0c0	NF425	rtti_identified	CCreatureAction_UseWallMount	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c140	NF425	rtti_identified	CCreatureAction_ShopkeeperGetOut	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c210	NF425	rtti_identified	CCreatureAction_ShopkeeperPutAway	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c290	NF425	rtti_identified	CCreatureAction_BlowHorn	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c310	NF425	rtti_identified	CCreatureAction_PlayAnimation	Clone	OTHER	NF425 batch o3 (pending landing; not this pass)
+0084c3b0	NF425	rtti_identified	CCreatureAction_PlayIntoLoopOutOfAnimation	Clone	OTHER	NF425 batch o3 (pending landing; not this pass)
+0084c4e0	RESIDUE	rtti_identified	CCreatureAction_PlayAnimationWithLookTurning	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+0084c510	NF425	rtti_identified	CCreatureAction_DowseFire	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c5c0	NF425	rtti_identified	CCreatureAction_FillBucket	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c640	NF425	rtti_identified	CCreatureAction_PickUpGenericBox	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c720	NF425	rtti_identified	CCreatureAction_ShowLove	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c800	NF425	rtti_identified	CCreatureAction_AlertAllNearbyToThing	Clone	OTHER	NF425 batch i1 (pending landing; not this pass)
+0084c850	NF425	rtti_identified	CCreatureAction_Hammer	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c8d0	NF425	rtti_identified	CCreatureAction_ActivateQuest	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c970	NF425	rtti_identified	CCreatureAction_PickUpThingAtTable	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084c9f0	NF425	rtti_identified	CCreatureAction_PutDownThingAtTable	Clone	OTHER	NF425 batch i1 (pending landing; not this pass)
+0084ca90	NF425	rtti_identified	CCreatureAction_PickUpJugToFill	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0084cb10	NF425	rtti_identified	CCreatureAction_PutDownJugFromFilling	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+008545f0	RESIDUE	rtti_identified	CCreatureAction_SpiritAttack_Methods	Initialise	OTHER	flatten_pilot: self ?Initialise@CCreatureAction_SpiritAttack is not a flattened CCreatureAction_SpiritAttack_Initialise
+00854610	RESIDUE	split_fixable	CCreatureAction_SpiritHitResponse	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008546a0	RESIDUE	rtti_identified	CCreatureAction_SpiritReturnToHero	Initialise	OTHER	flatten_pilot: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CCreatureAction_SpiritReturnToHero.h:25:1: error: 'fable_static_assert_25' declared as an array with a negative size
+008550a0	ACCEPT	rtti_identified	CCreatureAction_SpiritHitResponse	IsOverrideableByActionOfSamePriority	RET_TRUE	batch g1a
+008550b0	ACCEPT	rtti_identified	CCreatureAction_SpiritHitResponse	PerformAction	EMPTY	batch g1a
+00855190	NF425	rtti_identified	CCreatureAction_SpiritHitResponse	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+00855230	NF425	rtti_identified	CCreatureAction_SpiritAttack	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+00855af0	RESIDUE	split_fixable	CCreatureAction_BlockBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00855be0	RESIDUE	split_fixable	CCreatureAction_StartBlocking	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00855d50	RESIDUE	rtti_identified	CCreatureAction_BlockRespond_Methods	IsToFaceTargetAtStart	GET_MEMBER	flatten_pilot: self ?IsToFaceTargetAtStart@CCreatureAction_B is not a flattened CCreatureAction_BlockRespond_IsToFaceTargetAtStart
+00855df0	NF425	rtti_identified	CCreatureAction_BlockCounter	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00855e20	NF425	rtti_identified	CCreatureAction_StartBlocking	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00855e50	RESIDUE	rtti_identified	CCreatureAction_BlockRespond	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00856190	RESIDUE	rtti_identified	CCombatActionBase	IsActionReadyForInterruptionByMovement	OTHER	flatten_pilot: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CDefPointer.h:32:2: error: engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it
+008561c0	RESIDUE	split_unknown	CCombatActionBase	ResetStrikeState	OTHER	split_unknown ResetStrikeState: caller/self respell not generated this pass (retail shape OTHER)
+00856240	HOLD	rtti_identified	CCombatActionBase	InitialiseActionMovement	EMPTY	gc generator: engine/CCombatActionBase.h has no FABLE_RETAIL_CCOMBATACTIONBASE_VIRTUAL_MODEL
+008562d0	RESIDUE	rtti_identified	CCombatActionBase	IsBlockCounter	OTHER	flatten_pilot: self ?Run@T@@QAEXXZ is not a flattened CCombatActionBase_IsBlockCounter
+008562e0	HOLD	rtti_identified	CCombatActionBase	IsVitalStrike	RET_FALSE	gc generator: engine/CCombatActionBase.h has no FABLE_RETAIL_CCOMBATACTIONBASE_VIRTUAL_MODEL
+008562f0	HOLD	rtti_identified	CCombatActionBase	IsUsingAnimationMovement	RET_TRUE	gc generator: engine/CCombatActionBase.h has no FABLE_RETAIL_CCOMBATACTIONBASE_VIRTUAL_MODEL
+00856300	HOLD	rtti_identified	CCombatActionBase	IsMovementUsingPhysics	RET_TRUE	gc generator: engine/CCombatActionBase.h has no FABLE_RETAIL_CCOMBATACTIONBASE_VIRTUAL_MODEL
+008565b0	RESIDUE	rtti_identified	CCombatActionBase	GetAnimationIndex	GET_MEMBER	flatten_pilot: self ?GetAnimationIndex@CCombatActionBase@@QA is not a flattened CCombatActionBase_GetAnimationIndex
+008565d0	RESIDUE	rtti_identified	CCombatActionBase	IsKnockdownStrike	OTHER	flatten_pilot: self ?IsKnockdownStrike@CCombatActionBase@@QA is not a flattened CCombatActionBase_IsKnockdownStrike
+00856b10	RESIDUE	split_fixable	CCombatActionBase	GetCombatManager	OTHER	split_fixable GetCombatManager: caller/self respell not generated this pass (retail shape OTHER)
+008571a0	RESIDUE	rtti_identified	CCombatActionBase	GetAnimationTransitionInTime	OTHER	flatten_pilot: self ?GetAnimationTransitionInTime@CCombatAct is not a flattened CCombatActionBase_GetAnimationTransitionInTime
+008571c0	RESIDUE	split_fixable	CCombatActionBase	GetFrameUpdateTime	OTHER	split_fixable GetFrameUpdateTime: caller/self respell not generated this pass (retail shape OTHER)
+00857520	RESIDUE	split_fixable	CCombatActionBase	Initialise	OTHER	split_fixable Initialise: caller/self respell not generated this pass (retail shape OTHER)
+008579d0	RESIDUE	rtti_identified	CCombatActionBase	UpdateActionRunningTime	OTHER	flatten_pilot: self ?UpdateActionRunningTime@CCombatActionBa is not a flattened CCombatActionBase_UpdateActionRunningTime
+00857d10	RESIDUE	rtti_identified	CCombatActionBase	GetWeaponTrailUsedInStrikeAction	OTHER	flatten_pilot: self ?GetWeaponTrailUsedInStrikeAction@CComba is not a flattened CCombatActionBase_GetWeaponTrailUsedInStrikeAction
+00857dc0	RESIDUE	split_unknown	CCombatActionBase	RemoveAnimIndices	OTHER	split_unknown RemoveAnimIndices: caller/self respell not generated this pass (retail shape OTHER)
+00857e40	RESIDUE	split_fixable	CCombatActionBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00857f30	RESIDUE	split_fixable	CCombatActionBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00859a20	RESIDUE	split_fixable	CCombatActionBase	FinishAction	OTHER	split_fixable FinishAction: caller/self respell not generated this pass (retail shape OTHER)
+00859ef0	RESIDUE	split_fixable	CCombatActionBase	OnAnimationLoaded	OTHER	split_fixable OnAnimationLoaded: caller/self respell not generated this pass (retail shape OTHER)
+0085b720	RESIDUE	split_unknown	CCombatActionBase	?	OTHER	split_unknown ?: caller/self respell not generated this pass (retail shape OTHER)
+0085b890	ACCEPT	rtti_identified	CCreatureActionHero180RunningTurn	FinishAction	JMP	batch g2a
+0085b8a0	RESIDUE	rtti_identified	CCreatureActionHeroJump	IsPreventingNormalMovement	OTHER	flatten_pilot: self @CCreatureActionHeroJump_IsPreventingNor is not a flattened CCreatureActionHeroJump_IsPreventingNormalMovement
+0085baf0	RESIDUE	rtti_identified	CCreatureActionHeroJump	FinishAction	OTHER	flatten_pilot: self @CCreatureActionHeroJump_FinishAction@4 is not a flattened CCreatureActionHeroJump_FinishAction
+0085bb60	RESIDUE	split_fixable	CCreatureActionHeroJump	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0085bc80	ACCEPT	rtti_identified	CCreatureActionHeroJump	Clone	OTHER	batch p2c
+0085bcb0	NF425	rtti_identified	CCreatureActionHero180RunningTurn	Clone	OTHER	NF425 batch o1 (pending landing; not this pass)
+0085bd20	NF425	rtti_identified	CCreatureActionHeroRunningStop	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+0085c300	ACCEPT	rtti_identified	CCombatAction_ControlledStrafeJump	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+0085c330	NF425	rtti_identified	CCombatAction_ControlledStrafeJump	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+0085edf0	RESIDUE	standin	CCreatureAction_0085edf0	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00860060	RESIDUE	split_fixable	CCreatureAction_GetOutOfBed	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008601b0	HOLD	rtti_identified	CCreatureAction_GetUpFromSitting	IsPreventingNormalMovement	RET_TRUE	gc generator: engine/CCreatureAction_GetUpFromSitting.h has no FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_VIRTUAL_MODEL
+008601c0	HOLD	rtti_identified	CCreatureAction_GetUpFromSitting	IsPreventingLookTurning	RET_TRUE	gc generator: engine/CCreatureAction_GetUpFromSitting.h has no FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_VIRTUAL_MODEL
+008601d0	HOLD	rtti_identified	CCreatureAction_GetUpFromSitting	IsMovementUsingPhysics	RET_FALSE	gc generator: engine/CCreatureAction_GetUpFromSitting.h has no FABLE_RETAIL_CCREATUREACTION_GETUPFROMSITTING_VIRTUAL_MODEL
+00860210	NF425	rtti_identified	CCreatureAction_GetOutOfBed	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00860290	HOLD	rtti_identified	CCreatureAction_GetUpFromSitting	Clone	OTHER	Part 2: NF323 Q3 / NF327 unit with binders 0x0085FF10 / 0x00860150 (T3 held lines); not re-formed
+00865940	RESIDUE	split_fixable	CCreatureAction_BeStunned	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008659e0	HOLD	rtti_identified	CCreatureAction_BeStunned	GetAnimDelayTime	RET_ZERO	gc generator: no engine/CCreatureAction_BeStunned.h
+00865b20	ACCEPT	rtti_identified	CCombatAction_GenericStrikeResponseKnockdown	FrameUpdate	JMP	batch g2a
+00865b30	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	IsToEvadeAllHits	OTHER	flatten_pilot: self ?IsToEvadeAllHits@CCombatAction_GenericS is not a flattened CCombatAction_GenericStrikeResponseKnockdownRecoverBase_IsToEvadeAllHits
+00865b40	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	IsOverrideableByActionOfSamePriority	OTHER	flatten_pilot: precheck: new source fails clang where HEAD passes: /home/user/FableDecomp/rebuild/include/engine/CCombatActionBase.h:448:1: error: 'fable_static_assert_245' declared as an array with a negative size
+00865e20	RESIDUE	rtti_conflict	CCreatureAction_Die	FinishAction	OTHER	rtti_conflict: the RTTI placement names another class's member (one unit with its class; identity research)
+00865e70	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseBase	IsOverrideableByActionOfSamePriority	OTHER	flatten_pilot: self ?IsOverrideableByActionOfSamePriority@CC is not a flattened CCombatAction_GenericStrikeResponseBase_IsOverrideableByActionOfSamePriority
+00866d80	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponseKnockdownRecoverBase	FrameUpdate	OTHER	flatten_pilot: self ?FrameUpdate@CCombatAction_GenericStrike is not a flattened CCombatAction_GenericStrikeResponseKnockdownRecoverBase_FrameUpdate
+008678b0	RESIDUE	split_fixable	CCombatAction_GenericStrikeResponseBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00868310	ACCEPT	rtti_identified	CCombatAction_GenericStrikeResponseKnockdown	IsToAlignWithGroundNormal	RET_TRUE	batch g1a
+00868320	ACCEPT	rtti_identified	CCombatAction_GenericStrikeResponseKnockdown	IsToUseRotationInAnimation	RET_FALSE	batch g1a
+00868390	ACCEPT	rtti_identified	CCreatureAction_BeStunned	Clone	OTHER	batch p2c
+00868400	NF425	rtti_identified	CCombatAction_GenericStrikeResponseKnockdown	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00868500	RESIDUE	rtti_identified	CCombatAction_GenericStrikeResponse	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+0087c770	ACCEPT	rtti_identified	CCreatureAction_InterruptableMidAttackAutoTurn	FinishAction	JMP	batch g2a
+0087c840	ACCEPT	rtti_identified	CCreatureAction_InterruptableMidAttack	FrameUpdate	JMP	batch g2a
+0087c8b0	RESIDUE	rtti_identified	CCreatureAction_InterruptableMidAttackAutoTurn	IsAbleToBeAttacked	OTHER	flatten_pilot: self ?IsAbleToBeAttacked@CCreatureAction_Inte is not a flattened CCreatureAction_InterruptableMidAttackAutoTurn_IsAbleToBeAttacked
+0087cd50	RESIDUE	rtti_identified	CCreatureAction_InterruptableMidAttackAutoTurn	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_Interrupt is not a flattened CCreatureAction_InterruptableMidAttackAutoTurn_PerformAction
+0087e660	NF425	rtti_identified	CCreatureAction_InterruptableMidAttackAutoTurn	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+0087e710	NF425	rtti_identified	CCreatureAction_GeneralInterruptedAttack	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+0087e840	RESIDUE	rtti_conflict	CCreatureAction_Die	FinishAction	OTHER	rtti_conflict: the RTTI placement names another class's member (one unit with its class; identity research)
+0087ebd0	RESIDUE	rtti_identified	CCombatAction_KickThingOnGround	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCombatAction_KickThingOnG is not a flattened CCombatAction_KickThingOnGround_FinishAction
+0087fe60	HOLD	rtti_identified	CCreatureAction_StabbedToDeath_Methods	GetAnimationTransitionInTime	RET_ZERO	gc generator: not a no-argument virtual member of CCreatureAction_StabbedToDeath_Methods: public: virtual long __thiscall CCreatureAction_StabbedToDeath::GetAnimationTransitionInTime(void) const
+00880020	ACCEPT	rtti_identified	CCombatAction_KickThingOnGround	IsToPerformActionOnStrike	RET_TRUE	batch g1a
+00880030	ACCEPT	rtti_identified	CCombatAction_KickThingOnGround	IsToHitProneThings	RET_TRUE	batch g1a
+008800f0	NF425	rtti_identified	CCombatAction_KickThingOnGround	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00880190	NF425	rtti_identified	CCombatAction_StabThing	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008ab9d0	RESIDUE	split_fixable	CCreatureAction_SitDown	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008abaa0	RESIDUE	split_fixable	CCreatureAction_SitDown	?1	OTHER	destructor split (split_fixable): not generated this pass
+008ae160	RESIDUE	split_fixable	CCreatureAction_InterruptableMidAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008ae2f0	ACCEPT	rtti_identified	CCreatureAction_ForcePushInto	Clone	OTHER	batch p2c
+008b0650	RESIDUE	split_fixable	CCombatSequence_WillPhysicalShield	OnCreate	OTHER	split_fixable OnCreate: caller/self respell not generated this pass (retail shape OTHER)
+008b0b10	RESIDUE	split_fixable	CCombatSequence_BanditUnblockableAttack_NativeView	PushAction	OTHER	split_fixable PushAction: caller/self respell not generated this pass (retail shape OTHER)
+008b3500	RESIDUE	rtti_identified	CCombatSequence_GenericRangedAttack	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3570	RESIDUE	rtti_identified	CCombatSequence_GenericLeader	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b35b0	RESIDUE	rtti_identified	CCombatSequence_BanditUnblockableAttack	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_BanditUnblockab is not a flattened CCombatSequence_BanditUnblockableAttack_GetName
+008b35f0	RESIDUE	rtti_identified	CCombatSequence_BanditUnblockableAttack	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3660	RESIDUE	rtti_identified	CCombatSequence_NonInterruptableBoxStrafe	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b36d0	RESIDUE	rtti_identified	CCombatSequence_BanditAdvanceFar	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3750	RESIDUE	rtti_identified	CCombatSequence_BanditAttackFar	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b37d0	RESIDUE	rtti_identified	CCombatSequence_BanditAttackMiddle	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3850	RESIDUE	rtti_identified	CCombatSequence_BanditAttackSide	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3890	RESIDUE	rtti_identified	CCombatSequence_BanditAttackNear	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_BanditAttackNea is not a flattened CCombatSequence_BanditAttackNear_GetName
+008b38d0	RESIDUE	rtti_identified	CCombatSequence_BanditAttackNear	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3940	RESIDUE	rtti_identified	CCombatSequence_BanditIdleNear	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b39b0	RESIDUE	rtti_identified	CCombatSequence_BanditIdleMiddle	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3a30	RESIDUE	rtti_identified	CCombatSequence_BanditBoast	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3ac0	RESIDUE	rtti_identified	CCombatSequence_BanditKingAttack	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3b40	RESIDUE	rtti_identified	CCombatSequence_BanditKingAdvance	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3b80	RESIDUE	rtti_identified	CCombatSequence_BanditKingBackOff	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_BanditKingBackO is not a flattened CCombatSequence_BanditKingBackOff_GetName
+008b3bc0	RESIDUE	rtti_identified	CCombatSequence_BanditKingBackOff	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3c40	RESIDUE	rtti_identified	CCombatSequence_BanditKingSpinAround	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3cc0	RESIDUE	rtti_identified	CCombatSequence_FodderMainAttack	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3d00	RESIDUE	rtti_identified	CCombatSequence_FodderUnblockableMainAttack	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_FodderUnblockab is not a flattened CCombatSequence_FodderUnblockableMainAttack_GetName
+008b3d40	RESIDUE	rtti_identified	CCombatSequence_FodderUnblockableMainAttack	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3dc0	RESIDUE	rtti_identified	CCombatSequence_FodderSecondaryAttack	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3e60	RESIDUE	rtti_identified	CCombatSequence_FodderCombatIdle	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3f10	RESIDUE	rtti_identified	CCombatSequence_ScorpionLungeAttack	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b3fb0	RESIDUE	rtti_identified	CCombatSequence_KingScorpionTailPlunge	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4030	RESIDUE	rtti_identified	CCombatSequence_TrollDoubleSwipe	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b40b0	RESIDUE	rtti_identified	CCombatSequence_TrollDoubleSwipeNonMelee	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4140	RESIDUE	rtti_identified	CCombatSequence_TrollOpeningGroundPound	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4180	RESIDUE	rtti_identified	CCombatSequence_TrollProjectileAttack	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_TrollProjectile is not a flattened CCombatSequence_TrollProjectileAttack_GetName
+008b41c0	RESIDUE	rtti_identified	CCombatSequence_TrollProjectileAttack	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4230	RESIDUE	rtti_identified	CCombatSequence_TrollBurrowPursue	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b42a0	RESIDUE	rtti_identified	CCombatSequence_TrollBurrowPursueNoZone	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4310	RESIDUE	rtti_identified	CCombatSequence_TrollRockPursue	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4390	RESIDUE	rtti_identified	CCombatSequence_TrollRockPursueNoZone	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4400	RESIDUE	rtti_identified	CCombatSequence_TrollRockAdvance	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4490	RESIDUE	rtti_identified	CCombatSequence_TrollRockThrowRock	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4500	RESIDUE	rtti_identified	CCombatSequence_TrollRockIdle	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4570	RESIDUE	rtti_identified	CCombatSequence_TrollRockShuffleBack	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b45b0	RESIDUE	rtti_identified	CCombatSequence_VillagerAttack	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_VillagerAttack@ is not a flattened CCombatSequence_VillagerAttack_GetName
+008b45f0	RESIDUE	rtti_identified	CCombatSequence_VillagerAttack	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4660	RESIDUE	rtti_identified	CCombatSequence_VillagerBackOff	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b46e0	RESIDUE	rtti_identified	CCombatSequence_VillagerStepIn	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4760	RESIDUE	rtti_identified	CCombatSequence_VillagerAdvance	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b47a0	RESIDUE	rtti_identified	CCombatSequence_VillagerCombo	GetName	OTHER	flatten_pilot: self ?GetName@CCombatSequence_VillagerCombo@@ is not a flattened CCombatSequence_VillagerCombo_GetName
+008b47e0	RESIDUE	rtti_identified	CCombatSequence_VillagerCombo	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b4820	RESIDUE	rtti_identified	CCombatSequence_VillagerComboUnblockable	GetName	OTHER	flatten_pilot: self @CCombatSequence_VillagerComboUnblockabl is not a flattened CCombatSequence_VillagerComboUnblockable_GetName
+008b4860	RESIDUE	rtti_identified	CCombatSequence_VillagerComboUnblockable	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b48e0	RESIDUE	rtti_identified	CCombatSequence_VillagerNearAttack	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b50e0	RESIDUE	rtti_identified	CCombatSequence_BattleCharge	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b5190	RESIDUE	rtti_identified	CCombatSequence_WillLightning	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b5250	RESIDUE	rtti_identified	CCombatSequence_WillEnflame	?_G	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b5310	RESIDUE	rtti_identified	CCombatSequence_WillForcePush	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b5370	HOLD	rtti_identified	CCombatSequence_WillForcePushLongRange	IsToPreferSequenceWhenValid	RET_TRUE	gc generator: engine/CCombatSequence_WillForcePushLongRange.h has no FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_VIRTUAL_MODEL
+008b5380	HOLD	rtti_identified	CCombatSequence_WillForcePushLongRange	GetZone	RET_LONG	gc generator: engine/CCombatSequence_WillForcePushLongRange.h has no FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_VIRTUAL_MODEL
+008b5390	HOLD	rtti_identified	CCombatSequence_WillForcePushLongRange	IsInterruptableDueToZoneChange	RET_FALSE	gc generator: engine/CCombatSequence_WillForcePushLongRange.h has no FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_VIRTUAL_MODEL
+008b53a0	HOLD	rtti_identified	CCombatSequence_WillForcePushLongRange	IsInterruptable	RET_FALSE	gc generator: engine/CCombatSequence_WillForcePushLongRange.h has no FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_VIRTUAL_MODEL
+008b53b0	HOLD	rtti_identified	CCombatSequence_WillForcePushLongRange	IsToEvadeAllHits	RET_TRUE	gc generator: engine/CCombatSequence_WillForcePushLongRange.h has no FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_VIRTUAL_MODEL
+008b53c0	HOLD	rtti_identified	CCombatSequence_WillForcePushLongRange	IsMeleeSequence	RET_TRUE	gc generator: engine/CCombatSequence_WillForcePushLongRange.h has no FABLE_RETAIL_CCOMBATSEQUENCE_WILLFORCEPUSHLONGRANGE_VIRTUAL_MODEL
+008b53d0	RESIDUE	rtti_identified	CCombatSequence_WillForcePushLongRange	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b5480	RESIDUE	rtti_identified	CCombatSequence_WillPhysicalShield	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+008b6520	HOLD	rtti_identified	CCreatureAction_ProjectileCrouch	Initialise	JMP	gj generator: engine/CCreatureAction_ProjectileCrouch.h has no FABLE_RETAIL_CCREATUREACTION_PROJECTILECROUCH_VIRTUAL_MODEL
+008b6530	RESIDUE	rtti_identified	CCreatureAction_GetUpFromSitting	OnAnimationLoaded	OTHER	flatten_pilot: self ?OnAnimationLoaded@CCreatureAction_GetUp is not a flattened CCreatureAction_GetUpFromSitting_OnAnimationLoaded
+008b69d0	RESIDUE	rtti_identified	CCreatureAction_UnsheatheWeapons_Methods	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_UnsheatheW is not a flattened CCreatureAction_UnsheatheWeapons_FinishAction
+008b76a0	HOLD	rtti_identified	CCreatureAction_RiseUp	PerformAction	JMP	gj generator: jump target 0x008b7640 label - is not a PerformAction
+008b7cf0	RESIDUE	split_fixable	CCreatureAction_UnsheatheWeapons	ShouldPlayUnsheatheWeaponAction	OTHER	split_fixable ShouldPlayUnsheatheWeaponAction: caller/self respell not generated this pass (retail shape OTHER)
+008b7f80	RESIDUE	split_fixable	CCreatureAction_PlayCombatAnimation	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008b8110	RESIDUE	split_fixable	CCreatureAction_GoUnderground	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008b8190	RESIDUE	split_fixable	CCreatureAction_LeapLong	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008b8200	RESIDUE	split_unknown	CCreatureAction_MidAttackSide	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008b85d0	RESIDUE	split_unknown	CCreatureAction_UnsheatheWeapons	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008b86f0	ACCEPT	rtti_identified	CCreatureAction_Charge	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008b88a0	RESIDUE	rtti_identified	CCreatureAction_PlayCombatAnimationWithLooking	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008b8900	NF425	rtti_identified	CCreatureAction_LeapLong	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+008b8940	ACCEPT	rtti_identified	CCreatureAction_MidAttackSide	Clone	OTHER	batch p2d
+008b8970	ACCEPT	rtti_identified	CCreatureAction_GoUnderground	Clone	OTHER	batch p2a
+008b89e0	NF425	rtti_identified	CCreatureAction_ProjectileCrouch	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008b8a10	RESIDUE	split_fixable	CCreatureAction_ProjectileCrouch	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008b8a60	ACCEPT	rtti_identified	CCreatureAction_Charge	Clone	OTHER	batch p2a
+008b8a90	ACCEPT	rtti_identified	CCreatureAction_ChargeStrike	Clone	OTHER	batch p2c
+008b8ac0	ACCEPT	rtti_identified	CCreatureAction_UnsheatheWeapons	Clone	OTHER	batch p2a
+008b9210	NF425	rtti_identified	CCreatureAction_ScreamerDie	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008b93b0	RESIDUE	rtti_identified	CCreatureAction_ForcePushOutOf	FinishAction	OTHER	flatten_pilot: unit: the row's own test calls CCreatureAction_ForcePushOutOf_FinishAction
+008b9460	ACCEPT	rtti_identified	CCreatureAction_CastWillFireballSpell	Initialise	JMP	batch g2a
+008b9470	ACCEPT	rtti_identified	CCreatureAction_TeleportIn	FinishAction	JMP	batch g2a
+008b9480	ACCEPT	rtti_identified	CCreatureAction_BuildUpDivineWrathSpell	FinishAction	JMP	batch g2a
+008b9490	ACCEPT	rtti_identified	CCreatureAction_BuildUpUnholyPowerSpell	FinishAction	JMP	batch g2a
+008b95a0	RESIDUE	rtti_identified	CCreatureAction_CastWillTurncoatSpell	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_CastWillT is not a flattened CCreatureAction_CastWillTurncoatSpell_PerformAction
+008bac40	RESIDUE	rtti_identified	CCreatureAction_FinishFireballSpell	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_FinishFire is not a flattened CCreatureAction_FinishFireballSpell_FinishAction
+008bb450	RESIDUE	split_fixable	CCreatureAction_CastWillEnflameSpell	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bb500	RESIDUE	split_fixable	CCreatureAction_CastWillEnflameSpell	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bb6f0	RESIDUE	split_fixable	CCreatureAction_CastPhysicalShieldSpell	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bbba0	RESIDUE	split_unknown	CCreatureAction_CastWillDrainLifeSpell	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bc8c0	RESIDUE	split_unknown	CCreatureAction_CastWillLightningSpell	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bca00	RESIDUE	split_fixable	CCreatureAction_CastWillLightningSpell	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bce10	RESIDUE	split_fixable	CCreatureAction_FinishFireballSpell	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bce50	RESIDUE	split_fixable	CCreatureAction_FinishFireballSpell	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bcfb0	RESIDUE	split_fixable	CCreatureAction_TeleportOut	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bd0b0	RESIDUE	split_fixable	CCreatureAction_BeingForcePushed	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bdaf0	ACCEPT	rtti_identified	CCreatureAction_FinishFireballSpell	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008be2f0	NF425	rtti_identified	CCreatureAction_BuildWillForceSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be320	NF425	rtti_identified	CCreatureAction_FinishWillForceSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be350	ACCEPT	rtti_identified	CCreatureAction_CastWillEnflameSpell	Clone	OTHER	batch p2a
+008be3a0	NF425	rtti_identified	CCreatureAction_BuildUpWillEnflameSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be3d0	NF425	rtti_identified	CCreatureAction_ReleaseWillEnflameSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be400	NF425	rtti_identified	CCreatureAction_CastPhysicalShieldSpell	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008be490	NF425	rtti_identified	CCreatureAction_BuildUpPhysicalShieldSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be4c0	ACCEPT	rtti_identified	CCreatureAction_ReleasePhysicalShieldSpell	Clone	OTHER	batch p2a
+008be4f0	NF425	rtti_identified	CCreatureAction_RemovePhysicalShieldSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be520	NF425	rtti_identified	CCreatureAction_CastWillTurncoatSpell	Clone	OTHER	NF425 batch i2 (pending landing; not this pass)
+008be560	NF425	rtti_identified	CCreatureAction_BuildWillTurncoatSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be590	NF425	rtti_identified	CCreatureAction_FinishWillTurncoatSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be5c0	NF425	rtti_identified	CCreatureAction_BuildDrainLifeSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be5f0	NF425	rtti_identified	CCreatureAction_FinishDrainLifeSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be620	NF425	rtti_identified	CCreatureAction_CastWillHealLifeSpell	Clone	OTHER	NF425 batch i2 (pending landing; not this pass)
+008be660	NF425	rtti_identified	CCreatureAction_BuildHealLifeSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be690	NF425	rtti_identified	CCreatureAction_FinishHealLifeSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be6c0	NF425	rtti_identified	CCreatureAction_CastWillGhostSwordSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be700	NF425	rtti_identified	CCreatureAction_BuildGhostSwordSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be730	NF425	rtti_identified	CCreatureAction_FinishGhostSwordSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be760	NF425	rtti_identified	CCreatureAction_CastWillHarvestSoulSpell	Clone	OTHER	NF425 batch i2 (pending landing; not this pass)
+008be7f0	NF425	rtti_identified	CCreatureAction_CastWillReclaimUndeadFollower	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008be870	NF425	rtti_identified	CCreatureAction_CastWillSummonSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be8b0	NF425	rtti_identified	CCreatureAction_BuildUpWillSummonSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be8e0	NF425	rtti_identified	CCreatureAction_ReleaseWillSummonSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be910	ACCEPT	rtti_identified	CCreatureAction_CastWillLightningSpell	Clone	OTHER	batch p2a
+008be960	NF425	rtti_identified	CCreatureAction_BuildUpWillLightningSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008be990	NF425	rtti_identified	CCreatureAction_ReleaseWillLightningSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008bea20	NF425	rtti_identified	CCreatureAction_BuildFireballSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008bea50	ACCEPT	rtti_identified	CCreatureAction_FinishFireballSpell	Clone	OTHER	batch p2a
+008bea80	NF425	rtti_identified	CCreatureAction_TeleportOut	Clone	OTHER	NF425 batch o3 (pending landing; not this pass)
+008beb00	ACCEPT	rtti_identified	CCreatureAction_TeleportIn	Clone	OTHER	batch p2a
+008beb40	NF425	rtti_identified	CCreatureAction_BeingForcePushed	Clone	OTHER	NF425 batch i2 (pending landing; not this pass)
+008beb70	NF425	rtti_identified	CCreatureAction_CastDivineWrathSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008beba0	NF425	rtti_identified	CCreatureAction_BuildUpDivineWrathSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008bebd0	NF425	rtti_identified	CCreatureAction_ReleaseDivineWrathSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008bec00	RESIDUE	rtti_identified	CCreatureAction_ReleaseAndLoopDivineWrathSpell	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008bec30	NF425	rtti_identified	CCreatureAction_CastUnholyPowerSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008bec60	NF425	rtti_identified	CCreatureAction_BuildUpUnholyPowerSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008bec90	NF425	rtti_identified	CCreatureAction_ReleaseUnholyPowerSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008becc0	RESIDUE	rtti_identified	CCreatureAction_ReleaseAndLoopUnholyPowerSpell	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008bedc0	RESIDUE	rtti_identified	CCreatureAction_GenericAimProjectileWeapon_Methods	OnAnimationLoaded	OTHER	flatten_pilot: self ?OnAnimationLoaded@CCreatureAction_Gener is not a flattened CCreatureAction_GenericAimProjectileWeapon_OnAnimationLoaded
+008bfb80	RESIDUE	split_unknown	CCreatureAction_GenericLeaderCommand	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bfbe0	RESIDUE	split_unknown	CCreatureAction_UnblockableMidAttack	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bfc40	RESIDUE	split_unknown	CCreatureAction_DiagonalStrafeBL	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bfca0	RESIDUE	split_unknown	CCreatureAction_DiagonalStrafeBR	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bfce0	RESIDUE	split_fixable	CCreatureAction_StrafeForward	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bfd00	RESIDUE	split_fixable	CCreatureAction_StrafeForward	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bfd60	RESIDUE	split_fixable	CCreatureAction_StrafeBackward	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008bff00	ACCEPT	rtti_identified	CCreatureAction_GenericLoadProjectileWeapon	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008bff40	ACCEPT	rtti_identified	CCreatureAction_UnblockableMidAttack	IsToFaceMovementDirection	RET_FALSE	batch g1a
+008bff50	ACCEPT	rtti_identified	CCreatureAction_DiagonalStrafeBL	IsToFaceTarget	RET_TRUE	batch g1a
+008bff60	ACCEPT	rtti_identified	CCreatureAction_DiagonalStrafeBR	IsToFaceTarget	RET_TRUE	batch g1a
+008bff70	ACCEPT	rtti_identified	CCreatureAction_StrafeForward	IsToFaceTarget	RET_TRUE	batch g1a
+008bff80	ACCEPT	rtti_identified	CCreatureAction_StrafeBackward	IsToFaceTarget	RET_TRUE	batch g1a
+008bffa0	ACCEPT	rtti_identified	CCreatureAction_BodgeSideStrike	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008bffb0	ACCEPT	rtti_identified	CCreatureAction_BodgeSideStrike	GetActionSpeedParameter	RET_FLOAT_GLOBAL	batch g1f
+008c0120	ACCEPT	rtti_identified	CCreatureAction_GenericAimProjectileWeapon	Clone	OTHER	batch p2a
+008c0150	ACCEPT	rtti_identified	CCreatureAction_GenericLoadProjectileWeapon	Clone	OTHER	batch p2a
+008c0180	ACCEPT	rtti_identified	CCreatureAction_GenericFireProjectileWeapon	Clone	OTHER	batch p2a
+008c01b0	ACCEPT	rtti_identified	CCreatureAction_GenericLeaderCommand	Clone	OTHER	batch p2a
+008c01e0	ACCEPT	rtti_identified	CCreatureAction_UnblockableMidAttack	Clone	OTHER	batch p2a
+008c0210	ACCEPT	rtti_identified	CCreatureAction_DiagonalStrafeBL	Clone	OTHER	batch p2a
+008c0240	ACCEPT	rtti_identified	CCreatureAction_DiagonalStrafeBR	Clone	OTHER	batch p2a
+008c0270	ACCEPT	rtti_identified	CCreatureAction_StrafeForward	Clone	OTHER	batch p2a
+008c02a0	ACCEPT	rtti_identified	CCreatureAction_StrafeBackward	Clone	OTHER	batch p2a
+008c02d0	NF425	rtti_identified	CCreatureAction_Ambush	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c0340	ACCEPT	rtti_identified	CCreatureAction_BodgeSideStrike	Clone	OTHER	batch p2a
+008c0440	ACCEPT	rtti_identified	CCreatureAction_ThunderLightningStorm	FinishAction	JMP	batch g2a
+008c0450	ACCEPT	rtti_identified	CCreatureAction_JackScream	FinishAction	JMP	batch g2a
+008c0620	RESIDUE	rtti_identified	CCreatureAction_WhisperSommersaultBackward	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_WhisperSo is not a flattened CCreatureAction_WhisperSommersaultBackward_PerformAction
+008c0fb0	RESIDUE	rtti_identified	CCreatureAction_JackFloatUp	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_JackFloat is not a flattened CCreatureAction_JackFloatUp_PerformAction
+008c3810	RESIDUE	split_fixable	CCreatureAction_JackGetUp	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c3890	HOLD	rtti_identified	CCreatureAction_JackGetUp	IsToEvadeAllHits	RET_TRUE	gc generator: no engine/CCreatureAction_JackGetUp.h
+008c3910	HOLD	rtti_identified	CCombatAction_WillForcePushInto	IsToFaceTarget	RET_TRUE	gc generator: engine/CCombatAction_WillForcePushInto.h has no FABLE_RETAIL_CCOMBATACTION_WILLFORCEPUSHINTO_VIRTUAL_MODEL
+008c39a0	RESIDUE	split_fixable	CCreatureAction_BriarRoseShotFarOutof	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c3a30	ACCEPT	rtti_identified	CCreatureAction_BriarRoseShotFarOutof	IsToFaceTarget	RET_TRUE	batch g1a
+008c3a40	ACCEPT	rtti_identified	CCreatureAction_BriarRoseShotFarOutof	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008c3a70	HOLD	rtti_identified	CCombatAction_StrikeResponseJackOfBladesIntoRush	IsToEvadeAllHits	RET_TRUE	gc generator: engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h has no FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_VIRTUAL_MODEL
+008c3a80	HOLD	rtti_identified	CCombatAction_StrikeResponseJackOfBladesIntoRush	IsToUseRotationInAnimation	RET_FALSE	gc generator: engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h has no FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_VIRTUAL_MODEL
+008c3a90	HOLD	rtti_identified	CCombatAction_StrikeResponseJackOfBladesIntoRush	IsToCauseRecoil	RET_FALSE	gc generator: engine/CCombatAction_StrikeResponseJackOfBladesIntoRush.h has no FABLE_RETAIL_CCOMBATACTION_STRIKERESPONSEJACKOFBLADESINTORUSH_VIRTUAL_MODEL
+008c3be0	ACCEPT	rtti_identified	CCreatureAction_JackGetUp	Clone	OTHER	batch p2c
+008c3c10	RESIDUE	rtti_identified	CCombatAction_StrikeResponseJackOfBladesIntoRush	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008c3c50	NF425	rtti_identified	CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008c3c80	ACCEPT	rtti_identified	CCombatAction_WillForcePushInto	Clone	OTHER	batch p2d
+008c3cb0	ACCEPT	rtti_identified	CCombatAction_WillHealRelease	Clone	OTHER	batch p2c
+008c3ce0	NF425	rtti_identified	CCreatureAction_BriarRoseShotFarOutof	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c3d60	RESIDUE	rtti_identified	CCreatureAction_BriarRoseConcentrateOutof	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008c3e10	ACCEPT	rtti_identified	CCreatureAction_ScorpionCharge	FrameUpdate	JMP	batch g2a
+008c3e20	ACCEPT	rtti_identified	CCreatureAction_ScorpionChargeStrike	Initialise	JMP	batch g2a
+008c3e30	ACCEPT	rtti_identified	CCreatureAction_ScorpionChargeStrike	FinishAction	JMP	batch g2a
+008c3e40	ACCEPT	rtti_identified	CCreatureAction_ScorpionTailWithdraw	Initialise	JMP	batch g2a
+008c3ee0	RESIDUE	rtti_identified	CCreatureAction_ScorpionRecover_Methods	Initialise	OTHER	flatten_pilot: self ?Initialise@CCreatureAction_ScorpionReco is not a flattened CCreatureAction_ScorpionRecover_Initialise
+008c3f00	RESIDUE	rtti_conflict	CCreatureAction_Die	FinishAction	OTHER	rtti_conflict: the RTTI placement names another class's member (one unit with its class; identity research)
+008c4810	RESIDUE	rtti_identified	CCreatureAction_ScorpionTailPlunge	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_ScorpionT is not a flattened CCreatureAction_ScorpionTailPlunge_PerformAction
+008c4ea0	RESIDUE	split_fixable	CCreatureAction_ScorpionCharge	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c52c0	RESIDUE	rtti_identified	CCreatureAction_WaspQueenDeath	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_WaspQueenD is not a flattened CCreatureAction_WaspQueenDeath_FinishAction
+008c55b0	RESIDUE	rtti_identified	CCreatureAction_ScorpionCharge	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_ScorpionCh is not a flattened CCreatureAction_ScorpionCharge_FinishAction
+008c5b70	HOLD	rtti_identified	CCreatureAction_WaspQueenDie	HasFrameUpdate	RET_TRUE	gc generator: no engine/CCreatureAction_WaspQueenDie.h
+008c5ba0	ACCEPT	rtti_identified	CCreatureAction_ScorpionChargeInto	IsToFaceMovementDirection	RET_FALSE	batch g1a
+008c5bb0	ACCEPT	rtti_identified	CCreatureAction_ScorpionChargeInto	IsToRetainSafeDistance	RET_FALSE	batch g1a
+008c5c40	ACCEPT	rtti_identified	CCreatureAction_WaspQueenDiveAttack	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008c5c50	ACCEPT	rtti_identified	CCreatureAction_WaspQueenDiveAttack	IsToRetainSafeDistance	RET_FALSE	batch g1a
+008c5d10	NF425	rtti_identified	CCreatureAction_ScorpionChargeInto	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c5d90	NF425	rtti_identified	CCreatureAction_ScorpionCharge	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c5dc0	RESIDUE	split_fixable	CCreatureAction_ScorpionCharge	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c5e10	NF425	rtti_identified	CCreatureAction_ScorpionChargeStrike	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c5e90	NF425	rtti_identified	CCreatureAction_WaspQueenDie	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+008c5ed0	ACCEPT	rtti_identified	CCreatureAction_WaspQueenDiveAttack	Clone	OTHER	batch p2a
+008c5fd0	RESIDUE	rtti_identified	CCreatureAction_TrollWhackGroundBase	Initialise	OTHER	flatten_pilot: self ?Initialise@Fable_TrollInit_008c5fd0@@QA is not a flattened CCreatureAction_TrollWhackGroundBase_Initialise
+008c5ff0	ACCEPT	rtti_identified	CCreatureAction_TrollAngryGroundPound	FinishAction	JMP	batch g2a
+008c6000	RESIDUE	rtti_identified	CCreatureAction_TrollProjectileAttack	InitAnimation	OTHER	flatten_pilot: self ?InitAnimation@CCreatureAction_TrollProj is not a flattened CCreatureAction_TrollProjectileAttack_InitAnimation
+008c6060	ACCEPT	rtti_identified	CCreatureAction_WalkInto	FinishAction	JMP	batch g2a
+008c61c0	RESIDUE	split_fixable	CCreatureAction_TrollWhackGroundBase	WhackGround	OTHER	split_fixable WhackGround: caller/self respell not generated this pass (retail shape OTHER)
+008c63a0	RESIDUE	rtti_identified	CCreatureAction_TrollAngryGroundPound_Methods	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_TrollAngr is not a flattened CCreatureAction_TrollAngryGroundPound_PerformAction
+008c67a0	RESIDUE	rtti_identified	CCreatureAction_TrollThrowProjectile	FrameUpdate	OTHER	flatten_pilot: self ?FrameUpdate@CCreatureAction_TrollThrowP is not a flattened CCreatureAction_TrollThrowProjectile_FrameUpdate
+008c6b20	RESIDUE	rtti_identified	CCreatureAction_TrollGroundPound	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_TrollGrou is not a flattened CCreatureAction_TrollGroundPound_PerformAction
+008c7400	RESIDUE	split_fixable	CCreatureAction_TrollThrowProjectile	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c7cc0	ACCEPT	rtti_identified	CCreatureAction_TrollThrowProjectile	HasFrameUpdate	RET_TRUE	batch g1a
+008c7cd0	ACCEPT	rtti_identified	CCreatureAction_TrollThrowProjectile	IsToFaceTarget	RET_TRUE	batch g1a
+008c7ce0	ACCEPT	rtti_identified	CCreatureAction_TrollThrowProjectile	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+008c7d50	NF425	rtti_identified	CCreatureAction_TrollThrowProjectile	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c7e00	NF425	rtti_identified	CCreatureAction_RockTrollShakeAndExplode	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+008c7f40	RESIDUE	rtti_identified	CCreatureAction_BanditKingLunge	OnAnimationLoaded	OTHER	flatten_pilot: self ?OnAnimationLoaded@CCreatureAction_Bandi is not a flattened CCreatureAction_BanditKingLunge_OnAnimationLoaded
+008c7fd0	RESIDUE	split_fixable	CCreatureAction_BanditKingThrowWeapons	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c8080	RESIDUE	rtti_identified	CCreatureAction_BanditKingAttack	IsToCauseRecoil	OTHER	flatten_pilot: self ?IsToCauseRecoil@CCreatureAction_BanditK is not a flattened CCreatureAction_BanditKingAttack_IsToCauseRecoil
+008c80e0	RESIDUE	rtti_identified	CCreatureAction_BanditKingStuck	IsToCauseRecoil	OTHER	flatten_pilot: self ?IsToCauseRecoil@CCreatureAction_BanditK is not a flattened CCreatureAction_BanditKingStuck_IsToCauseRecoil
+008c8130	RESIDUE	rtti_identified	CCreatureAction_BanditKingUnstuck	IsToCauseRecoil	OTHER	flatten_pilot: self ?IsToCauseRecoil@CCreatureAction_BanditK is not a flattened CCreatureAction_BanditKingUnstuck_IsToCauseRecoil
+008c8180	RESIDUE	rtti_identified	CCreatureAction_BanditKingLunge	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_BanditKin is not a flattened CCreatureAction_BanditKingLunge_PerformAction
+008c8f70	RESIDUE	rtti_identified	CCreatureAction_BanditKingStuck	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_BanditKing is not a flattened CCreatureAction_BanditKingStuck_FinishAction
+008c91e0	RESIDUE	rtti_identified	CCreatureAction_BanditKingStuckGetHit	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_BanditKing is not a flattened CCreatureAction_BanditKingStuckGetHit_FinishAction
+008c9410	RESIDUE	split_unknown	CCreatureAction_BanditKingAttack	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008c94b0	RESIDUE	rtti_identified	CCreatureAction_BanditKingAttack_Methods	IsToFaceTarget	GET_MEMBER	flatten_pilot: self ?IsToFaceTarget@CCreatureAction_BanditKi is not a flattened CCreatureAction_BanditKingAttack_IsToFaceTarget
+008c9610	RESIDUE	rtti_identified	CCreatureAction_BanditKingUnstuck_Methods	IsKnockdownStrike	GET_MEMBER	flatten_pilot: self ?IsKnockdownStrike@CCreatureAction_Bandi is not a flattened CCreatureAction_BanditKingUnstuck_IsKnockdownStrike
+008c9720	NF425	rtti_identified	CCreatureAction_BanditKingChangeWeapons	Clone	OTHER	NF425 batch h3 (pending landing; not this pass)
+008c9760	NF425	rtti_identified	CCreatureAction_BanditKingThrowWeapons	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c97e0	NF425	rtti_identified	CCreatureAction_BanditKingAttack	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+008c9830	NF425	rtti_identified	CCreatureAction_BanditKingStuck	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008c98e0	NF425	rtti_identified	CCreatureAction_BanditKingUnstuck	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+008c9d60	ACCEPT	rtti_identified	CCreatureAction_HobbeLungeAttack	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008c9d90	ACCEPT	rtti_identified	CCreatureAction_HobbeLungeAttack	Clone	OTHER	batch p2a
+008c9dd0	RESIDUE	rtti_identified	CCreatureAction_NymphGetHit_Methods	OnAnimationLoaded	OTHER	flatten_pilot: self ?OnAnimationLoaded@CCreatureAction_Nymph is not a flattened CCreatureAction_NymphGetHit_OnAnimationLoaded
+008c9f40	RESIDUE	rtti_identified	CCreatureAction_NymphGetHitDie	FrameUpdate	OTHER	flatten_pilot: self ?FrameUpdate@CCreatureAction_NymphGetHit is not a flattened CCreatureAction_NymphGetHitDie_FrameUpdate
+008c9fc0	RESIDUE	rtti_conflict	CCreatureAction_Die	FinishAction	OTHER	rtti_conflict: the RTTI placement names another class's member (one unit with its class; identity research)
+008ca310	RESIDUE	rtti_identified	CCreatureAction_NymphGetHit	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_NymphGetH is not a flattened CCreatureAction_NymphGetHit_PerformAction
+008ca8d0	ACCEPT	rtti_identified	CCreatureAction_NymphSummonInto	IsToFaceTargetAtStart	RET_TRUE	batch g1a
+008ca8e0	ACCEPT	rtti_identified	CCreatureAction_NymphShot	IsToFaceTarget	RET_TRUE	batch g1a
+008ca8f0	ACCEPT	rtti_identified	CCreatureAction_NymphShot	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+008ca900	ACCEPT	rtti_identified	CCreatureAction_NymphShot	IsStrikeAction	RET_TRUE	batch g1a
+008ca910	ACCEPT	rtti_identified	CCreatureAction_NymphIdleAfterShot	IsToFaceTarget	RET_TRUE	batch g1b
+008caa40	ACCEPT	rtti_identified	CCreatureAction_NymphSummonInto	Clone	OTHER	batch p2a
+008caaa0	RESIDUE	rtti_identified	CCreatureAction_NymphTeleportOutOfLimbo	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008cab10	ACCEPT	rtti_identified	CCreatureAction_NymphShot	Clone	OTHER	batch p2a
+008cab40	ACCEPT	rtti_identified	CCreatureAction_NymphIdleAfterShot	Clone	OTHER	batch p2a
+008cab70	RESIDUE	rtti_identified	CCreatureAction_NymphTeleportIntoLimbo	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008cabe0	RESIDUE	rtti_identified	CCreatureAction_SummonerLightningOrbInto	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_SummonerLi is not a flattened CCreatureAction_SummonerLightningOrbInto_FinishAction
+008cad00	ACCEPT	rtti_identified	CCreatureAction_SummonerDead	FinishAction	JMP	batch g2a
+008cafa0	RESIDUE	rtti_identified	CCreatureAction_SummonerFlameSlice	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_SummonerF is not a flattened CCreatureAction_SummonerFlameSlice_PerformAction
+008cb500	RESIDUE	rtti_identified	CCreatureAction_SummonerLightningOrbOutOfGroundSmash	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_SummonerL is not a flattened CCreatureAction_SummonerLightningOrbOutOfGroundSmash_PerformAction
+008cbd50	RESIDUE	split_fixable	CCreatureAction_SummonerSummonOutOf	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008cc3c0	ACCEPT	rtti_identified	CCreatureAction_SummonerUnsheatheStrike	IsKnockdownStrike	RET_TRUE	batch g1b
+008cc3d0	ACCEPT	rtti_identified	CCreatureAction_SummonerUnsheatheStrike	IsBlockable	RET_FALSE	batch g1b
+008cc3e0	ACCEPT	rtti_identified	CCreatureAction_SummonerUnsheatheStrike	IsToFaceTargetAtStart	RET_TRUE	batch g1b
+008cc500	ACCEPT	rtti_identified	CCreatureAction_SheatheWeapons	Clone	OTHER	batch p2d
+008cc540	ACCEPT	rtti_identified	CCreatureAction_SummonerSummonInto	Clone	OTHER	batch p2c
+008cc570	ACCEPT	rtti_identified	CCreatureAction_SummonerSummonOutOf	Clone	OTHER	batch p2c
+008cc5f0	ACCEPT	rtti_identified	CCreatureAction_SummonerLightningOrbOutOf	Clone	OTHER	batch p2c
+008cc620	ACCEPT	rtti_identified	CCreatureAction_SummonerLightningOrbOutOfGroundSmash	Clone	OTHER	batch p2c
+008ccbd0	RESIDUE	split_unknown	CCreatureAction_BalverineDropInFromSky	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008ccc10	RESIDUE	split_unknown	CCreatureAction_BalverineDropInFromSky	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008ccc70	RESIDUE	split_unknown	CCreatureAction_BalverineLungeAttack	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008cd220	ACCEPT	rtti_identified	CCreatureAction_BalverineLungeAttack	IsToFaceTargetAtStart	RET_TRUE	batch g1b
+008cd230	ACCEPT	rtti_identified	CCreatureAction_BalverineLungeAttack	IsToRetainSafeDistance	RET_FALSE	batch g1b
+008cd240	ACCEPT	rtti_identified	CCreatureAction_BalverineBreakOffFromCombat	IsToFaceTargetAtStart	RET_TRUE	batch g1b
+008cd250	ACCEPT	rtti_identified	CCreatureAction_BalverineBreakOffFromCombatLong	IsToFaceTargetAtStart	RET_TRUE	batch g1b
+008cd300	NF425	rtti_identified	CCreatureAction_BalverineDropInFromSky	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008cd330	NF425	rtti_identified	CCreatureAction_BalverineCorneredJumpIntoSky	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008cd370	ACCEPT	rtti_identified	CCreatureAction_BalverineLungeAttack	Clone	OTHER	batch p2a
+008cd3a0	ACCEPT	rtti_identified	CCreatureAction_BalverineBreakOffFromCombat	Clone	OTHER	batch p2a
+008cd3d0	ACCEPT	rtti_identified	CCreatureAction_BalverineBreakOffFromCombatLong	Clone	OTHER	batch p2a
+008cd450	ACCEPT	rtti_identified	CCreatureAction_ReleaseTimeSpell	Initialise	JMP	batch g2a
+008cd820	RESIDUE	rtti_identified	CCreatureAction_BattleChargeImpact	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_BattleChar is not a flattened CCreatureAction_BattleChargeImpact_FinishAction
+008cda30	RESIDUE	rtti_identified	CCreatureAction_BattleChargeMiss	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_BattleChar is not a flattened CCreatureAction_BattleChargeMiss_FinishAction
+008ce040	RESIDUE	split_fixable	CCreatureAction_CastAssassinRush	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008ce100	RESIDUE	split_fixable	CCreatureAction_CastAssassinRush	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008cee70	NF425	rtti_identified	CCreatureAction_CastTimeSpell	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+008ceeb0	NF425	rtti_identified	CCreatureAction_BuildUpTimeSpell	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008ceee0	RESIDUE	rtti_identified	CCreatureAction_ReleaseTimeSpell	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+008cef20	NF425	rtti_identified	CCreatureAction_CastAssassinRush	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008ceff0	NF425	rtti_identified	CCreatureAction_CastBattleCharge	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008cf090	NF425	rtti_identified	CCreatureAction_BuildUpBattleCharge	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008cf0c0	NF425	rtti_identified	CCreatureAction_BattleChargeImpact	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008cf160	NF425	rtti_identified	CCreatureAction_BattleChargeMiss	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008cf200	NF425	rtti_identified	CCreatureAction_BattleChargeTurnLeft	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008cf230	NF425	rtti_identified	CCreatureAction_BattleChargeTurnRight	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008cf260	NF425	rtti_identified	CCreatureAction_CastSkillMultiArrow	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008cf610	RESIDUE	rtti_identified	CCreatureAction_TentacleRise	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_TentacleRi is not a flattened CCreatureAction_TentacleRise_FinishAction
+008cf700	RESIDUE	rtti_identified	CCreatureAction_TentacleStrikeInto	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_TentacleSt is not a flattened CCreatureAction_TentacleStrikeInto_FinishAction
+008cf970	HOLD	rtti_identified	CCreatureAction_TentacleIdle	IsMovementUsingPhysics	RET_FALSE	gc generator: no engine/CCreatureAction_TentacleIdle.h
+008cf9f0	HOLD	rtti_identified	CCreatureAction_TentacleStrikeLoop	IsMovementUsingPhysics	RET_FALSE	gc generator: no engine/CCreatureAction_TentacleStrikeLoop.h
+008cfa80	HOLD	rtti_identified	CCreatureAction_TentacleStrikeOutOf	IsOverrideableByActionOfSamePriority	RET_TRUE	gc generator: no engine/CCreatureAction_TentacleStrikeOutOf.h
+008cfb40	ACCEPT	rtti_identified	CCreatureAction_TentacleIdle	Clone	OTHER	batch p2c
+008cfbd0	ACCEPT	rtti_identified	CCreatureAction_TentacleStrikeOutOf	Clone	OTHER	batch p2c
+008cfc00	ACCEPT	rtti_identified	CCreatureAction_TentacleStrikeGetHit	Clone	OTHER	batch p2a
+008d5110	RESIDUE	split_fixable	CCreatureAction_FireMissileWeapon	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008d62f0	NF425	rtti_identified	CCreatureAction_FireMissileWeapon	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008d63c0	NF425	rtti_identified	CCreatureAction_FireMissileTest	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008e4400	HOLD	rtti_identified	CCombatAction_RecoverFromDazed	IsOverrideableByActionOfSamePriority	RET_TRUE	gc generator: no engine/CCombatAction_RecoverFromDazed.h
+008e4490	RESIDUE	split_fixable	CCreatureAction_TrollVulnerableOutOf	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008e4540	HOLD	rtti_identified	CCreatureAction_IceTrollIcicleAssaultLoop	IsStrikeAction	RET_TRUE	gc generator: no engine/CCreatureAction_IceTrollIcicleAssaultLoop.h
+008e4640	RESIDUE	split_fixable	CCreatureAction_ScorpionTailPlunge	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008e46d0	RESIDUE	split_fixable	CCreatureAction_ScorpionSummon	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008e4750	ACCEPT	rtti_identified	CCreatureAction_ScorpionSummon	IsToEvadeAllHits	RET_TRUE	batch g1b
+008e4770	RESIDUE	split_fixable	CCreatureAction_ScorpionRecover	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008e4a40	ACCEPT	rtti_identified	CCreatureAction_SnapDragonOutOf	IsToFaceMovementDirection	RET_FALSE	batch g1b
+008e4bc0	ACCEPT	rtti_identified	CCreatureAction_SummonerDead	IsToEvadeAllHits	RET_TRUE	batch g1b
+008e4e00	ACCEPT	rtti_identified	CCombatAction_RecoverFromDazed	Clone	OTHER	batch p2c
+008e4e30	NF425	rtti_identified	CCreatureAction_TrollVulnerableInto	Clone	OTHER	NF425 batch i3 (pending landing; not this pass)
+008e4e60	NF425	rtti_identified	CCreatureAction_TrollVulnerableOutOf	Clone	OTHER	NF425 batch i3 (pending landing; not this pass)
+008e4e90	ACCEPT	rtti_identified	CCreatureAction_IceTrollIcicleAssaultLoop	Clone	OTHER	batch p2c
+008e4ec0	ACCEPT	rtti_identified	CCreatureAction_IceTrollIcicleAssaultOutOf	Clone	OTHER	batch p2c
+008e4ef0	NF425	rtti_identified	CCreatureAction_ScorpionTailWithdraw	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008e4f60	NF425	rtti_identified	CCreatureAction_ScorpionTailPlunge	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008e4fd0	ACCEPT	rtti_identified	CCreatureAction_ScorpionSummon	Clone	OTHER	batch p2a
+008e5000	ACCEPT	rtti_identified	CCreatureAction_ScorpionRecover	Clone	OTHER	batch p2a
+008e5030	ACCEPT	rtti_identified	CCreatureAction_ForcePushOutOf	Clone	OTHER	batch p2a
+008e5070	ACCEPT	rtti_identified	CCombatAction_Guildmaster_HealFollowersRelease	Clone	OTHER	batch p2c
+008e50a0	ACCEPT	rtti_identified	CCombatAction_Guildmaster_ShieldFollowersRelease	Clone	OTHER	batch p2c
+008e50d0	ACCEPT	rtti_identified	CCombatAction_Guildmaster_SpeedUpFollowersRelease	Clone	OTHER	batch p2c
+008e5100	NF425	rtti_identified	CCreatureAction_SnapDragonOutOf	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008e5130	ACCEPT	rtti_identified	CCreatureAction_DragonFireBeamOutOf	Clone	OTHER	batch p2c
+008e5160	NF425	rtti_identified	CCreatureAction_DragonStrafeOutOf	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008e5190	ACCEPT	rtti_identified	CCreatureAction_SummonerDead	Clone	OTHER	batch p2a
+008e6880	RESIDUE	split_fixable	CCreatureAction_CastStrengthBerserk	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008e6a70	RESIDUE	split_fixable	CCreatureAction_CastStrengthMultiStrike	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008e6e20	HOLD	rtti_identified	CCreatureAction_CastStrengthMultiStrikeProper	IsBlockable	RET_FALSE	gc generator: compile rc=2 error C2118: negative subscript error C2118: negative subscript
+008e6eb0	ACCEPT	rtti_identified	CCreatureAction_CastStrengthBerserk	Clone	OTHER	batch p2a
+008e6ee0	ACCEPT	rtti_identified	CCreatureAction_ReleaseStrengthBerserk	Clone	OTHER	batch p2a
+008e6f10	ACCEPT	rtti_identified	CCreatureAction_CastStrengthMultiStrike	Clone	OTHER	batch p2a
+008e8c10	ACCEPT	rtti_identified	CCreatureAction_BriarRoseConcentrateInto	IsToFaceTargetAtStart	RET_TRUE	batch g1b
+008e8d30	NF425	rtti_identified	CCreatureAction_BriarRoseConcentrateInto	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008e8db0	NF425	rtti_identified	CCreatureAction_BriarRoseInvulnerableTeleport	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008ec210	HOLD	rtti_identified	CCreatureAction_UndeadIdleUnderground	FinishAction	JMP	gj generator: engine/CCreatureAction_UndeadIdleUnderground.h has no FABLE_RETAIL_CCREATUREACTION_UNDEADIDLEUNDERGROUND_VIRTUAL_MODEL
+008ec470	RESIDUE	rtti_identified	CCreatureAction_UndeadRiseUp	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_UndeadRise is not a flattened CCreatureAction_UndeadRiseUp_FinishAction
+008ec6a0	RESIDUE	split_fixable	CCreatureAction_UndeadReturnToEarth	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008ec700	RESIDUE	rtti_identified	CCreatureAction_UndeadReturnToEarth	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_UndeadRetu is not a flattened CCreatureAction_UndeadReturnToEarth_FinishAction
+008ec7b0	ACCEPT	rtti_identified	CCreatureAction_UndeadReturnToEarth	Clone	OTHER	batch p2a
+008ed650	RESIDUE	split_fixable	CCreatureAction_Die	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008eda90	RESIDUE	split_fixable	CCombatAction_FallStunned	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+008edbd0	HOLD	rtti_identified	CCreatureAction_Die	Clone	OTHER	Part 2: CCreatureAction_Die: one unit with the four rtti_conflict FinishAction rows (0x00865E20 0x0087E840 0x008C3F00 0x008C9FC0)
+008edc10	ACCEPT	rtti_identified	CCombatAction_FallStunned	Clone	OTHER	batch p2c
+008f2e00	RESIDUE	rtti_identified	CCreatureAction_DragonFlight	FrameUpdate	OTHER	flatten_pilot: self ?FrameUpdate@CCreatureAction_DragonFligh is not a flattened CCreatureAction_DragonFlight_FrameUpdate
+008f47e0	RESIDUE	rtti_identified	CCreatureAction_DragonTakeOffIntoFlying	FinishAction	OTHER	flatten_pilot: self ?FinishAction@CCreatureAction_DragonTake is not a flattened CCreatureAction_DragonTakeOffIntoFlying_FinishAction
+008f5060	RESIDUE	rtti_identified	CCreatureAction_SnapDragon	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_SnapDrago is not a flattened CCreatureAction_SnapDragon_PerformAction
+008f5220	RESIDUE	rtti_identified	CCreatureAction_SnapDragonFast	PerformAction	OTHER	flatten_pilot: self ?PerformAction@CCreatureAction_SnapDrago is not a flattened CCreatureAction_SnapDragonFast_PerformAction
+008f55f0	RESIDUE	rtti_identified	CCreatureAction_DragonFlight_Methods	IsToFaceTarget	GET_MEMBER	flatten_pilot: self ?IsToFaceTarget@CCreatureAction_DragonFl is not a flattened CCreatureAction_DragonFlight_IsToFaceTarget
+008f5790	NF425	rtti_identified	CCreatureAction_DragonRetreat	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008f57c0	NF425	rtti_identified	CCreatureAction_DragonSwoop	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+008f5850	NF425	rtti_identified	CCreatureAction_DragonRearUpInto	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+008f5890	NF425	rtti_identified	CCreatureAction_DragonRearUpOutOf	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00906330	RESIDUE	rtti_identified	CCombatSequence_BanditUnblockableAttack_Retail	IsValid	OTHER	flatten_pilot: self ?IsValid@CCombatSequence_BanditUnblockab is not a flattened CCombatSequence_BanditUnblockableAttack_IsValid
+00906380	RESIDUE	rtti_identified	CCombatSequence_BanditUnblockableAttack	OnCreate	OTHER	flatten_pilot: self ?OnCreate@CCombatSequence_BanditUnblocka is not a flattened CCombatSequence_BanditUnblockableAttack_OnCreate
+009064b0	RESIDUE	rtti_identified	CCombatSequence_NonInterruptableBoxStrafe	OnCreate	OTHER	flatten_pilot: self ?OnCreate@CCombatSequence_NonInterruptab is not a flattened CCombatSequence_NonInterruptableBoxStrafe_OnCreate
+00906b40	RESIDUE	split_unknown	CCreatureAction_InterruptableFarAttack	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00906c10	ACCEPT	rtti_identified	CCreatureAction_BanditKingAdvance	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+00906c50	ACCEPT	rtti_identified	CCreatureAction_BanditKingBackOff	GetIsToFaceTargetCone	RET_FLOAT_GLOBAL	batch g1f
+00906f40	RESIDUE	rtti_identified	CCreatureAction_BanditKingAdvance	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00906f70	RESIDUE	rtti_identified	CCreatureAction_BanditKingBackOff	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00906fe0	HOLD	rtti_identified	CCombatSequence_KingScorpionTailPlunge	OnCreate	JMP	gj generator: jump target 0x008b0650 label - is not a OnCreate
+00907320	RESIDUE	split_fixable	CCreatureAction_FodderPrimaryAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009073a0	RESIDUE	split_fixable	CCreatureAction_FodderUnblockablePrimaryAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00907440	RESIDUE	split_fixable	CCreatureAction_FodderSecondaryAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009074c0	RESIDUE	split_fixable	CCreatureAction_FodderIdle	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009075b0	NF425	rtti_identified	CCreatureAction_FodderPrimaryAttack	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+009075e0	NF425	rtti_identified	CCreatureAction_FodderUnblockablePrimaryAttack	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00907610	NF425	rtti_identified	CCreatureAction_FodderSecondaryAttack	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00907640	NF425	rtti_identified	CCreatureAction_FodderIdle	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00907670	RESIDUE	rtti_identified	CCombatSequence_TrollOpeningGroundPound_Retail	OnStart	OTHER	flatten_pilot: self ?OnStart@CCombatSequence_TrollOpeningGro is not a flattened CCombatSequence_TrollOpeningGroundPound_OnStart
+00908000	RESIDUE	split_unknown	CCreatureAction_TrollAngryGroundPound	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00908090	RESIDUE	rtti_identified	CCreatureAction_TrollAngryGroundPound	GetEffectName	OTHER	flatten_pilot: self _CCreatureAction_TrollAngryGroundPound_G is not a flattened CCreatureAction_TrollAngryGroundPound_GetEffectName
+00908140	RESIDUE	rtti_identified	CCreatureAction_TrollProjectileAttack	GetEffectName	OTHER	flatten_pilot: self _CCreatureAction_TrollProjectileAttack_G is not a flattened CCreatureAction_TrollProjectileAttack_GetEffectName
+00908160	RESIDUE	split_unknown	CCreatureAction_TrollTunnel	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009081d0	RESIDUE	rtti_identified	CCreatureAction_TrollTunnel	GetEffectName	OTHER	flatten_pilot: self _CCreatureAction_TrollTunnel_GetEffectNa is not a flattened CCreatureAction_TrollTunnel_GetEffectName
+00908270	RESIDUE	split_unknown	CCreatureAction_TrollIdle	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009082d0	RESIDUE	split_fixable	CCreatureAction_TrollGetProjectile	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00908340	RESIDUE	split_unknown	CCreatureAction_TrollPursue	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009085b0	RESIDUE	rtti_identified	CCreatureAction_TrollProjectileAttack	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00908600	RESIDUE	rtti_identified	CCreatureAction_TrollTunnel	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00908630	NF425	rtti_identified	CCreatureAction_TrollSwipe	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+00908660	NF425	rtti_identified	CCreatureAction_TrollIdle	Clone	OTHER	NF425 batch i4 (pending landing; not this pass)
+00908690	NF425	rtti_identified	CCreatureAction_TrollGetProjectile	Clone	OTHER	NF425 batch h1 (pending landing; not this pass)
+009086c0	NF425	rtti_identified	CCreatureAction_TrollPursue	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+009086f0	NF425	rtti_identified	CCreatureAction_WalkOutOf	Clone	OTHER	NF425 batch i4 (pending landing; not this pass)
+00908720	ACCEPT	rtti_identified	CCreatureAction_WalkInto	Clone	OTHER	batch p2a
+00908750	RESIDUE	rtti_identified	CCreatureAction_TrollAngryGroundPound	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00908a20	RESIDUE	rtti_identified	CCombatSequence_VillagerCombo	OnCreate	OTHER	flatten_pilot: self ?OnCreate@CCombatSequence_VillagerCombo@ is not a flattened CCombatSequence_VillagerCombo_OnCreate
+00908da0	RESIDUE	rtti_identified	CCombatSequence_BattleCharge_Retail	IsValid	OTHER	flatten_pilot: self ?IsValid@CCombatSequence_BattleCharge_Re is not a flattened CCombatSequence_BattleCharge_IsValid
+009092c0	RESIDUE	rtti_identified	CCombatSequence_WillPhysicalShield	OnCreate	OTHER	flatten_pilot: self ?OnCreate@CCombatSequence_WillPhysicalSh is not a flattened CCombatSequence_WillPhysicalShield_OnCreate
+00909640	RESIDUE	rtti_identified	CCombatSequence_WillLightning_Retail	IsValid	OTHER	flatten_pilot: self ?IsValid@CCombatSequence_WillLightning_R is not a flattened CCombatSequence_WillLightning_IsValid
+009096e0	RESIDUE	rtti_identified	CCombatSequence_WillEnflame_Retail	IsValid	OTHER	flatten_pilot: self ?IsValid@CCombatSequence_WillEnflame_Ret is not a flattened CCombatSequence_WillEnflame_IsValid
+00909780	RESIDUE	rtti_identified	CCombatSequence_WillPhysicalShield_Retail	IsValid	OTHER	flatten_pilot: self ?IsValid@CCombatSequence_WillPhysicalShi is not a flattened CCombatSequence_WillPhysicalShield_IsValid
+00909830	RESIDUE	rtti_identified	CCombatSequence_WillPhysicalShieldNonMelee_Retail	IsValid	OTHER	flatten_pilot: self ?IsValid@CCombatSequence_WillPhysicalShi is not a flattened CCombatSequence_WillPhysicalShieldNonMelee_IsValid
+0090a690	RESIDUE	split_fixable	CCreatureAction_MidAttackFacing	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0090a700	RESIDUE	split_fixable	CCreatureAction_MidAttack360	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0090a7e0	NF425	rtti_identified	CCreatureAction_MidAttackFacing	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+0090a810	ACCEPT	rtti_identified	CCreatureAction_MidAttack360	Clone	OTHER	batch p2c
+00910b20	RESIDUE	split_fixable	CCreatureAction_DeclarePlayerACriminal	?1	OTHER	destructor split (split_fixable): not generated this pass
+00910c30	RESIDUE	split_fixable	CCreatureAction_DeclarePlayerACriminal	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00910ff0	NF425	rtti_identified	CCreatureAction_DeclarePlayerACriminal	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00915860	ACCEPT	rtti_identified	CCreatureAction_PutGoodsDown	GetAnimExtraFlags	RET_LONG	batch g1b
+00916590	RESIDUE	split_unknown	CCreatureAction_PickUpGoods	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00922eb0	RESIDUE	standin	CCreatureAction_00922eb0	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00922f50	RESIDUE	split_fixable	CCreatureAction_AddFoodToTable	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00923bb0	RESIDUE	rtti_identified	CCreatureAction_RemoveFoodFromTable	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+009252a0	ACCEPT	rtti_identified	CCreatureAction_TentacleRise	IsMovementUsingPhysics	RET_FALSE	batch g1b
+00925310	ACCEPT	rtti_identified	CCreatureAction_TentacleStrikeInto	IsMovementUsingPhysics	RET_FALSE	batch g1b
+00925330	RESIDUE	split_unknown	CCreatureAction_KrakenRiseUp	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925440	RESIDUE	split_unknown	CCreatureAction_KrakenLowPoseInto	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009254c0	RESIDUE	split_unknown	CCreatureAction_KrakenLowChargeLoop	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009255e0	RESIDUE	split_fixable	CCreatureAction_KrakenLowAttackLoop	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925680	RESIDUE	split_fixable	CCreatureAction_KrakenLowAttackOutOf	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925700	RESIDUE	split_unknown	CCreatureAction_KrakenHighAttackInto	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925780	RESIDUE	split_unknown	CCreatureAction_KrakenHighAttackLoop	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925820	RESIDUE	split_unknown	CCreatureAction_KrakenHighAttackOutOf	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009258a0	RESIDUE	split_unknown	CCreatureAction_KrakenRoarInto	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925920	RESIDUE	split_unknown	CCreatureAction_KrakenRoarLoop	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009259b0	RESIDUE	split_unknown	CCreatureAction_KrakenRoarOutOf	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00925c10	NF425	rtti_identified	CCreatureAction_TentacleRise	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+00925c40	NF425	rtti_identified	CCreatureAction_TentacleStrikeInto	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+00925d10	RESIDUE	standin	CCreatureAction_KrakenLowChargeLoop	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00925ef0	RESIDUE	standin	CCreatureAction_KrakenRoarLoop	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00927dd0	RESIDUE	split_fixable	CCreatureAction_ShopkeeperPutAway	?1	OTHER	destructor split (split_fixable): not generated this pass
+00929e60	RESIDUE	split_fixable	CCreatureAction_ReloadMissileWeapon	?1	OTHER	destructor split (split_fixable): not generated this pass
+0092e7e0	NF425	rtti_identified	CCreatureAction_GetInBed	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00933cc0	RESIDUE	split_fixable	CCreatureAction_CallSpouseHome	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00933fd0	NF425	rtti_identified	CCreatureAction_KickCreature	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00935970	RESIDUE	standin	CCreatureAction_00935970	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+009406b0	NF425	rtti_identified	CCreatureAction_PickCrop	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00946070	NF425	rtti_identified	CCreatureAction_GetItemOutOfPocket	Clone	OTHER	NF425 batch i4 (pending landing; not this pass)
+00947b70	RESIDUE	split_fixable	CCreatureAction_PickUpTankard	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0094b6a0	RESIDUE	rtti_identified	CCreatureAction_PickUpTankard	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+0094e5f0	RESIDUE	split_fixable	CCreatureAction_TrollGroundPound	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0094e680	ACCEPT	rtti_identified	CCreatureAction_TrollGroundPound	Clone	OTHER	batch p2d
+00953120	RESIDUE	split_fixable	CCreatureAction_DragonRearUpFull	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009531c0	RESIDUE	split_fixable	CCreatureAction_SnapDragon	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00953240	ACCEPT	rtti_identified	CCreatureAction_SnapDragon	IsToFaceMovementDirection	RET_FALSE	batch g1b
+00953260	RESIDUE	split_fixable	CCreatureAction_SnapDragonFast	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009532e0	ACCEPT	rtti_identified	CCreatureAction_SnapDragonFast	IsToFaceMovementDirection	RET_FALSE	batch g1b
+00953300	RESIDUE	split_fixable	CCreatureAction_DragonRoar	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00953370	RESIDUE	split_fixable	CCreatureAction_DragonLand	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009533d0	ACCEPT	rtti_identified	CCreatureAction_DragonLand	IsMovementUsingPhysics	RET_FALSE	batch g1b
+009533e0	RESIDUE	split_unknown	CCreatureAction_DragonTakeOffIntoFlying	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00953590	ACCEPT	rtti_identified	CCreatureAction_DragonHoverOutOf	IsMovementUsingPhysics	RET_FALSE	batch g1b
+00953630	RESIDUE	split_fixable	CCreatureAction_DragonFireBlastBase	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009536c0	ACCEPT	rtti_identified	CCreatureAction_DragonFireBlastBase	IsPreventingLookTurning	RET_FALSE	batch g1b
+00953ad0	ACCEPT	rtti_identified	CCreatureAction_SnapDragon	Clone	OTHER	batch p2a
+00953b00	ACCEPT	rtti_identified	CCreatureAction_SnapDragonFast	Clone	OTHER	batch p2a
+00953b30	ACCEPT	rtti_identified	CCreatureAction_DragonRoar	Clone	OTHER	batch p2d
+00953b60	ACCEPT	rtti_identified	CCreatureAction_DragonLand	Clone	OTHER	batch p2a
+00953b90	NF425	rtti_identified	CCreatureAction_DragonTakeOffIntoFlying	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00953c90	ACCEPT	rtti_identified	CCreatureAction_DragonHoverInto	Clone	OTHER	batch p2c
+00953cc0	NF425	rtti_identified	CCreatureAction_DragonHoverOutOf	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+00953d30	RESIDUE	rtti_identified	CCreatureAction_DragonFireBlastLeft	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00953dc0	NF425	rtti_identified	CCreatureAction_DragonBurninateInto	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00953eb0	RESIDUE	rtti_identified	CCreatureAction_DragonFireBlastForward	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+009567d0	ACCEPT	rtti_identified	CCombatAction_WillShieldInto	IsToFaceTarget	RET_TRUE	batch g1b
+00956850	ACCEPT	rtti_identified	CCombatAction_WillEnflameInto	IsToFaceTarget	RET_TRUE	batch g1b
+00956990	ACCEPT	rtti_identified	CCombatAction_WillShieldInto	Clone	OTHER	batch p2b
+009569e0	ACCEPT	rtti_identified	CCombatAction_WillEnflameInto	Clone	OTHER	batch p2b
+009571f0	ACCEPT	rtti_identified	CCreatureAction_BriarRoseShotFarInto	IsToFaceTarget	RET_TRUE	batch g1b
+009573a0	NF425	rtti_identified	CCreatureAction_BriarRoseShotFarInto	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+009573d0	NF425	rtti_identified	CCreatureAction_BriarRoseIntoInvulnerable	Clone	OTHER	NF425 batch o3 (pending landing; not this pass)
+00957450	NF425	rtti_identified	CCreatureAction_BriarRoseForcePush	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+0095ca60	ACCEPT	rtti_identified	CCreatureAction_WaspQueenPrimaryAttack	IsToRetainSafeDistance	RET_FALSE	batch g1b
+0095ca70	ACCEPT	rtti_identified	CCreatureAction_WaspQueenPrimaryAttack	IsToFaceTargetAtStart	RET_TRUE	batch g1b
+0095ca80	ACCEPT	rtti_identified	CCreatureAction_WaspQueenPrimaryAttack	IsBlockable	RET_TRUE	batch g1b
+0095ca90	ACCEPT	rtti_identified	CCreatureAction_WaspQueenPrimaryAttack	IsKnockdownStrike	RET_TRUE	batch g1b
+0095caa0	ACCEPT	rtti_identified	CCreatureAction_WaspQueenPrimaryAttack	IsMovementUsingPhysics	RET_FALSE	batch g1b
+0095cac0	RESIDUE	split_fixable	CCreatureAction_WaspQueenLashOutAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0095cb60	ACCEPT	rtti_identified	CCreatureAction_WaspQueenLashOutAttack	IsMovementUsingPhysics	RET_FALSE	batch g1b
+0095cca0	ACCEPT	rtti_identified	CCreatureAction_WaspQueenPrimaryAttack	Clone	OTHER	batch p2b
+0095ccd0	NF425	rtti_identified	CCreatureAction_WaspQueenLashOutAttack	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+0095cd00	ACCEPT	rtti_identified	CCreatureAction_QueenHornetShootBabies	Clone	OTHER	batch p2b
+00961a30	ACCEPT	rtti_identified	CCreatureAction_BanditKingLunge	IsToCauseRecoil	RET_TRUE	batch g1b
+00961a70	ACCEPT	rtti_identified	CCreatureAction_BanditKingLunge	Clone	OTHER	batch p2b
+00962970	ACCEPT	rtti_identified	CCreatureAction_IceTrollIcicleAttack	IsToFaceTarget	RET_TRUE	batch g1b
+009629d0	ACCEPT	rtti_identified	CCreatureAction_IceTrollIcicleAssaultInto	IsStrikeAction	RET_TRUE	batch g1b
+00962a30	NF425	rtti_identified	CCreatureAction_IceTrollIcicleAttack	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+00962a60	ACCEPT	rtti_identified	CCreatureAction_IceTrollIcicleAssaultInto	Clone	OTHER	batch p2b
+00966890	RESIDUE	standin	CCreatureAction_00966890	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+009680d0	RESIDUE	rtti_identified	CCreatureAction_PickUpJug	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00968150	RESIDUE	standin	CCreatureAction_00968150	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00968170	RESIDUE	standin	CCreatureAction_00968170	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+0096bf70	RESIDUE	rtti_identified	CCreatureAction_WhisperSommersaultForward	IsToEvadeAllHits	OTHER	flatten_pilot: self ?IsToEvadeAllHits@CCreatureAction_Whispe is not a flattened CCreatureAction_WhisperSommersaultForward_IsToEvadeAllHits
+0096bff0	RESIDUE	rtti_identified	CCreatureAction_WhisperSommersaultBackward	IsToEvadeAllHits	OTHER	flatten_pilot: self ?IsToEvadeAllHits@CCreatureAction_Whispe is not a flattened CCreatureAction_WhisperSommersaultBackward_IsToEvadeAllHits
+0096c080	ACCEPT	rtti_identified	CCreatureAction_WhisperJumpIntoSky	IsToEvadeAllHits	RET_TRUE	batch g1b
+0096c100	ACCEPT	rtti_identified	CCreatureAction_WhisperSommersaultForward	Clone	OTHER	batch p2c
+0096c140	ACCEPT	rtti_identified	CCreatureAction_WhisperSommersaultBackward	Clone	OTHER	batch p2c
+0096c180	NF425	rtti_identified	CCreatureAction_WhisperJumpIntoSky	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+0096c740	ACCEPT	rtti_identified	CCreatureAction_ThunderLightningStorm	IsToEvadeAllHits	RET_TRUE	batch g1b
+0096c780	ACCEPT	rtti_identified	CCreatureAction_ThunderLightningStorm	Clone	OTHER	batch p2b
+0096c820	RESIDUE	split_fixable	CCreatureAction_StopEatingAtTable	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0096d4d0	RESIDUE	rtti_identified	CCreatureAction_StartEatingAtTable	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+00970240	RESIDUE	split_unknown	CCreatureAction_SummonerLightningIdle	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00970370	RESIDUE	split_unknown	CCreatureAction_SummonerChargeSuccess	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00970420	RESIDUE	split_unknown	CCreatureAction_SummonerChargeSuccess	?0	OTHER	constructor split (split_unknown): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00971840	NF425	rtti_identified	CCreatureAction_DuckAndCover	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00976f10	ACCEPT	rtti_identified	CCreatureAction_JackFlash	IsToFaceTarget	RET_TRUE	batch g1b
+00976f30	RESIDUE	split_fixable	CCreatureAction_JackShotFloat	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00976fa0	ACCEPT	rtti_identified	CCreatureAction_JackShotFloat	IsToFaceTarget	RET_TRUE	batch g1b
+00976fc0	RESIDUE	split_fixable	CCreatureAction_JackShotNear	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00977040	ACCEPT	rtti_identified	CCreatureAction_JackShotNear	IsToFaceTarget	RET_TRUE	batch g1b
+00977060	RESIDUE	split_fixable	CCreatureAction_JackShotFar	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009770e0	ACCEPT	rtti_identified	CCreatureAction_JackShotFar	IsToFaceTarget	RET_TRUE	batch g1b
+00977100	RESIDUE	split_fixable	CCreatureAction_JackScream	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00977190	ACCEPT	rtti_identified	CCreatureAction_JackScream	IsToEvadeAllHits	RET_TRUE	batch g1b
+00977270	ACCEPT	rtti_identified	CCreatureAction_JackDeathInto	IsToEvadeAllHits	RET_TRUE	batch g1b
+00977290	RESIDUE	split_fixable	CCreatureAction_JackFloatUp	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+00977300	ACCEPT	rtti_identified	CCreatureAction_JackFloatUp	HasFrameUpdate	RET_TRUE	batch g1b
+009773a0	ACCEPT	rtti_identified	CCreatureAction_JackFall	IsToEvadeAllHits	RET_TRUE	batch g1b
+00977500	ACCEPT	rtti_identified	CCreatureAction_JackFlash	Clone	OTHER	batch p2b
+00977530	ACCEPT	rtti_identified	CCreatureAction_JackShotFloat	Clone	OTHER	batch p2b
+00977560	NF425	rtti_identified	CCreatureAction_JackShotNear	Clone	OTHER	NF425 batch h3 (pending landing; not this pass)
+00977590	NF425	rtti_identified	CCreatureAction_JackShotFar	Clone	OTHER	NF425 batch h3 (pending landing; not this pass)
+009775c0	NF425	rtti_identified	CCreatureAction_JackScream	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00977630	ACCEPT	rtti_identified	CCreatureAction_JackDeathInto	Clone	OTHER	batch p2b
+00977660	NF425	rtti_identified	CCreatureAction_JackFloatUp	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00977690	RESIDUE	split_fixable	CCreatureAction_JackFloatUp	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+009776e0	ACCEPT	rtti_identified	CCreatureAction_JackFall	Clone	OTHER	batch p2b
+00978650	ACCEPT	rtti_identified	CCombatAction_Guildmaster_HealFollowersInto	Clone	OTHER	batch p2c
+00978680	ACCEPT	rtti_identified	CCombatAction_Guildmaster_ShieldFollowersInto	Clone	OTHER	batch p2c
+009786b0	ACCEPT	rtti_identified	CCombatAction_Guildmaster_SpeedUpFollowersInto	Clone	OTHER	batch p2c
+0097b5f0	NF425	rtti_identified	CCreatureAction_JumpOutFromCover	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+0097c760	RESIDUE	split_fixable	CCreatureAction_ScorpionUnblockableLeftTurnAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097c800	ACCEPT	rtti_identified	CCreatureAction_ScorpionUnblockableLeftTurnAttack	IsToFaceMovementDirection	RET_FALSE	batch g1b
+0097c810	ACCEPT	rtti_identified	CCreatureAction_ScorpionUnblockableLeftTurnAttack	IsStrikeAction	RET_TRUE	batch g1b
+0097c830	RESIDUE	split_fixable	CCreatureAction_ScorpionUnblockableRightTurnAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097c8d0	ACCEPT	rtti_identified	CCreatureAction_ScorpionUnblockableRightTurnAttack	IsToFaceMovementDirection	RET_FALSE	batch g1b
+0097c8e0	ACCEPT	rtti_identified	CCreatureAction_ScorpionUnblockableRightTurnAttack	IsStrikeAction	RET_TRUE	batch g1b
+0097c920	RESIDUE	split_fixable	CCreatureAction_ScorpionPrepareTailPlunge	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097c9a0	ACCEPT	rtti_identified	CCreatureAction_ScorpionPrepareTailPlunge	IsToEvadeAllHits	RET_TRUE	batch g1b
+0097ca20	ACCEPT	rtti_identified	CCreatureAction_ScorpionUnblockableLeftTurnAttack	Clone	OTHER	batch p2b
+0097ca50	ACCEPT	rtti_identified	CCreatureAction_ScorpionUnblockableRightTurnAttack	Clone	OTHER	batch p2b
+0097ca80	NF425	rtti_identified	CCreatureAction_ScorpionPrepareTailPlunge	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+0097cf30	RESIDUE	split_fixable	CCreatureAction_VillagerAttack	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097cf90	RESIDUE	split_fixable	CCreatureAction_VillagerAttackKnockdown	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097cff0	RESIDUE	split_fixable	CCreatureAction_VillagerAdvance	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097d050	RESIDUE	split_fixable	CCreatureAction_VillagerBackOff	?0	OTHER	constructor split (split_fixable): callers bind other spellings of the ctor; needs per-class caller respell after the class model lands (not generated this pass)
+0097d0e0	RESIDUE	rtti_identified	CCreatureAction_VillagerAttackKnockdown_Methods	IsBlockable	GET_MEMBER	flatten_pilot: self ?IsBlockable@CCreatureAction_VillagerAtt is not a flattened CCreatureAction_VillagerAttackKnockdown_IsBlockable
+0097d190	NF425	rtti_identified	CCreatureAction_VillagerAttack	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+0097d1c0	NF425	rtti_identified	CCreatureAction_VillagerAttackKnockdown	Clone	OTHER	NF425 batch ihold (pending landing; not this pass)
+0097d200	NF425	rtti_identified	CCreatureAction_VillagerAdvance	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+0097d230	NF425	rtti_identified	CCreatureAction_VillagerBackOff	Clone	OTHER	NF425 batch h2 (pending landing; not this pass)
+0097d280	RESIDUE	standin	CCreatureAction_0097d280	DestroyMembers	OTHER	standin DestroyMembers: caller/self respell not generated this pass (retail shape OTHER)
+00982550	RESIDUE	rtti_conflict	CCreatureAction_SendMessage	?_E	OTHER	deleting destructor: NF424 G1 now applies to the 120 classes given a VIRTUAL_MODEL here (queue after the headers land)
+009826a0	NF425	rtti_identified	CCreatureAction_MagicBlast	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00982720	NF425	rtti_identified	CCreatureAction_SendMessage	Clone	OTHER	NF425 batch o2 (pending landing; not this pass)
+00982d10	ACCEPT	rtti_identified	CCreatureAction_BeetleTakeOff	Clone	OTHER	batch p2c
+00982d40	ACCEPT	rtti_identified	CCreatureAction_BeetleLand	Clone	OTHER	batch p2c
+00a17480	RESIDUE	split_unknown	CCombatSequence_WillForcePush	insert	OTHER	split_unknown insert: caller/self respell not generated this pass (retail shape OTHER)
+00c08a80	RESIDUE	split_unknown	CCreatureActionHeroJump_00c08a80	FrameUpdate	OTHER	split_unknown FrameUpdate: caller/self respell not generated this pass (retail shape OTHER)
+00c14c40	RESIDUE	standin	CCombatActionBase	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+01210a36	RESIDUE	standin	CCreatureActionHeroJump_00c08a80	FrameUpdate	OTHER	standin FrameUpdate: caller/self respell not generated this pass (retail shape OTHER)
+0121199a	RESIDUE	standin	CCombatActionBase	Clone	OTHER	Clone row outside NF425 batches (NF425 T3 residue)
+01276c2c	RESIDUE	split_unknown	CCreatureAction_GetUpFromSitting	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+01290c64	RESIDUE	split_unknown	CCreatureAction_KrakenLowAttackLoop	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+01291494	RESIDUE	split_unknown	CCreatureAction_KrakenRoarLoop	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+01296c9c	RESIDUE	split_unknown	CCreatureAction_PickUpFoodAtTable	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+012971ec	RESIDUE	split_unknown	CCreatureAction_SummonerCharge	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+0129733c	RESIDUE	split_unknown	CCreatureAction_SummonerChargeSuccess	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+013ba8b4	RESIDUE	split_unknown	CCreatureActionBase	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)
+013ba8c8	RESIDUE	split_unknown	CCreatureActionBase	?	NOBYTES	split_unknown ?: caller/self respell not generated this pass (retail shape NOBYTES)

@@ -27,6 +27,28 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TeleportIn)==280);
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TELEPORTIN_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0127E4AC (RTTI .?AVCCreatureAction_TeleportIn@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_TeleportIn); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// NF427: no `#pragma pack` and no trailing `_pad_0x115` member: retail's inlined copy constructor (Clone, 0x008BEB00) does not copy those bytes, so they are tail padding (sizeof and offsets asserted).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+class CCreatureAction_TeleportIn : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008B9470 ?FinishAction@CCreatureAction_TeleportIn@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008BEB00 ?Clone@CCreatureAction_TeleportIn@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008B9F20 ?Initialise@CCreatureAction_TeleportIn@@UAEXXZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x008BDB10 ?IsToEvadeAllHits@CCreatureAction_TeleportIn@@UBE_NXZ
+public:
+    bool          CreateEffects;                             // +0x114
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TeleportIn) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TeleportIn, CreateEffects) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TeleportIn {
 public:
@@ -96,9 +118,10 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TeleportIn) == 0x118);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TeleportIn, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TeleportIn, CreateEffects) == 0x114);
+FABLE_STATIC_ASSERT_AT(99, sizeof(CCreatureAction_TeleportIn) == 0x118);
+FABLE_STATIC_ASSERT_AT(100, offsetof(CCreatureAction_TeleportIn, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(101, offsetof(CCreatureAction_TeleportIn, CreateEffects) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_TELEPORTIN_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_TELEPORT
 #endif // FABLE_ENGINE_CCREATUREACTION_TELEPORTIN_H

@@ -31,6 +31,29 @@ public:
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONFAST_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x0129369C (RTTI .?AVCCreatureAction_SnapDragonFast@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_SnapDragonFast); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_SnapDragonFast : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008F5220 ?PerformAction@CCreatureAction_SnapDragonFast@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x00953B00 ?Clone@CCreatureAction_SnapDragonFast@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008F2BC0 ?Initialise@CCreatureAction_SnapDragonFast@@UAEXXZ
+    virtual bool IsKnockdownStrike() const;                               // slot 19 0x009532D0 ?IsKnockdownStrike@CCreatureAction_SnapDragonFast@@UBE_NXZ
+    virtual bool IsBlockable() const;                                     // slot 29 0x009532C0 ?IsBlockable@CCreatureAction_SnapDragonFast@@UBE_NXZ
+    virtual bool IsToFaceMovementDirection() const;                       // slot 81 0x009532E0 ?IsToFaceMovementDirection@CCreatureAction_SnapDragonFast@@UBE_NXZ
+public:
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_SnapDragonFast) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_SnapDragonFast {
 public:
@@ -51,6 +74,7 @@ public:
 
 FABLE_STATIC_ASSERT_AT(42, sizeof(CCreatureAction_SnapDragonFast) == 0x114);
 FABLE_STATIC_ASSERT_AT(43, offsetof(CCreatureAction_SnapDragonFast, __vftable) == 0x0);
+#endif // FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONFAST_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SNAPDRAGONFAST
 #endif // FABLE_ENGINE_CCREATUREACTION_SNAPDRAGONFAST_H

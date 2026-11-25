@@ -21,6 +21,30 @@ public:
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01287904 (RTTI .?AVCCreatureAction_BriarRoseConcentrateInto@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_BriarRoseConcentrateInto); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008E8D30 ?Clone@CCreatureAction_BriarRoseConcentrateInto@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C1C30 ?Initialise@CCreatureAction_BriarRoseConcentrateInto@@UAEXXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x008E8C10 ?IsToFaceTargetAtStart@CCreatureAction_BriarRoseConcentrateInto@@UBE_NXZ
+public:
+    bool          Imposter;                                  // +0x114
+    unsigned char PEnemy[0xb];                               // +0x115 CIntelligentPointer<CThingCreatureBase>
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BriarRoseConcentrateInto) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, Imposter) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, PEnemy) == 0x115);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_BriarRoseConcentrateInto {
 public:
@@ -90,10 +114,11 @@ public:
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CCreatureAction_BriarRoseConcentrateInto) == 0x120);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, __vftable) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, Imposter) == 0x114);
-FABLE_STATIC_ASSERT(offsetof(CCreatureAction_BriarRoseConcentrateInto, PEnemy) == 0x115);
+FABLE_STATIC_ASSERT_AT(93, sizeof(CCreatureAction_BriarRoseConcentrateInto) == 0x120);
+FABLE_STATIC_ASSERT_AT(94, offsetof(CCreatureAction_BriarRoseConcentrateInto, __vftable) == 0x0);
+FABLE_STATIC_ASSERT_AT(95, offsetof(CCreatureAction_BriarRoseConcentrateInto, Imposter) == 0x114);
+FABLE_STATIC_ASSERT_AT(96, offsetof(CCreatureAction_BriarRoseConcentrateInto, PEnemy) == 0x115);
+#endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_BRIARROSECONCENTRATEINTO
 #endif // FABLE_ENGINE_CCREATUREACTION_BRIARROSECONCENTRATEINTO_H

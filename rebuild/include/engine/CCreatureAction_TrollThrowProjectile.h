@@ -40,6 +40,46 @@ protected:
 FABLE_STATIC_ASSERT_AT(31, sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
 #else
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01281694 (RTTI .?AVCCreatureAction_TrollThrowProjectile@@ : CCombatActionBase), 82 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_TrollThrowProjectile); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase {
+public:
+    virtual void PerformAction();                                         // slot 3 0x008C6860 ?PerformAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+    virtual void FinishAction();                                          // slot 4 0x008C6A50 ?FinishAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+    virtual long GetAnimationTransitionInTime() const;                    // slot 8 0x008C7CF0 ?GetAnimationTransitionInTime@CCreatureAction_TrollThrowProjectile@@UBEJXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x008C7D50 ?Clone@CCreatureAction_TrollThrowProjectile@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x008C64F0 ?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+    virtual void FrameUpdate();                                           // slot 56 0x008C67A0 ?FrameUpdate@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+    virtual bool IsToFaceTarget() const;                                  // slot 73 0x008C7CD0 ?IsToFaceTarget@CCreatureAction_TrollThrowProjectile@@UBE_NXZ
+    virtual float GetIsToFaceTargetCone() const;                          // slot 78 0x008C7CE0 ?GetIsToFaceTargetCone@CCreatureAction_TrollThrowProjectile@@UBEMXZ
+    virtual bool HasFrameUpdate() const;                                  // slot 81 0x008C7CC0 ?HasFrameUpdate@CCreatureAction_TrollThrowProjectile@@UBE_NXZ
+public:
+    unsigned char PShot[0x8];                                // +0x114 CIntelligentPointer<CThing>
+    float         TargetPos_X;                               // +0x11c C3DVector::X
+    float         TargetPos_Y;                               // +0x120 C3DVector::Y
+    float         TargetPos_Z;                               // +0x124 C3DVector::Z
+    bool          UseTargetPos;                              // +0x128
+    unsigned char _pad_0x129[0x3];                           // +0x129
+    long          ShotAlpha;                                 // +0x12c
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_TrollThrowProjectile) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, PShot) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_X) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Y) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Z) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, UseTargetPos) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, _pad_0x129) == 0x129);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_TrollThrowProjectile, ShotAlpha) == 0x12c);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_TrollThrowProjectile {
 public:
@@ -122,6 +162,7 @@ FABLE_STATIC_ASSERT_AT(112, offsetof(CCreatureAction_TrollThrowProjectile, Targe
 FABLE_STATIC_ASSERT_AT(113, offsetof(CCreatureAction_TrollThrowProjectile, TargetPos_Z) == 0x124);
 FABLE_STATIC_ASSERT_AT(114, offsetof(CCreatureAction_TrollThrowProjectile, UseTargetPos) == 0x128);
 FABLE_STATIC_ASSERT_AT(115, offsetof(CCreatureAction_TrollThrowProjectile, ShotAlpha) == 0x12c);
+#endif // FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_TROLLTHROWPROJECTILE
 #endif // FABLE_ENGINE_CCREATUREACTION_TROLLTHROWPROJECTILE_H

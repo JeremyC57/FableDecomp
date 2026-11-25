@@ -29,6 +29,32 @@ protected:
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01298CD4 (RTTI .?AVCCreatureAction_ScorpionPrepareTailPlunge@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_ScorpionPrepareTailPlunge); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_ScorpionPrepareTailPlunge : public CCombatActionBase {
+public:
+    virtual void FinishAction();                                          // slot 4 0x008C4990 ?FinishAction@CCreatureAction_ScorpionPrepareTailPlunge@@UAEXXZ
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x0097CA80 ?Clone@CCreatureAction_ScorpionPrepareTailPlunge@@UBEPAVCCreatureActionBase@@XZ
+    virtual bool IsToEvadeAllHits() const;                                // slot 45 0x0097C9A0 ?IsToEvadeAllHits@CCreatureAction_ScorpionPrepareTailPlunge@@UBE_NXZ
+public:
+    float         TargetPos_X;                               // +0x114 C3DVector::X
+    float         TargetPos_Y;                               // +0x118 C3DVector::Y
+    float         TargetPos_Z;                               // +0x11c C3DVector::Z
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_ScorpionPrepareTailPlunge) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Z) == 0x11c);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_ScorpionPrepareTailPlunge {
 public:
@@ -104,6 +130,7 @@ FABLE_STATIC_ASSERT_AT(98, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, _
 FABLE_STATIC_ASSERT_AT(99, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_X) == 0x114);
 FABLE_STATIC_ASSERT_AT(100, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Y) == 0x118);
 FABLE_STATIC_ASSERT_AT(101, offsetof(CCreatureAction_ScorpionPrepareTailPlunge, TargetPos_Z) == 0x11c);
+#endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE
 #endif // FABLE_ENGINE_CCREATUREACTION_SCORPIONPREPARETAILPLUNGE_H

@@ -1,4 +1,16 @@
-// Leaf: @CCreatureAction_JackFlash_IsToFaceTarget@4
-#include "rebuild_abi.h"
-extern "C" char FABLE_FASTCALL CCreatureAction_JackFlash_IsToFaceTarget(void* action){ return 1; }
-// Stand-in (owner rule 2026-11-05): CCreatureAction_JackFlash_IsToFaceTarget for CCreatureAction_JackFlash::IsToFaceTarget; RTTI vtable slot ?IsToFaceTarget@CCreatureAction_JackFlash@@UBE_NXZ + PDB name set (fablewin).
+// Leaf: ?IsToFaceTarget@CCreatureAction_JackFlash@@UBE_NXZ
+// CCreatureAction_JackFlash::IsToFaceTarget() const -- returns true.
+// Names: RTTI vftable placement (ghidra_out/labels_rtti_port.tsv) + FableWin name set; the landed stand-in
+//   @CCreatureAction_JackFlash_IsToFaceTarget@4 becomes the virtual member on engine/CCreatureAction_JackFlash.h
+//   (FABLE_RETAIL_CCREATUREACTION_JACKFLASH_VIRTUAL_MODEL, Needs FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE,
+//   FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR). NF427 G1 (CONST shape).
+#define FABLE_RETAIL_CCREATUREACTION_JACKFLASH_VIRTUAL_MODEL
+#define FABLE_RETAIL_BASE_OBJECT
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CCREATUREACTIONBASE
+#define FABLE_RETAIL_KRAKEN_ROAR
+#include "engine/CCreatureAction_JackFlash.h"
+bool CCreatureAction_JackFlash::IsToFaceTarget() const
+{
+    return true;
+}

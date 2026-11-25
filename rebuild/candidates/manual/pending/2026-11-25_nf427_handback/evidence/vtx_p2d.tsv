@@ -1,0 +1,8 @@
+address	class	retail_vftable	head	new
+0074df10	CCreatureAction_RiseUp	0x01268C9C:75/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 64 agree 17 unbound [exact 17 MISMATCH 0 noexp 0] 0 WRONG 
+0074dfd0	CCreatureAction_UndeadIdleUnderground	0x0126908C:46/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 64 agree 17 unbound [exact 16 MISMATCH 1 noexp 0] 0 WRONG 0:MISM:??_ECCreatureAction_UndeadIdleUnderground@@UAEPAXI@Z!=??_GCCreatureAction_UndeadIdleUnderground@@UAEPAXI@Z
+008b8940	CCreatureAction_MidAttackSide	0x0127AB3C:13/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 65 agree 16 unbound [exact 16 MISMATCH 0 noexp 0] 0 WRONG 
+008c3c80	CCombatAction_WillForcePushInto	0x012804FC:74/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 64 agree 17 unbound [exact 16 MISMATCH 1 noexp 0] 0 WRONG 0:MISM:??_ECCombatAction_WillForcePushInto@@UAEPAXI@Z!=??_GCCombatAction_WillForcePushInto@@UAEPAXI@Z
+008cc500	CCreatureAction_SheatheWeapons	0x01282CEC:13/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 65 agree 16 unbound [exact 16 MISMATCH 0 noexp 0] 0 WRONG 
+0094e680	CCreatureAction_TrollGroundPound	0x012931CC:13/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 64 agree 17 unbound [exact 16 MISMATCH 1 noexp 0] 0 WRONG 0:MISM:??_ECCreatureAction_TrollGroundPound@@UAEPAXI@Z!=??_GCCreatureAction_TrollGroundPound@@UAEPAXI@Z
+00953b30	CCreatureAction_DragonRoar	0x012937EC:13/81	1 slots 0 agree 1 unbound [exact 0 MISMATCH 0 noexp 0] 0 WRONG 	81 slots 65 agree 16 unbound [exact 16 MISMATCH 0 noexp 0] 0 WRONG 

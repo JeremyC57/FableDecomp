@@ -1,0 +1,21 @@
+addr       parity           behav  name
+006f58f0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+006f5ab0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+006f5af0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+0085c300   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+008bffb0   RELOCATION_MATCH PASS   GetActionSpeedParameter
+008c7ce0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+008ca8f0   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+00906c10   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+00906c50   RELOCATION_MATCH PASS   GetIsToFaceTargetCone
+
+WINS: 9
+  006f58f0 RELOCATION_MATCH CCreatureAction_LeapBack::?GetIsToFaceTargetCone@CCreatureAction_LeapBack@@UBEMXZ
+  006f5ab0 RELOCATION_MATCH CCreatureAction_GenericAimProjectileWeapon::?GetIsToFaceTargetCone@CCreatureAction_GenericAimProjectileWeapon@@UBEMXZ
+  006f5af0 RELOCATION_MATCH CCreatureAction_GenericFireProjectileWeapon::?GetIsToFaceTargetCone@CCreatureAction_GenericFireProjectileWeapon@@UBEMXZ
+  0085c300 RELOCATION_MATCH CCombatAction_ControlledStrafeJump::?GetIsToFaceTargetCone@CCombatAction_ControlledStrafeJump@@UBEMXZ
+  008bffb0 RELOCATION_MATCH CCreatureAction_BodgeSideStrike::?GetActionSpeedParameter@CCreatureAction_BodgeSideStrike@@UBEMXZ
+  008c7ce0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?GetIsToFaceTargetCone@CCreatureAction_TrollThrowProjectile@@UBEMXZ
+  008ca8f0 RELOCATION_MATCH CCreatureAction_NymphShot::?GetIsToFaceTargetCone@CCreatureAction_NymphShot@@UBEMXZ
+  00906c10 RELOCATION_MATCH CCreatureAction_BanditKingAdvance::?GetIsToFaceTargetCone@CCreatureAction_BanditKingAdvance@@UBEMXZ
+  00906c50 RELOCATION_MATCH CCreatureAction_BanditKingBackOff::?GetIsToFaceTargetCone@CCreatureAction_BanditKingBackOff@@UBEMXZ

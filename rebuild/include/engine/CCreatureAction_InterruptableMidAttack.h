@@ -29,6 +29,30 @@ FABLE_STATIC_ASSERT_AT(13, sizeof(CCreatureAction_InterruptableMidAttack) == 0x1
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_VIRTUAL_MODEL
+// Opt-in (NF427, 2026-11-25; generator NF322 genmodel.py as run by NF329, NF325 style): the polymorphic retail class, declarations only (no bodies, no layout change). Retail vftable
+// 0x01262EDC (RTTI .?AVCCreatureAction_InterruptableMidAttack@@ : CCombatActionBase), 81 slots; the declared slots are this class's overrides (RTTI-port labels name CCreatureAction_InterruptableMidAttack); every other slot stays the base's.
+// Members: the flat model's lines below, same offsets (asserts). Slot order checked against retail by an emitted-vftable probe (NF427 NOTES).
+// Needs (defined by the including row, above its first #include): FABLE_RETAIL_BASE_OBJECT, FABLE_RETAIL_DEF_CLASS_BASE, FABLE_RETAIL_CCREATUREACTIONBASE, FABLE_RETAIL_KRAKEN_ROAR.
+class CSoundPair;
+class CAnimationEntry;
+#include "engine/CCombatActionBase.h"
+class CCreatureActionBase;
+#pragma pack(push, 1)
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase {
+public:
+    virtual CCreatureActionBase* Clone() const;                           // slot 11 0x006F8640 ?Clone@CCreatureAction_InterruptableMidAttack@@UBEPAVCCreatureActionBase@@XZ
+    virtual void Initialise();                                            // slot 12 0x0087C800 ?Initialise@CCreatureAction_InterruptableMidAttack@@UAEXXZ
+    virtual bool IsPartOfComboChain() const;                              // slot 16 0x006F58B0 ?IsPartOfComboChain@CCreatureAction_InterruptableMidAttack@@UBE_NXZ
+    virtual void FrameUpdate();                                           // slot 56 0x0087C840 ?FrameUpdate@CCreatureAction_InterruptableMidAttack@@UAEXXZ
+    virtual bool IsToFaceTargetAtStart() const;                           // slot 74 0x006F58A0 ?IsToFaceTargetAtStart@CCreatureAction_InterruptableMidAttack@@UBE_NXZ
+public:
+    long          InterruptTime;                             // +0x114
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CCreatureAction_InterruptableMidAttack) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CCreatureAction_InterruptableMidAttack, InterruptTime) == 0x114);
+#else
 #pragma pack(push, 1)
 class CCreatureAction_InterruptableMidAttack {
 public:
@@ -100,6 +124,7 @@ public:
 FABLE_STATIC_ASSERT_AT(80, sizeof(CCreatureAction_InterruptableMidAttack) == 0x118);
 FABLE_STATIC_ASSERT_AT(81, offsetof(CCreatureAction_InterruptableMidAttack, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(82, offsetof(CCreatureAction_InterruptableMidAttack, InterruptTime) == 0x114);
+#endif // FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_VIRTUAL_MODEL
 
 #endif // FABLE_RETAIL_CCREATUREACTION_INTERRUPTABLEMIDATTACK_PROTOTYPE
 #endif // FABLE_ENGINE_CCREATUREACTION_INTERRUPTABLEMIDATTACK_H
