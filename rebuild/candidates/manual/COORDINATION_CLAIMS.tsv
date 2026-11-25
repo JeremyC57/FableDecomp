@@ -598,3 +598,4 @@ date	account	item	kind	status	note
 2026-11-25	A	agent NF396 T3 nf391 q11: nine traced STL identities (vector base dtors, tree clear / _M_erase, list erase / clear) to their STLport spellings	naming	done	landing b1 b2 b4 b5 (5 rows); 004e1bd2 / 006ce220 / 004e35d4 / 0057fefb held (T3 nf396)
 2026-11-25	A	agent NF398 T3 nf396 0x004DFB8F unit: map<unsigned __int64, CGroupMemberData> tree members (_M_erase self, clear, binder port) in one landing	naming	claimed	locks via nflocks owner NF398
 2026-11-25	A	agent NF399 T3 nf396 0x00578FF5 / 0x005796AB / 0x004DF54F: EHeroTrainableStatType tree member selves and the CSteeringAgent ~vector thunk	naming	claimed	locks via nflocks owner NF399
+2026-11-25	A	agent NF399 T3 nf396 0x00578FF5 / 0x005796AB / 0x004DF54F: EHeroTrainableStatType tree member selves and the CSteeringAgent ~vector thunk	naming	done	landing b1 (00578ff5, 005796ab); b2 0x004DF54F unit held on ruling Q1

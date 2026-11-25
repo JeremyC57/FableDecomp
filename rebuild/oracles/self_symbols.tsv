@@ -4639,7 +4639,7 @@ address	symbol	status	leaf_given
 00578e1c	?Advance@T@@QAEPADXZ	MATCH	sub_00578e1c
 00578f1a	?_M_create_node@list@FableList_00578f1a@@QAEPAU_List_node@2@ABUSRecord0x1C@2@@Z	RELOCATION_MATCH	_M_create_node
 00578fa1	?BuildTreeArray@@YIXPAUAutoTinyTreeWalker@@UAutoTinyTreeNodeArgument@@@Z	RELOCATION_MATCH	BuildTreeArray
-00578ff5	?BuildTreeArray@Tree@@QAEXPAUNode@@@Z	RELOCATION_MATCH	BuildTreeArray
+00578ff5	?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@Z	RELOCATION_MATCH	?_M_erase@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@Z
 00579044	?Forward_CForwarder_00579044@CForwarder_00579044@@QAEPAXPAX0@Z	RELOCATION_MATCH	Forward_CForwarder_00579044
 00579089	?RBTree_GetMaxNode@@YIPAPAXPAPAX@Z	RELOCATION_MATCH	RBTree_GetMaxNode
 0057909a	?RBTree_GetMaxNode_Alt@@YIPAPAXPAPAX@Z	RELOCATION_MATCH	RBTree_GetMaxNode_Alt
@@ -4665,7 +4665,7 @@ address	symbol	status	leaf_given
 0057962d	?Container_InitMedium1@ListNodeOwner_0057962d@@QAEPAU1@KK@Z	RELOCATION_MATCH	Container_InitMedium1
 00579657	?Container_InitMedium2@ListNodeOwner_00579657@@QAEPAU1@KK@Z	RELOCATION_MATCH	Container_InitMedium2
 00579681	?Container_InitSmall3@ListNodeOwner_00579681@@QAEPAU1@KK@Z	RELOCATION_MATCH	Container_InitSmall3
-005796ab	??1list_T_005796ab@std@@QAE@XZ	RELOCATION_MATCH	??1list_T_005796ab@std@@
+005796ab	??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE@XZ	RELOCATION_MATCH	??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE@XZ
 005796d1	??$_M_allocate_and_copy@PBQAVCComponent@NUISystem@@@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEPAPAVCComponent@NUISystem@@IPBQAV23@0@Z	RELOCATION_MATCH	??$_M_allocate_and_copy
 00579786	?Insert@CRetailList_00579786@@QAEXUSIterator_00579786@@PAX1@Z	RELOCATION_MATCH	Insert
 00579842	?map@map_T_00579842@std@@QAEPAU12@XZ	RELOCATION_MATCH	?map@map_T_00579842@std@@
