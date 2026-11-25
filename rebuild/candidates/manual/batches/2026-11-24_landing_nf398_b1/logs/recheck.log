@@ -1,0 +1,16 @@
+addr       parity           behav  name
+004dfb8f   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@Z -> 004dfb8f labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004dfb8f   WARN RELOC_NAME: ??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z -> 004dbe39 labelled '_global::ScalarDeletingDtor_004dbe39'
+004dfb8f   WARN STANDIN_LEAF ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@Z (catalog LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray; names another function)
+004dfb8f   RELOCATION_MATCH PASS   BuildTreeArray
+004e1bd2   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@Z -> 004dfb8f labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004e1bd2   RELOCATION_MATCH PASS   RbTree_Clear_004e1bd2
+004e350f   RELOCATION_MATCH PASS   StdList_Dtor_004e350f
+00813460   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@Z -> 004dfb8f labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00813460   RELOCATION_MATCH PASS   erase
+
+WINS: 4
+  004dfb8f RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@Z
+  004e1bd2 RELOCATION_MATCH _global::?clear@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEXXZ
+  004e350f RELOCATION_MATCH _global::??1?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAE@XZ
+  00813460 RELOCATION_MATCH std::_Rb_tree<unsigned __int64,std::pair<const unsigned __int64,CGroupMemberData>,...>::?erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@2@0@Z

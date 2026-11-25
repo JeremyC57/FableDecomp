@@ -539,3 +539,15 @@ Where a fix exists the row still holds and takes it (0x00839940 waits for NF341'
 (NAMING_AND_HEADERS: the linker can pick your copy and break the other function) does not apply: the copy is identical to one already
 in the link. First use: 0x00ED8680 CTB_Bard::Main (~CScriptGameResourceObjectMovieBase 0x006E7B80, identical to landed 0x00D62480's copy;
 NF343 group 2: both copy-EQ texts move the leaf 3636 v 3652; batches/2026-11-24_landing_acctB_b24d).
+
+## 2026-11-25 advisor decision (owner delegated), landing nf398: size-pragma scaffolding, a narrow extension
+- Condition 1 ("only that one COMDAT changes"): a compiler-generated function that is instantiated inside the wrapped definition may
+  change along with it, as long as its new copy is EQ at its bound retail address. Example: the `??_G?$pair` that the wrapped
+  `_Destroy` calls became the 31-byte body of 0x004DBE39, where the plain /O2 copy is 33 bytes.
+- Condition 2 ("the owner row sets the same pragmas itself"): when the wrapped function's own retail home has no row, the condition is
+  met by two things together. First, a unique tier-2 home for the copy (here 0x004DD6F3, which has no E8/E9 references). Second, an
+  owner row for its callee that sets the pragma in its source, not through CompilerFlags (here 0x004DBE39 and 0x004DFB8F, both
+  `#pragma optimize("s",on)`). A later row at the home address makes the condition literal.
+- Each opt-in in a block is checked on its own with the others in place. For example, 0x00813460 without
+  FABLE_RETAIL_STLP_GROUP_MEMBER_TREE_CLEAR_SIZE_OWNER changes only `clear`, from 41 to 51 bytes, and its leaf stays RELOCATION_MATCH.
+  Condition 3 is unchanged.

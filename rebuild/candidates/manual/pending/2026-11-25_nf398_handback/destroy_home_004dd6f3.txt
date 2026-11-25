@@ -1,0 +1,30 @@
+masked hits (any offset): 49 ; call resolving to 0x004DBE39: 1
+hit 0x004DD6F3
+## retail 0x004DD6D4..0x004DD70A (start evidence for 0x004DD6F3)
+004dd6d4 55                   push ebp
+004dd6d5 8bec                 mov ebp, esp
+004dd6d7 6a00                 push 0
+004dd6d9 8d450b               lea eax, [ebp + 0xb]
+004dd6dc 50                   push eax
+004dd6dd ff7508               push dword ptr [ebp + 8]
+004dd6e0 e8fce6ffff           call 0x4dbde1
+004dd6e5 5d                   pop ebp
+004dd6e6 c20800               ret 8
+004dd6e9 c3                   ret 
+004dd6ea c3                   ret 
+004dd6eb c3                   ret 
+004dd6ec c3                   ret 
+004dd6ed c3                   ret 
+004dd6ee e9faa1ffff           jmp 0x4d78ed
+004dd6f3 6a00                 push 0
+004dd6f5 e83fe7ffff           call 0x4dbe39
+004dd6fa c3                   ret 
+004dd6fb 51                   push ecx
+004dd6fc 8d442403             lea eax, [esp + 3]
+004dd700 50                   push eax
+004dd701 e852e7ffff           call 0x4dbe58
+004dd706 59                   pop ecx
+004dd707 c20400               ret 4
+## references to 0x004DD6F3 / 0x004DBE39
+004dd6f3  (0)
+004dbe39 call 004dd6f5 | call 004dfbae (2)

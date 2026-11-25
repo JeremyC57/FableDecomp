@@ -1,0 +1,1 @@
+scan_u2.tsv marks ??$_Destroy (YI) RESIDUE for 004dfb8f / 00813460 only because its home 0x004DD6F3 is neither a catalog start nor 16-aligned (tier398 counts only those). Hand check: evidence/destroy_home_004dd6f3.txt (unique any-offset masked match, call resolves to 0x004DBE39): TIER2 home 0x004DD6F3 (RULINGS Q3). Not a hold.

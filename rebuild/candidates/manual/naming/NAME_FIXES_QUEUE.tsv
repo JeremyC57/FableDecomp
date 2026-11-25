@@ -13661,3 +13661,7 @@ nf395	0x00762480	??1CBasicShape@NShape@@UAE@XZ	FableWin.pdb 025d8520 + Ego_r.pdb
 nf395	0x00728A40	std::__uninitialized_fill_n<CMeshMorphSetParts*,unsigned int,CMeshMorphSetParts>	catalog label / file name (self respelt nf395_b1)	_global::UninitFillN/UninitCopy_SPairLongCSecond_005bbdf1
 nf395	0x00728B10	std::__uninitialized_copy<CMeshMorphSetParts*,CMeshMorphSetParts*>	catalog label / file name (self respelt nf395_b1)	_global::UninitFillN/UninitCopy_SPairLongCSecond_005bbdf1
 nf395	0x00728B50	std::uninitialized_fill_n<CMeshMorphSetParts*,unsigned int,CMeshMorphSetParts>	catalog label / file name (self respelt nf395_b1)	_global::UninitFillN/UninitCopy_SPairLongCSecond_005bbdf1
+nf398	0x004DFB8F	?_M_erase@ (STLport, CGroupMemberData tree; self respelt nf398_b1)	catalog label / file name	LTextTreeWalkThrough::BuildTreeArray
+nf398	0x004E1BD2	?clear@ (STLport, CGroupMemberData tree; self respelt nf398_b1)	catalog label / file name	RbTree_Clear_004e1bd2 / CTCCarryable_OnKill
+nf398	0x004E350F	??1?$_Rb_tree (CGroupMemberData tree; self respelt nf398_b1)	catalog label / file name	StdList_Dtor_004e350f / CActiveFile_OnReadFinished
+nf398	0x004DBE39	??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z (table line nf398_b1; self re-row queued T3 nf398)	catalog label / self / file name	ScalarDeletingDtor_004dbe39 / CLandscapeBackgroundPatch vector_deleting_destructor

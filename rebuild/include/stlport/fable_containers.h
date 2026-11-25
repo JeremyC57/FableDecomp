@@ -363,6 +363,16 @@ inline void _Destroy(char*,char*) { }
 template<class T,class U> inline void _Construct(T* p,U v) { new(p) T(v); }
 template<class T> inline void _Destroy(T* p) { p->~T(); }
 inline void _Destroy(char*,char*) { }
+#elif defined(FABLE_RETAIL_STLP_DESTROY_FASTCALL)
+// NF398 opt-in (2026-11-25, the map<unsigned __int64, CGroupMemberData> tree rows 0x004DFB8F _M_erase / 0x00813460 erase(first,
+// last)): the /Gr TU's _construct.h _Destroy as a __fastcall COMDAT (p in ecx): retail keeps that instance's out-of-line copy at
+// 0x004DD6F3 (`push 0 ; call ??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z 0x004DBE39 ; ret`, unreferenced, 8 bytes), the
+// destroy both rows expand inline (the /O2 row also takes engine/CGroupMemberData.h's FABLE_RETAIL_STLP_GROUP_MEMBER_DESTROY_SIZE_OWNER).
+// The cdecl default emits a 12-byte copy that retail has nowhere. The default branch's text with __fastcall on _Destroy only (the
+// FABLE_RETAIL_STLP_CONSTRUCT_FASTCALL pattern).
+template<class T,class U> inline void _Construct(T* p,const U& v) { new(p) T(v); }
+template<class T> inline void __fastcall _Destroy(T* p) { p->~T(); }
+inline void _Destroy(char*,char*) { }
 #else
 #if defined(FABLE_RETAIL_QUICK_MENU_PAIR_CONSTRUCT_PASS27)
 // Inline-budget: native 005947B6 and 0059400C expand the real pair placement construction.

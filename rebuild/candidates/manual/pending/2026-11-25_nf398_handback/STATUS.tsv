@@ -1,0 +1,7 @@
+address	status	batch	note
+004dfb8f	ACCEPT	b1	respelt self _M_erase (lock kept)
+00813460	HOLD_RULING Q1	b1	gate-clean; ACCEPT on yes, else held/00813460_q1_no.cpp; ported onto fable_map.h, respelt self erase(first,last) (lock kept)
+004e1bd2	ACCEPT	b1	NF396 b3 text, clear (lock kept)
+004e350f	ACCEPT	b1	separable; ~_Rb_tree by reference sites (deciding probe DIFFER 25v19) (lock kept)
+004dbe39	queued	-	NAME_FIXES self ??_G pair (table line fixed in b1)
+004e5c71	queued	-	port ~CTCCreatureGroup, then delete the FableDestVal line at 004e350f

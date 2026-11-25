@@ -1,0 +1,15 @@
+T3 nf396 0x004DFB8F (NF398): unit b1 respells 0x004DFB8F (_M_erase), 0x004E1BD2 (clear; NF396 held b3), 0x00813460 (erase(first,last), ported onto
+stlport/fable_map.h) and 0x004E350F (~_Rb_tree) of map<unsigned __int64, CGroupMemberData> (CTCCreatureGroup::Members); the 4-argument
+_M_erase line is replaced (one address, one name). New / remaining queue lines:
+nf398	0x004E5C71	port	~CTCCreatureGroup: port onto engine/CTCCreatureGroup.h (FABLE_RETAIL_CTCBOASTINGCROWDCONTROL branch); its Members destruction then binds ??1?$_Rb_tree (0x004E350F, b1); delete ?inner@FableDestVal_004e5c71_t@@QAIXXZ -> 004e350f in that landing. Probe batches/b1/evidence/probe/dtor_004e5c71.cpp grades DIFFER 25v19: VC7.1 stores the vftable before the member destructor, retail does not (open: novtable / vtordisp-style question).
+nf398	0x004DBE39	identity	self is the stand-in ?vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z; the body is ??_G?$pair@$$CB_KVCGroupMemberData@@@std@@QAEPAXI@Z (b1 table line, EQ copies from 0x004DFB8F and 0x00813460). Compiler-generated: needs the nf86/nf88 pick-any re-row form.
+nf398	0x004DD6F3	catalog	no catalog row: __fastcall ??$_Destroy@U?$pair@$$CB_KVCGroupMemberData@@@std@@@std@@YIXPAU?$pair@$$CB_KVCGroupMemberData@@@0@@Z (8 bytes, unreferenced; the copy b1's two rows emit, FABLE_RETAIL_STLP_DESTROY_FASTCALL). Boundary add + row (pick-any form).
+nf398	0x004E409B	catalog	no catalog row: ??1?$map@_KVCGroupMemberData@@U?$less@_K@std@@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@3@@std@@QAE@XZ (5-byte jmp 0x004E350F, unreferenced; the probe compile emits exactly this ~map). Boundary add + row.
+nf398	debt	pick-any	allocator<_Rb_tree_node<pair<const unsigned __int64, CGroupMemberData> > >::deallocate has two bodies after b1: 20 bytes /Os (0x004DFB8F, 0x004E350F objects) v 18 bytes /O2 (0x00813460); both unreferenced, retail homes TIER2_NOT_UNIQUE for each shape (RULINGS_NEEDED Q2).
+nf398	catalog	relabel	0x004DFB8F LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray, 0x004E1BD2 RbTree_Clear_004e1bd2, 0x004E350F StdList_Dtor_004e350f, 0x004DBE39 ScalarDeletingDtor_004dbe39 -> the b1 / table spellings (vland WARN STANDIN_LEAF / RELOC_NAME).
+nf398	tests	respell	the 0x004DFB8F / 0x004E1BD2 / 0x004E350F behaviour tests still model the old stand-in names (LTextTreeWalkThrough, OnKill, CActiveFile); unchanged in b1 (PASS).
+nf398	0x0057FEFB	lever	NF396 Q2 (R1 residue: cdecl ??$_Destroy<pair<const CCharString, MirroredCriminalStatus>> with no retail copy) is the same class b1 solved with FABLE_RETAIL_STLP_DESTROY_FASTCALL: retail kept the __fastcall _Destroy for this map at 0x004DD6F3. Try the opt-in there and scan for a __fastcall copy (`jmp ~CCharString` or `push 0 ; call ??_G ; ret`) before the Q2 ruling.
+Existing queue lines this closes or narrows:
+nf396	0x004DFB8F	closed by b1 (with 0x00813460's Q1).
+nf391	0x006CE220	narrow: drop 004e1bd2 from its 'left of q11' list (b1).
+nf396	0x005796AB	narrow: drop the 0x004E350F twin pattern (b1 decided it as ~_Rb_tree by reference sites).
