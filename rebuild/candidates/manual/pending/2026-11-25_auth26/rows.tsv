@@ -1,0 +1,11 @@
+address	module	name	retail_len	best_on_record	closest_version	catalog_name
+005dcc00	CAnimationSet	GetRandomAnim	264	DIFFER(278v264)	rebuild/candidates/manual/pending/2026-11-10_linux_hand1014/differ/005dcc00.cpp	
+00723e50	_global	CCharacter_UpdateOrientation	310	DIFFER(306v310)	rebuild/candidates/manual/pending/2026-10-27_linux_hand523/differ/00723e50.cpp	
+0062bd80	CWorld	EAControlledCreatureStrafe	354	DIFFER(339v354)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/0062bd80.cpp	
+006c0b20	CTCBuyableHouse	FindPosToCreateNewVillager	368	DIFFER(383v368)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/006c0b20.cpp	
+0091c220	CAIStateGroup_NymphAttack	IsTargetInLineOfSight	419	egod3a: DIFFER 416v419 -- old local-model draft (97 masked diff lines); needs a new CAIStateGroup_NymphAttack header (no	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0091c220.cpp	
+00644677	CDrawLetterBoxBlackBars	Draw	454	DIFFER(439v454)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ15/differ/00644677.cpp	
+008f45f0	CCreatureAction_DragonSwoop	?FrameUpdate@CCreatureAction_DragonSwoop@@UAEXXZ	493	DIFFER(507v493)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ14/differ/008f45f0.cpp	
+00935c40	CAIStateGroup_MinionPutOutFires	GoToWell	502	egod3a: DIFFER 499v502 -- old local-model draft (72 masked); needs a new CAIStateGroup_MinionPutOutFires header; sibling	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/00935c40.cpp	
+0068ef50	CInputProcessUseRangedWeapon	ProcessRangedAttackInput	550	egod3a: DIFFER 547v550 -- old local-model draft (114 masked, /GS); no CInputProcessUseRangedWeapon header; siblings loca	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/0068ef50.cpp	
+009f3da0	CSurface	CopyToMemoryB8G8R8A8	582	DIFFER(589v582)	rebuild/candidates/manual/pending/2026-11-11_linux_handQ10/differ/009f3da0.cpp	
