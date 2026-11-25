@@ -20048,7 +20048,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0074a5d0	GetValidPositions	NCreatureHiding	__fastcall	void	7	vector<C3DVector,std::allocator<C3DVector>_> *,CWorldMap *,CThingSearchTools *,C3DVector *,float,bool,CTCShapeManager *	1	yes	accepted									
 0074aa00	CTCCreatureGenerator	CTCCreatureGenerator	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 0074ab00	Destroy	CTCCreatureGenerator	unknown	undefined	0		0	yes	accepted									
-0074ac80	AddShopper	CTCShop	unknown	undefined	0		0	yes	accepted									
+0074ac80	AddCreatureTriggerer	CTCCreatureGenerator	unknown	undefined	0		0	yes	accepted									
 0074ace0	UpdateUndead	CTCCreatureGenerator	__thiscall	void	1	CTCCreatureGenerator *	1	yes	accepted									
 0074af50	CreateCreaturesUndead	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,CThingCreatureBase *	1	yes	accepted									
 0074b2b0	CreateCreatures	CTCCreatureGenerator	__thiscall	void	2	CTCCreatureGenerator *,CThingCreatureBase *	1	yes	accepted									
@@ -21639,7 +21639,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00793b60	PerEffectInfo	CTCUnholyPower::PerEffectInfo	__thiscall	undefined	2	pair<long,CIntelligentPointer<CThing>_> *,pair<long,class_CIntelligentPointer<class_CThing>_> *	0	yes	accepted									
 00793bb0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 00793c00	CTargetAndThing_00793c00	CTargetAndThing_00793c00	__thiscall	undefined	1	CAIStateGroup_OpinionReactionRoot *	0	yes	accepted									
-00793cb0	GetDamageMultiplier	CTCDivineWrath	__thiscall	float	1	CTCDivineWrath *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CTCDivineWrath_GetDamageMultiplier_00793cb0.cpp
+00793cb0	GetDamageMultiplier	CTCUnholyPower	__thiscall	float	1	CTCDivineWrath *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\79\CTCDivineWrath_GetDamageMultiplier_00793cb0.cpp
 00793cc0	Attackable	CTCUnholyPower	__thiscall	bool	2	CTCDivineWrath *,CThingCreatureBase *	1	yes	accepted									
 00793d20	SetPTarget	CTCUnholyPower	__thiscall	void	1	CTCDivineWrath *	1	yes	accepted									
 00793e00	ResetCreatureHitState	CTCUnholyPower	__thiscall	void	2	CTCDivineWrath *,CIntelligentPointer<CThingCreatureBase>	1	yes	accepted									
@@ -36675,7 +36675,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a36f80	PostConstructionInit	CClass	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CThingFilterIsValid_opcall_00a36f80.cpp
 00a36f90	AddNewClassType	CClassFactory	__thiscall	void	2	CClassFactory *,CClassTypeInit *	1	yes	accepted									
 00a36fc0	GetNoAllocatedOfType	CClassFactory	unknown	undefined	0		0			discovered	gapscan							
-00a36fe0	CallAll	CListOwner_00a36fe0	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
+00a36fe0	Validate	CClassFactory	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
 00a37060	GetClassNumberFromName	CClassFactory	__thiscall	long	2	CClassFactory *,CCharString *	1	yes	accepted									
 00a37130	DeleteAllClasses	CClassFactory	__thiscall	void	1	CClassFactory *	1	yes	accepted									
 00a37160	Unregister	CClass	__thiscall	void	2	CClassFactory *,CClass *	1	yes	accepted									

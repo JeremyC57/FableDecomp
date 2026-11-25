@@ -1,0 +1,4 @@
+006e72a0	src	DIFF		rebuild/src/compiled/00/6e/CGameScriptInterface_Validate_006e72a0.cpp
+006e72a0	test	DIFF		rebuild/tests/00/6e/CGameScriptInterface_Validate_006e72a0_test.cpp
+00a36fe0	src	DIFF		rebuild/src/compiled/00/a3/CClassFactory_Validate_00a36fe0.cpp
+00a36fe0	test	DIFF		rebuild/tests/00/a3/CClassFactory_Validate_00a36fe0_test.cpp

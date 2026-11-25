@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006e72a0   WARN RELOC_NAME: ?Validate@CClassFactory@@QAEXXZ -> 00a36fe0 labelled 'CListOwner_00a36fe0::CallAll'
+006e72a0   RELOCATION_MATCH PASS   Validate
+00a36fe0   WARN STANDIN_LEAF ?Validate@CClassFactory@@QAEXXZ (catalog CListOwner_00a36fe0::CallAll; names another function)
+00a36fe0   MATCH            PASS   CallAll
+
+WINS: 2
+  006e72a0 RELOCATION_MATCH CGameScriptInterface::?Validate@CGameScriptInterface@@UBEXXZ
+  00a36fe0 MATCH CClassFactory::?Validate@CClassFactory@@QAEXXZ

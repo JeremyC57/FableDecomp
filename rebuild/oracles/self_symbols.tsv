@@ -8774,7 +8774,7 @@ address	symbol	status	leaf_given
 006e71b0	?IsActiveThreadTerminating@CGameScriptInterface@@UBE_NXZ	RELOCATION_MATCH	?IsActiveThreadTerminating@CGameScriptInterface@@UBE_NXZ
 006e71f0	?Rest@CGameScriptInterface@@IBEXM@Z	RELOCATION_MATCH	?Rest@CGameScriptInterface@@IBEXM@Z
 006e7290	?EndLetterBox@CGameScriptInterface@@MAEXXZ	RELOCATION_MATCH	EndLetterBox
-006e72a0	?Validate@CGameScriptInterface@@QAEXXZ	RELOCATION_MATCH	Validate
+006e72a0	?Validate@CGameScriptInterface@@UBEXXZ	RELOCATION_MATCH	Validate
 006e7300	?CGameScriptInterface_IsCameraPosOnScreen@@YI_NPAVCGameScriptInterface@@HPAX@Z	MATCH	IsCameraPosOnScreen
 006e7340	?GetGameAngleXY@CGameScriptInterface@@UBEMXZ	RELOCATION_MATCH	?GetGameAngleXY@CGameScriptInterface@@UBEMXZ
 006e7410	?NewScriptFrame@CGameScriptInterface@@UBEXXZ	RELOCATION_MATCH	?NewScriptFrame@CGameScriptInterface@@UBEXXZ
@@ -10863,7 +10863,7 @@ address	symbol	status	leaf_given
 00793a80	??0SIcicleRecord_00793a80@@QAE@ABU0@@Z	RELOCATION_MATCH	??0PerCreatureInfo@
 00793bb0	?Decrement@CRetailTreeIterator@@QAEAAU1@XZ	MATCH	Decrement
 00793c00	??0CTargetAndThing_00793c00@@QAE@J@Z	RELOCATION_MATCH	??0CTargetAndThing_00793c00@
-00793cb0	?GetDamageMultiplier@@YIMPAUS@@@Z	MATCH	GetDamageMultiplier
+00793cb0	?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ	MATCH	GetDamageMultiplier
 00793cc0	?Attackable@CTCUnholyPower@@AAE_NPAVCThingCreatureBase@@@Z	RELOCATION_MATCH	?Attackable@CTCUnholyPower@@AAE_NPAVCThingCreatureBase@@@Z
 00793d20	?SetPTarget@CTCUnholyPower@@AAEXXZ	RELOCATION_MATCH	?SetPTarget@CTCUnholyPower@@AAEXXZ
 00793ec0	?UnsheatheWeapon@CTCUnholyPower@@AAEXXZ	RELOCATION_MATCH	?UnsheatheWeapon@CTCUnholyPower@@AAEXXZ
@@ -19051,7 +19051,7 @@ address	symbol	status	leaf_given
 00a36480	?GetNoDummyObjects@C3DMeshObject@@QBEJABVCCharString@@@Z	RELOCATION_MATCH	GetNoDummyObjects
 00a36df0	?GetEventTime@C3DMeshObject@@QAEMJPBUSAnimationRef@@PBUSAnimationSource@@@Z	RELOCATION_MATCH	GetEventTime
 00a36e70	??0C3DMeshObject@@QAE@PAVC3DMeshInfo@@ABVC3DVector@@ABVCRightHandedSet@@M@Z	RELOCATION_MATCH	??0C3DMeshObject@
-00a36fe0	?CallAll@CListOwner_00a36fe0@@QAEXXZ	MATCH	CallAll
+00a36fe0	?Validate@CClassFactory@@QAEXXZ	MATCH	CallAll
 00a37060	?GetClassNumberFromName@CClassFactory@@IBEJABVCCharString@@@Z	RELOCATION_MATCH	?GetClassNumberFromName@CClassFactory@@IBEJABVCCharString@@@Z
 00a37130	?DeleteAllClasses@CClassFactory_Retail@@QAEXXZ	MATCH	DeleteAllClasses
 00a37160	?UnregisterFromFactory@CClass_Retail@@QAEXPAUCClassFactory_Retail@@@Z	RELOCATION_MATCH	Unregister
@@ -28133,3 +28133,5 @@ address	symbol	status	leaf_given
 00c71400	??_GCVtable_012bede0@@UAEPAXI@Z	RELOCATION_MATCH	??_GCVtable_012bede0@@UAEPAXI@Z
 00c55270	?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z	RELOCATION_MATCH	?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z
 00c556e0	?Create@CSalSw3DVoice@@UAEHPBVCCodaSource@@@Z	RELOCATION_MATCH	?Create@CSalSw3DVoice@@UAEHPBVCCodaSource@@@Z
+0074ac80	?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	RELOCATION_MATCH	?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z
+0089ec60	?CreatureGeneratorAddTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z	RELOCATION_MATCH	?CreatureGeneratorAddTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z

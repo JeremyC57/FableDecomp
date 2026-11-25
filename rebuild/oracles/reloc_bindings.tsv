@@ -2274,7 +2274,6 @@ _JR_Helper@8	00687d50	006a40b0
 ??_7CScriptGameResourceObjectBase@@6B@	0126008c	006e70a0
 ??_7CGameScriptInterfaceBase@@6B@	0126009c	006e7150
 ?EndLetterBox@CDisplayEngine@@QAEXXZ	004349d0	006e7290
-?InterruptAllNavigators@CNavigatorManager@@QAEXXZ	00a36fe0	006e72a0
 ?FreezePlayerControls@CPlayerManager@@QAEXJ@Z	00449a30	006e73b0
 ?UnfreezePlayerControls@CPlayerManager@@QAEXJ@Z	00449a50	006e73e0
 ?LowerBound@TimerMap@@QAE?AUIter@@PBJ@Z	006e7c40	006e7710
@@ -3349,8 +3348,6 @@ _FableSpellWrap_880200@4	006af630	00880200
 ?CanThingBe_Sensed_ByOtherThing@CGameScriptInterface@@ABE_NABVCScriptThing@@0J@Z	0089c910	0089cd50
 ?GetHearingRadius@CTCHearing_Retail@@QAEMXZ	00744440	0089d340
 ?g_pPlayerGui@@3PAUCPlayerGuiCalls_Retail@@A	013b8790	0089d600
-?consume_0074ac80@BObj@@QAEXPAU1@@Z	0074ac80	0089ec60
-?find@MapT@@QAEPAUNode@@PAH@Z	0040f020	0089ec60
 ?RemoveTC@CThingKill_Retail@@QAEXJ@Z	004c9840	008a0820
 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	008a12a0
 ?FinalCall@@YIXPAX@Z	00747560	008a1300
@@ -8647,7 +8644,6 @@ __imp__GetSysColor@4	01440374	009a5490
 ??_7CSpecialAbilitiesDivineWrathDef@@6B@	0123487c	00458033
 ??_7CSpecialAbilitiesUnholyPowerDef@@6B@	012348e4	004581f8
 ??_7CTCPhysicsBase@@6B@	0125d2c4	006b0730
-?find@MapT@@QAEPAUNode@@ABK@Z	0040f020	0089ec60
 ?g_bLoadFromAnyDirectory@@3_NA	013b8646	004a3200
 ??1CRegion@@QAE@XZ	0051a110	00506940
 ??_7CWorldMap@@6BCWorldMapBase2@@@	01244ab4	00506940
@@ -8898,7 +8894,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ??$__uninitialized_fill_n@UElement@N0085ebb0@@@N0085ebb0@@YIPAUElement@0@PAU10@IABU10@@Z	0085e440	0085ebb0
 ??0Buffer@N0085ebb0@@QAE@ABU01@@Z	0085de40	0085ebb0
 ?A@Component@Row00868b40@@QAEMXZ	0078be40	00868b40
-?C@Component@Row00868b40@@QAEMXZ	00793cb0	00868b40
 ??$__copy_backward@UElement@N008890f0@@@N008890f0@@YIPAUElement@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	00885e60	008890f0
 ??$fill@UElement@N008890f0@@@N008890f0@@YIXPAUElement@0@0ABU10@@Z	00885d90	008890f0
 ??$__uninitialized_copy@UElement@N008890f0@@@N008890f0@@YIPAUElement@0@PAU10@00ABU__false_type@0@@Z	00885ca0	008890f0
@@ -38732,3 +38727,6 @@ __real@0000000000000000	0122ed70	00b260b0
 ?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CTCHeroRangedAttacks@@QBEMXZ	00789cc0	00698d10
 ?GetPerArrowDamageMultiplier@CTCMultiArrow@@QBEMXZ	007cbf50	007bdcfc
 ?GetDamageMultiplier@CTCDivineWrath@@QBEMXZ	0078e7b0	00868b40
+?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ	00793cb0	00868b40
+?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	0074ac80	0089ec60
+?Validate@CClassFactory@@QAEXXZ	00a36fe0	006e72a0

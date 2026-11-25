@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ	00793cb0	00868b40	NF446 unit u1: the respelt caller binds the PDB spelling at this target (self 0x00793CB0 respelt in the same batch)
+delete	?C@Component@Row00868b40@@QAEMXZ	00793cb0	00868b40	NF446: the stand-in is bound only by 0x00868B40 (reloc_bindings; Row00868b40 is spelt only by that row and its self-clone test), which now binds the PDB name

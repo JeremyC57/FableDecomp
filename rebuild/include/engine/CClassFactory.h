@@ -18,6 +18,13 @@ protected:
     virtual void AddNewClassType(const CClassTypeInit&);
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);
+#ifdef FABLE_RETAIL_CCLASSFACTORY_VALIDATE
+public:
+    // Opt-in (NF435, row 0x006E72A0 CGameScriptInterface::Validate): Ego_r.pdb / FableWin.pdb ?Validate@CClassFactory@@QAEXXZ (public), out of line
+    // in retail at 0x00A36FE0 (the row's tail-jump target after CWorld slot 3 GetThingManager; FableWin's /Od body calls it). Declaration only.
+    void Validate();                                                    // 0x00A36FE0
+protected:
+#endif
 #ifdef FABLE_RETAIL_CCLASSFACTORY_MOVEALLOCATEDCLASS
 public:
     // NF62 opt-in (2026-11-17, row 0x004CA010 CThing::ConstructFromParams): Ego_r.pdb ?MoveAllocatedClassInLists@CClassFactory@@QAEXAAVCClass@@J_N@Z

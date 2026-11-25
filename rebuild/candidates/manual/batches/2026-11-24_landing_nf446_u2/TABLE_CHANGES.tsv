@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+add	?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z	0074ac80	0089ec60	NF446 unit u2 (NF435 hold row): the row binds the PDB name at this target; self 0x0074AC80 respelt to it in the same batch
+delete	?consume_0074ac80@BObj@@QAEXPAU1@@Z	0074ac80	0089ec60	NF435/NF446: no other landed source spells consume_0074ac80 (grep), the only binder 0x0089EC60 now binds the PDB name
+delete	?find@MapT@@QAEPAUNode@@ABK@Z	0040f020	0089ec60	NF435/NF446: the stand-in class MapT is spelt only by 0x0089EC60 at HEAD (whole-word grep; 0x0089ECC0 was ported by nf435 b1); the row now binds the established LowerBound spelling (R-NF435-1)
+delete	?find@MapT@@QAEPAUNode@@PAH@Z	0040f020	0089ec60	NF435/NF446: as above (MapT spelt only by 0x0089EC60 at HEAD)

@@ -1,2 +1,68 @@
+// Behaviour test for 0x0089EC60 CGameScriptInterface::CreatureGeneratorAddTriggerer (NF435): links the row object (the row is called by its own
+// symbol: a qualified call, not through the vftable). No class body is defined here: every class comes from the row's shared
+// headers (its prelude below, verbatim); callees are defined here as out-of-line members that record their calls.
+// The generator component (0x3D) is planted on the first thing; AddCreatureTriggerer must get the second thing when its type flags have bit 8.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHINGPHYSICAL
+#define FABLE_RETAIL_CTHINGGAMEOBJECT
+#define FABLE_RETAIL_CTHINGCREATUREBASE
+#define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CTCCREATUREGENERATOR
+#define FABLE_RETAIL_CTCCREATUREGENERATOR_SCRIPTTRIGGERERS
+#include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
+#include "engine/CThing.h"
+#include "engine/CThingCreatureBase.h"
+#include "engine/CTCCreatureGenerator.h"
+#include "engine/GFDebugPDynamicCast.h"
 #include <stdio.h>
-int main(void){ printf("PASS_0089ec60\n"); return 0; }
+#include <string.h>
+static void* g_ret = 0; static void* g_ret2 = 0; static bool g_alive = true; static int g_gets = 0;
+extern "C" void* __fastcall nf435_get_pthing(const void*) { ++g_gets; return g_ret; }     // CScriptThing slot 11 (+0x2c)
+extern "C" void* __fastcall nf435_get_pthing2(const void*) { ++g_gets; return g_ret2; }
+extern "C" bool __fastcall nf435_is_alive(const void*) { return g_alive; }                // CScriptThing slot 75 (+0x12c)
+static void* g_svtbl[79]; static void* g_svtbl2[79]; static void* g_script[3]; static void* g_script2[3];
+static void nf435_scripts(void)
+{
+    g_svtbl[11] = (void*)&nf435_get_pthing; g_svtbl[75] = (void*)&nf435_is_alive; g_script[0] = g_svtbl;
+    g_svtbl2[11] = (void*)&nf435_get_pthing2; g_svtbl2[75] = (void*)&nf435_is_alive; g_script2[0] = g_svtbl2;
+}
+#define NF435_SCRIPT (*(const CScriptThing*)g_script)
+#define NF435_SCRIPT2 (*(const CScriptThing*)g_script2)
+typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > NF435Map;
+// CVectorMap::LowerBound comes from the row object (the header's template body, the same code retail calls out of line).
+static unsigned char g_thing[0x200];                       // CThing: UsingComponents +0x20, Components +0x44 / +0x48, dead flag byte +0x91
+static unsigned char g_thing2[0x200];
+static NF435Map::value_type g_pairs[3];
+static void nf435_plant(unsigned char* thing, int id, void* tc)   // three sorted entries around id, the bit for id set
+{
+    memset(thing, 0, 0x200);
+    g_pairs[0].first = (ETCInterfaceType)(id - 1); g_pairs[0].second = 0;
+    g_pairs[1].first = (ETCInterfaceType)id;       g_pairs[1].second = (CTCBase*)tc;
+    g_pairs[2].first = (ETCInterfaceType)(id + 1); g_pairs[2].second = 0;
+    *(void**)(thing + 0x44) = g_pairs; *(void**)(thing + 0x48) = g_pairs + 3;
+    thing[0x20 + id / 8] |= (unsigned char)(1 << (id % 8));
+}
+static void nf435_clear(unsigned char* thing, int id) { thing[0x20 + id / 8] &= (unsigned char)~(1 << (id % 8)); }
+static long g_gen[0x40]; static int g_add = 0, g_rem = 0; static const void* g_this = 0; static const void* g_arg = 0;
+void CTCCreatureGenerator::AddCreatureTriggerer(CThingCreatureBase& c) { ++g_add; g_this = this; g_arg = &c; }
+void CTCCreatureGenerator::RemoveCreatureTriggerer(CThingCreatureBase& c) { ++g_rem; g_this = this; g_arg = &c; }
+static long g_gsi[0x50 / 4];
+static int run(bool bit, unsigned long flags, int calls)
+{
+    nf435_plant(g_thing, 0x3d, g_gen); if (!bit) nf435_clear(g_thing, 0x3d);
+    memset(g_thing2, 0, sizeof g_thing2); *(unsigned long*)(g_thing2 + 0x6c) = flags;
+    g_ret = g_thing; g_ret2 = g_thing2; g_add = 0; g_rem = 0;
+    ((const CGameScriptInterface*)g_gsi)->CGameScriptInterface::CreatureGeneratorAddTriggerer(NF435_SCRIPT, NF435_SCRIPT2);
+    return g_add == calls && g_rem == 0 && (!calls || (g_this == (const void*)g_gen && g_arg == (const void*)g_thing2));
+}
+int main(void)
+{
+    nf435_scripts();
+    if (!run(true, 8, 1) || !run(true, 0x0e, 1) || !run(true, 4, 0) || !run(false, 8, 0)) { printf("FAIL_0089ec60\n"); return 1; }
+    printf("PASS_0089ec60 PASS_0089ec60\n"); return 0;
+}

@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	?Validate@CClassFactory@@QAEXXZ	00a36fe0	006e72a0	NF446 unit u3: the row tail-jumps to the PDB name at this target; self 0x00A36FE0 respelt to it in the same batch
+delete	?InterruptAllNavigators@CNavigatorManager@@QAEXXZ	00a36fe0	006e72a0	NF446: bound only by 0x006E72A0 (reloc_bindings), which now binds ?Validate@CClassFactory@@QAEXXZ; the real CNavigatorManager::InterruptAllNavigators is 0x00A14F40 (landed self ?InterruptAllNavigators@CNavigatorManager@@AAEXXZ)

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0074ac80   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0074ac80   WARN SHARED_HEADER_AVAILABLE CTCCreatureGenerator (engine/CTCCreatureGenerator.h)
+0074ac80   WARN STANDIN_LEAF ?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z (catalog CTCShop::AddShopper; names another function)
+0074ac80   RELOCATION_MATCH PASS   AddShopper
+0089ec60   WARN RELOC_NAME: ?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z -> 0074ac80 labelled 'CTCShop::AddShopper'
+0089ec60   RELOCATION_MATCH PASS   CreatureGeneratorAddTriggerer
+
+WINS: 2
+  0074ac80 RELOCATION_MATCH CTCCreatureGenerator::?AddCreatureTriggerer@CTCCreatureGenerator@@QAEXAAVCThingCreatureBase@@@Z
+  0089ec60 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorAddTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z

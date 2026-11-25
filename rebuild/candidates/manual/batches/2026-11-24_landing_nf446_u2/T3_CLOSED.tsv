@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf291	0x0074ac80	entry 4: binder(s) opened: local BObj::consume_0074ac80(BObj*) for the PDB CTCShop::AddShopper(CThingCreatureBase*): stand-in class and parameter type. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3	NF291 skipped-port
+nf324	0x0089EC60	port	0089ec60 skipped-port ?CreatureGeneratorAddTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z triage (-): params: used parameter p0 is `Host*`, the PDB type is `const class CScriptThing&` (alias pattern)

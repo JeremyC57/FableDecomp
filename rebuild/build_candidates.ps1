@@ -34851,9 +34851,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00793cb0'
-        Module = 'CTCDivineWrath'
-        Source = '00/79/CTCDivineWrath_GetDamageMultiplier_00793cb0.cpp'
-        TestSource = '00/79/CTCDivineWrath_GetDamageMultiplier_00793cb0_test.cpp'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_GetDamageMultiplier_00793cb0.cpp'
+        TestSource = '00/79/CTCUnholyPower_GetDamageMultiplier_00793cb0_test.cpp'
         PassPattern = '00793cb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -206130,9 +206130,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a36fe0'
-        Module = 'CListOwner_00a36fe0'
-        Source = '00/a3/CListOwner00a36fe0_CallAll_00a36fe0.cpp'
-        TestSource = '00/a3/CListOwner00a36fe0_CallAll_00a36fe0_test.cpp'
+        Module = 'CClassFactory'
+        Source = '00/a3/CClassFactory_Validate_00a36fe0.cpp'
+        TestSource = '00/a3/CClassFactory_Validate_00a36fe0_test.cpp'
         PassPattern = '00a36fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -294687,9 +294687,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0074ac80'
-        Module = 'CTCShop'
-        Source = '00/74/CTCShop_AddShopper_0074ac80.cpp'
-        TestSource = '00/74/CTCShop_AddShopper_0074ac80_test.cpp'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_AddCreatureTriggerer_0074ac80.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_AddCreatureTriggerer_0074ac80_test.cpp'
         PassPattern = '0074ac80_TEST PASS'
     }
     [pscustomobject]@{

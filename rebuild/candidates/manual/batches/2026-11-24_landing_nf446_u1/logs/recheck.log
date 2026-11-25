@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00793cb0   WARN STANDIN_LEAF ?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ (catalog CTCDivineWrath::GetDamageMultiplier; names another function)
+00793cb0   MATCH            PASS   GetDamageMultiplier
+00868b40   WARN SHARED_HEADER_AVAILABLE CTCDivineWrath (engine/CTCDivineWrath.h)
+00868b40   WARN SHARED_HEADER_AVAILABLE CTCUnholyPower (engine/CTCUnholyPower.h)
+00868b40   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00868b40   WARN SHARED_HEADER_AVAILABLE CHeroAbilityStatWeight (engine/CHeroAbilityStatWeight.h)
+00868b40   RELOCATION_MATCH PASS   GetToughnessDamageReductionFactorForThing
+
+WINS: 2
+  00793cb0 MATCH CTCUnholyPower::?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ
+  00868b40 RELOCATION_MATCH _global::?GetToughnessDamageReductionFactorForThing@?A0x
