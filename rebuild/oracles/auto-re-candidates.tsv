@@ -16310,7 +16310,7 @@ address	name	length	bytes
 00cbd4b0	CScriptBase::RegisterMain	1	c3
 00cbd4c0	CScriptBase::Main	1	c3
 00cbd4d0	CScriptBase::Init	1	c3
-00cbd4e0	sub_00cbd4e0	3	c20400
+00cbd4e0	CScriptBase::OnPersist	3	c20400
 00cd42e0	CCountedPointer<CScriptDefinitionManager>::DeleteData	11	85c974068b016a01ff10c3
 00cd4640	sub_00cd4640	3	c20400
 00cd4650	sub_00cd4650	1	c3
@@ -16327,10 +16327,10 @@ address	name	length	bytes
 00cdd420	sub_00cdd420	1	c3
 00cdd5e0	NScript::CGlobal_TeleportToHeroGuildScript::Init	1	c3
 00cdeb30	CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>::GetEntityScriptName	4	8d4104c3
-00cdebb0	sub_00cdebb0	1	c3
-00cdebc0	sub_00cdebc0	3	c20400
-00cdebd0	sub_00cdebd0	1	c3
-00cdebe0	sub_00cdebe0	1	c3
+00cdebb0	CEntityScriptBase::Init	1	c3
+00cdebc0	CEntityScriptBase::OnPersist	3	c20400
+00cdebd0	CEntityScriptBase::OnPredicateFail	1	c3
+00cdebe0	CEntityScriptBase::OnInterrupted	1	c3
 00cdec10	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::GetParentScript	4	8b4114c3
 00cdec20	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::Init	1	c3
 00cdec30	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::OnPersist	3	c20400

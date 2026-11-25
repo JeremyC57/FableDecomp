@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00cbd4e0   MATCH            PASS   sub_00cbd4e0
+00cdebb0   MATCH            PASS   sub_00cdebb0
+00cdebc0   MATCH            PASS   sub_00cdebc0
+00cdebd0   MATCH            PASS   sub_00cdebd0
+00cdebe0   MATCH            PASS   sub_00cdebe0
+00dc3ea0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcc000   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 7
+  00cbd4e0 MATCH _gapscan::?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z
+  00cdebb0 MATCH _gapscan::?Init@CEntityScriptBase@@UAEXXZ
+  00cdebc0 MATCH _gapscan::?OnPersist@CEntityScriptBase@@UAEXAAVCPersistContext@@@Z
+  00cdebd0 MATCH _gapscan::?OnPredicateFail@CEntityScriptBase@@UAEXXZ
+  00cdebe0 MATCH _gapscan::?OnInterrupted@CEntityScriptBase@@UAEXXZ
+  00dc3ea0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::??_GCSecretPassageSkeleton@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dcc000 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::??_GCQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z

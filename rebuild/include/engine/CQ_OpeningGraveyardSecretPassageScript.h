@@ -10,6 +10,11 @@ class CQ_SunnyvaleMasterData;
 class CQ_OpeningGraveyardSecretPassageScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
     enum { GHOST_DISTANCE=7 };
+#ifdef FABLE_RETAIL_CQ_OPENINGGRAVEYARDSECRETPASSAGESCRIPT_CTORS
+    // Add-only opt-in (NF434): the PDB constructors (FableWin.pdb publics ??0CQ_OpeningGraveyardSecretPassageScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z,
+    // ??0CSecretPassageSkeleton@CQ_OpeningGraveyardSecretPassageScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z), declared only.
+    CQ_OpeningGraveyardSecretPassageScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
+#endif
     bool finished_quest;
     bool DoorChange;
     bool ZombieCamPlayed;
@@ -211,6 +216,9 @@ public:
     };
     class CSecretPassageSkeleton : public CEntityScriptBase {
     public:
+#ifdef FABLE_RETAIL_CQ_OPENINGGRAVEYARDSECRETPASSAGESCRIPT_CTORS
+        CSecretPassageSkeleton(CQ_OpeningGraveyardSecretPassageScript& parent, CScriptDataBase* data, const CScriptThing& me);
+#endif
         static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_OpeningGraveyardSecretPassageScript&,CScriptDataBase*,const CScriptThing&);
         virtual CScriptBase* GetParentScript() const;
         CQ_SunnyvaleMasterData* GetMasterData();
@@ -227,6 +235,6 @@ public:
     };
 };
 }
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_OpeningGraveyardSecretPassageScript)==0x74);
-FABLE_STATIC_ASSERT(sizeof(NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend)==0x1c);
+FABLE_STATIC_ASSERT_AT(230, sizeof(NScript::CQ_OpeningGraveyardSecretPassageScript)==0x74);
+FABLE_STATIC_ASSERT_AT(231, sizeof(NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend)==0x1c);
 #endif

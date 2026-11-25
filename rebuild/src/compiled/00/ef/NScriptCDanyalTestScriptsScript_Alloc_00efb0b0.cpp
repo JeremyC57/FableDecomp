@@ -1,25 +1,15 @@
 // NScript::CDanyalTestScriptsScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- the script-info factory: new CDanyalTestScriptsScript(data, game)
 // Leaf: ?Alloc@CDanyalTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00EFB0B0, 54 bytes, static __fastcall (data in ecx, the interface in edx), plain `ret`.
-// Identity: CScriptInfoManager::RegisterScripts 00cd52d0 stores Alloc 00efb0b0 at 00cda3be with name "DanyalTestScripts"; Alloc news + stores script vtable 012f6aa8; PDB ?Alloc@CDanyalTestScriptsScript@NScript@@SIPAVCScriptBase@@; refs=1; was _global::Alloc_CVtable_012f6aa8; PDB ?Alloc@CDanyalTestScriptsScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z in Ego_r.pdb / FableWin.pdb.
-// Naming wave 35: was landed as the free __fastcall stand-in `?Alloc_CVtable_012f6aa8@@YIPAUCVtable_012f6aa8@@PAX0@Z` (00/ef/global_AllocCVtable012f6aa8_00efb0b0.cpp); same bytes.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00EFB0B0, static __fastcall (data in ecx, the interface in edx), plain `ret`.
 // Callees: scalar operator new 0x00BFEA1A (0x48 = sizeof), CScriptBase::CScriptBase 0x00CB8110; the constructor is inlined
-//   (CLevelScriptBase<T>(data, game): Game +0x40, MasterScriptData +0x44, then the script vtable).
-// Model: engine/CLevelScriptBase.h (CLevelScriptBase<CQ_SunnyvaleMasterData>: the quest-script default, as the 34 shared script headers); layout = Ego_r.pdb - 0x14 (the retail script base is 0x14 smaller), the members this
-//   body does not touch are one pad block.
+//   (CLevelScriptBase<T>(data, game): Game +0x40, MasterScriptData +0x44, then the script vtable 0x012F6AA8).
+// Model (NF434): the shared engine/CDanyalTestScriptsScript.h (new: Ego_r.pdb layout, FableWin.pdb overrides) on engine/CLevelScriptBase.h, replacing a local
+//   class that declared none of the class's own virtuals (its vftable bound CScriptBase's slots) and an out-of-line destructor (FableWin.pdb
+//   marks it compiler-generated). This TU now also emits the implicit ??_G with the vftable, as retail's TU did (the ??_G follows Alloc).
 #define FABLE_RETAIL_NSCRIPT
-#include "engine/CLevelScriptBase.h"
-namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CDanyalTestScriptsScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
-public:
-    CDanyalTestScriptsScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
-    virtual ~CDanyalTestScriptsScript();    // ??1CDanyalTestScriptsScript@NScript@@UAE@XZ
-    static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-};
-CScriptBase* __fastcall CDanyalTestScriptsScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+#define FABLE_RETAIL_CLEVELSCRIPTBASE
+#include "engine/CDanyalTestScriptsScript.h"
+CScriptBase* FABLE_FASTCALL NScript::CDanyalTestScriptsScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game)
 {
     return new CDanyalTestScriptsScript(data, game);
 }
-}
-typedef char ExactOwnerSize[sizeof(NScript::CDanyalTestScriptsScript) == 0x48 ? 1 : -1];

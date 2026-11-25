@@ -49010,7 +49010,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cbd4b0	RegisterMain	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
 00cbd4c0	Main	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
 00cbd4d0	Init	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
-00cbd4e0	sub_00cbd4e0	_global	unknown	undefined	0		0			discovered	gapscan							
+00cbd4e0	OnPersist	CScriptBase	unknown	undefined	0		0			discovered	gapscan							
 00cbd4f0	`scalar deleting destructor'	CScriptBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CLandscapeBackgroundPatch_vectordeletingdestructor_00cbd4f0.cpp
 00cbd510	~CScriptBase	CScriptBase	__thiscall	void	2	CParticleEmitter *,CIEngine *	1	yes	accepted									
 00cbd5b0	Sort	CVectorMap<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo,CKeyPairCompareLess<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CGuiVarTransferBool_TransferToGui_00cbd5b0.cpp
@@ -49327,10 +49327,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cde420	Main	NScript::CPersonalScript_GlobalThingsScript	unknown	undefined	0		0			discovered	gapscan							
 00cdeb30	GetEntityScriptName	CEntityScriptBinding<NScript::CPersonalScript_GlobalThingsScript>	unknown	undefined	0		0			discovered	gapscan							
 00cdeb40	Alloc	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost	unknown	undefined	0		0	yes	accepted									
-00cdebb0	sub_00cdebb0	_global	unknown	undefined	0		0			discovered	gapscan							
-00cdebc0	sub_00cdebc0	_global	unknown	undefined	0		0			discovered	gapscan							
-00cdebd0	sub_00cdebd0	_global	unknown	undefined	0		0			discovered	gapscan							
-00cdebe0	sub_00cdebe0	_global	unknown	undefined	0		0			discovered	gapscan							
+00cdebb0	Init	CEntityScriptBase	unknown	undefined	0		0			discovered	gapscan							
+00cdebc0	OnPersist	CEntityScriptBase	unknown	undefined	0		0			discovered	gapscan							
+00cdebd0	OnPredicateFail	CEntityScriptBase	unknown	undefined	0		0			discovered	gapscan							
+00cdebe0	OnInterrupted	CEntityScriptBase	unknown	undefined	0		0			discovered	gapscan							
 00cdebf0	`scalar deleting destructor'	CEntityScriptBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CLandscapeBackgroundPatch_vectordeletingdestructor_00cdebf0.cpp
 00cdec10	GetParentScript	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost	unknown	undefined	0		0			discovered	gapscan							
 00cdec20	Init	NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost	unknown	undefined	0		0			discovered	gapscan							

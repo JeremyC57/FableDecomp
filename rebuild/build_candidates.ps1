@@ -107622,9 +107622,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cbd4e0'
-        Module = '_gapscan'
-        Source = '00/cb/gapscan_sub00cbd4e0_00cbd4e0.cpp'
-        TestSource = '00/cb/gapscan_sub00cbd4e0_00cbd4e0_test.cpp'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_OnPersist_00cbd4e0.cpp'
+        TestSource = '00/cb/CScriptBase_OnPersist_00cbd4e0_test.cpp'
         PassPattern = 'PASS_00cbd4e0'
     }
     [pscustomobject]@{
@@ -107741,30 +107741,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cdebb0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdebb0_00cdebb0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdebb0_00cdebb0_test.cpp'
+        Module = 'CEntityScriptBase'
+        Source = '00/cd/CEntityScriptBase_Init_00cdebb0.cpp'
+        TestSource = '00/cd/CEntityScriptBase_Init_00cdebb0_test.cpp'
         PassPattern = 'PASS_00cdebb0'
     }
     [pscustomobject]@{
         Address = '00cdebc0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdebc0_00cdebc0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdebc0_00cdebc0_test.cpp'
+        Module = 'CEntityScriptBase'
+        Source = '00/cd/CEntityScriptBase_OnPersist_00cdebc0.cpp'
+        TestSource = '00/cd/CEntityScriptBase_OnPersist_00cdebc0_test.cpp'
         PassPattern = 'PASS_00cdebc0'
     }
     [pscustomobject]@{
         Address = '00cdebd0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdebd0_00cdebd0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdebd0_00cdebd0_test.cpp'
+        Module = 'CEntityScriptBase'
+        Source = '00/cd/CEntityScriptBase_OnPredicateFail_00cdebd0.cpp'
+        TestSource = '00/cd/CEntityScriptBase_OnPredicateFail_00cdebd0_test.cpp'
         PassPattern = 'PASS_00cdebd0'
     }
     [pscustomobject]@{
         Address = '00cdebe0'
-        Module = '_gapscan'
-        Source = '00/cd/gapscan_sub00cdebe0_00cdebe0.cpp'
-        TestSource = '00/cd/gapscan_sub00cdebe0_00cdebe0_test.cpp'
+        Module = 'CEntityScriptBase'
+        Source = '00/cd/CEntityScriptBase_OnInterrupted_00cdebe0.cpp'
+        TestSource = '00/cd/CEntityScriptBase_OnInterrupted_00cdebe0_test.cpp'
         PassPattern = 'PASS_00cdebe0'
     }
     [pscustomobject]@{
