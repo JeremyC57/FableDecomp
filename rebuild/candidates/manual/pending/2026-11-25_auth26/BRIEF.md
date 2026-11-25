@@ -210,6 +210,9 @@ naming queue. This run must add none. So, from the first draft of each row:
 - **Loop prevention for tools:** never repeat a failing command more than twice with the same arguments. The first grade after a
   container restart can time out while wineserver starts: retry once.
 - **Every number you report comes from your files.**
+- **Describe every command** (owner, 2026-11-25). Give every Bash call a `description`: one plain sentence on what it does and
+  why ("Compile g18 with SetUp before SetForward"). Don't echo the command, flags or paths. The owner follows your work through
+  these descriptions.
 
 ## Hand-back
 Keep it current after EVERY grade session, because the container can restart without warning.

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0044f65a   WARN STANDIN_LEAF ??_GCInventoryItemDef@@UAEPAXI@Z (catalog CInventoryItemDef::`scalar_deleting_destructor'; names another function)
+0044f65a   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00ac1960   WARN STANDIN_LEAF ??_GC3DMeshFileMapChunk@@UAEPAXI@Z (catalog C3DMeshFileMapChunk::`scalar_deleting_destructor'; names another function)
+00ac1960   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 2
+  0044f65a RELOCATION_MATCH CInventoryItemDef::??_GCInventoryItemDef@@UAEPAXI@Z
+  00ac1960 RELOCATION_MATCH C3DMeshFileMapChunk::??_GC3DMeshFileMapChunk@@UAEPAXI@Z

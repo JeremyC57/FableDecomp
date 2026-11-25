@@ -1,38 +1,10 @@
-// C3DMeshFileMapChunk::`scalar deleting destructor' @ 0x00AC1960 (retail, 48 bytes) -- a scalar deleting destructor body (`??_G`, flags in the
-// stack slot, __thiscall shape modelled as __fastcall with a dead edx): destroys the members last-to-first,
-// +0x34 CCharString (~ @ 0x0099EAE0), +0x30 CCharString (~ @ 0x0099EAE0), then the base CChunkedFileSuperChunk (~ @ 0x00AA8490), and frees the block with operator delete
-// (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
-// retail labels); the class itself is not attributed, so it is named by address.
-// Engine headers for the callee classes (PDB data layouts, renamed out of the way): the local declarations
-// below carry the retail identities the relocations bind.
-#define CChunkedFileSuperChunk CChunkedFileSuperChunkPdb
-#include "engine/CChunkedFileSuperChunk.h"
-#undef CChunkedFileSuperChunk
-#pragma optimize("t", on)
-class CChunkedFileSuperChunk { public:             // vtable 0x0129E4F0 (.?AVCChunkedFileSuperChunk@@)
-    virtual ~CChunkedFileSuperChunk();              // 0x00AA8490
-};
-class CCharString { public:                        // one word: CCharStringData*
-    void* PStringData;
-    ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
-};
-void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
-
-#pragma pack(push, 1)
-struct CObject_00ac1960 : CChunkedFileSuperChunk {
-    unsigned char _pad30[0x2c];
-    CCharString Member30;                       // +0x30
-    CCharString Member34;                       // +0x34
-};
-#pragma pack(pop)
-
-void* __fastcall C3DMeshFileMapChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
-{
-    CObject_00ac1960* object = static_cast<CObject_00ac1960*>(chunk);
-    object->Member34.~CCharString();
-    object->Member30.~CCharString();
-    object->CChunkedFileSuperChunk::~CChunkedFileSuperChunk();
-    if (flags & 1)
-        operator delete(object);
-    return chunk;
-}
+// C3DMeshFileMapChunk::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~C3DMeshFileMapChunk, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GC3DMeshFileMapChunk@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AC1960, 48 bytes, thiscall, `ret 4`; vftable 0x0129EE34 slot 0.
+// Identity (NF424, S4): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?C3DMeshFileMapChunk_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z.
+// TU: VC7.1 emits ??_GC3DMeshFileMapChunk@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00ABFE50
+//   ??0C3DMeshFileMapChunk@@QAE@XZ stores vftable 0x0129EE34, so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/ab/C3DMeshFileMapChunk_C3DMeshFileMapChunk_00abfe50.cpp"

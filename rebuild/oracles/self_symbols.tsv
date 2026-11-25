@@ -773,7 +773,7 @@ address	symbol	status	leaf_given
 0044c71f	?operator_new@@YIPAXI@Z	RELOCATION_MATCH	operator_new
 0044f607	??0CThingMultiArrowShotDef@@QAE@XZ	RELOCATION_MATCH	??0CThingMultiArrowShotDef@
 0044f620	?ScalarDeletingDestructor@CSubDefClassBase@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-0044f65a	?ScalarDeletingDestructor@CInventoryItemDef@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+0044f65a	??_GCInventoryItemDef@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0044f6a0	?CThingComponentSet_dtor@@YIXPAVCThingComponentSet@@@Z	RELOCATION_MATCH	??1CThingComponentSet@
 0044f6ba	?CPhysicsDef_scalar_deleting_destructor@@YIPAXPAVCPhysicsDef@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0044f71b	?ScalarDeletingDestructor@CTCNoiseDef@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -17827,7 +17827,7 @@ address	symbol	status	leaf_given
 00ac1900	?C3DMeshFileMaterialListChunk_scalar_deleting_destructor@@YIPAXPAVC3DMeshFileMaterialListChunk@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00ac1920	?GetChunkDescription@C3DMeshFileMaterialExtChunk@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	GetChunkDescription
 00ac1940	??_GC3DMeshFileMaterialExtChunk@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00ac1960	?C3DMeshFileMapChunk_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00ac1960	??_GC3DMeshFileMapChunk@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00ac1e70	?GetChunkDescription@C3DMeshFileMaterialChunk@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	GetChunkDescription
 00ac1e90	??_GC3DMeshFileMaterialChunk@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00ac1f30	?CIndexBuffer_Sizeof@@YIKPAVCIndexBuffer@@@Z	MATCH	Sizeof

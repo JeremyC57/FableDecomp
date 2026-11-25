@@ -9876,7 +9876,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12295	land1120nf202	00def730	??_GCSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@UAEPAXI@Z	open	?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 12296	land1120nf202	00ee1be0	??_GCTH_SnowTroll@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z	open	?CThingSwitch_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
 12298	land1120nf202	00a04060	?SetAsJoystickPosition2@CInputEvent@@QAEXABVC2DVector@@N@Z	closed	
-12299	land1120nf202	00ac1960	??_GC3DMeshFileMapChunk@@UAEPAXI@Z	no_binding	
+12299	land1120nf202	00ac1960	??_GC3DMeshFileMapChunk@@UAEPAXI@Z	closed	
 12300	land1120nf202	00ea3490	?WatchForQuestFailure@CV_LostTraderScript@NScript@@QAEXXZ	closed	
 12301	land1120nf202	007a9580	??$GetAllThingsInRoughArea@VCThingPhysical@@V?$vector@PAVCThingPhysical@@V?$allocator@PAVCThingPhysical@@@std@@@std@@V?$CFilter_Bind3@VCThingFilter_In3DRange@@VCThingFilter_IsNot@@VCThingFilter_HasInstantiationName@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_In3DRange@@VCThingFilter_IsNot@@VCThingFilter_HasInstantiationName@@@@AAV?$vector@PAVCThingPhysical@@V?$allocator@PAVCThingPhysical@@@std@@@std@@@Z	closed	
 12302	land1120nf202	0065d507	?ReleaseData@?$CCountedPointer@VCVillageTaskPatrol@@@@QAEXXZ	open	??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ

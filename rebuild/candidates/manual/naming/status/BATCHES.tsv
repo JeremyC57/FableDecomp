@@ -7989,7 +7989,6 @@ T3	emit ?AddRumble@CJoystickDX@@UAEXJABVCInitRumble@CJoystick@@_N@Z	(none)	1	1		
 T3	emit ?ClearAllRumbles@CJoystickDX@@UAEXXZ	(none)	1	1		00ab7940
 T3	emit ?GetFontMaxHeight@CStaticFontBank@@UBEMXZ	(none)	1	1		00ab7a50
 T3	emit ??_GC3DMeshFileMaterialListChunk@@UAEPAXI@Z	(none)	1	1		00ac1900
-T3	emit ??_GC3DMeshFileMapChunk@@UAEPAXI@Z	(none)	1	1		00ac1960
 T3	emit ??_GC3DMeshFilePartitionChunk@@UAEPAXI@Z	(none)	1	1		00ac3960
 T3	emit ??_GC3DMeshFileEngineMaterialChunk@@UAEPAXI@Z	(none)	1	1		00ac6290
 T3	emit ??_GCParticleProgram@@UAEPAXI@Z	(none)	1	1		00ae8520
@@ -9375,7 +9374,6 @@ T3	RTTI names ??_GCInputTypeMouseWheelMovementEvent@@UAEPAXI@Z	CInputTypeBase	1	
 T3	RTTI names ??_ECInputTypeMouseWheelMovementUpEvent@@UAEPAXI@Z	CInputTypeBase	1	1		00447b70
 T3	RTTI names ??_GCInputTypeMouseWheelMovementDownEvent@@UAEPAXI@Z	CInputTypeBase	1	1		00447b90
 T3	emit ?Transfer@CInterestingToVillagersDef@@UAEXAAVCPersistContext@@@Z	CInterestingToVillagersDef_Methods	1	1		004de916
-T3	emit ??_GCInventoryItemDef@@UAEPAXI@Z	CInventoryItemDef	1	1	engine/CInventoryItemDef.h	0044f65a
 T3	emit ??_ECJackDragonDef@@UAEPAXI@Z	CJackDragonDef	1	1	engine/CJackDragonDef.h	0044ffbd
 T3	emit ?EventScanStart@CJoystick@@MBE_NPAVCInputEventScanInfo@@PAVCInputEvent@@@Z	CJoystick	1	1	engine/CJoystick.h	009e4230
 T3	emit ??_ECJoystick@@UAEPAXI@Z	CJoystick	1	1	engine/CJoystick.h	009e4980
