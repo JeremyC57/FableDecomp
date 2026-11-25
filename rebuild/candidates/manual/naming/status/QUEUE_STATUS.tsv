@@ -10859,9 +10859,13 @@ line	tag	address	correct_symbol	status	other_spellings
 13745	nf438	009bef80	?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z	partial	?SetViewport@CDisplayManager@@QAEXPAX@Z || ?SetViewport@CDisplayManagerBackScreenView@@QAEXABVC2DBoxI@@@Z || ?SetViewport@CDisplayManagerSetRenderTargetView@@QAEXABVC2DBoxI@@@Z
 13746	nf441	00c55270	?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z	closed	
 13747	nf441	00c6ca20	??0CSalRenderPanDelay@@QAE@XZ	closed	
-13748	nf441	00c550b0	??0CSalRenderDisableSSE2@@QAE@XZ	open	??0CVtable_012b8a8c@@QAE@XZ
-13749	nf441	00c55090	??0CSalRenderPanSSE2@@QAE@XZ	open	??0CVtable_012b8a78@@QAE@XZ
-13750	nf441	00c55110	??0CSalRenderDisableMMX@@QAE@XZ	open	??0CVtable_012b8ac8@@QAE@XZ
-13751	nf441	00c550f0	??0CSalRenderPanMMX@@QAE@XZ	open	??0CVtable_012b8ab4@@QAE@XZ
+13748	nf441	00c550b0	??0CSalRenderDisableSSE2@@QAE@XZ	closed	
+13749	nf441	00c55090	??0CSalRenderPanSSE2@@QAE@XZ	closed	
+13750	nf441	00c55110	??0CSalRenderDisableMMX@@QAE@XZ	closed	
+13751	nf441	00c550f0	??0CSalRenderPanMMX@@QAE@XZ	closed	
 13752	nf441	00c70120	??0CSalRenderHrtfMMX@@QAE@XZ	open	??0CVtable_012bedcc@@QAE@XZ
 13753	nf443	00793cb0	?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ	closed	
+13754	nf452	00c6e790	?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
+13755	nf452	00c6e820	?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z
+13756	nf452	00c6da40	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
+13757	nf452	00c6dad0	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z

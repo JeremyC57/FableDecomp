@@ -12,9 +12,11 @@
 //   ?CreateProcessor@CAudioSource@@QAEPAVCVtable_012beda4@@K@Z (NF444 / NF445 closure).
 // Callees keep the spellings the table binds today (out of this batch): DetectCpu 0x00C52E40 (?Initialize@CSalCpuInfo) behind
 //   g_cpuDetected 0x0143BC78 / g_cpuHasSSE2 0x0143BC7D; CodaMalloc 0x00C3C360 (the CCodaObjectBase operator new); the constructors
-//   CVtable_012bede0 0x00C70B00 (CSalRenderHrtfSSE2), CVtable_012bedcc 0x00C70120 (CSalRenderHrtfMMX), CVtable_012b8a78 0x00C55090,
-//   CVtable_012b8a8c 0x00C550B0, CVtable_012b8ab4 0x00C550F0, CVtable_012b8ac8 0x00C55110 (local models over the shared engine/CSalRender.h
-//   base, no derived header yet; their overrides carry the SDK CSalRender signatures), and CSalRenderPanDelay 0x00C6CA20, base of
+//   CVtable_012bede0 0x00C70B00 (CSalRenderHrtfSSE2), CVtable_012bedcc 0x00C70120 (CSalRenderHrtfMMX) (local models over the shared
+//   engine/CSalRender.h base, no derived header yet; their overrides carry the SDK CSalRender signatures); CSalRenderPanSSE2 0x00C55090 /
+//   CSalRenderPanMMX 0x00C550F0 (engine/CSalRenderPanSSE2.h / MMX.h) and CSalRenderDisableSSE2 0x00C550B0 / CSalRenderDisableMMX 0x00C55110
+//   (engine/CSalRenderDisableSSE2.h / MMX.h), NF452: inline constructors that VC7.1 calls out of line here, as retail and the SDK Release
+//   object do; and CSalRenderPanDelay 0x00C6CA20, base of
 //   CSalRenderPanDelaySSE2 / CSalRenderPanDelayMMX (engine/CSalRenderPanDelaySSE2.h / MMX.h, NF447), whose inline constructors are expanded
 //   here (base call + vptr 0x012B8A64 / 0x012B8AA0; their out-of-line copies are 0x00C55070 / 0x00C550D0).
 // Sizes (the CodaMalloc arguments): 0xC6C, 0x214, 0x78, 0x38 (SSE2) and 0x66C, 0x214, 0x78, 0x38 (MMX / C).
@@ -28,29 +30,15 @@
 #include "engine/CSalRender.h"
 #include "engine/CSalRenderPanDelaySSE2.h"   // NF447: CSalRenderPanDelaySSE2 (vtable 0x012B8A64) : CSalRenderPanDelay (0x00C6CA20)
 #include "engine/CSalRenderPanDelayMMX.h"    // NF447: CSalRenderPanDelayMMX (vtable 0x012B8AA0)
+#include "engine/CSalRenderDisableSSE2.h"    // NF452: CSalRenderDisableSSE2 (vtable 0x012B8A8C) : CSalRenderDisable (0x00C6E760)
+#include "engine/CSalRenderDisableMMX.h"     // NF452: CSalRenderDisableMMX (vtable 0x012B8AC8)
+#include "engine/CSalRenderPanSSE2.h"        // NF452: CSalRenderPanSSE2 (vtable 0x012B8A78) : CSalRenderPan (0x00C6D9D0)
+#include "engine/CSalRenderPanMMX.h"         // NF452: CSalRenderPanMMX (vtable 0x012B8AB4)
 
 extern bool g_cpuDetected;                                                  // 0x0143BC78
 extern bool g_cpuHasSSE2;                                                   // 0x0143BC7D
 void DetectCpu();                                                           // 0x00C52E40
 
-class CVtable_012bed90 : public CSalRender {                                // volume panner (Pan), 0x78 bytes
-public:
-    CVtable_012bed90();                                                     // 0x00C6D9D0
-    virtual ~CVtable_012bed90();                                            // 0x00C6DA30
-    virtual void Process(const short*, int*(&)[4]);
-    virtual void SetGain(float, const float*, bool);
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-    unsigned char m_state[0x78 - 0x28];
-};
-class CVtable_012bedb8 : public CSalRender {                                // disabled / plain stereo renderer, 0x38 bytes
-public:
-    CVtable_012bedb8();                                                     // 0x00C6E760
-    virtual ~CVtable_012bedb8();                                            // 0x00C6E780
-    virtual void Process(const short*, int*(&)[4]);
-    virtual void SetGain(float, const float*, bool);
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-    unsigned char m_state[0x38 - 0x28];
-};
 class CVtable_012bede0 : public CSalRender {                                // full HRTF renderer (SSE2), 0xC6C bytes
 public:
     CVtable_012bede0();                                                     // 0x00C70B00
@@ -71,26 +59,6 @@ public:
     virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x66c - 0x28];
 };
-class CVtable_012b8a78 : public CVtable_012bed90 {                          // SSE2 volume panner (vtable 0x012B8A78)
-public:
-    CVtable_012b8a78();                                                     // 0x00C55090
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8ab4 : public CVtable_012bed90 {                          // MMX volume panner (vtable 0x012B8AB4)
-public:
-    CVtable_012b8ab4();                                                     // 0x00C550F0
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8a8c : public CVtable_012bedb8 {                          // SSE2 disabled renderer (vtable 0x012B8A8C)
-public:
-    CVtable_012b8a8c();                                                     // 0x00C550B0
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8ac8 : public CVtable_012bedb8 {                          // MMX disabled renderer (vtable 0x012B8AC8)
-public:
-    CVtable_012b8ac8();                                                     // 0x00C55110
-    virtual void Process(const short*, int*(&)[4]);
-};
 
 CSalRender* CSalSw3DVoice::CreateRenderer(CHRTFMODE mode)
 {
@@ -103,9 +71,9 @@ CSalRender* CSalSw3DVoice::CreateRenderer(CHRTFMODE mode)
         case C_HRTF_DELAY:
             return new CSalRenderPanDelaySSE2;
         case C_HRTF_VOLPAN:
-            return new CVtable_012b8a78;
+            return new CSalRenderPanSSE2;
         default:
-            return new CVtable_012b8a8c;
+            return new CSalRenderDisableSSE2;
         }
     } else {
         switch (mode) {
@@ -114,9 +82,9 @@ CSalRender* CSalSw3DVoice::CreateRenderer(CHRTFMODE mode)
         case C_HRTF_DELAY:
             return new CSalRenderPanDelayMMX;
         case C_HRTF_VOLPAN:
-            return new CVtable_012b8ab4;
+            return new CSalRenderPanMMX;
         default:
-            return new CVtable_012b8ac8;
+            return new CSalRenderDisableMMX;
         }
     }
 }

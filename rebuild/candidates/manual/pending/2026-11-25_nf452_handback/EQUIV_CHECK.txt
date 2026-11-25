@@ -1,0 +1,1 @@
+equiv_check $S/nf452_equiv old vs new (six new headers): 57,160 rows checked, 0 differing lines.

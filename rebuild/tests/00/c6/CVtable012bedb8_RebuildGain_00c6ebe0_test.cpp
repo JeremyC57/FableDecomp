@@ -1,66 +1,54 @@
-// Behaviour test for CVtable_012bedb8::RebuildGain (0x00C6EBE0): the row body over a portable model of libpk's FtoL (the x87 default
-// rounding: nearest, ties to even; out of range -> 0x80000000) and a logging lock. Kills: the lock not taken / not released / the
-// work outside it, the flag not stored, the records swapped (alternate -> previous +0x34, else current +0x30), both records written,
-// the clamp at 0x7fff missing or wrong, the halving (gain >> 1) or the step (gain >> 7) wrong, and the scale (32767) wrong.
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-static void check(bool v){if(!v){puts("FAIL");exit(1);}}
-static int log_pos;static char log_buf[16];
-static void EnterCriticalSection(void*){log_buf[log_pos++]='E';}
-static void LeaveCriticalSection(void*){log_buf[log_pos++]='L';}
-static long FtoL(float f){double v=(double)f;if(!(v>=-2147483648.0&&v<2147483647.5))return (long)0x80000000;
- double fl=floor(v);double d=v-fl;long r=(long)fl;if(d>0.5||(d==0.5&&(r&1)))++r;return r;}
-struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-struct CVtable_012beda4 { void* _vtable; void* _lockVtable; SCriticalSection m_lock; float m_volume; bool m_alternate; };
-struct SGainRamp { unsigned short m_gain; short m_step; };
-static int compute_calls;
-struct CVtable_012bedb8 : CVtable_012beda4 {
-    SGainRamp  m_first;
-    SGainRamp  m_second;
-    SGainRamp* m_pCurrent;
-    SGainRamp* m_pPrevious;
-    void ComputeGainRamp(SGainRamp* ramp);
-    void RebuildGain(bool alternate);
-};
-void CVtable_012bedb8::ComputeGainRamp(SGainRamp* ramp)
+// Behaviour test (NF452, linked against the row object over engine/CSalRenderDisable*.h; replaces the HEAD test of the local CVtable_012bedb8
+// model) of
+// CSalRenderDisable::UpdateFilters 0x00C6EBE0: m_bUpdate = bNew; the new set (bNew) or the live set is rebuilt from m_fGain (Params3DInit
+// expanded); the other set is untouched.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderDisableSSE2.h"
+#include "engine/CSalRenderDisableMMX.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+static int g_frees = 0, g_baseCtors = 0, g_baseDtors = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { void* p = std::malloc(n); std::memset(p, 0x5a, n); return p; }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; std::free(p); }
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { ++g_baseCtors; }
+CSalRender::~CSalRender() { ++g_baseDtors; }
+void CSalRender::ClearFilterHistory() { }
+// Retail layout (engine/CSalRenderDisable.h): the test reads protected / private members at their retail offsets.
+template <class T> static T& At(void* o, unsigned off) { return *reinterpret_cast<T*>(static_cast<char*>(o) + off); }
+static FilterPan* Params(void* o, unsigned which) { return At<FilterPan*>(o, which ? 0x34 : 0x30); }
+static bool Pan(void* o, unsigned which, unsigned short gain, short delta) { return Params(o, which)->gain == gain && Params(o, which)->gainDelta == delta; }
+static int g_called = 0;
+static int g_updates = 0; static bool g_lastNew = false;
+CSalRenderDisable::CSalRenderDisable() { m_paramsA.pan.gain = 0; m_paramsA.pan.gainDelta = 0; m_paramsB = m_paramsA; m_pParamsCurrent = &m_paramsA; m_pParamsNew = &m_paramsB; }
+CSalRenderDisable::~CSalRenderDisable() { }
+void CSalRenderDisable::Process(const short*, int*(&)[4]) { g_called = 0xe8f0; }   // 0x00C6E8F0 (no row)
+void CSalRenderDisableSSE2::Process(const short*, int*(&)[4]) { g_called = 0xeef0; }
+void CSalRenderDisableMMX::Process(const short*, int*(&)[4]) { g_called = 0xfe10; }
+// The private helpers are reached through member stubs of the slots the unit does not define: SetGain stores the gain and calls UpdateFilters
+// (the SDK body), SetPosition stores the gain and calls Params3DInit on the new (bNew) or current set.
+void CSalRenderDisable::SetGain(float fGain, const float*, bool bNew) { m_fGain = fGain; UpdateFilters(bNew); }
+void CSalRenderDisable::SetPosition(float, float, float, float fGain, const float*, bool bNew, bool)
+{ m_fGain = fGain; Params3DInit(&(bNew ? m_pParamsNew : m_pParamsCurrent)->pan); }
+int main()
 {
-    log_buf[log_pos++]='C';
-    unsigned long level = FtoL(m_volume * 32767.0f);
-    if (level > 0x7fff)
-        level = 0x7fff;
-    unsigned short gain = (unsigned short)((unsigned short)level >> 1);
-    ramp->m_gain = gain;
-    ramp->m_step = (short)(gain >> 7);
-}
-void CVtable_012bedb8::RebuildGain(bool alternate)
-{
-    EnterCriticalSection(&m_lock);
-    m_alternate = alternate;
-    if (alternate)
-        ComputeGainRamp(m_pPrevious);
-    else
-        ComputeGainRamp(m_pCurrent);
-    LeaveCriticalSection(&m_lock);
-}
-int main(){
- const float vol[]={0.0f,1.0f,0.5f,0.25f,0.001f,1.5f,2.0f,-0.5f,0.75f,1.0f/32767.0f,2.5f/32767.0f,3.5f/32767.0f,100.0f,1e10f};
- long cases=0;
- for(int a=0;a!=2;++a)for(int v=0;v!=(int)(sizeof vol/sizeof vol[0]);++v){
-  CVtable_012bedb8 e;e.m_volume=vol[v];e.m_alternate=!a;e.m_first.m_gain=0x1111;e.m_first.m_step=0x2222;e.m_second.m_gain=0x3333;e.m_second.m_step=0x4444;
-  e.m_pCurrent=&e.m_first;e.m_pPrevious=&e.m_second;log_pos=0;
-  e.RebuildGain(a!=0);
-  check(log_pos==3&&log_buf[0]=='E'&&log_buf[1]=='C'&&log_buf[2]=='L');
-  check(e.m_alternate==(a!=0));
-  unsigned long lv=(unsigned long)FtoL(vol[v]*32767.0f);if(lv>0x7fff)lv=0x7fff;unsigned short g=(unsigned short)(lv>>1);
-  SGainRamp& hit=a?e.m_second:e.m_first;SGainRamp& miss=a?e.m_first:e.m_second;
-  check(hit.m_gain==g&&hit.m_step==(short)(g>>7));
-  check(a?(miss.m_gain==0x1111&&miss.m_step==0x2222):(miss.m_gain==0x3333&&miss.m_step==0x4444));
-  ++cases;
- }
- // spot values: full volume -> 0x7fff >> 1 = 0x3fff, step 0x7f; ties round to even (2.5 -> 2 -> gain 1, 3.5 -> 4 -> gain 2)
- {CVtable_012bedb8 e;SGainRamp r;e.m_pCurrent=&r;e.m_pPrevious=&r;e.m_volume=1.0f;log_pos=0;e.RebuildGain(false);check(r.m_gain==0x3fff&&r.m_step==0x7f);
-  e.m_volume=2.5f/32767.0f;log_pos=0;e.RebuildGain(true);check(r.m_gain==1);e.m_volume=3.5f/32767.0f;log_pos=0;e.RebuildGain(true);check(r.m_gain==2);
-  e.m_volume=-0.5f;log_pos=0;e.RebuildGain(false);check(r.m_gain==0x3fff);}   // negative: the unsigned compare clamps
- check(cases==28);puts("00c6ebe0_TEST PASS");return 0;
+    bool ok = true;
+    CSalRender* r = new CSalRenderDisable;
+    At<bool>(r, 0x24) = true;
+    r->SetGain(0.5f, 0, false);
+    ok = ok && !At<bool>(r, 0x24) && Pan(r, 0, 8192, 64) && Pan(r, 1, 0, 0);
+    r->SetGain(1.0f, 0, true);
+    ok = ok && At<bool>(r, 0x24) && Pan(r, 1, 16383, 127) && Pan(r, 0, 8192, 64);
+    r->SetGain(4.0f, 0, false);
+    ok = ok && !At<bool>(r, 0x24) && Pan(r, 0, 16383, 127) && Pan(r, 1, 16383, 127);
+    r->SetGain(0.25f, 0, true);
+    ok = ok && At<bool>(r, 0x24) && Pan(r, 1, 4096, 32) && Pan(r, 0, 16383, 127) && g_called == 0;
+    delete r;
+    if (!ok) { std::printf("00c6ebe0_TEST FAIL\n"); return 1; }
+    std::printf("00c6ebe0_TEST PASS\n");
+    return 0;
 }

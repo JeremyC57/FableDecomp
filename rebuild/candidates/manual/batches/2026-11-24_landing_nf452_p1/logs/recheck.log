@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00c55270   WARN RELOC_NAME: ??0CSalRenderDisableSSE2@@QAE@XZ -> 00c550b0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CSalRenderPanSSE2@@QAE@XZ -> 00c55090 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CSalRenderDisableMMX@@QAE@XZ -> 00c55110 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CSalRenderPanMMX@@QAE@XZ -> 00c550f0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   RELOCATION_MATCH PASS   CreateRenderer
+00c6d9d0   WARN STANDIN_LEAF ??0CSalRenderPan@@QAE@XZ (catalog CVtable_012bed90::CVtable_012bed90; names another function)
+00c6d9d0   RELOCATION_MATCH PASS   CVtable_012bed90
+00c6da30   WARN STANDIN_LEAF ??1CSalRenderPan@@UAE@XZ (catalog CVtable_012bed90::~CVtable_012bed90; names another function)
+00c6da30   RELOCATION_MATCH PASS   ~CVtable_012bed90
+00c6de60   WARN STANDIN_LEAF ?Params3DInit@CSalRenderPan@@AAEXPAUFilterPan@@M@Z (catalog CVtable_012bed90::ComputeGainRamp; names another function)
+00c6de60   RELOCATION_MATCH PASS   ComputeGainRamp
+00c6e020   WARN RELOC_NAME: ?UpdateFilters@CSalRenderPan@@AAEX_N@Z -> 00c6dea0 labelled 'CVtable_012bed90::RebuildGain'
+00c6e020   WARN STANDIN_LEAF ?SetGain@CSalRenderPan@@UAEXMPBM_N@Z (catalog CVtable_012bed90::SetVolume; names another function)
+00c6e020   RELOCATION_MATCH PASS   SetVolume
+00c6e410   WARN STANDIN_LEAF ?Process@CSalRenderPanSSE2@@UAEXPBFAAY03PAH@Z (catalog CVtable_012b8a78::Process; names another function)
+00c6e410   RELOCATION_MATCH PASS   Process
+00c6f990   WARN STANDIN_LEAF ?Process@CSalRenderPanMMX@@UAEXPBFAAY03PAH@Z (catalog CVtable_012b8ab4::Process; names another function)
+00c6f990   RELOCATION_MATCH PASS   Process
+01216180   RELOCATION_MATCH PASS   Unwind@01216180
+0121618b   RELOCATION_MATCH PASS   Unwind@0121618b
+01216196   RELOCATION_MATCH PASS   Unwind@01216196
+012161a1   RELOCATION_MATCH PASS   Unwind@012161a1
+012161ac   RELOCATION_MATCH PASS   Unwind@012161ac
+012161b7   RELOCATION_MATCH PASS   Unwind@012161b7
+012161c2   RELOCATION_MATCH PASS   Unwind@012161c2
+012161cd   RELOCATION_MATCH PASS   Unwind@012161cd
+
+WINS: 15
+  00c55270 RELOCATION_MATCH CSalSw3DVoice::?CreateRenderer@CSalSw3DVoice@@AAEPAVCSalRender@@W4CHRTFMODE@@@Z
+  00c6d9d0 RELOCATION_MATCH CVtable_012bed90::??0CSalRenderPan@@QAE@XZ
+  00c6da30 RELOCATION_MATCH CVtable_012bed90::??1CSalRenderPan@@UAE@XZ
+  00c6de60 RELOCATION_MATCH CVtable_012bed90::?Params3DInit@CSalRenderPan@@AAEXPAUFilterPan@@M@Z
+  00c6e020 RELOCATION_MATCH CVtable_012bed90::?SetGain@CSalRenderPan@@UAEXMPBM_N@Z
+  00c6e410 RELOCATION_MATCH CVtable_012b8a78::?Process@CSalRenderPanSSE2@@UAEXPBFAAY03PAH@Z
+  00c6f990 RELOCATION_MATCH CVtable_012b8ab4::?Process@CSalRenderPanMMX@@UAEXPBFAAY03PAH@Z
+  01216180 RELOCATION_MATCH _global::Unwind@01216180
+  0121618b RELOCATION_MATCH _global::Unwind@0121618b
+  01216196 RELOCATION_MATCH _global::Unwind@01216196
+  012161a1 RELOCATION_MATCH _global::Unwind@012161a1
+  012161ac RELOCATION_MATCH _global::Unwind@012161ac
+  012161b7 RELOCATION_MATCH _global::Unwind@012161b7
+  012161c2 RELOCATION_MATCH _global::Unwind@012161c2
+  012161cd RELOCATION_MATCH _global::Unwind@012161cd
+# ---- option S members (LANDVERIFY_STRICT_LEAF=1)
+addr       parity           behav  name
+00c55070   RELOCATION_MATCH PASS   CSalRenderPanDelaySSE2
+00c55090   WARN RELOC_NAME: ??0CSalRenderPan@@QAE@XZ -> 00c6d9d0 labelled 'CVtable_012bed90::CVtable_012bed90'
+00c55090   WARN STANDIN_LEAF ??0CSalRenderPanSSE2@@QAE@XZ (catalog C3DAnimationUtil::C3DAnimationUtil; names another function)
+00c55090   RELOCATION_MATCH PASS   C3DAnimationUtil
+00c550b0   WARN RELOC_NAME: ??0CSalRenderDisable@@QAE@XZ -> 00c6e760 labelled 'CVtable_012bedb8::CVtable_012bedb8'
+00c550b0   WARN STANDIN_LEAF ??0CSalRenderDisableSSE2@@QAE@XZ (catalog C3DAnimationUtil::C3DAnimationUtil; names another function)
+00c550b0   RELOCATION_MATCH PASS   C3DAnimationUtil
+00c550d0   RELOCATION_MATCH PASS   CSalRenderPanDelayMMX
+00c550f0   WARN RELOC_NAME: ??0CSalRenderPan@@QAE@XZ -> 00c6d9d0 labelled 'CVtable_012bed90::CVtable_012bed90'
+00c550f0   WARN STANDIN_LEAF ??0CSalRenderPanMMX@@QAE@XZ (catalog C3DAnimationUtil::C3DAnimationUtil; names another function)
+00c550f0   RELOCATION_MATCH PASS   C3DAnimationUtil
+00c55110   WARN RELOC_NAME: ??0CSalRenderDisable@@QAE@XZ -> 00c6e760 labelled 'CVtable_012bedb8::CVtable_012bedb8'
+00c55110   WARN STANDIN_LEAF ??0CSalRenderDisableMMX@@QAE@XZ (catalog C3DAnimationUtil::C3DAnimationUtil; names another function)
+00c55110   RELOCATION_MATCH PASS   C3DAnimationUtil
+00c6dea0   WARN RELOC_NAME: ?Params3DInit@CSalRenderPan@@AAEXPAUFilterPan@@M@Z -> 00c6de60 labelled 'CVtable_012bed90::ComputeGainRamp'
+00c6dea0   WARN STANDIN_LEAF ?UpdateFilters@CSalRenderPan@@AAEX_N@Z (catalog CVtable_012bed90::RebuildGain; names another function)
+00c6dea0   RELOCATION_MATCH PASS   RebuildGain
+
+WINS: 7
+  00c55070 RELOCATION_MATCH CSalRenderPanDelaySSE2::??0CSalRenderPanDelaySSE2@@QAE@XZ
+  00c55090 RELOCATION_MATCH C3DAnimationUtil::??0CSalRenderPanSSE2@@QAE@XZ
+  00c550b0 RELOCATION_MATCH C3DAnimationUtil::??0CSalRenderDisableSSE2@@QAE@XZ
+  00c550d0 RELOCATION_MATCH CSalRenderPanDelayMMX::??0CSalRenderPanDelayMMX@@QAE@XZ
+  00c550f0 RELOCATION_MATCH C3DAnimationUtil::??0CSalRenderPanMMX@@QAE@XZ
+  00c55110 RELOCATION_MATCH C3DAnimationUtil::??0CSalRenderDisableMMX@@QAE@XZ
+  00c6dea0 RELOCATION_MATCH CVtable_012bed90::?UpdateFilters@CSalRenderPan@@AAEX_N@Z

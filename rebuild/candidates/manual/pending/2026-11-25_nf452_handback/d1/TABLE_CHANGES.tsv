@@ -1,0 +1,10 @@
+action	symbol	target	witness	note
+replace	??0CVtable_012bedb8@@QAE@XZ -> ??0CSalRenderDisable@@QAE@XZ	00c6e760	00c550b0	NF452: the SDK ??0CSalRenderDisableSSE2 / MMX COMDATs call ??0CSalRenderDisable = retail 0x00C550B0 / 0x00C55110 calling 0x00C6E760; self 0x00C6E760 respelled in this batch
+delete	??0CBase_00c6e760@@QAE@XZ	00c6e760	00c550b0	NF452: stale vendor-naming-V1 spelling of 0x00C6E760 (the row text records the rename to ??0CVtable_012bedb8); its witness 0x00C550B0 now references ??0CSalRenderDisable
+replace	??_7CVtable_012bedb8@@6B@ -> ??_7CSalRenderDisable@@6B@	012bedb8	00c6e760	NF452: CSalRenderDisable vftable (constructor 0x00C6E760 respelled in this batch)
+replace	??0CVtable_012b8a8c@@QAE@XZ -> ??0CSalRenderDisableSSE2@@QAE@XZ	00c550b0	00c55270	NF452: NF441 NAME_FIXES (SDK CreateRenderer call 1 = ??0CSalRenderDisableSSE2 = retail call of 0x00C550B0); self respelled in this batch
+replace	??0CVtable_012b8ac8@@QAE@XZ -> ??0CSalRenderDisableMMX@@QAE@XZ	00c55110	00c55270	NF452: NF441 NAME_FIXES (SDK MMX-branch call 1 = ??0CSalRenderDisableMMX = retail call of 0x00C55110); self respelled in this batch
+add	??_7CSalRenderDisableSSE2@@6B@	012b8a8c	00c55270	NF452: CSalRenderDisableSSE2 vftable (NF441 CLASS_TABLE; emitted by unit 0x00C55270 in the ??0 COMDAT 0x00C550B0; no earlier binding)
+add	??_7CSalRenderDisableMMX@@6B@	012b8ac8	00c55270	NF452: CSalRenderDisableMMX vftable (NF441 CLASS_TABLE; emitted by unit 0x00C55270 in the ??0 COMDAT 0x00C55110; no earlier binding)
+replace	?RebuildGain@CVtable_012bedb8@@QAEX_N@Z -> ?UpdateFilters@CSalRenderDisable@@AAEX_N@Z	00c6ebe0	00c6ec50	NF452: SDK private CSalRenderDisable::UpdateFilters (Release SetGain / SetPosition relocate to it = retail 0x00C6EC50 / 0x00C6EC80 calls); self 0x00C6EBE0 respelled in this batch
+delete	?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z	00c6ebe0	00c6ec80	NF452: stale pre-V2 spelling of 0x00C6EBE0 (vendor naming V2 renamed it RebuildGain); its witness 0x00C6EC80 now calls ?UpdateFilters@CSalRenderDisable

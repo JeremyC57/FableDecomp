@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf372	0x00C550B0	identity	NF372 entry 7: identity: as 0x00C55090 (libpk / CODA block; binder 0x00C55270's SSE2 stereo panner, vtable 0x012B8A8C); the PDB spelling ??0C3DAnimationUtil@@QAE@XZ is a propagated label
+nf372	0x00C55110	identity	NF372 entry 9: identity: as 0x00C55090 (binder 0x00C55270's MMX stereo panner, vtable 0x012B8AC8); propagated label

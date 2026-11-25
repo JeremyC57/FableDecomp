@@ -1,46 +1,80 @@
-// Behaviour test for 0x00C6FE10 CVtable_012b8ac8::Process (libpk MMX gain-ramp mixer): which kernel runs with which gain/step
+// Behaviour test (NF452, linked against the row object over engine/CSalRenderDisable*.h; replaces the HEAD test of the local CVtable_012bedb8
+// model) of
+// CSalRenderDisableMMX::Process 0x00C6FE10: as the SSE2 class over the MMX kernels (constant-gain path: input, output, gain per output;
+// outputs 2 / 3 only with four or more output channels); an update clears m_bUpdate, swaps the sets and ramps (the hand MMX ramp kernel of
+// the row object runs for real).
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderDisableSSE2.h"
+#include "engine/CSalRenderDisableMMX.h"
 #include <cstdio>
-struct SGainRamp { unsigned short m_gain; short m_step; };
-struct Call { int kind; long* dst; int initial; int step; unsigned long count; };
-static Call gCalls[16]; static int gN = 0; static unsigned long gOutputChannels = 2;
-static void Kernel(const short*, unsigned long count, long* dst, short initial, short step)
-{ Call c = { 1, dst, initial, step, count }; gCalls[gN++] = c; }
-static void ScaleAccumulate(const short*, unsigned long count, long* dst, short gain)
-{ Call c = { 2, dst, gain, 0, count }; gCalls[gN++] = c; }
-static void MixGainRampUpMMX(const short* s, const SGainRamp* r, long* a) { if (r->m_step != 0) Kernel(s, 16, a, 0, r->m_step); }
-static void MixGainRampDownMMX(const short* s, const SGainRamp* r, long* a) { if (r->m_gain != 0) Kernel(s, 16, a, r->m_gain, -r->m_step); }
-static void MixGainMMX(const short* s, unsigned long n, const SGainRamp* r, long* a) { if (r->m_gain != 0) ScaleAccumulate(s, n, a, r->m_gain); }
-struct CEffect {
-    bool m_crossfade; SGainRamp m_first, m_second; SGainRamp* m_pCurrent; SGainRamp* m_pPrevious;
-    void Process(const short* input, long* const* outputs)
-    {
-        if (m_crossfade) {
-            m_crossfade = false;
-            MixGainRampDownMMX(input, m_pCurrent, outputs[0]);
-            MixGainRampDownMMX(input, m_pCurrent, outputs[1]);
-            if (gOutputChannels >= 4) { MixGainRampDownMMX(input, m_pCurrent, outputs[2]); MixGainRampDownMMX(input, m_pCurrent, outputs[3]); }
-            SGainRamp* current = m_pCurrent; m_pCurrent = m_pPrevious; m_pPrevious = current;
-            MixGainRampUpMMX(input, m_pCurrent, outputs[0]);
-            MixGainRampUpMMX(input, m_pCurrent, outputs[1]);
-            if (gOutputChannels >= 4) { MixGainRampUpMMX(input, m_pCurrent, outputs[2]); MixGainRampUpMMX(input, m_pCurrent, outputs[3]); }
-        } else {
-            MixGainMMX(input, 16, m_pCurrent, outputs[0]);
-            MixGainMMX(input, 16, m_pCurrent, outputs[1]);
-            if (gOutputChannels >= 4) { MixGainMMX(input, 16, m_pCurrent, outputs[2]); MixGainMMX(input, 16, m_pCurrent, outputs[3]); }
-        }
-    }
-};
+#include <cstdlib>
+#include <cstring>
+static int g_frees = 0, g_baseCtors = 0, g_baseDtors = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { void* p = std::malloc(n); std::memset(p, 0x5a, n); return p; }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; std::free(p); }
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { ++g_baseCtors; }
+CSalRender::~CSalRender() { ++g_baseDtors; }
+void CSalRender::ClearFilterHistory() { }
+// Retail layout (engine/CSalRenderDisable.h): the test reads protected / private members at their retail offsets.
+template <class T> static T& At(void* o, unsigned off) { return *reinterpret_cast<T*>(static_cast<char*>(o) + off); }
+static FilterPan* Params(void* o, unsigned which) { return At<FilterPan*>(o, which ? 0x34 : 0x30); }
+static bool Pan(void* o, unsigned which, unsigned short gain, short delta) { return Params(o, which)->gain == gain && Params(o, which)->gainDelta == delta; }
+static int g_called = 0;
+static int g_updates = 0; static bool g_lastNew = false;
+struct CAudioMaster { unsigned char _pad[0x1bc]; unsigned long m_outputChannels; };   // the rows' view of g_pSal (+0x1BC output channels)
+static CAudioMaster g_master;
+CAudioMaster* g_pAudioMaster = &g_master;
+CSalRenderDisable::CSalRenderDisable() { m_paramsA.pan.gain = 0; m_paramsA.pan.gainDelta = 0; m_paramsB = m_paramsA; m_pParamsCurrent = &m_paramsA; m_pParamsNew = &m_paramsB; }
+CSalRenderDisable::~CSalRenderDisable() { }
+void CSalRenderDisable::Process(const short*, int*(&)[4]) { g_called = 0xe8f0; }   // 0x00C6E8F0 (no row)
+void CSalRenderDisable::SetGain(float, const float*, bool) { g_called = 0xec50; }
+void CSalRenderDisable::SetPosition(float, float, float, float, const float*, bool, bool) { g_called = 0xec80; }
+void CSalRenderDisable::Params3DInit(FilterPan*) { g_called = 0xeba0; }
+void CSalRenderDisable::UpdateFilters(const bool bNew) { ++g_updates; g_lastNew = bNew; }
+void CSalRenderDisableSSE2::Process(const short*, int*(&)[4]) { g_called = 0xeef0; }
+// What the hand ramp kernel adds per sample (measured on the row object): the high word of sample * gain (pmulhw), times two.
+static int Ramp(short sample, int gain0, int step, int i) { return ((sample * (short)(gain0 + step * i)) >> 16) * 2; }
+static int g_kernels = 0; static const short* g_src[4]; static long* g_dst[4]; static short g_gain[4]; static unsigned long g_count[4];
+void __cdecl ScaleAccumulate16MMX_00c6fbb0(const short* src, unsigned long count, long* dst, short gain)   // 0x00C6FBB0 (landed kernel, not linked): records the call
+{ if (g_kernels < 4) { g_src[g_kernels] = src; g_dst[g_kernels] = dst; g_gain[g_kernels] = gain; g_count[g_kernels] = count; } ++g_kernels; }
 int main()
 {
-    static short in[128]; static long o0[128], o1[128], o2[128], o3[128]; long* outs[4] = { o0, o1, o2, o3 };
-    CEffect e; e.m_crossfade = false; e.m_first.m_gain = 0x1000; e.m_first.m_step = 0x20; e.m_second.m_gain = 0x3000; e.m_second.m_step = 0x60;
-    e.m_pCurrent = &e.m_first; e.m_pPrevious = &e.m_second;
-    e.Process(in, outs);
-    if (gN != 2 || gCalls[0].kind != 2 || gCalls[0].initial != 0x1000 || gCalls[1].dst != o1 || gCalls[0].count != 16) { std::printf("00c6fe10_TEST FAIL\n"); return 1; }
-    gN = 0; gOutputChannels = 4; e.m_crossfade = true;
-    e.Process(in, outs);
-    if (gN != 8 || gCalls[0].initial != 0x1000 || gCalls[0].step != -0x20 || gCalls[3].dst != o3
-        || gCalls[4].initial != 0 || gCalls[4].step != 0x60 || e.m_pCurrent != &e.m_second || e.m_crossfade) { std::printf("00c6fe10_TEST FAIL\n"); return 1; }
+    bool ok = true;
+    CSalRender* r = new CSalRenderDisableMMX;
+    __declspec(align(16)) short src[128]; for (int i = 0; i < 128; ++i) src[i] = (short)(1000 + 8 * i);
+    __declspec(align(16)) int o0[128]; __declspec(align(16)) int o1[128]; __declspec(align(16)) int o2[128]; __declspec(align(16)) int o3[128];
+    std::memset(o0, 0, sizeof(o0)); std::memset(o1, 0, sizeof(o1)); std::memset(o2, 0, sizeof(o2)); std::memset(o3, 0, sizeof(o3));
+    int* out[4] = { o0, o1, o2, o3 };
+    FilterPan* cur = Params(r, 0); FilterPan* nw = Params(r, 1);
+    cur->gain = 0x4000; cur->gainDelta = 0x80;
+    g_master.m_outputChannels = 2;
+    r->Process(src, out);   // constant gain: one kernel call per output, the whole 128-sample block (16 groups)
+    ok = ok && g_kernels == 2 && g_src[0] == src && g_dst[0] == (long*)o0 && g_dst[1] == (long*)o1 && g_gain[0] == 0x4000 && g_gain[1] == 0x4000;
+    ok = ok && g_count[0] == 16 && g_count[1] == 16;
+    g_kernels = 0; g_master.m_outputChannels = 4;
+    r->Process(src, out);
+    ok = ok && g_kernels == 4 && g_dst[2] == (long*)o2 && g_dst[3] == (long*)o3;
+    g_kernels = 0; cur->gain = 0;
+    r->Process(src, out);   // a silent record mixes nothing
+    ok = ok && g_kernels == 0;
+    // an update: fade the current record out (its gain is 0 here, so nothing), swap the sets, fade the new one in with the real ramp kernel
+    nw->gain = 0x7000; nw->gainDelta = 0x40; g_master.m_outputChannels = 2;
+    At<bool>(r, 0x24) = true;
+    r->Process(src, out);
+    ok = ok && !At<bool>(r, 0x24) && Params(r, 0) == nw && Params(r, 1) == cur && g_kernels == 0;
+    for (int i = 0; i < 128; ++i) ok = ok && o0[i] == Ramp(src[i], 0, 0x40, i) && o1[i] == o0[i] && o2[i] == 0;
+    // the fade-out of a record whose gain is set ramps down: the last sample gets less than the first group
+    std::memset(o0, 0, sizeof(o0)); std::memset(o1, 0, sizeof(o1));
+    At<bool>(r, 0x24) = true; cur->gain = 0; cur->gainDelta = 0;
+    r->Process(src, out);
+    ok = ok && Params(r, 0) == cur && Params(r, 1) == nw && g_kernels == 0;
+    for (int i = 0; i < 128; ++i) ok = ok && o0[i] == Ramp(src[i], 0x7000, -0x40, i) && o1[i] == o0[i] && o2[i] == 0 && o3[i] == 0;
+    delete r;
+    if (!ok) { std::printf("00c6fe10_TEST FAIL\n"); return 1; }
     std::printf("00c6fe10_TEST PASS\n");
     return 0;
 }

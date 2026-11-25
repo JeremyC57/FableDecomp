@@ -1,24 +1,15 @@
-// C3DAnimationUtil::C3DAnimationUtil() -- base CResourceBank() then this class's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C55090, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CResourceBank::CResourceBank ; mov dword ptr [esi],offset C3DAnimationUtil::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x00C6D9D0 runs, then the compiler stores this class's vtable (0x012B8A78
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
-// bodies of this shape.
-namespace N_00c6d9d0 { struct CResourceBank {
-    virtual void v00();
-    CResourceBank();                           // 0x00C6D9D0
-}; } using N_00c6d9d0::CResourceBank;
-
-struct C3DAnimationUtil : CResourceBank {
-    virtual void v00();                    // this class has its own vtable
-    C3DAnimationUtil();
-};
-
-C3DAnimationUtil::C3DAnimationUtil()
-    : CResourceBank()
-{
-}
+// CSalRenderPanSSE2::CSalRenderPanSSE2() -- the out-of-line COMDAT copy of the SSE2 volume panner's inline constructor: the base CSalRenderPan
+//   constructor (0x00C6D9D0), then this class's vtable 0x012B8A78
+// Leaf: ??0CSalRenderPanSSE2@@QAE@XZ
+// Option S: thin row of unit 0x00C55270 (retail SalSw3DVoice.obj slice). The constructor is the inline one of engine/CSalRenderPanSSE2.h;
+//   CSalSw3DVoice::CreateRenderer calls this copy instead of expanding it, as the GameCODA 2.10 SDK CODAApi.lib Release/SalSw3DVoice.obj does
+//   (??0CSalRenderPanSSE2@@QAE@XZ is one of its COMDATs and its CreateRenderer relocates a call to it). Graded from the owner's object; no code
+//   of its own.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C55090, 18 bytes: `push esi ; mov esi,ecx ; call 0x00C6D9D0 ; mov dword ptr [esi],0x012B8A78 ; mov eax,esi ;
+//   pop esi ; ret`.
+// Name (NF452, two sources; NF441 NAME_FIXES): (1) the SDK Release SalSw3DVoice.obj CreateRenderer calls ??0CSalRenderPanSSE2 in the C_HRTF_VOLPAN
+//   case of its SSE2 branch, where retail 0x00C55270 calls 0x00C55090 after CodaMalloc(0x78), in the same call order (CodaMalloc + DisableSSE2, PanSSE2,
+//   PanDelay...); the SDK COMDAT has the same 18-byte shape (base ctor call + vftable store); (2) the vtable's own slot 2 (Process 0x00C6E410 over the
+//   SSE2 kernel 0x00C6E290; NF441 CLASS_TABLE). Was the shared stand-in ??0C3DAnimationUtil@@QAE@XZ (a propagated label).
+// Flags: /EHsc (the unit's).
+#include "../src/compiled/00/c5/CAudioSource_CreateProcessor_00c55270.cpp"

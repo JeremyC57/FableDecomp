@@ -1,0 +1,45 @@
+00c55270 ??_7CSalRenderPanDelaySSE2@@6B@ slot 0 ??_ECSalRenderPanDelaySSE2@@UAEPAXI@Z retail 00c554c0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55270 ??_7CSalRenderPanDelaySSE2@@6B@ 012b8a64 Waaaa
+00c55270 ??_7CSalRenderPanDelayMMX@@6B@ slot 0 ??_ECSalRenderPanDelayMMX@@UAEPAXI@Z retail 00c55550 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55270 ??_7CSalRenderPanDelayMMX@@6B@ 012b8aa0 Waaaa
+00c55270 ??_7CSalRenderDisableSSE2@@6B@ slot 0 ??_ECSalRenderDisableSSE2@@UAEPAXI@Z retail 00c55520 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55270 ??_7CSalRenderDisableSSE2@@6B@ 012b8a8c Waaaa
+00c55270 ??_7CSalRenderDisableMMX@@6B@ slot 0 ??_ECSalRenderDisableMMX@@UAEPAXI@Z retail 00c555b0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55270 ??_7CSalRenderDisableMMX@@6B@ 012b8ac8 Waaaa
+00c55070 ??_7CSalRenderPanDelaySSE2@@6B@ slot 0 ??_ECSalRenderPanDelaySSE2@@UAEPAXI@Z retail 00c554c0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55070 ??_7CSalRenderPanDelaySSE2@@6B@ 012b8a64 Waaaa
+00c55070 ??_7CSalRenderPanDelayMMX@@6B@ slot 0 ??_ECSalRenderPanDelayMMX@@UAEPAXI@Z retail 00c55550 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55070 ??_7CSalRenderPanDelayMMX@@6B@ 012b8aa0 Waaaa
+00c55070 ??_7CSalRenderDisableSSE2@@6B@ slot 0 ??_ECSalRenderDisableSSE2@@UAEPAXI@Z retail 00c55520 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55070 ??_7CSalRenderDisableSSE2@@6B@ 012b8a8c Waaaa
+00c55070 ??_7CSalRenderDisableMMX@@6B@ slot 0 ??_ECSalRenderDisableMMX@@UAEPAXI@Z retail 00c555b0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55070 ??_7CSalRenderDisableMMX@@6B@ 012b8ac8 Waaaa
+00c550d0 ??_7CSalRenderPanDelaySSE2@@6B@ slot 0 ??_ECSalRenderPanDelaySSE2@@UAEPAXI@Z retail 00c554c0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550d0 ??_7CSalRenderPanDelaySSE2@@6B@ 012b8a64 Waaaa
+00c550d0 ??_7CSalRenderPanDelayMMX@@6B@ slot 0 ??_ECSalRenderPanDelayMMX@@UAEPAXI@Z retail 00c55550 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550d0 ??_7CSalRenderPanDelayMMX@@6B@ 012b8aa0 Waaaa
+00c550d0 ??_7CSalRenderDisableSSE2@@6B@ slot 0 ??_ECSalRenderDisableSSE2@@UAEPAXI@Z retail 00c55520 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550d0 ??_7CSalRenderDisableSSE2@@6B@ 012b8a8c Waaaa
+00c550d0 ??_7CSalRenderDisableMMX@@6B@ slot 0 ??_ECSalRenderDisableMMX@@UAEPAXI@Z retail 00c555b0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550d0 ??_7CSalRenderDisableMMX@@6B@ 012b8ac8 Waaaa
+00c550b0 ??_7CSalRenderPanDelaySSE2@@6B@ slot 0 ??_ECSalRenderPanDelaySSE2@@UAEPAXI@Z retail 00c554c0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550b0 ??_7CSalRenderPanDelaySSE2@@6B@ 012b8a64 Waaaa
+00c550b0 ??_7CSalRenderPanDelayMMX@@6B@ slot 0 ??_ECSalRenderPanDelayMMX@@UAEPAXI@Z retail 00c55550 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550b0 ??_7CSalRenderPanDelayMMX@@6B@ 012b8aa0 Waaaa
+00c550b0 ??_7CSalRenderDisableSSE2@@6B@ slot 0 ??_ECSalRenderDisableSSE2@@UAEPAXI@Z retail 00c55520 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550b0 ??_7CSalRenderDisableSSE2@@6B@ 012b8a8c Waaaa
+00c550b0 ??_7CSalRenderDisableMMX@@6B@ slot 0 ??_ECSalRenderDisableMMX@@UAEPAXI@Z retail 00c555b0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c550b0 ??_7CSalRenderDisableMMX@@6B@ 012b8ac8 Waaaa
+00c55110 ??_7CSalRenderPanDelaySSE2@@6B@ slot 0 ??_ECSalRenderPanDelaySSE2@@UAEPAXI@Z retail 00c554c0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55110 ??_7CSalRenderPanDelaySSE2@@6B@ 012b8a64 Waaaa
+00c55110 ??_7CSalRenderPanDelayMMX@@6B@ slot 0 ??_ECSalRenderPanDelayMMX@@UAEPAXI@Z retail 00c55550 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55110 ??_7CSalRenderPanDelayMMX@@6B@ 012b8aa0 Waaaa
+00c55110 ??_7CSalRenderDisableSSE2@@6B@ slot 0 ??_ECSalRenderDisableSSE2@@UAEPAXI@Z retail 00c55520 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55110 ??_7CSalRenderDisableSSE2@@6B@ 012b8a8c Waaaa
+00c55110 ??_7CSalRenderDisableMMX@@6B@ slot 0 ??_ECSalRenderDisableMMX@@UAEPAXI@Z retail 00c555b0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c55110 ??_7CSalRenderDisableMMX@@6B@ 012b8ac8 Waaaa
+00c6e760 ??_7CSalRenderDisable@@6B@ slot 0 ??_ECSalRenderDisable@@UAEPAXI@Z retail 00c6ecb0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c6e760 ??_7CSalRenderDisable@@6B@ 012bedb8 Wauaa
+00c6e780 ??_7CSalRenderDisable@@6B@ slot 0 ??_ECSalRenderDisable@@UAEPAXI@Z retail 00c6ecb0 self ?CLandscapeBackgroundPatch_vector_deleting_destructor@@YIPAXPAVCLandscapeBackgroundPatch@@HI@Z
+00c6e780 ??_7CSalRenderDisable@@6B@ 012bedb8 Wauaa
+TOTAL {'agree': 86, 'WRONG': 22, 'unknown': 2}

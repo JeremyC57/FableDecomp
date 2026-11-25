@@ -1,9 +1,19 @@
-// CVtable_012bedb8::SetVolume(float value,unsigned long unused,bool alternate) -- Rebuild mixer gain only when the volume changes.
-// Leaf: ?SetVolume@CVtable_012bedb8@@UAEXMK_N@Z
-// Identity: own table012bedb8 slot3 and inherited float32; actual helper00c6ebe0 takes bool, stores flag36, rebuilds gain records under lock. Class and method names descriptive; unused parameter type unresolved.
-// Layout: original descriptive libpk CCodaObjectBase root (vtable012b5868) and CVtable_012beda4 base from constructor00c6e6a0/destructor00c6e630. Critical-section holder is a member with own vptr+4 and24 bytes at+8, volume32 and flag36; inherited base40. No shared headers. Slot3 has one float, an unused four-byte parameter of unknown original type, and bool consumed by actual rebuild helper. Unused parameter is represented as a word, no original signature claim.
-struct CCodaObjectBase{virtual ~CCodaObjectBase(){};};
-struct CCriticalSectionOwner_012B8FC8{virtual void UnusedSlot0(){}unsigned char CriticalSection[24];};
-struct CVtable_012beda4:CCodaObjectBase{CCriticalSectionOwner_012B8FC8 Lock;float Volume;unsigned char Alternate;virtual void UnusedSlot1(){}virtual void UnusedSlot2(){}virtual void SetVolume(float,unsigned long,bool)=0;};
-struct CVtable_012bedb8:CVtable_012beda4{void RebuildGain(bool);virtual void SetVolume(float,unsigned long,bool);};
-void CVtable_012bedb8::SetVolume(float value,unsigned long,bool alternate){if(Volume!=value){Volume=value;RebuildGain(alternate);}}
+// CSalRenderDisable::SetGain(float fGain, const float* pfGainPan, bool bNew) -- vtable slot 3 of the GameCODA plain-gain renderer (and of its
+//   SSE2 / MMX classes): a changed gain is stored in m_fGain and rebuilds the filters (UpdateFilters 0x00C6EBE0); the pan gains are unused
+// Leaf: ?SetGain@CSalRenderDisable@@UAEXMPBM_N@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6EC50, 36 bytes (+ int3 padding), thiscall `ret 0Ch`; slot 3 of 0x012BEDB8 / 0x012B8A8C / 0x012B8AC8.
+// Name (NF452, two sources): (1) the GameCODA 2.10 SDK (CODAApiDbg.lib Debug/SalRenderDisable.obj CodeView class / method record + CODAApi.lib Release/SalRenderDisable.obj body): virtual void SetGain(float, const float*, bool) (slot 0x0C of CSalRender); (2) the Release body ties
+//   exactly (12 instructions / `ret 0Ch` = retail 12 / `ret 0Ch`; one call, to UpdateFilters). Was ?SetVolume@CVtable_012bedb8@@UAEXMK_N@Z
+//   (descriptive stand-in; NF445 DEBT_SLOTS).
+// Shape: `m_fGain != fGain` loads the argument first for `fucompp ; test ah,44h ; jnp` (equal -> return); the float store is an integer move.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRenderDisable.h"   // CSalRenderDisable (vtable 0x012BEDB8) : CSalRender (m_fGain +0x20)
+
+void CSalRenderDisable::SetGain(float fGain, const float* pfGainPan, bool bNew)
+{
+    if (m_fGain != fGain) {
+        m_fGain = fGain;
+        UpdateFilters(bNew);
+    }
+}

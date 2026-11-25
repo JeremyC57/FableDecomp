@@ -1,36 +1,43 @@
-// CVtable_012bedb8::ComputeGainRamp(SGainRamp* ramp) -- fill a gain-ramp record from the effect volume alone: gain = min(FtoL(volume * 32767), 0x7fff) >> 1 (unsigned) and its 128-sample ramp step gain >> 7
-// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
-// Leaf: ?ComputeGainRamp@CVtable_012bedb8
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6EBA0, 62 bytes (+ int3 padding), `ret 4`.
-// Module: libpk's software mixer, the gain-ramp effect of vtable 0x012BEDB8 (ctor 0x00C6E760 matched in this chunk). No
-//   direct callers (address-taken).
-// Retail-asm: 0x00C6EBAC `fstp [esp] ; fld [esp] ; fistp dword [esp+4]` -- libpk's inline-assembly rounding helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
-// Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
-//   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
-// libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
-// `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
+// CSalRenderDisable::Params3DInit(FilterPan* pFilter) -- fill a FilterPan from the renderer gain alone: gain = min(FtoL(m_fGain * 32767),
+//   0x7fff) >> 1 (unsigned) and its 128-sample ramp step gain >> 7; then (same retail object, address order) UpdateFilters
+// Leaf: ?Params3DInit@CSalRenderDisable@@AAEXPAUFilterPan@@@Z
+// Option S owner (retail SalRenderDisable.obj slice): this file holds Params3DInit 0x00C6EBA0 and UpdateFilters 0x00C6EBE0 in retail address
+//   order; 0x00C6EBE0 is a thin row that includes it. VC7.1 expands Params3DInit into both arms of UpdateFilters and keeps this out-of-line
+//   copy (no retail caller), as the SDK Release object does (UpdateFilters relocates no call to Params3DInit).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6EBA0, 62 bytes (+ int3 padding), thiscall `ret 4`; UpdateFilters @ 0x00C6EBE0, 106 bytes, `ret 4`.
+// Retail-asm: 0x00C6EBAC `fstp dword ptr [esp] ; fld dword ptr [esp] ; fistp dword ptr [esp+4]` (Params3DInit) and 0x00C6EC0A / 0x00C6EC0E,
+//   0x00C6EC17 / 0x00C6EC1B `fld dword ptr [esp+10h] ; fistp dword ptr [esp+8]` (its two expansions in UpdateFilters) -- libpk's inline-assembly
+//   float-to-long helper FtoL (the SDK's sal_round; shared libpk/FtoL.h: byte path + FABLE_PORTABLE twin, docs/pipeline/ASM_RULES.md); this row
+//   has no asm of its own. VC7.1 `(long)x` calls __ftol2 and /QIfist emits `fistp qword`.
+// Name (NF452, two sources): (1) the GameCODA 2.10 SDK (CODAApiDbg.lib Debug/SalRenderDisable.obj CodeView class / method record + CODAApi.lib Release/SalRenderDisable.obj body): private void Params3DInit(FilterPan*) / void UpdateFilters(const bool); (2) the Release bodies tie
+//   exactly: Params3DInit 17 instructions / `ret 4` = retail 17 / `ret 4`; UpdateFilters 35 / `ret 4` = retail 35 / `ret 4`; and the Release
+//   SetGain / SetPosition relocate their one call to UpdateFilters, as retail 0x00C6EC50 / 0x00C6EC80 call 0x00C6EBE0. Were
+//   ?ComputeGainRamp@CVtable_012bedb8@@QAEXPAUSGainRamp@@@Z / ?RebuildGain@CVtable_012bedb8@@QAEX_N@Z (descriptive).
+// Callees: KERNEL32 EnterCriticalSection / LeaveCriticalSection (IAT 0x0143FE0C / 0x0143FE10) through CSalMutex::Enter / Leave on m_mutexUpdate
+//   (+0x04; the critical section +0x08); 32767.0f 0x0129C820.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderDisable.h"   // CSalRenderDisable (vtable 0x012BEDB8) : CSalRender (m_mutexUpdate +0x04, m_fGain +0x20, m_bUpdate +0x24)
 #include "libpk/FtoL.h"
-struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-struct CVtable_012beda4 {                          // vtable 0x012BEDA4, 0x28 bytes (ctor 0x00C6E6A0, dtor 0x00C6E630 landed)
-    void*            _vtable;                      // +0x00
-    void*            _lockVtable;                  // +0x04 critical-section owner (vtable 0x012B8FC8)
-    SCriticalSection m_lock;                       // +0x08
-    float            m_volume;                     // +0x20 linear (the landed dtor model calls it `long m_count`)
-    bool             m_alternate;                  // +0x24
-};
-struct SGainRamp {
-    unsigned short m_gain;                         // +0x00 Q15
-    short          m_step;                         // +0x02 Q15 per sample
-};
-struct CVtable_012bedb8 : CVtable_012beda4 {
-    void ComputeGainRamp(SGainRamp* ramp);
-};
-void CVtable_012bedb8::ComputeGainRamp(SGainRamp* ramp)
+
+void CSalRenderDisable::Params3DInit(FilterPan* pFilter)
 {
-    unsigned long level = FtoL(m_volume * 32767.0f);
-    if (level > 0x7fff)
-        level = 0x7fff;
-    unsigned short gain = (unsigned short)((unsigned short)level >> 1);
-    ramp->m_gain = gain;
-    ramp->m_step = (short)(gain >> 7);
+    unsigned long gain = FtoL(m_fGain * 32767.0f);
+    if (gain > 0x7fff)
+        gain = 0x7fff;
+    unsigned short half = (unsigned short)((unsigned short)gain >> 1);
+    pFilter->gain = half;
+    pFilter->gainDelta = (short)(half >> 7);
+}
+
+void CSalRenderDisable::UpdateFilters(const bool bNew)
+{
+    m_mutexUpdate.Enter();
+    m_bUpdate = bNew;
+    if (bNew)
+        Params3DInit(&m_pParamsNew->pan);
+    else
+        Params3DInit(&m_pParamsCurrent->pan);
+    m_mutexUpdate.Leave();
 }

@@ -1,44 +1,58 @@
-// Behaviour test for CVtable_012bed90::RebuildGain (0x00C6DEA0): stores the selector, rebuilds the Q15 gain and step
-// (gain >> 7) of the selected record set from scale * volume * 32767 (rounded, capped at 0x7FFF): the front pair always,
-// the rear pair only with four or more output channels; the other record set is untouched.
+// Behaviour test (NF452, linked against the row object over engine/CSalRenderPan*.h; replaces the HEAD test of the local CVtable_012bed90
+// model) of
+// CSalRenderPan::UpdateFilters 0x00C6DEA0: m_bUpdate = bNew; the new set (bNew) or the live set is rebuilt from m_fGainPan and m_fGain:
+// entries 0 / 1 always, 2 / 3 only with four or more output channels, 4 / 5 never; the other set is untouched.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderPanSSE2.h"
+#include "engine/CSalRenderPanMMX.h"
 #include <cstdio>
-
-struct Ramp { unsigned short gain; short step; };
-static long RoundToLong(float v) { return (long)(v >= 0.0f ? v + 0.5f : v - 0.5f); }
-
-struct Effect {
-    float volume; bool alternate; Ramp first[6], second[6]; Ramp* current; Ramp* previous; float scales[6];
-    unsigned int channels;
-    void Compute(Ramp* r, float scale)
-    {
-        unsigned long g = (unsigned long)RoundToLong(scale * volume * 32767.0f);
-        if (g > 0x7fff) g = 0x7fff;
-        r->gain = (unsigned short)g;
-        r->step = (short)((unsigned short)g >> 7);
-    }
-    void RebuildGain(bool alt)
-    {
-        alternate = alt;
-        Ramp* set = alt ? previous : current;
-        Compute(&set[0], scales[0]);
-        Compute(&set[1], scales[1]);
-        if (channels >= 4) { Compute(&set[2], scales[2]); Compute(&set[3], scales[3]); }
-    }
-};
-
+#include <cstdlib>
+#include <cstring>
+static int g_frees = 0, g_baseCtors = 0, g_baseDtors = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { void* p = std::malloc(n); std::memset(p, 0x5a, n); return p; }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; std::free(p); }
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { ++g_baseCtors; }
+CSalRender::~CSalRender() { ++g_baseDtors; }
+void CSalRender::ClearFilterHistory() { }
+// Retail layout (engine/CSalRenderPan.h): the test reads protected / private members at their retail offsets.
+template <class T> static T& At(void* o, unsigned off) { return *reinterpret_cast<T*>(static_cast<char*>(o) + off); }
+static FilterPan* Params(void* o, unsigned which) { return At<FilterPan*>(o, which ? 0x5c : 0x58); }
+static bool Pan(void* o, unsigned which, int i, unsigned short gain, short delta) { return Params(o, which)[i].gain == gain && Params(o, which)[i].gainDelta == delta; }
+static int g_called = 0;
+static int g_updates = 0; static bool g_lastNew = false;
+struct CAudioMaster { unsigned char _pad[0x1bc]; unsigned long m_outputChannels; };   // the rows' view of g_pSal (+0x1BC output channels)
+static CAudioMaster g_master;
+CAudioMaster* g_pAudioMaster = &g_master;
+CSalRenderPan::CSalRenderPan() { std::memset(&m_paramsA, 0, sizeof(m_paramsA)); std::memset(&m_paramsB, 0, sizeof(m_paramsB)); m_pParamsCurrent = &m_paramsA; m_pParamsNew = &m_paramsB; for (int i = 0; i < 6; ++i) m_fGainPan[i] = 0.0f; }
+CSalRenderPan::~CSalRenderPan() { }
+void CSalRenderPan::Process(const short*, int*(&)[4]) { g_called = 0xdba0; }   // 0x00C6DBA0 (no row)
+void CSalRenderPanSSE2::Process(const short*, int*(&)[4]) { g_called = 0xe410; }
+void CSalRenderPanMMX::Process(const short*, int*(&)[4]) { g_called = 0xf990; }
+// The private helpers are reached through member stubs of the slots the unit does not define: SetGain stores the gain and calls UpdateFilters
+// (the SDK body), SetPosition(which, fGainPan, ...) calls Params3DInit on entry `which` of the new (bNew) or current set.
+void CSalRenderPan::SetGain(float fGain, const float*, bool bNew) { m_fGain = fGain; UpdateFilters(bNew); }
+void CSalRenderPan::SetPosition(float which, float fGainPan, float, float, const float*, bool bNew, bool)
+{ Params3DInit(&(bNew ? m_pParamsNew : m_pParamsCurrent)->pan[(int)which], fGainPan); }
 int main()
 {
-    int ok = 1;
-    Effect e;
-    for (int i = 0; i < 6; ++i) { e.first[i].gain = 1; e.first[i].step = 1; e.second[i].gain = 1; e.second[i].step = 1; }
-    e.current = e.first; e.previous = e.second; e.volume = 1.0f; e.channels = 2;
-    e.scales[0] = 0.5f; e.scales[1] = 2.0f; e.scales[2] = 0.25f; e.scales[3] = 0.0f;
-    e.RebuildGain(false);
-    ok &= !e.alternate && e.first[0].gain == 16384 && e.first[0].step == 128 && e.first[1].gain == 0x7fff;
-    ok &= e.first[1].step == 255 && e.first[2].gain == 1 && e.second[0].gain == 1;
-    e.channels = 4;
-    e.RebuildGain(true);
-    ok &= e.alternate && e.second[2].gain == 8192 && e.second[2].step == 64 && e.second[3].gain == 0 && e.first[2].gain == 1;
+    bool ok = true;
+    CSalRender* r = new CSalRenderPan;
+    float g[6] = { 1.0f, 0.25f, 3.0f, 0.1f, 1.0f, 1.0f };
+    for (int i = 0; i < 6; ++i) At<float>(r, 0x60 + 4 * i) = g[i];
+    g_master.m_outputChannels = 2; At<bool>(r, 0x24) = true;
+    r->SetGain(0.5f, 0, false);
+    ok = ok && !At<bool>(r, 0x24) && Pan(r, 0, 0, 16384, 128) && Pan(r, 0, 1, 4096, 32) && Pan(r, 0, 2, 0, 0) && Pan(r, 1, 0, 0, 0);
+    g_master.m_outputChannels = 4;
+    r->SetGain(0.5f, 0, true);
+    ok = ok && At<bool>(r, 0x24) && Pan(r, 1, 0, 16384, 128) && Pan(r, 1, 1, 4096, 32) && Pan(r, 1, 2, 0x7fff, 0xff);
+    ok = ok && Pan(r, 1, 3, 1638, 12) && Pan(r, 1, 4, 0, 0) && Pan(r, 0, 2, 0, 0);
+    r->SetGain(0.5f, 0, false);
+    ok = ok && !At<bool>(r, 0x24) && Pan(r, 0, 2, 0x7fff, 0xff) && Pan(r, 0, 3, 1638, 12) && Pan(r, 0, 5, 0, 0) && g_called == 0;
+    delete r;
     if (!ok) { std::printf("00c6dea0_TEST FAIL\n"); return 1; }
     std::printf("00c6dea0_TEST PASS\n");
     return 0;

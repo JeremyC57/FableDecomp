@@ -1,0 +1,182 @@
+address	status	note
+00c55270	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+01216180	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+0121618b	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+01216196	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161a1	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161ac	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161b7	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161c2	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161cd	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55070	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c550d0	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c550b0	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55110	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6e760	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6e780	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6eba0	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6ebe0	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6ec50	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6ec80	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6eef0	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6fe10	PORTED	d1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55270	TESTED	d1: linked test PASS
+01216180	TESTED	d1: linked test PASS
+0121618b	TESTED	d1: linked test PASS
+01216196	TESTED	d1: linked test PASS
+012161a1	TESTED	d1: linked test PASS
+012161ac	TESTED	d1: linked test PASS
+012161b7	TESTED	d1: linked test PASS
+012161c2	TESTED	d1: linked test PASS
+012161cd	TESTED	d1: linked test PASS
+00c55070	TESTED	d1: linked test PASS
+00c550d0	TESTED	d1: linked test PASS
+00c550b0	TESTED	d1: linked test PASS
+00c55110	TESTED	d1: linked test PASS
+00c6e760	TESTED	d1: linked test PASS
+00c6e780	TESTED	d1: linked test PASS
+00c6eba0	TESTED	d1: linked test PASS
+00c6ebe0	TESTED	d1: linked test PASS
+00c6ec50	TESTED	d1: linked test PASS
+00c6ec80	TESTED	d1: linked test PASS
+00c6eef0	TESTED	d1: linked test PASS
+00c6fe10	TESTED	d1: linked test PASS
+00c6e760	PORTED	d1: mutant FAILs its test
+00c6e780	PORTED	d1: mutant FAILs its test
+00c6eba0	PORTED	d1: mutant FAILs its test
+00c6ebe0	PORTED	d1: mutant FAILs its test
+00c6ec50	PORTED	d1: mutant FAILs its test
+00c6ec80	PORTED	d1: mutant FAILs its test
+00c6eef0	PORTED	d1: mutant FAILs its test
+00c6fe10	PORTED	d1: mutant FAILs its test
+00c550b0	PORTED	d1: mutant FAILs its test
+00c55110	PORTED	d1: mutant FAILs its test
+00c55270	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+01216180	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+0121618b	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+01216196	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+012161a1	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+012161ac	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+012161b7	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+012161c2	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+012161cd	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c55070	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c550d0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c550b0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c55110	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6e760	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6e780	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6eba0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6ebe0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6ec50	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6ec80	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6eef0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c6fe10	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, vt432 non-slot-0 WRONG 4->0, forcelink slots UND 47->42 DUP 4->2
+00c55270	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+01216180	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+0121618b	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+01216196	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+012161a1	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+012161ac	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+012161b7	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+012161c2	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+012161cd	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c55070	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c550d0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c550b0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c55110	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6e760	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6e780	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6eba0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6ebe0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6ec50	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6ec80	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6eef0	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c6fe10	GATED	d1: vland sim PASS, pk 0 NEQ, reachflip 0, forcelink UND 47->42 DUP 4->2
+00c55270	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+01216180	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+0121618b	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+01216196	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+012161a1	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+012161ac	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+012161b7	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+012161c2	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+012161cd	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c55070	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c550d0	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c550b0	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c55110	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6e760	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6e780	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6eba0	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6ebe0	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6ec50	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6ec80	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6eef0	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c6fe10	ACCEPT	d1: all gates pass (README); RESULTS ACCEPT
+00c55270	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+01216180	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+0121618b	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+01216196	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161a1	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161ac	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161b7	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161c2	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+012161cd	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55070	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c550d0	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c550b0	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55110	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55090	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c550f0	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6d9d0	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6da30	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6de60	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6dea0	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6e020	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6e410	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c6f990	PORTED	p1: row text written, graded RELOCATION_MATCH (q.py, overlay)
+00c55270	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+01216180	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+0121618b	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+01216196	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+012161a1	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+012161ac	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+012161b7	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+012161c2	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+012161cd	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c55070	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c550d0	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c550b0	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c55110	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c55090	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c550f0	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6d9d0	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6da30	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6de60	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6dea0	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6e020	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6e410	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c6f990	TESTED	p1: linked test PASS, mutant FAIL (renamed rows), pk 0 NEQ, reachflip 0
+00c55270	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+01216180	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+0121618b	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+01216196	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+012161a1	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+012161ac	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+012161b7	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+012161c2	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+012161cd	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c55070	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c550d0	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c550b0	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c55110	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c55090	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c550f0	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6d9d0	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6da30	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6de60	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6dea0	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6e020	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6e410	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT
+00c6f990	ACCEPT	p1 (stacked on d1): all gates pass (README); RESULTS ACCEPT

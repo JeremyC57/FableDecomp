@@ -19,6 +19,10 @@
 #include "engine/CSalRender.h"
 #include "engine/CSalRenderPanDelaySSE2.h"   // NF447: the HRTF-delay panners (were local models)
 #include "engine/CSalRenderPanDelayMMX.h"
+#include "engine/CSalRenderDisableSSE2.h"    // NF452: the plain-gain renderers (were local models)
+#include "engine/CSalRenderDisableMMX.h"
+#include "engine/CSalRenderPanSSE2.h"        // NF452: the volume panners (were local models)
+#include "engine/CSalRenderPanMMX.h"
 #include <cstdio>
 #include <cstdlib>
 bool g_cpuDetected = false;
@@ -28,26 +32,8 @@ static unsigned long g_ctor = 0, g_call = 0;
 void DetectCpu() { ++g_detects; g_cpuDetected = true; }
 extern "C" void* __cdecl CodaMalloc(unsigned int n) { ++g_mallocs; g_lastSize = n; return g_failAlloc ? 0 : std::malloc(n); }
 extern "C" void __cdecl CodaFree(void* p) { std::free(p); }
-// The derived renderer classes: CSalRenderPanDelay / SSE2 / MMX from their headers (NF447), the others declared as in the row (local
+// The derived renderer classes: CSalRenderPanDelay / SSE2 / MMX (NF447) and CSalRenderDisable / SSE2 / MMX and CSalRenderPan / SSE2 / MMX (NF452) from their headers, the others declared as in the row (local
 // models over CSalRender.h, no header yet); their out-of-line members are stubs that record which one ran (the ids are the retail addresses).
-class CVtable_012bed90 : public CSalRender {                                // volume panner (Pan), 0x78 bytes
-public:
-    CVtable_012bed90();                                                     // 0x00C6D9D0
-    virtual ~CVtable_012bed90();                                            // 0x00C6DA30
-    virtual void Process(const short*, int*(&)[4]);
-    virtual void SetGain(float, const float*, bool);
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-    unsigned char m_state[0x78 - 0x28];
-};
-class CVtable_012bedb8 : public CSalRender {                                // disabled / plain stereo renderer, 0x38 bytes
-public:
-    CVtable_012bedb8();                                                     // 0x00C6E760
-    virtual ~CVtable_012bedb8();                                            // 0x00C6E780
-    virtual void Process(const short*, int*(&)[4]);
-    virtual void SetGain(float, const float*, bool);
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-    unsigned char m_state[0x38 - 0x28];
-};
 class CVtable_012bede0 : public CSalRender {                                // full HRTF renderer (SSE2), 0xC6C bytes
 public:
     CVtable_012bede0();                                                     // 0x00C70B00
@@ -68,26 +54,6 @@ public:
     virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x66c - 0x28];
 };
-class CVtable_012b8a78 : public CVtable_012bed90 {                          // SSE2 volume panner (vtable 0x012B8A78)
-public:
-    CVtable_012b8a78();                                                     // 0x00C55090
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8ab4 : public CVtable_012bed90 {                          // MMX volume panner (vtable 0x012B8AB4)
-public:
-    CVtable_012b8ab4();                                                     // 0x00C550F0
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8a8c : public CVtable_012bedb8 {                          // SSE2 disabled renderer (vtable 0x012B8A8C)
-public:
-    CVtable_012b8a8c();                                                     // 0x00C550B0
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8ac8 : public CVtable_012bedb8 {                          // MMX disabled renderer (vtable 0x012B8AC8)
-public:
-    CVtable_012b8ac8();                                                     // 0x00C55110
-    virtual void Process(const short*, int*(&)[4]);
-};
 
 CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { }
 CSalRender::~CSalRender() { }
@@ -98,18 +64,18 @@ void CSalRender::ClearFilterHistory() { }
 #define STUB_GAINPOS(C) void C::SetGain(float, const float*, bool) { } void C::SetPosition(float, float, float, float, const float*, bool, bool) { }
 STUB_CTOR(CSalRenderPanDelay, 0x00C6CA20) STUB_DTOR(CSalRenderPanDelay) STUB_PROC(CSalRenderPanDelay, 0x00C6CC60) STUB_GAINPOS(CSalRenderPanDelay)
 void CSalRenderPanDelay::ClearFilterHistory() { g_call = 0x00C6CAD0; }
-STUB_CTOR(CVtable_012bed90, 0x00C6D9D0) STUB_DTOR(CVtable_012bed90) STUB_PROC(CVtable_012bed90, 0x00C6DA40) STUB_GAINPOS(CVtable_012bed90)
-STUB_CTOR(CVtable_012bedb8, 0x00C6E760) STUB_DTOR(CVtable_012bedb8) STUB_PROC(CVtable_012bedb8, 0x00C6E790) STUB_GAINPOS(CVtable_012bedb8)
+STUB_CTOR(CSalRenderPan, 0x00C6D9D0) STUB_DTOR(CSalRenderPan) STUB_PROC(CSalRenderPan, 0x00C6DBA0) STUB_GAINPOS(CSalRenderPan)
+STUB_CTOR(CSalRenderDisable, 0x00C6E760) STUB_DTOR(CSalRenderDisable) STUB_PROC(CSalRenderDisable, 0x00C6E8F0) STUB_GAINPOS(CSalRenderDisable)
 STUB_CTOR(CVtable_012bede0, 0x00C70B00) STUB_DTOR(CVtable_012bede0) STUB_PROC(CVtable_012bede0, 0x00C70BC0) STUB_GAINPOS(CVtable_012bede0)
 void CVtable_012bede0::ClearFilterHistory() { }
 STUB_CTOR(CVtable_012bedcc, 0x00C70120) STUB_DTOR(CVtable_012bedcc) STUB_PROC(CVtable_012bedcc, 0x00C701E0) STUB_GAINPOS(CVtable_012bedcc)
 void CVtable_012bedcc::ClearFilterHistory() { }
 STUB_PROC(CSalRenderPanDelaySSE2, 0x00C6D630) void CSalRenderPanDelaySSE2::ClearFilterHistory() { g_call = 0x00C6D560; }
 STUB_PROC(CSalRenderPanDelayMMX, 0x00C6F3E0) void CSalRenderPanDelayMMX::ClearFilterHistory() { g_call = 0x00C6F300; }
-STUB_CTOR(CVtable_012b8a78, 0x00C55090) STUB_PROC(CVtable_012b8a78, 0x00C6E410)
-STUB_CTOR(CVtable_012b8ab4, 0x00C550F0) STUB_PROC(CVtable_012b8ab4, 0x00C6F990)
-STUB_CTOR(CVtable_012b8a8c, 0x00C550B0) STUB_PROC(CVtable_012b8a8c, 0x00C6EEF0)
-STUB_CTOR(CVtable_012b8ac8, 0x00C55110) STUB_PROC(CVtable_012b8ac8, 0x00C6FE10)
+STUB_PROC(CSalRenderPanSSE2, 0x00C6E410)
+STUB_PROC(CSalRenderPanMMX, 0x00C6F990)
+STUB_PROC(CSalRenderDisableSSE2, 0x00C6EEF0)
+STUB_PROC(CSalRenderDisableMMX, 0x00C6FE10)
 // CreateRenderer is private: the test reaches it through CSalSw3DVoice::Create (row 0x00C556E0, not linked here), defined as a test entry.
 static CHRTFMODE g_entryMode; static CSalRender* g_result;
 int CSalSw3DVoice::Create(const CCodaSource*) { g_result = CreateRenderer(g_entryMode); return 0; }
@@ -137,15 +103,15 @@ int main()
     // MMX / C (no SSE2); the CPU is detected on the first call only
     ok = ok && Check(C_HRTF_FULL, 0x66c, 0x00C70120, 0x00C701E0, 0) && g_detects == 1;
     ok = ok && Check(C_HRTF_DELAY, 0x214, 0x00C6CA20, 0x00C6F3E0, 0x00C6F300) && g_detects == 1;
-    ok = ok && Check(C_HRTF_VOLPAN, 0x78, 0x00C550F0, 0x00C6F990, 0);
-    ok = ok && Check(C_HRTF_DISABLED, 0x38, 0x00C55110, 0x00C6FE10, 0);
-    ok = ok && Check(7, 0x38, 0x00C55110, 0x00C6FE10, 0);
+    ok = ok && Check(C_HRTF_VOLPAN, 0x78, 0x00C6D9D0, 0x00C6F990, 0);
+    ok = ok && Check(C_HRTF_DISABLED, 0x38, 0x00C6E760, 0x00C6FE10, 0);
+    ok = ok && Check(7, 0x38, 0x00C6E760, 0x00C6FE10, 0);
     // SSE2
     g_cpuHasSSE2 = true;
     ok = ok && Check(C_HRTF_FULL, 0xc6c, 0x00C70B00, 0x00C70BC0, 0);
     ok = ok && Check(C_HRTF_DELAY, 0x214, 0x00C6CA20, 0x00C6D630, 0x00C6D560);
-    ok = ok && Check(C_HRTF_VOLPAN, 0x78, 0x00C55090, 0x00C6E410, 0);
-    ok = ok && Check(C_HRTF_DISABLED, 0x38, 0x00C550B0, 0x00C6EEF0, 0) && g_detects == 1;
+    ok = ok && Check(C_HRTF_VOLPAN, 0x78, 0x00C6D9D0, 0x00C6E410, 0);
+    ok = ok && Check(C_HRTF_DISABLED, 0x38, 0x00C6E760, 0x00C6EEF0, 0) && g_detects == 1;
     // a failed allocation: null, no constructor
     g_failAlloc = true; int before = g_mallocs;
     ok = ok && Make(C_HRTF_DELAY) == 0 && g_ctor == 0 && g_mallocs == before + 1 && g_lastSize == 0x214;

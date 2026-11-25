@@ -1400,3 +1400,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-25 A: speed-up A1 (owner approved): naming_status.py reads the libsig symbol for LIBRARY_MATCH self rows; +239 done (34,587 -> 34,826), 0 rows worse.
 - 2026-11-25 A: speed-up A2 (owner ruling): Ego_d carved names (demangling, no std) are the third PDB name set in naming_status.py and descriptive_check.py; +250 done (34,826 -> 35,076), 322 split targets now known (318 T1), 0 rows worse.
 - 2026-11-25 A: landed NF451 b1-b4 (13 rows; CStatBase / CDecal containers-free views r451a, CBrainDef / UnholyPowerDef destructor-only views r451b; 3 FableWin best guesses; T3 nf294 0x00459abe + nf303 0x00442280 closed; equiv clean). Started NF453 (bulk stale census, 1,054 candidates).
+- 2026-11-25 A: landed NF452 d1 + p1 (43 GameCODA rows: CSalRenderDisable / CSalRenderPan families on six new headers, REL=nf372; rulings r452a-c; equiv clean). Started NF454 (best-guess registration, 3,672 candidates).

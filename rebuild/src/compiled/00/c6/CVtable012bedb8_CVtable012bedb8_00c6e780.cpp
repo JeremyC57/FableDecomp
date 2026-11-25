@@ -1,26 +1,15 @@
-// CVtable_012bedb8::~CVtable_012bedb8() -- empty virtual destructor of the GameCODA class with vtable 0x012BEDB8: own vtable, then the base CVtable_012beda4 destructor (tail jump)
-// Leaf: ??1CVtable_012bedb8@@UAE@XZ
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6E780, 11 bytes: `mov dword ptr [ecx],offset vtable 0x012BEDB8 ; jmp 0x00C6E630`.
-// Identity: a destructor is named by the vtable it stores first. 0x012BEDB8 has no complete-object locator (no-RTTI
-//   GameCODA module, no PDB), so the class is named by its vtable as its landed constructor 0x00C6E760 is (CVtable_<va>, the
-//   catalog's ??_7 convention). That constructor calls the base constructor 0x00C6E6A0 first, and the base destructor
-//   0x00C6E630 (CVtable_012beda4, named by its own stored vtable) is the jump target here.
-//   The base destructor ends by restoring the GameCODA root vtable 0x012B5868 (CCodaObjectBase, owner decision D3), and the
-//   class's deleting destructor 0x00C6ECB0 frees through CodaFree 0x00C3C370, so the hierarchy roots at CCodaObjectBase.
-//   The catalog label "CChunkedFileChunk::~CChunkedFileChunk" is propagated across this byte-twin shape and is wrong.
-// Shape: an empty user destructor of a derived polymorphic class stores its own vtable and tail-jumps to the out-of-line
-//   base destructor.
-// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
-//   its own symbol; only the base destructor it calls is respelled (??1CVtable_012beda4@@UAE@XZ -> ??1CSalRender@@UAE@XZ, unit 0x00C6E630).
-#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4; destructor 0x00C6E630)
-class CVtable_012bedb8 : public CSalRender {
-public:
-    virtual ~CVtable_012bedb8();
-    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BEDB8 (SDK signatures;
-    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-};
+// CSalRenderDisable::~CSalRenderDisable() -- empty virtual destructor of the GameCODA plain-gain renderer: own vtable 0x012BEDB8, then the
+//   base CSalRender destructor (tail jump to 0x00C6E630)
+// Leaf: ??1CSalRenderDisable@@UAE@XZ
+// Flags: /Ob1 (R-NF444-1, the render TUs)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6E780, 11 bytes: `mov dword ptr [ecx],012BEDB8h ; jmp 0x00C6E630`. Callers: the deleting destructor
+//   0x00C6ECB0 and the SIMD classes' implicit destructors 0x00C55540 / 0x00C555D0 (`jmp 0x00C6E780`).
+// Name (NF452, two sources): (1) the GameCODA 2.10 SDK (CODAApiDbg.lib Debug/SalRenderDisable.obj CodeView class / method record + CODAApi.lib Release/SalRenderDisable.obj body): virtual ~CSalRenderDisable(), 2 instructions; (2) retail 0x00C6E780 is the same 2 instructions
+//   (vptr store + jump to the base destructor), storing the vtable the constructor 0x00C6E760 stores. Was ??1CVtable_012bedb8@@UAE@XZ.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#include "engine/CSalRenderDisable.h"   // CSalRenderDisable (vtable 0x012BEDB8) : CSalRender (destructor 0x00C6E630)
 
-CVtable_012bedb8::~CVtable_012bedb8()
+CSalRenderDisable::~CSalRenderDisable()
 {
 }

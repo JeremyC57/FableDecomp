@@ -1,36 +1,56 @@
-// CVtable_012bed90::ComputeGainRamp(SGainRamp* ramp, float scale) -- fill a gain-ramp record: the Q15 gain FtoL(scale * volume * 32767) capped (unsigned) at 0x7fff and its 128-sample ramp step gain >> 7
-// Grade: RELOCATION_MATCH -- retail_asm through the shared helper libpk/FtoL.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
-// Leaf: ?ComputeGainRamp@CVtable_012bed90
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6DE60, 59 bytes (+ int3 padding), `ret 8`.
-// Module: libpk's software mixer, the effect of vtable 0x012BED90 (ctor 0x00C6D9D0 landed; its ramps run through the
-//   parked MixGainRampUp / MixGainRampDown 0x00C6DA40 / 0x00C6DAD0). Callers 0x00C6DF4D / 0x00C6DF5F / 0x00C6DFED / 0x00C6DFFF
-//   fill the gain records at +8 / +0xc of the +0x5c record from the scales at +0x68 / +0x6c.
+// CSalRenderPan::Params3DInit(FilterPan* pFilter, float fGainPan) -- fill one FilterPan from a pan gain and the renderer gain: Q15 gain =
+//   min(FtoL(fGainPan * m_fGain * 32767), 0x7fff) and its 128-sample ramp step gain >> 7; then (same retail object, address order) UpdateFilters
+// Leaf: ?Params3DInit@CSalRenderPan@@AAEXPAUFilterPan@@M@Z
+// Option S owner (retail SalRenderPan.obj slice): this file holds Params3DInit 0x00C6DE60 and UpdateFilters 0x00C6DEA0 in retail address
+//   order; 0x00C6DEA0 is a thin row that includes it. VC7.1 expands Params3DInit at the first two sites of each UpdateFilters branch and calls
+//   it at the rear two (behind the output-channel test), as retail (four calls of 0x00C6DE60 from 0x00C6DEA0).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6DE60, 59 bytes (+ int3 padding), thiscall `ret 8`; UpdateFilters @ 0x00C6DEA0, 369 bytes, `ret 4`.
 // Retail-asm: 0x00C6DE6E `fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]` -- libpk's inline-assembly rounding helper. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
+// Retail-asm: 0x00C6DED1 `fld dword ptr [esp+10h]` + 0x00C6DED5 `fistp dword ptr [esp+8]` (and 0x00C6DF0A / 0x00C6DF0E, 0x00C6DF74 / 0x00C6DF78, 0x00C6DFAD / 0x00C6DFB1) -- libpk's inline-assembly float-to-long helper (the landed ComputeGainRamp 0x00C6DE60 runs the same `fld ; fistp dword` block): the product homed in the dead argument slot and reloaded, a bare dword fistp. VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` into an 8-byte slot: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
 // Helper (2026-11-05 asm migration): the bare `fld` / `fistp dword` block is libpk's FtoL in the shared libpk/FtoL.h (byte-matching
 //   path + FABLE_PORTABLE twin); the row has no asm of its own. C++/intrinsic attempts: asm/w3 ATTEMPTS.tsv family FISTP.
-// libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
-// `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
+// Name (NF452, two sources): (1) the GameCODA 2.10 SDK (CODAApiDbg.lib Debug/SalRenderPan.obj CodeView class / method record + CODAApi.lib Release/SalRenderPan.obj body): private void Params3DInit(FilterPan*, float) / void UpdateFilters(const bool); (2) the Release
+//   bodies tie exactly: Params3DInit 17 instructions / `ret 8` = retail 17 / `ret 8`; UpdateFilters 111 / `ret 4` = retail 111 / `ret 4`;
+//   the Release SetGain / SetPosition relocate their one call to UpdateFilters, as retail 0x00C6E020 / 0x00C6E050 call 0x00C6DEA0. Were
+//   ?ComputeGainRamp@CVtable_012bed90@@QAEXPAUSGainRamp@@M@Z / ?RebuildGain@CVtable_012bed90@@QAEX_N@Z (descriptive).
+// Callees: KERNEL32 EnterCriticalSection / LeaveCriticalSection (IAT 0x0143FE0C / 0x0143FE10) through CSalMutex::Enter / Leave on m_mutexUpdate
+//   (+0x04; the critical section +0x08); 32767.0f 0x0129C820; g_pAudioMaster 0x0143BC2C (the landed CAudioMaster view of the SDK
+//   g_pSal / CSalPlatform::m_nSWOutputChannels at +0x1BC, kept as in the HEAD row: follow-up port onto engine/CSalPlatform.h).
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderPan.h"   // CSalRenderPan (vtable 0x012BED90) : CSalRender (m_mutexUpdate +0x04, m_fGain +0x20, m_bUpdate +0x24)
 #include "libpk/FtoL.h"
-struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-struct CVtable_012beda4 {                          // vtable 0x012BEDA4, 0x28 bytes (ctor 0x00C6E6A0, dtor 0x00C6E630 landed)
-    void*            _vtable;                      // +0x00
-    void*            _lockVtable;                  // +0x04 critical-section owner (vtable 0x012B8FC8)
-    SCriticalSection m_lock;                       // +0x08
-    float            m_volume;                     // +0x20 linear (the landed dtor model calls it `long m_count`)
-    bool             m_alternate;                  // +0x24
-};
-struct SGainRamp {
-    unsigned short m_gain;                         // +0x00 Q15
-    short          m_step;                         // +0x02 Q15 per sample
-};
-struct CVtable_012bed90 : CVtable_012beda4 {
-    void ComputeGainRamp(SGainRamp* ramp, float scale);
-};
-void CVtable_012bed90::ComputeGainRamp(SGainRamp* ramp, float scale)
+struct CAudioMaster { unsigned char _pad[0x1bc]; unsigned long m_outputChannels; };   // the landed Process rows' view of g_pSal (+0x1BC)
+extern CAudioMaster* g_pAudioMaster;                                        // 0x0143BC2C
+
+void CSalRenderPan::Params3DInit(FilterPan* pFilter, float fGainPan)
 {
-    unsigned long gain = FtoL(scale * m_volume * 32767.0f);
+    unsigned long gain = FtoL(fGainPan * m_fGain * 32767.0f);
     if (gain > 0x7fff)
         gain = 0x7fff;
-    ramp->m_gain = (unsigned short)gain;
-    ramp->m_step = (short)((unsigned short)gain >> 7);
+    pFilter->gain = (unsigned short)gain;
+    pFilter->gainDelta = (short)((unsigned short)gain >> 7);
+}
+
+void CSalRenderPan::UpdateFilters(const bool bNew)
+{
+    m_mutexUpdate.Enter();
+    m_bUpdate = bNew;
+    if (bNew) {
+        Params3DInit(&m_pParamsNew->pan[0], m_fGainPan[0]);
+        Params3DInit(&m_pParamsNew->pan[1], m_fGainPan[1]);
+        if (g_pAudioMaster->m_outputChannels >= 4) {
+            Params3DInit(&m_pParamsNew->pan[2], m_fGainPan[2]);
+            Params3DInit(&m_pParamsNew->pan[3], m_fGainPan[3]);
+        }
+    } else {
+        Params3DInit(&m_pParamsCurrent->pan[0], m_fGainPan[0]);
+        Params3DInit(&m_pParamsCurrent->pan[1], m_fGainPan[1]);
+        if (g_pAudioMaster->m_outputChannels >= 4) {
+            Params3DInit(&m_pParamsCurrent->pan[2], m_fGainPan[2]);
+            Params3DInit(&m_pParamsCurrent->pan[3], m_fGainPan[3]);
+        }
+    }
+    m_mutexUpdate.Leave();
 }

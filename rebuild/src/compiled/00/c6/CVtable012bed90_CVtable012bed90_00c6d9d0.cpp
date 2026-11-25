@@ -1,55 +1,23 @@
-// CVtable_012bed90::CVtable_012bed90() -- constructor: the critical-section-owning base (0x00C6E6A0), own vtable, two zeroed 0x18-byte records with pointers to them, a third zeroed record
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6D9D0, length 94 bytes (+2 int3 padding).
-// Leaf: ??0CVtable_012bed90
-// Retail bytes:  push esi ; push edi ; mov esi,ecx ; call CVtable_012beda4::CVtable_012beda4 ; mov dword ptr [esi],012BED90h ;
-//                lea eax,[esi+28h] ; xor ecx,ecx ; mov edx,eax ; mov [edx],ecx ; ... ; mov [edx+14h],ecx ; lea ecx,[esi+40h] ;
-//                xor edx,edx ; mov edi,ecx ; mov [edi],edx ; ... ; mov [edi+14h],edx ; mov [esi+58h],eax ; xor eax,eax ;
-//                mov [esi+5Ch],ecx ; mov [esi+60h],eax ; ... ; mov [esi+74h],eax ; pop edi ; mov eax,esi ; pop esi ; ret
-// Manifest label "CResourceBank::CResourceBank" is propagated and wrong: vtable 0x012BED90 is not in rtti-vtables.tsv
-// (no-RTTI script/engine module), and the base constructor 0x00C6E6A0 is the landed CVtable_012beda4 one (0x28 bytes:
-// vptr, a critical-section owner at +4, a dword +0x20, a byte +0x24). Classes are named by vtable.
-// Shape: everything after the vtable store is member construction in declaration order. The first two records clear
-// themselves with an intrinsic `memset` of their word array (each expansion takes its own zero register and a copy of
-// the record address: `mov edx,eax` / `mov edi,ecx`; the addresses stay live for the two pointer members that follow);
-// the third record zeroes its words from an initialiser list (stores straight off esi, one shared zero). An init-list
-// zeroing of all three shares a single zero register; memset for all three adds a `lea ecx,[esi+60h]`.
-// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
-//   its own symbol; only the base constructor it calls is respelled (??0CVtable_012beda4@@QAE@XZ -> ??0CSalRender@@QAE@XZ, unit 0x00C6E630).
+// CSalRenderPan::CSalRenderPan() -- constructor of the GameCODA volume panner: the CSalRender base (0x00C6E6A0), own vtable 0x012BED90, both
+//   six-entry parameter sets cleared with the current / new pointers on A / B, and the six pan gains zeroed
+// Leaf: ??0CSalRenderPan@@QAE@XZ
+// Flags: /Ob1 (R-NF444-1, the render TUs)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6D9D0, 94 bytes (+ int3 padding). Callers: 0x00C55093 / 0x00C550F3 (the SIMD constructors).
+// Name (NF452, two sources): (1) the GameCODA 2.10 SDK (CODAApiDbg.lib Debug/SalRenderPan.obj CodeView class / method record + CODAApi.lib Release/SalRenderPan.obj body): public CSalRenderPan() of LF_CLASS CSalRenderPan : public CSalRender; (2) the Release body has
+//   retail's exact shape at 4 entries (base call, vptr, A cleared through edx, B through edi, +0x48 / +0x4C pointers, gains zeroed through eax:
+//   30 instructions; retail 36 = the same with 6 entries), and the SDK ??0CSalRenderPanSSE2 / MMX COMDATs call ??0CSalRenderPan where retail
+//   0x00C55090 / 0x00C550F0 call 0x00C6D9D0. Was ??0CVtable_012bed90@@QAE@XZ (descriptive, vtable-named).
 #define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
 #define FABLE_RETAIL_CSALRENDER_MEMBERS
-#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4, 0x28 bytes; constructor 0x00C6E6A0, destructor 0x00C6E630)
+#include "engine/CSalRenderPan.h"   // CSalRenderPan (vtable 0x012BED90, 0x78 bytes) : CSalRender (constructor 0x00C6E6A0)
 #include <string.h>
 
-
-struct SRecord_00c6d9d0 {                              // six words, cleared as a block
-    long m_words[6];
-    SRecord_00c6d9d0() { memset(m_words, 0, sizeof(m_words)); }
-};
-
-struct SPlainRecord_00c6d9d0 {                         // six words, zeroed one by one
-    long m_words0;
-    long m_words1;
-    long m_words2;
-    long m_words3;
-    long m_words4;
-    long m_words5;
-    SPlainRecord_00c6d9d0() : m_words0(0), m_words1(0), m_words2(0), m_words3(0), m_words4(0), m_words5(0) { }
-};
-
-struct CVtable_012bed90 : CSalRender {           // vtable 0x012BED90
-    SRecord_00c6d9d0  m_first;                         // +0x28
-    SRecord_00c6d9d0  m_second;                        // +0x40
-    SRecord_00c6d9d0* m_pCurrent;                      // +0x58
-    SRecord_00c6d9d0* m_pPrevious;                     // +0x5C
-    SPlainRecord_00c6d9d0 m_third;                     // +0x60
-    CVtable_012bed90();
-    virtual ~CVtable_012bed90();                      // 0x00C6DA30 (slot 0 of the vtable is its scalar deleting destructor)
-    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BED90 (SDK signatures;
-    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-};
-
-CVtable_012bed90::CVtable_012bed90()
-    : m_first(), m_second(), m_pCurrent(&m_first), m_pPrevious(&m_second), m_third()
+CSalRenderPan::CSalRenderPan()
 {
+    memset(&m_paramsA, 0, sizeof(m_paramsA));
+    memset(&m_paramsB, 0, sizeof(m_paramsB));
+    m_pParamsCurrent = &m_paramsA;
+    m_pParamsNew = &m_paramsB;
+    for (int i = 0; i < 6; ++i)
+        m_fGainPan[i] = 0.0f;
 }

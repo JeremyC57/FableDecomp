@@ -21,7 +21,6 @@ T1	access	CWideString	1	1		0099b4d0
 T1	standin_alias	vector	17	16		00411910 004774d6 004e34b2 005bba94 005e3040 005f9074 006755e0 006fcf10 00708ca0 00722eb0 0082c620 0082c8a0 0086b2a0 00ad83a0 00b83df0 00b97af0 00cdbc90
 T1	standin_alias	GetSubDef	9	9		007086f0 0077e430 007a6ca0 007c8000 007e0540 007e1400 007f9330 007fe5b0 00810c80
 T1	standin_alias	pair	8	8		004d788d 004dd728 005799fd 005f8736 006b8e20 00825090 00827f80 00ae98e0
-T1	standin_alias	C3DAnimationUtil	7	5		00c55090 00c550b0 00c550f0 00c55110 00c56d30 00c573e0 00c72600
 T1	standin_alias	CCountedPointer	7	7	engine/CCountedPointer.h	004850f9 0048afb0 0056c0f0 0065d5a0 007180b0 007222b0 00b230e0
 T1	standin_alias	CBankFile	6	5	engine/CBankFile.h	009cb960 009cbfe0 009ce370 009cfbc0 009d1160 012b87f4
 T1	standin_alias	CThing	6	6	engine/CThing.h	004c78a0 004c7a10 004c7e50 004c9c40 004c9ca0 004ca1d0
@@ -32,6 +31,7 @@ T1	standin_alias	(none)	4	3		00cbe2ff 013750b0 013bace4 013bace8
 T1	standin_alias	CRenderStateManager	4	3	engine/CRenderStateManager.h	00a04630 00a059e0 01396dc8 01396f9c
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
+T1	standin_alias	C3DAnimationUtil	3	4		00c56d30 00c573e0 00c72600
 T1	standin_alias	CEngineSkyRenderer	3	2	engine/CEngineSkyRenderer.h	00b64550 00b64fa0 00b65a20
 T1	standin_alias	CMesh	3	1		01249f6c 01249f74 01249f9c
 T1	standin_alias	CQuestManager	3	1	engine/CQuestManager.h	004af610 004b0c80 004b0d30
@@ -460,7 +460,7 @@ T1	other	CComponent	2	5		0052f1b0 00533b50
 T1	other	CCreatureAction_DropWeapon	2	2	engine/CCreatureAction_DropWeapon.h	007ecfd0 00845ce0
 T1	other	CCylinder	2	2		00a593f0 00a59fd0
 T1	other	CDataOutputStream	2	4	engine/CDataOutputStream.h	00993eb0 00993fd0
-T1	other	CDecal	2	2	engine/CDecal.h	00af7c10 00af8ad0
+T1	other	CDecal	2	1	engine/CDecal.h	00af7c10 00af8ad0
 T1	other	CDrawAbilityButtonsPC	2	2		00657ba0 00657c80
 T1	other	CDrawQuestInfo	2	3		00644efd 00647319
 T1	other	CDynamicObjectHeap	2	2	engine/CDynamicObjectHeap.h	00af8780 00b48c70
@@ -575,7 +575,6 @@ T1	other	CBankFileAsync	1	1	engine/CBankFileAsync.h	009d58d0
 T1	other	CBankFileAsyncData	1	1	engine/CBankFileAsyncData.h	009d5620
 T1	other	CBankStateBlock	1	1	engine/CBankStateBlock.h	0129c82c
 T1	other	CBoast	1	2		004b73a0
-T1	other	CBrainDef	1	1	engine/CBrainDef.h	00459abe
 T1	other	CBriarRose	1	1		012d6d0c
 T1	other	CBulletTimeManager	1	1	engine/CBulletTimeManager.h	004c5fa0
 T1	other	CCamera	1	2	engine/CCamera.h	00a0c380
@@ -777,10 +776,8 @@ T1	other	CSoundThemeDef	1	1	engine/CSoundThemeDef.h	0045c54e
 T1	other	CSpecialAbilitiesBerserkDef	1	1	engine/CSpecialAbilitiesBerserkDef.h	004573fd
 T1	other	CSpecialAbilitiesBulletTimeDef	1	1	engine/CSpecialAbilitiesBulletTimeDef.h	004575fc
 T1	other	CSpecialAbilitiesDivineWrathDef	1	1	engine/CSpecialAbilitiesDivineWrathDef.h	00458111
-T1	other	CSpecialAbilitiesUnholyPowerDef	1	1	engine/CSpecialAbilitiesUnholyPowerDef.h	004582d6
 T1	other	CSplinePosParamData	1	1		00b20ba0
 T1	other	CStackEntry	1	1		01277ff0
-T1	other	CStatBase	1	4		00442280
 T1	other	CStringParser	1	1	engine/CStringParser.h	009ba790
 T1	other	CSubComponentBase	1	1		012758f4
 T1	other	CSurface	1	2	engine/CSurface.h	0122f84c
@@ -2240,7 +2237,6 @@ T3	standin	CDefinitionManager	6	6	engine/CDefinitionManager.h	004481d0 004d0910 
 T3	standin	CTCPhysicsBase_Methods	6	6		004cb6e0 006b0150 006b0190 006b1450 006b14b0 00880800
 T3	standin	CUnprovenMorphableHandle_00C185B0	6	6		00c17d90 00c181a0 00c184e0 01211f47 01211fa1 01211fe9
 T3	standin	CVtable_012b4f74	6	7		00c33120 00c3c3e0 00c3c450 00c3c4b0 012142d0 012b4f74
-T3	standin	CVtable_012bed90	6	5		00c6d9d0 00c6da30 00c6de60 00c6dea0 00c6e020 012bed90
 T3	standin	PKCTRRedblackTree_00c18b20	6	6		00c19010 00c19080 00c19150 00c19180 012120d8 012120e0
 T3	standin	allocator	6	6		0043d100 0044ebe4 004d6ed0 00565030 00736f50 00754d00
 T3	standin	CBankFile_Retail	5	6		009cbd90 009cbf90 009cc4c0 009cd330 009d0380
@@ -2255,7 +2251,6 @@ T3	standin	CVtable_012b34bc	5	5		00c1f870 00c1f880 00c1f890 01212720 012b34bc
 T3	standin	CVtable_012b34e0	5	5		00c1f930 00c1f940 00c1f950 01212740 012b34e0
 T3	standin	CVtable_012b3504	5	5		00c1f9f0 00c1fa00 00c1fa10 01212760 012b3504
 T3	standin	CVtable_012b4f60	5	5		00c33070 00c33080 00c33090 00c330a0 012b4f60
-T3	standin	CVtable_012bedb8	5	5		00c6e780 00c6eba0 00c6ec50 00c6ec80 012bedb8
 T3	standin	PKCTRRedblackTree	5	5		00c18e20 00c19340 01212080 01212088 012120c6
 T3	standin	SExpSpendUndo_00c3d7d0	5	5		01214fa0 01214fa8 01214fb3 01214fbe 012b5870
 T3	standin	_Construct	5	5		0040dd10 0056ce90 006964a0 00a0a4a0 00cba3b0
@@ -3869,10 +3864,6 @@ T3	standin	CVtable_012b5d40	1	1		00c5c090
 T3	standin	CVtable_012b7bb4	1	1		012b7bb4
 T3	standin	CVtable_012b80ac	1	1		00c493f0
 T3	standin	CVtable_012b89c4	1	1		00c53ae0
-T3	standin	CVtable_012b8a78	1	1		00c6e410
-T3	standin	CVtable_012b8a8c	1	1		00c6eef0
-T3	standin	CVtable_012b8ab4	1	1		00c6f990
-T3	standin	CVtable_012b8ac8	1	1		00c6fe10
 T3	standin	CVtable_012b8f64	1	1		00c595a0
 T3	standin	CVtable_012b8fc4	1	1		012b8fc4
 T3	standin	CVtable_012b8fc8	1	1		00c5d5b0
@@ -4734,7 +4725,6 @@ T3	-	CVtable_012B5870	2	4		00c3d160 00c3d310
 T3	-	CVtable_012b1a54	2	4		00c08720 00c08750
 T3	-	CVtable_012b25a8	2	3		00c0e5c0 00c0e5e0
 T3	-	CVtable_012b4148	2	4		00c2a230 012b4148
-T3	-	CVtable_012bedb8	2	5		00c6e760 00c6ebe0
 T3	-	CWound	2	3		007572d0 00757340
 T3	-	ForEachIf	2	3		0080e530 0080e5d0
 T3	-	ForEachInRoughArea	2	4		0066a1e0 006ce800

@@ -1,0 +1,3 @@
+source	address	unit	reason
+nf372	0x00C55090	identity	NF372 entry 6: identity: 0x00C55090 is in the libpk / CODA audio block (LIBRARY_MAP 0x00C086C0..0x00C89C10: no PDB, no RTTI); binder 0x00C55270 constructs its SSE2 gain-ramp panner (vtable 0x012B8A78) there. The tracker's PDB spelling ??0C3DAnimationUtil@@QAE@XZ is a propagated label shared by several audio ctors, so respelling the binder would bind a wrong (and multi-address) name; library code gets light descr
+nf372	0x00C550F0	identity	NF372 entry 8: identity: as 0x00C55090 (binder 0x00C55270's MMX gain-ramp panner, vtable 0x012B8AB4); propagated label

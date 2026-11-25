@@ -1,25 +1,15 @@
-// C3DAnimationUtil::C3DAnimationUtil() -- base CBase_00c6e760() then this class's vtable
-// Vendor naming wave V1 (one address, one name): 0x00C6E760 ??0CVtable_012bedb8@@QAE@XZ (was ??0CBase_00c6e760@@QAE@XZ)
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C55110, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CBase_00c6e760::CBase_00c6e760 ; mov dword ptr [esi],offset C3DAnimationUtil::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x00C6E760 runs, then the compiler stores this class's vtable (0x012B8AC8
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
-// bodies of this shape.
-struct CVtable_012bedb8 {
-    virtual void v00();
-    CVtable_012bedb8();                           // 0x00C6E760
-};
-
-struct C3DAnimationUtil : CVtable_012bedb8 {
-    virtual void v00();                    // this class has its own vtable
-    C3DAnimationUtil();
-};
-
-C3DAnimationUtil::C3DAnimationUtil()
-    : CVtable_012bedb8()
-{
-}
+// CSalRenderDisableMMX::CSalRenderDisableMMX() -- the out-of-line COMDAT copy of the MMX plain-gain renderer's inline constructor: the base
+//   CSalRenderDisable constructor (0x00C6E760), then this class's vtable 0x012B8AC8
+// Leaf: ??0CSalRenderDisableMMX@@QAE@XZ
+// Option S: thin row of unit 0x00C55270 (retail SalSw3DVoice.obj slice). The constructor is the inline one of engine/CSalRenderDisableMMX.h;
+//   CSalSw3DVoice::CreateRenderer calls this copy (`call 0x00C55110` at 0x00C553E3) instead of expanding it, as the GameCODA 2.10 SDK CODAApi.lib
+//   Release/SalSw3DVoice.obj does (??0CSalRenderDisableMMX@@QAE@XZ is one of its COMDATs and its CreateRenderer relocates a call to it). Graded
+//   from the owner's object; no code of its own.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C55110, 18 bytes: `push esi ; mov esi,ecx ; call 0x00C6E760 ; mov dword ptr [esi],0x012B8AC8 ;
+//   mov eax,esi ; pop esi ; ret`.
+// Name (NF452, two sources; NF441 NAME_FIXES): (1) the SDK Release SalSw3DVoice.obj CreateRenderer calls ??0CSalRenderDisableMMX in the default
+//   (disabled-HRTF) case of its MMX branch, where retail 0x00C55270 calls 0x00C55110 after CodaMalloc(0x38), in the same call order (CodaMalloc +
+//   DisableMMX, PanMMX, PanDelay...); the SDK COMDAT is byte-identical in shape (base ctor call + vftable store, 18 bytes); (2) the vtable's own
+//   slot 2 (Process 0x00C6FE10 over the MMX kernel 0x00C6FC80; NF441 CLASS_TABLE). Was the shared stand-in ??0C3DAnimationUtil@@QAE@XZ (a propagated label).
+// Flags: /EHsc (the unit's).
+#include "../src/compiled/00/c5/CAudioSource_CreateProcessor_00c55270.cpp"

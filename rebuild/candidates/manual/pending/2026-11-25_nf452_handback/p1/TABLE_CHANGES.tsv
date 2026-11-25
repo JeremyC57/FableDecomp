@@ -1,0 +1,9 @@
+action	symbol	target	witness	note
+replace	??_7CVtable_012bed90@@6B@ -> ??_7CSalRenderPan@@6B@	012bed90	00c6d9d0	NF452: CSalRenderPan vftable (constructor 0x00C6D9D0 respelled in this batch)
+add	??0CSalRenderPan@@QAE@XZ	00c6d9d0	00c55090	NF452: the SDK ??0CSalRenderPanSSE2 / MMX COMDATs call ??0CSalRenderPan = retail 0x00C55090 / 0x00C550F0 calling 0x00C6D9D0 (no earlier binding: HEAD 0x00C55090 called an unbound stand-in)
+replace	??0CVtable_012b8a78@@QAE@XZ -> ??0CSalRenderPanSSE2@@QAE@XZ	00c55090	00c55270	NF452: NF441 NAME_FIXES (SDK CreateRenderer SSE2 call 2 = ??0CSalRenderPanSSE2 = retail call of 0x00C55090); self respelled in this batch
+replace	??0CVtable_012b8ab4@@QAE@XZ -> ??0CSalRenderPanMMX@@QAE@XZ	00c550f0	00c55270	NF452: NF441 NAME_FIXES (SDK CreateRenderer MMX call 2 = ??0CSalRenderPanMMX = retail call of 0x00C550F0); self respelled in this batch
+add	??_7CSalRenderPanSSE2@@6B@	012b8a78	00c55270	NF452: CSalRenderPanSSE2 vftable (NF441 CLASS_TABLE; emitted by unit 0x00C55270 in the ??0 COMDAT 0x00C55090; no earlier binding)
+add	??_7CSalRenderPanMMX@@6B@	012b8ab4	00c55270	NF452: CSalRenderPanMMX vftable (NF441 CLASS_TABLE; emitted by unit 0x00C55270 in the ??0 COMDAT 0x00C550F0; no earlier binding)
+replace	?RebuildGain@CVtable_012bed90@@QAEX_N@Z -> ?UpdateFilters@CSalRenderPan@@AAEX_N@Z	00c6dea0	00c6e020	NF452: SDK private CSalRenderPan::UpdateFilters (Release SetGain / SetPosition relocate to it = retail 0x00C6E020 / 0x00C6E050 calls); self 0x00C6DEA0 respelled in this batch
+replace	?ComputeGainRamp@CVtable_012bed90@@QAEXPAUSGainRamp@@M@Z -> ?Params3DInit@CSalRenderPan@@AAEXPAUFilterPan@@M@Z	00c6de60	00c6dea0	NF452: SDK private CSalRenderPan::Params3DInit (Release UpdateFilters relocates to it = retail 0x00C6DEA0 calls); self 0x00C6DE60 respelled in this batch
