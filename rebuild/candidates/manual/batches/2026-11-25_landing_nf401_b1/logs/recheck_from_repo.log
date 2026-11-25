@@ -1,0 +1,86 @@
+addr       parity           behav  name
+004af220   WARN RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 0099b510 here, 0099eae0 in landed 00433530
+004af220   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099b510 labelled 'CWideString::~CWideString'
+004af220   WARN RELOC_NAME: ??1CSymbolInfo@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+004af220   WARN STANDIN_LEAF ?_Dest_val_CSymbolInfo___@SymPair@@QAEXXZ (catalog std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>; names another function)
+004af220   RELOCATION_MATCH PASS   CSymbolInfo>_>
+0056c840   WARN RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 0099b510 here, 0099eae0 in landed 00433530
+0056c840   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099b510 labelled 'CWideString::~CWideString'
+0056c840   WARN RELOC_NAME: ??1CInfoHead@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+0056c840   RELOCATION_MATCH PASS   CSymbolInfo>_>
+00647308   WARN STANDIN_LEAF ?GetElementCount@CDrawQuestInfo_Retail@@QAEJXZ (catalog GetElementByIndex; names another function)
+00647308   MATCH            PASS   GetElementByIndex
+007fb120   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007fb120   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007fb120   WARN STANDIN_LEAF ?IsThingAlive_007fb120@@YI_NAAUCHolder@@@Z (catalog CTCKraken::IsTargetAlive; address-only name)
+007fb120   RELOCATION_MATCH PASS   IsTargetAlive
+008d04b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008d04b0   WARN STANDIN_LEAF ?IsThingAlive_008d04b0@@YI_NAAUCHolder@@@Z (catalog CGameScriptThing::IsAlive; address-only name)
+008d04b0   RELOCATION_MATCH PASS   IsAlive
+0093a890   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0093a890   WARN STANDIN_LEAF ?IsThingAlive_0093a890@@YI_NAAUCHolder@@@Z (catalog CAIStateGroup_BanditSitRoundCampfire::IsStillValid; address-only name)
+0093a890   RELOCATION_MATCH PASS   IsStillValid
+009445c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009445c0   WARN STANDIN_LEAF ?IsThingAlive_009445c0@@YI_NAAUCHolder@@@Z (catalog CAIStateGroup_WorkSawingWood::IsStillValid; address-only name)
+009445c0   RELOCATION_MATCH PASS   IsStillValid
+00944ce0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00944ce0   WARN STANDIN_LEAF ?IsThingAlive_00944ce0@@YI_NAAUCHolder@@@Z (catalog CAIStateGroup_WorkHammerAnvil::IsStillValid; address-only name)
+00944ce0   RELOCATION_MATCH PASS   IsStillValid
+0095ee40   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0095ee40   WARN STANDIN_LEAF ?IsThingAlive_0095ee40@@YI_NAAUCHolder@@@Z (catalog CAIStateGroup_OpinionReactionRoot::IsStillValid; address-only name)
+0095ee40   RELOCATION_MATCH PASS   IsStillValid
+00b6d4b0   WARN RELOC_NAME: ??1A@@QAE@XZ -> 00ac1ee0 labelled 'CIndexBuffer::Uninitialise'
+00b6d4b0   WARN RELOC_NAME: ??1B@@QAE@XZ -> 00a63200 labelled 'CVertexBufferWin32::Uninitialise'
+00b6d4b0   WARN STANDIN_LEAF ?Dest_val_CSymbolInfo___@@YIXPAUDestPair@@@Z (catalog CEngineWaterRenderer::DeleteConstantBuffers; names another function)
+00b6d4b0   RELOCATION_MATCH PASS   DeleteConstantBuffers
+00c1d4e0   RELOCATION_MATCH PASS   CSymbolInfo>_>
+00c25790   WARN STANDIN_LEAF ?GetPair@CPairOwner_Retail@@QAE?AUCIndexedValue@@XZ (catalog Init; names another function)
+00c25790   MATCH            PASS   Init
+00c620b0   WARN STANDIN_LEAF ?ToC2DVectorF@C2DVectorI@@QAE?AUC2DVectorF@@XZ (catalog ToC2DBoxF; names another function)
+00c620b0   MATCH            PASS   ToC2DBoxF
+00c5eca0   WARN STANDIN_LEAF ??1CWound_00c5eca0@@UAE@XZ (catalog CVtable_012b5868::CVtable_012b5868; address-only name)
+00c5eca0   RELOCATION_MATCH PASS   CVtable_012b5868
+00aa9190   WARN SHARED_HEADER_AVAILABLE CBaseClass (engine/CBaseClass.h)
+00aa9190   WARN SHARED_HEADER_AVAILABLE CChunkedFile (engine/CChunkedFile.h)
+00aa9190   WARN STANDIN_LEAF ??_GCChunkedFile@@UAEPAXI@Z (catalog CChunkedFile::~CChunkedFile; names another function)
+00aa9190   RELOCATION_MATCH PASS   ~CChunkedFile
+00cac300   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+00cac300   WARN SHARED_HEADER_AVAILABLE CMediaType (engine/CMediaType.h)
+00cac300   WARN SHARED_HEADER_AVAILABLE CDynamicOutputPin (engine/CDynamicOutputPin.h)
+00cac300   WARN STANDIN_LEAF ??0CDynamicOutputPin@@QAE@PBDPAUCBaseFilter@@PAUCCritSec@@PAJPBG@Z (catalog CEngineScreenEffectRenderer::Initialize; names another function)
+00cac300   WARN VENDOR_PROOF_MISMATCH tree dxsdk/dxsdk-sum2004 of strmbase-dxsdk-sum2004 not under FABLE_THIRDPARTY ([PosixPath('/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/thirdparty')]); run fetch_vendor_libs.py
+00cac300   RELOCATION_MATCH PASS   Initialize
+01216360   RELOCATION_MATCH PASS   Unwind@01216360
+01216368   RELOCATION_MATCH PASS   Unwind@01216368
+01216373   RELOCATION_MATCH PASS   Unwind@01216373
+0121637e   RELOCATION_MATCH PASS   Unwind@0121637e
+01216389   RELOCATION_MATCH PASS   Unwind@01216389
+01216394   RELOCATION_MATCH PASS   Unwind@01216394
+012170c0   RELOCATION_MATCH PASS   Unwind@012170c0
+012170c8   RELOCATION_MATCH PASS   Unwind@012170c8
+
+WINS: 24
+  004af220 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::?_Dest_val_CSymbolInfo___@SymPair@@QAEXXZ
+  0056c840 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::?Dest_val_CSymbolInfo___@@YIXPAUSymbolPair@@H@Z
+  00647308 MATCH CDrawQuestInfo::?GetElementCount@CDrawQuestInfo_Retail@@QAEJXZ
+  007fb120 RELOCATION_MATCH _global::?IsThingAlive_007fb120@@YI_NAAUCHolder@@@Z
+  008d04b0 RELOCATION_MATCH CGameScriptThing::?IsThingAlive_008d04b0@@YI_NAAUCHolder@@@Z
+  0093a890 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?IsThingAlive_0093a890@@YI_NAAUCHolder@@@Z
+  009445c0 RELOCATION_MATCH CAIStateGroup_WorkSawingWood::?IsThingAlive_009445c0@@YI_NAAUCHolder@@@Z
+  00944ce0 RELOCATION_MATCH CAIStateGroup_WorkHammerAnvil::?IsThingAlive_00944ce0@@YI_NAAUCHolder@@@Z
+  0095ee40 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?IsThingAlive_0095ee40@@YI_NAAUCHolder@@@Z
+  00b6d4b0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::?Dest_val_CSymbolInfo___@@YIXPAUDestPair@@@Z
+  00c1d4e0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::?Dest_val_std_allocator_pair_CCharString_CSymbolMap_CSymbolInfo___@@YIXPAUCSymbolInfoPair@@@Z
+  00c25790 MATCH _unattributed::?GetPair@CPairOwner_Retail@@QAE?AUCIndexedValue@@XZ
+  00c620b0 MATCH C2DVectorI::?ToC2DVectorF@C2DVectorI@@QAE?AUC2DVectorF@@XZ
+  00c5eca0 RELOCATION_MATCH CVtable_012b5868::??1CWound_00c5eca0@@UAE@XZ
+  00aa9190 RELOCATION_MATCH CChunkedFile::??_GCChunkedFile@@UAEPAXI@Z
+  00cac300 RELOCATION_MATCH CDynamicOutputPin::??0CDynamicOutputPin@@QAE@PBDPAUCBaseFilter@@PAUCCritSec@@PAJPBG@Z
+  01216360 RELOCATION_MATCH _global::Unwind@01216360
+  01216368 RELOCATION_MATCH _global::Unwind@01216368
+  01216373 RELOCATION_MATCH _global::Unwind@01216373
+  0121637e RELOCATION_MATCH _global::Unwind@0121637e
+  01216389 RELOCATION_MATCH _global::Unwind@01216389
+  01216394 RELOCATION_MATCH _global::Unwind@01216394
+  012170c0 RELOCATION_MATCH _global::Unwind@012170c0
+  012170c8 RELOCATION_MATCH _global::Unwind@012170c8

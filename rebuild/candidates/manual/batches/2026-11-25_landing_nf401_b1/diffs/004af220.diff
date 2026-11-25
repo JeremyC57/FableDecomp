@@ -1,0 +1,8 @@
+--- a/004af220.cpp
++++ b/004af220.cpp
+@@ -1,4 +1,5 @@
+ // _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo>>, pair<...>>
++// Leaf: ?_Dest_val_CSymbolInfo___@SymPair@@QAEXXZ
+ // Retail 0x004af220 (28 bytes):
+ //   push esi; mov esi,ecx
+ //   lea ecx,[esi+0x14]; call 0x99b510   (CCharString::~CCharString)

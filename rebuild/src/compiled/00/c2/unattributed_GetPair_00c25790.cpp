@@ -1,4 +1,5 @@
 // <unattributed>::GetPair() -- returns the {long, float} pair at +0x00 by value
+// Leaf: ?GetPair@CPairOwner_Retail@@QAE?AUCIndexedValue@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C25790, oracle length 17 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.

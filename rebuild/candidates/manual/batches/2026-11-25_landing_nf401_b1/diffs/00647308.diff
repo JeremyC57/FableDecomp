@@ -1,0 +1,8 @@
+--- a/00647308.cpp
++++ b/00647308.cpp
+@@ -1,4 +1,5 @@
+ #pragma optimize("s",on)
++// Leaf: ?GetElementCount@CDrawQuestInfo_Retail@@QAEJXZ
+ // CDrawQuestInfo::GetElementCount() -- walks the element list (+0x40)
+ // Retail: Fable.exe (TLC, VC7.1) function @ 0x00647308, oracle length 17 bytes.
+ // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane

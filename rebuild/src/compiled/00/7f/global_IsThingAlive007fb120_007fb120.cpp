@@ -1,4 +1,5 @@
 // IS_THING_ALIVE<CIntelligentPointer<T>>(holder with the pointer at +0x20) -- GetPItem @ 0x00A01B50 twice: null, then the dead bit (+0x91 & 1)
+// Leaf: ?IsThingAlive_007fb120@@YI_NAAUCHolder@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FB120, oracle length 39 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

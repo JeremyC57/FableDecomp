@@ -1,0 +1,44 @@
+009e15e0 leaf ?Erase@CQuickDrawTriInfoVectorView@@QAEPAUCQuickDrawTriInfoEraseView@@PAU2@0@Z -> DIFFER(99v99)
+graded symbol: ?Erase@CQuickDrawTriInfoVectorView@@QAEPAUCQuickDrawTriInfoEraseView@@PAU2@0@Z
+!! mov    0x4(%esp),%eax                      | push   %ebx
+!! push   %ebx                                | push   %ebp
+!! push   %ebp                                | push   %esi
+!! push   %esi                                | mov    0x10(%esp),%esi
+   push   %edi                                | push   %edi
+!! mov    %ecx,%edi                           | push   $0x0
+!! mov    0x4(%edi),%edx                      | lea    0x18(%esp),%eax
+!! push   $0x0                                | mov    %ecx,%edi
+!! lea    0x18(%esp),%ecx                     | mov    0x4(%edi),%edx
+!! push   %ecx                                | mov    0x1c(%esp),%ecx
+!! mov    0x20(%esp),%ecx                     | push   %eax
+!! push   %eax                                | push   %esi
+!! mov    %eax,%esi                           | call   0xffffd360
+!! call   0x20                                | mov    0x4(%edi),%ebp
+!! mov    0x4(%edi),%ebx                      | mov    %eax,%ebx
+!! mov    %eax,%ebp                           | cmp    %ebp,%ebx
+!! cmp    %ebx,%ebp                           | je     0x57
+!! je     0x57                                | lea    0x14(%ebx),%esi
+!! lea    0x14(%ebp),%esi                     | lea    0x0(%ebx),%ebx
+!! lea    0x0(%esp),%esp                      | lea    0x4(%esi),%ecx
+!! lea    0x4(%esi),%ecx                      | call   0x18990
+!! call   0x38                                | mov    %esi,%ecx
+!! mov    %esi,%ecx                           | call   0xfffb9f30
+!! call   0x3f                                | add    $0x3c,%esi
+!! add    $0x3c,%esi                          | lea    -0x14(%esi),%ecx
+!! lea    -0x14(%esi),%edx                    | cmp    %ebp,%ecx
+!! cmp    %ebx,%edx                           | jne    0x30
+!! jne    0x30                                | mov    0x14(%esp),%eax
+!! mov    0x14(%esp),%eax                     | mov    %ebx,0x4(%edi)
+!! mov    %ebp,0x4(%edi)                      | pop    %edi
+!! pop    %edi                                | pop    %esi
+!! pop    %esi                                | pop    %ebp
+!! pop    %ebp                                | pop    %ebx
+!! pop    %ebx                                | ret    $0x8
+!! ret    $0x8                                | mov    %ebx,0x4(%edi)
+!! mov    %ebp,0x4(%edi)                      | pop    %edi
+!! pop    %edi                                | mov    %esi,%eax
+!! mov    %esi,%eax                           | pop    %esi
+!! pop    %esi                                | pop    %ebp
+!! pop    %ebp                                | pop    %ebx
+!! pop    %ebx                                | ret    $0x8
+!! ret    $0x8                                | 

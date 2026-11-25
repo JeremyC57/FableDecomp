@@ -1,4 +1,5 @@
 // Faithful VC7.1 reconstruction of _Dest_val<...> at 0x0056c840
+// Leaf: ?Dest_val_CSymbolInfo___@@YIXPAUSymbolPair@@H@Z
 //
 // Retail disasm:
 //   push esi; mov esi,ecx

@@ -1,0 +1,9 @@
+--- a/009e15e0.cpp
++++ b/009e15e0.cpp
+@@ -1,5 +1,6 @@
+ #include "fable_compiler.h"
+ #include "rebuild_abi.h"
++// Leaf: ?Erase@CQuickDrawTriInfoVectorView@@QAEPAUCQuickDrawTriInfoEraseView@@PAU2@0@Z
+ 
+ struct CWideStringEraseView
+ {

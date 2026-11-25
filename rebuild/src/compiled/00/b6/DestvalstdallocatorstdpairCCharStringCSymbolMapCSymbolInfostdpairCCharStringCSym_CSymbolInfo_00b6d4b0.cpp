@@ -1,4 +1,5 @@
 // _Dest_val for std::pair<CCharString, CSymbolMap::CSymbolInfo>
+// Leaf: ?Dest_val_CSymbolInfo___@@YIXPAUDestPair@@@Z
 // Retail 0x00b6d4b0: destroys sub-objects at +0xc, +0x20 (same dtor 0xac1ee0)
 // then tail-calls dtor 0xa63200 for +0x34.
 

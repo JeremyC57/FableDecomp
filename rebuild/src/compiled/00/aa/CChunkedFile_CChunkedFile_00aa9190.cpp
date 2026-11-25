@@ -1,4 +1,5 @@
 // CChunkedFile::`scalar deleting destructor'(unsigned int flags) -- destroy the comment string and the root chunk pointer, run ~CBaseClass, then free when flags & 1
+// Leaf: ??_GCChunkedFile@@UAEPAXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA9190, length 95 bytes (+ int3 padding).
 // Callees: CCharString::~CCharString @ 0x0099EAE0 (FileComment at +0x10), the root chunk's destroy
 // function through its count block (`call [eax+4]`), operator delete @ 0x00BFE9BC (the count block,
