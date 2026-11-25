@@ -1,6 +1,6 @@
 // Behaviour test for CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers (0x005621b0): request only when idle (state 100/101),
 // busy reply -> 1001; on success "SID:OK" -> 1001, else each (clan, logo, size, data) group is written to
-// ClanData\<clan>\logo.<logo>.jpg with <size> bytes, and the connection is dropped.
+// MemberData\<clan>\logo.<logo>.jpg with <size> bytes, and the connection is dropped.
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -36,7 +36,7 @@ struct CModel {
                     long logoId = std::atoi(reply[i++]);
                     long size = std::atoi(reply[i++]);
                     if (g_writes < 4) {
-                        std::sprintf(g_paths[g_writes], "ClanData\\%ld\\logo.%ld.jpg", clanId, logoId);
+                        std::sprintf(g_paths[g_writes], "MemberData\\%ld\\logo.%ld.jpg", clanId, logoId);
                         g_sizes[g_writes] = size;
                     }
                     ++g_writes;
@@ -57,8 +57,8 @@ int main()
     if (m.Run() != 1001 || g_requests != 1 || g_writes != 0) { std::printf("005621b0_TEST FAIL\n"); return 1; }
     m.TaskState = 5;
     if (m.Run() != 1000 || g_writes != 2 || g_resets != 1) { std::printf("005621b0_TEST FAIL\n"); return 1; }
-    if (std::strcmp(g_paths[0], "ClanData\\7\\logo.3.jpg") != 0 || g_sizes[0] != 12) { std::printf("005621b0_TEST FAIL\n"); return 1; }
-    if (std::strcmp(g_paths[1], "ClanData\\8\\logo.4.jpg") != 0 || g_sizes[1] != 5) { std::printf("005621b0_TEST FAIL\n"); return 1; }
+    if (std::strcmp(g_paths[0], "MemberData\\7\\logo.3.jpg") != 0 || g_sizes[0] != 12) { std::printf("005621b0_TEST FAIL\n"); return 1; }
+    if (std::strcmp(g_paths[1], "MemberData\\8\\logo.4.jpg") != 0 || g_sizes[1] != 5) { std::printf("005621b0_TEST FAIL\n"); return 1; }
     static const char* const bad[] = { "SID:ERR" };
     m.reply = bad; m.replyCount = 1;
     if (m.Run() != 1001) { std::printf("005621b0_TEST FAIL\n"); return 1; }

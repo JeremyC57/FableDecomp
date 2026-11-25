@@ -22,7 +22,7 @@ struct Text { std::wstring Value; float SizeX, SizeY;
             std::vector<long> ids = bank->groups[textId];
             Value = L"";
             for (unsigned long i = 0; i < ids.size(); ++i) {
-                if (Value.size()) Value += spaceSeparated ? L" " : L"\n";
+                if (Value.size()) Value += spaceSeparated ? L"\n\n" : L"\n";
                 Value += bank->texts[(unsigned long)ids[i]];
             }
         }
@@ -41,7 +41,7 @@ int main()
     t.SetValue(1, L"raw", true); ok = ok && t.Value == L"Hello" && !g_formatCalled;
     t.SetValue(3, L"raw", false); ok = ok && t.Value == L"Hello\nWorld" && t.SizeY == 2.0f;
     g_game = &b;
-    t.SetValue(3, L"raw", true); ok = ok && t.Value == L"Hello World" && g_formatCalled && t.SizeX == 88.0f;
+    t.SetValue(3, L"raw", true); ok = ok && t.Value == L"Hello\n\nWorld" && g_formatCalled && t.SizeX == 96.0f && t.SizeY == 3.0f;
     if (!ok) { std::printf("0054fbc0_TEST FAIL\n"); return 1; }
     std::printf("0054fbc0_TEST PASS\n");
     return 0;

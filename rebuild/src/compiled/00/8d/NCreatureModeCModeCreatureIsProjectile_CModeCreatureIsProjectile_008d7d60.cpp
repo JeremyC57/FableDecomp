@@ -69,7 +69,7 @@ struct CModeCreatureIsProjectile : CModeBase_00861e00 {
 
 CModeCreatureIsProjectile::CModeCreatureIsProjectile(CThing* thing)
     : CModeBase_00861e00(thing)
-    , m_animFilter("PROJECTILE")           // literal @ 0x01285758 (masked)
+    , m_animFilter("HELP_I_AM_A_PROJECTILE")           // literal @ 0x01285758 (masked)
     , m_pThrower(thing)
 {
 }

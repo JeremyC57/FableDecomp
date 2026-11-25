@@ -22,7 +22,7 @@ void __fastcall CGameScriptInterface_EntitySetSleepEnabled(
     const CGameScriptInterface* self, int /*edx*/,
     const CScriptThing* entity, bool enabled)
 {
-    CCharString stateName("SG_SLEEP", -1);
+    CCharString stateName("SG_MINION_SLEEP", -1);
     CGameScriptInterfaceDispatch* callee =
         (CGameScriptInterfaceDispatch*)const_cast<CGameScriptInterface*>(self);
     const CGameScriptInterfaceVTableView* vtable =

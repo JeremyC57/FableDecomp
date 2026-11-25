@@ -34,7 +34,7 @@ struct Http {
                 if (!LineReady) return RECEIVING;
                 unsigned long chunksize = 0;
                 InChunkMode = true;
-                std::sscanf(Line, "%lx", &chunksize);
+                std::sscanf(Line, "%lX", &chunksize);   // retail format "%X" (the l keeps an LP64 host's unsigned long right)
                 if (chunksize > 0) {
                     chunksize += 2;
                     Chunk = new Part;

@@ -13,7 +13,7 @@ struct Bank {
     Map* map; bool loadBinary, saveBinary; int progress; int created;
     void InitSymbols(const char* path) {
         Str drive, dir, name; SplitPath(path, &drive, &dir, &name);
-        char symbolPath[64]; std::strcpy(symbolPath, drive.s); std::strcat(symbolPath, dir.s); std::strcat(symbolPath, name.s); std::strcat(symbolPath, ".");
+        char symbolPath[64]; std::strcpy(symbolPath, drive.s); std::strcat(symbolPath, dir.s); std::strcat(symbolPath, name.s); std::strcat(symbolPath, ".bin");
         ++progress;
         ++created;
         if (loadBinary) { ++map->binaryLoads; std::strcpy(map->lastPath, symbolPath); }
@@ -27,10 +27,10 @@ int main()
 {
     Map m = { 0, 0, 0, "", 0 };
     Bank b = { &m, true, false, 0, 0 }; b.InitSymbols("c:/data/sound/bank.txt");
-    if (m.binaryLoads != 1 || std::strcmp(m.lastPath, "c:/data/sound/bank.") != 0 || b.progress != 1 || b.created != 1) { std::printf("00a01950_TEST FAIL\n"); return 1; }
+    if (m.binaryLoads != 1 || std::strcmp(m.lastPath, "c:/data/sound/bank.bin") != 0 || b.progress != 1 || b.created != 1) { std::printf("00a01950_TEST FAIL\n"); return 1; }
     Bank t = { &m, false, false, 0, 0 }; t.InitSymbols("c:/data/sound/bank.txt");
     if (m.textLoads != 1 || m.saves != 0 || std::strcmp(m.lastPath, "c:/data/sound/bank.txt") != 0 || std::strcmp(m.tag, "") != 0) { std::printf("00a01950_TEST FAIL\n"); return 1; }
     Bank s = { &m, false, true, 0, 0 }; s.InitSymbols("c:/data/sound/bank.txt");
-    if (m.textLoads != 2 || m.saves != 1 || std::strcmp(m.lastPath, "c:/data/sound/bank.") != 0) { std::printf("00a01950_TEST FAIL\n"); return 1; }
+    if (m.textLoads != 2 || m.saves != 1 || std::strcmp(m.lastPath, "c:/data/sound/bank.bin") != 0) { std::printf("00a01950_TEST FAIL\n"); return 1; }
     std::printf("00a01950_TEST PASS\n"); return 0;
 }

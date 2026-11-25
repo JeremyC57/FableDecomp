@@ -15,14 +15,14 @@ struct CDataBank { int GetTextBySymbol(const char* s) const { return (int)std::s
 static CDataBank g_bank;
 static CCountedPointer CreateMenuDesc(const char* symbol)
 {
-    CCountedPointer description(CreateComponent("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW"));
+    CCountedPointer description(CreateComponent("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW_ONE_OFF"));
     description.Data->SetText(g_bank.GetTextBySymbol(symbol), true, true);
     return description;
 }
 int main()
 {
     CCountedPointer p = CreateMenuDesc("TEXT_SWORD");
-    if (std::strcmp(p.Data->def, "UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW") != 0 || p.Data->textId != 100 || !p.Data->a || !p.Data->b || p.Info->RefCount != 1) {
+    if (std::strcmp(p.Data->def, "UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW_ONE_OFF") != 0 || p.Data->textId != 100 || !p.Data->a || !p.Data->b || p.Info->RefCount != 1) {
         std::printf("005b358c_TEST FAIL\n"); return 1;
     }
     std::printf("005b358c_TEST PASS\n");

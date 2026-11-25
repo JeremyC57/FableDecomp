@@ -1,6 +1,7 @@
 // Behaviour test for CTCTavernGame::CreateGamePiece (0x005EA9B0): the new piece is hidden, flagged, owned by the
-// game's thing through both owned-entity components, has the 0x5b flag set and is deactivated.
+// game's thing through the CTCCreatedEntity and CTCOwnedEntity components (added by those names), has the 0x5b flag set and is deactivated.
 #include <cstdio>
+#include <cstring>
 
 class CThing;
 struct COwnerA { CThing* owner; };
@@ -11,8 +12,9 @@ class CThing { public:
     bool visible, active;
     unsigned char flags91;
     int tcCount;
+    const char* tcNames[2];
     COwnerA a; COwnerB b; CTC5B c;
-    void AddTC() { ++tcCount; }
+    void AddTC(const char* name) { if (tcCount < 2) tcNames[tcCount] = name; ++tcCount; }
 };
 
 class CGame { public:
@@ -25,9 +27,9 @@ class CGame { public:
         piece->a.owner = 0; piece->b.owner = 0; piece->c.flags = 1;
         piece->visible = false;
         piece->flags91 |= 2;
-        piece->AddTC();
+        piece->AddTC("CTCCreatedEntity");
         piece->a.owner = ParentThing;
-        piece->AddTC();
+        piece->AddTC("CTCOwnedEntity");
         piece->b.SetPOwner(ParentThing);
         piece->c.flags |= 2;
         piece->active = false;
@@ -42,7 +44,8 @@ int main()
     g.ParentThing = &owner;
     CThing* p = g.CreateGamePiece();
     if (p->visible || p->active || p->flags91 != 2 || p->tcCount != 2 || p->a.owner != &owner || p->b.owner != &owner
-        || p->c.flags != 3) {
+        || p->c.flags != 3 || std::strcmp(p->tcNames[0], "CTCCreatedEntity") != 0
+        || std::strcmp(p->tcNames[1], "CTCOwnedEntity") != 0) {
         std::printf("005ea9b0_TEST FAIL\n");
         return 1;
     }

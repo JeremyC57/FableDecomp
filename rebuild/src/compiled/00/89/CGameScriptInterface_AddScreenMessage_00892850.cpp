@@ -1,4 +1,4 @@
-// CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const -- look the tag up in the game text bank (by CRC): a text entry's string is shown as a screen message; for a group entry only the random pick is drawn; an unknown tag shows "(" + tag
+// CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const -- look the tag up in the game text bank (by CRC): a text entry's string is shown as a screen message; for a group entry only the random pick is drawn; an unknown tag shows "(HC)" + tag
 // Leaf: AddScreenMessage
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -124,7 +124,7 @@ void CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGro
                 GFRandom(count, ((CWorld*)World)->GetWorldSeed());
         }
     } else
-        text = L"(" + textTag.ToWideString();
+        text = L"(HC)" + textTag.ToWideString();
     if (text != L"")
         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddScreenMessage(text);
 }

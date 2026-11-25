@@ -116,7 +116,7 @@ void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_T
                         text[i] = ' ';
             }
         } else {
-            CCharString message("Expected ';'", -1);
+            CCharString message("Unable to find terminating semicolon.", -1);
             Error(parser, message);
         }
     }

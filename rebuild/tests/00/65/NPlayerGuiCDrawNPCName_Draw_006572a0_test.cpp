@@ -1,6 +1,7 @@
 // Behaviour test for NPlayerGui::CDrawNPCName::Draw (0x006572A0): the name is centred using the font's string width and the
 // render-target width; the screenshot line is drawn only while |frame - counter| < 25, falling back to the literal text.
 #include <cstdio>
+#include <cstring>
 #include <cmath>
 
 class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
@@ -44,7 +45,7 @@ struct CDrawNPCName {
             Drawing = true;
             CRGBColour colour(0xff, 0xff, 0xff, 0xff);
             CWideString text; text.Text = g_bankText;
-            if (text.GetLength() == 0) text.Text = "Screenshot taken";
+            if (text.GetLength() == 0) text.Text = "TEXT_GUI_MENU_SCREENSHOT_TAKEN";
             PlayerGui->Draw2DText(C2DVector(GFAXToVX(280.0f), GFAYToVY(35.0f)), text, *Font, colour, 0.7f, 0x43, true);
         }
     }
@@ -59,7 +60,7 @@ int main()
     if (g_draws != 1 || g_x[0] != 616.0f || g_y[0] != 30.0f || !d.Drawing) { std::printf("006572a0_TEST FAIL\n"); return 1; }
     g_draws = 0; d.Name.Text = ""; d.Drawing = false; d.ScreenShotMessageCounter = 100; g_frame = 110; g_bankText = "";
     d.Draw();
-    if (g_draws != 1 || g_x[0] != 560.0f || g_y[0] != 105.0f || g_text[0][0] != 'S' || !d.Drawing) { std::printf("006572a0_TEST FAIL\n"); return 1; }
+    if (g_draws != 1 || g_x[0] != 560.0f || g_y[0] != 105.0f || std::strcmp(g_text[0], "TEXT_GUI_MENU_SCREENSHOT_TAKEN") != 0 || !d.Drawing) { std::printf("006572a0_TEST FAIL\n"); return 1; }
     g_draws = 0; d.Drawing = false; g_frame = 125;
     d.Draw();
     if (g_draws != 0 || d.Drawing) { std::printf("006572a0_TEST FAIL\n"); return 1; }

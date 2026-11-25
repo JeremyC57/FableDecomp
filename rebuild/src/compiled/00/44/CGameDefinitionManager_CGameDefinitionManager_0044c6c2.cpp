@@ -55,7 +55,7 @@ public:
  virtual ~CGameDefinitionManager();
  virtual void InitAndCompile();
 };
-CGameDefinitionManager::CGameDefinitionManager():CDefinitionManager(L"game",ErrorCallback){SetMaximumMemory(0x80000);}
+CGameDefinitionManager::CGameDefinitionManager():CDefinitionManager(L"game.bin",ErrorCallback){SetMaximumMemory(0x80000);}
 FABLE_STATIC_ASSERT(sizeof(CResourceList)==sizeof(CResourceListFields));
 FABLE_STATIC_ASSERT(sizeof(CDefinitionManager)==0xd0);
 FABLE_STATIC_ASSERT(sizeof(CGameDefinitionManager)==0xe0);

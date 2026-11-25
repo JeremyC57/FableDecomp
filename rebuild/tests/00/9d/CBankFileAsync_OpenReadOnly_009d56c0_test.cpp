@@ -112,7 +112,7 @@ bool CBankFileAsync::OpenReadOnly(const CCharString& bankHandle, unsigned long f
 {
     if (!CBankFile_Retail::OpenReadOnly(bankHandle, flags))
         return false;
-    DisplayProgress("Opening bank", -1.0f, false, false);
+    DisplayProgress("Open Bank File Async", -1.0f, false, false);
     if (RetailMode) {
         SBankEntryInfo info;
         info.Type = 0;
@@ -182,16 +182,16 @@ int main()
     // 2. retail mode, bank found: the retail bank's threaded file and DMA flag are taken, async enabled
     reset(); g_baseResult = 1; bank.RetailMode = true; g_findResult = 1; bank.DisableAsync = true;
     CHECK(bank.OpenReadOnly(handle, 3) == true);
-    CHECKLOG("base(AUDIO,3);progress(Opening bank,-1.0,0,0);find(AUDIO);assign;~tmp;~bank;");
+    CHECKLOG("base(AUDIO,3);progress(Open Bank File Async,-1.0,0,0);find(AUDIO);assign;~tmp;~bank;");
     CHECK(bank.ThreadedFile.Data == &g_retailThreaded && bank.ThreadedFile.Info == &g_threadBlock); CHECK(g_threadBlock.m_references == 8);   // one new reference for the member, the temporary released
     CHECK(bank.NonCached == true && bank.DisableAsync == false); CHECK(g_bankBlock.m_references == 5);
     // 3. retail mode, bank not found
     reset(); bank.RetailMode = true; g_findResult = 0; bank.DisableAsync = true;
-    CHECK(bank.OpenReadOnly(handle, 0) == false); CHECKLOG("base(AUDIO,0);progress(Opening bank,-1.0,0,0);find(AUDIO);");   // the empty bank pointer's dtor has nothing to release CHECK(bank.DisableAsync == true);
+    CHECK(bank.OpenReadOnly(handle, 0) == false); CHECKLOG("base(AUDIO,0);progress(Open Bank File Async,-1.0,0,0);find(AUDIO);");   // the empty bank pointer's dtor has nothing to release CHECK(bank.DisableAsync == true);
     // 4. disk mode: a new threaded file opened on the bank's path with the NonCached setting
     reset(); bank.RetailMode = false; bank.NonCached = false; bank.DisableAsync = true; bank.ThreadedFile.Data = 0;
     CHECK(bank.OpenReadOnly(handle, 4) == true);
-    CHECKLOG("base(AUDIO,4);progress(Opening bank,-1.0,0,0);reset;pathname;open;");
+    CHECKLOG("base(AUDIO,4);progress(Open Bank File Async,-1.0,0,0);reset;pathname;open;");
     CHECK(g_threadedCtors == 1 && bank.ThreadedFile.Data != 0 && g_openPath == (const void*)g_pathText && g_openNonCached == 0 && bank.DisableAsync == false);
     delete bank.ThreadedFile.Data;
     if (fails == 0) printf("009d56c0_TEST PASS\n"); else printf("009d56c0_TEST FAIL (%d)\n", fails);

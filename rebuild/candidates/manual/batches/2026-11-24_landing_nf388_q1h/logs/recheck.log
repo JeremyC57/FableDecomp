@@ -1,0 +1,45 @@
+addr       parity           behav  name
+005621b0   WARN SHARED_HEADER_AVAILABLE CUserProfileManager (engine/CUserProfileManager.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE LHHttp2 (engine/LHHttp2.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+005621b0   WARN SHARED_HEADER_AVAILABLE CTCHeroOnlineScoreboard (engine/CTCHeroOnlineScoreboard.h)
+005621b0   WARN RELOC_NAME: ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z -> 005672d0 labelled 'std::basic_string<char>::_M_range_initialize<const char*>'
+005621b0   WARN RELOC_NAME: ??1LHStringVector@@QAE@XZ -> 00569940 labelled 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector'
+005621b0   WARN RELOC_NAME: ?GetSaveDir@@YI?AVCWideString@@XZ -> 0041a5b0 labelled 'NResourceDirectoryNames::GetScoreboardImageCacheDir'
+005621b0   RELOCATION_MATCH PASS   DownloadLogosForThisClansMembers
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CTCOwnedEntity (engine/CTCOwnedEntity.h)
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+005ea9b0   RELOCATION_MATCH PASS   CreateGamePiece
+0073eac0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+0073eac0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0073eac0   RELOCATION_MATCH PASS   CModeBase
+0073fdb0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+0073fdb0   RELOCATION_MATCH PASS   CModeCrouch
+0088f7d0   RELOCATION_MATCH PASS   EntitySetSleepEnabled
+009574d0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009574d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009574d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_PlayAnimation (engine/CCreatureAction_PlayAnimation.h)
+009574d0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009574d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009574d0   RELOCATION_MATCH PASS   Update
+00b3b240   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+00b3b240   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager (engine/CEngineResourceManager.h)
+00b3b240   WARN RELOC_NAME: ??0CMemoryPool@@QAE@XZ -> 00a62e20 labelled 'CMovableResourceMemoryPool::CMovableResourceMemoryPool'
+00b3b240   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+00b3b240   WARN RELOC_NAME: ??0CPoolAllocator@@QAE@XZ -> 009d5eb0 labelled 'CLoadingMemoryFailureHandler::CLoadingMemoryFailureHandler'
+00b3b240   RELOCATION_MATCH PASS   AllocatePools
+
+WINS: 7
+  005621b0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
+  005ea9b0 RELOCATION_MATCH CTCTavernGame::CreateGamePiece
+  0073eac0 RELOCATION_MATCH CModeBase::??0CModeBase@
+  0073fdb0 RELOCATION_MATCH NCreatureMode::CModeCrouch::??0CModeCrouch@
+  0088f7d0 RELOCATION_MATCH CGameScriptInterface::EntitySetSleepEnabled
+  009574d0 RELOCATION_MATCH CAIStateGroup_MinionBehaviourGreetCreature::Update
+  00b3b240 RELOCATION_MATCH CEngineResourceManager::AllocatePools

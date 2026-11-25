@@ -1,0 +1,197 @@
+addr       parity           behav  name
+0044c6c2   WARN SHARED_HEADER_AVAILABLE CFailedAllocationHandler (engine/CFailedAllocationHandler.h)
+0044c6c2   WARN SHARED_HEADER_AVAILABLE CResourceList (engine/CResourceList.h)
+0044c6c2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0044c6c2   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+0044c6c2   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+0044c6c2   RELOCATION_MATCH PASS   CGameDefinitionManager
+0048f939   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0048f939   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0048f939   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0048f939   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer (engine/CSubtitleRenderer.h)
+0048f939   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+0048f939   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+0048f939   RELOCATION_MATCH PASS   InitPlayerMode
+0053fe50   RELOCATION_MATCH PASS   AddCharacter
+0054fbc0   RELOCATION_MATCH PASS   SetValue
+005820e7   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005820e7   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005820e7   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+005820e7   RELOCATION_MATCH PASS   CreateMenuDesc
+005907ab   RELOCATION_MATCH PASS   ConstructItemCategoryListPC
+00594fdb   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00594fdb   WARN SHARED_HEADER_AVAILABLE CSystemRegistry (engine/CSystemRegistry.h)
+00594fdb   WARN SHARED_HEADER_AVAILABLE CFrontEndManager (engine/CFrontEndManager.h)
+00594fdb   RELOCATION_MATCH PASS   GenerateAboutMessage
+005b358c   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+005b358c   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005b358c   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing (engine/CTCInventoryClothing.h)
+005b358c   RELOCATION_MATCH PASS   CreateMenuDesc
+005be3b1   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+005be3b1   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005be3b1   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005be3b1   RELOCATION_MATCH PASS   GetPrerequisitesString
+005be62c   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CQuestCardDef (engine/CQuestCardDef.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+005be62c   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+005be62c   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_global<bool>::_M_increment'
+005be62c   RELOCATION_MATCH PASS   GetPrerequisitesString
+006572a0   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE C2DExtentsI (engine/C2DExtentsI.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE C2DExtentsF (engine/C2DExtentsF.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+006572a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+006572a0   RELOCATION_MATCH PASS   Draw
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+0068e8f0   WARN SHARED_HEADER_AVAILABLE CInputProcessCombat (engine/CInputProcessCombat.h)
+0068e8f0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068e8f0   RELOCATION_MATCH PASS   ProcessUnarmedInput
+006f9be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CAFile (engine/CAFile.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32 (engine/CDiskFileWin32.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CSymbolMap (engine/CSymbolMap.h)
+006f9be0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+006f9be0   WARN RELOC_NAME: ?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z -> 009e5c90 labelled 'CSymbolMap::LoadFromFile'
+006f9be0   RELOCATION_MATCH PASS   Save
+007276b0   RELOCATION_MATCH PASS   GetClassTypeName
+00741730   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00741730   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00741730   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+00741730   RELOCATION_MATCH PASS   CModeChargeForcePush
+0083efe0   WARN RELOC_ALIAS: _time -> 00bfed22 is the import thunk 'MSVCR71.DLL::time'
+0083efe0   WARN RELOC_ALIAS: _sscanf -> 00bfed1c is the import thunk 'MSVCR71.DLL::sscanf'
+0083efe0   RELOCATION_MATCH PASS   ReceiveDocumentAsync
+00892850   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00892850   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00892850   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00892850   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00892850   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00892850   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+00892850   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00892850   RELOCATION_MATCH PASS   AddScreenMessage
+008bd7f0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008bd7f0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008bd7f0   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+008bd7f0   RELOCATION_MATCH PASS   CModeChargeForcePush
+008c3700   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008c3700   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008c3700   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008c3700   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+008c3700   RELOCATION_MATCH PASS   CModeBriarRoseTeleportIntangible
+008d7d60   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d7d60   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d7d60   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+008d7d60   RELOCATION_MATCH PASS   CModeCreatureIsProjectile
+008d7de0   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+008d7de0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+008d7de0   RELOCATION_MATCH PASS   CModeRockTrollVulnerable
+008da0f0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CThingObjectDef (engine/CThingObjectDef.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CSpecialEffectsDef (engine/CSpecialEffectsDef.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CTCTrapBase (engine/CTCTrapBase.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CThingObject (engine/CThingObject.h)
+008da0f0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008da0f0   RELOCATION_MATCH PASS   Spike
+009bba40   WARN SHARED_HEADER_AVAILABLE CStringParser (engine/CStringParser.h)
+009bba40   WARN SHARED_HEADER_AVAILABLE CPersistContext (engine/CPersistContext.h)
+009bba40   RELOCATION_MATCH PASS   TransferObjectLoadText
+009d56c0   RELOCATION_MATCH PASS   OpenReadOnly
+009e90c0   WARN SHARED_HEADER_AVAILABLE CBBBFileException (engine/CBBBFileException.h)
+009e90c0   WARN SHARED_HEADER_AVAILABLE CMemoryFile (engine/CMemoryFile.h)
+009e90c0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009e90c0   RELOCATION_MATCH PASS   SetPosition
+00a01950   WARN SHARED_HEADER_AVAILABLE CASoundBank (engine/CASoundBank.h)
+00a01950   RELOCATION_MATCH PASS   InitSymbols
+00a447d0   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess (engine/CASuspendableProcess.h)
+00a447d0   WARN SHARED_HEADER_AVAILABLE CSuspendableProcessMicrothread (engine/CSuspendableProcessMicrothread.h)
+00a447d0   WARN RELOC_NAME: ?DeleteMicroThread@@YIXPAUMicroThreadInfo@@@Z -> 009d8640 labelled 'CCountedPointer<CJoystick>::DeleteData'
+00a447d0   WARN RELOC_NAME: ??0CFibreException@@QAE@PBD@Z -> 004fac70 labelled 'CFourierAnalysis::CFourierAnalysis'
+00a447d0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00a447d0   RELOCATION_MATCH PASS   Restart
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00bb6e00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleDecalGroup (engine/CEnginePrimitiveManagerParticleDecalGroup.h)
+00bb6e00   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleDecalGroup
+00bba480   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable (engine/CBaseClassNonCopyable.h)
+00bba480   WARN SHARED_HEADER_AVAILABLE CVertexCompressionParams (engine/CVertexCompressionParams.h)
+00bba480   WARN SHARED_HEADER_AVAILABLE CVertexBufferBase (engine/CVertexBufferBase.h)
+00bba480   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32 (engine/CVertexBufferWin32.h)
+00bba480   WARN SHARED_HEADER_AVAILABLE CIndexBuffer (engine/CIndexBuffer.h)
+00bba480   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00bba480   RELOCATION_MATCH PASS   CEnginePrimitiveManagerDecal
+00bc6b50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager (engine/CEnginePrimitiveManager.h)
+00bc6b50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerText (engine/CEnginePrimitiveManagerText.h)
+00bc6b50   RELOCATION_MATCH PASS   CEnginePrimitiveManagerText
+00d66f50   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist (engine/CRuntimeScriptedEntityPersist.h)
+00d66f50   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase (engine/CGameScriptInterfaceBase.h)
+00d66f50   RELOCATION_MATCH PASS   TeleportOutHero
+00d74ce0   WARN SHARED_HEADER_AVAILABLE CQ_HangingTreeGoodScript (engine/CQ_HangingTreeGoodScript.h)
+00d74ce0   RELOCATION_MATCH PASS   WatchForMissionEnd
+00d89380   RELOCATION_MATCH PASS   Main
+00db7e10   WARN SHARED_HEADER_AVAILABLE CPredicateBase (engine/CPredicateBase.h)
+00db7e10   WARN SHARED_HEADER_AVAILABLE CQ_NewOakValeIntroScript (engine/CQ_NewOakValeIntroScript.h)
+00db7e10   RELOCATION_MATCH PASS   Main
+00df2380   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase (engine/CScriptGameResourceObjectScriptedThingBase.h)
+00df2380   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00df2380   WARN SHARED_HEADER_AVAILABLE CQ_SummoningTheShipScript (engine/CQ_SummoningTheShipScript.h)
+00df2380   RELOCATION_MATCH PASS   Main
+
+WINS: 35
+  0044c6c2 RELOCATION_MATCH CGameDefinitionManager::??0CGameDefinitionManager@@QAE@XZ
+  0048f939 RELOCATION_MATCH CSubtitleRenderer::?InitPlayerMode@CSubtitleRenderer@@AAEXXZ
+  0053fe50 RELOCATION_MATCH CEditBox::AddCharacter
+  0054fbc0 RELOCATION_MATCH NUISystem::CText::?SetValue@CText@NUISystem@@UAEXKABVCWideString@@_N@Z
+  005820e7 RELOCATION_MATCH CTCInventory::?CreateMenuDesc@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  005907ab RELOCATION_MATCH CTCInventory::?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z
+  00594fdb RELOCATION_MATCH CFrontEndManager::GenerateAboutMessage
+  005b358c RELOCATION_MATCH CTCInventoryClothing::?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+  005be3b1 RELOCATION_MATCH NInventory::CTCInventoryBase::?GetPrerequisitesString@CTCInventoryBase@NInventory@@IAE?AVCWideString@@PAVCTCQuestCard@@@Z
+  005be62c RELOCATION_MATCH NInventory::CTCInventoryBase::GetPrerequisitesString
+  006572a0 RELOCATION_MATCH NPlayerGui::CDrawNPCName::?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  0068e8f0 RELOCATION_MATCH CInputProcessCombat::?ProcessUnarmedInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  006f9be0 RELOCATION_MATCH NAnimationEvents::CManager::?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z
+  007276b0 RELOCATION_MATCH CTCSimpleAppearanceMorph::GetClassTypeName
+  00741730 RELOCATION_MATCH NCreatureMode::CModeChargeForcePush::??0CModeChargeForcePush@
+  0083efe0 RELOCATION_MATCH LHNetworkLib::LHHttp2::?ReceiveDocumentAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ
+  00892850 RELOCATION_MATCH CGameScriptInterface::AddScreenMessage
+  008bd7f0 RELOCATION_MATCH NCreatureMode::CModeChargeForcePush::??0CModeChargeForcePush@
+  008c3700 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportIntangible::??0CModeBriarRoseTeleportIntangible@
+  008d7d60 RELOCATION_MATCH NCreatureMode::CModeCreatureIsProjectile::??0CModeCreatureIsProjectile@
+  008d7de0 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::CModeRockTrollVulnerable
+  008da0f0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingTailPlunge::Spike
+  009bba40 RELOCATION_MATCH CPersistContext::?TransferObjectLoadText@CPersistContext@
+  009d56c0 RELOCATION_MATCH CBankFileAsync::?OpenReadOnly@CBankFileAsync@@UAE_NABVCCharString@@K@Z
+  009e90c0 RELOCATION_MATCH CMemoryFile::?SetPosition@CMemoryFile@@UAEXJ@Z
+  00a01950 RELOCATION_MATCH CASoundBank::InitSymbols
+  00a447d0 RELOCATION_MATCH CSuspendableProcessMicrothread::?Restart@CSuspendableProcessMicrothread@@UAEXXZ
+  00bb6e00 RELOCATION_MATCH CEnginePrimitiveManagerParticleDecalGroup::??0CEnginePrimitiveManagerParticleDecalGroup
+  00bba480 RELOCATION_MATCH CEnginePrimitiveManagerDecal::??0CEnginePrimitiveManagerDecal
+  00bc6b50 RELOCATION_MATCH CEnginePrimitiveManagerText::??0CEnginePrimitiveManagerText
+  00d66f50 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?TeleportOutHero@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+  00d74ce0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?WatchForMissionEnd@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+  00d89380 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CNostro::Main
+  00db7e10 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::?Main@CNOVI_Barrel@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00df2380 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ

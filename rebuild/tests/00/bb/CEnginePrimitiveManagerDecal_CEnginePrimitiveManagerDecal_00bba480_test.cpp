@@ -31,11 +31,11 @@ struct Manager {
         PointLightShaderIndex[0] = 0; PointLightShaderIndex[1] = 1; PointLightShaderIndex[2] = 1;
         PointLightShaderIndex[3] = 1; PointLightShaderIndex[4] = 2; PointLightShaderIndex[5] = 2;
         LandscapeDecalVertexShader[0] = GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT");
-        LandscapeDecalVertexShader[1] = GetVertexShader("VSHADER_LANDSCAPE_DECAL_3POINTLIGHTS");
-        LandscapeDecalVertexShader[2] = GetVertexShader("VSHADER_LANDSCAPE_DECAL_5POINTLIGHTS");
+        LandscapeDecalVertexShader[1] = GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT_3POINTLIGHTS");
+        LandscapeDecalVertexShader[2] = GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT_5POINTLIGHTS");
         MeshDecalVertexShader[0] = GetVertexShader("VSHADER_MESH_DECAL_DIRLIGHT");
-        MeshDecalVertexShader[1] = GetVertexShader("VSHADER_MESH_DECAL_3POINTLIGHTS");
-        MeshDecalVertexShader[2] = GetVertexShader("VSHADER_MESH_DECAL_5POINTLIGHTS");
+        MeshDecalVertexShader[1] = GetVertexShader("VSHADER_MESH_DECAL_DIRLIGHT_3POINTLIGHTS");
+        MeshDecalVertexShader[2] = GetVertexShader("VSHADER_MESH_DECAL_DIRLIGHT_5POINTLIGHTS");
         MeshDecalTwoPassStencilVertexShader = GetVertexShader("VSHADER_MESH_DECAL_STENCIL_TWO_PASS");
         MeshDecalStencilClearVertexShader = GetVertexShader("VSHADER_OCCLUSION_BOX");
         LandscapeDecalPixelShader = GetPixelShader("PSHADER_TEXTURE_DIFFUSE");
@@ -48,15 +48,15 @@ int main()
 {
     int bad = 0;
     Manager m;
-    static const char* expected[12] = { "VSHADER_LANDSCAPE_DECAL_DIRLIGHT", "VSHADER_LANDSCAPE_DECAL_3POINTLIGHTS", "VSHADER_LANDSCAPE_DECAL_5POINTLIGHTS", "VSHADER_MESH_DECAL_DIRLIGHT", "VSHADER_MESH_DECAL_3POINTLIGHTS", "VSHADER_MESH_DECAL_5POINTLIGHTS", "VSHADER_MESH_DECAL_STENCIL_TWO_PASS", "VSHADER_OCCLUSION_BOX", "PSHADER_TEXTURE_DIFFUSE", "PSHADER_TEXTURE_DIFFUSE", "PSHADER_DECAL_STENCIL_TWO_PASS", "PSHADER_DECAL_STENCIL_TWO_PASS" };
+    static const char* expected[12] = { "VSHADER_LANDSCAPE_DECAL_DIRLIGHT", "VSHADER_LANDSCAPE_DECAL_DIRLIGHT_3POINTLIGHTS", "VSHADER_LANDSCAPE_DECAL_DIRLIGHT_5POINTLIGHTS", "VSHADER_MESH_DECAL_DIRLIGHT", "VSHADER_MESH_DECAL_DIRLIGHT_3POINTLIGHTS", "VSHADER_MESH_DECAL_DIRLIGHT_5POINTLIGHTS", "VSHADER_MESH_DECAL_STENCIL_TWO_PASS", "VSHADER_OCCLUSION_BOX", "PSHADER_TEXTURE_DIFFUSE", "PSHADER_TEXTURE_DIFFUSE", "PSHADER_DECAL_STENCIL_TWO_PASS", "PSHADER_DECAL_STENCIL_TWO_PASS" };
     if (g_n != 12) bad = 1;
     for (int i = 0; i < g_n && i < 12; ++i) if (std::strcmp(g_names[i], expected[i]) != 0) bad = 1;
     if (!Is(m.LandscapeDecalVertexShader[0], 'V', "VSHADER_LANDSCAPE_DECAL_DIRLIGHT")) bad = 1;
-    if (!Is(m.LandscapeDecalVertexShader[1], 'V', "VSHADER_LANDSCAPE_DECAL_3POINTLIGHTS")) bad = 1;
-    if (!Is(m.LandscapeDecalVertexShader[2], 'V', "VSHADER_LANDSCAPE_DECAL_5POINTLIGHTS")) bad = 1;
+    if (!Is(m.LandscapeDecalVertexShader[1], 'V', "VSHADER_LANDSCAPE_DECAL_DIRLIGHT_3POINTLIGHTS")) bad = 1;
+    if (!Is(m.LandscapeDecalVertexShader[2], 'V', "VSHADER_LANDSCAPE_DECAL_DIRLIGHT_5POINTLIGHTS")) bad = 1;
     if (!Is(m.MeshDecalVertexShader[0], 'V', "VSHADER_MESH_DECAL_DIRLIGHT")) bad = 1;
-    if (!Is(m.MeshDecalVertexShader[1], 'V', "VSHADER_MESH_DECAL_3POINTLIGHTS")) bad = 1;
-    if (!Is(m.MeshDecalVertexShader[2], 'V', "VSHADER_MESH_DECAL_5POINTLIGHTS")) bad = 1;
+    if (!Is(m.MeshDecalVertexShader[1], 'V', "VSHADER_MESH_DECAL_DIRLIGHT_3POINTLIGHTS")) bad = 1;
+    if (!Is(m.MeshDecalVertexShader[2], 'V', "VSHADER_MESH_DECAL_DIRLIGHT_5POINTLIGHTS")) bad = 1;
     if (!Is(m.MeshDecalTwoPassStencilVertexShader, 'V', "VSHADER_MESH_DECAL_STENCIL_TWO_PASS")) bad = 1;
     if (!Is(m.MeshDecalStencilClearVertexShader, 'V', "VSHADER_OCCLUSION_BOX")) bad = 1;
     if (!Is(m.LandscapeDecalPixelShader, 'P', "PSHADER_TEXTURE_DIFFUSE")) bad = 1;

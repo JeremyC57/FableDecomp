@@ -133,11 +133,11 @@ CThingObject* CTCTavernGame::CreateGamePiece(long defIndex)
     CThingObject* piece = CThingObject::Create(defIndex, pos, player, &rh, 0, "");
     piece->Graphic->SetVisible(false);
     piece->_flags91 |= 2;
-    piece->AddTC("TCOwnedEntityA", false, 0);
+    piece->AddTC("CTCCreatedEntity", false, 0);
     CTCOwnedEntityA* owned;
     piece->GetInterface(0x32, &owned);
     owned->POwner = CIntelligentPointer<const CThing>(ParentThing);
-    piece->AddTC("TCOwnedEntity", false, 0);
+    piece->AddTC("CTCOwnedEntity", false, 0);
     CTCOwnedEntity* entity;
     piece->GetInterface(0x33, &entity);
     entity->SetPOwner(ParentThing);

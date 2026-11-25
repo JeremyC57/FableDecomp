@@ -16,7 +16,7 @@ struct Shader {
     ~Shader() { if (Data) --Data->ReferenceCount; }
 };
 static ShaderData g_data[4];
-static const char* g_names[4] = { "VSHADER_TEXT", "VSHADER_TEXT_SHADOW", "PSHADER_TEXT", "PSHADER_TEXT_SHADOW" };
+static const char* g_names[4] = { "VSHADER_TEXT", "VSHADER_TEXT_ALPHA_MASK", "PSHADER_TEXT", "PSHADER_TEXT_ALPHA_MASK" };
 static int g_lookups = 0;
 struct Resource {
     Shader Get(const char* name)
@@ -33,9 +33,9 @@ struct Manager {
     Manager(Resource* vs, Resource* ps)
     {
         VertexShaderText = vs->Get("VSHADER_TEXT");
-        VertexShaderTextShadow = vs->Get("VSHADER_TEXT_SHADOW");
+        VertexShaderTextShadow = vs->Get("VSHADER_TEXT_ALPHA_MASK");
         PixelShaderText = ps->Get("PSHADER_TEXT");
-        PixelShaderTextShadow = ps->Get("PSHADER_TEXT_SHADOW");
+        PixelShaderTextShadow = ps->Get("PSHADER_TEXT_ALPHA_MASK");
     }
 };
 int main()

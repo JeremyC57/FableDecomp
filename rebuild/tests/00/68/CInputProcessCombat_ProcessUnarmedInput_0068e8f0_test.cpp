@@ -22,7 +22,7 @@ class CProcessedInput { public:
         if (e.Player != -1 || !e.Valid || e.Replacement) g_lastType = -99; }
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.p, "CREATURE_ABILITY") == 0 ? 0x1234 : -1; }
+    long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.p, "CREATURE_ABILITY_ATTACK") == 0 ? 0x1234 : -1; }
 };
 class CInputProcessCombat { public:
     CDefinitionManager* DefinitionManager;
@@ -35,7 +35,7 @@ class CInputProcessCombat { public:
             return;
         if (IsEventGameAction(0xb, event)) {
             CGameEvent gameEvent(0x16);
-            gameEvent.AddUWORD(DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY"));
+            gameEvent.AddUWORD(DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY_ATTACK"));
             gameEvent.AddFloat(GetButtonPressureForEvent(event));
             processed.AddGameEvent(gameEvent);
         } else if (IsEventGameAction(0xd, event)) {

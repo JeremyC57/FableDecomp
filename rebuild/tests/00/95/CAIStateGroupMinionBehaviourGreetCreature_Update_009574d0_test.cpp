@@ -30,7 +30,7 @@ struct TGroup { TPtr PCreatureToGreet;
     void FinishUpdate() { ++finished; }
     void Update() {
         if (Alive(PCreatureToGreet) && lookResult == 2) {
-            const char* animation = "SG_CHICKEN_WANDER";
+            const char* animation = "STANDARD_WAVE";
             ++played; long result = performResult; (void)animation;
             if (result != 2) { FinishUpdate(); return; }
         }

@@ -1,6 +1,8 @@
 // Behaviour test for CSummonerAttacker::Main (0x00DF2380): wave gating, the health bar for summoner 1, the
-// hit test (hit, or any special ability except 14) and the wardog respawn of whichever minion is dead.
+// hit test (hit, or any special ability except 14) and the wardog respawn of whichever minion is dead
+// (CreateCreatureNearby(def "CREATURE_MINION_WARDOG", hero pos, 15, script name "SummonerMinion")).
 #include <cstdio>
+#include <cstring>
 
 struct Sim {
     // world
@@ -12,6 +14,11 @@ struct Sim {
     int terminateAt;
     // results
     int frame, healthBars, spawns, orbAttacks, markersAdded, markersRemoved;
+    const char* lastDef; const char* lastScriptName;
+    bool CreateCreatureNearby(const char* defName, float radius, const char* scriptName)
+    {
+        lastDef = defName; lastScriptName = scriptName; ++spawns; return radius == 15.0f;
+    }
     bool terminating() const { return frame >= terminateAt; }
     void newFrame() { ++frame; }
     bool heroFar() const { return heroFarFrames > 0; }
@@ -38,8 +45,8 @@ struct Sim {
                 bool hitBy = hitThisFrame();
                 bool special = anySpecial && frame == hitFrame + 100;
                 if (hitBy || (special && !special14)) {
-                    if (!minion1Alive) { minion1Alive = true; ++spawns; }
-                    if (!minion2Alive) { minion2Alive = true; ++spawns; }
+                    if (!minion1Alive) minion1Alive = CreateCreatureNearby("CREATURE_MINION_WARDOG", 15.0f, "SummonerMinion");
+                    if (!minion2Alive) minion2Alive = CreateCreatureNearby("CREATURE_MINION_WARDOG", 15.0f, "SummonerMinion");
                 }
                 --heroFarFrames;
             } while (heroFar());
@@ -55,6 +62,7 @@ static Sim make(bool active, long wave, long idx, int far, int hit, bool m1, boo
     s.heroFarFrames = far; s.hitFrame = hit; s.anySpecial = false; s.special14 = false;
     s.minion1Alive = m1; s.minion2Alive = m2; s.terminateAt = 1000;
     s.frame = 0; s.healthBars = 0; s.spawns = 0; s.orbAttacks = 0; s.markersAdded = 0; s.markersRemoved = 0;
+    s.lastDef = 0; s.lastScriptName = 0;
     return s;
 }
 
@@ -76,7 +84,9 @@ int main()
 
     Sim d = make(true, 3, 3, 3, 2, false, false);   // both minions dead: both respawn
     d.Main();
-    if (d.spawns != 2) fail = 1;
+    if (d.spawns != 2 || !d.minion1Alive || !d.minion2Alive) fail = 1;
+    if (!d.lastDef || std::strcmp(d.lastDef, "CREATURE_MINION_WARDOG") != 0
+        || !d.lastScriptName || std::strcmp(d.lastScriptName, "SummonerMinion") != 0) fail = 1;
 
     if (fail) { std::printf("00df2380_TEST FAIL\n"); return 1; }
     std::printf("00df2380_TEST PASS\n");

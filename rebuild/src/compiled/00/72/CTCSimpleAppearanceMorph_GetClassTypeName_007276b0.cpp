@@ -40,5 +40,5 @@ struct CTCSimpleAppearanceMorph
 
 CCharString CTCSimpleAppearanceMorph::GetClassTypeName() const
 {
-    return CCharString("ACTION_DO_CREATURE_ACTION", -1);
+    return CCharString("CTCSimpleAppearanceMorph", -1);
 }

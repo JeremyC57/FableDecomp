@@ -1,0 +1,89 @@
+# Swap / chain rows: the old text of one mapping is the new text of another, so token counts cannot show 'old literal gone'.
+# Positional evidence: the full row and test diffs (landed -> batch).
+
+== 0048f939 row
+1c1
+< // CSubtitleRenderer::InitPlayerMode() -- swap the main player's subtitle player mode: remove the mode added last time, then add the one the display flags ask for (and remember it); the two button-prompt modes also fill an empty button 1 text with TEXT_GUI_NEXT, or empty button 1 / button 2 texts with TEXT_GUI_CONFIRM / TEXT_GUI_CANCEL
+---
+> // CSubtitleRenderer::InitPlayerMode() -- swap the main player's subtitle player mode: remove the mode added last time, then add the one the display flags ask for (and remember it); the two button-prompt modes also fill an empty button 1 text with TEXT_GUI_NEXT, or empty button 1 / button 2 texts with TEXT_GUI_CANCEL / TEXT_GUI_CONFIRM
+11c11
+< //   CSubtitleRenderer::GetTextFromTextTag 0x0048F6BD with the L"TEXT_GUI_NEXT" / L"TEXT_GUI_CONFIRM" / L"TEXT_GUI_CANCEL"
+---
+> //   CSubtitleRenderer::GetTextFromTextTag 0x0048F6BD with the L"TEXT_GUI_NEXT" / L"TEXT_GUI_CANCEL" / L"TEXT_GUI_CONFIRM"
+139c139
+<             GetTextFromTextTag(L"TEXT_GUI_CONFIRM", reinterpret_cast<CWideString&>(Button1Text_PStringData));
+---
+>             GetTextFromTextTag(L"TEXT_GUI_CANCEL", reinterpret_cast<CWideString&>(Button1Text_PStringData));
+141c141
+<             GetTextFromTextTag(L"TEXT_GUI_CANCEL", reinterpret_cast<CWideString&>(Button2Text_PStringData));
+---
+>             GetTextFromTextTag(L"TEXT_GUI_CONFIRM", reinterpret_cast<CWideString&>(Button2Text_PStringData));
+== 0048f939 test
+19,20c19,20
+<             if (std::strcmp(Button1, "") == 0) Fill(Button1, "TEXT_GUI_CONFIRM");
+<             if (std::strcmp(Button2, "") == 0) Fill(Button2, "TEXT_GUI_CANCEL");
+---
+>             if (std::strcmp(Button1, "") == 0) Fill(Button1, "TEXT_GUI_CANCEL");
+>             if (std::strcmp(Button2, "") == 0) Fill(Button2, "TEXT_GUI_CONFIRM");
+29c29
+<               && std::strcmp(r.Button1, "TEXT_GUI_CONFIRM") == 0 && std::strcmp(r.Button2, "Keep") == 0;
+---
+>               && std::strcmp(r.Button1, "TEXT_GUI_CANCEL") == 0 && std::strcmp(r.Button2, "Keep") == 0;
+
+== 0073fdb0 row
+53,54c53,54
+<     , m_animName("CROUCH")                 // literal @ 0x01258F14 (masked)
+<     , m_filter("CROUCH_GROUP", "")         // literals @ 0x01267B28 / 0x0122D70E (masked)
+---
+>     , m_animName("ST_SNEAK")                 // literal @ 0x01258F14 (masked)
+>     , m_filter("CROUCH", "")         // literals @ 0x01267B28 / 0x0122D70E (masked)
+== 0073fdb0 test
+1a2
+> #include <cstring>
+16c17
+< struct D : B { Str name; F2 f; virtual void v00() {} D(Th* t) : B(t), name("CROUCH"), f("CROUCH_GROUP", "") {} };
+---
+> struct D : B { Str name; F2 f; virtual void v00() {} D(Th* t) : B(t), name("ST_SNEAK"), f("CROUCH", "") {} };
+20c21,22
+<     if (g_b != 1 || g_set != 1 || d.name.GetLength() != 6 || d.f.a.GetLength() != 12 || d.f.b.GetLength() != 0)
+---
+>     if (g_b != 1 || g_set != 1 || d.name.GetLength() != 8 || std::strcmp(d.name.GetPString(), "ST_SNEAK") != 0
+>         || d.f.a.GetLength() != 6 || std::strcmp(d.f.a.GetPString(), "CROUCH") != 0 || d.f.b.GetLength() != 0)
+
+== 00df2380 row
+161c161
+<                         minion1 = Game->CreateCreatureNearby("SummonerMinion", Game->GetHero().GetPos(), 15.0f, "CREATURE_MINION_WARDOG", true);
+---
+>                         minion1 = Game->CreateCreatureNearby("CREATURE_MINION_WARDOG", Game->GetHero().GetPos(), 15.0f, "SummonerMinion", true);
+166c166
+<                         minion2 = Game->CreateCreatureNearby("SummonerMinion", Game->GetHero().GetPos(), 15.0f, "CREATURE_MINION_WARDOG", true);
+---
+>                         minion2 = Game->CreateCreatureNearby("CREATURE_MINION_WARDOG", Game->GetHero().GetPos(), 15.0f, "SummonerMinion", true);
+== 00df2380 test
+2c2,3
+< // hit test (hit, or any special ability except 14) and the wardog respawn of whichever minion is dead.
+---
+> // hit test (hit, or any special ability except 14) and the wardog respawn of whichever minion is dead
+> // (CreateCreatureNearby(def "CREATURE_MINION_WARDOG", hero pos, 15, script name "SummonerMinion")).
+3a5
+> #include <cstring>
+14a17,21
+>     const char* lastDef; const char* lastScriptName;
+>     bool CreateCreatureNearby(const char* defName, float radius, const char* scriptName)
+>     {
+>         lastDef = defName; lastScriptName = scriptName; ++spawns; return radius == 15.0f;
+>     }
+41,42c48,49
+<                     if (!minion1Alive) { minion1Alive = true; ++spawns; }
+<                     if (!minion2Alive) { minion2Alive = true; ++spawns; }
+---
+>                     if (!minion1Alive) minion1Alive = CreateCreatureNearby("CREATURE_MINION_WARDOG", 15.0f, "SummonerMinion");
+>                     if (!minion2Alive) minion2Alive = CreateCreatureNearby("CREATURE_MINION_WARDOG", 15.0f, "SummonerMinion");
+57a65
+>     s.lastDef = 0; s.lastScriptName = 0;
+79c87,89
+<     if (d.spawns != 2) fail = 1;
+---
+>     if (d.spawns != 2 || !d.minion1Alive || !d.minion2Alive) fail = 1;
+>     if (!d.lastDef || std::strcmp(d.lastDef, "CREATURE_MINION_WARDOG") != 0
+>         || !d.lastScriptName || std::strcmp(d.lastScriptName, "SummonerMinion") != 0) fail = 1;

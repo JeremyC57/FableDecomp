@@ -79,7 +79,7 @@ void NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 {
-                    CCharString text("XBOX_TEXT");
+                    CCharString text("TEXT_QST_048_INSTRUCTION_BREAK_BARRELS");
                     Game->DisplayGameInfo(text);
                 }
                 while (!Game->MsgIsGameInfoClickedPast()) {
@@ -91,7 +91,7 @@ void NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 {
-                    CCharString text("PC_TEXT");
+                    CCharString text("TEXT_QST_048_INSTRUCTION_BREAK_BARRELS_PC");
                     Game->DisplayGameInfo(text);
                 }
                 while (!Game->MsgIsGameInfoClickedPast()) {

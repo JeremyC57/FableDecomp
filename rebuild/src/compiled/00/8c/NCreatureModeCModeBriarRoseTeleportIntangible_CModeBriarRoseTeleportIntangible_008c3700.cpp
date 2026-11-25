@@ -79,7 +79,7 @@ struct CModeBriarRoseTeleportIntangible : CModeBase_00861e00 {
 
 CModeBriarRoseTeleportIntangible::CModeBriarRoseTeleportIntangible(CThing* thing, CThingCreatureBase* target)
     : CModeBase_00861e00(thing)
-    , m_animFilter("TELEPORT")             // literal @ 0x0128029C (masked)
+    , m_animFilter("INTANGIBLE")             // literal @ 0x0128029C (masked)
     , m_pTarget(target)
 {
 }

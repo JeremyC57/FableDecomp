@@ -6,10 +6,10 @@
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
-static const unsigned short parked50GameText[]={103,97,109,101,0};
+static const unsigned short parked50GameText[]={103,97,109,101,46,98,105,110,0};
 #define PARKED50_GAME_TEXT parked50GameText
 #else
-#define PARKED50_GAME_TEXT L"game"
+#define PARKED50_GAME_TEXT L"game.bin"
 #endif
 // 0044c6c2 CGameDefinitionManager::CGameDefinitionManager
 // Flags:
@@ -456,7 +456,7 @@ static int eventSequence,failures,stringCtors,stringDtors,managerCtors,maxCalls,
 static void(__fastcall* capturedCallback)(const CCharString&);
 class CCharString {};
 CWideString::CWideString(const unsigned short*text){
- if(eventSequence!=0||text[0]!=103||text[1]!=97||text[2]!=109||text[3]!=101||text[4]!=0)++failures;
+ if(eventSequence!=0||text[0]!=103||text[1]!=97||text[2]!=109||text[3]!=101||text[4]!=46||text[5]!=98||text[6]!=105||text[7]!=110||text[8]!=0)++failures;
  PStringData=reinterpret_cast<CWideStringData*>(const_cast<unsigned short*>(text));
  ++stringCtors;eventSequence=1;
 }

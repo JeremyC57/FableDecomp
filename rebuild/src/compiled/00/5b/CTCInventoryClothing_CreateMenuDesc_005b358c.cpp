@@ -1,4 +1,4 @@
-// CTCInventoryClothing::CreateMenuDesc(const CCharString& descriptionSymbol) -- create the description component from its UI definition ("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW"), set its text to the game text bank's entry for the symbol, and return it counted
+// CTCInventoryClothing::CreateMenuDesc(const CCharString& descriptionSymbol) -- create the description component from its UI definition ("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW_ONE_OFF"), set its text to the game text bank's entry for the symbol, and return it counted
 // Grade: RELOCATION_MATCH -- the shared engine/CCountedPointer.h in place of the parked local CCountedPointer stand-in (declared-only ctor/copy/dtor): with the real inline bodies in this size TU VC7.1 still calls 0x00429C15 / 0x00428928 / 0x004291DE out of line and the component pointer now lands straight in esi (parked residue 137v135 closed; 11 parked grades tried other forms)
 // Leaf: ?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005b358c, 135 bytes, thiscall, `ret 8` (hidden CCountedPointer result + symbol), ebp frame
 //   in a size-optimised TU (unaligned address, `leave`).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
-//   (private); the definition string "UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW" and the caller the CTCInventoryClothing slot-77 screen builder 0x005B76D1 (six calls).
+//   (private); the definition string "UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW_ONE_OFF" and the caller the CTCInventoryClothing slot-77 screen builder 0x005B76D1 (six calls).
 // Callees: NUISystem::CManager::GetInstance 0x0041E5F2, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0, NUISystem::CManager::CreateComponent(const CCharString&, bool) 0x0041DB1D, CCountedPointer<CComponent>
 //   (CComponent*) 0x00429C15 / copy 0x00428928 / ~CCountedPointer 0x004291DE, NGameText::CDataBank::GetTextBySymbol 0x009C95E0,
@@ -83,7 +83,7 @@ private:
 CCountedPointer<NUISystem::CComponent> CTCInventoryClothing::CreateMenuDesc(const CCharString& descriptionSymbol)
 {
     NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
-    CCountedPointer<NUISystem::CComponent> description(manager->CreateComponent("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW", false));
+    CCountedPointer<NUISystem::CComponent> description(manager->CreateComponent("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW_ONE_OFF", false));
     const NGameText::CDataBank* bank = CMainGameComponent::Get()->PTextBank.operator->();
     description->SetText(bank->GetTextBySymbol(descriptionSymbol), true, true);
     return description;

@@ -59,7 +59,7 @@ struct CModeChargeForcePush : CModeBase_00861e00 {
 
 CModeChargeForcePush::CModeChargeForcePush(CThing* thing)
     : CModeBase_00861e00(thing)
-    , m_animFilter("CHARGE")               // literal @ 0x01268358 (text masked by the grader)
+    , m_animFilter("FORCE_PUSH")               // literal @ 0x01268358 (text masked by the grader)
     , m_pushed(false)
 {
 }

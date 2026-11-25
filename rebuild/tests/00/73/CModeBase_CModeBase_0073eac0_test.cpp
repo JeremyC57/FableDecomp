@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 static int g_b = 0, g_h = 0; struct Th { int id; };
 struct SD { const char* p; unsigned int n; };
 struct Str { SD* d; Str() : d(0) {} Str(const char* t, long = -1) { d = new SD; d->p = t; d->n = 0; while (t[d->n]) ++d->n; } ~Str() { delete d; }
@@ -11,11 +12,11 @@ struct Filter { virtual void v00() {} Str s; unsigned int h;
     Filter(const Str& nm) : s() { s = nm; h = Calc(0, nm.GetPString(), nm.GetLength()); } };
 struct B { virtual void v00() {} unsigned char body[8]; B(Th*) { ++g_b; } };
 struct IP { virtual void v00() {} void* item; IP() : item(0) {} void Set(void* p) { item = p; } };
-struct D { virtual void v00() {} Th* parent; Filter f; long frames; bool active; D(Th* t) : parent(t), f("WEAPON"), frames(-1), active(false) {} };
+struct D { virtual void v00() {} Th* parent; Filter f; long frames; bool active; D(Th* t) : parent(t), f("STAND"), frames(-1), active(false) {} };
 int main()
 {
     Th t; D d(&t); Str empty; Filter e(empty);
-    if (g_h != 2 || d.parent != &t || d.f.h != 42 || d.frames != -1 || d.active || e.h != 0)
+    if (g_h != 2 || d.parent != &t || d.f.h != 5 * 7 || std::strcmp(d.f.s.GetPString(), "STAND") != 0 || d.frames != -1 || d.active || e.h != 0)
     { std::printf("0073eac0_TEST FAIL\n"); return 1; }
     std::printf("0073eac0_TEST PASS\n");
     return 0;

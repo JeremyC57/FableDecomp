@@ -69,7 +69,7 @@ struct CModeRockTrollVulnerable : CModeBase {
 
 CModeRockTrollVulnerable::CModeRockTrollVulnerable(CThing* thing)
     : CModeBase(thing)
-    , m_animFilter("VULNERABLE")           // literal @ 0x0122D70E (masked)
+    , m_animFilter("")           // literal @ 0x0122D70E (masked)
     , m_pOwner(thing)
 {
 }

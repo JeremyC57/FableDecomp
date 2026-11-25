@@ -76,7 +76,7 @@ void CQ_HeroSoulsNostroScript::CNostro::Main()
         Game->EntitySetAsDamageable(Me, false);
         FadeOutThing(Me, 1.0f, 0.3f);
         {
-            CCharString sound("SOUND");
+            CCharString sound("SND_MM_NOSTRO_FADING");
             Game->PlaySoundOnThing(Me, sound);
         }
         while (ParentClass->NostroVulnerableTimer.GetTime() <= 0) {

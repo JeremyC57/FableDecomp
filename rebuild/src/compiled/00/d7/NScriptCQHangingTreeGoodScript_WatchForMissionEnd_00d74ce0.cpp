@@ -52,7 +52,7 @@ void NScript::CQ_HangingTreeGoodScript::WatchForMissionEnd()
         if (CurrentGuards == 0) {
             if (IsActiveThreadTerminating())
                 return;
-            ReasonForFailing = "GUARDS_KILLED";
+            ReasonForFailing = "TEXT_QST_030_FAILURE_GUARDS_KILLED";
             MissionFailed = true;
         }
         GSI->NewScriptFrame();

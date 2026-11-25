@@ -11,7 +11,7 @@ struct EditBox {
     void AddCharacter(char c)
     {
         std::string ch(1, c);
-        if (std::string("\\").find(ch) != std::string::npos) return;
+        if (std::string("\\/:*?\"<>|").find(ch) != std::string::npos) return;
         if (DisallowSpaceAsFirstChar && CursorPos == 0 && c == ' ') return;
         if (c != 8) {
             if (!AllowedCharacters.empty() && AllowedCharacters.find(ch) == std::string::npos) return;

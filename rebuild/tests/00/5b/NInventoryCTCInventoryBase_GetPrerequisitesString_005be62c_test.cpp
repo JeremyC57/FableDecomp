@@ -16,7 +16,7 @@ static std::string GetPrerequisitesString(const std::map<int, int>& prereqs, boo
             if (it->first == 0) {
                 result += Text("TEXT_GUI_MENU_RENOWN") + ":" + IntStr(it->second);
                 if (hasStats)
-                    result += std::string("(") + IntStr(renown) + std::string(")");
+                    result += std::string("(") + IntStr(renown) + std::string(")\n\n");
             }
         }
     }
@@ -30,7 +30,7 @@ int main()
     m[3] = 9;
     if (GetPrerequisitesString(m, true, 5) != "Prerequisites:") { std::printf("005be62c_TEST FAIL\n"); return 1; }
     m[0] = 120;
-    if (GetPrerequisitesString(m, true, 5) != "Prerequisites:Renown:120(5)") { std::printf("005be62c_TEST FAIL\n"); return 1; }
+    if (GetPrerequisitesString(m, true, 5) != "Prerequisites:Renown:120(5)\n\n") { std::printf("005be62c_TEST FAIL\n"); return 1; }
     if (GetPrerequisitesString(m, false, 5) != "Prerequisites:Renown:120") { std::printf("005be62c_TEST FAIL\n"); return 1; }
     std::printf("005be62c_TEST PASS\n");
     return 0;

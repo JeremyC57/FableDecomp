@@ -1,4 +1,4 @@
-// CSubtitleRenderer::InitPlayerMode() -- swap the main player's subtitle player mode: remove the mode added last time, then add the one the display flags ask for (and remember it); the two button-prompt modes also fill an empty button 1 text with TEXT_GUI_NEXT, or empty button 1 / button 2 texts with TEXT_GUI_CONFIRM / TEXT_GUI_CANCEL
+// CSubtitleRenderer::InitPlayerMode() -- swap the main player's subtitle player mode: remove the mode added last time, then add the one the display flags ask for (and remember it); the two button-prompt modes also fill an empty button 1 text with TEXT_GUI_NEXT, or empty button 1 / button 2 texts with TEXT_GUI_CANCEL / TEXT_GUI_CONFIRM
 // Leaf: ?InitPlayerMode@CSubtitleRenderer@@AAEXXZ
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -8,7 +8,7 @@
 //   retail +0x90), DisplayFlags (Ego_r +0x6C, retail +0x7C), Button1Text / Button2Text (Ego_r +0x54 / +0x58, retail +0x64 /
 //   +0x68) -- every retail offset is the PDB one plus 0x10, the STLport deque in TextInfoQueue (0x28 vs Dinkumware 0x18);
 //   (3) its callees are CPlayer::AddMode / RemoveMode on CPlayerManager::GetMainPlayer() and the landed private
-//   CSubtitleRenderer::GetTextFromTextTag 0x0048F6BD with the L"TEXT_GUI_NEXT" / L"TEXT_GUI_CONFIRM" / L"TEXT_GUI_CANCEL"
+//   CSubtitleRenderer::GetTextFromTextTag 0x0048F6BD with the L"TEXT_GUI_NEXT" / L"TEXT_GUI_CANCEL" / L"TEXT_GUI_CONFIRM"
 //   tags (0x0123817C / 0x012381C0 / 0x012381E4); its only caller is 0x00492B4F.
 // Label: the catalog's "CSubtitleRenderer_ProcessPlayerModes" is behavioural.
 // Callees: CPlayerManager::GetMainPlayer() 0x00449970 (on CMainGameComponent::Get() 0x013B86A0 ->PPlayerManager +0x1C),
@@ -136,8 +136,8 @@ void CSubtitleRenderer::InitPlayerMode()
         player.AddMode((EPlayerMode)0x0F, false);
         reinterpret_cast<EPlayerMode&>(PlayerModeAdded) = (EPlayerMode)0x0F;
         if (reinterpret_cast<CWideString&>(Button1Text_PStringData) == L"")
-            GetTextFromTextTag(L"TEXT_GUI_CONFIRM", reinterpret_cast<CWideString&>(Button1Text_PStringData));
+            GetTextFromTextTag(L"TEXT_GUI_CANCEL", reinterpret_cast<CWideString&>(Button1Text_PStringData));
         if (reinterpret_cast<CWideString&>(Button2Text_PStringData) == L"")
-            GetTextFromTextTag(L"TEXT_GUI_CANCEL", reinterpret_cast<CWideString&>(Button2Text_PStringData));
+            GetTextFromTextTag(L"TEXT_GUI_CONFIRM", reinterpret_cast<CWideString&>(Button2Text_PStringData));
     }
 }

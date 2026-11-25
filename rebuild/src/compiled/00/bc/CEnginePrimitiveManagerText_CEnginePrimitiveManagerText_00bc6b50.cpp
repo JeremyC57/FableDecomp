@@ -38,7 +38,7 @@ CEnginePrimitiveManagerText::CEnginePrimitiveManagerText(CEngineSceneArray* scen
     : CEnginePrimitiveManager(scenes)
 {
     VertexShaderText = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)26)->GetVertexShader("VSHADER_TEXT");
-    VertexShaderTextShadow = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)26)->GetVertexShader("VSHADER_TEXT_SHADOW");
+    VertexShaderTextShadow = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)26)->GetVertexShader("VSHADER_TEXT_ALPHA_MASK");
     PixelShaderText = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXT");
-    PixelShaderTextShadow = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXT_SHADOW");
+    PixelShaderTextShadow = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_TEXT_ALPHA_MASK");
 }

@@ -158,12 +158,12 @@ void NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Main()
                     if (!IsThingAlive(minion1)) {
                         if (IsActiveThreadTerminating())
                             return;
-                        minion1 = Game->CreateCreatureNearby("SummonerMinion", Game->GetHero().GetPos(), 15.0f, "CREATURE_MINION_WARDOG", true);
+                        minion1 = Game->CreateCreatureNearby("CREATURE_MINION_WARDOG", Game->GetHero().GetPos(), 15.0f, "SummonerMinion", true);
                     }
                     if (!IsThingAlive(minion2)) {
                         if (IsActiveThreadTerminating())
                             return;
-                        minion2 = Game->CreateCreatureNearby("SummonerMinion", Game->GetHero().GetPos(), 15.0f, "CREATURE_MINION_WARDOG", true);
+                        minion2 = Game->CreateCreatureNearby("CREATURE_MINION_WARDOG", Game->GetHero().GetPos(), 15.0f, "SummonerMinion", true);
                     }
                 }
             } while (IsDistanceBetweenThingsOver(Me, Game->GetHero(), 15.0f));

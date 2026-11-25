@@ -1,11 +1,11 @@
 // CAIStateGroup_MinionBehaviourGreetCreature::Update() -- while the creature to greet is alive, turn to face it;
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// once facing, play the SG_CHICKEN_WANDER animation and wait for it; finish the update either way.
+// once facing, play the STANDARD_WAVE animation and wait for it; finish the update either way.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009574D0, length 239 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (IS_THING_ALIVE, twice), CAIStateGroupBase::AIAction_LookAtThing
 // @ 0x0097D6F0 (repeat 1, by-value CIntelligentPointer copy built in its argument slot: ctor @ 0x00A01B10, vtable
 // 0x01237F1C, SetPItem @ 0x00A01B90; flags 0xB, turn speed 1/72), CCharString(const char*, long) @ 0x0099EBF0
-// ("SG_CHICKEN_WANDER" @ 0x012593EC), CCreatureAction_PlayAnimation(creature, anim, float, sound, ...) @ 0x00843A80,
+// ("STANDARD_WAVE" @ 0x012593EC), CCreatureAction_PlayAnimation(creature, anim, float, sound, ...) @ 0x00843A80,
 // CAIStateGroupBase::AIAction_PerformActionAndWait @ 0x0097DB70, ~CCreatureActionBase @ 0x00693EF0, ~CCharString
 // @ 0x0099EAE0, the state-group finish call @ 0x008FCF40 (manifest "CXMVPlaybackInfo" is propagated and wrong).
 // Shape: a NAMED CCharString in the inner block; the action result is a named long (compared after the action dtor); `if (result != 2) { Terminate(); return; }` inside the block
@@ -79,7 +79,7 @@ struct CAIStateGroup_MinionBehaviourGreetCreature : CAIStateGroupBase {
 void CAIStateGroup_MinionBehaviourGreetCreature::Update()
 {
     if (IS_THING_ALIVE(PCreatureToGreet) && AIAction_LookAtThing(ACTION_REPEAT_UNTIL_FINISHED, PCreatureToGreet, 0xb, 0.013888889f) == 2) {
-        CCharString animation("SG_CHICKEN_WANDER");
+        CCharString animation("STANDARD_WAVE");
         long result = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(*GetCreature(), animation, 0.0f,
                 CSoundPair(), false, true, false, 0, 0), false);
         if (result != 2) {

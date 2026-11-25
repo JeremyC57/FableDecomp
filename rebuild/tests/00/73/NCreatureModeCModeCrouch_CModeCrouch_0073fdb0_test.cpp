@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 static int g_b = 0, g_h = 0; struct Th { int id; };
 struct SD { const char* p; unsigned int n; };
 struct Str { SD* d; Str() : d(0) {} Str(const char* t, long = -1) { d = new SD; d->p = t; d->n = 0; while (t[d->n]) ++d->n; } ~Str() { delete d; }
@@ -13,11 +14,12 @@ struct B { virtual void v00() {} unsigned char body[8]; B(Th*) { ++g_b; } };
 struct IP { virtual void v00() {} void* item; IP() : item(0) {} void Set(void* p) { item = p; } };
 static int g_set = 0;
 struct F2 { virtual void v00() {} Str a, b; F2(const Str& x, const Str& y) : a(), b() { a = x; b = y; ++g_set; } };
-struct D : B { Str name; F2 f; virtual void v00() {} D(Th* t) : B(t), name("CROUCH"), f("CROUCH_GROUP", "") {} };
+struct D : B { Str name; F2 f; virtual void v00() {} D(Th* t) : B(t), name("ST_SNEAK"), f("CROUCH", "") {} };
 int main()
 {
     Th t; D d(&t);
-    if (g_b != 1 || g_set != 1 || d.name.GetLength() != 6 || d.f.a.GetLength() != 12 || d.f.b.GetLength() != 0)
+    if (g_b != 1 || g_set != 1 || d.name.GetLength() != 8 || std::strcmp(d.name.GetPString(), "ST_SNEAK") != 0
+        || d.f.a.GetLength() != 6 || std::strcmp(d.f.a.GetPString(), "CROUCH") != 0 || d.f.b.GetLength() != 0)
     { std::printf("0073fdb0_TEST FAIL\n"); return 1; }
     std::printf("0073fdb0_TEST PASS\n");
     return 0;

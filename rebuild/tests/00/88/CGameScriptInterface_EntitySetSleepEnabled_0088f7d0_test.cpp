@@ -39,7 +39,7 @@ void __fastcall
 CGameScriptInterface_EntitySetSleepEnabled(const CGameScriptInterface* self, int edx,
                                            const CScriptThing* entity, bool enabled)
 {
-    CCharString stateName("SG_SLEEP", -1);
+    CCharString stateName("SG_MINION_SLEEP", -1);
     self->m_pVTable->m_Unknown938(self, edx, entity, &stateName, enabled);
 }
 

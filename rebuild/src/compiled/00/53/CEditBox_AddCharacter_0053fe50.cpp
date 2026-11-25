@@ -72,7 +72,7 @@ public:
 
 void CEditBox::AddCharacter(unsigned short c)
 {
-    CWideString backslash(L"\\");
+    CWideString backslash(L"\\/:*?\"<>|");
     CWideString character;
     character += c;
     if (backslash.Contains(character))

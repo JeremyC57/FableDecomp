@@ -5,7 +5,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 // ---- source (verbatim) ----
-// CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const -- look the tag up in the game text bank (by CRC): a text entry's string is shown as a screen message; for a group entry only the random pick is drawn; an unknown tag shows "(" + tag
+// CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const -- look the tag up in the game text bank (by CRC): a text entry's string is shown as a screen message; for a group entry only the random pick is drawn; an unknown tag shows "(HC)" + tag
 // Leaf: AddScreenMessage
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00892850, length 383 bytes (`ret 8`).
 // Callees: CWideString ctor/dtor/operator=/operator!= @ 0x0099AED0 / 0x0099B510 / 0x0099B7D0 / 0x0099B150, CCRC::Calc
@@ -102,7 +102,7 @@ void CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGro
                 GFRandom(count, World->GetRandomSeed());
         }
     } else
-        text = L"(" + textTag.ToWideString();
+        text = L"(HC)" + textTag.ToWideString();
     if (text != L"")
         g_pPlayerGui->AddScreenMessage(text);
 }
@@ -159,11 +159,11 @@ int main()
     CGameScriptInterface& gsi = *(CGameScriptInterface*)gsiStore; gsi.World = &world;
     static char tagText[] = "TEXT_TAG"; static CCharStringData tagData = { tagText, 8 };
     CCharString tag; tag.PStringData = &tagData;
-    // unknown tag: "(" + tag is shown; the CRC covers the tag's text and length
+    // unknown tag: "(HC)" + tag is shown; the CRC covers the tag's text and length
     g_lookupResult = 0;
     gsi.CGameScriptInterface::AddScreenMessage(tag, TEXT_GROUP_SELECT_FIRST);
     CHECK(g_crcSeed == 0 && g_crcData == tagText && g_crcLen == 8); CHECK(g_lookupCrc == 56);
-    CHECK(g_plusLeft != 0 && g_plusLeft[0] == '(' && g_plusLeft[1] == 0);
+    CHECK(g_plusLeft != 0 && g_plusLeft[0] == '(' && g_plusLeft[1] == 'H' && g_plusLeft[2] == 'C' && g_plusLeft[3] == ')' && g_plusLeft[4] == 0);
     CHECK(g_shown == 1 && g_shownText == kParen);
     // null tag string: CRC of "" with length 0
     CCharString nulltag; nulltag.PStringData = 0;

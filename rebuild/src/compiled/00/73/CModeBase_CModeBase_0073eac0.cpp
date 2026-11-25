@@ -54,7 +54,7 @@ struct CModeBase {
 
 CModeBase::CModeBase(CThing* thing)
     : ParentThing(thing)
-    , WeaponBasedFilter("WEAPON")          // literal @ 0x012674DC (masked)
+    , WeaponBasedFilter("STAND")          // literal @ 0x012674DC (masked)
     , FramesBeforeRemovingSelf(-1)
     , Active(false)
 {

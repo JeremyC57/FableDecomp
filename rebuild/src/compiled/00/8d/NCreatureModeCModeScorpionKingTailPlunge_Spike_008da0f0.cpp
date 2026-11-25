@@ -181,7 +181,7 @@ void CModeScorpionKingTailPlunge::Spike()
 {
     long spikeIndex;
     {
-        CCharString name("OBJECT_SCORPION_KING_SPIKE");
+        CCharString name("OBJECT_SCORPION_KING_TAIL_TRAP");
         spikeIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
     SCreationRecord record("", "");
@@ -195,7 +195,7 @@ void CModeScorpionKingTailPlunge::Spike()
     ParentThing->PDef->GetSubDef(effectsSlot);
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
-        bool found = effects->GetEffectFromString("SCORPION_KING_SPIKE", effectType);
+        bool found = effects->GetEffectFromString("TAIL_DUST_EFFECT", effectType);
         if (found)
             CTCDParticleEmitter::Create(effectType, *(&position), false);
         if (--effects->m_refCount == 0)

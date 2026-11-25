@@ -115,14 +115,14 @@ void CManager::Save(const CWideString& fileName)
         CCharString text;
         CPersistContext context(text);
         {
-            CCharString line("BEGIN_ANIMATION_EVENTS\r\n");
+            CCharString line("BEGIN_ANIMATION_EVENTS\r\n\r\n");
             context.WriteString(line);
         }
         CSymbolMap animTypes;
         animTypes.LoadFromHeaderFile(NBankFileManager::GetHeaderDir() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
-            const CSymbolMap::CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);
+            const CSymbolMap::CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType2", animID);
             context.WriteString("BEGIN_EVENTS: " + info->EntryName + "\r\n");
             for (CEvent* e = it->Events.begin(); e != it->Events.end(); ++e) {
                 const CSymbolMap::CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);

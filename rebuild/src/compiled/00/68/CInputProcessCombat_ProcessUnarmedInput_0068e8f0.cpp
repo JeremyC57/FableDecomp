@@ -1,4 +1,4 @@
-// CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0xb queues game event 0x16 carrying the CREATURE_ABILITY definition index (2 bytes) and the button pressure; game action 0xd / 0xe queue event 0x21 / 0x22 carrying a true byte
+// CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0xb queues game event 0x16 carrying the CREATURE_ABILITY_ATTACK definition index (2 bytes) and the button pressure; game action 0xd / 0xe queue event 0x21 / 0x22 carrying a true byte
 // Leaf: ?ProcessUnarmedInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E8F0, length 275 bytes (+ int3 padding), `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
 //   GetButtonPressureForEvent @ 0x00687D10 (float; catalog label "operator_new" is propagated), CCharString(const char*,
-//   long) @ 0x0099EBF0 ("CREATURE_ABILITY" @ 0x01259AFC) / ~CCharString @ 0x0099EAE0,
+//   long) @ 0x0099EBF0 ("CREATURE_ABILITY_ATTACK" @ 0x01259AFC) / ~CCharString @ 0x0099EAE0,
 //   CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, CMemoryBuffer::Copy @ 0x009F1760,
 //   CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
 // Layout: engine/CInputProcessGameBase.h (DefinitionManager +0x1c), modelled locally as in the landed 0x00690C70;
@@ -72,7 +72,7 @@ void CInputProcessCombat::ProcessUnarmedInput(const CInputEvent& event, CProcess
         return;
     if (IsEventGameAction((EGameAction)(0xb), event)) {
         CGameEvent gameEvent(0x16);
-        gameEvent.AddUWORD(DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY"));
+        gameEvent.AddUWORD(DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY_ATTACK"));
         gameEvent.AddFloat(GetButtonPressureForEvent(event));
         processed.AddGameEvent(gameEvent);
     } else if (IsEventGameAction((EGameAction)(0xd), event)) {

@@ -197,7 +197,7 @@ void CModeScorpionKingTailPlunge::Spike()
 {
     long spikeIndex;
     {
-        CCharString name("OBJECT_SCORPION_KING_SPIKE");
+        CCharString name("OBJECT_SCORPION_KING_TAIL_TRAP");
         spikeIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
     SCreationRecord record("", "");
@@ -211,7 +211,7 @@ void CModeScorpionKingTailPlunge::Spike()
     ParentThing->PDef->GetSubDef(effectsSlot);
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
-        bool found = effects->GetEffectFromString("SCORPION_KING_SPIKE", effectType);
+        bool found = effects->GetEffectFromString("TAIL_DUST_EFFECT", effectType);
         if (found)
             CreateEffectThing(effectType, &position, false);
         if (--effects->m_refCount == 0)
@@ -268,9 +268,9 @@ int main()
     g_objDef = &odef; odef.m_refCount = 2; g_subDef = &sdef; sdef.m_refCount = 2; g_lookup = 9; Reset();
     mode->Spike();
     CHECK(strcmp(g_log, "index;getdef;create;trigger;subdef;lookup;effect;") == 0);
-    CHECK(strcmp(g_indexName, "OBJECT_SCORPION_KING_SPIKE") == 0 && g_getDefIndex == 31 && g_createIndex == 31 && g_createPlayer == -2);
+    CHECK(strcmp(g_indexName, "OBJECT_SCORPION_KING_TAIL_TRAP") == 0 && g_getDefIndex == 31 && g_createIndex == 31 && g_createPlayer == -2);
     CHECK(g_createPos[0] == 1.0f && g_createPos[1] == 2.0f && g_createPos[2] == 3.0f && g_createOrient == 0 && g_createUid == 0 && strcmp(g_createScript, "") == 0);
-    CHECK(g_triggered == &spikeTC && strcmp(g_lookupName, "SCORPION_KING_SPIKE") == 0 && g_effType == 9 && g_effPos[2] == 3.0f && g_effFlag == 0);
+    CHECK(g_triggered == &spikeTC && strcmp(g_lookupName, "TAIL_DUST_EFFECT") == 0 && g_effType == 9 && g_effPos[2] == 3.0f && g_effFlag == 0);
     CHECK(odef.m_refCount == 1 && sdef.m_refCount == 1 && g_destroys == 0 && g_strings == g_strDtors);
     // effect lookup fails, last references released (both destroyed)
     odef.m_refCount = 1; sdef.m_refCount = 1; g_lookup = -1; Reset();

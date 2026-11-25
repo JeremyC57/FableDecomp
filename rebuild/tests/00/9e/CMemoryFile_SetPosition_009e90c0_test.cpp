@@ -47,7 +47,7 @@ class CMemoryFile { public:
 void CMemoryFile::SetPosition(long position)
 {
     if (position > Length) {
-        CCharString message = CCharString("", -1) + "CMemoryFile::SetPosition - past end of file";   // literals 0x0122D70E / 0x0129A898 (masked)
+        CCharString message = CCharString("", -1) + "Cannot seek past end of file";   // literals 0x0122D70E / 0x0129A898 (masked)
         throw CBBBFileException(FILE_EXCEPTION_SEEK_PAST_END, message);
     }
     Position = position;

@@ -115,10 +115,10 @@ CWideString CTCInventoryBase::GetPrerequisitesString(CTCQuestCard* card)
         SNode* node = GetDef(card)->Prerequisites.begin();
         while (node != GetDef(card)->Prerequisites.end()) {
             if (node->first == 0) {
-                result += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + CWideString(L":") + GFIntToWideString(node->second) + CWideString(L" ");
+                result += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + CWideString(L": ") + GFIntToWideString(node->second) + CWideString(L" ");
                 CTCHeroStats* stats;
                 if (ParentThing->GetInterface(&stats, 4) && stats)
-                    result += CWideString(L"(") + GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_CURRENT_LEVEL") + GFIntToWideString(stats->GetRenownLevel()) + CWideString(L")");
+                    result += CWideString(L"(") + GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_CURRENT_LEVEL") + GFIntToWideString(stats->GetRenownLevel()) + CWideString(L")\n\n");
             }
             node = Successor(node);
         }

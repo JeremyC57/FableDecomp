@@ -1,4 +1,4 @@
-// CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers() -- when idle, sends DOWNLOAD_MEMBER_LOGOS (user, session and the cached member logo list); then steps the transaction and, on success, decrypts the reply (busy unless it starts "SID:OK") and writes each (clan id, logo id, size, data) quadruple to SaveDir\ClanData\<id>\logo.<id>.jpg before dropping the connection
+// CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers() -- when idle, sends DOWNLOAD_MEMBER_LOGOS (user, session and the cached member logo list); then steps the transaction and, on success, decrypts the reply (busy unless it starts "SID:OK") and writes each (clan id, logo id, size, data) quadruple to SaveDir\MemberData\<id>\logo.<id>.jpg before dropping the connection
 // Leaf: ?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ
 // Retail: Fable.exe @ 0x005621B0, 1088 bytes, `ret`. Ego_r.pdb `?DownloadLogosForThisClansMembers@CTCHeroOnlineScoreboard@@AAE?AW4ENetworkSuccess@1@XZ`.
 // Byte-twin of DownloadMyClansLogos 0x00561980 except the cached-logo getter (GetCachedMemberLogosAsString 0x0055EA80) and the
@@ -202,7 +202,7 @@ CTCHeroOnlineScoreboard::ENetworkSuccess CTCHeroOnlineScoreboard::DownloadLogosF
                 long clanId = GFCharStringToInt(lines[i++].c_str());
                 long logoId = GFCharStringToInt(lines[i++].c_str());
                 long size = GFCharStringToInt(lines[i++].c_str());
-                CWideString path = GetSaveDir() + L"ClanData\\";
+                CWideString path = GetSaveDir() + L"MemberData\\";
                 path += IntToWideString(clanId);
                 path += L"\\logo.";
                 path += IntToWideString(logoId);

@@ -1,7 +1,8 @@
 // Behaviour test for 0x005907AB CTCInventory::ConstructItemCategoryListPC: caption total, the per-def merge of the item list,
-// the empty-category path, the usable / can't-use actions list choice and the frame registrations.
+// the sub-list title text ("<caption>: <title>"), the empty-category path, the usable / can't-use actions list choice and the frame registrations.
 #include <cstdio>
 #include <cstring>
+#include <cwchar>
 
 struct Item { long first; long second; };
 struct MergedMap {
@@ -11,9 +12,10 @@ struct MergedMap {
 };
 struct Result {
     long captionTotal; bool hasCount; bool cleared; int frameMembers; int itemCount;
-    const char* actionsName; bool notUsableCleared; MergedMap merged;
+    const char* actionsName; bool notUsableCleared; MergedMap merged; wchar_t titleText[64];
 };
-static Result Build(const Item* items, int count, bool templateNamed, bool checkUsable, bool hasCarrying, bool heldAlive)
+static Result Build(const Item* items, int count, bool templateNamed, bool checkUsable, bool hasCarrying, bool heldAlive,
+                    const wchar_t* caption = L"", const wchar_t* title = L"")
 {
     Result r; std::memset(&r, 0, sizeof(r));
     if (count != 0) {
@@ -36,6 +38,9 @@ static Result Build(const Item* items, int count, bool templateNamed, bool check
         else r.merged.values[found] += item->second;
     }
     r.itemCount = r.merged.n;
+    std::wcscpy(r.titleText, caption);
+    std::wcscat(r.titleText, L": ");
+    std::wcscat(r.titleText, title);
     ++r.frameMembers;                 // sub-list title
     bool usable = true;
     if (checkUsable && hasCarrying && !heldAlive) usable = false;
@@ -48,11 +53,12 @@ static Result Build(const Item* items, int count, bool templateNamed, bool check
 int main()
 {
     Item items[4] = { { 10, 2 }, { 11, 1 }, { 10, 3 }, { 12, 4 } };
-    Result a = Build(items, 4, true, true, true, false);
+    Result a = Build(items, 4, true, true, true, false, L"Weapons", L"Swords");
     Result b = Build(items, 0, false, false, false, false);
     Result c = Build(items, 2, false, true, false, false);
     bool ok = a.hasCount && a.captionTotal == 10 && a.itemCount == 3 && a.merged.values[0] == 5 && a.merged.values[2] == 4
         && std::strcmp(a.actionsName, "PC_UI_LIST_ITEMS_ACTIONS_CANT_USE") == 0 && a.notUsableCleared && a.frameMembers == 5
+        && std::wcscmp(a.titleText, L"Weapons: Swords") == 0
         && !b.hasCount && b.cleared && b.frameMembers == 2 && b.actionsName == 0
         && std::strcmp(c.actionsName, "PC_UI_LIST_ITEMS_ACTIONS") == 0 && !c.notUsableCleared && c.itemCount == 2 && c.captionTotal == 3;
     if (!ok) { std::printf("005907ab_TEST FAIL\n"); return 1; }

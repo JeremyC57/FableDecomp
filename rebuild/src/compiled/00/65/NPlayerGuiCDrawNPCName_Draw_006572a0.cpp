@@ -1,4 +1,4 @@
-// NPlayerGui::CDrawNPCName::Draw(const CEnginePrimitivePrepareInfo& prepare_info) -- draw the NPC name centred at the top of the screen (static white colour, scale 0.7, text layer); while the screenshot message shows, also draw TEXT_GUI_MENU_SCREENSHOT_TAKEN (fallback L"Screenshot taken") at (280, 35)
+// NPlayerGui::CDrawNPCName::Draw(const CEnginePrimitivePrepareInfo& prepare_info) -- draw the NPC name centred at the top of the screen (static white colour, scale 0.7, text layer); while the screenshot message shows, also draw TEXT_GUI_MENU_SCREENSHOT_TAKEN (fallback L"TEXT_GUI_MENU_SCREENSHOT_TAKEN") at (280, 35)
 // Leaf: ?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -143,7 +143,7 @@ void CDrawNPCName::Draw(const CEnginePrimitivePrepareInfo& prepare_info)
         CRGBColour colour(0xff, 0xff, 0xff, 0xff);
         CWideString text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_SCREENSHOT_TAKEN");
         if (text.GetLength() == 0)
-            text = L"Screenshot taken";
+            text = L"TEXT_GUI_MENU_SCREENSHOT_TAKEN";
         PlayerGui->Draw2DText(C2DVector(GFAXToVX(280.0f), GFAYToVY(35.0f)), text, font, colour, 0.7f, ENGINE_2D_LAYER_TEXT, true);
     }
 }

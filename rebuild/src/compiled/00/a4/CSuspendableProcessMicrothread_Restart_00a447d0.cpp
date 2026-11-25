@@ -1,4 +1,4 @@
-// CSuspendableProcessMicrothread::Restart() -- delete the current microthread (if any), create a fresh one running the process entry, clear StopRunning, throw "Failed to create fibre" when no microthread could be made
+// CSuspendableProcessMicrothread::Restart() -- delete the current microthread (if any), create a fresh one running the process entry, clear StopRunning, throw "Failed to create Microthread" when no microthread could be made
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A447D0, length 100 bytes (+12 int3 padding). Public virtual (`UAEXXZ`).
 // Leaf: ?Restart@CSuspendableProcessMicrothread@@UAEXXZ
 // Callees: DeleteMicroThread @ 0x009D8640 (`__fastcall`), CreateMicroThread(void (*)(void*), void*) @ 0x009D8710 (`__fastcall`:
@@ -41,5 +41,5 @@ void CSuspendableProcessMicrothread::Restart()
     PMicrothread = CreateMicroThread(MicrothreadEntry, this);
     StopRunning = false;
     if (PMicrothread == 0)
-        throw CFibreException("Failed to create fibre");
+        throw CFibreException("Failed to create Microthread");
 }

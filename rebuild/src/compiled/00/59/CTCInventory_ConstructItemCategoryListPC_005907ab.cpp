@@ -130,7 +130,7 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, NUISystem::CL
         CCountedPointer<NUISystem::CComponent> titleComp(fe->CreateComponent("PC_ITEM_TITLE", false));
         NUISystem::CText* titleObject = static_cast<NUISystem::CText*>(titleComp.Get());
         CWideString titleText(titleObject->GetValue());
-        titleText += L":";
+        titleText += L": ";
         titleText += title;
         titleObject->SetValue(titleText, true, true);
         titleComp->SetName(TITLE_NAME);

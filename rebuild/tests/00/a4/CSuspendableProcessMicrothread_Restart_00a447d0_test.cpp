@@ -16,7 +16,7 @@ struct Process {
         PMicrothread = CreateMicroThread(Entry, this);
         StopRunning = false;
         if (PMicrothread == 0)
-            throw FibreException("Failed to create fibre");
+            throw FibreException("Failed to create Microthread");
     }
 };
 int main()

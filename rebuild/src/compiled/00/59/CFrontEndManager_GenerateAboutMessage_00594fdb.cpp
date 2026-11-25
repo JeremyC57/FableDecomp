@@ -7,7 +7,7 @@
 //   0x0099AED0 / (const wchar_t*) 0x0099B6B0 / copy 0x0099B720 / dtor 0x0099B510 / operator+=(const CWideString&) 0x0099B8D0 /
 //   operator+=(const wchar_t*) 0x0099B940 / GetLength 0x0099B220, CSystemRegistry(const CWideString&, long) 0x0099CF10 /
 //   GetString 0x0099D000 / dtor 0x0099CF70. Globals: the front-end component 0x013B871C (text bank +0x60), the registry key path
-//   0x013BCA30 and value name 0x013BCA34 (CWideString globals). Literals: L"\n" 0x01249F28, L"" 0x0122D70C.
+//   0x013BCA30 and value name 0x013BCA34 (CWideString globals). Literals: L"\n\n" 0x01249F28, L"" 0x0122D70C.
 // Layout: `this` is unused; engine/CFrontEndManager.h declares no methods (as the other landed CFrontEndManager rows, a local view).
 // Shape: the group's entry list is reached through a reference into a counted temporary (released, and nulled, before the
 //   loop); the per-entry counted temporary is released after the text is appended; the two parts are written out in full;
@@ -109,21 +109,21 @@ CWideString CFrontEndManager::GenerateAboutMessage()
         const CTagArray& entries = bank->GetPGroupEntry(tag, true)->Entries;
         for (unsigned long i = 0; i < entries.size(); ++i) {
             message += bank->GetPTextEntry(entries[i], true)->GetText();
-            message += (const unsigned short*)L"\n";
+            message += (const unsigned short*)L"\n\n";
         }
     }
     CSystemRegistry registry(g_RegistryProductKey, 1);
     CWideString value = registry.GetString(g_RegistryAboutValue, (const unsigned short*)L"");
     if (value.GetLength()) {
         message += value;
-        message += (const unsigned short*)L"\n";
+        message += (const unsigned short*)L"\n\n";
     }
     tag = bank->FindIndexBySymbolCRC(CCharString("TEXT_GUI_MENU_ABOUT_MESSAGE_PART_2").GetCRC());
     if (tag > 0) {
         const CTagArray& entries = bank->GetPGroupEntry(tag, true)->Entries;
         for (unsigned long i = 0; i < entries.size(); ++i) {
             message += bank->GetPTextEntry(entries[i], true)->GetText();
-            message += (const unsigned short*)L"\n";
+            message += (const unsigned short*)L"\n\n";
         }
     }
     return message;

@@ -20,17 +20,17 @@ void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResour
         long kept = GFFloatToLongNear(scaled);
         long scratchBytes = (sizes.TextureKB - kept) << 10;
         ScratchPool.Reset(new CMemoryPool()); ScratchPool.m_pObject->Initialise(scratchBytes, false, false);
-        { CCharString name("ScratchPool"); ScratchPool.m_pObject->Name = name; }
+        { CCharString name("Mesh Data"); ScratchPool.m_pObject->Name = name; }
         StaticPool.Reset(new CMemoryPool());
-        { CCharString name("StaticPool"); StaticPool.m_pObject->Name = name; }
+        { CCharString name("Animations"); StaticPool.m_pObject->Name = name; }
         StaticPool.m_pObject->Initialise(sizes.StaticKB << 10, false, false);
         IndexPool.Reset(new CMemoryPool());
-        { CCharString name("IndexPool"); IndexPool.m_pObject->Name = name; }
+        { CCharString name("Cloth"); IndexPool.m_pObject->Name = name; }
         IndexPool.m_pObject->Initialise(sizes.IndexKB << 10, false, false);
         Budgets->TextureBudget.Set(sizes.TextureKB << 10); Budgets->VertexBudget.Set(sizes.VertexKB << 10); Budgets->StaticBudget.Set(sizes.StaticKB << 10); Budgets->DynamicBudget.Set(sizes.DynamicKB << 10);
     }
     GeneralPool.Reset(new CMemoryPool()); GeneralPool.m_pObject->Initialise(0x400000, true, false);
-    { CCharString name("GeneralPool"); GeneralPool.m_pObject->Name = name; }
+    { CCharString name("Loading Buffer"); GeneralPool.m_pObject->Name = name; }
     GeneralPool.m_pObject->GrowSize = 0x20000;
     GeneralAllocator.Reset(new CPoolAllocator());
     GeneralPool.m_pObject->Allocator = GeneralAllocator.m_pObject;
@@ -42,7 +42,7 @@ int main()
     m->AllocatePools(true, s);
     bool ok = g_initCount == 4 && g_init[0] == (1000 - 251) << 10 && g_init[1] == 4 << 10 && g_init[2] == 5 << 10 && g_init[3] == 0x400000   // 250.5 rounds to even 250? no: 1000*0.2505 = 250.5 -> 250 (ties to even)
            && g_budgetCount == 4 && g_budgets[1] == 2 << 10 && g_budgets[3] == 3 << 10 && m->GeneralPool.m_pObject->GrowSize == 0x20000 && m->GeneralPool.m_pObject->Allocator == m->GeneralAllocator.m_pObject
-           && std::strcmp((const char*)m->ScratchPool.m_pObject->Name.m_pData, "ScratchPool") == 0 && std::strcmp((const char*)m->GeneralPool.m_pObject->Name.m_pData, "GeneralPool") == 0;
+           && std::strcmp((const char*)m->ScratchPool.m_pObject->Name.m_pData, "Mesh Data") == 0 && std::strcmp((const char*)m->GeneralPool.m_pObject->Name.m_pData, "Loading Buffer") == 0;
     if (!ok) ok = g_initCount == 4 && g_init[0] == (1000 - 250) << 10 && g_budgetCount == 4;   // accept either tie direction of the single-precision product
     std::printf(ok ? "00b3b240_TEST PASS\n" : "00b3b240_TEST FAIL\n"); return ok ? 0 : 1;
 }

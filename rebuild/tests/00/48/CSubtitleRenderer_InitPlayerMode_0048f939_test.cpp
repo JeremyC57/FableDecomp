@@ -16,8 +16,8 @@ struct Renderer {
             if (std::strcmp(Button1, "") == 0) Fill(Button1, "TEXT_GUI_NEXT");
         } else if (DisplayFlags & 0x4) {
             player.AddMode(0x0F, false); PlayerModeAdded = 0x0F;
-            if (std::strcmp(Button1, "") == 0) Fill(Button1, "TEXT_GUI_CONFIRM");
-            if (std::strcmp(Button2, "") == 0) Fill(Button2, "TEXT_GUI_CANCEL");
+            if (std::strcmp(Button1, "") == 0) Fill(Button1, "TEXT_GUI_CANCEL");
+            if (std::strcmp(Button2, "") == 0) Fill(Button2, "TEXT_GUI_CONFIRM");
         }
     }
 };
@@ -26,7 +26,7 @@ int main()
     Player p; Renderer r = { "", "Keep", 0x4, 0x1A };
     r.InitPlayerMode(p);
     bool ok = p.Removed == 0x1A && p.NAdded == 1 && p.Added[0] == 0x0F && r.PlayerModeAdded == 0x0F
-              && std::strcmp(r.Button1, "TEXT_GUI_CONFIRM") == 0 && std::strcmp(r.Button2, "Keep") == 0;
+              && std::strcmp(r.Button1, "TEXT_GUI_CANCEL") == 0 && std::strcmp(r.Button2, "Keep") == 0;
     Renderer s = { "", "", 0x2 | 0x80, 0 };
     Player q; s.InitPlayerMode(q);                     // bit 7 wins, no button text
     ok = ok && q.Removed == -1 && q.Added[0] == 0x1A && std::strcmp(s.Button1, "") == 0;

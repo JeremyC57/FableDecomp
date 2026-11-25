@@ -3,7 +3,7 @@
 #define __forceinline inline
 #endif
 // NAnimationEvents::CManager::Save(const CWideString& fileName) -- when the event table is dirty, write it as text:
-//   BEGIN_ANIMATION_EVENTS, then per animation "BEGIN_EVENTS: <EAnimType name>" (names from meshdata.h), one
+//   BEGIN_ANIMATION_EVENTS, then per animation "BEGIN_EVENTS: <EAnimType2 symbol name>" (names from meshdata.h), one
 //   "<event name> <time> START|STOP" line per event (STOP when the packed word's top bit is set) and END_EVENTS, then
 //   END_ANIMATION_EVENTS; save the text to the file and clear the dirty flag
 // Leaf: ?Save@CManager@NAnimationEvents
@@ -118,14 +118,14 @@ void CManager::Save(const CWideString& fileName)
         CCharString text;
         CPersistContext context(text);
         {
-            CCharString line("BEGIN_ANIMATION_EVENTS\r\n");
+            CCharString line("BEGIN_ANIMATION_EVENTS\r\n\r\n");
             context.Transfer_009bab50(line);
         }
         CSymbolMap animTypes;
         animTypes.LoadFromHeaderFile(GetDataDirectory() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
-            const CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);
+            const CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType2", animID);
             context.Transfer_009bab50("BEGIN_EVENTS: " + info->EntryName + "\r\n");
             for (CEvent* e = it->Events.begin(); e != it->Events.end(); ++e) {
                 const CSymbolInfo* name = EventNames.FindFirstSymbolWithVal(e->Packed & 0x3fffffff);
@@ -180,7 +180,8 @@ static CSymbolInfo g_anim, g_evt;
 CSymbolMap::CSymbolMap() { memset(_body, 0, sizeof(_body)); }
 CSymbolMap::~CSymbolMap() {}
 void CSymbolMap::LoadFromHeaderFile(const CWideString&) { ++g_loaded; }
-const CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(const CCharString&, long value) const { static char buf[32]; sprintf(buf, "ANIM_%ld", value); g_anim.EntryName.PStringData = Dup(buf); return &g_anim; }
+static const char* g_animGroup = 0;
+const CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(const CCharString& group, long value) const { g_animGroup = (const char*)group.PStringData; static char buf[32]; sprintf(buf, "ANIM_%ld", value); g_anim.EntryName.PStringData = Dup(buf); return &g_anim; }
 const CSymbolInfo* CSymbolMap::FindFirstSymbolWithVal(long value) const { static char buf[32]; sprintf(buf, "EV_%ld", value); g_evt.EntryName.PStringData = Dup(buf); return &g_evt; }
 void NAnimationEvents::CManager::v00() {}
 int main()
@@ -194,8 +195,8 @@ int main()
     mgr.Dirty = false; mgr.Save(name);
     int ok = (g_saved == 0 && g_log[0] == 0);
     mgr.Dirty = true; mgr.Save(name);
-    const char* expect = "BEGIN_ANIMATION_EVENTS\r\nBEGIN_EVENTS: ANIM_3\r\nEV_5 1.500000 START\r\nEV_7 2.000000 STOP\r\nEND_EVENTS\r\n\r\nEND_ANIMATION_EVENTS\r\n";
-    ok = ok && strcmp(g_log, expect) == 0 && g_saved == 1 && g_closed == 1 && g_loaded == 1 && !mgr.Dirty;
+    const char* expect = "BEGIN_ANIMATION_EVENTS\r\n\r\nBEGIN_EVENTS: ANIM_3\r\nEV_5 1.500000 START\r\nEV_7 2.000000 STOP\r\nEND_EVENTS\r\n\r\nEND_ANIMATION_EVENTS\r\n";
+    ok = ok && strcmp(g_log, expect) == 0 && g_animGroup && strcmp(g_animGroup, "EAnimType2") == 0 && g_saved == 1 && g_closed == 1 && g_loaded == 1 && !mgr.Dirty;
     printf(ok ? "006f9be0_TEST PASS\n" : "006f9be0_TEST FAIL\n%s", g_log);
     return ok ? 0 : 1;
 }

@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CNOVI_Barrel::Main (0x00DB7E10): until the parent flag is set, the barrel waits for the hero
-// within range, shows the platform's game-info text once, waits for it to be clicked past and sets the flag; then it
+// within range, shows the platform's game-info text once (TEXT_QST_048_INSTRUCTION_BREAK_BARRELS, _PC on PC), waits for it to be clicked past and sets the flag; then it
 // idles frame by frame until the thread terminates.
 static int g_frames = 0, g_stopAt = 0, g_nearAt = 0, g_clickAt = 0, g_shown = 0;
 static bool g_xbox = false;
-static char g_text[16];
+static char g_text[64];
 struct CNOVI_Barrel {
     bool GameInfoShown;
     bool Term() { return g_frames >= g_stopAt; }
@@ -22,8 +22,8 @@ struct CNOVI_Barrel {
             if (Term()) return;
             if (Near()) {
                 if (Term()) return;
-                if (g_xbox) { if (Term()) return; Show("XBOX"); while (!Clicked()) { Frame(); if (Term()) return; } }
-                else        { if (Term()) return; Show("PC");   while (!Clicked()) { Frame(); if (Term()) return; } }
+                if (g_xbox) { if (Term()) return; Show("TEXT_QST_048_INSTRUCTION_BREAK_BARRELS"); while (!Clicked()) { Frame(); if (Term()) return; } }
+                else        { if (Term()) return; Show("TEXT_QST_048_INSTRUCTION_BREAK_BARRELS_PC"); while (!Clicked()) { Frame(); if (Term()) return; } }
                 if (Term()) return;
                 GameInfoShown = true;
             }
@@ -37,10 +37,10 @@ int main()
     CNOVI_Barrel b; b.GameInfoShown = false;
     g_stopAt = 20; g_nearAt = 4; g_clickAt = 7;
     b.Main();
-    bad |= !b.GameInfoShown || g_shown != 1 || std::strcmp(g_text, "PC") != 0 || g_frames != 20;
+    bad |= !b.GameInfoShown || g_shown != 1 || std::strcmp(g_text, "TEXT_QST_048_INSTRUCTION_BREAK_BARRELS_PC") != 0 || g_frames != 20;
     g_frames = 0; g_shown = 0; g_xbox = true; b.GameInfoShown = false; g_stopAt = 6;
     b.Main();
-    bad |= b.GameInfoShown || g_shown != 1 || std::strcmp(g_text, "XBOX") != 0 || g_frames != 6;
+    bad |= b.GameInfoShown || g_shown != 1 || std::strcmp(g_text, "TEXT_QST_048_INSTRUCTION_BREAK_BARRELS") != 0 || g_frames != 6;
     g_frames = 0; g_shown = 0; b.GameInfoShown = true; g_stopAt = 3;
     b.Main();
     bad |= g_shown != 0 || g_frames != 3;

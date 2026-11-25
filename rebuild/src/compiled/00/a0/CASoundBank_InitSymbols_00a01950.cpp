@@ -1,4 +1,4 @@
-// CASoundBank::InitSymbols(const CWideString&) -- build the symbol-file path (drive + directory + name + "."), show the "Sound Bank: Init Symbols" progress line, create the CRC symbol map and fill it: from the binary cache when enabled, else from the text file (optionally writing the binary cache back)
+// CASoundBank::InitSymbols(const CWideString&) -- build the symbol-file path (drive + directory + name + ".bin"), show the "Sound Bank: Init Symbols" progress line, create the CRC symbol map and fill it: from the binary cache when enabled, else from the text file (optionally writing the binary cache back)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A01950, length 332 bytes (`ret 4`).
 // Callees: CWideString() @ 0x0099AED0 (x3), CAFile::SplitPath @ 0x00997620 (static __fastcall: path in ecx, drive in edx, directory / name /
 //          extension on the stack), operator+(const CWideString&, const CWideString&) @ 0x0099BE70 (x2) and
@@ -7,7 +7,7 @@
 //          (__fastcall: text in ecx, flag in dl, the float and the second flag on the stack), operator new @ 0x00BFEA1A
 //          (0x24-byte CCRCSymbolMap), the CCRCSymbolMap ctor @ 0x00A38500 (manifest "CParticleUpdateParameters" is
 //          propagated), CCountedPointer<CCRCSymbolMap>::Reset(T*) @ 0x00A01AA0, CCRCSymbolMap::LoadBinary @ 0x00A38C20,
-//          LoadFromFile(const CWideString&, const CCharString&) @ 0x00A39010, SaveBinary @ 0x00A382E0; data: L"." @ 0x012649D4,
+//          LoadFromFile(const CWideString&, const CCharString&) @ 0x00A39010, SaveBinary @ 0x00A382E0; data: L".bin" @ 0x012649D4,
 //          "Sound Bank: Init Symbols" @ 0x0129C93C, "" @ 0x0122D70E, the two symbol-cache flags @ 0x013BC9F0 (load binary) and
 //          @ 0x0138DD3B (save binary).
 // Shape: three default-constructed CWideString locals (declared drive, directory, name: the first sits highest), the split
@@ -51,7 +51,7 @@ void CASoundBank::InitSymbols(const CWideString& path)
     CWideString directory;
     CWideString name;
     CAFile::SplitPath(path, &drive, &directory, &name, 0);
-    CWideString symbolPath = drive + directory + name + L".";
+    CWideString symbolPath = drive + directory + name + L".bin";
     DisplayProgress("Sound Bank: Init Symbols", false, -1.0f, false);
     PSymbolMap.Reset(new CCRCSymbolMap);
     if (g_bLoadBinarySoundSymbols) {

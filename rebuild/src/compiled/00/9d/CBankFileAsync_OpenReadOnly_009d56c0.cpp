@@ -47,7 +47,7 @@ bool CBankFileAsync::OpenReadOnly(const CCharString& bankHandle, unsigned long f
 {
     if (!CBankFile::OpenReadOnly(bankHandle, flags))
         return false;
-    NProgressDisplay::DisplayProgress("Opening bank", -1.0f, false, false);
+    NProgressDisplay::DisplayProgress("Open Bank File Async", -1.0f, false, false);
     if (RetailMode) {
         NBankFileManager::CContainedBank contained_bank;
         contained_bank.DataVersion = 0;

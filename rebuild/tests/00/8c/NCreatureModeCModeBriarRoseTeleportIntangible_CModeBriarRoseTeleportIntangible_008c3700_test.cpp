@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 static int g_b = 0, g_h = 0; struct Th { int id; };
 struct SD { const char* p; unsigned int n; };
 struct Str { SD* d; Str() : d(0) {} Str(const char* t, long = -1) { d = new SD; d->p = t; d->n = 0; while (t[d->n]) ++d->n; } ~Str() { delete d; }
@@ -11,11 +12,11 @@ struct Filter { virtual void v00() {} Str s; unsigned int h;
     Filter(const Str& nm) : s() { s = nm; h = Calc(0, nm.GetPString(), nm.GetLength()); } };
 struct B { virtual void v00() {} unsigned char body[8]; B(Th*) { ++g_b; } };
 struct IP { virtual void v00() {} void* item; IP() : item(0) {} void Set(void* p) { item = p; } };
-struct D : B { Filter m; unsigned int gap; IP target; virtual void v00() {} D(Th* t, Th* c) : B(t), m("TELEPORT") { target.Set(c); } };
+struct D : B { Filter m; unsigned int gap; IP target; virtual void v00() {} D(Th* t, Th* c) : B(t), m("INTANGIBLE") { target.Set(c); } };
 int main()
 {
     Th t, c; D d(&t, &c);
-    if (g_b != 1 || g_h != 1 || d.m.h != 56 || d.target.item != &c)
+    if (g_b != 1 || g_h != 1 || d.m.h != 10 * 7 || std::strcmp(d.m.s.GetPString(), "INTANGIBLE") != 0 || d.target.item != &c)
     { std::printf("008c3700_TEST FAIL\n"); return 1; }
     std::printf("008c3700_TEST PASS\n");
     return 0;

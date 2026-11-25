@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 static int g_b = 0, g_h = 0; struct Th { int id; };
 struct SD { const char* p; unsigned int n; };
 struct Str { SD* d; Str() : d(0) {} Str(const char* t, long = -1) { d = new SD; d->p = t; d->n = 0; while (t[d->n]) ++d->n; } ~Str() { delete d; }
@@ -11,11 +12,11 @@ struct Filter { virtual void v00() {} Str s; unsigned int h;
     Filter(const Str& nm) : s() { s = nm; h = Calc(0, nm.GetPString(), nm.GetLength()); } };
 struct B { virtual void v00() {} unsigned char body[8]; B(Th*) { ++g_b; } };
 struct IP { virtual void v00() {} void* item; IP() : item(0) {} void Set(void* p) { item = p; } };
-struct D : B { Filter m; bool pushed; virtual void v00() {} D(Th* t) : B(t), m("CHARGE"), pushed(false) {} };
+struct D : B { Filter m; bool pushed; virtual void v00() {} D(Th* t) : B(t), m("FORCE_PUSH"), pushed(false) {} };
 int main()
 {
     Th t; D d(&t);
-    if (g_b != 1 || g_h != 1 || d.m.h != 42 || !d.m.s.d || d.pushed)
+    if (g_b != 1 || g_h != 1 || d.m.h != 10 * 7 || std::strcmp(d.m.s.GetPString(), "FORCE_PUSH") != 0 || !d.m.s.d || d.pushed)
     { std::printf("00741730_TEST FAIL\n"); return 1; }
     std::printf("00741730_TEST PASS\n");
     return 0;

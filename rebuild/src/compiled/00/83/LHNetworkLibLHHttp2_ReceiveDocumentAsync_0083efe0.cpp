@@ -7,7 +7,7 @@
 //   CurrentDocumentChunk +0x10A4) and is the only caller of the push_back 0x00841A70.
 // Callees: LSocket::IsReadable(long) 0x008F8210 / Receive(std::vector<char>&) 0x008F99A0 (NrLastDataReceived +0x94),
 //   vector<char>::_M_fill_insert 0x004110D0 (the inline resize(0)) / resize(size_type) 0x00412880, operator new 0x00BFEA1A / new[] 0x00BFEB22 /
-//   delete 0x00BFE9BC / delete[] 0x00BFEB1C, vector<LHHttpDocumentParts*>::push_back 0x00841A70, _time 0x00BFED22, sscanf 0x00BFED1C ("%x"),
+//   delete 0x00BFE9BC / delete[] 0x00BFEB1C, vector<LHHttpDocumentParts*>::push_back 0x00841A70, _time 0x00BFED22, sscanf 0x00BFED1C ("%X"),
 //   LHHttp2::GetUntilCRLF 0x0083EEE0 / IsDataAvailable 0x0083EA50 / ResetDocumentRecv 0x0083EB90, free 0x00BFEA14.
 // Shape: one `switch (DocumentEncoding)` (`dec eax ; je` to the CHUNKED case, the plain body as default) and one `return returnstatus`
 //   exit (VC7.1 duplicates the epilogue and keeps returnstatus in its frame slot, `mov eax,[esp+18h]`); only the CRLF timeout and the
@@ -35,7 +35,7 @@ LH_HTTP_STATUS LHHttp2::ReceiveDocumentAsync()
             if (status == HTTP_STATUS_DOCUMENT_RECEIVED) {
                 unsigned long chunksize = 0;
                 InChunkMode = true;
-                sscanf(CurrentDocumentPart, "%x", &chunksize);
+                sscanf(CurrentDocumentPart, "%X", &chunksize);
                 if (chunksize > 0) {
                     chunksize += 2;
                     CurrentDocumentChunk = new LHHttpDocumentParts;

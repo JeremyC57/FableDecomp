@@ -72,18 +72,18 @@ void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResour
         ScratchPool.Reset(new CMemoryPool());
         ScratchPool.m_pObject->Initialise(scratchBytes, false, false);
         {
-            CCharString name("ScratchPool");
+            CCharString name("Mesh Data");
             ScratchPool.m_pObject->Name = name;
         }
         StaticPool.Reset(new CMemoryPool());
         {
-            CCharString name("StaticPool");
+            CCharString name("Animations");
             StaticPool.m_pObject->Name = name;
         }
         StaticPool.m_pObject->Initialise(sizes.StaticKB << 10, false, false);
         IndexPool.Reset(new CMemoryPool());
         {
-            CCharString name("IndexPool");
+            CCharString name("Cloth");
             IndexPool.m_pObject->Name = name;
         }
         IndexPool.m_pObject->Initialise(sizes.IndexKB << 10, false, false);
@@ -95,7 +95,7 @@ void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResour
     GeneralPool.Reset(new CMemoryPool());
     GeneralPool.m_pObject->Initialise(0x400000, true, false);
     {
-        CCharString name("GeneralPool");
+        CCharString name("Loading Buffer");
         GeneralPool.m_pObject->Name = name;
     }
     GeneralPool.m_pObject->GrowSize = 0x20000;

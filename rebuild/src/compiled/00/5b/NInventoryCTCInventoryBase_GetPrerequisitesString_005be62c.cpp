@@ -112,7 +112,7 @@ CWideString CTCInventoryBase::GetPrerequisitesString(CDefPointer<const CQuestCar
                 CTCHeroStats* stats;
                 if (ParentThing->GetInterface(&stats, 4) && stats) {
                     long renown = stats->RenownLevel;
-                    result += CWideString(L"(") + GFIntToWideString(renown) + CWideString(L")");
+                    result += CWideString(L"(") + GFIntToWideString(renown) + CWideString(L")\n\n");
                 }
             }
         }

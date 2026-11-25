@@ -1,7 +1,7 @@
 // NUISystem::CText::SetValue(unsigned long textId, const CWideString& value, bool spaceSeparated) -- set the displayed text from
 // a game-text bank entry, else from the given string. A non-zero textId is looked up in the main game's text bank (or, with no
 // game running, the new front end's): a plain text entry is copied into Value; a group entry's text ids are joined into Value,
-// separated by a space (spaceSeparated) or a newline. Then (in game) the game-action tags are substituted, the text is
+// separated by a blank line (L"\n\n", when spaceSeparated) or a newline. Then (in game) the game-action tags are substituted, the text is
 // word-wrapped to Window (Size.Y = line count) and Size.X takes the font's measured width.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054FBC0, 848 bytes, __fastcall virtual (vtable 0x01249CCC slot 143), `ret 0xc`.
 // Leaf: ?SetValue@CText@NUISystem@@UAEXKABVCWideString@@_N@Z
@@ -53,7 +53,7 @@ void CText::SetValue(unsigned long textId, const CWideString& value, bool spaceS
                 for (unsigned long i = 0; i < ids.size(); ++i) {
                     if (Value.GetLength()) {
                         if (spaceSeparated)
-                            Value += L" ";
+                            Value += L"\n\n";
                         else
                             Value += L"\n";
                     }
@@ -70,7 +70,7 @@ void CText::SetValue(unsigned long textId, const CWideString& value, bool spaceS
                 for (unsigned long i = 0; i < ids.size(); ++i) {
                     if (Value.GetLength()) {
                         if (spaceSeparated)
-                            Value += L" ";
+                            Value += L"\n\n";
                         else
                             Value += L"\n";
                     }

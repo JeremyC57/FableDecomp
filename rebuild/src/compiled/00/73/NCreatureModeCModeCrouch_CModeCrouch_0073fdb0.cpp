@@ -50,8 +50,8 @@ struct CModeCrouch : CModeBase {
 
 CModeCrouch::CModeCrouch(CThing* thing)
     : CModeBase(thing)
-    , m_animName("CROUCH")                 // literal @ 0x01258F14 (masked)
-    , m_filter("CROUCH_GROUP", "")         // literals @ 0x01267B28 / 0x0122D70E (masked)
+    , m_animName("ST_SNEAK")                 // literal @ 0x01258F14 (masked)
+    , m_filter("CROUCH", "")         // literals @ 0x01267B28 / 0x0122D70E (masked)
 {
 }
 

@@ -96,11 +96,11 @@ CEnginePrimitiveManagerParticleDecalGroup::CEnginePrimitiveManagerParticleDecalG
     PointLightShaderIndex[5] = 2;
     const CShaderResource* vertexResource = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)0);
     LandscapeDecalVertexShader[0] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT");
-    LandscapeDecalVertexShader[1] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_3POINTLIGHTS");
-    LandscapeDecalVertexShader[2] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_5POINTLIGHTS");
+    LandscapeDecalVertexShader[1] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT_3POINTLIGHTS");
+    LandscapeDecalVertexShader[2] = vertexResource->GetVertexShader("VSHADER_LANDSCAPE_DECAL_DIRLIGHT_5POINTLIGHTS");
     MeshDecalVertexShader[0] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_DIRLIGHT");
-    MeshDecalVertexShader[1] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_3POINTLIGHTS");
-    MeshDecalVertexShader[2] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_5POINTLIGHTS");
+    MeshDecalVertexShader[1] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_DIRLIGHT_3POINTLIGHTS");
+    MeshDecalVertexShader[2] = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_DIRLIGHT_5POINTLIGHTS");
     MeshDecalTwoPassStencilVertexShader = vertexResource->GetVertexShader("VSHADER_MESH_DECAL_STENCIL_TWO_PASS");
     MeshDecalStencilClearVertexShader = NEngineInternal::GPResourceManager->GetVShaderResource((EShaderBankNo)20)->GetVertexShader("VSHADER_OCCLUSION_BOX");
     LandscapeDecalPixelShader = NEngineInternal::GPResourceManager->GetPShaderResource()->GetPixelShader("PSHADER_DECAL");

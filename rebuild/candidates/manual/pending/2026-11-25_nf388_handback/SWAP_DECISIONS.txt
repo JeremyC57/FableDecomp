@@ -1,0 +1,18 @@
+Task 2: crossed literals or crossed members? (swapping the literals and crossing the members give identical bytes)
+
+0x0048F939 CSubtitleRenderer::InitPlayerMode -- members right, literals were crossed: swap the literals (row in q1).
+  Ego_r layout (ghidra_out/struct_layouts_egor.tsv, the subtitle text-info record): Button1Text +0x54, Button2Text +0x58,
+  DisplayFlags +0x6C, PlayerModeAdded +0x80. Retail addresses every member at PDB offset +0x10 (the STLport deque of
+  TextInfoQueue ahead of it): DisplayFlags tested at +0x7C, PlayerModeAdded written at +0x90 -- so Button1Text = +0x64 and
+  Button2Text = +0x68 in retail code.
+  Retail, flag 0x4 (two-button) branch: `lea ebx,[esi+0x64]` (Button1Text) is filled from push 0x012381E4 = L"TEXT_GUI_CANCEL";
+  `lea ebx,[esi+0x68]` (Button2Text) from push 0x012381C0 = L"TEXT_GUI_CONFIRM".
+  Retail, flag 0x2 (one-button) branch: +0x64 (Button1Text) gets L"TEXT_GUI_NEXT" (0x0123817C), which pins +0x64 = Button1.
+  So Button1Text <- TEXT_GUI_CANCEL, Button2Text <- TEXT_GUI_CONFIRM; the row's member names stay, its two literals swap.
+
+0x00DF2380 CSummonerAttacker::Main -- arguments were crossed: swap the literals (row in q1).
+  PDB: ?CreateCreatureNearby@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@M0_N@Z
+  = (const CCharString& def, const C3DVector& pos, float radius, const CCharString& scriptName, bool).
+  FSE manifest (refs/fse_api_manifest.json) names the same parameters: defName, position, radius, scriptName.
+  Retail pushes "CREATURE_MINION_WARDOG" as the first CCharString (def) and "SummonerMinion" as the fourth (script name);
+  the row had them the other way round. Both calls (minion1 / minion2) fixed.
