@@ -1,20 +1,51 @@
-// Behaviour test for CVtable_012bed7c::~CVtable_012bed7c (0x00C6CAC0): an empty derived destructor runs, then the base destructor; while the base
-// destructor runs the object is already of base type (the derived vtable store happens first, the base's own store follows).
+// Behaviour test (NF447, linked against the row object over engine/CSalRenderPanDelay*.h; replaces the HEAD self-contained mirror) of
+// CSalRenderPanDelay::~CSalRenderPanDelay 0x00C6CAC0: the base destructor runs once, after which the storage is freed through the
+// class operator delete; the SIMD classes' implicit destructors reach it too.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderPanDelaySSE2.h"
+#include "engine/CSalRenderPanDelayMMX.h"
 #include <cstdio>
-static int g_order[4]; static int g_n = 0; static int g_baseSawDerived = -1;
-struct Base {
-    virtual ~Base() { g_order[g_n++] = 2; g_baseSawDerived = Kind(); }
-    virtual int Kind() const { return 0; }
-};
-struct CVtable_012bed7c : Base {
-    virtual ~CVtable_012bed7c() { g_order[g_n++] = 1; }
-    virtual int Kind() const { return 1; }
-};
+#include <cstdlib>
+#include <cstring>
+#include <cmath>
+static int g_frees = 0, g_baseCtors = 0, g_baseDtors = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { void* p = std::malloc(n); std::memset(p, 0x5a, n); return p; }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; std::free(p); }
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { ++g_baseCtors; }
+CSalRender::~CSalRender() { ++g_baseDtors; }
+void CSalRender::ClearFilterHistory() { }
+// Retail layout (engine/CSalRenderPanDelay.h): the test reads protected / private members at their retail offsets.
+template <class T> static T& At(void* o, unsigned off) { return *reinterpret_cast<T*>(static_cast<char*>(o) + off); }
+static short*& Audio(void* o) { return At<short*>(o, 0x178); }
+static FilterPanDelay* Params(void* o, unsigned which) { return At<FilterPanDelay*>(o, which ? 0x1e0 : 0x1dc); }
+static int g_called = 0;
+static int g_updates = 0; static bool g_lastNew = false;
+CSalRenderPanDelay::CSalRenderPanDelay() { m_pAudio = reinterpret_cast<short*>((reinterpret_cast<unsigned long>(m_audioBuffer + 32) + 15) & ~15UL); std::memset(&m_paramsA, 0, sizeof(m_paramsA)); std::memset(&m_paramsB, 0, sizeof(m_paramsB)); m_pParamsCurrent = &m_paramsA; m_pParamsNew = &m_paramsB; for (int i = 0; i < 6; ++i) { m_fGainPan[i] = 0.0f; m_itd[i] = 0; } }
+void CSalRenderPanDelay::ClearFilterHistory() { g_called = 0xcad0; }
+void CSalRenderPanDelay::Process(const short*, int*(&)[4]) { g_called = 0xcc60; }
+void CSalRenderPanDelay::SetGain(float, const float*, bool) { g_called = 0xd120; }
+void CSalRenderPanDelay::SetPosition(float, float, float, float, const float*, bool, bool) { g_called = 0xd150; }
+void CSalRenderPanDelaySSE2::ClearFilterHistory() { g_called = 0xd560; }
+void CSalRenderPanDelaySSE2::Process(const short*, int*(&)[4]) { g_called = 0xd630; }
+void CSalRenderPanDelayMMX::ClearFilterHistory() { g_called = 0xf300; }
+void CSalRenderPanDelayMMX::Process(const short*, int*(&)[4]) { g_called = 0xf3e0; }
+void CSalRenderPanDelay::Params3DInit(FilterPanDelay*, float, unsigned) { g_called = 0xcef0; }
+void CSalRenderPanDelay::UpdateFilters(const bool bNew) { ++g_updates; g_lastNew = bNew; }
 int main()
 {
-    Base* p = new CVtable_012bed7c;
-    delete p;
-    if (g_n != 2 || g_order[0] != 1 || g_order[1] != 2 || g_baseSawDerived != 0) { std::printf("00c6cac0_TEST FAIL\n"); return 1; }
+    bool ok = true;
+    CSalRender* r = new CSalRenderPanDelay;
+    g_called = 0;
+    delete r;
+    ok = ok && g_baseDtors == 1 && g_frees == 1 && g_called == 0;   // the destructor runs no virtual of the class
+    r = new CSalRenderPanDelaySSE2; delete r;
+    r = new CSalRenderPanDelayMMX; delete r;
+    ok = ok && g_baseDtors == 3 && g_frees == 3;
+    if (!ok) { std::printf("00c6cac0_TEST FAIL\n"); return 1; }
     std::printf("00c6cac0_TEST PASS\n");
     return 0;
 }

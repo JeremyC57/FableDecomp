@@ -46971,10 +46971,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c54ea0	ApplyVolume	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c54f30	MixBlock	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c55030	Reset	CAudioSource	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted									
-00c55070	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00c55070	CSalRenderPanDelaySSE2	CSalRenderPanDelaySSE2	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c55090	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c550b0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
-00c550d0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00c550d0	CSalRenderPanDelayMMX	CSalRenderPanDelayMMX	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c550f0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c55110	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c55130	~CVtable_012b5868	CVtable_012b5868	__thiscall	void	1	CLandscapeBackgroundTreeNode *	1	yes	accepted									
@@ -47521,22 +47521,22 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6c000	SetLowPass	CSalIIRFilter	unknown	undefined	0		0	yes	accepted									
 00c6c0f0	Process	CSalIIRFilter	unknown	undefined	0		0	yes	accepted									
 00c6c530	Process	CSalIIRFilter	unknown	undefined	0		0	yes	accepted									
-00c6ca20	CVtable_012bed7c	CVtable_012bed7c	__thiscall	undefined	2	CEnvironmentSpellEffectInterface *,CEnvironment *	0	yes	accepted									
-00c6cac0	~CVtable_012bed7c	CVtable_012bed7c	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
-00c6cad0	ClearHistory	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
+00c6ca20	CSalRenderPanDelay	CSalRenderPanDelay	__thiscall	undefined	2	CEnvironmentSpellEffectInterface *,CEnvironment *	0	yes	accepted									
+00c6cac0	~CSalRenderPanDelay	CSalRenderPanDelay	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
+00c6cad0	ClearFilterHistory	CSalRenderPanDelay	unknown	undefined	0		0			discovered	gapscan							
 00c6caf0	MixDelayTapRampUp	_global	unknown	undefined	0		0	yes	accepted									
 00c6cb80	MixDelayTapRampDown	_global	unknown	undefined	0		0	yes	accepted									
 00c6cc10	MixDelayTap	_global	unknown	undefined	0		0	yes	accepted									
-00c6cc60	Process	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
-00c6cef0	ComputeTapGain	CVtable_012bed7c	unknown	undefined	0		0	yes	accepted									
-00c6cf40	Audio_SetFilterCoefficients	_global	unknown	undefined	0		0	yes	accepted									
-00c6d120	SetVolume	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
-00c6d150	Update	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
+00c6cc60	Process	CSalRenderPanDelay	unknown	undefined	0		0			discovered	gapscan							
+00c6cef0	Params3DInit	CSalRenderPanDelay	unknown	undefined	0		0	yes	accepted									
+00c6cf40	UpdateFilters	CSalRenderPanDelay	unknown	undefined	0		0	yes	accepted									
+00c6d120	SetGain	CSalRenderPanDelay	unknown	undefined	0		0			discovered	gapscan							
+00c6d150	SetPosition	CSalRenderPanDelay	unknown	undefined	0		0			discovered	gapscan							
 00c6d350	vfunc_0	CVtable_012bed7c	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6d350.cpp
 00c6d370	ScaleAccumulate16	_global	unknown	undefined	0		0	yes	accepted									
 00c6d410	MixSamplesRampSSE2	_global	unknown	undefined	0		0	yes	accepted									
-00c6d560	ClearHistory	CVtable_012b8a64	unknown	undefined	0		0			discovered	gapscan							
-00c6d630	Process	CVtable_012b8a64	unknown	undefined	0		0	yes	accepted									
+00c6d560	ClearFilterHistory	CSalRenderPanDelaySSE2	unknown	undefined	0		0			discovered	gapscan							
+00c6d630	Process	CSalRenderPanDelaySSE2	unknown	undefined	0		0	yes	accepted									
 00c6d9d0	CVtable_012bed90	CVtable_012bed90	__thiscall	undefined	1	CResourceBank *	0	yes	accepted									
 00c6da30	~CVtable_012bed90	CVtable_012bed90	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
 00c6da40	MixGainRampUp	_global	unknown	undefined	0		0	yes	accepted									
@@ -47570,8 +47570,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6eef0	Process	CVtable_012b8a8c	unknown	undefined	0		0			discovered	gapscan							
 00c6f0f0	ScaleAccumulate16MMX	_global	unknown	undefined	0		0	yes	accepted									
 00c6f1a0	CUnprovenMixKernel_00c6f1a0	_global	unknown	undefined	0		0	yes	accepted									
-00c6f300	ClearHistory	CVtable_012b8aa0	unknown	undefined	0		0			discovered	gapscan							
-00c6f3e0	CAudioMixer_ProcessChannels_64bit	_global	unknown	undefined	0		0	yes	accepted									
+00c6f300	ClearFilterHistory	CSalRenderPanDelayMMX	unknown	undefined	0		0			discovered	gapscan							
+00c6f3e0	Process	CSalRenderPanDelayMMX	unknown	undefined	0		0	yes	accepted									
 00c6f730	ScaleAccumulate16MMX_00c6f730	_global	unknown	undefined	0		0	yes	accepted									
 00c6f800	CUnprovenMixKernel_00c6f800	_global	unknown	undefined	0		0	yes	accepted									
 00c6f990	Process	CVtable_012b8ab4	unknown	undefined	0		0			discovered	gapscan							

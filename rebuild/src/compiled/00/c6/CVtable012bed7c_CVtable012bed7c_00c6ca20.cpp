@@ -1,53 +1,31 @@
-// CVtable_012bed7c::CVtable_012bed7c() -- constructor: the critical-section-owning base (0x00C6E6A0), own vtable, a 16-byte aligned pointer into an inline scratch buffer, two zeroed 0x30-byte records with pointers to them, two zeroed six-word arrays
-// Leaf: ??0CVtable_012bed7c
+// CSalRenderPanDelay::CSalRenderPanDelay() -- constructor of the GameCODA HRTF-delay panner: the CSalRender base (0x00C6E6A0), own vtable
+//   0x012BED7C, m_pAudio = the 16-byte aligned sample block inside m_audioBuffer (after 32 samples of history), both ParamsPanDelay sets
+//   cleared, m_pParamsCurrent / m_pParamsNew pointing at them, and the six per-channel pan gains and delays zeroed
+// Leaf: ??0CSalRenderPanDelay@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C6CA20, 150 bytes (+ int3 padding).
-// Label correction: the manifest's "CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface" is propagated and
-//   wrong -- that class (Ego_r.pdb) is 0x104 bytes with no vtable; this object stores vtable 0x012BED7C (not in
-//   rtti-vtables.tsv: a no-RTTI script/engine module) and reaches +0x210. Named by vtable like its landed sibling
-//   CVtable_012bed90 (0x00C6D9D0), which has the same base and the same two-record/two-pointer shape.
-// Callees: CVtable_012beda4::CVtable_012beda4 @ 0x00C6E6A0 (0x28 bytes: vptr, a critical-section owner at +4, a dword
-//   +0x20, a byte +0x24).
-// Shape: after the vtable store, in declaration order: the aligned pointer `(this + 0x68 + 15) & ~15` (`lea eax,[esi+77h] ;
-//   and eax,0FFFFFFF0h`) into the 0x110-byte buffer at +0x68; two 12-word records that clear themselves with an intrinsic
-//   memset (`rep stosd`, one shared zero register); the two record pointers; then a body loop clearing two six-word
-//   arrays, which VC7.1 unrolls into interleaved stores (+0x1e4/+0x1fc, +0x1e8/+0x200, ...).
-// NF444 binder: the base is the shared engine/CSalRender.h (GameCODA SDK class; was the local model CVtable_012beda4). This row keeps
-//   its own symbol; only the base constructor it calls is respelled (??0CVtable_012beda4@@QAE@XZ -> ??0CSalRender@@QAE@XZ, unit 0x00C6E630).
+// Name (NF441 NAME_FIXES, two sources): (1) GameCODA 2.10 SDK CODAApi.lib SalSw3DVoice.obj ?CreateRenderer@CSalSw3DVoice relocates
+//   ??0CSalRenderPanDelay@@QAE@XZ twice (SSE2 and MMX branches), at the two places where retail 0x00C55270 calls 0x00C6CA20; (2) the vtable
+//   0x012BED7C it stores: SetPosition 0x00C6D150 is 150 instructions like the SDK ?SetPosition@CSalRenderPanDelay, ClearFilterHistory
+//   0x00C6CAD0 is 23 bytes like the SDK's (NF441 CLASS_TABLE). Members: engine/CSalRenderPanDelay.h (SDK CodeView names, retail offsets).
+//   Was ??0CVtable_012bed7c@@QAE@XZ (self) and ??0CEnvironmentSpellEffectInterface@@QAE@XZ (a propagated Fable PDB label on the table).
+// Shape: after the vtable store, in member order: m_pAudio `(m_audioBuffer + 32 + 15) & ~15` bytes (`lea eax,[esi+77h] ; and eax,0FFFFFFF0h`);
+//   the two parameter sets cleared with one intrinsic memset each (`rep stosd`, one shared zero register); the two set pointers; then a
+//   body loop clearing the two six-entry arrays, which VC7.1 unrolls into interleaved stores (+0x1e4/+0x1fc, +0x1e8/+0x200, ...).
+// Flags: /Ob1 (R-NF444-1, the render TUs).
 #define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
 #define FABLE_RETAIL_CSALRENDER_MEMBERS
-#include "engine/CSalRender.h"   // CSalRender (vtable 0x012BEDA4, 0x28 bytes; constructor 0x00C6E6A0, destructor 0x00C6E630)
+#include "engine/CSalRenderPanDelay.h"   // CSalRenderPanDelay (vtable 0x012BED7C, 0x214 bytes) : CSalRender (constructor 0x00C6E6A0)
 #include <string.h>
 
-
-struct SRecord_00c6ca20 {                              // twelve words, cleared as a block
-    long m_words[12];
-    SRecord_00c6ca20() { memset(m_words, 0, sizeof(m_words)); }
-};
-
-struct CVtable_012bed7c : CSalRender {           // vtable 0x012BED7C
-    unsigned char     m_state[0x40];                   // +0x28 (not touched by the constructor)
-    unsigned char     m_buffer[0x110];                 // +0x68 scratch storage, used 16-byte aligned
-    unsigned char*    m_pAlignedBuffer;                // +0x178
-    SRecord_00c6ca20  m_first;                         // +0x17c
-    SRecord_00c6ca20  m_second;                        // +0x1ac
-    SRecord_00c6ca20* m_pCurrent;                      // +0x1dc
-    SRecord_00c6ca20* m_pPrevious;                     // +0x1e0
-    long              m_valuesA[6];                    // +0x1e4
-    long              m_valuesB[6];                    // +0x1fc
-    CVtable_012bed7c();
-    virtual ~CVtable_012bed7c();                      // 0x00C6CAC0 (slot 0 of the vtable is its scalar deleting destructor)
-    virtual void ClearFilterHistory();                // slot 1: own override (retail 0x012BED7C slot 1)
-    virtual void Process(const short*, int*(&)[4]);   // slots 2-4: own overrides in retail 0x012BED7C (SDK signatures;
-    virtual void SetGain(float, const float*, bool);  //   the landed method rows still carry their stand-in spellings)
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-};
-
-CVtable_012bed7c::CVtable_012bed7c()
-    : m_pAlignedBuffer(reinterpret_cast<unsigned char*>((reinterpret_cast<unsigned long>(m_buffer) + 15) & ~15UL)),
-      m_first(), m_second(), m_pCurrent(&m_first), m_pPrevious(&m_second)
+CSalRenderPanDelay::CSalRenderPanDelay()
 {
-    for (long i = 0; i < 6; ++i) {
-        m_valuesA[i] = 0;
-        m_valuesB[i] = 0;
+    m_pAudio = reinterpret_cast<short*>((reinterpret_cast<unsigned long>(m_audioBuffer + 32) + 15) & ~15UL);
+    memset(&m_paramsA, 0, sizeof(m_paramsA));
+    memset(&m_paramsB, 0, sizeof(m_paramsB));
+    m_pParamsCurrent = &m_paramsA;
+    m_pParamsNew = &m_paramsB;
+    for (int i = 0; i < 6; ++i) {
+        m_fGainPan[i] = 0.0f;
+        m_itd[i] = 0;
     }
 }

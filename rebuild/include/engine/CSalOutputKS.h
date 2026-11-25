@@ -10,6 +10,13 @@ extern "C" {
  __declspec(dllimport) void __stdcall DeleteCriticalSection(CRITICAL_SECTION*);
 }
 #endif
+#ifdef FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+// NF447 opt-in (the GameCODA render rows: 0x00C6CC60 / 0x00C6D150 / 0x00C6D630 / 0x00C6F3E0 ...): the Win32 imports of CSalMutex::Enter / Leave.
+extern "C" {
+ __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION*);   // IAT 0x0143FE0C
+ __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION*);   // IAT 0x0143FE10
+}
+#endif
 // All class and member names and access levels from original GameCODA SDK COFF.
 class CSalFile {
 public:
@@ -57,6 +64,12 @@ class CSalMutex {
 public:virtual ~CSalMutex();
 #ifdef FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
  CSalMutex(){InitializeCriticalSection(&m_critSection);}
+#endif
+#ifdef FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+ // NF447 opt-in: the SDK's inline CSalMutex::Enter / Leave (CODAApiDbg.lib CodeView: public void Enter(), void Leave()); retail expands them
+ // as `push <this+4> ; call [EnterCriticalSection]` (0x00C6CC6F..0x00C6CC7A in CSalRenderPanDelay::Process).
+ void Enter(){EnterCriticalSection(&m_critSection);}
+ void Leave(){LeaveCriticalSection(&m_critSection);}
 #endif
 #ifdef FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
 private:CRITICAL_SECTION m_critSection;

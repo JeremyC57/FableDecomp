@@ -12,11 +12,11 @@
 //   ?CreateProcessor@CAudioSource@@QAEPAVCVtable_012beda4@@K@Z (NF444 / NF445 closure).
 // Callees keep the spellings the table binds today (out of this batch): DetectCpu 0x00C52E40 (?Initialize@CSalCpuInfo) behind
 //   g_cpuDetected 0x0143BC78 / g_cpuHasSSE2 0x0143BC7D; CodaMalloc 0x00C3C360 (the CCodaObjectBase operator new); the constructors
-//   CVtable_012bede0 0x00C70B00 (CSalRenderHrtfSSE2), CVtable_012bedcc 0x00C70120 (CSalRenderHrtfMMX), CVtable_012bed7c 0x00C6CA20
-//   (CSalRenderPanDelay, base of the SSE2 / MMX four-tap panners, whose own constructors 0x00C55070 / 0x00C550D0 are expanded here: base
-//   call + vptr 0x012B8A64 / 0x012B8AA0), CVtable_012b8a78 0x00C55090, CVtable_012b8a8c 0x00C550B0, CVtable_012b8ab4 0x00C550F0,
-//   CVtable_012b8ac8 0x00C55110. These derived classes are local models over the shared engine/CSalRender.h base (no derived header yet);
-//   their overrides carry the SDK CSalRender signatures (retail vtables: PanDelay SIMD classes own slots 1-2, the others slot 2).
+//   CVtable_012bede0 0x00C70B00 (CSalRenderHrtfSSE2), CVtable_012bedcc 0x00C70120 (CSalRenderHrtfMMX), CVtable_012b8a78 0x00C55090,
+//   CVtable_012b8a8c 0x00C550B0, CVtable_012b8ab4 0x00C550F0, CVtable_012b8ac8 0x00C55110 (local models over the shared engine/CSalRender.h
+//   base, no derived header yet; their overrides carry the SDK CSalRender signatures), and CSalRenderPanDelay 0x00C6CA20, base of
+//   CSalRenderPanDelaySSE2 / CSalRenderPanDelayMMX (engine/CSalRenderPanDelaySSE2.h / MMX.h, NF447), whose inline constructors are expanded
+//   here (base call + vptr 0x012B8A64 / 0x012B8AA0; their out-of-line copies are 0x00C55070 / 0x00C550D0).
 // Sizes (the CodaMalloc arguments): 0xC6C, 0x214, 0x78, 0x38 (SSE2) and 0x66C, 0x214, 0x78, 0x38 (MMX / C).
 #define FABLE_RETAIL_PASS22_CSALSW_CALCPARAMS
 #define FABLE_RETAIL_PASS22_CCODA3D_CREATE
@@ -26,21 +26,13 @@
 #define FABLE_RETAIL_CSALRENDER_MEMBERS
 #include "engine/CSalSw3DVoice.h"
 #include "engine/CSalRender.h"
+#include "engine/CSalRenderPanDelaySSE2.h"   // NF447: CSalRenderPanDelaySSE2 (vtable 0x012B8A64) : CSalRenderPanDelay (0x00C6CA20)
+#include "engine/CSalRenderPanDelayMMX.h"    // NF447: CSalRenderPanDelayMMX (vtable 0x012B8AA0)
 
 extern bool g_cpuDetected;                                                  // 0x0143BC78
 extern bool g_cpuHasSSE2;                                                   // 0x0143BC7D
 void DetectCpu();                                                           // 0x00C52E40
 
-class CVtable_012bed7c : public CSalRender {                                // four-tap delay panner (PanDelay), 0x214 bytes
-public:
-    CVtable_012bed7c();                                                     // 0x00C6CA20
-    virtual ~CVtable_012bed7c();                                            // 0x00C6CAC0
-    virtual void ClearFilterHistory();
-    virtual void Process(const short*, int*(&)[4]);
-    virtual void SetGain(float, const float*, bool);
-    virtual void SetPosition(float, float, float, float, const float*, bool, bool);
-    unsigned char m_state[0x214 - 0x28];
-};
 class CVtable_012bed90 : public CSalRender {                                // volume panner (Pan), 0x78 bytes
 public:
     CVtable_012bed90();                                                     // 0x00C6D9D0
@@ -79,18 +71,6 @@ public:
     virtual void SetPosition(float, float, float, float, const float*, bool, bool);
     unsigned char m_state[0x66c - 0x28];
 };
-class CVtable_012b8a64 : public CVtable_012bed7c {                          // SSE2 four-tap panner (vtable 0x012B8A64)
-public:
-    CVtable_012b8a64() {}                                                   // 0x00C55070
-    virtual void ClearFilterHistory();
-    virtual void Process(const short*, int*(&)[4]);
-};
-class CVtable_012b8aa0 : public CVtable_012bed7c {                          // MMX four-tap panner (vtable 0x012B8AA0)
-public:
-    CVtable_012b8aa0() {}                                                   // 0x00C550D0
-    virtual void ClearFilterHistory();
-    virtual void Process(const short*, int*(&)[4]);
-};
 class CVtable_012b8a78 : public CVtable_012bed90 {                          // SSE2 volume panner (vtable 0x012B8A78)
 public:
     CVtable_012b8a78();                                                     // 0x00C55090
@@ -121,7 +101,7 @@ CSalRender* CSalSw3DVoice::CreateRenderer(CHRTFMODE mode)
         case C_HRTF_FULL:
             return new CVtable_012bede0;
         case C_HRTF_DELAY:
-            return new CVtable_012b8a64;
+            return new CSalRenderPanDelaySSE2;
         case C_HRTF_VOLPAN:
             return new CVtable_012b8a78;
         default:
@@ -132,7 +112,7 @@ CSalRender* CSalSw3DVoice::CreateRenderer(CHRTFMODE mode)
         case C_HRTF_FULL:
             return new CVtable_012bedcc;
         case C_HRTF_DELAY:
-            return new CVtable_012b8aa0;
+            return new CSalRenderPanDelayMMX;
         case C_HRTF_VOLPAN:
             return new CVtable_012b8ab4;
         default:

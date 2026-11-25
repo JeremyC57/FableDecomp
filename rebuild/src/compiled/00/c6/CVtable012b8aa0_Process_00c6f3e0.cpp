@@ -1,56 +1,29 @@
-// CVtable_012b8aa0::Process(const short* input, long* const* outputs) -- vtable slot 2 of the MMX multi-tap delay effect: copy the 128-sample block into the aligned history, then under the effect lock either cross-fade (ramp the old taps down, swap the tap sets, ramp the new ones up) or mix each tap at its constant gain, then keep the last 64 history bytes in front of the buffer
-// Leaf: ?Process@CVtable_012b8aa0@@UAEXPBFPBQAJ@Z
+// CSalRenderPanDelayMMX::Process(const short* pSrc, int*(&ppDst)[4]) -- vtable slot 2 of the GameCODA MMX HRTF-delay panner: copy the 128-sample block into the aligned history, then under the effect lock either cross-fade (ramp the old taps down, swap the tap sets, ramp the new ones up) or mix each tap at its constant gain, then keep the last 64 history bytes in front of the buffer
+// Leaf: ?Process@CSalRenderPanDelayMMX@@UAEXPBFAAY03PAH@Z
 // Flags: /GS
 // Retail-asm: 0x00C6F6A3 `movq mm0,[esi]` (0x00C6F69B..0x00C6F6DC `mov esi,[esp+14h] ; mov edi,[esp+18h] ; movq mm0,[esi] ; movq [edi],mm0 ; ... ; movq [edi+38h],mm7 ; emms`) -- the hand MMX copy of the last 64 history bytes
 //   (LIBPK_MMX_COPY64 of libpk/MixKernelsSIMD.h) and, in the static kernel CUnprovenMixKernel_00c6f1a0 0x00C6F1A0 (landed, same text), LIBPK_MMX_SCALE_ACCUMULATE16_RAMP; the row has no asm of its own.
-// Identity: slot 2 of vtable 0x012B8AA0 (the only reference: .rdata 0x012B8AA8; reloc_bindings ??_7CVtable_012b8aa0@@6B@), the MMX derivative of libpk's multi-tap delay effect; the landed
-//   SSE2 sibling 0x00C6D630 (CVtable_012b8a64::Process) names this address as "the MMX slot 2"; same body over the MMX kernels ScaleAccumulate16MMX 0x00C6F0F0 / CUnprovenMixKernel_00c6f1a0.
-// Name: descriptive (libpk: no PDB / RTTI): class after the bound vtable symbol, method after the family's landed slot-2 name. The catalog label "CAudioMixer_ProcessChannels_64bit" is a guess.
-//   Not vendor-library bytes in the toolchain_library sense: the module is compiled C++ (/GS cookie in its kernels) landed row by row (0x00C6D630, 0x00C6EEF0, 0x00C6F990, 0x00C6FE10).
-// Models: local classes as in every landed row of this module (libpk has no shared class headers for the effect family yet).
+// Identity: slot 2 of vtable 0x012B8AA0 (the only reference: .rdata 0x012B8AA8; reloc_bindings ??_7CSalRenderPanDelayMMX@@6B@), the MMX derivative of the GameCODA HRTF-delay panner (CSalRenderPanDelay); the landed
+//   SSE2 sibling 0x00C6D630 (CSalRenderPanDelaySSE2::Process) names this address as "the MMX slot 2"; same body over the MMX kernels ScaleAccumulate16MMX 0x00C6F0F0 / CUnprovenMixKernel_00c6f1a0.
+// Name (NF447, two sources): the GameCODA 2.10 SDK CodeView declares the virtual CSalRenderPanDelayMMX::Process(const short*, int*(&)[4]), slot 2
+//   of CSalRender (engine/CSalRender.h; class CLASS_TABLE tie through CSalSw3DVoice::CreateRenderer 0x00C55270, NF441), and retail pops 8
+//   argument bytes (`ret 8`) = that signature (NF445 sigcheck_19.tsv); the body is the base CSalRenderPanDelay::Process 0x00C6CC60 over the
+//   MMX kernels (outputs 0..3 only). Was ?Process@CVtable_012b8aa0@@UAEXPBFPBQAJ@Z (descriptive stand-in).
+// Models: engine/CSalRenderPanDelayMMX.h (NF447).
 // Retail: Fable.exe (TLC, VC7.1, /GS TU) @ 0x00C6F3E0, 834 bytes, thiscall `ret 8`.
 #include "libpk/MixKernelsSIMD.h"
 #include <string.h>
 #pragma intrinsic(memcpy)
-struct CRITICAL_SECTION { void* DebugInfo; long LockCount, RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE0C
-extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE10
-class CUnprovenLibraryObject_012B5868 { public: virtual ~CUnprovenLibraryObject_012B5868() {} };
-class CUnprovenLock_012B8FC8 { public: virtual ~CUnprovenLock_012B8FC8() {} CRITICAL_SECTION Section; };
-class CVtable_012beda4 : public CUnprovenLibraryObject_012B5868 {          // 0x28 bytes (ctor 0x00C6E6A0 landed)
-public:
-    virtual ~CVtable_012beda4() {}
-    virtual void Clear() {}
-    virtual void Process(const short*, long* const*) {}
-    virtual void SetVolume(float, unsigned long, bool) = 0;
-    virtual void Update(float, float, float, float, const float*, bool, bool) {}
-    CUnprovenLock_012B8FC8 Lock;                                            // +0x04 (its CRITICAL_SECTION at +0x08)
-    float m_volume;                                                         // +0x20
-    bool  m_crossfade;                                                      // +0x24
-};
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderPanDelayMMX.h"   // CSalRenderPanDelayMMX : CSalRenderPanDelay (m_pAudio +0x178, m_pParamsCurrent +0x1DC)
 struct CAudioMaster { unsigned char _pad[0x1bc]; unsigned long m_outputChannels; };
 extern CAudioMaster* g_pAudioMaster;                                        // 0x0143BC2C
-struct SDelayTap {                        // 8 bytes (landed MixDelayTapRampDown 0x00C6CB80 model)
+struct SDelayTap {                        // 8 bytes: the landed tap mixers' view of FilterPanDelay (itd, gain, gainDelta)
     long           m_delay;               // +0x00 samples back into the history
     unsigned short m_gain;                // +0x04 Q15 gain
     short          m_step;                // +0x06 Q15 gain step (ramps)
-};
-struct SRecord_00c6ca20 { SDelayTap m_taps[6]; };                          // the landed ctor's twelve-word tap set
-class CVtable_012bed7c : public CVtable_012beda4 {                         // vtable 0x012BED7C (ctor 0x00C6CA20 landed)
-public:
-    unsigned char     m_state[0x40];                                        // +0x28
-    unsigned char     m_buffer[0x110];                                      // +0x68
-    unsigned char*    m_pAlignedBuffer;                                     // +0x178
-    SRecord_00c6ca20  m_first;                                              // +0x17c
-    SRecord_00c6ca20  m_second;                                             // +0x1ac
-    SRecord_00c6ca20* m_pCurrent;                                           // +0x1dc
-    SRecord_00c6ca20* m_pPrevious;                                          // +0x1e0
-    float             m_gains[6];                                           // +0x1e4
-    long              m_delays[6];                                          // +0x1fc
-};
-class CVtable_012b8aa0 : public CVtable_012bed7c {                         // vtable 0x012B8AA0
-public:
-    virtual void Process(const short* input, long* const* outputs);         // slot 2
 };
 void __cdecl ScaleAccumulate16MMX(const short* src, unsigned long count, long* dst, short gain);   // 0x00C6F0F0
 static __declspec(noinline) void __cdecl CUnprovenMixKernel_00c6f1a0(const short* src,unsigned long count,long* dst,short initial,short step){
@@ -81,37 +54,41 @@ void MixDelayTapMMX(const short* source, unsigned long count, const SDelayTap* t
         ScaleAccumulate16MMX(source - tap->m_delay, count, accumulator, tap->m_gain);
 }
 
-void CVtable_012b8aa0::Process(const short* input, long* const* outputs)
+// The tap mixers take the SDelayTap view of a FilterPanDelay and a long accumulator; these views only rename the types.
+static inline const SDelayTap* TapOf(const FilterPanDelay& filter) { return reinterpret_cast<const SDelayTap*>(&filter); }
+static inline long* AccumulatorOf(int* pDst) { return reinterpret_cast<long*>(pDst); }
+
+void CSalRenderPanDelayMMX::Process(const short* pSrc, int*(&ppDst)[4])
 {
-    memcpy(m_pAlignedBuffer, input, 128 * sizeof(short));
-    EnterCriticalSection(&Lock.Section);
-    if (m_crossfade) {
-        m_crossfade = false;
-        MixDelayTapRampDownMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[0], outputs[0]);
-        MixDelayTapRampDownMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[1], outputs[1]);
+    memcpy(m_pAudio, pSrc, 128 * sizeof(short));
+    m_mutexUpdate.Enter();
+    if (m_bUpdate) {
+        m_bUpdate = false;
+        MixDelayTapRampDownMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[0]), AccumulatorOf(ppDst[0]));
+        MixDelayTapRampDownMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[1]), AccumulatorOf(ppDst[1]));
         if (g_pAudioMaster->m_outputChannels >= 4) {
-            MixDelayTapRampDownMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[2], outputs[2]);
-            MixDelayTapRampDownMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[3], outputs[3]);
+            MixDelayTapRampDownMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[2]), AccumulatorOf(ppDst[2]));
+            MixDelayTapRampDownMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[3]), AccumulatorOf(ppDst[3]));
         }
-        SRecord_00c6ca20* current = m_pCurrent;
-        m_pCurrent = m_pPrevious;
-        m_pPrevious = current;
-        MixDelayTapRampUpMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[0], outputs[0]);
-        MixDelayTapRampUpMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[1], outputs[1]);
+        ParamsPanDelay* pParams = m_pParamsCurrent;
+        m_pParamsCurrent = m_pParamsNew;
+        m_pParamsNew = pParams;
+        MixDelayTapRampUpMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[0]), AccumulatorOf(ppDst[0]));
+        MixDelayTapRampUpMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[1]), AccumulatorOf(ppDst[1]));
         if (g_pAudioMaster->m_outputChannels >= 4) {
-            MixDelayTapRampUpMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[2], outputs[2]);
-            MixDelayTapRampUpMMX((const short*)m_pAlignedBuffer, &m_pCurrent->m_taps[3], outputs[3]);
+            MixDelayTapRampUpMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[2]), AccumulatorOf(ppDst[2]));
+            MixDelayTapRampUpMMX(m_pAudio, TapOf(m_pParamsCurrent->pan[3]), AccumulatorOf(ppDst[3]));
         }
     } else {
-        MixDelayTapMMX((const short*)m_pAlignedBuffer, 16, &m_pCurrent->m_taps[0], outputs[0]);
-        MixDelayTapMMX((const short*)m_pAlignedBuffer, 16, &m_pCurrent->m_taps[1], outputs[1]);
+        MixDelayTapMMX(m_pAudio, 16, TapOf(m_pParamsCurrent->pan[0]), AccumulatorOf(ppDst[0]));
+        MixDelayTapMMX(m_pAudio, 16, TapOf(m_pParamsCurrent->pan[1]), AccumulatorOf(ppDst[1]));
         if (g_pAudioMaster->m_outputChannels >= 4) {
-            MixDelayTapMMX((const short*)m_pAlignedBuffer, 16, &m_pCurrent->m_taps[2], outputs[2]);
-            MixDelayTapMMX((const short*)m_pAlignedBuffer, 16, &m_pCurrent->m_taps[3], outputs[3]);
+            MixDelayTapMMX(m_pAudio, 16, TapOf(m_pParamsCurrent->pan[2]), AccumulatorOf(ppDst[2]));
+            MixDelayTapMMX(m_pAudio, 16, TapOf(m_pParamsCurrent->pan[3]), AccumulatorOf(ppDst[3]));
         }
     }
-    LeaveCriticalSection(&Lock.Section);
-    unsigned char* source = m_pAlignedBuffer + 0xc0;
-    unsigned char* history = m_pAlignedBuffer - 0x40;
+    m_mutexUpdate.Leave();
+    short* source = m_pAudio + 96;
+    short* history = m_pAudio - 32;
     LIBPK_MMX_COPY64(source, history);
 }

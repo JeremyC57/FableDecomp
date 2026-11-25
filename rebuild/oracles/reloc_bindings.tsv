@@ -6278,7 +6278,6 @@ __imp__GetProcAddress@8	0143fe44	00c4d740
 ??1CAIStateGroupRoot_00c54110@@QAE@XZ	00c6ac50	00c54110
 ??_7CScriptDefinitionManager_00c54110@@6B@	012b89c8	00c54110
 @FableSub_c54170@4	00c6a3d0	00c54170
-??0CEnvironmentSpellEffectInterface@@QAE@XZ	00c6ca20	00c55070
 ??0CBase_00c6e760@@QAE@XZ	00c6e760	00c550b0
 ??1CTreeNodeBase_00c55130@@QAE@XZ	00c3f490	00c55130
 ??_7CTreeNodeSlot_00c55130@@6B@	012b5868	00c55130
@@ -6390,7 +6389,7 @@ _FableResolve_00c62440@4	00c623f0	00c62440
 ??0CSoundStream00c6a650@@QAE@XZ	00c6a650	00c6afc0
 ??_7CVtable_012b9584@@6B@	012b9584	00c6afc0
 ??0CSalRender@@QAE@XZ	00c6e6a0	00c6ca20
-??_7CVtable_012bed7c@@6B@	012bed7c	00c6ca20
+??_7CSalRenderPanDelay@@6B@	012bed7c	00c6ca20
 ??_7CVtable_012bed90@@6B@	012bed90	00c6d9d0
 ??_7CBase_012b5868@@6B@	012b5868	00c6e630
 ??_7CSalRender@@6B@	012beda4	00c6e630
@@ -18893,7 +18892,7 @@ __setdefaultprecision	0040135c	00401067
 ??1CHandleOwner_00c62180@@QAE@XZ	00c62140	00c471c0
 ?ReleaseHandle@CHandleOwner_00c62180@@QAEXPAUSContext_00c62500@@@Z	00c62180	00c471c0
 ??_7CRegistryKey@@6B@	012befb0	00c739c0
-?RebuildGain@CVtable_012bed7c@@QAEX_N@Z	00c6cf40	00c6d120
+?UpdateFilters@CSalRenderPanDelay@@AAEX_N@Z	00c6cf40	00c6d120
 ?RebuildGain@CVtable_012bed90@@QAEX_N@Z	00c6dea0	00c6e020
 ?RebuildGain@CVtable_012bedb8@@QAEX_N@Z	00c6ebe0	00c6ec50
 ??0CQ_EndGameBossBattleScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00d2f6b0	00d34410
@@ -22906,7 +22905,7 @@ __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?Play@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z	00c62530	00c46f90
 ?IsAngry@CFloatPair_00c384e0@@QBE_NXZ	00c384e0	00c47300
 ?Clear@CNodePool@@QAEXXZ	00c3c930	00c4d1f0
-??0CVtable_012bed7c@@QAE@XZ	00c6ca20	00c55070
+??0CSalRenderPanDelay@@QAE@XZ	00c6ca20	00c55070
 ??0CVtable_012bedb8@@QAE@XZ	00c6e760	00c550b0
 ??0CUnprovenMixerVolumeControl_00c71420@@QAE@XZ	00c71420	00c55cd0
 ?PickDelay@CRandomDelay_00c2d100@@QAEJM@Z	00c2d100	00c61ca0
@@ -23767,11 +23766,11 @@ _drftb1@20	00c9b9f0	00c9bc30
 ??0CVtable_012b8ac8@@QAE@XZ	00c55110	00c55270
 ??0CVtable_012bedcc@@QAE@XZ	00c70120	00c55270
 ??0CVtable_012bede0@@QAE@XZ	00c70b00	00c55270
-??_7CVtable_012b8a64@@6B@	012b8a64	00c55270
-??_7CVtable_012b8aa0@@6B@	012b8aa0	00c55270
+??_7CSalRenderPanDelaySSE2@@6B@	012b8a64	00c55270
+??_7CSalRenderPanDelayMMX@@6B@	012b8aa0	00c55270
 ?ClearChannel@CAudioRingBuffer@@QAEXKK@Z	00c5cfd0	00c5b480
 ?Resample@CSoftwareVoice@@QAEXPAVCAudioRingBuffer@@0KK@Z	00c5b030	00c5b480
-?ComputeTapGain@CVtable_012bed7c@@QAEXPAUSDelayTap@@MJ@Z	00c6cef0	00c6cf40
+?Params3DInit@CSalRenderPanDelay@@AAEXPAUFilterPanDelay@@MI@Z	00c6cef0	00c6cf40
 ??0CInputProcessControlSpirit@@QAE@ABVCInputProcessGameBaseInit@@@Z	006a9140	00488d10
 ??0CJoystickPositionTracker@@QAE@XZ	00a0e0a0	00488d10
 ??_7CInputProcessBButtonExitMode@@6B@	01237928	00488d10

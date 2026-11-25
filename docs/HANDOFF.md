@@ -7,7 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 34,586 of 64,041 done (54.01%), from the tracker; 34,773 (54.30%) with the 187 registered best guesses. Landed today:
+- **Naming:** 34,587 of 64,041 done (54.01%), from the tracker; 34,774 (54.30%) with the 187 registered best guesses. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
@@ -24,7 +24,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - nf442 p1/b1/q2b/b2/b3/q2c/b4 (98 T1 list-A caller rows, +20 proven). STALE_TABLE (52 deletes) waits on a witness check; q442a (29 tplalt rows) is granted if an `/alternatename` dump shows the token is inert; q442b is port work (T3 nf442 family line). u4 landed as u4a (0x006D6570, REL=nf303,flatten1,flatten-local2) + u4b (0x00899C90, REL=nf324); 0x008E7040 stays behind nf293.
   - nf448: 50 verified stale table deletes (26 targets close); ta27 (27 /alternatename rows, q442a granted per row on the four checks; 0x00921630 / 0x008B74D0 held on check c); h1_hdr (CThingSearchTools.h PeekClassList opt-in + 48 callers); +17. **Recheck item:** five landed rows did not match when NF448 compiled them from the repo (0x0072A680, 0x00BE7D70, 0x00BE6F70, 0x00BE8920, 0x01214190; `pending/2026-11-25_nf448_handback/README.md`). **Agent cap: 2 (owner, 2026-11-25: "Decrease to 2 agents after next finishes"; NF448 was that agent and is not replaced).**
   - nf450 n1 (14 rows: 9 RESCOPE, 2 r449d header ports, 3 r449c FableWin-only destructors registered as best guesses). r450a / r450b declined (no added /DEFAULTLIB; no local model of NPlayerGui::CStatBase, which has a header) (`pending/2026-11-25_nf450_handback/`).
-  - **Running (cap 2):** NF447 (GameCODA slot-row unit, 16 locks), NF451 (regrade the five drifted rows first, then r450b / r450a the allowed way, then NF450's resume point).
+  - nf447 b1 (23 GameCODA rows: CSalRenderPanDelay family + SIMD ctors + 0x00C55270 re-port; 3 new headers; equiv clean outside the batch). The SIMD ctors leave the wrong `??0C3DAnimationUtil` (proven -> unverified, a correction). Disable / Pan / Hrtf families and slot-0 stand-ins queued in `pending/2026-11-25_nf447_handback/`.
+  - **Running (cap 2):** NF451 (drift regrade first, then r450b / r450a). Research agent (owner request, Fable model): faster naming options, report in $S/w22/research_naming_speed/REPORT.md.
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.

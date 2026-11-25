@@ -1,0 +1,13 @@
+address	retail_len	retail_insns	retail_ret	sdk_symbol	sdk_insns	sdk_ret
+00c6ca20	150	37	0	??0CSalRenderPanDelay@@QAE@XZ	45	0
+00c6cac0	11	2		??1CSalRenderPanDelay@@UAE@XZ	2	None
+00c6cad0	23	9	0	?ClearFilterHistory@CSalRenderPanDelay@@UAEXXZ	9	0
+00c6cc60	648	198	$0x8	?Process@CSalRenderPanDelay@@UAEXPBFAAY03PAH@Z	196	$0x8
+00c6cef0	66	19	$0xc	?Params3DInit@CSalRenderPanDelay@@AAEXPAUFilterPanDelay@@MI@Z	19	$0xc
+00c6cf40	472	126	$0x4,$0x4	?UpdateFilters@CSalRenderPanDelay@@AAEX_N@Z	126	$0x4
+00c6d120	36	12	$0xc	?SetGain@CSalRenderPanDelay@@UAEXMPBM_N@Z	12	$0xc
+00c6d150	511	150	$0x1c	?SetPosition@CSalRenderPanDelay@@UAEXMMMMPBM_N1@Z	150	$0x1c
+00c6d560	44	14	0	?ClearFilterHistory@CSalRenderPanDelaySSE2@@UAEXXZ	14	0
+00c6d630	808	266	$0x8	?Process@CSalRenderPanDelaySSE2@@UAEXPBFAAY03PAH@Z	245	$0x8
+00c6f300	58	19	0	?ClearFilterHistory@CSalRenderPanDelayMMX@@UAEXXZ	19	0
+00c6f3e0	834	275	$0x8	?Process@CSalRenderPanDelayMMX@@UAEXPBFAAY03PAH@Z	254	$0x8

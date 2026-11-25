@@ -1,97 +1,58 @@
-// Behaviour test for 0x00C6CEF0 (source body copied from src/00c6cef0.cpp; the retail inline-asm idioms are
-// spelled through RA_* macros: the same inline-asm under VC7.1, a round-half-to-even C fallback under g++).
-#include "fable_compiler.h"
-#if !defined(_MSC_VER) && !defined(FABLE_PORTABLE)
-#define FABLE_PORTABLE   // a non-MSVC build takes the helpers' plain C++ twins
-#endif
-#include "libpk/FtoL.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#ifdef _MSC_VER
-// the retail inline-asm idioms through the shared helper headers (2026-11-05 asm migration: no asm in a test)
-#define RA_FISTP(v, r) (r) = FtoL(v);
-#define RA_FISTP_PTR(v, p) *(p) = FtoL(v);
-#define RA_RDTSC0(c) (c) = GFGetCycleCount();
-#define RA_RDTSC(c) (c) = ReadTimeStampCounter();
-#else
-// g++ C fallback (test only): fistp in the default FPU mode rounds to nearest, ties to even
-#define __fastcall
-#define __cdecl
-#define __stdcall
-#define __fastcall
-#define __forceinline inline
-#define __declspec(x)
-#define __int64 long long
-static long ra_round(double v) { return (long)__builtin_nearbyint(v); }
-static unsigned long long ra_tsc = 1000000;
-#define RA_FISTP(v, r) (r) = ra_round(v);
-#define RA_FISTP_PTR(v, p) *(p) = ra_round(v);
-#define RA_RDTSC0(c) (c) = (ra_tsc += 123457);
-#define RA_RDTSC(c) (c) = (ra_tsc += 123457);
-#endif
-// ---- source body ----
-// CVtable_012bed7c::ComputeTapGain(SDelayTap* tap, float scale, long delay) -- fill a delay-tap record: the delay, the Q15 gain FloatToLong(scale * volume * 32767) capped (unsigned) at 0x7fff, and its 128-sample ramp step gain >> 7
-// Grade: RELOCATION_MATCH (1 grade) -- rasm1 retail_asm: C++ body + a minimal 2-instruction inline-asm (no control flow) + the Retail-asm evidence line
-// Leaf: ?ComputeTapGain@CVtable_012bed7c
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C6CEF0, 66 bytes (+ int3 padding), `ret 0Ch`.
-// Module: libpk's software mixer, the multi-tap delay effect of vtable 0x012BED7C (ctor 0x00C6CA20 landed; tap record as
-//   in the matched MixDelayTap 0x00C6CC10). Callers 0x00C6D018 / 0x00C6D037 / 0x00C6D0E7 / 0x00C6D106 fill the taps of the
-//   +0x1e0 set from the effect's per-tap scales and delays.
-// Retail-asm: 0x00C6CEFE `fstp [esp+0Ch] ; fld [esp+0Ch] ; fistp dword [esp]` -- libpk's inline-assembly rounding helper (the product homed in the dead `scale` slot, the result in the `push ecx` slot). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's inline asm.
-// libpk's inline-assembly float-to-long helper. Retail homes the value in a dead stack slot and rounds it with a bare
-// `fld [slot] ; fistp dword [tmp]` (round to nearest, the FPU default); VC7.1 expands the __forceinline helper in place.
-FABLE_FORCEINLINE long FloatToLong(float value)
-{
-    long result;
-    RA_FISTP(value, result)
-    return result;
-}
-struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-struct CVtable_012beda4 {                          // vtable 0x012BEDA4, 0x28 bytes (ctor 0x00C6E6A0, dtor 0x00C6E630 landed)
-    void*            _vtable;                      // +0x00
-    void*            _lockVtable;                  // +0x04 critical-section owner (vtable 0x012B8FC8)
-    SCriticalSection m_lock;                       // +0x08
-    float            m_volume;                     // +0x20 linear (the landed dtor model calls it `long m_count`)
-    bool             m_alternate;                  // +0x24
-};
-struct SDelayTap {
-    long           m_delay;                        // +0x00
-    unsigned short m_gain;                         // +0x04 Q15
-    short          m_step;                         // +0x06 Q15 per sample
-};
-struct CVtable_012bed7c : CVtable_012beda4 {
-    void ComputeTapGain(SDelayTap* tap, float scale, long delay);
-};
-void CVtable_012bed7c::ComputeTapGain(SDelayTap* tap, float scale, long delay)
-{
-    unsigned long gain = FloatToLong(scale * m_volume * 32767.0f);
-    if (gain > 0x7fff)
-        gain = 0x7fff;
-    tap->m_gain = (unsigned short)gain;
-    tap->m_delay = delay;
-    tap->m_step = (short)((unsigned short)gain >> 7);
-}
-
-// ---- harness ----
-
-#include <math.h>
-static int g_fail = 0;
-static void check(int ok, const char* what) { if (!ok) { printf("FAIL %s\n", what); g_fail = 1; } }
-// independent reference: round half to even (the x87 default mode a bare fistp uses)
-static long ref_rne(double v) { double f = floor(v); double d = v - f; long r = (long)f; if (d > 0.5 || (d == 0.5 && (r & 1))) ++r; return r; }
-static long ref_trunc(double v) { long r = ref_rne(v - 0.5); if (r < 0) ++r; return r; }
-static int near_(double a, double b, double eps) { return fabs(a - b) <= eps; }
-#define OBJ CVtable_012bed7c
-
-static long g_buf[0x40];
+// Behaviour test (NF447, linked against the row object over engine/CSalRenderPanDelay*.h; replaces the HEAD self-contained mirror) of
+// CSalRenderPanDelay::Params3DInit 0x00C6CEF0: delay as given, Q15 gain = round(fGainPan * m_fGain * 32767) capped at 0x7fff (negative
+// products wrap high and cap too), ramp step gain >> 7.
+#define FABLE_RETAIL_CSALPLATFORM_CREATE_MIXER_PASS23
+#define FABLE_RETAIL_CSALOUTPUTKS_INLINE_MEMBERS
+#define FABLE_RETAIL_CCODAOBJECTBASE_INLINE_DTOR
+#define FABLE_RETAIL_CSALRENDER_MEMBERS
+#define FABLE_RETAIL_CSALMUTEX_ENTER_LEAVE
+#include "engine/CSalRenderPanDelaySSE2.h"
+#include "engine/CSalRenderPanDelayMMX.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cmath>
+static int g_frees = 0, g_baseCtors = 0, g_baseDtors = 0;
+extern "C" void* __cdecl CodaMalloc(unsigned int n) { void* p = std::malloc(n); std::memset(p, 0x5a, n); return p; }
+extern "C" void __cdecl CodaFree(void* p) { ++g_frees; std::free(p); }
+CSalRender::CSalRender() : m_fGain(0.0f), m_bUpdate(false) { ++g_baseCtors; }
+CSalRender::~CSalRender() { ++g_baseDtors; }
+void CSalRender::ClearFilterHistory() { }
+// Retail layout (engine/CSalRenderPanDelay.h): the test reads protected / private members at their retail offsets.
+template <class T> static T& At(void* o, unsigned off) { return *reinterpret_cast<T*>(static_cast<char*>(o) + off); }
+static short*& Audio(void* o) { return At<short*>(o, 0x178); }
+static FilterPanDelay* Params(void* o, unsigned which) { return At<FilterPanDelay*>(o, which ? 0x1e0 : 0x1dc); }
+static int g_called = 0;
+static int g_updates = 0; static bool g_lastNew = false;
+struct CAudioMaster { unsigned char _pad[0x1bc]; unsigned long m_outputChannels; };
+static CAudioMaster g_master;
+CAudioMaster* g_pAudioMaster = &g_master;
+CSalRenderPanDelay::CSalRenderPanDelay() { m_pAudio = reinterpret_cast<short*>((reinterpret_cast<unsigned long>(m_audioBuffer + 32) + 15) & ~15UL); std::memset(&m_paramsA, 0, sizeof(m_paramsA)); std::memset(&m_paramsB, 0, sizeof(m_paramsB)); m_pParamsCurrent = &m_paramsA; m_pParamsNew = &m_paramsB; for (int i = 0; i < 6; ++i) { m_fGainPan[i] = 0.0f; m_itd[i] = 0; } }
+CSalRenderPanDelay::~CSalRenderPanDelay() { }
+void CSalRenderPanDelay::ClearFilterHistory() { g_called = 0xcad0; }
+void CSalRenderPanDelay::Process(const short*, int*(&)[4]) { g_called = 0xcc60; }
+void CSalRenderPanDelaySSE2::ClearFilterHistory() { g_called = 0xd560; }
+void CSalRenderPanDelaySSE2::Process(const short*, int*(&)[4]) { g_called = 0xd630; }
+void CSalRenderPanDelayMMX::ClearFilterHistory() { g_called = 0xf300; }
+void CSalRenderPanDelayMMX::Process(const short*, int*(&)[4]) { g_called = 0xf3e0; }
+void CSalRenderPanDelay::SetGain(float fGain, const float*, bool bNew) { m_fGain = fGain; UpdateFilters(bNew); }
+void CSalRenderPanDelay::SetPosition(float which, float fGainPan, float itd, float, const float*, bool bNew, bool)
+{ Params3DInit(&(bNew ? m_pParamsNew : m_pParamsCurrent)->pan[(int)which], fGainPan, (unsigned)itd); }
+static bool Filter(void* r, unsigned set, int i, unsigned itd, unsigned short gain, short delta)
+{ FilterPanDelay* f = Params(r, set) + i; return f->itd == itd && f->gain == gain && f->gainDelta == delta; }
 int main()
 {
-    OBJ* o = (OBJ*)g_buf;
-
-    SDelayTap t;
-    o->m_volume = 0.5f; o->ComputeTapGain(&t, 1.0f, 77);  check(t.m_gain == 16384 && t.m_step == 128 && t.m_delay == 77, "tap");
-    o->m_volume = 3.0f; o->ComputeTapGain(&t, 1.0f, -5);  check(t.m_gain == 0x7fff && t.m_step == 255 && t.m_delay == -5, "clamp");
-    if (!g_fail) printf("00c6cef0_TEST PASS\n");
-    return g_fail;
+    bool ok = true;
+    CSalRender* r = new CSalRenderPanDelay;
+    At<float>(r, 0x20) = 0.5f;
+    r->SetPosition(0, 1.0f, 10, 0, 0, false, false);  ok = ok && Filter(r, 0, 0, 10, 16384, 128);
+    r->SetPosition(1, 0.25f, 20, 0, 0, false, false); ok = ok && Filter(r, 0, 1, 20, 4096, 32);
+    r->SetPosition(2, 3.0f, 30, 0, 0, true, false);   ok = ok && Filter(r, 1, 2, 30, 0x7fff, 0xff);
+    r->SetPosition(3, 0.1f, 40, 0, 0, true, false);   ok = ok && Filter(r, 1, 3, 40, 1638, 12);
+    r->SetPosition(4, -1.0f, 50, 0, 0, false, false); ok = ok && Filter(r, 0, 4, 50, 0x7fff, 0xff);
+    ok = ok && Filter(r, 0, 5, 0, 0, 0) && Filter(r, 1, 0, 0, 0, 0) && g_called == 0;
+    delete r;
+    if (!ok) { std::printf("00c6cef0_TEST FAIL\n"); return 1; }
+    std::printf("00c6cef0_TEST PASS\n");
+    return 0;
 }

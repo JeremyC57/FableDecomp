@@ -1,0 +1,8 @@
+action	symbol	target	witness	note
+replace	??0CVtable_012bed7c@@QAE@XZ -> ??0CSalRenderPanDelay@@QAE@XZ	00c6ca20	00c55070	NF447: NF441 NAME_FIXES (SDK CreateRenderer relocates ??0CSalRenderPanDelay at both retail calls of 0x00C6CA20); self 0x00C6CA20 respelled in this batch
+delete	??0CEnvironmentSpellEffectInterface@@QAE@XZ	00c6ca20	00c55070	NF447: stale propagated Fable PDB label at a GameCODA address (NF441 NAME_FIXES wrong spelling); no landed object references it
+replace	??_7CVtable_012bed7c@@6B@ -> ??_7CSalRenderPanDelay@@6B@	012bed7c	00c6ca20	NF447: CSalRenderPanDelay vftable (constructor 0x00C6CA20 respelled in this batch)
+replace	??_7CVtable_012b8a64@@6B@ -> ??_7CSalRenderPanDelaySSE2@@6B@	012b8a64	00c55270	NF447: CSalRenderPanDelaySSE2 vftable (NF441 CLASS_TABLE; emitted by unit 0x00C55270)
+replace	??_7CVtable_012b8aa0@@6B@ -> ??_7CSalRenderPanDelayMMX@@6B@	012b8aa0	00c55270	NF447: CSalRenderPanDelayMMX vftable (NF441 CLASS_TABLE; emitted by unit 0x00C55270)
+replace	?RebuildGain@CVtable_012bed7c@@QAEX_N@Z -> ?UpdateFilters@CSalRenderPanDelay@@AAEX_N@Z	00c6cf40	00c6d120	NF447: SDK private CSalRenderPanDelay::UpdateFilters (Release SetGain / SetPosition relocate to it = retail 0x00C6D13C / 0x00C6D341); self 0x00C6CF40 respelled in this batch
+replace	?ComputeTapGain@CVtable_012bed7c@@QAEXPAUSDelayTap@@MJ@Z -> ?Params3DInit@CSalRenderPanDelay@@AAEXPAUFilterPanDelay@@MI@Z	00c6cef0	00c6cf40	NF447: SDK private CSalRenderPanDelay::Params3DInit (Release UpdateFilters relocates to it = retail 0x00C6CF40 calls); self 0x00C6CEF0 respelled in this batch
