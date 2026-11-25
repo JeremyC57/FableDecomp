@@ -170,14 +170,18 @@ public:
 };
 struct CAIStateGroup_TellStory : CAIStateGroupBase {
     CThing* GetCreature() const { return PBrain->PCreature; }
-    bool MoveAndFace(C3DVector pos, float radius, C3DVector facePos);   // 0x009425F0
-    bool StandAndTalk(float seconds);           // 0x00942C70
     void StandAndAct(float seconds);            // 0x00942920
     protected:
     virtual void Update();
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009425F0 ?MoveAndFace@CAIStateGroup_WorkAtSchool@@IAE_NVC3DVector@@M0@Z (was ?MoveAndFace@CAIStateGroup_TellStory@@QAE_NVC3DVector@@M0@Z)
+//   0x00942C70 ?StandAndTalk@CAIStateGroup_WorkAtSchool@@IAE_NM@Z (was ?StandAndTalk@CAIStateGroup_TellStory@@QAE_NM@Z)
+struct CAIStateGroup_TellStory;
+class CAIStateGroup_WorkAtSchool { public: protected: bool MoveAndFace(C3DVector, float, C3DVector); public: friend struct ::CAIStateGroup_TellStory; protected: bool StandAndTalk(float); public: friend struct ::CAIStateGroup_TellStory; };
 void CAIStateGroup_TellStory::Update()
 {
     long index;
@@ -222,9 +226,9 @@ void CAIStateGroup_TellStory::Update()
             facePos = start[Random(count)]->GetPos();
         else
             facePos = forward + markerPos;
-        MoveAndFace(markerPos, 0.0f, facePos);
+        reinterpret_cast<CAIStateGroup_WorkAtSchool*>(this)->MoveAndFace(markerPos, 0.0f, facePos);
         if (start != listeners._M_finish) {
-            StandAndTalk((float)(Random(3) + 2));
+            reinterpret_cast<CAIStateGroup_WorkAtSchool*>(this)->StandAndTalk((float)(Random(3) + 2));
             StandAndAct((float)Random(4) + 3.0f);
         }
     }

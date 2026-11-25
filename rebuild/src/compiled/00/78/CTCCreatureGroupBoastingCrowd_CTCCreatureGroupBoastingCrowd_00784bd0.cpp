@@ -32,7 +32,6 @@ class CWorld { public:
     COpinionReactionManager* OpinionReactionManager;    // +0x74
 };
 struct CTCBoastComponent {                              // the hero's interface-0x73 component
-    void RemoveBoast(CThing* hero);                     // 0x00783240
 };
 class CTCBase { public:
     virtual ~CTCBase();
@@ -63,6 +62,10 @@ class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:   // vta
     virtual ~CTCCreatureGroupBoastingCrowd();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00783240 ?OnKillCrowd@CTCBoastingCrowdControl@@QAEXAAVCThing@@@Z (was ?RemoveBoast@CTCBoastComponent@@QAEXPAVCThing@@@Z)
+class CTCBoastingCrowdControl { public: void OnKillCrowd(CThing&); };
 CTCCreatureGroupBoastingCrowd::~CTCCreatureGroupBoastingCrowd()
 {
     if (PHero.Get() && !PHero.Get()->IsDead()) {
@@ -75,7 +78,7 @@ CTCCreatureGroupBoastingCrowd::~CTCCreatureGroupBoastingCrowd()
         CThing* hero = PHero.Get();
         if (hero->HasTC(TCI_BOASTING_CROWD_CONTROL)) {
             CTCBoastComponent* boast = (CTCBoastComponent*)((CTCBoastComponent*)&hero->GetTC(TCI_BOASTING_CROWD_CONTROL));
-            boast->RemoveBoast(PHero.Get());
+            reinterpret_cast<CTCBoastingCrowdControl*>(boast)->OnKillCrowd(*(PHero.Get()));
         }
     }
 }

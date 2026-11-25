@@ -79,7 +79,6 @@ class CThing { public:
     }
 };
 struct CTC93 {                                        // interface 0x93
-    void SetDirection(CThing* towards, bool flag);    // 0x0079E580
 };
 // NF123 (2026-11-20, q6402): the creator 0x007FD4B0 is the static __fastcall CTCDPhysicalObstruction::Create (Ego_r.pdb 0x007F8750 + FableWin.pdb
 //   ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z; was the free CreateObstruction), declared by the shared header's CREATE opt-in.
@@ -137,13 +136,17 @@ class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public:
     void Initialise();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0079E580 ?AllowReactionsOnHitFromAttacker@CTCPhysicalShieldSpell@@QAEXPAVCThing@@_N@Z (was ?SetDirection@CTC93@@QAEXPAVCThing@@_N@Z)
+class CTCPhysicalShieldSpell { public: void AllowReactionsOnHitFromAttacker(CThing*, bool); };
 void CCreatureAction_ScorpionChargeInto::Initialise()
 {
     SetCombatAnimation("CHARGE_INTO");
     CCombatActionBase::Initialise();
     CTC93* direction;
     if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetInterface(&direction, 0x93))
-        direction->SetDirection(GetCreature(), true);
+        reinterpret_cast<CTCPhysicalShieldSpell*>(direction)->AllowReactionsOnHitFromAttacker(GetCreature(), true);
     CDefPointer<CAICreatureWillPowerIndicatorDef> def;
     GetCreature()->GetDef()->GetSubDef(&def);
     C3DVector offset = GetCreature()->GetPhysics()->GetFacing() * (def.Object->Radius + 0.2f);

@@ -187,7 +187,6 @@ struct CTCWeaponHolder {                               // interface 0x13 (descri
 };
 #pragma pack(pop)
 struct CTCExperienceCombo {                            // interface 0x68 (descriptive)
-    void ProcessMultiHitCombo(const CHitParameters& hit);   // 0x006D8830
 };
 
 class CTCMultiStrike {
@@ -209,6 +208,10 @@ public:
     void StartMultiHit(const CHitParameters& hit, CThing* target);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006D8830 ?AddSuccessfulMultistrikeHit@CTCHeroExperience@@QAEXABVCHitParameters@@@Z (was ?ProcessMultiHitCombo@CTCExperienceCombo@@QAEXABVCHitParameters@@@Z)
+class CTCHeroExperience { public: void AddSuccessfulMultistrikeHit(CHitParameters const&); };
 void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
 {
     PTarget = CIntelligentPointer<CThing>(target);
@@ -237,5 +240,5 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
     }
     CTCExperienceCombo* combo;
     if (ParentThing->GetInterface(&combo, 0x68))
-        combo->ProcessMultiHitCombo(hit);
+        reinterpret_cast<CTCHeroExperience*>(combo)->AddSuccessfulMultistrikeHit(hit);
 }

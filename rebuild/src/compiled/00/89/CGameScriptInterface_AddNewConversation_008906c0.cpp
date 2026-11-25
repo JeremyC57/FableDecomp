@@ -99,7 +99,6 @@ struct COpinionReactionManager_Retail {
     EOpinionAttitudeType GetOpinionAttitudeToPlayer(CThing_Retail* thing);   // 0x00701840
 };
 struct CScriptConversationManager_Retail {
-    long MakeNewConversation(CThing_Retail* thing, bool a, bool b);   // 0x006E61A0
     void AddPersonToConversation(long conversation, CThing_Retail* thing);   // 0x006E5800
 };
 class CWorld { public:
@@ -122,11 +121,16 @@ class CWorld { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006E61A0 ?MakeNewConversation@CScriptConversationManager@@QAEJAAVCThing@@_N1@Z (was ?MakeNewConversation@CScriptConversationManager_Retail@@QAEJPAUCThing_Retail@@_N1@Z)
+class CThing;
+class CScriptConversationManager { public: long MakeNewConversation(CThing&, bool, bool); };
 long CGameScriptInterface::AddNewConversation(const CScriptThing& thing, bool a, bool b) const
 {
     if (thing.IsAlive()) {
         CScriptConversationManager_Retail* conversations = World->PScriptConversationManager_ptr;
-        return conversations->MakeNewConversation(((CThing_Retail*)thing.GetPThing()), a, b);
+        return reinterpret_cast<CScriptConversationManager*>(conversations)->MakeNewConversation(*reinterpret_cast<CThing*>(((CThing_Retail*)thing.GetPThing())), a, b);
     }
     return 0;
 }

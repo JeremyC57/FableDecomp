@@ -22,7 +22,6 @@ class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 struct CExplosionDriver {
-    void AddExcludedThing(CThing* thing);   // 0x0080CBF0
 };
 class CThing { public:
     unsigned char     _pad0[0x20];
@@ -93,6 +92,10 @@ class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActio
     void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z (was ?AddExcludedThing@CExplosionDriver@@QAEXPAVCThing@@@Z)
+class CTCDExplosion { public: void SetThingAsImmune(CThing&); };
 void CCreatureAction_SummonerLightningOrbOutOfGroundSmash::PerformAction()
 {
     CTCCreatureModeManager* modeManager;
@@ -106,5 +109,5 @@ void CCreatureAction_SummonerLightningOrbOutOfGroundSmash::PerformAction()
     CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPos());
     CExplosionDriver* driver;
     explosion->GetTCDriver(&driver);
-    driver->AddExcludedThing(PCreature.GetPItem());
+    reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(PCreature.GetPItem()));
 }

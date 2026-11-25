@@ -1,0 +1,7 @@
+action	symbol	target	witness	note
+delete	?Copy@CGameEventData@@QAEXJPBX@Z	009f1760	005eadc0	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 40 candidate row(s) naming the identifier and calling the target)
+delete	?PutCount@OpinionStream@@QAEXI@Z	00993eb0	0047931e	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?Serialise@Serialiser@@QAEXH@Z	00993eb0	0046c2d2	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 2 candidate row(s) naming the identifier and calling the target)
+delete	?Serialise@Serialiser@@QAEXM@Z	00993ee0	0046c2d2	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?SetLifetime@CTCDriverBase@@QAEXM@Z	007fd3d0	008f5490	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 0 candidate row(s) naming the identifier and calling the target)
+delete	?SetValue@CTCDriverED@@QAEXM@Z	007fd3d0	008f5060	NF443: no landed row outside this batch binds the stand-in at this target after the respell (compiled HEAD census of 1 candidate row(s) naming the identifier and calling the target)

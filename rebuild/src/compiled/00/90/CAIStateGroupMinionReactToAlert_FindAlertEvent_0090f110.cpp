@@ -144,7 +144,6 @@ class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CAlertFilter& filter);   // 0x00746260
 };
 
-bool __fastcall GFAreThingsAllies(CThing* a, CThing* b);    // 0x0076D4F0
 struct CThingUpcast : CThing { };
 
 // The typed read of an intelligent pointer as retail inlines it in this module: a null test, the item bound to
@@ -162,6 +161,10 @@ private:
     const CMessageEvent* FindAlertEvent();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0076D4F0 ?AreThingsAllies@CTCEnemy@@SI_NABVCThing@@0@Z (was ?GFAreThingsAllies@@YI_NPAVCThing@@0@Z)
+class CTCEnemy { public: static bool __fastcall AreThingsAllies(CThing const&, CThing const&); };
 const CMessageEvent* CAIStateGroup_MinionReactToAlert::FindAlertEvent()
 {
     CMessageEvent* event = PeekWorld().GetPMessageManager()->FindMostRecentMessage(
@@ -171,7 +174,7 @@ const CMessageEvent* CAIStateGroup_MinionReactToAlert::FindAlertEvent()
         if (event->POriginator.GetPItem() != 0 && IsThingOfType<CThing>(event->POriginator.GetPItem()))
             originator = event->POriginator.GetPItem();
         if (originator != 0 && !originator->IsDead()) {
-            if (GFAreThingsAllies(originator, PBrain->PCreature))
+            if (CTCEnemy::AreThingsAllies(*(originator), *(PBrain->PCreature)))
                 return event;
         }
     }

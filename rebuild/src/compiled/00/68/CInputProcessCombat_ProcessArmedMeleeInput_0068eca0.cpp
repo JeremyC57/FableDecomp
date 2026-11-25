@@ -23,8 +23,10 @@ class CInputEvent;
 #define FABLE_RETAIL_CTHING_GETTC_EXPANDED
 #include "engine/CThing.h"
 struct CMemoryBuffer {
-    void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009F1760 ?AddData@CGameEvent@@QAEXJPBX@Z (was ?Copy@CMemoryBuffer@@QAEXKPBX@Z)
 class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -33,10 +35,10 @@ class CGameEvent : public CMemoryBuffer { public:
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
-    void AddUWORD(long value) { Copy(2, &value); }
-    void AddFloat(float value) { Copy(sizeof(value), &value); }
-    void AddBool(bool value) { Copy(1, &value); }
-};
+    void AddUWORD(long value) { reinterpret_cast<CGameEvent*>(this)->AddData(2, &value); }
+    void AddFloat(float value) { reinterpret_cast<CGameEvent*>(this)->AddData(sizeof(value), &value); }
+    void AddBool(bool value) { reinterpret_cast<CGameEvent*>(this)->AddData(1, &value); }
+ public: void AddData(long, void const*); };
 class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340

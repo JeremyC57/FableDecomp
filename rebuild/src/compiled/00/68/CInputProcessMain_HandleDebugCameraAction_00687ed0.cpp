@@ -20,13 +20,15 @@
 class CProcessedInput { public:
     void SetPriority(long priority);               // 0x00A0D330
 };
-void __fastcall AddManualCameraEvent_0B(bool on, CProcessedInput& input);   // 0x00687E10
 void __fastcall AddManualCameraEvent_0C(bool on, CProcessedInput& input);   // 0x00687E70
 
 class CPlayer : public CPlayerDonor {
  public:
     EPlayerMode GetCurrentMode() const;   /* ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ */                         // 0x00633BE0
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00687E10 ?AddManualCameraEvent@CInputProcessMain@@CIXEAAVCProcessedInput@@@Z (was ?AddManualCameraEvent_0B@@YIX_NAAVCProcessedInput@@@Z)
 class CInputProcessMain { public:
     virtual void v00();
     void*    PPlayerInterface;                     // +0x04 (CAInputProcess)
@@ -36,13 +38,13 @@ class CInputProcessMain { public:
     private:
     void HandleDebugCameraAction(CProcessedInput& input);
     public:
-};
+ private: static void __fastcall AddManualCameraEvent(unsigned char, CProcessedInput&); public:  };
 
 void CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input)
 {
     switch (MyPlayer->GetCurrentMode()) {
     case 19:
-        AddManualCameraEvent_0B(false, input);
+        CInputProcessMain::AddManualCameraEvent(false, input);
         input.SetPriority(5);
         break;
     case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 23:
@@ -52,13 +54,13 @@ void CInputProcessMain::HandleDebugCameraAction(CProcessedInput& input)
             AddManualCameraEvent_0C(false, input);
             input.SetPriority(5);
         } else {
-            AddManualCameraEvent_0B(true, input);
+            CInputProcessMain::AddManualCameraEvent(true, input);
             AddManualCameraEvent_0C(true, input);
             input.SetPriority(5);
         }
         break;
     default:
-        AddManualCameraEvent_0B(true, input);
+        CInputProcessMain::AddManualCameraEvent(true, input);
         AddManualCameraEvent_0C(true, input);
         input.SetPriority(5);
         break;

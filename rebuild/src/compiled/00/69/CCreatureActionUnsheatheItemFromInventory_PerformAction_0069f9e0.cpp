@@ -94,7 +94,6 @@ class CTCCarrying { public:
 public:
     bool IsPrimarySlotFree() const;   // 0x006A1270
 };
-void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 struct CTC1A {
 };
 class CTCInventoryWeapons { public:
@@ -124,6 +123,10 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnNotCarried@CTC1A@@QAEXXZ)
 class CTCInventoryItem { public: void ReturnToInventory(); };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00845CE0 ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z (was ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z)
+class CCreatureAction_DropWeapon { public: static void __fastcall DropWeapon(CThing&, CTCCarrying&, CThing&); };
 void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
 {
     CTCCarrying* carrying = 0;
@@ -135,7 +138,7 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
     if (!carrying->IsPrimarySlotFree()) {
         CThing* held = carrying->GetThingInPrimarySlot();
         if (held->HasTC(0x48))
-            DropWeapon(held, carrying, GetCreature());
+            CCreatureAction_DropWeapon::DropWeapon(*(held), *(carrying), *(GetCreature()));
         else
             carrying->RemoveThing(*held);
         if (held->HasTC(0x1a)) {

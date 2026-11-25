@@ -64,9 +64,7 @@ class CAnimateThing { public:
     unsigned char  _pad04[0x18];
     CAnimFrameInfo Frame;                           // +0x1C
     CAnimFrameInfo GetFrame() const { return Frame; }
-    void SetInternalAlpha(long layer, float alpha, bool immediate);  // 0x0070C280
     void SetMainAnim(const CAnimInit& init, long blendTime, long delay);   // 0x0070D580 (NF313: the PDB parameter type, both PDBs)
-    void AddBlendAnim(long anim, float alpha);                       // 0x0070D2F0
 };
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 class CModeStandBase {
@@ -94,6 +92,11 @@ public:
                            const CMovementSetup& to) const;
     public:
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0070D2F0 ?AddAnim@CAnimSet@@QAEXFM@Z (was ?AddBlendAnim@CAnimateThing@@QAEXJM@Z)
+//   0x0070C280 ?SetInternalAlpha@CAnimSet@@QAEXJM_N@Z (was ?SetInternalAlpha@CAnimateThing@@QAEXJM_N@Z)
+class CAnimSet { public: void AddAnim(short, float); void SetInternalAlpha(long, float, bool); };
 void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStatus status, float speed,
                                        const CMovementSetup& from, const CMovementSetup& to) const
 {
@@ -108,8 +111,8 @@ void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStat
             alpha = 1.0f;
     }
     if (status == STATUS_SAME && !ForceAddNewAnims) {
-        animate.SetInternalAlpha(0, 1.0f - alpha, false);
-        animate.SetInternalAlpha(status, alpha, false);
+        reinterpret_cast<CAnimSet*>(&(animate))->SetInternalAlpha(0, 1.0f - alpha, false);
+        reinterpret_cast<CAnimSet*>(&(animate))->SetInternalAlpha(status, alpha, false);
         return;
     }
     CAnimInit init(to.Type, 0, from.GetBankIndex(), 2, true, from.GetAnimFlags(), 100);
@@ -119,6 +122,6 @@ void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStat
         animate.State = 4;
     }
     animate.SetMainAnim(init, blendTime, delay);
-    animate.SetInternalAlpha(0, 1.0f - alpha, false);
-    animate.AddBlendAnim(to.GetBankIndex(), alpha);
+    reinterpret_cast<CAnimSet*>(&(animate))->SetInternalAlpha(0, 1.0f - alpha, false);
+    reinterpret_cast<CAnimSet*>(&(animate))->AddAnim(to.GetBankIndex(), alpha);
 }

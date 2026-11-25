@@ -53,7 +53,6 @@ FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long ki
 struct CTCFlammable_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
     void SetOnFire();                              // 0x00780410 (labelled "CMusicManager::ResetMusicEntriesOffsets", propagated)
     void ExtinguishFire();                         // 0x00780C80
-    bool IsOnFire();                               // 0x00780400
 };
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -80,13 +79,17 @@ class CGameScriptInterface { public:
     bool IsThingOnFire(const CScriptThing& thing) const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00780400 ?IsOnFire@CTCFlammable@@QBE_NXZ (was ?IsOnFire@CTCFlammable_Retail@@QAE_NXZ)
+class CTCFlammable { public: bool IsOnFire() const; };
 bool CGameScriptInterface::IsThingOnFire(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->HasTC(0x6d)) {
             CTCFlammable_Retail* tc = (CTCFlammable_Retail*)GetTCConst(t, 0x6d);
-            return tc->IsOnFire();
+            return reinterpret_cast<const CTCFlammable*>(tc)->IsOnFire();
         }
     }
     return false;

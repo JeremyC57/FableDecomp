@@ -11,15 +11,18 @@
 // follow the base constructor's manifest prototype. One of 62 bodies of this shape.
 class CThingCreatureBase;
 
+// Naming (NF443, 2026-11-25): callee-only respell of the base constructor 0x008B0AB0 to its PDB spelling
+//   ??0CCombatSequenceBase@@QAE@AAVCThingCreatureBase@@0@Z (was ??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z):
+//   the parameters are references in both PDBs; the pointer arguments are dereferenced (same pushes).
 class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _body[0x28 - 4];    // sizeof(CCombatSequenceBase) = sizeof(CCombatSequenceWhisperAdvance) = 0x28
-    CCombatSequenceBase(CThingCreatureBase* first, CThingCreatureBase* second);   // 0x008B0AB0
+    CCombatSequenceBase(CThingCreatureBase& first, CThingCreatureBase& second);   // 0x008B0AB0
 };
 
 struct CCombatSequenceWhisperAdvance : CCombatSequenceBase {
     virtual void v00();
-    CCombatSequenceWhisperAdvance(CThingCreatureBase* first, CThingCreatureBase* second) : CCombatSequenceBase(first, second) { }
+    CCombatSequenceWhisperAdvance(CThingCreatureBase* first, CThingCreatureBase* second) : CCombatSequenceBase(*first, *second) { }
 };
 
 CCombatSequenceWhisperAdvance* __fastcall Alloc_CCombatSequenceWhisperAdvance(CThingCreatureBase* first, CThingCreatureBase* second)

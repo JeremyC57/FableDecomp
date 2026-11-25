@@ -1,0 +1,6 @@
+action	symbol	target	witness	note
+rewitness	?Copy@CMemoryBuffer@@QAEXKPBX@Z	009f1760	00438310	NF443: the witness 005bc527 moved to the PDB spelling in batch a1; 3 landed row(s) still bind the stand-in here (compiled HEAD census: 00438310 00689df0 00773b20)
+rewitness	?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z	0080cbf0	008c6b20	NF443: the witness 008f5060 moved to the PDB spelling in batch a1; 1 landed row(s) still bind the stand-in here (compiled HEAD census: 008c6b20)
+rewitness	?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ	00692910	008c8180	NF443: the witness 00846100 moved to the PDB spelling in batch a2; 1 landed row(s) still bind the stand-in here (compiled HEAD census: 008c8180)
+rewitness	?CreateEntry@CMeshDataBank@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z	009d58d0	00a24a80	NF443: the witness 00a256f0 moved to the PDB spelling in batch a5; 1 landed row(s) still bind the stand-in here (compiled HEAD census: 00a24a80)
+rewitness	?IsCreatureValidFollower@CTCFollowed@@QAE_NPAVCThing@@PA_N@Z	006d4e60	006aeea0	NF443: the witness 009212c0 moved to the PDB spelling in batch a5; 1 landed row(s) still bind the stand-in here (compiled HEAD census: 006aeea0)

@@ -182,19 +182,23 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692910 ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ (was ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
+struct CCreatureAction_WearGameObject;
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;                       // +0x08
     CThing* GetCreature() const { return PCreature.GetPItem(); }
-    CDefinitionManager* GetPDefinitionManager() const;       // 0x00692910
 protected:
     // NF155 (q4745 follow-up): Ego_r.pdb 0x00519290 + FableWin.pdb 0x01DB6430 ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ (protected,
     // returns a reference; out of line at 0x00692930, the self row re-ported in the same hand-back).
     CPlayer& GetPlayer();                                    // 0x00692930
     CWorld& GetWorld();                                      // 0x00692940 (Ego_r / FableWin protected IAE; NF164 q5102)
 public:
-};
+ protected: CGameDefinitionManager const& PeekDefinitionManager() const; public: friend struct ::CCreatureAction_WearGameObject; };
 struct CCreatureAction_WearGameObject : CCreatureActionBase {
     virtual void PerformAction();
 };
@@ -211,7 +215,7 @@ void CCreatureAction_WearGameObject::PerformAction()
     if (item == 0 || item->DefIndex == 0)
         return;
     CDefPointer<const CThingObjectDef> def;
-    GetPDefinitionManager()->GetDef(item->DefIndex, &def);
+    ((CDefinitionManager*)(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekDefinitionManager()))->GetDef(item->DefIndex, &def);
     CTCHeroAttachableAppearanceModifiers* modifiers;
     if (GetCreature()->GetInterface(&modifiers, 0x5e)) {
         CDefPointer<const CAppearanceModifierDef> modifier;

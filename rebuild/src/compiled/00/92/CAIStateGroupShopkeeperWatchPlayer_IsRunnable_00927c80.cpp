@@ -39,10 +39,15 @@ struct CWorldView;
 extern float ShopkeeperWatchRadius; // 0x0138cb60
 struct CAIStateGroup_ShopkeeperWatchPlayer : CAIStateGroupBase {
     CPlayerManager* GetPPlayerManager(); // 0x008fcf90
-    CThing* FindFreeGazePos(); // 0x00918880
     bool IsRunnable();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00918880 ?FindFreeGazePos@CAIStateGroup_Gaze@@IAEPAVCThingGameObject@@XZ (was ?FindFreeGazePos@CAIStateGroup_ShopkeeperWatchPlayer@@QAEPAVCThing@@XZ)
+class CThingGameObject;
+struct CAIStateGroup_ShopkeeperWatchPlayer;
+class CAIStateGroup_Gaze { public: protected: CThingGameObject* FindFreeGazePos(); public: friend struct ::CAIStateGroup_ShopkeeperWatchPlayer; };
 bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
 {
     CThingAICreature* creature = PBrain->Creature;
@@ -74,10 +79,10 @@ bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
                     float dz = heroPosition->Z - shopkeeperPosition->Z;
                     float distance = sqrtf(dz * dz + dy * dy + dx * dx);
                     if (distance < ShopkeeperWatchRadius)
-                        return FindFreeGazePos() != 0;
+                        return reinterpret_cast<CThing*>(reinterpret_cast<CAIStateGroup_Gaze*>(this)->FindFreeGazePos()) != 0;
                 }
                 if (keeper->GetAreOtherPeopleInShop(false))
-                    return FindFreeGazePos() != 0;
+                    return reinterpret_cast<CThing*>(reinterpret_cast<CAIStateGroup_Gaze*>(this)->FindFreeGazePos()) != 0;
             }
         }
     }

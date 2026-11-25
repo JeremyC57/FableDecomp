@@ -25,13 +25,15 @@ class CTCCarrying { public:
     void RemoveThing(CThing& thing);                   // 0x006A19B0   // agentNF19: ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z (Ego_r/FableWin: by reference)
     void PutThingInCarrySlot(CThing& thing, long slot, bool immediately);   // 0x006A1F80 (Ego_r/FableWin ?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z)
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00705CC0 ?GetCarrySlotActive@CTCCarryable@@QBEJXZ (was ?GetCarrySlot@CTCCarriedObject@@QBEJXZ)
 class CTCCarryable { public:
     CThing const* GetPCarriedByThing() const;   // 0x00705170 (Ego_r.pdb ?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ)
-};
+ public: long GetCarrySlotActive() const; };
 struct CTCCarriedObject {
     unsigned char _pad[0x10];
     CThing* m_pCarrier;                     // +0x10
-    long GetCarrySlot() const;              // 0x00705CC0
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {            // CIntelligentPointer<CThing>: vptr + item
@@ -81,7 +83,7 @@ void CCreatureAction_Drink::FinishAction()
                     goto done;
             }
             CThing* jug = ((CThing*)PJug.GetPItem());
-            carrying->PutThingInCarrySlot(*jug, carried->GetCarrySlot(), true);
+            carrying->PutThingInCarrySlot(*jug, reinterpret_cast<const CTCCarryable*>(carried)->GetCarrySlotActive(), true);
         }
     }
 done:

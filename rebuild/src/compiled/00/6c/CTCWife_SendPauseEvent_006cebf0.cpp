@@ -14,8 +14,10 @@
 //        to Copy: an inline AddBool(bool&) that normalises and copies its referent. By-value inline helpers (AddUBYTE(unsigned
 //        char), AddBool(bool), AddBool(const bool&) with a `? true : false` temporary) all get their own frame slot.
 struct CMemoryBuffer {
-    void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009F1760 ?AddData@CGameEvent@@QAEXJPBX@Z (was ?Copy@CMemoryBuffer@@QAEXKPBX@Z)
 class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
@@ -24,8 +26,8 @@ class CGameEvent : public CMemoryBuffer { public:
     bool          Valid;                           // +0x26
     bool          Replacement;                     // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
-    void AddBool(bool& value) { value = value ? true : false; Copy(1, &value); }
-};
+    void AddBool(bool& value) { value = value ? true : false; reinterpret_cast<CGameEvent*>(this)->AddData(1, &value); }
+ public: void AddData(long, void const*); };
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)

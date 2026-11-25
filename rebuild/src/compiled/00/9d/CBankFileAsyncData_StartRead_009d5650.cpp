@@ -6,7 +6,6 @@ struct Arg2c { int a, b, c, d; };
 
 struct Reader {
     // __fastcall member; the call target 0x98f350
-    int Read(Arg2c* p);
 };
 
 struct Inner {
@@ -26,8 +25,13 @@ class CBankFileAsyncData { public:
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0098F350 ?AddObject@CThreadedFile@@QAEKABVCThreadedFileObjectDesc@@@Z (was ?Read@Reader@@QAEHPAUArg2c@@@Z)
+class CThreadedFileObjectDesc;
+class CThreadedFile { public: unsigned long AddObject(CThreadedFileObjectDesc const&); };
 void CBankFileAsyncData::StartRead()
 {
     Reader* rd = this->f28->m110;
-    this->f18 = rd->Read(&this->f2c);
+    this->f18 = reinterpret_cast<CThreadedFile*>(rd)->AddObject(*reinterpret_cast<CThreadedFileObjectDesc const*>(&this->f2c));
 }

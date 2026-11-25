@@ -15,7 +15,6 @@ class CPlayerManager { public:
 };
 struct SCameraRecord_0068ea10 {                     // 56 bytes: the world's camera record returned by value
     unsigned char _body[0x38];
-    float GetAngleXY() const;                       // 0x00A0C380
 };
 class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -45,9 +44,13 @@ class CInputProcessCombat : public CInputProcessGameBase { public:
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A0C380 ?GetAngleXY@CCamera@@QBEMXZ (was ?GetAngleXY@SCameraRecord_0068ea10@@QBEMXZ)
+class CCamera { public: float GetAngleXY() const; };
 float CInputProcessCombat::GetCurrentRelativeMovementAngleXY() const
 {
     if (World->PeekMyPlayer()->m_firstPersonControl)
-        return World->GetCameraRecord().GetAngleXY();
+        return reinterpret_cast<const CCamera*>(&(World->GetCameraRecord()))->GetAngleXY();
     return World->PCurrentGameCamera->GetRelativeMovementAngleXY();
 }

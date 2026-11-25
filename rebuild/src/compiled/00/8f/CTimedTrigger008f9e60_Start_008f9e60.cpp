@@ -13,13 +13,16 @@ struct CTimedTrigger_008f9e60 {
     unsigned long m_startTick;                     // +0x100
     long          m_duration;                      // +0x104
     float         m_level;                         // +0x108
-    void CheckAndTrigger();                        // 0x008F9CA0
     void Start(long duration);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008F9CA0 ?Stop@LTimer@LHNetworkLib@@QAEXXZ (was ?CheckAndTrigger@CTimedTrigger_008f9e60@@QAEXXZ)
+namespace LHNetworkLib { class LTimer { public: void Stop(); }; }
 void CTimedTrigger_008f9e60::Start(long duration)
 {
     m_startTick = GetTickCount();
     m_duration = duration;
-    CheckAndTrigger();
+    reinterpret_cast<LHNetworkLib::LTimer*>(this)->Stop();
 }

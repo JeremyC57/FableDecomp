@@ -8,11 +8,15 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 struct CAIStateGroup_GameMaster {
-    void Method(long value);               // 0x0094A3B0
     void ChooseAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0094A3B0 ?ChooseAction@CAIStateGroup_GoToPub@@IAE_N_N@Z (was ?Method@CAIStateGroup_GameMaster@@QAEXJ@Z)
+struct CAIStateGroup_GameMaster;
+class CAIStateGroup_GoToPub { public: protected: bool ChooseAction(bool); public: friend struct ::CAIStateGroup_GameMaster; };
 void CAIStateGroup_GameMaster::ChooseAction()
 {
-    Method(0);
+    reinterpret_cast<CAIStateGroup_GoToPub*>(this)->ChooseAction(0);
 }

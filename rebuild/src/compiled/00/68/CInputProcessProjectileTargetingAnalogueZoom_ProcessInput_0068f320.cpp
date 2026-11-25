@@ -27,7 +27,6 @@ public:
     void SetAsPerformedEvent();                             // 0x00A0D390 (Ego_r 0x00B74CA0 + FableWin 0x0318F830 ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; NF33, was SetAsPerformedEvent)
 };
 struct CTCProjectileZoom {
-    void AdjustZoom(float delta);                  // 0x00789A10
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -72,6 +71,10 @@ public:
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00789A10 ?SetProjectileTargetingZoomDelta@CTCHeroRangedAttacks@@QAEXM@Z (was ?AdjustZoom@CTCProjectileZoom@@QAEXM@Z)
+class CTCHeroRangedAttacks { public: void SetProjectileTargetingZoomDelta(float); };
 void CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     CThing* hero = MyPlayer->GetPControlledCreature();
@@ -79,13 +82,13 @@ void CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEven
         return;
     C2DVector zoom;
     if (GetControlMovementFromGameActionEvent(GAME_ACTION_PROJECTILE_TARGETING_ANALOGUE_ZOOM, event, zoom))
-        hero->GetTC(0x81)->AdjustZoom(zoom.y * (1.0f / 255.0f));
+        reinterpret_cast<CTCHeroRangedAttacks*>(hero->GetTC(0x81))->SetProjectileTargetingZoomDelta(zoom.y * (1.0f / 255.0f));
     else if (IsEventGameAction(GAME_ACTION_DIGITAL_ANALOGUE_ZOOM_IN, event)) {
         if (!IsEventButtonPressed(event))
             return;
-        hero->GetTC(0x81)->AdjustZoom(196.0f / 255.0f);
+        reinterpret_cast<CTCHeroRangedAttacks*>(hero->GetTC(0x81))->SetProjectileTargetingZoomDelta(196.0f / 255.0f);
     } else if (IsEventGameAction(GAME_ACTION_DIGITAL_ANALOGUE_ZOOM_OUT, event) && IsEventButtonPressed(event))
-        hero->GetTC(0x81)->AdjustZoom(-196.0f / 255.0f);
+        reinterpret_cast<CTCHeroRangedAttacks*>(hero->GetTC(0x81))->SetProjectileTargetingZoomDelta(-196.0f / 255.0f);
     else
         return;
     processed.SetAsPerformedEvent();

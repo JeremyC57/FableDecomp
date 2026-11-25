@@ -14,7 +14,6 @@ struct CAIStateGroupBaseCalls {
     unsigned char _pad_0x00[0x11];
     unsigned char Priority;           // +0x11
     bool          Enabled;            // +0x12
-    bool IsEnabledAndRunnable();      // 0x008FCF10
 };
 
 struct CStateGroupEntry {
@@ -31,6 +30,10 @@ struct CAIBrain_Methods : CAIBrain {
     CAIStateGroupBaseCalls* FindNextStateGroupToUse(long priority);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008FCF10 ?IsRunnableMain@CAIStateGroupBase@@QAE_NXZ (was ?IsEnabledAndRunnable@CAIStateGroupBaseCalls@@QAE_NXZ)
+class CAIStateGroupBase { public: bool IsRunnableMain(); };
 CAIStateGroupBaseCalls* CAIBrain_Methods::FindNextStateGroupToUse(long priority)
 {
     CStateGroupVectorMap* groups = reinterpret_cast<CStateGroupVectorMap*>(&this->StateGroupList[0]);
@@ -38,7 +41,7 @@ CAIStateGroupBaseCalls* CAIBrain_Methods::FindNextStateGroupToUse(long priority)
         CAIStateGroupBaseCalls* group = it->Group;
         if ((long)group->Priority <= priority)
             return 0;
-        if (group->IsEnabledAndRunnable())
+        if (reinterpret_cast<CAIStateGroupBase*>(group)->IsRunnableMain())
             return group;
     }
     return 0;

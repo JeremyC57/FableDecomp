@@ -52,7 +52,6 @@ class CTCAnimatingObject { public:
     void PlayDefaultAnimation();                        // 0x007F8F30
 };
 class CTCCarrying;
-void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 class CTCCarrying { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
@@ -71,12 +70,16 @@ public:
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnUseFailed@CTCInterface1A@@QAEXXZ)
 class CTCInventoryItem { public: void ReturnToInventory(); };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00845CE0 ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z (was ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z)
+class CCreatureAction_DropWeapon { public: static void __fastcall DropWeapon(CThing&, CTCCarrying&, CThing&); };
 CThing* CTCCarrying::RemoveThingFromPrimarySlot(bool unused)
 {
     if (!IsPrimarySlotFree()) {
         CThing* thing = GetThingInPrimarySlot();
         if (thing->HasTC(0x48))
-            DropWeapon(thing, this, ParentThing);
+            CCreatureAction_DropWeapon::DropWeapon(*(thing), *(this), *(ParentThing));
         else
             RemoveThing(*thing);
         if (!IsCarryingThing(*thing) && thing->HasTC(0x1a)) {

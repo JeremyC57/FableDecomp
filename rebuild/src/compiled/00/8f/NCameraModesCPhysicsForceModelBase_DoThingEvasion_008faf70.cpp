@@ -99,6 +99,9 @@ class CGameCameraManager { public:
     unsigned char _pad00[0x78];
     CTools        Tools;                           // +0x78
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008FA9F0 ?GetPointsList@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ (was ?Finalise@CPhysicsCollisionPointsObject@NCameraModes@@QAEXXZ)
 namespace NCameraModes {
 class CPhysicsState { public:
     C3DVector Position;                            // +0x00
@@ -106,8 +109,7 @@ class CPhysicsState { public:
 class CPhysicsCollisionPointsObject { public:             // retail 0x24 bytes
     SVectorNode* Points;                           // +0x00 list<C3DVector> header
     unsigned char _pad04[0x20];
-    void Finalise();                               // 0x008FA9F0
-};
+ public: void GetPointsList(); };
 class CPhysicsForceModelBase { public:
     virtual void v00();
     CPhysicsState*                LinkedState;     // +0x04
@@ -128,7 +130,7 @@ C3DVector CPhysicsForceModelBase::DoThingEvasion()
     CMeshList meshes;
     transform(things.begin(), things.end(), back_inserter(meshes), CGetMeshObject());
     UpdateScan(Things, meshes, position, 1, 50.0f);
-    Things.Finalise();
+    reinterpret_cast<NCameraModes::CPhysicsCollisionPointsObject*>(&(Things))->GetPointsList();
     SVectorNode* head = Things.Points;
     float potential[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
     for (SVectorNode* it = head->_M_next; it != head; it = it->_M_next) {

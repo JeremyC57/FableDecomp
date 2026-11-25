@@ -20,8 +20,6 @@ class CParticleEmitter { public:
     void Kill();                                // 0x00AEE8C0
 };
 }
-void __fastcall SendDestructionCriteriaSound(CThing* thing);   // 0x006E0F10
-void __fastcall SendCreationCriteriaSound(CThing* thing);      // 0x006E0E80
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
@@ -41,6 +39,10 @@ struct CIntelligentPointerEmitter : CBaseIntelligentPointer {   // vtable 0x0125
     }
     NParticleEngine::CParticleEmitter* GetPItem() const { return (NParticleEngine::CParticleEmitter*)CBaseIntelligentPointer::GetPItem(); }
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006E0E80 ?SendCreationCriteriaSound@CTCDParticleEmitter@@CIXAAVCThing@@@Z (was ?SendCreationCriteriaSound@@YIXPAVCThing@@@Z)
+//   0x006E0F10 ?SendDestructionCriteriaSound@CTCDParticleEmitter@@CIXAAVCThing@@@Z (was ?SendDestructionCriteriaSound@@YIXPAVCThing@@@Z)
 class CTCDParticleEmitter { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
@@ -51,17 +53,17 @@ class CTCDParticleEmitter { public:
     private:
     void SetPEmitter(NParticleEngine::CParticleEmitter* emitter);
     public:
-};
+ private: static void __fastcall SendDestructionCriteriaSound(CThing&); public:   private: static void __fastcall SendCreationCriteriaSound(CThing&); public:  };
 
 void CTCDParticleEmitter::SetPEmitter(NParticleEngine::CParticleEmitter* emitter)
 {
     if (emitter) {
         if (PEmitter.GetPItem()) {
-            SendDestructionCriteriaSound(ParentThing);
+            CTCDParticleEmitter::SendDestructionCriteriaSound(*(ParentThing));
             PEmitter.GetPItem()->Kill();
         }
         PEmitter = CIntelligentPointerEmitter(emitter);
         EmitterName = PEmitter.GetPItem()->Name;
-        SendCreationCriteriaSound(ParentThing);
+        CTCDParticleEmitter::SendCreationCriteriaSound(*(ParentThing));
     }
 }

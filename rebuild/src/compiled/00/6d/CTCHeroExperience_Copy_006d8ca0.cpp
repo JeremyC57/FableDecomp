@@ -36,10 +36,14 @@ struct CTCHeroExperience_Retail {
     bool          AbleToGainExperience;             // +0x3C (PDB +0x44)
 
     void UpdateAbilitiesForStat(long stat, bool silent);   // 0x006D8170
-    void OnStatLevelChange(bool silent);                   // 0x006D83B0
     void Copy(const CTCHeroExperience_Retail* other);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006D83B0 ?OnStatLevelChange@CTCHeroExperience@@AAEX_N@Z (was ?OnStatLevelChange@CTCHeroExperience_Retail@@QAEX_N@Z)
+struct CTCHeroExperience_Retail;
+class CTCHeroExperience { public: private: void OnStatLevelChange(bool); public: friend struct ::CTCHeroExperience_Retail; };
 void CTCHeroExperience_Retail::Copy(const CTCHeroExperience_Retail* other)
 {
     TotalExperiencePoints = other->TotalExperiencePoints;
@@ -49,5 +53,5 @@ void CTCHeroExperience_Retail::Copy(const CTCHeroExperience_Retail* other)
     AbleToGainExperience = other->AbleToGainExperience;
     for (long stat = 0; stat < 10; ++stat)
         UpdateAbilitiesForStat(stat, true);
-    OnStatLevelChange(false);
+    reinterpret_cast<CTCHeroExperience*>(this)->OnStatLevelChange(false);
 }

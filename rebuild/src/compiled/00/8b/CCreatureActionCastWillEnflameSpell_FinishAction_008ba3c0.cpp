@@ -93,7 +93,6 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 struct CTCShowableItem {
 };
 class CTCCarrying;
-void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 class CTCCarrying { public:
     bool IsPrimarySlotFree() const;                        // 0x006A1270; NF296: PDB name, was IsPrimarySlotEmpty
     CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
@@ -114,7 +113,6 @@ class CTCCreatureModeManager { public:
 struct CTCEnflame {
     unsigned char _pad[0xd];
     bool Active;                                      // +0xd
-    void ResetState();                                // 0x007A44C0
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -135,6 +133,12 @@ class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x005D8E50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ (was ?OnShowEnded@CTCShowableItem@@QAEXXZ)
 class CTCInventoryItem { public: void ReturnToInventory(); };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00845CE0 ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z (was ?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@0@Z)
+//   0x007A44C0 ?CancelMove@CTCWillEnflame@@QAEXXZ (was ?ResetState@CTCEnflame@@QAEXXZ)
+class CCreatureAction_DropWeapon { public: static void __fastcall DropWeapon(CThing&, CTCCarrying&, CThing&); };
+class CTCWillEnflame { public: void CancelMove(); };
 void CCreatureAction_CastWillEnflameSpell::FinishAction()
 {
     CCombatActionBase::FinishAction();
@@ -146,7 +150,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
         if (!carrying->IsPrimarySlotFree()) {
             CThing* thing = carrying->GetThingInPrimarySlot();
             if (thing->HasTC(0x48))
-                DropWeapon(thing, carrying, ((CThing*)PCreature.GetPItem()));
+                CCreatureAction_DropWeapon::DropWeapon(*(thing), *(carrying), *(((CThing*)PCreature.GetPItem())));
             else
                 carrying->RemoveThing(*thing);
             CTCShowableItem* showable;
@@ -177,6 +181,6 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
     CTCEnflame* enflame;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&enflame, 0x95)) {
         if (!enflame->Active)
-            enflame->ResetState();
+            reinterpret_cast<CTCWillEnflame*>(enflame)->CancelMove();
     }
 }

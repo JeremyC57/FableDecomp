@@ -37,14 +37,17 @@ public:
 };
 
 class CGameDefinitionManager: public CDefinitionManager { public:}; //009AD410
-CThing* __fastcall CreateMarker(long,const C3DVector&,const CCharString&); //0083D460
 class CTCLight{ public:void SetOverridden(bool);void SetColour(const CRGBColour&);void SetInnerRadius(float);void SetOuterRadius(float);void SetFlicker(float);public:
     void SetActive(bool);   // 0x006412B0
 }; //00640DF0,00640BB0,00640C40,00640C70,00640CA0,006412B0; CLightInfo offsets0/4/8/C
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0083D460 ?Create@CThingMarker@@SIPAV1@JABVC3DVector@@ABVCCharString@@@Z (was ?CreateMarker@@YIPAVCThing@@JABVC3DVector@@ABVCCharString@@@Z)
+class CThingMarker { public: static CThingMarker* __fastcall Create(long, C3DVector const&, CCharString const&); };
 CScriptThing CGameScriptInterface::CreateLight(const C3DVector& position,const CRGBColour& colour,const CCharString& name,float inner,float outer,bool flicker)const{
  long id;{CCharString markerName("MARKER_LIGHT",-1);id=DefinitionManager->GetDefGlobalIndexFromName(markerName);}
- if(id){CThing* marker=CreateMarker(id,position,name);if(marker){
+ if(id){CThing* marker=reinterpret_cast<CThing*>(CThingMarker::Create(id,position,name));if(marker){
  if(marker->UsingComponents[1]&0x80){ComponentMap* map=&marker->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)39);ComponentEntry* end=map->Finish;CTCLight* light=static_cast<CTCLight*>(((void*)(it==end||it->first>39?end:it)->second));if(light){light->SetOverridden(true);light->SetColour(colour);light->SetInnerRadius(inner);light->SetOuterRadius(outer);light->SetFlicker((float)(unsigned char)flicker);light->SetActive(true);}}
  return marker->GetScriptThing();}}
  return CScriptThing();

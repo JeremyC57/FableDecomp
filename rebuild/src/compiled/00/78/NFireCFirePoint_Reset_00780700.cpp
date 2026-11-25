@@ -25,11 +25,13 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006E0970 ?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z (was ?Create@@YIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z)
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
-};
+ public: static CThing* __fastcall Create(CCharString const&, C3DVector const&, bool); };
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -60,7 +62,7 @@ void CFirePoint::Reset()
         CThing* effect;
         {
             CCharString name("Flaming_Hands_Die", -1);
-            effect = Create(name, PParentThing->GetPos(), false);
+            effect = CTCDParticleEmitter::Create(name, PParentThing->GetPos(), false);
         }
         if (effect && !effect->IsDead()) {
             CTCDParticleEmitter* emitter = 0;

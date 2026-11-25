@@ -104,7 +104,6 @@ public:
     }
 };
 struct CTCAD {                                        // interface 0xAD
-    void AddDependentThing(CThing* thing);            // 0x007AF6C0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -145,6 +144,10 @@ class CCreatureAction_JackFloatUp : public CCombatActionBase { public:
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x006627F0 ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z (was ?GetAnimDuration@CThing@@QAEMJ@Z)
 class CThingCreatureBase { public: float GetAnimDuration(long) const; };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007AF6C0 ?AddEffect@CTCBoss@@QAEXAAVCThing@@@Z (was ?AddDependentThing@CTCAD@@QAEXPAVCThing@@@Z)
+class CTCBoss { public: void AddEffect(CThing&); };
 void CCreatureAction_JackFloatUp::PerformAction()
 {
     FloatSpeed = FloatHeight / (reinterpret_cast<const CThingCreatureBase*>(GetCreature())->GetAnimDuration(GetAnimationIndex()) - RunningTimeSeconds);
@@ -161,7 +164,7 @@ void CCreatureAction_JackFloatUp::PerformAction()
             if (effect && !(effect->m_flags91 & 1)) {
                 CTCAD* dependents = 0;
                 GetCreature()->GetInterface(&dependents, 0xad);
-                dependents->AddDependentThing(effect);
+                reinterpret_cast<CTCBoss*>(dependents)->AddEffect(*(effect));
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = effect->PTCDriver;
                     emitter->AttachToThing(*GetCreature(), 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);

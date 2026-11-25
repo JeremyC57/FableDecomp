@@ -146,11 +146,14 @@ struct CBankFile_Retail {
         return RuntimeData[index].DataType;
     }
     unsigned long Align(unsigned long size) const { return (size + Alignment - 1) / Alignment * Alignment; }
-    void InternalResizeEntryData(unsigned long index, unsigned long size);   // 0x009D1260
     void WriteEntryData(unsigned long position, CDataInputStream& source, unsigned long size, unsigned long padding);   // 0x009CD330
     void UpdateEntry(unsigned long index, CDataInputStream& data, unsigned long dataSize, CDataInputStream& info, unsigned long infoSize, bool computeChecksum);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009D1260 ?InternalResizeEntryData@CBankFile@@QAEXKK@Z (was ?InternalResizeEntryData@CBankFile_Retail@@QAEXKK@Z)
+class CBankFile { public: void InternalResizeEntryData(unsigned long, unsigned long); };
 void CBankFile_Retail::UpdateEntry(unsigned long index, CDataInputStream& data, unsigned long dataSize, CDataInputStream& info, unsigned long infoSize, bool computeChecksum)
 {
     CBankFileEntryUpdateData* update = UpdateData[index];
@@ -169,7 +172,7 @@ void CBankFile_Retail::UpdateEntry(unsigned long index, CDataInputStream& data, 
     CByteVector infoBytes(infoSize, 0);
     info.Read(infoBytes.GetData(), infoSize);
     update->SetInfo(infoBytes);
-    InternalResizeEntryData(index, dataSize);
+    reinterpret_cast<CBankFile*>(this)->InternalResizeEntryData(index, dataSize);
     unsigned long aligned = Align(dataSize);
     WriteEntryData(GetEntryDataOffset(index), data, dataSize, aligned - dataSize);
     update->RequiresUpdate = false;

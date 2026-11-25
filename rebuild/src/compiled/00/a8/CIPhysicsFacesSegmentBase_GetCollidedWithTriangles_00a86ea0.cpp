@@ -2,7 +2,6 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A86EA0, length 91 bytes.
 // Shape: `this` in esi, `sar ecx,2 ; cmp ecx,eax ; jae`, the stamp incremented between the argument loads, `ret 14h`.
 class CWorldMap { public:
-    long GetNoMaps();                              // 0x00A6C560 (labelled "DrawGetNoMaps")
 };
 struct CRetailVector_long {                        // {first, last, end}
     long* first;
@@ -19,9 +18,13 @@ class CIPhysicsFacesSegmentBase { public:
     void GetCollidedWithTriangles(CWorldMap* map, long a, long b, long c, long d);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A6C560 ?GetNoTriangles@CPhysicsMesh@@QBEJXZ (was ?GetNoMaps@CWorldMap@@QAEJXZ)
+class CPhysicsMesh { public: long GetNoTriangles() const; };
 void CIPhysicsFacesSegmentBase::GetCollidedWithTriangles(CWorldMap* map, long a, long b, long c, long d)
 {
-    long count = map->GetNoMaps();
+    long count = reinterpret_cast<const CPhysicsMesh*>(map)->GetNoTriangles();
     if (g_mapStamps_013d2d48.Size() < (unsigned long)count)
         g_mapStamps_013d2d48.Resize(count, g_collisionStamp_013d2d44);
     ++g_collisionStamp_013d2d44;

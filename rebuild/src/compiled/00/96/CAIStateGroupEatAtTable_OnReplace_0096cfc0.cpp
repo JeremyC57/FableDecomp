@@ -53,7 +53,6 @@ struct CTCSeatTable {                           // interface 0xb8
     unsigned char _pad[0x10];
     CThing** SeatUsers;                         // +0x10
     bool IsSeatTaken(long seat);                // 0x007B8570
-    void FreeSeat(long seat, long actionPoint); // 0x007B8AA0
     void SetOccupant(long seat, CThing* occupant);   // 0x007B85F0
 };
 class CAIStateGroupBase { public:
@@ -71,6 +70,10 @@ struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007B8AA0 ?FreeSeat@CTCTavernTable@@QAEXJJ@Z (was ?FreeSeat@CTCSeatTable@@QAEXJJ@Z)
+class CTCTavernTable { public: void FreeSeat(long, long); };
 void CAIStateGroup_EatAtTable::OnReplace()
 {
     CTCCreatureModeManager* modes;
@@ -90,7 +93,7 @@ void CAIStateGroup_EatAtTable::OnReplace()
             if (gotUp)
                 removeSitMode = false;
         }
-        table->FreeSeat(SeatIndex, SeatActionPointIndex);
+        reinterpret_cast<CTCTavernTable*>(table)->FreeSeat(SeatIndex, SeatActionPointIndex);
         table->SeatUsers[SeatIndex] = 0;
         CTCCarrying* carrying;
         GetCreature()->GetTC(TCI_CARRYING, &carrying);

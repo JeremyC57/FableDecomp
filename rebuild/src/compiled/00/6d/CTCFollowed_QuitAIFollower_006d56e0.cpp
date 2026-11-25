@@ -80,7 +80,6 @@ static inline bool IsAlive(const CThing* thing) { return thing && !thing->Dead; 
 // (FABLE_RETAIL_STLP_LIST_REMOVE_DECL): retail calls the instances out of line.
 
 struct CTCFollowActionHandler {
-    void HandleFollowerQuit(CThing* follower);              // 0x006AEBA0 (component 0x7a)
 };
 class CFaction;
 #include "engine/EOpinionDeedType.h"
@@ -106,6 +105,10 @@ public:
     void QuitAIFollower(CThingAICreature* creature);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006AEBA0 ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z (was ?HandleFollowerQuit@CTCFollowActionHandler@@QAEXPAVCThing@@@Z)
+class CTCRegionFollower { public: void RemoveFollower(CThing&); };
 void CTCFollowed::QuitAIFollower(CThingAICreature* creature)
 {
     if (IsAIFollower(creature)) {
@@ -113,7 +116,7 @@ void CTCFollowed::QuitAIFollower(CThingAICreature* creature)
         Followers.remove(CIntelligentPointer<CThing>(creature));
         CTCFollowActionHandler* handler;
         ParentThing->GetInterface(&handler, 0x7a);
-        handler->HandleFollowerQuit(creature);
+        reinterpret_cast<CTCRegionFollower*>(handler)->RemoveFollower(*(creature));
         CThing* thing = ParentThing;
         CTCHeroOpinionDeedLog* deeds;
         thing->GetInterface(&deeds, 0x51);

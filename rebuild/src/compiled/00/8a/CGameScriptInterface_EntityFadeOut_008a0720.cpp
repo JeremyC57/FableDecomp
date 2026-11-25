@@ -98,9 +98,12 @@ FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing ex
     return t && !t->m_dead;
 }
 class CTCParamsBase;
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006C3B70 ?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z (was ?Fade@CTCFadeOutAndIn_Retail@@QAEXM_N@Z)
+class CTCFadeOutAndIn { public: void FadeOut(float, bool); };
 struct CTCFadeOutAndIn_Retail {
-    void Fade(float time, bool fadeIn);            // 0x006C3B70
-    FABLE_FORCEINLINE void FadeOut(float time) { Fade(time, false); }
+    FABLE_FORCEINLINE void FadeOut(float time) { reinterpret_cast<CTCFadeOutAndIn*>(this)->FadeOut(time, false); }
 };
 class CThing { public:
     CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60 (Ego_r.pdb ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z)

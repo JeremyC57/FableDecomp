@@ -65,10 +65,14 @@ struct CAIStateGroupGoToPubMethods : CAIStateGroupBase {
     // AIAction_MoveToPos 0x0097EC00: the protected CAIStateGroupBase member (NF295 header opt-in above; Ego_r + FableWin IAE spelling,
     // bool& reached and const CThing* avoid as both PDBs give them: the same pushed values)
     // AIAction_LookAtPos 0x0097D580: the protected CAIStateGroupBase member (header opt-in above; Ego_r + FableWin IAE spelling)
-    void FreeBarPoint();                        // 0x00949320
     bool WalkToPoint(const C3DVector& pos, const CRightHandedSet& rhSet);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00949320 ?FreeBarPoint@CAIStateGroup_GoToPub@@IAEXXZ (was ?FreeBarPoint@CAIStateGroupGoToPubMethods@@QAEXXZ)
+struct CAIStateGroupGoToPubMethods;
+class CAIStateGroup_GoToPub { public: protected: void FreeBarPoint(); public: friend struct ::CAIStateGroupGoToPubMethods; };
 bool CAIStateGroupGoToPubMethods::WalkToPoint(const C3DVector& pos, const CRightHandedSet& rhSet)
 {
     EAIActionReturn result;
@@ -90,6 +94,6 @@ bool CAIStateGroupGoToPubMethods::WalkToPoint(const C3DVector& pos, const CRight
             return true;
     }
 failed:
-    FreeBarPoint();
+    reinterpret_cast<CAIStateGroup_GoToPub*>(this)->FreeBarPoint();
     return false;
 }

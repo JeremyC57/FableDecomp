@@ -43,7 +43,6 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& a, const char* b);   // 0x0099F600
 
-void __fastcall CreateDirectory(const CWideString& path);                // 0x009994A0
 
 class CDateAndTime { public:
     long Fields[7];
@@ -54,10 +53,13 @@ class CDateAndTime { public:
 // NF75 (round 7, land1117fu q10941): GetFileModifiedTime is CAFile's static member (engine/CAFile.h MODIFIEDTIME; Ego_r / FableWin
 //   ?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z, as the landed 0x00A60FB0 / 0x004091C0 bind it); was a free function.
 //   The row's pre-existing local CAFile declaration moves below CDateAndTime to declare it.
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009994A0 ?CreateDirectoryW@CAFile@@SIXABVCWideString@@@Z (was ?CreateDirectory@@YIXABVCWideString@@@Z)
 class CAFile { public:
     static bool __fastcall PathExists(const CWideString& path);                                           // 0x00999230
     static CDateAndTime __fastcall GetFileModifiedTime(const CWideString& path);                          // 0x009992A0
-};
+ public: static void __fastcall CreateDirectoryW(CWideString const&); };
 
 extern CWideString minimapFilePathArtist;              // 0x013BAF38
 extern CWideString minimapFilePathProgmr;             // 0x013BAF3C
@@ -114,9 +116,9 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
 {
     RegionMinimap.Initialise();
     if (!CAFile::PathExists(minimapFilePathArtist))
-        CreateDirectory(minimapFilePathArtist);
+        CAFile::CreateDirectoryW(minimapFilePathArtist);
     if (!CAFile::PathExists(minimapFilePathProgmr))
-        CreateDirectory(minimapFilePathProgmr);
+        CAFile::CreateDirectoryW(minimapFilePathProgmr);
     CWorldMap* worldMap = CMainGameComponent::Get()->World->GetWorldMap();
     RegionMinimap.InitialiseRegionMinimapSize(worldMap, region);
     CWideString tgaName = ToWide(region->GetName() + ".tga");

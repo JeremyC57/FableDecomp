@@ -53,13 +53,16 @@ class CCombatActionBase { public:
  void SetCombatAnimation(const CCharString&); //008574D0
  virtual void Initialise(); //00857520
 };
-extern void FABLE_FASTCALL SetThingIsAbleToBeLifted(CThing*,bool); //007E4330
 class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:void Initialise();};
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E4330 ?SetThingIsEpicSpellable@CTCWillResponse@@SIXPAVCThing@@_N@Z (was ?SetThingIsAbleToBeLifted@@YIXPAVCThing@@_N@Z)
+class CTCWillResponse { public: static void __fastcall SetThingIsEpicSpellable(CThing*, bool); };
 void CCreatureAction_DragonHoverOutOf::Initialise()
 {
  {CCharString animation("HOVER_OUT_OF",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
- SetThingIsAbleToBeLifted(((CThing*)PCreature.GetPItem()),false);
+ CTCWillResponse::SetThingIsEpicSpellable(((CThing*)PCreature.GetPItem()),false);
  CThing* thing=((CThing*)PCreature.GetPItem());
  CTCTargeted* targeted;
  if(thing->UsingComponents[0]&0x200){

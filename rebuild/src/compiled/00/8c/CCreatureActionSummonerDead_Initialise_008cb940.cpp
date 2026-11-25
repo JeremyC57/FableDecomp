@@ -122,7 +122,6 @@ class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
 };
 struct CTCDriver41 {
-    void SetOwner(CThing* owner);                            // 0x0080CBF0
 };
 class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);                     // 0x0073ABA0
@@ -167,6 +166,10 @@ class CCreatureAction_SummonerDead : public CCombatActionBase { public:
     virtual void Initialise();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z (was ?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z)
+class CTCDExplosion { public: void SetThingAsImmune(CThing&); };
 void CCreatureAction_SummonerDead::Initialise()
 {
     SetCombatAnimation("FALL_TO_KNEES_OUT_OF");
@@ -184,7 +187,7 @@ void CCreatureAction_SummonerDead::Initialise()
                 driver = (CTCDriver41*)deathObject->PTCDriver;
             CThing* hero = ((CPlayer*)((CWorld*)(GetWorld()))->PeekMyPlayer())->GetPControlledCreature();
             if (hero && !(hero->m_flags91 & 1))
-                driver->SetOwner(((CPlayer*)((CWorld*)(GetWorld()))->PeekMyPlayer())->GetPControlledCreature());
+                reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(((CPlayer*)((CWorld*)(GetWorld()))->PeekMyPlayer())->GetPControlledCreature()));
         }
     }
     CDefPointer<CSpecialEffectsDef> effects;

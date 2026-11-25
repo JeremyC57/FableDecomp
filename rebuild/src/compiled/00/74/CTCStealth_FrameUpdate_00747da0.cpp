@@ -144,7 +144,6 @@ class CThingCreatureBase : public CThing { public:
 struct CScriptTask {
     unsigned char _pad00[0x18];
     bool          Paused;                               // +0x18
-    bool IsRunning();                                   // 0x007122C0
 };
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CMainGameComponent {
@@ -185,6 +184,10 @@ private:
     void UpdateDangerInfo();                            // 0x00747C70
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007122C0 ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ (was ?IsRunning@CScriptTask@@QAE_NXZ)
+class CTCScriptedControl { public: bool IsActionListEmpty() const; };
 void CTCStealth::FrameUpdate()
 {
     CThing* creature = ParentThing;
@@ -208,7 +211,7 @@ void CTCStealth::FrameUpdate()
     }
     if (ParentThing->HasTC(0x1f)) {
         CScriptTask* task = ParentThing->GetTC2<CScriptTask>(0x1f);
-        canSneak = canSneak && !task->Paused && task->IsRunning();
+        canSneak = canSneak && !task->Paused && reinterpret_cast<const CTCScriptedControl*>(task)->IsActionListEmpty();
     }
     if (ParentThing->ThingType == 2) {
         bool wants;

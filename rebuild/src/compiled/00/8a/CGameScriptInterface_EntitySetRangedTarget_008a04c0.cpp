@@ -106,6 +106,11 @@ struct CTCTargeting_Retail { void SetRangedTarget(CThing_Retail* target); };   /
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008ABB50 ?SetPScriptOverrideRangedTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z (was ?SetRangedTarget@CTCTargeting_Retail@@QAEXPAUCThing_Retail@@@Z)
+class CThing;
+class CTCTargetingBase { public: void SetPScriptOverrideRangedTarget(CThing*); };
 void CGameScriptInterface::EntitySetRangedTarget(const CScriptThing& thing, const CScriptThing& target) const
 {
     if (thing.IsAlive()) {
@@ -113,9 +118,9 @@ void CGameScriptInterface::EntitySetRangedTarget(const CScriptThing& thing, cons
         if (t->HasTC(0x8)) {
             CTCTargeting_Retail* targeting = (CTCTargeting_Retail*)GetTC(t, 0x8);
             if (target.IsAlive())
-                targeting->SetRangedTarget(((CThing_Retail*)target.GetPThing()));
+                reinterpret_cast<CTCTargetingBase*>(targeting)->SetPScriptOverrideRangedTarget(reinterpret_cast<CThing*>(((CThing_Retail*)target.GetPThing())));
             else
-                targeting->SetRangedTarget(0);
+                reinterpret_cast<CTCTargetingBase*>(targeting)->SetPScriptOverrideRangedTarget(reinterpret_cast<CThing*>(0));
         }
     }
 }

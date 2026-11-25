@@ -1,0 +1,1137 @@
+target	wrong_symbol	row	reason
+007e5f70	?PushSymbolToQueue@CTCOracleMinigame@@QAEXJ@Z	00691680	type: enum EOracleMinigameInput unknown to the row
+007e79c0	?ProcessInput@CTCFireheartMinigame@@QAEXJ@Z	00691870	type: enum EFireheartMinigameInput unknown to the row
+0080c460	?CreateThing@@YIPAVCThing@@JABVC3DVector@@@Z	008c4810	static v non-static mismatch
+00692910	?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ	008c8180	PDB target is protected: a bodiless public declaration would not mangle it (ruling needed)
+0080c460	?CreateThing@@YIPAVCThing@@JABVC3DVector@@@Z	008cafa0	static v non-static mismatch
+0080c460	?CreateThing@@YIPAVCThing@@JABVC3DVector@@@Z	008cb500	static v non-static mismatch
+0080c460	?CreateThing@@YIPAVCThing@@JABVC3DVector@@@Z	008cb940	static v non-static mismatch
+00692950	?GetWorld@CCombatActionBase@@QBEPAVCWorld@@XZ	008cb940	PDB target is protected: a bodiless public declaration would not mangle it (ruling needed)
+007fd4b0	?CreateObstruction@@YIPAVCThing@@PBVC3DVector@@0M@Z	008f5060	static v non-static mismatch
+0080c500	?CreateThing@@YIPAVCThing@@JPBVC3DVector@@0@Z	008f5060	static v non-static mismatch
+007fd4b0	?CreateObstruction@@YIPAVCThing@@PBVC3DVector@@0M@Z	008f5220	static v non-static mismatch
+0080c500	?CreateThing@@YIPAVCThing@@JPBVC3DVector@@0@Z	008f5220	static v non-static mismatch
+0099a920	?Member599270@@YIXPAX@Z	004016b0	parameter count differs (identity research)
+0099b510	@dtorA_0099b510@4	00403510	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0099a2d0	??0CBase@N_0099a2d0@@QAE@XZ	00404720	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009e4da0	?CreateDirectoryW@CDriveManager@@QAEJABVCWideString@@@Z	00406e30	row: named in T3_PORT_QUEUE col 2/3
+009e4bc0	?DeleteFile@CDriveManager@@QAEJABVCWideString@@@Z	00407040	call site: callee text not B->M / B.M ('DeleteFile')
+009e9390	@SomeCleanup@4	00412020	row: named in T3_PORT_QUEUE col 2/3
+0099b510	@SubMemberDtor@4	00412020	row: named in T3_PORT_QUEUE col 2/3
+009e9390	?Cleanup_5d72d0@@YIXPAX@Z	004120c0	parameter count differs (identity research)
+009f4cf0	?Begin@CLoader@@QAEXABVCVersion@@H@Z	00416268	call site: parameter 1 int -> CWideString const&
+009f5e10	?Begin_009f5e10@CLoader@@QAEXABVCVersion@@H@Z	0041627f	call site: parameter 1 int -> CWideString const&
+009e9f40	@DisplayProgress@16	0041735a	wrong spelling not parsed
+009ed190	?Initialise@CConsole@@QAEXJJPAX@Z	004175e5	row: named in T3_PORT_QUEUE col 2/3
+00aebea0	?UninitialiseParticles@@YAXXZ	004175e5	row: named in T3_PORT_QUEUE col 2/3
+009e97b0	??0CMemoryFile@@QAE@ABVCWideString@@JK@Z	00418c3b	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009bcf70	?StaticLoadXMVCode@@YAXXZ	0042f75e	static v non-static mismatch
+009fc550	?BaseDestructor@CMemoryBlockOverlay@@QAEXXZ	004303f0	row: named in T3_PORT_QUEUE col 2/3
+009f1760	?Copy@CMemoryBuffer@@QAEXKPBX@Z	00438310	row: named in T3_PORT_QUEUE col 2/3
+0099b510	@NodeSub_Dtor@4	004407b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00993eb0	?Consume@CShadowSink@@QAEXPAUCShadowArg@@@Z	004522f4	row: named in T3_PORT_QUEUE col 2/3
+00995030	?Fetch@ObjA@@QAEPAHPAUSVec2@@@Z	004568bc	parameter count differs (identity research)
+00993fd0	?LM_Handle3@@YIXPAXUPBox@@@Z	00456903	parameter count differs (identity research)
+009fc550	?Destroy@WaypointTemp@@QAEXXZ	00472b63	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00993b20	??0CBase_00993b20@@QAE@XZ	00485400	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0099b510	?Cleanup_0099b510@SubObject@@QAEXXZ	004857e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069e940	??0CView3DThirdPerson@@QAE@XZ	00487cf0	row: named in T3_PORT_QUEUE col 2/3
+00a0d3d0	?ScalarDtor@CInputProcessInventoryBase@@QAEXXZ	0048b4e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a0ccd0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	0048f50c	class CWStringParser is defined in an included header without the PDB method (header change: _hdr batch)
+00a0ccd0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	00491ad2	row: in a pending RESERVED.tsv
+00a0ccd0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	00492381	class CWStringParser is defined in an included header without the PDB method (header change: _hdr batch)
+00a0ccd0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	00497fd0	class CWStringParser is defined in an included header without the PDB method (header change: _hdr batch)
+009ea060	?GetProgressDisplay@NProgressDisplay@@YI?AUProgressPointer@@XZ	0049e7c0	call site: member call through DECL_REF_EXPR
+009e4bc0	?DeleteFile@CDriveManager@@QAEJABVCWideString@@@Z	004a2d70	call site: callee text not B->M / B.M ('DeleteFile')
+0077b250	??0CTCGraphicAppearanceAnimatedMesh@@QAE@PAVCThing@@@Z	004d43f8	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00821850	?sub_821850@@YIXPAX@Z	004fd020	parameter count differs (identity research)
+009d5200	?OpenFileReadWrite@CBankFileAsync@@QAEXABVCWideString@@KK@Z	00502170	virtual PDB method on the row's own model of CBankFileAsync (layout)
+009d5f80	??0CBase_009d5f80@@QAE@XZ	0050b420	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00838a00	?ScalarDtor@CThingBuilding@@QAEXXZ	005299a0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0099a2e0	?OnDie@CInventoryItemBase@@QAEXXZ	00529cc0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009ccdc0	?GetFont@CFontBank@NUISystem@@QAEPAUCFont@2@ABVCCharString@2@@Z	00546140	call site: callee text not B->M / B.M ('GetFont')
+00843a80	??0CCreatureAction_PlayAnimation@@QAE@PAVCThing@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z	0056a980	row: named in T3_PORT_QUEUE col 2/3
+0084e420	??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@PBVCCameraModeDef@@@Z	0056e330	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006c9fa0	?GiveTutorialForCategory@CTCHero@@QAE_NJ_N@Z	0057c2e6	row: named in T3_PORT_QUEUE col 2/3
+00998f60	?FilesAreIdentical@@YI_NAAVCDiskFileWin32@@0@Z	00581765	call site: parameter 0 CDiskFileWin32& -> CAFile&
+00a043a0	?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ	005bc5c6	row: named in T3_PORT_QUEUE col 2/3
+00995030	?ReadC2DVector@CMemoryDataInputStream@@QAE?AVC2DVector@@XZ	005dbda0	row: named in T3_PORT_QUEUE col 2/3
+009d49b0	?GetString@CDefStringTable@NErase005dcf70@@QAE?AUCCharString@2@H@Z	005dcf70	row: named in T3_PORT_QUEUE col 2/3
+0084e420	??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	00636e90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007fffb0	?GetActionSpeedMultiplier@CTCHaste@@QAEMXZ	00647ab4	row: in a pending RESERVED.tsv
+0076d4f0	?AreThingsAllies@@YI_NPBVCThing@@0@Z	0064a1ae	stand-in has a body in the row (inline model, not a callee-only rebind)
+0076d2f0	?AreThingsEnemies@@YI_NPBVCThing@@0@Z	0064a1ae	stand-in has a body in the row (inline model, not a callee-only rebind)
+0099b510	@FableMemberDtor_006568bb@4	006568bb	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00811380	?CanStartEvent@CTCCrowdEvents@@QAE_NJJ@Z	006594bb	type: enum NEntityEvents::EEventType unknown to the row
+006c5630	?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z	0065a5bb	type: enum EOpinionDeedType unknown to the row
+0076d1b0	?AddEnemyThing@CTCEnemy@@QAEXPAVCThing@@@Z	0065a852	row: named in T3_PORT_QUEUE col 2/3
+0076cc00	?RemoveEnemyThing@CTCEnemy@@QAEXPAVCThing@@@Z	0065a852	row: named in T3_PORT_QUEUE col 2/3
+006e9360	?GetCombatantInfo@CCombatManager@@QAEPAUCCombatantInfo@@ABVCThing@@@Z	00663b10	row: named in T3_PORT_QUEUE col 2/3
+00864cb0	?IsThingRunningAwayFromCombat@@YI_NPAVCThing@@@Z	00663b10	row: named in T3_PORT_QUEUE col 2/3
+00811190	??0CEventKilledCreature@@QAE@PAVCThing@@0@Z	00663f50	row: libclang parse errors at HEAD
+00835c80	?Create@CThingDeadCreature@@SIPAV1@JPBVC3DVector@@JPBVCCharString@@PAVCAnimFilterBase@@@Z	00663f50	row: libclang parse errors at HEAD
+006a22d0	?GetWeapons_006a22d0@CTCCarrying@@QAEXPAUCThingVector@@_N@Z	006647f0	row: named in T3_PORT_QUEUE col 2/3
+00811340	?IsInMode@CTCCreatureModeQuery@@QBE_NJ@Z	00664c60	type: enum NEntityEvents::EEventType unknown to the row
+0086c4d0	??0CRandomAppearanceMorphMember@@QAE@XZ	00675be0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a03b50	?GetDevice@CInputEvent@@QBEJXZ	00687db0	type: enum EInputDeviceType unknown to the row
+0068eb20	?IsInThirdPersonRangedMode@CThingCreatureBase@@QAE_NXZ	00688ba0	parameter count differs (identity research)
+00689270	??9@YI_NABUCBaseIntelligentPointer@@PBVCThing@@@Z	00688eb0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a043a0	?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ	006894c0	row: named in T3_PORT_QUEUE col 2/3
+00a0c380	?Helper_0x00a0c380@@YIMPAUSomeObj@@@Z	00697080	parameter count differs (identity research)
+00877c40	?IsLineOfSightFiltered@CTools@@QAE_NPBX0PAX1PAJAAPBVCThing@@J_N@Z	00698430	class CTools defined in the row more than once / in another scope
+00879620	??0CProjectileWeapon@NCameraModes@@QAE@AAVCGameCameraManager@@ABUCCameraDefPointer@@MM@Z	00698d10	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a13c60	?Rotate@CQuakeVector@@QAEXABU1@M@Z	00699560	row: named in T3_PORT_QUEUE col 2/3
+0084e420	??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@ABUCCameraModeDefPointer@@@Z	00699970	row: named in T3_PORT_QUEUE col 2/3
+0084e420	??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@PBVCCameraModeDef@@@Z	0069df80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069dfe0	??0CCameraMode_0069dfe0@@QAE@PAUCCombatSequence_WillLightning@@PBUSCameraDescriptor@@PBV?$CCountedPointer@VCThing@@@@@Z	0069e3d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThingCreatureBase@@ABVCCharString@@PAVCThing@@JJPAVCCreatureActionBase@@@Z	0069f1f0	row: named in T3_PORT_QUEUE col 2/3
+006a2220	?GetAllCarriedThings@CTCCarrying@NRemap006a23e0@@QAEXAAUObjects@2@@Z	006a23e0	stand-in has a body in the row (inline model, not a callee-only rebind)
+006b83e0	?SetBypassScreenFilter@CEnvironmentSpellEffectInterfaceMethods@NRemap006a23e0@@QAEXAAUvector@2@H@Z	006a23e0	call site: parameter 0 NRemap006a23e0::vector& -> std::vector<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser, std::allocator<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser>> const&
+0085f0c0	@MorphPair_CtorHelper@4	006a73f0	wrong spelling not parsed
+0085f2b0	@Real_Cons_val_pair_morph_c@4	006a7400	wrong spelling not parsed
+0085fbc0	@Real_Cons_val_pair_morph_d@4	006a7580	row: named in T3_PORT_QUEUE col 2/3
+0073a6e0	?GetObject@CTCEpicSpellTarget@@QBEPAUCTypedObject@@XZ	006a8d30	type: unknown nested type CTCCreatureModeManager::CModeBase
+00a0c380	?GetAngleXY@CTransform@@QBEMXZ	006a9640	row: named in T3_PORT_QUEUE col 2/3
+006a06e0	??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z	006ac910	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009e9f40	?DisplayProgress@NFactory006ac910@@YIXABVCCharString@@_NMH@Z	006ac910	call site: member call through DECL_REF_EXPR
+008883c0	??0CEnvironmentThemePriorityStack@@QAE@J@Z	006b4900	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00888260	?GetBlendedTheme@CEnvironmentThemeSetDay@@QAEXPAUCBlendedEnvironmentTheme@@M@Z	006b4900	class CEnvironmentThemeSetDay defined in the row more than once / in another scope
+008814c0	?Release@SubObjAt90@@QAEXXZ	006b5870	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00881780	?Do@CopyHelper@@QAEPAVCCharString@@UTreeIter@@PAV2@0@Z	006b8370	type: enum NScreenEffect::ScreenEffectPriority unknown to the row
+00881690	?InsertRadialBlurEntry@CScreenEffectPriorityStack@@QAEXMPBUCRadialBlurParams@@PBUCRadialBlurPositionParams@@W4ScreenEffectPriority@@@Z	006b84e0	class CScreenEffectPriorityStack defined in the row more than once / in another scope
+00880e50	?FrameUpdate@CScreenEffectPriorityStack@@QAEXXZ	006b8640	class CScreenEffectPriorityStack defined in the row more than once / in another scope
+00884e90	?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurParams@@_N@Z	006b8640	call site: parameter 0 CRadialBlurParams const& -> CEnvironmentSpellEffectInterface::CRadialBlurParams const&
+00884f60	?SetRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@QAEXABUCRadialBlurPositionParams@@_N@Z	006b8640	call site: parameter 0 CRadialBlurPositionParams const& -> CEnvironmentSpellEffectInterface::CRadialBlurPositionParams const&
+00884fe0	?SetScreenFilterParams@CEnvironmentSpellEffectInterface@@QAEXABUCScreenFilterParams@@_N@Z	006b8640	call site: parameter 0 CScreenFilterParams const& -> CEnvironmentSpellEffectInterface::CScreenFilterParams const&
+006ba420	??0CMember_006ba420Member@@QAE@XZ	006baa40	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006bb940	?ConsoleSetDaySpeed@CGameTimeManager@@CIXAAV1@ABUCGenericVarVector@@@Z	006bbc30	non-call reference to the member (address taken / member pointer)
+006bb860	?ConsoleSetTimeOfDay@CGameTimeManager@@CIXAAV1@ABUCGenericVarVector@@@Z	006bbc30	non-call reference to the member (address taken / member pointer)
+00995030	?Read@CMemoryDataInputStream@@QAEXPAVC2DVector@@@Z	006bc510	parameter count differs (identity research)
+006c0330	?SetDressLevel@CTCBuyableHouse_Methods@@QAEXH@Z	006c04b0	row: named in T3_PORT_QUEUE col 2/3
+00a44620	?CLevelLoader_Destruct@@YIXPAX@Z	006c2e90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006c59e0	?DestroyDeed@CDeedOwner_006c6010@@QAEXJ@Z	006c6010	row: named in T3_PORT_QUEUE col 2/3
+006c5f80	?RemoveCrimeFromVillage@CDeedOwner_006c6010@@QAEXJ@Z	006c6010	row: named in T3_PORT_QUEUE col 2/3
+006c5920	?RemoveDeedStillSearchingForWitnesses@CDeedOwner_006c6010@@QAEXJ@Z	006c6010	row: named in T3_PORT_QUEUE col 2/3
+00a1cbf0	?Create@CNavigatorAStar@@SIPAVCNavigatorBase@@PAVCNavigatorManager@@PAVCNavigatorExternalInterface@@@Z	006cc6b0	row: libclang parse errors at HEAD
+00a18f70	?Create@CNavigatorFlyer@@SIPAVCNavigatorBase@@PAVCNavigatorManager@@PAVCNavigatorExternalInterface@@@Z	006cc6b0	row: libclang parse errors at HEAD
+006ce670	?Construct@CGroundNavigatorExternalInterface_Methods@@QAEPAVCNavigatorExternalInterface@@PAVCGroundNavigatorExternalInterface@@@Z	006ce650	row: named in T3_PORT_QUEUE col 2/3
+009ba790	?ReadAsString@Parser@N006d41f0@@QAE?AUCCharString@2@XZ	006d41f0	class CStringParser is defined in an included header without the PDB method (header change: _hdr batch)
+0088bcb0	@sub_88bcb0@16	006d5a90	wrong spelling not parsed
+006d7e70	?base_6d7e70@@YIXPAVCTCElectrocutedEffect@@@Z	006d8770	parameter count differs (identity research)
+006d7f20	?helper_6d7f20@@YGXH@Z	006d8770	call site: member call through DECL_REF_EXPR
+006d83b0	?OnStatLevelChange@CTCHeroExperience_Methods@@QAEX_N@Z	006d8ad0	class CTCHeroExperience is defined in an included header without the PDB method (header change: _hdr batch)
+006d8170	?UpdateAbilitiesForStat@CTCHeroExperience_Methods@@QAEXJ_N@Z	006d8ad0	class CTCHeroExperience is defined in an included header without the PDB method (header change: _hdr batch)
+006d83b0	?OnStatLevelChange@CTCHeroExperience_Retail@@QAEX_N@Z	006d8b00	row: named in T3_PORT_QUEUE col 2/3
+006d8170	?UpdateAbilitiesForStat@CTCHeroExperience_Retail@@QAEXJ_N@Z	006d8b00	row: named in T3_PORT_QUEUE col 2/3
+006d8170	?UpdateAbilitiesForStat@CTCHeroExperience_Retail@@QAEXJ_N@Z	006d8ca0	type: enum EHeroTrainableStatType unknown to the row
+006df730	??0CCreatureAction_ShowTrophy@@QAE@PAVCThing@@0ABVCCharString@@J@Z	006dd8f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0071a940	?RemoveDependentThing@CTCDependentThings@@QAEXPAVCThing@@@Z	006e0be0	row: named in T3_PORT_QUEUE col 2/3
+006e0f10	?Notify@Target4@@QAEXXZ	006e0fa0	parameter count differs (identity research)
+006a06e0	??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z	006e11f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006e1080	?SetPEmitter@CTCDParticleEmitter@X_006e11f0@@QAEXPAUCParticleEmitter@@@Z	006e11f0	class CTCDParticleEmitter defined in the row more than once / in another scope
+006e2500	?Cleanup@Sub28@@QAEXXZ	006e26f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0073a6e0	?GetCurrentMode@CModeComponent@@QAEPAUCMode@@XZ	006e3180	row: named in T3_PORT_QUEUE col 2/3
+006e8850	?GetRingRadius@CCombatWheel@@QBEMJ@Z	006e9680	row: named in T3_PORT_QUEUE col 2/3
+006e9200	?SetAttackerProngAsBlocked@CCombatWheel@@QAEXABVCThingCreatureBase@@AAVCAttackingCombatantInfo@@@Z	006e9d10	class CCombatWheel defined in the row more than once / in another scope
+006eae20	?GetBestSequenceIndexAttackerOnDefender@CCombatManager_Retail@@QAEJAAUCCombatantInfo@@0@Z	006eb9f0	call site: parameter 0 CCombatantInfo& -> CCombatantInfo const&
+0085f0c0	?IsIncapacitated@@YI_NPAVCThingCreatureBase@@@Z	006ebdd0	call site: member call through DECL_REF_EXPR
+008b7cf0	?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThingCreatureBase@@JPA_N1@Z	006ebdd0	type: enum EUnsheatheWeaponType unknown to the row
+006eff60	??0CProng@@QAE@ABU0@@Z	006ec380	row: named in T3_PORT_QUEUE col 2/3
+006ec380	??0CCombatRing@@QAE@JABVCCombatTypeDef@@@Z	006ec7d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00747b80	?SetAsInDanger@CTCStealth@@QAEXPAVCThingCreatureBase@@W4EDangerStatus@@@Z	006eda80	type: enum NStealth::EDangerStatus unknown to the row
+006eff60	??0Element_006f3f00@@QAE@ABU0@@Z	006f3f00	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006eff60	??0CElement28_006eff60@@QAE@ABU0@@Z	006f42a0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a50bf0	?GetEmbeddedEventNames_00a50bf0@C3DAnimationStats@@QBEXPAX@Z	006f91e0	row: named in T3_PORT_QUEUE col 2/3
+00a4ef90	?GetTimingEventNames@C3DAnimationStats@@QBEXAAU?$vector@VCCharString@@@@@Z	006f9820	call site: callee text not B->M / B.M ('GetTimingEventNames')
+006fade0	?resize@?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@NAnimationEvents@@QAEXJABVCEvent@2@@Z	006f9820	template scope or member template (shared-header route)
+006fade0	?resize@EventVector@NAnimationEvents@@QAEXJABVCEvent@2@@Z	006f9f90	template scope or member template (shared-header route)
+006fade0	?resize@EventVector@NAnimationEvents@@QAEXJABVCEvent@2@@Z	006fa3f0	template scope or member template (shared-header route)
+006fefb0	?TransferBinaryIn@CReactionMatch_TransferBinaryIn@@QAEXAAVCMemoryDataInputStream@@@Z	006ff040	row: named in T3_PORT_QUEUE col 2/3
+006fefb0	?TransferBinaryIn@CReactionMatch_TransferBinaryIn@@QAEXAAVCMemoryDataInputStream@@@Z	006ff2c0	row: named in T3_PORT_QUEUE col 2/3
+0070d580	?gd_sub@@YGHPAXHH@Z	0070d920	row: named in T3_PORT_QUEUE col 2/3
+00712340	?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@QBEXABUCCameraTag@CSubtitledMessage@2@AAPBVCThing@@AAVC3DVector@@12@Z	00713010	row: named in T3_PORT_QUEUE col 2/3
+008d5110	??0CCreatureAction_FireMissileWeapon@@QAE@PAVCThing@@0@Z	00715110	row: named in T3_PORT_QUEUE col 2/3
+006a1440	?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ	00715110	row: named in T3_PORT_QUEUE col 2/3
+00717950	??0CActionTalkBase@@QAE@PAVCThing@@_N11@Z	00717aa0	row: named in T3_PORT_QUEUE col 2/3
+00717950	??0CActionTalkBase@@QAE@PAVCThing@@_N11@Z	00717c50	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00717950	??0CActionTalkBase@NTCScriptedControl@@QAE@PAUCThing@1@_N11@Z	00717d40	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0071c360	?InitialiseCustomTattoos@CTCHeroMorph_Retail@@QAEXXZ	0071c790	row: named in T3_PORT_QUEUE col 2/3
+00786670	?AddMorph@CTCTextureMorphs@@QAEXJABVCCharString@@M@Z	0071de80	row: named in T3_PORT_QUEUE col 2/3
+006ca950	?Set@CTextureMapSet@@QAEXJPBE@Z	0071de80	row: named in T3_PORT_QUEUE col 2/3
+006b0780	?OnCreate@CTCPhysicsBase_Calls@@QAEXXZ	007232e0	class CTCPhysicsBase is defined in an included header without the PDB method (header change: _hdr batch)
+006b0780	?BaseOnCreate@CTCPhysicsStandard@@QAEXXZ	00724010	row: named in T3_PORT_QUEUE col 2/3
+00724010	?OnCreate@CTCPhysicsStandard@@QAEXXZ	00724f80	virtual PDB method on the row's own model of CTCPhysicsStandard (layout)
+006b0c10	?CTCPhysicsNavigator_Notify@@YIHPAXHPBUVec3@@@Z	00726750	parameter count differs (identity research)
+007308f0	?UpdateAnimation@CTCDoor_Methods@@QAEXXZ	007311f0	class CTCDoor is defined in an included header without the PDB method (header change: _hdr batch)
+00730f90	?UpdateOpenStatusTriggerTypePerson@CTCDoor_Methods@@QAEXXZ	007311f0	class CTCDoor is defined in an included header without the PDB method (header change: _hdr batch)
+00738f90	?IsAppropriateEntryExisting@CAnimationSet@@QBE_NABVCIsCombatAnimAppropriateFollowingCombo@@@Z	00733950	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00739360	@sub_D@4	00734320	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007339e0	?UpdateCombatTimers@CTCCombat_Methods@@QAEXXZ	00736ae0	class CTCCombat is defined in an included header without the PDB method (header change: _hdr batch)
+00736760	?UpdateFlourishParticles@CTCCombat_Methods@@QAEXXZ	00736ae0	class CTCCombat is defined in an included header without the PDB method (header change: _hdr batch)
+00736590	?UpdateUsableMeleeCombatAbilities@CTCCombat_Methods@@QAEXXZ	00736ae0	class CTCCombat is defined in an included header without the PDB method (header change: _hdr batch)
+00739e20	?CModeCrouch_Destruct@@YIXPAX@Z	0073fe70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008d7ca0	??0CModeSitBase@@QAE@PAVCThing@@@Z	0073ff70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00739e20	?CModeKnockedDown_Destruct@@YIXPAX@Z	007408c0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00739e20	?CModeForcePushed_Destruct@@YIXPAX@Z	00740990	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00744730	?OnDirectlyAwareOfPerceivedThing@CTCPerceiveThing_Methods@@QAEXXZ	007449b0	row: named in T3_PORT_QUEUE col 2/3
+00744730	?Do_744730@@YIXPAVCTCPerceiveThing@@@Z	007449e0	parameter count differs (identity research)
+006af520	?GetPThing@CGameScriptThing@@QAEPAVCThing@@XZ	00744d00	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0085ef70	?ewu_probe@@YIEPAUSub@@@Z	00746eb0	call site: member call through DECL_REF_EXPR
+0074e6b0	??0CTCContainerRewardHero_Calls@@QAE@PAVCThing@@@Z	007508d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0085f200	?IsLookTurningOverridenByParent@CThing@@QAE_NXZ	00753c70	parameter count differs (identity research)
+007573c0	?Kill@CWound@@QAEXPAVCTCTextureDecal@@@Z	00757760	row: named in T3_PORT_QUEUE col 2/3
+00757570	?Update@CWound@@QAEXPAVCTCTextureDecal@@@Z	00757760	row: named in T3_PORT_QUEUE col 2/3
+00757b30	?AddWound@CTCWound@@QAEXJ@Z	00757f90	type: enum EBodyLocation unknown to the row
+00a358f0	?GetMatrixFromRHSet@@YIABVC3DMatrix@@AAV1@ABVCRightHandedSet@@@Z	0075a530	parameter count differs (identity research)
+00877c40	?IsLineOfSightFiltered@CTools@@QAE_NPBVC3DVector@@0PAV2@1PAJAAPBVCThing@@J_N@Z	0075daa0	class CTools defined in the row more than once / in another scope
+007624e0	?CreateShape@CTCShapeManager@@QAE?AUCShapePointer@@JABUCPointVector@@@Z	00762d80	call site: parameter 1 CPointVector const& -> std::vector<C3DVector, std::allocator<C3DVector>>&
+007624e0	?CreateShape@CTCShapeManager@@QAE?AUCShapePointer@@JABUCPointVector@@@Z	00762e10	stand-in has a body in the row (inline model, not a callee-only rebind)
+007624e0	?CreateShape@CTCShapeManager@@QAE?AUCShapePointer@@JABUCPointVector@@@Z	00762f50	call site: parameter 1 CPointVector const& -> std::vector<C3DVector, std::allocator<C3DVector>>&
+007624e0	?CreateShape@CTCShapeManager@@QAE?AUCShapePointer@@JABUCPointVector@@@Z	00762fd0	call site: parameter 1 CPointVector const& -> std::vector<C3DVector, std::allocator<C3DVector>>&
+00769040	??0CElement24_00769040@@QAE@ABU0@@Z	0076bc70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0076e4d0	?GetLastWeaponTrailPoints@CTCWeaponTrail@@QBE_NAAVCPointPairVector@@ABVCWeaponTrailList@@@Z	0076ea60	model CTCWeaponTrail has other overloads of GetLastWeaponTrailPoints
+007713c0	?SetupFromDef@CStateStackOwner_00771510@@QAEXPAUCStateDef@@@Z	00771510	call site: parameter 0 CStateDef* -> long
+009f1760	?Copy@CMemoryBuffer@@QAEXKPBX@Z	00773b20	row: named in T3_PORT_QUEUE col 2/3
+0077cca0	?DoHighlightAction@CTCHighlightItem_Methods@@QAEXXZ	0077cde0	row: named in T3_PORT_QUEUE col 2/3
+00787bf1	@Cleanup@8	00787c0c	wrong spelling not parsed
+0078809b	_FableCam_788198@8	00788198	row: named in T3_PORT_QUEUE col 2/3
+0073a6e0	?GetObject@CTCInterface31@@QBEPAUCTypedObject@@XZ	007892ea	type: unknown nested type CTCCreatureModeManager::CModeBase
+0073a6e0	?GetCurrentMode@CTCModeOwner@@QAEPAUCMode@@XZ	00789e60	type: unknown nested type CTCCreatureModeManager::CModeBase
+0072abd0	?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z	0078f6e0	call site: parameter 0 CBaseIntelligentPointer& -> CIntelligentPointer<CThing>&
+0072abd0	?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z	00794c10	call site: parameter 0 CBaseIntelligentPointer& -> CIntelligentPointer<CThing>&
+00773b20	?od2@@YIXPAUS@@@Z	00799120	parameter count differs (identity research)
+0079deb0	?PlayEffect@CTCPhysicalShieldSpell@@QAEXJABVCCharString@@0PAVCThing@@J@Z	0079e300	call site: parameter 0 long -> CIntelligentPointer<CThing>*
+0079ddb0	_FableUninit_79e500@4	0079e500	wrong spelling not parsed
+0079deb0	?PlayEffect@CTCPhysicalShieldSpell@@QAEXJABVCCharString@@0PAVCThing@@J@Z	0079eb30	call site: parameter 0 long -> CIntelligentPointer<CThing>*
+007a1380	?Activate@CLightningBeam@@QAEXXZ	007a16f0	class CLightningBeam defined in the row more than once / in another scope
+007a0d90	?GetTargets@CTCWillLightning@@QAE_NPAU?$CRetailList@V?$CCountedPointer@UCLightningBeam@@@@@@JPAVCThing@@PAUCThingPtrList@@MMM_N@Z	007a16f0	stand-in has a body in the row (inline model, not a callee-only rebind)
+007a0770	@Mapwho_Member@4	007a4120	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0073a6e0	?GetKindObject@CTC31@@QBEPAUCKindObject@@XZ	007b5ca0	type: unknown nested type CTCCreatureModeManager::CModeBase
+007bfe30	?UpdateCollision@CTCShotDefinitionBase@@QAEXPA_N@Z	007bdac7	class CTCShotDefinitionBase defined in the row more than once / in another scope
+007c1000	?OnCollisionProper@CTCShotDefinitionBase@@QAEXPA_N@Z	007c21a0	row: named in T3_PORT_QUEUE col 2/3
+008f1d40	?FrameUpdate@CTCTavernGameCardBase@@QAEXXZ	007da360	row: named in T3_PORT_QUEUE col 2/3
+007eb030	??0CCreatureAction_AddRealObjectToInventory@@QAE@PAVCThingCreatureBase@@PAVCThingObject@@@Z	007eb110	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007ecfd0	??0CCreatureAction_AlertToPlayer@@QAE@PAVCThingAICreature@@@Z	007ed0a0	row: libclang parse errors at HEAD
+007ed780	??0CCreatureAction_ShowItem@@QAE@PAVCThingCreatureBase@@PAVCThing@@1@Z	007ed870	row: libclang parse errors at HEAD
+00843610	??0CCreatureAction_DeclarePlayerACriminal@@QAE@PAVCThingCreatureBase@@PAVCThingPlayerCreature@@@Z	007edcd0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00843610	??0CCreatureAction_DeclarePlayerACriminal@@QAE@PAVCThingCreatureBase@@PAVCThingPlayerCreature@@@Z	007eddf0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00843610	??0CCreatureAction_UseWallMount@@QAE@PAVCThingCreatureBase@@PAVCThingPlayerCreature@@@Z	007efe70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007f1840	?RumbleDistanceFalloff@@YIMABVC3DVector@@0@Z	007f1930	call site: member call through DECL_REF_EXPR
+007f4fc0	?Check@CTCStockItem_Methods@@QAEHXZ	007f5050	class CTCStockItem is defined in an included header without the PDB method (header change: _hdr batch)
+007f4fc0	?GetStockHolder@CTCStockItem_Methods@@QAEPAXXZ	007f5070	class CTCStockItem is defined in an included header without the PDB method (header change: _hdr batch)
+0082d2d0	?GetPBuildingDef@CThingBuilding@@QBE?AV?$CDefPointer@UCBuildingDef@@@@XZ	007f50b0	row: named in T3_PORT_QUEUE col 2/3
+007f53a0	?OnInitialActivate@CTCSoundAtmosphere@@QAEXXZ	007f50b0	row: named in T3_PORT_QUEUE col 2/3
+006a7550	??RCThingFilter_EnemyCreature@@QBE_NPAVCThing@@@Z	007f6df0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006a76a0	??RCThingFilter_IsNot@@QBE_NPBVCThing@@@Z	007f6df0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0080cbf0	?AddExcludedThing@CExplosionDriver@@QAEXPAVCThing@@@Z	007fbe50	row: libclang parse errors at HEAD
+0080c500	?CreateThing@@YIPAVCThing@@JPBVC3DVector@@0@Z	007fbe50	row: libclang parse errors at HEAD
+00877c40	?IsLineOfSightFiltered@CTools@@QAE_NPBVC3DVector@@0PAV2@1PAJAAPBVCThing@@J_N@Z	007fbe50	row: libclang parse errors at HEAD
+007fc210	?Kraken_sub_7fc210@@YIXPAVCTCKraken@@@Z	007fc6f0	parameter count differs (identity research)
+007fc210	?CTCKraken_ClearTentacles@@YIXPAVCTCKraken@@@Z	007fc710	parameter count differs (identity research)
+007fda80	?ForEach@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z	007fd580	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00995030	?ReadC2DVector@CMemoryDataInputStream@@QAE?AVC2DVector@@XZ	00800b90	row: named in T3_PORT_QUEUE col 2/3
+007f4fc0	?GetShopTC@CTCStockItem@N00809d60@@QBEPAUCTCShop@2@XZ	00809d60	row: named in T3_PORT_QUEUE col 2/3
+0073a6e0	?GetObject@CTCInterface31@@QBEPAUCTypedObject@@XZ	0080e480	type: unknown nested type CTCCreatureModeManager::CModeBase
+007fdeb0	?GetAllSummonedCreatures@CTCAISummon@@SIAAV?$list@V?$CIntelligentPointer@VCThing@@@@@std@@XZ	0080f240	row: named in T3_PORT_QUEUE col 2/3
+0074a5d0	?GetValidPositions@@YIXAAUCPositionVector@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z	0080f270	call site: member call through DECL_REF_EXPR
+008688f0	?cons_helper_008688f0@@YIXPAX@Z	00810f60	parameter count differs (identity research)
+007beff0	?GetPWeapon@CTCWeaponHolder_77@@QAEPAVCThing@@XZ	00811760	row: named in T3_PORT_QUEUE col 2/3
+00814c70	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@@QBE?AVC3DVector@@PAVCThing@@@Z	00814d10	class CPhysicalPrimitiveSphere defined in the row more than once / in another scope
+00a58790	?GetFirstIntersectionWithFiniteLine@CSphere@@QBE_NABVC3DVector@@0PAV2@1@Z	00814d10	class CSphere defined in the row more than once / in another scope
+00a58b50	?GetFirstIntersectionWithTriangle@CSphere@@QBE_NABU?$vector@VC3DVector@@@@AAVC3DVector@@1@Z	00814d90	class CSphere defined in the row more than once / in another scope
+00814c70	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@@QBE?AVC3DVector@@PAVCThing@@@Z	00814e10	class CPhysicalPrimitiveSphere defined in the row more than once / in another scope
+00814c70	?GetDummyObjectOrigin@CPhysicalPrimitiveSphere@@QBE?AVC3DVector@@PAVCThing@@@Z	00814f90	class CPhysicalPrimitiveSphere defined in the row more than once / in another scope
+008158d0	?GetDummyObjectOriginTransformed@CPhysicalPrimitiveCylinder@@QBEXPAVCThing@@AAVC3DVector@@1@Z	00815ba0	class CPhysicalPrimitiveCylinder defined in the row more than once / in another scope
+00a59fd0	?GetFirstIntersectionWithFiniteLine@CCylinder@@QBE_NABVC3DVector@@0PAV2@1@Z	00815ba0	class CCylinder defined in the row more than once / in another scope
+008158d0	?GetDummyObjectOriginTransformed@CPhysicalPrimitiveCylinder@@QBEXPAVCThing@@AAVC3DVector@@1@Z	00815c40	class CPhysicalPrimitiveCylinder defined in the row more than once / in another scope
+00a593f0	?GetFirstIntersectionWithTriangle@CCylinder@@QBE_NPBXPAVC3DVector@@1@Z	00815c40	class CCylinder defined in the row more than once / in another scope
+008f6050	?Clear@CGameMapGrid@@QAEXXZ	0081e7e0	row: named in T3_PORT_QUEUE col 2/3
+0082e9c0	?GetThingsToAdd@CScriptedMapBrush@@QBEXAAUUIDList@@@Z	00820790	call site: parameter 0 UIDList& -> std::list<unsigned __int64, std::allocator<unsigned __int64>>&
+0082e910	?GetThingsToDelete@CScriptedMapBrush@@QBEXAAUUIDList@@@Z	008209c0	call site: parameter 0 UIDList& -> std::list<unsigned __int64, std::allocator<unsigned __int64>>&
+00820b80	?ApplyScriptedMapBrush@CMapBrushApplier_00820c90@@QAEXPAX@Z	00820c90	parameter count differs (identity research)
+0082e600	??0CScriptedMapBrush@@QAE@ABVC2DBoxI@@@Z	00820f80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006d5ab0	?NotifyManager@CThingCreature@@QAEXXZ	0082fe00	row: named in T3_PORT_QUEUE col 2/3
+008018b0	?OnNewBrain_008018b0@CTCIdleScheduler@@QAEXXZ	00833010	row: named in T3_PORT_QUEUE col 2/3
+00838aa0	?Helper2@CThingCreatureBase@@QAEXXZ	00838ba0	row: named in T3_PORT_QUEUE col 2/3
+00811760	??0CEventHitBase@@QAE@PAVCHitParameters@@@Z	0083af30	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00841790	?find@?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z	0083f420	row: named in T3_PORT_QUEUE col 2/3
+0083f420	?glp_helper@@YIXPAUS@@@Z	0083f640	parameter count differs (identity research)
+00694430	?CCreatureAction_Base_FinishAction@@YIXPAVCCreatureAction_GetOutOfBed@@@Z	008421c0	row: named in T3_PORT_QUEUE col 2/3
+0084aee0	??0CEventShownItem@NEntityEvents@@QAE@PAVCThing@@0@Z	00845270	row: named in T3_PORT_QUEUE col 2/3
+0084b100	??0CEventTalkedToBy@NEntityEvents@@QAE@PAVCThing@@@Z	00845900	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00770fa0	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPAVCThing@@@Z	00845ce0	row: named in T3_PORT_QUEUE col 2/3
+008fb170	??0CPhysicsForceSubmodel@@QAE@JMMJJJ@Z	00850410	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00850530	?DiscardAsyncData_00850530@@YIXPAUCAsyncData_00850530@@@Z	00850670	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00694d10	_SpiritHelper	008545f0	row: named in T3_PORT_QUEUE col 2/3
+00694d10	?CCreatureActionBase_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z	008546a0	row: named in T3_PORT_QUEUE col 2/3
+00693030	?SetAnimation@CCombatActionBase@@QAEXPBVCAnimationEntry@@MM@Z	00856ac0	row: named in T3_PORT_QUEUE col 2/3
+00693030	?SetAnimation@CCreatureActionBase@@QAEXPBVCAnimationEntry@@MM@Z	00857520	row: named in T3_PORT_QUEUE col 2/3
+006927f0	?CreatureOnBlowBlocked@CCombatActionBase@@QAEX_N@Z	00858cc0	row: named in T3_PORT_QUEUE col 2/3
+00850530	?DiscardAsyncData_00850530@@YIXPAUCAsyncData_00850530@@@Z	0085ca40	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0073a760	?GetNoFramesBeforePlayingIdleAnims@CModeBase@@QAEJW4EMode@@@Z	00862780	class CModeBase defined in the row more than once / in another scope
+0073a7d0	?GetNoFramesBeforePlayingWaveAnims@CModeBase@@QAEJW4EMode@@@Z	00862780	class CModeBase defined in the row more than once / in another scope
+00864f80	??0CElement8_00864f80@@QAE@ABU0@@Z	008658b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008f7860	?IsToCreateCombatParticleEffects@@YI_NPAVCThing@@0@Z	00865c20	call site: member call through DECL_REF_EXPR
+00739e20	?CModeExplosiveForcePushed_Destruct@@YIXPAX@Z	00868100	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0086bc10	?AddTextureMorph@CRandomAppearanceMorph@@QAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@@@KABVCTextureMorph@1@@Z	0086bcc0	call site: parameter 0 CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph>& -> CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph>>&
+0086bc10	?AddTextureMorph@CRandomAppearanceMorph@@QAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@@@KABVCTextureMorph@1@@Z	0086bd20	call site: parameter 0 CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph>& -> CVectorMap<unsigned long, CRandomAppearanceMorph::CTextureMorph, CKeyPairCompareLess<unsigned long, CRandomAppearanceMorph::CTextureMorph>>&
+0084e420	??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	00873a10	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00874f80	?IsLandscapeToBlockCameraBetween@@YI_NPAVCWorldMap@@PBVC3DVector@@1_N@Z	00875550	non-call reference to the member (address taken / member pointer)
+00877840	?IsLineOfSight@CTools@NCameraModes@@QBE_NABUCThingConstVector@@ABVC3DVector@@1AAV4@2AAMPAPBVCThing@@W4ELOSTest@12@_N@Z	00877c40	row: named in T3_PORT_QUEUE col 2/3
+0084e420	??0CCameraModeBase@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	00879620	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0084d080	?Refresh_0084d080@CTrack@NCameraModes@@QAEXXZ	0087b910	call site: return void -> NCameraModes::CTools const&
+00746ec0	?GetPositionToMoveToForStabOn@CTCStealth@@QBE?AVC3DVector@@AAUCreature@@AAM@Z	0087ed70	call site: parameter 0 Creature& -> CThing&
+006af630	_FableSpellWrap_880200@4	00880200	wrong spelling not parsed
+00882fe0	?Interpolate@CScreenFilterParams@@QBE?AU1@ABU1@M@Z	00880e00	class CScreenFilterParams defined in the row more than once / in another scope
+00885070	?SetRadialBlurParams@CEnvironmentSpellEffectInterface@@QAEXABUC3DVector_008853a0@@J0JJJJ@Z	008853a0	model CEnvironmentSpellEffectInterface has other overloads of SetRadialBlurParams
+008854a0	?InterpolateRadialBlurParams@CEnvironmentSpellEffectInterface@@SI?AUCBlurParams@@MABU2@0@Z	008857e0	call site: parameter 1 CBlurParams const& -> CEnvironmentSpellEffectInterface::CRadialBlurParams const&
+00885680	?InterpolateRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@SI?AUCBlurPositionParams@@MABU2@0@Z	008857e0	call site: parameter 1 CBlurPositionParams const& -> CEnvironmentSpellEffectInterface::CRadialBlurPositionParams const&
+00882fe0	?Interpolate@CScreenFilterParams@@QBE?AU1@ABU1@M@Z	008859f0	class CScreenFilterParams defined in the row more than once / in another scope
+006b5df0	??4CElement500_006b5df0@@QAEAAU0@ABU0@@Z	00889950	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008894a0	??0Element_0088a070@@QAE@ABU0@@Z	0088a070	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0085f600	?RemoveMovementBlockingModes@CThing_Retail@@QAEXXZ	0088e8d0	parameter count differs (identity research)
+007f1ac0	?CGSI_Rumble_Create@@YIXPBVC3DVector@@EMM@Z	0088ed20	call site: return void -> CThing*
+006a1620	?EntityWieldsRanged@@YI_NPAUEntity@@@Z	00890250	row: named in T3_PORT_QUEUE col 2/3
+006bdef0	?CGSIStopMusic_ResumeEvent@@YIXPAUCGSIStopMusicEvent@@@Z	008912a0	parameter count differs (identity research)
+006bdf90	?CGSIStopMusic_StopEvent@@YIXPAUCGSIStopMusicEvent@@@Z	008912a0	parameter count differs (identity research)
+0099e960	?check@Str@@QAEDH@Z	00891490	row: named in T3_PORT_QUEUE col 2/3
+006e71f0	?SetQuestProgress@CGameScriptInterface_Methods@@QAEXM@Z	00892f80	row: named in T3_PORT_QUEUE col 2/3
+006e71f0	?applyFloat@CGameScriptInterface_Methods@@QAEXM@Z	00892fd0	class CGameScriptInterface is defined in an included header without the PDB method (header change: _hdr batch)
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	008933f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893470	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	008934f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893610	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893870	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	008938f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abf20	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@VCMessageEventFilter_OccuredBetween@@@@@Z	00893960	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	008939d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893a50	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893b00	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893ba0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893c00	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893d80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@MessageManager893ec0@@QAEPAUMessage893ec0@@PAUBoundFilter893ec0@@@Z	00893ec0	row: named in T3_PORT_QUEUE col 2/3
+006e7510	?GetFrameForMessages_006e7510@CGameScriptInterface_Methods@@QBEJXZ	00893ec0	row: named in T3_PORT_QUEUE col 2/3
+006e7530	?GetMaxWorldFrameForMessages@CGameScriptInterface_Methods@@QBEJXZ	00893ec0	row: named in T3_PORT_QUEUE col 2/3
+006e7510	?GetA@@YIPAXPBX@Z	00893f80	row: named in T3_PORT_QUEUE col 2/3
+006e7530	?GetB@@YIPAXPBX@Z	00893f80	row: named in T3_PORT_QUEUE col 2/3
+008abed0	?Post@Router@@QAEPAXPAUGSI_MsgArg@@@Z	00893f80	row: named in T3_PORT_QUEUE col 2/3
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00893ff0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00894080	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00894110	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00894250	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abed0	?Query@GsiDispatcher@@QAEPAUGsiResult@@PAX@Z	00894300	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006e7510	@Gsi_A@4	00894300	wrong spelling not parsed
+006e7530	@Gsi_B@4	00894300	wrong spelling not parsed
+008abed0	?Dispatch@Obj@@QAEHPAURange@@@Z	00894370	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006e7510	?GetThing1@@YIHXZ	00894370	call site: member call through DECL_REF_EXPR
+006e7530	?GetThing2@@YIHPAX@Z	00894370	parameter count differs (identity research)
+008abed0	?FindMostRecentMessage@CMessageEventManager_Retail@@QAEPAUCMessageEvent_Retail@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	008943c0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008ad530	??RCOpenDoor_Retail@@QAEXPAUCThing_Retail@@@Z	00895db0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008ad530	??RCOpenDoor_Retail@@QAEXPAUCThing_Retail@@@Z	00895de0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0099e960	??9CCharStringMethods@@QBE_NPBD@Z	00897630	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007cab30	?Give@GiveTarget@@QAEXPAXH@Z	00898bb0	row: named in T3_PORT_QUEUE col 2/3
+00789a60	?IsPCReady_GetReadiness@@YIMPAX@Z	00899c10	parameter count differs (identity research)
+006d63a0	@Sub_InvokeTarget@4	00899cf0	wrong spelling not parsed
+00734210	?SetCombatAbility@CTCInterface30@@QAEXM_N@Z	0089aff0	type: enum EWeaponClass unknown to the row
+00706290	@TCShop_GetName@4	0089b330	wrong spelling not parsed
+007352d0	?Add@Mapped@@QAEXPAVCThing@@@Z	0089dff0	row: named in T3_PORT_QUEUE col 2/3
+00734190	?Remove@Mapped@@QAEXPAVCThing@@@Z	0089dff0	row: named in T3_PORT_QUEUE col 2/3
+0074ac80	?consume_0074ac80@BObj@@QAEXPAU1@@Z	0089ec60	row: named in T3_PORT_QUEUE col 2/3
+006e0970	?CreateParticle@@YIPAUCThingNative@@ABVCCharString@@ABVC3DVector@@_N@Z	0089f910	class CTCDParticleEmitter is defined in an included header without the PDB method (header change: _hdr batch)
+006e0970	?CreateParticle@@YIPAUCThingNative@@ABVCCharString@@ABVC3DVector@@_N@Z	0089f9e0	class CTCDParticleEmitter is defined in an included header without the PDB method (header change: _hdr batch)
+009c8990	?GetAllTextEntriesForNarrator@CTextDataBank@@QAEXABVCCharString@@AAUCStringSet@@J@Z	008a0cb0	call site: parameter 1 CStringSet& -> std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long>>&
+00747560	?FinalCall@@YIXPAX@Z	008a1300	parameter count differs (identity research)
+008ae160	??0CCreatureAction_AttackThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008a8eb0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006a2520	?SetAllCarriedThingsAsBypassFilter@CarryingMethods@@QAEXPAX@Z	008a99f0	row: named in T3_PORT_QUEUE col 2/3
+006b83e0	?SetBypassScreenFilter@CEnvironmentSpellEffectInterfaceMethods@@QAEXABUPointerVector@@PAX@Z	008a99f0	row: named in T3_PORT_QUEUE col 2/3
+008ae660	?CGameScriptInterface_FindOrCreateRumourCategory@@YGXVCCharString@@@Z	008a9db0	static v non-static mismatch
+008ae5e0	?CGameScriptInterface_AddRumourToCategoryEx@@YGXVCCharString@@0@Z	008a9dd0	static v non-static mismatch
+008ae810	?CGameScriptInterface_AddGossipVillageEx@@YGXVCCharString@@0@Z	008a9e30	static v non-static mismatch
+008aea40	?AddGossipFactionToCategory_Impl@@YGXVCCharString@@0@Z	008a9e60	static v non-static mismatch
+008d7ca0	??0CModeSitBase@@QAE@PAVCThing@@@Z	008ac3c0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	008b96a0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	008b9740	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	008b98d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	008b9a60	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	008b9bf0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0069f0f0	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@PAVCThing@@ABVCCharString@@0JJPAVCCreatureActionBase@@@Z	008bac40	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007c0690	?Init@CTCShotDefinitionBase@@QAEXU?$CDefPointerByValue@VCThingShotDef@@@@PAVCThing@@11MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@@Z	008c0900	class CTCShotDefinitionBase defined in the row more than once / in another scope
+008c3810	??0CCreatureAction_GoUnderground@N_008c3810@@QAE@PAVCThingCreatureBase@@@Z	008c2490	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008c61c0	?DoBase@CCreatureAction_TrollAngryGroundPound_Methods@@QAEXXZ	008c63a0	row: named in T3_PORT_QUEUE col 2/3
+007c0ad0	?CreateShot@@YIPAVCThing@@JPAV1@00MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@PAVC3DVector@@PAVCRightHandedSet@@@Z	008c6430	call site: member call through DECL_REF_EXPR
+007c0e80	?CreateShot@@YIPAVCThing@@PAV1@000MMMPAU?$CAbilityPointer@VCMeleeCombatAbilityDef@@@@J@Z	008c89d0	call site: member call through DECL_REF_EXPR
+008e72d0	??0CModeIntangible@@QAE@PAVCThing@@MPAVCCreatureActionBase@@@Z	008ccd70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008d46d0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	008d04e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007c0ad0	?CreateShot@@YIPAVCThing@@JPAV1@0PBV1@MMMABU?$DefPointer@VCMeleeCombatAbilityDef@@@@PBVC3DVector@@PBVCRightHandedSet@@@Z	008d5970	call site: member call through DECL_REF_EXPR
+0073ac50	?FrameUpdate@CModeBase@@UAEXXZ	008d6620	class CModeBase defined in the row more than once / in another scope
+008621a0	?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d66e0	class CModeStandBase defined in the row more than once / in another scope
+008621a0	?BaseMode_OnActivate@@YIXPAX@Z	008d68e0	parameter count differs (identity research)
+00861d00	?CMode_Base_OnActivate@@YIXPAX@Z	008d6900	parameter count differs (identity research)
+008621a0	?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d6920	class CModeStandBase defined in the row more than once / in another scope
+00861d00	?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z	008d69d0	parameter count differs (identity research)
+00861d00	?DragonRearUpBase_861d00@@YIXPAUCModeDragonRearUp@@@Z	008d6a10	parameter count differs (identity research)
+007e4330	?h2@FableDestValV_008d6a30_inner@@QAIXD@Z	008d6a30	parameter count differs (identity research)
+008621a0	?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d6a50	class CModeStandBase defined in the row more than once / in another scope
+00861d00	?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z	008d6aa0	parameter count differs (identity research)
+008621a0	?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d74b0	class CModeStandBase defined in the row more than once / in another scope
+008621a0	?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d7510	class CModeStandBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@NCreatureMode@@QAEXXZ	008d75d0	class CModeBase defined in the row more than once / in another scope
+00861d00	?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d79a0	class CModeStandBase defined in the row more than once / in another scope
+00861d00	?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ	008d79f0	class CModeStandBase defined in the row more than once / in another scope
+008621a0	?OnActivate@CModeStandBase@@QAEXXZ	008d87c0	virtual PDB method on the row's own model of CModeStandBase (layout)
+0073ac50	?FrameUpdate@CModeBase@@UAEXXZ	008d88a0	class CModeBase defined in the row more than once / in another scope
+006e9360	?GetCombatantInfo@CCombatManager@@QAEPAUCCombatantInfo@@PBVCThingCreatureBase@@@Z	008d8ea0	row: named in T3_PORT_QUEUE col 2/3
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008d9350	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@NCreatureMode@@QAEXXZ	008d9410	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008da610	class CModeBase defined in the row more than once / in another scope
+00861d00	?StandDeactivate@ModeScreamer@@QAEXXZ	008da690	class CModeStandBase is defined in an included header without the PDB method (header change: _hdr batch)
+0073ac50	?BaseFrameUpdate@ModeDrained@@QAEXXZ	008da890	outer scope is a class (nested)
+0073a6e0	?GetCurrentMode@ModeManager@@QBEAAUModeInterface@@XZ	008da890	type: unknown nested type CTCCreatureModeManager::CModeBase
+008621a0	?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ	008dae10	class CModeStandBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@NCreatureMode@@QAEXXZ	008db240	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@NCreatureMode@@QAEXXZ	008db460	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008dff50	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008dffd0	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e06e0	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e0730	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e07f0	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e0990	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e0d20	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e10e0	class CModeBase defined in the row more than once / in another scope
+00739e20	?CModeRockTrollVulnerable_Destruct@@YIXPAX@Z	008e36b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00739e20	?CModeConversation_Destruct@@YIXPAX@Z	008e39d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006e9360	?GetCombatantInfo@CCombatManager@@QAEPAUCCombatantInfo@@PBVCThingCreatureBase@@@Z	008e7040	row: named in T3_PORT_QUEUE col 2/3
+00851b50	?IsMetBy@CHeroAbilityStatPackage@@QBE_NPBVCTCHeroStats@@@Z	008e7040	row: named in T3_PORT_QUEUE col 2/3
+008621a0	?OnActivate@CModeStandBase@@QAEXXZ	008e7a00	virtual PDB method on the row's own model of CModeStandBase (layout)
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e8760	class CModeBase defined in the row more than once / in another scope
+0073ac50	?FrameUpdate@CModeBase@@QAEXXZ	008e8940	class CModeBase defined in the row more than once / in another scope
+008e8e50	?GetStrafeAnimationName@@YI?AVCCharString@@ABVC3DVector@@0W4EMovementType@@@Z	008e9110	call site: member call through DECL_REF_EXPR
+0085f8d0	?IsValidRangedWeaponTargetForShooter@@YI_NPAVCThing@@0M@Z	008e9460	call site: member call through DECL_REF_EXPR
+008ed3b0	??4CDefNameInserter8@@QAEAAU0@ABUSDefEntry8@@@Z	008ed4d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008ed440	??4CDefNameInserter4@@QAEAAU0@ABUSDefEntry4@@@Z	008ed510	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008eff40	??0CElement60_008eff40@@QAE@ABU0@@Z	008f0280	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008eff40	??0CElement60_008eff40@@QAE@ABU0@@Z	008f0570	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+007c0ad0	?CreateShot@@YIPAVCThing@@JPAV1@00MMMPAUCDefPointerMelee@@PAVC3DVector@@PAVCRightHandedSet@@@Z	008f3020	call site: member call through DECL_REF_EXPR
+007c0690	?Init@CTCShotDefinitionBase@@QAEXU?$CDefPointerByValue@VCThingShotDef@@@@PAVCThing@@11MMMPAV?$CDefPointer@VCMeleeCombatAbilityDef@@@@@Z	008f3100	class CTCShotDefinitionBase defined in the row more than once / in another scope
+0099a2d0	??0CBaseClass@NFoot008f7bd0@@QAE@XZ	008f7bd0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006e0be0	?AttachToThing@CTCDParticleEmitter@NFoot008f7bd0@@QAEXPAUCThingCreatureBase@2@HABUCCharString@2@HH@Z	008f7bd0	class CTCDParticleEmitter defined in the row more than once / in another scope
+006e0880	?Create@CTCDParticleEmitter@NFoot008f7bd0@@SIPAUCThing@2@JABUC3DVector@2@_N@Z	008f7bd0	class CTCDParticleEmitter defined in the row more than once / in another scope
+008f78e0	?GetBones@NFoot008f7bd0@@YI_NPAUCThingCreatureBase@1@AAU?$vector@UCCharString@NFoot008f7bd0@@@1@@Z	008f7bd0	stand-in has a body in the row (inline model, not a callee-only rebind)
+006e11a0	?SetEmitterUpdateParameters@CTCDParticleEmitter@NFoot008f7bd0@@QAEXABUCParticleUpdateParameters@2@@Z	008f7bd0	class CTCDParticleEmitter defined in the row more than once / in another scope
+008fa120	?ClearData@LSocket@@QAEXXZ	008f8c70	row: named in T3_PORT_QUEUE col 2/3
+0090aa10	?CloseSocket@LSocketServer@@QAEXPAVLSocket@@@Z	008f8c70	row: named in T3_PORT_QUEUE col 2/3
+008f86f0	?ResolveHost@LSocket@@SI_NAAULAddress@@AAK@Z	008f8cc0	class LSocket defined in the row more than once / in another scope
+008f86f0	?ResolveHost@LSocket@@SI_NAAULAddress@@AAK@Z	008f9820	class LSocket defined in the row more than once / in another scope
+008fc430	?UpdateScan@CPhysicsForceModelBase@NCameraModes@@QAEXAAVCPhysicsCollisionPointsObject@2@ABVCWorldMap@@ABVC3DVector@@JM@Z	008fadb0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fd288	?outer@FableDestVal_008fd544_t@@QAIXXZ	008fd544	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fd288	?outer@FableDestVal_008fd769_t@@QAIXXZ	008fd769	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fcec0	?Initialise@CAIStateGroupBase_Retail@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fd860	row: named in T3_PORT_QUEUE col 2/3
+008fd288	?Destroy@CFirstMember@@QAEXXZ	0090010e	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fd288	?PairDestroyFirst@@YIXPAUPair@@@Z	00900f43	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fcec0	?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00902045	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008fcec0	?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00902233	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00903ca0	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00903d60	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00903e20	edit inside a macro
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904430	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904860	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904940	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	009049f0	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904af0	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904bd0	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAX@Z	00904cd0	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904e20	row: named in T3_PORT_QUEUE col 2/3
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904f60	row: named in T3_PORT_QUEUE col 2/3
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00906150	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	009062a0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequence_BanditUnblockableAttack_NativeView@@QAEXABUCCountedPointer@@@Z	00906380	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00906630	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00906d20	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00906db0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+00907320	??0CCombatAction_00907320@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	009070e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	009070e0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+009073a0	??0CCombatAction_009073a0@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00907170	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907170	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+00907440	??0CCombatAction_00907440@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00907200	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907200	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+009074c0	??0CCombatAction_009074c0@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00907290	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907290	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	009076c0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907930	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907ae0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907b60	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907be0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907c70	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00907ec0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+0099efe0	?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z	00908090	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0099efe0	?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z	00908140	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0099efe0	?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z	009081d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0097cf30	??0CCombatAction_0097cf30@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00908780	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00908780	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+0097cff0	??0CCombatAction_0097cff0@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	009088d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	009088d0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z	00908a20	row: named in T3_PORT_QUEUE col 2/3
+008b0b10	?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z	00908b50	call site: callee text not B->M / B.M ('::AddAction')
+0097d050	??0CCombatAction_0097d050@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00908c80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z	00908c80	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00908e00	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b8190	??0CCombatAction_008b8190@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	00908e90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00908e90	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00908fe0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z	00909070	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00909140	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z	009091d0	row: named in T3_PORT_QUEUE col 2/3
+008b0b10	?AddAction@CCombatSequence_WillPhysicalShield@@QAEXABV?$CCountedPointer@VCCreatureActionBase@@@@@Z	009092c0	row: named in T3_PORT_QUEUE col 2/3
+008b0b10	?AddAction@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXABV?$CCountedPointer@VCCreatureActionBase@@@@@Z	009093f0	call site: parameter 0 CCountedPointer<CCreatureActionBase> const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z	00909520	row: named in T3_PORT_QUEUE col 2/3
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	00909da0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	0090a4c0	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008b0b10	?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	0090a550	call site: parameter 0 CCountedPointer const& -> CCombatAction&
+008f8a80	??0LSocket@@QAE@XZ	0090b080	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0090b160	?Think@LSocketServer@@SIX_N@Z	0090b450	class LSocketServer defined in the row more than once / in another scope
+006af2b0	??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z	0090ca60	row: named in T3_PORT_QUEUE col 2/3
+0090ca60	@BaseGroupOnReplace@4	0090e590	wrong spelling not parsed
+006af2b0	??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z	0090ee20	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0090edc0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@N_006af2b0@@UCMessageEventFilter_IsForThing@@@@@Z	0090ee20	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fcec0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	0090f0d0	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008fcec0	?Initialise@CAIStateGroupBaseI@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	0090f690	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008d7ca0	??0CModeSitBase@@QAE@PAVCThing@@@Z	0090f830	row: named in T3_PORT_QUEUE col 2/3
+008d71d0	?CModeSitChairStudious_Destruct@@YIXPAX@Z	009108e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00910cf0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@UCMessageEventFilter_IsForThing@@@@@Z	00910d50	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00910cf0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@UCMessageEventFilter_IsForThing@@@@@Z	00910da0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008af0a0	?GetEvent_008af0a0@CTCEntityEvents@@QAE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z	00911c20	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fcf40	?f4@@YIXPAX@Z	00911f00	parameter count differs (identity research)
+008fcec0	?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00911f20	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008fcfa0	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z	009143c0	row: named in T3_PORT_QUEUE col 2/3
+00980770	?AIAction_MoveToPossiblyBlockedObjectAndFace@CAIStateGroupBase@@QAEJV?$CIntelligentPointer@VCThing@@@@PAJMMPAUCAIFilterBase@@PAVCThing@@3M@Z	00915890	protected PDB target on an in-place model stand-in
+00916790	?IsInSchoolHours@CAIStateGroup_StayNearSchool@@QAE_NXZ	009167f0	template scope or member template (shared-header route)
+00916790	?IsInSchoolHours@CAIStateGroup_StayNearSchool@@QAE_NXZ	00916910	template scope or member template (shared-header route)
+00917050	?subA@@YIHPAUCAIStateGroup_IdleAtHome@@@Z	00917110	row: named in T3_PORT_QUEUE col 2/3
+009170b0	?subB@@YIHPAUCAIStateGroup_IdleAtHome@@@Z	00917110	row: named in T3_PORT_QUEUE col 2/3
+009170b0	?GetPBonfire@CAIStateGroup_ThrowLogsOnFire@@QAEPAVCThing@@XZ	00917130	row: named in T3_PORT_QUEUE col 2/3
+00917050	?GetPLogPile@CAIStateGroup_ThrowLogsOnFire@@QAEPAVCThing@@XZ	00917130	row: named in T3_PORT_QUEUE col 2/3
+00915b60	?PlaceGoods@CAIStateGroup_MoveGoodsBase@@QAE_NV?$CIntelligentPointer@VCThing@@@@MU?$vector@PBVCCharString@@@@ABVCAIFilterBase@CAIStateGroupBase@@PAVCThing@@@Z	00917130	row: named in T3_PORT_QUEUE col 2/3
+00801920	?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@J@Z	00917af0	type: enum EIdleStateGroup unknown to the row
+0091a5b0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABUCFilter_Bind3@@@Z	0091a670	row: named in T3_PORT_QUEUE col 2/3
+008fcec0	@FableReactBaseInit_91cc90@4	0091cc90	row: named in T3_PORT_QUEUE col 2/3
+008d46d0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z	0091cdc0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0091d0a0	?GetEvent@CTCEntityEvents@@QAE_NPAPBUCEventHitBy@@ABUCEventFilter_None@@@Z	0091d120	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fcec0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	0091d820	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+0074a5d0	?GetValidPositions@@YIXAAUCPositionVector@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z	0091d930	row: named in T3_PORT_QUEUE col 2/3
+0097e200	?AIAction_DoNothing@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJXZ	0091e4b0	row: named in T3_PORT_QUEUE col 2/3
+00811340	?HasMode@CTCModeHolder@@QAE_NK@Z	0091e700	type: enum NEntityEvents::EEventType unknown to the row
+00864840	?IsBestTargetForAttack@@YI_NPAVCThing@@0@Z	0091eb60	call site: member call through DECL_REF_EXPR
+0085f120	?h_920710@@YIDPAX@Z	00920710	row: named in T3_PORT_QUEUE col 2/3
+008fcec0	?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00921270	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+0085f3e0	?IsAbleToMove@@YI_NPAVCThing@@@Z	009212c0	call site: member call through DECL_REF_EXPR
+0085f600	?RemoveMovementBlockingModes@@YIXPAVCThing@@@Z	009212c0	call site: member call through DECL_REF_EXPR
+008d46d0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	00922600	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008d46d0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z	009226b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00922f50	??0CCreatureAction_PutDownTankard@@QAE@PAVCThingCreatureBase@@@Z	009236c0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00701750	?GetOpinionValue@COpinionManager@@QAEMPAVCThing@@J@Z	00929820	row: named in T3_PORT_QUEUE col 2/3
+0097d6f0	?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0092a8a0	row: named in T3_PORT_QUEUE col 2/3
+0097d6f0	?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0092b3e0	row: named in T3_PORT_QUEUE col 2/3
+008d46d0	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z	0092c5a0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00811340	?IsModeActive@CTCModeManager42@@QBE_NK@Z	0092c5a0	type: enum NEntityEvents::EEventType unknown to the row
+0092fab0	?TestOrDoInteraction@CAIStateGroup_MinionReactToPlayerInteraction@@QAE_N_NPAVCThing@@@Z	00930a70	row: named in T3_PORT_QUEUE col 2/3
+00933cc0	??0CCreatureAction_AlertToPlayer@N_00933cc0@@QAE@PAVCThingAICreature@@@Z	00933bb0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00934e50	?FindMostRecentMessage@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@V?$CMessageEventFilter_ThingSearchFilter@UCThingFilter_IsNotThing@@@@V?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@@@@Z	00934920	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0097d6f0	?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z	009352c0	row: named in T3_PORT_QUEUE col 2/3
+009350c0	?Fired@CAIStateGroup_ScriptingBase@@QAEXXZ	009352c0	row: named in T3_PORT_QUEUE col 2/3
+00937420	?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsAICreatureAwareOf@@VCThingFilter_IsUnconscious@@VCThingFilter_IsAnAlly@@U?$unary_negate_@VCThingFilter_HasBeenDiscovered@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z	00937b10	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00937690	?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsAICreatureAwareOf@@VCThingFilter_IsUnconscious@@VCThingFilter_IsAnAlly@@@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z	00937c20	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00811340	?HasMode_00811340@CTCCreatureModeManager@@QBE_NJ@Z	00938960	type: enum NEntityEvents::EEventType unknown to the row
+00939c60	?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@@@@Z	00939d00	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00939cb0	?FindMostRecentMessage_00939cb0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_CanBeSeenOrHeard@@@@@Z	00939d70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00910c30	??0CCreatureAction_DeclarePlayerACriminal@N_00910c30@@QAE@PAVCThingCreatureBase@@PAVCThingPlayerCreature@@@Z	0093a080	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008fcec0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	0093a500	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008648a0	?IsWillingToAttackTarget@@YI_NPAVCThing@@0@Z	0093b740	call site: member call through DECL_REF_EXPR
+008648a0	?IsWillingToAttackTarget@@YI_NPAVCThingAICreature@@PAVCThing@@@Z	0093b8b0	call site: member call through DECL_REF_EXPR
+0071aab0	?SetState@CTCStealthState@@QAEXJJJMJ@Z	0093c420	type: enum CTCEmoteIcon::EEmotePriority unknown to the row
+008648a0	?IsWillingToAttackTarget@@YI_NPAVCThing@@0@Z	0093c4e0	row: named in T3_PORT_QUEUE col 2/3
+0093cdb0	?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasTrackName@@ABVCThingCompare_Nearest@@PAPAVCThingTrackNode@@@Z	0093cc60	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006edc50	?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z	0093e5e0	row: named in T3_PORT_QUEUE col 2/3
+008fcfa0	@Act_940bd0_A@0	00940bd0	wrong spelling not parsed
+0090dee0	?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z	009415b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009426d0	?PlayLoop@CAIStateGroup_WorkAtSchool_Methods@@QAE_NJABVCCharString@@00@Z	00942820	class CAIStateGroup_WorkAtSchool is defined in an included header without the PDB method (header change: _hdr batch)
+009426d0	?PlayLoop@CAIStateGroup_WorkAtSchool_Methods@@QAE_NJABVCCharString@@00@Z	009428a0	class CAIStateGroup_WorkAtSchool is defined in an included header without the PDB method (header change: _hdr batch)
+0097e200	?AIAction_DoNothing@CAIStateGroupBaseA@@QAEJXZ	00942c70	row: named in T3_PORT_QUEUE col 2/3
+008fcf40	?Terminate@CAIStateGroup_WorkSawingWood_Methods@@QAEXXZ	009445f0	row: named in T3_PORT_QUEUE col 2/3
+008fcf40	?Terminate@CAIStateGroup_WorkHammerAnvil_Methods@@QAEXXZ	00944d10	row: named in T3_PORT_QUEUE col 2/3
+008fcfa0	@GetS_946630@0	00946630	wrong spelling not parsed
+00801920	?RegisterIdleStateGroup@CTCIdleScheduler@@QAEXPAVCAIStateGroupBase@@J@Z	00946e10	type: enum EIdleStateGroup unknown to the row
+008d7ca0	??0CModeSitBase@@QAE@PAVCThing@@@Z	0094b530	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0097e200	?AIAction_DoNothing@CAIStateGroup_UsesSeat@@QAEJXZ	0094b740	row: named in T3_PORT_QUEUE col 2/3
+007ffdb0	?RemoveCustomer@CTCPub@@QAEXPAVCThing@@@Z	0094b740	row: named in T3_PORT_QUEUE col 2/3
+009498b0	?OnReplace@CAIStateGroup_SeatBase@@UAEXXZ	0094ca80	call site: callee text not B->M / B.M ('::OnReplace')
+008fcf40	?Terminate@CJumpAtFleeingMethods@@QAEXXZ	0094f730	row: libclang parse errors at HEAD
+0097e200	?AIAction_DoNothing@DragonMethods@@QAEJXZ	0094feb0	type: enum EAIActionReturn unknown to the row
+008fcec0	?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00953fe0	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+00954c60	?HasBeenHitByLightning@LightningMethods@@QAE_NXZ	00954e30	class CAIStateGroup_MazeTutorialBattleRespondToLightning is defined in an included header without the PDB method (header change: _hdr batch)
+008fcec0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00957940	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008fcec0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	00957bb0	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+009580e0	?IsStillRunnable@CAIStateGroup_MinionReactToTrespassing_Methods@@QAE_N_N@Z	00958720	row: named in T3_PORT_QUEUE col 2/3
+00958770	?GetSomeoneElseGettingHelpMessage@CAIStateGroupMinionReactToCrimeMethods@@QAEPAVCMessageEvent@@J@Z	00958cb0	class CAIStateGroup_MinionReactToCrime is defined in an included header without the PDB method (header change: _hdr batch)
+0095cac0	??0CCreatureAction_DragonRoar@@QAE@PAVCThing@@0@Z	0095b280	row: libclang parse errors at HEAD
+006edc50	?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z	0095b280	row: libclang parse errors at HEAD
+0095d4c0	?GetFirePointList@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAEXAAUCThingVector@@@Z	0095d590	row: named in T3_PORT_QUEUE col 2/3
+006c5630	?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z	0095fed0	type: enum EOpinionDeedType unknown to the row
+006c5630	?GetDeedEffectsDef@CTCDeedEffects@@QBE?AV?$CDefPointer@UCDeedEffectsDef@@@@J@Z	00960760	type: enum EOpinionDeedType unknown to the row
+008fcec0	@CAIStateGroupBase_Initialise@28	009612e0	wrong spelling not parsed
+0094e5f0	??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	009624d0	row: libclang parse errors at HEAD
+0073a8a0	?HasMode@CTCCreatureModeManager@@QAE_NJ@Z	009624d0	row: libclang parse errors at HEAD
+00962af0	?IsStillRunnable@CAIStateGroup_VersusEnemyBase_Methods@@QAE_NXZ	009635c0	class CAIStateGroup_VersusEnemyBase is defined in an included header without the PDB method (header change: _hdr batch)
+00811340	?IsModeActive@CTCCreatureModeManager@@QBE_NJ@Z	00963810	type: enum NEntityEvents::EEventType unknown to the row
+009652c0	?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@QAEPAVCThing@@XZ	00965320	row: named in T3_PORT_QUEUE col 2/3
+0097f870	?Act@TavernServer@@QAEHHH@Z	00966ad0	call site: parameter 1 int -> CThingBuilding*
+00842a80	??0CCreatureAction_FillTankardFromJug@@QAE@PAVCThingAICreature@@@Z	00967b40	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00842af0	??0CCreatureAction_PutDownJug@@QAE@PAVCThingAICreature@@@Z	00967b40	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0097d580	?AIAction_LookAtPos@CAIStateGroupTavernKeeperMethods@@QAEJJVC3DVector@@JM@Z	00968230	type: enum EAIActionReturn unknown to the row
+0097ec00	?AIAction_MoveToPos@CAIStateGroupTavernKeeperMethods@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z	00968230	type: enum EAIActionReturn unknown to the row
+008d46d0	?FindMostRecentMessage@CMessageEventManager@@QBEPBVCMessageEvent@@ABUCFilter_Bind2@@@Z	00969760	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0096c820	??0CCreatureAction_PutDownTankard@N_0096c820@@QAE@PAVCThingCreatureBase@@@Z	0096c9a0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0085f3e0	?IsAbleToMove@@YI_NPAVCThing@@@Z	0096ee90	row: named in T3_PORT_QUEUE col 2/3
+006edc50	?RegisterCombatant@CCombatManager@@QAEXPAVCThing@@0_N@Z	0096ee90	row: named in T3_PORT_QUEUE col 2/3
+0085f600	?RemoveMovementBlockingModes@@YIXPAVCThing@@@Z	0096ee90	row: named in T3_PORT_QUEUE col 2/3
+0096f260	?GetPFirstThingInRoughArea@CThingSearchTools@@QAE_NABVC2DBoxI@@ABUCThingFilter_IsDeadSpouse@@PAPAVCThing@@@Z	0096f180	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00877c40	?IsLineOfSightFiltered@CTools@@QAE_NPBVC3DVector@@0PAV2@1PAMPAPAVCThing@@J_N@Z	0096f770	class CTools defined in the row more than once / in another scope
+0097d6f0	?AIAction_LookAtThing@CAIStateGroupBase@@QAEJJUCIntelligentPointerConstThing@@JM@Z	0096fcd0	row: libclang parse errors at HEAD
+00692620	?GetActionCode@CCurrentAction@@QAEJXZ	0096ff10	row: libclang parse errors at HEAD
+00747b80	?SetAsInDanger@CTCStealth@@QAEXPAVCThing@@J@Z	0096ff10	row: libclang parse errors at HEAD
+008fcec0	?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	009705d0	virtual PDB method on the row's own model of CAIStateGroupBase (layout)
+008d46d0	??$FindMostRecentMessage@U?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABU?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	0097d360	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+0097e270	?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z	0097ec00	row: named in T3_PORT_QUEUE col 2/3
+0097e2d0	?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z	0097ec00	row: named in T3_PORT_QUEUE col 2/3
+0073a8a0	?HasMode@CTCCreatureModeManager@@QAE_NK@Z	0097ef60	row: named in T3_PORT_QUEUE col 2/3
+0073a8a0	?HasMode@CTCCreatureModeManager@@QAE_NK@Z	0097f3a0	row: named in T3_PORT_QUEUE col 2/3
+0097d6f0	?AIAction_LookAtThing@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@JM@Z	009804a0	protected PDB target on an in-place model stand-in
+0098db20	?Add@CIndexedCharStringArray@@QAEXABVCCharString@@@Z	0098b390	template scope or member template (shared-header route)
+00994230	?WriteFill@CDataOutputStream_Methods@@QAEXJJ@Z	009942d0	row: named in T3_PORT_QUEUE col 2/3
+00994520	?FlushBuffer@CBufferedFileDataOutputStream_Methods@@QAEXXZ	00994870	row: named in T3_PORT_QUEUE col 2/3
+00a3a7d0	?GetWorkspaceSize@CCompressorZlib@@SAJXZ	00996230	row: named in T3_PORT_QUEUE col 2/3
+00a3a7d0	?GetWorkspaceSize@CCompressorZlib@@SAJXZ	009967e0	row: named in T3_PORT_QUEUE col 2/3
+00a3a7d0	?GetWorkspaceSize@CCompressorZlib@@SAJXZ	00996a40	row: named in T3_PORT_QUEUE col 2/3
+0099b4d0	?UnassignString@CWideString@@AAEXXZ	0099b720	row: named in T3_PORT_QUEUE col 2/3
+0099b560	?MakeOwnCopyOfData@CWideStringLengthView@@QAEXXZ	0099bc50	class CWideString is defined in an included header without the PDB method (header change: _hdr batch)
+0099eaf0	@CCharString_Detach@4	0099f390	wrong spelling not parsed
+009f9020	_helper_9f9020	009a73b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009adae0	?InstantiateSubDef@CDefinitionManager@@QAE?AUCDefPointer@@ABVCCharString@@K@Z	009ae150	row: named in T3_PORT_QUEUE col 2/3
+00999c50	?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z	009aef60	row: libclang parse errors at HEAD
+00999cb0	?ScanNextFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z	009aef60	row: libclang parse errors at HEAD
+00999c50	?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z	009af480	row: libclang parse errors at HEAD
+00999cb0	?ScanNextFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z	009af480	row: libclang parse errors at HEAD
+00999c50	?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z	009b05f0	call site: parameter 1 CFileScanState& -> CAFile::CFileScanInfo&
+00999cb0	?ScanNextFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z	009b05f0	call site: parameter 1 CFileScanState& -> CAFile::CFileScanInfo&
+00994700	??0CFileDataInputStream@@QAE@PAVCDiskFileWin32@@K@Z	009b08c0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a0ccd0	?ReadAsStringUntilCharacter@CWStringParser@@QAE?AVCWideString@@G@Z	009bca20	class CWStringParser is defined in an included header without the PDB method (header change: _hdr batch)
+0099aed0	?Release@SubA@@QAE_JXZ	009bde70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009f70e0	??0CDynamicTextureList@@QAE@XZ	009c0e50	row: named in T3_PORT_QUEUE col 2/3
+009d9a30	??0CRenderManager2D@@QAE@PAVCDisplayManager@@ABVCWideString@@K@Z	009c0e50	row: named in T3_PORT_QUEUE col 2/3
+009d9a30	??0CRenderManagerBase@@QAE@PAVCDisplayManager@@ABVCWideString@@K@Z	009c1050	row: named in T3_PORT_QUEUE col 2/3
+009c4120	?ProcessReadCompletionData@CFileInstaller@@QAEXPAX@Z	009c42f0	type: unknown nested type CFileInstaller::CActiveRead
+009c4440	?IsFileCopyNecessary@CFileInstaller@@QAE_NABUCFileInfoPointer@@@Z	009c53a0	stand-in has a body in the row (inline model, not a callee-only rebind)
+009d5620	?Sizeof@BankFileData@@QBEKXZ	009c8470	row: named in T3_PORT_QUEUE col 2/3
+009c8660	?Method_009c8660@CTwoStep_Retail@@QAEXXZ	009c8bf0	row: named in T3_PORT_QUEUE col 2/3
+0099a6a0	?Open@CDiskFileWin32@@UAEXABVCWideString@@JK@Z	009cc9f0	row: named in T3_PORT_QUEUE col 2/3
+0099ed10	?ToLower@CCharStringLowerView@@QBE?AVCCharString@@XZ	009ccdf0	class CCharString is defined in an included header without the PDB method (header change: _hdr batch)
+009d2110	?Clear@CFilenameVector@@QAEXXZ	009cd3c0	template scope or member template (shared-header route)
+009cbfe0	?GetRecoveryFilePath@CBankFile_Retail@@QBE?AVCWideString@@XZ	009cea70	row: named in T3_PORT_QUEUE col 2/3
+009ce370	?WriteFileInformation@CBankFile_Retail@@QAEX_N@Z	009cea70	row: named in T3_PORT_QUEUE col 2/3
+009b7b10	?DeallocateUnusedMemory@CCRCVectorMap@@QAEXXZ	009cfb70	template scope or member template (shared-header route)
+009d2110	?CInner_dtor@@YIXPAUCInner@@@Z	009d3100	template scope or member template (shared-header route)
+009cb960	?OpenReadWrite@CBankFile_Retail@@QAEXABVCCharString@@KK@Z	009d51d0	call site: callee text not B->M / B.M ('::OpenReadWrite')
+009d1160	?OpenFileReadWrite@CBankFile_Retail@@QAEXABVCWideString@@KK@Z	009d5200	row: named in T3_PORT_QUEUE col 2/3
+009de890	??0CQuickDrawTriInfo@QuickDraw@@QAE@ABU01@@Z	009e1750	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009e79e0	?clear@CSymbolVectorMap@@QAEXXZ	009e5c90	row: named in T3_PORT_QUEUE col 2/3
+009e7680	?DeallocateMemory@?$CArray@USSymbolPair@@@@QAEXXZ	009e7c70	row: named in T3_PORT_QUEUE col 2/3
+009eaf80	?AddCommandLineToHistory@CConsole_Retail@@QAEXABVCConsoleCommandLine@@@Z	009eb260	row: named in T3_PORT_QUEUE col 2/3
+0099ed10	?GetAsLowerCase@CCharString@X_009eb590@@QBE?AU12@XZ	009eb590	class CCharString defined in the row more than once / in another scope
+009f1560	?DestroyCodeSectionManager@@YIXPAVCCodeSectionManager@@@Z	009f1540	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009f5d70	?LoadAllEventPackages@CInputManager@@QAEXABVCVersion@@AAVCDiskFileWin32@@@Z	009f5e10	row: named in T3_PORT_QUEUE col 2/3
+009f69b0	??0CElement48_009f69b0@@QAE@ABU0@@Z	009f6fe0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009e3830	?Initialise@CPixelFormatByteLengthView@@QAEXI@Z	009f9ee0	type: enum _D3DFORMAT unknown to the row
+009fc020	?M@P@@QAEXPAUS@@@Z	009fc440	row: named in T3_PORT_QUEUE col 2/3
+009fc170	_Helper_9fc540@4	009fc540	wrong spelling not parsed
+00a696d0	?CCameraSub_Reset@@YIXPAUCCameraSub@@@Z	009fd640	parameter count differs (identity research)
+009fbf20	?SetResourceSize@CResourceNative@@QAEXK@Z	009fe380	class CResource is defined in an included header without the PDB method (header change: _hdr batch)
+009fbf70	?GetUnusedFrames@ResourceNative@@QBEKXZ	009fe8e0	class CResource is defined in an included header without the PDB method (header change: _hdr batch)
+009ff220	?UploadFrame@CFrameData_009ff6b0@@QAE_NJ@Z	009ff6b0	outer scope is a class (nested)
+009ff220	?UploadFrame@CFrameData@@QAE_N_N@Z	009ff710	class CFrameData defined in the row more than once / in another scope
+009e9f40	?DisplayProgress@@YIXABVCCharString@@_NM1@Z	00a01950	call site: member call through DECL_REF_EXPR
+00a059e0	?SetDefaultRenderStates@CRenderStateManager_Methods@@QAEXXZ	00a07900	row: named in T3_PORT_QUEUE col 2/3
+00a04630	?SetupRenderStates@CRenderStateManager_Methods@@QAEXXZ	00a07900	row: named in T3_PORT_QUEUE col 2/3
+00a79240	?BlockRange@CNavQuadTree@@QAEXJJJ@Z	00a15470	parameter count differs (identity research)
+00a373b0	??0CNavigatorBase_00a373b0@@QAE@J@Z	00a15670	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a47d10	?RemoveAgentFromLists@@YIXPAVCSteeringAgent@@@Z	00a1c950	row: named in T3_PORT_QUEUE col 2/3
+00a1e5c0	?MoveTowardGoal@CNavigatorAStar@@QAEXJJJJJJJJJJJJJ@Z	00a1fb00	call site: parameter 0 long -> C3DVector const&
+00a1e5c0	?MoveTowardGoal@CNavigatorAStar@@QAEXJJJJJJJJJJJJJ@Z	00a1fb50	call site: parameter 0 long -> C3DVector const&
+00a1e5c0	?MoveTowardGoal@CNavigatorAStar@@QAEXJJJJJJJJJJJJJ@Z	00a1fba0	call site: parameter 0 long -> C3DVector const&
+009d58d0	?CreateEntry@CMeshDataBank@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z	00a24a80	row: named in T3_PORT_QUEUE col 2/3
+009e9f40	?DisplayProgress@@YIXABVCCharString@@_NM1@Z	00a25530	row: named in T3_PORT_QUEUE col 2/3
+00a2acc0	??4CMeshPointer@@QAEAAU0@ABU0@@Z	00a25e70	row: named in T3_PORT_QUEUE col 2/3
+009e9f40	?DisplayProgress@@YIXABVCCharString@@_NM1@Z	00a25e70	row: named in T3_PORT_QUEUE col 2/3
+00a25b20	?h1@OP@@QAEHXZ	00a26290	row: named in T3_PORT_QUEUE col 2/3
+009fbf20	?h2@OP@@QAEHH@Z	00a26290	row: named in T3_PORT_QUEUE col 2/3
+009e9f40	?DisplayProgress@@YIXABVCCharString@@_NM1@Z	00a262b0	call site: member call through DECL_REF_EXPR
+00a25b20	?Sizeof@CAnimationData@@QAEKXZ	00a265b0	row: named in T3_PORT_QUEUE col 2/3
+00a24d70	?BuildSharedAnimation@CAnimationData@@QAEXXZ	00a269c0	row: named in T3_PORT_QUEUE col 2/3
+00a2b4e0	??4CElement40_00a2b4e0@@QAEAAU0@ABU0@@Z	00a2bc70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a2cf50	??4CResourceRef_00a2d6c0@@QAEAAU0@ABU0@@Z	00a2d6c0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a316b0	?LowerBound@CHelperPointMap@@QAEPAUSHelperPointEntry@@ABK@Z	00a2ed10	template scope or member template (shared-header route)
+00a351b0	?SortRecords@@YIXPAUCRecord38@@0UCRecordCompare@@@Z	00a35330	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a4eae0	?GetEventTime@C3DAnimationStats@@QBEMJ@Z	00a36df0	row: named in T3_PORT_QUEUE col 2/3
+00a3a9c0	?ZlibAlloc@@YAPAXPAXII@Z	00a3ab00	non-call reference to the member (address taken / member pointer)
+00a3aa00	?ZlibFree@@YAXPAX0@Z	00a3ab00	non-call reference to the member (address taken / member pointer)
+00a3aa40	?InternalCompress@CCompressorZlib_Retail@@QAEKPBXKPAXK@Z	00a3ac40	class CCompressorZlib is defined in an included header without the PDB method (header change: _hdr batch)
+00a3aa40	?InternalCompress@CCompressorZlib_Retail@@QAEKPBXKPAXK@Z	00a3add0	class CCompressorZlib is defined in an included header without the PDB method (header change: _hdr batch)
+00a42ea0	?BuildLipSync@CLipSyncEntryData@@QAEXXZ	00a42fc0	outer scope is a class (nested)
+00a446a0	?MicrothreadEntry@@YAXPAX@Z	00a44740	non-call reference to the member (address taken / member pointer)
+00a446a0	?MicrothreadEntry@@YAXPAX@Z	00a447d0	non-call reference to the member (address taken / member pointer)
+00a44690	?YieldMicrothread@@YAXXZ	00a44840	static v non-static mismatch
+00a44690	?YieldMicrothread@@YAXXZ	00a44880	static v non-static mismatch
+00a44c90	?BoneMorphLess@@YI_NABVC3DSkeletalBoneMorph@@0@Z	00a45150	non-call reference to the member (address taken / member pointer)
+00a56ff0	?OnLeft@C2DLineF@X_00a577b0@@QBE_NABUC2DVector@2@@Z	00a577b0	stand-in has a body in the row (inline model, not a callee-only rebind)
+0099a2e0	?BaseOnDie@CTCInventoryItem@@QAEXXZ	00a5e650	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a65390	?ReleaseChunk@CMemoryAllocatorVariableSize@@QAEXPAUSVarChunk_00a65a50@@@Z	00a65a50	type: unknown nested type CMemoryAllocatorVariableSize::CMemoryAreaChunk
+00a658e0	?RemoveAreaFromFreeList@SVarChunk_00a65a50@@QAEXPAUSAreaHeader_00a65a50@@@Z	00a65a50	outer scope is a class (nested)
+00a65f40	?InternalAlloc@CMemoryAllocatorFixedSizeChunks@@QAEKKPAPAX@Z	00a663d0	class CMemoryAllocatorFixedSize is defined in an included header without the PDB method (header change: _hdr batch)
+009fbf70	?GetUnusedFrames@CManagedTextureData_Calls@@QBEKXZ	00a69ed0	call site: callee text not B->M / B.M ('GetUnusedFrames')
+00a83fd0	?clear@CNavConnectorNodeMap@@QAEXXZ	00a792e0	template scope or member template (shared-header route)
+00ac4d70	?ConvertStream@CVertexStreamConverter@ExternalRetry_00a90fc0@@QAEXHHPAUCVertexStreamFormat@2@HH0HH@Z	00a90fc0	class CVertexStreamConverter defined in the row more than once / in another scope
+00ab37b0	?GetVertexSize@CVertexStreamFormat@ExternalRetry_00a90fc0@@QAEHXZ	00a90fc0	class CVertexStreamFormat defined in the row more than once / in another scope
+00a90630	?Initialise@CVertexShaderInputAnimated@ExternalRetry_00a90fc0@@QAEXHH@Z	00a90fc0	class CVertexShaderInputAnimated defined in the row more than once / in another scope
+00ac4d70	?ConvertStream@CVertexStreamConverter@ExternalRetry_00a91390@@QAEXHHPAUCVertexStreamFormat@2@HH0HH@Z	00a91390	class CVertexStreamConverter defined in the row more than once / in another scope
+00ab37b0	?GetVertexSize@CVertexStreamFormat@ExternalRetry_00a91390@@QAEHXZ	00a91390	class CVertexStreamFormat defined in the row more than once / in another scope
+00a90560	?Initialise@CVertexShaderInputStatic@ExternalRetry_00a91390@@QAEXHH@Z	00a91390	class CVertexShaderInputStatic defined in the row more than once / in another scope
+00a90630	?Initialise@CVertexShaderInputAnimated@@QAEXK_N@Z	00a98680	class CVertexShaderInputAnimated defined in the row more than once / in another scope
+00a90560	?Initialise@CVertexShaderInputStatic@@QAEXK_N@Z	00a98710	class CVertexShaderInputStatic defined in the row more than once / in another scope
+00996af0	??0CMemoryDataOutputStreamMethods@X_00a99840@@QAE@XZ	00a99840	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00aa7c70	?SaveChunkedFile@CChunkedFileSaver@X_00a99840@@QAEKAAUCChunkedFile@2@AAVCDataOutputStream@@@Z	00a99840	class CChunkedFileSaver defined in the row more than once / in another scope
+00a9b030	?GetFirstSubMesh@C3DMeshFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileSubMeshChunk@@@@XZ	00a9b460	row: named in T3_PORT_QUEUE col 2/3
+00a9b0c0	?GetNextSubMesh@C3DMeshFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileSubMeshChunk@@@@ABV2@@Z	00a9b460	row: named in T3_PORT_QUEUE col 2/3
+00a9b030	?GetFirstSubMesh@C3DMeshFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileSubMeshChunk@@@@XZ	00a9b550	row: named in T3_PORT_QUEUE col 2/3
+00a9b0c0	?GetNextSubMesh@C3DMeshFileRootChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileSubMeshChunk@@@@ABV2@@Z	00a9b550	row: named in T3_PORT_QUEUE col 2/3
+00996af0	??0CMemoryDataOutputStreamMethods@X_00a9ba70@@QAE@XZ	00a9ba70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00aa7c70	?SaveChunkedFile@CChunkedFileSaver@X_00a9ba70@@QAEKAAUCChunkedFile@2@AAVCDataOutputStream@@@Z	00a9ba70	class CChunkedFileSaver defined in the row more than once / in another scope
+00acd500	?BeginOptimisation@C3DOptimisedMeshBase@@QAEXABUCQuadricOptimisationParams@@@Z	00aa4210	row: named in T3_PORT_QUEUE col 2/3
+00aa75c0	?BaseOnDie_00aa75c0@CTCInventoryItem@@QAEXXZ	00aa49b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00aa4ca0	call site: callee text not B->M / B.M ('::WriteToFile')
+00aa78c0	?WriteToFile@CChunkedFileSuperChunkBase@@QBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00aa5720	call site: callee text not B->M / B.M ('::WriteToFile')
+00aa75c0	?BaseOnDie@CTCInventoryItemBase@@QAEXXZ	00aa71f0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00aa75c0	?BaseOnDie@CTCInventoryItemBase@@QAEXXZ	00aa7210	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00aa8400	?RemoveAllSubChunks@CChunkedFileSuperChunk_Retail@@QAEXXZ	00aa8490	class CChunkedFileSuperChunk is defined in an included header without the PDB method (header change: _hdr batch)
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00aa98b0	call site: callee text not B->M / B.M ('::WriteToFile')
+00ab5710	?SetExclusiveMode@CMouseDX@@QAE_N_N@Z	00ab5d00	row: named in T3_PORT_QUEUE col 2/3
+00ab6450	?SetExclusiveMode@CKeyboardDX@@QAE_N_N@Z	00ab64e0	row: named in T3_PORT_QUEUE col 2/3
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00ab9af0	call site: callee text not B->M / B.M ('::WriteToFile')
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00ab9cb0	call site: callee text not B->M / B.M ('::WriteToFile')
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00ab9ea0	call site: callee text not B->M / B.M ('::WriteToFile')
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00abbf30	call site: callee text not B->M / B.M ('::WriteToFile')
+00aa78c0	?WriteToFile@C3DMeshFileChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z	00abff70	call site: callee text not B->M / B.M ('::WriteToFile')
+00ac0e50	?FindFirstMap@CMaterialChunkMethods@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@XZ	00ac1160	stand-in has a body in the row (inline model, not a callee-only rebind)
+00ac0ee0	?FindNextMap@CMaterialChunkMethods@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileMapChunk@@@@ABV2@@Z	00ac1160	stand-in has a body in the row (inline model, not a callee-only rebind)
+00ac27a0	?N@C3DMeshPartitionElement@@QAEXPAX@Z	00ac2920	row: named in T3_PORT_QUEUE col 2/3
+00ad1fc0	??4CContractionReference@QuadricOptimiserInternals@X_00aca450@@QAEAAU012@ABU012@@Z	00aca450	row: named in T3_PORT_QUEUE col 2/3
+00acd0e0	?DetectFoldOver@COptimisedPrimitive@@QAE_NPAVCSubContraction@QuadricOptimiserInternals@@PAUC3DVector@3@@Z	00acd900	class COptimisedPrimitive defined in the row more than once / in another scope
+00ad89b0	?CalcMinimumBlocks@CVertexGroupBlockOptimiser@@QAEKABUCRemainderArray@@AAKAAUCBoolArray@@KK@Z	00ad9d70	call site: parameter 0 CRemainderArray const& -> CArray<unsigned long> const&
+00998570	?GetRelativePathName@@YI?AVCCharString@@ABV1@0@Z	00ae8810	row: named in T3_PORT_QUEUE col 2/3
+0099e5f0	?SaveToFile@CCharString@@QAEXABV1@@Z	00ae8810	row: named in T3_PORT_QUEUE col 2/3
+00af1480	?GetEmitterTemplate@CParticleEmitterInfo@@QAE_NAAUCEmitterPointer@@J@Z	00ae89e0	row: named in T3_PORT_QUEUE col 2/3
+00af1480	?GetEmitterTemplate@CParticleEmitterInfo@@QAE_NAAUCEmitterPointer@@J@Z	00ae8a80	class CParticleEmitterInfo defined in the row more than once / in another scope
+00aeb190	?InsertSorted@CParticleEmitterList@NParticleEngine@@QAE_NAAUCEmitterList@2@ABUCEmitterPointer@2@J@Z	00aeb2d0	call site: parameter 0 NParticleEngine::CEmitterList& -> std::list<CCountedPointer<NParticleEngine::CParticleEmitter>, std::allocator<CCountedPointer<NParticleEngine::CParticleEmitter>>>&
+00aeb060	?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z	00aeb600	stand-in has a body in the row (inline model, not a callee-only rebind)
+00aeb060	?Insert@CParticleEmitterList@@QAE_NAAUCEmitterPointer@@@Z	00aeb6d0	stand-in has a body in the row (inline model, not a callee-only rebind)
+00af3dc0	?GetSystemCost@CParticleSystem@@QAEXPAUCParticleSystemCost@@@Z	00aed020	class CParticleSystem defined in the row more than once / in another scope
+00af43b0	?GetParticleStats@CParticleSystem@@QAEXPAUCParticleStats@@@Z	00aed290	class CParticleSystem defined in the row more than once / in another scope
+00af0880	??0CEnginePrimitiveParticleGroup2D@@QAE@JABVCMatrix3x4@@ABVC2DVector@@_N2@Z	00aee240	row: libclang parse errors at HEAD
+00af0380	??0CParticleEmitter@@QAE@XZ	00af0650	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00af28c0	?CreateComponent@CPSCFactory@NParticleEngine@@QAEPAVCPSCBase@2@ABVCCharString@2@@Z	00af4530	call site: parameter 0 NParticleEngine::CCharString const& -> CCharString const&
+00aeab00	?Get@CPSCFactory@NParticleEngine@@SAPAV12@XZ	00af4530	static v non-static mismatch
+00af5430	?ClearDecal@CParticleSystem@@QAEXAAUiterator@?$CRetailList@PAVCDecal@NParticleEngine@@@@@Z	00af5690	class CParticleSystem defined in the row more than once / in another scope
+00af5430	?ClearDecal@CParticleSystem@NParticleEngine@@QAEXAAUiterator@?$list@PAVCDecal@NParticleEngine@@@2@@Z	00af5770	row: named in T3_PORT_QUEUE col 2/3
+00af5770	?Reset@CParticleSystem@@QAEXXZ	00af5870	class CParticleSystem defined in the row more than once / in another scope
+00af56e0	?Stop@CParticleSystem@@QAEXXZ	00af5870	class CParticleSystem defined in the row more than once / in another scope
+00af5090	?ClearParticle@CParticleSystem@@QAEXABUiterator@?$CRetailList@PAVCParticle@NParticleEngine@@@@@Z	00af58a0	class CParticleSystem defined in the row more than once / in another scope
+00af5430	?ClearDecal@CParticleSystem@@QAEXABUiterator@?$CRetailList@PAVCDecal@NParticleEngine@@@@@Z	00af58d0	class CParticleSystem defined in the row more than once / in another scope
+00af7c10	?dtor_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af7c80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00af8ad0	?free_helper@CEngineSubPrimitiveGameMesh@@QAEXXZ	00af7c80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00af7c10	?CDecal_Dtor@@YIXPAUCDecal@@@Z	00af7ca0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00af8ad0	?CDecal_OpDelete@@YIXPAUCDecal@@@Z	00af7ca0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00afb7c0	??0CPSCRenderSprite@@QAE@XZ	00af7d10	row: named in T3_PORT_QUEUE col 2/3
+00b012e0	??0CPSCRenderMesh@@QAE@XZ	00af7d80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b103f0	??0CPSCEmitterGeneric@@QAE@XZ	00af7ed0	row: named in T3_PORT_QUEUE col 2/3
+00b18020	??0CPSCAttractor@@QAE@XZ	00af7fb0	row: named in T3_PORT_QUEUE col 2/3
+00b1a640	??0CPSCLight@@QAE@XZ	00af8020	row: named in T3_PORT_QUEUE col 2/3
+00b1dfd0	??0CPSCDecalRenderer@@QAE@XZ	00af8100	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00af8780	?Helper_af8780@@YIXPAVCInputProcessManager@@@Z	00af89a0	template scope or member template (shared-header route)
+00b16410	?Update@COrbitState@NParticleEngine@@QAEXABUCOrbitSettings@2@AAVCMatrix3x4@@M@Z	00b16d50	class COrbitState defined in the row more than once / in another scope
+00b21940	?GetPointAtPos@CPSCSplineBase@NParticleEngine@@QAEXAAUCParticleUpdateParameters@@PAVC3DVector@@MM@Z	00b1b030	call site: parameter 0 CParticleUpdateParameters& -> NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long> const&
+00b206b0	?OffsetSplinePositions@CSplineRandomOffsetData@@QAEXXZ	00b21160	class CSplineRandomOffsetData defined in the row more than once / in another scope
+00b206b0	?OffsetSplinePositions@CSplineRandomOffsetData@NParticleEngine@@QAEXXZ	00b215a0	class CSplineRandomOffsetData defined in the row more than once / in another scope
+00b20ba0	?Update@CSplinePosParamData@NParticleEngine@@QAEXPAUCParticleUpdateParameters@2@PAUCCardinalSpline@2@@Z	00b215a0	class CSplinePosParamData defined in the row more than once / in another scope
+00b20630	?WriteBinary@CSplineRandomOffsetData@NParticleEngine@@QAEXAAVCDataOutputStream@@@Z	00b21630	class CSplineRandomOffsetData defined in the row more than once / in another scope
+00b24500	?SmartRestoreComponentVideoMemory@CEngine@@QAE?AW4ESmartRestoreComponentVideoMemoryResult@@XZ	00b24690	private PDB target on an in-place model stand-in
+00b24500	?B_DoReset@@YIHPAUB@@@Z	00b25d00	row: named in T3_PORT_QUEUE col 2/3
+00b59710	??0CStateBlocksBase_00b59710@@QAE@XZ	00b28bc0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009fbf20	?SetResourceSize@CCompositeSurfaceCache_Retail@@QAEXK@Z	00b2afd0	class CResource is defined in an included header without the PDB method (header change: _hdr batch)
+009fbf20	?SetResourceSize@CCompositeSurfaceCache_Retail@@QAEXK@Z	00b2b120	row: named in T3_PORT_QUEUE col 2/3
+00b2f8b0	?ClearHandles@CEnginePrimitiveOcclusionInfo@@QAEXXZ	00b2f8e0	row: named in T3_PORT_QUEUE col 2/3
+00b93290	?Enumerate@CEngineSceneGrid_00b320a0@@QAEXAAUCEngineSceneEnumeratorResetVisibilityRatio@@@Z	00b320a0	call site: parameter 0 CEngineSceneEnumeratorResetVisibilityRatio& -> CEngineSceneEnumerator&
+00baca20	??0CEngineScenePrimitiveStatsEnumerator@@QAE@PAUCPrimitiveStatMap@@ABVC2DBoxF@@JK@Z	00b321b0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b842b0	?GetListSize@CEngineSubPrimitiveRenderer@@QAEKJ@Z	00b33010	row: named in T3_PORT_QUEUE col 2/3
+00b38890	?GetRenderInfo@CEngineOcclusionRenderer@@QAE?AUSSceneRenderInfo@@XZ	00b33010	row: named in T3_PORT_QUEUE col 2/3
+00b32ad0	?PreRenderLayer@CEnginePrimitiveRenderer@@QAEXJ@Z	00b33010	row: named in T3_PORT_QUEUE col 2/3
+00b94060	?RenderOcclusion@CEngineScene@@QAEXJAAY0BDA@$$CBE@Z	00b33010	row: named in T3_PORT_QUEUE col 2/3
+00b3a910	??0CEngineInternalPrimitiveAttached@@QAE@XZ	00b3a180	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00a62e20	??0CMemoryPool@@QAE@XZ	00b3b240	row: named in T3_PORT_QUEUE col 2/3
+009d5eb0	??0CPoolAllocator@@QAE@XZ	00b3b240	row: named in T3_PORT_QUEUE col 2/3
+009e9f40	?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z	00b428e0	call site: member call through DECL_REF_EXPR
+00bacda0	?FrameEnd@CEnginePrimitiveManager@@QAEXXZ	00b47980	row: named in T3_PORT_QUEUE col 2/3
+00b493c0	??0CManagerShadowedSpotLight@@QAE@ABVC3DVector@@0MMMABVCRGBFloatColour@@@Z	00b480e0	row: named in T3_PORT_QUEUE col 2/3
+00b48c70	?sub_b48c70@@YIHPAVCInputProcessManager@@@Z	00b495a0	template scope or member template (shared-header route)
+00b48d40	@MemberDtor_686df0_00b48d40@4	00b495f0	wrong spelling not parsed
+00bdefc0	??0CLocalDetailMap_00bdefc0@@QAE@PAUSMapEntry@@@Z	00b59800	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b64fa0	?RenderClouds@CEngineSkyRenderer_Methods@@QAEXM@Z	00b66190	row: named in T3_PORT_QUEUE col 2/3
+00b65a20	?RenderOuterSky@CEngineSkyRenderer_Methods@@QAEXM@Z	00b66190	row: named in T3_PORT_QUEUE col 2/3
+00b64550	?RenderSunFlare@CEngineSkyRenderer_Methods@@QAEXXZ	00b662f0	row: named in T3_PORT_QUEUE col 2/3
+00bd9ce0	?ClearTexturePool@CEngineLandscapeMemoryManagerCallView@@QAEXXZ	00b684f0	class CEngineLandscapeMemoryManager is defined in an included header without the PDB method (header change: _hdr batch)
+00bdc180	?UpdateBackgroundLOD@CEngineLandscapeMapCallView@@QAE?AW4LS_LOADING_STATUS@@AAVCLandscapeGPUUpdateQueue@@N_N@Z	00b684f0	class CEngineLandscapeMap is defined in an included header without the PDB method (header change: _hdr batch)
+00bdc020	?UpdateBackgroundTesselation@CEngineLandscapeMapCallView@@QAEXXZ	00b684f0	class CEngineLandscapeMap is defined in an included header without the PDB method (header change: _hdr batch)
+00b80940	?CalculateRunState@CEngineSimulationBase@@QAEJABVC3DVector@@M@Z	00b81180	type: enum CEngineSimulationBase::ERunState unknown to the row
+00b80940	?CalculateRunState@CEngineSimulationBase@@QAEJABVC3DVector@@M@Z	00b81230	type: enum CEngineSimulationBase::ERunState unknown to the row
+00b83d30	?clear@?$CRetailVector@V?$CCountedPointer@VCParticleSimulation@@@@@@QAEXXZ	00b81d60	template scope or member template (shared-header route)
+00b84990	?SortList@CEngineSubPrimitiveRenderer@@QAEXAAUCSubList@@_N@Z	00b849f0	call site: parameter 0 CSubList& -> CArray<CEngineSubPrimitiveRenderer::CSortElement>&
+00b87870	?ApplyDisplacement@CEngineScreenEffectDisplacementRenderer_Render@@QAEXXZ	00b88ed0	row: named in T3_PORT_QUEUE col 2/3
+009ccdc0	?FindIndexBySymbol@CBankFileCallView@@QBEKABVCCharString@@@Z	00b90270	row: named in T3_PORT_QUEUE col 2/3
+00a5d5f0	?GetVertexShader@CShaderResourceCallView@@QBEPAVCVertexShader@@PAV2@ABVCCharString@@@Z	00b90270	row: named in T3_PORT_QUEUE col 2/3
+00a24280	?MeshInfoAtIndex@CMeshDataBankCallView@@QAEPAVC3DMeshInfo_PDB@@K@Z	00b90270	row: named in T3_PORT_QUEUE col 2/3
+00b903d0	?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@QAEXPAX0@Z	00b906c0	row: named in T3_PORT_QUEUE col 2/3
+00b903d0	?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@QAEXPAXABVCMatrix3x4@@@Z	00b90700	row: named in T3_PORT_QUEUE col 2/3
+00b903d0	?RenderUntexturedStaticMeshPrimitive@CEnginePrimitiveManagerOcclusionBase@@QAEXPAXABVCMatrix3x4@@@Z	00b90cd0	private PDB target on an in-place model stand-in
+00b308e0	?ClipWorldSpaceBoundingBox@CEngineCameraMethods@@QBE_NABVC3DBoundingBox@@MAA_N@Z	00b91f50	class CEngineCamera is defined in an included header without the PDB method (header change: _hdr batch)
+00b8fe60	?RemoveFromList@CPrimitiveMethods@@QAEXXZ	00b936e0	class CEngineInternalPrimitiveBase is defined in an included header without the PDB method (header change: _hdr batch)
+00b939e0	?CheckVisibilityResults@CEngineSceneGrid@@QAE_NJKKKK_N@Z	00b93cc0	row: named in T3_PORT_QUEUE col 2/3
+00b93b30	?AddPrimitive@CEngineSceneMap@@QAEXPAVCEngineInternalPrimitiveBase@@ABVC2DVector@@M@Z	00b94d30	row: named in T3_PORT_QUEUE col 2/3
+00adebc0	?m@Base00b98d50@@QAEXPAX@Z	00b98d50	row: named in T3_PORT_QUEUE col 2/3
+00bec680	?SubMesh_CollectStats@@YIXPAVC3DMeshInfo@@AAUStatMap@@HK@Z	00b98de0	row: named in T3_PORT_QUEUE col 2/3
+00b8ff00	??0CEngineInternalPrimitiveNative@@QAE@JK@Z	00b9ab30	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveStaticMesh@@QAEXM@Z	00b9d8e0	row: named in T3_PORT_QUEUE col 2/3
+00b817d0	?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z	00b9de90	class CEngineSimulationManager is defined in an included header without the PDB method (header change: _hdr batch)
+00b9d8e0	?BaseUpdate@C@@QAEXAAUP@@K@Z	00b9e570	call site: parameter 0 P& -> CEnginePrimitive const&
+00adebc0	?m@Base00baa410@@QAEXPAX@Z	00baa410	row: named in T3_PORT_QUEUE col 2/3
+00b8ff00	??0CEngineInternalPrimitiveNative@@QAE@JK@Z	00baba70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b90270	??0CEnginePrimitiveManagerOcclusionBase@@QAE@PAUCEngineSceneArray@@@Z	00babb50	row: named in T3_PORT_QUEUE col 2/3
+00bacd80	?RegisterEnable@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCCharString@@@Z	00babb50	row: named in T3_PORT_QUEUE col 2/3
+00b98b10	??0CEngineSubPrimitiveOcclusionTest@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00babf70	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAX@Z	00bacf70	row: named in T3_PORT_QUEUE col 2/3
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bad040	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveSprite@@QAEXM@Z	00bad670	row: named in T3_PORT_QUEUE col 2/3
+00bade40	_SpriteHelper@4	00baf9e0	row: named in T3_PORT_QUEUE col 2/3
+00beb550	@SubPrim_opdelete@4	00bb1760	row: named in T3_PORT_QUEUE col 2/3
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAX@Z	00bb6a30	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bb6e00	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bba480	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bbbdb0	??0CEngineSubPrimitiveParticleGroup@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00bbbf70	row: named in T3_PORT_QUEUE col 2/3
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bbeaf0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bc4d90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bc6b50	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bacdb0	??0CEnginePrimitiveManager@@QAE@PAUCEngineSceneArray@@@Z	00bc7e90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveLine@@QAEXM@Z	00bc7f70	class CEngineInternalPrimitiveBase is defined in an included header without the PDB method (header change: _hdr batch)
+00a5d5f0	?GetVertexShader@CShaderResource@@QBEPAVCVertexShader@@PAV2@ABVCCharString@@@Z	00bca770	parameter count differs (identity research)
+00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveSpriteTrail@@QAEXM@Z	00bcbc00	class CEngineInternalPrimitiveBase is defined in an included header without the PDB method (header change: _hdr batch)
+00a5d5f0	?GetVertexShader@CShaderResource@@QBEPAVCVertexShader@@PAV2@ABVCCharString@@@Z	00bcc5f0	parameter count differs (identity research)
+00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveWeaponTrail@@QAEXM@Z	00bcd660	class CEngineInternalPrimitiveBase is defined in an included header without the PDB method (header change: _hdr batch)
+00b817d0	?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z	00bcfcb0	class CEngineSimulationManager is defined in an included header without the PDB method (header change: _hdr batch)
+00b817d0	?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z	00bcfde0	row: named in T3_PORT_QUEUE col 2/3
+00bd7110	?RenderSubPrimitive@CEnginePrimitiveManagerAnimatedMeshesBase@@QAEXAAVCEngineSubPrimitiveBase@@J@Z	00bd7a00	virtual PDB method on the row's own model of CEnginePrimitiveManagerAnimatedMeshesBase (layout)
+00bd9250	?AutoTinyCompositeDestructor_00bd9250@@YIXPAX@Z	00bd9a40	row: named in T3_PORT_QUEUE col 2/3
+00baa2b0	?AutoTinyMemberDestructor_00baa2b0@@YIXPAX@Z	00bd9a40	row: named in T3_PORT_QUEUE col 2/3
+00bd9250	?AutoTinyCompositeDestructor_00bd9250@@YIXPAX@Z	00bd9a70	row: named in T3_PORT_QUEUE col 2/3
+00baa2b0	?AutoTinyMemberDestructor_00baa2b0@@YIXPAX@Z	00bd9a70	row: named in T3_PORT_QUEUE col 2/3
+00bdbb70	??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ	00bdb080	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bdbb70	??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ	00bdb400	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bf6e20	??0CLandscapeBackgroundTreeNode@@QAE@PAVCEngineLandscapeMap@@PAXJ@Z	00bdc180	row: named in T3_PORT_QUEUE col 2/3
+00be06b0	?AddRequest@CEngineStaticMapFileBlockManager@@QAEXJK_N@Z	00bdc180	row: named in T3_PORT_QUEUE col 2/3
+00bf62e0	?AllocateLandscapeBackgroundTreeNode@@YIPAXKPAVCEngineLandscapeMap@@@Z	00bdc180	row: named in T3_PORT_QUEUE col 2/3
+00be04f0	?BankFileList_RemoveFinished@CEngineStaticMapFileBlockManager@@QAEXXZ	00bdc180	row: named in T3_PORT_QUEUE col 2/3
+00bdc000	?ReleaseFileBlockLoad@CEngineLandscapeMap@@QAEXXZ	00bdc180	row: named in T3_PORT_QUEUE col 2/3
+00bdc450	?cl_h_00bdc4f0@@YIXPAUS@@@Z	00bdc4f0	parameter count differs (identity research)
+00be0400	?ReleaseBlock@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00bdd980	call site: parameter 0 void* -> long
+00be0400	?Release@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00bdda30	call site: parameter 0 void* -> long
+00bddf30	??0CQuadTreeElement@@QAE@PAVCLocalDetailCacheMap@@JJJJ@Z	00bde390	row: libclang parse errors at HEAD
+00bde190	?LoadHeader@CObjectCacheGroupCollection@@QAEXAAVCMemoryDataInputStream@@@Z	00bde390	row: libclang parse errors at HEAD
+00be06b0	?RequestFileBlock@CEngineStaticMapFileBlockManager@@QAEXJJJ@Z	00bde390	row: libclang parse errors at HEAD
+00bde600	?CreatePrimitiveOfType@CObjectTypeCollection@@QAEPAVCLocalDetailPrimitiveBase@@J@Z	00bde680	class CObjectTypeCollection defined in the row more than once / in another scope
+00bdeb50	?StaticUpdate@CObjectCacheGroupCollection@@QAE_NPAVCEngineStaticMapFileBlockManager@@ABUCObjectTypeCollectionPalette@@N@Z	00bdebf0	class CObjectCacheGroupCollection defined in the row more than once / in another scope
+00bbbdb0	??0CEngineSubPrimitiveParticleGroup@@QAE@AAVCEngineInternalPrimitiveBase@@@Z	00be0cd0	row: named in T3_PORT_QUEUE col 2/3
+00be21f0	@InternalPrimitiveCtor@4	00be2260	row: named in T3_PORT_QUEUE col 2/3
+00bec680	?Inner_CollectStats@@YIXPAVCEngineInternalPrimitiveMeshBase@@AAUStatMap@@W4EEnginePrimitiveStatIndex@@K@Z	00bec8b0	model CEngineInternalPrimitiveMeshBase has other overloads of CollectStats
+00a63150	?Initialise@CVertexBufferWin32Native@@QAE_NHJJKH@Z	00bf3380	class CVertexBufferWin32 is defined in an included header without the PDB method (header change: _hdr batch)
+00be0400	?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00bf63e0	call site: parameter 0 void* -> long
+00be0400	?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00bf6410	call site: parameter 0 void* -> long
+00be0400	?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00bf73a0	call site: parameter 0 void* -> long
+00bf8c10	?ScalarDeletingDestructor@CLandscapeBackgroundLoadTask@@QAEPAXI@Z	00bf8030	row: libclang parse errors at HEAD
+00bf8c10	?ScalarDeletingDestructor@CLandscapeBackgroundLoadTask@@QAEPAXI@Z	00bf84c0	row: libclang parse errors at HEAD
+00be0400	?ReleaseRequest@CEngineStaticMapFileBlockManager@@QAEXPAX@Z	00bf8c10	row: named in T3_PORT_QUEUE col 2/3
+00bfb750	?IsObjectOffsetsInRange@@YI_NPAPAVC4DVector@@PAXJ@Z	00bf9cc0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00bf9fa0	?SetupPrimitiveDesc@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE?AUCAddPrimitiveDesc@@XZ	00bfa8a0	private PDB target on an in-place model stand-in
+00bf9fa0	?SetupPrimitiveDesc@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE?AUCAddPrimitiveDesc@@XZ	00bfacc0	private PDB target on an in-place model stand-in
+00c35170	??0CMember_00c35170@@QAE@XZ	00c1f640	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c35170	??0CMember_00c35170@@QAE@XZ	00c1f720	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c34aa0	??0CMember_00c34aa0@@QAE@XZ	00c1f7e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c34aa0	??0CMember_00c34aa0@@QAE@XZ	00c1fa20	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c34aa0	??0CMember_00c34aa0@@QAE@XZ	00c1fcc0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c34320	??0COcclusion_00c21ba0@@QAE@XZ	00c21ba0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c3d970	??0CCoda3DSource@@QAE@XZ	00c3dfd0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c56d30	??0CGroupB_00c3ec80@@QAE@XZ	00c3ec80	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c573e0	??0CGroupB_00c3ee10@@QAE@XZ	00c3ee10	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c3f760	??0CSalSw2DVoice@@QAE@XZ	00c3f800	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c3f760	??0CAIStateGroupBase_00c3f970@@QAE@XZ	00c3f970	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c55090	??0CVtable_012b8a78@@QAE@XZ	00c55270	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c550b0	??0CVtable_012b8a8c@@QAE@XZ	00c55270	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c550f0	??0CVtable_012b8ab4@@QAE@XZ	00c55270	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00c55110	??0CVtable_012b8ac8@@QAE@XZ	00c55270	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009f0320	??0CParticleMorphManager@@QAE@XZ	00cb5b90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00905330	??0CElement16_00905330@@QAE@ABU0@@Z	00cd25e8	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00905330	??0CElement16_00905330@@QAE@ABU0@@Z	00cd2613	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+008abd10	?destroy@Pair@@QAEXPAUAlloc@@@Z	00cd2afd	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00cd2ae2	??0CElement16_00cd2ae2@@QAE@ABU0@@Z	00cd2e65	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00cd2ae2	??0CElement16_00cd2ae2@@QAE@ABU0@@Z	00cd2e90	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00905330	??0CElement16_00905330@@QAE@ABU0@@Z	00cd3a79	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00d16920	?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d167c0	non-call reference to the member (address taken / member pointer)
+00d16d00	?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16bb0	non-call reference to the member (address taken / member pointer)
+00d17090	?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16dc0	non-call reference to the member (address taken / member pointer)
+007e7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00d2c810	row: named in T3_PORT_QUEUE col 2/3
+00d890a0	?Alloc@CSummonedCreature@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d87cb0	non-call reference to the member (address taken / member pointer)
+00d905c0	?MakeBanditComment@CQ_HobbeCaveScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z	00d907b0	class CQ_HobbeCaveScript defined in the row more than once / in another scope
+00d905c0	?MakeBanditComment@CQ_HobbeCaveScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z	00d90b30	class CQ_HobbeCaveScript defined in the row more than once / in another scope
+007e7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00dd6440	row: named in T3_PORT_QUEUE col 2/3
+007e7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00ddc980	row: named in T3_PORT_QUEUE col 2/3
+007e72a0	?Construct@CScriptedThingStorage@@QAEXXZ	00ddd030	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00f35b10	?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00e02e50	call site: parameter 0 NScript::CIsThingAlive& -> NScript::CPredicateBase const&
+00f35b10	?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00e03810	call site: parameter 0 NScript::CIsThingAlive& -> NScript::CPredicateBase const&
+00e39140	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e38f80	non-call reference to the member (address taken / member pointer)
+00e55ce0	?AskForBook@CBS_Teacher@@QAE_NJVCCharString@@@Z	00e57530	class CBS_Teacher defined in the row more than once / in another scope
+00e6ad20	?WatchForAcolyteDeath@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z	00e6aac0	non-call reference to the member (address taken / member pointer)
+0099a3b0	?CopyBase@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z	00e80d60	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00e9dc80	?WatchForAttack@CV_IntroductionToTrophiesScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e9dac0	non-call reference to the member (address taken / member pointer)
+00cb8110	??0CScriptBaseNative@@QAE@XZ	00ed76e0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00edc980	?WatchForAcolyteDeath_00edc980@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z	00edc720	non-call reference to the member (address taken / member pointer)
+00edcb80	?WatchForAcolyteHit_00edcb80@CQ_AcolyteParentScript@@QAEXUCScriptThingRuntime@@@Z	00edc720	non-call reference to the member (address taken / member pointer)
+00f35b10	?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z	00eed6b0	call site: parameter 0 NScript::CIsThingAlive const& -> NScript::CPredicateBase const&
+00ef7b50	??0CPredicate_And@NScript@@QAE@ABUCIsThing@1@ABVCIsThingAlive@1@@Z	00ef7800	row: libclang parse errors at HEAD
+00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f083a0	non-call reference to the member (address taken / member pointer)
+00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f08a30	row: libclang parse errors at HEAD
+0099e960	??9CCharStringCmp@@QBE_NPBD@Z	00f08c30	row: libclang parse errors at HEAD
+00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f08c30	row: libclang parse errors at HEAD
+00f09950	?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f09640	non-call reference to the member (address taken / member pointer)
+00f25c60	??0CElement60_00f25c60@@QAE@ABU0@@Z	00f283d0	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+00f2a0d0	?AllocCCutsceneDef@@YAPAVCDefClassBase@@XZ	00f2a0f0	static v non-static mismatch
+00f29fa0	?AllocCRegionScriptDef@@YAPAVCDefClassBase@@XZ	00f2a0f0	static v non-static mismatch
+00f29f40	?AllocCScriptDef@@YAPAVCDefClassBase@@XZ	00f2a0f0	static v non-static mismatch
+00f3ea50	?GenerateTriangleListAndStrip@CTriangleStripifier2@@QAEXAAUCIndexArray@@00@Z	00f3f3a0	model CTriangleStripifier2 has other overloads of GenerateTriangleListAndStrip
+00f3ea50	?GenerateStrips@CTriangleStripifier2@@QAEXABV?$CArray@G@@AAV2@AAV?$CArray@J@@@Z	00f3f5a0	stand-in has a body in the row (inline model, not a callee-only rebind)
+00a38500	??0CStatic_00a38500@@QAE@XZ	0121a630	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009e5200	??0CStatic_009e5200@@QAE@XZ	0121ef30	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+009a7ac0	??0CStatic_009a7ac0@@QAE@XZ	01224010	special member / operator (ctor, dtor, operator, ??_G): needs a model edit
+006cfe80	?IsActive@CTCTutorial@@QBE_NXZ	00960760	row locked by another agent at batch time
+00b93df0	?ResetRenderLists@CEngineScene@@QAEXXZ	00b32820	generated (work/g4_rows) and clang-clean, not gated: next batch
+00b396e0	?Attach@CEngineInternalPrimitiveAttached@@QAE_NABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABVCEnginePrimitiveHandle@@JK@Z	00b3a180	generated (work/g4_rows) and clang-clean, not gated: next batch
+009f8200	?Flush@CDeviceOwner_009f8200@@QAEXXZ	00b3b7c0	generated (work/g4_rows) and clang-clean, not gated: next batch
+00b91710	?InvalidateAll@CSceneGridOwner_00b91710@@QAEXXZ	00b91870	generated (work/g4_rows) and clang-clean, not gated: next batch
+009f2be0	?AllocateAligned@@YIPAXKK@Z	00b99d90	generated (work/g4_rows) and clang-clean, not gated: next batch
+00b8fd40	?Method@C@@QAEXH@Z	00bb6980	generated (work/g4_rows) and clang-clean, not gated: next batch
+00a0af40	?DrawAsIndexedTris@CRenderManagerCoreView@@QAEXPBXJJ0J@Z	00bb8090	generated (work/g4_rows) and clang-clean, not gated: next batch
+00bdd860	?RenderUpdate@CObjectCacheGroupCollection@@QAEXPAVCEngineCamera@@MMKM@Z	00bdd930	generated (work/g4_rows) and clang-clean, not gated: next batch
+00be04f0	?RemoveFinishedBlocks@CFileBlockManagerCalls@@QAEXXZ	00bde160	generated (work/g4_rows) and clang-clean, not gated: next batch
+00bf6ac0	?UpdateParentChainVisibilityFlag@CLandscapeBackgroundTreeNode_Retail@@QAEXXZ	00bf7370	generated (work/g4_rows) and clang-clean, not gated: next batch
+00e96c30	?DoMission_BodyGuardSimple@CHauntedHouseScript@@QAEXVCCharString@@0@Z	00e96660	generated (work/g4_rows) and clang-clean, not gated: next batch
+00f35b10	?WaitFor@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@QAEXPAVCIsThingAlive@3@@Z	00ead800	generated (work/g4_rows) and clang-clean, not gated: next batch
+00a868c0	?Calculate@CPhysicsFacesSegmentBranch@@SI_NABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABV?$CArray@G@@JPAVCPlane@@PAV4@4@Z	00a86b30	PDB spelling not in both PDB name sets / differs from the target self Leaf (tracker): identity check needed
+0082d2d0	?PeekPSimDefinition@CThingBuilding@@QBE?AV?$CDefPointer@UCBuildingSimDefinition@@@@XZ	00512410	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0082d2d0	?PeekPSimDefinition@CThingBuilding@@QBE?AV?$CDefPointer@UCBuildingSimDefinition@@@@XZ	0065f056	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00a043a0	?GetJoystickPosition@InputEvent@NativeInput@@QBE?AUVector2@2@XZ	00689130	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00a03b40	?GetType@InputEvent@NativeInput@@QBE?AW4EInputEventType@2@XZ	00689130	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+006d4e60	?IsCreatureValidFollower@CTCFollowed@@QAE_NPAVCThing@@PA_N@Z	006aeea0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00733cf0	?ApplyBlockResponse@CTCCombat@@QAEXPAVCThing@@@Z	006eb390	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0081b0a0	?GetAllMorphsOfType@CTextureMorphs@@QBE_NW4EHeroMorphType@@PAUCTextureMorphEntryVector@@@Z	0071dbd0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00762580	?AddNewShape@CTCShapeManager@@QAEXUCShapePointer@@@Z	00762ab0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00762580	?AddNewShape@CTCShapeManager@@QAEXUCShapePointer@@@Z	00762d80	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00762580	?AddNewShape@CTCShapeManager@@QAEXUCShapePointer@@@Z	00762e10	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00762580	?AddNewShape@CTCShapeManager@@QAEXUCShapePointer@@@Z	00762f50	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00762580	?AddNewShape@CTCShapeManager@@QAEXUCShapePointer@@@Z	00762fd0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007e9250	?UpdateMaxExitWeight@CTCAvoidRegionExit@@QAEXXZ	007e9360	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007e9250	?UpdateMaxExitWeight@CTCAvoidRegionExit@@QAEXXZ	007e9410	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00845ce0	?DropWeapon@@YIXPAVCThing@@PAVCTCCarrying@@PAVCThingCreatureBase@@@Z	0084a5f0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+008b7cf0	?ShouldPlayUnsheatheWeaponAction@@YI_NPAVCThing@@W4EUnsheatheWeaponType@@PA_N2@Z	008b7ed0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00704730	?GetNullScriptThing@GameScriptThingManager@@QAE?AUScriptMethods@@XZ	008d1890	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00810fc0	?GetPHitBy@HitEventBase@@QBEPAUCThingNative@@XZ	008d1890	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00704730	?GetNullScriptThing@GameScriptThingManager@@QAE?AUScriptMethods@@XZ	008d1b80	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00704730	?GetNullScriptThing@GameScriptThingManager@@QAE?AUScriptMethods@@XZ	008d1dd0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00704730	?GetNullScriptThing@GameScriptThingManager@@QAE?AUScriptMethods@@XZ	008d21b0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0073ac50	?BaseFrameUpdate@CModeBerserk@@QAEXXZ	008d9530	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+006a1440	?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ	008d9530	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+006a15a0	?IsThingCarryingMeleeWeapon@@YI_NPBUThingNative@@@Z	008d9530	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00903ac0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00903bc0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904030	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904540	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	009046a0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAUCActionBase@NTCScriptedControl@@@Z	00904780	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0082d2d0	?PeekPSimDefinition@CThingBuilding@@QBE?AV?$CDefPointer@UCBuildingSimDefinition@@@@XZ	0090c2d0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0097d6f0	?AIAction_LookAtThing@CAIStateGroupBaseA@@QAE?AW4EAIActionReturn@@W4EAIActionRepeat@@UCIntelligentPointerConstThing@@JM@Z	00911630	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0082d2d0	?PeekPMaterial@CThingBuilding@@QAE?AV?$CDefPointer@VCMaterialDef@@@@XZ	009167f0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0082d2d0	?PeekPSimDefinition@CThingBuilding@@QAE?AV?$CDefPointer@VCSimBuildingDef@@@@XZ	00917a10	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0082d2d0	?PeekPMaterial@CThingBuilding@@QAE?AV?$CDefPointer@VCMaterialDef@@@@XZ	00942d40	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0082d2d0	?PeekPMaterial@CThingBuilding@@QAE?AV?$CDefPointer@VCMaterialDef@@@@XZ	00946b50	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+006edc50	?RegisterCombatant@CCombatManager@@QAEXPAVCThingAICreature@@PAVCThing@@_N@Z	00962a90	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+009c3ae0	?ProcessRead@CFileInstaller@@QAEXPAUCActiveFile@@@Z	009c53a0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+009c3590	?StartRead@CFileInstaller@@QAEXPAUCActiveFile@@@Z	009c53a0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+009fa450	?Lock@CTexture@@QAE?AUCLockedRect@@JK@Z	00a3b730	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00a65390	?ReleaseChunk@CMemoryAllocatorVariableSize@@QAEXPAUCMemoryAreaChunk@@@Z	00a65690	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00af59a0	?Update@CParticleSystem@NParticleEngine@@QAEXPAUCParticleUpdateParameters@@@Z	00aee9f0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0098b860	?CreateResource@CShaderRenderManager@@QAE?AUCShaderResourcePointer@@XZ	00b3b5d0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+0098b860	?CreateResource@CShaderRenderManager@@QAE?AUCShaderResourcePointer@@XZ	00b3b6d0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+00a5d7c0	?OpenShaderBank@CShaderResource@@QAEXPBUCShaderDataBankNative@@@Z	00b3b6d0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+009fd150	?GetBlankTexture@CGraphicDataBankFull@@QBEPBVCTexture@@W4ETextureType@@@Z	00ba95d0	generated row fails the clang precheck (incomplete type / unknown type / conversion): generator follow-up
+009f1760	?Copy@CMemoryBuffer@@QAEXKPBX@Z	00689df0	HOLD a1: objgate NOT_EQ: COMDAT ?ProcessInput@CInputProcessInventory relocations differ after the AddData rebind on the row's own model
+0080cbf0	?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z	008c6b20	HOLD a1: objgate NOT_EQ + vland DIFFER(442v439): SetValue(long) -> SetLifeTimeSeconds(float) converts the argument (value parameter type change)
+007fd3d0	?SetValue@CTCDriverED@@QAEXJ@Z	008c6b20	HOLD a1: objgate NOT_EQ + vland DIFFER(442v439): SetValue(long) -> SetLifeTimeSeconds(float) converts the argument (value parameter type change)
+009cd620	?AddEntry@CGraphicDataBank@@QAEXABVCCharString@@K0V?$CCountedPointer@UCBankStateBlock@@@@@Z	00b2c4e0	HOLD a2: objgate NOT_EQ
+009ce8d0	?BeginUpdateEntries@CGraphicDataBank@@QAEXXZ	00b2c4e0	HOLD a2: objgate NOT_EQ
+009ccdc0	?FindEntry@CGraphicDataBank@@QAEKABVCCharString@@@Z	00b2c4e0	HOLD a2: objgate NOT_EQ
+00820b80	?ApplyScriptedMapBrush@CMap@@QAEXABVCCharString@@J@Z	004fe510	HOLD a3: objgate NOT_EQ (DATA in the leaf COMDAT) + vland DIFFER(59v54) after the rebind
+00789cc0	?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CCameraRangedMethods@@QBEMXZ	00698d10	HOLD a4: new vland warn kind ['RELOC_CONFLICT']
+006d6620	?GetVisibilityMultiplier@CTCVisibility68@@QBEMXZ	00747660	HOLD a4: name_gate WORSE
+00782390	?OnBoastAccepted@CTCBoastingPosition_Calls@@QAEXPAVCThingCreatureBase@@@Z	007ebbc0	HOLD a4: name_gate WORSE
+006bdf40	?AddUBYTE@CGSIOverrideMusicEvent@@QAEXE@Z	00891220	HOLD a4: objgate NOT_EQ; vland ('RELOCATION_MATCH', 'PASS') -> ('DIFFER(126v125)', 'PASS')
+006bdea0	?SetOverrideMusic@CGSIOverrideMusicEvent@@QAEXW4EMusicSetType@@_N@Z	00891220	HOLD a4: objgate NOT_EQ; vland ('RELOCATION_MATCH', 'PASS') -> ('DIFFER(126v125)', 'PASS')
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b5550	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6210	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6250	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6290	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b62d0	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6310	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6350	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6390	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b63d0	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6410	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6450	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b6490	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+008b0ab0	??0CCombatSequenceBase@@QAE@PAVCThingCreatureBase@@0@Z	008b64d0	generated (work/cs_rows), same form as batch c1; left for the next batch (component of 63 rows > 50)
+00692bc0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00693ef0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+006a7270	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+006a7380	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+006a8a80	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+006b3950	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+008864a0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 6 census rows, 0 hits)
+006b6010	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 4 census rows, 0 hits)
+006b62b0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+006e7b80	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+006e89b0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+006e92c0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+006f2c00	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+006f83c0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+006fcc80	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00702aa0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+0070c050	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 32 census rows, 0 hits)
+00726160	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00727580	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+0072c6e0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+0073e410	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00742e60	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00761b50	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00770e50	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00787dbc	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+0078b7c0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+007e74d0	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+007f7b70	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+008098b0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 8 census rows, 0 hits)
+00826560	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+0083d6d0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+0083ebd0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00863790	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00877720	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00883530	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00883640	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00883750	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+008b8a10	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+008bfce0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+008c5dc0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+008fdb27	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00903046	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00910b20	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00977690	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+0098d710	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00994780	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 13 census rows, 0 hits)
+00996b30	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 24 census rows, 0 hits)
+0099a2f0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+0099a380	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 5 census rows, 0 hits)
+0099a430	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 24 census rows, 0 hits)
+0099b720	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+0099e4b0	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+0099eae0	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+0099eb40	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+0099ebf0	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+0099ec30	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+0099efb0	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+009ad410	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+009b4b80	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+009d6490	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+009f7250	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+009f7330	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+009f9450	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+009fbec0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+009fc690	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00a01b10	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+00a01b50	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+00a01b90	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+00a02db0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00a0d810	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00a1c950	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00a25970	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00a3fdc0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00a57ef0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00a629a0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 13 census rows, 0 hits)
+00a98910	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 5 census rows, 0 hits)
+00a9aec0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00a9af50	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00ab3b10	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 10 census rows, 0 hits)
+00ab6240	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00ad4a70	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00ae0540	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00ae2510	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00aeaa00	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00aeaa80	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00aeaad0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00aeaae0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 4 census rows, 0 hits)
+00aeab10	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00af5330	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00af7b60	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00af8650	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00b0c9c0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00b16eb0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00b1b350	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00b38d10	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00b9c660	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 4 census rows, 0 hits)
+00be5bb0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 3 census rows, 0 hits)
+00bfc880	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00bfca20	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00bfcbc0	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00bfcd60	-	-	no caller found: no landed row names a wrong spelling and calls the target (census438 + cfilt438)
+00c72600	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00caaac0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00ce1110	-	-	not examined: big-family target set aside (NF439 work/big_targets.txt; header-port work)
+00dd1af0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00e5e240	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00eeec00	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 2 census rows, 0 hits)
+00ef7ab0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00f07b80	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00f270d0	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00f27650	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 1 census rows, 0 hits)
+00f35b40	-	-	no caller binds a wrong spelling under libclang (ast438 locator: 4 census rows, 0 hits)
+-	-	00eeea90	not examined: libclang locator crashed on this row
+-	-	00eeed20	not examined: libclang locator crashed on this row
+-	-	00f081e0	not examined: libclang locator crashed on this row

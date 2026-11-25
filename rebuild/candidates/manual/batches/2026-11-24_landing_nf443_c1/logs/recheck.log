@@ -1,0 +1,203 @@
+addr       parity           behav  name
+008b5590   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5590   WARN SHARED_HEADER_AVAILABLE CCombatSequence_GenericLeader (engine/CCombatSequence_GenericLeader.h)
+008b5590   RELOCATION_MATCH PASS   Alloc_CCombatSequence_GenericLeader
+008b55d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b55d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditUnblockableAttack (engine/CCombatSequence_BanditUnblockableAttack.h)
+008b55d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditUnblockableAttack
+008b5610   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5610   WARN SHARED_HEADER_AVAILABLE CCombatSequence_NonInterruptableBoxStrafe (engine/CCombatSequence_NonInterruptableBoxStrafe.h)
+008b5610   RELOCATION_MATCH PASS   Alloc_CCombatSequence_NonInterruptableBoxStrafe
+008b5650   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5650   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAdvanceFar (engine/CCombatSequence_BanditAdvanceFar.h)
+008b5650   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditAdvanceFar
+008b5690   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5690   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackFar (engine/CCombatSequence_BanditAttackFar.h)
+008b5690   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditAttackFar
+008b56d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b56d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackMiddle (engine/CCombatSequence_BanditAttackMiddle.h)
+008b56d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditAttackMiddle
+008b5710   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5710   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackSide (engine/CCombatSequence_BanditAttackSide.h)
+008b5710   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditAttackSide
+008b5750   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5750   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditAttackNear (engine/CCombatSequence_BanditAttackNear.h)
+008b5750   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditAttackNear
+008b5790   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5790   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditIdleNear (engine/CCombatSequence_BanditIdleNear.h)
+008b5790   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditIdleNear
+008b57d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b57d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditIdleMiddle (engine/CCombatSequence_BanditIdleMiddle.h)
+008b57d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditIdleMiddle
+008b5810   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5810   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditBoast (engine/CCombatSequence_BanditBoast.h)
+008b5810   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditBoast
+008b5850   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5850   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingAttack (engine/CCombatSequence_BanditKingAttack.h)
+008b5850   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditKingAttack
+008b5890   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5890   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingAdvance (engine/CCombatSequence_BanditKingAdvance.h)
+008b5890   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditKingAdvance
+008b58d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b58d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingBackOff (engine/CCombatSequence_BanditKingBackOff.h)
+008b58d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditKingBackOff
+008b5910   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5910   WARN SHARED_HEADER_AVAILABLE CCombatSequence_BanditKingSpinAround (engine/CCombatSequence_BanditKingSpinAround.h)
+008b5910   RELOCATION_MATCH PASS   Alloc_CCombatSequence_BanditKingSpinAround
+008b5950   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5950   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderMainAttack (engine/CCombatSequence_FodderMainAttack.h)
+008b5950   RELOCATION_MATCH PASS   Alloc_CCombatSequence_FodderMainAttack
+008b5990   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5990   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderUnblockableMainAttack (engine/CCombatSequence_FodderUnblockableMainAttack.h)
+008b5990   RELOCATION_MATCH PASS   Alloc_CCombatSequence_FodderUnblockableMainAttack
+008b59d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b59d0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderSecondaryAttack (engine/CCombatSequence_FodderSecondaryAttack.h)
+008b59d0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_FodderSecondaryAttack
+008b5a10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5a10   WARN SHARED_HEADER_AVAILABLE CCombatSequence_FodderCombatIdle (engine/CCombatSequence_FodderCombatIdle.h)
+008b5a10   RELOCATION_MATCH PASS   Alloc_CCombatSequence_FodderCombatIdle
+008b5a50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5a50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_ScorpionLungeAttack (engine/CCombatSequence_ScorpionLungeAttack.h)
+008b5a50   RELOCATION_MATCH PASS   Alloc_CCombatSequence_ScorpionLungeAttack
+008b5a90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5a90   WARN SHARED_HEADER_AVAILABLE CCombatSequence_KingScorpionTailPlunge (engine/CCombatSequence_KingScorpionTailPlunge.h)
+008b5a90   RELOCATION_MATCH PASS   Alloc_CCombatSequence_KingScorpionTailPlunge
+008b5ad0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5ad0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollDoubleSwipe (engine/CCombatSequence_TrollDoubleSwipe.h)
+008b5ad0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollDoubleSwipe
+008b5b10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5b10   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollDoubleSwipeNonMelee (engine/CCombatSequence_TrollDoubleSwipeNonMelee.h)
+008b5b10   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollDoubleSwipeNonMelee
+008b5b50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5b50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollOpeningGroundPound (engine/CCombatSequence_TrollOpeningGroundPound.h)
+008b5b50   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollOpeningGroundPound
+008b5b90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5b90   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollProjectileAttack (engine/CCombatSequence_TrollProjectileAttack.h)
+008b5b90   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollProjectileAttack
+008b5bd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5bd0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollBurrowPursue (engine/CCombatSequence_TrollBurrowPursue.h)
+008b5bd0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollBurrowPursue
+008b5c10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5c10   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollBurrowPursueNoZone (engine/CCombatSequence_TrollBurrowPursueNoZone.h)
+008b5c10   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollBurrowPursueNoZone
+008b5c50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5c50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockPursue (engine/CCombatSequence_TrollRockPursue.h)
+008b5c50   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollRockPursue
+008b5c90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5c90   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockPursueNoZone (engine/CCombatSequence_TrollRockPursueNoZone.h)
+008b5c90   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollRockPursueNoZone
+008b5cd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5cd0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockAdvance (engine/CCombatSequence_TrollRockAdvance.h)
+008b5cd0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollRockAdvance
+008b5d10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5d10   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockThrowRock (engine/CCombatSequence_TrollRockThrowRock.h)
+008b5d10   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollRockThrowRock
+008b5d50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5d50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockIdle (engine/CCombatSequence_TrollRockIdle.h)
+008b5d50   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollRockIdle
+008b5d90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5d90   WARN SHARED_HEADER_AVAILABLE CCombatSequence_TrollRockShuffleBack (engine/CCombatSequence_TrollRockShuffleBack.h)
+008b5d90   RELOCATION_MATCH PASS   Alloc_CCombatSequence_TrollRockShuffleBack
+008b5dd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5dd0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerAttack (engine/CCombatSequence_VillagerAttack.h)
+008b5dd0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerAttack
+008b5e10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5e10   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerBackOff (engine/CCombatSequence_VillagerBackOff.h)
+008b5e10   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerBackOff
+008b5e50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5e50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerStepIn (engine/CCombatSequence_VillagerStepIn.h)
+008b5e50   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerStepIn
+008b5e90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5e90   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerAdvance (engine/CCombatSequence_VillagerAdvance.h)
+008b5e90   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerAdvance
+008b5ed0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5ed0   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerCombo (engine/CCombatSequence_VillagerCombo.h)
+008b5ed0   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerCombo
+008b5f10   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5f10   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerComboUnblockable (engine/CCombatSequence_VillagerComboUnblockable.h)
+008b5f10   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerComboUnblockable
+008b5f50   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5f50   WARN SHARED_HEADER_AVAILABLE CCombatSequence_VillagerNearAttack (engine/CCombatSequence_VillagerNearAttack.h)
+008b5f50   RELOCATION_MATCH PASS   Alloc_CCombatSequence_VillagerNearAttack
+008b5f90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5f90   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperLunge (engine/CCombatSequenceWhisperLunge.h)
+008b5f90   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperLunge
+008b5fd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b5fd0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAdvance (engine/CCombatSequenceWhisperAdvance.h)
+008b5fd0   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperAdvance
+008b6010   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6010   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAttackCombo (engine/CCombatSequenceWhisperAttackCombo.h)
+008b6010   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperAttackCombo
+008b6050   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6050   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAttackBigCombo (engine/CCombatSequenceWhisperAttackBigCombo.h)
+008b6050   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperAttackBigCombo
+008b6090   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6090   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperAttack360 (engine/CCombatSequenceWhisperAttack360.h)
+008b6090   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperAttack360
+008b60d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b60d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperStrikeStrafeBack (engine/CCombatSequenceWhisperStrikeStrafeBack.h)
+008b60d0   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperStrikeStrafeBack
+008b6110   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6110   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperTooCloseLeapBack (engine/CCombatSequenceWhisperTooCloseLeapBack.h)
+008b6110   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperTooCloseLeapBack
+008b6150   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6150   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperBoast (engine/CCombatSequenceWhisperBoast.h)
+008b6150   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperBoast
+008b6190   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b6190   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperSortYourselfOut (engine/CCombatSequenceWhisperSortYourselfOut.h)
+008b6190   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperSortYourselfOut
+008b61d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceBase (engine/CCombatSequenceBase.h)
+008b61d0   WARN SHARED_HEADER_AVAILABLE CCombatSequenceWhisperStrafeAround (engine/CCombatSequenceWhisperStrafeAround.h)
+008b61d0   RELOCATION_MATCH PASS   Alloc_CCombatSequenceWhisperStrafeAround
+
+WINS: 50
+  008b5590 RELOCATION_MATCH _global::Alloc_CCombatSequence_GenericLeader
+  008b55d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditUnblockableAttack
+  008b5610 RELOCATION_MATCH _global::Alloc_CCombatSequence_NonInterruptableBoxStrafe
+  008b5650 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditAdvanceFar
+  008b5690 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditAttackFar
+  008b56d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditAttackMiddle
+  008b5710 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditAttackSide
+  008b5750 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditAttackNear
+  008b5790 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditIdleNear
+  008b57d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditIdleMiddle
+  008b5810 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditBoast
+  008b5850 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditKingAttack
+  008b5890 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditKingAdvance
+  008b58d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditKingBackOff
+  008b5910 RELOCATION_MATCH _global::Alloc_CCombatSequence_BanditKingSpinAround
+  008b5950 RELOCATION_MATCH _global::Alloc_CCombatSequence_FodderMainAttack
+  008b5990 RELOCATION_MATCH _global::Alloc_CCombatSequence_FodderUnblockableMainAttack
+  008b59d0 RELOCATION_MATCH _global::Alloc_CCombatSequence_FodderSecondaryAttack
+  008b5a10 RELOCATION_MATCH _global::Alloc_CCombatSequence_FodderCombatIdle
+  008b5a50 RELOCATION_MATCH _global::Alloc_CCombatSequence_ScorpionLungeAttack
+  008b5a90 RELOCATION_MATCH _global::Alloc_CCombatSequence_KingScorpionTailPlunge
+  008b5ad0 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollDoubleSwipe
+  008b5b10 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollDoubleSwipeNonMelee
+  008b5b50 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollOpeningGroundPound
+  008b5b90 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollProjectileAttack
+  008b5bd0 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollBurrowPursue
+  008b5c10 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollBurrowPursueNoZone
+  008b5c50 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollRockPursue
+  008b5c90 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollRockPursueNoZone
+  008b5cd0 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollRockAdvance
+  008b5d10 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollRockThrowRock
+  008b5d50 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollRockIdle
+  008b5d90 RELOCATION_MATCH _global::Alloc_CCombatSequence_TrollRockShuffleBack
+  008b5dd0 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerAttack
+  008b5e10 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerBackOff
+  008b5e50 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerStepIn
+  008b5e90 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerAdvance
+  008b5ed0 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerCombo
+  008b5f10 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerComboUnblockable
+  008b5f50 RELOCATION_MATCH _global::Alloc_CCombatSequence_VillagerNearAttack
+  008b5f90 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperLunge
+  008b5fd0 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperAdvance
+  008b6010 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperAttackCombo
+  008b6050 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperAttackBigCombo
+  008b6090 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperAttack360
+  008b60d0 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperStrikeStrafeBack
+  008b6110 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperTooCloseLeapBack
+  008b6150 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperBoast
+  008b6190 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperSortYourselfOut
+  008b61d0 RELOCATION_MATCH _global::Alloc_CCombatSequenceWhisperStrafeAround

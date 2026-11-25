@@ -10,14 +10,17 @@ class CThing;
 class CTCSearchableContainer { public:
     unsigned char _pad[0x1c];
     long NumberOfSearchesRemaining;                 // +0x1c
-    void FinishSearch();                     // 0x0074EE90
     static void ClampRef(long& v) { if (v < 0) v = 0; }
     void Search(CThing& searcher);
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0074EE90 ?RewardHeroWithItems@CTCContainerRewardHero@@QAE_NXZ (was ?FinishSearch@CTCSearchableContainer@@QAEXXZ)
+class CTCContainerRewardHero { public: bool RewardHeroWithItems(); };
 void CTCSearchableContainer::Search(CThing&)
 {
     --NumberOfSearchesRemaining;
     ClampRef(NumberOfSearchesRemaining);
     if (NumberOfSearchesRemaining == 0)
-        FinishSearch();
+        reinterpret_cast<CTCContainerRewardHero*>(this)->RewardHeroWithItems();
 }

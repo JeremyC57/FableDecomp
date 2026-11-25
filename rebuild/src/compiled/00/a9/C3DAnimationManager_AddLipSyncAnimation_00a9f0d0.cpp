@@ -56,7 +56,6 @@ class C3DAnimationBlendState { public:
 };
 
 struct CAnimationBank {
-    long GetLipSyncAnimationIndex(const CCharString& set, const CCharString& phoneme);   // 0x00A26530
 };
 
 class C3DAnimationManager { public:
@@ -65,6 +64,10 @@ class C3DAnimationManager { public:
     void AddLipSyncAnimation(C3DAnimationBlendState& blend, const CLipSyncFrameData& frame, const CCharString& set);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A26530 ?FindLipSyncAnimation@CMeshDataBank@@QBEKABVCCharString@@0@Z (was ?GetLipSyncAnimationIndex@CAnimationBank@@QAEJABVCCharString@@0@Z)
+class CMeshDataBank { public: unsigned long FindLipSyncAnimation(CCharString const&, CCharString const&) const; };
 void C3DAnimationManager::AddLipSyncAnimation(C3DAnimationBlendState& blend, const CLipSyncFrameData& frame, const CCharString& set)
 {
     for (unsigned long i = 0; i < frame.Phonemes.size(); ++i) {
@@ -72,7 +75,7 @@ void C3DAnimationManager::AddLipSyncAnimation(C3DAnimationBlendState& blend, con
         long index;
         {
             CCharString symbol(phoneme.Symbol);
-            index = Bank->GetLipSyncAnimationIndex(set, symbol);
+            index = reinterpret_cast<const CMeshDataBank*>(Bank)->FindLipSyncAnimation(set, symbol);
         }
         if (index) {
             C3DAnimationStateAlpha state(index, 0.0f, phoneme.Weight * 0.5);

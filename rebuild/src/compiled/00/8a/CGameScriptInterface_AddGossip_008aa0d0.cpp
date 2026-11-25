@@ -19,10 +19,13 @@ class CCharString { public:
 #include "engine/CGameScriptInterface.h"
 
 // Inner gossip routine @ 0x8ae660: takes the string BY VALUE (owns/destroys the copy).
-void __fastcall Inner(CCharString byval);
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008AE660 ?AddGossip@CTCAIScratchpad@@SIXVCCharString@@@Z (was ?Inner@@YIXVCCharString@@@Z)
+class CTCAIScratchpad { public: static void __fastcall AddGossip(CCharString); };
 void CGameScriptInterface::AddGossip(class CCharString category)
 {
-    Inner(category);
+    CTCAIScratchpad::AddGossip(category);
 }
 // Flatten route (flatten_pilot v4, NF324): CGameScriptInterface_AddGossip -> CGameScriptInterface::AddGossip, the RTTI-placed PDB member; class model: engine/CGameScriptInterface.h under FABLE_RETAIL_NSCRIPT.

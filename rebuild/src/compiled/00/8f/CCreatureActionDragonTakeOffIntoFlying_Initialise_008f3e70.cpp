@@ -57,7 +57,6 @@ private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;          // +0x1c
 };
-void __fastcall SetThingIsAbleToBeLifted(CThing* thing, bool able);   // 0x007E4330
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
@@ -73,11 +72,15 @@ class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { publi
     virtual void Initialise();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E4330 ?SetThingIsEpicSpellable@CTCWillResponse@@SIXPAVCThing@@_N@Z (was ?SetThingIsAbleToBeLifted@@YIXPAVCThing@@_N@Z)
+class CTCWillResponse { public: static void __fastcall SetThingIsEpicSpellable(CThing*, bool); };
 void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
 {
     SetCombatAnimation("TAKE_OFF");
     CCombatActionBase::Initialise();
-    SetThingIsAbleToBeLifted(PCreature.Get(), false);
+    CTCWillResponse::SetThingIsEpicSpellable(PCreature.Get(), false);
     CTCCreatureFlags9* pFlags;
     PCreature.Get()->GetTC(TCI_TARGETED, &pFlags);
     pFlags->m_canBeTargeted = 0;

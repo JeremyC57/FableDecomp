@@ -128,8 +128,11 @@ struct CThingB {
     }
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006A1440 ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ (was ?GetThingInPrimarySlot@CTCCarrying@@QAEPAUCThingB@@XZ)
 class CTCCarrying { public:                            // interface type 0x46
-    CThingB* GetThingInPrimarySlot();           // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;           // 0x006A1440
 };
 
 struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
@@ -140,7 +143,7 @@ bool CAIStateGroup_RangedCombatUsePreferredFirePoint::CanUseRangedCombat()
 {
     CTCCarrying* pCarrying;
     ((CThingB*)PBrain->PCreature)->GetInterface(&pCarrying, 0x46);
-    CThingB* item = pCarrying->GetThingInPrimarySlot();
+    CThingB* item = reinterpret_cast<CThingB*>(pCarrying->GetThingInPrimarySlot());
     if (item != 0) {
         if (item->HasTC(0x48)) {
             if (item->FindTC<CTCWeapon>(0x48)->IsProjectileWeapon())

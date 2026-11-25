@@ -43,7 +43,6 @@ struct Creature {
             if(p==map->_M_finish || type<p->first)p=map->_M_finish;*out=(CTCEntityEvents*)p->second;return true;}return false;
     }
 };
-bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
 class CCreatureActionBase { public:
@@ -79,12 +78,17 @@ class CCombatActionBase:public CCreatureActionBase { public:
     protected: void ResetMeleeCombatAbilityEffects(); public: //00859660
     void FrameUpdate();
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006A15A0 ?IsThingCarryingMeleeWeapon@CTCCarrying@@SI_NABVCThing@@@Z (was ?IsThingCarryingMeleeWeapon@@YI_NPAUCreature@@@Z)
+class CThing;
+class CTCCarrying { public: static bool __fastcall IsThingCarryingMeleeWeapon(CThing const&); };
 void CCombatActionBase::FrameUpdate(){
     bool wasReady=IsActionReadyForInterruption();
     UpdateFacingDirection();ProcessStrikeEvents();
     if(IsStrikeEventFinishedBeingActive() && !HitThing && !SentMissedEvent){
         CTCEntityEvents* events;PCreature.GetPItem()->GetInterface(&events,66);
-        if(IsThingCarryingMeleeWeapon(PCreature.GetPItem()))events->AddEvent(new NEntityEvents::CEventAttackedWithMeleeWeaponWithoutHittingAnything);
+        if(CTCCarrying::IsThingCarryingMeleeWeapon(*reinterpret_cast<CThing const*>(PCreature.GetPItem())))events->AddEvent(new NEntityEvents::CEventAttackedWithMeleeWeaponWithoutHittingAnything);
         else events->AddEvent(new NEntityEvents::CEventAttackedWithBareHandsWithoutHittingAnything);
         SentMissedEvent=true;
     }

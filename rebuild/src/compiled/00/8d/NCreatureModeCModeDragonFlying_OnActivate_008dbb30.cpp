@@ -47,7 +47,6 @@ class CTCAnimationComplex { public:                // the type-0x5a component
     long GetAnimIndex() const;                    // 0x0070B490
     float GetAnimDuration(long animIndex) const;  // 0x0070B4A0
 };
-void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
 class CMainGameComponent {
 protected:
@@ -61,6 +60,10 @@ public:
 #define FABLE_RETAIL_CMODEBASE_VIRTUALS
 #include "engine/CTCCreatureModeManager.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E4040 ?SetThingAsNotBloodyWillableAtAll@CTCWillResponse@@SIXPAVCThing@@_N@Z (was ?SetThingAsNotBloodyWillableAtAll@@YIXPAVCThing@@_N@Z)
+class CTCWillResponse { public: static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing*, bool); };
 namespace NCreatureMode {
 
 struct CModeDragonFlying : CTCCreatureModeManager::CModeBase {
@@ -96,7 +99,7 @@ void CModeDragonFlying::OnActivate()
     CTCFlagged* flagged;
     if (ParentThing.GetTC(TCI_MAPWHO, &flagged))
         flagged->m_flag = 0;
-    SetThingAsNotBloodyWillableAtAll(&ParentThing, true);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(&ParentThing, true);
     DistanceToTravel = Distance(Destination, StartPos);
     Acceleration = 0.0f;
     StartSpeed = Speed;

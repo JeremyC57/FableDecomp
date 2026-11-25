@@ -17,17 +17,20 @@ struct GFVector {
 };
 
 struct Serialiser {
-    void Serialise(int v);    // 0x527bde  (__fastcall, stack arg)
-    void Serialise(float v);  // 0x527c0e  (__fastcall, stack arg)
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00993EB0 ?WriteSLONG@CDataOutputStream@@QAEXJ@Z (was ?Serialise@Serialiser@@QAEXH@Z)
+//   0x00993EE0 ?WriteFloat@CDataOutputStream@@QAEXM@Z (was ?Serialise@Serialiser@@QAEXM@Z)
+class CDataOutputStream { public: void WriteSLONG(long); void WriteFloat(float); };
 void __fastcall GFSerialiseVectorBinaryOut_CAtmosBankEntry(Serialiser* thisptr, GFVector* vec)
 {
     int count = (int)(vec->end - vec->begin);
-    thisptr->Serialise(count);
+    reinterpret_cast<CDataOutputStream*>(thisptr)->WriteSLONG(count);
     for (int i = 0; i < count; ++i) {
         CAtmosBankEntry* e = vec->begin + i;
-        thisptr->Serialise(e->a);
-        thisptr->Serialise((float)e->b);
+        reinterpret_cast<CDataOutputStream*>(thisptr)->WriteSLONG(e->a);
+        reinterpret_cast<CDataOutputStream*>(thisptr)->WriteFloat((float)e->b);
     }
 }

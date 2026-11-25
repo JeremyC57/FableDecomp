@@ -86,6 +86,10 @@ class C3DPrimitive2 { public:                             // Layout: retail offs
     void ConvertToVBFormatAnimated(void*, unsigned long, unsigned long, CVertexCompressionParams*);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00AB37B0 ?CalculateVertexSize@CVertexStreamFormat@@QBEKXZ (was ?GetVertexSize@CVertexFormat@@QBEKXZ)
+class CVertexStreamFormat { public: unsigned long CalculateVertexSize() const; };
 void C3DPrimitive2::ConvertToVBFormatAnimated(void* destination, unsigned long sourceFormat,
                                               unsigned long flags, CVertexCompressionParams* params)
 {
@@ -100,7 +104,7 @@ void C3DPrimitive2::ConvertToVBFormatAnimated(void* destination, unsigned long s
         {
             N3DPrimitive::CVertexShaderInputAnimated input;
             input.Initialise(convertedFormat, true);
-            stride = input.DataStreams.first->Format.GetVertexSize();
+            stride = reinterpret_cast<const CVertexStreamFormat*>(&(input.DataStreams.first->Format))->CalculateVertexSize();
         }
         unsigned long count = stride * vertexCount;
         __int64 checkedCount = (__int64)count;

@@ -22,11 +22,13 @@ class C3DVector;
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006E0970 ?Create@CTCDParticleEmitter@@SIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z (was ?Create@@YIPAVCThing@@ABVCCharString@@ABVC3DVector@@_N@Z)
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
-};
+ public: static CThing* __fastcall Create(CCharString const&, C3DVector const&, bool); };
 
 FABLE_FORCEINLINE CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
@@ -45,7 +47,7 @@ class CTCCoopSpirit { public:
 
 void CTCCoopSpirit::AddAppearanceParticle(const CCharString& particleThingName)
 {
-    CThing* particle = Create(particleThingName, ParentThing->GetPos(), false);
+    CThing* particle = CTCDParticleEmitter::Create(particleThingName, ParentThing->GetPos(), false);
     if (particle)
     {
         CTCDParticleEmitter* emitter = GetParticleEmitter(particle);

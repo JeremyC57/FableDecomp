@@ -22,7 +22,6 @@
 #define FABLE_RETAIL_CVERTEXBUFFERWIN32
 #include "engine/CVertexBufferWin32.h"
 struct CVertexFormat {
-    unsigned long GetVertexSize() const;            // 0x00AB37B0
 };
 struct CVertexDeclaration {
     long m_00;
@@ -63,13 +62,17 @@ public:
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00AB37B0 ?CalculateVertexSize@CVertexStreamFormat@@QBEKXZ (was ?GetVertexSize@CVertexFormat@@QBEKXZ)
+class CVertexStreamFormat { public: unsigned long CalculateVertexSize() const; };
 bool C3DPrimitive2::UploadToVertexBufferAnimated(unsigned long flags)
 {
     unsigned long vertexSize;
     {
         N3DPrimitive::CVertexShaderInputAnimated input;
         input.Initialise(flags, true);
-        vertexSize = input.Declaration->Format.GetVertexSize();
+        vertexSize = reinterpret_cast<const CVertexStreamFormat*>(&(input.Declaration->Format))->CalculateVertexSize();
     }
     unsigned long vertexCount = 0;
     for (unsigned long i = 0; i < AnimatedBlockCount; ++i)

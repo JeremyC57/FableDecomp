@@ -51,17 +51,20 @@ struct CCombatSequenceBase_Retail {        // vtable slots 0..18, see 0x008B0AB0
 };
 
 struct CTCCombat_Calls {                       // engine/CTCCombat.h exists; only the one call is needed, so no layout is modelled
-    bool IsVulnerableToUnblockableAttack();    // 0x007331C0
 };
 
 struct CCombatSequence_BanditUnblockableAttack_Retail : CCombatSequenceBase_Retail {
     virtual bool IsValid();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007331C0 ?IsVulnerableToUnblockableAttack@CTCCombat@@QBE_NXZ (was ?IsVulnerableToUnblockableAttack@CTCCombat_Calls@@QAE_NXZ)
+class CTCCombat { public: bool IsVulnerableToUnblockableAttack() const; };
 bool CCombatSequence_BanditUnblockableAttack_Retail::IsValid()
 {
     CTCCombat_Calls* pCombat;
-    if (Target->GetInterface(&pCombat, 0x30) && !pCombat->IsVulnerableToUnblockableAttack())
+    if (Target->GetInterface(&pCombat, 0x30) && !reinterpret_cast<const CTCCombat*>(pCombat)->IsVulnerableToUnblockableAttack())
         return false;
     return true;
 }

@@ -23,7 +23,6 @@ class CBaseObjectPointer;
 #include "engine/CIntelligentPointer.h"
 
 class CTCInventory { public:                       // the interface-203 component
-    void AddItemToInventory(CThing* item, bool real);   // 0x007CAB30
 };
 struct CThingFlags91 {                      // the byte at +0x91 of a thing: bit 0 tested
     unsigned char _pad[0x91];
@@ -42,13 +41,18 @@ class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { pu
     virtual void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007CAB30 ?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z (was ?AddItemToInventory@CTCInventory@@QAEXPAVCThing@@_N@Z)
+class CThingObject;
+class CTCHeroReceiveItems { public: void GiveItem(CThingObject&, bool); };
 void CCreatureAction_AddRealObjectToInventory::PerformAction()
 {
     if (PObject.Get()) {
         if (!((CThingFlags91*)PObject.Get())->m_isBeingRemoved) {
             CTCInventory* pInventory;
             if (PCreature.Get()->GetTC(TCI_HERO_RECEIVE_ITEMS, &pInventory))
-                pInventory->AddItemToInventory(PObject.Get(), true);
+                reinterpret_cast<CTCHeroReceiveItems*>(pInventory)->GiveItem(*reinterpret_cast<CThingObject*>(PObject.Get()), true);
         }
     }
 }

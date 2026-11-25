@@ -62,8 +62,12 @@ class CPhysicsMesh { public:
 public:
     long Sizeof() const;   // 0x00A6C900
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A9B740 ?LoadMeshFileCompressed@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z (was ?LoadMeshFileCompressed@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PAXKPAVCMovableResourceMemoryPool@@@Z)
+class CHandleBasedMemoryPool;
 struct C3DMeshFileLoader {
-    CCountedPointer<C3DMeshFile> LoadMeshFileCompressed(void* data, unsigned long size, CMovableResourceMemoryPool* pool);   // 0x00A9B740
+    CCountedPointer<C3DMeshFile> LoadMeshFileCompressed(void const*, unsigned long, CHandleBasedMemoryPool&);   // 0x00A9B740
 };
 class CResource;
 class CResourceList { public:
@@ -103,7 +107,7 @@ void CPhysicsMeshData::BuildMesh()
     CMovableResourceMemoryPool* pool = manager->MemoryPool;
     unsigned long size = FileData->Size;
     C3DMeshFileLoader* loader = Owner->Manager->MeshFileLoader;
-    CCountedPointer<C3DMeshFile> file = loader->LoadMeshFileCompressed(FileData->GetData(), size, pool);
+    CCountedPointer<C3DMeshFile> file = loader->LoadMeshFileCompressed(reinterpret_cast<void const*>(FileData->GetData()), size, *reinterpret_cast<CHandleBasedMemoryPool*>(pool));
     Mesh = new CPhysicsMesh(*file.Data, pool = manager->MemoryPool);
     FileData.Reset();
     SetResourceSize(0x2c + Mesh.Sizeof() + FileData.Sizeof());

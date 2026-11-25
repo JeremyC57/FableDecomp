@@ -48,6 +48,10 @@ class CGameDefinitionManager : public CDefinitionManager { };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008ED010 ?ContainsItem@CTCContainer@@QBE_NJ@Z (was ?ContainsItemOfType@CTCHouseContents@@QAE_NJ@Z)
+class CTCContainer { public: bool ContainsItem(long) const; };
 bool CGameScriptInterface::IsObjectInThingsPossession(const CCharString& objectDefName, const CScriptThing& scriptThing) const
 {
     long index = DefinitionManager->GetDefGlobalIndexFromName(objectDefName);
@@ -58,7 +62,7 @@ bool CGameScriptInterface::IsObjectInThingsPossession(const CCharString& objectD
                 || (thing->HasInterface(0x46) && ((CTCCarrying*)thing->GetInterface(0x46))->IsCarryingThing(index))
                 || (thing->HasInterface(0x13) && ((CTCInventoryBase*)thing->GetInterface(0x13))->GetNumberOfItemsOfTypeInInventory(index) > 0)
                 || (thing->HasInterface(0x12) && ((CTCInventoryBase*)thing->GetInterface(0x12))->GetNumberOfItemsOfTypeInInventory(index) > 0)
-                || (thing->HasInterface(0x3c) && ((CTCHouseContents*)thing->GetInterface(0x3c))->ContainsItemOfType(index)))
+                || (thing->HasInterface(0x3c) && reinterpret_cast<const CTCContainer*>(((CTCHouseContents*)thing->GetInterface(0x3c)))->ContainsItem(index)))
                 return true;
         }
     }

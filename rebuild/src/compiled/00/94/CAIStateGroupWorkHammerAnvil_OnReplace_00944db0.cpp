@@ -34,6 +34,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0097E330 ?SetPushableByHero@CAIStateGroupBase@@IAEX_N@Z (was ?SetPushableByHero@CAIStateGroupBaseI@@QAEX_N@Z)
+struct CAIStateGroup_WorkHammerAnvil;
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -43,7 +47,7 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-};
+ protected: void SetPushableByHero(bool); public: friend struct ::CAIStateGroup_WorkHammerAnvil; };
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
@@ -66,7 +70,6 @@ class CThingCreatureBase { public:
 
 struct CAIStateGroupBaseI : CAIStateGroupBase {
     void DestroyItem(const CCharString& slot);  // 0x008FD1B0
-    void SetPushableByHero(bool pushable);      // 0x0097E330
 };
 
 #pragma pack(push, 1)
@@ -95,5 +98,5 @@ void CAIStateGroup_WorkHammerAnvil::OnReplace()
     ((CThingCreatureBase*)PBrain->PCreature)->FinishCurrentAction();
     DestroyItem("CARRY_SLOT_RIGHT_HAND");
     DestroyItem("CARRY_SLOT_LEFT_HAND");
-    SetPushableByHero(true);
+    reinterpret_cast<CAIStateGroupBase*>(this)->SetPushableByHero(true);
 }

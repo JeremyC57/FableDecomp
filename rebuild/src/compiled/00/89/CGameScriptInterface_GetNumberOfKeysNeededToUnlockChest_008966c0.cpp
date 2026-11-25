@@ -35,7 +35,6 @@ public:
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
 struct CTCChest_Retail {                            // interface type 0x3c
-    long GetNumberOfKeysToUnlock(CCharString& keyName);   // 0x00750050
 };
 struct CThing_Retail;
 struct CBase {
@@ -134,12 +133,16 @@ struct CDefinitionManager_Retail;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00750050 ?GetNumberOfKeysToUnlock@CTCChest@@QBEJAAVCCharString@@@Z (was ?GetNumberOfKeysToUnlock@CTCChest_Retail@@QAEJAAVCCharString@@@Z)
+class CTCChest { public: long GetNumberOfKeysToUnlock(CCharString&) const; };
 long CGameScriptInterface::GetNumberOfKeysNeededToUnlockChest(const CScriptThing& chest, CCharString& keyName) const
 {
     if (chest.IsValid()) {
         CTCChest_Retail* component;
         if (chest.GetThing()->GetInterface(&component, 0x3c))
-            return component->GetNumberOfKeysToUnlock(keyName);
+            return reinterpret_cast<const CTCChest*>(component)->GetNumberOfKeysToUnlock(keyName);
     }
     return 0;
 }

@@ -66,7 +66,6 @@ struct CTCCreatureFlags9 {                  // the interface-9 component: one by
     unsigned char _pad[0x10];
     unsigned char m_canBeTargeted;          // +0x10
 };
-void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -80,12 +79,16 @@ class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public
     virtual void FinishAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E4040 ?SetThingAsNotBloodyWillableAtAll@CTCWillResponse@@SIXPAVCThing@@_N@Z (was ?SetThingAsNotBloodyWillableAtAll@@YIXPAVCThing@@_N@Z)
+class CTCWillResponse { public: static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing*, bool); };
 void CCreatureAction_BalverineDropInFromSky::FinishAction()
 {
     CTCCreatureFlags9* pFlags;
     if (PCreature.GetPItem()->GetInterface(&pFlags, 9))
         pFlags->m_canBeTargeted = 1;
     PCreature.GetPItem()->GetGraphicAppearance()->SetAlpha(255);
-    SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), false);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), false);
     CCombatActionBase::FinishAction();
 }

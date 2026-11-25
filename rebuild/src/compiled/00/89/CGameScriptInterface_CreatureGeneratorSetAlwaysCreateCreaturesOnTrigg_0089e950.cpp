@@ -100,7 +100,6 @@ FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing ex
     return t && !t->m_dead;
 }
 struct CTCCreatureGenerator_Retail {
-    void SetAlwaysCreateCreaturesOnTrigger(bool always);   // 0x00749D70
     unsigned char _pad[0x48];
     CCharString m_generatedCreatureScriptName;     // +0x48
     unsigned char _pad4c[0x4f - 0x4c];
@@ -115,9 +114,13 @@ struct CTCCreatureGenerator_Retail {
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00749D70 ?SetAlwaysCreateCreaturesOnTrigger@CTCCreatureGenerator@@QAEX_N@Z (was ?SetAlwaysCreateCreaturesOnTrigger@CTCCreatureGenerator_Retail@@QAEX_N@Z)
+class CTCCreatureGenerator { public: void SetAlwaysCreateCreaturesOnTrigger(bool); };
 void CGameScriptInterface::CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger(const CScriptThing& generator, bool always) const
 {
     CTCCreatureGenerator_Retail* gen;
     if (generator.IsAlive() && IsThingAlive(generator) && GetTCOut(((CThing_Retail*)generator.GetPThing()), 0x3d, &gen))
-        gen->SetAlwaysCreateCreaturesOnTrigger(always);
+        reinterpret_cast<CTCCreatureGenerator*>(gen)->SetAlwaysCreateCreaturesOnTrigger(always);
 }

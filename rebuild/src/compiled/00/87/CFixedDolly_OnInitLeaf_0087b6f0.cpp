@@ -46,7 +46,6 @@ class CTCBase { public:
     virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual long GetKind();                 // slot 28 (+0x70)
     CThing* m_pThing;                       // +0x04
-    C3DVector GetCentre();                  // 0x0075DB90
 };
 
 class CBaseObject;
@@ -75,10 +74,14 @@ struct CFixedDolly {
     void OnInitLeaf();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0075DB90 ?GetFixedDollyVector@CTCCameraPointFixedDolly@@QBE?AVC3DVector@@XZ (was ?GetCentre@CTCBase@@QAE?AVC3DVector@@XZ)
+class CTCCameraPointFixedDolly { public: C3DVector GetFixedDollyVector() const; };
 void CFixedDolly::OnInitLeaf()
 {
     CTCBase* pComponent;
     m_target.GetPItem()->GetInterface(&pComponent, 0x3f);
     CTCBase* pFallback;
-    DollyVector = (pComponent->GetKind() == 1 ? pComponent : pFallback)->GetCentre();
+    DollyVector = reinterpret_cast<const CTCCameraPointFixedDolly*>((pComponent->GetKind() == 1 ? pComponent : pFallback))->GetFixedDollyVector();
 }

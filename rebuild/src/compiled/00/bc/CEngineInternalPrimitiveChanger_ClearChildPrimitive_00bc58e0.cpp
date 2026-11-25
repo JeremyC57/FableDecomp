@@ -96,8 +96,11 @@ public:
     CIVCountedPointer MeshEffect;                  // +0x18
 };
 
-void __fastcall UpdatePosition_00b91840(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00B91840
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00B91840 ?UpdatePosition@CEngineScene@@SIXAAVCEngineInternalPrimitiveBase@@K@Z (was ?UpdatePosition_00b91840@@YIXPAVCEngineInternalPrimitiveBase@@K@Z)
+class CEngineScene { public: static void __fastcall UpdatePosition(CEngineInternalPrimitiveBase&, unsigned long); };
 class CEngineInternalPrimitiveChanger : public CEngineInternalPrimitiveBase {   // no PDB layout: handle vector +0x48, current index +0x58, flags +0x60
 public:
     CRetailHandleVector Primitives;                // +0x48
@@ -121,7 +124,7 @@ public:
         unsigned long mask = ComputeRenderLayerMask();
         if (RenderLayerMask != mask) {
             RenderLayerMask = mask;
-            UpdatePosition_00b91840(this, m_flags);
+            CEngineScene::UpdatePosition(*(this), m_flags);
         }
     }
     virtual void ClearChildPrimitive(unsigned long index);

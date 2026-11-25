@@ -68,13 +68,16 @@ struct CThing_Retail {
 #include "engine/CScriptThing.h"
 struct CTCTrap_Retail {                        // interface type 0x7d
     void Activate();                             // 0x00787C07 (`mov byte ptr [ecx+58h],1 ; ret`; the label is propagated)
-    void Deactivate();                           // 0x00787BFE (`mov byte ptr [ecx+58h],0` then a shared tail; the label is propagated)
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00787BFE ?ManualDeactivate@CTCTrapBase@@QAEXXZ (was ?Deactivate@CTCTrap_Retail@@QAEXXZ)
+class CTCTrapBase { public: void ManualDeactivate(); };
 void CGameScriptInterface::SetTrapAsActive(const CScriptThing& thing, bool active) const
 {
     CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
@@ -84,7 +87,7 @@ void CGameScriptInterface::SetTrapAsActive(const CScriptThing& thing, bool activ
             if (active)
                 trap->Activate();
             else
-                trap->Deactivate();
+                reinterpret_cast<CTCTrapBase*>(trap)->ManualDeactivate();
         }
     }
 }

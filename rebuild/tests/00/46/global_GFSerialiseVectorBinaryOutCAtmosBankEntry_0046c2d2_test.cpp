@@ -7,11 +7,12 @@ struct GFVector { CAtmosBankEntry* begin; CAtmosBankEntry* end; };
 struct Serialiser {
     int  intBuf[16];  int  intCnt;
     float fltBuf[16]; int  fltCnt;
-    void Serialise(int v);
-    void Serialise(float v);
 };
-void Serialiser::Serialise(int v)   { intBuf[intCnt++] = v; }
-void Serialiser::Serialise(float v) { fltBuf[fltCnt++] = v; }
+// Naming (NF443, 2026-11-25; NF438 q2): the callee stubs follow the row's rebind to the PDB spellings
+// ?WriteSLONG@CDataOutputStream@@QAEXJ@Z / ?WriteFloat@CDataOutputStream@@QAEXM@Z (were Serialiser::Serialise(int / float)).
+class CDataOutputStream { public: void WriteSLONG(long v); void WriteFloat(float v); };
+void CDataOutputStream::WriteSLONG(long v) { Serialiser* s = reinterpret_cast<Serialiser*>(this); s->intBuf[s->intCnt++] = (int)v; }
+void CDataOutputStream::WriteFloat(float v) { Serialiser* s = reinterpret_cast<Serialiser*>(this); s->fltBuf[s->fltCnt++] = v; }
 
 void __fastcall GFSerialiseVectorBinaryOut_CAtmosBankEntry(Serialiser* thisptr, GFVector* vec);
 

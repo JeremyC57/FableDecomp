@@ -20,7 +20,6 @@ class CGraphicDataBank { public:                        // vtable 0x0129C8CC, 0x
     virtual void v02();
     virtual bool OpenFileReadOnly(const CWideString& fileName, unsigned long flags);   // slot 3 (CBankFile)
     virtual void OpenFileReadWrite(const CWideString& fileName, unsigned long create, unsigned long flags);   // slot 4
-    void BeginUpdateEntries();                          // 0x009CE8D0 ?BeginUpdateEntries@CBankFile@@QAEXXZ
     unsigned char _pad04[0x30c - 4];
 };
 
@@ -42,6 +41,10 @@ class CEngineSurfaceCompositionManager {
     void BeginBankUpdate();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009CE8D0 ?BeginUpdateEntries@CBankFile@@QAEXXZ (was ?BeginUpdateEntries@CGraphicDataBank@@QAEXXZ)
+class CBankFile { public: void BeginUpdateEntries(); };
 void CEngineSurfaceCompositionManager::BeginBankUpdate()
 {
     NEngineInternal::GPEngine->DeallocateShadowBuffer();
@@ -49,5 +52,5 @@ void CEngineSurfaceCompositionManager::BeginBankUpdate()
     if (GeneratedMorphs.empty())
         create = 1;
     IntermediateBankFile.OpenFileReadWrite(IntermediateDiskCacheFileName, create, 0x1000);
-    IntermediateBankFile.BeginUpdateEntries();
+    reinterpret_cast<CBankFile*>(&(IntermediateBankFile))->BeginUpdateEntries();
 }

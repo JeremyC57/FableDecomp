@@ -53,7 +53,6 @@ public:
     CBankFileAsync();                                   // 0x009D5F80
     virtual ~CBankFileAsync();                          // 0x009D6490
     void OpenFileReadWrite(const CWideString& name, unsigned long flags, unsigned long blockSize);   // 0x009D5200
-    void BeginUpdateEntries();                          // 0x009CE8D0
     void EndUpdateEntries();                            // 0x009CEA70
     virtual void Close();                               // 0x009D58A0 ?Close@CBankFileAsync@@UAEXXZ (Ego_r.pdb / FableWin.pdb: virtual)
     unsigned char _body[0x164 - 4];
@@ -76,6 +75,10 @@ void CWorldMap::GetLevelFilesFromWorldFile(const CWideString& worldFile, vector<
     levelFiles._M_finish = ReadLevelFileList(worldFile, levelFiles._M_start, levelFiles._M_end_of_storage);
 }
 #pragma auto_inline(on)
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009CE8D0 ?BeginUpdateEntries@CBankFile@@QAEXXZ (was ?BeginUpdateEntries@CBankFileAsync@@QAEXXZ)
+class CBankFile { public: void BeginUpdateEntries(); };
 void CWorldMap::CreateWorldLevelWad(const CWideString& worldFile, const CWideString& wadFile)
 {
     if (!GAllowDataGeneration || !g_WADBuildLevels)
@@ -85,7 +88,7 @@ void CWorldMap::CreateWorldLevelWad(const CWideString& worldFile, const CWideStr
     NProgressDisplay::DisplayProgress("Opening WAD bank", -1.0f, false, false);
     CWADBank bank;
     bank.OpenFileReadWrite(wadFile, 0, GetDefaultBankBlockSize());
-    bank.BeginUpdateEntries();
+    reinterpret_cast<CBankFile*>(&(bank))->BeginUpdateEntries();
     unsigned long count = levelFiles.size();
     for (unsigned long i = 1; i < count; ++i) {
         NProgressDisplay::DisplayProgress("Updating WAD bank entries", -1.0f, false, false);

@@ -61,7 +61,6 @@ class CTCEmoteIcon { public:                      // interface type 0x45
     void SetEmoteIcon(EEmotePriority priority, long icon, float seconds, float scale, unsigned char alpha);   // 0x0071AAB0
 };
 struct CTCInterface30 {                    // interface type 0x30
-    void InvalidateAllAbilityTimers();     // 0x007340B0
 };
 
 #define FABLE_RETAIL_CMODEBASE_VIRTUALS
@@ -74,13 +73,17 @@ struct CModeKnockedDown : CTCCreatureModeManager::CModeBase {      // vtable 0x0
 };
 }
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007340B0 ?OnKnockDown@CTCCombat@@QAEXXZ (was ?InvalidateAllAbilityTimers@CTCInterface30@@QAEXXZ)
+class CTCCombat { public: void OnKnockDown(); };
 void NCreatureMode::CModeKnockedDown::OnActivate()
 {
     CTCEmoteIcon* emote;
     if (ParentThing.GetInterface(&emote, 0x45))
         emote->SetEmoteIcon(CTCEmoteIcon::EMOTE_PRIORITY_NONE, 0, 0.1f, 1.0f, 0xff);
     if (ParentThing.HasTC(0x30))
-        ParentThing.GetTC<CTCInterface30>(0x30)->InvalidateAllAbilityTimers();
+        reinterpret_cast<CTCCombat*>(ParentThing.GetTC<CTCInterface30>(0x30))->OnKnockDown();
     if (ParentThing.m_type == 1)
         ParentThing.SuspendAI(true, 0);
     CModeBase::OnActivate();

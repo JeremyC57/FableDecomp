@@ -38,7 +38,6 @@ public:
     unsigned char _pad118[0x30];                   // +0x118 .. +0x147
     bool NonCached;                                // +0x148
     bool DisableAsync;                             // +0x149
-    unsigned long GetEntryDataOffset(unsigned long index) const;   // 0x009CC270 (CBankFile)
     void ReadData(unsigned long offset, void* buffer, unsigned long size);   // 0x009CBF60 (CBankFile)
     unsigned long Align(unsigned long size) const; // 0x009CBB90 (CBankFile)
 };
@@ -71,12 +70,16 @@ public:
                    EThreadedFilePriority priority);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009CC270 ?GetEntryDataOffset@CBankFile@@QBEKK@Z (was ?GetEntryDataOffset@CBankFileAsync@@QBEKK@Z)
+class CBankFile { public: unsigned long GetEntryDataOffset(unsigned long) const; };
 void CBankFileAsyncEntry::SetupRead(unsigned long start, CBankFileAsyncData* data, unsigned long size, unsigned long,
                                     unsigned long, EThreadedFilePriority priority)
 {
     if (m_pBank->DisableAsync) {
         data->SetupBuffer(true);
-        m_pBank->ReadData(m_pBank->GetEntryDataOffset(m_index) + start, data->GetBuffer(), size);
+        m_pBank->ReadData(reinterpret_cast<const CBankFile*>(m_pBank)->GetEntryDataOffset(m_index) + start, data->GetBuffer(), size);
         data->Finished = true;
         return;
     }
@@ -84,11 +87,11 @@ void CBankFileAsyncEntry::SetupRead(unsigned long start, CBankFileAsyncData* dat
     unsigned long readSize;
     if (m_pBank->NonCached) {
         desc.PDst = data->GetBuffer();
-        desc.FilePos = m_pBank->GetEntryDataOffset(m_index) + start;
+        desc.FilePos = reinterpret_cast<const CBankFile*>(m_pBank)->GetEntryDataOffset(m_index) + start;
         readSize = m_pBank->Align(size);
     } else {
         desc.PDst = data->GetBuffer();
-        desc.FilePos = m_pBank->GetEntryDataOffset(m_index) + start;
+        desc.FilePos = reinterpret_cast<const CBankFile*>(m_pBank)->GetEntryDataOffset(m_index) + start;
         readSize = size;
     }
     desc.Size = readSize;

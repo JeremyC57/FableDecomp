@@ -36,16 +36,18 @@ class CSubtitleRenderer { public:
 };
 struct CGameEventData {
     unsigned char Bytes[0x24];
-    void Copy(long size, const void* data);                    // 0x009F1760
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x009F1760 ?AddData@CGameEvent@@QAEXJPBX@Z (was ?Copy@CGameEventData@@QAEXJPBX@Z)
 class CGameEvent { public:
     long           Type;                                       // +0x00
     unsigned char  Flag;                                       // +0x04
     unsigned char  _pad05[0x20];
     unsigned char  B25, B26, B27;                              // +0x25..+0x27
     CGameEvent(long type) : Type(type), Flag(0xff), B25(0), B26(1), B27(0) { }
-    template <class T> void SetData(T value) { ((CGameEventData*)this)->Copy(sizeof(T), &value); }
-};
+    template <class T> void SetData(T value) { reinterpret_cast<CGameEvent*>(((CGameEventData*)this))->AddData(sizeof(T), &value); }
+ public: void AddData(long, void const*); };
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)

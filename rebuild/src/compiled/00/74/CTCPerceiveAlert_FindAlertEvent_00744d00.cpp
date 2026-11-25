@@ -110,7 +110,6 @@ class CTCBase { protected:
     const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 
-bool __fastcall AreThingsAllies(CThing* a, CThing* b);   // 0x0076D4F0
 // the landed 0x008D04E0 / 0x008941A0 typed-item test: the rvalue GetPItem() binds to the const reference through a frame
 // temporary (the dead store) and the zero mask folds the test to a constant (`xor al,al ; jne`)
 template <class T> inline bool IsThingOfType(const CThing* const& thing)
@@ -128,6 +127,10 @@ struct CTCPerceiveAlert : public CTCBase {
     void FindAlertEvent();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0076D4F0 ?AreThingsAllies@CTCEnemy@@SI_NABVCThing@@0@Z (was ?AreThingsAllies@@YI_NPAVCThing@@0@Z)
+class CTCEnemy { public: static bool __fastcall AreThingsAllies(CThing const&, CThing const&); };
 void CTCPerceiveAlert::FindAlertEvent()
 {
     CThing* owner = POwner;
@@ -137,7 +140,7 @@ void CTCPerceiveAlert::FindAlertEvent()
         CBaseIntelligentPointerCtor& sender = ev->PSender;
         if (sender.GetPItem() != 0 && IsThingOfType<CThing>(sender.GetPItem())) {
             CThing* thing = sender.GetPItem();
-            if (thing != 0 && !thing->IsDead() && AreThingsAllies(thing, owner)) {
+            if (thing != 0 && !thing->IsDead() && CTCEnemy::AreThingsAllies(*(thing), *(owner))) {
                 CThing* perceived = ev->GetPThing();
                 if (PTracked.GetPItem() == perceived)
                     SetAsDirectlyAwareOfPerceivedThing();

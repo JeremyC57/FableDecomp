@@ -11,19 +11,21 @@
 #include "engine/CDataOutputStream.h"
 #undef CDataOutputStream
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009959F0 ?WriteString@CDataOutputStream@@QAEXABVCCharString@@@Z (was ?WriteString@CDataOutputStreamWriter@@QAEXABVCCharString@@@Z)
 class CDataOutputStream : public CDataOutputStreamLayout
 {
 public:
     void WriteSLONG(long value);                            // 0x00993EB0 ?WriteSLONG@CDataOutputStream@@QAEXJ@Z (Ego_r.pdb)
     void WriteFloat(float);   // 0x00993EE0
-};
+ public: void WriteString(CCharString const&); };
 class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 struct CDataOutputStreamWriter : CDataOutputStream {
-    void WriteString(const CCharString& text);              // 0x009959F0
 };
 class C2DVector { public:
     float X, Y;
@@ -64,7 +66,7 @@ template <> FABLE_FORCEINLINE void CPersistTraits<CUIMiniMapMarker>::TransferBin
 {
     stream.WriteSLONG(value->Region);
     stream.WriteSLONG(value->DefNameLength);
-    stream.WriteString(value->UIDefName);
+    reinterpret_cast<CDataOutputStream*>(&(stream))->WriteString(value->UIDefName);
     stream.WriteFloat(value->Position.X);
     stream.WriteFloat(value->Position.Y);
     stream.WriteSLONG(value->GraphicIndex);

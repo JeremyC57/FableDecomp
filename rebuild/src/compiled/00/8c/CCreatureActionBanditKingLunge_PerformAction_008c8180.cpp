@@ -128,11 +128,13 @@ private: public:
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z (was ?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z)
 class CTCDExplosion { public:
     static CThing* __fastcall Create(long defIndex, const C3DVector& position);   // 0x0080C460
-};
+ public: void SetThingAsImmune(CThing&); };
 struct CTCDriver41 {
-    void SetOwner(CThing* owner);                     // 0x0080CBF0
 };
 class CCreatureActionBase { public:
     virtual void v00();
@@ -156,7 +158,7 @@ void CCreatureAction_BanditKingLunge::PerformAction()
             CTCDriver41* driver;
             if (explosion->HasTC(0x41))
                 driver = (CTCDriver41*)explosion->PTCDriver;
-            driver->SetOwner(GetCreature());
+            reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(GetCreature()));
         }
     }
     CDefPointer<CSpecialEffectsDef> effects;

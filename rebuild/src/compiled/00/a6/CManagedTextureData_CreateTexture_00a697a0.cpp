@@ -15,11 +15,13 @@ class C2DExtentsI { public:
 };
 class CPixelFormat;
 enum ESurfacePool { ESP_DEFAULT = 0, ESP_MANAGED = 1 };
-C2DExtentsI __fastcall GetNextValidDimensions(const C2DExtentsI& requested, const CPixelFormat& format);   // 0x009FA620
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009FA620 ?GetNextValidDimensions@CTexture@@SI?AVC2DExtentsI@@ABV2@ABVCPixelFormat@@@Z (was ?GetNextValidDimensions@@YI?AVC2DExtentsI@@ABV1@ABVCPixelFormat@@@Z)
 class CTexture { public:
     bool Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool,
                     bool renderTarget, bool dynamic);      // 0x009FA280
-};
+ public: static C2DExtentsI __fastcall GetNextValidDimensions(C2DExtentsI const&, CPixelFormat const&); };
 class CCPPointerInfo;
 class CManagedTextureData { public:
     void*          __vftable;                      // +0x00
@@ -37,7 +39,7 @@ class CManagedTextureData { public:
 bool CManagedTextureData::CreateTexture(unsigned long width, unsigned long height, long mipLevels, const CPixelFormat& format)
 {
     C2DExtentsI size(width, height);
-    C2DExtentsI actual = GetNextValidDimensions(size, format);
+    C2DExtentsI actual = CTexture::GetNextValidDimensions(size, format);
     Width = (unsigned short)actual.Width;
     Height = (unsigned short)actual.Height;
     size = actual;

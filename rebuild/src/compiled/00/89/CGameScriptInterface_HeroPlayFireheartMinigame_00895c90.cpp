@@ -72,7 +72,6 @@ class CPlayer { public:
 struct CTCFireheartMinigame_Retail {          // interface type 0x108
     unsigned char _pad[0x4d];
     bool          m_forceQuit;                   // +0x4d
-    void PlayGame();                             // 0x007E78E0 (CTCFireheartMinigame::PlayGame)
     void Quit();                                 // 0x007E7A40 (CTCFireheartMinigame::Quit)
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -80,12 +79,16 @@ struct CTCFireheartMinigame_Retail {          // interface type 0x108
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E78E0 ?PlayGame@CTCFireheartMinigame@@QAEXXZ (was ?PlayGame@CTCFireheartMinigame_Retail@@QAEXXZ)
+class CTCFireheartMinigame { public: void PlayGame(); };
 void CGameScriptInterface::HeroPlayFireheartMinigame() const
 {
     CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead) {
         CTCFireheartMinigame_Retail* minigame;
         if (hero->GetInterface(&minigame, 0x108))
-            minigame->PlayGame();
+            reinterpret_cast<CTCFireheartMinigame*>(minigame)->PlayGame();
     }
 }

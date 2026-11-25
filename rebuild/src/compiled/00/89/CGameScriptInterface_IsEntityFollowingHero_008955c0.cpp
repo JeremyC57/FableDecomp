@@ -37,7 +37,6 @@ public:
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
 struct CTCFollowed_Retail {                         // interface type 0xbc
-    bool IsAIFollower(CThing_Retail* thing);        // 0x006D4D70
 };
 struct CThing_Retail;
 struct CBase {
@@ -143,6 +142,11 @@ struct CDefinitionManager_Retail;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006D4D70 ?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z (was ?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z)
+class CThing;
+class CTCFollowed { public: bool IsFollower(CThing const*) const; };
 bool CGameScriptInterface::IsEntityFollowingHero(const CScriptThing& thing) const
 {
     if (thing.IsValid()) {
@@ -152,7 +156,7 @@ bool CGameScriptInterface::IsEntityFollowingHero(const CScriptThing& thing) cons
             if (hero->HasInterface(0xbc)) {
                 CTCFollowed_Retail* followed = hero->GetTC<CTCFollowed_Retail>(0xbc);
                 if (followed)
-                    return followed->IsAIFollower(follower);
+                    return reinterpret_cast<const CTCFollowed*>(followed)->IsFollower(reinterpret_cast<CThing const*>(follower));
             }
         }
     }

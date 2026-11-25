@@ -67,7 +67,6 @@ struct CTCTable {                               // the interface-0xB8 component
     unsigned char _pad[0xc];
     bool Occupied;                              // +0x0c
     void NotifyFoodServed(long taskIndex, long flags);  // 0x007B85F0
-    void ReleasePlace(long placeIndex);         // 0x007B9090
 };
 class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
@@ -88,12 +87,16 @@ struct CAIStateGroup_ServeFood : CAIStateGroupBase {
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007B9090 ?FreeServingPoint@CTCTavernTable@@QAEXJ@Z (was ?ReleasePlace@CTCTable@@QAEXJ@Z)
+class CTCTavernTable { public: void FreeServingPoint(long); };
 void CAIStateGroup_ServeFood::OnReplace()
 {
     if (PTable != 0) {
         CTCTable* table;
         PTable->GetTC(TCI_TAVERN_TABLE, &table);
-        table->ReleasePlace(PlaceIndex);
+        reinterpret_cast<CTCTavernTable*>(table)->FreeServingPoint(PlaceIndex);
         table->Occupied = false;
         CTCCarrying* carrying;
         PBrain->PCreature->GetTC(TCI_CARRYING, &carrying);

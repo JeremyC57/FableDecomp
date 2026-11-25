@@ -105,6 +105,13 @@ struct CThingPlayerCreature_Retail { void OnBestEnemyTargetChanged(); };        
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0076D1B0 ?AddEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z (was ?AddEnemy@CTCEnemyList@@QAEXPAUCThing_Retail@@@Z)
+//   0x006D5AB0 ?ForceAIReset@CThingAICreature@@QAEXXZ (was ?OnBestEnemyTargetChanged@CThingPlayerCreature_Retail@@QAEXXZ)
+class CThing;
+class CTCEnemy { public: void AddEnemyThing(CThing const*); };
+class CThingAICreature { public: void ForceAIReset(); };
 void CGameScriptInterface::GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const
 {
     if (!thing.IsAlive())
@@ -129,8 +136,8 @@ void CGameScriptInterface::GiveThingBestEnemyTarget(const CScriptThing& thing, c
     if (target.IsAlive()) {
         CThing_Retail* owner2 = ((CThing_Retail*)thing.GetPThing());
         if (owner2->HasInterface(0x49))
-            ((CTCEnemyList*)owner2->GetInterface(0x49))->AddEnemy(((CThing_Retail*)target.GetPThing()));
+            reinterpret_cast<CTCEnemy*>(((CTCEnemyList*)owner2->GetInterface(0x49)))->AddEnemyThing(reinterpret_cast<CThing const*>(((CThing_Retail*)target.GetPThing())));
     }
     if (previous != ((CThing_Retail*)target.GetPThing()) && ((CThing_Retail*)thing.GetPThing())->m_type == 1)
-        ((CThingPlayerCreature_Retail*)((CThing_Retail*)thing.GetPThing()))->OnBestEnemyTargetChanged();
+        reinterpret_cast<CThingAICreature*>(((CThingPlayerCreature_Retail*)((CThing_Retail*)thing.GetPThing())))->ForceAIReset();
 }

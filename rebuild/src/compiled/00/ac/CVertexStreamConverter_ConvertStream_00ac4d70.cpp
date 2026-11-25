@@ -18,6 +18,9 @@ class C4DVector { public:
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}
 };
 #include "engine/CArray.h"
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00AB3740 ?GetDataTypeSize@CVertexStreamFormat@@SIKW4EVertexStreamDataType@@@Z (was ?GetDataTypeSize@CVertexStreamConverter@@SIKW4EVertexStreamDataType@@@Z)
 class CVertexStreamFormat { public:
     class CDataElement { public:
         unsigned long         Register;                // +0x00
@@ -25,7 +28,7 @@ class CVertexStreamFormat { public:
     };
     unsigned long         _f00;                        // +0x00
     CArray<CDataElement>  DataElements;                // +0x04
-};
+ public: static unsigned long __fastcall GetDataTypeSize(EVertexStreamDataType); };
 class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
@@ -33,7 +36,6 @@ class CVertexCompressionParams { public:
 struct CVertexStreamConverter {
     private: void ConvertFrom(const char* data, EVertexStreamDataType type, C4DVector& v, const CVertexCompressionParams& params); public:   // 0x00AC44D0
     private: void ConvertTo(char* data, EVertexStreamDataType type, const C4DVector& v, const CVertexCompressionParams& params); public:     // 0x00AC4910
-    static unsigned long __fastcall GetDataTypeSize(EVertexStreamDataType type);                                           // 0x00AB3740
     void ConvertStream(const void* src, long srcStride, const CVertexStreamFormat& srcFormat, void* dst, long dstStride,
                        const CVertexStreamFormat& dstFormat, unsigned long count, const CVertexCompressionParams& params);
 };
@@ -58,7 +60,7 @@ void CVertexStreamConverter::ConvertStream(const void* src, long srcStride, cons
             s += srcStride;
             d += dstStride;
         }
-        srcOffset += GetDataTypeSize(srcType);
-        dstOffset += GetDataTypeSize(dstType);
+        srcOffset += CVertexStreamFormat::GetDataTypeSize(srcType);
+        dstOffset += CVertexStreamFormat::GetDataTypeSize(dstType);
     }
 }

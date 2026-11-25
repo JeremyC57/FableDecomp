@@ -29,7 +29,6 @@ struct CPresenceBits {                             // std::bitset<274>
 };
 class CThing;
 struct CExplosionDriver {                           // the explosion thing's driver component (interface 0x41)
-    void AddExcludedThing(CThing* thing);          // 0x0080CBF0
 };
 class CThing { public:
     unsigned char _pad_0x00[0x20];
@@ -98,15 +97,19 @@ class CTCKraken { public:
     CThingPointerList Tentacles;                    // +0x44
     void AddStrikeExplosion(CThing* explosion);
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z (was ?AddExcludedThing@CExplosionDriver@@QAEXPAVCThing@@@Z)
+class CTCDExplosion { public: void SetThingAsImmune(CThing&); };
 void CTCKraken::AddStrikeExplosion(CThing* explosion)
 {
     ExplosionList.push_back(CIntelligentPointer<CThing>(explosion));
     CExplosionDriver* driver;
     explosion->GetTCDriver(&driver);
-    driver->AddExcludedThing(ParentThing);
+    reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(ParentThing));
     for (SThingPointerNode* it = Tentacles.begin(); it != Tentacles.end(); it = it->_M_next) {
         CIntelligentPointer<CThing>& tentacle = it->_M_data;
         if (tentacle.GetPItem() && !tentacle.GetPItem()->Dead)
-            driver->AddExcludedThing(tentacle.GetPItem());
+            reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(tentacle.GetPItem()));
     }
 }

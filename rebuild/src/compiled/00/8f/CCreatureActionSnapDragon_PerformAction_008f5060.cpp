@@ -62,10 +62,8 @@ struct CIntelligentPointerVector {                    // STLport vector<CIntelli
 struct CTCDriverED {                                  // driver of interface 0xED (the obstruction)
     unsigned char _pad00[0x2c];
     CIntelligentPointerVector IgnoredThings;          // +0x2c
-    void SetValue(float value);                       // 0x007FD3D0
 };
 struct CTCDriver41 {                                  // driver of interface 0x41
-    void SetOwner(CThing* owner);                     // 0x0080CBF0
 };
 CThing* __fastcall CreateObstruction(const C3DVector* a, const C3DVector* b, float radius);   // 0x007FD4B0
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
@@ -85,6 +83,12 @@ class CCreatureAction_SnapDragon : public CCreatureActionBase { public:
     void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z (was ?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z)
+//   0x007FD3D0 ?SetLifeTimeSeconds@CTCDPhysicalObstruction@@QAEXM@Z (was ?SetValue@CTCDriverED@@QAEXM@Z)
+class CTCDExplosion { public: void SetThingAsImmune(CThing&); };
+class CTCDPhysicalObstruction { public: void SetLifeTimeSeconds(float); };
 void CCreatureAction_SnapDragon::PerformAction()
 {
     C3DVector mouth = GetCreature()->GetPos();
@@ -96,7 +100,7 @@ void CCreatureAction_SnapDragon::PerformAction()
         CTCDriverED* driver = 0;
         if (obstruction->HasTC(0xed))
             driver = (CTCDriverED*)obstruction->PTCDriver;
-        driver->SetValue(1.5f);
+        reinterpret_cast<CTCDPhysicalObstruction*>(driver)->SetLifeTimeSeconds(1.5f);
         driver->IgnoredThings.push_back(CIntelligentPointerThing(GetCreature()));
     }
     long explosion = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("THING_EXPLOSION_JACK_DRAGON_BITE");
@@ -106,6 +110,6 @@ void CCreatureAction_SnapDragon::PerformAction()
         CTCDriver41* driver;
         if (bite->HasTC(0x41))
             driver = (CTCDriver41*)bite->PTCDriver;
-        driver->SetOwner(GetCreature());
+        reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(GetCreature()));
     }
 }

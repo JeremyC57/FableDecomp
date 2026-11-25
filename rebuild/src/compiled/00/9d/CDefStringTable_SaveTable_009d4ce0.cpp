@@ -77,6 +77,10 @@ struct CStringMap {                                // STLport map<CCharString, l
     }
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009D4A50 ?WriteTable@CDefStringTable@@QBEXAAVCDataOutputStream@@@Z (was ?WriteTable@CDefStringTable@@QAEXPAUCFileDataOutputStream@@@Z)
+class CDataOutputStream;
 class CDefStringTable {
 public:
     CStringMap StringMap;                          // +0x00
@@ -84,7 +88,7 @@ public:
     CWideString TableFilename;                     // +0x30
     bool Locked;                                   // +0x34
     bool ReadOnly;                                 // +0x35
-    void WriteTable(CFileDataOutputStream* stream);   // 0x009D4A50
+    void WriteTable(CDataOutputStream&) const;   // 0x009D4A50
     void SaveTable(bool lock);
 };
 
@@ -94,7 +98,7 @@ void CDefStringTable::SaveTable(bool lock)
         CDiskFileWin32 file;
         file.Open(TableFilename, FILE_ACCESS_WRITE, 4);
         CFileDataOutputStream stream(file);
-        WriteTable(&stream);
+        WriteTable(*reinterpret_cast<CDataOutputStream*>(&stream));
         if (lock) {
             StringMap.clear();
             Locked = true;

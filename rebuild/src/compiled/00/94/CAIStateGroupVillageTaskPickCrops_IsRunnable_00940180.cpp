@@ -82,17 +82,19 @@ FABLE_FORCEINLINE CTCVillager* GetVillagerTC(CThing* creature)
 }
 
 struct CAIStateGroup_WorkBase : CAIStateGroupBase {
-    bool IsInSchoolHours();                     // 0x00940120
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00940120 ?IsTimeForWork@CAIStateGroup_VillageTaskPickCrops@@IBE_NXZ (was ?IsInSchoolHours@CAIStateGroup_WorkBase@@QAE_NXZ)
 struct CAIStateGroup_VillageTaskPickCrops : CAIStateGroup_WorkBase {
     CIntelligentPointerThing PTaskThing;        // +0x14 CIntelligentPointer<CThing>
     virtual bool IsRunnable();
-};
+ protected: bool IsTimeForWork() const; public:  };
 
 bool CAIStateGroup_VillageTaskPickCrops::IsRunnable()
 {
-    if (IsInSchoolHours()) {
+    if (reinterpret_cast<const CAIStateGroup_VillageTaskPickCrops*>(this)->IsTimeForWork()) {
         CTCVillager* villager = GetVillagerTC(PBrain->PCreature);
         CThing* field = ((CTCVillageMember*)villager)->GetPVillage()->GetCropField(PBrain->PCreature);
         if (field != 0) {

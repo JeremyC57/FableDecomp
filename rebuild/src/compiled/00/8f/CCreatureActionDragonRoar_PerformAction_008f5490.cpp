@@ -48,7 +48,6 @@ class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCDriverBase { public:
     unsigned char _pad00[0x2c];
     CRetailVector< CIntelligentPointer<CThing> > Passengers;   // +0x2c
-    void SetLifetime(float seconds);            // 0x007FD3D0
 };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale); // 0x004C08C0
@@ -90,6 +89,10 @@ class CCreatureAction_DragonRoar { public:
     virtual void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x007FD3D0 ?SetLifeTimeSeconds@CTCDPhysicalObstruction@@QAEXM@Z (was ?SetLifetime@CTCDriverBase@@QAEXM@Z)
+class CTCDPhysicalObstruction { public: void SetLifeTimeSeconds(float); };
 void CCreatureAction_DragonRoar::PerformAction()
 {
     C3DVector position = ((CThing*)PCreature.GetPItem())->GetPos();
@@ -103,7 +106,7 @@ void CCreatureAction_DragonRoar::PerformAction()
     CThing* barrier = CreatePhysicalBarrierThing(position, ((CThing*)PCreature.GetPItem())->GetPos(), 2.0f);
     if (barrier) {
         CTCDriverBase* driver = barrier->GetDriver();
-        driver->SetLifetime(3.0f);
+        reinterpret_cast<CTCDPhysicalObstruction*>(driver)->SetLifeTimeSeconds(3.0f);
         driver->Passengers.push_back(CIntelligentPointer<CThing>(((CThing*)PCreature.GetPItem())));
     }
 }

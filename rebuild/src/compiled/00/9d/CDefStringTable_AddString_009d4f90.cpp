@@ -30,6 +30,9 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0 CRC
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00994230 ?WriteRepeatedByte@CDataOutputStream@@QAEXEJ@Z (was ?WriteRepeatedByte@CMemoryDataOutputStream@@QAEXEJ@Z)
 class CDataOutputStream
 {
 public:
@@ -40,7 +43,7 @@ public:
     virtual void Write(const void* data, long length);   // slot 4 (+0x10)
 public:
     void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
-};
+ public: void WriteRepeatedByte(unsigned char, long); };
 
 class CMemoryDataOutputStream : public CDataOutputStream {
 public:
@@ -51,7 +54,6 @@ private: public:                   // 0x18 bytes, vtable 0x0129A788
     unsigned char* Last;                           // +0x0c
     unsigned char* End;                            // +0x10
     unsigned long Position;                        // +0x14
-    void WriteRepeatedByte(unsigned char value, long count);   // 0x00994230
     void const* PeekData() const;                              // 0x00995E70
     void WriteULong(unsigned long value) { Write(&value, 4); }
 };
@@ -100,7 +102,7 @@ long CDefStringTable::AddString(const CCharString& text)
         return node->Offset;
     }
     if (((CMemoryDataOutputStream*)&StringStream)->GetLength() == 0)
-        StringStream.WriteRepeatedByte(0, 4);
+        reinterpret_cast<CDataOutputStream*>(&(StringStream))->WriteRepeatedByte(0, 4);
     long offset = ((CMemoryDataOutputStream*)&StringStream)->GetLength();
     StringStream.WriteULong(CCRC::Calc(0, text.GetPString(), text.GetLength()));
     StringStream.WriteNullTerminatedString(text);

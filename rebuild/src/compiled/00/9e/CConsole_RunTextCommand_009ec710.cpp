@@ -102,10 +102,14 @@ struct CConsole_Retail {
     CBaseClassLine FrontCommandLine;        // +0x1c
     CBaseClassLine BackCommandLine;         // +0x2c
     CCharString    HelpBarString;           // +0x3c
-    void RunCommandLine();                  // 0x009EB430
     void RunTextCommand(const CCharString& text);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009EB430 ?RunCommandLine@CConsole@@AAEXXZ (was ?RunCommandLine@CConsole_Retail@@QAEXXZ)
+struct CConsole_Retail;
+class CConsole { public: private: void RunCommandLine(); public: friend struct ::CConsole_Retail; };
 void CConsole_Retail::RunTextCommand(const CCharString& text)
 {
     CStringParser parser(text, 0, CCharString(""), 0);
@@ -116,7 +120,7 @@ void CConsole_Retail::RunTextCommand(const CCharString& text)
         if (!parser.CursorPos.InQuotes) {
             FrontCommandLine.CurrentEntry = command;
             FrontCommandLine.CursorPosition = command.GetLength();
-            RunCommandLine();
+            reinterpret_cast<CConsole*>(this)->RunCommandLine();
             FrontCommandLine.Reset();
             command = "";
         } else {

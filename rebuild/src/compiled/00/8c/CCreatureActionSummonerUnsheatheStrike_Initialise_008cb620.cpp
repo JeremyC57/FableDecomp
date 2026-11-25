@@ -104,7 +104,6 @@ public:
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
-    CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
     FABLE_FORCEINLINE CTCCombat* GetCombat() const
     {
         CTCCombat* combat;
@@ -118,6 +117,12 @@ public:
     virtual void Initialise();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692910 ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ (was ?GetPDefinitionManager@CCreatureAction_UnsheatheWeapons@@QBEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
+class CCreatureAction_SummonerUnsheatheStrike;
+class CCreatureActionBase { public: protected: CGameDefinitionManager const& PeekDefinitionManager() const; public: friend class ::CCreatureAction_SummonerUnsheatheStrike; };
 void CCreatureAction_SummonerUnsheatheStrike::Initialise()
 {
     CCreatureAction_UnsheatheWeapons::Initialise();
@@ -125,7 +130,7 @@ void CCreatureAction_SummonerUnsheatheStrike::Initialise()
     CDefPointer<const CCombatTypeDef> def;
     {
         CCharString name("SUMMONER_ATTACK_STYLE", -1);
-        GetPDefinitionManager()->GetDef(name, &def);
+        ((CDefinitionManager*)(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekDefinitionManager()))->GetDef(name, &def);
     }
     combat->SetCombatType(def);
 }

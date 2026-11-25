@@ -42,18 +42,21 @@ struct OpinionStream
     virtual void v2();
     virtual void v3();
     virtual void TransferBytes(const void* src, int len);  // vtbl+0x10
-    void PutCount(fable_u32 count);                        // non-virtual, __fastcall
 };
 
 // Reloc-masked helper.
 extern "C" fable_u32 FABLE_FASTCALL OpinionList_Size_0047931e(OpinionList* list);
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x00993EB0 ?WriteSLONG@CDataOutputStream@@QAEXJ@Z (was ?PutCount@OpinionStream@@QAEXI@Z)
+class CDataOutputStream { public: void WriteSLONG(long); };
 void __fastcall
 CPersistTraits_OpinionList_TransferBinaryOut_0047931e(
     void* /*self ecx*/, void* /*edx*/, OpinionStream* stream, OpinionList* list)
 {
     fable_u32 count = OpinionList_Size_0047931e(list);
-    stream->PutCount(count);
+    reinterpret_cast<CDataOutputStream*>(stream)->WriteSLONG(count);
     for (OpinionNode* p = list->head->next; p != list->head; p = p->next)
     {
         stream->TransferBytes(&p->value, 0x18);

@@ -10,11 +10,14 @@
 #include "fable_compiler.h"
 class CTCBase;
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007122C0 ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ (was ?IsTaskRunning@CTCScriptControl@@QAE_NXZ)
+class CTCScriptedControl { public: bool IsActionListEmpty() const; };
 struct CTCScriptControl {
     unsigned char _pad00[0x18];
     bool          m_underControl;                    // +0x18
-    bool IsTaskRunning();                            // 0x007122C0
-    bool IsUnderControl() { return m_underControl || !IsTaskRunning(); }
+    bool IsUnderControl() { return m_underControl || !reinterpret_cast<const CTCScriptedControl*>(this)->IsActionListEmpty(); }
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

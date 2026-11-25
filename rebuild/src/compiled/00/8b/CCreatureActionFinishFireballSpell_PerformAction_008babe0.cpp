@@ -35,7 +35,6 @@ class CThingCreatureBase { public:                 // engine/CThingCreatureBase.
 };
 
 struct CTCFireballSpell_Calls {             // the type-0x9D component; engine/CTCFireballSpell.h exists but only this call is modelled
-    void CastFireball(CThing* target);      // 0x007C89F0
 };
 
 class CBaseObject;
@@ -64,9 +63,13 @@ class CCreatureAction_FinishFireballSpell { public:   // engine/CCreatureAction_
     CIntelligentPointer<CThingCreatureBase> PTarget;        // +0xa8 CIntelligentPointer<CThing>
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007C89F0 ?CastFireball@CTCFireballSpell@@QAEXPAVCThing@@@Z (was ?CastFireball@CTCFireballSpell_Calls@@QAEXPAVCThing@@@Z)
+class CTCFireballSpell { public: void CastFireball(CThing*); };
 void CCreatureAction_FinishFireballSpell::PerformAction()
 {
     CTCFireballSpell_Calls* pSpell;
     if (PCreature.GetPItem()->GetInterface(&pSpell, 0x9d))
-        pSpell->CastFireball((CThing*)PTarget.GetPItem());
+        reinterpret_cast<CTCFireballSpell*>(pSpell)->CastFireball((CThing*)PTarget.GetPItem());
 }

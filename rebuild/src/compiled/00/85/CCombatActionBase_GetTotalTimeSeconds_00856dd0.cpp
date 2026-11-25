@@ -33,14 +33,19 @@ class CCombatActionBase { public:
     unsigned char _pad04[0x74 - 4];             // +0x04
     CAnimationEntry* PAnimEntry;                // +0x74
     unsigned char _pad78[0x114 - 0x78];         // +0x78
-    CAnimationOwner* GetPCreatureAnimationOwner() const;   // 0x00692950 (CCreatureActionBase)
     virtual float GetTotalTimeSeconds() const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692950 ?PeekWorld@CCreatureActionBase@@IBEABVCWorld@@XZ (was ?GetPCreatureAnimationOwner@CCombatActionBase@@QBEPAUCAnimationOwner@@XZ)
+class CWorld;
+class CCombatActionBase;
+class CCreatureActionBase { public: protected: CWorld const& PeekWorld() const; public: friend class ::CCombatActionBase; };
 float CCombatActionBase::GetTotalTimeSeconds() const
 {
     long index = PAnimEntry->AnimationIndex;
-    CAnimationBank* bank = GetPCreatureAnimationOwner()->m_pBank;
+    CAnimationBank* bank = ((CAnimationOwner*)(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekWorld()))->m_pBank;
     float totalTime = ((CAnimation*)((CMeshDataBank*)bank)->PeekAnimation(index))->GetTotalTimeSeconds();   // a named float local blocks the tail jmp
     return totalTime;
 }

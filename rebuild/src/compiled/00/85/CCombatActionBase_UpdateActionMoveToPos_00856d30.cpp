@@ -47,18 +47,22 @@ class CCombatActionBase { public:
     CIntelligentPointer<CThingCreatureBase> PCreature;          // +0x08
     unsigned char _pad10[0xdd - 0x10];          // +0x10
     bool PreferredFinalPosSet;                  // +0xdd
-    bool IsUsingActionMovement();               // 0x00692A50 (CCreatureActionBase)
-    void SetMoveToPos(const C3DVector& pos);    // 0x006929E0 (CCreatureActionBase)
     protected:
     virtual void UpdateActionMoveToPos();
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692A50 ?IsUsingActionMovement@CCreatureActionBase@@QBE_NXZ (was ?IsUsingActionMovement@CCombatActionBase@@QAE_NXZ)
+//   0x006929E0 ?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z (was ?SetMoveToPos@CCombatActionBase@@QAEXABVC3DVector@@@Z)
+class CCombatActionBase;
+class CCreatureActionBase { public: bool IsUsingActionMovement() const; protected: void SetMoveToPos(C3DVector const&); public: friend class ::CCombatActionBase; };
 void CCombatActionBase::UpdateActionMoveToPos()
 {
     C3DVector pos = PCreature.Get()->GetPos();
     CThingCreatureBase* creature = PCreature.Get();
-    if (creature->GetAnimMovementDistance(GetAnimationIndex()) > 0.0001f || IsUsingActionMovement() || PreferredFinalPosSet)
+    if (creature->GetAnimMovementDistance(GetAnimationIndex()) > 0.0001f || reinterpret_cast<const CCreatureActionBase*>(this)->IsUsingActionMovement() || PreferredFinalPosSet)
         pos = GetNextPos();
-    SetMoveToPos(pos);
+    reinterpret_cast<CCreatureActionBase*>(this)->SetMoveToPos(pos);
 }

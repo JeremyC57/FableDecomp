@@ -23,11 +23,15 @@ struct GraphicHeader {unsigned short Width,Height,Depth,FrameWidth,FrameHeight,F
 struct BankNative {unsigned char NativeState[0x268];unsigned long UnloadFrameDelay;}; //retail+268 vs donor+2E4, actual donor header retained
 class CGraphicInfo { public:CGraphicInfo();GraphicHeader Header;long TextureType;BankNative*Bank;long Index;GraphicInfoFrame*Frames;void UnloadFrame(unsigned long);}; //actual default PDB00B57D00; no repository header
 FABLE_FORCEINLINE const unsigned long& MinAge(const unsigned long&a,const unsigned long&b){return a<b?a:b;}
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009FE460 ?FreeTextureMemory@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z (was ?FreeTextureMemory@FrameData@@QAE_N_N@Z)
+namespace CGraphicInfoFrame { class CFrameData { public: bool FreeTextureMemory(bool); }; }
 void CGraphicInfo::UnloadFrame(unsigned long index){
  unsigned long count=Header.FrameCount;
  if(count>1){
  unsigned long age=~0UL;
  for(unsigned long i=0;i<count;++i){GraphicInfoFrame&f=Frames[i];if(f.Data.P&&!f.Data.P->StopLoading())return;if(f.Data.P){unsigned long unused=f.Data.P->GetUnusedFrames();age=MinAge(unused,age);}}
  if(age>=Bank->UnloadFrameDelay)for(unsigned long i=0;i<count;++i)Frames[i].Data.Reset();
- }else{GraphicInfoFrame&f=Frames[index];if(f.Data.P&&!f.Data.P->StopLoading())return;if(f.Data.P){unsigned long age=f.Data.P->GetUnusedFrames();if(f.Data.P)f.Data.P->FreeTextureMemory(age>=Bank->UnloadFrameDelay);}}
+ }else{GraphicInfoFrame&f=Frames[index];if(f.Data.P&&!f.Data.P->StopLoading())return;if(f.Data.P){unsigned long age=f.Data.P->GetUnusedFrames();if(f.Data.P)reinterpret_cast<CGraphicInfoFrame::CFrameData*>(f.Data.P)->FreeTextureMemory(age>=Bank->UnloadFrameDelay);}}
 }

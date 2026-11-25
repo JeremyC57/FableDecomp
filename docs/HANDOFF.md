@@ -7,7 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 34,391 of 64,041 done (53.70%), from the tracker. Landed today:
+- **Naming:** 34,477 of 64,041 done (53.84%), from the tracker; 34,661 (54.12%) with the 184 registered best guesses. Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
@@ -17,7 +17,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - nf440 acc1 + acc2 (14 CCountedPointer self respells, the first registered best-guess names; **R-NF440-1**, advisor decision (owner delegated): a PDB name may be a guess, ADDRESS_PROVEN only on a different PDB name, tracker reads the registry first and never makes a registry target T1; gate fix abcd45ab83; `pending/2026-11-25_nf440_handback/`). NF441 (libpk / GameCODA): research only, 43 class ties and 7 name fixes that apply only with the header port (`pending/2026-11-25_nf441_handback/`; nf441 lines in NAME_FIXES_QUEUE / T3_PORT_QUEUE). Best-guess total 34,405 (proven 34,391 + 14 registered).
   - nf440 bg1p..bg4p (170 more registered best guesses after an emitter pk check of 4,909 rows: no reached NEQ; 145 debt lines). Best-guess total 34,575 (53.99%).
   - NF444 round 1 (GameCODA CSalRender pilot, 14 rows `nf444_hdr`): all HOLD on closure (0x00C55270 + 8 funclets, 0x00C70A30, 0x00C71400 reference the old CVtable_012beda4 names). **R-NF444-1** (advisor decision, owner delegated; under the owner's 2026-11-08 inline-control rule): `/Ob1` granted on every row of the measured render TUs, on retail's bytes alone. Retail expands every inline-marked body (/Ob0 fails 3 rows) and no unmarked one (/Ob2 fails the `??_G` bodies). SDK 2.10 expands `??_GCSalRender`: noted as a dissent, since that build also inlines `~CSalMutex` differently. Precedent: 0x00D1EB80 and 0x00C95580 already use /Ob1. Accepted renames: 0x00C55680 `CSalSw3DVoice::Initialize`, 0x00C556E0 `CSalSw3DVoice::Create`. **R-NF444-2** declined: fold Initialize 0x00C6E660 into the unit. A proven name that clashes with a registry guess wins (REGISTRY_CORRECTIONS.tsv).
-  - **Running:** NF442 / NF443 (T1 round 2 on lists A / B), NF444 resume 2 (freeze the CreateRenderer closure first, check Create's retail slot against the 2.10-derived CSalSw3DVoice.h, then the owed vt432 / name_gate / strict dry run; 28 rows locked). **Agent cap: 3 (owner, 2026-11-25: "decrease to 3 total agents after next agent finishes"; NF440 was that agent).**
+  - nf443 a1, a2, a4, a5, c1 (238 T1 list-B caller rows; 86 addresses split_fixable -> agree_pdb). a3 is held: its r1 forwarding-stub form is declined, as NF438 q2 already settled (`pending/2026-11-25_nf443_handback/`). NF444 froze the CreateRenderer closure at 28 rows (16 built and gated; Create is retail slot 1 of 0x012B8AE0; /Ob1 scope check 20/20) and ran out of context; NF445 finishes the other 12.
+  - **Running:** NF442 (T1 list A round 2), NF443 resumed (a3 in the a1 stub form, the 25 ready rows, the GetDamageMultiplier clash), NF445 (the remaining 12 rows of nf444_hdr; 28 rows locked as NF445).
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.

@@ -139,8 +139,12 @@ struct CTCFollowerState {                       // interface 0xAA
     unsigned char _pad[0x7b];
     bool m_followStopped;                       // +0x7b
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006D4E60 ?IsCreatureValidFollower@CTCFollowed@@QBE_NABVCThingAICreature@@PA_N@Z (was ?IsCreatureValidFollower@CTCFollowed@@QAE_NPAVCThing@@PA_N@Z)
+class CThingAICreature;
 class CTCFollowed { public:                            // interface 0xBC
-    bool IsCreatureValidFollower(CThing* creature, bool* addToFront);   // 0x006D4E60
+    bool IsCreatureValidFollower(CThingAICreature const&, bool*) const;   // 0x006D4E60
     void AddFollower(CThing& follower, bool addToFront);               // 0x006D50C0
 };
 // NF122 (2026-11-20, q6325): the 0x7A (TCI_REGION_FOLLOWER) component's 0x006AEDC0 is Ego_r.pdb / FableWin.pdb
@@ -179,7 +183,7 @@ void CAIStateGroup_MinionFollowThing::OnActivate()
             followee->GetInterfaceV(&followed, 0xbc);
             {
                 bool addToFront = false;
-                bool valid = followed->IsCreatureValidFollower(GetCreature(), &addToFront);
+                bool valid = followed->IsCreatureValidFollower(*reinterpret_cast<CThingAICreature const*>(GetCreature()), &addToFront);
                 followed->AddFollower(*GetCreature(), addToFront);
                 if (ExpressionUsed && valid && !(GetCreature()->m_flags1c9 & 2)) {
                     CTCRegionFollower* list;

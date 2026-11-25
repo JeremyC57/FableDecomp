@@ -63,7 +63,6 @@ public:
         return false;
     }
 };
-CThing* __fastcall CreateBuildingThing(long defIndex, const C3DVector* position, long player, const CCharString& scriptName);   // 0x0082D920
 class CThingPhysicsMeshInfo { public:
     unsigned short m_type;                            // +0x00
 };
@@ -123,6 +122,10 @@ struct CTCMeshAutomaticEntityCreator : CTCBase {
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0082D920 ?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z (was ?CreateBuildingThing@@YIPAVCThing@@JPBVC3DVector@@JABVCCharString@@@Z)
+class CThingBuilding { public: static CThingBuilding* __fastcall Create(long, C3DVector const&, long, CCharString const&); };
 void CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName, const CCharString& buildingName,
                                                  CTCGraphicAppearance* appearance)
 {
@@ -136,7 +139,7 @@ void CTCMeshAutomaticEntityCreator::CreateBuilding(const CCharString& dummyName,
                 CThing* building;
                 {
                     CCharString scriptName("");
-                    building = CreateBuildingThing(defIndex, &position, -1, scriptName);
+                    building = reinterpret_cast<CThing*>(CThingBuilding::Create(defIndex, position, -1, scriptName));
                 }
                 if (building && !(building->m_flags91 & 1)) {
                     float scale = ParentThing->PGraphicAppearance->GetScale();

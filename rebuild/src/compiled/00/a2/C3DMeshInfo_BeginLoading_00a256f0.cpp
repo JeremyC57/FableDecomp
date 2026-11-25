@@ -109,7 +109,6 @@ class CResourceBank { public:
 class CMeshDataBank { public:
     unsigned char _pad000[0x170];
     CResourceBank ResourceBank;                    // +0x170
-    CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };
 
 template <class T> class CIVCountedPointer { public:
@@ -160,6 +159,10 @@ class C3DMeshInfo { public:
     void BeginLoading(unsigned long lod, bool unusedFlag, bool urgent) const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x009D58D0 ?GetAsyncEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z (was ?CreateEntry@CMeshDataBank@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z)
+class CBankFileAsync { public: CCountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long); };
 void C3DMeshInfo::BeginLoading(unsigned long lod, bool unusedFlag, bool urgent) const
 {
     if (lod > 3)
@@ -176,7 +179,7 @@ void C3DMeshInfo::BeginLoading(unsigned long lod, bool unusedFlag, bool urgent) 
         unsigned long id = g_NextMeshID++;
         MeshData->MeshID = id;
     }
-    CCountedPointer<CBankFileAsyncEntry> entry = Bank->CreateEntry(Index);
+    CCountedPointer<CBankFileAsyncEntry> entry = reinterpret_cast<CBankFileAsync*>(Bank)->GetAsyncEntry(Index);
     unsigned long offset = 0;
     for (unsigned long i = 0; i < lod; ++i)
         offset += LODDataSizes[i];

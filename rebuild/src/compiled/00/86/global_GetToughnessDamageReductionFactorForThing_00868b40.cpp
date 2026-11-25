@@ -28,8 +28,13 @@ using namespace Row00868b40;
 class CThing{public:char pad[0x2c];unsigned flags;unsigned flags2;char gap[0x10];Map map;
  template<int Key> FABLE_FORCEINLINE Component*Get()const{const Map*m=&map;ETCInterfaceType key=(ETCInterfaceType)Key;const Map::value_type*p=m->LowerBound(key);const Map::value_type*end=m->end();return (Component*)(p==end||Key<p->first?end:p)->second;}
 };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00851BD0 ?GetParameter@CHeroAbilityStatWeight@@QBEMABVCTCHeroExperience@@@Z (was ?Get@Scale@Row00868b40@@QAEMPAUComponent@2@@Z)
+class CTCHeroExperience;
+class CHeroAbilityStatWeight { public: float GetParameter(CTCHeroExperience const&) const; };
 namespace {
-float __fastcall GetToughnessDamageReductionFactorForThing(const CThing& thing){float value=1.0f;if(thing.flags&0x100){Component*c=thing.Get<0x68>();Def*d=c->def;if(d)++d->refs;float scale=d->scale.Get(c);const float low=d->low;value=(d->high-low)*scale+low;if(--d->refs==0)d->Release();}
+float __fastcall GetToughnessDamageReductionFactorForThing(const CThing& thing){float value=1.0f;if(thing.flags&0x100){Component*c=thing.Get<0x68>();Def*d=c->def;if(d)++d->refs;float scale=reinterpret_cast<const CHeroAbilityStatWeight*>(&(d->scale))->GetParameter(*reinterpret_cast<CTCHeroExperience const*>(c));const float low=d->low;value=(d->high-low)*scale+low;if(--d->refs==0)d->Release();}
  if(thing.flags2&0x10)value*=thing.Get<0x84>()->A();
  if(thing.flags2&0x20){Component*c=thing.Get<0x85>();if(c->current<c->total)value*=c->B();}
  if(thing.flags2&0x40){Component*c=thing.Get<0x86>();if(c->current<c->total)return c->C()*value;}

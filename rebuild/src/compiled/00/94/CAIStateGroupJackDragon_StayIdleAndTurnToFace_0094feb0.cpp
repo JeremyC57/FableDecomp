@@ -103,9 +103,12 @@ struct CDragonPointer{}; //00a01b50
 //   ?GetConstantFPS@CMainGameComponent@@SIJXZ) as retail code outside the class does; was the row-local stand-in FramesPerSecond.
 #include "engine/CMainGameComponent.h"
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ (was ?Terminate@DragonMethods@@QAEXXZ)
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
-};
+ public: void Terminate(); };
 struct DragonMethods : public CAIStateGroupBase, CAIStateGroup_JackDragon {
 void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
 FABLE_FORCEINLINE CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
@@ -120,7 +123,7 @@ do{
 AIAction_DoNothing();
 orientation=Creature()->Physics->GetFacing().Interpolate(orientation,0.1f);
 Creature()->Physics->SetFacingAnglesFromRHSet(orientation);
-if(!((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())||(((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->dead&1)||IsStopping()){Terminate();return;}
+if(!((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())||(((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->dead&1)||IsStopping()){reinterpret_cast<CAIStateGroupBase*>(this)->Terminate();return;}
 frames=GetWorld().GetFrame()-start;
 }while((float)frames/CMainGameComponent::GetConstantFPS()<duration);
 }

@@ -40,10 +40,14 @@ struct CTCHeroMorph_Retail {
     unsigned char _pad_0x08[0x35];            // +0x08
     bool          Changed;                    // +0x3D (PDB +0x55)
 
-    void UpdateTextureMorphs();               // 0x0071DE80
     void ApplyChanges();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0071DE80 ?UpdateTextureMorphs@CTCHeroMorph@@AAEXXZ (was ?UpdateTextureMorphs@CTCHeroMorph_Retail@@QAEXXZ)
+struct CTCHeroMorph_Retail;
+class CTCHeroMorph { public: private: void UpdateTextureMorphs(); public: friend struct ::CTCHeroMorph_Retail; };
 void CTCHeroMorph_Retail::ApplyChanges()
 {
     if (Changed) {
@@ -51,7 +55,7 @@ void CTCHeroMorph_Retail::ApplyChanges()
             CMessageOnMorphChanged message;
             ParentThing->SendMessage(&message);
         }
-        UpdateTextureMorphs();
+        reinterpret_cast<CTCHeroMorph*>(this)->UpdateTextureMorphs();
         ParentThing->m_pGraphicAppearance->SetAsChanged(8);
         Changed = false;
     }

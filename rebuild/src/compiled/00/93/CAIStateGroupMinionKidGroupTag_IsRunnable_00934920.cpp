@@ -51,7 +51,6 @@ class CThingPhysical : public CThing { public:
 class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingAICreature : public CThingCreatureBase { public: };
-CThing* __fastcall Create(long defGlobalIndex, const C3DVector& pos);   // 0x00870BB0
 class CTCCreatureGroupTag { public:                    // interface 0xA4
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -193,6 +192,10 @@ const CMessageEvent* CMessageEventManager::FindMostRecentMessage(const COwnMessa
     return (const CMessageEvent*)StandInSink(hc, 11);
 }
 #pragma auto_inline(on)
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00870BB0 ?Create@CTCDInternalMarker@@SIPAVCThing@@JABVC3DVector@@@Z (was ?Create@@YIPAVCThing@@JABVC3DVector@@@Z)
+class CTCDInternalMarker { public: static CThing* __fastcall Create(long, C3DVector const&); };
 bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
 {
     long framesPerSecond = CMainGameComponent::GetConstantFPS();
@@ -223,7 +226,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
                 CCharString markerName("INTERNAL_MARKER_LIGHT");
                 markerIndex = GetWorld().GetPDefinitionManager()->GetDefGlobalIndexFromName(markerName);
             }
-            CThing* marker = Create(markerIndex, GetCreature()->GetPos());
+            CThing* marker = CTCDInternalMarker::Create(markerIndex, GetCreature()->GetPos());
             {
                 CCharString componentName("CTCCreatureGroupTag");
                 PTCGroupTag = (CTCCreatureGroupTag*)marker->AddTC(componentName, false, 0);

@@ -119,7 +119,6 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    CDefinitionManager* GetDefinitionManager(); // 0x00692910
 };
 class CCreatureAction_SheatheWeapons : public CCombatActionBase { public:
     virtual void PerformAction();               // 0x008B7B10 (Ego_r ?PerformAction@CCreatureAction_SheatheWeapons@@UAEXXZ)
@@ -128,6 +127,12 @@ class CCreatureAction_SummonerSheatheWeapon : public CCreatureAction_SheatheWeap
     virtual void PerformAction();               // vtable 0x0128360C slot 3 (Ego_r / FableWin UAE)
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692910 ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CCombatActionBase@@QAEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
+class CCreatureAction_SummonerSheatheWeapon;
+class CCreatureActionBase { public: protected: CGameDefinitionManager const& PeekDefinitionManager() const; public: friend class ::CCreatureAction_SummonerSheatheWeapon; };
 void CCreatureAction_SummonerSheatheWeapon::PerformAction()
 {
     CTCCarrying* carrying;
@@ -144,6 +149,6 @@ void CCreatureAction_SummonerSheatheWeapon::PerformAction()
     PCreature.GetPItem()->GetInterface(&combat, 0x30);
     const CCreatureDef* creatureDef = PCreature.GetPItem()->GetDef();
     CDefPointer<const CCombatTypeDef> attackStyle;
-    GetDefinitionManager()->GetDef(creatureDef->CombatTypeDef, &attackStyle);
+    ((CDefinitionManager*)(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekDefinitionManager()))->GetDef(creatureDef->CombatTypeDef, &attackStyle);
     combat->SetCombatType(attackStyle);
 }

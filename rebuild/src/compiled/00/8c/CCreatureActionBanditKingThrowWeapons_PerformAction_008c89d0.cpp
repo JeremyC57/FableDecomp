@@ -173,6 +173,11 @@ FABLE_FORCEINLINE bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBa
     return p.GetPItem() && !(p.GetPItem()->m_flags91 & 1);
 }
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692910 ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ (was ?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ)
+class CGameDefinitionManager;
+class CCreatureAction_BanditKingThrowWeapons;
 class CCreatureActionBase {
 public:
     virtual void PerformAction();
@@ -180,8 +185,7 @@ public:
     CIntelligentPointer<CThingCreatureBase> PCreature;                  // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThingCreatureBase> PTarget;                    // +0xa8
-    CDefinitionManager* GetPDefinitionManager() const;  // 0x00692910
-};
+ protected: CGameDefinitionManager const& PeekDefinitionManager() const; public: friend class ::CCreatureAction_BanditKingThrowWeapons; };
 class CCreatureAction_BanditKingThrowWeapons : public CCreatureActionBase {
 public:
     virtual void PerformAction();
@@ -196,11 +200,11 @@ void CCreatureAction_BanditKingThrowWeapons::PerformAction()
     long slots[2];
     {
         CCharString name("CARRY_SLOT_RIGHT_HAND");
-        slots[0] = GetPDefinitionManager()->GetDefGlobalIndexFromName(name);
+        slots[0] = ((CDefinitionManager*)(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekDefinitionManager()))->GetDefGlobalIndexFromName(name);
     }
     {
         CCharString name("CARRY_SLOT_LEFT_HAND");
-        slots[1] = GetPDefinitionManager()->GetDefGlobalIndexFromName(name);
+        slots[1] = ((CDefinitionManager*)(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekDefinitionManager()))->GetDefGlobalIndexFromName(name);
     }
     for (long i = 0; i < 2; ++i) {
         CThing* weapon = carrying->RemoveThingInCarrySlot(slots[i], false);

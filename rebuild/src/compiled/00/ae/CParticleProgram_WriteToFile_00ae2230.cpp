@@ -66,8 +66,10 @@ struct CExportParticle {                                               // CVecto
     unsigned long second;
 };
 // WriteVectorArray 0x00AE18C0: the protected static CParticleSimulation member, declared in the class above (Ego_r + FableWin KIX)
-void __fastcall WriteGroups(CDataOutputStream& stream, const CArray<C3DGroup2>* groups);                            // 0x00AE0680
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00AE0680 ?WriteGroups@CParticleProgram@@CIXAAVCDataOutputStream@@ABV?$CArray@VC3DGroup2@@@@@Z (was ?WriteGroups@@YIXAAVCDataOutputStream@@PBV?$CArray@VC3DGroup2@@@@@Z)
 class CParticleProgram {
 public:
     void*                         __vftable;                           // +0x00
@@ -90,7 +92,7 @@ public:
     CArray<C3DGroup2>             NonSimGroups;                        // +0x108
     CMemoryDataOutputStream       Constraints;                         // +0x114
     void WriteToFile(CDataOutputStream& stream);
-};
+ private: static void __fastcall WriteGroups(CDataOutputStream&, CArray<C3DGroup2> const&); public:  };
 
 void CParticleProgram::WriteToFile(CDataOutputStream& stream)
 {
@@ -143,6 +145,6 @@ void CParticleProgram::WriteToFile(CDataOutputStream& stream)
         stream.WriteNullTerminatedString(ExportParticles.m_first[i].first);
         stream.WriteULONG(ExportParticles.m_first[i].second);
     }
-    WriteGroups(stream, &SimGroups);
-    WriteGroups(stream, &NonSimGroups);
+    CParticleProgram::WriteGroups(stream, SimGroups);
+    CParticleProgram::WriteGroups(stream, NonSimGroups);
 }

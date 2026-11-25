@@ -46,7 +46,6 @@ public:
 struct CTCSpellComponent_0069f750 {
     unsigned char _pad[0xc];
     unsigned char m_triggered;              // +0xc
-    void Trigger();                         // 0x007A44C0
 };
 
 class CCreatureAction_SheatheItemToInventory { public:
@@ -59,12 +58,16 @@ class CCreatureAction_SheatheItemToInventory_ForEnflame : public CCreatureAction
     virtual void FinishAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007A44C0 ?CancelMove@CTCWillEnflame@@QAEXXZ (was ?Trigger@CTCSpellComponent_0069f750@@QAEXXZ)
+class CTCWillEnflame { public: void CancelMove(); };
 void CCreatureAction_SheatheItemToInventory_ForEnflame::FinishAction()
 {
     CCreatureAction_SheatheItemToInventory::FinishAction();
     CTCSpellComponent_0069f750* pSpell;
     if (PCreature.GetPItem()->GetInterface(&pSpell, 0x95)) {
         if (!pSpell->m_triggered)
-            pSpell->Trigger();
+            reinterpret_cast<CTCWillEnflame*>(pSpell)->CancelMove();
     }
 }

@@ -12,7 +12,6 @@
 #include "engine/C3DVector.h"
 class CThing;
 struct CExplosionDriver {
-    void AddExcludedThing(CThing* thing);   // 0x0080CBF0
 };
 class CThing { public:
     unsigned char     _pad0[0x28];
@@ -73,6 +72,10 @@ class CCreatureAction_SummonerFlameSlice : public CCombatActionBase { public:
     void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
+//   0x0080CBF0 ?SetThingAsImmune@CTCDExplosion@@QAEXAAVCThing@@@Z (was ?AddExcludedThing@CExplosionDriver@@QAEXPAVCThing@@@Z)
+class CTCDExplosion { public: void SetThingAsImmune(CThing&); };
 void CCreatureAction_SummonerFlameSlice::PerformAction()
 {
     if (PObstruction.GetPItem() && !(PObstruction.GetPItem()->m_flags91 & 1))
@@ -86,6 +89,6 @@ void CCreatureAction_SummonerFlameSlice::PerformAction()
     if (explosion && !(explosion->m_flags91 & 1)) {
         CExplosionDriver* driver;
         explosion->GetTCDriver(&driver);
-        driver->AddExcludedThing(PCreature.GetPItem());
+        reinterpret_cast<CTCDExplosion*>(driver)->SetThingAsImmune(*(PCreature.GetPItem()));
     }
 }

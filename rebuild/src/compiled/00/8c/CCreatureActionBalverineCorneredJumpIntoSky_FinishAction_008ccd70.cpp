@@ -138,7 +138,6 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public: };
-void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
@@ -196,10 +195,14 @@ class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { 
     virtual void FinishAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E4040 ?SetThingAsNotBloodyWillableAtAll@CTCWillResponse@@SIXPAVCThing@@_N@Z (was ?SetThingAsNotBloodyWillableAtAll@@YIXPAVCThing@@_N@Z)
+class CTCWillResponse { public: static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing*, bool); };
 void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
 {
     CCombatActionBase::FinishAction();
-    SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), false);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), false);
     PCreature.GetPItem()->GetPhysics()->SetFlying(true);
     PCreature.GetPItem()->GetGraphicAppearance()->SetAlpha(0xff);
     if (TotalTime >= 0 && FramesRunning >= TotalTime) {

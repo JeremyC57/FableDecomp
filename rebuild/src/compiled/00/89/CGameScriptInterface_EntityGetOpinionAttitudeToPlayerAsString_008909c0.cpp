@@ -124,7 +124,6 @@ struct COpinionReactionManager_Retail {
     unsigned char                  _pad[0x714];
     CBaseIntelligentPointer_Retail m_exclusiveSource;   // +0x714 (a CIntelligentPointer)
     void* GetExclusiveOpinionSource() { return m_exclusiveSource.GetPItem(); }   // inline: the intelligent pointer's item
-    const CCharString& GetThingAttitudeToPlayerAsString(CThing_Retail* thing);   // 0x007018B0
     float GetOpinionValue(CThing_Retail* thing, long opinion);   // 0x00701750 (labelled COpinionReactionManager_GetOpinionValue)
     bool AttachOpinionSource(CThing_Retail* thing, const CCharString& name, CTCOpinionSource_Retail** ppSource);   // 0x00700780
     bool AttachOpinionSource(CThing_Retail* thing, long id, CTCOpinionSource_Retail** ppSource);   // 0x00700820
@@ -149,9 +148,14 @@ class CWorld { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007018B0 ?GetThingAttitudeToPlayerAsString@COpinionReactionManager@@QBEABVCCharString@@ABVCThing@@@Z (was ?GetThingAttitudeToPlayerAsString@COpinionReactionManager_Retail@@QAEABVCCharString@@PAUCThing_Retail@@@Z)
+class CThing;
+class COpinionReactionManager { public: CCharString const& GetThingAttitudeToPlayerAsString(CThing const&) const; };
 void CGameScriptInterface::EntityGetOpinionAttitudeToPlayerAsString(const CScriptThing& thing, CCharString& attitude) const
 {
     CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
     if (t)
-        attitude = World->POpinionReactionManager_Data->GetThingAttitudeToPlayerAsString(t);
+        attitude = reinterpret_cast<const COpinionReactionManager*>(World->POpinionReactionManager_Data)->GetThingAttitudeToPlayerAsString(*reinterpret_cast<CThing const*>(t));
 }

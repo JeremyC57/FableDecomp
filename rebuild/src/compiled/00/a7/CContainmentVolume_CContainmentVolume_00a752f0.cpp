@@ -24,7 +24,6 @@ class CMovableResourceMemoryPool { public:
     void FreeResource(long a0);   // 0x00A62ED0 (Ego_r.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
 };
 struct CMovableResourceMemoryPool_Calls {
-    long GetHandle(void* block);               // 0x00A01D40
 };
 
 class CMovableResource { public:                      // vtable 0x0129B860; engine/CMovableResource.h: vptr only
@@ -40,11 +39,15 @@ class CContainmentVolume : public CMovableResource { public: // vtable 0x0129DC9
     ~CContainmentVolume();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A01D40 ?GetHandleFromPointer@CHandleBasedMemoryPool@@QAEJPAX@Z (was ?GetHandle@CMovableResourceMemoryPool_Calls@@QAEJPAX@Z)
+class CHandleBasedMemoryPool { public: long GetHandleFromPointer(void*); };
 CContainmentVolume::~CContainmentVolume()
 {
     if (ContainmentPlanes) {
         if (MemoryPool) {
-            ((CMovableResourceMemoryPool*)MemoryPool)->FreeResource(MemoryPool->GetHandle(ContainmentPlanes));
+            ((CMovableResourceMemoryPool*)MemoryPool)->FreeResource(reinterpret_cast<CHandleBasedMemoryPool*>(MemoryPool)->GetHandleFromPointer(ContainmentPlanes));
             MemoryPool = 0;
         } else {
             delete[] ContainmentPlanes;

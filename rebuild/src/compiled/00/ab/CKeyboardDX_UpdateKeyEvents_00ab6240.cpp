@@ -69,8 +69,6 @@ struct CKeyboardDX {
     unsigned short              KeyMap[0x7a];      // +0x351c
     bool                        Acquired;          // +0x3610
     void EmptyEventStore();                        // 0x00A66760
-    bool AddEventToStore(const CInputEvent* event);   // 0x00A66770
-    void UpdateMaintainedEvents();                 // 0x00A66880
     void AddMaintainedEventsToEventStore();        // 0x00A668E0
     void ProcessMaintainedEventsFromEvent(const CInputEvent* event);   // 0x00A669E0
     void UpdateAcquired()
@@ -92,6 +90,12 @@ struct CKeyboardDX {
     public:
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00A66770 ?AddEventToStore@CKeyboard@@IAE_NPBVCInputEvent@@@Z (was ?AddEventToStore@CKeyboardDX@@QAE_NPBVCInputEvent@@@Z)
+//   0x00A66880 ?UpdateMaintainedEvents@CKeyboard@@IAEXXZ (was ?UpdateMaintainedEvents@CKeyboardDX@@QAEXXZ)
+struct CKeyboardDX;
+class CKeyboard { public: protected: bool AddEventToStore(CInputEvent const*); public: friend struct ::CKeyboardDX; protected: void UpdateMaintainedEvents(); public: friend struct ::CKeyboardDX; };
 bool CKeyboardDX::UpdateKeyEvents()
 {
     CInputEvent event;
@@ -119,11 +123,11 @@ bool CKeyboardDX::UpdateKeyEvents()
                 }
                 event.SetAsKeyboardKeyReleased(key, startTime, (float)data[i].dwTimeStamp * 0.001f);
             }
-            AddEventToStore(&event);
+            reinterpret_cast<CKeyboard*>(this)->AddEventToStore(&event);
             ProcessMaintainedEventsFromEvent(&event);
         }
     }
-    UpdateMaintainedEvents();
+    reinterpret_cast<CKeyboard*>(this)->UpdateMaintainedEvents();
     AddMaintainedEventsToEventStore();
     return true;
 }

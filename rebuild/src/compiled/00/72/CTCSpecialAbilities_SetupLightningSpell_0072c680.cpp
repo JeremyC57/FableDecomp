@@ -50,6 +50,9 @@ public:
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
 };
 class CThingCreatureBase : public CThing { public: };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0072B940 ?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z (was ?CalculateWeaponState@@YI?AW4EWEAPON_STATE@CTCSpecialAbilities@@PAVCThingCreatureBase@@@Z)
 class CTCSpecialAbilities {
 public:
     enum EWEAPON_STATE { WEAPON_STATE_NONE = 0 };
@@ -66,20 +69,19 @@ public:
     private:
     bool SetupLightningSpell();
     public:
-};
+ public: static CTCSpecialAbilities::EWEAPON_STATE __fastcall CalculateWeaponState(CThingCreatureBase&); };
 class CTCWillLightning {
 public:
     void SetWeaponState(CTCSpecialAbilities::EWEAPON_STATE state);   // 0x0079F680 (stores WeaponState +0x0c; Ego_r
                                                             // `?SetWeaponState@CTCWillLightning@@QAEXW4EWEAPON_STATE@CTCSpecialAbilities@@@Z`;
                                                             // the manifest's "CObservable::AddExclusiveObserver" is a propagated label)
 };
-CTCSpecialAbilities::EWEAPON_STATE __fastcall CalculateWeaponState(CThingCreatureBase* creature);   // 0x0072B940
 
 bool CTCSpecialAbilities::SetupLightningSpell()
 {
     if (!Creature->HasTC((ETCInterfaceType)0x94)) {
         CTCWillLightning* lightning = (CTCWillLightning*)Creature->AddTC("CTCWillLightning", true, 0);
-        lightning->SetWeaponState(CalculateWeaponState(Creature));
+        lightning->SetWeaponState(CTCSpecialAbilities::CalculateWeaponState(*(Creature)));
     }
     return true;
 }

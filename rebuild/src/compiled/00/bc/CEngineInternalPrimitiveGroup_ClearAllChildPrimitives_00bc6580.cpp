@@ -35,8 +35,11 @@ class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
 
-void __fastcall UpdatePosition_00b91840(CEngineInternalPrimitiveBase* primitive, unsigned long flags);   // 0x00B91840
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00B91840 ?UpdatePosition@CEngineScene@@SIXAAVCEngineInternalPrimitiveBase@@K@Z (was ?UpdatePosition_00b91840@@YIXPAVCEngineInternalPrimitiveBase@@K@Z)
+class CEngineScene { public: static void __fastcall UpdatePosition(CEngineInternalPrimitiveBase&, unsigned long); };
 struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {   // engine/CEngineInternalPrimitiveGroup.h: Primitives +0x50 (retail: three words), PrimitiveFlags +0x5c (PDB +0x60)
     unsigned char       _pad48[8];
     std::vector<CEnginePrimitiveHandle> Primitives;                // +0x50
@@ -50,7 +53,7 @@ struct CEngineInternalPrimitiveGroup : CEngineInternalPrimitiveBase {   // engin
         }
         if (RenderLayerMask != mask) {
             RenderLayerMask = mask;
-            UpdatePosition_00b91840(this, PrimitiveFlags);
+            CEngineScene::UpdatePosition(*(this), PrimitiveFlags);
         }
     }
     virtual void ClearAllChildPrimitives();

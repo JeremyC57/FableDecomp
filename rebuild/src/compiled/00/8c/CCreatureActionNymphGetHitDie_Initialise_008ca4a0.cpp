@@ -54,7 +54,6 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0x114 - 0x10];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     virtual void Initialise();                                // 0x00857520
-    CWorldMap* GetWorldMap();                         // 0x00692C10
 };
 class CCreatureAction_NymphGetHitDie : public CCombatActionBase { public:
     unsigned char _pad114[0x148 - 0x114];
@@ -62,6 +61,11 @@ class CCreatureAction_NymphGetHitDie : public CCombatActionBase { public:
     void Initialise();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692C10 ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ (was ?GetWorldMap@CCombatActionBase@@QAEPAVCWorldMap@@XZ)
+class CCreatureAction_NymphGetHitDie;
+class CCreatureActionBase { public: protected: CWorldMap& GetWorldMap(); public: friend class ::CCreatureAction_NymphGetHitDie; };
 void CCreatureAction_NymphGetHitDie::Initialise()
 {
     {
@@ -75,6 +79,6 @@ void CCreatureAction_NymphGetHitDie::Initialise()
     if (PCreature.Get()->GetTC(TCI_NYMPH, &nymph))
         nymph->StopFlyingAround(-1);
     C3DVector position = PCreature.Get()->GetPos();
-    HeightOnInit = position.Z - GetWorldMap()->GetHeightZBelowPos(position);
+    HeightOnInit = position.Z - (&reinterpret_cast<CCreatureActionBase*>(this)->GetWorldMap())->GetHeightZBelowPos(position);
     CCombatActionBase::Initialise();
 }

@@ -69,7 +69,6 @@ class CTCTrapBase { public:
     void SetThingAsImmune(CThing& thing);               // 0x0078839A
     void ManualTrigger();                               // 0x00788388
 };
-void __fastcall MakeSummonedCreaturesImmuneToTrap(CTCTrapBase* trap);   // 0x0080F240
 class CTCBase
 {
 public:
@@ -94,6 +93,10 @@ protected:
 };
 }
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0080F240 ?MakeSummonedCreaturesImmuneToTrap@CTCNymph@@SIXPAVCTCTrapBase@@@Z (was ?MakeSummonedCreaturesImmuneToTrap@@YIXPAVCTCTrapBase@@@Z)
+class CTCNymph { public: static void __fastcall MakeSummonedCreaturesImmuneToTrap(CTCTrapBase*); };
 void NThingShot::CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other)
 {
     if (!Spent) {
@@ -119,7 +122,7 @@ void NThingShot::CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const
                         trap = (CTCTrapBase*)trapThing->GetTC(0x7d);
                     trap->SetThingAsImmune(*PShooter.GetPItem());
                     trap->ManualTrigger();
-                    MakeSummonedCreaturesImmuneToTrap(trap);
+                    CTCNymph::MakeSummonedCreaturesImmuneToTrap(trap);
                     Spent = true;
                 }
             }

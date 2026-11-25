@@ -137,7 +137,6 @@ FABLE_FORCEINLINE bool IsThingAlive(const CThingNative* thing) { return thing &&
 struct CSpecialAbilityEvent : EventBase {               // type 27
     unsigned char _pad08[0x14 - 0x08];
     bool          Aggressive;                           // +0x14
-    CThingNative* GetPPerformer() const;                // 0x00810FC0 (out of line)
 };
 struct EventNode { EventNode* Next; EventNode* Previous; EventBase* Data; void* Info; };
 struct EventList { EventNode* Head; };
@@ -150,6 +149,10 @@ struct CGameScriptThingMethods : CGameScriptThing {
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
 //   0x004C7E50 ?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (was ?GetScriptThing@CThingNative@@QBE?AVCScriptThing@@XZ)
 class CThing { public: CScriptThing GetScriptThing() const; };
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00810FC0 ?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ (was ?GetPPerformer@CSpecialAbilityEvent@@QBEPAUCThingNative@@XZ)
+namespace NEntityEvents { class CEventHitBase { public: CThing* GetPHitBy() const; }; }
 bool CGameScriptThingMethods::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString& name) const
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
@@ -164,7 +167,7 @@ bool CGameScriptThingMethods::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const
                 EventBase* e = n->Data;
                 if (e->GetType() == 27 && e->WorldFrame > last && e->WorldFrame <= current) {
                     CSpecialAbilityEvent* ability = static_cast<CSpecialAbilityEvent*>(e);
-                    bool hit = name == "" || (IsThingAlive(ability->GetPPerformer()) && reinterpret_cast<const CThing*>(ability->GetPPerformer())->GetScriptThing().GetName() == name);
+                    bool hit = name == "" || (IsThingAlive(reinterpret_cast<CThingNative*>(reinterpret_cast<const NEntityEvents::CEventHitBase*>(ability)->GetPHitBy())) && reinterpret_cast<const CThing*>(reinterpret_cast<CThingNative*>(reinterpret_cast<const NEntityEvents::CEventHitBase*>(ability)->GetPHitBy()))->GetScriptThing().GetName() == name);
                     if (hit && !ability->Aggressive)
                         return true;
                 }

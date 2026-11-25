@@ -46,7 +46,6 @@ struct CTC1F {                                        // interface 0x1F on the t
     bool          Flag18;                             // +0x18
     unsigned char _pad19[3];
     long          Level1C;                            // +0x1c
-    bool IsRunning() const;                           // 0x007122C0
 };
 struct CTC4F {                                        // interface 0x4F on the target
     unsigned char  _pad00[0x3c];
@@ -92,12 +91,16 @@ class CContextSensitiveItemDef { public:
                                            EOpinionDeedType deed) const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007122C0 ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ (was ?IsRunning@CTC1F@@QBE_NXZ)
+class CTCScriptedControl { public: bool IsActionListEmpty() const; };
 bool CContextSensitiveItemDef::TargetCreatureLikelyToReactToDeed(CThingPlayerCreature* player, CThingAICreature* target,
                                                                  EOpinionDeedType deed) const
 {
     const CTC1F* c1f;
     const CTC4F* c4f;
-    if ((target->GetInterface(&c1f, 0x1f) && (c1f->Flag18 || !c1f->IsRunning()) && c1f->Level1C >= 4) ||
+    if ((target->GetInterface(&c1f, 0x1f) && (c1f->Flag18 || !reinterpret_cast<const CTCScriptedControl*>(c1f)->IsActionListEmpty()) && c1f->Level1C >= 4) ||
         (target->GetInterface(&c4f, 0x4f) && !c4f->ReactsToDeed[deed]))
         return false;
     if (!target->IsInScriptGroup("SG_DEED_REACTION_ROOT"))

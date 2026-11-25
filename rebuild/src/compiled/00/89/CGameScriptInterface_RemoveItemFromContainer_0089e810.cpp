@@ -103,19 +103,22 @@ FABLE_FORCEINLINE bool IsThingAlive(const CScriptThing& thing)   // the thing ex
     return t && !t->m_dead;
 }
 struct CTCContainer_Retail {
-    void RemoveItem(long defIndex);                // 0x008ED040
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008ED040 ?RemoveItem@CTCContainer@@QAEXJ@Z (was ?RemoveItem@CTCContainer_Retail@@QAEXJ@Z)
+class CTCContainer { public: void RemoveItem(long); };
 void CGameScriptInterface::RemoveItemFromContainer(const CScriptThing& thing, const CCharString& defName) const
 {
     if (thing.IsAlive()) {
         long defIndex = DefinitionManager->GetDefGlobalIndexFromName(defName);
         CTCContainer_Retail* container;
         if (defIndex > 0 && GetTCOut(((CThing_Retail*)thing.GetPThing()), 0x3c, &container))
-            container->RemoveItem(defIndex);
+            reinterpret_cast<CTCContainer*>(container)->RemoveItem(defIndex);
     }
 }

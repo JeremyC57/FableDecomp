@@ -123,8 +123,6 @@ class CCombatActionBase { public:                                   // retail si
     CIntelligentPointer<CThing> PCreature;                       // +0x08
     unsigned char           _pad10[0x114 - 0x10];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
-    CThingSearchTools* GetThingSearchTools() const;          // 0x00692990
-    CWorldMap* GetWorldMap() const;                          // 0x00692C10
 };
 class CCreatureAction_JackScream : public CCombatActionBase { public:
     CModeJackOfBladesScream* PMode;                          // +0x114 CCountedPointer object
@@ -132,6 +130,12 @@ class CCreatureAction_JackScream : public CCombatActionBase { public:
     virtual void PerformAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692990 ?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ (was ?GetThingSearchTools@CCombatActionBase@@QBEPAVCThingSearchTools@@XZ)
+//   0x00692C10 ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ (was ?GetWorldMap@CCombatActionBase@@QBEPAVCWorldMap@@XZ)
+class CCreatureAction_JackScream;
+class CCreatureActionBase { public: protected: CThingSearchTools const& PeekThingSearchTools() const; public: friend class ::CCreatureAction_JackScream; protected: CWorldMap& GetWorldMap(); public: friend class ::CCreatureAction_JackScream; };
 void CCreatureAction_JackScream::PerformAction()
 {
     C3DVector target;
@@ -143,14 +147,14 @@ void CCreatureAction_JackScream::PerformAction()
             const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;
-            GetThingSearchTools()->GetPFirstThingInRoughArea(C2DBoxI(x - 20, y - 20, x + 20, y + 20), filter, &marker);
+            (&reinterpret_cast<const CCreatureActionBase*>(this)->PeekThingSearchTools())->GetPFirstThingInRoughArea(C2DBoxI(x - 20, y - 20, x + 20, y + 20), filter, &marker);
         }
         if (marker && !(marker->ThingFlags & 1))
             target = marker->GetPos();
         else {
             const C3DVector& pos = GetCreature()->GetPos();
             target = C3DVector(pos.X - 2.0f, pos.Y - 2.0f, pos.Z);
-            target.Z = GetWorldMap()->GetHeightZBelowPos(target);
+            target.Z = (&reinterpret_cast<CCreatureActionBase*>(this)->GetWorldMap())->GetHeightZBelowPos(target);
         }
     }
     target.Z += 1.4f;

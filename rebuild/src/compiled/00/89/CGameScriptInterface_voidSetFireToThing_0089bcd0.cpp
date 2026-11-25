@@ -51,7 +51,6 @@ class CThingPlayerCreature : public CThing_Retail { };
 FABLE_FORCEINLINE CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 FABLE_FORCEINLINE CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 struct CTCFlammable_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
-    void SetOnFire();                              // 0x00780410 (labelled "CMusicManager::ResetMusicEntriesOffsets", propagated)
     void ExtinguishFire();                         // 0x00780C80
     bool IsOnFire();                               // 0x00780400
 };
@@ -80,13 +79,17 @@ class CGameScriptInterface { public:
     void SetFireToThing(const CScriptThing& thing) const;
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00780410 ?SetOnFire@CTCFlammable@@QAEXXZ (was ?SetOnFire@CTCFlammable_Retail@@QAEXXZ)
+class CTCFlammable { public: void SetOnFire(); };
 void CGameScriptInterface::SetFireToThing(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
         CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
         if (t->HasTC(0x6d)) {
             CTCFlammable_Retail* tc = (CTCFlammable_Retail*)GetTC(t, 0x6d);
-            tc->SetOnFire();
+            reinterpret_cast<CTCFlammable*>(tc)->SetOnFire();
         }
     }
 }

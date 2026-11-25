@@ -54,7 +54,6 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 struct CTC4D {                                        // interface 0x4D on the hero
-    void RemoveThing(CThing* thing);                  // 0x00770F20
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };        // 0x00487DC0
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -139,6 +138,10 @@ class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { publi
     void FinishAction();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00770F20 ?RemoveThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z (was ?RemoveThing@CTC4D@@QAEXPAVCThing@@@Z)
+class CTCSolidToThing { public: void RemoveThingNotSolidTo(CThing const*); };
 void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
 {
     PCreature.GetPItem()->GetPhysics()->SetFlying(true);
@@ -146,7 +149,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTC4D* list;
     if (hero->GetInterface(&list, 0x4d))
-        list->RemoveThing(PCreature.GetPItem());
+        reinterpret_cast<CTCSolidToThing*>(list)->RemoveThingNotSolidTo(reinterpret_cast<CThing const*>(PCreature.GetPItem()));
     const C3DVector& position = PCreature.GetPItem()->GetPos();
     C3DVector lifted;
     lifted.X = position.X;

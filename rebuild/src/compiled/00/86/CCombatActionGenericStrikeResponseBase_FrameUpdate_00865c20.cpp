@@ -66,8 +66,6 @@ public:
     unsigned char           _padb0[0xdc - 0xb0];
     bool                    FinishWhenMoving;   // +0xDC
     unsigned char           _paddd[0x114 - 0xdd];   // retail sizeof(CCombatActionBase) = 0x114
-    CGameDefinitionManager* GetDefinitionManager();   // 0x00692910
-    CWorldMap* GetWorldMap();                   // 0x00692C10
 };
 
 class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase {
@@ -80,6 +78,12 @@ public:
     virtual void FrameUpdate();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00692910 ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ (was ?GetDefinitionManager@CCombatActionBase@@QAEPAVCGameDefinitionManager@@XZ)
+//   0x00692C10 ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ (was ?GetWorldMap@CCombatActionBase@@QAEPAVCWorldMap@@XZ)
+class CCombatAction_GenericStrikeResponseBase;
+class CCreatureActionBase { public: protected: CGameDefinitionManager const& PeekDefinitionManager() const; public: friend class ::CCombatAction_GenericStrikeResponseBase; protected: CWorldMap& GetWorldMap(); public: friend class ::CCombatAction_GenericStrikeResponseBase; };
 void CCombatAction_GenericStrikeResponseBase::FrameUpdate()
 {
     CCombatActionBase::FrameUpdate();
@@ -87,7 +91,7 @@ void CCombatAction_GenericStrikeResponseBase::FrameUpdate()
         CThing* creature = PCreature.GetPItem();
         if (IsToCreateCombatParticleEffects(creature, PTarget.GetPItem()) && CreateDustEffect) {
             CThingCreatureBase* dustCreature = (CThingCreatureBase*)PCreature.GetPItem();
-            NCombatActionHelpers::CreateDustEffectForCreature(*dustCreature, *GetWorldMap(), *GetDefinitionManager(), DustTravelDirection, 0);
+            NCombatActionHelpers::CreateDustEffectForCreature(*dustCreature, *(&reinterpret_cast<CCreatureActionBase*>(this)->GetWorldMap()), *(&reinterpret_cast<const CCreatureActionBase*>(this)->PeekDefinitionManager()), DustTravelDirection, 0);
         }
     }
     if (FinishWhenMoving) {

@@ -50,6 +50,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x008FCFA0 ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (was ?GetPFrameWorld@CAIStateGroup_GoToBed@@QAEPAUCThingWorld@@XZ)
+struct CAIStateGroup_GoToBed;
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -71,7 +75,7 @@ class CAIStateGroupBase { public:
 protected:
     CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 public:
-};
+ protected: CWorld const& PeekWorld() const; public: friend struct ::CAIStateGroup_GoToBed; };
 
 // Retail builds message filters as an expression chain: `IsOfType(n) && HasExtraData() && IsForThing(t)`.
 // Each `operator&&` returns a CFilter_Bind2/CFilter_Bind3 holding POINTERS to its operands (the filter
@@ -165,7 +169,6 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBaseW {
     long m_sleepTimeOffset;                     // +0x1c
     long m_bedTimeDelay;                        // +0x20 minutes past sleep start
     long m_wakeTimeDelay;                       // +0x24 minutes past sleep end
-    CThingWorld* GetPFrameWorld();              // 0x008FCFA0
 protected:
     bool FindFreeBed(bool allowOwned);          // 0x0092D1F0 Ego_r.pdb / FableWin.pdb protected (NF164, q5017)
     bool FindFreeBanditBed();                   // 0x0092C8A0 Ego_r.pdb / FableWin.pdb protected (NF127, q5018)
@@ -187,7 +190,7 @@ bool CAIStateGroup_GoToBed::InitCreaturePosition()
 {
     CTCSleeper* sleeper;
     if (PBrain->PCreature->GetTC(TCI_SLEEP, &sleeper)) {
-        sleeper->m_frameStarted = GetPFrameWorld()->GetCurrentFrame() - 1000000;
+        sleeper->m_frameStarted = ((CThingWorld*)(&reinterpret_cast<const CAIStateGroupBase*>(this)->PeekWorld()))->GetCurrentFrame() - 1000000;
         if (IsInSleepTime()
             && (FindFreeBed(true) || FindFreeBanditBed())) {
             CAIStateGroup_GoToBed::OnReplace();

@@ -45,16 +45,19 @@ class CMemoryDataInputStream : public CDataInputStream { public:
 };
 
 struct CReactionMatch_TransferBinaryIn {
-    void TransferBinaryIn(CMemoryDataInputStream& stream);     // 0x006FEFB0
 };
 
 struct CReactionMatch_AsymmetricPyramid_TransferBinaryIn : CReactionMatch_AsymmetricPyramid {
     void TransferBinaryIn(CMemoryDataInputStream& stream);
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006FEFB0 ?TransferBinaryIn@CReactionMatch@@UAEXAAVCMemoryDataInputStream@@@Z (was ?TransferBinaryIn@CReactionMatch_TransferBinaryIn@@QAEXAAVCMemoryDataInputStream@@@Z)
+class CReactionMatch { public: virtual void TransferBinaryIn(CMemoryDataInputStream&); };
 void CReactionMatch_AsymmetricPyramid_TransferBinaryIn::TransferBinaryIn(CMemoryDataInputStream& stream)
 {
-    reinterpret_cast<CReactionMatch_TransferBinaryIn*>(this)->TransferBinaryIn(stream);
+    reinterpret_cast<CReactionMatch*>(reinterpret_cast<CReactionMatch_TransferBinaryIn*>(this))->CReactionMatch::TransferBinaryIn(stream);
     stream.ReadValue(*(long*)XAxisOpinionType);
     stream.ReadValue(*(long*)YAxisOpinionType);
     stream.ReadValue(XCentre);

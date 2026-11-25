@@ -91,7 +91,6 @@ struct CEnvironmentSpellEffectInterpolator_Retail;
 struct CEnvironment_Retail {
     unsigned char _pad[0x1964];
     CEnvironmentSpellEffectInterpolator_Retail* m_pSpellEffects;   // +0x1964
-    void TransitionThemeToDefault(long priority, long flag, float time);   // 0x006B3880 (labelled "CEnvironmentThemePriorityStackEntry_TransitionToDefault")
     CEnvironmentSpellEffectInterpolator_Retail* GetSpellEffects() { return m_pSpellEffects; }
 };
 enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE = 0 };
@@ -122,8 +121,12 @@ class CWorld { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006B3880 ?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z (was ?TransitionThemeToDefault@CEnvironment_Retail@@QAEXJJM@Z)
+class CEnvironment { public: void TransitionToDefaultTheme(long, long, float); };
 void CGameScriptInterface::ResetToDefaultThemeAllInternals(float time) const
 {
     for (long priority = 1; priority <= 4; ++priority)
-        World->PEnvironment_ptr->TransitionThemeToDefault(priority, 1, time);
+        reinterpret_cast<CEnvironment*>(World->PEnvironment_ptr)->TransitionToDefaultTheme(priority, 1, time);
 }

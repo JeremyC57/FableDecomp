@@ -19,13 +19,15 @@ inline float GroundDistanceSquared(const C3DVector& a,const C3DVector& b) {
 struct CCreatureCombatView : public CThing {
 };
 class CThingCreatureBase;
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x006EA770 ?GetPreferredPos@CCombatManager@@QBE?AVC3DVector@@ABVCThingCreatureBase@@@Z (was ?GetPreferredPos@CCombatPositionMethods@@QAE?AVC3DVector@@PAVCThingAICreature@@@Z)
+//   0x006E9700 ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z (was ?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z)
 class CCombatManager { public:
  bool IsCreatureInAttackRingSector(const CThingCreatureBase& creature) const;   // 0x006E94D0 (Ego_r/FableWin ?IsCreatureInAttackRingSector@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z)
-};
+ public: bool IsCreatureOnOuterRing(CThingCreatureBase const&) const;  public: C3DVector GetPreferredPos(CThingCreatureBase const&) const; };
 struct CCombatPositionMethods {
- bool ValidateSequencePosition(CThingAICreature*); // 006E9700
  bool IsCreatureWithValidMeleeCombatSequence(CThingAICreature*); // 006E9450
- C3DVector GetPreferredPos(CThingAICreature*); // 006EA770
 };
 // Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
@@ -46,7 +48,7 @@ bool CCombatStateMethods::IsEnemyCreatureInCombatPosition() {
  bool inRange=InRange();
  CThingAICreature* creature=PBrain->Creature;
  CCombatPositionMethods* combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
- if(combat->ValidateSequencePosition(creature)) return inRange;
+ if(reinterpret_cast<const CCombatManager*>(combat)->IsCreatureOnOuterRing(*reinterpret_cast<CThingCreatureBase const*>(creature))) return inRange;
  if(inRange) {
   creature=PBrain->Creature;
   combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
@@ -54,7 +56,7 @@ bool CCombatStateMethods::IsEnemyCreatureInCombatPosition() {
   creature=PBrain->Creature;
   combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
   const C3DVector& position=((CCreatureCombatView*)creature)->GetPos();
-  if(GroundDistanceSquared(combat->GetPreferredPos(creature),position)<2.25f) return true;
+  if(GroundDistanceSquared(reinterpret_cast<const CCombatManager*>(combat)->GetPreferredPos(*reinterpret_cast<CThingCreatureBase const*>(creature)),position)<2.25f) return true;
  }
  return false;
 }

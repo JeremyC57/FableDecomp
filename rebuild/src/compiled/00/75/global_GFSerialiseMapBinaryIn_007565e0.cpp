@@ -4,17 +4,21 @@
 // Layout: shared stream layout, virtual slot6 returns CCharString, tree header Parent4/Left8/Right12; pair string+two signed dwords.
 #include "fable_compiler.h"
 #include "engine/CMemoryDataInputStream.h"
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x00993CA0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z (was ?ReadWithSrcChunkOverflow@CMemoryDataInputStreamAdapter@X_007565e0@@QAEXPAEH@Z)
+namespace X_007565e0 { struct CMemoryDataInputStreamAdapter; }
+class CDataInputStream { public: private: void ReadWithSrcChunkOverflow(unsigned char*, long); public: friend struct ::X_007565e0::CMemoryDataInputStreamAdapter; };
 namespace X_007565e0 {
 extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 #pragma intrinsic(memcpy)
 // CDataInputStream::ReadWithSrcChunkOverflow at00993ca0 is inherited through this method-only bridge.
 struct CMemoryDataInputStreamAdapter: ::CMemoryDataInputStream {
- void ReadWithSrcChunkOverflow(unsigned char*,int);
  FABLE_FORCEINLINE void Read(void* out,int size) {
   __int64 next=(__int64)(unsigned)(position+size);
   if(next<0 || next>0x7fffffff) return;
   if(chunkLength>=size) {memcpy(out,(const void*)chunkBase,size);chunkBase+=size;chunkLength-=size;position+=size;}
-  else ReadWithSrcChunkOverflow((unsigned char*)out,size);
+  else reinterpret_cast<CDataInputStream*>(this)->ReadWithSrcChunkOverflow((unsigned char*)out,size);
  }
  FABLE_FORCEINLINE unsigned int ReadWord() {unsigned int v;Read(&v,4);return v;}
 };

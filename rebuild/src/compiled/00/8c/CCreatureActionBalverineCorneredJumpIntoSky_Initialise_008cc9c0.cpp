@@ -46,7 +46,6 @@ struct CTCCreatureFlags9 {                  // the interface-9 component: one by
     unsigned char _pad[0x10];
     unsigned char m_canBeTargeted;          // +0x10
 };
-void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
@@ -61,6 +60,10 @@ class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { 
     virtual void Initialise();
 };
 
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x007E4040 ?SetThingAsNotBloodyWillableAtAll@CTCWillResponse@@SIXPAVCThing@@_N@Z (was ?SetThingAsNotBloodyWillableAtAll@@YIXPAVCThing@@_N@Z)
+class CTCWillResponse { public: static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing*, bool); };
 void CCreatureAction_BalverineCorneredJumpIntoSky::Initialise()
 {
     SetCombatAnimation("ATTACK_THEN_JUMP_INTO_SKY");
@@ -69,5 +72,5 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::Initialise()
     if (PCreature.Get()->GetTC(TCI_TARGETED, &pFlags))
         pFlags->m_canBeTargeted = 0;
     PCreature.Get()->GetPhysicsTC()->SetFlying(false);
-    SetThingAsNotBloodyWillableAtAll(PCreature.Get(), true);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(PCreature.Get(), true);
 }

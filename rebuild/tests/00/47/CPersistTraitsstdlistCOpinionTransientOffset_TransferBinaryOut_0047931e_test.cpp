@@ -61,15 +61,17 @@ struct OpinionStream
     // Non-virtual member the source calls directly (reloc-masked rel32 call).
     // Declared here, DEFINED out-of-line below so it is always emitted into
     // test.obj (an inline body would be discarded because the test never calls it).
-    void PutCount(unsigned int count);
 };
 
 // Out-of-line so this definition satisfies source.obj's undefined
 // ?PutCount@OpinionStream@@QAEXI@Z even though the test never calls PutCount itself.
-void OpinionStream::PutCount(unsigned int count)
+// Naming (NF443, 2026-11-25; NF438 q2): the callee stub follows the row's rebind to the PDB spelling
+// ?WriteSLONG@CDataOutputStream@@QAEXJ@Z (was ?PutCount@OpinionStream@@QAEXI@Z).
+class CDataOutputStream { public: void WriteSLONG(long count); };
+void CDataOutputStream::WriteSLONG(long count)
 {
-    g_lastCount = count;
-    g_putThis = this;
+    g_lastCount = (unsigned int)count;
+    g_putThis = reinterpret_cast<OpinionStream*>(this);
 }
 
 // ---- Reloc-masked helper stub (matches the source's extern "C" __fastcall decl:

@@ -1,0 +1,2 @@
+id	question	rows	evidence
+r1	q2 says a test stub of the callee is renamed with the row. In a3, five tests keep the stand-in stub and add a PDB-named stub (bodiless class, out-of-line definition) that forwards to it. Is the forwarding form acceptable, or must the stand-in stub be replaced as in a1?	00468ee2 007e8140 007f81c0 008d69f0 008d6a30 (batch a3)	batches/a3/tests/<a>_test.cpp v orig/tests; tests PASS, name_gate --test NO_WORSE

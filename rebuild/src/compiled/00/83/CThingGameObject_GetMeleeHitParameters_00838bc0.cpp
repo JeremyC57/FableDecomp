@@ -111,7 +111,6 @@ class CTCMultiStrike { public:                       // interface 0x87
 struct CTCCharge {                                   // interface 0x84 (descriptive)
     float GetDamageMultiplier() const;               // 0x0078BE50
     bool IsDecapitating() const;                     // 0x0078BFC0
-    void GetHitPosition(C3DVector* out) const;       // 0x0078C150
 };
 // Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
 //   self rows' Leaf / PDB name sets), through a bodiless declaration (no layout; rulings r2/r3):
@@ -233,6 +232,10 @@ bool CThingBaseDef::GetDamageMultiplierDef(CDefPointer<CDamageMultiplierDef>* ou
     return out->Object != 0;
 }
 #pragma auto_inline(on)
+// Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
+//   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):
+//   0x0078C150 ?PlayHitEffectAtPos@CTCBerserk@@QBEXABVC3DVector@@@Z (was ?GetHitPosition@CTCCharge@@QBEXPAVC3DVector@@@Z)
+class CTCBerserk { public: void PlayHitEffectAtPos(C3DVector const&) const; };
 void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* location, CThing& hitter, CThing* weapon,
                                              const C3DVector& position, const C3DVector& direction,
                                              CHitParameters& params) const
@@ -285,7 +288,7 @@ void CThingGameObject::GetMeleeHitParameters(NHitLocations::CHitLocation* locati
     const CTCCharge* charge;
     if (hitter.GetConstInterface(&charge, 0x84)) {
         multiplier = charge->GetDamageMultiplier() * multiplier;
-        charge->GetHitPosition(&params.Position);
+        reinterpret_cast<const CTCBerserk*>(charge)->PlayHitEffectAtPos(params.Position);
         params.KnockDown = true;
         params.Decapitate = charge->IsDecapitating();
     }
