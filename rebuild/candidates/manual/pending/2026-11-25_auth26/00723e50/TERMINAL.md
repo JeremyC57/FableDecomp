@@ -78,3 +78,54 @@ TAIL swap. All three remaining moves are the same kind: retail issues an integer
 `lea edx,[esi+5Ch]`) one slot ahead of a dependent x87 op that ours issues first. No call-site spelling (owner round 2) and no
 landed-evidenced callee body (this round) moves the front; the evidence-backed flag setting is the default. Grades by AUTH26 on this
 row: 18 (g0..g17).
+
+## Round 4 (AUTH27, 2026-11-25): the owner's notes verified one by one, and the scheduler measured
+Best: **g18.cpp, DIFFER(310v310), front pair only** (the tail is closed, Ego_d locals exact).
+Opt-in evidence in g18: Newton body = landed matched user 0x00A364E0; InitialiseFromAngles body (ANGLE_FORMALS_MAGNITUDE_PASS26) has NO landed
+user: it is backed by the FableWin debug body 0x01DCB530 (read again this round: cos_yz first, `magnitude * cos_yz` formed before each
+trig call, Z = magnitude * GFSin(angleyz)) and Ego_d's formals; the row-level `#pragma intrinsic(sin,cos)` is removable (g15: identical).
+q.py calls by AUTH27: 3 = the g17 re-check (reproduced AUTH26's DIFFER 310v310), the oracle probe P2 (contradicts Ego_d, deleted) and g18.
+Scheduler traces (measurements, no grade): g17, T3, T4, T5, P1, landed 0x007B6810, landed 0x0079C880. Whether this readout is allowed was an
+open question in ESCALATE.md (Q3); it is disclosed here, and nothing from it went into a source except the choice of g18's landed opt-in.
+
+### What was measured (c2 list-scheduler trace, `$S/w24/hand2c/tools/sched/t20.py`; trace of g17 kept at `auth27/tr/g17.json`)
+- The function is two scheduling regions. Region 1 is 81 tuples: function start up to and including the tail `fld X`. Eleven of them are
+  no-code tuples (opcode 0x269). Measured: the `xy` local (gone in T4) and the heading bracket (gone in T3). Inferred from the count and
+  their positions only: three cross-product brackets, three GFSqr brackets, the sum bracket, `(r * r)` and `(3.0f - ...)`.
+- **Tail (closed).** g17's cut fell right after `fld X`, so `lea edx,[esi+5Ch]` (region 2) could not go ahead of `fmul st(1)`. One more
+  tuple in region 1 moves the cut before `fld X`; region 2 then schedules `fld ; lea ; fmul ; add ; pop ; fstp` = retail. g18 does this
+  with the landed Newton spelling `(3.0f - ((r * r) * n)) * r * 0.5f` (FABLE_RETAIL_MESH_DUMMY_INVERSE_STEP_PASS26, landed matched
+  user 0x00A364E0; locals n / seed / r as Ego_d). Predicted before the grade, confirmed by it.
+- **Front (open).** Two picks a cycle, one per unit (integer, x87). Ours: cycle 8 [xy tuple, fsub], 9 [fld 0.0, mov eax], 10 [fcos, mov edi].
+  Retail's bytes need: [mov eax] alone, then [no-code tuple, fsub], then [fld, mov edi], then [fcos]. Priorities (depth + successors,
+  +32 for a memory operand): xy tuple 412, fsub 498, mov eax 147, mov edi 35. So the load can never win on priority; retail's order
+  needs the first x87 node to be NOT READY in the first cycle after the call, i.e. an edge from `mov eax,[normal]` into the x87 chain
+  before the fsub (or a one-cycle latency on the call's result). No tuple in the traces listed above has either.
+- Checked against the model: an extra no-code tuple in the chain (T5, brackets round the call) gives ours; the call result used
+  directly (T4, no `xy`) gives ours; a dead no-code tuple (priority 2, by hand simulation) would let `mov edi` through ahead of the fsub.
+  P1 (`double` return type in a scratch header copy) gave a DAG identical to g17, but I did not confirm the scratch header was the one
+  compiled, so P1 is UNVERIFIED and nothing rests on it.
+- The two landed twins with retail's shape, both traced: 0x007B6810 (`call ; mov ebp,[esp+34h] ; fsub`): its x87 chain is short, so the
+  load outranks the no-code tuple (0x25000 v 0x1D800). 0x0079C880 (`call ; mov edx,[esp+18h] ; fmul`, result used directly): the call is
+  the SECOND pick of its cycle (after the `fstp` that pushes its argument), so the fmul cannot share the call's cycle, and in the next
+  cycle the load outranks it (66 v 63). Both are priority wins on short chains; here the chain carries three fsin / fcos (xy tuple 412 v
+  load 147), so neither mechanism transfers. The other two shape hits (0x0079D7E0, 0x00B51570) were not traced.
+
+### The owner's hypotheses
+| # | hypothesis | verification | grade |
+|---|---|---|---|
+| 1.1 | GetFacingAngleXY const / virtual / return type | Ego_r + FableWin: `?GetFacingAngleXY@CTCPhysicsStandard@@UBEMXZ` = virtual, const, float; header CTCPhysicsBase.h:121 agrees. FableWin 0x02526F81 calls it through the vtable. | settled, none (g5 earlier: identical) |
+| 1.2 | operator^ member v free, argument order | FableWin `??TC3DVector@@QBE?BV0@ABV0@@Z` (0x01B40A20): const member, by const reference, returns const C3DVector; header agrees. FableWin 0x02526FBB..C6 evaluates it as a separate statement after InitialiseFromAngles. The scheduler orders by the DAG: the argument order adds no edge into the x87 chain. | settled (g10 earlier: identical) |
+| 1.3 | SetUp return type / RHSet through a getter / CSE of &normal | FableWin `?SetUp@CRightHandedSet@@QAEXABVC3DVector@@@Z`, `?SetForward@...@@QAEXABVC3DVector@@@Z`: both void; FableWin 0x02526FD7..EC reaches RHSet with `add ecx,50h`, no getter call. In the trace `mov eax,[normal]` is ONE node feeding the six cross-product reads and the SetUp copy already; its priority (147) comes from its first reader, which is after the three trig ops. | settled, none |
+| 2a | the tail follows from the front | Half right: the tail is a region cut one tuple early, independent of the front's order. | g18: tail closed |
+| 2b | C3DVector copy ctor / operator= changes the SetForward / SetUp stores | FableWin has `??0C3DVector@@QAE@ABV0@@Z` (user copy ctor) and no `??4C3DVector`: assignment is the implicit memberwise one; SetForward 0x022163A0 / SetUp 0x02216370 are three dword moves. The header matches, and after g18 the store block is byte-equal to retail. | settled by g18 |
+
+### State
+The residue is the two front moves only, and they are one event: retail's x87 chain starts one cycle after the call. Reaching it
+needs a dependence of the chain's first node on the `normal` pointer load, which neither Ego_d's statements (lines 453-455 never
+touch `normal`; FableWin's debug code confirms the order) nor any landed inline body provides. A fitted device was not tried.
+Two bases, for the next reader: g18's extra Newton bracket and a front fix that itself adds a region-1 tuple exclude each other (T5: a tuple
+added at the front also moves the cut, regions 83 / 28). Use g17 as the base for a front fix that adds a tuple, g18 for one that adds none.
+Files: g18.cpp (best legal base), g17.cpp, LOG.md (round 4, with the trace command), STATUS.tsv, and the traces auth27/tr/g17.json, t3.json,
+t4.json, t5.json, bt.json (0x0079C880) with the readers tr/show.py / show2.py. The 0x007B6810 and P1 traces were deleted for disk; the
+command in LOG.md reproduces them.

@@ -27,3 +27,10 @@ What lies between the call and the subtraction (Ego_d lines 453-454): `float xy 
 - Landed-oracle scan for retail's shape (indirect/direct call, then `mov r32,[esp+d8]`, then an x87 memory op): 4 hits
   (0x0079D7E0, 0x00B51570, 0x0079C880, 0x007B6810), none a structural twin; our shape: 0 hits.
 No evidence-backed source candidate for "the x87 chain starts one slot late" is left; see ESCALATE.md.
+
+## AUTH27 (2026-11-25)
+- Best legal base is now g18.cpp: DIFFER(310v310), front pair only. Tail closed by moving the 81-tuple region cut with the landed
+  Newton spelling (MESH_DUMMY_INVERSE_STEP_PASS26, user 0x00A364E0).
+- The 0.25 literal: FableWin / Ego_r subtract a qword 0.25 and round through a temp, but both also use qword 3.0 / 0.5 in
+  GFFastOneOverSqrt and `call reg` virtual calls: a different compiler / FP model, not double source text. Retail's dword = `0.25f`.
+- Front: see TERMINAL.md round 4 (scheduler trace, priorities, what retail's order requires).
