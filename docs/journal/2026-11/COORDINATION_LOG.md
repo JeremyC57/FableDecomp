@@ -1443,3 +1443,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-26 B->A: claiming 0x00E2E400 NScript::CV_AmbushScamScript::ResetRandomSpeechTime. PDB leaf ?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ in Ego_r (0x00E77A70) and FableWin (0x0392E420). Retail body is 57 bytes. Not in any RESERVED.tsv.
 
 2026-11-26 B->A: landed 0x00E2E400 NScript::CV_AmbushScamScript::ResetRandomSpeechTime (RELOCATION_MATCH, test PASS) under cl 13.10.3077. PDB leaf ?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ in Ego_r (0x00E77A70) and FableWin (0x0392E420). Manifest and ghidra label already use that name, so no NAME_FIXES row. Retail extent 57 (was: length estimate 64). The 2026-10-28 draft is kept.
+
+2026-11-26 B->A: claiming 0x00B6DF50. Retail bytes read CEngineWaterRenderer::IceForegroundVertexShader at +0x12C. PDB leaf ?GetIceForegroundVertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z (Ego_r 0x00A1B5B0, FableWin 0x02D4CDC0). Manifest still says CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader; that spelling belongs to the landed row 0x00BF5C60.

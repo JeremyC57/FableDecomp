@@ -517,7 +517,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00b63c00	CEngineSkyRenderer	RenderSun	1248	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b63c00.cpp	original
 00b640e0	CEngineSkyRenderer	RenderMoon	1136	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b640e0.cpp	original
 00b68070	CEngineLandscapeRenderer	LoadForegroundTextures	1152	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b68070.cpp	original
-00b6df50	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6df50.test.cpp	original
+00b6df50	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	64	reserved (acctB lane, 2026-11-26; was: parked)		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00b6df50.test.cpp	original
 00b84b20	_global	RadixSort_CountingPass_b84b20	480	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand428/differ/00b84b20.cpp	original
 00b8c830	CEngineEnvironment	CEngineEnvironment::FrameStart	1216	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b8c830.cpp	original
 00b9d220	CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	1072	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00b9d220.cpp	original
