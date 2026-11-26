@@ -1,0 +1,4 @@
+address	unit
+00d16dc0	queue 0x00D17090 (+ 0x00D16FD0 WatchForDecapitation, same member-pointer type): only binder; self 0x00D17090 already PDB
+00e38f80	queue 0x00E39140: only binder; self already PDB
+00f083a0 00f08a30 00f08c30	queue 0x00F08590: all three stand-in binders as one unit (they also share the HEAD duplicate stand-in ??0CSpawnedFuncAmbush, f08a30 + f08c30, renamed together: duplicates 1 -> 1); 0x00F08E90 / 0x00F09420 / 0x00F09530 already PDB (HEAD objects); self already PDB

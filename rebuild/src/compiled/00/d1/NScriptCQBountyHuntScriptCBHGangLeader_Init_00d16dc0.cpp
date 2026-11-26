@@ -19,6 +19,10 @@
 //         landed two-callback body.
 // Naming wave 35: identity reg 00d136d1 "BH_GangLeader" in 00d13580; Alloc 00d16380; vtable 012ca5c4 slot 2; PDB ?Init@CBH_GangLeader@CQ_BountyHuntScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CBH_GangLeader::Init (wave3/labels_alloc.tsv); PDB ?Init@CBH_GangLeader@CQ_BountyHuntScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CBH_GangLeader@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own); outer stand-in CQ_BountyHuntScript moved into NScript); same bytes.
+// Naming (NF464, queue nf458 line 0x00D17090): the two script callbacks take the retail CScriptThing by value (engine/CScriptThing.h, the
+//   class this row already includes), as Ego_r.pdb + FableWin.pdb spell them and the landed self 0x00D17090 defines; was the local
+//   CScriptThingRuntime view (UCScriptThingRuntime). Only the member-pointer parameter type changes: the functor stays the row's local
+//   model and keeps its CScriptThingStored copy (Revisit marker above unchanged).
 #include <new>
 #include "fable_string.h"
 #include "engine/CScriptThing.h"
@@ -73,15 +77,15 @@ struct CSpawnedFuncBounty;
 namespace NScript {
 class CQ_BountyHuntScript {
 public:
-    void WatchForLeaderKilled(CScriptThingRuntime thing);
-    void WatchForDecapitation(CScriptThingRuntime thing);
+    void WatchForLeaderKilled(CScriptThing thing);   // 0x00D17090 (Ego_r + FableWin ?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z)
+    void WatchForDecapitation(CScriptThing thing);   // 0x00D16FD0 (Ego_r + FableWin ?WatchForDecapitation@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z)
     void Add(CSpawnedFuncBounty* function, const CCharString& name); // 0x00CB7E50
 public:
     class CBH_GangLeader;            // the entity class below (naming wave 35)
 };
 }
 using NScript::CQ_BountyHuntScript;
-typedef void (CQ_BountyHuntScript::*SpawnedScriptCallback)(CScriptThingRuntime);
+typedef void (CQ_BountyHuntScript::*SpawnedScriptCallback)(CScriptThing);
 struct CSpawnedFuncBounty : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
     CQ_BountyHuntScript* PClass;

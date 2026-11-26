@@ -10,7 +10,7 @@
 // found; otherwise the prong is blocked and the extrapolated position returned.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA770, 799 bytes, `ret 8` (hidden C3DVector result + creature).
 // Callees: CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 (FINDINGS chunk 407; was "IsRegisteredCombatant"), combatant map find 0x006F0250 (twice, unchecked),
-//   CThing::GetPos 0x004C73D0, CCombatWheel::ComputeAttackVector 0x006E89B0, CInterfaceMap::LowerBound (const) 0x004365B0,
+//   CThing::GetPos 0x004C73D0, CDefendingCombatantInfo::CCombatWheel::GetAttackerPlacementVector 0x006E89B0 (NF463 respell, see Naming), CInterfaceMap::LowerBound (const) 0x004365B0,
 //   CThing::GetThingStandingOn (vtable +0x98), CThingCreatureBase::GetNavigationLevelAt 0x00661D20,
 //   CThingFindNavigationLayerAt::operator() 0x0063EFB0, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620,
 //   CDefendingCombatantInfo::CCombatWheel::SetAttackerProngAsBlocked 0x006E9200 (Ego_r.pdb ?SetAttackerProngAsBlocked@
@@ -22,6 +22,9 @@
 // Frame: the combatant map find has a same-TU noinline body (below) so VC7.1 knows its node result is not derived from the key
 //   it was handed; with the extern declaration alone the first key's slot stays alive while &info.AttackerInfo (spilled for
 //   SetAttackerProngAsBlocked) lives, and the frame grows to 60h (key spellings, pointer/reference info, block scopes, /Oa, QFE do not help).
+// Naming (NF463, queue nf458 line 0x006E89B0): the wheel callee 0x006E89B0 is Ego_r.pdb + FableWin.pdb
+//   ?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z, the spelling its landed self row
+//   defines (was the descriptive ComputeAttackVector, same class, parameters and const-ness); this row is its only retail caller (call 0x006EA855).
 #include "fable_compiler.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
@@ -107,7 +110,7 @@ public:
     class CCombatWheel {
     public:
         unsigned char CombatRings[12];
-        C3DVector ComputeAttackVector(const CThingCreatureBase& attacker, const CThingCreatureBase& defender, long ring) const;   // 0x006E89B0
+        C3DVector GetAttackerPlacementVector(const CThingCreatureBase& attacker, const CThingCreatureBase& defender, long ring) const;   // 0x006E89B0
         void SetAttackerProngAsBlocked(const CThingCreatureBase& attacker, CAttackingCombatantInfo& attacker_info);   // 0x006E9200
     };
 };
@@ -162,7 +165,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
         C3DVector predicted = (physics->Pos - physics->LastPos) * 7.0f + attacked->GetPos();
         if (info.AttackerInfo.CombatWheelRingIndex >= 0) {
             const CCombatWheel& wheel = attackedInfo.CombatWheel;
-            C3DVector direction = wheel.ComputeAttackVector(creature, *attacked, info.AttackerInfo.CombatWheelRingIndex);
+            C3DVector direction = wheel.GetAttackerPlacementVector(creature, *attacked, info.AttackerInfo.CombatWheelRingIndex);
             float distance = direction.GetLength();
             direction *= 1.0f / distance;
             CTCCreatureNavigation* navigation = creature.GetTCIfPresent<CTCCreatureNavigation>(7);

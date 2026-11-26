@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf287	0x006ea770	entry 29: binder(s) opened (tri3): stand-in class token ?GetPreferredPos@CCombatPositionMethods@@QAE?AVC3DVector@@PAVCThingAICreature@@@Z [0093dcd0 defines CCombatPositionMethods]. A respell needs the real class / parameter types (a new or renamed local model, or a port onto the shared header): T3	NF287 skipped-port

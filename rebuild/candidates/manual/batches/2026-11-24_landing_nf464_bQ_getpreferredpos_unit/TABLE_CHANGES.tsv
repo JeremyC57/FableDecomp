@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?ComputeAttackVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z -> ?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	006e89b0	006ea770	NF463 (queue nf458 line 0x006E89B0): the only retail caller 0x006EA770 (call 0x006EA855) is respelt in this batch onto the PDB spelling (Ego_r + FableWin) that the self row 0x006E89B0 already defines

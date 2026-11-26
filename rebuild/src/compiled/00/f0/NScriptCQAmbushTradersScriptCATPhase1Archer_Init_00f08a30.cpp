@@ -24,6 +24,9 @@
 //         flat PImp_Data/PImp_Info copy, VC keeps &Thing in edi across the loop and swaps edi/ebp in the Add tail.
 // Naming wave 35: identity reg 00f026a5 "AT_Phase1Archer" in 00f024c0; Alloc 00f03f20; vtable 012f7ddc slot 2; PDB ?Init@CAT_Phase1Archer@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Phase1Archer::Init (wave3/labels_alloc.tsv); PDB ?Init@CAT_Phase1Archer@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CAT_Phase1Archer@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_AmbushTradersScript moved into NScript); same bytes.
+// Naming (NF464, queue nf458 line 0x00F08590): the script callback takes the retail CScriptThing by value (engine/CScriptThing.h, which this row already includes), as Ego_r.pdb + FableWin.pdb spell ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z and the landed self
+//   0x00F08590 defines; was the local CScriptThingRuntime view (UCScriptThingRuntime). Only the member-pointer parameter type changes: the functor
+//   stays the row's local model and keeps its CScriptThingStored copy (Revisit marker above unchanged).
 #include <new>
 #include "fable_string.h"
 #include "engine/CScriptThing.h"
@@ -798,14 +801,14 @@ class CQ_AmbushTradersScript {
 public:
     unsigned char _pad[0xa8];
     vector<CScriptThingRuntime> AllBandits;    // +0xa8 (Ego_r.pdb +0xbc - 0x14)
-    void WatchForEnemyDeath(CScriptThingRuntime thing);
+    void WatchForEnemyDeath(CScriptThing thing);   // 0x00F08590 (Ego_r + FableWin ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z)
     void Add(CSpawnedFuncAmbush* function, const CCharString& name); // 0x00CB7E50; observed function at +4, name at +8
 public:
     class CAT_Phase1Archer;          // the entity class below (naming wave 35)
 };
 }
 using NScript::CQ_AmbushTradersScript;
-typedef void (CQ_AmbushTradersScript::*SpawnedScriptCallback)(CScriptThingRuntime);
+typedef void (CQ_AmbushTradersScript::*SpawnedScriptCallback)(CScriptThing);
 struct CSpawnedFuncAmbush : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
     CQ_AmbushTradersScript* PClass;

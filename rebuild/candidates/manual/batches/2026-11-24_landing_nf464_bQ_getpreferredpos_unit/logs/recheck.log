@@ -1,0 +1,14 @@
+addr       parity           behav  name
+006ea770   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CTCCreatureNavigation (engine/CTCCreatureNavigation.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo (engine/CAttackingCombatantInfo.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo (engine/CDefendingCombatantInfo.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CCombatantInfo (engine/CCombatantInfo.h)
+006ea770   WARN SHARED_HEADER_AVAILABLE CCombatManager (engine/CCombatManager.h)
+006ea770   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled '?g_NormaliseEpsilon@@3MB'
+006ea770   RELOCATION_MATCH PASS   GetPreferredPos
+
+WINS: 1
+  006ea770 RELOCATION_MATCH CCombatManager::GetPreferredPos

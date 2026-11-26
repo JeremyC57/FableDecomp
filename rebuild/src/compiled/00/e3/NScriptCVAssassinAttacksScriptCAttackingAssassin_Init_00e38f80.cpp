@@ -19,6 +19,10 @@
 // Layout: Ego_r.pdb CAttackingAssassin: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18, Screamed +0x1c.
 // Naming wave 35: identity reg 00e3787f "AttackingAssassin" in 00e377d0; Alloc 00e382c0; vtable 012e36e8 slot 2; PDB ?Init@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAttackingAssassin::Init (wave3/labels_alloc.tsv); PDB ?Init@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CAttackingAssassin@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own); outer stand-in CV_AssassinAttacksScript moved into NScript); same bytes.
+// Naming (NF464, queue nf458 line 0x00E39140): the script callback takes the retail CScriptThing by value (engine/CScriptThing.h, included here), as Ego_r.pdb + FableWin.pdb spell ?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z and the landed self
+//   0x00E39140 defines; was the local CScriptThingRuntime view (UCScriptThingRuntime). Only the member-pointer parameter type changes: the functor
+//   stays the row's local model and keeps its CScriptThingStored copy (Revisit marker above unchanged).
+#include "engine/CScriptThing.h"
 #include <new>
 class CCharString { public:                                 // 4 bytes: the shared string block pointer
     void* PStringData;
@@ -164,14 +168,14 @@ class CGameScriptInterface { public:
 namespace NScript {
 class CV_AssassinAttacksScript {
 public:
-    void WatchForAssassinDead(CScriptThingRuntime thing);
+    void WatchForAssassinDead(CScriptThing thing);   // 0x00E39140 (Ego_r + FableWin ?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z)
     void Add(CSpawnedFuncPhase3* function, const CCharString& name); // 0x00CB7E50; observed function at +4, name at +8
 public:
     class CAttackingAssassin;        // the entity class below (naming wave 35)
 };
 }
 using NScript::CV_AssassinAttacksScript;
-typedef void (CV_AssassinAttacksScript::*SpawnedScriptCallback)(CScriptThingRuntime);
+typedef void (CV_AssassinAttacksScript::*SpawnedScriptCallback)(CScriptThing);
 struct CSpawnedFuncPhase3 : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
     CV_AssassinAttacksScript* PClass;

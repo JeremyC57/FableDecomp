@@ -19,6 +19,10 @@
 // Shape: the nested GetHero call fetches the interface vtable once; the loop recomputes size() each pass.
 // Naming wave 35: identity reg 00f02641 "AT_Phase1Guard" in 00f024c0; Alloc 00f038a0; vtable 012f7da4 slot 2; PDB ?Init@CAT_Phase1Guard@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified NScript::CAT_Phase1Guard::Init (wave3/labels_alloc.tsv); PDB ?Init@CAT_Phase1Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CAT_Phase1Guard@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (base CEntityScriptBase made polymorphic); NScript-level CAT_Phase1Guard nested into CQ_AmbushTradersScript); same bytes.
+// Naming (NF464, queue nf458 line 0x00F08590): the script callback takes the retail CScriptThing by value (engine/CScriptThing.h, included here), as Ego_r.pdb + FableWin.pdb spell ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z and the landed self
+//   0x00F08590 defines; was the local CScriptThingRuntime view (UCScriptThingRuntime). Only the member-pointer parameter type changes: the functor
+//   stays the row's local model and keeps its CScriptThingStored copy (Revisit marker above unchanged).
+#include "engine/CScriptThing.h"
 #include "fable_string.h"
 
 namespace NScript { class CPredicateBase; }
@@ -178,13 +182,13 @@ struct CScriptThingVector {                          // STLport vector<CScriptTh
 class CQ_AmbushTradersScript { public:
     unsigned char _pad00[0xa8];
     CScriptThingVector AllBandits;                       // +0xa8 (retail; Ego_r.pdb +0xbc)
-    void WatchForEnemyDeath(CScriptThingRuntime thing);
+    void WatchForEnemyDeath(CScriptThing thing);   // 0x00F08590 (Ego_r + FableWin ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z)
     void Add(CSpawnedFuncEnemyDeath* function, const CCharString& name); // CScriptBase::AddSpawnedFunction 0x00CB7E50
 public:
     class CAT_Phase1Guard;           // the entity class below (naming wave 35)
 };
 }
-typedef void (NScript::CQ_AmbushTradersScript::*SpawnedScriptCallback)(CScriptThingRuntime);
+typedef void (NScript::CQ_AmbushTradersScript::*SpawnedScriptCallback)(CScriptThing);
 struct CSpawnedFuncEnemyDeath : CSpawnedFuncBase {   // CSpawnedFunc1<CQ_AmbushTradersScript, CScriptThing>
     SpawnedScriptCallback Func;                          // +0x34
     NScript::CQ_AmbushTradersScript* PClass;         // +0x38

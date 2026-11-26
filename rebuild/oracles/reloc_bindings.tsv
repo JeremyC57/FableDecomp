@@ -7485,7 +7485,6 @@ __imp__mixerOpen@20	0144047c	00c71430
 ?WatchForAttack@CV_IntroductionToTrophiesScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e9dc80	00e9dac0
 ??_7CSpawnedFuncEnemyDeath@@6B@	012f7ebc	00f083a0
 ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVCCharString@@@Z	00cb7e50	00f083a0
-?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00f08590	00f083a0
 ?IsKnockedDown@NCreatureMode@@YI_NABVCThing@@@Z	0085f010	0072af30
 ?IsUsableBy@CTCWeapon@@QBE_NABVCThing@@@Z	005dab10	0072af30
 __imp__VirtualFree@12	0143fd40	00caa3c0
@@ -7980,7 +7979,7 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ??_7CComponent@NUISystem@@6BCUIInterface@1@@	0124608c	005334a0
 ??_7CUIInterface@NUISystem@@6B@	01246044	005334a0
 ?GetDataFromDef@CComponent@NUISystem@@QAEXXZ	005331a0	005334a0
-?ComputeAttackVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	006e89b0	006ea770
+?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	006e89b0	006ea770
 ?find@CCombatantMap@@QBEPAUnode@1@AB_K@Z	006f0250	006ea770
 ?Initialise@CCreatureAction_BlockBase@@UAEXXZ	00855430	00855500
 ?SetCombatAnimations@CCombatActionBase@@QAEXABUCAnimationEntryVector@@@Z	00857dc0	00855500
@@ -22204,13 +22203,13 @@ _mdct_butterflies@12	00c9c400	00c9c620
 ?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16920	00d167c0
 ?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16d00	00d16bb0
 ?Add@CQ_BountyHuntScript@NScript@@QAEXPAUCSpawnedFuncBounty@@ABVCCharString@@@Z	00cb7e50	00d16dc0
-?WatchForDecapitation@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d16fd0	00d16dc0
-?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00d17090	00d16dc0
+?WatchForDecapitation@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z	00d16fd0	00d16dc0
+?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z	00d17090	00d16dc0
 ??_7CBaseClassNative@@6B@	01231710	00d408b0
 ?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e1f3e0
 ?WatchForBanditDead@CQR_EscortTraderScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e1f520	00e1f3e0
 ?Add@CV_AssassinAttacksScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z	00cb7e50	00e38f80
-?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXUCScriptThingRuntime@@@Z	00e39140	00e38f80
+?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z	00e39140	00e38f80
 ?GetStatueAngle@CV_StatueMasterScript@NScript@@QAEMXZ	00ed43d0	00ed41d0
 ?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z	00f35b10	00eed6b0
 ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z	00cb7e50	00f08a30

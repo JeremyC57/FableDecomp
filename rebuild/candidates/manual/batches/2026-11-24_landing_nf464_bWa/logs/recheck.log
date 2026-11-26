@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00d16dc0   WARN SHARED_HEADER_AVAILABLE CQ_BountyHuntScript (engine/CQ_BountyHuntScript.h)
+00d16dc0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00d16dc0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00d16dc0   RELOCATION_MATCH PASS   Init
+00e38f80   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00e38f80   WARN SHARED_HEADER_AVAILABLE CV_AssassinAttacksScript (engine/CV_AssassinAttacksScript.h)
+00e38f80   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e38f80   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e38f80   RELOCATION_MATCH PASS   Init
+00f083a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00f083a0   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f083a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00f083a0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00f083a0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00f083a0   RELOCATION_MATCH PASS   Init
+00f08a30   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00f08a30   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f08a30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00f08a30   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00f08a30   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00f08a30   RELOCATION_MATCH PASS   Init
+00f08c30   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface (engine/CGameScriptInterface.h)
+00f08c30   WARN SHARED_HEADER_AVAILABLE CQ_AmbushTradersScript (engine/CQ_AmbushTradersScript.h)
+00f08c30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase (engine/CEntityScriptBase.h)
+00f08c30   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00f08c30   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00f08c30   RELOCATION_MATCH PASS   Init
+
+WINS: 5
+  00d16dc0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangLeader::?Init@CBH_GangLeader@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00e38f80 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CAttackingAssassin::?Init@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ
+  00f083a0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase1Guard::?Init@CAT_Phase1Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f08a30 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase1Archer::?Init@CAT_Phase1Archer@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f08c30 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoyMember::?Init@CAT_ConvoyMember@CQ_AmbushTradersScript@NScript@@EAEXXZ
