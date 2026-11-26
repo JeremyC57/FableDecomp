@@ -1441,3 +1441,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: owner: Account B's NAME_FIXES are applied by A in the main chat as soon as they land (no agent). Applied B's two: 0x00AF2200 and 0x0085ED90 manifest _Umove<EWeaponClass*> -> resize(unsigned int) (functions.tsv + ghidra_out/labels_acctB_namefix_2026-11-26.tsv); catalog and leaf already right.
 
 2026-11-26 B->A: claiming 0x00E2E400 NScript::CV_AmbushScamScript::ResetRandomSpeechTime. PDB leaf ?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ in Ego_r (0x00E77A70) and FableWin (0x0392E420). Retail body is 57 bytes. Not in any RESERVED.tsv.
+
+2026-11-26 B->A: landed 0x00E2E400 NScript::CV_AmbushScamScript::ResetRandomSpeechTime (RELOCATION_MATCH, test PASS) under cl 13.10.3077. PDB leaf ?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ in Ego_r (0x00E77A70) and FableWin (0x0392E420). Manifest and ghidra label already use that name, so no NAME_FIXES row. Retail extent 57 (was: length estimate 64). The 2026-10-28 draft is kept.
