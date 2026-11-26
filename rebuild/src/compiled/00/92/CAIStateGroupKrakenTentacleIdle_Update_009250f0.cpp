@@ -12,6 +12,7 @@
 // loop (the TentacleRise twin 0x00925170 stores immediates after them). The action is the TentacleRise shape:
 // inline derived constructor over the out-of-line CCombatActionBase(creature, 0x32, CSoundPair()), base destructor.
 // Frame 0x11c = sound pair 8 + action 0x114. No engine header for the action classes: local model.
+// Naming (NF457, r454b unit with 0x008CF920): the in-class CCreatureAction_TentacleIdle constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TentacleIdle@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb spells it (the out-of-line row 0x008CF920); it stays inline here (retail expands it), so the object is unchanged.
 class CThingCreatureBase;
 
 class CSoundPair { public:
@@ -34,7 +35,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 
 class CCreatureAction_TentacleIdle : public CCombatActionBase { public:     // vtable 0x01284DAC
     virtual void v00();
-    CCreatureAction_TentacleIdle(CThingCreatureBase* creature) : CCombatActionBase(*creature, 0x32, CSoundPair()) { }
+    CCreatureAction_TentacleIdle(CThingCreatureBase& creature) : CCombatActionBase(creature, 0x32, CSoundPair()) { }
 };
 
 class CAIBrain { public:
@@ -63,7 +64,7 @@ struct CAIStateGroup_KrakenTentacleIdle : CAIStateGroupBase {
 void CAIStateGroup_KrakenTentacleIdle::Update()
 {
     while (!IsStopping()) {
-        if (AIAction_PerformAction(CCreatureAction_TentacleIdle(PBrain->PCreature)) != 2)
+        if (AIAction_PerformAction(CCreatureAction_TentacleIdle(*PBrain->PCreature)) != 2)
             break;
     }
     Terminate();

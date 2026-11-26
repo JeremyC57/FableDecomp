@@ -1,5 +1,6 @@
 // NCreatureMode::CModeSummonerDie::FrameUpdate() -- vtable slot 3: count the dying frames down; when they run out, a player-state creature is given the summoner-dead action
 // Leaf: ?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ
+// Naming (NF457, r454b unit with 0x008E4B80): the in-class CCreatureAction_SummonerDead constructor takes `CThingCreatureBase&`, ??0CCreatureAction_SummonerDead@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb spells it (the out-of-line row 0x008E4B80); it stays inline here (retail expands it), so the object is unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DFEF0, 94 bytes (+2 int3 padding).
 // Name: slot 3 of the vtable 0x012682EC (rtti-vtables.tsv); slot 3 is CModeBase::FrameUpdate (the landed
 // 0x0073AC50 is the base body CModeUnderground's slot 3 calls first), slot 5 the landed OnActivate 0x008D6920 that
@@ -39,8 +40,8 @@ class CThingCreatureBase { public:
 
 class CCreatureAction_SummonerDead : public CCombatActionBase { public:   // vtable 0x01287174
     virtual void v00();
-    CCreatureAction_SummonerDead(CThingCreatureBase* owner)
-        : CCombatActionBase(*owner, 250, CSoundPair())
+    CCreatureAction_SummonerDead(CThingCreatureBase& owner)
+        : CCombatActionBase(owner, 250, CSoundPair())
     {
     }
 };
@@ -63,7 +64,7 @@ void CModeSummonerDie::FrameUpdate()
     if (--m_framesToDie <= 0) {
         CThingCreatureBase* creature = m_pThing;
         if (creature->m_state == 1)
-            creature->SetCurrentAction(CCreatureAction_SummonerDead(creature));
+            creature->SetCurrentAction(CCreatureAction_SummonerDead(*creature));
     }
 }
 

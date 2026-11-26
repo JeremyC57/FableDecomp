@@ -1,4 +1,4 @@
-// CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x0127BDCC), ImmediateCast / OneAnimCast cleared, LevelToCast -1, TimeLimit 0, then SetAnimationName("ST_RELEASE_PHYSICAL_SHIELD")
+// CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase&) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), own vtable (0x0127BDCC), ImmediateCast / OneAnimCast cleared, LevelToCast -1, TimeLimit 0, then SetAnimationName("ST_RELEASE_PHYSICAL_SHIELD")
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BB670, length 120 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
@@ -9,6 +9,7 @@
 // CCharString temporary re-addressed with `lea` for SetAnimationName and destroyed after it. `ret 4`.
 // Layout: engine/CCreatureAction_CastPhysicalShieldSpell.h has the members at the PDB's +0x12c..; retail CCombatActionBase is
 // 0x114 bytes, so `this` is modelled locally at +0x114 / +0x115 / +0x118 / +0x11c (ShieldHealth +0x120 untouched).
+// Naming (NF457, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_CastPhysicalShieldSpell@@QAE@AAVCThingCreatureBase@@@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_CastPhysicalShieldSpell@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThingCreatureBase;
 
 class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
@@ -40,11 +41,11 @@ class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { publi
     long  TimeLimit;                        // +0x11c (PDB +0x134)
     float ShieldHealth;                     // +0x120 (PDB +0x138), untouched here
     virtual void v00();
-    CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase* owner);
+    CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase& owner);
 };
 
-CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 150, CSoundPair())
+CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 150, CSoundPair())
     , ImmediateCast(false)
     , OneAnimCast(false)
     , LevelToCast(-1)

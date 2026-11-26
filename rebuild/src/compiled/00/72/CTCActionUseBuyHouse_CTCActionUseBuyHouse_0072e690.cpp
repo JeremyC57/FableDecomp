@@ -1,5 +1,6 @@
-// CTCActionUseBuyHouse::CTCActionUseBuyHouse(CThing*) -- CTCActionUseBase(owner) inline, own vtable, null def, no pending confirmation, join the global update list
+// CTCActionUseBuyHouse::CTCActionUseBuyHouse(CThing&) -- CTCActionUseBase(owner) inline, own vtable, null def, no pending confirmation, join the global update list
 // Leaf: ??0CTCActionUseBuyHouse
+// Naming (NF457, r454b unit with 0x004D321B and 0x0072F040): the constructor takes `CThing&`, ??0CTCActionUseBuyHouse@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCActionUseBuyHouse@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged. The in-class CTCActionUseBase model above keeps its (CThing*) form (its COMDAT would otherwise collide with the 0x004DA939 row).
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -49,11 +50,11 @@ struct CTCActionUseBuyHouse : CTCActionUseBase {            // vtable 0x01266A7C
     bool                      WaitingForConfirmation;       // +0x18
     long                      HouseQuestion;                // +0x1c
     virtual void v00();
-    CTCActionUseBuyHouse(CThing* owner);
+    CTCActionUseBuyHouse(CThing& owner);
 };
 
-CTCActionUseBuyHouse::CTCActionUseBuyHouse(CThing* owner)
-    : CTCActionUseBase(owner)
+CTCActionUseBuyHouse::CTCActionUseBuyHouse(CThing& owner)
+    : CTCActionUseBase(&owner)
     , WaitingForConfirmation(false)
 {
     AddToGlobalTCs();

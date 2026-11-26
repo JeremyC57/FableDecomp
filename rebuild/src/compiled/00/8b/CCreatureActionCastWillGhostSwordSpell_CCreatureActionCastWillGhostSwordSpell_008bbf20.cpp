@@ -1,4 +1,4 @@
-// CCreatureAction_CastWillGhostSwordSpell::CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase*) -- will-spell combat action (action code 150, silent sound pair), spell level 0, animation "ST_CAST_SUMMON_GHOST_SWORD"
+// CCreatureAction_CastWillGhostSwordSpell::CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase&) -- will-spell combat action (action code 150, silent sound pair), spell level 0, animation "ST_CAST_SUMMON_GHOST_SWORD"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBF20, length 106 bytes, `ret 4`. Vtable 0x0127CE7C.
 // Callees: CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
 //          CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0
@@ -8,6 +8,7 @@
 //   string (constructor pushes scheduled above the vtable store) and the setter.
 // Layout: engine/CCreatureAction_CastWillGhostSwordSpell.h is the PDB build (SpellLevel at +0x12c); the retail
 //   CCombatActionBase is 0x114 bytes, so SpellLevel sits at +0x114 and the header is not used.
+// Naming (NF457, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_CastWillGhostSwordSpell@@QAE@AAVCThingCreatureBase@@@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_CastWillGhostSwordSpell@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThingCreatureBase;
 
 class CCharString { public:
@@ -34,11 +35,11 @@ public:
 class CCreatureAction_CastWillGhostSwordSpell : public CCombatActionBase { public:   // vtable 0x0127CE7C
     long SpellLevel;                        // +0x114 (PDB +0x12c)
     virtual void v00();
-    CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase* owner);
+    CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase& owner);
 };
 
-CCreatureAction_CastWillGhostSwordSpell::CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 150, CSoundPair())
+CCreatureAction_CastWillGhostSwordSpell::CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 150, CSoundPair())
     , SpellLevel(0)
 {
     {

@@ -1,5 +1,6 @@
 // CTCActionUseBuyHouse::`scalar_deleting_destructor'(unsigned int) -- leave the global update list, release both def pointers, ~CTCBase, free if asked
 // Leaf: ??_GCTCActionUseBuyHouse
+// Naming (NF457, r454b unit with 0x0072E690): the in-class CTCActionUseBuyHouse constructor takes `CThing&`, ??0CTCActionUseBuyHouse@@QAE@AAVCThing@@@Z as both PDB name sets spell it (the out-of-line row 0x0072E690; this TU emits it as a COMDAT for the vftable helper below); same bytes.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072F040, length 91 bytes.
 // Callees: CTCBase::RemoveFromGlobalTCs @ 0x00686DF0 (landed; `this` in ecx), the def objects' virtual
 // slot 1 (`call [eax+4]` / `call [edx+4]`) when a release drops the count to zero, CTCBase::~CTCBase @
@@ -62,11 +63,11 @@ struct CTCActionUseBuyHouse : CTCActionUseBase {            // vtable 0x01266A7C
     CDefPointer<CDefPointeeBase> PDef;                      // +0x14
     bool                         WaitingForConfirmation;    // +0x18
     long                         HouseQuestion;             // +0x1c
-    CTCActionUseBuyHouse(CThing* owner) : CTCActionUseBase(owner), WaitingForConfirmation(false) { }
+    CTCActionUseBuyHouse(CThing& owner) : CTCActionUseBase(&owner), WaitingForConfirmation(false) { }
     FABLE_FORCEINLINE virtual ~CTCActionUseBuyHouse() { RemoveFromGlobalTCs(); }
 };
 
 CTCActionUseBuyHouse* CreateActionUseBuyHouse(CThing* owner)
 {
-    return new CTCActionUseBuyHouse(owner);
+    return new CTCActionUseBuyHouse(*owner);
 }

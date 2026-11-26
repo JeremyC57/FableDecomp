@@ -1,5 +1,6 @@
-// CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase*) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable, the name "ST_TELEPORT", then the creature's current position as the target
-// Leaf: ??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@@Z
+// CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase&) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable, the name "ST_TELEPORT", then the creature's current position as the target
+// Leaf: ??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@@Z
+// Naming (NF457, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_TeleportOut@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCEA0, length 127 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
@@ -38,11 +39,11 @@ class CCreatureAction_TeleportOut : public CCombatActionBase { public:   // vtab
     C3DVector TargetPos;                    // +0x114
     bool Instant;                           // +0x120
     virtual void v00();
-    CCreatureAction_TeleportOut(CThingCreatureBase* owner);
+    CCreatureAction_TeleportOut(CThingCreatureBase& owner);
 };
 
-CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 250, CSoundPair())
+CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 250, CSoundPair())
 {
     {
         CCharString name("ST_TELEPORT", -1);   // scoped named local (a bare temporary would reuse eax, GOTCHAS)

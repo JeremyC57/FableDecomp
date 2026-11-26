@@ -13775,7 +13775,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CTCInventoryExperience@@QAE@AAVCThing@@@Z	0057832d	004d3042
 ??0CTCSoundPlayer@@QAE@AAVCThing@@@Z	0066ac80	004d30ee
 ??0CTCBuyableHouse@@QAE@AAVCThing@@@Z	006bf8a0	004d31eb
-??0CTCActionUseBuyHouse@@QAE@PAVCThing@@@Z	0072e690	004d321b
+??0CTCActionUseBuyHouse@@QAE@AAVCThing@@@Z	0072e690	004d321b
 ??0CTCDoor@@QAE@AAVCThing@@@Z	00730630	004d32da
 ??0CTCLight@@QAE@AAVCThing@@@Z	00640f00	004d3320
 ??0CTCJackShield@@QAE@AAVCThing@@@Z	00731610	004d3350

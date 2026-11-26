@@ -1,4 +1,4 @@
-// CCreatureAction_BattleChargeTurnLeft::CCreatureAction_BattleChargeTurnLeft(CThingCreatureBase*) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), then animation "ST_BATTLE_CHARGE_TURN_LEFT"
+// CCreatureAction_BattleChargeTurnLeft::CCreatureAction_BattleChargeTurnLeft(CThingCreatureBase&) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), then animation "ST_BATTLE_CHARGE_TURN_LEFT"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CE630, oracle length 90 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,6 +9,7 @@
 // stores: an embedded object's inline ctor), then this class's vtable (0x0128490C,
 // rtti-vtables.tsv) and the animation name set through a scoped CCharString (ctor @ 0x0099EBF0, dtor @ 0x0099EAE0; the setter's manifest label is propagated, named as in family 20).
 // One of 35 bodies of this shape.
+// Naming (NF457, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_BattleChargeTurnLeft@@QAE@AAVCThingCreatureBase@@@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_BattleChargeTurnLeft@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 #include "fable_string.h"
 
 class CThingCreatureBase;
@@ -29,11 +30,11 @@ public:
 
 class CCreatureAction_BattleChargeTurnLeft : public CCombatActionBase { public:
     virtual void v00();
-    CCreatureAction_BattleChargeTurnLeft(CThingCreatureBase* owner);
+    CCreatureAction_BattleChargeTurnLeft(CThingCreatureBase& owner);
 };
 
-CCreatureAction_BattleChargeTurnLeft::CCreatureAction_BattleChargeTurnLeft(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 150, CSoundPair())
+CCreatureAction_BattleChargeTurnLeft::CCreatureAction_BattleChargeTurnLeft(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 150, CSoundPair())
 {
     {
         CCharString name("ST_BATTLE_CHARGE_TURN_LEFT", -1);       // scoped named local (a bare temporary would reuse eax, GOTCHAS)

@@ -1,0 +1,16 @@
+addr       parity           behav  name
+004d321b   RELOCATION_MATCH PASS   Alloc
+0072e690   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0072e690   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0072e690   WARN SHARED_HEADER_AVAILABLE CTCActionUseBase (engine/CTCActionUseBase.h)
+0072e690   RELOCATION_MATCH PASS   CTCActionUseBuyHouse
+0072f040   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0072f040   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase (engine/CDefPointeeBase.h)
+0072f040   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+0072f040   WARN STANDIN_LEAF ??_GCTCActionUseBuyHouse@@UAEPAXI@Z (catalog CTCActionUseBuyHouse::`scalar_deleting_destructor'; names another function)
+0072f040   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 3
+  004d321b RELOCATION_MATCH CTCActionUseBuyHouse::?Alloc@CTCActionUseBuyHouse@@SIPAVCTCBase@@AAVCThing@@@Z
+  0072e690 RELOCATION_MATCH CTCActionUseBuyHouse::??0CTCActionUseBuyHouse
+  0072f040 RELOCATION_MATCH CTCActionUseBuyHouse::??_GCTCActionUseBuyHouse

@@ -10892,3 +10892,5 @@ line	tag	address	correct_symbol	status	other_spellings
 13779	nf453	00787dbc	??0CTCMeleeTrap@@QAE@AAVCThing@@@Z	partial	??0CTCMeleeTrap@@QAE@PAVCThing@@@Z
 13780	nf453	0099a2d0	??0CBaseClass@@QAE@XZ	partial	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ || N_0099a2d0
 13781	nf453	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ
+13785	nf457	004da939	??0CTCActionUseBase@@QAE@AAVCThing@@@Z	closed	
+13786	nf457	0085bba0	??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z	no_binding	

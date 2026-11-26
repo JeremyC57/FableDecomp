@@ -1,0 +1,3 @@
+includer	includes_row	grade	test	verdict	symbol
+008cfac0	008cf610	RELOCATION_MATCH	PASS	OK	??_GCCreatureAction_TentacleIdle@@UAEPAXI@Z
+008e4de0	008dfef0	RELOCATION_MATCH	PASS	OK	??_GCCreatureAction_SummonerDead@@UAEPAXI@Z

@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	??0CTCActionUseBuyHouse@@QAE@PAVCThing@@@Z -> ??0CTCActionUseBuyHouse@@QAE@AAVCThing@@@Z	0072e690	004d321b	NF457: the landed factory 0x004D321B calls 0x0072E690 (call at 0x004D322D, retail; its only caller), respelt with the ctor in this unit onto the PDB spelling (Ego_r + FableWin)

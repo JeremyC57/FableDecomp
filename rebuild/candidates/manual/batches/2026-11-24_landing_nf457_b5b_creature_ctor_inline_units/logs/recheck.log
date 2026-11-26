@@ -1,0 +1,67 @@
+addr       parity           behav  name
+008cf610   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+008cf610   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cf610   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008cf610   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cf610   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleRise (engine/CCreatureAction_TentacleRise.h)
+008cf610   RELOCATION_MATCH PASS   FinishAction
+008cf920   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cf920   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cf920   RELOCATION_MATCH PASS   CCreatureAction_TentacleIdle
+008dfef0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008dfef0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008dfef0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008dfef0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008dfef0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonerDead (engine/CCreatureAction_SummonerDead.h)
+008dfef0   RELOCATION_MATCH PASS   FrameUpdate
+008e4b80   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008e4b80   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e4b80   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonerDead (engine/CCreatureAction_SummonerDead.h)
+008e4b80   RELOCATION_MATCH PASS   CCreatureAction_SummonerDead
+009250f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009250f0   RELOCATION_MATCH PASS   Update
+00925170   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleRise (engine/CCreatureAction_TentacleRise.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00925170   RELOCATION_MATCH PASS   Update
+009251e0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleStrikeInto (engine/CCreatureAction_TentacleStrikeInto.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009251e0   RELOCATION_MATCH PASS   Update
+00925250   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00925250   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00925250   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleRise (engine/CCreatureAction_TentacleRise.h)
+00925250   RELOCATION_MATCH PASS   CCreatureAction_TentacleRise
+009252c0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009252c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009252c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleStrikeInto (engine/CCreatureAction_TentacleStrikeInto.h)
+009252c0   RELOCATION_MATCH PASS   CCreatureAction_TentacleStrikeInto
+
+WINS: 9
+  008cf610 RELOCATION_MATCH CCreatureAction_TentacleRise::?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ
+  008cf920 RELOCATION_MATCH CCreatureAction_TentacleIdle::??0CCreatureAction_TentacleIdle@
+  008dfef0 RELOCATION_MATCH NCreatureMode::CModeSummonerDie::?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ
+  008e4b80 RELOCATION_MATCH CCreatureAction_SummonerDead::??0CCreatureAction_SummonerDead@
+  009250f0 RELOCATION_MATCH CAIStateGroup_KrakenTentacleIdle::Update
+  00925170 RELOCATION_MATCH CAIStateGroup_KrakenTentacleRise::Update
+  009251e0 RELOCATION_MATCH CAIStateGroup_KrakenTentacleAttack::Update
+  00925250 RELOCATION_MATCH CCreatureAction_TentacleRise::??0CCreatureAction_TentacleRise@
+  009252c0 RELOCATION_MATCH CCreatureAction_TentacleStrikeInto::??0CCreatureAction_TentacleStrikeInto@
+# ---- includers of the landed files
+addr       parity           behav  name
+008cfac0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+008e4de0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 2
+  008cfac0 RELOCATION_MATCH CCreatureAction_TentacleIdle::??_GCCreatureAction_TentacleIdle@@UAEPAXI@Z
+  008e4de0 RELOCATION_MATCH CCreatureAction_SummonerDead::??_GCCreatureAction_SummonerDead@@UAEPAXI@Z

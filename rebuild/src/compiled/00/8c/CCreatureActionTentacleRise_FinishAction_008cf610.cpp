@@ -1,5 +1,6 @@
 // CCreatureAction_TentacleRise::FinishAction() -- remove creature mode 0x54 through the owner's mode manager, set the flag byte +0x10 of the owner's interface-9 component, base FinishAction, then make a CCreatureAction_TentacleIdle the owner's current action
 // Leaf: ?FinishAction@CCreatureAction_TentacleRise@@QAEXXZ
+// Naming (NF457, r454b unit with 0x008CF920): the in-class CCreatureAction_TentacleIdle constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TentacleIdle@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb spells it (the out-of-line row 0x008CF920); it stays inline here (retail expands it), so the object is unchanged.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF610, length 231 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -67,7 +68,7 @@ class CCombatActionBase { public:
 
 class CCreatureAction_TentacleIdle : public CCombatActionBase { public:   // vtable 0x01284DAC
     virtual void v00();
-    CCreatureAction_TentacleIdle(CThingCreatureBase* owner) : CCombatActionBase(*owner, 50, CSoundPair()) { }
+    CCreatureAction_TentacleIdle(CThingCreatureBase& owner) : CCombatActionBase(owner, 50, CSoundPair()) { }
 };
 
 class CCreatureAction_TentacleRise : public CCombatActionBase { public:
@@ -81,5 +82,5 @@ void CCreatureAction_TentacleRise::FinishAction()
         modeManager->RemoveMode(0x54);
     GetInterface9()->m_flag10 = true;
     CCombatActionBase::FinishAction();
-    PCreature.Get()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleIdle(PCreature.Get()))));
+    PCreature.Get()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleIdle(*PCreature.Get()))));
 }

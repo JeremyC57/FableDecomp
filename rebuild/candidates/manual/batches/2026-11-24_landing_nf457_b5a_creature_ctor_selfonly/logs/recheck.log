@@ -1,0 +1,147 @@
+addr       parity           behav  name
+008bb2c0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb2c0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb2c0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildWillForceSpell (engine/CCreatureAction_BuildWillForceSpell.h)
+008bb2c0   RELOCATION_MATCH PASS   CCreatureAction_BuildWillForceSpell
+008bb5b0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb5b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb5b0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildUpWillEnflameSpell (engine/CCreatureAction_BuildUpWillEnflameSpell.h)
+008bb5b0   RELOCATION_MATCH PASS   CCreatureAction_BuildUpWillEnflameSpell
+008bb610   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb610   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb610   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ReleaseWillEnflameSpell (engine/CCreatureAction_ReleaseWillEnflameSpell.h)
+008bb610   RELOCATION_MATCH PASS   CCreatureAction_ReleaseWillEnflameSpell
+008bb670   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb670   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb670   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastPhysicalShieldSpell (engine/CCreatureAction_CastPhysicalShieldSpell.h)
+008bb670   RELOCATION_MATCH PASS   CCreatureAction_CastPhysicalShieldSpell
+008bb7d0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb7d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb7d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildUpPhysicalShieldSpell (engine/CCreatureAction_BuildUpPhysicalShieldSpell.h)
+008bb7d0   RELOCATION_MATCH PASS   CCreatureAction_BuildUpPhysicalShieldSpell
+008bb830   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb830   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb830   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ReleasePhysicalShieldSpell (engine/CCreatureAction_ReleasePhysicalShieldSpell.h)
+008bb830   RELOCATION_MATCH PASS   CCreatureAction_ReleasePhysicalShieldSpell
+008bb890   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bb890   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bb890   WARN SHARED_HEADER_AVAILABLE CCreatureAction_RemovePhysicalShieldSpell (engine/CCreatureAction_RemovePhysicalShieldSpell.h)
+008bb890   RELOCATION_MATCH PASS   CCreatureAction_RemovePhysicalShieldSpell
+008bba50   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bba50   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bba50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildWillTurncoatSpell (engine/CCreatureAction_BuildWillTurncoatSpell.h)
+008bba50   RELOCATION_MATCH PASS   CCreatureAction_BuildWillTurncoatSpell
+008bbab0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bbab0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bbab0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FinishWillTurncoatSpell (engine/CCreatureAction_FinishWillTurncoatSpell.h)
+008bbab0   RELOCATION_MATCH PASS   CCreatureAction_FinishWillTurncoatSpell
+008bbc00   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bbc00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bbc00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildDrainLifeSpell (engine/CCreatureAction_BuildDrainLifeSpell.h)
+008bbc00   RELOCATION_MATCH PASS   CCreatureAction_BuildDrainLifeSpell
+008bbc60   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bbc60   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bbc60   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FinishDrainLifeSpell (engine/CCreatureAction_FinishDrainLifeSpell.h)
+008bbc60   RELOCATION_MATCH PASS   CCreatureAction_FinishDrainLifeSpell
+008bbf20   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bbf20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bbf20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillGhostSwordSpell (engine/CCreatureAction_CastWillGhostSwordSpell.h)
+008bbf20   RELOCATION_MATCH PASS   CCreatureAction_CastWillGhostSwordSpell
+008bc000   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bc000   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bc000   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildGhostSwordSpell (engine/CCreatureAction_BuildGhostSwordSpell.h)
+008bc000   RELOCATION_MATCH PASS   CCreatureAction_BuildGhostSwordSpell
+008bc060   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bc060   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bc060   WARN SHARED_HEADER_AVAILABLE CCreatureAction_FinishGhostSwordSpell (engine/CCreatureAction_FinishGhostSwordSpell.h)
+008bc060   RELOCATION_MATCH PASS   CCreatureAction_FinishGhostSwordSpell
+008bc6d0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bc6d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bc6d0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildUpWillSummonSpell (engine/CCreatureAction_BuildUpWillSummonSpell.h)
+008bc6d0   RELOCATION_MATCH PASS   CCreatureAction_BuildUpWillSummonSpell
+008bc730   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bc730   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bc730   WARN SHARED_HEADER_AVAILABLE CCreatureAction_ReleaseWillSummonSpell (engine/CCreatureAction_ReleaseWillSummonSpell.h)
+008bc730   RELOCATION_MATCH PASS   CCreatureAction_ReleaseWillSummonSpell
+008bc790   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CSpecialAbilitiesLightningSpellDef (engine/CSpecialAbilitiesLightningSpellDef.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bc790   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillLightningSpell (engine/CCreatureAction_CastWillLightningSpell.h)
+008bc790   RELOCATION_MATCH PASS   CCreatureAction_CastWillLightningSpell
+008bcdb0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bcdb0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bcdb0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildFireballSpell (engine/CCreatureAction_BuildFireballSpell.h)
+008bcdb0   RELOCATION_MATCH PASS   CCreatureAction_BuildFireballSpell
+008bcea0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bcea0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bcea0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TeleportOut (engine/CCreatureAction_TeleportOut.h)
+008bcea0   RELOCATION_MATCH PASS   CCreatureAction_TeleportOut
+008ca780   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ca780   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ca780   WARN SHARED_HEADER_AVAILABLE CCreatureAction_NymphTeleportLimboBase (engine/CCreatureAction_NymphTeleportLimboBase.h)
+008ca780   RELOCATION_MATCH PASS   CCreatureAction_NymphTeleportLimboBase
+008cdf90   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cdf90   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cdf90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BuildUpTimeSpell (engine/CCreatureAction_BuildUpTimeSpell.h)
+008cdf90   RELOCATION_MATCH PASS   CCreatureAction_BuildUpTimeSpell
+008ce630   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ce630   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ce630   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BattleChargeTurnLeft (engine/CCreatureAction_BattleChargeTurnLeft.h)
+008ce630   RELOCATION_MATCH PASS   CCreatureAction_BattleChargeTurnLeft
+008ce690   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ce690   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ce690   WARN SHARED_HEADER_AVAILABLE CCreatureAction_BattleChargeTurnRight (engine/CCreatureAction_BattleChargeTurnRight.h)
+008ce690   RELOCATION_MATCH PASS   CCreatureAction_BattleChargeTurnRight
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefString (engine/CDefString.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CDefStringTable (engine/CDefStringTable.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CTCSoundPlayer (engine/CTCSoundPlayer.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CTCDParticleEmitter (engine/CTCDParticleEmitter.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ce6f0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastSkillMultiArrow (engine/CCreatureAction_CastSkillMultiArrow.h)
+008ce6f0   RELOCATION_MATCH PASS   CCreatureAction_CastSkillMultiArrow
+008e4500   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008e4500   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e4500   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAssaultLoop
+00907f50   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00907f50   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00907f50   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TrollWhackGroundBase (engine/CCreatureAction_TrollWhackGroundBase.h)
+00907f50   RELOCATION_MATCH PASS   CCreatureAction_TrollWhackGroundBase
+
+WINS: 26
+  008bb2c0 RELOCATION_MATCH CCreatureAction_BuildWillForceSpell::??0CCreatureAction_BuildWillForceSpell@
+  008bb5b0 RELOCATION_MATCH CCreatureAction_BuildUpWillEnflameSpell::??0CCreatureAction_BuildUpWillEnflameSpell@
+  008bb610 RELOCATION_MATCH CCreatureAction_ReleaseWillEnflameSpell::??0CCreatureAction_ReleaseWillEnflameSpell@
+  008bb670 RELOCATION_MATCH CCreatureAction_CastPhysicalShieldSpell::??0CCreatureAction_CastPhysicalShieldSpell@
+  008bb7d0 RELOCATION_MATCH CCreatureAction_BuildUpPhysicalShieldSpell::??0CCreatureAction_BuildUpPhysicalShieldSpell@
+  008bb830 RELOCATION_MATCH CCreatureAction_ReleasePhysicalShieldSpell::??0CCreatureAction_ReleasePhysicalShieldSpell@
+  008bb890 RELOCATION_MATCH CCreatureAction_RemovePhysicalShieldSpell::??0CCreatureAction_RemovePhysicalShieldSpell@
+  008bba50 RELOCATION_MATCH CCreatureAction_BuildWillTurncoatSpell::??0CCreatureAction_BuildWillTurncoatSpell@
+  008bbab0 RELOCATION_MATCH CCreatureAction_FinishWillTurncoatSpell::??0CCreatureAction_FinishWillTurncoatSpell@
+  008bbc00 RELOCATION_MATCH CCreatureAction_BuildDrainLifeSpell::??0CCreatureAction_BuildDrainLifeSpell@
+  008bbc60 RELOCATION_MATCH CCreatureAction_FinishDrainLifeSpell::??0CCreatureAction_FinishDrainLifeSpell@
+  008bbf20 RELOCATION_MATCH CCreatureAction_CastWillGhostSwordSpell::??0CCreatureAction_CastWillGhostSwordSpell@
+  008bc000 RELOCATION_MATCH CCreatureAction_BuildGhostSwordSpell::??0CCreatureAction_BuildGhostSwordSpell@
+  008bc060 RELOCATION_MATCH CCreatureAction_FinishGhostSwordSpell::??0CCreatureAction_FinishGhostSwordSpell@
+  008bc6d0 RELOCATION_MATCH CCreatureAction_BuildUpWillSummonSpell::??0CCreatureAction_BuildUpWillSummonSpell@
+  008bc730 RELOCATION_MATCH CCreatureAction_ReleaseWillSummonSpell::??0CCreatureAction_ReleaseWillSummonSpell@
+  008bc790 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::??0CCreatureAction_CastWillLightningSpell
+  008bcdb0 RELOCATION_MATCH CCreatureAction_BuildFireballSpell::??0CCreatureAction_BuildFireballSpell@
+  008bcea0 RELOCATION_MATCH CCreatureAction_TeleportOut::??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@@Z
+  008ca780 RELOCATION_MATCH CCreatureAction_NymphTeleportLimboBase::??0CCreatureAction_NymphTeleportLimboBase@
+  008cdf90 RELOCATION_MATCH CCreatureAction_BuildUpTimeSpell::??0CCreatureAction_BuildUpTimeSpell@
+  008ce630 RELOCATION_MATCH CCreatureAction_BattleChargeTurnLeft::??0CCreatureAction_BattleChargeTurnLeft@
+  008ce690 RELOCATION_MATCH CCreatureAction_BattleChargeTurnRight::??0CCreatureAction_BattleChargeTurnRight@
+  008ce6f0 RELOCATION_MATCH CCreatureAction_CastSkillMultiArrow::??0CCreatureAction_CastSkillMultiArrow
+  008e4500 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAssaultLoop::??0CCreatureAction_IceTrollIcicleAssaultLoop@
+  00907f50 RELOCATION_MATCH CCreatureAction_TrollWhackGroundBase::??0CCreatureAction_TrollWhackGroundBase@

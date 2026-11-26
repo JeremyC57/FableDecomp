@@ -1984,7 +1984,6 @@ T3	other	CSummonableCreatureDef	1	1		004d885e
 T3	other	CTB_Bard	1	1		00ed99d0
 T3	other	CTBaseSingleton	1	1	engine/CTBaseSingleton.h	00414ce0
 T3	other	CTCAbsorbHits	1	1	engine/CTCAbsorbHits.h	004d990e
-T3	other	CTCActionUseBuyHouse	1	1		004d321b
 T3	other	CTCActionUseBuyOrSteal	1	1		004d2c12
 T3	other	CTCActionUseReadable	1	1	engine/CTCActionUseReadable.h	004dc004
 T3	other	CTCActivationReceptorBase	1	2	engine/CTCActivationReceptorBase.h	007f76e0

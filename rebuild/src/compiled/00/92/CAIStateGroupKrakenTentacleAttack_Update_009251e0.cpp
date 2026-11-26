@@ -10,6 +10,7 @@
 // zeroed with immediates in its frame slot between the pushes) and stores the derived vtable after the base call
 // (scheduled between the PerformActionAndWait pushes); its implicit destructor is the base destructor.
 // Frame 0x120 = sound pair 8 + action 0x118 (one more dword than TentacleRise, no constructor code). No engine header for the action classes: local model.
+// Naming (NF457, r454b unit with 0x009252C0): the in-class CCreatureAction_TentacleStrikeInto constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TentacleStrikeInto@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb spells it (the out-of-line row 0x009252C0); it stays inline here (retail expands it), so the object is unchanged.
 class CThingCreatureBase;
 
 class CSoundPair { public:
@@ -33,7 +34,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 class CCreatureAction_TentacleStrikeInto : public CCombatActionBase { public:     // vtable 0x0129044C
     virtual void v00();
     long m_strikeState;                             // +0x114 (descriptive; not initialised here)
-    CCreatureAction_TentacleStrikeInto(CThingCreatureBase* creature) : CCombatActionBase(*creature, 0x96, CSoundPair()) { }
+    CCreatureAction_TentacleStrikeInto(CThingCreatureBase& creature) : CCombatActionBase(creature, 0x96, CSoundPair()) { }
 };
 
 class CAIBrain { public:
@@ -56,6 +57,6 @@ struct CAIStateGroup_KrakenTentacleAttack : CAIStateGroupBase {
 
 void CAIStateGroup_KrakenTentacleAttack::Update()
 {
-    AIAction_PerformActionAndWait(CCreatureAction_TentacleStrikeInto(PBrain->PCreature), false);
+    AIAction_PerformActionAndWait(CCreatureAction_TentacleStrikeInto(*PBrain->PCreature), false);
     Terminate();
 }

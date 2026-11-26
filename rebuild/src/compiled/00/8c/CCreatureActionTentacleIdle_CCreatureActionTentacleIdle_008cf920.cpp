@@ -1,4 +1,4 @@
-// CCreatureAction_TentacleIdle::CCreatureAction_TentacleIdle(CThingCreatureBase*) -- base CCombatActionBase(owner, 50, zeroed CSoundPair)
+// CCreatureAction_TentacleIdle::CCreatureAction_TentacleIdle(CThingCreatureBase&) -- base CCombatActionBase(owner, 50, zeroed CSoundPair)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF920, oracle length 50 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,6 +9,7 @@
 // stores: an embedded object's inline ctor), then this class's vtable (0x01284DAC,
 // rtti-vtables.tsv).
 // One of 6 bodies of this shape.
+// Naming (NF457, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TentacleIdle@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb (one source; Ego_r inlines it) spell it (was ??0CCreatureAction_TentacleIdle@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 
 class CThingCreatureBase;
 
@@ -26,10 +27,10 @@ class CCombatActionBase { public:
 
 class CCreatureAction_TentacleIdle : public CCombatActionBase { public:
     virtual void v00();
-    CCreatureAction_TentacleIdle(CThingCreatureBase* owner);
+    CCreatureAction_TentacleIdle(CThingCreatureBase& owner);
 };
 
-CCreatureAction_TentacleIdle::CCreatureAction_TentacleIdle(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 50, CSoundPair())
+CCreatureAction_TentacleIdle::CCreatureAction_TentacleIdle(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 50, CSoundPair())
 {
 }
