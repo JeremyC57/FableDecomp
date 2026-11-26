@@ -403828,6 +403828,20 @@ $catalog = @(
         TestSource = '00/6c/CTCBuyableHouse_FindPosToCreateNewVillager_006c0b20_test.cpp'
         PassPattern = '006c0b20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00af2200'
+        Module = 'std::vector<NParticleEngine::CParticleEmitterInfo>'
+        Source = '00/af/stdvectorNParticleEngineCParticleEmitterInfo_resize_00af2200.cpp'
+        TestSource = '00/af/stdvectorNParticleEngineCParticleEmitterInfo_resize_00af2200_test.cpp'
+        PassPattern = '00af2200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085ed90'
+        Module = 'std::vector<std::vector<NThingMap::CThingMapCell> >'
+        Source = '00/85/stdvectorstdvectorNThingMapCThingMapCell_resize_0085ed90.cpp'
+        TestSource = '00/85/stdvectorstdvectorNThingMapCThingMapCell_resize_0085ed90_test.cpp'
+        PassPattern = '0085ed90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

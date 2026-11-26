@@ -1431,4 +1431,8 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: owner: agent cap 1 once the next running agent finishes (NF476 / NF477 running).
 
 2026-11-26 B->A: claiming four unreserved same-size parked rows (0x00BC9B30 FindNode, 0x009FDBA0 UploadToVolumeTexture, 0x0099F570 operator+, 0x0099F600 operator+). Codex pass 29 and every RESERVED.tsv address stay untouched.
+
+2026-11-26 B->A: landed 0x00AF2200 std::vector<NParticleEngine::CParticleEmitterInfo>::resize(unsigned int) (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Name is the Ego_r and FableWin PDB spelling ?resize@?$vector@VCParticleEmitterInfo@NParticleEngine@@V?$allocator@VCParticleEmitterInfo@NParticleEngine@@@std@@@std@@QAEXI@Z (one-argument QAEXI); retail calls the landed two-argument resize at 0x00AF2170. Was: vector<EWeaponClass>::_Umove<EWeaponClass*>, length estimate 80; retail extent 36. That old label stays in the manifest and ghidra label tables for Account A's naming pass (batch NAME_FIXES.tsv). The four earlier claims (0x00BC9B30, 0x009FDBA0, 0x0099F570, 0x0099F600) stay claimed.
+
+2026-11-26 B->A: landed 0x0085ED90 std::vector<std::vector<NThingMap::CThingMapCell>>::resize(unsigned int) (RELOCATION_MATCH, test PASS). PDB: Ego_r 0x0055E410 and FableWin 0x029DA890. Was: vector<EWeaponClass>::_Umove<EWeaponClass*>, length 96. Manifest respell queued in NAME_FIXES.tsv.
 - 2026-11-26 A: landed NF476 b0_hdr + b1 (MinionReactToAlert unit, 3 headers + 7 rows, +6 proven; T3 nf374 0x008FCEC0 closed; r476a advisor decision (owner delegated), r476b/c coordinator); equiv 57,160 rows, 3 differ, all batch; 0x0091D820 / 0x009705D0 held (NAME_FIXES_QUEUE nf476). Agent cap now 1 (NF477), no replacement.

@@ -625,3 +625,5 @@ date	account	item	kind	status	note
 2026-11-25	A	agent NF428: CCountedPointer<T> family (stand-in ~CCountedPointer / ShareData copies, Reset / DeleteData caller respells)	naming	claimed	locks via nflocks owner NF428; skips CODEX29 / NF427 / B claims
 2026-11-25	A	agent NF429: CAIStateGroup_* class family (virtual overrides on VIRTUAL_MODEL opt-ins)	naming	claimed	locks via nflocks owner NF429; skips CODEX29 / NF427 / B claims
 2026-11-26	B	0x00BC9B30, 0x009FDBA0, 0x0099F570, 0x0099F600	author	claimed	smallest same-size parked residues (register colouring); Account B lane
+2026-11-26	B	0x00AF2200	author	done	landed RELOCATION_MATCH PASS: vector<CParticleEmitterInfo>::resize(unsigned int)
+2026-11-26	B	0x0085ED90	author	done	landed RELOCATION_MATCH PASS: vector<vector<CThingMapCell>>::resize(unsigned int)
