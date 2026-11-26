@@ -41836,7 +41836,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b6daf0	LoadNonPatchData	CEngineWaterRenderer	__thiscall	float	2	CPersistTraits<float> *,CMemoryDataInputStream *	1	yes	accepted									
 00b6db80	CloseStaticMap	CEngineWaterRenderer	__thiscall	void	1	CEngineWaterRenderer *	1	yes	accepted									
 00b6dc40	ProcessSeaLoading	CEngineWaterRenderer	__thiscall	bool	1	CEngineWaterRenderer *	1	yes	accepted									
-00b6df50	GetForegroundSpotLightVertexShader	CEngineLandscapeRenderer	__thiscall	CVertexShader *	2	CEngineLandscapeRenderer *,long	1	yes	accepted									
+00b6df50	GetIceForegroundVertexShader	CEngineWaterRenderer	__thiscall	CVertexShader &	2	CEngineWaterRenderer *,long	1	yes	accepted									
 00b6df90	GetIceForegroundShadowedVertexShader	CEngineWaterRenderer	__thiscall	CVertexShader *	2	CEngineLandscapeRenderer *,long	1	yes	accepted									
 00b6dfd0	GetIceForegroundColbuffShadowedVertexShader	CEngineWaterRenderer	__thiscall	CVertexShader *	2	CEngineLandscapeRenderer *,long	1	yes	accepted									
 00b6e010	RenderBackgroundPatch	CEngineWaterRenderer	__thiscall	void	2	CEngineWaterRenderer *,CEngineWaterBackgroundSubPatch *	1	yes	accepted									
