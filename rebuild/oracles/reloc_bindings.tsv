@@ -38219,4 +38219,4 @@ _ForwardTarget_008fd288	008fd288	008fda24
 ??1CAIStateGroupBase@@UAE@XZ	008fd288	00900533
 ??1CAIStateGroupBase@@UAE@XZ	008fd288	00913490
 ?resize@?$vector@VCParticleEmitterInfo@NParticleEngine@@V?$allocator@VCParticleEmitterInfo@NParticleEngine@@@std@@@std@@QAEXIABVCParticleEmitterInfo@NParticleEngine@@@Z	00af2170	00af2200
-?resize@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@QAEXIABV12@@Z	0085ed20	0085ed90
+?resize@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@QAEXIABV?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@2@@Z	0085ed20	0085ed90

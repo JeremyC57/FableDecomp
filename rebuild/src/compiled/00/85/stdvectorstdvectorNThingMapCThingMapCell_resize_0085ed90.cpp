@@ -12,11 +12,11 @@ public:
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    void resize(unsigned int, const vector&);
+    void resize(unsigned int, const T&);
     void resize(unsigned int n) {
         unsigned long z = 0;
         unsigned int count = n;
-        vector value;
+        T value;
         value._M_start = 0;
         value._M_finish = 0;
         value._M_end_of_storage = 0;
