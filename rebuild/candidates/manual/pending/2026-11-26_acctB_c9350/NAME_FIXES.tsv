@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+006c9350	?TransferIn@?$CPersistTraits@U?$pair@JPAVCOpinionDeed@@@std@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAU?$pair@JPAVCOpinionDeed@@@std@@@Z	Ego_r.pdb donor 0x00700120 and FableWin.pdb, both this symbol. Retail 312 bytes. The next function is CPersistTraits<COpinionDeed*>::TransferIn at 0x006C9490.	CPersistTraits<CAtmosBankEntry>::TransferIn (manifest/functions.tsv; UNMATCHED length estimate was 320, retail extent 312)

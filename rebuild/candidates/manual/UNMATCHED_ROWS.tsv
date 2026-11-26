@@ -109,7 +109,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2384	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(2793v2377)	13	rebuild/candidates/manual/pending/2026-11-07_linux_hand828/differ/006c6040.test.cpp	original
 006c6990	CTCHeroOpinionDeedLog	PostDeed	1168	parked	DIFFER(1183v1168)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6990.alt.cpp	original
 006c6e80	CTCHeroOpinionDeedLog	FrameUpdate	1264	parked	DIFFER(1220v1251)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006c6e80.cpp	original
-006c9350	CPersistTraits<CAtmosBankEntry>	TransferIn	320	parked	matched in a lane, not landed	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1018/differ/006c9350.cpp	original
+006c9350	CPersistTraits<std::pair<long, COpinionDeed*> >	TransferIn	312	landed (acctB lane, 2026-11-26, RELOCATION_MATCH; was: parked; was: CPersistTraits<CAtmosBankEntry>::TransferIn, length 320)	matched in a lane, not landed	3	rebuild/candidates/manual/pending/2026-11-10_linux_hand1018/differ/006c9350.cpp	original
 006cbac0	CTCCreatureNavigation	GetNextNavPosOnRoute	880	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbac0.cpp	original
 006cbe80	CTCCreatureNavigation	GetNearestFleePositionBehindCover	752	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_hand1024/differ/006cbe80.cpp	original
 006cc270	CTCCreatureNavigation	DrawPreparePrimitivesForRendering	1088	parked	DIFFER(1035v1085)	3	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec2c/differ/006cc270.alt.cpp	gapscan/boundary

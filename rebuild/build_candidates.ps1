@@ -403863,6 +403863,13 @@ $catalog = @(
         TestSource = '00/8e/Mass_ForceToVel_008eeb40_test.cpp'
         PassPattern = '008eeb40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006c9350'
+        Module = 'CPersistTraits<std::pair<long, COpinionDeed*> >'
+        Source = '00/6c/CPersistTraitsstdpairlongCOpinionDeed_TransferIn_006c9350.cpp'
+        TestSource = '00/6c/CPersistTraitsstdpairlongCOpinionDeed_TransferIn_006c9350_test.cpp'
+        PassPattern = '006c9350_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
