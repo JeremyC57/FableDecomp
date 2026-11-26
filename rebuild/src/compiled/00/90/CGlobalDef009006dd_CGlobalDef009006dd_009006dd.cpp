@@ -1,29 +1,9 @@
-// CGlobalDef_009006dd::~CGlobalDef_009006dd() -- the seven intelligent pointers at +0x44 down to +0x14, then the base (0x008FD288, a tail jump)
-// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009006DD, length 67 bytes.
-// Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 seven times, the base destructor @ 0x008FD288 (labelled "_Dest_val<...>", propagated).
-// Shape: members in reverse declaration order, the size-optimised module. The chunk label "CGlobalDef::~CGlobalDef" is shared with 0x004E37BF; named by address.
-#pragma optimize("s", on)
-class CBaseObject;
-class CBaseObjectPointer;
-#define FABLE_RETAIL_CINTELLIGENTPOINTER
-#include "engine/CIntelligentPointer.h"
-struct CDefBase_008fd288 {                         // 0x14 bytes (no vtable store in this destructor: the class is not polymorphic here)
-    unsigned char _body[0x14];
-    ~CDefBase_008fd288();                          // 0x008FD288
-};
-
-struct CGlobalDef_009006dd : CDefBase_008fd288 {
-    CBaseIntelligentPointer m_pointer14;           // +0x14
-    CBaseIntelligentPointer m_pointer1c;           // +0x1c
-    CBaseIntelligentPointer m_pointer24;           // +0x24
-    CBaseIntelligentPointer m_pointer2c;           // +0x2c
-    CBaseIntelligentPointer m_pointer34;           // +0x34
-    CBaseIntelligentPointer m_pointer3c;           // +0x3c
-    CBaseIntelligentPointer m_pointer44;           // +0x44
-    ~CGlobalDef_009006dd();
-};
-
-CGlobalDef_009006dd::~CGlobalDef_009006dd()
-{
-}
+// CAIStateGroup_JackDragon::~CAIStateGroup_JackDragon() -- the implicit destructor: the seven CIntelligentPointer members PInvisibleBodgeCreature +0x44 down to PEnemy +0x14, then the base ~CAIStateGroupBase (tail jump 0x008FD288); no vtable store.
+// Leaf: ??1CAIStateGroup_JackDragon@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009006DD, 67 bytes. Identity (NF470 / NF471, T3 nf303 0x008FD288): its only caller is the deleting destructor 0x009006C1, slot 0 of vftable 0x0128C170 (RTTI .?AVCAIStateGroup_JackDragon@@); the destroyed offsets
+//   are Ego_r's (engine/CAIStateGroup_JackDragon.h); both PDBs flag ~CAIStateGroup_JackDragon `public virtual compiler-generated` (NF470 evidence/pdb_binder_dtor_attrs.txt).
+//   Was ??1CGlobalDef_009006dd@@QAE@XZ on a stand-in CGlobalDef_009006dd : CDefBase_008fd288.
+// TU: VC7.1 emits the implicit destructor as a pick-any COMDAT in a TU that destroys a CAIStateGroup_JackDragon out of line. 0x009006C1, the class's deleting
+//   destructor, does so on the shared header, byte- and relocation-equal to retail, so this function is produced by that translation unit,
+//   included below with no code of its own (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 / nf424; ruling r470a).
+#include "../src/compiled/00/90/CAIStateGroupJackDragon_scalardeletingdestructor_009006c1.cpp"

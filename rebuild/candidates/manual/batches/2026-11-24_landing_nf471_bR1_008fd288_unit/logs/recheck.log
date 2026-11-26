@@ -1,0 +1,140 @@
+addr       parity           behav  name
+008fd288   RELOCATION_MATCH PASS   ~CAIStateGroupBase
+008fd2ca   RELOCATION_MATCH PASS   ~CAIStateGroup_GoToBed
+008fd544   RELOCATION_MATCH PASS   ~CAIStateGroup_UsesSeat
+008fd56a   WARN STANDIN_LEAF @_Dest_val_pair_long_CRegisteredMusicEntry@4 (catalog CAIStateGroup_MinionSitOnSeatBase::~CAIStateGroup_MinionSitOnSeatBase; names another function)
+008fd56a   RELOCATION_MATCH PASS   ~CAIStateGroup_MinionSitOnSeatBase
+008fd769   RELOCATION_MATCH PASS   ~CAIStateGroup_EnemyCreatureBase
+008feb97   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008febc5   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff22b   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff247   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff247   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff247   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOnSeatBase
+008ff28d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff28d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff28d   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtWork
+008ff2bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff2bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff2bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitAtInn (engine/CAIStateGroup_MinionSitAtInn.h)
+008ff2bb   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtInn
+008ff2ec   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff2ec   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff2ec   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtSchool
+008ff35a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff35a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff35a   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtHome
+008ff744   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008fff74   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008fff74   RELOCATION_MATCH PASS   CAIStateGroup_SitForMeal
+008fff98   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkBase (engine/CAIStateGroup_WorkBase.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesBase (engine/CAIStateGroup_JackOfBladesBase.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WanderAroundShops (engine/CAIStateGroup_WanderAroundShops.h)
+009000bc   RELOCATION_MATCH PASS   CAIStateGroup_WanderAroundShops
+009000f2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0090010e   RELOCATION_MATCH PASS   ~CAIStateGroup_WanderAroundShops
+009001f2   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+009001f2   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SitInPub (engine/CAIStateGroup_SitInPub.h)
+009001f2   RELOCATION_MATCH PASS   CAIStateGroup_SitInPub
+0090021b   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009006c1   WARN RELOC_NAME: ??1CAIStateGroup_JackDragon@@UAE@XZ -> 009006dd labelled 'CGlobalDef_009006dd::~CGlobalDef_009006dd'
+009006c1   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009006dd   WARN STANDIN_LEAF ??1CAIStateGroup_JackDragon@@UAE@XZ (catalog CGlobalDef_009006dd::~CGlobalDef_009006dd; names another function)
+009006dd   RELOCATION_MATCH PASS   ~CGlobalDef_009006dd
+00900bef   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900bef   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900bef   RELOCATION_MATCH PASS   CAIStateGroup_HoverMovementBase
+00900c01   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900c01   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900c01   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverWander (engine/CAIStateGroup_HoverWander.h)
+00900c01   RELOCATION_MATCH PASS   CAIStateGroup_HoverWander
+00900c3b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900c3b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900c3b   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttack (engine/CAIStateGroup_HoverAttack.h)
+00900c3b   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttack
+00900c76   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900c76   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900c76   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttack (engine/CAIStateGroup_HoverAttack.h)
+00900c76   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttackUnlessTargetIsFleeing (engine/CAIStateGroup_HoverAttackUnlessTargetIsFleeing.h)
+00900c76   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttackUnlessTargetIsFleeing
+00900cf1   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900cf1   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900cf1   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverKeepInArea (engine/CAIStateGroup_HoverKeepInArea.h)
+00900cf1   RELOCATION_MATCH PASS   CAIStateGroup_HoverKeepInArea
+00900d28   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900d28   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900d28   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttack (engine/CAIStateGroup_HoverAttack.h)
+00900d28   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttackArea (engine/CAIStateGroup_HoverAttackArea.h)
+00900d28   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttackArea
+00900d63   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00900d63   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00900d63   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverHornetQueenTakeDamage (engine/CAIStateGroup_HoverHornetQueenTakeDamage.h)
+00900d63   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueenTakeDamage
+00900f27   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900f43   RELOCATION_MATCH PASS   ~CAIStateGroup_RangedCombatUsePreferredFirePoint
+00901867   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00901867   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperRetreat (engine/CAIStateGroup_WhisperRetreat.h)
+00901867   RELOCATION_MATCH PASS   CAIStateGroup_WhisperRetreat
+00902122   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+00902122   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+00902122   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeat (engine/CAIStateGroup_MinionSitOnSeat.h)
+00902122   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOnSeat
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeat (engine/CAIStateGroup_MinionSitOnSeat.h)
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOutside (engine/CAIStateGroup_MinionSitOutside.h)
+009021c8   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOutside
+00902907   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00902907   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+00902907   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverWanderAroundThing (engine/CAIStateGroup_HoverWanderAroundThing.h)
+00902907   RELOCATION_MATCH PASS   CAIStateGroup_HoverWanderAroundThing
+0090310e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+0090310e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverMovementBase (engine/CAIStateGroup_HoverMovementBase.h)
+0090310e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_HoverHornetQueen (engine/CAIStateGroup_HoverHornetQueen.h)
+0090310e   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen
+009031ba   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+009031ba   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WhisperPotionCombat (engine/CAIStateGroup_WhisperPotionCombat.h)
+009031ba   RELOCATION_MATCH PASS   CAIStateGroup_WhisperPotionCombat
+
+WINS: 38
+  008fd288 RELOCATION_MATCH CAIStateGroupBase::??1CAIStateGroupBase@@UAE@XZ
+  008fd2ca RELOCATION_MATCH CAIStateGroup_GoToBed::??1CAIStateGroup_GoToBed@@UAE@XZ
+  008fd544 RELOCATION_MATCH CAIStateGroup_UsesSeat::??1CAIStateGroup_UsesSeat@@UAE@XZ
+  008fd56a RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::@_Dest_val_pair_long_CRegisteredMusicEntry@4
+  008fd769 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::??1CAIStateGroup_EnemyCreatureBase@@UAE@XZ
+  008feb97 RELOCATION_MATCH CAIStateGroup_GoToBed::?CAIStateGroup_GoToBed_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008febc5 RELOCATION_MATCH CAIStateGroup_MinionSleep::?CAIStateGroup_MinionSleep_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008ff22b RELOCATION_MATCH CAIStateGroup_UsesSeat::?CAIStateGroup_UsesSeat_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008ff247 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::??0CAIStateGroup_MinionSitOnSeatBase@@QAE@XZ
+  008ff28d RELOCATION_MATCH CAIStateGroup_MinionSitAtWork::??0CAIStateGroup_MinionSitAtWork@@QAE@XZ
+  008ff2bb RELOCATION_MATCH CAIStateGroup_MinionSitAtInn::??0CAIStateGroup_MinionSitAtInn@@QAE@XZ
+  008ff2ec RELOCATION_MATCH CAIStateGroup_MinionSitAtSchool::??0CAIStateGroup_MinionSitAtSchool@@QAE@XZ
+  008ff35a RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::??0CAIStateGroup_MinionSitAtHome@@QAE@XZ
+  008ff744 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::?CAIStateGroup_EnemyCreatureBase_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008fff74 RELOCATION_MATCH CAIStateGroup_SitForMeal::??0CAIStateGroup_SitForMeal@@QAE@XZ
+  008fff98 RELOCATION_MATCH CAIStateGroup_SitForMeal::?CAIStateGroup_SitForMeal_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  009000bc RELOCATION_MATCH CAIStateGroup_WanderAroundShops::??0CAIStateGroup_WanderAroundShops@@QAE@XZ
+  009000f2 RELOCATION_MATCH CAIStateGroup_WanderAroundShops::?CAIStateGroup_WanderAroundShops_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  0090010e RELOCATION_MATCH CAIStateGroup_WanderAroundShops::??1CAIStateGroup_WanderAroundShops@@UAE@XZ
+  009001f2 RELOCATION_MATCH CAIStateGroup_SitInPub::??0CAIStateGroup_SitInPub@@QAE@XZ
+  0090021b RELOCATION_MATCH CAIStateGroup_SitInPub::?CAIStateGroup_SitInPub_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  009006c1 RELOCATION_MATCH CAIStateGroup_JackDragon::?CAIStateGroup_JackDragon_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  009006dd RELOCATION_MATCH CGlobalDef_009006dd::??1CAIStateGroup_JackDragon@@UAE@XZ
+  00900bef RELOCATION_MATCH CAIStateGroup_HoverMovementBase::??0CAIStateGroup_HoverMovementBase@@QAE@XZ
+  00900c01 RELOCATION_MATCH CAIStateGroup_HoverWander::??0CAIStateGroup_HoverWander@@QAE@XZ
+  00900c3b RELOCATION_MATCH CAIStateGroup_HoverAttack::??0CAIStateGroup_HoverAttack@@QAE@XZ
+  00900c76 RELOCATION_MATCH CAIStateGroup_HoverAttackUnlessTargetIsFleeing::??0CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@QAE@XZ
+  00900cf1 RELOCATION_MATCH CAIStateGroup_HoverKeepInArea::??0CAIStateGroup_HoverKeepInArea@@QAE@XZ
+  00900d28 RELOCATION_MATCH CAIStateGroup_HoverAttackArea::??0CAIStateGroup_HoverAttackArea@@QAE@XZ
+  00900d63 RELOCATION_MATCH CAIStateGroup_HoverHornetQueenTakeDamage::??0CAIStateGroup_HoverHornetQueenTakeDamage@@QAE@XZ
+  00900f27 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::?CAIStateGroup_RangedCombatUsePreferredFirePoint_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00900f43 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::??1CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAE@XZ
+  00901867 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::??0CAIStateGroup_WhisperRetreat@@QAE@XZ
+  00902122 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeat::??0CAIStateGroup_MinionSitOnSeat@@QAE@XZ
+  009021c8 RELOCATION_MATCH CAIStateGroup_MinionSitOutside::??0CAIStateGroup_MinionSitOutside@@QAE@XZ
+  00902907 RELOCATION_MATCH CAIStateGroup_HoverWanderAroundThing::??0CAIStateGroup_HoverWanderAroundThing@@QAE@XZ
+  0090310e RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::??0CAIStateGroup_HoverHornetQueen@@QAE@XZ
+  009031ba RELOCATION_MATCH CAIStateGroup_WhisperPotionCombat::??0CAIStateGroup_WhisperPotionCombat@@QAE@XZ

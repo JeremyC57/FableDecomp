@@ -10,6 +10,10 @@
 // Shape: user default ctor, empty; CIntelligentPointer's ctor inlines to the base call + vtable store after this class's own vtable store.
 // History: generated in a chunk batch for a repeated body shape over the CBase_008ff720 / CMemberBase_00a01b10 stand-ins; re-authored on the
 //   PDB classes in naming wave 32 (family aisg).
+// NF471 (T3 nf303 0x008FD288, the r469a declaration-only form): retail's ~CAIStateGroup_EnemyCreatureBase is the implicit one, kept once at 0x008FD769
+//   (both PDBs flag it compiler-generated; owner 0x008FF744 on engine/CAIStateGroup_EnemyCreatureBase.h). This local model's implicit copy was not retail's (the
+//   19-byte ~CAIStateGroupBase shape: the model gives PTargetThing no destructor), so the destructor is declared here and the object
+//   references 0x008FD769's ??1CAIStateGroup_EnemyCreatureBase@@UAE@XZ; the row's own bytes are unchanged.
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
@@ -22,6 +26,7 @@ class CThingGameObject;
 
 class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase {                    // RTTI CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase
 public:
+    virtual ~CAIStateGroup_EnemyCreatureBase();         // ??1CAIStateGroup_EnemyCreatureBase@@UAE@XZ 0x008FD769 (implicit in retail; declared here only)
     CAIStateGroup_EnemyCreatureBase();                         // ??0CAIStateGroup_EnemyCreatureBase@@QAE@XZ (Ego_r.pdb / FableWin.pdb)
     unsigned char _unmodeled14[0x1c - 0x14];       // Ego_r.pdb: PTargetThing +0x14
 };

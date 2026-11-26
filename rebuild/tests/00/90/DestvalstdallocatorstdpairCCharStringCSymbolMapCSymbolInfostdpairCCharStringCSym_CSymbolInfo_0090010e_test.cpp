@@ -1,64 +1,26 @@
-#include <stdio.h>
-
-// Independent behaviour test for the _Dest_val pair destroyer.
-// Verifies the destroy order: second_name1 (+0x1c), second_name0 (+0x14),
-// first (+0).  Member dtors record the byte offset of 'this' from a global base.
-
-static int g_order[8];
-static int g_n = 0;
-static char *g_base = 0;
-
-class CCharString
-{
-public:
-    void Destroy();
-    char *m_pData;
-};
-
-class CFirstMember
-{
-public:
-    void Destroy();
-    char *m_pData;
-};
-
-struct SymPair
-{
-    CFirstMember first;
-    int   pad0;
-    int   pad1;
-    int   pad2;
-    int   pad3;
-    CCharString second_name0;
-    int   pad4;
-    CCharString second_name1;
-};
-
-void __fastcall Dest_val_SymPair(SymPair *self);
-
-void CCharString::Destroy()
-{
-    g_order[g_n++] = (int)((char*)this - g_base);
-}
-
-void CFirstMember::Destroy()
-{
-    g_order[g_n++] = (int)((char*)this - g_base);
-}
-
+#include <cstdio>
+// CAIStateGroup_WanderAroundShops::~CAIStateGroup_WanderAroundShops() (retail 0x0090010E): the implicit destructor -- members in reverse declaration order, then the base chain
+//   (~CAIStateGroupBase: Name +0x0C, then ~CBaseClass). (No vptr check: at the test's /Od VC7.1 stores it, the optimised retail form does not.)
+// NF471 (T3 nf303 0x008FD288): self-contained -- the row is now a thin member of its owner's TU, so the test models the retail classes with
+//   IMPLICIT destructors (both PDBs flag them compiler-generated) and VC7.1 generates the chain here, as it does in the row's object.
+static long g_seq[16]; static int g_n = 0; static char* g_base = 0;
+static void Note(void* p) { if (g_n < 16) g_seq[g_n] = (long)((char*)p - g_base); g_n++; }
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CCharString { public: ~CCharString(); void* PString; };
+class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer(); void* PData; };
+class CAIBrain;
+class CAIStateGroupBase : public CBaseClass { public: CAIBrain* PBrain; long ScriptAIPriority; CCharString Name; bool Terminated; unsigned char Priority; bool Enabled; };
+CBaseClass::~CBaseClass() { Note(this); g_seq[15] = 1; }
+CCharString::~CCharString() { Note(this); }
+CBaseIntelligentPointer::~CBaseIntelligentPointer() { Note(this); }
+class CAIStateGroup_WanderAroundShops : public CAIStateGroupBase { public: CBaseIntelligentPointer Shop; CBaseIntelligentPointer PrettyThing; };
 int main()
 {
-    SymPair p;
-    g_base = (char*)&p;
-    g_n = 0;
-
-    Dest_val_SymPair(&p);
-
-    if (g_n != 3) { printf("FAIL count=%d\n", g_n); return 1; }
-    if (g_order[0] != 0x1c) { printf("FAIL o0=%x\n", g_order[0]); return 1; }
-    if (g_order[1] != 0x14) { printf("FAIL o1=%x\n", g_order[1]); return 1; }
-    if (g_order[2] != 0x00) { printf("FAIL o2=%x\n", g_order[2]); return 1; }
-
-    printf("DESTROY_ORDER_OK 1c 14 00\n");
-    return 0;
+    void* buf[0x60] = {(void*)0x1234};
+    g_base = (char*)buf;
+    ((CAIStateGroup_WanderAroundShops*)buf)->CAIStateGroup_WanderAroundShops::~CAIStateGroup_WanderAroundShops();
+    static const long want[] = {0x1c, 0x14, 0xc, 0x0};
+    if (g_n != 4) { std::printf("BAD_COUNT %d\n", g_n); return 1; }
+    for (int i = 0; i < 4; i++) if (g_seq[i] != want[i]) { std::printf("BAD_ORDER %d %ld\n", i, g_seq[i]); return 1; }
+    std::printf("DESTROY_ORDER_OK 1c 14 00\n"); return 0;
 }

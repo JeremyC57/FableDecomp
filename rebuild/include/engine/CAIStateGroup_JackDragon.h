@@ -1,5 +1,63 @@
 #ifndef FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H
 #define FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H
+#if defined(FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_MEMBERS_ONLY) && defined(FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON)
+#error "FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_MEMBERS_ONLY cannot be combined with FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON (the full retail view)"
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_MEMBERS_ONLY
+// Add-only per-TU opt-in (NF471, T3 nf303 0x008FD288 binder 0x009006DD, rulings r470d / R-NF436-2; the CBrainDef _DTOR_DECL_ONLY precedent,
+// NF451): the retail class with its base (RTTI .?AVCAIStateGroup_JackDragon@@ : CAIStateGroupBase) and its Ego_r.pdb data members
+// (struct_layouts_egor.tsv, packed, sizeof 0x140), WITHOUT the member functions, and with the destructor IMPLICIT: both PDBs flag
+// ~CAIStateGroup_JackDragon `public virtual compiler-generated`, and retail 0x009006DD is that implicit destructor (the seven CIntelligentPointer
+// members +0x44..+0x14, then jmp ~CAIStateGroupBase 0x008FD288). The full view below declares it (and StartFlying needs
+// stlport/fable_containers.h, whose <new> adds /DEFAULTLIB:"libcp" to the object's .drectve; retail's objects never had it, r450a).
+// Use it to name the class or run its destructor. Needs FABLE_RETAIL_CAISTATEGROUPBASE, FABLE_RETAIL_CINTELLIGENTPOINTER, FABLE_RETAIL_C3DVECTOR.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+class CThing; class CThingCreatureBase; class CThingAICreature;
+#pragma pack(push, 1)
+class CAIStateGroup_JackDragon : public CAIStateGroupBase {
+public:
+    enum EDragonState { DRAGON_STATE_INTO_GROUND = 0 };                  // nested (both PDBs); enumerators: the full view below
+private:
+    CIntelligentPointer<CThingCreatureBase> PEnemy;                      // +0x14
+    CIntelligentPointer<CThing> PLandedMarker;                           // +0x1c
+    CIntelligentPointer<CThing> PHoverMarker1;                           // +0x24
+    CIntelligentPointer<CThing> PHoverMarker2;                           // +0x2c
+    CIntelligentPointer<CThing> PStrafeMarker1;                          // +0x34
+    CIntelligentPointer<CThing> PStrafeMarker2;                          // +0x3c
+    CIntelligentPointer<CThingAICreature> PInvisibleBodgeCreature;       // +0x44
+    long          FrameOfLastSlam;                                       // +0x4c
+    long          FrameWhenLastInRange;                                  // +0x50
+    long          FrameWhenLanded;                                       // +0x54
+    long          FramesInSnapRange;                                     // +0x58
+    EDragonState  CurrentState;                                          // +0x5c
+    long          GoLeft;                                                // +0x60
+    bool          BattleTriggered;                                       // +0x64
+    C3DVector     PreviousFlightPos;                                     // +0x65
+    bool          IsRangeAttack;                                         // +0x71
+    C3DVector     DragonPosOutOfGround1;                                 // +0x72
+    C3DVector     DragonPosOutOfGround2;                                 // +0x7e
+    C3DVector     DragonPosOutOfGround3Left;                             // +0x8a
+    C3DVector     DragonPosOutOfGround3Right;                            // +0x96
+    C3DVector     DragonPosOutOfGround4Left;                             // +0xa2
+    C3DVector     DragonPosOutOfGround4Right;                            // +0xae
+    C3DVector     DragonPosIntoGround1Left;                              // +0xba
+    C3DVector     DragonPosIntoGround1Right;                             // +0xc6
+    C3DVector     DragonPosIntoGround2Left;                              // +0xd2
+    C3DVector     DragonPosIntoGround2Right;                             // +0xde
+    C3DVector     DragonPosIntoGround3;                                  // +0xea
+    C3DVector     DragonPosIntoStrafeLeft;                               // +0xf6
+    C3DVector     DragonPosIntoStrafeRight;                              // +0x102
+    C3DVector     DragonPosOutOfStrafeLeft;                              // +0x10e
+    C3DVector     DragonPosOutOfStrafeRight;                             // +0x11a
+    C3DVector     DragonPosStrafeFlameRight;                             // +0x126
+    C3DVector     DragonPosStrafeFlameLeft;                              // +0x132
+    unsigned char _pad_0x13e[0x2];                                       // +0x13e
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT_AT(2002, sizeof(CAIStateGroup_JackDragon) == 0x140);
+#else // FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_MEMBERS_ONLY
 #ifdef FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON
 // Overlay opt-in (wf13, row 0x00951D60 IntoHover): RTTI .?AVCAIStateGroup_JackDragon@@ : CAIStateGroupBase (rtti_bases.tsv); members
 // Ego_r.pdb struct_layouts_egor.tsv (packed, sizeof 0x140) with their real types; member functions and access from Ego_r.pdb
@@ -278,4 +336,5 @@ FABLE_STATIC_ASSERT_AT(246, offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFl
 FABLE_STATIC_ASSERT_AT(247, offsetof(CAIStateGroup_JackDragon, DragonPosStrafeFlameLeft) == 0x132);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON || _B || _B2
+#endif // FABLE_RETAIL_CAISTATEGROUP_JACKDRAGON_MEMBERS_ONLY
 #endif // FABLE_ENGINE_CAISTATEGROUP_JACKDRAGON_H

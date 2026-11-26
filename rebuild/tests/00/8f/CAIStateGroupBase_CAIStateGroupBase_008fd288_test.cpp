@@ -12,9 +12,10 @@ public:
     void* PString;
 };
 class CAIBrain;
-class __declspec(novtable) CAIStateGroupBase : public CBaseClass {
+// NF470 (bR1): self-contained -- the row is now a thin member of 0x008FE862's TU, so the test models the retail class with the IMPLICIT
+//   destructor (both PDBs flag it compiler-generated) and VC7.1 generates it here, as it does in the row's object.
+class CAIStateGroupBase : public CBaseClass {
 public:
-    virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;
     long ScriptAIPriority;
     CCharString Name;

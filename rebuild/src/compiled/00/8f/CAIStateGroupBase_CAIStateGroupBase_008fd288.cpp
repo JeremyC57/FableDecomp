@@ -2,28 +2,12 @@
 // to the base CBaseClass destructor (tail jump); no vtable store (retail: push esi ; mov esi,ecx ; lea ecx,[esi+0Ch] ;
 // call 0x0099EAE0 ; mov ecx,esi ; pop esi ; jmp 0x0099A2E0).
 // Leaf: ??1CAIStateGroupBase@@UAE@XZ
-// Retail: Fable.exe @ 0x008FD288, 23 bytes. Ego_r ??1CAIStateGroupBase@@UAE@XZ (virtual: the base CBaseClass has a
-// virtual destructor); Ego_r layout: vptr, PBrain +4, ScriptAIPriority +8, Name (CCharString) +0x0C, Terminated +0x10,
-// Priority +0x11, Enabled +0x12. Callers reach it as the base destructor of their state groups (namepass D1).
-// Was modelled as `FableDestVal_008fd288` (inner/outer stand-ins). The destructor is written empty on a
-// __declspec(novtable) class, as for 0x0062E900 ~CCombatActionBase: VC7.1 then emits no vptr store, as the implicit one.
-#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CCharString {
-public:
-    ~CCharString();                                // 0x0099EAE0
-    void* PString;
-};
-class CAIBrain;
-class __declspec(novtable) CAIStateGroupBase : public CBaseClass {
-public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                              // +0x04
-    long ScriptAIPriority;                         // +0x08
-    CCharString Name;                              // +0x0C
-    bool Terminated;                               // +0x10
-    unsigned char Priority;                        // +0x11
-    bool Enabled;                                  // +0x12
-};
-CAIStateGroupBase::~CAIStateGroupBase()
-{
-}
+// Retail: Fable.exe @ 0x008FD288, 19 bytes. Ego_r.pdb and FableWin.pdb type records flag ~CAIStateGroupBase `public virtual
+//   compiler-generated` (controls ~CBaseClass / ~CCharString are not); FableWin.pdb puts it, the base ctor and 214 CAIStateGroup_* ctors
+//   / dtors in one object (debug\ai_brain_tables.obj), and retail keeps it in that TU's COMDAT run after the base ctor 0x008FD255.
+// TU (NF469, r467a; was a strong out-of-line definition on a local __declspec(novtable) model): VC7.1 emits the implicit destructor as a
+//   pick-any COMDAT in every TU that destroys a CAIStateGroupBase out of line. 0x008FE862 ??0CAIStateGroup_ApprenticeHero@@QAE@XZ, a ctor of
+//   the same retail TU on the shared header, emits it byte- and relocation-equal to retail, so this function is produced by that
+//   translation unit, included below with no code of its own (the nf251 0x00B2AB10 / Option S thin-row pattern). The base ctor 0x008FD255
+//   cannot own it: with one caller in the TU VC7.1 inlines it into ??_GCAIStateGroupBase (NF469 R467A.md).
+#include "../src/compiled/00/8f/CAIStateGroupApprenticeHero_CAIStateGroupApprenticeHero_008fe862.cpp"

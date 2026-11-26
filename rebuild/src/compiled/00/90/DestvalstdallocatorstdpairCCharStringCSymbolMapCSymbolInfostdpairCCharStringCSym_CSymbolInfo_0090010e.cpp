@@ -1,41 +1,9 @@
-// Faithful VC7.1 reconstruction of
-// Leaf: ?Dest_val_SymPair@@YIXPAUSymPair@@@Z
-// _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
-// retail 0x0090010e
-//
-// Body destroys a pair<CCharString, CSymbolInfo> in reverse member order:
-//   two CCharString members inside CSymbolInfo (at +0x1c and +0x14) -> 0xa01c10
-//   then tail-calls the leading first-member dtor (at +0) -> 0x8fd288
-
-class CCharString
-{
-public:
-    void Destroy();   // out-of-line CCharString dtor (0xa01c10)
-    char *m_pData;
-};
-
-class CFirstMember
-{
-public:
-    void Destroy();   // out-of-line first-member dtor (0x8fd288)
-    char *m_pData;
-};
-
-struct SymPair
-{
-    CFirstMember first;          // +0x00
-    int   pad0;                  // +0x04
-    int   pad1;                  // +0x08
-    int   pad2;                  // +0x0c
-    int   pad3;                  // +0x10
-    CCharString second_name0;    // +0x14
-    int   pad4;                  // +0x18
-    CCharString second_name1;    // +0x1c
-};
-
-void __fastcall Dest_val_SymPair(SymPair *self)
-{
-    self->second_name1.Destroy();  // +0x1c  call 0xa01c10
-    self->second_name0.Destroy();  // +0x14  call 0xa01c10
-    self->first.Destroy();         // +0x00  tail jmp 0x8fd288
-}
+// CAIStateGroup_WanderAroundShops::~CAIStateGroup_WanderAroundShops() -- the implicit destructor: PrettyThing (CIntelligentPointer<CThing> +0x1C), Shop (+0x14), then the base ~CAIStateGroupBase (tail jump 0x008FD288); no vtable store.
+// Leaf: ??1CAIStateGroup_WanderAroundShops@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0090010E, 27 bytes. Identity (NF470 / NF471, T3 nf303 0x008FD288): its only caller is the deleting destructor 0x009000F2, slot 0 of vftable 0x0128BE4C (RTTI .?AVCAIStateGroup_WanderAroundShops@@ : CAIStateGroup_WorkBase<CAIStateGroupBase>); the destroyed offsets
+//   are Ego_r's (engine/CAIStateGroup_WanderAroundShops.h); both PDBs flag ~CAIStateGroup_WanderAroundShops `public virtual compiler-generated` (NF470 evidence/pdb_binder_dtor_attrs.txt).
+//   Was ?Dest_val_SymPair@@YIXPAUSymPair@@@Z on a stand-in pair labelled _Dest_val<pair<CCharString,CSymbolMap::CSymbolInfo>>.
+// TU: VC7.1 emits the implicit destructor as a pick-any COMDAT in a TU that destroys a CAIStateGroup_WanderAroundShops out of line. 0x009000F2, the class's deleting
+//   destructor, does so on the shared header, byte- and relocation-equal to retail, so this function is produced by that translation unit,
+//   included below with no code of its own (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 / nf424; ruling r470a).
+#include "../src/compiled/00/90/CAIStateGroupWanderAroundShops_scalardeletingdestructor_009000f2.cpp"

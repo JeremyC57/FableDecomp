@@ -46,7 +46,8 @@ OPS = {"4": "operator=", "8": "operator==", "9": "operator!=", "A": "operator[]"
        "G": "operator-", "D": "operator*", "K": "operator/", "Y": "operator+=", "Z": "operator-=", "C": "operator->", "2": "operator new",
        "3": "operator delete"}
 def spelled(sym):
-    """(regex of the definition in source, label) for a mangled symbol the owner can spell, else None (compiler-emitted / template)."""
+    """(regex of the definition in source, label) for a mangled symbol the owner can spell, else None (compiler-emitted / template).
+    A spelling after `.` or `->` is a call (`this->X::~X()`), not a definition (NF470 r470b, 2026-11-26)."""
     if sym.startswith("??_") or "?$" in sym: return None                     # ??_G / ??_E / ??_7 ..., template instances
     m = re.match(r"\?\?([0-9A-Z])([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)*)@", sym)
     if m:                                                                     # ??0 / ??1 / operators: innermost scope is the class
@@ -57,12 +58,12 @@ def spelled(sym):
             scopes = [first] + [s for s in rest.split("@") if s]
             cls = scopes[0]; nm = OPS[code]
         else: return None
-        return r"(?<![\w:~])" + re.escape(cls) + r"\s*::\s*" + re.escape(nm) + r"\s*\(", f"{cls}::{nm}"
+        return r"(?<![\w:~.>])" + re.escape(cls) + r"\s*::\s*" + re.escape(nm) + r"\s*\(", f"{cls}::{nm}"
     m = re.match(r"\?([A-Za-z_]\w*)@((?:[A-Za-z_]\w*@)*)@", sym)
     if not m: return None
     name, scopes = m.group(1), [s for s in m.group(2).split("@") if s]
     if scopes:                                                                # member or namespace function: Class::Name(
-        return r"(?<![\w:])" + re.escape(scopes[0]) + r"\s*::\s*" + re.escape(name) + r"\s*\(", f"{scopes[0]}::{name}"
+        return r"(?<![\w:.>])" + re.escape(scopes[0]) + r"\s*::\s*" + re.escape(name) + r"\s*\(", f"{scopes[0]}::{name}"
     return r"(?<![\w:.>])" + re.escape(name) + r"\s*\(", name                  # free function: its first spelling
 def defs(obj):
     try: out = subprocess.run([os.environ.get("FABLE_OBJDUMP", "objdump"), "-t", obj], capture_output=True, text=True).stdout

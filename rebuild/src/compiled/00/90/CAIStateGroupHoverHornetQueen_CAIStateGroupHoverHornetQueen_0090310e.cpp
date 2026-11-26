@@ -9,6 +9,10 @@
 //   (three pointers each, 12 bytes; Ego_r.pdb's Dinkumware vectors are 16), whose inline default ctors run after the own vtable store.
 // History: generated in a chunk batch over CBase_008ff720 with an invented `SZeroed` member; re-authored on the PDB members in naming
 //   wave 32 (family aisg).
+// NF471 (T3 nf303 0x008FD288, the r469a declaration-only form): retail's ~CAIStateGroup_EnemyCreatureBase is the implicit one, kept once at 0x008FD769
+//   (both PDBs flag it compiler-generated; owner 0x008FF744 on engine/CAIStateGroup_EnemyCreatureBase.h). This local model's implicit copy was not retail's (the
+//   19-byte ~CAIStateGroupBase shape: the model gives PTargetThing no destructor), so the destructor is declared here and the object
+//   references 0x008FD769's ??1CAIStateGroup_EnemyCreatureBase@@UAE@XZ; the row's own bytes are unchanged.
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
@@ -46,6 +50,7 @@ public:
 
 class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase {   // RTTI CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase
 public:
+    virtual ~CAIStateGroup_EnemyCreatureBase();         // ??1CAIStateGroup_EnemyCreatureBase@@UAE@XZ 0x008FD769 (implicit in retail; declared here only)
     CAIStateGroup_EnemyCreatureBase();                  // 0x008FF720 ??0CAIStateGroup_EnemyCreatureBase@@QAE@XZ (Ego_r.pdb / FableWin.pdb)
     unsigned char _unmodeled14[0x1c - 0x14];            // Ego_r.pdb: PTargetThing +0x14
 };

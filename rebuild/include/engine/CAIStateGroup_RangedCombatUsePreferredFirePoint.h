@@ -1,5 +1,26 @@
 #ifndef FABLE_ENGINE_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_H
 #define FABLE_ENGINE_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_H
+#if defined(FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_MEMBERS_ONLY) && defined(FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT)
+#error "FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_MEMBERS_ONLY cannot be combined with FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT (the full retail view)"
+#endif
+#ifdef FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_MEMBERS_ONLY
+// Add-only per-TU opt-in (NF471, T3 nf303 0x008FD288 binder 0x00900F43; the CBrainDef _DTOR_DECL_ONLY precedent, NF451): the retail class with
+// its base and its Ego_r.pdb data members (struct_layouts_egor.tsv, sizeof 0x28: PEnemy CIntelligentPointer<CThingCreatureBase> +0x14, PFirePoint
+// CIntelligentPointer<CThing> +0x1c, TimeOutCounter long +0x24), WITHOUT the member functions: GetFirePointList's std::vector parameter needs
+// stlport/fable_containers.h, whose <new> adds /DEFAULTLIB:"libcp" to the object's .drectve (retail's objects never had it, r450a). The destructor
+// stays implicit, as both PDBs flag it (compiler-generated): retail 0x00900F43. Use it to name the class or run its destructor; declarations only.
+// Needs FABLE_RETAIL_CAISTATEGROUPBASE and FABLE_RETAIL_CINTELLIGENTPOINTER.
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CIntelligentPointer.h"
+class CThing; class CThingCreatureBase;
+class CAIStateGroup_RangedCombatUsePreferredFirePoint : public CAIStateGroupBase {
+private:
+    CIntelligentPointer<CThingCreatureBase> PEnemy;                      // +0x14
+    CIntelligentPointer<CThing> PFirePoint;                              // +0x1c
+    long TimeOutCounter;                                                 // +0x24
+};
+FABLE_STATIC_ASSERT_AT(2001, sizeof(CAIStateGroup_RangedCombatUsePreferredFirePoint) == 0x28);
+#else // FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_MEMBERS_ONLY
 #ifdef FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT
 // Retail opt-in (Codex pass 17): original base and complete PDB data members, native size28.
 #include "engine/CAIStateGroupBase.h"
@@ -61,10 +82,10 @@ public:
     long          TimeOutCounter;                            // +0x24
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_RangedCombatUsePreferredFirePoint) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PEnemy) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PFirePoint) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, TimeOutCounter) == 0x24);
+FABLE_STATIC_ASSERT_AT(64, sizeof(CAIStateGroup_RangedCombatUsePreferredFirePoint) == 0x28);
+FABLE_STATIC_ASSERT_AT(65, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PEnemy) == 0x14);
+FABLE_STATIC_ASSERT_AT(66, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, PFirePoint) == 0x1c);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePoint, TimeOutCounter) == 0x24);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -93,4 +114,5 @@ FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_RangedCombatUsePreferredFirePo
 #endif // FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_VIRTUAL_MODEL
 
 #endif // retail model
+#endif // FABLE_RETAIL_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_MEMBERS_ONLY
 #endif // FABLE_ENGINE_CAISTATEGROUP_RANGEDCOMBATUSEPREFERREDFIREPOINT_H

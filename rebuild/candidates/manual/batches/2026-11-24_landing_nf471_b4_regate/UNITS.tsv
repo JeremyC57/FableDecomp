@@ -1,0 +1,41 @@
+address	unit
+008fde1b	unit CAIStateGroup_StandStill: ctor 0x008FDE1B (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00900484
+00900484	unit CAIStateGroup_StandStill: thin member of 0x008FDE1B
+008fd459	unit CAIStateGroup_MinionKidCalledToMother: ctor 0x008FD459 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FEF6F
+008fef6f	unit CAIStateGroup_MinionKidCalledToMother: thin member of 0x008FD459
+008fd6e8	unit CAIStateGroup_Guard: ctor 0x008FD6E8 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FF644
+008ff644	unit CAIStateGroup_Guard: thin member of 0x008FD6E8
+008fd70d	unit CAIStateGroup_Wander: ctor 0x008FD70D (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FF684
+008ff684	unit CAIStateGroup_Wander: thin member of 0x008FD70D
+008fd732	unit CAIStateGroup_ChickenWander: ctor 0x008FD732 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FF6C4
+008ff6c4	unit CAIStateGroup_ChickenWander: thin member of 0x008FD732
+008fd757	unit CAIStateGroup_WanderAroundInitialPos: ctor 0x008FD757 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FF704
+008ff704	unit CAIStateGroup_WanderAroundInitialPos: thin member of 0x008FD757
+008fd7a2	unit CAIStateGroup_ChickenPanic: ctor 0x008FD7A2 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FF784
+008ff784	unit CAIStateGroup_ChickenPanic: thin member of 0x008FD7A2
+008fde40	unit CAIStateGroup_BalverineWander: ctor 0x008FDE40 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x009004C4
+009004c4	unit CAIStateGroup_BalverineWander: thin member of 0x008FDE40
+008fe0cd	unit CAIStateGroup_MinionReactToApology: ctor 0x008FE0CD (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00900BD3
+00900bd3	unit CAIStateGroup_MinionReactToApology: thin member of 0x008FE0CD
+008fe191	unit CAIStateGroup_HoverAllAroundTest: ctor 0x008FE191 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00900CD5
+00900cd5	unit CAIStateGroup_HoverAllAroundTest: thin member of 0x008FE191
+008fe227	unit CAIStateGroup_MinionMotherConsoleChild: ctor 0x008FE227 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00900E02
+00900e02	unit CAIStateGroup_MinionMotherConsoleChild: thin member of 0x008FE227
+008fe30c	unit CAIStateGroup_CreatureGoUnderground: ctor 0x008FE30C (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x0090101E
+0090101e	unit CAIStateGroup_CreatureGoUnderground: thin member of 0x008FE30C
+008fe4c3	unit CAIStateGroup_MinionWalkToMarker: ctor 0x008FE4C3 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x009014FE
+009014fe	unit CAIStateGroup_MinionWalkToMarker: thin member of 0x008FE4C3
+008fe593	unit CAIStateGroup_Freeze: ctor 0x008FE593 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x0090194E
+0090194e	unit CAIStateGroup_Freeze: thin member of 0x008FE593
+008fe697	unit CAIStateGroup_KrakenAttack: ctor 0x008FE697 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00901AF7
+00901af7	unit CAIStateGroup_KrakenAttack: thin member of 0x008FE697
+008fe6bc	unit CAIStateGroup_KrakenTentacleIdle: ctor 0x008FE6BC (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00901B37
+00901b37	unit CAIStateGroup_KrakenTentacleIdle: thin member of 0x008FE6BC
+008fe6e1	unit CAIStateGroup_KrakenTentacleRise: ctor 0x008FE6E1 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00901B77
+00901b77	unit CAIStateGroup_KrakenTentacleRise: thin member of 0x008FE6E1
+008fe706	unit CAIStateGroup_KrakenTentacleAttack: ctor 0x008FE706 (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00901BB7
+00901bb7	unit CAIStateGroup_KrakenTentacleAttack: thin member of 0x008FE706
+008fe83d	unit CAIStateGroup_MinionGuardBribed: ctor 0x008FE83D (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x00901D77
+00901d77	unit CAIStateGroup_MinionGuardBribed: thin member of 0x008FE83D
+008feb3d	unit CAIStateGroup_MinionWander: ctor 0x008FEB3D (owner, emits ??_7 / ??_G / ??1CAIStateGroupBase) + thin ??_G 0x008FEB4F
+008feb4f	unit CAIStateGroup_MinionWander: thin member of 0x008FEB3D

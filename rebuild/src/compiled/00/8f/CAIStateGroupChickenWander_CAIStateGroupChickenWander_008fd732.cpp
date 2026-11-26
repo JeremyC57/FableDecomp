@@ -1,22 +1,27 @@
 // CAIStateGroup_ChickenWander::CAIStateGroup_ChickenWander() -- base CAIStateGroupBase() then this class's vtable
+// Leaf: ??0CAIStateGroup_ChickenWander@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FD732, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; mov esi,ecx ; call CAIStateGroupBase::CAIStateGroupBase ; mov dword ptr [esi],offset CAIStateGroup_ChickenWander::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x008FD255 runs, then the compiler stores this class's vtable (0x01289404
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
-// bodies of this shape.
-class CAIStateGroupBase { public:
-    virtual void v00();
-    CAIStateGroupBase();                           // 0x008FD255
-};
+// Default constructor of a polymorphic class with no members of its own to initialise: the base constructor @ 0x008FD255
+// (??0CAIStateGroupBase@@QAE@XZ) runs, then the compiler stores this class's vtable (0x01289404) and returns `this`.
+// NF467 (r459a vftable port): the class and its base come from the shared headers (local class on engine/CAIStateGroupBase.h (r462a; no CAIStateGroup_ChickenWander header) on
+//   engine/CAIStateGroupBase.h's FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS virtual list), so the emitted ??_7CAIStateGroup_ChickenWander@@6B@ has retail's
+//   14 slots (was a one-slot local model, 4 bytes).
+// TU mode: size-optimised, as retail's TU was: the ctor sits at the unaligned 0x008FD732 (a /O2 VC7.1 COMDAT is 16-byte aligned, an
+//   optimize("s") one 1-byte aligned), and the ??_G / implicit ??1CAIStateGroupBase the full table brings are then the retail copies
+//   (0x008FF6C4 and 0x008FD288; under /O2 the ??_G is 2 bytes longer). The ctor's own bytes are the same in both modes.
+#pragma optimize("s", on)
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroupBase.h"
 
-struct CAIStateGroup_ChickenWander : CAIStateGroupBase {
-    virtual void v00();                    // this class has its own vtable
-    CAIStateGroup_ChickenWander();
+// CAIStateGroup_ChickenWander has no shared header: the class is declared here on its base's shared header (r462a).
+class CAIStateGroup_ChickenWander : public CAIStateGroupBase {
+public:
+    CAIStateGroup_ChickenWander();                                          // 0x008FD732
+    virtual void Update();                                                         // slot 12 0x009118A0
 };
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ChickenWander) == 0x14);
 
 CAIStateGroup_ChickenWander::CAIStateGroup_ChickenWander()
     : CAIStateGroupBase()

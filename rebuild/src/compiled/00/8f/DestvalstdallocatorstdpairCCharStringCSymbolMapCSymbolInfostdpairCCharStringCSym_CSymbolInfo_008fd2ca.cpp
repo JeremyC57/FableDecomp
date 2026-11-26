@@ -1,33 +1,11 @@
-// Byte-exact reconstruction of the compiler-generated pair destructor at 008fd2ca.
-// Leaf: ??1Pair@@QAE@XZ
-// Layout: member A at +0 (CCharString first of the pair), member B at +0x14,
-// member C at +0x30.  Compiler destroys in reverse declared order:
-//   ~C (+0x30), ~B (+0x14), then tail-call ~A (+0).
-
-struct MemberA {   // occupies offset 0, size 0x14
-    int a0, a4, a8, ac, a10;
-    ~MemberA();
-};
-
-struct MemberB {   // occupies offset 0x14, size 0x1c
-    int b0, b4, b8, bc, b10, b14, b18;
-    ~MemberB();
-};
-
-struct MemberC {   // occupies offset 0x30
-    int c0, c4, c8;
-    ~MemberC();
-};
-
-struct Pair {
-    MemberA a;   // +0x00
-    MemberB b;   // +0x14
-    MemberC c;   // +0x30
-    ~Pair();
-};
-
-Pair::~Pair() {}
-
-// The three member dtors are out-of-line (defined in another TU) so the
-// compiler must emit real calls in reverse order, with the last (a, at +0)
-// becoming a tail jmp.
+// CAIStateGroup_GoToBed::~CAIStateGroup_GoToBed() -- the implicit destructor: BedSide (CCharString +0x30), PBed (CIntelligentPointer<CThing> +0x14),
+//   then the base ~CAIStateGroupBase (tail jump 0x008FD288); no vtable store.
+// Leaf: ??1CAIStateGroup_GoToBed@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008FD2CA, 27 bytes. Identity (NF470, T3 nf303 0x008FD288): its callers are the deleting destructors of
+//   vftables 0x0128B104 (RTTI .?AVCAIStateGroup_GoToBed@@, ??_G 0x008FEB97) and 0x0128B140 (.?AVCAIStateGroup_MinionSleep@@ : GoToBed, ??_G 0x008FEBC5,
+//   ~MinionSleep inlined); the destroyed offsets are Ego_r's PBed +0x14 / BedSide +0x30 (engine/CAIStateGroup_GoToBed.h, 96-byte class).
+//   Was ??1Pair@@QAE@XZ on a stand-in pair (MemberA / MemberB / MemberC) labelled _Dest_val<pair<CCharString,CSymbolInfo>>.
+// TU: VC7.1 emits the implicit destructor as a pick-any COMDAT in a TU that destroys a CAIStateGroup_GoToBed out of line. 0x008FEB97, the
+//   class's deleting destructor, does so on the shared header, byte- and relocation-equal to retail, so this function is produced by that
+//   translation unit, included below with no code of its own (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 / nf424).
+#include "../src/compiled/00/8f/CAIStateGroupGoToBed_scalardeletingdestructor_008feb97.cpp"

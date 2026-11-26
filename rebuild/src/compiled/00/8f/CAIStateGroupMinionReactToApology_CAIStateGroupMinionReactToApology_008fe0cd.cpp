@@ -1,22 +1,28 @@
 // CAIStateGroup_MinionReactToApology::CAIStateGroup_MinionReactToApology() -- base CAIStateGroupBase() then this class's vtable
+// Leaf: ??0CAIStateGroup_MinionReactToApology@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FE0CD, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; mov esi,ecx ; call CAIStateGroupBase::CAIStateGroupBase ; mov dword ptr [esi],offset CAIStateGroup_MinionReactToApology::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x008FD255 runs, then the compiler stores this class's vtable (0x0128A19C
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
-// bodies of this shape.
-class CAIStateGroupBase { public:
-    virtual void v00();
-    CAIStateGroupBase();                           // 0x008FD255
-};
+// Default constructor of a polymorphic class with no members of its own to initialise: the base constructor @ 0x008FD255
+// (??0CAIStateGroupBase@@QAE@XZ) runs, then the compiler stores this class's vtable (0x0128A19C) and returns `this`.
+// NF467 (r459a vftable port): the class and its base come from the shared headers (local class on engine/CAIStateGroupBase.h (r462a; no CAIStateGroup_MinionReactToApology header) on
+//   engine/CAIStateGroupBase.h's FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS virtual list), so the emitted ??_7CAIStateGroup_MinionReactToApology@@6B@ has retail's
+//   14 slots (was a one-slot local model, 4 bytes).
+// TU mode: size-optimised, as retail's TU was: the ctor sits at the unaligned 0x008FE0CD (a /O2 VC7.1 COMDAT is 16-byte aligned, an
+//   optimize("s") one 1-byte aligned), and the ??_G / implicit ??1CAIStateGroupBase the full table brings are then the retail copies
+//   (0x00900BD3 and 0x008FD288; under /O2 the ??_G is 2 bytes longer). The ctor's own bytes are the same in both modes.
+#pragma optimize("s", on)
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroupBase.h"
 
-struct CAIStateGroup_MinionReactToApology : CAIStateGroupBase {
-    virtual void v00();                    // this class has its own vtable
-    CAIStateGroup_MinionReactToApology();
+// CAIStateGroup_MinionReactToApology has no shared header: the class is declared here on its base's shared header (r462a).
+class CAIStateGroup_MinionReactToApology : public CAIStateGroupBase {
+public:
+    CAIStateGroup_MinionReactToApology();                                   // 0x008FE0CD
+    virtual bool IsRunnable();                                                     // slot 11 0x0091D120
+    virtual void Update();                                                         // slot 12 0x0091D190
 };
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToApology) == 0x14);
 
 CAIStateGroup_MinionReactToApology::CAIStateGroup_MinionReactToApology()
     : CAIStateGroupBase()

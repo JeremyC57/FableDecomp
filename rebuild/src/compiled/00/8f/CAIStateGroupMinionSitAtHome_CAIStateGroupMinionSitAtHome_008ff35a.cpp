@@ -7,11 +7,16 @@
 // Shape: a polymorphic class with no members of its own to initialise.
 // History: generated in a chunk batch ("One of 265 bodies of this shape") over the invented base ??0CAIStateGroupBehaviourBase@N_008ff247@@QAE@XZ;
 //   re-authored on the RTTI / PDB classes in naming wave 32 (family aisd).
+// NF471 (T3 nf303 0x008FD288, the r469a declaration-only form): retail's ~CAIStateGroup_UsesSeat is the implicit one, kept once at 0x008FD544
+//   (both PDBs flag it compiler-generated; owner 0x008FF22B on engine/CAIStateGroup_UsesSeat.h). This local model's implicit copy was not retail's (the
+//   19-byte ~CAIStateGroupBase shape: the model gives PSeat no destructor), so the destructor is declared here and the object
+//   references 0x008FD544's ??1CAIStateGroup_UsesSeat@@UAE@XZ; the row's own bytes are unchanged.
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
 class CAIStateGroup_UsesSeat : public CAIStateGroupBase {                   // RTTI CAIStateGroup_UsesSeat : CAIStateGroupBase
 public:                                 // ctor FableWin.pdb only (??0CAIStateGroup_UsesSeat@@IAE@XZ): inlined into this row, which calls the base ctor directly
+    virtual ~CAIStateGroup_UsesSeat();                  // ??1CAIStateGroup_UsesSeat@@UAE@XZ 0x008FD544 (implicit in retail; declared here only)
 };
 
 class CAIStateGroup_MinionSitOnSeatBase : public CAIStateGroup_UsesSeat {                   // RTTI CAIStateGroup_MinionSitOnSeatBase : CAIStateGroup_UsesSeat

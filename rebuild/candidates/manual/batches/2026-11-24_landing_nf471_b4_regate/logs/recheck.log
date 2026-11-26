@@ -1,0 +1,58 @@
+addr       parity           behav  name
+008fd6e8   RELOCATION_MATCH PASS   CAIStateGroup_Guard
+008fd70d   RELOCATION_MATCH PASS   CAIStateGroup_Wander
+008fd732   RELOCATION_MATCH PASS   CAIStateGroup_ChickenWander
+008fd7a2   RELOCATION_MATCH PASS   CAIStateGroup_ChickenPanic
+008fde40   RELOCATION_MATCH PASS   CAIStateGroup_BalverineWander
+008fe0cd   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToApology
+008fe191   RELOCATION_MATCH PASS   CAIStateGroup_HoverAllAroundTest
+008fe227   RELOCATION_MATCH PASS   CAIStateGroup_MinionMotherConsoleChild
+008fe4c3   RELOCATION_MATCH PASS   CAIStateGroup_MinionWalkToMarker
+008fe697   RELOCATION_MATCH PASS   CAIStateGroup_KrakenAttack
+008fe83d   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardBribed
+008ff644   WARN STANDIN_LEAF ??_GCAIStateGroup_Guard@@UAEPAXI@Z (catalog CAIStateGroup_Guard::`scalar_deleting_destructor'; names another function)
+008ff644   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff684   WARN STANDIN_LEAF ??_GCAIStateGroup_Wander@@UAEPAXI@Z (catalog CAIStateGroup_Wander::`scalar_deleting_destructor'; names another function)
+008ff684   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff6c4   WARN STANDIN_LEAF ??_GCAIStateGroup_ChickenWander@@UAEPAXI@Z (catalog CAIStateGroup_ChickenWander::`scalar_deleting_destructor'; names another function)
+008ff6c4   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff784   WARN STANDIN_LEAF ??_GCAIStateGroup_ChickenPanic@@UAEPAXI@Z (catalog CAIStateGroup_ChickenPanic::`scalar_deleting_destructor'; names another function)
+008ff784   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009004c4   WARN STANDIN_LEAF ??_GCAIStateGroup_BalverineWander@@UAEPAXI@Z (catalog CAIStateGroup_BalverineWander::`scalar_deleting_destructor'; names another function)
+009004c4   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900bd3   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionReactToApology@@UAEPAXI@Z (catalog CAIStateGroup_MinionReactToApology::`scalar_deleting_destructor'; names another function)
+00900bd3   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900cd5   WARN STANDIN_LEAF ??_GCAIStateGroup_HoverAllAroundTest@@UAEPAXI@Z (catalog CAIStateGroup_HoverAllAroundTest::`scalar_deleting_destructor'; names another function)
+00900cd5   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900e02   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionMotherConsoleChild@@UAEPAXI@Z (catalog CAIStateGroup_MinionMotherConsoleChild::`scalar_deleting_destructor'; names another function)
+00900e02   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009014fe   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionWalkToMarker@@UAEPAXI@Z (catalog CAIStateGroup_MinionWalkToMarker::`scalar_deleting_destructor'; names another function)
+009014fe   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901af7   WARN STANDIN_LEAF ??_GCAIStateGroup_KrakenAttack@@UAEPAXI@Z (catalog CAIStateGroup_KrakenAttack::`scalar_deleting_destructor'; names another function)
+00901af7   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901d77   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionGuardBribed@@UAEPAXI@Z (catalog CAIStateGroup_MinionGuardBribed::`scalar_deleting_destructor'; names another function)
+00901d77   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 22
+  008fd6e8 RELOCATION_MATCH CAIStateGroup_Guard::??0CAIStateGroup_Guard@@QAE@XZ
+  008fd70d RELOCATION_MATCH CAIStateGroup_Wander::??0CAIStateGroup_Wander@@QAE@XZ
+  008fd732 RELOCATION_MATCH CAIStateGroup_ChickenWander::??0CAIStateGroup_ChickenWander@@QAE@XZ
+  008fd7a2 RELOCATION_MATCH CAIStateGroup_ChickenPanic::??0CAIStateGroup_ChickenPanic@@QAE@XZ
+  008fde40 RELOCATION_MATCH CAIStateGroup_BalverineWander::??0CAIStateGroup_BalverineWander@@QAE@XZ
+  008fe0cd RELOCATION_MATCH CAIStateGroup_MinionReactToApology::??0CAIStateGroup_MinionReactToApology@@QAE@XZ
+  008fe191 RELOCATION_MATCH CAIStateGroup_HoverAllAroundTest::??0CAIStateGroup_HoverAllAroundTest@@QAE@XZ
+  008fe227 RELOCATION_MATCH CAIStateGroup_MinionMotherConsoleChild::??0CAIStateGroup_MinionMotherConsoleChild@@QAE@XZ
+  008fe4c3 RELOCATION_MATCH CAIStateGroup_MinionWalkToMarker::??0CAIStateGroup_MinionWalkToMarker@@QAE@XZ
+  008fe697 RELOCATION_MATCH CAIStateGroup_KrakenAttack::??0CAIStateGroup_KrakenAttack@@QAE@XZ
+  008fe83d RELOCATION_MATCH CAIStateGroup_MinionGuardBribed::??0CAIStateGroup_MinionGuardBribed@@QAE@XZ
+  008ff644 RELOCATION_MATCH CAIStateGroup_Guard::??_GCAIStateGroup_Guard@@UAEPAXI@Z
+  008ff684 RELOCATION_MATCH CAIStateGroup_Wander::??_GCAIStateGroup_Wander@@UAEPAXI@Z
+  008ff6c4 RELOCATION_MATCH CAIStateGroup_ChickenWander::??_GCAIStateGroup_ChickenWander@@UAEPAXI@Z
+  008ff784 RELOCATION_MATCH CAIStateGroup_ChickenPanic::??_GCAIStateGroup_ChickenPanic@@UAEPAXI@Z
+  009004c4 RELOCATION_MATCH CAIStateGroup_BalverineWander::??_GCAIStateGroup_BalverineWander@@UAEPAXI@Z
+  00900bd3 RELOCATION_MATCH CAIStateGroup_MinionReactToApology::??_GCAIStateGroup_MinionReactToApology@@UAEPAXI@Z
+  00900cd5 RELOCATION_MATCH CAIStateGroup_HoverAllAroundTest::??_GCAIStateGroup_HoverAllAroundTest@@UAEPAXI@Z
+  00900e02 RELOCATION_MATCH CAIStateGroup_MinionMotherConsoleChild::??_GCAIStateGroup_MinionMotherConsoleChild@@UAEPAXI@Z
+  009014fe RELOCATION_MATCH CAIStateGroup_MinionWalkToMarker::??_GCAIStateGroup_MinionWalkToMarker@@UAEPAXI@Z
+  00901af7 RELOCATION_MATCH CAIStateGroup_KrakenAttack::??_GCAIStateGroup_KrakenAttack@@UAEPAXI@Z
+  00901d77 RELOCATION_MATCH CAIStateGroup_MinionGuardBribed::??_GCAIStateGroup_MinionGuardBribed@@UAEPAXI@Z

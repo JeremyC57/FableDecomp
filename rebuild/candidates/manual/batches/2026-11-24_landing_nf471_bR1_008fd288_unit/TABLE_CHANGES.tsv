@@ -1,0 +1,20 @@
+action	symbol	target	witness	note
+replace	??1MemberA@@QAE@XZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	008fd2ca	T3 nf303 0x008FD288 binder 0x008FD2CA (STANDIN) resolved: ~CAIStateGroup_GoToBed, thin row of 0x008FEB97
+replace	??1MemberB@@QAE@XZ -> ??1CBaseIntelligentPointer@@UAE@XZ	00a01c10	008fd2ca	PBed +0x14
+replace	??1MemberC@@QAE@XZ -> ??1CCharString@@QAE@XZ	0099eae0	008fd2ca	BedSide +0x30
+replace	?CAIStateGroup_GoToBed_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_GoToBed@@UAE@XZ	008fd2ca	008feb97	callee-only respell
+replace	?CAIStateGroup_MinionSleep_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_GoToBed@@UAE@XZ	008fd2ca	008febc5	callee-only respell (~MinionSleep inlined)
+replace	?outer@FableDestVal_008fd544_t@@QAIXXZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	008fd544	T3 nf303 0x008FD288 binder 0x008FD544 (STANDIN) resolved: ~CAIStateGroup_UsesSeat, thin row of 0x008FF22B
+replace	?inner@FableDestVal_008fd544_t@@QAIXXZ -> ??1CBaseIntelligentPointer@@UAE@XZ	00a01c10	008fd544	PSeat +0x14
+replace	?CAIStateGroup_UsesSeat_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_UsesSeat@@UAE@XZ	008fd544	008ff22b	callee-only respell
+replace	?CAIStateGroup_SitForMeal_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_UsesSeat@@UAE@XZ	008fd544	008fff98	callee-only respell (~SitForMeal expanded)
+replace	?CAIStateGroup_SitInPub_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_UsesSeat@@UAE@XZ	008fd544	0090021b	callee-only respell (~SitInPub expanded)
+replace	@tail_8fd544@4 -> ??1CAIStateGroup_UsesSeat@@UAE@XZ	008fd544	008fd56a	callee-only respell (tail jump)
+replace	?outer@FableDestVal_008fd769_t@@QAIXXZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	008fd769	T3 nf303 0x008FD288 binder 0x008FD769 (STANDIN) resolved: ~CAIStateGroup_EnemyCreatureBase, thin row of 0x008FF744
+replace	?inner@FableDestVal_008fd769_t@@QAIXXZ -> ??1CBaseIntelligentPointer@@UAE@XZ	00a01c10	008fd769	PTargetThing +0x14
+replace	?PairDestroyFirst@@YIXPAUPair@@@Z -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	00900f43	T3 nf303 0x008FD288 binder 0x00900F43 (FREE) resolved: ~CAIStateGroup_RangedCombatUsePreferredFirePoint, thin row of 0x00900F27
+replace	?CAIStateGroup_RangedCombatUsePreferredFirePoint_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAE@XZ	00900f43	00900f27	callee-only respell
+replace	??1CDefBase_008fd288@@QAE@XZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	009006dd	T3 nf303 0x008FD288 binder 0x009006DD (STANDIN) resolved: ~CAIStateGroup_JackDragon, thin row of 0x009006C1
+replace	?CAIStateGroup_JackDragon_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_JackDragon@@UAE@XZ	009006dd	009006c1	callee-only respell
+replace	?Destroy@CFirstMember@@QAEXXZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	0090010e	T3 nf303 0x008FD288 binder 0x0090010E (STANDIN) resolved: ~CAIStateGroup_WanderAroundShops, thin row of 0x009000F2
+replace	?CAIStateGroup_WanderAroundShops_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_WanderAroundShops@@UAE@XZ	0090010e	009000f2	callee-only respell

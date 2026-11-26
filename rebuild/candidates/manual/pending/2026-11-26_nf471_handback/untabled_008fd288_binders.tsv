@@ -1,0 +1,6 @@
+row	catalog name	binds 0x008FD288 as (object relocation; no reloc_bindings.tsv line)	real callee
+0x008FDA24	_global::TailJmp__Dest_val_std__allocator_std__pair_long__008fda24 (really ??1?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@UAE@XZ, NAME_FIXES)	_ForwardTarget_008fd288 (extern "C")	??1CAIStateGroupBase@@UAE@XZ
+0x008FECEC	CAIStateGroup_MinionReactToCriminal::~CAIStateGroup_MinionReactToCriminal	?PairFirstDtor@CSymbolInfo___@@QAEXXZ	??1CAIStateGroupBase@@UAE@XZ
+0x00900533	CAIStateGroup_BalverineCornered::~CAIStateGroup_BalverineCornered	??1CSymbolInfoTail@@QAE@XZ	??1CAIStateGroupBase@@UAE@XZ
+0x00913490	CAIStateGroup_FlyingThingBase::`scalar_deleting_destructor'	?Dtor@CAIStateGroup_FlyingThingBase@@QAEXXZ	??1CAIStateGroupBase@@UAE@XZ
+# 175 retail references to 0x008FD288 (refs_008fd288.tsv): 155 rows UND ??1CAIStateGroupBase (NF469 scan), 6 in this unit, 1 DEF (0x008FE862, the owner), 9 row-less, these 4 under stand-in names. Not T3 651's six table lines; same binder-like shape (implicit derived dtors / a ??_G stand-in): wave 2.

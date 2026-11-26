@@ -6,10 +6,15 @@
 // NF469 (r467a, ruling r469a): retail's ~CAIStateGroupBase is the implicit one, kept once at 0x008FD288 (Ego_r / FableWin flag it
 //   compiler-generated). This local model's implicit copy was not retail's (a lone jmp ~CBaseClass: the model gives Name (+0x0C) no destructor), so the destructor is declared here and the
 //   object references 0x008FD288's ??1CAIStateGroupBase@@UAE@XZ like the 640 landed local models; the row's own bytes are unchanged.
+// NF471 (T3 nf303 0x008FD288, the r469a declaration-only form): retail's ~CAIStateGroup_WanderAroundShops is the implicit one, kept once at
+//   0x0090010E (both PDBs flag it compiler-generated; owner 0x009000F2 on the r470e retail opt-in of engine/CAIStateGroup_WanderAroundShops.h).
+//   This local model's implicit copy was not retail's (38 bytes: its inline ~CIntelligentPointer stores a vptr before each ~CBaseIntelligentPointer
+//   call), so the destructor is declared here and the object references 0x0090010E's ??1CAIStateGroup_WanderAroundShops@@UAE@XZ; the row's own
+//   bytes are unchanged. (A port of this ctor onto the header would bring retail's 14-slot vftable: wave 2, r467b slot respells first.)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIBrain;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};enum EScriptAIPriority{SCRIPT_PRIORITY_DEFAULT};
 class CAIStateGroupBase:public CBaseClass{public: virtual ~CAIStateGroupBase();CAIBrain* PBrain;EScriptAIPriority ScriptAIPriority;CCharString Name;bool Terminated;unsigned char Priority;bool Enabled;CAIStateGroupBase();};template<class T>class CAIStateGroup_WorkBase:public T{};
 class CAIStateGroup_JackOfBladesBase:public CAIStateGroupBase{public:unsigned char _unmodeled14[0x4c-0x14];CAIStateGroup_JackOfBladesBase();};
 class CBaseObject;class CBaseObjectPointer;class CThing;class CThingCreatureBase;class CBaseIntelligentPointer{public:CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:CIntelligentPointer():CBaseIntelligentPointer(){}virtual ~CIntelligentPointer(){}};
-class CAIStateGroup_WanderAroundShops:public CAIStateGroup_WorkBase<CAIStateGroupBase>{public: CIntelligentPointer<CThing> Shop,PrettyThing;CAIStateGroup_WanderAroundShops();};
+class CAIStateGroup_WanderAroundShops:public CAIStateGroup_WorkBase<CAIStateGroupBase>{public: virtual ~CAIStateGroup_WanderAroundShops(); CIntelligentPointer<CThing> Shop,PrettyThing;CAIStateGroup_WanderAroundShops();};
 CAIStateGroup_WanderAroundShops::CAIStateGroup_WanderAroundShops(){}

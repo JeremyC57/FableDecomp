@@ -1,0 +1,2 @@
+source	address	unit	reason
+nf303	0x008FD288	port (census)	binder -: entry 38: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1, STANDIN 5; tools/census303.py, evidence/census.tsv).

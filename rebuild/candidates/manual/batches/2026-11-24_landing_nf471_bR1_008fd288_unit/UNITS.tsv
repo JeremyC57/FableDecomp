@@ -1,0 +1,39 @@
+address	unit
+008fd288	thin member of 0x008FE862 (r469b; ~CAIStateGroupBase)
+008fd2ca	thin member of 0x008FEB97 (T3 nf303 binder, r470a)
+008fd544	thin member of 0x008FF22B (T3 nf303 binder, r470a)
+008fd56a	callee-only respell of a binder call site (shared header)
+008fd769	thin member of 0x008FF744 (T3 nf303 binder, r470a)
+008feb97	owner: callee-only respell on the shared header; emits the binder copy EQ retail; owner of thin 0x008FD2CA
+008febc5	callee-only respell of a binder call site (shared header)
+008ff22b	owner: callee-only respell on the shared header; emits the binder copy EQ retail; owner of thin 0x008FD544
+008ff247	r469a declaration-only: local model stops emitting a non-retail binder copy
+008ff28d	r469a declaration-only: local model stops emitting a non-retail binder copy
+008ff2bb	r469a declaration-only: local model stops emitting a non-retail binder copy
+008ff2ec	r469a declaration-only: local model stops emitting a non-retail binder copy
+008ff35a	r469a declaration-only: local model stops emitting a non-retail binder copy
+008ff744	owner: callee-only respell on the shared header; emits the binder copy EQ retail; owner of thin 0x008FD769
+008fff74	r469a declaration-only: local model stops emitting a non-retail binder copy
+008fff98	callee-only respell of a binder call site (shared header)
+009000bc	r469a declaration-only: local model stops emitting a non-retail binder copy
+009000f2	owner: callee-only respell on the shared header; emits the binder copy EQ retail; owner of thin 0x0090010E
+0090010e	thin member of 0x009000F2 (T3 nf303 binder, r470a)
+009001f2	r469a declaration-only: local model stops emitting a non-retail binder copy
+0090021b	callee-only respell of a binder call site (shared header)
+009006c1	owner: callee-only respell on the shared header; emits the binder copy EQ retail; owner of thin 0x009006DD
+009006dd	thin member of 0x009006C1 (T3 nf303 binder, r470a)
+00900bef	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900c01	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900c3b	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900c76	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900cf1	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900d28	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900d63	r469a declaration-only: local model stops emitting a non-retail binder copy
+00900f27	owner: callee-only respell on the shared header; emits the binder copy EQ retail; owner of thin 0x00900F43
+00900f43	thin member of 0x00900F27 (T3 nf303 binder, r470a)
+00901867	r469a declaration-only: local model stops emitting a non-retail binder copy
+00902122	r469a declaration-only: local model stops emitting a non-retail binder copy
+009021c8	r469a declaration-only: local model stops emitting a non-retail binder copy
+00902907	r469a declaration-only: local model stops emitting a non-retail binder copy
+0090310e	r469a declaration-only: local model stops emitting a non-retail binder copy
+009031ba	r469a declaration-only: local model stops emitting a non-retail binder copy

@@ -10,6 +10,10 @@
 // Shape: user default ctor, empty; CIntelligentPointer's ctor inlines to the base call + vtable store after this class's own vtable store.
 // History: generated in a chunk batch for a repeated body shape over the CBase_008ff1f8 / CMemberBase_00a01b10 stand-ins; re-authored on the
 //   PDB classes in naming wave 32 (family aisg).
+// NF471 (T3 nf303 0x008FD288, the r469a declaration-only form): retail's ~CAIStateGroup_UsesSeat is the implicit one, kept once at 0x008FD544
+//   (both PDBs flag it compiler-generated; owner 0x008FF22B on engine/CAIStateGroup_UsesSeat.h). This local model's implicit copy was not retail's
+//   (19 bytes with no PSeat destroy: the model leaves +0x14..+0x33 unmodelled), so the destructor is declared here and the object references
+//   0x008FD544's ??1CAIStateGroup_UsesSeat@@UAE@XZ; the row's own bytes are unchanged.
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
@@ -24,6 +28,7 @@ class CAIStateGroup_UsesSeat : public CAIStateGroupBase {                    // 
 protected:
     CAIStateGroup_UsesSeat();                         // ??0CAIStateGroup_UsesSeat@@IAE@XZ (Ego_r.pdb / FableWin.pdb)
 public:
+    virtual ~CAIStateGroup_UsesSeat();                // ??1CAIStateGroup_UsesSeat@@UAE@XZ 0x008FD544 (implicit in retail; declared here only)
     unsigned char _unmodeled14[0x34 - 0x14];       // Ego_r.pdb: PSeat +0x14, GotSeatPos +0x1c, Sitting +0x1d, SeatPosIndex +0x20, SeatPos +0x24, SittingOnBench +0x30
 };
 

@@ -1,65 +1,26 @@
 #include <cstdio>
-
-// Independent behaviour test. Provide local defs of the extern helpers so it
-// links standalone, and observe the destroy order + tail-call.
-
-class CCharString { public:
-    char* m_ptr;
-    int   m_len;
-    void Destroy();
-};
-
-struct Pair;
-void __fastcall PairDestroyFirst(Pair* self);
-
-struct Pair {
-    char        pad0[0x14];
-    CCharString s_a;   // +0x14
-    CCharString s_b;   // +0x1c
-};
-
-void __fastcall Dest_val(Pair* self)
-{
-    self->s_b.Destroy();
-    self->s_a.Destroy();
-    PairDestroyFirst(self);
-}
-
-// ---- instrumentation ----
-static int g_seq = 0;
-static int g_a_at = 0, g_b_at = 0, g_first_at = 0;
-static Pair* g_obj = 0;
-
-void CCharString::Destroy()
-{
-    // which member? compare address against the live object
-    if (this == &g_obj->s_a) g_a_at = ++g_seq;
-    else if (this == &g_obj->s_b) g_b_at = ++g_seq;
-}
-
-void __fastcall PairDestroyFirst(Pair* self)
-{
-    g_first_at = ++g_seq;
-}
-
+// CAIStateGroup_RangedCombatUsePreferredFirePoint::~CAIStateGroup_RangedCombatUsePreferredFirePoint() (retail 0x00900F43): the implicit destructor -- members in reverse declaration order, then the base chain
+//   (~CAIStateGroupBase: Name +0x0C, then ~CBaseClass). (No vptr check: at the test's /Od VC7.1 stores it, the optimised retail form does not.)
+// NF471 (T3 nf303 0x008FD288): self-contained -- the row is now a thin member of its owner's TU, so the test models the retail classes with
+//   IMPLICIT destructors (both PDBs flag them compiler-generated) and VC7.1 generates the chain here, as it does in the row's object.
+static long g_seq[16]; static int g_n = 0; static char* g_base = 0;
+static void Note(void* p) { if (g_n < 16) g_seq[g_n] = (long)((char*)p - g_base); g_n++; }
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CCharString { public: ~CCharString(); void* PString; };
+class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer(); void* PData; };
+class CAIBrain;
+class CAIStateGroupBase : public CBaseClass { public: CAIBrain* PBrain; long ScriptAIPriority; CCharString Name; bool Terminated; unsigned char Priority; bool Enabled; };
+CBaseClass::~CBaseClass() { Note(this); g_seq[15] = 1; }
+CCharString::~CCharString() { Note(this); }
+CBaseIntelligentPointer::~CBaseIntelligentPointer() { Note(this); }
+class CAIStateGroup_RangedCombatUsePreferredFirePoint : public CAIStateGroupBase { public: CBaseIntelligentPointer PEnemy; CBaseIntelligentPointer PFirePoint; };
 int main()
 {
-    Pair p;
-    p.s_a.m_ptr = 0; p.s_a.m_len = 0;
-    p.s_b.m_ptr = 0; p.s_b.m_len = 0;
-    g_obj = &p;
-
-    Dest_val(&p);
-
-    // Retail order: +0x1c (s_b) first, then +0x14 (s_a), then first-destroy.
-    bool ok = (g_b_at == 1) && (g_a_at == 2) && (g_first_at == 3);
-
-    // sanity: offsets match the retail disasm
-    unsigned base = (unsigned)(void*)&p;
-    ok = ok && ((unsigned)(void*)&p.s_a - base == 0x14);
-    ok = ok && ((unsigned)(void*)&p.s_b - base == 0x1c);
-
-    if (ok) printf("DESTVAL_ORDER_OK\n");
-    else    printf("FAIL b=%d a=%d f=%d\n", g_b_at, g_a_at, g_first_at);
-    return ok ? 0 : 1;
+    void* buf[0x60] = {(void*)0x1234};
+    g_base = (char*)buf;
+    ((CAIStateGroup_RangedCombatUsePreferredFirePoint*)buf)->CAIStateGroup_RangedCombatUsePreferredFirePoint::~CAIStateGroup_RangedCombatUsePreferredFirePoint();
+    static const long want[] = {0x1c, 0x14, 0xc, 0x0};
+    if (g_n != 4) { std::printf("BAD_COUNT %d\n", g_n); return 1; }
+    for (int i = 0; i < 4; i++) if (g_seq[i] != want[i]) { std::printf("BAD_ORDER %d %ld\n", i, g_seq[i]); return 1; }
+    std::printf("DESTVAL_ORDER_OK\n"); return 0;
 }
