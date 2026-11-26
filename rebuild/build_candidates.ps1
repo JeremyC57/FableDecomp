@@ -403835,6 +403835,13 @@ $catalog = @(
         TestSource = '00/af/stdvectorNParticleEngineCParticleEmitterInfo_resize_00af2200_test.cpp'
         PassPattern = '00af2200_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0085ed90'
+        Module = 'std::vector<std::vector<NThingMap::CThingMapCell> >'
+        Source = '00/85/stdvectorstdvectorNThingMapCThingMapCell_resize_0085ed90.cpp'
+        TestSource = '00/85/stdvectorstdvectorNThingMapCThingMapCell_resize_0085ed90_test.cpp'
+        PassPattern = '0085ed90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
