@@ -15,6 +15,7 @@
 //   edi for the suspend and the SetCurrentAction receiver and re-read for the action's ctor argument.
 // Naming (NF126, 2026-11-20): the local CModeBase stand-in replaced by the shared nested CTCCreatureModeManager::CModeBase
 //   (engine/CTCCreatureModeManager.h, FABLE_RETAIL_CMODEBASE_VIRTUALS).
+// Naming (NF459, r454b unit with 0x008E4420): the CCreatureAction_TrollVulnerableInto constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_TrollVulnerableInto@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 class CCreatureActionBase;
 
 class CThingAICreature { public:
@@ -34,7 +35,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_TrollVulnerableInto : public CCombatActionBase { public:
-    CCreatureAction_TrollVulnerableInto(CThingCreatureBase* owner);   // 0x008E4420
+    CCreatureAction_TrollVulnerableInto(CThingCreatureBase& owner);   // 0x008E4420
 };
 
 class CMainGameComponent {
@@ -64,5 +65,5 @@ void NCreatureMode::CModeRockTrollVulnerable::OnActivate()
     CModeBase::OnActivate();
     CThingCreatureBase* creature = PCreature;
     creature->SuspendAI(true, 0);
-    creature->SetCurrentAction(CCreatureAction_TrollVulnerableInto(PCreature));
+    creature->SetCurrentAction(CCreatureAction_TrollVulnerableInto(*PCreature));
 }

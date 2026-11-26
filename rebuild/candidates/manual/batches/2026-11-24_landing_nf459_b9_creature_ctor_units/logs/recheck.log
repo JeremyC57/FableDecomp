@@ -1,0 +1,178 @@
+addr       parity           behav  name
+0066fc90   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE C2DBoxF (engine/C2DBoxF.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CCamera (engine/CCamera.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritReturnToHero (engine/CCreatureAction_SpiritReturnToHero.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0066fc90   WARN SHARED_HEADER_AVAILABLE CDisplayEngine (engine/CDisplayEngine.h)
+0066fc90   RELOCATION_MATCH PASS   UpdateScreenRestrictingForces
+00690d30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00690d30   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00690d30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00690d30   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690d30   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690d30   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase (engine/CInputProcessGameBase.h)
+00690d30   WARN SHARED_HEADER_AVAILABLE CInputProcessParalysed (engine/CInputProcessParalysed.h)
+00690d30   RELOCATION_MATCH PASS   ProcessInput
+00690db0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00690db0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00690db0   RELOCATION_MATCH PASS   CCombatAction_GenericBreakOffDrain
+0072c930   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillFireballSpell (engine/CCreatureAction_CastWillFireballSpell.h)
+0072c930   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+0072c930   WARN SHARED_HEADER_AVAILABLE CTCFireballSpell (engine/CTCFireballSpell.h)
+0072c930   RELOCATION_MATCH PASS   SetupFireballSpell
+0072cd00   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0072cd00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0072cd00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0072cd00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastDivineWrathSpell (engine/CCreatureAction_CastDivineWrathSpell.h)
+0072cd00   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SheatheItemToInventory_ForDivineWrath (engine/CCreatureAction_SheatheItemToInventory_ForDivineWrath.h)
+0072cd00   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0072cd00   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+0072cd00   RELOCATION_MATCH PASS   SetupDivineWrath
+0072ce20   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0072ce20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0072ce20   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0072ce20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastUnholyPowerSpell (engine/CCreatureAction_CastUnholyPowerSpell.h)
+0072ce20   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SheatheItemToInventory_ForUnholyPower (engine/CCreatureAction_SheatheItemToInventory_ForUnholyPower.h)
+0072ce20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0072ce20   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+0072ce20   RELOCATION_MATCH PASS   SetupUnholyPower
+00854660   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00854660   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00854660   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SpiritReturnToHero (engine/CCreatureAction_SpiritReturnToHero.h)
+00854660   RELOCATION_MATCH PASS   CCreatureAction_SpiritReturnToHero
+008bcd10   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bcd10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bcd10   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastWillFireballSpell (engine/CCreatureAction_CastWillFireballSpell.h)
+008bcd10   RELOCATION_MATCH PASS   CCreatureAction_CastWillFireballSpell
+008bd110   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bd110   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bd110   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastDivineWrathSpell (engine/CCreatureAction_CastDivineWrathSpell.h)
+008bd110   RELOCATION_MATCH PASS   CCreatureAction_CastDivineWrathSpell
+008bd280   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008bd280   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008bd280   WARN SHARED_HEADER_AVAILABLE CCreatureAction_CastUnholyPowerSpell (engine/CCreatureAction_CastUnholyPowerSpell.h)
+008bd280   RELOCATION_MATCH PASS   CCreatureAction_CastUnholyPowerSpell
+008ca800   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008ca800   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ca800   RELOCATION_MATCH PASS   CCreatureAction_NymphTeleportIntoLimbo
+008cbf00   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cbf00   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cbf00   RELOCATION_MATCH PASS   CCreatureAction_SummonerSheatheWeapon
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CKrakenTentacleDef (engine/CKrakenTentacleDef.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CTCKrakenTentacle (engine/CTCKrakenTentacle.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cf7d0   RELOCATION_MATCH PASS   FinishAction
+008cf990   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cf990   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cf990   RELOCATION_MATCH PASS   CCreatureAction_TentacleStrikeLoop
+008cfa10   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008cfa10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008cfa10   RELOCATION_MATCH PASS   CCreatureAction_TentacleStrikeOutOf
+008de620   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008de620   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008de620   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008de620   RELOCATION_MATCH PASS   Recover
+008de6a0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008de6a0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+008de6a0   RELOCATION_MATCH PASS   OnActivate
+008e0730   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+008e0730   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+008e0730   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e0730   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonRearUpOutOf (engine/CCreatureAction_DragonRearUpOutOf.h)
+008e0730   WARN SHARED_HEADER_AVAILABLE CModeStandBase (engine/CModeStandBase.h)
+008e0730   RELOCATION_MATCH PASS   FrameUpdate
+008e43a0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008e43a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e43a0   RELOCATION_MATCH PASS   CCombatAction_RecoverFromDazed
+008e4420   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008e4420   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008e4420   RELOCATION_MATCH PASS   CCreatureAction_TrollVulnerableInto
+008f5020   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+008f5020   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008f5020   WARN SHARED_HEADER_AVAILABLE CCreatureAction_DragonRearUpOutOf (engine/CCreatureAction_DragonRearUpOutOf.h)
+008f5020   RELOCATION_MATCH PASS   CCreatureAction_DragonRearUpOutOf
+0091c3d0   WARN SHARED_HEADER_AVAILABLE C3DVector (engine/C3DVector.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase (engine/CTCPhysicsBase.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CTCNymph (engine/CTCNymph.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0091c3d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0091c3d0   RELOCATION_MATCH PASS   Update
+009211d0   RELOCATION_MATCH PASS   Update
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CTCCarrying (engine/CTCCarrying.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_SummonerLightningOrbInto (engine/CCreatureAction_SummonerLightningOrbInto.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CSummonerDef (engine/CSummonerDef.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0096fcd0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_SummonerLightningAttack (engine/CAIStateGroup_SummonerLightningAttack.h)
+0096fcd0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@ABUCIntelligentPointerThing@@@Z -> 007c2930 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0096fcd0   WARN RELOC_NAME: ??1CCreatureAction_SummonerLightningOrbInto@@UAE@XZ -> 00719c30 labelled '_global::Dtor_CCombatActionBaseBase_00719c30'
+0096fcd0   WARN RELOC_NAME: ??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z -> 00970240 labelled 'CCreatureAction_SummonerLightningIdle::CCreatureAction_SummonerLightningIdle'
+0096fcd0   RELOCATION_MATCH PASS   Update
+00982c10   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00982c10   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00982c10   RELOCATION_MATCH PASS   CCreatureAction_BeetleTakeOff
+
+WINS: 25
+  0066fc90 RELOCATION_MATCH CTCCoopSpirit::?UpdateScreenRestrictingForces@CTCCoopSpirit@@AAEXXZ
+  00690d30 RELOCATION_MATCH CInputProcessParalysed::ProcessInput
+  00690db0 RELOCATION_MATCH CCombatAction_GenericBreakOffDrain::??0CCombatAction_GenericBreakOffDrain@
+  0072c930 RELOCATION_MATCH CTCSpecialAbilities::?SetupFireballSpell@CTCSpecialAbilities@@AAE_NXZ
+  0072cd00 RELOCATION_MATCH CTCSpecialAbilities::?SetupDivineWrath@CTCSpecialAbilities@@AAE_NXZ
+  0072ce20 RELOCATION_MATCH CTCSpecialAbilities::?SetupUnholyPower@CTCSpecialAbilities@@AAE_NXZ
+  00854660 RELOCATION_MATCH CCreatureAction_SpiritReturnToHero::??0CCreatureAction_SpiritReturnToHero@
+  008bcd10 RELOCATION_MATCH CCreatureAction_CastWillFireballSpell::??0CCreatureAction_CastWillFireballSpell@
+  008bd110 RELOCATION_MATCH CCreatureAction_CastDivineWrathSpell::??0CCreatureAction_CastDivineWrathSpell@
+  008bd280 RELOCATION_MATCH CCreatureAction_CastUnholyPowerSpell::??0CCreatureAction_CastUnholyPowerSpell@
+  008ca800 RELOCATION_MATCH CCreatureAction_NymphTeleportIntoLimbo::??0CCreatureAction_NymphTeleportIntoLimbo@
+  008cbf00 RELOCATION_MATCH CCreatureAction_SummonerSheatheWeapon::??0CCreatureAction_SummonerSheatheWeapon@
+  008cf7d0 RELOCATION_MATCH CCreatureAction_TentacleStrikeLoop::?FinishAction@CCreatureAction_TentacleStrikeLoop@@UAEXXZ
+  008cf990 RELOCATION_MATCH CCreatureAction_TentacleStrikeLoop::??0CCreatureAction_TentacleStrikeLoop@@QAE@AAVCThingCreatureBase@@J@Z
+  008cfa10 RELOCATION_MATCH CCreatureAction_TentacleStrikeOutOf::??0CCreatureAction_TentacleStrikeOutOf@
+  008de620 RELOCATION_MATCH NCreatureMode::CModeDazed::?Recover@CModeDazed
+  008de6a0 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::?OnActivate@CModeRockTrollVulnerable@NCreatureMode@@UAEXXZ
+  008e0730 RELOCATION_MATCH NCreatureMode::CModeDragonRearUp::?FrameUpdate@CModeDragonRearUp
+  008e43a0 RELOCATION_MATCH CCombatAction_RecoverFromDazed::??0CCombatAction_RecoverFromDazed@
+  008e4420 RELOCATION_MATCH CCreatureAction_TrollVulnerableInto::??0CCreatureAction_TrollVulnerableInto@
+  008f5020 RELOCATION_MATCH CCreatureAction_DragonRearUpOutOf::??0CCreatureAction_DragonRearUpOutOf@
+  0091c3d0 RELOCATION_MATCH CAIStateGroup_NymphFloatAround::?Update@CAIStateGroup_NymphFloatAround@@UAEXXZ
+  009211d0 RELOCATION_MATCH CAIStateGroup_BeetleToggleHover::?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ
+  0096fcd0 RELOCATION_MATCH CAIStateGroup_SummonerLightningAttack::?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
+  00982c10 RELOCATION_MATCH CCreatureAction_BeetleTakeOff::??0CCreatureAction_BeetleTakeOff@
+# ---- includers of the landed files
+addr       parity           behav  name
+008cfb00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 1
+  008cfb00 RELOCATION_MATCH CCreatureAction_TentacleStrikeOutOf::??_GCCreatureAction_TentacleStrikeOutOf@@UAEPAXI@Z

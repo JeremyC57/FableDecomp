@@ -14924,10 +14924,10 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCreatureAction_FireMissileWeapon@@QAE@ABV0@@Z	008d6320	008d62f0
 ?GetAnimFromName@CThingCreatureBase@@QAEPAVCAnimationEntry@@ABVCCharString@@PBVCAnimFilterBase@@J@Z	00662b10	008d6780
 ??0CModeDragonHover@NCreatureMode@@QAE@PAVCThing@@@Z	00741b60	008d8620
-??0CCombatAction_RecoverFromDazed@@QAE@PAVCThingCreatureBase@@@Z	008e43a0	008de620
+??0CCombatAction_RecoverFromDazed@@QAE@AAVCThingCreatureBase@@@Z	008e43a0	008de620
 ??0CCombatAction_Guildmaster_HealFollowersRelease@@QAE@AAVCThingCreatureBase@@@Z	008e4860	008dffd0
 ??0CCreatureAction_SnapDragonOutOf@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008e49c0	008e06e0
-??0CCreatureAction_DragonRearUpOutOf@@QAE@PAVCThingCreatureBase@@@Z	008f5020	008e0730
+??0CCreatureAction_DragonRearUpOutOf@@QAE@AAVCThingCreatureBase@@@Z	008f5020	008e0730
 ??0CCreatureAction_DragonFireBeamOutOf@@QAE@AAVCThingCreatureBase@@@Z	008e4a60	008e0780
 ??0CCreatureAction_DragonStrafeOutOf@@QAE@AAVCThingCreatureBase@@@Z	008e4ad0	008e07f0
 ?GetPos@CThing@@QBEABVC3DVector@@XZ	004c73d0	008e07f0
@@ -24862,7 +24862,7 @@ __imp__VirtualQuery@12	0143fe80	00a65720
 ?ResetProjectileTargetingZoomParameter@CTCHeroRangedAttacks@@QAEXXZ	00789b00	00635bf0
 ?Update@CCreatureActionBase@@QAEXXZ	006929a0	006643c0
 ?erase@CCreatureActionList@@QAE?AUiterator@1@U21@@Z	00669af0	006643c0
-??0CCreatureAction_SpiritReturnToHero@@QAE@PAVCThingCreatureBase@@@Z	00854660	0066fc90
+??0CCreatureAction_SpiritReturnToHero@@QAE@AAVCThingCreatureBase@@@Z	00854660	0066fc90
 ?GetCurrentRelativeMovementAngleXY@CThing@@QBEMXZ	006a9640	0066fc90
 ?g_spiritOffScreenSeconds@@3MA	0137ea24	0066fc90
 ?FinishAction@CCreatureActionBase@@UAEXXZ	00694430	0069f670
@@ -24976,7 +24976,7 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?FinalConstructWeaponItemEntries@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z	005c3e91	005c66b2
 ?FinalConstructWeaponItemEntriesPC@CTCInventoryWeapons@@AAEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@PAVCComponent@5@PAVCManager@5@PAVCViewport@5@AAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@M22K@Z	005c47d5	005c8176
 ?AttachExistingScriptedEntitiesToScript@CQuestManager@@QAEXAAVCScriptBase@@@Z	004b26b0	006e7460
-??0CCreatureAction_CastWillFireballSpell@@QAE@PAVCThingCreatureBase@@@Z	008bcd10	0072c930
+??0CCreatureAction_CastWillFireballSpell@@QAE@AAVCThingCreatureBase@@@Z	008bcd10	0072c930
 ?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z	0072b940	0072c930
 ?SetWeaponState@CTCFireballSpell@@QAEXW4EWEAPON_STATE@CTCSpecialAbilities@@@Z	007c8660	0072c930
 ??0CCreatureAction_CastBattleCharge@@QAE@AAVCThingCreatureBase@@AAVCThing@@_NJ@Z	008ce290	0072c9c0
@@ -26612,11 +26612,11 @@ __aullrem	00bfebb0	00770e80
 ?GetSubDef@CDefClassBase@@QAE_NPAUCSmokeDefPtr@@@Z	00722d30	00722590
 ?IsResourcesLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_N_N@Z	004be3e0	00722590
 ?push_back@CGenerationPosVector@@QAEXABUCGenerationPos@@@Z	00723270	00722590
-??0CCreatureAction_CastDivineWrathSpell@@QAE@PAVCThingCreatureBase@@@Z	008bd110	0072cd00
+??0CCreatureAction_CastDivineWrathSpell@@QAE@AAVCThingCreatureBase@@@Z	008bd110	0072cd00
 ??0CCreatureAction_SheatheItemToInventory_ForDivineWrath@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z	0069f090	0072cd00
 ??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAE@XZ	0072d3e0	0072cd00
 ?SHEATH_ACTION_NAME@?A0xa883306e@@3VCCharString@@A	013bad30	0072cd00
-??0CCreatureAction_CastUnholyPowerSpell@@QAE@PAVCThingCreatureBase@@@Z	008bd280	0072ce20
+??0CCreatureAction_CastUnholyPowerSpell@@QAE@AAVCThingCreatureBase@@@Z	008bd280	0072ce20
 ??0CCreatureAction_SheatheItemToInventory_ForUnholyPower@@QAE@AAVCThingCreatureBase@@ABVCCharString@@PAVCCreatureActionBase@@J@Z	0069f0c0	0072ce20
 ??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAE@XZ	0072d430	0072ce20
 ?SHEATH_ACTION_NAME@?A0xf3b0cff9@@3VCCharString@@A	013bad30	0072ce20
@@ -27621,7 +27621,7 @@ _s_SpreadShotAngle	013bae7c	007bbe34
 ?Initialise@CCombatAction_GenericStrikeResponseBase@@UAEXXZ	00865f40	008c4b80
 ?WhackGround@CCreatureAction_TrollWhackGroundBase@@AAEXXZ	008c61c0	008c6390
 ?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABUCFilter_Bind3@@@Z	0091a5b0	0091a670
-??0CCreatureAction_NymphTeleportIntoLimbo@@QAE@PAVCThingCreatureBase@@@Z	008ca800	0091c3d0
+??0CCreatureAction_NymphTeleportIntoLimbo@@QAE@AAVCThingCreatureBase@@@Z	008ca800	0091c3d0
 ?CheckIfCanAttack@CTCNymph@@QAEXJ@Z	0080f210	0091c3d0
 ?GetFineAmountForCurrentCrimes@CTCVillage@@QAEJXZ	0065a41c	0093d580
 ?IsAllowed@CTCFineDialogue@@QAE_NXZ	007e2790	0093d580
@@ -30698,7 +30698,7 @@ _CODA_SourceQueueBuffer@16	00c35a10	00c49470
 ?PushDownManualCameraList@CGameCameraManager@@QAEXXZ	00698c30	0068d890
 ?PushUpManualCameraList@CGameCameraManager@@QAEXXZ	00698b50	0068d890
 ?g_rangedWeaponModeGate@@3_NA	01375752	0068f180
-??0CCombatAction_GenericBreakOffDrain@@QAE@PAVCThingCreatureBase@@@Z	00690db0	00690d30
+??0CCombatAction_GenericBreakOffDrain@@QAE@AAVCThingCreatureBase@@@Z	00690db0	00690d30
 ?Deactivate@CTCCreditsUI@@QAEXXZ	007e49c0	00691470
 ?g_JumpingEnabled@@3_NA	013b86e5	006a4040
 ?g_InvalidSoundHandle@@3KA	0129d25c	006ddcd0
@@ -34302,7 +34302,7 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	0094e5f0	009624d0
 ?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@ABE_NXZ	00961c50	009624d0
 ??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z	00970240	0096fcd0
-??0CCreatureAction_SummonerSheatheWeapon@@QAE@PAVCThingCreatureBase@@@Z	008cbf00	0096fcd0
+??0CCreatureAction_SummonerSheatheWeapon@@QAE@AAVCThingCreatureBase@@@Z	008cbf00	0096fcd0
 ??0CIntelligentPointerConstThing@@QAE@ABUCIntelligentPointerThing@@@Z	007c2930	0096fcd0
 ??1CCreatureAction_SummonerLightningOrbInto@@UAE@XZ	00719c30	0096fcd0
 ?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatureActionBase@@_N@Z	0097da40	0096fcd0
@@ -34938,7 +34938,7 @@ __imp__setsockopt@20	01440534	008f8cc0
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCScorpionKingBattleDef@@@@@Z	008c5a50	008d9e30
 ?OnActivate@CModeDragonFlying@NCreatureMode@@UAEXXZ	008dbb30	008dc6c0
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCSpecialEffectsDef@@@@@Z	00669580	008ddd70
-??0CCreatureAction_TrollVulnerableInto@@QAE@PAVCThingCreatureBase@@@Z	008e4420	008de6a0
+??0CCreatureAction_TrollVulnerableInto@@QAE@AAVCThingCreatureBase@@@Z	008e4420	008de6a0
 ?SetThingAsNotBloodyWillableAtAll@CTCWillResponse@@SIXPAVCThing@@_N@Z	007e4040	008e7390
 ?OffsetSplinePositions@CSplineRandomOffsetData@@QAEXXZ	00b206b0	00b21160
 ??$GFInterpolateArray@VC3DVector@@@NParticleEngine@@YI?AV?$CArray@VC3DVector@@@@ABV1@0MABVC3DVector@@@Z	00b15bd0	00b22310
@@ -35043,7 +35043,7 @@ _time	00bfed22	008405f0
 ??_7CCreatureAction_TentacleIdle@@6B@	01284dac	008cf610
 ??_7CCreatureAction_TentacleStrikeLoop@@6B@	01284ef4	008cf700
 ?QueueStrikeDamage@CTCKrakenTentacle@@QAEXXZ	007f1170	008cf700
-??0CCreatureAction_TentacleStrikeLoop@@QAE@PAVCThingCreatureBase@@J@Z	008cf990	008cf7d0
+??0CCreatureAction_TentacleStrikeLoop@@QAE@AAVCThingCreatureBase@@J@Z	008cf990	008cf7d0
 ??_7CCreatureAction_TentacleStrikeOutOf@@6B@	0128503c	008cf7d0
 ??_7CCreatureAction_SummonerDead@@6B@	01287174	008dfef0
 ??_7CCombatAction_RecoverFromDazed@@6B@	01285c94	008e43a0
@@ -36337,7 +36337,7 @@ _z_inflateInit_	00c02310	00a3a840
 ??_7CActionDropGenericBox@NTCScriptedControl@@6B@	0128d7bc	00904e20
 ??_7CActionPerformExpression@@6B@	0128d8ec	00905360
 ??0CCreatureAction_BeetleLand@@QAE@AAVCThingCreatureBase@@@Z	00982c70	009211d0
-??0CCreatureAction_BeetleTakeOff@@QAE@PAVCThingCreatureBase@@@Z	00982c10	009211d0
+??0CCreatureAction_BeetleTakeOff@@QAE@AAVCThingCreatureBase@@@Z	00982c10	009211d0
 ??0CCreatureAction_DragonTakeOffIntoFlying@@QAE@PAVCThingCreatureBase@@ABUCVector3DList@@@Z	009533e0	00951b20
 ??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ	00953470	00951b20
 ?push_back@CVector3DList@@QAEXABVC3DVector@@@Z	0066e630	00951b20

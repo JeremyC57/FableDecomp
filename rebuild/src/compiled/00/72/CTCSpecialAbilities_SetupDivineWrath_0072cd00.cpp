@@ -15,6 +15,7 @@
 //   address); the carrying component from the out-parameter GetInterface (uninitialised on a miss); the item pointer is set from
 //   the implicit conversion temporary; the sheathe action and the direct cast action are locals of sibling blocks at one frame
 //   address, each returning SetCurrentAction's result.
+// Naming (NF459, r454b unit with 0x008BD110): the CCreatureAction_CastDivineWrathSpell constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_CastDivineWrathSpell@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 class CTCBase;
 class CBaseObject;
 #define FABLE_RETAIL_CCHARSTRING
@@ -45,7 +46,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 };
 class CCreatureAction_CastDivineWrathSpell : public CCombatActionBase { public:   // vtable 0x0127E774, 0x114 bytes
     unsigned char _pad34[0x114 - 0x34];
-    CCreatureAction_CastDivineWrathSpell(CThingCreatureBase* owner);   // 0x008BD110
+    CCreatureAction_CastDivineWrathSpell(CThingCreatureBase& owner);   // 0x008BD110
 };
 class CCreatureAction_SheatheItemToInventory_ForDivineWrath : public CCreatureActionBase { public:   // vtable 0x0125CA7C
     unsigned char _pad04[0x114 - 0x04];
@@ -77,10 +78,10 @@ bool CTCSpecialAbilities::SetupDivineWrath()
     Creature->GetTC(TCI_CARRYING, &carrying);
     CThing* item = carrying->GetThingInPrimarySlot();
     if (item && !item->IsDead()) {
-        CCreatureAction_CastDivineWrathSpell* cast = new CCreatureAction_CastDivineWrathSpell(Creature);
+        CCreatureAction_CastDivineWrathSpell* cast = new CCreatureAction_CastDivineWrathSpell(*Creature);
         cast->PItem = item;
         CCreatureAction_SheatheItemToInventory_ForDivineWrath sheathe(*Creature, SHEATH_ACTION_NAME, cast, 0);
         return Creature->SetCurrentAction(sheathe);
     }
-    return Creature->SetCurrentAction(CCreatureAction_CastDivineWrathSpell(Creature));
+    return Creature->SetCurrentAction(CCreatureAction_CastDivineWrathSpell(*Creature));
 }

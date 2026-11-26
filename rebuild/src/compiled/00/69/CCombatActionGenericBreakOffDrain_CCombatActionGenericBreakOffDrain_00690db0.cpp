@@ -1,4 +1,4 @@
-// CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase*) -- base CCombatActionBase(owner, 250, zeroed CSoundPair)
+// CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase&) -- base CCombatActionBase(owner, 250, zeroed CSoundPair)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690DB0, oracle length 53 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,6 +9,7 @@
 // stores: an embedded object's inline ctor), then this class's vtable (0x0125BF6C,
 // rtti-vtables.tsv).
 // One of 13 bodies of this shape.
+// Naming (NF459, r454b): the constructor takes `CThingCreatureBase&`, ??0CCombatAction_GenericBreakOffDrain@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb (Ego_r inlines it: a best guess, BEST_GUESS.tsv) spell it (was ??0CCombatAction_GenericBreakOffDrain@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 
 class CThingCreatureBase;
 
@@ -26,10 +27,10 @@ class CCombatActionBase { public:
 
 class CCombatAction_GenericBreakOffDrain : public CCombatActionBase { public:
     virtual void v00();
-    CCombatAction_GenericBreakOffDrain(CThingCreatureBase* owner);
+    CCombatAction_GenericBreakOffDrain(CThingCreatureBase& owner);
 };
 
-CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 250, CSoundPair())
+CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 250, CSoundPair())
 {
 }

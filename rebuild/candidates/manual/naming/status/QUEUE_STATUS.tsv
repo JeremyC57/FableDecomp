@@ -10893,7 +10893,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13780	nf453	0099a2d0	??0CBaseClass@@QAE@XZ	partial	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ
 13781	nf453	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ
 13785	nf457	004da939	??0CTCActionUseBase@@QAE@AAVCThing@@@Z	closed	
-13786	nf457	0085bba0	??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z	no_binding	
+13786	nf457	0085bba0	??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z	closed	
 13787	nf458	006e89b0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	partial	?ComputeAttackVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z
 13788	nf458	00877720	?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z	partial	?GetStandardThings@CTools@@QAEXAAUCThingList@N_00615540@@ABVC3DVector@@M@Z
 13789	nf458	008bfce0	??0CCreatureAction_StrafeForward@@QAE@XZ	partial	??0C3DAnimFileHelpersChunk@N_008bfce0@@QAE@XZ

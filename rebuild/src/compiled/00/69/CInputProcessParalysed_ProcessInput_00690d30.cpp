@@ -11,6 +11,7 @@
 // 0x008C2490; the action is a temporary built inside the call (`&CAction(creature)`) and destroyed through the base
 // destructor. The press counter sits at +0x28, just past the CInputProcessGameBase members (engine/CInputProcessParalysed.h
 // flattens the base; the counter is modelled as m_pressCount). The hero's dead flag is bit 0 of +0x91.
+// Naming (NF459, r454b unit with 0x00690DB0): the CCombatAction_GenericBreakOffDrain constructor takes `CThingCreatureBase&` (PDB spelling ??0CCombatAction_GenericBreakOffDrain@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 class CInputEvent;
 class CProcessedInput;
 class CThingCreatureBase;
@@ -23,7 +24,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     virtual ~CCombatActionBase();                          // 0x0062E900
 };
 class CCombatAction_GenericBreakOffDrain : public CCombatActionBase { public:
-    CCombatAction_GenericBreakOffDrain(CThingCreatureBase* creature);   // 0x00690DB0
+    CCombatAction_GenericBreakOffDrain(CThingCreatureBase& creature);   // 0x00690DB0
 };
 class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
@@ -64,7 +65,7 @@ void CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedIn
         if (++m_pressCount > 10) {
             CThingCreatureBase* hero = MyPlayer->GetPControlledCreature();
             if (hero && !hero->m_dead)
-                hero->SetCurrentAction(CCombatAction_GenericBreakOffDrain(hero));
+                hero->SetCurrentAction(CCombatAction_GenericBreakOffDrain(*hero));
         }
     }
 }

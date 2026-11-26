@@ -7780,7 +7780,7 @@ address	symbol	status	leaf_given
 00690ac0	@ProcessWhilePaused@4	RELOCATION_MATCH	ProcessWhilePaused
 00690b20	?ProcessInput@CInputProcessFishing@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	RELOCATION_MATCH	ProcessInput
 00690d30	?ProcessInput@CInputProcessParalysed@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	RELOCATION_MATCH	ProcessInput
-00690db0	??0CCombatAction_GenericBreakOffDrain@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCombatAction_GenericBreakOffDrain@
+00690db0	??0CCombatAction_GenericBreakOffDrain@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCombatAction_GenericBreakOffDrain@
 00690e10	?CCombatAction_GenericBreakOffDrain_scalar_deleting_destructor@@YIPAXPAVCCombatAction_GenericBreakOffDrain@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00690e30	?Clone@CCombatAction_GenericBreakOffDrain@@UBEPAVCCreatureActionBase@@XZ	RELOCATION_MATCH	Clone
 00690e60	?CInputProcessBoastUI_Init@@YIXXZ	MATCH	Init
@@ -12745,7 +12745,7 @@ address	symbol	status	leaf_given
 008545d0	?CScriptModuleSpline_scalar_deleting_destructor@@YIPAXPAUCScriptModuleSpline@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008545f0	?Initialise@CCreatureAction_SpiritAttack_Methods@@UAEXXZ	RELOCATION_MATCH	Initialise
 00854610	??0CCreatureAction_SpiritHitResponse@@QAE@PAVCThingCreatureBase@@PBVC3DVector@@@Z	RELOCATION_MATCH	??0CCreatureAction_SpiritHitResponse@
-00854660	??0CCreatureAction_SpiritReturnToHero@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_SpiritReturnToHero@
+00854660	??0CCreatureAction_SpiritReturnToHero@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_SpiritReturnToHero@
 008546c0	??0CCreatureAction_SpiritAttack@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_SpiritAttack@
 008548b0	?CreateAttackEffect@CCreatureAction_SpiritAttack@@AAEXXZ	RELOCATION_MATCH	?CreateAttackEffect@CCreatureAction_SpiritAttack@@AAEXXZ
 008550a0	?IsOverrideableByActionOfSamePriority@CCreatureAction_SpiritHitResponse@@UBE_NXZ	MATCH	IsOverrideableByActionOfSamePriority
@@ -12852,7 +12852,7 @@ address	symbol	status	leaf_given
 0085ba90	?Initialise@CCreatureActionHeroJump@@UAEXXZ	RELOCATION_MATCH	Initialise
 0085bb10	??0CCreatureActionHero180RunningTurn@@QAE@PAVCThingCreatureBase@@ABVC3DVector@@@Z	RELOCATION_MATCH	??0CCreatureActionHero180RunningTurn@
 0085bb60	??0CCreatureActionHeroJump@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureActionHeroJump@
-0085bba0	??0CCombatAction_GenericResponseToDecapitation@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCombatAction_GenericResponseToDecapitation@
+0085bba0	??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCombatAction_GenericResponseToDecapitation@
 0085bbe0	?IsClearingMovementVector@CCreatureActionHero180RunningTurn@@UBE_NXZ	MATCH	?IsClearingMovementVector@CCreatureActionHero180RunningTurn@@UBE_NXZ
 0085bc00	?IsClearingMovementVector@CCreatureActionHeroRunningStop@@UBE_NXZ	MATCH	?IsClearingMovementVector@CCreatureActionHeroRunningStop@@UBE_NXZ
 0085bc10	?IsActionReadyForInterruption@CCreatureActionHeroRunningStop@@UBE_NXZ	MATCH	?IsActionReadyForInterruption@CCreatureActionHeroRunningStop@@UBE_NXZ
@@ -14413,17 +14413,17 @@ address	symbol	status	leaf_given
 008bca00	??0CCreatureAction_CastWillLightningSpell@@QAE@PAVCThingCreatureBase@@JJPAVCThing@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastWillLightningSpell
 008bcb80	??0CCreatureAction_BuildUpWillLightningSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_BuildUpWillLightningSpell@
 008bcbe0	??0CCreatureAction_ReleaseWillLightningSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_ReleaseWillLightningSpell
-008bcd10	??0CCreatureAction_CastWillFireballSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastWillFireballSpell@
+008bcd10	??0CCreatureAction_CastWillFireballSpell@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastWillFireballSpell@
 008bcd60	??0CCreatureAction_CastWillFireballSpell@@QAE@PAVCThingCreatureBase@@J_NJ@Z	RELOCATION_MATCH	??0CCreatureAction_CastWillFireballSpell@
 008bcdb0	??0CCreatureAction_BuildFireballSpell@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_BuildFireballSpell@
 008bce10	??0CCreatureAction_FinishFireballSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_FinishFireballSpell@
 008bce50	??0CCreatureAction_FinishFireballSpell@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	RELOCATION_MATCH	??0CCreatureAction_FinishFireballSpell@
 008bd0b0	??0CCreatureAction_BeingForcePushed@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_BeingForcePushed@
-008bd110	??0CCreatureAction_CastDivineWrathSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastDivineWrathSpell@
+008bd110	??0CCreatureAction_CastDivineWrathSpell@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastDivineWrathSpell@
 008bd170	??0CCreatureAction_BuildUpDivineWrathSpell@@QAE@PAVCThingCreatureBase@@VCCharString@@@Z	RELOCATION_MATCH	??0CCreatureAction_BuildUpDivineWrathSpell@
 008bd1c0	??0CCreatureAction_ReleaseDivineWrathSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_ReleaseDivineWrathSpell@
 008bd220	??0CCreatureAction_ReleaseAndLoopDivineWrathSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_ReleaseAndLoopDivineWrathSpell@
-008bd280	??0CCreatureAction_CastUnholyPowerSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastUnholyPowerSpell@
+008bd280	??0CCreatureAction_CastUnholyPowerSpell@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_CastUnholyPowerSpell@
 008bd2e0	??0CCreatureAction_BuildUpUnholyPowerSpell@@QAE@PAVCThingCreatureBase@@VCCharString@@@Z	RELOCATION_MATCH	??0CCreatureAction_BuildUpUnholyPowerSpell@
 008bd330	??0CCreatureAction_ReleaseUnholyPowerSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_ReleaseUnholyPowerSpell@
 008bd390	??0CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_ReleaseAndLoopUnholyPowerSpell@
@@ -14829,7 +14829,7 @@ address	symbol	status	leaf_given
 008ca310	?PerformAction@CCreatureAction_NymphGetHit@@QAEXXZ	RELOCATION_MATCH	PerformAction
 008ca780	??0CCreatureAction_NymphTeleportLimboBase@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_NymphTeleportLimboBase@
 008ca7c0	??0CCreatureAction_NymphTeleportLimboBase@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	RELOCATION_MATCH	??0CCreatureAction_NymphTeleportLimboBase@
-008ca800	??0CCreatureAction_NymphTeleportIntoLimbo@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_NymphTeleportIntoLimbo@
+008ca800	??0CCreatureAction_NymphTeleportIntoLimbo@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_NymphTeleportIntoLimbo@
 008ca8d0	?IsToFaceTargetAtStart@CCreatureAction_NymphSummonInto@@UBE_NXZ	MATCH	IsToFaceTargetAtStart
 008ca8e0	?IsToFaceTarget@CCreatureAction_NymphShot@@UBE_NXZ	MATCH	IsToFaceTarget
 008ca8f0	?GetIsToFaceTargetCone@CCreatureAction_NymphShot@@UBEMXZ	RELOCATION_MATCH	GetIsToFaceTargetCone
@@ -14869,7 +14869,7 @@ address	symbol	status	leaf_given
 008cbd90	??0CCreatureAction_SummonerLightningOrbInto@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z	RELOCATION_MATCH	??0CCreatureAction_SummonerLightningOrbInto@
 008cbea0	??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_SummonerLightningOrbOutOfGroundSmash@
 008cbee0	??0CCreatureAction_SummonerUnsheatheStrike@@QAE@XZ	RELOCATION_MATCH	??0CCreatureAction_SummonerUnsheatheStrike@
-008cbf00	??0CCreatureAction_SummonerSheatheWeapon@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_SummonerSheatheWeapon@
+008cbf00	??0CCreatureAction_SummonerSheatheWeapon@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_SummonerSheatheWeapon@
 008cbf60	?Release@?$CDefPointer@$$CBVCSummonerDef@@@@QAEXXZ	MATCH	?Release@?$CDefPointer@$$CBVCSummonerDef@@@@QAEXXZ
 008cbf90	??1?$CDefPointer@$$CBVCSummonerDef@@@@QAE@XZ	MATCH	??1?$CDefPointer@$$CBVCSummonerDef@@@@QAE@XZ
 008cc0b0	??0CModeSummonerSummon@NCreatureMode@@QAE@PAVCThing@@0@Z	RELOCATION_MATCH	??0CModeSummonerSummon
@@ -14998,9 +14998,9 @@ address	symbol	status	leaf_given
 008cf460	?FrameUpdate@CCreatureAction_TentacleStrikeLoop@@UAEXXZ	RELOCATION_MATCH	FrameUpdate
 008cf920	??0CCreatureAction_TentacleIdle@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleIdle@
 008cf960	?IsUsingAnimationMovement@CCreatureAction_TentacleIdle@@UBE_NXZ	MATCH	?IsUsingAnimationMovement@CCreatureAction_TentacleIdle@@UBE_NXZ
-008cf990	??0CCreatureAction_TentacleStrikeLoop@@QAE@PAVCThingCreatureBase@@J@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleStrikeLoop@
+008cf990	??0CCreatureAction_TentacleStrikeLoop@@QAE@AAVCThingCreatureBase@@J@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleStrikeLoop@
 008cf9e0	?IsUsingAnimationMovement@CCreatureAction_TentacleStrikeLoop@@UBE_NXZ	MATCH	?IsUsingAnimationMovement@CCreatureAction_TentacleStrikeLoop@@UBE_NXZ
-008cfa10	??0CCreatureAction_TentacleStrikeOutOf@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleStrikeOutOf@
+008cfa10	??0CCreatureAction_TentacleStrikeOutOf@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleStrikeOutOf@
 008cfa50	?IsToEvadeAllHits@CCreatureAction_TentacleStrikeOutOf@@UBE_NXZ	MATCH	?IsToEvadeAllHits@CCreatureAction_TentacleStrikeOutOf@@UBE_NXZ
 008cfa60	?IsUsingAnimationMovement@CCreatureAction_TentacleStrikeOutOf@@UBE_NXZ	MATCH	?IsUsingAnimationMovement@CCreatureAction_TentacleStrikeOutOf@@UBE_NXZ
 008cfa70	?IsMovementUsingPhysics@CCreatureAction_TentacleStrikeOutOf@@UBE_NXZ	MATCH	?IsMovementUsingPhysics@CCreatureAction_TentacleStrikeOutOf@@UBE_NXZ
@@ -15226,8 +15226,8 @@ address	symbol	status	leaf_given
 008e3a00	?CModeScorpionKingVulnerable_scalar_deleting_destructor@@YIPAXPAUCModeScorpionKingVulnerable@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008e3aa0	?_M_insert_overflow@?$vector@UCIcicleData@Icicles@@@std@Icicles@@QAEXPAUCIcicleData@3@ABU43@ABU__false_type@3@I_N@Z	RELOCATION_MATCH	_M_insert_overflow
 008e4360	?PushBack_CElement36_008e2fc0_008e4360@CRetailVector_CElement36_008e2fc0@@QAEXABUCElement36_008e2fc0@@@Z	RELOCATION_MATCH	PushBack_CElement36_008e2fc0_008e4360
-008e43a0	??0CCombatAction_RecoverFromDazed@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCombatAction_RecoverFromDazed@
-008e4420	??0CCreatureAction_TrollVulnerableInto@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TrollVulnerableInto@
+008e43a0	??0CCombatAction_RecoverFromDazed@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCombatAction_RecoverFromDazed@
+008e4420	??0CCreatureAction_TrollVulnerableInto@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TrollVulnerableInto@
 008e4490	??0CCreatureAction_TrollVulnerableOutOf@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TrollVulnerableOutOf@
 008e4500	??0CCreatureAction_IceTrollIcicleAssaultLoop@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_IceTrollIcicleAssaultLoop@
 008e45b0	??0CCreatureAction_ScorpionTailWithdraw@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	RELOCATION_MATCH	??0CCreatureAction_ScorpionTailWithdraw
@@ -15431,7 +15431,7 @@ address	symbol	status	leaf_given
 008f4d60	??0CCreatureAction_DragonFlight@@QAE@PAVCThingCreatureBase@@ABVCCharString@@ABVC3DVector@@@Z	RELOCATION_MATCH	??0CCreatureAction_DragonFlight
 008f4ef0	??0CCreatureAction_DragonRetreat@@QAE@PAVCThingCreatureBase@@ABVCCharString@@@Z	RELOCATION_MATCH	??0CCreatureAction_DragonRetreat@
 008f4f40	??0CCreatureAction_DragonSwoop@@QAE@PAVCThingCreatureBase@@ABVCCharString@@ABVC3DVector@@22@Z	RELOCATION_MATCH	??0CCreatureAction_DragonSwoop@
-008f5020	??0CCreatureAction_DragonRearUpOutOf@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_DragonRearUpOutOf@
+008f5020	??0CCreatureAction_DragonRearUpOutOf@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_DragonRearUpOutOf@
 008f5060	?PerformAction@CCreatureAction_SnapDragon@@QAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_SnapDragon
 008f5220	?PerformAction@CCreatureAction_SnapDragonFast@@QAEXXZ	RELOCATION_MATCH	?PerformAction@CCreatureAction_SnapDragonFast
 008f55e0	?GetAnimDelayTime@CCreatureAction_DragonFlight@@UBEJXZ	MATCH	?GetAnimDelayTime@CCreatureAction_DragonFlight@@UBEJXZ
@@ -17236,7 +17236,7 @@ address	symbol	status	leaf_given
 009826d0	??0CCreatureAction_MagicBlast@@QAE@ABV0@@Z	RELOCATION_MATCH	??0CCreatureAction_MagicBlast@
 00982720	?Clone@CCreatureAction_SendMessage@@UBEPAVCCreatureActionBase@@XZ	RELOCATION_MATCH	Clone
 00982750	??0CCreatureAction_SendMessage@@QAE@ABV0@@Z	RELOCATION_MATCH	??0CCreatureAction_SendMessage@
-00982c10	??0CCreatureAction_BeetleTakeOff@@QAE@PAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_BeetleTakeOff@
+00982c10	??0CCreatureAction_BeetleTakeOff@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_BeetleTakeOff@
 00982cd0	?CCreatureAction_BeetleTakeOff_scalar_deleting_destructor@@YIPAXPAVCCreatureAction_BeetleTakeOff@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00982cf0	?CCreatureAction_BeetleLand_scalar_deleting_destructor@@YIPAXPAVCCreatureAction_BeetleLand@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00982d10	?Clone@CCreatureAction_BeetleTakeOff@@UBEPAVCCreatureActionBase@@XZ	RELOCATION_MATCH	Clone

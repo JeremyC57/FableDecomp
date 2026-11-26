@@ -1669,3 +1669,10 @@ against CODAApi.lib, or stay compiled C++?
   Adding them would move about 798 targets out of an agree status (409 agree_pdb, 137 agree_std, 136 agree_descriptive, 116
   agree_unverified). The proven figure therefore overstates closure by up to about 800; owner decision on a table rebuild.
   Details: rebuild/candidates/manual/pending/2026-11-26_nf453_handback/README.md.
+
+## 2026-11-26 A: short COMDAT vftables with "pick any" selection (NF459, ruling r459a)
+- Ctor rows built on local class models emit `??_7<Class>@@6B@` as a 4-byte, one-slot COMDAT; the Clone / deleting-destructor rows of
+  the same class emit the full table (324 bytes for CCombatAction_GenericResponseToDecapitation). Both sections carry COMDAT selection 2
+  (IMAGE_COMDAT_SELECT_ANY), read from the objects (0x0066A560 size 4, 0x0066A780 size 324, 0x0085BBA0 size 4), so a real link may keep
+  the short table and break virtual dispatch. Existing at HEAD; fix is the shared-header port of the ctor rows (T3 nf459 family line).
+  Owner item: how many `??_7` names are defined at different sizes across landed objects (not yet counted).

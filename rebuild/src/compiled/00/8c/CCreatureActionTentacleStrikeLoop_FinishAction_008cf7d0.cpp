@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CF7D0, 287 bytes, virtual FinishAction (slot 4), plain `ret`.
 // Callees: CCombatActionBase::FinishAction 0x00859A20 (direct, first), CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CVectorMap::LowerBound 0x0040F020 (the unchecked GetInterface 0xE3 = CTCKrakenTentacle, bit 3 of +0x3c), CWorld::GetFrame
-//   0x0049D870 (static __fastcall), _ftol2 0x00BFEA70, CCreatureAction_TentacleStrikeLoop(CThingCreatureBase*, long) 0x008CF990,
+//   0x0049D870 (static __fastcall), _ftol2 0x00BFEA70, CCreatureAction_TentacleStrikeLoop(CThingCreatureBase&, long) 0x008CF990,
 //   CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) 0x00858030 (the inline TentacleStrikeOutOf ctor, action 250,
 //   vtable 0x0128503C), CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCombatActionBase 0x0062E900.
 //   Global: CMainGameComponent::ConstantFPS 0x01375550 (protected static long, read through the inline GetConstantFPS()).
@@ -14,6 +14,8 @@
 // Shape: the tentacle comes from the unchecked out-parameter lookup in an inline accessor (as the landed FrameUpdate 0x008CF460);
 //   the limit is written `(long)(def->TentacleSmackDownTime * GetConstantFPS())`: the fps-first spelling keeps the int-to-float
 //   spill in its own slot and costs the frame 4 bytes (the lookup key no longer packs with the CSoundPair temporary).
+// Naming (NF459, r454b unit with 0x008CFA10): the CCreatureAction_TentacleStrikeOutOf constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_TentacleStrikeOutOf@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
+// Naming (NF459, r454b unit with 0x008CF990): the CCreatureAction_TentacleStrikeLoop constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_TentacleStrikeLoop@@QAE@AAVCThingCreatureBase@@J@Z, both PDBs); the call passes `*p` for `p`, the same pointer.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };
@@ -96,14 +98,14 @@ class CCombatActionBase { public:
 };
 class CCreatureAction_TentacleStrikeOutOf : public CCombatActionBase { public:   // vtable 0x0128503C
     virtual void v00();
-    CCreatureAction_TentacleStrikeOutOf(CThingCreatureBase* owner) : CCombatActionBase(*owner, 250, CSoundPair()) { }
+    CCreatureAction_TentacleStrikeOutOf(CThingCreatureBase& owner) : CCombatActionBase(owner, 250, CSoundPair()) { }
 };
 class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   // vtable 0x01284EF4
     long  StartTick;                            // +0x114
     bool  Interrupt;                            // +0x118
     float StartHealth;                          // +0x11c
     virtual void v00();
-    CCreatureAction_TentacleStrikeLoop(CThingCreatureBase* owner, long startTick);   // 0x008CF990
+    CCreatureAction_TentacleStrikeLoop(CThingCreatureBase& owner, long startTick);   // 0x008CF990
     virtual void FinishAction();
     FABLE_FORCEINLINE CTCKrakenTentacle* GetTentacle() const
     {
@@ -118,7 +120,7 @@ void CCreatureAction_TentacleStrikeLoop::FinishAction()
     CCombatActionBase::FinishAction();
     CTCKrakenTentacle* tentacle = GetTentacle();
     if (!Interrupt && CWorld::GetFrame() - StartTick <= (long)(tentacle->PTentacleDef->TentacleSmackDownTime * CMainGameComponent::GetConstantFPS()))
-        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleStrikeLoop(PCreature.GetPItem(), StartTick))));
+        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleStrikeLoop(*PCreature.GetPItem(), StartTick))));
     else
-        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleStrikeOutOf(PCreature.GetPItem()))));
+        PCreature.GetPItem()->SetCurrentAction(*reinterpret_cast<CCreatureActionBase const*>(&(CCreatureAction_TentacleStrikeOutOf(*PCreature.GetPItem()))));
 }

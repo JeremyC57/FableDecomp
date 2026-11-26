@@ -1,9 +1,10 @@
-// CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero(CThingCreatureBase*) -- base CCreatureActionBase(owner, zeroed CSoundPair, 0, 0), own vtable (0x01275C54, rtti-vtables.tsv)
+// CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero(CThingCreatureBase&) -- base CCreatureActionBase(owner, zeroed CSoundPair, 0, 0), own vtable (0x01275C54, rtti-vtables.tsv)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00854660, length 64 bytes.
 // Callees: CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, const CSoundPair&, long, long) @ 0x00693C70
 // Shape: the sound pair is built zeroed on the stack by its inline constructor (register-zeroed stores before the
 // base call, the two zero arguments are pushed from the same zeroed eax); the class adds no data of its own, so only the vtable store follows.
 // Retail CCreatureActionBase is 0xa8 bytes (engine header: 0xb4, its three containers are 4 bytes wider in the PDB build).
+// Naming (NF459, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_SpiritReturnToHero@@QAE@AAVCThingCreatureBase@@@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_SpiritReturnToHero@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThingCreatureBase;
 
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
@@ -22,10 +23,10 @@ class CCreatureActionBase { public:               // retail sizeof 0xa8
 
 class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:           // vtable 0x01275C54; adds no data
     virtual void v00();
-    CCreatureAction_SpiritReturnToHero(CThingCreatureBase* owner);
+    CCreatureAction_SpiritReturnToHero(CThingCreatureBase& owner);
 };
 
-CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero(CThingCreatureBase* owner)
-    : CCreatureActionBase(*owner, CSoundPair(), 0, 0)
+CCreatureAction_SpiritReturnToHero::CCreatureAction_SpiritReturnToHero(CThingCreatureBase& owner)
+    : CCreatureActionBase(owner, CSoundPair(), 0, 0)
 {
 }

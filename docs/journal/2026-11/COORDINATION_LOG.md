@@ -1407,3 +1407,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: applied NF453 stale sweep (A3): 292 deletes, 204 replaces, 17 rewitnesses, census-verified over all 57,160 rows; +72 done; rulings r453a-e; owner item: 3,746 live bindings missing from the table (~798 agree targets).
 - 2026-11-26 A: landed NF457 b5a / b5b / b6 (38 rows: creature-action ctors to (CThingCreatureBase&), BuyHouse unit; +26 proven, +6 FableWin best guesses); r457a granted (b5x needs a catalog rename), r457b declined (libcp), r457c-e queued.
 - 2026-11-26 A: applied NF458 stale sweep (A3 continuation): 107 deletes, 105 replaces, 25 rewitnesses; +57 done; 253 lines held; r458a/b open.
+- 2026-11-26 A: landed NF459 b7 (HeroRunningStop identity + catalog rename) and b9 (25 creature-action ctor/caller rows): +10 proven, +4 FableWin best guesses; r459a short COMDAT vftables logged (selection 2), r459b/c queued, r459d granted on conditions (b8 pending equiv).

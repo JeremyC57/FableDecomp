@@ -1,4 +1,4 @@
-// CCreatureAction_BeetleTakeOff::CCreatureAction_BeetleTakeOff(CThingCreatureBase*) -- base CCombatActionBase(owner, 0, zeroed CSoundPair), own vtable (0x012995EC, rtti-vtables.tsv), then the animation name "TAKE_OFF"
+// CCreatureAction_BeetleTakeOff::CCreatureAction_BeetleTakeOff(CThingCreatureBase&) -- base CCombatActionBase(owner, 0, zeroed CSoundPair), own vtable (0x012995EC, rtti-vtables.tsv), then the animation name "TAKE_OFF"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00982C10, length 96 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "TAKE_OFF"), CCombatActionBase::SetCombatAnimation
@@ -8,6 +8,7 @@
 // base call), the vtable store sits between the base call and the scoped CCharString (a named local in its own
 // block: a bare temporary would reuse the constructor's returned pointer, GOTCHAS), the name is destroyed before
 // `this` is returned.
+// Naming (NF459, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_BeetleTakeOff@@QAE@AAVCThingCreatureBase@@@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_BeetleTakeOff@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThingCreatureBase;
 
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
@@ -33,11 +34,11 @@ public:
 
 class CCreatureAction_BeetleTakeOff : public CCombatActionBase { public:             // vtable 0x012995EC; adds no data
     virtual void v00();
-    CCreatureAction_BeetleTakeOff(CThingCreatureBase* owner);
+    CCreatureAction_BeetleTakeOff(CThingCreatureBase& owner);
 };
 
-CCreatureAction_BeetleTakeOff::CCreatureAction_BeetleTakeOff(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 0, CSoundPair())
+CCreatureAction_BeetleTakeOff::CCreatureAction_BeetleTakeOff(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 0, CSoundPair())
 {
     {
         CCharString name("TAKE_OFF");         // conversion-constructor length default (-1), re-addressed with lea

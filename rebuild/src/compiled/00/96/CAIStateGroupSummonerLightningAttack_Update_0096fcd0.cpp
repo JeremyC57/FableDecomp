@@ -24,6 +24,7 @@
 //   (keeps retail's unrotated loop and the in-loop Terminate epilogue); every perform result is a NAMED long (an inline
 //   `== 1` on the call materialises a bool because of the temporary's destructor); the delay and the frame rate are read
 //   into locals before the GetWorldFrame call.
+// Naming (NF459, r454b unit with 0x008CBF00): the CCreatureAction_SummonerSheatheWeapon constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_SummonerSheatheWeapon@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 #include "fable_compiler.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -100,7 +101,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
 };
 class CCreatureAction_SummonerSheatheWeapon : public CCombatActionBase { public:
     unsigned char Flag;                         // +0x114
-    CCreatureAction_SummonerSheatheWeapon(CThingCreatureBase* owner);   // 0x008CBF00
+    CCreatureAction_SummonerSheatheWeapon(CThingCreatureBase& owner);   // 0x008CBF00
 };
 class CCreatureAction_SummonerLightningOrbInto : public CCombatActionBase { public:
     CBaseIntelligentPointer PTarget;            // +0x114
@@ -167,7 +168,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
                     break;
                 if (weapon->m_flags91 & 1)
                     continue;
-                long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerSheatheWeapon(GetCreature()), false);
+                long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerSheatheWeapon(*GetCreature()), false);
                 if (result != 1)
                     continue;
                 Terminate();

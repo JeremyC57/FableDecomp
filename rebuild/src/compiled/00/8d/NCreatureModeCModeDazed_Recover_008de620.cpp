@@ -8,6 +8,7 @@
 // Name: FableWin.pdb `?Recover@CModeDazed@NCreatureMode@@EAEXXZ` (private virtual, slot 15 of the out-of-action modes).
 // Shape: as the landed CModeScorpionKingExhausted::Recover @ 0x008DF640: an explicit action temporary passed by reference
 //   (the ctor's returned `this` is pushed); the creature is a named local in esi for the ctor argument and the call.
+// Naming (NF459, r454b unit with 0x008E43A0): the CCombatAction_RecoverFromDazed constructor takes `CThingCreatureBase&` (PDB spelling ??0CCombatAction_RecoverFromDazed@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 class CCreatureActionBase;
 
 class CThingCreatureBase { public:
@@ -23,7 +24,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCombatAction_RecoverFromDazed : public CCombatActionBase { public:
-    CCombatAction_RecoverFromDazed(CThingCreatureBase* owner);   // 0x008E43A0
+    CCombatAction_RecoverFromDazed(CThingCreatureBase& owner);   // 0x008E43A0
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -41,5 +42,5 @@ struct CModeDazed : CModeBase {            // vtable 0x01267CC4 (CModeOutOfActio
 void NCreatureMode::CModeDazed::Recover()
 {
     CThingCreatureBase* creature = ParentThing;
-    creature->SetCurrentAction(CCombatAction_RecoverFromDazed(creature));
+    creature->SetCurrentAction(CCombatAction_RecoverFromDazed(*creature));
 }

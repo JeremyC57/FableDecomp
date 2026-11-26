@@ -18,6 +18,7 @@
 //   0x00982C70 / 0x00982C10 define (pointer form; the PDB reference form is in NAME_FIXES). Was the namespaced N_0062e900 stand-in.
 //   The state group itself is the shared engine/CAIStateGroup_BeetleToggleHover.h (IsLanding +0x14); own leaf now the PDB protected virtual
 //   ?Update@CAIStateGroup_BeetleToggleHover@@MAEXXZ (Ego_r.pdb 0x009440A0 + FableWin.pdb 0x02C2C800; was UAE on the row-local struct).
+// Naming (NF459, r454b unit with 0x00982C10): the CCreatureAction_BeetleTakeOff constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_BeetleTakeOff@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
 #define FABLE_RETAIL_CAISTATEGROUPBASE_GETCREATURE
@@ -55,7 +56,7 @@ class CCreatureAction_BeetleLand : public CCombatActionBase { public:
 };
 
 class CCreatureAction_BeetleTakeOff : public CCombatActionBase { public:
-    CCreatureAction_BeetleTakeOff(CThingCreatureBase* creature);   // 0x00982C10
+    CCreatureAction_BeetleTakeOff(CThingCreatureBase& creature);   // 0x00982C10
 };
 
 void CAIStateGroup_BeetleToggleHover::Update()
@@ -63,7 +64,7 @@ void CAIStateGroup_BeetleToggleHover::Update()
     if (IsLanding) {
         AIAction_PerformActionAndWait(CCreatureAction_BeetleLand(GetCreature()), false);
     } else {
-        AIAction_PerformActionAndWait(CCreatureAction_BeetleTakeOff(&GetCreature()), false);
+        AIAction_PerformActionAndWait(CCreatureAction_BeetleTakeOff(GetCreature()), false);
     }
     Terminate();
 }

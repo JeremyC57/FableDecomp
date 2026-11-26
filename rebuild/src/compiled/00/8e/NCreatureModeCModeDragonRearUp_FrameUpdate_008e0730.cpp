@@ -9,6 +9,7 @@
 // Layout: Ego_r.pdb CModeDragonRearUp (0x78): CModeStandBase 0x68, Filter +0x68, Timer +0x74.
 // Shape: the creature is a named local read once (edi) for the busy test, the ctor argument and the call; the timer is
 //   decremented in memory (`dec [esi+74h]`) and re-read for the test.
+// Naming (NF459, r454b unit with 0x008F5020): the CCreatureAction_DragonRearUpOutOf constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_DragonRearUpOutOf@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 class CCreatureActionBase;
 
 class CThingCreatureBase { public:
@@ -25,7 +26,7 @@ class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeo
     virtual ~CCombatActionBase();                  // 0x0062E900
 };
 class CCreatureAction_DragonRearUpOutOf : public CCombatActionBase { public:
-    CCreatureAction_DragonRearUpOutOf(CThingCreatureBase* owner);   // 0x008F5020
+    CCreatureAction_DragonRearUpOutOf(CThingCreatureBase& owner);   // 0x008F5020
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -53,5 +54,5 @@ void NCreatureMode::CModeDragonRearUp::FrameUpdate()
     if (!creature->IsPerformingAnyAction())
         --Timer;
     if (Timer <= 0)
-        creature->SetCurrentAction(CCreatureAction_DragonRearUpOutOf(creature));
+        creature->SetCurrentAction(CCreatureAction_DragonRearUpOutOf(*creature));
 }

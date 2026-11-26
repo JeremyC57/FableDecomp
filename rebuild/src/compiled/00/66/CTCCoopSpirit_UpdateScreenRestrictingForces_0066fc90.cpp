@@ -20,6 +20,7 @@
 // Layout (local model): ParentThing +0x04 (player number byte +0x90), OffScreenFrames +0x14; the game component's display
 // +0x28, the display's camera +0x2c.
 // Name fix (agentNF6 2026-11-10): CThingCreatureBase::SetCurrentAction 0x006644F0 is ?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z (Ego_r.pdb / FableWin.pdb): a CThingCreatureBase member, bool, the action by const reference.
+// Naming (NF459, r454b unit with 0x00854660): the CCreatureAction_SpiritReturnToHero constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_SpiritReturnToHero@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 #include <math.h>
 #pragma intrinsic(fabs)
 class C2DVector { public: float X, Y; };
@@ -75,7 +76,7 @@ class CCreatureActionBase { public:
 };
 class CThingCreatureBase;
 class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:
-    CCreatureAction_SpiritReturnToHero(CThingCreatureBase* owner);   // 0x00854660
+    CCreatureAction_SpiritReturnToHero(CThingCreatureBase& owner);   // 0x00854660
 };
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
@@ -159,6 +160,6 @@ void CTCCoopSpirit::UpdateScreenRestrictingForces()
     if (OffScreenFrames > (long)((float)CMainGameComponent::GetConstantFPS() * g_spiritOffScreenSeconds)) {
         OffScreenFrames = 0;
         CThingCreatureBase* parent = ParentThing;
-        parent->SetCurrentAction(CCreatureAction_SpiritReturnToHero(parent));
+        parent->SetCurrentAction(CCreatureAction_SpiritReturnToHero(*parent));
     }
 }

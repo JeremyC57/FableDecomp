@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Model of CCombatAction_GenericResponseToDecapitation constructor @ 0x0085BBA0: base(owner, 0, zeroed CSoundPair)
+// Model of the CCreatureActionHeroRunningStop constructor @ 0x0085BBA0 (NF459, r457a: was modelled as CCombatAction_GenericResponseToDecapitation): base(owner, 0, zeroed CSoundPair)
 
 class CThingCreatureBase { public: int id; };
 class CSoundPair { public: long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) { } };
@@ -11,14 +11,14 @@ class CCombatActionBase { public:
     CCombatActionBase(CThingCreatureBase* owner, long code, const CSoundPair& s) { ++g_baseCalls; g_owner = owner; g_code = code; g_first = s.m_first; g_second = s.m_second; }
 };
 
-class CCombatAction_GenericResponseToDecapitation : public CCombatActionBase { public:
+class CCreatureActionHeroRunningStop : public CCombatActionBase { public:
     virtual void v00() {}
-    CCombatAction_GenericResponseToDecapitation(CThingCreatureBase* owner) : CCombatActionBase(owner, 0, CSoundPair()) { }
+    CCreatureActionHeroRunningStop(CThingCreatureBase& owner) : CCombatActionBase(&owner, 0, CSoundPair()) { }
 };
 int main()
 {
     CThingCreatureBase owner; owner.id = 7;
-    CCombatAction_GenericResponseToDecapitation action(&owner);
+    CCreatureActionHeroRunningStop action(owner);
     if (g_baseCalls != 1 || g_owner != &owner || g_code != 0 || g_first != 0 || g_second != 0) { std::printf("0085bba0_TEST FAIL\n"); return 1; }
     std::printf("0085bba0_TEST PASS\n"); return 0;
 }

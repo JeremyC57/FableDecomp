@@ -194325,9 +194325,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0085bba0'
-        Module = 'CCombatAction_GenericResponseToDecapitation'
-        Source = '00/85/CCombatActionGenericResponseToDecapitation_CCombatActionGenericResponseToDecapitation_0085bba0.cpp'
-        TestSource = '00/85/CCombatActionGenericResponseToDecapitation_CCombatActionGenericResponseToDecapitation_0085bba0_test.cpp'
+        Module = 'CCreatureActionHeroRunningStop'
+        Source = '00/85/CCreatureActionHeroRunningStop_CCreatureActionHeroRunningStop_0085bba0.cpp'
+        TestSource = '00/85/CCreatureActionHeroRunningStop_CCreatureActionHeroRunningStop_0085bba0_test.cpp'
         PassPattern = '0085bba0_TEST PASS'
     }
     [pscustomobject]@{

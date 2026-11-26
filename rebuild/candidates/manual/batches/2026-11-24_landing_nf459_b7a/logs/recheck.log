@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0085bba0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+0085bba0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+0085bba0   WARN SHARED_HEADER_AVAILABLE CCreatureActionHeroRunningStop (engine/CCreatureActionHeroRunningStop.h)
+0085bba0   WARN STANDIN_LEAF ??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z (catalog CCombatAction_GenericResponseToDecapitation::CCombatAction_GenericResponseToDecapitation; names another function)
+0085bba0   RELOCATION_MATCH PASS   CCombatAction_GenericResponseToDecapitation
+
+WINS: 1
+  0085bba0 RELOCATION_MATCH CCombatAction_GenericResponseToDecapitation::??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z

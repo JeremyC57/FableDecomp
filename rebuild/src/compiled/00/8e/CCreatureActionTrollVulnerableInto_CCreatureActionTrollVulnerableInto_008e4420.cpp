@@ -1,4 +1,4 @@
-// CCreatureAction_TrollVulnerableInto::CCreatureAction_TrollVulnerableInto(CThingCreatureBase*) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable (0x01285DEC, rtti-vtables.tsv), then the animation name "VULNERABLE_INTO"
+// CCreatureAction_TrollVulnerableInto::CCreatureAction_TrollVulnerableInto(CThingCreatureBase&) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable (0x01285DEC, rtti-vtables.tsv), then the animation name "VULNERABLE_INTO"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E4420, length 90 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal "VULNERABLE_INTO"), CCombatActionBase::SetCombatAnimation
@@ -8,6 +8,7 @@
 // base call), the vtable store sits between the base call and the scoped CCharString (a named local in its own
 // block: a bare temporary would reuse the constructor's returned pointer, GOTCHAS), the name is destroyed before
 // `this` is returned.
+// Naming (NF459, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TrollVulnerableInto@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb (Ego_r inlines it: a best guess, BEST_GUESS.tsv) spell it (was ??0CCreatureAction_TrollVulnerableInto@@QAE@PAVCThingCreatureBase@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThingCreatureBase;
 
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
@@ -33,11 +34,11 @@ public:
 
 class CCreatureAction_TrollVulnerableInto : public CCombatActionBase { public:             // vtable 0x01285DEC; adds no data
     virtual void v00();
-    CCreatureAction_TrollVulnerableInto(CThingCreatureBase* owner);
+    CCreatureAction_TrollVulnerableInto(CThingCreatureBase& owner);
 };
 
-CCreatureAction_TrollVulnerableInto::CCreatureAction_TrollVulnerableInto(CThingCreatureBase* owner)
-    : CCombatActionBase(*owner, 250, CSoundPair())
+CCreatureAction_TrollVulnerableInto::CCreatureAction_TrollVulnerableInto(CThingCreatureBase& owner)
+    : CCombatActionBase(owner, 250, CSoundPair())
 {
     {
         CCharString name("VULNERABLE_INTO");         // conversion-constructor length default (-1), re-addressed with lea

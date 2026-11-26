@@ -13,6 +13,7 @@
 // Header debt: engine/CCreatureAction_CastWillFireballSpell.h is a flat generated layout without the CCreatureActionBase chain, so
 //   the action class here is the donor-include extension with a conversion to the base reference IsFreeToPerformAction takes.
 // Name fix (agentNF7 2026-11-10): 0x0062E900 bound as the PDB's virtual ??1CCombatActionBase@@UAE@XZ: the action class derives the shared engine/CCombatActionBase.h (destructor identity = the vtable it stores first), not a derived dtor spelling.
+// Naming (NF459, r454b unit with 0x008BCD10): the CCreatureAction_CastWillFireballSpell constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_CastWillFireballSpell@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -35,7 +36,7 @@ class CCreatureActionBase;
 #undef CCreatureAction_CastWillFireballSpell
 class CCreatureAction_CastWillFireballSpell : public CCombatActionBase {   // ~CCombatActionBase 0x0062E900 (Ego_r.pdb, virtual) destroys the temporary
 public:
-    CCreatureAction_CastWillFireballSpell(CThingCreatureBase* creature);   // 0x008BCD10
+    CCreatureAction_CastWillFireballSpell(CThingCreatureBase& creature);   // 0x008BCD10
 private:
     unsigned char _pad_0x114[sizeof(DonorCCreatureAction_CastWillFireballSpell) - sizeof(CCombatActionBase)];   // retail size from the generated header
 };
@@ -59,7 +60,7 @@ public:
 
 bool CTCSpecialAbilities::SetupFireballSpell()
 {
-    if (Creature->IsFreeToPerformAction(CCreatureAction_CastWillFireballSpell(Creature))) {
+    if (Creature->IsFreeToPerformAction(CCreatureAction_CastWillFireballSpell(*Creature))) {
         if (!Creature->HasTC(TCI_FIREBALL_SPELL)) {
             CTCFireballSpell* spell = (CTCFireballSpell*)Creature->AddTC("CTCFireballSpell", true, 0);
             spell->SetWeaponState(CalculateWeaponState(*Creature));

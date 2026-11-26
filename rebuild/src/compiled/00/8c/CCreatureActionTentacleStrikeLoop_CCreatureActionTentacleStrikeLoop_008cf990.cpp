@@ -1,4 +1,4 @@
-// CCreatureAction_TentacleStrikeLoop::CCreatureAction_TentacleStrikeLoop(CThingCreatureBase*, long) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), StartTick from the argument, Interrupt and StartHealth cleared, own vtable (0x01284EF4)
+// CCreatureAction_TentacleStrikeLoop::CCreatureAction_TentacleStrikeLoop(CThingCreatureBase&, long) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), StartTick from the argument, Interrupt and StartHealth cleared, own vtable (0x01284EF4)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CF990, length 80 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030
 // Label: the manifest says "CCreatureAction_CastBattleCharge" (propagated); the stored vtable 0x01284EF4 belongs to
@@ -6,6 +6,8 @@
 // CCombatActionBase is 0x114 bytes, so they sit at +0x114/+0x118/+0x11c). The zero register (ebx) is shared by the sound
 // pair and the two cleared members, so StartHealth is written as an integer zero (a float literal would be an immediate).
 // `ret 8`: two arguments.
+// Leaf: ??0CCreatureAction_TentacleStrikeLoop@@QAE@AAVCThingCreatureBase@@J@Z
+// Naming (NF459, r454b): the constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TentacleStrikeLoop@@QAE@AAVCThingCreatureBase@@J@Z as both PDB name sets (Ego_r + FableWin) spell it (was ??0CCreatureAction_TentacleStrikeLoop@@QAE@PAVCThingCreatureBase@@J@Z); a reference passes the same pointer, so the object is unchanged.
 class CThingCreatureBase;
 class CThing;
 class CCharString;
@@ -30,11 +32,11 @@ class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   
     unsigned char Interrupt;                // +0x118 (PDB +0x130, bool)
     long          StartHealth;              // +0x11c (PDB +0x134: float; zeroed through the shared zero register here)
     virtual void v00();
-    CCreatureAction_TentacleStrikeLoop(CThingCreatureBase* owner, long startTick);
+    CCreatureAction_TentacleStrikeLoop(CThingCreatureBase& owner, long startTick);
 };
 
-CCreatureAction_TentacleStrikeLoop::CCreatureAction_TentacleStrikeLoop(CThingCreatureBase* owner, long startTick)
-    : CCombatActionBase(*owner, 150, CSoundPair())
+CCreatureAction_TentacleStrikeLoop::CCreatureAction_TentacleStrikeLoop(CThingCreatureBase& owner, long startTick)
+    : CCombatActionBase(owner, 150, CSoundPair())
     , StartTick(startTick)
     , Interrupt(0)
     , StartHealth(0)

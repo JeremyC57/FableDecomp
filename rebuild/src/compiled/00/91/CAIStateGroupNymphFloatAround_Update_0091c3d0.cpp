@@ -16,6 +16,7 @@
 // FlyingAround +0x40, CanAttack +0x58, ReadyToAttack +0x59, HasBeenInLimbo +0x5b, PTarget +0x68. Retail CThing physics body +0x60.
 // Shape: the shared `push 0` serves both the StartFlyingAround argument and the action's wait flag; a planar direction with Z = 0
 // normalised by the landed 0x007A6E20 inline Normalise, then a CRightHandedSet (Up 0,0,1; Forward) by reference.
+// Naming (NF459, r454b unit with 0x008CA800): the CCreatureAction_NymphTeleportIntoLimbo constructor takes `CThingCreatureBase&` (PDB spelling ??0CCreatureAction_NymphTeleportIntoLimbo@@QAE@AAVCThingCreatureBase@@@Z); the construction passes `*p` for `p`, the same pointer, so the object is unchanged but for the callee name.
 #include "fable_compiler.h"
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
@@ -91,7 +92,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();                       // 0x0062E900
 };
 class CCreatureAction_NymphTeleportIntoLimbo : public CCombatActionBase { public:
-    CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase* owner);    // 0x008CA800
+    CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase& owner);    // 0x008CA800
 };
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
@@ -131,7 +132,7 @@ void CAIStateGroup_NymphFloatAround::Update()
     nymph->PTarget = CIntelligentPointerCreature(0);
     if (!nymph->FlyingAround) {
         if (nymph->HasBeenInLimbo) {
-            if (AIAction_PerformActionAndWait(CCreatureAction_NymphTeleportIntoLimbo(GetCreature()), false) != 2) {
+            if (AIAction_PerformActionAndWait(CCreatureAction_NymphTeleportIntoLimbo(*GetCreature()), false) != 2) {
                 Terminate();
                 return;
             }
