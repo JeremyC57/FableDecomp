@@ -8,14 +8,14 @@ template<class T, class Al=allocator<T> > class vector {
 public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     void resize(unsigned int n);
-    void resize(unsigned int n, const vector& value);
+    void resize(unsigned int n, const T& value);
 };
 template<class T, class Al>
-void vector<T,Al>::resize(unsigned int n, const vector& value) {
+void vector<T,Al>::resize(unsigned int n, const T& value) {
     g_n=n; g_a=value._M_start; g_b=value._M_finish; g_c=value._M_end_of_storage;
 }
 }
-template void std::vector<std::vector<NThingMap::CThingMapCell> >::resize(unsigned int, const std::vector<std::vector<NThingMap::CThingMapCell> >&);
+template void std::vector<std::vector<NThingMap::CThingMapCell> >::resize(unsigned int, const std::vector<NThingMap::CThingMapCell>&);
 int main() {
     std::vector<std::vector<NThingMap::CThingMapCell> > v;
     v.resize(4);
