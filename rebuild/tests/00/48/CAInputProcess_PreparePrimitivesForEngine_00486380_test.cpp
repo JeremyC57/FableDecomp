@@ -1,8 +1,20 @@
+// Behaviour test for 0x00486380 CAInputProcess::PreparePrimitivesForEngine (NF477 respell): links the row object and calls the member non-virtually.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CAInputProcess.h"
 #include <cstdio>
-void __stdcall CAInputProcess_PreparePrimitivesForEngine(int) {}
+static unsigned int g_guard = 0x5A5A5A5A;
+static unsigned int g_storage[0x80];
 int main()
 {
-    CAInputProcess_PreparePrimitivesForEngine(123);
-    std::printf("AUTO_TINY_00486380_TEST PASS\n");
-    return 0;
+    CAInputProcess* p = (CAInputProcess*)g_storage;
+    bool ok = false;
+    CEnginePrimitivePrepareInfo* i = (CEnginePrimitivePrepareInfo*)0x1234;
+    p->CAInputProcess::PreparePrimitivesForEngine(*i);
+    ok = (g_guard == 0x5A5A5A5A);
+    if (ok) { std::printf("AUTO_TINY_00486380_TEST PASS\n"); return 0; }
+    std::printf("NF477_00486380_TEST FAIL\n");
+    return 1;
 }

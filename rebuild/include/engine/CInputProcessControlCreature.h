@@ -13,6 +13,17 @@ public:
     virtual void ProcessInput(const CInputEvent&,CProcessedInput&);
 #endif
     CInputProcessControlCreature(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x012375B4, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+#if !(defined(FABLE_RETAIL_CONTROL_CREATURE_INPUT_PASS27))
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00688360
+#endif
+    virtual void Update(CProcessedInput& processed_input);                                           // slot 6, 0x006881D0
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessControlCreature) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSCONTROLCREATURE_H

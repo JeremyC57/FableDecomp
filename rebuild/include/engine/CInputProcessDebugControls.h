@@ -14,6 +14,15 @@ class CInputProcessDebugControls : public CInputProcessGameBase {
 public:
     CInputProcessDebugControls(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
     CIntelligentPointer<const CThing> PCreature;                    // +0x28
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237F9C, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void Init();                                                                             // slot 2, 0x00691FE0
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00691FD0
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessDebugControls) == 0x30);
+FABLE_STATIC_ASSERT_AT(18, sizeof(CInputProcessDebugControls) == 0x30);
 #endif // FABLE_ENGINE_CINPUTPROCESSDEBUGCONTROLS_H

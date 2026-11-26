@@ -22,6 +22,15 @@ public:
     CDefPointer<const CHeroCombatDef> PHeroCombatDef;              // +0x30
     long DeactivateHoldTimer;                                       // +0x34
     CIntelligentPointer<const CThing> PTarget;                      // +0x38
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01238028, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00688EB0
+    virtual void Update(CProcessedInput& processed_input);                                           // slot 6, 0x00688C40
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessZTarget) == 0x40);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CInputProcessZTarget) == 0x40);
 #endif // FABLE_ENGINE_CINPUTPROCESSZTARGET_H

@@ -1,0 +1,4 @@
+equiv_check.py old vs new include trees (NF477 b0_hdr, 69 headers), 2026-11-26
+rows checked 57162
+differ: 34 sources + 34 tests, all bR rows (the rows that opt in to FABLE_RETAIL_INPUTPROCESS_VTABLE)
+outside the batch: none

@@ -10,6 +10,15 @@
 class CInputProcessSpecialAbilities : public CInputProcessGameBase {
 public:
     CInputProcessSpecialAbilities(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237C20, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00690030
+    virtual void Update(CProcessedInput& processed_input);                                           // slot 6, 0x0068FF50
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessSpecialAbilities) == 0x28);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessSpecialAbilities) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSSPECIALABILITIES_H

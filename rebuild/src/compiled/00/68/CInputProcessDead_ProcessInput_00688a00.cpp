@@ -1,25 +1,16 @@
-// CInputProcessDead::ProcessInput  @ 0x00688a00
-// Leaf: ?CInputProcessDead_ProcessInput@@YIXPAVCInputProcessDead@@HABVCInputEvent@@AAVCProcessedInput@@@Z
-// Empty override: dead hero consumes no input. Body is a no-op; the two
-// reference args (CInputEvent const&, CProcessedInput&) occupy 8 bytes of
-// stack, so the __fastcall epilogue is `ret 8`.
-//
-// The harness rewrites __fastcall -> __fastcall (this in ecx, next in edx).
-// A real __fastcall puts `this` in ecx and BOTH refs on the stack. To model
-// that under __fastcall we give a dummy edx param, then the two refs land on
-// the stack -> callee cleans 8 bytes -> `ret 8`.
+// CInputProcessDead::ProcessInput(const CInputEvent& event, CProcessedInput& processed_input) -- ignores every event: an empty ProcessInput
+// Leaf: ?ProcessInput@CInputProcessDead@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00688A00, 3 bytes: `ret 8`; reached only through vftable slot 4.
+// Identity: Ego_r.pdb / FableWin.pdb ?ProcessInput@CInputProcessDead@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z; retail vftable 0x0123762C slot 4 (RTTI .?AVCInputProcessDead@@).
+// NF477 (r467d / r467b, 2026-11-26): was the stand-in ?CInputProcessDead_ProcessInput@@YIXPAVCInputProcessDead@@HABVCInputEvent@@AAVCProcessedInput@@@Z (no virtual on the shared header); respelt onto engine/CInputProcessDead.h
+//   FABLE_RETAIL_INPUTPROCESS_VTABLE (the family's retail virtual list, declaration only), so the vftables 0x00488D10 emits
+//   name this row at the slot. No body change.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CInputProcessDead.h"
 
-#include "engine/CInputProcessDead.h"  // retyped onto the PDB layout; byte parity re-verified
-class CInputEvent { public: int _pad; };
-class CProcessedInput { public: int _pad; };
-
-void __fastcall CInputProcessDead_ProcessInput(CInputProcessDead* process,
-                             int edx_dummy,
-                             const CInputEvent& ev,
-                             CProcessedInput& out)
+void CInputProcessDead::ProcessInput(const CInputEvent& event, CProcessedInput& processed_input)
 {
-    (void)process;
-    (void)edx_dummy;
-    (void)ev;
-    (void)out;
 }

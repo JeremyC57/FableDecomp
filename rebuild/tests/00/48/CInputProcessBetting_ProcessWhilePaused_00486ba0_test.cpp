@@ -1,11 +1,19 @@
+// Behaviour test for 0x00486BA0 CInputProcessBetting::ProcessWhilePaused (NF477 respell): links the row object and calls the member non-virtually.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CInputProcessBetting.h"
 #include <cstdio>
-bool __fastcall CInputProcessBetting_ProcessWhilePaused()
-{
-    return true;
-}
+static unsigned int g_guard = 0x5A5A5A5A;
+static unsigned int g_storage[0x80];
 int main()
 {
-    if (CInputProcessBetting_ProcessWhilePaused() == true) { std::printf("AUTO_TINY_00486ba0_TEST PASS\n"); return 0; }
-    std::printf("AUTO_TINY_00486ba0_TEST FAIL\n");
+    CInputProcessBetting* p = (CInputProcessBetting*)g_storage;
+    bool ok = false;
+    bool r = p->CInputProcessBetting::ProcessWhilePaused();
+    ok = (r == true);
+    if (ok) { std::printf("AUTO_TINY_00486ba0_TEST PASS\n"); return 0; }
+    std::printf("NF477_00486ba0_TEST FAIL\n");
     return 1;
 }
