@@ -1,6 +1,13 @@
 // std::vector<NParticleEngine::CParticleEmitterInfo>::resize(unsigned int) -- value-initialise a 12-byte element and forward it to the two-argument resize
 // Leaf: ?resize@?$vector@VCParticleEmitterInfo@NParticleEngine@@V?$allocator@VCParticleEmitterInfo@NParticleEngine@@@std@@@std@@QAEXI@Z
-// Identity: retail 0x00AF2200, 36 bytes. Loads n, xor-zeroes a 12-byte CParticleEmitterInfo (Data, Bank, Index), calls resize(n, value) at 0x00AF2170. The catalog label vector<EWeaponClass>::_Umove is propagated.
+// Identity (proven): std::vector<NParticleEngine::CParticleEmitterInfo>::resize(unsigned int).
+//   Mangled: ?resize@?$vector@VCParticleEmitterInfo@NParticleEngine@@V?$allocator@VCParticleEmitterInfo@NParticleEngine@@@std@@@std@@QAEXI@Z
+//   Two PDB name sets: Ego_r.pdb egor_pdb_names.tsv 0x00AB1C40 and FableWin.pdb fablewin_pdb_names.tsv 0x02F03D80
+//   (particle_data_bank.obj, fablewin_obj_functions.tsv), both the one-argument QAEXI overload.
+//   Retail: 36 bytes. Loads n, xor-zeroes a 12-byte CParticleEmitterInfo (Data, Bank, Index), calls the
+//   two-argument resize at 0x00AF2170 (landed; same element type).
+//   Was: vector<EWeaponClass>::_Umove<EWeaponClass*> (length estimate 80). That spelling remains in
+//   rebuild/manifest/functions.tsv and the ghidra label tables for Account A's naming pass.
 namespace NParticleEngine {
 class CParticleEmitterInfo {
 public:
