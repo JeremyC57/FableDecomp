@@ -3,15 +3,19 @@
 static int g_dtor = 0;
 static int g_free = 0;
 
-struct CParticle
-{
+// NF460: the row now calls NParticleEngine::CParticle::~CParticle (0x00AF7B60) and CParticle::operator delete (0x00AF8650); the test
+//   defines both (counted).
+namespace NParticleEngine {
+class CParticle { public:
     int marker;
-    void inner_dtor();
-    void member_free();
+    virtual ~CParticle();
+    static void __fastcall operator delete(void* object);
 };
+}
+using NParticleEngine::CParticle;
 
-void CParticle::inner_dtor() { g_dtor++; }
-void CParticle::member_free() { g_free++; }
+CParticle::~CParticle() { g_dtor++; }
+void __fastcall CParticle::operator delete(void*) { g_free++; }
 
 void* __fastcall CParticle_scalar_deleting_destructor(
     CParticle* particle, int edx, unsigned int flags);

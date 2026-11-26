@@ -1,0 +1,7 @@
+equiv_check $S/nf459_equiv old vs new (engine/CEngineInternalPrimitiveParticleGroup.h): 57,160 rows checked; differing (all b8 batch rows, 0 outside):
+00bba240
+00bbf180
+00bc2240
+00bc3be0
+00bc53e0
+00be1b30

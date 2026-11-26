@@ -695,7 +695,7 @@ _FreeThing@4	00451b82	00453630
 ??0CComponentContainer@@QAE@J@Z	00727580	004d2a14
 ??0CTCCreatureExpression@@QAE@AAVCThing@@@Z	00729360	004d2aa4
 ??_7CTCRotate@@6B@	0123a024	004d2b2a
-??0CTCSpecialAbilities@@QAE@PAVCThing@@@Z	0072c6e0	004d2d98
+??0CTCSpecialAbilities@@QAE@AAVCThing@@@Z	0072c6e0	004d2d98
 ??_7CTCUndeadSoul@@6B@	0123a364	004d2ddb
 ??0CTCInventoryWeapons@@QAE@PAVCThing@@@Z	005c3947	004d2eba
 ??0CTCInventoryStats@@QAE@PAVCThing@@@Z	005cd2a6	004d2fdc
@@ -732,7 +732,7 @@ _FreeThing@4	00451b82	00453630
 ??_7CTCCarryable@@6B@	0123b35c	004d3d0e
 ??_7CEnemyDef@@6B@	0123b3f4	004d3dc9
 ??0CTCWeaponTrail@@QAE@J@Z	0076e620	004d3e13
-??0CTCSolidToThing@@QAE@PAVCThing@@@Z	00770e50	004d3e43
+??0CTCSolidToThing@@QAE@AAVCThing@@@Z	00770e50	004d3e43
 ??0CTCThingUIDDummyForSerialisation@@QAE@AAVCThing@@@Z	00771140	004d3ec9
 ??_7CTCDNone@@6B@	0123b504	004d3f10
 ??0CTCCreatureOpinionOfHero@@QAE@AAVCThing@@@Z	00684420	004d3f9d
@@ -753,8 +753,8 @@ _FreeThing@4	00451b82	00453630
 ??_7CBoastingPodiumDef@@6B@	0123bf0c	004d46e3
 ??0CTCBoastingCrowdControl@@QAE@AAVCThing@@@Z	007837c0	004d4759
 ??_7CShipDef@@6B@	0123c0a4	004d488b
-??0CTCDayOrNightOnlySupport@@QAE@PAVCThing@@@Z	00702aa0	004d4927
-??0CTCMeleeTrap@@QAE@PAVCThing@@@Z	00787dbc	004d4987
+??0CTCDayOrNightOnlySupport@@QAE@AAVCThing@@@Z	00702aa0	004d4927
+??0CTCMeleeTrap@@QAE@AAVCThing@@@Z	00787dbc	004d4987
 ??_7CTCMoneyReceiver@@6B@	0123c1c4	004d49dd
 ?GetDefaultAmountOfMoneyWanted@CTCMoneyReceiver@@SAJXZ	007898f0	004d49dd
 ??_7CExpressionSubDef@@6B@	0123c2e4	004d4b85
@@ -1160,7 +1160,7 @@ __stricmp	00bfeba8	004fb880
 ??1CThingGameObject@@UAE@XZ	00838a00	00529ba0
 ??3CThingGameObject@@SIXPAX@Z	004c73b0	00529ba0
 ?CThingPhysicalSwitch_del@@YIXPAX@Z	004c73b0	00529ca0
-?CThingPhysicalSwitch_dtor@@YIXPAVCThingPhysicalSwitch@@@Z	0083d6d0	00529ca0
+??1CThingPhysicalSwitch@@UAE@XZ	0083d6d0	00529ca0
 ?OnDie@CTCInventoryItemBase@@QAEXXZ	0099eae0	00529f30
 ?Erase@CRetailTree_erase005286d0@@QAEXPAUnode@1@@Z	005286d0	00529fb0
 ?Copy@CRetailTree_00529230@@QAEPAUnode@1@PAU21@0@Z	00529230	0052a070
@@ -3575,7 +3575,7 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ??_7CAIStateGroup_ThrowLogsOnFire@@6B@	012899c4	008fdaed
 ??_7CAIStateGroup_IdleAtHome@@6B@	01289a10	008fdb12
 ??_7CAIStateGroup_Clean@@6B@	01289a4c	008fdb27
-??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ	008fdb27	008fdb55
+??0CAIStateGroup_Clean@@QAE@XZ	008fdb27	008fdb55
 ??_7CAIStateGroup_CleanHouse@@6B@	01289a9c	008fdb55
 ??_7CAIStateGroup_CleanWork@@6B@	01289aec	008fdb7d
 ??_7CAIStateGroup_LookAtInterestingThings@@6B@	01289bbc	008fdc7c
@@ -4857,8 +4857,8 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CComponentInstance@NParticleEngine@@6B@	0129f478	00af6550
 ?resize@CComponentInstanceVector@@QAEXIABUSComponentPair@@@Z	00af7970	00af7a10
 ??_7CParticle@NParticleEngine@@6B@	0129f4f0	00af7a90
-?inner_dtor@CParticle@@QAEXXZ	00af7b60	00af7b40
-?member_free@CParticle@@QAEXXZ	00af8650	00af7b40
+??1CParticle@NParticleEngine@@UAE@XZ	00af7b60	00af7b40
+??3CParticle@NParticleEngine@@SIXPAX@Z	00af8650	00af7b40
 ?CDecal_Dtor@@YIXPAUCDecal@@@Z	00af7c10	00af7ca0
 ?CDecal_OpDelete@@YIXPAUCDecal@@@Z	00af8ad0	00af7ca0
 ??0CPSCRenderSprite@@QAE@XZ	00afb7c0	00af7d10
@@ -38226,3 +38226,4 @@ __real@0000000000000000	0122ed70	00b260b0
 ??0CTCActivationReceptorChest@@QAE@AAVCThing@@@Z	004e07e3	004e2791
 ??1CModeStrafe@NCreatureMode@@UAE@XZ	007420e0	007420c0
 ??1CModeSleepBed@NCreatureMode@@UAE@XZ	0084b840	0084b820
+??1CEngineInternalPrimitiveParticleGroup@@UAE@XZ	00bba140	00bba240

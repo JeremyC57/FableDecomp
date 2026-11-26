@@ -1408,3 +1408,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: landed NF457 b5a / b5b / b6 (38 rows: creature-action ctors to (CThingCreatureBase&), BuyHouse unit; +26 proven, +6 FableWin best guesses); r457a granted (b5x needs a catalog rename), r457b declined (libcp), r457c-e queued.
 - 2026-11-26 A: applied NF458 stale sweep (A3 continuation): 107 deletes, 105 replaces, 25 rewitnesses; +57 done; 253 lines held; r458a/b open.
 - 2026-11-26 A: landed NF459 b7 (HeroRunningStop identity + catalog rename) and b9 (25 creature-action ctor/caller rows): +10 proven, +4 FableWin best guesses; r459a short COMDAT vftables logged (selection 2), r459b/c queued, r459d granted on conditions (b8 pending equiv).
+- 2026-11-26 A: landed NF459 b8 (particle-group containers-free view + 7 rows, equiv clean) and NF460 bA + bC (8 queue-fix rows, +12 proven); r460a-d recorded (bB declined as built, 0x006F5610 held). NF461 measuring vftable sizes and libcp.

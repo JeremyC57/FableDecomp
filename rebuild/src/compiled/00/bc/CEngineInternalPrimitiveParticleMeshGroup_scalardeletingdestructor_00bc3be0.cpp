@@ -1,13 +1,28 @@
-struct CEngineInternalPrimitiveParticleMeshGroup {
-    void* vftable;
-};
+// CEngineInternalPrimitiveParticleMeshGroup::`scalar deleting destructor'(unsigned int flags) -- the inlined ~CEngineInternalPrimitiveParticleMeshGroup (no members of its own to destroy) reduces to the base
+//   ~CEngineInternalPrimitiveParticleGroup; then operator delete when bit 0 of flags is set; returns this
+// Leaf: ?CEngineInternalPrimitiveParticleMeshGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleMeshGroup@@HI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00BC3BE0, `ret 4`; vftable 0x012A61FC slot 0; calls 0x00BBA140 (the base class destructor) and operator delete 0x00BFE9BC.
+// Naming (NF456/NF457, r454b unit with 0x00BBA140; ruling r456b): retail calls the base destructor ??1CEngineInternalPrimitiveParticleGroup@@UAE@XZ (Ego_r + FableWin name sets; virtual)
+//   directly, written as the qualified call `group->CEngineInternalPrimitiveParticleGroup::~CEngineInternalPrimitiveParticleGroup()` (direct, not through the vftable);
+//   was the free stand-in CEngineInternalPrimitiveParticleMeshGroup_dtor, which bound no retail address. The self stays the free stand-in: retail's ??_GCEngineInternalPrimitiveParticleMeshGroup@@UAEPAXI@Z
+//   is compiler-generated and only emitted beside the vftable (the ctor-owned thin-row route), which is not this row's object.
+// Model (NF457 / NF459, rulings r456b, r457b): the classes come from the shared headers -- the base from engine/CEngineInternalPrimitiveParticleGroup.h with the
+//   add-only containers-free view FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_NO_CONTAINERS (NF459, r457b on r451a: no STLport, so no /DEFAULTLIB:"libcp";
+//   same members and offsets, sizeof 0xAC; declares the out-of-line virtual destructor 0x00BBA140),
+//   the derived class from engine/CEngineInternalPrimitiveParticleMeshGroup.h (retail key `class`, as both PDBs; the stand-in self's parameter re-keys PAU -> PAV).
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEMESHGROUP
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEBASE_ATTACHED
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP
+#define FABLE_RETAIL_CENGINEINTERNALPRIMITIVEPARTICLEGROUP_NO_CONTAINERS
+#include "engine/CEngineInternalPrimitiveParticleMeshGroup.h"
 
-void __fastcall CEngineInternalPrimitiveParticleMeshGroup_dtor(CEngineInternalPrimitiveParticleMeshGroup* group);
 void operator delete(void*);
 
 void* __fastcall CEngineInternalPrimitiveParticleMeshGroup_scalar_deleting_destructor(CEngineInternalPrimitiveParticleMeshGroup* group, int edx_unused, unsigned int flags)
 {
-    CEngineInternalPrimitiveParticleMeshGroup_dtor(group);
+    group->CEngineInternalPrimitiveParticleGroup::~CEngineInternalPrimitiveParticleGroup();
     if (flags & 1)
         operator delete(group);
     return group;

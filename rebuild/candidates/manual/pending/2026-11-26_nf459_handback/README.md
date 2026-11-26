@@ -31,3 +31,6 @@
   3. the destructor takes slot 0, and an `#error` fires on conflicting macros.
 
   b8 lands in a separate commit once the equiv check passes.
+
+## b8 landed (after equiv)
+7 rows: 0x00BBA140 (destructor QAE→UAE, still on its local model per r459b) and the six particle-group deleting destructors on the new containers-free view; equiv: 57,160 rows checked, only the six batch deleting destructors differ, 0 outside (`EQUIV_CHECK_b8.txt`); +1 proven (0x00BBA140).

@@ -1,15 +1,15 @@
 #include <cstdio>
 
+// NF460: the row now calls CThingPhysicalSwitch::~CThingPhysicalSwitch (0x0083D6D0) non-virtually; the test defines it (counted).
 class CThingPhysicalSwitch { public:
-    void *vfptr;
+    virtual ~CThingPhysicalSwitch();
 };
 
 static int g_dtor_calls = 0;
 static int g_del_calls = 0;
 static void *g_last_deleted = 0;
 
-void __fastcall CThingPhysicalSwitch_dtor(CThingPhysicalSwitch *physicalSwitch) {
-    (void)physicalSwitch;
+CThingPhysicalSwitch::~CThingPhysicalSwitch() {
     ++g_dtor_calls;
 }
 void __fastcall CThingPhysicalSwitch_del(void *p) {
@@ -22,7 +22,6 @@ void * __fastcall CThingPhysicalSwitch_scalar_deleting_destructor(
 
 int main() {
     CThingPhysicalSwitch obj;
-    obj.vfptr = 0;
 
     // flags & 1 == 0 : dtor runs, no delete, returns this
     g_dtor_calls = g_del_calls = 0; g_last_deleted = 0;

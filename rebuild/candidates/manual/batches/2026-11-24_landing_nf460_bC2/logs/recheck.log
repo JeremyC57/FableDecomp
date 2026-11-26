@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00529ca0   WARN SHARED_HEADER_AVAILABLE CThingPhysicalSwitch (engine/CThingPhysicalSwitch.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00529ca0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00529ca0.obj; graded the largest function
+00529ca0   WARN RELOC_NAME: ?CThingPhysicalSwitch_del@@YIXPAX@Z -> 004c73b0 labelled '_global::DeleteArray_004c73b0'
+00529ca0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008fdb55   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CleanHouse (engine/CAIStateGroup_CleanHouse.h)
+008fdb55   RELOCATION_MATCH PASS   CAIStateGroup_CleanHouse
+008fdb7d   RELOCATION_MATCH PASS   CAIStateGroup_CleanWork
+00af7b40   WARN SHARED_HEADER_AVAILABLE CParticle (engine/CParticle.h)
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00af7b40.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00af7b40.obj; graded the largest function
+00af7b40   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 4
+  00529ca0 RELOCATION_MATCH CThingPhysicalSwitch::`scalar_deleting_destructor'
+  008fdb55 RELOCATION_MATCH CAIStateGroup_CleanHouse::??0CAIStateGroup_CleanHouse@
+  008fdb7d RELOCATION_MATCH CAIStateGroup_CleanWork::??0CAIStateGroup_CleanWork@
+  00af7b40 RELOCATION_MATCH NParticleEngine::CParticle::`scalar_deleting_destructor'

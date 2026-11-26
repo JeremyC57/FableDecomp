@@ -12,6 +12,8 @@
 // (`__declspec(novtable)`). Members go in reverse declaration order; the Primitives list's inline
 // destructor reads its node back through the list's address after clear().
 // Leaf: ??1CEngineInternalPrimitiveParticleGroup
+// Naming (NF455, r454b): the destructor is virtual, ??1CEngineInternalPrimitiveParticleGroup@@UAE@XZ as both PDB name sets spell it (was ??1CEngineInternalPrimitiveParticleGroup@@QAE@XZ); the class stays
+//   `__declspec(novtable)` here, so the TU emits no vftable or deleting destructor for it and the object is unchanged.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 struct CPrimitiveHandleList {                               // STLport list<CEnginePrimitiveHandle>
@@ -56,7 +58,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveParticleGroup : CIVCountedPo
     CIteratorArray       PrimitiveIDToIterator;             // +0x4c
     std::list<long>      FreePrimitiveIDs;                  // +0x58
     virtual void v01();
-    ~CEngineInternalPrimitiveParticleGroup();
+    virtual ~CEngineInternalPrimitiveParticleGroup();
 };
 
 CEngineInternalPrimitiveParticleGroup::~CEngineInternalPrimitiveParticleGroup()

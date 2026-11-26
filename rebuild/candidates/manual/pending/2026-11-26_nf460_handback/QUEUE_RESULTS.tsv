@@ -1,0 +1,67 @@
+queue_line	tag	address	correct_symbol	verdict	detail
+13754	nf452	0x00C6E790	?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	HELD	not reached this pass (retail refs 4); see NOTES "Not reached"
+13755	nf452	0x00C6E820	?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	HELD	not reached this pass (retail refs 4); see NOTES "Not reached"
+13756	nf452	0x00C6DA40	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	HELD	not reached this pass (retail refs 4); see NOTES "Not reached"
+13757	nf452	0x00C6DAD0	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	HELD	not reached this pass (retail refs 4); see NOTES "Not reached"
+13758	nf455	0x00740160	identity check	HELD	identity VERIFIED, fix held on r460a: 0x00740160 is the CModeStunned ctor (stores RTTI vftable 0x01267C74 NCreatureMode::CModeStunned, ret 4, catalog name already right); 0x008ED950 CCombatAction_FallStunned::Initialise models it as `CModeDazed(CThing*)` (wrong class). The unit is the self 0x00740160 (PAV -> PDB ??0CModeStunned@NCreatureMode@@QAE@AAVCThing@@@Z, Ego_r + FableWin) + 0x008ED950 (class -> NCreatureMode::CModeStunned) + the factory 0x007427F0 (same r460a problem). No catalog label changes (both labels are right); RENAMES none
+13759	nf453	0x00686870	?OnInitialActivate@CTCBase@@UAEXXZ	HELD	not reached this pass (retail refs 218); see NOTES "Not reached"
+13760	nf453	0x0083D6D0	??1CThingPhysicalSwitch@@UAE@XZ	DONE	batch bC_single_binder: self row already defines ??1CThingPhysicalSwitch@@UAE@XZ; its only retail caller 0x00529CA0 respelt; table replace
+13761	nf453	0x009FC210	?ShrinkResources@CResourceList@@QAEXK@Z	HELD	not reached this pass (retail refs 5); see NOTES "Not reached"
+13762	nf453	0x00B0C9C0	??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ	DONE	batch bB_psc_alloc_units: the Alloc factory (only retail reference, jmp) now calls the NParticleEngine-qualified ctor; factory self onto its PDB ?Alloc; table replace
+13763	nf453	0x00B16EB0	??0CPSCOrbit@NParticleEngine@@QAE@XZ	DONE	batch bB_psc_alloc_units: the Alloc factory (only retail reference, jmp) now calls the NParticleEngine-qualified ctor; factory self onto its PDB ?Alloc; table replace
+13764	nf453	0x00B1B350	??0CPSCSpline@NParticleEngine@@QAE@XZ	DONE	batch bB_psc_alloc_units: the Alloc factory (only retail reference, jmp) now calls the NParticleEngine-qualified ctor; factory self onto its PDB ?Alloc; table replace
+13765	nf453	0x004A96F0	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	HELD	not reached this pass (retail refs 119); see NOTES "Not reached"
+13766	nf453	0x004ABE90	??0CScriptThing@@QAE@ABV0@@Z	HELD	not reached this pass (retail refs 1338); see NOTES "Not reached"
+13767	nf453	0x004ABE90	??0CScriptThing@@QAE@ABV0@@Z	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13768	nf453	0x0062F3B0	??0CCombatActionBase@@QAE@ABV0@@Z	HELD	not reached this pass (retail refs 290); see NOTES "Not reached"
+13769	nf453	0x00686830	??1CTCBase@@UAE@XZ	HELD	not reached this pass (retail refs 296); see NOTES "Not reached"
+13770	nf453	0x0073E410	??0CModeStandLeft@NCreatureMode@@QAE@AAVCThing@@@Z	HELD	r460a: the only caller 0x0073EC10 (mode factory) cannot reach ??0CModeStandLeft@NCreatureMode@@QAE@AAVCThing@@@Z plus its PDB ?Alloc self cleanly: on the shared engine/CTCCreatureModeManager.h the object gains /DEFAULTLIB:"libcp" (r450a), with a local forward model of CTCCreatureModeManager::CModeBase it gains WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager. Both variants RELOCATION_MATCH PASS, in batches/held_r460a_creaturemode_alloc/
+13771	nf453	0x00742E60	??0CModeGuildmasterPowerUpSpeed@NCreatureMode@@QAE@AAVCThing@@@Z	HELD	r460a: same as 0x0073E410 for the factory 0x00743680 (both variants built, held)
+13772	nf453	0x013B8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	HELD	not reached this pass (retail refs 561); see NOTES "Not reached"
+13773	nf453	0x0143E8E0	?NullCoord@CScriptThing@@1VC3DVector@@A	HELD	not reached this pass (retail refs 286); see NOTES "Not reached"
+13774	nf453	0x0143E8F8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	HELD	not reached this pass (retail refs 2321); see NOTES "Not reached"
+13775	nf453	0x0143E8F8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13776	nf453	0x00702AA0	??0CTCDayOrNightOnlySupport@@QAE@AAVCThing@@@Z	DONE	batch bA_tc_alloc_units: the factory (only retail caller) respelt onto the PDB ctor spelling (and its own PDB ?Alloc self); self row already defined it; table line PAV -> AAV
+13777	nf453	0x0072C6E0	??0CTCSpecialAbilities@@QAE@AAVCThing@@@Z	DONE	batch bA_tc_alloc_units: the factory (only retail caller) respelt onto the PDB ctor spelling (and its own PDB ?Alloc self); self row already defined it; table line PAV -> AAV
+13778	nf453	0x00770E50	??0CTCSolidToThing@@QAE@AAVCThing@@@Z	DONE	batch bA_tc_alloc_units: the factory (only retail caller) respelt onto the PDB ctor spelling (and its own PDB ?Alloc self); self row already defined it; table line PAV -> AAV
+13779	nf453	0x00787DBC	??0CTCMeleeTrap@@QAE@AAVCThing@@@Z	DONE	batch bA_tc_alloc_units: the factory (only retail caller) respelt onto the PDB ctor spelling (and its own PDB ?Alloc self); self row already defined it; table line PAV -> AAV
+13780	nf453	0x0099A2D0	??0CBaseClass@@QAE@XZ	HELD	not reached this pass (retail refs 644); see NOTES "Not reached"
+13781	nf453	0x0099A2E0	??1CBaseClass@@UAE@XZ	HELD	not reached this pass (retail refs 1593); see NOTES "Not reached"
+13782	nf453	0x00C69680	identity check	HELD	target row 0x00C69680 locked COORD_HOLD_NF453
+13783	nf453	0x00C69680	identity check	HELD	target row 0x00C69680 locked COORD_HOLD_NF453
+13784	nf453	0x004ADFF0	identity check	HELD	not reached: 0x004ADFF0 has no retail reference (xref: no call, jmp or absolute ref); its self is the invented ??1CRetailTree_erase004ad690@@QAE@XZ; needs the STLport tree type proven first (no invented container types)
+13785	nf457	0x004DA939	??0CTCActionUseBase@@QAE@AAVCThing@@@Z	HELD	r457e: respelling the in-class CTCActionUseBase(CThing*) models to the table spelling ??0CTCActionUseBase@@QAE@AAVCThing@@@Z makes 0x0072E690's object DEF a COMDAT copy beside the strong 0x004DA939 row: a new duplicate (NF457 NAME_FIXES note); retail callers 0x004DA987.. (19 sites) are inside the 0x004DA9xx factory rows
+13786	nf457	0x0085BBA0	??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z	DONE	elsewhere: NF459 b7 landed it with a catalog rename (coordinator note); not touched here
+13787	nf458	0x006E89B0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	HELD	not reached this pass (retail refs 1); see NOTES "Not reached"
+13788	nf458	0x00877720	?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z	HELD	not reached this pass (retail refs 1); see NOTES "Not reached"
+13789	nf458	0x008BFCE0	??0CCreatureAction_StrafeForward@@QAE@XZ	DONE	batch bC_single_binder, pending ruling r460c: batch bC_single_binder: the only binder of the stand-in, 0x006F5610 (RTTI base), respelt; stale table line deleted
+13790	nf458	0x008FDB27	??0CAIStateGroup_Clean@@QAE@XZ	DONE	batch bC_single_binder: both stand-in binders 0x008FDB55 / 0x008FDB7D (RTTI base) respelt; table replace. Non-row call sites 0x008FFF05 / 0x008FFF45 lie in no catalog row
+13791	nf458	0x0097E200	?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	HELD	not reached this pass (retail refs 112); see NOTES "Not reached"
+13792	nf458	0x0099A2D0	??0CBaseClass@@QAE@XZ	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13793	nf458	0x009D6490	??1CBankFileAsync@@UAE@XZ	HELD	not reached this pass (retail refs 13); see NOTES "Not reached"
+13794	nf458	0x00AF7B60	??1CParticle@NParticleEngine@@UAE@XZ	DONE	batch bC_single_binder: the only retail caller 0x00AF7B40 respelt; table replace
+13795	nf458	0x00AF7D10	?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ	DONE	batch bB_psc_alloc_units: self respelt onto the PDB ?Alloc (RegisterPSCs already bound it); the DatabaseClone caller respelt off the stand-in; stale table line deleted
+13796	nf458	0x00AF7ED0	?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ	DONE	batch bB_psc_alloc_units: self respelt onto the PDB ?Alloc (RegisterPSCs already bound it); the DatabaseClone caller respelt off the stand-in; stale table line deleted
+13797	nf458	0x00AF7FB0	?Alloc@CPSCAttractor@NParticleEngine@@SIPAVCPSCBase@2@XZ	DONE	batch bB_psc_alloc_units: self respelt onto the PDB ?Alloc (RegisterPSCs already bound it); the DatabaseClone caller respelt off the stand-in; stale table line deleted
+13798	nf458	0x00AF8020	?Alloc@CPSCLight@NParticleEngine@@SIPAVCPSCBase@2@XZ	DONE	batch bB_psc_alloc_units: self respelt onto the PDB ?Alloc (RegisterPSCs already bound it); the DatabaseClone caller respelt off the stand-in; stale table line deleted
+13799	nf458	0x00AF8650	??3CParticle@NParticleEngine@@SIXPAX@Z	DONE	batch bC_single_binder: the only retail caller 0x00AF7B40 respelt; table replace
+13800	nf458	0x00B93290	?EnumerateScene@CEngineScene@@QAEXAAVCEngineSceneEnumerator@@@Z	HELD	not reached this pass (retail refs 2); see NOTES "Not reached"
+13801	nf458	0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	HELD	not reached this pass (retail refs 554); see NOTES "Not reached"
+13802	nf458	0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13803	nf458	0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13804	nf458	0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13805	nf458	0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13806	nf458	0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13807	nf458	0x00D17090	?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z	HELD	not reached this pass (retail refs 1); see NOTES "Not reached"
+13808	nf458	0x00E39140	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z	HELD	not reached this pass (retail refs 1); see NOTES "Not reached"
+13809	nf458	0x00F08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	HELD	not reached this pass (retail refs 6); see NOTES "Not reached"
+13810	nf458	0x004C7E50	?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ	HELD	not reached this pass (retail refs 73); see NOTES "Not reached"
+13811	nf458	0x0064CC65	??0CDrawBase@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	HELD	not reached this pass (retail refs 35); see NOTES "Not reached"
+13812	nf458	0x00859A20	?FinishAction@CCombatActionBase@@MAEXXZ	HELD	not reached this pass (retail refs 289); see NOTES "Not reached"
+13813	nf458	0x008AC970	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	HELD	not reached this pass (retail refs 325); see NOTES "Not reached"
+13814	nf458	0x0097DA40	?AIAction_CombatPerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCombatActionBase@@_N@Z	HELD	not reached this pass (retail refs 28); see NOTES "Not reached"
+13815	nf458	0x0099AF00	??BCWideString@@QBEPB_WXZ	HELD	ruling r460b: `PB_W` vs `PBG` is native wchar_t vs unsigned short (/Zc:wchar_t), a toolchain question, not a spelling; 70 retail call sites
+13816	nf458	0x01231C4C	??_7?$CIntelligentPointer@VCThingPlayerCreature@@@@6B@	HELD	not reached this pass (retail refs 37); see NOTES "Not reached"
+13817	nf458	0x013B8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	HELD	not reached this pass (retail refs ?); see NOTES "Not reached"
+13818	nf458	0x00C705B0	respell candidate	HELD	not reached this pass (retail refs 3); see NOTES "Not reached"
+13819	nf458	0x00C20F40	identity check	HELD	identity open: 0x00C20F40 and 0x00C207A0 are byte twins that both call 0x00C20720 (two functions; retail has no identical-code folding), libpk/CODA with no PDB or RTTI. 0x00C12680 binds ?IsPlayingVirtual@CSoundEvent@@QAEJXZ at 0x00C20F40 while 0x00C21620 / 0x00C21A50 bind it at 0x00C207A0: one name at two addresses. Needs a vendor-naming decision (which one is CSoundEvent::IsPlayingVirtual; a distinct best-guess name for the other)

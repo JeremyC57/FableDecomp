@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00bba140   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+00bba140   RELOCATION_MATCH PASS   ~CEngineInternalPrimitiveParticleGroup
+00bba240   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bbf180   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bc2240   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bc3be0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bc53e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00be1b30   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 7
+  00bba140 RELOCATION_MATCH CEngineInternalPrimitiveParticleGroup::??1CEngineInternalPrimitiveParticleGroup
+  00bba240 RELOCATION_MATCH CEngineInternalPrimitiveParticleDecalGroup::?CEngineInternalPrimitiveParticleDecalGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleDecalGroup@@HI@Z
+  00bbf180 RELOCATION_MATCH CEngineInternalPrimitiveParticleSpriteTrailGroup::?CEngineInternalPrimitiveParticleSpriteTrailGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleSpriteTrailGroup@@HI@Z
+  00bc2240 RELOCATION_MATCH CEngineInternalPrimitiveParticleSpriteGroup::?CEngineInternalPrimitiveParticleSpriteGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleSpriteGroup@@HI@Z
+  00bc3be0 RELOCATION_MATCH CEngineInternalPrimitiveParticleMeshGroup::?CEngineInternalPrimitiveParticleMeshGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleMeshGroup@@HI@Z
+  00bc53e0 RELOCATION_MATCH CEngineInternalPrimitiveParticleLineGroup::?CEngineInternalPrimitiveParticleLineGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleLineGroup@@HI@Z
+  00be1b30 RELOCATION_MATCH CEngineInternalPrimitive2DParticleGroup::?CEngineInternalPrimitive2DParticleGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitive2DParticleGroup@@HI@Z

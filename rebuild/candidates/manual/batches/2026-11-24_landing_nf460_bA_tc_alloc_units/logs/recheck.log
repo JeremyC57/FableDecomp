@@ -1,0 +1,14 @@
+addr       parity           behav  name
+004d2d98   WARN SHARED_HEADER_AVAILABLE CTCSpecialAbilities (engine/CTCSpecialAbilities.h)
+004d2d98   RELOCATION_MATCH PASS   Alloc
+004d3e43   WARN SHARED_HEADER_AVAILABLE CTCSolidToThing (engine/CTCSolidToThing.h)
+004d3e43   RELOCATION_MATCH PASS   Alloc
+004d4927   RELOCATION_MATCH PASS   Alloc
+004d4987   WARN SHARED_HEADER_AVAILABLE CTCMeleeTrap (engine/CTCMeleeTrap.h)
+004d4987   RELOCATION_MATCH PASS   Alloc
+
+WINS: 4
+  004d2d98 RELOCATION_MATCH CTCSpecialAbilities::?Alloc@CTCSpecialAbilities@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d3e43 RELOCATION_MATCH CTCSolidToThing::?Alloc@CTCSolidToThing@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d4927 RELOCATION_MATCH CTCDayOrNightOnlySupport::?Alloc@CTCDayOrNightOnlySupport@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d4987 RELOCATION_MATCH CTCMeleeTrap::?Alloc@CTCMeleeTrap@@SIPAVCTCBase@@AAVCThing@@@Z

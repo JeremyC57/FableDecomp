@@ -10870,7 +10870,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13756	nf452	00c6da40	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
 13757	nf452	00c6dad0	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z
 13759	nf453	00686870	?OnInitialActivate@CTCBase@@UAEXXZ	partial	?BaseOnCreate@CTCActionUseBuyHouse@@QAEXXZ || ?CTCEnemy_base_OnInitialActivate@@YIXPAVCTCEnemy@@@Z || ?M@C00686870@@QAEXXZ || ?OnCreate@CTCActionUseBase@@QAEXXZ
-13760	nf453	0083d6d0	??1CThingPhysicalSwitch@@UAE@XZ	partial	?CThingPhysicalSwitch_dtor@@YIXPAVCThingPhysicalSwitch@@@Z
+13760	nf453	0083d6d0	??1CThingPhysicalSwitch@@UAE@XZ	closed	
 13761	nf453	009fc210	?ShrinkResources@CResourceList@@QAEXK@Z	partial	?Helper@C@@QAEXPAX@Z || ?ShrinkResources@CResourceList_Methods@@QAEXK@Z
 13762	nf453	00b0c9c0	??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ	open	??0CPSCUpdateNormal || ??0CPSCUpdateNormal@@QAE@XZ
 13763	nf453	00b16eb0	??0CPSCOrbit@NParticleEngine@@QAE@XZ	open	??0CPSCOrbit@@QAE@XZ
@@ -10886,10 +10886,10 @@ line	tag	address	correct_symbol	status	other_spellings
 13773	nf453	0143e8e0	?NullCoord@CScriptThing@@1VC3DVector@@A	partial	?g_ZeroVector@@3VC3DVector@@A
 13774	nf453	0143e8f8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	partial	?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A || ?g_pScriptTimerManager@@3PAUCTimerManager@@A
 13775	nf453	0143e8f8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	partial	?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A || ?g_pScriptTimerManager@@3PAUCTimerManager@@A
-13776	nf453	00702aa0	??0CTCDayOrNightOnlySupport@@QAE@AAVCThing@@@Z	partial	??0CTCDayOrNightOnlySupport@@QAE@PAVCThing@@@Z
-13777	nf453	0072c6e0	??0CTCSpecialAbilities@@QAE@AAVCThing@@@Z	open	??0CTCSpecialAbilities || ??0CTCSpecialAbilities@@QAE@PAVCThing@@@Z
-13778	nf453	00770e50	??0CTCSolidToThing@@QAE@AAVCThing@@@Z	partial	??0CTCSolidToThing@@QAE@PAVCThing@@@Z
-13779	nf453	00787dbc	??0CTCMeleeTrap@@QAE@AAVCThing@@@Z	partial	??0CTCMeleeTrap@@QAE@PAVCThing@@@Z
+13776	nf453	00702aa0	??0CTCDayOrNightOnlySupport@@QAE@AAVCThing@@@Z	closed	
+13777	nf453	0072c6e0	??0CTCSpecialAbilities@@QAE@AAVCThing@@@Z	partial	??0CTCSpecialAbilities
+13778	nf453	00770e50	??0CTCSolidToThing@@QAE@AAVCThing@@@Z	closed	
+13779	nf453	00787dbc	??0CTCMeleeTrap@@QAE@AAVCThing@@@Z	closed	
 13780	nf453	0099a2d0	??0CBaseClass@@QAE@XZ	partial	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ
 13781	nf453	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ
 13785	nf457	004da939	??0CTCActionUseBase@@QAE@AAVCThing@@@Z	closed	
@@ -10897,16 +10897,16 @@ line	tag	address	correct_symbol	status	other_spellings
 13787	nf458	006e89b0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	partial	?ComputeAttackVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z
 13788	nf458	00877720	?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z	partial	?GetStandardThings@CTools@@QAEXAAUCThingList@N_00615540@@ABVC3DVector@@M@Z
 13789	nf458	008bfce0	??0CCreatureAction_StrafeForward@@QAE@XZ	partial	??0C3DAnimFileHelpersChunk@N_008bfce0@@QAE@XZ
-13790	nf458	008fdb27	??0CAIStateGroup_Clean@@QAE@XZ	open	??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ
+13790	nf458	008fdb27	??0CAIStateGroup_Clean@@QAE@XZ	closed	
 13791	nf458	0097e200	?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	partial	?AIAction_DoNothing@CAIStateGroupBaseA@@QAEJXZ || ?AIAction_DoNothing@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJXZ || ?AIAction_DoNothing@CAIStateGroup_UsesSeat@@QAEJXZ || ?AIAction_DoNothing@DragonMethods@@QAEJXZ || ?ss_sub@@YIHPAUCAIStateGroup_StandStill@@@Z
 13792	nf458	0099a2d0	??0CBaseClass@@QAE@XZ	partial	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ
 13793	nf458	009d6490	??1CBankFileAsync@@UAE@XZ	partial	??1CBankFile@N_009d6490@@UAE@XZ
-13794	nf458	00af7b60	??1CParticle@NParticleEngine@@UAE@XZ	partial	?inner_dtor@CParticle@@QAEXXZ
+13794	nf458	00af7b60	??1CParticle@NParticleEngine@@UAE@XZ	closed	
 13795	nf458	00af7d10	?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?GetDrawableObject@@YIPAUIDrawableObj@@PAVCPSCRenderSprite@NParticleEngine@@@Z
 13796	nf458	00af7ed0	?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?GetDrawableObject@@YIPAUIDrawableBase@@PAVCPSCEmitterGeneric@NParticleEngine@@@Z
 13797	nf458	00af7fb0	?Alloc@CPSCAttractor@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?CreateInternalPrimitive@@YIPAUIDrawableObj@@PAVCPSCAttractor@NParticleEngine@@@Z
 13798	nf458	00af8020	?Alloc@CPSCLight@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?CreatePrim@@YIPAUCPrim@@PAVCPSCLight@NParticleEngine@@@Z
-13799	nf458	00af8650	??3CParticle@NParticleEngine@@SIXPAX@Z	partial	?member_free@CParticle@@QAEXXZ
+13799	nf458	00af8650	??3CParticle@NParticleEngine@@SIXPAX@Z	closed	
 13800	nf458	00b93290	?EnumerateScene@CEngineScene@@QAEXAAVCEngineSceneEnumerator@@@Z	open	?Enumerate@CEngineScene@@QAEXAAVCBaseClassNonCopyable@@@Z || ?Enumerate@CEngineSceneGrid_00b320a0@@QAEXAAUCEngineSceneEnumeratorResetVisibilityRatio@@@Z || EnumerateScene
 13801	nf458	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVC
 13802	nf458	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVC

@@ -8,17 +8,20 @@
 // constructor @ 0x008FDB27 runs, then the compiler stores this class's vtable (0x01289AEC
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-namespace N_008fdb27 { struct CInterestingToVillagersDef {
+// Naming (NF460, queue nf458): the base is CAIStateGroup_Clean (RTTI .?AVCAIStateGroup_CleanWork@@ lists it as the direct base at offset 0; its
+//   constructor 0x008FDB27 is ??0CAIStateGroup_Clean@@QAE@XZ in FableWin.pdb and that row's self). Was the stand-in
+//   N_008fdb27::CInterestingToVillagersDef. Same bytes.
+class CAIStateGroup_Clean { public:
     virtual void v00();
-    CInterestingToVillagersDef();                           // 0x008FDB27
-}; } using N_008fdb27::CInterestingToVillagersDef;
+    CAIStateGroup_Clean();                                  // 0x008FDB27
+};
 
-struct CAIStateGroup_CleanWork : CInterestingToVillagersDef {
+struct CAIStateGroup_CleanWork : CAIStateGroup_Clean {
     virtual void v00();                    // this class has its own vtable
     CAIStateGroup_CleanWork();
 };
 
 CAIStateGroup_CleanWork::CAIStateGroup_CleanWork()
-    : CInterestingToVillagersDef()
+    : CAIStateGroup_Clean()
 {
 }

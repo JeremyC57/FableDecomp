@@ -66,7 +66,6 @@ T1	standin_alias	C3DAnimationInfo	1	1	engine/C3DAnimationInfo.h	00a2b4e0
 T1	standin_alias	C3DAnimationStats	1	1	engine/C3DAnimationStats.h	00a50bf0
 T1	standin_alias	CACompressor	1	1	engine/CACompressor.h	0129b424
 T1	standin_alias	CAIStateGroup_ApprenticeHero	1	1	engine/CAIStateGroup_ApprenticeHero.h	00929fc0
-T1	standin_alias	CAIStateGroup_Clean	1	1		008fdb27
 T1	standin_alias	CAIStateGroup_JackOfBladesBase	1	1	engine/CAIStateGroup_JackOfBladesBase.h	00903046
 T1	standin_alias	CAIStateGroup_MazeTutorialBattleRespondToLightning	1	1	engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h	00954c60
 T1	standin_alias	CAIStateGroup_MinionReactToCrime	1	1	engine/CAIStateGroup_MinionReactToCrime.h	00958770
@@ -252,7 +251,6 @@ T1	signature	CParticleSystem	2	2	engine/CParticleSystem.h	00af5330 00af59a0
 T1	signature	CPlayer	2	2	engine/CPlayer.h	004888c0 013b8c88
 T1	signature	CTCEnemy	2	1	engine/CTCEnemy.h	0076cc00 0076d1b0
 T1	signature	CTCInventoryClothing	2	1	engine/CTCInventoryClothing.h	01243558 0124356c
-T1	signature	CTCSolidToThing	2	2	engine/CTCSolidToThing.h	00770e50 00770fa0
 T1	signature	CTCStealth	2	3	engine/CTCStealth.h	00746ec0 00747b80
 T1	signature	CTCTavernGame	2	2	engine/CTCTavernGame.h	005eb4b0 005eca50
 T1	signature	CTCVillage	2	2	engine/CTCVillage.h	00658716 00659efc
@@ -313,19 +311,17 @@ T1	signature	CShaderRenderManager	1	1	engine/CShaderRenderManager.h	0098b860
 T1	signature	CShaderResource	1	1	engine/CShaderResource.h	00a5d7c0
 T1	signature	CSpellContainerList	1	1		012475a0
 T1	signature	CTCAISummon	1	1		007fdeb0
-T1	signature	CTCDayOrNightOnlySupport	1	1		00702aa0
 T1	signature	CTCFireheartMinigame	1	1		007e79c0
 T1	signature	CTCFollowed	1	1	engine/CTCFollowed.h	006d4e60
 T1	signature	CTCHero	1	1	engine/CTCHero.h	006c9fa0
 T1	signature	CTCIdleScheduler	1	1	engine/CTCIdleScheduler.h	00801920
 T1	signature	CTCInventoryBase	1	1		005bf482
 T1	signature	CTCInventoryExperience	1	1	engine/CTCInventoryExperience.h	0124f11c
-T1	signature	CTCMeleeTrap	1	1	engine/CTCMeleeTrap.h	00787dbc
 T1	signature	CTCPhysicalShieldSpell	1	1	engine/CTCPhysicalShieldSpell.h	0079deb0
 T1	signature	CTCRandomAppearanceMorph	1	1	engine/CTCRandomAppearanceMorph.h	0126653c
 T1	signature	CTCScriptedControl	1	2	engine/CTCScriptedControl.h	007137d0
 T1	signature	CTCShapeManager	1	1	engine/CTCShapeManager.h	00762580
-T1	signature	CTCSpecialAbilities	1	1	engine/CTCSpecialAbilities.h	0072c6e0
+T1	signature	CTCSolidToThing	1	1	engine/CTCSolidToThing.h	00770fa0
 T1	signature	CTCWeaponTrail	1	1	engine/CTCWeaponTrail.h	0076e4d0
 T1	signature	CTCWillLightning	1	1	engine/CTCWillLightning.h	007a0d90
 T1	signature	CTCWound	1	1	engine/CTCWound.h	00757b30
@@ -478,7 +474,6 @@ T1	other	CManager	2	2	engine/CManager.h	006f90d0 006f96c0
 T1	other	CMap	2	3	engine/CMap.h	00820b80 00821850
 T1	other	CMemoryAllocatorBase	2	5	engine/CMemoryAllocatorBase.h	013d28d4 013d28d8
 T1	other	CModeStandBase	2	8	engine/CModeStandBase.h	00861d00 008621a0
-T1	other	CParticle	2	1	engine/CParticle.h	00af7b60 00af8650
 T1	other	CParticleEmitterList	2	2	engine/CParticleEmitterList.h	00aeb060 00aeb190
 T1	other	CParticleUpdateParameters	2	4	engine/CParticleUpdateParameters.h	006e2500 0125ffdc
 T1	other	CPatchTesselationEdgeStrip	2	2	engine/CPatchTesselationEdgeStrip.h	004e0d7e 004e424b
@@ -801,7 +796,6 @@ T1	other	CThingBodyReorienter	1	1		00863790
 T1	other	CThingFilter_IsInFOV	1	1	engine/CThingFilter_IsInFOV.h	006a7380
 T1	other	CThingFilter_IsOnFire	1	1		006a8a80
 T1	other	CThingGameObject	1	1	engine/CThingGameObject.h	00838aa0
-T1	other	CThingPhysicalSwitch	1	1	engine/CThingPhysicalSwitch.h	0083d6d0
 T1	other	CThreadedFile	1	3		013bc870
 T1	other	CTools	1	3		00877c40
 T1	other	CTrack	1	1		0126a288
@@ -1680,7 +1674,6 @@ T3	other	CTCFlashOnHit	2	2	engine/CTCFlashOnHit.h	004d94ab 007e33a0
 T3	other	CTCHeroOnlineScoreboard	2	2	engine/CTCHeroOnlineScoreboard.h	004d66da 0055ef00
 T3	other	CTCHitLocations	2	2	engine/CTCHitLocations.h	00814be0 00815870
 T3	other	CTCInventoryMap	2	2	engine/CTCInventoryMap.h	004d2f13 005fa900
-T3	other	CTCMeleeTrap	2	2	engine/CTCMeleeTrap.h	004d4987 00788aef
 T3	other	CTCPhysicalShieldSpell	2	2	engine/CTCPhysicalShieldSpell.h	004d4c88 0079e500
 T3	other	CTCPhysicsBase	2	2	engine/CTCPhysicsBase.h	006afd30 006b0170
 T3	other	CTCQuestCompletionUI	2	2	engine/CTCQuestCompletionUI.h	004d62ed 005e3e70
@@ -2006,7 +1999,6 @@ T3	other	CTCCupboard	1	1		004d7f42
 T3	other	CTCDCameraPoint	1	1		004dafca
 T3	other	CTCDRegionEntrance	1	1		004d85ff
 T3	other	CTCDRumble	1	1		004dcdc4
-T3	other	CTCDayOrNightOnlySupport	1	1		004d4927
 T3	other	CTCDegradableBarrier	1	1		004d3e99
 T3	other	CTCDivineWrath	1	1	engine/CTCDivineWrath.h	004d4a99
 T3	other	CTCDoor	1	1	engine/CTCDoor.h	004d32da
@@ -2047,6 +2039,7 @@ T3	other	CTCInterestingToVillagers	1	1	engine/CTCInterestingToVillagers.h	004dc8
 T3	other	CTCInventoryMagic	1	1	engine/CTCInventoryMagic.h	004d2f46
 T3	other	CTCInventoryQuests	1	1	engine/CTCInventoryQuests.h	004d30a8
 T3	other	CTCLightningOrb	1	1	engine/CTCLightningOrb.h	007f2100
+T3	other	CTCMeleeTrap	1	1	engine/CTCMeleeTrap.h	00788aef
 T3	other	CTCMultiArrow	1	1	engine/CTCMultiArrow.h	007cbee0
 T3	other	CTCNamedUserActionPoints	1	1	engine/CTCNamedUserActionPoints.h	004e23ff
 T3	other	CTCObstacle	1	1		004d9580
@@ -2071,9 +2064,7 @@ T3	other	CTCShotDefinitionThrow	1	1		004d8d9c
 T3	other	CTCShotDefinitionThrowPredictive	1	1		004d8dd8
 T3	other	CTCSimpleAppearanceMorph	1	1		004d2a14
 T3	other	CTCSinglePersonOccupiable	1	1	engine/CTCSinglePersonOccupiable.h	004db0ad
-T3	other	CTCSolidToThing	1	1	engine/CTCSolidToThing.h	004d3e43
 T3	other	CTCSoundAtmosphereVillage	1	1		004df1cc
-T3	other	CTCSpecialAbilities	1	1	engine/CTCSpecialAbilities.h	004d2d98
 T3	other	CTCStealth	1	2	engine/CTCStealth.h	00747020
 T3	other	CTCSwitchableNavigation	1	1	engine/CTCSwitchableNavigation.h	004d877c
 T3	other	CTCTargetingAI	1	2	engine/CTCTargetingAI.h	007f6170

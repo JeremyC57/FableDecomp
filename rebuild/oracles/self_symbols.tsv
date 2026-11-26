@@ -2906,7 +2906,7 @@ address	symbol	status	leaf_given
 004d2ced	?StatGetClassTypeName@CTCCarriedActionUseGiveBeer@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCCarriedActionUseGiveBeer@@SI?AVCCharString@@XZ
 004d2d00	?StatGetClassTypeName@CTCCarriedActionUseGoldBag@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCCarriedActionUseGoldBag@@SI?AVCCharString@@XZ
 004d2d13	?StatGetClassTypeName@CTCCarriedActionUseShow@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCCarriedActionUseShow@@SI?AVCCharString@@XZ
-004d2d98	?CTCSpecialAbilities_Alloc@@YIPAVCTCSpecialAbilities@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
+004d2d98	?Alloc@CTCSpecialAbilities@@SIPAVCTCBase@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d2df7	?GetClassTypeName@CTCUndeadSoul@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCUndeadSoul@@UBE?AVCCharString@@XZ
 004d2e44	?CTCQuestCard_Alloc@@YIPAVCTCQuestCard@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d2e74	?Alloc@CTCInventory@@SIPAVCTCBase@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
@@ -2974,7 +2974,7 @@ address	symbol	status	leaf_given
 004d3ddb	?CEnemyDef_GetSizeofClass@@YIHXZ	MATCH	GetSizeofClass
 004d3dfc	?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDParticleEmitter@@SI?AVCCharString@@XZ
 004d3e13	?CTCWeaponTrail_Alloc@@YIPAVCTCWeaponTrail@@J@Z	RELOCATION_MATCH	Alloc
-004d3e43	?CTCSolidToThing_Alloc@@YIPAVCTCSolidToThing@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
+004d3e43	?Alloc@CTCSolidToThing@@SIPAVCTCBase@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d3e99	?CTCDegradableBarrier_Alloc@@YIPAUCTCDegradableBarrier@@PAX@Z	RELOCATION_MATCH	Alloc
 004d3ef9	?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ	RELOCATION_MATCH	?StatGetClassTypeName@CTCDNone@@SI?AVCCharString@@XZ
 004d3f30	?GetClassTypeName@CTCDNone@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCDNone@@UBE?AVCCharString@@XZ
@@ -3024,8 +3024,8 @@ address	symbol	status	leaf_given
 004d488b	??0CShipDef@@QAE@XZ	RELOCATION_MATCH	??0CShipDef@
 004d489d	?GetSizeofClass@CShipDef@@UAEKXZ	MATCH	?GetSizeofClass@CShipDef@@UAEKXZ
 004d48a1	?Alloc@CTCBob@@SIPAVCTCBase@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
-004d4927	?CTCDayOrNightOnlySupport_Alloc@@YIPAVCTCDayOrNightOnlySupport@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
-004d4987	?CTCMeleeTrap_Alloc@@YIPAUCTCMeleeTrap@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
+004d4927	?Alloc@CTCDayOrNightOnlySupport@@SIPAVCTCBase@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
+004d4987	?Alloc@CTCMeleeTrap@@SIPAVCTCBase@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d4a03	?GetClassTypeName@CTCMoneyReceiver@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CTCMoneyReceiver@@UBE?AVCCharString@@XZ
 004d4a69	?CTCBerserk_Alloc@@YIPAVCTCBerserk@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 004d4a99	?CTCDivineWrath_Alloc@@YIPAVCTCDivineWrath@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
@@ -20894,7 +20894,7 @@ address	symbol	status	leaf_given
 00af7910	?erase@?$vector@V?$CArray@J@@V?$allocator@V?$CArray@J@@@std@@@std@@QAEPAV?$CArray@J@@PAV3@0@Z	RELOCATION_MATCH	?erase@?$vector@V?$CArray@J@@
 00af7a10	?resize@CComponentInstanceVector@@QAEXI@Z	RELOCATION_MATCH	resize
 00af7a90	??0CParticle@NParticleEngine@@QAE@XZ	RELOCATION_MATCH	??0CParticle
-00af7b40	?CParticle_scalar_deleting_destructor@@YIPAXPAUCParticle@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00af7b40	?CParticle_scalar_deleting_destructor@@YIPAXPAVCParticle@NParticleEngine@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00af7c80	?vector_deleting_destructor@CEngineSubPrimitiveGameMesh@@QAEPAXI@Z	RELOCATION_MATCH	`vector_deleting_destructor'
 00af7ca0	?CDecal_Delete@@YIXPAUCDecal@@@Z	RELOCATION_MATCH	Delete
 00af7cc0	?ScalarDeletingDestructor@CParticleSystem@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -21853,7 +21853,7 @@ address	symbol	status	leaf_given
 00bb9980	??_GCEnginePrimitiveManagerParticleDecalGroup@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bb99a0	??1CEnginePrimitiveManagerParticleDecalGroup@@UAE@XZ	RELOCATION_MATCH	??1CEnginePrimitiveManagerParticleDecalGroup
 00bb9fd0	??0?$vector@VCTVertexNormTex1@@V?$allocator@VCTVertexNormTex1@@@std@@@std@@QAE@I@Z	RELOCATION_MATCH	??0?$vector@VCTVertexNormTex1@@
-00bba140	??1CEngineInternalPrimitiveParticleGroup@@QAE@XZ	RELOCATION_MATCH	??1CEngineInternalPrimitiveParticleGroup
+00bba140	??1CEngineInternalPrimitiveParticleGroup@@UAE@XZ	RELOCATION_MATCH	??1CEngineInternalPrimitiveParticleGroup
 00bba240	?CEngineInternalPrimitiveParticleDecalGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleDecalGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bba290	?Update@CEngineInternalPrimitiveDecal@@UAEXABVCEnginePrimitive@@K@Z	MATCH	Update
 00bba340	?RenderPrimitive@CEnginePrimitiveManagerDecal@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	RELOCATION_MATCH	RenderPrimitive
@@ -21893,13 +21893,13 @@ address	symbol	status	leaf_given
 00bbddc0	?CEnginePrimitiveManagerParticleSpriteTrailGroup_RenderSubPrimitive@@YGXHH@Z	MATCH	RenderSubPrimitive
 00bbea70	?CreateInternalPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup_Methods@@QAEPAVCEngineInternalPrimitiveBase@@J@Z	RELOCATION_MATCH	CreateInternalPrimitive
 00bbeaf0	??0CEnginePrimitiveManagerParticleSpriteTrailGroup@@QAE@PAUCEngineSceneArray@@ABV?$CCountedPointer@VCEnginePrimitiveManagerSpriteTrails@@@@@Z	RELOCATION_MATCH	??0CEnginePrimitiveManagerParticleSpriteTrailGroup
-00bbf180	?CEngineInternalPrimitiveParticleSpriteTrailGroup_scalar_deleting_destructor@@YIPAXPAUCEngineInternalPrimitiveParticleSpriteTrailGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00bbf180	?CEngineInternalPrimitiveParticleSpriteTrailGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleSpriteTrailGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bbf1a0	?CEnginePrimitiveManagerParticleSpriteTrailGroup_scalar_deleting_destructor@@YIPAXPAVCEnginePrimitiveManagerParticleSpriteTrailGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bbf1c0	??1CEnginePrimitiveManagerParticleSpriteTrailGroupNativeView@@UAE@XZ	RELOCATION_MATCH	??1CEnginePrimitiveManagerParticleSpriteTrailGroupNativeView
 00bbf370	?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	MATCH	?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
 00bbf380	?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ	RELOCATION_MATCH	?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ
 00bc2100	??_GCIVCountedPointeeBase@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
-00bc2240	?CEngineInternalPrimitiveParticleSpriteGroup_scalar_deleting_destructor@@YIPAXPAUCEngineInternalPrimitiveParticleSpriteGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00bc2240	?CEngineInternalPrimitiveParticleSpriteGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleSpriteGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bc2260	??_GCEnginePrimitiveManagerParticleSpriteGroup@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bc2280	??1CEnginePrimitiveManagerParticleSpriteGroup@@UAE@XZ	RELOCATION_MATCH	??1CEnginePrimitiveManagerParticleSpriteGroup
 00bc2400	?Update@CEngineInternalPrimitiveParticleMeshGroup@@QAEXABUSParticleMeshGroupUpdate@@K@Z	RELOCATION_MATCH	Update
@@ -21909,13 +21909,13 @@ address	symbol	status	leaf_given
 00bc34d0	??0CEnginePrimitiveManagerParticleMeshGroup@@QAE@PAUCEngineSceneArray@@@Z	RELOCATION_MATCH	??0CEnginePrimitiveManagerParticleMeshGroup
 00bc3af0	?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh@@UBEPBVCEngineRenderInfoMeshBase@@XZ	MATCH	?PeekRenderInfoMeshBase@CEngineInternalPrimitiveParticleMesh@@UBEPBVCEngineRenderInfoMeshBase@@XZ
 00bc3b20	??_GCIVCountedPointeeBase@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
-00bc3be0	?CEngineInternalPrimitiveParticleMeshGroup_scalar_deleting_destructor@@YIPAXPAUCEngineInternalPrimitiveParticleMeshGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00bc3be0	?CEngineInternalPrimitiveParticleMeshGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleMeshGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bc3d50	?GetWorldPosition@CEngineInternalPrimitiveParticleLine@@UAE_NAAVC3DVector@@@Z	RELOCATION_MATCH	?GetWorldPosition@CEngineInternalPrimitiveParticleLine@@UAE_NAAVC3DVector@@@Z
 00bc3e00	?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	MATCH	?RenderPrimitive@CEnginePrimitiveManagerParticleLineGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
 00bc3e10	?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@AAEXXZ	RELOCATION_MATCH	?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@AAEXXZ
 00bc4d90	??0CEnginePrimitiveManagerParticleLineGroup@@QAE@PAUCEngineSceneArray@@@Z	RELOCATION_MATCH	??0CEnginePrimitiveManagerParticleLineGroup
 00bc5320	??_GCIVCountedPointeeBase@@UAEPAXI@Z	RELOCATION_MATCH	ScalarDeletingDestructor
-00bc53e0	?CEngineInternalPrimitiveParticleLineGroup_scalar_deleting_destructor@@YIPAXPAUCEngineInternalPrimitiveParticleLineGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00bc53e0	?CEngineInternalPrimitiveParticleLineGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveParticleLineGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bc5400	?CEnginePrimitiveManagerParticleLineGroup_scalar_deleting_destructor@@YIPAXPAVCEnginePrimitiveManagerParticleLineGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00bc55b0	?GetChildPrimitive@CEngineInternalPrimitiveChanger@@QAEPAVCEngineInternalPrimitiveBase@@K@Z	MATCH	GetChildPrimitive
 00bc57c0	?PostRender@CEngineInternalPrimitiveChanger@@UAEXXZ	MATCH	PostRender
@@ -22146,7 +22146,7 @@ address	symbol	status	leaf_given
 00be0de0	?Update@CEngineInternalPrimitive2DParticleGroup@@UAEXABVCEnginePrimitive@@K@Z	RELOCATION_MATCH	Update
 00be1a00	?CreateInternalPrimitive@CEnginePrimitiveManager2DParticleGroup@@QAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z	RELOCATION_MATCH	CreateInternalPrimitive
 00be1a80	?GetSupportedTypes@CEnginePrimitiveManager2DParticleGroup@@QAEXAAUCRetailVector_dword@@@Z	RELOCATION_MATCH	GetSupportedTypes
-00be1b30	?CEngineInternalPrimitive2DParticleGroup_scalar_deleting_destructor@@YIPAXPAUCEngineInternalPrimitive2DParticleGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00be1b30	?CEngineInternalPrimitive2DParticleGroup_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitive2DParticleGroup@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00be1b80	?CEngineInternalPrimitive2DViewport_GetRenderLayerMask@@YIHXZ	MATCH	GetRenderLayerMask
 00be1ba0	?Render2DPrimitive@CEnginePrimitive2DViewportManager@@QAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	RELOCATION_MATCH	Render2DPrimitive
 00be1d80	?UpdateRenderLayerMask@CEngineInternalPrimitive2DViewport@@QAEXXZ	MATCH	UpdateRenderLayerMask

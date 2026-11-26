@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+add	??1CEngineInternalPrimitiveParticleGroup@@UAE@XZ	00bba140	00bba240	NF456/NF457 (r456b): the six landed scalar deleting destructors 0x00BBA240, 0x00BBF180, 0x00BC2240, 0x00BC3BE0, 0x00BC53E0, 0x00BE1B30 call 0x00BBA140 (calls at 0x00BBA243 / 0x00BBF183 / 0x00BC2243 / 0x00BC3BE3 / 0x00BC53E3 / 0x00BE1B33, retail; its only callers), now spelt ??1CEngineInternalPrimitiveParticleGroup@@UAE@XZ (UND in each new object); no table line bound that address before (the stand-ins bound nothing)

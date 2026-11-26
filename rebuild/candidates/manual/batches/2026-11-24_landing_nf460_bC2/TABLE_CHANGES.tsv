@@ -1,0 +1,5 @@
+action	symbol	target	witness	note
+replace	??0CInterestingToVillagersDef@N_008fdb27@@QAE@XZ -> ??0CAIStateGroup_Clean@@QAE@XZ	008fdb27	008fdb55	NF460 (queue nf458): both landed binders 0x008FDB55 / 0x008FDB7D are respelt in this batch onto the self spelling of 0x008FDB27 (FableWin + RTTI base name); source grep: no other row spells N_008fdb27
+replace	?CThingPhysicalSwitch_dtor@@YIXPAVCThingPhysicalSwitch@@@Z -> ??1CThingPhysicalSwitch@@UAE@XZ	0083d6d0	00529ca0	NF460 (queue nf453): the landed deleting dtor 0x00529CA0 (only retail caller) is respelt in this batch onto ??1CThingPhysicalSwitch@@UAE@XZ (Ego_r + FableWin; the Leaf of 0x0083D6D0)
+replace	?inner_dtor@CParticle@@QAEXXZ -> ??1CParticle@NParticleEngine@@UAE@XZ	00af7b60	00af7b40	NF460 (queue nf458): the landed deleting dtor 0x00AF7B40 (only retail caller) is respelt in this batch onto the PDB spelling (Ego_r + FableWin; the Leaf of 0x00AF7B60)
+replace	?member_free@CParticle@@QAEXXZ -> ??3CParticle@NParticleEngine@@SIXPAX@Z	00af8650	00af7b40	NF460 (queue nf458): the landed deleting dtor 0x00AF7B40 (only retail caller) is respelt in this batch onto the PDB spelling (Ego_r + FableWin; the Leaf of 0x00AF8650)
