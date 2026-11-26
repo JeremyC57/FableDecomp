@@ -1,0 +1,3 @@
+address	name	evidence
+00af2200	?resize@?$vector@VCParticleEmitterInfo@NParticleEngine@@V?$allocator@VCParticleEmitterInfo@NParticleEngine@@@std@@@std@@QAEXI@Z	Account B NAME_FIXES (landing acctB_resize): Ego_r.pdb 0x00AB1C40 + FableWin.pdb 0x02F03D80, QAEXI; was _Umove<EWeaponClass*>
+0085ed90	?resize@?$vector@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@V?$allocator@V?$vector@VCThingMapCell@NThingMap@@V?$allocator@VCThingMapCell@NThingMap@@@std@@@std@@@2@@std@@QAEXI@Z	Account B NAME_FIXES (landing acctB_resize85): Ego_r.pdb 0x0055E410 + FableWin.pdb 0x029DA890, QAEXI; was _Umove<EWeaponClass*>
