@@ -1,0 +1,2 @@
+live_symbol	target_here	witness	table_targets_of_live_symbol	stale_spelling_held	why
+?IsPlayingVirtual@CSoundEvent@@QAEJXZ	00c20f40	00c12680	00c207a0	?IsPlayingVirtual@CSoundEvent_00c12680@@QAEJXZ	live spelling bound in the table elsewhere
