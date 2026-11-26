@@ -1,0 +1,6 @@
+source	address	unit	reason
+alias1	0x00914EF0	self respell	alias1 measured ?OnActivate@CAIStateGroup_KidHurtSelfRunToMother_Methods@@QAEXXZ -> ?OnActivate@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ (no object (head ('MATCH', 'PASS'), new ('SRC_FAIL', 'PASS')))
+nf318	0x00914EF0	port	?OnActivate@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ: engine/CAIStateGroup_KidHurtSelfRunToMother.h declares OnActivate only under FABLE_RETAIL_KID_HURT_SELF_PASS23, a pass-specific switch the brief excludes; not compiled, n
+nf319	0x00925F80	held	00925f80 skipped-held ?InitStateGroup@CAIStateGroup_WifeGiveYouGift@@UAEXABVCWorld@@AAVCThingAICreature@@@Z NF318 Q2: class branch only under FABLE_RETAIL_WIFE_GIFT_UPDATE_PASS24
+nf320	0x00922530	held	00922530 skipped-held ?InitStateGroup@CAIStateGroup_Drunk@@UAEXABVCWorld@@AAVCThingAICreature@@@Z alias-sig; engine/CAIStateGroup_Drunk.h models the class only under FABLE_RETAIL_CAISTATEGROUP_DRUNK_UPDATE_PASS27, a pass
+nf324	0x009143C0	rejected	009143c0 rejected ?Cleanup@CAIStateGroup_BirdGroundWander@@UAEXXZ work/exp_b1 REJECT: objcheck: undefined symbols differ: +?h1_9143c0@@YIXPAVCAIStateGroup_BirdGroundWander@@@Z -?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z

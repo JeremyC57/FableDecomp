@@ -28,6 +28,12 @@ public:
 #endif
 protected:
     unsigned long FrameLastFinishedWalking;                              // +0x14
+#ifdef FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FD880 defines it here and its TU emits ??_7CAIStateGroup_BirdGroundWander@@6B@ with retail's 14 slots (vftable 0x01289670).
+public:
+    CAIStateGroup_BirdGroundWander();                                      // 0x008FD880
+#endif
 };
 FABLE_STATIC_ASSERT_AT(25, sizeof(CAIStateGroup_BirdGroundWander) == 0x18);
 #else
@@ -53,4 +59,7 @@ FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_BirdGroundWander, __vftable) =
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_BirdGroundWander, FrameLastFinishedWalking) == 0x14);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER
+#if defined(FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER)
+#error FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_BIRDGROUNDWANDER view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_BIRDGROUNDWANDER_H

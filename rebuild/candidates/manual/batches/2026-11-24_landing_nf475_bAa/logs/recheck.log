@@ -1,0 +1,44 @@
+addr       parity           behav  name
+008fd880   RELOCATION_MATCH PASS   CAIStateGroup_BirdGroundWander
+008fd98c   RELOCATION_MATCH PASS   CAIStateGroup_KidWanderNearKids
+008fd9da   RELOCATION_MATCH PASS   CAIStateGroup_KidHurtSelfRunToMother
+008fe5b8   RELOCATION_MATCH PASS   CAIStateGroup_Drunk
+008fe72b   RELOCATION_MATCH PASS   CAIStateGroup_WifeGiveYouGift
+008ff8f2   WARN STANDIN_LEAF ??_GCAIStateGroup_BirdGroundWander@@UAEPAXI@Z (catalog CAIStateGroup_BirdGroundWander::`scalar_deleting_destructor'; names another function)
+008ff8f2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ffb88   WARN STANDIN_LEAF ??_GCAIStateGroup_KidWanderNearKids@@UAEPAXI@Z (catalog CAIStateGroup_KidWanderNearKids::`scalar_deleting_destructor'; names another function)
+008ffb88   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ffc5c   WARN STANDIN_LEAF ??_GCAIStateGroup_KidHurtSelfRunToMother@@UAEPAXI@Z (catalog CAIStateGroup_KidHurtSelfRunToMother::`scalar_deleting_destructor'; names another function)
+008ffc5c   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0090198e   WARN STANDIN_LEAF ??_GCAIStateGroup_Drunk@@UAEPAXI@Z (catalog CAIStateGroup_Drunk::`scalar_deleting_destructor'; names another function)
+0090198e   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901bf7   WARN STANDIN_LEAF ??_GCAIStateGroup_WifeGiveYouGift@@UAEPAXI@Z (catalog CAIStateGroup_WifeGiveYouGift::`scalar_deleting_destructor'; names another function)
+00901bf7   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009143c0   RELOCATION_MATCH PASS   Cleanup
+00914c60   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00914c60   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00914c60   WARN SHARED_HEADER_AVAILABLE CTCIdleScheduler (engine/CTCIdleScheduler.h)
+00914c60   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager (engine/CTCCreatureModeManager.h)
+00914c60   WARN SHARED_HEADER_AVAILABLE CThingFilter_IsNot (engine/CThingFilter_IsNot.h)
+00914c60   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+00914c60   RELOCATION_MATCH PASS   IsRunnable
+00914ef0   MATCH            PASS   OnActivate
+00922530   MATCH            PASS   InitStateGroup
+00925f80   MATCH            PASS   InitStateGroup
+
+WINS: 15
+  008fd880 RELOCATION_MATCH CAIStateGroup_BirdGroundWander::??0CAIStateGroup_BirdGroundWander@@QAE@XZ
+  008fd98c RELOCATION_MATCH CAIStateGroup_KidWanderNearKids::??0CAIStateGroup_KidWanderNearKids@@QAE@XZ
+  008fd9da RELOCATION_MATCH CAIStateGroup_KidHurtSelfRunToMother::??0CAIStateGroup_KidHurtSelfRunToMother@@QAE@XZ
+  008fe5b8 RELOCATION_MATCH CAIStateGroup_Drunk::??0CAIStateGroup_Drunk@@QAE@XZ
+  008fe72b RELOCATION_MATCH CAIStateGroup_WifeGiveYouGift::??0CAIStateGroup_WifeGiveYouGift@@QAE@XZ
+  008ff8f2 RELOCATION_MATCH CAIStateGroup_BirdGroundWander::??_GCAIStateGroup_BirdGroundWander@@UAEPAXI@Z
+  008ffb88 RELOCATION_MATCH CAIStateGroup_KidWanderNearKids::??_GCAIStateGroup_KidWanderNearKids@@UAEPAXI@Z
+  008ffc5c RELOCATION_MATCH CAIStateGroup_KidHurtSelfRunToMother::??_GCAIStateGroup_KidHurtSelfRunToMother@@UAEPAXI@Z
+  0090198e RELOCATION_MATCH CAIStateGroup_Drunk::??_GCAIStateGroup_Drunk@@UAEPAXI@Z
+  00901bf7 RELOCATION_MATCH CAIStateGroup_WifeGiveYouGift::??_GCAIStateGroup_WifeGiveYouGift@@UAEPAXI@Z
+  009143c0 RELOCATION_MATCH CAIStateGroup_BirdGroundWander::?Cleanup@CAIStateGroup_BirdGroundWander@@UAEXXZ
+  00914c60 RELOCATION_MATCH CAIStateGroup_KidWanderNearKids::?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ
+  00914ef0 MATCH CAIStateGroup_KidHurtSelfRunToMother::?OnActivate@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ
+  00922530 MATCH CAIStateGroup_Drunk::?InitStateGroup@CAIStateGroup_Drunk@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+  00925f80 MATCH CAIStateGroup_WifeGiveYouGift::?InitStateGroup@CAIStateGroup_WifeGiveYouGift@@UAEXABVCWorld@@AAVCThingAICreature@@@Z

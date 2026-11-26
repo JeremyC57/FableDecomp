@@ -17,8 +17,20 @@ public:
 private:
     void TalkToSelfUpdate();
     long FrameToNextTalkToSelf;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_DRUNK_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FE5B8 defines it here and its TU emits ??_7CAIStateGroup_Drunk@@6B@ with retail's 14 slots (vftable 0x0128A9A4).
+    // Plus the overrides of retail's table this view does not declare (PDB spelling and access; declarations only).
+public:
+    CAIStateGroup_Drunk();                                                 // 0x008FE5B8
+    virtual void OnActivate();                                             // slot 2 0x00922540 ?OnActivate@CAIStateGroup_Drunk@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+    virtual bool IsStillValid() const;                                     // slot 5 0x009226B0 ?IsStillValid@CAIStateGroup_Drunk@@UBE_NXZ (Ego_r.pdb + FableWin.pdb)
+    virtual void OnReplace();                                              // slot 10 0x009225A0 ?OnReplace@CAIStateGroup_Drunk@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+    virtual bool IsRunnable();                                             // slot 11 0x00922600 ?IsRunnable@CAIStateGroup_Drunk@@UAE_NXZ (Ego_r.pdb + FableWin.pdb)
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature); // slot 13 0x00922530 ?InitStateGroup@CAIStateGroup_Drunk@@UAEXABVCWorld@@AAVCThingAICreature@@@Z (Ego_r.pdb + FableWin.pdb)
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_Drunk)==0x18);
+FABLE_STATIC_ASSERT_AT(21, sizeof(CAIStateGroup_Drunk)==0x18);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -42,4 +54,7 @@ FABLE_STATIC_ASSERT_AT(23, offsetof(CAIStateGroup_Drunk, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_Drunk, FrameToNextTalkToSelf) == 0x14);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_DRUNK_UPDATE_PASS27
+#if defined(FABLE_RETAIL_CAISTATEGROUP_DRUNK_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_DRUNK_UPDATE_PASS27)
+#error FABLE_RETAIL_CAISTATEGROUP_DRUNK_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_DRUNK_UPDATE_PASS27 view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_DRUNK_H

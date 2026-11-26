@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+delete	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z	008fcfa0	009143c0	callee respell (0x009143C0 header port): the made-up free stand-in for CAIStateGroupBase::PeekWorld; the PDB ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ is already bound at 008fcfa0 (its own line); 0x009143C0 was its only emitter (source + test grep)

@@ -23,8 +23,14 @@ public:
 private:
     void SendMessageToMother();
     bool AddedSadMode;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_KIDHURTSELFRUNTOMOTHER_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FD9DA defines it here and its TU emits ??_7CAIStateGroup_KidHurtSelfRunToMother@@6B@ with retail's 14 slots (vftable 0x01289824).
+public:
+    CAIStateGroup_KidHurtSelfRunToMother();                                // 0x008FD9DA
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidHurtSelfRunToMother)==0x18);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CAIStateGroup_KidHurtSelfRunToMother)==0x18);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -48,5 +54,8 @@ FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_KidHurtSelfRunToMother) == 0x18)
 FABLE_STATIC_ASSERT_AT(24, offsetof(CAIStateGroup_KidHurtSelfRunToMother, __vftable) == 0x0);
 FABLE_STATIC_ASSERT_AT(25, offsetof(CAIStateGroup_KidHurtSelfRunToMother, AddedSadMode) == 0x14);
 
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_KIDHURTSELFRUNTOMOTHER_CTOR) && !defined(FABLE_RETAIL_KID_HURT_SELF_PASS23)
+#error FABLE_RETAIL_CAISTATEGROUP_KIDHURTSELFRUNTOMOTHER_CTOR declares the constructor inside the FABLE_RETAIL_KID_HURT_SELF_PASS23 view: define that view too
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_KIDHURTSELFRUNTOMOTHER_H

@@ -892,7 +892,7 @@ line	tag	address	correct_symbol	status	other_spellings
 898	566	0088b6f0	?OnKill@CAIBrain@@QAEXXZ	partial	OnKill
 899	566	008e4770	??0CCreatureAction_ScorpionRecover@@QAE@AAVCThingCreatureBase@@@Z	closed	
 900	566	008fcf40	?Terminate@CAIStateGroupBase@@QAEXXZ	partial	?Terminate@CAIStateGroup_WorkHammerAnvil_Methods@@QAEXXZ || ?Terminate@CAIStateGroup_WorkSawingWood_Methods@@QAEXXZ || ?Terminate@CJumpAtFleeingMethods@@QAEXXZ || ?f4@@YIXPAX@Z
-901	566	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+901	566	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 902	566	008fcfd0	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	closed	
 903	566	0097b870	?IsStillRunnable@CAIStateGroup_ScorpionKing@@IAE_NXZ	closed	
 904	566	0097db70	?AIAction_PerformActionAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@_N@Z	partial	AIAction_PerformActionAndWait
@@ -1469,7 +1469,7 @@ line	tag	address	correct_symbol	status	other_spellings
 1564	sec4	004c9b80	?Kill@CThing@@QAEX_N@Z	partial	?Kill@CThing@NCreatureMode@@QAEX_N@Z || ?Kill@CThing@X_006e11f0@@QAEX_N@Z
 1565	sec4	0078b2a0	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@YI_NABV?$CIntelligentPointer@VCThingObject@@@@@Z	closed	
 1566	sec4	0048c740	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingPlayerCreature@@@@@@YI_NABV?$CIntelligentPointer@VCThingPlayerCreature@@@@@Z	partial	?IS_THING_ALIVE_Pointer@@YI_NABVCBaseIntelligentPointer@@@Z || ?IsThingAlive_0048c740@@YI_NAAV?$CIntelligentPointer@VCThing@@@@@Z
-1567	sec4	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+1567	sec4	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 1568	sec4	008fcfd0	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	closed	
 1569	sec4	0049d870	?GetFrame@CWorld@@SIJXZ	closed	
 1570	sec4	00497890	?GFROR13@@YIJK@Z	partial	?GFROR13@@YIKK@Z || GFROR13
@@ -2960,7 +2960,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3358	c682	00788d68	??$?0V?$CIntelligentPointer@VCThing@@@@M@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@M@1@@Z	closed	
 3359	c682	004a96f0	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	partial	??0?$CIntelligentPointer@ || ??0CIntelligentPointer@@QAE@PAVCThing@@@Z || ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointerConstThing@N_004a96f0@@QAE@PBVCThing@@@Z || ??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointer_CThing@NThingShot@@QAE@PAVCThing@@@Z
 3360	c682	004a9730	??0?$CIntelligentPointer@VCThing@@@@QAE@ABV0@@Z	partial	??0?$CIntelligentPointer@
-3374	c680	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+3374	c680	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 3375	c680	006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	partial	??0CMessageEventFilter_IsOriginatedByThing@N_006af2b0@@QAE@PBVCThing@@@Z
 3376	c680	0090dee0	??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z	partial	?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@@@@Z
 3377	c680	006af1c0	??RCMessageEventFilter_IsOfType@@QBE_NABVCMessageEvent@@@Z	closed	
@@ -3352,7 +3352,7 @@ line	tag	address	correct_symbol	status	other_spellings
 3840	c705	00912700	?GetRandomFlightPos@CAIStateGroup_FlyingThingBase@@IBE_NABVC3DVector@@MAAV2@_N@Z	closed	
 3841	c705	0097e200	?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	partial	?AIAction_DoNothing@CAIStateGroupBaseA@@QAEJXZ || ?AIAction_DoNothing@CAIStateGroup_MinionLeaveRegion_Adapter@@QAEJXZ || ?AIAction_DoNothing@CAIStateGroup_UsesSeat@@QAEJXZ || ?AIAction_DoNothing@DragonMethods@@QAEJXZ
 3842	c705	008fcf40	?Terminate@CAIStateGroupBase@@QAEXXZ	partial	?Terminate@CAIStateGroup_WorkHammerAnvil_Methods@@QAEXXZ || ?Terminate@CAIStateGroup_WorkSawingWood_Methods@@QAEXXZ || ?Terminate@CJumpAtFleeingMethods@@QAEXXZ || ?f4@@YIXPAX@Z
-3843	c705	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+3843	c705	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 3844	c705	00b3bc90	?SetupEditorAnimation@CEngineResourceManager@@QAEKABVCWideString@@@Z	closed	
 3845	c705	00a242c0	?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z	closed	
 3846	c705	00861d00	?OnDeactivate@CModeStandBase@@UAEXXZ	partial	?CMode_Base_OnActivate@@YIXPAX@Z || ?DragonRearUpBase_861d00@@YIXPAUCModeDragonRearUp@@@Z || ?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z || ?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ || ?StandDeactivate@ModeScreamer@@QAEXXZ
@@ -5155,7 +5155,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7078	land1011v	008c78f0	??$GetSubDef@VCTrollBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrollBattleDef@@@@@Z	partial	?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@UCTrollThrowDef@@@@@Z || ?GetTrollBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCTrollBattleDef@@@@@Z
 7079	land1011v	008f0b20	?GetCardDef@CTCTavernGameCardBase@@QAEXPAV?$CDefPointer@$$CBVCTavernGameCardBaseDef@@@@@Z	closed	
 7080	land1011v	008f5970	?GetClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z	closed	
-7081	land1011v	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+7081	land1011v	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 7082	land1011v	008fcfd0	?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ	closed	
 7083	land1011v	008fd000	?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ	closed	
 7084	land1011v	009350c0	?Fired@?$CAIStateGroup_ScriptingBase@VCAIStateGroupBase@@@@IAEXXZ	partial	?Fired@CAIStateGroup_ScriptingBase@@QAEXXZ
@@ -7095,7 +7095,7 @@ line	tag	address	correct_symbol	status	other_spellings
 9149	land1011eu	00c0a8a0	?SetFlag16@CEventPlayOptions@LHA@@QAEXK_N@Z	closed	
 9150	land1011eu	00c0a8c0	?SetFlag@CEventPlayOptions@LHA@@QAEXK_N@Z	closed	
 9153	land1011eu	00982210	??0CCreatureAction_SendMessage@@QAE@AAVCThingCreatureBase@@ABV?$CDefPointer@$$CBVCMessageEventDef@@@@PAV1@ABVC3DVector@@J@Z	closed	
-9154	land1011eu	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+9154	land1011eu	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 9155	land1011eu	007046d0	?SetImplementation@CScriptThing@@QAEXV?$CCountedPointer@VCScriptThing@@@@@Z	partial	?SetImp@CScriptThing@@QAEXUCCountedPointer@@@Z
 9156	land1011eu	007045f0	?Reset@?$CCountedPointer@VCScriptThing@@@@QAEXPAVCScriptThing@@@Z	closed	
 9157	land1011eu	008d0250	??0CGameScriptThing@@AAE@AAVCWorld@@ABVCThing@@@Z	closed	
@@ -7129,7 +7129,7 @@ line	tag	address	correct_symbol	status	other_spellings
 9187	land1011fd	005beb57	?GetMiniMapGraphic@CTCInventoryBase@NInventory@@QBEKAAVCRegion@@@Z	closed	
 9188	land1011fd	007c2980	??$__find@PAV?$CIntelligentPointer@$$CBVCThing@@@@V?$CIntelligentPointer@VCThing@@@@@std@@YIPAV?$CIntelligentPointer@$$CBVCThing@@@@PAV1@0ABV?$CIntelligentPointer@VCThing@@@@ABUrandom_access_iterator_tag@0@@Z	closed	
 9189	land1011fe	00971b00	?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@IAE_NXZ	closed	
-9192	land1011fg	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z || @Act_940bd0_A@0 || @GetS_946630@0
+9192	land1011fg	008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	partial	@Act_940bd0_A@0 || @GetS_946630@0
 9193	land1011fg	007046d0	?SetImplementation@CScriptThing@@QAEXV?$CCountedPointer@VCScriptThing@@@@@Z	partial	?SetImp@CScriptThing@@QAEXUCCountedPointer@@@Z
 9194	land1011fg	004c7e50	?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ	partial	?GetScriptThing@CThingNative@@QBE?AUScriptMethods@@XZ || ?GetScriptThing@CThing_Retail@@QAE?AVCScriptThing@@XZ
 9195	land1011fg	009ff220	?UploadFrame@CFrameData@CGraphicInfoFrame@@QAE_N_N@Z	partial	?UploadFrame@CFrameData@@QAE_N_N@Z || ?UploadFrame@CFrameData_009ff6b0@@QAE_NJ@Z

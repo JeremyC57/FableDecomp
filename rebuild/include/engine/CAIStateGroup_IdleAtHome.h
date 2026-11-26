@@ -33,9 +33,15 @@ protected:
     virtual void Update();                                                // slot 12 0x00917380 ?Update@CAIStateGroup_IdleAtHome@@MAEXXZ
     virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x00917300 ?InitStateGroup@CAIStateGroup_IdleAtHome@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
 public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_IDLEATHOME_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FDB12 defines it here and its TU emits ??_7CAIStateGroup_IdleAtHome@@6B@ with retail's 14 slots (vftable 0x01289A10).
+public:
+    CAIStateGroup_IdleAtHome();                                            // 0x008FDB12
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_IdleAtHome) == 0x14);
+FABLE_STATIC_ASSERT_AT(38, sizeof(CAIStateGroup_IdleAtHome) == 0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -54,4 +60,7 @@ FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_IdleAtHome) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_IdleAtHome, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CAISTATEGROUP_IDLEATHOME_VIRTUAL_MODEL
 
+#if defined(FABLE_RETAIL_CAISTATEGROUP_IDLEATHOME_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_IDLEATHOME_VIRTUAL_MODEL)
+#error FABLE_RETAIL_CAISTATEGROUP_IDLEATHOME_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_IDLEATHOME_VIRTUAL_MODEL view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_IDLEATHOME_H

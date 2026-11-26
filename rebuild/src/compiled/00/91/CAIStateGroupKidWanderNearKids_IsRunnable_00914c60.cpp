@@ -1,6 +1,6 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: KidMap::LowerBound bound to both 0x40f020 and 0x4365b0 (distinct instantiations))
 // CAIStateGroup_KidWanderNearKids::IsRunnable() -- gate idle modes, then find the first eligible child creature.
-// Leaf: IsRunnable
+// Leaf: ?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 29 (family gws): the seed comes from the const ?GetWorldSeed@CWorld@@QBEPAKXZ 0x0049D810 (Ego_r.pdb / FableWin.pdb;
 //   engine/CWorld.h) through PeekWorld(). Was the invented CWorld_Methods::GetPRandomSeed (QAEPAIXZ).
@@ -17,22 +17,25 @@
 // Layout: engine/ headers for the state group, brain, world and search tools; the generated CThingAICreature header is
 //   opaque over the native CThing prefix, so the local CThing view records UsingComponents at +0x20 and the interface
 //   vector at +0x44 (as landed 0x00914AA0/0x0092E890). The filter types follow 0x00914AA0; its empty child object has a
-//   user-provided empty ctor so value-initialization does not zero an unused byte. The *_Methods structs are the lane's
-//   method carriers for generated data-only headers.
+//   user-provided empty ctor so value-initialization does not zero an unused byte. CThingSearchTools_Methods is the lane's
+//   method carrier for the generated data-only header.
+// NF475 (r467b unit with ctor 0x008FD98C): self respelt to the PDB virtual ?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ (RTTI
+//   .?AVCAIStateGroup_KidWanderNearKids@@ vtable 0x01289798 slot 11, its only retail reference; Ego_r.pdb + FableWin.pdb), on the header's retail
+//   view FABLE_RETAIL_CAISTATEGROUP_KIDWANDERNEARKIDS_VIRTUAL_MODEL (the ctor row's class). Was ?IsRunnable@CAIStateGroup_KidWanderNearKids_Methods@@QAE_NXZ
+//   on a local CAIStateGroupBase subclass of the renamed header base (`#define CAIStateGroupBase CAIStateGroupBasePdb`): both are gone, the base and its
+//   protected PeekWorld / PeekThingSearchTools (?..@CAIStateGroupBase@@IBE..) now come from engine/CAIStateGroupBase.h (FABLE_RETAIL_CAISTATEGROUPBASE_PEEK).
+//   The other local views (CThing interface map, components, filters, the search-tools carrier) are unrelated to the self and kept as at HEAD (r473a).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
+#define FABLE_RETAIL_CAISTATEGROUP_KIDWANDERNEARKIDS_VIRTUAL_MODEL
 #include "fable_compiler.h"
 #include "engine/CAIBrain.h"
-#define CAIStateGroupBase CAIStateGroupBasePdb
-#include "engine/CAIStateGroupBase.h"              // layout only; the local class below carries the protected accessors (PDB: IBE)
-#undef CAIStateGroupBase
+#include "engine/CAIStateGroupBase.h"
 #include "engine/CAIStateGroup_KidWanderNearKids.h"
 #include "engine/CThingAICreature.h"
 #include "engine/CThingSearchTools.h"
 #include "engine/CWorld.h"
-class CAIStateGroupBase : public CAIStateGroupBasePdb {
-protected:
-    const CWorld& PeekWorld() const;                        // 0x008FCFA0
-    const CThingSearchTools& PeekThingSearchTools() const;  // 0x008FD000
-};
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidWanderNearKids) == sizeof(CAIStateGroupBase));
 
 class CTCBase { public: };
@@ -54,9 +57,6 @@ class CTCIdleScheduler : public CTCBase { public: bool IsPreferredIdle(CAIStateG
 class CTCCreatureModeManager : public CTCBase { public: public:
     bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };          // 0x0073A8A0
-struct CAIStateGroup_KidWanderNearKids_Methods : CAIStateGroupBase {
-    bool IsRunnable();
-};
 class CThingFilter_IsNot { public:
     const CThing* Excluded;
     CThingFilter_IsNot(const CThing* thing):Excluded(thing){}
@@ -77,7 +77,7 @@ struct CThingSearchTools_Methods : CThingSearchTools {
 };
 long __fastcall GFROR13(unsigned long);          // 0x00497890
 
-bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
+bool CAIStateGroup_KidWanderNearKids::IsRunnable() {
     CAIStateGroupBase* stateGroup = this;
     if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[6] & 0x80000) {
         CTCIdleScheduler* scheduler=((CThing*)(stateGroup->PBrain->Creature))->GetTC<CTCIdleScheduler>(0xd3);

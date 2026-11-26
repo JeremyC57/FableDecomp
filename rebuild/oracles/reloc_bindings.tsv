@@ -3809,7 +3809,6 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	00911f00
 ?f4@@YIXPAX@Z	008fcf40	00911f00
 ??_7CAIStateGroup_FlyingThingBase@@6B@	0128f9bc	009126c0
-?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z	008fcfa0	009143c0
 ??_7CCreatureAction_PickUpGoods@@6B@	0128fbf4	00916590
 ?subA@@YIHPAUCAIStateGroup_IdleAtHome@@@Z	00917050	00917110
 ?subB@@YIHPAUCAIStateGroup_IdleAtHome@@@Z	009170b0	00917110

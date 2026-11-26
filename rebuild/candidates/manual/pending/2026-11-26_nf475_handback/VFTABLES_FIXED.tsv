@@ -1,0 +1,12 @@
+name	vtable_va	old_bytes	new_bytes	retail_function_slots	batch	verdict
+??_7CAIStateGroup_BirdGroundWander@@6B@	0x01289670	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_KidHurtSelfRunToMother@@6B@	0x01289824	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_Drunk@@6B@	0x0128A9A4	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_WifeGiveYouGift@@6B@	0x0128AC48	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_MinionReactToAlert@@6B@	0x01289070	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_KidWanderNearKids@@6B@	0x01289798	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_IdleAtHome@@6B@	0x01289A10	4	56	14	bA	ACCEPT
+??_7CAIStateGroup_MinionReactToNoise@@6B@	0x0128A104	4	56	14	bH_hold	HOLD r467b (0x0091CDC0)
+??_7CAIStateGroup_MinionKidGroupTag@@6B@	0x0128B35C	4	56	14	bH_hold	HOLD r467b (0x00934920)
+??_7CAIStateGroup_MinionLeaveRegion@@6B@	0x0128A380	4	56	14	bH_hold	HOLD r467b (0x0091E4B0)
+??_7CAIStateGroup_AvoidRegionExit@@6B@	0x0128AFC0	4	56	14	bH_hold	HOLD r467b (0x0092BCB0)

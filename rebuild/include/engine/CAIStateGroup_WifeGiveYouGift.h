@@ -19,8 +19,18 @@ private:
     long FrameToSpeakNext;
     long GiftToGiveDef;
     bool DeliveredGiveSpeech;
+#ifdef FABLE_RETAIL_CAISTATEGROUP_WIFEGIVEYOUGIFT_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FE72B defines it here and its TU emits ??_7CAIStateGroup_WifeGiveYouGift@@6B@ with retail's 14 slots (vftable 0x0128AC48).
+    // Plus the overrides of retail's table this view does not declare (PDB spelling and access; declarations only).
+public:
+    CAIStateGroup_WifeGiveYouGift();                                       // 0x008FE72B
+    virtual void OnReplace();                                              // slot 10 0x009261F0 ?OnReplace@CAIStateGroup_WifeGiveYouGift@@UAEXXZ (Ego_r.pdb + FableWin.pdb)
+    virtual bool IsRunnable();                                             // slot 11 0x00925F90 ?IsRunnable@CAIStateGroup_WifeGiveYouGift@@UAE_NXZ (Ego_r.pdb + FableWin.pdb)
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature); // slot 13 0x00925F80 ?InitStateGroup@CAIStateGroup_WifeGiveYouGift@@UAEXABVCWorld@@AAVCThingAICreature@@@Z (Ego_r.pdb + FableWin.pdb)
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WifeGiveYouGift) == 0x20);
+FABLE_STATIC_ASSERT_AT(23, sizeof(CAIStateGroup_WifeGiveYouGift) == 0x20);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -48,5 +58,8 @@ FABLE_STATIC_ASSERT_AT(27, offsetof(CAIStateGroup_WifeGiveYouGift, FrameToSpeakN
 FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_WifeGiveYouGift, GiftToGiveDef) == 0x18);
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_WifeGiveYouGift, DeliveredGiveSpeech) == 0x1c);
 
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_WIFEGIVEYOUGIFT_CTOR) && !defined(FABLE_RETAIL_WIFE_GIFT_UPDATE_PASS24)
+#error FABLE_RETAIL_CAISTATEGROUP_WIFEGIVEYOUGIFT_CTOR declares the constructor inside the FABLE_RETAIL_WIFE_GIFT_UPDATE_PASS24 view: define that view too
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_WIFEGIVEYOUGIFT_H
