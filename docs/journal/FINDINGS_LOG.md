@@ -1685,3 +1685,5 @@ against CODAApi.lib, or stay compiled C++?
 - 2026-11-26 (NF461, measured): `/DEFAULTLIB:"libcp"` comes from VC7.1's `use_ansi.h` under /ML: `<new>` → ... → `yvals.h` → `use_ansi.h` (guard `_USE_ANSI_CPP`).
   - It is in 12,440 row objects. Retail was /MD (msvcprt).
   - `/D_USE_ANSI_CPP` removes it with byte-identical code (157-row sample, 0 NOT_EQ). Whether to apply it lane-wide is an owner item.
+- 2026-11-26 (NF467): NF461's `retail_size` overshoots for at least 38 names; it counted a following data dword as a slot (CThreadedFileCallback is 12 bytes, then "XMV\0"). Its 2,079 "no copy at retail size" figure is an upper bound. Use counted function slots.
+  - The r459a port method works: 42 CAIStateGroup ctor rows emit retail-size tables with unchanged ctor bytes. It is blocked on the base destructor's single definition (r467a), in `pending/2026-11-26_nf467_handback/`.

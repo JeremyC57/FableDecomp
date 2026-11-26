@@ -1,0 +1,1607 @@
+name	retail_va	q1_slots	func_slots	trailing_nonfunc	note
+??_7?$CConsoleCommand@VCConsole@@@@6B@	0129c4e0	6	6	0	interior_nonfunc
+??_7?$CConsoleCommand@VCGameTimeManager@@@@6B@	0125d668	6	6	0	interior_nonfunc
+??_7?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@6B@	012a81a0	5	5	0	
+??_7?$CPersistContext_TransferableComponent@F@@6B@	01239a74	2	2	0	
+??_7?$CPersistContext_TransferableComponent@N@@6B@	01238c80	2	2	0	
+??_7?$CPersistContext_TransferableComponent@VCDefIndex@@@@6B@	0124f2f4	2	2	0	
+??_7?$CPersistContext_TransferableComponent@W4ECrimeSeverity@@@@6B@	0126d7ec	2	2	0	
+??_7?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@@@6B@	0126d3ac	2	2	0	
+??_7?$CPersistContext_TransferableSubComponent@VCTCNoiseDef@@@@6B@	012338fc	3	3	0	
+??_7?$CPersistContext_TransferableVector@M@@6B@	0124c5e0	6	4	2	OVERCOUNT?
+??_7?$CPersistContext_TransferableVector@VCCrimeWaitingForBribe@@@@6B@	0126d7f8	4	4	0	
+??_7?$CPersistContext_TransferableVector@W4ECategory@@@@6B@	012571a0	4	4	0	
+??_7?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelGotoOutsideSimple@2@VCPhysicsCoordCartesian@2@@NCameraModes@@6B@	01275974	4	4	0	
+??_7?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelRigid@2@VCPhysicsCoordRigid@2@@NCameraModes@@6B@	01276aec	4	4	0	
+??_7C3DAnimationInfo@@6B@	0129cd64	4	4	0	
+??_7C3DAnimationStats@@6B@	0129d514	7	7	0	
+??_7C3DMesh2@@6B@	0129def0	10	10	0	
+??_7C3DMeshFileBoneChunk@@6B@	0129eb9c	11	11	0	
+??_7C3DMeshFileConvexVolumeChunk@@6B@	0129e634	11	11	0	
+??_7C3DMeshFileDummyObjectChunk@@6B@	0129e5f4	11	11	0	
+??_7C3DMeshFileGroupChunk@@6B@	0129ecb8	11	11	0	
+??_7C3DMeshFileMaterialChunk@@6B@	0129eee0	11	11	0	
+??_7C3DMeshFilePartitionChunkRetail@@6B@	0129ef4c	11	11	0	
+??_7C3DMeshFileSubMeshChunk@@6B@	0129eb18	11	11	0	
+??_7C3DMeshFileTransformationChunk@@6B@	0129eb54	11	11	0	
+??_7C3DMeshFileXBoundingBoxChunkRetail@@6B@	0129e2fc	11	11	0	
+??_7C3DMeshFileXBoundingSphereChunkRetail@@6B@	0129e2bc	11	11	0	
+??_7C3DMeshFileXMappingInfoChunkRetail@@6B@	0129e238	11	11	0	
+??_7C3DMeshFileXTextureIndexChunkRetail@@6B@	0129e1f8	11	11	0	
+??_7C3DMeshInfo@@6B@	0129cd3c	4	3	1	OVERCOUNT?
+??_7C3DMeshStats@@6B@	0129cf04	10	10	0	
+??_7C3DOptimisedMeshBase@@6B@	0129f048	3	3	0	
+??_7C3DPrimitive2@@6B@	0129df94	4	4	0	
+??_7CACompressor@@6B@	0129b424	5	5	0	
+??_7CACompressor_Retail@@6B@	0129b424	5	5	0	
+??_7CAEnvironmentInteraction@@6B@	0122ed10	7	7	0	
+??_7CAIBrain@@6B@	012780c4	5	5	0	
+??_7CAICreatureWillPowerIndicatorDef@@6B@	0123daa4	25	25	0	
+??_7CAIScratchpadDef@@6B@	0126d014	25	25	0	
+??_7CAIStateGroupBase@@6B@	01288c60	14	14	0	
+??_7CAIStateGroupBehaviourBase@@6B@	0128c444	19	19	0	
+??_7CAIStateGroup_ApprenticeHero@@6B@	0128aec4	15	15	0	
+??_7CAIStateGroup_AvoidRegionExit@@6B@	0128afc0	14	14	0	
+??_7CAIStateGroup_BalverineCornered@@6B@	0128c0bc	14	14	0	
+??_7CAIStateGroup_BalverineJumpAtFleeingEnemy@@6B@	0128c0f8	14	14	0	
+??_7CAIStateGroup_BalverineWander@@6B@	01289dd8	14	14	0	
+??_7CAIStateGroup_BanditGossip@@6B@	01288e94	17	17	0	interior_nonfunc
+??_7CAIStateGroup_BanditKingCharge@@6B@	0128ca38	14	14	0	
+??_7CAIStateGroup_BanditKingLunge@@6B@	0128ca74	14	14	0	
+??_7CAIStateGroup_BanditKingThrowWeapons@@6B@	0128cab0	14	14	0	
+??_7CAIStateGroup_BanditPlayDice@@6B@	0128ad54	18	18	0	
+??_7CAIStateGroup_BanditPlot@@6B@	0128adb4	18	18	0	
+??_7CAIStateGroup_BanditSitRoundCampfire@@6B@	0128b78c	14	14	0	interior_nonfunc
+??_7CAIStateGroup_BeetleToggleHover@@6B@	0128a6ec	14	14	0	
+??_7CAIStateGroup_BirdFlyToFood@@6B@	0128961c	14	14	0	
+??_7CAIStateGroup_BirdGroundWander@@6B@	01289670	14	14	0	
+??_7CAIStateGroup_BirdStartled@@6B@	012896c0	14	14	0	
+??_7CAIStateGroup_BoastingCrowdMember@@6B@	0128c948	14	14	0	
+??_7CAIStateGroup_BriarRose@@6B@	0128c38c	14	14	0	
+??_7CAIStateGroup_BriarRoseWillUse@@6B@	0128c3c8	14	14	0	
+??_7CAIStateGroup_ButterflyWander@@6B@	0128b918	14	14	0	
+??_7CAIStateGroup_BuyFromSeller@@6B@	0128ff0c	14	14	0	interior_nonfunc
+??_7CAIStateGroup_CarryCrateAndFollow@@6B@	0128ccd8	14	14	0	interior_nonfunc
+??_7CAIStateGroup_ChickenBeg@@6B@	01289514	14	14	0	
+??_7CAIStateGroup_ChickenPanic@@6B@	012894c8	14	14	0	
+??_7CAIStateGroup_ChickenWander@@6B@	01289404	14	14	0	
+??_7CAIStateGroup_Clean@@6B@	01289a4c	15	15	0	
+??_7CAIStateGroup_CleanHouse@@6B@	01289a9c	15	15	0	
+??_7CAIStateGroup_CleanWork@@6B@	01289aec	15	15	0	
+??_7CAIStateGroup_CreatureAdvanceInCover@@6B@	0128d4e4	24	24	0	
+??_7CAIStateGroup_CreatureFindCover@@6B@	0128d64c	24	23	1	OVERCOUNT?
+??_7CAIStateGroup_CreatureGoUnderground@@6B@	0128a5d8	14	14	0	
+??_7CAIStateGroup_CreatureIdleUnderground@@6B@	0128a634	14	14	0	
+??_7CAIStateGroup_CreatureRangedCombat2@@6B@	0128c814	14	14	0	
+??_7CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@6B@	0128c894	14	14	0	
+??_7CAIStateGroup_CreatureRangedCombatUseWillShield@@6B@	0128a484	14	14	0	
+??_7CAIStateGroup_CreatureSeekEnemyUnderground@@6B@	0128c90c	14	14	0	
+??_7CAIStateGroup_CreatureTakeCover@@6B@	0128d54c	24	23	1	OVERCOUNT?
+??_7CAIStateGroup_CreatureUseCoverBase@@6B@	0128d31c	24	23	1	OVERCOUNT?
+??_7CAIStateGroup_DeedReactionRoot@@6B@	0128c9c0	14	14	0	
+??_7CAIStateGroup_DeedReactionRootFromSleep@@6B@	0128c9fc	14	14	0	
+??_7CAIStateGroup_Drunk@@6B@	0128a9a4	14	14	0	
+??_7CAIStateGroup_EarthTroll@@6B@	0128c044	14	14	0	
+??_7CAIStateGroup_EatAtHome@@6B@	0128d25c	16	16	0	
+??_7CAIStateGroup_EatAtTable@@6B@	0128ce6c	16	16	0	
+??_7CAIStateGroup_EatAtTavern@@6B@	0128ceb4	16	16	0	
+??_7CAIStateGroup_EnemyCreatureBase@@6B@	0128b8bc	22	22	0	
+??_7CAIStateGroup_FireflyWander@@6B@	01289578	14	14	0	
+??_7CAIStateGroup_FlyingThingBase@@6B@	0128f9bc	14	14	0	
+??_7CAIStateGroup_FollowPlayer@@6B@	0128c080	14	14	0	
+??_7CAIStateGroup_Freeze@@6B@	0128a95c	14	14	0	
+??_7CAIStateGroup_GameMaster@@6B@	0128bfc4	16	16	0	
+??_7CAIStateGroup_Gaze@@6B@	0128fdec	16	16	0	
+??_7CAIStateGroup_GazeAtHome@@6B@	0128fe7c	16	16	0	
+??_7CAIStateGroup_GazeAtWork@@6B@	0128fec4	16	16	0	
+??_7CAIStateGroup_GazeOutside@@6B@	0128fe34	16	16	0	
+??_7CAIStateGroup_GoToBed@@6B@	0128b104	14	14	0	
+??_7CAIStateGroup_GoToPub@@6B@	0128bec4	14	14	0	interior_nonfunc
+??_7CAIStateGroup_Guard@@6B@	0128936c	14	14	0	
+??_7CAIStateGroup_Guildmaster@@6B@	0128d444	15	15	0	
+??_7CAIStateGroup_HandyMan@@6B@	01289ca0	14	14	0	
+??_7CAIStateGroup_HoverAllAroundTest@@6B@	0128a2c0	14	14	0	
+??_7CAIStateGroup_HoverAttack@@6B@	0128c634	23	23	0	
+??_7CAIStateGroup_HoverAttackArea@@6B@	0128c754	23	23	0	
+??_7CAIStateGroup_HoverAttackUnlessTargetIsFleeing@@6B@	0128c694	23	23	0	
+??_7CAIStateGroup_HoverHornetQueen@@6B@	0128d484	23	23	0	
+??_7CAIStateGroup_HoverHornetQueenTakeDamage@@6B@	0128c7b4	23	23	0	
+??_7CAIStateGroup_HoverKeepInArea@@6B@	0128c6f4	23	23	0	
+??_7CAIStateGroup_HoverMovementBase@@6B@	0128a1dc	23	23	0	
+??_7CAIStateGroup_HoverWander@@6B@	0128c5d4	23	23	0	
+??_7CAIStateGroup_HoverWanderAroundThing@@6B@	0128d1bc	23	23	0	
+??_7CAIStateGroup_IceTrollIcicleAssault@@6B@	0128cb64	14	14	0	
+??_7CAIStateGroup_IceTrollIcicleAttack@@6B@	0128caec	14	14	0	interior_nonfunc
+??_7CAIStateGroup_IceTrollPoundGroundAttack@@6B@	0128cb28	14	14	0	
+??_7CAIStateGroup_IdleAtHome@@6B@	01289a10	14	14	0	
+??_7CAIStateGroup_JackDragon@@6B@	0128c170	14	14	0	
+??_7CAIStateGroup_JackOfBladesBase@@6B@	0128d384	15	15	0	
+??_7CAIStateGroup_JackOfBladesStage1@@6B@	0128d6b4	15	15	0	
+??_7CAIStateGroup_JackOfBladesStage2@@6B@	0128d3c4	15	15	0	
+??_7CAIStateGroup_JackOfBladesStage3@@6B@	0128d404	15	15	0	
+??_7CAIStateGroup_KidHurtSelfRunToMother@@6B@	01289824	14	14	0	
+??_7CAIStateGroup_KidPlayHopscotch@@6B@	0128bb90	14	14	0	interior_nonfunc
+??_7CAIStateGroup_KidReactToBlockage@@6B@	0128bbcc	14	14	0	
+??_7CAIStateGroup_KidWanderNearKids@@6B@	01289798	14	14	0	interior_nonfunc
+??_7CAIStateGroup_KidWatchHopscotch@@6B@	0128bb54	14	14	0	interior_nonfunc
+??_7CAIStateGroup_KrakenAttack@@6B@	0128aaf4	14	14	0	
+??_7CAIStateGroup_KrakenTentacleAttack@@6B@	0128abf4	14	14	0	
+??_7CAIStateGroup_KrakenTentacleIdle@@6B@	0128ab48	14	14	0	
+??_7CAIStateGroup_KrakenTentacleRise@@6B@	0128ab9c	14	14	0	
+??_7CAIStateGroup_LightHomeCandle@@6B@	0128bdbc	17	17	0	
+??_7CAIStateGroup_LightWorkCandle@@6B@	0128be04	17	17	0	
+??_7CAIStateGroup_LookAtInterestingThings@@6B@	01289bbc	14	14	0	
+??_7CAIStateGroup_MazeBase@@6B@	0128c1ac	14	14	0	
+??_7CAIStateGroup_MazeDefensiveMeleeCombat@@6B@	0128c224	14	14	0	
+??_7CAIStateGroup_MazeRangedCombat@@6B@	0128c1e8	14	14	0	
+??_7CAIStateGroup_MazeShieldedChase@@6B@	0128c260	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MazeTeleport@@6B@	0128d0dc	14	14	0	
+??_7CAIStateGroup_MazeTutorialBattle@@6B@	0128c29c	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MazeTutorialBattleRespondToLightning@@6B@	0128c314	14	14	0	
+??_7CAIStateGroup_MazeTutorialBattleTeleport@@6B@	0128c2d8	14	14	0	
+??_7CAIStateGroup_MazeTutorialBattleUseShield@@6B@	0128c350	14	14	0	
+??_7CAIStateGroup_MeleeCombatNearby2@@6B@	0128b99c	16	16	0	
+??_7CAIStateGroup_MeleeCombatNearby@@6B@	0128d05c	16	16	0	
+??_7CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose@@6B@	0128b9e4	16	16	0	
+??_7CAIStateGroup_MeleeCombatNearbyBase@@6B@	0128b954	16	16	0	
+??_7CAIStateGroup_MinionBehaviourCrowdBase@@6B@	0128c494	18	18	0	interior_nonfunc
+??_7CAIStateGroup_MinionBehaviourGreetCreature@@6B@	0128c404	14	14	0	
+??_7CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@6B@	0128d16c	18	18	0	interior_nonfunc
+??_7CAIStateGroup_MinionBehaviourSad@@6B@	0128d11c	19	19	0	
+??_7CAIStateGroup_MinionCuriosity@@6B@	0128b2a8	14	14	0	
+??_7CAIStateGroup_MinionFaceHero@@6B@	0128b3d4	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MinionFindPersonalSpace@@6B@	0128b17c	14	14	0	
+??_7CAIStateGroup_MinionFollowThing@@6B@	0128cc24	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MinionGossip@@6B@	01288e34	17	17	0	interior_nonfunc
+??_7CAIStateGroup_MinionGuardBribed@@6B@	0128ae74	14	14	0	
+??_7CAIStateGroup_MinionGuardFollowPlayer@@6B@	01288dcc	15	15	0	
+??_7CAIStateGroup_MinionGuardGreetPlayer@@6B@	0128ae20	14	14	0	
+??_7CAIStateGroup_MinionGuardHeardYellForHelp@@6B@	01289228	14	14	0	
+??_7CAIStateGroup_MinionGuardReactToBodyFoundMessage@@6B@	012892b8	14	14	0	
+??_7CAIStateGroup_MinionGuardReactToBribe@@6B@	0128b26c	14	14	0	
+??_7CAIStateGroup_MinionGuardReactToCriminal@@6B@	0128b230	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@6B@	0128b750	14	14	0	
+??_7CAIStateGroup_MinionHasInformation@@6B@	012890c8	14	14	0	
+??_7CAIStateGroup_MinionHawkingFromStall@@6B@	0128bf48	14	14	0	
+??_7CAIStateGroup_MinionKidAnnoy@@6B@	0128b320	14	14	0	
+??_7CAIStateGroup_MinionKidCalledToMother@@6B@	01288f48	14	14	0	
+??_7CAIStateGroup_MinionKidGroupTag@@6B@	0128b35c	14	14	0	
+??_7CAIStateGroup_MinionLeaveRegion@@6B@	0128a380	14	14	0	
+??_7CAIStateGroup_MinionListenToStory@@6B@	01289180	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MinionMotherConsoleChild@@6B@	0128a3dc	14	14	0	
+??_7CAIStateGroup_MinionMotherProtectFamily@@6B@	0128b2e4	14	14	0	
+??_7CAIStateGroup_MinionPutOutFires@@6B@	0128b410	14	14	0	
+??_7CAIStateGroup_MinionReactToAlert@@6B@	01289070	14	14	0	
+??_7CAIStateGroup_MinionReactToApology@@6B@	0128a19c	14	14	0	
+??_7CAIStateGroup_MinionReactToBurglary@@6B@	0128c4e0	14	14	0	
+??_7CAIStateGroup_MinionReactToCorpse@@6B@	0128b488	14	14	0	
+??_7CAIStateGroup_MinionReactToCrime@@6B@	0128c558	14	14	0	
+??_7CAIStateGroup_MinionReactToCrimeFromSleep@@6B@	0128c594	14	14	0	
+??_7CAIStateGroup_MinionReactToCriminal@@6B@	0128b1f4	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MinionReactToEnemy@@6B@	0128b500	14	14	0	
+??_7CAIStateGroup_MinionReactToNoise@@6B@	0128a104	14	14	0	
+??_7CAIStateGroup_MinionReactToPlayerInteraction@@6B@	0128b1b8	14	14	0	interior_nonfunc
+??_7CAIStateGroup_MinionReactToTrespassing@@6B@	0128c51c	14	14	0	
+??_7CAIStateGroup_MinionReactToUnconsciousPerson@@6B@	0128b4c4	14	14	0	
+??_7CAIStateGroup_MinionSitAtHome@@6B@	0128b6c4	19	19	0	
+??_7CAIStateGroup_MinionSitAtInn@@6B@	0128b624	19	19	0	
+??_7CAIStateGroup_MinionSitAtSchool@@6B@	0128b674	19	19	0	
+??_7CAIStateGroup_MinionSitAtWork@@6B@	0128b5d4	19	19	0	
+??_7CAIStateGroup_MinionSitOnSeat@@6B@	0128cfbc	19	19	0	
+??_7CAIStateGroup_MinionSitOnSeatBase@@6B@	0128b584	19	19	0	
+??_7CAIStateGroup_MinionSitOutside@@6B@	0128d00c	19	19	0	
+??_7CAIStateGroup_MinionSleep@@6B@	0128b140	14	14	0	
+??_7CAIStateGroup_MinionWalkToMarker@@6B@	0128a84c	14	14	0	
+??_7CAIStateGroup_MinionWander@@6B@	0128b0c8	14	14	0	
+??_7CAIStateGroup_MinionWatchFires@@6B@	0128b44c	14	14	0	
+??_7CAIStateGroup_MinionWorkInInn@@6B@	01288cc8	14	14	0	
+??_7CAIStateGroup_MoveGoodsBase@@6B@	012898dc	14	14	0	
+??_7CAIStateGroup_NonVillageGuardPatrol@@6B@	0128b87c	14	14	0	
+??_7CAIStateGroup_NymphAttack@@6B@	01289e78	14	14	0	
+??_7CAIStateGroup_NymphFloatAround@@6B@	0128c134	14	14	0	
+??_7CAIStateGroup_OnHeroPush@@6B@	0128af6c	14	14	0	
+??_7CAIStateGroup_OpenAndCloseShop@@6B@	0128ac9c	14	14	0	interior_nonfunc
+??_7CAIStateGroup_OpinionReactionRoot@@6B@	0128c984	14	14	0	
+??_7CAIStateGroup_PerformAction@@6B@	0128b398	14	14	0	
+??_7CAIStateGroup_PrepareMeal@@6B@	0128bd7c	15	15	0	
+??_7CAIStateGroup_RangedCombatUsePreferredFirePoint@@6B@	0128c854	15	15	0	
+??_7CAIStateGroup_ReactToDeadLeader@@6B@	0128c8d0	14	14	0	
+??_7CAIStateGroup_RecoverStealableItem@@6B@	0128cc9c	14	14	0	
+??_7CAIStateGroup_RockTroll@@6B@	0128d0a0	14	14	0	
+??_7CAIStateGroup_ScorpionKing@@6B@	0128d5b0	14	14	0	
+??_7CAIStateGroup_ScreamerPursueTarget@@6B@	0128cf44	14	14	0	
+??_7CAIStateGroup_ScriptingBase@@6B@	0128b044	14	14	0	
+??_7CAIStateGroup_SeekEnemy@@6B@	0128b7c8	14	14	0	interior_nonfunc
+??_7CAIStateGroup_SeekPerceivedThing@@6B@	01289d24	14	14	0	interior_nonfunc
+??_7CAIStateGroup_SeekScriptTarget@@6B@	0128b804	14	14	0	
+??_7CAIStateGroup_SellToBuyer@@6B@	0128bf84	14	14	0	
+??_7CAIStateGroup_ServeFood@@6B@	0128aa1c	17	17	0	
+??_7CAIStateGroup_ServeFoodAtHome@@6B@	0128cefc	17	17	0	
+??_7CAIStateGroup_ServeFoodAtTavern@@6B@	0128aa7c	17	17	0	
+??_7CAIStateGroup_SetupWares@@6B@	0128ad04	14	14	0	
+??_7CAIStateGroup_ShopkeeperWatchPlayer@@6B@	01291784	16	16	0	
+??_7CAIStateGroup_SitForMeal@@6B@	0128bd34	16	16	0	
+??_7CAIStateGroup_SitInPub@@6B@	0128bf04	16	16	0	
+??_7CAIStateGroup_SitRoundCampfire@@6B@	0128b714	14	14	0	interior_nonfunc
+??_7CAIStateGroup_SkillPractice@@6B@	0128af1c	15	15	0	
+??_7CAIStateGroup_SleepOnFloor@@6B@	0128cd8c	14	14	0	
+??_7CAIStateGroup_SmallBirdWander@@6B@	012895cc	14	14	0	
+??_7CAIStateGroup_StandStill@@6B@	01289d88	14	14	0	
+??_7CAIStateGroup_StayNearFoodHall@@6B@	0128be88	14	14	0	interior_nonfunc
+??_7CAIStateGroup_StayNearSchool@@6B@	01289970	14	14	0	
+??_7CAIStateGroup_StealStealableItem@@6B@	0128cc60	14	14	0	
+??_7CAIStateGroup_StealthSeekEnemy@@6B@	0128b840	14	14	0	
+??_7CAIStateGroup_SummonerCharge@@6B@	0128d2dc	14	14	0	
+??_7CAIStateGroup_SummonerLightningAttack@@6B@	0128d2a0	14	14	0	
+??_7CAIStateGroup_SummonerSummon@@6B@	0128cf80	14	14	0	
+??_7CAIStateGroup_TavernKeeper@@6B@	0128cd50	14	14	0	
+??_7CAIStateGroup_TavernServer@@6B@	0128cd14	14	14	0	interior_nonfunc
+??_7CAIStateGroup_TellStory@@6B@	0128bc44	14	14	0	
+??_7CAIStateGroup_TestTestTest@@6B@	0128a4dc	14	14	0	
+??_7CAIStateGroup_ThrowLogsOnFire@@6B@	012899c4	14	14	0	
+??_7CAIStateGroup_Thunder@@6B@	0128ce2c	15	15	0	
+??_7CAIStateGroup_TrollBase@@6B@	0128c008	14	14	0	
+??_7CAIStateGroup_UsesSeat@@6B@	0128b53c	16	16	0	
+??_7CAIStateGroup_VersusEnemyBase@@6B@	0128cba4	15	15	0	
+??_7CAIStateGroup_VersusRockTroll@@6B@	0128d21c	15	15	0	interior_nonfunc
+??_7CAIStateGroup_VersusScorpionKing@@6B@	0128cbe4	15	15	0	interior_nonfunc
+??_7CAIStateGroup_VillageTaskHorn@@6B@	0128bb18	14	14	0	
+??_7CAIStateGroup_VillageTaskPatrol@@6B@	0128ba64	14	14	0	interior_nonfunc
+??_7CAIStateGroup_VillageTaskPickCrops@@6B@	0128badc	14	14	0	
+??_7CAIStateGroup_VillageTaskSecuritySweep@@6B@	0128baa0	14	14	0	interior_nonfunc
+??_7CAIStateGroup_VillageTaskTorch@@6B@	0128ba28	14	14	0	
+??_7CAIStateGroup_Wander@@6B@	012893b4	14	14	0	
+??_7CAIStateGroup_WanderAroundInitialPos@@6B@	01289460	14	14	0	
+??_7CAIStateGroup_WanderAroundShops@@6B@	0128be4c	14	14	0	
+??_7CAIStateGroup_WhisperPotionCombat@@6B@	0128d5ec	22	22	0	interior_nonfunc
+??_7CAIStateGroup_WhisperRetreat@@6B@	0128cdcc	22	22	0	
+??_7CAIStateGroup_WifeGiveYouGift@@6B@	0128ac48	14	14	0	
+??_7CAIStateGroup_WorkAtSchool@@6B@	0128bc08	14	14	0	
+??_7CAIStateGroup_WorkBase@@6B@	01289890	14	14	0	
+??_7CAIStateGroup_WorkHammerAnvil@@6B@	0128bcf8	14	14	0	
+??_7CAIStateGroup_WorkInWarehouse@@6B@	0128bc80	14	14	0	
+??_7CAIStateGroup_WorkSawingWood@@6B@	0128bcbc	14	14	0	
+??_7CAInputProcess@@6B@	0129ca10	9	9	0	
+??_7CANavQuadTreeNode@@6B@	0129cbbc	23	23	0	
+??_7CAProgressDisplay@@6B@	012387a0	7	7	0	
+??_7CASoundBank@@6B@	0129c9ac	11	11	0	
+??_7CASoundEmitter@@6B@	0129e684	25	25	0	
+??_7CASoundManager@@6B@	0129a574	54	54	0	
+??_7CASoundReceiver@@6B@	0129e754	5	5	0	
+??_7CASuspendableProcess@@6B@	0129d428	5	5	0	
+??_7CAbilityDef@@6B@	012328e4	25	25	0	
+??_7CActionDropGenericBox@@6B@	0128d7bc	6	6	0	
+??_7CActionDropGenericBox@NTCScriptedControl@@6B@	0128d7bc	6	6	0	
+??_7CActionFireProjectileWeapon@@6B@	01265960	6	6	0	
+??_7CActionFollowCreature@@6B@	0128d838	6	6	0	
+??_7CActionMoveTo@@6B@	0127091c	6	6	0	
+??_7CActionMoveTo@NTCScriptedControl@@6B@	0127091c	6	6	0	
+??_7CActionOverheadTalkToThing@NTCScriptedControl@@6B@	012659fc	7	7	0	
+??_7CActionPerformExpression@@6B@	0128d8ec	6	6	0	
+??_7CActionPickUpGenericBox@@6B@	012658b0	6	6	0	
+??_7CActionPlayAnimation@NTCScriptedControl@@6B@	0128d6f4	6	6	0	
+??_7CActionPlayCombatAnimation@@6B@	0128d728	6	6	0	
+??_7CActionStopScripting@NTCScriptedControl@@6B@	0128d788	6	6	0	
+??_7CActionSummonerLightningAttackTarget@NTCScriptedControl@@6B@	0126586c	6	6	0	
+??_7CActionTalkBase@NTCScriptedControl@@6B@	012659a8	7	7	0	
+??_7CActionTalkToThing@@6B@	012659c8	7	7	0	
+??_7CActionTalkedTo@@6B@	0126580c	6	6	0	
+??_7CActionTurnToFacePosition@@6B@	01265534	6	6	0	
+??_7CActionTurnToFacePosition@NTCScriptedControl@@6B@	01265534	6	6	0	
+??_7CActionUseDef@@6B@	0123200c	25	25	0	
+??_7CActionWait@NTCScriptedControl@@6B@	0128d760	6	6	0	
+??_7CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@6B@	0128d7f0	6	6	0	
+??_7CActivateQuestDef@@6B@	0123c7f4	25	25	0	
+??_7CAllocator@@6B@	0129d264	3	3	0	
+??_7CAnimFilter@@6B@	0122ffcc	3	3	0	
+??_7CAnimFilterSit@@6B@	0127261c	3	3	0	
+??_7CAnimatingObjectDef@@6B@	0124376c	25	25	0	
+??_7CAnimationData@C3DAnimationInfo@@6B@	0129ce50	10	10	0	
+??_7CAppearanceDef@@6B@	012354dc	25	25	0	
+??_7CAppearanceModifierDef@@6B@	012330dc	25	25	0	
+??_7CAugmentationDef@@6B@	0123287c	25	25	0	
+??_7CAutoPickupBar@NPlayerGui@@6B@	0125a768	18	3	15	OVERCOUNT?
+??_7CBankFileAsync@@6B@	0129b8d4	20	20	0	
+??_7CBankFileAsyncData@@6BCBaseClassNonCopyable@@@	0129b8b4	3	3	0	
+??_7CBankFileAsyncData@@6BCThreadedFileRequest@@@	0129b8a0	4	4	0	
+??_7CBase@NCameraModes@@6B@	0124dd74	24	24	0	
+??_7CBaseObject@@6B@	0129a7d8	2	2	0	
+??_7CBasicShape@NShape@@6B@	0126a31c	6	6	0	
+??_7CBedDef@@6B@	0123e8bc	25	25	0	
+??_7CBettingDef@@6B@	0123e3b4	25	25	0	
+??_7CBlurredAttitudesDef@@6B@	0125b8ac	25	25	0	interior_nonfunc
+??_7CBlurredAttitudesDef@FableCopy_0067c9f0@@6B@	0125b8ac	25	25	0	interior_nonfunc
+??_7CBoastingPodiumDef@@6B@	0123bf0c	25	25	0	
+??_7CBonusItemDef@@6B@	012322e4	25	25	0	
+??_7CBossDef@@6B@	0124185c	25	25	0	
+??_7CBriarRoseDef@@6B@	012329b4	25	25	0	
+??_7CBuyHouseDef@@6B@	0123a61c	25	25	0	
+??_7CBuyableHouseDef@@6B@	0124131c	25	25	0	
+??_7CCameraCollisionDef@@6B@	0123dfbc	25	25	0	
+??_7CCameraPointModeBase@NCameraModes@@6B@	0124dddc	30	30	0	interior_nonfunc
+??_7CCardPositionsDef@N004ebdf1@@6B@	012439dc	25	25	0	
+??_7CCarriedReadableDef@@6B@	0123db94	25	25	0	
+??_7CCarrySlotDef@@6B@	01231f04	25	25	0	
+??_7CCarryableDef@@6B@	0123e7ec	25	25	0	
+??_7CCarryingDef@@6B@	01241194	25	25	0	
+??_7CChangingStateComponent@NUISystem@@6BCComponentRoot@1@@	01245de4	142	142	0	interior_nonfunc
+??_7CChangingStateComponent@NUISystem@@6BIComponentA@1@@	01245dbc	8	8	0	
+??_7CChestDef@@6B@	0123acdc	25	25	0	
+??_7CChunkedFileChunk_Retail@@6B@	0129e474	11	11	0	
+??_7CChunkedFileRawDataChunk_Retail@@6B@	0129e4b8	11	11	0	
+??_7CChunkedFileSuperChunk@@6B@	0129e4f0	11	11	0	interior_nonfunc
+??_7CChunkedFileSuperChunk_Retail@@6B@	0129e4f0	11	11	0	interior_nonfunc
+??_7CClassFactory@@6B@	0129cf70	4	4	0	
+??_7CClickable@NUISystem@@6BCComponentInterface@1@@	0124bd2c	150	150	0	interior_nonfunc
+??_7CClickable@NUISystem@@6BCObserver_Retail@1@@	0124bd08	8	8	0	
+??_7CClockDef@@6B@	01242c34	25	25	0	
+??_7CCoinGameObstacleDef@@6B@	0123d3e4	25	25	0	
+??_7CCombatAbilityAttackBase@@6B@	012324d4	25	25	0	
+??_7CCombatAbilityBlockCounterAttackDef@@6B@	0123253c	25	25	0	
+??_7CCombatAbilityBlockDefBase@@6B@	01232e04	25	25	0	
+??_7CCombatAbilityBlockHeavyWeaponAttackDef@@6B@	01232f3c	25	25	0	
+??_7CCombatAbilityBlockLightWeaponAttackDef@@6B@	01232ed4	25	25	0	
+??_7CCombatAbilityBlockProjectileWeaponAttackDef@@6B@	01232fa4	25	25	0	
+??_7CCombatAbilityBlockUnarmedAttackDef@@6B@	01232e6c	25	25	0	
+??_7CCombatAbilityBlockingData@@6B@	01232dec	4	4	0	
+??_7CCombatAbilityBlockingData_Retail@@6B@	01232dec	4	4	0	
+??_7CCombatAbilityData_Retail@@6B@	01232484	4	4	0	
+??_7CCombatAbilityFlourishCounterAttackDef@@6B@	012325a4	25	25	0	
+??_7CCombatAbilityGetHitCounterAttackDef@@6B@	0123260c	25	25	0	
+??_7CCombatAbilityMeleeAttackData@@6B@	01232498	4	4	0	
+??_7CCombatAbilityStrafeDef_Retail@@6B@	01232674	25	25	0	
+??_7CCombatAbilityUseProjectileWeaponDef@@6B@	012326dc	25	25	0	
+??_7CCombatActionBase@@6B@	01259e44	81	81	0	
+??_7CCombatAction_ControlledStrafeJump@@6B@	01276974	81	81	0	
+??_7CCombatAction_GenericResponseToDrain@@6B@	0125b024	81	81	0	
+??_7CCombatAction_GenericResponseToExplosion@@6B@	0125aedc	81	81	0	interior_nonfunc
+??_7CCombatAction_GenericStrikeResponse@@6B@	012771fc	81	81	0	interior_nonfunc
+??_7CCombatAction_GenericStrikeResponseBase@@6B@	01264734	81	81	0	interior_nonfunc
+??_7CCombatAction_GenericStrikeResponseKnockdown@@6B@	01277344	81	81	0	
+??_7CCombatAction_GenericStrikeResponseKnockdownRecover@@6B@	0127191c	81	81	0	
+??_7CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@6B@	01271bac	81	81	0	
+??_7CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath@@6B@	01271a64	81	81	0	
+??_7CCombatAction_KickThingOnGround@@6B@	01277d3c	81	81	0	
+??_7CCombatAction_RecoverFromStunned@@6B@	0127851c	81	81	0	
+??_7CCombatAction_StabThing@@6B@	01277e84	83	83	0	interior_nonfunc
+??_7CCombatAction_StrikeResponseJackOfBladesIntoRush@@6B@	012808ec	81	81	0	
+??_7CCombatAction_StrikeResponseMazeDoForcePush@@6B@	012625e4	81	81	0	interior_nonfunc
+??_7CCombatAction_StrikeResponseScorpionKing@@6B@	01262874	81	81	0	
+??_7CCombatSequence2StrikeCombo@@6B@	0127a0cc	19	19	0	
+??_7CCombatSequenceBase@@6B@	01278fec	19	19	0	
+??_7CCombatSequenceJacksCombo@@6B@	0127a07c	19	19	0	
+??_7CCombatSequenceNonInterruptable2StrikeCombo@@6B@	0127a16c	19	19	0	
+??_7CCombatSequenceUnblockableFacing@@6B@	0127a11c	19	19	0	
+??_7CCombatSequenceWhisperAdvance@@6B@	01279d5c	19	19	0	
+??_7CCombatSequenceWhisperAttack360@@6B@	01279e4c	19	19	0	
+??_7CCombatSequenceWhisperAttackBigCombo@@6B@	01279dfc	19	19	0	
+??_7CCombatSequenceWhisperAttackCombo@@6B@	01279dac	19	19	0	
+??_7CCombatSequenceWhisperBoast@@6B@	01279f3c	19	19	0	
+??_7CCombatSequenceWhisperIdles@@6B@	0127a02c	19	19	0	
+??_7CCombatSequenceWhisperLunge@@6B@	01279d0c	19	19	0	
+??_7CCombatSequenceWhisperSortYourselfOut@@6B@	01279f8c	19	19	0	
+??_7CCombatSequenceWhisperStrafeAround@@6B@	01279fdc	19	19	0	
+??_7CCombatSequenceWhisperStrikeStrafeBack@@6B@	01279e9c	19	19	0	
+??_7CCombatSequenceWhisperTooCloseLeapBack@@6B@	01279eec	19	19	0	
+??_7CCombatSequence_BanditAdvanceFar@@6B@	0127917c	19	19	0	
+??_7CCombatSequence_BanditAttackFar@@6B@	012791cc	19	19	0	
+??_7CCombatSequence_BanditAttackMiddle@@6B@	0127921c	19	19	0	
+??_7CCombatSequence_BanditAttackNear@@6B@	012792bc	19	19	0	
+??_7CCombatSequence_BanditAttackSide@@6B@	0127926c	19	19	0	
+??_7CCombatSequence_BanditBoast@@6B@	012793ac	19	19	0	
+??_7CCombatSequence_BanditIdleMiddle@@6B@	0127935c	19	19	0	
+??_7CCombatSequence_BanditIdleNear@@6B@	0127930c	19	19	0	
+??_7CCombatSequence_BanditKingAdvance@@6B@	0127944c	19	19	0	
+??_7CCombatSequence_BanditKingAttack@@6B@	012793fc	19	19	0	
+??_7CCombatSequence_BanditKingBackOff@@6B@	0127949c	19	19	0	
+??_7CCombatSequence_BanditKingSpinAround@@6B@	012794ec	19	19	0	
+??_7CCombatSequence_BanditUnblockableAttack@@6B@	012790dc	19	19	0	
+??_7CCombatSequence_BattleCharge@@6B@	0127a1bc	19	19	0	
+??_7CCombatSequence_FodderCombatIdle@@6B@	0127962c	19	19	0	
+??_7CCombatSequence_FodderMainAttack@@6B@	0127953c	19	19	0	
+??_7CCombatSequence_FodderSecondaryAttack@@6B@	012795dc	19	19	0	
+??_7CCombatSequence_FodderUnblockableMainAttack@@6B@	0127958c	19	19	0	
+??_7CCombatSequence_GenericLeader@@6B@	0127908c	19	19	0	
+??_7CCombatSequence_GenericRangedAttack@@6B@	0127903c	19	19	0	
+??_7CCombatSequence_KingScorpionTailPlunge@@6B@	012796cc	19	19	0	
+??_7CCombatSequence_NonInterruptableBoxStrafe@@6B@	0127912c	19	19	0	
+??_7CCombatSequence_ScorpionLungeAttack@@6B@	0127967c	19	19	0	
+??_7CCombatSequence_TrollBurrowPursue@@6B@	0127985c	19	19	0	
+??_7CCombatSequence_TrollBurrowPursueNoZone@@6B@	012798ac	19	19	0	
+??_7CCombatSequence_TrollDoubleSwipe@@6B@	0127971c	19	19	0	
+??_7CCombatSequence_TrollDoubleSwipeNonMelee@@6B@	0127976c	19	19	0	
+??_7CCombatSequence_TrollOpeningGroundPound@@6B@	012797bc	19	19	0	
+??_7CCombatSequence_TrollProjectileAttack@@6B@	0127980c	19	19	0	
+??_7CCombatSequence_TrollRockAdvance@@6B@	0127999c	19	19	0	
+??_7CCombatSequence_TrollRockIdle@@6B@	01279a3c	19	19	0	
+??_7CCombatSequence_TrollRockPursue@@6B@	012798fc	19	19	0	
+??_7CCombatSequence_TrollRockPursueNoZone@@6B@	0127994c	19	19	0	
+??_7CCombatSequence_TrollRockShuffleBack@@6B@	01279a8c	19	19	0	
+??_7CCombatSequence_TrollRockThrowRock@@6B@	012799ec	19	19	0	
+??_7CCombatSequence_VillagerAdvance@@6B@	01279bcc	19	19	0	
+??_7CCombatSequence_VillagerAttack@@6B@	01279adc	19	19	0	
+??_7CCombatSequence_VillagerBackOff@@6B@	01279b2c	19	19	0	
+??_7CCombatSequence_VillagerCombo@@6B@	01279c1c	19	19	0	
+??_7CCombatSequence_VillagerComboUnblockable@@6B@	01279c6c	19	19	0	
+??_7CCombatSequence_VillagerNearAttack@@6B@	01279cbc	19	19	0	
+??_7CCombatSequence_VillagerStepIn@@6B@	01279b7c	19	19	0	
+??_7CCombatSequence_WillEnflame@@6B@	0127a25c	20	20	0	
+??_7CCombatSequence_WillForcePush@@6B@	0127a2b4	20	20	0	
+??_7CCombatSequence_WillForcePushLongRange@@6B@	0127a30c	20	20	0	
+??_7CCombatSequence_WillLightning@@6B@	0127a20c	19	19	0	
+??_7CCombatSequence_WillPhysicalShield@@6B@	0127a364	19	19	0	
+??_7CCombatSequence_WillPhysicalShieldNonMelee@@6B@	0127a3b4	19	19	0	
+??_7CComponent@NUISystem@@6BCObserver@1@@	01246064	8	8	0	
+??_7CComponent@NUISystem@@6BCUIInterface@1@@	0124608c	134	134	0	interior_nonfunc
+??_7CCompositeSurfaceCache@@6B@	012a116c	14	11	3	OVERCOUNT?
+??_7CCompressedMemoryDataInputStream_Retail@@6B@	0129a758	11	11	0	
+??_7CCompressorZlib_Retail@@6B@	01245974	8	8	0	
+??_7CConfigOptionsDefaultsDef@@6B@	0123125c	25	25	0	
+??_7CConsoleClasslessCommand@@6B@	0122e65c	11	6	5	OVERCOUNT? interior_nonfunc
+??_7CConsoleCommandBase@@6B@	0122e638	6	6	0	interior_nonfunc
+??_7CConsoleCommandBase_Retail@@6B@	0122e638	6	6	0	interior_nonfunc
+??_7CConsoleInputBase@@6B@	0122e5b0	5	5	0	
+??_7CConsoleVariable@@6B@	0122e5c8	5	5	0	
+??_7CContainerRewardHeroDef@@6B@	012428b4	25	25	0	
+??_7CContainmentVolume@@6B@	0129dc94	4	4	0	
+??_7CContextSensitiveItemDef@@6B@	0123227c	25	25	0	
+??_7CControllerDisconnect@NUISystem@@6BCComponentBase2_Retail@1@@	0122fd3c	8	8	0	
+??_7CControllerDisconnect@NUISystem@@6BCComponentRoot_Retail@1@@	0122fd64	142	142	0	interior_nonfunc
+??_7CControlsDef@@6B@	01230e84	25	25	0	
+??_7CCoopSpiritDef@@6B@	01232214	25	25	0	
+??_7CCrateStackDef@@6B@	0123c86c	25	25	0	
+??_7CCreatureActionHero180RunningTurn@@6B@	0127655c	81	81	0	
+??_7CCreatureAction_AddFoodToTable@@6B@	012901b4	70	70	0	
+??_7CCreatureAction_AddRealObjectToInventory@@6B@	01270d5c	70	70	0	
+??_7CCreatureAction_AimMissileWeapon@@6B@	0126556c	70	70	0	
+??_7CCreatureAction_Ambush@@6B@	0127ff14	81	81	0	
+??_7CCreatureAction_BanditKingAdvance@@6B@	0128d924	81	81	0	
+??_7CCreatureAction_BanditKingAttack@@6B@	01281b0c	81	81	0	
+??_7CCreatureAction_BanditKingBackOff@@6B@	0128da6c	81	81	0	
+??_7CCreatureAction_BanditKingGetHit@@6B@	01263bac	81	81	0	interior_nonfunc
+??_7CCreatureAction_BanditKingStuck@@6B@	01281c54	81	81	0	
+??_7CCreatureAction_BanditKingStuckGetHit@@6B@	01281ee4	81	81	0	
+??_7CCreatureAction_BanditKingThrowWeapons@@6B@	0128193c	71	71	0	
+??_7CCreatureAction_BanditKingUnstuck@@6B@	01281d9c	81	81	0	
+??_7CCreatureAction_BattleChargeImpact@@6B@	01284664	81	81	0	
+??_7CCreatureAction_BattleChargeMiss@@6B@	012847c4	81	81	0	
+??_7CCreatureAction_BlockBase@@6B@	01275f3c	81	81	0	
+??_7CCreatureAction_BlockRespond@@6B@	01276084	81	81	0	
+??_7CCreatureAction_BlowHorn@@6B@	0127428c	70	70	0	
+??_7CCreatureAction_BriarRoseConcentrateInto@@6B@	01287904	81	81	0	
+??_7CCreatureAction_BriarRoseConcentrateOutof@@6B@	01280bb4	81	81	0	
+??_7CCreatureAction_BriarRoseForcePush@@6B@	01294cd4	81	81	0	
+??_7CCreatureAction_BriarRoseIntoInvulnerable@@6B@	01294b8c	81	81	0	
+??_7CCreatureAction_BriarRoseInvulnerableTeleport@@6B@	01287a4c	81	81	0	
+??_7CCreatureAction_BriarRoseShotFarInto@@6B@	01294a2c	81	81	0	
+??_7CCreatureAction_BriarRoseShotFarOutof@@6B@	012807a4	81	81	0	
+??_7CCreatureAction_CastAssassinRush@@6B@	01284254	81	81	0	
+??_7CCreatureAction_CastBattleCharge@@6B@	0128439c	81	81	0	
+??_7CCreatureAction_CastPhysicalShieldSpell@@6B@	0127bdcc	81	81	0	
+??_7CCreatureAction_CastTimeSpell@@6B@	01283e4c	81	81	0	
+??_7CCreatureAction_CastWillFireballSpell@@6B@	0127df4c	81	81	0	
+??_7CCreatureAction_CastWillForceSpell@@6B@	0127b50c	81	81	0	
+??_7CCreatureAction_CastWillRaiseDeadSpell@@6B@	0127d41c	81	81	0	
+??_7CCreatureAction_CastWillReclaimUndeadFollower@@6B@	0127d5bc	81	81	0	
+??_7CCreatureAction_DeclarePlayerACriminal@@6B@	0128f624	70	70	0	
+??_7CCreatureAction_Die@@6B@	01287fc4	70	70	0	
+??_7CCreatureAction_DowseFire@@6B@	01274d0c	70	70	0	
+??_7CCreatureAction_DragonBurninateInto@@6B@	01294374	81	81	0	
+??_7CCreatureAction_DragonFireBlastBase@@6B@	01293f9c	81	81	0	
+??_7CCreatureAction_DragonFireBlastLeft@@6B@	0129422c	81	81	0	
+??_7CCreatureAction_DragonFlight@@6B@	01288544	81	81	0	
+??_7CCreatureAction_DragonRearUpFull@@6B@	01293404	81	81	0	
+??_7CCreatureAction_DragonSwoop@@6B@	012887d4	81	81	0	interior_nonfunc
+??_7CCreatureAction_DragonTakeOffIntoFlying@@6B@	01293a7c	81	81	0	
+??_7CCreatureAction_Drink@@6B@	0127473c	70	70	0	
+??_7CCreatureAction_DuckAndCover@@6B@	012974a4	81	81	0	
+??_7CCreatureAction_FillBucket@@6B@	01274e2c	70	70	0	
+??_7CCreatureAction_FireMissileTest@@6B@	01285544	70	70	0	
+??_7CCreatureAction_FireMissileWeapon@@6B@	01285424	70	70	0	interior_nonfunc
+??_7CCreatureAction_GetOutOfBed@@6B@	01276b0c	70	70	0	
+??_7CCreatureAction_GetUpFromSitting@@6B@	01276c2c	81	81	0	
+??_7CCreatureAction_GiveItemToThing@@6B@	0125919c	70	70	0	
+??_7CCreatureAction_GiveMoneyToThing@@6B@	0127139c	70	70	0	
+??_7CCreatureAction_Hammer@@6B@	0127519c	70	70	0	
+??_7CCreatureAction_HeroLoadRangedWeapon@@6B@	0126b9d4	70	70	0	
+??_7CCreatureAction_HeroRangedWeaponUseDummy@@6B@	01259bd4	81	81	0	
+??_7CCreatureAction_HobbeSpellcasterAim@@6B@	01263cf4	81	81	0	
+??_7CCreatureAction_HobbeSpellcasterFire@@6B@	01263e3c	81	81	0	
+??_7CCreatureAction_InterruptableMidAttackAutoTurn@@6B@	012778cc	81	81	0	interior_nonfunc
+??_7CCreatureAction_JackFloatUp@@6B@	01297f54	82	82	0	
+??_7CCreatureAction_JackScream@@6B@	01297cb4	81	81	0	
+??_7CCreatureAction_JumpOutFromCover@@6B@	0129888c	81	81	0	
+??_7CCreatureAction_KickCreature@@6B@	0129215c	70	70	0	
+??_7CCreatureAction_KrakenHighAttackInto@@6B@	01290f1c	81	81	0	
+??_7CCreatureAction_KrakenHighAttackOutOf@@6B@	012911dc	81	81	0	
+??_7CCreatureAction_KrakenLowAttackInto@@6B@	01290b0c	81	81	0	
+??_7CCreatureAction_KrakenLowAttackLoop@@6B@	01290c64	81	81	0	
+??_7CCreatureAction_KrakenLowAttackOutOf@@6B@	01290dbc	81	81	0	
+??_7CCreatureAction_KrakenLowChargeLoop@@6B@	012909c4	81	81	0	
+??_7CCreatureAction_KrakenLowPoseInto@@6B@	01290854	81	81	0	
+??_7CCreatureAction_KrakenReturnToWater@@6B@	012906f4	81	81	0	
+??_7CCreatureAction_KrakenRiseUp@@6B@	01290594	81	81	0	
+??_7CCreatureAction_KrakenRoarInto@@6B@	0129133c	81	81	0	
+??_7CCreatureAction_KrakenRoarLoop@@6B@	01291494	81	81	0	
+??_7CCreatureAction_KrakenRoarOutOf@@6B@	012915ec	81	81	0	
+??_7CCreatureAction_LeapLong@@6B@	0127a9ec	82	82	0	
+??_7CCreatureAction_LearnExpression@@6B@	0127461c	70	70	0	
+??_7CCreatureAction_MagicBlast@@6B@	0129935c	70	70	0	
+??_7CCreatureAction_NymphGetHit@@6B@	01263f84	81	81	0	
+??_7CCreatureAction_NymphGetHitDie@@6B@	012640cc	81	81	0	
+??_7CCreatureAction_NymphTeleportIntoLimbo@@6B@	012828a4	82	82	0	
+??_7CCreatureAction_NymphTeleportLimboBase@@6B@	01282754	82	82	0	
+??_7CCreatureAction_NymphTeleportOutOfLimbo@@6B@	01282a04	82	82	0	
+??_7CCreatureAction_OpenChest@@6B@	0127173c	70	70	0	
+??_7CCreatureAction_PerformExpression@@6B@	012743dc	70	70	0	interior_nonfunc
+??_7CCreatureAction_PickCrop@@6B@	012925f4	70	70	0	
+??_7CCreatureAction_PickUpFoodAtTable@@6B@	01296c9c	70	70	0	
+??_7CCreatureAction_PickUpGenericBox@@6B@	01274bd4	70	70	0	
+??_7CCreatureAction_PickUpGoods@@6B@	0128fbf4	70	70	0	
+??_7CCreatureAction_PickUpJug@@6B@	012963a4	70	70	0	
+??_7CCreatureAction_PickUpJugToFill@@6B@	01275504	70	70	0	
+??_7CCreatureAction_PickUpTankard@@6B@	01292d6c	70	70	0	
+??_7CCreatureAction_PickUpThingAtTable@@6B@	012753e4	70	70	0	
+??_7CCreatureAction_PickupGameObject@@6B@	01270c3c	70	70	0	
+??_7CCreatureAction_PlayAnimation@@6B@	01273a0c	70	70	0	
+??_7CCreatureAction_PlayAnimationWithLookTurning@@6B@	012740f4	70	70	0	
+??_7CCreatureAction_PlayCombatAnimation@@6B@	0127a604	81	81	0	
+??_7CCreatureAction_PlayCombatAnimationWithLooking@@6B@	0127a74c	81	81	0	
+??_7CCreatureAction_PlayIntoLoopOutOfAnimation@@6B@	01273b2c	70	70	0	
+??_7CCreatureAction_PlayerInteractionBribe@@6B@	01259664	70	70	0	
+??_7CCreatureAction_PlayerInteractionFlirt@@6B@	01259794	70	70	0	
+??_7CCreatureAction_PlayerInteractionGreet@@6B@	012592d4	70	70	0	
+??_7CCreatureAction_PlayerInteractionInsult@@6B@	01259404	70	70	0	
+??_7CCreatureAction_PlayerInteractionThreaten@@6B@	01259534	70	70	0	
+??_7CCreatureAction_PlayerInteractionViewQuests@@6B@	01270e7c	70	70	0	
+??_7CCreatureAction_ProjectileCrouch@@6B@	0127ac94	81	81	0	
+??_7CCreatureAction_PutDownJug@@6B@	012964dc	70	70	0	
+??_7CCreatureAction_PutDownJugFromFilling@@6B@	01275634	70	70	0	
+??_7CCreatureAction_PutDownTankard@@6B@	01292e9c	70	70	0	
+??_7CCreatureAction_Read@@6B@	01270ac4	70	70	0	interior_nonfunc
+??_7CCreatureAction_ReleaseAndLoopDivineWrathSpell@@6B@	0127eb7c	81	81	0	
+??_7CCreatureAction_ReleaseAndLoopUnholyPowerSpell@@6B@	0127f0ec	81	81	0	
+??_7CCreatureAction_ReleaseTimeSpell@@6B@	012840f4	81	81	0	
+??_7CCreatureAction_ReloadMissileWeapon@@6B@	012656a4	70	70	0	
+??_7CCreatureAction_RemoveFoodFromTable@@6B@	0129007c	70	70	0	
+??_7CCreatureAction_ScorpionCharge@@6B@	01281024	83	83	0	
+??_7CCreatureAction_ScorpionChargeInto@@6B@	01280ed4	83	83	0	
+??_7CCreatureAction_ScorpionChargeStrike@@6B@	01281184	83	83	0	
+??_7CCreatureAction_ScorpionPrepareTailPlunge@@6B@	01298cd4	81	81	0	
+??_7CCreatureAction_ScorpionTailPlunge@@6B@	01286494	81	81	0	
+??_7CCreatureAction_ScorpionTailWithdraw@@6B@	01286334	81	81	0	
+??_7CCreatureAction_ScreamerAdvance@@6B@	01262354	81	81	0	
+??_7CCreatureAction_ScreamerBackOff@@6B@	0126249c	81	81	0	
+??_7CCreatureAction_ScreamerDie@@6B@	0127b374	81	81	0	
+??_7CCreatureAction_ScreamerDrainAttack@@6B@	01261f7c	81	81	0	
+??_7CCreatureAction_SheatheItemToInventory@@6B@	0125c83c	70	70	0	
+??_7CCreatureAction_SheatheItemToInventory_ForDivineWrath@@6B@	0125ca7c	70	70	0	
+??_7CCreatureAction_SheatheItemToInventory_ForEnflame@@6B@	0125c95c	70	70	0	
+??_7CCreatureAction_SheatheItemToInventory_ForUnholyPower@@6B@	0125cb9c	70	70	0	
+??_7CCreatureAction_SheatheTrophy@@6B@	0125fb14	70	70	0	
+??_7CCreatureAction_ShopkeeperGetOut@@6B@	01273fcc	70	70	0	
+??_7CCreatureAction_ShopkeeperPutAway@@6B@	01274aac	70	70	0	
+??_7CCreatureAction_ShowItemToThing@@6B@	012714c4	70	70	0	
+??_7CCreatureAction_ShowLove@@6B@	01274f4c	70	70	0	
+??_7CCreatureAction_ShowToSheatheTrophy@@6B@	0125f9f4	70	70	0	
+??_7CCreatureAction_SitDown@@6B@	012781fc	70	70	0	
+??_7CCreatureAction_SpiritAttack@@6B@	01275d74	70	70	0	
+??_7CCreatureAction_SpiritHitResponse@@6B@	01275b34	70	70	0	
+??_7CCreatureAction_StandUp@@6B@	01276c2c	81	81	0	
+??_7CCreatureAction_StartEatingAtTable@@6B@	01296c9c	70	70	0	
+??_7CCreatureAction_StopEatingAtTable@@6B@	01296dcc	70	70	0	
+??_7CCreatureAction_SummonerCharge@@6B@	012971ec	81	81	0	
+??_7CCreatureAction_SummonerChargeInto@@6B@	012971ec	81	81	0	
+??_7CCreatureAction_SummonerChargeSuccess@@6B@	0129733c	81	81	0	
+??_7CCreatureAction_SummonerFlameSlice@@6B@	01264214	81	81	0	
+??_7CCreatureAction_SummonerLightningIdle@@6B@	0129708c	81	81	0	
+??_7CCreatureAction_SummonerLightningOrbInto@@6B@	012830ec	81	81	0	
+??_7CCreatureAction_SummonerSheatheWeapon@@6B@	0128360c	81	81	0	
+??_7CCreatureAction_SummonerUnsheatheStrike@@6B@	012834c4	81	81	0	
+??_7CCreatureAction_Talk@@6B@	012599e4	70	70	0	
+??_7CCreatureAction_TavernGameMasterInteraction@@6B@	012598c4	70	70	0	
+??_7CCreatureAction_TeleportOut@@6B@	0127e344	81	81	0	
+??_7CCreatureAction_TentacleStrikeLoop@@6B@	01284ef4	81	81	0	
+??_7CCreatureAction_ThrowGameObject@@6B@	01259044	70	70	0	
+??_7CCreatureAction_ThrowShotObject@@6B@	012944d4	81	81	0	
+??_7CCreatureAction_TrollAngryGroundPound@@6B@	0128e23c	83	83	0	
+??_7CCreatureAction_TrollProjectileAttack@@6B@	0128e3ac	84	84	0	
+??_7CCreatureAction_TrollThrowProjectile@@6B@	01281694	82	82	0	
+??_7CCreatureAction_TrollTunnel@@6B@	0128e504	83	83	0	
+??_7CCreatureAction_TrollWhackGroundBase@@6B@	0128e0ec	83	83	0	
+??_7CCreatureAction_UndeadRiseUp@@6B@	01268f44	81	81	0	
+??_7CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@6B@	0125cddc	70	70	0	
+??_7CCreatureAction_UseLamp@@6B@	0127486c	70	70	0	
+??_7CCreatureAction_UseSwitch@@6B@	01271604	70	70	0	
+??_7CCreatureAction_UseWallMount@@6B@	0127498c	70	70	0	interior_nonfunc
+??_7CCreatureAction_VillagerAttackKnockdown@@6B@	01298f74	81	81	0	
+??_7CCreatureAction_WaspQueenDeath@@6B@	012629bc	81	81	0	
+??_7CCreatureAction_WaspQueenDie@@6B@	01280d84	82	82	0	
+??_7CCreatureDef@@6B@	0125b43c	25	25	0	
+??_7CCreatureGeneratorDef@@6B@	01241384	25	25	0	
+??_7CCreatureModeDef@@6B@	01241704	25	25	0	
+??_7CCreatureNavigationDef@@6B@	0123e98c	25	25	0	
+??_7CCreatureStatsDef@@6B@	012321ac	25	25	0	
+??_7CCrimeStatBar@NPlayerGui@@6B@	0125a748	3	3	0	
+??_7CDataBank@NGameText@@6BCBankFileAsync@@@	0129b4d4	20	20	0	interior_nonfunc
+??_7CDataBank@NGameText@@6BCBankSecondaryBase@@@	0129b528	3	1	2	OVERCOUNT?
+??_7CDataBank@NGameText@@6BCResourceBank@@@	0129b528	3	1	2	OVERCOUNT?
+??_7CDecapitationDef@@6B@	0123d5e4	25	25	0	
+??_7CDefinitionManager@@6B@	0129b28c	5	3	2	OVERCOUNT?
+??_7CDegradableDef@@6B@	01232d1c	25	25	0	interior_nonfunc
+??_7CDialogueLayerDef@NSpeechGainManager@@6B@	0123543c	25	25	0	
+??_7CDisplayEngine@@6B@	01231574	3	3	0	
+??_7CDoorDef@@6B@	0123a714	25	25	0	
+??_7CDraggable@NUISystem@@6BCComponentInterface@1@@	0124ba94	154	153	1	OVERCOUNT? interior_nonfunc
+??_7CDraggable@NUISystem@@6BCComponentRoot@1@@	0124ba94	154	153	1	OVERCOUNT? interior_nonfunc
+??_7CDraggable@NUISystem@@6BCGuiControl@1@@	0124ba70	8	8	0	
+??_7CDraggable@NUISystem@@6BCObserver_Retail@1@@	0124ba70	8	8	0	
+??_7CDraggableInto@NUISystem@@6BCComponentRoot@1@@	0124b2d4	146	146	0	interior_nonfunc
+??_7CDraggableInto@NUISystem@@6BCGuiControl@1@@	0124b2b0	8	8	0	
+??_7CDragonActionHoverDef@@6B@	01232814	25	25	0	
+??_7CDragonActionNapalmDef@@6B@	012327ac	25	25	0	
+??_7CDragonActionSwoopDef@@6B@	01232744	25	25	0	
+??_7CDraw2DText@@6B@	0125a5d0	2	2	0	
+??_7CDrawAbilityButtons@NPlayerGui@@6B@	0125a6c8	9	9	0	
+??_7CDrawAbilityButtonsPC@NPlayerGui@@6B@	0125a7d8	10	10	0	
+??_7CDrawAutoPickups@@6B@	0125a58c	2	2	0	
+??_7CDrawBase@NPlayerGui@@6B@	0125a52c	2	2	0	
+??_7CDrawBettingHUD@NPlayerGui@@6B@	0125a658	2	2	0	
+??_7CDrawCombatMultiplier@NPlayerGui@@6B@	0125a624	2	2	0	
+??_7CDrawCrime@@6B@	0125a568	2	2	0	
+??_7CDrawDamage@@6B@	0125a5a4	2	2	0	
+??_7CDrawExperience@NPlayerGui@@6B@	0125a664	2	2	0	
+??_7CDrawGuildSeal@NPlayerGui@@6B@	0125a6bc	2	2	0	
+??_7CDrawHealth@NPlayerGui@@6B@	0125a60c	2	2	0	
+??_7CDrawHighlightingTargetingCursor@NPlayerGui@@6B@	0125a720	2	2	0	
+??_7CDrawLetterBoxBlackBars@NPlayerGui@@6B@	0125a64c	2	2	0	
+??_7CDrawMeleeActionButtonEffects@NPlayerGui@@6B@	0125a714	2	2	0	
+??_7CDrawMiniMap@NPlayerGui@@6B@	0125a634	2	2	0	
+??_7CDrawMoney@@6B@	0125a544	2	2	0	
+??_7CDrawMorality@@6B@	0125a55c	2	2	0	interior_nonfunc
+??_7CDrawMouseCursor@NPlayerGui@@6B@	0125a814	2	2	0	
+??_7CDrawPerceivers@NPlayerGui@@6B@	0125a670	2	2	0	
+??_7CDrawProjectileTargetingCentre@NPlayerGui@@6B@	0125a600	2	2	0	
+??_7CDrawQuestInfo@NPlayerGui@@6B@	0125a688	2	2	0	
+??_7CDrawQuickAccessIcons@NPlayerGui@@6B@	0125a704	3	3	0	
+??_7CDrawQuickAccessIconsPC@NPlayerGui@@6B@	0125a804	3	3	0	
+??_7CDrawRenown@@6B@	0125a550	2	2	0	interior_nonfunc
+??_7CDrawScreenFade@NPlayerGui@@6B@	0125a640	2	2	0	
+??_7CDrawStamina@NPlayerGui@@6B@	0125a618	2	2	0	
+??_7CDrawTargetInfo@NPlayerGui@@6B@	0125a5dc	2	2	0	
+??_7CDrawWorldTime@NPlayerGui@@6B@	0125a72c	2	2	0	
+??_7CDrunkennessDef@@6B@	0123cb3c	25	25	0	
+??_7CDynamicList@NUISystem@@6BCComponentRoot@1@@	01246e44	150	150	0	interior_nonfunc
+??_7CDynamicList@NUISystem@@6BCUIInterface@1@@	01246e44	150	150	0	interior_nonfunc
+??_7CDynamicList@NUISystem@@6BIComponentA@1@@	01246e20	8	8	0	
+??_7CEmitterData@CParticleEmitterInfo@NParticleEngine@@6B@	0129f354	10	10	0	
+??_7CEnemyDef@@6B@	0123b3f4	25	25	0	
+??_7CEngineBillboardGenerator@@6BCEngineComponent@@@	012a3bfc	13	13	0	
+??_7CEngineCamera@@6B@	012a12a4	13	13	0	
+??_7CEngineClothSimulation2DAnimatedMesh@@6B@	012a39ec	10	10	0	
+??_7CEngineClothSimulationAnimatedMesh@@6B@	012a39c0	10	10	0	
+??_7CEngineClothSimulationMeshBase@@6B@	012a3924	9	9	0	
+??_7CEngineClothSimulationStaticMesh@@6B@	012a3998	9	9	0	
+??_7CEngineComponent@@6B@	012a2544	13	13	0	
+??_7CEngineDef@@6B@	0123118c	25	25	0	
+??_7CEngineDynamic3DResourceManager@@6B@	012a69dc	3	3	0	
+??_7CEngineEnvironment@@6B@	012a3c68	13	13	0	interior_nonfunc
+??_7CEngineInternalAttachedPrimitive@@6B@	012a1a04	28	28	0	
+??_7CEngineInternalPrimitive2DAnimatedMesh@@6B@	012a7a44	36	36	0	interior_nonfunc
+??_7CEngineInternalPrimitive2DClockSprite@@6B@	012a5534	29	29	0	
+??_7CEngineInternalPrimitive2DMorphedAnimatedMesh@@6B@	012a7adc	36	36	0	interior_nonfunc
+??_7CEngineInternalPrimitive2DParticleGroup@@6B@	012a7e3c	30	30	0	
+??_7CEngineInternalPrimitive2DSprite@@6B@	012a54bc	29	29	0	
+??_7CEngineInternalPrimitive2DStaticMesh@@6B@	012a42e4	34	33	1	OVERCOUNT?
+??_7CEngineInternalPrimitive2DText@@6B@	012a67e4	28	28	0	
+??_7CEngineInternalPrimitive2DViewport@@6B@	012a7f14	29	29	0	
+??_7CEngineInternalPrimitiveAnimatedMesh@@6B@	012a79b4	35	35	0	interior_nonfunc
+??_7CEngineInternalPrimitiveAnimatedMeshFromFile@@6B@	012a7b74	35	35	0	interior_nonfunc
+??_7CEngineInternalPrimitiveBase@@6B@	012a3d7c	28	28	0	
+??_7CEngineInternalPrimitiveChanger@@6B@	012a662c	28	28	0	
+??_7CEngineInternalPrimitiveDecal@@6B@	012a5ae4	29	29	0	
+??_7CEngineInternalPrimitiveFlareSprite@@6B@	012a6ba4	28	28	0	
+??_7CEngineInternalPrimitiveGroup@@6B@	012a66e4	29	29	0	
+??_7CEngineInternalPrimitiveLight@@6B@	012a212c	29	29	0	
+??_7CEngineInternalPrimitiveLine@@6B@	012a68f4	28	28	0	
+??_7CEngineInternalPrimitiveMeshBase@@6B@	012a41d4	33	33	0	
+??_7CEngineInternalPrimitiveMorphedAnimatedMesh@@6B@	012a7c04	35	35	0	interior_nonfunc
+??_7CEngineInternalPrimitiveMorphedStaticMesh@@6B@	012a51b4	33	33	0	
+??_7CEngineInternalPrimitiveOcclusionGroup@@6B@	012a5364	29	29	0	
+??_7CEngineInternalPrimitiveParticleDecal@@6B@	012a57c4	28	28	0	
+??_7CEngineInternalPrimitiveParticleDecalGroup@@6B@	012a5a54	30	30	0	
+??_7CEngineInternalPrimitiveParticleGroup@@6B@	012a59d4	30	30	0	interior_nonfunc
+??_7CEngineInternalPrimitiveParticleLine@@6B@	012a63fc	28	28	0	
+??_7CEngineInternalPrimitiveParticleLineGroup@@6B@	012a6474	30	30	0	
+??_7CEngineInternalPrimitiveParticleMesh@@6B@	012a6184	29	29	0	
+??_7CEngineInternalPrimitiveParticleMeshGroup@@6B@	012a61fc	30	30	0	
+??_7CEngineInternalPrimitiveParticleSprite@@6B@	012a5ddc	28	28	0	
+??_7CEngineInternalPrimitiveParticleSpriteGroup@@6B@	012a5e54	30	30	0	
+??_7CEngineInternalPrimitiveParticleSpriteTrailGroup@@6B@	012a5bfc	30	30	0	
+??_7CEngineInternalPrimitiveRepeatedZSprite@@6B@	012a524c	29	29	0	
+??_7CEngineInternalPrimitiveShadowedSpotLight@@6B@	012a21a4	29	29	0	
+??_7CEngineInternalPrimitiveSprite@@6B@	012a5444	28	28	0	
+??_7CEngineInternalPrimitiveSpriteTrail@@6B@	012a6a4c	28	28	0	
+??_7CEngineInternalPrimitiveStaticMesh@@6B@	012a425c	33	33	0	
+??_7CEngineInternalPrimitiveStaticMeshFromFile@@6B@	012a4374	33	33	0	
+??_7CEngineInternalPrimitiveText@@6B@	012a676c	28	28	0	
+??_7CEngineInternalPrimitiveWeaponTrail@@6B@	012a6b24	28	28	0	
+??_7CEngineInternalPrimitiveWeatherMask@@6B@	012a570c	28	28	0	
+??_7CEngineInternalRepeatedStaticMeshNative@@6B@	012a3f4c	29	29	0	
+??_7CEngineInternalRepeatedZSpriteNative@@6B@	012a524c	29	29	0	
+??_7CEngineLandscapeMap@@6B@	012a7d6c	4	4	0	
+??_7CEngineLandscapePatch@@6B@	012a8200	4	4	0	
+??_7CEngineLocalDetailGenerator@@6B@	012a2588	13	13	0	
+??_7CEngineMeshEffectDistanceFade@@6B@	0126ade0	2	2	0	
+??_7CEngineMeshEffectOutlineBase@@6B@	01239848	2	2	0	
+??_7CEngineMeshEffectOutlineSmooth@@6B@	01239854	2	2	0	
+??_7CEnginePrimitiveChangerManager@@6B@	012a65d4	13	13	0	
+??_7CEnginePrimitiveGroupManager@@6B@	012a66ac	13	13	0	
+??_7CEnginePrimitiveManager2DAnimatedMeshes@@6B@	012a7964	13	13	0	interior_nonfunc
+??_7CEnginePrimitiveManager2DSprites@@6B@	012a5664	15	15	0	
+??_7CEnginePrimitiveManager2DStaticMeshes@@6B@	012a5160	13	13	0	interior_nonfunc
+??_7CEnginePrimitiveManager@@6B@	012a53e8	13	13	0	
+??_7CEnginePrimitiveManagerAnimatedMeshes@@6B@	012a7914	13	13	0	interior_nonfunc
+??_7CEnginePrimitiveManagerDecal@@6B@	012a5b6c	13	13	0	
+??_7CEnginePrimitiveManagerFlareSprites@@6B@	012a6c18	13	13	0	
+??_7CEnginePrimitiveManagerLines@@6B@	012a6990	13	13	0	
+??_7CEnginePrimitiveManagerMeshBase@@6B@	012a815c	13	13	0	
+??_7CEnginePrimitiveManagerParticleDecalGroup@@6B@	012a5998	13	13	0	
+??_7CEnginePrimitiveManagerParticleLineGroup@@6B@	012a6590	13	13	0	
+??_7CEnginePrimitiveManagerParticleMeshGroup@@6B@	012a63b8	13	13	0	
+??_7CEnginePrimitiveManagerParticleSpriteTrailGroup@@6B@	012a5d94	13	13	0	
+??_7CEnginePrimitiveManagerRepeatedStaticMeshes@@6B@	012a3e9c	13	13	0	
+??_7CEnginePrimitiveManagerRepeatedZSprites@@6B@	012a5314	13	13	0	
+??_7CEnginePrimitiveManagerSprites@@6B@	012a55b4	13	13	0	
+??_7CEnginePrimitiveManagerText@@6B@	012a68b0	13	13	0	interior_nonfunc
+??_7CEnginePrimitiveManagerWeatherMask@@6B@	012a5780	13	13	0	
+??_7CEnginePrimitiveTypeInfo@@6BCEngineComponent@@@	012a3d14	13	13	0	
+??_7CEngineSceneEnumeratorResetVisibilityRatio@@6B@	012a12f4	2	2	0	
+??_7CEngineScreenEffectDisplacementRenderer@@6B@	012a3a94	14	14	0	
+??_7CEngineScreenEffectRadialBlurRenderer@@6B@	012a2658	14	14	0	
+??_7CEngineShadowRenderer@@6B@	012a2374	13	13	0	
+??_7CEngineSimulationBase@@6B@	012a38fc	9	9	0	
+??_7CEngineSimulationManager@@6BCEngineComponent@@@	012a394c	13	13	0	
+??_7CEngineStateBlocks@@6B@	012a0ecc	13	13	0	
+??_7CEngineVSConstantLayoutLights@@6B@	012a7d24	2	2	0	
+??_7CEngineVSConstantLayoutLightsBones@@6B@	012a7d04	2	2	0	
+??_7CEngineVSConstantLayoutParticles@@6B@	012a7cc8	2	2	0	
+??_7CEngineVSConstantLayoutRepeatedMesh@@6B@	012a7ce4	2	2	0	
+??_7CEngineVideoOptionsDef@@6B@	012311f4	25	25	0	
+??_7CEngineWorldMap@@6B@	012a1f50	13	13	0	
+??_7CEntitySoundDef@@6B@	01233a44	25	25	0	
+??_7CEnvironment@@6B@	0125d53c	6	6	0	
+??_7CEventAttackedWithBareHandsWithoutHittingAnything@NEntityEvents@@6B@	0127649c	5	5	0	
+??_7CEventAttackedWithMeleeWeaponWithoutHittingAnything@NEntityEvents@@6B@	01276484	5	5	0	
+??_7CEventBase@@6B@	0124f2c4	5	5	0	
+??_7CEventChildHurtGoToMother@NEntityEvents@@6B@	0128fa80	5	5	0	
+??_7CEventCutScene@@6B@	0125c1cc	5	5	0	
+??_7CEventDied@NEntityEvents@@6B@	0125aaf4	5	5	0	
+??_7CEventExpressionPerformedTo@NEntityEvents@@6B@	01274240	5	5	0	
+??_7CEventFiredShot@NEntityEvents@@6B@	0127f2c0	5	5	0	
+??_7CEventHeroHasBeenSpokenToByVillagers@NEntityEvents@@6B@	01276e00	5	5	0	
+??_7CEventHeroHasBeenSpottedPickingLock@NEntityEvents@@6B@	012781c8	5	5	0	
+??_7CEventHeroHasBeenSpottedPickpocketing@NEntityEvents@@6B@	012781b0	5	5	0	
+??_7CEventHeroHasBeenSpottedStealing@NEntityEvents@@6B@	012781e0	5	5	0	
+??_7CEventHitBase@NEntityEvents@@6B@	01272344	6	6	0	
+??_7CEventHitBy@@6B@	01272fa8	6	6	0	
+??_7CEventHitBySpecialAbility@NEntityEvents@@6B@	012723f0	6	6	0	
+??_7CEventHitThing@NEntityEvents@@6B@	01272390	5	5	0	
+??_7CEventItemUsed@NEntityEvents@@6B@	0125c820	5	5	0	
+??_7CEventKicked@NEntityEvents@@6B@	01277b5c	5	5	0	
+??_7CEventKillLocked@NEntityEvents@@6B@	01277ca8	5	5	0	
+??_7CEventKilledCreature@NEntityEvents@@6B@	012723a8	5	5	0	
+??_7CEventMissedStrike@@6B@	01277874	5	5	0	
+??_7CEventMoralityChanged@NEntityEvents@@6B@	0124f2dc	5	5	0	
+??_7CEventOpenedChest@NEntityEvents@@6B@	01274258	5	5	0	
+??_7CEventPerformedSpecialAbility@NEntityEvents@@6B@	012723c0	5	5	0	
+??_7CEventReceivedItem@NEntityEvents@@6B@	01272360	5	5	0	
+??_7CEventReceivedItemInInventory@NEntityEvents@@6B@	01253c8c	5	5	0	
+??_7CEventReceivedMoney@NEntityEvents@@6B@	01274210	5	5	0	
+??_7CEventShownItem@@6B@	012723d8	5	5	0	
+??_7CEventShownItem@NEntityEvents@@6B@	012723d8	5	5	0	
+??_7CEventSoldItem@NEntityEvents@@6B@	01272378	5	5	0	
+??_7CEventTalkedTo@NEntityEvents@@6B@	01274228	5	5	0	
+??_7CEventTalkedToAnyone@NEntityEvents@@6B@	01274270	5	5	0	
+??_7CEventTriggered@NEntityEvents@@6B@	01273014	5	5	0	
+??_7CEventVillagerInteraction@NEntityEvents@@6B@	012995a8	5	5	0	
+??_7CEvent_00d97360@@6B@	01238c8c	79	79	0	
+??_7CEvent_00d9d8f0@@6B@	01238c8c	79	79	0	
+??_7CEvent_00da29b0@@6B@	01238c8c	79	79	0	
+??_7CEvent_00dca660@@6B@	01238c8c	79	79	0	
+??_7CEvent_00de8300@@6B@	01238c8c	79	79	0	
+??_7CEvent_00e39100@@6B@	01238c8c	79	79	0	
+??_7CEvent_00ea7610@@6B@	01238c8c	79	79	0	
+??_7CEvent_00ec52f0@@6B@	01238c8c	79	79	0	
+??_7CEvent_00ed9960@@6B@	01238c8c	79	79	0	
+??_7CEvent_00ef8cc0@@6B@	01238c8c	79	79	0	
+??_7CEvent_00f06370@@6B@	01238c8c	79	79	0	
+??_7CExperienceDef@@6B@	01242104	25	25	0	
+??_7CExplodingObjectDef@@6B@	0123ad7c	25	25	0	
+??_7CExplosionDef@@6B@	012425f4	25	25	0	
+??_7CExplosiveTrailDef@@6B@	01232b54	25	25	0	
+??_7CExpressionSubDef@@6B@	0123c2e4	25	25	0	
+??_7CFile@@6B@	0129f06c	5	5	0	
+??_7CFileDataInputStream@@6B@	0129a728	11	11	0	
+??_7CFileDataOutputStream@@6B@	0129a6f8	5	5	0	
+??_7CFilenames@C3DMeshMaterial@@6B@	0129edb4	2	2	0	
+??_7CFireEffectCreationSet@@6B@	012421d4	2	2	0	
+??_7CFireballSpellLevelDef@@6B@	0123cc3c	25	25	0	
+??_7CFirstPerson@NCameraModes@@6B@	012776ac	24	24	0	interior_nonfunc
+??_7CFishDef@@6B@	0123d7bc	25	25	0	
+??_7CFishingDef@@6B@	012418c4	25	25	0	
+??_7CFishingRodDef@@6B@	0123dca4	25	25	0	
+??_7CFixedDolly@@6B@	0125c48c	30	30	0	interior_nonfunc
+??_7CFlammableDef@@6B@	01242984	25	25	0	
+??_7CFontBankStateBlock@@6B@	0129da5c	4	4	0	
+??_7CFontDataBank@@6B@	0129da84	20	20	0	
+??_7CFrameRateSmoother@@6B@	0122f168	2	2	0	
+??_7CFrontEndButton@NUISystem@@6BCComponentInterface@1@@	01249554	151	151	0	interior_nonfunc
+??_7CFrontEndButton@NUISystem@@6BCObserver_Retail@1@@	01249530	8	8	0	
+??_7CFrontEndButton@NUISystem@@6BCUIInterface@1@@	01249554	151	151	0	interior_nonfunc
+??_7CFrontEndScreen@NUISystem@@6BCUIInterface@1@@	012497e4	143	143	0	interior_nonfunc
+??_7CGameCameraBase@@6B@	01264a8c	25	25	0	
+??_7CGameDefinitionManager@@6B@	01232c24	7	3	4	OVERCOUNT?
+??_7CGameEnvironmentInteraction@@6B@	0122ed8c	7	7	0	
+??_7CGamePlayerInterface@@6B@	01231bdc	2	2	0	
+??_7CGameScriptInterface@@6B@	01260f0c	918	918	0	interior_nonfunc
+??_7CGameScriptInterfaceBase@@6B@	0126009c	917	917	0	
+??_7CGenericVar@@6B@	0129c3e4	6	6	0	
+??_7CGenericVar@FableCons_009edfe0@@6B@	0129c3e4	6	6	0	
+??_7CGiftDef@@6B@	0123b8b4	25	25	0	
+??_7CGoldDef@@6B@	0123d2ec	25	25	0	
+??_7CGroundNavigatorExternalInterface@@6B@	0125ec9c	25	25	0	interior_nonfunc
+??_7CGuardDef@@6B@	0123c75c	25	25	0	
+??_7CGuildMasterDef@@6B@	01232a84	25	25	0	
+??_7CHairCardDef@@6B@	0123241c	25	25	0	
+??_7CHandleBasedMemoryPool@@6B@	0129c964	4	4	0	
+??_7CHasNameDef@@6B@	0123e67c	25	25	0	
+??_7CHeroCentreDef@@6B@	0123be54	25	25	0	
+??_7CHeroCombatDef@@6B@	01234cf4	25	25	0	
+??_7CHeroDef@@6B@	0123a904	25	25	0	
+??_7CHeroExperienceDef@@6B@	0124390c	25	25	0	
+??_7CHeroMarriageDef@@6B@	01232074	25	25	0	
+??_7CHeroMorphDef@@6B@	01242bcc	25	25	0	
+??_7CHeroSpecialMovementDef@@6B@	0123d92c	25	25	0	
+??_7CHeroSuitDef@@6B@	0124216c	25	25	0	
+??_7CHeroTitleDef@@6B@	0123234c	25	25	0	
+??_7CHighlightItemDef@@6B@	0123bd14	25	25	0	
+??_7CHitLocationsDef@@6B@	01232cb4	25	25	0	
+??_7CHoverable@NUISystem@@6BCComponentRoot@1@@	0124bfb4	146	146	0	interior_nonfunc
+??_7CHoverable@NUISystem@@6BIComponentA@1@@	0124bf90	8	8	0	
+??_7CIDrawEnvironment@@6B@	0125d4e4	2	2	0	
+??_7CIDrawMap@@6B@	01272494	10	10	0	
+??_7CIDrawWorldMap@@6B@	01244284	12	12	0	
+??_7CIPhysicsFacesSegmentBase@@6B@	0129de70	5	5	0	
+??_7CInputManagerDX@@6B@	0129d620	3	2	1	OVERCOUNT?
+??_7CInputProcessBButtonExitMode@@6B@	01237928	9	9	0	
+??_7CInputProcessBetting@@6B@	01237e50	9	9	0	
+??_7CInputProcessBlock@@6B@	01237ab8	9	9	0	
+??_7CInputProcessBoastUI@@6B@	01237db0	9	9	0	
+??_7CInputProcessCameraLookAround@@6B@	012379f0	9	9	0	
+??_7CInputProcessClickPastText@@6B@	012378d8	9	9	0	
+??_7CInputProcessCombat@@6B@	012380b4	9	9	0	
+??_7CInputProcessConsole@@6B@	01237f24	9	9	0	
+??_7CInputProcessControlCreature@@6B@	012375b4	9	9	0	
+??_7CInputProcessControlCreatureActivateZTarget@@6B@	012375dc	9	9	0	
+??_7CInputProcessControlCreatureActivateZTargetOnPress@@6B@	01237604	9	9	0	
+??_7CInputProcessControlCreatureRightStick@@6B@	01237a40	9	9	0	
+??_7CInputProcessControlFreeCamera@@6B@	012379c8	9	9	0	
+??_7CInputProcessControlSpirit@@6B@	0125d110	9	9	0	
+??_7CInputProcessCreatureMovement@@6B@	01237f4c	9	9	0	
+??_7CInputProcessCreatureMovementWatchForControlAngleChange@@6B@	01237f74	9	9	0	
+??_7CInputProcessCreditsUI@@6B@	01237e28	9	9	0	
+??_7CInputProcessCutScene@@6B@	01237d10	9	9	0	
+??_7CInputProcessCycleSpecialCameraModes@@6B@	01237a68	9	9	0	
+??_7CInputProcessDead@@6B@	0123762c	9	9	0	
+??_7CInputProcessDebugControls@@6B@	01237f9c	10	9	1	OVERCOUNT? interior_nonfunc
+??_7CInputProcessDigging@@6B@	01237d60	9	9	0	
+??_7CInputProcessFireheartMinigame@@6B@	01237ea0	9	9	0	
+??_7CInputProcessFirstPerson@@6B@	01237978	9	9	0	
+??_7CInputProcessFirstPersonLookAround@@6B@	01237a18	9	9	0	
+??_7CInputProcessFirstPersonTargeting@@6B@	01237c98	9	9	0	
+??_7CInputProcessFishing@@6B@	01237d38	9	9	0	
+??_7CInputProcessFreezeControls@@6B@	012379a0	9	9	0	
+??_7CInputProcessGameBase@@6B@	0125be98	9	9	0	
+??_7CInputProcessHeroAbilitiesScreen@@6B@	0123777c	10	10	0	
+??_7CInputProcessHeroInformationScreens@@6B@	012378b0	9	9	0	
+??_7CInputProcessInGameMenu@@6B@	01237cc0	9	9	0	
+??_7CInputProcessInventory@@6B@	012376f8	10	10	0	
+??_7CInputProcessInventoryClothing@@6B@	01237724	10	10	0	
+??_7CInputProcessInventoryExperienceScreen@@6B@	012377d4	10	10	0	
+??_7CInputProcessInventoryMagicScreen@@6B@	01237858	10	10	0	
+??_7CInputProcessInventoryMapScreen@@6B@	012377a8	10	10	0	
+??_7CInputProcessInventoryQuestsScreen@@6B@	0123782c	10	10	0	
+??_7CInputProcessInventoryStatsScreen@@6B@	01237884	10	10	0	
+??_7CInputProcessInventoryTradeScreen@@6B@	01237800	10	10	0	
+??_7CInputProcessInventoryWeapons@@6B@	01237750	10	10	0	
+??_7CInputProcessJumpingAndRolling@@6B@	01238050	9	9	0	
+??_7CInputProcessLightning@@6B@	01237c48	9	9	0	
+??_7CInputProcessMain@@6B@	0123758c	9	9	0	
+??_7CInputProcessOracleMinigame@@6B@	01237e78	9	9	0	
+??_7CInputProcessParalysed@@6B@	01237d88	9	9	0	
+??_7CInputProcessPhotojournalCapture@@6B@	01237ec8	12	11	1	OVERCOUNT?
+??_7CInputProcessProjectileTargetingAnalogueZoom@@6B@	01237bf8	9	9	0	
+??_7CInputProcessQuestCompletionUI@@6B@	01237e00	9	9	0	
+??_7CInputProcessQuickAccessItems@@6B@	01237ae0	9	9	0	
+??_7CInputProcessQuickAccessMenu@@6B@	01237dd8	9	9	0	
+??_7CInputProcessRebootGame@@6B@	01237c70	9	9	0	
+??_7CInputProcessSetRangedWeaponMode@@6B@	01237b30	9	9	0	
+??_7CInputProcessSetRangedWeaponThirdPersonMode@@6B@	01237b58	9	9	0	
+??_7CInputProcessSpecialAbilities@@6B@	01237c20	9	9	0	
+??_7CInputProcessStrafe@@6B@	01237654	9	9	0	
+??_7CInputProcessTargetLockCycleTargets@@6B@	0123767c	9	9	0	
+??_7CInputProcessTargetLockRightStickTargetSelect@@6B@	012376a4	9	9	0	
+??_7CInputProcessTavernGame@@6B@	01237ce8	9	9	0	
+??_7CInputProcessToggleViewHeroMode@@6B@	01237950	9	9	0	
+??_7CInputProcessUseEnvironment@@6B@	01237a90	9	9	0	interior_nonfunc
+??_7CInputProcessUseRangedWeapon@@6B@	01237b08	9	9	0	
+??_7CInputProcessUseRangedWeaponZLock@@6B@	01237bd0	9	9	0	
+??_7CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@6B@	01237b80	9	9	0	
+??_7CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@6B@	01237ba8	9	9	0	
+??_7CInputProcessYesNoQuestion@@6B@	01237900	9	9	0	
+??_7CInputProcessZTarget@@6B@	01238028	9	9	0	
+??_7CInputTypeBase@@6B@	01231784	8	8	0	
+??_7CInterestingToVillagersDef@@6B@	0123c6d4	25	25	0	
+??_7CInventoryItemDef@@6B@	01231dbc	25	25	0	
+??_7CIsRunnableModuleCarryingProjectileWeapon@NCreatureAI@@6B@	0128ffd4	2	2	0	
+??_7CJackDragonDef@@6B@	0123294c	25	25	0	
+??_7CJoystick@@6B@	0129c0ec	19	19	0	
+??_7CJoystickDX@@6B@	0129ea7c	19	19	0	
+??_7CKeyRedefiner@NUISystem@@6BCComponentRoot@1@@	0124adbc	151	151	0	interior_nonfunc
+??_7CKeyRedefiner@NUISystem@@6BCComponentRoot_00558b30@1@@	0124adbc	151	151	0	interior_nonfunc
+??_7CKeyRedefiner@NUISystem@@6BCGuiControl@1@@	0124ad98	8	8	0	
+??_7CKeyRedefiner@NUISystem@@6BCGuiControl_00558b30@1@@	0124ad98	8	8	0	
+??_7CKeyRedefiner@NUISystem@@6BCUIInterface@1@@	0124adbc	151	151	0	interior_nonfunc
+??_7CKeyboardDX@@6B@	0129ea60	6	6	0	
+??_7CKickableDef@@6B@	0123a7ac	25	25	0	
+??_7CKrakenDef@@6B@	01241b2c	25	25	0	
+??_7CKrakenTentacleDef@@6B@	0123da24	25	25	0	
+??_7CLandscapeBackgroundSubNodeSplitBranch@@6B@	012a8258	9	9	0	
+??_7CLandscapeBackgroundTreeNode@@6B@	012a8240	5	5	0	
+??_7CLevelLoader@@6B@	0125d9b0	5	5	0	
+??_7CLightDef@@6B@	0123a814	25	25	0	
+??_7CLightningOrbDef@@6B@	0123e5ec	25	25	0	
+??_7CLipSyncDataBank@@6B@	0129d3d4	20	20	0	
+??_7CList@NUISystem@@6BCComponentRoot@1@@	012462e4	188	188	0	interior_nonfunc
+??_7CList@NUISystem@@6BCInputListener@@@	012462bc	8	8	0	
+??_7CListArrow@NUISystem@@6BCUIInterface@1@@	01248f94	151	151	0	interior_nonfunc
+??_7CLoadingMemoryFailureHandler@@6B@	0129b8c4	2	2	0	
+??_7CLocalDetailPrimitiveMesh@@6B@	012a7e04	10	10	0	
+??_7CLookDef@@6B@	0123ae14	25	25	0	
+??_7CManagedTextureData@@6B@	0129dc24	10	10	0	
+??_7CManagedTextureOwner@@6B@	0129c848	11	11	0	
+??_7CManager@NUISystem@@6B@	01230134	48	45	3	OVERCOUNT?
+??_7CMap@@6BCIDrawMap@@@	0127252c	14	14	0	
+??_7CMemoryAllocatorBase@@6B@	0129dadc	15	15	0	
+??_7CMemoryAllocatorVariableSize@@6B@	0129db1c	16	16	0	
+??_7CMemoryBlock@@6B@	0129d568	2	2	0	
+??_7CMenuEntry@NUISystem@@6BCUIInterface@1@@	0124662c	157	157	0	interior_nonfunc
+??_7CMesh@NUISystem@@6BIViewportPrimary_00550190@@@	01249f9c	149	149	0	interior_nonfunc
+??_7CMesh@NUISystem@@6BIViewportSecondaryA_00550190@@@	01249f74	8	8	0	
+??_7CMeshBankStateBlock@@6B@	0129ce7c	4	4	0	interior_nonfunc
+??_7CMeshDataBank@@6B@	0129ce94	22	22	0	
+??_7CMeshDataBankEntry@@6B@	0129cd28	4	4	0	
+??_7CMessageClearPrimitives@NTCMessages@@6B@	01239a8c	2	2	0	
+??_7CMessageOnMeshReplaced@NTCMessages@@6B@	0126cb54	2	2	0	
+??_7CModeArmsOffTable@@6B@	012681a8	12	12	0	
+??_7CModeAssassinRush@@6B@	01267fd4	12	12	0	
+??_7CModeAttracted@@6B@	01267758	12	12	0	
+??_7CModeBase@@6B@	012673cc	12	12	0	
+??_7CModeBase@CTCCreatureModeManager@@6B@	012673cc	12	12	0	
+??_7CModeBase@NCreatureMode@@6B@	012673cc	12	12	0	
+??_7CModeBasic@NCreatureMode@@6B@	012675bc	12	12	0	
+??_7CModeBattleCharge@@6B@	01267f90	12	12	0	
+??_7CModeBerserk@@6B@	01267f00	12	12	0	
+??_7CModeBriarRoseConcentrate@NCreatureMode@@6B@	01268548	12	12	0	
+??_7CModeBriarRoseTeleportIntangible@NCreatureMode@@6B@	0128026c	12	12	0	
+??_7CModeBriarRoseTeleportInvulnerable@NCreatureMode@@6B@	01280228	12	12	0	
+??_7CModeBully@@6B@	012678cc	12	12	0	
+??_7CModeCaged@@6B@	012682b0	12	12	0	
+??_7CModeCarryingGenericBox@@6B@	01267a54	12	12	0	
+??_7CModeCarryingGoodsStand@@6B@	01267ae8	12	12	0	
+??_7CModeCarryingPlateStand@@6B@	01267aa0	13	13	0	
+??_7CModeCarryingWeaponStand@@6B@	012856e4	13	13	0	
+??_7CModeChargeForcePush@@6B@	01268328	12	12	0	
+??_7CModeCheering@@6B@	012677cc	12	12	0	
+??_7CModeConversation@NCreatureMode@@6B@	01285990	12	12	0	
+??_7CModeCook@@6B@	01267908	12	12	0	
+??_7CModeCreatureIsProjectile@NCreatureMode@@6B@	01285728	12	12	0	
+??_7CModeCreeping@@6B@	0126778c	12	12	0	
+??_7CModeCrouch@NCreatureMode@@6B@	01267b34	12	12	0	
+??_7CModeCurious@@6B@	01267890	12	12	0	
+??_7CModeDazed@NCreatureMode@@6B@	01267cc4	16	16	0	
+??_7CModeDragonBase@NCreatureMode@@6B@	012684e0	12	12	0	interior_nonfunc
+??_7CModeDragonFlying@NCreatureMode@@6B@	0126868c	12	12	0	
+??_7CModeDragonGetHit@NCreatureMode@@6B@	012683e4	12	12	0	
+??_7CModeDragonHover@NCreatureMode@@6B@	0126845c	12	12	0	
+??_7CModeDragonLanded@NCreatureMode@@6B@	012683a8	12	12	0	
+??_7CModeDragonRearUp@NCreatureMode@@6B@	01268420	12	12	0	
+??_7CModeDragonStrafe@NCreatureMode@@6B@	012686c8	12	12	0	
+??_7CModeDragonStrafeBurninate@NCreatureMode@@6B@	01268718	12	12	0	interior_nonfunc
+??_7CModeDrained@NCreatureMode@@6B@	01268234	12	12	0	
+??_7CModeDrinkingFromTankard@@6B@	01268018	12	12	0	
+??_7CModeDrunk@@6B@	0126816c	12	12	0	
+??_7CModeEatingAtTable@@6B@	01268064	12	12	0	
+??_7CModeFillJug@@6B@	0126812c	12	12	0	
+??_7CModeForcePushed@@6B@	01267ebc	12	12	0	
+??_7CModeGuildmasterConcentrate@@6B@	01268368	12	12	0	
+??_7CModeGuildmasterPowerUpHeal@NCreatureMode@@6B@	012685bc	12	12	0	
+??_7CModeGuildmasterPowerUpSpeed@NCreatureMode@@6B@	01268624	12	12	0	
+??_7CModeHandsBound@@6B@	01267944	12	12	0	
+??_7CModeHeckling@@6B@	0126780c	12	12	0	
+??_7CModeHeroImitation@@6B@	0126784c	12	12	0	
+??_7CModeHitByEpicSpell@@6B@	01268498	12	12	0	
+??_7CModeHoldJug@@6B@	012680a8	12	12	0	
+??_7CModeHoverBase@NCreatureMode@@6B@	01287d14	16	16	0	
+??_7CModeHoverNormal@@6B@	012687fc	16	16	0	
+??_7CModeIntangible@NCreatureMode@@6B@	01268514	12	12	0	
+??_7CModeJackOfBladesDeath@@6B@	01267da8	12	12	0	
+??_7CModeJackOfBladesScream@NCreatureMode@@6B@	01267d5c	12	12	0	
+??_7CModeJackOfBladesVulnerable@@6B@	01267984	12	12	0	
+??_7CModeKnockedDown@@6B@	01267e78	12	12	0	
+??_7CModeOutOfActionBase@NCreatureMode@@6B@	0126743c	16	16	0	
+??_7CModeOutraged@@6B@	012676e0	12	12	0	
+??_7CModeRockTrollVulnerable@NCreatureMode@@6B@	01285774	12	12	0	
+??_7CModeRollAround@@6B@	01268270	12	12	0	
+??_7CModeSad@@6B@	01267720	13	12	1	OVERCOUNT?
+??_7CModeScared@@6B@	012676a4	12	12	0	
+??_7CModeScorpionKingExhausted@NCreatureMode@@6B@	012858a0	12	12	0	
+??_7CModeScripted@@6B@	01267670	12	12	0	
+??_7CModeScripted@NCreatureMode@@6B@	01267670	12	12	0	
+??_7CModeServeCustomer@@6B@	012680e8	12	12	0	
+??_7CModeSitBase@NCreatureMode@@6B@	01285698	12	12	0	
+??_7CModeSitChair@NCreatureMode@@6B@	01267b74	12	12	0	
+??_7CModeSitChairBored@NCreatureMode@@6B@	01292354	12	12	0	
+??_7CModeSitChairSleeping@NCreatureMode@@6B@	01292398	12	12	0	
+??_7CModeSitChairStudious@NCreatureMode@@6B@	0128f590	12	12	0	
+??_7CModeSitFloor@@6B@	01267bbc	12	12	0	
+??_7CModeSitFloor@NCreatureMode@@6B@	01267bbc	12	12	0	
+??_7CModeSitListen@@6B@	01267bbc	12	12	0	
+??_7CModeSitTavernStool@@6B@	01292ff8	12	12	0	
+??_7CModeSleepBed@@6B@	01275760	12	12	0	
+??_7CModeSleepBed@NCreatureMode@@6B@	01275760	12	12	0	
+??_7CModeStandBase@@6B@	01276d8c	12	12	0	
+??_7CModeStandBored@@6B@	01267630	12	12	0	
+??_7CModeStandFront@NCreatureMode@@6B@	012674ac	12	12	0	
+??_7CModeStandHappy@@6B@	012675f0	12	12	0	
+??_7CModeStandLeft@NCreatureMode@@6B@	012674f4	12	12	0	
+??_7CModeStandRight@NCreatureMode@@6B@	01267534	12	12	0	
+??_7CModeStrafe@NCreatureMode@@6B@	01268588	12	12	0	interior_nonfunc
+??_7CModeStunned@NCreatureMode@@6B@	01267c74	16	16	0	
+??_7CModeSummonerDie@@6B@	012682ec	12	12	0	
+??_7CModeSummonerLightningOrb@NCreatureMode@@6B@	01282bdc	12	12	0	interior_nonfunc
+??_7CModeSummonerSummon@NCreatureMode@@6B@	01282ba0	12	12	0	
+??_7CModeThunderLightningStorm@NCreatureMode@@6B@	01267df4	12	12	0	interior_nonfunc
+??_7CModeUnderground@@6B@	01267e38	12	12	0	
+??_7CModeUnderwater@@6B@	01267a14	12	12	0	
+??_7CModeVulnerable@@6B@	012679d4	12	12	0	
+??_7CModeWading@@6B@	01267f48	12	12	0	
+??_7CMorphingSprite@NUISystem@@6BCObserver@@@	0124a474	8	8	0	
+??_7CMorphingSprite@NUISystem@@6BIPrimary_005545d0@@@	0124a49c	152	152	0	interior_nonfunc
+??_7CMouseCursor@NUISystem@@6BCObserver@@@	0124c208	8	8	0	
+??_7CMouseCursor@NUISystem@@6BIPrimary_0055c650@@@	0124c22c	152	152	0	interior_nonfunc
+??_7CMouseCursor@NUISystem@@6BIPrimary_0055c8d0@@@	0124c22c	152	152	0	interior_nonfunc
+??_7CMouseCursor@NUISystem@@6BISpriteListener_0055c510@@@	0124c208	8	8	0	
+??_7CMouseCursor@NUISystem@@6BISpritePrimary_0055c510@@@	0124c22c	152	152	0	interior_nonfunc
+??_7CMouseDX@@6B@	0129ea14	18	18	0	
+??_7CMoveOnCylinder@NCameraModes@@6B@	0125a064	24	24	0	
+??_7CMovie@NUISystem@@6BCComponentInterface@1@@	0124881c	144	144	0	interior_nonfunc
+??_7CMovie@NUISystem@@6BCDrawableInterface@1@@	012487f4	8	8	0	
+??_7CMultiStatBar@NPlayerGui@@6B@	0125a758	3	3	0	
+??_7CMultiStaticMeshDef@@6B@	0124265c	25	25	0	
+??_7CNavBlockedQuadTreeNode@@6B@	0129dd3c	23	23	0	
+??_7CNavButton@NUISystem@@6BCComponentInterface@1@@	0124b04c	150	150	0	interior_nonfunc
+??_7CNavButton@NUISystem@@6BCObserver@1@@	0124b024	8	8	0	interior_nonfunc
+??_7CNavButton@NUISystem@@6BCObserver_Retail@1@@	0124b024	8	8	0	interior_nonfunc
+??_7CNavButton@NUISystem@@6BCUIInterface@1@@	0124b04c	150	150	0	interior_nonfunc
+??_7CNavNavigableLeafNode@@6B@	0129dda4	23	23	0	
+??_7CNavQuadTreeNode@@6B@	0129dcd4	23	23	0	
+??_7CNavSwitchableLeafNode@@6B@	0129de04	23	23	0	
+??_7CNavigatorAStar@@6B@	0129cccc	20	20	0	interior_nonfunc
+??_7CNavigatorFlyer@@6B@	0129cb54	20	20	0	interior_nonfunc
+??_7CNavigatorManager@@6B@	0129ca84	4	4	0	
+??_7CNetworkClient@@6B@	0122edac	2	2	0	
+??_7CNetworkServer@@6B@	0122ed30	2	2	0	
+??_7CNymphDef@@6B@	0123de3c	25	25	0	
+??_7CObjectAugmentationsDef@@6B@	01243974	25	25	0	
+??_7CObjectCacheGroupCollection@@6B@	012a7ddc	4	4	0	
+??_7COccupiableDef@@6B@	0123c514	25	25	0	
+??_7COk@NUISystem@@6BCComponentBase2_Retail@1@@	0122fad0	8	8	0	
+??_7COk@NUISystem@@6BCComponentRoot_Retail@1@@	0122faf4	143	143	0	interior_nonfunc
+??_7COpinionOfHeroDef@@6B@	0123b59c	25	25	0	
+??_7COracleMinigameDef@@6B@	0123e504	25	25	0	
+??_7COrbitGame@NCameraModes@@6B@	0125c6dc	24	24	0	
+??_7COverheadDisplayDef@@6B@	0123c8fc	25	25	0	
+??_7CPCMouseLook@NCameraModes@@6B@	01277784	24	24	0	interior_nonfunc
+??_7CPSCAttractor@NParticleEngine@@6B@	012a04ac	32	32	0	interior_nonfunc
+??_7CPSCBase@NParticleEngine@@6B@	0129f3f4	32	32	0	
+??_7CPSCLight@NParticleEngine@@6B@	012a0624	33	33	0	
+??_7CPSCOrbit@NParticleEngine@@6B@	012a0374	32	32	0	interior_nonfunc
+??_7CPSCRenderSprite@NParticleEngine@@6B@	0129f67c	32	32	0	interior_nonfunc
+??_7CPSCSingleSprite@NParticleEngine@@6B@	0129fb84	32	32	0	interior_nonfunc
+??_7CPSCSpline@NParticleEngine@@6B@	012a0934	32	32	0	
+??_7CPSCSplineBase@NParticleEngine@@6B@	012a0b14	32	32	0	interior_nonfunc
+??_7CParentDefClassBase@FableCopy_0067c9f0@@6B@	01230cbc	25	25	0	
+??_7CParticleAttacherDef@@6B@	01242364	25	25	0	
+??_7CParticleContext@@6B@	012a38e0	6	6	0	
+??_7CParticleDataBank@NParticleEngine@@6BCBankFile@N_009d5f80@@@	0129f38c	21	21	0	
+??_7CParticleDataBank@NParticleEngine@@6BCBankFile@N_009d6490@@@	0129f38c	21	21	0	
+??_7CParticleEffect@NUISystem@@6BCComponentRoot@1@@	0124735c	142	142	0	interior_nonfunc
+??_7CParticleEffect@NUISystem@@6BIComponentA@1@@	01247338	8	8	0	
+??_7CParticleProgram@@6B@	0129f0d8	4	4	0	
+??_7CParticleSimulation@@6B@	0129f0c4	4	4	0	
+??_7CParticleUpdateParamCallback@@6B@	0129f3e4	2	2	0	
+??_7CPerceivedThingDef@@6B@	0123aa9c	25	25	0	
+??_7CPhysicalPrimitiveBase@@6B@	0125b97c	12	12	0	
+??_7CPhysicalPrimitiveCylinder@NHitLocations@@6B@	0125ba4c	12	12	0	interior_nonfunc
+??_7CPhysicalPrimitiveMesh@NHitLocations@@6B@	0125b9b0	12	12	0	
+??_7CPhysicalPrimitiveSphere@NHitLocations@@6B@	0125b9fc	12	12	0	
+??_7CPhysicsDef@@6B@	01231e34	25	25	0	
+??_7CPhysicsFacesSegmentBranch@@6B@	0129de88	5	5	0	
+??_7CPhysicsFacesSegmentLeaf@@6B@	0129dea4	5	5	0	
+??_7CPhysicsFacesSegmentLeaf_Retail@@6B@	0129dea4	5	5	0	
+??_7CPhysicsForceModelBase@@6B@	0127592c	8	8	0	
+??_7CPhysicsForceModelGotoOutsideSimple@NCameraModes@@6B@	01275950	8	8	0	
+??_7CPhysicsForceModelRigid@NCameraModes@@6B@	01276ac8	8	8	0	
+??_7CPhysicsLeaf@@6B@	01275974	4	4	0	
+??_7CPhysicsLeaf_0085ca40@@6B@	01276aec	4	4	0	
+??_7CPhysicsMesh@@6B@	0129dc68	2	2	0	
+??_7CPhysicsMeshInfo@@6B@	0129cd50	4	4	0	
+??_7CPixelShaderNativeView@@6B@	0129a054	3	3	0	
+??_7CPixelShader_Retail@@6B@	0129a054	3	3	0	
+??_7CPlayer@@6B@	01231cc4	2	2	0	
+??_7CPlayerInventoryDef@@6B@	01235274	25	25	0	
+??_7CPreallocTexturePool@@6B@	0129dc50	2	2	0	
+??_7CProgressDisplay@@6B@	012388b4	7	7	0	
+??_7CProjectileWeapon@NCameraModes@@6B@	01277804	24	24	0	interior_nonfunc
+??_7CQuadTreeElement@@6B@	012a7df0	4	4	0	
+??_7CQuestCardDef@@6B@	01241e44	25	25	0	
+??_7CQuestInfoElement@CDrawQuestInfo@NPlayerGui@@6B@	0125a2b4	4	4	0	
+??_7CQuestInfoElementBar@@6B@	0125a444	4	4	0	interior_nonfunc
+??_7CQuestInfoElementCounter@NPlayerGui@@6B@	0125a4f0	4	4	0	
+??_7CQuestInfoElementCounterList@NPlayerGui@@6B@	0125a504	4	4	0	
+??_7CQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@6B@	0125a46c	4	4	0	interior_nonfunc
+??_7CQuestInfoElementMiniGameBar@NPlayerGui@@6B@	0125a46c	4	4	0	interior_nonfunc
+??_7CQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@6B@	0125a518	4	4	0	
+??_7CQuestInfoElementTick@NPlayerGui@@6B@	0125a518	4	4	0	
+??_7CQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@6B@	0125a458	4	4	0	
+??_7CReactionFrequencyTraits_ControlledCountRetail@@6B@	01264b94	5	5	0	
+??_7CReactionFrequencyTraits_LinearTimeRetail@@6B@	01264b64	5	5	0	
+??_7CReactionMatch_AsymmetricPyramidRetail@@6B@	0125b718	5	5	0	
+??_7CReactionMatch_MoralityRenownBlob@@6B@	0125b748	5	5	0	
+??_7CReadableDef@@6B@	0123e9f4	25	25	0	
+??_7CRedefinerList@NUISystem@@6BCGuiControl_00557360@1@@	0124a970	8	8	0	
+??_7CRedefinerList@NUISystem@@6BCListRoot_00557360@1@@	0124a994	153	142	11	OVERCOUNT? interior_nonfunc
+??_7CRedefinerList@NUISystem@@6BCUIPrimaryBase@1@@	0124a994	153	142	11	OVERCOUNT? interior_nonfunc
+??_7CRedefinerList@NUISystem@@6BCUISecondaryBaseA@1@@	0124a970	8	8	0	
+??_7CRenderManager@@6B@	0129b400	3	1	2	OVERCOUNT?
+??_7CReplaceableMeshDef@@6B@	012430bc	25	25	0	
+??_7CResurrectionItemDef@@6B@	0123d9ac	25	25	0	
+??_7CRumbleDef@@6B@	0124273c	25	25	0	
+??_7CSACCombat@NCameraModes@@6B@	012775b4	32	32	0	
+??_7CSBAgents@@6B@	0129debc	5	5	0	
+??_7CScriptConversation@NTCScriptedControl@@6B@	01265520	2	2	0	
+??_7CScriptGameResourceObjectBaseDtor@@6B@	0126008c	2	2	0	
+??_7CScriptGameResourceObjectScriptedThing@@6B@	0128d86c	31	31	0	interior_nonfunc
+??_7CScriptModuleBase@NCameraModes@@6B@	01255f74	9	9	0	
+??_7CScriptModuleCameraOnAStick@NCameraModes@@6B@	0126cf04	9	9	0	
+??_7CScriptModuleDolly@NCameraModes@@6B@	01278160	9	9	0	
+??_7CScriptModuleDollyThing@NCameraModes@@6B@	01278188	9	9	0	
+??_7CScriptModuleFOVZoom@NCameraModes@@6B@	01275a1c	9	9	0	
+??_7CScriptModuleFullTransition@NCameraModes@@6B@	01275a44	9	9	0	
+??_7CScriptModuleGoToLookAt@NCameraModes@@6B@	012657d8	9	9	0	
+??_7CScriptModuleGoToLookInDirection@NCameraModes@@6B@	01255f9c	9	9	0	
+??_7CScriptModuleOpenChest@NCameraModes@@6B@	01275abc	9	9	0	
+??_7CScriptModuleOpenGate@NCameraModes@@6B@	01275b0c	9	9	0	
+??_7CScriptModuleSelfTerminateBase@NCameraModes@@6B@	012759cc	9	9	0	
+??_7CScriptModuleSpline@NCameraModes@@6B@	01275a6c	9	9	0	interior_nonfunc
+??_7CScriptModuleTavernGame@NCameraModes@@6B@	01255fc4	12	9	3	OVERCOUNT?
+??_7CScriptModuleTransitionBetweenPoints@NCameraModes@@6B@	012759f4	9	9	0	
+??_7CScriptModuleUseLamp@NCameraModes@@6B@	01275ae4	9	9	0	
+??_7CScriptThingArg@@6B@	01238c8c	79	79	0	
+??_7CScriptThingConstructorView@@6B@	01238c8c	79	79	0	
+??_7CScriptThingInline@@6B@	01238c8c	79	79	0	
+??_7CScriptThingParam@@6B@	01238c8c	79	79	0	
+??_7CScriptThingRuntime@@6B@	01238c8c	79	79	0	
+??_7CScriptThing_Retail@@6B@	01238c8c	79	79	0	
+??_7CScriptedControl@NCameraModes@@6B@	0125c58c	24	24	0	interior_nonfunc
+??_7CScrollBar@NUISystem@@6BCComponentInterface@1@@	0124b7e4	160	160	0	interior_nonfunc
+??_7CScrollBar@NUISystem@@6BCObserver_Retail@1@@	0124b7bc	8	8	0	
+??_7CScrollBarOutside@NUISystem@@6BCComponentInterface@1@@	0124b54c	153	153	0	interior_nonfunc
+??_7CScrollBarOutside@NUISystem@@6BCObserver_Retail@1@@	0124b528	8	8	0	
+??_7CScrollBarOutside@NUISystem@@6BCUIInterface@1@@	0124b54c	153	153	0	interior_nonfunc
+??_7CScrollableList@NUISystem@@6BCComponentBase2_Retail@1@@	0124a708	8	8	0	
+??_7CScrollableList@NUISystem@@6BCComponentRoot_Retail@1@@	0124a72c	142	142	0	interior_nonfunc
+??_7CScrollingViewport@NUISystem@@6BCObserver@@@	012468ac	8	8	0	interior_nonfunc
+??_7CScrollingViewport@NUISystem@@6BIViewportPrimary@@@	012468d4	145	145	0	interior_nonfunc
+??_7CScrollingViewport@NUISystem@@6BIViewportPrimary_0053f120@@@	012468d4	145	145	0	interior_nonfunc
+??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryA_0053f120@@@	012468ac	8	8	0	interior_nonfunc
+??_7CShaderBankStateBlock@@6B@	0129d630	4	4	0	
+??_7CShaderBaseNativeView@@6B@	0129a030	3	3	0	
+??_7CShaderBase_Retail@@6B@	0129a030	3	3	0	
+??_7CShaderDataBank@@6B@	0129d644	20	20	0	
+??_7CShaderDirectionalLight@@6B@	012a221c	2	2	0	
+??_7CShaderLight@@6B@	012a2108	2	2	0	
+??_7CShaderPointLight@@6B@	012a2114	2	2	0	
+??_7CShipDef@@6B@	0123c0a4	25	25	0	
+??_7CShopDef@@6B@	01241f9c	25	25	0	
+??_7CShopItemDef@@6B@	0123b644	25	25	0	
+??_7CShoveHaPennyRegionDef@@6B@	0124383c	25	25	0	
+??_7CSimVoice@@6B@	012337ac	2	2	0	
+??_7CSkeletalMorphDef@@6B@	012429ec	25	25	0	
+??_7CSmashableDef@@6B@	01231f7c	25	25	0	
+??_7CSmokeGeneratorDef@@6B@	0123e924	25	25	0	
+??_7CSnapToPoint@@6B@	0124de5c	30	30	0	interior_nonfunc
+??_7CSnapToPoint@NCameraModes@@6B@	0124de5c	30	30	0	interior_nonfunc
+??_7CSnowTrollDef@@6B@	01232a1c	25	25	0	
+??_7CSoundAtmospheresDef@@6B@	012427a4	25	25	0	
+??_7CSoundBankLH@@6B@	0129c9dc	12	12	0	
+??_7CSoundEmitterLH@@6B@	0129e6ec	25	25	0	interior_nonfunc
+??_7CSoundManagerLH@@6B@	0129d2c4	54	54	0	interior_nonfunc
+??_7CSoundReceiverLH@@6B@	0129e76c	5	5	0	
+??_7CSpecialAbilitiesBerserkDef@@6B@	012341fc	25	25	0	
+??_7CSpecialAbilitiesBulletTimeDef@@6B@	01234264	25	25	0	
+??_7CSpecialAbilitiesDrainLifeDataDef@@6B@	012320dc	25	25	0	
+??_7CSpecialAbilitiesForcePushDataDef@@6B@	01232144	25	25	0	
+??_7CSpecialAbilitiesLightningSpellDef@@6B@	0123460c	25	25	0	
+??_7CSpecialEffectsDef@@6B@	0123300c	25	25	0	
+??_7CSpellContainer@NUISystem@@6BCComponentInterface@1@@	0124786c	149	149	0	interior_nonfunc
+??_7CSpellContainer@NUISystem@@6BCObserver_Retail@1@@	01247848	8	8	0	
+??_7CSpellContainer@NUISystem@@6BCUIInterface@1@@	0124786c	149	149	0	interior_nonfunc
+??_7CSpellContainerList@NUISystem@@6BCComponentRoot@1@@	012475c4	153	153	0	interior_nonfunc
+??_7CSpellContainerList@NUISystem@@6BCObserver@1@@	012475a0	8	8	0	interior_nonfunc
+??_7CSpellContainerList@NUISystem@@6BIComponentA@1@@	012475a0	8	8	0	interior_nonfunc
+??_7CSpotLightDef@@6B@	0123a88c	25	25	0	
+??_7CSprite@NUISystem@@6BCComponentInterface@1@@	0122f5d4	149	149	0	interior_nonfunc
+??_7CSprite@NUISystem@@6BCDrawableInterface@1@@	0122f5ac	8	8	0	
+??_7CStartupDefinitionManager@@6B@	0123117c	3	3	0	
+??_7CStatBar@NPlayerGui@@6B@	0125a738	3	3	0	
+??_7CStatBase@NPlayerGui@@6B@	0125a4e4	2	2	0	
+??_7CStaticMapBankFile@@6B@	012a1ee4	20	20	0	
+??_7CStealthDef@@6B@	0123ab1c	25	25	0	
+??_7CStockItemDef@@6B@	0123b74c	25	25	0	
+??_7CStreamingFontBankStateBlock@@6B@	0129d594	4	4	0	
+??_7CStreamingFontDataBank@@6B@	0129d5cc	20	20	0	
+??_7CStringAndCage@NCameraModes@@6B@	0125c404	32	32	0	
+??_7CStringAndCageBase@@6B@	0125c37c	32	32	0	
+??_7CStringAndCageBase@NCameraModes@@6B@	0125c37c	32	32	0	
+??_7CSubComponentBase@@6B@	012758f4	4	4	0	
+??_7CSubComponentBase@NCameraModes@@6B@	012758f4	4	4	0	
+??_7CSummonDef@@6B@	0123deb4	25	25	0	
+??_7CSummonableCreatureDef@@6B@	0123c3a4	25	25	0	
+??_7CSummonerDef@@6B@	01232aec	25	25	0	
+??_7CSuspendableProcessMicrothread@@6B@	0129d440	5	5	0	
+??_7CSwappingStateComponent@NUISystem@@6BCComponentInterface@1@@	012485ac	143	143	0	interior_nonfunc
+??_7CSwappingStateComponent@NUISystem@@6BCComponentRoot@1@@	012485ac	143	143	0	interior_nonfunc
+??_7CSwappingStateComponent@NUISystem@@6BCObserver_Retail@1@@	01248584	8	8	0	
+??_7CSwappingStateComponent@NUISystem@@6BCUIInterface@1@@	012485ac	143	143	0	interior_nonfunc
+??_7CSwappingStateComponent@NUISystem@@6BIComponentA@1@@	01248584	8	8	0	
+??_7CSystemManager@@6B@	0129affc	2	2	0	
+??_7CTCAbsorbHits@@6B@	0123e764	28	28	0	
+??_7CTCActionUseAcceptBoast@@6B@	0123f674	32	32	0	
+??_7CTCActionUseActivateQuest@@6B@	012404ac	32	32	0	
+??_7CTCActionUseBase@@6B@	0123f09c	32	32	0	
+??_7CTCActionUseBed@@6B@	0123f784	32	32	0	interior_nonfunc
+??_7CTCActionUseBlowHorn@@6B@	0123f564	32	32	0	
+??_7CTCActionUseBuyHouse@@6B@	01266a7c	32	32	0	
+??_7CTCActionUseBuyOrSteal@@6B@	0126679c	32	32	0	
+??_7CTCActionUseChest@@6B@	012400f4	32	32	0	
+??_7CTCActionUseKickChicken@@6B@	0123f80c	32	32	0	
+??_7CTCActionUseMapTable@@6B@	0123f454	32	32	0	
+??_7CTCActionUsePickUp@@6B@	0123f2bc	32	32	0	
+??_7CTCActionUsePickUpGenericBox@@6B@	0123f344	32	32	0	
+??_7CTCActionUsePutInInventory@@6B@	0123f3cc	32	32	0	
+??_7CTCActionUseReadable@@6B@	0123f234	32	32	0	
+??_7CTCActionUseSearch@@6B@	0123f4dc	32	32	0	
+??_7CTCActionUseSign@@6B@	0123f1ac	32	32	0	
+??_7CTCActionUseStartExtrapolationMorph@@6B@	0123f6fc	32	32	0	
+??_7CTCActionUseSwitch@@6B@	0123ff7c	32	32	0	
+??_7CTCActionUseTorch@@6B@	0123f124	32	32	0	
+??_7CTCActionUseWallMount@@6B@	012405ac	32	32	0	
+??_7CTCActionUseWindow@@6B@	0123f5ec	32	32	0	
+??_7CTCActivationReceptorBase@@6B@	01271f7c	31	31	0	
+??_7CTCActivationReceptorChest@@6B@	01242084	31	31	0	
+??_7CTCActivationReceptorCreatureGenerator@@6B@	012413ec	31	31	0	
+??_7CTCActivationReceptorDoor@@6B@	0124146c	31	31	0	
+??_7CTCActivationReceptorRelay@@6B@	012414ec	31	31	0	
+??_7CTCActivationTrigger@@6B@	0123bbac	31	31	0	
+??_7CTCAmbientBird@@6B@	0123dc0c	28	28	0	
+??_7CTCAnimationComplex@@6B@	012650a4	32	32	0	
+??_7CTCBase@@6B@	0125be0c	29	28	1	OVERCOUNT?
+??_7CTCBetting@@6B@	01270624	29	29	0	
+??_7CTCBoastUI@@6B@	0124dcfc	28	28	0	
+??_7CTCBoastingCrowdControl@@6B@	0126b3ac	28	28	0	
+??_7CTCBoastingPosition@@6B@	0126b24c	28	28	0	
+??_7CTCBob@@6B@	0126b76c	28	28	0	interior_nonfunc
+??_7CTCCameraCollision@@6B@	01270394	28	28	0	
+??_7CTCCameraPointBuilding@@6B@	0123ecbc	36	36	0	
+??_7CTCCameraPointDead@@6B@	0123b23c	36	36	0	
+??_7CTCCameraPointDefinitionBase@@6B@	01269b04	36	36	0	
+??_7CTCCameraPointFixedDolly@@6B@	0123b03c	36	36	0	
+??_7CTCCameraPointFixedPoint@@6B@	0123af8c	36	36	0	
+??_7CTCCameraPointGeneralCase@@6B@	0123b194	36	36	0	
+??_7CTCCameraPointScripted@@6B@	01269c84	36	36	0	
+??_7CTCCameraPointScriptedSpline@@6B@	0126a0bc	36	36	0	
+??_7CTCCameraPointShapeActivationBase@@6B@	0123aedc	36	36	0	
+??_7CTCCameraPointTrack@@6B@	0123b0e4	36	36	0	
+??_7CTCCarriedActionUseAbility@@6B@	01240b1c	33	33	0	
+??_7CTCCarriedActionUseActivateQuest@@6B@	0124036c	33	33	0	
+??_7CTCCarriedActionUseBase@@6B@	0123f894	33	33	0	
+??_7CTCCarriedActionUseDrop@@6B@	0123f9a4	33	33	0	
+??_7CTCCarriedActionUseDropGenericBox@@6B@	0123fa2c	33	33	0	
+??_7CTCCarriedActionUseExpression@@6B@	0124026c	33	33	0	
+??_7CTCCarriedActionUseFish@@6B@	0123fd5c	33	33	0	
+??_7CTCCarriedActionUseFishingRod@@6B@	01240634	33	33	0	
+??_7CTCCarriedActionUseFood@@6B@	0123fcd4	33	33	0	interior_nonfunc
+??_7CTCCarriedActionUseGive@@6B@	0123fab4	33	33	0	
+??_7CTCCarriedActionUseGiveBeer@@6B@	0123fb3c	33	33	0	
+??_7CTCCarriedActionUseGoldBag@@6B@	0123fbc4	33	33	0	
+??_7CTCCarriedActionUseLamp@@6B@	0123f91c	33	33	0	
+??_7CTCCarriedActionUsePotion@@6B@	0123fde4	33	33	0	
+??_7CTCCarriedActionUseRead@@6B@	01240834	33	33	0	
+??_7CTCCarriedActionUseShow@@6B@	0123fc4c	33	33	0	
+??_7CTCCarriedActionUseSpade@@6B@	012406bc	33	33	0	
+??_7CTCCarriedActionUseTrophy@@6B@	0123fef4	33	33	0	
+??_7CTCCarriedActionUseWallMount@@6B@	0123fe6c	33	33	0	
+??_7CTCChest@@6B@	0126957c	28	28	0	
+??_7CTCClock@@6B@	01267044	28	28	0	
+??_7CTCCombatLeader@@6B@	0123c5ac	28	28	0	
+??_7CTCContainerRewardHero@@6B@	01269424	28	28	0	
+??_7CTCCreatedEntity@@6B@	0123ead4	28	28	0	
+??_7CTCCreatureGroup@@6B@	0124326c	32	32	0	
+??_7CTCCreatureGroupBoastingCrowd@@6B@	0126b5dc	32	32	0	
+??_7CTCCreatureGroupTag@@6B@	012432f4	32	32	0	
+??_7CTCCreatureHitNotification@@6B@	012436cc	28	28	0	
+??_7CTCCreatureHive@@6B@	0123bdcc	28	28	0	
+??_7CTCCreatureItemLevitationBase@@6B@	0124156c	32	32	0	
+??_7CTCCreatureItemLevitationHero@@6B@	0124167c	32	32	0	
+??_7CTCCreatureItemLevitationNymph@@6B@	012415f4	32	32	0	
+??_7CTCCupboard@@6B@	0123ab9c	28	28	0	
+??_7CTCDCameraPoint@@6B@	0123ec3c	30	30	0	
+??_7CTCDExperienceOrb@@6B@	0126abfc	30	30	0	
+??_7CTCDExplosion@@6B@	01242a54	30	30	0	
+??_7CTCDExplosiveTrail@@6B@	01242b4c	30	30	0	
+??_7CTCDHeroSuit@@6B@	01242004	30	30	0	
+??_7CTCDInternalMarker@@6B@	0123b9e4	30	30	0	
+??_7CTCDNavigationSeed@@6B@	0123b944	30	30	0	
+??_7CTCDNone@@6B@	0123b504	30	30	0	
+??_7CTCDParticleEmitter@@6B@	0125feec	30	30	0	
+??_7CTCDPhysicalObstruction@@6B@	01241c0c	30	30	0	
+??_7CTCDRegionEntrance@@6B@	0123ba74	30	30	0	
+??_7CTCDRegionExit@@6B@	0126ab54	30	30	0	
+??_7CTCDRumble@@6B@	012408bc	30	30	0	
+??_7CTCDayOrNightOnlySupport@@6B@	01264d3c	28	28	0	
+??_7CTCDegradableBarrier@@6B@	0126a6a4	31	31	0	
+??_7CTCDegradableBase@@6B@	01287f2c	31	31	0	
+??_7CTCDriverBase@@6B@	0126a79c	30	30	0	
+??_7CTCDrunkenness@@6B@	0126deb4	28	28	0	
+??_7CTCEmoteIcon@@6B@	01265abc	28	28	0	
+??_7CTCExclusiveUse@@6B@	0123ea5c	28	28	0	
+??_7CTCExplodingObject@@6B@	01269674	28	28	0	
+??_7CTCExpression@@6B@	012401f4	28	28	0	
+??_7CTCFadeOutAndIn@@6B@	0125da0c	28	28	0	
+??_7CTCFineDialogue@@6B@	01270274	28	28	0	
+??_7CTCFireRangedWeaponOnLeavingStateGroup@@6B@	0123e464	29	29	0	
+??_7CTCFireballSpell@@6B@	0126e964	28	28	0	
+??_7CTCFish@@6B@	0126fd2c	28	28	0	
+??_7CTCForcePushed@@6B@	0126c09c	28	28	0	
+??_7CTCGatherPointBase@@6B@	012421e4	31	29	2	OVERCOUNT? interior_nonfunc
+??_7CTCGatherPointBuilding@@6B@	01242264	31	30	1	OVERCOUNT? interior_nonfunc
+??_7CTCGatherPointRadialArea@@6B@	012422e4	31	31	0	interior_nonfunc
+??_7CTCGeneratedCreature@@6B@	0123ebc4	28	28	0	
+??_7CTCGhostSword@@6B@	0126e494	28	28	0	
+??_7CTCGold@@6B@	0126ed04	28	28	0	
+??_7CTCGraphicAppearance@NGraphicAppearance@@6B@	0123986c	28	28	0	
+??_7CTCHasName@@6B@	01240aa4	28	28	0	
+??_7CTCHealLife@@6B@	0126e36c	28	28	0	
+??_7CTCHeroAttachableAppearanceModifiers@@6BCAGraphicAppearanceComponent@NGraphicAppearance@@@	01264ef4	5	5	0	interior_nonfunc
+??_7CTCHeroMorph@@6B@	01265cf4	30	30	0	interior_nonfunc
+??_7CTCHeroOnlineScoreboard@@6B@	0124db34	28	28	0	
+??_7CTCHeroReceiveItems@@6B@	0126ebfc	28	28	0	
+??_7CTCHitOnCollision@@6B@	0126e7a4	28	28	0	
+??_7CTCInGameMenu@@6B@	01236804	28	28	0	
+??_7CTCInterestingToVillagers@@6B@	012402f4	28	28	0	
+??_7CTCInventory@@6BCBase@NHeroInformationScreens@@@	01250dd0	4	4	0	
+??_7CTCInventory@@6BCTCInventoryBase@NInventory@@@	01250de4	88	88	0	interior_nonfunc
+??_7CTCInventoryAbilities@@6BCBase@NHeroInformationScreens@@@	01256ac0	4	4	0	
+??_7CTCInventoryAbilities@@6BCTCInventoryBase@NInventory@@@	01256ad4	86	86	0	interior_nonfunc
+??_7CTCInventoryBase@NInventory@@6B@	01253dbc	86	86	0	interior_nonfunc
+??_7CTCInventoryClothing@@6BCBase@NHeroInformationScreens@@@	01243558	4	4	0	
+??_7CTCInventoryClothing@@6BCInventoryListenerBase@@@	01243558	4	4	0	
+??_7CTCInventoryClothing@@6BCTCInventoryBase@@@	0124356c	87	87	0	interior_nonfunc
+??_7CTCInventoryClothing@@6BCTCInventoryBase@NInventory@@@	0124356c	87	87	0	interior_nonfunc
+??_7CTCInventoryExperience@@6BCBase@NHeroInformationScreens@@@	0124f108	4	4	0	
+??_7CTCInventoryExperience@@6BCTCInventoryBase@@@	0124f11c	91	91	0	interior_nonfunc
+??_7CTCInventoryExperience@@6BCTCInventoryBase@NInventory@@@	0124f11c	91	91	0	interior_nonfunc
+??_7CTCInventoryItem@@6B@	01240004	28	28	0	
+??_7CTCInventoryMap@@6BCBase@NHeroInformationScreens@@@	01257a84	4	4	0	
+??_7CTCInventoryMap@@6BCInventoryMapListener@@@	01257a84	4	4	0	
+??_7CTCInventoryMap@@6BCTCInventoryBase@@@	01257a9c	86	86	0	interior_nonfunc
+??_7CTCInventoryMap@@6BCTCInventoryBase@NInventory@@@	01257a9c	86	86	0	interior_nonfunc
+??_7CTCInventoryQuests@@6BCBase@NHeroInformationScreens@@@	012585a0	4	4	0	
+??_7CTCInventoryQuests@@6BCTCInventoryBase@NInventory@@@	012585b4	88	88	0	interior_nonfunc
+??_7CTCInventoryStats@@6BCTCInventoryBase@@@	01254adc	90	90	0	interior_nonfunc
+??_7CTCInventoryStats@@6BCTCInventoryBase_Retail@@@	01254adc	90	90	0	interior_nonfunc
+??_7CTCInventoryTrade@@6BCBase@NHeroInformationScreens@@@	0125301c	4	4	0	
+??_7CTCInventoryTrade@@6BCTCInventoryBase@NInventory@@@	01253034	88	88	0	interior_nonfunc
+??_7CTCInventoryWeapons@@6BCBase@NHeroInformationScreens@@@	01253fe0	4	4	0	
+??_7CTCInventoryWeapons@@6BCTCInventoryBase@NInventory@@@	01253ff4	88	88	0	interior_nonfunc
+??_7CTCLifeTimer@@6B@	012706a4	28	28	0	
+??_7CTCLight@@6BCAGraphicAppearanceComponent@NGraphicAppearance@@@	0125a208	5	5	0	
+??_7CTCLook@@6BCAGraphicAppearanceComponent@NGraphicAppearance@@@	012697b8	5	5	0	interior_nonfunc
+??_7CTCLook@@6BCTCBase@@@	01269744	28	28	0	
+??_7CTCMeleeTrap@@6B@	0126b884	32	32	0	
+??_7CTCNamedUserActionPoints@@6B@	01241f24	29	29	0	interior_nonfunc
+??_7CTCObjectAugmentations@@6B@	0126a3a4	31	28	3	OVERCOUNT? interior_nonfunc
+??_7CTCObstacle@@6B@	0123e28c	28	28	0	
+??_7CTCOpinionSource@@6B@	0126a81c	28	28	0	
+??_7CTCOracleMinigame@@6B@	012707b4	28	28	0	
+??_7CTCPhysicalShieldSpell@@6B@	0126c53c	29	29	0	
+??_7CTCPhysicsBase@@6B@	0125d2c4	97	97	0	
+??_7CTCPhysicsControlled@@6B@	0126616c	99	99	0	interior_nonfunc
+??_7CTCPhysicsLight@@6B@	01265dfc	97	97	0	
+??_7CTCPhysicsNavigator@@6B@	01266314	99	99	0	interior_nonfunc
+??_7CTCPhysicsRigidBody@@6B@	0126996c	98	98	0	
+??_7CTCPhysicsStandard@@6B@	01265f84	99	99	0	interior_nonfunc
+??_7CTCPlot@@6B@	012409b4	28	28	0	
+??_7CTCProjectileTrap@@6B@	0126b90c	32	32	0	interior_nonfunc
+??_7CTCQuestCompletionUI@@6B@	0125589c	28	28	0	
+??_7CTCQuickAccessMenu@@6B@	01258b74	28	28	0	
+??_7CTCRandomAppearanceMorph@@6BCAGraphicAppearanceComponent@NGraphicAppearance@@@	01266520	5	5	0	
+??_7CTCRandomAppearanceMorph@@6BCTCAppearanceMorphBase@@@	0126653c	30	30	0	
+??_7CTCRandomAppearanceMorph@@6BCTCBase@@@	0126653c	30	30	0	
+??_7CTCResurrectionItem@@6B@	01240744	28	28	0	
+??_7CTCSearchableContainer@@6B@	012431f4	28	28	0	
+??_7CTCShapeManager@@6B@	0126a2a4	29	29	0	
+??_7CTCShotDefinitionBase@NThingShot@@6B@	0126e1a4	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionDragonFireball@@6B@	0123d0cc	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionDrainLife@NThingShot@@6B@	012403f4	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionFireballSpell@@6B@	01241064	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionFireballSpell@NThingShot@@6B@	01241064	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionForcePushBall@NThingShot@@6B@	01240fac	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionMultiArrow@NThingShot@@6B@	0126df34	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionNymphFun@NThingShot@@6B@	01240e3c	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionProjectile@NThingShot@@6B@	01240ccc	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionProjectilePredictive@@6B@	01240ef4	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionQueenHornetShot@@6B@	0126dfec	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionSpreadShotProjectile@@6B@	01240d84	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionTearInGround@@6B@	0123cf9c	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionThrow@@6B@	0123cdc4	44	44	0	interior_nonfunc
+??_7CTCShotDefinitionThrowPredictive@@6B@	0123ce9c	44	44	0	interior_nonfunc
+??_7CTCSimpleAppearanceMorph@@6B@	012664a4	30	30	0	
+??_7CTCSinglePersonOccupiable@@6B@	0123ed54	28	28	0	
+??_7CTCSingleUserActionPoints@@6B@	01241eac	29	29	0	interior_nonfunc
+??_7CTCSmashableBarrier@@6B@	0124017c	29	29	0	
+??_7CTCSmashableBase@@6B@	0127185c	29	29	0	
+??_7CTCSmashableWindow@@6B@	01240ba4	29	29	0	
+??_7CTCSmokeGenerator@@6B@	01265d74	29	29	0	
+??_7CTCSolidToThing@@6B@	0126a62c	28	28	0	
+??_7CTCSoundAtmosphere@@6B@	01271dfc	29	29	0	
+??_7CTCSoundAtmosphereVillage@@6B@	0124111c	29	29	0	
+??_7CTCSoundPlayer@@6B@	0125b1c4	29	28	1	OVERCOUNT?
+??_7CTCSpecialAbilities@@6B@	0126683c	28	28	0	
+??_7CTCSpotLight@@6BCAGraphicAppearanceComponent@NGraphicAppearance@@@	01266fa4	5	5	0	
+??_7CTCSpotLight@@6BCTCBase@@@	01266fbc	29	29	0	
+??_7CTCStealth@@6B@	012689ec	28	28	0	
+??_7CTCSwitchableNavigation@@6B@	0123c02c	28	28	0	
+??_7CTCTargetingAI@@6B@	012411fc	40	40	0	interior_nonfunc
+??_7CTCTargetingBase@@6B@	01271e74	40	40	0	interior_nonfunc
+??_7CTCTargetingPlayer@@6B@	0124280c	40	40	0	interior_nonfunc
+??_7CTCTargetingSpirit@@6B@	012419a4	40	40	0	interior_nonfunc
+??_7CTCTavernGame@@6B@	012560bc	51	51	0	
+??_7CTCTavernGameCardBase@@6B@	01288294	62	61	1	OVERCOUNT? interior_nonfunc
+??_7CTCTavernGameCardBlackjack@@6B@	0126f8f4	62	62	0	
+??_7CTCTavernGameCardPairs@@6B@	0126f6fc	62	61	1	OVERCOUNT? interior_nonfunc
+??_7CTCTavernGameCardSorting@@6B@	0126f5b4	62	61	1	OVERCOUNT? interior_nonfunc
+??_7CTCTavernGameCoinGolf@@6B@	0126f49c	51	51	0	interior_nonfunc
+??_7CTCTavernGameMaster@@6B@	0123d664	28	28	0	
+??_7CTCTavernGameShoveHaPenny@@6B@	0126f2f4	51	51	0	interior_nonfunc
+??_7CTCTavernGameSpotTheAddition@@6B@	0126f814	51	51	0	
+??_7CTCTavernTankard@@6B@	0123edcc	28	28	0	
+??_7CTCTeleporter@@6B@	0126fda4	28	28	0	
+??_7CTCTrapBase@@6B@	0126b7fc	32	32	0	interior_nonfunc
+??_7CTCTrespasser@@6B@	0126de14	29	29	0	interior_nonfunc
+??_7CTCTrophy@@6B@	0125fc54	28	28	0	
+??_7CTCTurncoat@@6B@	0126e6f4	28	28	0	
+??_7CTCUserActionPointBase@@6B@	0127216c	29	29	0	
+??_7CTCVolumeContainmentTrackerDef@@6B@	0123e0c4	25	25	0	
+??_7CTCWeapon@@6B@	012554fc	28	28	0	
+??_7CTCWeaponTrail@@6B@	0126a5b4	28	28	0	
+??_7CTable@NUISystem@@6BCComponentInterface@1@@	0124a224	145	145	0	interior_nonfunc
+??_7CTable@NUISystem@@6BCObserver_Retail@1@@	0124a1fc	8	8	0	
+??_7CTable@NUISystem@@6BCUIInterface@1@@	0124a224	145	145	0	interior_nonfunc
+??_7CTargetingDef@@6B@	01232d84	25	25	0	
+??_7CTattooDef@@6B@	012323b4	25	25	0	
+??_7CTavernDef@@6B@	0123ca8c	25	25	0	
+??_7CTavernGameCardBaseDef@@6B@	0124258c	25	25	0	
+??_7CTavernGameCoinBaseDef@@6B@	0123d44c	25	25	0	
+??_7CTavernGameCoinGolfDef@@6B@	0123d4d4	25	25	0	
+??_7CTavernGameDef@@6B@	012424bc	25	25	0	
+??_7CTavernGameShoveHaPennyDef@@6B@	01242524	25	25	0	
+??_7CTavernGameSpotTheAdditionDef@@6B@	01241a4c	25	25	0	
+??_7CTavernTableDef@@6B@	0123c964	25	25	0	
+??_7CTeleporterDef@@6B@	0123d834	25	25	0	
+??_7CText@NUISystem@@6BCComponentInterface@1@@	01249ccc	151	151	0	interior_nonfunc
+??_7CText@NUISystem@@6BCDrawableInterface@1@@	01249ca4	8	8	0	
+??_7CTextContainer@NUISystem@@6BCComponentInterface@1@@	01248064	142	142	0	interior_nonfunc
+??_7CTextContainer@NUISystem@@6BCObserver_Retail@1@@	0124803c	8	8	0	
+??_7CTextEntry@NGameText@@6B@	0129b4a4	10	10	0	
+??_7CTextSlider@NUISystem@@6BCComponentInterface@1@@	01248a8c	144	144	0	interior_nonfunc
+??_7CTextSlider@NUISystem@@6BCDrawableInterface@1@@	01248a68	8	8	0	
+??_7CTextureRenderer@@6BCUnknown@@@	0129d08c	49	49	0	
+??_7CTextureReplacementDef@@6B@	01233074	25	25	0	
+??_7CThing@@6B@	01239abc	47	45	2	OVERCOUNT? interior_nonfunc
+??_7CThingAICreature@@6B@	0127293c	93	93	0	interior_nonfunc
+??_7CThingBuilding@@6B@	0124509c	71	71	0	interior_nonfunc
+??_7CThingBuildingDef@@6B@	01233144	25	25	0	
+??_7CThingCreatureBase@@6B@	0125ac0c	90	90	0	interior_nonfunc
+??_7CThingCreatureDef@@6B@	0125b2dc	25	25	0	interior_nonfunc
+??_7CThingDeadCreature@@6B@	01272b04	71	71	0	interior_nonfunc
+??_7CThingDrainLifeShotDef@@6B@	0123cca4	25	25	0	
+??_7CThingGameObject@@6B@	01244f7c	71	71	0	interior_nonfunc
+??_7CThingHolySite@@6B@	012452dc	71	71	0	interior_nonfunc
+??_7CThingManager@@6B@	01245c44	4	4	0	
+??_7CThingMapManager@NThingMap@@6B@	01244678	6	1	5	OVERCOUNT?
+??_7CThingMarker@@6B@	01245524	71	71	0	interior_nonfunc
+??_7CThingMultiArrowShotDef@@6B@	01232bbc	25	25	0	
+??_7CThingNoise@@6B@	01272ee4	46	45	1	OVERCOUNT? interior_nonfunc
+??_7CThingObject@@6B@	01264dcc	71	71	0	interior_nonfunc
+??_7CThingPhysical@@6B@	01244e84	60	60	0	interior_nonfunc
+??_7CThingPhysicalSwitch@@6B@	01245644	71	71	0	interior_nonfunc
+??_7CThingPhysicalSwitchDef@@6B@	0123339c	25	25	0	
+??_7CThingPlayerCreature@@6B@	012457fc	93	93	0	interior_nonfunc
+??_7CThingSoundEmitter@@6B@	01272c24	46	45	1	OVERCOUNT? interior_nonfunc
+??_7CThingSwitch@@6B@	012453fc	72	72	0	interior_nonfunc
+??_7CThingSwitchDef@@6B@	012332cc	25	25	0	
+??_7CThingTrackNode@@6B@	01272ce4	71	71	0	interior_nonfunc
+??_7CThingVillage@@6B@	012451bc	71	71	0	interior_nonfunc
+??_7CThreadedFileCallback@@6B@	0129b388	4	3	1	OVERCOUNT?
+??_7CThreadedFileRequest@@6B@	0129b860	4	4	0	
+??_7CTimeAppearanceFadeDef@@6B@	0123b7cc	25	25	0	
+??_7CTrack@@6B@	0126a288	6	6	0	
+??_7CTrack@NCameraModes@@6B@	0125c50c	31	31	0	interior_nonfunc
+??_7CTrack@NShape@@6B@	0126a288	6	6	0	
+??_7CTrapDef@@6B@	01243054	25	25	0	
+??_7CTrophyDef@@6B@	0123ac1c	25	25	0	
+??_7CTurncoatDef@@6B@	0124193c	25	25	0	
+??_7CUIIconsDef@NUISystem@@6B@	01230f54	25	25	0	
+??_7CUIInterface@@6B@	01246044	3	3	0	
+??_7CUIInterface@NUISystem@@6B@	01246044	3	3	0	
+??_7CUIStateDef@@6B@	0125871c	31	26	5	OVERCOUNT? interior_nonfunc
+??_7CVertexShaderConstantLayout@@6B@	0129a06c	2	2	0	
+??_7CVertexShaderConstructorView@@6B@	0129b3d0	3	3	0	
+??_7CVertexShaderNativeView@@6B@	0129b3d0	3	3	0	
+??_7CVertexShader_Retail@@6B@	0129b3d0	3	3	0	
+??_7CView3DBase@NDisplayView@@6B@	0125c7e0	5	5	0	
+??_7CView3DThirdPerson@NDisplayView@@6B@	0125c7f8	5	5	0	
+??_7CViewport@NUISystem@@6BCComponentRoot@1@@	01249a5c	143	143	0	interior_nonfunc
+??_7CViewport@NUISystem@@6BIComponentA@1@@	01249a38	8	8	0	
+??_7CVillageDef@@6B@	01241ddc	25	25	0	
+??_7CVillageMemberDef@@6B@	0123e854	25	25	0	
+??_7CVillagePeopleDef@@6B@	01232c4c	25	25	0	
+??_7CVillageTaskCarryCrate@@6B@	0125a950	9	9	0	
+??_7CVillageTaskPatrol@@6B@	0125a900	9	9	0	
+??_7CVillageTaskPickCrops@@6B@	0125a928	9	9	0	
+??_7CVillageTaskTorch@@6B@	0125a8ac	10	10	0	
+??_7CWADBank@@6B@	012442dc	20	20	0	
+??_7CWADFile@@6B@	0129cf8c	16	16	0	
+??_7CWallMountEffectsDef@@6B@	0123d74c	25	25	0	
+??_7CWeaponDef@@6B@	0124291c	25	25	0	
+??_7CWifeDef@@6B@	0123a69c	25	25	0	
+??_7CWillResponseDef@@6B@	0123e324	25	25	0	
+??_7CWorld@@6BCBaseClassNonCopyable@@@	012390f0	14	14	0	interior_nonfunc
+??_7CWorldMap@@6BCBaseClassNonCopyable@@@	01244aec	31	31	0	
+??_7CWorldMap@@6BCIDrawWorldMap@@@	01244ab4	12	12	0	
+??_7CWorldMap@@6BCWorldMapBase2@@@	01244ab4	12	12	0	
+??_7CWorldMapBase2@@6B@	01244284	12	12	0	
+??_7CYesNo@NUISystem@@6BCComponentBase2_Retail@1@@	0122f85c	8	8	0	
+??_7CYesNo@NUISystem@@6BCComponentRoot_Retail@1@@	0122f884	144	144	0	interior_nonfunc
+??_7CZTargetNew@NCameraModes@@6B@	0127754c	25	25	0	
+??_7CZoomingComponent@NUISystem@@6BCComponentInterface@1@@	01247dc4	147	147	0	interior_nonfunc
+??_7CZoomingComponent@NUISystem@@6BCObserver_Retail@1@@	01247da0	8	8	0	
+??_7CZoomingComponent@NUISystem@@6BCUIInterface@1@@	01247dc4	147	147	0	interior_nonfunc
+??_7Element@N009efa50@@6B@	0129c3e4	6	6	0	
+??_7ICustomProcessInterface@@6B@	01278000	4	4	0	
+??_7MicroThreadInfo@@6B@	0129b928	3	3	0	
+??_7T@@6B@	012354d0	2	2	0	

@@ -11,6 +11,8 @@ Files:
   - the libcp `.drectve` variants, the showIncludes chain, the guard overlay diff, the proof sample and the partial route scan.
 
 ## Q1: short COMDAT vftables
+> **Correction (NF467, 2026-11-26):** `retail_size` overshoots for at least 38 names, because the counter also took a following data dword that looks like a code address. The counts below that depend on retail size are therefore upper bounds; use counted function slots (`pending/2026-11-26_nf467_handback/evidence/vtaudit.tsv`).
+
 There are 26,143 `??_7` definitions in 11,703 row objects, covering 4,948 names. **Every one is selection 2 (pick any).**
 
 **Size problems:**
