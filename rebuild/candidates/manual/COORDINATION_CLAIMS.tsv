@@ -628,3 +628,4 @@ date	account	item	kind	status	note
 2026-11-26	B	0x00AF2200	author	done	landed RELOCATION_MATCH PASS: vector<CParticleEmitterInfo>::resize(unsigned int)
 2026-11-26	B	0x0085ED90	author	done	landed RELOCATION_MATCH PASS: vector<vector<CThingMapCell>>::resize(unsigned int)
 2026-11-26	B	0x00500540, 0x00590F0B, 0x00D21B40	author	claimed	largest available parked rows: LoadRegion 2412 B, GetItemsListUIComponentPC 2907 B, CBanditSiegeLeader::Main 2965 B
+2026-11-26	B	0x00E2E400	author	claimed	NScript::CV_AmbushScamScript::ResetRandomSpeechTime; PDB leaf in Ego_r and FableWin; retail extent 57
