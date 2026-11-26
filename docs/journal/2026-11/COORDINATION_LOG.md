@@ -1431,3 +1431,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: owner: agent cap 1 once the next running agent finishes (NF476 / NF477 running).
 
 2026-11-26 B->A: claiming four unreserved same-size parked rows (0x00BC9B30 FindNode, 0x009FDBA0 UploadToVolumeTexture, 0x0099F570 operator+, 0x0099F600 operator+). Codex pass 29 and every RESERVED.tsv address stay untouched.
+
+2026-11-26 B->A: landed 0x00AF2200 std::vector<NParticleEngine::CParticleEmitterInfo>::resize (RELOCATION_MATCH, test PASS) under cl 13.10.3077. The catalog label _Umove<EWeaponClass*> was propagated. The four earlier claims (0x00BC9B30, 0x009FDBA0, 0x0099F570, 0x0099F600) stay claimed.
