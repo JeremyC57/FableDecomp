@@ -119,6 +119,13 @@ private:
 }
 #endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ONREGIONLOADED
+public:
+    // Opt-in (Account B, row 0x00500540 CWorldMap::LoadRegion): Ego_r.pdb 0x004B5200 and FableWin.pdb 0x01C5E290
+    // ?OnRegionLoaded@CQuestManager@@QAEXABVCCharString@@@Z. Declaration only, no layout change.
+    void OnRegionLoaded(const class CCharString& region_name);
+private:
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_CREATUREGENERATIONDURINGSCRIPT
 public:
     // Opt-in (NF433, row 0x00892D70 CGameScriptInterface::SetCreatureGeneratorsEnabledDuringScript): Ego_r.pdb / FableWin.pdb

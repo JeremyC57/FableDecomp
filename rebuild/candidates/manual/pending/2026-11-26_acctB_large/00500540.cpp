@@ -4,6 +4,8 @@
 // Next idea: the Codex pass-13 shape families (scoped loader phase, explicit break / goto / while wait loop, back() reference, helper bodies) are all spent; next try a by-pointer CLevelFiles* or an iterator into level_files after push_back so the end pointer escapes, and the STLport vector::back() spelled as *(end() - 1) through a by-value iterator
 // Chunk 1013b: not worked (no grade); prior unchanged.
 // Leaf: ?LoadRegion@CWorldMap@@QAEXJW4ELoadType@1@_N@Z
+#define FABLE_RETAIL_CENVIRONMENT_SETREGIONTHEME
+#define FABLE_RETAIL_CQUESTMANAGER_ONREGIONLOADED
 #define FABLE_RETAIL_CAFILE_MODIFIEDTIME_WACKY
 #define FABLE_RETAIL_CWORLDMAP_LOADLEVEL
 #define FABLE_RETAIL_CVECTORMAP_ORDINARY_LOWERBOUND

@@ -109,6 +109,13 @@ public:
     // push four arguments, the last a float weight). Declaration only.
     void SetThemeWeight(long channel, long priority, long theme, float weight);   // 0x006B3600
 #endif
+#ifdef FABLE_RETAIL_CENVIRONMENT_SETREGIONTHEME
+    // Opt-in (Account B, row 0x00500540 CWorldMap::LoadRegion): FableWin.pdb 0x01C87BD0
+    // ?SetRegionTheme@CEnvironment@@QAEXJ@Z and 0x01C87C10 ?SetTheme@CEnvironment@@QAEXJJJ@Z.
+    // Declaration only. Ego_r.pdb does not have these two spellings.
+    void SetRegionTheme(long theme);
+    void SetTheme(long channel, long priority, long theme);
+#endif
 #ifdef FABLE_RETAIL_CENVIRONMENT_SETWEIGHTEDTHEMES
     // Retail opt-in (chunk 1021): Ego_r.pdb / FableWin.pdb ?SetWeightedThemes@CEnvironment@@QAEXJJPAJPAMJ@Z (Ego_r 0x006EFD20, FableWin
     // 0x02451D40), out of line in retail at 0x006B3E60 (`ret 14h`; caller CWorld::UpdateEnvironmentCameraPos 0x0049E57F).
