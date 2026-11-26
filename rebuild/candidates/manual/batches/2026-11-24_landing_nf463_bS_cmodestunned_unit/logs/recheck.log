@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00740160   WARN SHARED_HEADER_AVAILABLE CCRC (engine/CCRC.h)
+00740160   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+00740160   WARN RELOC_NAME: ??0CModeBase_00861e00@@QAE@PAVCThing@@@Z -> 00861e00 labelled 'CModeStandBase::CModeStandBase'
+00740160   RELOCATION_MATCH PASS   CModeStunned
+007427f0   RELOCATION_MATCH PASS   Alloc
+008ed950   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+008ed950   RELOCATION_MATCH PASS   Initialise
+
+WINS: 3
+  00740160 RELOCATION_MATCH NCreatureMode::CModeStunned::??0CModeStunned@NCreatureMode@@QAE@AAVCThing@@@Z
+  007427f0 RELOCATION_MATCH NCreatureMode::CModeStunned::?Alloc@CModeStunned@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z
+  008ed950 RELOCATION_MATCH CCombatAction_FallStunned::Initialise

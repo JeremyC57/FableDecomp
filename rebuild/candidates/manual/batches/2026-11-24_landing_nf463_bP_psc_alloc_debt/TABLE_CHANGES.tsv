@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	??0CPSCRenderMesh@@QAE@XZ -> ??0CPSCRenderMesh@NParticleEngine@@QAE@XZ	00b012e0	00af7d80	NF463 (particle factory debt after NF462 bB2): the landed factory 0x00AF7D80 tail-jumps to the constructor 0x00B012E0 (its only retail reference), respelt in this batch onto the PDB spelling (Ego_r + FableWin) that the self row 0x00B012E0 already defines
+replace	??0CPSCDecalRenderer@@QAE@XZ -> ??0CPSCDecalRenderer@NParticleEngine@@QAE@XZ	00b1dfd0	00af8100	NF463 (particle factory debt after NF462 bB2): the landed factory 0x00AF8100 tail-jumps to the constructor 0x00B1DFD0 (its only retail reference), respelt in this batch onto the PDB spelling (Ego_r 0x00ADE5E0 + FableWin 0x02F55400) that the self row 0x00B1DFD0 already defines

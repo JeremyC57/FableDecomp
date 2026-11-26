@@ -1,0 +1,7 @@
+equiv_check $S/nf463_equiv old vs new (CPSCDecalRenderer.h CSalRenderDisable.h CSalRenderPan.h): 57,160 rows checked; differing (all batch rows, 0 outside):
+00af8100
+00b1ff80
+00c6da40
+00c6dad0
+00c6e790
+00c6e820

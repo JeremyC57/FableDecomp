@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00af7d80   RELOCATION_MATCH PASS   Alloc
+00af8100   RELOCATION_MATCH PASS   Alloc
+00b1ff80   RELOCATION_MATCH PASS   DatabaseClone
+
+WINS: 3
+  00af7d80 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?Alloc@CPSCRenderMesh@NParticleEngine@@SIPAVCPSCBase@2@XZ
+  00af8100 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?Alloc@CPSCDecalRenderer@NParticleEngine@@SIPAVCPSCBase@2@XZ
+  00b1ff80 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@UBEPAVCPSCBase@2@XZ

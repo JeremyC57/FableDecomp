@@ -47539,8 +47539,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6d630	Process	CSalRenderPanDelaySSE2	unknown	undefined	0		0	yes	accepted									
 00c6d9d0	CSalRenderPan	CSalRenderPan	__thiscall	undefined	1	CResourceBank *	0	yes	accepted									
 00c6da30	~CSalRenderPan	CSalRenderPan	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
-00c6da40	MixGainRampUp	_global	unknown	undefined	0		0	yes	accepted									
-00c6dad0	MixGainRampDown	_global	unknown	undefined	0		0	yes	accepted									
+00c6da40	MixFadeIn	CSalRenderPan	unknown	undefined	0		0	yes	accepted									
+00c6dad0	MixFadeOut	CSalRenderPan	unknown	undefined	0		0	yes	accepted									
 00c6dba0	Process	CVtable_012bed90	unknown	undefined	0		0			discovered	gapscan							
 00c6de60	Params3DInit	CSalRenderPan	unknown	undefined	0		0	yes	accepted									
 00c6dea0	UpdateFilters	CSalRenderPan	unknown	undefined	0		0	yes	accepted									
@@ -47557,8 +47557,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6e6d0	`scalar deleting destructor'	CSalRender	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e6d0.cpp
 00c6e760	CSalRenderDisable	CSalRenderDisable	unknown	undefined	0		0	yes	accepted									
 00c6e780	~CSalRenderDisable	CSalRenderDisable	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
-00c6e790	DSP_AccumulateModulatedWaveform	_global	unknown	undefined	0		0	yes	accepted									
-00c6e820	DSP_AccumulateUnsignedModulatedWaveform	_global	unknown	undefined	0		0	yes	accepted									
+00c6e790	MixFadeIn	CSalRenderDisable	unknown	undefined	0		0	yes	accepted									
+00c6e820	MixFadeOut	CSalRenderDisable	unknown	undefined	0		0	yes	accepted									
 00c6e8f0	Process	CVtable_012bedb8	unknown	undefined	0		0			discovered	gapscan							
 00c6eba0	Params3DInit	CSalRenderDisable	unknown	undefined	0		0	yes	accepted									
 00c6ebe0	UpdateFilters	CSalRenderDisable	unknown	undefined	0		0	yes	accepted									

@@ -9892,7 +9892,7 @@ address	symbol	status	leaf_given
 00740010	?CModeSitFloor_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007400e0	?CModeSitBench_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00740140	?CModeBlock_scalar_deleting_destructor@@YIPAXPAUCModeBlock@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00740160	??0CModeStunned@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	CModeStunned
+00740160	??0CModeStunned@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	CModeStunned
 00740220	?CModeStunned_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00740250	??0CModeDazed@NCreatureMode@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	CModeDazed
 00740310	?CModeDazed_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -9972,7 +9972,7 @@ address	symbol	status	leaf_given
 00742590	?CModeCheering_Alloc@@YIPAUCModeCheering@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 00742630	?CModeCook_Alloc@@YIPAUCModeCook@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
 007426b0	?CModeUnderwater_Alloc@@YIPAUCModeUnderwater@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
-007427f0	?CModeStunned_Alloc@@YIPAUCModeStunned@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
+007427f0	?Alloc@CModeStunned@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
 007428e0	?Alloc@CModeThunderLightningStorm@@QAEPAUundefined@@XZ	RELOCATION_MATCH	Alloc
 00742910	?CModeThunderLightningStorm_scalar_deleting_destructor@@YIPAXPAUCModeThunderLightningStorm@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00742930	??1CModeThunderLightningStorm@NCreatureMode@@UAE@XZ	RELOCATION_MATCH	??1CModeThunderLightningStorm
@@ -20899,14 +20899,14 @@ address	symbol	status	leaf_given
 00af7ca0	?CDecal_Delete@@YIXPAUCDecal@@@Z	RELOCATION_MATCH	Delete
 00af7cc0	?ScalarDeletingDestructor@CParticleSystem@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00af7d10	?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
-00af7d80	?CPSCRenderMesh_Alloc@@YAPAUCPSCRenderMesh@@XZ	RELOCATION_MATCH	Alloc
+00af7d80	?Alloc@CPSCRenderMesh@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af7e60	?Alloc@CPSCUpdateNormal@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af7ed0	?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af7f40	?Alloc@CPSCOrbit@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af7fb0	?Alloc@CPSCAttractor@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af8020	?Alloc@CPSCLight@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af8090	?Alloc@CPSCSpline@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
-00af8100	?CPSCDecalRenderer_Alloc@@YAPAUCPSCDecalRenderer@@XZ	RELOCATION_MATCH	Alloc
+00af8100	?Alloc@CPSCDecalRenderer@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af8170	?RegisterPSCs@CPSCManager@NParticleEngine@@QAEXXZ	RELOCATION_MATCH	RegisterPSCs
 00af88a0	?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@AAEXXZ	RELOCATION_MATCH	CreateMoreBlocks
 00af88f0	?CreateMoreBlocks@?$CDynamicObjectHeap@$0JM@$0IDE@@@QAEXXZ	RELOCATION_MATCH	?CreateMoreBlocks@
@@ -21018,7 +21018,7 @@ address	symbol	status	leaf_given
 00b1fe80	??0CEnginePrimitiveParticleDecal@@QAE@JABVC3DVector@@ABVC2DVector@@ABVCRGBColour@@ABVCRightHandedSet@@@Z	MATCH	??0CEnginePrimitiveParticleDecal@
 00b1ff10	?GetClassTypeName@CPSCDecalRenderer@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCDecalRenderer@NParticleEngine@@UBE?AVCCharString@@XZ
 00b1ff50	?GetName_DecalRenderer@global_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetName_DecalRenderer
-00b1ff80	?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@QAEPAUIDrawableObj@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@
+00b1ff80	?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@
 00b1ffa0	?CPSCDecalRenderer_scalar_deleting_destructor@@YIPAXPAUCPSCDecalRenderer@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00b1ffc0	??1CPSCDecalRenderer@@UAE@XZ	RELOCATION_MATCH	??1CPSCDecalRenderer
 00b201d0	?GetInverseSystemTransformWithTranslate@CParticleSystem@NParticleEngine@@QAEXPAVCMatrix3x4@@@Z	RELOCATION_MATCH	GetInverseSystemTransformWithTranslate
@@ -28199,3 +28199,7 @@ address	symbol	status	leaf_given
 0057832d	??0CTCInventoryExperience@@QAE@AAVCThing@@@Z	RELOCATION_MATCH	??0CTCInventoryExperience@@QAE@AAVCThing@@@Z
 008bcea0	??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@@Z
 008dfef0	?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ	RELOCATION_MATCH	?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ
+00c6e790	?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	MATCH	?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z
+00c6e820	?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	MATCH	?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z
+00c6da40	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	MATCH	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z
+00c6dad0	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	MATCH	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z

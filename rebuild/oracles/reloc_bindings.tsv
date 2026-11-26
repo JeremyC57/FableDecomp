@@ -2476,7 +2476,7 @@ __CIfmod	00bfeb28	006f99b0
 ??0CModeCheering@@QAE@PAVCThing@@@Z	0073f310	00742590
 ??0CModeCook@@QAE@PAVCThing@@@Z	0073f720	00742630
 ??0CModeUnderwater@@QAE@PAVCThing@@@Z	0073fa60	007426b0
-??0CModeStunned@@QAE@PAVCThing@@@Z	00740160	007427f0
+??0CModeStunned@NCreatureMode@@QAE@AAVCThing@@@Z	00740160	007427f0
 ??0CModeThunderLightningStorm@@QAE@ABU0@@Z	00740640	007428e0
 ??0CModeKnockedDown@@QAE@PAVCThing@@@Z	00740820	00742a40
 ??0CModeBerserk@@QAE@PAVCThing@@@Z	007409c0	00742a80
@@ -4862,14 +4862,14 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?CDecal_Dtor@@YIXPAUCDecal@@@Z	00af7c10	00af7ca0
 ?CDecal_OpDelete@@YIXPAUCDecal@@@Z	00af8ad0	00af7ca0
 ??0CPSCRenderSprite@NParticleEngine@@QAE@XZ	00afb7c0	00af7d10
-??0CPSCRenderMesh@@QAE@XZ	00b012e0	00af7d80
+??0CPSCRenderMesh@NParticleEngine@@QAE@XZ	00b012e0	00af7d80
 ??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ	00b0c9c0	00af7e60
 ??0CPSCEmitterGeneric@NParticleEngine@@QAE@XZ	00b103f0	00af7ed0
 ??0CPSCOrbit@NParticleEngine@@QAE@XZ	00b16eb0	00af7f40
 ??0CPSCAttractor@NParticleEngine@@QAE@XZ	00b18020	00af7fb0
 ??0CPSCLight@NParticleEngine@@QAE@XZ	00b1a640	00af8020
 ??0CPSCSpline@NParticleEngine@@QAE@XZ	00b1b350	00af8090
-??0CPSCDecalRenderer@@QAE@XZ	00b1dfd0	00af8100
+??0CPSCDecalRenderer@NParticleEngine@@QAE@XZ	00b1dfd0	00af8100
 ??0CDynamicObjectHeapBase@@QAE@XZ	00f36c60	00af8b40
 ??_7CDynamicObjectHeap_116_529@@6B@	0129f650	00af8b40
 ??_7CParticleUpdateParamDesc@@6B@	0125fee4	00b0f310
@@ -35428,7 +35428,6 @@ __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?IncrementBossPhase@CTCBoss@@QAEXXZ	007aed20	008c7600
 ??0CModeSummonerSummon@@QAE@PAVCThing@@0@Z	008cc0b0	008cb060
 ??0CModeSummonerLightningOrb@@QAE@PAVCThing@@0@Z	008cc180	008cb1a0
-??0CModeDazed@@QAE@PAVCThing@@@Z	00740160	008ed950
 ??0CModeDragonRearUp@@QAE@PAVCThing@@M@Z	008d84f0	008f39a0
 ??0CModeDragonStrafeBurninate@@QAE@PAVCThing@@ABUCVectorC3DVector@@ABVC3DVector@@MM22@Z	008e1580	008f4320
 ??0CModeDragonStrafe@@QAE@PAVCThing@@MMMM@Z	008ddfb0	008f4480

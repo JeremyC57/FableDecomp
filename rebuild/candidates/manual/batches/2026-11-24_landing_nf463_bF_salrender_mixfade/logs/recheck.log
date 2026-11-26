@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00c6da40   WARN STANDIN_LEAF ?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z (catalog _global::MixGainRampUp; names another function)
+00c6da40   MATCH            PASS   MixGainRampUp
+00c6dad0   WARN STANDIN_LEAF ?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z (catalog _global::MixGainRampDown; names another function)
+00c6dad0   MATCH            PASS   MixGainRampDown
+00c6e790   WARN STANDIN_LEAF ?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z (catalog _global::MixGainRampUp; names another function)
+00c6e790   MATCH            PASS   MixGainRampUp
+00c6e820   WARN STANDIN_LEAF ?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z (catalog _global::MixGainRampDown; names another function)
+00c6e820   MATCH            PASS   MixGainRampDown
+
+WINS: 4
+  00c6da40 MATCH _global::?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z
+  00c6dad0 MATCH _global::?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z
+  00c6e790 MATCH _global::?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z
+  00c6e820 MATCH _global::?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z

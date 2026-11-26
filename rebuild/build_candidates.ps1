@@ -386941,14 +386941,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6e790'
-        Module = '_global'
+        Module = 'CSalRenderDisable'
         Source = '00/c6/global_MixGainRampUp_00c6e790.cpp'
         TestSource = '00/c6/global_MixGainRampUp_00c6e790_test.cpp'
         PassPattern = '00c6e790_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c6e820'
-        Module = '_global'
+        Module = 'CSalRenderDisable'
         Source = '00/c6/global_MixGainRampDown_00c6e820.cpp'
         TestSource = '00/c6/global_MixGainRampDown_00c6e820_test.cpp'
         PassPattern = '00c6e820_TEST PASS'
@@ -386983,14 +386983,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c6da40'
-        Module = '_global'
+        Module = 'CSalRenderPan'
         Source = '00/c6/global_MixGainRampUp_00c6da40.cpp'
         TestSource = '00/c6/global_MixGainRampUp_00c6da40_test.cpp'
         PassPattern = '00c6da40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c6dad0'
-        Module = '_global'
+        Module = 'CSalRenderPan'
         Source = '00/c6/global_MixGainRampDown_00c6dad0.cpp'
         TestSource = '00/c6/global_MixGainRampDown_00c6dad0_test.cpp'
         PassPattern = '00c6dad0_TEST PASS'

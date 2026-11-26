@@ -36,6 +36,13 @@ public:
 private:
  void Params3DInit(FilterPan* pFilter);                                   // 0x00C6EBA0
  void UpdateFilters(const bool bNew);                                     // 0x00C6EBE0
+#ifdef FABLE_RETAIL_CSALRENDERDISABLE_MIXFADE
+ // Opt-in (NF463, queue nf452): the SDK private static mixers MixFadeIn / MixFadeOut, GameCODA 2.10 CODAApi.lib Release/SalRenderDisable.obj
+ // (CodeView private static records; retail object order ctor 0x00C6E760, dtor 0x00C6E780, MixFadeIn 0x00C6E790, MixFadeOut 0x00C6E820, Mix 0x00C6E8B0, Process 0x00C6E8F0 = the SDK object order; instruction counts 53 / 54 with a
+ // plain ret, as retail 0x00C6E790 / 0x00C6E820). __cdecl static: the callers in Process pop with `add esp`. Declarations only: no layout change.
+ static void MixFadeIn(const short*,const FilterPan*,int*);                     // 0x00C6E790
+ static void MixFadeOut(const short*,const FilterPan*,int*);                    // 0x00C6E820
+#endif
 protected:
  ParamsDisable m_paramsA;             // +0x28
  ParamsDisable m_paramsB;             // +0x2C

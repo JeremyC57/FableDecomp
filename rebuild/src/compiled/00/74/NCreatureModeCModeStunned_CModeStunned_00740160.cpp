@@ -1,6 +1,16 @@
-// NCreatureMode::CModeStunned::CModeStunned(CThing*) -- out-of-action mode ctor: CModeOutOfActionBase (counter 0, flag set, empty attacker pointer) then the STUNNED CAnimFilterOfGroup at +0x78
+// NCreatureMode::CModeStunned::CModeStunned(CThing&) -- out-of-action mode ctor: CModeOutOfActionBase (counter 0, flag set, empty attacker pointer) then the STUNNED CAnimFilterOfGroup at +0x78
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00740160, 160 bytes (padding included).
-// Leaf: CModeStunned
+// Leaf: ??0CModeStunned@NCreatureMode@@QAE@AAVCThing@@@Z
+// Naming (NF463, queue nf455 identity line 0x00740160): the self takes the PDB parameter form, Ego_r.pdb + FableWin.pdb
+//   ??0CModeStunned@NCreatureMode@@QAE@AAVCThing@@@Z (was ...QAE@PAVCThing@@@Z; a reference and a pointer pass the same bytes), with its
+//   two retail callers in the same unit: the factory 0x007427F0 (now ?Alloc@CModeStunned@NCreatureMode@@...) and
+//   CCombatAction_FallStunned::Initialise 0x008ED950 (was the wrong-class token CModeDazed(CThing*)). The inline
+//   CModeOutOfActionBase ctor keeps its HEAD (CThing*) form: VC7.1 also emits it as a pick-any COMDAT (same as the landed CModeDazed row
+//   0x00740250's copy), and respelling it here would add a new copy under the PDB name ??0CModeOutOfActionBase@NCreatureMode@@QAE@AAVCThing@@@Z
+//   that no table line binds. Members carry their Ego_r.pdb names (RecoveryCount +0x68, Recoverable +0x6c, PEmitter +0x6d, Filter +0x78).
+//   Left as is (open): the base call to 0x00861E00 keeps the stand-in CModeBase_00861e00(CThing*) and the one-slot local vftables,
+//   because deriving from engine/CModeStandBase.h would grow ??_7CModeStunned / ??_7CModeOutOfActionBase (the r459a short-vftable
+//   question; NF463 RULINGS r463b).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Label correction: the catalog row says CModeDazed, but the vtable store 0x01267C74 is
 // NCreatureMode::CModeStunned (rtti-vtables.tsv); 0x00740250 is the real CModeDazed ctor.
@@ -63,27 +73,27 @@ namespace NCreatureMode {
 // The out-of-action base packs its pointer member right after the flag byte (lea edi,[esi+6Dh]).
 #pragma pack(push, 1)
 struct CModeOutOfActionBase : CModeBase_00861e00 {     // vtable 0x0126743C
-    long m_frames;                             // +0x68
-    bool m_canRecover;                         // +0x6c
-    CIntelligentPointer<CThing> m_pAttacker;      // +0x6d
+    long RecoveryCount;                        // +0x68
+    bool Recoverable;                          // +0x6c
+    CIntelligentPointer<CThing> PEmitter;         // +0x6d
     CModeOutOfActionBase(CThing* thing)
         : CModeBase_00861e00(thing)
-        , m_frames(0)
-        , m_canRecover(true)
+        , RecoveryCount(0)
+        , Recoverable(true)
     {
     }
 };
 #pragma pack(pop)
 
 struct CModeStunned : CModeOutOfActionBase {
-    CAnimFilterOfGroup m_animFilter;           // +0x78
+    CAnimFilterOfGroup Filter;                 // +0x78
     virtual void v00();
-    CModeStunned(CThing* thing);
+    CModeStunned(CThing& thing);
 };
 
-CModeStunned::CModeStunned(CThing* thing)
-    : CModeOutOfActionBase(thing)
-    , m_animFilter("STUNNED")              // literal @ 0x01267CB4 (masked)
+CModeStunned::CModeStunned(CThing& thing)
+    : CModeOutOfActionBase(&thing)
+    , Filter("STUNNED")              // literal @ 0x01267CB4 (masked)
 {
 }
 

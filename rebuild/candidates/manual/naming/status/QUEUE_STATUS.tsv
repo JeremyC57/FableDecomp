@@ -10865,10 +10865,10 @@ line	tag	address	correct_symbol	status	other_spellings
 13751	nf441	00c550f0	??0CSalRenderPanMMX@@QAE@XZ	closed	
 13752	nf441	00c70120	??0CSalRenderHrtfMMX@@QAE@XZ	open	??0CVtable_012bedcc@@QAE@XZ
 13753	nf443	00793cb0	?GetDamageMultiplier@CTCUnholyPower@@QBEMXZ	closed	
-13754	nf452	00c6e790	?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
-13755	nf452	00c6e820	?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z
-13756	nf452	00c6da40	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampUp@@YAXPBFPBUSGainRamp@@PAJ@Z
-13757	nf452	00c6dad0	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	open	?MixGainRampDown@@YAXPBFPBUSGainRamp@@PAJ@Z
+13754	nf452	00c6e790	?MixFadeIn@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	closed	
+13755	nf452	00c6e820	?MixFadeOut@CSalRenderDisable@@CAXPBFPBUFilterPan@@PAH@Z	closed	
+13756	nf452	00c6da40	?MixFadeIn@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	closed	
+13757	nf452	00c6dad0	?MixFadeOut@CSalRenderPan@@CAXPBFPBUFilterPan@@PAH@Z	closed	
 13759	nf453	00686870	?OnInitialActivate@CTCBase@@UAEXXZ	partial	?BaseOnCreate@CTCActionUseBuyHouse@@QAEXXZ || ?CTCEnemy_base_OnInitialActivate@@YIXPAVCTCEnemy@@@Z || ?M@C00686870@@QAEXXZ || ?OnCreate@CTCActionUseBase@@QAEXXZ
 13760	nf453	0083d6d0	??1CThingPhysicalSwitch@@UAE@XZ	closed	
 13761	nf453	009fc210	?ShrinkResources@CResourceList@@QAEXK@Z	partial	?Helper@C@@QAEXPAX@Z || ?ShrinkResources@CResourceList_Methods@@QAEXK@Z

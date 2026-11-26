@@ -60,6 +60,23 @@ public:
     // Declaration only, no layout change.
     CPSCDecalRenderer();
 #endif
+#ifdef FABLE_RETAIL_CPSCDECALRENDERER_ALLOC
+    // Opt-in (NF463, the NF462 r460d pattern of engine/CPSCEmitterGeneric.h): the class factory and the members a TU needs to `new` the
+    // class (the ctor comes from FABLE_RETAIL_CPSCDECALRENDERER_CTOR above). Ego_r.pdb + FableWin.pdb
+    // ?Alloc@CPSCDecalRenderer@NParticleEngine@@SIPAVCPSCBase@2@XZ (0x00AF8100, public static __fastcall; RegisterPSCs 0x00AF8170 binds it)
+    // and the overrides of CPSCBase's pure virtuals this header does not already declare (DatabaseClone 0x00B1FF80 = vtable 0x012A09BC
+    // slot 2, its only retail reference). Declarations only: the virtuals override CPSCBase slots, no new slot, no layout change.
+#ifndef FABLE_RETAIL_CPSCDECALRENDERER_CTOR
+#error "FABLE_RETAIL_CPSCDECALRENDERER_ALLOC needs FABLE_RETAIL_CPSCDECALRENDERER_CTOR (the constructor declaration)"
+#endif
+    static CPSCBase* FABLE_FASTCALL Alloc();
+    virtual CPSCBase* DatabaseClone() const;
+    virtual CCharString GetClassTypeName() const;
+    virtual EPSCType GetComponentType() const;
+    virtual EPSCSubType GetComponentSubType() const;
+    virtual CCharString GetGUIName() const;
+    virtual void GetComponentCost(CParticleSystemCost&,const CParticleSystem&,const float,const float);
+#endif
     virtual void ClearAllPrimitives(CIEngine*,CEnginePrimitiveHandle&);
     virtual void PreparePrimitives(const float time, const CEnginePrimitivePrepareInfo& info, CParticleSystem& system,
                                    const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& handle);

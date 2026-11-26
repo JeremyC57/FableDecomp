@@ -39,6 +39,13 @@ public:
 private:
  void Params3DInit(FilterPan* pFilter,float fGainPan);                    // 0x00C6DE60
  void UpdateFilters(const bool bNew);                                     // 0x00C6DEA0
+#ifdef FABLE_RETAIL_CSALRENDERPAN_MIXFADE
+ // Opt-in (NF463, queue nf452): the SDK private static mixers MixFadeIn / MixFadeOut, GameCODA 2.10 CODAApi.lib Release/SalRenderPan.obj
+ // (CodeView private static records; retail object order ctor 0x00C6D9D0, dtor 0x00C6DA30, MixFadeIn 0x00C6DA40, MixFadeOut 0x00C6DAD0, Mix, Process 0x00C6DBA0 = the SDK object order; instruction counts 53 / 54 with a
+ // plain ret, as retail 0x00C6DA40 / 0x00C6DAD0). __cdecl static: the callers in Process pop with `add esp`. Declarations only: no layout change.
+ static void MixFadeIn(const short*,const FilterPan*,int*);                     // 0x00C6DA40
+ static void MixFadeOut(const short*,const FilterPan*,int*);                    // 0x00C6DAD0
+#endif
 protected:
  ParamsPan m_paramsA;                 // +0x28
  ParamsPan m_paramsB;                 // +0x40
