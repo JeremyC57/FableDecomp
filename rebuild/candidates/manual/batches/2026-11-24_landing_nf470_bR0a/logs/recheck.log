@@ -1,0 +1,72 @@
+addr       parity           behav  name
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkBase (engine/CAIStateGroup_WorkBase.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesBase (engine/CAIStateGroup_JackOfBladesBase.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009000bc   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WanderAroundShops (engine/CAIStateGroup_WanderAroundShops.h)
+009000bc   RELOCATION_MATCH PASS   CAIStateGroup_WanderAroundShops
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkBase (engine/CAIStateGroup_WorkBase.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesBase (engine/CAIStateGroup_JackOfBladesBase.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BalverineCornered (engine/CAIStateGroup_BalverineCornered.h)
+009004e0   RELOCATION_MATCH PASS   CAIStateGroup_BalverineCornered
+00900b41   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00900b41   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionReactToCrime (engine/CAIStateGroup_MinionReactToCrime.h)
+00900b41   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCrime
+0090143e   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0090143e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VersusEnemyBase (engine/CAIStateGroup_VersusEnemyBase.h)
+0090143e   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_VersusScorpionKing (engine/CAIStateGroup_VersusScorpionKing.h)
+0090143e   RELOCATION_MATCH PASS   CAIStateGroup_VersusScorpionKing
+00902fb9   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc (engine/CEnginePrimitiveThemeChannelDesc.h)
+00902fb9   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00902fb9   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase (engine/CAIStateGroup_EnemyCreatureBase.h)
+00902fb9   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureUseCoverBase (engine/CAIStateGroup_CreatureUseCoverBase.h)
+00902fb9   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase
+00903216   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00903216   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkBase (engine/CAIStateGroup_WorkBase.h)
+00903216   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesBase (engine/CAIStateGroup_JackOfBladesBase.h)
+00903216   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00903216   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesStage1 (engine/CAIStateGroup_JackOfBladesStage1.h)
+00903216   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesStage1
+009126c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009126c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_FlyingThingBase (engine/CAIStateGroup_FlyingThingBase.h)
+009126c0   RELOCATION_MATCH PASS   CAIStateGroup_FlyingThingBase
+00918230   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00918230   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00918230   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00918230   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00918230   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Gaze (engine/CAIStateGroup_Gaze.h)
+00918230   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeAtWork (engine/CAIStateGroup_GazeAtWork.h)
+00918230   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeOutside (engine/CAIStateGroup_GazeOutside.h)
+00918230   RELOCATION_MATCH PASS   CAIStateGroup_GazeOutside
+009182d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+009182d0   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+009182d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009182d0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009182d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Gaze (engine/CAIStateGroup_Gaze.h)
+009182d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeAtWork (engine/CAIStateGroup_GazeAtWork.h)
+009182d0   RELOCATION_MATCH PASS   CAIStateGroup_GazeAtWork
+00919a40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00919a40   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BuyFromSeller (engine/CAIStateGroup_BuyFromSeller.h)
+00919a40   RELOCATION_MATCH PASS   CAIStateGroup_BuyFromSeller
+00927c00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager (engine/CDefinitionManager.h)
+00927c00   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager (engine/CGameDefinitionManager.h)
+00927c00   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00927c00   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00927c00   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_Gaze (engine/CAIStateGroup_Gaze.h)
+00927c00   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_GazeAtWork (engine/CAIStateGroup_GazeAtWork.h)
+00927c00   RELOCATION_MATCH PASS   CAIStateGroup_ShopkeeperWatchPlayer
+
+WINS: 11
+  009000bc RELOCATION_MATCH CAIStateGroup_WanderAroundShops::??0CAIStateGroup_WanderAroundShops@@QAE@XZ
+  009004e0 RELOCATION_MATCH CAIStateGroup_BalverineCornered::??0CAIStateGroup_BalverineCornered@@QAE@XZ
+  00900b41 RELOCATION_MATCH CAIStateGroup_MinionReactToCrime::??0CAIStateGroup_MinionReactToCrime@@QAE@XZ
+  0090143e RELOCATION_MATCH CAIStateGroup_VersusScorpionKing::??0CAIStateGroup_VersusScorpionKing@@QAE@XZ
+  00902fb9 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::??0CAIStateGroup_CreatureUseCoverBase@@QAE@XZ
+  00903216 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage1::??0CAIStateGroup_JackOfBladesStage1@@QAE@XZ
+  009126c0 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::??0CAIStateGroup_FlyingThingBase@
+  00918230 RELOCATION_MATCH CAIStateGroup_GazeOutside::??0CAIStateGroup_GazeOutside@@QAE@XZ
+  009182d0 RELOCATION_MATCH CAIStateGroup_GazeAtWork::??0CAIStateGroup_GazeAtWork@@QAE@XZ
+  00919a40 RELOCATION_MATCH CAIStateGroup_BuyFromSeller::??0CAIStateGroup_BuyFromSeller@
+  00927c00 RELOCATION_MATCH CAIStateGroup_ShopkeeperWatchPlayer::??0CAIStateGroup_ShopkeeperWatchPlayer@@QAE@XZ

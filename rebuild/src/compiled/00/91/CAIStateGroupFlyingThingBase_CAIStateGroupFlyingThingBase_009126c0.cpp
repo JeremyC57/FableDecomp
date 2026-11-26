@@ -10,13 +10,16 @@
 // 10.0f constant (one `mov eax` for +0x1c/+0x20) above the vtable store; the source is a plain initialiser
 // list in declaration order. No engine header exists for this class; the layout is modelled locally on
 // CAIStateGroupBase (0x14 bytes).
+// NF469 (r467a, ruling r469a): retail's ~CAIStateGroupBase is the implicit one, kept once at 0x008FD288 (Ego_r / FableWin flag it
+//   compiler-generated). This local model's implicit copy was not retail's (a lone jmp ~CBaseClass: the model gives Name (+0x0C) no destructor), so the destructor is declared here and the
+//   object references 0x008FD288's ??1CAIStateGroupBase@@UAE@XZ like the 640 landed local models; the row's own bytes are unchanged.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CCharString { public:
     CCharString();                              // 0x0099E4B0
 };
 
-class CAIStateGroupBase : public CBaseClass { public:
+class CAIStateGroupBase : public CBaseClass { public:virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08
     CCharString Name;                           // +0x0c

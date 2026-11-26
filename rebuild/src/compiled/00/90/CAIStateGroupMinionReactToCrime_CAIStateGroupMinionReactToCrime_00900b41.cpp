@@ -16,6 +16,9 @@
 //   and the GOTCHAS CTCHero::LastWeaponEquipped +0x1D line), while the class keeps 4-byte alignment (PDB size 36, not 35).
 // Shape: user default ctor, empty; the long / bools stay uninitialised; CIntelligentPointer's ctor inlines to the base call +
 //   vtable store after this class's own vtable store.
+// NF469 (r467a, ruling r469a): retail's ~CAIStateGroupBase is the implicit one, kept once at 0x008FD288 (Ego_r / FableWin flag it
+//   compiler-generated). This local model's implicit copy was not retail's (a lone jmp ~CBaseClass: the model gives Name (+0x0C) no destructor), so the destructor is declared here and the
+//   object references 0x008FD288's ??1CAIStateGroupBase@@UAE@XZ like the 640 landed local models; the row's own bytes are unchanged.
 #include "engine/CBaseClass.h"                          // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CAIBrain;
@@ -27,7 +30,7 @@ public:
 enum EScriptAIPriority { SCRIPT_PRIORITY_DEFAULT };
 
 class CAIStateGroupBase : public CBaseClass {
-public:
+public:virtual ~CAIStateGroupBase();
     CAIBrain*         PBrain;                           // +0x04
     EScriptAIPriority ScriptAIPriority;                 // +0x08
     CCharString       Name;                             // +0x0C
