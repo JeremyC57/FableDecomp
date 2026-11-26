@@ -25,7 +25,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 004cdc40	CSubtitledMessage	AddCameraTagFromText	1392	parked	DIFFER(1349v1379)	2	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1b/differ/004cdc40.cpp	original
 004ce550	CSubtitledMessage	CSubtitledMessage	1296	parked	DIFFER(1128v1281)	2	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/004ce550.cpp	original
 004cebb0	CSubtitledMessage	GetMessagesFromTextName	2032	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec1/hdr/004cebb0.cpp	original
-00500540	CWorldMap	LoadRegion	2416	parked	DIFFER(2396v2412)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00500540.cpp	original
+00500540	CWorldMap	LoadRegion	2416	reserved (acctB lane, 2026-11-26; was: parked)	DIFFER(2396v2412)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00500540.cpp	original
 00502e90	CWorldMap	PopulateRegionWithVillagers	13632	reserved (acctA AUTH1, 2026-11-21; released from Account B, owner 2026-11-21; was: reserved (acctB p25R, 2026-11-21))	acctC round six: round 6 final (2026-11-16): DIFFER(13587v13622); latest draft 00502e90.cpp + NOTES.md in the folder (grep the 	1	rebuild/candidates/manual/pending/2026-11-16_acctC_open/wfE10/00502e90.cpp	original
 00507070	CWorldMap	BuildStaticMapGenerationVisibilityInfo	1440	parked	DIFFER(1628v1432)	4	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00507070.cpp	original
 00509a20	CWorldMap	GetMapNavigationAreaUpdateInfo	3120	reserved (acctB B24E, 2026-11-24; was: parked)	DIFFER(3188v3120)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00509a20.cpp	original
@@ -51,7 +51,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0057d23b	_global	FrameUpdate_ApplyMorphEffect	869	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand474/differ/0057d23b.cpp	original
 005850fd	CTCInventory	GetStyleCardsListUIComponent	1678	parked	DIFFER(1660v1678)	4	rebuild/candidates/manual/pending/2026-11-10_linux_hand1007b/differ/005850fd.cpp	original
 00589402	CTCInventory	GetStyleCardsListUIComponent	1582	parked	codex pass24 PARKED: Donor card scopes improve the early register allocation and control flow. Card-release scheduling and the title setter register remain different.	40	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/00589402/00589402.cpp	original
-00590f0b	CTCInventory	GetItemsListUIComponentPC	2907	parked	DIFFER(2849v2907)	11	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00590f0b.cpp	original
+00590f0b	CTCInventory	GetItemsListUIComponentPC	2907	reserved (acctB lane, 2026-11-26; was: parked)	DIFFER(2849v2907)	11	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00590f0b.cpp	original
 0059fc17	CTCInventoryTrade	AlreadyHaveSpecial	716	parked	codex pass24 PARKED: The tattoo card pointer, size home and loop coloring still differ.	23	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0059fc17/0059fc17.cpp	original
 005a94bd	CTCInventoryTrade	OpenInventory	1482	parked	DIFFER(1488v1482)	2	rebuild/candidates/manual/pending/2026-11-10_linux_handSND2/differ/005a94bd.cpp	original
 005ac10e	CTCInventoryTrade	ConstructActualBuyInventoryPC	3532	open-escalated (hand2b 243 grades + hand4c 5 bracket placements, no change; 2 instructions at 0x005ACB58; see pending/2026-11-19_open_escalated/005ac10e)	codex pass24 PARKED: Retail reloads the category children before the frame in the subtitle join. The rebuilt instructions are reversed.	29	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/005ac10e/005ac10e.cpp	original
@@ -623,7 +623,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00d11930	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker	Main	4080	reserved (acctB B24A, 2026-11-24; was: parked)	DIFFER(4056v4072)	3	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d11930.cpp	gapscan/boundary
 00d20a40	CQ_BreakSiegeScript	WatchForOpenGates	1488	parked	DIFFER(1433v1478)	4	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6/hdr/00d20a40.cpp	original
 00d21040	NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader	Main	2768	parked	DIFFER(2742v2758)	6	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d21040.cpp	gapscan/boundary
-00d21b40	NScript::CQ_BreakSiegeScript::CBanditSiegeLeader	Main	2976	parked	DIFFER(2982v2965)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d21b40.cpp	gapscan/boundary
+00d21b40	NScript::CQ_BreakSiegeScript::CBanditSiegeLeader	Main	2976	reserved (acctB lane, 2026-11-26; was: parked)	DIFFER(2982v2965)	5	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d21b40.cpp	gapscan/boundary
 00d24a40	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh	Main	2416	parked	DIFFER(2440v2403)	2	rebuild/candidates/manual/pending/2026-11-13_codex_released/differ/00d24a40.cpp	gapscan/boundary
 00d2d1a0	NScript::CQ_EndGameFocalSitesScript::CBattleMinion	Main	912	parked	DIFFER(556v620)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec6b/differ/00d2d1a0.cpp	original
 00d34b30	std::vector<CScriptThing>	_M_fill_insert	480	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand582/differ/00d34b30.cpp	original
