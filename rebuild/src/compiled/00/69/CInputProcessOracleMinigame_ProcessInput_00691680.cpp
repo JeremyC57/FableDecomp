@@ -1,5 +1,9 @@
 // CInputProcessOracleMinigame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game actions 0x42..0x45 push oracle symbols 0/2/3/1 into the hero's oracle minigame component (0x107), 0x46 quits it, game action 3 (when the hero has component 0xC6) queues game event 0x1a carrying (long 0x17, true); every press is marked handled
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessOracleMinigame@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessOracleMinigame.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Flags: /GS
@@ -15,9 +19,12 @@
 // Shape: the same press/fishing-style event arm as CInputProcessFishing::ProcessInput 0x00690B20; SetAsPerformedEvent closes every
 //   pressed path, including the no-match one.
 #include "fable_compiler.h"
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
 #include "engine/CInputProcessGameBase.h"
 #include "engine/EOracleMinigameInput.h"   // NF443 (ruling r2): the PDB enum of the oracle callee's parameter
 class CInputEvent;
@@ -78,10 +85,7 @@ class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CInputProcessOracleMinigame : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessOracleMinigame.h"
 
 void CInputProcessOracleMinigame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

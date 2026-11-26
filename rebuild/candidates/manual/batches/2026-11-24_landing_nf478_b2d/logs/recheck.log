@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00687db0   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00687db0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00687db0   WARN STANDIN_LEAF ?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z (catalog CInputProcessMain::IsEventFromPlayerDevice; names another function)
+00687db0   RELOCATION_MATCH PASS   IsEventFromPlayerDevice
+
+WINS: 1
+  00687db0 RELOCATION_MATCH CInputProcessMain::?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z

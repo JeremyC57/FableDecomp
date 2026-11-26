@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00689130   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00689130   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00689130   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 1
+  00689130 RELOCATION_MATCH CInputProcessTargetLockRightStickTargetSelect::?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z

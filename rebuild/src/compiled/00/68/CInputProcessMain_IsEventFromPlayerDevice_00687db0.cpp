@@ -1,5 +1,11 @@
-// CInputProcessMain::IsEventFromPlayerDevice(const CInputEvent& event) -- a joystick event (device 1) counts only when the player uses that joystick device number; every other device is accepted
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00687DB0, length 48 bytes. Vtable 0x0123758C slot 8 (the chunk name "vfunc_8").
+// CInputProcessGameBase::IsInputEventToBeSentToThisInputProcess(const CInputEvent& event) const -- a joystick event (device 1) counts only when the player uses that joystick device number; every other device is accepted
+// Leaf: ?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00687DB0, length 48 bytes. CInputProcessGameBase vftable 0x0125BE98 slot 8, and slot 8 of the
+// 67 family tables that inherit it (NF477 audit: 68 `.rdata` dwords, no call or jump).
+// Identity (NF478, r467b, NAME_FIXES_QUEUE nf477): Ego_r.pdb + FableWin.pdb ?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z
+// (protected virtual const), the override of CAInputProcess slot 8 (0x00A0D400); declared by engine/CInputProcessGameBase.h FABLE_RETAIL_INPUTPROCESS_VTABLE.
+// Was the made-up ?IsEventFromPlayerDevice@CInputProcessMain@@QAE_NABVCInputEvent@@@Z on a local class model (CInputProcessMain's own
+// vftable 0x0123758C holds it at slot 8 only by inheritance). No body change.
 // Callees: CInputEvent::GetDevice @ 0x00A03B50 (+0x20), CInputEvent::GetDeviceNumber @ 0x00A03B60 (+0x24; both labelled "CWorld::DrawGetEnvironment"),
 // CPlayer::IsUsingJoystickDeviceNumber(long) @ 0x004874F0 (MyPlayer +0x18, engine/CInputProcessGameBase.h).
 // Shape: the event reference in edi for both accessor calls, `cmp eax,1 ; jne` to the `mov al,1` tail, the bool of the player call
@@ -11,20 +17,13 @@ class CInputEvent { public:
 class CPlayer { public:
     bool IsUsingJoystickDeviceNumber(long deviceNumber) const;   // 0x004874F0
 };
-struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
-    virtual void v00();
-    unsigned char _pad04[0x10];                     // +0x04 CAInputProcess
-    void*         World;                            // +0x14
-    CPlayer*      MyPlayer;                         // +0x18
-    void*         DefinitionManager;                // +0x1c
-    void*         Component;                        // +0x20
-    void*         PGamePlayerInterface;             // +0x24
-};
-class CInputProcessMain : public CInputProcessGameBase { public:  // vtable 0x0123758C
-    bool IsEventFromPlayerDevice(const CInputEvent& event);
-};
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CInputProcessGameBase.h"
 
-bool CInputProcessMain::IsEventFromPlayerDevice(const CInputEvent& event)
+bool CInputProcessGameBase::IsInputEventToBeSentToThisInputProcess(const CInputEvent& event) const
 {
     if (event.GetDevice() == 1)
         return MyPlayer->IsUsingJoystickDeviceNumber(event.GetDeviceNumber());

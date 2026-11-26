@@ -1,5 +1,9 @@
 // CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- while the live hero's quick-access menu (component 0xF6) is open and not closing, translate press/release of actions 0x25..0x28 into front-end UI events 0..3, and close the menu on a press of action 2; handled input is marked
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessQuickAccessMenu@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessQuickAccessMenu.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690FD0, length 325 bytes, `ret 8`.
@@ -14,9 +18,13 @@
 // Shape: the presence test precedes the lookup, so the component pick is the plain end/hit ternary (no preload); the
 //   release arm's 0x25/0x26 sends are cross-jumped into from the press arm.
 #include "fable_compiler.h"
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 class CProcessedInput {
@@ -62,10 +70,7 @@ class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CInputProcessQuickAccessMenu : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessQuickAccessMenu.h"
 
 void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

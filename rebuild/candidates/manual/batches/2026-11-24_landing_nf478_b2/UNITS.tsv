@@ -1,0 +1,7 @@
+address	unit
+0068cb70	unit respell CInputProcessControlFreeCamera::Init (single row)
+0068d830	unit respell CInputProcessControlCreatureRightStick::Init (single row)
+0068eb10	unit respell CInputProcessUseRangedWeaponZLock::Update (single row)
+00690ac0	unit respell CInputProcessCutScene::ProcessWhilePaused (single row)
+00690d20	unit respell CInputProcessParalysed::Init (single row)
+006a9170	unit respell CInputProcessControlSpirit::ProcessInput (single row)

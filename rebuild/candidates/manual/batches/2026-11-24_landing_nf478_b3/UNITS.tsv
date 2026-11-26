@@ -1,0 +1,11 @@
+address	unit
+006896a0	unit respell CInputProcessInventory::GetPInventory (single row)
+006896b0	unit respell CInputProcessInventoryClothing::GetPInventory (single row)
+00689810	unit respell CInputProcessInventoryWeapons::GetPInventory (single row)
+00689970	unit respell CInputProcessHeroAbilitiesScreen::GetPInventory (single row)
+00689ad0	unit respell CInputProcessInventoryMapScreen::GetPInventory (single row)
+00689ae0	unit respell CInputProcessInventoryExperienceScreen::GetPInventory (single row)
+00689af0	unit respell CInputProcessInventoryTradeScreen::GetPInventory (single row)
+00689b00	unit respell CInputProcessInventoryQuestsScreen::GetPInventory (single row)
+00689c10	unit respell CInputProcessInventoryMagicScreen::GetPInventory (single row)
+00689c30	unit respell CInputProcessInventoryStatsScreen::GetPInventory (single row)

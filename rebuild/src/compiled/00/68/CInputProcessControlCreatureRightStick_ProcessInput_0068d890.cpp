@@ -14,7 +14,11 @@
 //   LookingAround +0x2a); the game base modelled locally as in the landed Update; CPlayer +0x218 as the landed 0x0068EF50 row.
 // Shape: the mouse flag is `bool x = false; if (...) x = true;` (kept in bl); the angle tests use a float Abs (a double fabs
 //   compares in double with fcompp); the stick magnitude and the up component live in the dead argument slots.
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessControlCreatureRightStick@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessControlCreatureRightStick.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 extern "C" double __cdecl cos(double);
@@ -60,26 +64,14 @@ class CPlayer { public:
     bool          InRangedWeaponMode;              // +0x218 (descriptive)
 };
 #include "engine/EGameAction.h"
-struct CInputProcessGameBase {                     // engine/CInputProcessGameBase.h layout
-    virtual void v00();
-    unsigned char _pad04[0x10];                    // +0x04 CAInputProcess
-    CWorld*       World;                           // +0x14
-    CPlayer*      MyPlayer;                        // +0x18
-    void*         DefinitionManager;               // +0x1c
-    void*         Component;                       // +0x20
-    void*         PGamePlayerInterface;            // +0x24
-protected:
-    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
-public:
-    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
-    bool GetControlMovementFromGameActionEvent(EGameAction action, const CInputEvent& event, C2DVector& vector) const;   // 0x00687D00
-};
-class CInputProcessControlCreatureRightStick : public CInputProcessGameBase { public:   // vtable 0x01237A40
-    bool PushingCameraModeUp;                      // +0x28
-    bool PushingCameraModeDown;                    // +0x29
-    bool LookingAround;                            // +0x2a
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT
+#include "engine/CInputProcessGameBase.h"
+#include "engine/CInputProcessControlCreatureRightStick.h"
 
 void CInputProcessControlCreatureRightStick::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

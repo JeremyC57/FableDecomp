@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0068d840   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0068d840   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+0068d840   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0068d840   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  0068d840 RELOCATION_MATCH CInputProcessControlCreatureRightStick::?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z

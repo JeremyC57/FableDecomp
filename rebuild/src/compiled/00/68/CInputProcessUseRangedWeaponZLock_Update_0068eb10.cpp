@@ -1,24 +1,23 @@
-// CInputProcessUseRangedWeaponZLock::Update(long) -- calls CPlayer::GetPControlledCreature @ 0x00487DC0 on MyPlayer (+0x18) and drops the result; the 1 argument(s) are not forwarded
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0068EB10, oracle length 11 bytes.
-// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); the batch README records the lane verdict.
+// CInputProcessUseRangedWeaponZLock::Update(CProcessedInput& processed_input) -- calls CPlayer::GetPControlledCreature @ 0x00487DC0 on MyPlayer (+0x18) and drops the result; the argument is unused
+// Leaf: ?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0068EB10, oracle length 11 bytes. CInputProcessUseRangedWeaponZLock vftable slot 6 (RTTI; NF477 audit:
+// one `.rdata` dword, no call). Identity: Ego_r.pdb + FableWin.pdb ?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z (public virtual).
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was ?Update@CInputProcessUseRangedWeaponZLock@@QAEXJ@Z on a local class model (generated tiny-body
+//   shape, `long` argument); respelt onto engine/CInputProcessUseRangedWeaponZLock.h FABLE_RETAIL_INPUTPROCESS_VTABLE (MyPlayer is
+//   CInputProcessGameBase::MyPlayer). No body change.
 //
 // Retail bytes:  mov ecx, dword ptr [ecx + 0x18] ; call 0x487dc0 ; ret 4
-// Tiny-body shape `ForwardThroughMember` synthesised from the instruction pattern (the class comes from the
-// manifest label when it is a plain class name, else the method is landed under a descriptive
-// placeholder); member names are descriptive. 
 class CThingPlayerCreature;
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CInputProcessUseRangedWeaponZLock.h"
 
-class CInputProcessUseRangedWeaponZLock { public:
-    unsigned char _pad[0x18];
-    CPlayer* MyPlayer;                     // +0x18 (CInputProcessGameBase::MyPlayer)
-    void Update(long);
-};
-
-void CInputProcessUseRangedWeaponZLock::Update(long)
+void CInputProcessUseRangedWeaponZLock::Update(CProcessedInput&)
 {
     MyPlayer->GetPControlledCreature();
 }

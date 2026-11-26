@@ -1,5 +1,9 @@
 // CInputProcessBoastUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- translate boast-screen buttons into front-end UI events (press/held/release of actions 0x19/0x4c/0x58/0x59, mouse capture on 0x47) and mark the input handled
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessBoastUI@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessBoastUI.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690E70, length 323 bytes, `ret 8`.
@@ -13,9 +17,13 @@
 // Shape: every arm ends in `Send(x)` + the shared SetAsPerformedEvent tail; the press and release arms end in the same
 //   0x58/0x59 tests, which VC7.1 cross-jumps into one block. The mouse vector is copied into a named local through
 //   C2DVector's user copy constructor before GetInstance runs.
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput {
 public:
@@ -39,10 +47,7 @@ public:
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-class CInputProcessBoastUI : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessBoastUI.h"
 
 void CInputProcessBoastUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

@@ -1,5 +1,9 @@
 // CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for a live hero: the analogue action 0x54 zooms the projectile-targeting camera by its Y value / 255, presses of actions 0x6e / 0x6f zoom by +-196/255; a zoom marks the input handled
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessProjectileTargetingAnalogueZoom.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F320, length 323 bytes, `ret 8`.
@@ -14,9 +18,13 @@
 // Shape: GetTC is a `__forceinline` `T* c = 0; if (HasTC(k)) c = Find(k); return c;` inlined at each of the three zoom
 //   calls (the `xor ecx,ecx` preload each time); its key shares the dead `event` argument slot.
 #include "fable_compiler.h"
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT
 #include "engine/CInputProcessGameBase.h"
 class C2DVector { public:
     float x, y;
@@ -66,10 +74,7 @@ class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CInputProcessProjectileTargetingAnalogueZoom : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessProjectileTargetingAnalogueZoom.h"
 
 // Naming (NF443 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
 //   self rows' Leaf / PDB name sets), through a bodiless declaration or the row's own model (no layout; rulings r2/r3, NF438 q1 friend):

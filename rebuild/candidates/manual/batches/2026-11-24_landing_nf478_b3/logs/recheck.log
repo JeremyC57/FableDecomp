@@ -1,0 +1,23 @@
+addr       parity           behav  name
+006896a0   MATCH            PASS   GetPInventory
+006896b0   MATCH            PASS   GetPInventory
+00689810   MATCH            PASS   GetPInventory
+00689970   MATCH            PASS   GetPInventory
+00689ad0   MATCH            PASS   GetPInventory
+00689ae0   MATCH            PASS   GetPInventory
+00689af0   MATCH            PASS   GetPInventory
+00689b00   MATCH            PASS   GetPInventory
+00689c10   MATCH            PASS   GetPInventory
+00689c30   MATCH            PASS   GetPInventory
+
+WINS: 10
+  006896a0 MATCH CInputProcessInventory::?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  006896b0 MATCH CInputProcessInventoryClothing::?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689810 MATCH CInputProcessInventoryWeapons::?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689970 MATCH CInputProcessHeroAbilitiesScreen::?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689ad0 MATCH CInputProcessInventoryMapScreen::?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689ae0 MATCH CInputProcessInventoryExperienceScreen::?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689af0 MATCH CInputProcessInventoryTradeScreen::?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689b00 MATCH CInputProcessInventoryQuestsScreen::?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689c10 MATCH CInputProcessInventoryMagicScreen::?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ
+  00689c30 MATCH CInputProcessInventoryStatsScreen::?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ

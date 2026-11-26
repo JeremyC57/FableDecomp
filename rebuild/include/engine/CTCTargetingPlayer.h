@@ -1,6 +1,9 @@
 // Retail opt-in (Codex pass21): FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST exposes original targeting helpers; row00804020 retains both-PDB/donor/native proof.
 #ifndef FABLE_ENGINE_CTCTARGETINGPLAYER_H
 #define FABLE_ENGINE_CTCTARGETINGPLAYER_H
+#if defined(FABLE_RETAIL_CTCTARGETINGPLAYER_SETASTARGETNEXTTHINGINDIRECTION) && !defined(FABLE_RETAIL_CTCTARGETINGPLAYER)
+#error FABLE_RETAIL_CTCTARGETINGPLAYER_SETASTARGETNEXTTHINGINDIRECTION needs FABLE_RETAIL_CTCTARGETINGPLAYER (the retail class view)
+#endif
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER
 // Retail opt-in (chunk 777, row 0x00803540 UpdateTargetedPositionRandomWalk): the polymorphic retail class on the shared
 // CTCTargetingBase (RTTI CTCTargetingPlayer : CTCTargetingBase : CTCBase; vtable 0x0124280C), Ego_r.pdb member names and types at
@@ -30,6 +33,17 @@ public:
     virtual CThing* GetPTargetLockedThing()const;
     enum ETargetNextThingMethod { TARGET_NEXT_NULL=0,TARGET_NEXT_NEXT=1,TARGET_NEXT_LEFT=2,TARGET_NEXT_RIGHT=3 };
     typedef std::vector<NPlayerTargeting::CTargetPoint> TTargetPointList;
+#endif
+#ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_SETASTARGETNEXTTHINGINDIRECTION
+    // Opt-in (NF478, 2026-11-26, row 0x00689130 CInputProcessTargetLockRightStickTargetSelect::ProcessInput), declaration only:
+    // Ego_r.pdb (0x007FD250) / FableWin.pdb (0x024CE560) ?SetAsTargetNextThingInDirection@CTCTargetingPlayer@@QAEXW4ETargetNextThingMethod@1@@Z,
+    // retail 0x008023C0 (landed under the stand-in ?SetAsTargetNextThingInDirection@CTCTargetingPlayer_Methods@@QAEXJ@Z). The nested enum is
+    // the one FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST declares (same values), declared here only without it.
+public:
+#ifndef FABLE_RETAIL_CTCTARGETINGPLAYER_UPDATE_LIST
+    enum ETargetNextThingMethod { TARGET_NEXT_NULL=0,TARGET_NEXT_NEXT=1,TARGET_NEXT_LEFT=2,TARGET_NEXT_RIGHT=3 };
+#endif
+    void SetAsTargetNextThingInDirection(ETargetNextThingMethod method);   // 0x008023C0
 #endif
 #ifdef FABLE_RETAIL_CTCTARGETINGPLAYER_FRAMEUPDATE
     // e06 egod opt-in (row 0x00805600): Ego_r.pdb ?FrameUpdate@CTCTargetingPlayer@@UAEXXZ (the CTCBase slot-9 override),

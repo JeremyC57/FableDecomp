@@ -1,0 +1,10 @@
+source	address	unit	reason
+nf324	0x006896A0	port	006896a0 skipped-port ?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x006896B0	port	006896b0 skipped-port ?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689810	port	00689810 skipped-port ?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689970	port	00689970 skipped-port ?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689AD0	port	00689ad0 skipped-port ?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689AE0	port	00689ae0 skipped-port ?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689AF0	port	00689af0 skipped-port ?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689C10	port	00689c10 skipped-port ?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)
+nf324	0x00689C30	port	00689c30 skipped-port ?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ triage (-): this: the body uses process typed `const unsigned char*` (another class)

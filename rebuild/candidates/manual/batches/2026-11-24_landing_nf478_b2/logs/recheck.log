@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0068cb70   RELOCATION_MATCH PASS   Init
+0068d830   MATCH            PASS   Init
+0068eb10   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068eb10   RELOCATION_MATCH PASS   Update
+00690ac0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+00690ac0   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+00690ac0   RELOCATION_MATCH PASS   ProcessWhilePaused
+00690d20   MATCH            PASS   Init
+006a9170   MATCH            PASS   ProcessInput
+
+WINS: 6
+  0068cb70 RELOCATION_MATCH CInputProcessControlFreeCamera::?Init@CInputProcessControlFreeCamera@@UAEXXZ
+  0068d830 MATCH CInputProcessControlCreatureRightStick::?Init@CInputProcessControlCreatureRightStick@@UAEXXZ
+  0068eb10 RELOCATION_MATCH CInputProcessUseRangedWeaponZLock::?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z
+  00690ac0 RELOCATION_MATCH CInputProcessCutScene::?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ
+  00690d20 MATCH CInputProcessParalysed::?Init@CInputProcessParalysed@@UAEXXZ
+  006a9170 MATCH CInputProcessControlSpirit::?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z

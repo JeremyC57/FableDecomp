@@ -1988,7 +1988,7 @@ _RbIncrement	004292c0	0065ce56
 ?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z	00687d50	00688a20
 ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ	00416225	006893d0
 _g_f	013ba8b1	0068cb70
-?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJ@Z	00687d50	0068d840
+?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	00687d50	0068d840
 ?PushCurrentManualMode@CGameCameraManager@@QAEXXZ	006988b0	0068d840
 ?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z	00687a70	0068eae0
 ??_7CActionEventTriggerParticle@NCreatureAction@@6B@	0125c0d8	00692120
@@ -30913,9 +30913,7 @@ _free	00bfea14	00408900
 ?IsEventGameAction@CGamePlayerInterface@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z	00445bd0	00687cf0
 ?GetControlMovementFromGameActionEvent@CGamePlayerInterface@@QBE_NW4EGameAction@@ABVCInputEvent@@AAVC2DVector@@@Z	00445c30	00687d00
 ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@JAAM@Z	00445cb0	00687d80
-?GetJoystickPosition@InputEvent@NativeInput@@QBE?AUVector2@2@XZ	00a043a0	00689130
-?GetType@InputEvent@NativeInput@@QBE?AW4EInputEventType@2@XZ	00a03b40	00689130
-?SetAsTargetNextThingInDirection@TargetingPlayer@NativeInput@@QAEXW4ETargetNextThingMethod@12@@Z	008023c0	00689130
+?SetAsTargetNextThingInDirection@CTCTargetingPlayer@@QAEXW4ETargetNextThingMethod@1@@Z	008023c0	00689130
 ?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z	006b9460	0076c7f0
 ?AddEffect@CTCBoss@@QAEXAAVCThing@@@Z	007af6c0	008e0a10
 ?CountEffects@CTCBoss@@QAEJXZ	007aef10	008e0a10

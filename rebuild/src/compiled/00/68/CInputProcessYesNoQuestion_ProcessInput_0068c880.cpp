@@ -1,5 +1,9 @@
 // CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- answer the on-screen yes/no question: on PC keyboard input keys 4 (yes) / 10 (no), otherwise the yes / no / cancel game actions 0x16 / 0x17 / 0x18 (cancel only while the gui allows it) queue game event 0x1D carrying (answer, previous player mode) and mark the input handled
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessYesNoQuestion@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessYesNoQuestion.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
@@ -7,9 +11,12 @@
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068C880, 576 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
 #include "engine/CInputProcessGameBase.h"
 struct CMemoryBuffer {
 };
@@ -52,11 +59,7 @@ class CPlayerGui { public:
 };
 // Layout: engine/CInputProcessYesNoQuestion.h is a flattened view of the same object (PreviousMode +0x28); the
 // game-base methods need the CInputProcessGameBase base, so the derived member is declared here.
-class CInputProcessYesNoQuestion : public CInputProcessGameBase {
-public:
-    long PreviousMode;                             // +0x28 EPlayerMode
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessYesNoQuestion.h"
 
 void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

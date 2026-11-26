@@ -1,0 +1,4 @@
+equiv_check.py old vs new include trees (NF478 b1 + b5 headers: CInputProcessGameBase.h, CInputProcessJumpingAndRolling.h, CTCTargetingPlayer.h), 2026-11-26
+rows checked 57166
+differ: 00689130 00690030 006a4700 (sources; all batch rows that opt in)
+outside the batch: none

@@ -1,5 +1,9 @@
 // CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- hand the input to the hero's current tavern game (game-player component 0xD0), then translate press/held of actions 0x19/0x4c and mouse capture 0x47 into front-end UI events
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessTavernGame@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessTavernGame.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -18,9 +22,12 @@
 // Shape: `CTCGamePlayer* player = 0; if (HasTC) player = GetTC;` gives the `xor ebx,ebx` preload; each UI arm returns
 //   on its own (no SetHandled in this process).
 #include "fable_compiler.h"
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput;
 class C2DVector { public:
@@ -96,10 +103,7 @@ private: public:
     unsigned char   _pad[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1C
 };
-class CInputProcessTavernGame : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessTavernGame.h"
 
 void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

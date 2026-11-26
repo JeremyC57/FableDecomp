@@ -663,7 +663,7 @@ line	tag	address	correct_symbol	status	other_spellings
 668	538	00515ad0	??0?$CArray@VCMapInfo@@@@QAE@I@Z	partial	??0?$vector@
 669	538	00993b10	??1CMemoryDataInputStream@@UAE@XZ	open	??1CDataInputStream@@UAE@XZ || ??1CDataStream@@UAE@XZ
 670	540	009e2560	?TransferOut@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCCharString@@ABJ@Z	partial	?AppendIntegerText_009e2560@@YIXPAVCPersistContext@@AAVCCharString@@ABH@Z || ?TransferOutLong@@YIXAAVCPersistContext@@AAVCCharString@@PAJ@Z || ?TransferOutLong@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z || ?TransferOutLong_009e2560@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z || ?TransferOut_009e2560@@YIXPAVCPersistContext@@JPAJ@Z || @Transfer_9e2560@12 || AppendLongToString
-671	540	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	TransferIn
+671	540	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	?TransferIn@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z || TransferIn
 672	540	0040e630	?TransferOut@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABV3@@Z	closed	
 673	540	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z	closed	
 674	540	0042b312	??$GetDef@VCUIMiscThingsDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@@Z	closed	
@@ -2193,7 +2193,7 @@ line	tag	address	correct_symbol	status	other_spellings
 2565	c651	006817c0	?TransformOpinionFromHeroStats@CTCCreatureOpinionOfHero@@QBEMW4EOpinion@@M@Z	closed	
 2566	c651	00a242c0	?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z	closed	
 2567	c651	00a03be0	?SetAsNull@CInputEvent@@QAEXXZ	closed	
-2568	c651	00a03b40	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	partial	?GetType@InputEvent@NativeInput@@QBE?AW4EInputEventType@2@XZ
+2568	c651	00a03b40	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	closed	
 2569	c651	00a03b50	?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ	partial	?GetDevice@CInputEvent@@QBEJXZ
 2570	c651	00a03b70	?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	closed	
 2571	c651	00a03b30	??1CInputEvent@@QAE@XZ	closed	
@@ -3772,7 +3772,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4290	cx11m	009fa280	?Initialise@CTexture@@QAE_NABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@_N3@Z	closed	
 4291	cx11m	009fa4e0	?CopyFromTexture@CTexture@@QAEXABV1@K@Z	closed	
 4292	cx11m	00a03b30	??1CInputEvent@@QAE@XZ	closed	
-4293	cx11m	00a03b40	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	partial	?GetType@InputEvent@NativeInput@@QBE?AW4EInputEventType@2@XZ
+4293	cx11m	00a03b40	?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ	closed	
 4294	cx11m	00a03b70	?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	closed	
 4295	cx11m	00a04410	??0CInputEvent@@QAE@XZ	closed	
 4296	cx11m	00a0b560	?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	closed	
@@ -4580,7 +4580,7 @@ line	tag	address	correct_symbol	status	other_spellings
 5188	land0411zg	00c1e990	?GetBlockTail@CStreamBlockReader@@...	open	?GetStreamBlockTail@@YIJPAVCStreamBlockReader@@JJ@Z
 5190	land0411zg	00861d00	?OnDeactivate@CModeStandBase@@UAEXXZ	partial	?CMode_Base_OnActivate@@YIXPAX@Z || ?DragonRearUpBase_861d00@@YIXPAUCModeDragonRearUp@@@Z || ?DragonRear_BaseActivate@@YIXPAUCModeDragonRearUp@@@Z || ?OnDeactivate@CModeStandBase@NCreatureMode@@QAEXXZ || ?StandDeactivate@ModeScreamer@@QAEXXZ
 5191	land0411zg	008621a0	?OnActivate@CModeStandBase@@UAEXXZ	partial	?BaseMode_OnActivate@@YIXPAX@Z || ?OnActivate@CModeStandBase@@QAEXXZ || ?OnActivate@CModeStandBase@NCreatureMode@@QAEXXZ
-5192	land0411zh	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	TransferIn
+5192	land0411zh	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	?TransferIn@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z || TransferIn
 5193	land0411zh	009e9080	?TransferIn@?$CPersistTraits@E@@QAEXAAVCPersistContext@@AAVCStringParser@@AAE@Z	closed	
 5194	land0411zh	005d8167	?TransferIn@?$CPersistTraits@J@@QAEXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	closed	
 5195	land0411zh	009e84d0	?TransferIn@?$CPersistTraits@VC3DVector@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVC3DVector@@@Z	closed	
@@ -4594,7 +4594,7 @@ line	tag	address	correct_symbol	status	other_spellings
 5210	land0411zj	004045c0	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	closed	
 5211	land0411zj	00671be0	??$__unique_copy@PAW4ENavigatorType@@PAW41@U?$equal_to@W4ENavigatorType@@@std@@@std@@YIPAW4ENavigatorType@@PAW41@00U?$equal_to@W4ENavigatorType@@@0@@Z	open	??$__unique_copy@PAW4ENavigatorType@@PAW41@U?$equal_to@W4ENavigatorType@@@std@@@std@@YIPAW4ENavigatorType@@PAW41@00U?$equal_to@W4ENavigatorType@@@0@ABUforward_iterator_tag@0@@Z
 5212	land0411zj	006724b0	??$TransferVector@W4ENavigatorType@@@CPersistContext@@QAEXAAV?$vector@W4ENavigatorType@@V?$allocator@W4ENavigatorType@@@std@@@std@@@Z	closed	
-5213	land0411zj	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	TransferIn
+5213	land0411zj	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	?TransferIn@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z || TransferIn
 5214	plan_p2	004365b0	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	partial	?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@ABK@Z || ?LowerBound@CInterfaceMap@@QBEPAUSEntry@1@PBJ@Z || ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z || ?LowerBound@CInterfaceMap@CThing@@QAEPAUSEntry@12@PBJ@Z || ?LowerBound@CTCInterfaceMap@@QBEPAUCTCInterfaceEntry@@ABJ@Z || ?LowerBound@CTCMap@@QBEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@@PBW4ETCInterfaceType@@@Z || ?LowerBound@CTCMap@@QBEPAUCTCE
 5215	s6w1	00403750	??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ	open	?ReleaseData@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXXZ
 5216	s6w1	004057a0	??1?$CCountedPointer@VCFontBank@@@@QAE@XZ	open	?ReleaseData@?$CCountedPointer@VCFontBank@@@@QAEXXZ
@@ -4830,7 +4830,7 @@ line	tag	address	correct_symbol	status	other_spellings
 6541	land0711e	00a0d390	?SetHandled@CProcessedInput@@QAEXXZ;	open	?SetAsPerformedEvent@CProcessedInput@@QAEXXZ
 6543	land0711e	005fb140	?PanMap@CTCInventoryMap@@QAEXUCMousePosition@@@Z	partial	?PanMap@CTCInventoryMap@@QAEXVC2DVector@@@Z
 6544	land0711e	00687cf0	?IsEventGameAction@CInputProcessYesNoQuestion	open	?IsEventGameAction@CInputProcessGameBase@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
-6545	land0711e	00a043a0	?GetJoystickPosition@InputEvent@NativeInput;	open	?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ || ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ || ?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ || ?GetJoystickPosition@InputEvent@NativeInput@@QBE?AUVector2@2@XZ
+6545	land0711e	00a043a0	?GetJoystickPosition@InputEvent@NativeInput;	open	?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ || ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ || ?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ
 6546	land0711e	00a043d0	?GetMovement@CInputEventCalls@@QAE?AVC3DVector@@XZ	open	?GetMouseMovement@CInputEvent@@QBE?AVC3DVector@@XZ
 6547	land0711e	00a03b90	?MarkAsUsed@CInputEvent@@QBEXXZ	open	?GetJoystickButton@CInputEvent@@QBEJXZ
 6548	land0711e	004376b0	?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ	open	?SetMoneyAsDisplaying@CPlayerGui@@QAEXXZ
@@ -5517,7 +5517,7 @@ line	tag	address	correct_symbol	status	other_spellings
 7475	land1011at	009d49f0	?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	closed	
 7478	land1011au	00995030	?Read2DVector@CDataInputStream@@QAE?AVC2DVector@@XZ	partial	?Fetch@ObjA@@QAEPAHPAUSVec2@@@Z || ?Read@CMemoryDataInputStream@@QAEXPAVC2DVector@@@Z || ?ReadC2DVector@CMemoryDataInputStream@@QAE?AVC2DVector@@XZ
 7482	land1011au	00f336f0	??0CConversation@@QAE@XZ	partial	??0CConversation
-7484	land1011au	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	TransferIn
+7484	land1011au	009e2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	partial	?TransferIn@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z || TransferIn
 7485	land1011av	00478743	??1?$_Vector_base@VCAbilityTrackLevelDef@@V?$allocator@VCAbilityTrackLevelDef@@@std@@@std@@QAE@XZ	partial	OnReadFinished
 7486	land1011av	00445940	?GetNumberOfAssignableSpecialMoveButtons@CGamePlayerInterface@@QBEJXZ	closed	
 7487	land1011av	004ed07d	?resize@?$vector@VCShopItemDef@@V?$allocator@VCShopItemDef@@@std@@@std@@QAEXIABVCShopItemDef@@@Z	closed	
@@ -8346,8 +8346,8 @@ line	tag	address	correct_symbol	status	other_spellings
 10481	land1117fu	00c1f4e0	?InsertDriver@CEventTriggerRef@@QAEJKPAX@Z	closed	
 10483	land1117fu	00b8e690	?DeleteData@?$CCountedPointer@VCVertexBufferWin32@@@@SIXPAX@Z	closed	
 10489	land1117fu	00625940	?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ	closed	
-10490	land1117fu	00690fd0	?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ	open	ProcessInput
-10491	land1117fu	00690030	?OnSpecialAbilityButtonPressed@CTCInventoryAbilities@@QAEXJ@Z	open	ProcessInput
+10490	land1117fu	00690fd0	?IsQuitting@CTCQuickAccessMenu@@QBE_NXZ	open	?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+10491	land1117fu	00690030	?OnSpecialAbilityButtonPressed@CTCInventoryAbilities@@QAEXJ@Z	open	?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 10492	land1117fu	00931f00	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingBuilding@@@@@@YI_NABV?$CIntelligentPointer@VCThingBuilding@@@@@Z	no_binding	
 10493	land1117fu	00692bc0	?GetFrameUpdateTime@CCreatureActionBase@@MBEMXZ	closed	
 10494	land1117fu	006a0150	??0CCreatureAction_UnsheatheItemFromInventory@@QAE@AAVCThingCreatureBase@@AAVCThing@@PAVCCreatureActionBase@@J@Z	closed	
@@ -9738,7 +9738,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12067	land1120nf170	005ea000	?GetDef@CTCTavernGame@@QAEXPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z	partial	?GetTavernGameDef@CTCTavernGameCardBase@@QAEXPAUCDefPointer@@@Z
 12068	land1120nf170	00443f90	?Resize@CRetailHandleVector@@QAEXJ@Z	open	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z
 12069	land1120nf171	00637a10	?RemoveThing@CThingMapManager@NThingMap@@QAEXAAVCTCMapwho@@@Z	partial	DestroyMapwhoNode
-12070	land1120nf171	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	open	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || ?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
+12070	land1120nf171	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	partial	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
 12075	land1120nf172	00499c50	?DisplayProgress@CProgressDisplay@@UAEXABVCCharString@@M_N1@Z	closed	
 12076	land1120nf172	00a5d620	?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@K@Z	closed	
 12077	land1120nf172	00b5bd70	?CaptureEnvironmentParameters@CEngineScreenEffectRadialBlurRenderer@@AAEXXZ	closed	
@@ -9953,7 +9953,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12415	land1122p26	006626a0	?SetHiddenOnMiniMap@CThingCreatureBase@@QAEX_N@Z	closed	
 12416	land1122p26	00687c80	?IsEventQuickAccessItemButton@CInputProcessGameBase@@IBE_NABVCInputEvent@@AAJ@Z	partial	?Run@T@@QAEXXZ
 12417	land1122p26	00687d10	?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z	closed	
-12418	land1122p26	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	open	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || ?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
+12418	land1122p26	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	partial	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
 12419	land1122p26	0068f470	?ProcessCombatInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
 12420	land1122p26	00698540	?UpdateEarthquake@CGameCameraManager@@AAEXXZ	closed	
 12421	land1122p26	006a2a10	?LowerBound@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QBEPBU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@ABJ@Z	partial	?LowerBound@CCarrySlotMap@@QAEPAUSCarrySlotEntry@@ABJ@Z || ?LowerBound@CCarrySlotMap@@QBEPBUSCarrySlotEntry@@ABJ@Z
@@ -10931,43 +10931,54 @@ line	tag	address	correct_symbol	status	other_spellings
 13823	nf476	009612e0	?Initialise@CAIStateGroup_BanditKingLunge@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	closed	
 13824	nf477	0048cea0	??_GCInputProcessZTarget@@UAEPAXI@Z	no_binding	
 13825	nf477	0048d680	??_GCInputProcessCombat@@UAEPAXI@Z	no_binding	
-13826	nf477	00687db0	?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z	no_binding	
+13826	nf477	00687db0	?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z	closed	
 13827	nf477	00687df0	??_GCInputProcessGameBase@@UAEPAXI@Z	no_binding	
-13828	nf477	00687f80	?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
-13829	nf477	00689130	?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13830	nf477	006896a0	?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13831	nf477	006896b0	?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13832	nf477	00689810	?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13833	nf477	00689970	?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13834	nf477	00689ad0	?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13835	nf477	00689ae0	?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13836	nf477	00689af0	?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13837	nf477	00689b00	?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13838	nf477	00689c10	?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13839	nf477	00689c30	?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
-13840	nf477	00689c40	?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13828	nf477	00687f80	?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13829	nf477	00689130	?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13830	nf477	006896a0	?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13831	nf477	006896b0	?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13832	nf477	00689810	?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13833	nf477	00689970	?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13834	nf477	00689ad0	?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13835	nf477	00689ae0	?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13836	nf477	00689af0	?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13837	nf477	00689b00	?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13838	nf477	00689c10	?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13839	nf477	00689c30	?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	closed	
+13840	nf477	00689c40	?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
 13841	nf477	0068ae30	?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
 13842	nf477	0068b2e0	?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
 13843	nf477	0068b7c0	?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13844	nf477	0068c880	?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13845	nf477	0068cb70	?Init@CInputProcessControlFreeCamera@@UAEXXZ	no_binding	
-13846	nf477	0068d830	?Init@CInputProcessControlCreatureRightStick@@UAEXXZ	no_binding	
-13847	nf477	0068d840	?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z	no_binding	
-13848	nf477	0068d890	?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13849	nf477	0068eb10	?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z	no_binding	
-13850	nf477	0068f320	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13851	nf477	00690030	?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13852	nf477	00690390	?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
-13853	nf477	00690480	?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13854	nf477	00690830	?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13855	nf477	00690ac0	?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ	no_binding	
-13856	nf477	00690b20	?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13857	nf477	00690d20	?Init@CInputProcessParalysed@@UAEXXZ	open	?Init@CInputProcessParalysed_Methods@@QAEXXZ
-13858	nf477	00690e70	?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13859	nf477	00690fd0	?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13844	nf477	0068c880	?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13845	nf477	0068cb70	?Init@CInputProcessControlFreeCamera@@UAEXXZ	closed	
+13846	nf477	0068d830	?Init@CInputProcessControlCreatureRightStick@@UAEXXZ	closed	
+13847	nf477	0068d840	?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z	closed	
+13848	nf477	0068d890	?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13849	nf477	0068eb10	?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z	closed	
+13850	nf477	0068f320	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13851	nf477	00690030	?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13852	nf477	00690390	?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13853	nf477	00690480	?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13854	nf477	00690830	?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13855	nf477	00690ac0	?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ	closed	
+13856	nf477	00690b20	?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13857	nf477	00690d20	?Init@CInputProcessParalysed@@UAEXXZ	closed	
+13858	nf477	00690e70	?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13859	nf477	00690fd0	?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
 13860	nf477	00691130	?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13861	nf477	00691680	?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13862	nf477	00691870	?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
-13863	nf477	006a4700	?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
-13864	nf477	006a9170	?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
+13861	nf477	00691680	?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13862	nf477	00691870	?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13863	nf477	006a4700	?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
+13864	nf477	006a9170	?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
 13865	nf477	006a91d0	??_GCInputProcessControlSpirit@@UAEPAXI@Z	no_binding	
+13867	nf478	0048cec0	??1CInputProcessZTarget@@UAE@XZ	no_binding	
+13868	nf478	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	partial	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
+13869	nf478	008023c0	?SetAsTargetNextThingInDirection@CTCTargetingPlayer@@QAEXW4ETargetNextThingMethod@1@@Z	closed	
+13870	nf478	0068ae30	?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13871	nf478	0068b2e0	?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13872	nf478	0068b7c0	?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13873	nf478	00691130	?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13874	nf478	0048cea0	??_GCInputProcessZTarget@@UAEPAXI@Z	no_binding	
+13875	nf478	0048d680	??_GCInputProcessCombat@@UAEPAXI@Z	no_binding	
+13876	nf478	00687df0	??_GCInputProcessGameBase@@UAEPAXI@Z	no_binding	
+13877	nf478	006a91d0	??_GCInputProcessControlSpirit@@UAEPAXI@Z	no_binding	

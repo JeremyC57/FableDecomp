@@ -204098,7 +204098,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00687db0'
-        Module = 'CInputProcessMain'
+        Module = 'CInputProcessGameBase'
         Source = '00/68/CInputProcessMain_IsEventFromPlayerDevice_00687db0.cpp'
         TestSource = '00/68/CInputProcessMain_IsEventFromPlayerDevice_00687db0_test.cpp'
         PassPattern = '00687db0_TEST PASS'

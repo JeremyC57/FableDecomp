@@ -1,0 +1,7 @@
+source	address	unit	reason
+nf319	0x0068CB70	port	0068cb70 skipped-port ?Init@CInputProcessControlFreeCamera@@UAEXXZ the base class model does not declare the virtual (override probe FAIL: work/probe.log); retail puts it at a base slot (vtslot.py), so an add-only declar
+nf319	0x00690D20	port	00690d20 skipped-port ?Init@CInputProcessParalysed@@UAEXXZ the base class model does not declare the virtual (override probe FAIL: work/probe.log); retail puts it at a base slot (vtslot.py), so an add-only declaration in
+nf323	0x0068CB70	port	0068cb70 skipped-port base class model lacks the virtual (NF319 override probe FAIL); RTTI puts it at base slot 2: declaring it in the base model is a base class-model port, not an add-only override 
+nf323	0x00690D20	port	00690d20 skipped-port base class model lacks the virtual (NF319 override probe FAIL); RTTI puts it at base slot 2: declaring it in the base model is a base class-model port, not an add-only override 
+nf324	0x0068D830	port	0068d830 skipped-port ?Init@CInputProcessControlCreatureRightStick@@UAEXXZ triage (header): model: engine/CInputProcessControlCreatureRightStick.h does not declare Init (add-only opt-in)
+nf324	0x006A9170	port	006a9170 skipped-port ?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z triage (header): model: engine/CInputProcessControlSpirit.h does not declare ProcessInput (add-only opt-in)

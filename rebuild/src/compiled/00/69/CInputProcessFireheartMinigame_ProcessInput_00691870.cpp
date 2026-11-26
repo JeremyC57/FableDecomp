@@ -1,5 +1,9 @@
 // CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- feed the hero's fireheart minigame: the stick (game action 0x3C) past +-0.5 on Y then X sends inputs 0/2/1/3; a press of 0x2C quits (unless already quitting), 0x16 / 0x17 answer yes / no, and game action 3 queues game event 0x1A (0x17, true) when the hero has component 0xC6
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessFireheartMinigame@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessFireheartMinigame.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
@@ -8,9 +12,13 @@
 // Layout: engine/CInputProcessFireheartMinigame.h is a flattened view (base +0x04..+0x28); the game-base methods need
 // the CInputProcessGameBase base, modelled as in the landed CInputProcessOracleMinigame 0x00691680.
 #include "fable_compiler.h"
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -85,10 +93,7 @@ class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CInputProcessFireheartMinigame : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessFireheartMinigame.h"
 
 void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

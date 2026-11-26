@@ -1,0 +1,111 @@
+addr       parity           behav  name
+00687f80   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00687f80   RELOCATION_MATCH PASS   ProcessInput
+00689c40   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00689c40   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00689c40   RELOCATION_MATCH PASS   ProcessInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc (engine/CTBaseSingletonNoDefaultAlloc.h)
+0068c880   WARN SHARED_HEADER_AVAILABLE CPlayerGui (engine/CPlayerGui.h)
+0068c880   WARN RELOC_NAME: ?CanCancel@CPlayerGuiQuestion@@QAE_NXZ -> 0048db98 labelled '_global::Forward_operator___member0x6c_0048db98'
+0068c880   RELOCATION_MATCH PASS   ProcessInput
+0068d890   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0068d890   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+0068d890   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068d890   WARN SHARED_HEADER_AVAILABLE CGameCameraManager (engine/CGameCameraManager.h)
+0068d890   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase (engine/CAIGameCameraBase.h)
+0068d890   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0068d890   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068d890   WARN RELOC_CONFLICT: ?PushLookAround@CGameCameraManager@@QAEXXZ -> 00699970 here, 00699a50 in landed 007d34a0
+0068d890   RELOCATION_MATCH PASS   ProcessInput
+0068f320   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+0068f320   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+0068f320   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0068f320   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0068f320   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0068f320   WARN SHARED_HEADER_AVAILABLE CTCHeroRangedAttacks (engine/CTCHeroRangedAttacks.h)
+0068f320   RELOCATION_MATCH PASS   ProcessInput
+00690030   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690030   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface (engine/CGamePlayerInterface.h)
+00690030   RELOCATION_MATCH PASS   ProcessInput
+00690390   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690390   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690390   RELOCATION_MATCH PASS   ProcessInput
+00690480   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690480   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690480   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu (engine/CTCInGameMenu.h)
+00690480   WARN RELOC_NAME: ?IsListReceivingInputA@CTCInGameMenu@@QAE_NXZ -> 0047d6f2 labelled 'CTCInGameMenu::IsSaveComponentReceivingInput'
+00690480   RELOCATION_MATCH PASS   ProcessInput
+00690830   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690830   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+00690830   RELOCATION_MATCH PASS   ProcessInput
+00690b20   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CTCFishing (engine/CTCFishing.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690b20   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690b20   RELOCATION_MATCH PASS   ProcessInput
+00690e70   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690e70   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00690e70   WARN SHARED_HEADER_AVAILABLE CInputEvent (engine/CInputEvent.h)
+00690e70   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00690e70   RELOCATION_MATCH PASS   ProcessInput
+00690fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00690fd0   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00690fd0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00690fd0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00690fd0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00690fd0   RELOCATION_MATCH PASS   ProcessInput
+00691680   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CTCOracleMinigame (engine/CTCOracleMinigame.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00691680   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00691680   RELOCATION_MATCH PASS   ProcessInput
+00691870   WARN SHARED_HEADER_AVAILABLE CGameEvent (engine/CGameEvent.h)
+00691870   WARN SHARED_HEADER_AVAILABLE CProcessedInput (engine/CProcessedInput.h)
+00691870   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00691870   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00691870   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+00691870   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+00691870   RELOCATION_MATCH PASS   ProcessInput
+006a4700   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 15
+  00687f80 RELOCATION_MATCH CInputProcessConsole::?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00689c40 RELOCATION_MATCH CInputProcessInventoryStatsScreen::?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  0068c880 RELOCATION_MATCH CInputProcessYesNoQuestion::?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  0068d890 RELOCATION_MATCH CInputProcessControlCreatureRightStick::?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  0068f320 RELOCATION_MATCH CInputProcessProjectileTargetingAnalogueZoom::?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690030 RELOCATION_MATCH CInputProcessSpecialAbilities::?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690390 RELOCATION_MATCH CInputProcessFirstPersonTargeting::?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690480 RELOCATION_MATCH CInputProcessInGameMenu::?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690830 RELOCATION_MATCH CInputProcessTavernGame::?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690b20 RELOCATION_MATCH CInputProcessFishing::?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690e70 RELOCATION_MATCH CInputProcessBoastUI::?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00690fd0 RELOCATION_MATCH CInputProcessQuickAccessMenu::?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00691680 RELOCATION_MATCH CInputProcessOracleMinigame::?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00691870 RELOCATION_MATCH CInputProcessFireheartMinigame::?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  006a4700 RELOCATION_MATCH CInputProcessJumpingAndRolling::?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z

@@ -413,7 +413,6 @@ T1	other	CCompressorZlib	3	2	engine/CCompressorZlib.h	00a3a7d0 00a3a9c0 00a3aa00
 T1	other	CDefString	3	6	engine/CDefString.h	0044fc00 004b7980 005fa740
 T1	other	CEngineStaticMapFileBlockManager	3	5	engine/CEngineStaticMapFileBlockManager.h	00be0400 00be04f0 00be06b0
 T1	other	CFileInstaller	3	2	engine/CFileInstaller.h	009c3590 009c3ae0 009c4120
-T1	other	CInputEvent	3	4	engine/CInputEvent.h	00a03b40 00a03b50 00a043a0
 T1	other	CObjectCacheGroupCollection	3	2		00bde190 00bdeb50 012a7ddc
 T1	other	CParentDefClassBase	3	7	engine/CParentDefClassBase.h	00430370 00431ed0 0046ee98
 T1	other	CPersistTraits	3	3	engine/CPersistTraits.h	0040fef0 00615e70 006782b0
@@ -465,6 +464,7 @@ T1	other	CFadeInFadeOutBase	2	5	engine/CFadeInFadeOutBase.h	004348d0 00436560
 T1	other	CFrameData	2	3		009ff220 0129c89c
 T1	other	CGameScriptInterface	2	4	engine/CGameScriptInterface.h	006e7510 006e7530
 T1	other	CHeroSoulsCreatureDef	2	1	engine/CHeroSoulsCreatureDef.h	00f270d0 00f27650
+T1	other	CInputEvent	2	3	engine/CInputEvent.h	00a03b50 00a043a0
 T1	other	CIsThingConscious	2	3	engine/CIsThingConscious.h	00ef7ab0 012c2fe8
 T1	other	CLandscapeBackgroundLoadTask	2	2		00bdc000 00bf8c10
 T1	other	CLightningBeam	2	2		007a0770 007a1380
@@ -692,6 +692,7 @@ T1	other	CParticleEmitter	1	1	engine/CParticleEmitter.h	00af0380
 T1	other	CParticleEmitterInfo	1	1		00af1480
 T1	other	CParticleUpdateParamDesc	1	4		0125fee4
 T1	other	CPersistContext	1	6	engine/CPersistContext.h	00404500
+T1	other	CPersistTraitsSLONG	1	1		009e2590
 T1	other	CPhysicalPrimitiveCylinder	1	1		008158d0
 T1	other	CPhysicalPrimitiveSphere	1	1		00814c70
 T1	other	CPhysicsCollisionPointsObject	1	1	engine/CPhysicsCollisionPointsObject.h	008fb170
@@ -939,6 +940,7 @@ T3	standin_alias	CTCGift	2	2	engine/CTCGift.h	008fa2f0 008fa300
 T3	standin_alias	CTCHeroOpinionDeedLog	2	2	engine/CTCHeroOpinionDeedLog.h	006c5a50 006c6010
 T3	standin_alias	CTCHeroSpecialMovement	2	2	engine/CTCHeroSpecialMovement.h	007e0670 007e0700
 T3	standin_alias	CTCInventoryExperience	2	2	engine/CTCInventoryExperience.h	00572672 00572689
+T3	standin_alias	CTCTargetingPlayer	2	2	engine/CTCTargetingPlayer.h	00802370 008023c0
 T3	standin_alias	CTattooDef	2	2	engine/CTattooDef.h	0057fc71 0057fc9c
 T3	standin_alias	C3DAnimFileSequenceChunk	1	1	engine/C3DAnimFileSequenceChunk.h	00aaf800
 T3	standin_alias	C3DAnimationBlendState	1	1	engine/C3DAnimationBlendState.h	00710600
@@ -1079,7 +1081,6 @@ T3	standin_alias	CTCPhysicalShieldSpell	1	1	engine/CTCPhysicalShieldSpell.h	0079
 T3	standin_alias	CTCPhysicsStandard	1	1	engine/CTCPhysicsStandard.h	00724240
 T3	standin_alias	CTCQuestCard	1	1	engine/CTCQuestCard.h	00702560
 T3	standin_alias	CTCStockItem	1	1	engine/CTCStockItem.h	008abbf0
-T3	standin_alias	CTCTargetingPlayer	1	1	engine/CTCTargetingPlayer.h	00802370
 T3	standin_alias	CTCUserActionPointBase	1	1	engine/CTCUserActionPointBase.h	007fec10
 T3	standin_alias	CTCVolumeContainmentTrackerDef	1	1	engine/CTCVolumeContainmentTrackerDef.h	004e189c
 T3	standin_alias	CTCWeapon	1	1	engine/CTCWeapon.h	005da680
@@ -1831,6 +1832,7 @@ T3	other	CHeroMarriageInfo	1	1	engine/CHeroMarriageInfo.h	0057a3a2
 T3	other	CIME	1	1		00404f40
 T3	other	CIcicleData	1	2		008e2fc0
 T3	other	CInitBaseClass	1	4	engine/CInitBaseClass.h	0099a410
+T3	other	CInputProcessGameBase	1	4	engine/CInputProcessGameBase.h	00687d50
 T3	other	CInputProcessManager	1	2	engine/CInputProcessManager.h	00a0d780
 T3	other	CInterestingToVillagersDef	1	1	engine/CInterestingToVillagersDef.h	004d89b4
 T3	other	CIsCookingPot	1	1		00945de0
@@ -5141,7 +5143,6 @@ T3	-	CInputEventPackageVector	1	2		009f6ed0
 T3	-	CInputEventProcessor_00c219f0	1	2		00c219f0
 T3	-	CInputManager	1	2	engine/CInputManager.h	009f4d40
 T3	-	CInputManagerDX_00c088d0	1	2		00c088d0
-T3	-	CInputProcessGameBase_Methods	1	5		00687d50
 T3	-	CInputProcessMain	1	2	engine/CInputProcessMain.h	00687e70
 T3	-	CInstance	1	3		00c38850
 T3	-	CInstanceOwner_00c30840	1	2		00c30840
@@ -5575,7 +5576,6 @@ T3	-	CTCSinglePersonOccupiable	1	4	engine/CTCSinglePersonOccupiable.h	0087c420
 T3	-	CTCSmashableBase	1	2	engine/CTCSmashableBase.h	007eed20
 T3	-	CTCTalk	1	2	engine/CTCTalk.h	004faee0
 T3	-	CTCTargetingAI	1	3	engine/CTCTargetingAI.h	007f59c0
-T3	-	CTCTargetingPlayer_Methods	1	2		008023c0
 T3	-	CTCTavern	1	2		007babe0
 T3	-	CTCTavernGame	1	3	engine/CTCTavernGame.h	005ec0f0
 T3	-	CTCTeleporter	1	2	engine/CTCTeleporter.h	007dff90
@@ -6505,17 +6505,6 @@ T3	emit ??_ECThingBaseDef@@UAEPAXI@Z	(none)	1	1		00677360
 T3	emit ??_ECReactionMatch_Sphere@@UAEPAXI@Z	(none)	1	1		0067c330
 T3	emit ?GetSizeofClass@COpinionReactionManagerDef@@UAEKXZ	(none)	1	1		0067c3b0
 T3	emit ??_ECInputProcessGameBase@@UAEPAXI@Z	(none)	1	1		00687df0
-T3	emit ?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ	(none)	1	1		006896a0
-T3	emit ?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory	(none)	1	1		006896b0
-T3	emit ?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@	(none)	1	1		00689810
-T3	emit ?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInvento	(none)	1	1		00689970
-T3	emit ?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventor	(none)	1	1		00689ad0
-T3	emit ?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NI	(none)	1	1		00689ae0
-T3	emit ?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInvent	(none)	1	1		00689af0
-T3	emit ?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInvent	(none)	1	1		00689c10
-T3	emit ?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInvent	(none)	1	1		00689c30
-T3	emit ?Init@CInputProcessControlCreatureRightStick@@UAEXXZ	(none)	1	1		0068d830
-T3	emit ?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ	(none)	1	1		00690ac0
 T3	emit ?IsAbleToBeAttacked@CCombatAction_GenericBreakOffDrain@@UBE_NXZ	(none)	1	1		00690df0
 T3	emit ??_GCCombatAction_GenericBreakOffDrain@@UAEPAXI@Z	(none)	1	1		00690e10
 T3	emit ?SetHitDirection@CCreatureActionBase@@UAEXVC3DVector@@@Z	(none)	1	1		006927d0
@@ -6530,7 +6519,6 @@ T3	emit ??_GCCreatureAction_UseObject@@UAEPAXI@Z	(none)	1	1		006a0880
 T3	emit ??_ECCreatureAction_UnsheatheItemFromInventory@@UAEPAXI@Z	(none)	1	1		006a08b0
 T3	emit ??_ECCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEPAXI@Z	(none)	1	1		006a08d0
 T3	emit ??_GCCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAEPAXI@Z	(none)	1	1		006a0970
-T3	emit ?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput	(none)	1	1		006a9170
 T3	emit ??_GCInputProcessControlSpirit@@UAEPAXI@Z	(none)	1	1		006a91d0
 T3	emit ??_GCEnvironment@@UAEPAXI@Z	(none)	1	1		006b7360
 T3	emit ?SuspendableProcess@CLevelLoader@@MAEXXZ	(none)	1	1		006c27d0
@@ -8236,29 +8224,10 @@ T3	emit ??_ECEnginePrimitiveSimulationInfo@@UAEPAXI@Z	CIVCountedPointeeBase_Deri
 T3	emit ??_GCEngineInternalPrimitiveText@@UAEPAXI@Z	CIVCountedPointeeBase_Derived_00bc7ab0	1	1		00bc7ab0
 T3	emit ?Transfer@CIdleSchedulerDef@@UAEXAAVCPersistContext@@@Z	CIdleSchedulerDef	1	1		004e6248
 T3	emit ?SetExclusiveMode@CInputManager@@UAE_N_N@Z	CInputManager	1	1	engine/CInputManager.h	009f4e70
-T3	emit ?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	CInputProcessBoastUI	1	1	engine/CInputProcessBoastUI.h	00690e70
-T3	emit ?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	CInputProcessConsole	1	1	engine/CInputProcessConsole.h	00687f80
-T3	emit ?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z	CInputProcessControlCreatureRightStick	1	1	engine/CInputProcessControlCreatureRightStick.h	0068d840
-T3	emit ?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCPr	CInputProcessControlCreatureRightStick	1	1	engine/CInputProcessControlCreatureRightStick.h	0068d890
-T3	emit ?Init@CInputProcessControlFreeCamera@@UAEXXZ	CInputProcessControlFreeCamera_Methods	1	1		0068cb70
-T3	emit ?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedI	CInputProcessFireheartMinigame	1	1	engine/CInputProcessFireheartMinigame.h	00691870
-T3	emit ?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcess	CInputProcessFirstPersonTargeting	1	1	engine/CInputProcessFirstPersonTargeting.h	00690390
-T3	emit ?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	CInputProcessFishing	1	1	engine/CInputProcessFishing.h	00690b20
-T3	emit ?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@	CInputProcessInGameMenu	1	1	engine/CInputProcessInGameMenu.h	00690480
 T3	emit ?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCPr	CInputProcessInventoryExperienceScreen	1	1	engine/CInputProcessInventoryExperienceScreen.h	0068b2e0
 T3	emit ?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessed	CInputProcessInventoryMapScreen	1	1	engine/CInputProcessInventoryMapScreen.h	0068ae30
-T3	emit ?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcess	CInputProcessInventoryStatsScreen	1	1	engine/CInputProcessInventoryStatsScreen.h	00689c40
 T3	emit ?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcess	CInputProcessInventoryTradeScreen	1	1	engine/CInputProcessInventoryTradeScreen.h	0068b7c0
-T3	emit ?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedI	CInputProcessJumpingAndRolling	1	1	engine/CInputProcessJumpingAndRolling.h	006a4700
-T3	emit ?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInpu	CInputProcessOracleMinigame	1	1	engine/CInputProcessOracleMinigame.h	00691680
-T3	emit ?Init@CInputProcessParalysed@@UAEXXZ	CInputProcessParalysed_Methods	1	1		00690d20
-T3	emit ?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@	CInputProcessProjectileTargetingAnalogueZoom	1	1	engine/CInputProcessProjectileTargetingAnalogueZoom.h	0068f320
 T3	emit ?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedI	CInputProcessQuestCompletionUI	1	1	engine/CInputProcessQuestCompletionUI.h	00691130
-T3	emit ?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInp	CInputProcessQuickAccessMenu	1	1	engine/CInputProcessQuickAccessMenu.h	00690fd0
-T3	emit ?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedIn	CInputProcessSpecialAbilities	1	1	engine/CInputProcessSpecialAbilities.h	00690030
-T3	emit ?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@	CInputProcessTavernGame	1	1	engine/CInputProcessTavernGame.h	00690830
-T3	emit ?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z	CInputProcessUseRangedWeaponZLock	1	1	engine/CInputProcessUseRangedWeaponZLock.h	0068eb10
-T3	emit ?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput	CInputProcessYesNoQuestion	1	1	engine/CInputProcessYesNoQuestion.h	0068c880
 T3	RTTI names ??_ECInputTypeKeyboardKeyEvent@@UAEPAXI@Z	CInputTypeBase	1	1		00447a20
 T3	RTTI names ??_GCInputTypeXboxPadButtonEvent@@UAEPAXI@Z	CInputTypeBase	1	1		00447ad0
 T3	RTTI names ??_GCInputTypeXboxPadLeftStickEvent@@UAEPAXI@Z	CInputTypeBase	1	1		00447af0
@@ -8528,7 +8497,6 @@ T3	emit ?LoadWorldFromFile@CWorld@@UAEXAAVCAFile@@J@Z	CWorld_Methods	1	1		0049e2
 T3	emit ??_GCXMVPlayer@@UAEPAXI@Z	CXMVPlayer	1	1	engine/CXMVPlayer.h	009be1b0
 T3	emit ??_GCXMVPlayerBuffers@@UAEPAXI@Z	CXMVPlayerBuffers	1	1	engine/CXMVPlayerBuffers.h	0042db60
 T3	emit ?IsOpen@CMemoryFile@@UBE_NXZ	C_00405d30	1	1		00405d30
-T3	emit ?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInven	C_00689b00	1	1		00689b00
 T3	emit ?PeekWindDirection@CEnvironment@@UBEABVC3DVector@@XZ	C_006b7310	1	1		006b7310
 T3	emit ?PeekSunVector@CEnvironment@@UBEABVC3DVector@@XZ	C_006b7330	1	1		006b7330
 T3	emit ?PeekMoonVector@CEnvironment@@UBEABVC3DVector@@XZ	C_006b7340	1	1		006b7340
@@ -8628,5 +8596,4 @@ T3	emit ?GetSizeofClass@CEngineVideoOptionsDef@@UAEKXZ	T	1	1		00434110
 T3	emit ?IsBlockCounter@CCombatActionBase@@MBE_NXZ	T	1	1		008562d0
 T3	emit ?IsLoaded@CStreamingFontDataBankEntry@@UBE_NXZ	T	1	1		00a5f220
 T3	emit ?IsLoaded@CFontDataBankEntry@@UBE_NXZ	T	1	1		00a63550
-T3	emit ?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@	TargetSelect	1	1		00689130
 T3	emit ?IsRunnable@CAIStateGroup_MazeTutorialBattleTeleport@@UAE_NXZ	TeleportMethods	1	1		00954b50

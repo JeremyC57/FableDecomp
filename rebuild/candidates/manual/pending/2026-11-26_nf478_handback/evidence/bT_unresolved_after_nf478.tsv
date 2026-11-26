@@ -1,0 +1,146 @@
+symbol	retail_target	class_nf477	class_after_nf478
+?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z	00687a70	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?AddToInterface@CInputProcessTargetLockCycleTargets@@UAE_NAAVCInputProcessManager@@@Z	00688c90	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?AddToInterface@CInputProcessTargetLockRightStickTargetSelect@@UAE_NAAVCInputProcessManager@@@Z	00688a60	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?AddToInterface@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z	0068eae0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?AddToInterface@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z	0068eaf0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z	00688d40	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Cleanup@CAInputProcess@@UAEXXZ	00486370	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Cleanup@CInputProcessQuickAccessItems@@UAEXXZ	0068e4d0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?FrameUpdate@CInputProcessPhotojournalCapture@@UAEXXZ	00691ad0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689970	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ	006896a0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ	006896b0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689ae0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689c10	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689ad0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689b00	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689c30	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689af0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ	00689810	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?HasFrameUpdate@CInputProcessPhotojournalCapture@@UBE_NXZ	00486c20	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CAInputProcess@@UAEXXZ	00486360	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Init@CInputProcessBetting@@UAEXXZ	00691550	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Init@CInputProcessBoastUI@@UAEXXZ	00690e60	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Init@CInputProcessControlCreatureRightStick@@UAEXXZ	0068d830	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?Init@CInputProcessControlFreeCamera@@UAEXXZ	0068cb70	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?Init@CInputProcessCreatureMovement@@UAEXXZ	00691d20	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXXZ	00691c20	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessCreditsUI@@UAEXXZ	00691460	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Init@CInputProcessDebugControls@@UAEXXZ	00691fe0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessHeroAbilitiesScreen@@UAEXXZ	0068ad90	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInGameMenu@@UAEXXZ	006907d0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventory@@UAEXXZ	00689da0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryBase@@UAEXXZ	006893b0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryClothing@@UAEXXZ	0068acf0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryExperienceScreen@@UAEXXZ	0068b290	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryMagicScreen@@UAEXXZ	0068c630	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryMapScreen@@UAEXXZ	0068ade0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryQuestsScreen@@UAEXXZ	0068bc20	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryStatsScreen@@UAEXXZ	0068c680	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryTradeScreen@@UAEXXZ	0068b770	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessInventoryWeapons@@UAEXXZ	0068ad40	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessJumpingAndRolling@@UAEXXZ	006a4010	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Init@CInputProcessParalysed@@UAEXXZ	00690d20	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?Init@CInputProcessPhotojournalCapture@@UAEXXZ	00691ac0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Init@CInputProcessQuickAccessMenu@@UAEXXZ	00690fc0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Init@CInputProcessTavernGame@@UAEXXZ	00690820	RESOLVED_BY_bR	RESOLVED_BY_bR
+?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z	00687db0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?PreparePrimitivesForEngine@CAInputProcess@@UBEXABVCEnginePrimitivePrepareInfo@@@Z	00486380	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessBButtonExitMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068c760	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessBetting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691560	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessBlock@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068e2c0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690e70	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessCameraLookAround@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068d790	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessClickPastText@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068c6e0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessCombat@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068fb90	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00687f80	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00688360	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessControlCreatureActivateZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00688260	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessControlCreatureActivateZTargetOnPress@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006882f0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068d890	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessControlFreeCamera@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068cb90	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691d70	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691c50	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessCreditsUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691470	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006909a0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessCycleSpecialCameraModes@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068dbb0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessDead@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00688a00	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessDebugControls@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691fd0	NO_ROW (allowed)	NO_ROW (allowed)
+?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690c70	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691870	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessFirstPerson@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068cac0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessFirstPersonLookAround@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068d700	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690390	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690b20	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessFreezeControls@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068cb60	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessHeroAbilitiesScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689980	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessHeroInformationScreens@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068c6d0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690480	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689df0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessInventoryBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006894c0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessInventoryClothing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006896c0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068b2e0	MISSPELT_ROW (r467b)	NF478_HOLD_R-NF478-1
+?ProcessInput@CInputProcessInventoryMagicScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689c20	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068ae30	MISSPELT_ROW (r467b)	NF478_HOLD_R-NF478-1
+?ProcessInput@CInputProcessInventoryQuestsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068bc70	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689c40	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068b7c0	MISSPELT_ROW (r467b)	NF478_HOLD_R-NF478-1
+?ProcessInput@CInputProcessInventoryWeapons@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689820	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006a4700	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessLightning@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068fed0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessMain@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00687fd0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691680	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessParalysed@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690d30	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessPhotojournalCapture@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691ae0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068f320	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00691130	MISSPELT_ROW (r467b)	NF478_HOLD_R-NF478-1
+?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068e510	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690fd0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690360	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessSetRangedWeaponMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068f180	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessSetRangedWeaponThirdPersonMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068ea60	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690030	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00688a80	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessTargetLockCycleTargets@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689050	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00689130	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00690830	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessToggleViewHeroMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068c7f0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068dd00	NO_ROW (allowed)	NO_ROW (allowed)
+?ProcessInput@CInputProcessUseRangedWeapon@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068f9d0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessInput@CInputProcessUseRangedWeaponZLock@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068eb00	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00486900	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00486930	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	0068c880	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessInput@CInputProcessZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	00688eb0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?ProcessWhilePaused@CAInputProcess@@UBE_NXZ	004863f0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessBetting@@UBE_NXZ	00486ba0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessClickPastText@@UBE_NXZ	004866b0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessConsole@@UBE_NXZ	0048b3a0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessControlFreeCamera@@UBE_NXZ	00486790	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessCreditsUI@@UBE_NXZ	00486b70	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ	00690ac0	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?ProcessWhilePaused@CInputProcessFireheartMinigame@@UBE_NXZ	00486bf0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessHeroInformationScreens@@UBE_NXZ	00486680	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessInGameMenu@@UBE_NXZ	00486a20	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessInventoryBase@@UBE_NXZ	00486500	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessMain@@UBE_NXZ	004863a0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessPhotojournalCapture@@UBE_NXZ	00486c30	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessQuestCompletionUI@@UBE_NXZ	00486b40	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessTavernGame@@UBE_NXZ	00486a50	RESOLVED_BY_bR	RESOLVED_BY_bR
+?ProcessWhilePaused@CInputProcessYesNoQuestion@@UBE_NXZ	004866e0	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Update@CAInputProcess@@UAEXAAVCProcessedInput@@@Z	00486390	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Update@CInputProcessBlock@@UAEXAAVCProcessedInput@@@Z	0068e330	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessControlCreature@@UAEXAAVCProcessedInput@@@Z	006881d0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z	0068d840	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?Update@CInputProcessJumpingAndRolling@@UAEXAAVCProcessedInput@@@Z	006a40b0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessLightning@@UAEXAAVCProcessedInput@@@Z	0068fee0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessQuickAccessItems@@UAEXAAVCProcessedInput@@@Z	0068e450	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessSpecialAbilities@@UAEXAAVCProcessedInput@@@Z	0068ff50	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessTargetLockCycleTargets@@UAEXAAVCProcessedInput@@@Z	00688a20	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessTargetLockRightStickTargetSelect@@UAEXAAVCProcessedInput@@@Z	00688a70	RESOLVED_BY_bR	RESOLVED_BY_bR
+?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z	0068eb10	MISSPELT_ROW (r467b)	RESOLVED_NF478_ACCEPT
+?Update@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z	0068f250	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z	0068f2a0	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+?Update@CInputProcessZTarget@@UAEXAAVCProcessedInput@@@Z	00688c40	RESOLVED_HEAD_ROW	RESOLVED_HEAD_ROW
+__purecall	00bfea08	CRT _purecall	CRT _purecall

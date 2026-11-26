@@ -10,7 +10,12 @@
 //   presence bits +0x20, Dead bit +0x91 (retail CThing); the other members are descriptive offsets read from retail.
 // Shape: SetAsPerformedEvent written in both arms of the scroll-loop if/else (VC tail-merges the calls, and the second use gives
 //   processed esi over the countdown); the current-ability test is a switch with case 0x10 first; the strafe-anim result is a named local.
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessSpecialAbilities@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessSpecialAbilities.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings; IsEventAssignableSpecialMoveButton / GetMouseWheelMovement through the add-only
+//   opt-ins FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTASSIGNABLESPECIALMOVEBUTTON / _GETMOUSEWHEELMOVEMENT). No body change.
 // NF33 (2026-11-16): IsEventGameAction / GetControlMovementFromGameActionEvent respelled to the Ego_r.pdb + FableWin.pdb
 //   CInputProcessGameBase spellings (EGameAction, const; the movement vector by reference).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
@@ -118,30 +123,16 @@ class CGamePlayerInterface { public:
 };
 class CWorld; class CDefinitionManager;
 #include "engine/EGameAction.h"
-class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
-public:
-    virtual void v00();
-    unsigned char           _pad04[0x10];          // +0x04 CAInputProcess
-    CWorld*                 World;                 // +0x14
-    CPlayer*                MyPlayer;              // +0x18
-    CDefinitionManager*     DefinitionManager;     // +0x1c
-    CMainGameComponent*     Component;             // +0x20
-    CGamePlayerInterface*   PGamePlayerInterface;  // +0x24
-protected:
-    bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
-    bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0; NF236: protected const (Ego_r / FableWin IBE)
-public:
-    protected:
-    bool IsEventAssignableSpecialMoveButton(const CInputEvent& event) const;
-    public:
-   // 0x00687C70
-    bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
-    float GetMouseWheelMovement(const CInputEvent& event) const;             // 0x00687D40 (Ego_r + FableWin QBE; NF292, was GetEventScrollAmount)
-};
-class CInputProcessSpecialAbilities : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTASSIGNABLESPECIALMOVEBUTTON   // NF478 overlay opt-ins (Ego_r / FableWin spellings)
+#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_GETMOUSEWHEELMOVEMENT
+#define FABLE_RETAIL_INPUTPROCESS_MOVEMENT
+#include "engine/CInputProcessGameBase.h"
+#include "engine/CInputProcessSpecialAbilities.h"
 
 void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

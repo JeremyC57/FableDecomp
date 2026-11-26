@@ -1,13 +1,24 @@
+// Behaviour test for 0x00689970 CInputProcessHeroAbilitiesScreen::GetPInventory (NF478 respell): links the row object and calls the protected const member through a
+// derived accessor on raw storage; the result must be the PInventory word at +0x34, and the object must be left unchanged.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CInputProcessHeroAbilitiesScreen.h"
 #include <cstdio>
-int __fastcall CInputProcessHeroAbilitiesScreen_GetPInventory(const unsigned char* process)
-{
-    return *reinterpret_cast<const int*>(process + 52);
-}
+#include <cstring>
+struct Probe : CInputProcessHeroAbilitiesScreen {
+    Probe(); // never constructed: the test works on raw storage
+    NInventory::CTCInventoryBase* Ask() const { return CInputProcessHeroAbilitiesScreen::GetPInventory(); }
+};
+static unsigned char g_process[0x80], g_copy[0x80], g_inventory[0x10];
 int main()
 {
-    unsigned char object[56] = {0};
-    *reinterpret_cast<int*>(object + 52) = 0x12345678;
-    if (CInputProcessHeroAbilitiesScreen_GetPInventory(object) == 0x12345678) { std::printf("AUTO_TINY_00689970_TEST PASS\n"); return 0; }
-    std::printf("AUTO_TINY_00689970_TEST FAIL\n");
+    for (int i = 0; i < 0x80; ++i) g_process[i] = (unsigned char)(0xA0 ^ i);
+    void* inv = g_inventory; std::memcpy(g_process + 0x34, &inv, sizeof(inv)); std::memcpy(g_copy, g_process, sizeof(g_process));
+    const Probe* p = (const Probe*)g_process;
+    bool ok = (void*)p->Ask() == inv && !std::memcmp(g_copy, g_process, sizeof(g_process));
+    if (ok) { std::printf("AUTO_TINY_00689970_TEST PASS\n"); return 0; }
+    std::printf("NF478_00689970_TEST FAIL\n");
     return 1;
 }

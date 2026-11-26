@@ -1,5 +1,9 @@
 // CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0x2b / 0x2c tells the hero's fishing component (0xB1) that reel-in / the second fishing button was pressed and marks the input handled; game action 3 (when the hero has component 0xC6) queues game event 0x1a carrying (long 0x17, true)
-// Leaf: ProcessInput
+// Leaf: ?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// NF478 (r467b, NAME_FIXES_QUEUE nf477, 2026-11-26): was the non-virtual ?ProcessInput@CInputProcessFishing@@QAE... on a local class
+//   model; respelt onto engine/CInputProcessFishing.h FABLE_RETAIL_INPUTPROCESS_VTABLE (Ego_r.pdb / FableWin.pdb public virtual, retail
+//   vftable slot 4), so the family vftables 0x00488D10 emits name this row. The base queries come from the retail view of
+//   engine/CInputProcessGameBase.h (the same PDB spellings). No body change.
 // NF64 (round 7, q10652): the local IsEventButtonPressed / Held / Released redeclarations on the derived class are gone; the calls bind
 //   the Ego_r.pdb + FableWin.pdb protected const CInputProcessGameBase members (overlay opt-in FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON).
 // Flags: /GS
@@ -17,9 +21,12 @@
 // Shape: `T* p = 0; if (HasTC) p = GetTC;` gives the `xor esi,esi` preload; the lookup key and both payload values sit
 //   in the dead `event` argument slot (the event itself lives in ebx).
 #include "fable_compiler.h"
-#define FABLE_RETAIL_INPUTPROCESS_GAMEACTIONS   // NF37: the base-class queries (Ego_r/FableWin spellings), hdr/README.md
 #include "engine/EGameAction.h"
-#define FABLE_RETAIL_CINPUTPROCESSGAMEBASE_ISEVENTBUTTON   // NF64 (q10652): protected const base button queries, hdr/README.md
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#define FABLE_RETAIL_INPUTPROCESS_ZTARGET
 #include "engine/CInputProcessGameBase.h"
 class CInputEvent;
 struct CMemoryBuffer {
@@ -78,10 +85,7 @@ class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CInputProcessFishing : public CInputProcessGameBase {
-public:
-    void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
-};
+#include "engine/CInputProcessFishing.h"
 
 void CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {

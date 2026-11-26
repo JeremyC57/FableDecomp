@@ -15470,7 +15470,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00687d40	GetMouseWheelMovement	CInputProcessGameBase	__fastcall	void *	1	uint	1	yes	accepted									
 00687d50	IsGameActionEventInQueue	CInputProcessGameBase	__thiscall	void	3	CPersistContext *,char *,CEngineGraphic *	1	yes	accepted									
 00687d80	IsGameActionEventInQueue	CInputProcessGameBase	__thiscall	bool	4	CInputProcessGameBase *,EGameAction,EInputButtonEventType,float *	1	yes	accepted									
-00687db0	IsEventFromPlayerDevice	CInputProcessMain	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00687db0	IsInputEventToBeSentToThisInputProcess	CInputProcessGameBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00687df0	`scalar_deleting_destructor'	CInputProcessGameBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CLandscapeBackgroundPatch_vectordeletingdestructor_00687df0.cpp
 00687e10	AddManualCameraEvent	CInputProcessMain	__fastcall	void	2	uchar,CProcessedInput *	1	yes	accepted									
 00687e70	AddFreeCameraEvent	CInputProcessMain	__fastcall	void	2	uchar,CProcessedInput *	1	yes	accepted									
