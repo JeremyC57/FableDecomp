@@ -291,7 +291,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 008e8060	CModeBriarRoseConcentrate	OnActivate	1792	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(5v1784)	2	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec4b/differ/008e8060.cpp	original
 008e8e50	_global	GetStrafeAnimationName	416	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand481/differ/008e8e50.cpp	original
 008e9b70	NCreatureMode::CModeStrafe	AnimUpdate	1712	parked	codex pass24 PARKED: The shared model keeps the animation decisions and targets. The prologue, construction order and frame stores still differ from retail.	30	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/008e9b70/008e9b70.cpp	gapscan/boundary
-008eeb40	Mass	ForceToVel	160	parked		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/008eeb40.cpp	original
+008eeb40	Mass	ForceToVel	146	landed (acctB lane, 2026-11-26, MATCH; was: parked; was: length 160)		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry2_sec4/differ/008eeb40.cpp	original
 008f12d0	CTCTavernGameCardBase	ProcessInput	1104	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/008f12d0.cpp	original
 008f18c0	CTCTavernGameCardBase	UpdateHighlightedCard	784	parked	codex pass24 PARKED: The region using the card-definition out-argument allocates different frame slots. The table-space basis and projected card bounds schedule differently.	22	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/008f18c0/008f18c0.cpp	original
 008f1e30	CTCTavernGameCardBase	EnterGame	704	parked	DIFFER(677v692)	3	rebuild/candidates/manual/pending/2026-11-11_linux_handQ11/differ/008f1e30.cpp	original

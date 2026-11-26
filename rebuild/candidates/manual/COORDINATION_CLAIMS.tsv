@@ -632,3 +632,5 @@ date	account	item	kind	status	note
 2026-11-26	B	0x00E2E400	author	done	landed RELOCATION_MATCH PASS: NScript::CV_AmbushScamScript::ResetRandomSpeechTime, 57 bytes
 2026-11-26	B	0x00B6DF50	author	claimed	PDB GetIceForegroundVertexShader on CEngineWaterRenderer; manifest still says the landscape spot-light getter
 2026-11-26	B	0x00B6DF50	author	done	landed MATCH PASS: CEngineWaterRenderer::GetIceForegroundVertexShader, 54 bytes
+2026-11-26	B	0x008EEB40	author	claimed	Mass::ForceToVel; PDB leaf in Ego_r and FableWin; retail extent 146
+2026-11-26	B	0x008EEB40	author	done	landed MATCH PASS: Mass::ForceToVel, 146 bytes

@@ -403856,6 +403856,13 @@ $catalog = @(
         TestSource = '00/b6/CEngineWaterRenderer_GetIceForegroundVertexShader_00b6df50_test.cpp'
         PassPattern = '00b6df50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008eeb40'
+        Module = 'Mass'
+        Source = '00/8e/Mass_ForceToVel_008eeb40.cpp'
+        TestSource = '00/8e/Mass_ForceToVel_008eeb40_test.cpp'
+        PassPattern = '008eeb40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
