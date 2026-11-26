@@ -36,7 +36,10 @@ class CGameCameraManager { public:
 private:
  void UpdateCleanupFlags(); //00697C60 ?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ (Ego_r / FableWin, private; NF93 q11378)
 public:
- void UpdateHeightLimits(); //00699670
+ private:
+ void UpdateHeightLimits();
+ public:
+ //00699670
  private:
  void UpdateCreatureControlAngleXY();
  public:

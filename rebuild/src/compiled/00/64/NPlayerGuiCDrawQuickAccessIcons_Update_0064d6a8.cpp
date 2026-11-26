@@ -67,7 +67,10 @@ class CDrawQuickAccessIcons { public:
     bool            Charging;                      // +0x34
     bool            ChargeComplete;                // +0x35
     float           ChargeFade;                    // +0x38
-    float GetActivationTimeForButton(long ability);   // 0x0064B5C1
+    private:
+    float GetActivationTimeForButton(long ability);
+    public:
+   // 0x0064B5C1
     void Update();
 };
 void CDrawQuickAccessIcons::Update()

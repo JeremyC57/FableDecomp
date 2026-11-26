@@ -44,7 +44,10 @@ class CTCHeroExperience { public:
     std::vector<long> StatExperiencePoints;             // +0x18
     std::vector<long> TrainableStatLevels;              // +0x24 (PDB +0x28)
 
-    void UpdateAbilitiesForAllStats(bool notify);       // 0x006D8AD0
+    private:
+    void UpdateAbilitiesForAllStats(bool notify);
+    public:
+       // 0x006D8AD0
     void OnSerialise(CPersistContext& context, bool);
 };
 

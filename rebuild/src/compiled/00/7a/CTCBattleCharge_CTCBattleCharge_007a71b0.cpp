@@ -167,7 +167,10 @@ public:
     long ChargeDelayFrameCount;                     // +0x8c
     bool CompletedExitModes;                        // +0x90
     CTCBattleCharge(CThing& parent);
-    void Reset();                                   // 0x007A6F00
+    private:
+    void Reset();
+    public:
+                                   // 0x007A6F00
 };
 
 // Naming (NF438 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target

@@ -63,7 +63,10 @@ public:
     long                SubType;                   // +0x1a0
     CActionInputControl Definition;                // +0x1a4
     static CKeyRedefiner* s_pSelected;             // 0x013B8AC8
-    void CancelSelection();                        // 0x00557BD0
+    protected:
+    void CancelSelection();
+    public:
+                        // 0x00557BD0
     bool CanRedefineAction(long key);              // 0x00557960
     void Redefine(const CActionInputControl& control, bool notify);   // 0x00557D20
     void UpdateKeyText();                          // 0x00557A10

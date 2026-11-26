@@ -4,7 +4,7 @@
 // Shape: the first point's X and Y are named float locals (both loaded onto the FPU, then four fstp/fst stores);
 // direct member copies become integer moves. `<` gives `test ah,5 ; jp`, `>` gives `test ah,41h ; jne`; the end
 // pointer is re-read every pass (the box stores may alias it). The first point is used unconditionally.
-// Leaf: GetBounds
+// Leaf: ?GetBounds@CShape@NShape@@IBEXAAVC2DBoxF@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/C3DVector.h"
 class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
@@ -20,7 +20,9 @@ class CShape { public:
     CTCShapeManager*          Owner;
     CRetailVector<C3DVector>  Points;
     CRetailVector<C3DVector*> SelectedPoints;
+    protected:
     void GetBounds(C2DBoxF& box) const;
+    public:
 };
 }
 void NShape::CShape::GetBounds(C2DBoxF& box) const

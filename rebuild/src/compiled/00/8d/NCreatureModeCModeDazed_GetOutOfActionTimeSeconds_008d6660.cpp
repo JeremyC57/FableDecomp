@@ -6,7 +6,7 @@
 class CThingCreatureBase { public:                        // the creature this mode runs on (ParentThing at +0x04 of every mode)
     long  GetOutOfActionRecoveryFrames();          // 0x00662020: def +0xfc through the creature def at +0xe0 (label "Getter_FieldE0_FC")
     float GetStunnedTimeSeconds();                 // 0x00662040: random seconds between def +0x70 and +0x74 (label "GetDazedTimeSeconds", propagated)
-    float GetDazedTimeSeconds();                   // 0x006620A0: random seconds between def +0x7c and +0x80
+    float GetDazedTimeSeconds() const;                   // 0x006620A0: random seconds between def +0x7c and +0x80
 };
 struct CModeBase {                                 // CTCCreatureModeManager::CModeBase (0x68 bytes, vtable 0x012673E8)
     virtual void v00();

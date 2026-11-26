@@ -67,7 +67,7 @@ struct SDoorNode {
 class CTCDoor { public:                                     // interface type 0x26
     unsigned char _pad00[0x0c];
     long          OwnerLock;                         // +0x0c (descriptive)
-    bool IsLockableByOwner();                        // 0x00730610
+    bool IsLockableByOwner() const;                        // 0x00730610
     bool IsClosed();                                 // 0x0082CF40
     void ScriptTriggerOpen(bool open);               // 0x007305D0
 };

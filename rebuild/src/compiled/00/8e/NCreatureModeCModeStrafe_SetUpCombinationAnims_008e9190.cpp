@@ -1,7 +1,7 @@
 // NCreatureMode::CModeStrafe::SetUpCombinationAnims() -- for each of the four combination animations (PROJECTILE_WEAPON_AIM,
 //   _BUILDUP, _PULLBACK, STRAFE_UPPER_BODY): drop the cached counted pointer, then, if the creature has the animation (in any mode),
 //   cache a CAnimEntryLite built from its animation entry
-// Leaf: SetUpCombinationAnims
+// Leaf: ?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9190, 705 bytes (`ret`).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CThingCreatureBase virtual slot 73 (+0x124, HasAnimation(name, bool) -- the landed
 //   CThingAICreature 0x00830F20), CThingCreatureBase::GetAnimFromName(const CCharString&, long) 0x00662A00, operator new 0x00BFEA1A,
@@ -76,7 +76,9 @@ struct CModeStrafe : CModeBase {
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectileBuildUp;    // +0x58
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectilePullBack;   // +0x60
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimStrafeUpperBody;      // +0x68
+    private:
     void SetUpCombinationAnims();
+    public:
 };
 
 void CModeStrafe::SetUpCombinationAnims()

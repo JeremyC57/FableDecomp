@@ -56,7 +56,10 @@ class CAnimateThing { public:
     long AnimDelay;
     unsigned long Interruptable;
     unsigned long CurrentAnimRefreshStamp, LastAnimRefreshStamp;
-    void CalcCachedAnims(); // 0070E2A0
+    private:
+    void CalcCachedAnims() const;
+    public:
+ // 0070E2A0
     void UpdateCachedAnims();
 };
 void CAnimateThing::UpdateCachedAnims()

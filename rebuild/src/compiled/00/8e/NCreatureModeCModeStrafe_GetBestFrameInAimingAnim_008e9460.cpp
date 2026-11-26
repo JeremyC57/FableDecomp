@@ -2,7 +2,7 @@
 //   targeting or locked on, else focus->target when the target is valid, else the driver's forward) -> acos of its normalised Z
 //   as a fraction of a turn, clamped to [1/90, 151/360], mapped onto the aiming animation's frame range as a 0..1 fraction;
 //   returns false when the direction is degenerate
-// Leaf: GetBestFrameInAimingAnim
+// Leaf: ?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@ABE_NAAM@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -126,10 +126,12 @@ namespace NCreatureMode {
 struct CModeStrafe : CModeBase {
     unsigned char _pad1c[0x3c - 0x1c];
     long          AimingNumFrames;                      // +0x3c
-    bool GetBestFrameInAimingAnim(float& frame);
+    private:
+    bool GetBestFrameInAimingAnim(float& frame) const;
+    public:
 };
 
-bool CModeStrafe::GetBestFrameInAimingAnim(float& frame)
+bool CModeStrafe::GetBestFrameInAimingAnim(float& frame) const
 {
     C3DVector focus;
     CRightHandedSet axes;

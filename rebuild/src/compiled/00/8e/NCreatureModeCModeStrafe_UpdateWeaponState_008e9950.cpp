@@ -1,6 +1,6 @@
 // NCreatureMode::CModeStrafe::UpdateWeaponState() -- track the weapon in the creature's primary carrying slot: switch the strafe anims when the carried weapon (or its absence) differs from ActiveWeapon, and again whenever the weapon's usability for the creature flips
 // Grade: RELOCATION_MATCH -- the usability flip is one `(usable && !LastUsable) || (!usable && LastUsable)` test: VC7.1 lays it out as two tests entering one shared SetChangeOfWeapon block (the nested if/else gave two blocks, `usable != LastUsable` and the ternary fold it)
-// Leaf: UpdateWeaponState
+// Leaf: ?UpdateWeaponState@CModeStrafe@NCreatureMode@@AAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9950, 215 bytes (`ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation: inlined const GetInterface for
@@ -83,7 +83,9 @@ struct CModeStrafe : CModeBase {           // vtable 0x01268588
     unsigned char _filter[0x0c];           // +0x2c CAnimFilterOfGroup
     long          ActiveWeapon;            // +0x38
     void SetChangeOfWeapon(CThing* weapon);   // 0x008E9850
+    private:
     void UpdateWeaponState();
+    public:
 };
 
 void CModeStrafe::UpdateWeaponState()

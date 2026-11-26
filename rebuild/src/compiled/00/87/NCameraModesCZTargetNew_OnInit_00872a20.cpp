@@ -70,7 +70,10 @@ public:
     C3DVector     XAxis;                                     // +0xD4
     C3DVector     YAxis;                                     // +0xE0
     long          FramesForTransition;                       // +0xEC
-    void InitialiseTransitionVariables();                    // 0x00872490
+    private:
+    void InitialiseTransitionVariables();
+    public:
+                    // 0x00872490
     virtual void OnInit();
     virtual void UpdateCoordSystem();                        // 0x00872EC0
 };

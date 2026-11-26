@@ -1,5 +1,5 @@
 // NUISystem::CKeyRedefiner::GetActionText(CWideString& text, const CCharString& symbol) const -- the redefiner's action caption: for the movement action the direction's game text (forward / back / left / right by sub-type, the tag itself when the bank has no text), otherwise the symbol's game text (or the symbol) followed by the sub-type number
-// Leaf: ?GetActionText@CKeyRedefiner@NUISystem@@
+// Leaf: ?GetActionText@CKeyRedefiner@NUISystem@@ABEXAAVCWideString@@ABVCCharString@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00558170, 945 bytes of code + the four-entry case table (976 bytes in all),
@@ -127,7 +127,9 @@ public:
     unsigned char           _pad_0x00[0x19c];
     std::list<EGameAction>  Actions;                                                   // +0x19c
     EGameActionSubType      SubType;                                                   // +0x1a0
+    private:
     void GetActionText(CWideString& text, const CCharString& symbol) const;
+    public:
 };
 
 void CKeyRedefiner::GetActionText(CWideString& text, const CCharString& symbol) const

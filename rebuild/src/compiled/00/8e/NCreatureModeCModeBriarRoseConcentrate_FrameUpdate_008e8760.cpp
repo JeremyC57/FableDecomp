@@ -69,7 +69,10 @@ class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x
     CIntelligentPointer<CThingCreatureBase> PTarget;       // +0x78 CIntelligentPointer<CThingCreatureBase>
     unsigned char           Imposters[0x0c];   // +0x80 vector<CIntelligentPointer<CThing> > (12-byte retail vector)
     bool                    Imposter;      // +0x8c
-    bool FindHitEvent();                   // 0x008E79A0
+    private:
+    bool FindHitEvent();
+    public:
+                   // 0x008E79A0
     void FrameUpdate();
 };
 }

@@ -31,7 +31,7 @@ public:
 };
 
 class CContainmentVolume { public:
-    void SaveBinary(CDataOutputStream& out) const;        // 0x00A75400
+    void SaveBinary(CDataOutputStream& out);        // 0x00A75400
 };
 
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };

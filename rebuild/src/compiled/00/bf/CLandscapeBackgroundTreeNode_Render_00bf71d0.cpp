@@ -90,7 +90,10 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
             return (CLandscapeBackgroundSubNodeSplitBranch*)SubNode;
         return 0;
     }
-    void MarkTreeAsInvisibleLastFrame();         // 0x00BF6A30
+    private:
+    void MarkTreeAsInvisibleLastFrame();
+    public:
+         // 0x00BF6A30
     void Render(unsigned long flags);
 };
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:

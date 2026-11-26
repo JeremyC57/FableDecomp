@@ -1,5 +1,5 @@
 // NInventory::CTCInventoryBase::PlayInventoryNoMovementSound() const -- when the game state exists, play the inventory def's no-movement sample non-positionally from the parent thing's sample bank (a CSoundInit with flag 0x20)
-// Leaf: ?PlayInventoryNoMovementSound@
+// Leaf: ?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@ABEXXZ
 // Retail: Fable.exe @ 0x005BD3A0, 100 bytes, `ret` (thiscall, no arguments). Ego_r.pdb
 // Sound manager (agentSND2, 2026-11-10): engine/CASoundManager.h PSoundManager, slot 9 Get2DEmitter (the manager's 2-D
 //   CASoundEmitter, slot 3 PlaySample) and engine/CSoundInit.h (GainFaderBits +0x14); was a local CGameState / CSoundPlayer /
@@ -39,7 +39,9 @@ public:
     CThing*        ParentThing;                         // +0x04 (CTCBase)
     unsigned char  _pad08[0x68 - 0x08];
     CInventoryDef* PDef;                                // +0x68 CDefPointer<const CInventoryDef>::Object
+    private:
     void PlayInventoryNoMovementSound() const;
+    public:
 };
 void CTCInventoryBase::PlayInventoryNoMovementSound() const
 {

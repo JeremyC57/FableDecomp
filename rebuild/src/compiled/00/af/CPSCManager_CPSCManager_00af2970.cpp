@@ -38,7 +38,10 @@ struct CRegisteredPSCMap {                  // CVectorMap<CCharString, CRegister
 
 class CPSCManager { public:
     CRegisteredPSCMap RegisteredPSCs;       // +0x00
-    void RegisterPSCs();                    // 0x00AF8170
+    protected:
+    void RegisterPSCs();
+    public:
+                    // 0x00AF8170
     CPSCManager();
 };
 

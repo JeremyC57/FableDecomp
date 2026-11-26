@@ -1,5 +1,5 @@
 // NAnimationEvents::CManager::SaveBinary(const CWideString& fileName) -- serialise every animation's extra event list (animation id, event count, then each event's index, two flag bits and time) into a memory stream and write it to a new disk file
-// Leaf: SaveBinary
+// Leaf: ?SaveBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F92A0, length 390 bytes (padded to 400), `ret 4`.
 // Ego_r.pdb: `?SaveBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z` (the catalog class "CManager" is this one).
 // Callees: CMemoryDataOutputStream ctor @ 0x00996AF0 / dtor @ 0x00996B30 (manifest "~CCompressedMemoryDataInputStream" is a twin),
@@ -88,7 +88,9 @@ public:
     virtual void v00();
     unsigned char       _pad04[0x28];
     vector<CAnimEvents> ExtraAnimEvents;            // +0x2c
+    private:
     void SaveBinary(const CWideString& fileName);
+    public:
 };
 
 void CManager::SaveBinary(const CWideString& fileName)

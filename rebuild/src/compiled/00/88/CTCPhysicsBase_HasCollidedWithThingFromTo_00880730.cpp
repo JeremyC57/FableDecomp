@@ -27,8 +27,11 @@ class CTCPhysicsBase { public:
                                      CPhysicsCollideResponse& response) const;
     public:
                     // 0x00880640
+    protected:
     bool HasSphereCylinderCollidedAt(const CTCPhysicsBase& other, const C3DVector& pos,
-                                     CPhysicsCollideResponse& response) const;                    // 0x008802B0
+                                     CPhysicsCollideResponse& response) const;
+    public:
+                    // 0x008802B0
     bool HasSphereSphereCollidedAt(const CTCPhysicsBase& other, const C3DVector& pos,
                                    CPhysicsCollideResponse& response) const;                      // 0x008803E0
     bool HasCollidedWithThingFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to,

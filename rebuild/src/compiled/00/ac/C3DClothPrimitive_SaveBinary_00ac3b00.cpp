@@ -25,7 +25,7 @@ private: public:
 };
 
 class CParticleProgram { public:
-    void WriteToFile(CDataOutputStream& out);                   // 0x00AE2230
+    void WriteToFile(CDataOutputStream& out) const;                   // 0x00AE2230
 };
 
 struct SCountBlock;

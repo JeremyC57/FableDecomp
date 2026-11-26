@@ -1,5 +1,5 @@
 // CTCAssassinRush::Reset() -- reset the rush: remember the start position, forget the collided thing, clear the flags, convert the def's trail and rush delays to frames, take the dash distance for the spell level and kill both trail effects if alive
-// Leaf: ?Reset@CTCAssassinRush
+// Leaf: ?Reset@CTCAssassinRush@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -101,7 +101,9 @@ public:
     bool          IsZTargetting;                // +0x9d
     unsigned char _pad9e[2];
     long          RushDelayFrameCount;          // +0xa0
+    private:
     void Reset();
+    public:
 };
 #pragma pack(pop)
 

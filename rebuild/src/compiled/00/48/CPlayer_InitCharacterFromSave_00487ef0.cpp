@@ -98,7 +98,10 @@ class CPlayer { public:
     CWorldMap*      PWorldMap;                          // +0x24
     unsigned char   _pad28[0x34 - 0x28];
     CIntelligentPointer<CThingPlayerCreature> PlayerCharacter;   // +0x34
-    bool LoadPlayerCharacterFromGameState(const NPlayerManager::CPlayerSave& save);   // 0x00487C20
+    private:
+    bool LoadPlayerCharacterFromGameState(const NPlayerManager::CPlayerSave& save);
+    public:
+   // 0x00487C20
     void SetControlledCreature(CThingPlayerCreature* creature);  // 0x00487CF0
     void AddMode(EPlayerMode mode, bool flag);          // 0x006345C0
     bool InitCharacterFromSave(const NPlayerManager::CPlayerSave& save);

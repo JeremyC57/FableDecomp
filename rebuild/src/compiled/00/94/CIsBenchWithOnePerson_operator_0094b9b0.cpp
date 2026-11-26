@@ -79,7 +79,7 @@ public:
 };
 struct CTCUserActionPointBase {
     bool IsActionPointFree() const;                     // 0x007FEBF0
-    long GetNumberOfActionPointsInUse();          // 0x007FEC10
+    long GetNumberOfActionPointsInUse() const;          // 0x007FEC10
 };
 
 class CIsBenchWithOnePerson {

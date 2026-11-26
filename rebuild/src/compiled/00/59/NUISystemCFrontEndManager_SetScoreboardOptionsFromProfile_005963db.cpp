@@ -1,5 +1,5 @@
 // NUISystem::CFrontEndManager::SetScoreboardOptionsFromProfile() -- fill the scoreboard options screen's login, password, proxy IP, proxy port and server port edit boxes from the user profile manager
-// Leaf: ?SetScoreboardOptionsFromProfile@
+// Leaf: ?SetScoreboardOptionsFromProfile@CFrontEndManager@NUISystem@@IAEXXZ
 // Retail: Fable.exe @ 0x005963DB, 373 bytes, plain `ret`.
 // Body: SetScoreboardEditBox (0x0059630E) with CCharString(name) (0x0099EBF0, length -1) and the profile's
 // ScoreBoardUserName / ScoreBoardPassword / ScoreBoardProxyIp copies (CWideString copy 0x0099B720, from
@@ -49,7 +49,9 @@ public:
 namespace NUISystem {
 class CFrontEndManager {
 public:
+    protected:
     void SetScoreboardOptionsFromProfile();
+    public:
 protected:
     void SetScoreboardEditBox(const CCharString& name, const CWideString& text);   // 0x0059630E
     friend struct CFrontEndManager_Test;                 // behaviour-test hook

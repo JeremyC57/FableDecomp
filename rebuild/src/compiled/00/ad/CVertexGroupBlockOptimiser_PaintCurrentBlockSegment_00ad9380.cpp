@@ -1,5 +1,5 @@
 // CVertexGroupBlockOptimiser::PaintCurrentBlockSegment(unsigned long index) -- flood-fill one segment: input block `index` joins the current segment (its index recorded, its groups merged into the segment's last block), then every still-remaining, unassigned input block that intersects the segment is painted recursively
-// Leaf: ?PaintCurrentBlockSegment@CVertexGroupBlockOptimiser@@
+// Leaf: ?PaintCurrentBlockSegment@CVertexGroupBlockOptimiser@@AAEXK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD9380, length 130 bytes, `ret 4`.
 // Callees: CVertexGroupBlock::AddGroupsFrom(const CVertexGroupBlock&) @ 0x00AD9260, CVertexGroupBlock::HasIntersection(const
 // CVertexGroupBlock&) const @ 0x00AD8AF0 (catalog "TreeNodes_HaveIntersection"), itself (recursion).
@@ -70,7 +70,9 @@ struct CVertexGroupBlockOptimiser {                // retail layout (PDB 128 byt
     CRetailVector<long>       CurrentBlockSegmentIndices;         // +0x30
     unsigned long             CurrentBlockSegmentCount;           // +0x3c
     void InsertBlock(unsigned long index, unsigned long* added);
+    private:
     void PaintCurrentBlockSegment(unsigned long index);
+    public:
 };
 void CVertexGroupBlockOptimiser::PaintCurrentBlockSegment(unsigned long index)
 {

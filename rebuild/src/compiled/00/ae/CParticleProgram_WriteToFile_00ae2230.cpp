@@ -1,5 +1,5 @@
 // CParticleProgram::WriteToFile(CDataOutputStream& stream) -- save a particle program: version 333, the raw constraint byte stream, the initial simulation, the render triangle/quad/vertex arrays, the non-simulated positions, the texture coordinates and index arrays, the patch size and bezier flag, the exported particle names, then the simulated and non-simulated groups
-// Leaf: WriteToFile
+// Leaf: ?WriteToFile@CParticleProgram@@QBEXAAVCDataOutputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE2230, length 736 bytes (`ret 4`).
 // Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, WriteFloat @ 0x00993EE0, WriteEBOOL @ 0x00993E30,
 //   WriteNullTerminatedString @ 0x00995AE0, the stream's virtual Write(const void*, long) (slot 4),
@@ -57,7 +57,7 @@ template <class T> class CArray { public:                                     //
 
 class CParticleSimulation { public:
     unsigned char _body[0x80];
-    void WriteToFile(CDataOutputStream& stream);                       // 0x00AE2050
+    void WriteToFile(CDataOutputStream& stream) const;                       // 0x00AE2050
     friend class CParticleProgram;   // as engine/CParticleSimulation.h (the real class befriends it)
 protected: static void __fastcall WriteVectorArray(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
 };
@@ -91,10 +91,10 @@ public:
     CArray<C3DGroup2>             SimGroups;                           // +0xfc
     CArray<C3DGroup2>             NonSimGroups;                        // +0x108
     CMemoryDataOutputStream       Constraints;                         // +0x114
-    void WriteToFile(CDataOutputStream& stream);
+    void WriteToFile(CDataOutputStream& stream) const;
  private: static void __fastcall WriteGroups(CDataOutputStream&, CArray<C3DGroup2> const&); public:  };
 
-void CParticleProgram::WriteToFile(CDataOutputStream& stream)
+void CParticleProgram::WriteToFile(CDataOutputStream& stream) const
 {
     stream.WriteULONG(0x14d);
     stream.WriteULONG(((CMemoryDataOutputStream*)&Constraints)->GetLength());

@@ -101,7 +101,10 @@ class CEngineWorldMap { public:
     long                MapOffsetY;                 // +0x1c
     CArray<CEngineMap*> MapList;                    // +0x20
     _List_node*         VisibleMapList;             // +0x2c (STLport list node pointer)
-    void UnlinkMapFromWorld(CEngineMap* map, long index);   // 0x00B3EE80
+    private:
+    void UnlinkMapFromWorld(CEngineMap* map, long index);
+    public:
+   // 0x00B3EE80
     void DeleteMap(long index);
 };
 

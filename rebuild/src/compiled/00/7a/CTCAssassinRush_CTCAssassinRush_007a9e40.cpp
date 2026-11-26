@@ -171,7 +171,10 @@ public:
     long RushDelayFrameCount;                       // +0xa0
     bool CompletedExitModes;                        // +0xa4
     CTCAssassinRush(CThing& parent);
-    void Reset();                                   // 0x007A9B70
+    private:
+    void Reset();
+    public:
+                                   // 0x007A9B70
 };
 #pragma pack(pop)
 

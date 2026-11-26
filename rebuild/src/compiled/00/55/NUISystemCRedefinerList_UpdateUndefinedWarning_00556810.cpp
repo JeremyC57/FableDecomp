@@ -100,7 +100,7 @@ class CComponent { public:
 };
 
 class CKeyRedefiner : public CComponent { public:
-    bool IsUndefined();                                 // 0x00557940
+    bool IsUndefined() const;                                 // 0x00557940
 };
 
 class CScrollableList : public CComponent { public:

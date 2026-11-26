@@ -1,5 +1,5 @@
 // NCameraModes::CBase::UpdateCameraOcclusion(C3DVector& cameraPosition) -- pull the camera in front of whatever blocks the line from the observed thing's focal point: first test to the camera, then (from the hit) once more, flagging the occlusion
-// Leaf: UpdateCameraOcclusion
+// Leaf: ?UpdateCameraOcclusion@CBase@NCameraModes@@IAEXAAVC3DVector@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084DB30, 224 bytes incl. padding (ret 4).
 // Callees: own virtual slot 6 (+0x18, occlusion enabled), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the camera
@@ -51,7 +51,9 @@ public:
     unsigned char   _pad44[0x5c];
     bool            Occluded;                   // +0xA0
     bool IsCameraOcclusionFromTo(C3DVector* from, C3DVector* to, C3DVector* hit);   // 0x0084D2F0
+    protected:
     void UpdateCameraOcclusion(C3DVector& cameraPosition);
+    public:
 };
 }
 

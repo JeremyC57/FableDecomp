@@ -46,7 +46,10 @@ class CGameMap : public CBaseClassNonCopyable { public:                         
     long               SizeX;                       // +0x1c
     long               SizeY;                       // +0x20
     CGameMap(CWorld* world, CMap* map, const C2DCoordI& size);
-    void Clear();                                   // 0x006B7510
+    private:
+    void Clear();
+    public:
+                                   // 0x006B7510
 };
 
 CGameMap::CGameMap(CWorld* world, CMap* map, const C2DCoordI& size)

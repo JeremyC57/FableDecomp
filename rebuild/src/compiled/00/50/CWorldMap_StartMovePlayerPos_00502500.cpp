@@ -48,7 +48,10 @@ class CWorldMap { public:
     long GetRegionNumberMapIsIn(long map) const;                       protected: // 0x004FC190
     void UnloadRegion(long region, bool b); public:                            // 0x004FEEC0
     void LoadRegion(long region, ELoadType loadType, bool b);          // 0x00500540
-    void UnloadAllMapsExceptPlayerPos();                               // 0x004FF390
+    protected:
+    void UnloadAllMapsExceptPlayerPos();
+    public:
+                               // 0x004FF390
     void StartMovePlayerPos(long player, const C3DVector& pos, ELoadType loadType);
 };
 

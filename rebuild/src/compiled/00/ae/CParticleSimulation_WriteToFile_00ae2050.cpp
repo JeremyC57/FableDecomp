@@ -1,4 +1,5 @@
 // CParticleSimulation::WriteToFile(CDataOutputStream&) -- save the timestep settings, the particle count and positions, the per-particle alphas (raw), then the gravity/wind strengths and the dragging, acceleration and damping settings
+// Leaf: ?WriteToFile@CParticleSimulation@@QBEXAAVCDataOutputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE2050, length 171 bytes (`ret 4`; manifest label correct).
 // Callees: CDataOutputStream::WriteFloat @ 0x00993EE0 (x7), WriteULong @ 0x00993EA0 (x2), WriteBool @ 0x00993E30 (x3),
 //          the stream's virtual Write(const void*, long) (slot 4), the C4DVector array writer @ 0x00AE18C0 (__fastcall
@@ -45,11 +46,11 @@ class CParticleSimulation { public:
     float         DraggingStrength;                // +0x40
     bool          AccelerationEnable;              // +0x44
     float         GlobalDamping;                   // +0x48
-    void WriteToFile(CDataOutputStream& stream);
+    void WriteToFile(CDataOutputStream& stream) const;
 protected: static void __fastcall WriteVectorArray(const C4DVector* vectors, unsigned long count, CDataOutputStream& stream);   // 0x00AE18C0
 };
 
-void CParticleSimulation::WriteToFile(CDataOutputStream& stream)
+void CParticleSimulation::WriteToFile(CDataOutputStream& stream) const
 {
     stream.WriteFloat(Timestep);
     stream.WriteULONG(TimestepChanged);

@@ -34,7 +34,7 @@ public:
 class CGameCameraManager { public:
     unsigned char _pad000[0xb0];
     bool          NoSmoothing;                                     // +0xb0
-    float GetNoControlMovementTime();                              // 0x00697710
+    float GetNoControlMovementTime() const;                              // 0x00697710
 };
 namespace NCameraModes {
 class CTools { unsigned char _body[0x24]; };

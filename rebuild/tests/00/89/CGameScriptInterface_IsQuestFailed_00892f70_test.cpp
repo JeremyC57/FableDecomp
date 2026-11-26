@@ -14,7 +14,7 @@ public:
 class CQuestManager
 {
 public:
-    bool IsQuestFailed(const CCharString& questName);
+    bool IsQuestFailed(const CCharString& questName) const;
 };
 
 class CGameScriptInterface
@@ -29,12 +29,12 @@ public:
 template<class T> class CCountedPointer { public: T* Data; void* Info; };
 template<class T> class CTBaseSingletonNoDefaultAlloc { static CCountedPointer<T> PClass; public: static CCountedPointer<T>& TestPClass() { return PClass; } };
 template<class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
-static CQuestManager* g_ObservedManager;
+static const CQuestManager* g_ObservedManager;
 static const CCharString* g_ObservedQuestName;
 static bool g_Result;
 static unsigned long g_CallCount;
 
-bool CQuestManager::IsQuestFailed(const CCharString& questName)
+bool CQuestManager::IsQuestFailed(const CCharString& questName) const
 {
     g_ObservedManager = this;
     g_ObservedQuestName = &questName;

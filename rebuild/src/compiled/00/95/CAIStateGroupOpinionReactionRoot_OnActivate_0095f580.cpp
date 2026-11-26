@@ -70,7 +70,7 @@ public:
 class CCreatureActionBase { public:
     unsigned char _pad[0x20];
     long LoopCount;                             // +0x20
-    long GetFramesRemaining();                  // 0x006925D0
+    long GetFramesRemaining() const;                  // 0x006925D0
 };
 class CThingCreatureBase { public:
     unsigned char _pad[0x100];

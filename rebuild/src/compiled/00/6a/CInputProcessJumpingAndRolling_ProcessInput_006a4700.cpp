@@ -5,7 +5,10 @@
 class CInputEvent;
 class CProcessedInput;
 class CInputProcessJumpingAndRolling { public:
-    void ProcessRolling(const CInputEvent& event, CProcessedInput& processed);   // 0x006A40D0
+    private:
+    void ProcessRolling(const CInputEvent& event, CProcessedInput& processed);
+    public:
+   // 0x006A40D0
     private:
     void ProcessJumping(const CInputEvent& event, CProcessedInput& processed);
     public:

@@ -63,7 +63,10 @@ public:
 class CTCDExperienceOrb {
 public:
     static CThing* __fastcall Create(long defIndex, const C3DVector& position);
-    void Construct(const C3DVector& position);                    // 0x00779D20
+    private:
+    void Construct(const C3DVector& position);
+    public:
+                    // 0x00779D20
 };
 
 CThing* __fastcall CTCDExperienceOrb::Create(long defIndex, const C3DVector& position)

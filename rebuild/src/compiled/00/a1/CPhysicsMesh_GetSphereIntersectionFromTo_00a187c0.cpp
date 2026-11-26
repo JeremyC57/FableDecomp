@@ -34,8 +34,14 @@ class CPhysicsMesh { public:
     bool GetPointIntersectionFromToUsingSegmentation(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A177A0
     bool GetPointIntersectionFromToUsingFullCollision(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;  // 0x00A17F80
     bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A18760
-    bool GetSphereIntersectionFromToUsingSegmentation(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;    // 0x00A17AF0
-    bool GetSphereIntersectionFromToUsingFullCollision(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;   // 0x00A182C0
+    private:
+    bool GetSphereIntersectionFromToUsingSegmentation(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;
+    public:
+    // 0x00A17AF0
+    private:
+    bool GetSphereIntersectionFromToUsingFullCollision(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;
+    public:
+   // 0x00A182C0
     bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) const;
 };
 

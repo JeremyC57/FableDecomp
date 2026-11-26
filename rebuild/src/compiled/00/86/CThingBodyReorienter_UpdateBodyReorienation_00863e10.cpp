@@ -21,7 +21,10 @@ class CThingBodyReorienter { public:
     long RotationDirection;                             // +0x10 ERotationDirection
     bool HasPossibleIntersectingThings;                 // +0x14
     private: void FillBodyReorientationPossibleIntersecting(); public:   // 0x00863CA0
-    void CheckForNewBodyReorientationAngle();           // 0x008637D0
+    private:
+    void CheckForNewBodyReorientationAngle();
+    public:
+           // 0x008637D0
     private: void GradualReorientBody(); public:                         // 0x00863280
     void ReorientBodyYZForSlopes();                     // 0x008633B0
     void UpdateBodyReorienation();

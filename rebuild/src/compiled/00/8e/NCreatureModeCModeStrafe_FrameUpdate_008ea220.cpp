@@ -73,7 +73,10 @@ struct CModeStrafe : CModeBase {           // vtable 0x01268588
     unsigned char _members[0x28];          // AnimMovementDistance .. AimingCenterFrame (+0x1c..+0x43)
     float         RumbleParam;             // +0x44
     float         PullBackAmount;          // +0x48
-    void UpdateWeaponState();              // 0x008E9950
+    private:
+    void UpdateWeaponState();
+    public:
+              // 0x008E9950
     void FrameUpdate();
 };
 

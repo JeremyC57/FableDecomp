@@ -1,5 +1,5 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::Recover() -- end the tail plunge: kill the live tail emitter, spawn the def's TAIL_DUST_EFFECT special effect at the tail position, kill the creature's dependent things (interface 0xAD) and set a CCreatureAction_ScorpionTailWithdraw towards the target as the creature's current action
-// Leaf: ?Recover@CModeScorpionKingTailPlunge
+// Leaf: ?Recover@CModeScorpionKingTailPlunge@NCreatureMode@@AAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DF510, 304 bytes incl. int3 padding, `ret` (private, thiscall).
@@ -139,7 +139,9 @@ class CModeScorpionKingTailPlunge : public CModeBase { public:
     CIntelligentPointer<CThing> PTarget;            // +0xa1
     CIntelligentPointer<CThing> PTailEmitter;       // +0xa9
     CIntelligentPointer<CThing> PDustTrailEmitter;  // +0xb1
+    private:
     void Recover();
+    public:
 };
 #pragma pack(pop)
 

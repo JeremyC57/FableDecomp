@@ -115,7 +115,10 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroup_UsesSeat {
     bool MoveAndFace(C3DVector pos, float speed, C3DVector facing);
     public:
    // 0x009425F0
-    bool CrouchAndTalk(float seconds);          // 0x009428A0
+    protected:
+    bool CrouchAndTalk(float seconds);
+    public:
+          // 0x009428A0
     protected:
     bool StandAndTalk(float seconds);
     public:

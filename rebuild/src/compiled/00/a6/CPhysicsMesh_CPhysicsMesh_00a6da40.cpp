@@ -85,7 +85,10 @@ public:
     CMovableResourceMemoryPool*                  MemoryPool;                   // +0xbc
     CPhysicsMesh(const C3DMeshFile& file, CMovableResourceMemoryPool* pool);
     virtual ~CPhysicsMesh();
-    void GetMeshDataFromFileData(const C3DMeshFile& file);          // 0x00A6CC10
+    private:
+    void GetMeshDataFromFileData(const C3DMeshFile& file);
+    public:
+          // 0x00A6CC10
     void GetHelperDataFromFileData(const C3DMeshFile& file);        // 0x00A6D0E0
     private:
     void CalculateNavigationLineInfo();

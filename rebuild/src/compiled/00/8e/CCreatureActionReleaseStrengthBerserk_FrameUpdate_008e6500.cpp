@@ -20,7 +20,7 @@ class CTCBase;
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCBerserk { public:                             // interface type 0x84
-    void GetSuperRumble(float& a, float& b, float& c, float& d);   // 0x0078BE70
+    void GetSuperRumble(float& a, float& b, float& c, float& d) const;   // 0x0078BE70
 };
 struct CRumbleParams {                          // 20 bytes
     float Strength;

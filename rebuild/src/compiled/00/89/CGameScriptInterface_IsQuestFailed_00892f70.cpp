@@ -4,7 +4,7 @@ class CCharString;
 class CQuestManager
 {
 public:
-    bool IsQuestFailed(const CCharString& questName);
+    bool IsQuestFailed(const CCharString& questName) const;
 };
 
 class CGameScriptInterface

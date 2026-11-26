@@ -124,8 +124,14 @@ class CModeScorpionKingTailPlunge : public CModeBase { public:
     CIntelligentPointer<CThing> PTailEmitter;      // +0xa9
     CIntelligentPointer<CThing> PDustTrailEmitter; // +0xb1
     void FrameUpdate();
-    void Spike();                               // 0x008DA0F0
-    void Recover();                             // 0x008DF510
+    private:
+    void Spike();
+    public:
+                               // 0x008DA0F0
+    private:
+    void Recover();
+    public:
+                             // 0x008DF510
 };
 #pragma pack(pop)
 

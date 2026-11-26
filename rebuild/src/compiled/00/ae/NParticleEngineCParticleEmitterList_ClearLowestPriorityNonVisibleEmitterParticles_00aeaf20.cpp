@@ -35,7 +35,7 @@ class CParticleEmitter { public:
     unsigned short WaitingToSleep : 1;
     unsigned short Sleeping : 1;                     // bit 10
     unsigned short Emitter2D : 1;
-    bool HasAllocatedParticles() const;              // 0x00AED1B0
+    bool HasAllocatedParticles();              // 0x00AED1B0
     bool HasAllocatedDecals() const;                 // 0x00AED220
     void ClearAllParticles(CIEngine* engine);        // 0x00AED140
     void ClearAllDecals(CIEngine* engine);           // 0x00AED1E0

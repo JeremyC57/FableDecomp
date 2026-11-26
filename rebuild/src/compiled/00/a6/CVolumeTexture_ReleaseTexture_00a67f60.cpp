@@ -1,5 +1,5 @@
 // CVolumeTexture::ReleaseTexture() -- drop the Direct3D volume texture: when this is the last outside reference (AddRef/Release probe returns 2) take its size off the graphics and volume-texture memory counters, then release it and clear the pointer
-// Leaf: ?ReleaseTexture@CVolumeTexture@@
+// Leaf: ?ReleaseTexture@CVolumeTexture@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A67F60, length 132 bytes (padded to 144).
 // Callees: COM AddRef (+0x04) / Release (+0x08, twice).
 // Graphics layer (D3D9, to be replaced): CVolumeTexture vtable 0x0129DC18 = {vptr, IDirect3DVolumeTexture9* PD3DVolumeTexture +0x04,
@@ -58,7 +58,9 @@ class CVolumeTexture { public:                            // vtable 0x0129DC18, 
     }
     void Uninitialise();                           // 0x00A68060
     CVolume GetVolumeLevel(unsigned int level);    // 0x00A67EA0
+    protected:
     void ReleaseTexture();
+    public:
     void CalcByteLength();
     bool InitialiseFromPreallocatedVolumeTexture(IDirect3DVolumeTexture9* texture);
 };

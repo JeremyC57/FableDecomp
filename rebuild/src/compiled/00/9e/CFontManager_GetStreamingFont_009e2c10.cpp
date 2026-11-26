@@ -23,7 +23,7 @@ class CStreamingFontDataBankEntry { public:
     CCountedPointer<CFontBank> AcquireFont() const;   // 0x00A5F1C0
 };
 class CStreamingFontDataBank { public:
-    CStreamingFontDataBankEntry* GetFontInfo(unsigned long index);   // 0x00A5F090
+    CStreamingFontDataBankEntry* GetFontInfo(unsigned long index) const;   // 0x00A5F090
 };
 class CFontDataBank;
 class CFontManager { public:

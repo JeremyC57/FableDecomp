@@ -81,7 +81,10 @@ class CTCCoopSpirit { public:
     void SetAppearanceParticle(const CCharString& name);
     public:
    // 0x006705F0
-    void UpdateMovement();                          // 0x00670820
+    private:
+    void UpdateMovement();
+    public:
+                          // 0x00670820
     private:
     void UpdateLocalJostling();
     public:

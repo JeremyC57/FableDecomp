@@ -240,7 +240,10 @@ public:
     bool                                   InstallationPaused;                // +0xD8
     bool                                   FinalInstallationNeverPause;       // +0xD9
 
-    void SetScoreboardOptionsFromProfile();                       // 0x005963DB
+    protected:
+    void SetScoreboardOptionsFromProfile();
+    public:
+                       // 0x005963DB
     void GotoNextScreen(CComponent* screen, bool clearStack);     // 0x00596763
     void GotoSpecificPreviousScreen(CComponent* screen);          // 0x0059686D
 protected:

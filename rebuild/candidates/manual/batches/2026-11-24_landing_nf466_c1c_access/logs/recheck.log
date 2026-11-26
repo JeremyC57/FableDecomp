@@ -1,0 +1,181 @@
+addr       parity           behav  name
+009432c0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CTCVillage (engine/CTCVillage.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CTCVillageMember (engine/CTCVillageMember.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+009432c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkAtSchool (engine/CAIStateGroup_WorkAtSchool.h)
+009432c0   WARN RELOC_NAME: ?CrouchAndTalk@CAIStateGroup_WorkAtSchool@@IAE_NM@Z -> 009428a0 labelled 'CAIStateGroup_WorkAtSchool::Teach'
+009432c0   WARN RELOC_NAME: ?SitAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z -> 00942820 labelled 'CAIStateGroup_WorkAtSchool::CrouchAndTalk'
+009432c0   RELOCATION_MATCH PASS   Update
+00946850   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase (engine/CThingCreatureBase.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CCreatureAction_UseObject (engine/CCreatureAction_UseObject.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+00946850   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_LightHomeCandle (engine/CAIStateGroup_LightHomeCandle.h)
+00946850   WARN RELOC_NAME: ??1CCreatureAction_UseObject@@UAE@XZ -> 006290e0 labelled '_global::Dtor_CCreatureActionBaseBase_006290e0'
+00946850   RELOCATION_MATCH PASS   Update
+00946c60   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00946c60   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00946c60   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+00946c60   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_LightHomeCandle (engine/CAIStateGroup_LightHomeCandle.h)
+00946c60   RELOCATION_MATCH PASS   operator()
+0094b9b0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0094b9b0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+0094b9b0   WARN SHARED_HEADER_AVAILABLE CTCUserActionPointBase (engine/CTCUserActionPointBase.h)
+0094b9b0   RELOCATION_MATCH PASS   operator()
+009e2ba0   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+009e2ba0   WARN SHARED_HEADER_AVAILABLE CFontDataBankEntry (engine/CFontDataBankEntry.h)
+009e2ba0   WARN SHARED_HEADER_AVAILABLE CFontDataBank (engine/CFontDataBank.h)
+009e2ba0   WARN SHARED_HEADER_AVAILABLE CFontManager (engine/CFontManager.h)
+009e2ba0   WARN RELOC_NAME: ?GetFontInfo@CFontDataBank@@QBEPAVCFontDataBankEntry@@K@Z -> 00a635e0 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+009e2ba0   RELOCATION_MATCH PASS   GetStaticFont
+009e2c10   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+009e2c10   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBankEntry (engine/CStreamingFontDataBankEntry.h)
+009e2c10   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBank (engine/CStreamingFontDataBank.h)
+009e2c10   WARN SHARED_HEADER_AVAILABLE CFontManager (engine/CFontManager.h)
+009e2c10   WARN RELOC_NAME: ?GetFontInfo@CStreamingFontDataBank@@QBEPAVCStreamingFontDataBankEntry@@K@Z -> 00a5f090 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+009e2c10   RELOCATION_MATCH PASS   GetStreamingFont
+00a187c0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00a187c0   WARN SHARED_HEADER_AVAILABLE CPhysicsMesh (engine/CPhysicsMesh.h)
+00a187c0   RELOCATION_MATCH PASS   GetSphereIntersectionFromTo
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4 (engine/CMatrix3x4.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE CContainmentVolume (engine/CContainmentVolume.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DHelperPoint (engine/C3DHelperPoint.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DDummyObject (engine/C3DDummyObject.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DMeshVolume (engine/C3DMeshVolume.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DGeneratorObject (engine/C3DGeneratorObject.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE CPreAllocVectorMap (engine/CPreAllocVectorMap.h)
+00a2eaa0   WARN SHARED_HEADER_AVAILABLE C3DMeshStats (engine/C3DMeshStats.h)
+00a2eaa0   RELOCATION_MATCH PASS   SaveBinary
+00a67f60   WARN SHARED_HEADER_AVAILABLE CVolumeTexture (engine/CVolumeTexture.h)
+00a67f60   RELOCATION_MATCH PASS   ReleaseTexture
+00a68060   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00a68060   WARN SHARED_HEADER_AVAILABLE CVolumeTexture (engine/CVolumeTexture.h)
+00a68060   WARN RELOC_NAME: ?RemoveTexture@CRenderStatistics@@QAEXPAXM@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00a68060   RELOCATION_MATCH PASS   Uninitialise
+00a6da40   WARN SHARED_HEADER_AVAILABLE C3DTriangle2 (engine/C3DTriangle2.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE CVectorMap (engine/CVectorMap.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere (engine/C3DBoundingSphere.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE CCircle (engine/CCircle.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE CIPhysicsFacesSegmentBase (engine/CIPhysicsFacesSegmentBase.h)
+00a6da40   WARN SHARED_HEADER_AVAILABLE CPhysicsMesh (engine/CPhysicsMesh.h)
+00a6da40   RELOCATION_MATCH PASS   CPhysicsMesh
+00ac3b00   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ac3b00   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00ac3b00   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00ac3b00   WARN SHARED_HEADER_AVAILABLE C3DClothPrimitive (engine/C3DClothPrimitive.h)
+00ac3b00   RELOCATION_MATCH PASS   SaveBinary
+00ad9380   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ad9380   WARN RELOC_NAME: ?HasIntersection@CVertexGroupBlock@@QBE_NABV1@@Z -> 00ad8af0 labelled 'TreeNodes_HaveIntersection'
+00ad9380   RELOCATION_MATCH PASS   PaintCurrentBlockSegment
+00ad9b20   WARN SHARED_HEADER_AVAILABLE CVertexGroupBlock (engine/CVertexGroupBlock.h)
+00ad9b20   WARN RELOC_NAME: ?CopyBlocks@@YIPAVCVertexGroupBlock@@PAV1@00ABU__false_type@@PAH@Z -> 00adc0d0 labelled '_global::Copy_SArrayTreePair18_00adc0d0'
+00ad9b20   WARN RELOC_NAME: ?DestroyBlocks@@YIXPAVCVertexGroupBlock@@0ABU__false_type@@@Z -> 00adc190 labelled 'std::__destroy_aux'
+00ad9b20   WARN RELOC_NAME: ??0CGroupToIndexMap@@QAE@ABU0@@Z -> 00a96e40 labelled 'std::map::map'
+00ad9b20   WARN RELOC_NAME: ?_M_erase@CGroupToIndexMap@@QAEXPAUCRbNode@@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad9b20   RELOCATION_MATCH PASS   CalcCurrentBlockSegments
+00ae2050   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00ae2050   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ae2050   WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)
+00ae2050   RELOCATION_MATCH PASS   WriteToFile
+00ae2230   WARN SHARED_HEADER_AVAILABLE C4DVector (engine/C4DVector.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C3DTriangle2 (engine/C3DTriangle2.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C3DQuad2 (engine/C3DQuad2.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE C3DClothRenderVertex (engine/C3DClothRenderVertex.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CDataOutputStream (engine/CDataOutputStream.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream (engine/CMemoryDataOutputStream.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CParticleSimulation (engine/CParticleSimulation.h)
+00ae2230   WARN SHARED_HEADER_AVAILABLE CParticleProgram (engine/CParticleProgram.h)
+00ae2230   RELOCATION_MATCH PASS   WriteToFile
+00aeaf20   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00aeaf20   WARN SHARED_HEADER_AVAILABLE CParticleEmitterList (engine/CParticleEmitterList.h)
+00aeaf20   WARN RELOC_NAME: ?HasAllocatedParticles@CParticleEmitter@NParticleEngine@@QAE_NXZ -> 00aed1b0 labelled 'NParticleEngine::CParticleEmitter::HasAllocatedDecals'
+00aeaf20   RELOCATION_MATCH PASS   ClearLowestPriorityNonVisibleEmitterParticles
+00aeaf80   WARN SHARED_HEADER_AVAILABLE CParticleEmitter (engine/CParticleEmitter.h)
+00aeaf80   WARN SHARED_HEADER_AVAILABLE CParticleEmitterList (engine/CParticleEmitterList.h)
+00aeaf80   RELOCATION_MATCH PASS   ClearLowestPriorityNonVisibleEmitterDecals
+00af2970   WARN RELOC_NAME: ?SortRegisteredPSCs@NParticleEngine@@YIXPAUSRegisteredPSCEntry@1@0UCKeyPairCompareLess@1@@Z -> 00af3b70 labelled '_global::Sort_SElement16_00af3b70'
+00af2970   RELOCATION_MATCH PASS   CPSCManager
+00af8170   WARN SHARED_HEADER_AVAILABLE CPSCRenderSprite (engine/CPSCRenderSprite.h)
+00af8170   WARN SHARED_HEADER_AVAILABLE CPSCSingleSprite (engine/CPSCSingleSprite.h)
+00af8170   WARN SHARED_HEADER_AVAILABLE CPSCUpdateNormal (engine/CPSCUpdateNormal.h)
+00af8170   WARN SHARED_HEADER_AVAILABLE CPSCEmitterGeneric (engine/CPSCEmitterGeneric.h)
+00af8170   WARN SHARED_HEADER_AVAILABLE CPSCLight (engine/CPSCLight.h)
+00af8170   WARN SHARED_HEADER_AVAILABLE CPSCDecalRenderer (engine/CPSCDecalRenderer.h)
+00af8170   RELOCATION_MATCH PASS   RegisterPSCs
+00b40070   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b40070   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b40070   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b40070   RELOCATION_MATCH PASS   AutoBuildWorldMapGrid
+00b42b10   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap (engine/CLocalDetailCacheMap.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer (engine/CEngineLandscapeRenderer.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineLocalDetailGenerator (engine/CEngineLocalDetailGenerator.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineMap (engine/CEngineMap.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CArray (engine/CArray.h)
+00b42b10   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap (engine/CEngineWorldMap.h)
+00b42b10   RELOCATION_MATCH PASS   DeleteMap
+00b619b0   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectGlowRenderer (engine/CEngineScreenEffectGlowRenderer.h)
+00b619b0   WARN RELOC_NAME: ?FinishRender@CEngineScreenEffectGlowRenderer@@QAEXXZ -> 00b5ec90 labelled 'CEngineScreenEffectGlowRenderer::ReleaseGlowTextures'
+00b619b0   RELOCATION_MATCH PASS   Render
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf6a30   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf6a30   RELOCATION_MATCH PASS   MarkTreeAsInvisibleLastFrame
+00bf71d0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox (engine/C3DBoundingBox.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CPlane (engine/CPlane.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CEngineCamera (engine/CEngineCamera.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager (engine/CEngineLandscapeMemoryManager.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeBase (engine/CLandscapeBackgroundSubNodeBase.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode (engine/CLandscapeBackgroundTreeNode.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch (engine/CLandscapeBackgroundPatch.h)
+00bf71d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundSubNodeSplitBranch (engine/CLandscapeBackgroundSubNodeSplitBranch.h)
+00bf71d0   WARN RELOC_NAME: ?GPCamera@NEngineInternal@@3PAVCEngineCamera@@A -> 01436ea0 labelled 'g_pEngineCamera'
+00bf71d0   RELOCATION_MATCH PASS   Render
+
+WINS: 25
+  009432c0 RELOCATION_MATCH CAIStateGroup_WorkAtSchool::?Update@CAIStateGroup_WorkAtSchool@@MAEXXZ
+  00946850 RELOCATION_MATCH CAIStateGroup_LightHomeCandle::Update
+  00946c60 RELOCATION_MATCH CIsCandleNeedingChanging::??RCIsCandleNeedingChanging
+  0094b9b0 RELOCATION_MATCH CIsBenchWithOnePerson::??RCIsBenchWithOnePerson
+  009e2ba0 RELOCATION_MATCH CFontManager::GetStaticFont
+  009e2c10 RELOCATION_MATCH CFontManager::GetStreamingFont
+  00a187c0 RELOCATION_MATCH CPhysicsMesh::GetSphereIntersectionFromTo
+  00a2eaa0 RELOCATION_MATCH C3DMeshStats::?SaveBinary@C3DMeshStats@@QAEXAAVCDataOutputStream@@@Z
+  00a67f60 RELOCATION_MATCH CVolumeTexture::?ReleaseTexture@CVolumeTexture@@IAEXXZ
+  00a68060 RELOCATION_MATCH CVolumeTexture::Uninitialise
+  00a6da40 RELOCATION_MATCH CPhysicsMesh::??0CPhysicsMesh
+  00ac3b00 RELOCATION_MATCH C3DClothPrimitive::SaveBinary
+  00ad9380 RELOCATION_MATCH CVertexGroupBlockOptimiser::?PaintCurrentBlockSegment@CVertexGroupBlockOptimiser@@AAEXK@Z
+  00ad9b20 RELOCATION_MATCH CVertexGroupBlockOptimiser::?CalcCurrentBlockSegments@CVertexGroupBlockOptimiser@@AAEXXZ
+  00ae2050 RELOCATION_MATCH CParticleSimulation::?WriteToFile@CParticleSimulation@@QBEXAAVCDataOutputStream@@@Z
+  00ae2230 RELOCATION_MATCH CParticleProgram::?WriteToFile@CParticleProgram@@QBEXAAVCDataOutputStream@@@Z
+  00aeaf20 RELOCATION_MATCH NParticleEngine::CParticleEmitterList::?ClearLowestPriorityNonVisibleEmitterParticles@CParticleEmitterList@NParticleEngine@@QAEXPAVCIEngine@@@Z
+  00aeaf80 RELOCATION_MATCH NParticleEngine::CParticleEmitterList::?ClearLowestPriorityNonVisibleEmitterDecals@CParticleEmitterList@NParticleEngine@@QAEXPAVCIEngine@@@Z
+  00af2970 RELOCATION_MATCH CPSCManager::??0CPSCManager
+  00af8170 RELOCATION_MATCH NParticleEngine::CPSCManager::?RegisterPSCs@CPSCManager@NParticleEngine@@IAEXXZ
+  00b40070 RELOCATION_MATCH CEngineWorldMap::?AutoBuildWorldMapGrid@CEngineWorldMap@@AAEXXZ
+  00b42b10 RELOCATION_MATCH CEngineWorldMap::?DeleteMap@CEngineWorldMap
+  00b619b0 RELOCATION_MATCH CEngineScreenEffectGlowRenderer::Render
+  00bf6a30 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?MarkTreeAsInvisibleLastFrame@CLandscapeBackgroundTreeNode@@AAEXXZ
+  00bf71d0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::Render@CLandscapeBackgroundTreeNode

@@ -27,10 +27,10 @@ T1	standin_alias	CThing	6	6	engine/CThing.h	004c78a0 004c7a10 004c7e50 004c9c40 
 T1	standin_alias	GetBestTaskForThing	6	6		0065f856 0065f884 00660034 00660062 00660090 006600be
 T1	standin_alias	remove_if	6	6		006603a0 006603dd 0066041a 00660457 00660494 0082c6e0
 T1	standin_alias	CTCInventoryExperience	5	3	engine/CTCInventoryExperience.h	0056ff3d 0056ffc5 005721fa 005746f7 005747a3
-T1	standin_alias	(none)	4	3		00cbe2ff 013750b0 013bace4 013bace8
 T1	standin_alias	CRenderStateManager	4	3	engine/CRenderStateManager.h	00a04630 00a059e0 01396dc8 01396f9c
 T1	standin_alias	FindMostRecentMessage	4	4		008abf20 0090dee0 0090edc0 00939cb0
 T1	standin_alias	GFSerialiseVectorBinaryIn	4	4		00463f9c 0046caf4 00472123 004e89f7
+T1	standin_alias	(none)	3	2		00cbe2ff 013bace4 013bace8
 T1	standin_alias	C3DAnimationUtil	3	4		00c56d30 00c573e0 00c72600
 T1	standin_alias	CEngineSkyRenderer	3	2	engine/CEngineSkyRenderer.h	00b64550 00b64fa0 00b65a20
 T1	standin_alias	CMesh	3	1		01249f6c 01249f74 01249f9c
@@ -820,7 +820,6 @@ T1	other	NGlobalConsole	1	1		013756f5
 T1	other	NInputProcess	1	1		0068eb20
 T1	other	NProgressDisplay	1	4	engine/NProgressDisplay.h	009e9f40
 T1	other	NRumble	1	1	engine/NRumble.h	007f1840
-T1	other	NThingManager	1	3		013b8a88
 T1	other	NThingMap	1	1		013ba848
 T1	other	ReadVar	1	1		00516e10
 T1	other	ResetBlockPercentageChance	1	1		00739360
@@ -853,7 +852,7 @@ T2	other	CThingGameObject	1	5	engine/CThingGameObject.h	00838a40
 T2	other	CThingPlayerCreature	1	3	engine/CThingPlayerCreature.h	006a9640
 T3	standin_alias	CCountedPointer	82	82	engine/CCountedPointer.h	00403db0 0041956c 00443540 004440c0 00444590 00444600 00444670 00444750 004447c0 00444910 00444980 004449f0 00444bb0 00444c20 00444c90 00445120 00445270 004452e0 00445400 00445470 00445520 0048524c 004ab300 004ab370 004bb9d0 0050cdd0 0050cde0 0050ceb0 0050cec0 0050cf90 0050cfa0 0050d030 0050d040 0050d0a0 0050d120 0050d180 0050d230 00618660 006570bc 00657138 0065e198 0065e1db 0065e25a 0065e29d 0065e2e0 0065e33b 00676840 00695a00 006c3ac0 00704430 00718a00 007374f0 0073d180 00822bf0 00822c00 00822ca0 00822cb0 00822d10 00822d90 00822e60 00822ea0 00834d30 0085a840 0085b250 00863090 008ab230 008c5980 008ebdd0 00a47060 00a52ce0 00a52d90 00a5fc30 00a6e9a0 00a7c0a0 00a8cb70 00a9a420 00a9ced0 00aecc30 00aeccc0 00b23170 00b23240 00b95a30
 T3	standin_alias	GetDef	39	40		00415890 0042aeda 0042b144 004ab920 004ab990 00513160 0057ff30 005f89f2 005f8a57 005f8ab9 005f8b1b 00637650 006697e0 00685e70 006b2660 006f0e80 00737f80 00737ff0 0074f760 0078da50 00792350 007923c0 00798c10 0079bd10 0079dbb0 007a5080 007a90f0 007ab530 007c4f80 007c6600 007cc8e0 007ce100 007cec90 007cf2e0 0082e1e0 0083b000 0083b970 0083bd10 0083d630
-T3	standin_alias	CPlayer	21	21	engine/CPlayer.h	00487180 00487520 00487b80 00487cf0 004884d0 004887c0 00488a80 00488ab0 0048a070 00633400 00633420 006335e0 00633670 00633700 006337c0 006338d0 006339b0 00633b10 00633b40 006359c0 00636e90
+T3	standin_alias	CPlayer	25	25	engine/CPlayer.h	00487180 00487520 00487b80 00487c20 00487cf0 00487fb0 004884d0 004887c0 00488a80 00488ab0 0048a070 0048a1a0 00633400 00633420 006335e0 00633670 00633700 006337c0 006338d0 006339b0 00633b10 00633b40 006359c0 00636e50 00636e90
 T3	standin_alias	vector	20	21		0041971e 00429a79 0045cfde 004942c3 004dcfbb 005156d0 0051d200 00543c90 0056d490 0056dce0 005bc237 005e1eb0 0066c4d0 0074fae0 00841a70 00cd2d0b 00cd3a79 00cdb960 00dfde30 00f26e60
 T3	standin_alias	GFSerialiseMapBinaryOut	19	19		00431277 0045da9a 0045f31f 00461695 004618c9 00463cdb 004645e0 00466848 0046fa57 004e507f 004e52b3 004e5636 004e5a39 004e628d 004e67c0 004e6a5b 004e7a62 004e9356 004ec62f
 T3	standin_alias	CTCHeroStats	17	17	engine/CTCHeroStats.h	0057a730 0057a774 0057a82a 0057a8af 0057a90b 0057a962 0057aa5b 0057aaa8 0057aad9 0057ab6a 0057ac4b 0057acc4 0057ad1d 0057adb8 0057adf7 0057b3e2 0057cb4b
@@ -871,24 +870,26 @@ T3	standin_alias	fill	7	7		00526d70 00819280 008192b0 0086a3f0 0086a4f0 0086ef60
 T3	standin_alias	CSurface	6	6	engine/CSurface.h	009f2ec0 009f2f10 009f2f60 009f3470 009f35d0 009f3ff0
 T3	standin_alias	CTCPhysicsBase	6	6	engine/CTCPhysicsBase.h	006af790 006afcb0 006afe20 006aff00 006b0130 006b0210
 T3	standin_alias	CWorld	6	6	engine/CWorld.h	0049d4b0 0049d910 0049ddd0 0049dec0 0049e200 0049e740
+T3	standin_alias	CWorldMap	6	6	engine/CWorldMap.h	004fb310 004fb330 004fb4d0 004fcfc0 004fe630 004ff390
 T3	standin_alias	GetAllLeafThings	6	6		00516830 00617970 006186f0 00618790 006d4600 00947780
 T3	standin_alias	CCategory	5	7	engine/CCategory.h	005bc934 005bcf61 005bdec1 005bf2c6 005bfcd9
 T3	standin_alias	CGamePlayerInterface	5	5	engine/CGamePlayerInterface.h	00445920 00445ba0 00445bb0 00445bc0 00445bd0
 T3	standin_alias	CManager	5	5	engine/CManager.h	0041cd89 0041cf1f 0041cf33 0041cf40 006f9b20
 T3	standin_alias	CSystemManager	5	5	engine/CSystemManager.h	009a4fc0 009a4fd0 009a4fe0 009a4ff0 009a52b0
 T3	standin_alias	CTCPerceiveThing	5	5	engine/CTCPerceiveThing.h	00643b3b 00744500 00744540 007448b0 00744950
-T3	standin_alias	CWorldMap	5	5	engine/CWorldMap.h	004fb310 004fb330 004fb4d0 004fcfc0 004fe630
 T3	standin_alias	GetEvent	5	5		0094f890 00953000 00953090 0095d920 0096bb70
 T3	standin_alias	GetPBestLeafThing	5	5		0048cb50 0048cbd0 007461c0 00939af0 00982450
 T3	standin_alias	pair	5	8		004d6902 005bc277 00a7faf0 00cb9c20 00cd27b4
 T3	standin_alias	sort_heap	5	5		004cd130 00680e00 0088cea0 009b5bb0 009b5c10
 T3	standin_alias	CAppearanceModifierGraphics	4	4		0045cc79 0046fe8a 0046fedb 0046fee9
 T3	standin_alias	CConsole	4	4		009eac80 009eb260 009eb590 009ec710
+T3	standin_alias	CInputProcessGameBase	4	4	engine/CInputProcessGameBase.h	00687c70 00687c80 00687ce0 00687d10
 T3	standin_alias	CPersistTraits	4	4	engine/CPersistTraits.h	00632470 006db0f0 00e1e040 00e38eb0
 T3	standin_alias	CTCHeroRangedAttacks	4	4	engine/CTCHeroRangedAttacks.h	007899e0 00789b00 00789c90 00789e60
 T3	standin_alias	CTCInventoryAbilities	4	4	engine/CTCInventoryAbilities.h	005edea3 005ee146 005ee24b 005eedcf
 T3	standin_alias	CTCInventoryClothing	4	4	engine/CTCInventoryClothing.h	005b406d 005b4771 005b4ea8 005b6881
 T3	standin_alias	CTCShotDefinitionBase	4	4		007bed50 007bed70 007bed80 007bed90
+T3	standin_alias	CThingCreatureBase	4	4	engine/CThingCreatureBase.h	00661e80 00661f20 00662030 00662820
 T3	standin_alias	CBusyResourceManager	3	3	engine/CBusyResourceManager.h	00a61880 00a61a80 00a61b10
 T3	standin_alias	CClickable	3	3		0055ac90 0055acf0 0055af60
 T3	standin_alias	CCombatSequenceBase	3	3	engine/CCombatSequenceBase.h	008b0610 008b0750 008b0780
@@ -898,15 +899,16 @@ T3	standin_alias	CEngineWeatherRenderer	3	3	engine/CEngineWeatherRenderer.h	00b5
 T3	standin_alias	CHandleBasedMemoryPool	3	3	engine/CHandleBasedMemoryPool.h	00a01f50 00a01f80 00a026b0
 T3	standin_alias	CLandscapeBackgroundTreeNode	3	4	engine/CLandscapeBackgroundTreeNode.h	00bf6130 00bf6160 00bf7370
 T3	standin_alias	CNavigatorManager	3	3	engine/CNavigatorManager.h	00a14e80 00a14eb0 00a15670
+T3	standin_alias	CTCBerserk	3	3	engine/CTCBerserk.h	0078be70 0078bec0 0078bf00
 T3	standin_alias	CTCCoopSpirit	3	3		0066fae0 0066fb00 0066fb20
 T3	standin_alias	CTCDoor	3	4	engine/CTCDoor.h	007305f0 00730c00 00730dd0
+T3	standin_alias	CTCHeroExperience	3	3	engine/CTCHeroExperience.h	006d6470 006d6810 006d8ad0
 T3	standin_alias	CTCInventoryTrade	3	3	engine/CTCInventoryTrade.h	0042d437 0042d44a 0059c8ae
 T3	standin_alias	CTCTrapBase	3	3	engine/CTCTrapBase.h	00787c1b 00787c23 00788388
 T3	standin_alias	CTCTurncoat	3	4	engine/CTCTurncoat.h	007c76d0 007c7810 007c7890
 T3	standin_alias	CTCVillage	3	3	engine/CTCVillage.h	00658561 006588dc 00658ea0
 T3	standin_alias	CTexture	3	3	engine/CTexture.h	009f9d80 009f9db0 009f9de0
 T3	standin_alias	CThingAICreature	3	3	engine/CThingAICreature.h	006d5ac0 008302d0 008302e0
-T3	standin_alias	CThingCreatureBase	3	3	engine/CThingCreatureBase.h	00661e80 00662030 00662820
 T3	standin_alias	CVirtualKeyboard	3	3	engine/CVirtualKeyboard.h	00851860 00851890 00851920
 T3	standin_alias	GetDefaultVal	3	3		00cdca40 00cdca50 00cdca60
 T3	standin_alias	GetPFirstLeafThing	3	3		005800d6 006156e0 006698d0
@@ -916,25 +918,24 @@ T3	standin_alias	C3DGroup2	2	2	engine/C3DGroup2.h	00ac4070 00ac41d0
 T3	standin_alias	C3DMeshVolume	2	2	engine/C3DMeshVolume.h	00a2e700 00a2e730
 T3	standin_alias	CAIBrain	2	2	engine/CAIBrain.h	0088bb60 0088bbb0
 T3	standin_alias	CAIStateGroup_CreatureUseCoverBase	2	2	engine/CAIStateGroup_CreatureUseCoverBase.h	00970760 00970930
+T3	standin_alias	CContainmentVolume	2	2	engine/CContainmentVolume.h	00a75400 00a755c0
 T3	standin_alias	CCriticalSectionLock	2	4	engine/CCriticalSectionLock.h	00a62920 00a62980
 T3	standin_alias	CEmbeddedHighlight	2	2		00493617 004936ec
 T3	standin_alias	CEngineCamera	2	2	engine/CEngineCamera.h	00b2fbf0 00b2fc50
 T3	standin_alias	CEngineSurfaceCompositionManager	2	2	engine/CEngineSurfaceCompositionManager.h	00b2ad90 00b2af50
+T3	standin_alias	CEngineWorldMap	2	2	engine/CEngineWorldMap.h	00b3edf0 00b3ee80
 T3	standin_alias	CGPUScratchBufferTextureManager	2	2	engine/CGPUScratchBufferTextureManager.h	00f36ee0 00f36f10
 T3	standin_alias	CGameEvent	2	2	engine/CGameEvent.h	004159a0 009f17a0
 T3	standin_alias	CGameEventPackageSet	2	2	engine/CGameEventPackageSet.h	009f1730 009f1750
-T3	standin_alias	CInputProcessGameBase	2	2	engine/CInputProcessGameBase.h	00687c80 00687ce0
 T3	standin_alias	CMemoryAllocatorVariableSize	2	2	engine/CMemoryAllocatorVariableSize.h	00a646e0 00a64c10
 T3	standin_alias	CPixelFormat	2	2	engine/CPixelFormat.h	009e3940 009e3970
 T3	standin_alias	CQuestManager	2	3	engine/CQuestManager.h	004af3c0 004afdd0
 T3	standin_alias	CResource	2	2	engine/CResource.h	009fbf50 009fc450
 T3	standin_alias	CResourceBank	2	3	engine/CResourceBank.h	009fc380 009fc3d0
 T3	standin_alias	CSimpleMemoryPool	2	2	engine/CSimpleMemoryPool.h	00a5c790 00a5c850
-T3	standin_alias	CTCBerserk	2	2	engine/CTCBerserk.h	0078bec0 0078bf00
 T3	standin_alias	CTCBulletTime	2	2	engine/CTCBulletTime.h	0079c640 0079c660
 T3	standin_alias	CTCCombat	2	2	engine/CTCCombat.h	00733230 007332d0
 T3	standin_alias	CTCGift	2	2	engine/CTCGift.h	008fa2f0 008fa300
-T3	standin_alias	CTCHeroExperience	2	2	engine/CTCHeroExperience.h	006d6470 006d6810
 T3	standin_alias	CTCHeroOpinionDeedLog	2	2	engine/CTCHeroOpinionDeedLog.h	006c5a50 006c6010
 T3	standin_alias	CTCHeroSpecialMovement	2	2	engine/CTCHeroSpecialMovement.h	007e0670 007e0700
 T3	standin_alias	CTCInventoryExperience	2	2	engine/CTCInventoryExperience.h	00572672 00572689
@@ -955,6 +956,7 @@ T3	standin_alias	CAIStateGroup_MinionReactToCrime	1	1	engine/CAIStateGroup_Minio
 T3	standin_alias	CAIStateGroup_OpinionReactionRoot	1	1	engine/CAIStateGroup_OpinionReactionRoot.h	00985420
 T3	standin_alias	CAIStateGroup_TavernKeeper	1	1	engine/CAIStateGroup_TavernKeeper.h	00968230
 T3	standin_alias	CAIStateGroup_TavernServer	1	1	engine/CAIStateGroup_TavernServer.h	00967250
+T3	standin_alias	CAIStateGroup_WorkAtSchool	1	1	engine/CAIStateGroup_WorkAtSchool.h	009428a0
 T3	standin_alias	CAInputProcess	1	1	engine/CAInputProcess.h	00a0d2d0
 T3	standin_alias	CActionUseDef	1	1	engine/CActionUseDef.h	0045389e
 T3	standin_alias	CAnimationSet	1	1	engine/CAnimationSet.h	00471832
@@ -973,7 +975,6 @@ T3	standin_alias	CCombatAbilityBlockingData	1	1	engine/CCombatAbilityBlockingDat
 T3	standin_alias	CCombatAction_GenericStrikeResponseBase	1	1	engine/CCombatAction_GenericStrikeResponseBase.h	0066a510
 T3	standin_alias	CComponentInstance	1	1	engine/CComponentInstance.h	00af6690
 T3	standin_alias	CConsoleCommandBase	1	1	engine/CConsoleCommandBase.h	00414f30
-T3	standin_alias	CContainmentVolume	1	1	engine/CContainmentVolume.h	00a755c0
 T3	standin_alias	CContextSensitiveItemDef	1	1	engine/CContextSensitiveItemDef.h	00453c20
 T3	standin_alias	CContextSensitivePriorityCompare	1	1		005928a8
 T3	standin_alias	CCoopSpiritDef	1	1		00453be8
@@ -1000,6 +1001,7 @@ T3	standin_alias	CEnginePrimitiveManagerRepeatedStaticMeshes	1	1	engine/CEngineP
 T3	standin_alias	CEnginePrimitiveOcclusionManager	1	1	engine/CEnginePrimitiveOcclusionManager.h	00b2fac0
 T3	standin_alias	CEnginePrimitiveRenderer	1	1	engine/CEnginePrimitiveRenderer.h	00b32230
 T3	standin_alias	CEnginePrimitiveTypeInfo	1	1	engine/CEnginePrimitiveTypeInfo.h	00b8fad0
+T3	standin_alias	CEngineScreenEffectGlowRenderer	1	1	engine/CEngineScreenEffectGlowRenderer.h	00b61690
 T3	standin_alias	CEngineSkyRenderer	1	2	engine/CEngineSkyRenderer.h	00b66190
 T3	standin_alias	CEngineStaticMapFileBlockManager	1	1	engine/CEngineStaticMapFileBlockManager.h	00be03a0
 T3	standin_alias	CEngineTreeFilerBase	1	3		00bf2880
@@ -1010,6 +1012,7 @@ T3	standin_alias	CFadeInFadeOutBase	1	2	engine/CFadeInFadeOutBase.h	0048da30
 T3	standin_alias	CFileFormatBrush	1	1	engine/CFileFormatBrush.h	0081e4f0
 T3	standin_alias	CFileInstaller	1	1	engine/CFileInstaller.h	009c32b0
 T3	standin_alias	CFishingRodDef	1	1		004e15a0
+T3	standin_alias	CFontDataBank	1	1	engine/CFontDataBank.h	00a635e0
 T3	standin_alias	CFrontendGameComponent	1	1	engine/CFrontendGameComponent.h	00494380
 T3	standin_alias	CGameScriptThingManager	1	1		00704790
 T3	standin_alias	CGameTimeManager	1	1	engine/CGameTimeManager.h	006bb790
@@ -1056,6 +1059,7 @@ T3	standin_alias	CShaderResource	1	1	engine/CShaderResource.h	00a5d4e0
 T3	standin_alias	CShopItem	1	1	engine/CShopItem.h	004d4033
 T3	standin_alias	CSmallVector	1	1	engine/CSmallVector.h	008709f0
 T3	standin_alias	CSoundMap	1	1	engine/CSoundMap.h	0047034b
+T3	standin_alias	CStreamingFontDataBank	1	1	engine/CStreamingFontDataBank.h	00a5f090
 T3	standin_alias	CTCAISummon	1	1		007fde60
 T3	standin_alias	CTCActivationTrigger	1	1		0077b070
 T3	standin_alias	CTCBoastUI	1	1	engine/CTCBoastUI.h	0056a880
@@ -1077,6 +1081,7 @@ T3	standin_alias	CTCPhysicsStandard	1	1	engine/CTCPhysicsStandard.h	00724240
 T3	standin_alias	CTCQuestCard	1	1	engine/CTCQuestCard.h	00702560
 T3	standin_alias	CTCStockItem	1	1	engine/CTCStockItem.h	008abbf0
 T3	standin_alias	CTCTargetingPlayer	1	1	engine/CTCTargetingPlayer.h	00802370
+T3	standin_alias	CTCUserActionPointBase	1	1	engine/CTCUserActionPointBase.h	007fec10
 T3	standin_alias	CTCVolumeContainmentTrackerDef	1	1	engine/CTCVolumeContainmentTrackerDef.h	004e189c
 T3	standin_alias	CTCWeapon	1	1	engine/CTCWeapon.h	005da680
 T3	standin_alias	CTCWillLightning	1	1	engine/CTCWillLightning.h	0079f680
@@ -1414,6 +1419,7 @@ T3	signature	CTCBoastingCrowdControl	1	1	engine/CTCBoastingCrowdControl.h	007833
 T3	signature	CTCBoastingPodium	1	1	engine/CTCBoastingPodium.h	00813c50
 T3	signature	CTCBoss	1	1	engine/CTCBoss.h	007af310
 T3	signature	CTCContainerRewardHero	1	1	engine/CTCContainerRewardHero.h	0074e080
+T3	signature	CTCCrateStack	1	1	engine/CTCCrateStack.h	007b6750
 T3	signature	CTCCreatureGenerator	1	1	engine/CTCCreatureGenerator.h	0074a260
 T3	signature	CTCCreatureGroup	1	1	engine/CTCCreatureGroup.h	00812f20
 T3	signature	CTCCreatureModeManager	1	1	engine/CTCCreatureModeManager.h	0073acc0
@@ -1431,6 +1437,8 @@ T3	signature	CTCInventoryStats	1	1	engine/CTCInventoryStats.h	005cd6b7
 T3	signature	CTCKraken	1	2	engine/CTCKraken.h	007fc820
 T3	signature	CTCNymph	1	1	engine/CTCNymph.h	0080f210
 T3	signature	CTCOnHeroPush	1	1	engine/CTCOnHeroPush.h	007bba50
+T3	signature	CTCPhysicsBase	1	1	engine/CTCPhysicsBase.h	008802b0
+T3	signature	CTCPreCalculatedNavigationRoute	1	1	engine/CTCPreCalculatedNavigationRoute.h	008006d0
 T3	signature	CTCRegionDisplay	1	1	engine/CTCRegionDisplay.h	00639b70
 T3	signature	CTCScriptedControl	1	1	engine/CTCScriptedControl.h	00712c20
 T3	signature	CTCShapeManager	1	1	engine/CTCShapeManager.h	00760870
@@ -1503,8 +1511,8 @@ T3	other	CCountedPointer	42	58	engine/CCountedPointer.h	00403e40 0041bd80 004291
 T3	other	map	17	32		00430345 00453554 004c6e00 004dd470 004df81d 004df8e9 004df956 004dfa89 00519230 0052b8b0 0056a680 0056e4e0 005812df 009f1470 00ad64c0 00cdbf70 00cdbfb0
 T3	other	sort_heap	17	17		00624fc0 0067f040 006ba830 006bf0e0 007a3b60 007fa980 0080b9f0 008182e0 0086c950 009b8ca0 009e7950 00a466f0 00a83600 00bee990 00bef350 00cb6f10 00cbc580
 T3	other	(none)	16	27		00401296 004012bc 0040135c 00401400 00402130 004038c0 0041e61b 00437160 00698a30 0070bf50 00834530 00864250 00870c90 008c9a40 00961ab0 00bfeed8
-T3	other	CParticleEmitter	14	17	engine/CParticleEmitter.h	006e1b40 00aecf90 00aed010 00aed020 00aed050 00aed140 00aed1e0 00aed250 00aedca0 00aedcd0 00aeddc0 00aee940 00af0610 00af0650
-T3	other	CThingCreatureBase	14	29	engine/CThingCreatureBase.h	00661a60 00661cc0 00661e70 00661ec0 00661ed0 00661f90 00661ff0 00662170 006621a0 006625c0 006625e0 00662600 00665190 00666d10
+T3	other	CParticleEmitter	16	19	engine/CParticleEmitter.h	006e1b40 00aecf90 00aed010 00aed020 00aed050 00aed140 00aed1b0 00aed1e0 00aed220 00aed250 00aedca0 00aedcd0 00aeddc0 00aee940 00af0610 00af0650
+T3	other	CThingCreatureBase	15	30	engine/CThingCreatureBase.h	00661a60 00661cc0 00661e70 00661ec0 00661ed0 00661f90 00661ff0 00662040 00662170 006621a0 006625c0 006625e0 00662600 00665190 00666d10
 T3	other	CUserProfileManager	14	14	engine/CUserProfileManager.h	00406770 004067b0 00406880 00407360 004075b0 00408360 0047cfc2 0047cfd3 00548570 00548670 005486b0 005486d0 005486f0 0054a510
 T3	other	CThing	11	25	engine/CThing.h	0048bc40 004c74f0 004c7770 004c7820 004c7930 004c79a0 004c7a70 004c7a80 004c7aa0 004c7d90 004c7e10
 T3	other	CShaderRenderManager	10	10	engine/CShaderRenderManager.h	00988110 00988190 00988320 00988350 00988a20 009897c0 00989bf0 0098a760 0098b230 0098b280
@@ -1545,9 +1553,11 @@ T3	other	CCharString	4	4		00403a00 00403a10 0099e500 0099ef90
 T3	other	CCombatRing	4	5		006e8790 006e87d0 006e8b60 006ebee0
 T3	other	CDefinitionManager	4	5	engine/CDefinitionManager.h	009acca0 009ad2e0 009ad9e0 009ada10
 T3	other	CEdgeStipVertexArray	4	4	engine/CEdgeStipVertexArray.h	00bfbe40 00bfbf40 00bfc040 00bfc140
+T3	other	CGameCameraManager	4	8	engine/CGameCameraManager.h	00697710 00697e20 00698b20 00699560
 T3	other	CIntelligentPointer	4	6	engine/CIntelligentPointer.h	0050f3d0 00655180 00668b80 007b82c0
 T3	other	CManager	4	6	engine/CManager.h	0041ce6a 0066e73d 006f9720 006f9790
 T3	other	CParticleEmitterDatabase	4	7	engine/CParticleEmitterDatabase.h	00ae85b0 00ae8980 00ae89e0 00ae8bf0
+T3	other	CQuestManager	4	5	engine/CQuestManager.h	004af280 004af6d0 004b02f0 004b14f0
 T3	other	CSurface	4	5	engine/CSurface.h	009f2dc0 009f2e40 009f2e50 009f2e70
 T3	other	CTCInventoryClothing	4	4	engine/CTCInventoryClothing.h	004e8967 005b34bb 005b34c1 005b34c7
 T3	other	CTCInventoryStats	4	4	engine/CTCInventoryStats.h	004d2fdc 005cc862 005cc9ad 005ccbbd
@@ -1559,13 +1569,11 @@ T3	other	CCombatWheel	3	4		006e8520 006e8560 006ec7d0
 T3	other	CComponent	3	5		0052e830 005303f0 00535c10
 T3	other	CDrawQuestInfo	3	5		006463f0 0064f6dc 00654593
 T3	other	CFishCompOrganiser	3	3		00e80d60 00e81a60 00e81ad0
-T3	other	CGameCameraManager	3	7	engine/CGameCameraManager.h	00697e20 00698b20 00699560
 T3	other	CGameJoystickManager	3	4	engine/CGameJoystickManager.h	0049bb30 0049bb40 0049bb50
 T3	other	COpinionReactionManager	3	9	engine/COpinionReactionManager.h	006feae0 00700780 007008c0
 T3	other	COptimisedPrimitive	3	3	engine/COptimisedPrimitive.h	00ac7e10 00ac85d0 00acd900
 T3	other	CParticleMorphs	3	3		004e793c 004e794c 0081ad50
 T3	other	CQ_BountyHuntScript	3	3	engine/CQ_BountyHuntScript.h	00d150f0 00d151d0 00d17340
-T3	other	CQuestManager	3	4	engine/CQuestManager.h	004af6d0 004b02f0 004b14f0
 T3	other	CSplinePosParamData	3	3		00b21450 00b214c0 00b21c90
 T3	other	CSplineRandomOffsetData	3	3		00b20fd0 00b21090 00b21160
 T3	other	CTCAnimationComplex	3	9	engine/CTCAnimationComplex.h	004d44b8 0070b460 0070b470
@@ -1629,6 +1637,7 @@ T3	other	CHoverable	2	3	engine/CHoverable.h	0055b9d0 0055c4a0
 T3	other	CIndexBuffer	2	2	engine/CIndexBuffer.h	00ac1f30 00ac1f60
 T3	other	CInputManager	2	3	engine/CInputManager.h	009f4ac0 009f4e20
 T3	other	CKeyCamera	2	4		0075f180 0075f1f0
+T3	other	CKeyRedefiner	2	2		00557840 00557940
 T3	other	CMap	2	3	engine/CMap.h	0081e810 008278b0
 T3	other	CMatrix4x4	2	2	engine/CMatrix4x4.h	00a5cab0 00a5cb00
 T3	other	CMessageEventFilter_IsTargettedAtThing	2	3		006af1e0 006af290
@@ -1656,6 +1665,7 @@ T3	other	CSubtitleRenderer	2	2	engine/CSubtitleRenderer.h	0048e062 004933e6
 T3	other	CSystemManager	2	2	engine/CSystemManager.h	009a5000 009a52c0
 T3	other	CTCBoastUI	2	2	engine/CTCBoastUI.h	004d5fab 0056a860
 T3	other	CTCBulletTime	2	2	engine/CTCBulletTime.h	004d4c58 0079d020
+T3	other	CTCDoor	2	2	engine/CTCDoor.h	004d32da 00730610
 T3	other	CTCEmoteIcon	2	2	engine/CTCEmoteIcon.h	004d3c61 00669390
 T3	other	CTCFlashOnHit	2	2	engine/CTCFlashOnHit.h	004d94ab 007e33a0
 T3	other	CTCHeroOnlineScoreboard	2	2	engine/CTCHeroOnlineScoreboard.h	004d66da 0055ef00
@@ -1833,13 +1843,13 @@ T3	other	CIsSeatWithSpaceOwnedBy	1	1		00945e70
 T3	other	CIsVeryCloseMotionlessCreature	1	1	engine/CIsVeryCloseMotionlessCreature.h	00942230
 T3	other	CItem	1	1	engine/CItem.h	005bec40
 T3	other	CJoystick	1	1	engine/CJoystick.h	009e4470
-T3	other	CKeyRedefiner	1	1		00557840
 T3	other	CLevelScriptBase	1	1	engine/CLevelScriptBase.h	00f14250
 T3	other	CLightningBeam	1	2		0079fe90
 T3	other	CLipSyncDataBank	1	2	engine/CLipSyncDataBank.h	00a42830
 T3	other	CLocalDetailCacheMap	1	1	engine/CLocalDetailCacheMap.h	00bddd50
 T3	other	CLostTraderTrader	1	1		00ea4de0
 T3	other	CMC_MinionGuard	1	1		00d9ecf0
+T3	other	CMainGameComponent	1	1	engine/CMainGameComponent.h	00416268
 T3	other	CMarkerInfo	1	1	engine/CMarkerInfo.h	0082a230
 T3	other	CMemoryAllocator	1	1	engine/CMemoryAllocator.h	009f26b0
 T3	other	CMemoryDataOutputStream	1	1	engine/CMemoryDataOutputStream.h	009945b0
@@ -1978,7 +1988,6 @@ T3	other	CTCDRegionEntrance	1	1		004d85ff
 T3	other	CTCDRumble	1	1		004dcdc4
 T3	other	CTCDegradableBarrier	1	1		004d3e99
 T3	other	CTCDivineWrath	1	1	engine/CTCDivineWrath.h	004d4a99
-T3	other	CTCDoor	1	1	engine/CTCDoor.h	004d32da
 T3	other	CTCDrainLife	1	1	engine/CTCDrainLife.h	004d5600
 T3	other	CTCDummyVillager	1	1	engine/CTCDummyVillager.h	0072f0e0
 T3	other	CTCEnemy	1	1	engine/CTCEnemy.h	004d3d69
@@ -4275,12 +4284,12 @@ T3	standin	list_T_0xc_00cdb710	1	1		00cdb710
 T3	standin	map_T_0043024e	1	1		0043024e
 T3	standin	remove_copy	1	1		007f7940
 T3	standin	std	1	1		006e1f80
-T3	-	(none)	1788	3532		00401490 00405ba0 00405bc0 00406df0 004088e0 0040e130 0040e2d0 0040e350 0040e9a0 0040f390 0040f5b0 00412020 00414ef0 00415fd3 00416268 0041627f 0041cf2c 0041cfb2 0042899b 004292c0 00429ab9 00429b02 00429b52 0042a8bd 0042ab33 0042ac52 0042ae0e 0042b402 0042b6dc 0042bef2 00430022 0043006f 00433040 00436830 00436900 00436a80 00437500 0043f510 0043f560 00440180 00440550 004407b0 00443520 004437c0 004437e0 00443820 00443890 004438b0 00443980 004439c0 004439e0 00443ac0 00443b00 00443b20 00444d70 00444e10 00444e50 00445350 00445370 004454e0 00447390 004477c0 00448300 004493b0 004495d0 0044b970 004506ed 0045071a 00450855 0045087c 004508a9 004509d9 00450a14 00450a3c 00450ace 00450d90 00450dab 00450e6e 00450e92 00450ebb 00450edf 00450f08 00450f2c 00450f50 00450f79 00450fac 00450fd5 00450ff9 00451022 00451046 0045106f 004510e8 0045110c 00451135 00451159 00451182 004511a6 004511cf 004511f3 0045121c 00451269 004512b6 004512da 00451303 0045151c 0045185f 004518a0 00451981 004519c2 00451a03 00451a44 00451c83 004522f4 00452b4d 0045322c 004532c3 004532e6 00453327 0045334a 00453483 00453607 00453630 00453b15 00453bc4 00453e51 00453ef1 004543af 00454404 00454586 0045460a 00454961 00455d44 004560a9 004563c9 00456531 004567db 004568bc 00456903 00456dc0 0045704a 004570b7 0045720a 004572a7 004576db 0045775a 004579c2 00457ae4 00457b72 00457e03 00457e77 00457ed6 004583fa 00458476 0045855a 004588e2 00458a4f 00458c66 0045a133 0045bbb7 0045bce4 0045bcf2 0045c75b 0045ce22 0045d175 00460c33 00460d67 00460ea7 00461009 0046131b 00461eaf 00462595 00462ca2 00462f42 00462f50 0046324a 00463f6a 0046420b 00465a57 0046638b 00466f54 00467445 00469149 004699c9 0046b81d 0046bd11 0046c2d2 0046cac2 0046ccfc 0046ee0a 0046f191 0046f68c 00471a4f 00471c79 00471df4 00471f52 00472033 004720f1 0047232b 00472e58 00473023
+T3	-	(none)	1781	3521		00401490 00405ba0 00405bc0 00406df0 004088e0 0040e130 0040e2d0 0040e350 0040e9a0 0040f390 0040f5b0 00412020 00414ef0 00415fd3 0041627f 0041cf2c 0041cfb2 0042899b 004292c0 00429ab9 00429b02 00429b52 0042a8bd 0042ab33 0042ac52 0042ae0e 0042b402 0042b6dc 0042bef2 00430022 0043006f 00433040 00436830 00436900 00436a80 00437500 0043f510 0043f560 00440180 00440550 004407b0 00443520 004437c0 004437e0 00443820 00443890 004438b0 00443980 004439c0 004439e0 00443ac0 00443b00 00443b20 00444d70 00444e10 00444e50 00445350 00445370 004454e0 00447390 004477c0 00448300 004493b0 004495d0 0044b970 004506ed 0045071a 00450855 0045087c 004508a9 004509d9 00450a14 00450a3c 00450ace 00450d90 00450dab 00450e6e 00450e92 00450ebb 00450edf 00450f08 00450f2c 00450f50 00450f79 00450fac 00450fd5 00450ff9 00451022 00451046 0045106f 004510e8 0045110c 00451135 00451159 00451182 004511a6 004511cf 004511f3 0045121c 00451269 004512b6 004512da 00451303 0045151c 0045185f 004518a0 00451981 004519c2 00451a03 00451a44 00451c83 004522f4 00452b4d 0045322c 004532c3 004532e6 00453327 0045334a 00453483 00453607 00453630 00453b15 00453bc4 00453e51 00453ef1 004543af 00454404 00454586 0045460a 00454961 00455d44 004560a9 004563c9 00456531 004567db 004568bc 00456903 00456dc0 0045704a 004570b7 0045720a 004572a7 004576db 0045775a 004579c2 00457ae4 00457b72 00457e03 00457e77 00457ed6 004583fa 00458476 0045855a 004588e2 00458a4f 00458c66 0045a133 0045bbb7 0045bce4 0045bcf2 0045c75b 0045ce22 0045d175 00460c33 00460d67 00460ea7 00461009 0046131b 00461eaf 00462595 00462ca2 00462f42 00462f50 0046324a 00463f6a 0046420b 00465a57 0046638b 00466f54 00467445 00469149 004699c9 0046b81d 0046bd11 0046c2d2 0046cac2 0046ccfc 0046ee0a 0046f191 0046f68c 00471a4f 00471c79 00471df4 00471f52 00472033 004720f1 0047232b 00472e58 00473023 004753b1
 T3	-	vector	579	1277		0040f6b0 004110d0 00411a10 00411db0 00411f10 004122d0 004125a0 004129f0 0043212b 00432ff0 0043336a 00436ac0 004408a0 00440990 00440f00 004413c0 004416e0 00442350 00442770 004428f0 0044be80 004516e7 0045bbc5 0045cd9b 0045d125 0045f008 00460bec 00461136 00464226 0046496f 004649a3 00464ace 004658df 00465a72 00466281 0046656f 00466de5 00466e1e 00467686 004676bb 00468fa5 004699e4 00469e3e 00469e74 00469fc8 0046ad17 0046ad59 0046b30c 0046c18c 0046c5f8 0046cd17 0046eb9e 00470019 0047005b 00470bf0 0047197a 00471f97 00472346 004763af 00476f9b 00476ff7 00477169 00478dd6 0047a1e9 0047bd70 0047c030 0047c140 00485468 00485aa7 00485b6c 00485f3a 00486189 0048d0d0 00493ff8 004941f2 0049b5a0 0049c370 004ac0f0 004ac530 004ac610 004b8770 004ba640 004bb400 004d0830 004d08a0 004d1250 004d1460 004d1940 004d2720 004d2760 004e3526 004e6088 004e70cf 004e7279 004e741d 004e8898 004e8a87 004e8c1a 004e9ad3 004e9bb7 004ea40b 004eaad0 004eacbb 004eae1e 004eafe8 004eb41f 004ebca9 004ebd8d 004ebf32 004ec01c 004ed353 004edab7 004edb3e 004edd13 004f963d 004f9fa3 004fa434 00512630 005135d0 005149f0 00514f40 00515320 00515bc0 00515cc0 005179c0 005196a0 00519800 0051b770 0051c110 0051cf10 0051d030 0051d350 0052a960 0052b3d0 0052b9d0 005359d0 00535b10 0053c7ef 00543b70 005479a0 00566cd0 00567560 00568150 005686c0 00568a90 00569450 00569550 00569940 00569d90 00569e30 0057fd32 0058044a 00580a7b 0059310d 00593139 00594782 00594a73 00594cee 00594d36 005b3275 005baae3 005bc0fb 005c276c 005c2aa9 005e1420 005e29d0 005e2b30 005e3110 005e31f0 005e36b0 005e39e0 005f83d7 005f9495 005f9633 005f9a3c 005f9bfe 005f9c4f 005fa1ba 00616d50 00617370 00617fd0 006182f0 00618550 00618860 00619000 006249e0 00624e40 0062e190 00632f80 00632ff0 00639090 00639170 006392b0 006393d0 00640670 006422b0 00642440 00656d5e 00657037 0066c3f0
 T3	-	_Rb_tree	302	680		0042a82b 0042ad34 0042ad91 0042ade5 0042ae58 0042ae90 0042b4f3 0042bcb5 0042c058 0042c1c1 0042c940 0042ce7a 0043020a 00431606 004316cf 004507fb 004636cf 0046ece7 0047536c 004753d4 00475453 0047547d 004754c6 00475861 004758e3 00475bf6 00475c5e 00475cdd 00475d07 00475d50 0047c6a0 0047c8c0 00485e5c 004aa650 004aba70 004ac380 004ad690 004c2950 004c4430 004c4490 004c4890 004c4c70 004c4f70 004c6960 004c6bc0 004cf810 004da27f 004da43b 004da468 004dbb20 004dd2b1 004e4bee 005114f0 00512da0 00513940 00514c10 00516af0 0051a2f0 0051af80 0051b1e0 00527910 00527950 00527d20 00527d80 00528650 005286d0 00528930 0052a200 0052a2d0 0052afb0 0052dca0 0052e230 00534c60 00534df0 00535240 00553690 00553a00 00567980 00568500 0056a0a0 0056a370 0056d440 0056d4f0 0056d5c0 0056deb0 00579435 00579d18 00579d55 0057fe4a 0057fed6 00580b59 0059339a 00593ce4 00593d76 0059af2a 0059af83 005b18aa 005b18d7 005b1a43 005b1a8d 005b1ac5 005ba986 005bb85a 005bbe32 005cbf72 005cc04a 005d8446 005d8561 005d8676 005e1f30 005e8c00 005f840c 005f8444 005f8992 005f89b7 005f8c1f 005f9714 00613ae0 00614a10 00615820 00616f90 006196d0 00619b40 00623560 00624240 00630a10 00638ee0 00639250 00639590 0067a7c0 0067a800 0067a840 0067ba30 0067baf0 0067bbb0 0067d0f0 0067d250 0067d3b0 00696970 0069d3d0 006b9e00 006c77e0 006db450 006e6ea0 006e7c40 006efc70 006f0c70 006f0cf0 006f1070 006f1360 006f1ef0 006f2200 006f2760 006f27b0 006f2940 006f4c20 006f5320 0070adb0 0070afe0 0071fac0 007203a0 00738eb0 00755e80 00769650 00769fe0 0076a700 00776aa0 00777120 00777170 00777790 00777ba0 00782e90 00792300 007929a0 00792c40 00797840 00797ca0 00797f40 0079f150 0079f210 0079f330 007acc50 007ae1d0 007c2b30 007e8fe0 007e99f0 007e9ae0 007e9de0 00812790 00813200 00813530 00813580 00813640 0082f0d0 0082f150 0082f7b0 0082f930 00835270 00835960 0083b120
 T3	-	std	111	239		004936ba 004ba100 004d0460 004d0660 004d0f10 004d0f80 004e823b 00513a00 0051c590 0051cd80 00527bb0 00543810 00543870 00566430 00566ea0 005790c3 005924d0 005ba146 005f79bd 00623700 00661287 00673c60 00673ca0 00673cf0 00673d30 00674fa0 00675310 00675850 0067c9f0 006a2dc0 006a3130 006a31d0 006a3440 006a34a0 006a3b90 006a3bf0 006b6f50 006b6ff0 006b7b70 006b7bb0 006be700 006e1d80 006e65a0 006e68a0 006efec0 006fbae0 007094d0 00720270 00720310 007379d0 0073d720 00742360 00743ec0 00748c10 00748c90 00749170 00749530 00758220 007588a0 00758910 00758b70 00759420 00768fc0 00769000 0076bd70 0076bdd0 0076f700 0076f780 0076f7d0 0076f8e0 007702b0 007705a0 00770670 00776bc0 0077e2e0 00786da0 007fa290 00806910 00807320 0081b730 0081b800 0081bbd0 0081d450 0081d4d0 0088ac20 009267a0 009b8070 009c6d60 009e62e0 009e6d10 009f6c90 00a004d0 00a00750 00a00840 00a00a90 00a00b20 00a31280 00a31ec0 00a31f20 00a32020 00a32170 00a323d0 00a32500 00a329b0 00a32a70 00a32cc0 00a37af0 00a5e900 00b0f6b0 00b28f60 00b2efb0
 T3	-	__uninitialized_copy	64	163		0040ded0 00433d8a 004400c0 0044b120 0045493e 0045bcc1 0045efe5 00462f1f 0047b830 004c2ad0 0051ac00 00527fc0 0052bb40 0052bbe0 005654b0 00568e70 005b1479 005baf28 005bbc93 005c10cc 00613dd0 006b56f0 006b6710 006cac20 006d3770 006f40a0 006fb1c0 00708b60 00709c90 0070aa50 00737750 00748a40 007586e0 007d22f0 007dc500 00818180 0082cb70 0085db50 0086d530 00885ca0 00889300 00889700 0088a410 008e33d0 008f67c0 009b2550 009b7320 009ca190 009d23f0 009e11a0 009ee0a0 00a0e3d0 00a48670 00a6ee30 00a74ca0 00a82730 00a83030 00a83340 00ad16c0 00ad1990 00ad75f0 00ada7e0 00ae4ea0 00bdb750
-T3	-	T	62	134		0040d870 00415fc1 004193a0 004193e8 0041940c 00429cea 00429cfb 0042abe1 00430046 0043027a 004349e0 00437800 004378e0 00437910 00437920 004379c0 00437a30 00437ff0 004502eb 0045036f 004e4108 0058060d 005819a7 00593b99 005bc4d8 00643f79 0066e7a6 00687c70 00697b60 006a4dc0 006bd890 006d5ae0 006e7280 00733180 0074f4b0 008201d0 00830100 008302c0 008ac5a0 008fcf30 00ac3ae0 00b31fe0 00b32000 00c08780 00c1bd20 00c1bec0 00c1ee00 00c25c60 00c26550 00c271d0 00c2d0c0 00c2d0f0 00c334f0 00c38330 00c42a60 00c62e10 00c6ac50 00cd2d28 00f285c0 00f28e00 00f351e0 00f359e0
+T3	-	T	61	132		0040d870 00415fc1 004193a0 004193e8 0041940c 00429cea 00429cfb 0042abe1 00430046 0043027a 004349e0 00437800 004378e0 00437910 00437920 004379c0 00437a30 00437ff0 004502eb 0045036f 004e4108 0058060d 005819a7 00593b99 005bc4d8 00643f79 0066e7a6 00697b60 006a4dc0 006bd890 006d5ae0 006e7280 00733180 0074f4b0 008201d0 00830100 008302c0 008ac5a0 008fcf30 00ac3ae0 00b31fe0 00b32000 00c08780 00c1bd20 00c1bec0 00c1ee00 00c25c60 00c26550 00c271d0 00c2d0c0 00c2d0f0 00c334f0 00c38330 00c42a60 00c62e10 00c6ac50 00cd2d28 00f285c0 00f28e00 00f351e0 00f359e0
 T3	-	CVectorMap	59	148	engine/CVectorMap.h	0040f020 004365b0 00447c80 005dfa50 005f7f89 005f7fdf 0065e412 006804c0 006870c0 0069c740 006a2a10 006b8ae0 006be5e0 006faf20 006faf80 0073d0e0 0073d250 00758470 00758570 00819e60 00819f70 00819fd0 00827b60 00863030 0086a8d0 0086a930 0086a980 0086f180 009b1ff0 009b20d0 009b2130 009b2190 009b21f0 009b2230 009b2290 009d20d0 009e6910 00a404d0 00a6f290 00a6fc40 00a6fcb0 00a7dcc0 00a7df60 00a84e80 00ae9520 00ae9580 00af2c50 00af3000 00af60c0 00af6120 00b05890 00bed2a0 00cb9740 00cb97b0 00cb9840 00cb98a0 00cba190 00cba1f0 00cbc660
 T3	-	list	57	118		00429a85 00463901 004ab420 004b7ca0 004ccc80 005355c0 0053c9f1 00567790 00567fc0 00578f1a 0059332f 005d8626 005d86b2 005e9630 005f88c8 006405b0 006550e2 0065544c 00655495 006554bd 00655a52 00655eea 0065ddb0 0065de1d 0065dee4 0065df69 0065e073 00669af0 0067b5b0 0067cff0 006c2ba0 00719210 00719360 007421c0 0076fc60 0076fe10 007cbbc0 00810c20 00810d40 00850280 0085ae20 00863130 008ebf30 008ebf90 009e47e0 009e4a20 009eeb00 009f8920 00a0a650 00a17110 00a37720 00aacbb0 00adc4e0 00aec6f0 00aec7c0 00bbda70 00bbdc60
 T3	-	__copy	54	147		00433cec 00440260 0047b8e0 0048528f 00493a5a 004dbde1 00519ff0 00528140 0052b5e0 0052bd10 0053cc38 00565a90 00578c50 0057f188 0057f29e 005810da 0059266b 0059269b 005926ce 005ba371 005c12fa 005c132c 005e18b0 005f7b76 005f7b9b 005f7c3a 005f847f 005f8c63 006557fb 00655828 006611f7 00674d80 0069cb80 006b7920 006c2b10 00718d10 0071fa60 00737cf0 00737d50 00786ec0 00788f76 007b5400 007ce1f0 00824790 008f02e0 009ca6c0 009e9900 00a0e460 00a3fcd0 00a55880 00a744b0 00a82000 00ae9cb0 00cd2bf1
@@ -4312,7 +4321,6 @@ T3	-	__find_if	19	39		004b91f0 00547790 005ba23a 005ba2a3 005c1153 005c11fa 0065
 T3	-	CPersistContext	16	28	engine/CPersistContext.h	00463334 00463f3c 00466b65 00467062 0046aa63 0046afc6 0046b3f4 0046b92a 0046be1f 0046ca94 004720c3 004eb17a 005d8c6a 0067b820 0067bfb0 009bada0
 T3	-	uninitialized_fill_n	16	32		0046aeaa 0046c16a 004ea57f 004ed437 004eddf9 004fa087 004fa516 006b6590 007587e0 0081a590 0086d570 00885dd0 00a520b0 00a95890 00b96150 00bbd580
 T3	-	CRetailTree_longkey	15	34		004d0980 0052df20 00566f00 00566f50 00615870 00616580 0069cf90 006c7830 006e69e0 00701fc0 0070a860 007f1fa0 007f1ff0 007f9830 008014f0
-T3	-	S	15	29		0047e186 004fd000 0057a5a5 0059299d 006d65c0 007fec10 009fc160 00a5d7a0 00a5f090 00a5f0a0 00a61fb0 00a635d0 00a635e0 00bdc4f0 00c463c0
 T3	-	__make_heap	15	30		005f8db7 0073df30 00749050 0076abe0 00808230 00808cf0 0086f930 0087e0d0 00932540 00978d00 0097b0e0 009d3cf0 00a6b780 00cbaab0 00cbbb70
 T3	-	TransferMap	14	25		0045da65 0045dee9 0045e30a 0045ebfd 0045f2ea 004645ab 004692d4 004e504a 004e527e 004e678b 004e6a26 004e90da 004e9321 004ecd36
 T3	-	_M_insert_dispatch	14	43		004638c8 00471c40 00513b60 005152c0 00517130 0055ce90 00618100 007119c0 0076fd40 009c69c0 009c6a10 00a37800 00a80e90 00adcc80
@@ -4323,6 +4331,7 @@ T3	-	map	13	26		0042cdc3 0042d201 0042d2a9 00594821 0059483e 0059b559 005b2ea7 0
 T3	-	sort	13	30		004d2570 006257c0 00721fe0 00827710 0095e010 00979870 0097b660 009b8440 00a6c080 00a84cf0 00bef5c0 00befc20 00cbdf70
 T3	-	CAudioObject	12	25		00c42dd0 00c43370 00c436c0 00c43780 00c437a0 00c43810 00c43980 00c43a10 00c43b30 00c43de0 00c43e20 00c43f80
 T3	-	GFSerialiseVectorBinaryIn	12	24		00466beb 0046712b 00469cb2 0046ab33 0046b03a 0046b4ab 0046b9b0 0046be89 0046c31c 004e9d71 004eb219 00569b30
+T3	-	S	12	23		0047e186 004fd000 0057a5a5 0059299d 006d65c0 009fc160 00a5d7a0 00a5f0a0 00a61fb0 00a635d0 00bdc4f0 00c463c0
 T3	-	CCountedPointer	11	24	engine/CCountedPointer.h	004d76b8 004d78ed 004d799a 005ba0f8 00696560 0071ee70 0075f2b0 00a45d20 00a8e000 00a94c70 00a9a350
 T3	-	CHandleBasedMemoryPool_Methods	11	22		00a01da0 00a01e40 00a01ed0 00a02410 00a02470 00a028b0 00c27e60 00c27ea0 00c27f50 00c27f80 00c28240
 T3	-	List	11	25		0042a168 0043fd40 0043fd80 0044b770 00479359 004da1a4 0056cad0 0057f58e 0057f5e1 00592ba7 00613b20
@@ -4402,14 +4411,12 @@ T3	-	CList	4	14	engine/CList.h	012462b4 012462bc 012462e4 013b8a98
 T3	-	CMainGameComponent	4	7	engine/CMainGameComponent.h	00416219 00c31b60 00c31b70 00c31b80
 T3	-	CMemoryAllocatorFixedSize	4	7	engine/CMemoryAllocatorFixedSize.h	00a65e70 00a66160 00a661d0 00a66260
 T3	-	CMouseCursor	4	5		0124c200 0124c208 0124c22c 013b8ad8
-T3	-	CPlayer_Methods	4	6		00487c20 00487fb0 0048a1a0 00636e50
 T3	-	CRetailList_node0xc_dword	4	8		00429fe3 00493a40 0057f525 00592ad3
 T3	-	CRetailVector_elem56	4	8		00f26490 00f28870 00f34c50 00f35450
 T3	-	CRetailVector_poly0x38	4	8		00f25ac0 00f26110 00f26d70 00f27d10
 T3	-	CShaderRenderManager	4	7	engine/CShaderRenderManager.h	00988600 009886c0 009887b0 00aacfb0
 T3	-	CSteeringGroup	4	8		00c29eb0 00c29ec0 00c29ee0 00c29f50
 T3	-	CTCShotDefinitionBase	4	11		006bf890 007befa0 007bf3d0 007bf460
-T3	-	CThingCreatureBase	4	10	engine/CThingCreatureBase.h	00662040 00662550 00663510 00667310
 T3	-	CThingMapManager	4	8	engine/CThingMapManager.h	00637980 00637da0 00637f40 006381a0
 T3	-	GFSerialiseMapBinaryIn	4	6		00475aa6 0067c020 0067c110 0067c200
 T3	-	GetAllThingsInRoughArea	4	8		007f4500 00809a70 0080a550 008e4100
@@ -4449,9 +4456,9 @@ T3	-	CString	3	11	engine/CString.h	00c0ba40 00c0be20 00c0dab0
 T3	-	CTCCombat	3	7	engine/CTCCombat.h	00733620 00733950 00734340
 T3	-	CTCCombat_Methods	3	6		007332a0 00733690 00734570
 T3	-	CTCInventoryBase	3	7		005bd699 005bfb01 005bfb96
-T3	-	CTCPhysicsBase	3	7	engine/CTCPhysicsBase.h	006afde0 008802b0 008803e0
 T3	-	CTCPhysicsBase_Methods	3	6		006af6d0 006af700 006b01d0
 T3	-	CTextTreeWalkThrough	3	6		004506c0 00451b82 004857e0
+T3	-	CThingCreatureBase	3	8	engine/CThingCreatureBase.h	00662550 00663510 00667310
 T3	-	CThingManager	3	8	engine/CThingManager.h	0051df80 00520c80 005252b0
 T3	-	CUnprovenPointerArray	3	6		00c1e640 00c1eb30 00c34d40
 T3	-	CUnprovenStateObject_00C20720	3	6		00c207a0 00c20f20 00c20f40
@@ -4481,7 +4488,6 @@ T3	-	CAIStateGroupBase_00c54090	2	3		00c54090 012b89c8
 T3	-	CAIStateGroup_BirdFlyToFood_00c48300	2	7		00c47f00 00c48300
 T3	-	CAIStateGroup_MinionReactToPlayerInteraction	2	3	engine/CAIStateGroup_MinionReactToPlayerInteraction.h	0092ecd0 0092ed40
 T3	-	CAIStateGroup_ServeFood	2	3	engine/CAIStateGroup_ServeFood.h	00922fc0 00923510
-T3	-	CAIStateGroup_WorkAtSchool_Methods	2	3		00942820 009428a0
 T3	-	CActionParamCountedPointer_00c577b0	2	3		00c577b0 012b8ed4
 T3	-	CAnimateThing	2	5	engine/CAnimateThing.h	0070c0d0 0070e520
 T3	-	CAnimationEntry	2	5	engine/CAnimationEntry.h	013b8c1c 013b8c28
@@ -4504,7 +4510,6 @@ T3	-	CCodeSectionManager	2	4		009f0240 009f03b0
 T3	-	CCombatManager	2	4	engine/CCombatManager.h	006ea540 006ec4f0
 T3	-	CCombatRenderer	2	3		00c3f110 00c3f710
 T3	-	CCompressorZlib_Retail	2	3		00a3a7f0 00a3a8c0
-T3	-	CContainmentVolume_Methods	2	4		00a75400 00a754e0
 T3	-	CCreatureAction_BalverineDropInFromSky	2	4	engine/CCreatureAction_BalverineDropInFromSky.h	008ccbd0 008ccc10
 T3	-	CCreatureAction_KrakenRoarLoop	2	4		00925920 01291494
 T3	-	CDisplayElement_00c1d880	2	3		00c1d880 012b32a0
@@ -4513,7 +4518,6 @@ T3	-	CEnginePrimitiveManagerOcclusionBase	2	3	engine/CEnginePrimitiveManagerOccl
 T3	-	CEnginePrimitiveManagerRepeatedZSpritesMethods	2	4		00baa6a0 00baba70
 T3	-	CEnginePrimitiveRenderer	2	4	engine/CEnginePrimitiveRenderer.h	00b32f70 00c16580
 T3	-	CEngineSceneGrid	2	4		00b92d10 00b93eb0
-T3	-	CEngineScreenEffectGlowRenderer_Methods	2	3		00b5f8c0 00b61690
 T3	-	CEntryList	2	3		00c34b80 012b4fec
 T3	-	CEnvironmentThemePriorityStackEntry	2	5	engine/CEnvironmentThemePriorityStackEntry.h	00886160 00887330
 T3	-	CEventSubscription_00c239b0	2	3		00c239b0 012b3a94
@@ -4590,11 +4594,9 @@ T3	-	CSpellContainerList	2	4		00880200 01247598
 T3	-	CSplinePosParamData	2	4		00b20b10 00b21a00
 T3	-	CStateVariableFilter	2	3		00c6b9d0 00c6bae0
 T3	-	CTCAIScratchpad	2	6	engine/CTCAIScratchpad.h	013bae50 013bae5c
-T3	-	CTCBerserk_Retail	2	5		0078be70 0078bfc0
 T3	-	CTCCreatureGroup	2	4	engine/CTCCreatureGroup.h	00812e20 00813100
 T3	-	CTCCreatureGroupBoastingCrowd	2	4	engine/CTCCreatureGroupBoastingCrowd.h	00784260 00784920
 T3	-	CTCHeroAttachableAppearanceModifiers	2	4	engine/CTCHeroAttachableAppearanceModifiers.h	00706000 007066a0
-T3	-	CTCHeroExperience_Methods	2	4		006d6340 006d8ad0
 T3	-	CTCHeroMorph	2	3	engine/CTCHeroMorph.h	0071d3b0 0071dbd0
 T3	-	CTCHeroOnlineScoreboard	2	4	engine/CTCHeroOnlineScoreboard.h	0055f710 00560bb0
 T3	-	CTCInGameMenu	2	4	engine/CTCInGameMenu.h	0047d6f2 0047df8a
@@ -4602,6 +4604,7 @@ T3	-	CTCInventoryAbilities	2	4	engine/CTCInventoryAbilities.h	005f4519 00c463e0
 T3	-	CTCInventoryAbilities_Retail	2	4		005edf33 005eefb7
 T3	-	CTCInventoryItem	2	5	engine/CTCInventoryItem.h	00458504 013b8c14
 T3	-	CTCKraken	2	4	engine/CTCKraken.h	004e1437 007fb270
+T3	-	CTCPhysicsBase	2	6	engine/CTCPhysicsBase.h	006afde0 008803e0
 T3	-	CTCWeapon_Getters	2	4		005da850 005dad60
 T3	-	CThingFilter_IsEvadeExplosion	2	3		0080c140 0080dc90
 T3	-	CThingFilter_IsInTargetingRangeAndFOV	2	4	engine/CThingFilter_IsInTargetingRangeAndFOV.h	00809030 008090e0
@@ -4758,6 +4761,7 @@ T3	-	CAIStateGroup_MinionKidCalledToMother	1	3	engine/CAIStateGroup_MinionKidCal
 T3	-	CAIStateGroup_MoveGoodsBase	1	2	engine/CAIStateGroup_MoveGoodsBase.h	00915890
 T3	-	CAIStateGroup_RecoverStealableItem	1	2	engine/CAIStateGroup_RecoverStealableItem.h	00965210
 T3	-	CAIStateGroup_TellStory	1	2		00942920
+T3	-	CAIStateGroup_WorkAtSchool_Methods	1	2		00942820
 T3	-	CAIStateGroup_WorkBase	1	2	engine/CAIStateGroup_WorkBase.h	00947840
 T3	-	CAInputProcessBase_00c16130	1	2		012b2a40
 T3	-	CAInputProcessBase_00c885c0	1	2		012beffc
@@ -4949,6 +4953,7 @@ T3	-	CContainer_00c37130	1	3		012b51f0
 T3	-	CContainer_00c37c90	1	3		012b5328
 T3	-	CContainer_00c3ac40	1	3		012b5578
 T3	-	CContainer_00c3b1d0	1	3		012b5650
+T3	-	CContainmentVolume_Methods	1	2		00a754e0
 T3	-	CControllerDisconnect	1	2		0042992b
 T3	-	CConversationAttitude	1	2		013b8a2c
 T3	-	CCountedPointer_0048d890	1	2		0048d8b0
@@ -5054,11 +5059,10 @@ T3	-	CEnginePrimitiveTypeInfoOwned_00ca4f40	1	2		00ca4f40
 T3	-	CEngineScene	1	3	engine/CEngineScene.h	00b94d30
 T3	-	CEngineSceneGridCell	1	2	engine/CEngineSceneGridCell.h	00b918b0
 T3	-	CEngineScreenEffectDisplacementRenderer_Methods	1	2		00b88bc0
+T3	-	CEngineScreenEffectGlowRenderer_Methods	1	2		00b5f8c0
 T3	-	CEngineScreenEffectGlowRenderer_Retail	1	2		00b5ec90
 T3	-	CEngineScreenEffectOutlineGlow_00c1e850	1	2		00c1e850
 T3	-	CEngineSurfaceCompositionManager_Methods	1	2		00b2c460
-T3	-	CEngineWorldMapLink	1	2		00b3edf0
-T3	-	CEngineWorldMapUnlink	1	2		00b3ee80
 T3	-	CEntryHost_00c37b90	1	3		00c37b90
 T3	-	CEntryOwner_00c12000	1	2		00c12000
 T3	-	CEntryOwner_00c14ad0	1	2		00c14ad0
@@ -5150,7 +5154,6 @@ T3	-	CIntelligentPointer_00c16900	1	3		00c16900
 T3	-	CIntelligentPointer_00c1fcc0	1	2		00c1fcc0
 T3	-	CIntelligentPointer_00c1fd60	1	2		00c1fd60
 T3	-	CIntelligentPointer_00c1fe00	1	2		00c1fe00
-T3	-	CInterfaceOwner_Retail	1	2		00687d10
 T3	-	CInterpolatedFloat_00c3a950	1	4		00c3a950
 T3	-	CInventoryItem_00c27a60	1	2		00c27a60
 T3	-	CIsNearCampfireWithSpace	1	2	engine/CIsNearCampfireWithSpace.h	00939a50
@@ -5523,6 +5526,7 @@ T3	-	CTCActivationTrigger_00c37da0	1	2		00c37da0
 T3	-	CTCAvoidRegionExit	1	4		013baf00
 T3	-	CTCBase	1	2	engine/CTCBase.h	00686900
 T3	-	CTCBaseShell	1	2		012b27e0
+T3	-	CTCBerserk_Retail	1	3		0078bfc0
 T3	-	CTCBoastUI	1	2	engine/CTCBoastUI.h	0056ac10
 T3	-	CTCBoastingCrowdControl	1	2	engine/CTCBoastingCrowdControl.h	00783c50
 T3	-	CTCBribable_00789900	1	2		00789900
@@ -5533,7 +5537,6 @@ T3	-	CTCCameraPointScriptedSpline	1	2	engine/CTCCameraPointScriptedSpline.h	0075
 T3	-	CTCCarriedActionUseFish	1	3		007edb80
 T3	-	CTCContainer	1	2	engine/CTCContainer.h	008ed2b0
 T3	-	CTCContainerRewardHero	1	2	engine/CTCContainerRewardHero.h	0074e240
-T3	-	CTCCrateStack	1	2	engine/CTCCrateStack.h	007b6750
 T3	-	CTCCreatureExpression	1	2	engine/CTCCreatureExpression.h	00728ff0
 T3	-	CTCDExplosion	1	2	engine/CTCDExplosion.h	004e3ee1
 T3	-	CTCDPhysicalObstruction_00c2a8c0	1	2		00c2a8c0
@@ -5551,6 +5554,7 @@ T3	-	CTCGraphicAppearanceSprite	1	2		0077c3e0
 T3	-	CTCGraphicAppearanceSprite_00c15b90	1	3		00c15b90
 T3	-	CTCGraphicAppearanceSprite_00c15c00	1	3		00c15c00
 T3	-	CTCHearabilityManager	1	2		007475c0
+T3	-	CTCHeroExperience_Methods	1	2		006d6340
 T3	-	CTCHeroStats_Methods	1	2		0057de14
 T3	-	CTCHeroStats_Retail	1	3		0057ac29
 T3	-	CTCHero_00c12270	1	2		00c12270
@@ -5569,7 +5573,6 @@ T3	-	CTCOpinionSource_007712f0	1	2		007712f0
 T3	-	CTCPerceiveThing_Methods	1	3		00661600
 T3	-	CTCPhysicsNavigator	1	2	engine/CTCPhysicsNavigator.h	00863260
 T3	-	CTCPhysicsStandard	1	2	engine/CTCPhysicsStandard.h	00c1bad0
-T3	-	CTCPreCalculatedNavigationRoute	1	2	engine/CTCPreCalculatedNavigationRoute.h	008006d0
 T3	-	CTCPropertyContainer_00c2a490	1	2		00c2a490
 T3	-	CTCShotDefinitionThrow	1	2		007bee10
 T3	-	CTCSinglePersonOccupiable	1	4	engine/CTCSinglePersonOccupiable.h	0087c420
@@ -5582,7 +5585,6 @@ T3	-	CTCTavernGame	1	3	engine/CTCTavernGame.h	005ec0f0
 T3	-	CTCTeleporter	1	2	engine/CTCTeleporter.h	007dff90
 T3	-	CTCThingList_00747450	1	2		00747450
 T3	-	CTCTurncoat	1	2	engine/CTCTurncoat.h	007c7870
-T3	-	CTCUserActionPointBase_Retail	1	2		00661f20
 T3	-	CTCVillage	1	2	engine/CTCVillage.h	0065b6dd
 T3	-	CTCVillage_Retail	1	3		00658e09
 T3	-	CTCWeaponTrail	1	2	engine/CTCWeaponTrail.h	0076e620
@@ -5754,7 +5756,6 @@ T3	-	CWStringParser	1	2	engine/CWStringParser.h	00a0c8e0
 T3	-	CWaterSeaGenerator	1	2		00be91e0
 T3	-	CWeaponDrawState	1	2		00c351b0
 T3	-	CWorldMap	1	2	engine/CWorldMap.h	0063a6e0
-T3	-	CWorldMap_Methods	1	2		004ff390
 T3	-	CXBConfig	1	3	engine/CXBConfig.h	00a0d980
 T3	-	CYesNo	1	2		004298f3
 T3	-	C_0066caf0	1	2		0066caf0

@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetDazedTimeSeconds() -- a random dazed duration in seconds, uniform in the creature def's [DazedTimeMin, DazedTimeMax] range
-// Leaf: GetDazedTimeSeconds
+// Leaf: ?GetDazedTimeSeconds@CThingCreatureBase@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006620A0, 62 bytes.
 // Callees: CThing::GetWorld @ 0x004C7AB0 (propagated label "CViewBase::GetDisplayEngine"), CWorld::GetWorldSeed
 //          @ 0x0049D810 (propagated "CVertexBufferWin32::DoSizeof"; landed as GetWorldSeed in 0x007BEFB0),
@@ -33,7 +33,7 @@ class CThingCreatureDef { public:
 class CThingCreatureBase { public:
     unsigned char _pad000[0xe0];
     const CThingCreatureDef* PDef;          // +0xe0 CDefPointer<const CThingCreatureDef>::Object
-    float GetDazedTimeSeconds();
+    float GetDazedTimeSeconds() const;
 };
 
 // Naming (NF442 gen, 2026-11-25): callee-only rebind of this row's calls to their PDB spellings (T1 tracker; the target
@@ -41,7 +41,7 @@ class CThingCreatureBase { public:
 //   0x004C7AB0 ?PeekWorld@CThing@@IBEABVCWorld@@XZ (was ?GetWorld@CThingCreatureBase@@QAEPAVCWorld@@XZ)
 class CThingCreatureBase;
 class CThing { protected: CWorld const& PeekWorld() const; friend class CThingCreatureBase; };
-float CThingCreatureBase::GetDazedTimeSeconds()
+float CThingCreatureBase::GetDazedTimeSeconds() const
 {
     CFloatRange range = PDef->DazedTime;
     return GFFloatRandom(range.Max - range.Min, const_cast<CWorld*>(reinterpret_cast<const CWorld*>(&reinterpret_cast<const CThing*>(this)->PeekWorld()))->GetWorldSeed()) + range.Min;

@@ -1,5 +1,5 @@
 // CTCBattleCharge::Reset() -- reset the charge: remember the start position, forget the collided thing and the target, clear the flags, take the dash distance and radius of effect for the spell level and convert the def's pose and charge delays to frames
-// Leaf: ?Reset@CTCBattleCharge
+// Leaf: ?Reset@CTCBattleCharge@@AAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -97,7 +97,9 @@ public:
     bool          IsZTargetting;                // +0x88
     unsigned char _pad89[3];
     long          ChargeDelayFrameCount;        // +0x8c
+    private:
     void Reset();
+    public:
 };
 
 void CTCBattleCharge::Reset()

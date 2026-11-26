@@ -125,7 +125,10 @@ public:
     std::vector<long> CurrentBlockSegmentIndices;                     // +0x30
     unsigned long CurrentBlockSegmentCount;                    // +0x3c
 
-    void PaintCurrentBlockSegment(unsigned long block);        // 0x00AD9380
+    private:
+    void PaintCurrentBlockSegment(unsigned long block);
+    public:
+        // 0x00AD9380
     private:
     void CalcCurrentBlockSegments();
     public:

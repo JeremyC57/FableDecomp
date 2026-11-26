@@ -1,0 +1,268 @@
+target	status	kind	old	pdb	verdict	batch_or_kind	detail
+00404970	agree_unverified	access_letter	?GetFontNameAndScale@CIMEFont@NUISystem@@QBEXAAVCCharString@@AAM@Z	?GetFontNameAndScale@CIMEFont@NUISystem@@ABEXAAVCCharString@@AAM@Z	HOLD	reserved	reserved unit member 00405020(lock:NF465)
+004069e0	agree_unverified	const	?GetAutoSaveDisplayName@CUserProfileManager@@QAE?AVCWideString@@XZ	?GetAutoSaveDisplayName@CUserProfileManager@@QBE?AVCWideString@@XZ	HOLD	identity	identity: PDB spelling defined/bound at 00406c20
+00416268	split_unknown	access_letter	?BeginInputLoading@CMainGameComponent@@QAEXABVCWideString@@@Z	?BeginInputLoading@CMainGameComponent@@IAEXABVCWideString@@@Z	ACCEPT	c1a_access	
+004167cd	agree_unverified	const	?GetCurrentFrameFinishTimeApproximation@CMainGameComponent@@QAENXZ	?GetCurrentFrameFinishTimeApproximation@CMainGameComponent@@IBENXZ	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+004175e5					DROP	t3	
+0041c260	agree_unverified	const	?GetFrame@CGraphicInfoFrame@@QAE_NAAVCGraphicFrame@@KK@Z	?GetFrame@CGraphicInfoFrame@@QBE_NAAVCGraphicFrame@@KK@Z	HOLD	one-PDB-set	PDB symbol in only one of Ego_r / FableWin and not in egod: one source for the access letter (ruling)
+00427f31	agree_unverified	access_letter	?CreateStaticSlider@CManager@NUISystem@@AAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	?CreateStaticSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MABVC2DCoordI@@@Z	ACCEPT	c1a_access	
+0047cfee	standin	access_letter	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	HOLD	identity: old spelling shared by several addresses	one address, one name: the same old spelling is bound/defined at 2-3 addresses; which owns the PDB name needs proof
+00487c20	split_unknown	access_letter	?LoadPlayerCharacterFromGameState@CPlayer@@QAE_NABVCPlayerSave@NPlayerManager@@@Z	?LoadPlayerCharacterFromGameState@CPlayer@@AAE_NABVCPlayerSave@NPlayerManager@@@Z	ACCEPT	c1a_access	
+00487fb0	split_unknown	access_letter	?InitPlayerGui@CPlayer@@QAEXXZ	?InitPlayerGui@CPlayer@@AAEXXZ	ACCEPT	c1a_access	
+0048a1a0	split_unknown	access_letter	?InitPlayerHeroLogBook@CPlayer@@QAEXXZ	?InitPlayerHeroLogBook@CPlayer@@AAEXXZ	ACCEPT	c1a_access	
+004af280	split_unknown	const	?IsQuestFailed@CQuestManager@@QAE_NABVCCharString@@@Z	?IsQuestFailed@CQuestManager@@QBE_NABVCCharString@@@Z	ACCEPT	c1b_access	
+004b0540					DROP	pool465	
+004b1110					DROP	t3	
+004b1340	agree_unverified	const	?IsActiveQuestBetweenQuestStartAndFinishScreensInRegion@CQuestManager@@QAE_NABVCCharString@@@Z	?IsActiveQuestBetweenQuestStartAndFinishScreensInRegion@CQuestManager@@QBE_NABVCCharString@@@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+004bc620	split_unknown	const	?UpdateRenderedLastFrameFlag@CTCGraphicAppearance@NGraphicAppearance@@QAEXXZ	?UpdateRenderedLastFrameFlag@CTCGraphicAppearance@NGraphicAppearance@@IBEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 004bd200=?UpdateRenderedLastFrameFlag@CTCGraphicAppearance@NGraphicAppearance@@QBEXXZ
+004bd160	agree_unverified	access_letter	?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@QBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z	?GetMeshObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@IBEXABVCMeshInfo@2@ABVC3DVector@@ABVCRightHandedSet@@AAVC3DMeshObject@@@Z	ACCEPT	c1a_access	
+004c78f0	agree_unverified	const	?IsRenderedThisFrame@CThing@@QAE_NXZ	?IsRenderedThisFrame@CThing@@QBE_NXZ	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+004cdc40					DROP	lock:CODEX29	
+004fca50	agree_unverified	access_letter	?IsMapPlacementPositionFree@CWorldMap@@QAE_NABVC2DBoxI@@@Z	?IsMapPlacementPositionFree@CWorldMap@@IAE_NABVC2DBoxI@@@Z	HOLD	gen:no local class definition (shared header: header edit)	004fca50 caller: no local definition of CWorldMap (shared header)
+004fdbc0	agree_unverified	access_letter	?LoadLoadableGlobalThings@CWorldMap@@QAEXXZ	?LoadLoadableGlobalThings@CWorldMap@@IAEXXZ	HOLD	gen:no local class definition (shared header: header edit)	004fca50 caller: no local definition of CWorldMap (shared header)
+004fe030	agree_unverified	access_letter	?CompileLoadableGlobalThingsToSingleFile@CWorldMap@@QAEXABVCWideString@@@Z	?CompileLoadableGlobalThingsToSingleFile@CWorldMap@@IAEXABVCWideString@@@Z	HOLD	gen:no local class definition (shared header: header edit)	004fca50 caller: no local definition of CWorldMap (shared header)
+004fe2a0	agree_unverified	access_letter	?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@QAEXABVCWideString@@@Z	?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@@IAEXABVCWideString@@@Z	HOLD	gen:no local class definition (shared header: header edit)	004fe2a0 self: no local definition of CWorldMap (shared header); 004fca50 caller: no local definition of CWorldMap (shared header)
+004ff390	split_unknown	access_letter	?UnloadAllMapsExceptPlayerPos@CWorldMap@@QAEXXZ	?UnloadAllMapsExceptPlayerPos@CWorldMap@@IAEXXZ	ACCEPT	c1a_access	
+0053d540	agree_unverified	access_letter	?OnHovered@CMenuEntry@NUISystem@@UAEXXZ	?OnHovered@CMenuEntry@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+0053d6c0	agree_unverified	access_letter	?OnObserverRemove@CMenuEntry@NUISystem@@UAEXXZ	?OnObserverRemove@CMenuEntry@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+0053d970	agree_unverified	access_letter	?OnUnhovered@CMenuEntry@NUISystem@@UAEXXZ	?OnUnhovered@CMenuEntry@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+0054c810	agree_unverified	access_letter	?ScrollDown@CFrontEndList@NUISystem@@UAEXXZ	?ScrollDown@CFrontEndList@NUISystem@@MAEXXZ	HOLD	gen:declaration is virtual / static	0054c810 self: declaration is virtual / static (not a plain member edit)
+0054dc30	agree_unverified	access_letter	?OnHovered@CFrontEndButton@NUISystem@@UAEXXZ	?OnHovered@CFrontEndButton@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+0054dcc0	agree_unverified	access_letter	?OnUnhovered@CFrontEndButton@NUISystem@@UAEXXZ	?OnUnhovered@CFrontEndButton@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+0054de70	agree_unverified	access_letter	?OnObserverRemove@CFrontEndButton@NUISystem@@UAEXXZ	?OnObserverRemove@CFrontEndButton@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+005559d0	split_unknown	access_letter	?HideList@CScrollableList@NUISystem@@QAEXM@Z	?HideList@CScrollableList@NUISystem@@IAEXM@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 005565c0=?HideList@CRedefinerList@NUISystem@@QAEXM@Z
+00557860	agree_unverified	access_letter	?OnHovered@CKeyRedefiner@NUISystem@@UAEXXZ	?OnHovered@CKeyRedefiner@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+00557880	agree_unverified	access_letter	?OnUnhovered@CKeyRedefiner@NUISystem@@UAEXXZ	?OnUnhovered@CKeyRedefiner@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+00557940	split_unknown	const	?IsUndefined@CKeyRedefiner@NUISystem@@QAE_NXZ	?IsUndefined@CKeyRedefiner@NUISystem@@QBE_NXZ	ACCEPT	c1a_access	
+00557a10	agree_unverified	access_letter	?UpdateKeyText@CKeyRedefiner@NUISystem@@QAEXXZ	?UpdateKeyText@CKeyRedefiner@NUISystem@@AAEXXZ	HOLD	reserved	reserved unit member 005580b0(pool465)
+00557af0	agree_unverified	access_letter	?OnLeftUnclicked@CKeyRedefiner@NUISystem@@UAEXXZ	?OnLeftUnclicked@CKeyRedefiner@NUISystem@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+00557bd0	agree_unverified	access_letter	?CancelSelection@CKeyRedefiner@NUISystem@@QAEXXZ	?CancelSelection@CKeyRedefiner@NUISystem@@IAEXXZ	ACCEPT	c1a_access	
+00558170	agree_unverified	access_letter	?GetActionText@CKeyRedefiner@NUISystem@@QBEXAAVCWideString@@ABVCCharString@@@Z	?GetActionText@CKeyRedefiner@NUISystem@@ABEXAAVCWideString@@ABVCCharString@@@Z	ACCEPT	c1a_access	
+0055bae0	split_unknown	access_letter	?OnHovered@CHoverable@NUISystem@@UAEXXZ	?OnHovered@CHoverable@NUISystem@@MAEXXZ	HOLD	gen:declaration is virtual / static	0055bae0 self: declaration is virtual / static (not a plain member edit)
+0057ac29	split_unknown	access_letter	?HasMarriageInState@CTCHeroStats@@QBE_NW4EMarriageState@@@Z	?HasMarriageInState@CTCHeroStats@@ABE_NW4EMarriageState@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 0057ac4b=?HasMarriageInState@CTCHeroStats_Retail@@QBE_NJ@Z
+00581d2a	split_unknown	const	?GetContextSensitiveFadeAlpha@CTCInventory@@QAEMJ@Z	?GetContextSensitiveFadeAlpha@CTCInventory@@QBEMJ@Z	HOLD	reserved	reserved unit member 00439ab0(t3)
+00581d8e					DROP	t3	
+005826fa	agree_unverified	const	?IsQuitMenuReceivingInput@CTCInventory@@QAE_NXZ	?IsQuitMenuReceivingInput@CTCInventory@@QBE_NXZ	HOLD	identity	identity: PDB spelling defined/bound at 005836d2
+005963db	agree_unverified	access_letter	?SetScoreboardOptionsFromProfile@CFrontEndManager@NUISystem@@QAEXXZ	?SetScoreboardOptionsFromProfile@CFrontEndManager@NUISystem@@IAEXXZ	ACCEPT	c1a_access	
+005bd3a0	agree_unverified	access_letter	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@QBEXXZ	?PlayInventoryNoMovementSound@CTCInventoryBase@NInventory@@ABEXXZ	ACCEPT	c1a_access	
+005c99be					DROP	t3	
+005da850	split_unknown	const	?GetAnimationSpeedValue@CTCWeapon@@QAEMXZ	?GetAnimationSpeedValue@CTCWeapon@@QBEMXZ	HOLD	reserved	reserved unit member 006655a0(pool465)
+005e9c30					DROP	t3	
+00636e50	split_unknown	access_letter	?InitModes@CPlayer@@QAEXXZ	?InitModes@CPlayer@@AAEXXZ	ACCEPT	c1a_access	
+00641260	agree_unverified	access_letter	?AttachParticles@CTCLight@@QAEXXZ	?AttachParticles@CTCLight@@IAEXXZ	HOLD	reserved	reserved unit member 006412b0(t3)
+00644179	agree_unverified	const	?IsFinishedOpening@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsFinishedOpening@CDrawMiniMap@NPlayerGui@@QBE_NXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00437830=?Run_00644179@Sub@@QAEXXZ
+006441be	agree_unverified	const	?IsFinishedClosing@CDrawMiniMap@NPlayerGui@@QAE_NXZ	?IsFinishedClosing@CDrawMiniMap@NPlayerGui@@QBE_NXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00437840=?Run_006441be@Sub@@QAEXXZ
+0064b5c1	agree_unverified	access_letter	?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@QAEMJ@Z	?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@AAEMJ@Z	ACCEPT	c1a_access	
+00658e09	split_unknown	const	?IsThereACratePutDownTask@CTCVillage@@QAE_NXZ	?IsThereACratePutDownTask@CTCVillage@@QBE_NXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00658ea0=?IsThereACratePutDownTask@CTCVillage_Retail@@QAE_NXZ
+0065ad37					DROP	lock:CODEX29	
+00661f20	split_unknown	const	?HasQueuedActions@CThingCreatureBase@@QAE_NXZ	?HasQueuedActions@CThingCreatureBase@@QBE_NXZ	ACCEPT	c1b_access	
+00662040	split_unknown	const	?GetStunnedTimeSeconds@CThingCreatureBase@@QAEMXZ	?GetStunnedTimeSeconds@CThingCreatureBase@@QBEMXZ	ACCEPT	c1b_access	
+006620a0	agree_unverified	const	?GetDazedTimeSeconds@CThingCreatureBase@@QAEMXZ	?GetDazedTimeSeconds@CThingCreatureBase@@QBEMXZ	ACCEPT	c1a_access	
+00663510					DROP	t3	
+006643c0	agree_unverified	access_letter	?UpdateAction@CThingCreatureBase@@QAEXXZ	?UpdateAction@CThingCreatureBase@@IAEXXZ	HOLD	reserved	reserved unit member 006644f0(t3)
+0066c610	split_unknown	const	?HasPhysicsMesh@C3DMeshInfo@@QAE_NXZ	?HasPhysicsMesh@C3DMeshInfo@@QBE_NXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00829d90=?IsLoaded@CRegionMinimap@@QBE_NXZ
+00670820	agree_unverified	access_letter	?UpdateMovement@CTCCoopSpirit@@QAEXXZ	?UpdateMovement@CTCCoopSpirit@@AAEXXZ	ACCEPT	c1a_access	
+00687c70	split_unknown	const	?IsEventAssignableSpecialMoveButton@CInputProcessGameBase@@QAE_NABVCInputEvent@@@Z	?IsEventAssignableSpecialMoveButton@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	ACCEPT	c1a_access	
+00687d10	split_unknown	const	?GetButtonPressureForEvent@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z	?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z	ACCEPT	c1a_access	
+006925d0	agree_unverified	const	?GetFramesRemaining@CCreatureActionBase@@QAEJXZ	?GetFramesRemaining@CCreatureActionBase@@QBEJXZ	ACCEPT	c1a_access	
+00697710	split_unknown	const	?GetNoControlMovementTime@CGameCameraManager@@QAEMXZ	?GetNoControlMovementTime@CGameCameraManager@@QBEMXZ	ACCEPT	c1b_access	
+00697860	agree_unverified	const	?TellEngineThatCameraHasMoved@CGameCameraManager@@QAEX_N@Z	?TellEngineThatCameraHasMoved@CGameCameraManager@@ABEX_N@Z	HOLD	reserved	reserved unit member 00697e20(t3)
+00699670	agree_unverified	access_letter	?UpdateHeightLimits@CGameCameraManager@@QAEXXZ	?UpdateHeightLimits@CGameCameraManager@@AAEXXZ	ACCEPT	c1a_access	
+0069ddc0	agree_unverified	access_letter	?SetSACPosition@CStringAndCageBase@NCameraModes@@UAEXABVC3DVector@@@Z	?SetSACPosition@CStringAndCageBase@NCameraModes@@MAEXABVC3DVector@@@Z	HOLD	gen:declaration is virtual / static	0069ddc0 self: declaration is virtual / static (not a plain member edit)
+006a11b0					DROP	t3	
+006a40d0	agree_unverified	access_letter	?ProcessRolling@CInputProcessJumpingAndRolling@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	?ProcessRolling@CInputProcessJumpingAndRolling@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	ACCEPT	c1a_access	
+006a4ba0	agree_unverified	access_letter	?Save@CThingPhysical@@UAEXAAVCCharString@@@Z	?Save@CThingPhysical@@MAEXAAVCCharString@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 00661a60=_ForwardTarget_006a4ba0
+006afde0	split_unknown	const	?GetAirResistance@CTCPhysicsBase@@QAEMXZ	?GetAirResistance@CTCPhysicsBase@@QBEMXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00724010=?GetAirResistance@CTCPhysicsStandard@@QAEMXZ
+006b13d0	agree_unverified	access_letter	?GetOffsetVector@CTCPhysicsBase@@UBE?AVC2DVector@@XZ	?GetOffsetVector@CTCPhysicsBase@@MBE?AVC2DVector@@XZ	HOLD	gen:declaration is virtual / static	006b13d0 self: declaration is virtual / static (not a plain member edit)
+006b3350	split_unknown	access_letter	?BuildThemes@CEnvironment@@QAEXXZ	?BuildThemes@CEnvironment@@AAEXXZ	HOLD	noedit	no edit: no row emits the old spelling
+006b7510	agree_unverified	access_letter	?Clear@CGameMap@@QAEXXZ	?Clear@CGameMap@@AAEXXZ	ACCEPT	c1a_access	
+006bf7b0	standin	access_letter	?BoughtSomething@CAIStateGroup_BuyFromSeller@@QAEXXZ	?BoughtSomething@CAIStateGroup_BuyFromSeller@@AAEXXZ	HOLD	identity: old spelling shared by several addresses	one address, one name: the same old spelling is bound/defined at 2-3 addresses; which owns the PDB name needs proof
+006d73d0	agree_unverified	access_letter	?GetExperienceFallbackMultiplierForMultiplier@CTCHeroExperience@@QBEJJ@Z	?GetExperienceFallbackMultiplierForMultiplier@CTCHeroExperience@@ABEJJ@Z	HOLD	reserved	reserved unit member 006d7f20(t3)
+006d8ad0	split_unknown	access_letter	?UpdateAbilitiesForAllStats@CTCHeroExperience@@QAEX_N@Z	?UpdateAbilitiesForAllStats@CTCHeroExperience@@AAEX_N@Z	ACCEPT	c1a_access	
+006e0230					DROP	lock:CODEX29	
+006e0af0	agree_unverified	access_letter	?ClearAttachments@CTCDParticleEmitter@@QAEXXZ	?ClearAttachments@CTCDParticleEmitter@@IAEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 006e0de0=_ForwardTarget_006e0af0
+006ed270					DROP	t3	
+006eda80	agree_unverified	access_letter	?RegisterAttackingCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@0_N@Z	?RegisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@0_N@Z	HOLD	reserved	reserved unit member 006edc50(t3)
+006f9130	split_unknown	access_letter	?GetEmbeddedEventTime@CManager@NAnimationEvents@@QBEMKABVCCharString@@@Z	?GetEmbeddedEventTime@CManager@NAnimationEvents@@ABEMKABVCCharString@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 006f9790=?GetEmbeddedEventFrame@CManager@@QAEMJJ@Z
+006f92a0	agree_unverified	access_letter	?SaveBinary@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	?SaveBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z	ACCEPT	c1a_access	
+006f9640	split_unknown	access_letter	?AnimHasExtraEvent@CManager@NAnimationEvents@@QBE_NKABVCCharString@@@Z	?AnimHasExtraEvent@CManager@NAnimationEvents@@ABE_NKABVCCharString@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 006f9720=?AnimHasEventInTable@CAnimationEventQuery_006f9720@@QAE_NJJ@Z
+006f9ac0	split_unknown	access_letter	?GetExtraEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	?GetExtraEventNames@CManager@NAnimationEvents@@ABEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 006f9b20=?SecondPass@CRenderHelper_006f9b20@@QAEXPAX0@Z
+006f9b50	split_unknown	access_letter	?GetExtraEvents@CManager@NAnimationEvents@@QBEXKAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z	?GetExtraEvents@CManager@NAnimationEvents@@ABEXKAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 006f9bb0=?SecondPass@CRenderHelper_006f9bb0@@QAEXPAX0@Z
+006f9f90	agree_unverified	access_letter	?LoadBinary@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z	?LoadBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z	ACCEPT	c1a_access	
+007070d0					DROP	lock:CODEX29	
+0070e2a0	agree_unverified	const	?CalcCachedAnims@CAnimateThing@@QAEXXZ	?CalcCachedAnims@CAnimateThing@@ABEXXZ	ACCEPT	c1a_access	
+0070e520	split_unknown	const	?UpdateCachedAnims@CAnimateThing@@QAEXXZ	?UpdateCachedAnims@CAnimateThing@@ABEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 0070e680=?BaseGetPMeshAnims@CAnimateThingBase@@QAEXXZ
+0070e680					DROP	t3	
+00714f60	agree_unverified	access_letter	?DisplayText@CActionOverheadTalkToThing@NTCScriptedControl@@UAEXXZ	?DisplayText@CActionOverheadTalkToThing@NTCScriptedControl@@MAEXXZ	HOLD	gen:declaration is virtual / static	00714f60 self: declaration is virtual / static (not a plain member edit)
+00723930	agree_unverified	access_letter	?UpdateOldRHSet@CTCPhysicsStandard@@UAEXXZ	?UpdateOldRHSet@CTCPhysicsStandard@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+00728ff0					DROP	t3	
+00730610	split_unknown	const	?IsLockableByOwner@CTCDoor@@QAE_NXZ	?IsLockableByOwner@CTCDoor@@QBE_NXZ	ACCEPT	c1b_access	
+00736ad0	agree_unverified	access_letter	?OnInitialActivate@CTCCombat@@UAEXXZ	?OnInitialActivate@CTCCombat@@EAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+00757440	agree_unverified	access_letter	?UpdateDecal@CWound@CTCWound@@QAEXAAVCTCTextureDecal@@AAJJJM@Z	?UpdateDecal@CWound@CTCWound@@IAEXAAVCTCTextureDecal@@AAJJJM@Z	HOLD	reserved	reserved unit member 00757570(pool465)
+00759870	agree_unverified	const	?GetPossibleCollidedWithArea@CTCPhysicsRigidBody@@UAE?AVC2DBoxI@@XZ	?GetPossibleCollidedWithArea@CTCPhysicsRigidBody@@MBE?AVC2DBoxI@@XZ	HOLD	gen:declaration is virtual / static	00759870 self: declaration is virtual / static (not a plain member edit)
+0075ddf0					DROP	lock:CODEX29	
+00760bc0	agree_unverified	access_letter	?GetBounds@CShape@NShape@@QBEXAAVC2DBoxF@@@Z	?GetBounds@CShape@NShape@@IBEXAAVC2DBoxF@@@Z	ACCEPT	c1b_access	
+00778d60	agree_unverified	access_letter	?Construct@CTCDCameraPoint@@QAEXABVC3DVector@@@Z	?Construct@CTCDCameraPoint@@AAEXABVC3DVector@@@Z	HOLD	identity	identity: PDB spelling defined/bound at 007e8870
+00779d20	agree_unverified	access_letter	?Construct@CTCDExperienceOrb@@QAEXABVC3DVector@@@Z	?Construct@CTCDExperienceOrb@@AAEXABVC3DVector@@@Z	ACCEPT	c1b_access	
+00788198					DROP	t3	
+0078be70	split_unknown	const	?GetSuperRumble@CTCBerserk@@QAEXAAM000@Z	?GetSuperRumble@CTCBerserk@@QBEXAAM000@Z	ACCEPT	c1b_access	
+0079a600	agree_unverified	access_letter	?FinalCleanup@CTCSummonSpell@@QAEXXZ	?FinalCleanup@CTCSummonSpell@@AAEXXZ	HOLD	gen:declaration does not start its line	0079a600 self: declaration does not start its line
+007a4300	agree_unverified	access_letter	?FinalCleanup@CTCWillEnflame@@QAEXXZ	?FinalCleanup@CTCWillEnflame@@IAEXXZ	HOLD	gen:declaration does not start its line	007a4300 self: declaration does not start its line
+007a5450	agree_unverified	access_letter	?FinalCleanup@CTCForcePushPower@@QAEXXZ	?FinalCleanup@CTCForcePushPower@@AAEXXZ	HOLD	gen:declaration does not start its line	007a5450 self: declaration does not start its line
+007a6f00	agree_unverified	access_letter	?Reset@CTCBattleCharge@@QAEXXZ	?Reset@CTCBattleCharge@@AAEXXZ	ACCEPT	c1b_access	
+007a74a0	agree_unverified	access_letter	?CleanUpEffects@CTCBattleCharge@@QAEXXZ	?CleanUpEffects@CTCBattleCharge@@AAEXXZ	HOLD	reserved	reserved unit member 007a7bf0(t3)
+007a9b70	agree_unverified	access_letter	?Reset@CTCAssassinRush@@QAEXXZ	?Reset@CTCAssassinRush@@AAEXXZ	ACCEPT	c1b_access	
+007aac50					DROP	lock:CODEX29	
+007b1a30					DROP	lock:CODEX29	
+007b6750	split_unknown	const	?GetNextCrate@CTCCrateStack@@QAEPAVCThing@@XZ	?GetNextCrate@CTCCrateStack@@QBEPAVCThing@@XZ	ACCEPT	c1b_access	
+007bc8fc	agree_unverified	access_letter	?InitMovement@CTCShotDefinitionTearInGround@NThingShot@@UAEXXZ	?InitMovement@CTCShotDefinitionTearInGround@NThingShot@@MAEXXZ	HOLD	gen:declaration is virtual / static	007bc8fc self: declaration is virtual / static (not a plain member edit)
+007bdb66	agree_unverified	access_letter	?OnCollision@CTCShotDefinitionNymphFun@NThingShot@@MAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	?OnCollision@CTCShotDefinitionNymphFun@NThingShot@@UAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z	HOLD	gen:declaration is virtual / static	007bdb66 self: declaration is virtual / static (not a plain member edit)
+007c3030	agree_unverified	access_letter	?FinalCleanup@CTCDrainLife@@QAEXXZ	?FinalCleanup@CTCDrainLife@@AAEXXZ	HOLD	gen:declaration does not start its line	007c3030 self: declaration does not start its line
+007c5470	agree_unverified	access_letter	?FinalCleanup@CTCGhostSword@@QAEXXZ	?FinalCleanup@CTCGhostSword@@AAEXXZ	HOLD	gen:declaration does not start its line	007c5470 self: declaration does not start its line
+007ca670	agree_unverified	access_letter	?PrepareToShowItems@CTCHeroReceiveItems@@QAEXABVC3DVector@@@Z	?PrepareToShowItems@CTCHeroReceiveItems@@AAEXABVC3DVector@@@Z	HOLD	reserved	reserved unit member 007cab30(t3)
+007dd540					DROP	lock:CODEX29	
+007df3d0	split_unknown	const	?HasCameraPhysicsMeshObject@CTCCameraCollision@@QAE_NXZ	?HasCameraPhysicsMeshObject@CTCCameraCollision@@QBE_NXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 007efe70=?IsUsable@CTCWallMountEffects@@QAE_NXZ
+007eeb20	agree_unverified	access_letter	?Smash@CTCSmashableBarrier@@UAEXXZ	?Smash@CTCSmashableBarrier@@MAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+007f8540	agree_unverified	access_letter	?LeafUpdate@CTCCreatureItemLevitationHero@@UAEXXZ	?LeafUpdate@CTCCreatureItemLevitationHero@@MAEXXZ	HOLD	gen:declaration is virtual / static	007f8540 self: declaration is virtual / static (not a plain member edit)
+007f9480	split_unknown	access_letter	?GetCompareValue@CVectorCompare_BestForTargeting@@QBEMMM@Z	?GetCompareValue@CVectorCompare_BestForTargeting@@ABEMMM@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 007f9660=?ComputeValue@CVectorCompare_BestForTargeting@@QBEMMM@Z
+007fec10	split_unknown	const	?GetNumberOfActionPointsInUse@CTCUserActionPointBase@@QAEJXZ	?GetNumberOfActionPointsInUse@CTCUserActionPointBase@@QBEJXZ	ACCEPT	c1c_access	
+008006d0	split_unknown	const	?SaveRoute@CTCPreCalculatedNavigationRoute@@QAEXAAVCPersistContext@@@Z	?SaveRoute@CTCPreCalculatedNavigationRoute@@ABEXAAVCPersistContext@@@Z	ACCEPT	c1b_access	
+0080cd40					DROP	lock:CODEX29	
+0080d300					DROP	lock:CODEX29	
+0081e7b0	agree_unverified	const	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	HOLD	identity: old spelling shared by several addresses	one address, one name: the same old spelling is bound/defined at 2-3 addresses; which owns the PDB name needs proof
+0081e7e0					DROP	t3	
+0081fb00	agree_unverified	const	?HasWaterAt@CMap@@QAE_NABVC2DCoordI@@@Z	?HasWaterAt@CMap@@IBE_NABVC2DCoordI@@@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+008201d0	split_unknown	access_letter	?SetGroundSizeZAt@CMap@@QAEXABVC2DCoordI@@M@Z	?SetGroundSizeZAt@CMap@@IAEXABVC2DCoordI@@M@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00825440	split_unknown	access_letter	?SetSizeZAt@CHeightMap@@QAEXABVC2DCoordI@@M@Z	?SetSizeZAt@CHeightMap@@AAEXABVC2DCoordI@@M@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 00825440=?SetSizeZAt@CHeightMap@@QAEXPBUSCellIndex_00825440@@M@Z;008201d0=?Run_00825440@Sub@@QAEXXZ
+00828590					DROP	t3	
+0082afa0	agree_unverified	access_letter	?InitialiseRegionExitMarkers@CMiniMapDisplay@@QAEXXZ	?InitialiseRegionExitMarkers@CMiniMapDisplay@@IAEXXZ	ACCEPT	c1b_access	
+0082cf40	split_unknown	const	?IsClosed@CTCDoor@@QAE_NXZ	?IsClosed@CTCDoor@@QBE_NXZ	HOLD	one-PDB-set	PDB symbol in only one of Ego_r / FableWin and not in egod: one source for the access letter (ruling)
+00830360					DROP	pool465	
+0083ba20	agree_unverified	access_letter	?OnCreate@CThingHolySite@@UAE_NXZ	?OnCreate@CThingHolySite@@MAE_NXZ	HOLD	gen:declaration is virtual / static	0083ba20 self: declaration is virtual / static (not a plain member edit)
+0084cdf0	agree_unverified	const	?UpdateFixLookDirection@CBase@NCameraModes@@QAEXABVC3DVector@@0AAV3@M@Z	?UpdateFixLookDirection@CBase@NCameraModes@@IBEXABVC3DVector@@0AAV3@M@Z	ACCEPT	c1b_access	
+0084db30	agree_unverified	access_letter	?UpdateCameraOcclusion@CBase@NCameraModes@@QAEXAAVC3DVector@@@Z	?UpdateCameraOcclusion@CBase@NCameraModes@@IAEXAAVC3DVector@@@Z	ACCEPT	c1b_access	
+00852040	agree_unverified	access_letter	?OnInitLeaf@CScriptModuleTransitionBetweenPoints@NCameraModes@@UAEXXZ	?OnInitLeaf@CScriptModuleTransitionBetweenPoints@NCameraModes@@MAEXXZ	HOLD	gen:declaration is virtual / static	00852040 self: declaration is virtual / static (not a plain member edit)
+008520c0	agree_unverified	access_letter	?OnInitLeaf@CScriptModuleFOVZoom@NCameraModes@@UAEXXZ	?OnInitLeaf@CScriptModuleFOVZoom@NCameraModes@@MAEXXZ	HOLD	gen:declaration is virtual / static	008520c0 self: declaration is virtual / static (not a plain member edit)
+008527f0	agree_unverified	access_letter	?IsThingsOk@CScriptModuleConversationBase@NCameraModes@@QBE_NXZ	?IsThingsOk@CScriptModuleConversationBase@NCameraModes@@IBE_NXZ	HOLD	source scan: another landed object defines the old or PDB spelling	0x008529D0 (not a retail caller) DEFINES the old spelling ?IsThingsOk@...QBE_NXZ too: two definers; respell it with the self or prove which owns it
+00853290	agree_unverified	const	?GetTransformedPosition@CScriptModuleBase@NCameraModes@@QAE?AVC3DVector@@ABV3@@Z	?GetTransformedPosition@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@@Z	ACCEPT	c1b_access	
+00853320	agree_unverified	const	?GetViewPosInFocalPlane@CScriptModuleBase@NCameraModes@@QAE?AVC3DVector@@ABV3@0@Z	?GetViewPosInFocalPlane@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@0@Z	ACCEPT	c1b_access	
+00856ac0					DROP	t3	
+008591e0					DROP	lock:CODEX29	
+0085cfe0	split_unknown	const	?GetMemoryFootprint@CThingMap@NThingMap@@QAEJXZ	?GetMemoryFootprint@CThingMap@NThingMap@@QBEJXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00637ae0=?GetMemoryFootprint@CThingMapCalls@@QAEJXZ
+008637d0	agree_unverified	access_letter	?CheckForNewBodyReorientationAngle@CThingBodyReorienter@@QAEXXZ	?CheckForNewBodyReorientationAngle@CThingBodyReorienter@@AAEXXZ	ACCEPT	c1b_access	
+00871e40	agree_unverified	access_letter	?SetSACPosition@CStringAndCage@NCameraModes@@UAEXABVC3DVector@@@Z	?SetSACPosition@CStringAndCage@NCameraModes@@MAEXABVC3DVector@@@Z	HOLD	gen:declaration is virtual / static	00871e40 self: declaration is virtual / static (not a plain member edit)
+00871e60	agree_unverified	access_letter	?SetSACPosition@CSACCombat@NCameraModes@@UAEXABVC3DVector@@@Z	?SetSACPosition@CSACCombat@NCameraModes@@MAEXABVC3DVector@@@Z	HOLD	gen:declaration is virtual / static	00871e60 self: declaration is virtual / static (not a plain member edit)
+00872050	agree_unverified	access_letter	?UpdateZVars@CStringAndCageBase@NCameraModes@@QAEXXZ	?UpdateZVars@CStringAndCageBase@NCameraModes@@AAEXXZ	ACCEPT	c1b_access	
+00872490	agree_unverified	access_letter	?InitialiseTransitionVariables@CZTargetNew@NCameraModes@@QAEXXZ	?InitialiseTransitionVariables@CZTargetNew@NCameraModes@@AAEXXZ	ACCEPT	c1b_access	
+00872af0					DROP	lock:CODEX29	
+00873250	agree_unverified	access_letter	?SetUpPhysics@CStringAndCage@NCameraModes@@UAEXXZ	?SetUpPhysics@CStringAndCage@NCameraModes@@MAEXXZ	HOLD	gen:declaration is virtual / static	00873250 self: declaration is virtual / static (not a plain member edit)
+008732d0	agree_unverified	access_letter	?SetUpPhysics@CSACCombat@NCameraModes@@UAEXXZ	?SetUpPhysics@CSACCombat@NCameraModes@@MAEXXZ	HOLD	gen:declaration is virtual / static	008732d0 self: declaration is virtual / static (not a plain member edit)
+00879680	agree_unverified	access_letter	?GetPhiForPosition@CProjectileWeapon@NCameraModes@@QBEMABVC3DVector@@@Z	?GetPhiForPosition@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@@Z	ACCEPT	c1b_access	
+008798c0	agree_unverified	access_letter	?GetPhiForTargetedThing@CProjectileWeapon@NCameraModes@@QBEMABVCThing@@@Z	?GetPhiForTargetedThing@CProjectileWeapon@NCameraModes@@ABEMABVCThing@@@Z	ACCEPT	c1b_access	
+0087c070	agree_unverified	access_letter	?OnInit@COrbitGame@NCameraModes@@UAEXXZ	?OnInit@COrbitGame@NCameraModes@@MAEXXZ	HOLD	gen:declaration is virtual / static	0087c070 self: declaration is virtual / static (not a plain member edit)
+008802b0	split_unknown	access_letter	?HasSphereCylinderCollidedAt@CTCPhysicsBase@@QBE_NABV1@ABVC3DVector@@AAVCPhysicsCollideResponse@@@Z	?HasSphereCylinderCollidedAt@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@AAVCPhysicsCollideResponse@@@Z	ACCEPT	c1b_access	
+008803e0	split_unknown	access_letter	?HasSphereSphereCollidedAt@CTCPhysicsBase@@QBE_NABV1@ABVC3DVector@@AAVCPhysicsCollideResponse@@@Z	?HasSphereSphereCollidedAt@CTCPhysicsBase@@IBE_NABV1@ABVC3DVector@@AAVCPhysicsCollideResponse@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 008803e0=?HasSphereSphereCollidedAt@CTCPhysicsBase@@QBE_NPBV1@ABVC3DVector@@PAVCPhysicsCollideRespo;00880800=?HasSphereSphereCollidedAt@CTCPhysicsBase_Methods@@QAE_NPAU1@ABVC3DVector@@1@Z
+0088b870	split_unknown	access_letter	?FindNextStateGroupToUse@CAIBrain@@QAEPAVCAIStateGroupBase@@J@Z	?FindNextStateGroupToUse@CAIBrain@@AAEPAVCAIStateGroupBase@@J@Z	HOLD	reserved	reserved unit member 0088bcb0(t3)
+008da0f0	agree_unverified	access_letter	?Spike@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	?Spike@CModeScorpionKingTailPlunge@NCreatureMode@@AAEXXZ	ACCEPT	c1b_access	
+008dacb0	agree_unverified	access_letter	?CreateHandGlow@CModeThunderLightningStorm@NCreatureMode@@QAEXXZ	?CreateHandGlow@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ	ACCEPT	c1b_access	
+008de650	agree_unverified	access_letter	?Recover@CModeStunned@NCreatureMode@@UAEXXZ	?Recover@CModeStunned@NCreatureMode@@EAEXXZ	HOLD	gen:declaration is virtual / static	008de650 self: declaration is virtual / static (not a plain member edit)
+008df510	agree_unverified	access_letter	?Recover@CModeScorpionKingTailPlunge@NCreatureMode@@QAEXXZ	?Recover@CModeScorpionKingTailPlunge@NCreatureMode@@AAEXXZ	ACCEPT	c1b_access	
+008e08c0	agree_unverified	access_letter	?Recover@CModeCreatureIsProjectile@NCreatureMode@@QAEXXZ	?Recover@CModeCreatureIsProjectile@NCreatureMode@@AAEXXZ	ACCEPT	c1b_access	
+008e5f00	agree_unverified	access_letter	?PerformForceUpdates@CTCPhysicsStandard@@QAEXXZ	?PerformForceUpdates@CTCPhysicsStandard@@IAEXXZ	HOLD	identity	identity: PDB spelling defined/bound at 008e5670
+008e79a0	agree_unverified	access_letter	?FindHitEvent@CModeBriarRoseConcentrate@NCreatureMode@@QAE_NXZ	?FindHitEvent@CModeBriarRoseConcentrate@NCreatureMode@@AAE_NXZ	ACCEPT	c1b_access	
+008e9190	agree_unverified	access_letter	?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@QAEXXZ	?SetUpCombinationAnims@CModeStrafe@NCreatureMode@@AAEXXZ	ACCEPT	c1b_access	
+008e9460	agree_unverified	const	?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@QAE_NAAM@Z	?GetBestFrameInAimingAnim@CModeStrafe@NCreatureMode@@ABE_NAAM@Z	ACCEPT	c1b_access	
+008e9950	agree_unverified	access_letter	?UpdateWeaponState@CModeStrafe@NCreatureMode@@QAEXXZ	?UpdateWeaponState@CModeStrafe@NCreatureMode@@AAEXXZ	ACCEPT	c1b_access	
+008ea9f0	split_unknown	access_letter	?UpdateHoverAnim@CModeHoverBase@NCreatureMode@@QAEXXZ	?UpdateHoverAnim@CModeHoverBase@NCreatureMode@@AAEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 008eac30=?Method@CClass_008eac30@@QAEXXZ
+008f5ee0	split_unknown	const	?GetMemoryFootprint@CGameMap@@QAEJXZ	?GetMemoryFootprint@CGameMap@@QBEJXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 0081e7b0=?GetMemoryFootprint@CGameMapGrid@@QAEJXZ
+008f5fa0	agree_unverified	access_letter	?AreaChanged@CHeightMap@@QAEXABVC2DBoxI@@@Z	?AreaChanged@CHeightMap@@AAEXABVC2DBoxI@@@Z	HOLD	gen:declaration does not start its line	008f5fa0 caller: declaration does not start its line
+008fd1b0	split_unknown	access_letter	?DestroyItem@CAIStateGroupBase@@QAEXABVCCharString@@@Z	?DestroyItem@CAIStateGroupBase@@IAEXABVCCharString@@@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 0092a8a0=?DestroyItem@CAIStateGroup_ApprenticeHero@@QAEXABVCCharString@@@Z;0093a5c0=?DestroyItem@CAIStateGroup_BanditSitRoundCampfire@@QAEXABVCCharString@@@Z;0093a8c0=?DestroyItem@CAIStateGroup_BanditSitRoundCampfire@@QAEXABVCCharString@@@Z;00944690=?DestroyIte
+0090cb80					DROP	t3	
+00917a10	rtti_identified	access_letter	?IsRunnable@CAIStateGroup_Clean@@UAE_NXZ	?IsRunnable@CAIStateGroup_Clean@@MAE_NXZ	HOLD	gen:declaration is virtual / static	00917a10 self: declaration is virtual / static (not a plain member edit); 00917a10 caller: declaration is virtual / static (not a plain member edit)
+00929f70	split_unknown	access_letter	?IsDummyTypeLegal@CAIStateGroup_ApprenticeHero@@QAE_NJ@Z	?IsDummyTypeLegal@CAIStateGroup_ApprenticeHero@@IAE_NJ@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 00929f70=?IsDummyTypeLegal@CAIStateGroup_ApprenticeHero@@SG_NJ@Z;0092b3e0=?IsDummyTypeLegal@CAIStateGroup_SkillPractice@@QAE_NJ@Z
+0092a0c0					DROP	t3	
+0092a220	split_unknown	access_letter	?MoveToAppropriateDummy@CAIStateGroup_ApprenticeHero@@QAE_NXZ	?MoveToAppropriateDummy@CAIStateGroup_ApprenticeHero@@IAE_NXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 0092b3e0=?MoveToAppropriateDummy@CAIStateGroup_SkillPractice@@QAE_NXZ
+0092a3f0					DROP	lock:CODEX29	
+00935c40					DROP	lock:CODEX29	
+0093d140	agree_unverified	access_letter	?UpdateCurrentAction@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ	?UpdateCurrentAction@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ	HOLD	reserved	reserved unit member 0093e5e0(t3),0096ee90(t3)
+0093d180	agree_unverified	const	?ShouldGoStraightIntoStrafe@CAIStateGroup_MeleeCombatNearbyBase@@QAE_NXZ	?ShouldGoStraightIntoStrafe@CAIStateGroup_MeleeCombatNearbyBase@@IBE_NXZ	HOLD	reserved	reserved unit member 0093e5e0(t3),0096ee90(t3)
+0093d580	agree_unverified	access_letter	?RequestMoney@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ	?RequestMoney@CAIStateGroup_MeleeCombatNearbyBase@@IAEXXZ	HOLD	reserved	reserved unit member 0093d720(t3)
+0093d720					DROP	t3	
+0093dcd0					DROP	t3	
+009428a0	split_unknown	access_letter	?CrouchAndTalk@CAIStateGroup_WorkAtSchool@@QAE_NM@Z	?CrouchAndTalk@CAIStateGroup_WorkAtSchool@@IAE_NM@Z	ACCEPT	c1c_access	
+0094b740					DROP	t3	
+0095d310	agree_unverified	access_letter	?CanUseRangedCombat@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAE_NXZ	?CanUseRangedCombat@CAIStateGroup_RangedCombatUsePreferredFirePoint@@IAE_NXZ	HOLD	reserved	reserved unit member 0095d590(t3)
+00965210	split_unknown	const	?FindPStealableItemOutsideTargetPointRange@CAIStateGroup_RecoverStealableItem@@QAEPAVCThing@@ABVC3DVector@@M@Z	?FindPStealableItemOutsideTargetPointRange@CAIStateGroup_RecoverStealableItem@@ABEPAVCThing@@ABVC3DVector@@M@Z	HOLD	reserved	reserved unit member 00965320(t3)
+009a5a50	agree_unverified	access_letter	?ActivateWindow@CSystemManager@@SIXPAV1@_N@Z	?ActivateWindow@CSystemManager@@CIXPAV1@_N@Z	HOLD	gen:declaration does not start its line	009a5a50 self: declaration does not start its line
+009ae150					DROP	t3	
+009be980					DROP	pool465	
+009c32c0					DROP	t3	
+009ccdf0	agree_unverified	const	?FindIndexByFilename@CBankFile@@QAEKABVCCharString@@J@Z	?FindIndexByFilename@CBankFile@@QBEKABVCCharString@@J@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+009d0880					DROP	lock:CODEX29	
+009d0ef0	split_unknown	access_letter	?FindEmptyBlockOffset@CBankFile@@QAEKK@Z	?FindEmptyBlockOffset@CBankFile@@AAEKK@Z	HOLD	reserved	reserved unit member 009d1260(t3)
+009d0fc0	split_unknown	access_letter	?GetAllocatedBlockSize@CBankFile@@QAEKK@Z	?GetAllocatedBlockSize@CBankFile@@AAEKK@Z	HOLD	reserved	reserved unit member 009d1260(t3)
+009d52d0	agree_unverified	access_letter	?SetupBuffer@CBankFileAsyncData@@QAE_N_N@Z	?SetupBuffer@CBankFileAsyncData@@AAE_N_N@Z	HOLD	reserved	reserved unit member 009d5b60(t3)
+009d5410	agree_unverified	access_letter	?FreeBuffer@CBankFileAsyncData@@QAEXXZ	?FreeBuffer@CBankFileAsyncData@@AAEXXZ	HOLD	source scan: another landed object defines the old or PDB spelling	0x009D5BF0 (not a retail caller) already DEFINES the PDB spelling ?FreeBuffer@CBankFileAsyncData@@AAEXXZ: the self respell would add a duplicate definition (r457e)
+009ea620	standin	access_letter	?CopyBackBufferToFrontBuffer@CConsole@@QAEXXZ	?CopyBackBufferToFrontBuffer@CConsole@@AAEXXZ	HOLD	identity: old spelling shared by several addresses	one address, one name: the same old spelling is bound/defined at 2-3 addresses; which owns the PDB name needs proof
+009ea640	standin	access_letter	?CopyBackBufferToFrontBuffer@CConsole@@QAEXXZ	?CopyBackBufferToFrontBuffer@CConsole@@AAEXXZ	HOLD	identity: old spelling shared by several addresses	one address, one name: the same old spelling is bound/defined at 2-3 addresses; which owns the PDB name needs proof
+009f4d40					DROP	t3	
+009f9ee0	split_unknown	access_letter	?CalcByteLength@CTexture@@QAEXXZ	?CalcByteLength@CTexture@@AAEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 009fa230=?CalcByteLength@CTexturePreallocatedView@@QAEXXZ
+009ff440	agree_unverified	access_letter	?InitFrames@CGraphicDataBank@@QAEXXZ	?InitFrames@CGraphicDataBank@@AAEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 009ff580=_ForwardTarget_009ff440
+00a02140	agree_unverified	access_letter	?BeginCritical@CHandleBasedMemoryPool@@QAE_N_N@Z	?BeginCritical@CHandleBasedMemoryPool@@AAE_N_N@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00a02170	split_unknown	access_letter	?EndCritical@CHandleBasedMemoryPool@@QAEXXZ	?EndCritical@CHandleBasedMemoryPool@@AAEXXZ	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00a028b0	split_unknown	access_letter	?InternalSetResource@CHandleBasedMemoryPool@@QAEXJPAX@Z	?InternalSetResource@CHandleBasedMemoryPool@@IAEXJPAX@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00a17af0	agree_unverified	access_letter	?GetSphereIntersectionFromToUsingSegmentation@CPhysicsMesh@@QBE_NMABVC3DVector@@0AAVCMeshIntersectionData@@@Z	?GetSphereIntersectionFromToUsingSegmentation@CPhysicsMesh@@ABE_NMABVC3DVector@@0AAVCMeshIntersectionData@@@Z	ACCEPT	c1c_access	
+00a182c0	agree_unverified	access_letter	?GetSphereIntersectionFromToUsingFullCollision@CPhysicsMesh@@QBE_NMABVC3DVector@@0AAVCMeshIntersectionData@@@Z	?GetSphereIntersectionFromToUsingFullCollision@CPhysicsMesh@@ABE_NMABVC3DVector@@0AAVCMeshIntersectionData@@@Z	ACCEPT	c1c_access	
+00a24870	split_unknown	access_letter	?ConvertToMeshStats@C3DMeshLODInfo@@QAEXXZ	?ConvertToMeshStats@C3DMeshLODInfo@@AAEXXZ	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00a265b0					DROP	t3	
+00a26d40					DROP	t3	
+00a5d4d0	split_unknown	access_letter	?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z	?Initialise@CShaderResource@@AAEXAAVCShaderRenderManager@@@Z	HOLD	reserved	reserved unit member 0098b860(t3)
+00a5d7a0	split_unknown	access_letter	?Uninitialise@CShaderResource@@QAEXXZ	?Uninitialise@CShaderResource@@AAEXXZ	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00a5f090	split_unknown	const	?GetFontInfo@CStreamingFontDataBank@@QAEPAVCStreamingFontDataBankEntry@@K@Z	?GetFontInfo@CStreamingFontDataBank@@QBEPAVCStreamingFontDataBankEntry@@K@Z	ACCEPT	c1c_access	
+00a635e0	split_unknown	const	?GetFontInfo@CFontDataBank@@QAEPAVCFontDataBankEntry@@K@Z	?GetFontInfo@CFontDataBank@@QBEPAVCFontDataBankEntry@@K@Z	ACCEPT	c1c_access	
+00a63c00					DROP	t3	
+00a63db0					DROP	pool465	
+00a64230	agree_unverified	access_letter	?ReadFromParserAsBool@CGenericVar@@QAE_NAAVCStringParser@@@Z	?ReadFromParserAsBool@CGenericVar@@IAE_NAAVCStringParser@@@Z	HOLD	gen:declaration does not start its line	00a64230 self: declaration does not start its line
+00a668e0	split_unknown	access_letter	?AddMaintainedEventsToEventStore@CKeyboard@@QAEXXZ	?AddMaintainedEventsToEventStore@CKeyboard@@IAEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00ab6240=?AddMaintainedEventsToEventStore@CKeyboardDX@@QAEXXZ
+00a67420	agree_unverified	access_letter	?ReleaseVolume@CVolume@@QAEXXZ	?ReleaseVolume@CVolume@@IAEXXZ	HOLD	source scan: another landed object defines the old or PDB spelling	0x00A67770 (not a retail caller) DEFINES the old spelling ?ReleaseVolume@CVolume@@QAEXXZ too: two definers
+00a67f60	agree_unverified	access_letter	?ReleaseTexture@CVolumeTexture@@QAEXXZ	?ReleaseTexture@CVolumeTexture@@IAEXXZ	ACCEPT	c1c_access	
+00a6cc10	agree_unverified	access_letter	?GetMeshDataFromFileData@CPhysicsMesh@@QAEXABVC3DMeshFile@@@Z	?GetMeshDataFromFileData@CPhysicsMesh@@AAEXABVC3DMeshFile@@@Z	ACCEPT	c1c_access	
+00a6d0e0					DROP	lock:CODEX29	
+00a6d670					DROP	lock:CODEX29	
+00a75400	split_unknown	const	?SaveBinary@CContainmentVolume@@QBEXAAVCDataOutputStream@@@Z	?SaveBinary@CContainmentVolume@@QAEXAAVCDataOutputStream@@@Z	ACCEPT	c1c_access	
+00aacfb0	split_unknown	access_letter	?UpdateFogColour@CShaderRenderManager@@QAEXXZ	?UpdateFogColour@CShaderRenderManager@@AAEXXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00aad060=?Commit@CSoundReceiverLH@@QAEXXZ;00aad090=?Commit@CSoundReceiverLH@@QAEXXZ
+00ac7030	agree_unverified	const	?IsZTargetable@CTCTargeted@@QAE_NXZ	?IsZTargetable@CTCTargeted@@QBE_NXZ	HOLD	identity	identity: PDB spelling defined/bound at 007ea290
+00ad9380	agree_unverified	access_letter	?PaintCurrentBlockSegment@CVertexGroupBlockOptimiser@@QAEXK@Z	?PaintCurrentBlockSegment@CVertexGroupBlockOptimiser@@AAEXK@Z	ACCEPT	c1c_access	
+00ae2050	agree_unverified	const	?WriteToFile@CParticleSimulation@@QAEXAAVCDataOutputStream@@@Z	?WriteToFile@CParticleSimulation@@QBEXAAVCDataOutputStream@@@Z	ACCEPT	c1c_access	
+00ae2230	agree_unverified	const	?WriteToFile@CParticleProgram@@QAEXAAVCDataOutputStream@@@Z	?WriteToFile@CParticleProgram@@QBEXAAVCDataOutputStream@@@Z	ACCEPT	c1c_access	
+00aed1b0	split_unknown	const	?HasAllocatedParticles@CParticleEmitter@NParticleEngine@@QBE_NXZ	?HasAllocatedParticles@CParticleEmitter@NParticleEngine@@QAE_NXZ	ACCEPT	c1c_access	
+00aed220	split_unknown	const	?HasAllocatedDecals@CParticleEmitter@NParticleEngine@@QBE_NXZ	?HasAllocatedDecals@CParticleEmitter@NParticleEngine@@QAE_NXZ	ACCEPT	c1c_access	
+00af8170	agree_unverified	access_letter	?RegisterPSCs@CPSCManager@NParticleEngine@@QAEXXZ	?RegisterPSCs@CPSCManager@NParticleEngine@@IAEXXZ	ACCEPT	c1c_access	
+00b3edf0	split_unknown	access_letter	?LinkMapToWorld@CEngineWorldMap@@QAEXPAVCEngineMap@@J@Z	?LinkMapToWorld@CEngineWorldMap@@AAEXPAVCEngineMap@@J@Z	ACCEPT	c1c_access	
+00b3ee80	split_unknown	access_letter	?UnlinkMapFromWorld@CEngineWorldMap@@QAEXPAVCEngineMap@@J@Z	?UnlinkMapFromWorld@CEngineWorldMap@@AAEXPAVCEngineMap@@J@Z	ACCEPT	c1c_access	
+00b61690	split_unknown	access_letter	?ShowGlowTexture@CEngineScreenEffectGlowRenderer@@QAEXXZ	?ShowGlowTexture@CEngineScreenEffectGlowRenderer@@AAEXXZ	ACCEPT	c1c_access	
+00b68070	split_unknown	access_letter	?LoadForegroundTextures@CEngineLandscapeRenderer@@QAE_N_N@Z	?LoadForegroundTextures@CEngineLandscapeRenderer@@AAE_N_N@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 00b684f0=?LoadForegroundTextures@CEngineLandscapeRendererCallView@@QAE_N_N@Z
+00b7eec0	agree_unverified	access_letter	?SetupForegroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ	?SetupForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ	HOLD	one-PDB-set	PDB symbol in only one of Ego_r / FableWin and not in egod: one source for the access letter (ruling)
+00b7f0f0	agree_unverified	access_letter	?SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ	?SetupBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ	HOLD	one-PDB-set	PDB symbol in only one of Ego_r / FableWin and not in egod: one source for the access letter (ruling)
+00b7f3b0	agree_unverified	access_letter	?SetupIceForegroundShaderConstantsAndFog@CEngineWaterRenderer@@QAEXXZ	?SetupIceForegroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ	HOLD	one-PDB-set	PDB symbol in only one of Ego_r / FableWin and not in egod: one source for the access letter (ruling)
+00b86a10					DROP	pool465	
+00b906c0					DROP	t3	
+00b90700					DROP	t3	
+00b918b0	split_unknown	access_letter	?MovePrimitivesTo@CEngineSceneGridCell@@QAEXAAV1@@Z	?MovePrimitivesTo@CEngineSceneGridCell@@AAEXAAV1@@Z	HOLD	const body calls non-const members (SRC_FAIL)	adding const to the self makes VC7.1 reject the body (it calls non-const members of the local model); needs those members made const too
+00baa6a0	split_unknown	access_letter	?BuildBuffers@CEnginePrimitiveManagerRepeatedZSprites@@QAEXXZ	?BuildBuffers@CEnginePrimitiveManagerRepeatedZSprites@@AAEXXZ	HOLD	reserved	reserved unit member 00babb50(t3)
+00bf6530	agree_unverified	access_letter	?StartTreeLoadTask@CLandscapeBackgroundTreeNode@@QAE_NPAVCEngineStaticMapFileBlockManager@@_N@Z	?StartTreeLoadTask@CLandscapeBackgroundTreeNode@@AAE_NPAVCEngineStaticMapFileBlockManager@@_N@Z	HOLD	census: missed caller needs a header edit	00bf8810 (DIFFER row) binds the old spelling through the shared candidates/background_tree_static_lod_compiled.h model of CLandscapeBackgroundTreeNode (no local class): a header-batch item
+00bf65b0	agree_unverified	access_letter	?StartPatchLoadTask@CLandscapeBackgroundTreeNode@@QAE_NJPAVCEngineStaticMapFileBlockManager@@_N@Z	?StartPatchLoadTask@CLandscapeBackgroundTreeNode@@AAE_NJPAVCEngineStaticMapFileBlockManager@@_N@Z	HOLD	census: missed caller binds another signature	00bf8810 binds ?StartPatchLoadTask@...QAE_NK... (unsigned long), the PDB has J (long)
+00bf6a30	agree_unverified	access_letter	?MarkTreeAsInvisibleLastFrame@CLandscapeBackgroundTreeNode@@QAEXXZ	?MarkTreeAsInvisibleLastFrame@CLandscapeBackgroundTreeNode@@AAEXXZ	ACCEPT	c1c_access	
+00c1b9e0	split_unknown	const	?GetFloatTLX@CGraphicFrameData@@QAEMXZ	?GetFloatTLX@CGraphicFrameData@@QBEMXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c12940=?GetPitch@CSoundPlayParameters@@QBEMXZ
+00c1bb00	split_unknown	const	?GetFloatTLX@CGraphicFrameData@@QAEMXZ	?GetFloatTLX@CGraphicFrameData@@QBEMXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c12940=?GetFrequencyScale@CSoundPlayParameters@@QBEMXZ;00c61ca0=?GetTime@CFrameData@@QBEMXZ;00c62400=?GetTime@CFrameData@@QBEMXZ
+00c1c620	split_unknown	access_letter	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c10d40=?SetHidden@CTarget_00c10d40@@QAEX_N@Z
+00c1d7f0	split_unknown	const	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c1d850=?GetTotalFrames@CVtable_012b32a0@@QAEKXZ
+00c1ea80	split_unknown	const	?GetMemoryFootprint@CMap@@QAEJXZ	?GetMemoryFootprint@CMap@@QBEJXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c21780=?GetSize@CSoundSample@@QAEJXZ
+00c23df0	agree_unverified	access_letter	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c23dd0=?CWorldMap_helper_00c23df0@@YIJPAVCWorldMap@@@Z
+00c242a0	split_unknown	access_letter	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@QAEJXZ	?GetNextCirclePoint@CAIStateGroup_HoverHornetQueen@@IAEJXZ	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c24280=?CWorldMap_ComputeIndex@@YIJPAVCWorldMap@@@Z
+00c44860	split_unknown	access_letter	?SetHeadTurnState@CTCLook@@QAEXJ@Z	?SetHeadTurnState@CTCLook@@AAEXJ@Z	HOLD	BLOCK	BLOCK: a caller binds another spelling 00c4ea30=?SetDirect@C2DAudioObject@@QAEXJ@Z
+00e15830	agree_unverified	access_letter	?Init@CWB_WhiteBalverine@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEXXZ	?Init@CWB_WhiteBalverine@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ	HOLD	gen:declaration is virtual / static	00e15830 self: declaration is virtual / static (not a plain member edit)
+00ecd390	agree_unverified	access_letter	?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@UAEXXZ	?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ	HOLD	gen:declaration is virtual / static	00ecd390 self: declaration is virtual / static (not a plain member edit)
+00ef49a0	agree_unverified	access_letter	?Init@CVillager@CPersonalScript_EmptyScript@NScript@@UAEXXZ	?Init@CVillager@CPersonalScript_EmptyScript@NScript@@EAEXXZ	HOLD	gen:declaration is virtual / static	00ef49a0 self: declaration is virtual / static (not a plain member edit)
+00ef5cb0	agree_unverified	access_letter	?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript@@UAEXXZ	?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript@@EAEXXZ	HOLD	virtual target without RTTI placement	U<->M/E access on a virtual member: labels_rtti_port.tsv has no line at this address (access_fix --wide requires the RTTI placement to name the PDB symbol); gated otherwise (objsec ALL_EQ, grade/test unchanged)
+01212487	agree_unverified	access_letter	?SetAsPaused@CWorld@@QAEX_N@Z	?SetAsPaused@CWorld@@IAEX_N@Z	HOLD	identity	identity: PDB spelling defined/bound at 0049d8f0

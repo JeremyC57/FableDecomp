@@ -1,5 +1,5 @@
 // NCameraModes::CScriptModuleBase::GetTransformedPosition(const C3DVector& offset) -- the offset placed relative to the module's origin: the live origin thing's position when there is one, else CoordOrigin
-// Leaf: GetTransformedPosition
+// Leaf: ?GetTransformedPosition@CScriptModuleBase@NCameraModes@@IBE?AVC3DVector@@ABV3@@Z
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853290, length 144 bytes (131 + int3 padding).
@@ -34,10 +34,12 @@ class CScriptModuleBase { public:                           // vtable 0x01255F74
     CIntelligentPointer_CThing      PCamPoint;       // +0x04
     CIntelligentPointer_CThingConst PThingOrigin;    // +0x0c
     C3DVector                       CoordOrigin;     // +0x14
-    C3DVector GetTransformedPosition(const C3DVector& offset);
+    protected:
+    C3DVector GetTransformedPosition(const C3DVector& offset) const;
+    public:
 };
 
-C3DVector CScriptModuleBase::GetTransformedPosition(const C3DVector& offset)
+C3DVector CScriptModuleBase::GetTransformedPosition(const C3DVector& offset) const
 {
     C3DVector origin = CoordOrigin;
     if (PThingOrigin.GetPItem()) {

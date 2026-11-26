@@ -1,4 +1,5 @@
 // CLandscapeBackgroundTreeNode::MarkTreeAsInvisibleLastFrame() -- clear the visible-last-frame flag of this node and (recursively) of every node under it that is still flagged, recording each change
+// Leaf: ?MarkTreeAsInvisibleLastFrame@CLandscapeBackgroundTreeNode@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF6A30, length 144 bytes.
 // Callees: itself (left branch); the sub node's virtual IsPatch (slot 4) through the inline GetSplitBranch.
 // Shape: the right-branch recursion is a tail call the compiler turns into the loop (`add esi,0ECh` with the
@@ -78,7 +79,9 @@ class CLandscapeBackgroundTreeNode : public CMovableResource { public:
             return (CLandscapeBackgroundSubNodeSplitBranch*)SubNode;
         return 0;
     }
+    private:
     void MarkTreeAsInvisibleLastFrame();
+    public:
 };
 class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     unsigned char _pad04[0x114];

@@ -80,7 +80,7 @@ line	tag	address	correct_symbol	status	other_spellings
 79	522	00410de0	?test@?$bitset@$0BBC@@std@@QBE_NI@Z	partial	?test@?$bitset@$0BBC@
 80	522	006d6510	?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z	closed	
 81	522	00643ca1	?GFAnchorToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z	closed	
-82	522	0064b5c1	?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@AAEMJ@Z	open	?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@QAEMJ@Z || GetActivationTimeForButton
+82	522	0064b5c1	?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@AAEMJ@Z	closed	
 83	522	00703210	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	closed	
 84	522	005d8d50	?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z	closed	
 85	522	005cb2b0	?SetThingAsActiveWeapon@CTCInventoryWeapons@@QAEXJPAVCComponent@NUISystem@@@Z	closed	
@@ -223,7 +223,7 @@ line	tag	address	correct_symbol	status	other_spellings
 225	525	006925a0	?HasPerformedAction@CCreatureActionBase@@QBE_NXZ	partial	?Check@CCreatureAction_SummonerLightningOrbInto@@QAE_NXZ || ?CreatureForcePush_Check@@YI_NPAVCCreatureAction_ForcePushOutOf@@@Z || ?HasPerformedAction@CCombatActionBase@@QBE_NXZ || ?IsChestOpen@CCreatureAction_OpenChest@@QAE_NXZ || ?UnsheatheWeapons_CheckPredicate@@YI_NPAUCCreatureAction_UnsheatheWeapons_Methods@@@Z
 226	525	006925b0	?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ	closed	
 227	525	006925c0	?GetFramesRunning@CCreatureActionBase@@QBEJXZ	closed	
-228	525	006925d0	?GetFramesRemaining@CCreatureActionBase@@QBEJXZ	open	?GetFramesRemaining@CCreatureActionBase@@QAEJXZ
+228	525	006925d0	?GetFramesRemaining@CCreatureActionBase@@QBEJXZ	closed	
 229	525	00692910	?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ	partial	?GetPDefinitionManager@CCreatureActionBase@@QBEPAVCDefinitionManager@@XZ
 230	525	00692c10	?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ	closed	
 231	525	0084e420	??0CBase@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z	partial	??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@ABUCCameraModeDefPointer@@@Z || ??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z || ??0CBase@NCameraModes@@QAE@PAVCGameCameraManager@@PBVCCameraModeDef@@@Z || ??0CCameraModeBase@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
@@ -4141,7 +4141,7 @@ line	tag	address	correct_symbol	status	other_spellings
 4679	c726	0053ca3c	?push_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXABQAVCList@NUISystem@@@Z	closed	
 4680	c724	00816aa0	?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z	closed	
 4681	c724	009e50c0	?FindFirstSymbolWithVal@CSymbolMap@@QBEPBVCSymbolInfo@1@ABVCCharString@@J@Z	closed	
-4682	c724	00879680	?GetPhiForPosition@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@@Z	open	?GetPhiForPosition@CProjectileWeapon@NCameraModes@@QBEMABVC3DVector@@@Z
+4682	c724	00879680	?GetPhiForPosition@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@@Z	closed	
 4683	c724	00802390	?GetMaxTargetingDistance@CTCTargetingPlayer@@QBEMXZ	closed	
 4684	c724	00789a50	?GetProjectileTargetingZoomParameter@CTCHeroRangedAttacks@@QBEMXZ	closed	
 4687	c723	00989b50	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKABVCRGBFloatColour@@@Z	partial	?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC4DVector@@@Z || ?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXKPBVC4DVector@@@Z
@@ -6062,7 +6062,7 @@ line	tag	address	correct_symbol	status	other_spellings
 8052	land1011bu	0122d70e	??_C@_00CNPNBAHC@?$AA@	no_binding	
 8053	land1011bu	0122f598	??_7CEnginePrimitiveHandle@@6B@	partial	??_7CBatchRecord_0122f598@@6B@ || ??_7CEnginePrimitiveHandle@NUISystem@@6B@ || ??_7CEnginePrimitiveHandleNative@@6B@ || ?C3DAnimationBlendState_vtable@@3QAXA
 8054	land1011bu	012b5ab0	??_7CCoda3DSource@@6B@	partial	??_7C3DAnimationUtil@@6B@
-8055	land1011bu	013750b0	?IMERenderAlpha@@3EA	partial	?g_imeCompositionAlpha_013750b0@@3EA
+8055	land1011bu	013750b0	?IMERenderAlpha@@3EA	closed	
 8056	land1011bu	01375550	?ConstantFPS@CMainGameComponent@@1JA	partial	?g_framesPerSecond@@3JA || ?g_logicFramesPerSecond@@3JA
 8057	land1011bu	013828a0	?NO_TRAIL_ELEMENTS_PER_WORLD_UPDATE@?A<TU>@@3JA	open	?NO_TRAIL_ELEMENTS_PER_WORLD_UPDATE@?A0x8cc36e08@@3JA || ?g_WeaponTrailInterpolationSteps@@3JA
 8058	land1011bu	0139c988	?g_SalCaps@@3U_CCAPS@@A	partial	?g_SubSystemASlot0@@3USSubSystemSlot@@A || ?g_UnprovenAudioConfig_0139C988@@3UCUnprovenAudioConfiguration24@@A || ?g_audioConfig@@3USAudioConfig@@A || ?g_defaults_0139c988@@3USBlock160@@A || ?g_record_0139c988@@3USRecord_00c4d340@@A || ?g_voiceCaps@@3PAUSVoiceCaps@@A
@@ -9798,7 +9798,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12151	land1120nf181	009bbbf0	??1CPersistContext	open	?CheckUnknownSymbols@CPersistContext@@QAEXXZ
 12154	land1120nf182	004c73b0	??3CThing@@KIXPAX@Z	open	??3CThingGameObject@@SIXPAX@Z || ?CThingPhysicalSwitch_del@@YIXPAX@Z || ?DeleteHelper@CThingBuilding@@QAEXXZ || ?Free@CThingObject@@QAEXXZ || ?FreeSelf@CThingPhysical@@QAEXXZ || ?free_this@CThingCreatureBase@@QAEXXZ || ?mesh_free@@YIXPAX@Z || ?op_delete_4c73b0@@YIXPAVCThingHolySite@@@Z || DeleteArray_004c73b0
 12155	land1120nf182	00c21ba0	??0CScriptModuleBase@@QAE@XZ	open	??0SEntry_00c239b0@@QAE@XZ
-12160	land1120nf183	00416268	?BeginInputSaving@CMainGameComponent@@IAEXABVCWideString@@@Z	open	?BeginInputLoading@CMainGameComponent@@QAEXABVCWideString@@@Z
+12160	land1120nf183	00416268	?BeginInputSaving@CMainGameComponent@@IAEXABVCWideString@@@Z	open	?BeginInputLoading@CMainGameComponent@@IAEXABVCWideString@@@Z
 12161	land1120nf183	013b8384	?GPRenderManager@@3PAVCRenderManager@@A	partial	?g_FableDisplayPrimitive_013B8384@@3PAUFableDisplayPrimitive@@A || ?g_RenderManagerCore_013b8384@@3PAUCRenderManagerCore@@A || ?g_pDisplayCaps@@3PAUCDisplayCaps@@A || ?g_pRenderManager2D@@3PAVCRenderManager2D@@A
 12162	land1120nf183	01436e44	?GPWeatherRenderer@NEngineInternal@@3PAVCEngineWeatherRenderer@@A	open	?g_pEngineWeatherRenderer@@3PAVCEngineWeatherRenderer@@A || ?g_pShaderBankStateBlock@@3PAUCShaderBankStateBlock@@A
 12163	land1120nf183	01436eac	?GPSurfaceCompositionManager@NEngineInternal@@3PAVCEngineSurfaceCompositionManager@@A	open	?g_pEngineSurfaceCompositionManager@@3PAVCEngineSurfaceCompositionManager@@A || ?g_pResourceBank_01436eac@@3PAVCResourceBank@@A || ?g_pSurfaceComposition_01436eac@@3PAVCEngineSurfaceCompositionManager@@A
@@ -9952,7 +9952,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12414	land1122p26	00661aa0	?GetCurrentMeshHeight@CThingCreatureBase@@QBEMXZ	open	?GetCurrentMeshHeight@CThing@@QAEMXZ || ComputeDistanceToMorphDummy
 12415	land1122p26	006626a0	?SetHiddenOnMiniMap@CThingCreatureBase@@QAEX_N@Z	closed	
 12416	land1122p26	00687c80	?IsEventQuickAccessItemButton@CInputProcessGameBase@@IBE_NABVCInputEvent@@AAJ@Z	partial	?Run@T@@QAEXXZ
-12417	land1122p26	00687d10	?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z	open	?GetButtonPressureForEvent@CInputProcessGameBase@@QAEMABVCInputEvent@@@Z
+12417	land1122p26	00687d10	?GetButtonPressureForEvent@CInputProcessGameBase@@QBEMABVCInputEvent@@@Z	closed	
 12418	land1122p26	00687d50	?IsGameActionEventInQueue@CInputProcessGameBase@@IBE_NW4EGameAction@@W4EInputButtonEventType@@@Z	open	?IsButtonHeld@CInputProcessTargetLockCycleTargets@@QAE_NJJ@Z || ?IsButtonHeld@CInputProcessZTarget@@QAE_NJJ@Z || ?IsGameActionEventInQueue@CInputProcessGameBase@@QAE_NJJ@Z || IsGameActionEventInQueue || _JR_Helper@8
 12419	land1122p26	0068f470	?ProcessCombatInput@CInputProcessCombat@@AAEXABVCInputEvent@@AAVCProcessedInput@@@Z	closed	
 12420	land1122p26	00698540	?UpdateEarthquake@CGameCameraManager@@AAEXXZ	closed	

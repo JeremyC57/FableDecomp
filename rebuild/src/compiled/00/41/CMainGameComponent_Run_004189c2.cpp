@@ -135,7 +135,10 @@ class CMainGameComponent : public CGameComponent { public:
     CRoughFrameCounter RoughFPSCounter;            // +0x161BC
     CGameComponent*    NextComponentToRun;         // +0x161C4
     protected: double GetCurrentGameTime() const; public:                   // 0x00416231
-    void BeginInputLoading(const CWideString& name);   // 0x00416268
+    protected:
+    void BeginInputLoading(const CWideString& name);
+    public:
+   // 0x00416268
     void BeginOutputSaving(const CWideString& name);   // 0x0041627F
     void UpdateForcedTickSpeed();                  // 0x00417747
     void UpdateRegular();                          // 0x004162B5

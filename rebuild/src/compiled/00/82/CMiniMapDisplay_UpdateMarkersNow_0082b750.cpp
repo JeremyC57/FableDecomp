@@ -54,7 +54,10 @@ class CMiniMapDisplay { public:
     void InitialiseTraderMarkers();
     public:
                 // 0x0082AE80
-    void InitialiseRegionExitMarkers();            // 0x0082AFA0
+    protected:
+    void InitialiseRegionExitMarkers();
+    public:
+            // 0x0082AFA0
     protected:
     void InitialiseAttractionMarkers();
     public:

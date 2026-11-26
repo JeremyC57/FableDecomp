@@ -38,7 +38,10 @@ class CEngineWorldMap { public:
     long                MapOffsetX;              // +0x18
     long                MapOffsetY;              // +0x1c
     CArray<CEngineMap*> MapList;                 // +0x20
-    void LinkMapToWorld(CEngineMap* map, long index);   // 0x00B3EDF0
+    private:
+    void LinkMapToWorld(CEngineMap* map, long index);
+    public:
+   // 0x00B3EDF0
     private:
     void AutoBuildWorldMapGrid();
     public:

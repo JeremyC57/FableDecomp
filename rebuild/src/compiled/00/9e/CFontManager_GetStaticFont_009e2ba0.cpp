@@ -23,7 +23,7 @@ class CFontDataBankEntry { public:
     CCountedPointer<CFontBank> AcquireFont() const;   // 0x00A634F0
 };
 class CFontDataBank { public:
-    CFontDataBankEntry* GetFontInfo(unsigned long index);   // 0x00A635E0
+    CFontDataBankEntry* GetFontInfo(unsigned long index) const;   // 0x00A635E0
 };
 class CFontManager { public:
     void*                          _vptr;

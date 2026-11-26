@@ -3,7 +3,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::GetActivationTimeForButton(long button) -- the activation time of the item in a quick-access slot of the living hero's inventory (2.0 for the special button -2, 0 when there is no hero or no item)
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
-// Leaf: GetActivationTimeForButton
+// Leaf: ?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@AAEMJ@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad1[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064B5C1, length 165 bytes (+ padding), `ret 4`.
@@ -94,7 +94,9 @@ namespace NPlayerGui {
 class CDrawQuickAccessIcons { public:
     unsigned char _pad[8];
     CPlayerManager* PlayerManager;                 // +0x08
+    private:
     float GetActivationTimeForButton(long button);
+    public:
 };
 
 float CDrawQuickAccessIcons::GetActivationTimeForButton(long button)

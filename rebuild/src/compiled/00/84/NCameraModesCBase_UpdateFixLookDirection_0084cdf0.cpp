@@ -1,4 +1,5 @@
 // NCameraModes::CBase::UpdateFixLookDirection(const C3DVector& pos, const C3DVector& target, C3DVector& lookDir, float angle) -- flatten the look direction onto the XY plane and tilt it back about its horizontal perpendicular by at most the given turn fraction, keeping the original up/down sense
+// Leaf: ?UpdateFixLookDirection@CBase@NCameraModes@@IBEXABVC3DVector@@0AAV3@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084CDF0, length 321 bytes (`ret 0x10`; `this`, pos and target are unused).
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440 (x2; manifest "GetScaled" is propagated), C3DVector::Rotate(const C3DVector&
 //          axis, float angle) @ 0x00A13C60, _CIacos @ 0x00BFEBA2 (acos intrinsic on the x87 stack), fcos inline; constants
@@ -24,10 +25,12 @@ class C3DVector { public:
 
 namespace NCameraModes {
 class CBase { public:
-    void UpdateFixLookDirection(const C3DVector& pos, const C3DVector& target, C3DVector& lookDir, float angle);
+    protected:
+    void UpdateFixLookDirection(const C3DVector& pos, const C3DVector& target, C3DVector& lookDir, float angle) const;
+    public:
 };
 
-void CBase::UpdateFixLookDirection(const C3DVector& pos, const C3DVector& target, C3DVector& lookDir, float angle)
+void CBase::UpdateFixLookDirection(const C3DVector& pos, const C3DVector& target, C3DVector& lookDir, float angle) const
 {
     bool lookingUp = lookDir.Z > 0.0f;
     float minCos = (float)cos(angle * 6.2831854820251465);

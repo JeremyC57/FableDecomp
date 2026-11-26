@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCManager::RegisterPSCs() -- registers every particle-system component class (key name, Alloc factory, component type, GUI name) in the manager's vector map
-// Leaf: RegisterPSCs
+// Leaf: ?RegisterPSCs@CPSCManager@NParticleEngine@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF8170, length 1051 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCharString::CCharString(const CCharString&)
 // @ 0x0099EC30, CCharString::~CCharString @ 0x0099EAE0, CVectorMap<CCharString, CRegisteredPSCInfo>::Add @ 0x00AF2910
@@ -60,7 +60,9 @@ struct CRegisteredPSCMap {         // CVectorMap<CCharString, CRegisteredPSCInfo
 
 class CPSCManager { public:
     CRegisteredPSCMap RegisteredPSCs;   // +0x00
+    protected:
     void RegisterPSCs();
+    public:
 };
 
 void CPSCManager::RegisterPSCs()

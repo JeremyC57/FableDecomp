@@ -31,7 +31,10 @@ class CVolumeTexture { public:
     long                     m_format;      // +0x08
     long                     m_levels;      // +0x0c
     void Uninitialise();
-    void ReleaseTexture();                  // 0x00A67F60
+    protected:
+    void ReleaseTexture();
+    public:
+                  // 0x00A67F60
 };
 void CVolumeTexture::Uninitialise()
 {

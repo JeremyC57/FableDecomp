@@ -1,5 +1,5 @@
 // NUISystem::CKeyRedefiner::CancelSelection() -- when this redefiner is the selected one (0x013B8AC8) clear the selection, refresh the key text (0x00557A10), set the clickable base's state 0x21 (slot 4) and mode 0x19 (slot 3), and remove this control as the UI manager's exclusive observer (CManager::GetInstance 0x0041E5F2, CObservable slot 4 RemoveExclusiveObserver)
-// Leaf: ?CancelSelection@CKeyRedefiner@NUISystem@@QAEXXZ
+// Leaf: ?CancelSelection@CKeyRedefiner@NUISystem@@IAEXXZ
 // Flags: /O2 /Oy /W3
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00557BD0, length 64 bytes.
 // Callees: UpdateKeyText @ 0x00557A10, NUISystem::CManager::GetInstance @ 0x0041E5F2 (`__fastcall`, no arguments; the
@@ -35,7 +35,9 @@ struct CKeyRedefinerRoot_00557bd0 {               // the first base (vptr at +0)
 };
 class CKeyRedefiner : public CKeyRedefinerRoot_00557bd0, public CClickableBase_00557bd0 { public:
     void UpdateKeyText();                          // 0x00557A10
+    protected:
     void CancelSelection();
+    public:
 };
 extern CKeyRedefiner* g_pSelectedKeyRedefiner;     // 0x013B8AC8
 

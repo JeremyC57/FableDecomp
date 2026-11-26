@@ -16,7 +16,7 @@ struct CCreatureAction;
 //   0x00664490 ?AddQueuedAction@CThingCreatureBase@@QAEXABVCCreatureActionBase@@@Z (was ?QueueAction@CThingCreatureBase@@QAEXPAUCCreatureAction@@@Z)
 class CCreatureActionBase;
 class CThingCreatureBase { public:
-    bool HasQueuedActions();                                // 0x00661F20
+    bool HasQueuedActions() const;                                // 0x00661F20
  public: void AddQueuedAction(CCreatureActionBase const&); };
 
 struct CTCCombat_Methods : CTCCombat {

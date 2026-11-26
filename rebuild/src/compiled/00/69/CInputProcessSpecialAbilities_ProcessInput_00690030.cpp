@@ -131,7 +131,10 @@ protected:
     bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
     bool IsEventButtonReleased(const CInputEvent& event) const;                 // 0x00687BD0; NF236: protected const (Ego_r / FableWin IBE)
 public:
-    bool IsEventAssignableSpecialMoveButton(const CInputEvent& event);   // 0x00687C70
+    protected:
+    bool IsEventAssignableSpecialMoveButton(const CInputEvent& event) const;
+    public:
+   // 0x00687C70
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
     float GetMouseWheelMovement(const CInputEvent& event) const;             // 0x00687D40 (Ego_r + FableWin QBE; NF292, was GetEventScrollAmount)
 };

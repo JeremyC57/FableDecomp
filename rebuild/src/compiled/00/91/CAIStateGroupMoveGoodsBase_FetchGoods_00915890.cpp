@@ -23,7 +23,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingCreatureBase : public CThing { public: };
 class CTCCrateStack { public:                          // interface 0xB5
-    CThing* GetNextCrate();                     // 0x007B6750
+    CThing* GetNextCrate() const;                     // 0x007B6750
     long GetNumCrates() const;                        // 0x007B6660
     CThing* RemoveNextCrate();                  // 0x007B6790
 };

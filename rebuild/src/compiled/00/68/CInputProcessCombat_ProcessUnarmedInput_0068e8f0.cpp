@@ -59,7 +59,7 @@ protected:
     bool IsEventButtonPressed(const CInputEvent& event) const;              // 0x00687A90; NF236: protected const (Ego_r / FableWin IBE)
 public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
-    float GetButtonPressureForEvent(const CInputEvent& event);        // 0x00687D10
+    float GetButtonPressureForEvent(const CInputEvent& event) const;        // 0x00687D10
 };
 class CInputProcessCombat : public CInputProcessGameBase {
 public:

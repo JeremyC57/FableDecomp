@@ -18,7 +18,10 @@ struct CModeCreatureIsProjectile : CModeBase {
     unsigned char             _pad04[0x80];
     SProjectileState_008e1670* m_pState;           // +0x84
     virtual void FrameUpdate();
-    void Recover();                                // 0x008E08C0
+    private:
+    void Recover();
+    public:
+                                // 0x008E08C0
 };
 
 void CModeCreatureIsProjectile::FrameUpdate()

@@ -182,7 +182,10 @@ class CKeyRedefiner : public CClickable { public:   // vtables 0x0124ADBC / 0x01
  void UpdateKeyText();                // 0x00557A10
  void CancelSelection();              // 0x00557BD0
  long GetSubTypeForAction(const CActionInputControl&) const;     // 0x00557CA0
- void GetActionText(CWideString&, const CCharString&) const;     // 0x00558170
+ private:
+ void GetActionText(CWideString&, const CCharString&) const;
+ public:
+     // 0x00558170
  void OnHovered();
  void OnUnhovered();
  void OnLeftUnclicked();

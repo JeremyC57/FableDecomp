@@ -1,4 +1,5 @@
 // CGameMap::Clear() -- resets every cell: atmos themes and blends zeroed, first blend to full (0xff), sound theme -1, music 0
+// Leaf: ?Clear@CGameMap@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B7510, length 55 bytes.
 // Callees: none. Layout: retail std::vector<CGameMapCell> at +4 is 12 bytes (begin +4, end +8), the PDB's is 16; CGameMapCell is the
 // 7-byte PDB record {AtmosThemes[3], AtmosBlends[2], SoundTheme, Music}.
@@ -28,7 +29,9 @@ class CGameMap { public:
     CGameMapCell* m_pCellsBegin;                    // +0x04 vector<CGameMapCell> (retail 12-byte vector)
     CGameMapCell* m_pCellsEnd;                      // +0x08
     CGameMapCell* m_pCellsEndOfStorage;             // +0x0c
+    private:
     void Clear();
+    public:
 };
 
 void CGameMap::Clear()

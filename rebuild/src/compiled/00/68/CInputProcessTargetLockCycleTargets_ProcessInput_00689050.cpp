@@ -80,7 +80,7 @@ protected:
     bool IsEventButtonHeld(const CInputEvent& event) const;       // 0x00687B30 (kind 0x14)
 public:
     bool IsEventGameAction(EGameAction action, const CInputEvent& event) const;    // 0x00687CF0
-    float GetButtonPressureForEvent(const CInputEvent& event);        // 0x00687D10
+    float GetButtonPressureForEvent(const CInputEvent& event) const;        // 0x00687D10
 };
 class CInputProcessTargetLockCycleTargets : public CInputProcessGameBase {
 public:

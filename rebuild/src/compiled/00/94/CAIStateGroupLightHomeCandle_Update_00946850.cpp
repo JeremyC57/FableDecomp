@@ -42,7 +42,7 @@ struct CTCUserActionPointBase {
 public:
     void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
 public:                 // interface 0x2d
-    long GetNumberOfActionPointsInUse();        // 0x007FEC10
+    long GetNumberOfActionPointsInUse() const;        // 0x007FEC10
     bool GetFreeActionPoint(CThing& user, C3DVector& position, CRightHandedSet& orientation, long& index);   // 0x007FEDE0 (NF35: Ego_r + FableWin ..QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z)
 };
 class CBaseObject;

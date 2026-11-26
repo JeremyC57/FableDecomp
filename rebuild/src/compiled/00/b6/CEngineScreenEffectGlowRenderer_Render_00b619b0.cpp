@@ -13,7 +13,10 @@ class CEngineScreenEffectGlowRenderer { public:
     void ComputeGlowColor();                       // 0x00B5F8C0
     private: void CaptureBackBuffer(); public:                      // 0x00B5FAB0
     private: void ApplyGlow(); public:                              // 0x00B60F70
-    void ShowGlowTexture();                        // 0x00B61690
+    private:
+    void ShowGlowTexture();
+    public:
+                        // 0x00B61690
     void FinishRender();                           // 0x00B5EC90
     void Render(const void* params);
 };

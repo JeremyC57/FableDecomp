@@ -1,5 +1,5 @@
 // NAnimationEvents::CManager::LoadBinary(const CWideString& fileName) -- read the binary extra-event file: load the whole disk file into a zeroed byte buffer, open a memory stream over it, read the animation count and resize the per-animation table, then for each animation read its id and event count, resize its event list and read each event's index, two flag bytes and time
-// Leaf: LoadBinary
+// Leaf: ?LoadBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F9F90, length 1109 bytes, `ret 4`.
 // Ego_r.pdb: `?LoadBinary@CManager@NAnimationEvents@@...` (the catalog class "CManager" is this one; the reader of the landed
 //   SaveBinary 0x006F92A0).
@@ -122,7 +122,9 @@ public:
     virtual void v00();
     unsigned char   _pad04[0x28];
     EventPairVector ExtraAnimEvents;                    // +0x2c
+    private:
     void LoadBinary(const CWideString& fileName);
+    public:
 };
 
 void CManager::LoadBinary(const CWideString& fileName)
