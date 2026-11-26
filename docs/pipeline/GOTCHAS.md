@@ -575,3 +575,4 @@
 - **STANDIN regex hex false positive:** `_[0-9a-fA-F]{8}` matches class names made of hex letters (`??_7CBedDef@@6B@` = `_7CBedDef`); the tracker checks the PDB sets first, so a real name wins.
 - **apply_table.py writes FABLE_ROOT (default the repo):** an agent simulating table changes must pass `--dry` or `FABLE_ROOT=<sandbox>`; NF451 rewrote 4 repo table lines this way (restored, sha checked). Put it in every brief.
 - **Self respells need the caller census from objects:** the binding table misses landed callers (NF455: 28 of 28 sampled); never respell a self row alone because the table shows no caller.
+- Tracker (owner 2026-11-26): a decorated name equal to the libsig symbol at its address counts as done (agree_std), but only when that `library_signatures.tsv` / `vendor_signatures.tsv` row is confidence `high` with `reloc_bad` 0 (`lib_proven_at`). Medium and low rows stay unverified. The first run gave +223, with no other address moved.

@@ -144,7 +144,7 @@ line	tag	address	correct_symbol	status	other_spellings
 143	523	006e7fd0	?GetProngVector@CProng@CDefendingCombatantInfo@@QBE?AVC3DVector@@M@Z	partial	GetRotatedPosition
 144	523	006e87d0	?GetAttackerProng@CCombatRing@CDefendingCombatantInfo@@QBEPBVCProng@2@ABVCThingCreatureBase@@@Z	closed	
 145	523	006e8850	?GetRingRadius@CCombatWheel@CDefendingCombatantInfo@@QBEMJ@Z	partial	?GetRingRadius@CCombatWheel@@QBEMJ@Z
-146	523	006e89b0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	partial	?ComputeAttackVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z
+146	523	006e89b0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	closed	
 147	523	006ea2c0	?PerformSequenceReset@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	closed	
 148	523	006ed030	?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z	closed	
 149	523	006f0250	?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@AB_K@Z	open	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatantInfo@@@std@@@1@AB_K@Z || ?find@CCombatantMap@@QBEPAUnode@1@AB_K@Z
@@ -948,7 +948,7 @@ line	tag	address	correct_symbol	status	other_spellings
 954	568	0062e900	??1CCombatActionBase@@UAE@XZ	partial	??1CCombatActionBase
 955	569	00cbd700	??$__introsort_loop@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@HV?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@00HV?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z	partial	??$__introsort_loop@ || ?IntrosortLoop_00cbd700@@YIXPAUSElement16@@00JUSCompare@@@Z
 956	569	00cb9c20	??0?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@QAE@ABU01@@Z	closed	
-957	569	00e39140	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z	partial	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+957	569	00e39140	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z	closed	
 958	569	00beb6c0	?Calc2DObjectMatrix@CEngineInternalPrimitiveMeshBase@@SIXAAVCMatrix3x4@@ABVC3DVector@@1ABVCRightHandedSet@@M@Z	open	?CalcObjectMatrix2D@@YIXAAVCMatrix3x4@@ABVC3DVector@@1ABVCRightHandedSet@@M@Z
 959	569	0143e8ec	?NullString@CScriptThing@@2VCCharString@@A	closed	
 960	569	00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	partial	?Compare@@YIJPBD0@Z || ?Compare@N006d41f0@@YIHPBD0@Z || ?Compare_00411570@@YIJPBD0@Z
@@ -988,7 +988,7 @@ line	tag	address	correct_symbol	status	other_spellings
 994	571	00e241b0	??1CIsThingAlive@NScript@@UAE@XZ	closed	
 995	571	00ee07e0	?GossipSetup@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@000@Z	partial	GossipSetup
 996	571	00ee2db0	?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z	closed	
-997	571	00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	partial	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+997	571	00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	closed	
 998	571	00f35b10	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z	partial	?RegisterFilter@CBanditCronies@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z || ?SetPredicate@CDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@QAEXAAVCIsThingAlive@3@@Z || ?SetPredicate@CSignpost@CPersonalScript_alextestScript@NScript@@QAEXABVCIsThingAlive@3@@Z
 999	571	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	closed	
 1000	571	012c32f0	??_7CIsThingAlive@NScript@@6B@	closed	
@@ -10894,7 +10894,7 @@ line	tag	address	correct_symbol	status	other_spellings
 13781	nf453	0099a2e0	??1CBaseClass@@UAE@XZ	partial	??1CBase@@UAE@XZ || ??1CBase@NParticleEngine@@QAE@XZ || ??1CBase_0099a2e0@@QAE@XZ
 13785	nf457	004da939	??0CTCActionUseBase@@QAE@AAVCThing@@@Z	closed	
 13786	nf457	0085bba0	??0CCreatureActionHeroRunningStop@@QAE@AAVCThingCreatureBase@@@Z	closed	
-13787	nf458	006e89b0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	partial	?ComputeAttackVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z
+13787	nf458	006e89b0	?GetAttackerPlacementVector@CCombatWheel@CDefendingCombatantInfo@@QBE?AVC3DVector@@ABVCThingCreatureBase@@0J@Z	closed	
 13788	nf458	00877720	?GetStandardThings@CTools@NCameraModes@@QBEXAAV?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@M@Z	partial	?GetStandardThings@CTools@@QAEXAAUCThingList@N_00615540@@ABVC3DVector@@M@Z
 13789	nf458	008bfce0	??0CCreatureAction_StrafeForward@@QAE@XZ	partial	??0C3DAnimFileHelpersChunk@N_008bfce0@@QAE@XZ
 13790	nf458	008fdb27	??0CAIStateGroup_Clean@@QAE@XZ	closed	
@@ -10914,9 +10914,9 @@ line	tag	address	correct_symbol	status	other_spellings
 13804	nf458	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVC
 13805	nf458	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVC
 13806	nf458	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVC
-13807	nf458	00d17090	?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z	open	?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXUCScriptThingRuntime@@@Z
-13808	nf458	00e39140	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z	partial	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXUCScriptThingRuntime@@@Z
-13809	nf458	00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	partial	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXUCScriptThingRuntime@@@Z
+13807	nf458	00d17090	?WatchForLeaderKilled@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z	closed	
+13808	nf458	00e39140	?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z	closed	
+13809	nf458	00f08590	?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	closed	
 13810	nf458	004c7e50	?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ	partial	?GetScriptThing@CThingNative@@QBE?AUScriptMethods@@XZ || ?GetScriptThing@CThing_Retail@@QAE?AVCScriptThing@@XZ
 13811	nf458	0064cc65	??0CDrawBase@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z	partial	??0CDrawBase@@QAE@PAVCPlayerGui@@PAX@Z || ??0CDrawBase@NPlayerGui@@QAE@PAVCPlayerGui@@PAX@Z
 13812	nf458	00859a20	?FinishAction@CCombatActionBase@@MAEXXZ	partial	?BaseFinishAction@CCreatureAction_Base@@QAEXXZ || ?CreatureAction_FinishAction_Base@@YIXPAVCCreatureAction_ForcePushOutOf@@@Z || ?FinishAction@CCombatActionBase@@QAEXXZ || ?FinishAction@CCombatActionBase@@UAEXXZ || ?FinishAction_00859a20@Base@@UAEXXZ || ?UnsheatheWeapons_BaseFinishAction@@YIXPAUCCreatureAction_UnsheatheWeapons_Methods@@@Z
@@ -10925,3 +10925,4 @@ line	tag	address	correct_symbol	status	other_spellings
 13815	nf458	0099af00	??BCWideString@@QBEPB_WXZ	partial	??BCWideString@@QBEPBGXZ
 13816	nf458	01231c4c	??_7?$CIntelligentPointer@VCThingPlayerCreature@@@@6B@	partial	??_7CIntelligentPointer@@6B@ || ??_7CIntelligentPointerHero@@6B@ || ??_7CIntelligentPointerPlayer@@6B@ || ??_7CIntelligentPointerPlayerCreature@@6B@
 13817	nf458	013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	partial	?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A || ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A || ?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A || ?g_MovieTransitionState@@3PAUMovieTransitionState@@A || ?g_cutscene@@3PAUInner@@A || ?g_gameObj@@3PAUGameObj@@A || ?g_hud@@3PAUCHud@@A || ?g_obj@@3PAUCObj@@A || ?g_pGameUI@@3PAUCGameUI@@A || ?g_pGameUI_013b8790@@3PAUCGameUI@@A || ?g_pGameUI
+13820	nf464	00baca20	??0CEngineScenePrimitiveStatsEnumerator@@QAE@AAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z	partial	??0CEngineScenePrimitiveStatsEnumerator@@QAE@PAUCPrimitiveStatMap@@ABVC2DBoxF@@JK@Z

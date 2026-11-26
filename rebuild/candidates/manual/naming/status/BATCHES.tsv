@@ -224,8 +224,6 @@ T1	signature	CHoverable	3	1	engine/CHoverable.h	0124bf88 0124bf90 0124bfb4
 T1	signature	CMovie	3	1	engine/CMovie.h	012487ec 012487f4 0124881c
 T1	signature	CNavButton	3	1		0124b01c 0124b024 0124b04c
 T1	signature	CParticleEffect	3	1		01247330 01247338 0124735c
-T1	signature	CQ_AmbushTradersScript	3	3	engine/CQ_AmbushTradersScript.h	00f07b80 00f08590 00f09950
-T1	signature	CQ_BountyHuntScript	3	3	engine/CQ_BountyHuntScript.h	00d16920 00d16d00 00d17090
 T1	signature	CScriptedMapBrush	3	3	engine/CScriptedMapBrush.h	0082e600 0082e910 0082e9c0
 T1	signature	CScrollBar	3	1		0124b7b4 0124b7bc 0124b7e4
 T1	signature	CScrollBarOutside	3	1		0124b520 0124b528 0124b54c
@@ -249,6 +247,8 @@ T1	signature	CGameTimeManager	2	1	engine/CGameTimeManager.h	006bb860 006bb940
 T1	signature	CManager	2	2	engine/CManager.h	0041db84 0066e9e9
 T1	signature	CParticleSystem	2	2	engine/CParticleSystem.h	00af5330 00af59a0
 T1	signature	CPlayer	2	2	engine/CPlayer.h	004888c0 013b8c88
+T1	signature	CQ_AmbushTradersScript	2	2	engine/CQ_AmbushTradersScript.h	00f07b80 00f09950
+T1	signature	CQ_BountyHuntScript	2	2	engine/CQ_BountyHuntScript.h	00d16920 00d16d00
 T1	signature	CTCEnemy	2	1	engine/CTCEnemy.h	0076cc00 0076d1b0
 T1	signature	CTCInventoryClothing	2	1	engine/CTCInventoryClothing.h	01243558 0124356c
 T1	signature	CTCStealth	2	3	engine/CTCStealth.h	00746ec0 00747b80
@@ -337,7 +337,6 @@ T1	signature	CThingManager	1	1	engine/CThingManager.h	00520d00
 T1	signature	CThingPhysical	1	1	engine/CThingPhysical.h	006a5af0
 T1	signature	CThingPlayerCreature	1	1	engine/CThingPlayerCreature.h	006ac690
 T1	signature	CTools	1	1		00877840
-T1	signature	CV_AssassinAttacksScript	1	1	engine/CV_AssassinAttacksScript.h	00e39140
 T1	signature	CV_IntroductionToTrophiesScript	1	1	engine/CV_IntroductionToTrophiesScript.h	00e9dc80
 T1	signature	CVertexGroupBlockOptimiser	1	1		00ad89b0
 T1	signature	CWStringParser	1	1	engine/CWStringParser.h	00a0ccd0
@@ -410,7 +409,6 @@ T1	other	CBankFile	3	3	engine/CBankFile.h	009ccdc0 009cd620 009ce8d0
 T1	other	CBaseClass	3	8	engine/CBaseClass.h	0099a2d0 0099a2e0 01231710
 T1	other	CBaseIntelligentPointer	3	49		00a01b10 00a01b50 00a01b90
 T1	other	CBaseObject	3	3	engine/CBaseObject.h	0099a380 0099a3b0 0099a430
-T1	other	CCombatWheel	3	3		006e8850 006e89b0 006e9200
 T1	other	CCompressorZlib	3	2	engine/CCompressorZlib.h	00a3a7d0 00a3a9c0 00a3aa00
 T1	other	CDefString	3	6	engine/CDefString.h	0044fc00 004b7980 005fa740
 T1	other	CEngineStaticMapFileBlockManager	3	5	engine/CEngineStaticMapFileBlockManager.h	00be0400 00be04f0 00be06b0
@@ -448,6 +446,7 @@ T1	other	CBlendedEnvironmentTheme	2	3	engine/CBlendedEnvironmentTheme.h	006b5df0
 T1	other	CChangeText	2	2		00654f80 0065564b
 T1	other	CChunkedFileSuperChunk	2	4	engine/CChunkedFileSuperChunk.h	00aa78c0 00aa8830
 T1	other	CCodeSectionManager	2	2		009f0320 009f1560
+T1	other	CCombatWheel	2	2		006e8850 006e9200
 T1	other	CComponent	2	5		0052f1b0 00533b50
 T1	other	CCreatureAction_DropWeapon	2	2	engine/CCreatureAction_DropWeapon.h	007ecfd0 00845ce0
 T1	other	CCylinder	2	2		00a593f0 00a59fd0

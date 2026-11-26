@@ -180,6 +180,29 @@ def lib_symbol_at(addr):
     return _LIBADDR.get(addr.lower().replace("0x", "").zfill(8), "")
 
 
+_LIBPROVEN = None
+def lib_proven_at(addr):
+    """the libsig symbol at <addr> when its row is confidence `high` with no contradicted relocation ('' otherwise). A decorated name
+    that equals it is proven at that address (owner 2026-11-26: vendor names libsig proved count as done; medium / low rows do not)."""
+    global _LIBPROVEN
+    if _LIBPROVEN is None:
+        _LIBPROVEN = {}
+        for f in ("library_signatures.tsv", "vendor_signatures.tsv"):
+            p = P("rebuild", "oracles", f)
+            if not os.path.exists(p): continue
+            rows = read_tsv(p)
+            if not rows or "symbol" not in rows[0] or "confidence" not in rows[0]: continue
+            h = rows[0]; ai = h.index("address") if "address" in h else 0; k = h.index("symbol"); ci = h.index("confidence")
+            bi = h.index("reloc_bad") if "reloc_bad" in h else -1
+            for r in rows[1:]:
+                if len(r) <= max(ai, k, ci) or not r[k]: continue
+                a = r[ai].lower().replace("0x", "").zfill(8)
+                if a in _LIBPROVEN: continue
+                ok = r[ci] == "high" and (bi < 0 or (len(r) > bi and r[bi] in ("", "0")))
+                _LIBPROVEN[a] = r[k] if ok else ""
+    return _LIBPROVEN.get(addr.lower().replace("0x", "").zfill(8), "")
+
+
 def is_std(sym):
     # A C name (no `?`) counts only when it is a proven library symbol (finish plan route 0, 2026-11-23: is_std used to accept every C
     # name, so 1,270 made-up C names such as `_Construct` / `@VecDelDtor@12` counted as done).
@@ -357,7 +380,8 @@ def main():
             if descr.get(t.lower().replace("0x", "").zfill(8)) == s and not STANDIN.search(s):
                 st = "agree_descriptive"   # registry first: a guessed PDB name must not count as proven (R-NF440-1)
             else:
-                st = "agree_pdb" if s in pdb else ("standin" if STANDIN.search(s) else ("agree_std" if is_std(s) else "agree_unverified"))
+                st = "agree_pdb" if s in pdb else ("standin" if STANDIN.search(s) else
+                     ("agree_std" if (is_std(s) or (s.startswith("?") and s == lib_proven_at(t))) else "agree_unverified"))
         else:
             st = "split_fixable" if len(pd) == 1 else ("split_pdb_multi" if len(pd) > 1 else "split_unknown")
         cn = cat.get(t, "")
