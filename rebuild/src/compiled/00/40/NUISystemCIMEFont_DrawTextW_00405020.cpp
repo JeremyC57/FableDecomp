@@ -57,7 +57,7 @@ class CSystemManager { public:
     CFontManager*    GetFontBank() const { return FontBank; }
 };
 CSystemManager* __fastcall GFGetSystemManager();        // 0x009A4EC0
-extern unsigned char g_imeCompositionAlpha_013750b0;    // 0x013750B0
+extern unsigned char IMERenderAlpha;    // 0x013750B0
 class CImeUiFont_Base {
 public:
     virtual void SetHeight(unsigned int) = 0;
@@ -118,7 +118,7 @@ void CIMEFont::DrawTextW(const unsigned short* text)
     CCountedPointer<CFontBank> font = GFGetSystemManager()->GetFontBank()->GetFont(fontName);
     C2DVector position(Position[0], Position[1]);
     GFACoordToVCoord(position, position);
-    Colour.A = g_imeCompositionAlpha_013750b0;
+    Colour.A = IMERenderAlpha;
     if (Colour.R > 0x60 || Colour.G > 0x60 || Colour.B > 0x60) {
         C2DVector shadowPosition(Position[0] - 2.0f, Position[1] + 2.0f);
         GFACoordToVCoord(shadowPosition, shadowPosition);

@@ -13,7 +13,7 @@
 // ExperienceSpentOnAbilities +0x148, Abilities +0x160, AbilityButtons +0x16C.
 #pragma optimize("s", on)
 
-extern bool g_SuppressInventoryBaseCopy;             // 0x013B8A88
+namespace NThingManager { extern bool HeroSwapInProgress; } // 0x013B8A88
 
 struct CLongVector {                                 // std::vector<long>
     long* _M_start; long* _M_finish; long* _M_end_of_storage;
@@ -59,7 +59,7 @@ class CTCInventoryAbilities : public CTCInventoryBase, public CInventoryScreenBa
 void CTCInventoryAbilities::Copy(const CTCInventoryBase* other)
 {
     const CTCInventoryAbilities* source = static_cast<const CTCInventoryAbilities*>(other);
-    if (!g_SuppressInventoryBaseCopy) {
+    if (!NThingManager::HeroSwapInProgress) {
         CTCInventoryBase::Copy(source);
         CInventoryScreenBase::Copy(source);
     }

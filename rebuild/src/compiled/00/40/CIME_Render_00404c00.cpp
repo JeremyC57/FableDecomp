@@ -11,7 +11,7 @@
 //
 // Matching: `mov dl,1 ; mov cl,dl` for the two identical bool flags, the global byte store, and the
 // last call is a `jmp` tail into CSprite::DrawWithRenderManager @ 0x0041A980.
-extern unsigned char g_imeCompositionAlpha_013750b0;   // alpha the IME UI draws the composition with
+extern unsigned char IMERenderAlpha;   // alpha the IME UI draws the composition with
 struct SThemeRecord_00404c00 { unsigned char _pad[3]; unsigned char m_alpha; };   // edit box style record; byte 3 is alpha
 struct CThemeProvider_00404c00 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -44,9 +44,9 @@ void NUISystem::CIME::Render()
     if (IsInitialised) {
         // Composition alpha follows the owning edit box.
         if (m_pTheme)
-            g_imeCompositionAlpha_013750b0 = m_pTheme->GetTheme()->m_alpha;
+            IMERenderAlpha = m_pTheme->GetTheme()->m_alpha;
         else
-            g_imeCompositionAlpha_013750b0 = 0;
+            IMERenderAlpha = 0;
         bool flags = true;
         ImeUi_RenderUI(flags, flags);
         // Mode indicator, when the front end has one.

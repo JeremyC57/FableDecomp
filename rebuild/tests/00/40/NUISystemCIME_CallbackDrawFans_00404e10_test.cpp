@@ -44,7 +44,7 @@ static void GFACoordToVCoord(const C2DVector* in, C2DVector* out)   // stand-in:
     out->X = x;
     out->Y = y;
 }
-static unsigned char g_imeCompositionAlpha_013750b0 = 0x80;
+static unsigned char IMERenderAlpha = 0x80;
 struct IMEUI_VERTEX {
     float sx, sy, sz, rhw;
     unsigned int color;
@@ -72,7 +72,7 @@ static void Callback_DrawFans(const IMEUI_VERTEX* vertices, unsigned int count)
         unsigned char g = (unsigned char)color;
         color >>= 8;
         unsigned char r = (unsigned char)color;
-        CRGBColour colour(r, g, b, g_imeCompositionAlpha_013750b0);
+        CRGBColour colour(r, g, b, IMERenderAlpha);
         CDisplayManager* displayManager = GFGetSystemManager()->DisplayManager;
         displayManager->RenderManager2D->Draw2DTriangle(points[0], points[1], points[2], colour, 1);
     }

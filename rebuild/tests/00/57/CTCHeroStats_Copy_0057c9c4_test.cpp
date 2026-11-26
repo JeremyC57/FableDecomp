@@ -2,7 +2,7 @@
 #include <cstdio>
 
 class CThing;
-bool g_bApplyCopiedHeroStats = false;
+namespace NThingManager { bool HeroSwapInProgress = false; }
 static int g_baseCopies = 0;
 static int g_setterCalls = 0;
 struct CLongVector {
@@ -33,7 +33,7 @@ class CTCHeroStats : public CTCBase { public:
 void CTCHeroStats::Copy(const CTCBase& other)
 {
     const CTCHeroStats& stats = static_cast<const CTCHeroStats&>(other);
-    if (g_bApplyCopiedHeroStats) {
+    if (NThingManager::HeroSwapInProgress) {
         SetMorality(stats.Morality);
         SetAge(stats.Age);
         SetSunTan(stats.SunTan);
@@ -86,7 +86,7 @@ int main()
     if (a.ConfiscatedMoney != 14 || a.RenownTotal != 18 || a.ExtraMaxHealth != 22.0f || a.Stamina != 6 || a.Agreeableness != b.Agreeableness) fail = 2;
     if (a.HeroStatsExperience.v[1] != 32 || a.NumberOfTimesUsedAbility.v[0] != 36 || a.RegionTime.v[0] != 17 || a.TotalSpentExperience != 40 || a.MaxChickenThrow != 28.0f) fail = 3;
     if (g_baseCopies != 1 || a.ParentThing != (CThing*)&b) fail = 4;
-    Fill(a, 1); g_bApplyCopiedHeroStats = true;
+    Fill(a, 1); NThingManager::HeroSwapInProgress = true;
     a.Copy(b);
     if (g_setterCalls != 5 || !a.countedMoney || a.Money != 200 || a.Fatness != 1.0f || a.FrameUpdatedClothingStats != 0) fail = 5;
     if (fail) { std::printf("0057c9c4_TEST FAIL\n"); return 1; }

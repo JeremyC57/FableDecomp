@@ -18,7 +18,7 @@
 #pragma optimize("s", on)
 
 class CThing;
-extern bool g_bApplyCopiedHeroStats;                        // 0x013B8A88
+namespace NThingManager { extern bool HeroSwapInProgress; } // 0x013B8A88
 
 struct CLongVector {                                        // std::vector<long> (12 bytes)
     long* m_first; long* m_last; long* m_end;
@@ -82,7 +82,7 @@ class CTCHeroStats : public CTCBase { public:
 void CTCHeroStats::Copy(const CTCBase& other)
 {
     const CTCHeroStats& stats = static_cast<const CTCHeroStats&>(other);
-    if (g_bApplyCopiedHeroStats) {
+    if (NThingManager::HeroSwapInProgress) {
         SetMorality(stats.Morality);
         SetAge(stats.Age);
         SetSunTan(stats.SunTan);

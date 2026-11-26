@@ -1,0 +1,45 @@
+addr       parity           behav  name
+00404c00   WARN SHARED_HEADER_AVAILABLE CSprite (engine/CSprite.h)
+00404c00   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+00404c00   RELOCATION_MATCH PASS   Render
+00404d20   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00404d20   WARN SHARED_HEADER_AVAILABLE CFontBank (engine/CFontBank.h)
+00404d20   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00404d20   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00404d20   RELOCATION_MATCH PASS   SetColor
+00404e10   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00404e10   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00404e10   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+00404e10   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00404e10   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00404e10   RELOCATION_MATCH PASS   Callback_DrawFans
+00405020   WARN SHARED_HEADER_AVAILABLE C2DVector (engine/C2DVector.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CRGBColour (engine/CRGBColour.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CRenderManager2D (engine/CRenderManager2D.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CDisplayManager (engine/CDisplayManager.h)
+00405020   WARN SHARED_HEADER_AVAILABLE CSystemManager (engine/CSystemManager.h)
+00405020   RELOCATION_MATCH PASS   DrawTextW
+0057c9c4   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0057c9c4   WARN SHARED_HEADER_AVAILABLE CTCHeroStats (engine/CTCHeroStats.h)
+0057c9c4   RELOCATION_MATCH PASS   Copy
+005cdc1c   WARN SHARED_HEADER_AVAILABLE CTCInventoryStats (engine/CTCInventoryStats.h)
+005cdc1c   WARN RELOC_NAME: ?Copy@CBase@NHeroInformationScreens@@UAEXPBV12@@Z -> 0066e7a6 labelled '_global::Nop_ret4_0066e7a6'
+005cdc1c   RELOCATION_MATCH PASS   Copy
+005f3dc6   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005f3dc6   WARN RELOC_NAME: ?Copy@CInventoryScreenBase@@UAEXPBU1@@Z -> 0066e7a6 labelled '_global::Nop_ret4_0066e7a6'
+005f3dc6   RELOCATION_MATCH PASS   Copy
+0066eb11   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0066eb11   RELOCATION_MATCH PASS   RegisterScreen
+0066eb78   WARN SHARED_HEADER_AVAILABLE CManager (engine/CManager.h)
+0066eb78   RELOCATION_MATCH PASS   DeregisterScreen
+
+WINS: 9
+  00404c00 RELOCATION_MATCH CIME::?Render@CIME@NUISystem@@QAEXXZ
+  00404d20 RELOCATION_MATCH NUISystem::CIMEFont::?SetColor@CIMEFont@NUISystem@@UAEXK@Z
+  00404e10 RELOCATION_MATCH NUISystem::CIME::?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z
+  00405020 RELOCATION_MATCH NUISystem::CIMEFont::DrawTextW
+  0057c9c4 RELOCATION_MATCH CTCHeroStats::?Copy@CTCHeroStats@@UAEXABVCTCBase@@@Z
+  005cdc1c RELOCATION_MATCH CTCInventoryStats::?Copy@CTCInventoryStats@@
+  005f3dc6 RELOCATION_MATCH CTCInventoryAbilities::?Copy@CTCInventoryAbilities
+  0066eb11 RELOCATION_MATCH NHeroInformationScreens::CManager::?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z
+  0066eb78 RELOCATION_MATCH NHeroInformationScreens::CManager::?DeregisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z

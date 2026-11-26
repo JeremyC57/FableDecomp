@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x01436E24	?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B	Ego_r PDB (tracker pdb_spelling); table line witness 00b761d0 binds it	ghidra_out/labels_chunks718_725_2026-11-03.tsv label g_pEngineEnvironmentDef; ?g_pEngineEnvironmentDef@@3PBVCEnvironmentDef@@B in 9 landed rows (00b53f60 00b54890 00b54e30 00b625e0 00b72180 00b751f0 00b77370 00be9920 00bea110; held/rows has the respelt sources)

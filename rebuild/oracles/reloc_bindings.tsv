@@ -20,7 +20,6 @@ _malloc	00bfea0e	00404690
 ?g_vtable_00404860@@3PAXA	0122dc6c	00404860
 ?g_primitiveVTableOrData@@3PAEA	013b7cd8	00404a80
 ?DrawWithRenderManager@CSprite@@QAEXXZ	0041a980	00404c00
-?g_imeCompositionAlpha_013750b0@@3EA	013750b0	00404c00
 _memmove	00bfeae6	00405ba0
 __ftol2	00bfea70	00405f40
 ??0CWideString@@QAE@PBG@Z	0099b6b0	004065d0
@@ -1634,7 +1633,6 @@ _MAX_ABILITY_LEVEL	01256188	005edea3
 ??4CAbilityEntryVector@@QAEAAU0@ABU0@@Z	005fa1ba	005f3dc6
 ?Copy@CInventoryScreenBase@@UAEXPBU1@@Z	0066e7a6	005f3dc6
 ?Copy@CTCInventoryBase@@UAEXPBU1@@Z	005bfb96	005f3dc6
-?g_SuppressInventoryBaseCopy@@3_NA	013b8a88	005f3dc6
 ?push_back@CHeroAbilityDefPointerVector@@QAEXABUCHeroAbilityDefPointer@@@Z	005fa3a5	005f4c45
 ??0value_type@CRetailList_node0xc@@QAE@ABU01@@Z	0099b720	005f80a1
 ?Helper@CForwarder_005f823b@@QAEPAXPAXABUSScalarTag@@J@Z	005f7b76	005f823b
@@ -7132,7 +7130,6 @@ _wcsrchr	00bfedb2	009a5340
 ?RevertVideoChanges@CTCInventory@@QAEXXZ	00582754	0047da50
 ??0CSignatureMap@@QAE@XZ	00486055	0047df8a
 ?_M_erase@CClanScoreboardMap@@QAEXPAUSScoreboardNode@@@Z	00569a80	005625f0
-?g_bApplyCopiedHeroStats@@3_NA	013b8a88	0057c9c4
 ?GetAbilityStatType@CTCInventoryAbilities@@QAEJW4EHeroAbility@@@Z	005edeeb	006d7cb0
 ?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z	005ee77c	006d7cb0
 ??_7CTCFish@@6B@	0126fd2c	007dfb20
@@ -7684,7 +7681,6 @@ _D3DXLoadSurfaceFromSurface@32	00bfefc2	009f37e0
 ?GetAllRegisteredInventoryScreens@CManager@NHeroInformationScreens@@ABEXAAV?$CVector@PBVCBase@NHeroInformationScreens@@@2@@Z	0066e9e9	0066ea46
 ?Open@CFadeInFadeOutBase_Methods@@QAEXMMVCRGBColour@@@Z	00434840	0066ea46
 ?InitialiseScrollBarIndices@CManager@NHeroInformationScreens@@QAEXJ@Z	0066ea85	0066eb11
-?g_bCopyingThings@@3_NA	013b8a88	0066eb11
 ?_M_insert_overflow@?$vector@PBVCBase@NHeroInformationScreens@@@std@@QAEXPAPBVCBase@NHeroInformationScreens@@ABQBV34@ABU__true_type@2@I_N@Z	0066ed1d	0066eda6
 ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ	00a03b70	0066ee20
 ?GetMouseWheelMovement@CInputEvent@@QBEMXZ	00a03bb0	0066f540

@@ -1,7 +1,7 @@
 // NHeroInformationScreens::CManager::RegisterScreen(const CBase& screen) -- slot the screen in by type; while fewer than five scroll slots exist, reset them to the registered-screen count (at most five)
 // Leaf: ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z
 // Retail: Fable.exe @ 0x0066EB11, 103 bytes, `ret 4`; Ego_r.pdb ?RegisterScreen@CManager@NHeroInformationScreens@@QAEXABVCBase@2@@Z.
-// Body: nothing while the byte flag at 0x013B8A88 is set (name not recovered; the landed CTCBase::Copy family names it
+// Body: nothing while the byte flag at 0x013B8A88 is set (NThingManager::HeroSwapInProgress, Ego_d PDB; the landed CTCBase::Copy family named it
 // after its copy role). Else Screens[screen slot 2 (+0x08)] = &screen; if ScrollBarIndices.size() < 5: count the
 // non-null Screens (size re-read each pass) and, when count <= 5, InitialiseScrollBarIndices(count) (0x0066EA85).
 // Layout: retail NHeroInformationScreens::CManager -- Screens +0x04, ScrollBarIndices +0x1c (12-byte STLport vectors), as
@@ -9,7 +9,7 @@
 // Opt: size TU (unaligned entry); the counting loop is strength-reduced to a pointer.
 #pragma optimize("s", on)
 class CWorld;
-extern bool g_bCopyingThings;                            // 0x013B8A88 (name not recovered)
+namespace NThingManager { extern bool HeroSwapInProgress; } // 0x013B8A88
 namespace NHeroInformationScreens {
 class CBase {
 public:
@@ -36,7 +36,7 @@ public:
 };
 void CManager::RegisterScreen(const CBase& screen)
 {
-    if (g_bCopyingThings)
+    if (NThingManager::HeroSwapInProgress)
         return;
     Screens[screen.GetScreenType()] = &screen;
     if (ScrollBarIndices.size() < 5)

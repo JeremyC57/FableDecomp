@@ -36,7 +36,7 @@ class CRGBColour { public:
  CRGBColour() {}
  CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-extern unsigned char g_imeCompositionAlpha_013750b0;   // 0x013750B0
+extern unsigned char IMERenderAlpha;   // 0x013750B0
 class CImeUiFont_Base {
 public:
  virtual void SetHeight(unsigned int) = 0;
@@ -61,6 +61,6 @@ public:
 void CIMEFont::SetColor(unsigned long colour)
 {
  unsigned long high = colour >> 8;
- Colour = CRGBColour((unsigned char)(high >> 8), (unsigned char)high, (unsigned char)colour, g_imeCompositionAlpha_013750b0);
+ Colour = CRGBColour((unsigned char)(high >> 8), (unsigned char)high, (unsigned char)colour, IMERenderAlpha);
 }
 }

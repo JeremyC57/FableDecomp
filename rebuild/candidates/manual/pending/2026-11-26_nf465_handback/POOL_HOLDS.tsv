@@ -1,0 +1,393 @@
+target	pdb_spelling	kind	verdict
+00410120	?TransferBinaryIn@CActionInputControl@@QAEXAAVCMemoryDataInputStream@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00413520	?Reset@?$CCountedPointer@VCConsole@@@@QAEXPAVCConsole@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0043cac0	?size@?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@QBEIXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00449960	?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0044c0c0	??0CSubDefClassBase@@QAE@XZ	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0045473f	??4CVillagePeopleDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0045bc09	??4?$vector@KV?$allocator@K@std@@@std@@QAEAAV01@ABV01@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0045c54e	??4CSoundThemeDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0045d505	??4CCameraManagerDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0045fee3	??4CSpecialAbilitiesPhysicalShieldDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+004600cb	??4CSpecialAbilitiesDrainLifeDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00462451	??4CMeleeCombatAbilityDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0046eecf	??0?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+004774d6	??0?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00485125	??4CTavernTableDef@@QAEAAV0@ABV0@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00497890	?GFROR13@@YIJK@Z	func	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+004a67d0	??0CWorld@@QAE@ABVCWorldInit@@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+004af670	?GetAvailableQuestCardDefNameFromScriptName@CQuestManager@@QBEABVCCharString@@ABV2@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+004e5c71	??1CTCCreatureGroup@@UAE@XZ	dtor	HOLD generator residue (dtor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0052c730	?Initialise@CChangingStateComponent@NUISystem@@UAEXXZ	func	HOLD ruling: rebind443 bodiless-class rebind generated (work/rb465_rows) but brief bans a local class for a headered class
+00531ec0	?Update@CComponent@NUISystem@@UAEXM@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+005580b0	?ClearDuplicateDefinitions@CKeyRedefiner@NUISystem@@QAEXABVCActionInputControl@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+005829cd	?RemoveContextSensitivePreferredItem@CTCInventory@@QAE_NABVCCharString@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0058502d	?AddContextSensitivePreferredItem@CTCInventory@@QAE_NABVCCharString@@JJ@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+005bbdf1	??0?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0062ee80	??0?$map@JVCCharString@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@3@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0062f590	??0?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0062f610	??0?$list@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@V?$allocator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00644627	?ClearPrimitivesIfNecessary@CDrawBase@NPlayerGui@@UAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00654b94	?ReleaseData@?$CCountedPointer@VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00654c1e	?ReleaseData@?$CCountedPointer@VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00655145	??0?$CIntelligentPointer@$$CBVCThingPhysical@@@@QAE@PBVCThingPhysical@@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0066ace0	?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00674520	??4?$vector@U?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@V?$allocator@U?$pair@W4EBodyLocation@@VCEntry@CWoundMorphs@@@std@@@2@@std@@QAEAAV01@ABV01@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006927f0	?OnBlowBlocked@CCreatureActionBase@@UAEX_N@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00694d10	?Initialise@CCreatureActionBase@@UAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006a4d20	?OnCreate@CThingPhysical@@MAE_NXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006b62b0	??0CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006ba420	??0CFaction@@QAE@XZ	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006c5920	?RemoveDeedStillSearchingForWitnesses@CTCHeroOpinionDeedLog@@QAEXJ@Z	func	HOLD ruling: rebind443 bodiless-class rebind generated (work/rb465_rows) but brief bans a local class for a headered class
+006c9fa0	?GiveTutorialForCategory@CTCHero@@QAE_NW4ETutorialCategory@@_N@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006ce670	??0CGroundNavigatorExternalInterface@@QAE@ABV0@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006d6570	?GetExperiencePickUpMultiplier@CTCHeroExperience@@QBEJXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+006db9d0	?resize@?$list@U?$pair@W4EDamageAttribute@@J@std@@V?$allocator@U?$pair@W4EDamageAttribute@@J@std@@@2@@std@@QAEXIABU?$pair@W4EDamageAttribute@@J@2@@Z	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+006e1080	?SetPEmitter@CTCDParticleEmitter@@AAEXPAVCParticleEmitter@NParticleEngine@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0070d580	?SetMainAnim@CAnimateThing@@QAEXABVCAnimInit@@JJ@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00711800	??$remove_if@VCIsType@CAnimSet@@@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QAEXVCIsType@CAnimSet@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+007137d0	?AddAction@CTCScriptedControl@@QAEXPAVCActionBase@1@@Z	func	HOLD ruling: rebind443 bodiless-class rebind generated (work/rb465_rows) but brief bans a local class for a headered class
+0071c360	?InitialiseCustomTattoos@CTCHeroMorph@@IBEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+007339e0	?UpdateCombatTimers@CTCCombat@@AAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00736760	?UpdateFlourishParticles@CTCCombat@@AAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00738f90	??$IsAppropriateEntryExisting@VCIsCombatAnimAppropriateFollowingCombo@@@CAnimationSet@@QBE_NABVCIsCombatAnimAppropriateFollowingCombo@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00757570	?Update@CWound@CTCWound@@QAEXAAVCTCTextureDecal@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0076cc00	?RemoveEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0076d1b0	?AddEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00770fa0	?AddThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+007fdeb0	?GetAllSummonedCreatures@CTCAISummon@@SIAAV?$list@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@XZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+007fffb0	?GetActionSpeedMultiplier@CTCHaste@@QBEMXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00810fc0	?GetPHitBy@CEventHitBase@NEntityEvents@@QBEPAVCThing@@XZ	func	HOLD ruling: rebind443 bodiless-class rebind generated (work/rb465_rows) but brief bans a local class for a headered class
+00838aa0	?UpdateStandingOnThing@CThingGameObject@@IAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0083ebd0	?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00859ef0	?OnAnimationLoaded@CCombatActionBase@@MAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0085fbc0	?IsAbleToBeEngagedInCombat@NCreatureMode@@YI_NABVCThing@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00879620	??0CProjectileWeapon@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@MM@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00880e50	?Process@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00916ce0	??0?$vector@PBVCCharString@@V?$allocator@PBVCCharString@@@std@@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0091a5b0	??$FindMostRecentMessage@V?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsOriginatedByThing@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00930d20	??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00994520	?Flush@CBufferedFileDataOutputStream@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0099b560	?MakeOwnCopyOfData@CWideString@@IAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+009c3ae0	?ProcessActiveFileForRead@CFileInstaller@@IAEXAAVCActiveFile@1@@Z	func	HOLD ruling: rebind443 bodiless-class rebind generated (work/rb465_rows) but brief bans a local class for a headered class
+009d9a30	??0CRenderManager2D@@QAE@AAVCDisplayManager@@ABVCWideString@@K@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+009e7680	?DeallocateMemory@?$CArray@U?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+009e79e0	?DeallocateMemory@?$CVectorMap@VCCharString@@VCSymbolInfo@CSymbolMap@@V?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+009f5d70	?LoadAllEventPackages@CInputManager@@IAEXABVCVersion@@AAVCAFile@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00a29d20	?Reset@?$CCountedPointer@VCMeshDataBankEntry@@@@QAEXPAVCMeshDataBankEntry@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00a555c0	??_GC3DAnimation2@@UAEPAXI@Z	func	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+00aa4460	?Reset@?$CCountedPointer@VCOptimisedMesh@QuadricOptimiserInternals@@@@QAEXPAVCOptimisedMesh@QuadricOptimiserInternals@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00ab3b10	??0CVertexShaderInput@@QAE@XZ	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00ac4d70	?ConvertStream@CVertexStreamConverter@@QAEXPBXJABVCVertexStreamFormat@@PAXJ1KABVCVertexCompressionParams@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00ad1fc0	??4CContractionReference@QuadricOptimiserInternals@@QAEAAV01@ABV01@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00ad4210	??0?$map@KMU?$less@K@std@@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00ad5920	??0?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAE@ABV01@@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00adebc0	?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00af1480	?GetEmitterTemplate@CParticleEmitterInfo@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@_N@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00af5330	?DeleteParticle@CParticleSystem@NParticleEngine@@QAE?AV?$_List_iterator@V?$_List_val@PAVCParticle@NParticleEngine@@V?$allocator@PAVCParticle@NParticleEngine@@@std@@@std@@@std@@AAV34@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00af59a0	?Update@CParticleSystem@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@@Z	func	HOLD ruling: rebind443 bodiless-class rebind generated (work/rb465_rows) but brief bans a local class for a headered class
+00b2f8b0	?ClearHandles@CEnginePrimitiveOcclusionInfo@@AAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00b38d10	??_GCEnginePrimitiveRenderer@@UAEPAXI@Z	func	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+00b3e510	?Reset@?$CCountedPointer@VCLoadingMemoryFailureHandler@@@@QAEXPAVCLoadingMemoryFailureHandler@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00b866a0	??_GCEngineSubPrimitiveRenderer@@UAEPAXI@Z	func	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+00baa2b0	??1CEngineInternalPrimitiveMorphInfo@@QAE@XZ	dtor	HOLD generator residue (dtor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00bacda0	?FrameEnd@CEnginePrimitiveManager@@UAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00bdc000	?ReleaseFileBlockLoad@CLandscapeBackgroundLoadTask@@QAEXXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00bde190	?LoadHeader@CObjectCacheGroupCollection@CLocalDetailCacheMap@@QAEXAAVCMemoryDataInputStream@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00be21f0	??0CEngineInternalPrimitive2DViewport@@QAE@XZ	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00bf62e0	??2CLandscapeBackgroundTreeNode@@SIPAXIPAVCMovableResource@@@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00bf6e20	??0CLandscapeBackgroundTreeNode@@QAE@PAVCEngineLandscapeMap@@PAV0@J@Z	ctor	HOLD generator residue (ctor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00bfc410	??1CPatchTesselationEdgeStrip@@UAE@XZ	dtor	HOLD generator residue (dtor): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00c22040	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00c222b0	?AddLearnedExpression@CTCInventoryAbilities@@QAEXJ@Z	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+00da0ed0	?size@?$list@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0122e0fc	??_7CMemoryFile@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122e638	??_7CConsoleCommandBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122f598	??_7CEnginePrimitiveHandle@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122f5a4	??_7CSprite@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122f5ac	??_7CSprite@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122f5d4	??_7CSprite@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122f83c	??_7CActionParam@NUISystem@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122f84c	??_7CSurface@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0122ffcc	??_7CAnimFilterBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01230ba0	??_7CDefPointeeBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01230cbc	??_7CParentDefClassBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0123156c	??_7?$CTBaseSingleton@VCEngineManager@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01231710	??_7CBaseClass@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01231720	??_7?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01231c4c	??_7?$CIntelligentPointer@VCThingPlayerCreature@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01232484	??_7CCombatAbilityData@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01232dec	??_7CCombatAbilityBlockingData@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01233f8c	??_7COpinionPersonalityDef@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0123543c	??_7CDialogueLayerDef@NSpeechGainManager@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012354d0	??_7CIVCountedPointeeBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01237f1c	??_7?$CIntelligentPointer@$$CBVCThing@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01238c6c	??_7?$CIntelligentPointer@VCThing@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01238c8c	??_7CScriptThing@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01239a8c	??_7CMessageClearPrimitives@NTCMessages@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0123a3e0	??_7CBase@NHeroInformationScreens@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0123aedc	??_7CTCCameraPointShapeActivationBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0123e7d8	??_7?$CIntelligentPointer@VCThingCreatureBase@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0123e7e0	??_7?$CIntelligentPointer@VCThingAICreature@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01241064	??_7CTCShotDefinitionFireballSpell@NThingShot@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01243558	??_7CTCInventoryClothing@@6BCBase@NHeroInformationScreens@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124356c	??_7CTCInventoryClothing@@6BCTCInventoryBase@NInventory@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012439dc	??_7CCardPositionsDef@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01244284	??_7CIDrawWorldMap@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01244344	??_7?$CIntelligentPointer@VCThingBuilding@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01244ab4	??_7CWorldMap@@6BCIDrawWorldMap@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012451bc	??_7CThingVillage@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01245974	??_7CCompressorZlib@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01245db4	??_7CChangingStateComponent@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01245dbc	??_7CChangingStateComponent@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01245de4	??_7CChangingStateComponent@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01246044	??_7CUIInterface@NUISystem@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012468a4	??_7CScrollingViewport@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012468ac	??_7CScrollingViewport@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012468d4	??_7CScrollingViewport@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01246e18	??_7CDynamicList@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01246e20	??_7CDynamicList@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01246e44	??_7CDynamicList@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247330	??_7CParticleEffect@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247338	??_7CParticleEffect@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124735c	??_7CParticleEffect@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012475a0	??_7CSpellContainerList@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247840	??_7CSpellContainer@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247848	??_7CSpellContainer@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124786c	??_7CSpellContainer@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247d98	??_7CZoomingComponent@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247da0	??_7CZoomingComponent@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01247dc4	??_7CZoomingComponent@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01248034	??_7CTextContainer@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124803c	??_7CTextContainer@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01248064	??_7CTextContainer@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124857c	??_7CSwappingStateComponent@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01248584	??_7CSwappingStateComponent@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012485ac	??_7CSwappingStateComponent@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012487ec	??_7CMovie@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012487f4	??_7CMovie@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124881c	??_7CMovie@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249520	??_7CActionParamString@NUISystem@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249528	??_7CFrontEndButton@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249530	??_7CFrontEndButton@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249554	??_7CFrontEndButton@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249a30	??_7CViewport@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249a38	??_7CViewport@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249a5c	??_7CViewport@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249c9c	??_7CText@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249ca4	??_7CText@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249ccc	??_7CText@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249f6c	??_7CMesh@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249f74	??_7CMesh@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01249f9c	??_7CMesh@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a1f4	??_7CTable@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a1fc	??_7CTable@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a224	??_7CTable@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a46c	??_7CMorphingSprite@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a474	??_7CMorphingSprite@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a49c	??_7CMorphingSprite@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a700	??_7CScrollableList@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a708	??_7CScrollableList@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124a72c	??_7CScrollableList@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124ad90	??_7CKeyRedefiner@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124ad98	??_7CKeyRedefiner@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124adbc	??_7CKeyRedefiner@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b01c	??_7CNavButton@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b024	??_7CNavButton@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b04c	??_7CNavButton@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b2a8	??_7CDraggableInto@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b2b0	??_7CDraggableInto@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b520	??_7CScrollBarOutside@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b528	??_7CScrollBarOutside@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b54c	??_7CScrollBarOutside@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b7b4	??_7CScrollBar@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b7bc	??_7CScrollBar@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124b7e4	??_7CScrollBar@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124ba68	??_7CDraggable@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124ba70	??_7CDraggable@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124ba94	??_7CDraggable@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124bd00	??_7CClickable@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124bd08	??_7CClickable@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124bd2c	??_7CClickable@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124bf88	??_7CHoverable@NUISystem@@6BCActionParam@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124bf90	??_7CHoverable@NUISystem@@6BCObserver@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124bfb4	??_7CHoverable@NUISystem@@6BCUIInterface@1@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124de5c	??_7CSnapToPoint@NCameraModes@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124f11c	??_7CTCInventoryExperience@@6BCTCInventoryBase@NInventory@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0124f2c4	??_7CEventBase@NEntityEvents@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012554e0	??_7CMessageOnPickup@NTCMessages@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01257a84	??_7CTCInventoryMap@@6BCBase@NHeroInformationScreens@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01257a9c	??_7CTCInventoryMap@@6BCTCInventoryBase@NInventory@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125a26c	??_7?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125a46c	??_7CQuestInfoElementMiniGameBar@CDrawQuestInfo@NPlayerGui@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125a518	??_7CQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125a858	??_7?$CIntelligentPointer@VCThingObject@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125a894	??_7?$CIntelligentPointer@$$CBVCThingTrackNode@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125a8a4	??_7?$CIntelligentPointer@VCVillageTaskBase@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125aaec	??_7?$CIntelligentPointer@$$CBVCThingCreatureBase@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125b6d0	??_7CReactionMatch@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125b718	??_7CReactionMatch_AsymmetricPyramid@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125b8ac	??_7CBlurredAttitudesDef@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125c29c	??_7?$CIntelligentPointer@$$CBVCThingGameObject@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125c818	??_7CTCParamsPhysicsBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125fee4	??_7?$CParticleUpdateParamDesc@KK@NParticleEngine@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0125ffdc	??_7?$CParticleUpdateParameters@KK@NParticleEngine@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0126008c	??_7CScriptGameResourceObjectBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01264b64	??_7CReactionFrequencyTraits_LinearTime@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01264b94	??_7CReactionFrequencyTraits_ControlledCount@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01265520	??_7CScriptConversation@NTCScriptedControl@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01265534	??_7CActionTurnToFacePosition@NTCScriptedControl@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012659c8	??_7CActionTalkToThing@NTCScriptedControl@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0126653c	??_7CTCRandomAppearanceMorph@@6BCTCAppearanceMorphBase@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012673cc	??_7CModeBase@CTCCreatureModeManager@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01267670	??_7CModeScripted@NCreatureMode@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01267bbc	??_7CModeSitFloor@NCreatureMode@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01267e78	??_7CModeKnockedDown@NCreatureMode@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01268c24	??_7CTCCreatureGenerator@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0126a288	??_7CTrack@NShape@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0126cb54	??_7CMessageOnMeshReplaced@NTCMessages@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0127091c	??_7CActionMoveTo@NTCScriptedControl@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012723d8	??_7CEventShownItem@NEntityEvents@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01272494	??_7CIDrawMap@@6B@	vft	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+01272524	??_7CMap@@6BCBaseClassNonCopyable@@@	vft	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+0127252c	??_7CMap@@6BCIDrawMap@@@	vft	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+0127261c	??_7CAnimFilterAnyGroup@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01275760	??_7CModeSleepBed@NCreatureMode@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012758f4	??_7CSubComponentBase@NCameraModes@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01275974	??_7?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelGotoOutsideSimple@2@VCPhysicsCoordCartesian@2@@NCameraModes@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01276aec	??_7?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelRigid@2@VCPhysicsCoordRigid@2@@NCameraModes@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01276c2c	??_7CCreatureAction_GetUpFromSitting@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01277ff0	??_7CStackEntry@CScreenEffectPriorityStack@NScreenEffect@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01277ff8	??_7CDisplacementMonochromeEffectColourEntry@CScreenEffectPriorityStack@NScreenEffect@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01278000	??_7ICustomProcessInterface@CScreenEffectPriorityStack@NScreenEffect@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0127b4d8	??_7?$CIntelligentPointer@VCThingGameObject@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0128a1dc	??_7CAIStateGroup_HoverMovementBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0128b080	??_7?$CIntelligentPointer@VCThingDeadCreature@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0128b088	??_7?$CIntelligentPointer@VCVillageTaskTorch@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0128b0b0	??_7?$CIntelligentPointer@VCVillageTaskCarryCrate@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0128d7bc	??_7CActionDropGenericBox@NTCScriptedControl@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+01296c9c	??_7CCreatureAction_StartEatingAtTable@@6B@	vft	HOLD stale table spelling still named (UND/DEF) by a landed object outside the leaf
+0129a030	??_7CShaderBase@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129a054	??_7CPixelShader@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129aaf4	?NullChar@CCharString@@1DB	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+0129ab38	??_7CFontBank@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b3d0	??_7CVertexShader@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b424	??_7CACompressor@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b528	??_7CDataBank@NGameText@@6BCResourceBank@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b860	??_7CMovableResource@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b8a0	??_7CBankFileAsyncData@@6BCMovableResource@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b8b4	??_7CBankFileAsyncData@@6BCThreadedFileCallback@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129b928	??_7MicroThreadInfo@MicroThread@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129ba40	?GD3DFormats@@3QBVCD3DFormatInfo@@B	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+0129c3e4	??_7CGenericVar@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129c400	??_7CConsoleCommandLine@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129c82c	??_7CBankStateBlock@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129c880	??_7CManagedTexture@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129c89c	??_7CFrameData@CGraphicInfoFrame@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129d568	??_7CMemoryBlock@CSimpleMemoryPool@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129dea4	??_7CPhysicsFacesSegmentLeaf@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129dfb0	??_7CVertexShaderInputAnimated@N3DPrimitive@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129dfb8	??_7CVertexShaderInputStatic@N3DPrimitive@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e1f8	??_7C3DMeshFileXTextureIndexChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e238	??_7C3DMeshFileXMappingInfoChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e2bc	??_7C3DMeshFileXBoundingSphereChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e2fc	??_7C3DMeshFileXBoundingBoxChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e474	??_7CChunkedFileChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e4b8	??_7CChunkedFileRawDataChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129e4f0	??_7CChunkedFileSuperChunk@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+0129f380	??_7CParticleDataBank@NParticleEngine@@6BCResourceBank@@@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a20f0	??_7?$CDynamicObjectHeap@$0EI@$0BA@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a2544	??_7CEngineComponent@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a524c	??_7CEngineInternalPrimitiveRepeatedZSprite@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a69dc	??_7?$CEngineDynamic3DResourceManager@V?$CEngineDynamic3DResource@VCVertexBufferWin32@@$02@@@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a69ec	??_7CEngineVertexBufferPool@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a7ddc	??_7CObjectCacheGroupCollection@CLocalDetailCacheMap@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a7df0	??_7CQuadTreeElement@CLocalDetailCacheMap@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012a835c	??_7CLandscapeLayerMesh@@6B@	vft	HOLD port: live non-PDB ??_7 binder (local class model / base qualifier; needs the shared header, r459a slot count)
+012b87f4	??_7CBankFile@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012b8df8	??_7CDisplayManager@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012c2fe8	??_7CIsThingConscious@NScript@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012c3224	??_7CEntityScriptBase@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012ca5e0	??_7?$CSpawnedFunc1@VCQ_BountyHuntScript@NScript@@VCScriptThing@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012ccba4	??_7?$CSpawnedFunc@VCQ_FireHeartScript@NScript@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012ccc50	??_7CFireHeartPatternDef@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012e0088	??_7?$CSpawnedFunc1@VCQ_UndeadRisingScript@NScript@@VCScriptThing@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012e35c4	??_7?$CSpawnedFunc@VCV_AssassinAttacksScript@NScript@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012ea48c	??_7?$CSpawnedFunc@VCV_FishingCompetitionScript@NScript@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012f59ac	??_7?$CSpawnedFunc@VCTestTheInventoryScript@NScript@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012f6818	??_7?$CPredicate_And@VCIsThingConscious@NScript@@VCIsThingAlive@2@@NScript@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012f7ebc	??_7?$CSpawnedFunc1@VCQ_AmbushTradersScript@NScript@@VCScriptThing@@@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+012fb778	??_7CFeatDef@@6B@	vft	HOLD no RTTI locator at t-4: PDB vftable spelling unconfirmed (0x012B2F60 precedent)
+013750b0	?IMERenderAlpha@@3EA	data	ACCEPT d1_dataglobals
+013756f5	?CombatParticleEffects@NGlobalConsole@@3_NA	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+0138306c	?CurrentCreatureGlobalDefNum@CTCSummonSpell@@0JA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013961e8	?VIRTUAL_SCREEN_WIDTH@@3NA	data	HOLD owner 2026-11-01: VIRTUAL_SCREEN_WIDTH/HEIGHT spellings stay gated for respell waves
+013961f0	?VIRTUAL_SCREEN_HEIGHT@@3NA	data	HOLD owner 2026-11-01: VIRTUAL_SCREEN_WIDTH/HEIGHT spellings stay gated for respell waves
+01396dc8	?D3DTextureUVModeTable@CRenderStateManager@@0PAKA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+01396f9c	?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b7cd8	?gIME@@3VCIME@NUISystem@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013b7d4c	?PClass@CUserProfileManager@@0V?$CCountedPointer@VCUserProfileManager@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b8384	?GPRenderManager@@3PAVCRenderManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013b8388	?GPInputManager@@3PAVCInputManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013b864f	?GDisableCapsLock@@3_NA	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b8998	?PFont@CProgressDisplay@@0V?$CCountedPointer@VCFontBank@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b89fc	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b8a1c	?PCurrentThingManager@CThing@@0PAVCThingManager@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b8a80	?DrawPerceptionDebug@CThingManager@@0_NA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b8a88	?HeroSwapInProgress@NThingManager@@3_NA	data	ACCEPT d1_dataglobals
+013b8b5c	?m_pInstance@CFrontEndManager@NUISystem@@1PAV12@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013b8c88	?PlayerModeInfo@CPlayer@@0QBVCPlayerModeInfo@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013ba848	?MaxLayers@NThingMap@@3JA	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013ba854	?PClass@?$CTBaseSingleton@VCEngineManager@@@@0V?$CCountedPointer@VCEngineManager@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bab0c	?GlobalSectionName@CLevelLoader@@2VCCharString@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bab2c	?MarriageEnabledMaleVoice@CTCWife@@2VCCharString@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013babd0	?AttitudeStrings@COpinionReactionManager@@0QBVCCharString@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bacb4	?SHOT_CREATION_DUMMY@@3VCCharString@@B	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013bacb8	?SHOT_CREATION_POINT@@3VCCharString@@B	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013bace4	?ST_HEAD_TURN_H@@3VCCharString@@B	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013bace8	?ST_HEAD_TURN_V@@3VCCharString@@B	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013bae1d	?BettingActive@CTCAIScratchpad@@2_NA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bae20	?BettingAmount@CTCAIScratchpad@@2JA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bae24	?CountBetMoneyDown@CTCAIScratchpad@@2_NA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bae28	?GlobalTargetingDistanceOffset@CTCAIScratchpad@@2MA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013baf20	?PlayerTargetingLineOfSightTest@CTCTargetingPlayer@@0_NA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013baf21	?PlayerTargetingBuildingVolumeTest@CTCTargetingPlayer@@0_NA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bca28	?GAME_REG_KEY@CSystemRegistry@@2VCWideString@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bca2c	?GFX_RESET_KEY_NAME@CSystemRegistry@@2VCWideString@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bca30	?GAME_LOCAL_MACHINE_REG_KEY@CSystemRegistry@@2VCWideString@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bca34	?PID_KEY_NAME@CSystemRegistry@@2VCWideString@@B	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013bd804	?NullString@CCharString@@2V1@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013ca79c	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013ca7f8	?PFont@CMovieSubtitles@@1V?$CCountedPointer@VCFontBank@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013ca828	?GDefStringTable@@3VCDefStringTable@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013caa28	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCDriveManager@@@@0V?$CCountedPointer@VCDriveManager@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013caa40	?PClass@?$CTBaseSingleton@VCConsole@@@@0V?$CCountedPointer@VCConsole@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013caa68	?PClass@?$CTBaseSingleton@VCCodeSectionManager@@@@0V?$CCountedPointer@VCCodeSectionManager@@@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013cb508	?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013cb530	?GFastArcCosTable@@3PAMA	data	ACCEPT d1_dataglobals
+013cd550	?GFastCosTable@@3PAMA	data	ACCEPT d1_dataglobals
+013d27e8	?CurrentFilename@CCRCSymbolMap@@1VCWideString@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013d2880	?GEnableSIMD@@3_NA	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013d28d4	?CurrentAlignment@CMemoryAllocatorBase@@1KA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013d28d8	?CurrentAlignmentShift@CMemoryAllocatorBase@@1KA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013d28e8	?ReuseBusyTextures@CTextureManager@@0_NA	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+013d2e14	?PEmitterDatabase@NParticleEngine@@3V?$CCountedPointer@VCParticleEmitterDatabase@NParticleEngine@@@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013d2e1c	?PEmitterManager@NParticleEngine@@3V?$CCountedPointer@VCParticleEmitterManager@NParticleEngine@@@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013d2e24	?PPSCManager@NParticleEngine@@3V?$CCountedPointer@VCPSCManager@NParticleEngine@@@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+013d2e2c	?PEnvironmentInteraction@NParticleEngine@@3V?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e18	?GPRenderManager@NEngineInternal@@3PAVCRenderManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e1c	?GPDisplayManager@NEngineInternal@@3PAVCDisplayManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e24	?GPEnvironmentDef@NEngineInternal@@3PBVCEnvironmentDef@@B	data	HOLD label 0x01436E24 g_pEngineEnvironmentDef (respelt rows ready: d1 held/)
+01436e58	?GPPrimitiveOcclusionManager@NEngineInternal@@3PAVCEnginePrimitiveOcclusionManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e60	?GPShadowRenderer@NEngineInternal@@3PAVCEngineShadowRenderer@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e74	?GPSubPrimitiveRenderer@NEngineInternal@@3PAVCEngineSubPrimitiveRenderer@@A	data	ACCEPT d1_dataglobals
+01436e84	?GPPrimitiveTypeInfo@NEngineInternal@@3PAVCEnginePrimitiveTypeInfo@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e8c	?GPEngineWorldMap@NEngineInternal@@3PAVCEngineWorldMap@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436e98	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01436ea8	?GPLandscapeRenderer@NEngineInternal@@3PAVCEngineLandscapeRenderer@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01437450	?LOCAL_HEAP_CEngineLightingManager__ManagerShadowedSpotLight@@3V?$CDynamicObjectHeap@$0DI@$0BA@@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+01437884	??_B?6??SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ@56	func	HOLD generator residue (func): rebind443 / ctor449 / dtor449 reasons in work/rb465.log, ct465.log, dt465.log
+0143e8e0	?NullCoord@CScriptThing@@1VC3DVector@@A	data	HOLD port: PDB spelling is a class static member (needs the class shared header) or a function
+0143e8f8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)
+0143e90c	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	data	HOLD data: binder type code differs from the PDB global or binder not a file-scope extern (not a pure rename)

@@ -2,7 +2,7 @@
 // clear (the screen base receives the source converted to that base); the two component caches are re-fetched from the
 // owner thing either way, and a component the thing does not use leaves its cache untouched
 #include <cstdio>
-static bool g_SuppressInventoryBaseCopy = false;
+namespace NThingManager { static bool HeroSwapInProgress = false; }
 static int g_baseCopies = 0, g_screenCopies = 0;
 static const void* g_screenSource = 0;
 struct CPresenceBits {
@@ -41,7 +41,7 @@ class CTCInventoryStats : public CTCInventoryBase, public CScreenBase { public:
     virtual void Copy(const CTCInventoryBase* other)
     {
         const CTCInventoryStats* source = static_cast<const CTCInventoryStats*>(other);
-        if (!g_SuppressInventoryBaseCopy) {
+        if (!NThingManager::HeroSwapInProgress) {
             CTCInventoryBase::Copy(source);
             CScreenBase::Copy(source);
         }
@@ -61,7 +61,7 @@ int main()
     a.Copy(&b);
     if (g_baseCopies != 1 || g_screenCopies != 1 || g_screenSource != static_cast<const CScreenBase*>(&b)) ++bad;
     if (a.pTCHeroExperience != &experience || a.pTCHeroStats != &stats) ++bad;
-    g_SuppressInventoryBaseCopy = true;
+    NThingManager::HeroSwapInProgress = true;
     thing.UsingComponents.bits = (1u << 8);        /* hero stats gone: its cache keeps the old pointer */
     a.pTCHeroExperience = 0;
     a.Copy(&b);

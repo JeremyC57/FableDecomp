@@ -1,6 +1,6 @@
 #include <cstdio>
 class CWorld;
-extern bool g_bCopyingThings;                            // 0x013B8A88 (name not recovered)
+namespace NThingManager { extern bool HeroSwapInProgress; } // 0x013B8A88
 namespace NHeroInformationScreens {
 class CBase {
 public:
@@ -27,7 +27,7 @@ public:
 };
 void CManager::RegisterScreen(const CBase& screen)
 {
-    if (g_bCopyingThings)
+    if (NThingManager::HeroSwapInProgress)
         return;
     Screens[screen.GetScreenType()] = &screen;
     if (ScrollBarIndices.size() < 5)
@@ -42,7 +42,7 @@ void CManager::RegisterScreen(const CBase& screen)
 }
 }
 
-bool g_bCopyingThings;
+namespace NThingManager { bool HeroSwapInProgress; }
 namespace NHeroInformationScreens {
 void CBase::_v00() const {} void CBase::_v01() const {}
 long CBase::GetScreenType() const { return 0; }
@@ -57,9 +57,9 @@ int main()
     CManager m; m.Screens._M_start = slots; m.Screens._M_finish = slots + 11;
     m.ScrollBarIndices._M_start = idx; m.ScrollBarIndices._M_finish = idx + 2;
     CTestScreen a, b, c; a.T = 3; b.T = 7; c.T = 0;
-    g_bCopyingThings = true; m.RegisterScreen(a);
+    NThingManager::HeroSwapInProgress = true; m.RegisterScreen(a);
     bool ok = slots[3] == 0 && g_inits == 0;
-    g_bCopyingThings = false; m.RegisterScreen(a);
+    NThingManager::HeroSwapInProgress = false; m.RegisterScreen(a);
     ok = ok && slots[3] == &a && g_inits == 1 && g_initCount == 1;
     m.RegisterScreen(b); ok = ok && slots[7] == &b && g_initCount == 2;
     m.ScrollBarIndices._M_finish = idx + 5;                    // five slots already: no reset

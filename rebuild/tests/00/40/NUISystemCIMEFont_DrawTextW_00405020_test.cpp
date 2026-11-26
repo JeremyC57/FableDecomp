@@ -88,7 +88,7 @@ class CSystemManager { public:
 };
 CSystemManager* __fastcall GFGetSystemManager();        // 0x009A4EC0
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
-extern unsigned char g_imeCompositionAlpha_013750b0;    // 0x013750B0
+extern unsigned char IMERenderAlpha;    // 0x013750B0
 class CImeUiFont_Base {
 public:
     virtual void SetHeight(unsigned int) = 0;
@@ -145,7 +145,7 @@ void CIMEFont::DrawTextW(const unsigned short* text)
     CCountedPointer<CFontBank> font = GFGetSystemManager()->GetFontBank()->GetFont(fontName);
     C2DVector position(Position[0], Position[1]);
     GFACoordToVCoord(&position, &position);
-    Colour.A = g_imeCompositionAlpha_013750b0;
+    Colour.A = IMERenderAlpha;
     if (Colour.R > 0x60 || Colour.G > 0x60 || Colour.B > 0x60) {
         C2DVector shadowPosition(Position[0] - 2.0f, Position[1] + 2.0f);
         GFACoordToVCoord(&shadowPosition, &shadowPosition);
@@ -185,7 +185,7 @@ CCountedPointer<CFontBank> CFontBankSource::GetFont(const CCharString& name)
 static CDisplayManager g_dm; static CRenderManager2D g_rm; static CFontBankSource g_fbs; static CSystemManager g_sm;
 CSystemManager* __fastcall GFGetSystemManager() { return &g_sm; }
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out) { out->X = in->X * 10.0f; out->Y = in->Y * 10.0f; }
-unsigned char g_imeCompositionAlpha_013750b0;
+unsigned char IMERenderAlpha;
 struct DrawCall { CRenderManager2D* self; float x, y, z, scale; void* text; CFontBank* font; const CRGBColour* colourRef;
                   CRGBColour colour; unsigned long flags; };
 static DrawCall g_draws[4]; static int g_nDraws;
@@ -212,7 +212,7 @@ int main()
     NUISystem::CIMEFont font;
     CCPPointerInfo info = { 2, DestroyFont, (void*)0x5678 };
     // bright colour, height 20: shadow then text, Arial 18, scale 20/18
-    Reset(); g_info = &info; g_imeCompositionAlpha_013750b0 = 0x80;
+    Reset(); g_info = &info; IMERenderAlpha = 0x80;
     font.Colour.R = 0x90; font.Colour.G = 0x10; font.Colour.B = 0x10; font.Colour.A = 0xff;
     font.Position[0] = 5.0f; font.Position[1] = 7.0f; font.Height = 20;
     font.DrawTextW(text);
@@ -231,7 +231,7 @@ int main()
     // dark colour (all channels <= 0x60), height 30: no shadow, Arial 28; last reference destroys the font
     Reset();
     CCPPointerInfo* heapInfo = new CCPPointerInfo; heapInfo->References = 1; heapInfo->Destroy = DestroyFont; heapInfo->Object = (void*)0x9abc;
-    g_info = heapInfo; g_imeCompositionAlpha_013750b0 = 0x40;
+    g_info = heapInfo; IMERenderAlpha = 0x40;
     font.Colour.R = 0x60; font.Colour.G = 0x60; font.Colour.B = 0x60; font.Height = 30;
     font.DrawTextW(text);
     CHECK(strcmp(g_fontName, "ENG_ARIAL_28") == 0);

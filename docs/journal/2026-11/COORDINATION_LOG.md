@@ -1417,3 +1417,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: the owner approved three items: counting libsig-proven vendor names, the `/D_USE_ANSI_CPP` lane flag (after a full proof), and an agent slot for the vtable fix.
   - Applied the first: naming_status.py `lib_proven_at` counts a `?` name equal to the libsig symbol at its address, for high-confidence rows with no bad relocation only. +223 (agree_unverified -> agree_std), nothing else moved. Done 35,365 -> 35,588 (55.57%).
   - The libcp full proof and the vtable ports get the next two agent slots.
+- 2026-11-26 A: landed NF465 d1 (9 rows, +2 proven, 0 worse). The scripted T1 pool is exhausted: 235 of 392 targets need ports (197 vftables bound by local class models). That is the same work as the r459a short-vftable fix, so the next agent does both. R465a granted (label respell with its rows, queued); R465b declined (local model); R465c owner gate kept; R465d declined (T3 hold kept).

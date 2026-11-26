@@ -37,7 +37,7 @@ class CSystemManager { public:
     CDisplayManager* DisplayManager;            // +0x60
 };
 CSystemManager* __fastcall GFGetSystemManager();                         // 0x009A4EC0
-extern unsigned char g_imeCompositionAlpha_013750b0;                     // 0x013750B0
+extern unsigned char IMERenderAlpha;                     // 0x013750B0
 
 struct IMEUI_VERTEX {
     float sx;
@@ -80,7 +80,7 @@ void __fastcall CIME::Callback_DrawFans(const IMEUI_VERTEX* vertices, unsigned i
         unsigned char g = (unsigned char)color;
         color >>= 8;
         unsigned char r = (unsigned char)color;
-        CRGBColour colour(r, g, b, g_imeCompositionAlpha_013750b0);
+        CRGBColour colour(r, g, b, IMERenderAlpha);
         CDisplayManager* displayManager = GFGetSystemManager()->DisplayManager;
         displayManager->RenderManager2D->Draw2DTriangle(points[0], points[1], points[2], colour, 1);
     }

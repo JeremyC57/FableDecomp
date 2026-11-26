@@ -16,7 +16,7 @@
 // NF419 (2026-11-25): no `#pragma optimize("y", off)`: the leaf is byte- and relocation-identical without it (size mode keeps
 //   its frame); it only framed end-of-TU template and compiler-generated copies (each copy checked in the T3 nf416 audit).
 #pragma optimize("s", on)
-extern bool g_SuppressInventoryBaseCopy;                // 0x013B8A88
+namespace NThingManager { extern bool HeroSwapInProgress; } // 0x013B8A88
 class CTCBase;
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
@@ -52,7 +52,7 @@ public:
 void CTCInventoryStats::Copy(const CTCInventoryBase* other)
 {
     const CTCInventoryStats* source = static_cast<const CTCInventoryStats*>(other);
-    if (!g_SuppressInventoryBaseCopy) {
+    if (!NThingManager::HeroSwapInProgress) {
         CTCInventoryBase::Copy(source);
         NHeroInformationScreens::CBase::Copy(source);
     }

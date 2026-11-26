@@ -7,7 +7,7 @@
 // Opt: size TU (unaligned entry); the counting loop is strength-reduced to a pointer.
 #pragma optimize("s", on)
 class CWorld;
-extern bool g_bCopyingThings;                            // 0x013B8A88 (name not recovered)
+namespace NThingManager { extern bool HeroSwapInProgress; } // 0x013B8A88
 namespace NHeroInformationScreens {
 class CBase {
 public:
@@ -34,7 +34,7 @@ public:
 };
 void CManager::DeregisterScreen(const CBase& screen)
 {
-    if (g_bCopyingThings)
+    if (NThingManager::HeroSwapInProgress)
         return;
     const CBase*& slot = Screens[screen.GetScreenType()];
     if (slot == &screen)
