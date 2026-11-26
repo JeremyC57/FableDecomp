@@ -1,0 +1,23 @@
+address	unit
+008fd532	unit CAIStateGroup_MinionHasInformation: ctor 0x008FD532 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+008ff1dc	unit CAIStateGroup_MinionHasInformation: thin ??_G member of 0x008FD532
+008fd5ce	unit CAIStateGroup_MinionListenToStory: ctor 0x008FD5CE (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+008ff33e	unit CAIStateGroup_MinionListenToStory: thin ??_G member of 0x008FD5CE
+008fd7c7	unit CAIStateGroup_ChickenBeg: ctor 0x008FD7C7 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+008ff7c4	unit CAIStateGroup_ChickenBeg: thin ??_G member of 0x008FD7C7
+008fdc7c	unit CAIStateGroup_LookAtInterestingThings: ctor 0x008FDC7C (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+009000a0	unit CAIStateGroup_LookAtInterestingThings: thin ??_G member of 0x008FDC7C
+008fdde3	unit CAIStateGroup_SeekPerceivedThing: ctor 0x008FDDE3 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+009003f6	unit CAIStateGroup_SeekPerceivedThing: thin ??_G member of 0x008FDDE3
+008fe272	unit CAIStateGroup_CreatureRangedCombatUseWillShield: ctor 0x008FE272 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+00900e90	unit CAIStateGroup_CreatureRangedCombatUseWillShield: thin ??_G member of 0x008FE272
+008fe29b	unit CAIStateGroup_TestTestTest: ctor 0x008FE29B (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+00900ed0	unit CAIStateGroup_TestTestTest: thin ??_G member of 0x008FE29B
+008fe750	unit CAIStateGroup_OpenAndCloseShop: ctor 0x008FE750 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+00901c37	unit CAIStateGroup_OpenAndCloseShop: thin ??_G member of 0x008FE750
+008fe818	unit CAIStateGroup_MinionGuardGreetPlayer: ctor 0x008FE818 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+00901d37	unit CAIStateGroup_MinionGuardGreetPlayer: thin ??_G member of 0x008FE818
+008fec6b	unit CAIStateGroup_MinionReactToPlayerInteraction: ctor 0x008FEC6B (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+008fec80	unit CAIStateGroup_MinionReactToPlayerInteraction: thin ??_G member of 0x008FEC6B
+008feddb	unit CAIStateGroup_MinionCuriosity: ctor 0x008FEDDB (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase)
+008feded	unit CAIStateGroup_MinionCuriosity: thin ??_G member of 0x008FEDDB

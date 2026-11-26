@@ -7,7 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 35,675 of 64,045 done (55.70%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names, and 223 vendor names libsig proved, owner 2026-11-26); 37,705 (58.87%) with the 2,030 registered best guesses (NF454 registered 1,821). Landed today:
+- **Naming:** 35,686 of 64,045 done (55.72%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names, and 223 vendor names libsig proved, owner 2026-11-26); 37,716 (58.89%) with the 2,030 registered best guesses (NF454 registered 1,821). Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);
@@ -25,7 +25,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - nf448: 50 verified stale table deletes (26 targets close); ta27 (27 /alternatename rows, q442a granted per row on the four checks; 0x00921630 / 0x008B74D0 held on check c); h1_hdr (CThingSearchTools.h PeekClassList opt-in + 48 callers); +17. **Recheck item:** five landed rows did not match when NF448 compiled them from the repo (0x0072A680, 0x00BE7D70, 0x00BE6F70, 0x00BE8920, 0x01214190; `pending/2026-11-25_nf448_handback/README.md`). **Agent cap: 2 (owner, 2026-11-25: "Decrease to 2 agents after next finishes"; NF448 was that agent and is not replaced).**
   - nf450 n1 (14 rows: 9 RESCOPE, 2 r449d header ports, 3 r449c FableWin-only destructors registered as best guesses). r450a / r450b declined (no added /DEFAULTLIB; no local model of NPlayerGui::CStatBase, which has a header) (`pending/2026-11-25_nf450_handback/`).
   - nf447 b1 (23 GameCODA rows: CSalRenderPanDelay family + SIMD ctors + 0x00C55270 re-port; 3 new headers; equiv clean outside the batch). The SIMD ctors leave the wrong `??0C3DAnimationUtil` (proven -> unverified, a correction). Disable / Pan / Hrtf families and slot-0 stand-ins queued in `pending/2026-11-25_nf447_handback/`.
-  - **Running (cap 2):** NF468 (full /D_USE_ANSI_CPP proof over every row, owner approved; it also unblocks CAIStateGroup MinionWander / CreatureGoUnderground, r473d) and NF474 (NF467 b3 rework on existing retail views, then the CInputProcess virtual lists, r467d). 18 CAIStateGroup units landed with full-size vftables (NF471-NF473).
+  - **Running (cap 2):** NF468 (full /D_USE_ANSI_CPP proof over every row, owner approved; it also unblocks CAIStateGroup MinionWander / CreatureGoUnderground, r473d) and NF475 (the 11 r467b-held CAIStateGroup units, then wave 2). 29 CAIStateGroup units landed with full-size vftables (NF471-NF473).
   - T3 holds one family line per shape and status, not per address.
 - **Open rulings:**
   - **R-NF424-2 / R-NF424-5** (120 `CActiveEntityScript<T>` `??_G`): settled. 85 pairs landed with `/d2inlS20` + the decl-only opt-in (2026-11-08 inline-control rule); 35 wait for their owners to move onto the shared header.

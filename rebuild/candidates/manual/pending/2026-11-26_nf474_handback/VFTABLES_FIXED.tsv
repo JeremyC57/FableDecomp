@@ -1,0 +1,23 @@
+name	vtable_va	old_bytes	new_bytes	retail_function_slots	batch	verdict
+??_7CAIStateGroup_MinionReactToAlert@@6B@	0x01289070	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_MinionHasInformation@@6B@	0x012890C8	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_MinionListenToStory@@6B@	0x01289180	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_ChickenBeg@@6B@	0x01289514	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_BirdGroundWander@@6B@	0x01289670	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_KidWanderNearKids@@6B@	0x01289798	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_KidHurtSelfRunToMother@@6B@	0x01289824	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_IdleAtHome@@6B@	0x01289A10	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_LookAtInterestingThings@@6B@	0x01289BBC	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_SeekPerceivedThing@@6B@	0x01289D24	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_MinionReactToNoise@@6B@	0x0128A104	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_MinionLeaveRegion@@6B@	0x0128A380	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_CreatureRangedCombatUseWillShield@@6B@	0x0128A484	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_TestTestTest@@6B@	0x0128A4DC	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_Drunk@@6B@	0x0128A9A4	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_WifeGiveYouGift@@6B@	0x0128AC48	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_OpenAndCloseShop@@6B@	0x0128AC9C	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_MinionGuardGreetPlayer@@6B@	0x0128AE20	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_AvoidRegionExit@@6B@	0x0128AFC0	4	56	14	b3r_hold	HOLD r467b
+??_7CAIStateGroup_MinionReactToPlayerInteraction@@6B@	0x0128B1B8	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_MinionCuriosity@@6B@	0x0128B2A8	4	56	14	b3r_a	ACCEPT
+??_7CAIStateGroup_MinionKidGroupTag@@6B@	0x0128B35C	4	56	14	b3r_hold	HOLD r467b

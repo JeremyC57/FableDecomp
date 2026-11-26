@@ -34,13 +34,19 @@ public:
     long          LastFrameWandered;                         // +0x18
     long          FrameInitialised;                          // +0x1c
     long          WavesWithoutCalling;                       // +0x20
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FD532 defines it here and its TU emits ??_7CAIStateGroup_MinionHasInformation@@6B@ with retail's 14 slots (vftable 0x012890C8).
+public:
+    CAIStateGroup_MinionHasInformation();                                  // 0x008FD532
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionHasInformation) == 0x24);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, LastFrameWaved) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, LastFrameWandered) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, FrameInitialised) == 0x1c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionHasInformation, WavesWithoutCalling) == 0x20);
+FABLE_STATIC_ASSERT_AT(39, sizeof(CAIStateGroup_MinionHasInformation) == 0x24);
+FABLE_STATIC_ASSERT_AT(40, offsetof(CAIStateGroup_MinionHasInformation, LastFrameWaved) == 0x14);
+FABLE_STATIC_ASSERT_AT(41, offsetof(CAIStateGroup_MinionHasInformation, LastFrameWandered) == 0x18);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CAIStateGroup_MinionHasInformation, FrameInitialised) == 0x1c);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_MinionHasInformation, WavesWithoutCalling) == 0x20);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -70,4 +76,7 @@ FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_MinionHasInformation, FrameIni
 FABLE_STATIC_ASSERT_AT(30, offsetof(CAIStateGroup_MinionHasInformation, WavesWithoutCalling) == 0x20);
 #endif // FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_VIRTUAL_MODEL
 
+#if defined(FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_VIRTUAL_MODEL)
+#error FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_MINIONHASINFORMATION_VIRTUAL_MODEL view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONHASINFORMATION_H

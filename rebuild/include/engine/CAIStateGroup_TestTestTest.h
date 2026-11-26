@@ -34,9 +34,15 @@ public:
     virtual bool IsRunnable();                                            // slot 11 0x0091EA10 ?IsRunnable@CAIStateGroup_TestTestTest@@UAE_NXZ
     virtual void Update();                                                // slot 12 0x0091F140 ?Update@CAIStateGroup_TestTestTest@@UAEXXZ
 public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FE29B defines it here and its TU emits ??_7CAIStateGroup_TestTestTest@@6B@ with retail's 14 slots (vftable 0x0128A4DC).
+public:
+    CAIStateGroup_TestTestTest();                                          // 0x008FE29B
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_TestTestTest) == 0x14);
+FABLE_STATIC_ASSERT_AT(39, sizeof(CAIStateGroup_TestTestTest) == 0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -55,5 +61,8 @@ FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_TestTestTest) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_TestTestTest, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_VIRTUAL_MODEL
 
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_CTOR) && (!defined(FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_VIRTUAL_MODEL) || defined(FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_PASS27))
+#error FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_VIRTUAL_MODEL view: define that view, and not FABLE_RETAIL_CAISTATEGROUP_TESTTESTTEST_PASS27 (which hides it)
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_TESTTESTTEST_H

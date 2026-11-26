@@ -32,9 +32,15 @@ public:
     virtual bool IsRunnable();                                            // slot 11 0x00929650 ?IsRunnable@CAIStateGroup_MinionGuardGreetPlayer@@UAE_NXZ
     virtual void Update();                                                // slot 12 0x00929820 ?Update@CAIStateGroup_MinionGuardGreetPlayer@@UAEXXZ
 public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDGREETPLAYER_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FE818 defines it here and its TU emits ??_7CAIStateGroup_MinionGuardGreetPlayer@@6B@ with retail's 14 slots (vftable 0x0128AE20).
+public:
+    CAIStateGroup_MinionGuardGreetPlayer();                                // 0x008FE818
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionGuardGreetPlayer) == 0x14);
+FABLE_STATIC_ASSERT_AT(37, sizeof(CAIStateGroup_MinionGuardGreetPlayer) == 0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -53,4 +59,7 @@ FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_MinionGuardGreetPlayer) == 0x14)
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_MinionGuardGreetPlayer, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDGREETPLAYER_VIRTUAL_MODEL
 
+#if defined(FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDGREETPLAYER_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDGREETPLAYER_VIRTUAL_MODEL)
+#error FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDGREETPLAYER_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_MINIONGUARDGREETPLAYER_VIRTUAL_MODEL view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONGUARDGREETPLAYER_H

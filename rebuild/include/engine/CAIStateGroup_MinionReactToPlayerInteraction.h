@@ -36,14 +36,20 @@ public:
     bool          WaitingForConfirmation;                    // +0x2c
     bool          DidTraderInteraction;                      // +0x2d
     unsigned char PositionPlayerWasWhenWaitingForConfirmation[0xe]; // +0x2e C3DVector
+#ifdef FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FEC6B defines it here and its TU emits ??_7CAIStateGroup_MinionReactToPlayerInteraction@@6B@ with retail's 14 slots (vftable 0x0128B1B8).
+public:
+    CAIStateGroup_MinionReactToPlayerInteraction();                        // 0x008FEC6B
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_MinionReactToPlayerInteraction) == 0x3c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToPlayerInteraction, NextReactionFrame) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToPlayerInteraction, ReactionType) == 0x28);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToPlayerInteraction, WaitingForConfirmation) == 0x2c);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToPlayerInteraction, DidTraderInteraction) == 0x2d);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_MinionReactToPlayerInteraction, PositionPlayerWasWhenWaitingForConfirmation) == 0x2e);
+FABLE_STATIC_ASSERT_AT(41, sizeof(CAIStateGroup_MinionReactToPlayerInteraction) == 0x3c);
+FABLE_STATIC_ASSERT_AT(42, offsetof(CAIStateGroup_MinionReactToPlayerInteraction, NextReactionFrame) == 0x14);
+FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_MinionReactToPlayerInteraction, ReactionType) == 0x28);
+FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_MinionReactToPlayerInteraction, WaitingForConfirmation) == 0x2c);
+FABLE_STATIC_ASSERT_AT(45, offsetof(CAIStateGroup_MinionReactToPlayerInteraction, DidTraderInteraction) == 0x2d);
+FABLE_STATIC_ASSERT_AT(46, offsetof(CAIStateGroup_MinionReactToPlayerInteraction, PositionPlayerWasWhenWaitingForConfirmation) == 0x2e);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -72,4 +78,7 @@ FABLE_STATIC_ASSERT_AT(28, offsetof(CAIStateGroup_MinionReactToPlayerInteraction
 FABLE_STATIC_ASSERT_AT(29, offsetof(CAIStateGroup_MinionReactToPlayerInteraction, PositionPlayerWasWhenWaitingForConfirmation) == 0x2e);
 #endif // FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_VIRTUAL_MODEL
 
+#if defined(FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_VIRTUAL_MODEL)
+#error FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_VIRTUAL_MODEL view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOPLAYERINTERACTION_H

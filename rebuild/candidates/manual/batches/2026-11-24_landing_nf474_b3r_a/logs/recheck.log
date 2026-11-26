@@ -1,0 +1,58 @@
+addr       parity           behav  name
+008fd532   RELOCATION_MATCH PASS   CAIStateGroup_MinionHasInformation
+008fd5ce   RELOCATION_MATCH PASS   CAIStateGroup_MinionListenToStory
+008fd7c7   RELOCATION_MATCH PASS   CAIStateGroup_ChickenBeg
+008fdc7c   RELOCATION_MATCH PASS   CAIStateGroup_LookAtInterestingThings
+008fdde3   RELOCATION_MATCH PASS   CAIStateGroup_SeekPerceivedThing
+008fe272   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombatUseWillShield
+008fe29b   RELOCATION_MATCH PASS   CAIStateGroup_TestTestTest
+008fe750   RELOCATION_MATCH PASS   CAIStateGroup_OpenAndCloseShop
+008fe818   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardGreetPlayer
+008fec6b   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToPlayerInteraction
+008fec80   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionReactToPlayerInteraction@@UAEPAXI@Z (catalog CAIStateGroup_MinionReactToPlayerInteraction::`scalar_deleting_destructor'; names another function)
+008fec80   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008feddb   RELOCATION_MATCH PASS   CAIStateGroup_MinionCuriosity
+008feded   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionCuriosity@@UAEPAXI@Z (catalog CAIStateGroup_MinionCuriosity::`scalar_deleting_destructor'; names another function)
+008feded   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff1dc   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionHasInformation@@UAEPAXI@Z (catalog CAIStateGroup_MinionHasInformation::`scalar_deleting_destructor'; names another function)
+008ff1dc   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff33e   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionListenToStory@@UAEPAXI@Z (catalog CAIStateGroup_MinionListenToStory::`scalar_deleting_destructor'; names another function)
+008ff33e   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff7c4   WARN STANDIN_LEAF ??_GCAIStateGroup_ChickenBeg@@UAEPAXI@Z (catalog CAIStateGroup_ChickenBeg::`scalar_deleting_destructor'; names another function)
+008ff7c4   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009000a0   WARN STANDIN_LEAF ??_GCAIStateGroup_LookAtInterestingThings@@UAEPAXI@Z (catalog CAIStateGroup_LookAtInterestingThings::`scalar_deleting_destructor'; names another function)
+009000a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009003f6   WARN STANDIN_LEAF ??_GCAIStateGroup_SeekPerceivedThing@@UAEPAXI@Z (catalog CAIStateGroup_SeekPerceivedThing::`scalar_deleting_destructor'; names another function)
+009003f6   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900e90   WARN STANDIN_LEAF ??_GCAIStateGroup_CreatureRangedCombatUseWillShield@@UAEPAXI@Z (catalog CAIStateGroup_CreatureRangedCombatUseWillShield::`scalar_deleting_destructor'; names another function)
+00900e90   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900ed0   WARN STANDIN_LEAF ??_GCAIStateGroup_TestTestTest@@UAEPAXI@Z (catalog CAIStateGroup_TestTestTest::`scalar_deleting_destructor'; names another function)
+00900ed0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901c37   WARN STANDIN_LEAF ??_GCAIStateGroup_OpenAndCloseShop@@UAEPAXI@Z (catalog CAIStateGroup_OpenAndCloseShop::`scalar_deleting_destructor'; names another function)
+00901c37   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901d37   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionGuardGreetPlayer@@UAEPAXI@Z (catalog CAIStateGroup_MinionGuardGreetPlayer::`scalar_deleting_destructor'; names another function)
+00901d37   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 22
+  008fd532 RELOCATION_MATCH CAIStateGroup_MinionHasInformation::??0CAIStateGroup_MinionHasInformation@@QAE@XZ
+  008fd5ce RELOCATION_MATCH CAIStateGroup_MinionListenToStory::??0CAIStateGroup_MinionListenToStory@@QAE@XZ
+  008fd7c7 RELOCATION_MATCH CAIStateGroup_ChickenBeg::??0CAIStateGroup_ChickenBeg@@QAE@XZ
+  008fdc7c RELOCATION_MATCH CAIStateGroup_LookAtInterestingThings::??0CAIStateGroup_LookAtInterestingThings@@QAE@XZ
+  008fdde3 RELOCATION_MATCH CAIStateGroup_SeekPerceivedThing::??0CAIStateGroup_SeekPerceivedThing@@QAE@XZ
+  008fe272 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatUseWillShield::??0CAIStateGroup_CreatureRangedCombatUseWillShield@@QAE@XZ
+  008fe29b RELOCATION_MATCH CAIStateGroup_TestTestTest::??0CAIStateGroup_TestTestTest@@QAE@XZ
+  008fe750 RELOCATION_MATCH CAIStateGroup_OpenAndCloseShop::??0CAIStateGroup_OpenAndCloseShop@@QAE@XZ
+  008fe818 RELOCATION_MATCH CAIStateGroup_MinionGuardGreetPlayer::??0CAIStateGroup_MinionGuardGreetPlayer@@QAE@XZ
+  008fec6b RELOCATION_MATCH CAIStateGroup_MinionReactToPlayerInteraction::??0CAIStateGroup_MinionReactToPlayerInteraction@@QAE@XZ
+  008fec80 RELOCATION_MATCH CAIStateGroup_MinionReactToPlayerInteraction::??_GCAIStateGroup_MinionReactToPlayerInteraction@@UAEPAXI@Z
+  008feddb RELOCATION_MATCH CAIStateGroup_MinionCuriosity::??0CAIStateGroup_MinionCuriosity@@QAE@XZ
+  008feded RELOCATION_MATCH CAIStateGroup_MinionCuriosity::??_GCAIStateGroup_MinionCuriosity@@UAEPAXI@Z
+  008ff1dc RELOCATION_MATCH CAIStateGroup_MinionHasInformation::??_GCAIStateGroup_MinionHasInformation@@UAEPAXI@Z
+  008ff33e RELOCATION_MATCH CAIStateGroup_MinionListenToStory::??_GCAIStateGroup_MinionListenToStory@@UAEPAXI@Z
+  008ff7c4 RELOCATION_MATCH CAIStateGroup_ChickenBeg::??_GCAIStateGroup_ChickenBeg@@UAEPAXI@Z
+  009000a0 RELOCATION_MATCH CAIStateGroup_LookAtInterestingThings::??_GCAIStateGroup_LookAtInterestingThings@@UAEPAXI@Z
+  009003f6 RELOCATION_MATCH CAIStateGroup_SeekPerceivedThing::??_GCAIStateGroup_SeekPerceivedThing@@UAEPAXI@Z
+  00900e90 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatUseWillShield::??_GCAIStateGroup_CreatureRangedCombatUseWillShield@@UAEPAXI@Z
+  00900ed0 RELOCATION_MATCH CAIStateGroup_TestTestTest::??_GCAIStateGroup_TestTestTest@@UAEPAXI@Z
+  00901c37 RELOCATION_MATCH CAIStateGroup_OpenAndCloseShop::??_GCAIStateGroup_OpenAndCloseShop@@UAEPAXI@Z
+  00901d37 RELOCATION_MATCH CAIStateGroup_MinionGuardGreetPlayer::??_GCAIStateGroup_MinionGuardGreetPlayer@@UAEPAXI@Z

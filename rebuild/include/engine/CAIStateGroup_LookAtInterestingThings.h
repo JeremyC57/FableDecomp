@@ -61,10 +61,16 @@ protected:
     virtual void InitStateGroup(const CWorld&, CThingAICreature&);        // slot 13 0x009190F0 ?InitStateGroup@CAIStateGroup_LookAtInterestingThings@@MAEXABVCWorld@@AAVCThingAICreature@@@Z
 public:
     long          FrameToLook;                               // +0x14
+#ifdef FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FDC7C defines it here and its TU emits ??_7CAIStateGroup_LookAtInterestingThings@@6B@ with retail's 14 slots (vftable 0x01289BBC).
+public:
+    CAIStateGroup_LookAtInterestingThings();                               // 0x008FDC7C
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_LookAtInterestingThings) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
+FABLE_STATIC_ASSERT_AT(66, sizeof(CAIStateGroup_LookAtInterestingThings) == 0x18);
+FABLE_STATIC_ASSERT_AT(67, offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -88,5 +94,8 @@ FABLE_STATIC_ASSERT_AT(48, offsetof(CAIStateGroup_LookAtInterestingThings, __vft
 FABLE_STATIC_ASSERT_AT(49, offsetof(CAIStateGroup_LookAtInterestingThings, FrameToLook) == 0x14);
 #endif // FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_VIRTUAL_MODEL
 
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_CTOR) && (!defined(FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_VIRTUAL_MODEL) || defined(FABLE_RETAIL_FIND_INTERESTING))
+#error FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_VIRTUAL_MODEL view: define that view, and not FABLE_RETAIL_FIND_INTERESTING (which hides it)
 #endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_LOOKATINTERESTINGTHINGS_H

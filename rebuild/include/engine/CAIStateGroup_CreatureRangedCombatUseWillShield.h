@@ -28,9 +28,15 @@ protected:
     virtual bool IsRunnable();                                            // slot 11 0x0091F050 ?IsRunnable@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAE_NXZ
     virtual void Update();                                                // slot 12 0x0091F0D0 ?Update@CAIStateGroup_CreatureRangedCombatUseWillShield@@MAEXXZ
 public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FE272 defines it here and its TU emits ??_7CAIStateGroup_CreatureRangedCombatUseWillShield@@6B@ with retail's 14 slots (vftable 0x0128A484).
+public:
+    CAIStateGroup_CreatureRangedCombatUseWillShield();                     // 0x008FE272
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_CreatureRangedCombatUseWillShield) == 0x14);
+FABLE_STATIC_ASSERT_AT(33, sizeof(CAIStateGroup_CreatureRangedCombatUseWillShield) == 0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -49,4 +55,7 @@ FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_CreatureRangedCombatUseWillShiel
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_CreatureRangedCombatUseWillShield, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_VIRTUAL_MODEL
 
+#if defined(FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_VIRTUAL_MODEL)
+#error FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_VIRTUAL_MODEL view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_CREATURERANGEDCOMBATUSEWILLSHIELD_H

@@ -22,8 +22,14 @@ private:
     void CapturePerceivedThing();
     void RunToPerceivedThingPosition();                                  // 0x0091B3A0
     long FrameLastCaptured;                                              // +0x14
+#ifdef FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FDDE3 defines it here and its TU emits ??_7CAIStateGroup_SeekPerceivedThing@@6B@ with retail's 14 slots (vftable 0x01289D24).
+public:
+    CAIStateGroup_SeekPerceivedThing();                                    // 0x008FDDE3
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_SeekPerceivedThing) == 0x18);
+FABLE_STATIC_ASSERT_AT(26, sizeof(CAIStateGroup_SeekPerceivedThing) == 0x18);
 #else
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -50,4 +56,7 @@ FABLE_STATIC_ASSERT_AT(43, offsetof(CAIStateGroup_SeekPerceivedThing, __vftable)
 FABLE_STATIC_ASSERT_AT(44, offsetof(CAIStateGroup_SeekPerceivedThing, FrameLastCaptured) == 0x14);
 
 #endif // FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING
+#if defined(FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING)
+#error FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_SEEKPERCEIVEDTHING view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_SEEKPERCEIVEDTHING_H

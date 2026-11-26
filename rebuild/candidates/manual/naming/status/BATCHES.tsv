@@ -6873,12 +6873,10 @@ T3	emit ??_GCAIStateGroup_GoToBed@@UAEPAXI@Z	(none)	1	1		008feb97
 T3	emit ??_ECAIStateGroup_MinionSleep@@UAEPAXI@Z	(none)	1	1		008febc5
 T3	emit ??_ECAIStateGroup_MinionWorkInInn@@UAEPAXI@Z	(none)	1	1		008fec05
 T3	emit ??_ECAIStateGroup_MinionFindPersonalSpace@@UAEPAXI@Z	(none)	1	1		008fec45
-T3	emit ??_ECAIStateGroup_MinionReactToPlayerInteraction@@UAEPAXI@Z	(none)	1	1		008fec80
 T3	emit ??_ECAIStateGroup_MinionReactToCriminal@@UAEPAXI@Z	(none)	1	1		008fecd0
 T3	emit ??_GCAIStateGroup_MinionGuardReactToCriminal@@UAEPAXI@Z	(none)	1	1		008fed2b
 T3	emit ??_ECAIStateGroup_MinionGuardReactToBribe@@UAEPAXI@Z	(none)	1	1		008fed75
 T3	emit ??_ECAIStateGroup_MinionGuardFollowPlayer@@UAEPAXI@Z	(none)	1	1		008fedbf
-T3	emit ??_GCAIStateGroup_MinionCuriosity@@UAEPAXI@Z	(none)	1	1		008feded
 T3	emit ??_GCAIStateGroup_MinionGossip@@UAEPAXI@Z	(none)	1	1		008fee2d
 T3	emit ??_GCAIStateGroup_BanditGossip@@UAEPAXI@Z	(none)	1	1		008fee6d
 T3	emit ??_ECAIStateGroup_MinionMotherProtectFamily@@UAEPAXI@Z	(none)	1	1		008feead
@@ -6892,13 +6890,11 @@ T3	emit ??_ECAIStateGroup_MinionReactToCorpse@@UAEPAXI@Z	(none)	1	1		008ff0be
 T3	emit ??_ECAIStateGroup_MinionReactToUnconsciousPerson@@UAEPAXI@Z	(none)	1	1		008ff108
 T3	emit ??_GCAIStateGroup_MinionReactToEnemy@@UAEPAXI@Z	(none)	1	1		008ff152
 T3	emit ??_ECAIStateGroup_MinionReactToAlert@@UAEPAXI@Z	(none)	1	1		008ff19c
-T3	emit ??_GCAIStateGroup_MinionHasInformation@@UAEPAXI@Z	(none)	1	1		008ff1dc
 T3	emit ??_GCAIStateGroup_UsesSeat@@UAEPAXI@Z	(none)	1	1		008ff22b
 T3	emit ??_ECAIStateGroup_MinionSitOnSeatBase@@UAEPAXI@Z	(none)	1	1		008ff271
 T3	emit ??_GCAIStateGroup_MinionSitAtWork@@UAEPAXI@Z	(none)	1	1		008ff29f
 T3	emit ??_GCAIStateGroup_MinionSitAtInn@@UAEPAXI@Z	(none)	1	1		008ff2d0
 T3	emit ??_GCAIStateGroup_MinionSitAtSchool@@UAEPAXI@Z	(none)	1	1		008ff2fe
-T3	emit ??_ECAIStateGroup_MinionListenToStory@@UAEPAXI@Z	(none)	1	1		008ff33e
 T3	emit ??_ECAIStateGroup_MinionSitAtHome@@UAEPAXI@Z	(none)	1	1		008ff36f
 T3	emit ??_GCAIStateGroup_SitRoundCampfire@@UAEPAXI@Z	(none)	1	1		008ff3b2
 T3	emit ??_ECAIStateGroup_MinionGuardHeardYellForHelp@@UAEPAXI@Z	(none)	1	1		008ff3fc
@@ -6910,7 +6906,6 @@ T3	emit ??_GCAIStateGroup_SeekScriptTarget@@UAEPAXI@Z	(none)	1	1		008ff562
 T3	emit ??_GCAIStateGroup_StealthSeekEnemy@@UAEPAXI@Z	(none)	1	1		008ff5b0
 T3	emit ??_ECAIStateGroup_NonVillageGuardPatrol@@UAEPAXI@Z	(none)	1	1		008ff5fa
 T3	emit ??_GCAIStateGroup_EnemyCreatureBase@@UAEPAXI@Z	(none)	1	1		008ff744
-T3	emit ??_GCAIStateGroup_ChickenBeg@@UAEPAXI@Z	(none)	1	1		008ff7c4
 T3	emit ??_ECAIStateGroup_ButterflyWander@@UAEPAXI@Z	(none)	1	1		008ff7f2
 T3	emit ??_ECAIStateGroup_FireflyWander@@UAEPAXI@Z	(none)	1	1		008ff832
 T3	emit ??_GCAIStateGroup_SmallBirdWander@@UAEPAXI@Z	(none)	1	1		008ff872
@@ -6946,7 +6941,6 @@ T3	emit ??_GCAIStateGroup_SitForMeal@@UAEPAXI@Z	(none)	1	1		008fff98
 T3	emit ??_ECAIStateGroup_PrepareMeal@@UAEPAXI@Z	(none)	1	1		008fffe2
 T3	emit ??_ECAIStateGroup_LightHomeCandle@@UAEPAXI@Z	(none)	1	1		0090002f
 T3	emit ??_ECAIStateGroup_LightWorkCandle@@UAEPAXI@Z	(none)	1	1		00900060
-T3	emit ??_GCAIStateGroup_LookAtInterestingThings@@UAEPAXI@Z	(none)	1	1		009000a0
 T3	emit ?AllowPriorityOverlap@CAIStateGroup_WanderAroundShops@@UAE_NXZ	(none)	1	1		009000ef
 T3	emit ??_ECAIStateGroup_WanderAroundShops@@UAEPAXI@Z	(none)	1	1		009000f2
 T3	emit ??_GCAIStateGroup_StayNearFoodHall@@UAEPAXI@Z	(none)	1	1		0090014d
@@ -6958,7 +6952,6 @@ T3	emit ??_ECAIStateGroup_HandyMan@@UAEPAXI@Z	(none)	1	1		00900313
 T3	emit ??_GCAIStateGroup_GameMaster@@UAEPAXI@Z	(none)	1	1		00900341
 T3	emit ??_GCAIStateGroup_TrollBase@@UAEPAXI@Z	(none)	1	1		00900384
 T3	emit ??_ECAIStateGroup_EarthTroll@@UAEPAXI@Z	(none)	1	1		009003b6
-T3	emit ??_GCAIStateGroup_SeekPerceivedThing@@UAEPAXI@Z	(none)	1	1		009003f6
 T3	emit ??_GCAIStateGroup_FollowPlayer@@UAEPAXI@Z	(none)	1	1		0090043a
 T3	emit ??_GCAIStateGroup_BalverineCornered@@UAEPAXI@Z	(none)	1	1		00900517
 T3	emit ??_GCAIStateGroup_BalverineJumpAtFleeingEnemy@@UAEPAXI@Z	(none)	1	1		00900576
@@ -6991,8 +6984,6 @@ T3	emit ??_ECAIStateGroup_HoverAttackArea@@UAEPAXI@Z	(none)	1	1		00900d41
 T3	emit ??_ECAIStateGroup_HoverHornetQueenTakeDamage@@UAEPAXI@Z	(none)	1	1		00900d7c
 T3	emit ??_GCAIStateGroup_MinionLeaveRegion@@UAEPAXI@Z	(none)	1	1		00900dc2
 T3	emit ??_GCAIStateGroup_CreatureRangedCombat2@@UAEPAXI@Z	(none)	1	1		00900e46
-T3	emit ??_ECAIStateGroup_CreatureRangedCombatUseWillShield@@UAEPAXI@Z	(none)	1	1		00900e90
-T3	emit ??_GCAIStateGroup_TestTestTest@@UAEPAXI@Z	(none)	1	1		00900ed0
 T3	emit ??_ECAIStateGroup_RangedCombatUsePreferredFirePoint@@UAEPAXI@Z	(none)	1	1		00900f27
 T3	emit ??_GCAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@UAEPAXI@Z	(none)	1	1		00900f86
 T3	emit ??_GCAIStateGroup_ReactToDeadLeader@@UAEPAXI@Z	(none)	1	1		00900fd4
@@ -7028,11 +7019,9 @@ T3	emit ??_GCAIStateGroup_ServeFoodAtHome@@UAEPAXI@Z	(none)	1	1		00901a2d
 T3	emit ??_ECAIStateGroup_ServeFoodAtTavern@@UAEPAXI@Z	(none)	1	1		00901a6d
 T3	emit ??_GCAIStateGroup_ScreamerPursueTarget@@UAEPAXI@Z	(none)	1	1		00901aad
 T3	emit ??_ECAIStateGroup_WifeGiveYouGift@@UAEPAXI@Z	(none)	1	1		00901bf7
-T3	emit ??_GCAIStateGroup_OpenAndCloseShop@@UAEPAXI@Z	(none)	1	1		00901c37
 T3	emit ??_GCAIStateGroup_SetupWares@@UAEPAXI@Z	(none)	1	1		00901c77
 T3	emit ??_GCAIStateGroup_BanditPlayDice@@UAEPAXI@Z	(none)	1	1		00901cb7
 T3	emit ??_GCAIStateGroup_BanditPlot@@UAEPAXI@Z	(none)	1	1		00901cf7
-T3	emit ??_GCAIStateGroup_MinionGuardGreetPlayer@@UAEPAXI@Z	(none)	1	1		00901d37
 T3	emit ??_ECAIStateGroup_ApprenticeHero@@UAEPAXI@Z	(none)	1	1		00901da9
 T3	emit ??_ECAIStateGroup_SkillPractice@@UAEPAXI@Z	(none)	1	1		00901de9
 T3	emit ??_GCAIStateGroup_OnHeroPush@@UAEPAXI@Z	(none)	1	1		00901e29

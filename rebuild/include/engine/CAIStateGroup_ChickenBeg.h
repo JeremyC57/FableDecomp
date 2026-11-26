@@ -27,9 +27,15 @@ public:
     virtual bool IsRunnable();                                            // slot 11 0x00911EF0 ?IsRunnable@CAIStateGroup_ChickenBeg@@UAE_NXZ
     virtual void Update();                                                // slot 12 0x00911F00 ?Update@CAIStateGroup_ChickenBeg@@UAEXXZ
 public:
+#ifdef FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_CTOR
+    // Opt-in (NF474, r467f rework of the r459a vftable port): the default constructor of this retail view, declaration only, so the
+    // ctor row 0x008FD7C7 defines it here and its TU emits ??_7CAIStateGroup_ChickenBeg@@6B@ with retail's 14 slots (vftable 0x01289514).
+public:
+    CAIStateGroup_ChickenBeg();                                            // 0x008FD7C7
+#endif
 };
 #pragma pack(pop)
-FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_ChickenBeg) == 0x14);
+FABLE_STATIC_ASSERT_AT(32, sizeof(CAIStateGroup_ChickenBeg) == 0x14);
 #else
 #pragma pack(push, 1)
 #ifdef FABLE_RETAIL_CAISTATEGROUP_GETNAME_ALLOC
@@ -48,4 +54,7 @@ FABLE_STATIC_ASSERT_AT(18, sizeof(CAIStateGroup_ChickenBeg) == 0x14);
 FABLE_STATIC_ASSERT_AT(19, offsetof(CAIStateGroup_ChickenBeg, __vftable) == 0x0);
 #endif // FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL
 
+#if defined(FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_CTOR) && !defined(FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL)
+#error FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_CTOR declares the constructor inside the FABLE_RETAIL_CAISTATEGROUP_CHICKENBEG_VIRTUAL_MODEL view: define that view too
+#endif
 #endif // FABLE_ENGINE_CAISTATEGROUP_CHICKENBEG_H
