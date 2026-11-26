@@ -1,4 +1,9 @@
 // CAIStateGroup_MinionKidCalledToMother::Update() -- while the mother's "call home" message is still held and the hero lives: when the kid is within 1.2 units (2D) of its living mother it looks at the hero, otherwise it walks to the mother (retrying while the move is in progress); a vanished message or mother terminates the group
+// Leaf: ?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ
+// NF473 (T3 nf322 caller respell, unit with 0x0090EE20 / 0x0090EEB0 and ctor 0x008FD459): the call at 0x0090EECF -> 0x0090EE20 names the PDB spelling
+//   ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ (private, const CMessageEvent* return; Ego_r.pdb + FableWin.pdb), was the
+//   public non-const-return QAEPAV spelling; the held message is therefore CIntelligentPointer<const CMessageEvent>, the type of retail's vftable 0x0128B0C0
+//   (RTTI .?AV?$CIntelligentPointer@$$CBVCMessageEvent@@@@; was <CMessageEvent>, ??_7?$CIntelligentPointer@VCMessageEvent@@@@6B@). Same bytes.
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090EEC0, length 515 bytes (+ int3 padding), plain `ret` (virtual).
@@ -80,13 +85,15 @@ class CAIStateGroupBase { public:
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 struct CAIStateGroup_MinionKidCalledToMother : CAIStateGroupBase {
-    CMessageEvent* FindCallHomeEvent();         // 0x0090EE20
+private:
+    const CMessageEvent* FindCallHomeEvent();   // 0x0090EE20
+public:
     virtual void Update();
 };
 
 void CAIStateGroup_MinionKidCalledToMother::Update()
 {
-    CIntelligentPointer<CMessageEvent> callHome(FindCallHomeEvent());
+    CIntelligentPointer<const CMessageEvent> callHome(FindCallHomeEvent());
     if (((CThing*)callHome.GetPItem()) == 0)
         return;
     long result = 3;

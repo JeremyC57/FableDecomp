@@ -15686,7 +15686,7 @@ address	symbol	status	leaf_given
 008feef7	?CAIStateGroup_MinionKidAnnoy_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008fef1d	??0CAIStateGroup_MinionKidGroupTag@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_MinionKidGroupTag@
 008fef2f	?CAIStateGroup_MinionKidGroupTag_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-008fef6f	?CAIStateGroup_MinionKidCalledToMother_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+008fef6f	??_GCAIStateGroup_MinionKidCalledToMother@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008fef8b	??0CAIStateGroup_PerformAction@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_PerformAction@
 008fef9d	?CAIStateGroup_PerformAction_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008fefdd	?CAIStateGroup_MinionFaceHero_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -15725,7 +15725,7 @@ address	symbol	status	leaf_given
 008ff644	??_GCAIStateGroup_Guard@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff684	??_GCAIStateGroup_Wander@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff6c4	??_GCAIStateGroup_ChickenWander@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-008ff704	?CAIStateGroup_WanderAroundInitialPos_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+008ff704	??_GCAIStateGroup_WanderAroundInitialPos@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff744	?CAIStateGroup_EnemyCreatureBase_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff784	??_GCAIStateGroup_ChickenPanic@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff7c4	?CAIStateGroup_ChickenBeg_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -15789,7 +15789,7 @@ address	symbol	status	leaf_given
 009003f6	?CAIStateGroup_SeekPerceivedThing_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00900436	?GetStateGroupType@CAIStateGroup_FollowPlayer@@UBE?AW4EAIStateGroupType@@XZ	MATCH	?GetStateGroupType@CAIStateGroup_FollowPlayer@@UBE?AW4EAIStateGroupType@@XZ
 0090043a	?CAIStateGroup_FollowPlayer_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00900484	?CAIStateGroup_StandStill_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00900484	??_GCAIStateGroup_StandStill@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 009004c4	??_GCAIStateGroup_BalverineWander@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00900513	?GetStateGroupType@CAIStateGroup_BalverineCornered@@MBE?AW4EAIStateGroupType@@XZ	MATCH	?GetStateGroupType@CAIStateGroup_BalverineCornered@@MBE?AW4EAIStateGroupType@@XZ
 00900517	?CAIStateGroup_BalverineCornered_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -15918,7 +15918,7 @@ address	symbol	status	leaf_given
 009018ef	?GetStateGroupType@CAIStateGroup_Thunder@@UBE?AW4EAIStateGroupType@@XZ	MATCH	?GetStateGroupType@CAIStateGroup_Thunder@@UBE?AW4EAIStateGroupType@@XZ
 009018f3	?CAIStateGroup_Thunder_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0090190f	??1CAggregate_0090190f@@QAE@XZ	RELOCATION_MATCH	??1CAggregate_0090190f@
-0090194e	?CAIStateGroup_Freeze_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+0090194e	??_GCAIStateGroup_Freeze@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0090198e	?CAIStateGroup_Drunk_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 009019ce	?CAIStateGroup_EatAtTable_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 009019fc	?CAIStateGroup_EatAtTavern_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -15928,9 +15928,9 @@ address	symbol	status	leaf_given
 00901a6d	?CAIStateGroup_ServeFoodAtTavern_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00901aad	?CAIStateGroup_ScreamerPursueTarget_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00901af7	??_GCAIStateGroup_KrakenAttack@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00901b37	?CAIStateGroup_KrakenTentacleIdle_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00901b77	?CAIStateGroup_KrakenTentacleRise_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00901bb7	?CAIStateGroup_KrakenTentacleAttack_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00901b37	??_GCAIStateGroup_KrakenTentacleIdle@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00901b77	??_GCAIStateGroup_KrakenTentacleRise@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00901bb7	??_GCAIStateGroup_KrakenTentacleAttack@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00901bf7	?CAIStateGroup_WifeGiveYouGift_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00901c37	?CAIStateGroup_OpenAndCloseShop_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00901c77	?CAIStateGroup_SetupWares_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
@@ -16223,7 +16223,7 @@ address	symbol	status	leaf_given
 0090e5b0	?GetTimeToInitiate@CAIStateGroup_BanditGossip@@MBEJXZ	MATCH	?GetTimeToInitiate@CAIStateGroup_BanditGossip@@MBEJXZ
 0090e5c0	?GetTimeToRespond@CAIStateGroup_BanditGossip@@MBEJXZ	MATCH	?GetTimeToRespond@CAIStateGroup_BanditGossip@@MBEJXZ
 0090ed40	??0?$CIntelligentPointer@$$CBVCMessageEvent@@@@QAE@PBVCMessageEvent@@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
-0090eeb0	?IsRunnable@CAIStateGroup_MinionKidCalledToMother_Methods@@QAE_NXZ	RELOCATION_MATCH	IsRunnable
+0090eeb0	?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ	RELOCATION_MATCH	IsRunnable
 0090eec0	?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ	RELOCATION_MATCH	Update
 0090f0d0	?Initialise@CAIStateGroup_MinionReactToAlert@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 0090f1c0	?Update@CAIStateGroup_MinionReactToAlert@@UAEXXZ	RELOCATION_MATCH	Update
@@ -16342,7 +16342,7 @@ address	symbol	status	leaf_given
 0091b8f0	?LinkedList_InitializeTiny@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	LinkedList_InitializeTiny
 0091b910	?SortTreeRecursively_00436900@@YIXPAUTreeList@@@Z	RELOCATION_MATCH	SortTreeRecursively
 0091b990	?LinkedList_InitializeTiny@@YIPAPAXPAPAXPAX1@Z	RELOCATION_MATCH	LinkedList_InitializeTiny
-0091bcf0	?Update@CAIStateGroup_StandStill@@QAEXXZ	RELOCATION_MATCH	Update
+0091bcf0	?Update@CAIStateGroup_StandStill@@UAEXXZ	RELOCATION_MATCH	Update
 0091bd10	?Update@CAIStateGroup_BalverineWander@@UAEXXZ	RELOCATION_MATCH	Update
 0091c080	?Cleanup@CAIStateGroupWithBuilding_0091c080@@QAEXXZ	RELOCATION_MATCH	ClearReadyToAttackFlags
 0091cc90	?Initialise@CAIStateGroup_MinionReactToNoise_Methods@@QAEXXZ	RELOCATION_MATCH	Initialise
@@ -16385,8 +16385,8 @@ address	symbol	status	leaf_given
 00921630	?IsRunnable@CAIStateGroup_MinionWalkToMarker@@MAE_NXZ	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_MinionWalkToMarker@@MAE_NXZ
 00921870	?Cleanup@CAIStateGroup_MinionFollowThing@@MAEXXZ	RELOCATION_MATCH	?Cleanup@CAIStateGroup_MinionFollowThing@@MAEXXZ
 009223a0	??$GetPBestThing@V?$CFilter_Bind3@VCThingFilter_IsNot@@V1@VCThingFilter_HasScriptName@@@@VCThingCompare_Nearest@@VCThing@@@CThingSearchToolsMethods@@QAE_NABV?$CFilter_Bind3@VCThingFilter_IsNot@@V1@VCThingFilter_HasScriptName@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z	RELOCATION_MATCH	GetPBestThing
-009224e0	?IsRunnable@CAIStateGroup_Freeze@@QAEEXZ	RELOCATION_MATCH	IsRunnable
-009224f0	?Update@CAIStateGroup_Freeze@@QAEXXZ	RELOCATION_MATCH	Update
+009224e0	?IsRunnable@CAIStateGroup_Freeze@@UAE_NXZ	RELOCATION_MATCH	IsRunnable
+009224f0	?Update@CAIStateGroup_Freeze@@UAEXXZ	RELOCATION_MATCH	Update
 00922600	?IsRunnable@CAIStateGroup_Drunk@@UAE_NXZ	RELOCATION_MATCH	IsRunnable
 009226b0	?IsStillValid@CAIStateGroup_Drunk@@UBE_NXZ	RELOCATION_MATCH	IsStillValid
 00922750	?TalkToSelfUpdate@CAIStateGroup_Drunk@@AAEXXZ	RELOCATION_MATCH	?TalkToSelfUpdate@CAIStateGroup_Drunk@@AAEXXZ
@@ -16423,9 +16423,9 @@ address	symbol	status	leaf_given
 00924880	?FinishAction@CCreatureAction_KrakenLowPoseInto@@UAEXXZ	RELOCATION_MATCH	?FinishAction@
 00924a90	?FinishAction@CCreatureAction_KrakenHighAttackInto@@UAEXXZ	RELOCATION_MATCH	?FinishAction@
 00924b40	?FinishAction@CCreatureAction_KrakenRoarInto@@UAEXXZ	RELOCATION_MATCH	?FinishAction@
-009250f0	?Update@CAIStateGroup_KrakenTentacleIdle@@QAEXXZ	RELOCATION_MATCH	Update
-00925170	?Update@CAIStateGroup_KrakenTentacleRise@@QAEXXZ	RELOCATION_MATCH	Update
-009251e0	?Update@CAIStateGroup_KrakenTentacleAttack@@QAEXXZ	RELOCATION_MATCH	Update
+009250f0	?Update@CAIStateGroup_KrakenTentacleIdle@@MAEXXZ	RELOCATION_MATCH	Update
+00925170	?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ	RELOCATION_MATCH	Update
+009251e0	?Update@CAIStateGroup_KrakenTentacleAttack@@MAEXXZ	RELOCATION_MATCH	Update
 00925250	??0CCreatureAction_TentacleRise@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleRise@
 00925290	?IsUsingAnimationMovement@CCreatureAction_TentacleRise@@UBE_NXZ	MATCH	?IsUsingAnimationMovement@CCreatureAction_TentacleRise@@UBE_NXZ
 009252c0	??0CCreatureAction_TentacleStrikeInto@@QAE@AAVCThingCreatureBase@@@Z	RELOCATION_MATCH	??0CCreatureAction_TentacleStrikeInto@
@@ -28210,3 +28210,5 @@ address	symbol	status	leaf_given
 0090010e	??1CAIStateGroup_WanderAroundShops@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_WanderAroundShops@@UAE@XZ
 008fecec	??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ
 00900533	??1CAIStateGroup_BalverineCornered@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_BalverineCornered@@UAE@XZ
+0090ee20	?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ	RELOCATION_MATCH	?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ
+00911a00	?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ

@@ -1,0 +1,4 @@
+source	address	unit	reason
+nf319	0x0090EEB0	port	0090eeb0 skipped-port ?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ census (NF299 Q4 form, evidence/flat_census.tsv; 1-in-10 sample opened, NOTES): engine/<X>.h has only the flat model (`void* __vftable` mem
+nf322	0x0090EEB0	port	0090eeb0 skipped-port ?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ callee port: the alias declares FindCallHomeEvent (public, non-const return) where both PDBs have ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEP
+nF325	0x0090EEB0	port	0090eeb0 skipped-port ?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ NF325 order 9 (carry-over, untouched): a body / callee / other-class port that NF322 rulings Q1-Q3 do not cover; NF322 reason: callee port: t

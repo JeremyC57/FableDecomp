@@ -1,0 +1,29 @@
+address	unit
+008fde1b	unit CAIStateGroup_StandStill: ctor 0x008FDE1B (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+00900484	unit CAIStateGroup_StandStill: thin ??_G member of 0x008FDE1B (NF471 b4 text unchanged)
+0091bcf0	unit CAIStateGroup_StandStill: slot-target / caller respell
+008fd459	unit CAIStateGroup_MinionKidCalledToMother: ctor 0x008FD459 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+008fef6f	unit CAIStateGroup_MinionKidCalledToMother: thin ??_G member of 0x008FD459 (NF471 b4 text unchanged)
+0090eeb0	unit CAIStateGroup_MinionKidCalledToMother: slot-target / caller respell
+0090ee20	unit CAIStateGroup_MinionKidCalledToMother: slot-target / caller respell
+0090eec0	unit CAIStateGroup_MinionKidCalledToMother: slot-target / caller respell
+009009ea	unit CAIStateGroup_MinionKidCalledToMother: slot-target / caller respell
+008fd757	unit CAIStateGroup_WanderAroundInitialPos: ctor 0x008FD757 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+008ff704	unit CAIStateGroup_WanderAroundInitialPos: thin ??_G member of 0x008FD757 (NF471 b4 text unchanged)
+00911a00	unit CAIStateGroup_WanderAroundInitialPos: slot-target / caller respell
+008fe30c	unit CAIStateGroup_CreatureGoUnderground: ctor 0x008FE30C (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+0090101e	unit CAIStateGroup_CreatureGoUnderground: thin ??_G member of 0x008FE30C (NF471 b4 text unchanged)
+00920710	unit CAIStateGroup_CreatureGoUnderground: slot-target / caller respell
+008fe593	unit CAIStateGroup_Freeze: ctor 0x008FE593 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+0090194e	unit CAIStateGroup_Freeze: thin ??_G member of 0x008FE593 (NF471 b4 text unchanged)
+009224e0	unit CAIStateGroup_Freeze: slot-target / caller respell
+009224f0	unit CAIStateGroup_Freeze: slot-target / caller respell
+008fe6bc	unit CAIStateGroup_KrakenTentacleIdle: ctor 0x008FE6BC (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+00901b37	unit CAIStateGroup_KrakenTentacleIdle: thin ??_G member of 0x008FE6BC (NF471 b4 text unchanged)
+009250f0	unit CAIStateGroup_KrakenTentacleIdle: slot-target / caller respell
+008fe6e1	unit CAIStateGroup_KrakenTentacleRise: ctor 0x008FE6E1 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+00901b77	unit CAIStateGroup_KrakenTentacleRise: thin ??_G member of 0x008FE6E1 (NF471 b4 text unchanged)
+00925170	unit CAIStateGroup_KrakenTentacleRise: slot-target / caller respell
+008fe706	unit CAIStateGroup_KrakenTentacleAttack: ctor 0x008FE706 (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF471 b4 text unchanged)
+00901bb7	unit CAIStateGroup_KrakenTentacleAttack: thin ??_G member of 0x008FE706 (NF471 b4 text unchanged)
+009251e0	unit CAIStateGroup_KrakenTentacleAttack: slot-target / caller respell

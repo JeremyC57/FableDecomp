@@ -1,5 +1,12 @@
 // CAIStateGroup_WanderAroundInitialPos::IsRunnable() -- runnable once the creature strays more than 10 units from its initial position
-// Leaf: ?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@QAE_NXZ
+// Leaf: ?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ
+// NF473 (r467b / r469c respell, unit with ctor 0x008FD757 + ??_G 0x008FF704): the self is the PDB spelling
+//   ?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ (Ego_r.pdb + FableWin.pdb name sets; public virtual bool, slot 11 of the RTTI
+//   .?AVCAIStateGroup_WanderAroundInitialPos@@ vftable 0x01289460, its only retail reference 0x0128948C), was the non-virtual QAE_NXZ. The base and the
+//   brain come from the shared headers (engine/CAIStateGroupBase.h, engine/CAIBrain.h: Creature +0x18), replacing the local CAIStateGroupBase /
+//   CAIBrain / CAIBrainCreature models; no engine header exists for CAIStateGroup_WanderAroundInitialPos, so the class is declared as its ctor row
+//   0x008FD757 declares it. Header debt kept (unchanged HEAD text): the local CThingAICreature view (InitialPos at +0xE8 / +0xEC) and
+//   CBaseIntelligentPointer / IS_THING_ALIVE (unused by this body); CTCWanderControl stays the landed descriptive callee class (0x007F6150).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00911A00, length 137 bytes (+ int3 padding).
@@ -42,11 +49,6 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-class CAIBrain { public:
-    unsigned char _pad[0x18];
-    CThing* PCreature;                          // +0x18
-};
-
 struct CTCWanderControl {                       // interface type 8 component (descriptive)
     bool IsEnabled() const;                           // 0x007F6150
 };
@@ -57,30 +59,24 @@ class CThingAICreature : public CThing { public:
     float InitialPosY;                          // +0xec
 };
 
-struct CAIBrainCreature {
-    unsigned char _pad[0x18];
-    CThingAICreature* PCreature;                // +0x18
-};
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrainCreature* PBrain;                   // +0x04
-    long ScriptAIPriority;                      // +0x08
-    void* Name_PStringData;                     // +0x0c
-    bool Terminated;                            // +0x10
-    unsigned char Priority;                     // +0x11
-    bool Enabled;                               // +0x12
+class CAIStateGroup_WanderAroundInitialPos : public CAIStateGroupBase {
+public:
+    CAIStateGroup_WanderAroundInitialPos();                                 // 0x008FD757
+    virtual bool IsRunnable();                                                     // slot 11 0x00911A00
+    virtual void Update();                                                         // slot 12 0x00911A90
 };
-
-struct CAIStateGroup_WanderAroundInitialPos : CAIStateGroupBase {
-    bool IsRunnable();
-};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_WanderAroundInitialPos) == 0x14);
 
 bool CAIStateGroup_WanderAroundInitialPos::IsRunnable()
 {
     const CTCWanderControl* control;
-    if (PBrain->PCreature->PeekTC(TCI_TARGETING, &control) && control->IsEnabled()) {
-        CThingAICreature* creature = PBrain->PCreature;
+    if (PBrain->Creature->PeekTC(TCI_TARGETING, &control) && control->IsEnabled()) {
+        CThingAICreature* creature = PBrain->Creature;
         C3DVector* position = (C3DVector*)&creature->GetPos();
         float dx = creature->InitialPosX - position->X;
         float dy = creature->InitialPosY - position->Y;

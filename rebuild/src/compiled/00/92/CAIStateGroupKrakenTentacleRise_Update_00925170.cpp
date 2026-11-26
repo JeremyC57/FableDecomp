@@ -1,4 +1,5 @@
 // CAIStateGroup_KrakenTentacleRise::Update() -- perform the tentacle-rise combat action (250) and wait for it, then terminate the group
+// Leaf: ?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00925170, length 97 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase&, long, const CSoundPair&) @ 0x00858030,
 // CAIStateGroupBase::AIAction_PerformActionAndWait(CCreatureActionBase*, bool) @ 0x0097DB70,
@@ -11,6 +12,18 @@
 // (scheduled between the PerformActionAndWait pushes); its implicit destructor is the base destructor.
 // Frame 0x11c = sound pair 8 + action 0x114. No engine header for the action classes: local model.
 // Naming (NF457, r454b unit with 0x00925250): the in-class CCreatureAction_TentacleRise constructor takes `CThingCreatureBase&`, ??0CCreatureAction_TentacleRise@@QAE@AAVCThingCreatureBase@@@Z as FableWin.pdb spells it (the out-of-line row 0x00925250); it stays inline here (retail expands it), so the object is unchanged.
+// NF473 (r467b / r469c respell, unit with the ctor and ??_G of CAIStateGroup_KrakenTentacleRise): the self is the PDB spelling
+//   ?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ (Ego_r.pdb + FableWin.pdb name sets; protected virtual, slot 12 of the RTTI .?AVCAIStateGroup_KrakenTentacleRise@@
+//   vftable, its only retail reference), was the non-virtual ?Update@CAIStateGroup_KrakenTentacleRise@@QAEXXZ. The base comes from the shared header
+//   engine/CAIStateGroupBase.h (was a local model; same callee spellings); no engine header exists for CAIStateGroup_KrakenTentacleRise, so the class is
+//   declared as its ctor row declares it. Header debt kept (unchanged HEAD text): the local CSoundPair / CCreatureActionBase / CCombatActionBase /
+//   action / CAIBrain models (retail inlines the action ctor, so the TU stores the action vftable; the full header classes are a separate port).
+#include "engine/fable_ai_action_enums.h"
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CAISTATEGROUPBASE_PERFORMACTION
+#include "engine/CAIStateGroupBase.h"
+
 class CThingCreatureBase;
 
 class CSoundPair { public:
@@ -41,18 +54,14 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
-enum EAIActionReturn { };
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    CAIBrain* PBrain;                               // +0x04
-    unsigned char _pad[0x0c];                       protected: // +0x08..+0x13
-    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
-    void Terminate();                               // 0x008FCF40
+class CAIStateGroup_KrakenTentacleRise : public CAIStateGroupBase {
+public:
+    CAIStateGroup_KrakenTentacleRise();                                     // 0x008FE6E1
+    virtual bool IsRunnable();                                                     // slot 11 0x00924420
+protected:
+    virtual void Update();                                                         // slot 12 0x00925170
 };
-
-struct CAIStateGroup_KrakenTentacleRise : CAIStateGroupBase {
-    void Update();
-};
+FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KrakenTentacleRise) == 0x14);
 
 void CAIStateGroup_KrakenTentacleRise::Update()
 {

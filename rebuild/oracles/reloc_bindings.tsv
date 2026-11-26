@@ -3697,7 +3697,7 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ??_7CAIStateGroupBehaviourBase@@6B@	0128c444	009009a7
 ??_7CAIStateGroup_MinionBehaviourCrowdBase@@6B@	0128c494	009009ea
 ??_7CIntelligentPointerOfCrowd@@6B@	0128b0b8	009009ea
-??_7CIntelligentPointerOfCrowdMember@@6B@	0128b0c0	009009ea
+??_7?$CIntelligentPointer@$$CBVCMessageEvent@@@@6B@	0128b0c0	009009ea
 ??_7CIntelligentPointerOfThing@@6B@	01237f1c	009009ea
 ??_7CAIStateGroup_MinionReactToBurglary@@6B@	0128c4e0	00900a6d
 ??_7CAIStateGroup_MinionReactToTrespassing@@6B@	0128c51c	00900ab7
@@ -3822,7 +3822,7 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ??_7CAIStateGroup_BuyFromSeller@@6B@	0128ff0c	00919a40
 ?GFSecondsToFrames@@YGJM@Z	00415fc1	0091b2f0
 ?g_seekBackSeconds@@3MA	0138c6c4	0091b2f0
-?ss_sub@@YIHPAUCAIStateGroup_StandStill@@@Z	0097e200	0091bcf0
+?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	0097e200	0091bcf0
 ?StopFlyingAround@CTCNymph@@QAEXJ@Z	0080f870	0091c130
 @FableReactBaseInit_91cc90@4	008fcec0	0091cc90
 ?GetEvent@CTCEntityEvents@@QAE_NPAPBUCEventHitBy@@ABUCEventFilter_None@@@Z	0091d0a0	0091d120
@@ -3831,7 +3831,7 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ??_7CIsRunnableModuleCarryingProjectileWeapon@NCreatureAI@@6B@	0128ffd4	0091eb60
 ?h_920710@@YIDPAX@Z	0085f120	00920710
 ?OnActivate@CAIStateGroup_CreatureIdleUnderground@@UAEXXZ	009208e0	00920990
-?g_flag_013bb68c@@3EA	013bb68c	009224e0
+?g_flag_013bb68c@@3_NA	013bb68c	009224e0
 ??_7CCreatureAction_RemoveFoodFromTable@@6B@	0129007c	00922ee0
 ?NotifyFoodServed@CTCTable@@QAEXJJ@Z	007b85f0	009239c0
 ?OnAnimationLoaded@CCombatActionBase@@UAEXXZ	00859ef0	00908a20
@@ -15003,7 +15003,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCombatAction_GenericResponseToDrain@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	008bfd60	00909fd0
 ??0CCombatAction_0090a690@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	0090a690	0090a4c0
 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ	00a01b50	0090cb80
-?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother_Methods@@QAEPAVCMessageEvent@@XZ	0090ee20	0090eeb0
+?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ	0090ee20	0090eeb0
 ?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	0090f0d0
 ?Initialise@CAIStateGroupBaseI@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	0090f690
 ?GetFreeSeat@CTCTavern@@QAEPAVCThing@@PAV2@@Z	007babe0	0090fb60
@@ -36034,8 +36034,8 @@ _ScaleGlobalIntToInt64_0066fab0_Scale	0137ea24	0066fab0
 ?DeregisterAttackingCombatant@CCombatManager@@AAEXAAVCThingCreatureBase@@@Z	006ed510	006ed8c0
 ?erase@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAEIAB_K@Z	006f50b0	006ed8c0
 ?GetCombatManager@@YAPAVCCombatManager@@XZ	00661ed0	008b0610
-??_7?$CIntelligentPointer@VCMessageEvent@@@@6B@	0128b0c0	0090eec0
-?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@QAEPAVCMessageEvent@@XZ	0090ee20	0090eec0
+??_7?$CIntelligentPointer@$$CBVCMessageEvent@@@@6B@	0128b0c0	0090eec0
+?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ	0090ee20	0090eec0
 ?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ	0090f290	0090f470
 ?GetWanderWithInformation@CThingAICreature@@QBE_NXZ	008300e0	0090f470
 ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ	008300f0	0090f470

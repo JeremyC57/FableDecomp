@@ -1,9 +1,33 @@
+// Behaviour test for 0x00920710 CAIStateGroup_CreatureGoUnderground::IsRunnable(): runnable exactly when NCreatureMode::IsUnderground(creature) is false,
+// with the creature read from PBrain (+0x04) -> Creature (+0x18).
 #include <cstdio>
-struct RN { void* f0; char* f4; };
-static void* gN; static char gRet;
-char __fastcall h_920710(void* nested){ gN=nested; return gRet; }
-char __fastcall CAIStateGroup_CreatureGoUnderground_IsRunnable(RN* self){ char* p4 = self->f4; void* nested = *(void**)(p4 + 0x18); return h_920710(nested) == 0; }
-int main(){ char blk[0x20]; *(void**)(blk+0x18)=(void*)0x55; RN r; r.f4=blk;
- gRet=0; if(CAIStateGroup_CreatureGoUnderground_IsRunnable(&r)!=1||gN!=(void*)0x55){ printf("00920710_TEST FAIL\n"); return 1; }
- gRet=1; if(CAIStateGroup_CreatureGoUnderground_IsRunnable(&r)!=0){ printf("00920710_TEST FAIL\n"); return 1; }
- printf("00920710_TEST PASS\n"); return 0; }
+class CThing { public: int tag; };
+static const CThing* gSeen = 0; static bool gUnder = false;
+namespace NCreatureMode { bool __fastcall IsUnderground(const CThing& thing) { gSeen = &thing; return gUnder; } }
+class CThingAICreature : public CThing { };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingAICreature* Creature; CThingAICreature& GetCreature() const { return *Creature; } };
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase() { }
+    CAIBrain* PBrain;
+protected:
+    virtual bool IsRunnable() { return true; }
+    CThingAICreature& GetCreature() const { return PBrain->GetCreature(); }
+};
+class CAIStateGroup_CreatureGoUnderground : public CAIStateGroupBase { public:
+    bool Run() { return IsRunnable(); }
+protected:
+    virtual bool IsRunnable();
+};
+bool CAIStateGroup_CreatureGoUnderground::IsRunnable()
+{
+    if (NCreatureMode::IsUnderground(GetCreature()))
+        return false;
+    return true;
+}
+int main()
+{
+    CThingAICreature c; CAIBrain b; b.Creature = &c; CAIStateGroup_CreatureGoUnderground g; g.PBrain = &b;
+    gUnder = false; if (!g.Run() || gSeen != &c) { std::printf("00920710_TEST FAIL\n"); return 1; }
+    gUnder = true; if (g.Run()) { std::printf("00920710_TEST FAIL\n"); return 1; }
+    std::printf("00920710_TEST PASS\n"); return 0;
+}

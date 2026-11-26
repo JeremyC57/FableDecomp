@@ -1,0 +1,1 @@
+equiv_check (coordinator): rows checked 57160; differing 1 (0090eeb0, a batch row); outside the batch: 0

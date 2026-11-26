@@ -354,7 +354,7 @@ T1	other	list	19	24		0042b687 00463871 004ba390 004c3460 00517720 00519420 0055c
 T1	other	(none)	18	39		00405f00 004978a0 009a3640 00cbfb7d 0129ba40 013961e8 013961f0 013b7cd8 013b8384 013b8388 013b864f 013ca828 013cb530 013cd550 013d2880 01437450 01437884 0143e8f8
 T1	other	map	17	21		004df86c 00518e80 005692b0 005698a0 005bbbf3 0062ee80 006bd6a0 006f33a0 00721640 00802190 008267c0 0082fb90 00991350 009913d0 00a96e40 00ad6140 00cd3d2e
 T1	other	CTCInventoryBase	16	29		005bc499 005bc638 005bc649 005bc65b 005bc65c 005bc68e 005bc68f 005bc692 005bcafe 005bd1eb 005bd273 005bd4ea 005bdd8c 005bddb8 005bff07 005c0121
-T1	other	CAIStateGroupBase	10	27	engine/CAIStateGroupBase.h	008fcec0 008fcf40 008fcfa0 0097d6f0 0097e200 0097e270 0097e2d0 0097e380 0097f870 00c3f760
+T1	other	CAIStateGroupBase	10	26	engine/CAIStateGroupBase.h	008fcec0 008fcf40 008fcfa0 0097d6f0 0097e200 0097e270 0097e2d0 0097e380 0097f870 00c3f760
 T1	other	CCharString	10	130		0099e4b0 0099e960 0099eae0 0099eaf0 0099ebf0 0099ec30 0099ed10 0099efb0 0129aaf4 013bd804
 T1	other	CThing	10	25	engine/CThing.h	004c7380 004c73d0 004c7990 004c79d0 004c79e0 004c7a00 004c7ab0 004c9840 004c9b80 013b8a1c
 T1	other	NCreatureMode	10	11	engine/NCreatureMode.h	0085ef70 0085f0c0 0085f120 0085f200 0085f2b0 0085f3e0 0085f600 0085f8d0 0085fbc0 008e8e50
@@ -4531,7 +4531,6 @@ T3	-	CHeightMap	2	4	engine/CHeightMap.h	00825440 008f63c0
 T3	-	CImaAdpcmCodec	2	2	engine/CImaAdpcmCodec.h	012b91a0 012b91c0
 T3	-	CInitialiser	2	4		00c61ca0 00c62400
 T3	-	CInstanceRegistry	2	4		00c2baf0 00c2bc10
-T3	-	CIntelligentPointer	2	5	engine/CIntelligentPointer.h	00c16950 0128b0c0
 T3	-	CItem	2	6	engine/CItem.h	005bc6f9 00c3c5f0
 T3	-	CItem_Methods	2	4		005bd8a0 005bf03c
 T3	-	CKeyRedefiner	2	4		00557ca0 00557d20
@@ -4756,7 +4755,6 @@ T3	-	CAIStateGroup_Derived_00c44580	1	2		00c44580
 T3	-	CAIStateGroup_EnemyCreatureBase	1	2	engine/CAIStateGroup_EnemyCreatureBase.h	0091db50
 T3	-	CAIStateGroup_MeleeCombatNearbyBase	1	2	engine/CAIStateGroup_MeleeCombatNearbyBase.h	006e8400
 T3	-	CAIStateGroup_MinionFindPersonalSpace	1	2	engine/CAIStateGroup_MinionFindPersonalSpace.h	0092e890
-T3	-	CAIStateGroup_MinionKidCalledToMother	1	3	engine/CAIStateGroup_MinionKidCalledToMother.h	0090ee20
 T3	-	CAIStateGroup_MoveGoodsBase	1	2	engine/CAIStateGroup_MoveGoodsBase.h	00915890
 T3	-	CAIStateGroup_RecoverStealableItem	1	2	engine/CAIStateGroup_RecoverStealableItem.h	00965210
 T3	-	CAIStateGroup_TellStory	1	2		00942920
@@ -5148,6 +5146,7 @@ T3	-	CInputProcessMain	1	2	engine/CInputProcessMain.h	00687e70
 T3	-	CInstance	1	3		00c38850
 T3	-	CInstanceOwner_00c30840	1	2		00c30840
 T3	-	CInstance_00c388a0	1	2		00c388a0
+T3	-	CIntelligentPointer	1	3	engine/CIntelligentPointer.h	00c16950
 T3	-	CIntelligentPointer_00c16900	1	3		00c16900
 T3	-	CIntelligentPointer_00c1fcc0	1	2		00c1fcc0
 T3	-	CIntelligentPointer_00c1fd60	1	2		00c1fd60
@@ -6885,7 +6884,6 @@ T3	emit ??_GCAIStateGroup_BanditGossip@@UAEPAXI@Z	(none)	1	1		008fee6d
 T3	emit ??_ECAIStateGroup_MinionMotherProtectFamily@@UAEPAXI@Z	(none)	1	1		008feead
 T3	emit ??_GCAIStateGroup_MinionKidAnnoy@@UAEPAXI@Z	(none)	1	1		008feef7
 T3	emit ??_GCAIStateGroup_MinionKidGroupTag@@UAEPAXI@Z	(none)	1	1		008fef2f
-T3	emit ??_GCAIStateGroup_MinionKidCalledToMother@@UAEPAXI@Z	(none)	1	1		008fef6f
 T3	emit ??_GCAIStateGroup_PerformAction@@UAEPAXI@Z	(none)	1	1		008fef9d
 T3	emit ??_ECAIStateGroup_MinionFaceHero@@UAEPAXI@Z	(none)	1	1		008fefdd
 T3	emit ??_GCAIStateGroup_MinionPutOutFires@@UAEPAXI@Z	(none)	1	1		008ff027
@@ -6911,7 +6909,6 @@ T3	emit ??_ECAIStateGroup_SeekEnemy@@UAEPAXI@Z	(none)	1	1		008ff514
 T3	emit ??_GCAIStateGroup_SeekScriptTarget@@UAEPAXI@Z	(none)	1	1		008ff562
 T3	emit ??_GCAIStateGroup_StealthSeekEnemy@@UAEPAXI@Z	(none)	1	1		008ff5b0
 T3	emit ??_ECAIStateGroup_NonVillageGuardPatrol@@UAEPAXI@Z	(none)	1	1		008ff5fa
-T3	emit ??_GCAIStateGroup_WanderAroundInitialPos@@UAEPAXI@Z	(none)	1	1		008ff704
 T3	emit ??_GCAIStateGroup_EnemyCreatureBase@@UAEPAXI@Z	(none)	1	1		008ff744
 T3	emit ??_GCAIStateGroup_ChickenBeg@@UAEPAXI@Z	(none)	1	1		008ff7c4
 T3	emit ??_ECAIStateGroup_ButterflyWander@@UAEPAXI@Z	(none)	1	1		008ff7f2
@@ -6963,7 +6960,6 @@ T3	emit ??_GCAIStateGroup_TrollBase@@UAEPAXI@Z	(none)	1	1		00900384
 T3	emit ??_ECAIStateGroup_EarthTroll@@UAEPAXI@Z	(none)	1	1		009003b6
 T3	emit ??_GCAIStateGroup_SeekPerceivedThing@@UAEPAXI@Z	(none)	1	1		009003f6
 T3	emit ??_GCAIStateGroup_FollowPlayer@@UAEPAXI@Z	(none)	1	1		0090043a
-T3	emit ??_ECAIStateGroup_StandStill@@UAEPAXI@Z	(none)	1	1		00900484
 T3	emit ??_GCAIStateGroup_BalverineCornered@@UAEPAXI@Z	(none)	1	1		00900517
 T3	emit ??_GCAIStateGroup_BalverineJumpAtFleeingEnemy@@UAEPAXI@Z	(none)	1	1		00900576
 T3	emit ??_ECAIStateGroup_NymphFloatAround@@UAEPAXI@Z	(none)	1	1		009005d0
@@ -7025,16 +7021,12 @@ T3	emit ??_ECAIStateGroup_TavernKeeper@@UAEPAXI@Z	(none)	1	1		009017d6
 T3	emit ??_GCAIStateGroup_SleepOnFloor@@UAEPAXI@Z	(none)	1	1		00901841
 T3	emit ??_GCAIStateGroup_WhisperRetreat@@UAEPAXI@Z	(none)	1	1		00901892
 T3	emit ??_ECAIStateGroup_Thunder@@UAEPAXI@Z	(none)	1	1		009018f3
-T3	emit ??_GCAIStateGroup_Freeze@@UAEPAXI@Z	(none)	1	1		0090194e
 T3	emit ??_ECAIStateGroup_Drunk@@UAEPAXI@Z	(none)	1	1		0090198e
 T3	emit ??_ECAIStateGroup_EatAtTable@@UAEPAXI@Z	(none)	1	1		009019ce
 T3	emit ??_ECAIStateGroup_EatAtTavern@@UAEPAXI@Z	(none)	1	1		009019fc
 T3	emit ??_GCAIStateGroup_ServeFoodAtHome@@UAEPAXI@Z	(none)	1	1		00901a2d
 T3	emit ??_ECAIStateGroup_ServeFoodAtTavern@@UAEPAXI@Z	(none)	1	1		00901a6d
 T3	emit ??_GCAIStateGroup_ScreamerPursueTarget@@UAEPAXI@Z	(none)	1	1		00901aad
-T3	emit ??_GCAIStateGroup_KrakenTentacleIdle@@UAEPAXI@Z	(none)	1	1		00901b37
-T3	emit ??_ECAIStateGroup_KrakenTentacleRise@@UAEPAXI@Z	(none)	1	1		00901b77
-T3	emit ??_GCAIStateGroup_KrakenTentacleAttack@@UAEPAXI@Z	(none)	1	1		00901bb7
 T3	emit ??_ECAIStateGroup_WifeGiveYouGift@@UAEPAXI@Z	(none)	1	1		00901bf7
 T3	emit ??_GCAIStateGroup_OpenAndCloseShop@@UAEPAXI@Z	(none)	1	1		00901c37
 T3	emit ??_GCAIStateGroup_SetupWares@@UAEPAXI@Z	(none)	1	1		00901c77
@@ -7545,8 +7537,6 @@ T3	emit ?InitStateGroup@CAIStateGroup_EatAtTable@@MAEXABVCWorld@@AAVCThingAICrea
 T3	emit ?GetBuilding@CAIStateGroup_EatAtTavern@@MBEPAVCThingBuilding@@XZ	CAIStateGroup_EatAtTavern	1	1		0096d260
 T3	emit ?Initialise@CAIStateGroup_FireflyWander@@UAEXAAVCAIBrain@@AAVCThingAICreature@@J	CAIStateGroup_FireflyWander	1	1		00911f20
 T3	emit ?Update@CAIStateGroup_FireflyWander@@UAEXXZ	CAIStateGroup_FireflyWander	1	1		00911f80
-T3	emit ?IsRunnable@CAIStateGroup_Freeze@@UAE_NXZ	CAIStateGroup_Freeze	1	1		009224e0
-T3	emit ?Update@CAIStateGroup_Freeze@@UAEXXZ	CAIStateGroup_Freeze	1	1		009224f0
 T3	emit ?OnActivate@CAIStateGroup_GameMaster@@MAEXXZ	CAIStateGroup_GameMaster	1	1		0094c7b0
 T3	emit ?ChooseAction@CAIStateGroup_GameMaster@@MAE_NXZ	CAIStateGroup_GameMaster	1	1		0094c7d0
 T3	emit ?InitCreaturePosition@CAIStateGroup_GameMaster@@MAE_NXZ	CAIStateGroup_GameMaster	1	1		0094c850
@@ -7577,9 +7567,6 @@ T3	emit ?OnActivate@CAIStateGroup_KidPlayHopscotch@@MAEXXZ	CAIStateGroup_KidPlay
 T3	emit ?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ	CAIStateGroup_KidWanderNearKids_Methods	1	1		00914c60
 T3	emit ?OnActivate@CAIStateGroup_KidWatchHopscotch@@MAEXXZ	CAIStateGroup_KidWatchHopscotch	1	1		00940bd0
 T3	emit ?IsRunnable@CAIStateGroup_KidWatchHopscotch@@MAE_NXZ	CAIStateGroup_KidWatchHopscotch	1	1		00941210
-T3	emit ?Update@CAIStateGroup_KrakenTentacleAttack@@MAEXXZ	CAIStateGroup_KrakenTentacleAttack	1	1		009251e0
-T3	emit ?Update@CAIStateGroup_KrakenTentacleIdle@@MAEXXZ	CAIStateGroup_KrakenTentacleIdle	1	1		009250f0
-T3	emit ?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ	CAIStateGroup_KrakenTentacleRise	1	1		00925170
 T3	emit ?Update@CAIStateGroup_LightHomeCandle@@MAEXXZ	CAIStateGroup_LightHomeCandle	1	1	engine/CAIStateGroup_LightHomeCandle.h	00946850
 T3	emit ?IsRunnable@CAIStateGroup_MazeRangedCombat@@UAE_NXZ	CAIStateGroup_MazeRangedCombat	1	1	engine/CAIStateGroup_MazeRangedCombat.h	00954470
 T3	emit ?Cleanup@CAIStateGroup_MazeShieldedChase@@UAEXXZ	CAIStateGroup_MazeShieldedChase	1	1	engine/CAIStateGroup_MazeShieldedChase.h	00954900
@@ -7603,7 +7590,6 @@ T3	emit ?Initialise@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@UAEXAAVCAI
 T3	emit ?IsRunnable@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@UAE_NXZ	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	1	1		00939ed0
 T3	emit ?Update@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@UAEXXZ	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	1	1		0093a080
 T3	emit ?Update@CAIStateGroup_MinionHawkingFromStall@@UAEXXZ	CAIStateGroup_MinionHawkingFromStall	1	1		0094bb20
-T3	emit ?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ	CAIStateGroup_MinionKidCalledToMother_Methods	1	1		0090eeb0
 T3	emit ?IsRunnable@CAIStateGroup_MinionKidGroupTag@@UAE_NXZ	CAIStateGroup_MinionKidGroupTag	1	1	engine/CAIStateGroup_MinionKidGroupTag.h	00934920
 T3	emit ?IsStillValid@CAIStateGroup_MinionKidGroupTag@@UBE_NXZ	CAIStateGroup_MinionKidGroupTag_Methods	1	1		00934100
 T3	emit ?Update@CAIStateGroup_MinionLeaveRegion@@MAEXXZ	CAIStateGroup_MinionLeaveRegion_Adapter	1	1		0091e4b0
@@ -7628,7 +7614,6 @@ T3	emit ?Cleanup@CAIStateGroup_SitForMeal@@UAEXXZ	CAIStateGroup_SitForMeal	1	1		
 T3	emit ?InitCreaturePosition@CAIStateGroup_SitForMeal@@MAE_NXZ	CAIStateGroup_SitForMeal	1	1		00945cb0
 T3	emit ?Update@CAIStateGroup_SitInPub@@MAEXXZ	CAIStateGroup_SitInPub	1	1	engine/CAIStateGroup_SitInPub.h	0094b740
 T3	emit ?PracticeSkills@CAIStateGroup_SkillPractice@@MAE_NXZ	CAIStateGroup_SkillPractice	1	1		0092b3e0
-T3	emit ?Update@CAIStateGroup_StandStill@@UAEXXZ	CAIStateGroup_StandStill	1	1	engine/CAIStateGroup_StandStill.h	0091bcf0
 T3	emit ?IsStillValid@CAIStateGroup_StealStealableItem@@UBE_NXZ	CAIStateGroup_StealStealableItem_Adapter	1	1		009643d0
 T3	emit ?InitStateGroup@CAIStateGroup_SummonerCharge@@UAEXABVCWorld@@AAVCThingAICreature	CAIStateGroup_SummonerCharge	1	1	engine/CAIStateGroup_SummonerCharge.h	0096f730
 T3	emit ?InitStateGroup@CAIStateGroup_SummonerLightningAttack@@UAEXABVCWorld@@AAVCThingA	CAIStateGroup_SummonerLightningAttack	1	1	engine/CAIStateGroup_SummonerLightningAttack.h	0096f6f0
@@ -7640,7 +7625,6 @@ T3	emit ?InitCreaturePosition@CAIStateGroup_TavernServer@@MAE_NXZ	CAIStateGroup_
 T3	emit ?OnReplace@CAIStateGroup_VersusEnemyBase@@UAEXXZ	CAIStateGroup_VersusEnemyBase_Methods	1	1		00962b80
 T3	emit ?IsStillRunnable@CAIStateGroup_VersusScorpionKing@@MAE_NXZ	CAIStateGroup_VersusScorpionKing	1	1	engine/CAIStateGroup_VersusScorpionKing.h	009635c0
 T3	emit ?IsStillValid@CAIStateGroup_VillageTaskSecuritySweep@@UBE_NXZ	CAIStateGroup_VillageTaskSecuritySweep	1	1	engine/CAIStateGroup_VillageTaskSecuritySweep.h	0093fad0
-T3	emit ?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ	CAIStateGroup_WanderAroundInitialPos	1	1		00911a00
 T3	emit ?InitStateGroup@CAIStateGroup_WanderAroundShops@@UAEXABVCWorld@@AAVCThingAICreat	CAIStateGroup_WanderAroundShops	1	1	engine/CAIStateGroup_WanderAroundShops.h	00946e10
 T3	emit ?IsStillValid@CAIStateGroup_WanderAroundShops@@UBE_NXZ	CAIStateGroup_WanderAroundShops	1	1	engine/CAIStateGroup_WanderAroundShops.h	00946f30
 T3	emit ?IsRunnableLeaf@CAIStateGroup_WhisperPotionCombat@@MAE_NXZ	CAIStateGroup_WhisperPotionCombat	1	1	engine/CAIStateGroup_WhisperPotionCombat.h	0096aad0

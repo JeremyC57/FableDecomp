@@ -1,0 +1,96 @@
+addr       parity           behav  name
+008fd459   RELOCATION_MATCH PASS   CAIStateGroup_MinionKidCalledToMother
+008fd757   RELOCATION_MATCH PASS   CAIStateGroup_WanderAroundInitialPos
+008fde1b   RELOCATION_MATCH PASS   CAIStateGroup_StandStill
+008fe593   RELOCATION_MATCH PASS   CAIStateGroup_Freeze
+008fe6bc   RELOCATION_MATCH PASS   CAIStateGroup_KrakenTentacleIdle
+008fe6e1   RELOCATION_MATCH PASS   CAIStateGroup_KrakenTentacleRise
+008fe706   RELOCATION_MATCH PASS   CAIStateGroup_KrakenTentacleAttack
+008fef6f   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionKidCalledToMother@@UAEPAXI@Z (catalog CAIStateGroup_MinionKidCalledToMother::`scalar_deleting_destructor'; names another function)
+008fef6f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff704   WARN STANDIN_LEAF ??_GCAIStateGroup_WanderAroundInitialPos@@UAEPAXI@Z (catalog CAIStateGroup_WanderAroundInitialPos::`scalar_deleting_destructor'; names another function)
+008ff704   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900484   WARN STANDIN_LEAF ??_GCAIStateGroup_StandStill@@UAEPAXI@Z (catalog CAIStateGroup_StandStill::`scalar_deleting_destructor'; names another function)
+00900484   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009009ea   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009009ea   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionBehaviourCrowdBase (engine/CAIStateGroup_MinionBehaviourCrowdBase.h)
+009009ea   RELOCATION_MATCH PASS   CAIStateGroup_MinionBehaviourCrowdBase
+0090194e   WARN STANDIN_LEAF ??_GCAIStateGroup_Freeze@@UAEPAXI@Z (catalog CAIStateGroup_Freeze::`scalar_deleting_destructor'; names another function)
+0090194e   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901b37   WARN STANDIN_LEAF ??_GCAIStateGroup_KrakenTentacleIdle@@UAEPAXI@Z (catalog CAIStateGroup_KrakenTentacleIdle::`scalar_deleting_destructor'; names another function)
+00901b37   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901b77   WARN STANDIN_LEAF ??_GCAIStateGroup_KrakenTentacleRise@@UAEPAXI@Z (catalog CAIStateGroup_KrakenTentacleRise::`scalar_deleting_destructor'; names another function)
+00901b77   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00901bb7   WARN STANDIN_LEAF ??_GCAIStateGroup_KrakenTentacleAttack@@UAEPAXI@Z (catalog CAIStateGroup_KrakenTentacleAttack::`scalar_deleting_destructor'; names another function)
+00901bb7   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0090ee20   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2 (engine/CFilter_Bind2.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CFilter_Bind3 (engine/CFilter_Bind3.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CMessageEvent (engine/CMessageEvent.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CWorld (engine/CWorld.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CMessageEventManager (engine/CMessageEventManager.h)
+0090ee20   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionKidCalledToMother (engine/CAIStateGroup_MinionKidCalledToMother.h)
+0090ee20   RELOCATION_MATCH PASS   FindCallHomeEvent
+0090eeb0   RELOCATION_MATCH PASS   IsRunnable
+0090eec0   WARN SHARED_HEADER_AVAILABLE CBaseObject (engine/CBaseObject.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CThingPlayerCreature (engine/CThingPlayerCreature.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CMessageEvent (engine/CMessageEvent.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CPlayer (engine/CPlayer.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CPlayerManager (engine/CPlayerManager.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+0090eec0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionKidCalledToMother (engine/CAIStateGroup_MinionKidCalledToMother.h)
+0090eec0   RELOCATION_MATCH PASS   Update
+00911a00   WARN SHARED_HEADER_AVAILABLE CThingAICreature (engine/CThingAICreature.h)
+00911a00   WARN RELOC_NAME: ?IsEnabled@CTCWanderControl@@QBE_NXZ -> 007f6150 labelled 'CTCUserActionPointBase::IsActionPointFree'
+00911a00   RELOCATION_MATCH PASS   IsRunnable
+0091bcf0   RELOCATION_MATCH PASS   Update
+009224e0   RELOCATION_MATCH PASS   IsRunnable
+009224f0   RELOCATION_MATCH PASS   Update
+009250f0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009250f0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009250f0   RELOCATION_MATCH PASS   Update
+00925170   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleRise (engine/CCreatureAction_TentacleRise.h)
+00925170   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+00925170   RELOCATION_MATCH PASS   Update
+009251e0   WARN SHARED_HEADER_AVAILABLE CSoundPair (engine/CSoundPair.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase (engine/CCreatureActionBase.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase (engine/CCombatActionBase.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CCreatureAction_TentacleStrikeInto (engine/CCreatureAction_TentacleStrikeInto.h)
+009251e0   WARN SHARED_HEADER_AVAILABLE CAIBrain (engine/CAIBrain.h)
+009251e0   RELOCATION_MATCH PASS   Update
+
+WINS: 25
+  008fd459 RELOCATION_MATCH CAIStateGroup_MinionKidCalledToMother::??0CAIStateGroup_MinionKidCalledToMother@@QAE@XZ
+  008fd757 RELOCATION_MATCH CAIStateGroup_WanderAroundInitialPos::??0CAIStateGroup_WanderAroundInitialPos@@QAE@XZ
+  008fde1b RELOCATION_MATCH CAIStateGroup_StandStill::??0CAIStateGroup_StandStill@@QAE@XZ
+  008fe593 RELOCATION_MATCH CAIStateGroup_Freeze::??0CAIStateGroup_Freeze@@QAE@XZ
+  008fe6bc RELOCATION_MATCH CAIStateGroup_KrakenTentacleIdle::??0CAIStateGroup_KrakenTentacleIdle@@QAE@XZ
+  008fe6e1 RELOCATION_MATCH CAIStateGroup_KrakenTentacleRise::??0CAIStateGroup_KrakenTentacleRise@@QAE@XZ
+  008fe706 RELOCATION_MATCH CAIStateGroup_KrakenTentacleAttack::??0CAIStateGroup_KrakenTentacleAttack@@QAE@XZ
+  008fef6f RELOCATION_MATCH CAIStateGroup_MinionKidCalledToMother::??_GCAIStateGroup_MinionKidCalledToMother@@UAEPAXI@Z
+  008ff704 RELOCATION_MATCH CAIStateGroup_WanderAroundInitialPos::??_GCAIStateGroup_WanderAroundInitialPos@@UAEPAXI@Z
+  00900484 RELOCATION_MATCH CAIStateGroup_StandStill::??_GCAIStateGroup_StandStill@@UAEPAXI@Z
+  009009ea RELOCATION_MATCH CAIStateGroup_MinionBehaviourCrowdBase::??0CAIStateGroup_MinionBehaviourCrowdBase@@QAE@XZ
+  0090194e RELOCATION_MATCH CAIStateGroup_Freeze::??_GCAIStateGroup_Freeze@@UAEPAXI@Z
+  00901b37 RELOCATION_MATCH CAIStateGroup_KrakenTentacleIdle::??_GCAIStateGroup_KrakenTentacleIdle@@UAEPAXI@Z
+  00901b77 RELOCATION_MATCH CAIStateGroup_KrakenTentacleRise::??_GCAIStateGroup_KrakenTentacleRise@@UAEPAXI@Z
+  00901bb7 RELOCATION_MATCH CAIStateGroup_KrakenTentacleAttack::??_GCAIStateGroup_KrakenTentacleAttack@@UAEPAXI@Z
+  0090ee20 RELOCATION_MATCH CAIStateGroup_MinionKidCalledToMother::?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ
+  0090eeb0 RELOCATION_MATCH CAIStateGroup_MinionKidCalledToMother::?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ
+  0090eec0 RELOCATION_MATCH CAIStateGroup_MinionKidCalledToMother::?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ
+  00911a00 RELOCATION_MATCH CAIStateGroup_WanderAroundInitialPos::?IsRunnable@CAIStateGroup_WanderAroundInitialPos@@UAE_NXZ
+  0091bcf0 RELOCATION_MATCH CAIStateGroup_StandStill::?Update@CAIStateGroup_StandStill@@UAEXXZ
+  009224e0 RELOCATION_MATCH CAIStateGroup_Freeze::?IsRunnable@CAIStateGroup_Freeze@@UAE_NXZ
+  009224f0 RELOCATION_MATCH CAIStateGroup_Freeze::?Update@CAIStateGroup_Freeze@@UAEXXZ
+  009250f0 RELOCATION_MATCH CAIStateGroup_KrakenTentacleIdle::?Update@CAIStateGroup_KrakenTentacleIdle@@MAEXXZ
+  00925170 RELOCATION_MATCH CAIStateGroup_KrakenTentacleRise::?Update@CAIStateGroup_KrakenTentacleRise@@MAEXXZ
+  009251e0 RELOCATION_MATCH CAIStateGroup_KrakenTentacleAttack::?Update@CAIStateGroup_KrakenTentacleAttack@@MAEXXZ

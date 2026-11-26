@@ -1,0 +1,7 @@
+action	symbol	target	witness	note
+replace	?ss_sub@@YIHPAUCAIStateGroup_StandStill@@@Z -> ?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	0097e200	0091bcf0	callee respell (0x0091BCF0 header port): Ego_r.pdb protected base member
+replace	?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother_Methods@@QAEPAVCMessageEvent@@XZ -> ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ	0090ee20	0090eeb0	callee respell (T3 nf322; 0x0090EE20 self respell)
+replace	?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@QAEPAVCMessageEvent@@XZ -> ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ	0090ee20	0090eec0	callee respell (T3 nf322; 0x0090EE20 self respell)
+replace	??_7?$CIntelligentPointer@VCMessageEvent@@@@6B@ -> ??_7?$CIntelligentPointer@$$CBVCMessageEvent@@@@6B@	0128b0c0	0090eec0	vftable respell: RTTI .?AV?$CIntelligentPointer@$$CBVCMessageEvent@@@@
+replace	??_7CIntelligentPointerOfCrowdMember@@6B@ -> ??_7?$CIntelligentPointer@$$CBVCMessageEvent@@@@6B@	0128b0c0	009009ea	vftable respell: RTTI .?AV?$CIntelligentPointer@$$CBVCMessageEvent@@@@ + Ego_r MyMessageEvent
+replace	?g_flag_013bb68c@@3EA -> ?g_flag_013bb68c@@3_NA	013bb68c	009224e0	data retype: bool (PDB IsRunnable returns bool; retail returns the byte as loaded)

@@ -1,5 +1,10 @@
 // CAIStateGroup_MinionKidCalledToMother::FindCallHomeEvent() -- the most recent "call home" message (type 1) that
-// Leaf: ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@QAEPAVCMessageEvent@@XZ
+// Leaf: ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ
+// NF473 (T3 nf322 self respell, unit with its callers 0x0090EEB0 / 0x0090EEC0 and ctor 0x008FD459): the self is the PDB spelling
+//   ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ (Ego_r.pdb 0x00933C20 + FableWin.pdb 0x02B6A390: private, returns
+//   const CMessageEvent*; the held pointer of 0x0090EEC0 is RTTI .?AV?$CIntelligentPointer@$$CBVCMessageEvent@@@@, vftable 0x0128B0C0), was the public
+//   non-const-return ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@QAEPAVCMessageEvent@@XZ. Access and return type only (same bytes); the
+//   local models are unchanged HEAD text (header debt: engine/CAIStateGroup_MinionKidCalledToMother.h's retail branch now declares this member).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // the kid's living mother sent to this kid.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090EE20, length 134 bytes (+ int3 padding).
@@ -167,10 +172,11 @@ FABLE_FORCEINLINE CThing* MotherOf(CThingAICreatureM* kid)
 }
 
 struct CAIStateGroup_MinionKidCalledToMother : CAIStateGroupBaseW {
-    CMessageEvent* FindCallHomeEvent();
+private:
+    const CMessageEvent* FindCallHomeEvent();
 };
 
-CMessageEvent* CAIStateGroup_MinionKidCalledToMother::FindCallHomeEvent()
+const CMessageEvent* CAIStateGroup_MinionKidCalledToMother::FindCallHomeEvent()
 {
     CThing* mother = MotherOf((CThingAICreatureM*)PBrain->PCreature);
     if (mother != 0 && !mother->IsDead()) {

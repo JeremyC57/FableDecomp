@@ -1,39 +1,18 @@
-
+// Behaviour test for 0x0090EEB0 CAIStateGroup_MinionKidCalledToMother::IsRunnable(): runnable while FindCallHomeEvent() finds a message.
 #include <cstdio>
-
-class CMessageEvent;
-struct CAIStateGroup_MinionKidCalledToMother
-{
-    CMessageEvent* FindCallHomeEvent();
-    bool IsRunnable();
+class CMessageEvent { public: int x; };
+static const CMessageEvent* g_ret = 0;
+class CAIStateGroup_MinionKidCalledToMother { public:
+    virtual ~CAIStateGroup_MinionKidCalledToMother() { }
+    virtual bool IsRunnable();
+private:
+    const CMessageEvent* FindCallHomeEvent() { return g_ret; }
 };
-
-static CMessageEvent* g_ret = 0;
-
-CMessageEvent* CAIStateGroup_MinionKidCalledToMother::FindCallHomeEvent()
-{
-    return g_ret;
-}
-
-bool CAIStateGroup_MinionKidCalledToMother::IsRunnable()
-{
-    return FindCallHomeEvent() != 0;
-}
-
+bool CAIStateGroup_MinionKidCalledToMother::IsRunnable() { return FindCallHomeEvent() != 0; }
 int main()
 {
-    CAIStateGroup_MinionKidCalledToMother obj;
-
-    g_ret = 0;
-    bool r1 = obj.IsRunnable();
-
-    g_ret = (CMessageEvent*)0x12345;
-    bool r2 = obj.IsRunnable();
-
-    if (r1 == false && r2 == true)
-        printf("PASS_MARKER_OK\n");
-    else
-        printf("FAIL r1=%d r2=%d\n", (int)r1, (int)r2);
-
-    return 0;
+    CAIStateGroup_MinionKidCalledToMother k; CMessageEvent m;
+    g_ret = 0; if (k.IsRunnable()) { std::printf("0090eeb0_TEST FAIL\n"); return 1; }
+    g_ret = &m; if (!k.IsRunnable()) { std::printf("0090eeb0_TEST FAIL\n"); return 1; }
+    std::printf("0090eeb0_TEST PASS_MARKER_OK\n"); return 0;
 }

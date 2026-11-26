@@ -1,0 +1,6 @@
+source	line	address	status	resolution
+nf319	2382	0x0090EEB0	resolved (bS1)	the class-model port exists now (engine/CAIStateGroup_MinionKidCalledToMother.h retail opt-in, NF467): 0x0090EEB0 is ?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ on it, at its RTTI slot 11 (ctor 0x008FD459 emits the 56-byte vftable with slot 11 = this name)
+nf322	2482	0x0090EEB0	resolved (bS1)	callee 0x0090EE20 respelt to both PDBs private const-return ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ, with its own row (0x0090EE20 self) and table moves for both callers (0x0090EEB0, 0x0090EEC0); header declaration b0_hdr
+nF325	2626	0x0090EEB0	resolved (bS1)	carry-over of nf322: same resolution
+nf324	2955	0x00920710	resolved (bS1)	self is ?IsRunnable@CAIStateGroup_CreatureGoUnderground@@MAE_NXZ on the real class (base from engine/CAIStateGroupBase.h), not RN*
+nf308	1449	0x0085F120	resolved (bS1 + landed NF439)	binder 0x00920710 now calls ?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z (was h_920710); the other binder 0x0082B630 was respelt by NF439. Tracker dry run: 0x0085F120 split_fixable -> agree_pdb (names 2 -> 1)
