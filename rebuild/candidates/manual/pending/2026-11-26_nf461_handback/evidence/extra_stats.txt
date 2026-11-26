@@ -1,0 +1,14 @@
+def lines 26143 rows 11703 names 4948
+def lines shorter than retail 11533 rows 4855 names 2698
+  of which retail table has an RTTI locator (count bounded): 9076 rows 3661 names 2125
+one-slot (4-byte) copies where retail >4: lines 9845 rows 4088 names 2489
+all 4-byte copies (any retail): 13967 rows 6349
+def lines shorter than the largest copy of the same name 5278 rows 3723 names 898
+def lines LONGER than retail 572 rows 508 names 177
+name verdicts {'retail_unknown': 261, 'max_eq_retail': 1821, 'ONLY_SHORT': 1875, 'max_eq_retail_multisize': 595, 'max_GT_retail': 177, 'retail_unknown_multisize': 15, 'MAX_SHORT': 204}
+names >1 size 898  of which retail known 883
+distinct sizes per multi-size name {2: 780, 3: 103, 4: 12, 7: 1, 13: 1, 19: 1}
+names whose largest copy < retail 2079 col-bounded 1606 largest=4 bytes 1734
+names defined by one row only 1705
+if linked in row-address order: first copy < largest for 651 names; first copy < retail for 2553 names
+if linked in build_candidates.ps1 order: first copy < largest for 439 names; first copy < retail for 2367 names

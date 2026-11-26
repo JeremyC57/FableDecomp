@@ -1,0 +1,81 @@
+short.obj	/DEFAULTLIB:"LIBC" /DEFAULTLIB:"OLDNAMES"	['??_7Foo@@6B@,4,2,1,6,2']
+full.obj	/DEFAULTLIB:"LIBC" /DEFAULTLIB:"OLDNAMES"	['??_7Foo@@6B@,16,2,4,14,2']
+=== A_short_first: link main.obj short.obj full.obj
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?makeShort@@YAPAUFoo@@PAX@Z 00401070 f short.obj
+ 0001:00000090 ?a@Foo@@UAEXXZ 00401090 f full.obj
+ 0001:000000a0 ?makeFull@@YAPAUFoo@@PAX@Z 004010a0 f full.obj
+ 0001:000000c0 ?callD@@YAHPAUFoo@@@Z 004010c0 f full.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 short.obj
+vt=00406140 same=1 slots: 00401090 00000000 FFFFFFFF 004014CC
+Unhandled exception: page fault on read access to 0x00000000 in 32-bit code (0x004014cf).
+exit=5
+=== B_full_first: link main.obj full.obj short.obj
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?a@Foo@@UAEXXZ 00401070 f full.obj
+ 0001:00000080 ?b@Foo@@UAEHXZ 00401080 f full.obj
+ 0001:00000090 ?c@Foo@@UAEHXZ 00401090 f full.obj
+ 0001:000000a0 ?d@Foo@@UAEHXZ 004010a0 f full.obj
+ 0001:000000b0 ?makeFull@@YAPAUFoo@@PAX@Z 004010b0 f full.obj
+ 0001:000000d0 ?callD@@YAHPAUFoo@@@Z 004010d0 f full.obj
+ 0001:000000e0 ?makeShort@@YAPAUFoo@@PAX@Z 004010e0 f short.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 full.obj
+vt=00406140 same=1 slots: 00401070 00401080 00401090 004010A0
+callD=4
+exit=0
+=== C_short_lib: link main.obj full.obj short.lib
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?a@Foo@@UAEXXZ 00401070 f full.obj
+ 0001:00000080 ?b@Foo@@UAEHXZ 00401080 f full.obj
+ 0001:00000090 ?c@Foo@@UAEHXZ 00401090 f full.obj
+ 0001:000000a0 ?d@Foo@@UAEHXZ 004010a0 f full.obj
+ 0001:000000b0 ?makeFull@@YAPAUFoo@@PAX@Z 004010b0 f full.obj
+ 0001:000000d0 ?callD@@YAHPAUFoo@@@Z 004010d0 f full.obj
+ 0001:000000e0 ?makeShort@@YAPAUFoo@@PAX@Z 004010e0 f short:short.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 full.obj
+vt=00406140 same=1 slots: 00401070 00401080 00401090 004010A0
+callD=4
+exit=0
+=== D_full_lib: link main.obj short.obj full.lib
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?makeShort@@YAPAUFoo@@PAX@Z 00401070 f short.obj
+ 0001:00000090 ?a@Foo@@UAEXXZ 00401090 f full:full.obj
+ 0001:000000a0 ?makeFull@@YAPAUFoo@@PAX@Z 004010a0 f full:full.obj
+ 0001:000000c0 ?callD@@YAHPAUFoo@@@Z 004010c0 f full:full.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 short.obj
+vt=00406140 same=1 slots: 00401090 00000000 FFFFFFFF 004014CC
+Unhandled exception: page fault on read access to 0x00000000 in 32-bit code (0x004014cf).
+exit=5
+=== E_both_lib_shortfirst: link main.obj short.lib full.lib
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?makeShort@@YAPAUFoo@@PAX@Z 00401070 f short:short.obj
+ 0001:00000090 ?a@Foo@@UAEXXZ 00401090 f full:full.obj
+ 0001:000000a0 ?makeFull@@YAPAUFoo@@PAX@Z 004010a0 f full:full.obj
+ 0001:000000c0 ?callD@@YAHPAUFoo@@@Z 004010c0 f full:full.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 short:short.obj
+vt=00406140 same=1 slots: 00401090 00000000 FFFFFFFF 004014CC
+Unhandled exception: page fault on read access to 0x00000000 in 32-bit code (0x004014cf).
+exit=5
+=== F_both_lib_fullfirst: link main.obj full.lib short.lib
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?a@Foo@@UAEXXZ 00401070 f full:full.obj
+ 0001:00000080 ?b@Foo@@UAEHXZ 00401080 f full:full.obj
+ 0001:00000090 ?c@Foo@@UAEHXZ 00401090 f full:full.obj
+ 0001:000000a0 ?d@Foo@@UAEHXZ 004010a0 f full:full.obj
+ 0001:000000b0 ?makeFull@@YAPAUFoo@@PAX@Z 004010b0 f full:full.obj
+ 0001:000000d0 ?callD@@YAHPAUFoo@@@Z 004010d0 f full:full.obj
+ 0001:000000e0 ?makeShort@@YAPAUFoo@@PAX@Z 004010e0 f short:short.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 full:full.obj
+vt=00406140 same=1 slots: 00401070 00401080 00401090 004010A0
+callD=4
+exit=0
+=== G_opt_noref_short_first: link /OPT:REF main.obj short.obj full.obj
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+ 0001:00000070 ?makeShort@@YAPAUFoo@@PAX@Z 00401070 f short.obj
+ 0001:00000090 ?a@Foo@@UAEXXZ 00401090 f full.obj
+ 0001:000000a0 ?makeFull@@YAPAUFoo@@PAX@Z 004010a0 f full.obj
+ 0001:000000c0 ?callD@@YAHPAUFoo@@@Z 004010c0 f full.obj
+ 0002:00000140 ??_7Foo@@6B@ 00406140 short.obj
+vt=00406140 same=1 slots: 00401090 00000000 FFFFFFFF 004014CC
+Unhandled exception: page fault on read access to 0x00000000 in 32-bit code (0x004014cf).
+exit=5

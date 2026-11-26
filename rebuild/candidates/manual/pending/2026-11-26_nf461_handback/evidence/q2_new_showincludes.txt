@@ -1,0 +1,9 @@
+new.cpp
+Note: including file: Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\new
+Note: including file:  Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\exception
+Note: including file:   Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\xstddef
+Note: including file:    Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\yvals.h
+Note: including file:     Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\use_ansi.h
+Note: including file:    Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\cstddef
+Note: including file:     Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\stddef.h
+Note: including file:   Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\wine\vc71rtm\include\eh.h

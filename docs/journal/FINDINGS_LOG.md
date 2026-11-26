@@ -1676,3 +1676,12 @@ against CODAApi.lib, or stay compiled C++?
   (IMAGE_COMDAT_SELECT_ANY), read from the objects (0x0066A560 size 4, 0x0066A780 size 324, 0x0085BBA0 size 4), so a real link may keep
   the short table and break virtual dispatch. Existing at HEAD; fix is the shared-header port of the ctor rows (T3 nf459 family line).
   Owner item: how many `??_7` names are defined at different sizes across landed objects (not yet counted).
+- 2026-11-26 (NF461, measured): the short `??_7` COMDAT tables are widespread, not isolated.
+  - Of 4,948 `??_7` names over 26,143 definitions (all selection 2), 898 are defined at several sizes. 2,079 names have no copy at retail size; for 1,734 the only copy is a single 4-byte slot.
+  - VC7.1 `link.exe` keeps the FIRST copy in link order, not the largest, with no warning. A short copy first page-faults on dispatch.
+  - So a real link would bind 2,367 to 2,553 names to a table shorter than retail.
+  - Root cause: ctor rows on local class models. Fix: the shared-header ports (r459a); owner item.
+  - Hand-back: `rebuild/candidates/manual/pending/2026-11-26_nf461_handback/`.
+- 2026-11-26 (NF461, measured): `/DEFAULTLIB:"libcp"` comes from VC7.1's `use_ansi.h` under /ML: `<new>` → ... → `yvals.h` → `use_ansi.h` (guard `_USE_ANSI_CPP`).
+  - It is in 12,440 row objects. Retail was /MD (msvcprt).
+  - `/D_USE_ANSI_CPP` removes it with byte-identical code (157-row sample, 0 NOT_EQ). Whether to apply it lane-wide is an owner item.

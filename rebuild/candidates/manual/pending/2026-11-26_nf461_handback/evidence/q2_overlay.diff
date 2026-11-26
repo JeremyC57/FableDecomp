@@ -1,0 +1,5 @@
+diff -r /home/user/FableDecomp/rebuild/include/stlport/fable_containers.h /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agentNF461/ovl/include/stlport/fable_containers.h
+18a19,21
+> #ifndef _USE_ANSI_CPP
+> #define _USE_ANSI_CPP   /* NF461 probe: skip VC7.1 use_ansi.h (#pragma comment(lib,"libcp")) */
+> #endif

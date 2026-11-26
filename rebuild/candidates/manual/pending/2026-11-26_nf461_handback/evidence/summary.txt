@@ -1,0 +1,10 @@
+rows in census 57160 {'RELOCATION_MATCH': 43263, 'NOOBJ:SRC_FAIL': 2, 'OBJDUMP_ERR': 451, 'DIFFER': 1424, 'MATCH': 12020}
+libcp rows 12440 no-libcp 44718 NA 2
+vft names 4948 def lines 26143 rows defining any ??_7 11703
+names defined at >1 size 898
+verdicts {'MAX_SHORT': 204, 'MAX_SHORT|col': 191, 'MAX_SHORT|nocol_or_multi': 13, 'ONLY_SHORT': 1875, 'ONLY_SHORT|col': 1415, 'ONLY_SHORT|nocol_or_multi': 460, 'max_GT_retail': 177, 'max_GT_retail|col': 138, 'max_GT_retail|nocol_or_multi': 39, 'max_eq_retail': 1821, 'max_eq_retail_multisize': 595, 'max_eq_retail_multisize|col': 509, 'max_eq_retail_multisize|nocol_or_multi': 86, 'max_eq_retail|col': 615, 'max_eq_retail|nocol_or_multi': 1206, 'retail_unknown': 261, 'retail_unknown_multisize': 15, 'retail_unknown_multisize|nocol_or_multi': 15, 'retail_unknown|nocol_or_multi': 261}
+rows with a copy shorter than the largest copy of the same name 3723
+rows with a copy shorter than retail 4855
+selection values {2: 26143}
+names bound to >1 retail va 0
+size!=4*nrel entries 0 []
