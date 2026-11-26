@@ -1,5 +1,6 @@
-// CTCPhotojournalCapture::CTCPhotojournalCapture(CThing* parent) -- CTCBase(parent), own vtable, empty description and file name, 30 frames to wait, first render frame pending, screen closed, zero render time, no components or mannequin, no pending screenshot (-1), then register for the global TC update
+// CTCPhotojournalCapture::CTCPhotojournalCapture(CThing& parent) -- CTCBase(parent), own vtable, empty description and file name, 30 frames to wait, first render frame pending, screen closed, zero render time, no components or mannequin, no pending screenshot (-1), then register for the global TC update
 // Leaf: ??0CTCPhotojournalCapture
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCPhotojournalCapture@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCPhotojournalCapture@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -46,11 +47,11 @@ class CTCPhotojournalCapture : public CTCBase { public:
     bool        WasPlayerGuiOpen;               // +0x3c
     long        TakeScreenshotAfterFrames;      // +0x40
     virtual ~CTCPhotojournalCapture();
-    CTCPhotojournalCapture(CThing* parent);
+    CTCPhotojournalCapture(CThing& parent);
 };
 
-CTCPhotojournalCapture::CTCPhotojournalCapture(CThing* parent)
-    : CTCBase(*parent)
+CTCPhotojournalCapture::CTCPhotojournalCapture(CThing& parent)
+    : CTCBase(parent)
     , FrameCounter(30)
     , FirstRenderFrame(true)
     , ScreenOpen(false)

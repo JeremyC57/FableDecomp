@@ -1,5 +1,7 @@
 // NCreatureMode::CModeSleepBed::~CModeSleepBed() -- release PRemoveAction, destroy SleepAnimName and the filter, then the inlined CModeBase destructor
 // Leaf: ??1CModeSleepBed
+// Naming (NF455, r454b): the destructor is virtual, ??1CModeSleepBed@NCreatureMode@@UAE@XZ as both PDB name sets spell it (was ??1CModeSleepBed@NCreatureMode@@QAE@XZ); the class stays
+//   `__declspec(novtable)` here, so the TU emits no vftable or deleting destructor for it and the object is unchanged.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084B840, 98 bytes (`ret`).
 // Label: the catalog's "CModeIntangible::~CModeIntangible" is a byte-twin propagation; the offsets (counted pointer
@@ -10,7 +12,7 @@
 // derived 0x01275760.
 // Shape: the counted pointer's inline destructor (re-read the block after the decrement, destroy through the
 // block's pointer-to-member, delete the block, clear both words); filters destroyed through the implicit
-// CAnimFilterOfGroup destructor (string, then the base's vtable store); a NON-virtual destructor chain, so the most
+// CAnimFilterOfGroup destructor (string, then the base's vtable store); the class is `__declspec(novtable)` in this TU, so the most
 // derived vtable is never re-stored.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
@@ -52,7 +54,7 @@ struct __declspec(novtable) CModeSleepBed : CModeBase {   // vtable 0x01275760 (
     CAnimFilterOfGroup                    Filter;          // +0x1c
     CCharString                           SleepAnimName;   // +0x28
     CCountedPointer<CCreatureActionBase>  PRemoveAction;   // +0x2c
-    ~CModeSleepBed();
+    virtual ~CModeSleepBed();
 };
 
 CModeSleepBed::~CModeSleepBed()

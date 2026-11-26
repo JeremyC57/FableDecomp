@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionMultiArrow::CTCShotDefinitionMultiArrow(CThing*) -- CTCShotDefinitionBase(parent), zero acceleration, not a straight arrow, and the base's multi-arrow shot-type flag set
 // Leaf: ??0CTCShotDefinitionMultiArrow
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCShotDefinitionMultiArrow@NThingShot@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCShotDefinitionMultiArrow@NThingShot@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BBC65, length 58 bytes.
 // Callee: NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase(CThing*) @ 0x007BF460. Vtable 0x0126DF34 =
@@ -31,11 +32,11 @@ class CTCShotDefinitionMultiArrow : public CTCShotDefinitionBase { public:
     float         MaxAngleToTurn;            // +0xac
     bool          StraightArrow;             // +0xb0
     virtual void v00();
-    CTCShotDefinitionMultiArrow(CThing* parent);
+    CTCShotDefinitionMultiArrow(CThing& parent);
 };
 
-CTCShotDefinitionMultiArrow::CTCShotDefinitionMultiArrow(CThing* parent)
-    : CTCShotDefinitionBase(parent)
+CTCShotDefinitionMultiArrow::CTCShotDefinitionMultiArrow(CThing& parent)
+    : CTCShotDefinitionBase(&parent)
     , Acceleration(0.0f, 0.0f, 0.0f)
     , StraightArrow(false)
 {

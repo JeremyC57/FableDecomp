@@ -1,5 +1,6 @@
-// CTCStealth::CTCStealth(CThing* thing) -- CTCBase(thing), every flag false, speeds zero, timers and handles -1, an empty danger-things vector, then fetch the stealth sub-def
+// CTCStealth::CTCStealth(CThing& thing) -- CTCBase(thing), every flag false, speeds zero, timers and handles -1, an empty danger-things vector, then fetch the stealth sub-def
 // Leaf: ??0CTCStealth
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCStealth@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCStealth@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747820, length 102 bytes (`ret 4`); stores vtable 0x012689EC (CTCStealth, rtti-vtables.tsv).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef<CStealthDef>(CDefPointer<const CStealthDef>*) @ 0x00748900
 // (owner def +0x70).
@@ -68,12 +69,12 @@ class CTCStealth : public CTCBase { public:                       // vtable 0x01
     CVector<CDangerThing> DangerThings;             // +0x38
     long  MaxNumberOfDangerThings;                  // +0x44
     long  RegionBasedMaxNumberOfDangerThings;       // +0x48
-    CTCStealth(CThing* thing);
+    CTCStealth(CThing& thing);
     virtual ~CTCStealth();
 };
 
-CTCStealth::CTCStealth(CThing* thing)
-    : CTCBase(thing)
+CTCStealth::CTCStealth(CThing& thing)
+    : CTCBase(&thing)
     , Viewable(false)
     , Smellable(false)
     , Hearable(false)

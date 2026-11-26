@@ -1,4 +1,4 @@
-// CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing* owner) -- constructor: tavern-game ctor, own vtable, empty knick-knack vector, target time from the def's last prize score, pointer and its scale cleared
+// CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing& owner) -- constructor: tavern-game ctor, own vtable, empty knick-knack vector, target time from the def's last prize score, pointer and its scale cleared
 // Retail: Fable.exe @ 0x007D8DA0, 113 bytes (`ret 4`; vtable 0x0126F814 = CTCTavernGameSpotTheAddition per rtti-vtables.tsv).
 // Callees: CTCTavernGame::CTCTavernGame(CThing*) 0x005EC8A0; CTCTavernGame::GetDef(CDefPointer*) 0x005EA000; the
 //          def's virtual slot 1 when its count reaches 0.
@@ -7,6 +7,7 @@
 // Shape: the vector is a member object (_Vector_base + _STLP_alloc_proxy model) zeroed after the vtable store; the two
 //        scalars are body assignments after the def read, in retail store order; the release is the CDefPointer dtor's
 //        inline ReleaseTemporary() without a null test (the shared edi zero replaces `test`).
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCTavernGameSpotTheAddition@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCTavernGameSpotTheAddition@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThing;
 class CThingObject;
 
@@ -72,12 +73,12 @@ struct CTCTavernGameSpotTheAddition : CTCTavernGame {
     float         PointerScale;                // +0x108
     float         DistFromObject;              // +0x10c
     CRetailVector<KnickKnack> KnickKnacks;     // +0x110
-    CTCTavernGameSpotTheAddition(CThing* owner);
+    CTCTavernGameSpotTheAddition(CThing& owner);
     virtual void v00();
 };
 
-CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing* owner)
-    : CTCTavernGame(owner)
+CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing& owner)
+    : CTCTavernGame(&owner)
 {
     CDefPointer<const CTavernGameDef> def;
     GetDef(&def);

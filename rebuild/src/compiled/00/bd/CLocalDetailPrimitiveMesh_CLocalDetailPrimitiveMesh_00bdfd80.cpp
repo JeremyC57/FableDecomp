@@ -1,6 +1,8 @@
 // CLocalDetailPrimitiveMesh::~CLocalDetailPrimitiveMesh() -- destroy the mesh's CEnginePrimitiveHandle member (+0x6c: tell the primitive it is losing its last handle, drop the counted Data pointer, CBaseClass base), then the CMovableResource base's inline destructor stores its vtable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDFD80, length 105 bytes.
 // Leaf: ??1CLocalDetailPrimitiveMesh
+// Naming (NF455, r454b): the destructor is virtual, ??1CLocalDetailPrimitiveMesh@@UAE@XZ as both PDB name sets spell it (was ??1CLocalDetailPrimitiveMesh@@QAE@XZ); the class stays
+//   `__declspec(novtable)` here, so the TU emits no vftable or deleting destructor for it and the object is unchanged.
 // Callees: the primitive's virtual slot 3 (+0x0C, with the handle) and slot 1 (+0x04, Destroy on the last
 //          reference), CBaseClass::~CBaseClass @ 0x0099A2E0. Vtables: 0x0122F598 CEnginePrimitiveHandle,
 //          0x0129B860 CMovableResource.
@@ -69,7 +71,7 @@ class CMovableResource { public:                          // vtable 0x0129B860
 struct __declspec(novtable) CLocalDetailPrimitiveMesh : CMovableResource {
     unsigned char          _pad04[0x68];
     CEnginePrimitiveHandle m_handle;               // +0x6c
-    ~CLocalDetailPrimitiveMesh();
+    virtual ~CLocalDetailPrimitiveMesh();
 };
 
 CLocalDetailPrimitiveMesh::~CLocalDetailPrimitiveMesh()

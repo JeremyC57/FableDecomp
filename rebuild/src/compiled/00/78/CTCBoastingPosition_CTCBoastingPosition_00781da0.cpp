@@ -1,5 +1,6 @@
-// CTCBoastingPosition::CTCBoastingPosition(CThing* owner) -- CTCBase(owner), this class's vtable, the podium pointer at +0xc, three cleared flags, the particle-effect pointer at +0x2e
+// CTCBoastingPosition::CTCBoastingPosition(CThing& owner) -- CTCBase(owner), this class's vtable, the podium pointer at +0xc, three cleared flags, the particle-effect pointer at +0x2e
 // Leaf: ??0CTCBoastingPosition
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCBoastingPosition@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCBoastingPosition@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -55,12 +56,12 @@ class CTCBoastingPosition : public CTCBase                // vtable 0x0126B24C
     unsigned char _pad_0x36[0x2];                   // +0x36
 
     virtual void v00();
-    CTCBoastingPosition(CThing* owner);
+    CTCBoastingPosition(CThing& owner);
 };
 #pragma pack(pop)
 
-CTCBoastingPosition::CTCBoastingPosition(CThing* owner)
-    : CTCBase(*owner)
+CTCBoastingPosition::CTCBoastingPosition(CThing& owner)
+    : CTCBase(owner)
     , PositionActivated(false)
     , BoastOn(false)
     , HeroInsideRadius(false)

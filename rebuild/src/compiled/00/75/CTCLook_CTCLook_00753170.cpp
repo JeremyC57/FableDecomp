@@ -1,5 +1,6 @@
-// CTCLook::CTCLook(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, look state cleared (state 1, flags 0x17, eye angles marked changed), register with the owner's graphic appearance and remember the owner as the parent creature when it is one
+// CTCLook::CTCLook(CThing& thing) -- CTCBase(thing) + the graphic-appearance component base, look state cleared (state 1, flags 0x17, eye angles marked changed), register with the owner's graphic appearance and remember the owner as the parent creature when it is one
 // Leaf: ??0CTCLook
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCLook@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCLook@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -122,13 +123,13 @@ class CTCLook : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceCo
     CCountedPointer<CAnimEntryLite> PHeadTurnAnimH;             // +0xbc
     CCountedPointer<CAnimEntryLite> PHeadTurnAnimV;             // +0xc4
     bool  FirstTimeThrough;                                     // +0xcc
-    CTCLook(CThing* thing);
+    CTCLook(CThing& thing);
     virtual ~CTCLook();
     virtual void OnAppearanceDraw();
 };
 
-CTCLook::CTCLook(CThing* thing)
-    : CTCBase(*thing)
+CTCLook::CTCLook(CThing& thing)
+    : CTCBase(thing)
     , PParentCreature(0)
     , RecoveryAngleToLookAtXY(0.0f)
     , RecoveryAngleToLookAtYZ(0.0f)
@@ -163,7 +164,7 @@ CTCLook::CTCLook(CThing* thing)
 {
     ParentThing->PTCGraphicAppearance->RegisterComponent(*(this));
     if (ParentThing->ThingTypeFlags & 8)
-        PParentCreature = (CThingCreatureBase*)thing;
+        PParentCreature = (CThingCreatureBase*)&thing;
     if (!g_bLookConstructedOnce)
         g_bLookConstructedOnce = true;
 }

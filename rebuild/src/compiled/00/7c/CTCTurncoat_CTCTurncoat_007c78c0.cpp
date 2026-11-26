@@ -1,5 +1,6 @@
-// CTCTurncoat::CTCTurncoat(CThing* parent) -- constructor: CTCBase, cleared turncoat state and effect pointers, empty stage-effect vector, the turncoat def, then the resistance-recovery delay (frames) and rate (per frame) from the def
+// CTCTurncoat::CTCTurncoat(CThing& parent) -- constructor: CTCBase, cleared turncoat state and effect pointers, empty stage-effect vector, the turncoat def, then the resistance-recovery delay (frames) and rate (per frame) from the def
 // Leaf: ??0CTCTurncoat
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCTurncoat@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCTurncoat@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -100,12 +101,12 @@ class CTCTurncoat : public CTCBase { public:
     float               ResistanceRecoveryPerFrame;     // +0x38
     CRetailVector<CIntelligentPointer<CThing> > TurncoatStageEffects;   // +0x3c
     float               CreatureTurncoatResistance;     // +0x48
-    CTCTurncoat(CThing* parent);
+    CTCTurncoat(CThing& parent);
     virtual void v00();
 };
 
-CTCTurncoat::CTCTurncoat(CThing* parent)
-    : CTCBase(*parent), CurrentTurncoatedness(0), TurncoatedEffect(0), TurncoatTimeLast(0), TurncoatOverride(true),
+CTCTurncoat::CTCTurncoat(CThing& parent)
+    : CTCBase(parent), CurrentTurncoatedness(0), TurncoatedEffect(0), TurncoatTimeLast(0), TurncoatOverride(true),
       CurrentRecoveryTimer(0), CreatureTurncoatResistance(0)
 {
     ParentThing->m_pDefinition->GetSubDef_007c8000(&PDef);

@@ -1,5 +1,6 @@
-// CTCBob::CTCBob(CThing* owner) -- CTCBase(owner), this class's vtable, then tell the owner thing how to behave in cutscenes (behaviour 2)
+// CTCBob::CTCBob(CThing& owner) -- CTCBase(owner), this class's vtable, then tell the owner thing how to behave in cutscenes (behaviour 2)
 // Leaf: ??0CTCBob
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCBob@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCBob@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -39,12 +40,12 @@ class CTCBob : public CTCBase                             // vtable 0x0126B76C
     bool            ForceVisible;                   // +0x30
 
     virtual void v00();
-    CTCBob(CThing* owner);
+    CTCBob(CThing& owner);
 };
 #pragma pack(pop)
 
-CTCBob::CTCBob(CThing* owner)
-    : CTCBase(*owner)
+CTCBob::CTCBob(CThing& owner)
+    : CTCBase(owner)
 {
     ParentThing->SetCutscenePauseBehaviour(CUTSCENE_BEHAVIOUR_NOT_PAUSED);
 }

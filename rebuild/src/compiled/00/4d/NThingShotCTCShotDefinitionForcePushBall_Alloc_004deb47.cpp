@@ -1,22 +1,31 @@
 #pragma optimize("s",on)
-// NThingShot::CTCShotDefinitionForcePushBall::Alloc(CThing&) -- factory: new CTCShotDefinitionForcePushBall(owner)
+// NThingShot::CTCShotDefinitionForcePushBall::Alloc(CThing& thing) -- the registry factory: a new CTCShotDefinitionForcePushBall for `thing` (operator new(0xa8) 0x00BFEA1A, null-checked, then
+//   the constructor 0x004DCAB9), returned as its CTCBase
+// Leaf: ?Alloc@CTCShotDefinitionForcePushBall@NThingShot@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DEB47, oracle length 32 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0xa8 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCShotDefinitionForcePushBall::CTCShotDefinitionForcePushBall ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCShotDefinitionForcePushBall) = 0xa8 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x004DCAB9 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CPlayerGuiDef;
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CTCShotDefinitionForcePushBall@NThingShot@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); its only retail reference is
+//   CTCBase::RegisterTCs 0x004EE23F, whose landed row already binds this spelling here (reloc_bindings.tsv). The constructor is
+//   ??0CTCShotDefinitionForcePushBall@NThingShot@@QAE@AAVCThing@@@Z (Ego_r + FableWin name sets), 0x004DCAB9, landed in the same unit.
+// Naming (NF456, r454b unit with 0x004DCAB9): re-authored on the shared engine/CTCBase.h as the 0x004D393C pattern, same bytes (CTCBase is the
+//   first base, so the upcast needs no adjustment). Was the generated free function CTCShotDefinitionForcePushBall_Alloc(CPlayerGuiDef*) returning CTCShotDefinitionForcePushBall*, calling the
+//   constructor as (CPlayerGuiDef*) and outside namespace NThingShot.
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-struct CTCShotDefinitionForcePushBall {
-    unsigned char _body[0xa8];       // sizeof(CTCShotDefinitionForcePushBall) = 0xa8
-    CTCShotDefinitionForcePushBall(CPlayerGuiDef* owner);                   // 0x004DCAB9
+namespace NThingShot {
+class CTCShotDefinitionForcePushBall : public CTCBase {
+public:
+    CTCShotDefinitionForcePushBall(CThing& thing);          // 0x004DCAB9
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0xa8 - 0xC];              // the class's own members (not modelled); sizeof(CTCShotDefinitionForcePushBall) = 0xa8
 };
 
-CTCShotDefinitionForcePushBall* __fastcall CTCShotDefinitionForcePushBall_Alloc(CPlayerGuiDef* owner)
+CTCBase* __fastcall CTCShotDefinitionForcePushBall::Alloc(CThing& thing)
 {
-    return new CTCShotDefinitionForcePushBall(owner);
+    return new CTCShotDefinitionForcePushBall(thing);
+}
 }

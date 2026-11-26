@@ -1,5 +1,6 @@
-// CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing* owner) -- CTCBase(owner), own vtable, usable and every flag cleared, the two UIDs zeroed, the two intelligent pointers and the two strings default-built, then registered for global updates
+// CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing& owner) -- CTCBase(owner), own vtable, usable and every flag cleared, the two UIDs zeroed, the two intelligent pointers and the two strings default-built, then registered for global updates
 // Leaf: ??0CTCActionUseScriptedHook
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCActionUseScriptedHook@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCActionUseScriptedHook@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -65,12 +66,12 @@ public:
     long ReplacementObject;                     // +0x48
     bool ReversedOnMiniMap;                     // +0x4c
     bool HiddenOnMiniMap;                       // +0x4d
-    CTCActionUseScriptedHook(CThing* owner);
+    CTCActionUseScriptedHook(CThing& owner);
     virtual ~CTCActionUseScriptedHook();
 };
 
-CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing* owner)
-    : CTCBase(*owner)
+CTCActionUseScriptedHook::CTCActionUseScriptedHook(CThing& owner)
+    : CTCBase(owner)
     , Usable(true)
     , ForceConfirmation(false)
     , WaitingForConfirmation(false)

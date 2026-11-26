@@ -1,0 +1,15 @@
+addr       parity           behav  name
+007420c0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007420e0   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+007420e0   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+007420e0   RELOCATION_MATCH PASS   ~CModeStrafe
+0084b820   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0084b840   WARN SHARED_HEADER_AVAILABLE CAnimFilterBase (engine/CAnimFilterBase.h)
+0084b840   WARN SHARED_HEADER_AVAILABLE CAnimFilterOfGroup (engine/CAnimFilterOfGroup.h)
+0084b840   RELOCATION_MATCH PASS   ~CModeSleepBed
+
+WINS: 4
+  007420c0 RELOCATION_MATCH NCreatureMode::CModeStrafe::?CModeStrafe_scalar_deleting_destructor@@YIPAXPAVCModeStrafe@NCreatureMode@@HI@Z
+  007420e0 RELOCATION_MATCH NCreatureMode::CModeStrafe::??1CModeStrafe
+  0084b820 RELOCATION_MATCH NCreatureMode::CModeSleepBed::?CModeSleepBed_scalar_deleting_destructor@@YIPAXPAVCModeSleepBed@NCreatureMode@@HI@Z
+  0084b840 RELOCATION_MATCH NCreatureMode::CModeSleepBed::??1CModeSleepBed

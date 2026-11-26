@@ -1,4 +1,4 @@
-// CTCPhysicsControlled::CTCPhysicsControlled(CThing* thing) -- CTCPhysicsStandard base, both forced-move bits cleared, RenderZOffset and LastRenderZOffset zeroed
+// CTCPhysicsControlled::CTCPhysicsControlled(CThing& thing) -- CTCPhysicsStandard base, both forced-move bits cleared, RenderZOffset and LastRenderZOffset zeroed
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00724F50, 45 bytes. Stores vtable 0x0126616C = CTCPhysicsControlled (rtti-vtables.tsv).
 // Callees: CTCPhysicsStandard::CTCPhysicsStandard @ 0x00723FD0 (manifest "CTCActivationTrigger::CTCActivationTrigger", propagated).
 // Layout (PDB CTCPhysicsControlled, 0xac; no engine header): ImpulseVelocity +0x88, ForcedMoveToPos +0x94,
@@ -6,6 +6,7 @@
 // Shape: everything is stored before the vtable as body assignments in source order: the bit pair cleared in one `and 0FCh`,
 //   then the two floats from the xor zero register (as initialisers the floats are stored first).
 // Leaf: ??0CTCPhysicsControlled
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCPhysicsControlled@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCPhysicsControlled@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 
@@ -25,11 +26,11 @@ struct CTCPhysicsControlled : CTCPhysicsStandard {
     float     RenderZOffset;                // +0xa4
     float     LastRenderZOffset;            // +0xa8
     virtual void v000();
-    CTCPhysicsControlled(CThing* thing);
+    CTCPhysicsControlled(CThing& thing);
 };
 
-CTCPhysicsControlled::CTCPhysicsControlled(CThing* thing)
-    : CTCPhysicsStandard(*thing)
+CTCPhysicsControlled::CTCPhysicsControlled(CThing& thing)
+    : CTCPhysicsStandard(thing)
 {
     ForcedMoveToPosSet = false;
     ForcedMoveToPosUsePhysics = false;

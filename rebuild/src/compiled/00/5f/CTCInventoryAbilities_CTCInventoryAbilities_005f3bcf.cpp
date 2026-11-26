@@ -1,5 +1,6 @@
-// CTCInventoryAbilities::CTCInventoryAbilities(CThing* thing) -- construct the abilities screen: the inventory base, the screen base at +0x130, the ability bookkeeping (20 experience slots, 20 empty ability entries), the button maps and component maps, and the two assigned-level cursors
+// CTCInventoryAbilities::CTCInventoryAbilities(CThing& thing) -- construct the abilities screen: the inventory base, the screen base at +0x130, the ability bookkeeping (20 experience slots, 20 empty ability entries), the button maps and component maps, and the two assigned-level cursors
 // Leaf: ??0CTCInventoryAbilities
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCInventoryAbilities@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCInventoryAbilities@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x005BFF07 ??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z (was ??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z)
@@ -107,7 +108,7 @@ public:
     long                       CurrentAssignedExpressionLevel;   // +0x1b8
     CPODVector<long>           ReceivedExpressionOrder;       // +0x1bc
     CPODVectorMap<long, long>  ExpressionButtons;             // +0x1c8
-    CTCInventoryAbilities(CThing* thing);
+    CTCInventoryAbilities(CThing& thing);
     virtual ~CTCInventoryAbilities();
     virtual void v00();
     long GetNumAssignableSpecialMoveButtons() const;                       // 0x005EDCF0
@@ -123,8 +124,8 @@ __declspec(noinline) CLongFillVector::CLongFillVector(unsigned long n, const lon
 }
 #pragma auto_inline(on)
 
-CTCInventoryAbilities::CTCInventoryAbilities(CThing* thing)
-    : NInventory::CTCInventoryBase(*thing),
+CTCInventoryAbilities::CTCInventoryAbilities(CThing& thing)
+    : NInventory::CTCInventoryBase(thing),
       SpellToAssign(0), SpellSlotToSwap(0), PComponentSlotToSwap(0),
       WaitingToGiveTutorial(false), Initialised(false), CurrentSpecialAbilityUsedFromQuickAccess(false),
       ExperienceSpentOnAbilities(20, 0),

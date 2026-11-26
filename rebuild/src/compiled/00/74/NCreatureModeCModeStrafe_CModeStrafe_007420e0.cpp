@@ -1,11 +1,13 @@
 // NCreatureMode::CModeStrafe::~CModeStrafe() -- release the four projectile-anim counted pointers, destroy the filter and the strafe anim name, then the inlined CModeBase destructor
 // Leaf: ??1CModeStrafe
+// Naming (NF455, r454b): the destructor is virtual, ??1CModeStrafe@NCreatureMode@@UAE@XZ as both PDB name sets spell it (was ??1CModeStrafe@NCreatureMode@@QAE@XZ); the class stays
+//   `__declspec(novtable)` here, so the TU emits no vftable or deleting destructor for it and the object is unchanged.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007420E0, 210 bytes (`ret`).
 // Callees: operator delete 0x00BFE9BC (the count block), ~CCharString 0x0099EAE0 (filter group, StrafeAnimName,
 // the base's WeaponBasedFilter group).
 // Vtables stored: 0x0122FFCC (CAnimFilterBase, at +0x2c and +8; held in edi), 0x012673CC (CModeBase); the class's own
-// vtable 0x01268588 is not re-stored (modelled `__declspec(novtable)` with a non-virtual destructor, as the landed
+// vtable 0x01268588 is not re-stored (modelled `__declspec(novtable)`, as the landed
 // CModeDragonFlying destructor 0x00743000).
 // Layout (PDB 0x70, matches retail; see the ctor 0x00741FE0): StrafeAnimName +0x20, Filter +0x2c,
 // PAnimProjectileAim +0x50, PAnimProjectileBuildUp +0x58, PAnimProjectilePullBack +0x60, PAnimStrafeUpperBody +0x68.
@@ -62,7 +64,7 @@ struct __declspec(novtable) CModeStrafe : CModeBase {   // vtable 0x01268588
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectileBuildUp;   // +0x58
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimProjectilePullBack;  // +0x60
     CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PAnimStrafeUpperBody;     // +0x68
-    ~CModeStrafe();
+    virtual ~CModeStrafe();
 };
 
 CModeStrafe::~CModeStrafe()

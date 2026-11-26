@@ -1,0 +1,161 @@
+addr       parity           behav  name
+004d29ae   WARN SHARED_HEADER_AVAILABLE CTCPhysicsControlled (engine/CTCPhysicsControlled.h)
+004d29ae   RELOCATION_MATCH PASS   Alloc
+004d2ad4   WARN SHARED_HEADER_AVAILABLE CTCActionUseScriptedHook (engine/CTCActionUseScriptedHook.h)
+004d2ad4   RELOCATION_MATCH PASS   Alloc
+004d2e74   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+004d2e74   RELOCATION_MATCH PASS   Alloc
+004d300f   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+004d300f   RELOCATION_MATCH PASS   Alloc
+004d3042   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+004d3042   RELOCATION_MATCH PASS   Alloc
+004d3612   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+004d3612   RELOCATION_MATCH PASS   Alloc
+004d37f6   WARN SHARED_HEADER_AVAILABLE CTCChest (engine/CTCChest.h)
+004d37f6   RELOCATION_MATCH PASS   Alloc
+004d38f3   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+004d38f3   RELOCATION_MATCH PASS   Alloc
+004d46f9   WARN SHARED_HEADER_AVAILABLE CTCBoastingPosition (engine/CTCBoastingPosition.h)
+004d46f9   RELOCATION_MATCH PASS   Alloc
+004d479c   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroupBoastingCrowd (engine/CTCCreatureGroupBoastingCrowd.h)
+004d479c   RELOCATION_MATCH PASS   Alloc
+004d48a1   WARN SHARED_HEADER_AVAILABLE CTCBob (engine/CTCBob.h)
+004d48a1   RELOCATION_MATCH PASS   Alloc
+004d52fe   WARN SHARED_HEADER_AVAILABLE CTCDrunkenness (engine/CTCDrunkenness.h)
+004d52fe   RELOCATION_MATCH PASS   Alloc
+004d56c3   WARN SHARED_HEADER_AVAILABLE CTCTurncoat (engine/CTCTurncoat.h)
+004d56c3   RELOCATION_MATCH PASS   Alloc
+004d5a77   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+004d5a77   RELOCATION_MATCH PASS   Alloc
+004d5c8d   WARN SHARED_HEADER_AVAILABLE CTCTeleporter (engine/CTCTeleporter.h)
+004d5c8d   RELOCATION_MATCH PASS   Alloc
+004d652c   RELOCATION_MATCH PASS   Alloc
+004d670a   WARN SHARED_HEADER_AVAILABLE CTCPhotojournalCapture (engine/CTCPhotojournalCapture.h)
+004d670a   RELOCATION_MATCH PASS   Alloc
+0055d520   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+0055d520   WARN SHARED_HEADER_AVAILABLE CTCPhotojournalCapture (engine/CTCPhotojournalCapture.h)
+0055d520   RELOCATION_MATCH PASS   CTCPhotojournalCapture
+0057832d   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+0057832d   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience (engine/CTCInventoryExperience.h)
+0057832d   WARN RELOC_NAME: ??0CTutorialSoundMap@@QAE@XZ -> 00579b0a labelled 'std::map<T_00579b0a>::map'
+0057832d   WARN RELOC_NAME: ??0CStatUndoMap@@QAE@XZ -> 0057a0e8 labelled 'std::map<T_0057a0e8>::map'
+0057832d   WARN RELOC_NAME: ??0CAbilityUndoMap@@QAE@XZ -> 0057a106 labelled 'std::map<T_0057a106>::map'
+0057832d   WARN RELOC_NAME: ??0CAnimatorList@@QAE@ABU?$CAllocator@VCSliderAnimator@@@@@Z -> 005792bf labelled 'CTCInventoryExperience_Constructor'
+0057832d   WARN RELOC_NAME: ??0CStatComponentMap@@QAE@XZ -> 0057986e labelled 'CDisplayManager::CopyBackBufferToTexture'
+0057832d   WARN RELOC_NAME: ??0CAbilityComponentMap@@QAE@XZ -> 00579842 labelled 'std::map<T_00579842>::map'
+0057832d   RELOCATION_MATCH PASS   CTCInventoryExperience
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase (engine/CFadeInFadeOutBase.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCInventory (engine/CTCInventory.h)
+00590d32   WARN RELOC_NAME: ??0CEditBoxList@@QAE@ABU?$CAllocator@PAX@@@Z -> 005931da labelled 'DoublyLinkedList_InitHead'
+00590d32   WARN RELOC_NAME: ??0CComponentByLongMap@@QAE@XZ -> 00593ed0 labelled 'std::map<T_00593ed0>::map'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@J@@QAEXK@Z -> 004433f0 labelled 'std::vector<long, std::allocator<long>>::resize'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@VCFadeInFadeOutBase@@@@QAEXK@Z -> 00594df4 labelled 'CTimedEntryArray_00594df4::ResetEntry'
+00590d32   RELOCATION_MATCH PASS   CTCInventory
+005f3bcf   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+005f3bcf   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities (engine/CTCInventoryAbilities.h)
+005f3bcf   WARN RELOC_NAME: ??0CLongFillVector@@QAE@KABJABUSAllocator@@@Z -> 00512630 labelled 'std::vector<unsigned long,std::allocator<unsigned long> >::vector'
+005f3bcf   WARN RELOC_NAME: ??0CHeroAbilityDefEntryVector@@QAE@KABU?$pair@JV?$CDefPointer@$$CBVCHeroAbilityDef@@@@@std@@ABUSAllocator@@@Z -> 005f9bfe labelled 'std::vector<pair<long,CDefPointer<const CHeroAbilityDef> > >::vector'
+005f3bcf   WARN RELOC_NAME: ??0CSpellCategoryComponentMap@@QAE@XZ -> 005f9452 labelled 'std::map<T_005f9452>::map'
+005f3bcf   WARN RELOC_NAME: ??0CAbilityComponentMap@@QAE@XZ -> 00579842 labelled 'std::map<T_00579842>::map'
+005f3bcf   RELOCATION_MATCH PASS   CTCInventoryAbilities
+00724f50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard (engine/CTCPhysicsStandard.h)
+00724f50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsControlled (engine/CTCPhysicsControlled.h)
+00724f50   RELOCATION_MATCH PASS   CTCPhysicsControlled
+00729a90   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+00729a90   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00729a90   WARN SHARED_HEADER_AVAILABLE CTCActionUseScriptedHook (engine/CTCActionUseScriptedHook.h)
+00729a90   RELOCATION_MATCH PASS   CTCActionUseScriptedHook
+00747820   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00747820   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+00747820   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00747820   WARN SHARED_HEADER_AVAILABLE CTCStealth (engine/CTCStealth.h)
+00747820   RELOCATION_MATCH PASS   CTCStealth
+007508d0   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007508d0   WARN SHARED_HEADER_AVAILABLE CTCChest (engine/CTCChest.h)
+007508d0   WARN RELOC_NAME: ??0CTCContainerRewardHero_Calls@@QAE@PAVCThing@@@Z -> 0074e6b0 labelled 'CTCContainerRewardHero::CTCContainerRewardHero'
+007508d0   RELOCATION_MATCH PASS   CTCChest
+00753170   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00753170   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+00753170   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00753170   WARN SHARED_HEADER_AVAILABLE CTCLook (engine/CTCLook.h)
+00753170   RELOCATION_MATCH PASS   CTCLook
+00781da0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00781da0   WARN SHARED_HEADER_AVAILABLE CTCBoastingPosition (engine/CTCBoastingPosition.h)
+00781da0   RELOCATION_MATCH PASS   CTCBoastingPosition
+00784b30   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00784b30   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00784b30   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroup (engine/CTCCreatureGroup.h)
+00784b30   WARN SHARED_HEADER_AVAILABLE CTCCreatureGroupBoastingCrowd (engine/CTCCreatureGroupBoastingCrowd.h)
+00784b30   RELOCATION_MATCH PASS   CTCCreatureGroupBoastingCrowd
+00787750   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+00787750   WARN SHARED_HEADER_AVAILABLE CRightHandedSet (engine/CRightHandedSet.h)
+00787750   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+00787750   WARN SHARED_HEADER_AVAILABLE CTCBob (engine/CTCBob.h)
+00787750   RELOCATION_MATCH PASS   CTCBob
+007bb800   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007bb800   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+007bb800   WARN SHARED_HEADER_AVAILABLE CThing (engine/CThing.h)
+007bb800   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007bb800   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007bb800   WARN SHARED_HEADER_AVAILABLE CTCDrunkenness (engine/CTCDrunkenness.h)
+007bb800   RELOCATION_MATCH PASS   CTCDrunkenness
+007c78c0   WARN SHARED_HEADER_AVAILABLE CTurncoatDef (engine/CTurncoatDef.h)
+007c78c0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007c78c0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+007c78c0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+007c78c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent (engine/CMainGameComponent.h)
+007c78c0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007c78c0   WARN SHARED_HEADER_AVAILABLE CTCTurncoat (engine/CTCTurncoat.h)
+007c78c0   WARN RELOC_NAME: ?GetSubDef_007c8000@CDefClassBase@@QAE_NPAUCDefPointer@@@Z -> 007c8000 labelled 'CDefClassBase::GetSubDef<CTurncoatDef>'
+007c78c0   RELOCATION_MATCH PASS   CTCTurncoat
+007d8da0   WARN SHARED_HEADER_AVAILABLE CPrizeScoreDef (engine/CPrizeScoreDef.h)
+007d8da0   WARN SHARED_HEADER_AVAILABLE CTavernGameDef (engine/CTavernGameDef.h)
+007d8da0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame (engine/CTCTavernGame.h)
+007d8da0   WARN SHARED_HEADER_AVAILABLE CTCTavernGameSpotTheAddition (engine/CTCTavernGameSpotTheAddition.h)
+007d8da0   RELOCATION_MATCH PASS   CTCTavernGameSpotTheAddition
+007dfee0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007dfee0   WARN SHARED_HEADER_AVAILABLE CDefClassBase (engine/CDefClassBase.h)
+007dfee0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007dfee0   WARN SHARED_HEADER_AVAILABLE CTCTeleporter (engine/CTCTeleporter.h)
+007dfee0   WARN RELOC_NAME: ?GetSubDef_007e0540@CDefClassBase@@QAE_NPAUCDefPointer@@@Z -> 007e0540 labelled 'CDefClassBase::GetSubDef<CTeleporterDef>'
+007dfee0   RELOCATION_MATCH PASS   CTCTeleporter
+007e5970   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e5970   RELOCATION_MATCH PASS   CTCLifeTimer
+
+WINS: 34
+  004d29ae RELOCATION_MATCH CTCPhysicsControlled::?Alloc@CTCPhysicsControlled@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d2ad4 RELOCATION_MATCH CTCActionUseScriptedHook::?Alloc@CTCActionUseScriptedHook@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d2e74 RELOCATION_MATCH CTCInventory::?Alloc@CTCInventory@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d300f RELOCATION_MATCH CTCInventoryAbilities::?Alloc@CTCInventoryAbilities@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d3042 RELOCATION_MATCH CTCInventoryExperience::?Alloc@CTCInventoryExperience@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d3612 RELOCATION_MATCH CTCStealth::?Alloc@CTCStealth@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d37f6 RELOCATION_MATCH CTCChest::?Alloc@CTCChest@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d38f3 RELOCATION_MATCH CTCLook::?Alloc@CTCLook@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d46f9 RELOCATION_MATCH CTCBoastingPosition::?Alloc@CTCBoastingPosition@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d479c RELOCATION_MATCH CTCCreatureGroupBoastingCrowd::?Alloc@CTCCreatureGroupBoastingCrowd@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d48a1 RELOCATION_MATCH CTCBob::?Alloc@CTCBob@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d52fe RELOCATION_MATCH CTCDrunkenness::?Alloc@CTCDrunkenness@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d56c3 RELOCATION_MATCH CTCTurncoat::?Alloc@CTCTurncoat@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d5a77 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?Alloc@CTCTavernGameSpotTheAddition@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d5c8d RELOCATION_MATCH CTCTeleporter::?Alloc@CTCTeleporter@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d652c RELOCATION_MATCH CTCLifeTimer::?Alloc@CTCLifeTimer@@SIPAVCTCBase@@AAVCThing@@@Z
+  004d670a RELOCATION_MATCH CTCPhotojournalCapture::?Alloc@CTCPhotojournalCapture@@SIPAVCTCBase@@AAVCThing@@@Z
+  0055d520 RELOCATION_MATCH CTCPhotojournalCapture::??0CTCPhotojournalCapture
+  0057832d RELOCATION_MATCH CTCInventoryExperience::??0CTCInventoryExperience@@QAE@AAVCThing@@@Z
+  00590d32 RELOCATION_MATCH CTCInventory::??0CTCInventory
+  005f3bcf RELOCATION_MATCH CTCInventoryAbilities::??0CTCInventoryAbilities
+  00724f50 RELOCATION_MATCH CTCPhysicsControlled::??0CTCPhysicsControlled
+  00729a90 RELOCATION_MATCH CTCActionUseScriptedHook::??0CTCActionUseScriptedHook
+  00747820 RELOCATION_MATCH CTCStealth::??0CTCStealth
+  007508d0 RELOCATION_MATCH CTCChest::??0CTCChest@
+  00753170 RELOCATION_MATCH CTCLook::??0CTCLook
+  00781da0 RELOCATION_MATCH CTCBoastingPosition::??0CTCBoastingPosition
+  00784b30 RELOCATION_MATCH CTCCreatureGroupBoastingCrowd::??0CTCCreatureGroupBoastingCrowd
+  00787750 RELOCATION_MATCH CTCBob::??0CTCBob
+  007bb800 RELOCATION_MATCH CTCDrunkenness::??0CTCDrunkenness
+  007c78c0 RELOCATION_MATCH CTCTurncoat::??0CTCTurncoat
+  007d8da0 RELOCATION_MATCH CTCTavernGameSpotTheAddition::??0CTCTavernGameSpotTheAddition@
+  007dfee0 RELOCATION_MATCH CTCTeleporter::??0CTCTeleporter@
+  007e5970 RELOCATION_MATCH CTCLifeTimer::??0CTCLifeTimer

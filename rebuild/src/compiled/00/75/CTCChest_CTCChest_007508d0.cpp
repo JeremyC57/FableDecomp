@@ -12,6 +12,7 @@
 // Shape: COpenCloseHelper is a member object with an inline constructor (all its stores follow the
 // vtable store; the two 1.0f floats share ecx, the zeroes share eax); the pointer member is addressed
 // once in edi; the cutscene call is the constructor body.
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCChest@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCChest@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 #include "engine/ECutsceneBehaviour.h"
 class CThing { public:
     void SetCutscenePauseBehaviour(ECutsceneBehaviour behaviour);   // 0x004C78A0 (Ego_r + FableWin: ECutsceneBehaviour)
@@ -66,11 +67,11 @@ class CTCChest : public CTCContainerRewardHero_Calls { public:            // vta
     bool                ChestOpen;                          // +0x30
     CIntelligentPointer<CThing> POpenParticle;                      // +0x31
     virtual void v00();
-    CTCChest(CThing* thing);
+    CTCChest(CThing& thing);
 };
 
-CTCChest::CTCChest(CThing* thing)
-    : CTCContainerRewardHero_Calls(thing)
+CTCChest::CTCChest(CThing& thing)
+    : CTCContainerRewardHero_Calls(&thing)
     , ChestOpener()
     , ChestOpen(false)
     , POpenParticle()

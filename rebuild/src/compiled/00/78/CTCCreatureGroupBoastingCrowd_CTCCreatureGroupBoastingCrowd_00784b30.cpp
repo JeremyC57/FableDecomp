@@ -1,5 +1,6 @@
-// CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing* parent) -- boasting-crowd group component: the inline CTCCreatureGroup base (counts, shutdown flag, empty member map), a null hero pointer, crowd state 0 / encouragement state 2, no deed handle; forces a frame update and clears the base's shutdown-on-empty flag
+// CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing& parent) -- boasting-crowd group component: the inline CTCCreatureGroup base (counts, shutdown flag, empty member map), a null hero pointer, crowd state 0 / encouragement state 2, no deed handle; forces a frame update and clears the base's shutdown-on-empty flag
 // Leaf: ??0CTCCreatureGroupBoastingCrowd
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCCreatureGroupBoastingCrowd@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCCreatureGroupBoastingCrowd@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -92,11 +93,11 @@ class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
     long FrameToClearRemainingOpinionSources;      // +0x40
     long FrameToLeavePostBoastState;               // +0x44
     virtual void v02();
-    CTCCreatureGroupBoastingCrowd(CThing* parent);
+    CTCCreatureGroupBoastingCrowd(CThing& parent);
 };
 
-CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing* parent)
-    : CTCCreatureGroup(parent)
+CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing& parent)
+    : CTCCreatureGroup(&parent)
     , CrowdState(0)
     , CurrentEncouragementState(2)
     , HeroBoasted(false)
@@ -105,7 +106,7 @@ CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing* parent)
     , HeroOpinionSourcesPushed(0)
     , FrameToClearRemainingOpinionSources(0)
 {
-    if (parent->m_pState && !(parent->m_pState->m_flags & 2))
-        parent->SetForceFrameUpdate(true);
+    if (parent.m_pState && !(parent.m_pState->m_flags & 2))
+        parent.SetForceFrameUpdate(true);
     ShutdownOnEmpty = false;
 }

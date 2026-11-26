@@ -1,0 +1,25 @@
+addr       parity           behav  name
+007e7eb0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+007e7ed0   WARN SHARED_HEADER_AVAILABLE CFireheartMinigameDef (engine/CFireheartMinigameDef.h)
+007e7ed0   WARN SHARED_HEADER_AVAILABLE CDefPointer (engine/CDefPointer.h)
+007e7ed0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+007e7ed0   WARN SHARED_HEADER_AVAILABLE CTCBase (engine/CTCBase.h)
+007e7ed0   RELOCATION_MATCH PASS   ~CTCFireheartMinigame
+00bcde20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bcde40   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase (engine/CIVCountedPointeeBase.h)
+00bcde40   WARN RELOC_NAME: ??1CTrailArray@@QAE@XZ -> 00bcdad0 labelled 'CRetailVector_SBufferEntry12::~CRetailVector_SBufferEntry12'
+00bcde40   RELOCATION_MATCH PASS   ~CEngineInternalPrimitiveWeaponTrail
+00bdfd60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00bdfd80   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase (engine/CEnginePersistentPrimitiveBase.h)
+00bdfd80   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer (engine/CIVCountedPointer.h)
+00bdfd80   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle (engine/CEnginePrimitiveHandle.h)
+00bdfd80   WARN SHARED_HEADER_AVAILABLE CMovableResource (engine/CMovableResource.h)
+00bdfd80   RELOCATION_MATCH PASS   ~CLocalDetailPrimitiveMesh
+
+WINS: 6
+  007e7eb0 RELOCATION_MATCH CTCFireheartMinigame::?CTCFireheartMinigame_scalar_deleting_destructor@@YIPAXPAVCTCFireheartMinigame@@HI@Z
+  007e7ed0 RELOCATION_MATCH CTCFireheartMinigame::??1CTCFireheartMinigame
+  00bcde20 RELOCATION_MATCH CEngineInternalPrimitiveWeaponTrail::?CEngineInternalPrimitiveWeaponTrail_scalar_deleting_destructor@@YIPAXPAVCEngineInternalPrimitiveWeaponTrail@@HI@Z
+  00bcde40 RELOCATION_MATCH CEngineInternalPrimitiveWeaponTrail::??1CEngineInternalPrimitiveWeaponTrail
+  00bdfd60 RELOCATION_MATCH CLocalDetailPrimitiveMesh::?CLocalDetailPrimitiveMesh_scalar_deleting_destructor@@YIPAXPAUCLocalDetailPrimitiveMesh@@HI@Z
+  00bdfd80 RELOCATION_MATCH CLocalDetailPrimitiveMesh::??1CLocalDetailPrimitiveMesh

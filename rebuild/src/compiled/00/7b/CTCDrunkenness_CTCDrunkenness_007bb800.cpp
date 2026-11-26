@@ -1,5 +1,6 @@
 // CTCDrunkenness::CTCDrunkenness(CThing*) -- CTCBase(thing), never sobered, seconds per frame from the frame rate, and a per-creature drunkenness threshold drawn from the drunkenness ability def (0.5 .. 1.5 times its base threshold)
 // Leaf: ??0CTCDrunkenness
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCDrunkenness@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCDrunkenness@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
@@ -99,11 +100,11 @@ class CTCDrunkenness : public CTCBase { public:                           // vta
     float SecondsPerFrame;                                  // +0x18
     float ThisDrunkennessThreshold;                         // +0x1c
     virtual void v00();
-    CTCDrunkenness(CThing* thing);
+    CTCDrunkenness(CThing& thing);
 };
 
-CTCDrunkenness::CTCDrunkenness(CThing* thing)
-    : CTCBase(*thing)
+CTCDrunkenness::CTCDrunkenness(CThing& thing)
+    : CTCBase(thing)
     , FrameLastUpdatedSobering(0)
     , SecondsPerFrame(1.0f / CMainGameComponent::GetConstantFPS())
 {

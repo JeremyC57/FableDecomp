@@ -6,6 +6,7 @@
 // Shape: the size-optimised TU (odd address in the /Os region) forwards the argument with `push dword ptr [esp+8]` and
 // stores the float zero through the x87 (`fldz ; fstp`). PDB CTCShotDefinitionForcePushBall (172 bytes) puts
 // DistanceToPush at +0xa8; retail stores it at +0xa4 (the base is 4 bytes smaller in the shipped build).
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCShotDefinitionForcePushBall@NThingShot@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCShotDefinitionForcePushBall@NThingShot@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThing;
 
 struct CTCShotDefinitionProjectile {
@@ -19,11 +20,11 @@ namespace NThingShot {
 struct CTCShotDefinitionForcePushBall : CTCShotDefinitionProjectile {   // vtable 0x01240FAC
     virtual void v00();
     float DistanceToPush;                      // +0xa4 (PDB +0xa8)
-    CTCShotDefinitionForcePushBall(CThing* thing);
+    CTCShotDefinitionForcePushBall(CThing& thing);
 };
 
-CTCShotDefinitionForcePushBall::CTCShotDefinitionForcePushBall(CThing* thing)
-    : CTCShotDefinitionProjectile(thing), DistanceToPush(0.0f)
+CTCShotDefinitionForcePushBall::CTCShotDefinitionForcePushBall(CThing& thing)
+    : CTCShotDefinitionProjectile(&thing), DistanceToPush(0.0f)
 {
 }
 

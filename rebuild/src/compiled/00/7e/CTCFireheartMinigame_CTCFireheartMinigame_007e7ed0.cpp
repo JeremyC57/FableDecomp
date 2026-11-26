@@ -1,5 +1,7 @@
 // CTCFireheartMinigame::~CTCFireheartMinigame() -- release the minigame def, destroy and free the primitive-handle vector, release the scripted-thing handle, then the CTCBase destructor
 // Leaf: ??1CTCFireheartMinigame
+// Naming (NF455, r454b): the destructor is virtual, ??1CTCFireheartMinigame@@UAE@XZ as both PDB name sets spell it (was ??1CTCFireheartMinigame@@QAE@XZ); the class stays
+//   `__declspec(novtable)` here, so the TU emits no vftable or deleting destructor for it and the object is unchanged.
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members Count->RefCount, Object->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7ED0, length 163 bytes (tail `jmp` to the base destructor).
 // Label correction: the catalog "CMeshData::~CMeshData" is propagated; the only caller is the deleting destructor 0x007E7EB0 in slot 0 of
@@ -83,7 +85,7 @@ struct __declspec(novtable) CTCFireheartMinigame : CTCBase {
     bool     QuitWithDelay;                     // +0x88
     CRetailVector<CEnginePrimitiveHandle> Handles;           // +0x8c
     CDefPointer<const CFireheartMinigameDef> PDef;           // +0x98
-    ~CTCFireheartMinigame();
+    virtual ~CTCFireheartMinigame();
 };
 
 CTCFireheartMinigame::~CTCFireheartMinigame()

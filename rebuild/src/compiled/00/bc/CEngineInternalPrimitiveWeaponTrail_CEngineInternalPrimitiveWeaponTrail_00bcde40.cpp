@@ -10,6 +10,8 @@
 // between it and the root has a destructor body.
 // Retail offsets (Ego_r.pdb: Trail +0x5C, TrailElementCreationTime +0x6C; retail CArrays are 12 bytes).
 // Leaf: ??1CEngineInternalPrimitiveWeaponTrail
+// Naming (NF455, r454b): the destructor is virtual, ??1CEngineInternalPrimitiveWeaponTrail@@UAE@XZ as both PDB name sets spell it (was ??1CEngineInternalPrimitiveWeaponTrail@@QAE@XZ); the class stays
+//   `__declspec(novtable)` here, so the TU emits no vftable or deleting destructor for it and the object is unchanged.
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -46,7 +48,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveWeaponTrail : CIVCountedPoin
     float CurrentTime;                             // +0x74
     float FallOffTime;                             // +0x78
     virtual void v00();
-    ~CEngineInternalPrimitiveWeaponTrail();
+    virtual ~CEngineInternalPrimitiveWeaponTrail();
 };
 
 CEngineInternalPrimitiveWeaponTrail::~CEngineInternalPrimitiveWeaponTrail()

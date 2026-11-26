@@ -1,5 +1,6 @@
-// NThingShot::CTCShotDefinitionDrainLife::CTCShotDefinitionDrainLife(CThing* parent) -- CTCShotDefinitionBase(parent), AmountToHeal = 0.0f, own vtable, null soul-effect pointer
+// NThingShot::CTCShotDefinitionDrainLife::CTCShotDefinitionDrainLife(CThing& parent) -- CTCShotDefinitionBase(parent), AmountToHeal = 0.0f, own vtable, null soul-effect pointer
 // Leaf: CTCShotDefinitionDrainLife
+// Naming (NF455, r454b): the constructor takes `CThing&`, ??0CTCShotDefinitionDrainLife@NThingShot@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCShotDefinitionDrainLife@NThingShot@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB15E, length 45 bytes.
 // Callees: NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase(CThing*) @ 0x007BF460 (stores vtable
 // 0x0126E1A4 = NThingShot::CTCShotDefinitionBase); CIntelligentPointer<CThing>::CIntelligentPointer(CThing*)
@@ -35,11 +36,11 @@ class CTCShotDefinitionDrainLife : public CTCShotDefinitionBase_Calls { public:
     float                      Speed;                       // +0xa8
     CIntelligentPointer_CThing PSoulEffect;                 // +0xac
     virtual void v00();                                     // own vtable 0x012403F4
-    CTCShotDefinitionDrainLife(CThing* parent);
+    CTCShotDefinitionDrainLife(CThing& parent);
 };
 
-CTCShotDefinitionDrainLife::CTCShotDefinitionDrainLife(CThing* parent)
-    : CTCShotDefinitionBase_Calls(parent)
+CTCShotDefinitionDrainLife::CTCShotDefinitionDrainLife(CThing& parent)
+    : CTCShotDefinitionBase_Calls(&parent)
     , AmountToHeal(0.0f)
     , PSoulEffect(0)
 {

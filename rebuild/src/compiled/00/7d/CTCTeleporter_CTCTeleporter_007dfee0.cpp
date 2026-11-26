@@ -1,7 +1,7 @@
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z (was ??0CTCBase@@QAE@PAVCThing@@@Z)
-// CTCTeleporter::CTCTeleporter(CThing* parent) -- constructor: CTCBase(parent), own vtable, null PDef, Active/Activated false, HeroInsideRadius true, empty PParticle, WaitingForTutorialToFinish false, then fetches the teleporter definition into PDef
+// CTCTeleporter::CTCTeleporter(CThing& parent) -- constructor: CTCBase(parent), own vtable, null PDef, Active/Activated false, HeroInsideRadius true, empty PParticle, WaitingForTutorialToFinish false, then fetches the teleporter definition into PDef
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x007DFEE0, 84 bytes (`ret 4`, vtable 0x0126FDA4).
 // Callees: CTCBase::CTCBase(CThing*) 0x00686800 (manifest "CEngineSubPrimitive2DClockSprite" is
@@ -16,6 +16,7 @@
 //        is a body assignment (scheduled after the PParticle vtable store, between the two parent
 //        loads); `&PDef` is formed once (`lea edi,[esi+0Ch]`) for the trailing GetSubDef call, which
 //        re-reads the parent from the CTCBase member.
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCTeleporter@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCTeleporter@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 class CThing;
 class CTeleporterDef;
 
@@ -54,13 +55,13 @@ class CTCTeleporter : public CTCBase { public:
     bool HeroInsideRadius;                              // +0x12
     CIntelligentPointer<CThing> PParticle;                      // +0x13
     bool WaitingForTutorialToFinish;                    // +0x1b
-    CTCTeleporter(CThing* parent);
+    CTCTeleporter(CThing& parent);
     virtual void v00();
 };
 #pragma pack(pop)
 
-CTCTeleporter::CTCTeleporter(CThing* parent)
-    : CTCBase(*parent), Active(false), Activated(false), HeroInsideRadius(true)
+CTCTeleporter::CTCTeleporter(CThing& parent)
+    : CTCBase(parent), Active(false), Activated(false), HeroInsideRadius(true)
 {
     WaitingForTutorialToFinish = false;
     m_pParentThing->m_pDefinition->GetSubDef_007e0540(&PDef);

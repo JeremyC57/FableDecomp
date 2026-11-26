@@ -10159,7 +10159,7 @@ line	tag	address	correct_symbol	status	other_spellings
 12857	land1122nf236	00637e70	?GetThingLayerCellPositions@CThingMapManager@NThingMap@@IBEXMABVC2DVector@@JAAVCMapCellPosInfoGroup@2@@Z	closed	
 12859	land1122nf236	004c7e30	?IsLocal@CThing@@QBE_NXZ:	open	?IsLocal@CThing@@QBE_NXZ
 12864	land1122nf238	00740040	??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z	closed	
-12865	land1122nf238	007d8da0	??_7CTCTavernGameSpotTheAddition@@6B@	open	??0CTCTavernGameSpotTheAddition@@QAE@PAVCThing@@@Z
+12865	land1122nf238	007d8da0	??_7CTCTavernGameSpotTheAddition@@6B@	open	??0CTCTavernGameSpotTheAddition@@QAE@AAVCThing@@@Z
 12866	land1122nf238	01296f14	??_7CCreatureAction_ScreamerIntoAggressive@?A0x...@@6B@	open	??_7CCreatureAction_ScreamerIntoAggressive@?A0x6cb5dcbb@@6B@
 12869	land1122nf238	00740040	??0CModeSitBench@NCreatureMode@@QAE@AAVCThing@@@Z	closed	
 12873	land1122nf240	007400e0	??_GCModeSitBench@NCreatureMode@@UAEPAXI@Z	no_binding	

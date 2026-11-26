@@ -1,0 +1,18 @@
+addr       parity           behav  name
+004d53bb   RELOCATION_MATCH PASS   Alloc
+004db15e   WARN RELOC_NAME: ??0CTCShotDefinitionBase_Calls@NThingShot@@QAE@PAVCThing@@@Z -> 007bf460 labelled 'NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase'
+004db15e   WARN RELOC_NAME: ??0CIntelligentPointer_CThing@NThingShot@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<class CThing>::CIntelligentPointer'
+004db15e   RELOCATION_MATCH PASS   CTCShotDefinitionDrainLife
+004dcab9   WARN SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile (engine/CTCShotDefinitionProjectile.h)
+004dcab9   RELOCATION_MATCH PASS   CTCShotDefinitionForcePushBall
+004dcb3c   RELOCATION_MATCH PASS   Alloc
+004deb47   RELOCATION_MATCH PASS   Alloc
+007bbc65   RELOCATION_MATCH PASS   CTCShotDefinitionMultiArrow
+
+WINS: 6
+  004d53bb RELOCATION_MATCH NThingShot::CTCShotDefinitionMultiArrow::?Alloc@CTCShotDefinitionMultiArrow@NThingShot@@SIPAVCTCBase@@AAVCThing@@@Z
+  004db15e RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::CTCShotDefinitionDrainLife
+  004dcab9 RELOCATION_MATCH NThingShot::CTCShotDefinitionForcePushBall::??0CTCShotDefinitionForcePushBall@
+  004dcb3c RELOCATION_MATCH NThingShot::CTCShotDefinitionDrainLife::?Alloc@CTCShotDefinitionDrainLife@NThingShot@@SIPAVCTCBase@@AAVCThing@@@Z
+  004deb47 RELOCATION_MATCH NThingShot::CTCShotDefinitionForcePushBall::?Alloc@CTCShotDefinitionForcePushBall@NThingShot@@SIPAVCTCBase@@AAVCThing@@@Z
+  007bbc65 RELOCATION_MATCH NThingShot::CTCShotDefinitionMultiArrow::??0CTCShotDefinitionMultiArrow

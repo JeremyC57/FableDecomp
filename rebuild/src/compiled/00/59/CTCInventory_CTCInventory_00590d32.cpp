@@ -1,9 +1,10 @@
-// CTCInventory::CTCInventory(CThing* owner) -- build the hero inventory component: both bases, the swap/shortcut state, the
+// CTCInventory::CTCInventory(CThing& owner) -- build the hero inventory component: both bases, the swap/shortcut state, the
 // edit-box list, the quick-access / context-sensitive / primitive-handle / opinion vectors and the two menu maps; then size
 // the quick-access vectors from the quick-access slot count, the context-sensitive ones from their slot count, and the
 // three opinion-expression vectors to six entries
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00590D32, 471 bytes, `ret 4` (frame pointer, `leave`).
 // Leaf: ??0CTCInventory
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCInventory@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCInventory@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Naming (NF449 gen, 2026-11-25): callee-only respell of this row's base / member construct calls to the PDB constructor spelling
 //   (T1 tracker; target self rows' Leaf): the row's own bodiless model ctor takes the PDB parameter types, call sites pass *x:
 //   0x005BFF07 ??0CTCInventoryBase@NInventory@@QAE@AAVCThing@@@Z (was ??0CTCInventoryBase@NInventory@@QAE@PAVCThing@@@Z)
@@ -132,12 +133,12 @@ public:
     NUISystem::CComponent*   PTop_Level_List;                 // +0x218
     long                     CurrentOpenMenu;                 // +0x21c
     float                    AccumFadeTime;                   // +0x220
-    CTCInventory(CThing* owner);
+    CTCInventory(CThing& owner);
     virtual ~CTCInventory();
 };
 
-CTCInventory::CTCInventory(CThing* owner)
-    : NInventory::CTCInventoryBase(*owner),
+CTCInventory::CTCInventory(CThing& owner)
+    : NInventory::CTCInventoryBase(owner),
       ThingToAssign(0),
       ThingSlotToSwap(0),
       PComponentSlotToSwap(0),

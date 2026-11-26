@@ -1,0 +1,30 @@
+addr       parity           behav  name
+004db024   WARN SHARED_HEADER_AVAILABLE CTCCameraCollision (engine/CTCCameraCollision.h)
+004db024   WARN RELOC_NAME: ??0CTCCameraCollision@@QAE@PAVCThing@@@Z -> 007eebe0 labelled 'CTCSmashableBase::CTCSmashableBase'
+004db024   RELOCATION_MATCH PASS   CTCSmashableBarrier
+004dc6ba   WARN SHARED_HEADER_AVAILABLE CTCCameraCollision (engine/CTCCameraCollision.h)
+004dc6ba   WARN RELOC_NAME: ??0CTCCameraCollision@@QAE@PAVCThing@@@Z -> 007eebe0 labelled 'CTCSmashableBase::CTCSmashableBase'
+004dc6ba   RELOCATION_MATCH PASS   CTCSmashableWindow
+004dc6fe   RELOCATION_MATCH PASS   Alloc
+004de34e   RELOCATION_MATCH PASS   Alloc
+004de660   WARN SHARED_HEADER_AVAILABLE CTCActivationReceptorBase (engine/CTCActivationReceptorBase.h)
+004de660   RELOCATION_MATCH PASS   CTCActivationReceptorDoor
+004de68b   WARN SHARED_HEADER_AVAILABLE CTCActivationReceptorBase (engine/CTCActivationReceptorBase.h)
+004de68b   RELOCATION_MATCH PASS   CTCActivationReceptorRelay
+004e07e3   WARN SHARED_HEADER_AVAILABLE CTCActivationReceptorBase (engine/CTCActivationReceptorBase.h)
+004e07e3   RELOCATION_MATCH PASS   CTCActivationReceptorChest
+004e088e   RELOCATION_MATCH PASS   Alloc
+004e08c7   RELOCATION_MATCH PASS   Alloc
+004e2791   RELOCATION_MATCH PASS   Alloc
+
+WINS: 10
+  004db024 RELOCATION_MATCH CTCSmashableBarrier::??0CTCSmashableBarrier@
+  004dc6ba RELOCATION_MATCH CTCSmashableWindow::??0CTCSmashableWindow@
+  004dc6fe RELOCATION_MATCH CTCSmashableBarrier::?Alloc@CTCSmashableBarrier@@SIPAVCTCBase@@AAVCThing@@@Z
+  004de34e RELOCATION_MATCH CTCSmashableWindow::?Alloc@CTCSmashableWindow@@SIPAVCTCBase@@AAVCThing@@@Z
+  004de660 RELOCATION_MATCH CTCActivationReceptorDoor::??0CTCActivationReceptorDoor@
+  004de68b RELOCATION_MATCH CTCActivationReceptorRelay::??0CTCActivationReceptorRelay@
+  004e07e3 RELOCATION_MATCH CTCActivationReceptorChest::??0CTCActivationReceptorChest@
+  004e088e RELOCATION_MATCH CTCActivationReceptorDoor::?Alloc@CTCActivationReceptorDoor@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e08c7 RELOCATION_MATCH CTCActivationReceptorRelay::?Alloc@CTCActivationReceptorRelay@@SIPAVCTCBase@@AAVCThing@@@Z
+  004e2791 RELOCATION_MATCH CTCActivationReceptorChest::?Alloc@CTCActivationReceptorChest@@SIPAVCTCBase@@AAVCThing@@@Z

@@ -1,5 +1,6 @@
 // CTCInventoryExperience::CTCInventoryExperience(CThing*) -- builds the CTCInventoryBase and NHeroInformationScreens::CBase bases, stores both vtables, constructs the tutorial-sound / undo / upgradable maps, the primitive-handle and spend vectors and the slider-animator list, and clears the fade time, mouse pointer and the rebuild / undo / opened flags
-// Leaf: ??0CTCInventoryExperience@@QAE@PAVCThing@@@Z
+// Leaf: ??0CTCInventoryExperience@@QAE@AAVCThing@@@Z
+// Naming (NF456, r454b): the constructor takes `CThing&`, ??0CTCInventoryExperience@@QAE@AAVCThing@@@Z as both PDB name sets spell it (was ??0CTCInventoryExperience@@QAE@PAVCThing@@@Z); a reference passes the same pointer, so the object is unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057832D, 322 bytes, `ret 4`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (the list's default allocator argument lives in the argument slot,
 //   `lea eax,[ebp+0Bh]`). Vtables 0x0124F11C (primary) and 0x0124F108 (NHeroInformationScreens::CBase at +0x130).
@@ -114,11 +115,11 @@ class CTCInventoryExperience : public CTCInventoryBase, public NHeroInformationS
     long PointsSkill;                                                       // +0x268
     long PointsWill;                                                        // +0x26C
     virtual void v00();
-    CTCInventoryExperience(CThing* thing);
+    CTCInventoryExperience(CThing& thing);
 };
 
-CTCInventoryExperience::CTCInventoryExperience(CThing* thing)
-    : CTCInventoryBase(thing), AccumFadeTime(0.0f), PMousePointer(0)
+CTCInventoryExperience::CTCInventoryExperience(CThing& thing)
+    : CTCInventoryBase(&thing), AccumFadeTime(0.0f), PMousePointer(0)
 {
     DestroyEverything = false;
     CreateBecauseOfUndo = false;

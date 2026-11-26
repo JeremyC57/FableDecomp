@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+add	??1CModeStrafe@NCreatureMode@@UAE@XZ	007420e0	007420c0	NF456: the landed scalar deleting destructor 0x007420C0 calls 0x007420E0 (call at 0x007420C3, retail), now spelt ??1CModeStrafe@NCreatureMode@@UAE@XZ (UND in its new object); no table line bound that address before (the stand-in callee ?CModeStrafe_dtor@@YIXPAUCModeStrafe@@@Z bound nothing).
+add	??1CModeSleepBed@NCreatureMode@@UAE@XZ	0084b840	0084b820	NF456: the landed scalar deleting destructor 0x0084B820 calls 0x0084B840 (call at 0x0084B823, retail), now spelt ??1CModeSleepBed@NCreatureMode@@UAE@XZ (UND in its new object); no table line bound that address before (the stand-in callee ?CModeSleepBed_dtor@@YIXPAUCModeSleepBed@@@Z bound nothing).

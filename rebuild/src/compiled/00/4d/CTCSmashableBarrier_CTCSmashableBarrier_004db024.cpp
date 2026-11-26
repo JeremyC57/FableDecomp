@@ -3,6 +3,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB024, oracle length 24 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+// Naming (NF455/NF456, r454b, ruling r455c): the constructor takes `CThing&`, ??0CTCSmashableBarrier@@QAE@AAVCThing@@@Z as FableWin.pdb spells it (Ego_r inlines the
+//   ctor; one-source:fablewin-pdb best guess, BEST_GUESS.tsv), was ??0CTCSmashableBarrier@@QAE@PAVCThing@@@Z; its sole retail caller, the factory 0x004DC6FE
+//   ?Alloc@CTCSmashableBarrier@@SIPAVCTCBase@@AAVCThing@@@Z (both PDBs), passes its CThing& straight through. A reference passes the same pointer: object unchanged.
 //
 // Retail bytes:  push esi ; push dword ptr [esp+8] ; mov esi,ecx ; call CTCCameraCollision::CTCCameraCollision ; mov dword ptr [esi],offset CTCSmashableBarrier::`vftable' ; mov eax,esi ; pop esi ; ret 4
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
@@ -17,10 +20,10 @@ class CTCCameraCollision { public:
 
 class CTCSmashableBarrier : public CTCCameraCollision { public:
     virtual void v00();
-    CTCSmashableBarrier(CThing* argument);
+    CTCSmashableBarrier(CThing& argument);
 };
 
-CTCSmashableBarrier::CTCSmashableBarrier(CThing* argument)
-    : CTCCameraCollision(argument)
+CTCSmashableBarrier::CTCSmashableBarrier(CThing& argument)
+    : CTCCameraCollision(&argument)
 {
 }

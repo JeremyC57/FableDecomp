@@ -1,22 +1,29 @@
 #pragma optimize("s",on)
-// CTCTavernGameSpotTheAddition::Alloc(CThing&) -- factory: new CTCTavernGameSpotTheAddition(owner)
+// CTCTavernGameSpotTheAddition::Alloc(CThing& thing) -- the registry factory: a new CTCTavernGameSpotTheAddition for `thing` (operator new(0x188) 0x00BFEA1A, null-checked, then
+//   the constructor 0x007D8DA0), returned as its CTCBase
+// Leaf: ?Alloc@CTCTavernGameSpotTheAddition@@SIPAVCTCBase@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D5A77, oracle length 32 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x188 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// A __fastcall factory: allocates sizeof(CTCTavernGameSpotTheAddition) = 0x188 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and runs the constructor @ 0x007D8DA0 on it with the
-// argument, returning the new object (or null). One of 338 bodies of this shape; the class
-// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-class CThing;
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CTCTavernGameSpotTheAddition@@SIPAVCTCBase@@AAVCThing@@@Z (public static __fastcall); its only retail reference is
+//   CTCBase::RegisterTCs 0x004EE23F, whose landed row already binds this spelling here (reloc_bindings.tsv). The constructor is
+//   ??0CTCTavernGameSpotTheAddition@@QAE@AAVCThing@@@Z (Ego_r + FableWin name sets), 0x007D8DA0, landed in the same unit.
+// Naming (NF456, r454b unit with 0x007D8DA0): re-authored on the shared engine/CTCBase.h as the 0x004D393C pattern, same bytes (CTCBase is the
+//   first base, so the upcast needs no adjustment). Was the generated free function CTCTavernGameSpotTheAddition_Alloc(CThing*) returning CTCTavernGameSpotTheAddition*, calling the
+//   constructor as (CThing*).
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"
 
-struct CTCTavernGameSpotTheAddition {
-    unsigned char _body[0x188];       // sizeof(CTCTavernGameSpotTheAddition) = 0x188
-    CTCTavernGameSpotTheAddition(CThing* owner);                   // 0x007D8DA0
+class CTCTavernGameSpotTheAddition : public CTCBase {
+public:
+    CTCTavernGameSpotTheAddition(CThing& thing);            // 0x007D8DA0
+    static CTCBase* __fastcall Alloc(CThing& thing);
+    virtual ETCInterfaceType GetInterfaceType() const;
+    virtual CCharString GetClassTypeName() const;
+private:
+    unsigned char Members[0x188 - 0xC];              // the class's own members (not modelled); sizeof(CTCTavernGameSpotTheAddition) = 0x188
 };
 
-CTCTavernGameSpotTheAddition* __fastcall CTCTavernGameSpotTheAddition_Alloc(CThing* owner)
+CTCBase* __fastcall CTCTavernGameSpotTheAddition::Alloc(CThing& thing)
 {
-    return new CTCTavernGameSpotTheAddition(owner);
+    return new CTCTavernGameSpotTheAddition(thing);
 }
