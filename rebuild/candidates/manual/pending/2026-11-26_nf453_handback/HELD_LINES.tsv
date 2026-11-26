@@ -1,0 +1,79 @@
+level	action	symbol	target	witness	reason	evidence
+strong	delete	?CGuiVarTransferBool_Apply@@YIXPAXH_N@Z	00a84cf0	00a84ff0	HOLD_r453d_UNCHECKED_REF	rows referencing 00a84cf0 with no re-derivable leaf pairs: 00a7a650
+strong	delete	??1CBase_00c1c820@@QAE@XZ	00c1c820	00c1d780	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CFirst_00c1adb0@@QAE@XZ	00c1c820	00c1adb0	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CFirst_00c1b2a0@@QAE@XZ	00c1c820	00c1b2a0	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CFirst_00c48220@@QAE@XZ	00c1c820	00c48220	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CFirst_00c49d00@@QAE@XZ	00c1c820	00c49d00	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CFirst_00c4b270@@QAE@XZ	00c1c820	00c4b270	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CHandleTable_00c1a230@@QAE@XZ	00c1c820	00c1a230	HOLD_r453d_UNCHECKED_REF	rows referencing 00c1c820 with no re-derivable leaf pairs: 01215f40
+strong	delete	??1CSmall_00c6a340@@QAE@XZ	00c69680	00c6a340	HOLD_r453d_UNCHECKED_REF	rows referencing 00c69680 with no re-derivable leaf pairs: 01216588
+strong	delete	??1CSmall_00c75980@@QAE@XZ	00c69680	00c75980	HOLD_r453d_UNCHECKED_REF	rows referencing 00c69680 with no re-derivable leaf pairs: 01216588
+strong	delete	?g_EmptyCharString_0129A8E0@@3PADA	0129a8e0	0099af00	HOLD_r453d_UNCHECKED_REF	rows referencing 0129a8e0 with no re-derivable leaf pairs: 0099dcb0
+strong	delete	??_7CDynamicObjectHeap_116_529@@6B@	0129f650	00af8b40	HOLD_r453d_UNCHECKED_REF	rows referencing 0129f650 with no re-derivable leaf pairs: 00b0fbf0,00b0ffc0,00b1d550
+strong	delete	??_7CBase_00c56370@@6B@	012b5868	00c56370	HOLD_r453d_UNCHECKED_REF	rows referencing 012b5868 with no re-derivable leaf pairs: 00c3cbd0
+strong	delete	??_7CBase_012b5868@@6B@	012b5868	00c6e630	HOLD_r453d_UNCHECKED_REF	rows referencing 012b5868 with no re-derivable leaf pairs: 00c3cbd0
+strong	delete	??_7CConsoleVariableBase@@6B@	012b5868	00c60b90	HOLD_r453d_UNCHECKED_REF	rows referencing 012b5868 with no re-derivable leaf pairs: 00c3cbd0
+strong	delete	??_7CSlotBase_00c3cb30@@6B@	012b5868	00c3caa0	HOLD_r453d_UNCHECKED_REF	rows referencing 012b5868 with no re-derivable leaf pairs: 00c3cbd0
+strong	delete	??_7CTCFishingSpotBase_00c3e2a0@@6B@	012b5868	00c3e2a0	HOLD_r453d_UNCHECKED_REF	rows referencing 012b5868 with no re-derivable leaf pairs: 00c3cbd0
+strong	delete	??_7CMorphAction_00c3dde0@@6B@	012b5a84	00c3dde0	HOLD_r453d_UNCHECKED_REF	rows referencing 012b5a84 with no re-derivable leaf pairs: 00c3d390
+strong	delete	??_7CAInputProcessBase_00c885c0@@6B@	012beffc	00c885c0	HOLD_r453d_UNCHECKED_REF	rows referencing 012beffc with no re-derivable leaf pairs: 00c74850
+strong	delete	?g_logicFramesPerSecond@@3JA	01375550	00907670	HOLD_r453d_UNCHECKED_REF	rows referencing 01375550 with no re-derivable leaf pairs: 0065a5bb
+strong	delete	?g_list_013d2834@@3UCRetailList_node0xc@@A	013d2834	01224320	HOLD_r453d_UNCHECKED_REF	rows referencing 013d2834 with no re-derivable leaf pairs: 00988a50,00a5b870,00a5bba0,00a5bef0,00a5cb90,00adf960,00bdc510,00bf4220,00bf4570
+strong	delete	?g_SteeringTimer@@3PADA	0143bb14	00c094a0	HOLD_r453d_UNCHECKED_REF	rows referencing 0143bb14 with no re-derivable leaf pairs: 00c1ec60
+strong	delete	?AssertHook_0143bb2c@@3P6IXPBD@ZA	0143bb2c	00c0c0c0	HOLD_r453d_UNCHECKED_REF	rows referencing 0143bb2c with no re-derivable leaf pairs: 00c1ec60
+strong	delete	?g_SteeringCallback@@3P6AXXZA	0143bb2c	00c094a0	HOLD_r453d_UNCHECKED_REF	rows referencing 0143bb2c with no re-derivable leaf pairs: 00c1ec60
+strong	delete	?g_getCount@@3P6AHXZA	01440124	00c62350	HOLD_r453d_UNCHECKED_REF	rows referencing 01440124 with no re-derivable leaf pairs: 00401284,0040128a,00401290,00401356,0040136e,0040137a,00401380,00401386,004013d8,004013de
+strong	delete	?g_C3DGeneratorObject_ctor@@3P6APAUC3DGeneratorObject@@PAU1@@ZA	01440154	00c918a0	HOLD_r453d_UNCHECKED_REF	rows referencing 01440154 with no re-derivable leaf pairs: 0040126c,00401272,00401278,0040127e,00401284,0040128a,00401290,00401356,0040136e,0040137a
+strong	delete	?g_afterUpdate@@3P6AXPAUCEngineResourceManager@@@ZA	01440154	00c95420	HOLD_r453d_UNCHECKED_REF	rows referencing 01440154 with no re-derivable leaf pairs: 0040126c,00401272,00401278,0040127e,00401284,0040128a,00401290,00401356,0040136e,0040137a
+strong	delete	?g_ctorHelper@@3P6AXPAUC3DGeneratorObject@@@ZA	01440154	00c9ec00	HOLD_r453d_UNCHECKED_REF	rows referencing 01440154 with no re-derivable leaf pairs: 0040126c,00401272,00401278,0040127e,00401284,0040128a,00401290,00401356,0040136e,0040137a
+strong	delete	?g_ctorptr@@3P6AXPAUC3DGeneratorObject@@@ZA	01440154	00ca3580	HOLD_r453d_UNCHECKED_REF	rows referencing 01440154 with no re-derivable leaf pairs: 0040126c,00401272,00401278,0040127e,00401284,0040128a,00401290,00401356,0040136e,0040137a
+strong	delete	?g_initObject@@3P6AXPAX@ZA	01440154	00c9fdd0	HOLD_r453d_UNCHECKED_REF	rows referencing 01440154 with no re-derivable leaf pairs: 0040126c,00401272,00401278,0040127e,00401284,0040128a,00401290,00401356,0040136e,0040137a
+strong	delete	__imp_?Imp_c06050@@YAXPAX@Z	01440154	00c06050	HOLD_r453d_UNCHECKED_REF	rows referencing 01440154 with no re-derivable leaf pairs: 0040126c,00401272,00401278,0040127e,00401284,0040128a,00401290,00401356,0040136e,0040137a
+weak_nohdr	rewitness	??_7CVtable_012BF050@@6B@	012bf050	00c74450	HOLD_r453d_UNCHECKED_REF	rows referencing 012bf050 with no re-derivable leaf pairs: 00c74850
+weak_nohdr	rewitness	?g_framesPerSecond@@3JA	01375550	00643f13	HOLD_r453d_UNCHECKED_REF	rows referencing 01375550 with no re-derivable leaf pairs: 0065a5bb
+weak_nohdr	rewitness	?g_pWorld@@3PAVCWorld@@A	013b86a0	005eb4b0	HOLD_r453d_UNCHECKED_REF	rows referencing 013b86a0 with no re-derivable leaf pairs: 005e3ea0,0065a5bb,008ed590
+weak_nohdr	rewitness	?g_registeredObstacles@@3UCObstaclesList@@A	013d2834	006ce670	HOLD_r453d_UNCHECKED_REF	rows referencing 013d2834 with no re-derivable leaf pairs: 00988a50,00a5b870,00a5bba0,00a5bef0,00a5cb90,00adf960,00bdc510,00bf4220,00bf4570
+weak_hdr	rewitness	?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z	004365b0	005eb510	HOLD_r453d_UNCHECKED_REF	rows referencing 004365b0 with no re-derivable leaf pairs: 00846100
+weak_hdr	rewitness	?Cleanup@SubObject@@QAEXXZ	0099eae0	0043020a	HOLD_r453d_UNCHECKED_REF	rows referencing 0099eae0 with no re-derivable leaf pairs: 0043020a,00579435,00846100,00b687d0
+strong	delete	??_7CAbilitySoundComponent_00c0b200@@6B@	012b1e84	00c0b200	HOLD_r453d_UNCHECKED_REF	rows referencing 012b1e84 with no re-derivable leaf pairs: 00c0b180,00c45940,00c74850
+strong	delete	??_7CVtable012b1e84@@6B@	012b1e84	00c0a9a0	HOLD_r453d_UNCHECKED_REF	rows referencing 012b1e84 with no re-derivable leaf pairs: 00c0b180,00c45940,00c74850
+strong	delete	??_7SVtableRecord_00c3c8a0@@6B@	012b586c	00c3c8a0	HOLD_r453d_UNCHECKED_REF	rows referencing 012b586c with no re-derivable leaf pairs: 00c3cbd0
+weak_nohdr	delete	??_7CSlot_00c3cb30@@6B@	012b586c	00c3caa0	HOLD_r453d_UNCHECKED_REF	rows referencing 012b586c with no re-derivable leaf pairs: 00c3cbd0
+strong	v1	?lbp_scalar_dtor@CInputProcessToggleViewHeroMode@@QAEXXZ	00a0d3d0	0048b6c0	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+strong	v1	?scalar_destructor@CInputProcessHeroAbilitiesScreen@@QAEXXZ	00a0d3d0	0048b560	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+strong	v1	?scalar_destructor@CInputProcessInventoryMagicScreen@@QAEXXZ	00a0d3d0	0048b600	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+strong	v1	@Sub_Construct@20	00c0b570	00c25ff0	SKIP_LOCKED:00c0b570=CODEX29	v1 classification (kept held, r453d)
+strong	v1	??0CBase_00c6e760@@QAE@XZ	00c6e760	00c550b0	GONE_OR_CHANGED:table witness now []	v1 classification (kept held, r453d)
+strong	v1	?UpdateGainRamp@CVtable_012bedb8@@QAEX_N@Z	00c6ebe0	00c6ec80	GONE_OR_CHANGED:table witness now []	v1 classification (kept held, r453d)
+strong	v1	__v_readstring	00c8dbb0	00c8e200	HOLD_WITNESS_NO_PAIR_AT_T	v1 classification (kept held, r453d)
+weak_nohdr	v1	?Invoke@AutoTinyThunkTarget@@QAEXXZ	0098eff0	0098f0e0	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_nohdr	v1	?ScalarDtor@CInputProcessConsole@@QAEXXZ	00a0d3d0	0048b3b0	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_nohdr	v1	?dtor@CInputProcessControlCreature@@QAEXXZ	00a0d3d0	0048b400	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_nohdr	v1	?dtor@CInputProcessControlCreatureActivateZTargetOnPress@@QAEXXZ	00a0d3d0	0048b440	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_nohdr	v1	?dtor@CInputProcessInventory@@QAEXXZ	00a0d3d0	0048b500	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_nohdr	v1	?ReleaseAll@CDirectInputDeviceLists_00a61b10@@QAEXXZ	00a61a80	00a61b10	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_nohdr	v1	??1CNode@@QAE@XZ	00c17b10	00c30550	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_nohdr	v1	??0CAIStateGroup_CreatureUseCoverBase_00c42d60@@QAE@XZ	00c42d60	00c44580	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_nohdr	v1	??0CBase_00c4cf20@@QAE@XZ	00c4cf20	00c3c590	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_nohdr	v1	??_7CSteeringGroup@@6B@	012b1e24	00c094a0	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_nohdr	v1	?g_AutoTinyThunkObject@@3UAutoTinyThunkTarget@@A	013bc870	0098f0e0	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	??0CDefClassBase@@QAE@XZ	00430370	004550ac	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf442_handback/STALE_TABLE.tsv	v1 classification (kept held, r453d)
+weak_hdr	v1	??0CComponentContainer@@QAE@J@Z	00727580	004d2a14	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	?__copy_backward@@YIPAUSKeyedRecord@@PAU1@00ABUSRandomAccessIteratorTag@@PAJ@Z	00819670	0081bda0	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	?__unguarded_linear_insert@@YIXPAUSKeyedRecord@@U1@USKeyLess@@@Z	00819940	0081bda0	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	?__copy_backward@@YIPAUSElement16@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	0086a4a0	0086c620	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	?__unguarded_linear_insert@@YIXPAUSElement16@@U1@USKeyLess@@@Z	0086a6e0	0086c620	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	??1?$_List_base@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAE@XZ	008f9f50	0122a200	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	??1CDataInputStream@@UAE@XZ	00993b10	00a4fe60	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	?insert_unique@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCWideString@@U?$_Nonconst_traits@VCWideString@@@std@@@std@@_N@2@ABVCWideString@@@Z	009aaeb0	009a7d40	HOLD_WITNESS_GRADE	v1 classification (kept held, r453d)
+weak_hdr	v1	?Destroy@CInputProcessClickPastText@@QAEXXZ	00a0d3d0	0048b660	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_hdr	v1	?Destroy@CInputProcessInventoryMapScreen@@QAEXXZ	00a0d3d0	0048b580	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_hdr	v1	?destroy@CInputProcessInventoryWeapons@@QAEXXZ	00a0d3d0	0048b540	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_hdr	v1	?destroy@CInputProcessTargetLockCycleTargets@@QAEXXZ	00a0d3d0	0048b4a0	SKIP_PENDING:rebuild/candidates/manual/pending/2026-11-25_nf450_handback/STALE_TABLE_00a0d3d0.tsv	v1 classification (kept held, r453d)
+weak_hdr	v1	?UpdateEvents@CKeyboardDX@@QAEXXZ	00ab6240	00ab69f0	HOLD_WITNESS_NO_PAIR_AT_T	v1 classification (kept held, r453d)
+weak_hdr	v1	?Set@CSlot_00c0b380@@QAEXPAXJ0@Z	00c0b570	00c0b380	SKIP_LOCKED:00c0b570=CODEX29	v1 classification (kept held, r453d)
+weak_hdr	v1	??0CNavigationLayer@@QAE@XZ	00c20390	00c10a30	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	??0C3DAnimationBlendState@@QAE@XZ	00c59ba0	00c72600	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+weak_hdr	v1	??_7CLandscapeBackgroundPatch@@6B@	012b4e08	00c31f00	HOLD_HELD_ELSEWHERE	v1 classification (kept held, r453d)
+-	v1	??1CString_00c0e360@@QAE@XZ	00c0ba40	-	HOLD_UNCHECKED_REF	v1 classification (kept held, r453d)

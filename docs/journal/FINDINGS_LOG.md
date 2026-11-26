@@ -1662,3 +1662,10 @@ against CODAApi.lib, or stay compiled C++?
   objects, never the table alone, and a self respell lands only with every caller that spells the target differently (the b3 recipe).
 - At landing, b1 (6 dtors) and three b2 ctors were reverted for exactly this; 18 ctors landed (10 with no landed caller, 8 as factory
   units, whose 8 bindings were added to the table). Owner item: a table rebuild from all landed objects would show the true split count.
+
+## 2026-11-26 A: full-object census: 3,746 live bindings missing from the table (NF453)
+- From NF453's census of all 57,160 landed rows (approximate: graded function picked by leaf name): 3,746 live (target, symbol) pairs
+  from MATCH / RELOCATION_MATCH rows are absent from rebuild/oracles/reloc_bindings.tsv, at 3,424 targets (801 untracked today).
+  Adding them would move about 798 targets out of an agree status (409 agree_pdb, 137 agree_std, 136 agree_descriptive, 116
+  agree_unverified). The proven figure therefore overstates closure by up to about 800; owner decision on a table rebuild.
+  Details: rebuild/candidates/manual/pending/2026-11-26_nf453_handback/README.md.
