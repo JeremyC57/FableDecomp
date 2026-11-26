@@ -24,6 +24,24 @@ public:
     virtual void FrameUpdate();  // slot 10, 0x00691AD0
 public:
 #endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237EC8, 11 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void Init();                                                                             // slot 2, 0x00691AC0
+#if !(defined(FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_PROCESSINPUT))
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00691AE0
+#endif
+    virtual bool ProcessWhilePaused() const;                                                         // slot 7, 0x00486C30
+#if !(defined(FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_VSLOTS))
+    virtual bool HasFrameUpdate() const;                                                             // slot 9, 0x00486C20
+#endif
+#if !(defined(FABLE_RETAIL_CINPUTPROCESSPHOTOJOURNALCAPTURE_VSLOTS))
+    virtual void FrameUpdate();                                                                      // slot 10, 0x00691AD0
+#endif
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(23, sizeof(CInputProcessPhotojournalCapture) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSPHOTOJOURNALCAPTURE_H

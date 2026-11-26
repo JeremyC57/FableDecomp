@@ -30,6 +30,20 @@ private:
     void CancelQuickAccessCharge();                                      // 0x0068E3C0
 public:
 #endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237AE0, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void Cleanup();                                                                          // slot 3, 0x0068E4D0
+#if !(defined(FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_PROCESS_PASS26))
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x0068E510
+#endif
+#if !(defined(FABLE_RETAIL_CINPUTPROCESSQUICKACCESSITEMS_UPDATE))
+    virtual void Update(CProcessedInput& processed_input);                                           // slot 6, 0x0068E450
+#endif
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessQuickAccessItems) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSQUICKACCESSITEMS_H

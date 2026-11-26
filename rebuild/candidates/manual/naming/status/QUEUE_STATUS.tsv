@@ -10929,3 +10929,45 @@ line	tag	address	correct_symbol	status	other_spellings
 13821	nf476	0091d820	?Initialise@CAIStateGroup_EnemyCreatureBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	partial	?Initialise@CAIStateGroup_EnemyCreatureBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z || ?base_init@@YIXPAUC@@@Z
 13822	nf476	009705d0	?Initialise@CAIStateGroup_CreatureUseCoverBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	no_binding	
 13823	nf476	009612e0	?Initialise@CAIStateGroup_BanditKingLunge@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	closed	
+13824	nf477	0048cea0	??_GCInputProcessZTarget@@UAEPAXI@Z	no_binding	
+13825	nf477	0048d680	??_GCInputProcessCombat@@UAEPAXI@Z	no_binding	
+13826	nf477	00687db0	?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z	no_binding	
+13827	nf477	00687df0	??_GCInputProcessGameBase@@UAEPAXI@Z	no_binding	
+13828	nf477	00687f80	?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
+13829	nf477	00689130	?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13830	nf477	006896a0	?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13831	nf477	006896b0	?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13832	nf477	00689810	?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13833	nf477	00689970	?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13834	nf477	00689ad0	?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13835	nf477	00689ae0	?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13836	nf477	00689af0	?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13837	nf477	00689b00	?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13838	nf477	00689c10	?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13839	nf477	00689c30	?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ	no_binding	
+13840	nf477	00689c40	?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13841	nf477	0068ae30	?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13842	nf477	0068b2e0	?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13843	nf477	0068b7c0	?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13844	nf477	0068c880	?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13845	nf477	0068cb70	?Init@CInputProcessControlFreeCamera@@UAEXXZ	no_binding	
+13846	nf477	0068d830	?Init@CInputProcessControlCreatureRightStick@@UAEXXZ	no_binding	
+13847	nf477	0068d840	?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z	no_binding	
+13848	nf477	0068d890	?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13849	nf477	0068eb10	?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z	no_binding	
+13850	nf477	0068f320	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13851	nf477	00690030	?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13852	nf477	00690390	?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
+13853	nf477	00690480	?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13854	nf477	00690830	?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13855	nf477	00690ac0	?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ	no_binding	
+13856	nf477	00690b20	?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13857	nf477	00690d20	?Init@CInputProcessParalysed@@UAEXXZ	open	?Init@CInputProcessParalysed_Methods@@QAEXXZ
+13858	nf477	00690e70	?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13859	nf477	00690fd0	?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13860	nf477	00691130	?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13861	nf477	00691680	?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13862	nf477	00691870	?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	open	ProcessInput
+13863	nf477	006a4700	?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
+13864	nf477	006a9170	?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	no_binding	
+13865	nf477	006a91d0	??_GCInputProcessControlSpirit@@UAEPAXI@Z	no_binding	

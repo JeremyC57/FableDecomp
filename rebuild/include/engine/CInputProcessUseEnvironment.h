@@ -17,6 +17,16 @@ public:
 #ifdef FABLE_RETAIL_CINPUTPROCESSUSEENVIRONMENT_PASS24
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);
 #endif
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237A90, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+#if !(defined(FABLE_RETAIL_CINPUTPROCESSUSEENVIRONMENT_PASS24))
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x0068DD00
+#endif
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessUseEnvironment) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSUSEENVIRONMENT_H

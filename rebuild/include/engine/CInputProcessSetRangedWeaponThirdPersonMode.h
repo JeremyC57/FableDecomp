@@ -10,6 +10,14 @@
 class CInputProcessSetRangedWeaponThirdPersonMode : public CInputProcessGameBase {
 public:
     CInputProcessSetRangedWeaponThirdPersonMode(const CInputProcessGameBaseInit& init) : CInputProcessGameBase(init) { }
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237B58, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x0068EA60
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessSetRangedWeaponThirdPersonMode) == 0x28);
+FABLE_STATIC_ASSERT_AT(14, sizeof(CInputProcessSetRangedWeaponThirdPersonMode) == 0x28);
 #endif // FABLE_ENGINE_CINPUTPROCESSSETRANGEDWEAPONTHIRDPERSONMODE_H

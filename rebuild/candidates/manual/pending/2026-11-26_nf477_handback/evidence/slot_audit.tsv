@@ -1,0 +1,626 @@
+class	parent	nslots	slot	method	target	parent_target	kind	pdb	leaf	verdict
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	0	~	0048b6a0	00687df0	DTOR		??_GCInputProcessBButtonExitMode@@UAEPAXI@Z	OK
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	4	ProcessInput	0068c760	00bfea08	OVERRIDE	?ProcessInput@CInputProcessBButtonExitMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessBButtonExitMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessBButtonExitMode	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessBetting	CInputProcessGameBase	9	0	~	0048bbc0	00687df0	DTOR		??_GCInputProcessBetting@@UAEPAXI@Z	OK
+CInputProcessBetting	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessBetting	CInputProcessGameBase	9	2	Init	00691550	00486360	OVERRIDE	?Init@CInputProcessBetting@@UAEXXZ(egor,fablewin)	?CInputProcessBetting_Init@@YIXXZ	SELF_MISSPELT
+CInputProcessBetting	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessBetting	CInputProcessGameBase	9	4	ProcessInput	00691560	00bfea08	OVERRIDE	?ProcessInput@CInputProcessBetting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessBetting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessBetting	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessBetting	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessBetting	CInputProcessGameBase	9	7	ProcessWhilePaused	00486ba0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessBetting@@UBE_NXZ(fablewin)	?CInputProcessBetting_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessBetting	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessBlock	CInputProcessGameBase	9	0	~	0048b880	00687df0	DTOR		??_GCInputProcessBlock@@UAEPAXI@Z	OK
+CInputProcessBlock	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessBlock	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessBlock	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessBlock	CInputProcessGameBase	9	4	ProcessInput	0068e2c0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessBlock@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessBlock@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessBlock	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessBlock	CInputProcessGameBase	9	6	Update	0068e330	00486390	OVERRIDE	?Update@CInputProcessBlock@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessBlock@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessBlock	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessBlock	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessBoastUI	CInputProcessGameBase	9	0	~	0048bb40	00687df0	DTOR		??_GCInputProcessBoastUI@@UAEPAXI@Z	OK
+CInputProcessBoastUI	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessBoastUI	CInputProcessGameBase	9	2	Init	00690e60	00486360	OVERRIDE	?Init@CInputProcessBoastUI@@UAEXXZ(egor,fablewin)	?CInputProcessBoastUI_Init@@YIXXZ	SELF_MISSPELT
+CInputProcessBoastUI	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessBoastUI	CInputProcessGameBase	9	4	ProcessInput	00690e70	00bfea08	OVERRIDE	?ProcessInput@CInputProcessBoastUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessBoastUI@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessBoastUI	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessBoastUI	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessBoastUI	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessBoastUI	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	0	~	0048b740	00687df0	DTOR		??_GCInputProcessCameraLookAround@@UAEPAXI@Z	OK
+CInputProcessCameraLookAround	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	4	ProcessInput	0068d790	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCameraLookAround@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessCameraLookAround@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessCameraLookAround	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessCameraLookAround	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessClickPastText	CInputProcessGameBase	9	0	~	0048b660	00687df0	DTOR		??_GCInputProcessClickPastText@@UAEPAXI@Z	OK
+CInputProcessClickPastText	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessClickPastText	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessClickPastText	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessClickPastText	CInputProcessGameBase	9	4	ProcessInput	0068c6e0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessClickPastText@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessClickPastText@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessClickPastText	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessClickPastText	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessClickPastText	CInputProcessGameBase	9	7	ProcessWhilePaused	004866b0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessClickPastText@@UBE_NXZ(fablewin)	?CInputProcessClickPastText_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessClickPastText	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	0	~	0048d680	00687df0	DTOR		?CInputProcessCombat_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	SELF_MISSPELT
+CInputProcessCombat	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	4	ProcessInput	0068fb90	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCombat@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessCombat@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessCombat	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessCombat	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessConsole	CInputProcessGameBase	9	0	~	0048b3b0	00687df0	DTOR		??_GCInputProcessConsole@@UAEPAXI@Z	OK
+CInputProcessConsole	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessConsole	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessConsole	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessConsole	CInputProcessGameBase	9	4	ProcessInput	00687f80	00bfea08	OVERRIDE	?ProcessInput@CInputProcessConsole@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessConsole@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessConsole	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessConsole	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessConsole	CInputProcessGameBase	9	7	ProcessWhilePaused	0048b3a0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessConsole@@UBE_NXZ(fablewin)	?CInputProcessConsole_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessConsole	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessControlCreature	CInputProcessGameBase	9	0	~	0048b400	00687df0	DTOR		??_GCInputProcessControlCreature@@UAEPAXI@Z	OK
+CInputProcessControlCreature	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessControlCreature	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessControlCreature	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessControlCreature	CInputProcessGameBase	9	4	ProcessInput	00688360	00bfea08	OVERRIDE	?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessControlCreature	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessControlCreature	CInputProcessGameBase	9	6	Update	006881d0	00486390	OVERRIDE	?Update@CInputProcessControlCreature@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessControlCreature@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessControlCreature	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessControlCreature	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	0	~	0048b420	00687df0	DTOR		??_GCInputProcessControlCreatureActivateZTarget@@UAEPAXI@Z	OK
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	4	ProcessInput	00688260	00bfea08	OVERRIDE	?ProcessInput@CInputProcessControlCreatureActivateZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessControlCreatureActivateZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessControlCreatureActivateZTarget	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	0	~	0048b440	00687df0	DTOR		??_GCInputProcessControlCreatureActivateZTargetOnPress@@UAEPAXI@Z	OK
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	4	ProcessInput	006882f0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessControlCreatureActivateZTargetOnPress@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessControlCreatureActivateZTargetOnPress@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessControlCreatureActivateZTargetOnPress	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	0	~	0048b780	00687df0	DTOR		??_GCInputProcessControlCreatureRightStick@@UAEPAXI@Z	OK
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	2	Init	0068d830	00486360	OVERRIDE	?Init@CInputProcessControlCreatureRightStick@@UAEXXZ(egor,fablewin)	?CInputProcessControlCreatureRightStick_Init@@YIXPAVCInputProcessControlCreatureRightStick@@@Z	SELF_MISSPELT
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	4	ProcessInput	0068d890	00bfea08	OVERRIDE	?ProcessInput@CInputProcessControlCreatureRightStick@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessControlCreatureRightStick@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	6	Update	0068d840	00486390	OVERRIDE	?Update@CInputProcessControlCreatureRightStick@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessControlCreatureRightStick@@QAEXM@Z	SELF_MISSPELT
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessControlCreatureRightStick	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	0	~	0048b720	00687df0	DTOR		??_GCInputProcessControlFreeCamera@@UAEPAXI@Z	OK
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	2	Init	0068cb70	00486360	OVERRIDE	?Init@CInputProcessControlFreeCamera@@UAEXXZ(egor,fablewin)	?Init@CInputProcessControlFreeCamera_Methods@@QAEXXZ	SELF_MISSPELT
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	4	ProcessInput	0068cb90	00bfea08	OVERRIDE	?ProcessInput@CInputProcessControlFreeCamera@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessControlFreeCamera@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	7	ProcessWhilePaused	00486790	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessControlFreeCamera@@UBE_NXZ(fablewin)	?CInputProcessControlFreeCamera_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessControlFreeCamera	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT	?IsInputEventToBeSentToThisInputProcess@CInputProcessControlFreeCamera@@UBE_NABVCInputEvent@@@Z(egor,fablewin)		-
+CInputProcessControlSpirit	CInputProcessGameBase	9	0	~	006a91d0	00687df0	DTOR		?CInputProcessControlSpirit_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	SELF_MISSPELT
+CInputProcessControlSpirit	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessControlSpirit	CInputProcessGameBase	9	2	Init	006a9180	00486360	OVERRIDE	?Init@CInputProcessControlSpirit@@UAEXXZ(egor,fablewin)	?Init@CInputProcessControlSpirit@@UAEXXZ	OK
+CInputProcessControlSpirit	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessControlSpirit	CInputProcessGameBase	9	4	ProcessInput	006a9170	00bfea08	OVERRIDE	?ProcessInput@CInputProcessControlSpirit@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessControlSpirit_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessControlSpirit	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessControlSpirit	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessControlSpirit	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessControlSpirit	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCreatureMovement	CInputProcessGameBase	9	0	~	0048b7f0	00687df0	DTOR		??_GCInputProcessCreatureMovement@@UAEPAXI@Z	OK
+CInputProcessCreatureMovement	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCreatureMovement	CInputProcessGameBase	9	2	Init	00691d20	00486360	OVERRIDE	?Init@CInputProcessCreatureMovement@@UAEXXZ(egor,fablewin)	?Init@CInputProcessCreatureMovement@@UAEXXZ	OK
+CInputProcessCreatureMovement	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCreatureMovement	CInputProcessGameBase	9	4	ProcessInput	00691d70	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessCreatureMovement	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCreatureMovement	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCreatureMovement	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessCreatureMovement	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	0	~	0048b840	00687df0	DTOR		??_GCInputProcessCreatureMovementWatchForControlAngleChange@@UAEPAXI@Z	OK
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	2	Init	00691c20	00486360	OVERRIDE	?Init@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXXZ(egor,fablewin)	?Init@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXXZ	OK
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	4	ProcessInput	00691c50	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessCreatureMovementWatchForControlAngleChange	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCreditsUI	CInputProcessGameBase	9	0	~	0048bba0	00687df0	DTOR		??_GCInputProcessCreditsUI@@UAEPAXI@Z	OK
+CInputProcessCreditsUI	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCreditsUI	CInputProcessGameBase	9	2	Init	00691460	00486360	OVERRIDE	?Init@CInputProcessCreditsUI@@UAEXXZ(egor,fablewin)	?CInputProcessCreditsUI_Init@@YIXXZ	SELF_MISSPELT
+CInputProcessCreditsUI	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCreditsUI	CInputProcessGameBase	9	4	ProcessInput	00691470	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCreditsUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessCreditsUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessCreditsUI	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCreditsUI	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCreditsUI	CInputProcessGameBase	9	7	ProcessWhilePaused	00486b70	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessCreditsUI@@UBE_NXZ(fablewin)	?CInputProcessCreditsUI_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessCreditsUI	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCutScene	CInputProcessGameBase	9	0	~	0048bac0	00687df0	DTOR		??_GCInputProcessCutScene@@UAEPAXI@Z	OK
+CInputProcessCutScene	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCutScene	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessCutScene	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCutScene	CInputProcessGameBase	9	4	ProcessInput	006909a0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessCutScene	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCutScene	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCutScene	CInputProcessGameBase	9	7	ProcessWhilePaused	00690ac0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessCutScene@@UBE_NXZ(egor,fablewin)	@ProcessWhilePaused@4	SELF_MISSPELT
+CInputProcessCutScene	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	0	~	0048b7a0	00687df0	DTOR		??_GCInputProcessCycleSpecialCameraModes@@UAEPAXI@Z	OK
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	4	ProcessInput	0068dbb0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessCycleSpecialCameraModes@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessCycleSpecialCameraModes_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessCycleSpecialCameraModes	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	0	~	0048b460	00687df0	DTOR		??_GCInputProcessDead@@UAEPAXI@Z	OK
+CInputProcessDead	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	4	ProcessInput	00688a00	00bfea08	OVERRIDE	?ProcessInput@CInputProcessDead@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessDead_ProcessInput@@YIXPAVCInputProcessDead@@HABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessDead	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessDead	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessDebugControls	CInputProcessGameBase	9	0	~	0048b8d0	00687df0	DTOR		?CInputProcessDebugControls_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	SELF_MISSPELT
+CInputProcessDebugControls	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessDebugControls	CInputProcessGameBase	9	2	Init	00691fe0	00486360	OVERRIDE	?Init@CInputProcessDebugControls@@UAEXXZ(egor,fablewin)	?Init@CInputProcessDebugControls@@UAEXXZ	OK
+CInputProcessDebugControls	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessDebugControls	CInputProcessGameBase	9	4	ProcessInput	00691fd0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessDebugControls@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)		NO_ROW
+CInputProcessDebugControls	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessDebugControls	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessDebugControls	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessDebugControls	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	0	~	0048bb00	00687df0	DTOR		??_GCInputProcessDigging@@UAEPAXI@Z	OK
+CInputProcessDigging	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	4	ProcessInput	00690c70	00bfea08	OVERRIDE	?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessDigging	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessDigging	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	0	~	0048bc00	00687df0	DTOR		??_GCInputProcessFireheartMinigame@@UAEPAXI@Z	OK
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	4	ProcessInput	00691870	00bfea08	OVERRIDE	?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessFireheartMinigame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	7	ProcessWhilePaused	00486bf0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessFireheartMinigame@@UBE_NXZ(fablewin)	?CInputProcessFireheartMinigame_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessFireheartMinigame	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	0	~	0048b6e0	00687df0	DTOR		??_GCInputProcessFirstPerson@@UAEPAXI@Z	OK
+CInputProcessFirstPerson	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	4	ProcessInput	0068cac0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessFirstPerson@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessFirstPerson@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessFirstPerson	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessFirstPerson	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	0	~	0048b760	00687df0	DTOR		??_GCInputProcessFirstPersonLookAround@@UAEPAXI@Z	OK
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	4	ProcessInput	0068d700	00bfea08	OVERRIDE	?ProcessInput@CInputProcessFirstPersonLookAround@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessFirstPersonLookAround@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessFirstPersonLookAround	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	0	~	0048ba60	00687df0	DTOR		??_GCInputProcessFirstPersonTargeting@@UAEPAXI@Z	OK
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	4	ProcessInput	00690390	00bfea08	OVERRIDE	?ProcessInput@CInputProcessFirstPersonTargeting@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessFirstPersonTargeting@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessFirstPersonTargeting	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	0	~	0048bae0	00687df0	DTOR		??_GCInputProcessFishing@@UAEPAXI@Z	OK
+CInputProcessFishing	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	4	ProcessInput	00690b20	00bfea08	OVERRIDE	?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessFishing@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessFishing	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessFishing	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	0	~	0048b700	00687df0	DTOR		??_GCInputProcessFreezeControls@@UAEPAXI@Z	OK
+CInputProcessFreezeControls	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	4	ProcessInput	0068cb60	00bfea08	OVERRIDE	?ProcessInput@CInputProcessFreezeControls@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessFreezeControls_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessFreezeControls	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessFreezeControls	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	0	~	00687df0	00a0d410	DTOR		?CInputProcessGameBase_scalar_deleting_destructor@@YIPAXPAUCInputProcessGameBase@@HI@Z	SELF_MISSPELT
+CInputProcessGameBase	CAInputProcess	9	1	AddToInterface	00687a70	00a0d2b0	OVERRIDE	?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z(egor,fablewin)	?AddToInterface@CInputProcessGameBase@@UAE_NAAVCInputProcessManager@@@Z	OK
+CInputProcessGameBase	CAInputProcess	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	4	ProcessInput	00bfea08	00bfea08	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessGameBase	CAInputProcess	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00a0d400	OVERRIDE	?IsInputEventToBeSentToThisInputProcess@CInputProcessGameBase@@MBE_NABVCInputEvent@@@Z(egor,fablewin)	?IsEventFromPlayerDevice@CInputProcessMain@@QAE_NABVCInputEvent@@@Z	SELF_MISSPELT
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	0	~	0048b560	0048b4e0	DTOR		??_GCInputProcessHeroAbilitiesScreen@@UAEPAXI@Z	OK
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	2	Init	0068ad90	006893b0	OVERRIDE	?Init@CInputProcessHeroAbilitiesScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessHeroAbilitiesScreen@@UAEXXZ	OK
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	4	ProcessInput	00689980	006894c0	OVERRIDE	?ProcessInput@CInputProcessHeroAbilitiesScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessHeroAbilitiesScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessHeroAbilitiesScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689970	00bfea08	OVERRIDE	?GetPInventory@CInputProcessHeroAbilitiesScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessHeroAbilitiesScreen_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	0	~	0048b640	00687df0	DTOR		??_GCInputProcessHeroInformationScreens@@UAEPAXI@Z	OK
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	4	ProcessInput	0068c6d0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessHeroInformationScreens@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessHeroInformationScreens@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	7	ProcessWhilePaused	00486680	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessHeroInformationScreens@@UBE_NXZ(fablewin)	?CInputProcessHeroInformationScreens_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessHeroInformationScreens	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInGameMenu	CInputProcessGameBase	9	0	~	0048ba80	00687df0	DTOR		??_GCInputProcessInGameMenu@@UAEPAXI@Z	OK
+CInputProcessInGameMenu	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInGameMenu	CInputProcessGameBase	9	2	Init	006907d0	00486360	OVERRIDE	?Init@CInputProcessInGameMenu@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInGameMenu@@UAEXXZ	OK
+CInputProcessInGameMenu	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInGameMenu	CInputProcessGameBase	9	4	ProcessInput	00690480	00bfea08	OVERRIDE	?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInGameMenu@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessInGameMenu	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInGameMenu	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInGameMenu	CInputProcessGameBase	9	7	ProcessWhilePaused	00486a20	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessInGameMenu@@UBE_NXZ(fablewin)	?CInputProcessInGameMenu_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessInGameMenu	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	0	~	0048b500	0048b4e0	DTOR		??_GCInputProcessInventory@@UAEPAXI@Z	OK
+CInputProcessInventory	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	2	Init	00689da0	006893b0	OVERRIDE	?Init@CInputProcessInventory@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventory@@UAEXXZ	OK
+CInputProcessInventory	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	4	ProcessInput	00689df0	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessInventory	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventory	CInputProcessInventoryBase	10	9	GetPInventory	006896a0	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventory@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventory_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryBase	CInputProcessGameBase	10	0	~	0048b4e0	00687df0	DTOR		?CInputProcessInventoryBase_scalar_deleting_destructor@@YIPAXPAUCInputProcessInventoryBase@@HI@Z	SELF_MISSPELT
+CInputProcessInventoryBase	CInputProcessGameBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryBase	CInputProcessGameBase	10	2	Init	006893b0	00486360	OVERRIDE	?Init@CInputProcessInventoryBase@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryBase@@UAEXXZ	OK
+CInputProcessInventoryBase	CInputProcessGameBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryBase	CInputProcessGameBase	10	4	ProcessInput	006894c0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessInventoryBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessInventoryBase	CInputProcessGameBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryBase	CInputProcessGameBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryBase	CInputProcessGameBase	10	7	ProcessWhilePaused	00486500	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessInventoryBase@@UBE_NXZ(fablewin)	?CInputProcessInventoryBase_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessInventoryBase	CInputProcessGameBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryBase	CInputProcessGameBase	10	9	GetPInventory	00bfea08		PURE			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	0	~	0048b520	0048b4e0	DTOR		??_GCInputProcessInventoryClothing@@UAEPAXI@Z	OK
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	2	Init	0068acf0	006893b0	OVERRIDE	?Init@CInputProcessInventoryClothing@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryClothing@@UAEXXZ	OK
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	4	ProcessInput	006896c0	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryClothing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryClothing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryClothing	CInputProcessInventoryBase	10	9	GetPInventory	006896b0	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryClothing@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryClothing_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	0	~	0048b5a0	0048b4e0	DTOR		??_GCInputProcessInventoryExperienceScreen@@UAEPAXI@Z	OK
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	2	Init	0068b290	006893b0	OVERRIDE	?Init@CInputProcessInventoryExperienceScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryExperienceScreen@@UAEXXZ	OK
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	4	ProcessInput	0068b2e0	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryExperienceScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryExperienceScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryExperienceScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689ae0	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryExperienceScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryExperienceScreen_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	0	~	0048b600	0048b4e0	DTOR		??_GCInputProcessInventoryMagicScreen@@UAEPAXI@Z	OK
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	2	Init	0068c630	006893b0	OVERRIDE	?Init@CInputProcessInventoryMagicScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryMagicScreen@@UAEXXZ	OK
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	4	ProcessInput	00689c20	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryMagicScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	_CInputProcessInventoryMagicScreen_ProcessInput	SELF_MISSPELT
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryMagicScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689c10	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryMagicScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryMagicScreen_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	0	~	0048b580	0048b4e0	DTOR		??_GCInputProcessInventoryMapScreen@@UAEPAXI@Z	OK
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	2	Init	0068ade0	006893b0	OVERRIDE	?Init@CInputProcessInventoryMapScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryMapScreen@@UAEXXZ	OK
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	4	ProcessInput	0068ae30	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryMapScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryMapScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryMapScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689ad0	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryMapScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryMapScreen_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	0	~	0048b5e0	0048b4e0	DTOR		??_GCInputProcessInventoryQuestsScreen@@UAEPAXI@Z	OK
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	2	Init	0068bc20	006893b0	OVERRIDE	?Init@CInputProcessInventoryQuestsScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryQuestsScreen@@UAEXXZ	OK
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	4	ProcessInput	0068bc70	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryQuestsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryQuestsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryQuestsScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689b00	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryQuestsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?M@C_00689b00@@QAEKXZ	SELF_MISSPELT
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	0	~	0048b620	0048b4e0	DTOR		??_GCInputProcessInventoryStatsScreen@@UAEPAXI@Z	OK
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	2	Init	0068c680	006893b0	OVERRIDE	?Init@CInputProcessInventoryStatsScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryStatsScreen@@UAEXXZ	OK
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	4	ProcessInput	00689c40	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryStatsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryStatsScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryStatsScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689c30	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryStatsScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryStatsScreen_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	0	~	0048b5c0	0048b4e0	DTOR		??_GCInputProcessInventoryTradeScreen@@UAEPAXI@Z	OK
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	2	Init	0068b770	006893b0	OVERRIDE	?Init@CInputProcessInventoryTradeScreen@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryTradeScreen@@UAEXXZ	OK
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	4	ProcessInput	0068b7c0	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryTradeScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryTradeScreen@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryTradeScreen	CInputProcessInventoryBase	10	9	GetPInventory	00689af0	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryTradeScreen@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryTradeScreen_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	0	~	0048b540	0048b4e0	DTOR		??_GCInputProcessInventoryWeapons@@UAEPAXI@Z	OK
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	2	Init	0068ad40	006893b0	OVERRIDE	?Init@CInputProcessInventoryWeapons@@UAEXXZ(egor,fablewin)	?Init@CInputProcessInventoryWeapons@@UAEXXZ	OK
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	4	ProcessInput	00689820	006894c0	OVERRIDE	?ProcessInput@CInputProcessInventoryWeapons@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessInventoryWeapons@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	6	Update	00486390	00486390	INHERIT			-
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	7	ProcessWhilePaused	00486500	00486500	INHERIT			-
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessInventoryWeapons	CInputProcessInventoryBase	10	9	GetPInventory	00689810	00bfea08	OVERRIDE	?GetPInventory@CInputProcessInventoryWeapons@@MBEPAVCTCInventoryBase@NInventory@@XZ(egor,fablewin)	?CInputProcessInventoryWeapons_GetPInventory@@YIHPBE@Z	SELF_MISSPELT
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	0	~	0048d390	00687df0	DTOR		??_GCInputProcessJumpingAndRolling@@UAEPAXI@Z	OK
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	2	Init	006a4010	00486360	OVERRIDE	?Init@CInputProcessJumpingAndRolling@@UAEXXZ(egor,fablewin)	?Init@CInputProcessJumpingAndRolling@@UAEXXZ	OK
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	4	ProcessInput	006a4700	00bfea08	OVERRIDE	?ProcessInput@CInputProcessJumpingAndRolling@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessJumpingAndRolling@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	6	Update	006a40b0	00486390	OVERRIDE	?Update@CInputProcessJumpingAndRolling@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessJumpingAndRolling@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessJumpingAndRolling	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessLightning	CInputProcessGameBase	9	0	~	0048ba20	00687df0	DTOR		??_GCInputProcessLightning@@UAEPAXI@Z	OK
+CInputProcessLightning	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessLightning	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessLightning	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessLightning	CInputProcessGameBase	9	4	ProcessInput	0068fed0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessLightning@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessLightning_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessLightning	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessLightning	CInputProcessGameBase	9	6	Update	0068fee0	00486390	OVERRIDE	?Update@CInputProcessLightning@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessLightning@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessLightning	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessLightning	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessMain	CInputProcessGameBase	9	0	~	0048b3d0	00687df0	DTOR		??_GCInputProcessMain@@UAEPAXI@Z	OK
+CInputProcessMain	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessMain	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessMain	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessMain	CInputProcessGameBase	9	4	ProcessInput	00687fd0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessMain@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessMain@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessMain	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessMain	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessMain	CInputProcessGameBase	9	7	ProcessWhilePaused	004863a0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessMain@@UBE_NXZ(fablewin)	?CInputProcessMain_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessMain	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	0	~	0048bbe0	00687df0	DTOR		??_GCInputProcessOracleMinigame@@UAEPAXI@Z	OK
+CInputProcessOracleMinigame	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	4	ProcessInput	00691680	00bfea08	OVERRIDE	?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessOracleMinigame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessOracleMinigame	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessOracleMinigame	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessParalysed	CInputProcessGameBase	9	0	~	0048bb20	00687df0	DTOR		??_GCInputProcessParalysed@@UAEPAXI@Z	OK
+CInputProcessParalysed	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessParalysed	CInputProcessGameBase	9	2	Init	00690d20	00486360	OVERRIDE	?Init@CInputProcessParalysed@@UAEXXZ(egor,fablewin)	?Init@CInputProcessParalysed_Methods@@QAEXXZ	SELF_MISSPELT
+CInputProcessParalysed	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessParalysed	CInputProcessGameBase	9	4	ProcessInput	00690d30	00bfea08	OVERRIDE	?ProcessInput@CInputProcessParalysed@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessParalysed@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessParalysed	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessParalysed	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessParalysed	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessParalysed	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	0	~	0048bc20	00687df0	DTOR		?CInputProcessPhotojournalCapture_scalar_deleting_destructor@@YIPAXPAVCInputProcessPhotojournalCapture@@HI@Z	SELF_MISSPELT
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	2	Init	00691ac0	00486360	OVERRIDE	?Init@CInputProcessPhotojournalCapture@@UAEXXZ(egor,fablewin)	?Init@CInputProcessPhotojournalCapture@@QAEXXZ	SELF_MISSPELT
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	4	ProcessInput	00691ae0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessPhotojournalCapture@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessPhotojournalCapture@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	6	Update	00486390	00486390	INHERIT			-
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	7	ProcessWhilePaused	00486c30	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessPhotojournalCapture@@UBE_NXZ(fablewin)	?ProcessWhilePaused@CInputProcessPhotojournalCapture@@QAE_NXZ	SELF_MISSPELT
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	9	HasFrameUpdate	00486c20		OVERRIDE	?HasFrameUpdate@CInputProcessPhotojournalCapture@@UBE_NXZ(fablewin)	?HasFrameUpdate@CInputProcessPhotojournalCapture@@UBE_NXZ	OK
+CInputProcessPhotojournalCapture	CInputProcessGameBase	11	10	FrameUpdate	00691ad0		OVERRIDE	?FrameUpdate@CInputProcessPhotojournalCapture@@UAEXXZ(egor,fablewin)	?FrameUpdate@CInputProcessPhotojournalCapture@@UAEXXZ	OK
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	0	~	0048b9e0	00687df0	DTOR		??_GCInputProcessProjectileTargetingAnalogueZoom@@UAEPAXI@Z	OK
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	4	ProcessInput	0068f320	00bfea08	OVERRIDE	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessProjectileTargetingAnalogueZoom@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessProjectileTargetingAnalogueZoom	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	0	~	0048bb80	00687df0	DTOR		??_GCInputProcessQuestCompletionUI@@UAEPAXI@Z	OK
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	4	ProcessInput	00691130	00bfea08	OVERRIDE	?ProcessInput@CInputProcessQuestCompletionUI@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessQuestCompletionUI@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	7	ProcessWhilePaused	00486b40	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessQuestCompletionUI@@UBE_NXZ(fablewin)	?CInputProcessQuestCompletionUI_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessQuestCompletionUI	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	0	~	0048b900	00687df0	DTOR		??_GCInputProcessQuickAccessItems@@UAEPAXI@Z	OK
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	3	Cleanup	0068e4d0	00486370	OVERRIDE	?Cleanup@CInputProcessQuickAccessItems@@UAEXXZ(egor,fablewin)	?Cleanup@CInputProcessQuickAccessItems@@UAEXXZ	OK
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	4	ProcessInput	0068e510	00bfea08	OVERRIDE	?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	6	Update	0068e450	00486390	OVERRIDE	?Update@CInputProcessQuickAccessItems@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessQuickAccessItems@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessQuickAccessItems	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	0	~	0048bb60	00687df0	DTOR		??_GCInputProcessQuickAccessMenu@@UAEPAXI@Z	OK
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	2	Init	00690fc0	00486360	OVERRIDE	?Init@CInputProcessQuickAccessMenu@@UAEXXZ(egor,fablewin)	?CInputProcessQuickAccessMenu_Init@@YIXXZ	SELF_MISSPELT
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	4	ProcessInput	00690fd0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessQuickAccessMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessQuickAccessMenu@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessQuickAccessMenu	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	0	~	0048ba40	00687df0	DTOR		??_GCInputProcessRebootGame@@UAEPAXI@Z	OK
+CInputProcessRebootGame	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	4	ProcessInput	00690360	00bfea08	OVERRIDE	?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessRebootGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessRebootGame	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessRebootGame	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	0	~	0048b940	00687df0	DTOR		??_GCInputProcessSetRangedWeaponMode@@UAEPAXI@Z	OK
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	4	ProcessInput	0068f180	00bfea08	OVERRIDE	?ProcessInput@CInputProcessSetRangedWeaponMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessSetRangedWeaponMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessSetRangedWeaponMode	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	0	~	0048b960	00687df0	DTOR		??_GCInputProcessSetRangedWeaponThirdPersonMode@@UAEPAXI@Z	OK
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	4	ProcessInput	0068ea60	00bfea08	OVERRIDE	?ProcessInput@CInputProcessSetRangedWeaponThirdPersonMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessSetRangedWeaponThirdPersonMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessSetRangedWeaponThirdPersonMode	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	0	~	0048ba00	00687df0	DTOR		??_GCInputProcessSpecialAbilities@@UAEPAXI@Z	OK
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	4	ProcessInput	00690030	00bfea08	OVERRIDE	?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessSpecialAbilities@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	6	Update	0068ff50	00486390	OVERRIDE	?Update@CInputProcessSpecialAbilities@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessSpecialAbilities@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessSpecialAbilities	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	0	~	0048b480	00687df0	DTOR		??_GCInputProcessStrafe@@UAEPAXI@Z	OK
+CInputProcessStrafe	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	4	ProcessInput	00688a80	00bfea08	OVERRIDE	?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessStrafe	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessStrafe	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	0	~	0048b4a0	00687df0	DTOR		??_GCInputProcessTargetLockCycleTargets@@UAEPAXI@Z	OK
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	1	AddToInterface	00688c90	00687a70	OVERRIDE	?AddToInterface@CInputProcessTargetLockCycleTargets@@UAE_NAAVCInputProcessManager@@@Z(egor,fablewin)	?AddToInterface@CInputProcessTargetLockCycleTargets@@UAE_NAAVCInputProcessManager@@@Z	OK
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	4	ProcessInput	00689050	00bfea08	OVERRIDE	?ProcessInput@CInputProcessTargetLockCycleTargets@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessTargetLockCycleTargets@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	6	Update	00688a20	00486390	OVERRIDE	?Update@CInputProcessTargetLockCycleTargets@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessTargetLockCycleTargets@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessTargetLockCycleTargets	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	0	~	0048b4c0	00687df0	DTOR		??_GCInputProcessTargetLockRightStickTargetSelect@@UAEPAXI@Z	OK
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	1	AddToInterface	00688a60	00687a70	OVERRIDE	?AddToInterface@CInputProcessTargetLockRightStickTargetSelect@@UAE_NAAVCInputProcessManager@@@Z(egor,fablewin)	?AddToInterface@CInputProcessTargetLockRightStickTargetSelect@@UAE_NAAVCInputProcessManager@@@Z	OK
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	4	ProcessInput	00689130	00bfea08	OVERRIDE	?ProcessInput@CInputProcessTargetLockRightStickTargetSelect@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@TargetSelect@NativeInput@@QAEXABUInputEvent@2@AAUProcessedInput@2@@Z	SELF_MISSPELT
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	6	Update	00688a70	00486390	OVERRIDE	?Update@CInputProcessTargetLockRightStickTargetSelect@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessTargetLockRightStickTargetSelect_Update@@YGXH@Z	SELF_MISSPELT
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessTargetLockRightStickTargetSelect	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessTavernGame	CInputProcessGameBase	9	0	~	0048baa0	00687df0	DTOR		??_GCInputProcessTavernGame@@UAEPAXI@Z	OK
+CInputProcessTavernGame	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessTavernGame	CInputProcessGameBase	9	2	Init	00690820	00486360	OVERRIDE	?Init@CInputProcessTavernGame@@UAEXXZ(egor,fablewin)	?CInputProcessTavernGame_Init@@YIXXZ	SELF_MISSPELT
+CInputProcessTavernGame	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessTavernGame	CInputProcessGameBase	9	4	ProcessInput	00690830	00bfea08	OVERRIDE	?ProcessInput@CInputProcessTavernGame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessTavernGame@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessTavernGame	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessTavernGame	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessTavernGame	CInputProcessGameBase	9	7	ProcessWhilePaused	00486a50	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessTavernGame@@UBE_NXZ(fablewin)	?CInputProcessTavernGame_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessTavernGame	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	0	~	0048b6c0	00687df0	DTOR		??_GCInputProcessToggleViewHeroMode@@UAEPAXI@Z	OK
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	4	ProcessInput	0068c7f0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessToggleViewHeroMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessToggleViewHeroMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessToggleViewHeroMode	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	0	~	0048b860	00687df0	DTOR		??_GCInputProcessUseEnvironment@@UAEPAXI@Z	OK
+CInputProcessUseEnvironment	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	4	ProcessInput	0068dd00	00bfea08	OVERRIDE	?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)		NO_ROW
+CInputProcessUseEnvironment	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessUseEnvironment	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	0	~	0048b920	00687df0	DTOR		??_GCInputProcessUseRangedWeapon@@UAEPAXI@Z	OK
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	4	ProcessInput	0068f9d0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessUseRangedWeapon@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessUseRangedWeapon@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessUseRangedWeapon	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	0	~	0048b9c0	00687df0	DTOR		??_GCInputProcessUseRangedWeaponZLock@@UAEPAXI@Z	OK
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	4	ProcessInput	0068eb00	00bfea08	OVERRIDE	?ProcessInput@CInputProcessUseRangedWeaponZLock@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?CInputProcessUseRangedWeaponZLock_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	6	Update	0068eb10	00486390	OVERRIDE	?Update@CInputProcessUseRangedWeaponZLock@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessUseRangedWeaponZLock@@QAEXJ@Z	SELF_MISSPELT
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessUseRangedWeaponZLock	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	0	~	0048b980	00687df0	DTOR		??_GCInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEPAXI@Z	OK
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	1	AddToInterface	0068eae0	00687a70	OVERRIDE	?AddToInterface@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z(egor,fablewin)	?AddToInterface@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z	OK
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	4	ProcessInput	00486900	00bfea08	OVERRIDE	?ProcessInput@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(fablewin)	?CInputProcessWatchForRangedWeaponThirdPersonModeTermination_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	6	Update	0068f250	00486390	OVERRIDE	?Update@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessWatchForRangedWeaponThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	0	~	0048b9a0	00687df0	DTOR		??_GCInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAEPAXI@Z	OK
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	1	AddToInterface	0068eaf0	00687a70	OVERRIDE	?AddToInterface@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z(egor,fablewin)	?AddToInterface@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAE_NAAVCInputProcessManager@@@Z	OK
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	4	ProcessInput	00486930	00bfea08	OVERRIDE	?ProcessInput@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(fablewin)	?CInputProcessWatchForWillChargeUpThirdPersonModeTermination_ProcessInput@@YGXHH@Z	SELF_MISSPELT
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	6	Update	0068f2a0	00486390	OVERRIDE	?Update@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessWatchForWillChargeUpThirdPersonModeTermination@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	0	~	0048b680	00687df0	DTOR		??_GCInputProcessYesNoQuestion@@UAEPAXI@Z	OK
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	1	AddToInterface	00687a70	00687a70	INHERIT			-
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	4	ProcessInput	0068c880	00bfea08	OVERRIDE	?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessYesNoQuestion@@QAEXABVCInputEvent@@AAVCProcessedInput@@@Z	SELF_MISSPELT
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	6	Update	00486390	00486390	INHERIT			-
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	7	ProcessWhilePaused	004866e0	004863f0	OVERRIDE	?ProcessWhilePaused@CInputProcessYesNoQuestion@@UBE_NXZ(fablewin)	?CInputProcessYesNoQuestion_ProcessWhilePaused@@YI_NXZ	SELF_MISSPELT
+CInputProcessYesNoQuestion	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-
+CInputProcessZTarget	CInputProcessGameBase	9	0	~	0048cea0	00687df0	DTOR		?CInputProcessZTarget_scalar_deleting_destructor@@YIPAXPAVCInputProcessZTarget@@HI@Z	SELF_MISSPELT
+CInputProcessZTarget	CInputProcessGameBase	9	1	AddToInterface	00688d40	00687a70	OVERRIDE	?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z(egor,fablewin)	?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z	OK
+CInputProcessZTarget	CInputProcessGameBase	9	2	Init	00486360	00486360	INHERIT			-
+CInputProcessZTarget	CInputProcessGameBase	9	3	Cleanup	00486370	00486370	INHERIT			-
+CInputProcessZTarget	CInputProcessGameBase	9	4	ProcessInput	00688eb0	00bfea08	OVERRIDE	?ProcessInput@CInputProcessZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z(egor,fablewin)	?ProcessInput@CInputProcessZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	OK
+CInputProcessZTarget	CInputProcessGameBase	9	5	PreparePrimitivesForEngine	00486380	00486380	INHERIT			-
+CInputProcessZTarget	CInputProcessGameBase	9	6	Update	00688c40	00486390	OVERRIDE	?Update@CInputProcessZTarget@@UAEXAAVCProcessedInput@@@Z(egor,fablewin)	?Update@CInputProcessZTarget@@UAEXAAVCProcessedInput@@@Z	OK
+CInputProcessZTarget	CInputProcessGameBase	9	7	ProcessWhilePaused	004863f0	004863f0	INHERIT			-
+CInputProcessZTarget	CInputProcessGameBase	9	8	IsInputEventToBeSentToThisInputProcess	00687db0	00687db0	INHERIT			-

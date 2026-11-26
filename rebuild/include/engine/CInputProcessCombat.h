@@ -23,6 +23,14 @@ public:
     CJoystickPositionTracker PositionTracker;                       // +0x28
     long LastPositionTrackerFrameUpdate;                            // +0x50
     long NumberOfFramesAttackHeld;                                  // +0x54
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x012380B4, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x0068FB90
+public:
+#endif
 };
 FABLE_STATIC_ASSERT_AT(19, sizeof(CInputProcessCombat) == 0x58);
 #endif // FABLE_ENGINE_CINPUTPROCESSCOMBAT_H

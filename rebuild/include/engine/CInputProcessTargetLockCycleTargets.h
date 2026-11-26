@@ -15,6 +15,16 @@ public:
     float ButtonPressureThresholdForClick;                          // +0x2c
     long ClickAcceptancePulseTimer;                                 // +0x30
     bool AllowPulsesOnly;                                           // +0x34
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x0123767C, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual bool AddToInterface(CInputProcessManager& manager);                                      // slot 1, 0x00688C90
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00689050
+    virtual void Update(CProcessedInput& processed_input);                                           // slot 6, 0x00688A20
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessTargetLockCycleTargets) == 0x38);
+FABLE_STATIC_ASSERT_AT(19, sizeof(CInputProcessTargetLockCycleTargets) == 0x38);
 #endif // FABLE_ENGINE_CINPUTPROCESSTARGETLOCKCYCLETARGETS_H

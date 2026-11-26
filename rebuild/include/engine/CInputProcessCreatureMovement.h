@@ -23,6 +23,17 @@ public:
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);   // 0x00691D70
 #endif
     CIntelligentPointer<const CThingPlayerCreature> PCreature;   // +0x28
+#ifdef FABLE_RETAIL_INPUTPROCESS_VTABLE
+    // Opt-in (NF477, r467d / r459a): the retail virtual list, declaration only. Retail vftable 0x01237F4C, 9 counted function slots
+    // (RTTI locator at vftable - 4, then consecutive slots at .text function starts); listed: each slot whose target differs from the
+    // base class table, named by the base slot it fills (order from retail, spellings from Ego_r.pdb / FableWin.pdb).
+public:
+    virtual void Init();                                                                             // slot 2, 0x00691D20
+#if !(defined(FABLE_RETAIL_INPUTPROCESS_CREATUREMOVEMENT_PROCESSINPUT))
+    virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed_input);           // slot 4, 0x00691D70
+#endif
+public:
+#endif
 };
-FABLE_STATIC_ASSERT(sizeof(CInputProcessCreatureMovement) == 0x30);
+FABLE_STATIC_ASSERT_AT(27, sizeof(CInputProcessCreatureMovement) == 0x30);
 #endif // FABLE_ENGINE_CINPUTPROCESSCREATUREMOVEMENT_H

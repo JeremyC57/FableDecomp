@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0048b4e0   WARN STANDIN_LEAF ??_GCInputProcessInventoryBase@@UAEPAXI@Z (catalog CInputProcessInventoryBase::`scalar_deleting_destructor'; names another function)
+0048b4e0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048b8d0   WARN STANDIN_LEAF ??_GCInputProcessDebugControls@@UAEPAXI@Z (catalog CInputProcessDebugControls::`scalar_deleting_destructor'; names another function)
+0048b8d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0048bc20   WARN STANDIN_LEAF ??_GCInputProcessPhotojournalCapture@@UAEPAXI@Z (catalog CInputProcessPhotojournalCapture::`scalar_deleting_destructor'; names another function)
+0048bc20   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 3
+  0048b4e0 RELOCATION_MATCH CInputProcessInventoryBase::??_GCInputProcessInventoryBase@@UAEPAXI@Z
+  0048b8d0 RELOCATION_MATCH CInputProcessDebugControls::??_GCInputProcessDebugControls@@UAEPAXI@Z
+  0048bc20 RELOCATION_MATCH CInputProcessPhotojournalCapture::??_GCInputProcessPhotojournalCapture@@UAEPAXI@Z

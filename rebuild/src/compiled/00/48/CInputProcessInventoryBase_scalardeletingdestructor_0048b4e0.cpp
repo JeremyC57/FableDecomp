@@ -1,21 +1,12 @@
-// CInputProcessInventoryBase::`vector_deleting_destructor' 0x0048b4e0
-// Standard MSVC vector-deleting destructor thunk.
-
-struct CInputProcessInventoryBase
-{
-};
-
-// operator delete (0x00bfe9bc)
-
-// Naming (NF449 gen, 2026-11-25): callee-only respell of this row's destructor stand-in calls to the PDB destructor (T1 tracker;
-//   target self rows' Leaf), as a qualified destructor call on a bodiless declaration (no layout; rulings r2/r3):
-//   0x00A0D3D0 ??1CAInputProcess@@UAE@XZ (was ?ScalarDtor@CInputProcessInventoryBase@@QAEXXZ)
-class CAInputProcess { public: virtual ~CAInputProcess(); };
-void* __fastcall CInputProcessInventoryBase_scalar_deleting_destructor(
-    CInputProcessInventoryBase* process, int /*edx*/, unsigned int flags)
-{
-    reinterpret_cast<CAInputProcess*>(process)->CAInputProcess::~CAInputProcess();
-    if (flags & 1)
-        operator delete(process);
-    return process;
-}
+// CInputProcessInventoryBase::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: ~CInputProcessInventoryBase, then operator
+//   delete when bit 0 of flags is set; returns this
+// Leaf: ??_GCInputProcessInventoryBase@@UAEPAXI@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0048B4E0, 30 bytes, thiscall, `ret 4`; vftable 0x012376CC slot 0.
+// Identity (NF477 thin-row port, nf424 pattern; NF424 S1 for the 60 siblings): retail RTTI .?AV of the vftable plus the FableWin / Ego_r name sets (round-1 histogram).
+//   Was ?CInputProcessInventoryBase_scalar_deleting_destructor@@YIPAXPAUCInputProcessInventoryBase@@HI@Z.
+// NF477 (2026-11-26): the misspelt free stand-in respelt to the compiler-generated ??_G; the owner TU's copy is byte- and relocation-equal to
+//   retail at HEAD (ceq). TU: VC7.1 emits ??_GCInputProcessInventoryBase@@UAEPAXI@Z as a pick-any COMDAT beside the vtable, only in a TU whose code stores the vptr. 0x00488D10
+//   ?InitInterfaces@CPlayer@@AAEXXZ emits vftable 0x012376CC (the inline CInputProcessInventoryBase constructor of the ten inventory screens
+//   names it; the store itself is dead, each screen then stores its own vtable), so this function is produced by that translation unit, included below with no code of its own
+//   (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 ctor-owned units).
+#include "../src/compiled/00/48/CPlayer_InitInterfaces_00488d10.cpp"

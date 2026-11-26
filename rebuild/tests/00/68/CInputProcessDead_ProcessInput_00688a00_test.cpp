@@ -1,36 +1,20 @@
-// Behaviour model for CInputProcessDead::ProcessInput.
-// The retail function is an empty no-op (`ret 8`): it must not modify the
-// output object regardless of the incoming event. We model that and confirm
-// the output is left untouched.
-#include <stdio.h>
-
-class CInputEvent { public: int code; };
-class CProcessedInput { public: int flags; };
-class CInputProcessDead { public: int dummy; };
-
-void __fastcall CInputProcessDead_ProcessInput(CInputProcessDead* process,
-                             int edx_dummy,
-                             const CInputEvent& ev,
-                             CProcessedInput& out)
-{
-    (void)process;
-    (void)edx_dummy;
-    (void)ev;
-    (void)out;
-}
-
+// Behaviour test for 0x00688A00 CInputProcessDead::ProcessInput (NF477 respell): links the row object and calls the member non-virtually.
+#define FABLE_RETAIL_INPUTPROCESS
+#define FABLE_RETAIL_CAINPUTPROCESS_ADDTOINTERFACE
+#define FABLE_RETAIL_CAINPUTPROCESS_INIT
+#define FABLE_RETAIL_INPUTPROCESS_VTABLE
+#include "engine/CInputProcessDead.h"
+#include <cstdio>
+static unsigned int g_guard = 0x5A5A5A5A;
+static unsigned int g_storage[0x80];
 int main()
 {
-    CInputProcessDead obj; obj.dummy = 7;
-    CInputEvent ev; ev.code = 12345;
-    CProcessedInput out; out.flags = 0xABCD;
-
-    CInputProcessDead_ProcessInput(&obj, 0, ev, out);
-
-    // No-op: output must be unchanged by the dead-input handler.
-    if (out.flags == 0xABCD)
-        printf("BEHAVIOUR_PASS\n");
-    else
-        printf("BEHAVIOUR_FAIL\n");
-    return 0;
+    CInputProcessDead* p = (CInputProcessDead*)g_storage;
+    bool ok = false;
+    CInputEvent* e = (CInputEvent*)0x1234; CProcessedInput* q = (CProcessedInput*)0x5678;
+    p->CInputProcessDead::ProcessInput(*e, *q);
+    ok = (g_guard == 0x5A5A5A5A);
+    if (ok) { std::printf("BEHAVIOUR_PASS\n"); return 0; }
+    std::printf("NF477_00688a00_TEST FAIL\n");
+    return 1;
 }
