@@ -1,0 +1,10 @@
+addr       parity           behav  name
+009126c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009126c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_FlyingThingBase (engine/CAIStateGroup_FlyingThingBase.h)
+009126c0   RELOCATION_MATCH PASS   CAIStateGroup_FlyingThingBase
+00913490   WARN STANDIN_LEAF ??_GCAIStateGroup_FlyingThingBase@@UAEPAXI@Z (catalog CAIStateGroup_FlyingThingBase::`scalar_deleting_destructor'; names another function)
+00913490   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 2
+  009126c0 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::??0CAIStateGroup_FlyingThingBase@@QAE@XZ
+  00913490 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::??_GCAIStateGroup_FlyingThingBase@@UAEPAXI@Z

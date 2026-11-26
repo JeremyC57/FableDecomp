@@ -1,49 +1,26 @@
-#include <stdio.h>
-
-class CCharString { public:
-    void* p;
-    ~CCharString();
-};
-
-struct CSymbolInfo___ {
-    CCharString first;
-    int         pad0;
-    int         pad1;
-    int         c0;
-    int         c1;
-    CCharString s1;
-    int         gap;
-    CCharString s2;
-    void Dest_val();
-    void PairFirstDtor();
-};
-
-// order log to prove destruction sequence: s2, s1, first(base)
-static int g_seq[8];
-static int g_n = 0;
-
-CCharString::~CCharString() {
-    g_seq[g_n++] = (int)(long)this->p;
-}
-
-void CSymbolInfo___::PairFirstDtor() {
-    g_seq[g_n++] = 999; // base/first dtor marker
-}
-
-int main() {
-    CSymbolInfo___ pr;
-    pr.s1.p = (void*)11;
-    pr.s2.p = (void*)22;
-    pr.first.p = (void*)1;
-
-    g_n = 0;
-    pr.Dest_val();
-
-    // expected: s2 (22), s1 (11), then base (999)
-    if (g_n == 3 && g_seq[0] == 22 && g_seq[1] == 11 && g_seq[2] == 999) {
-        printf("DESTVAL_ORDER_OK\n");
-        return 0;
-    }
-    printf("FAIL n=%d %d %d %d\n", g_n, g_seq[0], g_seq[1], g_seq[2]);
-    return 1;
+#include <cstdio>
+// CAIStateGroup_MinionReactToCriminal::~CAIStateGroup_MinionReactToCriminal() (retail 0x008fecec): the implicit destructor -- members in reverse declaration order, then the base chain
+//   (~CAIStateGroupBase: Name +0x0C, then ~CBaseClass). (No vptr check: at the test's /Od VC7.1 stores it, the optimised retail form does not.)
+// NF472 (0x008FD288 stand-in binder): self-contained -- the row is now a thin member of its owner's TU, so the test models the retail classes with
+//   IMPLICIT destructors (both PDBs flag them compiler-generated) and VC7.1 generates the chain here, as it does in the row's object.
+static long g_seq[16]; static int g_n = 0; static char* g_base = 0;
+static void Note(void* p) { if (g_n < 16) g_seq[g_n] = (long)((char*)p - g_base); g_n++; }
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CCharString { public: ~CCharString(); void* PString; };
+class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer(); void* PData; };
+class CAIBrain;
+class CAIStateGroupBase : public CBaseClass { public: CAIBrain* PBrain; long ScriptAIPriority; CCharString Name; bool Terminated; unsigned char Priority; bool Enabled; };
+CBaseClass::~CBaseClass() { Note(this); g_seq[15] = 1; }
+CCharString::~CCharString() { Note(this); }
+CBaseIntelligentPointer::~CBaseIntelligentPointer() { Note(this); }
+class CAIStateGroup_MinionReactToCriminal : public CAIStateGroupBase { public: CBaseIntelligentPointer PHero; CBaseIntelligentPointer PHome; long FrameLastLeftStategroup; long FrameToNextSpeak; bool OverrodeLocking; bool HeroInsideHouse; bool MeInsideHouse; bool GuardInsideHouse; };
+int main()
+{
+    void* buf[0x60] = {(void*)0x1234};
+    g_base = (char*)buf;
+    ((CAIStateGroup_MinionReactToCriminal*)buf)->CAIStateGroup_MinionReactToCriminal::~CAIStateGroup_MinionReactToCriminal();
+    static const long want[] = {0x1c, 0x14, 0xc, 0x0};
+    if (g_n != 4) { std::printf("BAD_COUNT %d\n", g_n); return 1; }
+    for (int i = 0; i < 4; i++) if (g_seq[i] != want[i]) { std::printf("BAD_ORDER %d %ld\n", i, g_seq[i]); return 1; }
+    std::printf("DESTVAL_ORDER_OK\n"); return 0;
 }

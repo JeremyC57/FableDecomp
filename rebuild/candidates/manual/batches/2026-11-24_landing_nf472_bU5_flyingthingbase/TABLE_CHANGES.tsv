@@ -1,0 +1,2 @@
+action	symbol	target	witness	note
+replace	?Dtor@CAIStateGroup_FlyingThingBase@@QAEXXZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	00913490	0x008FD288 stand-in binder 0x00913490 resolved: ??_GCAIStateGroup_FlyingThingBase, thin row of 0x009126C0

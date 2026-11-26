@@ -1,0 +1,14 @@
+addr       parity           behav  name
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase (engine/CAIStateGroupBase.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_WorkBase (engine/CAIStateGroup_WorkBase.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_JackOfBladesBase (engine/CAIStateGroup_JackOfBladesBase.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CIntelligentPointer (engine/CIntelligentPointer.h)
+009004e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_BalverineCornered (engine/CAIStateGroup_BalverineCornered.h)
+009004e0   RELOCATION_MATCH PASS   CAIStateGroup_BalverineCornered
+00900517   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00900533   RELOCATION_MATCH PASS   ~CAIStateGroup_BalverineCornered
+
+WINS: 3
+  009004e0 RELOCATION_MATCH CAIStateGroup_BalverineCornered::??0CAIStateGroup_BalverineCornered@@QAE@XZ
+  00900517 RELOCATION_MATCH CAIStateGroup_BalverineCornered::?CAIStateGroup_BalverineCornered_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00900533 RELOCATION_MATCH CAIStateGroup_BalverineCornered::??1CAIStateGroup_BalverineCornered@@UAE@XZ

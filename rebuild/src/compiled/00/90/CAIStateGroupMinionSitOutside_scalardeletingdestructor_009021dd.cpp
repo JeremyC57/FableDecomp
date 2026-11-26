@@ -1,8 +1,26 @@
+// CAIStateGroup_MinionSitOutside::`scalar deleting destructor' (free __fastcall stand-in, unchanged leaf) -- the implicit ~CAIStateGroup_MinionSitOutside (inlined with ~CAIStateGroup_MinionSitOnSeat: FrameToStopSitting +0x40 / FrameToSitDown +0x3C need no destruction, so it is the base ~CAIStateGroup_MinionSitOnSeatBase), then operator delete
+//   when bit 0 of flags is set; returns this.
+// Leaf: ?CAIStateGroup_MinionSitOutside_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+// NF472 (0x008FD56A self respell, callee-only here): the call at +3 (retail 0x009021E0 -> 0x008FD56A, vftable 0x0128D00C slot 0) now names the real implicit
+//   destructor ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ on the shared retail class (engine/CAIStateGroup_MinionSitOnSeatBase.h, FableWin.pdb name;
+//   Ego_r / FableWin type records flag it compiler-generated), not the free stand-in CAIStateGroup_MinionSitOutside_Destruct. VC7.1 emits that destructor here as a
+//   pick-any COMDAT byte- and relocation-equal to retail 0x008FD56A (POwner +0x34, then ~CAIStateGroup_UsesSeat 0x008FD544).
 #pragma optimize("s", on)
-extern void __fastcall CAIStateGroup_MinionSitOutside_Destruct(void* stateGroup);
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_C3DVECTOR
+#define FABLE_RETAIL_CAISTATEGROUP_MINIONSITONSEATBASE
+class CThing; class CWorld; class CThingAICreature;
+#include "engine/CAIStateGroupBase.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CAIStateGroup_MinionSitOnSeatBase.h"
 void* __fastcall CAIStateGroup_MinionSitOutside_ScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
-    CAIStateGroup_MinionSitOutside_Destruct(stateGroup);
+    static_cast<CAIStateGroup_MinionSitOnSeatBase*>(stateGroup)->CAIStateGroup_MinionSitOnSeatBase::~CAIStateGroup_MinionSitOnSeatBase();
     if (flags & 1)
         operator delete(stateGroup);
     return stateGroup;

@@ -1,4 +1,7 @@
 // CAIStateGroup_FlyingThingBase::CAIStateGroup_FlyingThingBase() -- default constructor.
+// Leaf: ??0CAIStateGroup_FlyingThingBase@@QAE@XZ
+// NF472: the // Leaf: line added (comment only; the object and the graded function are unchanged) -- this row now owns the thin row 0x00913490
+//   (??_GCAIStateGroup_FlyingThingBase@@UAEPAXI@Z, emitted here byte- and relocation-equal to retail), and s_unit_check needs an owner's full leaf.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009126C0, length 57 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 and CCharString::CCharString() @ 0x0099E4B0, both reached through the
 // INLINED CAIStateGroupBase constructor (base CBase ctor, CAIStateGroupBase vtable 0x01288C60, then the Name

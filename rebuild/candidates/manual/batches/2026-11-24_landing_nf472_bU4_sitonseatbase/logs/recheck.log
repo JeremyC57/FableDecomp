@@ -1,0 +1,47 @@
+addr       parity           behav  name
+008fd56a   RELOCATION_MATCH PASS   ~CAIStateGroup_MinionSitOnSeatBase
+008ff271   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff28d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff28d   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff28d   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtWork
+008ff29f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff2bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff2bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff2bb   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitAtInn (engine/CAIStateGroup_MinionSitAtInn.h)
+008ff2bb   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtInn
+008ff2d0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff2ec   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff2ec   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff2ec   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtSchool
+008ff2fe   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008ff35a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+008ff35a   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+008ff35a   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtHome
+008ff36f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00902122   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+00902122   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+00902122   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeat (engine/CAIStateGroup_MinionSitOnSeat.h)
+00902122   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOnSeat
+00902140   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_UsesSeat (engine/CAIStateGroup_UsesSeat.h)
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeatBase (engine/CAIStateGroup_MinionSitOnSeatBase.h)
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOnSeat (engine/CAIStateGroup_MinionSitOnSeat.h)
+009021c8   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_MinionSitOutside (engine/CAIStateGroup_MinionSitOutside.h)
+009021c8   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOutside
+009021dd   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+
+WINS: 14
+  008fd56a RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ
+  008ff271 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::?CAIStateGroup_MinionSitOnSeatBase_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008ff28d RELOCATION_MATCH CAIStateGroup_MinionSitAtWork::??0CAIStateGroup_MinionSitAtWork@@QAE@XZ
+  008ff29f RELOCATION_MATCH CAIStateGroup_MinionSitAtWork::?CAIStateGroup_MinionSitAtWork_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008ff2bb RELOCATION_MATCH CAIStateGroup_MinionSitAtInn::??0CAIStateGroup_MinionSitAtInn@@QAE@XZ
+  008ff2d0 RELOCATION_MATCH CAIStateGroup_MinionSitAtInn::?CAIStateGroup_MinionSitAtInn_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008ff2ec RELOCATION_MATCH CAIStateGroup_MinionSitAtSchool::??0CAIStateGroup_MinionSitAtSchool@@QAE@XZ
+  008ff2fe RELOCATION_MATCH CAIStateGroup_MinionSitAtSchool::?CAIStateGroup_MinionSitAtSchool_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008ff35a RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::??0CAIStateGroup_MinionSitAtHome@@QAE@XZ
+  008ff36f RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::?CAIStateGroup_MinionSitAtHome_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  00902122 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeat::??0CAIStateGroup_MinionSitOnSeat@@QAE@XZ
+  00902140 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeat::?CAIStateGroup_MinionSitOnSeat_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  009021c8 RELOCATION_MATCH CAIStateGroup_MinionSitOutside::??0CAIStateGroup_MinionSitOutside@@QAE@XZ
+  009021dd RELOCATION_MATCH CAIStateGroup_MinionSitOutside::?CAIStateGroup_MinionSitOutside_ScalarDeletingDestructor@@YIPAXPAXHI@Z

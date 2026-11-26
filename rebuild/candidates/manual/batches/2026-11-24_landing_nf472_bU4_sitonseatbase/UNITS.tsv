@@ -1,0 +1,15 @@
+address	unit
+008fd56a	thin member of 0x008FF271 (self respell, r470a)
+008ff271	owner: callee-only respell on the shared header; emits ~MinionSitOnSeatBase EQ retail; owner of thin 0x008FD56A
+008ff28d	r469a declaration-only: local model stops emitting a NEQ ~MinionSitOnSeatBase copy
+008ff29f	callee-only respell of a 0x008FD56A caller (shared header)
+008ff2bb	r469a declaration-only: local model stops emitting a NEQ ~MinionSitOnSeatBase copy
+008ff2d0	callee-only respell of a 0x008FD56A caller (shared header)
+008ff2ec	r469a declaration-only: local model stops emitting a NEQ ~MinionSitOnSeatBase copy
+008ff2fe	callee-only respell of a 0x008FD56A caller (shared header)
+008ff35a	r469a declaration-only: local model stops emitting a NEQ ~MinionSitOnSeatBase copy
+008ff36f	callee-only respell of a 0x008FD56A caller (shared header)
+00902122	r469a declaration-only: local model stops emitting a NEQ ~MinionSitOnSeatBase copy
+00902140	callee-only respell of a 0x008FD56A caller (shared header)
+009021c8	r469a declaration-only: local model stops emitting a NEQ ~MinionSitOnSeatBase copy
+009021dd	callee-only respell of a 0x008FD56A caller (shared header)

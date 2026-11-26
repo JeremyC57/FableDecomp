@@ -15552,7 +15552,7 @@ address	symbol	status	leaf_given
 008fd50d	??0CAIStateGroup_MinionReactToAlert@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_MinionReactToAlert@
 008fd532	??0CAIStateGroup_MinionHasInformation@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_MinionHasInformation@
 008fd544	??1CAIStateGroup_UsesSeat@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_UsesSeat@@UAE@XZ
-008fd56a	@_Dest_val_pair_long_CRegisteredMusicEntry@4	RELOCATION_MATCH	@_Dest_val_pair_long_CRegisteredMusicEntry@4
+008fd56a	??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ
 008fd5ce	??0CAIStateGroup_MinionListenToStory@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_MinionListenToStory@
 008fd62c	??0CAIStateGroup_MinionGuardHeardYellForHelp@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_MinionGuardHeardYellForHelp@
 008fd664	??0CAIStateGroup_MinionGuardReactToBodyFoundMessage@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_MinionGuardReactToBodyFoundMessage@
@@ -16262,7 +16262,7 @@ address	symbol	status	leaf_given
 00911f20	?Initialise@CAIStateGroup_FireflyWander@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 00911f80	?Update@CAIStateGroup_FireflyWander@@QAEXXZ	RELOCATION_MATCH	Update
 009126c0	??0CAIStateGroup_FlyingThingBase@@QAE@XZ	RELOCATION_MATCH	??0CAIStateGroup_FlyingThingBase@
-00913490	?ScalarDeletingDestructor@CAIStateGroup_FlyingThingBase@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+00913490	??_GCAIStateGroup_FlyingThingBase@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00913690	?FreeBufferArray@@YGXPAPAX0@Z	RELOCATION_MATCH	FreeBufferArray
 009137c0	?FreeBuffer@T@@QAEXXZ	RELOCATION_MATCH	FreeBuffer
 009137f0	?_M_initialize_map@?$_Deque_base@VCBezierCurve@@V?$allocator@VCBezierCurve@@@std@@@std@@QAEXI@Z	RELOCATION_MATCH	?_M_initialize_map@?$_Deque_base@
@@ -28208,3 +28208,5 @@ address	symbol	status	leaf_given
 008fd2ca	??1CAIStateGroup_GoToBed@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_GoToBed@@UAE@XZ
 00900f43	??1CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_RangedCombatUsePreferredFirePoint@@UAE@XZ
 0090010e	??1CAIStateGroup_WanderAroundShops@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_WanderAroundShops@@UAE@XZ
+008fecec	??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ
+00900533	??1CAIStateGroup_BalverineCornered@@UAE@XZ	RELOCATION_MATCH	??1CAIStateGroup_BalverineCornered@@UAE@XZ

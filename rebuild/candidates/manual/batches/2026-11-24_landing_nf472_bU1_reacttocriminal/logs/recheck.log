@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008fecd0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+008fecec   RELOCATION_MATCH PASS   ~CAIStateGroup_MinionReactToCriminal
+
+WINS: 2
+  008fecd0 RELOCATION_MATCH CAIStateGroup_MinionReactToCriminal::?CAIStateGroup_MinionReactToCriminal_ScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008fecec RELOCATION_MATCH CAIStateGroup_MinionReactToCriminal::??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ

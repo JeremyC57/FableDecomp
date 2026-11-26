@@ -31166,7 +31166,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00912840	AddRandomBezierCurveToPath	CAIStateGroup_FlyingThingBase	__thiscall	bool	2	CAIStateGroup_FlyingThingBase *,deque<CBezierCurve,std::allocator<CBezierCurve>_> *	1	yes	accepted									
 00912ba0	CalculatePrettyPath	CAIStateGroup_FlyingThingBase	__thiscall	bool	3	CAIStateGroup_FlyingThingBase *,deque<CBezierCurve,std::allocator<CBezierCurve>_> *,C3DVector *	1	yes	accepted									
 009130d0	AIAction_RandomFlyToPos	CAIStateGroup_FlyingThingBase	unknown	undefined	0		0	yes	accepted									
-00913490	`scalar_deleting_destructor'	CAIStateGroup_FlyingThingBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CLandscapeBackgroundPatch_vectordeletingdestructor_00913490.cpp
+00913490	`scalar deleting destructor'	CAIStateGroup_FlyingThingBase	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CLandscapeBackgroundPatch_vectordeletingdestructor_00913490.cpp
 00913590	_Construct<CBezierCurve, CBezierCurve>	std	__fastcall	void	3	allocator<CGPUScratchBufferTextureManager::CResourceEntry> *,CResourceEntry *,CResourceEntry *	1	yes	accepted									
 00913690	FreeBufferArray	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\global_FreeBufferArray_00913690.cpp
 009137c0	FreeBuffer	CBankFileAsyncData	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\91\CBankFileAsyncData_FreeBuffer_009137c0.cpp

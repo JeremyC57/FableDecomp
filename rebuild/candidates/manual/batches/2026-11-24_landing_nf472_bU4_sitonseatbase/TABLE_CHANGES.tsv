@@ -1,0 +1,8 @@
+action	symbol	target	witness	note
+replace	?CAIStateGroup_MinionSitOnSeatBase_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	008ff271	callee-only respell (0x008FD56A self respell)
+replace	?CAIStateGroup_MinionSitAtWork_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	008ff29f	callee-only respell (0x008FD56A self respell)
+replace	?CAIStateGroup_MinionSitAtInn_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	008ff2d0	callee-only respell (0x008FD56A self respell)
+replace	?CAIStateGroup_MinionSitAtSchool_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	008ff2fe	callee-only respell (0x008FD56A self respell)
+replace	?CAIStateGroup_MinionSitAtHome_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	008ff36f	callee-only respell (0x008FD56A self respell)
+replace	?CAIStateGroup_MinionSitOnSeat_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	00902140	callee-only respell (0x008FD56A self respell)
+replace	?CAIStateGroup_MinionSitOutside_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionSitOnSeatBase@@UAE@XZ	008fd56a	009021dd	callee-only respell (0x008FD56A self respell)

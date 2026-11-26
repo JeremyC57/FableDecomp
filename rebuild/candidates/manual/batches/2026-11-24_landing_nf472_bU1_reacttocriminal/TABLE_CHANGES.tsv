@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	?PairFirstDtor@CSymbolInfo___@@QAEXXZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	008fecec	0x008FD288 stand-in binder 0x008FECEC resolved: ~CAIStateGroup_MinionReactToCriminal, thin row of 0x008FECD0
+replace	?CAIStateGroup_MinionReactToCriminal_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ	008fecec	008fecd0	callee-only respell

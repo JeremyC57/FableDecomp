@@ -1,38 +1,26 @@
 #include <cstdio>
-
-class CCharString { public:
-	char* m_ptr;
-	int   m_len;
-	~CCharString();
-};
-struct CSymbolInfoTail {
-	int a, b, c, d, e;
-	~CSymbolInfoTail();
-};
-struct SymPair {
-	CSymbolInfoTail tail;
-	CCharString     s14;
-	CCharString     s1c;
-};
-void __fastcall _Dest_val_CSymbolInfo___(SymPair* self, void* al);
-
-static int g_str_dtor = 0;
-static int g_tail_dtor = 0;
-CCharString::~CCharString() { g_str_dtor++; }
-CSymbolInfoTail::~CSymbolInfoTail() { g_tail_dtor++; }
-
-int main() {
-	SymPair p;
-	p.s14.m_ptr = 0; p.s14.m_len = 0;
-	p.s1c.m_ptr = 0; p.s1c.m_len = 0;
-	p.tail.a = p.tail.b = p.tail.c = p.tail.d = p.tail.e = 0;
-
-	_Dest_val_CSymbolInfo___(&p, 0);
-
-	if (g_str_dtor == 2 && g_tail_dtor == 1) {
-		printf("DEST_VAL_OK\n");
-		return 0;
-	}
-	printf("DEST_VAL_FAIL s=%d t=%d\n", g_str_dtor, g_tail_dtor);
-	return 1;
+// CAIStateGroup_BalverineCornered::~CAIStateGroup_BalverineCornered() (retail 0x00900533): the implicit destructor -- members in reverse declaration order, then the base chain
+//   (~CAIStateGroupBase: Name +0x0C, then ~CBaseClass). (No vptr check: at the test's /Od VC7.1 stores it, the optimised retail form does not.)
+// NF472 (0x008FD288 stand-in binder): self-contained -- the row is now a thin member of its owner's TU, so the test models the retail classes with
+//   IMPLICIT destructors (both PDBs flag them compiler-generated) and VC7.1 generates the chain here, as it does in the row's object.
+static long g_seq[16]; static int g_n = 0; static char* g_base = 0;
+static void Note(void* p) { if (g_n < 16) g_seq[g_n] = (long)((char*)p - g_base); g_n++; }
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CCharString { public: ~CCharString(); void* PString; };
+class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer(); void* PData; };
+class CAIBrain;
+class CAIStateGroupBase : public CBaseClass { public: CAIBrain* PBrain; long ScriptAIPriority; CCharString Name; bool Terminated; unsigned char Priority; bool Enabled; };
+CBaseClass::~CBaseClass() { Note(this); g_seq[15] = 1; }
+CCharString::~CCharString() { Note(this); }
+CBaseIntelligentPointer::~CBaseIntelligentPointer() { Note(this); }
+class CAIStateGroup_BalverineCornered : public CAIStateGroupBase { public: CBaseIntelligentPointer PTarget; CBaseIntelligentPointer PLastJumpTarget; unsigned long TimeOfLastJump; float LandPos[3]; };
+int main()
+{
+    void* buf[0x60] = {(void*)0x1234};
+    g_base = (char*)buf;
+    ((CAIStateGroup_BalverineCornered*)buf)->CAIStateGroup_BalverineCornered::~CAIStateGroup_BalverineCornered();
+    static const long want[] = {0x1c, 0x14, 0xc, 0x0};
+    if (g_n != 4) { std::printf("BAD_COUNT %d\n", g_n); return 1; }
+    for (int i = 0; i < 4; i++) if (g_seq[i] != want[i]) { std::printf("BAD_ORDER %d %ld\n", i, g_seq[i]); return 1; }
+    std::printf("DEST_VAL_OK\n"); return 0;
 }

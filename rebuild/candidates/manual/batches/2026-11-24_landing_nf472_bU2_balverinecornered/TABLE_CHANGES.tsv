@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	??1CSymbolInfoTail@@QAE@XZ -> ??1CAIStateGroupBase@@UAE@XZ	008fd288	00900533	0x008FD288 stand-in binder 0x00900533 resolved: ~CAIStateGroup_BalverineCornered, thin row of 0x00900517
+replace	?CAIStateGroup_BalverineCornered_Destruct@@YIXPAX@Z -> ??1CAIStateGroup_BalverineCornered@@UAE@XZ	00900533	00900517	callee-only respell

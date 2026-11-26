@@ -1,38 +1,12 @@
-// _Dest_val< allocator< pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
-// Leaf: ?Dest_val@CSymbolInfo___@@QAEXXZ
-// Plan phase 3 (2026-11-04): the Leaf was `CSymbolInfo>_>`, the tail of this row's old display name std::_Dest_val<..CSymbolMap::CSymbolInfo>_> (renamed 2026-10-24); it named no symbol, so recheck graded the largest function (a 30/48-byte ??_G) and reported DIFFER. It now names the 27-byte stand-in helper the bytes were landed on.
-// Retail 0x008fecec. The empty stateless allocator collapses _Dest_val to
-// _Ptr->~pair(); the pair pointer arrives in ecx. The pair destructor:
-//   - destroys the two CCharStrings inside 'second' (CSymbolInfo) at +0x14/+0x1c
-//   - tail-jumps to the base/first-member destructor with this (0x8fd288)
-// The wrapper class is named to carry the record's leaf token so the harness
-// picks the right .text block from the object file.
-
-// CCharString: a small string wrapper; its dtor is the leaf at 0xa01c10.
-class CCharString { public:
-    void* p;          // +0x00 : buffer / refcounted pointer
-    ~CCharString();   // out-of-line; retail 0xa01c10
-};
-
-// Models the pair<CCharString, CSymbolMap::CSymbolInfo> whose _Dest_val this is.
-// 'first' CCharString at +0x00 (base dtor at 0x8fd288 via tail jmp with this);
-// the CSymbolInfo 'second' contributes the two CCharStrings at +0x14 and +0x1c.
-struct CSymbolInfo___ {
-    CCharString first;    // +0x00
-    int         pad0;     // +0x04
-    int         pad1;     // +0x08
-    int         c0;       // +0x0c
-    int         c1;       // +0x10
-    CCharString s1;       // +0x14
-    int         gap;      // +0x18
-    CCharString s2;       // +0x1c
-    void Dest_val();      // the destroy helper (this in ecx)
-    void PairFirstDtor(); // the first-member/base dtor at 0x8fd288 (this in ecx)
-};
-
-void CSymbolInfo___::Dest_val()
-{
-    this->s2.~CCharString();   // lea ecx,[esi+0x1c]; call 0xa01c10
-    this->s1.~CCharString();   // lea ecx,[esi+0x14]; call 0xa01c10
-    this->PairFirstDtor();     // mov ecx,esi; jmp 0x8fd288
-}
+// CAIStateGroup_MinionReactToCriminal::~CAIStateGroup_MinionReactToCriminal() -- the implicit destructor: PHome (CIntelligentPointer<CThingBuilding> +0x1C),
+//   PHero (CIntelligentPointer<CThingPlayerCreature> +0x14), then the base ~CAIStateGroupBase (tail jump 0x008FD288); no vtable store.
+// Leaf: ??1CAIStateGroup_MinionReactToCriminal@@UAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008FECEC, 27 bytes. Identity (NF472, 0x008FD288 stand-in binder): its only caller is the deleting destructor of
+//   vftable 0x0128B1F4 (RTTI .?AVCAIStateGroup_MinionReactToCriminal@@ : CAIStateGroupBase, ??_G 0x008FECD0, call at +3); the destroyed offsets are
+//   Ego_r.pdb's PHome +0x1C / PHero +0x14 (engine/CAIStateGroup_MinionReactToCriminal.h retail view, 0x30-byte class); both PDBs flag the destructor
+//   compiler-generated. The catalog name already said so. Was ?Dest_val@CSymbolInfo___@@QAEXXZ on a stand-in pair (two local ~CCharString members
+//   bound to 0x00A01C10, the base as ?PairFirstDtor@CSymbolInfo___@@QAEXXZ) labelled _Dest_val<pair<CCharString,CSymbolInfo>>.
+// TU: VC7.1 emits the implicit destructor as a pick-any COMDAT in a TU that destroys a CAIStateGroup_MinionReactToCriminal out of line. 0x008FECD0, the
+//   class's deleting destructor, does so on the shared header, byte- and relocation-equal to retail, so this function is produced by that
+//   translation unit, included below with no code of its own (the nf251 0x00B2AB10 / Option S thin-row pattern, NF422 / nf424; r470a).
+#include "../src/compiled/00/8f/CAIStateGroupMinionReactToCriminal_scalardeletingdestructor_008fecd0.cpp"
