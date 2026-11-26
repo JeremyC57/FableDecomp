@@ -1,0 +1,42 @@
+NF468 job 3: where the lane sets cl flags (repo HEAD 2026-11-26), and where /D_USE_ANSI_CPP belongs
+
+A. The one funnel for row objects on the Linux lane: tools/decomp_pipeline/verify_and_land.py parity_of() (line ~435:
+   cl(["/nologo","/c"]+flags+extra+[/Fo,src])). Every row-object compile goes through it:
+   verify_and_land main (landing, --recheck-landed, pragma x EXTRA_FLAGSETS sweep, final recompile), lane_tools/vland.py
+   (monkeypatches run_tool only), recheck.py (builds the payload; flags from CompilerFlags + /Oy- rule), retype_landed.py
+   (swaps CL_EXE, calls parity_of), retype_check.py, reloc_audit.py, reloc_rename.py:112, pk_all/one.py + audit_run.py,
+   name_gate.py, export_verified_facts.py, gp.py, q.py (+ fast/fg.py, which shells out to q.py), chunk_pool/agent_scripts/tall.py,
+   and every agent nf.py / pass.py under naming_batch/agent_tools (nf.compile_one -> V.parity_of).
+B. Direct V.cl calls (not parity_of): diagnostic re-compiles whose object is discarded (q.py, gp.py SRC_FAIL error text,
+   reloc_rename.py:604 .err.obj), ltcg_grade.py:119 (/GL experiment), gen_class_headers.py:706 (header compile check);
+   /Od TEST compiles: verify_and_land.behaviour_of:460, fast/vt.py:28, retry_tools/var/tcomp.py + trun.py, reloc_rename.py:658.
+C. V.run_tool(V.CL_EXE) directly: portable_twins_check.py:84 (self-contained dual-path asm tests, /O2 /EHsc, linked: a test).
+D. Own subprocess cl.exe (pre-lane / Windows-era graders; .text-only, objects discarded): check_one.py, crack_residue.py,
+   catalog_parity_audit.py, crawl/crossfam.py, crawl/debake_family.py, vchk.py, verify_residue.py, permuter/permuter_score.py,
+   permuter/qfe_codegen_diff.py; libsig/vendor_lib.py (vendor .lib members with their recorded flags: out of scope);
+   odall10.py (VC10 evidence lane: out of scope); c2probe/c2dbg.py (research).
+E. Windows: rebuild/build_candidates.ps1:403947 row compile `/nologo /c @entryFlags /Fo$object $source` (the build of record);
+   :403953 test compile `/Od /W3` (keep as is). build_tier0.ps1:21 (rebuild/src/tier0, not catalog rows), build_bootstrap.ps1
+   (/MT /GS: libcpmt, separate exe), build_directshow_baseclasses.ps1 (vendor /MT), lift/scripts/build_and_diff.ps1 (lift scratch).
+F. Per-row CompilerFlags (rebuild/build_candidates.ps1, 4,159 of 57,160 rows carry one): NOT the place. The flag is lane-wide, not a
+   per-row retail-codegen fact; verify_and_land writes BASE_FLAGS+winning flags into new entries; nf.flags_of / recheck.py /
+   ps1 each derive flags differently (42 rows differ, +218 rows whose nf flags come from a '// Flags:' source comment); a global
+   define in parity_of + the ps1 row line reaches every row object with one rule. BASE_FLAGS is also wrong: it is written into
+   CompilerFlags at landing and not stripped consistently.
+Patch (not applied): ../libcp_flag.patch = row_defines() in verify_and_land.py used by parity_of (skipped for /MD /MDd /MT /MTd),
+   and @rowDefines on the build_candidates.ps1 row compile line. Test compiles excluded on purpose (0x00CAE9B0 links
+   new(std::nothrow) from libcp). Smoke-tested on the lane; the Windows half is untested (VS2003 include tree: only use_ansi.h
+   compared -- same guard, same /ML branch).
+Side effects to note: flatten_pilot.py:175-182 accepts a new object that GAINS exactly /DEFAULTLIB:"libcp" (switch-route
+   exception): after the patch both sides lose it, so the exception stops firing. alias_header.py / access_fix.py compare
+   HEAD v new with .drectve included: both sides go through parity_of, so they stay consistent. No tool stores object hashes
+   (lane_merge equiv_check / acctb_versions hash source / preprocessed text). nf.py cmd_link links with /NODEFAULTLIB.
+   A future multi-object link of row objects alone (no test object) would no longer get libcp from 0x00C13840-style rows that
+   reference libcp-only symbols: such a link should name the retail /MD libraries (msvcprt/msvcrt) explicitly.
+Docs (one line each):
+   BUILDING.md (Linux lane / RTM section): "Row compiles (verify_and_land.parity_of, build_candidates.ps1) add /D_USE_ANSI_CPP:
+     it suppresses use_ansi.h's /DEFAULTLIB:"libcp", a /ML artefact (retail is /MD); test compiles do not (tests link libcp)."
+   GOTCHAS.md: "/DEFAULTLIB:"libcp" in a row object is the lane's /ML (<new> -> use_ansi.h), not the source: rows compile with
+     /D_USE_ANSI_CPP since 2026-11-26 (NF468 proof: .drectve only); tests keep libcp (new(std::nothrow), std::_Xlen)."
+   LIBRARY_SIGNATURES.md ("Which library"): "Row objects carry no C++ library directive (/D_USE_ANSI_CPP); the C one is still
+     LIBC (/ML), so a full link must name msvcrt.lib + msvcprt.lib explicitly."

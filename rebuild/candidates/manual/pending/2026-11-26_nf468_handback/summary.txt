@@ -1,0 +1,32 @@
+NF468 /D_USE_ANSI_CPP proof (2026-11-26, repo HEAD source as of 04:03-08:30Z; measurement only)
+
+FULL PROOF (final_proof.tsv; tools/proof468.py; H = catalog flags via nf.flags_of, D = H + /D_USE_ANSI_CPP, same work dir)
+  57,160 rows: 44,713 IDENTICAL (whole file equal, COFF timestamp masked)
+               12,441 DRECTVE_ONLY (H has /DEFAULTLIB:"libcp"; D's .drectve is exactly H's minus that token; every other section,
+                      relocation, symbol + aux record, file header and grade equal)
+                    5 /Zi rows (00a5b870 00a5bba0 00a5bef0 00a5cb90 00adf960): all checked parts equal, whole file differs in debug
+                      sections only; control zi_ctl.tsv (same compile twice, no flag) differs the same way -> /Zi nondeterminism
+                    1 fails to compile with or without the flag: 00a7a5e0 CNavQuadTree::InitialiseLines (C2664, UpdateLines
+                      cannot bind std::vector<std::list<C2DLineF>> to CNavLineCellVector&) -- repo state, not the flag
+  grade changes: 0. libcp rows = 12,441 (NF461 12,440 + 005dcc00, which nf.flags_of reads a '// Flags:' comment for; proved
+  under the catalog's own flags instead, routes below).
+  Reruns: 179 drift rows (68 source changed, 111 newer dependency, tools/drift468.py) + 9 rows that failed during the 04:20-04:50
+  disk-full window: all IDENTICAL / DRECTVE_ONLY on rerun (except 00a7a5e0 above).
+  Route supplement (routes_*.tsv): the 42 rows whose recheck.py / build_candidates.ps1 flag list differs from nf's, and the
+  qfe4035 row 00c7b8f0 under V.use_qfe(): 11 DRECTVE_ONLY + 31 IDENTICAL under each route.
+  /MD rows 00c271f0 012133c0 00c95580: IDENTICAL (none reaches <new>). With /MD + <new> the define would drop msvcprt (smoke test).
+NEGATIVE CONTROLS: negctl_*.txt (mutations of .text bytes/flags/relocs, .drectve tokens, symbol value/class/name, COMDAT aux
+  selection, file header): all CAUGHT. /Oy- variant (t_neg_oy): code differences CAUGHT.
+TEST SAMPLE (vsample.tsv: 655 rows = 520 libcp + 135 other, stratified: std:: users in row/test, every flag class, funclets, qfe):
+  vland468 (lane vland.py + injection at V.cl) --recheck-landed, compared per row (verdict line + WARN lines):
+  none (baseline, vs_none2.log) v rows (flag on row compiles only, vs_rows.log): 655/655 identical.
+  none v all (flag also on the /Od test compile, vs_all.log): 1 change, 00cae9b0 CDispParams PASS -> LINK_FAIL
+  (its test uses new(std::nothrow): ??2@YAPAXIABUnothrow_t@std@@@Z / ?nothrow@std@@3Unothrow_t@1@B exist only in libcp.lib).
+UND PASS (und_all.tsv, all 12,441 libcp rows): only 00ab3810 references a libcp-only symbol (??_Gbad_alloc@std@@UAEPAXI@Z) and its
+  test object still carries libcp -> no behaviour link can lose libcp when only row compiles get the define.
+ADDENDUM (after review): 218 rows whose nf.flags_of flags came from a '// Flags:' source comment instead of CompilerFlags were
+  re-proved under the recheck.py and build_candidates.ps1 flag lists (cf_recheck.tsv, cf_ps1.tsv): 172 DRECTVE_ONLY + 46
+  IDENTICAL under each, 0 NOT_EQ. 005dcc00 under catalog flags: DRECTVE_ONLY, no libcp-only UND externals.
+  00a7a5e0 was already SRC_FAIL in NF461's census at the same source sha1 (b0366e7e5cd4): a pre-existing repo compile error;
+  only the unflagged compile was tried (it fails), so the row is UNPROVEN, not identical.
+  Sample: 520 sampled row objects carried libcp (vs_none2.disc.tsv col 2), 135 did not.

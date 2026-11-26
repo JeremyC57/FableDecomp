@@ -141,6 +141,14 @@ parked `/GS` rows whose stack-cookie prologue 4035 could not reproduce now match
 and zero-register rows, the inline-once destructor band and the biased /GS frame (00581b33) do not change, so those are
 source-formulation questions, not compiler-build ones.
 
+**Row compiles define `_USE_ANSI_CPP` (owner, 2026-11-26).** `verify_and_land.parity_of` (every lane row compile: vland, recheck,
+nf.compile_one, pk, name_gate ...) and `build_candidates.ps1`'s row compile add `/D_USE_ANSI_CPP`. Under the lane's /ML, VC7.1's
+`<new>` -> `<exception>` -> `<xstddef>` -> `yvals.h` -> `use_ansi.h` writes `/DEFAULTLIB:"libcp"` into every row object that reaches it;
+retail was /MD, so that directive is a lane artefact. NF468 compiled all 57,160 landed rows both ways: 12,441 differ only by that
+`.drectve` token, 44,713 are identical, no grade changes (`pending/2026-11-26_nf461_handback`, NF468 evidence in the coordination log).
+Behaviour-test compiles do **not** get it (a test calling `new(std::nothrow)` needs libcp at link), and a `/MD` / `/MT` row keeps the
+directive the header picks for it.
+
 ## VC10 SP1 on the Linux lane (evidence only: cl 16.00.40219.01)
 
 Ego_d.pdb and FableWin.pdb were built with VC10 SP1 (compiland records `16.00.40219`; EGOD_FINDINGS.md), so their line tables are

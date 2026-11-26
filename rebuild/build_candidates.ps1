@@ -403944,7 +403944,10 @@ try {
             }
             $vcQfeRoot
         } else { $vcRoot }
-        $output = & (Join-Path $entryCompilerRoot 'bin\cl.exe') /nologo /c @entryFlags /Fo$object $source 2>&1
+        # Row objects define use_ansi.h's guard: no lane /DEFAULTLIB:"libcp" (retail was /MD). Same rule as verify_and_land.py
+        # row_defines(): not for a /MD or /MT entry, and never for the test compile below (tests link libcp).
+        $rowDefines = if ($entryFlags | Where-Object { $_ -in @('/MD','/MDd','/MT','/MTd') }) { @() } else { @('/D_USE_ANSI_CPP') }
+        $output = & (Join-Path $entryCompilerRoot 'bin\cl.exe') /nologo /c @entryFlags @rowDefines /Fo$object $source 2>&1
         $exitCode = $LASTEXITCODE
         $output | Set-Content -LiteralPath $log -Encoding UTF8
         $passed = $exitCode -eq 0 -and (Test-Path -LiteralPath $object)

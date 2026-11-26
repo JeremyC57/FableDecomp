@@ -9,6 +9,9 @@ the proof.
 
 ## Which library
 
+> Since 2026-11-26 row objects carry no C++ library directive (`/D_USE_ANSI_CPP`, see BUILDING.md); the C one is still `LIBC`
+> (/ML), so a full link of row objects alone must name `msvcrt.lib` + `msvcprt.lib` explicitly.
+
 Retail imports **MSVCR71.dll** and **MSVCP71.dll**, so it linked the `/MD` import libraries of **VS .NET 2003**
 (`Vc7/lib/msvcrt.lib`, `msvcprt.lib`, cl 13.10.3077 RTM) and their static members. Two facts confirm it:
 

@@ -402,6 +402,17 @@ BASE_FLAGS=["/O2","/Oy","/W3"]
 # regress an existing match. The winning extra flags are recorded per-catalog-entry
 # (CompilerFlags) so the real build reproduces the exact retail bytes.
 EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"], ["/EHsc"]]   # /EHsc: a few retail modules (0x00C09000..) carry fs:[0] EH frames
+# Row objects define use_ansi.h's include guard (owner, 2026-11-26; NF461, NF468). Under the lane's /ML, VC7.1's
+# <new> -> <exception> -> <xstddef> -> yvals.h -> use_ansi.h writes /DEFAULTLIB:"libcp" into every row object that reaches it;
+# retail was /MD (MSVCP71), so that directive is a lane artefact. The define removes it and changes nothing else: NF468 compiled
+# 57,159 of the 57,160 landed rows both ways (0x00A7A5E0 does not compile at HEAD): 12,441 differ only by that .drectve token,
+# 44,713 are identical, the 5 /Zi rows differ
+# only in debug sections (as two plain compiles do), grades never change. Row compiles only (parity_of): the /Od behaviour tests
+# keep libcp, which a test that calls new(std::nothrow) needs at link (0x00CAE9B0); a /MD or /MT row keeps the msvcprt /
+# libcpmt directive the header picks for it.
+ROW_DEFINES=["/D_USE_ANSI_CPP"]
+def row_defines(flags):
+    return [] if any(f in ("/MD","/MDd","/MT","/MTd") for f in flags) else list(ROW_DEFINES)
 
 def library_proof(addr, src):
     """LIBRARY_MATCH / LIBRARY_MISMATCH for a toolchain_library stub (tools/decomp_pipeline/libsig/lib_verify.py:
@@ -432,7 +443,7 @@ def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, t
     extract = text_extractor or obj_text
     sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
     obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
-    cp=cl(["/nologo","/c"]+flags+list(extra)+[f"/Fo{obj}",str(sp)],e)
+    cp=cl(["/nologo","/c"]+flags+list(extra)+row_defines(flags+list(extra))+[f"/Fo{obj}",str(sp)],e)
     if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
     try:
         res=extract(obj,leaf); built,sec=res[0],res[1]; roff=res[3] if len(res)>3 else 0
