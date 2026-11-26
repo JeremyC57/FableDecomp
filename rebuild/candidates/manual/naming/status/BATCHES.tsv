@@ -670,13 +670,11 @@ T1	other	CMeshDataBank	1	1	engine/CMeshDataBank.h	00a24280
 T1	other	CMessageClearPrimitives	1	1		01239a8c
 T1	other	CMessageOnMeshReplaced	1	1		0126cb54
 T1	other	CMessageOnPickup	1	1		012554e0
-T1	other	CModeGuildmasterPowerUpSpeed	1	1		00742e60
 T1	other	CModeKnockedDown	1	1		01267e78
 T1	other	CModeScripted	1	1		01267670
 T1	other	CModeSitBase	1	1		008d7ca0
 T1	other	CModeSitFloor	1	2		01267bbc
 T1	other	CModeSleepBed	1	1		01275760
-T1	other	CModeStandLeft	1	1		0073e410
 T1	other	CMovableResource	1	2	engine/CMovableResource.h	0129b860
 T1	other	CMovableResourceMemoryPool	1	1	engine/CMovableResourceMemoryPool.h	00a62e20
 T1	other	CMovieSubtitles	1	2	engine/CMovieSubtitles.h	013ca7f8
@@ -690,16 +688,9 @@ T1	other	COpinionReactionManager	1	1	engine/COpinionReactionManager.h	00701750
 T1	other	COptimisedMesh	1	1		00acd500
 T1	other	COptimisedPrimitive	1	1	engine/COptimisedPrimitive.h	00acd0e0
 T1	other	COrbitState	1	1		00b16410
-T1	other	CPSCAttractor	1	1		00b18020
 T1	other	CPSCDecalRenderer	1	1	engine/CPSCDecalRenderer.h	00b1dfd0
-T1	other	CPSCEmitterGeneric	1	1	engine/CPSCEmitterGeneric.h	00b103f0
-T1	other	CPSCLight	1	1	engine/CPSCLight.h	00b1a640
 T1	other	CPSCManager	1	1		00af28c0
-T1	other	CPSCOrbit	1	1		00b16eb0
 T1	other	CPSCRenderMesh	1	1		00b012e0
-T1	other	CPSCRenderSprite	1	1	engine/CPSCRenderSprite.h	00afb7c0
-T1	other	CPSCSpline	1	1		00b1b350
-T1	other	CPSCUpdateNormal	1	1	engine/CPSCUpdateNormal.h	00b0c9c0
 T1	other	CParticleEmitter	1	1	engine/CParticleEmitter.h	00af0380
 T1	other	CParticleEmitterInfo	1	1		00af1480
 T1	other	CParticleUpdateParamDesc	1	4		0125fee4
@@ -1649,7 +1640,6 @@ T3	other	CModeThunderLightningStorm	2	2		007428e0 008da990
 T3	other	CMouse	2	2	engine/CMouse.h	00a66b10 00a66ed0
 T3	other	CMultiStatBar	2	2		00646d90 00646da7
 T3	other	CNetworkClient	2	2	engine/CNetworkClient.h	00419352 004ae9d0
-T3	other	CPSCEmitterGeneric	2	3	engine/CPSCEmitterGeneric.h	00af7ed0 00b102c0
 T3	other	CPhysicsForceModelBase	2	2		00850410 008fa7e0
 T3	other	CPixelFormat	2	3	engine/CPixelFormat.h	009e3800 009e3820
 T3	other	CPlayer	2	2	engine/CPlayer.h	006334f0 00633510
@@ -1870,14 +1860,12 @@ T3	other	CModeDragonHover	1	1		00742fa0
 T3	other	CModeDragonStrafeBurninate	1	1		00743d10
 T3	other	CModeDrunk	1	1		00742ba0
 T3	other	CModeEatingAtTable	1	1		00742b20
-T3	other	CModeGuildmasterPowerUpSpeed	1	1		00743680
 T3	other	CModeKnockedDown	1	1		00742a40
 T3	other	CModeRollAround	1	1		00742c40
 T3	other	CModeScorpionKingExhausted	1	1		0073a290
 T3	other	CModeSitFloor	1	1		008ac3c0
 T3	other	CModeSitTavernStool	1	1		0094b530
 T3	other	CModeStandBase	1	4	engine/CModeStandBase.h	00861e00
-T3	other	CModeStandLeft	1	1		0073ec10
 T3	other	CModeStunned	1	1		007427f0
 T3	other	CModeSummonerDie	1	1		00742c80
 T3	other	CModeUnderwater	1	1		007426b0
@@ -1897,15 +1885,10 @@ T3	other	COpinionDeedReactionDef	1	1	engine/COpinionDeedReactionDef.h	0047955b
 T3	other	COpinionSet	1	2		00477428
 T3	other	COptimisedFace	1	2		00ad0100
 T3	other	COracleTablet	1	1		00cfee30
-T3	other	CPSCAttractor	1	2		00af7fb0
 T3	other	CPSCDecalRenderer	1	1	engine/CPSCDecalRenderer.h	00af8100
-T3	other	CPSCLight	1	2	engine/CPSCLight.h	00af8020
-T3	other	CPSCOrbit	1	1		00af7f40
+T3	other	CPSCEmitterGeneric	1	1	engine/CPSCEmitterGeneric.h	00b102c0
 T3	other	CPSCRenderMesh	1	1		00af7d80
-T3	other	CPSCRenderSprite	1	2	engine/CPSCRenderSprite.h	00af7d10
-T3	other	CPSCSpline	1	1		00af8090
 T3	other	CPSCSplineBase	1	1	engine/CPSCSplineBase.h	00b202c0
-T3	other	CPSCUpdateNormal	1	1	engine/CPSCUpdateNormal.h	00af7e60
 T3	other	CParticleDataBank	1	2		00af21e0
 T3	other	CParticleEmitterManager	1	1	engine/CParticleEmitterManager.h	00aeb4a0
 T3	other	CParticleProgram	1	2	engine/CParticleProgram.h	00adf460

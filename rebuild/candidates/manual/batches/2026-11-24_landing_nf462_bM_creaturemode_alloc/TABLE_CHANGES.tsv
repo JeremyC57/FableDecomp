@@ -1,0 +1,3 @@
+action	symbol	target	witness	note
+replace	??0CModeStandLeft@@QAE@PAVCThing@@@Z -> ??0CModeStandLeft@NCreatureMode@@QAE@AAVCThing@@@Z	0073e410	0073ec10	NF462 (queue nf453, ruling r460a): the landed factory 0x0073EC10 (the only retail caller of 0x0073E410) is respelt in this batch onto the PDB ctor spelling (Ego_r + FableWin) that the self row 0x0073E410 already defines
+replace	??0CModeGuildmasterPowerUpSpeed@@QAE@ABU0@@Z -> ??0CModeGuildmasterPowerUpSpeed@NCreatureMode@@QAE@AAVCThing@@@Z	00742e60	00743680	NF462 (queue nf453, ruling r460a): the landed factory 0x00743680 (the only retail caller of 0x00742E60) is respelt in this batch onto the PDB ctor spelling (Ego_r + FableWin) that the self row 0x00742E60 already defines

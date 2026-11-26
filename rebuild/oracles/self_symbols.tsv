@@ -9841,7 +9841,7 @@ address	symbol	status	leaf_given
 0073eac0	??0CModeBase@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeBase@
 0073eb70	?ScalarDeletingDestructor@CModeNull@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0073ebc0	?ScalarDeletingDestructor@CModeBasic@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-0073ec10	?CModeStandLeft_Alloc@@YIPAUCModeStandLeft@@PAVCThing@@@Z	RELOCATION_MATCH	Alloc
+0073ec10	?Alloc@CModeStandLeft@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
 0073ec70	??0CModeStandHappy@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeStandHappy@
 0073ed20	?CModeStandHappy_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 0073ed50	??0CModeStandBored@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeStandBored@
@@ -9994,7 +9994,7 @@ address	symbol	status	leaf_given
 00743470	?__partial_sort@std@@YIXPAU?$pair@KVCRegisteredModeInfo@CTCCreatureModeManager@@@1@000V?$CKeyPairCompareLess@KVCRegisteredModeInfo@CTCCreatureModeManager@@@@@Z	RELOCATION_MATCH	__partial_sort
 00743510	?CModeGuildmasterPowerUpHeal_scalar_deleting_destructor@@YIPAXPAUCModeGuildmasterPowerUpHeal@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 007435e0	?CModeGuildmasterPowerUpShield_scalar_deleting_destructor@@YIPAXPAUCModeGuildmasterPowerUpShield@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00743680	?Alloc@CModeGuildmasterPowerUpSpeed@@QAEPAUundefined@@XZ	RELOCATION_MATCH	Alloc
+00743680	?Alloc@CModeGuildmasterPowerUpSpeed@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z	RELOCATION_MATCH	Alloc
 007436b0	?CModeGuildmasterPowerUpSpeed_scalar_deleting_destructor@@YIPAXPAUCModeGuildmasterPowerUpSpeed@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00743780	??_GCModeDragonFlyingBase@NCreatureMode@@QAEPAXI@Z	RELOCATION_MATCH	??_GCModeDragonFlyingBase@NCreatureMode@@
 007437c0	??0CModeDragonFlying@NCreatureMode@@QAE@PAVCThing@@@Z	RELOCATION_MATCH	??0CModeDragonFlying
@@ -20898,14 +20898,14 @@ address	symbol	status	leaf_given
 00af7c80	?vector_deleting_destructor@CEngineSubPrimitiveGameMesh@@QAEPAXI@Z	RELOCATION_MATCH	`vector_deleting_destructor'
 00af7ca0	?CDecal_Delete@@YIXPAUCDecal@@@Z	RELOCATION_MATCH	Delete
 00af7cc0	?ScalarDeletingDestructor@CParticleSystem@@QAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00af7d10	?CPSCRenderSprite_Alloc@@YAPAUCPSCRenderSprite@@XZ	RELOCATION_MATCH	Alloc
+00af7d10	?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af7d80	?CPSCRenderMesh_Alloc@@YAPAUCPSCRenderMesh@@XZ	RELOCATION_MATCH	Alloc
-00af7e60	?CPSCUpdateNormal_Alloc@@YAPAUCPSCUpdateNormal@@XZ	RELOCATION_MATCH	Alloc
-00af7ed0	?CPSCEmitterGeneric_Alloc@@YAPAUCPSCEmitterGeneric@@XZ	RELOCATION_MATCH	Alloc
-00af7f40	?CPSCOrbit_Alloc@@YAPAUCPSCOrbit@@XZ	RELOCATION_MATCH	Alloc
-00af7fb0	?CPSCAttractor_Alloc@@YAPAUCPSCAttractor@@XZ	RELOCATION_MATCH	Alloc
-00af8020	?CPSCLight_Alloc@@YAPAUCPSCLight@@XZ	RELOCATION_MATCH	Alloc
-00af8090	?CPSCSpline_Alloc@@YAPAUCPSCSpline@@XZ	RELOCATION_MATCH	Alloc
+00af7e60	?Alloc@CPSCUpdateNormal@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
+00af7ed0	?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
+00af7f40	?Alloc@CPSCOrbit@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
+00af7fb0	?Alloc@CPSCAttractor@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
+00af8020	?Alloc@CPSCLight@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
+00af8090	?Alloc@CPSCSpline@NParticleEngine@@SIPAVCPSCBase@2@XZ	RELOCATION_MATCH	Alloc
 00af8100	?CPSCDecalRenderer_Alloc@@YAPAUCPSCDecalRenderer@@XZ	RELOCATION_MATCH	Alloc
 00af8170	?RegisterPSCs@CPSCManager@NParticleEngine@@QAEXXZ	RELOCATION_MATCH	RegisterPSCs
 00af88a0	?CreateMoreBlocks@?$CDynamicObjectHeap@$0BI@$0DFF@@@AAEXXZ	RELOCATION_MATCH	CreateMoreBlocks
@@ -20923,7 +20923,7 @@ address	symbol	status	leaf_given
 00afe480	?GetName_SpriteRenderer@global_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetName_SpriteRenderer
 00afe4b0	??$__uninitialized_fill_n@PAV?$CArray@J@@IV1@@std@@YIPAV?$CArray@J@@PAV1@IABV1@ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_fill_n@PAV?$CArray@J@@
 00afe530	?CopyBackward_CElement12_00454886_00afe530@@YIPAUCElement12_00454886@@PAU1@00USRandomAccessIteratorTag@@PAJ@Z	RELOCATION_MATCH	CopyBackward_CElement12_00454886_00afe530
-00afe580	?DatabaseClone@CPSCRenderSprite@NParticleEngine@@QAEPAUIDrawableObj@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCRenderSprite@NParticleEngine@@
+00afe580	?DatabaseClone@CPSCRenderSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCRenderSprite@NParticleEngine@@
 00afe5a0	?CPSCRenderSprite_scalar_deleting_destructor@@YIPAXPAUCPSCRenderSprite@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00afe5c0	??$__uninitialized_copy@PAV?$CArray@J@@PAV1@@std@@YIPAV?$CArray@J@@PAV1@00ABU__false_type@0@@Z	RELOCATION_MATCH	??$__uninitialized_copy@PAV?$CArray@J@@
 00afe6b0	??1CRetailVector_SBufferEntry12@@QAE@XZ	RELOCATION_MATCH	??1CRetailVector_SBufferEntry12@
@@ -20963,7 +20963,7 @@ address	symbol	status	leaf_given
 00b0f880	?GetClassTypeName@CPSCUpdateNormal@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCUpdateNormal@NParticleEngine@@UBE?AVCCharString@@XZ
 00b0f8c0	?GetName_GenericParticleSystem@global_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetName_GenericParticleSystem
 00b0f8e0	?GetParticleLifeSecs@CPSCUpdateNormal@NParticleEngine@@QAE_NAAM@Z	RELOCATION_MATCH	GetParticleLifeSecs
-00b0f970	?DatabaseClone@CPSCUpdateNormal@NParticleEngine@@QAEPAUIDrawableObj@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCUpdateNormal@NParticleEngine@@
+00b0f970	?DatabaseClone@CPSCUpdateNormal@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCUpdateNormal@NParticleEngine@@
 00b0f9f0	?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z	RELOCATION_MATCH	?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@
 00b0fb40	?Insert@?$CVectorMap@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@U?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@2@@@QAEXABKABV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@Z	RELOCATION_MATCH	?Insert@?$CVectorMap@
 00b0fbe0	?GetComponentCost@CPSCEmitterGeneric@@QAEXHHHH@Z	MATCH	GetComponentCost
@@ -20973,7 +20973,7 @@ address	symbol	status	leaf_given
 00b12ef0	?WriteBinary@CPSCEmitterGeneric@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	RELOCATION_MATCH	WriteBinary
 00b15a90	?GetClassTypeName@CPSCEmitterGeneric@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCEmitterGeneric@NParticleEngine@@UBE?AVCCharString@@XZ
 00b15ad0	?GetName_GenericEmitter@global_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetName_GenericEmitter
-00b15b00	?DatabaseClone@CPSCEmitterGeneric@NParticleEngine@@QAEPAUIDrawableBase@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCEmitterGeneric@NParticleEngine@@
+00b15b00	?DatabaseClone@CPSCEmitterGeneric@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCEmitterGeneric@NParticleEngine@@
 00b15b20	?CPSCEmitterGeneric_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00b161a0	?Initialise@COrbitState@@QAEXABUCOrbitSettings@@PAK@Z	RELOCATION_MATCH	Initialise
 00b16210	?GetComponentCost@CPSCOrbit@@QAEXHHHH@Z	MATCH	GetComponentCost
@@ -20984,14 +20984,14 @@ address	symbol	status	leaf_given
 00b178d0	?GetClassTypeName@CPSCOrbit@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCOrbit@NParticleEngine@@UBE?AVCCharString@@XZ
 00b17910	?GetGUIName@CPSCOrbit@NParticleEngine@@QBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetGUIName@CPSCOrbit@NParticleEngine@@
 00b17930	?CPSCOrbit_scalar_deleting_destructor@@YIPAXPAUCPSCOrbit@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00b17950	?DatabaseClone@CPSCOrbit@NParticleEngine@@QAEPAUIDrawableObj@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCOrbit@NParticleEngine@@
+00b17950	?DatabaseClone@CPSCOrbit@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCOrbit@NParticleEngine@@
 00b17990	?GetComponentCost@CPSCAttractor@@QAEXHHHH@Z	MATCH	GetComponentCost
 00b17f70	?WriteBinary@CPSCAttractor@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	RELOCATION_MATCH	WriteBinary
 00b18020	??0CPSCAttractor@NParticleEngine@@QAE@XZ	RELOCATION_MATCH	??0CPSCAttractor
 00b18060	?DatabaseCopy@CPSCAttractor@@QAEXABV1@@Z	RELOCATION_MATCH	DatabaseCopy
 00b186e0	?GetClassTypeName@CPSCAttractor@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCAttractor@NParticleEngine@@UBE?AVCCharString@@XZ
 00b18720	?GetGUIName@CPSCAttractor@NParticleEngine@@QBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetGUIName@CPSCAttractor@NParticleEngine@@
-00b18740	?DatabaseClone@CPSCAttractor@NParticleEngine@@QAEPAUIDrawableObj@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCAttractor@NParticleEngine@@
+00b18740	?DatabaseClone@CPSCAttractor@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCAttractor@NParticleEngine@@
 00b18760	?CPSCAttractor_scalar_deleting_destructor@@YIPAXPAUCPSCAttractor@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00b18950	?WriteBinary@CPSCLight@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	RELOCATION_MATCH	WriteBinary
 00b18af0	?AddToBoundingSphere@CPSCLight@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z	RELOCATION_MATCH	AddToBoundingSphere
@@ -20999,7 +20999,7 @@ address	symbol	status	leaf_given
 00b1a700	?DatabaseCopy@CPSCLight@NParticleEngine@@QAEXABVCPSCBase@2@@Z	RELOCATION_MATCH	DatabaseCopy
 00b1ae00	?GetClassTypeName@CPSCLight@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCLight@NParticleEngine@@UBE?AVCCharString@@XZ
 00b1ae40	?GetName_Light@global_Methods@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	GetName_Light
-00b1ae70	?DatabaseClone@CPSCLight@NParticleEngine@@QAIPAUCPrim@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCLight@NParticleEngine@@
+00b1ae70	?DatabaseClone@CPSCLight@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCLight@NParticleEngine@@
 00b1ae90	?CPSCLight_scalar_deleting_destructor@@YIPAXPAUCPSCLight@@HI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00b1af40	_CPSCSpline_GetComponentCost	RELOCATION_MATCH	GetComponentCost
 00b1aff0	?WriteBinary@CPSCSpline@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	RELOCATION_MATCH	WriteBinary
@@ -21008,7 +21008,7 @@ address	symbol	status	leaf_given
 00b1b430	?GetClassTypeName@CPSCSpline@NParticleEngine@@UBE?AVCCharString@@XZ	RELOCATION_MATCH	?GetClassTypeName@CPSCSpline@NParticleEngine@@UBE?AVCCharString@@XZ
 00b1b470	?GetGUIName@CPSCSpline@NParticleEngine@@QAE?AVCCharString@@XZ	RELOCATION_MATCH	?GetGUIName@CPSCSpline@NParticleEngine@@
 00b1b490	?CPSCSpline_scalar_deleting_destructor@@YIPAXPAUCPSCSpline@@HI@Z	RELOCATION_MATCH	`scalar deleting destructor'
-00b1b4b0	?DatabaseClone@CPSCSpline@NParticleEngine@@QAEPAUIDrawableObj@@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCSpline@NParticleEngine@@
+00b1b4b0	?DatabaseClone@CPSCSpline@NParticleEngine@@UBEPAVCPSCBase@2@XZ	RELOCATION_MATCH	?DatabaseClone@CPSCSpline@NParticleEngine@@
 00b1b4d0	??0SDecalRequest@@QAE@PAX_NJJMF@Z	MATCH	??0SDecalRequest
 00b1b5e0	?GetHeight@CSprite_00b1b5e0@@QBEJXZ	MATCH	GetHeight
 00b1b710	?Initialise@CPSCDecalRenderer@NParticleEngine@@QAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	RELOCATION_MATCH	vfunc_28

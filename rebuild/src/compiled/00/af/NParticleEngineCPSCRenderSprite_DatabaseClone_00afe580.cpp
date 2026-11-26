@@ -1,32 +1,22 @@
-// NParticleEngine::CPSCRenderSprite::DatabaseClone() -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
-// Leaf: ?DatabaseClone@CPSCRenderSprite@NParticleEngine@@
+// NParticleEngine::CPSCRenderSprite::DatabaseClone() const -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
+// Leaf: ?DatabaseClone@CPSCRenderSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/af/CThingTrackNode_DrawIsDrawable_00afe580.cpp: vtable slot 2 of NParticleEngine::CPSCRenderSprite; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
-namespace NParticleEngine { class CPSCRenderSprite; }
-using NParticleEngine::CPSCRenderSprite;
-
-struct IDrawableObj {
-    // A vtbl of __fastcall member functions. Slot 0x12 (byte offset 0x48)
-    // takes one stack arg (the node) with 'this' in ecx.
-    int Draw(CPSCRenderSprite* node);   // placeholder shape; real dispatch via vtbl
-};
-
-// helper: __fastcall on the node, returns the drawable object
-extern IDrawableObj* __fastcall GetDrawableObject(CPSCRenderSprite* self);
+// Retail bytes: push esi ; push edi ; mov edi,ecx ; call Alloc 0x00AF7D10 ; mov esi,eax ; mov eax,[esi] ; push edi ; mov ecx,esi ; call [eax+48h] ; pop edi ; mov eax,esi ; pop esi ; ret
+// Naming (NF462, ruling r460d, queue nf458): self is the PDB virtual ?DatabaseClone@CPSCRenderSprite@NParticleEngine@@UBEPAVCPSCBase@2@XZ (Ego_r + FableWin; its only retail
+//   reference is vtable 0x0129F67C slot 2, no call site), was ?DatabaseClone@CPSCRenderSprite@NParticleEngine@@QAEPAUIDrawableObj@@XZ on a local IDrawableObj model.
+//   The callee 0x00AF7D10 is NParticleEngine::CPSCRenderSprite::Alloc, ?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ (Ego_r + FableWin; RegisterPSCs
+//   0x00AF8170 binds it), was the stand-in ?GetDrawableObject@@YIPAUIDrawableObj@@PAVCPSCRenderSprite@NParticleEngine@@@Z. The copy is CPSCBase::DatabaseCopy
+//   (pure, slot 18 = +0x48) on the shared engine/CPSCBase.h. Same bytes.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CPSCRENDERSPRITE_ALLOC
+#include "engine/CPSCRenderSprite.h"
 
 namespace NParticleEngine {
-class CPSCRenderSprite { public:
-    IDrawableObj* DatabaseClone();
-};
-}
-
-// vtable modeled as an array of member-function pointers so the call is __fastcall
-// (ecx = obj, one stack arg) with no edx setup.
-typedef int (IDrawableObj::*Slot)(CPSCRenderSprite* node);
-
-IDrawableObj* NParticleEngine::CPSCRenderSprite::DatabaseClone()
+CPSCBase* CPSCRenderSprite::DatabaseClone() const
 {
-    IDrawableObj* obj = GetDrawableObject(this);
-    Slot* vtbl = *(Slot**)obj;
-    (obj->*vtbl[0x12])(this);
-    return obj;
+    CPSCBase* clone = Alloc();
+    clone->DatabaseCopy(*this);
+    return clone;
+}
 }

@@ -47,6 +47,25 @@ public:
     // Retail opt-in (Codex pass 24): FableWin and slot 19 in the CPSCRenderSprite vtable at 0x00AFAE50.
     virtual bool AddToBoundingSphere(C3DBoundingSphere&, const float, CParticleSystem&, const CParticleUpdateParameters<unsigned long,unsigned long>&);
 #endif
+#ifdef FABLE_RETAIL_CPSCRENDERSPRITE_ALLOC
+    // Opt-in (NF462, ruling r460d; the engine/NParticleEngine_CPSCOrbit.h pattern): the class factory and the members a TU needs to
+    // `new` the class. Ego_r.pdb + FableWin.pdb: ??0CPSCRenderSprite@NParticleEngine@@QAE@XZ (0x00AFB7C0, out of line),
+    // ?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ (0x00AF7D10, public static __fastcall; RegisterPSCs 0x00AF8170 binds it)
+    // and the ten overrides of CPSCBase's pure virtuals (DatabaseClone 0x00AFE580 = vtable 0x0129F67C slot 2, its only retail reference). Declarations only: the
+    // virtuals override CPSCBase slots, no new slot, no layout change.
+    CPSCRenderSprite();
+    static CPSCBase* FABLE_FASTCALL Alloc();
+    virtual CPSCBase* DatabaseClone() const;
+    virtual CCharString GetClassTypeName() const;
+    virtual EPSCType GetComponentType() const;
+    virtual EPSCSubType GetComponentSubType() const;
+    virtual CCharString GetGUIName() const;
+    virtual void InterpolateTo(const CPSCBase&,const float);
+    virtual void ReadBinary(CDataInputStream&);
+    virtual void WriteBinary(CDataOutputStream&) const;
+    virtual void DatabaseCopy(const CPSCBase&);
+    virtual void GetComponentCost(CParticleSystemCost&,const CParticleSystem&,const float,const float);
+#endif
     virtual void ClearAllPrimitives(CIEngine*,CEnginePrimitiveHandle&);
     virtual void PreparePrimitives(const float time, const CEnginePrimitivePrepareInfo& info, CParticleSystem& system,
                                    const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& handle);

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0073ec10   RELOCATION_MATCH PASS   Alloc
+00743680   RELOCATION_MATCH PASS   Alloc
+
+WINS: 2
+  0073ec10 RELOCATION_MATCH NCreatureMode::CModeStandLeft::?Alloc@CModeStandLeft@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z
+  00743680 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpSpeed::?Alloc@CModeGuildmasterPowerUpSpeed@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z

@@ -1,19 +1,23 @@
-// NParticleEngine::CPSCRenderSprite::Alloc() -- factory: new CPSCRenderSprite with the default constructor @ 0x00AFB7C0 out of line
+// NParticleEngine::CPSCRenderSprite::Alloc() -- the component factory: a new CPSCRenderSprite (operator new(0x54) 0x00BFEA1A, null-checked, then a tail jump into
+//   the default constructor 0x00AFB7C0), returned as its CPSCBase
+// Leaf: ?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7D10, oracle length 24 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push 0x54 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CPSCRenderSprite::CPSCRenderSprite ; N: xor eax,eax ; ret
-// A no-argument factory: allocates sizeof(CPSCRenderSprite) = 0x54 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
-// (which returns `this`). The class is named from the constructor's manifest label when that label
-// is unique. One of 11 bodies of this shape.
-struct CPSCRenderSprite {
-    unsigned char _body[0x54];       // sizeof(CPSCRenderSprite) = 0x54
-    CPSCRenderSprite();                               // 0x00AFB7C0
-};
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ (public static __fastcall); retail references: the
+//   registration table built by NParticleEngine::CPSCManager::RegisterPSCs 0x00AF8170 (whose landed row already binds this spelling here) and
+//   the class's DatabaseClone 0x00AFE580. The constructor is ??0CPSCRenderSprite@NParticleEngine@@QAE@XZ (Ego_r + FableWin), 0x00AFB7C0, whose landed row defines it.
+// Naming (NF460 / NF462, queue nf453 / nf458): was the generated free function CPSCRenderSprite_Alloc() returning a global-namespace CPSCRenderSprite*, which also
+//   called the constructor outside NParticleEngine. Same bytes.
+// Model (NF462, ruling r460d): the shared engine/CPSCRenderSprite.h with its FABLE_RETAIL_CPSCRENDERSPRITE_ALLOC opt-in (ctor, Alloc and the ten
+//   CPSCBase pure-virtual overrides declared, as engine/NParticleEngine_CPSCOrbit.h does), so the class is concrete and derives from CPSCBase: no cast.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
+#define FABLE_RETAIL_CPSCRENDERSPRITE_ALLOC
+#include "engine/CPSCRenderSprite.h"
 
-CPSCRenderSprite* CPSCRenderSprite_Alloc()
+namespace NParticleEngine {
+CPSCBase* FABLE_FASTCALL CPSCRenderSprite::Alloc()
 {
     return new CPSCRenderSprite;
+}
 }

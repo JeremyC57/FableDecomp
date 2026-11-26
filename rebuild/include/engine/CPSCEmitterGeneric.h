@@ -13,6 +13,27 @@ public: virtual void DatabaseSerialise(CPersistContext&,const CEmitterDatabaseSe
  // Declaration only, no layout change.
  CPSCEmitterGeneric();
 #endif
+#ifdef FABLE_RETAIL_CPSCEMITTERGENERIC_ALLOC
+ // Opt-in (NF462, ruling r460d; the engine/NParticleEngine_CPSCOrbit.h pattern): the class factory and the members a TU needs to `new`
+ // the class (the ctor comes from FABLE_RETAIL_CPSCEMITTERGENERIC_CTOR above). Ego_r.pdb + FableWin.pdb
+ // ?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ (0x00AF7ED0, public static __fastcall; RegisterPSCs 0x00AF8170 binds it)
+ // and the ten overrides of CPSCBase's pure virtuals (DatabaseClone 0x00B15B00 = vtable 0x012A002C slot 2, its only retail reference).
+ // Declarations only: the virtuals override CPSCBase slots, no new slot, no layout change.
+#ifndef FABLE_RETAIL_CPSCEMITTERGENERIC_CTOR
+#error "FABLE_RETAIL_CPSCEMITTERGENERIC_ALLOC needs FABLE_RETAIL_CPSCEMITTERGENERIC_CTOR (the constructor declaration)"
+#endif
+ static CPSCBase* FABLE_FASTCALL Alloc();
+ virtual CPSCBase* DatabaseClone() const;
+ virtual CCharString GetClassTypeName() const;
+ virtual EPSCType GetComponentType() const;
+ virtual EPSCSubType GetComponentSubType() const;
+ virtual CCharString GetGUIName() const;
+ virtual void InterpolateTo(const CPSCBase&,const float);
+ virtual void ReadBinary(CDataInputStream&);
+ virtual void WriteBinary(CDataOutputStream&) const;
+ virtual void DatabaseCopy(const CPSCBase&);
+ virtual void GetComponentCost(CParticleSystemCost&,const CParticleSystem&,const float,const float);
+#endif
 private:
     CParticleUpdateParamDesc<unsigned long,unsigned long> EmitterPosParamDesc;       // +0x0c
     CCountedPointer<CCardinalSpline> Spline;            // +0x18

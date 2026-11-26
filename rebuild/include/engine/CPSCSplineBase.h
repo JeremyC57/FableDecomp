@@ -1,6 +1,6 @@
 #ifndef FABLE_ENGINE_CPSCSPLINEBASE_H
 #define FABLE_ENGINE_CPSCSPLINEBASE_H
-#ifdef FABLE_RETAIL_CPSCSPLINEBASE_PASS23
+#if defined(FABLE_RETAIL_CPSCSPLINEBASE_PASS23) && !defined(FABLE_RETAIL_CPSCSPLINEBASE_NO_CONTAINERS)
 #include "engine/CPSCBase.h"
 #include "engine/CCardinalSpline.h"
 #include "engine/CCountedPointer.h"
@@ -66,4 +66,34 @@ public:
 FABLE_STATIC_ASSERT_AT(30,sizeof(NParticleEngine::CPSCSplineBase)==52);
 FABLE_STATIC_ASSERT_AT(31,sizeof(NParticleEngine::CPSCSplineBase::CSplinePosParamData)==24);
 #endif
+#ifdef FABLE_RETAIL_CPSCSPLINEBASE_NO_CONTAINERS
+// Add-only per-TU opt-in (NF462, 2026-11-26, ruling r460d on r451a / r459d): the class above without STLport. The typed view's
+// CCardinalSpline Spline (engine/CCardinalSpline.h -> engine/CArray.h -> stlport/fable_containers.h -> <new>, which adds
+// /DEFAULTLIB:"libcp" to the object's .drectve; retail's objects never had it, r450a) keeps its name and offset here as 20 opaque bytes;
+// the nested CSplineRandomOffsetData / CSplinePosParamData (whose SplinePosParam is a CArray) are only declared; every other member is
+// the typed view's. For TUs that only name the class or derive from it to allocate a subclass (no member construction, destruction or
+// spline access). Define it TOGETHER with FABLE_RETAIL_CPSCSPLINEBASE_PASS23; the typed view's opt-ins are not carried.
+#ifndef FABLE_RETAIL_CPSCSPLINEBASE_PASS23
+#error "FABLE_RETAIL_CPSCSPLINEBASE_NO_CONTAINERS needs FABLE_RETAIL_CPSCSPLINEBASE_PASS23"
+#endif
+#if defined(FABLE_RETAIL_CPSCSPLINEBASE_MEMBERS) || defined(FABLE_RETAIL_CPSCSPLINEBASE_GETCOMPONENTCOST) || defined(FABLE_RETAIL_CPSCSPLINEBASE_UPDATE_PASS26) || defined(FABLE_RETAIL_CPSCSPLINEBASE_POSPARAM_INTERPOLATETO)
+#error "FABLE_RETAIL_CPSCSPLINEBASE_NO_CONTAINERS cannot be combined with the typed view's opt-ins (use the typed view)"
+#endif
+#include <stddef.h>
+#include "engine/CPSCBase.h"
+#include "engine/CCountedPointer.h"
+namespace NParticleEngine {
+class CPSCSplineBase:public CPSCBase {
+public:
+ class CSplineRandomOffsetData;
+ class CSplinePosParamData;
+ float SplineAnimSpeed;                                         // +0x0c
+ unsigned char Spline[0x14];                                    // +0x10 CCardinalSpline
+ CCountedPointer<CSplineRandomOffsetData> SplineRandomOffsetData; // +0x24
+ CCountedPointer<CSplinePosParamData> SplinePosParamData;       // +0x2c
+};
+}
+FABLE_STATIC_ASSERT_AT(96,sizeof(NParticleEngine::CPSCSplineBase)==52);
+FABLE_STATIC_ASSERT_AT(97,offsetof(NParticleEngine::CPSCSplineBase,SplineRandomOffsetData)==36);
+#endif // FABLE_RETAIL_CPSCSPLINEBASE_NO_CONTAINERS
 #endif

@@ -10872,16 +10872,16 @@ line	tag	address	correct_symbol	status	other_spellings
 13759	nf453	00686870	?OnInitialActivate@CTCBase@@UAEXXZ	partial	?BaseOnCreate@CTCActionUseBuyHouse@@QAEXXZ || ?CTCEnemy_base_OnInitialActivate@@YIXPAVCTCEnemy@@@Z || ?M@C00686870@@QAEXXZ || ?OnCreate@CTCActionUseBase@@QAEXXZ
 13760	nf453	0083d6d0	??1CThingPhysicalSwitch@@UAE@XZ	closed	
 13761	nf453	009fc210	?ShrinkResources@CResourceList@@QAEXK@Z	partial	?Helper@C@@QAEXPAX@Z || ?ShrinkResources@CResourceList_Methods@@QAEXK@Z
-13762	nf453	00b0c9c0	??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ	open	??0CPSCUpdateNormal || ??0CPSCUpdateNormal@@QAE@XZ
-13763	nf453	00b16eb0	??0CPSCOrbit@NParticleEngine@@QAE@XZ	open	??0CPSCOrbit@@QAE@XZ
-13764	nf453	00b1b350	??0CPSCSpline@NParticleEngine@@QAE@XZ	open	??0CPSCSpline || ??0CPSCSpline@@QAE@XZ
+13762	nf453	00b0c9c0	??0CPSCUpdateNormal@NParticleEngine@@QAE@XZ	partial	??0CPSCUpdateNormal
+13763	nf453	00b16eb0	??0CPSCOrbit@NParticleEngine@@QAE@XZ	closed	
+13764	nf453	00b1b350	??0CPSCSpline@NParticleEngine@@QAE@XZ	partial	??0CPSCSpline
 13765	nf453	004a96f0	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	partial	??0?$CIntelligentPointer@ || ??0CIntelligentPointer@@QAE@PAVCThing@@@Z || ??0CIntelligentPointerConstThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointerConstThing@N_004a96f0@@QAE@PBVCThing@@@Z || ??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z || ??0CIntelligentPointer_CThing@NThingShot@@QAE@PAVCThing@@@Z
 13766	nf453	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 13767	nf453	004abe90	??0CScriptThing@@QAE@ABV0@@Z	partial	??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z || ??0CElement12_004abe90@@QAE@ABU0@@Z || ??0CScriptThing@@QAE@PAX@Z || ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z || ??0CScriptThingRetail@@QAE@ABU0@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z || ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z || ??0CScriptThing_Calls@@QAE@ABU0@@Z || ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z ||
 13768	nf453	0062f3b0	??0CCombatActionBase@@QAE@ABV0@@Z	partial	??0CBase_0062f3b0@@QAE@ABU0@@Z || ??0CCombatActionBase
 13769	nf453	00686830	??1CTCBase@@UAE@XZ	partial	??1CBase_00686830@@QAE@XZ || ??1CTCBase@@QAE@XZ
-13770	nf453	0073e410	??0CModeStandLeft@NCreatureMode@@QAE@AAVCThing@@@Z	partial	??0CModeStandLeft@@QAE@PAVCThing@@@Z
-13771	nf453	00742e60	??0CModeGuildmasterPowerUpSpeed@NCreatureMode@@QAE@AAVCThing@@@Z	partial	??0CModeGuildmasterPowerUpSpeed@@QAE@ABU0@@Z
+13770	nf453	0073e410	??0CModeStandLeft@NCreatureMode@@QAE@AAVCThing@@@Z	closed	
+13771	nf453	00742e60	??0CModeGuildmasterPowerUpSpeed@NCreatureMode@@QAE@AAVCThing@@@Z	closed	
 13772	nf453	013b8790	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A	partial	?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A || ?g_GlobalCountedPointer@@3UCCountedPointer41915a@@A || ?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A || ?g_MovieTransitionState@@3PAUMovieTransitionState@@A || ?g_cutscene@@3PAUInner@@A || ?g_gameObj@@3PAUGameObj@@A || ?g_hud@@3PAUCHud@@A || ?g_obj@@3PAUCObj@@A || ?g_pGameUI@@3PAUCGameUI@@A || ?g_pGameUI_013b8790@@3PAUCGameUI@@A || ?g_pGameUI
 13773	nf453	0143e8e0	?NullCoord@CScriptThing@@1VC3DVector@@A	partial	?g_ZeroVector@@3VC3DVector@@A
 13774	nf453	0143e8f8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	partial	?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A || ?g_pScriptTimerManager@@3PAUCTimerManager@@A
@@ -10902,10 +10902,10 @@ line	tag	address	correct_symbol	status	other_spellings
 13792	nf458	0099a2d0	??0CBaseClass@@QAE@XZ	partial	??0CBase@N_0099a2d0@@QAE@XZ || ??0CBase@N_0099a2d0@NHeroInformationScreens@@QAE@XZ || ??0CBaseClass || ??0CBaseClass@NFoot008f7bd0@@QAE@XZ || ??0CBaseNative@@QAE@XZ
 13793	nf458	009d6490	??1CBankFileAsync@@UAE@XZ	partial	??1CBankFile@N_009d6490@@UAE@XZ
 13794	nf458	00af7b60	??1CParticle@NParticleEngine@@UAE@XZ	closed	
-13795	nf458	00af7d10	?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?GetDrawableObject@@YIPAUIDrawableObj@@PAVCPSCRenderSprite@NParticleEngine@@@Z
-13796	nf458	00af7ed0	?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?GetDrawableObject@@YIPAUIDrawableBase@@PAVCPSCEmitterGeneric@NParticleEngine@@@Z
-13797	nf458	00af7fb0	?Alloc@CPSCAttractor@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?CreateInternalPrimitive@@YIPAUIDrawableObj@@PAVCPSCAttractor@NParticleEngine@@@Z
-13798	nf458	00af8020	?Alloc@CPSCLight@NParticleEngine@@SIPAVCPSCBase@2@XZ	partial	?CreatePrim@@YIPAUCPrim@@PAVCPSCLight@NParticleEngine@@@Z
+13795	nf458	00af7d10	?Alloc@CPSCRenderSprite@NParticleEngine@@SIPAVCPSCBase@2@XZ	closed	
+13796	nf458	00af7ed0	?Alloc@CPSCEmitterGeneric@NParticleEngine@@SIPAVCPSCBase@2@XZ	closed	
+13797	nf458	00af7fb0	?Alloc@CPSCAttractor@NParticleEngine@@SIPAVCPSCBase@2@XZ	closed	
+13798	nf458	00af8020	?Alloc@CPSCLight@NParticleEngine@@SIPAVCPSCBase@2@XZ	closed	
 13799	nf458	00af8650	??3CParticle@NParticleEngine@@SIXPAX@Z	closed	
 13800	nf458	00b93290	?EnumerateScene@CEngineScene@@QAEXAAVCEngineSceneEnumerator@@@Z	open	?Enumerate@CEngineScene@@QAEXAAVCBaseClassNonCopyable@@@Z || ?Enumerate@CEngineSceneGrid_00b320a0@@QAEXAAUCEngineSceneEnumeratorResetVisibilityRatio@@@Z || EnumerateScene
 13801	nf458	00cb7e50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	partial	?Add@CQR_EscortTraderScript@NScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z || ?Add@CQ_AmbushTradersScript@NScript@@QAEXPAUCSpawnedFuncEnemyDeath@@ABVC

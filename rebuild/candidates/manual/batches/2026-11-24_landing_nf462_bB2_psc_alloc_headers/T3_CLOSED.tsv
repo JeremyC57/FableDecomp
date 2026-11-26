@@ -1,0 +1,6 @@
+source	address	unit	reason
+nf303	0x00AF7FB0	port (census)	binder -: entry 300: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+nf303	0x00AF7ED0	port (census)	binder -: entry 301: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv); in the 1-in-10 / HDRFLAG sample: the stand-in's declaring lines in the witness (tools/sample303.py, evidence/census_sample.txt) were read and show the stand-in scope / free function / other class.
+nf303	0x00AF8020	port (census)	binder -: entry 302: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+nf303	0x00AF7D10	port (census)	binder -: entry 304: every stand-in table line binds through a made-up scope, a free function or another real class (FREE 1; tools/census303.py, evidence/census.tsv).
+nf386	0x00AF7FB0	self respell with return type (A candidates)	NF386 q4: 0x00AF7FB0 -> 0x00B18020, 0x00AF8020 -> 0x00B1A640 (nf303): The binders' respell also changes the self's return type: one unit per binder (self rename + callee respell), grade both; not done here for the compile budget.

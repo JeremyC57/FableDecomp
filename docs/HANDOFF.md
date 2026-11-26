@@ -7,7 +7,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
-- **Naming:** 35,328 of 64,045 done (55.16%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names); 37,354 (58.32%) with the 2,026 registered best guesses (NF454 registered 1,821). Landed today:
+- **Naming:** 35,353 of 64,045 done (55.20%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names); 37,379 (58.36%) with the 2,026 registered best guesses (NF454 registered 1,821). Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);
   - nf425 (285 Clone / Copy virtuals; 111 held on wrong vftable slots for NF427, `pending/2026-11-25_nf425_handback/`);
   - nf424 r3 + r4 (2 ctor-owned thin rows; 85 CActiveEntityScript<T> pairs);

@@ -1,23 +1,32 @@
-// NCreatureMode::CModeGuildmasterPowerUpSpeed::Alloc(CThing&) -- factory: operator new(0x90), then the out-of-line constructor @ 0x00742E60 with the incoming CThing& (its last vtable store is CModeGuildmasterPowerUpSpeed's); the stand-in passes the incoming register as `*this`
+// NCreatureMode::CModeGuildmasterPowerUpSpeed::Alloc(CThing& thing) -- the mode registry factory: a new CModeGuildmasterPowerUpSpeed for `thing` (operator new(0x90) 0x00BFEA1A,
+//   null-checked, then the constructor 0x00742E60), returned as its CTCCreatureModeManager::CModeBase
+// Leaf: ?Alloc@CModeGuildmasterPowerUpSpeed@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00743680, oracle length 34 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push esi ; push 0x90 ; mov esi,ecx ; call operator new ; add esp,4 ; test eax,eax ; je N ; push esi ; mov ecx,eax ; call CModeGuildmasterPowerUpSpeed::CModeGuildmasterPowerUpSpeed(const CModeGuildmasterPowerUpSpeed&) ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
-// Virtual clone: allocates sizeof(CModeGuildmasterPowerUpSpeed) = 0x90, null-checks and copy-constructs from
-// `*this` through the out-of-line copy constructor @ 0x00742E60; the constructor's `this` return
-// is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-struct undefined {
-    virtual void v00();
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CModeGuildmasterPowerUpSpeed@NCreatureMode@@SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z (public static
+//   __fastcall); its retail reference is the mode registry 0x0073B130, whose landed row already binds this spelling here. The constructor is
+//   ??0CModeGuildmasterPowerUpSpeed@NCreatureMode@@QAE@AAVCThing@@@Z (Ego_r + FableWin), 0x00742E60, whose landed row defines it.
+// Naming (NF460 / NF462, queue nf453, ruling r460a): was the generated member stand-in undefined* Alloc() on `this` calling a (const CModeGuildmasterPowerUpSpeed&) copy-constructor form; same bytes.
+// Model (NF462, ruling r460a): CModeGuildmasterPowerUpSpeed has no shared header; it derives from its RTTI direct base CModeStandBase (ghidra_out/rtti_bases.tsv:
+//   .?AVCModeGuildmasterPowerUpSpeed@NCreatureMode@@ : CModeStandBase@0 : CTCCreatureModeManager::CModeBase@0; its ctor 0x00742E60 calls CModeStandBase() 0x00861E00
+//   first) from the shared engine/CModeStandBase.h (FABLE_RETAIL_CMODESTANDBASE), over the containers-free view of engine/CTCCreatureModeManager.h
+//   (FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS: no /DEFAULTLIB:"libcp", r450a). Declared: the ctor, the GetType override (CModeBase
+//   slot 1 is pure; the header's default unsigned long spelling) and Alloc; own members opaque. No cast: CModeBase is at offset 0.
+#define FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS
+#define FABLE_RETAIL_CMODESTANDBASE
+#include "engine/CTCCreatureModeManager.h"
+#include "engine/CModeStandBase.h"
+namespace NCreatureMode {
+class CModeGuildmasterPowerUpSpeed : public CModeStandBase {
+public:
+    CModeGuildmasterPowerUpSpeed(CThing& thing);        // 0x00742E60
+    virtual unsigned long GetType() const;
+    static CTCCreatureModeManager::CModeBase* __fastcall Alloc(CThing& thing);
+private:
+    unsigned char Members[0x90 - sizeof(CModeStandBase)];   // sizeof(CModeGuildmasterPowerUpSpeed) = 0x90
 };
-
-struct CModeGuildmasterPowerUpSpeed : undefined {
-    unsigned char _body[0x90 - 4];    // sizeof(CModeGuildmasterPowerUpSpeed) = 0x90
-    CModeGuildmasterPowerUpSpeed(const CModeGuildmasterPowerUpSpeed& other);             // 0x00742E60
-    undefined* Alloc();
-};
-
-undefined* CModeGuildmasterPowerUpSpeed::Alloc()
+CTCCreatureModeManager::CModeBase* __fastcall CModeGuildmasterPowerUpSpeed::Alloc(CThing& thing)
 {
-    return new CModeGuildmasterPowerUpSpeed(*this);
+    return new CModeGuildmasterPowerUpSpeed(thing);
+}
 }

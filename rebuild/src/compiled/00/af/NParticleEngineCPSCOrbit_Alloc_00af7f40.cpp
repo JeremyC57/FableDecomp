@@ -1,19 +1,18 @@
-// NParticleEngine::CPSCOrbit::Alloc() -- factory: new CPSCOrbit with the default constructor @ 0x00B16EB0 out of line
+// NParticleEngine::CPSCOrbit::Alloc() -- the component factory: a new CPSCOrbit (operator new(0x174) 0x00BFEA1A, null-checked, then a tail jump into
+//   the default constructor 0x00B16EB0), returned as its CPSCBase
+// Leaf: ?Alloc@CPSCOrbit@NParticleEngine@@SIPAVCPSCBase@2@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7F40, oracle length 27 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
 // Retail bytes:  push 0x174 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CPSCOrbit::CPSCOrbit ; N: xor eax,eax ; ret
-// A no-argument factory: allocates sizeof(CPSCOrbit) = 0x174 bytes (operator new @ 0x00BFEA1A,
-// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
-// (which returns `this`). The class is named from the constructor's manifest label when that label
-// is unique. One of 11 bodies of this shape.
-struct CPSCOrbit {
-    unsigned char _body[0x174];       // sizeof(CPSCOrbit) = 0x174
-    CPSCOrbit();                               // 0x00B16EB0
-};
+// Identity: Ego_r.pdb and FableWin.pdb ?Alloc@CPSCOrbit@NParticleEngine@@SIPAVCPSCBase@2@XZ (public static __fastcall); retail references: the
+//   registration table built by NParticleEngine::CPSCManager::RegisterPSCs 0x00AF8170 (whose landed row already binds this spelling here) and
+//   the class's DatabaseClone. The constructor is ??0CPSCOrbit@NParticleEngine@@QAE@XZ (Ego_r + FableWin), 0x00B16EB0, whose landed row defines it.
+// Naming (NF460, queue nf453 / nf458): was the generated free function CPSCOrbit_Alloc() returning a global-namespace CPSCOrbit*, which also
+//   called the constructor outside NParticleEngine. Same bytes.
+#include "engine/NParticleEngine_CPSCOrbit.h"
 
-CPSCOrbit* CPSCOrbit_Alloc()
+namespace NParticleEngine {
+CPSCBase* FABLE_FASTCALL CPSCOrbit::Alloc()
 {
     return new CPSCOrbit;
+}
 }

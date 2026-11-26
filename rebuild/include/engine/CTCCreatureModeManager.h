@@ -1,4 +1,4 @@
-#ifndef FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
+#if !defined(FABLE_ENGINE_CTCCREATUREMODEMANAGER_H) && !defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS)
 #define FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
 #include "engine/CTCBase.h"
 #ifdef FABLE_RETAIL_CMODEBASE_ORIGINAL_GETTYPE_PASS26
@@ -163,3 +163,57 @@ inline __declspec(noinline) CCountedPointer<CTCCreatureModeManager::CModeBase> C
 }
 #endif
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS
+// Add-only per-TU opt-in (NF462, 2026-11-26, ruling r460a on r451a / r459d): the class above without STLport, for the TUs that only
+// name CTCCreatureModeManager::CModeBase or derive a mode from it (the NCreatureMode::CMode*::Alloc factories: ?Alloc@<Mode>@NCreatureMode@@
+// SIPAVCModeBase@CTCCreatureModeManager@@AAVCThing@@@Z). The typed view's std::list<CCountedPointer<CModeBase> > PModes
+// (stlport/fable_containers.h -> <new>, which adds /DEFAULTLIB:"libcp" to the object's .drectve; retail's objects never had it, r450a) keeps
+// its name and offset here as 4 opaque bytes (TLC STLport list); every other member, the nested CModeBase (vptr, ~CModeBase, pure GetType,
+// ParentThing / WeaponBasedFilter / FramesBeforeRemovingSelf / Active) and StatGetInterfaceType are the typed view's. Carries only the
+// declaration-only FABLE_RETAIL_CMODEBASE_CTOR opt-in; the typed view's other opt-ins are refused.
+#if defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_CTOR_PASS23) \
+ || defined(FABLE_RETAIL_CMODEBASE_ORIGINAL_GETTYPE_PASS26) \
+ || defined(FABLE_RETAIL_CMODEBASE_VIRTUALS) \
+ || defined(FABLE_RETAIL_CMODEBASE_NOFRAMES) \
+ || defined(FABLE_RETAIL_CMODEBASE_DEFAULTANIMFILTER) \
+ || defined(FABLE_RETAIL_CMODEBASE_GETNOFRAMESBEFOREPLAYINGCOMBINATIONIDLEANIMS) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_REGISTRY) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_ALLOCATEMODE) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_ADDMODEPOINTER) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_REMOVEALLMODES) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_VSLOTS) \
+ || defined(FABLE_RETAIL_CTCCREATUREMODEMANAGER_FRAMEUPDATE)
+#error "FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS carries only FABLE_RETAIL_CMODEBASE_CTOR (use the typed view for the other opt-ins)"
+#endif
+#ifndef FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
+#define FABLE_ENGINE_CTCCREATUREMODEMANAGER_H
+#include "engine/ETCInterfaceType.h"
+#include "engine/CTCBase.h"
+#include "engine/CCountedPointer.h"
+class CTCCreatureModeManager : public CTCBase {
+public:
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_ENTITY_MODE_MANAGER; }
+    class CModeBase {
+    public:
+#ifdef FABLE_RETAIL_CMODEBASE_CTOR
+        CModeBase(CThing& parent_thing);                                                         // 0x0073EAC0
+#endif
+        virtual ~CModeBase();
+        virtual unsigned long GetType() const=0;
+    protected:
+        CThing& ParentThing;
+        unsigned char WeaponBasedFilter[12]; // Original CAnimFilterOfGroup.
+        long FramesBeforeRemovingSelf;bool Active;
+    };
+    CModeBase& GetCurrentMode() const;
+    bool IsModeActive(unsigned long) const;
+private:
+    unsigned char PModes[0x4];                                           // std::list<CCountedPointer<CModeBase> >
+    long TimeLeftForCurrentMode,TimeForNextIdleMode;
+    unsigned char AvailableIdleModes[12]; // std::vector<NCreatureMode::EMode>.
+};
+FABLE_STATIC_ASSERT_AT(216, sizeof(CTCCreatureModeManager)==0x24);
+FABLE_STATIC_ASSERT_AT(217, sizeof(CTCCreatureModeManager::CModeBase)==0x1c);
+#endif
+#endif // FABLE_RETAIL_CTCCREATUREMODEMANAGER_NO_CONTAINERS
