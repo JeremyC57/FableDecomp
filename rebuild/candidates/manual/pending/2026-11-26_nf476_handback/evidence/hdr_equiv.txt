@@ -1,0 +1,11 @@
+SAME rebuild/src/compiled/00/8f/CAIStateGroupBanditKingLunge_GetName_008fe3f2.cpp
+SAME rebuild/src/compiled/00/90/CAIStateGroupBanditKingLunge_GetStateGroupType_00901298.cpp
+SAME rebuild/src/compiled/00/93/CAIStateGroupBanditSitRoundCampfire_GetPNearCampfire_0093ab70.cpp
+SAME rebuild/src/compiled/00/93/CAIStateGroupBanditSitRoundCampfire_IsStillValid_0093a890.cpp
+SAME rebuild/src/compiled/00/96/CAIStateGroupBanditKingLunge_CanLungeAtPlayer_009613a0.cpp
+SAME rebuild/src/compiled/00/96/CAIStateGroupBanditKingLunge_Initialise_009612e0.cpp
+SAME rebuild/src/compiled/00/96/CAIStateGroupBanditKingLunge_IsRunnable_009614a0.cpp
+SAME rebuild/src/compiled/00/96/CAIStateGroupBanditKingLunge_Update_00961880.cpp
+SAME rebuild/src/compiled/01/21/CAIBrain_dynamicinitializerforStateGroupInfoobjectsymbolE_0121f86f.cpp
+SAME rebuild/tests/00/96/CAIStateGroupBanditKingLunge_Initialise_009612e0_test.cpp
+SAME rebuild/tests/00/96/CAIStateGroupBanditKingLunge_Update_00961880_test.cpp

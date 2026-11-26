@@ -1,0 +1,4 @@
+equiv_check.py old vs new include trees (NF476 b0_hdr), 2026-11-26
+rows checked 57160
+differ: 00902045 0093a500 009612e0 (all b1 rows that opt in to the new declarations)
+outside the batch: none

@@ -15696,7 +15696,7 @@ address	symbol	status	leaf_given
 008ff0be	?CAIStateGroup_MinionReactToCorpse_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff108	?CAIStateGroup_MinionReactToUnconsciousPerson_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff152	?CAIStateGroup_MinionReactToEnemy_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-008ff19c	?CAIStateGroup_MinionReactToAlert_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
+008ff19c	??_GCAIStateGroup_MinionReactToAlert@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff1dc	??_GCAIStateGroup_MinionHasInformation@@UAEPAXI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff22b	?CAIStateGroup_UsesSeat_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 008ff26b	?IsStateGroupStillValid@CAIStateGroup_MinionSitOnSeatBase@@MBE_NXZ	MATCH	IsStateGroupStillValid
@@ -15944,7 +15944,7 @@ address	symbol	status	leaf_given
 00901e69	?CAIStateGroup_AvoidRegionExit_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 00901ea9	?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ	MATCH	?GetStateGroupType@CAIStateGroup_SummonerSummon@@UBE?AW4EAIStateGroupType@@XZ
 00901ead	?CAIStateGroup_SummonerSummon_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
-00902045	?Initialise@CAIStateGroup_MinionFaceHero@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	RELOCATION_MATCH	Initialise
+00902045	?Initialise@CAIStateGroup_MinionFaceHero@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 00902134	?CAIStateGroup_MinionSitOnSeat_GetPOwnerObject@@YI_NPAVCAIStateGroup_MinionSitOnSeat@@PAXPAPAVCThing@@@Z	MATCH	GetPOwnerObject
 00902140	?CAIStateGroup_MinionSitOnSeat_ScalarDeletingDestructor@@YIPAXPAXHI@Z	RELOCATION_MATCH	`scalar_deleting_destructor'
 009021da	?AllowPriorityOverlap@CAIStateGroup_MinionSitOutside@@UAE_NXZ	MATCH	AllowPriorityOverlap
@@ -16225,7 +16225,7 @@ address	symbol	status	leaf_given
 0090ed40	??0?$CIntelligentPointer@$$CBVCMessageEvent@@@@QAE@PBVCMessageEvent@@@Z	RELOCATION_MATCH	??0?$CIntelligentPointer@
 0090eeb0	?IsRunnable@CAIStateGroup_MinionKidCalledToMother@@UAE_NXZ	RELOCATION_MATCH	IsRunnable
 0090eec0	?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ	RELOCATION_MATCH	Update
-0090f0d0	?Initialise@CAIStateGroup_MinionReactToAlert@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	RELOCATION_MATCH	Initialise
+0090f0d0	?Initialise@CAIStateGroup_MinionReactToAlert@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 0090f1c0	?Update@CAIStateGroup_MinionReactToAlert@@UAEXXZ	RELOCATION_MATCH	Update
 0090f260	?OnActivate@CAIStateGroup_MinionHasInformation@@UAEXXZ	RELOCATION_MATCH	OnActivate
 0090f290	?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ	RELOCATION_MATCH	?CreatureWantsPlayersAttention@CAIStateGroup_MinionHasInformation@@ABE_NXZ
@@ -16617,7 +16617,7 @@ address	symbol	status	leaf_given
 00939d70	?CheckForOtherGuardsNewWarning@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ	RELOCATION_MATCH	?CheckForOtherGuardsNewWarning@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAE_NXZ
 0093a080	?Update@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ	RELOCATION_MATCH	?Update@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@QAEXXZ
 0093a3c0	??$FindMostRecentDeed@VCOpinionDeedFilter_IsStillHappening@@@CTCCreatureOpinionOfHero@@QBEPBVCOpinionDeed@@W4EOpinionDeedType@@ABVCOpinionDeedFilter_IsStillHappening@@PAJ_N@Z	RELOCATION_MATCH	FindMostRecentDeed
-0093a500	?Initialise@CAIStateGroup_BanditSitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	RELOCATION_MATCH	Initialise
+0093a500	?Initialise@CAIStateGroup_BanditSitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 0093a540	?Idle@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	RELOCATION_MATCH	Idle
 0093a5c0	?Eat@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	RELOCATION_MATCH	Eat@CAIStateGroup_BanditSitRoundCampfire
 0093a890	?IsStillValid@CAIStateGroup_BanditSitRoundCampfire@@UBE_NXZ	RELOCATION_MATCH	?IsStillValid@CAIStateGroup_BanditSitRoundCampfire@@UBE_NXZ
@@ -16942,7 +16942,7 @@ address	symbol	status	leaf_given
 00960070	?OnActivate@CAIStateGroup_DeedReactionRoot@@QAEXXZ	RELOCATION_MATCH	OnActivate
 00960760	?OnReplace@CAIStateGroup_DeedReactionRoot@@QAEXXZ	RELOCATION_MATCH	OnReplace
 00960f80	??0CThingFilter_IsOpinionSourceWithFreshDeed@@QAE@PAVCBaseObject@@J_K@Z	RELOCATION_MATCH	??0CThingFilter_IsOpinionSourceWithFreshDeed@
-009612e0	@CAIStateGroup_BanditKingLunge_Initialise@28	RELOCATION_MATCH	Initialise
+009612e0	?Initialise@CAIStateGroup_BanditKingLunge@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	RELOCATION_MATCH	Initialise
 009612f0	?IsRunnable@CAIStateGroup_BanditKingCharge@@MAE_NXZ	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_BanditKingCharge@@MAE_NXZ
 00961550	?IsRunnable@CAIStateGroup_BanditKingThrowWeapons@@MAE_NXZ	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_BanditKingThrowWeapons@@MAE_NXZ
 00961a00	?GetAnimationTransitionInTime@CCreatureAction_BanditKingLunge@@UBEJXZ	MATCH	?GetAnimationTransitionInTime@CCreatureAction_BanditKingLunge@@UBEJXZ
@@ -28215,3 +28215,4 @@ address	symbol	status	leaf_given
 009143c0	?Cleanup@CAIStateGroup_BirdGroundWander@@UAEXXZ	RELOCATION_MATCH	?Cleanup@CAIStateGroup_BirdGroundWander@@UAEXXZ
 00914ef0	?OnActivate@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ	MATCH	?OnActivate@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ
 00922530	?InitStateGroup@CAIStateGroup_Drunk@@UAEXABVCWorld@@AAVCThingAICreature@@@Z	MATCH	?InitStateGroup@CAIStateGroup_Drunk@@UAEXABVCWorld@@AAVCThingAICreature@@@Z
+0090f690	?Initialise@CAIStateGroup_MinionSitOnSeat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	RELOCATION_MATCH	?Initialise@CAIStateGroup_MinionSitOnSeat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z

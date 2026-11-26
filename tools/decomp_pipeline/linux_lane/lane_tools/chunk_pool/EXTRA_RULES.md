@@ -567,6 +567,13 @@ The row comment cites the measurement and the flags:
 
 Example: 0x00656EAD's pick-any `~vector<CEnginePrimitiveHandle>` becomes EQ at 0x00440C40, while the row's own size-mode `??_G` is unchanged.
 
+Extension (2026-11-26, advisor decision (owner delegated), NF476 r476a): a changed COMDAT with no retail address of its own
+(NOADDR) also passes clause 3 when no relocation in the row's object reaches it and its bytes are identical to every other
+landed row's copy of it. Measure that by compiling every landed emitter. Example: 0x00902045's reset changes the
+`CIntelligentPointer<const CThingPlayerCreature>` `??4` (29 -> 26 bytes) and `SetPointer` (9 -> 5 bytes). With the reset
+both are identical to the copies in 0x00688D40, 0x00691D20 and 0x006A9180, `??_G` is identical to the landed row 0x0048A4D0,
+and `??0` is EQ at 0x006892A0.
+
 ## Typed-in retail addresses (baked grades, 2026-11-25)
 
 Never write a retail address as an integer in row code. This covers:

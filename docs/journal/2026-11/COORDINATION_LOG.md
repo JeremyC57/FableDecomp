@@ -1431,3 +1431,4 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: owner: agent cap 1 once the next running agent finishes (NF476 / NF477 running).
 
 2026-11-26 B->A: claiming four unreserved same-size parked rows (0x00BC9B30 FindNode, 0x009FDBA0 UploadToVolumeTexture, 0x0099F570 operator+, 0x0099F600 operator+). Codex pass 29 and every RESERVED.tsv address stay untouched.
+- 2026-11-26 A: landed NF476 b0_hdr + b1 (MinionReactToAlert unit, 3 headers + 7 rows, +6 proven; T3 nf374 0x008FCEC0 closed; r476a advisor decision (owner delegated), r476b/c coordinator); equiv 57,160 rows, 3 differ, all batch; 0x0091D820 / 0x009705D0 held (NAME_FIXES_QUEUE nf476). Agent cap now 1 (NF477), no replacement.

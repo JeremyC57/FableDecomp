@@ -354,7 +354,7 @@ T1	other	list	19	24		0042b687 00463871 004ba390 004c3460 00517720 00519420 0055c
 T1	other	(none)	18	39		00405f00 004978a0 009a3640 00cbfb7d 0129ba40 013961e8 013961f0 013b7cd8 013b8384 013b8388 013b864f 013ca828 013cb530 013cd550 013d2880 01437450 01437884 0143e8f8
 T1	other	map	17	21		004df86c 00518e80 005692b0 005698a0 005bbbf3 0062ee80 006bd6a0 006f33a0 00721640 00802190 008267c0 0082fb90 00991350 009913d0 00a96e40 00ad6140 00cd3d2e
 T1	other	CTCInventoryBase	16	29		005bc499 005bc638 005bc649 005bc65b 005bc65c 005bc68e 005bc68f 005bc692 005bcafe 005bd1eb 005bd273 005bd4ea 005bdd8c 005bddb8 005bff07 005c0121
-T1	other	CAIStateGroupBase	10	25	engine/CAIStateGroupBase.h	008fcec0 008fcf40 008fcfa0 0097d6f0 0097e200 0097e270 0097e2d0 0097e380 0097f870 00c3f760
+T1	other	CAIStateGroupBase	10	23	engine/CAIStateGroupBase.h	008fcec0 008fcf40 008fcfa0 0097d6f0 0097e200 0097e270 0097e2d0 0097e380 0097f870 00c3f760
 T1	other	CCharString	10	130		0099e4b0 0099e960 0099eae0 0099eaf0 0099ebf0 0099ec30 0099ed10 0099efb0 0129aaf4 013bd804
 T1	other	CThing	10	25	engine/CThing.h	004c7380 004c73d0 004c7990 004c79d0 004c79e0 004c7a00 004c7ab0 004c9840 004c9b80 013b8a1c
 T1	other	NCreatureMode	10	11	engine/NCreatureMode.h	0085ef70 0085f0c0 0085f120 0085f200 0085f2b0 0085f3e0 0085f600 0085f8d0 0085fbc0 008e8e50
@@ -6889,7 +6889,6 @@ T3	emit ??_ECAIStateGroup_MinionWatchFires@@UAEPAXI@Z	(none)	1	1		008ff074
 T3	emit ??_ECAIStateGroup_MinionReactToCorpse@@UAEPAXI@Z	(none)	1	1		008ff0be
 T3	emit ??_ECAIStateGroup_MinionReactToUnconsciousPerson@@UAEPAXI@Z	(none)	1	1		008ff108
 T3	emit ??_GCAIStateGroup_MinionReactToEnemy@@UAEPAXI@Z	(none)	1	1		008ff152
-T3	emit ??_ECAIStateGroup_MinionReactToAlert@@UAEPAXI@Z	(none)	1	1		008ff19c
 T3	emit ??_GCAIStateGroup_UsesSeat@@UAEPAXI@Z	(none)	1	1		008ff22b
 T3	emit ??_ECAIStateGroup_MinionSitOnSeatBase@@UAEPAXI@Z	(none)	1	1		008ff271
 T3	emit ??_GCAIStateGroup_MinionSitAtWork@@UAEPAXI@Z	(none)	1	1		008ff29f
@@ -7104,7 +7103,6 @@ T3	emit ??_ECCreatureAction_BriarRoseForcePush@@UAEPAXI@Z	(none)	1	1		00957370
 T3	emit ??_GCCreatureAction_WaspQueenPrimaryAttack@@UAEPAXI@Z	(none)	1	1		0095cc40
 T3	emit ??_GCCreatureAction_QueenHornetShootBabies@@UAEPAXI@Z	(none)	1	1		0095cc80
 T3	emit ?GetDebugText@CAIStateGroup_OpinionReactionRoot@@UBEPBVCCharString@@XZ	(none)	1	1		0095ede0
-T3	emit ?Initialise@CAIStateGroup_BanditKingLunge@@UAEXAAVCAIBrain@@AAVCThingAICreature@	(none)	1	1		009612e0
 T3	emit ??_ECCreatureAction_PutDownJug@@UAEPAXI@Z	(none)	1	1		00968070
 T3	emit ??_GCCreatureAction_WhisperSommersaultForward@@UAEPAXI@Z	(none)	1	1		0096c0a0
 T3	emit ??_GCCreatureAction_WhisperSommersaultBackward@@UAEPAXI@Z	(none)	1	1		0096c0c0
@@ -7493,7 +7491,6 @@ T3	emit ?Update@CAIStateGroup_BanditKingCharge@@MAEXXZ	CAIStateGroup_BanditKingC
 T3	emit ?OnReplace@CAIStateGroup_BanditPlayDice@@MAEXXZ	CAIStateGroup_BanditPlayDice	1	1	engine/CAIStateGroup_BanditPlayDice.h	00928e20
 T3	emit ?GetDiceGame@CAIStateGroup_BanditPlayDice@@MAEPAVCTCDiceGame@@XZ	CAIStateGroup_BanditPlayDice	1	1	engine/CAIStateGroup_BanditPlayDice.h	00929220
 T3	emit ?GetDiceGame@CAIStateGroup_BanditPlot@@MAEPAVCTCDiceGame@@XZ	CAIStateGroup_BanditPlot	1	1	engine/CAIStateGroup_BanditPlot.h	009292b0
-T3	emit ?Initialise@CAIStateGroup_BanditSitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICr	CAIStateGroup_BanditSitRoundCampfire	1	1	engine/CAIStateGroup_BanditSitRoundCampfire.h	0093a500
 T3	emit ?OnReplace@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ	CAIStateGroup_BanditSitRoundCampfire	1	1	engine/CAIStateGroup_BanditSitRoundCampfire.h	0093afc0
 T3	emit ?Initialise@CAIStateGroup_BirdFlyToFood@@UAEXAAVCAIBrain@@AAVCThingAICreature@@J	CAIStateGroup_BirdFlyToFood_Retail	1	1		008fd860
 T3	emit ?IsStillValid@CAIStateGroup_BoastingCrowdMember@@MBE_NXZ	CAIStateGroup_BoastingCrowdMember	1	1		0095e870
@@ -7559,7 +7556,6 @@ T3	emit ?Update@CAIStateGroup_MinionBehaviourGreetCreature@@UAEXXZ	CAIStateGroup
 T3	emit ?InitLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@UAEXXZ	CAIStateGroup_MinionBehaviourPodiumEmoteNeutral	1	1		0096f490
 T3	emit ?UpdateLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@UAEXXZ	CAIStateGroup_MinionBehaviourPodiumEmoteNeutral	1	1		0096f570
 T3	emit ?CleanupLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ	CAIStateGroup_MinionBehaviourSad	1	1		0096f030
-T3	emit ?Initialise@CAIStateGroup_MinionFaceHero@@UAEXAAVCAIBrain@@AAVCThingAICreature@@	CAIStateGroup_MinionFaceHero	1	1	engine/CAIStateGroup_MinionFaceHero.h	00902045
 T3	emit ?Update@CAIStateGroup_MinionFaceHero@@UAEXXZ	CAIStateGroup_MinionFaceHero	1	1	engine/CAIStateGroup_MinionFaceHero.h	009357f0
 T3	emit ?Initialise@CAIStateGroup_MinionFollowThing@@MAEXAAVCAIBrain@@AAVCThingAICreatur	CAIStateGroup_MinionFollowThing	1	1	engine/CAIStateGroup_MinionFollowThing.h	00921270
 T3	emit ?OnActivate@CAIStateGroup_MinionFollowThing@@MAEXXZ	CAIStateGroup_MinionFollowThing	1	1	engine/CAIStateGroup_MinionFollowThing.h	009212c0
@@ -7573,13 +7569,11 @@ T3	emit ?Update@CAIStateGroup_MinionHawkingFromStall@@UAEXXZ	CAIStateGroup_Minio
 T3	emit ?IsRunnable@CAIStateGroup_MinionKidGroupTag@@UAE_NXZ	CAIStateGroup_MinionKidGroupTag	1	1	engine/CAIStateGroup_MinionKidGroupTag.h	00934920
 T3	emit ?IsStillValid@CAIStateGroup_MinionKidGroupTag@@UBE_NXZ	CAIStateGroup_MinionKidGroupTag_Methods	1	1		00934100
 T3	emit ?Update@CAIStateGroup_MinionLeaveRegion@@MAEXXZ	CAIStateGroup_MinionLeaveRegion_Adapter	1	1		0091e4b0
-T3	emit ?Initialise@CAIStateGroup_MinionReactToAlert@@UAEXAAVCAIBrain@@AAVCThingAICreatu	CAIStateGroup_MinionReactToAlert	1	1		0090f0d0
 T3	emit ?Update@CAIStateGroup_MinionReactToBurglary@@UAEXXZ	CAIStateGroup_MinionReactToBurglary	1	1		00958000
 T3	emit ?IsRunnable@CAIStateGroup_MinionReactToCriminal@@UAE_NXZ	CAIStateGroup_MinionReactToCriminal	1	1	engine/CAIStateGroup_MinionReactToCriminal.h	00931010
 T3	emit ?Initialise@CAIStateGroup_MinionReactToNoise@@UAEXAAVCAIBrain@@AAVCThingAICreatu	CAIStateGroup_MinionReactToNoise_Methods	1	1		0091cc90
 T3	emit ?IsRunnable@CAIStateGroup_MinionReactToTrespassing@@UAE_NXZ	CAIStateGroup_MinionReactToTrespassing_Methods	1	1		00958720
 T3	emit ?IsStateGroupStillValid@CAIStateGroup_MinionSitAtHome@@MBE_NXZ	CAIStateGroup_MinionSitAtHome	1	1		00938ed0
-T3	emit ?Initialise@CAIStateGroup_MinionSitOnSeat@@UAEXAAVCAIBrain@@AAVCThingAICreature@	CAIStateGroup_MinionSitOnSeat	1	1	engine/CAIStateGroup_MinionSitOnSeat.h	0090f690
 T3	emit ?IsStillValid@CAIStateGroup_MinionSitOutside@@MBE_NXZ	CAIStateGroup_MinionSitOutside	1	1	engine/CAIStateGroup_MinionSitOutside.h	00939060
 T3	emit ?InitStateGroup@CAIStateGroup_MinionWatchFires@@UAEXABVCWorld@@AAVCThingAICreatu	CAIStateGroup_MinionWatchFires	1	1	engine/CAIStateGroup_MinionWatchFires.h	009365e0
 T3	emit ?Update@CAIStateGroup_NonVillageGuardPatrol@@UAEXXZ	CAIStateGroup_NonVillageGuardPatrol	1	1		0093cb20

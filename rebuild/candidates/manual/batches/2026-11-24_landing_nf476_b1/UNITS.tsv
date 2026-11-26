@@ -1,0 +1,8 @@
+address	unit
+008fd50d	unit CAIStateGroup_MinionReactToAlert: ctor 0x008FD50D (owner, emits the 56-byte ??_7 / ??_G / ??1CAIStateGroupBase; NF474 b3r_hold / NF475 bA text unchanged)
+008ff19c	unit CAIStateGroup_MinionReactToAlert: thin ??_G member of 0x008FD50D (NF475 bA text unchanged)
+0090f0d0	unit CAIStateGroup_MinionReactToAlert: slot-target respell (NF475 bA text unchanged)
+00902045	unit CAIStateGroup_MinionReactToAlert (T3 nf374 0x008FCEC0 binders, landed with the unit): binder 00902045 respell onto the class header + the landed base self
+0090f690	unit CAIStateGroup_MinionReactToAlert (T3 nf374 0x008FCEC0 binders, landed with the unit): binder 0090F690 respell onto the class header + the landed base self
+009612e0	unit CAIStateGroup_MinionReactToAlert (T3 nf374 0x008FCEC0 binders, landed with the unit): binder 009612E0 respell onto the class header + the landed base self
+0093a500	unit CAIStateGroup_MinionReactToAlert (T3 nf374 0x008FCEC0 binders, landed with the unit): binder 0093A500 respell onto the class header + the landed base self

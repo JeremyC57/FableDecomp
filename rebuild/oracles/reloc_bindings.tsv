@@ -3906,7 +3906,6 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ??_7CCreatureAction_WaspQueenPrimaryAttack@@6B@	01294efc	0095cca0
 ??_7CCreatureAction_WaspQueenLashOutAttack@@6B@	0129504c	0095ccd0
 ?g_dbgtable@@3PAUElem40@@A	013bb768	0095ede0
-@CAIStateGroupBase_Initialise@28	008fcec0	009612e0
 ?IsOnFinalPhase@CTCBoss@@QAE_NXZ	007aede0	00961550
 ?IsThingInRangeOfPound@@YI_NPAUCThing@@0@Z	00961b90	00961c50
 ??_7CCreatureAction_IceTrollIcicleAttack@@6B@	012960c4	00962920
@@ -14951,7 +14950,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?DoAttractToPoint@CPhysicsForceModelBase@NCameraModes@@UAE?AVC3DVector@@XZ	008fa800	008fcbd0
 ?DoVelocityDamping@CPhysicsForceModelBase@NCameraModes@@UAE?AVC3DVector@@XZ	008fa7e0	008fcc10
 ?Initialise@CAIStateGroupBase_Retail@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	008fd860
-?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	00902045
+?Initialise@CAIStateGroupBase@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	00902233
 ??0CActionMoveTo@NTCScriptedControl@@QAE@ABVC3DVector@@W4EMovementType@@M_N2@Z	007e71d0	00903bc0
 ??0CActionTurnToFacePosition@NTCScriptedControl@@QAE@ABVC3DVector@@M@Z	007185d0	00904cd0
 ??0CCreatureAction_UnsheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z	008b8590	00904f60
@@ -15003,8 +15002,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CCombatAction_0090a690@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z	0090a690	0090a4c0
 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ	00a01b50	0090cb80
 ?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother@@AAEPBVCMessageEvent@@XZ	0090ee20	0090eeb0
-?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	0090f0d0
-?Initialise@CAIStateGroupBaseI@@QAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	0090f690
+?Initialise@CAIStateGroupBase@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JJABVCCharString@@@Z	008fcec0	00957940
 ?GetFreeSeat@CTCTavern@@QAEPAVCThing@@PAV2@@Z	007babe0	0090fb60
 ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	008fcfa0	0090fd20
 ?FindMostRecentMessage@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind3@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_HasExtraData@@UCMessageEventFilter_IsForThing@@@@@Z	00910cf0	00910d50

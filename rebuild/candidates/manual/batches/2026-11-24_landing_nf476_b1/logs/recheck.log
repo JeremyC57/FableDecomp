@@ -1,0 +1,18 @@
+addr       parity           behav  name
+008fd50d   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToAlert
+008ff19c   WARN STANDIN_LEAF ??_GCAIStateGroup_MinionReactToAlert@@UAEPAXI@Z (catalog CAIStateGroup_MinionReactToAlert::`scalar_deleting_destructor'; names another function)
+008ff19c   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00902045   RELOCATION_MATCH PASS   Initialise
+0090f0d0   RELOCATION_MATCH PASS   Initialise
+0090f690   RELOCATION_MATCH PASS   Initialise
+0093a500   RELOCATION_MATCH PASS   Initialise
+009612e0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 7
+  008fd50d RELOCATION_MATCH CAIStateGroup_MinionReactToAlert::??0CAIStateGroup_MinionReactToAlert@@QAE@XZ
+  008ff19c RELOCATION_MATCH CAIStateGroup_MinionReactToAlert::??_GCAIStateGroup_MinionReactToAlert@@UAEPAXI@Z
+  00902045 RELOCATION_MATCH CAIStateGroup_MinionFaceHero::?Initialise@CAIStateGroup_MinionFaceHero@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  0090f0d0 RELOCATION_MATCH CAIStateGroup_MinionReactToAlert::?Initialise@CAIStateGroup_MinionReactToAlert@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  0090f690 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeat::?Initialise@CAIStateGroup_MinionSitOnSeat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  0093a500 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?Initialise@CAIStateGroup_BanditSitRoundCampfire@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+  009612e0 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::?Initialise@CAIStateGroup_BanditKingLunge@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z

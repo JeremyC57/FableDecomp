@@ -1,0 +1,6 @@
+# leaf ?Initialise@CAIStateGroup_MinionFaceHero@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z  source_a=yes  
+NOADDR    NOADDR                    - -        pickany      5 leaf=n reach=n ??1?$CIntelligentPointer@$$CBVCThingPlayerCreature@@@@UAE@XZ
+NOADDR    NOADDR                    - -        pickany     29 leaf=n reach=n ??4?$CIntelligentPointer@$$CBVCThingPlayerCreature@@@@QAEAAV0@ABV0@@Z
+NOADDR    NOADDR                    - -        pickany      9 leaf=n reach=n ?SetPointer@?$CIntelligentPointer@$$CBVCThingPlayerCreature@@@@AAEXPBVCThingPlayerCreature@@@Z
+NEQ       NEQ                006892a0 c        pickany     34 leaf=n reach=n ??0?$CIntelligentPointer@$$CBVCThingPlayerCreature@@@@QAE@PBVCThingPlayerCreature@@@Z
+NOADDR    NOADDR                    - -        pickany     31 leaf=n reach=n ??_G?$CIntelligentPointer@$$CBVCThingPlayerCreature@@@@UAEPAXI@Z
