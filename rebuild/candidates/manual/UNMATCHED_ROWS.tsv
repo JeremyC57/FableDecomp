@@ -370,8 +370,8 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 0099c1e0	CWideString	Replace	880	parked	codex pass24 PARKED: The current prefix lifetime leaves a larger frame and different ownership-counter and destructor scheduling. The public underlying append specialization and reference-count ownership are present.	19	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0099c1e0/0099c1e0.cpp	original
 0099d8c0	_global	ErrorDialogProc	800	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand693/differ/0099d8c0.cpp	gapscan/boundary
 0099e690	_global	GFCharStringToFloat	352	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/0099e690.cpp	original
-0099f570	_global	operator+	144	parked		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/0099f570.cpp	original
-0099f600	_global	operator+	144	parked		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f600.test.cpp	original
+0099f570	_global	operator+	144	reserved (acctB lane, 2026-11-26; was: parked)		0	rebuild/candidates/manual/pending/2026-10-31_parked_retry2_sec5/differ/0099f570.cpp	original
+0099f600	_global	operator+	144	reserved (acctB lane, 2026-11-26; was: parked)		0	rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f600.test.cpp	original
 0099f7a0	_global	CWideString_AppendChar	144	parked	codex pass24 PARKED: The shared copy operator leaves a four-byte deficit in the inline reference-count increment at 0x0099F7BF.	20	rebuild/candidates/manual/pending/2026-11-18_codex_pass24_open/0099f7a0/0099f7a0.cpp	original
 0099fb60	_global	GFIntToCharString_JoinList	592	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0099fb60.cpp	original
 009a01c0	CBasicString<char>	ExtendData	320	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand526/differ/009a01c0.cpp	original
@@ -399,7 +399,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 009f73c0	CVsyncCallbackTimer	OnPostSwapScreens	736	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/009f73c0.cpp	original
 009fb110	CTexture	SaveToDataStream	736	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand692/differ/009fb110.cpp	gapscan/boundary
 009fb3f0	CTexture	LoadFromDataStream	864	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand692/differ/009fb3f0.cpp	gapscan/boundary
-009fdba0	CKilledThing	ModifyHeroStats	64	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/009fdba0.cpp	original
+009fdba0	CKilledThing	ModifyHeroStats	64	reserved (acctB lane, 2026-11-26; was: parked)		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/009fdba0.cpp	original
 00a04200	_global	Math_NormalizeVector2D	384	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a04200.cpp	original
 00a0be30	CCamera	SetView	80	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a0be30.cpp	original
 00a0c6f0	CCamera	SetAngleYZ	320	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0c6f0.cpp	original
@@ -529,7 +529,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup	RenderSingleSpriteTrail	2464	reserved (Codex pass 28, 2026-11-22; Account B agents off it)	DIFFER(2432v2464)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00bbe090.test.cpp	original
 00bc3f30	CEnginePrimitiveManagerParticleLineGroup	RenderSubPrimitive	13	parked	DIFFER(3272v3357)	1	rebuild/candidates/manual/pending/2026-11-04_linux_hand742/differ/00bc3f30.cpp	original
 00bc7660	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText::Render2DPrimitive	704	parked	egod3a: DIFFER 695v692 -- old local-model draft (111 masked); landed sibling 0x00BC6DB0 RenderSubPrimitive is on 15 shared headers (port base); Ego_d: primitive is CEngineInternalPrimitive2DText&, alpha_mask_info, z, {graphic_frame}; not started	4	rebuild/candidates/manual/pending/2026-11-18_egod3/return/differ/00bc7660.cpp	original
-00bc9b30	CEngineTreeFilerBase	FindNode	80	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand623/differ/00bc9b30.cpp	original
+00bc9b30	CEngineTreeFilerBase	FindNode	80	reserved (acctB lane, 2026-11-26; was: parked)		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand623/differ/00bc9b30.cpp	original
 00bca510	_global	CEngineVertexBufferPool_AllocateBuffer	416	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand600/differ/00bca510.cpp	original
 00bcee20	CEngineInternalPrimitiveAnimatedMesh	?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveAnimatedMesh@@UAE_NAAVC3DBoundingBox@@@Z	352	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand530/differ/00bcee20.cpp	original
 00bd2360	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::PreloadPrimitive	1168	parked		0	rebuild/candidates/manual/pending/2026-11-11_linux_handQ4/differ/00bd2360.cpp	original

@@ -1429,3 +1429,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 - 2026-11-26 A: landed NF475 b0_hdr (6) + bAa (15 rows, 5 CAIStateGroup units at full size; T3 nf324/alias1/nf318/nf320/nf319 closed; +10 proven, 0 worse), committed after equiv. MinionReactToAlert / IdleAtHome held on T3 nf374 / nf305 (partly resolved). 34 CAIStateGroup classes at full size. NF476 continues.
 - 2026-11-26 A: applied the owner-approved /D_USE_ANSI_CPP row-compile flag (NF468 proof: 57,160 rows, 12,441 .drectve-only, 44,713 identical, 0 grade changes; tests excluded). libcp is gone from row objects; r473d units can be re-gated. HEAD objects compiled before this commit differ in .drectve from new ones.
 - 2026-11-26 A: owner: agent cap 1 once the next running agent finishes (NF476 / NF477 running).
+
+2026-11-26 B->A: claiming four unreserved same-size parked rows (0x00BC9B30 FindNode, 0x009FDBA0 UploadToVolumeTexture, 0x0099F570 operator+, 0x0099F600 operator+). Codex pass 29 and every RESERVED.tsv address stay untouched.
