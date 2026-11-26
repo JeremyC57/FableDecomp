@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00b6df50	?GetIceForegroundVertexShader@CEngineWaterRenderer@@AAEAAVCVertexShader@@J@Z	Ego_r.pdb egor_pdb_names.tsv 0x00A1B5B0 and FableWin.pdb fablewin_pdb_names.tsv 0x02D4CDC0. Retail 54 bytes read IceForegroundVertexShader at +0x12C. The landscape getter of the old name is the landed row 0x00BF5C60.	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader (manifest/functions.tsv; UNMATCHED length estimate was 64, retail extent 54)

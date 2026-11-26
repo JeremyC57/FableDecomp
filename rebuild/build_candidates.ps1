@@ -403849,6 +403849,13 @@ $catalog = @(
         TestSource = '00/e2/NScriptCVAmbushScamScript_ResetRandomSpeechTime_00e2e400_test.cpp'
         PassPattern = '00e2e400_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b6df50'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_GetIceForegroundVertexShader_00b6df50.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_GetIceForegroundVertexShader_00b6df50_test.cpp'
+        PassPattern = '00b6df50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
