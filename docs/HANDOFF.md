@@ -5,7 +5,7 @@ naming debt, the order of work). This session's details: `docs/journal/2026-11/2
 of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the end of `docs/pipeline/GOTCHAS.md`. Agent rules:
 `tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/EXTRA_RULES.md`. The 2026-11-01 page is at the end of
 `docs/journal/HANDOFF_ARCHIVE.md`.
-
+## Account A, 2026-11-25 to 27 (naming paused except NF479, Codex p29's name fixes; Codex pass 29 checkpoint 1 landed)
 ## Account A, 2026-11-25 (naming families; agents NF430 / NF431 running; Codex pass 29 reserved)
 - **Naming:** 35,931 of 64,151 done (56.01%), from the tracker (with speed-ups A1 library symbols and A2 Ego_d names, and 223 vendor names libsig proved, owner 2026-11-26); 37,949 (59.16%) with the 2,018 registered best guesses (NF454 registered 1,821; 11 removed by Codex p29's PDB/SDK callers). Landed today:
   - nf424 r1 + r2 (262 deleting destructors; the r2 thin rows are owned by the vptr-storing ctor);

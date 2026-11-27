@@ -3,7 +3,7 @@
 Owner: "Land the landable ones and fix the ones that were marked as match but dont", then "Make sure the catalog is correct before changing to match catalog". The check that came before this landing is in `pending/2026-11-25_codex_pass29/CHECKPOINT1_CHECK.md`. `codex/` holds Codex's top-level documents; its per-row sources are now the landed rows. `logs/` and `tools/` hold the coordinator's measurements and scripts.
 
 ## Landed: 176 rows, all RELOCATION_MATCH with tests PASS (`vland.py --land`, `LANDVERIFY_STRICT_HEADERS=1`)
-- **Headers:** Codex's 572 patches were rebased three-way onto HEAD (base 6834d3bfd2); 278 headers changed and 64 are new.
+- **Headers:** Codex's 572 patches were rebased three-way onto HEAD (base 6834d3bfd2); 278 headers changed and 63 are new (341 paths: Codex's 342 less `engine/SalFrame.h`).
   - The 7 conflicts were resolved by hand (`tools/resolve.py`).
   - All 34 headers changed on both sides were checked with a conditional evaluator (`tools/ifeval.py`, `tools/checkmerge.py`): the merged text equals HEAD's under HEAD's macros and Codex's under Codex's.
   - Equivalence: 57,166 rows. The 25 landed rows whose input changed were regraded on both trees with identical grades (`logs/equivalence_differ.tsv`).
@@ -24,6 +24,7 @@ Owner: "Land the landable ones and fix the ones that were marked as match but do
   - The 40 split_fixable rows are correct PDB selves that older callers bind under stand-ins.
   - The GameCODA names are SDK symbols. Four (CCodaEnvironment::Commit, CSalSw2DVoice::CalcParams, CFloatReflection::Process, CFloatShortReverbModule::ProcessInput) also match the SDK body (95-100% after masking).
   - 70 manifest names were then aligned to the catalog (`logs/manifest_renames.tsv`).
+- **Regraded from the committed tree** (b2cb69724c, no header overlay, strict headers): 176 of 176 RELOCATION_MATCH / MATCH PASS (`logs/recheck_from_repo.txt`). Its RELOC_NAME / RELOC_CONFLICT warnings are the caller splits counted below. 0x00A5C360 is RELOC_UNCHECKED: a multi-block TU.
 - **`self_symbols.tsv`:** 176 lines added (vland does not write them).
 - **`reloc_bindings.tsv`:** every new caller line is kept (406 after back-outs). Hiding a landed caller's spelling would let the tracker call its target proven while a caller disagrees, which is the accuracy rule. `logs/split_growth.tsv` and `logs/self_clash.tsv` list the lines that disagree with older spellings.
 - **Reservation:** RESERVED.tsv marks the 176 as landed and their locks are released. 24 stay reserved (CODEX29).
