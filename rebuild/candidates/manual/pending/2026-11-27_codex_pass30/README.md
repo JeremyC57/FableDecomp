@@ -69,3 +69,5 @@
 3. `build.py`, with EGOD_EXTRACT, REL_EXTRACT, PDBX, FABLE_EXE, NAME_ANSWERS and EGOD_PDB_LINK set.
 
 The result is `fabledecomp_codex_pass30_2026-11-27.zip`: 58,258,825 B, 8,175 files with SHA256SUMS. Its sha256 is `a2d0bc7059a8abc8c5342d16f4a0c4d7b9fc8b22bfbd18cec72c3510ec3a12e0`.
+
+**Amendment (2026-11-27):** rule 7 of README_CODEX.md is replaced by `RULE7_AMENDMENT.md`: no strong definition of a function another row owns (LNK2005 in object mode).

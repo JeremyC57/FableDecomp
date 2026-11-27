@@ -592,3 +592,38 @@ What to write instead:
 - a global or function: its bound symbol.
 
 Audit: `rebuild/candidates/manual/audits/2026-11-25_baked_address/`.
+
+## 2026-11-27 advisor decision (owner delegated), AUTH30: in-class script Main, Alloc, and strong duplicate definitions
+Asked by the owner (2026-11-27: "have the advisor decide ruling for the two. and what to do about the 14 duplicate definitions").
+Evidence: `rebuild/candidates/manual/pending/2026-11-27_nf479_handback/` and the AUTH30 hand-back (pair 0x00D05A60 / 0x00D06130,
+CAssassin2/3::Main in CQ_BanditCampBossBattleScript).
+
+**R1, in-class `Main`.** Granted as retail text, through the shared header only. Ego_d places both Main bodies in
+`q_banditcampbossbattle.hpp` (lines 997 and 1053), and FableWin marks Main, Alloc, the ctor, GetParentScript and Init inline while
+register_scripts.cpp's own functions are not (the control). So the body goes in the class, in `engine/CQ_BanditCampBossBattleScript.h`,
+behind an add-only opt-in, marked `// Inferred:` with that evidence. A row-local `inline` keyword is declined. Before landing:
+- grade the neighbour 0x00D04AE0 on the same route without `/d2inlS15`, as the control;
+- drop `inline_depth(2)` and the counted-pointer specialisations from the draft, then regrade.
+
+**R2, `Alloc` and the ctor.** Use the nf88 form: Alloc and the ctor go in the same opt-in, and a helper takes Alloc's address. That needs
+the landed Alloc rows 0x00D05910 and 0x00D05FE0 ported onto the header (check their locks; GOTCHAS nf135 / nf140). Fallback, only if an
+Alloc row is held or its port DIFFERs: the constructing helper, recorded here. If Main matches only under the constructing helper, the
+pair waits for object mode (owner, 2026-11-24).
+
+**The 46-byte movie `??_G`.** Accepted as debt with a `// Pick-any:` note: it is identical to the copies already landed in 0x00EA2720 and
+0x00E50FD0 (2026-11-24 entry above). 0x00D06130's pick-any "2/4 EQ" is not covered by this and still blocks until explained.
+
+**Inline leaf rows, tree-wide.** Apply the FableWin inline-flag test to each landed row whose leaf is an inline member (22 found by the
+2026-11-27 scan). A flagged row moves to the header route in a `fix:` batch. An unflagged row is regraded without `inline`; a DIFFER
+backs the row out.
+
+**R3, strong duplicate definitions.** A row object that defines, strongly, a function another landed row owns is an LNK2005 waiting for
+object mode. The p29 scan found 14 such definitions in 10 rows; a 2026-11-27 source scan finds 1,301 candidates in 1,046 rows (a regex
+approximation, not a count).
+1. **Recount** by binding-table target address, from the objects, against a pre-p29 baseline, so the p29 share is known.
+2. **Non-same-TU copies** (rule 7 of the Codex brief never covered them): the two CCharString members in 0x005ACEDA, IsHeroCriminal in
+   0x007B3120, `~CScriptThing` in 0x00E50910. Replace each with the header declaration and regrade; if the leaf changes, the row reopens.
+3. **Same-class siblings** (the other 10): check the copy equals retail at the owner's address, then regrade with the declaration only.
+   Unchanged: a `fix:` batch (the test needs its own definition of the callee to link). Changed: an Option S unit with the owner, else
+   booked as debt.
+4. **Codex:** the pass 30 brief takes a rule 7 amendment now (`pending/2026-11-27_codex_pass30/RULE7_AMENDMENT.md`).
