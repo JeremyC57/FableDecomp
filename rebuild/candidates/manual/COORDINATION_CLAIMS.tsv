@@ -646,3 +646,4 @@ date	account	item	kind	status	note
 2026-11-27	B	0x00C1BF00	author	claimed	BuildViewMatrix (descriptive; no PDB symbol); retail 174 bytes
 2026-11-27	B	0x00C1BF00	author	done	landed RELOCATION_MATCH PASS: BuildViewMatrix, 174 bytes
 2026-11-27	B	0x00A614B0	author	claimed	std::_Rb_tree hinted insert_unique for the checksum-cache map; retail 634 bytes
+2026-11-27	B	0x00A614B0	author	done	landed RELOCATION_MATCH PASS: hinted insert_unique, 634 bytes

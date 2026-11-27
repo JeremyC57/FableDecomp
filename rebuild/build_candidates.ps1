@@ -405188,6 +405188,13 @@ $catalog = @(
         TestSource = '00/c1/global_BuildViewMatrix_00c1bf00_test.cpp'
         PassPattern = '00c1bf00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a614b0'
+        Module = 'std'
+        Source = '00/a6/std_insertunique_00a614b0.cpp'
+        TestSource = '00/a6/std_insertunique_00a614b0_test.cpp'
+        PassPattern = '00a614b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
