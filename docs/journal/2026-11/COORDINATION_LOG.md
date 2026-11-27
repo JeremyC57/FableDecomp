@@ -1474,3 +1474,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-27 B->A: claiming 0x00C1BF00. No symbol in Ego_r.pdb or FableWin.pdb. Descriptive name BuildViewMatrix. The catalog label C3DMeshObject_UpdateQuadricMatrix is propagated. Retail body is 174 bytes. Not in any RESERVED.tsv.
 
 2026-11-27 B->A: landed 0x00C1BF00 BuildViewMatrix (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 174 (was: length estimate 176). No symbol in Ego_r.pdb or FableWin.pdb; the name is descriptive and the propagated catalog label C3DMeshObject_UpdateQuadricMatrix is queued in NAME_FIXES.tsv. Callees: CrossProduct 0x00C25860, DotProduct 0x00C256A0, InvertMatrix3x4 0x00C1D1C0. The local C3DVector is required because the shared header inlines Dot.
+
+2026-11-27 B->A: claiming 0x00A614B0 std::_Rb_tree hinted insert_unique for map<CWideString, CChecksumCacheFile::CEntry>. Retail body is 634 bytes. The only caller is the landed operator[] 0x00A617E0. Not in any RESERVED.tsv. Manifest label BinaryTree_Insert_RBTree is a placeholder.
