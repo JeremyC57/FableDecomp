@@ -38634,3 +38634,6 @@ __TI2?AVCBankFileException@@	01369470	009d0880
 ?ConvertToCharString@CWideString@@QBE?AVCCharString@@XZ	0099b2c0	00991c10
 ?DisplayProgress@@YIXABVCCharString@@M_N1@Z	009e9f40	00991c10
 ?_M_insert_overflow@?$vector@U?$pair@JVCSoundBankRecord@@@std@@V?$allocator@U?$pair@JVCSoundBankRecord@@@std@@@2@@std@@QAEXPAU?$pair@JVCSoundBankRecord@@@2@ABU32@ABV__false_type@2@I_N@Z	00993310	00991c10
+?GetFrequencyTableEntry@@YAKMM@Z	00c6bdc0	00c6be60
+?g_directionGainsA@@3QAY0FA@$$CBMA	012b9d78	00c6be60
+?g_directionGainsB@@3QAY0FA@$$CBMA	012bc578	00c6be60

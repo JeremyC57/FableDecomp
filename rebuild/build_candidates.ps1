@@ -405216,6 +405216,13 @@ $catalog = @(
         TestSource = '00/99/CASoundManager_RegisterAtmosSoundBank_00991c10_test.cpp'
         PassPattern = '00991c10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c6be60'
+        Module = '_global'
+        Source = '00/c6/global_SALCalcMacroFxGains_00c6be60.cpp'
+        TestSource = '00/c6/global_SALCalcMacroFxGains_00c6be60_test.cpp'
+        PassPattern = '00c6be60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

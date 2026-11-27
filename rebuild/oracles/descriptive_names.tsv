@@ -2019,3 +2019,4 @@ address	symbol	basis	note
 00c1bf00	BuildViewMatrix	style	descriptive name (EXTRA_RULES: no PDB symbol, one descriptive name). libpk camera basis: right = up x forward, then the call at 0x00C1D1C0. Absent from Ego_r, FableWin and Ego_d. Not a PDB name.
 00c62370	?GetRandomPointInSphere@@YG?AVC3DVector@@M@Z	style	descriptive name, not a PDB name. No symbol in Ego_r, FableWin or Ego_d. Bound by the landed caller CAmbientTrigger::Play 0x00C62530. Random point in a sphere.
 00991c10	?RegisterAtmosSoundBank@CASoundManager@@QAEXKABVCWideString@@0@Z	style	descriptive name, not a PDB name. No symbol in Ego_r or FableWin. Retail string "Register Atmos Sound Bank". Bound by the landed caller CMainGameComponent::InitSound 0x00417A58.
+00c6be60	?SAL_CalcMacroFxGains@@YAXMMMMPAM@Z	style	descriptive name, not a PDB name. No symbol in Ego_r or FableWin. Bound by the landed caller CSalSw3DVoice::CalcParams 0x00C54C10. Two directional filter gains.

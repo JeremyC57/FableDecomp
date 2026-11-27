@@ -586,7 +586,7 @@ address	module	name	length_estimate	status	best_grade_on_record	grades_on_record
 00c69a70	NScript::CQ_GuildTrainingSkillScript	NScript::CQ_GuildTrainingSkillScript::AllocateMemory	240	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand342/differ/00c69a70.cpp	original
 00c6ad10	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	96	parked		0	rebuild/candidates/manual/pending/2026-10-24_linux_hand443/differ/00c6ad10.cpp	original
 00c6b260	_global	FloatToLongConvert_Vectorized	320	parked	DIFFER(391v315)	1	rebuild/candidates/manual/pending/2026-10-27_linux_hand680/differ/00c6b260.cpp	original
-00c6be60	_global	Audio_ComputeFrequencyResponse	226	reserved (acctB lane, 2026-11-27; was: parked; was: length 256)		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c6be60.cpp	original
+00c6be60	_global	Audio_ComputeFrequencyResponse	226	landed (acctB lane, 2026-11-27, RELOCATION_MATCH; was: parked; was: length 256)		0	rebuild/candidates/manual/pending/2026-10-30_parked_retry1/differ/00c6be60.cpp	original
 00c6dba0	CVtable_012bed90	Process	704	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand693/differ/00c6dba0.cpp	gapscan/boundary
 00c6e050	_gapscan	sub_00c6e050	384	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand598/differ/00c6e050.cpp	gapscan/boundary
 00c6e8f0	CVtable_012bedb8	Process	688	parked		0	rebuild/candidates/manual/pending/2026-10-27_linux_hand693/differ/00c6e8f0.cpp	gapscan/boundary

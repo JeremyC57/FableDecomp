@@ -654,3 +654,4 @@ date	account	item	kind	status	note
 2026-11-27	B	0x00991C10	author	claimed	CASoundManager::RegisterAtmosSoundBank (descriptive; no PDB symbol); retail 338 bytes
 2026-11-27	B	0x00991C10	author	done	landed RELOCATION_MATCH PASS: RegisterAtmosSoundBank, 338 bytes
 2026-11-27	B	0x00C6BE60	author	claimed	SAL_CalcMacroFxGains (descriptive; no PDB symbol); retail 226 bytes
+2026-11-27	B	0x00C6BE60	author	done	landed RELOCATION_MATCH PASS: SAL_CalcMacroFxGains, 226 bytes

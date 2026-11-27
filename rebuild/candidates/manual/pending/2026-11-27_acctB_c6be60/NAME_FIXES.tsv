@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c6be60	?SAL_CalcMacroFxGains@@YAXMMMMPAM@Z	Descriptive name, not a PDB name. No symbol in Ego_r or FableWin. The landed caller CSalSw3DVoice::CalcParams 0x00C54C10 binds this symbol here.	Audio_ComputeFrequencyResponse (functions.tsv)
