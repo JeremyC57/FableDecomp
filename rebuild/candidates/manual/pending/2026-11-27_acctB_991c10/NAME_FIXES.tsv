@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00991c10	?RegisterAtmosSoundBank@CASoundManager@@QAEXKABVCWideString@@0@Z	Descriptive name, not a PDB name. No symbol in Ego_r or FableWin. Retail string "Register Atmos Sound Bank" at 0x0129A67C. The landed caller CMainGameComponent::InitSound 0x00417A58 already binds this symbol here.	CMainGameComponent_RegisterSoundBank (functions.tsv)

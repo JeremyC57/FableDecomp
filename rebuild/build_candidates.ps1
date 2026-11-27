@@ -405209,6 +405209,13 @@ $catalog = @(
         TestSource = '00/94/CAIStateGroupGoToPub_GetObjectWithScriptName_00947eb0_test.cpp'
         PassPattern = '00947eb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00991c10'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_RegisterAtmosSoundBank_00991c10.cpp'
+        TestSource = '00/99/CASoundManager_RegisterAtmosSoundBank_00991c10_test.cpp'
+        PassPattern = '00991c10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

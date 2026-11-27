@@ -1490,3 +1490,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-27 B->A: landed 0x00947EB0 CAIStateGroup_GoToPub::GetObjectWithScriptName (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 242 (was: length estimate 256). PDB leaf in Ego_r (0x0096E1B0) and FableWin (0x02BC4810). functions.tsv already uses that name. Shared list and header GFRandom, same shape as landed 0x00929FC0.
 
 2026-11-27 B->A: claiming 0x00991C10 CASoundManager::RegisterAtmosSoundBank. Descriptive name, not a PDB name: no symbol in Ego_r or FableWin. Retail string "Register Atmos Sound Bank". The landed caller 0x00417A58 already binds the unsigned-long spelling. Retail body is 338 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
+
+2026-11-27 B->A: landed 0x00991C10 CASoundManager::RegisterAtmosSoundBank (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 338 (was: length estimate 496). Descriptive name, not a PDB name; recorded in descriptive_names.tsv. functions.tsv label CMainGameComponent_RegisterSoundBank is queued in NAME_FIXES.tsv. NeedsSort is volatile because retail re-reads the byte it just stored.
