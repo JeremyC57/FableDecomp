@@ -405174,6 +405174,13 @@ $catalog = @(
         TestSource = '00/97/std_adjustheap_00978b90_test.cpp'
         PassPattern = '00978b90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008082c0'
+        Module = 'std'
+        Source = '00/80/std_adjustheap_008082c0.cpp'
+        TestSource = '00/80/std_adjustheap_008082c0_test.cpp'
+        PassPattern = '008082c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

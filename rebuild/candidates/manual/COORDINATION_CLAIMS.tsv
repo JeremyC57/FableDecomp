@@ -642,3 +642,4 @@ date	account	item	kind	status	note
 2026-11-27	A	AUTH30: the 16 Codex pass 29 rows Codex held (4 DIFFER, 4 pick-any, 6 vftable, 2 source review), released from CODEX29	authoring	claimed	Claude agent AUTH30; locks AUTH30 in nflocks
 2026-11-27	A	AUTH30B: takes over the 16 AUTH30 rows plus 0x00D04AE0 (R1 control) and the Alloc rows 0x00D05910 / 0x00D05FE0 (R2 ports), under the 2026-11-27 advisor rulings in EXTRA_RULES	authoring	claimed	Claude agent AUTH30B; locks AUTH30B in nflocks (AUTH30 locks moved)
 2026-11-27	B	0x008082C0	author	claimed	std::__adjust_heap for the first-person targeting comparator; retail 317 bytes
+2026-11-27	B	0x008082C0	author	done	landed RELOCATION_MATCH PASS: std::__adjust_heap, 317 bytes

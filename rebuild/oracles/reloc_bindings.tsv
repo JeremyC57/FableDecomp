@@ -38619,3 +38619,4 @@ __TI2?AVCBankFileException@@	01369470	009d0880
 ?InitialiseAsDepthBuffer@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@W4ESurfaceMultisampleType@@_N@Z	009f32a0	00f36d30
 ??$__push_heap@PAPAVCThing@@HPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7891c407@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7891c407@@@Z	00978a00	00978b90
 ??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x7891c407@@QBE_NPBVCThing@@0@Z	00978790	00978b90
+??$__push_heap@PAU?$pair@VC3DVector@@J@std@@HU12@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x4477dc34@@@std@@YIXPAU?$pair@VC3DVector@@J@0@HHU10@VCCompareTargetedPositionsForFirstPersonTargeting@?A0x4477dc34@@@Z	00807620	008082c0
