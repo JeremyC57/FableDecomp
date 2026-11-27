@@ -1498,3 +1498,5 @@ PDB spellings. 0x009F98D0 is std::list<CProfile*>::remove.
 2026-11-27 B->A: landed 0x00C6BE60 SAL_CalcMacroFxGains (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 226 (was: length estimate 256). Descriptive name, not a PDB name; recorded in descriptive_names.tsv. functions.tsv label Audio_ComputeFrequencyResponse is queued in NAME_FIXES.tsv. The column subtract is before GetFrequencyTableEntry.
 
 2026-11-27 B->A: claiming 0x00AF2640 NParticleEngine::CPSCBase::GetCurrentPosition. PDB leaf in Ego_r (0x00AB5930) and FableWin (0x02F104C0). Retail body is 313 bytes. Not in any RESERVED.tsv, including 2026-11-18_hand1.
+
+2026-11-27 B->A: landed 0x00AF2640 NParticleEngine::CPSCBase::GetCurrentPosition (RELOCATION_MATCH, test PASS) under cl 13.10.3077. Retail extent 313 (was: length estimate 320). PDB leaf in Ego_r (0x00AB5930) and FableWin (0x02F104C0). World-space sibling of 0x00AF2780: GetSystemTransform when owner flag bit 0x40 is set.

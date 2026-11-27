@@ -405223,6 +405223,13 @@ $catalog = @(
         TestSource = '00/c6/global_SALCalcMacroFxGains_00c6be60_test.cpp'
         PassPattern = '00c6be60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00af2640'
+        Module = 'NParticleEngine::CPSCBase'
+        Source = '00/af/NParticleEngineCPSCBase_GetCurrentPosition_00af2640.cpp'
+        TestSource = '00/af/NParticleEngineCPSCBase_GetCurrentPosition_00af2640_test.cpp'
+        PassPattern = '00af2640_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
